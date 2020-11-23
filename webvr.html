@@ -31,11 +31,18 @@
 
 
         <a-assets>
+            <a-asset-item id="engine" src="./engine.glb">
+            </a-asset-item>
             <a-asset-item id="scooter" src="./Scooter.glb"/>
             <a-asset-item id="tree" src="./Tree with Falling Leaves.glb"/>
 
         </a-assets>
         
+        <a-entity position="0 0 -3">
+            <a-gltf-model src="#engine" rotation="90 0 0" scale="18 18 18"></a-gltf-model>
+        </a-entity>
+
+
         <a-entity position="-2 0 -10">
             <a-gltf-model  src="#tree"  scale="30 30 30"></a-gltf-model>
         </a-entity>
