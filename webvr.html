@@ -31,10 +31,16 @@
 
 
         <a-assets>
-            <a-asset-item id="scooter" src="./Scooter.glb">
-            </a-asset-item>
+            <a-asset-item id="scooter" src="./Scooter.glb"/>
+            <a-asset-item id="tree" src="./Tree with Falling Leaves.glb"/>
+
         </a-assets>
         
+        <a-entity position="0 0 -5">
+            <a-gltf-model  id="ollie" src="#tree"  scale="1 1 1"></a-gltf-model>
+        </a-entity>
+
+
         <a-entity position="0 0 -3">
             <a-gltf-model  id="ollie" src="#scooter"  scale="1 1 1"></a-gltf-model>
         </a-entity>
