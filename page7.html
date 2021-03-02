@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>SharePoint Web Part (Part 2)</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+  
+</head>
+<body>
+  
+  <section class="menu menu3 cid-soWvwPO9k8" once="menu" id="menu3-3a">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddleyoffice365" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-soWvwQqOsD" id="content4-3b">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2">
+                    <strong>SharePoint Web Part (Part 2)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">How to create and publish a SharePoint Web Part (Part 2)</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-soWvwQEeCC" id="image3-3c">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png" alt="">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-soWvwQO6jg" id="content5-3d">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">
+                    Adding the big calendar</h4>
+                <p class="mbr-text mbr-fonts-style display-7">npm is the package manager for the Node JavaScript platform. <br><br>The npmjs web site is a repository of reusable software components.<br><br>react-big-calendar is an events calendar  component built for React.<br><br><a href="https://www.npmjs.com/package/react-big-calendar" class="text-primary" target="_blank">https://www.npmjs.com/package/react-big-calendar</a><br><br>To add the react-big-calendar component to our SharePoint Web Part solution we run this command:<a href="https://www.npmjs.com/package/react-big-calendar" class="text-primary" target="_blank"><br></a><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-soWycDCXGl" id="content7-3o">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                
+                <p class="mbr-text mbr-fonts-style display-4">$ npm i react-big-calendar  </p></blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-soWynoqNmT" id="content5-3p">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Update the Calendar Function Component</h4>
+                <p class="mbr-text mbr-fonts-style display-7">
+                    The we update the Web Part's Calendar Function Component to include the react-big-calendar Component</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-soWz5ZQjWv" id="content7-3r">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7">Calendar.tsx</h5>
+
+<pre><code class="language-css">p </code></pre>
+                
+                
+                
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-soWvwQYQ3f" id="image3-3e">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-02-12-at-10.38.21-am-1836x1378.png" alt="yo @microsof/sharepoint">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        yo @microsoft/sharepoint</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-soWvwRa1zp" id="content5-3f">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">
+                    Sample React Code</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The React code below is provided as a starting point.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-soWvwRuSsI" id="image3-3g">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-02-12-at-11.35.33-am-1836x1299.png" alt="Web Part React Component">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        Web Part React Component</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-soWvwRNoeo" id="content5-3h">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Local Workbench</h4>
+                <p class="mbr-text mbr-fonts-style display-7">
+                    A developer can test the default Web Part by running "gulp serve".<br><br>When the gulp serve command is run the default Web Part is available in the local workbench.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-soWvwRWJh5" id="image3-3i">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-02-12-at-10.40.53-am-1764x1264.png" alt="SharePoint Workbench">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        SharePoint Workbench</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-soWvwS5wLq" id="content5-3j">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">
+                    pageContext</h4>
+                <p class="mbr-text mbr-fonts-style display-7">A SharePoint Web Part can do interesting things if it has "context".<br><br>In this example the ICalendarProps interface is used to pass values from the CalendarWebPart instance to the Calendar React component. So we add context of type WebPartContext to the ICalendarProps interface and&nbsp; update the CalendarWebPart's render method to pass "this.context" to the Calendar component.<br><br>Running "gulp serve" allows us to test the result in the "Local Workbench" or a SharePoint Online site using the&nbsp;/_layouts/15/workbench.aspx page.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="slider2 cid-soWvwSeSow" id="slider2-3k">
+    
+
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <div class="carousel slide" id="soWTiOpQT0" data-interval="5000">
+                    
+                    <ol class="carousel-indicators">
+                        <li data-slide-to="0" class="active" data-target="#soWTiOpQT0"></li>
+                        <li data-slide-to="1" data-target="#soWTiOpQT0"></li>
+                        <li data-slide-to="2" data-target="#soWTiOpQT0"></li><li data-slide-to="3" data-target="#soWTiOpQT0"></li><li data-slide-to="4" data-target="#soWTiOpQT0"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item slider-image item active">
+                            <div class="item-wrapper">
+                                <img class="d-block w-100" src="assets/images/screen-shot-2021-02-12-at-1.43.01-pm-1900x1342.png">
+                                
+                            </div>
+                        </div>
+                        <div class="carousel-item slider-image item">
+                            <div class="item-wrapper">
+                                <img class="d-block w-100" src="assets/images/screen-shot-2021-02-12-at-1.43.32-pm-1900x1343.png">
+                                
+                            </div>
+                        </div>
+                        <div class="carousel-item slider-image item">
+                            <div class="item-wrapper">
+                                <img class="d-block w-100" src="assets/images/screen-shot-2021-02-12-at-1.43.55-pm-1900x1346.png">
+                                
+                            </div>
+                        </div><div class="carousel-item slider-image item">
+                            <div class="item-wrapper">
+                                <img class="d-block w-100" src="assets/images/screen-shot-2021-02-12-at-1.40.17-pm-1754x1266.png">
+                                
+                            </div>
+                        </div><div class="carousel-item slider-image item">
+                            <div class="item-wrapper">
+                                <img class="d-block w-100" src="assets/images/screen-shot-2021-02-12-at-1.47.37-pm-1750x1260.png">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control carousel-control-prev" role="button" data-slide="prev" href="#soWTiOpQT0">
+                        <span class="mobi-mbri mobi-mbri-arrow-prev" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control carousel-control-next" role="button" data-slide="next" href="#soWTiOpQT0">
+                        <span class="mobi-mbri mobi-mbri-arrow-next" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-soWvwSOBhr" id="content5-3l">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">
+                    TypeScript and React</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The generated CalendarWebPart class extends the Microsoft BaseClientSideWebPart class and that the generated Calendar class extends React.Component.<br><br>The generated CalendarWebPart class manages state and that the Calendar class has state passed to it via props.<br><br>Before doing additional work on the Calendar component we should reimplement it as a function. This (in my opinion) makes the Calendar component code much easier to read and if the Calendar component needs to maintain state in the future we can take advantage of <a href="reactusestateuseeffect.html" class="text-primary">React useState and useEffect hooks</a>.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-soWvwSZ50b" id="image3-3m">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-02-13-at-10.10.01-am-1836x1299.png" alt="React FunctionComponent">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Calendar component as a function</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="footer3 cid-soWvwTdXWt" once="footers" id="footer3-3n">
+
+    
+
+    
+
+    <div class="container">
+        <div class="media-container-row align-center mbr-white">
+            <div class="row row-links">
+                <ul class="foot-menu">
+                    
+                    
+                    
+                    
+                    
+                <li class="foot-menu-item mbr-fonts-style display-7"><a href="mailto:neil@haddley.com" class="text-success">Email Me</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://www.facebook.com/neil.haddley/" class="text-success">Facebook</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://www.linkedin.com/in/neil-haddley/" class="text-success">Linked In</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://github.com/haddleyoffice365" class="text-success">GitHub</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://www.npmjs.com/~haddley" class="text-success">npm</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://hub.docker.com/u/haddley" class="text-success">Docker Hub</a></li></ul>
+            </div>
+            <div class="row social-row">
+                <div class="social-list align-right pb-2">
+                    
+                    
+                    
+                    
+                    
+                    
+                <div class="soc-item">
+                        <a href="mailto:neil@haddley.com">
+                            <span class="mbr-iconfont mbr-iconfont-social socicon-mail socicon"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://www.facebook.com/pages/Mobirise/1616226671953247" target="_blank">
+                            <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                            <span class="mbr-iconfont mbr-iconfont-social socicon-linkedin socicon"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://github.com/haddleyoffice365" target="_blank">
+                            <span class="mbr-iconfont mbr-iconfont-social mbrib-github"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://www.npmjs.com/~haddley" target="_blank">
+                            <span class="mbr-iconfont mbr-iconfont-social socicon-npm socicon"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://hub.docker.com/u/haddley" target="_blank">
+                            <span class="mbr-iconfont mbr-iconfont-social mobi-mbri-delivery mobi-mbri"></span>
+                        </a>
+                    </div></div>
+            </div>
+            <div class="row row-copirayt">
+                <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-7">
+                    © Copyright 2021 Neil Haddley. All Rights Reserved.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-soWyZdhmEz" id="content7-3q">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>How mobirise works?</strong></h5>
+                <p class="mbr-text mbr-fonts-style display-4">Use Mobirise website building software to create multiple sites for commercial and non-profit projects. Themes in the Mobirise website builder offer multiple blocks: intros, sliders, galleries, forms, articles, and so on. Start a project and click on the red plus buttons to see the blocks available for your theme.</p></blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/popper/popper.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/dropdown/js/nav-dropdown.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  
+</body>
+</html>
