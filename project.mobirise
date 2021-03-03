@@ -55,8 +55,8 @@
       "enabled": false
     },
     "pwa-switcher": true,
-    "global_header_custom": "<link href=\"prism.css\" rel=\"stylesheet\" />\n",
-    "global_footer_custom": "<script src=\"prism.js\"></script>\n<script src=\"aframe.min.js\"></script>"
+    "global_header_custom": "<link href=\"prism.css\" rel=\"stylesheet\" />\n<script src=\"aframe.min.js\"></script>\n",
+    "global_footer_custom": "<script src=\"prism.js\"></script>\n"
   },
   "pages": {
     "index.html": {
