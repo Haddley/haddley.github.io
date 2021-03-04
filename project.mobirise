@@ -1900,7 +1900,7 @@
         {
           "_customTemplate": true,
           "_afterNavbarItem": false,
-          "_customHTML": "<!-- Type valid HTML here -->\n<div class=\"container\">\n        <div class=\"row justify-content-center\">\n            <div class=\"col-12 col-md-10\">\n                \n                \n    <div>\n        <a rel=\"nofollow\" href=\"https://commons.wikimedia.org/wiki/File:Swagger-logo.png\">\n            Swagger Logo\n        </a>\n        by\n        <a href=\"/\">\n            Fehguy\n        </a>\n        is licensed under\n        <a rel=\"nofollow\" class=\"external text\" href=\"https://creativecommons.org/licenses/by/2.0/\">\n            CC\n        </a>\n    </div>\n            </div>\n            </div>\n</div>\n",
+          "_customHTML": "<!-- Type valid HTML here -->\n<span class=\"container\">\n        <div class=\"row justify-content-center\">\n            <span class=\"col-12 col-md-10\">\n        <a rel=\"nofollow\" href=\"https://commons.wikimedia.org/wiki/File:Swagger-logo.png\">\n            Swagger Logo\n        </a>\n        by\n        <a href=\"/\">\n            Fehguy\n        </a>\n        is licensed under\n        <a rel=\"nofollow\" class=\"external text\" href=\"https://creativecommons.org/licenses/by/2.0/\">\n            CC\n        </a>\n    \n            </span>\n            </div>\n</span>\n",
           "_customCSS": "/* Type valid CSS here */\n\ndiv {\n  padding: 80px 0;\n  color: #777;\n  text-align: center;\n}\np {\n  font-size: 60px;\n  color: #777;\n}",
           "alias": "code-editor",
           "_tags": [
@@ -2636,7 +2636,7 @@
         {
           "_customTemplate": true,
           "_afterNavbarItem": false,
-          "_customHTML": "<!-- Type valid HTML here -->\n\n<div class=\"container\">\n        <div class=\"row justify-content-center\">\n            <div class=\"col-12 col-md-10\">\n                \n    <div>\n        <a rel=\"nofollow\" href=\"https://commons.wikimedia.org/wiki/File:React-icon.svg\">\n            React-icon\n        </a>\n        by\n        <a href=\"/\">\n            Facebook\n        </a>\n        does not meet the threshold of originality needed for copyright protection</div>\n                \n            </div>\n    </div>\n</div>",
+          "_customHTML": "<!-- Type valid HTML here -->\n\n<span class=\"container\">\n        <div class=\"row justify-content-center\">\n            <span class=\"col-12 col-md-10\">\n        <a rel=\"nofollow\" href=\"https://commons.wikimedia.org/wiki/File:React-icon.svg\">\n            React-icon\n        </a>\n        by\n        <a href=\"/\">\n            Facebook\n        </a>\n        does not meet the threshold of originality needed for copyright protection\n                \n            </span>\n    </div>\n</span>",
           "_customCSS": "/* Type valid CSS here */\n\ndiv {\n  padding: 80px 0;\n  color: #777;\n  text-align: center;\n}\np {\n  font-size: 60px;\n  color: #777;\n}",
           "alias": "code-editor",
           "_tags": [
@@ -3768,7 +3768,7 @@
         {
           "_customTemplate": true,
           "_afterNavbarItem": false,
-          "_customHTML": "<!-- Type valid HTML here -->\n\n<div class=\"container\">\n        <div class=\"row justify-content-center\">\n            <div class=\"col-12 col-md-10\">\n                \n    <div>\n        <a rel=\"nofollow\" href=\"https://github.com/kubernetes/kubernetes/tree/master/logo\">\n            Kubernetes (container engine)\n        </a>\n            by\n        <a href=\"https://www.google.com\">Google, Inc.\n       </a>\n            is licensed under\n        <a rel=\"nofollow\" class=\"external text\" href=\"https://creativecommons.org/licenses/by/2.0/\">\n            CC\n        </a>\n    </div>\n                \n            </div>\n    </div>\n</div>",
+          "_customHTML": "<!-- Type valid HTML here -->\n<span class=\"container\">\n        <div class=\"row justify-content-center\">\n            <span class=\"col-12 col-md-10\">\n        <a rel=\"nofollow\" href=\"https://github.com/kubernetes/kubernetes/tree/master/logo\">\n            Kubernetes (container engine)\n        </a>\n            by\n        <a href=\"https://www.google.com\">Google, Inc.\n       </a>\n            is licensed under\n        <a rel=\"nofollow\" class=\"external text\" href=\"https://creativecommons.org/licenses/by/2.0/\">\n            CC\n        </a>\n\n                \n            </span>\n    </div>\n</span>",
           "_customCSS": "/* Type valid CSS here */\n\ndiv {\n  padding: 80px 0;\n  color: #777;\n  text-align: center;\n}\np {\n  font-size: 60px;\n  color: #777;\n}",
           "alias": "code-editor",
           "_tags": [
@@ -4697,7 +4697,7 @@
         {
           "_customTemplate": true,
           "_afterNavbarItem": false,
-          "_customHTML": "<!-- Type valid HTML here -->\n<div class=\"container\">\n        <div class=\"row justify-content-center\">\n            <div class=\"col-12 col-md-10\">\n                \n                \n    <div>\n        <a rel=\"nofollow\" href=\"https://commons.wikimedia.org/wiki/File:Microsoft_Office_SharePoint_(2018–present).svg\">\n            Microsoft Office SharePoint (2018–present)\n        </a>\n            by\n        <a href=\"https://www.google.com\">\n\t        Microsoft Corporation\n         </a>\n            is licensed under\n        <a rel=\"nofollow\" class=\"external text\" href=\"https://creativecommons.org/licenses/by/2.0/\">\n            CC\n        </a>\n    </div>\n                \n            </div>\n    </div>\n</div>",
+          "_customHTML": "<!-- Type valid HTML here -->\n<span class=\"container\">\n        <div class=\"row justify-content-center\">\n            <span class=\"col-12 col-md-10\">\n        <a rel=\"nofollow\" href=\"https://commons.wikimedia.org/wiki/File:Microsoft_Office_SharePoint_(2018–present).svg\">\n            Microsoft Office SharePoint (2018–present)\n        </a>\n            by\n        <a href=\"https://www.google.com\">\n\t        Microsoft Corporation\n         </a>\n            is licensed under\n        <a rel=\"nofollow\" class=\"external text\" href=\"https://creativecommons.org/licenses/by/2.0/\">\n            CC\n        </a>\n    \n                \n            </span>\n    </div>\n</span>",
           "_customCSS": "/* Type valid CSS here */\n\ndiv {\n  padding: 80px 0;\n  color: #777;\n  text-align: center;\n}\np {\n  font-size: 60px;\n  color: #777;\n}",
           "alias": "code-editor",
           "_tags": [
@@ -5694,7 +5694,7 @@
         {
           "_customTemplate": true,
           "_afterNavbarItem": false,
-          "_customHTML": "<!-- Type valid HTML here -->\n<div class=\"container\">\n        <div class=\"row justify-content-center\">\n            <div class=\"col-12 col-md-10\">\n\n    <div>\n        <a rel=\"nofollow\" href=\"https://commons.wikimedia.org/wiki/File:Microsoft_Office_SharePoint_(2018–present).svg\">\n            Microsoft Office SharePoint (2018–present)\n        </a>\n            by\n        <a href=\"https://www.google.com\">\n\t        Microsoft Corporation\n         </a>\n            is licensed under\n        <a rel=\"nofollow\" class=\"external text\" href=\"https://creativecommons.org/licenses/by/2.0/\">\n            CC\n        </a>\n    </div>\n                \n            </div>\n    </div>\n</div>",
+          "_customHTML": "<!-- Type valid HTML here -->\n<span class=\"container\">\n        <div class=\"row justify-content-center\">\n            <span class=\"col-12 col-md-10\">\n        <a rel=\"nofollow\" href=\"https://commons.wikimedia.org/wiki/File:Microsoft_Office_SharePoint_(2018–present).svg\">\n            Microsoft Office SharePoint (2018–present)\n        </a>\n            by\n        <a href=\"https://www.google.com\">\n\t        Microsoft Corporation\n         </a>\n            is licensed under\n        <a rel=\"nofollow\" class=\"external text\" href=\"https://creativecommons.org/licenses/by/2.0/\">\n            CC\n        </a>\n\n                \n            </span>\n    </div>\n</span>",
           "_customCSS": "/* Type valid CSS here */\n\ndiv {\n  padding: 80px 0;\n  color: #777;\n  text-align: center;\n}\np {\n  font-size: 60px;\n  color: #777;\n}",
           "alias": "code-editor",
           "_tags": [
@@ -6835,7 +6835,7 @@
         {
           "_customTemplate": true,
           "_afterNavbarItem": false,
-          "_customHTML": "<!-- Type valid HTML here -->\n<div class=\"container\">\n        <div class=\"row justify-content-center\">\n            <div class=\"col-12 col-md-10\">\n                \n    <div>\n        <a rel=\"nofollow\" href=\"https://commons.wikimedia.org/wiki/File:Microsoft_Office_SharePoint_(2018–present).svg\">\n            Microsoft Office SharePoint (2018–present)\n        </a>\n            by\n        <a href=\"https://www.google.com\">\n\t        Microsoft Corporation\n         </a>\n            is licensed under\n        <a rel=\"nofollow\" class=\"external text\" href=\"https://creativecommons.org/licenses/by/2.0/\">\n            CC\n        </a>\n    </div>\n\n            </div>\n    </div>\n</div>",
+          "_customHTML": "<!-- Type valid HTML here -->\n<span class=\"container\">\n        <div class=\"row justify-content-center\">\n            <span class=\"col-12 col-md-10\">\n        <a rel=\"nofollow\" href=\"https://commons.wikimedia.org/wiki/File:Microsoft_Office_SharePoint_(2018–present).svg\">\n            Microsoft Office SharePoint (2018–present)\n        </a>\n            by\n        <a href=\"https://www.google.com\">\n\t        Microsoft Corporation\n         </a>\n            is licensed under\n        <a rel=\"nofollow\" class=\"external text\" href=\"https://creativecommons.org/licenses/by/2.0/\">\n            CC\n        </a>\n   \n\n            </span>\n    </div>\n</span>",
           "_customCSS": "/* Type valid CSS here */\n\ndiv {\n  padding: 80px 0;\n  color: #777;\n  text-align: center;\n}\np {\n  font-size: 60px;\n  color: #777;\n}",
           "alias": "code-editor",
           "_tags": [
@@ -8100,7 +8100,7 @@
         {
           "_customTemplate": true,
           "_afterNavbarItem": false,
-          "_customHTML": "<!-- Type valid HTML here -->\n\n<div class=\"container\">\n        <div class=\"row justify-content-center\">\n            <div class=\"col-12 col-md-10\">\n                \n    <div>\n        <a rel=\"nofollow\" href=\"https://commons.wikimedia.org/wiki/File:Microsoft_Office_logo.png\">\n            Microsoft_Office_logo\n        </a>\n        by\n        <a href=\"https://www.google.com\">\n            Microsoft\n        </a>\n        is licensed under\n        <a rel=\"nofollow\" class=\"external text\" href=\"https://creativecommons.org/licenses/by/2.0/\">\n            CC\n        </a>\n    </div>\n                \n            </div>\n    </div>\n</div>",
+          "_customHTML": "<!-- Type valid HTML here -->\n\n<span class=\"container\">\n        <div class=\"row justify-content-center\">\n            <span class=\"col-12 col-md-10\">\n        <a rel=\"nofollow\" href=\"https://commons.wikimedia.org/wiki/File:Microsoft_Office_logo.png\">\n            Microsoft_Office_logo\n        </a>\n        by\n        <a href=\"https://www.google.com\">\n            Microsoft\n        </a>\n        is licensed under\n        <a rel=\"nofollow\" class=\"external text\" href=\"https://creativecommons.org/licenses/by/2.0/\">\n            CC\n        </a>\n \n                \n            </span>\n    </div>\n</span>",
           "_customCSS": "/* Type valid CSS here */\n\ndiv {\n  padding: 80px 0;\n  color: #777;\n  text-align: center;\n}\np {\n  font-size: 60px;\n  color: #777;\n}",
           "alias": "code-editor",
           "_tags": [
@@ -8970,7 +8970,7 @@
         {
           "_customTemplate": true,
           "_afterNavbarItem": false,
-          "_customHTML": "<!-- Type valid HTML here -->\n<div class=\"container\">\n        <div class=\"row justify-content-center\">\n            <div class=\"col-12 col-md-10\">\n               \n   <div>\n        <a rel=\"nofollow\" href=\"https://commons.wikimedia.org/wiki/File:Electron_Software_Framework_Logo.svg\">\n            Electron Software Framework Logo\n       </a>\n            by\n        <a href=\"https://www.google.com\">\n\t        GitHub\n         </a>\n            is licensed under\n        <a rel=\"nofollow\" class=\"external text\" href=\"https://creativecommons.org/licenses/by/2.0/\">\n            CC\n        </a>\n    </div>\n                \n            </div>\n        </div>\n</div>\n\n\n",
+          "_customHTML": "<!-- Type valid HTML here -->\n<span class=\"container\">\n        <div class=\"row justify-content-center\">\n            <span class=\"col-12 col-md-10\">\n               \n   \n        <a rel=\"nofollow\" href=\"https://commons.wikimedia.org/wiki/File:Electron_Software_Framework_Logo.svg\">\n            Electron Software Framework Logo\n       </a>\n            by\n        <a href=\"https://www.google.com\">\n\t        GitHub\n         </a>\n            is licensed under\n        <a rel=\"nofollow\" class=\"external text\" href=\"https://creativecommons.org/licenses/by/2.0/\">\n            CC\n        </a>\n\n                \n            </span>\n        </div>\n</span>\n\n\n",
           "_customCSS": "/* Type valid CSS here */\n\ndiv {\n  padding: 80px 0;\n  color: #777;\n  text-align: center;\n}\np {\n  font-size: 60px;\n  color: #777;\n}",
           "alias": "code-editor",
           "_tags": [
@@ -9838,7 +9838,7 @@
         {
           "_customTemplate": true,
           "_afterNavbarItem": false,
-          "_customHTML": "<!-- Type valid HTML here -->\n\n<div class=\"container\">\n        <div class=\"row justify-content-center\">\n            <div class=\"col-12 col-md-10\">\n                \n    <div>\n        <a rel=\"nofollow\" href=\"https://commons.wikimedia.org/wiki/File:Docker_(container_engine)_logo.svg\">\n            Docker (container_engine) logo\n        </a>\n        by\n        <a href=\"/\">\n            dotCloud, Inc.\n        </a>\n        is licensed under\n        <a rel=\"nofollow\" href=\"https://www.apache.org/licenses/LICENSE-2.0/\">\n            the Apache License\n        </a>\n    </div>\n                \n            </div>\n    </div>\n</div>",
+          "_customHTML": "<!-- Type valid HTML here -->\n\n<span class=\"container\">\n        <div class=\"row justify-content-center\">\n            <span class=\"col-12 col-md-10\">\n        <a rel=\"nofollow\" href=\"https://commons.wikimedia.org/wiki/File:Docker_(container_engine)_logo.svg\">\n            Docker (container_engine) logo\n        </a>\n        by\n        <a href=\"/\">\n            dotCloud, Inc.\n        </a>\n        is licensed under\n        <a rel=\"nofollow\" href=\"https://www.apache.org/licenses/LICENSE-2.0/\">\n            the Apache License\n        </a>\n  \n                \n            </span>\n    </div>\n</span>",
           "_customCSS": "/* Type valid CSS here */\n\ndiv {\n  padding: 80px 0;\n  color: #777;\n  text-align: center;\n}\np {\n  font-size: 60px;\n  color: #777;\n}",
           "alias": "code-editor",
           "_tags": [
@@ -10865,7 +10865,7 @@
         {
           "_customTemplate": true,
           "_afterNavbarItem": false,
-          "_customHTML": "<!-- Type valid HTML here -->\n\n<div class=\"container\">\n        <div class=\"row justify-content-center\">\n            <div class=\"col-12 col-md-10\">\n                \n    <div>\n        <a rel=\"nofollow\" href=\"https://github.com/kubernetes/kubernetes/tree/master/logo\">\n            Kubernetes (container engine)\n        </a>\n            by\n        <a href=\"https://www.google.com\">Google, Inc.\n       </a>\n            is licensed under\n        <a rel=\"nofollow\" class=\"external text\" href=\"https://creativecommons.org/licenses/by/2.0/\">\n            CC\n        </a>\n    </div>\n                \n            </div>\n    </div>\n</div>",
+          "_customHTML": "<!-- Type valid HTML here -->\n\n<span class=\"container\">\n        <div class=\"row justify-content-center\">\n            <span class=\"col-12 col-md-10\">\n \n        <a rel=\"nofollow\" href=\"https://github.com/kubernetes/kubernetes/tree/master/logo\">\n            Kubernetes (container engine)\n        </a>\n            by\n        <a href=\"https://www.google.com\">Google, Inc.\n       </a>\n            is licensed under\n        <a rel=\"nofollow\" class=\"external text\" href=\"https://creativecommons.org/licenses/by/2.0/\">\n            CC\n        </a>\n    </span>\n                \n    </div>\n</span>",
           "_customCSS": "/* Type valid CSS here */\n\ndiv {\n  padding: 80px 0;\n  color: #777;\n  text-align: center;\n}\np {\n  font-size: 60px;\n  color: #777;\n}",
           "alias": "code-editor",
           "_tags": [
@@ -11700,7 +11700,7 @@
         {
           "_customTemplate": true,
           "_afterNavbarItem": false,
-          "_customHTML": "<!-- Type valid HTML here -->\n<div class=\"container\">\n        <div class=\"row justify-content-center\">\n            <div class=\"col-12 col-md-10\">\n\n    <div>\n        <a rel=\"nofollow\" href=\"https://commons.wikimedia.org/wiki/File:Font_Awesome_5_brands_npm.svg\">\n            Font_Awesome_5_brands_npm\n        </a>\n            by\n        <a href=\"https://www.google.com\">\n            Font Awesome\n        </a>\n            is licensed under\n        <a rel=\"nofollow\" class=\"external text\" href=\"https://creativecommons.org/licenses/by/2.0/\">\n            CC\n        </a>\n    </div>\n                \n            </div>\n    </div>\n</div>",
+          "_customHTML": "<!-- Type valid HTML here -->\n<span class=\"container\">\n        <div class=\"row justify-content-center\">\n            <span class=\"col-12 col-md-10\">\n        <a rel=\"nofollow\" href=\"https://commons.wikimedia.org/wiki/File:Font_Awesome_5_brands_npm.svg\">\n            Font_Awesome_5_brands_npm\n        </a>\n            by\n        <a href=\"https://www.google.com\">\n            Font Awesome\n        </a>\n            is licensed under\n        <a rel=\"nofollow\" class=\"external text\" href=\"https://creativecommons.org/licenses/by/2.0/\">\n            CC\n        </a>\n   \n                \n            </span>\n    </div>\n</span>",
           "_customCSS": "/* Type valid CSS here */\n\ndiv {\n  padding: 80px 0;\n  color: #777;\n  text-align: center;\n}\np {\n  font-size: 60px;\n  color: #777;\n}",
           "alias": "code-editor",
           "_tags": [
@@ -12697,7 +12697,7 @@
         {
           "_customTemplate": true,
           "_afterNavbarItem": false,
-          "_customHTML": "<!-- Type valid HTML here -->\n\n<div class=\"container\">\n        <div class=\"row justify-content-center\">\n            <div class=\"col-12 col-md-10\">\n                \n    <div>\n        <a rel=\"nofollow\" href=\"https://commons.wikimedia.org/wiki/File:Font_Awesome_5_brands_npm.svg\">\n            Font_Awesome_5_brands_npm\n        </a>\n            by\n        <a href=\"https://www.google.com\">\n            Font Awesome\n        </a>\n            is licensed under\n        <a rel=\"nofollow\" class=\"external text\" href=\"https://creativecommons.org/licenses/by/2.0/\">\n            CC\n        </a>\n    </div>\n                \n            </div>\n    </div>\n</div>",
+          "_customHTML": "<!-- Type valid HTML here -->\n\n<span class=\"container\">\n        <div class=\"row justify-content-center\">\n            <span class=\"col-12 col-md-10\">\n        <a rel=\"nofollow\" href=\"https://commons.wikimedia.org/wiki/File:Font_Awesome_5_brands_npm.svg\">\n            Font_Awesome_5_brands_npm\n        </a>\n            by\n        <a href=\"https://www.google.com\">\n            Font Awesome\n        </a>\n            is licensed under\n        <a rel=\"nofollow\" class=\"external text\" href=\"https://creativecommons.org/licenses/by/2.0/\">\n            CC\n        </a>\n    \n                \n            </span>\n    </div>\n</span>",
           "_customCSS": "/* Type valid CSS here */\n\ndiv {\n  padding: 80px 0;\n  color: #777;\n  text-align: center;\n}\np {\n  font-size: 60px;\n  color: #777;\n}",
           "alias": "code-editor",
           "_tags": [
@@ -13706,7 +13706,7 @@
         {
           "_customTemplate": true,
           "_afterNavbarItem": false,
-          "_customHTML": "<!-- Type valid HTML here -->\n<div class=\"container\">\n        <div class=\"row justify-content-center\">\n            <div class=\"col-12 col-md-10\">\n                \n                \n    <div>\n        <a rel=\"nofollow\" href=\"https://github.com/NuGet/Media/blob/master/Images/MainLogo/128x128/nuget_128.png\">\n            NuGet project logo\n        </a>\n        by\n        <a href=\"https://www.google.com\">\n            NuGet project team\n        </a>\n        is licensed under\n        <a rel=\"nofollow\" class=\"external text\" href=\"https://creativecommons.org/licenses/by/2.0/\">\n            CC\n        </a>\n    </div>\n                \n            </div>\n    </div>\n</div>",
+          "_customHTML": "<!-- Type valid HTML here -->\n<span class=\"container\">\n        <div class=\"row justify-content-center\">\n            <span class=\"col-12 col-md-10\">\n        <a rel=\"nofollow\" href=\"https://github.com/NuGet/Media/blob/master/Images/MainLogo/128x128/nuget_128.png\">\n            NuGet project logo\n        </a>\n        by\n        <a href=\"https://www.google.com\">\n            NuGet project team\n        </a>\n        is licensed under\n        <a rel=\"nofollow\" class=\"external text\" href=\"https://creativecommons.org/licenses/by/2.0/\">\n            CC\n        </a>\n \n                \n            </span>\n    </div>\n</span>",
           "_customCSS": "/* Type valid CSS here */\n\ndiv {\n  padding: 80px 0;\n  color: #777;\n  text-align: center;\n}\np {\n  font-size: 60px;\n  color: #777;\n}",
           "alias": "code-editor",
           "_tags": [
@@ -15434,7 +15434,7 @@
         {
           "_customTemplate": true,
           "_afterNavbarItem": false,
-          "_customHTML": "<!-- Type valid HTML here -->\n\n<div class=\"container\">\n        <div class=\"row justify-content-center\">\n            <div class=\"col-12 col-md-10\">\n                \n                \n    <div>\n        <a rel=\"nofollow\" href=\"https://github.com/facebook/graphql/blob/master/resources/GraphQL%20Logo.svg\">\n            GraphQL Logo\n        </a>\n        by\n        <a href=\"https://www.google.com\">\n            Facebook\n        </a>\n        is licensed under\n        <a href=\"http://opensource.org/licenses/bsd-license.php\" title=\"BSD license\">\n\t    BSD\n\t    </a>\n    </div>\n                \n            </div>\n    </div>\n</div>",
+          "_customHTML": "<!-- Type valid HTML here -->\n<span class=\"container\">\n        <div class=\"row justify-content-center\">\n            <span class=\"col-12 col-md-10\">\n                \n        <a rel=\"nofollow\" href=\"https://github.com/facebook/graphql/blob/master/resources/GraphQL%20Logo.svg\">\n            GraphQL Logo\n        </a>\n        by\n        <a href=\"https://www.google.com\">\n            Facebook\n        </a>\n        is licensed under\n        <a href=\"http://opensource.org/licenses/bsd-license.php\" title=\"BSD license\">\n\t    BSD\n\t    </a>\n\n                \n            </span>\n    </div>\n</span>",
           "_customCSS": "/* Type valid CSS here */\n\ndiv {\n  padding: 80px 0;\n  color: #777;\n  text-align: center;\n}\np {\n  font-size: 60px;\n  color: #777;\n}",
           "alias": "code-editor",
           "_tags": [
@@ -17043,7 +17043,7 @@
         {
           "_customTemplate": true,
           "_afterNavbarItem": false,
-          "_customHTML": "<!-- Type valid HTML here -->\n\n<div class=\"container\">\n        <div class=\"row justify-content-center\">\n            <div class=\"col-12 col-md-10\">\n                \n                \n    <div>\n        <a rel=\"nofollow\" href=\"https://github.com/immersive-web/webxr/blob/main/images/spec-logo.png\">\n            spec-logo\n        </a>\n        by\n        <a href=\"https://www.google.com\">\n            Brandon Jones\n        </a>\n        is licensed under\n        <a href=\"https://www.w3.org/Consortium/Legal/copyright-software\" rel=\"nofollow\">\n            W3C Software and Document License\n        </a>\n    </div>\n                \n            </div>\n    </div>\n</div>",
+          "_customHTML": "<!-- Type valid HTML here -->\n\n<span class=\"container\">\n        <div class=\"row justify-content-center\">\n            <span class=\"col-12 col-md-10\">\n        <a rel=\"nofollow\" href=\"https://github.com/immersive-web/webxr/blob/main/images/spec-logo.png\">\n            spec-logo\n        </a>\n        by\n        <a href=\"https://www.google.com\">\n            Brandon Jones\n        </a>\n        is licensed under\n        <a href=\"https://www.w3.org/Consortium/Legal/copyright-software\" rel=\"nofollow\">\n            W3C Software and Document License\n        </a>\n                    \n            </span>\n    </div>\n</span>",
           "_customCSS": "/* Type valid CSS here */\n\ndiv {\n  padding: 80px 0;\n  color: #777;\n  text-align: center;\n}\np {\n  font-size: 60px;\n  color: #777;\n}",
           "alias": "code-editor",
           "_tags": [
@@ -17672,7 +17672,7 @@
         {
           "_customTemplate": true,
           "_afterNavbarItem": false,
-          "_customHTML": "<!-- Type valid HTML here -->\n<div class=\"container\">\n        <div class=\"row justify-content-center\">\n            <div class=\"col-12 col-md-10\">\n               \n\n    <div>\n        <a rel=\"nofollow\" href=\"https://thenounproject.com/term/iot-microchip/2546028/\">\n            iot microchip\n        </a>\n        by\n        <a rel=\"nofollow\" href=\"/masteroficon\">\n            Philipp Petzka\n        </a>\n        is licensed under\n        <a rel=\"nofollow\" class=\"external text\" href=\"https://creativecommons.org/licenses/by/2.0/\">\n            CC\n        </a>\n    </div>\n                \n            </div>\n    </div>\n</div>",
+          "_customHTML": "<!-- Type valid HTML here -->\n<span class=\"container\">\n        <div class=\"row justify-content-center\">\n            <span class=\"col-12 col-md-10\">\n                \n        <a rel=\"nofollow\" href=\"https://thenounproject.com/term/iot-microchip/2546028/\">\n            iot microchip\n        </a>\n        by\n        <a rel=\"nofollow\" href=\"/masteroficon\">\n            Philipp Petzka\n        </a>\n        is licensed under\n        <a rel=\"nofollow\" class=\"external text\" href=\"https://creativecommons.org/licenses/by/2.0/\">\n            CC\n        </a>\n  \n                \n            </span>\n    </div>\n</span>",
           "_customCSS": "/* Type valid CSS here */\n\ndiv {\n  padding: 80px 0;\n  color: #777;\n  text-align: center;\n}\np {\n  font-size: 60px;\n  color: #777;\n}",
           "alias": "code-editor",
           "_tags": [
