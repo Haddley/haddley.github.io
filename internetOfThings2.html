@@ -109,7 +109,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Node-RED</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Node-RED can be used to interact with an MQTT broker.<br><br>$CONTENT$nbsp;docker run -it -p 1880:1880 nodered/node-red<br></p>
+                <p class="mbr-text mbr-fonts-style display-7">Node-RED can be used to publish messages to an MQTT broker.<br><br>Node-RED is able to subscribe to MQTT broker messages.<br><br><strong>$CONTENT$nbsp;docker run -it -p 1880:1880 nodered/node-red</strong><br></p>
             </div>
         </div>
     </div>
@@ -639,7 +639,7 @@ void loop() {
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Data subscriptions</h4>
-                <p class="mbr-text mbr-fonts-style display-7">While telemetry messages are being published to the MQTT server client applications can subscribe to individual topics or to multiple topics using wildcards.<br><br>The # wildcard matches multiple topic name levels. The + wildcard matches a single topic name level.</p>
+                <p class="mbr-text mbr-fonts-style display-7">While telemetry messages are being published to the MQTT server client applications can subscribe to individual topics or to multiple topics using wildcards.<br><br>The # wildcard matches multiple topic name levels. <br><br>The + wildcard matches a single topic name level.</p>
             </div>
         </div>
     </div>
