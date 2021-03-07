@@ -10,7 +10,7 @@
   <meta name="description" content="">
   
   
-  <title>WebVR (Part 2)</title>
+  <title>WIP WebXR</title>
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
   <link rel="stylesheet" href="assets/tether/tether.min.css">
@@ -30,7 +30,7 @@
 </head>
 <body>
   
-  <section class="menu menu3 cid-sqTYMlyL8f" once="menu" id="menu3-id">
+  <section class="menu menu3 cid-sqWgNvSmdu" once="menu" id="menu3-j0">
     
     <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
         <div class="container">
@@ -69,14 +69,14 @@
     </nav>
 </section>
 
-<section class="content4 cid-sqTYMm62SC" id="content4-ie">
+<section class="content4 cid-sqWgNwmYXK" id="content4-j1">
     
     
     <div class="container">
         <div class="row justify-content-center">
             <div class="title col-md-12 col-lg-10">
                 <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2">
-                    <strong>WebVR</strong></h3>
+                    <strong>WebVR (Part 1)</strong></h3>
                 <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Create Virtual Reality Experiences.
                 </h4>
                 
@@ -85,7 +85,7 @@
     </div>
 </section>
 
-<section class="image3 cid-sqTYMmn6ro" id="image3-if">
+<section class="image3 cid-sqWgNwA1a8" id="image3-j2">
     
 
     
@@ -94,33 +94,108 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/webvr-logo-square-512x512.png" alt="">
-                    
+                    <img src="assets/images/34385910-400x400.png" alt="spec-logo by Brandon Jones is licensed under W3C Software and Document License">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a rel="nofollow" href="https://github.com/immersive-web/webxr/blob/main/images/spec-logo.png"><br>            spec-logo</a>&nbsp;by&nbsp;<a href="https://www.google.com">Brandon Jones</a>&nbsp;is licensed under&nbsp;<a href="https://www.w3.org/Consortium/Legal/copyright-software" rel="nofollow">W3C Software and Document License<br></a></p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="content5 cid-sqTYMnxyxC" id="content5-il">
+<section class="content5 cid-sqWgNwKcdC" id="content5-j3">
     
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
                 
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">An animated Web VR Scene</h4>
-                <p class="mbr-text mbr-fonts-style display-7">JavaScript can be used to animate WebVR entities.</p>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Moon Rider</h4>
+                <p class="mbr-text mbr-fonts-style display-7"><a href="https://webvr.info" class="text-primary" target="_blank">WebVR</a> has been replaced by the <a href="https://github.com/immersive-web" class="text-primary">WebXR</a> Device API, that supports both Virtual Reality (VR) and Augmented Reality (AR).<br><br>So why write a post about WebVR?<br><br><a href="https://moonrider.xyz" class="text-primary" target="_blank">Moon Rider</a>. That's why.<br><br>Moon Rider is a free VR rhythm game built on the WebVR and runs directly from a web browser.<br><br>Moon Rider is an impressive example of what can be done with WebVR.<br><br><a href="https://moonrider.xyz" class="text-primary" target="_blank">https://moonrider.xyz</a><br><br>The Moon Rider code is available for download from GitHub<br><br><a href="https://github.com/supermedium/moonrider" class="text-primary" target="_blank">https://github.com/supermedium/moonrider</a><br></p>
             </div>
         </div>
     </div>
 </section>
 
-<div id="custom-html-ik"><!-- Type valid HTML here -->
+<section class="image3 cid-sqWgNwVafb" id="image3-j4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/image0-4-1334x750.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        Moon Rider in Oculus Quest 2 Browser</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sqWgNx3Npw" id="content5-j5">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">A static WebVR scene</h4>
+                <p class="mbr-text mbr-fonts-style display-7">WebVR developers use <strong>entities</strong> to create <strong>scenes</strong>. Entities are created using&nbsp;<strong>assets</strong>.<br><br>A static scene can be created using a few web page tags</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sqWgNxgfAb" id="content7-j6">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>A scene</strong></h5>
+                
+                
+<pre class="language-javascript"><code><!--   
+<html>
+
+<head>
+    <script src="aframe.min.js"></script>
+</head>
+
+<body>
+    <a-scene background="color: #FAFAFA">
+
+        <a-assets>
+            <a-asset-item id="engine" src="./assets/files/engine.glb">
+            </a-asset-item>
+        </a-assets>
+
+        <a-entity position="0 0 -3">
+            <a-gltf-model src="#engine" rotation="90 0 0" scale="18 18 18"></a-gltf-model>
+        </a-entity>
+
+        <a-entity light="type: point; intensity: 60; distance: 50; decay: 2" position="0 0 10"></a-entity>
+
+    </a-scene>
+</body>
+
+</html>
+--></code></pre>                
+                    
+                
+                
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="custom-html-j7"><!-- Type valid HTML here -->
 <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-md-10">
                
-<video width="100%" preload="auto" controls="">
+<video width="100%" poster="WebVRScene.jpg" preload="auto" controls="">
     <source src="WebVRScene.mov" type="video/mp4">
 </video>
                 
@@ -128,12 +203,12 @@
         </div>
 </div></div>
 
-<section class="content12 cid-sqTYMnFklo" id="content12-im">
+<section class="content12 cid-sqWgNxArKF" id="content12-j8">
     
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
-                <div class="mbr-section-btn align-center"><a class="btn btn-primary display-4" href="WebVRScene.html" target="_blank">An animated WebVR Scene</a></div>
+                <div class="mbr-section-btn align-center"><a class="btn btn-primary display-4" href="WebVRScene.html" target="_blank">A static WebVR Scene</a></div>
             </div>
         </div>
     </div>
