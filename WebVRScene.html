@@ -11,8 +11,7 @@
         <a-assets>
             <a-asset-item id="engine" src="./assets/files/engine.glb">
             </a-asset-item>
-            <audio src="https://cdn.aframe.io/basic-guide/audio/backgroundnoise.wav" autoplay
-            preload loop></audio>
+            <audio id="background" src="./assets/files/backgroundnoise.wav" preload></audio>
         </a-assets>
 
         <a-entity position="0 0 -3">
@@ -20,6 +19,8 @@
         </a-entity>
 
         <a-entity light="type: point; intensity: 60; distance: 50; decay: 2" position="0 0 10"></a-entity>
+
+        <a-sound src="#background" autoplay="true"></a-sound>
 
     </a-scene>
 </body>
