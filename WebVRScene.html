@@ -6,12 +6,12 @@
 
 <body>
 
-    <a-scene background=" color: #FAFAFA">
+    <a-scene background=" color: #FAFAFA"
+        sound="src: url(./assets/files/backgroundnoise.mp3); loop:true; autoplay:true; volume:0.5;">
 
         <a-assets>
             <a-asset-item id="engine" src="./assets/files/engine.glb">
             </a-asset-item>
-            <audio id="background" src="./assets/files/Boat-SoundBible.com-1482189158.mp3"></audio>
         </a-assets>
 
         <a-entity position="0 0 -3">
@@ -19,8 +19,6 @@
         </a-entity>
 
         <a-entity light="type: point; intensity: 60; distance: 50; decay: 2" position="0 0 10"></a-entity>
-
-        <a-sound src="#background" autoplay="true"></a-sound>
 
     </a-scene>
 </body>
