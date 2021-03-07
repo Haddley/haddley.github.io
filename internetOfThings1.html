@@ -10,9 +10,10 @@
   <meta name="description" content="">
   
   
-  <title>ESP8266</title>
+  <title>Internet of Things (Part 1)</title>
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
   <link rel="stylesheet" href="assets/tether/tether.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
@@ -76,8 +77,8 @@
         <div class="row justify-content-center">
             <div class="title col-md-12 col-lg-10">
                 <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2">
-                    <strong>ESP8266</strong></h3>
-                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">A low-cost Wi-Fi microchip, with a full TCP/IP stack and microcontroller capability.
+                    <strong>Internet of Things (Part 1)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">ESP8266 is a low-cost Wi-Fi microchip, with a full TCP/IP stack and microcontroller capability.
                 </h4>
                 
             </div>
@@ -102,62 +103,6 @@
     </div>
 </section>
 
-<section class="content5 cid-sqD0iaN4Ir" id="content5-fh">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">The internet of things</h4>
-                <p class="mbr-text mbr-fonts-style display-7">The Internet of Things (IoT) is a name used to describe&nbsp;a growing number of electronic devices that connect to the internet.<br><br>IoT devices can receive instructions and data over the Internet.<br><br>IoT devices can send instructions and data over the Internet. <br><br>The ESP8266 (and similar microchips) provide a way to build Internet of Things devices</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="content5 cid-sqD0iaTSkc" id="content5-fi">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">MQTT</h4>
-                <p class="mbr-text mbr-fonts-style display-7">MQTT is a messaging system commonly used by IoT devices.<br><br>An ESP8266 can publish (send) messages to an MQTT broker.&nbsp;<br><br>An ESP8266 can subscribe to (receive) messages from an MQTT broker.<br><br>ESP8266 devices will be the MQTT clients and a 'eclipse-mosquitto' Docker container image will be the server (or broker).<br><br><strong>$ docker run -it -p 1883:1883 -p 9001:9001 eclipse-mosquitto:1.4.8</strong></p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="content5 cid-sqIYqwMbW0" id="content5-gp">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Commands</h4>
-                <p class="mbr-text mbr-fonts-style display-7">The code above assumes that your SharePoint site has a Calendar list named "Calendar".<br><br>The Local Workbench used for Web Part testing does not have a Calendar list, so to test the Web Part we need to navigate to the workbench page in a SharePoint site that does have a Calendar list (eg. https://haddleyoffice365.sharepoint.com/sites/AllStaff/_layouts/15/workbench.aspx).<br></p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="image3 cid-sqF38lY4mo" id="image3-gb">
-    
-
-    
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-03-04-at-5.36.09-pm-1132x734.png" alt="eclipse-mosquitto">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">eclipse-mosquitto <a href="docker.html" class="text-primary">Docker</a> image</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <section class="content5 cid-sqF8FOkWVJ" id="content5-gd">
     
     <div class="container">
@@ -165,7 +110,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Breadboard</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Here I have connected an ESP8266 device to a DHT sensor.<br><br>The DHT11 is a basic, ultra low-cost digital temperature and humidity sensor.<br></p>
+                <p class="mbr-text mbr-fonts-style display-7">Here an ESP8266 device is connected to a&nbsp;DHT temperature and humidity sensor.<br><br>With the Hardware assembled we can create and configure the Internet of Things (IoT) software.<br><br>An MQTT publish/subscribe broker will be at the center of the software configuration. We will upload code to the ESP8266 that will allow the ESP8266 device to communicate other devices via the MQTT broker.</p>
             </div>
         </div>
     </div>
@@ -189,90 +134,259 @@
     </div>
 </section>
 
-<section class="content5 cid-sqFaiRYwnF" id="content5-ge">
+<section class="content5 cid-sqRwte7GjI" id="content5-gr">
     
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
                 
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">IoT_DHT_Sensor sketch</h4>
-                <p class="mbr-text mbr-fonts-style display-7">The ESP8266 can be programmed using C++.<br><br>The Arduino integrated development environment (IDE) supports developing code for the ESP8266.<br><br>Open Source libraries and sample programs are available and easy to adapt.<br><br>Here the code will publish a "hello world" message with topic "outTopic" every 5 seconds.<br><br>The code will subscribe to messages with the topic "inTopic".</p>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Arduino IDE setup</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The Arduino Integrated Development Environment (IDE) can be used to create and upload C++ code to an ESP8266.<br><br>To add support for ESP8266 boards to the Arduino IDE select the "Arduino|Preferences..." menu item and add this url to the "additional boards manager" text box:<br><br>http://arduino.esp8266.com/stable/package_esp8266com_index.json<br></p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="content7 cid-sqD0iaZEuq" id="content7-fj">
+<section class="image3 cid-sqRFnkwRAK" id="image3-gt">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-06-at-9.23.14-pm-1592x1116.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        Arduino IDE Preferences</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sqRRfC4ygG" id="content5-h2">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Support for the ESP8266 board</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Use the&nbsp;"Tools|Board|Boards Manager..." menu item to install support for the ESP8266 boards.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqRGJmrLIm" id="image3-gu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.06-pm-1108x122.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        Boards Manager...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqRGQO1OuE" id="image3-gv">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Boards package</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sqRHsKmhNw" id="content5-gw">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">GitHub boards</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The ESP8266 boards information is maintained in a GitHub repository<br><br><a href="https://github.com/esp8266/Arduino" class="text-primary" target="_blank">https://github.com/esp8266/Arduino</a><br><br>Once the boards package is installed the correct ESP8266 board can be selected.<a href="https://github.com/esp8266/Arduino" class="text-primary" target="_blank"><br></a><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqRIp40ax5" id="image3-gx">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-06-at-9.36.46-pm-1512x318.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sqRINNqHVc" id="content5-gy">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">ESP8622 Libraries</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Arduino libraries can downloaded to the Arduino IDE using the "Tools|Manage Libraries..." menu item.<br><br>The PubSubClient library allows the ESP8266 to connect to an MQTT broker.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqRJ6wiy2V" id="image3-gz">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-06-at-9.55.43-pm-1596x902.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sqRKsPqCoB" id="content5-h0">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">PubSubLibrary example</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Once the PubSubClient Library is installed the mqtt_esp8266 example sketch is added&nbsp;to the "File|Examples" Menu.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqRO0x0eLJ" id="image3-h1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-06-at-9.58.23-pm-906x374.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sqRSQ0flzL" id="content5-h3">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">The mqtt_esp8266 example sketch</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The mqtt_esp8266 example sketch subscribes to an MQTT server's "inTopic" messages.<br><br>When an "inTopic" message is received by the ESP8266 the example code's "callback" function is run. If the payload of the "inTopic" message is the string "1" the ESP8266's builtin LED is turned on.<br><br>Every two seconds the example sketch publishes a "hello world" message to "outTopic".<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sqS7FDaE6Z" id="content7-i3">
     
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-md-10">
                 <blockquote>
-                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>IoT_DHT_Sensor sketch</strong></h5>
-                
-                
-<pre class="language-clike"><code><!--   
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>mqtt_esp8266.ino</strong></h5>
+
+<pre class="language-clike"><code><!--         
+/*
+ Basic ESP8266 MQTT example
+ This sketch demonstrates the capabilities of the pubsub library in combination
+ with the ESP8266 board/library.
+ It connects to an MQTT server then:
+  - publishes "hello world" to the topic "outTopic" every two seconds
+  - subscribes to the topic "inTopic", printing out any messages
+    it receives. NB - it assumes the received payloads are strings not binary
+  - If the first character of the topic "inTopic" is an 1, switch ON the ESP Led,
+    else switch it off
+ It will reconnect to the server if the connection is lost using a blocking
+ reconnect function. See the 'mqtt_reconnect_nonblocking' example for how to
+ achieve the same result without blocking the main loop.
+ To install the ESP8266 board, (using Arduino 1.6.4+):
+  - Add the following 3rd party board manager under "File -> Preferences -> Additional Boards Manager URLs":
+       http://arduino.esp8266.com/stable/package_esp8266com_index.json
+  - Open the "Tools -> Board -> Board Manager" and click install for the ESP8266"
+  - Select your ESP8266 in "Tools -> Board"
+*/
+
+/**/
+
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
- 
-#include "DHT.h"
- 
-// Uncomment one of the lines below for whatever DHT sensor type you're using!
-#define DHTTYPE DHT11   // DHT 11
-//#define DHTTYPE DHT21   // DHT 21 (AM2301)
-//#define DHTTYPE DHT22   // DHT 22  (AM2302), AM2321
- 
-// DHT Sensor
-const int DHTPin = 5; // GPIO D1
-// Initialize DHT sensor.
-DHT dht(DHTPin, DHTTYPE);
- 
-// Temporary variables
-static char celsiusTemp[7];
-static char fahrenheitTemp[7];
-static char humidityTemp[7];
- 
+
 // Update these with values suitable for your network.
- 
-const char* ssid = "<my wifi name>";
-const char* password = "<my wifi password>";
- 
-const char* mqtt_username = "admin";
-const char* mqtt_password = "admin";
- 
-const char* mqtt_server = "192.168.0.8";
- 
+
+const char* ssid = "........";
+const char* password = "........";
+const char* mqtt_server = "broker.mqtt-dashboard.com";
+
 WiFiClient espClient;
 PubSubClient client(espClient);
 unsigned long lastMsg = 0;
-#define MSG_BUFFER_SIZE (50)
+#define MSG_BUFFER_SIZE	(50)
 char msg[MSG_BUFFER_SIZE];
 int value = 0;
- 
+
 void setup_wifi() {
- 
+
   delay(10);
   // We start by connecting to a WiFi network
   Serial.println();
   Serial.print("Connecting to ");
   Serial.println(ssid);
- 
+
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
- 
+
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
   }
- 
+
   randomSeed(micros());
- 
+
   Serial.println("");
   Serial.println("WiFi connected");
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
 }
- 
+
 void callback(char* topic, byte* payload, unsigned int length) {
   Serial.print("Message arrived [");
   Serial.print(topic);
@@ -281,7 +395,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
     Serial.print((char)payload[i]);
   }
   Serial.println();
- 
+
   // Switch on the LED if an 1 was received as first character
   if ((char)payload[0] == '1') {
     digitalWrite(BUILTIN_LED, LOW);   // Turn the LED on (Note that LOW is the voltage level
@@ -290,9 +404,9 @@ void callback(char* topic, byte* payload, unsigned int length) {
   } else {
     digitalWrite(BUILTIN_LED, HIGH);  // Turn the LED off by making the voltage HIGH
   }
- 
+
 }
- 
+
 void reconnect() {
   // Loop until we're reconnected
   while (!client.connected()) {
@@ -301,7 +415,7 @@ void reconnect() {
     String clientId = "ESP8266Client-";
     clientId += String(random(0xffff), HEX);
     // Attempt to connect
-    if (client.connect(clientId.c_str(), mqtt_username, mqtt_password)) {
+    if (client.connect(clientId.c_str())) {
       Serial.println("connected");
       // Once connected, publish an announcement...
       client.publish("outTopic", "hello world");
@@ -316,68 +430,24 @@ void reconnect() {
     }
   }
 }
- 
+
 void setup() {
- 
-  dht.begin();
- 
   pinMode(BUILTIN_LED, OUTPUT);     // Initialize the BUILTIN_LED pin as an output
   Serial.begin(115200);
   setup_wifi();
   client.setServer(mqtt_server, 1883);
   client.setCallback(callback);
 }
- 
+
 void loop() {
- 
+
   if (!client.connected()) {
     reconnect();
   }
   client.loop();
- 
+
   unsigned long now = millis();
   if (now - lastMsg > 2000) {
- 
- 
-    // SENSOR READ START
- 
-    // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
-    float h = dht.readHumidity();
-    // Read temperature as Celsius (the default)
-    float t = dht.readTemperature();
-    // Read temperature as Fahrenheit (isFahrenheit = true)
-    float f = dht.readTemperature(true);
-    // Check if any reads failed and exit early (to try again).
-    if (isnan(h) || isnan(t) || isnan(f)) {
-      Serial.println("Failed to read from DHT sensor!");
-      strcpy(celsiusTemp, "Failed");
-      strcpy(fahrenheitTemp, "Failed");
-      strcpy(humidityTemp, "Failed");
-    }
-    else {
-      // Computes temperature values in Celsius + Fahrenheit and Humidity
-      float hic = dht.computeHeatIndex(t, h, false);
-      dtostrf(hic, 6, 2, celsiusTemp);
-      float hif = dht.computeHeatIndex(f, h);
-      dtostrf(hif, 6, 2, fahrenheitTemp);
-      dtostrf(h, 6, 2, humidityTemp);
-      // You can delete the following Serial.print's, it's just for debugging purposes
-      Serial.print("Humidity: ");
-      Serial.print(h);
-      Serial.print(" %\t Temperature: ");
-      Serial.print(t);
-      Serial.print(" *C ");
-      Serial.print(f);
-      Serial.print(" *F\t Heat index: ");
-      Serial.print(hic);
-      Serial.print(" *C ");
-      Serial.print(hif);
-      Serial.println(" *F");
-    }
- 
-    // SENSOR READ END
- 
- 
     lastMsg = now;
     ++value;
     snprintf (msg, MSG_BUFFER_SIZE, "hello world #%ld", value);
@@ -386,30 +456,30 @@ void loop() {
     client.publish("outTopic", msg);
   }
 }
---></code></pre>                
+--></code></pre>
                     
-                
-                
-                </blockquote>
+
+                    
+</blockquote>
             </div>
         </div>
     </div>
 </section>
 
-<section class="content5 cid-sqFbEM29vr" id="content5-gf">
+<section class="content5 cid-sqD0iaTSkc" id="content5-fi">
     
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
                 
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Uploading the code</h4>
-                <p class="mbr-text mbr-fonts-style display-7">The code above was uploaded to the ESP8266 using the Arduino IDE.</p>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">MQTT</h4>
+                <p class="mbr-text mbr-fonts-style display-7">MQTT is a publish/subscribe messaging system commonly used by IoT devices.<br><br>The 'eclipse-mosquitto' Docker container image can be used to establish a test MQTT broker.<br><br><strong>$ docker run -it -p 1883:1883 -p 9001:9001 eclipse-mosquitto:1.4.8</strong></p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-sqFcjkW4K6" id="image3-gg">
+<section class="image3 cid-sqF38lY4mo" id="image3-gb">
     
 
     
@@ -418,27 +488,8 @@ void loop() {
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/image-24-486x593.png" alt="Arduino IDE">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
-                        Arduino IDE</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="image3 cid-sqFclybBlJ" id="image3-gh">
-    
-
-    
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/image-25-703x478.png" alt="Arduino Serial Monitor">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
-                        Serial Monitor</p>
+                    <img src="assets/images/screen-shot-2021-03-04-at-5.36.09-pm-1132x734.png" alt="eclipse-mosquitto">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">eclipse-mosquitto <a href="docker.html" class="text-primary">Docker</a> image</p>
                 </div>
             </div>
         </div>
@@ -452,7 +503,7 @@ void loop() {
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">MQTT Explorer</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Desktop and mobile applications are able to connect to a running MQTT server showing messages that are arriving and publishing messages manually.</p>
+                <p class="mbr-text mbr-fonts-style display-7">Desktop and mobile applications are able to connect to a MQTT broker showing messages that are being published. Desktop and mobile application allow users to manually publish messages to an MQTT broker.</p>
             </div>
         </div>
     </div>
@@ -469,14 +520,14 @@ void loop() {
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2021-03-04-at-6.25.29-pm-1836x1286.png" alt="">
                     <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
-                        MQTT Explorer app connect</p>
+                        MQTT Explorer connecting to the MQTT broker</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-sqFfR75FSI" id="image3-gl">
+<section class="image3 cid-sqS8kyNn8I" id="image3-i4">
     
 
     
@@ -485,15 +536,15 @@ void loop() {
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-03-04-at-6.26.27-pm-1836x1293.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">outTopic messages arriving</p>
+                    <img src="assets/images/screen-shot-2021-03-06-at-11.11.07-pm-622x362.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">ESP8266 is publishing "outTopic" messages to the MQTT broker</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-sqFf0GAZA3" id="image3-gk">
+<section class="image3 cid-sqS91esNkN" id="image3-i6">
     
 
     
@@ -502,60 +553,36 @@ void loop() {
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-03-04-at-6.29.40-pm-1346x540.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
-                        manually publishing an inTopic message</p>
+                    <img src="assets/images/screen-shot-2021-03-06-at-11.21.28-pm-1616x930.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">MQTT explorer publishes an "inTopic" message with payload "1" to the MQTT broker and the ESP8266's LED turns on.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-sqFgLCuel9" id="image3-gm">
+<section class="features13 cid-sqQvR2ltD2" id="features14-gq">
     
 
     
-
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/intopic-699x63.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
-                        inTopic message being received by ESP8266</p>
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://www.youtube.com/watch?v=NjKK5ab0-Kk" class="text-primary" target="_blank">Understanding MQTT: How Smart Home Devices Communicate</a></strong></h4>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-
-<section class="content5 cid-sqFzeCZ5Dz" id="content5-gn">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Node-RED</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Node-RED can be used to create flows that will execute when limits are met or exceeded.<br><br>$CONTENT$nbsp;docker run -it -p 1880:1880 nodered/node-red<br></p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="image3 cid-sqFzUg3a5D" id="image3-go">
-    
-
-    
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-03-04-at-7.46.57-pm-1136x736.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
-                        node-red Docker image</p>
-                </div>
-            </div>
+            
+            
+            
+            
+            
         </div>
     </div>
 </section>
