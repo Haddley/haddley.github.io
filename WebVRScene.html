@@ -8,12 +8,10 @@
 
     <a-scene background=" color: #FAFAFA">
 
-        
-
         <a-assets>
             <a-asset-item id="engine" src="./assets/files/engine.glb">
             </a-asset-item>
-            <a-sound src="src: url(./assets/files/t-rex-roar.mp3)" autoplay="true" position="0 2 5"></a-sound>
+            <audio id="background" src="https://cdn.aframe.io/basic-guide/audio/backgroundnoise.wav"></audio>
         </a-assets>
 
         <a-entity position="0 0 -3">
@@ -22,9 +20,10 @@
 
         <a-entity light="type: point; intensity: 60; distance: 50; decay: 2" position="0 0 10"></a-entity>
 
+        <a-sound src="#background" autoplay="true"></a-sound>
+
     </a-scene>
 
-    <!--<audio src="./assets/files/t-rex-roar.mp3" autoplay></audio>-->
 </body>
 
 </html>
