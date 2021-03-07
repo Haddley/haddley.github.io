@@ -410,7 +410,7 @@ void loop() {
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Response</h4>
-                <p class="mbr-text mbr-fonts-style display-7">If the publisher of a Command Topic message wants to receive responses they might provide a JSON payload that includes a "session-id" and a "res-topic". The res-topic would be passed to the ESP8266 device so that it can differentiate between commands that are repeated or re-sent over time. The re-topic will be used as the response message's topic (it is better not to hardcode the response message's topic).<br><br>Instead of passing the string "1" the Command Topic message's payload would be:<br><br>{<br>"session-id":"session-123456789012",<br>"res-topic":"cmd/hvac/building3/floor2/res",<br>"value":"1"<br>}<br></p>
+                <p class="mbr-text mbr-fonts-style display-7">If the publisher of a Command Topic message wants to receive responses they might provide a JSON payload that includes a "session-id" and a "res-topic". The session-id would be passed to the ESP8266 device so that it can differentiate between commands that are repeated or re-sent over time. The re-topic would be used as the response message's topic (it is better not to hardcode the response message's topic).<br><br>Instead of passing the string "1" the Command Topic message's payload would be:<br><br>{<br>"session-id":"session-123456789012",<br>"res-topic":"cmd/hvac/building3/floor2/res",<br>"value":"1"<br>}<br></p>
             </div>
         </div>
     </div>
