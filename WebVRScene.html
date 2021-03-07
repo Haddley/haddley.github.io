@@ -11,10 +11,16 @@
         <a-assets>
             <a-asset-item id="engine" src="./assets/files/engine.glb">
             </a-asset-item>
-            <audio id="background" src="./assets/files/backgroundnoise.wav"></audio>
+
+            <audio id="background" src="./assets/files/Boat-SoundBible.com-1482189158.mp3" refDistance=20
+                rollOffFactor=0></audio>
+
         </a-assets>
 
-        <a-entity position="0 0 -3">
+        <a-sound src="#background" autoplay="true" refDistance=20 rollOffFactor=0></a-sound>
+
+        <a-entity position="0 0 -3" sound="src: #background; refDistance: 300;
+        rollOffFactor: 0;">
             <a-gltf-model src="#engine" rotation="90 0 0" scale="18 18 18"></a-gltf-model>
         </a-entity>
 
