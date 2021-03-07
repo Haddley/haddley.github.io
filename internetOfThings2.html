@@ -109,7 +109,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Node-RED</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Node-RED can be used to publish messages to an MQTT broker.<br><br>Node-RED is able to subscribe to MQTT broker messages.<br><br><strong>$CONTENT$nbsp;docker run -it -p 1880:1880 nodered/node-red</strong><br></p>
+                <p class="mbr-text mbr-fonts-style display-7">Node-RED can be used to publish messages to an MQTT broker.<br><br>Node-RED is able to subscribe to MQTT broker messages.<br><br><strong>$ docker run -it -p 1880:1880 nodered/node-red</strong><br></p>
             </div>
         </div>
     </div>
@@ -221,7 +221,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Command Topics</h4>
-                <p class="mbr-text mbr-fonts-style display-7">In the example above the ESP8266 microprocessor subscribes to "inTopic" messages and when it sees a message with the payload "1" the builtin LED is turned on. <br><br>In fact dozens or hundreds of IoT devices could subscribe to "inTopic" messages turning on or off together. <br><br>But, what if a developer would like the a single ESP8266 device's builtin LED to turn on? What if a developer would like to turn on a fan connected to a single ESP8266 device? What if a developer would like to turn off the fans connected to&nbsp;all ESP8266 devices on given floor of a given building?<br><br>Well every device that connects to an MQTT broker has a unique "thing name" (and a unique MQTT client id) but how would the publisher of a control message specify that they wanted to turn off the fan connected to the ESP8266 with the given "thing name"? How can the "all devices on a given floor of a given building" requirement be addressed?<br><br></p>
+                <p class="mbr-text mbr-fonts-style display-7">In the example above the ESP8266 microprocessor subscribes to "inTopic" messages and when it sees a message with the payload "1" the builtin LED is turned on. <br><br>In fact dozens or hundreds of IoT devices could subscribe to "inTopic" messages turning on or off together. <br><br>But, what if a developer would like the a single ESP8266 device's builtin LED to turn on? What if a developer would like to turn on a fan connected to a single ESP8266 device? What if a developer would like to turn off the fans connected to&nbsp;all ESP8266 devices on given floor of a given building?<br><br>Well every device that connects to an MQTT broker has a unique "thing name" (and a unique MQTT client id) but how would the publisher of a control message specify that they wanted to turn off the fan connected to the ESP8266 with a given "thing name"?<br><br></p>
             </div>
         </div>
     </div>
@@ -234,7 +234,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Topic structure</h4>
-                <p class="mbr-text mbr-fonts-style display-7">If a device with thing name "thing1" is in conference room 1 on floor 2 of building 3 a developer can arrange for that thing's builtin LED to turn off whenever a message with payload "0" is published with this topic:<br><br><strong>cmd/hvac/building3/floor2/confroom2/thing1/builtinled</strong><br><br>A developer can arrange for a fan controlled by thing1 to be turned on whenever a message with payload "1" is published with this topic:<br><br><strong>cmd/hvac/building3/floor2/confroom2/thing1/fan</strong><br><br>A developer can arrange for fans controlled by all things on floor 2 to be turned off whenever a message with payload "0" is published to this topic:<br><br><strong>cmd/hvac/building3/floor2/fan</strong><br><br>Sample ESP8266 code is shown below.<br><br></p>
+                <p class="mbr-text mbr-fonts-style display-7">If a device with thing name "thing1" is in conference room 2 on floor 2 of building 3 a developer can arrange for that thing's builtin LED to turn off whenever a message with payload "0" is published with this topic:<br><br><strong>cmd/hvac/building3/floor2/confroom2/thing1/builtinled</strong><br><br>A developer can arrange for a fan controlled by thing1 to be turned on whenever a message with payload "1" is published with this topic:<br><br><strong>cmd/hvac/building3/floor2/confroom2/thing1/fan</strong><br><br>A developer can arrange for fans controlled by all things on floor 2 to be turned off when a message with payload "0" is published with this topic:<br><br><strong>cmd/hvac/building3/floor2/fan</strong><br><br>Sample ESP8266 code is shown below.<br><br></p>
             </div>
         </div>
     </div>
@@ -410,7 +410,7 @@ void loop() {
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Response</h4>
-                <p class="mbr-text mbr-fonts-style display-7">If the publisher of a Command Topic message wants to receive responses they would provide a JSON payload that includes a "session-id" and a "res-topic". The res-topic is passed to the ESP8266 device so that it knows what topic to use for its response. It is better not to hardcode the response topic.<br><br>Instead of passing the string "1" the Command Topic message would be:<br><br>{<br>"session-id":"session-123456789012",<br>"res-topic":"cmd/hvac/building3/floor2/res",<br>"value":"1"<br>}<br></p>
+                <p class="mbr-text mbr-fonts-style display-7">If the publisher of a Command Topic message wants to receive responses they might provide a JSON payload that includes a "session-id" and a "res-topic". The res-topic would be passed to the ESP8266 device so that it can differentiate between commands that are repeated or re-sent over time. The re-topic will be used as the response message's topic (it is better not to hardcode the response message's topic).<br><br>Instead of passing the string "1" the Command Topic message's payload would be:<br><br>{<br>"session-id":"session-123456789012",<br>"res-topic":"cmd/hvac/building3/floor2/res",<br>"value":"1"<br>}<br></p>
             </div>
         </div>
     </div>
@@ -423,7 +423,7 @@ void loop() {
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Topic for telemetry</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Telemetry is read-only data that is transmitted by the device and aggregated elsewhere.<br><br>A temperature sensor reading might be published by the ESP8266 using this topic&nbsp;<br><br><strong>dt/hvac/hvac/building3/floor2/confroom2/thing1/temperature</strong><br><br>the temperature units might be published using this topic<br><br><strong>dt/hvac/hvac/building3/floor2/confroom2/thing1/temperature/units</strong><br><br>A humidity sensor reading might be published by the ESP8266 using this topic<br><br><strong>dt/hvac/hvac/building3/floor2/confroom2/thing1/humidity</strong><br><br>How often an ESP8266 should publish a value depend on the application. The device could publish an update every few minutes, every few seconds or every time the value changes.&nbsp;<br></p>
+                <p class="mbr-text mbr-fonts-style display-7">Telemetry is read-only data that is transmitted by a device and aggregated elsewhere.<br><br>A temperature sensor reading might be published by the ESP8266 using this topic&nbsp;<br><br><strong>dt/hvac/hvac/building3/floor2/confroom2/thing1/temperature</strong><br><br>the temperature units might be published using this topic<br><br><strong>dt/hvac/hvac/building3/floor2/confroom2/thing1/temperature/units</strong><br><br>A humidity sensor reading might be published by the ESP8266 using this topic<br><br><strong>dt/hvac/hvac/building3/floor2/confroom2/thing1/humidity</strong><br><br>How often an ESP8266 should publish a value depend on the application. The device could publish an update every few minutes, every few seconds or every time the value changes.&nbsp;<br></p>
             </div>
         </div>
     </div>
