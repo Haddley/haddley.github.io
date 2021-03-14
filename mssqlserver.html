@@ -235,7 +235,7 @@
 
 <pre class="language-javascript"><code><!--         
 const express = require('express');
-const sql = require("mssql");
+const mssql = require("mssql");
 
 const app = express();
 
@@ -250,21 +250,23 @@ const config = {
 app.get('/', function (req, res) {
 
     // connect to the database
-    sql.connect(config, function (err) {
+    mssql.connect(config, function (err) {
 
         if (err) console.log(err);
 
         // create a request object
-        var request = new sql.Request();
+        const request = new mssql.Request();
+
+        request.input('inputField1', mssql.Char(2), 'R');
 
         // query to the database and fetch the first 5 rows
-        request.query('select top 5 * from [AdventureWorks2019].[Production].[Product]', function (err, result) {
+        request.query("SELECT TOP (5) [Name] FROM [AdventureWorks2019].[Production].[Product] WHERE [ProductLine]=@inputField1", function (err, result) {
 
             if (err) console.log(err)
 
-            const names = result.recordset.map(i => i.Name)
+            const nameListItems = result.recordset.map(i => `<li>${i.Name}</li>`).join('')
 
-            const html = "<ul>" + names.map(i => ("<li>" + i + "</li>")).join('') + "</ul>"
+            const html = `<ul>${nameListItems}</ul>`;
 
             // send html as response
             res.send(html);
@@ -295,7 +297,7 @@ var server = app.listen(5000, function () {
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-03-14-at-7.16.29-pm-1836x1061.png" alt="">
+                    <img src="assets/images/screen-shot-2021-03-15-at-4.25.35-am-1828x1104.png" alt="">
                     <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">HTML returned</p>
                 </div>
             </div>
