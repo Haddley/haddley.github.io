@@ -172,7 +172,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">RESTORE DATABASE</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Open shell for Docker image and download .BAK database backup file<br><br>$ cd /usr<br><br>$CONTENT$nbsp;wget https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorks2019.bak<br><br>Open a database query window and execute this query<br><br>RESTORE DATABASE AdventureWorks2019 <br>FROM DISK = N'/usr/AdventureWorks2019.bak'<br>WITH MOVE 'AdventureWorks2017' TO '/usr/AdventureWorks2019.mdf',<br>MOVE 'AdventureWorks2017_Log' TO '/usr/AdventureWorks2019_Log.ldf'</p>
+                <p class="mbr-text mbr-fonts-style display-7">Open shell for Docker image and download the AdventureWorks2019.bak database backup<br><br><strong>$ cd /usr</strong><br><br><strong>$ wget https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorks2019.bak</strong><br><br>Open a database query window and execute this query<br><br>RESTORE DATABASE AdventureWorks2019 <br>FROM DISK = N'/usr/AdventureWorks2019.bak'<br>WITH MOVE 'AdventureWorks2017' TO '/usr/AdventureWorks2019.mdf',<br>MOVE 'AdventureWorks2017_Log' TO '/usr/AdventureWorks2019_Log.ldf'</p>
             </div>
         </div>
     </div>
@@ -296,7 +296,7 @@ var server = app.listen(5000, function () {
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2021-03-14-at-7.16.29-pm-1836x1061.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">HTML returned to the browser</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">HTML returned</p>
                 </div>
             </div>
         </div>
