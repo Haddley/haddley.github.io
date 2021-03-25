@@ -77,7 +77,7 @@
             <div class="title col-md-12 col-lg-10">
                 <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2">
                     <strong>Microsoft SQL Server (Part 2)</strong></h3>
-                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">C#, T-SQL and Stored Procedures.</h4>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">T-SQL and Stored Procedures.</h4>
                 
             </div>
         </div>
@@ -101,98 +101,6 @@
     </div>
 </section>
 
-<section class="content5 cid-srHJ1dPBPK" id="content5-lp">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">C# console app</h4>
-                <p class="mbr-text mbr-fonts-style display-7"><strong>% dotnet new sln</strong><br><br><strong>% dotnet new console -o dotnet-sql&nbsp;</strong><br><br><strong>%&nbsp;dotnet sln add ./dotnet-sql/dotnet-sql.csproj</strong><br><br><strong>%&nbsp;cd dotnet-sql<br></strong><br><strong>%&nbsp;dotnet new gitignore</strong><br><br>Add <a href="nuget.html" class="text-primary">NuGet</a> package<br><br><strong>%&nbsp;dotnet add package System.Data.SqlClient</strong></p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="image3 cid-srHJ1dXpgM" id="image3-lq">
-    
-
-    
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-03-15-at-7.10.16-pm-1836x1133.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">dotnet add package System.Data.SqlClient</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="content5 cid-srHKM8j9zb" id="content5-m0">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">System.Data.SqlClient</h4>
-                <p class="mbr-text mbr-fonts-style display-7">System.Data.SqlClient includes&nbsp;SqlConnection,SqlCommand,&nbsp;SqlParameter and&nbsp;SqlDataReader</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="content7 cid-srHNi0STVb" id="content7-m1">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-10">
-                <blockquote>
-                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Program.cs</strong></h5>
-
-<pre class="language-clike"><code><!--         
-using System;
-using System.Data.SqlClient;
-using System.Data;
-
-namespace dotnet_sql
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var cs = @"User ID=sa;Password=Passw0rd123;Initial Catalog=AdventureWorks2019;Server=192.168.68.109;";
-
-            using var con = new SqlConnection(cs);
-            con.Open();
-
-            var query = "SELECT TOP (5) [Name] FROM [AdventureWorks2019].[Production].[Product] WHERE [ProductLine]=@inputField1";
-            using var cmd = new SqlCommand(query, con);
-
-            cmd.Parameters.Add(new SqlParameter("@inputField1", SqlDbType.Char, 2)).Value = 'R';
-            cmd.Prepare();
-
-            using SqlDataReader rdr = cmd.ExecuteReader();
-
-            while (rdr.Read())
-            {
-                Console.WriteLine("{0}", rdr.GetString(0));
-            }
-        }
-    }
-}
---></code></pre>
-                    
-
-                    
-</blockquote>
-            </div>
-        </div>
-    </div>
-</section>
-
 <section class="content5 cid-srHOLrZ2Vo" id="content5-m2">
     
     <div class="container">
@@ -200,7 +108,7 @@ namespace dotnet_sql
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Stored procedures</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Transact SQL (T-SQL) can be used to define stored procedures.<br><br>Stored procedures support input parameters, output parameters and&nbsp;may include multiple SQL operations, error handling and calls to other stored procedures.<br><br>Consider the following stored procedure.</p>
+                <p class="mbr-text mbr-fonts-style display-7">Transact SQL (T-SQL) statements are used to create Microsoft SQL Server Stored Procedures.<br><br>A Stored Procedure can include multiple&nbsp;T-SQL statements. INSERT, UPDATE, SELECT, and DELETE are example T-SQL statements.<br><br>Stored Procedures ensure that closely related database changes are committed together. Error handling ensures that if something goes wrong updates are rolled back.<br><br><br><br><br>GO<br>CREATE PROCEDURE dbo.AssignUserToTicket<br>(<br>     @updateAuthor varchar(100)<br>    , @assignedUser varchar(100)<br>    , @ticketID bigint<br>)<br>AS<br>BEGIN<br>    BEGIN TRANSACTION;<br>    SAVE TRANSACTION MySavePoint;<br>    SET @updateAuthor = 'user1';<br>    SET @assignedUser = 'user2';<br>    SET @ticketID = 123456;<br><br>    BEGIN TRY<br>        UPDATE dbo.tblTicket <br>        SET ticketAssignedUserSamAccountName = @assignedUser <br>        WHERE (ticketID = @ticketID);<br><br>        INSERT INTO [dbo].[tblTicketUpdate]<br>            (<br>            [ticketID]<br>            ,[updateDetail]<br>            ,[updateDateTime]<br>            ,[userSamAccountName]<br>            ,[activity]<br>            )<br>        VALUES (<br>            @ticketID<br>            , 'Assigned ticket to ' + @assignedUser<br>            , GetDate()<br>            , @updateAuthor<br>            , 'Assign'<br>            );<br>        COMMIT TRANSACTION <br>    END TRY<br>    BEGIN CATCH<br>        IF @@TRANCOUNT &gt; 0<br>        BEGIN<br>            ROLLBACK TRANSACTION MySavePoint; -- rollback to MySavePoint<br>        END<br>    END CATCH<br>END;<br>GO<br><br><br><br><br><br>support input parameters, output parameters and&nbsp;may include multiple SQL operations, error handling and calls to other stored procedures.<br><br>Consider the following stored procedure.</p>
             </div>
         </div>
     </div>
@@ -317,7 +225,17 @@ namespace dotnet_sql
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Stored procedures return mechanisms</h4>
-                <p class="mbr-text mbr-fonts-style display-7">SQL Server stored procedures can return data in multiple ways:<br><br></p>
+                <p class="mbr-text mbr-fonts-style display-7"><br><br>CREATE role dbStoreProceduresOnly
+<br>go
+<br>grant EXECUTE to dbStoreProceduresOnly
+<br>go
+<br>use AdventureWorks2019
+<br>go
+<br>CREATE LOGIN fred WITH PASSWORD = 'Pass@word1'
+<br>go
+<br>create user fred
+<br>GO
+<br>EXEC sp_addrolemember 'dbStoreProceduresOnly','fred'<br><br><br><br><br>SQL Server stored procedures can return data in multiple ways:<br><br></p>
             </div>
         </div>
     </div>
