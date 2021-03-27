@@ -201,7 +201,7 @@ GO
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Swap cards</h4>
-                <p class="mbr-text mbr-fonts-style display-7">To shuffle deck of physical playing cards we could select any two cards from the deck at random and swap their positions. If we did this enough times the deck would be shuffled.<br><br>Here is a stored procedure that will swap the data in two rows of the deck table.</p>
+                <p class="mbr-text mbr-fonts-style display-7">To shuffle a deck of standard playing cards we could select any two cards from the deck at random and swap their positions. If we did this enough times the deck would be shuffled.<br><br>Here is a stored procedure that will swap the data in two rows of the deck table.</p>
             </div>
         </div>
     </div>
@@ -273,7 +273,26 @@ GO
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Pick two cards, swap and repeat</h4>
-                <p class="mbr-text mbr-fonts-style display-7">To test the SwapCards stored procedure we can create a&nbsp;PickACard function selects a card from the deck at random, a&nbsp;SwapCardsAtRandom stored procedure that uses the PickACard function (twice) and the SwapCards stored procedure (above) to swap a random pair of cards in the deck 1,000 times.<br></p>
+                <p class="mbr-text mbr-fonts-style display-7">To test the SwapCards stored procedure we can create:<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content9 cid-ssQAaTOhlb" id="content9-mv">
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="counter-container col-md-12 col-lg-10">
+                
+                <div class="mbr-text mbr-fonts-style display-7">
+                    <ol>
+                        <li><strong>a PickACard function </strong>that selects a card from the deck at random</li>
+                        <li><strong>a SwapCardsAtRandom stored procedure </strong>that uses the PickACard function (twice) and the SwapCards stored procedure (above) to swap the random pair of cards; <strong>and</strong></li>
+                        <li><strong>client code </strong>that calls the SwapCardsAtRandom stored procedure 1,000 times.</li>
+                    </ol>
+                </div>
             </div>
         </div>
     </div>
