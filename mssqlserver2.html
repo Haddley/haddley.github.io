@@ -585,13 +585,241 @@ GO
     </div>
 </section>
 
+<section class="content5 cid-ssWb9q5azA" id="content5-mz">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">.NET Core console app</h4>
+                <p class="mbr-text mbr-fonts-style display-7"><strong>$ dotnet run</strong></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-ssVYTBvtWG" id="content7-mx">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Program.cs</strong></h5>
+
+<pre class="language-clike"><code><!--         
+using System;
+using System.Data.SqlClient;
+using System.Data;
+
+namespace dotnet_sql {
+  class Program {
+    static void Main(string[] args) {
+      var cs = @ "User ID=sa;Password=Passw0rd123;Initial Catalog=Shuffle;Server=192.168.68.109;";
+
+      using var con = new SqlConnection(cs);
+      con.Open();
+
+      using(SqlCommand cmd = new SqlCommand("dbo.SwapCards", con)) {
+        cmd.CommandType = CommandType.StoredProcedure;
+        cmd.Parameters.Add("@Card1", SqlDbType.Int);
+        cmd.Parameters.Add("@Card2", SqlDbType.Int);
+
+        int errorCounter = 0;
+        for (int count = 0; count < 1000; count++) {
+          Random rn = new Random();
+          int card1 = rn.Next(1, 52);
+          int card2 = rn.Next(1, 52);
+
+          cmd.Parameters["@Card1"].Value = card1;
+          cmd.Parameters["@Card2"].Value = card2;
+
+          try {
+            cmd.ExecuteNonQuery();
+          } catch (Exception e) {
+            errorCounter++;
+            Console.WriteLine("We were unable to swap cards [" + e.Message + "]. Error Count [" +
+              errorCounter + "]");
+          }
+
+        }
+      }
+    }
+  }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-ssWbag9Q3v" id="content5-n0">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Node console app</h4>
+                <p class="mbr-text mbr-fonts-style display-7"><strong>$ node index.js</strong></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-ssWaykNTIe" id="content7-my">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>index.js</strong></h5>
+
+<pre class="language-clike"><code><!--         
+const mssql = require('mssql')
+
+const config = {
+    user: 'sa',
+    password: 'Passw0rd123',
+    server: '192.168.68.109',
+    database: 'Shuffle',
+    options: { enableArithAbort: false }
+};
+
+const dbConn = mssql.connect(config, function (err) {
+
+    if (err) {
+        console.log(err);
+        return
+    }
+
+    const request = new mssql.Request();
+
+    request.input('Card1', mssql.Int);
+    request.input('Card2', mssql.Int);
+
+    let errorCounter = 0;
+
+    (async () => {
+        for (x = 0; x < 1000; x++) {
+
+            const card1 = Math.floor(Math.random() * (52 - 1 + 1)) + 1
+            const card2 = Math.floor(Math.random() * (52 - 1 + 1)) + 1
+
+            request.parameters.Card1.value = card1;
+            request.parameters.Card2.value = card2;
+
+            if (card1 != card2) {
+
+                try {
+                    await request.execute('dbo.SwapCards')
+                } catch (e) {
+                    errorCounter++;
+                    console.error("We were unable to swap cards [" + e.originalError.message + "]. Error Count [" + errorCounter + "]");
+                }
+
+            }
+        }
+        dbConn.close();
+
+    })().catch(err => {
+        console.error(err);
+    });
+
+})
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-ssWbb6iFYs" id="content5-n1">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Java console app</h4>
+                <p class="mbr-text mbr-fonts-style display-7"><strong>$ javac Program.java</strong><br><br><strong>$ java -cp "/Users/neilhaddley/sqljdbc_9.2/enu/mssql-jdbc-9.2.1.jre11.jar" Program.java</strong><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-ssVQARHGmI" id="content7-mw">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Program.java</strong></h5>
+
+<pre class="language-clike"><code><!--         
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.CallableStatement;
+import java.util.Random;
+
+public class Program {
+
+
+    public static void main(String[] args) {
+
+        String connectionUrl = "jdbc:sqlserver://192.168.68.109:1433;databaseName=Shuffle;user=sa;password=Passw0rd123";
+
+        try (Connection con = DriverManager.getConnection(connectionUrl);) {
+
+            CallableStatement callableStatement = con.prepareCall("{call dbo.SwapCards(?,?)}");
+
+            int errorCounter = 0;
+            for (int count = 0; count < 1000; count++) {
+
+                Random rn = new Random();
+                int card1 = rn.nextInt(52 - 1 + 1) + 1;
+                int card2 = rn.nextInt(52 - 1 + 1) + 1;
+
+                try {
+                    if (card1 != card2) {
+                        callableStatement.setInt(1, card1);
+                        callableStatement.setInt(2, card2);
+                        callableStatement.execute();
+                    }
+                } catch (SQLException e1) {
+                    errorCounter++;
+                    System.out.println("We were unable to swap cards [" + e1.getMessage() + "]. Error Count ["
+                            + Integer.toString(errorCounter) + "]");
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="content7 cid-ssQs5l3ADL" id="content7-ms">
     
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-md-10">
                 <blockquote>
-                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Full code</strong></h5>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Full T-SQL code</strong></h5>
 
 <pre class="language-clike"><code><!--         
 DROP DATABASE Shuffle

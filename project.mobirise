@@ -48,7 +48,7 @@
     "siteUrl": false,
     "cookiesAlert": false,
     "gdpr": false,
-    "uniqCompNum": 824,
+    "uniqCompNum": 830,
     "versionPublish": "5.2.0",
     "screenshot": "screenshot.png",
     "PWA": {
@@ -22729,11 +22729,11 @@
           "_sourceTheme": "mobirise5",
           "_customHTML": "<section class=\"content9\" group=\"Content\">\n    <mbr-parameters>\n        <header>Size</header>\n        <input type=\"checkbox\" title=\"Full Width\" name=\"fullWidth\">\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"1\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"1\">\n        <input type=\"range\" name=\"textWidth\" title=\"Width\" min=\"4\" max=\"12\" value=\"10\" step=\"1\">\n        <header>Show/Hide</header>\n        <input type=\"checkbox\" title=\"Title\" name=\"showTitle\">\n        <input type=\"checkbox\" title=\"Stylized Counters\" name=\"stylizedCounters\" checked>\n        <input type=\"checkbox\" title=\"Square Counters\" name=\"squareCounters\" condition=\"stylizedCounters\">\n        <input type=\"color\" name=\"iconColor\" title=\"Color\" value=\"#6592e6\">\n        <header>Background</header>\n        <input type=\"color\" title=\"Color\" name=\"bgColor\" value=\"#ffffff\">\n    </mbr-parameters>\n\n    <div mbr-class=\"{'container': !fullWidth, 'container-fluid': fullWidth}\">\n        <div class=\"row justify-content-center\">\n            <div class=\"counter-container col-md-12 col-lg-{{textWidth}}\">\n                <h4 class=\"mbr-section-title mbr-fonts-style mb-4\" mbr-if=\"showTitle\" data-app-selector=\".mbr-section-title\" mbr-theme-style=\"display-5\">\n                    Shape your future web project with the Mobirise app.\n                </h4>\n                <div class=\"mbr-text mbr-fonts-style\" mbr-theme-style=\"display-7\" data-app-selector=\".mbr-text\" data-multiline mbr-article>\n                    <ol>\n                        <li><b>a PickACard function </b>that selects a card from the deck at random</li>\n                        <li><b>a SwapCardsAtRandom stored procedure </b>that uses the PickACard function (twice) and the SwapCards stored procedure (above) to swap the random pair of cards; <b>and</b></li>\n                        <li><b>client code </b>that calls the SwapCardsAtRandom stored procedure 1,000 times.</li>\n                    </ol>\n                </div>\n            </div>\n        </div>\n    </div>\n</section>",
           "_cid": "ssQAaTOhlb",
+          "_anchor": "content9-mv",
           "_protectedParams": [],
           "_global": false,
           "_once": false,
-          "_params": {},
-          "_anchor": "content9-mv"
+          "_params": {}
         },
         {
           "alias": false,
@@ -23006,6 +23006,24 @@
           "_styles": {
             "padding-top": "(@paddingTop * 1rem)",
             "padding-bottom": "(@paddingBottom * 1rem)",
+            "background-color": "@bgColor"
+          },
+          "_name": "content5",
+          "_sourceTheme": "mobirise5",
+          "_customHTML": "<section class=\"content5\" group=\"Content\">\n    <mbr-parameters>\n        <header>Size</header>\n        <input type=\"checkbox\" title=\"Full Width\" name=\"fullWidth\">\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"0\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"0\">\n        <input type=\"range\" name=\"textWidth\" title=\"Width\" min=\"4\" max=\"12\" value=\"10\" step=\"1\">\n        <header>Show/Hide</header>\n        <input type=\"checkbox\" title=\"Title\" name=\"showTitle\">\n        <input type=\"checkbox\" title=\"Subtitle\" name=\"showSubtitle\" checked>\n        <header>Background</header>\n        <input type=\"color\" title=\"Color\" name=\"bgColor\" value=\"#ffffff\">\n    </mbr-parameters>\n    <div mbr-class=\"{'container': !fullWidth, 'container-fluid': fullWidth}\">\n        <div class=\"row justify-content-center\">\n            <div class=\"col-md-12 col-lg-{{textWidth}}\">\n                <h3 class=\"mbr-section-title mbr-fonts-style mb-4\" mbr-if=\"showTitle\" data-app-selector=\".mbr-section-title\" mbr-theme-style=\"display-2\">\n                    <b>Article Title</b>\n                </h3>\n                <h4 class=\"mbr-section-subtitle mbr-fonts-style mb-4\" mbr-if=\"showSubtitle\" data-app-selector=\".mbr-section-subtitle\" mbr-theme-style=\"display-5\">.NET Core console app</h4>\n                <p class=\"mbr-text mbr-fonts-style\" data-app-selector=\".mbr-text\" mbr-theme-style=\"display-7\"><b>$ dotnet run</b></p>\n            </div>\n        </div>\n    </div>\n</section>",
+          "_anchor": "content5-mz",
+          "_isUserblock": true,
+          "_cid": "ssWb9q5azA",
+          "_protectedParams": [],
+          "_global": false,
+          "_once": false,
+          "_params": {}
+        },
+        {
+          "alias": false,
+          "_styles": {
+            "padding-top": "(@paddingTop * 1rem)",
+            "padding-bottom": "(@paddingBottom * 1rem)",
             "background-color": "@bgColor",
             "blockquote": {
               "border-color": "@lineColor",
@@ -23015,7 +23033,118 @@
           },
           "_name": "content7",
           "_sourceTheme": "mobirise5",
-          "_customHTML": "<section class=\"content7\" group=\"Content\">\n    <mbr-parameters>\n        <header>Size</header>\n        <input type=\"checkbox\" title=\"Full Width\" name=\"fullWidth\">\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"0\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"0\">\n        <header>Show/Hide</header>\n        <input type=\"checkbox\" title=\"Title\" name=\"showTitle\" checked>\n        <input type=\"range\" name=\"textWidth\" title=\"Width\" min=\"4\" max=\"12\" value=\"10\" step=\"1\">\n        <input type=\"color\" name=\"lineColor\" title=\"Line Color\" value=\"#6592e6\">\n        <input type=\"color\" name=\"cardColor\" title=\"Color\" value=\"#fafafa\">\n        <header>Background</header>\n        <input type=\"color\" title=\"Color\" name=\"bgColor\" value=\"#ffffff\">\n    </mbr-parameters>\n    <div mbr-class=\"{'container': !fullWidth, 'container-fluid': fullWidth}\">\n        <div class=\"row justify-content-center\">\n            <div class=\"col-12 col-md-{{textWidth}}\">\n                <blockquote>\n                <h5 class=\"mbr-section-title mbr-fonts-style mb-2\" mbr-theme-style=\"display-7\" mbr-if=\"showTitle\" data-app-selector=\".mbr-section-title\"><b>Full code</b></h5>\n\n<pre class=\"language-clike\"><code><!--         \nDROP DATABASE Shuffle\nGO\n\n-- Create the DB\nCREATE DATABASE Shuffle\nGO\n\n--- Allow snapshot isolation\nALTER DATABASE Shuffle\nSET ALLOW_SNAPSHOT_ISOLATION ON\nGO\n\n--- Enable accelerated database recovery\nALTER DATABASE Shuffle\nSET ACCELERATED_DATABASE_RECOVERY = ON;\nGO\n\n--- Use Shuffle DB\nUSE Shuffle\nGO\n\n-- Create the Deck\nCREATE TABLE Cards\n(\n    Card CHAR(5) PRIMARY KEY\n)\nGO\n\nINSERT INTO Cards\nVALUES\n    ('Ace'),\n    ('2'),\n    ('3'),\n    ('4'),\n    ('5'),\n    ('6'),\n    ('7'),\n    ('8'),\n    ('9'),\n    ('10'),\n    ('Jack'),\n    ('Queen'),\n    ('King')\nGO\n\nCREATE TABLE Suits\n(\n    Suit CHAR(8) PRIMARY KEY\n)\nGO\n\nINSERT INTO Suits\nVALUES\n    ('Clubs'),\n    ('Diamonds'),\n    ('Hearts'),\n    ('Spades')\nGO\n\nSELECT Id = IDENTITY(INT, 1, 1),\n    Suits.Suit,\n    Cards.Card\nINTO Deck\nFROM Cards\nCROSS JOIN Suits\nGO\n\nALTER TABLE Deck ADD CONSTRAINT Deck_PK PRIMARY KEY (Id)\nGO\n\n-- User Defined Function 'PickACard'\nCREATE FUNCTION PickACard (@RAND FLOAT)\nRETURNS INT\nAS\nBEGIN\n    RETURN (\n\t\t\tSELECT FLOOR(@RAND * (52 - 1 + 1)) + 1\n\t\t\t)\nEND\nGO\n\n-- Stored Procedure 'SwapCards'\nCREATE PROCEDURE SwapCardsV1\n    @Card1 INT = 1,\n    @Card2 INT = 52\nAS\nBEGIN\n    SET NOCOUNT ON\n\n    --Store the first card's details\n    SELECT *\n    INTO #Temp\n    FROM Deck\n    WHERE Id = @Card1\n\n    -- Move second card into first card's place\n    UPDATE Deck\n\t\tSET Card = CardDetails.Card,\n\t\t\tSuit = CardDetails.Suit\n\t\tFROM (\n\t\t\tSELECT d.Card,\n            d.Suit\n        FROM Deck d\n        WHERE Id = @Card2\n\t\t\t) CardDetails\n\t\tWHERE Id = @Card1\n\n    -- Move first card into second card's place\n    UPDATE Deck\n\t\tSET Card = CardDetails.Card,\n\t\t\tSuit = CardDetails.Suit\n\t\tFROM (\n\t\t\tSELECT Card,\n            Suit\n        FROM #temp\n\t\t\t) CardDetails\n\t\tWHERE Id = @Card2\n\nEND\nGO\n\n-- Stored Procedure 'SwapCards'\nCREATE PROCEDURE SwapCards\n    @Card1 INT = 1,\n    @Card2 INT = 52\nAS\nBEGIN\n    SET TRANSACTION ISOLATION LEVEL SNAPSHOT;\n    --- SET LOCK_TIMEOUT 100;\n\n    BEGIN TRY\n\t\tBEGIN TRANSACTION\n\n\t\tSET NOCOUNT ON\n\n\t\t--Store the first card's details\n\t\tSELECT *\n    INTO #Temp\n    FROM Deck\n    WHERE Id = @Card1\n\n\t\t-- Move second card into first card's place\n\t\tUPDATE Deck\n\t\tSET Card = CardDetails.Card,\n\t\t\tSuit = CardDetails.Suit\n\t\tFROM (\n\t\t\tSELECT d.Card,\n            d.Suit\n        FROM Deck d\n        WHERE Id = @Card2\n\t\t\t) CardDetails\n\t\tWHERE Id = @Card1\n\n\t\t-- Move first card into second card's place\n\t\tUPDATE Deck\n\t\tSET Card = CardDetails.Card,\n\t\t\tSuit = CardDetails.Suit\n\t\tFROM (\n\t\t\tSELECT Card,\n            Suit\n        FROM #temp\n\t\t\t) CardDetails\n\t\tWHERE Id = @Card2\n\n\t\tCOMMIT TRANSACTION;\n\tEND TRY\n\n\tBEGIN CATCH\n\t\t--- PRINT 'We were unable to make the swap rolling back [' + ERROR_MESSAGE() + '].';\n\t\tROLLBACK TRANSACTION;\n        THROW 51000, 'Unable to swap card.', 1; \n\tEND CATCH\nEND\nGO\n\n-- Stored Procedure 'SwapCardsAtRandom'\nCREATE PROCEDURE SwapCardsAtRandom\nAS\nBEGIN\n    DECLARE @Rnd1 FLOAT\n\n    SET @Rnd1 = RAND()\n\n    DECLARE @Card1 INT\n\n    SET @Card1 = (\n\t\t\tSELECT dbo.PickACard(@Rnd1)\n\t\t\t)\n\n    DECLARE @Rnd2 FLOAT\n\n    SET @Rnd2 = RAND()\n\n    DECLARE @Card2 INT\n\n    SET @Card2 = (\n\t\t\tSELECT dbo.PickACard(@Rnd2)\n\t\t\t)\n\n    --- 'No need to swap a card with itself'\n    IF @Card1 != @Card2\n\tBEGIN\n        EXECUTE dbo.SwapCards @Card1,\n\t\t\t@Card2\n    END\n--- IF @Card1 != @Card2\nEND --- CREATE PROCEDURE SwapCards\nGO\n\n-- Call SwapCardsAtRandom Multiple times\nDECLARE @Counter INT\nSET @Counter = 1\nDECLARE @ErrorCounter INT\nSET @ErrorCounter = 0\nWHILE (@Counter <= 1000)\nBEGIN\n\n    SET @Counter = @Counter + 1\n\n    BEGIN TRY\n\t\tEXECUTE SwapCardsAtRandom\n\tEND TRY\n\n\tBEGIN CATCH\n\t\tSET @ErrorCounter = @ErrorCounter+1\n        PRINT 'We were unable to swap cards [' + ERROR_MESSAGE() +']. Error Count ['+LTRIM(STR(@ErrorCounter,10))+']'  \n\tEND CATCH\nEND\nGO\n\n--- Review results\nSELECT COUNT(*)\nFROM Deck\nGROUP BY Suit\nGO\n\nSELECT *\nFROM Deck\nORDER BY Card,Suit\nGO\n--></code></pre>\n                    \n\n                    \n</blockquote>\n            </div>\n        </div>\n    </div>\n</section>",
+          "_customHTML": "<section class=\"content7\" group=\"Content\">\n    <mbr-parameters>\n        <header>Size</header>\n        <input type=\"checkbox\" title=\"Full Width\" name=\"fullWidth\">\n        <input type=\"range\" inline=\"\" title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"0\">\n        <input type=\"range\" inline=\"\" title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"0\">\n        <header>Show/Hide</header>\n        <input type=\"checkbox\" title=\"Title\" name=\"showTitle\" checked=\"\">\n        <input type=\"range\" name=\"textWidth\" title=\"Width\" min=\"4\" max=\"12\" value=\"10\" step=\"1\">\n        <input type=\"color\" name=\"lineColor\" title=\"Line Color\" value=\"#6592e6\">\n        <input type=\"color\" name=\"cardColor\" title=\"Color\" value=\"#fafafa\">\n        <header>Background</header>\n        <input type=\"color\" title=\"Color\" name=\"bgColor\" value=\"#ffffff\">\n    </mbr-parameters>\n    <div mbr-class=\"{'container': !fullWidth, 'container-fluid': fullWidth}\">\n        <div class=\"row justify-content-center\">\n            <div class=\"col-12 col-md-{{textWidth}}\">\n                <blockquote>\n                <h5 class=\"mbr-section-title mbr-fonts-style mb-2\" mbr-theme-style=\"display-7\" mbr-if=\"showTitle\" data-app-selector=\".mbr-section-title\"><b>Program.cs</b></h5>\n\n<pre class=\"language-clike\"><code><!--         \nusing System;\nusing System.Data.SqlClient;\nusing System.Data;\n\nnamespace dotnet_sql {\n  class Program {\n    static void Main(string[] args) {\n      var cs = @ \"User ID=sa;Password=Passw0rd123;Initial Catalog=Shuffle;Server=192.168.68.109;\";\n\n      using var con = new SqlConnection(cs);\n      con.Open();\n\n      using(SqlCommand cmd = new SqlCommand(\"dbo.SwapCards\", con)) {\n        cmd.CommandType = CommandType.StoredProcedure;\n        cmd.Parameters.Add(\"@Card1\", SqlDbType.Int);\n        cmd.Parameters.Add(\"@Card2\", SqlDbType.Int);\n\n        int errorCounter = 0;\n        for (int count = 0; count < 1000; count++) {\n          Random rn = new Random();\n          int card1 = rn.Next(1, 52);\n          int card2 = rn.Next(1, 52);\n\n          cmd.Parameters[\"@Card1\"].Value = card1;\n          cmd.Parameters[\"@Card2\"].Value = card2;\n\n          try {\n            cmd.ExecuteNonQuery();\n          } catch (Exception e) {\n            errorCounter++;\n            Console.WriteLine(\"We were unable to swap cards [\" + e.Message + \"]. Error Count [\" +\n              errorCounter + \"]\");\n          }\n\n        }\n      }\n    }\n  }\n}\n--></code></pre>\n                    \n\n                    \n</blockquote>\n            </div>\n        </div>\n    </div>\n</section>",
+          "_JSplaceholders": [],
+          "_PHPplaceholders": [],
+          "_anchor": "content7-mx",
+          "_isUserblock": true,
+          "_cid": "ssVYTBvtWG",
+          "_protectedParams": [],
+          "_global": false,
+          "_once": false,
+          "_params": {}
+        },
+        {
+          "alias": false,
+          "_styles": {
+            "padding-top": "(@paddingTop * 1rem)",
+            "padding-bottom": "(@paddingBottom * 1rem)",
+            "background-color": "@bgColor"
+          },
+          "_name": "content5",
+          "_sourceTheme": "mobirise5",
+          "_customHTML": "<section class=\"content5\" group=\"Content\">\n    <mbr-parameters>\n        <header>Size</header>\n        <input type=\"checkbox\" title=\"Full Width\" name=\"fullWidth\">\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"0\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"0\">\n        <input type=\"range\" name=\"textWidth\" title=\"Width\" min=\"4\" max=\"12\" value=\"10\" step=\"1\">\n        <header>Show/Hide</header>\n        <input type=\"checkbox\" title=\"Title\" name=\"showTitle\">\n        <input type=\"checkbox\" title=\"Subtitle\" name=\"showSubtitle\" checked>\n        <header>Background</header>\n        <input type=\"color\" title=\"Color\" name=\"bgColor\" value=\"#ffffff\">\n    </mbr-parameters>\n    <div mbr-class=\"{'container': !fullWidth, 'container-fluid': fullWidth}\">\n        <div class=\"row justify-content-center\">\n            <div class=\"col-md-12 col-lg-{{textWidth}}\">\n                <h3 class=\"mbr-section-title mbr-fonts-style mb-4\" mbr-if=\"showTitle\" data-app-selector=\".mbr-section-title\" mbr-theme-style=\"display-2\">\n                    <b>Article Title</b>\n                </h3>\n                <h4 class=\"mbr-section-subtitle mbr-fonts-style mb-4\" mbr-if=\"showSubtitle\" data-app-selector=\".mbr-section-subtitle\" mbr-theme-style=\"display-5\">Node console app</h4>\n                <p class=\"mbr-text mbr-fonts-style\" data-app-selector=\".mbr-text\" mbr-theme-style=\"display-7\"><b>$ node index.js</b></p>\n            </div>\n        </div>\n    </div>\n</section>",
+          "_anchor": "content5-n0",
+          "_isUserblock": true,
+          "_cid": "ssWbag9Q3v",
+          "_protectedParams": [],
+          "_global": false,
+          "_once": false,
+          "_params": {}
+        },
+        {
+          "alias": false,
+          "_styles": {
+            "padding-top": "(@paddingTop * 1rem)",
+            "padding-bottom": "(@paddingBottom * 1rem)",
+            "background-color": "@bgColor",
+            "blockquote": {
+              "border-color": "@lineColor",
+              "border-radius": "4px",
+              "background-color": "@cardColor"
+            }
+          },
+          "_name": "content7",
+          "_sourceTheme": "mobirise5",
+          "_customHTML": "<section class=\"content7\" group=\"Content\">\n    <mbr-parameters>\n        <header>Size</header>\n        <input type=\"checkbox\" title=\"Full Width\" name=\"fullWidth\">\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"0\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"0\">\n        <header>Show/Hide</header>\n        <input type=\"checkbox\" title=\"Title\" name=\"showTitle\" checked>\n        <input type=\"range\" name=\"textWidth\" title=\"Width\" min=\"4\" max=\"12\" value=\"10\" step=\"1\">\n        <input type=\"color\" name=\"lineColor\" title=\"Line Color\" value=\"#6592e6\">\n        <input type=\"color\" name=\"cardColor\" title=\"Color\" value=\"#fafafa\">\n        <header>Background</header>\n        <input type=\"color\" title=\"Color\" name=\"bgColor\" value=\"#ffffff\">\n    </mbr-parameters>\n    <div mbr-class=\"{'container': !fullWidth, 'container-fluid': fullWidth}\">\n        <div class=\"row justify-content-center\">\n            <div class=\"col-12 col-md-{{textWidth}}\">\n                <blockquote>\n                <h5 class=\"mbr-section-title mbr-fonts-style mb-2\" mbr-theme-style=\"display-7\" mbr-if=\"showTitle\" data-app-selector=\".mbr-section-title\"><b>index.js</b></h5>\n\n<pre class=\"language-clike\"><code><!--         \nconst mssql = require('mssql')\n\nconst config = {\n    user: 'sa',\n    password: 'Passw0rd123',\n    server: '192.168.68.109',\n    database: 'Shuffle',\n    options: { enableArithAbort: false }\n};\n\nconst dbConn = mssql.connect(config, function (err) {\n\n    if (err) {\n        console.log(err);\n        return\n    }\n\n    const request = new mssql.Request();\n\n    request.input('Card1', mssql.Int);\n    request.input('Card2', mssql.Int);\n\n    let errorCounter = 0;\n\n    (async () => {\n        for (x = 0; x < 1000; x++) {\n\n            const card1 = Math.floor(Math.random() * (52 - 1 + 1)) + 1\n            const card2 = Math.floor(Math.random() * (52 - 1 + 1)) + 1\n\n            request.parameters.Card1.value = card1;\n            request.parameters.Card2.value = card2;\n\n            if (card1 != card2) {\n\n                try {\n                    await request.execute('dbo.SwapCards')\n                } catch (e) {\n                    errorCounter++;\n                    console.error(\"We were unable to swap cards [\" + e.originalError.message + \"]. Error Count [\" + errorCounter + \"]\");\n                }\n\n            }\n        }\n        dbConn.close();\n\n    })().catch(err => {\n        console.error(err);\n    });\n\n})\n--></code></pre>\n                    \n\n                    \n</blockquote>\n            </div>\n        </div>\n    </div>\n</section>",
+          "_JSplaceholders": [],
+          "_PHPplaceholders": [],
+          "_anchor": "content7-my",
+          "_isUserblock": true,
+          "_cid": "ssWaykNTIe",
+          "_protectedParams": [],
+          "_global": false,
+          "_once": false,
+          "_params": {}
+        },
+        {
+          "alias": false,
+          "_styles": {
+            "padding-top": "(@paddingTop * 1rem)",
+            "padding-bottom": "(@paddingBottom * 1rem)",
+            "background-color": "@bgColor"
+          },
+          "_name": "content5",
+          "_sourceTheme": "mobirise5",
+          "_customHTML": "<section class=\"content5\" group=\"Content\">\n    <mbr-parameters>\n        <header>Size</header>\n        <input type=\"checkbox\" title=\"Full Width\" name=\"fullWidth\">\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"0\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"0\">\n        <input type=\"range\" name=\"textWidth\" title=\"Width\" min=\"4\" max=\"12\" value=\"10\" step=\"1\">\n        <header>Show/Hide</header>\n        <input type=\"checkbox\" title=\"Title\" name=\"showTitle\">\n        <input type=\"checkbox\" title=\"Subtitle\" name=\"showSubtitle\" checked>\n        <header>Background</header>\n        <input type=\"color\" title=\"Color\" name=\"bgColor\" value=\"#ffffff\">\n    </mbr-parameters>\n    <div mbr-class=\"{'container': !fullWidth, 'container-fluid': fullWidth}\">\n        <div class=\"row justify-content-center\">\n            <div class=\"col-md-12 col-lg-{{textWidth}}\">\n                <h3 class=\"mbr-section-title mbr-fonts-style mb-4\" mbr-if=\"showTitle\" data-app-selector=\".mbr-section-title\" mbr-theme-style=\"display-2\">\n                    <b>Article Title</b>\n                </h3>\n                <h4 class=\"mbr-section-subtitle mbr-fonts-style mb-4\" mbr-if=\"showSubtitle\" data-app-selector=\".mbr-section-subtitle\" mbr-theme-style=\"display-5\">Java console app</h4>\n                <p class=\"mbr-text mbr-fonts-style\" data-app-selector=\".mbr-text\" mbr-theme-style=\"display-7\"><b>$ javac Program.java</b><br><br><b>$ java -cp \"/Users/neilhaddley/sqljdbc_9.2/enu/mssql-jdbc-9.2.1.jre11.jar\" Program.java</b><br></p>\n            </div>\n        </div>\n    </div>\n</section>",
+          "_anchor": "content5-n1",
+          "_isUserblock": true,
+          "_cid": "ssWbb6iFYs",
+          "_protectedParams": [],
+          "_global": false,
+          "_once": false,
+          "_params": {}
+        },
+        {
+          "alias": false,
+          "_styles": {
+            "padding-top": "(@paddingTop * 1rem)",
+            "padding-bottom": "(@paddingBottom * 1rem)",
+            "background-color": "@bgColor",
+            "blockquote": {
+              "border-color": "@lineColor",
+              "border-radius": "4px",
+              "background-color": "@cardColor"
+            }
+          },
+          "_name": "content7",
+          "_sourceTheme": "mobirise5",
+          "_customHTML": "<section class=\"content7\" group=\"Content\">\n    <mbr-parameters>\n        <header>Size</header>\n        <input type=\"checkbox\" title=\"Full Width\" name=\"fullWidth\">\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"0\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"0\">\n        <header>Show/Hide</header>\n        <input type=\"checkbox\" title=\"Title\" name=\"showTitle\" checked>\n        <input type=\"range\" name=\"textWidth\" title=\"Width\" min=\"4\" max=\"12\" value=\"10\" step=\"1\">\n        <input type=\"color\" name=\"lineColor\" title=\"Line Color\" value=\"#6592e6\">\n        <input type=\"color\" name=\"cardColor\" title=\"Color\" value=\"#fafafa\">\n        <header>Background</header>\n        <input type=\"color\" title=\"Color\" name=\"bgColor\" value=\"#ffffff\">\n    </mbr-parameters>\n    <div mbr-class=\"{'container': !fullWidth, 'container-fluid': fullWidth}\">\n        <div class=\"row justify-content-center\">\n            <div class=\"col-12 col-md-{{textWidth}}\">\n                <blockquote>\n                <h5 class=\"mbr-section-title mbr-fonts-style mb-2\" mbr-theme-style=\"display-7\" mbr-if=\"showTitle\" data-app-selector=\".mbr-section-title\"><b>Program.java</b></h5>\n\n<pre class=\"language-clike\"><code><!--         \nimport java.sql.Connection;\nimport java.sql.DriverManager;\nimport java.sql.SQLException;\nimport java.sql.CallableStatement;\nimport java.util.Random;\n\npublic class Program {\n\n\n    public static void main(String[] args) {\n\n        String connectionUrl = \"jdbc:sqlserver://192.168.68.109:1433;databaseName=Shuffle;user=sa;password=Passw0rd123\";\n\n        try (Connection con = DriverManager.getConnection(connectionUrl);) {\n\n            CallableStatement callableStatement = con.prepareCall(\"{call dbo.SwapCards(?,?)}\");\n\n            int errorCounter = 0;\n            for (int count = 0; count < 1000; count++) {\n\n                Random rn = new Random();\n                int card1 = rn.nextInt(52 - 1 + 1) + 1;\n                int card2 = rn.nextInt(52 - 1 + 1) + 1;\n\n                try {\n                    if (card1 != card2) {\n                        callableStatement.setInt(1, card1);\n                        callableStatement.setInt(2, card2);\n                        callableStatement.execute();\n                    }\n                } catch (SQLException e1) {\n                    errorCounter++;\n                    System.out.println(\"We were unable to swap cards [\" + e1.getMessage() + \"]. Error Count [\"\n                            + Integer.toString(errorCounter) + \"]\");\n                }\n            }\n\n        } catch (SQLException e) {\n            e.printStackTrace();\n        }\n    }\n}\n--></code></pre>\n                    \n\n                    \n</blockquote>\n            </div>\n        </div>\n    </div>\n</section>",
+          "_JSplaceholders": [],
+          "_PHPplaceholders": [],
+          "_anchor": "content7-mw",
+          "_isUserblock": true,
+          "_cid": "ssVQARHGmI",
+          "_protectedParams": [],
+          "_global": false,
+          "_once": false,
+          "_params": {}
+        },
+        {
+          "alias": false,
+          "_styles": {
+            "padding-top": "(@paddingTop * 1rem)",
+            "padding-bottom": "(@paddingBottom * 1rem)",
+            "background-color": "@bgColor",
+            "blockquote": {
+              "border-color": "@lineColor",
+              "border-radius": "4px",
+              "background-color": "@cardColor"
+            }
+          },
+          "_name": "content7",
+          "_sourceTheme": "mobirise5",
+          "_customHTML": "<section class=\"content7\" group=\"Content\">\n    <mbr-parameters>\n        <header>Size</header>\n        <input type=\"checkbox\" title=\"Full Width\" name=\"fullWidth\">\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"0\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"0\">\n        <header>Show/Hide</header>\n        <input type=\"checkbox\" title=\"Title\" name=\"showTitle\" checked>\n        <input type=\"range\" name=\"textWidth\" title=\"Width\" min=\"4\" max=\"12\" value=\"10\" step=\"1\">\n        <input type=\"color\" name=\"lineColor\" title=\"Line Color\" value=\"#6592e6\">\n        <input type=\"color\" name=\"cardColor\" title=\"Color\" value=\"#fafafa\">\n        <header>Background</header>\n        <input type=\"color\" title=\"Color\" name=\"bgColor\" value=\"#ffffff\">\n    </mbr-parameters>\n    <div mbr-class=\"{'container': !fullWidth, 'container-fluid': fullWidth}\">\n        <div class=\"row justify-content-center\">\n            <div class=\"col-12 col-md-{{textWidth}}\">\n                <blockquote>\n                <h5 class=\"mbr-section-title mbr-fonts-style mb-2\" mbr-theme-style=\"display-7\" mbr-if=\"showTitle\" data-app-selector=\".mbr-section-title\"><b>Full T-SQL code</b></h5>\n\n<pre class=\"language-clike\"><code><!--         \nDROP DATABASE Shuffle\nGO\n\n-- Create the DB\nCREATE DATABASE Shuffle\nGO\n\n--- Allow snapshot isolation\nALTER DATABASE Shuffle\nSET ALLOW_SNAPSHOT_ISOLATION ON\nGO\n\n--- Enable accelerated database recovery\nALTER DATABASE Shuffle\nSET ACCELERATED_DATABASE_RECOVERY = ON;\nGO\n\n--- Use Shuffle DB\nUSE Shuffle\nGO\n\n-- Create the Deck\nCREATE TABLE Cards\n(\n    Card CHAR(5) PRIMARY KEY\n)\nGO\n\nINSERT INTO Cards\nVALUES\n    ('Ace'),\n    ('2'),\n    ('3'),\n    ('4'),\n    ('5'),\n    ('6'),\n    ('7'),\n    ('8'),\n    ('9'),\n    ('10'),\n    ('Jack'),\n    ('Queen'),\n    ('King')\nGO\n\nCREATE TABLE Suits\n(\n    Suit CHAR(8) PRIMARY KEY\n)\nGO\n\nINSERT INTO Suits\nVALUES\n    ('Clubs'),\n    ('Diamonds'),\n    ('Hearts'),\n    ('Spades')\nGO\n\nSELECT Id = IDENTITY(INT, 1, 1),\n    Suits.Suit,\n    Cards.Card\nINTO Deck\nFROM Cards\nCROSS JOIN Suits\nGO\n\nALTER TABLE Deck ADD CONSTRAINT Deck_PK PRIMARY KEY (Id)\nGO\n\n-- User Defined Function 'PickACard'\nCREATE FUNCTION PickACard (@RAND FLOAT)\nRETURNS INT\nAS\nBEGIN\n    RETURN (\n\t\t\tSELECT FLOOR(@RAND * (52 - 1 + 1)) + 1\n\t\t\t)\nEND\nGO\n\n-- Stored Procedure 'SwapCards'\nCREATE PROCEDURE SwapCardsV1\n    @Card1 INT = 1,\n    @Card2 INT = 52\nAS\nBEGIN\n    SET NOCOUNT ON\n\n    --Store the first card's details\n    SELECT *\n    INTO #Temp\n    FROM Deck\n    WHERE Id = @Card1\n\n    -- Move second card into first card's place\n    UPDATE Deck\n\t\tSET Card = CardDetails.Card,\n\t\t\tSuit = CardDetails.Suit\n\t\tFROM (\n\t\t\tSELECT d.Card,\n            d.Suit\n        FROM Deck d\n        WHERE Id = @Card2\n\t\t\t) CardDetails\n\t\tWHERE Id = @Card1\n\n    -- Move first card into second card's place\n    UPDATE Deck\n\t\tSET Card = CardDetails.Card,\n\t\t\tSuit = CardDetails.Suit\n\t\tFROM (\n\t\t\tSELECT Card,\n            Suit\n        FROM #temp\n\t\t\t) CardDetails\n\t\tWHERE Id = @Card2\n\nEND\nGO\n\n-- Stored Procedure 'SwapCards'\nCREATE PROCEDURE SwapCards\n    @Card1 INT = 1,\n    @Card2 INT = 52\nAS\nBEGIN\n    SET TRANSACTION ISOLATION LEVEL SNAPSHOT;\n    --- SET LOCK_TIMEOUT 100;\n\n    BEGIN TRY\n\t\tBEGIN TRANSACTION\n\n\t\tSET NOCOUNT ON\n\n\t\t--Store the first card's details\n\t\tSELECT *\n    INTO #Temp\n    FROM Deck\n    WHERE Id = @Card1\n\n\t\t-- Move second card into first card's place\n\t\tUPDATE Deck\n\t\tSET Card = CardDetails.Card,\n\t\t\tSuit = CardDetails.Suit\n\t\tFROM (\n\t\t\tSELECT d.Card,\n            d.Suit\n        FROM Deck d\n        WHERE Id = @Card2\n\t\t\t) CardDetails\n\t\tWHERE Id = @Card1\n\n\t\t-- Move first card into second card's place\n\t\tUPDATE Deck\n\t\tSET Card = CardDetails.Card,\n\t\t\tSuit = CardDetails.Suit\n\t\tFROM (\n\t\t\tSELECT Card,\n            Suit\n        FROM #temp\n\t\t\t) CardDetails\n\t\tWHERE Id = @Card2\n\n\t\tCOMMIT TRANSACTION;\n\tEND TRY\n\n\tBEGIN CATCH\n\t\t--- PRINT 'We were unable to make the swap rolling back [' + ERROR_MESSAGE() + '].';\n\t\tROLLBACK TRANSACTION;\n        THROW 51000, 'Unable to swap card.', 1; \n\tEND CATCH\nEND\nGO\n\n-- Stored Procedure 'SwapCardsAtRandom'\nCREATE PROCEDURE SwapCardsAtRandom\nAS\nBEGIN\n    DECLARE @Rnd1 FLOAT\n\n    SET @Rnd1 = RAND()\n\n    DECLARE @Card1 INT\n\n    SET @Card1 = (\n\t\t\tSELECT dbo.PickACard(@Rnd1)\n\t\t\t)\n\n    DECLARE @Rnd2 FLOAT\n\n    SET @Rnd2 = RAND()\n\n    DECLARE @Card2 INT\n\n    SET @Card2 = (\n\t\t\tSELECT dbo.PickACard(@Rnd2)\n\t\t\t)\n\n    --- 'No need to swap a card with itself'\n    IF @Card1 != @Card2\n\tBEGIN\n        EXECUTE dbo.SwapCards @Card1,\n\t\t\t@Card2\n    END\n--- IF @Card1 != @Card2\nEND --- CREATE PROCEDURE SwapCards\nGO\n\n-- Call SwapCardsAtRandom Multiple times\nDECLARE @Counter INT\nSET @Counter = 1\nDECLARE @ErrorCounter INT\nSET @ErrorCounter = 0\nWHILE (@Counter <= 1000)\nBEGIN\n\n    SET @Counter = @Counter + 1\n\n    BEGIN TRY\n\t\tEXECUTE SwapCardsAtRandom\n\tEND TRY\n\n\tBEGIN CATCH\n\t\tSET @ErrorCounter = @ErrorCounter+1\n        PRINT 'We were unable to swap cards [' + ERROR_MESSAGE() +']. Error Count ['+LTRIM(STR(@ErrorCounter,10))+']'  \n\tEND CATCH\nEND\nGO\n\n--- Review results\nSELECT COUNT(*)\nFROM Deck\nGROUP BY Suit\nGO\n\nSELECT *\nFROM Deck\nORDER BY Card,Suit\nGO\n--></code></pre>\n                    \n\n                    \n</blockquote>\n            </div>\n        </div>\n    </div>\n</section>",
           "_JSplaceholders": [],
           "_PHPplaceholders": [],
           "_anchor": "content7-ms",
