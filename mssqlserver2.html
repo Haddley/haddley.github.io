@@ -216,23 +216,26 @@ GO
                 <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>SwapCardsV1</strong></h5>
 
 <pre class="language-clike"><code><!--         
--- Stored Procedure 'SwapCards'
+-- Stored Procedure 'SwapCardsV1'
 CREATE PROCEDURE SwapCardsV1
     @Card1 INT = 1,
     @Card2 INT = 52
 AS
 BEGIN
+    
+    BEGIN TRY
+		BEGIN TRANSACTION
 
-    SET NOCOUNT ON
+		SET NOCOUNT ON
 
-    --Store the first card's details
-    SELECT *
-    INTO #Temp
-    FROM Deck
-    WHERE Id = @Card1
+		-- Store the first card's details
+		SELECT *
+        INTO #Temp
+        FROM Deck
+        WHERE Id = @Card1
 
-    -- Move second card into first card's place
-    UPDATE Deck
+		-- Move second card into first card's place
+		UPDATE Deck
 		SET Card = CardDetails.Card,
 			Suit = CardDetails.Suit
 		FROM (
@@ -243,8 +246,8 @@ BEGIN
 			) CardDetails
 		WHERE Id = @Card1
 
-    -- Move first card into second card's place
-    UPDATE Deck
+		-- Move first card into second card's place
+		UPDATE Deck
 		SET Card = CardDetails.Card,
 			Suit = CardDetails.Suit
 		FROM (
@@ -254,6 +257,14 @@ BEGIN
 			) CardDetails
 		WHERE Id = @Card2
 
+		COMMIT TRANSACTION;
+	END TRY
+
+	BEGIN CATCH
+		-- PRINT 'We were unable to make the swap rolling back [' + ERROR_MESSAGE() + '].';
+		ROLLBACK TRANSACTION;
+        THROW 51000, 'Unable to swap card.', 1; 
+	END CATCH
 END
 GO
 --></code></pre>
@@ -304,7 +315,7 @@ GO
         <div class="row justify-content-center">
             <div class="col-12 col-md-10">
                 <blockquote>
-                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>SwapCards Client Code</strong></h5>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>SwapCards T-SQL Client Code</strong></h5>
 
 <pre class="language-clike"><code><!--         
 -- User Defined Function 'PickACard'
@@ -342,25 +353,22 @@ BEGIN
 			SELECT dbo.PickACard(@Rnd2)
 			)
 
-    --- 'No need to swap a card with itself'
+    -- 'No need to swap a card with itself'
     IF @Card1 != @Card2
 	BEGIN
         EXECUTE dbo.SwapCardsV1 @Card1,
 			@Card2
-    END
---- IF @Card1 != @Card2
-END --- CREATE PROCEDURE SwapCards
+    END -- IF @Card1 != @Card2
+END -- CREATE PROCEDURE SwapCards
 GO
 
 -- Call Swap Cards Multiple times
 DECLARE @Counter INT
-SET @Counter = 1
+SET @Counter = 0
 DECLARE @ErrorCounter INT
 SET @ErrorCounter = 0
-WHILE (@Counter <= 1000)
+WHILE (@Counter < 1000)
 BEGIN
-
-    SET @Counter = @Counter + 1
 
     BEGIN TRY
 		EXECUTE SwapCardsAtRandom
@@ -370,10 +378,12 @@ BEGIN
 		SET @ErrorCounter = @ErrorCounter+1
         PRINT 'We were unable to swap cards [' + ERROR_MESSAGE() +']. Error Count ['+LTRIM(STR(@ErrorCounter,10))+']'  
 	END CATCH
+    
+    SET @Counter = @Counter + 1
 END
 GO
 
---- Review results
+-- Review results
 SELECT COUNT(*)
 FROM Deck
 GROUP BY Suit
@@ -400,7 +410,7 @@ GO
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">With a single client</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Running a single copy of client code that calls the SwapCardV1 stored procedure works well.<br><br>The result is a shuffled deck with 13 cards of each suit.</p>
+                <p class="mbr-text mbr-fonts-style display-7">Running a single copy of client code that calls the SwapCardV1 stored procedure is fine.<br><br>The result is a shuffled deck with 13 cards of each suit.</p>
             </div>
         </div>
     </div>
@@ -482,18 +492,17 @@ CREATE PROCEDURE SwapCards
 AS
 BEGIN
     SET TRANSACTION ISOLATION LEVEL SNAPSHOT;
-    --- SET LOCK_TIMEOUT 100;
 
     BEGIN TRY
 		BEGIN TRANSACTION
 
 		SET NOCOUNT ON
 
-		--Store the first card's details
+		-- Store the first card's details
 		SELECT *
-    INTO #Temp
-    FROM Deck
-    WHERE Id = @Card1
+        INTO #Temp
+        FROM Deck
+        WHERE Id = @Card1
 
 		-- Move second card into first card's place
 		UPDATE Deck
@@ -522,7 +531,7 @@ BEGIN
 	END TRY
 
 	BEGIN CATCH
-		--- PRINT 'We were unable to make the swap rolling back [' + ERROR_MESSAGE() + '].';
+		-- PRINT 'We were unable to make the swap rolling back [' + ERROR_MESSAGE() + '].';
 		ROLLBACK TRANSACTION;
         THROW 51000, 'Unable to swap card.', 1; 
 	END CATCH
@@ -563,6 +572,19 @@ GO
                     <img src="assets/images/screen-shot-2021-03-27-at-9.25.19-pm-1836x1138.png" alt="">
                     <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Shuffle success</p>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-st7mvYZyfz" id="content5-ou">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Catching the errors</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Snapshot isolation guarantees that reads made in a transaction will see a consistent snapshot of the database and that the transaction will commit only if no update made in the transaction conflicts with another concurrent update.<br><br>With snapshot isolation enabled there is a chance that a commit will fail and that an error will be raised. This is a good thing.<br><br>In the code shown above if SwapCards throws an error the client code catches the error, prints a message and continues. Perhaps instead the client code should retry the swap?</p>
             </div>
         </div>
     </div>
@@ -829,17 +851,17 @@ GO
 CREATE DATABASE Shuffle
 GO
 
---- Allow snapshot isolation
+-- Allow snapshot isolation
 ALTER DATABASE Shuffle
 SET ALLOW_SNAPSHOT_ISOLATION ON
 GO
 
---- Enable accelerated database recovery
+-- Enable accelerated database recovery
 ALTER DATABASE Shuffle
 SET ACCELERATED_DATABASE_RECOVERY = ON;
 GO
 
---- Use Shuffle DB
+-- Use Shuffle DB
 USE Shuffle
 GO
 
@@ -903,65 +925,23 @@ BEGIN
 END
 GO
 
--- Stored Procedure 'SwapCards'
+-- Stored Procedure 'SwapCardsV1'
 CREATE PROCEDURE SwapCardsV1
     @Card1 INT = 1,
     @Card2 INT = 52
 AS
 BEGIN
-    SET NOCOUNT ON
-
-    --Store the first card's details
-    SELECT *
-    INTO #Temp
-    FROM Deck
-    WHERE Id = @Card1
-
-    -- Move second card into first card's place
-    UPDATE Deck
-		SET Card = CardDetails.Card,
-			Suit = CardDetails.Suit
-		FROM (
-			SELECT d.Card,
-            d.Suit
-        FROM Deck d
-        WHERE Id = @Card2
-			) CardDetails
-		WHERE Id = @Card1
-
-    -- Move first card into second card's place
-    UPDATE Deck
-		SET Card = CardDetails.Card,
-			Suit = CardDetails.Suit
-		FROM (
-			SELECT Card,
-            Suit
-        FROM #temp
-			) CardDetails
-		WHERE Id = @Card2
-
-END
-GO
-
--- Stored Procedure 'SwapCards'
-CREATE PROCEDURE SwapCards
-    @Card1 INT = 1,
-    @Card2 INT = 52
-AS
-BEGIN
-    SET TRANSACTION ISOLATION LEVEL SNAPSHOT;
-    --- SET LOCK_TIMEOUT 100;
-
+    
     BEGIN TRY
 		BEGIN TRANSACTION
 
 		SET NOCOUNT ON
 
-		--Store the first card's details
+		-- Store the first card's details
 		SELECT *
-    INTO #Temp
-    FROM Deck
-    WHERE Id = @Card1
+        INTO #Temp
+        FROM Deck
+        WHERE Id = @Card1
 
 		-- Move second card into first card's place
 		UPDATE Deck
@@ -990,7 +970,60 @@ BEGIN
 	END TRY
 
 	BEGIN CATCH
-		--- PRINT 'We were unable to make the swap rolling back [' + ERROR_MESSAGE() + '].';
+		-- PRINT 'We were unable to make the swap rolling back [' + ERROR_MESSAGE() + '].';
+		ROLLBACK TRANSACTION;
+        THROW 51000, 'Unable to swap card.', 1; 
+	END CATCH
+END
+GO
+
+-- Stored Procedure 'SwapCards'
+CREATE PROCEDURE SwapCards
+    @Card1 INT = 1,
+    @Card2 INT = 52
+AS
+BEGIN
+    SET TRANSACTION ISOLATION LEVEL SNAPSHOT;
+
+    BEGIN TRY
+		BEGIN TRANSACTION
+
+		SET NOCOUNT ON
+
+		-- Store the first card's details
+		SELECT *
+        INTO #Temp
+        FROM Deck
+        WHERE Id = @Card1
+
+		-- Move second card into first card's place
+		UPDATE Deck
+		SET Card = CardDetails.Card,
+			Suit = CardDetails.Suit
+		FROM (
+			SELECT d.Card,
+            d.Suit
+        FROM Deck d
+        WHERE Id = @Card2
+			) CardDetails
+		WHERE Id = @Card1
+
+		-- Move first card into second card's place
+		UPDATE Deck
+		SET Card = CardDetails.Card,
+			Suit = CardDetails.Suit
+		FROM (
+			SELECT Card,
+            Suit
+        FROM #temp
+			) CardDetails
+		WHERE Id = @Card2
+
+		COMMIT TRANSACTION;
+	END TRY
+
+	BEGIN CATCH
+		-- PRINT 'We were unable to make the swap rolling back [' + ERROR_MESSAGE() + '].';
 		ROLLBACK TRANSACTION;
         THROW 51000, 'Unable to swap card.', 1; 
 	END CATCH
@@ -1021,25 +1054,22 @@ BEGIN
 			SELECT dbo.PickACard(@Rnd2)
 			)
 
-    --- 'No need to swap a card with itself'
+    -- 'No need to swap a card with itself'
     IF @Card1 != @Card2
 	BEGIN
         EXECUTE dbo.SwapCards @Card1,
 			@Card2
-    END
---- IF @Card1 != @Card2
-END --- CREATE PROCEDURE SwapCards
+    END -- IF @Card1 != @Card2
+END -- CREATE PROCEDURE SwapCards
 GO
 
 -- Call SwapCardsAtRandom Multiple times
 DECLARE @Counter INT
-SET @Counter = 1
+SET @Counter = 0
 DECLARE @ErrorCounter INT
 SET @ErrorCounter = 0
-WHILE (@Counter <= 1000)
+WHILE (@Counter < 1000)
 BEGIN
-
-    SET @Counter = @Counter + 1
 
     BEGIN TRY
 		EXECUTE SwapCardsAtRandom
@@ -1049,10 +1079,12 @@ BEGIN
 		SET @ErrorCounter = @ErrorCounter+1
         PRINT 'We were unable to swap cards [' + ERROR_MESSAGE() +']. Error Count ['+LTRIM(STR(@ErrorCounter,10))+']'  
 	END CATCH
+    
+    SET @Counter = @Counter + 1
 END
 GO
 
---- Review results
+-- Review results
 SELECT COUNT(*)
 FROM Deck
 GROUP BY Suit
