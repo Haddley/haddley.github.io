@@ -94,7 +94,7 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <a href="mssqlserver.html"><img src="assets/images/spring-framework-logo-2018.svg" alt=""></a>
+                    <img src="assets/images/spring-framework-logo-2018.svg" alt="">
                     <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
                     <a rel="nofollow" href="https://commons.wikimedia.org/w/index.php?curid=74960904">Spring Framework logo</a>&nbsp;<span style="font-size: 1.1rem;">by&nbsp;</span><a href="https://www.google.com" style="font-size: 1.1rem; background-color: rgb(255, 255, 255);">Pivotal Software</a>&nbsp;<span style="font-size: 1.1rem;">is licensed under&nbsp;</span><a href="http://www.apache.org/licenses/LICENSE-2.0" title="Apache License, Version 2.0" style="font-size: 1.1rem; background-color: rgb(255, 255, 255);">Apache License 2.0</a>
                     
@@ -137,7 +137,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
                 
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Create a REST API project</h4>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Creating a <a href="restapiservice.html" class="text-primary">REST</a>&nbsp;project using Spring Boot</h4>
                 <p class="mbr-text mbr-fonts-style display-7">Open Spring Tool Suite<br>Create new Sprint Starter Project<br>Add Book class<br>Add&nbsp;BooksRestController<br>Run as Sprint Boot App<br>Test using Browser<br><br></p>
             </div>
         </div>
@@ -464,6 +464,142 @@ public class BooksRestController {
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2021-04-06-at-11.20.30-am-1836x875.png" alt="">
                     <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">http://localhost:8080/books/1234567890</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-stXqvL0EBY" id="content5-qm">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">React client</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Static files can be added to the /src/mail/resources/static folder of the Spring Boot project.<br><br>The static files can be image files, html files and javascript files.<br><br>The static files might be the results of a built React app.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-stXqIHBsrQ" id="image3-qn">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-08-at-3.28.25-pm-1836x981.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Static files</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-stXrP6pZeT" id="content7-qq">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>App.js</strong></h5>
+
+<pre class="language-clike"><code><!--         
+import React, { useEffect, useState } from 'react';
+
+function App() {
+
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+
+    console.log("use effect");
+    fetch('/books')
+      .then(
+        (d) => {
+          d.json().then((b) => {
+            setBooks(() => b)
+          });
+        }
+      )
+
+  }
+    , [])
+
+  return (
+
+    <>
+        {books.map(book =>
+            <h4>{book.title}</h4>)}
+    </>
+
+  );
+}
+
+export default App;
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-stXrPLeRen" id="content7-qr">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>index.html</strong></h5>
+
+<pre class="language-html"><code><!--         
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>React App</title>
+</head>
+
+<body>
+
+	<noscript>You need to enable JavaScript to run this app.</noscript>
+	<div id="root"></div>
+
+	<script>!function (e) {function r(r) {for (var n, i, l = r[0], p = r[1], f = r[2], c = 0, s = []; c < l.length; c++)i = l[c], Object.prototype.hasOwnProperty.call(o, i) && o[i] && s.push(o[i][0]), o[i] = 0; for (n in p) Object.prototype.hasOwnProperty.call(p, n) && (e[n] = p[n]); for (a && a(r); s.length;)s.shift()(); return u.push.apply(u, f || []), t()} function t() {for (var e, r = 0; r < u.length; r++) {for (var t = u[r], n = !0, l = 1; l < t.length; l++) {var p = t[l]; 0 !== o[p] && (n = !1)} n && (u.splice(r--, 1), e = i(i.s = t[0]))} return e} var n = {}, o = {1: 0}, u = []; function i(r) {if (n[r]) return n[r].exports; var t = n[r] = {i: r, l: !1, exports: {}}; return e[r].call(t.exports, t, t.exports, i), t.l = !0, t.exports} i.m = e, i.c = n, i.d = function (e, r, t) {i.o(e, r) || Object.defineProperty(e, r, {enumerable: !0, get: t})}, i.r = function (e) {"undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, {value: "Module"}), Object.defineProperty(e, "__esModule", {value: !0})}, i.t = function (e, r) {if (1 & r && (e = i(e)), 8 & r) return e; if (4 & r && "object" == typeof e && e && e.__esModule) return e; var t = Object.create(null); if (i.r(t), Object.defineProperty(t, "default", {enumerable: !0, value: e}), 2 & r && "string" != typeof e) for (var n in e) i.d(t, n, function (r) {return e[r]}.bind(null, n)); return t}, i.n = function (e) {var r = e && e.__esModule ? function () {return e.default} : function () {return e}; return i.d(r, "a", r), r}, i.o = function (e, r) {return Object.prototype.hasOwnProperty.call(e, r)}, i.p = "/"; var l = this["webpackJsonpnode-spring-client"] = this["webpackJsonpnode-spring-client"] || [], p = l.push.bind(l); l.push = r, l = l.slice(); for (var f = 0; f < l.length; f++)r(l[f]); var a = p; t()}([])</script>
+	<script src="/js/2.bd91be3c.chunk.js"></script>
+	<script src="/js/main.d36b6e09.chunk.js"></script>
+
+</body>
+
+</html>
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-stXqJbIita" id="image3-qo">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-08-at-3.27.02-pm-1286x750.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Running React/Spring Boot app</p>
                 </div>
             </div>
         </div>
