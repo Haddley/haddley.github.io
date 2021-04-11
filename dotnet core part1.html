@@ -95,7 +95,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/net-logo.svg" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><span style="font-size: 1.1rem; background-color: rgb(255, 255, 255);"><a href="https://github.com/dotnet/brand/blob/main/logo/dotnet-logo.svg" class="text-primary">Microsoft Dotnet Logo</a></span><span style="font-size: 1.1rem; background-color: rgb(255, 255, 255);"> by <a href="https://en.wikipedia.org/wiki/en:Microsoft" class="text-primary">Microsoft Corporation</a><span style="font-size: 1.1rem; background-color: rgb(255, 255, 255);"> is licensed under&nbsp;</span><a href="https://en.wikipedia.org/wiki/Creative_Commons" class="text-primary">Creative_Commons</a></span> <span style="font-size: 1.1rem; background-color: rgb(255, 255, 255);"><a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en" class="text-primary">CC0 1.0 Universal Public Domain Dedication</a></span><a href="http://www.apache.org/licenses/LICENSE-2.0" title="Apache License, Version 2.0"><br></a>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><span style="font-size: 1.1rem; background-color: rgb(255, 255, 255);"><a href="https://github.com/dotnet/brand/blob/main/logo/dotnet-logo.svg" class="text-primary">Microsoft Dotnet Logo</a></span><span style="font-size: 1.1rem; background-color: rgb(255, 255, 255);"> by <a href="https://en.wikipedia.org/wiki/en:Microsoft" class="text-primary">Microsoft Corporation</a><span style="font-size: 1.1rem; background-color: rgb(255, 255, 255);"> is licensed under&nbsp;</span><a href="https://en.wikipedia.org/wiki/Creative_Commons" class="text-primary">Creative Commons</a></span> <span style="font-size: 1.1rem; background-color: rgb(255, 255, 255);"><a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en" class="text-primary">CC0 1.0 Universal Public Domain Dedication</a></span><a href="http://www.apache.org/licenses/LICENSE-2.0" title="Apache License, Version 2.0"><br></a>
                     
                     </p>
                 </div>
@@ -140,7 +140,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
                 
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Creating BookRestController</h4>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Creating a Book class</h4>
                 <p class="mbr-text mbr-fonts-style display-7">$ code .<br>Add Book class<br><br></p>
             </div>
         </div>
@@ -362,7 +362,7 @@ namespace dotnet_api.Controllers
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Startup</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Support for Swagger is adding in the project's Startup.cs file</p>
+                <p class="mbr-text mbr-fonts-style display-7">Support for Swagger is added in the project's Startup.cs file</p>
             </div>
         </div>
     </div>
@@ -608,7 +608,7 @@ export default App;
                 <div class="card-wrapper">
                     <div class="card-box align-center">
                         <span class="mbr-iconfont mbri-pages"></span>
-                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://spring.io/quickstart" class="text-primary" target="_blank">QuickStart</a></strong></h4>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/static-files" class="text-primary" target="_blank">Static files in ASP.NET Core</a></strong></h4>
                     </div>
                 </div>
             </div>
@@ -676,55 +676,6 @@ export default App;
                 <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-7">
                     © Copyright 2021 Neil Haddley. All Rights Reserved.
                 </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="content7 cid-sufhJt0dPf" id="content7-sn">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-10">
-                <blockquote>
-                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Program.cs</strong></h5>
-
-<pre class="language-clike"><code><!--         
-using System;
-using System.Data.SqlClient;
-using System.Data;
-
-namespace dotnet_sql
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var cs = @"User ID=sa;Password=Passw0rd123;Initial Catalog=AdventureWorks2019;Server=192.168.68.109;";
-
-            using var con = new SqlConnection(cs);
-            con.Open();
-
-            var query = "SELECT TOP (5) [Name] FROM [AdventureWorks2019].[Production].[Product] WHERE [ProductLine]=@inputField1";
-            using var cmd = new SqlCommand(query, con);
-
-            cmd.Parameters.Add(new SqlParameter("@inputField1", SqlDbType.Char, 2)).Value = 'R';
-            cmd.Prepare();
-
-            using SqlDataReader rdr = cmd.ExecuteReader();
-
-            while (rdr.Read())
-            {
-                Console.WriteLine("{0}", rdr.GetString(0));
-            }
-        }
-    }
-}
---></code></pre>
-                    
-
-                    
-</blockquote>
             </div>
         </div>
     </div>
