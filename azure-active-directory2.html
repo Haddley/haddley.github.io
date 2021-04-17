@@ -560,6 +560,19 @@ export default function App() {
     </div>
 </section>
 
+<section class="content5 cid-suPblhcNNT" id="content5-wv">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Discussion</h4>
+                <p class="mbr-text mbr-fonts-style display-7">SPA is a single page application based on an html file and JavaScript (not React, Angular or Vue). As authPopup.js (or authRedirect.js) is loaded myMSALObj is set to a new msal.PublicClientApplication instance using msalConfig. further down in the same file "selectAccount();" is called. selectAccount calls the&nbsp;getAllAccounts method on the&nbsp;msal.PublicClientApplication instance. If at least one account is returned the welcomeUser function is called passing the username from the first account.<br><br>welcomeUser is defined in the ui.js. welcomeUser uses document.getElementById and css classes to update the html page (showing if a user is logged in).<br><br>If the html signIn button is pressed the signIn function in&nbsp;authPopup.js (or authRedirect.js) is run. This&nbsp;calls the loginPopup (or&nbsp;loginRedirect) method on the msal.PublicClientApplication instance passing&nbsp;loginRequest (an object with a scopes property ... {scopes: ["openid", "api://ae580c57-2645-404d-a870-2a390db782ec/access_as_user"]}. The handleResponse function is called if the user login succeed. The handleResponse function sets a username and calls the&nbsp;welcomeUser again.<br><br>If the html&nbsp;callApiButton button is pressed the&nbsp;passTokenToApi function is executed. The&nbsp;passTokenToApi function calls getTokenPopup (or&nbsp;getTokenRedirect) which uses&nbsp;myMSALObj.acquireTokenSilent and&nbsp;myMSALObj.acquireTokenPopup (or myMSALObj.acquireTokenRedirect) (here the constant tokenRequest is used { scopes: ["Mail.Read"] } although we do not go on to read mail...).&nbsp;<br><br>Once the access_token has been acquired function callApi is called (passing apiConfig.uri="http://localhost:5000/api" and response.accessToken). callApi appends an Authorization header with accessToken to a fetch call to the API. The response to the API call should include the logged in user's name.<br><br>API is a Node express app. The code starts by defining const app=express(); Then "morgan" (for debugging) and "passport" are added to the express instance. the bearerStrategy is added to the passport reference. CORS is enabled by adding permissive response headers.<br><br>The "/api" endpoint is exposed. But the handler is only run if passport.authenticated (based on the response received from Azure Active Directory "access_as_user"). req.authInfo provides authentication information. In the sample information from the req.authInfo property is returned as the result of the API call (including name).<br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="footer3 cid-suMBtiPoJs" once="footers" id="footer3-vp">
 
     
