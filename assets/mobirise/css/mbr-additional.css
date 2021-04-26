@@ -20578,6 +20578,32 @@ a {
 .cid-svFo6ZLeJ0 img {
   width: 100%;
 }
+.cid-svFpfkdwqH {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  background-color: #ffffff;
+}
+@media (max-width: 991px) {
+  .cid-svFpfkdwqH .image-wrapper {
+    margin-bottom: 1rem;
+  }
+}
+.cid-svFpfkdwqH .row {
+  flex-direction: row-reverse;
+}
+.cid-svFpfkdwqH img {
+  width: 100%;
+}
+.cid-svFq2gBqKH {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  background-color: #ffffff;
+}
+.cid-svFq2gBqKH blockquote {
+  border-color: #6592e6;
+  border-radius: 4px;
+  background-color: #fafafa;
+}
 .cid-svF6XBIadp {
   padding-top: 4rem;
   padding-bottom: 4rem;
