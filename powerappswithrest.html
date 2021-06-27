@@ -10,7 +10,7 @@
   <meta name="description" content="">
   
   
-  <title>Power Apps with REST</title>
+  <title>A Power Apps Custom Connector</title>
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
   <link rel="stylesheet" href="assets/tether/tether.min.css">
@@ -75,8 +75,8 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="title col-md-12 col-lg-10">
-                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Power Apps with REST</strong></h3>
-                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Manage Microsoft 365 tenants and SharePoint Framework projects using m365.<div><br></div><div><a href="https://pnp.github.io/cli-microsoft365/" class="text-primary">https://pnp.github.io/cli-microsoft365/</a></div></h4>
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>A Power Apps Custom Connector</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Connect a Power Apps Canvas App to a REST API Service using a Custom Connector.</h4>
                 
             </div>
         </div>
@@ -100,20 +100,466 @@
     </div>
 </section>
 
-<section class="content5 cid-sAK5rpJrkd" id="content5-1bn">
+<section class="content5 cid-sBv4G3yFjg" id="content5-1ee">
     
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
                 
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">m365</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Why not use the supported <a href="dockerandubernetes.html" class="text-primary">docker</a> image?<br><br>$ docker run --rm -it m365pnp/cli-microsoft365<br><br>In the context of the docker image we use the m365 command to:<br></p>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Create a GitHub Repsitory</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Create a GitHub Repository for the REST API code.</p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="content9 cid-sAK5rpVlN6" id="content9-1bo">
+<section class="image3 cid-sBuL04X7gt" id="image3-1cs">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-19-at-11.42.54-am-810x938.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Create Repository</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sBuL0rbPvg" id="image3-1ct">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-19-at-11.43.12-am-930x676.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Publish Repository</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sBuL0NQW8m" id="image3-1cu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-19-at-11.43.36-am-1022x234.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">open in Visual Studio Code</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sBv52UHzb3" id="content5-1ef">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Download example project code</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Open a Visual Studio Code terminal and use the command<br><br>% dotnet new api<br><br>to download example ASP.NET Core Web API code.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sBuL1a0JTf" id="image3-1cv">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-19-at-11.44.38-am-1544x460.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><strong>dotnet new webapi</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sBv5EYdemM" id="content5-1eg">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Test the example project code</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Create a dotnet project gitignore file<br><br>% dotnet new gitignore<br><br>Start the project<br><br>% dotnet run</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sBuL1KGhZj" id="image3-1cx">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-19-at-11.46.31-am-1544x564.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><strong>dotnet new gitignore</strong> and <strong>dotnet run</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sBuL2HUbRO" id="image3-1d0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-19-at-12.07.27-pm-1712x472.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">navigate to https://localhost:5001/WeatherForecast</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sBvdETy8tH" id="content5-1ej">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Book class</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The Book class include id and title properties<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sBvdRigBwE" id="content7-1ek">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Book.cs</strong></h5>
+
+<pre class="language-clike"><code><!--         
+using System;
+
+namespace haddley_power_app_api
+{
+    public class Book
+    {
+        public Book(long id, String title)
+        {
+            this.id = id;
+            this.title = title;
+        }
+
+        public long id { get; set; }
+
+        public string title { get; set; }
+    }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sBvfcIWkoN" id="content5-1em">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">BookController class</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The BookController class is able to handle GET, POST, PUT and DELETE actions<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sBvfeYoEMd" id="content7-1en">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>BookController.cs</strong></h5>
+
+<pre class="language-clike"><code><!--         
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+
+namespace haddley_power_app_api.Controllers
+{
+    [ApiController]
+    [Route("[controller]")]
+    public class BookController : ControllerBase
+    {
+
+        private static readonly List<Book> books = new List<Book>()
+            {
+                (new Book(1788395549, "Learning Node.js Development")),
+                (new Book(1788620216, "Hands-On Microservices with Node.js"))
+            };
+
+        private readonly ILogger<BookController> _logger;
+
+        public BookController(ILogger<BookController> logger)
+        {
+            _logger = logger;
+        }
+
+        [HttpGet]
+        public IEnumerable<Book> GetBooks()
+        {
+            return books.ToArray();
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<Book> GetBooks(long id)
+        {
+            var itemFound = books.SingleOrDefault(book => book.id == id);
+            if (itemFound == null)
+            {
+                return NotFound("Book Not Found");
+            }
+
+            return itemFound;
+        }
+
+        
+        [HttpPost]
+        public IActionResult Post([FromBody] Book book)
+        {
+            books.Add(book);
+
+            System.Console.WriteLine(book.title);
+
+            return StatusCode(200);
+        }
+
+
+        [HttpPut("{id}")]
+        public IActionResult Put(long id, [FromBody] Book book)
+        {
+            var itemToUpdate = books.SingleOrDefault(book => book.id == id);
+            if (itemToUpdate != null)
+                itemToUpdate.title = book.title;
+
+            return StatusCode(200);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(long id)
+        {
+            var itemToRemove = books.SingleOrDefault(book => book.id == id);
+            if (itemToRemove != null)
+                books.Remove(itemToRemove);
+            return StatusCode(200);
+        }
+
+    }
+
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sBvdTLpVsW" id="content5-1el">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Enable Swagger in production</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Comment out the if (env.IsDevelopment()) condition to enable Swagger in production (Azure)</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sBvdmqRP62" id="image3-1ei">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-19-at-2.57.03-pm-1380x724.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">comment out the "if (env.IsDevelopement())" code</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sBv6VTspJV" id="content5-1eh">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Deploy the updated project code to Azure</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Create new web app.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sBv3CzglPT" id="image3-1e9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-19-at-1.42.47-pm-1020x214.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">haddley-power-app-api</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sBv3DbM0x8" id="image3-1ea">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-19-at-1.43.00-pm-1020x201.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">.NET Core 3.1 runtime</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sBv3DAymh4" id="image3-1eb">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-19-at-1.43.10-pm-1020x277.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Select pricing tier</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sBuL7ae6d7" id="image3-1dc">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-19-at-2.45.46-pm-942x248.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Deploy the code to the new web app</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sBuL60CeYI" id="image3-1d9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-19-at-2.47.32-pm-550x530.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">confirm deployment of the code</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sBuL6NZKvZ" id="image3-1db">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-19-at-2.57.45-pm-1020x654.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">navigate to http://haddley-power-app-api.azurewebsites.net/swagger to see a list of the GET, POST, PUT and DELETE actions</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sBvLMOQ957" id="content5-1fe">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Use the Swagger user interface to test the API</h4>
+                <p class="mbr-text mbr-fonts-style display-7">In three steps:</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content9 cid-sBvPfcUDLe" id="content9-1fh">
     
 
     <div class="container">
@@ -122,7 +568,9 @@
                 
                 <div class="mbr-text mbr-fonts-style display-7">
                     <ol>
-                        <li><strong>login to a Microsoft Office 365 tenant</strong></li><li><strong>create a SharePoint Site; and</strong></li><li><strong>apply a <a href="sharepointsitedesignsandsitescripts.html" class="text-primary">Site Design</a>.</strong></li>
+                        <li><strong>Get the books</strong></li>
+                        <li><strong>Add a book</strong></li>
+                        <li><strong>Get the books (list should now include the *new* book)</strong></li>
                     </ol>
                 </div>
             </div>
@@ -130,20 +578,173 @@
     </div>
 </section>
 
-<section class="content5 cid-sAK5rq3z69" id="content5-1bp">
+<section class="image3 cid-sBvLBejc1J" id="image3-1ey">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-27-at-5.45.31-pm-1836x1137.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Expand the GET /Book action</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sBvLBMKOhJ" id="image3-1ez">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-27-at-5.45.43-pm-1836x1135.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">execute the GET /Book action</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sBvLCNtmCi" id="image3-1f1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-27-at-5.45.56-pm-1836x1137.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Review the server response</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sBvLDkuT2z" id="image3-1f2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-27-at-5.46.27-pm-1836x1132.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Expand the POST /Book action</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sBvLDNC6nv" id="image3-1f3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-27-at-5.46.44-pm-1836x1131.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Update the request body</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sBvLE61Ly8" id="image3-1f4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-27-at-5.47.32-pm-1836x1134.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Execute the POST /Book action using the Request body<br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sBvLCksvGs" id="image3-1f0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-27-at-5.47.51-pm-1836x1128.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Review the Server response</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sBvLExDWWa" id="image3-1f5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-27-at-5.48.05-pm-1836x1119.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Execute the GET /Book action</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sBvLF3yFkd" id="image3-1f6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-27-at-5.48.20-pm-1836x1129.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Review the Server response</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sBvNYblbqK" id="content5-1ff">
     
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
                 
-                
-                <p class="mbr-text mbr-fonts-style display-7">I used these commands:<br><br>~$ m365 login<br>~$ m365 spo site add --alias todoSite --title "Site with To Do"<br>~$ m365 spo sitedesign list<br>~$ m365 spo sitedesign apply --webUrl https://haddleyoffice365.sharepoint.com/sites/todoSite --id 789673f0-178d-4c9a-913c-e3187b7e2f13</p>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">API description</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Click the "/swagger/v1/swagger.json" link to review a description of the API.</p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-sAK5rq8ZnG" id="image3-1bq">
+<section class="image3 cid-sBuLawHsIF" id="image3-1dl">
     
 
     
@@ -152,15 +753,15 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-02-22-at-4.33.38-pm-1134x740.png" alt="Docker image">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Using Docker</p>
+                    <img src="assets/images/screen-shot-2021-06-19-at-3.04.59-pm-1786x854.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Export/Save the API description (openapi version 3 format)</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-sAK5rqfUGy" id="image3-1br">
+<section class="image3 cid-sBuLbbSLxe" id="image3-1dn">
     
 
     
@@ -169,16 +770,15 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-02-22-at-6.00.26-pm-1136x736.png" alt="Login">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
-                        m365 login</p>
+                    <img src="assets/images/screen-shot-2021-06-19-at-3.09.40-pm-1836x1027.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Upload the API description to API Transformer</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-sAK5rqmRvj" id="image3-1bs">
+<section class="image3 cid-sBuLbyRgJr" id="image3-1do">
     
 
     
@@ -187,55 +787,158 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-02-22-at-6.29.56-pm-1136x740.png" alt="Add Site">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Site add</p>
+                    <img src="assets/images/screen-shot-2021-06-19-at-3.12.05-pm-1836x1025.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Download the API description (openapi version 2 format)</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-sAK5rqtvjj" id="image3-1bt">
-    
-
-    
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-02-22-at-6.31.57-pm-1126x736.png" alt="Apply Site Design">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
-                        Apply Site Design</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="image3 cid-sAK5rqDaNU" id="image3-1bu">
-    
-
-    
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-02-22-at-7.15.43-pm-1836x1075.png" alt="Site with To Do List">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">*New* Site with To Do List</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="content12 cid-sAK5rqNorB" id="content12-1bv">
+<section class="content5 cid-sBvgJwAMBH" id="content5-1eo">
     
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
-                <div class="mbr-section-btn align-center"><a class="btn btn-primary display-4" href="https://hub.docker.com/r/m365pnp/cli-microsoft365" target="_blank">Docker Hub</a></div>
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">New custom connector</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Navigate to make.powerapps.com and select the "Custom Connectors" menu item.<br><br>Click the "+ New custom connector" button.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sBuL6p6Vxh" id="image3-1da">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-19-at-2.44.57-pm-1836x1152.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Custom Connectors</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sBuLaeBQLX" id="image3-1dk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-19-at-3.04.21-pm-522x530.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Select the Import an OpenAPI file option</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sBuLcKwR0d" id="image3-1dq">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-19-at-3.13.11-pm-732x600.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Import the API description (openapi version 2)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sBuKZKj0MJ" id="image3-1cr">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-19-at-3.14.57-pm-1836x1153.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Books</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sBuPYVmJbr" id="image3-1dr">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-19-at-3.15.06-pm-1836x1149.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Review the General settings</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sBuPZIXpZj" id="image3-1dt">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-19-at-3.15.23-pm-1836x1148.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Select "No Authentication" (for now)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sBuQ08R9Xh" id="image3-1du">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-27-at-4.25.58-pm-1836x1356.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Test the Book related actions</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sBuQ0UxAkB" id="image3-1dw">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-19-at-3.17.35-pm-1632x184.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Books Custom Connector</p>
+                </div>
             </div>
         </div>
     </div>
