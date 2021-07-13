@@ -384,7 +384,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Handle the custom OnSelect events</h4>
-                <p class="mbr-text mbr-fonts-style display-7"></p><p>Update all of the custom OnSelect events so that a user can navigate between the Screens<br><br><strong>BrowseScreen | BrowseHeader_1</strong><br>OnSelectRefresh =&nbsp;<br>OnSelectNewItem = Navigate(NewScreen)<br>OnSelectSortUpDown = Set(varSortDescending,!varSortDescending)<br><br><strong>DetailScreen | DetailHeader_1</strong><br>OnSelectBack = Navigate(BrowseScreen)<br>OnSelectDelete = Navigate(BrowseScreen)<br>OnSelectEdit = Navigate(EditScreen)<br><br><strong>EditScreen | EditHeader_1</strong><br>OnSelectAccept = Navigate(BrowseScreen)<br>OnSelectCancel = Navigate(BrowseScreen)<br><br><strong>NewScreen| EditHeader_2</strong><br>OnSelectAccept = Navigate(BrowseScreen)<br>OnSelectCancel = Navigate(BrowseScreen)<br><br></p><p></p>
+                <p class="mbr-text mbr-fonts-style display-7">Update all of the custom OnSelect events so that a user can navigate between the Screens<br><br>BrowseScreen | BrowseHeader_1<br>OnSelectRefresh = <br>OnSelectNewItem = Navigate(NewScreen)<br>OnSelectSortUpDown = Set(varSortDescending,!varSortDescending)<br><br>DetailScreen | DetailHeader_1<br>OnSelectBack = Navigate(BrowseScreen)<br>OnSelectDelete = Navigate(BrowseScreen)<br>OnSelectEdit = Navigate(EditScreen)<br><br>EditScreen | EditHeader_1<br>OnSelectAccept = Navigate(BrowseScreen)<br>OnSelectCancel = Navigate(BrowseScreen)<br><br>NewScreen| EditHeader_2<br>OnSelectAccept = Navigate(BrowseScreen)<br>OnSelectCancel = Navigate(BrowseScreen)<br></p><p><br><br></p><p></p>
             </div>
         </div>
     </div>
@@ -499,23 +499,6 @@
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2021-07-13-at-8.05.13-pm-1404x730.png" alt="">
                     <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Select the Books Custom Connector</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="image3 cid-sD1SHTpAFx" id="image3-1jb">
-    
-
-    
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-07-13-at-8.08.59-pm-1836x1051.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Select the OnVisible property of the BrowseScreen and add a ClearCollect statement</p>
                 </div>
             </div>
         </div>
@@ -835,7 +818,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Summary</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Here is a summary of the application screen and control settings<br><br>BrowseScreen | OnVisible = ClearCollect(colBooks,haddley_power_app_api.BookGET())<br><br>BrowseScreen | Gallery1 | Items = Sort(colBooks,title,If(varSortDescending,Descending,Ascending))<br><br>BrowseScreen | BrowseHeader_1<br>OnSelectRefresh = ClearCollect(colBooks,haddley_power_app_api.BookGET())<br>OnSelectNewItem = Navigate(NewScreen)<br>OnSelectSortUpDown = Set(varSortDescending,!varSortDescending)<br><br>DetailScreen | label5 | Text =&nbsp;Gallery1.Selected.title<br>DetailScreen | label3 | Text = Gallery1.Selected.id<br><br>DetailScreen | DetailHeader_1<br>OnSelectBack = Navigate(BrowseScreen)<br>OnSelectDelete = haddley_power_app_api.BookByIdDELETE(Gallery1.Selected.id);Navigate(BrowseScreen)<br>OnSelectEdit = Navigate(EditScreen)<br><br>EditScreen | TextInput3 | Default =&nbsp;Gallery1.Selected.title<br><br>EditScreen | EditHeader_1<br>OnSelectAccept = haddley_power_app_api.BookByIdPUT(Gallery1.Selected.id,{title:TextInput3.Text});Navigate(BrowseScreen)<br>OnSelectCancel = Navigate(BrowseScreen);<br><br>NewScreen | OnVisible = Reset(TextInput4);Reset(TextInput3_1);<br><br>UpdateContext({resetText: true});UpdateContext({resetText: false})<br><br>New Screen | OnVisible = UpdateContext({resettext: !resettext});UpdateContext({resettext: !resettext})<br><br>New Screen | TextInput4 | Default = ""<br>New Screen | TextInput4 | Reset =&nbsp;resettext<br><br>New Screen | TextInput3_1 | Default = ""<br>New Screen | TextInput3_1 | Reset = resettext<br><br>NewScreen | EditHeader_2<br>OnSelectAccept = haddley_power_app_api.BookPOST({id:TextInput4.Text,title:TextInput3_1.Text});Navigate(BrowseScreen)<br>OnSelectCancel = Navigate(BrowseScreen);<br><br></p>
+                <p class="mbr-text mbr-fonts-style display-7">Here is a summary of the application screen and control settings<br><br>BrowseScreen | OnVisible = ClearCollect(colBooks,haddley_power_app_api.BookGET())<br><br>BrowseScreen | Gallery1 | Items = Sort(colBooks,title,If(varSortDescending,Descending,Ascending))<br><br>BrowseScreen | BrowseHeader_1<br>OnSelectRefresh = ClearCollect(colBooks,haddley_power_app_api.BookGET())<br>OnSelectNewItem = Navigate(NewScreen)<br>OnSelectSortUpDown = Set(varSortDescending,!varSortDescending)<br><br>DetailScreen | label5 | Text = Gallery1.Selected.title<br>DetailScreen | label3 | Text = Gallery1.Selected.id<br><br>DetailScreen | DetailHeader_1<br>OnSelectBack = Navigate(BrowseScreen)<br>OnSelectDelete = haddley_power_app_api.BookByIdDELETE(Gallery1.Selected.id);Navigate(BrowseScreen)<br>OnSelectEdit = Navigate(EditScreen)<br><br>EditScreen | TextInput3 | Default = Gallery1.Selected.title<br><br>EditScreen | EditHeader_1<br>OnSelectAccept = haddley_power_app_api.BookByIdPUT(Gallery1.Selected.id,{title:TextInput3.Text});Navigate(BrowseScreen)<br>OnSelectCancel = Navigate(BrowseScreen);<br><br>NewScreen | OnVisible = Reset(TextInput4);Reset(TextInput3_1);<br><br>UpdateContext({resetText: true});UpdateContext({resetText: false})<br><br>New Screen | OnVisible = UpdateContext({resettext: !resettext});UpdateContext({resettext: !resettext})<br><br>New Screen | TextInput4 | Default = ""<br>New Screen | TextInput4 | Reset = resettext<br><br>New Screen | TextInput3_1 | Default = ""<br>New Screen | TextInput3_1 | Reset = resettext<br><br>NewScreen | EditHeader_2<br>OnSelectAccept = haddley_power_app_api.BookPOST({id:TextInput4.Text,title:TextInput3_1.Text});Navigate(BrowseScreen)<br>OnSelectCancel = Navigate(BrowseScreen);<br><br></p>
             </div>
         </div>
     </div>
