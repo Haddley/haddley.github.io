@@ -295,7 +295,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">eksctl</h4>
-                <p class="mbr-text mbr-fonts-style display-7">eksctl is a simple CLI tool for creating clusters on EKS - Amazon's managed Kubernetes service for EC2.<br><br><a href="https://github.com/weaveworks/eksctl" class="text-primary" target="_blank">https://github.com/weaveworks/eksctl</a><br><br>% eksctl create cluster \<br>--name blog-cluster \<br>--node-type t2.nano \<br>--nodes 2<br><br>% eksctl delete cluster \<br>--name blog-cluster<br></p>
+                <p class="mbr-text mbr-fonts-style display-7">eksctl is a simple CLI tool for creating clusters on EKS - Amazon's managed Kubernetes service for EC2.<br><br><a href="https://github.com/weaveworks/eksctl" class="text-primary" target="_blank">https://github.com/weaveworks/eksctl</a><br></p>
             </div>
         </div>
     </div>
@@ -521,7 +521,7 @@ spec:
     app: blog
   ports:
     - protocol: TCP
-      port: 8080
+      port: 80
       targetPort: 80
   type: LoadBalancer
 
