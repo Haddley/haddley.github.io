@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>NuGet C#</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  <link href="prism.css" rel="stylesheet" />
+<script src="aframe.min.js"></script>
+
+  
+</head>
+<body>
+  
+  <section class="menu menu3 cid-sqgxBuxniZ" once="menu" id="menu3-b3">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-sqgxBveOFx" id="content4-b4">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2">
+                    <strong>NuGet</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Create, publish and consume a NuGet package using C#.</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqgxBvuuD1" id="image3-b5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/logo-og-600x600.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a rel="nofollow" href="https://github.com/NuGet/Media/blob/master/Images/MainLogo/128x128/nuget_128.png"><br>            NuGet project logo</a>&nbsp;by&nbsp;<a href="https://www.google.com">NuGet project team</a>&nbsp;is licensed under&nbsp;<a rel="nofollow" class="external text" href="https://creativecommons.org/licenses/by/2.0/">CC<br></a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sqgxBvGeix" id="content5-b6">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Recursion</h4>
+                <p class="mbr-text mbr-fonts-style display-7"><em>When a function is called, the computer must "remember" the place it was called from... so that it can return to that location with the result once the call is complete. Typically, this information is saved on the call stack... For tail calls, there is no need to remember the caller...</em><br><br><a href="https://en.wikipedia.org/wiki/Tail_call" class="text-primary" target="_blank">https://en.wikipedia.org/wiki/Tail_call</a><br><br>Some interpreters (and compilers) eliminate the stack frame creation and destruction work when they recognize tail recursion.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sqgxBvOtM7" id="content5-b7">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">C#</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Adding a "<strong>HaddleyOffice365.dotnet-factorial</strong>" package to NuGet.org.<br><br>NuGet is the package manager for .NET.<br><br>Start by creating&nbsp;a <strong>dotnet-factorial</strong> repository in the https://github.com/<strong>HaddleyOffice365</strong> profile.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqgAOpmFoT" id="image3-bp">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-01-at-5.09.52-pm-788x908.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">New repository will be named dotnet-factorial</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqgAP4YjI4" id="image3-bq">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-02-28-at-1.10.13-pm-1048x348.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        Publish to GitHub</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqgBqkqvbe" id="image3-bt">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-02-28-at-1.11.02-pm-1026x236.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        Open in Visual Studio Code</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sqgASQHSij" id="content5-bs">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Create a .NET solution and the .NET projects</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Create a dotnet solution<br><br><strong>$ dotnet new sln</strong><br><br>Create a class library project and add the new class library project to the solution<br><br><strong>$ dotnet new classlib -o dotnet-factorial<br>$ dotnet sln add ./dotnet-factorial/dotnet-factorial.csproj</strong><br><br>Create a test project and add the new test project to the solution<br><br><strong>$ dotnet new mstest -o unittests<br>$ dotnet sln add ./unittests/unittests.csproj</strong><br><br>At a reference from the unit tests project to the factorial project.<br><br><strong>$ dotnet add&nbsp;&nbsp;./unittests/unittests.csproj reference&nbsp;./dotnet-factorial/dotnet-factorial.csproj </strong><br><br>Add a .gitignore file to the unit tests project directory and to the factorial project directory.<br><br><strong>$ cd&nbsp;dotnet-factorial<br>$ dotnet new gitignore<br>$ cd ../unittests<br>$ dotnet new gitignore<br>$ cd ..</strong><br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqgJHtb6I0" id="image3-bu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-01-at-5.22.23-pm-1836x1105.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">new solution, new classlib project and new mstest project</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sqgQIh33wX" id="content5-bv">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Rename UnitTest1, copy and rename Class1</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Rename the generated UnitTest1 class to "UnitTests"<br><br>Copy Class1 class and rename to "recursivefunctions.cs"<br>Rename the generated Class1 class to "iterativefunctions"<br><br>Update the file contents:</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sqgxBvVkUQ" id="content7-b8">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>UnitTests.cs</strong></h5>
+
+<pre class="language-clike"><code><!--
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using dotnet_factorial.recursive;
+using dotnet_factorial.iterative;
+
+namespace dotnet_factorial.unittests
+{
+    [TestClass]
+    public class UnitTests
+    {
+        [TestMethod]
+        public void TestMethod()
+        {
+            Assert.AreEqual(362880, recursivefunctions.factorial(9));
+            Assert.AreEqual(362880, recursivefunctions.factorial_tr(9));
+            Assert.AreEqual(362880, iterativefunctions.factorial_it(9));
+
+            Assert.AreEqual(7.257415615307994e+306, recursivefunctions.factorial(170));
+            Assert.AreEqual(7.257415615308004e+306, recursivefunctions.factorial_tr(170));
+            Assert.AreEqual(7.257415615308004e+306, iterativefunctions.factorial_it(170));
+        }
+    }
+}
+--></code></pre> 
+                
+                
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sqgxBw1uoQ" id="content7-b9">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>iterativefunctions.cs</strong></h5>
+                
+                
+<pre class="language-clike"><code><!--   
+using System;
+
+namespace dotnet_factorial.iterative
+{
+    public class iterativefunctions
+    {
+        public static double factorial_it(int n)
+        {
+            double acc = 1;
+
+            for (int i = n; i > 1; i--)
+            {
+                acc = acc * i;
+            }
+
+            return acc;
+        }
+    }
+}
+--></code></pre>                
+                    
+                
+                
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sqnx8RimSR" id="content7-ci">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>recursivefunctions.cs</strong></h5>
+                
+<pre class="language-clike"><code><!--   
+using System;
+
+namespace dotnet_factorial.recursive
+{
+    public class recursivefunctions
+    {
+
+        public static double factorial(int n)
+        {
+            if (n < 2) return 1;
+            return n * factorial(n - 1);
+        }
+
+        private static double fac_tr_aux(int n, double acc)
+        {
+            if (n < 2)
+                return acc;
+            return fac_tr_aux(n - 1, n * acc);
+        }
+
+        public static double factorial_tr(int n)
+        {
+            return fac_tr_aux(n, 1);
+        }
+
+    }
+}
+--></code></pre>    
+                
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sqgxBwdJft" id="content5-bb">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">dotnet test</h4>
+                <p class="mbr-text mbr-fonts-style display-7">use "dotnet test" to run the unit test locally on the development machine.<br><br><strong>$ dotnet test</strong><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqnz9xG533" id="image3-cj">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-01-at-5.51.08-pm-1836x1108.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">dotnet test</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sqgT5LcIkk" id="content5-bw">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Commit to main</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Commit updates to the repository.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqgT7VBoM9" id="image3-bx">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-01-at-5.53.33-pm-1836x1251.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        Commit to main branch</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqgT8DbeiG" id="image3-by">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-02-28-at-2.26.08-pm-1072x276.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        Push origin</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sqgxBwQVX6" id="content5-bg">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">GitHub actions</h4>
+                <p class="mbr-text mbr-fonts-style display-7">A GitHub action will ensure that testing is performed automatically.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqgVhjewaD" id="image3-c1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-01-at-5.56.28-pm-1140x764.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        Add the ".NET By GitHub Actions" workflow</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sqgxBwWUqn" id="content7-bh">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>dotnet.yml</strong></h5>
+                
+                
+<pre class="language-yaml"><code><!--          
+name: .NET
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+--></code></pre>      
+                
+        </blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqnB76t63U" id="image3-ck">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-01-at-5.57.11-pm-1836x871.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        GitHub action running</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqnB7LjAnj" id="image3-cl">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-01-at-5.58.00-pm-1708x360.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        GitHub action finished</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqnB8cL0Aa" id="image3-cm">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-01-at-5.58.27-pm-1836x956.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        GitHub action details</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sqgxBxwUAT" id="content5-bl">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">PackageLicenseExpression, PackageId and Version</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Add PackageLicenseExpression, PackageId and Version tags to the Functions.csproj file<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqnDPfYyB7" id="image3-cs">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-01-at-6.10.42-pm-1836x709.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        dotnet-factorial.csproj</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sqnDhmXkFt" id="content7-cr">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>dotnet-factorial.csproj updates</strong></h5>
+                
+<pre class="language-xml"><code><!--   
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageId>HaddleyOffice365.dotnet-factorial</PackageId>
+    <Version>1.0.0</Version>
+    
+    <Title>DotNet Factorial Functions</Title>
+    <Authors>Neil Haddley</Authors>
+    <PackageProjectUrl>
+    https://github.com/haddleyoffice365/dotnet-factorial
+    </PackageProjectUrl>
+    <Description>Recursive and Iterative functions in C#.</Description>
+--></code></pre>
+                     
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sqnEiA4f6x" id="content5-ct">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">dotnet pack</h4>
+                <p class="mbr-text mbr-fonts-style display-7">use "dotnet pack" to create <folder><packageid><version>.nupkg file<br><br><strong>$ dotnet pack</strong></version></packageid></folder><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqnEGqGbJq" id="image3-cu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-01-at-6.13.36-pm-1836x703.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        dotnet pack</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sqnJy2OdyE" id="content5-cv">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Listing the NuGet package</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Upload the nupkg file to nuget.org.&nbsp;</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqnJJ4kpsh" id="image3-cw">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-01-at-6.20.15-pm-1836x971.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">+ Add new</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqnJJARi82" id="image3-cx">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-01-at-6.20.27-pm-1836x973.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        Browse...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqnJK9qYYp" id="image3-cy">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-01-at-6.21.03-pm-1836x1055.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Choose for Upload</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqnJKCwgFh" id="image3-cz">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-01-at-6.21.19-pm-1836x1055.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        Verify</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqnJL89Pu5" id="image3-d0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-01-at-6.22.19-pm-1836x1049.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        Submit</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqnK8LG8Aq" id="image3-d3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-01-at-6.22.51-pm-1836x944.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        Successful upload. Status Validating</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqnJMg81yh" id="image3-d2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-01-at-6.31.45-pm-1836x962.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        Status Listed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sqlkorTMXx" id="content5-cd">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Consuming the NuGet Package</h4>
+                <p class="mbr-text mbr-fonts-style display-7"><strong>$ dotnet new console<br>$ dotnet new gitignore<br>$ dotnet add package HaddleyOffice365.dotnet-factorial --version 1.0.0</strong></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqlmjd23Li" id="image3-ce">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-01-at-6.50.49-pm-1836x1229.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        dotnet add package HaddleyOffice365.dotnet-factorial --version 1.0.0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sqnPx09SHX" id="content7-d6">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Program.cs</strong></h5>
+                
+                
+<pre class="language-clike"><code><!--         
+using System;
+using dotnet_factorial.iterative;
+using dotnet_factorial.recursive;
+
+namespace dotnet_factorial_console
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("factorial of 9 is {0}",iterativefunctions.factorial_it(9));
+            Console.WriteLine("factorial of 9 is {0}",recursivefunctions.factorial(9));
+            Console.WriteLine("factorial of 9 is {0}",recursivefunctions.factorial_tr(9));
+        }
+    }
+}
+--></code></pre>
+                
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sqnPg1t2Le" id="content5-d4">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">dotnet run</h4>
+                <p class="mbr-text mbr-fonts-style display-7"><strong>$ dotnet run</strong><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqnPn14o1k" id="image3-d5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-01-at-6.54.50-pm-1836x1229.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        dotnet run</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="footer3 cid-sqgxBxMkSI" once="footers" id="footer3-bn">
+
+    
+
+    
+
+    <div class="container">
+        <div class="media-container-row align-center mbr-white">
+            <div class="row row-links">
+                <ul class="foot-menu">
+                    
+                    
+                    
+                    
+                    
+                <li class="foot-menu-item mbr-fonts-style display-7"><a href="mailto:neil@haddley.com" class="text-success">Email Me</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://www.facebook.com/neil.haddley/" class="text-success">Facebook</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://www.linkedin.com/in/neil-haddley/" class="text-success">Linked In</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://github.com/haddleyoffice365" class="text-success">GitHub</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://www.npmjs.com/~haddley" class="text-success">npm</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://hub.docker.com/u/haddley" class="text-success">Docker Hub</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://www.nuget.org/profiles/haddleyoffice365" class="text-success text-primary" target="_blank">NuGet</a></li></ul>
+            </div>
+            <div class="row social-row">
+                <div class="social-list align-right pb-2">
+                    
+                    
+                    
+                    
+                    
+                    
+                <div class="soc-item">
+                        <a href="mailto:neil@haddley.com">
+                            <span class="mbr-iconfont mbr-iconfont-social socicon-mail socicon"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://www.facebook.com/neil.haddley" target="_blank">
+                            <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                            <span class="mbr-iconfont mbr-iconfont-social socicon-linkedin socicon"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://github.com/haddley" target="_blank">
+                            <span class="mbr-iconfont mbr-iconfont-social mbrib-github"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://www.npmjs.com/~haddley" target="_blank">
+                            <span class="mbr-iconfont mbr-iconfont-social socicon-npm socicon"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://hub.docker.com/u/haddley" target="_blank">
+                            <span class="mbr-iconfont mbr-iconfont-social mobi-mbri-delivery mobi-mbri"></span>
+                        </a>
+                    </div></div>
+            </div>
+            <div class="row row-copirayt">
+                <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-7">
+                    © Copyright 2021 Neil Haddley. All Rights Reserved.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/popper/popper.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/dropdown/js/nav-dropdown.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+
+  
+</body>
+</html>

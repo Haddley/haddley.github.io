@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Power Apps Custom Components</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  <link href="prism.css" rel="stylesheet" />
+<script src="aframe.min.js"></script>
+
+  
+</head>
+<body>
+  
+  <section class="menu menu3 cid-sD1q75IWbi" once="menu" id="menu3-1fi">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-sD1q76qmJ8" id="content4-1fj">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Power Apps (Part 2)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Create reusable Power Apps Components.</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sD1q76LVjl" id="image3-1fk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/office-365-icon-500x500.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a rel="nofollow" href="https://commons.wikimedia.org/wiki/File:Microsoft_Office_logo.png"><br>            Microsoft_Office_logo</a>&nbsp;by&nbsp;<a href="https://www.google.com">Microsoft</a>&nbsp;is licensed under&nbsp;<a rel="nofollow" class="external text" href="https://creativecommons.org/licenses/by/2.0/">CC<br></a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sD1uNNQjuk" id="content5-1hi">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">New component library</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Navigate to <a href="https://make.powerapps.com/" class="text-primary">https://make.powerapps.com/</a><br><br>Select the "Apps" menu item and select the "Component libraries" tab.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sD1urxgz3a" id="image3-1gw">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-07-13-at-5.57.27-pm-1270x508.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Click the + New component library button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sD1us2JpwQ" id="image3-1gx">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-07-13-at-5.58.34-pm-1820x1124.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Name the library</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sD1usmbM8S" id="image3-1gy">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-07-13-at-5.59.41-pm-978x370.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Rename the sample component</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sD1usq6jRH" id="image3-1gz">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-07-13-at-5.59.50-pm-802x286.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Name the component "EditHeader"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sD1ustl49F" id="image3-1h0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-07-13-at-6.00.07-pm-452x134.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add a second component</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sD1usw3p9O" id="image3-1h1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-07-13-at-6.00.18-pm-1058x450.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Rename the second component</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sD1usyLv99" id="image3-1h2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-07-13-at-6.00.29-pm-610x118.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Name the second component "BrowseHeader"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sD1usBrMgT" id="image3-1h3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-07-13-at-6.00.48-pm-982x566.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add a third component</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sD1usFqjaD" id="image3-1h4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-07-13-at-6.00.58-pm-678x142.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Rename the third component "DetailHeader"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sD1usHLdRr" id="image3-1h5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-07-13-at-6.01.19-pm-698x240.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Set the height of all three components from 640 to 88.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sD1usKaWIz" id="image3-1h6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-07-13-at-6.02.46-pm-672x272.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add a custom property to the EditHeader component</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sD1usMySuG" id="image3-1h7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-07-13-at-6.03.50-pm-1272x826.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Name the Input property Title</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sD1usTM9YM" id="image3-1ha">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-07-13-at-6.07.09-pm-1276x834.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add an "OnSelectAccept" custom Behavior property</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sD1usRpnbv" id="image3-1h9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-07-13-at-6.05.57-pm-1836x893.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">If you are unable to add a Behavior property enable "Enhanced component properties" in the settings dialog.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sD1usWdoTZ" id="image3-1hb">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-07-13-at-6.07.42-pm-1268x832.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add an "OnSelectCancel" custom Behavior property</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sD1usYNeEb" id="image3-1hc">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-07-13-at-6.08.28-pm-1836x941.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Select the IconCancel control and edit the OnSelect property so that selecting the cancel icon will raise the custom OnSelectCancel event</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sD1utuslcw" id="image3-1hd">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-07-13-at-6.08.44-pm-1836x941.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Select the AppName control and edit the Text property so that the value of the Title property will be copied to the text property of the label.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sD1utwZFpa" id="image3-1he">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-07-13-at-6.08.54-pm-1836x949.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Select the IconAccept control and edit the OnSelect property so that selecting the tick icon will raise the new custom OnSelectAccept event</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sD1Agq78qQ" id="content5-1hj">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Repeat these steps for the BrowseHeader and DetailHeader Components</h4>
+                <p class="mbr-text mbr-fonts-style display-7">These custom properties will be added to BrowseHeader:<br><br>{Title,&nbsp;OnSelectRefresh,&nbsp;OnSelectNewItem,&nbsp;OnSelectSortUpDown}<br><br>These custom properties will be added to DetailHeader:<br><br>{Title,&nbsp;OnSelectBack,&nbsp;OnSelectDelete,&nbsp;OnSelectEdit}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sD1utBSf7t" id="image3-1hg">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-07-13-at-7.05.52-pm-1758x960.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Publish</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="footer3 cid-sD1q7fs1LT" once="footers" id="footer3-1gv">
+
+    
+
+    
+
+    <div class="container">
+        <div class="media-container-row align-center mbr-white">
+            <div class="row row-links">
+                <ul class="foot-menu">
+                    
+                    
+                    
+                    
+                    
+                <li class="foot-menu-item mbr-fonts-style display-7"><a href="mailto:neil@haddley.com" class="text-success">Email Me</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://www.facebook.com/neil.haddley/" class="text-success">Facebook</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://www.linkedin.com/in/neil-haddley/" class="text-success">Linked In</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://github.com/haddleyoffice365" class="text-success">GitHub</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://www.npmjs.com/~haddley" class="text-success">npm</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://hub.docker.com/u/haddley" class="text-success">Docker Hub</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://www.nuget.org/profiles/haddleyoffice365" class="text-success text-primary" target="_blank">NuGet</a></li></ul>
+            </div>
+            <div class="row social-row">
+                <div class="social-list align-right pb-2">
+                    
+                    
+                    
+                    
+                    
+                    
+                <div class="soc-item">
+                        <a href="mailto:neil@haddley.com">
+                            <span class="mbr-iconfont mbr-iconfont-social socicon-mail socicon"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://www.facebook.com/neil.haddley" target="_blank">
+                            <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                            <span class="mbr-iconfont mbr-iconfont-social socicon-linkedin socicon"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://github.com/haddley" target="_blank">
+                            <span class="mbr-iconfont mbr-iconfont-social mbrib-github"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://www.npmjs.com/~haddley" target="_blank">
+                            <span class="mbr-iconfont mbr-iconfont-social socicon-npm socicon"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://hub.docker.com/u/haddley" target="_blank">
+                            <span class="mbr-iconfont mbr-iconfont-social mobi-mbri-delivery mobi-mbri"></span>
+                        </a>
+                    </div></div>
+            </div>
+            <div class="row row-copirayt">
+                <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-7">
+                    © Copyright 2021 Neil Haddley. All Rights Reserved.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/popper/popper.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/dropdown/js/nav-dropdown.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+
+  
+</body>
+</html>

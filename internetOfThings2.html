@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Internet of Things (Part 2)</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  <link href="prism.css" rel="stylesheet" />
+<script src="aframe.min.js"></script>
+
+  
+</head>
+<body>
+  
+  <section class="menu menu3 cid-sqS2LU9tjP" once="menu" id="menu3-h4">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-sqS2LUXE51" id="content4-h5">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2">
+                    <strong>Internet of Things (Part 2)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Node-RED can publish messages to a MQTT broker and subscribe to MQTT topics.</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqS2LViZsr" id="image3-h6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/iot-microchip.svg" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a rel="nofollow" href="https://thenounproject.com/term/iot-microchip/2546028/"><br>            iot microchip</a>&nbsp;by&nbsp;<a rel="nofollow" href="/masteroficon">Philipp Petzka</a>&nbsp;is licensed under&nbsp;<a rel="nofollow" class="external text" href="https://creativecommons.org/licenses/by/2.0/">CC<br></a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sqS2LYhSdv" id="content5-hn">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Node-RED</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Node-RED can be used to publish messages to an MQTT broker.<br><br>Node-RED is able to subscribe to MQTT broker messages.<br><br><strong>$ docker run -it -p 1880:1880 nodered/node-red</strong><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqS2LYvPhV" id="image3-ho">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-04-at-7.46.57-pm-1136x736.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        node-red Docker image</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqSfh1LaU0" id="image3-i7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-06-at-11.35.48-pm-1836x1045.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Connecting Node-RED to the MQTT broker</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqSfhFGWv0" id="image3-i8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-06-at-11.41.33-pm-1836x1051.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">"mqtt in" node subscribes to "outTopic" messages</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqSfi7iNSk" id="image3-i9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-06-at-11.42.05-pm-1836x1053.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">"debug" node displays the incoming "outTopic" messages on debug panel</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqSfixD5Zk" id="image3-ia">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-06-at-11.45.34-pm-1836x1040.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">"mqtt out" node publishes "1" or "0" to the "inTopic" and ESP8266 LED turns on or off.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sqU6Xirzei" id="content5-in">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">MQTT topics and payloads</h4>
+                <p class="mbr-text mbr-fonts-style display-7">In the example above "inTopic" is a command topic and "outTopic" is a topic for telemetry.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sqU6YeD81g" id="content5-io">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Command Topics</h4>
+                <p class="mbr-text mbr-fonts-style display-7">In the example above the ESP8266 microprocessor subscribes to "inTopic" messages and when it sees a message with the payload "1" the builtin LED is turned on. <br><br>In fact dozens or hundreds of IoT devices could subscribe to "inTopic" messages turning on or off together. <br><br>But, what if a developer would like a single ESP8266 device's builtin LED to turn on? What if a developer would like to turn on a fan connected to a single ESP8266 device? What if a developer would like to turn off the fans connected to&nbsp;all ESP8266 devices on given floor of a given building?<br><br>Well every device that connects to an MQTT broker has a unique "thing name" (and a unique MQTT client id) but how would the publisher of a control message specify that they wanted to turn off the fan connected to the ESP8266 with a given "thing name"?<br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sqUurexcv0" id="content5-ir">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Topic structure</h4>
+                <p class="mbr-text mbr-fonts-style display-7">If a device with thing name "thing1" is in conference room 2 on floor 2 of building 3 a developer can arrange for that thing's builtin LED to turn off whenever a message with payload "0" is published with this topic:<br><br><strong>cmd/hvac/building3/floor2/confroom2/thing1/builtinled</strong><br><br>A developer can arrange for a fan controlled by thing1 to be turned on whenever a message with payload "1" is published with this topic:<br><br><strong>cmd/hvac/building3/floor2/confroom2/thing1/fan</strong><br><br>A developer can arrange for fans controlled by all things on floor 2 to be turned off when a message with payload "0" is published with this topic:<br><br><strong>cmd/hvac/building3/floor2/fan</strong><br><br>Sample ESP8266 code is shown below.<br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sqUYGZYHw5" id="content7-is">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>mqtt_esp8266_topic_structure.ino</strong></h5>
+
+<pre class="language-clike"><code><!--         
+#include <ESP8266WiFi.h>
+#include <PubSubClient.h>
+
+const char* THING_NAME = "thing1";
+
+const char* ssid = "<WIFI NAME>";
+const char* password = "<WIFI PASSWORD>"
+const char* mqtt_server = "<MQTT BROKER ADDRESS>";
+const int CONNECTED_FAN = 4; // GOIP D2
+
+WiFiClient espClient;
+PubSubClient client(espClient);
+unsigned long lastMsg = 0;
+#define MSG_BUFFER_SIZE	(50)
+char msg[MSG_BUFFER_SIZE];
+int value = 0;
+
+void setup_wifi() {
+
+  delay(10);
+  Serial.println();
+  Serial.print("Connecting to ");
+  Serial.println(ssid);
+
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(ssid, password);
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  Serial.println("");
+  Serial.println("WiFi connected");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+}
+
+void callback(char* topic, byte* payload, unsigned int length) {
+  Serial.print("Message arrived [");
+  Serial.print(topic);
+  Serial.print("] ");
+  for (int i = 0; i < length; i++) {
+    Serial.print((char)payload[i]);
+  }
+  Serial.println();
+
+  String strTopic(topic);
+  if (strTopic.endsWith("/builtinled")) {
+    if ((char)payload[0] == '1') {
+      digitalWrite(BUILTIN_LED, LOW);   // Turn the LED on (Note that LOW is the voltage level
+    } else {
+      digitalWrite(BUILTIN_LED, HIGH);  // Turn the LED off by making the voltage HIGH
+    }
+  }
+  if (strTopic.endsWith("/fan")) {
+    if ((char)payload[0] == '1') {
+      digitalWrite(CONNECTED_FAN, LOW);   // Turn the FAN off
+    } else {
+      digitalWrite(CONNECTED_FAN, HIGH);  // Turn the FAN on
+    }
+  }
+
+
+}
+
+void reconnect() {
+  // Loop until we're reconnected
+  while (!client.connected()) {
+    Serial.print("Attempting MQTT connection...");
+
+    // Create a "thing name"/client ID
+    String strThingName(THING_NAME);
+    String fullpathThingName = "cmd/hvac/building3/floor2/confroom2/"+strThingName+"/+";
+
+    // Attempt to connect
+    if (client.connect(THING_NAME)) {
+      Serial.println("connected");
+      // resubscribe
+      client.subscribe(fullpathThingName.c_str());
+      client.subscribe("cmd/hvac/building3/floor2/confroom2/+");
+      client.subscribe("cmd/hvac/building3/floor2/+");
+      client.subscribe("cmd/hvac/building3/+");
+    } else {
+      Serial.print("failed, rc=");
+      Serial.print(client.state());
+      Serial.println(" try again in 5 seconds");
+      // Wait 5 seconds before retrying
+      delay(5000);
+    }
+  }
+}
+
+void setup() {
+  pinMode(BUILTIN_LED, OUTPUT);     // Initialize the BUILTIN_LED pin as an output
+  pinMode(CONNECTED_FAN, OUTPUT);   // Initialize CONNECTED_FAN  - GOIP D2 - as an output
+  Serial.begin(115200);
+  setup_wifi();
+  client.setServer(mqtt_server, 1883);
+  client.setCallback(callback);
+}
+
+void loop() {
+
+  if (!client.connected()) {
+    reconnect();
+  }
+  client.loop();
+
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqUYKcNyLJ" id="image3-it">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-07-at-11.21.47-am-1836x1106.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">publishing to "cmd/hvac/building3/floor2/confroom2/thing1/builtinled"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqV7TAgYAv" id="image3-iu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-07-at-11.35.42-am-1836x1108.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">subscribing to "cmd/hvac/#'</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sqUu2oLhhA" id="content5-iq">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Response</h4>
+                <p class="mbr-text mbr-fonts-style display-7">If the publisher of a Command Topic message wants to receive responses they might provide a JSON payload that includes a "session-id" and a "res-topic". The session-id would be passed to the ESP8266 device so that it can differentiate between commands that are repeated or re-sent over time. The res-topic would be used as the response message's topic (it is better not to hardcode the response message's topic).<br><br>Instead of passing the string "1" the Command Topic message's payload would be:<br><br>{<br>"session-id":"session-123456789012",<br>"res-topic":"cmd/hvac/building3/floor2/res",<br>"value":"1"<br>}<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sqU7d2YppF" id="content5-ip">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Topic for telemetry</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Telemetry is read-only data that is transmitted by a device and aggregated elsewhere.<br><br>A temperature sensor reading might be published by the ESP8266 using this topic&nbsp;<br><br><strong>dt/hvac/building3/floor2/confroom2/thing1/temperature</strong><br><br>the temperature units might be published using this topic<br><br><strong>dt/hvac/building3/floor2/confroom2/thing1/temperature/units</strong><br><br>A humidity sensor reading might be published by the ESP8266 using this topic<br><br><strong>dt/hvac/building3/floor2/confroom2/thing1/humidity</strong><br><br>How often an ESP8266 should publish a value depend on the application. The device could publish an update every few minutes, every few seconds or every time the value changes.&nbsp;<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sqW5lMDgIV" id="content7-ix">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>mqtt_esp8266_topic_structure_telemetry.ino</strong></h5>
+
+<pre class="language-clike"><code><!--         
+#include <ESP8266WiFi.h>
+#include <PubSubClient.h>
+#include "DHT.h"
+
+const char* THING_NAME = "thing1";
+
+// Create a "thing name"/client ID
+static String strThingName(THING_NAME);
+
+const char* ssid = "<WIFI NAME>";
+const char* password = "<WIFI PASSWORD>"
+const char* mqtt_server = "<MQTT BROKER ADDRESS>";
+const int CONNECTED_FAN = 4; // GOIP D2
+
+#define DHTTYPE DHT11   // DHT 11
+// DHT Sensor
+const int DHTPin = 5; // GPIO D1
+// Initialize DHT sensor.
+DHT dht(DHTPin, DHTTYPE);
+
+// Temporary variables
+static char celsiusTemp[7];
+static char fahrenheitTemp[7];
+static char humidityTemp[7];
+
+#define  FLT_MIN   1.17549435E-38F
+
+static float h_old = FLT_MIN;
+static float t_old = FLT_MIN;
+
+WiFiClient espClient;
+PubSubClient client(espClient);
+unsigned long lastMsg = 0;
+#define MSG_BUFFER_SIZE	(50)
+char msg[MSG_BUFFER_SIZE];
+
+void setup_wifi() {
+
+  delay(10);
+  // We start by connecting to a WiFi network
+  Serial.println();
+  Serial.print("Connecting to ");
+  Serial.println(ssid);
+
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(ssid, password);
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  Serial.println("");
+  Serial.println("WiFi connected");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+}
+
+void callback(char* topic, byte* payload, unsigned int length) {
+  Serial.print("Message arrived [");
+  Serial.print(topic);
+  Serial.print("] ");
+  for (int i = 0; i < length; i++) {
+    Serial.print((char)payload[i]);
+  }
+  Serial.println();
+
+  String strTopic(topic);
+  if (strTopic.endsWith("/builtinled")) {
+    if ((char)payload[0] == '1') {
+      digitalWrite(BUILTIN_LED, LOW);   // Turn the LED on (Note that LOW is the voltage level
+    } else {
+      digitalWrite(BUILTIN_LED, HIGH);  // Turn the LED off by making the voltage HIGH
+    }
+  }
+  if (strTopic.endsWith("/fan")) {
+    if ((char)payload[0] == '1') {
+      digitalWrite(CONNECTED_FAN, LOW);   // Turn the FAN off
+    } else {
+      digitalWrite(CONNECTED_FAN, HIGH);  // Turn the FAN on
+    }
+  }
+
+}
+
+void reconnect() {
+  // Loop until we're reconnected
+  while (!client.connected()) {
+    Serial.print("Attempting MQTT connection...");
+
+    String fullpathThingName = "cmd/hvac/building3/floor2/confroom2/" + strThingName + "/+";
+
+    // Attempt to connect
+    if (client.connect(THING_NAME)) {
+      Serial.println("connected");
+      // resubscribe
+      client.subscribe(fullpathThingName.c_str());
+      client.subscribe("cmd/hvac/building3/floor2/confroom2/+");
+      client.subscribe("cmd/hvac/building3/floor2/+");
+      client.subscribe("cmd/hvac/building3/+");
+    } else {
+      Serial.print("failed, rc=");
+      Serial.print(client.state());
+      Serial.println(" try again in 5 seconds");
+      // Wait 5 seconds before retrying
+      delay(5000);
+    }
+  }
+}
+
+void setup() {
+  pinMode(BUILTIN_LED, OUTPUT);     // Initialize the BUILTIN_LED pin as an output
+  pinMode(CONNECTED_FAN, OUTPUT);
+  Serial.begin(115200);
+  setup_wifi();
+  client.setServer(mqtt_server, 1883);
+  client.setCallback(callback);
+}
+
+void loop() {
+
+  if (!client.connected()) {
+    reconnect();
+  }
+  client.loop();
+
+  unsigned long now = millis();
+  if (now - lastMsg > 5000) {
+
+    // SENSOR READ START
+
+    // Sensor readings may also be up to 5 seconds 'old' (its a very slow sensor)
+    float h = dht.readHumidity();
+    // Read temperature as Celsius (the default)
+    float t = dht.readTemperature();
+    // Read temperature as Fahrenheit (isFahrenheit = true)
+    float f = dht.readTemperature(true);
+    // Check if any reads failed and exit early (to try again).
+    if (isnan(h) || isnan(t) || isnan(f)) {
+      Serial.println("Failed to read from DHT sensor!");
+      strcpy(celsiusTemp, "Failed");
+      strcpy(fahrenheitTemp, "Failed");
+      strcpy(humidityTemp, "Failed");
+    }
+    else {
+      // Computes temperature values in Celsius + Fahrenheit and Humidity
+      float hic = dht.computeHeatIndex(t, h, false);
+      dtostrf(hic, 6, 2, celsiusTemp);
+      float hif = dht.computeHeatIndex(f, h);
+      dtostrf(hif, 6, 2, fahrenheitTemp);
+      dtostrf(h, 6, 2, humidityTemp);
+      // You can delete the following Serial.print's, it's just for debugging purposes
+      Serial.print("Humidity: ");
+      Serial.print(h);
+      Serial.print(" %\t Temperature: ");
+      Serial.print(t);
+      Serial.print(" *C ");
+      Serial.print(f);
+      Serial.print(" *F\t Heat index: ");
+      Serial.print(hic);
+      Serial.print(" *C ");
+      Serial.print(hif);
+      Serial.println(" *F");
+
+      if (h != h_old) {
+        String fullpathThingNameHumidity = "dt/hvac/building3/floor2/confroom2/" +
+                                           strThingName + "/humidity";
+        client.publish(fullpathThingNameHumidity.c_str(), humidityTemp);
+        h_old = h;
+      }
+      if (t != t_old) {
+        String fullpathThingNameTemperature = "dt/hvac/building3/floor2/confroom2/"
+                                              + strThingName + "/temperature";
+        client.publish(fullpathThingNameTemperature.c_str(), celsiusTemp);
+        t_old=t;
+      }
+    }
+
+    // SENSOR READ END
+
+    lastMsg = now;
+  
+  }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sqVLt2c9bs" id="content5-iw">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Data subscriptions</h4>
+                <p class="mbr-text mbr-fonts-style display-7">While telemetry messages are being published to the MQTT server client applications can subscribe to individual topics or to multiple topics using wildcards.<br><br>The # wildcard matches multiple topic name levels. <br><br>The + wildcard matches a single topic name level.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sqW5nQeLMh" id="image3-iy">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-07-at-3.27.31-pm-1836x938.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Humidity sensor readings from 2nd floor of building 3.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features13 cid-sqS2M1ldqm" id="features14-i1">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://docs.aws.amazon.com/whitepapers/latest/designing-mqtt-topics-aws-iot-core/designing-mqtt-topics-aws-iot-core.html" class="text-primary" target="_blank">Designing MQTT Topics for AWS IoT Core</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+        </div>
+    </div>
+</section>
+
+<section class="footer3 cid-sqS2M2hkG0" once="footers" id="footer3-i2">
+
+    
+
+    
+
+    <div class="container">
+        <div class="media-container-row align-center mbr-white">
+            <div class="row row-links">
+                <ul class="foot-menu">
+                    
+                    
+                    
+                    
+                    
+                <li class="foot-menu-item mbr-fonts-style display-7"><a href="mailto:neil@haddley.com" class="text-success">Email Me</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://www.facebook.com/neil.haddley/" class="text-success">Facebook</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://www.linkedin.com/in/neil-haddley/" class="text-success">Linked In</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://github.com/haddleyoffice365" class="text-success">GitHub</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://www.npmjs.com/~haddley" class="text-success">npm</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://hub.docker.com/u/haddley" class="text-success">Docker Hub</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://www.nuget.org/profiles/haddleyoffice365" class="text-success text-primary" target="_blank">NuGet</a></li></ul>
+            </div>
+            <div class="row social-row">
+                <div class="social-list align-right pb-2">
+                    
+                    
+                    
+                    
+                    
+                    
+                <div class="soc-item">
+                        <a href="mailto:neil@haddley.com">
+                            <span class="mbr-iconfont mbr-iconfont-social socicon-mail socicon"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://www.facebook.com/neil.haddley" target="_blank">
+                            <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                            <span class="mbr-iconfont mbr-iconfont-social socicon-linkedin socicon"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://github.com/haddley" target="_blank">
+                            <span class="mbr-iconfont mbr-iconfont-social mbrib-github"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://www.npmjs.com/~haddley" target="_blank">
+                            <span class="mbr-iconfont mbr-iconfont-social socicon-npm socicon"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://hub.docker.com/u/haddley" target="_blank">
+                            <span class="mbr-iconfont mbr-iconfont-social mobi-mbri-delivery mobi-mbri"></span>
+                        </a>
+                    </div></div>
+            </div>
+            <div class="row row-copirayt">
+                <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-7">
+                    © Copyright 2021 Neil Haddley. All Rights Reserved.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/popper/popper.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/dropdown/js/nav-dropdown.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+
+  
+</body>
+</html>

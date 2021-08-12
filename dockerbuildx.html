@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Docker Buildx</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  <link href="prism.css" rel="stylesheet" />
+<script src="aframe.min.js"></script>
+
+  
+</head>
+<body>
+  
+  <section class="menu menu3 cid-srq8MHhs6l" once="menu" id="menu3-jf">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-srq8MIfB7o" id="content4-jg">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2">
+                    <strong>Docker Buildx</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Build multi-platform Docker images.
+                </h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-srqbOniURY" id="image3-ki">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/docker-container-engine-logo.svg" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a href="https://commons.wikimedia.org/wiki/File:Docker_(container_engine)_logo.svg" class="text-primary" target="_blank">Docker (container_engine) logo</a> by <a href="/" class="text-primary">dotCloud, Inc.</a> is licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0/" class="text-primary" target="_blank">Apache License</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-srq8MIQ7bV" id="content5-ji">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Buildx</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Buildx allows a developer to build for multiple architecture/operating systems.<br><br>When you invoke <strong>docker buildx build</strong>, you can set the --platform flag to specify the target platform for the build output, (for example,&nbsp;linux/amd64, linux/arm64, linux/arm/v7,linux/arm/v6, darwin/amd64).<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-srq8MKZBNB" id="content5-ju">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">The Dockerfile</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Visual Studio Code is able to add a Dockerfile to the graphql-server project automagically.<br><br>Open the Command Palette (⇧⌘P) and use the "Docker: Add Docker Files to Workspace..." command:<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-srq8MLiRLr" id="image3-jv">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-03-at-7.32.18-am-1536x944.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        Docker: Add Docker Files to Workspace...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-srq8MLvIwj" id="image3-jw">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-03-at-7.32.36-am-1536x935.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Application Platform is Node.js</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-srq8MLE84p" id="image3-jx">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-03-at-7.32.53-am-1536x940.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        Select the project's package.json file</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-srq8MLOuRA" id="image3-jy">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-03-at-7.33.15-am-1536x940.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        Specify the port that the image will be&nbsp;listening to</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-srq8MLYpf7" id="image3-jz">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-03-at-7.33.38-am-1536x941.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        Don't add the Docker Compose file</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-srq8MMsIA9" id="image3-k0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-03-at-7.34.54-am-1536x995.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        Build the Docker image</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-srq8MMCGOG" id="image3-k1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-03-at-7.35.27-am-1536x992.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        Image built and uploaded to Docker Desktop</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-srq8MMPUhR" id="image3-k2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-03-at-7.38.12-am-1536x883.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        New container based on the new image (port 5000)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-srq8MN2k21" id="image3-k3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-03-at-7.38.28-am-1066x242.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Container running</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-srq8MNckkJ" id="image3-k4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-03-at-7.40.18-am-1536x833.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        Testing the image using Docker Desktop</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-srq8MNoKJJ" id="content5-k5">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Uploading to Dockerhub</h4>
+                <p class="mbr-text mbr-fonts-style display-7"><strong>$ docker login --username=haddley</strong><br><br><strong>$ docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6 --rm -t haddley/graphql-server:latest --push .</strong></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-srq8MNwSam" id="image3-k6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-03-at-7.48.59-am-1536x990.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        Build image for multiple Operating Systems/Processors</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-srq8MNHk4J" id="image3-k7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-03-at-7.51.16-am-1536x835.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        Image has been uploaded to Docker Hub</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-srq8MO0INP" id="image3-k8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-03-at-8.06.23-am-1536x824.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        Multiple OS/ARCH</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-srq8MOayrG" id="content5-k9">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Docker playground</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Add new instance.<br><br><strong>docker run -d -p 5000:5000 haddley/graphql-server</strong><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-srq8MOjdxd" id="image3-ka">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-03-at-7.58.19-am-1536x826.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        docker run -d -p 5000:5000&nbsp;haddley/graphql-server</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-srq8MOtYKZ" id="image3-kb">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-03-at-8.05.03-am-1536x827.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        Accessing the image running in the lab&nbsp;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-srvbuC9chH" id="content5-kj">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Raspberry Pi</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The docker image can be run on a Raspberry Pi.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-srvbK3ccH7" id="image3-kk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-13-at-3.32.48-pm-1138x742.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">docker run the haddley/graphql-server image</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-srvbKHfuCQ" id="image3-kl">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-13-at-3.35.52-pm-1636x1166.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">GraphiQL&nbsp;intellisense</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-srvcm2JEKg" id="image3-km">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-13-at-3.36.12-pm-1638x1172.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">GraphQL service running on the Raspberry Pi</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content12 cid-srq8MPnC9J" id="content12-kg">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="mbr-section-btn align-center"><a class="btn btn-primary display-4" href="https://hub.docker.com/r/haddley/graphql-server" target="_blank">Docker Hub</a></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="footer3 cid-srq8MPy7ze" once="footers" id="footer3-kh">
+
+    
+
+    
+
+    <div class="container">
+        <div class="media-container-row align-center mbr-white">
+            <div class="row row-links">
+                <ul class="foot-menu">
+                    
+                    
+                    
+                    
+                    
+                <li class="foot-menu-item mbr-fonts-style display-7"><a href="mailto:neil@haddley.com" class="text-success">Email Me</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://www.facebook.com/neil.haddley/" class="text-success">Facebook</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://www.linkedin.com/in/neil-haddley/" class="text-success">Linked In</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://github.com/haddleyoffice365" class="text-success">GitHub</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://www.npmjs.com/~haddley" class="text-success">npm</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://hub.docker.com/u/haddley" class="text-success">Docker Hub</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://www.nuget.org/profiles/haddleyoffice365" class="text-success text-primary" target="_blank">NuGet</a></li></ul>
+            </div>
+            <div class="row social-row">
+                <div class="social-list align-right pb-2">
+                    
+                    
+                    
+                    
+                    
+                    
+                <div class="soc-item">
+                        <a href="mailto:neil@haddley.com">
+                            <span class="mbr-iconfont mbr-iconfont-social socicon-mail socicon"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://www.facebook.com/neil.haddley" target="_blank">
+                            <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                            <span class="mbr-iconfont mbr-iconfont-social socicon-linkedin socicon"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://github.com/haddley" target="_blank">
+                            <span class="mbr-iconfont mbr-iconfont-social mbrib-github"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://www.npmjs.com/~haddley" target="_blank">
+                            <span class="mbr-iconfont mbr-iconfont-social socicon-npm socicon"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://hub.docker.com/u/haddley" target="_blank">
+                            <span class="mbr-iconfont mbr-iconfont-social mobi-mbri-delivery mobi-mbri"></span>
+                        </a>
+                    </div></div>
+            </div>
+            <div class="row row-copirayt">
+                <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-7">
+                    © Copyright 2021 Neil Haddley. All Rights Reserved.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/popper/popper.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/dropdown/js/nav-dropdown.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+
+  
+</body>
+</html>

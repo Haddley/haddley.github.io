@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Azure Active Directory (Part 2)</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  <link href="prism.css" rel="stylesheet" />
+<script src="aframe.min.js"></script>
+
+  
+</head>
+<body>
+  
+  <section class="menu menu3 cid-suMBtawbHJ" once="menu" id="menu3-v0">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-suMBtdcwXn" id="content4-v1">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Azure Active Directory (Part 2)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Microsoft Azure Active Directory Authentication.</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-suMBtdBgwt" id="image3-v2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/microsoft-azure-logo.svg" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a rel="nofollow" href="https://commons.wikimedia.org/wiki/File:Microsoft_Azure_Logo.svg">Microsoft Azure Logo</a> by <a href="https://en.wikipedia.org/wiki/en:Microsoft">Microsoft Corporation</a> is <a href="“https://commons.wikimedia.org/w/index.php?curid=43353450">Public Domain</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-suMBteeVHl" id="content5-v5">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>Single-page application with login</strong></h4>
+                <p class="mbr-text mbr-fonts-style display-7">Quickstart projects make it easier to build applications that connect to Azure Active Directory, Microsoft Graph and other Azure resources.<br><br>Quickstart projects allow developers to create Web applications, Single page applications (SPAs), Mobile and desktop applications and Daemon applications. <br><br>Here we create a "Haddley React Single Page App" that supports Azure Active Directory login<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-suOx8ImOMM" id="image3-wu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/topology-callgraph-700x403.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a rel="nofollow" href="https://github.com/Azure-Samples/ms-identity-javascript-tutorial/blob/main/2-Authorization-I/1-call-graph/ReadmeFiles/topology_callgraph.png">topology_callgraph</a> by <a href="https://github.com/derisen">Doğan Erişen</a> is licensed under MIT License</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-suMHHW52oy" id="image3-vr">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-17-at-9.42.46-am-1836x1481.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Name is Haddley React Single Page App</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-suMBten5mq" id="image3-v6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-17-at-10.27.44-am-1376x1060.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Select "Single-page application (SPA)"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-suMHIrVBf8" id="image3-vs">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-17-at-9.43.42-am-1638x702.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Select "React (preview)"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-suMHJ0oeAL" id="image3-vt">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-17-at-9.44.44-am-1836x714.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Allow the Quickstart to update the Redirect URI to "http://localhost:3000/"&nbsp;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-suMHK8z10c" id="image3-vu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-17-at-9.45.15-am-1836x952.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Download the fully configured code sample</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-suMJY8pXY1" id="image3-vy">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-17-at-9.45.53-am-1836x499.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Open project using Visual Studio Code</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-suMJZcUlUw" id="image3-w0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-17-at-9.47.49-am-1836x1372.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Open terminal and run "npm install" and then "npm start"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-suMJYJnXt2" id="image3-vz">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-17-at-9.49.20-am-1836x948.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Select either "Sign in using Popup" or "Sign in using Redirect"&nbsp;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-suML4o1gO9" id="image3-w2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-17-at-9.49.49-am-962x498.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Pick an account</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-suML4QCu3O" id="image3-w3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-17-at-9.49.59-am-964x660.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Enter the password</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-suML3PAGOj" id="image3-w1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-17-at-9.50.15-am-966x1310.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Accept&nbsp;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-suMLkPFi6F" id="image3-w4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-17-at-9.50.35-am-1836x947.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">After pressing "Request Profile Information"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-suMNLpeO60" id="content7-w5">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>App.js</strong></h5>
+
+<pre class="language-clike"><code><!--         
+import React, { useState } from "react";
+import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from "@azure/msal-react";
+import { loginRequest } from "./authConfig";
+import { PageLayout } from "./components/PageLayout";
+import { ProfileData } from "./components/ProfileData";
+import { callMsGraph } from "./graph";
+import Button from "react-bootstrap/Button";
+import "./styles/App.css";
+
+/**
+ * Renders information about the signed-in user or a button to retrieve data about the user
+ */
+const ProfileContent = () => {
+    const { instance, accounts } = useMsal();
+    const [graphData, setGraphData] = useState(null);
+
+    function RequestProfileData() {
+        // Silently acquires an access token which is then attached to a request for MS Graph data
+        instance.acquireTokenSilent({
+            ...loginRequest,
+            account: accounts[0]
+        }).then((response) => {
+            callMsGraph(response.accessToken).then(response => setGraphData(response));
+        });
+    }
+
+    return (
+        <>
+            <h5 className="card-title">Welcome {accounts[0].name}</h5>
+            {graphData ? 
+                <ProfileData graphData={graphData} />
+                :
+                <Button variant="secondary" onClick={RequestProfileData}>Request Profile Information</Button>
+            }
+        </>
+    );
+};
+
+/**
+ * If a user is authenticated the ProfileContent component above is rendered. Otherwise a message indicating a user is not authenticated is rendered.
+ */
+const MainContent = () => {    
+    return (
+        <div className="App">
+            <AuthenticatedTemplate>
+                <ProfileContent />
+            </AuthenticatedTemplate>
+
+            <UnauthenticatedTemplate>
+                <h5 className="card-title">Please sign-in to see your profile information.</h5>
+            </UnauthenticatedTemplate>
+        </div>
+    );
+};
+
+export default function App() {
+    return (
+        <PageLayout>
+            <MainContent />
+        </PageLayout>
+    );
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-suMUW9XBfc" id="content5-wa">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>Vanilla JavaScript single-page application (SPA) using MSAL.js to authorize users for calling a protected web API on Azure AD</strong></h4>
+                <p class="mbr-text mbr-fonts-style display-7"><a href="https://github.com/Azure-Samples/ms-identity-javascript-tutorial/tree/main/3-Authorization-II/1-call-api" class="text-primary" target="_blank">https://github.com/Azure-Samples/ms-identity-javascript-tutorial/tree/main/3-Authorization-II/1-call-api</a><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-suOirDwlzf" id="image3-wo">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/topology-callapi-631x362.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a rel="nofollow" href="https://github.com/Azure-Samples/ms-identity-javascript-tutorial/blob/main/3-Authorization-II/1-call-api/ReadmeFiles/topology_callapi.png">topology_callapi</a> by <a href="https://github.com/derisen">Doğan Erişen</a> is licensed under MIT License</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-suOgxGSLZs" id="image3-wn">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/image-859x481.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">.\Configure.ps1</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-suOiMpXl2J" id="image3-wp">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-17-at-4.31.02-pm-1836x989.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">update Manifest "accessTokenAcceptedVersion"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-suOpvjScCY" id="content5-ws">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Configure and run the Client (SPA) and Service (API) apps</h4>
+                <p class="mbr-text mbr-fonts-style display-7"><strong>Configure the service app to use your app registration</strong><br><br>Open the project in your IDE (like Visual Studio or Visual Studio Code) to configure the code.<br><br>In the steps below, "ClientID" is the same as "Application ID" or "AppId".<br>Open the config.js file.<br>Find the key clientID and replace the existing value with the application ID (clientId) of the ms-identity-javascript-tutorial-c3s1-api application copied from the Azure portal.<br>Find the key tenantID and replace the existing value with your Azure AD tenant ID.<br>Find the key audience and replace the existing value with the application ID (clientId) of the ms-identity-javascript-tutorial-c3s1-api application copied from the Azure portal.<br>Register the client app<br><br><strong>Configure the client app to use your app registration</strong><br><br>Open the project in your IDE (like Visual Studio or Visual Studio Code) to configure the code.<br><br>In the steps below, "ClientID" is the same as "Application ID" or "AppId".<br>Open the App\authConfig.js file. Then:<br><br>Find the key Enter_the_Application_Id_Here and replace the existing value with the application ID (clientId) of the ms-identity-javascript-c3s1-spa application copied from the Azure portal.<br>Find the key Enter_the_Cloud_Instance_Id_Here/Enter_the_Tenant_Info_Here and replace the existing value with https://login.microsoftonline.com/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX (where&nbsp;XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX is the Directory (tenant) ID - same value for all app registrations created in that Azure tenant)<your-tenant-id>.</your-tenant-id><br><your-tenant-id><br>Find the key Enter_the_Redirect_Uri_Here and replace the existing value with the base address of the ms-identity-javascript-tutorial-c3s1-spa application (by default http://localhost:3000).<br>After you configured your web API, open the App\apiConfig.js file. Then:<br><br>Find the key Enter_the_Web_Api_Uri_Here and replace the existing value with the coordinates of your web API (by default http://localhost:5000/api).</your-tenant-id><br><your-tenant-id><br>Find the key Enter_the_Web_Api_Scope_Here and replace the existing value with the scopes for your web API, like api://e767d418-b80b-4568-9754-557f40697fc5/access_as_user. You can copy this from the Expose an API blade of the web APIs registration.<br></your-tenant-id></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-suOiMYYWnW" id="image3-wq">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-17-at-4.53.33-pm-1644x1184.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Click Sign-in</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-suOiNvwjrE" id="image3-wr">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-17-at-4.53.56-pm-964x1310.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Enter Azure/Office 365 credentials to login to&nbsp;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-suMW79JuRg" id="image3-wd">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-17-at-4.54.17-pm-1640x1180.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Press Call API to ask Single Page Application to call protected API</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-suMW6GMqIu" id="image3-wc">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-17-at-4.54.36-pm-1640x1184.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Result returned from protect API</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-suPblhcNNT" id="content5-wv">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Discussion</h4>
+                <p class="mbr-text mbr-fonts-style display-7">SPA is a single page application based on an html file and JavaScript (not React, Angular or Vue). As authPopup.js (or authRedirect.js) is loaded myMSALObj is set to a new msal.PublicClientApplication instance using msalConfig. further down in the same file "selectAccount();" is called. selectAccount calls the&nbsp;getAllAccounts method on the&nbsp;msal.PublicClientApplication instance. If at least one account is returned the welcomeUser function is called passing the username from the first account.<br><br>welcomeUser is defined in ui.js. welcomeUser uses document.getElementById and css classes to update the html page (showing if a user is logged in).<br><br>If the html signIn button is pressed the signIn function in&nbsp;authPopup.js (or authRedirect.js) is run. This&nbsp;calls the loginPopup (or&nbsp;loginRedirect) method on the msal.PublicClientApplication instance passing&nbsp;loginRequest (an object with a scopes property ... {scopes: ["openid", "api://ae580c57-2645-404d-a870-2a390db782ec/access_as_user"]} ). The handleResponse function is called if the user login succeeds. The handleResponse function sets a username variable and calls the&nbsp;welcomeUser function again (passing the value of that username variable).<br><br>If the html&nbsp;callApiButton button is pressed the&nbsp;passTokenToApi function is executed. The&nbsp;passTokenToApi function calls getTokenPopup (or&nbsp;getTokenRedirect) which uses&nbsp;myMSALObj.acquireTokenSilent and (possibly) the myMSALObj.acquireTokenPopup (or myMSALObj.acquireTokenRedirect) methods (here the constant tokenRequest is used { scopes: ["Mail.Read"] } although we do not go on to read mail...).&nbsp;<br><br>Once the access_token has been acquired function callApi is called passing apiConfig.uri ("http://localhost:5000/api") and the response.accessToken. callApi appends an Authorization header with value accessToken and uses fetch to call the API. The response from the API call should include the logged in user's <strong>name</strong>.<br><br>API is a Node express app. The code starts by defining const app=express(). "morgan" (for debugging) and "passport" are added to the express instance. bearerStrategy is added to the passport reference. CORS is enabled using permissive headers.<br><br>Then the "/api" endpoint is exposed. The /api handler is only run if passport.authenticated (see the response received from Azure Active Directory requesting "access_as_user" permissions). req.authInfo provides authentication information. In the sample information from the req.authInfo property is returned as the result of the API call (including the logged in user's&nbsp;<strong>name</strong>).<br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="footer3 cid-suMBtiPoJs" once="footers" id="footer3-vp">
+
+    
+
+    
+
+    <div class="container">
+        <div class="media-container-row align-center mbr-white">
+            <div class="row row-links">
+                <ul class="foot-menu">
+                    
+                    
+                    
+                    
+                    
+                <li class="foot-menu-item mbr-fonts-style display-7"><a href="mailto:neil@haddley.com" class="text-success">Email Me</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://www.facebook.com/neil.haddley/" class="text-success">Facebook</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://www.linkedin.com/in/neil-haddley/" class="text-success">Linked In</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://github.com/haddleyoffice365" class="text-success">GitHub</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://www.npmjs.com/~haddley" class="text-success">npm</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://hub.docker.com/u/haddley" class="text-success">Docker Hub</a></li><li class="foot-menu-item mbr-fonts-style display-7"><a href="https://www.nuget.org/profiles/haddleyoffice365" class="text-success text-primary" target="_blank">NuGet</a></li></ul>
+            </div>
+            <div class="row social-row">
+                <div class="social-list align-right pb-2">
+                    
+                    
+                    
+                    
+                    
+                    
+                <div class="soc-item">
+                        <a href="mailto:neil@haddley.com">
+                            <span class="mbr-iconfont mbr-iconfont-social socicon-mail socicon"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://www.facebook.com/neil.haddley" target="_blank">
+                            <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                            <span class="mbr-iconfont mbr-iconfont-social socicon-linkedin socicon"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://github.com/haddley" target="_blank">
+                            <span class="mbr-iconfont mbr-iconfont-social mbrib-github"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://www.npmjs.com/~haddley" target="_blank">
+                            <span class="mbr-iconfont mbr-iconfont-social socicon-npm socicon"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://hub.docker.com/u/haddley" target="_blank">
+                            <span class="mbr-iconfont mbr-iconfont-social mobi-mbri-delivery mobi-mbri"></span>
+                        </a>
+                    </div></div>
+            </div>
+            <div class="row row-copirayt">
+                <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-7">
+                    © Copyright 2021 Neil Haddley. All Rights Reserved.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/popper/popper.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/dropdown/js/nav-dropdown.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+
+  
+</body>
+</html>
