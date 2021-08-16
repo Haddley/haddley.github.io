@@ -376,7 +376,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">eksctl create cluster</h4>
-                <p class="mbr-text mbr-fonts-style display-7">% eksctl create cluster \<br>--name blog-cluster \<br>--node-type t2.nano \<br>--nodes 2<br></p>
+                <p class="mbr-text mbr-fonts-style display-7"><strong>% eksctl create cluster \<br>--name blog-cluster&nbsp;</strong><br><br>optional arguments:<br><br><strong>--node-type t2.nano \<br>--nodes 2</strong><br></p>
             </div>
         </div>
     </div>
@@ -460,7 +460,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2021-08-12-at-9.03.56-pm-1836x1188.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">eksctl command finished</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">~/neilhaddley/.kube/config file has been updated</p>
                 </div>
             </div>
         </div>
@@ -553,6 +553,70 @@ spec:
     </div>
 </section>
 
+<section class="image3 cid-sG7y2eiq6w" id="image3-28m">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-15-at-2.48.29-pm-1836x924.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">cluster workloads</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sG6rzRCm1P" id="content5-28l">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">kubectl get</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Get information about blog-service<br><br>kubectl <a href="https://aws.amazon.com/premiumsupport/knowledge-center/eks-kubernetes-services-cluster/" class="text-primary" target="_blank">get service/blog-service</a> |  awk {'print $1" " $2 " " $4 " " $5'} | column -t<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sG6rv8wTcR" id="image3-28f">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-15-at-2.44.50-pm-1836x258.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">load balancer url</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sG6rus0qnU" id="image3-28e">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-15-at-2.45.19-pm-1836x1158.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Accessing the Amazon EKS cluster</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="content5 cid-sFRFHLRMaj" id="content5-25x">
     
     <div class="container">
@@ -594,6 +658,36 @@ spec:
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2021-08-12-at-9.40.30-pm-1836x954.png" alt="">
                     <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The cluster has been deleted</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sG7zqTpkSJ" id="content5-28p">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">kubectl config use-context</h4>
+                <p class="mbr-text mbr-fonts-style display-7">To switch back to using Docker Desktop<br><br>% kubectl config use-context docker-desktop</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sG7yMb2Jdk" id="image3-28n">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-15-at-2.10.40-pm-1836x1036.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">switch back to docker-desktop</p>
                 </div>
             </div>
         </div>
