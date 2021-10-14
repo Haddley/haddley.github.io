@@ -214,6 +214,292 @@ CMD [ "npm", "start" ]
     </div>
 </section>
 
+<section class="content5 cid-sLQ5dPgNX9" id="content5-2lr">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Docker Desktop</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Running the Docker image locally.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sLQ3RrMWYY" id="image3-2lg">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/images-list-10-14-2021-12-43-16-pm-1836x975.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The haddleysails image is displayed in Docker Desktop</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sLQ300GTDy" id="image3-2kx">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/images-list-10-14-2021-12-43-41-pm-1836x975.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Running the image&nbsp;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sLQ3RKpMKz" id="image3-2lh">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/sails-application-google-chrome-10-14-2021-12-44-05-pm-1836x975.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">accessing the container using http://localhost</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sLQ3RXRPcS" id="image3-2li">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/sails-application-google-chrome-10-14-2021-12-44-16-pm-1836x975.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">using the container running locally to retrieve the articles data</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sLQ2JfMmBJ" id="image3-2kw">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/container-list-10-14-2021-12-44-44-pm-1836x975.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">remove the container</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sLQ3Shr5rx" id="image3-2lj">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/container-list-10-14-2021-12-44-54-pm-1836x975.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">no containers running</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sLQ30oehmD" id="image3-2ky">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/haddley-sails-local.yaml-haddley-sails-visual-studio-code-10-14-2021-12-45-48-pm-1836x1033.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Using kubectl to start a local cluster</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sLQ3fSnS8y" id="content7-2la">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>haddley-sails-local.yaml</strong></h5>
+
+<pre class="language-yaml"><code><!--         
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: haddley-sails-deployment
+  labels:
+    app: haddley-sails
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: haddley-sails
+  template:
+    metadata:
+      labels:
+        app: haddley-sails
+    spec:
+      containers:
+        - name: haddley-sails
+          image: haddleysails
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 1337
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: haddley-sails-service
+spec:
+  selector:
+    app: haddley-sails
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 1337
+  type: LoadBalancer
+
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sLQ3SAoUUb" id="image3-2lk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/container-list-10-14-2021-12-46-04-pm-1836x975.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Kubernettes pods running</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sLQ30SYK0g" id="image3-2kz">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/localhost-articles-google-chrome-10-14-2021-12-46-15-pm-1836x975.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">accessing the cluster using http://localhost</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sLQ3SVWXh5" id="image3-2ll">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/sails-application-google-chrome-10-14-2021-12-44-16-pm-1836x975.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">using the cluster running locally to retrieve the articles data</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sLQ31uzPXi" id="image3-2l0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/haddley-sails-local.yaml-haddley-sails-visual-studio-code-10-14-2021-12-46-56-pm-1836x1033.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">removing the cluster</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sLQ3Tf2Rhz" id="image3-2lm">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/container-list-10-14-2021-12-44-54-pm-1836x975.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">no containers running</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sLQ58uwm4v" id="content5-2lq">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Amazon Container Services</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The Docker image need to be pushed to the Amazon Elastic Container Registry</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="image3 cid-sLLM0ifAw2" id="image3-2j4">
     
 
@@ -418,6 +704,19 @@ CMD [ "npm", "start" ]
     </div>
 </section>
 
+<section class="content5 cid-sLQ7ObgxIi" id="content5-2ls">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">eksctl</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Using eksctl to create the&nbsp;Amazon Elastic Kubernetes Service cluster.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="image3 cid-sLLMa51l7K" id="image3-2jj">
     
 
@@ -532,6 +831,19 @@ CMD [ "npm", "start" ]
                     <img src="assets/images/amazon-eks-google-chrome-10-13-2021-7-05-39-pm-1380x733.png" alt="">
                     <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Cluster workloads</p>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sLQ8gzawjL" id="content5-2lt">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">kubectl</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Using kubectl to deploy the Docker image to the cluster</p>
             </div>
         </div>
     </div>
