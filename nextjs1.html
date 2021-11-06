@@ -319,6 +319,7 @@ export default about
 
 <pre class="language-clike"><code><!--         
 
+// index.js
 import Link from 'next/link'
 
 function index() {
@@ -338,8 +339,7 @@ function index() {
 
 export default index
 
-// ------------------------------------------
-
+// first-post.js
 function firstpost() {
     return (
         <div>
@@ -353,8 +353,7 @@ function firstpost() {
 
 export default firstpost
 
-// ------------------------------------------
-
+//second-post.js
 import Link from 'next/link'
 
 function secondpost() {
@@ -392,7 +391,7 @@ export default secondpost
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2021-11-05-at-6.28.23-pm-1836x887.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Network traffic when Link component is not used</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Network traffic when &lt;a href=...&gt; tag is used</p>
                 </div>
             </div>
         </div>
