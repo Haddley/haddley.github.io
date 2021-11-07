@@ -107,7 +107,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Pre-rendering</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering. The difference is in when it generates the HTML for a page.<br><br>Static Generation is the pre-rendering method that generates the HTML at build time. The pre-rendered HTML is then reused on each request.<br><br>Server-side Rendering is the pre-rendering method that generates the HTML on each request.<br><br>Next.js lets you choose which pre-rendering form to use for each page. You can create a Next.js app that uses Static Generation for most pages and Server-side Rendering for others.<br><br></p>
+                <p class="mbr-text mbr-fonts-style display-7">Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering. The difference is in when Next.js generates the HTML for a page.<br><br>Static Generation is a pre-rendering approach that generates the HTML pages at build time.<br><br>Server-side Rendering is a pre-rendering approach that generates the HTML on each request.<br><br>You can create a Next.js app that uses Static Generation for some pages and Server-side Rendering for others.<br><br></p>
             </div>
         </div>
     </div>
@@ -119,8 +119,8 @@
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
                 
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Static Generation with data</h4>
-                <p class="mbr-text mbr-fonts-style display-7">In Next.js, when you export a page component, you can also export an async function called getStaticProps. <br><br>getStaticProps runs at build time and passes data as props to the page.<br></p>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Static Generation (with data)</h4>
+                <p class="mbr-text mbr-fonts-style display-7">In Next.js, after exporting a a page function, a developer can export a getStaticProps function.<br><br>A getStaticProps runs at build time.<br></p>
             </div>
         </div>
     </div>
@@ -133,7 +133,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">getStaticProps</h4>
-                <p class="mbr-text mbr-fonts-style display-7">getStaticProps can be used at build time to generate a page based on the result returned by a web service call.</p>
+                <p class="mbr-text mbr-fonts-style display-7">A getStaticProps function can be used to generate a page based on data returned by a web service call.</p>
             </div>
         </div>
     </div>
@@ -204,7 +204,7 @@ export const getStaticProps = async () => {
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">getServerSideProps</h4>
-                <p class="mbr-text mbr-fonts-style display-7">getServerSideProps can be used at runtime to build a page based on the result returned by a web service call.&nbsp;<br></p>
+                <p class="mbr-text mbr-fonts-style display-7">A getServerSideProps function is used at runtime to build a page. The page might be build from data returned by another web service call.<br></p>
             </div>
         </div>
     </div>
@@ -369,7 +369,7 @@ export const getStaticPaths = async () => {
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">next export</h4>
-                <p class="mbr-text mbr-fonts-style display-7">$ npm run export  </p>
+                <p class="mbr-text mbr-fonts-style display-7">next export can be used to generate html pages that can be uploaded to a static web server.<br><br>$ npm run export  </p>
             </div>
         </div>
     </div>
@@ -402,7 +402,7 @@ export const getStaticPaths = async () => {
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2021-11-06-at-7.35.14-pm-1836x942.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">out folder</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">out folder with generated pages</p>
                 </div>
             </div>
         </div>
