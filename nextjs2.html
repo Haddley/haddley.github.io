@@ -13,7 +13,6 @@
   <title>Next.js (Part 2)</title>
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
-  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
   <link rel="stylesheet" href="assets/tether/tether.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
@@ -107,8 +106,321 @@
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
                 
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">create-next-app</h4>
-                <p class="mbr-text mbr-fonts-style display-7">npx create-next-app nextjs-blog --use-npm --example "https://github.com/vercel/next-learn/tree/master/basics/learn-starter"</p>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Pre-rendering</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering. The difference is in when it generates the HTML for a page.<br><br>Static Generation is the pre-rendering method that generates the HTML at build time. The pre-rendered HTML is then reused on each request.<br><br>Server-side Rendering is the pre-rendering method that generates the HTML on each request.<br><br>Next.js lets you choose which pre-rendering form to use for each page. You can create a Next.js app that uses Static Generation for most pages and Server-side Rendering for others.<br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sO1FermLg6" id="content5-2qe">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Static Generation with data</h4>
+                <p class="mbr-text mbr-fonts-style display-7">In Next.js, when you export a page component, you can also export an async function called getStaticProps. <br><br>getStaticProps runs at build time and passes data as props to the page.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sO1RE9CVNA" id="content5-2qm">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">getStaticProps</h4>
+                <p class="mbr-text mbr-fonts-style display-7">getStaticProps can be used at build time to generate a page based on the result returned by a web service call.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sO1QgtoW9J" id="content7-2qf">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>/pages/articles/index.js</strong></h5>
+
+<pre class="language-clike"><code><!--         
+function index({ artiles }) {
+    return (
+        <div>
+            <ul>
+                {artiles.map(article => <li>{article.title}</li>)}
+            </ul>
+        </div>
+    )
+}
+
+export default index
+
+export const getStaticProps = async () => {
+    const res = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=6')
+    const artiles = await res.json();
+    
+    return {
+        props: {
+            artiles: artiles
+        }
+    }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sO1QFCvjGY" id="image3-2qh">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-06-at-6.18.26-pm-1486x906.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">getStaticProps</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sO1QBMDu2b" id="content5-2qg">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">getServerSideProps</h4>
+                <p class="mbr-text mbr-fonts-style display-7">getServerSideProps can be used at runtime to build a page based on the result returned by a web service call.&nbsp;<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sO1T0qfe5x" id="content7-2qn">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>/pages/articles/[id]/index.js</strong></h5>
+
+<pre class="language-clike"><code><!--         
+// import {useRouter} from 'next/router'
+
+function article({ article }) {
+
+    // const router = useRouter()
+    // const {id} = router.query
+
+    return (
+        <div>
+            <h1>{article.title}</h1>
+            This is article {article.id}
+            <p>{article.body}</p>
+        </div>
+    )
+}
+
+export default article
+
+export const getServerSideProps = async (context) => {
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${context.params.id}`)
+    const article = await res.json()
+    return {
+        props: {
+            article: article
+        }
+    }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sO1QImuDxR" id="image3-2qi">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-06-at-6.26.46-pm-1492x908.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">getServerSideProps</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sO1ZacEKEX" id="content5-2qo">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">getStaticPaths</h4>
+                <p class="mbr-text mbr-fonts-style display-7">getStaticProps and getStaticPaths&nbsp;can be used together to generate multiple pages.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sO20UDnJcZ" id="content7-2qp">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>/pages/articles/[id]/index.js</strong></h5>
+
+<pre class="language-clike"><code><!--         
+// import {useRouter} from 'next/router'
+
+function article({ article }) {
+
+    // const router = useRouter()
+    // const {id} = router.query
+
+    return (
+        <div>
+            <h1>{article.title}</h1>
+            This is article {article.id}
+            <p>{article.body}</p>
+        </div>
+    )
+}
+
+export default article
+
+export const getStaticProps = async (context) => {
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${context.params.id}`)
+    const article = await res.json()
+
+    return {
+        props: {
+            article: article
+        }
+    }
+}
+
+export const getStaticPaths = async () => {
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts`)
+    const articles = await res.json()
+    const ids = articles.map(article => (article.id))
+    const paths = ids.map(id => ({ params: { id: id.toString() } }))
+
+    return {
+        paths,
+        fallback: false
+    }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sO1QIX61ON" id="image3-2qj">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-06-at-6.57.55-pm-1490x906.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">getStaticProps and getStaticPaths being used together</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sO28dgy3Ut" id="content5-2qq">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">next export</h4>
+                <p class="mbr-text mbr-fonts-style display-7">$ npm run export  </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sO1QJpcwoO" id="image3-2qk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-06-at-7.29.43-pm-1836x1051.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">npm run export</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sO1QJYKfCQ" id="image3-2ql">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-06-at-7.35.14-pm-1836x942.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">out folder</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sO29XGxMTv" id="image3-2qr">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-06-at-7.31.45-pm-1486x908.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/out/articles/36</p>
+                </div>
             </div>
         </div>
     </div>
@@ -126,20 +438,12 @@
             <div class="card col-12 col-md-4 col-lg-2 p-3">
                 <div class="card-wrapper">
                     <div class="card-box align-center">
-                        <span class="mbr-iconfont mbri-pages"></span>
-                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><a href="https://nextjs.org/learn/basics/create-nextjs-app" class="text-primary">Next.js Getting Started</a></h4>
-                    </div>
-                </div>
-            </div>
-            <div class="card p-3 col-12 col-md-4 col-lg-2">
-                <div class="card-wrapper">
-                    <div class="card-box align-center">
                         <span class="mbr-iconfont socicon-youtube socicon"></span>
-                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7">
-                            <strong><a href="https://www.youtube.com/watch?v=w44uCZwovLs" class="text-primary">Next.js is The Best React Framework</a></strong></h4>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><a href="https://www.youtube.com/watch?v=mTz0GXj8NN0" class="text-primary">Next.js Crash Course 2021</a></h4>
                     </div>
                 </div>
             </div>
+            
             
             
             
