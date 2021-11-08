@@ -149,11 +149,11 @@
                 <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>/pages/articles/index.js</strong></h5>
 
 <pre class="language-clike"><code><!--         
-function index({ artiles }) {
+function index({ articles }) {
     return (
         <div>
             <ul>
-                {artiles.map(article => (<li key={article.id}>{article.title}</li>))}
+                {articles.map(article => (<li key={article.id}>{article.title}</li>))}
             </ul>
         </div>
     )
@@ -163,11 +163,11 @@ export default index
 
 export const getStaticProps = async () => {
     const res = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=6')
-    const artiles = await res.json();
+    const articles = await res.json();
 
     return {
         props: {
-            artiles: artiles
+            articles: articles
         }
     }
 }
@@ -220,12 +220,7 @@ export const getStaticProps = async () => {
                 <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>/pages/articles/[id]/index.js</strong></h5>
 
 <pre class="language-clike"><code><!--         
-// import {useRouter} from 'next/router'
-
 function article({ article }) {
-
-    // const router = useRouter()
-    // const {id} = router.query
 
     return (
         <div>
@@ -296,12 +291,7 @@ export const getServerSideProps = async (context) => {
                 <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>/pages/articles/[id]/index.js</strong></h5>
 
 <pre class="language-clike"><code><!--         
-// import {useRouter} from 'next/router'
-
 function article({ article }) {
-
-    // const router = useRouter()
-    // const {id} = router.query
 
     return (
         <div>
