@@ -40638,35 +40638,3 @@ a {
 .cid-sO2ly0XYgT foot-menu-item {
   text-align: right;
 }
-.cid-sOebh71tGD {
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  background-color: #ffffff;
-}
-@media (max-width: 991px) {
-  .cid-sOebh71tGD .image-wrapper {
-    margin-bottom: 1rem;
-  }
-}
-.cid-sOebh71tGD .row {
-  flex-direction: row-reverse;
-}
-.cid-sOebh71tGD img {
-  width: 100%;
-}
-.cid-sOebhfVUHz {
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  background-color: #ffffff;
-}
-@media (max-width: 991px) {
-  .cid-sOebhfVUHz .image-wrapper {
-    margin-bottom: 1rem;
-  }
-}
-.cid-sOebhfVUHz .row {
-  flex-direction: row-reverse;
-}
-.cid-sOebhfVUHz img {
-  width: 100%;
-}
