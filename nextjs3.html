@@ -13,6 +13,7 @@
   <title>Next.js (Part 3)</title>
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
   <link rel="stylesheet" href="assets/tether/tether.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
@@ -119,10 +120,10 @@
         <div class="row justify-content-center">
             <div class="col-12 col-md-10">
                 <blockquote>
-                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>/articles and /pages/api/articles/index.js</strong></h5>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>articles.js and /pages/api/articles/index.js</strong></h5>
 
 <pre class="language-clike"><code><!--  
-// /articles
+// articles.js
 
 export const articles = [
   {
@@ -195,26 +196,9 @@ export default index
         <div class="row justify-content-center">
             <div class="col-12 col-md-10">
                 <blockquote>
-                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>/articles and /pages/api/articles/[id].js</strong></h5>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>/pages/api/articles/[id].js</strong></h5>
 
 <pre class="language-yaml"><code><!--         
-// /articles
-
-export const articles = [
-  {
-    "userId": 1,
-    "id": 1,
-    "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-    "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-  },
-  {
-    "userId": 1,
-    "id": 2,
-    "title": "qui est esse",
-    "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
-  }
-]
-
 // /pages/api/articles/[id].js
 import {articles} from '../../../articles'
 
@@ -267,7 +251,7 @@ export default article
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Unprotected pages</h4>
-                <p class="mbr-text mbr-fonts-style display-7">User login is not needed to access all pages.</p>
+                <p class="mbr-text mbr-fonts-style display-7">User login is not required to access all of the pages.</p>
             </div>
         </div>
     </div>
@@ -354,7 +338,7 @@ export const getStaticProps = async () => {
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">GitHub Id and GitHub Secret<br></h4>
-                <p class="mbr-text mbr-fonts-style display-7">Here I used GitHub as an authentication provider.</p>
+                <p class="mbr-text mbr-fonts-style display-7">Here I used <a href="https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app" class="text-primary">GitHub</a> as an authentication provider.</p>
             </div>
         </div>
     </div>
@@ -721,7 +705,7 @@ export default article
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Add code to prevent unauthorized access&nbsp;</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Ensure that a valid session exists before returning the protected page.<br></p>
+                <p class="mbr-text mbr-fonts-style display-7">Ensure that a valid session exists before returning the protected page (server-side).<br></p>
             </div>
         </div>
     </div>
@@ -736,11 +720,9 @@ export default article
                 <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>/pages/protected.js</strong></h5>
 
 <pre class="language-clike"><code><!--         
-import { useSession } from "next-auth/client"
+import { getSession } from "next-auth/client"
     
-function index({ articles }) {
-
-    const [session, loading] = useSession();
+function index({ session, articles }) {
     
     if (!session) {
         return(<div>You need to be logged on</div>)
@@ -757,17 +739,29 @@ function index({ articles }) {
 
 export default index
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async (context) => {
+
+    const session = await getSession(context)
+
+    if (!session){
+        return {
+            props:{
+                session
+            }
+        }
+    }
 
     const res = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=6')
     const articles = await res.json();
 
     return {
         props: {
+            session,
             articles: articles
         }
     }
 }
+
 --></code></pre>
                     
 
@@ -789,6 +783,88 @@ export const getStaticProps = async () => {
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2021-11-08-at-7.52.40-pm-1536x808.png" alt="">
                     <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">protected page</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sOiA503MYv" id="content5-2sx">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Add code to prevent unauthorized access&nbsp;</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Ensure that a valid session exists before returning the protected page (client-side).<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sOiA87gnX5" id="content7-2sy">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>/pages/protected.js</strong></h5>
+
+<pre class="language-clike"><code><!--         
+import { useSession } from "next-auth/client"
+import useSWR from 'swr'
+
+function index() {
+    
+    const [ session, loading ] = useSession()
+
+  // When rendering client side don't display anything until loading is complete
+  if (typeof window !== 'undefined' && loading) return null
+
+  // If no session exists, display access denied message
+  if (!session) { return  (<div>You need to be logged on</div>) }
+
+
+  const fetcher = (...args) => fetch(...args).then(res => res.json())
+
+    const { data, error } = useSWR('/api/articles', fetcher)
+
+    if (error) return <div>failed to load</div>
+    if (!data) return <div>loading...</div>
+    
+    return (
+        <div>
+            <ul>
+                {data.map(article => (<li key={article.id}>{article.title}</li>))}
+            </ul>
+        </div>
+    )
+
+}
+
+export default index
+
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOiAd6ygQW" id="image3-2sz">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-09-at-2.35.03-pm-1830x922.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
                 </div>
             </div>
         </div>
@@ -974,7 +1050,14 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            
+            <div class="card p-3 col-12 col-md-4 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://dev.to/ndom91/adding-authentication-to-an-existing-serverless-next-js-app-in-no-time-with-nextauth-js-192h" class="text-primary">Adding Authentication to an existing serverless Next.js App in no time with NextAuth.js!</a></strong></h4>
+                    </div>
+                </div>
+            </div>
             
             
             
