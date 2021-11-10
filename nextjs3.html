@@ -108,7 +108,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Get Request</h4>
-                <p class="mbr-text mbr-fonts-style display-7">API routes let you create an API endpoint inside a Next.js app.<br><br>To create an API endpoint inside a Next.js app add a file to the pages/api directory<br><br><br></p>
+                <p class="mbr-text mbr-fonts-style display-7">API routes let you create an API endpoint inside a Next.js app.<br><br>To create an API endpoint inside a Next.js app add a file (or folder) to the /pages/api directory<br><br><br></p>
             </div>
         </div>
     </div>
@@ -684,15 +684,10 @@ export default article
                 <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>/pages/protected.js</strong></h5>
 
 <pre class="language-clike"><code><!--         
-import { useSession } from "next-auth/client"
+import { getSession } from "next-auth/client"
 import { articles } from '../articles'
 
-function index() {
-
-    const [session, loading] = useSession()
-
-    // When rendering client side don't display anything until loading is complete
-    if (typeof window !== 'undefined' && loading) return null
+function index({ session, articles }) {
 
     // If no session exists, display access denied message
     if (!session) { return (<div>You need to be logged on</div>) }
@@ -704,10 +699,30 @@ function index() {
             </ul>
         </div>
     )
-
 }
 
 export default index
+
+export const getServerSideProps = async (context) => {
+
+    const session = await getSession(context);
+
+    // If no session exists, display access denied message
+    if (!session) {
+        return {
+            props: {
+                session
+            }
+        }
+    }
+
+    return {
+        props: {
+            session,
+            articles: articles
+        }
+    }
+}
 --></code></pre>
                     
 
