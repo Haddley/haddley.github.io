@@ -266,7 +266,9 @@ export default article
                 <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>/pages/unprotected</strong></h5>
 
 <pre class="language-yaml"><code><!--         
-function index({ articles }) {
+import { articles } from '../articles'
+
+function index() {
 
     return (
         <div>
@@ -278,18 +280,6 @@ function index({ articles }) {
 }
 
 export default index
-
-export const getStaticProps = async () => {
-
-    const res = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=6')
-    const articles = await res.json();
-
-    return {
-        props: {
-            articles: articles
-        }
-    }
-}
 
 --></code></pre>
                     
@@ -310,7 +300,7 @@ export const getStaticProps = async () => {
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-11-08-at-8.27.22-pm-1836x825.png" alt="">
+                    <img src="assets/images/screen-shot-2021-11-10-at-7.59.37-am-1830x918.png" alt="">
                     <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Unprotected page</p>
                 </div>
             </div>
@@ -571,8 +561,8 @@ export default function App({ Component, pageProps }) {
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
                 
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Add code to prevent unauthorized access <br></h4>
-                <p class="mbr-text mbr-fonts-style display-7">Ensure that a valid session exists before returning articles.</p>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Add code to prevent unauthorized access<br></h4>
+                <p class="mbr-text mbr-fonts-style display-7">Ensure that a valid session exists before returning articles or article details (using a REST API call or a web page request)</p>
             </div>
         </div>
     </div>
@@ -622,21 +612,8 @@ export default index
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2021-11-08-at-7.05.14-pm-1536x801.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">import { getSession } from 'next-auth/client'</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/api/articles is now protected</p>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="content5 cid-sOeiG9JsWS" id="content5-2st">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Add code to prevent unauthorized access&nbsp;</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Ensure that a valid session exists before returning article details.<br></p>
             </div>
         </div>
     </div>
@@ -691,21 +668,8 @@ export default article
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2021-11-08-at-7.10.18-pm-1536x803.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">import { getSession } from 'next-auth/client'</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/api/articles/4 is now protected</p>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="content5 cid-sOeizdUFL7" id="content5-2ss">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Add code to prevent unauthorized access&nbsp;</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Ensure that a valid session exists before returning the protected page (server-side).<br></p>
             </div>
         </div>
     </div>
@@ -720,13 +684,18 @@ export default article
                 <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>/pages/protected.js</strong></h5>
 
 <pre class="language-clike"><code><!--         
-import { getSession } from "next-auth/client"
-    
-function index({ session, articles }) {
-    
-    if (!session) {
-        return(<div>You need to be logged on</div>)
-    }
+import { useSession } from "next-auth/client"
+import { articles } from '../articles'
+
+function index() {
+
+    const [session, loading] = useSession()
+
+    // When rendering client side don't display anything until loading is complete
+    if (typeof window !== 'undefined' && loading) return null
+
+    // If no session exists, display access denied message
+    if (!session) { return (<div>You need to be logged on</div>) }
 
     return (
         <div>
@@ -735,33 +704,10 @@ function index({ session, articles }) {
             </ul>
         </div>
     )
+
 }
 
 export default index
-
-export const getServerSideProps = async (context) => {
-
-    const session = await getSession(context)
-
-    if (!session){
-        return {
-            props:{
-                session
-            }
-        }
-    }
-
-    const res = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=6')
-    const articles = await res.json();
-
-    return {
-        props: {
-            session,
-            articles: articles
-        }
-    }
-}
-
 --></code></pre>
                     
 
@@ -782,21 +728,8 @@ export const getServerSideProps = async (context) => {
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2021-11-08-at-7.52.40-pm-1536x808.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">protected page</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">page /protected is now protected (server-side)</p>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="content5 cid-sOiA503MYv" id="content5-2sx">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Add code to prevent unauthorized access&nbsp;</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Ensure that a valid session exists before returning the protected page (client-side).<br></p>
             </div>
         </div>
     </div>
@@ -864,7 +797,7 @@ export default index
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2021-11-09-at-2.35.03-pm-1830x922.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">page /protected is now protected (client-side)</p>
                 </div>
             </div>
         </div>
