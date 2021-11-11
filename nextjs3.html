@@ -410,7 +410,7 @@ export default index
 
 //.env
 NEXTAUTH_GITHUB_ID=e95a2816a93e7daabc6c
-NEXTAUTH_GITHUB_SECRET=1234567890123456789012345678901234567890
+NEXTAUTH_GITHUB_SECRET=<secret>
 --></code></pre>
                     
 
@@ -973,6 +973,158 @@ export default function Home() {
     </div>
 </section>
 
+<section class="content5 cid-sOsu3Owxmq" id="content5-2t0">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">next-auth database (optional)</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Specifying a database is optional if you don't need to persist user data or support email sign in. If you don't specify a database then JSON Web Tokens will be enabled for session storage and used to store session data.<br><br>To specify a database update the [...nextauth].js file (and a few environment variables).</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sOsvhbRkcM" id="content7-2t1">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>[...nextauth].js</strong></h5>
+
+<pre class="language-yaml"><code><!--         
+import NextAuth from "next-auth";
+import { session } from "next-auth/client";
+import Providers from "next-auth/providers";
+
+const options = {
+    // @link https://next-auth.js.org/configuration/providers
+    providers: [
+        Providers.GitHub({
+            clientId: process.env.NEXTAUTH_GITHUB_ID,
+            clientSecret: process.env.NEXTAUTH_GITHUB_SECRET,
+        }),
+        /*Providers.Google({
+            clientId: process.env.NEXTAUTH_GOOGLE_ID,
+            clientSecret: process.env.NEXTAUTH_GOOGLE_SECRET,
+        }),
+        Providers.Facebook({
+            clientId: process.env.NEXTAUTH_FACEBOOK_ID,
+            clientSecret: process.env.NEXTAUTH_FACEBOOK_SECRET,
+        }),*/
+    ],
+    database: process.env.DB_URL,
+    session: {
+        jwt: true
+    },
+    jwt: {
+        secret: process.env.JWT_SECRET
+    },
+    callbacks: {
+        async jwt(token, user) {
+            if (user) {
+                token.id = user.id
+            }
+            return token
+        },
+        async session(session, token) {
+            session.user.id = token.id
+            return session
+        }
+    }
+}
+
+export default (req, res) => NextAuth(req, res, options)
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sOsznw1I4E" id="content7-2t2">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>.env</strong><strong><br></strong></h5>
+
+<pre class="language-yaml"><code><!--         
+NEXTAUTH_GITHUB_ID=e95a2816a93e7daabc6c
+NEXTAUTH_GITHUB_SECRET=<secret>
+
+DB_USER=<user>
+DB_PASSWORD=<password>
+DB_URL=mongodb+srv://$DB_USER:$DB_PASSWORD@cluster0.gdnd5.mongodb.net/nextauthDB?retryWrites=true&w=majority
+JWT_SECRET=sdsafdsfsdgfdagfgafdrrg
+NEXTAUTH_URL=http://localhost:3000
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOszHlRHxv" id="image3-2t3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-11-at-6.59.22-am-1836x1204.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">accounts</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOsAvjHAZd" id="image3-2t5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-11-at-7.02.27-am-1836x1196.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">users</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOszIjfnef" id="image3-2t4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-11-at-7.01.00-am-1836x777.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">session (with user id)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="features13 cid-sO2ly0JGFS" id="features14-2ra">
     
 
@@ -1006,7 +1158,14 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            
+            <div class="card p-3 col-12 col-md-4 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont socicon-youtube socicon"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://www.youtube.com/watch?v=TcnRPXPM68Q" class="text-primary">Next.js Tutorial - 77 - Callbacks</a></strong></h4>
+                    </div>
+                </div>
+            </div>
             
             
         </div>
