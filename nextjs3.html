@@ -1022,14 +1022,16 @@ const options = {
         secret: process.env.JWT_SECRET
     },
     callbacks: {
-        async jwt(token, user,account, profile, isNewUser) {
-            console.log("token",token)
-            console.log("user",user)
-            console.log("account",account)
-            console.log("profile",profile)
-            console.log("isNewUser",isNewUser)
-            if (user) {
+        async jwt(token, user, account, profile, isNewUser) {
+            console.log("token", token)
+            console.log("user", user)
+            console.log("account", account)
+            console.log("profile", profile)
+            console.log("isNewUser", isNewUser)
+            if (user && user.id) {
                 token.id = user.id
+            }
+            if (account && account.provider) {
                 token.provider = account.provider
             }
             return token
