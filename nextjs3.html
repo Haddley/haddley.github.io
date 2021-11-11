@@ -1022,14 +1022,21 @@ const options = {
         secret: process.env.JWT_SECRET
     },
     callbacks: {
-        async jwt(token, user) {
+        async jwt(token, user,account, profile, isNewUser) {
+            console.log("token",token)
+            console.log("user",user)
+            console.log("account",account)
+            console.log("profile",profile)
+            console.log("isNewUser",isNewUser)
             if (user) {
                 token.id = user.id
+                token.provider = account.provider
             }
             return token
         },
         async session(session, token) {
             session.user.id = token.id
+            session.user.provider = token.provider
             return session
         }
     }
@@ -1116,8 +1123,8 @@ NEXTAUTH_URL=http://localhost:3000
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-11-11-at-7.01.00-am-1836x777.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">session (with user id)</p>
+                    <img src="assets/images/screen-shot-2021-11-11-at-10.12.00-am-1836x986.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">session (with user id and provider)</p>
                 </div>
             </div>
         </div>
