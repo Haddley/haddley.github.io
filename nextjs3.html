@@ -198,7 +198,7 @@ export default index
                 <blockquote>
                 <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>/pages/api/articles/[id].js</strong></h5>
 
-<pre class="language-yaml"><code><!--         
+<pre class="language-clike"><code><!--         
 // /pages/api/articles/[id].js
 import {articles} from '../../../articles'
 
@@ -265,7 +265,7 @@ export default article
                 <blockquote>
                 <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>/pages/unprotected</strong></h5>
 
-<pre class="language-yaml"><code><!--         
+<pre class="language-clike"><code><!--         
 import { articles } from '../articles'
 
 function index() {
@@ -406,8 +406,7 @@ export default index
                 <blockquote>
                 <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>.env</strong></h5>
 
-<pre class="language-clike"><code><!--         
-
+<pre class="language-clike"><code><!--
 //.env
 NEXTAUTH_GITHUB_ID=e95a2816a93e7daabc6c
 NEXTAUTH_GITHUB_SECRET=<secret>
@@ -498,7 +497,7 @@ export default (req,res) => NextAuth(req,res,options)
                 <blockquote>
                 <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>_app.js</strong></h5>
 
-<pre class="language-yaml"><code><!--         
+<pre class="language-clike"><code><!--         
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { Provider } from "next-auth/client";
 
@@ -994,7 +993,7 @@ export default function Home() {
                 <blockquote>
                 <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>[...nextauth].js</strong></h5>
 
-<pre class="language-yaml"><code><!--         
+<pre class="language-clike"><code><!--         
 import NextAuth from "next-auth";
 import { session } from "next-auth/client";
 import Providers from "next-auth/providers";
@@ -1055,14 +1054,14 @@ export default (req, res) => NextAuth(req, res, options)
                 <blockquote>
                 <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>.env</strong><strong><br></strong></h5>
 
-<pre class="language-yaml"><code><!--         
+<pre class="language-clike"><code><!--         
 NEXTAUTH_GITHUB_ID=e95a2816a93e7daabc6c
 NEXTAUTH_GITHUB_SECRET=<secret>
 
 DB_USER=<user>
 DB_PASSWORD=<password>
 DB_URL=mongodb+srv://$DB_USER:$DB_PASSWORD@cluster0.gdnd5.mongodb.net/nextauthDB?retryWrites=true&w=majority
-JWT_SECRET=sdsafdsfsdgfdagfgafdrrg
+JWT_SECRET=<secret>
 NEXTAUTH_URL=http://localhost:3000
 --></code></pre>
                     
