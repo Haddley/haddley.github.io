@@ -612,7 +612,7 @@ export const getServerSideProps = async (context) => {
     return {
         props: {
             session,
-            articles: articles
+            articles
         }
     }
 
@@ -695,7 +695,7 @@ export const getServerSideProps = async (context) => {
     if (!article) {
         return {
             props: {
-                session: session,
+                session,
                 article: null
             }
         }
@@ -704,7 +704,7 @@ export const getServerSideProps = async (context) => {
     return {
         props: {
             session,
-            article: article
+            article
         }
     }
 
