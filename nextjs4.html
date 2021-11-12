@@ -465,6 +465,346 @@ export const getServerSideProps = async (context) => {
     </div>
 </section>
 
+<section class="content5 cid-sOyKUkxVgI" id="content5-2vk">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">next-auth</h4>
+                <p class="mbr-text mbr-fonts-style display-7">% npm install next-auth<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sOAUJr019e" id="content7-2w3">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>/pages/api/auth/[...nextauth].js /pages/articles/index.js and /pages/articles/[id]/index.js</strong></h5>
+
+<pre class="language-clike"><code><!--         
+// /pages/api/auth/[...nextauth].js 
+import NextAuth from "next-auth";
+import Providers from "next-auth/providers";
+
+const options = {
+    providers: [
+        Providers.GitHub({
+            clientId: process.env.NEXTAUTH_GITHUB_ID,
+            clientSecret: process.env.NEXTAUTH_GITHUB_SECRET,
+        }),
+    ],
+}
+
+export default (req, res) => NextAuth(req, res, options)
+
+// /pages/articles/index.js 
+import Link from 'next/link'
+import { getSession } from 'next-auth/client'
+
+function index({ session, articles }) {
+
+    if (!session) { return (<div>You need to be logged on</div>) }
+    
+    return (
+        <div>
+            <ul>
+                {articles.map(article => (<li key={article.id}>
+                    <Link href={`/articles/${article.id}`}>
+                        <a>{article.title}</a>
+                    </Link>
+                </li>))}
+            </ul>
+        </div>
+    )
+}
+
+export default index
+
+export const getServerSideProps = async (context) => {
+
+    const session = await getSession(context);
+
+    // If no session exists, display access denied message
+    if (!session) {
+        return {
+            props: {
+                session,
+            }
+        }
+    }
+
+
+    const res = await fetch('https://jsonplaceholder.typicode.com/posts')
+    const articles = await res.json();
+
+    return {
+        props: {
+            session,
+            articles
+        }
+    }
+}
+
+// /pages/articles/[id]/index.js
+import { getSession } from 'next-auth/client'
+
+function article({ session, article }) {
+
+    if (!session) { return (<div>You need to be logged on</div>) }
+
+    return (
+        <div>
+            <h1>{article.title}</h1>
+            This is article {article.id}
+            <p>{article.body}</p>
+        </div>
+    )
+}
+
+export default article
+
+export const getServerSideProps = async (context) => {
+
+    const session = await getSession(context);
+
+    // If no session exists, display access denied message
+    if (!session) {
+        return {
+            props: {
+                session,
+            }
+        }
+    }
+    
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${context.params.id}`)
+    const article = await res.json()
+    return {
+        props: {
+            session,
+            article
+        }
+    }
+}
+
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOyL0Z2qJe" id="image3-2vl">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-12-at-10.59.47-am-1836x694.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Deploy update to Azure</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOyL3GM91k" id="image3-2vp">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-12-at-8.13.42-am-1836x1127.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">GitHub OAuth Application</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOB22nruEG" id="image3-2w4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-12-at-5.40.25-pm-1836x937.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">next-auth URL, Client ID and Client Secret added to Azure App Service</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOASy1n7JG" id="image3-2vx">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-12-at-10.55.17-am-1636x852.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">User must be signed in to access /articles</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOASyqnDUE" id="image3-2vy">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-12-at-10.55.27-am-1632x846.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">User must be signed in to access /articles/1</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOyL4CIaNL" id="image3-2vr">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-12-at-10.46.54-am-1836x1037.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Sign in</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOASwOshma" id="image3-2vu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-12-at-10.55.40-am-1626x842.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Sign in with GitHub</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOASwoxUKb" id="image3-2vt">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-12-at-10.47.17-am-1836x898.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Authorize the Haddley Nextjs Blog app</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOyL5n32s0" id="image3-2vs">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-12-at-10.47.33-am-1836x635.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Authorize Haddley</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOASyXVgki" id="image3-2vz">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-12-at-10.55.52-am-1632x842.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Signed in</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOyL4g3yFQ" id="image3-2vq">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-12-at-10.56.07-am-1628x846.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/articles page</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOATUd33F0" id="image3-2w1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-12-at-11.02.13-am-1630x854.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/articles/1 page</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="footer3 cid-sOuru0pUIH" once="footers" id="footer3-2uo">
 
     
