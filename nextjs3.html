@@ -576,47 +576,21 @@ export default function App({ Component, pageProps }) {
                 <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>/pages/api/articles/index.js (updated)</strong></h5>
 
 <pre class="language-clike"><code><!--         
+import { articles } from '../../../articles'
 import { getSession } from 'next-auth/client'
-import { articles } from '../../articles'
 
-function index({ session, articles }) {
+const index = async (req, res) => {
 
-    // If no session exists, display access denied message
-    if (!session) { return (<div>You need to be logged on</div>) }
+    const session = await getSession({ req });
+    if (session) {
+        res.status(200).json(articles)
+    } else {
+        res.status(401).json({ message: `please log in` })
+    }
 
-    return (
-        <div>
-            <ul>
-                {articles.map(article => (<li key={article.id}>{article.title}</li>))}
-            </ul>
-        </div>
-    )
 }
 
 export default index
-
-export const getServerSideProps = async (context) => {
-
-    const session = await getSession(context);
-
-    // If no session exists, display access denied message
-    if (!session) {
-        return {
-            props: {
-                session: null,
-                articles: null
-            }
-        }
-    }
-
-    return {
-        props: {
-            session,
-            articles
-        }
-    }
-
-}
 --></code></pre>
                     
 
@@ -650,65 +624,29 @@ export const getServerSideProps = async (context) => {
         <div class="row justify-content-center">
             <div class="col-12 col-md-10">
                 <blockquote>
-                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>/pages/api/articles/[id]/index.js (updated)</strong></h5>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>/pages/api/articles/[id].js (updated)</strong></h5>
 
 <pre class="language-clike"><code><!--         
-import { getSession } from 'next-auth/client'
 import { articles } from '../../../articles'
+import { getSession } from 'next-auth/client'
 
-function article({ session, article }) {
+const article = async (req, res) => {
 
-    // If no session exists, display access denied message
-    if (!session) { return (<div>You need to be logged on</div>) }
+    const session = await getSession({ req });
+    if (session) {
+        const { query: { id } } = req
+        const article = articles.find(a => a.id.toString() === id)
+        if (!article) {
+            res.status(404).json({ message: `article ${id} not found` })
+        }
+        res.status(200).json(article)
+    } else {
+        res.status(401).json({ message: `please log in` })
+    }
 
-    if (!article) { return (<div>Article not found</div>) }
-
-    return (
-        <div>
-            <h1>{article.title}</h1>
-            This is article {article.id}
-            <p>{article.body}</p>
-        </div>
-    )
 }
 
 export default article
-
-export const getServerSideProps = async (context) => {
-
-    const session = await getSession(context);
-
-    // If no session exists, display access denied message
-    if (!session) {
-        return {
-            props: {
-                session: null,
-                article: null
-            }
-        }
-    }
-
-    const { query: { id } } = context
-
-    const article = articles.find(a => a.id.toString() === id)
-
-    if (!article) {
-        return {
-            props: {
-                session,
-                article: null
-            }
-        }
-    }
-
-    return {
-        props: {
-            session,
-            article
-        }
-    }
-
-}
 --></code></pre>
                     
 
@@ -780,7 +718,7 @@ export const getServerSideProps = async (context) => {
     return {
         props: {
             session,
-            articles: articles
+            articles
         }
     }
 }
