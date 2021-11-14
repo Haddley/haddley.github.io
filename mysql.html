@@ -174,6 +174,82 @@ con.query(sql, function (err, result) {
     </div>
 </section>
 
+<section class="content5 cid-sOM3Wro3yS" id="content5-2xi">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">async await</h4>
+                <p class="mbr-text mbr-fonts-style display-7">% npm install promise-mysql<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sOM3Y5lfnD" id="content7-2xj">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>index.js</strong></h5>
+
+<pre class="language-clike"><code><!--         
+const config = {
+    host: "<host>",
+    user: "<user>",
+    password: "<password>",
+    database: "<database>",
+    port: 3306,
+}
+
+const mysql = require('promise-mysql')
+
+const getDbConnection = async () => {
+    return await mysql.createConnection(config)
+}
+
+const getUsers = async () => {
+    const db = await getDbConnection()
+    const users = await db.query("SELECT * FROM users")
+    await db.end()
+    return users
+}
+
+const main = async () => {
+    const users = await getUsers()
+    console.log(users)
+}
+
+main()
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOM3YHTLOW" id="image3-2xk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-14-at-2.56.34-pm-1836x1054.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">SELECT * FROM users</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="features13 cid-sOL5KdFVnY" id="features14-2x6">
     
 
