@@ -210,16 +210,16 @@ const getDbConnection = async () => {
     return await mysql.createConnection(config)
 }
 
-const getUsers = async () => {
+const getUserCount = async () => {
     const db = await getDbConnection()
-    const users = await db.query("SELECT * FROM users")
+    const userCount = await db.query("SELECT COUNT(*) AS usercount FROM users")
     await db.end()
-    return users
+    return (userCount && userCount[0] && userCount[0].usercount) ? userCount[0].usercount : 0
 }
 
 const main = async () => {
-    const users = await getUsers()
-    console.log(users)
+    const userCount = await getUserCount()
+    console.log(userCount)
 }
 
 main()
@@ -242,8 +242,8 @@ main()
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-11-14-at-2.56.34-pm-1836x1054.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">SELECT * FROM users</p>
+                    <img src="assets/images/screen-shot-2021-11-14-at-4.31.21-pm-1836x1050.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">SELECT COUNT(*) AS usercount FROM users</p>
                 </div>
             </div>
         </div>
