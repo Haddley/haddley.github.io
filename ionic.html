@@ -1177,6 +1177,434 @@ reportWebVitals();
     </div>
 </section>
 
+<section class="content5 cid-sSO7DYeEGH" id="content5-31a">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">pouchdb<br></h4>
+                <p class="mbr-text mbr-fonts-style display-7"><a href="https://pouchdb.com" class="text-primary">PouchDB</a> is an open-source JavaScript database inspired by Apache CouchDB that is designed to run well within the browser.<br><br>PouchDB was created to help web developers build applications that work as well offline as they do online.<br><br>The code below demonstrates how the todo application was migrated to use pouchdb.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sSO8uGKGe8" id="content7-31b">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>todos.ts</strong></h5>
+
+<pre class="language-clike"><code><!--         
+import PouchDB from 'pouchdb-browser'
+
+const db = new PouchDB('tasksdb')
+const remotedburl = 'http://admin:password@localhost:5984/tasksdb'
+
+function createGuid() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
+}
+
+export interface Todo {
+    guid: string;
+    task: string;
+    completed: boolean;
+    _id: string,
+    _rev: string
+}
+
+export const getTodos = async () => {
+    await replicateFrom()
+    const todos = await db.allDocs({
+        include_docs: true,
+        attachments: false
+    })
+    return todos.rows.map((row: { doc: any; }) => <Todo>row.doc)
+}
+
+export const setCompleted = async (existing: Todo, completed: boolean) => {
+    try {
+        await db.put({
+            ...existing,
+            completed
+        })
+        await replicateTo()
+    }
+    catch (err) {
+        console.log("err", err)
+    }
+}
+
+export const deleteTodo = async (existing: Todo) => {
+    try {
+        await db.remove(
+            existing._id,
+            existing._rev
+        )
+        await replicateTo()
+    }
+    catch (err) {
+        console.log("err", err)
+    }
+}
+
+export const addToDo = async (description: string) => {
+    try {
+        const guid = createGuid();
+        await db.post({
+            guid: guid,
+            task: description,
+            completed: false
+        })
+        await replicateTo()
+    }
+    catch (err) {
+        console.log("err", err)
+    }
+}
+
+export const replicate = async () => {
+    await replicateFrom()
+    await replicateTo()
+}
+
+const replicateFrom = async () => {
+    try {
+        const result = await db.replicate.from(remotedburl)
+        console.log("result", result)
+    }
+    catch (err) {
+        console.log("err", err)
+    }
+}
+
+const replicateTo = async () => {
+    try {
+        const result = await db.replicate.to(remotedburl)
+        console.log("result", result)
+    }
+    catch (err) {
+        console.log("err", err)
+    }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sSOj3Tyb5I" id="content5-31c">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">CouchDB</h4>
+                <p class="mbr-text mbr-fonts-style display-7"><strong>%&nbsp;docker run -p 5984:5984 -e COUCHDB_USER=admin -e COUCHDB_PASSWORD=password -d couchdb<br><br>% curl localhost:5984<br></strong><br>https://www.tutorialspoint.com/couchdb/couchdb_quick_guide.htm<br><br>http://localhost:5984/_utils/<br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sSOQ7Bo4NS" id="image3-31f">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-12-27-at-12.16.35-pm-1162x546.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">docker run ...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sSOQdeI0QR" id="image3-31g">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-12-27-at-12.18.39-pm-587x276.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">curl localhost:5984</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sSOPtkOhlL" id="image3-31e">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-12-27-at-12.20.36-pm-1146x613.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">_utils</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sSOReXfcL6" id="image3-31h">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-12-27-at-12.22.03-pm-1145x617.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Enable CORS</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sSPheTKHHL" id="image3-31k">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-12-27-at-2.10.40-pm-1352x718.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">No databases</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sSPhg0BmME" id="image3-31n">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-12-27-at-2.10.59-pm-1354x722.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Adding Task 1 using Safari</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sSPhhIPOrU" id="image3-31q">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-12-27-at-2.11.09-pm-1353x721.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Task 1 has been added</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sSPhgmJoub" id="image3-31o">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-12-27-at-2.11.21-pm-1352x721.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Task 1 details have been replicated to the CouchDB server</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sSPhgK6m1j" id="image3-31p">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-12-27-at-2.11.34-pm-1355x719.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">All documents</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sSPjz7Lrv4" id="image3-31r">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-12-27-at-2.11.44-pm-1354x720.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Task 1 details</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sSPjztqpzb" id="image3-31s">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-12-27-at-2.12.00-pm-1353x719.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Task 1 has been replicated to Chrome</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sSPjzOZ00k" id="image3-31t">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-12-27-at-2.12.11-pm-1353x719.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Task 1 has been updated using Chrome</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sSPjAsXFf2" id="image3-31v">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-12-27-at-2.13.40-pm-1355x718.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Task 1 update has been replicated to Safari</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sSPjAOWU4N" id="image3-31w">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-12-27-at-2.16.12-pm-1272x721.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">CouchDB is stopped</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sSPjBiFdcE" id="image3-31x">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-12-27-at-2.17.25-pm-1570x898.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Multiple changes made offline using Safari and Chrome</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sSPhfESopF" id="image3-31m">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-12-27-at-2.17.54-pm-1267x718.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">CouchDB server started</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sSPl9LaAEz" id="image3-31y">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-12-27-at-2.18.50-pm-1570x901.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Multiple updates are replicated to/from Safari/Chrome</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="features13 cid-sSmTjmWUK1" id="features14-315">
     
 
