@@ -77,7 +77,7 @@
         <div class="row justify-content-center">
             <div class="title col-md-12 col-lg-10">
                 <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Next.js (Part 5)</strong></h3>
-                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">next-pwa</h4>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">next-pwa and ionic</h4>
                 
             </div>
         </div>
@@ -107,8 +107,8 @@
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
                 
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Progressive Web Applications</h4>
-                <p class="mbr-text mbr-fonts-style display-7"><a href="pwa.html" class="text-primary">Progressive Web Applications</a> (PWAs) are application written using standard web technologies.<br><br>Vercel provide an example solution based on <a href="https://www.npmjs.com/package/next-pwa" class="text-primary">next-pwa</a> https://github.com/vercel/next.js/tree/canary/examples/progressive-web-app<br><br>% npx create-next-app --example progressive-web-app progressive-web-app&nbsp;--use-npm<br>% cd progressive-web-app<br>% npm install<br>% npm run dev<br></p>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">next-pwa</h4>
+                <p class="mbr-text mbr-fonts-style display-7">next-pwa adds&nbsp;<a href="pwa.html" class="text-primary">Progressive Web Application</a>&nbsp;(PWA) features to Nextjs<br><br>shadowwalker provides examples apps based on <a href="https://github.com/shadowwalker/next-pwa" class="text-primary">next-pwa</a>&nbsp;<br><br>A Nextjs project that includes the <a href="ionic.html" class="text-primary">ionic</a> web components can be created by running the command:<br><br><strong>% npx create-next-app --example with-ionic-typescript --use-npm haddley-nextjs-ionic-pwa</strong><br><br>The steps below demonstrate how next-pwa can be added to the&nbsp;with-ionic-typescript example project<br></p>
             </div>
         </div>
     </div>
@@ -123,8 +123,8 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-11-11-at-4.04.44-pm-1836x789.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">localhost:3000</p>
+                    <img src="assets/images/screen-shot-2022-01-13-at-9.04.07-am-1836x919.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">example with-ionic-typescript </p>
                 </div>
             </div>
         </div>
@@ -140,8 +140,8 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
+                    <img src="assets/images/screen-shot-2022-01-13-at-9.07.08-am-1836x924.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">npm run build copies the svg folder to public</p>
                 </div>
             </div>
         </div>
@@ -157,9 +157,62 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
+                    <img src="assets/images/screen-shot-2022-01-13-at-9.13.21-am-1836x923.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">update next.config.js to include next-pwa (remove the svg copy)</p>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sUpKAI5fEc" id="content7-34n">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>next.config.js</strong></h5>
+
+<pre class="language-clike"><code><!--         
+// const path = require('path')
+// const CopyPlugin = require('copy-webpack-plugin')
+const withPWA = require('next-pwa')
+
+module.exports = withPWA({
+  pwa: {
+    dest: 'public',
+    disable: process.env.NODE_ENV === 'development',
+    /*fallbacks: {
+      image: '/static/images/fallback.png',
+      // document: '/other-offline',  // if you want to fallback to a custom    page other than /_offline
+      // font: '/static/font/fallback.woff2',
+      // audio: ...,
+      // video: ...,
+    },*/
+  }
+  /*webpack: (config) => {
+    config.plugins.push(
+      new CopyPlugin({
+        patterns: [
+          {
+            from: path.join(
+              __dirname,
+              'node_modules/ionicons/dist/ionicons/svg'
+            ),
+            to: path.join(__dirname, 'public/svg'),
+          },
+        ],
+      })
+    )
+    return config
+  },*/
+})
+
+--></code></pre>
+                    
+
+                    
+</blockquote>
             </div>
         </div>
     </div>
@@ -174,9 +227,31 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
+                    <img src="assets/images/screen-shot-2022-01-13-at-9.14.10-am-1836x920.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">update gitignore so that generated files are ignored</p>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sUpKP7oFxT" id="content7-34o">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>.gitignore</strong></h5>
+
+<pre class="language-clike"><code><!--         
+**/public/workbox-*.js
+**/public/sw.js
+**/public/fallback-*.j
+--></code></pre>
+                    
+
+                    
+</blockquote>
             </div>
         </div>
     </div>
@@ -191,9 +266,39 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
+                    <img src="assets/images/screen-shot-2022-01-13-at-9.14.56-am-1836x920.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">add an offline page</p>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sUpL34EhS8" id="content7-34p">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>_offline.js</strong><strong><br></strong></h5>
+
+<pre class="language-clike"><code><!--         
+import Head from 'next/head'
+
+export default () => (
+  <>
+    <Head>
+      <title>next-pwa example</title>
+    </Head>
+    <h1>This is offline fallback page</h1>
+    <h2>When offline, any page route will fallback to this page</h2>
+  </>
+)
+--></code></pre>
+                    
+
+                    
+</blockquote>
             </div>
         </div>
     </div>
@@ -208,9 +313,50 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
+                    <img src="assets/images/screen-shot-2022-01-13-at-9.16.04-am-1836x923.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">add a manifest.json file (so that app can be installed)</p>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sUpLlCfDPj" id="content7-34q">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>manifest.json</strong></h5>
+
+<pre class="language-clike"><code><!--         
+{
+    "name": "next-pwa",
+    "short_name": "next-pwa",
+    "display": "standalone",
+    "orientation": "portrait",
+    "theme_color": "#FFFFFF",
+    "background_color": "#FFFFFF",
+    "start_url": "/",
+    "icons": [
+      {
+        "src": "/icons/android-chrome-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "any maskable"
+      },
+      {
+        "src": "/icons/icon-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
+--></code></pre>
+                    
+
+                    
+</blockquote>
             </div>
         </div>
     </div>
@@ -225,8 +371,8 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
+                    <img src="assets/images/screen-shot-2022-01-13-at-9.19.45-am-1836x919.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">include the icons referenced in the manifest.json</p>
                 </div>
             </div>
         </div>
@@ -242,15 +388,85 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
+                    <img src="assets/images/screen-shot-2022-01-13-at-9.24.12-am-1836x921.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">include a Nextjs _document.js file that includes a reference to the manifest.json file</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-sOuNJh7x9a" id="image3-2vh">
+<section class="content7 cid-sUpLyQJCcY" id="content7-34r">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>_document.js</strong></h5>
+
+<pre class="language-clike"><code><!--         
+import Document, { Html, Head, Main, NextScript } from 'next/document'
+
+const APP_NAME = 'next-pwa example'
+const APP_DESCRIPTION = 'This is an example of using next-pwa plugin'
+
+export default class extends Document {
+  static async getInitialProps(ctx) {
+    return await Document.getInitialProps(ctx)
+  }
+
+  render() {
+    return (
+      <Html lang='en' dir='ltr'>
+        <Head>
+          <meta name='application-name' content={APP_NAME} />
+          <meta name='apple-mobile-web-app-capable' content='yes' />
+          <meta name='apple-mobile-web-app-status-bar-style' content='default' />
+          <meta name='apple-mobile-web-app-title' content={APP_NAME} />
+          <meta name='description' content={APP_DESCRIPTION} />
+          <meta name='format-detection' content='telephone=no' />
+          <meta name='mobile-web-app-capable' content='yes' />
+          <meta name='theme-color' content='#FFFFFF' />
+          {/* TIP: set viewport head meta tag in _app.js, otherwise it will show a warning */}
+          {/* <meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover' /> */}
+          
+          <link rel='apple-touch-icon' sizes='180x180' href='/icons/apple-touch-icon.png' />
+          <link rel='manifest' href='/manifest.json' />
+          <link rel='shortcut icon' href='/favicon.ico' />
+          <style>{
+            `
+            html, body, #__next {
+              height: 100%;
+            }
+            #__next {
+              margin: 0 auto;
+            }
+            h1 {
+              text-align: center;
+            }
+            `
+          }</style>
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    )
+  }
+}
+
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sUqOk8bTAJ" id="image3-34z">
     
 
     
@@ -259,8 +475,8 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
+                    <img src="assets/images/screen-shot-2022-01-13-at-2.34.43-pm-1836x1111.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I needed to remove (unneeded) files from the svg folder...</p>
                 </div>
             </div>
         </div>
@@ -276,8 +492,8 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
+                    <img src="assets/images/screen-shot-2022-01-13-at-9.34.17-am-1836x920.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">npm run build</p>
                 </div>
             </div>
         </div>
@@ -293,8 +509,8 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
+                    <img src="assets/images/screen-shot-2022-01-13-at-9.34.35-am-1290x190.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Create Azure Web App</p>
                 </div>
             </div>
         </div>
@@ -310,8 +526,246 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
+                    <img src="assets/images/screen-shot-2022-01-13-at-9.34.45-am-1262x268.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">provide a name</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sUpGsk3iOL" id="image3-348">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-01-13-at-9.34.58-am-1270x330.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">select a node version</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sUpGsE7GHP" id="image3-349">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-01-13-at-9.35.08-am-1298x268.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">select a pricing tier</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sUpGsYraCw" id="image3-34a">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-01-13-at-9.38.27-am-960x218.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">deploying...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sUpGtpTGTw" id="image3-34b">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-01-13-at-2.39.13-pm-361x732.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">iPhone Simulator</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sUpGtJvRnL" id="image3-34c">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-01-13-at-2.39.30-pm-360x732.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Accessing&nbsp;https://haddleynextjsionicpwa.azurewebsites.net using Safari</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sUpGuwF5nB" id="image3-34e">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-01-13-at-2.39.47-pm-357x730.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add to Home Screen</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sUpGuWwtlD" id="image3-34f">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-01-13-at-2.39.56-pm-357x733.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Confirm application details</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sUpGvncnLn" id="image3-34g">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-01-13-at-2.40.33-pm-358x734.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Application on Home Screen</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sUpGvNvAQC" id="image3-34h">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-01-13-at-2.40.43-pm-360x736.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Application running with an Internet connection</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sUpGwfIk00" id="image3-34i">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-01-13-at-2.41.54-pm-359x735.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Internet connection disabled</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sUpGwGw1aL" id="image3-34j">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-01-13-at-2.42.08-pm-357x735.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Application running offline</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sUpGxUKaRX" id="image3-34m">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-01-13-at-2.43.18-pm-833x512.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Accessing&nbsp;https://haddleynextjsionicpwa.azurewebsites.net using Chrome on a MacBook</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sUqQvTzloX" id="image3-350">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-01-13-at-2.43.28-pm-836x514.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Installing application on MacBook</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sUpGu8KagB" id="image3-34d">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-01-13-at-2.43.45-pm-759x605.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Running application online or offline on MackBook</p>
                 </div>
             </div>
         </div>

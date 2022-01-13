@@ -805,6 +805,148 @@ export const getServerSideProps = async (context) => {
     </div>
 </section>
 
+<section class="content5 cid-sUpUM17yWM" id="content5-34x">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Azure Active Directory</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The&nbsp;AzureADProvider from "next-auth/providers/azure-ad" can be used connect Nextjs and Azure Active Directory.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sUpVfFa5KK" id="content7-34y">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>[...nextauth.js] (updated)</strong></h5>
+
+<pre class="language-clike"><code><!--         
+import NextAuth from "next-auth";
+import GihubProvider from "next-auth/providers/github"
+import AzureADProvider from "next-auth/providers/azure-ad"
+
+// https://haddleynexttodo.azurewebsites.net/api/auth/signin
+
+// Authorization callback URL: https://haddleynexttodo.azurewebsites.net/api/auth/callback/github
+// Authorization callback URL: https://haddleynexttodo.azurewebsites.net/api/auth/callback/azure-ad
+
+export default NextAuth({
+    providers: [
+        GihubProvider({
+            clientId: process.env.NEXTAUTH_GITHUB_ID, 
+            clientSecret: process.env.NEXTAUTH_GITHUB_SECRET, 
+        }),
+        AzureADProvider({
+            clientId: process.env.AZURE_AD_CLIENT_ID,
+            clientSecret: process.env.AZURE_AD_CLIENT_SECRET,
+            tenantId: process.env.AZURE_AD_TENANT_ID,
+            authorization: { params: { scope: "openid email profile" } }, 
+        })
+    ],
+    secret: process.env.NEXTAUTH_SECRET,
+    debug: true
+})
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sUpU6B5XnV" id="image3-34t">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-01-13-at-11.11.13-am-1836x926.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">environment settings</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sUpU725JDA" id="image3-34u">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-01-13-at-11.14.22-am-1836x925.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Application (client) ID, Directory (tenant) ID and 1 secret</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sUpU7tSmej" id="image3-34v">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-01-13-at-11.14.42-am-1836x934.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Client Secret</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sUpU7Tkgv3" id="image3-34w">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-01-13-at-11.16.04-am-1836x983.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Redirect URIs and Implicit flows</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sUpU61YZYV" id="image3-34s">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-01-13-at-11.17.40-am-1836x1100.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/api/auth/signin</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="footer3 cid-sOuru0pUIH" once="footers" id="footer3-2uo">
 
     
