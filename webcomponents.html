@@ -26,7 +26,7 @@
   
   <link href="prism.css" rel="stylesheet" />
 <script src="aframe.min.js"></script>
-<script src="webcomponents/howtoTooltip.js"></script>
+
 
   
 </head>
@@ -135,18 +135,20 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">demo</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Move to and away from the text box below. <br><br>If Web Components are supported by your browser the tooltip should appear and disappear.<br><br><br>---<br><br>
+                <p class="mbr-text mbr-fonts-style display-7">Move to and away from the text box below. <br><br>If Web Components are supported by your browser the tooltip should appear and disappear.<br><br>============<br><br>
                     
+<label for="cheese">Favourite type of cheese: </label>
                     
-                    
-                    
-                    <label for="cheese">Favourite type of cheese: </label>
 <input id="cheese" aria-describedby="tp2">
-<howto-tooltip id="tp2">Help I am trapped inside a tooltip message
                     
+<howto-tooltip id="tp2">
+    Help I am trapped inside a tooltip message
+
                     
-                    <br><br>---<br><br></howto-tooltip id="tp2"></p>
-            </div>
+                    <br><br>============<br><br></howto-tooltip></p>
+                
+                
+                </div>
         </div>
     </div>
 </section>
@@ -833,7 +835,7 @@ customElements.whenDefined('howto-tooltip').then(() => {
   <script src="assets/theme/js/script.js"></script>
   
   <script src="prism.js"></script>
-
+<script src="webcomponents/howtoTooltip.js"></script>
   
 </body>
 </html>
