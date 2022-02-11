@@ -115,6 +115,77 @@
     </div>
 </section>
 
+<section class="content5 cid-sX5D4S5yoL" id="content5-38g">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">howto-tooltip</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The&nbsp;aria-describedby&nbsp;attribute lists the ids of the elements that describe the object. It is used to establish a relationship between widgets or groups and the text that describes them.<br><br>A developer might want to create a&nbsp;howto-tooltip&nbsp;element that would display "described by text" only when a user is focused on the described element.<br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sX5DIfPhdI" id="content5-38i">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">demo</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Move to and away from the text box below. <br><br>If Web Components are supported by your browser the tooltip should appear and disappear.<br><br><br>---<br><br>
+                    
+                    
+                    
+                    
+                    <label for="cheese">Favourite type of cheese: </label>
+<input id="cheese" aria-describedby="tp2">
+<howto-tooltip id="tp2">Help I am trapped inside a tooltip message
+                    
+                    
+                    <br><br>---<br><br></howto-tooltip id="tp2"></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sX5EETyZOP" id="content7-38j">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>html embedded above</strong></h5>
+
+<pre class="language-clike"><code><!--         
+<label for="cheese">Favourite type of cheese: </label>
+<input id="cheese" aria-describedby="tp2"/>
+<howto-tooltip id="tp2">Help I am trapped inside a tooltip message</howto-tooltip>
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sX5Dq2V2li" id="content5-38h">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                
+                <p class="mbr-text mbr-fonts-style display-7">The howto-tooltip Web Component is created using a JavaScript class and defined with a window.customElements.define() call.<br><br>The JavaScript class has a constructor, a _show method, a _hide method and an implementation for the connectedCallback and disconnectedCallback lifecycle methods.<br><br>The constructor uses bind to ensure that the _show and _hide methods can show or hide "this" howto-tooltip element.<br><br>The lifecycle methods add or remove event listeners to the described elements.<br><br>Notice that if the HTML is accessed by a Web Browser that does not support Web Components (and no "polyfill" has been included) the user is still able to read the tooltip text.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="content7 cid-sX3MpinGjN" id="content7-377">
     
     <div class="container">
