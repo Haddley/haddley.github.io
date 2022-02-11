@@ -266,7 +266,7 @@ customElements.whenDefined('howto-tooltip').then(() => {
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">template</h4>
-                <p class="mbr-text mbr-fonts-style display-7">An HTML template is a section of HTML that can be stamped out multiple times on multiple HTML pages.<br><br>Slots are used to identify places in the HTML template where other content could be added.<br><br>Consider this template from the <a href="https://css-tricks.com/web-components-are-easier-than-you-think/" class="text-primary" target="_blank">Web Components Are Easier Than You Think</a> article<br><br>&lt;body&gt;<br>    &lt;template id="my-paragraph"&gt;<br>        &lt;p&gt;My paragraph&lt;/p&gt;<br>    &lt;/template&gt;<br>&lt;/body&gt;<br><br></p>
+                <p class="mbr-text mbr-fonts-style display-7">An HTML template is a section of HTML that can be stamped out multiple times on multiple HTML pages.<br><br>Slots are used to identify places in the HTML template where other content can be grafted.<br><br>Consider this template from the <a href="https://css-tricks.com/web-components-are-easier-than-you-think/" class="text-primary" target="_blank">Web Components Are Easier Than You Think</a> article<br><br>&lt;body&gt;<br>    &lt;template id="my-paragraph"&gt;<br>        &lt;p&gt;My paragraph&lt;/p&gt;<br>    &lt;/template&gt;<br>&lt;/body&gt;<br><br></p>
             </div>
         </div>
     </div>
@@ -296,7 +296,7 @@ customElements.whenDefined('howto-tooltip').then(() => {
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Using a template with JavaScript</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Adding a template element to a web page does not result in anything being displayed.<br><br>We can use JavaScript to apply the template.<br><br>&lt;script&gt;<br>        let template = document.getElementById('my-paragraph');<br>        let templateContent = template.content;<br>        document.body.appendChild(templateContent.cloneNode(true))<br>document.body.appendChild(templateContent.cloneNode(true))<br>document.body.appendChild(templateContent.cloneNode(true))<br>    &lt;/script&gt;<br></p>
+                <p class="mbr-text mbr-fonts-style display-7">Adding a template element to a web page does not result in anything being displayed (see above).<br><br>We can use JavaScript to apply the template.<br><br>&lt;script&gt;<br>        let template = document.getElementById('my-paragraph');<br>        let templateContent = template.content;<br>        document.body.appendChild(templateContent.cloneNode(true))<br>document.body.appendChild(templateContent.cloneNode(true))<br>document.body.appendChild(templateContent.cloneNode(true))<br>    &lt;/script&gt;<br></p>
             </div>
         </div>
     </div>
@@ -326,7 +326,7 @@ customElements.whenDefined('howto-tooltip').then(() => {
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Using a template in a Web Component</h4>
-                <p class="mbr-text mbr-fonts-style display-7">We can apply a template&nbsp;using a Web Component.<br><br>&lt;script&gt;<br><br>        customElements.define("my-element",<br>            class extends HTMLElement {<br>                constructor() {<br>                    super();<br>                    let template = document.getElementById("my-paragraph");<br>                    let templatecontent = template.content;<br>                    const shadowRoot = this.attachShadow({ mode: "open" }).appendChild(templatecontent.cloneNode(true));<br>                }<br>            });<br><br>    &lt;/script&gt;<br></p>
+                <p class="mbr-text mbr-fonts-style display-7">An easier way to apply a template is to create a&nbsp;Web Component.<br><br>&lt;script&gt;<br><br>        customElements.define("my-element",<br>            class extends HTMLElement {<br>                constructor() {<br>                    super();<br>                    let template = document.getElementById("my-paragraph");<br>                    let templatecontent = template.content;<br>                    const shadowRoot = this.attachShadow({ mode: "open" }).appendChild(templatecontent.cloneNode(true));<br>                }<br>            });<br><br>    &lt;/script&gt;<br></p>
             </div>
         </div>
     </div>
@@ -715,6 +715,19 @@ customElements.whenDefined('howto-tooltip').then(() => {
                     <img src="assets/images/screen-shot-2022-02-10-at-6.23.41-pm-1260x648.png" alt="">
                     <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The click event is bubbled up. The custom tick events are dispatched.&nbsp;</p>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sX5ZVwJFt8" id="content5-38k">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Are Web Components the future?</h4>
+                <p class="mbr-text mbr-fonts-style display-7">In her <a href="https://blog.logrocket.com/what-happened-to-web-components/" class="text-primary" target="_blank">article</a> Anna Monus explains<br><br><em><strong>These days, web components are a divisive topic. They were once expected to revolutionize frontend development, but they’re still struggling to achieve industrywide adoption. Some developers say web components have already died, while others think they’re the future of web development.</strong></em><br><br>and<br><br><em><strong>UI libraries, such as React, Vue, and Angular, serve the same purpose as web components: they make component-based frontend development possible. Even though they’re not native to web browsers (you have to add the libraries separately while web components use web APIs built into the browser, such as DOM and CustomElementRegistry), they have a huge ecosystem, good documentation, and many developer-friendly features.</strong></em><br><br></p>
             </div>
         </div>
     </div>
