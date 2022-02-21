@@ -525,7 +525,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">To display a given area</h4>
-                <p class="mbr-text mbr-fonts-style display-7">To determine which tiles need to be download to display a given map (at a given zoom level) leaflet needs to convert from a pair of latitude and longitude values (extent).<br><br>Example code:<br><br>var zoom        = 9;<br>var top_tile    = lat2tile(north_edge, zoom); // eg.lat2tile(34.422, 9);<br>var left_tile   = lon2tile(west_edge, zoom);<br>var bottom_tile = lat2tile(south_edge, zoom);<br>var right_tile  = lon2tile(east_edge, zoom);<br>var width       = Math.abs(left_tile - right_tile) + 1;<br>var height      = Math.abs(top_tile - bottom_tile) + 1;<br><br>// total tiles<br>var total_tiles = width * height; // -&gt; eg. 377<br><br><br></p>
+                <p class="mbr-text mbr-fonts-style display-7">To determine which tiles need to be downloaded to display a given area at a given zoom level leaflet needs to convert from a pair of latitude and longitude co-ordinates to a set of tile url values.<br><br>Example code:<br><br><strong>var zoom        = 9;<br>var top_tile    = lat2tile(north_edge, zoom); // eg.lat2tile(34.422, 9);<br>var left_tile   = lon2tile(west_edge, zoom);<br>var bottom_tile = lat2tile(south_edge, zoom);<br>var right_tile  = lon2tile(east_edge, zoom);<br>var width       = Math.abs(left_tile - right_tile) + 1;<br>var height      = Math.abs(top_tile - bottom_tile) + 1;<br><br>// total tiles<br>var total_tiles = width * height; // -&gt; eg. 377</strong><br><br><br></p>
             </div>
         </div>
     </div>
@@ -640,7 +640,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Leaflet can be used to add shapes and markers to a map</h4>
-                <p class="mbr-text mbr-fonts-style display-7">A triangle can be added using this code:<br><br>var polygon = L.polygon([<br>            [51.509, -0.08],<br>            [51.503, -0.06],<br>            [51.51, -0.047]<br>        ]).addTo(map);<br><br></p>
+                <p class="mbr-text mbr-fonts-style display-7">A triangle can be added using to a Leaflet map this code:<br><br><strong>var polygon = L.polygon([<br>            [51.509, -0.08],<br>            [51.503, -0.06],<br>            [51.51, -0.047]<br>        ]).addTo(map);</strong><br><br></p>
             </div>
         </div>
     </div>
@@ -725,7 +725,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Leaflet can be used to add controls to a map</h4>
-                <p class="mbr-text mbr-fonts-style display-7">A number of controls are included with Leaflet.<br><br>This code can be used to add a scale control.<br><br>L.control.scale().addTo(map);<br></p>
+                <p class="mbr-text mbr-fonts-style display-7">A number of controls are included with Leaflet.<br><br>This code can be used to add a scale control:<br><br><strong>L.control.scale().addTo(map);</strong><br></p>
             </div>
         </div>
     </div>
@@ -755,7 +755,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Adding controls to a Leaflet map</h4>
-                <p class="mbr-text mbr-fonts-style display-7">It is also possible to add control to a Leaflet map.<br><br>I created a "LocationSelect" control that allows users to "fly" between a number of given locations (based on <a href="https://gis.stackexchange.com/questions/327271/adding-feature-property-values-to-filter-drop-down-option-in-leaflet-instead-of/327336?noredirect=1" class="text-primary" target="_blank">this</a> blog post)</p>
+                <p class="mbr-text mbr-fonts-style display-7">New Leaflet controls can be created by extending an existing Leaflet control.<br><br>I created a "LocationSelect" control that allows users to "fly" between locations (based on <a href="https://gis.stackexchange.com/questions/327271/adding-feature-property-values-to-filter-drop-down-option-in-leaflet-instead-of/327336?noredirect=1" class="text-primary" target="_blank">this</a> blog post)</p>
             </div>
         </div>
     </div>
