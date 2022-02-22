@@ -109,7 +109,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">What is Leaflet?</h4>
-                <p class="mbr-text mbr-fonts-style display-7"><script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser-arcade-physics.min.js"></script>Leaflet is an open-source JavaScript library for mobile-friendly interactive maps. <br><br>Weighing just about 39 KB of JS, it claims to have all the mapping features most developers ever need.<br></p>
+                <p class="mbr-text mbr-fonts-style display-7"><script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser-arcade-physics.min.js"></script>Leaflet is an open-source JavaScript library for mobile-friendly interactive maps. <br><br>Leaflet claims to have all the mapping features most developers need.<br></p>
             </div>
         </div>
     </div>
@@ -200,7 +200,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Leaflet code</h4>
-                <p class="mbr-text mbr-fonts-style display-7">I added the leaflet css styles and javascript to create an interactive map.<br><br>The letter L is used to access Leaflet.<br><br>Here we replace the element with id 'map' with the Leaflet map.&nbsp;<br><br><strong>var map = L.map('map').setView([51.505, -0.09], 13);</strong><br><br>Here we add the map tiles:<br><br><strong>        L.tileLayer('//services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.jpg').addTo(map);</strong><br><br></p>
+                <p class="mbr-text mbr-fonts-style display-7">I added the leaflet css styles and javascript to create an interactive map.<br><br>The letter L is used to access Leaflet.<br><br>Here I replace the div element with id 'map' with the Leaflet map.&nbsp;<br><br><strong>var map = L.map('map').setView([51.505, -0.09], 13);</strong><br><br>Here I add the arcgisonline.com tiles:<br><br><strong>        L.tileLayer('//services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.jpg').addTo(map);</strong><br><br></p>
             </div>
         </div>
     </div>
@@ -397,7 +397,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Tile layer</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Leaflet has to determine&nbsp;which "tiles" are needed to render the map.<br><br>The tiles themselves are downloaded from a "tile server" arcgisonline.com in this case.</p>
+                <p class="mbr-text mbr-fonts-style display-7">Leaflet has to determine&nbsp;which tiles are needed to render the map.<br><br>The tiles are downloaded from a tile server (arcgisonline.com in this case).</p>
             </div>
         </div>
     </div>
@@ -444,7 +444,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Calculating a tile url<br></h4>
-                <p class="mbr-text mbr-fonts-style display-7">To determine which tile is needed to display a given location leaflet needs to convert from a given latitude and longitude to a given tile url.<br><br>The calculations are described here:<br><br>https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames#Tile_servers<br><br>Example code:</p>
+                <p class="mbr-text mbr-fonts-style display-7">To determine which tile is needed to display a given location leaflet needs to convert from a given latitude and longitude to a given tile url.<br><br>The calculations are described here:<br><br><a href="https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames#Tile_servers" class="text-primary" target="_blank">https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames#Tile_servers</a><br><br>Example code:</p>
             </div>
         </div>
     </div>
@@ -525,7 +525,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">To display a given area</h4>
-                <p class="mbr-text mbr-fonts-style display-7">To determine which tiles need to be downloaded to display a given area at a given zoom level leaflet needs to convert from a pair of latitude and longitude co-ordinates to a set of tile url values.<br><br>Example code:<br><br><strong>var zoom        = 9;<br>var top_tile    = lat2tile(north_edge, zoom); // eg.lat2tile(34.422, 9);<br>var left_tile   = lon2tile(west_edge, zoom);<br>var bottom_tile = lat2tile(south_edge, zoom);<br>var right_tile  = lon2tile(east_edge, zoom);<br>var width       = Math.abs(left_tile - right_tile) + 1;<br>var height      = Math.abs(top_tile - bottom_tile) + 1;<br><br>// total tiles<br>var total_tiles = width * height; // -&gt; eg. 377</strong><br><br><br></p>
+                <p class="mbr-text mbr-fonts-style display-7">To determine which tiles need to be downloaded to display a given area at a given zoom level leaflet needs to convert from a pair of latitude and longitude co-ordinates to a set of tile urls.<br><br>Example code:<br><br><strong>var zoom        = 9;<br>var top_tile    = lat2tile(north_edge, zoom); // eg.lat2tile(34.422, 9);<br>var left_tile   = lon2tile(west_edge, zoom);<br>var bottom_tile = lat2tile(south_edge, zoom);<br>var right_tile  = lon2tile(east_edge, zoom);<br>var width       = Math.abs(left_tile - right_tile) + 1;<br>var height      = Math.abs(top_tile - bottom_tile) + 1;<br><br>// total tiles<br>var total_tiles = width * height; // -&gt; eg. 377</strong><br><br><br></p>
             </div>
         </div>
     </div>
@@ -640,7 +640,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Leaflet can be used to add shapes and markers to a map</h4>
-                <p class="mbr-text mbr-fonts-style display-7">A triangle can be added using to a Leaflet map this code:<br><br><strong>var polygon = L.polygon([<br>            [51.509, -0.08],<br>            [51.503, -0.06],<br>            [51.51, -0.047]<br>        ]).addTo(map);</strong><br><br></p>
+                <p class="mbr-text mbr-fonts-style display-7">I added a triangle to a Leaflet map this code:<br><br><strong>var polygon = L.polygon([<br>            [51.509, -0.08],<br>            [51.503, -0.06],<br>            [51.51, -0.047]<br>        ]).addTo(map);</strong><br><br></p>
             </div>
         </div>
     </div>
@@ -724,8 +724,8 @@
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
                 
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Leaflet can be used to add controls to a map</h4>
-                <p class="mbr-text mbr-fonts-style display-7">A number of controls are included with Leaflet.<br><br>This code can be used to add a scale control:<br><br><strong>L.control.scale().addTo(map);</strong><br></p>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Leaflet controls can be added to a map</h4>
+                <p class="mbr-text mbr-fonts-style display-7">A number of controls are included with Leaflet.<br><br>I used this code to add a scale control to a map:<br><br><strong>L.control.scale().addTo(map);</strong><br></p>
             </div>
         </div>
     </div>
@@ -754,8 +754,8 @@
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
                 
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Adding controls to a Leaflet map</h4>
-                <p class="mbr-text mbr-fonts-style display-7">New Leaflet controls can be created by extending existing Leaflet controls.<br><br>I created a "LocationSelect" control that allows users to "fly" between locations (based on <a href="https://gis.stackexchange.com/questions/327271/adding-feature-property-values-to-filter-drop-down-option-in-leaflet-instead-of/327336?noredirect=1" class="text-primary" target="_blank">this</a> blog post)<br><br>Click <a href="https://haddley.github.io/leaflet/index.html" class="text-primary" target="_blank">here</a> to navigate to the page.</p>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Creating new controls</h4>
+                <p class="mbr-text mbr-fonts-style display-7">New Leaflet controls can be created by extending L.Control.<br><br>I created a "LocationSelect" control that allows users to "fly" between locations (based on <a href="https://gis.stackexchange.com/questions/327271/adding-feature-property-values-to-filter-drop-down-option-in-leaflet-instead-of/327336?noredirect=1" class="text-primary" target="_blank">this</a>&nbsp;post)<br><br>Click <a href="https://haddley.github.io/leaflet/index.html" class="text-primary" target="_blank">here</a> to navigate to a <a href="https://haddley.github.io/leaflet/index.html" class="text-primary" target="_blank">demo page</a>.</p>
             </div>
         </div>
     </div>
