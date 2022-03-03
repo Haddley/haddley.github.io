@@ -597,7 +597,7 @@
                     toptobottom = top_tile + top
                     lefttoright = left_tile + left
 
-                    innerHTML += `<img style="position:absolute;top:${top * tileSize}px;left:${left * tileSize}px;height:256px;width:256px" src=https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/${zoom}/${toptobottom}/${lefttoright}.jpg>`
+                    innerHTML += `<img style="position:absolute;top:${top * tileSize}px;left:${left * tileSize}px;height:${tileSize}px;width:${tileSize}px" src=https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/${zoom}/${toptobottom}/${lefttoright}.jpg>`
                 }
             }
             document.getElementById("map").innerHTML = innerHTML
