@@ -127,9 +127,10 @@
                 <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Scene</strong></h5>
 
 <pre class="language-html"><code><!--         
-  <a-scene embedded arjs>
-    <a-box position='0 0.5 0' material='opacity: 0.5;'></a-box>
-    <a-marker type='barcode' value='6'></a-marker>
+  <a-scene embedded arjs='detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
+    <a-marker type="barcode" value="6">
+      <a-box position='0 0.5 0' material='color: blue; opacity: 0.5;'></a-box>
+    </a-marker>
   </a-scene>
 --></code></pre>
                     
@@ -146,7 +147,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
-                <div class="mbr-section-btn align-center"><a class="btn btn-primary display-4" href="WebXRScene.html">A WebXR Scene</a></div>
+                <div class="mbr-section-btn align-center"><a class="btn btn-primary display-4" href="WebXRScene.html">A WebXR Scene</a> <a class="btn btn-primary display-4" href="https://github.com/nicolocarpignoli/artoolkit-barcode-markers-collection/tree/master/3x3">3x3 Markers</a> <a class="btn btn-primary display-4" href="WebXRScene.html">A WebXR Scene</a></div>
             </div>
         </div>
     </div>
