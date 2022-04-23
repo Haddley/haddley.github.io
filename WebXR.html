@@ -127,10 +127,18 @@
                 <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Scene</strong></h5>
 
 <pre class="language-html"><code><!--         
-  <a-scene embedded arjs='detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
+  <a-scene embedded arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+  
     <a-marker type="barcode" value="6">
-      <a-box position='0 0.5 0' material='color: blue; opacity: 0.5;'></a-box>
+      <a-sphere material="color: blue; opacity: 0.5" radius="0.25"></a-sphere>
     </a-marker>
+
+    <a-marker type="barcode" value="1">
+      <a-text value="Detected id:1"></a-text>
+    </a-marker>
+
+    <a-entity camera></a-entity>
+    
   </a-scene>
 --></code></pre>
                     
@@ -147,7 +155,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
-                <div class="mbr-section-btn align-center"><a class="btn btn-primary display-4" href="WebXRScene.html">A WebXR Scene</a> <a class="btn btn-primary display-4" href="https://github.com/nicolocarpignoli/artoolkit-barcode-markers-collection/tree/master/3x3">3x3 Markers</a> <a class="btn btn-primary display-4" href="WebXRScene.html">A WebXR Scene</a></div>
+                <div class="mbr-section-btn align-center"><a class="btn btn-primary display-4" href="WebXRScene.html">A WebXR Scene</a> <a class="btn btn-primary display-4" href="https://github.com/nicolocarpignoli/artoolkit-barcode-markers-collection/tree/master/3x3">3x3 Markers</a> <a class="btn btn-primary display-4" href="https://www.qrcode-monkey.com/#">QR Code Generator</a></div>
             </div>
         </div>
     </div>
@@ -179,7 +187,7 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/qr-code-2-1148x1148.png" alt="">
+                    <img src="assets/images/qr-code-3-1148x1148.png" alt="">
                     <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Augmented Reality Marker embedded in URL QR Code</p>
                 </div>
             </div>
