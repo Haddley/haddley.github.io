@@ -112,7 +112,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">A console application that calls the Microsoft Graph API</h4>
-                <p class="mbr-text mbr-fonts-style display-7">This post is based on Microsoft's "<a href="https://docs.microsoft.com/en-nz/graph/tutorials/javascript?tabs=aad" class="text-primary" target="_blank">Build JavaScript apps with Microsoft Graph</a>" tutorial.<br><br>The node console application created here uses OAuth for identity management.<br><br>OAuth requires an identity provider for authentication. In this the identity provider is <a href="azure-active-directory.html#top" class="text-primary" target="_blank">Azure Active Directory</a>.<br><br>For this to work the application has to be registered.<br></p>
+                <p class="mbr-text mbr-fonts-style display-7">This post is based on Microsoft's "<a href="https://docs.microsoft.com/en-nz/graph/tutorials/javascript?tabs=aad" class="text-primary" target="_blank">Build JavaScript apps with Microsoft Graph</a>" tutorial.<br><br>The node console application I created here uses OAuth for identity management.<br><br>An OAuth application requires an "identity provider". <br><br>In this case the identity provider is <a href="azure-active-directory.html#top" class="text-primary" target="_blank">Azure Active Directory</a>.<br></p>
             </div>
         </div>
     </div>
@@ -128,7 +128,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-27-at-2.21.09-pm-1836x1288.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Navigate to Azure Portal and select Azure Active Directory</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I navigated to Azure Portal and selected Azure Active Directory</p>
                 </div>
             </div>
         </div>
@@ -145,7 +145,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-27-at-2.21.40-pm-1836x1278.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Select App registrations</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the "App registrations" link</p>
                 </div>
             </div>
         </div>
@@ -162,7 +162,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-27-at-2.22.04-pm-1836x1285.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Select the "New registration" button</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the "New registration" link</p>
                 </div>
             </div>
         </div>
@@ -179,7 +179,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-27-at-2.23.43-pm-1836x1285.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Enter the name of the console application and select "Register"</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I entered the name of the console application and selected "Register"</p>
                 </div>
             </div>
         </div>
@@ -196,7 +196,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-27-at-2.24.32-pm-1836x1276.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The application registration has been created. Take a note of the "Application (client) ID" and the "Directory (tenant) ID" (the&nbsp;identity provider)</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I made a note of the "Application (client) ID" and the "Directory (tenant) ID"</p>
                 </div>
             </div>
         </div>
@@ -213,7 +213,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-27-at-2.29.06-pm-1836x969.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Initialize the node app</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created a minimal node project</p>
                 </div>
             </div>
         </div>
@@ -230,7 +230,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-27-at-2.30.07-pm-1836x95.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add dependencies&nbsp;@azure/identity, @microsoft/microsoft-graph-client, isomorphic-fetch and readline-sync</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added @azure/identity, @microsoft/microsoft-graph-client, isomorphic-fetch and readline-sync&nbsp;dependencies</p>
                 </div>
             </div>
         </div>
@@ -247,7 +247,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-27-at-2.33.22-pm-1836x968.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The settings object above includes the "Application (client) ID" and the&nbsp;"Directory (tenant) ID" from the Application registration (above). It also includes the "graphUserScopes".</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created an appSettings.js file including the "Application (client) ID" and the&nbsp;"Directory (tenant) ID" values provided in the Application registration page. I included the required <a href="MicrosoftGraph.html" class="text-primary">Microsoft Graph permissions</a>&nbsp;(the "graphUserScopes").</p>
                 </div>
             </div>
         </div>
@@ -264,7 +264,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-27-at-2.42.00-pm-1836x968.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The running console application</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I ran the console application</p>
                 </div>
             </div>
         </div>
@@ -278,7 +278,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Key moves</h4>
-                <p class="mbr-text mbr-fonts-style display-7">The index.js code contains the console application user interface. This is where the user selects an option.<br><br>The graphHelper.js file contains the more interesting code. The graphHelper code creates a&nbsp;TokenCredentialAuthenticationProvider object and uses that to create a _userClient object.<br><br>The _userClient object is then used to make calls as described in the <a href="MicrosoftGraph.html" class="text-primary">Graph Explorer</a> "Code snippets" tab.<br><br></p>
+                <p class="mbr-text mbr-fonts-style display-7">The index.js code contains the console application user interface. This is where the user selects an option.<br><br>The graphHelper.js file contains the most interesting code. <br><br>The graphHelper code creates a&nbsp;TokenCredentialAuthenticationProvider object and uses that to create a _userClient (client) object.<br><br>The client object is then used to make calls as shown in the <a href="MicrosoftGraph.html" class="text-primary">Graph Explorer</a> "Code snippets" tab.<br><br></p>
             </div>
         </div>
     </div>

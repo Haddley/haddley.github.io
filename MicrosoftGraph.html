@@ -112,7 +112,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Graph Explorer</h4>
-                <p class="mbr-text mbr-fonts-style display-7"><a href="https://docs.microsoft.com/en-us/graph/overview" class="text-primary" target="_blank">Microsoft Graph</a> exposes REST APIs and client libraries to access: Microsoft 365, Azure Active Directory, Windows and Dynamics 365.<br><br><a href="https://developer.microsoft.com/en-us/graph/graph-explorer" class="text-primary" target="_blank">Graph Explorer</a> is a developer tool that lets you make Microsoft Graph REST API requests and view corresponding responses.<br></p>
+                <p class="mbr-text mbr-fonts-style display-7"><a href="https://docs.microsoft.com/en-us/graph/overview" class="text-primary" target="_blank">Microsoft Graph</a> is a REST API that can be used to access: Microsoft 365, Azure Active Directory, Windows and Dynamics 365.<br><br><a href="https://developer.microsoft.com/en-us/graph/graph-explorer" class="text-primary" target="_blank">Graph Explorer</a> is a developer tool that allow a developer to make Microsoft Graph REST API requests and view corresponding responses.<br></p>
             </div>
         </div>
     </div>
@@ -128,7 +128,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-26-at-9.26.35-am-1235x617.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Using Graph Explorer (using a sample account)</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Here I am using the Graph Explorer without signing in to my Active Directory account (using a sample account)</p>
                 </div>
             </div>
         </div>
@@ -145,7 +145,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-26-at-9.29.31-am-485x209.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Signing into <a href="https://developer.microsoft.com/en-us/microsoft-365/dev-program#Subscription" class="text-primary" target="_blank">Microsoft 365 E5 developer subscription pre-provisioned with Microsoft 365 apps</a></p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Here I am signing into my&nbsp;<a href="https://developer.microsoft.com/en-us/microsoft-365/dev-program#Subscription" class="text-primary" target="_blank">Microsoft 365 E5 developer subscription pre-provisioned with Microsoft 365 apps</a></p>
                 </div>
             </div>
         </div>
@@ -162,7 +162,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-26-at-9.29.46-am-485x189.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">entering password</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Here I am entering my password</p>
                 </div>
             </div>
         </div>
@@ -179,7 +179,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-26-at-9.30.14-am-484x195.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">two factor authentication</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I am required to approve the sign in request using my mobile phone (two factor authentication)</p>
                 </div>
             </div>
         </div>
@@ -196,7 +196,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-26-at-9.30.49-am-1234x619.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">GET my profile -&nbsp;https://graph.microsoft.com/v1.0/me/</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I can retrieve my profile details using a "/me/" request. GET my profile -&nbsp;https://graph.microsoft.com/v1.0/me/</p>
                 </div>
             </div>
         </div>
@@ -210,7 +210,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Graph Explorer permissions</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Before the Graph Explorer is able to retrieve email messages using Microsoft Graph the user (or an administrator) has to consent.</p>
+                <p class="mbr-text mbr-fonts-style display-7">Before the Graph Explorer is able to retrieve email messages using Microsoft Graph the user (or an administrator) has to provide consent. The user is agreeing that the client application (Graph Explorer in this case) can access parts of the Microsoft Graph on their behalf.</p>
             </div>
         </div>
     </div>
@@ -243,7 +243,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-26-at-9.33.13-am-1400x657.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Here the administrator grants this application (Graph Explorer) permission to access the user's email messages</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Here the administrator grants this application (Graph Explorer) permission to access a user's email messages (on that user's behalf).</p>
                 </div>
             </div>
         </div>
@@ -277,7 +277,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-26-at-9.34.16-am-1401x656.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">access denied -&nbsp;https://graph.microsoft.com/v1.0/me/drive/root/children</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">A second consent is needed to allow this application (Graph Explorer) to access a user's One drive and SharePoint online files (on that user's behalf) -&nbsp;https://graph.microsoft.com/v1.0/me/drive/root/children</p>
                 </div>
             </div>
         </div>
@@ -294,7 +294,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-26-at-9.36.19-am-1401x657.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Here the administrator grants this application (Graph Explorer) permission to access the user's (one drive and SharePoint online) files</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Here the administrator grants this application (Graph Explorer) permission to access the user's (One drive and SharePoint online) files</p>
                 </div>
             </div>
         </div>
@@ -328,7 +328,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-26-at-9.40.21-am-1401x656.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Sure enough there are no files in my one drive</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">At this time there were no files in my one drive's root folder</p>
                 </div>
             </div>
         </div>
@@ -342,7 +342,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Teams/SharePoint Online/One Drive files</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Microsoft Teams channels include a "Files" tab.<br><br>Files uploaded to the teams channel are actually stored in SharePoint Online/One Drive.<br><br>All files uploaded to all (public) channels (for a given Team) are stored in a shared Document Library in a Team specific SharePoint Online Site (collection).<br><br>The SharePoint Online Document Library can also be accessed using One Drive.</p>
+                <p class="mbr-text mbr-fonts-style display-7">Microsoft Teams channels include a "Files" tab.<br><br>Files uploaded to the Team's channel are stored in SharePoint Online.<br><br>All files uploaded to all public channels are stored in a shared Document Library in a Team specific SharePoint Online Site (Site Collection).<br><br>This SharePoint online Document Library can also be accessed using the One Drive application.</p>
             </div>
         </div>
     </div>
@@ -358,7 +358,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-26-at-10.04.41-am-1399x654.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The "Mark 8 Project Team" Team</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The Mark 8 Project Team's Team includes a General and a Design channel.</p>
                 </div>
             </div>
         </div>
@@ -375,7 +375,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-26-at-10.05.14-am-1398x653.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The Design channel's files (see the "Open in SharePoint" menu item)</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The Design channel's files can be accessed without leaving the Teams application. The Design channel's files can also be accessed using the SharePoint user interface (using the "Open in SharePoint" menu item)</p>
                 </div>
             </div>
         </div>
@@ -392,7 +392,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-26-at-10.05.42-am-1400x578.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The Design channel's files stored in the "Design" Folder in the "Documents" Document Library in the "Mark 8 Project Team" Site (Collection)<br></p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">In the SharePoint user interface it is clear that the Design channel's files are stored a the "Design" Folder in the shared "Documents" Document Library in the "Mark 8 Project Team" SharePoint site<br></p>
                 </div>
             </div>
         </div>
@@ -409,7 +409,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-26-at-10.06.40-am-1400x574.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The "Documents" Document Library in the "Mark 8 Project Team" Site (Collection) accessed using the One Drive UI.</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The "Documents" Document Library in the "Mark 8 Project Team" site can also be accessed using the One Drive user interface.</p>
                 </div>
             </div>
         </div>
@@ -426,7 +426,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-26-at-6.52.10-pm-1398x792.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Other Document Libraries in the "Mark 8 Project Team" Site (Collection) can be accessed using the One Drive UI.</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The One Drive user interface can be used to show that there is a second "Confidential" Document Library in the "Mark 8 Project Team" Site.</p>
                 </div>
             </div>
         </div>

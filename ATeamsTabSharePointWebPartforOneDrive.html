@@ -10,7 +10,7 @@
   <meta name="description" content="">
   
   
-  <title>A Teams Tab SharePoint Web Part for One Drive</title>
+  <title>A Teams App SharePoint Web Part for One Drive</title>
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
   <link rel="stylesheet" href="assets/tether/tether.min.css">
@@ -80,7 +80,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="title col-md-12 col-lg-10">
-                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>A Teams Tab SharePoint Web Part for One Drive</strong></h3>
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>A Teams App SharePoint Web Part for One Drive</strong></h3>
                 <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Using SPFx and the Graph Toolkit</h4>
                 
             </div>
@@ -112,7 +112,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">The SharePoint Framework (SPFx) can be used to create SharePoint Web Parts and Teams Applications<br></h4>
-                <p class="mbr-text mbr-fonts-style display-7">In this post I describe how I created a Teams application using the SharePoint Framework and Graph Toolkit<br><br>This post is based on&nbsp;PiaSys Tech Bites's&nbsp;<a href="https://www.youtube.com/watch?v=5ZsD2uHVpz4" class="text-primary" target="_blank">Using Microsoft Graph Toolkit with React</a>&nbsp;video, Microsoft 365 Community's <a href="https://www.youtube.com/watch?v=PTWXRuPbSEw" class="text-primary" target="_blank">Building Microsoft Graph Toolkit apps with SharePoint</a> video, and Microsoft's&nbsp;<a href="https://docs.microsoft.com/en-us/graph/api/resources/onedrive?view=graph-rest-1.0" class="text-primary" target="_blank">Working with files in Microsoft Graph</a>&nbsp;documentation&nbsp;<br></p>
+                <p class="mbr-text mbr-fonts-style display-7">In this post I describe how I created a Teams application using the SharePoint Framework and the Microsoft Graph Toolkit<br><br>This post is based on&nbsp;PiaSys Tech Bites's&nbsp;<a href="https://www.youtube.com/watch?v=5ZsD2uHVpz4" class="text-primary" target="_blank">Using Microsoft Graph Toolkit with React</a>&nbsp;video, Microsoft 365 Community's <a href="https://www.youtube.com/watch?v=PTWXRuPbSEw" class="text-primary" target="_blank">Building Microsoft Graph Toolkit apps with SharePoint</a> video, and Microsoft's&nbsp;<a href="https://docs.microsoft.com/en-us/graph/api/resources/onedrive?view=graph-rest-1.0" class="text-primary" target="_blank">Working with files in Microsoft Graph</a>&nbsp;documentation.&nbsp;<br></p>
             </div>
         </div>
     </div>
@@ -125,7 +125,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">SharePoint Apps</h4>
-                <p class="mbr-text mbr-fonts-style display-7">SharePoint Framework (SPFx) applications are deployed to Microsoft 365 when they are uploaded to the SharePoint App catalog.<br><br></p>
+                <p class="mbr-text mbr-fonts-style display-7">SharePoint Framework (SPFx) applications are deployed to Microsoft 365 when they are uploaded to the <a href="sharepointwebpart2.html" class="text-primary">SharePoint online App catalog</a>.<br><br></p>
             </div>
         </div>
     </div>
@@ -175,7 +175,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-28-at-1.37.27-pm-1836x832.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">If the "App Catalog" Site Collection does not exist it is created</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">If the "App Catalog" Site (Site Collection) does not exist it is created</p>
                 </div>
             </div>
         </div>
@@ -209,7 +209,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-28-at-1.38.02-pm-1836x839.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">App Catalog page</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">App Catalog's Manage apps page</p>
                 </div>
             </div>
         </div>
@@ -223,7 +223,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">yo @microsoft/sharepoint</h4>
-                <p class="mbr-text mbr-fonts-style display-7">I used "yo @microsoft/sharepoint" to create the haddley-file-list project.<br><br>I used "npm i @microsoft/mgt-spfx@2.5.1" to add a Microsoft Graph Toolkit specific code to the project.<br><br>I used "npm i @microsoft/mgt-react@2.5.1" to add Microsoft Graph Toolkit React components to the project.<br></p>
+                <p class="mbr-text mbr-fonts-style display-7">I used "yo @microsoft/sharepoint" to create a haddley-file-list project.<br><br>I used "npm i @microsoft/mgt-spfx@2.5.1" to add Microsoft Graph Toolkit to the project.<br><br>I used "npm i @microsoft/mgt-react@2.5.1" to add Microsoft Graph Toolkit's React components to the project.<br></p>
             </div>
         </div>
     </div>
@@ -273,7 +273,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-28-at-7.25.08-pm-1836x1038.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">serve.json (in what context will the workbench be loaded?)</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated serve.json to specify how the <a href="sharepointwebpart1.html" class="text-primary">workbench</a> would be loaded</p>
                 </div>
             </div>
         </div>
@@ -290,7 +290,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-28-at-7.27.28-pm-1836x1040.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The workbench be loaded in the context of the Mark8ProjectTeam Site Collection</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The workbench will be loaded in the context of the Mark8ProjectTeam Site</p>
                 </div>
             </div>
         </div>
@@ -330,7 +330,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">gulp</h4>
-                <p class="mbr-text mbr-fonts-style display-7">I used "gulp trust-dev-cert" to ensure that gulp could serve content using https<br><br>I used "gulp bundle &amp;&amp; gulp serve" to preview the application<br><br></p>
+                <p class="mbr-text mbr-fonts-style display-7">I used "gulp trust-dev-cert" to ensure that gulp would serve content using https<br><br>I used "gulp bundle &amp;&amp; gulp serve" to preview the application in the workbench<br><br></p>
             </div>
         </div>
     </div>
@@ -363,7 +363,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-28-at-7.29.18-pm-1836x805.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Adding the web part to the workbench</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Previewing the web part in the workbench</p>
                 </div>
             </div>
         </div>
@@ -380,7 +380,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-28-at-7.31.35-pm-1836x1035.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Update the Microsoft Web Part code to create a global provider</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the SPFx Web Part code to add a global provider (constructed using the <a href="sharepointwebpart1.html" class="text-primary">Web Part's context object</a>)</p>
                 </div>
             </div>
         </div>
@@ -521,7 +521,7 @@ export default class HaddleyListWebPart extends BaseClientSideWebPart<IHaddleyLi
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-29-at-10.38.53-am-1258x619.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add graph permissions to package-solution.json</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added permission requests to package-solution.json</p>
                 </div>
             </div>
         </div>
@@ -627,7 +627,7 @@ export default class HaddleyListWebPart extends BaseClientSideWebPart<IHaddleyLi
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-29-at-10.43.31-am-1255x617.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Update the Web Part's React Component</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the Web Part's React code</p>
                 </div>
             </div>
         </div>
@@ -749,7 +749,7 @@ export default class HaddleyList extends React.Component<IHaddleyListProps, {}> 
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Deployment</h4>
-                <p class="mbr-text mbr-fonts-style display-7">I used "gulp bundle --ship &amp;&amp; gulp package-solution --ship" to create the .sppkg package.<br></p>
+                <p class="mbr-text mbr-fonts-style display-7">I used "gulp bundle --ship &amp;&amp; gulp package-solution --ship" to create an .sppkg file (package).<br></p>
             </div>
         </div>
     </div>
@@ -782,7 +782,7 @@ export default class HaddleyList extends React.Component<IHaddleyListProps, {}> 
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-29-at-10.04.55-am-1401x787.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Manage apps</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I navigated to the App catalog manage apps page</p>
                 </div>
             </div>
         </div>
@@ -812,7 +812,7 @@ export default class HaddleyList extends React.Component<IHaddleyListProps, {}> 
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-29-at-10.22.33-am-1183x745.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Download mgt-spfx-2.5.2.sppkg from&nbsp;https://github.com/microsoftgraph/microsoft-graph-toolkit/releases</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I downloaded the mgt-spfx-2.5.2.sppkg file (package) from&nbsp;https://github.com/microsoftgraph/microsoft-graph-toolkit/releases. I uploaded the&nbsp;mgt-spfx-2.5.2.sppkg file (package) to the App catalog.</p>
                 </div>
             </div>
         </div>
@@ -829,7 +829,7 @@ export default class HaddleyList extends React.Component<IHaddleyListProps, {}> 
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-29-at-10.06.04-am-1399x783.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The upload the project's .sppkg file</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I upload the project's haddley-file-list.sppkg file (package) to the App catalog</p>
                 </div>
             </div>
         </div>
@@ -846,7 +846,7 @@ export default class HaddleyList extends React.Component<IHaddleyListProps, {}> 
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-28-at-8.37.53-pm-1836x1103.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Enable the app and add to all sites</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I enabled the app and selected the enable this app and add to all sites option</p>
                 </div>
             </div>
         </div>
@@ -863,7 +863,7 @@ export default class HaddleyList extends React.Component<IHaddleyListProps, {}> 
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-28-at-8.38.08-pm-1836x1105.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Go to API access page</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I navigated to the API access page</p>
                 </div>
             </div>
         </div>
@@ -880,7 +880,7 @@ export default class HaddleyList extends React.Component<IHaddleyListProps, {}> 
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-28-at-8.38.39-pm-1836x1104.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Approve the permission requests</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I approved the permission requests</p>
                 </div>
             </div>
         </div>
@@ -897,7 +897,7 @@ export default class HaddleyList extends React.Component<IHaddleyListProps, {}> 
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-29-at-10.06.57-am-1395x785.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The web part can be added to a SharePoint page</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">As a test I added the web part to a SharePoint page</p>
                 </div>
             </div>
         </div>
@@ -992,7 +992,7 @@ export default class HaddleyList extends React.Component<IHaddleyListProps, {}> 
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-29-at-10.07.16-am-449x303.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I used the "Add to Teams" button to add the Web Part to Teams</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I used the "Add to Teams" button in the App catalog to add the Web Part to Teams</p>
                 </div>
             </div>
         </div>
@@ -1009,7 +1009,7 @@ export default class HaddleyList extends React.Component<IHaddleyListProps, {}> 
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-29-at-10.09.26-am-1403x780.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The web part is shown as a Published app in the Teams admin center</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">With no additional effort the web part was shown as a Published app in the Teams admin center</p>
                 </div>
             </div>
         </div>
@@ -1026,7 +1026,7 @@ export default class HaddleyList extends React.Component<IHaddleyListProps, {}> 
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-05-29-at-10.10.03-am-1401x787.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The web part is shown in the Team application</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The web part was also shown in the Teams desktop application</p>
                 </div>
             </div>
         </div>
