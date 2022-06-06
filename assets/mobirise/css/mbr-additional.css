@@ -46387,6 +46387,22 @@ a {
   border-radius: 4px;
   background-color: #fafafa;
 }
+.cid-t7W8gWNUxo {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  background-color: #ffffff;
+}
+@media (max-width: 991px) {
+  .cid-t7W8gWNUxo .image-wrapper {
+    margin-bottom: 1rem;
+  }
+}
+.cid-t7W8gWNUxo .row {
+  flex-direction: row-reverse;
+}
+.cid-t7W8gWNUxo img {
+  width: 100%;
+}
 .cid-t7W26xUOKW {
   padding-top: 5rem;
   padding-bottom: 5rem;
