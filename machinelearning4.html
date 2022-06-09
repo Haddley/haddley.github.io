@@ -81,7 +81,7 @@
         <div class="row justify-content-center">
             <div class="title col-md-12 col-lg-10">
                 <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Machine Learning (Part 4)</strong></h3>
-                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Creating models (advanced)</h4>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Notebooks</h4>
                 
             </div>
         </div>
@@ -111,8 +111,8 @@
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
                 
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">NVIDIA</h4>
-                <p class="mbr-text mbr-fonts-style display-7">The NVIDIA web site includes a number of&nbsp;<a href="https://developer.nvidia.com/embedded/learn/tutorials" class="text-primary">tutorials</a>&nbsp;and&nbsp;<a href="https://www.nvidia.com/en-us/training/" class="text-primary" target="_blank">training courses</a>.&nbsp;<br><br>I completed the "Getting Started with Image Segmentation" course and provide a summary here.<br><br>http://www.cardiacatlas.org/studies/sunnybrook-cardiac-data/<br></p>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Colab</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Colab is Google's implementation of <a href="https://jupyter.org" class="text-primary" target="_blank">Jupyter Notebooks</a>.<br><br>&nbsp;A Colab consists of <a href="https://colab.research.google.com/github/google/eng-edu/blob/main/ml/cc/exercises/numpy_ultraquick_tutorial.ipynb?utm_source=mlcc&utm_campaign=colab-external&utm_medium=referral&utm_content=numpy_tf2-colab&hl=en#scrollTo=vO47lN3aDOAv" class="text-primary" target="_blank">text cell comments and code cell Python code</a><br></p>
             </div>
         </div>
     </div>
@@ -124,8 +124,459 @@
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
                 
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Google</h4>
-                <p class="mbr-text mbr-fonts-style display-7">https://developers.google.com/machine-learning/crash-course<br></p>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><a href="https://colab.research.google.com/github/google/eng-edu/blob/main/ml/cc/exercises/numpy_ultraquick_tutorial.ipynb?utm_source=mlcc&utm_campaign=colab-external&utm_medium=referral&utm_content=numpy_tf2-colab&hl=en#scrollTo=HF-flFfs9r0q" class="text-primary" target="_blank">NumPy</a></h4>
+                <p class="mbr-text mbr-fonts-style display-7"><a href="https://colab.research.google.com/github/google/eng-edu/blob/main/ml/cc/exercises/numpy_ultraquick_tutorial.ipynb?utm_source=mlcc&utm_campaign=colab-external&utm_medium=referral&utm_content=numpy_tf2-colab&hl=en#scrollTo=HF-flFfs9r0q" class="text-primary" target="_blank">NumPy</a> is a Python library for creating and manipulating vectors and matrices.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8daHq3mVY" id="image3-3mm">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-08-at-6.23.23-pm-757x144.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">import numpy as np</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8daHt57Ac" id="image3-3mn">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-08-at-6.24.04-pm-745x209.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">np.array([...])</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8daHwgzd2" id="image3-3mo">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-08-at-6.25.18-pm-764x221.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">np.array([[...],[...],...,[...]]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8daHyYcYg" id="image3-3mp">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-08-at-6.27.05-pm-755x262.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">a sequence from 5 to 11</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8daHC2hoW" id="image3-3mq">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-08-at-6.28.11-pm-783x247.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">6 random values between 50 and 100</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8daHG1FSt" id="image3-3mr">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-08-at-6.29.30-pm-788x165.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">5 random floating point values between 0 and 1</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8daHJcakF" id="image3-3ms">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-08-at-6.33.42-pm-788x475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">feature and label</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8daHMUqpc" id="image3-3mt">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-08-at-6.36.16-pm-788x402.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">adding noise</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8df38vRIo" id="content5-3mw">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><a href="https://colab.research.google.com/github/google/eng-edu/blob/main/ml/cc/exercises/pandas_dataframe_ultraquick_tutorial.ipynb?utm_source=mlcc&utm_campaign=colab-external&utm_medium=referral&utm_content=pandas_tf2-colab&hl=en" class="text-primary" target="_blank">Pandas</a></h4>
+                <p class="mbr-text mbr-fonts-style display-7"><a href="https://colab.research.google.com/github/google/eng-edu/blob/main/ml/cc/exercises/pandas_dataframe_ultraquick_tutorial.ipynb?utm_source=mlcc&utm_campaign=colab-external&utm_medium=referral&utm_content=pandas_tf2-colab&hl=en" class="text-primary" target="_blank">Pandas DataFrames</a> are similar to spreadsheets. DataFrames have columns and rows.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8daHPn41y" id="image3-3mu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-08-at-6.49.03-pm-787x164.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">import numpy and pandas</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8daHRRoE6" id="image3-3mv">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-08-at-6.50.52-pm-789x650.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">pd.DataFrame(data=&lt;data cell values&gt;, columns=&lt;column names&gt;)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8ditgpCZQ" id="image3-3mx">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-08-at-6.54.36-pm-779x348.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;dataframe&gt;["&lt;new column name&gt;"] = &lt;dataframe&gt;["&lt;existing column name&gt;"] + &lt;constant&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8ditrUPSU" id="image3-3my">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-08-at-6.58.28-pm-787x739.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;dataframe&gt;[&lt;start index&gt;,&lt;end index + 1&gt;]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8ditvqOUO" id="image3-3mz">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-08-at-7.01.31-pm-786x991.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;dataframe&gt;.copy()</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8dlblCP8R" id="content5-3n6">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><a href="https://colab.research.google.com/github/google/eng-edu/blob/main/ml/cc/exercises/linear_regression_with_a_real_dataset.ipynb?utm_source=mlcc&utm_campaign=colab-external&utm_medium=referral&utm_content=linear_regression_real_tf2-colab&hl=en#scrollTo=JZlvdpyYKx7V" class="text-primary" target="_blank">Linear Regression</a> with TensorFlow</h4>
+                <p class="mbr-text mbr-fonts-style display-7">We can use machine learning to predict House Prices.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8dityTCof" id="image3-3n0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-08-at-7.07.17-pm-788x162.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">%tensorflow_version 2.x</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8ditD9IEP" id="image3-3n1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-08-at-7.08.57-pm-809x277.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">import pandas, tensorflow and matplotlib</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8do7gixbM" id="image3-3n7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-08-at-7.15.11-pm-1260x490.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">csv file contents</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8ditGYFTw" id="image3-3n2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-08-at-7.12.23-pm-971x738.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">pd.read_csv(&lt;filepath or buffer&gt;)<br># divide house price by 1,000<br>/= 1000.0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8ditL4UsA" id="image3-3n3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-08-at-7.18.08-pm-972x703.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;dataframe&gt;.describe()</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8ditO56KX" id="image3-3n4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-08-at-7.21.55-pm-1028x1169.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Define create_model and train_model functions<br>tf.keras.models.Sequential()<br>&lt;model&gt;.add(tf.keras.layers.Dense(...))<br>&lt;model&gt;.compile(...)<br>...<br>&lt;model&gt;.fit(...)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8ditV8z9j" id="image3-3n5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-08-at-7.26.53-pm-1010x981.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Define plot_the_model and plot_the_loss_curve functions</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8dsoZ3bhS" id="image3-3n8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-08-at-7.32.30-pm-1038x1201.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">build_model and train_model</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8dsp5dv8z" id="image3-3n9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-08-at-7.34.31-pm-1001x668.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">plot_the_model and plot_the_loss_curve</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8dsp9aHwJ" id="image3-3na">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-08-at-7.36.30-pm-1037x480.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Define predict_house_values function</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8dspcZtqh" id="image3-3nb">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-08-at-7.36.47-pm-1017x365.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">predict value of 10 houses</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8dspgv9BQ" id="image3-3nc">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-08-at-7.40.31-pm-1330x646.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;dataframe&gt;.corr()</p>
+                </div>
             </div>
         </div>
     </div>
