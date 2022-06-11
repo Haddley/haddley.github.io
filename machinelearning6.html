@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Machine Learning (Part 6)</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section class="menu menu3 cid-t8u7NzrnCQ" once="menu" id="menu3-3qz">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-t8u7NAusnF" id="content4-3r0">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Machine Learning (Part 6)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Binary classification</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8u7NB3uQc" id="image3-3r1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/tensorflow-logo.svg" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a rel="nofollow" href="https://github.com/immersive-web/webxr/blob/main/images/spec-logo.png"><br></a><a href="https://commons.wikimedia.org/wiki/File:Tensorflow_logo.svg" class="text-primary" target="_blank">Tensorflow logo does not meet the threshold of originality needed for copyright protection, and is therefore in the public domain</a><br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8u7NBhPw1" id="content5-3r2">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Binary classification</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Can we predict if a person will develop diabetes based on their Pregnancy Count, Glucose level, Blood Pressure, Skin Thickness, Insulin, BMI, DiabetesPedigreeFunction and Age?<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8u7NBAv9j" id="image3-3r4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-11-at-4.04.28-pm-1135x418.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Summary of the diabetes data</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8u7NBMGIX" id="content5-3r5">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Splitting into training and test dataframes</h4>
+                <p class="mbr-text mbr-fonts-style display-7">There are 768 data items in the diabetes data.<br><br>We will need to split the 768 data items into a training set and a testing set.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8uARWh6bt" id="image3-3sg">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-11-at-5.52.45-pm-1389x311.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Splitting data into training and testing dataframes</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-t8uB9lxvZl" id="content7-3si">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Notebook</strong></h5>
+
+<pre class="language-clike"><code><!--         
+import pandas as pd
+from sklearn.model_selection import train_test_split
+
+diabetes_dataframe = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/diabetes.csv')
+
+diabetes_dataframe_training, diabetes_dataframe_testing = train_test_split(diabetes_dataframe, test_size=0.2)
+
+print(len(diabetes_dataframe))
+print(len(diabetes_dataframe_training))
+print(len(diabetes_dataframe_testing))
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8uB6419hK" id="content5-3sh">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Normalize</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The "Outcome" column allows us to see which people have been diagnosed with diabetes.<br><br>The column must be removed from ("popped") the training set.<br><br>The remaining columns are then automagically normalized (by finding the mean of each column and then replacing the original value with the number of standard deviations the original value was from the mean).</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8uCQap4Gq" id="image3-3sj">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-11-at-6.04.31-pm-673x228.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The training data X</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8uE4qFNf5" id="content5-3sk">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Create the model</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The model will input 8 features from each data item and one label (Outcome).<br><br>I created a model with three layers</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8uk3tVlNN" id="image3-3s8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-11-at-4.45.20-pm-915x484.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a href="https://www.youtube.com/watch?v=PM6uvCLyeXM" class="text-primary" target="_blank">Binary classification using neural networks</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8uk3xMQnB" id="image3-3s9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-11-at-6.08.02-pm-714x124.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Creating the model</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8uENSUbLx" id="content5-3sl">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Once the model has been trained&nbsp;</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Once the model has been trained we can use it to predict results based on the testing data (X1).</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8uk3AXCUo" id="image3-3sa">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-11-at-6.10.07-pm-728x311.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">predicting results</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8uFDKQZSJ" id="content5-3sm">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Results</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The prediction results are provided below.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8uk3EWk7B" id="image3-3sb">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-11-at-6.11.08-pm-1083x404.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Test data items actual outcome vs Predicted Outcome</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-t8uFPd4Cr4" id="content7-3sn">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Notebook</strong></h5>
+
+<pre class="language-clike"><code><!--         
+import pandas as pd
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+from sklearn.model_selection import train_test_split
+
+diabetes_dataframe = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/diabetes.csv')
+
+diabetes_dataframe_training, diabetes_dataframe_testing = train_test_split(diabetes_dataframe, test_size=0.2)
+
+# training data Outcome only
+Y = diabetes_dataframe_training.pop('Outcome')
+# training data without Outcome
+X = diabetes_dataframe_training
+column_count = len(diabetes_dataframe_training.columns)
+
+# normalize the data
+mean = X.mean(axis = 0)
+X -= mean
+std = X.std(axis = 0)
+X /= std
+
+model = Sequential()
+model.add(Dense(8, input_dim=column_count, activation='relu'))
+model.add(Dense(4, activation='relu'))
+model.add(Dense(1, activation='sigmoid'))
+
+#model.summary()
+
+model.compile(loss='binary_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
+
+model.optimizer.learning_rate = 0.02
+
+monitor_val_acc = EarlyStopping(monitor='accuracy', patience=5)
+
+model.fit(x=X,
+          y=Y, 
+          epochs=50, 
+          verbose=0,
+          callbacks=[monitor_val_acc])
+
+diabetes_dataframe_testing_copy = diabetes_dataframe_testing.copy()
+Y1 = diabetes_dataframe_testing.pop('Outcome')
+X1 = diabetes_dataframe_testing
+
+mean1 = X1.mean(axis = 0)
+X1 -= mean1
+std1 = X1.std(axis = 0)
+X1 /= std1
+
+predictions = model.predict(X1)
+
+diabetes_dataframe_testing_copy['Outcome'] = Y1
+diabetes_dataframe_testing_copy['Predicted Outcome'] = predictions
+
+diabetes_dataframe_testing_copy
+
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/popper/popper.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/dropdown/js/nav-dropdown.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>

@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Machine Learning (Part 5)</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section class="menu menu3 cid-t8jlufSues" once="menu" id="menu3-3on">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-t8jlugReNN" id="content4-3oo">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Machine Learning (Part 5)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Linear Regression</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8jluhcKmn" id="image3-3op">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/tensorflow-logo.svg" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a rel="nofollow" href="https://github.com/immersive-web/webxr/blob/main/images/spec-logo.png"><br></a><a href="https://commons.wikimedia.org/wiki/File:Tensorflow_logo.svg" class="text-primary" target="_blank">Tensorflow logo does not meet the threshold of originality needed for copyright protection, and is therefore in the public domain</a><br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8jnfsLgUv" id="content5-3pq">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Linear Regression</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Can we predict a person's glucose levels based on their age?<br><br>If one thing depends on another thing in a linear way the least squares method can be used to predict the dependent thing (y) given the independent thing (x).<br><br>If there is a linear relationship between&nbsp;glucose levels and age we should be able to summarize that relationship using an equation of the form <strong>y = mx + b</strong>.<br><br>In this formula <strong>y</strong>&nbsp;would be the (predicted) thing (glucose level) and&nbsp;<strong>x</strong> would be the given thing (the person's age).<br><br>In this formula&nbsp;<strong>m</strong> is the slope of the linear relationship (weight) and <strong>b</strong> is the y-intercept constant (bias).<br><br>If a linear relationship exists and we can collect enough data we should be able to calculate the value of m and b and to predict the value of a&nbsp;person's glucose levels based on their age.<br><br>This <a href="https://www.youtube.com/watch?v=p_fu7gIikxY" class="text-primary" target="_blank">youtube video</a> explains how we can calculate the slope and y-intercept values by hand  using the least squares method.<br><br>As an exercise I wanted to use Excel and machine learning to calculate the line of best fit.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8tpAuu2ho" id="content5-3qd">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Excel</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Excel has built in "slope()" and "intercept()" functions that can be used to calculate the slope (m) and y-intercept (b) for a set of dependent and independent data points.<br><br>The youtube video referenced <a href="https://www.youtube.com/watch?v=p_fu7gIikxY" class="text-primary" target="_blank">above</a> explains how these functions work.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8tpiLNYAG" id="image3-3qc">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-10-at-9.03.43-am-629x414.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">slope and y-intercept calculated by Excel</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8mQtwqpDf" id="content5-3q5">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Line of best fit</h4>
+                <p class="mbr-text mbr-fonts-style display-7">A Colab Notepad can used to show data points and the line of best fit calculate by Excel.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8mDW7QZvc" id="image3-3py">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-10-at-9.56.27-am-923x775.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">A scatter plot of the glucose level data with a line of best fit added in red ('r')</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-t8nKYv8PMV" id="content7-3q8">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Notebook</strong></h5>
+
+<pre class="language-clike"><code><!--         
+import pandas as pd
+from matplotlib import pyplot as plt
+import tensorflow as tf
+import numpy as np
+
+feature = 'Age(x)'
+label = 'mg/dL(y)'
+glucose_level_data = [
+    [43, 99],
+    [21, 63],
+    [25, 79],
+    [42, 75],
+    [57, 87],
+    [59, 81],
+    ]
+glucose_level_column_names = [feature, label]
+glucose_level_dataframe = pd.DataFrame(data=glucose_level_data,
+        columns=glucose_level_column_names)
+
+bias = 65.1415715
+weight = 0.38522498
+
+plt.xlabel(feature)
+plt.ylabel(label)
+plt.scatter(glucose_level_dataframe[feature],
+            glucose_level_dataframe[label])
+
+# Create a red line representing the model. The red line starts
+# at coordinates (x0, y0) and ends at coordinates (x1, y1).
+
+x0 = 0
+y0 = bias
+x1 = 60
+y1 = bias + weight * x1
+plt.plot([x0, x1], [y0, y1], c='r')
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8tsYoj2nY" id="content5-3qe">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">A larger data set</h4>
+                <p class="mbr-text mbr-fonts-style display-7"><a href="https://github.com/plotly/datasets" class="text-primary" target="_blank">Plotly Sample Datasets</a> includes a larger diabetes dataset.<br><br>A Colab Notepad can used to show data points from the dataset and a description of the dataset.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8tzmmqchX" id="image3-3qg">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-11-at-2.03.18-pm-1007x671.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Diabetes Dataset</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8tFcZxxKC" id="image3-3qu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-11-at-2.03.38-pm-1189x503.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Description of Diabetes Dataset</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8tKLSvP11" id="content5-3qy">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Excel</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Again we can use Excel to calculate a line of best fit.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8tzmCwl7C" id="image3-3qh">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-11-at-1.52.11-pm-891x413.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Using Excel to calculate the line of best fit for Glucose (y) given Age (x)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8tzn7OHpe" id="image3-3qi">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-11-at-2.08.45-pm-1191x840.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">We can use a Colab to view the data points and the line of best fit for Glucose (y) given a person's Age (x)&nbsp;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8tIkiUOjt" id="content5-3qv">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Implementing Linear Regression using the <a href="https://www.tensorflow.org/tutorials/keras/regression" class="text-primary" target="_blank">Keras Sequential</a> model</h4>
+                <p class="mbr-text mbr-fonts-style display-7">A single node in a single layered neural network can be trained to predict a person's Glucose level given a person's Age.<br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8tznrpBaH" id="image3-3qj">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-11-at-2.31.06-pm-906x1185.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-t8tJvipCFG" id="content7-3qx">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Notebook</strong></h5>
+
+<pre class="language-clike"><code><!--         
+import pandas as pd
+from matplotlib import pyplot as plt
+import tensorflow as tf
+import numpy as np
+
+diabetes_dataframe = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/diabetes.csv')
+
+feature = "Age"
+label = "Glucose"
+
+model = Sequential()
+model.add(Dense(1, input_dim=1, activation='linear'))
+
+model.compile(loss='mse', optimizer='rmsprop', metrics=['mse'])
+
+model.optimizer.learning_rate = 0.02
+
+monitor_val_acc = EarlyStopping(monitor='mse', patience=30)
+
+model.fit(x=diabetes_dataframe[feature],
+          y=diabetes_dataframe[label], epochs=1000, verbose=0,
+          callbacks=[monitor_val_acc])
+
+weight = model.layers[0].get_weights()[0][0]
+bias = model.layers[0].get_weights()[1]
+
+print(weight)
+print(bias)
+
+plt.xlabel(feature)
+plt.ylabel(label)
+plt.scatter(diabetes_dataframe[feature],
+            diabetes_dataframe[label])
+
+# Create a red line representing the model. The red line starts
+# at coordinates (x0, y0) and ends at coordinates (x1, y1).
+
+x0 = 21
+y0 = bias
+x1 = 81
+y1 = bias + weight * x1
+plt.plot([x0, x1], [y0, y1], c='r')
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8tJ9SNSzF" id="content5-3qw">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Implementing Linear Regression with <a href="https://www.youtube.com/watch?v=IOaif62O06k" class="text-primary" target="_blank">two input variables</a> using the Keras Sequential model<br></h4>
+                <p class="mbr-text mbr-fonts-style display-7">Can we predict a person's age based on their blood pressure and BMI?<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8tzlPBoPp" id="image3-3qf">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-11-at-3.17.45-pm-1072x822.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">3D scatter plot of BMI, Blood Pressure and Age</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8tznLWRXJ" id="image3-3qk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-11-at-3.41.23-pm-1094x1187.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Results from the trained model</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8tzoffN2m" id="image3-3ql">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-11-at-3.47.07-pm-568x408.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Compare true vs predicted Age</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/popper/popper.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/dropdown/js/nav-dropdown.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>
