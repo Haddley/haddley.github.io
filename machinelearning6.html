@@ -157,38 +157,9 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2022-06-11-at-5.52.45-pm-1389x311.png" alt="">
+                    <img src="assets/images/screen-shot-2022-06-12-at-11.22.42-am-1602x690.png" alt="">
                     <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Splitting data into training and testing dataframes</p>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="content7 cid-t8uB9lxvZl" id="content7-3si">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-10">
-                <blockquote>
-                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Notebook</strong></h5>
-
-<pre class="language-clike"><code><!--         
-import pandas as pd
-from sklearn.model_selection import train_test_split
-
-diabetes_dataframe = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/diabetes.csv')
-
-diabetes_dataframe_training, diabetes_dataframe_testing = train_test_split(diabetes_dataframe, test_size=0.2)
-
-print(len(diabetes_dataframe))
-print(len(diabetes_dataframe_training))
-print(len(diabetes_dataframe_testing))
---></code></pre>
-                    
-
-                    
-</blockquote>
             </div>
         </div>
     </div>
@@ -201,7 +172,7 @@ print(len(diabetes_dataframe_testing))
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Normalize</h4>
-                <p class="mbr-text mbr-fonts-style display-7">The "Outcome" column allows us to see which people have been diagnosed with diabetes.<br><br>The column must be removed from ("popped") the training set.<br><br>The remaining columns are then automagically normalized (by finding the mean of each column and then replacing the original value with the number of standard deviations the original value was from the mean).</p>
+                <p class="mbr-text mbr-fonts-style display-7">The "Outcome" column allows us to see which people have been diagnosed with diabetes.<br><br>The column must be removed from ("popped") the training set.<br><br>The remaining columns are then automagically normalized.<br><br>(Notice that one way to normalize numeric data is to calculate the mean of each column and then replacing the original value in each cell with the number of standard deviations the original value was from the mean of that column)</p>
             </div>
         </div>
     </div>
@@ -216,7 +187,7 @@ print(len(diabetes_dataframe_testing))
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2022-06-11-at-6.04.31-pm-673x228.png" alt="">
+                    <img src="assets/images/screen-shot-2022-06-12-at-11.28.57-am-1030x752.png" alt="">
                     <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The training data X</p>
                 </div>
             </div>
@@ -263,8 +234,38 @@ print(len(diabetes_dataframe_testing))
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2022-06-11-at-6.08.02-pm-714x124.png" alt="">
+                    <img src="assets/images/screen-shot-2022-06-12-at-11.35.01-am-797x527.png" alt="">
                     <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Creating the model</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8yUtrUvOG" id="content5-3ta">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Training the keras model</h4>
+                <p class="mbr-text mbr-fonts-style display-7">I trained a keras model using the normalized features in the training set and the labels from the training set.<br><br>The actual and predicted results are shown below</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8yUVZ0wXz" id="image3-3tb">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-12-at-12.41.21-pm-798x858.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Training the keras model and predicting results</p>
                 </div>
             </div>
         </div>
@@ -278,7 +279,7 @@ print(len(diabetes_dataframe_testing))
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Once the model has been trained&nbsp;</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Once the model has been trained we can use it to predict results based on the testing data (X1).</p>
+                <p class="mbr-text mbr-fonts-style display-7">I trained a sklearn model using the normalized features in the training set and the labels from the training set.<br><br>The actual and predicted results are shown below<br></p>
             </div>
         </div>
     </div>
@@ -293,114 +294,20 @@ print(len(diabetes_dataframe_testing))
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2022-06-11-at-6.10.07-pm-728x311.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">predicting results</p>
+                    <img src="assets/images/screen-shot-2022-06-12-at-12.43.19-pm-795x569.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Training the sklearn model and predicting results</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="content5 cid-t8uFDKQZSJ" id="content5-3sm">
+<section class="content12 cid-t8yZwqUQWR" id="content12-3tc">
     
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Results</h4>
-                <p class="mbr-text mbr-fonts-style display-7">The prediction results are provided below.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="image3 cid-t8uk3EWk7B" id="image3-3sb">
-    
-
-    
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2022-06-11-at-6.11.08-pm-1083x404.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Test data items actual outcome vs Predicted Outcome</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="content7 cid-t8uFPd4Cr4" id="content7-3sn">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-10">
-                <blockquote>
-                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Notebook</strong></h5>
-
-<pre class="language-clike"><code><!--         
-import pandas as pd
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense
-from sklearn.model_selection import train_test_split
-
-diabetes_dataframe = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/diabetes.csv')
-
-diabetes_dataframe_training, diabetes_dataframe_testing = train_test_split(diabetes_dataframe, test_size=0.2)
-
-# training data Outcome only
-Y = diabetes_dataframe_training.pop('Outcome')
-# training data without Outcome
-X = diabetes_dataframe_training
-column_count = len(diabetes_dataframe_training.columns)
-
-# normalize the data
-mean = X.mean(axis = 0)
-X -= mean
-std = X.std(axis = 0)
-X /= std
-
-model = Sequential()
-model.add(Dense(8, input_dim=column_count, activation='relu'))
-model.add(Dense(4, activation='relu'))
-model.add(Dense(1, activation='sigmoid'))
-
-#model.summary()
-
-model.compile(loss='binary_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
-
-model.optimizer.learning_rate = 0.02
-
-monitor_val_acc = EarlyStopping(monitor='accuracy', patience=5)
-
-model.fit(x=X,
-          y=Y, 
-          epochs=50, 
-          verbose=0,
-          callbacks=[monitor_val_acc])
-
-diabetes_dataframe_testing_copy = diabetes_dataframe_testing.copy()
-Y1 = diabetes_dataframe_testing.pop('Outcome')
-X1 = diabetes_dataframe_testing
-
-mean1 = X1.mean(axis = 0)
-X1 -= mean1
-std1 = X1.std(axis = 0)
-X1 /= std1
-
-predictions = model.predict(X1)
-
-diabetes_dataframe_testing_copy['Outcome'] = Y1
-diabetes_dataframe_testing_copy['Predicted Outcome'] = predictions
-
-diabetes_dataframe_testing_copy
-
---></code></pre>
-                    
-
-                    
-</blockquote>
+                <div class="mbr-section-btn align-center"><a class="btn btn-primary display-4" href="https://haddley.github.io/BinaryClassification.ipynb" target="_blank">Notebook</a></div>
             </div>
         </div>
     </div>
