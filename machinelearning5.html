@@ -154,8 +154,8 @@
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
                 
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Line of best fit</h4>
-                <p class="mbr-text mbr-fonts-style display-7">A Colab Notepad can used to show data points and the line of best fit calculate by Excel.</p>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Calculating the line of best fit using the sklearn LinearRegression model</h4>
+                <p class="mbr-text mbr-fonts-style display-7">A Colab Notepad can be used to show data points and the line of best fit.<br><br>Predicting a person's glucose levels based on their age.<br></p>
             </div>
         </div>
     </div>
@@ -170,7 +170,7 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2022-06-10-at-9.56.27-am-923x775.png" alt="">
+                    <img src="assets/images/screen-shot-2022-06-13-at-10.38.18-am-987x1048.png" alt="">
                     <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">A scatter plot of the glucose level data with a line of best fit added in red ('r')</p>
                 </div>
             </div>
@@ -178,55 +178,31 @@
     </div>
 </section>
 
-<section class="content7 cid-t8nKYv8PMV" id="content7-3q8">
+<section class="content5 cid-t8Fe8ppjbT" id="content5-3ui">
     
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-12 col-md-10">
-                <blockquote>
-                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Notebook</strong></h5>
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Making a prediction</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Once a model has been trained it can be used to make predictions.<br><br>In the example above we can provide a person's age and predict what their glucose level might be (based on the data used to train the model).</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-<pre class="language-clike"><code><!--         
-import pandas as pd
-from matplotlib import pyplot as plt
-import tensorflow as tf
-import numpy as np
+<section class="image3 cid-t8FfO0OgS6" id="image3-3uj">
+    
 
-feature = 'Age(x)'
-label = 'mg/dL(y)'
-glucose_level_data = [
-    [43, 99],
-    [21, 63],
-    [25, 79],
-    [42, 75],
-    [57, 87],
-    [59, 81],
-    ]
-glucose_level_column_names = [feature, label]
-glucose_level_dataframe = pd.DataFrame(data=glucose_level_data,
-        columns=glucose_level_column_names)
+    
 
-bias = 65.1415715
-weight = 0.38522498
-
-plt.xlabel(feature)
-plt.ylabel(label)
-plt.scatter(glucose_level_dataframe[feature],
-            glucose_level_dataframe[label])
-
-# Create a red line representing the model. The red line starts
-# at coordinates (x0, y0) and ends at coordinates (x1, y1).
-
-x0 = 0
-y0 = bias
-x1 = 60
-y1 = bias + weight * x1
-plt.plot([x0, x1], [y0, y1], c='r')
---></code></pre>
-                    
-
-                    
-</blockquote>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-13-at-1.38.01-pm-831x71.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">What would we expect a person's&nbsp;glucose level to be if they were aged 50?</p>
+                </div>
             </div>
         </div>
     </div>
@@ -309,37 +285,20 @@ plt.plot([x0, x1], [y0, y1], c='r')
     </div>
 </section>
 
-<section class="image3 cid-t8tzn7OHpe" id="image3-3qi">
-    
-
-    
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2022-06-11-at-2.08.45-pm-1191x840.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">We can use a Colab to view the data points and the line of best fit for Glucose (y) given a person's Age (x)&nbsp;</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="content5 cid-t8tIkiUOjt" id="content5-3qv">
+<section class="content5 cid-t8EABFEKi0" id="content5-3ue">
     
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
                 
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Implementing Linear Regression using the <a href="https://www.tensorflow.org/tutorials/keras/regression" class="text-primary" target="_blank">Keras Sequential</a> model</h4>
-                <p class="mbr-text mbr-fonts-style display-7">A single node in a single layered neural network can be trained to predict a person's Glucose level given a person's Age.<br><br></p>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Calculating the line of best fit using the sklearn LinearRegression model</h4>
+                <p class="mbr-text mbr-fonts-style display-7">A Colab Notepad can be used to show data points and the line of best fit.<br><br>Predicting a person's glucose levels based on their age.<br><br></p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-t8tznrpBaH" id="image3-3qj">
+<section class="image3 cid-t8ECjE7YA3" id="image3-3ug">
     
 
     
@@ -348,70 +307,9 @@ plt.plot([x0, x1], [y0, y1], c='r')
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2022-06-11-at-2.31.06-pm-906x1185.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
+                    <img src="assets/images/screen-shot-2022-06-13-at-10.59.36-am-981x1033.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">A scatter plot of the glucose level and age data with a line of best fit added in red ('r')</p>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="content7 cid-t8tJvipCFG" id="content7-3qx">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-10">
-                <blockquote>
-                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Notebook</strong></h5>
-
-<pre class="language-clike"><code><!--         
-import pandas as pd
-from matplotlib import pyplot as plt
-import tensorflow as tf
-import numpy as np
-
-diabetes_dataframe = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/diabetes.csv')
-
-feature = "Age"
-label = "Glucose"
-
-model = Sequential()
-model.add(Dense(1, input_dim=1, activation='linear'))
-
-model.compile(loss='mse', optimizer='rmsprop', metrics=['mse'])
-
-model.optimizer.learning_rate = 0.02
-
-monitor_val_acc = EarlyStopping(monitor='mse', patience=30)
-
-model.fit(x=diabetes_dataframe[feature],
-          y=diabetes_dataframe[label], epochs=1000, verbose=0,
-          callbacks=[monitor_val_acc])
-
-weight = model.layers[0].get_weights()[0][0]
-bias = model.layers[0].get_weights()[1]
-
-print(weight)
-print(bias)
-
-plt.xlabel(feature)
-plt.ylabel(label)
-plt.scatter(diabetes_dataframe[feature],
-            diabetes_dataframe[label])
-
-# Create a red line representing the model. The red line starts
-# at coordinates (x0, y0) and ends at coordinates (x1, y1).
-
-x0 = 21
-y0 = bias
-x1 = 81
-y1 = bias + weight * x1
-plt.plot([x0, x1], [y0, y1], c='r')
---></code></pre>
-                    
-
-                    
-</blockquote>
             </div>
         </div>
     </div>
@@ -423,8 +321,8 @@ plt.plot([x0, x1], [y0, y1], c='r')
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
                 
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Implementing Linear Regression with <a href="https://www.youtube.com/watch?v=IOaif62O06k" class="text-primary" target="_blank">two input variables</a> using the Keras Sequential model<br></h4>
-                <p class="mbr-text mbr-fonts-style display-7">Can we predict a person's age based on their blood pressure and BMI?<br></p>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Implementing Linear Regression with <a href="https://www.youtube.com/watch?v=IOaif62O06k" class="text-primary" target="_blank">two input variables</a> using the sklearn LinearRegression model<br></h4>
+                <p class="mbr-text mbr-fonts-style display-7">Predicting a person's glucose levels based on their age and BMI.<br></p>
             </div>
         </div>
     </div>
@@ -439,8 +337,8 @@ plt.plot([x0, x1], [y0, y1], c='r')
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2022-06-11-at-3.17.45-pm-1072x822.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">3D scatter plot of BMI, Blood Pressure and Age</p>
+                    <img src="assets/images/screen-shot-2022-06-13-at-12.09.40-pm-803x1187.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">3D scatter plot of the glucose level, age and BMI data with the of best fit (surface) added in red ('red')</p>
                 </div>
             </div>
         </div>
@@ -456,15 +354,28 @@ plt.plot([x0, x1], [y0, y1], c='r')
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2022-06-11-at-3.41.23-pm-1094x1187.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Results from the trained model</p>
+                    <img src="assets/images/screen-shot-2022-06-13-at-12.09.50-pm-678x371.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">3D scatter plot of the glucose level, age and BMI data with the of best fit (surface) added in blue ('b')</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-t8tzoffN2m" id="image3-3ql">
+<section class="content5 cid-t8FgbdChVX" id="content5-3uk">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Making a prediction</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Once a model has been trained it can be used to make predictions.<br><br>In the example above we can provide a person's age and BMI and predict what their glucose level might be (based on the data used to train the model).<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8FgbWANTx" id="image3-3ul">
     
 
     
@@ -473,9 +384,20 @@ plt.plot([x0, x1], [y0, y1], c='r')
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2022-06-11-at-3.47.07-pm-568x408.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Compare true vs predicted Age</p>
+                    <img src="assets/images/screen-shot-2022-06-13-at-1.54.58-pm-830x100.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">What would we expect a person's glucose level to be if they were aged 50 with a BMI of 70?</p>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content12 cid-t8EwQblZhT" id="content12-3ud">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="mbr-section-btn align-center"><a class="btn btn-primary display-4" href="https://haddley.github.io/LinearRegression.ipynb" target="_blank">Notebook</a></div>
             </div>
         </div>
     </div>
