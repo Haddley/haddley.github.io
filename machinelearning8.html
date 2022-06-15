@@ -186,7 +186,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Encode</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Internally the application works with sequences of letters. To make the application easier to operate a user enters a description for each action.</p>
+                <p class="mbr-text mbr-fonts-style display-7">Internally the application works with sequences of letters. To make the application easier to operate a user can enter a description for each action.</p>
             </div>
         </div>
     </div>
@@ -216,7 +216,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Apply</h4>
-                <p class="mbr-text mbr-fonts-style display-7">When the Apply is pressed the Encode() function is run.<br></p>
+                <p class="mbr-text mbr-fonts-style display-7">When Apply is pressed the Encode() function is run.<br></p>
             </div>
         </div>
     </div>
@@ -256,36 +256,6 @@
     </div>
 </section>
 
-<section class="content5 cid-t8MADuHEXc" id="content5-3v2">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Dataset</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Next the application needs to collect data. <br><br>When the Steal or No Steal buttons are pressed the entered sequence and label (steal or no steal) are added to the dataset.<br></p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="image3 cid-t8Mw3URPh8" id="image3-3uu">
-    
-
-    
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2022-06-14-at-8.16.13-pm-1536x784.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">"dataset" maintains the sequence and a label (steal 1 or no steal 0).</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <section class="content5 cid-t8MVTYQ4KD" id="content5-3v5">
     
     <div class="container">
@@ -293,7 +263,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">CheckSeq()</h4>
-                <p class="mbr-text mbr-fonts-style display-7">As a sequence is entered into the app the&nbsp;CheckSeq() function is used to make a live prediction.</p>
+                <p class="mbr-text mbr-fonts-style display-7">The user enters watches the coach signaling to the players and records the actions. <br><br>As a sequence is entered into the app the&nbsp;CheckSeq() function is used to make a live prediction.</p>
             </div>
         </div>
     </div>
@@ -309,8 +279,21 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-06-14-at-8.57.22-pm-1536x825.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The dict variable contains an entry for every anticipated/possible steal combination. A value of 1 is used to label a combination that is a valid possible based on the contents of the data already collected.</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The dict variable contains an entry for every possible two letter combination.&nbsp;A value of 1 is used to mark all combinations that is present in the *current* sequence.<br></p>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8MADuHEXc" id="content5-3v2">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Dataset</h4>
+                <p class="mbr-text mbr-fonts-style display-7">After the pitch is made the user watches to see if a player attempts to steal a base.&nbsp;<br><br>If there is an attempt to steal a base the user clicks the "Steal" button.<br><br>If there is no attempt to steal a base the user clicks the "Not Steal" button.<br><br>Every time the Steal or No Steal button is pressed the app has new intelligence and the Label() function is called.<br><br>The Label() function adds the current sequence and label (steal 1 or no steal 0) to the page's HTML, adds the current sequence and label to a "dataset" variable and then calls the FindSteal() function.</p>
             </div>
         </div>
     </div>
@@ -326,7 +309,71 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-06-11-at-7.22.42-pm-1272x715.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Sequences of Baseball signals</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The Label() function adds the current sequence and label (steal 1 or no steal 0) to the page's HTML</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8Mw3URPh8" id="image3-3uu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-14-at-8.16.13-pm-1536x784.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The Label() function adds the current sequence and label to a "dataset" variable and then calls the FindSteal() function.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8PJkiGrMC" id="content5-3v7">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">FindSteal()</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The variable "top" in the FindSteal() function is use to score all possible two letter combinations as candidates (based on all of the labeled sequences in the dataset).<br><br>The web page is updated to show the most likely candidate.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8PLuGD2Xz" id="image3-3v8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-15-at-8.45.57-am-1536x892.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The variable "top" </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8PNmtVcI5" id="image3-3v9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-15-at-8.53.55-am-1126x330.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">updated prediction</p>
                 </div>
             </div>
         </div>
@@ -340,7 +387,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Machine learning?</h4>
-                <p class="mbr-text mbr-fonts-style display-7">The application developed by Jabril and demonstrated by&nbsp;Mark does not depend on a trained neural network... but it is a nice example of a <a href="machineLearning1.html" class="text-primary">machine learning</a> application (just as <a href="machineLearning1.html" class="text-primary">Hexapawn</a> was).</p>
+                <p class="mbr-text mbr-fonts-style display-7">The application developed by Jabril and demonstrated by&nbsp;Mark does not depend on a trained neural network... but it is a nice reinforcement learning example&nbsp;(just as <a href="machineLearning1.html" class="text-primary">Hexapawn</a> was).</p>
             </div>
         </div>
     </div>
