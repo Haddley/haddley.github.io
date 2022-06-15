@@ -81,7 +81,7 @@
         <div class="row justify-content-center">
             <div class="title col-md-12 col-lg-10">
                 <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Machine Learning (Part 8)</strong></h3>
-                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Baseball Signals</h4>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Baseball Signs</h4>
                 
             </div>
         </div>
@@ -112,7 +112,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Stealing Baseball Signs</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Can we predict when a baseball player is going to try to "steal"?<br><br>Mark Rober and <a href="https://www.youtube.com/channel/UCQALLeQPoZdZC4JNUboVEUg" class="text-primary" target="_blank">Jabril</a> created an application based on Machine Learning to predict when a Baseball player had been directed to "steal".</p>
+                <p class="mbr-text mbr-fonts-style display-7">Can we predict when a baseball player is going to try to "steal"?<br><br>Mark Rober and <a href="https://www.youtube.com/channel/UCQALLeQPoZdZC4JNUboVEUg" class="text-primary" target="_blank">Jabril</a> created an application to predict when a Baseball player had been directed to "steal".<br></p>
             </div>
         </div>
     </div>
@@ -136,13 +136,26 @@
     </div>
 </section>
 
+<section class="content5 cid-t8MsCa5oWv" id="content5-3um">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">How does the application work?</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Jabril hosts a copy of his application on&nbsp;<a href="https://github.com/Jabrils/Uncle-Rober-Baseball-Predictor/blob/master/simple%20model%20website/index.html" class="text-primary" target="_blank">his web site</a>&nbsp;and the source code of the application is available on <a href="https://github.com/Jabrils/Uncle-Rober-Baseball-Predictor/blob/master/simple%20model%20website/index.html" class="text-primary" target="_blank">GitHub</a>.<br><br>I reviewed the code to see how the application worked.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="content5 cid-t8uXI1WQFe" id="content5-3t6">
     
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
                 
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Sequence Encoding</h4>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Sequence</h4>
                 <p class="mbr-text mbr-fonts-style display-7">Mark and&nbsp;Jabril created a way to encode Baseball signals using letters.&nbsp;<br><br>Each Baseball coach will use a unique set of signals to communicate with her players.<br><br>The coach in the example below signals to her players by touching her nose, touching her right ear, touching her right arm, touching her chin, touching her left ear, touching her left arm, touching her chest, touching her hat or touching her belt.<br></p>
             </div>
         </div>
@@ -166,14 +179,138 @@
     </div>
 </section>
 
-<section class="content5 cid-t8v15NxVX1" id="content5-3t8">
+<section class="content5 cid-t8MwgFKU2R" id="content5-3v0">
     
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
                 
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Sequence Order Matters</h4>
-                <p class="mbr-text mbr-fonts-style display-7">In the example provided by Mark and&nbsp;Jabril the "secret code" indicating that the player should steal was found to be "ad". If the couch touched her nose and then touched her chin she wanted the player&nbsp;to steal the next base.</p>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Encode</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Internally the application works with sequences of letters. To make the application easier to operate a user enters a description for each action.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8Mw1iLOYz" id="image3-3uo">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-14-at-7.35.41-pm-1536x797.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Encode</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8MyK2PHWw" id="content5-3v1">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Apply</h4>
+                <p class="mbr-text mbr-fonts-style display-7">When the Apply is pressed the Encode() function is run.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8Mw2uiAKe" id="image3-3up">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-14-at-7.37.52-pm-1536x826.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Apply button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8Mw3oPPe1" id="image3-3us">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-14-at-7.42.56-pm-1536x796.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">When the Apply button is pressed the descriptions provided by the user are copied to the the web page's HTML.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8MADuHEXc" id="content5-3v2">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Dataset</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Next the application needs to collect data. <br><br>When the Steal or No Steal buttons are pressed the entered sequence and label (steal or no steal) are added to the dataset.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8Mw3URPh8" id="image3-3uu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-14-at-8.16.13-pm-1536x784.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">"dataset" maintains the sequence and a label (steal 1 or no steal 0).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8MVTYQ4KD" id="content5-3v5">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">CheckSeq()</h4>
+                <p class="mbr-text mbr-fonts-style display-7">As a sequence is entered into the app the&nbsp;CheckSeq() function is used to make a live prediction.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8MUIZE1K7" id="image3-3v4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-14-at-8.57.22-pm-1536x825.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The dict variable contains an entry for every anticipated/possible steal combination. A value of 1 is used to label a combination that is a valid possible based on the contents of the data already collected.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -196,14 +333,14 @@
     </div>
 </section>
 
-<section class="content5 cid-t8v1OwN18w" id="content5-3t9">
+<section class="content5 cid-t8MXjfZxkR" id="content5-3v6">
     
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
                 
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Recurrent neural networks</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Recurrent neural networks (RNN) are a class of neural networks that is powerful for modeling sequence data such as time series or natural language.<br><br>Keras has built in support for RNN, LSTM and GRU layers.<br></p>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Machine learning?</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The application developed by Jabril and demonstrated by&nbsp;Mark does not depend on a trained neural network... but it is a nice example of a <a href="machineLearning1.html" class="text-primary">machine learning</a> application (just as Hexapawn was).</p>
             </div>
         </div>
     </div>
