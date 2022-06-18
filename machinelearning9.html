@@ -172,7 +172,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">model</h4>
-                <p class="mbr-text mbr-fonts-style display-7">The keras Sequential model is commonly used.<br><br>I added a Dense layer with 512 units and image size (28*28) inputs.<br>I added a Dense hidden layer with 512 units.<br>I added a Dense output layer with 10 units (each unit corresponding to a category value from 0 to 9).</p>
+                <p class="mbr-text mbr-fonts-style display-7">The keras Sequential model is commonly used.<br><br>I added a Dense layer with 512 units and 784 (28*28) inputs (there are 784 pixels in each image).<br>I added a Dense hidden layer with 512 units.<br>I added a Dense output layer with 10 units (each unit corresponding to a category value from 0 to 9).</p>
             </div>
         </div>
     </div>
@@ -202,7 +202,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">compile and fit</h4>
-                <p class="mbr-text mbr-fonts-style display-7">After creating the model I configured and trained it.<br><br>I used compile to configure the model for training.<br><br>I used fit to train the model.</p>
+                <p class="mbr-text mbr-fonts-style display-7">After creating the model I configured and trained it.<br><br>I used the compile() function to configure the model.<br><br>I used the fit() function to train the model.</p>
             </div>
         </div>
     </div>
@@ -232,7 +232,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">predict</h4>
-                <p class="mbr-text mbr-fonts-style display-7">I used the model recognize the test images using predict.&nbsp;<br></p>
+                <p class="mbr-text mbr-fonts-style display-7">I used the predict() function to "recognize" the test images.&nbsp;<br></p>
             </div>
         </div>
     </div>
