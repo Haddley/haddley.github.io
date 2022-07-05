@@ -10,7 +10,7 @@
   <meta name="description" content="">
   
   
-  <title>Power Apps Part 6</title>
+  <title>A Custom Connector for Microsoft Graph</title>
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
   <link rel="stylesheet" href="assets/tether/tether.min.css">
@@ -832,12 +832,382 @@
     </div>
 </section>
 
-<section class="content12 cid-taFbR9peuz" id="content12-40e">
+<section class="content5 cid-taIpcTb4ta" id="content5-412">
     
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
-                <div class="mbr-section-btn align-center"><a class="btn btn-primary display-4" href="https://www.powercommunity.com/powerapps-call-microsoft-graph-api-in-canvas-app/" target="_blank">Calling Microsoft Graph API from a Canvas App</a></div>
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Adding UserByEmail</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Finally I added a UserByEmail action to the Connector</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-taIoLnKs3i" id="image3-40f">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-07-05-at-7.03.25-am-1536x755.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">User by email request requires User.Read.All permissions (scope)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-taIoLXkkFL" id="image3-40h">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-07-05-at-6.59.41-am-1536x774.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Update existing Application Registration adding a permission</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-taIoLRPg5H" id="image3-40g">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-07-05-at-7.05.14-am-1536x754.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Adding the "User.Read.All" permission</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-taIoM1jq3s" id="image3-40i">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-07-05-at-7.05.33-am-1536x320.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Updated permissions - Granting admin consent</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-taIoM65U5e" id="image3-40j">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-07-05-at-7.07.19-am-1536x754.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Edit the Custom Connection</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-taIoM9Wgxe" id="image3-40k">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-07-05-at-7.07.32-am-1536x219.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add new action</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-taIoMdbe6E" id="image3-40l">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-07-05-at-7.08.35-am-1536x755.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I entered general details</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-taIoMh52gP" id="image3-40m">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-07-05-at-7.09.12-am-1536x751.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I entered the request details (notice that a value for {user-mail} will need to be provided when the action is invoked)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-taIoMknthC" id="image3-40n">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-07-05-at-7.10.02-am-1536x753.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I copied a sample response from Graph Explorer to the Custom Connector</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-taIoMnGFPc" id="image3-40o">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-07-05-at-7.10.19-am-1536x749.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The Custom Connector displays details of the response body provided to it</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-taIoMrkTDi" id="image3-40p">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-07-05-at-7.11.03-am-1536x751.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the Custom Connector and navigated to the Test step</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-taIoMu1WUD" id="image3-40q">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-07-05-at-7.11.30-am-1536x754.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I provided a value for the "user-email" parameters and clicked the Test operation button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-taIoMwUJzB" id="image3-40r">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-07-05-at-7.11.44-am-1536x754.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The action returned a result</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-taIoMCigPr" id="image3-40s">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-07-05-at-7.12.51-am-1536x795.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created a "Profiles" canvas app</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-taIoMGwa5Y" id="image3-40t">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-07-05-at-7.13.30-am-1536x753.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added a reference to the updated Custom Connector</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-taIoMJCcav" id="image3-40u">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-07-05-at-7.14.14-am-1536x752.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The reference is displayed in the Data tab</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-taIoMMR18Z" id="image3-40v">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-07-05-at-7.16.18-am-1536x751.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added a Text input and a Text label</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-taIoMQOTEc" id="image3-40w">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-07-05-at-7.18.02-am-1536x750.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the Text input's OnSelect handler to Set the value of "UserProfile" to the result of a call to the new UserByEmail action</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-taIoMUYDpf" id="image3-40x">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-07-05-at-7.22.25-am-1536x520.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the Text label to display the jobTitle property of the UserProfile</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-taIoN09aKu" id="image3-40y">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-07-05-at-7.24.26-am-1536x752.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I ran the Profiles app and entered an email address</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-taIoN4ldB0" id="image3-40z">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-07-05-at-7.23.57-am-1536x754.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The user's job title was displayed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content12 cid-taIwmCClzr" id="content12-413">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="mbr-section-btn align-center"><a class="btn btn-primary display-4" href="https://www.powercommunity.com/powerapps-call-microsoft-graph-api-in-canvas-app/" target="_blank">Call Microsoft Graph API in Canvas App</a></div>
             </div>
         </div>
     </div>
