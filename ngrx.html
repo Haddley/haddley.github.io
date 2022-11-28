@@ -254,7 +254,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">(click)</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Every time a user refreshes the haddley-ngrx app a random number is displayed.<br><br>I updated the code so that a random number would be updated in response to a mouse click.</p>
+                <p class="mbr-text mbr-fonts-style display-7">Every time a user refreshes the haddley-ngrx app a random number is displayed.<br><br>I updated the code so that the random number displayed is recalculated in response to a mouse click.</p>
             </div>
         </div>
     </div>
@@ -402,7 +402,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2022-11-27-at-4.36.09-pm-1836x803.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">.content should contain 'haddley-ngrx app is running'?</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">'haddley-ngrx app is running'?</p>
                 </div>
             </div>
         </div>
@@ -519,7 +519,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">dice.state</h4>
-                <p class="mbr-text mbr-fonts-style display-7">I created a dice actions typescript file and defined a DiceState interface.<br><br>NGRX should&nbsp;<u>not</u> throw an exception in response to the app component dispatching an Action. <br><br>Instead a Selector will return a result (to the component) indicating success or failure.<br><br>For completeness I have included a (nullable) error value in the DiceState interface.</p>
+                <p class="mbr-text mbr-fonts-style display-7">I created a dice state typescript file and defined a DiceState interface.<br><br>NGRX should&nbsp;<u>not</u> throw an exception in response to the app component dispatching an Action. <br><br>Instead a Selector will return a result (to the component) indicating success or failure.<br><br>For completeness I have included a (nullable) error value in the DiceState interface.</p>
             </div>
         </div>
     </div>
@@ -549,7 +549,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">dice.reducer</h4>
-                <p class="mbr-text mbr-fonts-style display-7">I created a dice reducer typescript file to specify how Actions will be processed.<br><br>Notice that each of the actions included in the diceReducer requires the supply of any value needed to update the state.<br><br>Notice also that the Action that the component will dispatch (the "roll" Action) does not update state.value (as you might expect).<br></p>
+                <p class="mbr-text mbr-fonts-style display-7">I created a dice reducer typescript file to specify how Actions will be processed.<br><br>The rollSuccess action updates the state.value to the number passed to it as a property.<br><br>The rollFailure action updates the state.error to the text passed to it as a property.<br><br>It might seem odd that the roll Action updates the state.error but does <u>not</u> update the state.value (see Effects below).<br></p>
             </div>
         </div>
     </div>
@@ -579,7 +579,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">app.state</h4>
-                <p class="mbr-text mbr-fonts-style display-7">As my application grows it is likely that I will add features that are unrelated to dice.state. With that in mind I have created an app.state interface that can be used in the future to access dice.state and state related to other features.<br><br>I added the app.state typescript file to the state folder.</p>
+                <p class="mbr-text mbr-fonts-style display-7">As my application grows it is likely that I will add features that are unrelated to dice.state. <br><br>With that in mind I have created an app.state interface that can be used in the future to access dice.state and state related to other features.<br><br>I added an app.state typescript file to the state folder.</p>
             </div>
         </div>
     </div>
@@ -669,7 +669,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Using the selectors</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Next I updated app component template and app component class to make use of the selectors</p>
+                <p class="mbr-text mbr-fonts-style display-7">I updated app component template and app component class to make use of the selectDiceValue and selectDiceError selectors.</p>
             </div>
         </div>
     </div>
@@ -733,7 +733,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">ng test</h4>
-                <p class="mbr-text mbr-fonts-style display-7">ng test fails</p>
+                <p class="mbr-text mbr-fonts-style display-7">After these updates the tests fail.</p>
             </div>
         </div>
     </div>
@@ -763,7 +763,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">MockStore</h4>
-                <p class="mbr-text mbr-fonts-style display-7">To get the ng tests to succeed we need to add a "mock store"<br></p>
+                <p class="mbr-text mbr-fonts-style display-7">To get the ng tests to pass we need to add a "mock store"<br></p>
             </div>
         </div>
     </div>
@@ -810,7 +810,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">dice.effects</h4>
-                <p class="mbr-text mbr-fonts-style display-7">When the app component dispatches the "roll" Action the app component does not provide a value.<br><br>Without additional effort the roll Action is not in a position to update the state.<br><br>NGRX effects address this problem.<br><br>I created a DiceEffects class that responds to roll Actions.<br><br>When the DiceEffects class "spots" a roll Action it calculates a random value between 1 and 6 and then (some moments later) dispatches a corresponding rollSuccess or rollFailure Action.&nbsp;</p>
+                <p class="mbr-text mbr-fonts-style display-7">When the app component dispatches the "roll" Action the app component does not provide a value.<br><br>Without additional effort the roll Action is not in a position to update the state.<br><br>NGRX effects address this problem.<br><br>I created a DiceEffects class that responds to "roll" Actions.<br><br>When the DiceEffects class spots/notices/is notified of a roll Action it calculates a random value between 1 and 6 and then (some moments later) dispatches a corresponding rollSuccess or rollFailure Action.&nbsp;</p>
             </div>
         </div>
     </div>
