@@ -57378,3 +57378,34 @@ a {
 .cid-trE14uKYHC img {
   width: 100%;
 }
+.cid-trKf0uX39z {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  background-color: #ffffff;
+}
+.cid-trKf0uX39z .card-box {
+  z-index: 10;
+  position: relative;
+}
+@media (min-width: 1500px) {
+  .cid-trKf0uX39z .container {
+    max-width: 1400px;
+  }
+}
+.cid-trKf0uX39z .card {
+  margin: auto;
+}
+.cid-trKf0uX39z .mbr-iconfont {
+  display: block;
+  font-size: 5rem;
+  color: #6592e6;
+  margin-bottom: 2rem;
+}
+.cid-trKf0uX39z .card-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cid-trKf0uX39z .row {
+  justify-content: center;
+}
