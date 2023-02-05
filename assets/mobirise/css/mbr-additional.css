@@ -57974,6 +57974,27 @@ a {
 .cid-ttZacUXR4f img {
   width: 100%;
 }
+.cid-tv0pLl7grJ {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  background-color: #ffffff;
+}
+.cid-tv0pJ9Orgb {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  background-color: #ffffff;
+}
+@media (max-width: 991px) {
+  .cid-tv0pJ9Orgb .image-wrapper {
+    margin-bottom: 1rem;
+  }
+}
+.cid-tv0pJ9Orgb .row {
+  flex-direction: row-reverse;
+}
+.cid-tv0pJ9Orgb img {
+  width: 100%;
+}
 .cid-ttZ82LJm4k {
   padding-top: 4rem;
   padding-bottom: 4rem;
