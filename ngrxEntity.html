@@ -772,8 +772,6 @@ import { Post } from '../../models/post.model';
 import { createReducer, on } from '@ngrx/store';
 import { loadPostsFailure, loadPostsSuccess } from './post.actions';
 
-export const postFeatureKey = 'post';
-
 export interface PostState extends EntityState<Post> {
     // additional entities state properties
     currentPostId: number | null;
