@@ -97,6 +97,8 @@
 
         }
 
+        // renderer
+        
         const renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.xr.enabled = true;
@@ -114,10 +116,6 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
 
         }
-
-
-
-
 
         renderer.setAnimationLoop(function () {
 
