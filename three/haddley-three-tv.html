@@ -31,9 +31,9 @@
 
         import * as THREE from 'three';
 
-        import { VRButton } from 'three/addons/webxr/VRButton.js';
+        import { StereoEffect } from 'https://threejs.org/examples/jsm/effects/StereoEffect.js';
 
-        let container, camera, scene, renderer;
+        let container, camera, scene, renderer, effect;
 
         const floaters = [];
 
@@ -45,10 +45,8 @@
 
             // web page div container
 
-            // container = document.createElement('div');
-            // document.body.appendChild(container);
-
-            document.body.appendChild(VRButton.createButton(renderer));
+            container = document.createElement('div');
+            document.body.appendChild(container);
 
             // camera
 
@@ -120,6 +118,9 @@
 
             renderer.setSize(window.innerWidth, window.innerHeight);
 
+            effect = new StereoEffect(renderer);
+            effect.setSize(window.innerWidth, window.innerHeight);
+
             window.addEventListener('resize', onWindowResize);
 
         }
@@ -129,25 +130,21 @@
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
 
-            renderer.setSize(window.innerWidth, window.innerHeight);
+            //renderer.setSize(window.innerWidth, window.innerHeight);
+            effect.setSize(window.innerWidth, window.innerHeight);
 
         }
 
         // animation loop
 
-        /*function animate() {
+        function animate() {
 
             requestAnimationFrame(animate);
 
             render();
 
-        }*/
-
-        function animate() {
-
-            renderer.setAnimationLoop(render);
-
         }
+        
 
 
         // render scene
@@ -167,7 +164,8 @@
 
             }
 
-            renderer.render(scene, camera);
+            //renderer.render(scene, camera);
+            effect.render(scene, camera);
 
         }
 
