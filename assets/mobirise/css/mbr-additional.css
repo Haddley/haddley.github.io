@@ -59338,3 +59338,34 @@ a {
   display: flex;
   flex-wrap: wrap;
 }
+.cid-txGBpCv1Nq {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  background-color: #ffffff;
+}
+.cid-txGBpCv1Nq .card-box {
+  z-index: 10;
+  position: relative;
+}
+@media (min-width: 1500px) {
+  .cid-txGBpCv1Nq .container {
+    max-width: 1400px;
+  }
+}
+.cid-txGBpCv1Nq .card {
+  margin: auto;
+}
+.cid-txGBpCv1Nq .mbr-iconfont {
+  display: block;
+  font-size: 5rem;
+  color: #6592e6;
+  margin-bottom: 2rem;
+}
+.cid-txGBpCv1Nq .card-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cid-txGBpCv1Nq .row {
+  justify-content: center;
+}
