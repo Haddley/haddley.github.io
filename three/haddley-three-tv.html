@@ -56,6 +56,7 @@
         const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.01, 100);
         camera.position.z = 3;
         camera.focalLength = 3;
+        camera.aspect = ((window.innerWidth*2) / window.innerHeight);
 
         // floating things
 
@@ -112,7 +113,7 @@
 
         function onWindowResize() {
 
-            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.aspect = ((window.innerWidth*2) / window.innerHeight);
             camera.updateProjectionMatrix();
 
             effect.setSize(window.innerWidth, window.innerHeight);
