@@ -119,6 +119,245 @@
     </div>
 </section>
 
+<section class="content5 cid-txGvhHBmVp" id="content5-4lo">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">
+                    Overview</h4>
+                <p class="mbr-text mbr-fonts-style display-7">
+                    In the code below I create a three.js scene. The scene contains a camera and a set of animated cubes and spheres (floaters).<br><br>I set the scene background using a skybox. I did not add any lighting.<br><br>The&nbsp;AnaglyphEffect is used to shade the rendered image so it can be viewed using Red Cyan 3D glasses.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-txGuexjHAz" id="image3-4li">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-03-05-at-7.42.09-pm-1536x414.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">import library modules and sets up scene</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-txGueRI6hJ" id="image3-4lj">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-03-05-at-7.42.29-pm-1536x126.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">sets up camera</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-txGufjViG8" id="image3-4lk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-03-05-at-7.42.49-pm-1536x611.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">sets up floating cubes and spheres</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-txGufG3tvO" id="image3-4ll">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-03-05-at-7.43.18-pm-1536x422.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">sets up renderer</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-txGug34twM" id="image3-4lm">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-03-05-at-7.43.30-pm-1536x597.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">sets up animation</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-txGsBLZ1kG" id="content7-4lg">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>index-three-analyph</strong></h5>
+
+<pre class="language-clike"><code><!--         
+        // imports
+
+        import * as THREE from 'https://unpkg.com/three/build/three.module.js';
+        import { AnaglyphEffect } from 'https://threejs.org/examples/jsm/effects/AnaglyphEffect.js';
+
+        // scene background (skybox)
+
+        const path = 'https://threejs.org/examples/textures/cube/Park2/';
+        const format = '.jpg';
+        const urls = [
+            path + 'posx' + format, path + 'negx' + format,
+            path + 'posy' + format, path + 'negy' + format,
+            path + 'posz' + format, path + 'negz' + format
+        ];
+
+        const textureCube = new THREE.CubeTextureLoader().load(urls);
+
+        // scene
+
+        const scene = new THREE.Scene();
+        scene.background = textureCube;
+
+        // camera
+
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.01, 100);
+        camera.position.z = 3;
+        camera.focalLength = 3;
+
+        // floating things
+
+        const floaters = [];
+
+        const geometryBox = new THREE.BoxGeometry(0.1, 0.1, 0.1);
+        const geometrySphere = new THREE.SphereGeometry(0.1, 32, 16);
+        const materialFloaters = new THREE.MeshBasicMaterial({ color: 0xffffff, envMap: textureCube });
+
+        for (let i = 0; i < 250; i++) {
+
+            const cube = new THREE.Mesh(geometryBox, materialFloaters);
+
+            cube.position.x = Math.random() * 10 - 5;
+            cube.position.y = Math.random() * 10 - 5;
+            cube.position.z = Math.random() * 10 - 5;
+
+            cube.scale.x = cube.scale.y = cube.scale.z = Math.random() * 3 + 1;
+
+            scene.add(cube);
+
+            floaters.push(cube);
+
+        }
+
+        for (let i = 0; i < 250; i++) {
+
+            const sphere = new THREE.Mesh(geometrySphere, materialFloaters);
+
+            sphere.position.x = Math.random() * 10 - 5;
+            sphere.position.y = Math.random() * 10 - 5;
+            sphere.position.z = Math.random() * 10 - 5;
+
+            sphere.scale.x = sphere.scale.y = sphere.scale.z = Math.random() * 3 + 1;
+
+            scene.add(sphere);
+
+            floaters.push(sphere);
+
+        }
+
+        // renderer
+
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.xr.enabled = true;
+
+        const effect = new AnaglyphEffect(renderer);
+        effect.setSize(window.innerWidth, window.innerHeight);
+
+        document.body.appendChild(renderer.domElement);
+
+        window.addEventListener('resize', onWindowResize);
+
+        function onWindowResize() {
+
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+
+            effect.setSize(window.innerWidth, window.innerHeight);
+
+        }
+
+        function animate() {
+
+            requestAnimationFrame(animate);
+
+            render();
+
+        }
+
+        // render scene
+
+        function render() {
+
+            const timer = 0.0001 * Date.now();
+
+            camera.lookAt(scene.position);
+
+            for (let i = 0, il = floaters.length; i < il; i++) {
+
+                const floater = floaters[i];
+
+                floater.position.x = 5 * Math.cos(timer + i);
+                floater.position.y = 5 * Math.sin(timer + i * 1.1);
+
+            }
+
+            effect.render(scene, camera);
+
+        }
+
+        animate()
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="content12 cid-txFhxivcZO" id="content12-4lf">
     
     <div class="container">
