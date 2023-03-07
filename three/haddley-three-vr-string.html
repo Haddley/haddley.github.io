@@ -69,7 +69,7 @@
         var end = new THREE.Vector3(0, 3, -50);
 
         var curveQuad = new THREE.QuadraticBezierCurve3(start, middle, end);
-        
+
         const geometry = new THREE.TubeGeometry(curveQuad, 1000, .1, 40, false);
 
         const material = new THREE.MeshBasicMaterial({ color: 0xffffff });
@@ -111,24 +111,16 @@
 
         }
 
-        renderer.setAnimationLoop(function () {
+        /*renderer.setAnimationLoop(function () {
 
             const timer = 0.0001 * Date.now();
 
             // camera.lookAt(scene.position);
 
-            /*for (let i = 0, il = floaters.length; i < il; i++) {
-
-                const floater = floaters[i];
-
-                floater.position.x = 5 * Math.cos(timer + i);
-                floater.position.y = 5 * Math.sin(timer + i * 1.1);
-
-            }*/
 
             renderer.render(scene, camera);
 
-        });
+        });*/
 
 
 
