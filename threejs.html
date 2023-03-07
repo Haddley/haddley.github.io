@@ -113,7 +113,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Three.js</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Three. js is a JavaScript-based WebGL engine that can run GPU-powered games and other graphics-powered apps straight from the browser.<strong><br></strong><br></p>
+                <p class="mbr-text mbr-fonts-style display-7">Three. js is a JavaScript-based WebGL engine that can run GPU-powered games and other graphics-powered apps straight from the browser.<br></p>
             </div>
         </div>
     </div>
@@ -125,8 +125,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
                 
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">
-                    Overview</h4>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Overview</h4>
                 <p class="mbr-text mbr-fonts-style display-7">
                     In the code below I create a three.js scene. The scene contains
                 </p>
@@ -135,7 +134,7 @@
                         <li>a camera; and</li>
                         <li>a set of animated cubes and spheres (floaters)</li>
                 </ul>
-                <p>I set the scene background using a skybox. <br><br>I did not add any lighting.<br><br>The&nbsp;AnaglyphEffect is used to shade the rendered image so it can be viewed using Red Cyan 3D glasses.
+                <p>I set the scene background using a skybox. <br><br>I did not add lighting.<br><br><br>The&nbsp;AnaglyphEffect is used to shade the rendered image so it can be viewed using Red Cyan 3D glasses.
                 
                 </p>
             </div>
@@ -239,8 +238,8 @@
 <pre class="language-clike"><code><!--         
         // imports
 
-        import * as THREE from 'https://unpkg.com/three/build/three.module.js';
-        import { AnaglyphEffect } from 'https://threejs.org/examples/jsm/effects/AnaglyphEffect.js';
+        import * as THREE from 'three';
+        import { AnaglyphEffect } from 'three/addons/effects/AnaglyphEffect.js';
 
         // scene background (skybox)
 
