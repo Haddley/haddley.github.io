@@ -47,7 +47,7 @@
             path + 'posz' + format, path + 'negz' + format
         ];
 
-        const textureCube = new THREE.CubeTextureLoader().load(urls);
+        const textureCube = new THREE.CubeTextureLoader().load(urls,()=>{renderer.render(scene, camera);});
 
         // scene
 
