@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>three.js webgl</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="https://threejs.org/examples/main.css">
+</head>
+
+<body>
+    <div id="info">
+        <a href="https://threejs.org" target="_blank" rel="noopener">three.js</a><br />
+        skybox by <a href="http://www.humus.name" target="_blank" rel="noopener">Emil Persson1</a>
+    </div>
+
+    <!--<script src='https://cdn.jsdelivr.net/npm/webxr-polyfill@latest/build/webxr-polyfill.js'></script>-->
+
+    <!-- Import maps polyfill -->
+    <!-- Remove this when import maps will be widely supported -->
+    <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.150.1/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.150.1/examples/jsm/"
+            }
+        }
+    </script>
+
+    <script type="module">
+
+
+        // imports
+
+        import * as THREE from 'three';
+        import { VRButton } from 'three/addons/webxr/VRButton.js';
+
+        // scene background (skybox)
+
+        const path = 'https://threejs.org/examples/textures/cube/Park2/';
+        const format = '.jpg';
+        const urls = [
+            path + 'posx' + format, path + 'negx' + format,
+            path + 'posy' + format, path + 'negy' + format,
+            path + 'posz' + format, path + 'negz' + format
+        ];
+
+        const textureCube = new THREE.CubeTextureLoader().load(urls);
+
+        // scene
+
+        const scene = new THREE.Scene();
+        scene.background = textureCube;
+
+        // camera
+
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.01, 100);
+        camera.position.z = 3;
+        camera.focalLength = 3;
+
+
+        // Vector (how far right, how far up, how far forward)
+        var numPoints = 100;
+        //        var start = new THREE.Vector3(-5, 0, 20);
+        var start = new THREE.Vector3(0, -0.5, 2);
+        var middle = new THREE.Vector3(0, -1.5, -25);
+        var end = new THREE.Vector3(0, 3, -50);
+
+        var curveQuad = new THREE.QuadraticBezierCurve3(start, middle, end);
+        
+        const geometry = new THREE.TubeGeometry(curveQuad, 1000, .1, 40, false);
+
+        const material = new THREE.MeshBasicMaterial({ color: 0xffffff });
+        const mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+
+
+        const geometrySphere = new THREE.SphereGeometry(1, 64, 64);
+        const materialFloaters = new THREE.MeshBasicMaterial({ color: 0xffff00 });
+
+        const bead = new THREE.Mesh(geometrySphere, materialFloaters);
+
+        bead.position.x = 0
+        bead.position.y = 0
+        bead.position.z = -25
+
+        // cube.scale.x = cube.scale.y = cube.scale.z = Math.random() * 3 + 1;
+
+        scene.add(bead);
+
+
+        // renderer
+
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.xr.enabled = true;
+
+        document.body.appendChild(renderer.domElement);
+        document.body.appendChild(VRButton.createButton(renderer));
+
+        window.addEventListener('resize', onWindowResize);
+
+        function onWindowResize() {
+
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+
+            renderer.setSize(window.innerWidth, window.innerHeight);
+
+        }
+
+        renderer.setAnimationLoop(function () {
+
+            const timer = 0.0001 * Date.now();
+
+            // camera.lookAt(scene.position);
+
+            /*for (let i = 0, il = floaters.length; i < il; i++) {
+
+                const floater = floaters[i];
+
+                floater.position.x = 5 * Math.cos(timer + i);
+                floater.position.y = 5 * Math.sin(timer + i * 1.1);
+
+            }*/
+
+            renderer.render(scene, camera);
+
+        });
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
