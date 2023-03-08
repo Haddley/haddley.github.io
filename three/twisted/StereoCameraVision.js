@@ -70,6 +70,10 @@ class StereoCameraVision {
 			_eyeLeft.elements[ 12 ] = - eyeSepHalf;
 			_eyeRight.elements[ 12 ] = eyeSepHalf;
 
+			// translate right 1 unit
+
+			// _eyeRight.elements[ 3 ] = -1;
+
 			// for left eye
 
 			xmin = - ymax * cache.aspect + eyeSepOnProjection;
