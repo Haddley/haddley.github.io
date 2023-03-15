@@ -105,14 +105,17 @@
         })
 
         const locations = {
+            "Burilla Close":{ latlng: [-33.5086898,151.3106535], zoom: 18 },
+            "Mclaurin Road":{ latlng: [-33.5295634,151.3031814], zoom: 18 },
             "Tapestry Way": { latlng: [-33.5297848, 151.2978508], zoom: 18 },
             "Allfield Road": { latlng: [-33.4944795, 151.3253255], zoom: 18 },
             "Camellia Circle": { latlng: [-33.487843, 151.3254743], zoom: 18 },
-            "Edward Street": { latlng: [-33.4955332, 151.3221459], zoom: 18 }
+            "Edward Street": { latlng: [-33.4955332, 151.3221459], zoom: 18 },
+            "Bowden Road": { latlng: [-33.4931543,151.3288343], zoom: 18 }
         }
 
 
-        const startcity = "Tapestry Way"
+        const startcity = "Burilla Close"
         var map = L.map('map').setView(locations[startcity].latlng, locations[startcity].zoom);
 
 
