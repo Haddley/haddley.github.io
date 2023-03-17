@@ -115,7 +115,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Creating a VB.NET Web App project using Dotnet Command Line Interface (CLI) - Sort of</h4>
-                <p class="mbr-text mbr-fonts-style display-7">You can still use ASP.NET Core with the VB language.<br><br>$ dotnet new web -lang VB -o haddley-web (fails)<br>$CONTENT$nbsp;dotnet new web -lang C# -o haddley-web (works)<br><br></p>
+                <p class="mbr-text mbr-fonts-style display-7">You develop ASP.NET Core applications with the VB.NET language. However, creating a VB.NET ASP.NET Core application is not support by the dotnet command line app (the template is missing).<br><br>$ dotnet new web -lang VB -o haddley-web (fails)<br><br>$ dotnet new web -lang C# -o haddley-web (works)<br><br></p>
             </div>
         </div>
     </div>
@@ -162,7 +162,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">VB.NET console app</h4>
-                <p class="mbr-text mbr-fonts-style display-7">With the template missing you can generate a new VB.NET console application and then convert to VB.NET<br><br>$ dotnet new console -lang VB -o haddley-console<br>$ cd&nbsp;haddley-console<br>$CONTENT$nbsp;dotnet new gitignore<br>$ dotnet run<br><br></p>
+                <p class="mbr-text mbr-fonts-style display-7">As a workaround you can generate a VB.NET console application project and convert it to a&nbsp;VB.NET Web App project.<br><br>$ dotnet new console -lang VB -o haddley-console<br>$ cd&nbsp;haddley-console<br>$CONTENT$nbsp;dotnet new gitignore<br>$ dotnet run<br><br></p>
             </div>
         </div>
     </div>
@@ -195,7 +195,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2023-03-15-at-2.25.13-pm-1140x316.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">dotnet run</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">dotnet run (the generated console application)</p>
                 </div>
             </div>
         </div>
@@ -229,7 +229,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2023-03-15-at-2.35.58-pm-1536x452.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Update Program.vb code from...</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Update Program.vb code from"Console.WriteLine(...)"</p>
                 </div>
             </div>
         </div>
@@ -246,7 +246,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2023-03-15-at-2.36.42-pm-1536x477.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">to...</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">to "WebApplication.CreateBuilder(...)..."</p>
                 </div>
             </div>
         </div>
@@ -263,7 +263,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2023-03-15-at-2.38.17-pm-1476x522.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">dotnet run</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">dotnet run (the Web App)</p>
                 </div>
             </div>
         </div>
@@ -295,7 +295,14 @@
                     </div>
                 </div>
             </div>
-            
+            <div class="card p-3 col-12 col-md-4 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="dotnet core part3.html" class="text-primary">.NET Core (Part 3)</a></strong></h4>
+                    </div>
+                </div>
+            </div>
             
             
             
