@@ -54,7 +54,7 @@ class StereoCameraVision {
 			cache.zoom = camera.zoom;
 			cache.eyeSep = this.eyeSep;
 
-			debugger;
+			// debugger;
 
 			// Off-axis stereoscopic effect based on
 			// http://paulbourke.net/stereographics/stereorender/
