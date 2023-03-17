@@ -673,6 +673,128 @@ else
     </div>
 </section>
 
+<section class="content5 cid-tyMJylgLpN" id="content5-4rd">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Program.cs</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Notice that the Blazor Server project includes a Program.cs file with contents&nbsp; similar what you would expect to see in a Model-View-Controller project.<br><br>A Blazor Server project and a&nbsp;Model-View-Controller project are both ASP.NET Core projects and it is possible to mix and match.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyMJwLN2vX" id="image3-4rb">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-03-17-at-12.48.33-pm-1836x1077.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Program.cs (part 1)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyMJxjcj1E" id="image3-4rc">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-03-17-at-12.48.44-pm-1836x1040.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Program.cs (part 2)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-tyMJAKLAF5" id="content7-4re">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Program.cs</strong></h5>
+
+<pre class="language-clike"><code><!--         
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.Identity.Web;
+using Microsoft.Identity.Web.UI;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using Graph = Microsoft.Graph;
+using haddley_blazor_graph.Data;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+var initialScopes = builder.Configuration["DownstreamApi:Scopes"]?.Split(' ');
+
+builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
+    .AddMicrosoftIdentityWebApp(builder.Configuration.GetSection("AzureAd"))
+        .EnableTokenAcquisitionToCallDownstreamApi(initialScopes)
+            .AddMicrosoftGraph(builder.Configuration.GetSection("DownstreamApi"))
+            .AddInMemoryTokenCaches();
+builder.Services.AddControllersWithViews()
+    .AddMicrosoftIdentityUI();
+
+builder.Services.AddAuthorization(options =>
+{
+    // By default, all incoming requests will be authorized according to the default policy
+    options.FallbackPolicy = options.DefaultPolicy;
+});
+
+builder.Services.AddRazorPages();
+builder.Services.AddServerSideBlazor()
+    .AddMicrosoftIdentityConsentHandler();
+builder.Services.AddSingleton<WeatherForecastService>();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
+}
+
+app.UseHttpsRedirection();
+
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.MapControllers();
+app.MapBlazorHub();
+app.MapFallbackToPage("/_Host");
+
+app.Run();
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="features13 cid-tyBS7o7phW" id="features14-4qb">
     
 
