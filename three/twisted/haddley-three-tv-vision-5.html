@@ -35,10 +35,22 @@
         import * as THREE from 'three';
         import { StereoEffectVision } from './StereoEffectVision.js';
 
+        // scene background (skybox)
+
+        const path = 'https://threejs.org/examples/textures/cube/Park2/';
+        const format = '.jpg';
+        const urls = [
+            path + 'posx' + format, path + 'negx' + format,
+            path + 'posy' + format, path + 'negy' + format,
+            path + 'posz' + format, path + 'negz' + format
+        ];
+
+        const textureCube = new THREE.CubeTextureLoader().load(urls);
 
         // scene
 
         const scene = new THREE.Scene();
+        scene.background = textureCube;
 
         // camera
 
@@ -47,39 +59,31 @@
         camera.focalLength = 3;
         camera.aspect = ((window.innerWidth * 2) / window.innerHeight);
 
-        // ambient light
-
-        // const light = new THREE.AmbientLight( 0x404040 ); // soft white light
+        
+        const light = new THREE.AmbientLight( 0x404040 , 0.125); // soft white light
         // scene.add( light );
 
-        const light = new THREE.SpotLight(0xffffff);
-        light.position.set(0, 1, 3);
-
-        light.target.position.set(400, -130, 0);
-        scene.add(light.target);
-        scene.add(light);
-
         const light2 = new THREE.DirectionalLight(0xffffff, 1);
-        light2.position.set(0, 10, 10);
+        light2.position.set(0,1,3);
         scene.add(light2);
-
 
         // floating things
 
         const floaters = [];
 
         const geometryBox = new THREE.BoxGeometry(0.1, 0.1, 0.1);
-        const geometrySphere = new THREE.SphereGeometry(0.1, 32, 32);
-        const materialFloaters = new THREE.MeshPhongMaterial({ color: 0xffff00, shininess: 400 });
+        const geometrySphere = new THREE.SphereGeometry(0.1, 32, 16);
+        
+        
+        // const materialFloaters = new THREE.MeshBasicMaterial({ color: 0xffffff, envMap: textureCube });
 
-        /*const materialFloaters = new THREE.MeshPhongMaterial({
-            color: 0x777777,
-            shininess: 400,
-        });*/
+
+        const materialFloaters = new THREE.MeshPhongMaterial({ clipShadows: true, color: 0xffff00, shininess: 400 });
+
 
         const sphere = new THREE.Mesh(geometrySphere, materialFloaters);
 
-        sphere.position.x = 0; // Math.random() * 10 - 5;
+        sphere.position.x = 0 ; // Math.random() * 10 - 5;
         sphere.position.y = 0; // Math.random() * 10 - 5;
         sphere.position.z = 2; //Math.random() * 10 - 5;
 
@@ -89,42 +93,40 @@
 
         floaters.push(sphere);
 
+/*
+        for (let i = 0; i < 250; i++) {
 
+            const cube = new THREE.Mesh(geometryBox, materialFloaters);
 
-        /*
-                for (let i = 0; i < 250; i++) {
-        
-                    const cube = new THREE.Mesh(geometryBox, materialFloaters);
-        
-                    cube.position.x = Math.random() * 10 - 5;
-                    cube.position.y = Math.random() * 10 - 5;
-                    cube.position.z = Math.random() * 10 - 5;
-        
-                    cube.scale.x = cube.scale.y = cube.scale.z = Math.random() * 3 + 1;
-        
-                    scene.add(cube);
-        
-                    floaters.push(cube);
-        
-                }
-        
-                for (let i = 0; i < 250; i++) {
-        
-                    const sphere = new THREE.Mesh(geometrySphere, materialFloaters);
-        
-                    sphere.position.x = Math.random() * 10 - 5;
-                    sphere.position.y = Math.random() * 10 - 5;
-                    sphere.position.z = Math.random() * 10 - 5;
-        
-                    sphere.scale.x = sphere.scale.y = sphere.scale.z = Math.random() * 3 + 1;
-        
-                    scene.add(sphere);
-        
-                    floaters.push(sphere);
-        
-                }
-        
-                */
+            cube.position.x = Math.random() * 10 - 5;
+            cube.position.y = Math.random() * 10 - 5;
+            cube.position.z = Math.random() * 10 - 5;
+
+            cube.scale.x = cube.scale.y = cube.scale.z = Math.random() * 3 + 1;
+
+            scene.add(cube);
+
+            floaters.push(cube);
+
+        }
+
+        for (let i = 0; i < 250; i++) {
+
+            const sphere = new THREE.Mesh(geometrySphere, materialFloaters);
+
+            sphere.position.x = Math.random() * 10 - 5;
+            sphere.position.y = Math.random() * 10 - 5;
+            sphere.position.z = Math.random() * 10 - 5;
+
+            sphere.scale.x = sphere.scale.y = sphere.scale.z = Math.random() * 3 + 1;
+
+            scene.add(sphere);
+
+            floaters.push(sphere);
+
+        }
+
+        */
 
         // renderer
 

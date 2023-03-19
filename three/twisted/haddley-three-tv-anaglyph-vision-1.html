@@ -33,12 +33,41 @@
         // imports
 
         import * as THREE from 'three';
+        import { AnaglyphEffectVision } from './AnaglyphEffectVision.js';
         import { StereoEffectVision } from './StereoEffectVision.js';
 
+        // tv
+
+        const style = {
+            effect: (renderer) => new StereoEffectVision(renderer),
+            aspect: (width, height) => (width * 2) / height
+        }
+
+        // anaglyph
+        
+        /*const style = {
+            effect: (renderer) => new AnaglyphEffectVision(renderer),
+            aspect: (width, height) => width / height
+        }*/
+
+
+
+        // scene background (skybox)
+
+        const path = 'https://threejs.org/examples/textures/cube/Park2/';
+        const format = '.jpg';
+        const urls = [
+            path + 'posx' + format, path + 'negx' + format,
+            path + 'posy' + format, path + 'negy' + format,
+            path + 'posz' + format, path + 'negz' + format
+        ];
+
+        const textureCube = new THREE.CubeTextureLoader().load(urls);
 
         // scene
 
         const scene = new THREE.Scene();
+        scene.background = textureCube;
 
         // camera
 
@@ -47,35 +76,27 @@
         camera.focalLength = 3;
         camera.aspect = ((window.innerWidth * 2) / window.innerHeight);
 
-        // ambient light
 
-        // const light = new THREE.AmbientLight( 0x404040 ); // soft white light
+        const light = new THREE.AmbientLight(0x404040, 0.125); // soft white light
         // scene.add( light );
 
-        const light = new THREE.SpotLight(0xffffff);
-        light.position.set(0, 1, 3);
-
-        light.target.position.set(400, -130, 0);
-        scene.add(light.target);
-        scene.add(light);
-
         const light2 = new THREE.DirectionalLight(0xffffff, 1);
-        light2.position.set(0, 10, 10);
+        light2.position.set(0, 1, 3);
         scene.add(light2);
-
 
         // floating things
 
         const floaters = [];
 
         const geometryBox = new THREE.BoxGeometry(0.1, 0.1, 0.1);
-        const geometrySphere = new THREE.SphereGeometry(0.1, 32, 32);
-        const materialFloaters = new THREE.MeshPhongMaterial({ color: 0xffff00, shininess: 400 });
+        const geometrySphere = new THREE.SphereGeometry(0.1, 32, 16);
 
-        /*const materialFloaters = new THREE.MeshPhongMaterial({
-            color: 0x777777,
-            shininess: 400,
-        });*/
+
+        // const materialFloaters = new THREE.MeshBasicMaterial({ color: 0xffffff, envMap: textureCube });
+
+
+        const materialFloaters = new THREE.MeshPhongMaterial({ clipShadows: true, color: 0xffff00, shininess: 400 });
+
 
         const sphere = new THREE.Mesh(geometrySphere, materialFloaters);
 
@@ -88,8 +109,6 @@
         scene.add(sphere);
 
         floaters.push(sphere);
-
-
 
         /*
                 for (let i = 0; i < 250; i++) {
@@ -132,7 +151,8 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.xr.enabled = true;
 
-        const effect = new StereoEffectVision(renderer);
+        const effect = style.effect(renderer)
+
         effect.setSize(window.innerWidth, window.innerHeight);
 
         document.body.appendChild(renderer.domElement);
@@ -141,7 +161,8 @@
 
         function onWindowResize() {
 
-            camera.aspect = ((window.innerWidth * 2) / window.innerHeight);
+            camera.aspect = style.aspect(window.innerWidth, window.innerHeight);
+
             camera.updateProjectionMatrix();
 
             effect.setSize(window.innerWidth, window.innerHeight);

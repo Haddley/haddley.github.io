@@ -10,7 +10,7 @@ class StereoCameraVision {
 
 	constructor() {
 
-		this.type = 'StereoCamera';
+		this.type = 'StereoCameraVision';
 
 		this.aspect = 1;
 
