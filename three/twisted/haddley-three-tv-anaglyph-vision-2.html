@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>three.js webgl</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="https://threejs.org/examples/main.css">
+</head>
+
+<body>
+    <div id="info">
+        <a href="https://threejs.org" target="_blank" rel="noopener">three.js</a><br />
+        skybox by <a href="http://www.humus.name" target="_blank" rel="noopener">Emil Persson</a>
+    </div>
+
+    <!-- Import maps polyfill -->
+    <!-- Remove this when import maps will be widely supported -->
+    <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.150.1/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.150.1/examples/jsm/"
+            }
+        }
+    </script>
+
+    <script type="module">
+
+
+        // imports
+
+        import * as THREE from 'three';
+        import { AnaglyphEffectVision } from './AnaglyphEffectVision.js';
+        import { StereoEffectVision } from './StereoEffectVision.js';
+
+        // tv
+
+        const style = {
+            effect: (renderer) => new StereoEffectVision(renderer),
+            aspect: (width, height) => (width * 2) / height
+        }
+
+        // anaglyph
+
+        /*const style = {
+            effect: (renderer) => new AnaglyphEffectVision(renderer),
+            aspect: (width, height) => width / height
+        }*/
+
+
+
+        // SCENE
+        const scene = new THREE.Scene();
+        // CAMERA
+        var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;
+        var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
+        const camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
+        scene.add(camera);
+        camera.position.set(0, 150, 400);
+        camera.lookAt(scene.position);
+        // RENDERER
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+
+        renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+
+
+
+        // const container = document.getElementById( 'ThreeJS' );
+        // container.appendChild( renderer.domElement );
+
+        document.body.appendChild(renderer.domElement);
+
+        // EVENTS
+
+        window.addEventListener('resize', onWindowResize);
+
+        function onWindowResize() {
+
+            camera.aspect = style.aspect(window.innerWidth, window.innerHeight);
+
+            camera.updateProjectionMatrix();
+
+            effect.setSize(window.innerWidth, window.innerHeight);
+
+        }
+
+
+        // THREEx.WindowResize(renderer, camera);
+        // THREEx.FullScreen.bindKey({ charCode : 'm'.charCodeAt(0) });
+        // CONTROLS
+        // controls = new THREE.OrbitControls( camera, renderer.domElement );
+        // STATS
+        /*stats = new Stats();
+        stats.domElement.style.position = 'absolute';
+        stats.domElement.style.bottom = '0px';
+        stats.domElement.style.zIndex = 100;
+        container.appendChild( stats.domElement );*/
+        // LIGHT
+        var light = new THREE.PointLight(0xffffff);
+        light.position.set(-100, 200, 100);
+        scene.add(light);
+
+        // FLOOR
+        const loader = new THREE.TextureLoader();
+
+        // load a resource
+        loader.load(
+            // resource URL
+            './images/checkerboard.jpeg',
+
+            // onLoad callback
+            function (floorTexture) {
+
+                floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping;
+                floorTexture.repeat.set(10, 10);
+                var floorMaterial = new THREE.MeshBasicMaterial({ map: floorTexture, side: THREE.DoubleSide });
+                var floorGeometry = new THREE.PlaneGeometry(1000, 1000, 10, 10);
+                var floor = new THREE.Mesh(floorGeometry, floorMaterial);
+                floor.position.y = -0.5;
+                floor.rotation.x = Math.PI / 2;
+                scene.add(floor);
+
+
+                // SKYBOX
+                var skyBoxGeometry = new THREE.BoxGeometry(10000, 10000, 10000);
+                var skyBoxMaterial = new THREE.MeshBasicMaterial({ color: 0x9999ff, side: THREE.BackSide });
+                var skyBox = new THREE.Mesh(skyBoxGeometry, skyBoxMaterial);
+                scene.add(skyBox);
+
+                ////////////
+                // CUSTOM //
+                ////////////
+                var cubeGeometry = new THREE.BoxGeometry(50, 50, 50);
+                var cubeMaterial = new THREE.MeshLambertMaterial({ color: 0x888888 });
+                cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+                cube.position.set(0, 26, 0);
+                scene.add(cube);
+
+                var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+                cube.position.set(-40, 26, 70);
+                scene.add(cube);
+
+                var width = window.innerWidth || 2;
+                var height = window.innerHeight || 2;
+
+                const effect = new AnaglyphEffectVision(renderer);
+                effect.setSize(width, height);
+
+                effect.render(scene, camera);
+
+            },
+
+            // onProgress callback currently not supported
+            undefined,
+
+            // onError callback
+            function (err) {
+                console.error('An error happened.');
+            }
+        );
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
