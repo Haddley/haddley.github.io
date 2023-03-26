@@ -104,10 +104,13 @@ class StereoCameraVision {
 		matrixWorld.multiply(translationMatrix);*/
 
 		// Rotate the right camera by 45 degrees around the z-axis in world space
-		const rotationMatrix = new Matrix4().makeRotationZ(Math.PI / 4);
-		this.cameraR.matrixWorld.copy(camera.matrixWorld).multiply(rotationMatrix);
+		// const rotationMatrix = new Matrix4().makeRotationZ(Math.PI / 4);
 
+		const rotationMatrix = new Matrix4().makeRotationZ(MathUtils.degToRad(-5))
+		const makeTranslation = new Matrix4().makeTranslation(0, 0, 0);
 
+		this.cameraR.matrixWorld.copy(this.cameraR.matrixWorld).multiply(rotationMatrix);
+		this.cameraR.matrixWorld.copy(this.cameraR.matrixWorld).multiply(makeTranslation);
 
 	}
 
