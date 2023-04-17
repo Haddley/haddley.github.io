@@ -89,15 +89,30 @@ var mainState = {
         this.score += 1;
         this.labelScore.text = this.score;
 
+        // hole size?
+        var size = 4
+
+        // reduce size for advanced levels
+        if (this.score > 10) {
+            size = 3
+        }
+
+        if (this.score > 20) {
+            size = 2
+        }
+
+        if (this.score > 30) {
+            size = 1
+        }
 
         // Randomly pick a number between 1 and 3
         // This will be the hole position
         var hole = Math.floor(Math.random() * 3) + 1;
 
-        // Add the 6 pipes 
-        // With one big hole at position 'hole', 'hole + 1' and 'hole + 2'
+        // Add the 6 - size pipes 
+        // With one big hole at position 'hole', 'hole + 1' 'hole + 2' ...
         for (var i = 0; i < 8; i++)
-            if (i != hole && i != hole + 1 && i != hole + 2)
+            if (i < hole || i >= (hole + size))
                 this.addOnePipe(400, i * 60 + 10);
     },
 
