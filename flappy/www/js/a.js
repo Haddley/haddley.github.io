@@ -11,7 +11,12 @@ var mainState = {
     create: function () {
 
         this.score = 0;
+        this.highscore = 0;
+
         this.labelScore = game.add.text(20, 20, "0",
+            { font: "30px Arial", fill: "#000000" });
+
+        this.labelHighScore = game.add.text(200, 20, "0",
             { font: "30px Arial", fill: "#000000" });
 
         // Create an empty group
@@ -49,10 +54,10 @@ var mainState = {
         // If the bird is out of the screen (too high or too low)
         // Call the 'restartGame' function
         if (this.bird.y < 0 || this.bird.y > 490)
-            this.restartGame();
+            this.resetGame();
 
         game.physics.arcade.overlap(
-            this.bird, this.pipes, this.restartGame, null, this);
+            this.bird, this.pipes, this.resetGame, null, this);
     },
     // Make the bird jump 
     jump: function () {
@@ -64,6 +69,13 @@ var mainState = {
     restartGame: function () {
         // Start the 'main' state, which restarts the game
         game.state.start('main');
+    },
+
+    resetGame: function(){
+        this.score = 0;
+        this.bird.y = 245;
+        this.bird.body.velocity.y = 0;
+        this.pipes.removeAll();
     },
 
     addOnePipe: function (x, y) {
@@ -89,6 +101,12 @@ var mainState = {
         this.score += 1;
         this.labelScore.text = this.score;
 
+        if (this.score>this.highscore){
+            this.highscore = this.score
+            this.labelHighScore.text=this.highscore
+        }
+        
+
         // hole size?
         var size = 5
 
@@ -111,7 +129,7 @@ var mainState = {
 
         // Randomly pick a number between 1 and 3
         // This will be the hole position
-        var hole = Math.floor(Math.random() * 3) + 1;
+        var hole = Math.floor(Math.random() * (9-size));
 
         // Add the 6 - size pipes 
         // With one big hole at position 'hole', 'hole + 1' 'hole + 2' ...
