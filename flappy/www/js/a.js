@@ -18,7 +18,7 @@ var mainState = {
         this.pipes = game.add.group();
 
         // Change the background color of the game to blue
-        game.stage.backgroundColor = '#71c5cf';
+        game.stage.backgroundColor = 'f2f2f2';
 
         // Set the physics system
         game.physics.startSystem(Phaser.Physics.ARCADE);
