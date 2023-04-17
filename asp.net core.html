@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>ASP.NET Core</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section class="menu menu3 cid-tzbEhM7kMu" once="menu" id="menu3-4xf">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-tzbEhMIaHe" id="content4-4xg">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>ASP.NET Core</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Create Razor Pages with ASP.NET Core.</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzbEhMVzfp" id="image3-4xh">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/net-logo.svg" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><span style="font-size: 1.1rem; background-color: rgb(255, 255, 255);"><a href="https://github.com/dotnet/brand/blob/main/logo/dotnet-logo.svg" class="text-primary">Microsoft Dotnet Logo</a></span><span style="font-size: 1.1rem; background-color: rgb(255, 255, 255);"> by <a href="https://en.wikipedia.org/wiki/en:Microsoft" class="text-primary">Microsoft Corporation</a><span style="font-size: 1.1rem; background-color: rgb(255, 255, 255);"> is licensed under&nbsp;</span><a href="https://en.wikipedia.org/wiki/Creative_Commons" class="text-primary">Creative Commons</a></span> <span style="font-size: 1.1rem; background-color: rgb(255, 255, 255);"><a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en" class="text-primary">CC0 1.0 Universal Public Domain Dedication</a></span><a href="http://www.apache.org/licenses/LICENSE-2.0" title="Apache License, Version 2.0"><br></a>
+                    
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tzbEhN6Hus" id="content5-4xi">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">ASP.NET Core</h4>
+                <p class="mbr-text mbr-fonts-style display-7">ASP.NET Core is a cross-platform framework for building Internet-connected apps.<br><br>Razor Pages is the preferred way to create page or form-based apps in ASP.NET Core. From the docs, "Razor Pages can make coding page-focused scenarios easier and more productive than using controllers and views."<br><br>I used Visual Studio 2022 and ASP.NET Core to create a todo app.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzbIwS7bn5" id="image3-4yg">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturec-02-1010x674.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Create a new project button.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzbIwphKDz" id="image3-4yf">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturec-03-1014x676.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the ASP.NET Core Web Site option</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzbIxZKimY" id="image3-4yi">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturec-04-1013x679.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I accepted the default solution/project name</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzbIxzL324" id="image3-4yh">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturec-05-1015x675.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the .NET 6.0 framework</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzbIyNm5sz" id="image3-4yk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturec-06-1366x660.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The template project was downloaded</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tzeUplgH3t" id="content5-4zs">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Page and PageModel</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Razor pages include HTML markup and are similar to MVC views.<br><br>Razor PageModel classes are combination of MVC controllers and models.&nbsp;<br><br>The OnGet() method below is executed when a browser sends a GET request to the server.<br><br>An OnPost() method is executed when a browser sends a POST request to the server.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzeU3HCn9H" id="image3-4zr">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturec-08-689x490.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the PageModel to include a message property set in the OnGet() method</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzbIA89h2N" id="image3-4yn">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturec-09-963x233.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the corresponding Razor page to include the Message.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzbIAwapY1" id="image3-4yo">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturec-10-1357x635.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I tested the Web application</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzbIAQv9Tu" id="image3-4yp">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturec-11-353x40.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created a Data folder to hold classes generated by Entity framework.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzbIBSbr2U" id="image3-4ys">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturec-15-1008x468.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I wanted Entity framework to generate the classes needed to access and update the contents of a todo items database.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzbICeiSQW" id="image3-4yt">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturec-16-1357x262.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I installed the dotnet-ef (entity framework) tool</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzbICB1nDX" id="image3-4yu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturec-17-1352x271.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I needed to add a references to the Microsoft.EntityFrameworkCore.Design and Microsoft.EntityFrameworkCore.SqlServer packages.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzbICXsSEk" id="image3-4yv">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturec-19-1366x663.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I ran the dotnet ef dbcontext scaffold... command to generate the entity framework related classes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzbIDkepUX" id="image3-4yw">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturec-20-1366x663.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The Item class describes a database table row.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzbIDEsed1" id="image3-4yx">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturec-22-363x44.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created a ToDo folder in the Pages folder.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzbIDYNVSe" id="image3-4yy">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturec-23-828x721.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I right clicked on the ToDo folder and selected the Add | New Scaffolded Item... menu item</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzbIEl8re1" id="image3-4yz">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturec-25-656x442.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the Entity framework classes I generated eariler.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzbIEFkwxs" id="image3-4z0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturec-26-468x137.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I watched the progress bar</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzbIF0FY89" id="image3-4z1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturec-27-408x200.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I ran into an odd issue related to the Microsoft.VisualStudio.Web.CodeGeneration.Design package that was already installed. I reinstalled and tried again.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzbIFsLAle" id="image3-4z2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturec-28-1366x658.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The CRUD Razor pages were generated.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzbIFPqhYo" id="image3-4z3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturec-29-1330x436.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated Program.cs to include a reference to ToDoContext...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzbIGcyOhO" id="image3-4z4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturec-30-1364x317.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">...and ran the Web app by navigating to /ToDo</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzbIGAADyw" id="image3-4z5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturec-31-1366x417.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I used the create page to create a ToDo item.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzbIGZvgmk" id="image3-4z6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturec-32-1366x363.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The create page's OnPostAsync() method added the new item (using entity framework) and redirected me back to the ToDo index page.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzbIHlyhOg" id="image3-4z7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturec-33-1362x308.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the appsettings.json file to include the database connection string.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzbIHNhtSz" id="image3-4z8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturec-34-1366x514.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated Program.cs to include a reference to the appsettings value.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzbII8cor9" id="image3-4z9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturec-35-1361x516.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the ToDoContext class's OnModelCreating() method (removing the hardcoded connection string).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features13 cid-tzbEhS225v" id="features14-4yd">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://learn.microsoft.com/en-us/aspnet/mvc/overview/getting-started/introduction/getting-started" class="text-primary" target="_blank">Compare Razor Pages to ASP.NET MVC</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/popper/popper.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/dropdown/js/nav-dropdown.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>
