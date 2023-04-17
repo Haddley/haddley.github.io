@@ -90,18 +90,22 @@ var mainState = {
         this.labelScore.text = this.score;
 
         // hole size?
-        var size = 4
+        var size = 5
 
         // reduce size for advanced levels
         if (this.score > 10) {
-            size = 3
+            size = 4
         }
 
         if (this.score > 20) {
-            size = 2
+            size = 3
         }
 
         if (this.score > 30) {
+            size = 2
+        }
+
+        if (this.score > 40) {
             size = 1
         }
 
