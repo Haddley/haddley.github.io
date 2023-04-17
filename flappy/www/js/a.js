@@ -12,7 +12,7 @@ var mainState = {
 
         this.score = 0;
         this.labelScore = game.add.text(20, 20, "0",
-            { font: "30px Arial", fill: "#ffffff" });
+            { font: "30px Arial", fill: "#000000" });
 
         // Create an empty group
         this.pipes = game.add.group();
@@ -90,14 +90,14 @@ var mainState = {
         this.labelScore.text = this.score;
 
 
-        // Randomly pick a number between 1 and 5
+        // Randomly pick a number between 1 and 3
         // This will be the hole position
-        var hole = Math.floor(Math.random() * 5) + 1;
+        var hole = Math.floor(Math.random() * 3) + 1;
 
         // Add the 6 pipes 
-        // With one big hole at position 'hole' and 'hole + 1'
+        // With one big hole at position 'hole', 'hole + 1' and 'hole + 2'
         for (var i = 0; i < 8; i++)
-            if (i != hole && i != hole + 1)
+            if (i != hole && i != hole + 1 && i != hole + 2)
                 this.addOnePipe(400, i * 60 + 10);
     },
 
