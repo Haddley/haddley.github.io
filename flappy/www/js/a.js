@@ -1,5 +1,9 @@
 //http://www.lessmilk.com/tutorial/flappy-bird-phaser-1
 
+ANGLE = 0;
+VOFFSET = 0;
+HOFFSET = 0;
+
 // Create our 'main' state that will contain the game
 var mainState = {
     preload: function () {
@@ -16,8 +20,12 @@ var mainState = {
         this.labelScore = game.add.text(20, 20, "0",
             { font: "30px Arial", fill: "#000000" });
 
+        // this.labelScore.visible = false;
+
         this.labelHighScore = game.add.text(200, 20, "0",
             { font: "30px Arial", fill: "#000000" });
+
+        // this.labelHighScore.visible = false;
 
         // Create an empty group
         this.pipes = game.add.group();
@@ -28,8 +36,27 @@ var mainState = {
         // Set the physics system
         game.physics.startSystem(Phaser.Physics.ARCADE);
 
+
+
+        // If you just want to make an object invisible you can change it's alpha property like this:
+        // mySprite.alpha = 0;
+        // or you can change it's visible property to false like this:
+        // mySprite.visible = false;
+
         // Display the bird at the position x=100 and y=245
         this.bird = game.add.sprite(100, 245, 'bird');
+        this.bird.alpha = 0.1;
+
+        // Display the bird at the position x=100 and y=245
+        this.birdvisible = game.add.sprite(100 + HOFFSET, 245, 'bird');
+        //  You can rotate a sprite by setting either property.
+        //
+        //  `angle` is in degrees, from -180 to 180.
+        //  `rotation` is in radians, from -PI to PI
+
+
+        this.birdvisible.angle = ANGLE;
+        this.birdvisible.alpha = 0.5;
 
         // Add physics to the bird
         // Needed for: movements, gravity, collisions, etc.
@@ -51,6 +78,9 @@ var mainState = {
     },
 
     update: function () {
+
+        this.birdvisible.y = this.bird.y + VOFFSET;
+
         // If the bird is out of the screen (too high or too low)
         // Call the 'restartGame' function
         if (this.bird.y < 0 || this.bird.y > 490)
@@ -71,9 +101,10 @@ var mainState = {
         game.state.start('main');
     },
 
-    resetGame: function(){
+    resetGame: function () {
         this.score = 0;
         this.bird.y = 245;
+        this.birdvisible.y = this.bird.y;
         this.bird.body.velocity.y = 0;
         this.pipes.removeAll();
     },
@@ -101,11 +132,11 @@ var mainState = {
         this.score += 1;
         this.labelScore.text = this.score;
 
-        if (this.score>this.highscore){
+        if (this.score > this.highscore) {
             this.highscore = this.score
-            this.labelHighScore.text=this.highscore
+            this.labelHighScore.text = this.highscore
         }
-        
+
 
         // hole size?
         var size = 5
@@ -129,7 +160,7 @@ var mainState = {
 
         // Randomly pick a number between 1 and 3
         // This will be the hole position
-        var hole = Math.floor(Math.random() * (9-size));
+        var hole = Math.floor(Math.random() * (9 - size));
 
         // Add the 6 - size pipes 
         // With one big hole at position 'hole', 'hole + 1' 'hole + 2' ...
