@@ -1,5 +1,9 @@
 //http://www.lessmilk.com/tutorial/flappy-bird-phaser-1
 
+ANGLE = 0;
+VOFFSET = 0;
+HOFFSET = 0;
+
 // Create our 'main' state that will contain the game
 var mainState = {
     preload: function () {
@@ -11,20 +15,48 @@ var mainState = {
     create: function () {
 
         this.score = 0;
+        this.highscore = 0;
+
         this.labelScore = game.add.text(20, 20, "0",
-            { font: "30px Arial", fill: "#ffffff" });
+            { font: "30px Arial", fill: "#000000" });
+
+        // this.labelScore.visible = false;
+
+        this.labelHighScore = game.add.text(200, 20, "0",
+            { font: "30px Arial", fill: "#000000" });
+
+        // this.labelHighScore.visible = false;
 
         // Create an empty group
         this.pipes = game.add.group();
 
         // Change the background color of the game to blue
-        game.stage.backgroundColor = '#71c5cf';
+        game.stage.backgroundColor = '#F8F8F8';
 
         // Set the physics system
         game.physics.startSystem(Phaser.Physics.ARCADE);
 
+
+
+        // If you just want to make an object invisible you can change it's alpha property like this:
+        // mySprite.alpha = 0;
+        // or you can change it's visible property to false like this:
+        // mySprite.visible = false;
+
         // Display the bird at the position x=100 and y=245
         this.bird = game.add.sprite(100, 245, 'bird');
+        this.bird.alpha = 0.1;
+
+        // Display the bird at the position x=100 and y=245
+        this.birdvisible = game.add.sprite(100 + HOFFSET, 245, 'bird');
+        //  You can rotate a sprite by setting either property.
+        //
+        //  `angle` is in degrees, from -180 to 180.
+        //  `rotation` is in radians, from -PI to PI
+
+
+        this.birdvisible.angle = ANGLE;
+        this.birdvisible.alpha = 0.5;
 
         // Add physics to the bird
         // Needed for: movements, gravity, collisions, etc.
@@ -46,13 +78,16 @@ var mainState = {
     },
 
     update: function () {
+
+        this.birdvisible.y = this.bird.y + VOFFSET;
+
         // If the bird is out of the screen (too high or too low)
         // Call the 'restartGame' function
         if (this.bird.y < 0 || this.bird.y > 490)
-            this.restartGame();
+            this.resetGame();
 
         game.physics.arcade.overlap(
-            this.bird, this.pipes, this.restartGame, null, this);
+            this.bird, this.pipes, this.resetGame, null, this);
     },
     // Make the bird jump 
     jump: function () {
@@ -64,6 +99,14 @@ var mainState = {
     restartGame: function () {
         // Start the 'main' state, which restarts the game
         game.state.start('main');
+    },
+
+    resetGame: function () {
+        this.score = 0;
+        this.bird.y = 245;
+        this.birdvisible.y = this.bird.y;
+        this.bird.body.velocity.y = 0;
+        this.pipes.removeAll();
     },
 
     addOnePipe: function (x, y) {
@@ -89,15 +132,40 @@ var mainState = {
         this.score += 1;
         this.labelScore.text = this.score;
 
+        if (this.score > this.highscore) {
+            this.highscore = this.score
+            this.labelHighScore.text = this.highscore
+        }
 
-        // Randomly pick a number between 1 and 5
+
+        // hole size?
+        var size = 5
+
+        // reduce size for advanced levels
+        if (this.score > 10) {
+            size = 4
+        }
+
+        if (this.score > 20) {
+            size = 3
+        }
+
+        if (this.score > 30) {
+            size = 2
+        }
+
+        if (this.score > 40) {
+            size = 1
+        }
+
+        // Randomly pick a number between 1 and 3
         // This will be the hole position
-        var hole = Math.floor(Math.random() * 5) + 1;
+        var hole = Math.floor(Math.random() * (9 - size));
 
-        // Add the 6 pipes 
-        // With one big hole at position 'hole' and 'hole + 1'
+        // Add the 6 - size pipes 
+        // With one big hole at position 'hole', 'hole + 1' 'hole + 2' ...
         for (var i = 0; i < 8; i++)
-            if (i != hole && i != hole + 1)
+            if (i < hole || i >= (hole + size))
                 this.addOnePipe(400, i * 60 + 10);
     },
 
