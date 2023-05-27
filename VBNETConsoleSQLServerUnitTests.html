@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>VB.NET Console SQL Server Unit Tests</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section class="menu menu3 cid-tFvdIecW2e" once="menu" id="menu3-5ml">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-tFvdIdezr2" id="content4-5mj">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>VB.NET Console SQL Server Unit Tests</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Test driven development<br></h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tFvdIdYEKX" id="image3-5mk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/net-logo.svg" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><span style="font-size: 1.1rem; background-color: rgb(255, 255, 255);"><a href="https://github.com/dotnet/brand/blob/main/logo/dotnet-logo.svg" class="text-primary">Microsoft Dotnet Logo</a></span><span style="font-size: 1.1rem; background-color: rgb(255, 255, 255);"> by <a href="https://en.wikipedia.org/wiki/en:Microsoft" class="text-primary">Microsoft Corporation</a><span style="font-size: 1.1rem; background-color: rgb(255, 255, 255);"> is licensed under&nbsp;</span><a href="https://en.wikipedia.org/wiki/Creative_Commons" class="text-primary">Creative Commons</a></span> <span style="font-size: 1.1rem; background-color: rgb(255, 255, 255);"><a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en" class="text-primary">CC0 1.0 Universal Public Domain Dedication</a></span><a href="http://www.apache.org/licenses/LICENSE-2.0" title="Apache License, Version 2.0"><br></a>
+                    
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tFvdIeu6Y3" id="content5-5mm">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Unit Tests</h4>
+                <p class="mbr-text mbr-fonts-style display-7">
+                    Unit tests are automated tests written and run by software developers to ensure that a section of an application (known as the "unit") meets its design and behaves as intended.<br><br>I wanted to add unit tests to a Visual Basic Console App that fetched data from a database using SqlConnection,&nbsp;SqlCommand, SqlDataAdapter and DataTable classes.<br><br>Best practice is for Unit Tests to run independent of a running database.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tFvfvoMQZz" id="image3-5mp">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture-unit-test-aaa-0000001-890x625.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created a new project (in a new solution)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tFvfvsa36C" id="image3-5mq">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture-unit-test-aaa-0000002-889x626.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the .NET Framework (old school)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tFvfvvP1PM" id="image3-5mr">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture-unit-test-aaa-0000003-890x624.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected .NET Framework 4.7.2</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tFvfvyt79H" id="image3-5ms">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture-unit-test-aaa-0000004-1325x674.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Main</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tFvfvBfewh" id="image3-5mt">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture-unit-test-aaa-0000005-1363x382.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added Hello World code</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tFvfvEgckF" id="image3-5mu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture-unit-test-aaa-0000006-1359x567.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the Console Application to connect to a database and display the contents of a Tasks table&nbsp;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tFvfw7kpTN" id="image3-5n4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture-unit-test-aaa-0000016-1430x475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added a second project to the solution</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tFvfw9VbdR" id="image3-5n5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture-unit-test-aaa-0000017-1361x656.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the Unit Test Project (.NET Framework) template</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tFvfwczQOn" id="image3-5n6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture-unit-test-aaa-0000018-1362x683.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I accepted the defaults</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tFvfwgbGdR" id="image3-5n7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture-unit-test-aaa-0000019-1360x250.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added a reference to the Test project</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tFvkhgs49w" id="content5-5nq">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Refactoring the code with testing in mind</h4>
+                <p class="mbr-text mbr-fonts-style display-7">It was hard to create Unit Tests for the Module1.vb code while the database access and Console.WriteLine code was together in a single block.<br><br>I extracted the WriteDataTable code to create a function that was easy to create Unit Tests for.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tFvfwkbUdn" id="image3-5n8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture-unit-test-aaa-0000020-1098x244.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the Console application extracting out a WriteDataTable function. This has to be passes a DataTable and returns the number of data rows printed to the console.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-tFvjfNPHqS" id="content7-5no">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Module1.vb</strong></h5>
+
+<pre class="language-clike"><code><!--         
+Imports System.Data.SqlClient
+
+Public Module Module1
+
+    Private ReadOnly connectionString As String = "Data Source=(local);Initial Catalog=ToDo;user id=sa;password=Passw0rd123"
+
+    Sub Main()
+        Console.WriteLine("Tasks")
+
+        Dim query As String = "SELECT * FROM Items"
+        Dim result As DataTable = Nothing
+        Using connection As New SqlConnection(connectionString)
+            connection.Open()
+            Using command As New SqlCommand(query, connection)
+                Using adapter As New SqlDataAdapter(command)
+                    result = New DataTable()
+                    adapter.Fill(result)
+
+                    WriteDataTable(result)
+
+                End Using
+            End Using
+        End Using
+
+        Console.ReadLine()
+    End Sub
+
+    Public Function WriteDataTable(result As DataTable)
+        Console.WriteLine("{0,10}{1,20}{2,7}", "ID", "Description", "Done")
+
+        Dim count As Integer = 0
+        For Each row As DataRow In result.Rows
+            Console.WriteLine("{0,10}{1,20}{2,7}", row("ID"), row("Description"), row("Done"))
+            count = count + 1
+        Next
+
+        Return count
+    End Function
+End Module
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-tFvjgPvTEI" id="content7-5np">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>UnitTest1.vb</strong></h5>
+
+<pre class="language-clike"><code><!--         
+Imports System.Data.SqlClient
+Imports System.Text
+Imports Microsoft.VisualStudio.TestTools.UnitTesting
+
+<TestClass()> Public Class UnitTest1
+
+    Private ReadOnly connectionString As String = "Data Source=(local);Initial Catalog=ToDo;user id=sa;password=Passw0rd123"
+
+    Private _dataTable As New DataTable()
+
+    <TestInitialize>
+    Public Sub intialize()
+
+        'reset the test data
+        _dataTable = New DataTable()
+
+        ' Create the example result DataTable
+        _dataTable.Columns.Add("ID", GetType(Integer))
+        _dataTable.Columns.Add("Description", GetType(String))
+        _dataTable.Columns.Add("Done", GetType(Boolean))
+
+        _dataTable.Rows.Add(1000, "Feed Dog", False)
+
+    End Sub
+
+    <TestMethod>
+    Public Sub TestDataFromDataTable()
+
+        ' Act
+        Dim count = ConsoleApp1.WriteDataTable(_dataTable)
+
+        ' Assert
+        Assert.IsNotNull(_dataTable)
+        Assert.IsTrue(_dataTable.Rows.Count = 1)
+        Assert.IsTrue(count = _dataTable.Rows.Count)
+    End Sub
+
+    <TestMethod>
+    Public Sub TestDataFromDataTableAddItem()
+
+        'Arrange 
+        _dataTable.Rows.Add(1001, "Feed Cat", False)
+
+        ' Act
+        Dim count = ConsoleApp1.WriteDataTable(_dataTable)
+
+        ' Assert
+        Assert.IsNotNull(_dataTable)
+        Assert.IsTrue(_dataTable.Rows.Count = 2)
+        Assert.IsTrue(count = _dataTable.Rows.Count)
+    End Sub
+
+    <TestMethod>
+    Public Sub SelectDataFromDatabaseTest()
+        ' Arrange
+        Dim query As String = "SELECT * FROM Items"
+        Dim result As DataTable = Nothing
+        Dim count As Integer = 0
+
+        ' Act
+        Using connection As New SqlConnection(connectionString)
+            connection.Open()
+            Using command As New SqlCommand(query, connection)
+                Using adapter As New SqlDataAdapter(command)
+                    result = New DataTable()
+                    adapter.Fill(result)
+
+                    count = ConsoleApp1.WriteDataTable(result)
+
+                End Using
+            End Using
+        End Using
+
+        ' Assert
+        Assert.IsNotNull(result)
+        Assert.IsTrue(result.Rows.Count > 0)
+        Assert.IsTrue(count = result.Rows.Count)
+    End Sub
+
+
+End Class
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tFvfwtSmZL" id="image3-5nb">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture-unit-test-aaa-0000023-1142x293.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Running the Unit Tests</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/popper/popper.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/dropdown/js/nav-dropdown.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>
