@@ -274,6 +274,101 @@
     </div>
 </section>
 
+<section class="content5 cid-tFEOotZjF2" id="content5-5nr">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">ChatGPT</h4>
+                <p class="mbr-text mbr-fonts-style display-7"><strong>Write Unit Tests for this code<br><br>Imports System.Data.SqlClient<br><br>Module Module1<br>...</strong><br><br>To write unit tests for the given code, you can use a testing framework such as NUnit or xUnit. However, since the code primarily consists of database interactions and console output, it may not be feasible to write traditional unit tests for it.<br><br>Instead, you can consider refactoring the code to improve testability by separating concerns. One approach could be to move the database-related code into a separate class or method that returns the result DataTable. Then, you can write unit tests specifically for that database-related code.<br><br>Here's an example of how you can refactor the code and write unit tests for the database interaction part using NUnit:<br><br>...</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-tFETXmHTRS" id="content7-5nv">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>UnitTest1.vb</strong></h5>
+
+<pre class="language-clike"><code><!--         
+Imports System.Data.SqlClient
+Imports System.Text
+Imports Microsoft.VisualStudio.TestTools.UnitTesting
+
+
+<TestClass()> Public Class DatabaseTests
+    Private ReadOnly connectionString As String = "Data Source=(local);Initial Catalog=ToDo;user id=sa;password=Passw0rd123"
+
+    <TestMethod()>
+    Public Sub GetData_ShouldReturnValidDataTable()
+        ' Arrange
+        Dim database As New DatabaseInteraction(connectionString)
+
+        ' Act
+        Dim result As DataTable = database.GetData()
+
+        ' Assert
+        Assert.IsNotNull(result)
+        Assert.IsTrue(result.Rows.Count > 0)
+    End Sub
+End Class
+
+Public Class DatabaseInteraction
+    Private ReadOnly connectionString As String
+
+    Public Sub New(connectionString As String)
+        Me.connectionString = connectionString
+    End Sub
+
+    Public Function GetData() As DataTable
+        Dim query As String = "SELECT * FROM Items"
+        Dim result As DataTable = Nothing
+
+        Using connection As New SqlConnection(connectionString)
+            connection.Open()
+            Using command As New SqlCommand(query, connection)
+                Using adapter As New SqlDataAdapter(command)
+                    result = New DataTable()
+                    adapter.Fill(result)
+                End Using
+            End Using
+        End Using
+
+        Return result
+    End Function
+End Class
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tFEXP74Xpg" id="image3-5nw">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/database-unit-test-1366x728.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Database Tests</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="content5 cid-tFvkhgs49w" id="content5-5nq">
     
     <div class="container">
@@ -281,7 +376,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Refactoring the code with testing in mind</h4>
-                <p class="mbr-text mbr-fonts-style display-7">It was hard to create Unit Tests for the Module1.vb code while the database access and Console.WriteLine code was together in a single block.<br><br>I extracted the WriteDataTable code to create a function that was easy to create Unit Tests for.</p>
+                <p class="mbr-text mbr-fonts-style display-7">As ChatGPT explained it is hard to create Unit Tests for the database and Console code contained in the Module1.vb. It does not help that the database access and Console.WriteLine code is mixed together in a single block.<br><br>I extracted the WriteDataTable code to create a function that was easier to create Unit Tests for.<br><br>I wrote the UnitTestProject2 tests with the help of ChatGPT.<br><br>In any case&nbsp;it is practice is for Unit Tests to run independent of a test database.</p>
             </div>
         </div>
     </div>
@@ -297,7 +392,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/capture-unit-test-aaa-0000020-1098x244.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the Console application extracting out a WriteDataTable function. This has to be passes a DataTable and returns the number of data rows printed to the console.</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The WriteDataTable function expects to be passed a DataTable.</p>
                 </div>
             </div>
         </div>
@@ -368,10 +463,10 @@ End Module
         <div class="row justify-content-center">
             <div class="col-12 col-md-10">
                 <blockquote>
-                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>UnitTest1.vb</strong></h5>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>UnitTestProject1 - UnitTest.vb</strong></h5>
 
 <pre class="language-clike"><code><!--         
-Imports System.Data.SqlClient
+mports System.Data.SqlClient
 Imports System.Text
 Imports Microsoft.VisualStudio.TestTools.UnitTesting
 
@@ -384,7 +479,7 @@ Imports Microsoft.VisualStudio.TestTools.UnitTesting
     <TestInitialize>
     Public Sub intialize()
 
-        'reset the test data
+        'reset the test data before each test method is executed
         _dataTable = New DataTable()
 
         ' Create the example result DataTable
@@ -422,6 +517,24 @@ Imports Microsoft.VisualStudio.TestTools.UnitTesting
         Assert.IsTrue(_dataTable.Rows.Count = 2)
         Assert.IsTrue(count = _dataTable.Rows.Count)
     End Sub
+
+
+    <TestMethod>
+    Public Sub TestDataFromDataTableAddTwoItems()
+
+        'Arrange 
+        _dataTable.Rows.Add(1001, "Feed Snake", False)
+        _dataTable.Rows.Add(1001, "Feed Mouse", False)
+
+        ' Act
+        Dim count = ConsoleApp1.WriteDataTable(_dataTable)
+
+        ' Assert
+        Assert.IsNotNull(_dataTable)
+        Assert.IsTrue(_dataTable.Rows.Count = 3)
+        Assert.IsTrue(count = _dataTable.Rows.Count)
+    End Sub
+
 
     <TestMethod>
     Public Sub SelectDataFromDatabaseTest()
@@ -462,7 +575,116 @@ End Class
     </div>
 </section>
 
-<section class="image3 cid-tFvfwtSmZL" id="image3-5nb">
+<section class="content7 cid-tFEPURjr7k" id="content7-5ns">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>UnitTestProject2 - UnitTest.vb</strong></h5>
+
+<pre class="language-clike"><code><!--         
+Imports System.Data.SqlClient
+Imports System.IO
+Imports ConsoleApp1
+
+<TestClass()> Public Class DatabaseTests
+    Private ReadOnly connectionString As String = "Data Source=(local);Initial Catalog=ToDo;user id=sa;password=Passw0rd123"
+
+    <TestMethod()>
+    Public Sub GetData_ShouldReturnValidDataTable()
+        ' Arrange
+        Dim database As New DatabaseInteraction(connectionString)
+
+        ' Act
+        Dim result As DataTable = database.GetData()
+
+        ' Assert
+        Assert.IsNotNull(result)
+        Assert.IsTrue(result.Rows.Count > 0)
+    End Sub
+End Class
+
+Public Class DatabaseInteraction
+    Private ReadOnly connectionString As String
+
+    Public Sub New(connectionString As String)
+        Me.connectionString = connectionString
+    End Sub
+
+    Public Function GetData() As DataTable
+        Dim query As String = "SELECT * FROM Items"
+        Dim result As DataTable = Nothing
+
+        Using connection As New SqlConnection(connectionString)
+            connection.Open()
+            Using command As New SqlCommand(query, connection)
+                Using adapter As New SqlDataAdapter(command)
+                    result = New DataTable()
+                    adapter.Fill(result)
+                End Using
+            End Using
+        End Using
+
+        Return result
+    End Function
+End Class
+
+
+
+
+<TestClass()> Public Class Module1Tests
+    Private ReadOnly connectionString As String = "Data Source=(local);Initial Catalog=ToDo;user id=sa;password=Passw0rd123"
+
+    <TestMethod>
+    Public Sub WriteDataTable_ShouldWriteCorrectData()
+        ' Arrange
+        Dim result As New DataTable()
+        result.Columns.Add("ID", GetType(Integer))
+        result.Columns.Add("Description", GetType(String))
+        result.Columns.Add("Done", GetType(Boolean))
+        result.Rows.Add(1, "Task 1", True)
+        result.Rows.Add(2, "Task 2", False)
+
+        Dim expectedOutput As String =
+            "        ID         Description   Done" + vbCrLf +
+            "         1              Task 1   True" + vbCrLf +
+            "         2              Task 2  False" + vbCrLf
+
+        ' Act
+        Dim consoleOutput As String = CaptureConsoleOutput(Sub() Module1.WriteDataTable(result))
+
+        Console.WriteLine("Expected")
+        Console.WriteLine("<" + expectedOutput + ">")
+        Console.WriteLine("Test Result")
+        Console.WriteLine("<" + consoleOutput + ">")
+
+        ' Assert
+        Assert.AreEqual(expectedOutput, consoleOutput)
+    End Sub
+
+    ' Helper method to capture console output during testing
+    Private Function CaptureConsoleOutput(action As Action) As String
+        Dim originalOut As TextWriter = Console.Out
+        Dim writer As New StringWriter()
+        Console.SetOut(writer)
+        action.Invoke()
+        Console.SetOut(originalOut)
+        Return writer.ToString()
+    End Function
+End Class
+
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tFERbfErtW" id="image3-5nt">
     
 
     
@@ -471,7 +693,7 @@ End Class
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/capture-unit-test-aaa-0000023-1142x293.png" alt="">
+                    <img src="assets/images/mixed-unit-tests-1366x728.png" alt="">
                     <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Running the Unit Tests</p>
                 </div>
             </div>
