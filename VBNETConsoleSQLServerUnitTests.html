@@ -233,7 +233,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/capture-unit-test-aaa-0000017-1361x656.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added a second project to the solutions. I selected the Unit Test Project (.NET Framework) template</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added a second project to the solution. I selected the Unit Test Project (.NET Framework) template</p>
                 </div>
             </div>
         </div>
@@ -281,7 +281,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">ChatGPT</h4>
-                <p class="mbr-text mbr-fonts-style display-7"><strong>Write Unit Tests for this code<br><br>Imports System.Data.SqlClient<br><br>Module Module1<br>...</strong><br><br>To write unit tests for the given code, you can use a testing framework such as NUnit or xUnit. However, since the code primarily consists of database interactions and console output, it may not be feasible to write traditional unit tests for it.<br><br>Instead, you can consider refactoring the code to improve testability by separating concerns. One approach could be to move the database-related code into a separate class or method that returns the result DataTable. Then, you can write unit tests specifically for that database-related code.<br><br>Here's an example of how you can refactor the code and write unit tests for the database interaction part using NUnit:<br><br>...</p>
+                <p class="mbr-text mbr-fonts-style display-7">I asked ChatGPT to generate unit tests for the code.<br><br><strong>Write Unit Tests for this code<br><br>Imports System.Data.SqlClient<br><br>Module Module1<br>...</strong><br><br>To write unit tests for the given code, you can use a testing framework such as NUnit or xUnit. However, since the code primarily consists of database interactions and console output, it may not be feasible to write traditional unit tests for it.<br><br>Instead, you can consider refactoring the code to improve testability by separating concerns. One approach could be to move the database-related code into a separate class or method that returns the result DataTable. Then, you can write unit tests specifically for that database-related code.<br><br>Here's an example of how you can refactor the code and write unit tests for the database interaction part using NUnit:<br><br>...</p>
             </div>
         </div>
     </div>
@@ -376,7 +376,7 @@ End Class
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Refactoring the code with testing in mind</h4>
-                <p class="mbr-text mbr-fonts-style display-7">As ChatGPT explained it is hard to create Unit Tests for the database and Console code contained in the Module1.vb. It does not help that the database access and Console.WriteLine code is mixed together in a single block.<br><br>I extracted the WriteDataTable code to create a function that was easier to create Unit Tests for.<br><br>I wrote the UnitTestProject2 tests with the help of ChatGPT.<br><br>In any case&nbsp;it is practice is for Unit Tests to run independent of a test database.</p>
+                <p class="mbr-text mbr-fonts-style display-7">As ChatGPT explained it is hard to create Unit Tests for the database and Console code contained in the Module1.vb. <br><br>It does not help that the database access and Console.WriteLine code is mixed together in a single block.<br><br>I extracted the WriteDataTable code to create a function that was easier to create Unit Tests for.<br><br>I wrote the UnitTestProject2 tests with the help of ChatGPT.<br><br>In any case&nbsp;it is best practice is for Unit Tests to run independent of a running database server.</p>
             </div>
         </div>
     </div>
@@ -463,7 +463,7 @@ End Module
         <div class="row justify-content-center">
             <div class="col-12 col-md-10">
                 <blockquote>
-                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>UnitTestProject1 - UnitTest.vb</strong></h5>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>UnitTestProject1 - UnitTest1.vb</strong></h5>
 
 <pre class="language-clike"><code><!--         
 mports System.Data.SqlClient
@@ -581,7 +581,7 @@ End Class
         <div class="row justify-content-center">
             <div class="col-12 col-md-10">
                 <blockquote>
-                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>UnitTestProject2 - UnitTest.vb</strong></h5>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>UnitTestProject2 - UnitTest1.vb</strong></h5>
 
 <pre class="language-clike"><code><!--         
 Imports System.Data.SqlClient
