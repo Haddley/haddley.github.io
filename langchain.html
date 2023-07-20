@@ -115,111 +115,55 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">LangChain</h4>
-                <p class="mbr-text mbr-fonts-style display-7">LangChain is a framework built around Large Language Models. It can use it for chatbots, Generative Question-Answering (GQA), summarization, and more.</p>
+                <p class="mbr-text mbr-fonts-style display-7">LangChain is a framework built around Large Language Models. It can use it for chatbots, Generative Question-Answering (GQA), summarization, and more.<br></p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-tKi95Mkcb7" id="image3-5q1">
-    
-
-    
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/capturec-02-1010x674.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Create a new project button.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="image3 cid-tKi95MsuSk" id="image3-5q2">
-    
-
-    
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/capturec-03-1014x676.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the ASP.NET Core Web Site option</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="image3 cid-tKi95MCpLm" id="image3-5q3">
-    
-
-    
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/capturec-04-1013x679.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I accepted the default solution/project name</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="image3 cid-tKi95MNRG3" id="image3-5q4">
-    
-
-    
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/capturec-05-1015x675.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the .NET 6.0 framework</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="image3 cid-tKi95MUVHb" id="image3-5q5">
-    
-
-    
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/capturec-06-1366x660.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The template project was downloaded</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="content5 cid-tKi95N1qXv" id="content5-5q6">
+<section class="content5 cid-tKyV1fSIrj" id="content5-5uk">
     
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
                 
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Page and PageModel</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Razor pages include HTML markup and are similar to MVC views.<br><br>Razor PageModel classes are combination of MVC controllers and models.&nbsp;<br><br>The OnGet() method below is executed when a browser sends a GET request to the server.<br><br>An OnPost() method is executed when a browser sends a POST request to the server.</p>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">streamlit</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Streamlit is an open-source Python library used to create web applications for data science and machine learning projects. It allows developers and data scientists to quickly turn their data scripts into interactive web applications without the need for extensive web development knowledge. Streamlit's main goal is to make the process of sharing data, models, and visualizations with others as easy and efficient as possible.<br><br>As a first step I created a hello world streamlit app.</p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-tKi95N7fVp" id="image3-5q7">
+<section class="content7 cid-tKyX0ftQKU" id="content7-5ul">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>app0.py</strong></h5>
+
+<pre class="language-clike"><code><!--         
+# pip install streamlit
+# python -m streamlit run app0.py              
+
+import streamlit
+
+prompt = streamlit.text_input('Input your name')
+
+if prompt:
+    response = "Hello " + prompt
+    streamlit.write(response)
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tKy8IIJiqZ" id="image3-5t4">
     
 
     
@@ -228,15 +172,28 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/capturec-08-689x490.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the PageModel to include a message property set in the OnGet() method</p>
+                    <img src="assets/images/langchain-capture-0004-1473x711.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">hello world streamlit app</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-tKi95Ne30f" id="image3-5q8">
+<section class="content5 cid-tKyXZOFkpd" id="content5-5um">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">ChatGPT</h4>
+                <p class="mbr-text mbr-fonts-style display-7">I updated the hello world&nbsp;hello world streamlit app. to the OpenAI API.<br><br>I had to browse the OpenAI web site to create a secret API key.<br><br>The secret key can be stored as an environment variable.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tKy8K3GfkA" id="image3-5t7">
     
 
     
@@ -245,15 +202,50 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/capturec-09-963x233.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the corresponding Razor page to include the Message.</p>
+                    <img src="assets/images/screen-shot-2023-07-20-at-10.13.26-am-1836x1013.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">secret key</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-tKi95NmgTk" id="image3-5q9">
+<section class="content7 cid-tKyZOHB87b" id="content7-5un">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>app1.py</strong></h5>
+
+<pre class="language-clike"><code><!--         
+# pip install langchain openai streamlit
+# python -m streamlit run app.py              
+
+# import os
+from langchain.llms import OpenAI
+import streamlit
+
+# os.environ['OPENAI_API_KEY']='<insert key here>'
+
+llm = OpenAI(temperature=0.9)
+
+prompt = streamlit.text_input('Input your prompt')
+
+if prompt:
+    response = llm(prompt)
+    streamlit.write(response)
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tKy8KtvVmc" id="image3-5t8">
     
 
     
@@ -262,15 +254,28 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/capturec-10-1357x635.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I tested the Web application</p>
+                    <img src="assets/images/langchain-capture-0005-1476x710.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Using&nbsp;LangChain to call the OpenAI API.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-tKi95Nsm7O" id="image3-5qa">
+<section class="content5 cid-tKz1qIgeLx" id="content5-5uo">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">pdf document pages</h4>
+                <p class="mbr-text mbr-fonts-style display-7">LangChain can be used to load text from pdf documents.<br><br>LangChain can be used to return the text found on each page of a pdf separately.<br><br>I used LangChain to return the text found on each page of a sample medical report.<br><br><a href="https://www.med.unc.edu/medclerk/wp-content/uploads/sites/877/2018/10/hp4.pdf" class="text-primary" target="_blank">https://www.med.unc.edu/medclerk/wp-content/uploads/sites/877/2018/10/hp4.pdf</a><br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tKy8KPn8lD" id="image3-5t9">
     
 
     
@@ -279,15 +284,15 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/capturec-11-353x40.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created a Data folder to hold classes generated by Entity framework.</p>
+                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-tKi95NA8Hv" id="image3-5qb">
+<section class="image3 cid-tKy8LcM807" id="image3-5ta">
     
 
     
@@ -296,15 +301,15 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/capturec-15-1008x468.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I wanted Entity framework to generate the classes needed to access and update the contents of a todo items database.</p>
+                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-tKi95NJ9gr" id="image3-5qc">
+<section class="image3 cid-tKy8Ly6wSo" id="image3-5tb">
     
 
     
@@ -313,15 +318,15 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/capturec-16-1357x262.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I installed the dotnet-ef (entity framework) tool</p>
+                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-tKi95NROow" id="image3-5qd">
+<section class="image3 cid-tKy8LUswkt" id="image3-5tc">
     
 
     
@@ -330,15 +335,15 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/capturec-17-1352x271.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I needed to add a references to the Microsoft.EntityFrameworkCore.Design and Microsoft.EntityFrameworkCore.SqlServer packages.</p>
+                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-tKi95NYYbD" id="image3-5qe">
+<section class="image3 cid-tKy8MfF33y" id="image3-5td">
     
 
     
@@ -347,15 +352,15 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/capturec-19-1366x663.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I ran the dotnet ef dbcontext scaffold... command to generate the entity framework related classes.</p>
+                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-tKi95O6JGP" id="image3-5qf">
+<section class="image3 cid-tKy8MEcfUm" id="image3-5te">
     
 
     
@@ -364,15 +369,15 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/capturec-20-1366x663.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The Item class describes a database table row.</p>
+                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-tKi95OdYtn" id="image3-5qg">
+<section class="image3 cid-tKy8N1Rfos" id="image3-5tf">
     
 
     
@@ -381,15 +386,15 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/capturec-22-363x44.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created a ToDo folder in the Pages folder.</p>
+                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-tKi95OlvvM" id="image3-5qh">
+<section class="image3 cid-tKy8NpZEu7" id="image3-5tg">
     
 
     
@@ -398,15 +403,15 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/capturec-23-828x721.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I right clicked on the ToDo folder and selected the Add | New Scaffolded Item... menu item</p>
+                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-tKi95Os2CQ" id="image3-5qi">
+<section class="image3 cid-tKy8NVCujo" id="image3-5th">
     
 
     
@@ -415,15 +420,15 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/capturec-25-656x442.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the Entity framework classes I generated eariler.</p>
+                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-tKi95OCg70" id="image3-5qj">
+<section class="image3 cid-tKy8Oix710" id="image3-5ti">
     
 
     
@@ -432,15 +437,15 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/capturec-26-468x137.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I watched the progress bar</p>
+                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-tKi95OKlm6" id="image3-5qk">
+<section class="image3 cid-tKy8OLmSXZ" id="image3-5tj">
     
 
     
@@ -449,15 +454,15 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/capturec-27-408x200.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I ran into an odd issue related to the Microsoft.VisualStudio.Web.CodeGeneration.Design package that was already installed. I reinstalled and tried again.</p>
+                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-tKi95OR0dJ" id="image3-5ql">
+<section class="image3 cid-tKy8PaIsK9" id="image3-5tk">
     
 
     
@@ -466,15 +471,15 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/capturec-28-1366x658.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The CRUD Razor pages were generated.</p>
+                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-tKi95OZIOt" id="image3-5qm">
+<section class="image3 cid-tKy8PxVpk3" id="image3-5tl">
     
 
     
@@ -483,15 +488,15 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/capturec-29-1330x436.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated Program.cs to include a reference to ToDoContext...</p>
+                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-tKi95P7Ksm" id="image3-5qn">
+<section class="image3 cid-tKy8PVUa28" id="image3-5tm">
     
 
     
@@ -500,15 +505,15 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/capturec-30-1364x317.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">...and ran the Web app by navigating to /ToDo</p>
+                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-tKi95PfkcL" id="image3-5qo">
+<section class="image3 cid-tKy8QmL15c" id="image3-5tn">
     
 
     
@@ -517,15 +522,15 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/capturec-31-1366x417.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I used the create page to create a ToDo item.</p>
+                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-tKi95PmqZR" id="image3-5qp">
+<section class="image3 cid-tKy8QKuHXB" id="image3-5to">
     
 
     
@@ -534,15 +539,15 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/capturec-32-1366x363.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The create page's OnPostAsync() method added the new item (using entity framework) and redirected me back to the ToDo index page.</p>
+                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-tKi95Pu8gT" id="image3-5qq">
+<section class="image3 cid-tKy8R89mLs" id="image3-5tp">
     
 
     
@@ -551,15 +556,15 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/capturec-33-1362x308.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the appsettings.json file to include the database connection string.</p>
+                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-tKi95PDHwX" id="image3-5qr">
+<section class="image3 cid-tKy8RuZoPh" id="image3-5tq">
     
 
     
@@ -568,15 +573,15 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/capturec-34-1366x514.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated Program.cs to include a reference to the appsettings value.</p>
+                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-tKi95PLoey" id="image3-5qs">
+<section class="image3 cid-tKy8JHOThc" id="image3-5t6">
     
 
     
@@ -585,8 +590,42 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/capturec-35-1361x516.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the ToDoContext class's OnModelCreating() method (removing the hardcoded connection string).</p>
+                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tKy8JeRnTY" id="image3-5t5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tKy8I5HVLU" id="image3-5t3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
                 </div>
             </div>
         </div>
@@ -606,7 +645,7 @@
                 <div class="card-wrapper">
                     <div class="card-box align-center">
                         <span class="mbr-iconfont mbri-pages"></span>
-                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://learn.microsoft.com/en-us/aspnet/mvc/overview/getting-started/introduction/getting-started" class="text-primary" target="_blank">Compare Razor Pages to ASP.NET MVC</a></strong></h4>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://python.langchain.com/docs/get_started/quickstart" class="text-primary" target="_blank">LangChain Quickstart</a></strong></h4>
                     </div>
                 </div>
             </div>
