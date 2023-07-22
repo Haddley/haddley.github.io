@@ -76118,6 +76118,27 @@ a {
   padding-bottom: 0rem;
   background-color: #ffffff;
 }
+.cid-tKJSflORAM {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  background-color: #ffffff;
+}
+@media (max-width: 991px) {
+  .cid-tKJSflORAM .image-wrapper {
+    margin-bottom: 1rem;
+  }
+}
+.cid-tKJSflORAM .row {
+  flex-direction: row-reverse;
+}
+.cid-tKJSflORAM img {
+  width: 100%;
+}
+.cid-tKJSkw7C4T {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  background-color: #ffffff;
+}
 .cid-tKy8KPn8lD {
   padding-top: 0rem;
   padding-bottom: 0rem;

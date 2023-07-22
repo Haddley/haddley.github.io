@@ -115,7 +115,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">LangChain</h4>
-                <p class="mbr-text mbr-fonts-style display-7">LangChain is a framework built around Large Language Models. It can use it for chatbots, Generative Question-Answering (GQA), summarization, and more.<br></p>
+                <p class="mbr-text mbr-fonts-style display-7">LangChain is a framework built around Large Language Models. It can be used to create chatbots, Generative Question-Answering (GQA) and summarization applications.<br></p>
             </div>
         </div>
     </div>
@@ -128,7 +128,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">streamlit</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Streamlit is an open-source Python library used to create web applications for data science and machine learning projects. It allows developers and data scientists to quickly turn their data scripts into interactive web applications without the need for extensive web development knowledge. Streamlit's main goal is to make the process of sharing data, models, and visualizations with others as easy and efficient as possible.<br><br>As a first step I created a hello world streamlit app.</p>
+                <p class="mbr-text mbr-fonts-style display-7">Streamlit is an open-source Python library used to create web applications for data science and machine learning projects. It allows developers and data scientists to quickly turn their data scripts into interactive web applications without the need for extensive web development knowledge. Streamlit's goal is to make the process of sharing data, models, and visualizations with others as easy and efficient as possible.<br><br>As a first step I created a hello world streamlit app.</p>
             </div>
         </div>
     </div>
@@ -187,7 +187,7 @@ if prompt:
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">ChatGPT</h4>
-                <p class="mbr-text mbr-fonts-style display-7">I updated the hello world&nbsp;hello world streamlit app. to the OpenAI API.<br><br>I had to browse the OpenAI web site to create a secret API key.<br><br>The secret key can be stored as an environment variable.</p>
+                <p class="mbr-text mbr-fonts-style display-7">I updated the hello world streamlit app. to call the OpenAI API.<br><br>To call the OpenAI API I had to supply a secret API key.</p>
             </div>
         </div>
     </div>
@@ -269,7 +269,37 @@ if prompt:
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">pdf document pages</h4>
-                <p class="mbr-text mbr-fonts-style display-7">LangChain can be used to load text from pdf documents.<br><br>LangChain can be used to return the text found on each page of a pdf separately.<br><br>I used LangChain to return the text found on each page of a sample medical report.<br><br><a href="https://www.med.unc.edu/medclerk/wp-content/uploads/sites/877/2018/10/hp4.pdf" class="text-primary" target="_blank">https://www.med.unc.edu/medclerk/wp-content/uploads/sites/877/2018/10/hp4.pdf</a><br><br></p>
+                <p class="mbr-text mbr-fonts-style display-7">LangChain can be used to load text from pdf documents.<br><br>I used LangChain to return the text found on each page of a sample medical report.<br><br><a href="https://www.med.unc.edu/medclerk/wp-content/uploads/sites/877/2018/10/hp4.pdf" class="text-primary" target="_blank">https://www.med.unc.edu/medclerk/wp-content/uploads/sites/877/2018/10/hp4.pdf</a><br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tKJSflORAM" id="image3-5uy">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-07-22-at-6.54.13-am-1836x1001.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">hp4.pdf medical report</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tKJSkw7C4T" id="content5-5uz">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Jupyter Notebook</h4>
+                <p class="mbr-text mbr-fonts-style display-7">To improve performance and reduce costs I pre-processed the pdf file.<br><br>I created a Jupyter Notebook to keep track of the steps I followed to create the locally stored "embeddings vector store".</p>
             </div>
         </div>
     </div>
@@ -302,7 +332,7 @@ if prompt:
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2023-07-21-at-7.54.08-pm-1536x982.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">loads in medical report&nbsp;pages<br>pages = loader.load_and_split()</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I loaded medical report&nbsp;pages<br></p>
                 </div>
             </div>
         </div>
@@ -345,7 +375,7 @@ print (pages[0].page_content)
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2023-07-21-at-7.57.22-pm-1536x997.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">break pages into paragraph "text" items</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I broke the document into paragraphs (texts).</p>
                 </div>
             </div>
         </div>
@@ -395,7 +425,7 @@ texts[1].page_content
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Chroma</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Chroma is a vector store and <a href="sentencesimilarity.html" class="text-primary">embeddings</a> database designed from the ground-up to make it easy to build AI applications with embeddings.<br></p>
+                <p class="mbr-text mbr-fonts-style display-7">I used Chroma to create a vector store and saved the store locally.<br></p>
             </div>
         </div>
     </div>
@@ -411,7 +441,7 @@ texts[1].page_content
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2023-07-21-at-7.59.26-pm-1536x1033.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">build an embeddings vector store (save to "Chroma" folder) using the OpenAI API</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I used OpenAI's API to generate the embeddings</p>
                 </div>
             </div>
         </div>
@@ -469,7 +499,7 @@ store.get()
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2023-07-21-at-8.03.05-pm-1536x842.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Convert&nbsp;'Does the patient smoke?' to an embedding and compare with embeddings in the vector store. What paragraphs in the document might be useful?</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I converted the query 'Does the patient smoke?' to an embedding and compared the result with the embeddings in the vector store.</p>
                 </div>
             </div>
         </div>
@@ -509,7 +539,7 @@ search
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2023-07-21-at-8.05.23-pm-1536x784.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">(as a demonstration) retrieve the embeddings vector store from the 'Chroma' folder.</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I retrieved the embeddings vector store from the local folder.</p>
                 </div>
             </div>
         </div>
@@ -550,7 +580,7 @@ db.get()
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2023-07-21-at-8.16.41-pm-1536x867.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Pass just the "useful" paragraphs and the question to the Large Language Model. ChatGPT provides the answer as a generated sentence.</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I passed the most similar paragraphs (see <a href="contextinjection.html" class="text-primary">Context Injection</a>) and the query to ChatGPT.&nbsp;</p>
                 </div>
             </div>
         </div>
@@ -603,7 +633,7 @@ response
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2023-07-21-at-8.19.11-pm-1536x982.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">streamlit version of the code</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The streamlit code</p>
                 </div>
             </div>
         </div>
@@ -690,7 +720,7 @@ if prompt:
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2023-07-21-at-8.21.56-pm-1536x866.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Streamlit interface</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The finished application</p>
                 </div>
             </div>
         </div>
