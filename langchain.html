@@ -395,14 +395,13 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 # Define chunk size, overlap and separators
 text_splitter = RecursiveCharacterTextSplitter(
-    # Set a really small chunk size, just to show.
     chunk_size = 1024,
     chunk_overlap  = 40,
     length_function = len,
     separators=["\n \n", " ", ""]
 )
 
-# Split the pages into texts as defined above
+# Split the pages into paragraphs (texts) as defined above
 texts = text_splitter.split_documents(pages)
 
 len(texts)
@@ -580,7 +579,7 @@ db.get()
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screen-shot-2023-07-21-at-8.16.41-pm-1536x867.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I located the most similar paragraphs and sent those (see <a href="contextinjection.html" class="text-primary">Context Injection</a>) and the query to ChatGPT.&nbsp;</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I located the most similar paragraphs and sent those (see <a href="contextinjection.html" class="text-primary">Context Injection</a>) and the query to OpenAI's servers.&nbsp;</p>
                 </div>
             </div>
         </div>
