@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Raspberry Pi SH1106</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section class="menu menu3 cid-tKVOKjytJH" once="menu" id="menu3-5xb">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-tKVOKkfsbp" id="content4-5xc">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Raspberry&nbsp;Pi (Part 3)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">OLED Display</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tKVOKl3sE5" id="image3-5xd">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <a href="http://www.raspberrypi.com/" target="_blank"><img src="assets/images/raspberry-pi-logo.svg" alt=""></a>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a href="https://www.raspberrypi.com/trademark-rules/" class="text-primary" target="_blank">Raspberry Pi is a trademark of Raspberry Pi Ltd</a><a href="http://www.apache.org/licenses/LICENSE-2.0" title="Apache License, Version 2.0"><br></a>
+                    
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tKVOKldrkn" id="content5-5xe">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Raspberry Pi GPIO</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The Raspberry Pi input and output pins can be controlled from the terminal.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tKVOKljANK" id="image3-5xf">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-07-24-at-8.12.44-am-660x528.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">OLED wiring</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tKVOKlxhN7" id="image3-5xg">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-07-24-at-8.23.25-am-1140x740.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">i2cdetect -y 1</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tKVWmpgAIV" id="content5-5xm">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Driver</h4>
+                <p class="mbr-text mbr-fonts-style display-7"><a href="https://luma-oled.readthedocs.io/en/latest/install.html" class="text-primary" target="_blank">https://luma-oled.readthedocs.io/en/latest/install.html</a><br><br>$ sudo -H pip3 install --upgrade luma.oled<br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tKVOKlIV97" id="image3-5xh">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-07-24-at-8.40.42-am-1140x744.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Python code</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-tKW1iviQvk" id="content7-5xn">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>hello.py</strong></h5>
+
+<pre class="language-clike"><code><!--         
+from luma.core.interface.serial import i2c, spi, pcf8574
+from luma.core.interface.parallel import bitbang_6800
+from luma.core.render import canvas
+from luma.oled.device import ssd1306, ssd1309, ssd1325, ssd1331, sh1106, sh1107>
+from time import sleep
+
+# rev.1 users set port=0
+# substitute spi(device=0, port=0) below if using that interface
+# substitute bitbang_6800(RS=7, E=8, PINS=[25,24,23,27]) below if using that in>
+serial = i2c(port=1, address=0x3C)
+
+# substitute ssd1331(...) or sh1106(...) below if using that device
+device = sh1106(serial)
+
+with canvas(device) as draw:
+    draw.rectangle(device.bounding_box, outline="white", fill="black")
+    draw.text((30, 40), "Hello World", fill="white")
+
+sleep(10)
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tKVOKlVGLe" id="image3-5xi">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/img-3353-1836x1377.jpg" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The hello.py code running on configured hardware</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features13 cid-tKVOKmjGQk" id="features14-5xl">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://www.youtube.com/watch?v=LdOKXUDw2NY" class="text-primary" target="_blank">SH1106 OLED Display on a Raspberry Pi 4</a></strong><strong><a href="https://www.makeuseof.com/how-to-use-raspberry-pi-imager-advanced-options/" class="text-primary" target="_blank"><br></a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/popper/popper.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/dropdown/js/nav-dropdown.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>
