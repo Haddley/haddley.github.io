@@ -162,7 +162,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Driver</h4>
-                <p class="mbr-text mbr-fonts-style display-7"><a href="https://luma-oled.readthedocs.io/en/latest/install.html" class="text-primary" target="_blank">https://luma-oled.readthedocs.io/en/latest/install.html</a><br><br>$ sudo raspi-config<br>$ sudo -H pip3 install --upgrade luma.oled<br><br></p>
+                <p class="mbr-text mbr-fonts-style display-7"></p><p><a href="https://luma-oled.readthedocs.io/en/latest/install.html" class="text-primary" target="_blank">https://luma-oled.readthedocs.io/en/latest/install.html</a><br><br>$ sudo raspi-config</p><p><br><strong>Interface Options | I2C&nbsp;| enable ARM I2C</strong></p><p><br>$ sudo -H pip3 install --upgrade luma.oled<br><br></p><p></p>
             </div>
         </div>
     </div>
@@ -405,6 +405,45 @@ while True:
         
 cap.release()
 cv2.destroyAllWindows()
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tL3WLNgKlj" id="image3-5yx">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/20230725-img-3391-1536x1152.jpg" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Webcam</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-tL3WNX6Zra" id="content7-5yy">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>webcam_display_window_and_oled.py</strong></h5>
+
+<pre class="language-clike"><code><!--         
+...
+cap = cv2.VideoCapture(0)
+...
 --></code></pre>
                     
 
