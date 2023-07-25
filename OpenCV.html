@@ -10,7 +10,7 @@
   <meta name="description" content="">
   
   
-  <title>Raspberry Pi OpenCV</title>
+  <title>Raspberry Pi OpenCV and TensorFlow Lite</title>
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
@@ -82,7 +82,7 @@
         <div class="row justify-content-center">
             <div class="title col-md-12 col-lg-10">
                 <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Raspberry&nbsp;Pi (Part 4)</strong></h3>
-                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">OpenCV</h4>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">OpenCV and TensorFlow</h4>
                 
             </div>
         </div>
@@ -114,8 +114,8 @@
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
                 
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Raspberry Pi OpenCV</h4>
-                <p class="mbr-text mbr-fonts-style display-7">OpenCV (Open Source Computer Vision Library) is an open-source computer vision and machine learning software library. It provides a comprehensive set of tools and functions that enable developers to perform various computer vision tasks, such as image and video processing, object detection, facial recognition, feature extraction, and more. OpenCV was initially developed by Intel in 1999.</p>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Raspberry Pi Object Detection using OpenCV and TensorFlow Lite</h4>
+                <p class="mbr-text mbr-fonts-style display-7"><br><br></p>
             </div>
         </div>
     </div>
@@ -127,7 +127,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
                 
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Installation<br></h4>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Installation of OpenCV<br></h4>
                 <p class="mbr-text mbr-fonts-style display-7">$ sudo apt update<br>$ sudo apt upgrade<br>$ sudo apt install python3-opencv<br>$ python<br>&gt;&gt;&gt; import cv2<br>&gt;&gt;&gt; print(cv2.__version__)<br></p>
             </div>
         </div>
@@ -151,59 +151,27 @@
     </div>
 </section>
 
-<section class="image3 cid-tKXa8aDryr" id="image3-5yd">
-    
-
-    
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2023-07-24-at-1.25.37-pm-1438x924.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">nano cv2_1.py<br>python cv2_1.py</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="content7 cid-tKXg6z5S67" id="content7-5yj">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-10">
-                <blockquote>
-                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>cv2_1.py</strong></h5>
-
-<pre class="language-clike"><code><!--         
-import cv2
-import numpy as np
-
-image = np.zeros(shape = (64,128,1))
-
-cv2.rectangle(image,pt1=(10,10),pt2=(118,54),color=(255,255,255),thickness=2)
-cv2.imshow("Preview",image)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
---></code></pre>
-                    
-
-                    
-</blockquote>
-            </div>
-        </div>
-    </div>
-</section>
-
 <section class="content5 cid-tKXmNPjOHo" id="content5-5yk">
     
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
                 
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">workbench.aspx</h4>
-                <p class="mbr-text mbr-fonts-style display-7">Sample video from:<br><br>https://pixabay.com/videos/puppy-dog-playful-beach-sand-play-4740/<br><br>sudo apt-get install fswebcam (testing cameras)<br><br>lsusb<br><br>https://lexruee.ch/setting-i2c-permissions-for-non-root-users.html<br><br>1) Create new user group called i2c:<br><br>xander@alix:~<br>▶ sudo groupadd i2c<br>2) Change the group ownership of /dev/i2c-1 to i2c:<br><br>xander@alix:~<br>▶ sudo chown :i2c /dev/i2c-1<br>3) Change the file permissions of the device /dev/i2c-1 so users of the i2c group can read and write to the device:<br><br>xander@alix:~<br>▶ sudo chmod g+rw /dev/i2c-1<br>4) Add your user to the group i2c:<br><br>xander@alix:~<br>▶ sudo usermod -aG i2c xander<br>5) After you logout and login again you should be able to run i2cdetect -y 1.<br><br>The listing blow shows an example output of the command. As one can see, I connected three I2C devices to my Raspberry Pi 2.<br><br><br><br><br><br><br><br><br></p>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Installation of TensorFlow Lite</h4>
+                <p class="mbr-text mbr-fonts-style display-7">$ sudo apt-get update<br>$ sudo apt-get dist-upgrade<br><br>$ git clone https://github.com/EdjeElectronics/TensorFlow-Lite-Object-Detection-on-Android-and-Raspberry-Pi.git<br>$CONTENT$nbsp;mv TensorFlow-Lite-Object-Detection-on-Android-and-Raspberry-Pi tflite1<br>$ cd&nbsp;tflite1<br><br>$CONTENT$nbsp;sudo pip3 install virtualenv<br>$CONTENT$nbsp;python3 -m venv tflite1-env<br>$CONTENT$nbsp;<strong>source tflite1-env/bin/activate</strong><br><br>$CONTENT$nbsp;bash get_pi_requirements.sh<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tL2xy6LZJ8" id="content5-5ys">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Using Google's sample TFLite model</h4>
+                <p class="mbr-text mbr-fonts-style display-7">$ wget https://storage.googleapis.com/download.tensorflow.org/models/tflite/coco_ssd_mobilenet_v1_1.0_quant_2018_06_29.zip<br><br>$ unzip coco_ssd_mobilenet_v1_1.0_quant_2018_06_29.zip -d Sample_TFLite_model<br><br>$CONTENT$nbsp;python TFLite_detection_video.py --modeldir=Sample_TFLite_model --video=test.mp4<br><br>$CONTENT$nbsp;python TFLite_detection_video.py --modeldir=Sample_TFLite_model --video=dog.mp4</p>
             </div>
         </div>
     </div>
@@ -218,94 +186,209 @@ cv2.destroyAllWindows()
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
+                    <img src="assets/images/screen-shot-2023-07-25-at-11.58.01-am-1446x928.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">python TFLite_detection_video.py --modeldir=Sample_TFLite_model --video=dog.mp4</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-tKXaayUiU5" id="image3-5yh">
+<section class="content7 cid-tL2F5UGacU" id="content7-5yt">
     
-
-    
-
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>TFLite_detection_video.py</strong></h5>
 
-<section class="image3 cid-tKXa8O92DT" id="image3-5yf">
-    
+<pre class="language-clike"><code><!--         
+######## Webcam Object Detection Using Tensorflow-trained Classifier #########
+#
+# Author: Evan Juras
+# Date: 10/2/19
+# Description: 
+# This program uses a TensorFlow Lite model to perform object detection on a
+# video. It draws boxes and scores around the objects of interest in each frame
+# from the video.
+#
+# This code is based off the TensorFlow Lite image classification example at:
+# https://github.com/tensorflow/tensorflow/blob/master/tensorflow/lite/examples/python/label_image.py
+#
+# I added my own method of drawing boxes and labels using OpenCV.
 
-    
+# Import packages
+import os
+import argparse
+import cv2
+import numpy as np
+import sys
+import importlib.util
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-<section class="image3 cid-tKXaaMWq1Z" id="image3-5yi">
-    
 
-    
+# Define and parse input arguments
+parser = argparse.ArgumentParser()
+parser.add_argument('--modeldir', help='Folder the .tflite file is located in',
+                    required=True)
+parser.add_argument('--graph', help='Name of the .tflite file, if different than detect.tflite',
+                    default='detect.tflite')
+parser.add_argument('--labels', help='Name of the labelmap file, if different than labelmap.txt',
+                    default='labelmap.txt')
+parser.add_argument('--threshold', help='Minimum confidence threshold for displaying detected objects',
+                    default=0.5)
+parser.add_argument('--video', help='Name of the video file',
+                    default='test.mp4')
+parser.add_argument('--edgetpu', help='Use Coral Edge TPU Accelerator to speed up detection',
+                    action='store_true')
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+args = parser.parse_args()
 
-<section class="image3 cid-tKXaa6PJ1Q" id="image3-5yg">
-    
+MODEL_NAME = args.modeldir
+GRAPH_NAME = args.graph
+LABELMAP_NAME = args.labels
+VIDEO_NAME = args.video
+min_conf_threshold = float(args.threshold)
+use_TPU = args.edgetpu
 
-    
+# Import TensorFlow libraries
+# If tflite_runtime is installed, import interpreter from tflite_runtime, else import from regular tensorflow
+# If using Coral Edge TPU, import the load_delegate library
+pkg = importlib.util.find_spec('tflite_runtime')
+if pkg:
+    from tflite_runtime.interpreter import Interpreter
+    if use_TPU:
+        from tflite_runtime.interpreter import load_delegate
+else:
+    from tensorflow.lite.python.interpreter import Interpreter
+    if use_TPU:
+        from tensorflow.lite.python.interpreter import load_delegate
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+# If using Edge TPU, assign filename for Edge TPU model
+if use_TPU:
+    # If user has specified the name of the .tflite file, use that name, otherwise use default 'edgetpu.tflite'
+    if (GRAPH_NAME == 'detect.tflite'):
+        GRAPH_NAME = 'edgetpu.tflite'   
 
-<section class="image3 cid-tKXa7fAASE" id="image3-5yc">
-    
+# Get path to current working directory
+CWD_PATH = os.getcwd()
 
-    
+# Path to video file
+VIDEO_PATH = os.path.join(CWD_PATH,VIDEO_NAME)
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
-                </div>
+# Path to .tflite file, which contains the model that is used for object detection
+PATH_TO_CKPT = os.path.join(CWD_PATH,MODEL_NAME,GRAPH_NAME)
+
+# Path to label map file
+PATH_TO_LABELS = os.path.join(CWD_PATH,MODEL_NAME,LABELMAP_NAME)
+
+# Load the label map
+with open(PATH_TO_LABELS, 'r') as f:
+    labels = [line.strip() for line in f.readlines()]
+
+# Have to do a weird fix for label map if using the COCO "starter model" from
+# https://www.tensorflow.org/lite/models/object_detection/overview
+# First label is '???', which has to be removed.
+if labels[0] == '???':
+    del(labels[0])
+
+# Load the Tensorflow Lite model.
+# If using Edge TPU, use special load_delegate argument
+if use_TPU:
+    interpreter = Interpreter(model_path=PATH_TO_CKPT,
+                              experimental_delegates=[load_delegate('libedgetpu.so.1.0')])
+    print(PATH_TO_CKPT)
+else:
+    interpreter = Interpreter(model_path=PATH_TO_CKPT)
+
+interpreter.allocate_tensors()
+
+# Get model details
+input_details = interpreter.get_input_details()
+output_details = interpreter.get_output_details()
+height = input_details[0]['shape'][1]
+width = input_details[0]['shape'][2]
+
+floating_model = (input_details[0]['dtype'] == np.float32)
+
+input_mean = 127.5
+input_std = 127.5
+
+# Check output layer name to determine if this model was created with TF2 or TF1,
+# because outputs are ordered differently for TF2 and TF1 models
+outname = output_details[0]['name']
+
+if ('StatefulPartitionedCall' in outname): # This is a TF2 model
+    boxes_idx, classes_idx, scores_idx = 1, 3, 0
+else: # This is a TF1 model
+    boxes_idx, classes_idx, scores_idx = 0, 1, 2
+
+# Open video file
+video = cv2.VideoCapture(VIDEO_PATH)
+imW = video.get(cv2.CAP_PROP_FRAME_WIDTH)
+imH = video.get(cv2.CAP_PROP_FRAME_HEIGHT)
+
+while(video.isOpened()):
+
+    # Acquire frame and resize to expected shape [1xHxWx3]
+    ret, frame = video.read()
+    if not ret:
+      print('Reached the end of the video!')
+      break
+    frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    frame_resized = cv2.resize(frame_rgb, (width, height))
+    input_data = np.expand_dims(frame_resized, axis=0)
+
+    # Normalize pixel values if using a floating model (i.e. if model is non-quantized)
+    if floating_model:
+        input_data = (np.float32(input_data) - input_mean) / input_std
+
+    # Perform the actual detection by running the model with the image as input
+    interpreter.set_tensor(input_details[0]['index'],input_data)
+    interpreter.invoke()
+
+    # Retrieve detection results
+    boxes = interpreter.get_tensor(output_details[boxes_idx]['index'])[0] # Bounding box coordinates of detected objects
+    classes = interpreter.get_tensor(output_details[classes_idx]['index'])[0] # Class index of detected objects
+    scores = interpreter.get_tensor(output_details[scores_idx]['index'])[0] # Confidence of detected objects
+
+    # Loop over all detections and draw detection box if confidence is above minimum threshold
+    for i in range(len(scores)):
+        if ((scores[i] > min_conf_threshold) and (scores[i] <= 1.0)):
+
+            # Get bounding box coordinates and draw box
+            # Interpreter can return coordinates that are outside of image dimensions, need to force them to be within image using max() and min()
+            ymin = int(max(1,(boxes[i][0] * imH)))
+            xmin = int(max(1,(boxes[i][1] * imW)))
+            ymax = int(min(imH,(boxes[i][2] * imH)))
+            xmax = int(min(imW,(boxes[i][3] * imW)))
+            
+            cv2.rectangle(frame, (xmin,ymin), (xmax,ymax), (10, 255, 0), 4)
+
+            # Draw label
+            object_name = labels[int(classes[i])] # Look up object name from "labels" array using class index
+            label = '%s: %d%%' % (object_name, int(scores[i]*100)) # Example: 'person: 72%'
+            labelSize, baseLine = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.7, 2) # Get font size
+            label_ymin = max(ymin, labelSize[1] + 10) # Make sure not to draw label too close to top of window
+            cv2.rectangle(frame, (xmin, label_ymin-labelSize[1]-10), (xmin+labelSize[0], label_ymin+baseLine-10), (255, 255, 255), cv2.FILLED) # Draw white box to put label text in
+            cv2.putText(frame, label, (xmin, label_ymin-7), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2) # Draw label text
+
+    # All the results have been drawn on the frame, so it's time to display it.
+    cv2.imshow('Object detector', frame)
+
+    # Press 'q' to quit
+    if cv2.waitKey(1) == ord('q'):
+        break
+
+# Clean up
+video.release()
+cv2.destroyAllWindows()
+
+--></code></pre>
+                    
+
+                    
+</blockquote>
             </div>
         </div>
     </div>
@@ -324,14 +407,42 @@ cv2.destroyAllWindows()
                 <div class="card-wrapper">
                     <div class="card-box align-center">
                         <span class="mbr-iconfont socicon-youtube socicon"></span>
-                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://www.youtube.com/watch?v=w4SmpszTRVc" class="text-primary" target="_blank">install opencv on Raspberry pi 4 (2022)</a></strong><strong><a href="https://www.makeuseof.com/how-to-use-raspberry-pi-imager-advanced-options/" class="text-primary" target="_blank"><br></a></strong></h4>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://www.youtube.com/watch?v=w4SmpszTRVc" class="text-primary" target="_blank">OpenCV drawing on pictures</a></strong><strong><a href="https://www.makeuseof.com/how-to-use-raspberry-pi-imager-advanced-options/" class="text-primary" target="_blank"><br></a></strong></h4>
                     </div>
                 </div>
             </div>
-            
-            
-            
-            
+            <div class="card p-3 col-12 col-md-4 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont socicon-youtube socicon"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://www.youtube.com/watch?v=RFqvTmEFtOE&t=1315s" class="text-primary" target="_blank">Object Detection using OpenCV</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-3 col-12 col-md-4 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont socicon-youtube socicon"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://www.youtube.com/watch?v=aimSGOAUI8Y" class="text-primary" target="_blank">How To Run TensorFlow Lite on Raspberry Pi for Object Detection</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-3 col-12 col-md-4 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont socicon-youtube socicon"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://www.youtube.com/watch?v=qJMwNHQNOVU" class="text-primary" target="_blank">How to Use the Coral USB Accelerator with the Raspberry Pi - Increase TensorFlow Lite FPS!</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-3 col-12 col-md-4 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://github.com/EdjeElectronics/TensorFlow-Lite-Object-Detection-on-Android-and-Raspberry-Pi/blob/master/deploy_guides/Raspberry_Pi_Guide.md" class="text-primary" target="_blank">How to Run TensorFlow Lite Object Detection Models on the Raspberry Pi (with Optional Coral USB Accelerator)</a></strong></h4>
+                    </div>
+                </div>
+            </div>
             
         </div>
     </div>
