@@ -158,7 +158,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Installation of TensorFlow Lite</h4>
-                <p class="mbr-text mbr-fonts-style display-7">$ sudo apt-get update<br>$ sudo apt-get dist-upgrade<br><br>$ git clone https://github.com/EdjeElectronics/TensorFlow-Lite-Object-Detection-on-Android-and-Raspberry-Pi.git<br>$CONTENT$nbsp;mv TensorFlow-Lite-Object-Detection-on-Android-and-Raspberry-Pi tflite1<br>$ cd&nbsp;tflite1<br><br>$CONTENT$nbsp;sudo pip3 install virtualenv<br>$CONTENT$nbsp;python3 -m venv tflite1-env<br>$CONTENT$nbsp;<strong>source tflite1-env/bin/activate</strong><br><br>$CONTENT$nbsp;bash get_pi_requirements.sh<br></p>
+                <p class="mbr-text mbr-fonts-style display-7">$ sudo apt-get update<br>$ sudo apt-get dist-upgrade<br><br>$ git clone https://github.com/EdjeElectronics/TensorFlow-Lite-Object-Detection-on-Android-and-Raspberry-Pi.git<br>$ mv TensorFlow-Lite-Object-Detection-on-Android-and-Raspberry-Pi tflite1<br>$ cd&nbsp;tflite1<br><br>$ sudo pip3 install virtualenv<br>$ python3 -m venv tflite1-env<br>$CONTENT$nbsp;<strong>source tflite1-env/bin/activate</strong><br><br>$ bash get_pi_requirements.sh<br></p>
             </div>
         </div>
     </div>
@@ -171,7 +171,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Using Google's sample TFLite model</h4>
-                <p class="mbr-text mbr-fonts-style display-7">$ wget https://storage.googleapis.com/download.tensorflow.org/models/tflite/coco_ssd_mobilenet_v1_1.0_quant_2018_06_29.zip<br><br>$ unzip coco_ssd_mobilenet_v1_1.0_quant_2018_06_29.zip -d Sample_TFLite_model<br><br>$CONTENT$nbsp;python TFLite_detection_video.py --modeldir=Sample_TFLite_model --video=test.mp4<br><br>$CONTENT$nbsp;python TFLite_detection_video.py --modeldir=Sample_TFLite_model --video=dog.mp4</p>
+                <p class="mbr-text mbr-fonts-style display-7">$ wget https://storage.googleapis.com/download.tensorflow.org/models/tflite/coco_ssd_mobilenet_v1_1.0_quant_2018_06_29.zip<br><br>$ unzip coco_ssd_mobilenet_v1_1.0_quant_2018_06_29.zip -d Sample_TFLite_model<br><br>$ python TFLite_detection_video.py --modeldir=Sample_TFLite_model --video=test.mp4<br><br>$ python TFLite_detection_video.py --modeldir=Sample_TFLite_model --video=dog.mp4</p>
             </div>
         </div>
     </div>
