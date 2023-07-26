@@ -161,8 +161,21 @@
         <div class="row justify-content-center">
             <div class="col-md-12 col-lg-10">
                 
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Driver</h4>
-                <p class="mbr-text mbr-fonts-style display-7"></p><p><a href="https://luma-oled.readthedocs.io/en/latest/install.html" class="text-primary" target="_blank">https://luma-oled.readthedocs.io/en/latest/install.html</a><br><br>$ sudo raspi-config</p><p><br><strong>Interface Options | I2C&nbsp;| enable ARM I2C</strong></p><p><br>$ sudo -H pip3 install --upgrade luma.oled<br><br></p><p></p>
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Luma-OLED Driver</h4>
+                <p class="mbr-text mbr-fonts-style display-7">I installed the Luma-OLED driver by following these instructions:<br><br> <a href="https://luma-oled.readthedocs.io/en/latest/install.html" class="text-primary" target="_blank">https://luma-oled.readthedocs.io/en/latest/install.html</a><br><br>I installed the driver with this command<br><br>$ sudo -H pip3 install --upgrade luma.oled<a href="https://luma-oled.readthedocs.io/en/latest/install.html" class="text-primary" target="_blank"><br></a><br>I enabled I2C communications using the raspi-config application<br><br>$ sudo raspi-config<br><br>Interface Options | I2C | enable ARM I2C<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tL279RkbPv" id="content5-5yl">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">i2c permissions</h4>
+                <p class="mbr-text mbr-fonts-style display-7">I followed the steps described by <a href="https://lexruee.ch/setting-i2c-permissions-for-non-root-users.html" class="text-primary" target="_blank">Alexander Rüedlinger</a> to allow non-root users to access i2c devices (specifically the OLED display).<br><br>1) Create new user group called i2c:<br><strong>$ sudo groupadd i2c</strong><br><br>2) Change the group ownership of /dev/i2c-1 to i2c:<br><strong>$ sudo chown :i2c /dev/i2c-1</strong><br><br>3) Change the file permissions of the device /dev/i2c-1 so users of the i2c group can read and write to the device:<br><strong>$ sudo chmod g+rw /dev/i2c-1</strong><br><br>4) Add your user to the group i2c:<br><strong>$ sudo usermod -aG i2c &lt;username&gt;</strong><br></p>
             </div>
         </div>
     </div>
@@ -240,19 +253,6 @@ sleep(10)
     </div>
 </section>
 
-<section class="content5 cid-tL279RkbPv" id="content5-5yl">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">i2c permissions</h4>
-                <p class="mbr-text mbr-fonts-style display-7">I followed the steps described by <a href="https://lexruee.ch/setting-i2c-permissions-for-non-root-users.html" class="text-primary" target="_blank">Alexander Rüedlinger</a> to allow non-root users to access i2c devices (specifically the OLED display).<br><br>1) Create new user group called i2c:<br><strong>$ sudo groupadd i2c</strong><br><br>2) Change the group ownership of /dev/i2c-1 to i2c:<br><strong>$ sudo chown :i2c /dev/i2c-1</strong><br><br>3) Change the file permissions of the device /dev/i2c-1 so users of the i2c group can read and write to the device:<br><strong>$ sudo chmod g+rw /dev/i2c-1</strong><br><br>4) Add your user to the group i2c:<br><strong>$ sudo usermod -aG i2c &lt;username&gt;</strong><br></p>
-            </div>
-        </div>
-    </div>
-</section>
-
 <section class="content5 cid-tL2aKGqENG" id="content5-5yp">
     
     <div class="container">
@@ -260,7 +260,7 @@ sleep(10)
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Displaying an image on the OLED display</h4>
-                <p class="mbr-text mbr-fonts-style display-7">The code above assumes that your SharePoint site has a Calendar list named "Calendar".<br><br>The Local Workbench used for Web Part testing does not have a Calendar list, so to test the Web Part we need to navigate to the workbench page in a SharePoint site that does have a Calendar list (eg. https://haddleyoffice365.sharepoint.com/sites/AllStaff/_layouts/15/workbench.aspx).<br></p>
+                <p class="mbr-text mbr-fonts-style display-7">I downloaded a stop sign image and updated the hello.py code to display the image on the OLED display.</p>
             </div>
         </div>
     </div>
@@ -332,7 +332,7 @@ sleep(10)
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Using OpenCV and luma.oled to display video on the OLED display</h4>
-                <p class="mbr-text mbr-fonts-style display-7">OpenCV (Open Source Computer Vision Library) is an open-source computer vision and machine learning software library. It provides a comprehensive set of tools and functions that enable developers to perform various computer vision tasks, such as image and video processing, object detection, facial recognition, and feature extraction.&nbsp;<br><br>Here I use the cv2 library to read frames from a puppy video I downloaded from:<br><a href="https://pixabay.com/videos/puppy-dog-playful-beach-sand-play-4740/" class="text-primary" target="_blank">https://pixabay.com/videos/puppy-dog-playful-beach-sand-play-4740/</a><br><br></p>
+                <p class="mbr-text mbr-fonts-style display-7">OpenCV (Open Source Computer Vision Library) is an open-source computer vision and machine learning software library. It provides a comprehensive set of tools and functions that enable developers to perform various computer vision tasks, such as image and video processing, object detection, facial recognition, and feature extraction.&nbsp;<br><br>I used the cv2 library to read frames from a dog video I downloaded from:<br><a href="https://pixabay.com/videos/puppy-dog-playful-beach-sand-play-4740/" class="text-primary" target="_blank">https://pixabay.com/videos/puppy-dog-playful-beach-sand-play-4740/</a><br><br>Then I updated the code to send image captured by the webcam to the OLED display.<br></p>
             </div>
         </div>
     </div>
