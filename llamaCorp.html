@@ -162,7 +162,7 @@
             <div class="col-md-12 col-lg-10">
                 
                 <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Requirements</h4>
-                <p class="mbr-text mbr-fonts-style display-7">$ conda create --name llama&nbsp;jupyterlab ipykernel ipywidgets<br>$ conda activate llama\<br>$ pip install -r requirements.txt</p>
+                <p class="mbr-text mbr-fonts-style display-7">$ conda create --name llama&nbsp;jupyterlab ipykernel ipywidgets<br>$ conda activate llama<br>$ pip install -r requirements.txt</p>
             </div>
         </div>
     </div>
@@ -346,36 +346,82 @@ print(search2)
                 <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>app2a.py</strong></h5>
 
 <pre class="language-clike"><code><!--         
-using System;
-using System.Data.SqlClient;
-using System.Data;
+import streamlit as st
 
-namespace dotnet_sql
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var cs = @"User ID=sa;Password=Passw0rd123;Initial Catalog=AdventureWorks2019;Server=192.168.68.109;";
+# from langchain.llms import OpenAI
+from langchain.llms import  LlamaCpp
 
-            using var con = new SqlConnection(cs);
-            con.Open();
+#from langchain.embeddings import OpenAIEmbeddings
+from langchain.embeddings import HuggingFaceInstructEmbeddings
 
-            var query = "SELECT TOP (5) [Name] FROM [AdventureWorks2019].[Production].[Product] WHERE [ProductLine]=@inputField1";
-            using var cmd = new SqlCommand(query, con);
 
-            cmd.Parameters.Add(new SqlParameter("@inputField1", SqlDbType.Char, 2)).Value = 'R';
-            cmd.Prepare();
+from langchain.vectorstores import Chroma
 
-            using SqlDataReader rdr = cmd.ExecuteReader();
+from langchain.agents.agent_toolkits import (
+    create_vectorstore_agent,
+    VectorStoreToolkit,
+    VectorStoreInfo
+)
 
-            while (rdr.Read())
-            {
-                Console.WriteLine("{0}", rdr.GetString(0));
-            }
-        }
-    }
-}
+from langchain.vectorstores import Chroma
+
+from langchain.agents.agent_toolkits import (
+    create_vectorstore_agent,
+    VectorStoreToolkit,
+    VectorStoreInfo
+)
+
+#embeddings=OpenAIEmbeddings()
+embeddings = HuggingFaceInstructEmbeddings()
+
+# llm = OpenAI(temperature=0.9,verbose=True)
+
+# https://python.langchain.com/docs/integrations/llms/llamacpp
+# https://github.com/langchain-ai/langchain/issues/8004
+# https://github.com/abetlen/llama-cpp-python/blob/main/docs/install/macos.md
+
+llm = LlamaCpp(
+    model_path="llama-2-7b-chat.ggmlv3.q4_0.bin",
+    verbose=True,
+    temperature=1,
+    max_tokens=2048,  # 256
+    n_gpu_layers=1,
+    n_batch=512,
+    f16_kv=True,  # MUST set to True, otherwise you will run into problem after a couple of calls
+    n_ctx=10240 # Context Length
+)
+
+load_directory = "Chroma2"
+
+# load embeddings from "Chroma" directory
+db = Chroma(persist_directory=load_directory,collection_name='hp4',embedding_function=embeddings)
+
+vectorstore_info = VectorStoreInfo(
+    name="hp4",
+    description="embeddings generated from the pdf document",
+    vectorstore=db
+)
+
+toolkit = VectorStoreToolkit(vectorstore_info=vectorstore_info)
+
+agent_executor = create_vectorstore_agent(
+    llm=llm,
+    toolkit=toolkit,
+    verbose=True
+)
+
+prompt = st.text_input('Input your prompt')
+
+if prompt:
+    response = agent_executor.run(prompt)
+    st.write(response)
+
+    with st.expander('Document Similarity Search'):
+        search = db.similarity_search_with_score(prompt)
+        st.write(search)
+
+
+
 --></code></pre>
                     
 
