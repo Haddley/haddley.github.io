@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Prompt Engineering</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section class="menu menu3 cid-tMoa40XZn5" once="menu" id="menu3-666">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-tMoa41MU3U" id="content4-667">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>LM Studio (Part 2)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Prompt Engineering</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tMoa42e6pD" id="image3-668">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <a href="https://jupyter.org" target="_blank"><img src="assets/images/meta-platforms-inc.-logo.svg" alt=""></a>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a href="http://www.apache.org/licenses/LICENSE-2.0" title="Apache License, Version 2.0"></a>By Meta Platforms, Public Domain, <a href="https://commons.wikimedia.org/w/index.php?curid=111957412">Link</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tMoa42smTK" id="content5-669">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Prompt Engineering</h4>
+                <p class="mbr-text mbr-fonts-style display-7">There are a few different parts of a prompt that you will see over and over again. They are roughly:<br>	•	A role<br>	•	An instruction/task<br>	•	A question<br>	•	Context<br>	•	Examples (few-shot)<br><br>Here are some prompt examples:</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tMoa42DvCA" id="image3-66a">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/i-am-the-ceo-of-a-medium-...-1650x1570.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I am the CEO of a medium sized company. Write a short email that is humorous yet professional to my regional manager. Ask them to:<br>- send me an up-to-date list of our paper stock<br>- organize a meeting this week with other regional managers<br>- let me know how the company-wide AI workshop went at their office<br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tMobwpDuuy" id="image3-66j">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/it-is-very-rare-for-snow-...-952x2200.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">It is very rare for snow to fall in the U.S. state of Florida, especially in the central and southern portions of the state. With the exception of the far northern areas of the state, most of the major cities in Florida have never recorded measurable snowfall, though trace amounts have been recorded, or flurries in the air observed few times each century. According to the National Weather Service, in the Florida Keys and Key West there is no known occurrence of snow flurries since the European colonization of the region more than 300 years ago. In Miami, Fort Lauderdale, and Palm Beach there has been only one known report of snow flurries observed in the air in more than 200 years; this occurred in January 1977. In any event, Miami, Fort Lauderdale, and Palm Beach have not seen snow flurries before or since this 1977 event.<br>Summarize this paragraph in a single sentence:<br><br>If I have 20 apples, eat three of them, and sell three more, how many do I have left?<br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tMobwJlM7D" id="image3-66k">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/what-is-923-9-950x2786.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">What is 923 * 9? Let's go step by step. Notice that 900 * 9 is 8,100, 20 * 9 is 180, 3 * 9 is 27 and that  8,100 + 180 + 27 = 8,307<br><br>Write a tweet about ArchaeologistAI, in the style of Indiana Jones: ArchaeologistAI tells stories about famous archaeologists.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tMobx067mn" id="image3-66l">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/generate-a-comma-separate...-950x782.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Generate a comma separated list of 10 ice cream flavors:<br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tMobxiWmMC" id="image3-66m">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/write-a-review-of-pizza-...-966x4226.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">You are a food critic writing for the Michelin Guide. Write a review of [random pizza place].</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tMobxARQMu" id="image3-66n">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/you-are-a-communications-...-968x4136.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">You are a marketing expert. Draft an email to a client advising them about a delay in the delivery schedule due to logistical problems.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tMobxUCepr" id="image3-66o">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/twitter-is-a-social-media...-950x1030.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Twitter is a social media platform where users can post short messages called "tweets". Tweets can be positive or negative, and we would like to be able to classify tweets as positive or negative. Here are some examples of positive and negative tweets. Make sure to classify the last tweet correctly.<br>Q: Tweet: "What a beautiful day!"<br>Is this tweet positive or negative?<br>A: positive<br>Q: Tweet: "I hate this class"<br>Is this tweet positive or negative?<br>A: negative<br>Q: Tweet: "I love pockets on jeans"<br>Is this tweet positive or negative?<br>A:<br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tMobya3fla" id="image3-66p">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/january-1-2000-fracture...-950x1616.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">January 1, 2000: Fractured right arm playing basketball. Treated with a cast. February 15, 2010: Diagnosed with hypertension. Prescribed lisinopril. September 10, 2015: Developed pneumonia. Treated with antibiotics and recovered fully. March 1, 2022: Sustained a concussion in a car accident. Admitted to the hospital and monitored for 24 hours.<br>You are a doctor. Read this medical history and predict risks for the patient.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tMobytPkZx" id="image3-66q">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/you-are-now-pirategpt.-al...-954x1166.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">You are now PirateGPT. Always talk like a pirate. Start off by introducing yourself.<br><br>How is 2+2?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features13 cid-tMoa43sBJP" id="features14-66f">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://learnprompting.org/docs/intro" class="text-primary" target="_blank">Learn Prompting</a></strong><strong><a href="https://lmstudio.ai" class="text-primary" target="_blank"><br></a></strong><strong><a href="https://www.geeksforgeeks.org/black-and-white-image-colorization-with-opencv-and-deep-learning" class="text-primary" target="_blank"><br></a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/popper/popper.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/dropdown/js/nav-dropdown.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>
