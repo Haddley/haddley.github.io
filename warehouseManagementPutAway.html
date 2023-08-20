@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Warehouse Management Put away</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section class="menu menu3 cid-tNoC5JCRQp" once="menu" id="menu3-6c4">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-tNoC5KF4jJ" id="content4-6c5">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Microsoft Dynamics 365 Business Central (Part 3)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Put-away</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNoC5L8L01" id="image3-6c6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <a href="https://jupyter.org" target="_blank"><img src="assets/images/dynamics365-color.svg" alt=""></a>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">By <a href="https://learn.microsoft.com/en-us/dynamics365/get-started/icons" class="text-primary" target="_blank">Microsoft</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=130569158" class="text-primary" target="_blank">Public Domain</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tNoC5LKS4K" id="content5-6c7">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Warehouse Management - Put-away</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Businesses that physically move goods in and out of their warehouse need to be able to&nbsp;receive, pick, and ship items.<br><br>I created a walkthrough.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNoCP7iIiE" id="image3-6cz">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-10.33.47-am-1437x713.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated my role to Inventory Manager</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNoCPF7gye" id="image3-6d1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-10.33.58-am-1437x712.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Bin Content link</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNoCPT6yYY" id="image3-6d2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-10.34.20-am-1441x554.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">At this point there seems to be nothing in the Warehouse.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNoCQdwaWz" id="image3-6d3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-10.35.18-am-1439x713.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked Locations link</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNoCQFK8P0" id="image3-6d4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-10.35.35-am-890x602.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked on the White Warehouse link</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNoCRdvvZ9" id="image3-6d6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-10.37.12-am-1435x711.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked on the Zones link</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNoCRqSMnO" id="image3-6d7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-10.38.34-am-1439x714.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The White Warehouse has been divided into 8 zones.<br>Each zone has a Bin Type</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tNoJ1uG4VH" id="content5-6e6">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Bin Type</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The bin type determines how a bin is used when processing the flow of items through the warehouse.<br><br>Incoming goods will be unloaded to a "Receive" bin, moved to a "Put Away" bin, removed from a "Pick" bin and sent from a "Ship" bin.<br><br>In this example these "Bin Types" are defined: PICK (Pick), PUTAWAY (Put Away), PUTPICK (Put Away and Pick), RECEIVE (Receive) and SHIP (Ship).<br><br>[QC (None) bins are used for items that are excluded from normal item flows.]<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNpJ0dFmo1" id="image3-6e7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-3.37.18-pm-1443x429.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Bin Types</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tNoIcUqHtw" id="content5-6e5">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Zones</h4>
+                <p class="mbr-text mbr-fonts-style display-7"><a href="https://learn.microsoft.com/en-us/training/modules/set-up-zones-bins/2-set-up-zone" class="text-primary" target="_blank">Zones</a>&nbsp;are used to subdivide the warehouse into logical parts. Zone are divided into bins.<br><br>Notice that bin "W-08-0001" is a RECEIVE bin and "W-04-0001" is a PUTPICK bin.<br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNoCRGNPAo" id="image3-6d8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-10.38.51-am-1438x713.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Bins link to open a list of Bins in the White Warehouse</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNoCRWGvaO" id="image3-6d9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-10.39.03-am-1437x711.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">This is a list of the Bins in the White Warehouse.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNoCSbJN8B" id="image3-6da">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-10.40.53-am-1431x714.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked Settings|Personalize to open the Personalizing toolbar.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNoCSvZRGV" id="image3-6db">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-10.41.15-am-1438x708.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I was able to drag fields from the right onto the Bins page</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNoCSQ5QV5" id="image3-6dc">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-10.43.18-am-1436x715.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added the Zone Code and the Bin Type Code Fields</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNoCTjfco3" id="image3-6de">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-10.46.03-am-1436x714.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Notice that bin W-08-0001 is a RECEIVE bin in the RECEIVE Zone</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNoCTzntVl" id="image3-6df">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-10.46.54-am-1438x714.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Notice that bin W-04-0001 is a PUTPICK bin in the PICK Zone (with a bin ranking of 100)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNoCTTrOW9" id="image3-6dg">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-10.48.31-am-1438x714.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Business Central will allocate incoming items to "Put Away" bins based on a Put-away Template</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNoCUhbSWi" id="image3-6dh">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-10.48.43-am-1438x711.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Here two put away templates have been defined</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNoCUAqyNZ" id="image3-6di">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-10.49.08-am-1439x713.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">In the STD template items will be directed to a Fixed Bin already used for this item type, a Floating Bin that already has an item of this type in it, to an empty bin or to a random floating bin.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNoCV04xfI" id="image3-6dj">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-10.49.32-am-1435x712.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">In the VAR template items will be directed to a Floating Bin that already has an item of this type in it, to an empty bin or to a random floating bin.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tNpRnUh7Oq" id="content5-6e8">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Purchase Order</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Purchase Orders are usually created by a planning process.<br><br>To demonstrate how items flow through a warehouse I created a Purchase Order manually.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNoCVtrQ7N" id="image3-6dk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-10.49.57-am-1438x712.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I navigated to the Purchase Orders page</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNoCVNkJP0" id="image3-6dl">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-10.50.32-am-1439x296.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the + New link</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNoCW6B6SK" id="image3-6dm">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-10.50.51-am-1437x711.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">In this case I wanted to purchase items from "First Up Consultants". I selected the Vendor Name box.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNoD5kiw12" id="image3-6dn">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-10.51.06-am-1438x711.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected First Up Consultants</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNoCPsmxmf" id="image3-6d0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-10.51.21-am-1437x714.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The Vendor name and contact details were added to the new Purchase Order page.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNoD5R3tO0" id="image3-6dp">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-10.51.42-am-1437x712.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I wanted to purchase 10 yellow BERLIN Guest Chairs.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNoD66OSXR" id="image3-6dq">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-10.52.04-am-1439x713.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I entered quantity 10</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNoD6lZBmt" id="image3-6dr">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-10.52.26-am-1438x713.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I wanted to have the chairs shipped to the White Warehouse</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNqWgsfe0G" id="image3-6f3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-8.27.35-pm-1836x930.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Release link (notice that I did not enter a vendor invoice number -&nbsp; the invoice will not be received for some days or weeks)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNqWgSC9t9" id="image3-6f4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-8.27.50-pm-1836x927.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The Purchase Order document is released.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tNpTxjEe2n" id="content5-6e9">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Push or pull the warehouse receipt?</h4>
+                <p class="mbr-text mbr-fonts-style display-7">After the Purchase Order details have been entered I <u>could</u>&nbsp;have clicked on the "Create Whse. Receipt" link to create a Warehouse Receipt (based on the details in the current Purchase Order). This would be to follow a Push strategy.<br><br>The alternative is to release the Purchase Order and to let the Warehouse staff create the Warehouse Receipt.&nbsp;In this example I followed a&nbsp;<a href="https://usedynamics.com/business-central/warehouse/strategies-when-creating-receipts/" class="text-primary" target="_blank">Pull strategy</a>.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNoD9PVLtb" id="image3-6e3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-10.56.34-am-1435x710.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I switched to the Warehouse Worker role</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNr1Zg7eil" id="image3-6f7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-7.55.18-pm-1444x716.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&nbsp;I navigated to the Warehouse Employees page</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNr1rLHkWB" id="image3-6f6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-7.56.20-pm-1440x512.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added myself as a warehouse employee</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNr2bgc3gb" id="image3-6f8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-4.52.29-pm-1439x318.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Warehouse Receipts link</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNr16ny2En" id="image3-6f5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-8.25.51-pm-1836x454.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created a new Warehouse Receipt</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNr4Uw7uLr" id="image3-6f9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-8.28.21-pm-1836x926.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Get Source Documents... link to import details from the Purchase Order into this Warehouse Receipt<br>(Notice that a single Warehouse Receipt can import lines from multiple source documents)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNqLPQqcMP" id="image3-6ek">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-8.28.45-pm-1836x928.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><br>Notice that the Bin Code was automatically set to&nbsp;bin W-08-0001 (the RECEIVE bin in the RECEIVE Zone - see above)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNqVUgHkSe" id="image3-6eo">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-8.29.16-pm-1836x926.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Post Receipt link</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNqVUCShEa" id="image3-6ep">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-8.29.26-pm-1836x922.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I posted the Warehouse Receipt</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNqVUXbnOV" id="image3-6eq">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-8.29.40-pm-1836x927.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">As I posted the Warehouse Receipt a Put-away was created</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNqVVdmpH1" id="image3-6er">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-8.29.57-pm-1836x342.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Put-aways link</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNqVVwvi3Q" id="image3-6es">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-8.30.10-pm-1836x508.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked on the newly created Put-away</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNqVVLtlkt" id="image3-6et">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-8.30.30-pm-1836x926.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the "i" to collapse the FactBox</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNqVW1kygS" id="image3-6eu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-8.30.45-pm-1836x927.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Notice that the Put-away describes how the items should be moved from bin W-08-0001 (the RECEIVE bin in the RECEIVE Zone) and moved to bin W-04-0001&nbsp;(the PUTPICK bin in the PICK Zone)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNqVWs4lQq" id="image3-6ev">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-8.31.05-pm-1836x925.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I wanted to review the Bin Contents before clicking Register Put-away&nbsp;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNqVWMVMXu" id="image3-6ew">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-8.31.39-pm-1836x929.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The items are shown in the W-08-0001 bin&nbsp;(the RECEIVE bin in the RECEIVE Zone)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNqVX1pYGe" id="image3-6ex">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-8.31.50-pm-1836x931.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Register Put-away link</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNqVXoglum" id="image3-6ey">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-8.31.59-pm-1836x927.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked Yes</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNqVXHRaD9" id="image3-6ez">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-8.32.10-pm-1836x929.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The put away is completed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNqVXZ5zPn" id="image3-6f0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-8.32.26-pm-1836x924.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I wanted to review the Bin Contents after clicking Register Put-away </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNqVYmay47" id="image3-6f1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-19-at-8.32.37-pm-1836x929.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The items are shown in the W-04-0001 bin&nbsp;(the PUTPICK bin in the PICK Zone)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features13 cid-tNoC5Nd8Nf" id="features14-6ci">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont socicon-youtube socicon"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://www.youtube.com/watch?v=jy7HmnCF4po" class="text-primary" target="_blank">A Put-Away Example</a></strong><strong><a href="https://lmstudio.ai" class="text-primary" target="_blank"><br></a></strong><strong><a href="https://www.geeksforgeeks.org/black-and-white-image-colorization-with-opencv-and-deep-learning" class="text-primary" target="_blank"><br></a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/popper/popper.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/dropdown/js/nav-dropdown.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>
