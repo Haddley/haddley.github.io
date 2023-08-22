@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Financial Operations Purchase Invoice</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section class="menu menu3 cid-tNuJydrhS4" once="menu" id="menu3-6fa">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-tNuJyex9ZK" id="content4-6fb">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Microsoft Dynamics 365 Business Central (Part 4)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Payment Journals</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNuJyeVM9V" id="image3-6fc">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <a href="https://jupyter.org" target="_blank"><img src="assets/images/dynamics365-color.svg" alt=""></a>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">By <a href="https://learn.microsoft.com/en-us/dynamics365/get-started/icons" class="text-primary" target="_blank">Microsoft</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=130569158" class="text-primary" target="_blank">Public Domain</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tNuJyfaeqF" id="content5-6fd">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Financial Operations - Purchase Invoice</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Businesses that purchase items from Vendors need to be able to provide payment.<br><br>Businesses should take advantage of payment terms including discounts for prompt payments.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNuKvh6DNt" id="image3-6gy">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-7.48.12-pm-1836x434.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I noticed that there were 13 Outstanding Vendor Invoices in the CRONUS USA, Inc. company accounts</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNuKwlW8UH" id="image3-6h0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-7.49.21-pm-1836x280.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created a payment for the $14,895 Nod Publishers Invoice</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNuKwU3mzo" id="image3-6h1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-7.49.47-pm-1836x644.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected Payment Type "Computer Check"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNuKvOdrfX" id="image3-6gz">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-7.50.31-pm-1836x332.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I noticed that the Check Printed value was false (unselected)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCycIepGp" id="image3-6h2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-7.50.48-pm-1836x320.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">As a test I tried to Post the payment</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCyd3LwZc" id="image3-6h3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-7.51.00-pm-1836x426.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I confirmed Yes</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCydvji8m" id="image3-6h4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-7.51.37-pm-1836x205.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Business Central generated an error. I had specified Computer Check but I had not printed a Check.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCydRx53W" id="image3-6h5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-7.51.53-pm-1836x320.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the Check|Print Check... menu item</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCyeBfQdg" id="image3-6h7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-7.52.41-pm-1836x645.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the "Send to..." link</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCyeYdKSq" id="image3-6h8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-7.52.54-pm-1836x644.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the PDF Document option</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCyflRWpw" id="image3-6h9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-7.53.12-pm-1836x57.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCyfGqvWm" id="image3-6ha">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-7.53.24-pm-1836x643.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Business Central generated a one page pdf document (ready for me to print)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCyg5CwKg" id="image3-6hb">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-7.53.43-pm-1836x318.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected Preview Posting</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCyguxA3R" id="image3-6hc">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-7.53.58-pm-1836x300.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">There were going to be two General Ledger Entries added<br>There was going to be a Vendor Ledger Entry added<br>There was going to be a Bank Account Ledger Entry added<br>There were going to be three Detailed Vendor Ledger Entries added</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCygQtgjo" id="image3-6hd">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-7.54.16-pm-1836x280.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">A Credit entry was going to be added to the Checking Account (The value of the Asset would reduce)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCyhdsnhP" id="image3-6he">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-7.54.29-pm-1836x280.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">A Debit entry was going to be added to the Accounts Payable Account (The size of the Liability would reduce)<br>Notice that the name of the Vendor was added as a Description&nbsp;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCyhRbjWY" id="image3-6hg">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-7.54.48-pm-1836x261.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">A Debit entry was going to be added to the Nod Publishers Account in the Vendor Ledger&nbsp;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCyhxVqaK" id="image3-6hf">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-7.55.11-pm-1836x236.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">A Credit entry was going to be added  to the CHECKING Account in the Bank Account Ledger</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCyieN6NR" id="image3-6hh">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-7.55.45-pm-1836x240.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Three entries were going to be added to the Detailed Vendor Ledger</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCyjrkFfM" id="image3-6hk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-7.59.55-pm-1836x325.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the Post|Post menu item<br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCyjNSFTF" id="image3-6hl">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-8.00.06-pm-1836x447.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the Yes option</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCykc6vhL" id="image3-6hm">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-8.00.17-pm-1836x442.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The journal lines were successfully posted</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tNCB8jssBD" id="content5-6ij">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Suggest Vendor Payments</h4>
+                <p class="mbr-text mbr-fonts-style display-7">I used the Suggest Vendor Payments menu item to suggest payment lines. Lines for payments were overdue, due soon and payments where a payment discount was available were suggested.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCymvrlkQ" id="image3-6ht">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-8.07.38-pm-1836x121.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Payment Journals</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCymQYTKk" id="image3-6hu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-8.07.55-pm-1836x268.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the CASH batch (as a starting point)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCynDGXYG" id="image3-6hw">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-8.08.11-pm-1836x333.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Suggest Vendor Payments link</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCyx7c5aG" id="image3-6i0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-8.08.40-pm-1836x645.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the "Show more" link</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCynZU4zg" id="image3-6hx">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-8.09.24-pm-1836x645.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected Bal. Account Type: Bank Account, Bal. Account No.: CHECKING, and Bank Payment Type: Computer Check</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCyonBgFG" id="image3-6hy">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-8.09.36-pm-1836x499.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the OK link</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCyxVToe1" id="image3-6i1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-8.10.03-pm-1836x444.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">As a test I tried to click the Post|Post link<br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCyoOIqI7" id="image3-6hz">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-8.10.22-pm-1836x196.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Again&nbsp;Business Central generated an error. I had specified Computer Check but I had not printed the Checks.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCyySLdp1" id="image3-6i3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-8.10.43-pm-1836x402.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Check|Print Check... link</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCyzcvOhA" id="image3-6i4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-8.11.09-pm-1836x642.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the Send to... link</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCyzvOjRD" id="image3-6i5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-8.11.21-pm-1836x643.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the PDF Document option</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCyzKJsr4" id="image3-6i6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-8.11.51-pm-1836x644.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The result was a 5 page pdf file. Each page included the check details and the corresponding Vendor invoice details</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCyA7afqW" id="image3-6i7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-8.12.06-pm-1836x433.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected Preview Posting</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCyAwd2Ks" id="image3-6i8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-8.12.20-pm-1836x642.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">There were going to be ten General Ledger Entries added<br>There were going to be five Vendor Ledger Entries added<br>There was going to be five Bank Account Ledger Entries added<br>There were going to be twenty two Detailed Vendor Ledger Entries added</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCyywuHbS" id="image3-6i2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-8.12.46-pm-1836x462.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Five Credit entries were going to be added to the Checking Account (The value of the Asset would reduce)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCyB5FOII" id="image3-6ia">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-8.12.56-pm-1836x425.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&nbsp;Five Debit entries were going to be added to the Accounts Payable Account (The size of the Liability would reduce)<br>Notice that in each instance the name of the Vendor was added as a Description&nbsp;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCyAQtVot" id="image3-6i9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-8.13.31-pm-1836x381.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Five Debit entries were going to be added to the Vendor Ledger (one for each of the five Vendor Accounts)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCAF3fhol" id="image3-6ic">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-8.13.43-pm-1836x341.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Five Credit entries were going to be added to the CHECKING Account in the Bank Account Ledger</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCAFxbTqA" id="image3-6id">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-8.13.57-pm-1836x644.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Twenty two entries were going to be added to the Detailed Vendor Ledger</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCAFRJlN0" id="image3-6ie">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-8.14.11-pm-1836x645.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the Post|Post menu item</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCAG7VEBw" id="image3-6if">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-8.14.20-pm-1836x642.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the Yes option</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCAGsblh1" id="image3-6ig">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-8.14.32-pm-1836x642.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The journal lines were successfully posted</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCAGIhBdi" id="image3-6ih">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-8.15.15-pm-1836x266.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The Outstanding Vendor Invoices count was reduced to 0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNCAH3Fhkn" id="image3-6ii">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-8.15.36-pm-1836x645.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I reviewed the bank accounts list</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tNuKuHC8Ta" id="image3-6gx">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-08-21-at-8.15.59-pm-1836x290.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">At least $49,421.55 will need to be deposited in the CHECKING bank account before the Vendors receive the physical checks.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features13 cid-tNuJynW9i4" id="features14-6gw">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont socicon-youtube socicon"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://www.youtube.com/watch?v=1K42Q2uFiPg" class="text-primary" target="_blank">Vendor Payment Process in Business Central</a></strong><strong><a href="https://lmstudio.ai" class="text-primary" target="_blank"><br></a></strong><strong><a href="https://www.geeksforgeeks.org/black-and-white-image-colorization-with-opencv-and-deep-learning" class="text-primary" target="_blank"><br></a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/popper/popper.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/dropdown/js/nav-dropdown.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>
