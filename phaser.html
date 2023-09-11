@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html  >
 <head>
-  
+  <!-- Site made with Mobirise Website Builder v5.9.4, https://mobirise.com -->
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  
+  <meta name="generator" content="Mobirise v5.9.4, mobirise.com">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
   <meta name="description" content="">
@@ -14,15 +14,16 @@
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
-  <link rel="stylesheet" href="assets/tether/tether.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
   <link rel="stylesheet" href="assets/dropdown/css/style.css">
   <link rel="stylesheet" href="assets/socicon/css/styles.css">
   <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
   <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
-  
+
   
   <link href="prism.css" rel="stylesheet" />
 <!-- include A-Frame obviously -->
@@ -149,69 +150,12 @@
 <html>
 
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser-arcade-physics.min.js"></script>
+    [JS_CODE_0]
 </head>
 
 <body>
 
-    <script>
-        var config = {
-
-            type: Phaser.AUTO,
-            
-            width: 800,
-            height: 600,
-
-            scale: {
-
-                mode: Phaser.Scale.FIT,
-                autoCenter: Phaser.Scale.CENTER_BOTH,
-
-            },
-
-            physics: {
-                default: 'arcade',
-                arcade: {
-                    gravity: { y: 200 }
-                }
-            },
-
-            scene: {
-                preload: preload,
-                create: create
-            }
-        };
-
-        var game = new Phaser.Game(config);
-
-        function preload() {
-            this.load.setBaseURL('https://labs.phaser.io');
-
-            this.load.image('sky', 'assets/skies/space3.png');
-            this.load.image('logo', 'assets/sprites/phaser3-logo.png');
-            this.load.image('red', 'assets/particles/red.png');
-        }
-
-        function create() {
-            this.add.image(400, 300, 'sky');
-
-            var particles = this.add.particles('red');
-
-            var emitter = particles.createEmitter({
-                speed: 100,
-                scale: { start: 1, end: 0 },
-                blendMode: 'ADD'
-            });
-
-            var logo = this.physics.add.image(400, 100, 'logo');
-
-            logo.setVelocity(100, 200);
-            logo.setBounce(1, 1);
-            logo.setCollideWorldBounds(true);
-
-            emitter.startFollow(logo);
-        }
-    </script>
+    [JS_CODE_1]
 
 </body>
 
@@ -269,237 +213,12 @@
 <html>
 
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser-arcade-physics.min.js"></script>
+    [JS_CODE_0]
 </head>
 
 <body style="background-color: black;">
 
-    <script>
-
-        function getRandomBubbleX(columnIndex) {
-            if (columnIndex == 1) {
-                return this.getRandomInteger(70, 90);
-            }
-            else if (columnIndex == 2) {
-                return this.getRandomInteger(250, 275);
-            }
-            else if (columnIndex == 3) {
-                return this.getRandomInteger(450, 470);
-            }
-        }
-
-        function getRandomBubbleY() {
-            return this.getRandomInteger(450, 800);
-        }
-
-        function getRandomAngle() {
-            var randomValue = this.getRandomInteger(1, 100);
-
-            if (randomValue < 33) {
-                // RETURNING A LOOKING FORWARD FISH ANGLE ORIENTATION
-                return 0;
-            }
-            else if (randomValue < 66) {
-                // RETURNING A LOOKING DOWN FISH ANGLE ORIENTATION
-                return 20;
-            }
-            else {
-                // RETURNING A LOOKING UP FISH ANGLE ORIENTATION
-                return -20;
-            }
-        }
-
-        function getRandomX() {
-            // GETTING A RANDOM NUMBER BETWEEN 60 AND 500 (THE GAME WIDTH WITH A MARGIN)
-            return this.getRandomInteger(60, 500);
-        }
-
-        function getRandomY() {
-            // GETTING A RANDOM NUMBER BETWEEN 60 AND 300 (THE GAME HEIGHT WITH A MARGIN)
-            return this.getRandomInteger(60, 300);
-        }
-
-        function getRandomInteger(min, max) {
-            return Math.floor(Math.random() * (max - min + 1)) + min;
-        }
-
-        var config = {
-
-            type: Phaser.AUTO,
-
-            width: 576, height: 432,
-
-            scale: {
-
-                mode: Phaser.Scale.FIT,
-                autoCenter: Phaser.Scale.CENTER_BOTH,
-
-            },
-
-            scene: {
-                preload: preload,
-                create: create,
-                update: update
-            }
-        };
-
-        bubbles = []
-        fishCount = 16
-
-        var game = new Phaser.Game(config)
-
-        function preload() {
-
-            // LOAD THE IMAGES
-            this.load.image("imageBackground", 'imageBackground.jpeg');
-            this.load.image("imageBubbles", 'imageBubbles.png');
-
-            for (let i = 0; i < fishCount; i++) {
-                this.load.image("imageFish" + (i + 1), "fish" + (i + 1) + "_64.png");
-            }
-
-            // LOAD THE AUDIO
-            this.load.audio('audioBubbles', 'audioBubbles.mp3');
-
-        }
-
-        function create() {
-
-            // ADD THE AUDIO
-            this.bubbles = this.sound.add('audioBubbles', { volume: 0.1, loop: true });
-            this.bubbles.play();
-
-            // ADD THE BACKGROUND IMAGE
-            this.add.sprite(576 / 2, 432 / 2, "imageBackground");
-
-            fishes = []
-
-            // ADD THE FISH
-            for (let i = 0; i < fishCount; i++) {
-                const fish = this.add.sprite(getRandomX(), getRandomY(), "imageFish" + (i + 1));
-                fish.fishSpeed = 1;
-                fish.angle = getRandomAngle();
-                fish.inputEnabled = true;
-                fishes.push(fish);
-            }
-
-            // ADD BUBBLES
-            for (var column = 0; column < 3; column++) {
-                for (var i = 0; i < 9; i++) {
-                    var tempBubble = this.add.sprite(getRandomBubbleX(column + 1), getRandomBubbleY(), "imageBubbles");
-                    tempBubble.columnIndex = column + 1;
-                    tempBubble.alpha = 0.7;
-                    tempBubble.setScale(.5);
-                    bubbles.push(tempBubble);
-                }
-            }
-
-
-        }
-
-        function update() {
-
-            if (game.sound.context.state === 'suspended') {
-                game.sound.context.resume();
-            }
-
-            // LOOP FOR EVERY FISH
-            for (var i = 0; i < fishes.length; i++) {
-
-                // GET A FISH
-                var fish = fishes[i];
-
-                // CHECK THE FISH ORIENTATION
-                if (fish.scale == 1) {
-                    // MOVING THE FISH TO THE RIGHT
-                    fish.x = fish.x + fish.fishSpeed;
-                }
-                else {
-                    // MOVING THE FISH TO THE LEFT
-                    fish.x = fish.x - fish.fishSpeed;
-                }
-
-                // CHECK IF THE FISH IS NOT VISIBLE (RIGHT SIDE)
-                if (fish.x > 650) {
-                    // RESTORING THE ORIGINAL FISH SPEED
-                    fish.fishSpeed = 1;
-
-                    // CHANGING THE FISH ORIENTATION
-                    fish.scale = -1;
-
-                    // CHANGING THE FISH Y POSITION TO A RANDOM VALUE
-                    fish.y = getRandomY();
-
-                    // CHANGING THE FISH ANGLE TO A RANDOM VALUE
-                    fish.angle = getRandomAngle();
-                }
-
-                // CHECK IF THE FISH IS NOT VISIBLE (LEFT SIDE)
-                else if (fish.x < -70) {
-                    // RESTORING THE ORIGINAL FISH SPEED
-                    fish.fishSpeed = 1;
-
-                    // CHANGING THE FISH ORIENTATION
-                    fish.scale = 1;
-
-                    // CHANGING THE FISH Y POSITION TO A RANDOM VALUE
-                    fish.y = getRandomY();
-
-                    // CHANGING THE FISH ANGLE TO A RANDOM VALUE
-                    fish.angle = getRandomAngle();
-                }
-
-                // CHECK IF THE FISH IS NOT VISIBLE (TOP SIDE)
-                if (fish.y < -70) {
-                    // MOVING THE FISH TO THE LEFT SIDE
-                    fish.x = -70;
-
-                    // CHANGING THE FISH Y POSITION TO A RANDOM VALUE
-                    fish.y = getRandomY();
-
-                    // RESTORING THE FISH ANGLE
-                    fish.angle = 0;
-                }
-
-                // CHECK IF THE FISH IS NOT VISIBLE (BOTTOM SIDE)
-                else if (fish.y > 650) {
-                    // MOVING THE FISH TO THE RIGHT SIDE
-                    fish.x = 650;
-
-                    // CHANGING THE FISH Y POSITION TO A RANDOM VALUE
-                    fish.y = getRandomY();
-
-                    // RESTORING THE FISH ANGLE
-                    fish.angle = 0;
-                }
-
-                // CHECK THE FISH SCALE AND ANGLE AND MOVING UP OR DOWN ACCORDINGLY
-                if ((fish.scale == 1 && fish.angle == 20) || (fish.scale == -1 && fish.angle == -20)) {
-                    fish.y = fish.y + fish.fishSpeed / 2;
-                }
-                else if ((fish.scale == 1 && fish.angle == -20) || (fish.scale == -1 && fish.angle == 20)) {
-                    fish.y = fish.y - fish.fishSpeed / 2;
-                }
-            }
-
-            // LOOP FOR EVERY BUBBLE
-            for (var i = 0; i < bubbles.length; i++) {
-                // GET A BUBBLE
-                var bubble = bubbles[i];
-
-                // MOVE THE BUBBLE
-                bubble.y = bubble.y - 1;
-
-                // CHECK IF THE BUBBLE IS NOT VISIBLE
-                if (bubble.y < -150) {
-                    // MOVE THE BUBBLE DOWN
-                    bubble.x = getRandomBubbleX(bubble.columnIndex);
-                    bubble.y = getRandomBubbleY();
-                }
-            }
-        }
-
-    </script>
+    [JS_CODE_1]
 
 </body>
 
@@ -580,19 +299,7 @@
             
         </div>
     </div>
-</section>
-
-
-<script src="assets/web/assets/jquery/jquery.min.js"></script>
-  <script src="assets/popper/popper.min.js"></script>
-  <script src="assets/tether/tether.min.js"></script>
-  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/smoothscroll/smooth-scroll.js"></script>
-  <script src="assets/dropdown/js/nav-dropdown.js"></script>
-  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
-  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
-  <script src="assets/theme/js/script.js"></script>
-  
+</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><a href="https://mobiri.se/2350277" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p><a style="z-index:1" href="https://mobirise.com/html-builder.html">HTML Builder</a></section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
   <script src="prism.js"></script>
 <script src="webcomponents/howtoTooltip.js"></script>
   
