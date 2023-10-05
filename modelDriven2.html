@@ -1,0 +1,1813 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  <!-- Site made with Mobirise Website Builder v5.9.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v5.9.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Model Driven Apps (Part 2)</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-tROI9HbdpY" once="menu" id="menu3-6v7">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section data-bs-version="5.1" class="content4 cid-tROI9HKx8o" id="content4-6v8">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Power Apps (Part 10)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Business Process Flow</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tROI9HTy6h" id="image3-6v9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/office-365-icon-500x500.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a rel="nofollow" href="https://github.com/immersive-web/webxr/blob/main/images/spec-logo.png"><br></a><a href="https://commons.wikimedia.org/wiki/File:Angular_full_color_logo.svg" class="text-primary" target="_blank">This file is licensed under the Creative Commons Attribution 4.0 International license.</a><br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tROI9HZbgc" id="content5-6va">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>Business Process Flow</strong></h4>
+                <p class="mbr-text mbr-fonts-style display-7">Business process flows help people complete their tasks. They offer an interface that guides individuals through the steps defined.<br><br>I created a <strong>Project</strong>&nbsp;table&nbsp;and a four step business process flow.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tROI9IdHOn" id="content5-6vc">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>Environments</strong></h4>
+                <p class="mbr-text mbr-fonts-style display-7">The random urls assigned to Power Platform Environments can be updated.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tROI9IkdvT" id="image3-6vd">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-7.58.33-am-2136x1321.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I reset my Developer environment and updated the url to <a href="https://haddley-develop.crm.dynamics.com" class="text-primary" target="_blank">https://haddley-develop.crm.dynamics.com</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tROI9ItND3" id="content5-6ve">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>Published Apps</strong></h4>
+                <p class="mbr-text mbr-fonts-style display-7">When I navigate to&nbsp;<a href="https://haddley-develop.crm.dynamics.com" class="text-primary" target="_blank">https://haddley-develop.crm.dynamics.com</a> I see a list of Published Apps.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tROI9IBPBX" id="image3-6vf">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-8.54.54-am-2136x1083.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Published Apps</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tROI9IWhPH" id="content5-6vh">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>Projects</strong></h4>
+                <p class="mbr-text mbr-fonts-style display-7">I created a Project table with these columns:<br><br>Business Need (required)<br>Project Description (recommended)<br>Estimated Cost $<br>Program {Asset Management, Corp. Website, CRM, Highway Improvement, Inventory}<br>Actual Cost $; and<br>Project Closeout<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPP6j0OKd" id="image3-6x5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-11.36.30-am-2136x1078.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected my Development environment</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPP6JdepV" id="image3-6x6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-11.37.25-am-2136x998.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I started to create a Project Solution</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPP7voD04" id="image3-6x8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-11.37.45-am-2136x998.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added a Publisher</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPP8knDsW" id="image3-6xb">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-11.38.00-am-2136x999.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I provided my email address</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPP8RyM6d" id="image3-6xd">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-11.38.14-am-2136x997.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the *new* publisher and clicked the Create button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPP8wrpdY" id="image3-6xc">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-11.39.14-am-2136x999.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added a Table to the new solution</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPPb61s4Z" id="image3-6xl">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-11.39.55-am-2136x997.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I called my table Project</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPPbS6xLQ" id="image3-6xo">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-11.43.13-am-2136x998.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I wanted to set a custom image for the new table</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPPdc1cxP" id="image3-6xt">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-11.43.57-am-2136x1001.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I downloaded an image (<a href="https://www.flaticon.com/free-icons/project" class="text-primary" target="_blank">Project icons created by Freepik - Flaticon</a>)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPPdy8uH9" id="image3-6xu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-11.44.40-am-2136x996.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the "Creating a new activity" option - adding support for activities</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPPcC4SOI" id="image3-6xr">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-11.46.46-am-2136x996.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the Primary name column to be an Autonumber column</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPPcmkHG1" id="image3-6xq">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-11.47.13-am-2136x998.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I set the Primary name column to be Optional, provided prefix "project", updated the number of digits to 6 and updated the seed value</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPPcQMa52" id="image3-6xs">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-11.45.34-am-2136x485.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the + New column button to add a column to the Project table</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPPdYivXp" id="image3-6xv">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-11.47.46-am-2136x996.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added a Business Need column (required)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPPejVp0U" id="image3-6xw">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-11.51.02-am-2136x996.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added a Project Description column (recommended)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPPc6OqxY" id="image3-6xp">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-11.51.45-am-2136x996.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added an Estimated Cost column (Currency $)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPPeF7cpG" id="image3-6xx">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-11.53.47-am-2136x1000.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added a Program column (Choice)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPPbiiLML" id="image3-6xm">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-11.54.21-am-2136x999.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the + New Choice button to create a global choice (set)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPPaLomAh" id="image3-6xk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-11.57.19-am-2136x999.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I entered the possible Program values</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPPawucBR" id="image3-6xj">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-11.57.44-am-2136x997.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the *new* Program global choice (set)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPPhCU8n1" id="image3-6y6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-11.58.29-am-2136x998.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created an Actual Cost column (Currency $)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPPiR0TC6" id="image3-6yb">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-11.59.04-am-2136x1000.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created a Project Closeout column (Text area)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPPiAOdDj" id="image3-6ya">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-11.59.17-am-2136x999.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I set the Project Closeout column's Maximum character count to 4000</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPPim6i3D" id="image3-6y9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-11.59.47-am-2136x999.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the Project table's Main form</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPPi7kSqh" id="image3-6y8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.00.09-pm-2136x1001.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I moved the Name and Owner columns to the Form Header</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPPhRjA2K" id="image3-6y7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.01.53-pm-2136x1001.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added the new columns to the General tab</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPPhgrcHG" id="image3-6y5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.02.26-pm-2136x1098.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added a Timeline control to display activity information (Meetings, Phone calls, etc. related to each Project)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPPfPv1y2" id="image3-6xz">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.03.25-pm-2136x717.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created a new Model Driven App</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPPh2nqga" id="image3-6y4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.03.38-pm-2136x923.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I called the new app Projects</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPPgN1J7i" id="image3-6y3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.03.59-pm-2136x1023.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added a page to the app</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPPgx0mnZ" id="image3-6y2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.04.25-pm-2136x1091.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the Project table</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPPghh6Wb" id="image3-6y1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.05.06-pm-2136x1096.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I renamed the Group Label to Main</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPPg2t9HN" id="image3-6y0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.06.15-pm-2136x693.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">A Projects menu item has been added to the left hand navigation (using the custom icon)<br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPP9Wy7gb" id="image3-6xh">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.06.38-pm-2136x1053.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the + New button to navigate the Project table form&nbsp;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPPfuB7h3" id="image3-6xy">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.07.06-pm-2136x1095.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created a Business process flow to provide some guidance to the user</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPPaaKSaR" id="image3-6xi">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.07.52-pm-2136x1096.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I called the new business process flow Project Flow</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPP9BJABJ" id="image3-6xg">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.08.05-pm-2136x1095.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">A dialog was opened in the solution page</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPP9qxwfG" id="image3-6xf">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.08.54-pm-2136x1056.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The Business Process Flow editor was opened in another browser tab.<br>I renamed the first step 01 - Initiation and clicked the Apply button.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPP95FDup" id="image3-6xe">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.09.18-pm-2136x1050.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the Data Step's Data Field (Column) to Business Need</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPP7ZHR3W" id="image3-6xa">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.11.11-pm-2136x1053.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Apply button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQvEVOsy" id="image3-6yd">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.11.34-pm-2136x1053.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Notice that the Step Name was automatically updated to match the selected Data Field (Column)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQw2VooQ" id="image3-6ye">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.11.46-pm-2136x1049.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Add Data Step menu item to add a Data Step</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPP7K2Ovh" id="image3-6x9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.11.59-pm-2136x1049.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the plus button under the existing Business Need data step</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQxe4aIE" id="image3-6yi">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.12.36-pm-2136x1106.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the Project Description Data field (Column)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQwSS9C0" id="image3-6yh">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.12.48-pm-2136x1103.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Apply button. Notice that I did not click the Required option (yet)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQwCe2pN" id="image3-6yg">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.13.10-pm-2136x736.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Add Stage menu item</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQxTWo59" id="image3-6yj">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.13.22-pm-2136x731.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the plus button to the right of the existing stage</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQyhCPXi" id="image3-6yk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.13.56-pm-2136x1101.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated new stage's display name to 02 - Planning. I clicked the Apply button.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQwh4j9i" id="image3-6yf">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.14.21-pm-2136x1104.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the provided Data Step to use the Estimated Cost Data Field (Column)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPP7atHyU" id="image3-6x7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.14.35-pm-2136x1100.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Apply button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQzp4bu5" id="image3-6ym">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.14.50-pm-2136x786.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The change was saved and the diagram was updated</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQAptKgm" id="image3-6yo">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.15.06-pm-2136x883.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added another Data Step</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQzQf8sF" id="image3-6yn">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.15.31-pm-2136x1106.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I set the Data Step to use the Program Data field (Column)<br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQyGUjlK" id="image3-6yl">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.15.43-pm-2136x1106.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I did not check the Required box (yet). I clicked the Apply button to save the changes</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQBPJbhL" id="image3-6yr">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.16.06-pm-2136x649.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Add Stage menu item</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQBkhbdE" id="image3-6yq">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.16.29-pm-2136x738.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the plus button to add a Stage</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQCEAqkv" id="image3-6ys">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.17.16-pm-2136x1105.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I named the new stage 03 - Execution</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQD543Mw" id="image3-6yt">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.17.35-pm-2136x861.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the existing Data Step to use the Actual Cost Data Field (Column)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQEoSPUH" id="image3-6yu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.17.53-pm-2136x1099.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I did not check the Required box (yet). I clicked the Apply button to save the changes</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQEUDiew" id="image3-6yv">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.18.06-pm-2136x810.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Add Stage menu item</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQFn9e5a" id="image3-6yw">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.18.18-pm-2136x698.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the plus button to add a Stage</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQFS7e6t" id="image3-6yx">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.18.39-pm-2136x1101.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I named the new stage 04 - Close. I clicked the Apply button to save the changes</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQHwXvkR" id="image3-6yz">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.18.59-pm-2136x1103.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the existing Data Step to use the Project Closeout Data Field (Column)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQHXIThs" id="image3-6z0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.19.12-pm-2136x1100.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I did not check the Required box. I clicked the Apply button to save the changes</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQGlabVP" id="image3-6yy">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.19.36-pm-2136x248.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Activate menu item</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQIYcbsn" id="image3-6z2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.19.49-pm-2136x778.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Activate button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQKMtLeS" id="image3-6z4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.20.02-pm-2136x832.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I reviewed the dialog and closed the browser tab</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQLgQhXq" id="image3-6z5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.20.28-pm-2136x737.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I used the + Add required objects menu item</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQJryPrd" id="image3-6z3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.20.56-pm-2136x804.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The + Add required objects menu item added the Project Flow table (used by the Business Process Flow to keep track)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQMd8cg9" id="image3-6z7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.21.25-pm-2136x265.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Publish all customizations button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQLLrYmh" id="image3-6z6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.22.38-pm-2136x664.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Clicked the Projects app to launch it</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQMEOflS" id="image3-6z8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.24.05-pm-2136x590.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The app opened with url haddley-dev.crm.dynamics.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQNcHt30" id="image3-6z9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.24.24-pm-2136x735.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Clicking in the business process flow I can see that Business Need and Project Descriptions are important to the first step.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQNFJW7e" id="image3-6za">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.25.29-pm-2136x794.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I entered a Business Need value and clicked on the Business Process Flow again (notice the check mark)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQOqWSPB" id="image3-6zc">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.26.11-pm-2136x786.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I entered a Project Description value and clicked Save to save the row (record)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQONsAGS" id="image3-6zd">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.26.24-pm-2136x798.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Once the record has been saved the Primary name is available and the Next Stage button is shown in the Business Process Process</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQO47JQy" id="image3-6zb">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.27.28-pm-2136x896.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I removed the Project Description value and clicked the Next Stage button.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQPfdEmO" id="image3-6ze">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.28.23-pm-2136x778.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Next Stage button again</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQPHxECU" id="image3-6zf">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.28.39-pm-2136x774.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Then I clicked on the 02 - Planning Step and clicked the Set Active button to return the process to the 02 - Planning Step</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQQ3ylDn" id="image3-6zg">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.29.31-pm-2136x1105.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the Business Process Flow setting Estimated Cost to Required</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQQsKqxk" id="image3-6zh">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.29.48-pm-2136x1108.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the Business Process Flow setting Program to Required</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQQVfnCE" id="image3-6zi">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.30.03-pm-2136x1111.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the Business Process Flow setting Actual Cost to Required</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQRmp37l" id="image3-6zj">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.30.23-pm-2136x1106.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I did not set&nbsp;Project Closeour to Required</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQROCdXY" id="image3-6zk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.30.35-pm-2136x271.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Update button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQSh8IJi" id="image3-6zl">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.32.14-pm-2136x1106.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I returned to the project-100000 record and clicked the Next Stage button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQSL28SF" id="image3-6zm">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.32.42-pm-2136x1102.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I provided Estimated Cost and Program values and clicked the Next Stage button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQTiAFoH" id="image3-6zn">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.32.54-pm-2136x1104.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Next Stage button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQTN1SHa" id="image3-6zo">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.33.23-pm-2136x1104.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I provided an Actual Cost value (in the business process flow box) and clicked the Next Stage button (again)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQUcTHq3" id="image3-6zp">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.33.37-pm-2136x1106.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I did not click the Finish button (yet)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQVuccfd" id="image3-6zs">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.37.16-pm-2136x541.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added a new Contact Steak Holder</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQWsH7JE" id="image3-6zu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.39.55-pm-2136x1108.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added a phone call activity to project-100000. The Timeline control displays details of the call.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQWXSeEn" id="image3-6zv">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.40.10-pm-2136x1108.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Finish button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tRPQXpF3PU" id="image3-6zw">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-05-at-12.40.21-pm-2136x786.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The Business Process Flow is complete</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="features13 cid-tROI9QAg17" id="features14-6x2">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://learn.microsoft.com/en-us/power-automate/business-process-flows-overview" class="text-primary" target="_blank">Business process flows overview</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-3 col-12 col-md-4 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont socicon-youtube socicon"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://www.youtube.com/watch?v=RwmVqSHAFYc" class="text-primary" target="_blank">Create a Business Process Flow for project Phases</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+        </div>
+    </div>
+</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><a href="https://mobiri.se/2350277" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p><a style="z-index:1" href="https://mobirise.com/builder/landing-page-builder.html">Landing Page Builder</a></section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>
