@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  <!-- Site made with Mobirise Website Builder v5.9.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v5.9.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Deploying a .NET Core Web API to Amazon EKS</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-sG8WUTQnpq" once="menu" id="menu3-28q">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-sG8WUWCzDP" id="content4-28r">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Amazon EKS (Part 2)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Deploying a .NET Core Web API to Amazon Elastic Kubernetes Service (Amazon EKS)</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sG8WUXqfZS" id="image3-28s">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/amazon-web-services-logo.svg" alt="AWS">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a href="https://commons.wikimedia.org/w/index.php?curid=62382835" class="text-primary" target="_blank">By Amazon.com Inc. - Amazon, Apache License 2.0</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sG8WUXLcnI" id="content5-28t">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Amazon Elastic <a href="kubernetes.html" class="text-primary">Kubernetes</a> Service (Amazon EKS)&nbsp;</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Amazon Elastic Kubernetes Service (Amazon EKS) makes it possible to deploy, manage, and scale <a href="docker.html" class="text-primary">containerized</a> applications using <a href="kubernetes.html" class="text-primary">Kubernetes</a> on AWS. <br><br>A .NET Core Web API can be deployed to Amazon EKS from Visual Studio Code using the Visual Studio Code terminal window.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sG8Yoi8zi0" id="content5-2a4">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">install eksctl</h4>
+                <p class="mbr-text mbr-fonts-style display-7">&gt; choco install -y eksctl<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sGimqKA8sh" id="image3-2bm">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/the-eksctl-command-line-utility-amazon-eks-google-chrome-8-16-2021-8-20-21-pm-1836x975.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">install eksctl on Windows</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sGiJpfqUzr" id="image3-2c3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/select-administrator-windows-powershell-8-16-2021-8-24-46-pm-1200x440.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">choco install -y eksctl</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sGiOC7c2VB" id="content5-2cz">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">.NET Core Web API&nbsp;</h4>
+                <p class="mbr-text mbr-fonts-style display-7"><strong>&gt; dotnet new webapi --no-https</strong><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sGimkfMbH0" id="image3-2bc">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/dotnetapi-visual-studio-code-8-16-2021-8-28-32-pm-1536x720.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">dotnet new webapi --no-https</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sGiTaFvFmv" id="content7-2d2">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>WeatherForecastController.cs</strong></h5>
+
+<pre class="language-clike"><code><!--         
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+
+namespace dotnetapi.Controllers
+{
+    [ApiController]
+    [Route("[controller]")]
+    public class WeatherForecastController : ControllerBase
+    {
+        private static readonly string[] Summaries = new[]
+        {
+            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+        };
+
+        private readonly ILogger<WeatherForecastController> _logger;
+
+        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        {
+            _logger = logger;
+        }
+
+        [HttpGet]
+        public IEnumerable<WeatherForecast> Get()
+        {
+            var rng = new Random();
+            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            {
+                Date = DateTime.Now.AddDays(index),
+                TemperatureC = rng.Next(-20, 55),
+                Summary = Summaries[rng.Next(Summaries.Length)]
+            })
+            .ToArray();
+        }
+    }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sGiLup2kVC" id="image3-2c4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/dotnetapi-visual-studio-code-8-16-2021-8-29-44-pm-1536x720.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Docker: Add Docker Files to Workspace</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sGiLvlFQCQ" id="image3-2c5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/dotnetapi-visual-studio-code-8-16-2021-8-29-55-pm-1536x720.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">.Net: ASP.NET Core platform</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sGiLwe8Fso" id="image3-2c6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/dotnetapi-visual-studio-code-8-16-2021-8-30-04-pm-1536x720.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Linux</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sGiLxnUU0l" id="image3-2c8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/dotnetapi-visual-studio-code-8-16-2021-8-30-15-pm-1536x720.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Port 5000</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sGiLy2Gset" id="image3-2c9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/dotnetapi-visual-studio-code-8-16-2021-8-31-14-pm-1536x720.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Dockerfile</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sGiLyzvF0n" id="image3-2ca">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/dotnetapi-visual-studio-code-8-16-2021-8-31-34-pm-1536x720.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Docker Images: Build Image...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sGiLz93Hxm" id="image3-2cb">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/dotnetapi-visual-studio-code-8-16-2021-8-32-32-pm-1536x720.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Building</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sGiLzGu9xT" id="image3-2cc">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/amazon-ecr-google-chrome-8-16-2021-8-34-25-pm-1836x975.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Create ECR repository</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sGiLAlWmDZ" id="image3-2cd">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/amazon-ecr-google-chrome-8-16-2021-8-34-51-pm-1836x975.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Repository created</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sGiLAZ1Rzz" id="image3-2ce">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/amazon-ecr-google-chrome-8-16-2021-8-35-04-pm-1836x975.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">View push commands macOS/Linux</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sGiLBz2iHC" id="image3-2cf">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/amazon-ecr-google-chrome-8-16-2021-8-37-22-pm-1836x975.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">View push commands Windows</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sGiLFcuPBW" id="image3-2ck">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/administrator-windows-powershell-8-16-2021-9-12-34-pm-1200x440.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">(Get-ECRLoginCommand)...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sGiLFKwkQh" id="image3-2cl">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/dockerfile-dotnetapi-visual-studio-code-8-16-2021-9-15-23-pm-1536x720.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">docker build -t dotnetapi .</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sGiLJiLRXr" id="image3-2cq">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/dockerfile-dotnetapi-visual-studio-code-8-16-2021-9-16-17-pm-1536x720.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">docker tag...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sGiLH9qJUA" id="image3-2cn">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/dockerfile-dotnetapi-visual-studio-code-8-16-2021-9-16-42-pm-1536x720.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">docker push...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sGiLHLxSAx" id="image3-2co">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/administrator-windows-powershell-8-16-2021-9-19-09-pm-1200x440.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">eksctl create cluster --name dotnetapi</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sGiLKwKGpv" id="image3-2cs">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/amazon-eks-google-chrome-8-16-2021-9-38-55-pm-1644x1069.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Cluster EC2 nodes</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sGiLLR1pwj" id="image3-2cu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/amazon-eks-google-chrome-8-16-2021-9-39-05-pm-1644x1069.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Workloads</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sGiLMA7aNv" id="image3-2cv">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/dotnetapi.yaml-dotnetapi-visual-studio-code-8-16-2021-9-39-22-pm-1536x720.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">kubectl apply -f .\dotnetapi.yaml<br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sGiRF42Vdd" id="content7-2d1">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>dotnetapi.yaml</strong></h5>
+
+<pre class="language-yaml"><code><!--
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnetapi-deployment
+  labels:
+    app: dotnetapi
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dotnetapi
+  template:
+    metadata:
+      labels:
+        app: dotnetapi
+    spec:
+      containers:
+      - name: dotnetapi
+        image: 575062151998.dkr.ecr.us-east-1.amazonaws.com/dotnetapi
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dotnetapi-service
+spec:
+  selector:
+    app: dotnetapi
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+  type: LoadBalancer
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sGiLNkWqkD" id="image3-2cw">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/dotnetapi.yaml-dotnetapi-visual-studio-code-8-16-2021-9-39-31-pm-1536x720.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">dotnetapi-service created</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sGiLNX3aiG" id="image3-2cx">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/amazon-eks-google-chrome-8-16-2021-9-39-52-pm-1644x1069.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Workloads</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sGiLL7eiSe" id="image3-2ct">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/dotnetapi.yaml-dotnetapi-visual-studio-code-8-16-2021-9-42-16-pm-1536x720.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">kubectl get service/dotnetapi-service</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sGiLOItrA9" id="image3-2cy">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/dotnetapi.yaml-dotnetapi-visual-studio-code-8-16-2021-9-49-39-pm-1536x720.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">updated containerPort, port and targetPort</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sGiLIltXiK" id="image3-2cp">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/a7eddbf5e5f594b32b4f127603f1de51-188864526.us-east-1.elb.amazonaws.com-weatherforecast-google-chrome-8-16-2021-9-50-04-pm-1407x381.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Navigating to the loadbalancer/cluster</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features13 cid-sG8WV6tjF4" id="features14-29x">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://code.visualstudio.com/docs/containers/quickstart-aspnet-core" class="text-primary" target="_blank">ASP.NET Core in a container</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+        </div>
+    </div>
+</section>
+
+<section class="content12 cid-sG8WV6NpH1" id="content12-29y">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="mbr-section-btn align-center"><a class="btn btn-primary display-4" href="https://hub.docker.com/repository/docker/haddley/blog">Docker Hub</a></div>
+            </div>
+        </div>
+    </div>
+</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><a href="https://mobiri.se/2350277" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p><a style="z-index:1" href="https://mobirise.com/drag-drop-website-builder.html">Drag and Drop Website Builder</a></section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>

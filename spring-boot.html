@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  <!-- Site made with Mobirise Website Builder v5.9.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v5.9.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Java Spring Boot (Part 1)</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-st2k4KS0ze" once="menu" id="menu3-o2">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section data-bs-version="5.1" class="content4 cid-st2k4LERly" id="content4-o3">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2">
+                    <strong>Java Spring Boot (Part 1)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Spring based Java Applications that you can "just run".</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-st2k4LVEl2" id="image3-o4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/spring-framework-logo-2018.svg" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                    <a rel="nofollow" href="https://commons.wikimedia.org/w/index.php?curid=74960904">Spring Framework logo</a>&nbsp;<span style="font-size: 1.1rem;">by&nbsp;</span><a href="https://www.google.com" style="font-size: 1.1rem; background-color: rgb(255, 255, 255);">Pivotal Software</a>&nbsp;<span style="font-size: 1.1rem;">is licensed under&nbsp;</span><a href="http://www.apache.org/licenses/LICENSE-2.0" title="Apache License, Version 2.0" style="font-size: 1.1rem; background-color: rgb(255, 255, 255);">Apache License 2.0</a>
+                    
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-sttL5W3efT" id="content5-q0">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Spring Tool Suite</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Spring Tool Suite is an Integrated Development Environment based on Eclipse.<br>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-sttLNBWxTH" id="content5-q1">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Maven</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Maven is a build and dependency management tool for Java.<br><br>The pom.xml file is used to maintain a list of modules that the Spring application depends on.<br><br>Module jar files are downloaded from a managed repository.<br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-sttMUrDekE" id="content5-q3">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Creating a <a href="restapiservice.html" class="text-primary">REST</a>&nbsp;project using Spring Boot</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Open Spring Tool Suite<br>Create new Spring Starter Project<br>Add Book class<br>Add&nbsp;BooksRestController<br>Run as Spring Boot App<br>Test using Browser<br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-sttMTPeUQU" id="image3-q2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-06-at-11.01.43-am-1718x1074.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Create new Spring Starter Project</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-stKJON47XJ" id="image3-q4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-06-at-11.03.13-am-1180x1440.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Enter the project name and package details</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-stKJQeqst0" id="image3-q7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-06-at-11.03.38-am-1174x1440.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The REST API project depends on "Spring Web"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-stKJQyYpdK" id="image3-q8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-06-at-11.04.47-am-1430x436.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add a new class</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-stKJQU5XZu" id="image3-q9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-06-at-11.05.11-am-1180x1254.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add class "Book"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content7 cid-stKL5iJqNV" id="content7-qc">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Book.java</strong></h5>
+
+<pre class="language-clike"><code><!--         
+package com.haddley.Books;
+
+public class Book {
+
+	public Book(long id, String title) {
+		_id = id;
+		_title = title;
+	}
+
+	private long _id;
+
+	public long getId() {
+		return _id;
+	}
+
+	public void setId(long id) {
+		this._id = id;
+	}
+
+	public String getTitle() {
+		return _title;
+	}
+
+	public void setTitle(String title) {
+		this._title = title;
+	}
+
+	private String _title;
+	
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-stKJReNdWr" id="image3-qa">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-06-at-11.06.30-am-1174x1254.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add class "BooksRestController"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-stXzJuNEgA" id="content5-qt">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Annotations</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The <strong>@RestController</strong> annotation is used to mark the BooksRestController class as a Spring Framework RestController.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-stKJPQ4k7D" id="image3-q6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-06-at-11.07.37-am-1836x552.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add @RestController annotation to BooksRestController class<br>Use CTRL+Space to import org.springframework.web.bind.annotation.RestController&nbsp;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-stKL5Yxbl8" id="image3-qd">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-06-at-11.10.26-am-1722x1076.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add "books" ArrayList to the BooksRestController</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-stXzgtJjTu" id="content5-qs">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Books REST Controller</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The <strong>@GetMapping</strong> annotation is used to mark the book and books methods as HTTP Get method handlers.<br><br>The completed BooksRestController code is shown below.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content7 cid-stKNd7Gzfa" id="content7-qh">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>BooksRestController.java</strong></h5>
+
+<pre class="language-clike"><code><!--         
+package com.haddley.Books;
+
+import java.util.ArrayList;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
+
+
+@RestController
+public class BooksRestController {
+
+	private static ArrayList<Book> books = new ArrayList<Book>();
+
+	static {
+		books.add(new Book(1788395549, "Learning Node.js Development"));
+		books.add(new Book(1788620216, "Hands-On Microservices with Node.js"));
+	}
+
+	@GetMapping("/books/{id}")
+	public Book book(@PathVariable Long id) {
+		@SuppressWarnings("unchecked")
+		ArrayList<Book> result = (ArrayList<Book>) BooksRestController.books.clone();
+		result.removeIf(n -> (n.getId() != id));
+		if (result.isEmpty()){
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Book Not Found");
+		}
+		return result.get(0);
+	}
+
+	@GetMapping("/books")
+	public ArrayList<Book> books() {
+		return BooksRestController.books;
+	}
+	
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-stKL6K9W64" id="image3-qf">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-06-at-11.17.47-am-560x844.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Run as Spring Boot App</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-stKL76bGSy" id="image3-qg">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-06-at-11.19.11-am-1836x874.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">http://localhost:8080/books</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-stKL6kMohw" id="image3-qe">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-06-at-11.19.46-am-1836x873.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">http://localhost:8080/books/1788395549</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-stKJPiH9g0" id="image3-q5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-06-at-11.20.30-am-1836x875.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">http://localhost:8080/books/1234567890</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-stXqvL0EBY" id="content5-qm">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">React client</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Static files can be added to the /src/main/resources/static folder of the Spring Boot project.<br><br>The static files can be image files, html files and javascript files.<br><br>The static files can&nbsp;be a <a href="reactusestateuseeffect.html" class="text-primary">React</a> app that calls the REST API exposed by the (same) Spring Boot project.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-stXqIHBsrQ" id="image3-qn">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-08-at-3.28.25-pm-1836x981.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Static files</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content7 cid-stXrP6pZeT" id="content7-qq">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>App.js</strong></h5>
+
+<pre class="language-clike"><code><!--         
+import React, { useEffect, useState } from 'react';
+
+function App() {
+
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+
+    console.log("use effect");
+    fetch('/books')
+      .then(
+        (d) => {
+          d.json().then((b) => {
+            setBooks(() => b)
+          });
+        }
+      )
+
+  }
+    , [])
+
+  return (
+
+    <>
+        {books.map(book =>
+            <h4>{book.title}</h4>)}
+    </>
+
+  );
+}
+
+export default App;
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content7 cid-stXrPLeRen" id="content7-qr">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>index.html</strong></h5>
+
+<pre class="language-html"><code><!--         
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>React App</title>
+</head>
+
+<body>
+
+	<noscript>You need to enable JavaScript to run this app.</noscript>
+	<div id="root"></div>
+
+	[JS_CODE_0]
+	[JS_CODE_1]
+	[JS_CODE_2]
+
+</body>
+
+</html>
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-stXqJbIita" id="image3-qo">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-08-at-3.27.02-pm-1286x750.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Running the React/Spring Boot app</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="features13 cid-stL0aJI8Ps" id="features14-qk">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://spring.io/quickstart" class="text-primary" target="_blank">QuickStart</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+        </div>
+    </div>
+</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><a href="https://mobiri.se/2350277" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p><a style="z-index:1" href="https://mobirise.com/builder/landing-page-builder.html">Landing Page Builder</a></section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>

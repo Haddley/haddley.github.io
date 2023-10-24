@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  <!-- Site made with Mobirise Website Builder v5.9.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v5.9.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>.NET Core (Part 1)</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-suewhvzbmj" once="menu" id="menu3-qu">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-suewhwDUQ7" id="content4-qv">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>.NET Core (Part 1)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Creating a <a href="restapiservice.html" class="text-primary">REST</a> API Service using Microsoft's cross-platform framework.</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-suewhx0CFP" id="image3-qw">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/net-logo.svg" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><span style="font-size: 1.1rem; background-color: rgb(255, 255, 255);"><a href="https://github.com/dotnet/brand/blob/main/logo/dotnet-logo.svg" class="text-primary">Microsoft Dotnet Logo</a></span><span style="font-size: 1.1rem; background-color: rgb(255, 255, 255);"> by <a href="https://en.wikipedia.org/wiki/en:Microsoft" class="text-primary">Microsoft Corporation</a><span style="font-size: 1.1rem; background-color: rgb(255, 255, 255);"> is licensed under&nbsp;</span><a href="https://en.wikipedia.org/wiki/Creative_Commons" class="text-primary">Creative Commons</a></span> <span style="font-size: 1.1rem; background-color: rgb(255, 255, 255);"><a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en" class="text-primary">CC0 1.0 Universal Public Domain Dedication</a></span><a href="http://www.apache.org/licenses/LICENSE-2.0" title="Apache License, Version 2.0"><br></a>
+                    
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-suewhxebeR" id="content5-qx">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Creating a <a href="restapiservice.html" class="text-primary">REST</a> project using Dotnet Command Line Interface (CLI)</h4>
+                <p class="mbr-text mbr-fonts-style display-7">$ dotnet new webapi<br>$ dotnet new gitignore<br>$ dotnet run<br>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sueTngdRSx" id="image3-sg">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-11-at-3.10.16-pm-1482x960.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Example Controller</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-suewhxveff" id="content5-qz">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Creating a Book class</h4>
+                <p class="mbr-text mbr-fonts-style display-7">$ code .<br>Add Book class<br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-suewhyACj9" id="content7-r5">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Book.cs</strong></h5>
+
+<pre class="language-clike"><code><!--         
+using System;
+
+namespace dotnet_api
+{
+    public class Book
+    {
+        public Book(long id, String title)
+        {
+            this.id = id;
+            this.title = title;
+        }
+
+        public long id { get; set; }
+
+        public string title { get; set; }
+    }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-suewhzylBD" id="content5-ra">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Books REST Controller</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Add BooksController class<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-suewhzFEmb" id="content7-rb">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>BooksController.cs</strong></h5>
+
+<pre class="language-clike"><code><!--         
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+
+namespace dotnet_api.Controllers
+{
+    [ApiController]
+    [Route("[controller]")]
+    public class BooksController : ControllerBase
+    {
+        private static readonly List<Book> books = new List<Book>()
+        {
+            (new Book(1788395549, "Learning Node.js Development")),
+            (new Book(1788620216, "Hands-On Microservices with Node.js"))
+        };
+
+        private readonly ILogger<BooksController> _logger;
+
+        public BooksController(ILogger<BooksController> logger)
+        {
+            _logger = logger;
+        }
+
+        [HttpGet]
+        public IEnumerable<Book> GetBooks()
+        {
+            return books.ToArray();
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<Book> GetBooks(long id)
+        {
+            Book book = books.Find(x => (x.id == id));
+            if (book == null)
+            {
+                return NotFound("Book Not Found");
+            }
+            return book;
+        }
+
+
+    }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-suf41k2xCA" id="content5-sh">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">dotnet run</h4>
+                <p class="mbr-text mbr-fonts-style display-7">$ dotnet run<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-suf4UmyAve" id="image3-si">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-11-at-3.55.12-pm-1836x802.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">https://localhost:5001/books</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-suewhAalyS" id="image3-re">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-06-at-11.19.46-am-1836x873.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">https://localhost:5001/books/1788395549</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-suewhAhump" id="image3-rf">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-11-at-4.13.17-pm-1836x809.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">https://localhost:5001/books/1234567890</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-suewhAqRx1" id="content5-rg">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Swagger</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Notice that by default Swagger is available.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-suewhAygth" id="image3-rh">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-11-at-4.18.49-pm-1834x1328.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">https://localhost:5001/swagger/index.html</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sufaHhcOwx" id="content5-sj">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Startup</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Support for Swagger is added in the project's Startup.cs file</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-suewhAJPxr" id="content7-ri">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Startup.cs</strong></h5>
+
+<pre class="language-clike"><code><!--         
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
+
+namespace dotnet_api
+{
+    public class Startup
+    {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; }
+
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services)
+        {
+
+            services.AddControllers();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "dotnet_api", Version = "v1" });
+            });
+        }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "dotnet_api v1"));
+            }
+
+            app.UseHttpsRedirection();
+
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+        }
+    }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sufbCOxltc" id="content5-sk">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Static files</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Static files can be added to a wwwroot folder in a Dotnet Core webapi project.<br><br>The static files can be image files, html files and javascript files.<br><br>To enable the static files add "app.UseStaticFiles();" to Startup.cs as shown below.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-suewhAY201" id="image3-rk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-11-at-4.33.18-pm-644x302.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">app.UseStaticFiles()</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sufeZFdBXG" id="content5-sl">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">React client</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The static files can be a React app that calls the REST API exposed by the (same) Dotnet Core project.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sufhM5Y7sP" id="content7-sp">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>App.js</strong></h5>
+
+<pre class="language-clike"><code><!--         
+import React, { useEffect, useState } from 'react';
+
+function App() {
+
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+
+    console.log("use effect");
+    fetch('/books')
+      .then(
+        (d) => {
+          d.json().then((b) => {
+            setBooks(() => b)
+          });
+        }
+      )
+
+  }
+    , [])
+
+  return (
+
+    <>
+        {books.map(book =>
+            <h4>{book.title}</h4>)}
+    </>
+
+  );
+}
+
+export default App;
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sufhQXzKgE" id="content7-sq">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>index.html</strong></h5>
+
+<pre class="language-clike"><code><!--         
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>React App</title>
+</head>
+
+<body>
+
+	<noscript>You need to enable JavaScript to run this app.</noscript>
+	<div id="root"></div>
+
+	[JS_CODE_0]
+	[JS_CODE_1]
+	[JS_CODE_2]
+
+</body>
+
+</html>
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sufhgoFFQB" id="image3-sm">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-11-at-4.45.21-pm-1836x1255.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Running React/Dotnet Core app</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sBtKdGXSjv" id="content5-1cp">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">haddley_power_app_api</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The BooksController code can be extended to support POST, PUT and DELETE actions</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sBtJL8hnDN" id="image3-1cn">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-06-19-at-2.57.45-pm-1836x1178.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">haddley_power_app_api</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sBtJMHQDOY" id="content7-1co">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>BookController.cs</strong></h5>
+
+<pre class="language-clike"><code><!--         
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+
+namespace haddley_power_app_api.Controllers
+{
+    [ApiController]
+    [Route("[controller]")]
+    public class BookController : ControllerBase
+    {
+
+        private static readonly List<Book> books = new List<Book>()
+            {
+                (new Book(1788395549, "Learning Node.js Development")),
+                (new Book(1788620216, "Hands-On Microservices with Node.js"))
+            };
+
+        private readonly ILogger<BookController> _logger;
+
+        public BookController(ILogger<BookController> logger)
+        {
+            _logger = logger;
+        }
+
+        [HttpGet]
+        public IEnumerable<Book> GetBooks()
+        {
+            return books.ToArray();
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<Book> GetBooks(long id)
+        {
+            var itemFound = books.SingleOrDefault(book => book.id == id);
+            if (itemFound == null)
+            {
+                return NotFound("Book Not Found");
+            }
+
+            return itemFound;
+        }
+
+        
+        [HttpPost]
+        public IActionResult Post([FromBody] Book book)
+        {
+            books.Add(book);
+
+            System.Console.WriteLine(book.title);
+
+            return StatusCode(200);
+        }
+
+
+        [HttpPut("{id}")]
+        public IActionResult Put(long id, [FromBody] Book book)
+        {
+            var itemToUpdate = books.SingleOrDefault(book => book.id == id);
+            if (itemToUpdate != null)
+                itemToUpdate.title = book.title;
+
+            return StatusCode(200);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(long id)
+        {
+            var itemToRemove = books.SingleOrDefault(book => book.id == id);
+            if (itemToRemove != null)
+                books.Remove(itemToRemove);
+            return StatusCode(200);
+        }
+
+    }
+
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features13 cid-suewhB6SKK" id="features14-rl">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/static-files" class="text-primary" target="_blank">Static files in ASP.NET Core</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-3 col-12 col-md-4 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="dotnet core part2.html" class="text-primary">.NET Core (Part 2)</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+        </div>
+    </div>
+</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><a href="https://mobiri.se/2350277" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p><a style="z-index:1" href="https://mobirise.com/builder/ai-website-builder.html">AI Website Creator</a></section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>

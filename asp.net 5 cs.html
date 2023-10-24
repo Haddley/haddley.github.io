@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  <!-- Site made with Mobirise Website Builder v5.9.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v5.9.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>ASP.NET 5 C#</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-tz3tWKu4qW" once="menu" id="menu3-4vu">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-tz3tWLGxp3" id="content4-4vv">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>ASP.NET 5 C#</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Generate Context and Entity Classes from an Existing Database</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3tWM80lJ" id="image3-4vw">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/net-logo.svg" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><span style="font-size: 1.1rem; background-color: rgb(255, 255, 255);"><a href="https://github.com/dotnet/brand/blob/main/logo/dotnet-logo.svg" class="text-primary">Microsoft Dotnet Logo</a></span><span style="font-size: 1.1rem; background-color: rgb(255, 255, 255);"> by <a href="https://en.wikipedia.org/wiki/en:Microsoft" class="text-primary">Microsoft Corporation</a><span style="font-size: 1.1rem; background-color: rgb(255, 255, 255);"> is licensed under&nbsp;</span><a href="https://en.wikipedia.org/wiki/Creative_Commons" class="text-primary">Creative Commons</a></span> <span style="font-size: 1.1rem; background-color: rgb(255, 255, 255);"><a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en" class="text-primary">CC0 1.0 Universal Public Domain Dedication</a></span><a href="http://www.apache.org/licenses/LICENSE-2.0" title="Apache License, Version 2.0"><br></a>
+                    
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tz3tWMpgvo" id="content5-4vx">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Active Server Pages</h4>
+                <p class="mbr-text mbr-fonts-style display-7">ASP Web Forms was released in 2003 (based on the Windows Server and the .NET Framework)<br><br>ASP.NET Model-View-Controller 5 was released in 2009 (based on Windows Server and .NET Framework and Supported in Visual Studio 2019)<br><br>ASP.NET Core&nbsp;Model-View-Controller was released in 2017 (based on cross platform .NET Core and Supported in Visual Studio 2022)<br><br>I used Visual Studio 2019 and ASP.NET MVC 5 to create a todo app.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3tWMyO2f" id="image3-4vy">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturea1-create-a-new-project-1028x681.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created a new project</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3tWMGkI6" id="image3-4vz">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturea2-configure-your-new-project-1026x683.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I configured the new project</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3tWMQrbq" id="image3-4w0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturea3-mvc-1022x708.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created a Model-View-Controller web application</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3tWN2cTL" id="image3-4w1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturea4-running-1380x729.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I ran the template project (notice the "ASP.NET MVC gives" text in the index.cshtml file and the web browser).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3tWNaur0" id="image3-4w2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturea5-layout-1366x729.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The _Layout.cshtml file provides a common web page framework and navigation</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3tWNiatb" id="image3-4w3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturea5-layout-1366x729.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Web requests are handled by Controller functions/methods. The controller function will typically return a view (the Web response). The <strong>About</strong> function sets a "Message" value and then returns a corresponding <strong>About</strong> view.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3tWNrLZ7" id="image3-4w4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturea6-home-controller-1362x729.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Notice that the About view renders the "Message".</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3tWNWDMc" id="image3-4w6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturea8-view-page-with-layout-1361x731.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added a view page to the HelloWorld folder.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3tWO5LK3" id="image3-4w7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturea9-name-view-1366x357.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I named the new page "Index" making it the home page for the new folder.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3tWOgsGw" id="image3-4w8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturea10-select-layout-1365x500.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the existing _Layout page</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3tWOqzxw" id="image3-4w9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturea-11-viewbag-1365x177.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added a reference to a "Name" value.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3tWOzYIu" id="image3-4wa">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturea-11-add-controller-1368x185.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added a new controller to the project</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3tWOI7jZ" id="image3-4wb">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturea-12-empty-controller-1370x281.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created an empty controller.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3tWOTCMc" id="image3-4wc">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturea-14-name-controller-1367x297.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I named the controller HelloWorldController (in line with the folder I had already created)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3tWPaBEb" id="image3-4we">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturea-15-hello-world-no-viewbag-1362x639.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added the folder name HelloWorld to the url and got the result above</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3tWPjosx" id="image3-4wf">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturea-16-with-view-bag-name-1360x638.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the Controller function to set the "Name" value before returning the view. I refreshed the browser.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3tWRA9BH" id="image3-4wq">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturea-17-new-item-1367x333.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the Models folder and selected the Add | New Item... menu item</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3tWRIweo" id="image3-4wr">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturea-18-ado.et-entity-data-model-1363x663.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I entered the name <strong>ToDoContext </strong>and selected ADO.NET Entity Data Model</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3tWRRYdJ" id="image3-4ws">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturea-19-code-first-rom-database-1364x614.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected <strong>Code First from database</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3ytMOCQx" id="image3-4xd">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturea-20-new-data-connection-1367x529.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">New data connection</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3yulCwKG" id="image3-4xe">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturea-21-test-connection-1360x706.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Test connection succeeded</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3tWS0u1L" id="image3-4wt">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturea-22-choose-connection-1368x597.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I asked Visual Studio to save the connection details in the Web.Config file (notice that the Web.Config file is never returned to a client browser)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3tWS951Z" id="image3-4wu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturea-23-entity-data-model-wizard-1366x594.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the Tasks table</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3tWSmeyy" id="image3-4wv">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturea-24-task-class-generated-1365x418.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The Task class is generated</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3tWSHMeU" id="image3-4ww">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturea-25-new-scaffolder-item-1366x301.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the Controller folder and selected the Add | New Scaffolded Item... menu item<br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3tWSRnhE" id="image3-4wx">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturea-26-mvc-5-controller-with-views-using-entity-framework-1367x391.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the MVC 5 Controller with view, using Entity Framework option</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3tWT1hXK" id="image3-4wy">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturea-27-controller-name-1366x514.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I entered the Model class name (Task) and the Data context class (ToDoContext).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3tWTbTq9" id="image3-4wz">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturea-28-build-error-1366x280.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Visual Studio added CRUD controller functions and views (Visual Studio was confused by class "Task").</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3tWTkEOo" id="image3-4x0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturea-29-fix-ambiguity-1366x611.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The controller functions includes Index. The TaskController.Index function will fetch all Tasks from the database and then display then using the corresponding Tasks/Index view (Models.Task class name fully qualified to avoid confusion).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tz3tWTt4ik" id="image3-4x1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capturea-30-running-tasks-index-page-1366x640.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The&nbsp;TaskController.Index function is executed when a user navigates to /Tasks (see above)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features13 cid-tz3tWVCfo7" id="features14-4xc">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://learn.microsoft.com/en-us/aspnet/mvc/overview/getting-started/introduction/getting-started" class="text-primary" target="_blank">Getting started with ASP.NET MVC 5</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+        </div>
+    </div>
+</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><a href="https://mobiri.se/2350277" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p><a style="z-index:1" href="https://mobirise.com/builder/ai-website-builder.html">AI Website Creator</a></section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>

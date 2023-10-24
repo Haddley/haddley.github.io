@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  <!-- Site made with Mobirise Website Builder v5.9.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v5.9.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Map Extension</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-tOFjHp2SJH" once="menu" id="menu3-6pc">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section data-bs-version="5.1" class="content4 cid-tOFjHpL6EC" id="content4-6pd">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Microsoft Dynamics 365 Business Central (Part 8)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Map Extension</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tOFjHpZ3xw" id="image3-6pe">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <a href="https://jupyter.org" target="_blank"><img src="assets/images/dynamics365-color.svg" alt=""></a>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">By <a href="https://learn.microsoft.com/en-us/dynamics365/get-started/icons" class="text-primary" target="_blank">Microsoft</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=130569158" class="text-primary" target="_blank">Public Domain</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tOFjHq95fF" id="content5-6pf">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Map Extension</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The Microsoft Dynamics 365 Business Central Extension described here allows users to view Customer locations in a map.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tOFjHqfhRb" id="content5-6pg">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">ChatGPT<br></h4>
+                <p class="mbr-text mbr-fonts-style display-7"><strong>Please explain this Business Central AL code</strong><br><br>The provided Business Central AL (Application Language) code is defining an extension for a Business Central application that adds a Leaflet map visualization to customer-related pages in the application. Let's break down the code step by step:<br><br><strong>Control Add-in Definition (LeafletMapsFactBox):</strong><br>This section defines a control add-in named LeafletMapsFactBox. Control add-ins are used to integrate external controls or web content into Business Central pages.<br><br>RequestedHeight and MaximumHeight specify the height of the control.<br>VerticalStretch and VerticalShrink control the vertical resizing behavior.<br>HorizontalStretch and HorizontalShrink control the horizontal resizing behavior.<br>Scripts specifies JavaScript files that are needed for the control add-in. It includes two URLs, one for Leaflet.js and another for LeafletMapsFunctions.js.<br>Stylesheets specifies the CSS styles needed for the control add-in, including the Leaflet CSS.<br><br>The ControlReady event is defined, which will be triggered when the control is ready. Additionally, there's a procedure CreateSidebar defined.<br><br><strong>Page 50101 (LeafletMapsCustListFactBoxPart):</strong><br>This section defines a page named LeafletMapsCustListFactBoxPart. It is a fact box part that extends the Customer table and is intended to display on a card page.<br><br>PageType specifies that this is a card part.<br>SourceTable specifies that this part is related to the "Customer" table.<br><br>In the layout section, it defines a user control (Sidebar) that references the LeafletMapsFactBox control add-in defined earlier. This user control will be placed in the "Content" area of the page.<br>The OnAfterGetRecord trigger is defined. It is executed after a record is retrieved. It calls the CreateSidebar procedure defined in the LeafletMapsFactBox control add-in, passing the customer's number and city as parameters.<br><br><strong>Page Extension 50102 (LeafletMaps Cust Card):</strong><br>This section defines a page extension that extends the "Customer Card" page. It adds a fact box part, LeafletMapsCustListFactBoxPart, to the "Customer Card" page.<br><br>It places the fact box part in the "FactBoxes" area.<br>ApplicationArea specifies that this extension is applicable to all areas.<br>Caption sets the caption for the fact box part to "Customer Map."<br>SubPageLink indicates that this fact box is linked to the customer number ("No.").<br><br><strong>Page Extension 50103 (LeafletMaps Cust List):</strong><br>This section defines a page extension that extends the "Customer List" page. Similar to the previous extension, it adds the LeafletMapsCustListFactBoxPart fact box part to the "Customer List" page.<br><br>It also places the fact box part in the "FactBoxes" area.<br>ApplicationArea specifies that this extension is applicable to all areas.<br>Caption sets the caption for the fact box part to "Customer Map."<br>SubPageLink indicates that this fact box is linked to the customer number ("No.").<br><br>In summary, this code extends customer-related pages in a Business Central application to include a fact box displaying a Leaflet map. The map is populated with customer data, and users can interact with it to visualize customer locations. The LeafletMapsFactBox control add-in provides the functionality for rendering the map, and the code specifies when and where this control should be displayed on customer card and list pages.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tOFlYRH1x2" id="image3-6pu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/20230901image01-1333x810.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Customer Adatum Corporation is based in Atlanta</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tOFlZdR09y" id="image3-6pv">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/20230901image02-1333x809.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Customer Trey Research is based in Chicago</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tOFlZJlwJ3" id="image3-6pw">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/20230901image03-1332x807.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Customer School of Fine Art is based in Miami</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tOFm05VGkA" id="image3-6px">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/20230901image04-1331x808.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Customer Relecloud is based in Atlanta</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content7 cid-tOFjHrA5Yy" id="content7-6pq">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>LeafletMapsExtension.al</strong></h5>
+
+<pre class="language-clike"><code><!--         
+controladdin LeafletMapsFactBox
+{
+    RequestedHeight = 400;
+    MaximumHeight = 600;
+    VerticalStretch = false;
+    VerticalShrink = false;
+    HorizontalStretch = true;
+    HorizontalShrink = true;
+    Scripts = 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.js', 'LeafletMapsFunctions.js';
+    Stylesheets = 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css';
+
+
+    event ControlReady()
+    procedure CreateSidebar(no: Text; city: Text);
+}
+
+
+page 50101 LeafletMapsCustListFactBoxPart
+{
+    PageType = CardPart;
+    SourceTable = "Customer";
+
+
+    layout
+    {
+        area(Content)
+        {
+            usercontrol(Sidebar; LeafletMapsFactBox)
+            {
+                ApplicationArea = All;
+            }
+        }
+    }
+
+
+    trigger OnAfterGetRecord()
+    begin
+        CurrPage.Sidebar.CreateSidebar(rec."No.", rec.City);
+    end;
+}
+
+
+
+
+pageextension 50102 "LeafletMaps Cust Card" extends "Customer Card"
+{
+    layout
+    {
+        addfirst(FactBoxes)
+        {
+            part(LeafletMapsCustListFactBoxPart; LeafletMapsCustListFactBoxPart)
+            {
+                ApplicationArea = All; //Basic, Suite;// all;
+                Caption = 'Customer Map';
+                SubPageLink = "No." = FIELD("No.");
+
+
+            }
+        }
+    }
+
+
+
+
+}
+
+
+pageextension 50103 "LeafletMaps Cust List" extends "Customer List"
+{
+
+
+    layout
+    {
+        addfirst(FactBoxes)
+        {
+            part(LeafletMapsCustListFactBoxPart; LeafletMapsCustListFactBoxPart)
+            {
+                ApplicationArea = all;
+                caption = 'Customer Map';
+                SubPageLink = "No." = FIELD("No.");
+            }
+        }
+
+
+    }
+
+
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content7 cid-tOFk8p5GiX" id="content7-6ps">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>LeafletMapsFunctions.js</strong></h5>
+
+<pre class="language-clike"><code><!--         
+function CreateSidebar(no, city) {
+    debugger;
+    var __div = document.getElementById('controlAddIn');
+
+
+    // clear contents of controlAddIn div
+    __div.innerHTML = '';
+
+
+    // create the map div
+    var __innerDiv = document.createElement("div");
+    __innerDiv.id = 'map';
+    __innerDiv.style = 'height: 100vh'
+
+
+    // add the map div to the controlAddIn div
+    __div.appendChild(__innerDiv);
+
+
+    // get latitude and longitude position for this city
+    var location = GetCityLocation(city)
+
+
+    // What map zoom level should we use?
+    var zoomLevel = 9;
+
+
+    // create the Leaflet Map
+    var map = L.map('map').setView(location, zoomLevel);
+
+
+    // add a tile layer
+    L.tileLayer('//services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.jpg').addTo(map);
+
+
+    // add a marker
+    var newMarker = new L.marker(location).addTo(map);
+
+
+    Microsoft.Dynamics.NAV.InvokeExtensibilityMethod("ControlReady");
+
+
+}
+
+
+function GetCityLocation(city) {
+    if (city == "Atlanta")
+        return [33.7674828, -84.5025308]
+
+
+    if (city == "Miami")
+        return [25.782479, -80.2706579]
+
+
+    if (city == "Chicago")
+        return [41.833871, -87.8967688]
+
+
+    // else return London's location
+    return [51.505, -0.09]
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tOO7M4Zi2T" id="content5-6q1">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Upload and deploy extension</h4>
+                <p class="mbr-text mbr-fonts-style display-7">To upload and deploy an extension to Microsoft Dynamics 365 Business Central, you'll need to follow a series of steps. Extensions in Business Central typically come in the form of <a href="https://haddley.github.io/businesscentral/Haddley_haddley-app_1.0.0.0.app" class="text-primary" target="_blank">.app</a> files or .zip files containing the extension's artifacts and metadata. Here's a step-by-step guide on how to do this:<br><br>Prerequisites:<br><br>You should have an extension package ready (either a .app file or a .zip file) that you want to upload and deploy.<br>You should have the necessary permissions to perform these actions in your Business Central instance.<br>Steps:<br><br>Access Your Business Central Environment:<br>Log in to your Microsoft Dynamics 365 Business Central environment with the appropriate credentials.<br>Access the Extension Management Page:<br>Depending on the version of Business Central you're using, the exact path to the Extension Management page may vary. Generally, you can find it under "Extension Management" or "Extensions."<br>Upload the Extension Package:<br>Look for an option to "Upload Extension" or something similar. This will allow you to select and upload the extension package (the .app or .zip file) from your local machine.<br>Provide Necessary Information:<br>Depending on your extension, you may need to provide some configuration details or permissions. Follow the on-screen instructions to configure the extension correctly.<br>Install the Extension:<br>After uploading the extension, you'll typically see an option to "Install" or "Publish" it. Click this option to initiate the installation process.<br>Monitor Installation Progress:<br>Business Central will begin installing the extension. You can monitor the installation progress, and if any issues arise, you'll receive error messages indicating what needs to be resolved.<br>Check the Status:<br>Once the installation is complete, check the status of the extension to ensure it's successfully installed and deployed. You should see it listed among your installed extensions.<br>Enable or Configure the Extension:<br>Depending on the extension, you may need to enable or configure it further to make it functional. This can include setting up permissions, defining data mappings, or configuring integration points.<br>Test and Validate:<br>Before using the extension in a production environment, it's a good practice to thoroughly test it in a sandbox or testing environment to ensure it works as expected and doesn't conflict with existing functionality.<br>Go Live:<br>Once you are satisfied with the extension's performance in your testing environment, you can deploy it to your production environment by following similar steps. Make sure to have a backup and a rollout plan in case any issues arise during deployment.<br>Remember that the exact steps and options may vary slightly depending on the version of Business Central you're using and the specific requirements of the extension you are deploying. Always refer to the official documentation for your version of Business Central for detailed instructions and troubleshooting guidance.<br><br><br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tOO7MUxNYI" id="image3-6q2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/20230903image01-1340x889.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Advanced Settings</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tOO7NguSAn" id="image3-6q3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/20230903image02-1336x887.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Upload And Deploy Extension</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tOO7NzzGGj" id="image3-6q4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/20230903image03-1333x808.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Deploy</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tOO7O7FtMh" id="image3-6q6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/20230903image04-1330x805.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Installation in progress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tOO7NNtqEz" id="image3-6q5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/20230903image05-1337x885.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Extension running in the cloud</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="features13 cid-tOFjHrGe7S" id="features14-6pr">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://github.com/microsoft/bcsamples-bingmaps.appsource" class="text-primary" target="_blank">BingMaps.AppSource</a></strong><strong><a href="https://www.geeksforgeeks.org/black-and-white-image-colorization-with-opencv-and-deep-learning" class="text-primary" target="_blank"><br></a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-3 col-12 col-md-4 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-download"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://haddley.github.io/businesscentral/Haddley_haddley-app_1.0.0.0.app" class="text-primary" target="_blank">Haddley_haddley-app_1.0.0.0</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+        </div>
+    </div>
+</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><a href="https://mobiri.se/2350277" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p><a style="z-index:1" href="https://mobirise.com/offline-website-builder.html">Offline Website Builder</a></section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>

@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  <!-- Site made with Mobirise Website Builder v5.9.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v5.9.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Azure Active Directory (Part 1)</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-stdau7kLVo" once="menu" id="menu3-ov">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-stdau7DBDv" id="content4-ow">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Azure Active Directory (Part 1)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Using Microsoft Identity to Authenticate Users.</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-stKSgTGJ0Y" id="image3-qi">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/microsoft-azure-logo.svg" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a rel="nofollow" href="https://commons.wikimedia.org/wiki/File:Microsoft_Azure_Logo.svg">Microsoft Azure Logo</a> by <a href="https://en.wikipedia.org/wiki/en:Microsoft">Microsoft Corporation</a> is <a href="“https://commons.wikimedia.org/w/index.php?curid=43353450">Public Domain</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-stdd1GAqmX" id="content5-oz">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Microsoft Teams</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Microsoft Office 365 applications including Microsoft SharePoint and Microsoft Teams use Azure Active Directory to authenticate users .<br><br>Microsoft Teams allows Guest users to be added to a Team. <br><br>Azure Active Directory is used to support the Teams Guest user feature.<br><br>In the screenshot below John Doe with email address john@doe.com is added as a Guest user.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-stde6uGSwB" id="image3-p0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-31-at-6.50.37-pm-1314x906.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">John Doe is being added as a Guest user.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-stdffga8gX" id="content5-p2">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Members and guests</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Once John Doe has been added to the Team his account is included in the "Members and guests" list.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-stdfeJCWG5" id="image3-p1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-31-at-6.55.56-pm-1836x833.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">John has been added as a (guest) member of the Team</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-stdfJdH3JO" id="content5-p3">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Azure Active Directory Users</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Switching to the Azure Portal we can see that an external (EXT) Active Directory account has been added for John Doe.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-stdfZInSYZ" id="image3-p4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-31-at-7.00.35-pm-1660x932.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Azure Active Directory Users</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-stdgt6n6ZO" id="content5-p5">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Custom Web Application</h4>
+                <p class="mbr-text mbr-fonts-style display-7">We can use the same Azure Active Directory user list to authenticate users accessing a custom "Who am I" web application.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-stdnvG75z1" id="content5-p7">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">App Registration</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The key step is the creation of an "application registration". <br><br>Navigate to the Azure Active Directory service and select App registrations page. <br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-stdnCd6XGi" id="image3-p8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-31-at-7.28.36-pm-1836x1175.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Navigate to Azure Active Directory and select App registrations</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-stdqYuFOOJ" id="image3-pa">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-31-at-7.31.12-pm-456x178.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Click the "+ New registration" button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-stdrGtkBaN" id="image3-pb">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-31-at-9.20.55-pm-1730x1470.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Enter the user-facing display name "who am i" in this case.<br>Enter the redirect uri (this is the address the user will be directed to once they have successfully entered their credentials).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-stdQOR4qd2" id="image3-pi">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-31-at-9.25.13-pm-1692x818.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">We need to create a client secret</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-stdQk9k64b" id="content5-ph">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">We need to take a note of these three values</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Application (client) ID 63fe01c7-f396-484e-8a48-760f********<br>Directory (tenant) ID&nbsp;1661e837-0a95-4bc6-a655-8653********<br>Client secret&nbsp;-~nGgWS3F7y~-o2etNGc0BW_ik_*******<br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-stdR7agqgQ" id="content7-pj">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>package.json</strong></h5>
+
+<pre class="language-clike"><code><!--         
+{
+  "name": "who-am-i",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@azure/msal-node": "^1.0.0",
+    "express": "^4.17.1",
+    "uuid": "^8.3.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Haddley/who-am-i.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Haddley/who-am-i/issues"
+  },
+  "homepage": "https://github.com/Haddley/who-am-i#readme"
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-stdRJfDAMc" id="content7-pk">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>index.js</strong></h5>
+
+<pre class="language-clike"><code><!--         
+/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
+ */
+const express = require("express");
+const msal = require('@azure/msal-node');
+
+const SERVER_PORT = process.env.PORT || 3000;
+const REDIRECT_URI = "http://localhost:3000/redirect";
+
+// Before running the sample, you will need to replace the values in the config, 
+// including the clientSecret
+const config = {
+    auth: {
+        clientId: "63fe01c7-f396-484e-8a48-760f********",
+        authority: "https://login.microsoftonline.com/1661e837-0a95-4bc6-a655-8653********",
+        clientSecret: "-~nGgWS3F7y~-o2etNGc0BW_ik_*******"
+    },
+    system: {
+        loggerOptions: {
+            loggerCallback(loglevel, message, containsPii) {
+                console.log(message);
+            },
+            piiLoggingEnabled: false,
+            logLevel: msal.LogLevel.Verbose,
+        }
+    }
+};
+
+// Create msal application object
+const pca = new msal.ConfidentialClientApplication(config);
+
+// Create Express App and Routes
+const app = express();
+
+app.get('/', (req, res) => {
+    const authCodeUrlParameters = {
+        scopes: ["user.read"],
+        redirectUri: REDIRECT_URI,
+    };
+
+    // get url to sign user in and consent to scopes needed for application
+    pca.getAuthCodeUrl(authCodeUrlParameters).then((response) => {
+        res.redirect(response);
+    }).catch((error) => console.log(JSON.stringify(error)));
+});
+
+app.get('/redirect', (req, res) => {
+    const tokenRequest = {
+        code: req.query.code,
+        scopes: ["user.read"],
+        redirectUri: REDIRECT_URI,
+    };
+
+    pca.acquireTokenByCode(tokenRequest).then((response) => {
+        console.log("\nResponse: \n:", response);
+        // Return the current user's name
+        console.log(response.account.name);
+        res.send(response.account.name);
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log(error);
+        res.status(500).send(error);
+    });
+});
+
+
+app.listen(SERVER_PORT, () => console.log(`Msal Node Auth Code Sample app listening on port ${SERVER_PORT}!`))
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-stdT0rgqR4" id="content5-pq">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Test the solution</h4>
+                <p class="mbr-text mbr-fonts-style display-7">To test the who-am-i web application we can navigate to http://localhost:3000</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-stdSsM3HZY" id="image3-pm">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-31-at-9.30.32-pm-1050x226.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">We attempt to navigate to http://localhost:3000</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-stdStERD2x" id="image3-po">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-31-at-9.30.53-pm-1836x977.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">We are redirected to the Azure Active Directory Sign in page (unless federated identity management is enabled).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-stdSARkSRz" id="image3-pp">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-31-at-9.31.03-pm-1836x982.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Once we have entered a correct email/username and password...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-stdStfTVRQ" id="image3-pn">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-31-at-9.31.24-pm-1836x983.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">...we are asked consent to having our personal details passed to the "who am i" application (unless two factor authentication is enabled).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-stdSrY1WdI" id="image3-pl">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-03-31-at-9.31.40-pm-1836x977.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">In this case we are redirected to "/redirect" and the name of the authenticated user is displayed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features13 cid-stL0Ti6xCK" id="features14-ql">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v2-nodejs-webapp-msal" class="text-primary" target="_blank">QuickStart</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+        </div>
+    </div>
+</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><a href="https://mobiri.se/2350277" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p><a style="z-index:1" href="https://mobirise.com/drag-drop-website-builder.html">Drag and Drop Website Builder</a></section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>

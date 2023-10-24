@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  <!-- Site made with Mobirise Website Builder v5.9.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v5.9.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Next.js (Part 2)</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-sO0V3wgSIk" once="menu" id="menu3-2pe">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-sO0V3yt6ww" id="content4-2pf">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Next.js (Part 2)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">getStaticProps, getServerSideProps, getStaticPaths and useSWR</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sO0V3zdMm7" id="image3-2pg">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/2560px-nextjs-logo.svg-1536x920.png" alt="AWS">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a href="https://en.wikipedia.org/wiki/File:Nextjs-logo.svg" class="text-primary" target="_blank">This file is licensed under the Creative Commons Attribution-Share Alike 4.0 International license.</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sO0V3zznkN" id="content5-2ph">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Pre-rendering</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering. The difference is in when Next.js generates the HTML for a page.<br><br>Static Generation is a pre-rendering approach that generates the HTML pages at build time.<br><br>Server-side Rendering is a pre-rendering approach that generates the HTML on each request.<br><br>You can create a Next.js app that uses Static Generation for some pages and Server-side Rendering for others.<br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sO1FermLg6" id="content5-2qe">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Static Generation (with data)</h4>
+                <p class="mbr-text mbr-fonts-style display-7">In Next.js, after exporting a page function, a developer can export a getStaticProps function.<br><br>A getStaticProps runs at build time.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sO1RE9CVNA" id="content5-2qm">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">getStaticProps</h4>
+                <p class="mbr-text mbr-fonts-style display-7">A getStaticProps function can be used to generate a page based on data returned by a web service call*.<br><br>*&nbsp;<a href="https://nextjs.org/learn/basics/api-routes/api-routes-details" class="text-primary" target="_blank">You should not fetch an API Route from getStaticProps or getStaticPaths</a>. Instead, write your server-side code directly in getStaticProps or getStaticPaths (or call a helper function).</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sO1QgtoW9J" id="content7-2qf">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>/pages/articles/index.js</strong></h5>
+
+<pre class="language-clike"><code><!--         
+function index({ articles }) {
+    return (
+        <div>
+            <ul>
+                {articles.map(article => (<li key={article.id}>{article.title}</li>))}
+            </ul>
+        </div>
+    )
+}
+
+export default index
+
+export const getStaticProps = async () => {
+    const res = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=6')
+    const articles = await res.json();
+
+    return {
+        props: {
+            articles: articles
+        }
+    }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sO1QFCvjGY" id="image3-2qh">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-06-at-6.18.26-pm-1486x906.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">getStaticProps</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sO1QBMDu2b" id="content5-2qg">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">getServerSideProps</h4>
+                <p class="mbr-text mbr-fonts-style display-7">A getServerSideProps function is used at runtime to build a page in response to a request (with or without caching).<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sO1T0qfe5x" id="content7-2qn">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>/pages/articles/[id]/index.js</strong></h5>
+
+<pre class="language-clike"><code><!--         
+function article({ article }) {
+
+    return (
+        <div>
+            <h1>{article.title}</h1>
+            This is article {article.id}
+            <p>{article.body}</p>
+        </div>
+    )
+}
+
+export default article
+
+export const getServerSideProps = async (context) => {
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${context.params.id}`)
+    const article = await res.json()
+    return {
+        props: {
+            article: article
+        }
+    }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sO1QImuDxR" id="image3-2qi">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-06-at-6.26.46-pm-1492x908.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">getServerSideProps</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sO1ZacEKEX" id="content5-2qo">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">getStaticPaths</h4>
+                <p class="mbr-text mbr-fonts-style display-7">getStaticProps and getStaticPaths&nbsp;can be used together to generate multiple pages.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sO20UDnJcZ" id="content7-2qp">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>/pages/articles/[id]/index.js</strong></h5>
+
+<pre class="language-clike"><code><!--         
+function article({ article }) {
+
+    return (
+        <div>
+            <h1>{article.title}</h1>
+            This is article {article.id}
+            <p>{article.body}</p>
+        </div>
+    )
+}
+
+export default article
+
+export const getStaticProps = async (context) => {
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${context.params.id}`)
+    const article = await res.json()
+
+    return {
+        props: {
+            article: article
+        }
+    }
+}
+
+export const getStaticPaths = async () => {
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts`)
+    const articles = await res.json()
+    const ids = articles.map(article => (article.id))
+    const paths = ids.map(id => ({ params: { id: id.toString() } }))
+
+    return {
+        paths,
+        fallback: false
+    }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sO1QIX61ON" id="image3-2qj">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-06-at-6.57.55-pm-1490x906.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">getStaticProps and getStaticPaths being used together</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sO28dgy3Ut" id="content5-2qq">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">next export</h4>
+                <p class="mbr-text mbr-fonts-style display-7">next export can be used to generate html pages that can be uploaded to a static web server.<br><br>$ npm run export  </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sO1QJpcwoO" id="image3-2qk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-06-at-7.29.43-pm-1836x1051.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">npm run export</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sO1QJYKfCQ" id="image3-2ql">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-06-at-7.35.14-pm-1836x942.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">out folder with generated pages</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sO29XGxMTv" id="image3-2qr">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-06-at-7.31.45-pm-1486x908.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/out/articles/36</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sO5uLPuaDj" id="content5-2rc">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">useSWR</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Once the server-side rendered parts of a page have been downloaded JavaScript running on the page can fetch data and populate the remaining parts of the page (client-side).<br><br>$ npm install swr<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sO5EXrxePP" id="content7-2rd">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>/pages/articles/[id]/index.js</strong></h5>
+
+<pre class="language-yaml"><code><!--         
+import {useRouter} from 'next/router'
+import useSWR from 'swr'
+
+function article() {
+
+    const router = useRouter()
+    const {id} = router.query
+
+    if (!id) return <div>waiting...</div>
+
+    const fetcher = (...args) => fetch(...args).then(res => res.json())
+
+    const { data, error } = useSWR(`https://jsonplaceholder.typicode.com/posts/${id}`, fetcher)
+
+    if (error) return <div>failed to load</div>
+    if (!data) return <div>loading...</div>
+    
+    return (
+        <div>
+            <h1>{data.title}</h1>
+            This is article {data.id}
+            <p>{data.body}</p>
+        </div>
+    )
+}
+
+export default article
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sO5KbgDbeG" id="content5-2re">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Catch all routes</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Dynamic routes can be extended to catch all paths by adding three dots (...) inside the brackets. For example:<br><br>pages/post/[...slug].js matches /post/a, but also /post/a/b, /post/a/b/c and so on.<br><br>pages/fullname/[...slug]/index.js matches /fullname/neil, but also /fullname/neil/haddley, /fullname/neil/leonard/haddley and so on.<br><br>You can use names other than slug, such as: [...param]</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sO5KdWJ6ZL" id="content7-2rh">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>/pages/fullname/[...slug]/index.js</strong></h5>
+
+<pre class="language-clike"><code><!--         
+import {useRouter} from 'next/router'
+
+function name() {
+
+    const router = useRouter()
+    const {slug} = router.query
+
+    if (!slug) return <div>waiting...</div>
+
+    return (
+        <div>
+            <h1>{slug.join(' ')}</h1>
+        </div>
+    )
+}
+
+export default name
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sO5KbU7Gv7" id="image3-2rf">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-07-at-9.14.45-am-1380x791.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Client-side code</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sO5KceZE2T" id="image3-2rg">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-07-at-9.15.03-am-1380x785.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Catch all routes</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features13 cid-sO0V3G8COn" id="features14-2qc">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><a href="https://swr.vercel.app/docs/getting-started" class="text-primary">SWR React Hooks for Data Fetching</a></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+        </div>
+    </div>
+</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><a href="https://mobiri.se/2350277" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p><a style="z-index:1" href="https://mobirise.com/builder/ai-website-builder.html">AI Website Builder</a></section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>
