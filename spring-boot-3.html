@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  <!-- Site made with Mobirise Website Builder v5.9.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v5.9.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Java Spring Boot (Part 3)</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-tTPuRQ2QMb" once="menu" id="menu3-7gp">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section data-bs-version="5.1" class="content4 cid-tTPuRRef54" id="content4-7gq">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Java Spring Boot (Part 3)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Spring Data JPA</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTPuRRJjZp" id="image3-7gr">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/spring-framework-logo-2018.svg" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a href="https://commons.wikimedia.org/w/index.php?curid=74960904" class="text-primary" target="_blank">Spring Framework logo</a> by Pivotal Software is licensed under Apache License 2.0<br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tTTPonZqD3" id="content5-7j4">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>Spring Data JPA</strong></h4>
+                <p class="mbr-text mbr-fonts-style display-7">Spring Data JPA provides a set of abstractions and high-level, repository-style interfaces that make it easier to work with Java Persistence API (JPA) for data access in Spring applications. It reduces boilerplate code.<br><br>I created a Spring Boot application using Spring Data JPA<br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tU5yKffJVq" id="image3-7ml">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-29-at-10.03.24-am-1836x981.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created a new GitHub repository haddley-spring-data-jpa</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tU5yKW27EY" id="image3-7mm">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-29-at-10.04.03-am-1836x911.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I opened the repository using GitHub Desktop</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tU5yLxepcC" id="image3-7mn">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-29-at-10.04.25-am-1836x956.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I cloned the GitHib repository</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tU5yMbm4Jj" id="image3-7mo">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-29-at-10.04.49-am-1830x872.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">GitHub repository folder</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tU5yMQdaAC" id="image3-7mp">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-29-at-10.40.07-am-1836x1176.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created a new spring boot application springdatajpa</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tU5yNqf6KS" id="image3-7mq">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-29-at-10.16.13-am-1834x864.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I copied the generated files to the GitHub repository folder</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tU5yPk8dPR" id="image3-7mt">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-29-at-10.46.13-am-1836x1018.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated&nbsp;SpringdatajpaApplication.java so that it would respond to http://localhost/hello requests</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tU5IMzjoQw" id="content5-7n0">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>SpringdatajpaApplication.java</strong></h4>
+                <p class="mbr-text mbr-fonts-style display-7"></p><p>package com.haddley.springdatajpa;<br><br>import org.springframework.boot.SpringApplication;<br>import org.springframework.boot.autoconfigure.SpringBootApplication;<br><br>import org.springframework.web.bind.annotation.GetMapping;<br>import org.springframework.web.bind.annotation.RequestParam;<br>import org.springframework.web.bind.annotation.RestController;<br><br>@SpringBootApplication<br>@RestController<br>public class SpringdatajpaApplication {<br>    &nbsp;&nbsp;&nbsp;&nbsp;public static void main(String[] args) {<br>      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SpringApplication.run(SpringdatajpaApplication.class, args);<br>    &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;@GetMapping("/hello")<br>    &nbsp;&nbsp;&nbsp;&nbsp;public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {<br>      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return String.format("Hello %s!", name);<br>    &nbsp;&nbsp;&nbsp;&nbsp;}<br>}<br><br></p><p></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tU5yPYby1l" id="image3-7mu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-29-at-10.26.33-am-1836x213.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I accessed http://localhost/hello using my web browser</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tU5yQtu7Te" id="image3-7mv">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-29-at-10.52.00-am-1836x1031.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created a TodoItem Java class</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tU5IOudxlZ" id="content5-7n1">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>TodoItem.java</strong></h4>
+                <p class="mbr-text mbr-fonts-style display-7"></p><p>package com.haddley.springdatajpa.models;<br><br>import java.time.Instant;<br><br>import jakarta.persistence.Entity;<br>import jakarta.persistence.GeneratedValue;<br>import jakarta.persistence.GenerationType;<br>import jakarta.persistence.Id;<br>import jakarta.persistence.Table;<br>import jakarta.validation.constraints.NotBlank;<br><br>import lombok.Getter;<br>import lombok.Setter;<br><br>@Entity<br>@Table(name = "todo_item")<br>public class TodoItem {<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;@Id<br>    &nbsp;&nbsp;&nbsp;&nbsp;@GeneratedValue(strategy = GenerationType.AUTO)<br>    &nbsp;&nbsp;&nbsp;&nbsp;@Getter<br>    &nbsp;&nbsp;&nbsp;&nbsp;@Setter<br>    &nbsp;&nbsp;&nbsp;&nbsp;private Long id;<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;@Getter<br>    &nbsp;&nbsp;&nbsp;&nbsp;@Setter<br>    &nbsp;&nbsp;&nbsp;&nbsp;@NotBlank(message = "Description is required")<br>    &nbsp;&nbsp;&nbsp;&nbsp;private String description;<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;@Getter<br>    &nbsp;&nbsp;&nbsp;&nbsp;@Setter<br>    &nbsp;&nbsp;&nbsp;&nbsp;private boolean complete;<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;@Getter<br>    &nbsp;&nbsp;&nbsp;&nbsp;@Setter<br>    &nbsp;&nbsp;&nbsp;&nbsp;private Instant createdDate;<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;@Getter<br>    &nbsp;&nbsp;&nbsp;&nbsp;@Setter<br>    &nbsp;&nbsp;&nbsp;&nbsp;private Instant modifiedDate;<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;public TodoItem() {}<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;public TodoItem(String description) {<br>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.description = description;<br>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.complete = false;<br>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.createdDate = Instant.now();<br>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.modifiedDate = Instant.now();<br>    &nbsp;&nbsp;&nbsp;&nbsp;}<br>    <br>    &nbsp;&nbsp;&nbsp;&nbsp;@Override<br>    &nbsp;&nbsp;&nbsp;&nbsp;public String toString() {<br>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return String.format("TodoItem{id=%d, description='%s', complete='%s', createdDate='%s', modifiedDate='%s'}", id, description, complete, createdDate, modifiedDate);<br>    &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>    <br>}<br></p><p></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tU5yQZUnh6" id="image3-7mw">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-29-at-11.10.46-am-1836x407.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created a Spring Data JPA repository interface (based on the TodoItem class)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tU5NdTOqvI" id="content5-7n2">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>TodoItemRepository.java</strong></h4>
+                <p class="mbr-text mbr-fonts-style display-7"></p><p>package com.haddley.springdatajpa.models;<br><br>import com.haddley.springdatajpa.models.TodoItem;<br>import org.springframework.data.repository.CrudRepository;<br><br>public interface TodoItemRepository extends CrudRepository<todoitem, long=""> {</todoitem,><todoitem, long=""><br>}</todoitem,><br></p><p></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tU5yRGgtY8" id="image3-7mx">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-29-at-11.17.11-am-1836x1010.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created a TodoItemDataLoader to ensure that if the repository was empty two new TodoItems would be added as the application started</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tU5OKD7oEg" id="content5-7n3">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>TodoItemDataLoader.java</strong></h4>
+                <p class="mbr-text mbr-fonts-style display-7"></p><p>package com.haddley.springdatajpa.config;<br><br>import com.haddley.springdatajpa.models.TodoItem;<br>import com.haddley.springdatajpa.repositories.TodoItemRepository;<br><br>import org.slf4j.Logger;<br>import org.slf4j.LoggerFactory;<br>import org.springframework.beans.factory.annotation.Autowired;<br>import org.springframework.boot.CommandLineRunner;<br>import org.springframework.stereotype.Component;<br><br>@Component<br>public class TodoItemDataLoader implements CommandLineRunner {<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;private final Logger logger = LoggerFactory.getLogger(TodoItemDataLoader.class);<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;@Autowired<br>    &nbsp;&nbsp;&nbsp;&nbsp;TodoItemRepository todoItemRepository;<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;@Override<br>    &nbsp;&nbsp;&nbsp;&nbsp;public void run(String... args) throws Exception {<br>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;loadSeedData();<br>    &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;private void loadSeedData() {<br>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (todoItemRepository.count() == 0) {<br>            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TodoItem todoItem1 = new TodoItem("get the milk");<br>            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TodoItem todoItem2 = new TodoItem("rake the leaves");<br><br>            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;todoItemRepository.save(todoItem1);<br>            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;todoItemRepository.save(todoItem2); <br>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;logger.info("Number of TodoItems: {}", todoItemRepository.count());<br>    &nbsp;&nbsp;&nbsp;&nbsp;}<br>    <br>}<br></p><p></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tU5ySrs5Kx" id="image3-7my">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-29-at-12.21.33-pm-1836x1013.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated&nbsp;SpringdatajpaApplication.java to return all of the TodoItems in response to http://localhost/hello requests</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tU64ZADDTe" id="content5-7n4">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>SpringdatajpaApplication.java (updated)</strong></h4>
+                <p class="mbr-text mbr-fonts-style display-7"></p><p>package com.haddley.springdatajpa;<br><br>import org.springframework.boot.SpringApplication;<br>import org.springframework.boot.autoconfigure.SpringBootApplication;<br><br>import org.springframework.web.bind.annotation.GetMapping;<br>import org.springframework.web.bind.annotation.RequestParam;<br>import org.springframework.web.bind.annotation.RestController;<br><br>import com.haddley.springdatajpa.models.TodoItem;<br>import com.haddley.springdatajpa.repositories.TodoItemRepository;<br>import org.springframework.beans.factory.annotation.Autowired;<br><br>import java.util.stream.StreamSupport;<br>import java.util.stream.Collectors;<br><br>@SpringBootApplication<br>@RestController<br>public class SpringdatajpaApplication {<br><br></p><p>    &nbsp;&nbsp;&nbsp;&nbsp;public static void main(String[] args) {<br>      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SpringApplication.run(SpringdatajpaApplication.class, args);<br>    &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;@GetMapping("/hello")<br>    &nbsp;&nbsp;&nbsp;&nbsp;public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {<br>      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return String.format("Hello %s!", name);<br>    &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;@Autowired<br>    &nbsp;&nbsp;&nbsp;&nbsp;private TodoItemRepository todoItemRepository;<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;@GetMapping("/todos")<br>    &nbsp;&nbsp;&nbsp;&nbsp;public String index() {<br><br>      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Iterable<todoitem> todos = todoItemRepository.findAll();<br><br>      </todoitem>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<todoitem>return StreamSupport.stream(todos.spliterator(), false)<br>        </todoitem>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<todoitem>.map(TodoItem::toString) <br>        </todoitem>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<todoitem>.collect(Collectors.joining(", ")); <br><br>    </todoitem>&nbsp;&nbsp;&nbsp;&nbsp;<todoitem>}<br><br>}</todoitem><br></p><p></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tU1faIffIm" id="image3-7js">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-29-at-12.25.12-pm-1836x158.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I accessed http://localhost/todos using my web browser</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tU68wrIPvA" id="image3-7n6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-29-at-12.35.11-pm-1836x537.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added text to applications.properties</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tU68HE5Z7q" id="content5-7n9">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>application.properties</strong></h4>
+                <p class="mbr-text mbr-fonts-style display-7"></p><p>spring.datasource.url=jdbc:h2:mem:testdb<br>spring.datasource.driverClassName=org.h2.Driver<br>spring.datasource.username=sa<br>spring.datasource.password=password<br>spring.jpa.database-platform=org.hibernate.dialect.H2Dialect<br><br></p><p></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tU68x8xAVf" id="image3-7n7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-29-at-12.38.23-pm-1836x614.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I accessed the h2 console (using values jdbc:h2:mem:testdb, sa and password)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tU68xLjqKP" id="image3-7n8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-29-at-12.38.56-pm-1836x1063.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked on the TODO_ITEM table</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tU69t5WbQm" id="image3-7na">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-29-at-12.39.17-pm-1836x575.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked Run to execute the select query</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="features13 cid-tTPuRXgAQL" id="features14-7i3">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont socicon-youtube socicon"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://www.youtube.com/watch?v=x67yiTHxn00" class="text-primary" target="_blank">Spring Data JPA: What is it? And Why Should You Use It?</a></strong><strong><a href="https://www.geeksforgeeks.org/black-and-white-image-colorization-with-opencv-and-deep-learning" class="text-primary" target="_blank"><br></a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-3 col-12 col-md-4 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont socicon-youtube socicon"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://www.youtube.com/watch?v=Hvuij8SOW8Q" class="text-primary" target="_blank">90 Minutes to a Complete Java Spring Boot TODO App</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+        </div>
+    </div>
+</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><a href="https://mobiri.se/2350277" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p><a style="z-index:1" href="https://mobirise.com"> Website Building Software</a></section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>
