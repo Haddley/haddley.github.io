@@ -135,6 +135,117 @@
     </div>
 </section>
 
+<section class="content7 cid-tUKktOiH0h" id="content7-7uc">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>pom.xml</strong></h5>
+
+<pre class="language-clike"><code><!--         
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+	xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+	&lt;parent&gt;
+		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+		&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+		&lt;version&gt;3.1.5&lt;/version&gt;
+		&lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;
+	&lt;/parent&gt;
+	&lt;groupId&gt;com.haddley&lt;/groupId&gt;
+	&lt;artifactId&gt;springdatajpa&lt;/artifactId&gt;
+	&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+	&lt;name&gt;springdatajpa&lt;/name&gt;
+	&lt;description&gt;Demo project for Spring Boot&lt;/description&gt;
+	&lt;properties&gt;
+		&lt;java.version&gt;17&lt;/java.version&gt;
+	&lt;/properties&gt;
+	&lt;dependencies&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-starter-validation&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;
+			&lt;scope&gt;runtime&lt;/scope&gt;
+			&lt;optional&gt;true&lt;/optional&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;com.h2database&lt;/groupId&gt;
+			&lt;artifactId&gt;h2&lt;/artifactId&gt;
+			&lt;scope&gt;runtime&lt;/scope&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+			&lt;artifactId&gt;lombok&lt;/artifactId&gt;
+			&lt;optional&gt;true&lt;/optional&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+			&lt;scope&gt;test&lt;/scope&gt;
+		&lt;/dependency&gt;
+
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+
+		&lt;!-- https://mvnrepository.com/artifact/org.webjars/bootstrap --&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.webjars&lt;/groupId&gt;
+			&lt;artifactId&gt;bootstrap&lt;/artifactId&gt;
+			&lt;version&gt;3.4.1&lt;/version&gt;
+		&lt;/dependency&gt;
+		&lt;!-- https://mvnrepository.com/artifact/org.webjars/jquery --&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.webjars&lt;/groupId&gt;
+			&lt;artifactId&gt;jquery&lt;/artifactId&gt;
+			&lt;version&gt;3.6.0&lt;/version&gt;
+		&lt;/dependency&gt;
+
+	&lt;/dependencies&gt;
+
+	&lt;build&gt;
+		&lt;plugins&gt;
+			&lt;plugin&gt;
+				&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+				&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+				&lt;configuration&gt;
+					&lt;excludes&gt;
+						&lt;exclude&gt;
+							&lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+							&lt;artifactId&gt;lombok&lt;/artifactId&gt;
+						&lt;/exclude&gt;
+					&lt;/excludes&gt;
+				&lt;/configuration&gt;
+			&lt;/plugin&gt;
+		&lt;/plugins&gt;
+	&lt;/build&gt;
+
+&lt;/project&gt;
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section data-bs-version="5.1" class="image3 cid-tU6yBxkSiD" id="image3-7oq">
     
 
@@ -147,6 +258,76 @@
                     <img src="assets/images/screenshot-2023-10-29-at-2.19.57-pm-2136x1053.png" alt="">
                     <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added a thymeleaf page (as an alternative to JSP)<br></p>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-tUKkZpN6ZE" id="content7-7ue">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>index.html</strong></h5>
+
+<pre class="language-clike"><code><!--         
+&lt;!DOCTYPE html&gt;
+&lt;html xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+    &lt;link th:rel=&quot;stylesheet&quot; th:href=&quot;@{/webjars/bootstrap/3.4.1/css/bootstrap.min.css} &quot; /&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;h1 class=&quot;text-center&quot;&gt;Todo List&lt;/h1&gt;
+        &lt;hr /&gt;
+        &lt;p th:text=&quot;|Happy ${today}|&quot;&gt;Today&lt;/p&gt;
+        &lt;table class=&quot;table table-bordered table-striped&quot;&gt;
+            &lt;thead&gt;
+                &lt;tr&gt;
+                    &lt;th&gt;Actions&lt;/th&gt;
+                    &lt;th&gt;Id&lt;/th&gt;
+                    &lt;th&gt;Description&lt;/th&gt;
+                    &lt;th&gt;Complete&lt;/th&gt;
+                    &lt;th&gt;Created Date&lt;/th&gt;
+                    &lt;th&gt;Modified Date&lt;/th&gt;
+                &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+                &lt;tr th:each=&quot;item : ${todoItems}&quot; th:class=&quot;${item.complete} ? success : warning&quot;&gt;
+                    &lt;td&gt;
+                        &lt;div class=&quot;btn btn-group-sm&quot; role=&quot;group&quot;&gt;
+                            &lt;a class=&quot;btn btn-info&quot; th:href=&quot;@{/edit/{id}(id=${item.id})}&quot;&gt;Edit&lt;/a&gt;
+                            &lt;a class=&quot;btn btn-danger&quot; th:href=&quot;@{/delete/{id}(id=${item.id})}&quot;&gt;Delete&lt;/a&gt;
+                        &lt;/div&gt;
+                    &lt;/td&gt;
+                    &lt;td th:text=&quot;${item.id}&quot;&gt;item_id&lt;/td&gt;
+                    &lt;td th:text=&quot;${item.description}&quot;&gt;item_description&lt;/td&gt;
+                    &lt;td th:text=&quot;${item.complete}&quot;&gt;item_complete&lt;/td&gt;
+                    &lt;td th:text=&quot;${item.createdDate}&quot;&gt;item_created_date&lt;/td&gt;
+                    &lt;td th:text=&quot;${item.modifiedDate}&quot;&gt;item_modified_date&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+
+        &lt;p&gt;&lt;a class=&quot;btn btn-success&quot; href=&quot;/create-todo&quot;&gt;Add a Todo!&lt;/a&gt;&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;script th:src=&quot;@{/webjars/jquery/3.6.0/jquery.min.js}&quot;&gt;&lt;/script&gt;
+    &lt;script th:src=&quot;@{/webjars/bootstrap/3.4.1/js/bootstrap.min.js}&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+--></code></pre>
+                    
+
+                    
+</blockquote>
             </div>
         </div>
     </div>
@@ -216,49 +397,42 @@ package com.haddley.springdatajpa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.*;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.stereotype.Controller;
+
 import com.haddley.springdatajpa.models.TodoItem;
 import com.haddley.springdatajpa.repositories.TodoItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.stream.StreamSupport;
 import java.util.stream.Collectors;
+
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.ui.Model;
 import java.time.ZoneId;
 import java.time.Instant;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import org.springframework.web.bind.annotation.PathVariable;
 
 @SpringBootApplication
 @Controller
 public class SpringdatajpaApplication {
 
     private final Logger logger = LoggerFactory.getLogger(SpringdatajpaApplication.class);
-    private final TodoItemRepository todoItemRepository;
-
-    @Autowired
-    public SpringdatajpaApplication(TodoItemRepository todoItemRepository) {
-        this.todoItemRepository = todoItemRepository;
-    }
 
     public static void main(String[] args) {
       SpringApplication.run(SpringdatajpaApplication.class, args);
     }
 
-    @GetMapping("/hello")
-    public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-      return String.format("Hello %s!", name);
-    }
-
-    @GetMapping("/todos")
-    public String todos() {
-      Iterable<TodoItem> todos = todoItemRepository.findAll();
-      return StreamSupport.stream(todos.spliterator(), false)
-        .map(TodoItem::toString) 
-        .collect(Collectors.joining(", ")); 
-    }
-
+    @Autowired
+    private TodoItemRepository todoItemRepository;
+    
     @GetMapping("/")
     public ModelAndView index() {
         logger.info("request to GET index");
@@ -277,6 +451,8 @@ public class SpringdatajpaApplication {
         todoItemRepository.delete(todoItem);
         return "redirect:/";
     }
+
+
 }
 --></code></pre>
                     

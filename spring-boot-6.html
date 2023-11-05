@@ -409,6 +409,8 @@ public class SecurityConfig {
         http.authorizeRequests(auth -> auth.requestMatchers("/webjars/bootstrap/**", "/webjars/jquery/**", "/webjars/popper.js/**").permitAll());
         http.authorizeRequests(auth -> auth.requestMatchers("/user").hasRole("USER"));
         http.authorizeRequests(auth -> auth.requestMatchers("/admin").hasRole("ADMIN"));
+        http.authorizeRequests(auth -> auth.requestMatchers("/api/v1/user").hasRole("USER"));
+        http.authorizeRequests(auth -> auth.requestMatchers("/api/v1/admin").hasRole("ADMIN"));
 
         return http.oauth2Login().and().build();
     }
@@ -498,6 +500,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -508,6 +511,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
     private static final String ADMIN_USER_NAME = "15018162";
     private static final String ROLE_USER = "ROLE_USER";
     private static final String ROLE_ADMIN = "ROLE_ADMIN";
+    private static final String GITHUB_REGISTRATION_ID = "github";
 
     @Override
     public CustomOAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
@@ -516,15 +520,19 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         logger.info("User Details: {}", user);
         logger.info("User Name Details: {}", user.getName());
 
-        return createCustomOAuth2User(user);
-    }
-
-    private CustomOAuth2User createCustomOAuth2User(OAuth2User user) {
-        if (ADMIN_USER_NAME.equals(user.getName())) {
-            return new CustomOAuth2User(user, Arrays.asList(new SimpleGrantedAuthority(ROLE_USER), new SimpleGrantedAuthority(ROLE_ADMIN)));
+        if (!GITHUB_REGISTRATION_ID.equals(userRequest.getClientRegistration().getRegistrationId())) {
+            throw new OAuth2AuthenticationException("ID is not from GitHub");
         }
 
-        return new CustomOAuth2User(user, Collections.singleton(new SimpleGrantedAuthority(ROLE_USER)));
+        return new CustomOAuth2User(user, getAuthorities(user));
+    }
+
+    private List<SimpleGrantedAuthority> getAuthorities(OAuth2User user) {
+        if (ADMIN_USER_NAME.equals(user.getName())) {
+            return Arrays.asList(new SimpleGrantedAuthority(ROLE_USER), new SimpleGrantedAuthority(ROLE_ADMIN));
+        }
+
+        return Collections.singletonList(new SimpleGrantedAuthority(ROLE_USER));
     }
 }
 --></code></pre>
@@ -632,8 +640,14 @@ public class MyRestController {
     private static final String DEFAULT_NAME = "World";
     private static final String SECURED_MESSAGE_FORMAT = "Secured %s!";
 
-    @GetMapping("/private")
-    public String privateHello(@RequestParam(value = "name", defaultValue = DEFAULT_NAME) String name, Authentication authentication) {
+    @GetMapping("api/v1/user")
+    public String userHello(@RequestParam(value = "name", defaultValue = DEFAULT_NAME) String name, Authentication authentication) {
+        logger.info("Authentication Details: {}", authentication);
+        return String.format(SECURED_MESSAGE_FORMAT, name);
+    }
+
+    @GetMapping("api/v1/admin")
+    public String adminHello(@RequestParam(value = "name", defaultValue = DEFAULT_NAME) String name, Authentication authentication) {
         logger.info("Authentication Details: {}", authentication);
         return String.format(SECURED_MESSAGE_FORMAT, name);
     }
@@ -775,6 +789,46 @@ public class MyPageController {
     </div>
 </section>
 
+<section class="content7 cid-tUKlMzmYPN" id="content7-7uf">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>index.html</strong></h5>
+
+<pre class="language-clike"><code><!--         
+&lt;!DOCTYPE html&gt;    
+&lt;html xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;My Application&lt;/title&gt;
+
+    &lt;script th:src=&quot;@{/webjars/jquery/3.1.1/jquery.min.js}&quot;&gt;&lt;/script&gt;
+    &lt;script th:src=&quot;@{/webjars/bootstrap/5.3.2/js/bootstrap.min.js}&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; th:href=&quot;@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}&quot; /&gt;
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; th:href=&quot;@{/css/styles.css}&quot; /&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div th:replace=&quot;navbar.html :: navbar(page=&apos;index&apos;)&quot;&gt;&lt;/div&gt;
+
+&lt;div&gt;
+      &lt;h1&gt; Home Page &lt;/h1&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section data-bs-version="5.1" class="image3 cid-tUHAALC71I" id="image3-7t5">
     
 
@@ -787,6 +841,125 @@ public class MyPageController {
                     <img src="assets/images/screenshot-2023-11-04-at-10.30.43-pm-1666x696.png" alt="">
                     <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">navbar fragment</p>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-tUKlRmbgB5" id="content7-7ug">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>navbar.html</strong></h5>
+
+<pre class="language-clike"><code><!--         
+&lt;nav th:fragment=&quot;navbar (page)&quot; class=&quot;navbar navbar-expand-md bg-dark navbar-dark&quot;&gt;
+    &lt;div class=&quot;container-fluid&quot;&gt;
+        &lt;div class=&quot;navbar-header&quot;&gt;
+            &lt;a class=&quot;navbar-brand&quot; th:href=&quot;@{/}&quot;&gt;My Application&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;ul class=&quot;nav navbar-nav&quot;&gt;
+            &lt;li th:if=&quot;${!isAuthenticated}&quot;&gt;&lt;a class=&quot;nav-link&quot; th:href=&quot;@{/oauth2/authorization/github}&quot;&gt;Login&lt;/a&gt;&lt;/li&gt;
+            &lt;li th:if=&quot;${isUser &amp;&amp; page==&apos;user&apos;}&quot;&gt;&lt;a  class=&quot;active nav-link&quot; th:href=&quot;@{/user}&quot;&gt;User&lt;/a&gt;&lt;/li&gt;
+            &lt;li th:if=&quot;${isUser &amp;&amp; page!=&apos;user&apos;}&quot;&gt;&lt;a  class=&quot;nav-link&quot; th:href=&quot;@{/user}&quot;&gt;User&lt;/a&gt;&lt;/li&gt;
+            &lt;li th:if=&quot;${isAdmin &amp;&amp; page==&apos;admin&apos;}&quot;&gt;&lt;a class=&quot;active nav-link&quot; th:href=&quot;@{/admin}&quot;&gt;Admin&lt;/a&gt;&lt;/li&gt;
+            &lt;li th:if=&quot;${isAdmin &amp;&amp; page!=&apos;admin&apos;}&quot;&gt;&lt;a  class=&quot;nav-link&quot; th:href=&quot;@{/admin}&quot;&gt;Admin&lt;/a&gt;&lt;/li&gt;
+            &lt;li th:if=&quot;${isAuthenticated}&quot;&gt;
+                &lt;img th:src=&quot;${avatarUrl}&quot; style=&quot;height: 40px; width: 40px;&quot; class=&quot;avatar circle&quot;&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;    
+&lt;/nav&gt;
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-tUKa6zhm8n" id="content7-7tw">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7">pom.xml</h5>
+
+<pre class="language-clike"><code>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+	&lt;parent&gt;
+		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+		&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+		&lt;version&gt;3.1.5&lt;/version&gt;
+		&lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;
+	&lt;/parent&gt;
+	&lt;groupId&gt;com.haddley&lt;/groupId&gt;
+	&lt;artifactId&gt;spring-oauth2&lt;/artifactId&gt;
+	&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+	&lt;name&gt;spring-oauth2&lt;/name&gt;
+	&lt;description&gt;Demo project for Spring Boot&lt;/description&gt;
+	&lt;properties&gt;
+		&lt;java.version&gt;17&lt;/java.version&gt;
+	&lt;/properties&gt;
+	&lt;dependencies&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-starter-oauth2-client&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+			&lt;scope&gt;test&lt;/scope&gt;
+		&lt;/dependency&gt;
+
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+
+
+		&lt;dependency&gt;
+    		&lt;groupId&gt;org.webjars&lt;/groupId&gt;
+    		&lt;artifactId&gt;bootstrap&lt;/artifactId&gt;
+    		&lt;version&gt;5.3.2&lt;/version&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+    		&lt;groupId&gt;org.webjars&lt;/groupId&gt;
+    		&lt;artifactId&gt;jquery&lt;/artifactId&gt;
+    		&lt;version&gt;3.1.1&lt;/version&gt;
+		&lt;/dependency&gt;
+
+
+	&lt;/dependencies&gt;
+
+	&lt;build&gt;
+		&lt;plugins&gt;
+			&lt;plugin&gt;
+				&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+				&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+			&lt;/plugin&gt;
+		&lt;/plugins&gt;
+	&lt;/build&gt;
+
+&lt;/project&gt;
+</code></pre>
+                    
+
+                    
+</blockquote>
             </div>
         </div>
     </div>

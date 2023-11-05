@@ -314,14 +314,36 @@
     </div>
 </section>
 
-<section data-bs-version="5.1" class="content5 cid-tUhjJLSTWh" id="content5-7qk">
+<section class="content7 cid-tUKhk4kqsY" id="content7-7u1">
     
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>application.properties</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7"></p><p><br># define our server port<br>server.port=8080<br><br>logging.level.web=DEBUG<br>logging.level.sql=DEBUG<br>logging.level.com.example=DEBUG<br><br># generate the hibernate entities<br>spring.jpa.generate-ddl=true<br><br>spring.graphql.graphiql.enabled=true<br><br>spring.datasource.url=jdbc:h2:mem:testdb<br>spring.datasource.driverClassName=org.h2.Driver<br>spring.datasource.username=sa<br>spring.datasource.password=password<br>spring.jpa.database-platform=org.hibernate.dialect.H2Dialect<br></p><p></p>
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>application.properties</strong></h5>
+
+<pre class="language-clike"><code><!--         
+server.port=8080
+
+logging.level.web=DEBUG
+logging.level.sql=DEBUG
+logging.level.com.example=DEBUG
+
+# generate the hibernate entities
+spring.jpa.generate-ddl=true
+
+spring.graphql.graphiql.enabled=true
+
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=password
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+--></code></pre>
+                    
+
+                    
+</blockquote>
             </div>
         </div>
     </div>
@@ -344,14 +366,153 @@
     </div>
 </section>
 
-<section data-bs-version="5.1" class="content5 cid-tUhk1ew6To" id="content5-7qm">
+<section class="content7 cid-tUKhAU9SBh" id="content7-7u2">
     
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>SeedDataConfig.java</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7"></p><p>package com.haddley.haddleyspringgraphql.config;<br><br>import com.haddley.haddleyspringgraphql.models.Book;<br>import com.haddley.haddleyspringgraphql.models.Author;<br>import com.haddley.haddleyspringgraphql.repositories.BookRepository;<br>import com.haddley.haddleyspringgraphql.repositories.AuthorRepository;<br>import lombok.RequiredArgsConstructor;<br>import org.springframework.boot.CommandLineRunner;<br>import org.springframework.stereotype.Component;<br><br>import java.util.ArrayList;<br>import java.util.Arrays;<br><br>@Component<br>@RequiredArgsConstructor<br>public class SeedDataConfig implements CommandLineRunner {<br><br>    private final AuthorRepository authorRepository;<br>    private final BookRepository BookRepository;<br><br>    @Override<br>    public void run(String... args) throws Exception {<br><br><br>        if (authorRepository.count() == 0) {<br><br><br>                /* <br>                const authors = [<br>                { id: 1, name: 'Samer Buna' },<br>                { id: 2, name: 'Robin Wieruch' },<br>                { id: 3, name: 'Nader Dabit' },<br>                { id: 4, name: 'Sebastian Grebe' },<br>                { id: 5, name: 'Eve Porcello' },<br>                { id: 6, name: 'Alex Banks' }<br>                ]<br>                */<br><br><br>            Author author1 = Author.builder()<br>                    .name("Samer Buna")<br>                    .build();<br><br>            author1 = authorRepository.save(author1);<br><br>            Author author2 = Author.builder()<br>                    .name("Robin Wieruch")<br>                    .build();<br><br>            author2 = authorRepository.save(author2);<br><br>            Author author3 = Author.builder()<br>                    .name("Nader Dabit")<br>                    .build();<br><br>            author3 = authorRepository.save(author3);<br><br>            Author author4 = Author.builder()<br>                    .name("Sebastian Grebe")<br>                    .build();<br><br>            author4 = authorRepository.save(author4);<br>            <br>            Author author5 = Author.builder()<br>                    .name("Eve Porcello")<br>                    .build();<br><br>            author5 = authorRepository.save(author5);<br><br>            Author author6 = Author.builder()<br>                    .name("Alex Banks")<br>                    .build();<br><br>            author6 = authorRepository.save(author6);<br><br>                /* <br>                const books = [<br>                { id: 1, isbn10: '161729568X', name: 'GraphQL in Action', authorIds: [1] },<br>                { id: 2, isbn10: '1730853935', name: 'The Road to GraphQL: Your journey to master pragmatic GraphQL in JavaScript with React.js and Node.js', authorIds: [2] },<br>                { id: 3, isbn10: '1492059897', name: 'Full Stack Serverless: Modern Application Development with React, AWS, and GraphQL', authorIds: [3] },<br>                { id: 4, isbn10: '1789134528', name: 'Hands-On Full-Stack Web Development with GraphQL and React', authorIds: [4] },<br>                { id: 5, isbn10: '1492030716', name: 'Learning GraphQL: Declarative Data Fetching for Modern Web Apps', authorIds: [5, 6] },<br>                { id: 6, isbn10: '1492051721', name: 'Learning React: Modern Patterns for Developing React Apps', authorIds: [5, 6] },<br>                ]<br>                */<br><br>                Book book1 = Book.builder()<br>                    .isbn10("161729568X")<br>                    .name("GraphQL in Action")<br>                    .authors(new ArrayList&lt;&gt;(Arrays.asList(author1)))<br>                    .build();<br><br>                Book book2 = Book.builder()<br>                    .isbn10("1730853935")<br>                    .name("The Road to GraphQL: Your journey to master pragmatic GraphQL in JavaScript with React.js and Node.js")<br>                    .authors(new ArrayList&lt;&gt;(Arrays.asList(author2)))<br>                    .build();<br><br>                Book book3 = Book.builder()<br>                    .isbn10("1492059897")<br>                    .name("Full Stack Serverless: Modern Application Development with React, AWS, and GraphQL")<br>                    .authors(new ArrayList&lt;&gt;(Arrays.asList(author3)))<br>                    .build();<br><br>                Book book4 = Book.builder()<br>                    .isbn10("1789134528")<br>                    .name("Hands-On Full-Stack Web Development with GraphQL and React")<br>                    .authors(new ArrayList&lt;&gt;(Arrays.asList(author4)))<br>                    .build();<br><br>                Book book5 = Book.builder()<br>                    .isbn10("1492030716")<br>                    .name("Learning GraphQL: Declarative Data Fetching for Modern Web Apps")<br>                    .authors(new ArrayList&lt;&gt;(Arrays.asList(author5,author6)))<br>                    .build();<br><br>                Book book6 = Book.builder()<br>                    .isbn10("1492051721")<br>                    .name("Learning React: Modern Patterns for Developing React Apps")<br>                    .authors(new ArrayList&lt;&gt;(Arrays.asList(author5,author6)))<br>                    .build();<br><br>            BookRepository.save(book1);<br>            BookRepository.save(book2);<br>            BookRepository.save(book3);<br>            BookRepository.save(book4);<br>            BookRepository.save(book5);<br>            BookRepository.save(book6);<br><br>        }<br>    }<br><br>}<br></p><p></p>
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>SeedDataConfig.java</strong></h5>
+
+<pre class="language-clike"><code><!--         
+package com.haddley.haddleyspringgraphql.config;
+
+import com.haddley.haddleyspringgraphql.models.Book;
+import com.haddley.haddleyspringgraphql.models.Author;
+import com.haddley.haddleyspringgraphql.repositories.BookRepository;
+import com.haddley.haddleyspringgraphql.repositories.AuthorRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+@Component
+@RequiredArgsConstructor
+public class SeedDataConfig implements CommandLineRunner {
+
+    private final AuthorRepository authorRepository;
+    private final BookRepository BookRepository;
+
+    @Override
+    public void run(String... args) throws Exception {
+
+
+        if (authorRepository.count() == 0) {
+
+
+                /* 
+                const authors = [
+                { id: 1, name: 'Samer Buna' },
+                { id: 2, name: 'Robin Wieruch' },
+                { id: 3, name: 'Nader Dabit' },
+                { id: 4, name: 'Sebastian Grebe' },
+                { id: 5, name: 'Eve Porcello' },
+                { id: 6, name: 'Alex Banks' }
+                ]
+                */
+
+
+            Author author1 = Author.builder()
+                    .name("Samer Buna")
+                    .build();
+
+            author1 = authorRepository.save(author1);
+
+            Author author2 = Author.builder()
+                    .name("Robin Wieruch")
+                    .build();
+
+            author2 = authorRepository.save(author2);
+
+            Author author3 = Author.builder()
+                    .name("Nader Dabit")
+                    .build();
+
+            author3 = authorRepository.save(author3);
+
+            Author author4 = Author.builder()
+                    .name("Sebastian Grebe")
+                    .build();
+
+            author4 = authorRepository.save(author4);
+            
+            Author author5 = Author.builder()
+                    .name("Eve Porcello")
+                    .build();
+
+            author5 = authorRepository.save(author5);
+
+            Author author6 = Author.builder()
+                    .name("Alex Banks")
+                    .build();
+
+            author6 = authorRepository.save(author6);
+
+                /* 
+                const books = [
+                { id: 1, isbn10: '161729568X', name: 'GraphQL in Action', authorIds: [1] },
+                { id: 2, isbn10: '1730853935', name: 'The Road to GraphQL: Your journey to master pragmatic GraphQL in JavaScript with React.js and Node.js', authorIds: [2] },
+                { id: 3, isbn10: '1492059897', name: 'Full Stack Serverless: Modern Application Development with React, AWS, and GraphQL', authorIds: [3] },
+                { id: 4, isbn10: '1789134528', name: 'Hands-On Full-Stack Web Development with GraphQL and React', authorIds: [4] },
+                { id: 5, isbn10: '1492030716', name: 'Learning GraphQL: Declarative Data Fetching for Modern Web Apps', authorIds: [5, 6] },
+                { id: 6, isbn10: '1492051721', name: 'Learning React: Modern Patterns for Developing React Apps', authorIds: [5, 6] },
+                ]
+                */
+
+                Book book1 = Book.builder()
+                    .isbn10("161729568X")
+                    .name("GraphQL in Action")
+                    .authors(new ArrayList<>(Arrays.asList(author1)))
+                    .build();
+
+                Book book2 = Book.builder()
+                    .isbn10("1730853935")
+                    .name("The Road to GraphQL: Your journey to master pragmatic GraphQL in JavaScript with React.js and Node.js")
+                    .authors(new ArrayList<>(Arrays.asList(author2)))
+                    .build();
+
+                Book book3 = Book.builder()
+                    .isbn10("1492059897")
+                    .name("Full Stack Serverless: Modern Application Development with React, AWS, and GraphQL")
+                    .authors(new ArrayList<>(Arrays.asList(author3)))
+                    .build();
+
+                Book book4 = Book.builder()
+                    .isbn10("1789134528")
+                    .name("Hands-On Full-Stack Web Development with GraphQL and React")
+                    .authors(new ArrayList<>(Arrays.asList(author4)))
+                    .build();
+
+                Book book5 = Book.builder()
+                    .isbn10("1492030716")
+                    .name("Learning GraphQL: Declarative Data Fetching for Modern Web Apps")
+                    .authors(new ArrayList<>(Arrays.asList(author5,author6)))
+                    .build();
+
+                Book book6 = Book.builder()
+                    .isbn10("1492051721")
+                    .name("Learning React: Modern Patterns for Developing React Apps")
+                    .authors(new ArrayList<>(Arrays.asList(author5,author6)))
+                    .build();
+
+            BookRepository.save(book1);
+            BookRepository.save(book2);
+            BookRepository.save(book3);
+            BookRepository.save(book4);
+            BookRepository.save(book5);
+            BookRepository.save(book6);
+
+        }
+    }
+
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
             </div>
         </div>
     </div>
@@ -374,14 +535,49 @@
     </div>
 </section>
 
-<section data-bs-version="5.1" class="content5 cid-tUhjKSi0tc" id="content5-7ql">
+<section class="content7 cid-tUKhYxzMgF" id="content7-7u3">
     
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>Author.js</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7"></p><p>package com.haddley.haddleyspringgraphql.models;<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>import jakarta.persistence.*;<br>import lombok.*;<br><br>import java.util.ArrayList;<br>import java.util.List;<br><br>@Entity<br>@Data<br>@ToString<br>@Builder<br>@AllArgsConstructor<br>@EqualsAndHashCode(exclude = "books")<br>public class Author {<br><br>    @Id<br>    @GeneratedValue<br>    Long id;<br><br>    String name;<br><br>    @ManyToMany(mappedBy = "authors", cascade = CascadeType.ALL)<br>    List<book> books;<br><br>    public Author() {<br>        books = new ArrayList&lt;&gt;();<br>    }<br>}</book><br></p><p></p>
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Author.js</strong></h5>
+
+<pre class="language-clike"><code><!--         
+package com.haddley.haddleyspringgraphql.models;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Data
+@ToString
+@Builder
+@AllArgsConstructor
+@EqualsAndHashCode(exclude = "books")
+public class Author {
+
+    @Id
+    @GeneratedValue
+    Long id;
+
+    String name;
+
+    @ManyToMany(mappedBy = "authors", cascade = CascadeType.ALL)
+    List<Book> books;
+
+    public Author() {
+        books = new ArrayList<>();
+    }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
             </div>
         </div>
     </div>
@@ -404,14 +600,51 @@
     </div>
 </section>
 
-<section data-bs-version="5.1" class="content5 cid-tUhn8tZJuK" id="content5-7qp">
+<section class="content7 cid-tUKi9QgmLK" id="content7-7u4">
     
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>Book.java</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7"></p><p>package com.haddley.haddleyspringgraphql.models;<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>import jakarta.persistence.*;<br>import lombok.*;<br><br>import java.util.ArrayList;<br>import java.util.List;<br><br>@Entity<br>@Data<br>@ToString<br>@Builder<br>@AllArgsConstructor<br>@EqualsAndHashCode(exclude = "authors")<br>public class Book {<br><br>    @Id<br>    @GeneratedValue<br>    Long id;<br><br>    String name;<br><br>    String isbn10;<br><br>    @ManyToMany(fetch = FetchType.LAZY)<br>    List<author> authors;<br><br>    public Book() {<br>        authors = new ArrayList&lt;&gt;();<br>    }<br>}</author><br></p><p></p>
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Book.java</strong></h5>
+
+<pre class="language-clike"><code><!--         
+package com.haddley.haddleyspringgraphql.models;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Data
+@ToString
+@Builder
+@AllArgsConstructor
+@EqualsAndHashCode(exclude = "authors")
+public class Book {
+
+    @Id
+    @GeneratedValue
+    Long id;
+
+    String name;
+
+    String isbn10;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    List<Author> authors;
+
+    public Book() {
+        authors = new ArrayList<>();
+    }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
             </div>
         </div>
     </div>
@@ -434,14 +667,27 @@
     </div>
 </section>
 
-<section data-bs-version="5.1" class="content5 cid-tUhnx6R4uh" id="content5-7qq">
+<section class="content7 cid-tUKiuamrFQ" id="content7-7u6">
     
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>AuthorRepository.java</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7"></p><p>package com.haddley.haddleyspringgraphql.repositories;<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>import com.haddley.haddleyspringgraphql.models.Author;<br>import org.springframework.data.jpa.repository.JpaRepository;<br><br>public interface AuthorRepository extends JpaRepository<author, long=""> {<br>}<br></author,></p><p></p>
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>AuthorRepository.java</strong></h5>
+
+<pre class="language-clike"><code><!--         
+package com.haddley.haddleyspringgraphql.repositories;
+
+import com.haddley.haddleyspringgraphql.models.Author;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface AuthorRepository extends JpaRepository<Author, Long> {
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
             </div>
         </div>
     </div>
@@ -464,14 +710,27 @@
     </div>
 </section>
 
-<section data-bs-version="5.1" class="content5 cid-tUhnSXXCnr" id="content5-7qr">
+<section class="content7 cid-tUKiGC2ex2" id="content7-7u7">
     
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>BookRepository.java</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7"></p><p>package com.haddley.haddleyspringgraphql.repositories;<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>import com.haddley.haddleyspringgraphql.models.Book;<br>import org.springframework.data.jpa.repository.JpaRepository;<br><br>public interface BookRepository extends JpaRepository<book, long=""> {<br>}<br></book,></p><p></p>
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>BookRepository.java</strong></h5>
+
+<pre class="language-clike"><code><!--         
+package com.haddley.haddleyspringgraphql.repositories;
+
+import com.haddley.haddleyspringgraphql.models.Book;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface BookRepository extends JpaRepository<Book, Long> {
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
             </div>
         </div>
     </div>
@@ -494,14 +753,45 @@
     </div>
 </section>
 
-<section data-bs-version="5.1" class="content5 cid-tUhokvfeo8" id="content5-7qs">
+<section class="content7 cid-tUKiVm2esO" id="content7-7u8">
     
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>schema.graphqls</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7"></p><p>type Query {<br>    books: [Book]<br>    book(id: ID!): Book<br>    authors: [Author]<br>    author(id: ID!): Author<br>}<br><br>type Mutation {<br>    deleteBook(id: ID!): Book<br>    addBook( isbn10: String!, name: String!, authorIds: [ID]!): Book<br>    addAuthor( name: String!): Author<br>}<br><br>type Author {<br>    id: ID!<br>    name: String!<br>    books: [Book]<br>}<br><br>type Book {<br>    id: ID!<br>    isbn10: String!<br>    name: String!<br>    authors: [Author]<br>}<br></p><p></p>
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>schema.graphqls</strong></h5>
+
+<pre class="language-clike"><code><!--         
+type Query {
+    books: [Book]
+    book(id: ID!): Book
+    authors: [Author]
+    author(id: ID!): Author
+}
+
+type Mutation {
+    deleteBook(id: ID!): Book
+    addBook( isbn10: String!, name: String!, authorIds: [ID]!): Book
+    addAuthor( name: String!): Author
+}
+
+type Author {
+    id: ID!
+    name: String!
+    books: [Book]
+}
+
+type Book {
+    id: ID!
+    isbn10: String!
+    name: String!
+    authors: [Author]
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
             </div>
         </div>
     </div>
@@ -524,14 +814,62 @@
     </div>
 </section>
 
-<section data-bs-version="5.1" class="content5 cid-tUhoUtnuT8" id="content5-7qt">
+<section class="content7 cid-tUKjaab3GU" id="content7-7u9">
     
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>AuthorController.java</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7"></p><p>package com.haddley.haddleyspringgraphql.controllers;<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>import com.haddley.haddleyspringgraphql.models.Author;<br>import com.haddley.haddleyspringgraphql.repositories.AuthorRepository;<br>import lombok.NonNull;<br>import lombok.RequiredArgsConstructor;<br>import org.springframework.graphql.data.method.annotation.Argument;<br>import org.springframework.graphql.data.method.annotation.MutationMapping;<br>import org.springframework.graphql.data.method.annotation.QueryMapping;<br>import org.springframework.web.bind.annotation.RequestMapping;<br>import org.springframework.web.bind.annotation.RestController;<br><br>import java.util.Optional;<br><br>@RestController<br>@RequestMapping("/api/authors")<br>@RequiredArgsConstructor<br>public class AuthorController {<br><br>    private final AuthorRepository authorRepository;<br><br>    @QueryMapping<br>    public Iterable<author> authors() {<br>        return authorRepository.findAll();<br>    }<br><br>    @QueryMapping<br>    public Optional<author> author(@Argument Long id) {<br>        return authorRepository.findById(id);<br>    }<br><br>    @MutationMapping<br>    public Author addAuthor(@NonNull @Argument String name) {<br>        Author author = Author.builder()<br>                        .name(name)<br>                        .build();<br><br>        authorRepository.save(author);<br><br>        return author;<br>    }<br>}</author></author><br></p><p></p>
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>AuthorController.java</strong></h5>
+
+<pre class="language-clike"><code><!--         
+package com.haddley.haddleyspringgraphql.controllers;
+
+import com.haddley.haddleyspringgraphql.models.Author;
+import com.haddley.haddleyspringgraphql.repositories.AuthorRepository;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.MutationMapping;
+import org.springframework.graphql.data.method.annotation.QueryMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/api/authors")
+@RequiredArgsConstructor
+public class AuthorController {
+
+    private final AuthorRepository authorRepository;
+
+    @QueryMapping
+    public Iterable<Author> authors() {
+        return authorRepository.findAll();
+    }
+
+    @QueryMapping
+    public Optional<Author> author(@Argument Long id) {
+        return authorRepository.findById(id);
+    }
+
+    @MutationMapping
+    public Author addAuthor(@NonNull @Argument String name) {
+        Author author = Author.builder()
+                        .name(name)
+                        .build();
+
+        authorRepository.save(author);
+
+        return author;
+    }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
             </div>
         </div>
     </div>
@@ -554,14 +892,81 @@
     </div>
 </section>
 
-<section data-bs-version="5.1" class="content5 cid-tUhpiCqENq" id="content5-7qu">
+<section class="content7 cid-tUKjrRMlK5" id="content7-7ua">
     
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>BookController.java</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7"></p><p>package com.haddley.haddleyspringgraphql.controllers;<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>import com.haddley.haddleyspringgraphql.models.Book;<br>import com.haddley.haddleyspringgraphql.models.Author;<br>import com.haddley.haddleyspringgraphql.repositories.BookRepository;<br>import com.haddley.haddleyspringgraphql.repositories.AuthorRepository;<br>import lombok.NonNull;<br>import lombok.RequiredArgsConstructor;<br>import org.springframework.graphql.data.method.annotation.Argument;<br>import org.springframework.graphql.data.method.annotation.MutationMapping;<br>import org.springframework.graphql.data.method.annotation.QueryMapping;<br>import org.springframework.web.bind.annotation.RequestMapping;<br>import org.springframework.web.bind.annotation.RestController;<br><br>import java.util.List;<br>import java.util.stream.Collectors;<br>import java.util.Optional;<br><br>@RestController<br>@RequestMapping("/api/books")<br>@RequiredArgsConstructor<br>public class BookController {<br><br>    private final AuthorRepository authorRepository;<br>    private final BookRepository bookRepository;<br><br>    @QueryMapping<br>    public Iterable<book> books() {<br>        return bookRepository.findAll();<br>    }<br><br>    @QueryMapping<br>    public Optional<book> book(@Argument Long id) {<br>        return bookRepository.findById(id);<br>    }<br><br>    @MutationMapping<br>    public Optional<book> deleteBook(@Argument Long id) {<br>        Optional<book> book = bookRepository.findById(id);<br>        book.ifPresent(b -&gt; bookRepository.deleteById(id));<br>        return book;<br>    }<br><br>    @MutationMapping<br>    public Book addBook(@NonNull @Argument String isbn10, @NonNull @Argument String name, @NonNull @Argument List<long> authorIds) {<br>        List<author> authors = authorIds.stream()<br>                                        .map(authorRepository::findById)<br>                                        .flatMap(Optional::stream)<br>                                        .collect(Collectors.toList());<br><br>        Book book = Book.builder()<br>                        .isbn10(isbn10)<br>                        .name(name)<br>                        .authors(authors)<br>                        .build();<br><br>        bookRepository.save(book);<br><br>        return book;<br>    }<br>}</author></long></book></book></book></book><br></p><p></p>
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>BookController.java</strong></h5>
+
+<pre class="language-clike"><code><!--         
+package com.haddley.haddleyspringgraphql.controllers;
+
+import com.haddley.haddleyspringgraphql.models.Book;
+import com.haddley.haddleyspringgraphql.models.Author;
+import com.haddley.haddleyspringgraphql.repositories.BookRepository;
+import com.haddley.haddleyspringgraphql.repositories.AuthorRepository;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.MutationMapping;
+import org.springframework.graphql.data.method.annotation.QueryMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/api/books")
+@RequiredArgsConstructor
+public class BookController {
+
+    private final AuthorRepository authorRepository;
+    private final BookRepository bookRepository;
+
+    @QueryMapping
+    public Iterable<Book> books() {
+        return bookRepository.findAll();
+    }
+
+    @QueryMapping
+    public Optional<Book> book(@Argument Long id) {
+        return bookRepository.findById(id);
+    }
+
+    @MutationMapping
+    public Optional<Book> deleteBook(@Argument Long id) {
+        Optional<Book> book = bookRepository.findById(id);
+        book.ifPresent(b -> bookRepository.deleteById(id));
+        return book;
+    }
+
+    @MutationMapping
+    public Book addBook(@NonNull @Argument String isbn10, @NonNull @Argument String name, @NonNull @Argument List<Long> authorIds) {
+        List<Author> authors = authorIds.stream()
+                                        .map(authorRepository::findById)
+                                        .flatMap(Optional::stream)
+                                        .collect(Collectors.toList());
+
+        Book book = Book.builder()
+                        .isbn10(isbn10)
+                        .name(name)
+                        .authors(authors)
+                        .build();
+
+        bookRepository.save(book);
+
+        return book;
+    }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
             </div>
         </div>
     </div>
@@ -579,6 +984,108 @@
                     <img src="assets/images/screenshot-2023-10-31-at-10.53.42-am-2136x1017.png" alt="">
                     <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">pom.xml</p>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-tUKjGU80Qg" id="content7-7ub">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>pom.xml</strong></h5>
+
+<pre class="language-clike"><code><!--         
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+	xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+	&lt;parent&gt;
+		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+		&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+		&lt;version&gt;3.1.5&lt;/version&gt;
+		&lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;
+	&lt;/parent&gt;
+	&lt;groupId&gt;com.haddley&lt;/groupId&gt;
+	&lt;artifactId&gt;haddley-spring-graphql&lt;/artifactId&gt;
+	&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+	&lt;name&gt;haddley-spring-graphql&lt;/name&gt;
+	&lt;description&gt;Demo project for Spring Boot&lt;/description&gt;
+	&lt;properties&gt;
+		&lt;java.version&gt;17&lt;/java.version&gt;
+	&lt;/properties&gt;
+	&lt;dependencies&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-starter-graphql&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;
+			&lt;scope&gt;runtime&lt;/scope&gt;
+			&lt;optional&gt;true&lt;/optional&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;com.h2database&lt;/groupId&gt;
+			&lt;artifactId&gt;h2&lt;/artifactId&gt;
+			&lt;scope&gt;runtime&lt;/scope&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+			&lt;artifactId&gt;lombok&lt;/artifactId&gt;
+			&lt;optional&gt;true&lt;/optional&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+			&lt;scope&gt;test&lt;/scope&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-webflux&lt;/artifactId&gt;
+			&lt;scope&gt;test&lt;/scope&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.graphql&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-graphql-test&lt;/artifactId&gt;
+			&lt;scope&gt;test&lt;/scope&gt;
+		&lt;/dependency&gt;
+	&lt;/dependencies&gt;
+
+	&lt;build&gt;
+		&lt;plugins&gt;
+			&lt;plugin&gt;
+				&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+				&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+				&lt;configuration&gt;
+					&lt;excludes&gt;
+						&lt;exclude&gt;
+							&lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+							&lt;artifactId&gt;lombok&lt;/artifactId&gt;
+						&lt;/exclude&gt;
+					&lt;/excludes&gt;
+				&lt;/configuration&gt;
+			&lt;/plugin&gt;
+		&lt;/plugins&gt;
+	&lt;/build&gt;
+
+&lt;/project&gt;
+--></code></pre>
+                    
+
+                    
+</blockquote>
             </div>
         </div>
     </div>

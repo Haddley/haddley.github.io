@@ -237,14 +237,41 @@
     </div>
 </section>
 
-<section data-bs-version="5.1" class="content5 cid-tU5IMzjoQw" id="content5-7n0">
+<section class="content7 cid-tUKmHB79Sf" id="content7-7uh">
     
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>SpringdatajpaApplication.java</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7"></p><p>package com.haddley.springdatajpa;<br><br>import org.springframework.boot.SpringApplication;<br>import org.springframework.boot.autoconfigure.SpringBootApplication;<br><br>import org.springframework.web.bind.annotation.GetMapping;<br>import org.springframework.web.bind.annotation.RequestParam;<br>import org.springframework.web.bind.annotation.RestController;<br><br>@SpringBootApplication<br>@RestController<br>public class SpringdatajpaApplication {<br>    &nbsp;&nbsp;&nbsp;&nbsp;public static void main(String[] args) {<br>      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SpringApplication.run(SpringdatajpaApplication.class, args);<br>    &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;@GetMapping("/hello")<br>    &nbsp;&nbsp;&nbsp;&nbsp;public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {<br>      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return String.format("Hello %s!", name);<br>    &nbsp;&nbsp;&nbsp;&nbsp;}<br>}<br><br></p><p></p>
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>SpringdatajpaApplication.java</strong></h5>
+
+<pre class="language-clike"><code><!--         
+package com.haddley.springdatajpa;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@SpringBootApplication
+@RestController
+public class SpringdatajpaApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(SpringdatajpaApplication.class, args);
+    }
+
+    @GetMapping("/hello")
+    public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
+        return String.format("Hello %s!", name);
+    }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
             </div>
         </div>
     </div>
@@ -284,14 +311,77 @@
     </div>
 </section>
 
-<section data-bs-version="5.1" class="content5 cid-tU5IOudxlZ" id="content5-7n1">
+<section class="content7 cid-tUKmS3qx5x" id="content7-7ui">
     
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>TodoItem.java</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7"></p><p>package com.haddley.springdatajpa.models;<br><br>import java.time.Instant;<br><br>import jakarta.persistence.Entity;<br>import jakarta.persistence.GeneratedValue;<br>import jakarta.persistence.GenerationType;<br>import jakarta.persistence.Id;<br>import jakarta.persistence.Table;<br>import jakarta.validation.constraints.NotBlank;<br><br>import lombok.Getter;<br>import lombok.Setter;<br><br>@Entity<br>@Table(name = "todo_item")<br>public class TodoItem {<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;@Id<br>    &nbsp;&nbsp;&nbsp;&nbsp;@GeneratedValue(strategy = GenerationType.AUTO)<br>    &nbsp;&nbsp;&nbsp;&nbsp;@Getter<br>    &nbsp;&nbsp;&nbsp;&nbsp;@Setter<br>    &nbsp;&nbsp;&nbsp;&nbsp;private Long id;<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;@Getter<br>    &nbsp;&nbsp;&nbsp;&nbsp;@Setter<br>    &nbsp;&nbsp;&nbsp;&nbsp;@NotBlank(message = "Description is required")<br>    &nbsp;&nbsp;&nbsp;&nbsp;private String description;<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;@Getter<br>    &nbsp;&nbsp;&nbsp;&nbsp;@Setter<br>    &nbsp;&nbsp;&nbsp;&nbsp;private boolean complete;<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;@Getter<br>    &nbsp;&nbsp;&nbsp;&nbsp;@Setter<br>    &nbsp;&nbsp;&nbsp;&nbsp;private Instant createdDate;<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;@Getter<br>    &nbsp;&nbsp;&nbsp;&nbsp;@Setter<br>    &nbsp;&nbsp;&nbsp;&nbsp;private Instant modifiedDate;<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;public TodoItem() {}<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;public TodoItem(String description) {<br>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.description = description;<br>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.complete = false;<br>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.createdDate = Instant.now();<br>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.modifiedDate = Instant.now();<br>    &nbsp;&nbsp;&nbsp;&nbsp;}<br>    <br>    &nbsp;&nbsp;&nbsp;&nbsp;@Override<br>    &nbsp;&nbsp;&nbsp;&nbsp;public String toString() {<br>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return String.format("TodoItem{id=%d, description='%s', complete='%s', createdDate='%s', modifiedDate='%s'}", id, description, complete, createdDate, modifiedDate);<br>    &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>    <br>}<br></p><p></p>
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>TodoItem.java</strong></h5>
+
+<pre class="language-clike"><code><!--         
+package com.haddley.springdatajpa.models;
+
+import java.time.Instant;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Table(name = "todo_item")
+public class TodoItem {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Getter
+    @Setter
+    private Long id;
+
+    @Getter
+    @Setter
+    @NotBlank(message = "Description is required")
+    private String description;
+
+    @Getter
+    @Setter
+    private boolean complete;
+
+    @Getter
+    @Setter
+    private Instant createdDate;
+
+    @Getter
+    @Setter
+    private Instant modifiedDate;
+
+    public TodoItem() {}
+
+    public TodoItem(String description) {
+        this.description = description;
+        this.complete = false;
+        this.createdDate = Instant.now();
+        this.modifiedDate = Instant.now();
+    }
+
+    @Override
+    public String toString() {
+        return String.format("TodoItem{id=%d, description='%s', complete='%s', createdDate='%s', modifiedDate='%s'}", id, description, complete, createdDate, modifiedDate);
+    }
+
+
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
             </div>
         </div>
     </div>
@@ -314,14 +404,27 @@
     </div>
 </section>
 
-<section data-bs-version="5.1" class="content5 cid-tU5NdTOqvI" id="content5-7n2">
+<section class="content7 cid-tUKn3qEgFd" id="content7-7uj">
     
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>TodoItemRepository.java</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7"></p><p>package com.haddley.springdatajpa.models;<br><br>import com.haddley.springdatajpa.models.TodoItem;<br>import org.springframework.data.repository.CrudRepository;<br><br>public interface TodoItemRepository extends CrudRepository<todoitem, long=""> {</todoitem,><todoitem, long=""><br>}</todoitem,><br></p><p></p>
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>TodoItemRepository.java</strong></h5>
+
+<pre class="language-clike"><code><!--         
+package com.haddley.springdatajpa.models;
+
+import com.haddley.springdatajpa.models.TodoItem;
+import org.springframework.data.repository.CrudRepository;
+
+public interface TodoItemRepository extends CrudRepository {
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
             </div>
         </div>
     </div>
@@ -344,14 +447,57 @@
     </div>
 </section>
 
-<section data-bs-version="5.1" class="content5 cid-tU5OKD7oEg" id="content5-7n3">
+<section class="content7 cid-tUKn4pm6Jb" id="content7-7uk">
     
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>TodoItemDataLoader.java</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7"></p><p>package com.haddley.springdatajpa.config;<br><br>import com.haddley.springdatajpa.models.TodoItem;<br>import com.haddley.springdatajpa.repositories.TodoItemRepository;<br><br>import org.slf4j.Logger;<br>import org.slf4j.LoggerFactory;<br>import org.springframework.beans.factory.annotation.Autowired;<br>import org.springframework.boot.CommandLineRunner;<br>import org.springframework.stereotype.Component;<br><br>@Component<br>public class TodoItemDataLoader implements CommandLineRunner {<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;private final Logger logger = LoggerFactory.getLogger(TodoItemDataLoader.class);<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;@Autowired<br>    &nbsp;&nbsp;&nbsp;&nbsp;TodoItemRepository todoItemRepository;<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;@Override<br>    &nbsp;&nbsp;&nbsp;&nbsp;public void run(String... args) throws Exception {<br>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;loadSeedData();<br>    &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;private void loadSeedData() {<br>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (todoItemRepository.count() == 0) {<br>            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TodoItem todoItem1 = new TodoItem("get the milk");<br>            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TodoItem todoItem2 = new TodoItem("rake the leaves");<br><br>            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;todoItemRepository.save(todoItem1);<br>            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;todoItemRepository.save(todoItem2); <br>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;logger.info("Number of TodoItems: {}", todoItemRepository.count());<br>    &nbsp;&nbsp;&nbsp;&nbsp;}<br>    <br>}<br></p><p></p>
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>TodoItemDataLoader.java</strong></h5>
+
+<pre class="language-clike"><code><!--         
+package com.haddley.springdatajpa.config;
+
+import com.haddley.springdatajpa.models.TodoItem;
+import com.haddley.springdatajpa.repositories.TodoItemRepository;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+@Component
+public class TodoItemDataLoader implements CommandLineRunner {
+
+    private final Logger logger = LoggerFactory.getLogger(TodoItemDataLoader.class);
+
+    @Autowired
+    TodoItemRepository todoItemRepository;
+
+    @Override
+    public void run(String... args) throws Exception {
+        loadSeedData();
+    }
+
+    private void loadSeedData() {
+        if (todoItemRepository.count() == 0) {
+            TodoItem todoItem1 = new TodoItem("get the milk");
+            TodoItem todoItem2 = new TodoItem("rake the leaves");
+
+            todoItemRepository.save(todoItem1);
+            todoItemRepository.save(todoItem2); 
+        }
+
+        logger.info("Number of TodoItems: {}", todoItemRepository.count());
+    }
+
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
             </div>
         </div>
     </div>
@@ -374,14 +520,63 @@
     </div>
 </section>
 
-<section data-bs-version="5.1" class="content5 cid-tU64ZADDTe" id="content5-7n4">
+<section class="content7 cid-tUKn5hWCYu" id="content7-7ul">
     
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>SpringdatajpaApplication.java (updated)</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7"></p><p>package com.haddley.springdatajpa;<br><br>import org.springframework.boot.SpringApplication;<br>import org.springframework.boot.autoconfigure.SpringBootApplication;<br><br>import org.springframework.web.bind.annotation.GetMapping;<br>import org.springframework.web.bind.annotation.RequestParam;<br>import org.springframework.web.bind.annotation.RestController;<br><br>import com.haddley.springdatajpa.models.TodoItem;<br>import com.haddley.springdatajpa.repositories.TodoItemRepository;<br>import org.springframework.beans.factory.annotation.Autowired;<br><br>import java.util.stream.StreamSupport;<br>import java.util.stream.Collectors;<br><br>@SpringBootApplication<br>@RestController<br>public class SpringdatajpaApplication {<br><br></p><p>    &nbsp;&nbsp;&nbsp;&nbsp;public static void main(String[] args) {<br>      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SpringApplication.run(SpringdatajpaApplication.class, args);<br>    &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;@GetMapping("/hello")<br>    &nbsp;&nbsp;&nbsp;&nbsp;public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {<br>      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return String.format("Hello %s!", name);<br>    &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;@Autowired<br>    &nbsp;&nbsp;&nbsp;&nbsp;private TodoItemRepository todoItemRepository;<br><br>    &nbsp;&nbsp;&nbsp;&nbsp;@GetMapping("/todos")<br>    &nbsp;&nbsp;&nbsp;&nbsp;public String index() {<br><br>      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Iterable<todoitem> todos = todoItemRepository.findAll();<br><br>      </todoitem>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<todoitem>return StreamSupport.stream(todos.spliterator(), false)<br>        </todoitem>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<todoitem>.map(TodoItem::toString) <br>        </todoitem>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<todoitem>.collect(Collectors.joining(", ")); <br><br>    </todoitem>&nbsp;&nbsp;&nbsp;&nbsp;<todoitem>}<br><br>}</todoitem><br></p><p></p>
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>SpringdatajpaApplication.java (updated)</strong></h5>
+
+<pre class="language-clike"><code><!--         
+package com.haddley.springdatajpa;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.haddley.springdatajpa.models.TodoItem;
+import com.haddley.springdatajpa.repositories.TodoItemRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.stream.StreamSupport;
+import java.util.stream.Collectors;
+
+@SpringBootApplication
+@RestController
+public class SpringdatajpaApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(SpringdatajpaApplication.class, args);
+    }
+
+    @GetMapping("/hello")
+    public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
+        return String.format("Hello %s!", name);
+    }
+
+    @Autowired
+    private TodoItemRepository todoItemRepository;
+
+    @GetMapping("/todos")
+    public String index() {
+
+        Iterable todos = todoItemRepository.findAll();
+
+        return StreamSupport.stream(todos.spliterator(), false)
+            .map(TodoItem::toString) 
+            .collect(Collectors.joining(", ")); 
+
+    }
+
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
             </div>
         </div>
     </div>
@@ -421,14 +616,25 @@
     </div>
 </section>
 
-<section data-bs-version="5.1" class="content5 cid-tU68HE5Z7q" id="content5-7n9">
+<section class="content7 cid-tUKn6SQCnz" id="content7-7um">
     
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>application.properties</strong></h4>
-                <p class="mbr-text mbr-fonts-style display-7"></p><p>spring.datasource.url=jdbc:h2:mem:testdb<br>spring.datasource.driverClassName=org.h2.Driver<br>spring.datasource.username=sa<br>spring.datasource.password=password<br>spring.jpa.database-platform=org.hibernate.dialect.H2Dialect<br><br></p><p></p>
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>application.properties</strong></h5>
+
+<pre class="language-clike"><code><!--         
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=password
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+--></code></pre>
+                    
+
+                    
+</blockquote>
             </div>
         </div>
     </div>
