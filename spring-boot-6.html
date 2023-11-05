@@ -797,29 +797,29 @@ public class MyPageController {
                 <blockquote>
                 <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>index.html</strong></h5>
 
-<pre class="language-clike"><code><!--         
+        
 &lt;!DOCTYPE html&gt;    
-&lt;html xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
+&lt;html xmlns:th="http://www.thymeleaf.org"&gt;
 &lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta charset="UTF-8"&gt;
     &lt;title&gt;My Application&lt;/title&gt;
 
-    &lt;script th:src=&quot;@{/webjars/jquery/3.1.1/jquery.min.js}&quot;&gt;&lt;/script&gt;
-    &lt;script th:src=&quot;@{/webjars/bootstrap/5.3.2/js/bootstrap.min.js}&quot;&gt;&lt;/script&gt;
-    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; th:href=&quot;@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}&quot; /&gt;
-    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; th:href=&quot;@{/css/styles.css}&quot; /&gt;
+    &lt;script th:src="@"&gt;&lt;/script&gt;
+    &lt;script th:src="@"&gt;&lt;/script&gt;
+    &lt;link rel="stylesheet" type="text/css" th:href="@" /&gt;
+    &lt;link rel="stylesheet" type="text/css" th:href="@" /&gt;
 
 &lt;/head&gt;
 &lt;body&gt;
 
-&lt;div th:replace=&quot;navbar.html :: navbar(page=&apos;index&apos;)&quot;&gt;&lt;/div&gt;
+&lt;div th:replace="navbar.html :: navbar(page='index')"&gt;&lt;/div&gt;
 
 &lt;div&gt;
       &lt;h1&gt; Home Page &lt;/h1&gt;
 &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;
---></code></pre>
+
                     
 
                     
@@ -854,25 +854,25 @@ public class MyPageController {
                 <blockquote>
                 <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>navbar.html</strong></h5>
 
-<pre class="language-clike"><code><!--         
-&lt;nav th:fragment=&quot;navbar (page)&quot; class=&quot;navbar navbar-expand-md bg-dark navbar-dark&quot;&gt;
-    &lt;div class=&quot;container-fluid&quot;&gt;
-        &lt;div class=&quot;navbar-header&quot;&gt;
-            &lt;a class=&quot;navbar-brand&quot; th:href=&quot;@{/}&quot;&gt;My Application&lt;/a&gt;
+       
+&lt;nav th:fragment="navbar (page)" class="navbar navbar-expand-md bg-dark navbar-dark"&gt;
+    &lt;div class="container-fluid"&gt;
+        &lt;div class="navbar-header"&gt;
+            &lt;a class="navbar-brand" th:href="@"&gt;My Application&lt;/a&gt;
         &lt;/div&gt;
-        &lt;ul class=&quot;nav navbar-nav&quot;&gt;
-            &lt;li th:if=&quot;${!isAuthenticated}&quot;&gt;&lt;a class=&quot;nav-link&quot; th:href=&quot;@{/oauth2/authorization/github}&quot;&gt;Login&lt;/a&gt;&lt;/li&gt;
-            &lt;li th:if=&quot;${isUser &amp;&amp; page==&apos;user&apos;}&quot;&gt;&lt;a  class=&quot;active nav-link&quot; th:href=&quot;@{/user}&quot;&gt;User&lt;/a&gt;&lt;/li&gt;
-            &lt;li th:if=&quot;${isUser &amp;&amp; page!=&apos;user&apos;}&quot;&gt;&lt;a  class=&quot;nav-link&quot; th:href=&quot;@{/user}&quot;&gt;User&lt;/a&gt;&lt;/li&gt;
-            &lt;li th:if=&quot;${isAdmin &amp;&amp; page==&apos;admin&apos;}&quot;&gt;&lt;a class=&quot;active nav-link&quot; th:href=&quot;@{/admin}&quot;&gt;Admin&lt;/a&gt;&lt;/li&gt;
-            &lt;li th:if=&quot;${isAdmin &amp;&amp; page!=&apos;admin&apos;}&quot;&gt;&lt;a  class=&quot;nav-link&quot; th:href=&quot;@{/admin}&quot;&gt;Admin&lt;/a&gt;&lt;/li&gt;
-            &lt;li th:if=&quot;${isAuthenticated}&quot;&gt;
-                &lt;img th:src=&quot;${avatarUrl}&quot; style=&quot;height: 40px; width: 40px;&quot; class=&quot;avatar circle&quot;&gt;
+        &lt;ul class="nav navbar-nav"&gt;
+            &lt;li th:if="$"&gt;&lt;a class="nav-link" th:href="@"&gt;Login&lt;/a&gt;&lt;/li&gt;
+            &lt;li th:if="$"&gt;&lt;a  class="active nav-link" th:href="@"&gt;User&lt;/a&gt;&lt;/li&gt;
+            &lt;li th:if="$"&gt;&lt;a  class="nav-link" th:href="@"&gt;User&lt;/a&gt;&lt;/li&gt;
+            &lt;li th:if="$"&gt;&lt;a class="active nav-link" th:href="@"&gt;Admin&lt;/a&gt;&lt;/li&gt;
+            &lt;li th:if="$"&gt;&lt;a  class="nav-link" th:href="@"&gt;Admin&lt;/a&gt;&lt;/li&gt;
+            &lt;li th:if="$"&gt;
+                &lt;img th:src="$" style="height: 40px; width: 40px;" class="avatar circle"&gt;
             &lt;/li&gt;
         &lt;/ul&gt;
     &lt;/div&gt;    
 &lt;/nav&gt;
---></code></pre>
+
                     
 
                     

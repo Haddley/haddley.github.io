@@ -143,10 +143,10 @@
                 <blockquote>
                 <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>pom.xml</strong></h5>
 
-<pre class="language-clike"><code><!--         
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-	xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+<pre class="language-clike"><code>        
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
 	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
 	&lt;parent&gt;
 		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
@@ -236,7 +236,7 @@
 	&lt;/build&gt;
 
 &lt;/project&gt;
---></code></pre>
+</code></pre>
                     
 
                     
@@ -271,23 +271,23 @@
                 <blockquote>
                 <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>index.html</strong></h5>
 
-<pre class="language-clike"><code><!--         
+         
 &lt;!DOCTYPE html&gt;
-&lt;html xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
+&lt;html xmlns:th="http://www.thymeleaf.org"&gt;
 
 &lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
-    &lt;link th:rel=&quot;stylesheet&quot; th:href=&quot;@{/webjars/bootstrap/3.4.1/css/bootstrap.min.css} &quot; /&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+    &lt;link th:rel="stylesheet" th:href="@ " /&gt;
 &lt;/head&gt;
 
 &lt;body&gt;
-    &lt;div class=&quot;container&quot;&gt;
-        &lt;h1 class=&quot;text-center&quot;&gt;Todo List&lt;/h1&gt;
+    &lt;div class="container"&gt;
+        &lt;h1 class="text-center"&gt;Todo List&lt;/h1&gt;
         &lt;hr /&gt;
-        &lt;p th:text=&quot;|Happy ${today}|&quot;&gt;Today&lt;/p&gt;
-        &lt;table class=&quot;table table-bordered table-striped&quot;&gt;
+        &lt;p th:text="|Happy $|"&gt;Today&lt;/p&gt;
+        &lt;table class="table table-bordered table-striped"&gt;
             &lt;thead&gt;
                 &lt;tr&gt;
                     &lt;th&gt;Actions&lt;/th&gt;
@@ -299,31 +299,31 @@
                 &lt;/tr&gt;
             &lt;/thead&gt;
             &lt;tbody&gt;
-                &lt;tr th:each=&quot;item : ${todoItems}&quot; th:class=&quot;${item.complete} ? success : warning&quot;&gt;
+                &lt;tr th:each="item : $" th:class="$ ? success : warning"&gt;
                     &lt;td&gt;
-                        &lt;div class=&quot;btn btn-group-sm&quot; role=&quot;group&quot;&gt;
-                            &lt;a class=&quot;btn btn-info&quot; th:href=&quot;@{/edit/{id}(id=${item.id})}&quot;&gt;Edit&lt;/a&gt;
-                            &lt;a class=&quot;btn btn-danger&quot; th:href=&quot;@{/delete/{id}(id=${item.id})}&quot;&gt;Delete&lt;/a&gt;
+                        &lt;div class="btn btn-group-sm" role="group"&gt;
+                            &lt;a class="btn btn-info" th:href="@(id=$)}"&gt;Edit&lt;/a&gt;
+                            &lt;a class="btn btn-danger" th:href="@(id=$)}"&gt;Delete&lt;/a&gt;
                         &lt;/div&gt;
                     &lt;/td&gt;
-                    &lt;td th:text=&quot;${item.id}&quot;&gt;item_id&lt;/td&gt;
-                    &lt;td th:text=&quot;${item.description}&quot;&gt;item_description&lt;/td&gt;
-                    &lt;td th:text=&quot;${item.complete}&quot;&gt;item_complete&lt;/td&gt;
-                    &lt;td th:text=&quot;${item.createdDate}&quot;&gt;item_created_date&lt;/td&gt;
-                    &lt;td th:text=&quot;${item.modifiedDate}&quot;&gt;item_modified_date&lt;/td&gt;
+                    &lt;td th:text="$"&gt;item_id&lt;/td&gt;
+                    &lt;td th:text="$"&gt;item_description&lt;/td&gt;
+                    &lt;td th:text="$"&gt;item_complete&lt;/td&gt;
+                    &lt;td th:text="$"&gt;item_created_date&lt;/td&gt;
+                    &lt;td th:text="$"&gt;item_modified_date&lt;/td&gt;
                 &lt;/tr&gt;
             &lt;/tbody&gt;
         &lt;/table&gt;
 
-        &lt;p&gt;&lt;a class=&quot;btn btn-success&quot; href=&quot;/create-todo&quot;&gt;Add a Todo!&lt;/a&gt;&lt;/p&gt;
+        &lt;p&gt;&lt;a class="btn btn-success" href="/create-todo"&gt;Add a Todo!&lt;/a&gt;&lt;/p&gt;
     &lt;/div&gt;
 
-    &lt;script th:src=&quot;@{/webjars/jquery/3.6.0/jquery.min.js}&quot;&gt;&lt;/script&gt;
-    &lt;script th:src=&quot;@{/webjars/bootstrap/3.4.1/js/bootstrap.min.js}&quot;&gt;&lt;/script&gt;
+    &lt;script th:src="@"&gt;&lt;/script&gt;
+    &lt;script th:src="@"&gt;&lt;/script&gt;
 &lt;/body&gt;
 
 &lt;/html&gt;
---></code></pre>
+
                     
 
                     
