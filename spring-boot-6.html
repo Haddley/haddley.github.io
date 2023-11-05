@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html  >
 <head>
-  <!-- Site made with Mobirise Website Builder v5.9.4, https://mobirise.com -->
+  
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Mobirise v5.9.4, mobirise.com">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
   <meta name="description" content="">
@@ -13,16 +13,15 @@
   <title>Java Spring Boot (Part 6)</title>
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
   <link rel="stylesheet" href="assets/dropdown/css/style.css">
   <link rel="stylesheet" href="assets/socicon/css/styles.css">
   <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
   <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
-
+  
   
   <link href="prism.css" rel="stylesheet" />
 <!-- include A-Frame obviously -->
@@ -336,30 +335,6 @@
     </div>
 </section>
 
-<section data-bs-version="5.1" class="header4 cid-tUHAyBa6XQ mbr-fullscreen" id="header4-7t0">
-
-    
-    
-    <div class="container">
-        <div class="row">
-            <div class="content-wrap">
-                <h1 class="mbr-section-title mbr-fonts-style mbr-white mb-3 display-1">
-                    <strong>New Possibilities</strong>
-                </h1>
-                
-                <p class="mbr-fonts-style mbr-text mbr-white mb-3 display-7">
-                    Block with flexible configuration, free vertical and horizontal content movement (only when
-                    full screen is on)
-                </p>
-
-                <div class="mbr-section-btn">
-                    <a class="btn btn-primary display-4" href="https://mobiri.se">Learn more</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <section data-bs-version="5.1" class="content5 cid-tUHARPXO1q" id="content5-7ti">
     
     <div class="container">
@@ -400,8 +375,86 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screenshot-2023-11-04-at-10.29.08-pm-1661x862.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/opt/homebrew/Cellar/glfw/3.3.8/include</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created a SecurityFilterChain Bean to control access</p>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-tUHHBzLakk" id="content7-7tm">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7">SecurityConfig.java</h5>
+
+<pre class="language-clike"><code><!--         
+package com.haddley.springoauth2.controller.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.web.SecurityFilterChain;
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+    @Bean
+    SecurityFilterChain configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests(auth -> auth.requestMatchers("/").permitAll());
+        http.authorizeRequests(auth -> auth.requestMatchers("/webjars/bootstrap/**", "/webjars/jquery/**", "/webjars/popper.js/**").permitAll());
+        http.authorizeRequests(auth -> auth.requestMatchers("/user").hasRole("USER"));
+        http.authorizeRequests(auth -> auth.requestMatchers("/admin").hasRole("ADMIN"));
+
+        return http.oauth2Login().and().build();
+    }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-tUHHzDrpxt" id="content7-7tl">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7">WebConfig.java</h5>
+
+<pre class="language-clike"><code><!--         
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+@EnableWebMvc
+public class WebConfig implements WebMvcConfigurer {
+
+    private static final String WEBJARS_PATH_PATTERN = "/webjars/**";
+    private static final String WEBJARS_LOCATION = "/webjars/";
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler(WEBJARS_PATH_PATTERN)
+                .addResourceLocations(WEBJARS_LOCATION);
+    }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
             </div>
         </div>
     </div>
@@ -417,8 +470,121 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screenshot-2023-11-04-at-10.29.37-pm-1663x868.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/opt/homebrew/Cellar/glfw/3.3.8/include</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created a service that assigns security Roles to users (user with GitHub ID=15018162 is the only ADMIN)</p>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-tUHHCAs4h5" id="content7-7tn">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7">CustomOAuthUserService.java</h5>
+
+<pre class="language-clike"><code><!--         
+package com.haddley.springoauth2.service;
+
+import com.haddley.springoauth2.model.CustomOAuth2User;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
+import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
+import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.stereotype.Service;
+
+import java.util.Arrays;
+import java.util.Collections;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+@Service
+public class CustomOAuth2UserService extends DefaultOAuth2UserService {
+
+    private static final Logger logger = LoggerFactory.getLogger(CustomOAuth2UserService.class);
+    private static final String ADMIN_USER_NAME = "15018162";
+    private static final String ROLE_USER = "ROLE_USER";
+    private static final String ROLE_ADMIN = "ROLE_ADMIN";
+
+    @Override
+    public CustomOAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
+        OAuth2User user = super.loadUser(userRequest);
+
+        logger.info("User Details: {}", user);
+        logger.info("User Name Details: {}", user.getName());
+
+        return createCustomOAuth2User(user);
+    }
+
+    private CustomOAuth2User createCustomOAuth2User(OAuth2User user) {
+        if (ADMIN_USER_NAME.equals(user.getName())) {
+            return new CustomOAuth2User(user, Arrays.asList(new SimpleGrantedAuthority(ROLE_USER), new SimpleGrantedAuthority(ROLE_ADMIN)));
+        }
+
+        return new CustomOAuth2User(user, Collections.singleton(new SimpleGrantedAuthority(ROLE_USER)));
+    }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-tUHIh0nRE3" id="content7-7ts">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7">CustomOAuth2User.java</h5>
+
+<pre class="language-clike"><code><!--         
+package com.haddley.springoauth2.model;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.oauth2.core.user.OAuth2User;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Map;
+
+public class CustomOAuth2User implements OAuth2User {
+
+    private final OAuth2User oAuth2User;
+    private final Collection<? extends GrantedAuthority> authorities;
+
+    public CustomOAuth2User(OAuth2User oAuth2User, Collection<? extends GrantedAuthority> authorities) {
+        this.oAuth2User = oAuth2User;
+        this.authorities = Collections.unmodifiableCollection(authorities);
+    }
+
+    @Override
+    public Map<String, Object> getAttributes() {
+        return oAuth2User.getAttributes();
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return authorities;
+    }
+
+    @Override
+    public String getName() {
+        return oAuth2User.getName();
+    }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
             </div>
         </div>
     </div>
@@ -434,8 +600,49 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screenshot-2023-11-04-at-10.32.46-pm-1665x589.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/opt/homebrew/Cellar/glfw/3.3.8/include</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">REST Controller (not used here because we are generating pages server-side only)</p>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-tUHHDhG2vA" id="content7-7to">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7">MyRestController.java</h5>
+
+<pre class="language-clike"><code><!--         
+package com.haddley.springoauth2.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.security.core.Authentication;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+@RestController
+public class MyRestController {
+
+    private static final Logger logger = LoggerFactory.getLogger(MyRestController.class);
+    private static final String DEFAULT_NAME = "World";
+    private static final String SECURED_MESSAGE_FORMAT = "Secured %s!";
+
+    @GetMapping("/private")
+    public String privateHello(@RequestParam(value = "name", defaultValue = DEFAULT_NAME) String name, Authentication authentication) {
+        logger.info("Authentication Details: {}", authentication);
+        return String.format(SECURED_MESSAGE_FORMAT, name);
+    }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
             </div>
         </div>
     </div>
@@ -451,8 +658,101 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screenshot-2023-11-04-at-10.33.54-pm-1661x867.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/opt/homebrew/Cellar/glfw/3.3.8/include</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">ModelAndView Controller</p>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-tUHHDSreAt" id="content7-7tp">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7">MyPageController.java</h5>
+
+<pre class="language-clike"><code><!--         
+package com.haddley.springoauth2.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.security.core.Authentication;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.security.oauth2.core.user.OAuth2User;
+
+import java.util.Map;
+
+@Controller
+public class MyPageController {
+
+    private static final Logger logger = LoggerFactory.getLogger(MyPageController.class);
+    private static final String AVATAR_URL_KEY = "avatar_url";
+    private static final String INDEX_VIEW_NAME = "index";
+    private static final String USER_VIEW_NAME = "user";
+    private static final String ADMIN_VIEW_NAME = "admin";
+
+    @GetMapping("/")
+    public ModelAndView index(Authentication authentication) {
+        return prepareModelAndView(authentication, INDEX_VIEW_NAME);
+    }
+
+    @GetMapping("/user")
+    public ModelAndView user(Authentication authentication) {
+        return prepareModelAndView(authentication, USER_VIEW_NAME);
+    }
+
+    @GetMapping("/admin")
+    public ModelAndView admin(Authentication authentication) {
+        return prepareModelAndView(authentication, ADMIN_VIEW_NAME);
+    }
+
+    private ModelAndView prepareModelAndView(Authentication authentication, String viewName) {
+        logger.info("Authentication Details: {}", authentication);
+
+        ModelAndView modelAndView = new ModelAndView(viewName);
+        boolean isAuthenticated = false;
+        boolean isUser = false;
+        boolean isAdmin = false;
+
+        if (authentication != null && authentication.isAuthenticated()) {
+            OAuth2User oAuth2User = (OAuth2User) authentication.getPrincipal();
+            String avatarUrl = getAvatarUrl(oAuth2User);
+
+            isAuthenticated = true;
+            isUser = authentication.getAuthorities().stream().anyMatch(grantedAuthority -> grantedAuthority.getAuthority().equals("ROLE_USER"));
+            isAdmin = authentication.getAuthorities().stream().anyMatch(grantedAuthority -> grantedAuthority.getAuthority().equals("ROLE_ADMIN"));
+
+            logger.info("User Avatar URL: {}", avatarUrl);
+
+            modelAndView.addObject("avatarUrl", avatarUrl);
+
+        }
+
+        logger.info("isAuthenticated: {}", isAuthenticated);
+        logger.info("isUser: {}", isUser);
+        logger.info("isAdmin: {}", isAdmin);
+
+        modelAndView.addObject("isAuthenticated", isAuthenticated);
+        modelAndView.addObject("isUser", isUser);
+        modelAndView.addObject("isAdmin", isAdmin);
+
+        return modelAndView;
+    }
+
+    private String getAvatarUrl(OAuth2User oAuth2User) {
+        Map<String, Object> attributes = oAuth2User.getAttributes();
+        return (String) attributes.get(AVATAR_URL_KEY);
+    }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
             </div>
         </div>
     </div>
@@ -468,7 +768,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screenshot-2023-11-04-at-10.30.20-pm-1665x656.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/opt/homebrew/Cellar/glfw/3.3.8/include</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">index view</p>
                 </div>
             </div>
         </div>
@@ -485,7 +785,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screenshot-2023-11-04-at-10.30.43-pm-1666x696.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/opt/homebrew/Cellar/glfw/3.3.8/include</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">navbar fragment</p>
                 </div>
             </div>
         </div>
@@ -502,7 +802,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screenshot-2023-11-04-at-10.34.49-pm-1413x869.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/opt/homebrew/Cellar/glfw/3.3.8/include</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Home view</p>
                 </div>
             </div>
         </div>
@@ -519,7 +819,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screenshot-2023-11-04-at-10.35.41-pm-1413x866.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/opt/homebrew/Cellar/glfw/3.3.8/include</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked on the Login button</p>
                 </div>
             </div>
         </div>
@@ -536,7 +836,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screenshot-2023-11-04-at-10.36.13-pm-1412x870.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/opt/homebrew/Cellar/glfw/3.3.8/include</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I entered an Authentication code</p>
                 </div>
             </div>
         </div>
@@ -553,7 +853,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screenshot-2023-11-04-at-10.37.30-pm-1413x870.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/opt/homebrew/Cellar/glfw/3.3.8/include</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Home view with User Menu Item, Admin Menu Item and User Avatar.</p>
                 </div>
             </div>
         </div>
@@ -570,7 +870,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screenshot-2023-11-04-at-10.38.09-pm-1411x867.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/opt/homebrew/Cellar/glfw/3.3.8/include</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">User view</p>
                 </div>
             </div>
         </div>
@@ -587,7 +887,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screenshot-2023-11-04-at-10.38.32-pm-1414x868.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/opt/homebrew/Cellar/glfw/3.3.8/include</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Admin view</p>
                 </div>
             </div>
         </div>
@@ -604,7 +904,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screenshot-2023-11-04-at-10.39.20-pm-1414x272.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/opt/homebrew/Cellar/glfw/3.3.8/include</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">user api result</p>
                 </div>
             </div>
         </div>
@@ -621,7 +921,7 @@
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screenshot-2023-11-04-at-10.39.41-pm-1416x235.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/opt/homebrew/Cellar/glfw/3.3.8/include</p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">admin api result</p>
                 </div>
             </div>
         </div>
@@ -641,7 +941,15 @@
                 <div class="card-wrapper">
                     <div class="card-box align-center">
                         <span class="mbr-iconfont socicon-youtube socicon"></span>
-                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://www.youtube.com/watch?v=us0VjFiHogo" class="text-primary" target="_blank">OAuth2 Login Made Easy in Java: A Spring Boot &amp; Spring Security Walkthrough</a></strong><strong><a href="https://www.geeksforgeeks.org/black-and-white-image-colorization-with-opencv-and-deep-learning" class="text-primary" target="_blank"><br></a></strong></h4>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://www.youtube.com/watch?v=us0VjFiHogo" class="text-primary" target="_blank">OAuth2Advanced Spring Security Login Made Easy in Java</a></strong><strong><a href="https://www.geeksforgeeks.org/black-and-white-image-colorization-with-opencv-and-deep-learning" class="text-primary" target="_blank"><br></a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-3 col-12 col-md-4 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont socicon-youtube socicon"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://www.youtube.com/watch?v=PczgM2L3w60" class="text-primary" target="_blank">Advanced Spring Security</a></strong></h4>
                     </div>
                 </div>
             </div>
@@ -649,10 +957,21 @@
             
             
             
-            
         </div>
     </div>
-</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><a href="https://mobiri.se/2350277" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p><a style="z-index:1" href="https://mobirise.com/builder/ai-website-builder.html">AI Website Builder</a></section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
+</section>
+
+
+<script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/popper/popper.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/dropdown/js/nav-dropdown.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
   <script src="prism.js"></script>
 <script src="webcomponents/howtoTooltip.js"></script>
   
