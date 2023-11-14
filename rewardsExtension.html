@@ -119,49 +119,6 @@
     </div>
 </section>
 
-<section class="content5 cid-tOrjgQL3yz" id="content5-6p8">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">ChatGPT<br></h4>
-                <p class="mbr-text mbr-fonts-style display-7"><strong>Please explain this Business Central AL code</strong><br><br>The provided code is written in AL (Application Language), which is used for developing extensions for Microsoft Dynamics 365 Business Central, an enterprise resource planning (ERP) solution. This code defines tables, pages, and table/page extensions related to a "Reward" functionality within Business Central. Let's break down the code step by step:<br><br>Table Definition (table 50100 Reward):<br>This section defines a table named "Reward" with a table number of 50100.<br>The table has fields for storing information about rewards, such as "Reward ID," "Description," "Discount Percentage," and "Minimum Purchase."<br>Various properties are defined for each field, such as data type, minimum and maximum values, and data classification.<br>The primary key is defined on the "Reward ID" field.<br><br>Page Definition (page 50101 Reward Card):<br>This section defines a card-type page named "Reward Card" with a page number of 50101.<br>The page layout includes fields for displaying information related to rewards.<br>Each field is linked to the corresponding fields in the "Reward" table.<br>The page is categorized under the "Tasks" group in search results.<br><br>Page Definition (page 50102 Reward List):<br>This section defines a list-type page named "Reward List" with a page number of 50102.<br>The page layout includes a repeater that lists rewards.<br>Each reward is displayed with its "Reward ID," "Description," "Minimum Purchase," and "Discount Percentage."<br>Users can click on a record to open its details in the "Reward Card" page.<br>The page is categorized under the "Lists" group in search results.<br><br>Table Extension (tableextension 50103 Customer Ext):<br>This section defines a table extension on the standard "Customer" table.<br>It adds a field "Reward ID" to the customer table.<br>The field is related to the "Reward ID" field in the "Reward" table, establishing a link between customers and rewards.<br>The extension includes an "OnValidate" trigger that checks whether the reward status can be updated for a blocked customer.<br><br>Page Extension (pageextension 50104 Customer Card Ext):<br>This section defines a page extension on the standard "Customer Card" page.<br>It adds the "Reward ID" field to the "General" section of the customer card.<br>The field is linked to the "Reward ID" field in the "Reward" table and allows users to perform lookups.<br>An action named "Rewards" is added to the "Navigation" section, which opens the "Reward List" page when activated.<br><br>In summary, the code defines a reward management system in Microsoft Dynamics 365 Business Central. It includes tables for storing reward-related data, pages for displaying reward information, and extensions that enhance the customer and customer card functionalities to include reward-related features. This setup allows users to manage rewards, associate them with customers, and view reward details through the provided pages.<br></p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="image3 cid-tOrx0uMGfo" id="image3-6pa">
-    
-
-    
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/screenshot-2023-08-30-at-1.28.36-pm-1466x1340.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a href="LMStudio.html" class="text-primary">LM Studio</a> code llama instruct 7B</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="content5 cid-tOrx22pkPA" id="content5-6pb">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-10">
-                
-                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">code llama instruct 7B</h4>
-                <p class="mbr-text mbr-fonts-style display-7"><strong>Please explain this Business Central AL code</strong><br><br>This code creates a new table called "Reward" with four fields: "Reward ID", "Description", "Discount Percentage", and "Minimum Purchase". The "Reward ID" field is the primary key of the table. The "Description" field can contain a string with up to 250 characters, the "Discount Percentage" field is a Decimal numeric value that represents the discount that will be applied for this reward, and the "Minimum Purchase" field is also a Decimal numeric value that represents the minimum purchase amount required to qualify for this reward.<br><br>The code also creates two pages: "Reward Card" and "Reward List". The "Reward Card" page is of type "Card" and will render as a card, while the "Reward List" page is of type "List" and will render as a list. The source table for both pages is the "Reward" table.<br><br>The "Reward Card" page has a layout that includes a group called "Reward" with four fields: "Reward ID", "Description", "Discount Percentage", and "Minimum Purchase". The "Reward ID" field is a text box that displays the value of the "Reward ID" field from the "Reward" table, while the other three fields are also text boxes that display the corresponding values.<br><br>The "Reward List" page has a layout that includes a repeater called "Rewards". The repeater contains four fields: "Reward ID", "Description", "Minimum Purchase", and "Discount Percentage". Each record in the "Reward" table will be displayed as a separate row in the list.<br><br>The code also includes a table extension called "Customer Ext" that extends the "Customer" table with an additional field called "Reward ID". The "Reward ID" field is set to have a table relation to the "Reward ID" field in the "Reward" table, and it is also set to validate the table relationship.<br><br>Finally, the code includes a page extension called "Customer Card Ext" that extends the "Customer Card" page with an additional text box called "Reward ID". The "Reward ID" text box displays the value of the "Reward ID" field from the "Customer" table and allows users to select a reward from a lookup window. The "Rewards" action is also added to the Navigation group, which will run the "Reward List" page when activated.<br></p>
-            </div>
-        </div>
-    </div>
-</section>
-
 <section class="image3 cid-tOrgtDeCY2" id="image3-6ow">
     
 
@@ -179,109 +136,20 @@
     </div>
 </section>
 
-<section class="image3 cid-tOrgtY8N5L" id="image3-6ox">
+<section class="content5 cid-tVAUBWbCv4" id="content5-7up">
     
-
-    
-
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/20230830image2-1443x1068.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I navigated to&nbsp;http://bcserver/BC/?tenant=default&amp;page=50102 to view the&nbsp;Reward table using the&nbsp;Reward List page</p>
-                </div>
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Rewards table</h4>
+                <p class="mbr-text mbr-fonts-style display-7">I created a Rewards.al file. In the&nbsp;Rewards.al file I added code to created a Business Central "Reward" table, a Business Central "Reward Card" page and a Business Central "Reward List" page.<br></p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="image3 cid-tOrguoqHsT" id="image3-6oy">
-    
-
-    
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/20230830image3-1288x520.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added a Reward item</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="image3 cid-tOrguIJTUu" id="image3-6oz">
-    
-
-    
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/20230830image4-1287x523.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The reward item has been stored in the Reward Table</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="image3 cid-tOrgv4i4HM" id="image3-6p0">
-    
-
-    
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/20230830image10-1415x1024.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added the Minimum Purchase field to the&nbsp;Reward List page</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="image3 cid-tOrgvrqfUQ" id="image3-6p1">
-    
-
-    
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/20230830image11-1416x1023.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added the Minimum Purchase field to the Reward Card page</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="image3 cid-tOrgvOEKEP" id="image3-6p2">
-    
-
-    
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/20230830image15-1390x1038.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The&nbsp;Customer Ext (table extension) and&nbsp;Customer Card Ext (card extension) ensure that a Reward value can be associated with an Business Central Customer</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="content7 cid-tOrmcphNT9" id="content7-6p9">
+<section class="content7 cid-tVAUhuCwF4" id="content7-7uo">
     
     <div class="container">
         <div class="row justify-content-center">
@@ -443,20 +311,127 @@ page 50102 "Reward List"
     }
 }
 
+--></code></pre>
+                    
 
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
 
+<section class="image3 cid-tOrgtY8N5L" id="image3-6ox">
+    
 
+    
 
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/20230830image2-1443x1068.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I navigated to&nbsp;http://bcserver/BC/?tenant=default&amp;page=50102 to view the&nbsp;Reward table using the&nbsp;Reward List page</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
+<section class="image3 cid-tOrguoqHsT" id="image3-6oy">
+    
 
+    
 
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/20230830image3-1288x520.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added a Reward item</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
+<section class="image3 cid-tOrguIJTUu" id="image3-6oz">
+    
 
+    
 
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/20230830image4-1287x523.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The reward item has been stored in the Reward Table</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
+<section class="image3 cid-tOrgv4i4HM" id="image3-6p0">
+    
 
+    
 
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/20230830image10-1415x1024.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added the Minimum Purchase field to the&nbsp;Reward List page</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
+<section class="image3 cid-tOrgvrqfUQ" id="image3-6p1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/20230830image11-1416x1023.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added the Minimum Purchase field to the Reward Card page</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tOrgvOEKEP" id="image3-6p2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/20230830image15-1390x1038.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added a Customer Ext (table extension) and a Customer Card Ext (card extension) to associate a Reward value with an Business Central Customer</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-tOrmcphNT9" id="content7-6p9">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Rewards.al (updated)</strong></h5>
+
+<pre class="language-clike"><code><!--         
 table 50100 Reward
 {
     DataClassification = ToBeClassified;
@@ -708,6 +683,49 @@ pageextension 50104 "Customer Card Ext" extends "Customer Card"
 
                     
 </blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tVAQ8XhC9F" id="content5-7un">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Documentation</h4>
+                <p class="mbr-text mbr-fonts-style display-7">I used <a href="LMStudio.html" class="text-primary">Meta's codellama language model</a> to create the AL code documentation.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tOrx0uMGfo" id="image3-6pa">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-08-30-at-1.28.36-pm-1466x1340.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a href="LMStudio.html" class="text-primary">LM Studio</a> code llama instruct 7B</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tOrx22pkPA" id="content5-6pb">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">code llama instruct 7B</h4>
+                <p class="mbr-text mbr-fonts-style display-7"><strong>Please explain this Business Central AL code</strong><br><br>This code creates a new table called "Reward" with four fields: "Reward ID", "Description", "Discount Percentage", and "Minimum Purchase". The "Reward ID" field is the primary key of the table. The "Description" field can contain a string with up to 250 characters, the "Discount Percentage" field is a Decimal numeric value that represents the discount that will be applied for this reward, and the "Minimum Purchase" field is also a Decimal numeric value that represents the minimum purchase amount required to qualify for this reward.<br><br>The code also creates two pages: "Reward Card" and "Reward List". The "Reward Card" page is of type "Card" and will render as a card, while the "Reward List" page is of type "List" and will render as a list. The source table for both pages is the "Reward" table.<br><br>The "Reward Card" page has a layout that includes a group called "Reward" with four fields: "Reward ID", "Description", "Discount Percentage", and "Minimum Purchase". The "Reward ID" field is a text box that displays the value of the "Reward ID" field from the "Reward" table, while the other three fields are also text boxes that display the corresponding values.<br><br>The "Reward List" page has a layout that includes a repeater called "Rewards". The repeater contains four fields: "Reward ID", "Description", "Minimum Purchase", and "Discount Percentage". Each record in the "Reward" table will be displayed as a separate row in the list.<br><br>The code also includes a table extension called "Customer Ext" that extends the "Customer" table with an additional field called "Reward ID". The "Reward ID" field is set to have a table relation to the "Reward ID" field in the "Reward" table, and it is also set to validate the table relationship.<br><br>Finally, the code includes a page extension called "Customer Card Ext" that extends the "Customer Card" page with an additional text box called "Reward ID". The "Reward ID" text box displays the value of the "Reward ID" field from the "Customer" table and allows users to select a reward from a lookup window. The "Rewards" action is also added to the Navigation group, which will run the "Reward List" page when activated.<br></p>
             </div>
         </div>
     </div>
