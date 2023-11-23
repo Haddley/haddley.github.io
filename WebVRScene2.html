@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <script src="aframe.min.js"></script>
+</head>
+
+<body>
+
+    <a-scene>
+
+        <a-assets>
+            <a-asset-item id="engine" src="./assets/files/engine.glb">
+            </a-asset-item>
+        </a-assets>
+
+        <a-entity position="20 0 -30">
+            <a-gltf-model src="#engine" rotation="90 0 0" scale="18 18 18"></a-gltf-model>
+        </a-entity>
+
+        <a-entity light="type: point; intensity: 60; distance: 50; decay: 2" position="0 0 10"></a-entity>
+
+    </a-scene>
+
+</body>
+
+</html>
