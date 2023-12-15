@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>XCode C++ (Part 4)</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-tzKU1ES0qh" once="menu" id="menu3-58q">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-tzKU1FuLub" id="content4-58r">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>XCode C++ (Part 4)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">GLM (OpenGL Mathematics)&nbsp;</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzKU1FI0RE" id="image3-58s">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/xcode-14-icon-300x314.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a rel="nofollow" href="https://github.com/immersive-web/webxr/blob/main/images/spec-logo.png"><br></a>This is the logo owned by Apple Inc. for Xcode. Taken from the picture's app bundle.&nbsp;<a href="https://en.wikipedia.org/w/index.php?curid=72689679" class="text-primary">Fair use</a><br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tzKU1FTFTG" id="content5-58t">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Rotating the triangle</h4>
+                <p class="mbr-text mbr-fonts-style display-7">OpenGL Mathematics (GLM) is a header only C++ mathematics library for graphics software based on the OpenGL Shading Language (GLSL) specifications.<br><br>I installed&nbsp;GLM using this command<br><br>$ brew install glm<br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzKU1G0i0N" id="image3-58u">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-03-27-at-10.03.48-pm-1596x1258.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Running application</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tzKU1GaQP8" id="content5-58v">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Overview</h4>
+                <p class="mbr-text mbr-fonts-style display-7">To rotate the triangle by 10 degrees I had to make changes to the vertex shader.<br><br> I had to update the code to apply a rotation matrix to the vertex positions.<br><br><em>const GLchar* vertexShaderSource = "#version 330 core\n"<br>"layout (location = 0) in vec3 position;\n"<br><strong>"uniform mat4 transform;\n"</strong><br>"void main()\n"<br>"{\n"<br>"gl_Position = <strong>transform *</strong> vec4(position, 1.0);\n"<br>"}\0";</em><br><br>In the updated code the uniform variable "transform" represents the rotation matrix that will be applied to the vertex positions.<br><br>To set the value of the transform uniform, I needed to add some code to the main function. <br><br>To rotate the triangle by 10 degrees around the z-axis I added this code<br><br><em>// Define the rotation angle in degrees<br>GLfloat angle = 10.0f;<br><br>// Convert the angle to radians<br>GLfloat radians = glm::radians(angle);<br><br>// Calculate the rotation matrix<br>glm::mat4 <strong>rotation</strong> = glm::rotate(glm::mat4(1.0f), radians, glm::vec3(0.0f, 0.0f, <strong>1.0f</strong>));<br><br>// Get the location of the "transform" uniform<br>GLint <strong>transformLoc</strong> = glGetUniformLocation(shaderProgram, "<strong>transform</strong>");<br><br>// Set the value of the "transform" uniform<br>glUniformMatrix4fv(<strong>transformLoc</strong>, 1, GL_FALSE, glm::value_ptr(<strong>rotation</strong>));</em><br><br>A rotation matrix&nbsp;"rotation" is calculated using the glm::rotate() function. <br><br>The glm::rotate() function takes a matrix, an angle (in radians), and an axis of rotation (In this case, we are rotating around the z-axis, so we pass in a vector with x and y values of 0 and a z value of 1).<br><br>The location of the transform uniform in the vertex shader is retrieved using the glGetUniformLocation() function. <br><br>The value of the transform uniform is set using the glUniformMatrix4fv() function, which takes the location of the uniform, the number of matrices being passed (1), whether or not to transpose the matrix (in this case, we don't want to transpose it), and a pointer to the matrix data (which is obtained using the glm::value_ptr() function).<br><br>With these changes, the triangle is rotated by 10 degrees around the z-axis.<br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-tzKU1GlJiS" id="content7-58w">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>main.cpp</strong></h5>
+
+<pre class="language-clike"><code><!--         
+#include <iostream>
+
+// GLEW
+#define GLEW_STATIC
+#include <GL/glew.h>
+
+// GLFW
+#include <GLFW/glfw3.h>
+
+// GLM (OpenGL Mathematics) library
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
+// Window dimensions
+const GLuint WIDTH = 800, HEIGHT = 600;
+
+// Shaders
+/*const GLchar* vertexShaderSource = "#version 330 core\n"
+"layout (location = 0) in vec3 position;\n"
+"void main()\n"
+"{\n"
+"gl_Position = vec4(position.x, position.y, position.z, 1.0);\n"
+"}\0";*/
+
+const GLchar* vertexShaderSource = "#version 330 core\n"
+"layout (location = 0) in vec3 position;\n"
+"uniform mat4 transform;\n"
+"void main()\n"
+"{\n"
+"gl_Position = transform * vec4(position, 1.0);\n"
+"}\0";
+
+const GLchar* fragmentShaderSource = "#version 330 core\n"
+"out vec4 color;\n"
+"void main()\n"
+"{\n"
+"color = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
+"}\n\0";
+
+
+
+
+// The MAIN function, from here we start the application and run the game loop
+int main()
+{
+    // Init GLFW
+    glfwInit( );
+    
+    // Set all the required options for GLFW
+    glfwWindowHint( GLFW_CONTEXT_VERSION_MAJOR, 3 );
+    glfwWindowHint( GLFW_CONTEXT_VERSION_MINOR, 3 );
+    glfwWindowHint( GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE );
+    glfwWindowHint( GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE );
+
+    glfwWindowHint( GLFW_RESIZABLE, GL_FALSE );
+    
+    // Create a GLFWwindow object that we can use for GLFW's functions
+    GLFWwindow *window = glfwCreateWindow( WIDTH, HEIGHT, "LearnOpenGL", nullptr, nullptr );
+    
+    int screenWidth, screenHeight;
+    glfwGetFramebufferSize( window, &screenWidth, &screenHeight );
+    
+    if ( nullptr == window )
+    {
+        std::cout << "Failed to create GLFW window" << std::endl;
+        glfwTerminate( );
+        
+        return EXIT_FAILURE;
+    }
+    
+    glfwMakeContextCurrent( window );
+    
+    // Set this to true so GLEW knows to use a modern approach to retrieving function pointers and extensions
+    glewExperimental = GL_TRUE;
+    // Initialize GLEW to setup the OpenGL Function pointers
+    if ( GLEW_OK != glewInit( ) )
+    {
+        std::cout << "Failed to initialize GLEW" << std::endl;
+        return EXIT_FAILURE;
+    }
+    
+    std::cout << '\n';
+    std::cout << '\n';
+    
+    std::cout << glGetString(GL_VERSION);
+    std::cout << '\n';
+    std::cout << '\n';
+    
+    // Define the viewport dimensions
+    glViewport( 0, 0, screenWidth, screenHeight );
+    
+    
+    // Build and compile our shader program
+    // Vertex shader
+    GLuint vertexShader = glCreateShader( GL_VERTEX_SHADER );
+    glShaderSource( vertexShader, 1, &vertexShaderSource, NULL );
+    glCompileShader( vertexShader );
+    
+    // Check for compile time errors
+    GLint success;
+    GLchar infoLog[512];
+    
+    glGetShaderiv( vertexShader, GL_COMPILE_STATUS, &success );
+    if ( !success )
+    {
+        glGetShaderInfoLog( vertexShader, 512, NULL, infoLog );
+        std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
+    }
+    
+    // Fragment shader
+    GLuint fragmentShader = glCreateShader( GL_FRAGMENT_SHADER );
+    glShaderSource( fragmentShader, 1, &fragmentShaderSource, NULL );
+    glCompileShader( fragmentShader );
+    
+    // Check for compile time errors
+    glGetShaderiv( fragmentShader, GL_COMPILE_STATUS, &success );
+    
+    if ( !success )
+    {
+        glGetShaderInfoLog( fragmentShader, 512, NULL, infoLog );
+        std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << infoLog << std::endl;
+    }
+    
+    // Link shaders
+    GLuint shaderProgram = glCreateProgram( );
+    glAttachShader( shaderProgram, vertexShader );
+    glAttachShader( shaderProgram, fragmentShader );
+    glLinkProgram( shaderProgram );
+    
+    // Check for linking errors
+    glGetProgramiv( shaderProgram, GL_LINK_STATUS, &success );
+    
+    if ( !success )
+    {
+        glGetProgramInfoLog( shaderProgram, 512, NULL, infoLog );
+        std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
+    }
+    
+    glDeleteShader( vertexShader );
+    glDeleteShader( fragmentShader );
+    
+    
+    // Set up vertex data (and buffer(s)) and attribute pointers
+    GLfloat vertices[] =
+    {
+        -0.5f, -0.5f, 0.0f, // Left
+        0.5f, -0.5f, 0.0f, // Right
+        0.0f,  0.5f, 0.0f  // Top
+    };
+    
+    
+    GLuint VBO, VAO;
+    glGenVertexArrays( 1, &VAO );
+    glGenBuffers( 1, &VBO );
+    // Bind the Vertex Array Object first, then bind and set vertex buffer(s) and attribute pointer(s).
+    glBindVertexArray( VAO );
+    
+    glBindBuffer( GL_ARRAY_BUFFER, VBO );
+    glBufferData( GL_ARRAY_BUFFER, sizeof( vertices ), vertices, GL_STATIC_DRAW );
+    
+    glVertexAttribPointer( 0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof( GLfloat ), ( GLvoid * ) 0 );
+    glEnableVertexAttribArray( 0 );
+    
+    glBindBuffer( GL_ARRAY_BUFFER, 0 ); // Note that this is allowed, the call to glVertexAttribPointer registered VBO as the currently bound vertex buffer object so afterwards we can safely unbind
+    
+    glBindVertexArray( 0 ); // Unbind VAO (it's always a good thing to unbind any buffer/array to prevent strange bugs)
+    
+    
+    
+    // Game loop
+    while ( !glfwWindowShouldClose( window ) )
+    {
+        // Check if any events have been activiated (key pressed, mouse moved etc.) and call corresponding response functions
+        glfwPollEvents( );
+        
+        // Render
+        // Clear the colorbuffer
+        glClearColor( 0.2f, 0.3f, 0.3f, 1.0f );
+        glClear( GL_COLOR_BUFFER_BIT );
+        
+
+        
+        // Draw our first triangle
+        glUseProgram( shaderProgram );
+        glBindVertexArray( VAO );
+        
+
+        
+        // Define the rotation angle in degrees
+        GLfloat angle = 10.0f;
+        // Convert the angle to radians
+        GLfloat radians = glm::radians(angle);
+        // Calculate the rotation matrix
+        glm::mat4 rotation = glm::rotate(glm::mat4(1.0f), radians, glm::vec3(0.0f, 0.0f, 1.0f));
+        // Get the location of the "transform" uniform
+        GLint transformLoc = glGetUniformLocation(shaderProgram, "transform");
+        // Set the value of the "transform" uniform
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(rotation));
+        
+        
+        
+        glDrawArrays( GL_TRIANGLES, 0, 3 );
+        glBindVertexArray( 0 );
+        
+        // Swap the screen buffers
+        glfwSwapBuffers( window );
+    }
+    
+    // Properly de-allocate all resources once they've outlived their purpose
+    glDeleteVertexArrays( 1, &VAO );
+    glDeleteBuffers( 1, &VBO );
+    
+    // Terminate GLFW, clearing any resources allocated by GLFW.
+    glfwTerminate( );
+    
+    return EXIT_SUCCESS;
+}
+
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tzKU1GCzcj" id="image3-58y">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-03-27-at-8.08.59-pm-1596x642.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added the glm include folder to header search</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tzO8KXkG18" id="content5-597">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Animation</h4>
+                <p class="mbr-text mbr-fonts-style display-7">For fun I changed the code above to update the rotation applied to the triangle in the "game loop".</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="custom-html-596"><!-- Type valid HTML here -->
+<div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+               
+<video width="100%" poster="Screen Recording 2023-03-28 at 8.39.02 AM.png" preload="auto" controls="">
+    <source src="Screen Recording 2023-03-28 at 8.39.02 AM.mp4" type="video/mp4">
+</video>
+                
+            </div>
+        </div>
+</div></div>
+
+<section class="content7 cid-tzO1GB8dNx" id="content7-593">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Program.cs</strong></h5>
+
+<pre class="language-clike"><code><!--         
+#include <iostream>
+
+// GLEW
+#define GLEW_STATIC
+#include <GL/glew.h>
+
+// GLFW
+#include <GLFW/glfw3.h>
+
+// GLM (OpenGL Mathematics) library
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
+// Window dimensions
+const GLuint WIDTH = 800, HEIGHT = 600;
+
+// Shaders
+const GLchar* vertexShaderSource = "#version 330 core\n"
+"layout (location = 0) in vec3 position;\n"
+"uniform mat4 transform;\n"
+"void main()\n"
+"{\n"
+"gl_Position = transform * vec4(position, 1.0);\n"
+"}\0";
+
+const GLchar* fragmentShaderSource = "#version 330 core\n"
+"out vec4 color;\n"
+"void main()\n"
+"{\n"
+"color = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
+"}\n\0";
+
+
+
+// The MAIN function, from here we start the application and run the game loop
+int main()
+{
+    // Init GLFW
+    glfwInit( );
+    
+    // Set all the required options for GLFW
+    glfwWindowHint( GLFW_CONTEXT_VERSION_MAJOR, 3 );
+    glfwWindowHint( GLFW_CONTEXT_VERSION_MINOR, 3 );
+    glfwWindowHint( GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE );
+    glfwWindowHint( GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE );
+
+    glfwWindowHint( GLFW_RESIZABLE, GL_FALSE );
+    
+    // Create a GLFWwindow object that we can use for GLFW's functions
+    GLFWwindow *window = glfwCreateWindow( WIDTH, HEIGHT, "LearnOpenGL", nullptr, nullptr );
+    
+    int screenWidth, screenHeight;
+    glfwGetFramebufferSize( window, &screenWidth, &screenHeight );
+    
+    if ( nullptr == window )
+    {
+        std::cout << "Failed to create GLFW window" << std::endl;
+        glfwTerminate( );
+        
+        return EXIT_FAILURE;
+    }
+    
+    glfwMakeContextCurrent( window );
+    
+    // Set this to true so GLEW knows to use a modern approach to retrieving function pointers and extensions
+    glewExperimental = GL_TRUE;
+    // Initialize GLEW to setup the OpenGL Function pointers
+    if ( GLEW_OK != glewInit( ) )
+    {
+        std::cout << "Failed to initialize GLEW" << std::endl;
+        return EXIT_FAILURE;
+    }
+    
+    std::cout << '\n';
+    std::cout << '\n';
+    
+    std::cout << glGetString(GL_VERSION);
+    std::cout << '\n';
+    std::cout << '\n';
+    
+    // Define the viewport dimensions
+    glViewport( 0, 0, screenWidth, screenHeight );
+    
+    
+    // Build and compile our shader program
+    // Vertex shader
+    GLuint vertexShader = glCreateShader( GL_VERTEX_SHADER );
+    glShaderSource( vertexShader, 1, &vertexShaderSource, NULL );
+    glCompileShader( vertexShader );
+    
+    // Check for compile time errors
+    GLint success;
+    GLchar infoLog[512];
+    
+    glGetShaderiv( vertexShader, GL_COMPILE_STATUS, &success );
+    if ( !success )
+    {
+        glGetShaderInfoLog( vertexShader, 512, NULL, infoLog );
+        std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
+    }
+    
+    // Fragment shader
+    GLuint fragmentShader = glCreateShader( GL_FRAGMENT_SHADER );
+    glShaderSource( fragmentShader, 1, &fragmentShaderSource, NULL );
+    glCompileShader( fragmentShader );
+    
+    // Check for compile time errors
+    glGetShaderiv( fragmentShader, GL_COMPILE_STATUS, &success );
+    
+    if ( !success )
+    {
+        glGetShaderInfoLog( fragmentShader, 512, NULL, infoLog );
+        std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << infoLog << std::endl;
+    }
+    
+    // Link shaders
+    GLuint shaderProgram = glCreateProgram( );
+    glAttachShader( shaderProgram, vertexShader );
+    glAttachShader( shaderProgram, fragmentShader );
+    glLinkProgram( shaderProgram );
+    
+    // Check for linking errors
+    glGetProgramiv( shaderProgram, GL_LINK_STATUS, &success );
+    
+    if ( !success )
+    {
+        glGetProgramInfoLog( shaderProgram, 512, NULL, infoLog );
+        std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
+    }
+    
+    glDeleteShader( vertexShader );
+    glDeleteShader( fragmentShader );
+    
+    
+    // Set up vertex data (and buffer(s)) and attribute pointers
+    GLfloat vertices[] =
+    {
+        -0.5f, -0.5f, 0.0f, // Left
+        0.5f, -0.5f, 0.0f, // Right
+        0.0f,  0.5f, 0.0f  // Top
+    };
+    
+    
+    GLuint VBO, VAO;
+    glGenVertexArrays( 1, &VAO );
+    glGenBuffers( 1, &VBO );
+    // Bind the Vertex Array Object first, then bind and set vertex buffer(s) and attribute pointer(s).
+    glBindVertexArray( VAO );
+    
+    glBindBuffer( GL_ARRAY_BUFFER, VBO );
+    glBufferData( GL_ARRAY_BUFFER, sizeof( vertices ), vertices, GL_STATIC_DRAW );
+    
+    glVertexAttribPointer( 0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof( GLfloat ), ( GLvoid * ) 0 );
+    glEnableVertexAttribArray( 0 );
+    
+    glBindBuffer( GL_ARRAY_BUFFER, 0 ); // Note that this is allowed, the call to glVertexAttribPointer registered VBO as the currently bound vertex buffer object so afterwards we can safely unbind
+    
+    glBindVertexArray( 0 ); // Unbind VAO (it's always a good thing to unbind any buffer/array to prevent strange bugs)
+    
+    
+    // Define the rotation angle in degrees
+    GLfloat angle = 0.0f;
+    // Get the location of the "transform" uniform
+    GLint transformLoc = glGetUniformLocation(shaderProgram, "transform");
+    
+    // Game loop
+    while ( !glfwWindowShouldClose( window ) )
+    {
+        // Check if any events have been activiated (key pressed, mouse moved etc.) and call corresponding response functions
+        glfwPollEvents( );
+        
+        // Animate
+        angle++;
+        if (angle>359.0f){
+            angle=0.0f;
+        }
+        // Convert the angle to radians
+        GLfloat radians = glm::radians(angle);
+        // Calculate the rotation matrix
+        glm::mat4 rotation = glm::rotate(glm::mat4(1.0f), radians, glm::vec3(1.0f, 1.0f, 1.0f));
+        // Set the value of the "transform" uniform
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(rotation));
+        
+        // Render
+        // Clear the colorbuffer
+        glClearColor( 0.2f, 0.3f, 0.3f, 1.0f );
+        glClear( GL_COLOR_BUFFER_BIT );
+        
+        // Draw our first triangle
+        glUseProgram( shaderProgram );
+        
+        glBindVertexArray( VAO );
+        
+        glDrawArrays( GL_TRIANGLES, 0, 3 );
+        glBindVertexArray( 0 );
+        
+        // Swap the screen buffers
+        glfwSwapBuffers( window );
+    }
+    
+    // Properly de-allocate all resources once they've outlived their purpose
+    glDeleteVertexArrays( 1, &VAO );
+    glDeleteBuffers( 1, &VBO );
+    
+    // Terminate GLFW, clearing any resources allocated by GLFW.
+    glfwTerminate( );
+    
+    return EXIT_SUCCESS;
+}
+
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features13 cid-tzKU1HqZIb" id="features14-592">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://github.com/SonarSystems/Modern-OpenGL-Tutorials" class="text-primary" target="_blank"><br></a></strong><br><strong><a href="https://github.com/SonarSystems/Modern-OpenGL-Tutorials" class="text-primary" target="_blank">Modern OpenGL Tutorials</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/popper/popper.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/dropdown/js/nav-dropdown.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>

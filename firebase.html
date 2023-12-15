@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Firebase</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-tCoUvO3J86" once="menu" id="menu3-5do">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-tCoUvPE53E" id="content4-5dp">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Firebase</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">A Firebase App</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvPXnUP" id="image3-5dq">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/logo-lockup-firebase-vertical.svg" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a rel="nofollow" href="https://github.com/immersive-web/webxr/blob/main/images/spec-logo.png"><br></a><a href="https://commons.wikimedia.org/wiki/File:Firebase_Logo.svg" class="text-primary" target="_blank">This logo image consists only of simple geometric shapes or text. It does not meet the threshold of originality needed for copyright protection, and is therefore in the public domain.</a><br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCoUvQ89Ui" id="content5-5dr">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Firebase web codelab</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The application I built uses these Firebase products for web apps:<br><br>Firebase Authentication to easily allow your users to sign into your app.<br>Cloud Firestore to save structured data on the cloud and get instant notification when data changes.<br>Cloud Storage for Firebase to save files in the cloud.<br>Firebase Hosting to host and serve your assets.<br>Firebase Cloud Messaging to send push notifications and display browser popup notifications; and<br>Firebase Performance Monitoring to collect user performance data for your app.<br><br>Instructions are available:<br><br>https://firebase.google.com/codelabs/firebase-web<br><br>I started by cloning the codelab-friendlychat-web repository<br><br>% git clone https://github.com/firebase/codelab-friendlychat-web<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvR8kws" id="image3-5dx">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-24-at-9.26.33-pm-1836x1262.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">codelab-friendlychat-web</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCp6sW6e7L" id="image3-5g3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-24-at-9.46.58-pm-1836x1050.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I opened the project in Visual Studio Code</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCp6G8hajn" id="content5-5g4">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">I created a Firebase project</h4>
+                <p class="mbr-text mbr-fonts-style display-7">https://console.firebase.google.com</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvRsfdC" id="image3-5dz">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-24-at-9.42.04-pm-1836x692.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I provided a name for the project</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvRDyCg" id="image3-5e0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-24-at-9.42.31-pm-1836x1013.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I disabled google analytics for this project</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvRP21I" id="image3-5e1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-24-at-9.42.41-pm-1836x1018.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I waited</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvRZhDz" id="image3-5e2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-24-at-9.48.14-pm-1836x712.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The new project was ready</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvSl5Jy" id="image3-5e4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-24-at-9.51.37-pm-1836x844.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">FriendlyChat project</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvSvHhe" id="image3-5e5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-24-at-9.54.01-pm-1836x911.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Project ID is friendlychat-2ee95</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCp9rbrN0i" id="content5-5g5">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Add a web app</h4>
+                <p class="mbr-text mbr-fonts-style display-7">I added a Firebase web app to the Firebase project</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvSFQN5" id="image3-5e6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-24-at-9.59.48-pm-1416x596.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Web</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvSP4yn" id="image3-5e7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-24-at-10.01.56-pm-1836x923.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Register app</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvSZvOO" id="image3-5e8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-24-at-10.02.44-pm-1836x1008.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add Firebase SDK instructions</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvT93NI" id="image3-5e9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-24-at-10.04.31-pm-1836x769.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Copy this object</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvTmUv3" id="image3-5ea">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-24-at-10.07.26-pm-1836x1049.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Paste here</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCpem6Vdts" id="image3-5g6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-24-at-10.17.54-pm-1836x567.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The Friendly Chat web app has been created</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCpeWshfss" id="content5-5gh">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Enable Google sign-in for Firebase Authentication</h4>
+                <p class="mbr-text mbr-fonts-style display-7">To allow users to sign in to the web app with their Google accounts, I selected the Google sign-in method<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCpeMQockH" id="image3-5g7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-24-at-10.22.48-pm-1836x827.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Google provider</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCpeOqB6IA" id="image3-5g9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-24-at-10.25.18-pm-1836x1013.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Enable Google Authentication</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCpeON8CA8" id="image3-5ga">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-24-at-10.26.39-pm-1836x990.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Provider Enabled</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCpgDsLthd" id="content5-5gi">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Enable Cloud Firestore</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The web app uses Cloud Firestore to save chat messages and receive new chat messages.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCpeP9xga3" id="image3-5gb">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-24-at-10.29.18-pm-1836x961.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Start in test mode</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCpePwpK9A" id="image3-5gc">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-24-at-10.30.35-pm-1640x1006.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected location and clicked the Enable button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCpeQo9D1r" id="image3-5gd">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-24-at-10.32.05-pm-1836x700.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Firestore database has been created</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCpi3i0TNz" id="content5-5gj">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Enable Cloud Storage</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The web app uses Cloud Storage for Firebase to store, upload, and share pictures.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCpeQJslH7" id="image3-5ge">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-24-at-10.35.55-pm-1466x1008.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">old default</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCpeR4lvbf" id="image3-5gf">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-24-at-10.36.28-pm-1634x1104.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Start in test mode</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCpeRq8toq" id="image3-5gg">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-24-at-10.37.27-pm-1634x658.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Location defaults to firestore location</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCpeNh1n1W" id="image3-5g8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-24-at-10.39.33-pm-1836x588.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Firestore storage has been created</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCpkbb0MYc" id="content5-5gp">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">&nbsp;Installing the Firebase command-line interface</h4>
+                <p class="mbr-text mbr-fonts-style display-7">npm install -g firebase-tools<br>firebase --version<br>firebase login</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvV2iY4" id="image3-5ej">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-24-at-10.42.42-pm-1354x86.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">firebase --version</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvVe6CW" id="image3-5ek">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-24-at-10.11.51-pm-1352x602.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">firebase login</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvVsSsN" id="image3-5el">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-24-at-10.46.45-pm-1322x210.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">firebase use --add</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCplIim0NN" id="content5-5gq">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Run the starter app locally</h4>
+                <p class="mbr-text mbr-fonts-style display-7">firebase serve --only hosting<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvVEKOc" id="image3-5em">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-24-at-10.48.50-pm-1298x138.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">firebase serve --only hosting</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvVS7gC" id="image3-5en">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-24-at-10.49.41-pm-1836x1093.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The web app User Interface</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCqGZR3ewn" id="content5-5gr">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Import the Firebase SDK</h4>
+                <p class="mbr-text mbr-fonts-style display-7">I navigated to the web-start directory<br>I ran npm install to download the Firebase SDK<br>I ran npm run start to start Webpack.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvW3lnt" id="image3-5eo">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-4.20.53-am-1836x831.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/web-start/package.json</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvWep6v" id="image3-5ep">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-4.22.59-am-1836x869.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/web-start/index.js</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvWp1A0" id="image3-5eq">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-4.25.10-am-1360x426.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">npm i</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvWAnQd" id="image3-5er">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-4.25.40-am-1350x408.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">npm run start</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCqJ2XczY0" id="content5-5gs">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Configure Firebase</h4>
+                <p class="mbr-text mbr-fonts-style display-7">I copied the config object snippet and added it to&nbsp;/web-start/src/firebase-config.js.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvWNApn" id="image3-5es">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-4.28.16-am-1836x904.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">snippet</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvX4DtL" id="image3-5et">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-4.30.08-am-1836x706.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">firebase-config.js</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvXhdHE" id="image3-5eu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-4.31.57-am-1836x512.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">initializeApp</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCqKCdITNq" id="content5-5gt">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Authenticate users with Google Sign-In</h4>
+                <p class="mbr-text mbr-fonts-style display-7">In the app, when a user clicks the Sign in with Google button, the signIn function is triggered.&nbsp;<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvXtWAC" id="image3-5ev">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-4.34.43-am-1836x724.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">signIn() and signOut()</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvXE5Bo" id="image3-5ew">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-4.36.18-am-1836x277.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">initFirebaseAuth()</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvXQsjP" id="image3-5ex">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-4.37.26-am-1836x638.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">authStateObserver(user)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvY1NA2" id="image3-5ey">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-4.38.56-am-1836x352.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">getProfilePicUrl() and getUserName()</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvYhwTs" id="image3-5ez">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-4.40.16-am-1836x210.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">isUserSignedIn()<br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvYsEv0" id="image3-5f0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-4.42.56-am-1836x462.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">firebase serve --only hosting<br>Test sign-in</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvYDucN" id="image3-5f1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-4.45.44-am-1548x830.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">messages</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCqO5UkZKX" id="content5-5gu">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Add messages to Cloud Firestore</h4>
+                <p class="mbr-text mbr-fonts-style display-7">A user clicking the SEND button the app adds a message object to the Cloud Firestore. The add() method adds a new document with an automatically generated ID to the collection.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvYP69g" id="image3-5f2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-4.49.02-am-1836x535.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">saveMessage()</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvZ2uWo" id="image3-5f3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-4.50.05-am-1254x216.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">testing "SEND"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvZhyUU" id="image3-5f4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-4.58.32-am-1836x976.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">addDoc(...)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvZuFNE" id="image3-5f5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-5.01.18-am-1836x856.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">messages</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCqS2B6zA1" id="content5-5gv">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Synchronize messages</h4>
+                <p class="mbr-text mbr-fonts-style display-7">To read messages in the app, I added listeners that trigger when data changes and then create a UI element that shows new messages.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvZGMRJ" id="image3-5f6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-5.04.44-am-1836x590.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">loadMessages()</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUvZSTWW" id="image3-5f7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-5.07.50-am-1304x498.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">loadMessages()</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCrr5jJzHJ" id="content5-5gw">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Save images to Cloud Storage</h4>
+                <p class="mbr-text mbr-fonts-style display-7">After selecting a file, the saveImageMessage function is called.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUw05DSJ" id="image3-5f8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-7.25.20-am-1836x928.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">saveImageMessage</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUw0jVBZ" id="image3-5f9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-7.30.53-am-1636x1260.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">testing&nbsp;saveImageMessage</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCryhURzrd" id="content5-5gx">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Add a Firebase Cloud Messaging service worker</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The app will notify users when new messages are posted in the chat.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUw0v8En" id="image3-5fa">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-7.51.40-am-1836x433.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">service worker</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCryWyTlZ5" id="content5-5gy">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Get Firebase Cloud Messaging device tokens</h4>
+                <p class="mbr-text mbr-fonts-style display-7">When notifications have been enabled on a device or browser, you'll be given a device token. This device token is what we use to send a notification to a particular device or particular browser.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUw0JVHu" id="image3-5fb">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-7.54.56-am-1836x947.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">saveMessagingDeviceToken()</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCrzM95l5K" id="content5-5gz">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Request permissions to show notifications</h4>
+                <p class="mbr-text mbr-fonts-style display-7">When the user has not yet granted your app permission to show notifications, you won't be given a device token. In this case, we call the firebase.messaging().requestPermission() method, which will display a browser dialog asking for this permission ( in supported browsers).</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUw19wkw" id="image3-5fc">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-7.57.22-am-1836x518.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">requestPermission()</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUw1sBrQ" id="image3-5fd">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-7.59.51-am-1636x544.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Allow notifications</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCrBZITh2P" id="image3-5h1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-8.04.40-am-1632x658.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">device token</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCrAWSsCxG" id="content5-5h0">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Send a notification to your device</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Now that you have your device token, you can send a notification using the Cloud Messaging tab of the Firebase console.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUw1LP4M" id="image3-5fe">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-8.08.24-am-1836x1046.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Testing</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCrEvhpk7l" id="content5-5h2">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Database security rules</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Cloud Firestore uses a specific rules language to define access rights, security, and data validations.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUw25wHK" id="image3-5ff">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-8.17.23-am-1836x915.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Updated Firestore rules</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCrFxXZerB" id="content5-5h3">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Storage security rules</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Cloud Storage for Firebase uses a specific rules language to define access rights, security, and data validations.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUw2mY1L" id="image3-5fg">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-8.21.59-am-1836x729.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Updated Storage rules</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCrGLZOIm8" id="content5-5h4">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Collect performance data</h4>
+                <p class="mbr-text mbr-fonts-style display-7">You can use the Performance Monitoring SDK to collect real-world performance data from your app and then review and analyze that data in the Firebase console.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUw3lNBq" id="image3-5fh">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-8.25.36-am-1836x128.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">getPerformance()</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCrHjDDMS6" id="content5-5h5">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Measure first input delay</h4>
+                <p class="mbr-text mbr-fonts-style display-7">First input delay starts when the user first interacts with an element on the page, like clicking a button or hyperlink. It stops immediately after the browser is able to respond to the input, meaning that the browser isn't busy loading or parsing your page's content.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUw3yrvi" id="image3-5fi">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-8.27.11-am-1836x290.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">First input delay</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCrHWCpbgm" id="content5-5h6">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Deploy the app using Firebase Hosting</h4>
+                <p class="mbr-text mbr-fonts-style display-7">I deployed the app files to Firebase Hosting using the Firebase CLI. <br><br>I needed to specify in the firebase.json file which local files should be deployed. <br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUw3KsiK" id="image3-5fj">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-8.35.12-am-1836x852.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">firebase.json</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUw3WZRc" id="image3-5fk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-8.36.34-am-1440x560.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">firebase deploy --except functions</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoUw48h4o" id="image3-5fl">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-8.37.44-am-1638x1334.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">https://friendlychat-2ee95.web.app/</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features13 cid-tCoUw89jTh" id="features14-5g2">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://firebase.google.com/codelabs/firebase-web" class="text-primary" target="_blank">Firebase web codelab</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-3 col-12 col-md-4 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://medium.com/firebase-developers/patterns-for-security-with-firebase-per-user-permissions-for-cloud-firestore-be67ee8edc4a" class="text-primary" target="_blank">Patterns for security with Firebase: per-user permissions for Cloud Firestore</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/popper/popper.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/dropdown/js/nav-dropdown.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>
