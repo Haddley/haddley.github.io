@@ -116724,6 +116724,22 @@ a {
 .cid-tYO7tSnQKS img {
   width: 100%;
 }
+.cid-tYP6uFFKTA {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  background-color: #ffffff;
+}
+@media (max-width: 991px) {
+  .cid-tYP6uFFKTA .image-wrapper {
+    margin-bottom: 1rem;
+  }
+}
+.cid-tYP6uFFKTA .row {
+  flex-direction: row-reverse;
+}
+.cid-tYP6uFFKTA img {
+  width: 100%;
+}
 .cid-tYO7uykQ7q {
   padding-top: 0rem;
   padding-bottom: 0rem;
