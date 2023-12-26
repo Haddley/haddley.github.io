@@ -1,3 +1,9 @@
+@import url(https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap);
+
+
+
+
+
 body {
   font-family: Jost;
 }
@@ -518,7 +524,7 @@ a.text-black:focus,
 a.text-black.active {
   color: #000000 !important;
 }
-a[class*="text-"]:not(.nav-link):not(.dropdown-item):not([role]):not(.navbar-caption) {
+a[class*="text-"]:not(.nav-link):not(.dropdown-item):not([role]) {
   position: relative;
   background-image: transparent;
   background-size: 10000px 2px;
@@ -526,7 +532,7 @@ a[class*="text-"]:not(.nav-link):not(.dropdown-item):not([role]):not(.navbar-cap
   background-position: 0px 1.2em;
   background-position: -10000px 1.2em;
 }
-a[class*="text-"]:not(.nav-link):not(.dropdown-item):not([role]):not(.navbar-caption):hover {
+a[class*="text-"]:not(.nav-link):not(.dropdown-item):not([role]):hover {
   transition: background-position 2s ease-in-out;
   background-image: linear-gradient(currentColor 50%, currentColor 50%);
   background-position: 0px 1.2em;
@@ -3140,6 +3146,18 @@ a {
   justify-content: space-between;
   display: flex;
   flex-wrap: wrap;
+}
+#custom-html-fv {
+  /* Type valid CSS here */
+}
+#custom-html-fv div {
+  padding: 80px 0;
+  color: #777;
+  text-align: center;
+}
+#custom-html-fv p {
+  font-size: 60px;
+  color: #777;
 }
 .cid-sohNpNplLo {
   z-index: 1000;
@@ -9901,6 +9919,18 @@ a {
   border-radius: 4px;
   background-color: #fafafa;
 }
+#custom-html-fc {
+  /* Type valid CSS here */
+}
+#custom-html-fc div {
+  padding: 80px 0;
+  color: #777;
+  text-align: center;
+}
+#custom-html-fc p {
+  font-size: 60px;
+  color: #777;
+}
 .cid-sqyg2Ues0B {
   padding-top: 5rem;
   padding-bottom: 5rem;
@@ -11515,6 +11545,18 @@ a {
   border-color: #6592e6;
   border-radius: 4px;
   background-color: #fafafa;
+}
+#custom-html-ik {
+  /* Type valid CSS here */
+}
+#custom-html-ik div {
+  padding: 80px 0;
+  color: #777;
+  text-align: center;
+}
+#custom-html-ik p {
+  font-size: 60px;
+  color: #777;
 }
 .cid-sqTYMnFklo {
   padding-top: 5rem;
@@ -59251,6 +59293,18 @@ a {
   padding-bottom: 0rem;
   background-color: #ffffff;
 }
+#custom-html-4lq {
+  /* Type valid CSS here */
+}
+#custom-html-4lq div {
+  padding: 80px 0;
+  color: #777;
+  text-align: center;
+}
+#custom-html-4lq p {
+  font-size: 60px;
+  color: #777;
+}
 .cid-txGvhHBmVp {
   padding-top: 5rem;
   padding-bottom: 5rem;
@@ -69674,6 +69728,18 @@ a {
   padding-top: 0rem;
   padding-bottom: 0rem;
   background-color: #ffffff;
+}
+#custom-html-596 {
+  /* Type valid CSS here */
+}
+#custom-html-596 div {
+  padding: 80px 0;
+  color: #777;
+  text-align: center;
+}
+#custom-html-596 p {
+  font-size: 60px;
+  color: #777;
 }
 .cid-tzO1GB8dNx {
   padding-top: 0rem;
@@ -117653,6 +117719,28 @@ a {
 }
 .cid-tZzXywZJTm img {
   width: 100%;
+}
+.cid-tZAcmi0ob0 {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  background-color: #ffffff;
+}
+.cid-tZAcmi0ob0 blockquote {
+  border-color: #6592e6;
+  border-radius: 4px;
+  background-color: #fafafa;
+}
+#custom-html-8jc {
+  /* Type valid CSS here */
+}
+#custom-html-8jc div {
+  padding: 80px 0;
+  color: #777;
+  text-align: center;
+}
+#custom-html-8jc p {
+  font-size: 60px;
+  color: #777;
 }
 .cid-tZzShzqysW {
   padding-top: 4rem;
