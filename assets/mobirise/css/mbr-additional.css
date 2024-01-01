@@ -117698,6 +117698,22 @@ a {
   border-radius: 4px;
   background-color: #fafafa;
 }
+.cid-u04rtwk91l {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  background-color: #ffffff;
+}
+@media (max-width: 991px) {
+  .cid-u04rtwk91l .image-wrapper {
+    margin-bottom: 1rem;
+  }
+}
+.cid-u04rtwk91l .row {
+  flex-direction: row-reverse;
+}
+.cid-u04rtwk91l img {
+  width: 100%;
+}
 #custom-html-8jc {
   /* Type valid CSS here */
 }
