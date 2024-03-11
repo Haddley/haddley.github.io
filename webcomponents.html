@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html  >
 <head>
-  <!-- Site made with Mobirise Website Builder v5.9.13, https://mobirise.com -->
+  
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Mobirise v5.9.13, mobirise.com">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
   <meta name="description" content="">
@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="assets/theme/css/style.css">
   <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=hoXcla"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=hoXcla" type="text/css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=ohiXvq"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=ohiXvq" type="text/css">
 
   
   <link href="prism.css" rel="stylesheet" />
@@ -353,7 +353,19 @@ customElements.whenDefined('howto-tooltip').then(() => {
     </template>
 
 
-    [JS_CODE_0]
+    <script>
+
+        customElements.define("my-element",
+            class extends HTMLElement {
+                constructor() {
+                    super();
+                    let template = document.getElementById("my-paragraph");
+                    let templatecontent = template.content;
+                    const shadowRoot = this.attachShadow({ mode: "open" }).appendChild(templatecontent.cloneNode(true));
+                }
+            });
+
+    </script>
 
     <my-element></my-element>
     <my-element></my-element>
@@ -394,7 +406,23 @@ customElements.whenDefined('howto-tooltip').then(() => {
 <pre class="language-clike"><code><!--         
 <body>
 
-    [JS_CODE_0]
+    <script>
+
+        const template = document.createElement('template');
+        template.innerHTML = `
+            <p>My paragraph</p>
+        `
+
+        customElements.define("my-element",
+            class extends HTMLElement {
+                constructor() {
+                    super();
+                    let templatecontent = template.content;
+                    const shadowRoot = this.attachShadow({ mode: "open" }).appendChild(templatecontent.cloneNode(true));
+                }
+            });
+
+    </script>
 
     <my-element></my-element>
     <my-element></my-element>
@@ -448,7 +476,23 @@ customElements.whenDefined('howto-tooltip').then(() => {
 <pre class="language-clike"><code><!--         
 <body>
 
-    [JS_CODE_0]
+    <script>
+
+        const template = document.createElement('template');
+        template.innerHTML = `
+            <p><slot name="greeting">Hello</slot> <slot name="name">World</slot>!</p>
+        `
+
+        customElements.define("my-element",
+            class extends HTMLElement {
+                constructor() {
+                    super();
+                    let templatecontent = template.content;
+                    const shadowRoot = this.attachShadow({ mode: "open" }).appendChild(templatecontent.cloneNode(true));
+                }
+            });
+
+    </script>
 
     <my-element></my-element>
     <my-element><span slot="name">Neil</span></my-element>
@@ -506,7 +550,38 @@ customElements.whenDefined('howto-tooltip').then(() => {
 <pre class="language-clike"><code><!--         
 <body>
 
-    [JS_CODE_0]
+    <script>
+
+        const template = document.createElement('template');
+        template.innerHTML = `
+            <p><slot>Hello</slot> <span id="name">World</span>!</p>
+        `
+
+        customElements.define("my-element",
+            class extends HTMLElement {
+                constructor() {
+                    super();
+                    let templatecontent = template.content;
+                    const shadowRoot = this.attachShadow({ mode: "open" }).appendChild(templatecontent.cloneNode(true));
+                }
+                static get observedAttributes() {
+                    return ['name'];
+                }
+
+                attributeChangedCallback(name, oldValue, newValue) {
+                    if (name == 'name') {
+                        const span = this.shadowRoot.querySelector('#name')
+                        if (newValue) {
+                            span.innerText = newValue
+                            return
+                        } 
+                        span.innerText = "World"
+                    }
+                }
+            });
+
+
+    </script>
 
     <my-element></my-element>
     <my-element name="Neil"></my-element>
@@ -545,13 +620,82 @@ customElements.whenDefined('howto-tooltip').then(() => {
 <pre class="language-clike"><code><!--         
 <body>
 
-    [JS_CODE_0]
+    <script>
+
+        const template = document.createElement('template');
+        template.innerHTML = `
+            <p><slot>Hello</slot> <span id="name">World</span>!</p>
+        `
+
+        customElements.define("my-element",
+            class extends HTMLElement {
+                constructor() {
+                    super();
+                    let templatecontent = template.content;
+                    const shadowRoot = this.attachShadow({ mode: "open" }).appendChild(templatecontent.cloneNode(true));
+                }
+
+                static get observedAttributes() {
+                    return ['name'];
+                }
+
+                attributeChangedCallback(name, oldValue, newValue) {
+                    if (name == 'name') {
+                        const span = this.shadowRoot.querySelector('#name')
+                        if (newValue) {
+                            span.innerText = newValue
+                            return
+                        }
+                        span.innerText = "World"
+                    }
+                }
+
+                connectedCallback() {
+                    this._interval = setInterval( () => {
+                        console.log('.')
+                        this._tick()
+                    }, 50000);
+                }
+
+                disconnectedCallback() {
+                    clearInterval(this._interval);
+                }
+
+                _tick() {
+                    const tickEvent = new CustomEvent("tick", {
+                        bubbles: true,
+                        cancelable: false,
+                        composed: true
+                    })
+                    this.dispatchEvent(tickEvent);
+                }
+
+            })
+
+    </script>
 
     <my-element id='first'></my-element>
     <my-element id='second' name="Neil"></my-element>
     <my-element name="Neil"><span slot>Welcome</span></my-element>
 
-    [JS_CODE_1]
+    <script>
+
+        document.querySelector('#first').addEventListener("tick", (e) => {
+            console.log('tick');
+            console.log(e);
+        });
+
+        document.querySelector('#first').addEventListener("click", (e) => {
+            console.log('click');
+            console.log(e);
+        });
+
+        document.querySelector('#second').addEventListener("tick", function (e) {
+            console.log('tock');
+            console.log(e);
+        });
+
+    </script>
 
 </body>
 --></code></pre>
@@ -652,7 +796,15 @@ customElements.whenDefined('howto-tooltip').then(() => {
             
         </div>
     </div>
-</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><a href="https://mobiri.se/2350277" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p><a style="z-index:1" href="https://mobirise.com/builder/ai-website-builder.html">AI Website Builder</a></section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
+</section>
+
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/ytplayer/index.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
   <script src="prism.js"></script>
 <script src="webcomponents/howtoTooltip.js"></script>
   

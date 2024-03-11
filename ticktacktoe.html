@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html  >
 <head>
-  <!-- Site made with Mobirise Website Builder v5.9.13, https://mobirise.com -->
+  
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Mobirise v5.9.13, mobirise.com">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
   <meta name="description" content="">
@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="assets/theme/css/style.css">
   <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=MdG6Lv"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=MdG6Lv" type="text/css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=5xe5eP"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=5xe5eP" type="text/css">
 
   
   <link href="prism.css" rel="stylesheet" />
@@ -226,7 +226,25 @@
                 <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>SDK setup</strong></h5>
 
 <pre class="language-clike"><code><!--         
-[JS_CODE_0]
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAw86TBoGMBkdTHnhs28zKCiVvvkNEcPqM",
+    authDomain: "haddley-tick-tack-toe.firebaseapp.com",
+    projectId: "haddley-tick-tack-toe",
+    storageBucket: "haddley-tick-tack-toe.appspot.com",
+    messagingSenderId: "762869781957",
+    appId: "1:762869781957:web:02d5bd65bd1d1661dc27ac"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script>
 --></code></pre>
                     
 
@@ -393,9 +411,9 @@
     <div id="status"></div>
     <button id="reset">Reset</button>
 
-    [JS_CODE_0]
-    [JS_CODE_1]
-    [JS_CODE_2]
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-database.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>
 --></code></pre>
@@ -924,10 +942,10 @@ document.addEventListener('DOMContentLoaded', initGame);
     <div id="status"></div>
     <button id="reset">Reset</button>
 
-    [JS_CODE_0]
-    [JS_CODE_1]
-    [JS_CODE_2]
-    [JS_CODE_3]
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-database.js"></script>
+    <script src="app.js"></script>
 </body>
 
 </html>
@@ -1291,7 +1309,15 @@ document.addEventListener('DOMContentLoaded', initGame);
             </div>
         </div>
     </div>
-</section><section class="display-7" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><a href="https://mobiri.se/2350277" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">&#8204;</p><a style="z-index:1" href="https://mobirise.com">Mobirise.com </a></section><script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
+</section>
+
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/ytplayer/index.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
   <script src="prism.js"></script>
 <script src="webcomponents/howtoTooltip.js"></script>
   
