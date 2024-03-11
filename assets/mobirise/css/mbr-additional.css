@@ -130173,6 +130173,9 @@ a {
 #custom-html-9oa {
   /* Type valid CSS here */
 }
+#custom-html-9oa pre {
+  padding: 10px;
+}
 .cid-u6Hj0RHlYu {
   z-index: 1000;
   width: 100%;
@@ -130596,6 +130599,9 @@ a {
 }
 #custom-html-9o9 {
   /* Type valid CSS here */
+}
+#custom-html-9o9 pre {
+  padding: 10px;
 }
 .cid-u6HtQolvJX {
   padding-top: 0rem;
