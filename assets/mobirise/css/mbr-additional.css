@@ -140609,6 +140609,22 @@ a {
 .cid-uh7r8lidsu img {
   width: 100%;
 }
+.cid-uhbFyYOFBu {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  background-color: #ffffff;
+}
+@media (max-width: 991px) {
+  .cid-uhbFyYOFBu .image-wrapper {
+    margin-bottom: 1rem;
+  }
+}
+.cid-uhbFyYOFBu .row {
+  flex-direction: row-reverse;
+}
+.cid-uhbFyYOFBu img {
+  width: 100%;
+}
 .cid-uh7aW1ADih {
   padding-top: 4rem;
   padding-bottom: 4rem;
