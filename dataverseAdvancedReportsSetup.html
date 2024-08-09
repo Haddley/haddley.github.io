@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Microsoft Dataverse Advanced Reports Setup</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=sznjaE"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=sznjaE" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-ukZkkJQofz" once="menu" id="menu3-at2">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section data-bs-version="5.1" class="content4 cid-ukZkkKvwJj" id="content4-at3">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Power Apps (Part 22)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Microsoft Dataverse Advanced Reports Setup</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ukZkkKLzCT" id="image3-at4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/office-365-icon-500x500.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a rel="nofollow" href="https://github.com/immersive-web/webxr/blob/main/images/spec-logo.png"><br></a><a href="https://commons.wikimedia.org/wiki/File:Angular_full_color_logo.svg" class="text-primary" target="_blank">This file is licensed under the Creative Commons Attribution 4.0 International license.</a><br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-ukZkkKZA1t" id="content5-at5">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Microsoft Dataverse Advanced Reports</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The <strong>Visual Studio shell</strong> used to create Reporting Services reports has been released under various names, including SQL Server Data Tools (SSDT).</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ukZla1i9Uf" id="image3-atn">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/ssrs-1-512x243.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a href="https://learn.microsoft.com/en-us/sql/ssdt/previous-releases-of-sql-server-data-tools-ssdt-and-ssdt-bi?view=sql-server-ver16#ssdt-for-visual-studio-vs-2015" class="text-primary" target="_blank">Previous releases of SQL Server Data Tools (SSDT) - SQL Server Data Tools (SSDT) | Microsoft Learn</a><br><a href="https://go.microsoft.com/fwlink/?linkid=2132817" class="text-primary" target="_blank">https://go.microsoft.com/fwlink/?linkid=2132817</a><br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ukZla5VYbd" id="image3-ato">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/ssrs-1a-512x123.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I downloaded the Disk Image File</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ukZlacTB2f" id="image3-atp">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/ssrs-2-512x128.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I opened the Disk Image File and ran SSDTSetup</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ukZlafpdiG" id="image3-atq">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/ssrs-3-512x357.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the SQL Server Reporting Services checkbox and clicked the Next button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ukZlahFel4" id="image3-atr">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/ssrs-4-512x353.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I agreed to the license terms</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ukZlakHQ6v" id="image3-ats">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/ssrs-5-512x352.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Visual Studio 2015 Shell was installed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ukZlao26Y1" id="image3-att">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/ssrs-6-512x359.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Setup was successful</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ukZlarqyzP" id="image3-atu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/ssrs-7-512x271.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the New Project... link</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ukZlatViwg" id="image3-atv">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/ssrs-8-512x271.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the Project Server Report option</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ukZlawlOi9" id="image3-atw">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/ssrs-9-512x123.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I right clicked on the Reports folder and selected the Add New Report menu item</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ukZlayzRyf" id="image3-atx">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/ssrs-10-512x273.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Next button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ukZlaBjK68" id="image3-aty">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/ssrs-11-512x271.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Microsoft Dynamics was not shown as a data source type</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ukZlaDPgv4" id="image3-atz">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/ssrs-12-512x46.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a href="https://learn.microsoft.com/en-us/dynamics365/customerengagement/on-premises/analytics/install-dynamics-365-report-authoring-extension?view=op-9-1" class="text-primary" target="_blank">Install the Report Authoring Extension for Dynamics 365 Customer Engagement (on-premises) | Microsoft Learn</a><br><br><a href="https://www.microsoft.com/en-us/download/details.aspx?id=56973&msockid=01b3e76a724f6ee21af8f3bc73df6f1a" class="text-primary" target="_blank">Download Dynamics 365, version 9.0 Report Authoring Extension (with SQL Server Data Tools support) from Official Microsoft Download Center</a><br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ukZlaGjbVd" id="image3-au0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/ssrs-13-512x270.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I installed the Microsoft Dynamics 365 Report Authoring Extension</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ukZlaIVwTX" id="image3-au1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/ssrs-14-512x387.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I accepted the license agreement</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ukZlaLrk2H" id="image3-au2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/ssrs-15-512x391.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I installed Microsoft Application Error Reporting</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ukZlaNYrjY" id="image3-au3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/ssrs-16-512x391.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Next button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ukZlaQAtER" id="image3-au4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/ssrs-17-512x458.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Next button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ukZlaT0Pxf" id="image3-au5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/ssrs-18-512x455.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Next button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ukZlaVnrPV" id="image3-au6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/ssrs-19-512x451.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Finish button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ukZlaXPRKT" id="image3-au7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/ssrs-20-512x130.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I right clicked on the Reports folder and selected the Add New Report menu item (again)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ukZlb0Aqp5" id="image3-au8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/ssrs-21-512x273.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Microsoft Dynamics 365 FetchXML was the default data source type<br>I entered my <strong>https://XXX.dynamics.com</strong> URL into the Connection string box and clicked the Next button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="features13 cid-ukZlganiOj" id="features14-aum">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont socicon-youtube socicon"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://www.youtube.com/watch?v=cNxEwJj2XvQ&t=285s" class="text-primary" target="_blank">SSRS Report from Scratch for Dynamics 365</a></strong><strong><a href="https://www.makeuseof.com/how-to-use-raspberry-pi-imager-advanced-options/" class="text-primary" target="_blank"><br></a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/ytplayer/index.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>
