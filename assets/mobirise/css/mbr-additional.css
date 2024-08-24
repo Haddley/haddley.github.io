@@ -137141,37 +137141,6 @@ a {
   padding-bottom: 5rem;
   background-color: #ffffff;
 }
-.cid-ufuVxTLx4s {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-  background-color: #ffffff;
-}
-.cid-ufuVxTLx4s .card-box {
-  z-index: 10;
-  position: relative;
-}
-@media (min-width: 1500px) {
-  .cid-ufuVxTLx4s .container {
-    max-width: 1400px;
-  }
-}
-.cid-ufuVxTLx4s .card {
-  margin: auto;
-}
-.cid-ufuVxTLx4s .mbr-iconfont {
-  display: block;
-  font-size: 5rem;
-  color: #6592e6;
-  margin-bottom: 2rem;
-}
-.cid-ufuVxTLx4s .card-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.cid-ufuVxTLx4s .row {
-  justify-content: center;
-}
 .cid-ufuVxU05qK {
   padding-top: 0rem;
   padding-bottom: 0rem;
@@ -137252,22 +137221,6 @@ a {
 .cid-ufuVxUL56z img {
   width: 100%;
 }
-.cid-ufuVxV3EkW {
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  background-color: #ffffff;
-}
-@media (max-width: 991px) {
-  .cid-ufuVxV3EkW .image-wrapper {
-    margin-bottom: 1rem;
-  }
-}
-.cid-ufuVxV3EkW .row {
-  flex-direction: row-reverse;
-}
-.cid-ufuVxV3EkW img {
-  width: 100%;
-}
 .cid-ufuVxVeLCZ {
   padding-top: 0rem;
   padding-bottom: 0rem;
@@ -137298,38 +137251,6 @@ a {
   flex-direction: row-reverse;
 }
 .cid-ufuVxVpR7w img {
-  width: 100%;
-}
-.cid-ufuVxVBJc1 {
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  background-color: #ffffff;
-}
-@media (max-width: 991px) {
-  .cid-ufuVxVBJc1 .image-wrapper {
-    margin-bottom: 1rem;
-  }
-}
-.cid-ufuVxVBJc1 .row {
-  flex-direction: row-reverse;
-}
-.cid-ufuVxVBJc1 img {
-  width: 100%;
-}
-.cid-ufuVxVNb08 {
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  background-color: #ffffff;
-}
-@media (max-width: 991px) {
-  .cid-ufuVxVNb08 .image-wrapper {
-    margin-bottom: 1rem;
-  }
-}
-.cid-ufuVxVNb08 .row {
-  flex-direction: row-reverse;
-}
-.cid-ufuVxVNb08 img {
   width: 100%;
 }
 .cid-ufuVxW0SfT {
@@ -137460,101 +137381,36 @@ a {
 .cid-ufuVxXzYib img {
   width: 100%;
 }
-.cid-ufuVxXMM6Z {
-  padding-top: 0rem;
-  padding-bottom: 0rem;
+.cid-ufuVxTLx4s {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
   background-color: #ffffff;
 }
-@media (max-width: 991px) {
-  .cid-ufuVxXMM6Z .image-wrapper {
-    margin-bottom: 1rem;
+.cid-ufuVxTLx4s .card-box {
+  z-index: 10;
+  position: relative;
+}
+@media (min-width: 1500px) {
+  .cid-ufuVxTLx4s .container {
+    max-width: 1400px;
   }
 }
-.cid-ufuVxXMM6Z .row {
-  flex-direction: row-reverse;
+.cid-ufuVxTLx4s .card {
+  margin: auto;
 }
-.cid-ufuVxXMM6Z img {
-  width: 100%;
+.cid-ufuVxTLx4s .mbr-iconfont {
+  display: block;
+  font-size: 5rem;
+  color: #6592e6;
+  margin-bottom: 2rem;
 }
-.cid-ufuVxY5iOj {
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  background-color: #ffffff;
+.cid-ufuVxTLx4s .card-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-@media (max-width: 991px) {
-  .cid-ufuVxY5iOj .image-wrapper {
-    margin-bottom: 1rem;
-  }
-}
-.cid-ufuVxY5iOj .row {
-  flex-direction: row-reverse;
-}
-.cid-ufuVxY5iOj img {
-  width: 100%;
-}
-.cid-ufuVxYj2mw {
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  background-color: #ffffff;
-}
-@media (max-width: 991px) {
-  .cid-ufuVxYj2mw .image-wrapper {
-    margin-bottom: 1rem;
-  }
-}
-.cid-ufuVxYj2mw .row {
-  flex-direction: row-reverse;
-}
-.cid-ufuVxYj2mw img {
-  width: 100%;
-}
-.cid-ufuVxYxG0N {
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  background-color: #ffffff;
-}
-@media (max-width: 991px) {
-  .cid-ufuVxYxG0N .image-wrapper {
-    margin-bottom: 1rem;
-  }
-}
-.cid-ufuVxYxG0N .row {
-  flex-direction: row-reverse;
-}
-.cid-ufuVxYxG0N img {
-  width: 100%;
-}
-.cid-ufuVxYTPCG {
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  background-color: #ffffff;
-}
-@media (max-width: 991px) {
-  .cid-ufuVxYTPCG .image-wrapper {
-    margin-bottom: 1rem;
-  }
-}
-.cid-ufuVxYTPCG .row {
-  flex-direction: row-reverse;
-}
-.cid-ufuVxYTPCG img {
-  width: 100%;
-}
-.cid-ufuVxZ9lrC {
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  background-color: #ffffff;
-}
-@media (max-width: 991px) {
-  .cid-ufuVxZ9lrC .image-wrapper {
-    margin-bottom: 1rem;
-  }
-}
-.cid-ufuVxZ9lrC .row {
-  flex-direction: row-reverse;
-}
-.cid-ufuVxZ9lrC img {
-  width: 100%;
+.cid-ufuVxTLx4s .row {
+  justify-content: center;
 }
 .cid-ufuVJKiWMT {
   z-index: 1000;
