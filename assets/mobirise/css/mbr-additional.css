@@ -136369,37 +136369,6 @@ a {
   padding-bottom: 5rem;
   background-color: #ffffff;
 }
-.cid-ufuV1eGYwJ {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-  background-color: #ffffff;
-}
-.cid-ufuV1eGYwJ .card-box {
-  z-index: 10;
-  position: relative;
-}
-@media (min-width: 1500px) {
-  .cid-ufuV1eGYwJ .container {
-    max-width: 1400px;
-  }
-}
-.cid-ufuV1eGYwJ .card {
-  margin: auto;
-}
-.cid-ufuV1eGYwJ .mbr-iconfont {
-  display: block;
-  font-size: 5rem;
-  color: #6592e6;
-  margin-bottom: 2rem;
-}
-.cid-ufuV1eGYwJ .card-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.cid-ufuV1eGYwJ .row {
-  justify-content: center;
-}
 .cid-ufuV1eZVeg {
   padding-top: 0rem;
   padding-bottom: 0rem;
@@ -136640,6 +136609,22 @@ a {
 .cid-ufuV1iPq0s img {
   width: 100%;
 }
+.cid-ufuV1jETyS {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  background-color: #ffffff;
+}
+@media (max-width: 991px) {
+  .cid-ufuV1jETyS .image-wrapper {
+    margin-bottom: 1rem;
+  }
+}
+.cid-ufuV1jETyS .row {
+  flex-direction: row-reverse;
+}
+.cid-ufuV1jETyS img {
+  width: 100%;
+}
 .cid-ufuV1j6fRE {
   padding-top: 0rem;
   padding-bottom: 0rem;
@@ -136670,22 +136655,6 @@ a {
   flex-direction: row-reverse;
 }
 .cid-ufuV1jimFO img {
-  width: 100%;
-}
-.cid-ufuV1jETyS {
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  background-color: #ffffff;
-}
-@media (max-width: 991px) {
-  .cid-ufuV1jETyS .image-wrapper {
-    margin-bottom: 1rem;
-  }
-}
-.cid-ufuV1jETyS .row {
-  flex-direction: row-reverse;
-}
-.cid-ufuV1jETyS img {
   width: 100%;
 }
 .cid-ufuV1jXVQd {
@@ -136768,21 +136737,36 @@ a {
 .cid-ufuV1l8Pxn img {
   width: 100%;
 }
-.cid-ufuV1lmWUy {
-  padding-top: 0rem;
-  padding-bottom: 0rem;
+.cid-ufuV1eGYwJ {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
   background-color: #ffffff;
 }
-@media (max-width: 991px) {
-  .cid-ufuV1lmWUy .image-wrapper {
-    margin-bottom: 1rem;
+.cid-ufuV1eGYwJ .card-box {
+  z-index: 10;
+  position: relative;
+}
+@media (min-width: 1500px) {
+  .cid-ufuV1eGYwJ .container {
+    max-width: 1400px;
   }
 }
-.cid-ufuV1lmWUy .row {
-  flex-direction: row-reverse;
+.cid-ufuV1eGYwJ .card {
+  margin: auto;
 }
-.cid-ufuV1lmWUy img {
-  width: 100%;
+.cid-ufuV1eGYwJ .mbr-iconfont {
+  display: block;
+  font-size: 5rem;
+  color: #6592e6;
+  margin-bottom: 2rem;
+}
+.cid-ufuV1eGYwJ .card-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cid-ufuV1eGYwJ .row {
+  justify-content: center;
 }
 .cid-ufuVxSv49x {
   z-index: 1000;
