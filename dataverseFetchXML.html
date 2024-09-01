@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Microsoft Dataverse FetchXML</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=Agd19n"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=Agd19n" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-umDGH0UoSl" once="menu" id="menu3-ay8">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section data-bs-version="5.1" class="content4 cid-umDGH1yHRO" id="content4-ay9">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Power Apps (Part 23)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Microsoft Dataverse FetchXML</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDGH1M1OG" id="image3-aya">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/office-365-icon-500x500.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a rel="nofollow" href="https://github.com/immersive-web/webxr/blob/main/images/spec-logo.png"><br></a><a href="https://commons.wikimedia.org/wiki/File:Angular_full_color_logo.svg" class="text-primary" target="_blank">This file is licensed under the Creative Commons Attribution 4.0 International license.</a><br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-umDGH1YEtc" id="content5-ayb">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Microsoft Dataverse FetchXML</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The <strong>Visual Studio shell</strong> used to create Reporting Services reports has been released under various names, including SQL Server Data Tools (SSDT).</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="header4 cid-umDHILnfX6 mbr-fullscreen" id="header4-az0">
+
+    
+    
+    <div class="container">
+        <div class="row">
+            <div class="content-wrap">
+                <h1 class="mbr-section-title mbr-fonts-style mbr-white mb-3 display-1">
+                    <strong>New Possibilities</strong>
+                </h1>
+                
+                <p class="mbr-fonts-style mbr-text mbr-white mb-3 display-7">
+                    Block with flexible configuration, free vertical and horizontal content movement (only when
+                    full screen is on)
+                </p>
+
+                <div class="mbr-section-btn">
+                    <a class="btn btn-primary display-4" href="#">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="features13 cid-umDGH7afyC" id="features14-ayy">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://theconfuzedsourcecode.wordpress.com/2020/02/20/this-is-how-i-built-ssrs-rdl-reports-for-microsoft-dynamics-365/" class="text-primary" target="_blank">This is how I built SSRS RDL Reports for Microsoft Dynamics 365…</a></strong><strong><a href="https://www.makeuseof.com/how-to-use-raspberry-pi-imager-advanced-options/" class="text-primary" target="_blank"><br></a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-3 col-12 col-md-4 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://theconfuzedsourcecode.wordpress.com/2020/02/17/lets-parameterize-our-ssrs-rdl-reports/" class="text-primary" target="_blank">Let’s Parameterize our SSRS RDL Reports!</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-3 col-12 col-md-4 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://learn.microsoft.com/en-us/power-apps/developer/data-platform/fetchxml/join-tables?tabs=fetchxml" class="text-primary" target="_blank">Join tables using FetchXml</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="header4 cid-umDHJl6ZkX mbr-fullscreen" id="header4-az1">
+
+    
+    
+    <div class="container">
+        <div class="row">
+            <div class="content-wrap">
+                <h1 class="mbr-section-title mbr-fonts-style mbr-white mb-3 display-1">
+                    <strong>New Possibilities</strong>
+                </h1>
+                
+                <p class="mbr-fonts-style mbr-text mbr-white mb-3 display-7">
+                    Block with flexible configuration, free vertical and horizontal content movement (only when
+                    full screen is on)
+                </p>
+
+                <div class="mbr-section-btn">
+                    <a class="btn btn-primary display-4" href="#">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDHLveDFS" id="image3-az2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;COMMENT&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDHLKeQJO" id="image3-az3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;COMMENT&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDHLNmAcU" id="image3-az4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;COMMENT&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDHLRPm4a" id="image3-az5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;COMMENT&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDHLXx0Uo" id="image3-az6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;COMMENT&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDHM1mQxx" id="image3-az7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;COMMENT&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDHM4lQf5" id="image3-az8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;COMMENT&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDHM7H211" id="image3-az9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;COMMENT&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDHMcrjva" id="image3-aza">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;COMMENT&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDHMgChaE" id="image3-azb">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;COMMENT&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDHMjkqVg" id="image3-azc">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;COMMENT&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDHMlJsfP" id="image3-azd">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;COMMENT&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDHMogSuv" id="image3-aze">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;COMMENT&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDHMra2LC" id="image3-azf">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;COMMENT&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDHMuiy4U" id="image3-azg">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;COMMENT&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDHMyk31Z" id="image3-azh">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;COMMENT&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDHMBKWH3" id="image3-azi">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;COMMENT&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDHMEVJSt" id="image3-azj">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;COMMENT&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDHMHPORi" id="image3-azk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;COMMENT&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDHMKCk6Y" id="image3-azl">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;COMMENT&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDHMNcUrh" id="image3-azm">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;COMMENT&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDHMPCcUz" id="image3-azn">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;COMMENT&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDHMS1Gpn" id="image3-azo">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;COMMENT&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDHMUteJh" id="image3-azp">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;COMMENT&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDHMX1xf5" id="image3-azq">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;COMMENT&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDHMZA8cC" id="image3-azr">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;COMMENT&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDHN28UBd" id="image3-azs">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;COMMENT&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDHN4XVWo" id="image3-azt">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;COMMENT&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDHN8GwaT" id="image3-azu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;COMMENT&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-umDHNdxO0d" id="image3-azv">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;COMMENT&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/ytplayer/index.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>
