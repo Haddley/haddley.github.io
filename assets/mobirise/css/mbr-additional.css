@@ -146696,3 +146696,19 @@ a {
 .cid-ura6YRCaQw img {
   width: 100%;
 }
+.cid-ure4SBjMts {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  background-color: #ffffff;
+}
+@media (max-width: 991px) {
+  .cid-ure4SBjMts .image-wrapper {
+    margin-bottom: 1rem;
+  }
+}
+.cid-ure4SBjMts .row {
+  flex-direction: row-reverse;
+}
+.cid-ure4SBjMts img {
+  width: 100%;
+}
