@@ -106,23 +106,36 @@
 
         const locations = {
             
-            "Macquarie Place": { latlng: [-33.5159624,151.3041541], zoom: 18 },
+            "Macquarie Place": { latlng: [-33.515968, 151.306755], zoom: 21 },
 
-            "Beach":{ latlng: [-33.5249089,151.317237], zoom: 17 },
+            "Beach": {latlng: [-33.52927, 151.319741], zoom: 16 },
 
             "High Street":{ latlng: [ -33.5219295,151.3203851], zoom: 18 },
 
             "Local Shops": { latlng: [-33.5147099,151.3176534], zoom: 18 },
             
-            "Train Station":{ latlng: [-33.4857276,151.3207563], zoom: 18 },
+            "Train Station":{ latlng: [-33.485817, 151.323337], zoom: 17 },
 
-            "Market": { latlng: [-33.5145252,151.3377995], zoom: 18 },
+            "Ettalong Markets": { latlng: [-33.514533, 151.340774], zoom: 19 },
+
+            "Fishermen's Wharf": { latlng: [-33.483741, 151.325984], zoom: 21 },
 
         }
 
 
         const startcity = "Macquarie Place"
         var map = L.map('map').setView(locations[startcity].latlng, locations[startcity].zoom);
+
+        map.on('click', 
+					function(e){
+						var coord = e.latlng.toString().split(',');
+						var lat = coord[0].split('(');
+						var lng = coord[1].split(')');
+                        var zoom = e.target._zoom;
+                        console.log(e);
+						console.log("You clicked the map at latitude: " + lat[1] + " and longitude:" + lng[0]);
+                        console.log(`{ latlng: [${lat[1]},${lng[0]}], zoom: ${zoom} }`);
+					});
 
 
         // woy woy
