@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="assets/theme/css/style.css">
   <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=mAs24I"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=mAs24I" type="text/css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=lvXE6s"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=lvXE6s" type="text/css">
 
   
   <link href="prism.css" rel="stylesheet" />
@@ -2635,40 +2635,40 @@ $(document).ready(function () {
                 <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>New Customer Order Line.en-US.webpage.copy.html</strong></h5>
 
 <pre class="language-clike"><code><!--         
-&lt;div class=&quot;row sectionBlockLayout text-start&quot; style=&quot;display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;&quot;&gt;
-  &lt;div class=&quot;container&quot; style=&quot;display: flex; flex-wrap: wrap;&quot;&gt;
-    &lt;div class=&quot;col-lg-12 columnBlockLayout&quot; style=&quot;flex-grow: 1; display: flex; flex-direction: column; min-width: 250px; padding: 16px; margin: 60px 0px;&quot;&gt;
-      &lt;h1 style=&quot;text-align: left;&quot;&gt;New Customer Order Line&lt;/h1&gt;
-      {% entityform name: &#39;Create New Customer Order Line&#39; %}
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
+<div class="row sectionBlockLayout text-start" style="display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;">
+  <div class="container" style="display: flex; flex-wrap: wrap;">
+    <div class="col-lg-12 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; min-width: 250px; padding: 16px; margin: 60px 0px;">
+      <h1 style="text-align: left;">New Customer Order Line</h1>
+      {% entityform name: 'Create New Customer Order Line' %}
+    </div>
+  </div>
+</div>
 
 {% fetchxml resultVariable %}
-&lt;fetch mapping=&quot;logical&quot;&gt;
-  &lt;entity name=&quot;dyn365bc_item_v2_0&quot;&gt;
-    &lt;attribute name=&quot;dyn365bc_item_v2_0id&quot; /&gt;
-    &lt;attribute name=&quot;dyn365bc_displayname&quot; /&gt;
-    &lt;attribute name=&quot;dyn365bc_unitprice&quot; /&gt;
-    &lt;attribute name=&quot;dyn365bc_inventory&quot; /&gt;
-    &lt;order attribute=&quot;dyn365bc_displayname&quot; descending=&quot;false&quot;&gt;
-    &lt;/order&gt;
-  &lt;/entity&gt;
-&lt;/fetch&gt;
+<fetch mapping="logical">
+  <entity name="dyn365bc_item_v2_0">
+    <attribute name="dyn365bc_item_v2_0id" />
+    <attribute name="dyn365bc_displayname" />
+    <attribute name="dyn365bc_unitprice" />
+    <attribute name="dyn365bc_inventory" />
+    <order attribute="dyn365bc_displayname" descending="false">
+    </order>
+  </entity>
+</fetch>
 {% endfetchxml %}
  
-&lt;input id=&quot;items&quot; type=&quot;hidden&quot; value=&#39;{
+<input id="items" type="hidden" value='{
 {% for entityVariable in resultVariable.results.entities %}
-&quot;{{ entityVariable.dyn365bc_item_v2_0id }}&quot;:
+"{{ entityVariable.dyn365bc_item_v2_0id }}":
  {
-   &quot;id&quot;: &quot;{{ entityVariable.dyn365bc_item_v2_0id }}&quot;,
-   &quot;displayname&quot;: &quot;{{ entityVariable.dyn365bc_displayname }}&quot;,
-   &quot;unitprice&quot;: {{ entityVariable.dyn365bc_unitprice }},
-   &quot;inventory&quot;: {{ entityVariable.dyn365bc_inventory }}
+   "id": "{{ entityVariable.dyn365bc_item_v2_0id }}",
+   "displayname": "{{ entityVariable.dyn365bc_displayname }}",
+   "unitprice": {{ entityVariable.dyn365bc_unitprice }},
+   "inventory": {{ entityVariable.dyn365bc_inventory }}
 }
 {% unless forloop.last %}, {% endunless %}
 {% endfor %}
-}&#39; /&gt;
+}' />
 --></code></pre>
                     
 
