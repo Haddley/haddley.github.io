@@ -1,0 +1,982 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://haddley.github.io/</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/index.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/posts.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/spring-boot-2.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/npm.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/dotnet%20core%20part1.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/spring-boot.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/purview.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/directory/www/index.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/ionic.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/flappy/www/index.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/aspnetcoreawseks.html</loc>
+  <lastmod>2024-12-02T08:31:36+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/llamaCorp.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/aShortHistory.html</loc>
+  <lastmod>2024-12-02T08:31:36+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/assets/files/Neil-HaddleyMSLearningTranscript.pdf</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/assets/files/Neil-HaddleyCredentials.PDF</loc>
+  <lastmod>2024-12-02T08:31:40+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/BusinessCentralPart25IntegratingWithDataverseUsingDataflows.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/electron.html</loc>
+  <lastmod>2024-12-02T08:31:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/langflow1.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/powerPages2.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/powerPages1.html</loc>
+  <lastmod>2024-12-02T08:31:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/promptFlow6.html</loc>
+  <lastmod>2024-12-02T08:31:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/promptFlow5.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/langChainAgents.html</loc>
+  <lastmod>2024-12-02T08:31:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/phpSetup.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/dataverseAdvancedReportsSetup.html</loc>
+  <lastmod>2024-12-02T08:31:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/powerAutomateReports.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/dataverseReports.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/microsoftDynamics365AppforOutlook.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/promptFlow4.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/promptFlow3.html</loc>
+  <lastmod>2024-12-02T08:31:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/promptFlow2.html</loc>
+  <lastmod>2024-12-02T08:31:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/promptFlow1.html</loc>
+  <lastmod>2024-12-02T08:31:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/customtVirtualTables.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/blogCopilotStudio.html</loc>
+  <lastmod>2024-12-02T08:31:36+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/customCopilotStudio.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/configureCopilotSingleSignonForWeb.html</loc>
+  <lastmod>2024-12-02T08:31:36+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/customizeDefaultCanvas.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/copilotEmbedCode.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/staticwebapp.config.json.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/codespacesAuthentication.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/modelDrivenPurchaseOrderLines.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/modelDrivenPurchaseOrders.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/cloudFlow.html</loc>
+  <lastmod>2024-12-02T08:31:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/topics.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/pluginActions.html</loc>
+  <lastmod>2024-12-02T08:31:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/addAPurchaseOrder.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/addAnItem.html</loc>
+  <lastmod>2024-12-02T08:31:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/azureReactStaticWeb%20App.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/businessCentralVirtualTable.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/createActionBasedOnAFlow.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/businessCentralPowerAutomateFlow.html</loc>
+  <lastmod>2024-12-02T08:31:36+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/gingerbreadHouse.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/businessCentralMicrosoftGraph.html</loc>
+  <lastmod>2024-12-02T08:31:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/salesInvoice.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/purchaseInvoice.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/generalPostingSetup.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/customerPostingGroup.html</loc>
+  <lastmod>2024-12-02T08:31:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/vendorPostingGroup.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/generalLedger.html</loc>
+  <lastmod>2024-12-02T08:31:40+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/hands-on-lab3.1.html</loc>
+  <lastmod>2024-12-02T08:31:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/hands-on-lab2.3.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/hands-on-lab2.2.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/hands-on-lab2.1.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/dynamicsSales3.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/dynamicsSales2.html</loc>
+  <lastmod>2024-12-02T08:31:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/dynamicsSales1.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/modelDriven4.html</loc>
+  <lastmod>2024-12-02T08:31:36+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/modelDriven3.html</loc>
+  <lastmod>2024-12-02T08:31:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/modelDriven2.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/modelDriven1.html</loc>
+  <lastmod>2024-12-02T08:31:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/mapExtension.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/rewardsExtension.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/AL-Go-PTE.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/financialOperationsPurchaseInvoice.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/warehouseManagementPutAway.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/businessCentralAdminCenter.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/businessCentralCanvasApps.html</loc>
+  <lastmod>2024-12-02T08:31:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/dynamicsTrialSignup.html</loc>
+  <lastmod>2024-12-02T08:31:36+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/spring-boot-6.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/spring-boot-5.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/spring-boot-4.html</loc>
+  <lastmod>2024-12-02T08:31:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/spring-boot-3.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/promptEngineering.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/LMStudio.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/colorization.html</loc>
+  <lastmod>2024-12-02T08:31:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/stableDiffusion.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/appleLaptop.html</loc>
+  <lastmod>2024-12-02T08:31:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/OpenCV.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/SH1106.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/pi2.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/pi1.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/langchain.html</loc>
+  <lastmod>2024-12-02T08:31:36+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/contextinjection.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/sentencesimilarity.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/sentimentanalysis.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/3dPrinting2.html</loc>
+  <lastmod>2024-12-02T08:31:40+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/3dPrinting1.html</loc>
+  <lastmod>2024-12-02T08:31:36+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/VBNETConsoleSQLServerUnitTests.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/ticktacktoe.html</loc>
+  <lastmod>2024-12-02T08:31:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/angularphaser.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/multiplayer.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/angularfirebase.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/firebase.html</loc>
+  <lastmod>2024-12-02T08:31:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/xcode4.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/vbnetwinforms.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/aspnetcoreunittests.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/threetier.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/blazorwasmandasp.net.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/angularandasp.net.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/reactandasp.net.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/asp.net%20core.html</loc>
+  <lastmod>2024-12-02T08:31:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/asp.net%205%20cs.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/asp.net%205%20visual%20basic.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/dotnet%20core%20part2.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/xcode3.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/xcode2.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/xcode1.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/threejs.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/ngrxEntity.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/ngrxdevtools.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/sharepoint2019.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/ngrx.html</loc>
+  <lastmod>2024-12-02T08:31:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/componentFramework.html</loc>
+  <lastmod>2024-12-02T08:31:40+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/azureStorage.html</loc>
+  <lastmod>2024-12-02T08:31:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/powerApps6.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/machinelearning9.html</loc>
+  <lastmod>2024-12-02T08:31:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/machinelearning8.html</loc>
+  <lastmod>2024-12-02T08:31:36+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/machinelearning7.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/machinelearning6.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/machinelearning5.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/machinelearning4.html</loc>
+  <lastmod>2024-12-02T08:31:36+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/machinelearning3.html</loc>
+  <lastmod>2024-12-02T08:31:36+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/machineLearning2.html</loc>
+  <lastmod>2024-12-02T08:31:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/machineLearning1.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/ATeamsTabSharePointWebPartforOneDrive.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/JavaScriptGraph.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/MicrosoftGraph.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/PowerAutomate.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/WebXR.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/leaflet.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/webcomponents.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/phaser.html</loc>
+  <lastmod>2024-12-02T08:31:36+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/nextjs5.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/mysql.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/nextjs4.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/nextjs3.html</loc>
+  <lastmod>2024-12-02T08:31:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/nextjs2.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/nextjs1.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/sails3.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/sails2.html</loc>
+  <lastmod>2024-12-02T08:31:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/sails1.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/AmazonEKS.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/customconnectorsappregistrations.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/API%20Management.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/pwa.html</loc>
+  <lastmod>2024-12-02T08:31:36+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/powerappsapplication.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/customcomponents.html</loc>
+  <lastmod>2024-12-02T08:31:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/powerappswithrest.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/teamstoolkitspfx.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/teamstoolkit.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/devopsstarterazuredevops.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/devopsstartergithubactions.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/azure-active-directory2.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/azure-active-directory.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/mssqlserver2.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/mssqlserver.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/internetOfThings2.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/internetOfThings1.html</loc>
+  <lastmod>2024-12-02T08:31:36+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/WebVR.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/dockerbuildx.html</loc>
+  <lastmod>2024-12-02T08:31:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/GraphQL.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/nuget.html</loc>
+  <lastmod>2024-12-02T08:31:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/npmCC.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/m365CommandLineInterface.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/sharepointsitedesignsandsitescripts.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/sharepointwebpart2.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/sharepointwebpart1.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/apigateway.html</loc>
+  <lastmod>2024-12-02T08:31:42+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/reactusestateuseeffect.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/restapiservice.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/kubernetes.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/docker.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/three/haddley-three-stereo.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/three/haddley-three-tv.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/three/index-three-analyph.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/three/haddley-three-vr.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/squish/squish.html</loc>
+  <lastmod>2024-12-02T08:31:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/WebXRScene.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/leaflet/index.html</loc>
+  <lastmod>2024-12-02T08:31:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/leaflet/houseHunting.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/phaser/index.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/aquarium/index.html</loc>
+  <lastmod>2024-12-02T08:31:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://haddley.github.io/WebVRScene.html</loc>
+  <lastmod>2024-12-02T08:31:43+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+
+
+</urlset>
