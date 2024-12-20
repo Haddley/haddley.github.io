@@ -1,0 +1,1876 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Business Central (Part 26) Integration Tables</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=WSCSk2"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=WSCSk2" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-ux5pWcVVM1" once="menu" id="menu3-cce">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section data-bs-version="5.1" class="content4 cid-ux5pWdYxLQ" id="content4-ccf">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Microsoft Microsoft Dynamics 365 Business Central (Part 26)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">AL Table Proxy Generator</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5pWeoJEI" id="image3-ccg">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <a href="https://jupyter.org" target="_blank"><img src="assets/images/dynamics365-color.svg" alt=""></a>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">By <a href="https://learn.microsoft.com/en-us/dynamics365/get-started/icons" class="text-primary" target="_blank">Microsoft</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=130569158" class="text-primary" target="_blank">Public Domain</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-ux5pWeGaAl" id="content5-cch">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">AL Table Proxy Generator</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The AL Table Proxy Generator tool can be used to generate one or more tables for integration with Microsoft Dataverse. When one or more tables are present in Microsoft Dataverse, but not in Dynamics 365 Business Central, the tool can be run to generate integration or proxy tables for the specified table or tables.<br><br>An integration or proxy table is a table that represents a table in Microsoft Dataverse. The integration table includes fields that correspond to columns in the Microsoft Dataverse table. The integration table acts as a link or connector between the Business Central table and the Microsoft Dataverse table.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="features13 cid-ux5pWuIuUB" id="features14-cdu">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbrib-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/devenv-al-table-proxy-generator" class="text-primary" target="_blank">AL Table Proxy Generator</a></strong><strong><a href="https://www.geeksforgeeks.org/black-and-white-image-colorization-with-opencv-and-deep-learning" class="text-primary" target="_blank"><br></a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-3 col-12 col-md-4 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbrib-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://yzhums.com/17065/" class="text-primary" target="_blank">Business Central: Customizing an Integration with Microsoft Dataverse (Integrate custom tables)</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="header4 cid-ux5r1Wo1GK mbr-fullscreen" id="header4-cdv">
+
+    
+    
+    <div class="container">
+        <div class="row">
+            <div class="content-wrap">
+                <h1 class="mbr-section-title mbr-fonts-style mbr-white mb-3 display-1">
+                    <strong>New Possibilities</strong>
+                </h1>
+                
+                <p class="mbr-fonts-style mbr-text mbr-white mb-3 display-7">
+                    Block with flexible configuration, free vertical and horizontal content movement (only when
+                    full screen is on)
+                </p>
+
+                <div class="mbr-section-btn">
+                    <a class="btn btn-primary display-4" href="#">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux6dIOidZE" id="image3-cg2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-5.41.52pm-2136x715.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux6dIcEC1x" id="image3-cg1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-5.45.59pm-2136x1170.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux6dJYuKRO" id="image3-cg4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-5.46.25pm-2136x1168.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux6dJv690f" id="image3-cg3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux6dKEqB5o" id="image3-cg5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux6e9emjfd" id="image3-cg6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux6e9GbR7V" id="image3-cg7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux6eaHpx31" id="image3-cg9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux6eaYvWEe" id="image3-cga">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux6eccDCm4" id="image3-cgb">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux6ecV7Mhu" id="image3-cgd">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux6ediyIZX" id="image3-cge">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux6eeRFNLl" id="image3-cgl">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux6eeCY0KU" id="image3-cgk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux6eenMTW8" id="image3-cgj">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux6eeabnBu" id="image3-cgi">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux6edVYFwX" id="image3-cgh">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux6edHqAZB" id="image3-cgg">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux6edtH4ES" id="image3-cgf">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux6ecAP9Pr" id="image3-cgc">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux6eahXzAV" id="image3-cg8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="header4 cid-ux6dF2a4Hc mbr-fullscreen" id="header4-cfz">
+
+    
+    
+    <div class="container">
+        <div class="row">
+            <div class="content-wrap">
+                <h1 class="mbr-section-title mbr-fonts-style mbr-white mb-3 display-1">
+                    <strong>New Possibilities</strong>
+                </h1>
+                
+                <p class="mbr-fonts-style mbr-text mbr-white mb-3 display-7">
+                    Block with flexible configuration, free vertical and horizontal content movement (only when
+                    full screen is on)
+                </p>
+
+                <div class="mbr-section-btn">
+                    <a class="btn btn-primary display-4" href="#">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="header4 cid-ux6dFETufi mbr-fullscreen" id="header4-cg0">
+
+    
+    
+    <div class="container">
+        <div class="row">
+            <div class="content-wrap">
+                <h1 class="mbr-section-title mbr-fonts-style mbr-white mb-3 display-1">
+                    <strong>New Possibilities</strong>
+                </h1>
+                
+                <p class="mbr-fonts-style mbr-text mbr-white mb-3 display-7">
+                    Block with flexible configuration, free vertical and horizontal content movement (only when
+                    full screen is on)
+                </p>
+
+                <div class="mbr-section-btn">
+                    <a class="btn btn-primary display-4" href="#">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r2XVZWR" id="image3-cdw">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-2.09.58pm-2136x103.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r3cMA1o" id="image3-cdx">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-2.10.12pm-2136x159.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r3ia2Ce" id="image3-cdy">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-2.10.20pm-2136x410.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r3kYB2K" id="image3-cdz">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-2.10.33pm-2136x356.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r3tG3iE" id="image3-ce0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-2.10.53pm-2136x1234.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r3xIuOK" id="image3-ce1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-2.11.20pm-2136x1234.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r3AosS0" id="image3-ce2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-2.12.12pm-2136x638.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r3Epv1d" id="image3-ce3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-2.12.49pm-2136x1181.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r3GWShZ" id="image3-ce4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-2.13.15pm-2136x1171.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r3JAb7K" id="image3-ce5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-2.14.20pm-2136x1237.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r3NGPgJ" id="image3-ce6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-2.15.12pm-2136x1238.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r3PYXDL" id="image3-ce7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-2.42.27pm-2136x1110.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r3SmT6s" id="image3-ce8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-2.42.42pm-2136x1106.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r3UTfBI" id="image3-ce9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-2.42.55pm-2136x1104.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r3XtlKb" id="image3-cea">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-2.43.05pm-2136x1109.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-ux5EVU8gql" id="content5-cfh">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">
+                    Lab Book</h4>
+                <p class="mbr-text mbr-fonts-style display-7">I created a new table in Dataverse<br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5IRNLjZn" id="image3-cfi">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-3.39.02pm-2136x756.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5ISuHI3M" id="image3-cfj">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-3.44.40pm-2136x1101.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5ISZwAnT" id="image3-cfk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-3.45.42pm-2136x1109.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5ITvEmHR" id="image3-cfl">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-3.46.27pm-2136x1103.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5IVHgxqR" id="image3-cfp">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-3.47.11pm-2136x1106.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5IW9jXGL" id="image3-cfq">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-4.01.51pm-2136x1104.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5IWBbiqP" id="image3-cfr">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-3.52.49pm-2136x1101.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5IXl1s32" id="image3-cft">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-3.54.14pm-2136x1101.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5IXEgLCI" id="image3-cfu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-3.51.13pm-2136x1107.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5IWUKVxS" id="image3-cfs">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-3.55.11pm-2136x1103.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5IVk00Gz" id="image3-cfo">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-3.57.24pm-2136x578.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5IV31pTk" id="image3-cfn">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-4.01.06pm-2136x783.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5IUvJsVu" id="image3-cfm">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-4.04.04pm-2136x577.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="header4 cid-ux5JCn46Ui mbr-fullscreen" id="header4-cfx">
+
+    
+    
+    <div class="container">
+        <div class="row">
+            <div class="content-wrap">
+                <h1 class="mbr-section-title mbr-fonts-style mbr-white mb-3 display-1">
+                    <strong>New Possibilities</strong>
+                </h1>
+                
+                <p class="mbr-fonts-style mbr-text mbr-white mb-3 display-7">
+                    Block with flexible configuration, free vertical and horizontal content movement (only when
+                    full screen is on)
+                </p>
+
+                <div class="mbr-section-btn">
+                    <a class="btn btn-primary display-4" href="#">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="header4 cid-ux5JDjlYlB mbr-fullscreen" id="header4-cfy">
+
+    
+    
+    <div class="container">
+        <div class="row">
+            <div class="content-wrap">
+                <h1 class="mbr-section-title mbr-fonts-style mbr-white mb-3 display-1">
+                    <strong>New Possibilities</strong>
+                </h1>
+                
+                <p class="mbr-fonts-style mbr-text mbr-white mb-3 display-7">
+                    Block with flexible configuration, free vertical and horizontal content movement (only when
+                    full screen is on)
+                </p>
+
+                <div class="mbr-section-btn">
+                    <a class="btn btn-primary display-4" href="#">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-ux5ve457nN" id="content5-cfg">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">altpgen.exe
+                </h4>
+                <p class="mbr-text mbr-fonts-style display-7">
+                    You can use content blocks to arrange your articles, large texts, instructions. Combine these blocks with media blocks to add illustrations and video tutorials. You can use various content blocks to work with your text. Add quotations, lists, buttons. Select your text to change its formatting or add links. Mobirise is a simple website builder that helps you create amazing web pages without knowing any code.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r42xCll" id="image3-cec">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-16-at-3.42.27pm-2136x564.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="header4 cid-ux5JAzJSmj mbr-fullscreen" id="header4-cfv">
+
+    
+    
+    <div class="container">
+        <div class="row">
+            <div class="content-wrap">
+                <h1 class="mbr-section-title mbr-fonts-style mbr-white mb-3 display-1">
+                    <strong>New Possibilities</strong>
+                </h1>
+                
+                <p class="mbr-fonts-style mbr-text mbr-white mb-3 display-7">
+                    Block with flexible configuration, free vertical and horizontal content movement (only when
+                    full screen is on)
+                </p>
+
+                <div class="mbr-section-btn">
+                    <a class="btn btn-primary display-4" href="#">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="header4 cid-ux5JBi9Uil mbr-fullscreen" id="header4-cfw">
+
+    
+    
+    <div class="container">
+        <div class="row">
+            <div class="content-wrap">
+                <h1 class="mbr-section-title mbr-fonts-style mbr-white mb-3 display-1">
+                    <strong>New Possibilities</strong>
+                </h1>
+                
+                <p class="mbr-fonts-style mbr-text mbr-white mb-3 display-7">
+                    Block with flexible configuration, free vertical and horizontal content movement (only when
+                    full screen is on)
+                </p>
+
+                <div class="mbr-section-btn">
+                    <a class="btn btn-primary display-4" href="#">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r450JJr" id="image3-ced">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r47Gha8" id="image3-cee">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r4bRAk4" id="image3-cef">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r4eLJmV" id="image3-ceg">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r4jdwoD" id="image3-ceh">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r4lME0s" id="image3-cei">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r4olWxY" id="image3-cej">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r4qZRjp" id="image3-cek">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r4tHt2L" id="image3-cel">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r4waAET" id="image3-cem">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r4yPRxA" id="image3-cen">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r4BhaJ3" id="image3-ceo">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r4DP3pu" id="image3-cep">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r4Gp3oP" id="image3-ceq">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r4IWG4S" id="image3-cer">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r4LEgjJ" id="image3-ces">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r4OdO1M" id="image3-cet">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r4SnTD7" id="image3-ceu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r4WelMG" id="image3-cev">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r51LK0S" id="image3-cew">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r54thbq" id="image3-cex">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r5cDRvK" id="image3-cey">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r5flVBl" id="image3-cez">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r5i09Sy" id="image3-cf0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r5kWRla" id="image3-cf1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r5AuxV4" id="image3-cf2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r5DmHgE" id="image3-cf3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r5HNpRp" id="image3-cf4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r5KHO9T" id="image3-cf5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r5PdGId" id="image3-cf6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r5S3quf" id="image3-cf7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r653qpi" id="image3-cf8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r67LyT6" id="image3-cf9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r6aHCJe" id="image3-cfa">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r6fp7at" id="image3-cfb">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r6lt7WD" id="image3-cfc">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r6pkLL9" id="image3-cfd">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r6t4q0d" id="image3-cfe">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ux5r6wew0b" id="image3-cff">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/ytplayer/index.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>
