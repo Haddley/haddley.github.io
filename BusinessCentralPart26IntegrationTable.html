@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="assets/theme/css/style.css">
   <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=EPjXIA"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=EPjXIA" type="text/css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=k9ftDK"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=k9ftDK" type="text/css">
 
   
   <link href="prism.css" rel="stylesheet" />
@@ -1088,69 +1088,6 @@
     </div>
 </section>
 
-<section data-bs-version="5.1" class="content7 cid-uxGkZft3Gt" id="content7-cov">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-10">
-                <blockquote>
-                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Pag50101.CustomerOrder.al</strong></h5>
-
-<pre class="language-clike"><code><!--         
-page 50101 "Customer Order"
-{
-    ApplicationArea = All;
-    Caption = 'Customer Order';
-    PageType = Card;
-    SourceTable = "CDS hadd_CustomerOrder";
-
-    layout
-    {
-        area(Content)
-        {
-            group(General)
-            {
-                Caption = 'General';
-
-                field(hadd_Name; Rec.hadd_Name)
-                {
-                    ToolTip = 'Specifies the value of the Name field.', Comment = '%';
-                }
-                field("Account Name"; Rec."Account Name")
-                {
-                    ToolTip = 'Specifies the value of the Account field.', Comment = '%';
-                }
-                field(hadd_RequestedDeliveryDate; Rec.hadd_RequestedDeliveryDate)
-                {
-                    ToolTip = 'Specifies the value of the Requested Delivery Date field.', Comment = '%';
-                }
-                field(statecode; Rec.statecode)
-                {
-                    ToolTip = 'Specifies the value of the Status field.', Comment = '%';
-                }
-                field(statuscode; Rec.statuscode)
-                {
-                    ToolTip = 'Specifies the value of the Status Reason field.', Comment = '%';
-                }
-            }
-        }
-    }
-    trigger OnInit()
-    begin
-        Codeunit.Run(Codeunit::"CRM Integration Management");
-    end;
-
-}
---></code></pre>
-                    
-
-                    
-</blockquote>
-            </div>
-        </div>
-    </div>
-</section>
-
 <section data-bs-version="5.1" class="image3 cid-uxG3ajxSZw" id="image3-cob">
     
 
@@ -1344,6 +1281,366 @@ tableextension 50105 "Customer Order Ext" extends "CDS hadd_CustomerOrder"
                 <div class="image-wrapper">
                     <img src="assets/images/screenshot-2024-12-22-191202-1361x453.png" alt="">
                     <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I reviewed the updated Card page</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uxIvUQzVL7" id="image3-cp0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-22-234528-1366x616.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added entity <strong>dyn365bc_Item_v2_0</strong>. I need to add this entity to ensure that the <strong>hadd_Item</strong> field is added to the generated Customer Order Lines Integration table.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uxIvUX5J24" id="image3-cp1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-22-234634-1366x726.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the object number</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uxIvV3zbZz" id="image3-cp2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-22-234826-1366x595.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added a Customer Order Lines ListPart</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uxIvVb14nY" id="image3-cp3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-22-234952-1366x589.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added Name, Item (GUID) and Quantity fields to the ListPart</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uxIvVfvsa9" id="image3-cp4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-22-235233-1366x728.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Notice that <strong>hadd_Item</strong> is a GUID</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uxIvVjlIef" id="image3-cp5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-22-235644-1366x591.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added the ListPart to the Customer Order Card</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content7 cid-uxIyEdBs5X" id="content7-cps">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Pag50101.CustomerOrder.al</strong></h5>
+
+<pre class="language-clike"><code><!--         
+page 50101 "Customer Order"
+{
+    ApplicationArea = All;
+    Caption = 'Customer Order';
+    PageType = Card;
+    SourceTable = "CDS hadd_CustomerOrder";
+
+    layout
+    {
+        area(Content)
+        {
+            group(General)
+            {
+                Caption = 'General';
+
+                field(hadd_Name; Rec.hadd_Name)
+                {
+                    ToolTip = 'Specifies the value of the Name field.', Comment = '%';
+                }
+                field("Account Name"; Rec."Account Name")
+                {
+                    ToolTip = 'Specifies the value of the Account field.', Comment = '%';
+                }
+                field(hadd_RequestedDeliveryDate; Rec.hadd_RequestedDeliveryDate)
+                {
+                    ToolTip = 'Specifies the value of the Requested Delivery Date field.', Comment = '%';
+                }
+                field(statecode; Rec.statecode)
+                {
+                    ToolTip = 'Specifies the value of the Status field.', Comment = '%';
+                }
+                field(statuscode; Rec.statuscode)
+                {
+                    ToolTip = 'Specifies the value of the Status Reason field.', Comment = '%';
+                }
+            }
+
+            part("Customer Order Lines"; "Customer Order Lines")
+            {
+                SubPageLink = "hadd_Order" = FIELD("hadd_CustomerOrderId");
+            }
+
+        }
+    }
+    trigger OnInit()
+    begin
+        Codeunit.Run(Codeunit::"CRM Integration Management");
+    end;
+
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uxIvVmWf1b" id="image3-cp6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-22-235839-1366x691.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The Customer Order Line details are displayed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uxIvVYcTKI" id="image3-cpe">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-23-063651-1366x727.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the Customer Order Lines ListPart to lookup Item details. I was able to use the <strong>hadd_Item</strong> GUID to lookup records in the Business Central <strong>Item</strong> table.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content7 cid-uxIyjvnAh1" id="content7-cpr">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Pag50102.CustomerOrderLines.al</strong></h5>
+
+<pre class="language-clike"><code><!--         
+page 50102 "Customer Order Lines"
+{
+    ApplicationArea = All;
+    Caption = 'Customer Order Lines';
+    PageType = ListPart;
+    SourceTable = "CDS hadd_CustomerOrderLine";
+
+    layout
+    {
+        area(Content)
+        {
+            repeater(General)
+            {
+                field(hadd_Name; Rec.hadd_Name)
+                {
+                    ToolTip = 'Specifies the value of the Name field.', Comment = '%';
+                }
+                /*field(hadd_Item; Rec.hadd_Item)
+                {
+                    ToolTip = 'Specifies the value of the Item field.', Comment = '%';
+                }*/
+                field(ItemNo; GetItemNo()) //Rec.wiise_ItemNo)
+                {
+                    Caption = 'No.';
+                }
+                field(ItemDescription; GetItemDescription())
+                {
+                    Caption = 'Description';
+                }
+                field(ItemCategoryCode; GetItemCategoryCode()) //Rec.wiise_ItemCategoryCode)
+                {
+                    Caption = 'Category';
+                }
+                field("Unit Price"; GetUnitPrice())
+                {
+                    Caption = 'Unit Price';
+                }
+                field(hadd_Quantity; Rec.hadd_Quantity)
+                {
+                    ToolTip = 'Specifies the value of the Quantity field.', Comment = '%';
+                }
+                field("Unit of Measure"; GetUnitOfMeasure())
+                {
+                    Caption = 'Unit of Measure';
+                }
+
+                field("Amount"; GetAmount())
+                {
+
+                }
+            }
+        }
+    }
+
+    local procedure GetItemDescription(): Text[100]
+    var
+        Item: Record Item;
+    begin
+        if Item.GetBySystemId(Rec.hadd_Item) then
+            exit(Item.Description)
+        else
+            exit('')
+    end;
+
+    local procedure GetItemNo(): Text[20]
+    var
+        Item: Record Item;
+    begin
+        if Item.GetBySystemId(Rec.hadd_Item) then
+            exit(Item."No.")
+        else
+            exit('')
+    end;
+
+    local procedure GetItemCategoryCode(): Code[20]
+    var
+        Item: Record Item;
+    begin
+        if Item.GetBySystemId(Rec.hadd_Item) then
+            exit(Item."Item Category Code")
+        else
+            exit('')
+    end;
+
+    local procedure GetUnitPrice(): Decimal
+    var
+        Item: Record Item;
+    begin
+        if Item.GetBySystemId(Rec.hadd_Item) then
+            exit(Item."Unit Price")
+        else
+            Error('Price not found');
+    end;
+
+    local procedure GetUnitOfMeasure(): Text[50]
+    var
+        Item: Record Item;
+        Unit: Record "Unit of Measure";
+    begin
+        if Item.GetBySystemId(Rec.hadd_Item) then begin
+            if Unit.GetBySystemId(Item."Unit of Measure Id") then
+                exit(Unit.Description)
+            else
+                exit('')
+        end;
+        exit('');
+    end;
+
+    local procedure GetAmount(): Decimal
+    var
+        Item: Record Item;
+    begin
+        if Item.GetBySystemId(Rec.hadd_Item) then
+            exit(Item."Unit Price" * Rec.hadd_Quantity)
+        else
+            Error('Price not found');
+    end;
+
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uxIvW2tZ73" id="image3-cpf">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-23-064849-1366x728.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Item details and a calculated Amount value are displayed</p>
                 </div>
             </div>
         </div>
