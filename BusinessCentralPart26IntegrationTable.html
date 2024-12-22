@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="assets/theme/css/style.css">
   <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=EhkXxz"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=EhkXxz" type="text/css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=EPjXIA"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=EPjXIA" type="text/css">
 
   
   <link href="prism.css" rel="stylesheet" />
@@ -1020,87 +1020,6 @@
     </div>
 </section>
 
-<section data-bs-version="5.1" class="content7 cid-uxGiYR9mEt" id="content7-cou">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-10">
-                <blockquote>
-                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Pag50100.CustomerOrders.al</strong></h5>
-
-<pre class="language-clike"><code><!--         
-page 50100 "Customer Orders"
-{
-    ApplicationArea = All;
-    Caption = 'Customer Orders';
-    PageType = List;
-    SourceTable = "CDS hadd_CustomerOrder";
-    UsageCategory = Lists;
-
-    InsertAllowed = false;
-    ModifyAllowed = false;
-    DeleteAllowed = false;
-
-    RefreshOnActivate = true;
-
-    layout
-    {
-        area(Content)
-        {
-            repeater(General)
-            {
-                field(hadd_Name; Rec.hadd_Name)
-                {
-                    ToolTip = 'Specifies the value of the Name field.', Comment = '%';
-
-                    trigger OnDrillDown()
-                    var
-                        CustomerOrderPage: Page "Customer Order";
-                        CustomerOrder: Record "CDS hadd_CustomerOrder";
-                    begin
-                        if CustomerOrder.Get(Rec.hadd_CustomerOrderId) then begin
-                            CustomerOrder.SystemId := Rec.hadd_CustomerOrderId;
-                            CustomerOrderPage.SetRecord(CustomerOrder);
-                            CustomerOrderPage.Run();
-                        end;
-                    end;
-                }
-                field("Account Name"; Rec."Account Name")
-                {
-                    ToolTip = 'Specifies the value of the Account field.', Comment = '%';
-                }
-                field(hadd_RequestedDeliveryDate; Rec.hadd_RequestedDeliveryDate)
-                {
-                    ToolTip = 'Specifies the value of the Requested Delivery Date field.', Comment = '%';
-                }
-                field(statecode; Rec.statecode)
-                {
-                    ToolTip = 'Specifies the value of the Status field.', Comment = '%';
-                }
-                field(statuscode; Rec.statuscode)
-                {
-                    ToolTip = 'Specifies the value of the Status Reason field.', Comment = '%';
-                }
-            }
-        }
-    }
-
-    trigger OnInit()
-    begin
-        Codeunit.Run(Codeunit::"CRM Integration Management");
-    end;
-
-}
---></code></pre>
-                    
-
-                    
-</blockquote>
-            </div>
-        </div>
-    </div>
-</section>
-
 <section data-bs-version="5.1" class="image3 cid-uxG3a5pYjg" id="image3-co7">
     
 
@@ -1169,23 +1088,6 @@ page 50100 "Customer Orders"
     </div>
 </section>
 
-<section data-bs-version="5.1" class="image3 cid-uxG3ajxSZw" id="image3-cob">
-    
-
-    
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10">
-                <div class="image-wrapper">
-                    <img src="assets/images/screenshot-2024-12-22-190746-1366x720.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added an OnDrillDown() trigger to the Customer Order's Name field</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <section data-bs-version="5.1" class="content7 cid-uxGkZft3Gt" id="content7-cov">
     
     <div class="container">
@@ -1233,6 +1135,104 @@ page 50101 "Customer Order"
             }
         }
     }
+    trigger OnInit()
+    begin
+        Codeunit.Run(Codeunit::"CRM Integration Management");
+    end;
+
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uxG3ajxSZw" id="image3-cob">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-22-190746-1366x720.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added an OnDrillDown() trigger to the Customer Order's Name field</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content7 cid-uxGiYR9mEt" id="content7-cou">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Pag50100.CustomerOrders.al</strong></h5>
+
+<pre class="language-clike"><code><!--         
+page 50100 "Customer Orders"
+{
+    ApplicationArea = All;
+    Caption = 'Customer Orders';
+    PageType = List;
+    SourceTable = "CDS hadd_CustomerOrder";
+    UsageCategory = Lists;
+
+    InsertAllowed = false;
+    ModifyAllowed = false;
+    DeleteAllowed = false;
+
+    RefreshOnActivate = true;
+
+    layout
+    {
+        area(Content)
+        {
+            repeater(General)
+            {
+                field(hadd_Name; Rec.hadd_Name)
+                {
+                    ToolTip = 'Specifies the value of the Name field.', Comment = '%';
+
+                    trigger OnDrillDown()
+                    var
+                        CustomerOrderPage: Page "Customer Order";
+                        CustomerOrder: Record "CDS hadd_CustomerOrder";
+                    begin
+                        if CustomerOrder.Get(Rec.hadd_CustomerOrderId) then begin
+                            CustomerOrder.SystemId := Rec.hadd_CustomerOrderId;
+                            CustomerOrderPage.SetRecord(CustomerOrder);
+                            CustomerOrderPage.Run();
+                        end;
+                    end;
+                }
+                field("Account Name"; Rec."Account Name")
+                {
+                    ToolTip = 'Specifies the value of the Account field.', Comment = '%';
+                }
+                field(hadd_RequestedDeliveryDate; Rec.hadd_RequestedDeliveryDate)
+                {
+                    ToolTip = 'Specifies the value of the Requested Delivery Date field.', Comment = '%';
+                }
+                field(statecode; Rec.statecode)
+                {
+                    ToolTip = 'Specifies the value of the Status field.', Comment = '%';
+                }
+                field(statuscode; Rec.statuscode)
+                {
+                    ToolTip = 'Specifies the value of the Status Reason field.', Comment = '%';
+                }
+            }
+        }
+    }
+
     trigger OnInit()
     begin
         Codeunit.Run(Codeunit::"CRM Integration Management");
