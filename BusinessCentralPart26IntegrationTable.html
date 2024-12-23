@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="assets/theme/css/style.css">
   <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=k9ftDK"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=k9ftDK" type="text/css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=VTmMcW"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=VTmMcW" type="text/css">
 
   
   <link href="prism.css" rel="stylesheet" />
@@ -1389,75 +1389,6 @@ tableextension 50105 "Customer Order Ext" extends "CDS hadd_CustomerOrder"
     </div>
 </section>
 
-<section data-bs-version="5.1" class="content7 cid-uxIyEdBs5X" id="content7-cps">
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-10">
-                <blockquote>
-                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Pag50101.CustomerOrder.al</strong></h5>
-
-<pre class="language-clike"><code><!--         
-page 50101 "Customer Order"
-{
-    ApplicationArea = All;
-    Caption = 'Customer Order';
-    PageType = Card;
-    SourceTable = "CDS hadd_CustomerOrder";
-
-    layout
-    {
-        area(Content)
-        {
-            group(General)
-            {
-                Caption = 'General';
-
-                field(hadd_Name; Rec.hadd_Name)
-                {
-                    ToolTip = 'Specifies the value of the Name field.', Comment = '%';
-                }
-                field("Account Name"; Rec."Account Name")
-                {
-                    ToolTip = 'Specifies the value of the Account field.', Comment = '%';
-                }
-                field(hadd_RequestedDeliveryDate; Rec.hadd_RequestedDeliveryDate)
-                {
-                    ToolTip = 'Specifies the value of the Requested Delivery Date field.', Comment = '%';
-                }
-                field(statecode; Rec.statecode)
-                {
-                    ToolTip = 'Specifies the value of the Status field.', Comment = '%';
-                }
-                field(statuscode; Rec.statuscode)
-                {
-                    ToolTip = 'Specifies the value of the Status Reason field.', Comment = '%';
-                }
-            }
-
-            part("Customer Order Lines"; "Customer Order Lines")
-            {
-                SubPageLink = "hadd_Order" = FIELD("hadd_CustomerOrderId");
-            }
-
-        }
-    }
-    trigger OnInit()
-    begin
-        Codeunit.Run(Codeunit::"CRM Integration Management");
-    end;
-
-}
---></code></pre>
-                    
-
-                    
-</blockquote>
-            </div>
-        </div>
-    </div>
-</section>
-
 <section data-bs-version="5.1" class="image3 cid-uxIvVmWf1b" id="image3-cp6">
     
 
@@ -1642,6 +1573,136 @@ page 50102 "Customer Order Lines"
                     <img src="assets/images/screenshot-2024-12-23-064849-1366x728.png" alt="">
                     <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Item details and a calculated Amount value are displayed</p>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uxJLAtRhwx" id="image3-cpt">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-23-115408-1366x726.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uxJLB943ib" id="image3-cpu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-12-23-115803-1364x664.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content7 cid-uxIyEdBs5X" id="content7-cps">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Pag50101.CustomerOrder.al</strong></h5>
+
+<pre class="language-clike"><code><!--         
+page 50101 "Customer Order"
+{
+    ApplicationArea = All;
+    Caption = 'Customer Order';
+    PageType = Card;
+    SourceTable = "CDS hadd_CustomerOrder";
+
+    layout
+    {
+        area(Content)
+        {
+            group(General)
+            {
+                Caption = 'General';
+
+                field(hadd_Name; Rec.hadd_Name)
+                {
+                    ToolTip = 'Specifies the value of the Name field.', Comment = '%';
+                }
+                field("Account Name"; Rec."Account Name")
+                {
+                    ToolTip = 'Specifies the value of the Account field.', Comment = '%';
+                }
+                field(hadd_RequestedDeliveryDate; Rec.hadd_RequestedDeliveryDate)
+                {
+                    ToolTip = 'Specifies the value of the Requested Delivery Date field.', Comment = '%';
+                }
+                field(statecode; Rec.statecode)
+                {
+                    ToolTip = 'Specifies the value of the Status field.', Comment = '%';
+                }
+                field(statuscode; Rec.statuscode)
+                {
+                    ToolTip = 'Specifies the value of the Status Reason field.', Comment = '%';
+                }
+
+                field("Total Amount"; GetTotalAmount())
+                {
+
+                }
+            }
+
+            part("Customer Order Lines"; "Customer Order Lines")
+            {
+                SubPageLink = "hadd_Order" = FIELD("hadd_CustomerOrderId");
+            }
+
+        }
+    }
+
+
+    local procedure GetTotalAmount(): Decimal
+    var
+        Item: Record Item;
+        OrderLine: Record "CDS hadd_CustomerOrderLine";
+        TotalAmount: Decimal;
+    begin
+        TotalAmount := 0;
+
+        OrderLine.SetRange(OrderLine.hadd_Order, Rec."hadd_CustomerOrderId");
+
+        if OrderLine.FindSet() then
+            repeat
+                if Item.GetBySystemId(OrderLine.hadd_Item) then
+                    TotalAmount += Item."Unit Price" * OrderLine.hadd_Quantity;
+            until OrderLine.Next() = 0;
+
+        exit(TotalAmount);
+    end;
+
+
+    trigger OnInit()
+    begin
+        Codeunit.Run(Codeunit::"CRM Integration Management");
+    end;
+
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
             </div>
         </div>
     </div>
