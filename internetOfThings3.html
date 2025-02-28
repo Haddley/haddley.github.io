@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Internet of Things (Part 3)</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=1BSJ1V"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=1BSJ1V" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-uE8vAqxZsY" once="menu" id="menu3-ctw">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section data-bs-version="5.1" class="content4 cid-uE8vAriKcV" id="content4-ctx">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2">
+                    <strong>Internet of Things (Part 3)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Edge Impulse</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8vArCIHl" id="image3-cty">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/iot-microchip.svg" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a rel="nofollow" href="https://thenounproject.com/term/iot-microchip/2546028/"><br>            iot microchip</a>&nbsp;by&nbsp;<a rel="nofollow" href="/masteroficon">Philipp Petzka</a>&nbsp;is licensed under&nbsp;<a rel="nofollow" class="external text" href="https://creativecommons.org/licenses/by/2.0/">CC<br></a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-uE8vArXpIh" id="content5-ctz">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Edge Impulse</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Edge Impulse is a development platform for creating machine learning (ML) models optimized for edge devices. It allows developers to collect data, train ML models, and deploy them on low-power hardware such as microcontrollers, IoT devices, and embedded systems. The platform is particularly useful for applications in <strong>industrial automation, healthcare, predictive maintenance, and smart devices</strong>.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xltcbuy" id="image3-cuh">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xlVoG5e" id="image3-cui">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xm04vWP" id="image3-cuj">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xm3cYVD" id="image3-cuk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xm721Gf" id="image3-cul">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xmakCD6" id="image3-cum">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xmeRX7x" id="image3-cun">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xmhseoe" id="image3-cuo">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xmkl6tg" id="image3-cup">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xmnsSqh" id="image3-cuq">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xmrxqqI" id="image3-cur">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xmtROGR" id="image3-cus">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xmwi6le" id="image3-cut">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xmyPSRw" id="image3-cuu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xmBuBeN" id="image3-cuv">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xmEhLNX" id="image3-cuw">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xmH3fLC" id="image3-cux">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xmJCZdt" id="image3-cuy">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xmMmIDJ" id="image3-cuz">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xmP6ebz" id="image3-cv0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xmTGehP" id="image3-cv1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xmWyAUi" id="image3-cv2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xmZ4JvA" id="image3-cv3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xn3D2vA" id="image3-cv4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xn68AlH" id="image3-cv5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xn8MOZM" id="image3-cv6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xnbm9lZ" id="image3-cv7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xne0Aoc" id="image3-cv8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xngVl0W" id="image3-cv9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xnjH8aU" id="image3-cva">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xnmzk2Q" id="image3-cvb">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xnqK1Yo" id="image3-cvc">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uE8xntEoQc" id="image3-cvd">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">&lt;&lt;NEW TEXT HERE&gt;&gt;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="header4 cid-uE8xrOXMjb mbr-fullscreen" id="header4-cve">
+
+    
+    
+    <div class="container">
+        <div class="row">
+            <div class="content-wrap">
+                <h1 class="mbr-section-title mbr-fonts-style mbr-white mb-3 display-1">
+                    <strong>New Possibilities</strong>
+                </h1>
+                
+                <p class="mbr-fonts-style mbr-text mbr-white mb-3 display-7">
+                    Block with flexible configuration, free vertical and horizontal content movement (only when
+                    full screen is on)
+                </p>
+
+                <div class="mbr-section-btn">
+                    <a class="btn btn-primary display-4" href="#">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="header4 cid-uE8xrUpfwb mbr-fullscreen" id="header4-cvf">
+
+    
+    
+    <div class="container">
+        <div class="row">
+            <div class="content-wrap">
+                <h1 class="mbr-section-title mbr-fonts-style mbr-white mb-3 display-1">
+                    <strong>New Possibilities</strong>
+                </h1>
+                
+                <p class="mbr-fonts-style mbr-text mbr-white mb-3 display-7">
+                    Block with flexible configuration, free vertical and horizontal content movement (only when
+                    full screen is on)
+                </p>
+
+                <div class="mbr-section-btn">
+                    <a class="btn btn-primary display-4" href="#">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="features13 cid-uE8vAvwn1C" id="features14-cug">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://docs.edgeimpulse.com/docs/edge-ai-hardware/mcu/arduino-nano-33-ble-sense" class="text-primary" target="_blank">Arduino Nano 33 BLE Sense</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-3 col-12 col-md-4 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://www.hackster.io/NathanielF/tinyml-dog-bark-stopper-77e436" class="text-primary" target="_blank">TinyML Dog Bark Stopper</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-3 col-12 col-md-4 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://github.com/NathanielFelleke/The-Bark-Stopper" class="text-primary" target="_blank">The Bark Stopper GitHub</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-3 col-12 col-md-4 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont socicon-youtube socicon"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://www.youtube.com/watch?v=2BISspenUng&t=1194s" class="text-primary" target="_blank">Wio Terminal TinyML Course #2 Audio Scene Recognition - ML on Microcontrollers with Arduino IDE</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-3 col-12 col-md-4 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont socicon-youtube socicon"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://www.youtube.com/watch?v=wOkMZUaPLUM" class="text-primary" target="_blank">Connecting Arduino Nano 33 BLE Sense to Edge Impulse</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/ytplayer/index.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>
