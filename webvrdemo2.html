@@ -9,6 +9,7 @@
       margin: 0; 
       overflow: hidden; 
       background-color: #000;
+      font-family: Arial, sans-serif;
     }
     #loading {
       position: absolute;
@@ -16,7 +17,6 @@
       left: 50%;
       transform: translate(-50%, -50%);
       color: white;
-      font-family: Arial, sans-serif;
       text-align: center;
     }
     #ar-button {
@@ -32,6 +32,7 @@
       font-size: 16px;
       cursor: pointer;
       z-index: 100;
+      display: none;
     }
     canvas {
       display: block;
@@ -40,15 +41,92 @@
 </head>
 <body>
   <div id="loading">Loading underwater world...</div>
-  <button id="ar-button" style="display: none;">START AR</button>
+  <button id="ar-button">START AR</button>
   
   <!-- Load Three.js from CDN -->
   <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/webxr/XRControllerModelFactory.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/webxr/ARButton.js"></script>
 
   <script>
+    // Built-in ARButton implementation
+    const ARButton = {
+      createButton: function(renderer, sessionInit = {}) {
+        const button = document.getElementById('ar-button');
+        
+        function showStartAR() {
+          button.style.display = '';
+          button.textContent = 'START AR';
+          
+          button.onmouseenter = null;
+          button.onclick = null;
+        }
+        
+        function showARNotSupported() {
+          button.style.display = '';
+          button.textContent = 'AR NOT SUPPORTED';
+          button.onclick = null;
+        }
+        
+        function showARNotAllowed() {
+          button.style.display = '';
+          button.textContent = 'AR NOT ALLOWED';
+          button.onclick = null;
+        }
+        
+        function showAREnd() {
+          button.style.display = '';
+          button.textContent = 'EXIT AR';
+        }
+        
+        function disableButton() {
+          button.style.display = 'none';
+          button.onclick = null;
+        }
+        
+        function onSessionStarted(session) {
+          session.addEventListener('end', onSessionEnded);
+          renderer.xr.setSession(session);
+          disableButton();
+          showAREnd();
+          
+          button.onclick = function() {
+            session.end();
+          };
+        }
+        
+        function onSessionEnded() {
+          renderer.xr.setSession(null);
+          showStartAR();
+        }
+        
+        button.style.display = 'none';
+        
+        if ('xr' in navigator) {
+          navigator.xr.isSessionSupported('immersive-ar').then(function(supported) {
+            if (supported) {
+              showStartAR();
+              
+              button.onclick = function() {
+                disableButton();
+                navigator.xr.requestSession('immersive-ar', sessionInit)
+                  .then(onSessionStarted)
+                  .catch(function(err) {
+                    console.error(err);
+                    showARNotAllowed();
+                  });
+              };
+            } else {
+              showARNotSupported();
+            }
+          }).catch(showARNotSupported);
+        } else {
+          showARNotSupported();
+        }
+        
+        return button;
+      }
+    };
+
     // Scene globals
     let camera, scene, renderer;
     let controller, hitTestSource = null;
@@ -95,7 +173,6 @@
         optionalFeatures: ['dom-overlay'],
         domOverlay: { root: document.body }
       });
-      document.getElementById('ar-button').replaceWith(button);
       
       // Create controller
       controller = renderer.xr.getController(0);
@@ -160,7 +237,7 @@
     
     // Handle controller selection
     function onSelect() {
-      if (reticle.visible) {
+      if (reticle.visible && seaCreatures.length > 0) {
         // Place a new fish at reticle position
         const fish = seaCreatures[0].clone();
         fish.position.copy(reticle.position);
@@ -172,27 +249,42 @@
     
     // Main render loop
     function render() {
+      // Update animations
       if (mixer) mixer.update(clock.getDelta());
       
       // Animate sea creatures
-      const time = performance.now() * 0.001;
-      seaCreatures.forEach((creature, i) => {
-        if (i > 0) { // Don't animate the first one (reference model)
-          creature.position.x = Math.sin(time * 0.2 + i) * 1.5;
-          creature.position.z = -2 + Math.cos(time * 0.3 + i) * 1.5;
-          creature.position.y = Math.sin(time * 0.4 + i) * 0.3;
-          creature.rotation.y = time * 0.1 + i;
-        }
-      });
+      if (seaCreatures.length > 0) {
+        const time = performance.now() * 0.001;
+        seaCreatures.forEach((creature, i) => {
+          if (i > 0) { // Don't animate the first one (reference model)
+            creature.position.x = Math.sin(time * 0.2 + i) * 1.5;
+            creature.position.z = -2 + Math.cos(time * 0.3 + i) * 1.5;
+            creature.position.y = Math.sin(time * 0.4 + i) * 0.3;
+            creature.rotation.y = time * 0.1 + i;
+          }
+        });
+      }
       
       // Update reticle position from hit test
-      if (controller) {
-        const controllerSpace = renderer.xr.getReferenceSpace();
+      if (renderer.xr.isPresenting && controller) {
+        const referenceSpace = renderer.xr.getReferenceSpace();
+        const session = renderer.xr.getSession();
+        
+        if (session && !hitTestSource) {
+          session.requestReferenceSpace('viewer').then((referenceSpace) => {
+            session.requestHitTestSource({ space: referenceSpace }).then((source) => {
+              hitTestSource = source;
+            });
+          });
+        }
+        
         if (hitTestSource) {
-          const hitTestResults = renderer.xr.getFrame().getHitTestResults(hitTestSource);
+          const frame = renderer.xr.getFrame();
+          const hitTestResults = frame.getHitTestResults(hitTestSource);
+          
           if (hitTestResults.length > 0) {
             const hit = hitTestResults[0];
-            const hitPose = hit.getPose(controllerSpace);
+            const hitPose = hit.getPose(referenceSpace);
             reticle.visible = true;
             reticle.matrix.fromArray(hitPose.transform.matrix);
           } else {
