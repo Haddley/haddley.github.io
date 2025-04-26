@@ -1,87 +1,218 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>Quest 3 AR Example</title>
-  <!-- Important: Use WebXR instead of AR.js for Quest 3 -->
-  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b/dist/aframe-master.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
-  <style>
-    body { margin: 0; overflow: hidden; }
-    #info {
-      position: absolute;
-      top: 20px;
-      width: 100%;
-      text-align: center;
-      color: white;
-      background-color: rgba(0,0,0,0.5);
-      padding: 10px;
-      font-family: Arial;
-    }
-  </style>
-</head>
-<body>
-  <div id="info">Look around to detect surfaces, then air-tap to place object</div>
-  
-  <a-scene 
-    xr-mode-ui="enabled: true"
-    xrweb="enabled: true"
-    renderer="colorManagement: true"
-    vr-mode-ui="enabled: false">
-    
-    <!-- Use WebXR hit-test instead of marker -->
-    <a-entity id="cursor" cursor="rayOrigin: mouse" raycaster="objects: .clickable"></a-entity>
-    
-    <!-- Object that will be placed -->
-    <a-entity 
-      id="ar-object"
-      gltf-model="https://cdn.aframe.io/test-models/models/glTF-2.0/virtualcity/VC.gltf"
-      scale="0.5 0.5 0.5"
-      visible="false"
-      class="clickable"
-      shadow>
-    </a-entity>
-    
-    <!-- Environment -->
-    <a-entity environment="preset: forest"></a-entity>
-    <a-entity light="type: ambient; color: #FFF; intensity: 0.6"></a-entity>
-    
-    <!-- Camera rig for XR -->
-    <a-entity id="rig" movement-controls="speed: 0.25">
-      <a-entity 
-        camera 
-        position="0 1.6 0" 
-        look-controls="pointerLockEnabled: true"
-        wasd-controls="enabled: false">
-      </a-entity>
-    </a-entity>
-  </a-scene>
-
-  <script>
-    const scene = document.querySelector('a-scene');
-    const arObject = document.getElementById('ar-object');
-    let objectPlaced = false;
-    
-    // Handle surface detection and placement
-    scene.addEventListener('loaded', function() {
-      scene.addEventListener('hitstart', (e) => {
-        if (!objectPlaced) {
-          const hitPoint = e.detail.intersection.point;
-          arObject.setAttribute('position', hitPoint);
-          arObject.setAttribute('visible', 'true');
-          objectPlaced = true;
-          document.getElementById('info').style.display = 'none';
-        }
-      });
-      
-      // Fallback for non-XR browsers
-      if (!navigator.xr) {
-        arObject.setAttribute('position', '0 1.5 -2');
-        arObject.setAttribute('visible', 'true');
-        document.getElementById('info').textContent = "WebXR not supported - viewing in fallback mode";
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'>
+    <meta name='mobile-web-app-capable' content='yes'>
+    <meta name='apple-mobile-web-app-capable' content='yes'>
+    <title>Underwater AR Experience</title>
+    <style>
+      body { 
+        margin: 0; 
+        overflow: hidden; 
+        background-color: #000;
       }
-    });
-  </script>
-</body>
+      #loading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loading">Loading underwater world...</div>
+    <script type="module">
+      import {WebXRButton} from './js/util/webxr-button.js';
+      import {Scene} from './js/render/scenes/scene.js';
+      import {Renderer, createWebGLContext} from './js/render/core/renderer.js';
+      import {Gltf2Node} from './js/render/nodes/gltf2.js';
+      import {QueryArgs} from './js/util/query-args.js';
+      import {WebXRPolyfill} from './js/third-party/webxr-polyfill/build/webxr-polyfill.module.js';
+
+      // Enable polyfill for broader device support
+      if (QueryArgs.getBool('usePolyfill', true)) {
+        new WebXRPolyfill();
+      }
+
+      // XR globals
+      let xrButton = null;
+      let xrImmersiveRefSpace = null;
+      let gl = null;
+      let renderer = null;
+      let scene = new Scene();
+      let seaCreatures = [];
+      let bubbleParticles = null;
+
+      // Load models
+      async function loadCreatures() {
+        document.getElementById('loading').textContent = "Loading sea creatures...";
+        
+        // Animated fish model
+        const fish1 = new Gltf2Node({
+          url: 'https://cdn.glitch.com/7194a0a1-5d6e-4e6a-bd68-8e0a5b05645a%2Ffish_animated.glb?v=1606341695384',
+          scale: [0.3, 0.3, 0.3]
+        });
+        fish1.position = [0, 0, -2];
+        fish1.animationLoop = true;
+        
+        // Turtle model
+        const turtle = new Gltf2Node({
+          url: 'https://cdn.glitch.com/2e9a63b7-9dc1-4b4e-8c3f-5b5d5d5e5b5e%2Fturtle.glb?v=1606341695384',
+          scale: [0.5, 0.5, 0.5]
+        });
+        turtle.position = [1, 0, -3];
+        turtle.animationLoop = true;
+        
+        // Dolphin model
+        const dolphin = new Gltf2Node({
+          url: 'https://cdn.glitch.com/9e9e9e9e-9e9e-9e9e-9e9e-9e9e9e9e9e9e%2Fdolphin.glb?v=1606341695384',
+          scale: [0.4, 0.4, 0.4]
+        });
+        dolphin.position = [-1, 0.5, -4];
+        dolphin.animationLoop = true;
+
+        scene.addNode(fish1);
+        scene.addNode(turtle);
+        scene.addNode(dolphin);
+        
+        seaCreatures.push(fish1, turtle, dolphin);
+        document.getElementById('loading').style.display = 'none';
+      }
+
+      function initXR() {
+        xrButton = new WebXRButton({
+          onRequestSession: onRequestSession,
+          onEndSession: onEndSession,
+          textEnterXRTitle: "DIVE IN",
+          textXRNotFoundTitle: "AR NOT FOUND",
+          textExitXRTitle: "SURFACE",
+        });
+        document.body.appendChild(xrButton.domElement);
+
+        if (navigator.xr) {
+          navigator.xr.isSessionSupported('immersive-ar').then((supported) => {
+            xrButton.enabled = supported;
+          });
+        }
+      }
+
+      function onRequestSession() {
+        return navigator.xr.requestSession('immersive-ar', {
+          requiredFeatures: ['local', 'hit-test'],
+          optionalFeatures: ['dom-overlay'],
+          domOverlay: { root: document.body }
+        }).then((session) => {
+          xrButton.setSession(session);
+          session.isImmersive = true;
+          onSessionStarted(session);
+        });
+      }
+
+      function initGL() {
+        if (gl) return;
+
+        gl = createWebGLContext({ xrCompatible: true });
+        document.body.appendChild(gl.canvas);
+
+        function onResize() {
+          gl.canvas.width = gl.canvas.clientWidth * window.devicePixelRatio;
+          gl.canvas.height = gl.canvas.clientHeight * window.devicePixelRatio;
+        }
+        window.addEventListener('resize', onResize);
+        onResize();
+
+        renderer = new Renderer(gl);
+        scene.setRenderer(renderer);
+        
+        // Add underwater fog effect
+        renderer.gl.clearColor(0.1, 0.2, 0.4, 0.0);
+        renderer.fogDensity = 0.02;
+        renderer.fogColor = [0.1, 0.2, 0.4];
+      }
+
+      function onSessionStarted(session) {
+        session.addEventListener('end', onSessionEnded);
+        initGL();
+
+        session.updateRenderState({ 
+          baseLayer: new XRWebGLLayer(session, gl),
+          depthFar: 100.0
+        });
+
+        session.requestReferenceSpace('local-floor').then((refSpace) => {
+          xrImmersiveRefSpace = refSpace;
+          
+          // Set up hit testing for placing creatures
+          session.requestHitTestSource({ 
+            space: refSpace,
+            entityTypes: ['plane'],
+            offsetRay: new XRRay({x: 0, y: 0, z: 0}, {x: 0, y: -1, z: 0})
+          }).then((hitTestSource) => {
+            session.hitTestSource = hitTestSource;
+          });
+
+          // Start animation loop
+          session.requestAnimationFrame(onXRFrame);
+        });
+      }
+
+      function onEndSession(session) {
+        session.end();
+      }
+
+      function onSessionEnded(event) {
+        xrButton.setSession(null);
+      }
+
+      function animateCreatures() {
+        const time = performance.now() * 0.001; // seconds
+        
+        seaCreatures.forEach((creature, index) => {
+          // Make creatures swim in gentle arcs
+          const speed = 0.2 + index * 0.05;
+          const radius = 1.0 + index * 0.5;
+          const height = 0.5 + Math.sin(time * 0.5 + index) * 0.3;
+          
+          creature.position = [
+            Math.cos(time * speed) * radius,
+            height,
+            Math.sin(time * speed) * radius - 2
+          ];
+          
+          // Face direction of movement
+          creature.rotation = [0, -time * speed + Math.PI/2, 0];
+        });
+      }
+
+      function onXRFrame(t, frame) {
+        const session = frame.session;
+        const pose = frame.getViewerPose(xrImmersiveRefSpace);
+        
+        if (session.hitTestSource) {
+          const hitTestResults = frame.getHitTestResults(session.hitTestSource);
+          if (hitTestResults.length > 0) {
+            const hitPose = hitTestResults[0].getPose(xrImmersiveRefSpace);
+            // You could place creatures at hit points here
+          }
+        }
+
+        scene.startFrame();
+        animateCreatures();
+        session.requestAnimationFrame(onXRFrame);
+        scene.drawXRFrame(frame, pose);
+        scene.endFrame();
+      }
+
+      // Initialize the experience
+      initXR();
+      loadCreatures();
+    </script>
+  </body>
 </html>
