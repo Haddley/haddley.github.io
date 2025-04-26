@@ -2,95 +2,31 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Immersive WebVR AR Experience</title>
+  <title>Simple AR Example</title>
   <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-  <script src="https://unpkg.com/aframe-animation-component@5.1.2/dist/aframe-animation-component.min.js"></script>
-  <script src="https://unpkg.com/aframe-environment-component@1.3.0/dist/aframe-environment-component.min.js"></script>
-  <script src="https://unpkg.com/aframe-particle-system-component@1.1.x/dist/aframe-particle-system-component.min.js"></script>
   <style>
     body { margin: 0; overflow: hidden; }
-    .arjs-loader { height: 100vh; width: 100vw; position: absolute; top: 0; left: 0; background-color: rgba(0, 0, 0, 0.8); z-index: 9999; display: flex; justify-content: center; align-items: center; }
-    .arjs-loader div { text-align: center; font-size: 1.25em; color: white; }
   </style>
 </head>
 <body>
-  <div class="arjs-loader">
-    <div>Loading AR experience, please allow camera access...</div>
-  </div>
-
-  <a-scene embedded arjs="sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;" renderer="logarithmicDepthBuffer: true;">
+  <!-- AR Scene -->
+  <a-scene embedded arjs="sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
     
-    <a-assets>
-      <audio id="click-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-game-jump-coin-216.mp3"></audio>
-    </a-assets>
-    
+    <!-- Marker Definition (uses Hiro pattern) -->
     <a-marker preset="hiro">
-      <a-entity 
-        gltf-model="https://cdn.glitch.com/2d637c98-ed35-417a-bf89-cecc165d7398%2Fscene.gltf"
-        scale="0.5 0.5 0.5"
-        position="0 0.5 0"
-        animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"
-        hover-animation>
-      </a-entity>
-      
-      <a-entity 
-        id="particles" 
-        particle-system="preset: snow; color: #FF5A5F; particleCount: 200"
-        animation="property: particle-system.particleCount; to: 400; dir: alternate; dur: 5000; loop: true">
-      </a-entity>
-      
-      <a-sphere 
-        radius="0.2" 
-        color="#4CC3D9" 
-        position="0 1.5 0"
-        animation="property: position; dir: alternate; dur: 2000; to: 0 1.8 0; loop: true"
-        cursor="rayOrigin: mouse"
-        event-set__enter="_event: mouseenter; scale: 1.2 1.2 1.2"
-        event-set__leave="_event: mouseleave; scale: 1 1 1"
-        sound="on: click; src: #click-sound">
-      </a-sphere>
+      <!-- Simple red cube that appears on the marker -->
+      <a-box color="red" position="0 0.5 0" scale="0.5 0.5 0.5"></a-box>
     </a-marker>
     
-    <a-entity environment="preset: forest; dressingAmount: 500"></a-entity>
-    <a-entity light="type: ambient; color: #FFF; intensity: 0.6"></a-entity>
-    <a-entity light="type: directional; color: #FFF; intensity: 0.5" position="-1 1 0"></a-entity>
-    
+    <!-- Camera -->
     <a-entity camera></a-entity>
   </a-scene>
-
-  <script>
-    AFRAME.registerComponent('hover-animation', {
-      init: function() {
-        const el = this.el;
-        let hovered = false;
-        
-        el.addEventListener('mouseenter', () => {
-          hovered = true;
-          el.setAttribute('animation__hover', {
-            property: 'scale',
-            to: '1.3 1.3 1.3',
-            dur: 300,
-            easing: 'easeOutElastic'
-          });
-        });
-        
-        el.addEventListener('mouseleave', () => {
-          hovered = false;
-          el.setAttribute('animation__hover', {
-            property: 'scale',
-            to: '1 1 1',
-            dur: 500,
-            easing: 'easeOutElastic'
-          });
-        });
-      }
-    });
-    
-    // Hide loader when scene is loaded
-    document.querySelector('a-scene').addEventListener('loaded', function() {
-      document.querySelector('.arjs-loader').style.display = 'none';
-    });
-  </script>
+  
+  <!-- Instructions -->
+  <div style="position: fixed; bottom: 20px; width: 100%; text-align: center; color: white; font-family: Arial;">
+    <p>Point your camera at the Hiro marker to see a red cube appear</p>
+    <p><a href="https://jeromeetienne.github.io/AR.js/data/images/HIRO.jpg" target="_blank" style="color: white;">Download Hiro marker</a></p>
+  </div>
 </body>
 </html>
