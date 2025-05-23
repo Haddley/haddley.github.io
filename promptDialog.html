@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Business Central (Part 27) PromptDialog</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=PCbGYP"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=PCbGYP" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-uM0y0roaLW" once="menu" id="menu3-cxz">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section data-bs-version="5.1" class="content4 cid-uM0ysMzIXg" id="content4-d09">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Microsoft Microsoft Dynamics 365 Business Central (Part 27)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Prompt Dialog (Part 1)</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uM0y0sTszr" id="image3-cy1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <a href="https://jupyter.org" target="_blank"><img src="assets/images/dynamics365-color.svg" alt=""></a>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">By <a href="https://learn.microsoft.com/en-us/dynamics365/get-started/icons" class="text-primary" target="_blank">Microsoft</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=130569158" class="text-primary" target="_blank">Public Domain</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-uM0y0t4yel" id="content5-cy2">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Prompt Dialog (Part 1)</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The PromptDialog page serves as the core UI component for a Business Central Copilot, enabling users to evaluate and refine AI-generated outputs within a structured, guided workflow. This page type orchestrates an intuitive, end-to-end experience where:<br><br>User Input: Users provide initial prompts or instructions.<br>AI Output Generation: The system processes the input and displays results.<br>Review &amp; Iteration: Users assess the output, make edits (if needed), and regenerate responses until satisfied.<br>Final Action: The user chooses to either save the refined output or discard the session.<br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uM0EhjSxrQ" id="image3-d0g">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-05-2320at206.45.36e280afpm-2136x1380.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I navigated to Business Central&nbsp;<a href="https://businesscentral.dynamics.com" class="text-primary" target="_blank">https://businesscentral.dynamics.com</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uM0EhpBOa8" id="image3-d0h">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-05-2320at206.47.10e280afpm-2136x1254.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created a Sandbox Environment</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uM0HVSyZTJ" id="image3-d12">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-05-2320at207.19.02e280afpm-2136x678.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The Sandbox Environment state updated to Active</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uM0I5I9uKP" id="image3-d13">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-05-2320at207.20.05e280afpm-2136x879.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I switched to the CRONUS company in the Sandbox Environment</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uM0EhtR4SU" id="image3-d0i">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-05-2320at206.29.07e280afpm-2136x634.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">In Visual Studio Code I selected the View | Command Palette menu item and entered Al:Go!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uM0EhyLF5L" id="image3-d0j">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-05-2320at206.30.06e280afpm-2136x148.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I entered the Project/Extension name LLM</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uM0EhDCqbj" id="image3-d0k">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-05-2320at206.30.17e280afpm-2136x147.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the latest Business Central version</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uM0EhIIqXN" id="image3-d0l">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-05-2320at206.32.24e280afpm-2136x325.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the Microsoft cloud sandbox option</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uM0KoZgLuh" id="image3-d15">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-05-2320at207.21.47e280afpm-2136x97.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I used the View | Command Palette menu item and entered Al:Download symbols</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uM0EhPQCPF" id="image3-d0n">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-05-2320at207.22.04e280afpm-2136x1241.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Copy &amp; Open button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uM0EhTK0Vl" id="image3-d0o">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-05-2320at207.23.22e280afpm-2136x1103.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked Continue</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uM0EiIDPuG" id="image3-d0p">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-05-2320at207.24.24e280afpm-2136x728.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Start Debugging menu item</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uM0EjzNO6b" id="image3-d0q">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-05-2320at207.25.24e280afpm-2136x744.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The Debugger stopped on the Message statement. I clicked Continue</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uM0EjEv45X" id="image3-d0r">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-05-2320at207.25.43e280afpm-2136x962.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The Message was displayed on the Business Central page</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uM0EjJdnec" id="image3-d0s">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-05-2320at207.30.21e280afpm-2136x592.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the New AL File Wizard right click menu item</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uM0EjMLe6I" id="image3-d0t">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-05-2320at207.30.49e280afpm-2136x360.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected Page</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uM0EjR39kp" id="image3-d0u">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-05-2320at207.34.20e280afpm-2136x876.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I accepted the Object Id 50100 and entered the page name LLM</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uM0EjW0GyO" id="image3-d0v">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-05-2320at207.34.33e280afpm-2136x804.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">A page was generate</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uM0Ek0Rb60" id="image3-d0w">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-05-2320at207.48.21e280afpm-2136x905.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the generated page with Prompt Dialog specific AL code</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content7 cid-uM0PYuWHCB" id="content7-d16">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Pag50100.LLM.al</strong></h5>
+
+<pre class="language-clike"><code><!--         
+namespace LLM.LLM;
+
+page 50100 LLM
+{
+    ApplicationArea = All;
+    Caption = 'LLM';
+    PageType = PromptDialog;
+    Extensible = false;
+    DataCaptionExpression = Prompt;
+    IsPreview = true;
+
+    layout
+    {
+        #region input section
+        area(Prompt)
+        {
+            field(PromptField; Prompt)
+            {
+                ShowCaption = false;
+                MultiLine = true;
+                InstructionalText = 'Message Large Language Model';
+            }
+        }
+        #endregion
+
+        #region output section
+        area(Content)
+        {
+            field(OutputFiled; Output)
+            {
+                ShowCaption=false;
+                MultiLine = true;
+            }
+        }
+        #endregion
+    }
+    actions
+    {
+        #region prompt guide
+        area(PromptGuide)
+        {
+            action("Capital City")
+            {
+                ApplicationArea = All;
+                Caption = 'Capital City';
+                ToolTip = 'What is the Capital of ...';
+
+                trigger OnAction()
+                begin
+                    Prompt := 'What is the Capital of <Country>?';
+                end;
+            }
+        }
+        #endregion
+
+        #region system actions
+        area(SystemActions)
+        {
+            systemaction(Generate)
+            {
+                Caption = 'Generate';
+                ToolTip = 'Generate a response.';
+
+                trigger OnAction()
+                begin
+                    RunGeneration();
+                end;
+            }
+            systemaction(OK)
+            {
+                Caption = 'OK';
+                ToolTip = 'Save the result.';
+            }
+            systemaction(Cancel)
+            {
+                Caption = 'Cancel';
+                ToolTip = 'Discard the result.';
+            }
+            systemaction(Regenerate)
+            {
+                Caption = 'Regenerate';
+                ToolTip = 'Regenerate the Payment Terms proposed by Dynamics 365 Copilot.';
+
+                trigger OnAction()
+                begin
+                    RunGeneration();
+                end;
+            }
+            #endregion
+        }
+    }
+    var
+        Prompt: Text;
+        Output: Text;
+
+    local procedure RunGeneration()
+    begin
+        Output := 'The prompt you entered was: ' + Prompt;
+    end;
+
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uM0Ek4l2ba" id="image3-d0x">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-05-2320at207.51.54e280afpm-2136x641.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the startupObjectId. I clicked Run | Start Debugging</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uM0Ek8Dpa0" id="image3-d0y">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-05-2320at207.52.43e280afpm-2136x1261.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The Prompt Dialog page was displayed. I selected the Capital City item from the Prompt guide</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uM0Ekctpzx" id="image3-d0z">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-05-2320at207.53.19e280afpm-2136x1257.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the text to What is the Capital of France? and clicked the Generate button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uM0EkfSJU4" id="image3-d10">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-05-2320at207.54.07e280afpm-2136x663.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The RunGeneration procedure was executed. This code updated the Output variable/field based on the Prompt</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uM0EkklzBH" id="image3-d11">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-05-2320at207.54.40e280afpm-2136x956.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The generated response was displayed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="features13 cid-uM0y0GC6Ox" id="features14-d08">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbrib-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/ai-build-experience" class="text-primary" target="_blank">Build Copilot user experience</a></strong><strong><a href="https://www.geeksforgeeks.org/black-and-white-image-colorization-with-opencv-and-deep-learning" class="text-primary" target="_blank"><br></a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/ytplayer/index.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>
