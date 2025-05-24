@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Next.js (Part 4)</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=B3BEnC"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=B3BEnC" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-sOurtXVlj0" once="menu" id="menu3-2uj">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-sOurtZbu0E" id="content4-2uk">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Next.js (Part 4)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Deploying to Azure</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOurtZQ6GJ" id="image3-2ul">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/2560px-nextjs-logo.svg-1536x920.png" alt="AWS">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a href="https://en.wikipedia.org/wiki/File:Nextjs-logo.svg" class="text-primary" target="_blank">This file is licensed under the Creative Commons Attribution-Share Alike 4.0 International license.</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sOuru0358j" id="content5-2um">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Deploying a Next.js site to Azure</h4>
+                <p class="mbr-text mbr-fonts-style display-7">% npx create-next-app nextjs-blog --use-npm --example "https://github.com/vercel/next-learn/tree/master/basics/learn-starter"<br><br>% npm run dev</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOus4DhqwY" id="image3-2uq">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-11-at-2.25.59-pm-1126x734.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">npx create-next-app</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOus4VVJZB" id="image3-2ur">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-11-at-2.27.44-pm-1836x986.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">localhost:3000</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOusvbLZRU" id="image3-2us">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-11-at-2.27.59-pm-1294x176.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Azure App Service: Deploy to Web App</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOusvGJSZ7" id="image3-2ut">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-11-at-2.28.08-pm-1276x162.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Select the folder to deploy</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOusw5WxxY" id="image3-2uu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-11-at-2.28.16-pm-1270x172.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Create new Web App...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOuswzyJke" id="image3-2uv">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-11-at-2.28.44-pm-1302x278.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">haddley-nextjs-blog</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOus42OSuX" id="image3-2up">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-11-at-2.28.52-pm-1284x308.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Node 14 LTS</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOusWy1x03" id="image3-2ux">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-11-at-2.28.58-pm-1272x248.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Select a pricing tier</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOusX1h1kG" id="image3-2uy">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-11-at-2.29.48-pm-1684x684.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Deploying</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOusXwnVst" id="image3-2v0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-11-at-2.35.07-pm-1836x993.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Deployed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sOuyGdesQw" id="content5-2v5">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Articles</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Create /articles and /articles/[id] pages</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sOuvU3pxxu" id="content7-2v2">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>/articles/index.js</strong></h5>
+
+<pre class="language-clike"><code><!--         
+import Link from 'next/link'
+
+function index({ articles }) {
+    return (
+        <div>
+            <ul>
+                {articles.map(article => (<li key={article.id}>
+                    <Link href={`/articles/${article.id}`}>
+                        <a>{article.title}</a>
+                    </Link>
+                </li>))}
+            </ul>
+        </div>
+    )
+}
+
+export default index
+
+export const getServerSideProps = async (context) => {
+    const res = await fetch('https://jsonplaceholder.typicode.com/posts')
+    const articles = await res.json();
+
+    return {
+        props: {
+            articles: articles
+        }
+    }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sOuvX2NCCE" id="content7-2v3">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>/articles/[id]/index.js</strong></h5>
+
+<pre class="language-clike"><code><!--         
+function article({ article }) {
+
+    return (
+        <div>
+            <h1>{article.title}</h1>
+            This is article {article.id}
+            <p>{article.body}</p>
+        </div>
+    )
+}
+
+export default article
+
+export const getServerSideProps = async (context) => {
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${context.params.id}`)
+    const article = await res.json()
+    return {
+        props: {
+            article: article
+        }
+    }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sOuyPx72r6" id="content5-2v6">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Updated solution</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Deploy update</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOuyAJOYII" id="image3-2v4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-11-at-3.05.58-pm-1066x688.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Deploy</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOusXbp6mu" id="image3-2uz">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-11-at-3.00.59-pm-944x204.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Deployment completed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOusXSbIkx" id="image3-2v1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-11-at-3.00.10-pm-1836x944.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/articles</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOusW3N2f1" id="image3-2uw">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-11-at-3.00.20-pm-1836x944.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/articles/[id]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sOyKUkxVgI" id="content5-2vk">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">next-auth</h4>
+                <p class="mbr-text mbr-fonts-style display-7">% npm install next-auth<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sOAUJr019e" id="content7-2w3">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>/pages/api/auth/[...nextauth].js /pages/articles/index.js and /pages/articles/[id]/index.js</strong></h5>
+
+<pre class="language-clike"><code><!--         
+// /pages/api/auth/[...nextauth].js 
+import NextAuth from "next-auth";
+import Providers from "next-auth/providers";
+
+const options = {
+    providers: [
+        Providers.GitHub({
+            clientId: process.env.NEXTAUTH_GITHUB_ID,
+            clientSecret: process.env.NEXTAUTH_GITHUB_SECRET,
+        }),
+    ],
+}
+
+export default (req, res) => NextAuth(req, res, options)
+
+// /pages/articles/index.js 
+import Link from 'next/link'
+import { getSession } from 'next-auth/client'
+
+function index({ session, articles }) {
+
+    if (!session) { return (<div>You need to be logged on</div>) }
+    
+    return (
+        <div>
+            <ul>
+                {articles.map(article => (<li key={article.id}>
+                    <Link href={`/articles/${article.id}`}>
+                        <a>{article.title}</a>
+                    </Link>
+                </li>))}
+            </ul>
+        </div>
+    )
+}
+
+export default index
+
+export const getServerSideProps = async (context) => {
+
+    const session = await getSession(context);
+
+    // If no session exists, display access denied message
+    if (!session) {
+        return {
+            props: {
+                session,
+            }
+        }
+    }
+
+
+    const res = await fetch('https://jsonplaceholder.typicode.com/posts')
+    const articles = await res.json();
+
+    return {
+        props: {
+            session,
+            articles
+        }
+    }
+}
+
+// /pages/articles/[id]/index.js
+import { getSession } from 'next-auth/client'
+
+function article({ session, article }) {
+
+    if (!session) { return (<div>You need to be logged on</div>) }
+
+    return (
+        <div>
+            <h1>{article.title}</h1>
+            This is article {article.id}
+            <p>{article.body}</p>
+        </div>
+    )
+}
+
+export default article
+
+export const getServerSideProps = async (context) => {
+
+    const session = await getSession(context);
+
+    // If no session exists, display access denied message
+    if (!session) {
+        return {
+            props: {
+                session,
+            }
+        }
+    }
+    
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${context.params.id}`)
+    const article = await res.json()
+    return {
+        props: {
+            session,
+            article
+        }
+    }
+}
+
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOyL0Z2qJe" id="image3-2vl">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-12-at-10.59.47-am-1836x694.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Deploy update to Azure</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOyL3GM91k" id="image3-2vp">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-12-at-8.13.42-am-1836x1127.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">GitHub OAuth Application</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOB22nruEG" id="image3-2w4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-12-at-5.40.25-pm-1836x937.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">next-auth URL, Client ID and Client Secret added to Azure App Service</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOASy1n7JG" id="image3-2vx">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-12-at-10.55.17-am-1636x852.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">User must be signed in to access /articles</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOASyqnDUE" id="image3-2vy">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-12-at-10.55.27-am-1632x846.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">User must be signed in to access /articles/1</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOyL4CIaNL" id="image3-2vr">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-12-at-10.46.54-am-1836x1037.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Sign in</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOASwOshma" id="image3-2vu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-12-at-10.55.40-am-1626x842.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Sign in with GitHub</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOASwoxUKb" id="image3-2vt">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-12-at-10.47.17-am-1836x898.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Authorize the Haddley Nextjs Blog app</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOyL5n32s0" id="image3-2vs">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-12-at-10.47.33-am-1836x635.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Authorize Haddley</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOASyXVgki" id="image3-2vz">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-12-at-10.55.52-am-1632x842.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Signed in</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOyL4g3yFQ" id="image3-2vq">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-12-at-10.56.07-am-1628x846.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/articles page</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sOATUd33F0" id="image3-2w1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-11-12-at-11.02.13-am-1630x854.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/articles/1 page</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sUpUM17yWM" id="content5-34x">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Azure Active Directory</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The&nbsp;AzureADProvider from "next-auth/providers/azure-ad" can be used connect Nextjs and Azure Active Directory.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sUpVfFa5KK" id="content7-34y">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>[...nextauth.js] (updated)</strong></h5>
+
+<pre class="language-clike"><code><!--         
+import NextAuth from "next-auth";
+import GihubProvider from "next-auth/providers/github"
+import AzureADProvider from "next-auth/providers/azure-ad"
+
+// https://haddleynexttodo.azurewebsites.net/api/auth/signin
+
+// Authorization callback URL: https://haddleynexttodo.azurewebsites.net/api/auth/callback/github
+// Authorization callback URL: https://haddleynexttodo.azurewebsites.net/api/auth/callback/azure-ad
+
+export default NextAuth({
+    providers: [
+        GihubProvider({
+            clientId: process.env.NEXTAUTH_GITHUB_ID, 
+            clientSecret: process.env.NEXTAUTH_GITHUB_SECRET, 
+        }),
+        AzureADProvider({
+            clientId: process.env.AZURE_AD_CLIENT_ID,
+            clientSecret: process.env.AZURE_AD_CLIENT_SECRET,
+            tenantId: process.env.AZURE_AD_TENANT_ID,
+            authorization: { params: { scope: "openid email profile" } }, 
+        })
+    ],
+    secret: process.env.NEXTAUTH_SECRET,
+    debug: true
+})
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sUpU6B5XnV" id="image3-34t">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-01-13-at-11.11.13-am-1836x926.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">environment settings</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sUpU725JDA" id="image3-34u">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-01-13-at-11.14.22-am-1836x925.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Application (client) ID, Directory (tenant) ID and 1 secret</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sUpU7tSmej" id="image3-34v">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-01-13-at-11.14.42-am-1836x934.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Client Secret</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sUpU7Tkgv3" id="image3-34w">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-01-13-at-11.16.04-am-1836x983.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Redirect URIs and Implicit flows</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sUpU61YZYV" id="image3-34s">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-01-13-at-11.17.40-am-1836x1100.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/api/auth/signin</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/ytplayer/index.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>

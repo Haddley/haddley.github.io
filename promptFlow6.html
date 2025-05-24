@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Prompt Flow (Part 6)</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=7Dbe9w"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=7Dbe9w" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-un60Ky6vrS" once="menu" id="menu3-b0f">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section data-bs-version="5.1" class="content4 cid-un60KyMlDx" id="content4-b0g">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Prompt flow (Part 6)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">With Semantic Kernel and Planner</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-un60Kz4V9N" id="image3-b0h">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/logo.svg" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a rel="nofollow" href="https://github.com/immersive-web/webxr/blob/main/images/spec-logo.png"><br></a><a href="https://github.com/microsoft/promptflow?tab=MIT-1-ov-file" class="text-primary" target="_blank">This file is licensed under the MIT license.</a><br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-un60KzikfK" id="content5-b0i">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Quick start<br></h4>
+                <p class="mbr-text mbr-fonts-style display-7">I used Prompt flow, Semantic Kernel and Planner to create an AI application.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-un61Zo8ulX" id="image3-b1m">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-09-01-at-2.49.44pm-2044x680.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I used the Visual Studio Code Prompt flow Extension to create a Chat flow</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-un61ZziKVp" id="image3-b1n">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-09-01-at-2.49.57pm-1694x420.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I accepted the default name</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-un61ZCDNe7" id="image3-b1o">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-09-01-at-3.12.23pm-1876x354.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I ran the flow and asked "what is 2134.567 * 653.23?"<br>It provided an answer that was close but incorrect (the correct result is&nbsp;1,394,363.20141)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-un61ZFMIQP" id="image3-b1p">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-09-01-at-3.13.39pm-468x254.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The correct result</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-un61ZJNUk0" id="image3-b1q">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-09-01-at-3.18.34pm-2136x883.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I replaced the large language model chat node with a Python node.<br>The answer to every question I ask is "hello "+the question I asked (not very useful)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content7 cid-un6buCNSR6" id="content7-b2m">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>python_node_v8t9.py</strong></h5>
+
+<pre class="language-clike"><code><!--         
+
+from promptflow import tool
+from semantic_kernel import Kernel
+from semantic_kernel.connectors.ai.open_ai import OpenAIChatCompletion
+
+@tool
+async def my_python_tool(input1: str) -> str:
+
+    kernel = Kernel()
+    kernel.remove_all_services()
+    service_id = "default"
+    kernel.add_service(
+        OpenAIChatCompletion(
+            service_id=service_id,
+        ),
+    )
+    plugin = kernel.add_plugin(parent_directory="./prompt_template_samples/", plugin_name="FunPlugin")
+
+    from semantic_kernel.functions import KernelArguments
+
+    joke_function = plugin["Joke"]
+
+    # time travel to dinosaur age
+    
+    joke = await kernel.invoke(
+        joke_function,
+        KernelArguments(input=input1, style="super silly"),
+    )
+    print(joke)
+
+    return str(joke)
+
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-un61ZRkzSy" id="image3-b1s">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-09-01-at-3.43.26pm-2136x1400.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added Semantic Kernel to the Python code<br>I added the Joke function from the FunPlugin.<br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-un61ZUdZ19" id="image3-b1t">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-09-01-at-3.47.40pm-1828x182.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Now the answer to every question I ask is a Joke (not always useful)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content7 cid-un6cf3yIGE" id="content7-b2n">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>python_node_v8t9.py (updated)</strong></h5>
+
+<pre class="language-clike"><code><!--         
+
+# from promptflow import tool
+from promptflow.core import tool
+from semantic_kernel import Kernel
+from semantic_kernel.connectors.ai.open_ai import OpenAIChatCompletion
+
+@tool
+async def my_python_tool(input1: str) -> str:
+
+    kernel = Kernel()
+    kernel.remove_all_services()
+    service_id = "default"
+    kernel.add_service(
+        OpenAIChatCompletion(
+            service_id=service_id,
+        ),
+    )
+
+    fun_plugin = kernel.add_plugin(parent_directory="./prompt_template_samples/", plugin_name="FunPlugin")
+    math_plugin = kernel.add_plugin(parent_directory="./plugins", plugin_name="MathPlugin")
+
+    from semantic_kernel.planners.function_calling_stepwise_planner import (
+        FunctionCallingStepwisePlanner,
+        FunctionCallingStepwisePlannerOptions,
+    )
+
+    planner = FunctionCallingStepwisePlanner(service_id="default")
+
+    # goal = "Figure out how much I have if first, my investment of 2130.23 dollars increased by 23%, and then I spend $5 on a coffee"  # noqa: E501
+    # goal = "what is 2134.567 * 653.23?" 
+    # goal = "tell me a limeric about cats"
+    goal = input1
+
+    # Execute the plan
+    result = await planner.invoke(kernel=kernel, question=goal)
+
+    print(f"The goal: {goal}")
+    print(f"Plan result: {result.final_answer}")
+
+    return result.final_answer
+
+
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-un61ZXZm0h" id="image3-b1u">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-09-01-at-5.23.01pm-1792x710.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added the&nbsp;MathPlugin and a Planner<br>Now I can ask fun questions or math questions and the bot can decide which Plugin to call</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="features13 cid-un60KIlJZP" id="features14-b1h">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont socicon-youtube socicon"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://www.youtube.com/watch?v=-maOEleJ1PE" class="text-primary" target="_blank">A deeper dive on PromptFlow and Semantic Kernel</a></strong><strong><a href="https://www.makeuseof.com/how-to-use-raspberry-pi-imager-advanced-options/" class="text-primary" target="_blank"><br></a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-3 col-12 col-md-4 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-github"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://github.com/Haddley/promt-flow-semantic-kernel" class="text-primary" target="_blank">private github</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/ytplayer/index.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>

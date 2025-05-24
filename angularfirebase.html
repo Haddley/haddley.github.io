@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Angular Firebase</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=9pFxtb"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=9pFxtb" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-tClEYSxsGH" once="menu" id="menu3-5al">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-tClEYTrsO9" id="content4-5am">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Angular Firebase</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">An Angular Firebase App</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tClEYTLJuo" id="image3-5an">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/logo-lockup-firebase-vertical.svg" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a rel="nofollow" href="https://github.com/immersive-web/webxr/blob/main/images/spec-logo.png"><br></a><a href="https://commons.wikimedia.org/wiki/File:Angular_full_color_logo.svg" class="text-primary" target="_blank">This file is licensed under the Creative Commons Attribution 4.0 International license.</a><br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCtMFE3P6t" id="content5-5h8">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Creating a new firebase project</h4>
+                <p class="mbr-text mbr-fonts-style display-7">I created a firebase project using&nbsp;https://console.firebase.google.com</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCtNCKPn37" id="image3-5h9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-5.02.39-pm-1836x1011.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">haddley-firebase</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCtNDFzz3b" id="image3-5ha">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-5.03.04-pm-1836x1009.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">disable google analytics</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCtNEhfObA" id="image3-5hb">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-5.05.06-pm-1836x1001.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">wait</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCtNEQAPOL" id="image3-5hc">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-5.05.38-pm-1836x1011.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">firebase project has been created</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCtNFuXsh1" id="image3-5hd">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-5.07.10-pm-832x520.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Web</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCtP52zIy6" id="image3-5he">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-5.10.13-pm-1836x1013.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">App nickname</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCtP6z7Sdn" id="image3-5hg">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-5.11.10-pm-1836x1006.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Firebase SDK</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-tCtPQpPgzr" id="content7-5hi">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>firebase config</strong></h5>
+
+<pre class="language-clike"><code><!--         
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBwvxBCAtDqHw4WrDnU4rMnecwx5wE3O1E",
+  authDomain: "haddley-firebase-e8e21.firebaseapp.com",
+  projectId: "haddley-firebase-e8e21",
+  storageBucket: "haddley-firebase-e8e21.appspot.com",
+  messagingSenderId: "2336199603",
+  appId: "1:2336199603:web:52d6e29d9b05aa4005b1c6"
+};
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCtP7epBzd" id="image3-5hh">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-5.14.03-pm-1836x921.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">firebase project dashboard</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCtP5JItLf" id="image3-5hf">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-5.14.57-pm-1836x729.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Get started</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCtQLJteKD" id="image3-5hj">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-5.15.48-pm-1836x842.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Email/Password</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCtQMtfEZX" id="image3-5hk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-5.17.21-pm-1836x892.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Email/Password enable</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCtQNaAExZ" id="image3-5hl">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-5.18.19-pm-1836x769.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tClEYU4nOL" id="content5-5ap">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Creating a new angular project</h4>
+                <p class="mbr-text mbr-fonts-style display-7">I installed the Angular command line interface using <a href="npm.html" class="text-primary">npm</a><br><br><strong>% npm i -g @angular/cli</strong><br><br>I created a new Angular project using "ng new"<br><br><strong>% ng new haddley-angular</strong><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoHC0MwdP" id="image3-5dd">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-5.19.35-pm-1836x983.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">ng new haddley-angular</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoOVSVbXr" id="image3-5dk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-5.22.07-pm-1836x965.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">npm start</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCtSGDQxG4" id="image3-5hm">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-5.23.19-pm-1836x643.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">http://localhost:4200</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCtT5tDHHL" id="content5-5hn">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">angular fire</h4>
+                <p class="mbr-text mbr-fonts-style display-7">https://www.npmjs.com/package/@angular/fire<br><br>npm i @angular/fire</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoO9L4bWn" id="image3-5df">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-5.27.16-pm-1366x614.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">npm i @angular/fire</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCtTIRqUtp" id="content5-5ho">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">environments</h4>
+                <p class="mbr-text mbr-fonts-style display-7">I added firebaseConfig to environments.ts</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoOai5EK8" id="image3-5dg">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-8.24.03-pm-1836x551.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">environments.ts</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoOaFKPM4" id="image3-5dh">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-8.43.55-pm-1836x773.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added provideFirebaseApp, provideFirestore, provideAuth and ReactiveFormsModule to app.module.ts</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCuDV1E6Vp" id="content5-5hp">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">login, register and dashboard components</h4>
+                <p class="mbr-text mbr-fonts-style display-7">ng generate component login<br>ng generate component register<br>ng generate component dashboard</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCoOb4mhET" id="image3-5di">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-8.34.16-pm-1836x520.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">ng generate component login, register and dashboard</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCmwjL3ry6" id="image3-5d6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-8.36.08-pm-1836x314.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I removed the sample html from app.component.html</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCuFrTiwLl" id="content5-5hq">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">bootstrap 5</h4>
+                <p class="mbr-text mbr-fonts-style display-7">I used bootstrap for styling the forms</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCmwmEBg6F" id="image3-5d9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-8.39.03-pm-1836x563.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">CSS stylesheet link</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCmwkZShtI" id="image3-5d8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-8.40.07-pm-1836x483.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">CSS stylesheet link added</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCmwnaOYB4" id="image3-5da">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-8.41.32-pm-1836x803.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">example form</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCmwojcldm" id="image3-5dc">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-9.01.00-pm-1836x647.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">register.component.html</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-tCuMJxNX3A" id="content7-5hr">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>register.component.ts</strong></h5>
+
+<pre class="language-clike"><code><!--         
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
+})
+export class RegisterComponent implements OnInit {
+  registerForm!: FormGroup;
+
+  constructor(private formBuilder: FormBuilder, private auth: Auth, private router: Router) {
+    this.registerForm = this.formBuilder.group({
+      email: formBuilder.control('', [Validators.required, Validators.email]),
+      password: formBuilder.control('', [Validators.required, Validators.minLength(6)]),
+    })
+  }
+
+  public onSubmit(): void {
+    createUserWithEmailAndPassword(this.auth, this.registerForm.value.email, this.registerForm.value.password)
+      .then((res: any) => {
+        console.log(res);
+        this.router.navigate(['/login']);
+      })
+      .catch((err: any) => console.log(err));
+  }
+
+  ngOnInit(): void {
+  }
+
+}
+
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCmwnKoe3p" id="image3-5db">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-9.53.35-pm-1836x708.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">login.component.html</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-tCuYM68i6n" id="content7-5ht">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>login.component.ts</strong></h5>
+
+<pre class="language-clike"><code><!--         
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
+})
+export class LoginComponent implements OnInit {
+  loginForm!: FormGroup;
+
+  constructor(private formBuilder: FormBuilder, private auth: Auth, private router: Router) {
+    this.loginForm = this.formBuilder.group({
+      email: formBuilder.control('', [Validators.required, Validators.email]),
+      password: formBuilder.control('', [Validators.required, Validators.minLength(6)]),
+    })
+  }
+
+  public onSubmit(): void {
+    signInWithEmailAndPassword(this.auth, this.loginForm.value.email, this.loginForm.value.password)
+      .then((res: any) => 
+      {
+        console.log(res);
+        this.router.navigate(['/dashboard']);
+      })
+      .catch((err: any) => console.log(err));
+  }
+
+
+  ngOnInit(): void {
+  }
+
+}
+
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCyck6E4xz" id="image3-5hv">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-26-at-11.09.01-am-1836x270.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">dashboard.component.html</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-tCycN7uPKI" id="content7-5hw">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>dashboard.component.ts</strong></h5>
+
+<pre class="language-clike"><code><!--         
+import { Component, OnInit } from '@angular/core';
+import { Auth } from '@angular/fire/auth';
+
+@Component({
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
+})
+export class DashboardComponent implements OnInit {
+
+  user = this.auth.currentUser;
+
+  constructor(private auth: Auth) { }
+
+  ngOnInit(): void {
+    console.log(this.auth.currentUser);
+  }
+
+}
+
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCv14VUrLQ" id="content5-5hu">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Route</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Angular routing configuration</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCyhwksoa1" id="image3-5hx">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-26-at-11.26.53-am-1836x589.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">authguard.ts</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCmwkj4vcF" id="image3-5d7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-26-at-11.27.17-am-1836x621.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">app-routing.module.ts</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tClHvwzyBP" id="image3-5bg">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-9.57.46-pm-1836x580.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">firebase users (none)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tClHvMJbm2" id="image3-5bi">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-9.58.10-pm-1836x583.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/register</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tClHvRbU9v" id="image3-5bj">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-9.58.23-pm-1836x591.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">firebase users</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tClHvUkTin" id="image3-5bk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-25-at-9.58.38-pm-1836x540.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/login</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tClHvXsu9p" id="image3-5bl">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-26-at-11.10.48-am-1836x613.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">/dashboard</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCyhWPNt8q" id="content5-5i1">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">ng deploy</h4>
+                <p class="mbr-text mbr-fonts-style display-7">I used "ng deploy" to deploy the app.<br><br>% ng deploy</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCyhRNMVvk" id="image3-5hy">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-26-at-11.55.42-am-1720x870.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">ng deploy</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCyhT17WRX" id="image3-5i0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-26-at-11.56.01-am-1836x1011.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a href="https://haddley-firebase-e8e21.web.app" class="text-primary" target="_blank">https://haddley-firebase-e8e21.web.app</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCE2jUqoA5" id="content5-5i3">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Saving and retrieving private message documents</h4>
+                <p class="mbr-text mbr-fonts-style display-7">addDoc and query collection</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-tCE2LAMxzf" id="content7-5i6">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>dashboard.component.html</strong></h5>
+
+<pre class="language-clike"><code><!--         
+<div class="container my-5">
+
+    <p>dashboard works!</p>
+
+    <div *ngIf="user">
+        User {{ user.email }} is logged in.
+    </div>
+
+    <ul>
+        <li *ngFor="let message of messages$ | async">
+          {{ message.text }}
+        </li>
+      </ul>
+
+    <form [formGroup]="createMessageForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="exampleInputMessage1" class="form-label">Message</label>
+            <input type="text" class="form-control" id="exampleMessage1" aria-describedby="messageHelp"
+                formControlName="message">
+            <div id="messageHelp" class="form-text">Enter message here.</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-tCE2L9tCvZ" id="content7-5i5">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>dashboard.component.ts</strong><strong><br></strong></h5>
+
+<pre class="language-clike"><code><!--         
+import { Component, OnInit } from '@angular/core';
+import { Auth } from '@angular/fire/auth';
+import { Firestore, addDoc, collection, collectionData, getFirestore, query, serverTimestamp, where } from '@angular/fire/firestore';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+
+@Component({
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
+})
+export class DashboardComponent implements OnInit {
+
+  user = this.auth.currentUser;
+  createMessageForm!: FormGroup;
+  messages$: Observable<any[]>;
+
+  constructor(private formBuilder: FormBuilder, private auth: Auth, firestore: Firestore) {
+    this.createMessageForm = this.formBuilder.group({
+      message: formBuilder.control('', [Validators.required, Validators.minLength(6)])
+    })
+    const uid = this.auth.currentUser?.uid;
+    const result = query(collection(firestore, 'messages'), where("uid", "==", uid));
+    console.log(result);
+    this.messages$ = collectionData(result);
+  }
+
+  ngOnInit(): void {
+    console.log(this.auth.currentUser);
+  }
+
+  public onSubmit(): void {
+    this.saveMessage(this.createMessageForm.value.message)
+    this.createMessageForm.reset();
+  }
+
+  // Saves a new message to Cloud Firestore.
+  private async saveMessage(messageText: string) {
+    try {
+      const uid = this.auth.currentUser?.uid;
+      await addDoc(collection(getFirestore(), 'messages'), {
+        uid: uid,
+        email: this.auth.currentUser?.email,
+        text: messageText,
+        timestamp: serverTimestamp()
+      });
+    }
+    catch (error) {
+      console.error('Error writing new message to Firebase Database', error);
+    }
+  }
+
+}
+
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCE39MTktL" id="image3-5i8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-27-at-11.08.21-am-1836x476.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">rules</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCE399VINS" id="image3-5i7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-27-at-11.08.59-am-1298x808.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">dashboard</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features13 cid-tCmqyQHH9o" id="features14-5d5">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://developers.google.com/codelabs/building-a-web-app-with-angular-and-firebase" class="text-primary" target="_blank">Building a web application with Angular and Firebase</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-3 col-12 col-md-4 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont socicon-youtube socicon"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://www.youtube.com/playlist?list=PL1UHgDbN7Tm4SZ6yLE9yDI-YDtf02uc7d" class="text-primary" target="_blank">Angular Firebase Tutorial</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-3 col-12 col-md-4 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont socicon-youtube socicon"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://www.youtube.com/watch?v=0HzCrWjC2vI" class="text-primary">Getting Started with the Modular Firebase 9 Authentication in Angular</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-3 col-12 col-md-4 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-github"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://github.com/Haddley/haddley-angular" class="text-primary" target="_blank">Github Repository</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/ytplayer/index.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>

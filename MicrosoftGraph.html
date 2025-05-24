@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Microsoft Graph</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=9a842d"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=9a842d" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-t6YX9DXSGk" once="menu" id="menu3-3d3">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-t6YX9Exd0v" id="content4-3d4">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Microsoft Graph</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Explore Microsoft 365</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t6YX9EJNZ5" id="image3-3d5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/office-365-icon-500x500.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a rel="nofollow" href="https://github.com/immersive-web/webxr/blob/main/images/spec-logo.png"><br></a><a href="https://www.w3.org/Consortium/Legal/copyright-software" rel="nofollow"></a><a href="https://commons.wikimedia.org/wiki/File:Microsoft_Office_logo.png" class="text-primary">Microsoft_Office_logo by Microsoft is licensed under CC</a><br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t6YX9EQuEH" id="content5-3d6">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Graph Explorer</h4>
+                <p class="mbr-text mbr-fonts-style display-7"><a href="https://docs.microsoft.com/en-us/graph/overview" class="text-primary" target="_blank">Microsoft Graph</a> is a REST API that can be used to access: Microsoft 365, Azure Active Directory, Windows and Dynamics 365.<br><br><a href="https://developer.microsoft.com/en-us/graph/graph-explorer" class="text-primary" target="_blank">Graph Explorer</a> is a developer tool that allows a developer to make Microsoft Graph REST API requests and view corresponding responses.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t6YZekoCt5" id="image3-3di">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-26-at-9.26.35-am-1235x617.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Here I am using the Graph Explorer without signing in to my Active Directory account (using a sample account)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t6YZffacoq" id="image3-3dk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-26-at-9.29.31-am-485x209.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Here I am signing into my&nbsp;<a href="https://developer.microsoft.com/en-us/microsoft-365/dev-program#Subscription" class="text-primary" target="_blank">Microsoft 365 E5 developer subscription pre-provisioned with Microsoft 365 apps</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t6YZfB3J1C" id="image3-3dl">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-26-at-9.29.46-am-485x189.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Here I am entering my password</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t6YZg1650z" id="image3-3dm">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-26-at-9.30.14-am-484x195.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I am required to approve the sign in request using my mobile phone (two factor authentication)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t6YZgqBgCO" id="image3-3dn">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-26-at-9.30.49-am-1234x619.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I can retrieve my profile details using a "/me/" request. GET my profile -&nbsp;https://graph.microsoft.com/v1.0/me/</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t6Z4ZJZAaI" id="content5-3f3">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Graph Explorer permissions</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Before the Graph Explorer is able to retrieve email messages using Microsoft Graph the user (or an administrator) has to provide consent. The user is agreeing that the client application (Graph Explorer in this case) can access parts of the Microsoft Graph on their behalf.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t6YZgQw8tt" id="image3-3do">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-26-at-9.31.38-am-1234x618.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">access denied -&nbsp;https://graph.microsoft.com/v1.0/me/messages</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t6YZhB54K4" id="image3-3dq">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-26-at-9.33.13-am-1400x657.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Here the administrator grants this application (Graph Explorer) permission to access a user's email messages (on that user's behalf).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t6YZhdSpW5" id="image3-3dp">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-26-at-9.33.49-am-1400x655.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">GET my mail -&nbsp;https://graph.microsoft.com/v1.0/me/messages</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t6YZhYHwkZ" id="image3-3dr">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-26-at-9.34.16-am-1401x656.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">A second consent is needed to allow this application (Graph Explorer) to access a user's One drive and SharePoint online files (on that user's behalf) -&nbsp;https://graph.microsoft.com/v1.0/me/drive/root/children</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t6YZijiV9K" id="image3-3ds">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-26-at-9.36.19-am-1401x657.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Here the administrator grants this application (Graph Explorer) permission to access the user's (One drive and SharePoint online) files</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t6YZiHQCg8" id="image3-3dt">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-26-at-6.18.08-pm-1401x792.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">GET all the items in my (one) drive (root folder) - https://graph.microsoft.com/v1.0/me/drive/root/children</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t6YZeQ4BXH" id="image3-3dj">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-26-at-9.40.21-am-1401x656.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">At this time there were no files in my one drive's root folder</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t6Zawaa8cS" id="content5-3f5">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Teams/SharePoint Online/One Drive files</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Microsoft Teams channels include a "Files" tab.<br><br>Files uploaded to the Team's channel are stored in SharePoint Online.<br><br>All files uploaded to all public channels are stored in a shared Document Library in a Team specific SharePoint Online Site (Site Collection).<br><br>This SharePoint online Document Library can also be accessed using the One Drive application.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t6YZjkdoy8" id="image3-3du">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-26-at-10.04.41-am-1399x654.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The Mark 8 Project Team's Team includes a General and a Design channel.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t6YZjsOgWY" id="image3-3dv">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-26-at-10.05.14-am-1398x653.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The Design channel's files can be accessed without leaving the Teams application. The Design channel's files can also be accessed using the SharePoint user interface (using the "Open in SharePoint" menu item)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t6YZjxnEQ0" id="image3-3dw">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-26-at-10.05.42-am-1400x578.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">In the SharePoint user interface it is clear that the Design channel's files are stored a the "Design" Folder in the shared "Documents" Document Library in the "Mark 8 Project Team" SharePoint site<br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t6YZjAulw7" id="image3-3dx">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-26-at-10.06.40-am-1400x574.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The "Documents" Document Library in the "Mark 8 Project Team" site can also be accessed using the One Drive user interface.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t6YZjDAebL" id="image3-3dy">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-26-at-6.52.10-pm-1398x792.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The One Drive user interface can be used to show that there is a second "Confidential" Document Library in the "Mark 8 Project Team" Site.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t6ZkocOoOO" id="content5-3fb">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Using Microsoft Graph to access Teams/SharePoint Online/One Drive files</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Graph explorer can be used to access <a href="https://docs.microsoft.com/en-us/graph/api/driveitem-list-children?view=graph-rest-1.0&tabs=http" class="text-primary" target="_blank">Teams/SharePoint Online/One Drive files</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t6Zi0ozKuh" id="image3-3f7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-26-at-10.20.13-am-1399x618.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">GET SharePoint site based on relative path to (the "Mark8Project") site -&nbsp;https://graph.microsoft.com/v1.0/sites/{host-name}:/{server-relative-path}&nbsp;- https://graph.microsoft.com/v1.0/sites/p8lf.sharepoint.com:/sites/Mark8ProjectTeam</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t6Zi1b5hN3" id="image3-3f8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-26-at-10.22.54-am-1397x617.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">GET&nbsp;enumerate the document libraries under the (the "Mark8Project") site -&nbsp;https://graph.microsoft.com/v1.0/sites/{siteid}/drives <br>-&nbsp;https://graph.microsoft.com/v1.0/sites/p8lf.sharepoint.com,93621faf-8562-41e0-ac8c-13117ad3494a,c62f05b5-b3b9-45af-9935-0d5adca1a908/drives </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t6Zi1PKbsC" id="image3-3f9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-26-at-10.31.55-am-1401x618.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">GET all the items in specified drive - https://graph.microsoft.com/v1.0/drives/{driveid}/root/children -https://graph.microsoft.com/v1.0/drives/b!rx9ik2KF4EGsjBMRetNJSrUFL8a5s69FmTUNWtyhqQioATjXxIu7Q6WHB3PuAtBi/root/children</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t6Zu7SzR7D" id="image3-3fi">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-26-at-7.47.54-pm-1397x793.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">GET all the items in specified folder in the specified drive <br>- https://graph.microsoft.com/v1.0/drives/{driveid}/items/{folderid}/children<br>https://graph.microsoft.com/v1.0/drives/b!rx9ik2KF4EGsjBMRetNJSrUFL8a5s69FmTUNWtyhqQioATjXxIu7Q6WHB3PuAtBi/items/0165QRNMIDD63SJ6RBTFHZY2G4LDYN6K7M/children</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t6ZljxYzDW" id="content5-3fc">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Items trending around me</h4>
+                <p class="mbr-text mbr-fonts-style display-7">M365 is able to keep track of documents a user has recently accessed.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t6YZls0kwq" id="image3-3f2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-26-at-10.14.25-am-1396x576.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">recently accessed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t6ZrtpZTCl" id="content5-3fg">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Items trending</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Items trending around me can also be accessed using Microsoft Graph.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t6ZlHoRm2u" id="image3-3fd">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-26-at-10.15.34-am-1398x618.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">GET items trending around me -&nbsp;https://graph.microsoft.com/beta/me/insights/trending</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t6ZqJ2X99U" id="content5-3fe">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Code snippets</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Graph Explorer is also able to provide sample JavaScript code that could be used to access Microsoft Graph</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t6ZqK6LxLB" id="image3-3ff">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-26-at-10.39.30-am-1399x733.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Sample JavaScipt code</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/ytplayer/index.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Angular and Phaser</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=06oTnW"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=06oTnW" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-tCh3Y42Z8f" once="menu" id="menu3-598">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-tCh3Y4zoih" id="content4-599">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Angular and Phaser</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Using <a href="phaser.html" class="text-primary">Phaser</a> in an Angular Component</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCh3Y4LtJp" id="image3-59a">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/phaser-logo-1836x1530.png" alt="Phaser">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a href="https://commons.wikimedia.org/wiki/File:Phaser_Logo.png" class="text-primary" target="_blank">This file is licensed under the Creative Commons Attribution-Share Alike 3.0 Unported license.</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tCh3Y4TRMa" id="content5-59b">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Highlights</h4>
+                <p class="mbr-text mbr-fonts-style display-7"><script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser-arcade-physics.min.js"></script>% npm i -g @angular/cli<br>% ng new haddley-angular-phaser<br>% cd haddley-angular-phaser<br>% npm i phaser<br>% code .<br>% ng generate component bounce<br><br>angular.json "scripts": ["node_modules/phaser/dist/phaser.min.js"]<br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCja85CATk" id="image3-59l">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-23-at-8.09.49-pm-1144x740.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">ng new haddley-angular-phaser</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCja8QCiIP" id="image3-59m">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-23-at-8.10.31-pm-1136x738.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">npm i phaser</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCja9oL5nU" id="image3-59n">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-23-at-8.11.55-pm-1836x1045.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">ng generate component bounce</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-tCjf0Jk6TI" id="content7-5ak">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>bounce.component.ts</strong></h5>
+
+<pre class="language-clike"><code><!--         
+import { Component, OnInit } from '@angular/core';
+import Phaser from 'phaser';
+
+class NewScene extends Phaser.Scene {
+
+  constructor() {
+    super({ key: 'new' });
+  }
+
+  preload() {
+    console.log('enter preload');
+    // this.load.setBaseURL('http://localhost:4200/');
+
+    this.load.image('sky', 'assets/skies/space3.png');
+    this.load.image('logo', 'assets/sprites/phaser3-logo.png');
+    this.load.image('red', 'assets/particles/red.png');
+  }
+
+  create() {
+    console.log('enter create');
+
+    this.add.image(400, 300, 'sky');
+
+    var logo = this.physics.add.image(400, 100, 'logo');
+
+    logo.setVelocity(100, 200);
+    logo.setBounce(1, 1);
+    logo.setCollideWorldBounds(true);
+
+  }
+}
+
+@Component({
+  selector: 'app-bounce',
+  templateUrl: './bounce.component.html',
+  styleUrls: ['./bounce.component.scss']
+})
+export class BounceComponent implements OnInit {
+
+  phaserGame: Phaser.Game | undefined;
+  config: Phaser.Types.Core.GameConfig;
+
+  constructor() {
+
+    this.config = {
+
+      type: Phaser.AUTO,
+
+      width: 800,
+      height: 600,
+
+      scene: [NewScene],
+
+      scale: {
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH,
+      },
+
+      physics: {
+        default: 'arcade',
+        arcade: {
+          gravity: { y: 200 }
+        }
+      },
+
+    };
+
+
+  }
+
+  ngOnInit() {
+    this.phaserGame = new Phaser.Game(this.config);
+  }
+
+}
+
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCjaayGJoW" id="image3-59p">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-23-at-8.16.17-pm-1836x711.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">angular.json "scripts": ["node_modules/phaser/dist/phaser.min.js"]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCjaj7VGsP" id="image3-5a8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-23-at-9.29.36-pm-1834x442.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I uploaded files to the /src/assets folder</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCjabogH7T" id="image3-59r">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-23-at-8.22.39-pm-1836x658.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added a route</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCjajsCiPC" id="image3-5a9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-23-at-8.23.53-pm-1836x614.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I removed unnecessary html</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCja9MjqZQ" id="image3-59o">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-23-at-8.24.39-pm-1836x355.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">allowSyntheticDefaultImports</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCjajK3uAt" id="image3-5aa">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-23-at-8.25.08-pm-1836x436.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">scripthost</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCjacz2YvD" id="image3-59u">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-23-at-8.36.42-pm-1836x261.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">VideoFrameCallbackMetadata issue</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCjak7pACj" id="image3-5ab">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-23-at-9.12.29-pm-1836x476.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">updating budgets</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tCjadTgYS6" id="image3-59w">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-04-23-at-9.22.08-pm-1836x1231.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">running</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features13 cid-tCh3Y5Xrbc" id="features14-59j">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><a href="https://braelynnn.medium.com/using-phaser-in-an-angular-8-component-53644a2280e3" class="text-primary" target="_blank">Using Phaser in an Angular 8 Component</a></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-3 col-12 col-md-4 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><a href="https://github.com/Haddley/haddley-angular-phaser" class="text-primary" target="_blank">Github</a><a href="https://github.com/brsullivan/phaser3-angular8" class="text-primary" target="_blank"><br></a><strong></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/ytplayer/index.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>

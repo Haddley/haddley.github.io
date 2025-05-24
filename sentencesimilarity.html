@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Sentence Similarity</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=lO8YZL"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=lO8YZL" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-tKwaMU8hcs" once="menu" id="menu3-5sl">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-tKwaMVOlI4" id="content4-5sm">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Natural Language Processing (Part 2)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Sentence Similarity</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tKwaMWlQ3Y" id="image3-5sn">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/chatgpt-logo.svg" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a href="https://commons.wikimedia.org/wiki/File:ChatGPT_logo.svg" class="text-primary" target="_blank">This image of simple geometry is ineligible for copyright and therefore in the public domain, because it consists entirely of information that is common property and contains no original authorship.</a><a href="http://www.apache.org/licenses/LICENSE-2.0" title="Apache License, Version 2.0"><br></a>
+                    
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tKwaMWBgV3" id="content5-5so">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">What is Sentence Similarity?</h4>
+                <p class="mbr-text mbr-fonts-style display-7"><strong>ChatGPT What is&nbsp;Sentence Similarity?</strong><br><br><br>Sentence similarity refers to the measure of how similar or related two sentences are in terms of their meaning or semantic content. It is a natural language processing (NLP) concept used to quantify the likeness between sentences based on their semantic, syntactic, or contextual aspects. Sentence similarity is essential in various NLP tasks, such as information retrieval, paraphrase detection, text summarization, question answering, and machine translation.<br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-tKwaMWMKrq" id="content7-5sp">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7">sentence_similarity.html</h5>
+
+<pre class="language-clike"><code><!--         
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sentence Similarity Demo</title>
+</head>
+
+<body>
+    <h1>Sentence Similarity Demo</h1>
+    <textarea id="input-text-1" rows="4" cols="50" placeholder="Enter text to compare"></textarea>
+    <textarea id="input-text-2" rows="4" cols="50" placeholder="Enter text to compare"></textarea>
+
+    <button id="compare">Compare</button>
+    <p id="score"></p>
+
+    <script type="module">
+        import { pipeline } from 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.4.1';
+
+        const generateEmbeddings = await pipeline(
+            'feature-extraction', 'xenova/all-MiniLM-L6-v2'
+        )
+
+        async function dotProduct(vec1, vec2) {
+            let result = 0;
+            for (let i = 0; i < vec1.length; i++) {
+                result += vec1[i] * vec2[i];
+            }
+            return result;
+        }
+
+        async function compare() {
+
+            const inputText1 = document.getElementById('input-text-1').value.trim();
+            const inputText2 = document.getElementById('input-text-2').value.trim();
+
+            if (inputText1 === '' || inputText2 === '') {
+                alert('Please enter text to compare.');
+                return;
+            }
+
+            const options = { pooling: 'mean', normalize: true };
+            const output1 = await generateEmbeddings(inputText1, options);
+            const output2 = await generateEmbeddings(inputText2, options);
+
+            const embeddings1 = output1.data;
+            console.log("embeddings1", embeddings1);
+
+            const embeddings2 = output2.data;
+            console.log("embeddings2", embeddings2);
+
+            const similarity = await dotProduct(output1.data, output2.data);
+
+            document.getElementById('score').textContent = `Score: ${similarity}`;
+
+        }
+
+        document.getElementById("compare").onclick = compare;
+
+    </script>
+
+</body>
+
+</html>
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tKwaMWUMaO" id="image3-5sq">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-07-19-at-7.41.32-pm-1490x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Similar</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tKwaMX9DOH" id="image3-5sr">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-07-19-at-7.42.03-pm-1482x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Not similar</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tKwaMXrtHs" id="image3-5ss">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-07-19-at-7.42.29-pm-1488x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Not similar</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features13 cid-tKwaMXGJUu" id="features14-5st">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont socicon-youtube socicon"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://www.youtube.com/watch?v=QdDoFfkVkcw" class="text-primary" target="_blank">$0 Embeddings (OpenAI vs. free &amp; open source)</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/ytplayer/index.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>

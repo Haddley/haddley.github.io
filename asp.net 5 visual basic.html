@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>ASP.NET 5 Visual Basic</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=7guF1F"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=7guF1F" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-tyYEKbFnrX" once="menu" id="menu3-4rf">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-tyYEKcieNa" id="content4-4rg">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>ASP.NET 5 Visual Basic</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Generate Context and Entity Classes from an Existing Database</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYEKctHjr" id="image3-4rh">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/net-logo.svg" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><span style="font-size: 1.1rem; background-color: rgb(255, 255, 255);"><a href="https://github.com/dotnet/brand/blob/main/logo/dotnet-logo.svg" class="text-primary">Microsoft Dotnet Logo</a></span><span style="font-size: 1.1rem; background-color: rgb(255, 255, 255);"> by <a href="https://en.wikipedia.org/wiki/en:Microsoft" class="text-primary">Microsoft Corporation</a><span style="font-size: 1.1rem; background-color: rgb(255, 255, 255);"> is licensed under&nbsp;</span><a href="https://en.wikipedia.org/wiki/Creative_Commons" class="text-primary">Creative Commons</a></span> <span style="font-size: 1.1rem; background-color: rgb(255, 255, 255);"><a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en" class="text-primary">CC0 1.0 Universal Public Domain Dedication</a></span><a href="http://www.apache.org/licenses/LICENSE-2.0" title="Apache License, Version 2.0"><br></a>
+                    
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tyYEKcC29R" id="content5-4ri">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Active Server Pages</h4>
+                <p class="mbr-text mbr-fonts-style display-7">ASP Web Forms was released in 2003 (based on the Windows Server and the .NET Framework)<br><br>ASP.NET Model-View-Controller 5 was released in 2009 (based on Windows Server and .NET Framework and Supported in Visual Studio 2019)<br><br>ASP.NET Core&nbsp;Model-View-Controller was released in 2017 (based on cross platform .NET Core and Supported in Visual Studio 2022)<br><br>I used Visual Studio 2019 and ASP.NET MVC 5 to create a todo app.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYG5zR0k1" id="image3-4sj">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture4-create-new-project-1026x677.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created a new project</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYG5T2EpU" id="image3-4sk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture5-configure-new-project-1022x677.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I configured the new project</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGa7F5nA" id="image3-4sl">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture6-mvc-vb-1020x707.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created a Model-View-Controller web application</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGaRD698" id="image3-4sn">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture7-home-view-1353x729.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I ran the template project (notice the "ASP.NET MVC gives" text in the index.vbhtml file and the web browser).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGbBnWAw" id="image3-4so">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture8-layout-1416x726.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The _Layout.vbhtml file provides a common web page framework and navigation</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGbYaokf" id="image3-4sp">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture9-controller-1382x667.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Web requests are handled by Controller functions/methods. The controller function will typically return a view (the Web response). The <strong>About</strong> function sets a "Message" value and then returns a corresponding <strong>About</strong> view.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGcmTfvK" id="image3-4sq">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture10-controller-passing-to-view-1405x638.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Notice that the About view renders the "Message".</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGavE6xi" id="image3-4sm">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture11-new-folder-842x501.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created a new <strong>HelloWorld</strong> folder in the Views folder.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGdkuJMx" id="image3-4ss">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture12-new-view-2-993x492.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added a view page to the HelloWorld folder.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGdYIX2b" id="image3-4st">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture13-new-view-3-995x287.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I named the new page "Index" making it the home page for the new folder.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGekdl7Y" id="image3-4su">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture14-new-view-4-1097x495.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the existing _Layout page</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGeFBLSG" id="image3-4sv">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture15-new-view-5-1387x306.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added a reference to a "Name" value.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGf4P01F" id="image3-4sw">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture16-new-controller-1-876x298.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added a new controller to the project</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGfrH1qt" id="image3-4sx">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture17-new-controller-2-1365x683.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created an empty controller.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGfNewnW" id="image3-4sy">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture18-new-controller-3-1114x350.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I named the controller HelloWorldController (in line with the folder I had already created)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGgcimoE" id="image3-4sz">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture19-new-controller-4-1419x311.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Visual Studio created an Index function that would handle requests for the HelloWorld page and return the Index view</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGgtNNfh" id="image3-4t0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture20-new-controller-5-1364x615.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added the folder name HelloWorld to the url and got the result above</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGgOXAFS" id="image3-4t1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture21-new-controller-6-1362x545.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the Controller function to set the "Name" value before returning the view. I refreshed the browser.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGiSmWlV" id="image3-4t7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture26-docker-sql-server-1157x622.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Passw0rd123" -p 1433:1433 --name sql2019 -d mcr.microsoft.com/mssql/server:2019-latest</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGjcBmI8" id="image3-4t8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture27-docker-sql-server-2-1157x623.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I downloaded a SQL Server docker image</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGjBsSKe" id="image3-4t9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture28-docker-sql-server-3-1154x620.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created a container based in the downloaded docker image</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGjXNHrs" id="image3-4ta">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture29-docker-sql-server-5-1364x230.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I used Visual Studio to create a new database in the docker container's SQL Server</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGkmPjWK" id="image3-4tb">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture30-docker-sql-server-6-1047x509.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I entered the credentials</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGl5tEn7" id="image3-4td">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture32-docker-sql-server-8-1025x729.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">To get another view of the database I opened Azure Data Studio</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGlpj5DM" id="image3-4te">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture33-docker-sql-server-9-1023x729.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I entered the address of the SQL Server and the credentials</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGlJ006V" id="image3-4tf">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture34-docker-sql-server-10-1027x728.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the ToDo database</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGm1Q7gv" id="image3-4tg">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture35-docker-sql-server-11-1026x423.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created a Tasks table (with an automatically assigned ID column, a description column and a done boolean column)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGcZa8oW" id="image3-4sr">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture36-docker-sql-server-12-1359x471.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I refreshed Data Connections in Visual Studio</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGmZd9mH" id="image3-4ti">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture37-docker-sql-server-14-808x240.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the Models folder and selected the Add | New Item... menu item</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGnlCJ6L" id="image3-4tj">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture38-docker-sql-server-15-941x573.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I entered the name <strong>ToDoContext </strong>and selected ADO.NET Entity Data Model</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGnFfnqb" id="image3-4tk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture39-docker-sql-server-16-616x559.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected <strong>Code First from database</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGnZ1cvQ" id="image3-4tl">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture40-docker-sql-server-17-612x560.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I asked Visual Studio to save the connection details in the Web.Config file (notice that the Web.Config file is never returned to a client browser)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGohYev3" id="image3-4tm">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture41-docker-sql-server-18-616x554.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the Tasks table</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGoAWyeu" id="image3-4tn">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture42-docker-sql-server-19-1365x331.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The Task class is generated</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGoUU7cg" id="image3-4to">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture43-docker-sql-server-20-880x242.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the Controller folder and selected the Add | New Scaffolded Item... menu item<br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGpdXxZi" id="image3-4tp">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture44-docker-sql-server-21-952x658.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the MVC 5 Controller with view, using Entity Framework option</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGpyV1zb" id="image3-4tq">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture45-docker-sql-server-22-589x381.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I entered the Model class name (Task) and the Data context class (ToDoContext).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGpTrwSM" id="image3-4tr">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture46-docker-sql-server-23-1364x312.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Visual Studio added CRUD controller functions and views.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYGmmZdXX" id="image3-4th">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture47-docker-sql-server-24-1359x664.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The controller functions includes Index. The TaskController.Index function will fetch all Tasks from the database and then display then using the corresponding Tasks/Index view</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYNcVAR1Y" id="image3-4ty">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture48-docker-sql-server-25-1363x729.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The&nbsp;TaskController.Index function is executed when a user navigates to /Tasks (see above)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYNdh1Jjm" id="image3-4tz">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture49-docker-sql-server-26-1040x622.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Clicking on the Create New link navigates the user to the TaskController.Create function (returning the generated Create form)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYNdE5JAO" id="image3-4u0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture49-docker-sql-server-26-1040x622.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I entered the new task text "Feed the fish" and clicked the create Create button. This posted the contents of the form to another Controller function.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYNe6MUfU" id="image3-4u1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture51-docker-sql-server-28-1038x616.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The post handling function added the item to the database table and redirected the user back to the Index page.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYNevuEDN" id="image3-4u2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture52-docker-sql-server-29-1040x617.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I used the generated Edit page to update the task.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYNeT1TZX" id="image3-4u3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture53-docker-sql-server-30-1040x616.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Once the database table row has been updated the use is (again) redirected to the Index page.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYNfdwUp9" id="image3-4u4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture54-docker-sql-server-31-1039x616.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added a couple of extra task and marked the Feed the cat task as done.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYNfBqSvI" id="image3-4u5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture55-docker-sql-server-32-997x722.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I reviewed the database table using the Azure Data Studio application</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYNfYBLXk" id="image3-4u6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture56-docker-sql-server-33-1364x668.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Above is an example of the Controller code</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYNgp3wn2" id="image3-4u7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture57-docker-sql-server-34-1365x668.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Above is an example of the View code</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tyYNgKbaYp" id="image3-4u8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/capture58-docker-sql-server-35-1366x728.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I pushed the project to GitHub</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features13 cid-tyYEKhUBnm" id="features14-4sg">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://learn.microsoft.com/en-us/aspnet/mvc/overview/getting-started/introduction/getting-started" class="text-primary" target="_blank">Getting started with ASP.NET MVC 5</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/ytplayer/index.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>

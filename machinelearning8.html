@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Machine Learning (Part 8)</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=SxqZ6f"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=SxqZ6f" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-t8ucIA1JCG" once="menu" id="menu3-3rl">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-t8ucIBs6LC" id="content4-3rm">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Machine Learning (Part 8)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Baseball Signs</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8ucIBX7Cc" id="image3-3rn">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/tensorflow-logo.svg" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a rel="nofollow" href="https://github.com/immersive-web/webxr/blob/main/images/spec-logo.png"><br></a><a href="https://commons.wikimedia.org/wiki/File:Tensorflow_logo.svg" class="text-primary" target="_blank">Tensorflow logo does not meet the threshold of originality needed for copyright protection, and is therefore in the public domain</a><br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8ucICcB2F" id="content5-3ro">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Stealing Baseball Signs</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Can we predict when a baseball player is going to try to "steal"?<br><br>Mark Rober and <a href="https://www.youtube.com/channel/UCQALLeQPoZdZC4JNUboVEUg" class="text-primary" target="_blank">Jabril</a> created an application to predict when a Baseball player had been directed to "steal".<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="video2 cid-t8ue3bKrQn" id="video2-3s6">
+    
+    
+    <div class="container">
+        <div class="mbr-section-head">
+            <h4 class="mbr-section-title mbr-fonts-style mb-0 display-2">Stealing Baseball Signs</h4>
+            <h5 class="mbr-section-subtitle mbr-fonts-style mb-0 mt-2 display-7">Stealing Baseball Signs with a Phone (Machine Learning)</h5>
+        </div>
+        <div class="row justify-content-center mt-4">
+            <div class="col-12 col-md-10 video-block">
+                <div class="video-wrapper"><iframe class="mbr-embedded-video" src="https://www.youtube.com/embed/PmlRbfSavbI?rel=0&amp;amp;&amp;showinfo=0&amp;autoplay=0&amp;loop=0" width="1280" height="720" frameborder="0" allowfullscreen></iframe></div>
+                <p class="mbr-text pt-2 mbr-fonts-style display-4">
+                    Stealing Baseball Signs with a Phone (Machine Learning)</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8MsCa5oWv" id="content5-3um">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">How does the application work?</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Jabril hosts a copy of his application on&nbsp;<a href="https://jabrils.com/sp/" class="text-primary" target="_blank">his web site</a>&nbsp;and the source code of the application is available on <a href="https://github.com/Jabrils/Uncle-Rober-Baseball-Predictor/blob/master/simple%20model%20website/index.html" class="text-primary" target="_blank">GitHub</a>.<br><br>I reviewed the code to see how the application worked.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8uXI1WQFe" id="content5-3t6">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Sequence</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Mark and&nbsp;Jabril created a way to encode Baseball signals using letters.&nbsp;<br><br>Each Baseball coach will use a unique set of signals to communicate with her players.<br><br>The coach in the example below signals to her players by touching her nose, touching her right ear, touching her right arm, touching her chin, touching her left ear, touching her left arm, touching her chest, touching her hat or touching her belt.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8uYg6hQw2" id="image3-3t7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-11-at-7.25.24-pm-1271x712.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Baseball signal encoding</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8MwgFKU2R" id="content5-3v0">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Encode</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Internally the application works with sequences of letters. To make the application easier to operate a user can enter a description for each signal.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8Mw1iLOYz" id="image3-3uo">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-14-at-7.35.41-pm-1536x797.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">A description for each signal</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8MyK2PHWw" id="content5-3v1">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Apply</h4>
+                <p class="mbr-text mbr-fonts-style display-7">When Apply is pressed the Encode() function is run.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8Mw2uiAKe" id="image3-3up">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-14-at-7.37.52-pm-1536x826.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The Apply button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8Sw0xyK8o" id="content5-3va">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Encode()&nbsp;</h4>
+                <p class="mbr-text mbr-fonts-style display-7">When the Encode() function executes the descriptions provided by the user are copied to the the web page's HTML.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8Mw3oPPe1" id="image3-3us">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-14-at-7.42.56-pm-1536x796.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">When the Encode() function executes</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8MVTYQ4KD" id="content5-3v5">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">CheckSeq()</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The user watches the coach communicating with the players and records the signals. <br><br>As a sequence is entered into the app the&nbsp;CheckSeq() function is used to make a live prediction.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8MUIZE1K7" id="image3-3v4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-14-at-8.57.22-pm-1536x825.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The dict variable contains an entry for every possible two letter combination.&nbsp;A value of 1 is used to mark all combinations that are present in the *current* sequence.<br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8MADuHEXc" id="content5-3v2">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Dataset</h4>
+                <p class="mbr-text mbr-fonts-style display-7">After the pitch is made the user watches to see if a player attempts to steal a base.&nbsp;<br><br>If there is an attempt to steal a base the user clicks the "Steal" button.<br><br>If there is no attempt to steal a base the user clicks the "Not Steal" button.<br><br>Every time the Steal or No Steal button is pressed the app has new intelligence and the Label() function is called.<br><br>The Label() function adds the current sequence and label (steal 1 or no steal 0) to the page's HTML, adds the current sequence and label to a "dataset" variable and then calls the FindSteal() function.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8uWwU0JTt" id="image3-3so">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-11-at-7.22.42-pm-1272x715.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The Label() function adds the current sequence and label (steal 1 or no steal 0) to the page's HTML</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8Mw3URPh8" id="image3-3uu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-14-at-8.16.13-pm-1536x784.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The Label() function adds the current sequence and label to a "dataset" variable and then calls the FindSteal() function.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8PJkiGrMC" id="content5-3v7">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">FindSteal()</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The variable "top" in the FindSteal() function is used to score all possible two letter combinations as candidates (based on all of the labeled sequences in the dataset).<br><br>The web page is updated to show the most likely candidate.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8PLuGD2Xz" id="image3-3v8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-15-at-8.45.57-am-1536x892.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The variable "top" </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t8PNmtVcI5" id="image3-3v9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-15-at-8.53.55-am-1126x330.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">updated prediction</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t8MXjfZxkR" id="content5-3v6">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Machine learning?</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The application developed by Jabril and demonstrated by&nbsp;Mark is a nice <a href="https://www.techtarget.com/searchenterpriseai/definition/reinforcement-learning" class="text-primary" target="_blank">reinforcement learning</a> example&nbsp;(just as <a href="machineLearning1.html" class="text-primary">Hexapawn</a> is).</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/ytplayer/index.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/playervimeo/vimeo_player.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>

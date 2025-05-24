@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Machine Learning (Part 9)</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=xnaNsx"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=xnaNsx" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-t93Mgs9Mq9" once="menu" id="menu3-3vb">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-t93MgsHz8I" id="content4-3vc">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Machine Learning (Part 9)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">The MNIST database</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t93MgsSVjU" id="image3-3vd">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/tensorflow-logo.svg" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a rel="nofollow" href="https://github.com/immersive-web/webxr/blob/main/images/spec-logo.png"><br></a><a href="https://commons.wikimedia.org/wiki/File:Tensorflow_logo.svg" class="text-primary" target="_blank">Tensorflow logo does not meet the threshold of originality needed for copyright protection, and is therefore in the public domain</a><br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t93Mgt29oG" id="content5-3ve">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">MNIST</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The MNIST database of handwritten digits has a training set of 60,000 examples, and a test set of 10,000 examples.<br><br>The digits have been size-normalized and centered in a fixed-size image.<br><br>Keras is aware of the MNIST database. The database can be loaded using the mnist.load_data() function.<br><br>A random image from the MNIST database can be viewed using the pyplot.imshow() function.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t93O1YeTuZ" id="image3-3w0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-17-at-6.38.18-pm-1704x1296.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">An image from the MNIST database</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t93Uzzi8Eq" id="content5-3w9">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">normalization</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Normalization refers to a process that makes something more normal or regular.<br><br>Here the each image pixel value (0-255) is converted to a float value between 0 and 1.<br><br>Each label (an integer between 0 and 9) is converted to a matrix of eight zeros and a single one.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t93O2tXR23" id="image3-3w1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-17-at-6.39.57-pm-1700x846.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Normalized</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t93VeQoatd" id="content5-3wa">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">model</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The keras Sequential model is commonly used.<br><br>I added a Dense layer with 512 units and 784 (28*28) inputs (there are 784 pixels in each image).<br>I added a Dense hidden layer with 512 units.<br>I added a Dense output layer with 10 units (each unit corresponding to a category value from 0 to 9).</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t93O3cv1rs" id="image3-3w3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-17-at-6.41.19-pm-1648x1296.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">model</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t93WLXwj3v" id="content5-3wb">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">compile and fit</h4>
+                <p class="mbr-text mbr-fonts-style display-7">After creating the model I configured and trained it.<br><br>I used the compile() function to configure the model.<br><br>I used the fit() function to train the model.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t93O3QBFbn" id="image3-3w5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-17-at-6.44.24-pm-1718x658.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">compile and fit</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t93Y8v5nw5" id="content5-3wc">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">predict</h4>
+                <p class="mbr-text mbr-fonts-style display-7">I used the predict() function to "recognize" the test images.&nbsp;<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t93O4cyqnQ" id="image3-3w6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-06-17-at-6.45.08-pm-1712x1216.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">predict (recognizing the handwritten digits)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content12 cid-t93MvqPUdP" id="content12-3vy">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="mbr-section-btn align-center"><a class="btn btn-primary display-4" href="https://haddley.github.io/MNIST.ipynb" target="_blank">Notebook</a></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/ytplayer/index.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>
