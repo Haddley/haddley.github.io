@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Teams Toolkit with SPFx</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=XHQ7eS"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=XHQ7eS" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-syPMgqpl6r" once="menu" id="menu3-14o">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-syPMgrn0m9" id="content4-14p">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Teams Toolkit with SPFx</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Get started with Microsoft Teams app development using SPFx.</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPMgrBr9T" id="image3-14q">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/teams-hi-res-icon-2019.svg" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a rel="nofollow" href="https://commons.wikimedia.org/wiki/File:Teams_hi-res_icon_(2019).svg" class="text-primary">Teams hi-res icon (2019)</a>&nbsp;by <a href="https://en.wikipedia.org/wiki/en:Microsoft">Microsoft Corporation</a> is <a href="“https://commons.wikimedia.org/w/index.php?curid=43353450">Public Domain</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-syPMgrXG3I" id="content5-14r">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>Visual Studio Extension</strong></h4>
+                <p class="mbr-text mbr-fonts-style display-7">Teams Toolkit makes creating Teams Tabs/Azure applications easier.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPMgsaRw6" id="image3-14s">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-29-at-5.12.18-pm-1836x824.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add Teams Toolkit Extension to Visual Studio Code</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPMgsvYke" id="image3-14t">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-29-at-3.47.21-pm-294x84.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Click the Teams Toolkit to open Wizard&nbsp;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPMgsHYl2" id="image3-14u">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-29-at-3.48.08-pm-1468x1114.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Configure Quick Start items</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPMgsR1gs" id="image3-14v">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-29-at-3.49.16-pm-748x282.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Sign-in to M365 account</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPMgt3Sza" id="image3-14w">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-29-at-3.49.23-pm-734x276.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Sign-in to Azure</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPMgtmRN9" id="image3-14x">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-29-at-3.49.33-pm-726x330.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Click Create New Project link</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPMgtxtNS" id="image3-14y">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-29-at-3.49.49-pm-1264x352.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Start from a sample</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPNYUWiTE" id="image3-166">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-8.41.34-am-1256x516.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Select the Todo List with SPFx sample</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPNZWBXPp" id="image3-168">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-8.41.56-am-536x476.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Download the sample code from Github</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPO0iRe0f" id="image3-169">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-8.42.39-am-1380x416.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Notice that the sample code is a work in progress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPO0HcFCQ" id="image3-16a">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-8.47.47-am-1836x1138.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Navigate to {tenant).sharepoint.com<br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPO12oj2v" id="image3-16b">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-8.48.19-am-320x402.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Create a blank list</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPO1G3NVZ" id="image3-16d">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-8.49.22-am-1194x810.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Name list "To Do List"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPO21QXpp" id="image3-16e">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-8.50.02-am-1628x584.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPO1mpEK8" id="image3-16c">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-8.50.55-am-838x648.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add description column</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPO2G3zXp" id="image3-16g">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-8.51.09-am-1836x704.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPO33WYrd" id="image3-16h">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-8.51.56-am-822x638.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add isCompleted column</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPO2lLQ2F" id="image3-16f">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-8.52.17-am-1766x1156.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">To Do List</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPO3I16Qf" id="image3-16j">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-8.52.53-am-768x436.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPO432gJL" id="image3-16k">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-8.53.21-am-422x126.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Update list settings</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPO4pkH3x" id="image3-16l">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-8.53.38-am-730x216.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Users can only see list items created by them</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPO3mMTHE" id="image3-16i">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-8.55.11-am-556x106.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Open Visual Studio Code command palette</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPO4HvN9G" id="image3-16m">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-8.55.57-am-1232x154.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPO5nzSBf" id="image3-16o">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-8.56.08-am-536x706.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Run "Teams: Deploy to the Cloud" command</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPO5MS8LI" id="image3-16p">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-8.57.31-am-934x140.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Building SharePoint package</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPO53nQ2J" id="image3-16n">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-8.58.56-am-938x372.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">todo-list-sp-fx.sppkg file created</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPO6tNM1p" id="image3-16r">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-8.59.30-am-1836x770.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Upload&nbsp;todo-list-sp-fx.sppkg file to SharePoint App Catalog</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPO6UGtVS" id="image3-16s">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.00.31-am-1836x1046.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Upload</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPO7d28K5" id="image3-16t">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.00.50-am-1836x1012.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add a document</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPO69RDRD" id="image3-16q">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.01.35-am-1306x864.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Ensure that "Make this solution available to all sites" is checked and Deploy</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPO8V19Tc" id="image3-16y">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.05.30-am-1836x975.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Select the app and click the "Sync to Teams" button in the SharePoint ribbon</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPO9jh6G6" id="image3-16z">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.05.43-am-516x128.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">App will be added to Teams</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPO8y5DSZ" id="image3-16x">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.06.48-am-1050x660.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Navigate to Teams Admin pages</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syPNZvuOHc" id="image3-167">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.08.49-am-562x220.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Select "Manage apps" (using a supported browser)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ51r8zhB" id="image3-171">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.09.21-am-1836x408.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The TodoList SPFX app has been published.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ51QjJE1" id="image3-172">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.10.24-am-1836x836.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Open Teams and select the Apps item from left hand menu</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ52aVYao" id="image3-173">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.10.37-am-1456x688.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">esp8266</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ52CjOEO" id="image3-174">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.12.20-am-1226x648.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">App is a "Personal app" (and not a Tabs app)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ53h0phS" id="image3-176">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.12.39-am-1836x1088.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Use Open button to open Personal App</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ53ElHZd" id="image3-177">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.12.53-am-1200x272.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add a To Do List item</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ54fJMgQ" id="image3-179">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.13.48-am-1638x710.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Item is added to SharePoint list</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ54xtJFS" id="image3-17a">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.13.59-am-1268x352.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Update "isCompleted" status</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ54XYe3s" id="image3-17b">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.14.08-am-1610x722.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The isCompleted status updated in SharePoint List item</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ55gWcDg" id="image3-17c">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.17.09-am-1300x768.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Review TodoListWebPart.manifest.jsson</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ55vSL0I" id="image3-17d">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.17.42-am-1118x214.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add "TeamsTab" option</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ52WlvNn" id="image3-175">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.18.27-am-1242x168.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Use Teams: Deploy to the Cloud (to rebuild the sppkg file)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ510DdC9" id="image3-170">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.18.34-am-550x710.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Build the SharePoint Package</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ61HxYub" id="image3-17k">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.23.33-am-966x412.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Delete the SPFx App from Teams</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ61ZsX49" id="image3-17l">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.23.43-am-1274x522.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Delete "TodoList" SPFx app</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ62kTArX" id="image3-17m">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.24.28-am-1690x488.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Notice that the SPFx app is gone</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ62CParT" id="image3-17n">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.24.52-am-1338x746.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Delete the app from SharePoint App Catalog</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ62WTi3d" id="image3-17o">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.25.15-am-1644x990.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">After deleting the App from Teams and the SharePoint App Catalog... upload the new version</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ63fZyZy" id="image3-17p">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.25.24-am-1764x986.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Again "Add a document"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ63W3UvF" id="image3-17q">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.25.39-am-1486x876.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Again select the "Make this solution available to all sites" checkbox</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ60JS8Jz" id="image3-17h">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.25.53-am-1302x880.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Again click the "Sync to Teams" button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ5ZxuWBE" id="image3-17e">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.26.31-am-1778x788.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">New version of SPFx app is now published to Teams.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ6Ottf71" id="image3-17s">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.27.16-am-1836x765.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">New version of SPFx app is available in the Teams client app</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ6ORcOAO" id="image3-17t">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.27.26-am-1498x752.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">New version of SPFx app can be used as a "Personal app" or "Used in a tab"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ6PsPWlD" id="image3-17v">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.28.18-am-1298x760.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add as a tab in a Teams Channel</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ6PKIxCQ" id="image3-17w">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.28.34-am-1276x1244.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Looks good</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ6Q6iP4Z" id="image3-17x">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.28.57-am-564x566.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Error. The app assumes that a "To Do List" has been added to the Teams SharePoint Site.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ7azEvYy" id="image3-17y">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.30.00-am-1254x640.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Navigate to the Team SharePoint Site and create a new list.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ7bbT2Ai" id="image3-180">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.30.08-am-324x406.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Create a blank list</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ7bu1HJD" id="image3-181">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.31.31-am-1214x820.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Name the list "To Do List"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ7bJ5GXN" id="image3-182">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.31.59-am-1582x546.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add a "Single line of text" column</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ7bYS3yo" id="image3-183">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.32.10-am-782x658.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Name the column "description"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ7cgQgjW" id="image3-184">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.32.32-am-1558x592.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add a "Yes/No" column</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ7cwdqHl" id="image3-185">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.32.40-am-786x630.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Name the column "isComplete"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ7aSSL2R" id="image3-17z">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.34.11-am-1216x694.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Try adding the app as a tab again</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ6NXK8KL" id="image3-17r">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.34.24-am-1308x780.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Select the Team and Channel</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ7RSuxsB" id="image3-188">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.34.37-am-1234x1230.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Looks good</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ7SfcRiY" id="image3-189">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.34.51-am-1836x1073.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The new tab has been added</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ7SzidpO" id="image3-18a">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.35.11-am-822x376.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add a To Do List item</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ7SQQ8kj" id="image3-18b">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.35.21-am-820x422.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">To Do List item added</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ7T5q2MF" id="image3-18c">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.35.33-am-1836x962.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">New SharePoint List Item has been created</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-syQ7THKLHJ" id="image3-18e">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-05-30-at-9.37.04-am-1836x1056.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Code in SharePointListManager.ts communicates with SharePoint using well known REST methods</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features13 cid-syPMgAm9JD" id="features14-164">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://docs.microsoft.com/en-us/microsoftteams/platform/get-started/prerequisites?tabs=vscode" class="text-primary" target="_blank">Teams Toolkit</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/ytplayer/index.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>

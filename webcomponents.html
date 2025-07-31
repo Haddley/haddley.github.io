@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Web Components</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=MUmLKs"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=MUmLKs" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-sX3cA4dV6V" once="menu" id="menu3-36t">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-sX3cA4Nn8L" id="content4-36u">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Web Components</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">A set of web technologies that allow users to create HTML elements.&nbsp;</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sX3cA4YVWO" id="image3-36v">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/web-components-logo.svg" alt="Phaser">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a href="https://github.com/webcomponents/webcomponents.org/blob/master/LICENSE" class="text-primary" target="_blank">This file is licensed under the Apache License 2.0.</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sX3cA57vM2" id="content5-36w">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">History</h4>
+                <p class="mbr-text mbr-fonts-style display-7"><script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser-arcade-physics.min.js"></script>In 1998 Microsoft Internet Explorer 5.5 added support for HTML Components. <br><br>In 2001 Mozilla introduced XBL.<br><br>In 2007 Mozilla released XBL 2.<br><br>In 2016 Chrome and Opera added support for Web Components.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sX5D4S5yoL" id="content5-38g">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">howto-tooltip</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The&nbsp;<a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby" class="text-primary" target="_blank">aria-describedby</a>&nbsp;attribute lists the ids of the elements that describe the object. It is used to establish a relationship between widgets or groups and the text that describes them.<br><br>In the google chrome labs github repository there is a Web Component that creates a&nbsp;<a href="https://googlechromelabs.github.io/howto-components/howto-tooltip/#demo" class="text-primary" target="_blank">howto-tooltip&nbsp;element</a>.<br><br>The howto-tooltip element only displays the "described by" content when a user is focused on the described element.<br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sX5DIfPhdI" id="content5-38i">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">demo</h4>
+
+<p class="mbr-text mbr-fonts-style display-7">Move to and away from the text box below. <br><br>If Web Components are supported by your browser the tooltip should appear and disappear.
+                    
+<br><br>============<br><br>
+                    
+<label for="cheese">Favourite type of cheese: </label>
+                    
+<input id="cheese" aria-describedby="tp2">
+                    
+<howto-tooltip id="tp2">
+    Help I am trapped inside a tooltip message
+</howto-tooltip>
+                    
+<br><br>============<br><br>
+                
+</p>  
+                
+                </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sX5EETyZOP" id="content7-38j">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>html embedded above</strong></h5>
+
+<pre class="language-clike"><code><!--         
+<label for="cheese">Favourite type of cheese: </label>
+<input id="cheese" aria-describedby="tp2"/>
+<howto-tooltip id="tp2">Help I am trapped inside a tooltip message</howto-tooltip>
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sX5Dq2V2li" id="content5-38h">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                
+                <p class="mbr-text mbr-fonts-style display-7">The howto-tooltip Web Component is created using a JavaScript class and defined with a window.customElements.define() call.<br><br>The JavaScript class has a constructor, a _show method, a _hide method and an implementation for the connectedCallback and disconnectedCallback lifecycle methods.<br><br>The constructor uses bind to ensure that the _show and _hide methods can show or hide "this" howto-tooltip element.<br><br>The lifecycle methods add or remove event listeners to the described elements.<br><br>Notice that if the HTML is accessed by a Web Browser that does not support Web Components (and no "polyfill" has been included) the user is still able to read the tooltip text.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sX3MpinGjN" id="content7-377">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>howtoTooltip.js</strong></h5>
+
+<pre class="language-clike"><code><!--         
+class HowtoTooltip extends HTMLElement {
+
+    constructor() {
+        super();
+
+        this._show = this._show.bind(this);
+        this._hide = this._hide.bind(this);
+    }
+
+    connectedCallback() {
+        this._hide();
+
+        this._target = document.querySelector('[aria-describedby=' + this.id + ']');
+        if (!this._target)
+            return;
+
+        this._target.addEventListener('focus', this._show);
+        this._target.addEventListener('blur', this._hide);
+        this._target.addEventListener('mouseenter', this._show);
+        this._target.addEventListener('mouseleave', this._hide);
+    }
+
+    disconnectedCallback() {
+        if (!this._target)
+            return;
+
+        this._target.removeEventListener('focus', this._show);
+        this._target.removeEventListener('blur', this._hide);
+        this._target.removeEventListener('mouseenter', this._show);
+        this._target.removeEventListener('mouseleave', this._hide);
+        this._target = null;
+    }
+
+    _show() {
+        this.hidden = false;
+    }
+
+    _hide() {
+        this.hidden = true;
+    }
+}
+
+
+window.customElements.define('howto-tooltip', HowtoTooltip)
+
+customElements.whenDefined('howto-tooltip').then(() => {
+    console.log('howto-tooltip ready!');
+});
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sX40Y7EuNQ" id="content5-379">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">template</h4>
+                <p class="mbr-text mbr-fonts-style display-7">An HTML template is a section of HTML that can be stamped out multiple times on multiple HTML pages.<br><br>Slots are used to identify places in the HTML template where other content can be grafted.<br><br>Consider this template from the <a href="https://css-tricks.com/web-components-are-easier-than-you-think/" class="text-primary" target="_blank">Web Components Are Easier Than You Think</a> article<br><br>&lt;body&gt;<br>    &lt;template id="my-paragraph"&gt;<br>        &lt;p&gt;My paragraph&lt;/p&gt;<br>    &lt;/template&gt;<br>&lt;/body&gt;<br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sX4cKhToAa" id="image3-37a">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-02-10-at-1.16.05-pm-890x428.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">my-paragraph template</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sX4d2pislr" id="content5-37b">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Using a template with JavaScript</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Adding a template element to a web page does not result in anything being displayed (see above).<br><br>We can use JavaScript to apply the template.<br><br>&lt;script&gt;<br>        let template = document.getElementById('my-paragraph');<br>        let templateContent = template.content;<br>        document.body.appendChild(templateContent.cloneNode(true))<br>document.body.appendChild(templateContent.cloneNode(true))<br>document.body.appendChild(templateContent.cloneNode(true))<br>    &lt;/script&gt;<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sX4e2GPhZU" id="image3-37c">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-02-10-at-1.21.13-pm-890x429.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Using an HTML template</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sX4ekkjM4o" id="content5-37d">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Using a template in a Web Component</h4>
+                <p class="mbr-text mbr-fonts-style display-7">An easier way to apply a template is to create a&nbsp;Web Component.<br><br>&lt;script&gt;<br><br>        customElements.define("my-element",<br>            class extends HTMLElement {<br>                constructor() {<br>                    super();<br>                    let template = document.getElementById("my-paragraph");<br>                    let templatecontent = template.content;<br>                    const shadowRoot = this.attachShadow({ mode: "open" }).appendChild(templatecontent.cloneNode(true));<br>                }<br>            });<br><br>    &lt;/script&gt;<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sX4gssoMDb" id="content7-37e">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>template.html</strong></h5>
+
+<pre class="language-clike"><code><!--         
+<body>
+
+    <template id="my-paragraph">
+        <p>My paragraph</p>
+    </template>
+
+
+    <script>
+
+        customElements.define("my-element",
+            class extends HTMLElement {
+                constructor() {
+                    super();
+                    let template = document.getElementById("my-paragraph");
+                    let templatecontent = template.content;
+                    const shadowRoot = this.attachShadow({ mode: "open" }).appendChild(templatecontent.cloneNode(true));
+                }
+            });
+
+    </script>
+
+    <my-element></my-element>
+    <my-element></my-element>
+    <my-element></my-element>
+
+</body>
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sX4ip2ep1H" id="content5-37h">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">JavaScript only</h4>
+                <p class="mbr-text mbr-fonts-style display-7">...and this can be re-written without using the &lt;template&gt; tag.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sX4hVHiOCc" id="content7-37g">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>template.html</strong></h5>
+
+<pre class="language-clike"><code><!--         
+<body>
+
+    <script>
+
+        const template = document.createElement('template');
+        template.innerHTML = `
+            <p>My paragraph</p>
+        `
+
+        customElements.define("my-element",
+            class extends HTMLElement {
+                constructor() {
+                    super();
+                    let templatecontent = template.content;
+                    const shadowRoot = this.attachShadow({ mode: "open" }).appendChild(templatecontent.cloneNode(true));
+                }
+            });
+
+    </script>
+
+    <my-element></my-element>
+    <my-element></my-element>
+    <my-element></my-element>
+
+</body>
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sX4iRAyuJW" id="content5-37i">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Slots</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Slots are a way to customize a template.<br><br>If a developer wants to add more than one slot to a single template they need to provide ids.<br><br>Consider these examples:<br><br><template><br>  <p>Hello <slot>World</slot>!</p><br></template>&lt;template&gt;<br>  &lt;p&gt;Hello &lt;slot&gt;World&lt;/slot&gt;!&lt;/p&gt;<br>&lt;/template&gt;<br><br>and<br><br>&lt;template&gt;<br>  &lt;p&gt;&lt;slot name="greeting"&gt;Hello&lt;/slot&gt; &lt;slot name="name"&gt;World&lt;/slot&gt;!&lt;/p&gt;<br>&lt;/template&gt;<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sX53f650I5" id="content5-37j">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Web Components with slots</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The example below shows how a Web Component can be created with support for slots.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sX53qH6ujP" id="content7-37k">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>template.html</strong></h5>
+
+<pre class="language-clike"><code><!--         
+<body>
+
+    <script>
+
+        const template = document.createElement('template');
+        template.innerHTML = `
+            <p><slot name="greeting">Hello</slot> <slot name="name">World</slot>!</p>
+        `
+
+        customElements.define("my-element",
+            class extends HTMLElement {
+                constructor() {
+                    super();
+                    let templatecontent = template.content;
+                    const shadowRoot = this.attachShadow({ mode: "open" }).appendChild(templatecontent.cloneNode(true));
+                }
+            });
+
+    </script>
+
+    <my-element></my-element>
+    <my-element><span slot="name">Neil</span></my-element>
+    <my-element><span slot="name">Neil</span><span slot="greeting">Welcome</span></my-element>
+
+</body>
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sX54pNEgJk" id="image3-37l">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-02-10-at-4.49.43-pm-828x372.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Web Component with slots</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sX54J6y3df" id="content5-37m">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Properties</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Values can also be passed to Web Components using HTML element properties</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sX57V1GZSK" id="content7-37n">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>template.html</strong></h5>
+
+<pre class="language-clike"><code><!--         
+<body>
+
+    <script>
+
+        const template = document.createElement('template');
+        template.innerHTML = `
+            <p><slot>Hello</slot> <span id="name">World</span>!</p>
+        `
+
+        customElements.define("my-element",
+            class extends HTMLElement {
+                constructor() {
+                    super();
+                    let templatecontent = template.content;
+                    const shadowRoot = this.attachShadow({ mode: "open" }).appendChild(templatecontent.cloneNode(true));
+                }
+                static get observedAttributes() {
+                    return ['name'];
+                }
+
+                attributeChangedCallback(name, oldValue, newValue) {
+                    if (name == 'name') {
+                        const span = this.shadowRoot.querySelector('#name')
+                        if (newValue) {
+                            span.innerText = newValue
+                            return
+                        } 
+                        span.innerText = "World"
+                    }
+                }
+            });
+
+
+    </script>
+
+    <my-element></my-element>
+    <my-element name="Neil"></my-element>
+    <my-element name="Neil"><span slot>Welcome</span></my-element>
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sX5874BlRp" id="content5-37p">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Events</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Web Component events can be bubbled up to parent elements.<br><br>Web Components can dispatch custom events.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-sX584VK4Gx" id="content7-37o">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>template.html</strong></h5>
+
+<pre class="language-clike"><code><!--         
+<body>
+
+    <script>
+
+        const template = document.createElement('template');
+        template.innerHTML = `
+            <p><slot>Hello</slot> <span id="name">World</span>!</p>
+        `
+
+        customElements.define("my-element",
+            class extends HTMLElement {
+                constructor() {
+                    super();
+                    let templatecontent = template.content;
+                    const shadowRoot = this.attachShadow({ mode: "open" }).appendChild(templatecontent.cloneNode(true));
+                }
+
+                static get observedAttributes() {
+                    return ['name'];
+                }
+
+                attributeChangedCallback(name, oldValue, newValue) {
+                    if (name == 'name') {
+                        const span = this.shadowRoot.querySelector('#name')
+                        if (newValue) {
+                            span.innerText = newValue
+                            return
+                        }
+                        span.innerText = "World"
+                    }
+                }
+
+                connectedCallback() {
+                    this._interval = setInterval( () => {
+                        console.log('.')
+                        this._tick()
+                    }, 50000);
+                }
+
+                disconnectedCallback() {
+                    clearInterval(this._interval);
+                }
+
+                _tick() {
+                    const tickEvent = new CustomEvent("tick", {
+                        bubbles: true,
+                        cancelable: false,
+                        composed: true
+                    })
+                    this.dispatchEvent(tickEvent);
+                }
+
+            })
+
+    </script>
+
+    <my-element id='first'></my-element>
+    <my-element id='second' name="Neil"></my-element>
+    <my-element name="Neil"><span slot>Welcome</span></my-element>
+
+    <script>
+
+        document.querySelector('#first').addEventListener("tick", (e) => {
+            console.log('tick');
+            console.log(e);
+        });
+
+        document.querySelector('#first').addEventListener("click", (e) => {
+            console.log('click');
+            console.log(e);
+        });
+
+        document.querySelector('#second').addEventListener("tick", function (e) {
+            console.log('tock');
+            console.log(e);
+        });
+
+    </script>
+
+</body>
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sX5ruPDLFr" id="image3-37q">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-02-10-at-6.23.41-pm-1260x648.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The click event is bubbled up. The custom tick events are dispatched.&nbsp;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sX5ZVwJFt8" id="content5-38k">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Are Web Components the future?</h4>
+                <p class="mbr-text mbr-fonts-style display-7">In her <a href="https://blog.logrocket.com/what-happened-to-web-components/" class="text-primary" target="_blank">article</a> Anna Monus explains:<br><br><em>These days, web components are a divisive topic. They were once expected to revolutionize frontend development, but they’re still struggling to achieve industrywide adoption. Some developers say web components have already died, while others think they’re the future of web development.</em><br><br>...<br><br><em>UI libraries, such as React, Vue, and Angular, serve the same purpose as web components: they make component-based frontend development possible. Even though they’re not native to web browsers (you have to add the libraries separately while web components use web APIs built into the browser, such as DOM and CustomElementRegistry), they have a huge ecosystem, good documentation, and many developer-friendly features.</em><br><br><a href="https://blog.logrocket.com/what-happened-to-web-components/" class="text-primary" target="_blank">https://blog.logrocket.com/what-happened-to-web-components/</a><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t3v5Euo1xU" id="content5-3al">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">React integration</h4>
+                <p class="mbr-text mbr-fonts-style display-7">In his <a href="https://css-tricks.com/3-approaches-to-integrate-react-with-custom-elements/" class="text-primary" target="_blank">article</a> Caleb Williams explains:<br><br><em>As of the time of this writing, React recently released version 17. The React team had initially planned to release improvements for compatibility with custom elements; unfortunately, those plans seem to have been pushed back to version 18.<br><br>Until then it will take a little extra work to use all the features custom elements offer with React. Hopefully, the React team will continue to improve support to bridge the gap between React and the web platform.</em><br><br><a href="https://css-tricks.com/3-approaches-to-integrate-react-with-custom-elements/" class="text-primary" target="_blank">https://css-tricks.com/3-approaches-to-integrate-react-with-custom-elements/</a><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features13 cid-sX3cA6vhLI" id="features14-373">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont socicon-youtube socicon"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><a href="https://www.youtube.com/watch?v=PCWaFLy3VUo" class="text-primary">Web Components Crash Course</a></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-3 col-12 col-md-4 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><a href="https://blog.logrocket.com/what-happened-to-web-components/" class="text-primary">What happened to web components?</a><strong></strong></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-3 col-12 col-md-4 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://github.com/webcomponents/webcomponents.org" class="text-primary">WebComponents.org</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-3 col-12 col-md-4 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://css-tricks.com/web-components-are-easier-than-you-think/" class="text-primary" target="_blank">Web Components Are Easier Than You Think</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/ytplayer/index.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>

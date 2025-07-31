@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Java Spring Boot (Part 2)</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=HyCcIh"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=HyCcIh" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-tTOfKZyQ2T" once="menu" id="menu3-7e9">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section data-bs-version="5.1" class="content4 cid-tTOfL06Ysn" id="content4-7ea">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Java Spring Boot (Part 2)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Deploying from GitHub to Azure</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOfL0jfJY" id="image3-7eb">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/spring-framework-logo-2018.svg" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a href="https://commons.wikimedia.org/w/index.php?curid=74960904" class="text-primary" target="_blank">Spring Framework logo</a> by Pivotal Software is licensed under Apache License 2.0<br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tTOfL0qOr9" id="content5-7ec">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Deploying from GitHub to Azure</h4>
+                <p class="mbr-text mbr-fonts-style display-7">I used <a href="https://start.spring.io" class="text-primary" target="_blank">https://start.spring.io</a>, Visual Studio Code, GitHub and&nbsp;Microsoft Azure to generate an Spring application, to run the Spring application on my laptop and to deploy the Spring application to Microsoft Azure</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOi1LWvDT" id="image3-7f2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-9.55.59-am-1895x1185.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created a new GitHub repository (haddley-java)&nbsp;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOi1SwXCT" id="image3-7f4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-9.56.35-am-1898x717.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Open with GitHub Desktop menu item</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOi1V7vW9" id="image3-7f5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-9.57.18-am-1604x710.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I used the Open in Visual Studio Code (Insiders) button to open the repository in Visual Studio Code&nbsp;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOi1XyX10" id="image3-7f6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-9.57.51-am-1605x790.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I needed some sample code</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOi205Z2o" id="image3-7f7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-9.59.05-am-1899x896.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a href="https://spring.io/quickstart" class="text-primary" target="_blank">https://spring.io/quickstart</a> explains how to create a sample project</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOi22kpAc" id="image3-7f8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-10.02.47-am-1898x693.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I logged into the Azure Portal to see what versions of Java were supported</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOi24XI34" id="image3-7f9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-10.03.01-am-1897x508.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Web App Create link</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOi28vgNd" id="image3-7fa">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-10.03.26-am-1898x504.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The latest version of Java supported was 17</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOi2bWtgm" id="image3-7fb">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-10.37.23-am-1897x762.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I navigated to <a href="https://start.spring.io/" class="text-primary" target="_blank">https://start.spring.io/</a> and updated Group to "com.haddley" and added the Spring Web dependency</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOi2VUrpC" id="image3-7fc">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-10.38.08-am-1895x891.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the GENERATE button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOi30JyP3" id="image3-7fe">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-10.42.36-am-1198x430.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I copied the generated file to my local copy of the haddley-java repository</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOi33vWFH" id="image3-7ff">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-10.44.21-am-1609x793.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the code to include support for the /hello path and ran using ./mvnw spring-boot:run</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOi35XT7d" id="image3-7fg">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-10.44.49-am-1605x790.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Tomcat initialized with port 8080</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOi38AC2m" id="image3-7fh">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-10.45.31-am-1895x154.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I navigated to http://localhost:8080/hello</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOi3aTm5h" id="image3-7fi">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-10.46.15-am-1604x709.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I checked my changes</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOi3dpRu4" id="image3-7fj">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-10.46.28-am-1605x710.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked Push origin to upload my changes to GitHub</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOi3fRybw" id="image3-7fk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-10.46.43-am-1603x711.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The changes were uploaded</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOi3ilOPZ" id="image3-7fl">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-10.48.44-am-1895x892.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added an Azure Resource Group (haddley-java-rg)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOi3l8tvM" id="image3-7fm">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-10.49.32-am-1897x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the Java 17 runtime</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOi3oOgLW" id="image3-7fn">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-10.49.59-am-1895x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I changed the Pricing plan to "Free" and clicked the Next: Deployment button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOi3s0Lz6" id="image3-7fo">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-10.51.14-am-1897x462.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The Continuous deployment option was disabled so I clicked the Previous button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOi3uJ1FA" id="image3-7fp">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-10.51.33-am-1896x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the Basic B1 pricing plan</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOk2w78QF" id="image3-7ft">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-10.51.47-am-1894x891.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I enabled Continuous deployment and clicked the Authorize button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOk2Ahd6t" id="image3-7fu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-10.52.06-am-1278x719.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Authorize AzureAppService button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOk2DAZhK" id="image3-7fv">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-10.52.20-am-1281x722.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I entered an Authorization code</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOk2H0xpf" id="image3-7fw">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-10.53.10-am-1898x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected organization Haddley. I selected the <a href="https://github.com/Haddley/haddley-java" class="text-primary" target="_blank">haddley-java repository</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOk2K0PWi" id="image3-7fx">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-10.53.31-am-1896x892.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the main branch</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOk2MIQIU" id="image3-7fy">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-10.53.56-am-1895x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I reviewed the GitHub Actions configuration</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOk2Pco0j" id="image3-7fz">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-10.55.13-am-1896x891.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Create button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOk2RNDA3" id="image3-7g0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-10.55.45-am-1896x891.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I waited</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOk2Ugi6r" id="image3-7g1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-10.59.45-am-1896x894.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">When deployment was complete I clicked the Go to resource button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOk2Wrn0n" id="image3-7g2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-11.00.03-am-1896x892.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I reviewed the Web App overview and clicked on the <a href="https://haddley-java.azurewebsites.net" class="text-primary" target="_blank">https://haddley-java.azurewebsites.net</a> link</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOk2YFJL1" id="image3-7g3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-11.00.34-am-1896x291.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I reviewed the Azure deployed application</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOk31bBRI" id="image3-7g4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-11.01.10-am-1894x500.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I returned to the GitHub repository and reviewed the GitHub Actions workflow history</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOk35wqGS" id="image3-7g5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-11.01.36-am-1896x892.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I reviewed the workflow summary</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOk39kt59" id="image3-7g6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-11.03.13-am-1897x1208.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I reviewed the workflow file</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOk3bMQTa" id="image3-7g7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-11.04.41-am-1602x791.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the source code adding a home page</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOk3eEQu6" id="image3-7g8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-11.05.06-am-1604x789.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I ran the updated code locally</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOk3hzxv7" id="image3-7g9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-11.05.25-am-1895x173.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I accessed the home page at http://localhost:8080</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOk3k4VXx" id="image3-7ga">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-11.06.06-am-1604x708.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I commited the update (to the main branch)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOk3msw1y" id="image3-7gb">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-11.06.29-am-1609x709.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I pulled changes from the GitHub repository</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOk3pcUta" id="image3-7gc">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-11.06.42-am-1607x709.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I pushed my change to GitHub</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOk3rtFqT" id="image3-7gd">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-11.06.53-am-1602x708.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">There were no conflicts/issues</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOk3u0dRm" id="image3-7ge">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-11.07.15-am-1899x595.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I returned to GitHub and saw that the Merge branch workflow had started</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOk3x8irg" id="image3-7gf">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-11.08.40-am-1898x1208.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The Merge branch workflow completed with no errors</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tTOk3zEGyH" id="image3-7gg">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2023-10-26-at-11.09.30-am-1896x165.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I navigated to&nbsp;<a href="https://haddley-java.azurewebsites.net" class="text-primary" target="_blank">https://haddley-java.azurewebsites.net</a> to view the new home page</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="features13 cid-tTOfL2PmdI" id="features14-7ex">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont socicon-youtube socicon"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://www.youtube.com/watch?v=CPsI1KnVSOM" class="text-primary" target="_blank">How to deploy your Spring Boot app to Azure App Service with GitHub Actions</a></strong><strong><a href="https://www.geeksforgeeks.org/black-and-white-image-colorization-with-opencv-and-deep-learning" class="text-primary" target="_blank"><br></a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/ytplayer/index.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>

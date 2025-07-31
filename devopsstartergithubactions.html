@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>DevOps Starter GitHub actions</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=JfQrz0"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=JfQrz0" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-svEmt5kSwV" once="menu" id="menu3-ww">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-svEmt5X1NY" id="content4-wx">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>DevOps Starter GitHub actions</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Everything you need for developing, deploying, and monitoring your application.</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-svEmt68E9k" id="image3-wy">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/svgexport-22.svg" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a rel="nofollow" href="https://commons.wikimedia.org/wiki/File:Microsoft_Azure_Logo.svg">Microsoft DevOps Logo</a> by <a href="https://en.wikipedia.org/wiki/en:Microsoft">Microsoft Corporation</a> is <a href="“https://commons.wikimedia.org/w/index.php?curid=43353450">Public Domain</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-svEmt6juKx" id="content5-wz">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5"><strong>DevOps Starter GitHub actions</strong></h4>
+                <p class="mbr-text mbr-fonts-style display-7">DevOps Starter makes it easy to get started on Azure using either GitHub actions or Azure DevOps<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-svEGhBq2XG" id="image3-yi">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-26-at-3.22.36-pm-1836x1028.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Select "DevOps Starter" in Azure Portal</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-svEGi9097l" id="image3-yj">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-26-at-3.23.43-pm-1836x1035.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Create a Node app</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-svEGiyirhi" id="image3-yk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-26-at-3.23.55-pm-1836x1033.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Select Express</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-svEGiZLG92" id="image3-yl">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-26-at-3.24.23-pm-1836x1035.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Select Web App for Containers or Windows Web App (free $)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-svEGjZEiW1" id="image3-yn">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-26-at-3.24.40-pm-1836x1032.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Enter GitHub credentials</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-svEGksVhHk" id="image3-yo">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-26-at-3.25.26-pm-1836x1033.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Select pricing tier "F1 Free"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-svEGkV1o7i" id="image3-yp">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-26-at-3.26.05-pm-1836x1033.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Deployment to Azure in progress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-svEGlmHTVL" id="image3-yq">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-26-at-3.28.02-pm-1836x1030.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">GitHub Actions workflow runs Unit Tests</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-svEGjoTrWN" id="image3-ym">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-26-at-3.28.44-pm-1836x1031.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">If Unit Tests pass deploy Node app to Azure</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-svEGlTsEVx" id="image3-yr">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-26-at-3.31.15-pm-1836x1030.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Once deployed to Azure run Functional Tests (Selenium)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-svEH94l9qp" id="image3-ys">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-26-at-3.34.39-pm-1836x1036.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">GitHub Actions workflow complete</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-svEH9FyAEs" id="image3-yt">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-26-at-3.35.19-pm-1836x1033.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Summary of Azure resources</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-svEHAIfYM8" id="image3-yw">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-26-at-3.35.37-pm-1836x1031.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Navigate to production URL</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-svEHTRQlgs" id="content7-z0">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>devops-starter-workflow.yaml</strong></h5>
+
+<pre class="language-yaml"><code><!--         
+name: Build and Deploy node Express app to azure
+on:
+  push:
+    branches:
+      - master
+
+env:
+  AZURE_WEBAPP_NAME: "haddley-factorial-api"    # set this to your application's name
+  AZURE_WEBAPP_PACKAGE_PATH: "Application"      # set this to the path to your web app project, defaults to the repository root
+  NODE_VERSION: '8.11.1'                        # set this to the node version to use
+  RESOURCEGROUPNAME: "haddley-factorial-api-rg"
+  LOCATION: "South Central US"
+  HOSTINGPLANNAME: "haddley-factorial-api-plan"
+  APPINSIGHTLOCATION: "South Central US"
+  SKU: "F1 Free"
+
+jobs:
+  build:
+    name: Build and Run tests
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Use Node.js ${{ env.NODE_VERSION }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+
+    - name: npm install and build
+      continue-on-error: false
+      run: |
+        cd Application
+        npm install
+        npm run build --if-present
+
+    - name: Run unit tests
+      continue-on-error: false
+      run: |
+        cd Tests
+        npm install
+        gulp unittest
+
+    - name: Creating artifact directories
+      run: |
+        mkdir buildartifacts
+        mkdir deploymenttemplates
+
+    # Archive build artifact
+    - name: Archive Application
+      run: |
+        zip -qq -r ./buildartifacts/Application.zip ./Application
+
+    # Uploading application to build artifact
+    - name: Upload Application to Build Artifact
+      continue-on-error: false
+      uses: actions/upload-artifact@v2
+      with:
+        name: buildartifacts
+        path: buildartifacts
+
+    # Archive Arm templates
+    - name: Archive ArmTemplates
+      uses: montudor/action-zip@v0.1.0
+      with:
+        args: zip -qq -r ./deploymenttemplates/armtemplates.zip ./armTemplates
+
+    # Uploading Arm Templates to artifacts
+    - name: Upload Arm templates to Artifact
+      continue-on-error: false
+      uses: actions/upload-artifact@v2
+      with:
+        name: deploymenttemplates
+        path: deploymenttemplates
+
+  Deploy:
+    name: Deploy to azure web app
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    # Downloading build artifact
+    - name: Download a Build Artifact
+      uses: actions/download-artifact@v2
+      continue-on-error: false
+      with:
+        name: buildartifacts
+        path: buildartifacts
+
+    # Uzipping build artifacts
+    - name: unzipping build artifact
+      run: |
+        unzip -qq ./buildartifacts/Application.zip -d .
+
+  # Downloading Arm Templates
+    - name: Download an Arm template
+      uses: actions/download-artifact@v2
+      continue-on-error: false
+      with:
+        name: deploymenttemplates
+        path: deploymenttemplates
+
+    # Uzipping Arm template directory
+    - name: unzipping arm artifact
+      run: |
+        unzip -qq ./deploymenttemplates/armtemplates.zip -d .
+
+    # Login to azure
+    - name: Login to Azure
+      uses: azure/login@v1
+      continue-on-error: false
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    # Deploy Arm template
+    - name: Deploy ARM Template
+      uses: azure/CLI@v1
+      continue-on-error: false
+      with:
+        inlineScript: |
+          az group create --name "${{ env.RESOURCEGROUPNAME }}" --location "${{ env.LOCATION }}"
+          az deployment group create --resource-group "${{ env.RESOURCEGROUPNAME }}" --template-file ./armTemplates/windows-webapp-template.json --parameters webAppName="${{ env.AZURE_WEBAPP_NAME }}" hostingPlanName="${{ env.HOSTINGPLANNAME }}" appInsightsLocation="${{ env.APPINSIGHTLOCATION }}" sku="${{ env.SKU }}"
+
+    # Deploy web app on azure
+    - name: 'Deploy to Azure WebApp'
+      uses: azure/webapps-deploy@v2
+      with: 
+        app-name: ${{ env.AZURE_WEBAPP_NAME }}
+        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+
+  # Job to run functional tests
+  FunctionalTests:
+    name: Run Functional tests
+    runs-on: windows-latest
+    needs: Deploy
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Use Node.js ${{ env.NODE_VERSION }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+
+    # Run functional tests
+    - name: Run Functional Tests
+      continue-on-error: false
+      run: |
+        cd Application
+        npm install
+        cd ../Tests
+        npm install
+        gulp functionaltest --webAppUrl https://${{ env.AZURE_WEBAPP_NAME }}.azurewebsites.net/
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-svEHaqKdZG" id="image3-yu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-26-at-3.39.39-pm-1836x1031.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">To add Factorial API... Open with GitHub Desktop</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-svEHBcTLm1" id="image3-yx">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-26-at-3.39.56-pm-1012x630.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Clone repository</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-svEHb035aI" id="image3-yv">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-26-at-3.40.46-pm-1836x1254.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Open in Visual Studio Code</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-svEN1VX5fP" id="content7-z8">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>routes/index.js</strong></h5>
+
+<pre class="language-clike"><code><!--         
+'use strict';
+var express = require('express');
+var router = express.Router();
+// var factorial = require('haddley-factorial-cc');
+var factorial = require('haddley-factorial-js');
+
+/* GET home page. */
+router.get('/', function (req, res) {
+    res.render('index', { title: 'Express' });
+});
+
+router.get('/factorial/:n', (request, response) => {
+    try {
+        const n = Number(request.params.n);
+        const result = factorial.factorial_it(n);
+        response.json(result);
+    }
+    catch (err) {
+        response.status(500).send(err);
+    }
+});
+
+module.exports = router;
+
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-svEN3DBLhR" id="content7-z9">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>unittests/sampleUnitTests.js</strong></h5>
+
+<pre class="language-clike"><code><!--         
+var assert = require('assert');
+var app = require('../../Application/app');
+var http = require('http');
+ 
+describe('sampleUnitTests', function () {
+    before(function () {
+    });
+  
+    after(function () {
+        app.close();
+    });
+
+    it('Should return 200', function (done) {
+        http.get('http://localhost:3000', function (res) {
+            assert.equal(200, res.statusCode, 'Result code should be 200.');
+            done();
+        });
+    });
+
+    it('Assert title', function (done) {
+        http.get('http://localhost:3000', function (res) {
+            assert.equal(200, res.statusCode, 'Result code should be 200.');
+            var data = '';
+
+            res.on('data', function (chunk) {
+                data += chunk;
+            });
+
+            res.on('end', function () {
+                assert.equal(true, data.includes('<title>Express - Node.js Express Application</title>'), 'Title should be Express - Node.js Express Application.');
+                done();
+            })
+        });
+    });
+
+
+    it('Assert factorial 9', function (done) {
+        http.get('http://localhost:3000/factorial/9', function (res) {
+            assert.equal(200, res.statusCode, 'Result code should be 200.');
+            var data = '';
+
+            res.on('data', function (chunk) {
+                data += chunk;
+            });
+
+            res.on('end', function () {
+                assert.equal(true, data.includes('362880'));
+                done();
+            })
+        });
+    });
+
+});
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-svEKEC6COk" id="content5-z5">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Run the updated app locally</h4>
+                <p class="mbr-text mbr-fonts-style display-7">$ cd Application<br><br>$ npm install haddley-factorial-cc<br>or<br>$ npm install haddley-factorial-js<br><br>$ npm install<br>$ npm run start<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-svEHBBImaD" id="image3-yy">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-26-at-4.10.02-pm-1836x1033.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Updated code returns factorial of 9</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-svEQpO7NOT" id="content5-za">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Run the unit tests locally</h4>
+                <p class="mbr-text mbr-fonts-style display-7">$ cd ../Tests<br>$ npm install<br>$ gulp unittest<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-svEJamdkH9" id="image3-z1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-26-at-4.13.54-pm-1836x1079.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Updated Unit Tests</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-svEZ5yUiN5" id="content5-zc">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Run the functional tests locally</h4>
+                <p class="mbr-text mbr-fonts-style display-7">$ xattr -d com.apple.quarantine chromedriver<br><br>$ npm run start&amp;<br>$ cd ../Tests<br>$ gulp functionaltest --webAppUrl http://localhost:3000/</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-svF0wuBKCO" id="image3-zd">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-26-at-4.50.40-pm-1836x1087.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Functional tests</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-svEHC6cG7a" id="image3-yz">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-26-at-4.08.12-pm-1836x1259.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Push updates to GitHub... origin master</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-svEJbmrVw7" id="image3-z3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-26-at-5.05.24-pm-1836x1027.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">GitHub Actions workflow runs again</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-svESdBvN8q" id="content5-zb">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Test factorial API in production</h4>
+                <p class="mbr-text mbr-fonts-style display-7"><a href="https://haddley-factorial-api.azurewebsites.net/factorial/9" class="text-primary" target="_blank">https://haddley-factorial-api.azurewebsites.net/factorial/9</a><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-svEJaRNKda" id="image3-z2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-04-26-at-5.06.36-pm-1836x1034.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Factorial API running in production</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features13 cid-svEo7lH0sf" id="features14-xp">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://docs.microsoft.com/en-us/azure/devops-project/overview" class="text-primary" target="_blank">DevOps Starter</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/ytplayer/index.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>

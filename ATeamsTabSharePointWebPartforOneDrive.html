@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>A Teams App SharePoint Web Part for One Drive</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=LfOV61"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=LfOV61" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-t799dqtuzW" once="menu" id="menu3-3hu">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-t799drNBrG" id="content4-3hv">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>A Teams App SharePoint Web Part for One Drive</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Using SPFx and the Graph Toolkit</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t799dsff3I" id="image3-3hw">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/office-365-icon-500x500.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a rel="nofollow" href="https://github.com/immersive-web/webxr/blob/main/images/spec-logo.png"><br></a><a href="https://www.w3.org/Consortium/Legal/copyright-software" rel="nofollow"></a><a href="https://commons.wikimedia.org/wiki/File:Microsoft_Office_logo.png" class="text-primary">Microsoft_Office_logo by Microsoft is licensed under CC</a><br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t799dssTi6" id="content5-3hx">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">The SharePoint Framework (SPFx) can be used to create SharePoint Web Parts and Teams Applications<br></h4>
+                <p class="mbr-text mbr-fonts-style display-7">In this post I describe how I created a Teams application using the SharePoint Framework and the Microsoft Graph Toolkit<br><br>This post is based on&nbsp;PiaSys Tech Bites's&nbsp;<a href="https://www.youtube.com/watch?v=5ZsD2uHVpz4" class="text-primary" target="_blank">Using Microsoft Graph Toolkit with React</a>&nbsp;video, Microsoft 365 Community's <a href="https://www.youtube.com/watch?v=PTWXRuPbSEw" class="text-primary" target="_blank">Building Microsoft Graph Toolkit apps with SharePoint</a> video, and Microsoft's&nbsp;<a href="https://docs.microsoft.com/en-us/graph/api/resources/onedrive?view=graph-rest-1.0" class="text-primary" target="_blank">Working with files in Microsoft Graph</a>&nbsp;documentation.&nbsp;<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t7aYTcORYR" id="content5-3j3">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">SharePoint Apps</h4>
+                <p class="mbr-text mbr-fonts-style display-7">SharePoint Framework (SPFx) applications are deployed to Microsoft 365 when they are uploaded to the <a href="sharepointwebpart2.html" class="text-primary">SharePoint online App catalog</a>.<br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t7aZXcZTR3" id="image3-3j4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-28-at-1.34.20-pm-1836x837.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Navigate to the SharePoint admin center and click the "More features" link</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t7aYJAMFsk" id="image3-3j0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-28-at-1.37.19-pm-1836x839.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Scroll down to the "Apps" section and click the "Open" link</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t7aYK8b8FR" id="image3-3j1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-28-at-1.37.27-pm-1836x832.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">If the "App Catalog" Site (Site Collection) does not exist it is created</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t7aYKCAqT1" id="image3-3j2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-28-at-1.37.47-pm-1836x842.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">A welcome message may be displayed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t7b0GFQp68" id="image3-3j5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-28-at-1.38.02-pm-1836x839.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">App Catalog's Manage apps page</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t79Tr4weRU" id="content5-3iy">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">yo @microsoft/sharepoint</h4>
+                <p class="mbr-text mbr-fonts-style display-7">I used "yo @microsoft/sharepoint" to create a haddley-file-list project.<br><br>I used "npm i @microsoft/mgt-spfx@2.5.1" to add Microsoft Graph Toolkit to the project.<br><br>I used "npm i @microsoft/mgt-react@2.5.1" to add Microsoft Graph Toolkit's React components to the project.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t79DSVom9V" id="image3-3ie">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-28-at-7.21.51-pm-1836x1000.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">yo @microsoft/sharepoint</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t79DTB3tp3" id="image3-3if">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-28-at-7.24.19-pm-1836x1000.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">npm i @microsoft/mgt-spfx@2.5.1&nbsp;@microsoft/mgt-react@2.5.1</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t79DTHxL7w" id="image3-3ig">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-28-at-7.25.08-pm-1836x1038.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated serve.json to specify how the <a href="sharepointwebpart1.html" class="text-primary">workbench</a> would be loaded</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t7eMAzUSqU" id="image3-3ja">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-28-at-7.27.28-pm-1836x1040.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The workbench will be loaded in the context of the Mark8ProjectTeam Site</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-t7ePkHtsmE" id="content7-3jg">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>serve.json</strong></h5>
+
+<pre class="language-clike"><code><!--         
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/core-build/serve.schema.json",
+  "port": 4321,
+  "https": true,
+  "initialPage": "https://p8lf.sharepoint.com/sites/Mark8ProjectTeam/_layouts/workbench.aspx"
+}
+
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t79X76MTJY" id="content5-3iz">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">gulp</h4>
+                <p class="mbr-text mbr-fonts-style display-7">I used "gulp trust-dev-cert" to ensure that gulp would serve content using https<br><br>I used "gulp bundle &amp;&amp; gulp serve" to preview the application in the workbench<br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t7eMBcDqTK" id="image3-3jb">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-28-at-7.28.17-pm-1836x1038.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">gulp serve to preview</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t79DTXdTDM" id="image3-3ih">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-28-at-7.29.18-pm-1836x805.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Previewing the web part in the workbench</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t79DU0t9EO" id="image3-3ii">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-28-at-7.31.35-pm-1836x1035.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the SPFx Web Part code to add a global provider (constructed using the <a href="sharepointwebpart1.html" class="text-primary">Web Part's context object</a>)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-t7eOm1KPWj" id="content7-3jd">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>HaddleyListWebPart.ts</strong></h5>
+
+<pre class="language-clike"><code><!--         
+import * as React from 'react';
+import * as ReactDom from 'react-dom';
+import { Version } from '@microsoft/sp-core-library';
+import {
+  IPropertyPaneConfiguration,
+  PropertyPaneTextField
+} from '@microsoft/sp-property-pane';
+import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
+
+import * as strings from 'HaddleyListWebPartStrings';
+import HaddleyList from './components/HaddleyList';
+import { IHaddleyListProps } from './components/IHaddleyListProps';
+
+import { Providers,SharePointProvider } from '@microsoft/mgt-spfx';
+
+export interface IHaddleyListWebPartProps {
+  description: string;
+}
+
+export default class HaddleyListWebPart extends BaseClientSideWebPart<IHaddleyListWebPartProps> {
+
+  private _isDarkTheme: boolean = false;
+  private _environmentMessage: string = '';
+
+  protected onInit(): Promise<void> {
+
+    if (!Providers.globalProvider){
+      Providers.globalProvider =  new SharePointProvider(this.context);
+    }
+
+    this._environmentMessage = this._getEnvironmentMessage();
+
+    return super.onInit();
+  }
+
+  public render(): void {
+    const element: React.ReactElement<IHaddleyListProps> = React.createElement(
+      HaddleyList,
+      {
+        description: this.properties.description,
+        isDarkTheme: this._isDarkTheme,
+        environmentMessage: this._environmentMessage,
+        hasTeamsContext: !!this.context.sdks.microsoftTeams,
+        userDisplayName: this.context.pageContext.user.displayName
+      }
+    );
+
+    ReactDom.render(element, this.domElement);
+  }
+
+  private _getEnvironmentMessage(): string {
+    if (!!this.context.sdks.microsoftTeams) { // running in Teams
+      return this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentTeams : strings.AppTeamsTabEnvironment;
+    }
+
+    return this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentSharePoint : strings.AppSharePointEnvironment;
+  }
+
+  protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {
+    if (!currentTheme) {
+      return;
+    }
+
+    this._isDarkTheme = !!currentTheme.isInverted;
+    const {
+      semanticColors
+    } = currentTheme;
+    this.domElement.style.setProperty('--bodyText', semanticColors.bodyText);
+    this.domElement.style.setProperty('--link', semanticColors.link);
+    this.domElement.style.setProperty('--linkHovered', semanticColors.linkHovered);
+
+  }
+
+  protected onDispose(): void {
+    ReactDom.unmountComponentAtNode(this.domElement);
+  }
+
+  protected get dataVersion(): Version {
+    return Version.parse('1.0');
+  }
+
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+    return {
+      pages: [
+        {
+          header: {
+            description: strings.PropertyPaneDescription
+          },
+          groups: [
+            {
+              groupName: strings.BasicGroupName,
+              groupFields: [
+                PropertyPaneTextField('description', {
+                  label: strings.DescriptionFieldLabel
+                })
+              ]
+            }
+          ]
+        }
+      ]
+    };
+  }
+}
+
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t79DU3oAW7" id="image3-3ij">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-29-at-10.38.53-am-1258x619.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I added permission requests to package-solution.json</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-t7eP5UIInE" id="content7-3jf">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>package-solution.json</strong></h5>
+
+<pre class="language-clike"><code><!--         
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "haddley-file-list-client-side-solution",
+    "id": "05e0e1db-dbd6-4913-a19e-a294d1c124ac",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.14.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "haddley-file-list description"
+      },
+      "longDescription": {
+        "default": "haddley-file-list description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "haddley-file-list Feature",
+        "description": "The feature that activates elements of the haddley-file-list solution.",
+        "id": "a0601d92-f1c2-46d9-9dc7-39267ea39211",
+        "version": "1.0.0.0"
+      }
+    ],
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Mail.Read"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Files.Read"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Files.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Sites.Read"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Sites.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Sites.ReadWrite.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.Read"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/haddley-file-list.sppkg"
+  }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t79DU79o16" id="image3-3ik">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-29-at-10.43.31-am-1255x617.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the Web Part's React code</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-t7eQcCcnfV" id="content7-3jh">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>HaddleyList.tsx</strong></h5>
+
+<pre class="language-clike"><code><!--         
+import * as React from 'react';
+import styles from './HaddleyList.module.scss';
+import { IHaddleyListProps } from './IHaddleyListProps';
+import { escape } from '@microsoft/sp-lodash-subset';
+// import { Get, MgtTemplateProps, FileList } from '@microsoft/mgt-react';
+import { Get, MgtTemplateProps, FileList } from '@microsoft/mgt-react/dist/es6/spfx';
+
+export default class HaddleyList extends React.Component<IHaddleyListProps, {}> {
+  public render(): React.ReactElement<IHaddleyListProps> {
+    const {
+      description,
+      isDarkTheme,
+      environmentMessage,
+      hasTeamsContext,
+      userDisplayName
+    } = this.props;
+
+    //Template declaration for Get element
+    const TemplateFiles = (props: MgtTemplateProps) => {
+      console.log("props", props);
+      console.log("props.dataContext", props.dataContext);
+      let files = props.dataContext;
+      if (!Array.isArray(files)) {
+        files = [files];
+      }
+      return (<div>
+        {files.map((file: any, index: number) => (<div key={index}>{file.name}</div>))}
+      </div>);
+    };
+
+    const TemplateDocumentLibraries = (props: MgtTemplateProps) => {
+      console.log("props", props);
+      console.log("props.dataContext", props.dataContext);
+      let libraries = props.dataContext;
+      if (!Array.isArray(libraries)) {
+        libraries = [libraries];
+      }
+      return (<div>
+        {libraries.map((library: any, index: number) => (<div key={index}><strong>{library.name}</strong> {library.id}</div>))}
+      </div>);
+    };
+
+    return (
+      <section className={`${styles.haddleyList} ${hasTeamsContext ? styles.teams : ''}`}>
+        <div className={styles.welcome}>
+          <img alt="" src={isDarkTheme ? require('../assets/welcome-dark.png') : require('../assets/welcome-light.png')} className={styles.welcomeImage} />
+          <h2>Well done, {escape(userDisplayName)}!</h2>
+          <div>{environmentMessage}</div>
+          <div>Web part property value: <strong>{escape(description)}</strong></div>
+        </div>
+        <div>
+
+          <h1>Get /me/drive/root/children</h1>
+          <Get resource="/me/drive/root/children">
+            <TemplateFiles template="value" />
+          </Get>
+
+          <h1>My One Drive Root Folder</h1>
+          <FileList enableFileUpload={true}></FileList>
+
+          <h1>p8lf.sharepoint.com "Documents" Document Library Root Folder</h1>
+          <FileList
+            itemPath="/"
+            siteId="p8lf.sharepoint.com"
+            enableFileUpload={true}></FileList>
+
+          <h1>p8lf.sharepoint.com "Documents" Document Library Root Folder</h1>
+          <FileList
+            itemPath="/"
+            siteId="p8lf.sharepoint.com"
+            enableFileUpload={true}></FileList>
+
+          <h1>Get /sites/p8lf.sharepoint.com:/sites/Mark8ProjectTeam:/drives</h1>
+          <Get resource="/sites/p8lf.sharepoint.com:/sites/Mark8ProjectTeam:/drives">
+            <TemplateDocumentLibraries template="value" />
+          </Get>
+
+          <h1>p8lf.sharepoint.com "Confidental" Document Library Root Folder</h1>
+          <FileList
+            itemPath="/"
+            driveId="b!rx9ik2KF4EGsjBMRetNJSrUFL8a5s69FmTUNWtyhqQhyOPxIxRDNT5VmV2cjHkdO"
+            enableFileUpload={true}></FileList>
+
+        </div>
+      </section>
+    );
+  }
+}
+
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-tjOZP4Ktjn" id="content7-49j">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Other useful code</strong></h5>
+
+<pre class="language-clike"><code><!--         
+
+
+const siteId = (location.host + "," + context.pageContext.site.id + "," + context.pageContext.web.id).replace(/[\{\}]/g, "")
+
+...
+
+<h1>Get /sites/{siteId}/drive/root/children</h1>
+<Get resource={`/sites/${siteId}/drive/root/children`}>
+    <TemplateFiles template="value" />
+</Get>
+
+<FileList
+    itemPath="/"
+    siteId={siteId}
+    enableFileUpload={true}>
+</FileList>
+
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t7eQRp4664" id="content5-3ji">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Deployment</h4>
+                <p class="mbr-text mbr-fonts-style display-7">I used "gulp bundle --ship &amp;&amp; gulp package-solution --ship" to create an .sppkg file (package).<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t79DU9ROW4" id="image3-3il">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-29-at-10.48.51-am-1836x957.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">gulp bundle --ship &amp;&amp; gulp package-solution --ship</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t79DUcMXin" id="image3-3im">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-29-at-10.04.55-am-1401x787.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I navigated to the App catalog manage apps page</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t7eRZExvf7" id="content5-3jj">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">mgt-spfx-252.sppkg</h4>
+                <p class="mbr-text mbr-fonts-style display-7">At runtime (at least in Teams) the web part depends on a shared SharePoint app "mgt-spfx-XXX.sppkg".<br><br>https://github.com/microsoftgraph/microsoft-graph-toolkit/releases<br><br>I added this shared application to the App Catalog.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t79DUhQTTI" id="image3-3io">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-29-at-10.22.33-am-1183x745.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I downloaded the mgt-spfx-2.5.2.sppkg file (package) from&nbsp;https://github.com/microsoftgraph/microsoft-graph-toolkit/releases. I uploaded the&nbsp;mgt-spfx-2.5.2.sppkg file (package) to the App catalog.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t79DUfr9hy" id="image3-3in">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-29-at-10.06.04-am-1399x783.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I upload the project's haddley-file-list.sppkg file (package) to the App catalog</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t79DUke0XX" id="image3-3ip">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-28-at-8.37.53-pm-1836x1103.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I enabled the app and selected the enable this app and add to all sites option</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t79DUmVzxZ" id="image3-3iq">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-28-at-8.38.08-pm-1836x1105.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I navigated to the API access page</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t79DUpBGRS" id="image3-3ir">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-28-at-8.38.39-pm-1836x1104.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I approved the permission requests</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t79DUsdVTy" id="image3-3is">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-29-at-10.06.57-am-1395x785.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">As a test I added the web part to a SharePoint page</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-t7eUwP7hmy" id="content5-3jl">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Adding to teams</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The HaddleyListWebPart manifest suggests that the web part will work as a Teams App.<br><br>I did not need to update this file</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t79DUuGZCT" id="image3-3it">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-29-at-10.13.43-am-1836x904.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">HaddleyListWebPart.manifest.json</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content7 cid-t7eV4TEUAH" id="content7-3jm">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>HaddleyListWebPart.manifest.json</strong></h5>
+
+<pre class="language-clike"><code><!--         
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "2beda14b-5565-4acf-8d4a-dcbe8046bf01",
+  "alias": "HaddleyListWebPart",
+  "componentType": "WebPart",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
+    "group": { "default": "Other" },
+    "title": { "default": "HaddleyList" },
+    "description": { "default": "HaddleyList description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "HaddleyList"
+    }
+  }]
+}
+
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t79DUxpEtX" id="image3-3iu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-29-at-10.07.16-am-449x303.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I used the "Add to Teams" button in the App catalog to add the Web Part to Teams</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t79DUzXno5" id="image3-3iv">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-29-at-10.09.26-am-1403x780.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">With no additional effort the web part was shown as a Published app in the Teams admin center</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t79DUCARqb" id="image3-3iw">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-29-at-10.10.03-am-1401x787.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The web part was also shown in the Teams desktop application</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t79DUJ7zFA" id="image3-3ix">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-29-at-10.10.15-am-1397x781.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I used the Add button to add the web part to Teams</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-t7eWar0CEM" id="image3-3jn">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-05-29-at-10.24.10-am-1400x786.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Here is the code running in Teams</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/ytplayer/index.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>

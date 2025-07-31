@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Prompt Flow (Part 1)</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=gp1tcV"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=gp1tcV" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-ufoYvKsMhS" once="menu" id="menu3-ab5">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section data-bs-version="5.1" class="content4 cid-ufoYvL3U8Z" id="content4-ab6">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Prompt flow (Part 1)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Setup</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ufoYvLcRqJ" id="image3-ab7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/logo.svg" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a rel="nofollow" href="https://github.com/immersive-web/webxr/blob/main/images/spec-logo.png"><br></a><a href="https://github.com/microsoft/promptflow?tab=MIT-1-ov-file" class="text-primary" target="_blank">This file is licensed under the MIT license.</a><br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-ufoYvLhuAo" id="content5-ab8">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Setup<br></h4>
+                <p class="mbr-text mbr-fonts-style display-7">Prompt flow is a development tool designed to streamline the development of AI applications powered by Large Language Models (LLMs).<br><br>Prompt flow applications can be <a href="https://microsoft.github.io/promptflow/how-to-guides/develop-a-dag-flow/index.html" class="text-primary" target="_blank">developed</a> using Azure or locally on a laptop.<br><br>Prompt flow application can be <a href="https://microsoft.github.io/promptflow/how-to-guides/deploy-a-flow/index.html" class="text-primary" target="_blank">deployed</a> using <a href="devopsstartergithubactions.html" class="text-primary">Azure App Service</a>,&nbsp;<a href="docker.html" class="text-primary" target="_blank">Docker</a>&nbsp;or <a href="kubernetes.html" class="text-primary">Kubernetes</a>.<br><br>Here I demonstrate how I used Prompt flow for Visual Studio Code to create and run a couple of sample AI applications.<br><br>The result is not very different from AI applications I have developed in the past using <a href="llamaCorp.html" class="text-primary">langchain</a>.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ufp0ofCtbO" id="image3-abh">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-06-11-at-8.18.26am-1836x1055.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I downloaded Python from the python.org web site</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ufp0otHAlx" id="image3-abi">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-06-11-at-8.19.03am-1236x886.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I installed Python 3.12.4 for macOS</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ufp0ow0Rip" id="image3-abj">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-06-11-at-8.21.51am-1836x993.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I ran the <strong>Install Certificates</strong> script</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ufp0oy7wAP" id="image3-abk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-06-11-at-8.23.34am-1836x1046.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I downloaded Visual Studio Code (the Apple silicon build)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ufp0oFSexh" id="image3-abl">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-06-11-at-8.25.35am-1836x691.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I installed the <strong>Prompt flow VS Code</strong> extension&nbsp;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ufp0oI13hy" id="image3-abm">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-06-11-at-10.14.11am-1836x329.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I opened a folder and ran the <strong>Python: Create Environment</strong> command.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ufp0oKunnB" id="image3-abn">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-06-11-at-10.14.23am-1836x379.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created a <strong>.venv</strong> environment in the project's folder</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ufp0oMZY2s" id="image3-abo">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-06-11-at-10.16.29am-1836x1286.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the Prompt flow extension (the "P" logo) and clicked the <strong>QUICK ACCESS | Install dependencies</strong> menu item</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ufp0oPzjrw" id="image3-abp">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-06-11-at-10.18.32am-1836x1295.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I used <strong>source .venv/bin/activate</strong> to activate the environment<br>I used <strong>pip install promptflow</strong> to add the promptflow dependencies</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ufp0oRXexR" id="image3-abq">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-06-11-at-10.19.42am-1836x1292.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I ran <strong>pf -v</strong> to see what version of Prompt flow was installed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ufp0oUDnlH" id="image3-abr">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-06-11-at-10.20.50am-1836x1291.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked on FLOWS and navigated to the included standard_flow<br>I ensured that the .venv virtual environment was selected and entered a text default value "Hello World"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ufp0oXbH6v" id="image3-abs">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-06-11-at-10.21.15am-1836x1289.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the Test menu item to run the standard_flow<br>The default text value was added to the "Prompt:" and "Write a simple {{text}} program that displays the greeting message." text</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ufpZgfItHV" id="image3-ack">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-06-11-at-2.06.28pm-1836x1142.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The "Prompt: " text is included in the hello.py source code</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ufpZgUB9gm" id="image3-acl">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-06-11-at-2.07.46pm-1836x1145.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The flow.dag.yaml file describes the flow</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ufpZhtvc7e" id="image3-acm">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-06-11-at-2.07.54pm-1836x1135.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The hello.jinja2 template contains the "Write a simple {{text}}..." text</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-ufprKyLjm2" id="content5-acj">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">
+                    Creating a new flow</h4>
+                <p class="mbr-text mbr-fonts-style display-7">
+                    I used the <strong>+Create new flow</strong> menu item to create a new flow.<br><br>I used the <strong>Open</strong> menu item to view the flow.<br><br>I used the <strong>Test</strong> menu item to run the flow.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ufp0oZYArx" id="image3-abt">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-06-11-at-11.43.33am-1836x1040.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I generated a new Open AI key and used it to create a Prompt flow connection</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ufp0p2oZL8" id="image3-abu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-06-11-at-11.46.01am-1836x1145.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created a <strong>chat flow</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ufp0p4XSPT" id="image3-abv">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-06-11-at-11.46.13am-1836x210.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I accepted the default flow name</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ufp0p7L05Y" id="image3-abw">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-06-11-at-11.47.11am-1836x1143.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the flow to make use of the OpenAI (large language model) <strong>connection</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ufp0pcUKaq" id="image3-aby">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-06-11-at-11.48.52am-1836x631.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I updated the default question text</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ufp0pfH4hH" id="image3-abz">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-06-11-at-11.53.54am-1836x1152.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I used the Test menu item to run the flow&nbsp;<strong>with standard mode </strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ufq73cGUPc" id="image3-ae4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-06-11-at-2.41.16pm-1836x1393.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I ran the Prompt flow <strong>with interactive mode (multi-modal)</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ufp0pkPVbR" id="image3-ac1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-06-11-at-11.55.54am-1836x1144.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The new chat flow included a single llm tool (named "chat")</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ufp0pnD7fG" id="image3-ac2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-06-11-at-11.54.07am-1836x1145.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The chat.jinja2 file is used to compose the large language model prompt (with the chat history included)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ufqc1AXYPO" id="image3-ae7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-06-11-at-3.00.40pm-1836x617.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Prompt flow traces</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ufqc1egKqs" id="image3-ae6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-06-11-at-2.58.43pm-1836x955.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Open AI activity</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-ufqc0RBxjf" id="image3-ae5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-06-11-at-2.58.52pm-1836x953.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Open AI cost $</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="features13 cid-ufp88EhCk2" id="features14-aci">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont mbri-pages"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://microsoft.github.io/promptflow/" class="text-primary" target="_blank">Prompt flow</a></strong><strong><a href="https://www.makeuseof.com/how-to-use-raspberry-pi-imager-advanced-options/" class="text-primary" target="_blank"><br></a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/ytplayer/index.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>

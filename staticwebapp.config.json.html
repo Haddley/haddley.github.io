@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>staticwebapp.config.json</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=DMajdO"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=DMajdO" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-u79cKbxoMr" once="menu" id="menu3-9yq">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section data-bs-version="5.1" class="content4 cid-u79cKchx5V" id="content4-9yr">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Azure Active Directory (Part 3)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">staticwebapp.config.json and environment variables<br><br></h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79cKcxdlk" id="image3-9ys">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/azurex70x75.svg" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><br>Microsoft Azure Logo by Microsoft Corporation is Public Domain</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-u79cKcK6uw" id="content5-9yt">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">staticwebapp.config.json and environment variables</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The "auth" section of the staticwebapp.config.json can be used to configure access to a static web app.<br><br>Static web app environment variables can be used to manage authentication properties</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79gqZ1vTO" id="image3-9zs">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-1.57.36-pm-1836x961.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        I created an index.html file. I created a staticwebapp.config.json file.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79gr5KpJ0" id="image3-9zt">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.00.55-pm-1836x958.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        I right clicked the Static Web App icon and selected the "Create Static Web App... (Advanced)" option</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79gr7ZbBE" id="image3-9zu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.01.06-pm-1836x958.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        I clicked the Create button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79graa1Uq" id="image3-9zv">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.01.17-pm-1836x108.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        I provided a git initial commit message</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79greowqM" id="image3-9zx">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.02.17-pm-1836x151.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I provided a name for a new Azure Resource Group</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79grgsvNd" id="image3-9zy">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.02.28-pm-1836x152.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        I accepted the detail Azure Static Web app name</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79griBWQr" id="image3-9zz">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.02.40-pm-1836x177.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        I selected the Free pricing option</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79grl6ZFT" id="image3-a00">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.02.53-pm-1836x145.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        I selected the GitHub organization name</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79grnOOBr" id="image3-a01">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.03.05-pm-1836x165.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        I accepted the default repository name</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79grpTsrt" id="image3-a02">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.03.15-pm-1836x180.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        I selected the private option</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79grsuYJq" id="image3-a03">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.03.24-pm-1836x201.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        I selected the default shortname</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79grzNfHA" id="image3-a04">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.03.32-pm-1836x135.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        I selected the default region</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79grBMy3Z" id="image3-a05">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.03.56-pm-1836x328.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        I selected the HTML project structure</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79grE4lA6" id="image3-a06">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.04.03-pm-1836x215.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        I selected location /</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79grGuThu" id="image3-a07">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.04.10-pm-1836x198.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        I left the Azure Function name empty</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79grIZGVc" id="image3-a08">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.04.17-pm-1836x230.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected location /</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79grLua9b" id="image3-a09">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.05.34-pm-1836x386.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        I created a new Azure Active Directory/Entra ID App Registration</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79grPnjh9" id="image3-a0a">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.06.24-pm-1836x1021.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        I selected the "any organization... option</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79thZVB0x" id="image3-a12">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.33.24-pm-1836x592.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        I added a platform</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79tif3nHn" id="image3-a13">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.33.32-pm-1836x482.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        I selected Web</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79tBvoIOG" id="image3-a16">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.33.43-pm-1836x1020.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I specified the Redirect URI</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79tBi5htg" id="image3-a15">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.58.39-pm-1836x995.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        I added https://jolly-bush.../.auth/login/add/callback</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79yIy730u" id="image3-a17">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.53.48-pm-1836x1019.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        I selected the ID tokens checkbox</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79grTaTlJ" id="image3-a0b">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.06.55-pm-1836x508.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        I copied the client ID</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79grW9pBA" id="image3-a0c">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.08.06-pm-1836x669.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        I created an application Environment Variable called AZURE_CLIENT_ID and pasted in the value</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79grY8WNS" id="image3-a0d">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.08.25-pm-1836x1019.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        I created a Client Secret</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79gs0rKrW" id="image3-a0e">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.08.38-pm-1836x821.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        I copied the Client Secret value</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79gs2TDH4" id="image3-a0f">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.09.15-pm-1836x1020.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        I created an application Environment Variable called AZURE_CLIENT_SECRET and pasted in the value</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79yUX3x40" id="image3-a18">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.47.56-pm-1836x1019.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        I upgraded the Static web app's hosting plan</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79gs5nKEF" id="image3-a0g">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.09.39-pm-1836x421.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        I copied the Static Web Application's URL</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79gs819oX" id="image3-a0h">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.54.53-pm-1836x1080.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        I clicked the Accept button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79gsazgE7" id="image3-a0i">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.10.55-pm-1836x1046.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        I entered a username and password</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-u79gsd46tn" id="image3-a0j">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot-2024-03-16-at-2.11.24-pm-1836x1046.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                        I logged onto the app</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="custom-html-a0z"><!-- Type valid HTML here -->
+
+<pre>    
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+    &lt;title&gt;Static Authentication&lt;/title&gt;
+    &lt;!--
+      This styling is for the Web Chat demonstration purposes.
+      It is recommended that style is moved to a separate file for organization in larger projects.
+
+      Please visit https://github.com/microsoft/BotFramework-WebChat for details about Web Chat.
+    --&gt;
+    &lt;style&gt;
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        h1 {
+            color: whitesmoke;
+            font-family: Segoe UI;
+            font-size: 16px;
+            line-height: 20px;
+            margin: 0;
+            padding: 0 20px;
+        }
+
+        #banner {
+            align-items: center;
+            background-color: black;
+            display: flex;
+            height: 50px;
+        }
+
+        #greeting {
+            height: calc(100% - 50px);
+            overflow: hidden;
+            position: fixed;
+            top: 50px;
+            width: 100%;
+        }
+    &lt;/style&gt;
+
+    &lt;script&gt;
+
+        async function getUserInfo() {
+            const response = await fetch('/.auth/me');
+            const payload = await response.json();
+            const { clientPrincipal } = payload;
+            return clientPrincipal;
+        }
+
+        (async function main() {
+
+            const userInfo = await getUserInfo();
+            document.getElementById('userName').innerHTML = "Currently logged in as " + userInfo.userDetails;
+
+        })();
+
+    &lt;/script&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div&gt;
+        &lt;div id="banner"&gt;
+            &lt;h1&gt;Static Authentication&lt;/h1&gt;
+            &lt;h1 id="userName"&gt;&lt;/h1&gt;
+        &lt;/div&gt;
+
+        &lt;div id="greeting"&gt;
+
+            Hello World
+
+        &lt;/div&gt;
+
+
+&lt;/body&gt;
+
+&lt;/html&gt;
+</pre></div>
+
+<section data-bs-version="5.1" class="content7 cid-u79qSs2Sh9" id="content7-a10">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>staticwebapp.config.json</strong><strong><br></strong></h5>
+
+<pre class="language-clike"><code><!--         
+{
+  "routes": [
+    {
+      "route": "/*",
+      "allowedRoles": [
+        "authenticated"
+      ]
+    }
+  ],
+  "responseOverrides": {
+    "401": {
+      "statusCode": 302,
+      "redirect": "/.auth/login/aad"
+    }
+  },
+  "auth": {
+    "identityProviders": {
+      "azureActiveDirectory": {
+        "registration": {
+          "openIdIssuer": "https://login.microsoftonline.com/1661e837-0a95-4bc6-a655-865365c2419b/v2.0",
+          "clientIdSettingName": "AZURE_CLIENT_ID",
+          "clientSecretSettingName": "AZURE_CLIENT_SECRET"
+        }
+      }
+    }
+  }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="features13 cid-u79AS57wKa" id="features14-a19">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont socicon-youtube socicon"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><strong><a href="https://www.youtube.com/watch?v=jnwRpEM6GR8" class="text-primary" target="_blank">Build a website using Azure Static Web Apps and Authenticate with AAD</a></strong></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/ytplayer/index.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>

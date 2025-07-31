@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Multiplayer Tick-Tack-Toe</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=XZdIja"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=XZdIja" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-tDMjiWfL3L" once="menu" id="menu3-5ka">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section data-bs-version="5.1" class="content4 cid-tDMjiYuV1p" id="content4-5kb">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Firebase Realtime Database</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Multiplayer Tick-Tack-Toe</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tDMjiZBqnz" id="image3-5kc">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/logo-lockup-firebase-vertical.svg" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a rel="nofollow" href="https://github.com/immersive-web/webxr/blob/main/images/spec-logo.png"><br></a><a href="https://commons.wikimedia.org/wiki/File:Angular_full_color_logo.svg" class="text-primary" target="_blank">This file is licensed under the Creative Commons Attribution 4.0 International license.</a><br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tDMjj0vNs8" id="content5-5kd">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Creating a new firebase project</h4>
+                <p class="mbr-text mbr-fonts-style display-7">I asked ChatGPT for some help creating a multiplayer version of Tick-Tack-Toe.<br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tDMjj5daPq" id="content5-5kj">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">ChatGPT</h4>
+                <p class="mbr-text mbr-fonts-style display-7"><strong>How would I write a multiplayer tick-tack-toe game with Firebase Realtime Database, HTML, CSS and JavaScript?</strong><br><br>To write a multiplayer tic-tac-toe game with Firebase Realtime Database, HTML, CSS, and JavaScript, you can follow these general steps:<br><br>1. Set up a Firebase account and create a new project.<br>2. Create a new Firebase Realtime Database in your project.<br>3. Create an HTML file with the tic-tac-toe game board and UI elements. You can use CSS to style the board and UI elements.<br>4. Write JavaScript code to connect to your Firebase Realtime Database and set up the game logic.<br>5. When a player makes a move, update the game state in the database.<br>6. Listen for changes to the game state in the database and update the UI accordingly.<br>7. Implement game logic to detect a win or a tie and update the database and UI accordingly.<br><br>Here's an example implementation of the above steps:<br><br>...</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tDMu4uFXoc" id="image3-5ky">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-05-09-at-2.56.33-pm-1802x844.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">project name</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tDN7VCitfJ" id="image3-5l7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-05-09-at-2.57.24-pm-1804x874.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">google analytics?<br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tDN7WHYhe0" id="image3-5l9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-05-09-at-2.58.10-pm-1690x910.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">project is ready</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tDN7XdHA8k" id="image3-5la">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-05-09-at-3.03.30-pm-1836x913.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">add web app</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tDNaOuGhYZ" id="image3-5li">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-05-09-at-3.04.16-pm-1836x977.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">sdk setup</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content7 cid-tDMjj6w8Nl" id="content7-5kl">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>SDK setup</strong></h5>
+
+<pre class="language-clike"><code><!--         
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAw86TBoGMBkdTHnhs28zKCiVvvkNEcPqM",
+    authDomain: "haddley-tick-tack-toe.firebaseapp.com",
+    projectId: "haddley-tick-tack-toe",
+    storageBucket: "haddley-tick-tack-toe.appspot.com",
+    messagingSenderId: "762869781957",
+    appId: "1:762869781957:web:02d5bd65bd1d1661dc27ac"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script>
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tDRCgUV1EW" id="image3-5lp">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-05-10-at-9.17.39-am-1836x567.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add Realtime Database</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tDNaPoB76a" id="image3-5lk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-05-10-at-9.18.28-am-1836x530.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">create databse</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tDRCJbP4rB" id="image3-5ls">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-05-10-at-9.19.05-am-1836x634.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">database location</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tDRCJw6HJo" id="image3-5lt">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-05-10-at-9.19.16-am-1836x783.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">security rules (authentication is not enabled yet)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tDRCJNQsCF" id="image3-5lu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-05-10-at-9.19.37-am-1836x571.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Realtime Database is empty</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tDNaPY13AO" id="image3-5ll">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-05-10-at-8.57.48-am-1366x828.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">example implementation</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tDNaOXQXFO" id="image3-5lj">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-05-09-at-5.41.12-pm-1142x274.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">create a folder</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content7 cid-tDRGGroTAl" id="content7-5lx">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>index.html</strong></h5>
+
+<pre class="language-clike"><code><!--         
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Tic Tac Toe</h1>
+    <div id="board">
+      <div class="row">
+        <div class="cell" id="cell00"></div>
+        <div class="cell" id="cell01"></div>
+        <div class="cell" id="cell02"></div>
+      </div>
+      <div class="row">
+        <div class="cell" id="cell10"></div>
+        <div class="cell" id="cell11"></div>
+        <div class="cell" id="cell12"></div>
+      </div>
+      <div class="row">
+        <div class="cell" id="cell20"></div>
+        <div class="cell" id="cell21"></div>
+        <div class="cell" id="cell22"></div>
+      </div>
+    </div>
+    <div id="status"></div>
+    <button id="reset">Reset</button>
+
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-database.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content7 cid-tDRGGSQEbI" id="content7-5ly">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>style.css</strong></h5>
+
+<pre class="language-clike"><code><!--         
+#board {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .row {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .cell {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    cursor: pointer;
+  }
+  
+  .cell:hover {
+    background-color: #f1f1f1;
+  }
+  
+  #status {
+    margin-top: 20px;
+    font-size: 24px;
+  }
+  
+  #reset {
+    margin-top: 20px;
+  }
+ 
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content7 cid-tDRGHfIJ3c" id="content7-5lz">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>app.js</strong></h5>
+
+<pre class="language-clike"><code><!--         
+// Initialize Firebase
+const firebaseConfig = {
+    apiKey: "AIzaSyAw86TBoGMBkdTHnhs28zKCiVvvkNEcPqM",
+    authDomain: "haddley-tick-tack-toe.firebaseapp.com",
+    projectId: "haddley-tick-tack-toe",
+    storageBucket: "haddley-tick-tack-toe.appspot.com",
+    messagingSenderId: "762869781957",
+    appId: "1:762869781957:web:02d5bd65bd1d1661dc27ac"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+// Get a reference to the database service
+const database = firebase.database();
+
+// Game state
+let gameState = {
+    currentPlayer: 'X',
+    board: [
+        ['', '', ''],
+        ['', '', ''],
+        ['', '', ''],
+    ],
+};
+
+// Game board elements
+const boardCells = [
+    document.getElementById('cell00'),
+    document.getElementById('cell01'),
+    document.getElementById('cell02'),
+    document.getElementById('cell10'),
+    document.getElementById('cell11'),
+    document.getElementById('cell12'),
+    document.getElementById('cell20'),
+    document.getElementById('cell21'),
+    document.getElementById('cell22'),
+];
+
+
+// Update the UI with the current game state
+function updateUI() {
+    const { board, currentPlayer } = gameState;
+
+    // Update each cell on the board
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            const cell = document.getElementById(`cell${i}${j}`);
+            cell.textContent = board[i][j];
+        }
+    }
+
+    // Update the status message
+    const statusElement = document.getElementById('status');
+    statusElement.textContent = `Current Player: ${currentPlayer}`;
+}
+
+// Make a move
+function makeMove(row, col) {
+    const { board, currentPlayer } = gameState;
+
+    // Check if the selected cell is empty
+    if (board[row][col] === '') {
+        // Update the board with the current player's symbol
+        board[row][col] = currentPlayer;
+
+        // Check if the current player has won
+        if (hasPlayerWon(currentPlayer)) {
+            alert(`Player ${currentPlayer} has won!`);
+            resetGame();
+        } else {
+            // Check if the board is full
+            if (isBoardFull()) {
+                alert('The game is a draw!');
+                resetGame();
+            } else {
+                // Switch to the other player
+                gameState.currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            }
+        }
+
+        // Update the game state in the database
+        database.ref('gameState').set(gameState);
+    }
+}
+
+// Check if a player has won
+function hasPlayerWon(player) {
+    const { board } = gameState;
+  
+    // Check rows
+    for (let i = 0; i < 3; i++) {
+      if (board[i][0] === player && board[i][1] === player && board[i][2] === player) {
+        return true;
+      }
+    }
+  
+    // Check columns
+    for (let j = 0; j < 3; j++) {
+      if (board[0][j] === player && board[1][j] === player && board[2][j] === player) {
+        return true;
+      }
+    }
+  
+    // Check diagonals
+    if (board[0][0] === player && board[1][1] === player && board[2][2] === player) {
+      return true;
+    }
+    if (board[0][2] === player && board[1][1] === player && board[2][0] === player) {
+      return true;
+    }
+  
+    return false;
+  }
+
+  
+
+// Check if the game board is full
+function isBoardFull() {
+    const { board } = gameState;
+  
+    // Check each cell on the board
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        if (board[i][j] === '') {
+          return false;
+        }
+      }
+    }
+  
+    return true;
+  }
+  
+
+// Reset the game
+function resetGame() {
+    // Reset the game state
+    gameState = {
+        currentPlayer: 'X',
+        board: [
+            ['', '', ''],
+            ['', '', ''],
+            ['', '', ''],
+        ],
+    };
+
+    // Clear the board in the database
+    database.ref('gameState').set(gameState);
+}
+
+// Initialize the game
+function initGame() {
+    // Attach click event listeners to each cell
+    const cells = document.getElementsByClassName('cell');
+    for (let i = 0; i < cells.length; i++) {
+        const cell = cells[i];
+        const row = Math.floor(i / 3);
+        const col = i % 3;
+        cell.addEventListener('click', () => makeMove(row, col));
+    }
+
+    // Attach click event listener to the reset button
+    const resetButton = document.getElementById('reset');
+    resetButton.addEventListener('click', resetGame);
+
+    // Listen for changes in the game state
+    database.ref('gameState').on('value', (snapshot) => {
+        const gameStateFromLiveDatabase = snapshot.val();
+        if (gameStateFromLiveDatabase) {
+            gameState = gameStateFromLiveDatabase;
+        }
+        updateUI();
+    });
+}
+
+// Call the initGame function when the DOM is ready
+document.addEventListener('DOMContentLoaded', initGame);
+
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tDShToz2kT" id="image3-5md">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-05-10-at-12.00.13-pm-1836x643.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Open with Live Server</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tDRCK7S47f" id="image3-5lv">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-05-10-at-9.38.28-am-1836x1189.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">code running locally</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tDRCKsenLc" id="image3-5lw">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-05-10-at-9.41.28-am-1836x1156.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">firebase init</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tDRCt2iNIV" id="image3-5lr">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-05-10-at-9.42.33-am-1836x465.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">firebase deploy</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tDNbxJv10y" id="image3-5lo">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-05-10-at-9.44.06-am-1598x1100.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">public folder has been uploaded to firebase</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tDNbwjEHaY" id="image3-5ln">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-05-10-at-9.45.53-am-1460x542.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">copy the html, css and javascript files to the public folder</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tDN7XMyqJ1" id="image3-5lb">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-05-10-at-9.46.35-am-1836x1189.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">code has been deployed to Firebase (access using https://haddley-tick-tack-toe.web.app/)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tDSfLbuCh1" id="content5-5m0">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Adding authentication</h4>
+                <p class="mbr-text mbr-fonts-style display-7"><strong>How do we know which player is which?</strong><br><br>To differentiate between players and determine which player made a move, you can incorporate user authentication into your tic-tac-toe game. Firebase Authentication can be utilized to handle user sign-up, sign-in, and tracking the current user.<br><br>Here's an updated version of the makeMove function that incorporates user authentication:<br><br>...<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tDShw9UwGr" id="image3-5m4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-05-10-at-12.00.57-pm-1836x625.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">dashboard</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tDShwneLyF" id="image3-5m5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-05-10-at-12.01.09-pm-1836x450.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">authentication</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tDShwFnaVz" id="image3-5m6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-05-10-at-12.01.20-pm-1836x764.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Anonymous</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tDShwUkw69" id="image3-5m7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-05-10-at-12.01.30-pm-1836x729.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Anonymous Enabled</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content7 cid-tDTuF1YsB8" id="content7-5mh">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Security Rules (updated)</strong></h5>
+
+<pre class="language-clike"><code><!--         
+{
+  "rules": {
+    "gameState": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    }
+  }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content7 cid-tDSVO4Q6HF" id="content7-5me">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>index.html (updated)</strong></h5>
+
+<pre class="language-clike"><code><!--         
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <h1>Tic Tac Toe</h1>
+    <div id="board">
+        <div class="row">
+            <div class="cell" id="cell00"></div>
+            <div class="cell" id="cell01"></div>
+            <div class="cell" id="cell02"></div>
+        </div>
+        <div class="row">
+            <div class="cell" id="cell10"></div>
+            <div class="cell" id="cell11"></div>
+            <div class="cell" id="cell12"></div>
+        </div>
+        <div class="row">
+            <div class="cell" id="cell20"></div>
+            <div class="cell" id="cell21"></div>
+            <div class="cell" id="cell22"></div>
+        </div>
+    </div>
+    <div id="whoami"></div>
+    <div id="status"></div>
+    <button id="reset">Reset</button>
+
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-database.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content7 cid-tDSVOvuUQb" id="content7-5mf">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>style.css (updated)</strong></h5>
+
+<pre class="language-clike"><code><!--         
+#board {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    cursor: pointer;
+}
+
+.cell:hover {
+    background-color: #f1f1f1;
+}
+
+#status {
+    margin-top: 20px;
+    font-size: 24px;
+}
+
+#whoami {
+    margin-top: 20px;
+    font-size: 24px;
+}
+
+#reset {
+    margin-top: 20px;
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content7 cid-tDSVP1oXdW" id="content7-5mg">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>app.js (updated)</strong></h5>
+
+<pre class="language-clike"><code><!--         
+// Initialize Firebase
+const firebaseConfig = {
+    apiKey: "AIzaSyAw86TBoGMBkdTHnhs28zKCiVvvkNEcPqM",
+    authDomain: "haddley-tick-tack-toe.firebaseapp.com",
+    projectId: "haddley-tick-tack-toe",
+    storageBucket: "haddley-tick-tack-toe.appspot.com",
+    messagingSenderId: "762869781957",
+    appId: "1:762869781957:web:02d5bd65bd1d1661dc27ac"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+// Sign in anonymously
+firebase.auth().signInAnonymously().catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.log(errorCode, errorMessage);
+});
+
+// Get a reference to the database service
+const database = firebase.database();
+
+// Game state
+let gameState;
+const states = {
+    Playing: "playing",
+    XWon: "xwon",
+    OWon: "owon",
+    Draw: "draw"
+};
+
+const defaultGameState = {
+    hostUID: null, // Replace with actual host user's UID
+    currentPlayer: 'X',
+    board: [
+        ['', '', ''],
+        ['', '', ''],
+        ['', '', ''],
+    ],
+    status: states.Playing
+};
+
+// Game board elements
+const boardCells = [
+    document.getElementById('cell00'),
+    document.getElementById('cell01'),
+    document.getElementById('cell02'),
+    document.getElementById('cell10'),
+    document.getElementById('cell11'),
+    document.getElementById('cell12'),
+    document.getElementById('cell20'),
+    document.getElementById('cell21'),
+    document.getElementById('cell22'),
+];
+
+// Update the UI with the current game state
+function updateUI() {
+    const { board, currentPlayer, status, hostUID } = gameState;
+
+    // Update each cell on the board
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            const cell = document.getElementById(`cell${i}${j}`);
+            cell.textContent = board[i][j];
+        }
+    }
+
+    // Update the status message
+    const statusElement = document.getElementById('status');
+    switch (status) {
+        case states.XWon:
+            statusElement.textContent = `Player X has won!`;
+            break;
+        case states.OWon:
+            statusElement.textContent = `Player O has won!`;
+            break;
+        case states.Draw:
+            statusElement.textContent = `The game is a draw!`;
+            break;
+        case states.Playing:
+        default:
+            statusElement.textContent = `Current Player: ${currentPlayer}`;
+    }
+
+    const user = firebase.auth().currentUser;
+    const whoAmIElement = document.getElementById('whoami');
+    if (user.uid === hostUID) {
+        whoAmIElement.textContent = `You are X`;
+    } else {
+        whoAmIElement.textContent = `You are O`;
+    }
+}
+
+// Make a move
+function makeMove(row, col) {
+    const { board, currentPlayer, hostUID, status } = gameState;
+
+    if (status !== states.Playing) {
+        // The game is over, ignore the move
+        return;
+    }
+
+    const user = firebase.auth().currentUser;
+    if (!user) {
+        // User is not authenticated, handle the authentication requirement
+        console.log("Please sign in or create an account to play.");
+        return;
+    }
+
+    if ((user.uid === hostUID && currentPlayer === 'X') || (user.uid !== hostUID && currentPlayer === 'O')) {
+        if (board[row][col] === '') {
+            board[row][col] = currentPlayer;
+
+            if (hasPlayerWon(currentPlayer)) {
+                console.log(`Player ${currentPlayer} has won the game!`);
+                gameState.status = currentPlayer === 'X' ? states.XWon : states.OWon;
+            } else if (isBoardFull()) {
+                console.log("It's a tie!");
+                gameState.status = states.Draw;
+            } else {
+                gameState.currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            }
+
+            database.ref('gameState').set(gameState);
+        }
+    } else {
+        console.log("It's not your turn.");
+    }
+}
+
+// Check if a player has won
+function hasPlayerWon(player) {
+    const { board } = gameState;
+
+    for (let i = 0; i < 3; i++) {
+        if (board[i][0] === player && board[i][1] === player && board[i][2] === player) {
+            return true;
+        }
+    }
+
+    for (let j = 0; j < 3; j++) {
+        if (board[0][j] === player && board[1][j] === player && board[2][j] === player) {
+            return true;
+        }
+    }
+
+    if (board[0][0] === player && board[1][1] === player && board[2][2] === player) {
+        return true;
+    }
+
+    if (board[0][2] === player && board[1][1] === player && board[2][0] === player) {
+        return true;
+    }
+
+    return false;
+}
+
+// Check if the game board is full
+function isBoardFull() {
+    const { board } = gameState;
+
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            if (board[i][j] === '') {
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
+// Reset the game
+function resetGame() {
+    gameState = defaultGameState;
+    gameState.hostUID = firebase.auth().currentUser.uid;
+    database.ref('gameState').set(gameState);
+}
+
+// Initialize the game
+function initGame() {
+    const cells = document.getElementsByClassName('cell');
+
+    for (let i = 0; i < cells.length; i++) {
+        const cell = cells[i];
+        const row = Math.floor(i / 3);
+        const col = i % 3;
+        cell.addEventListener('click', () => makeMove(row, col));
+    }
+
+    const resetButton = document.getElementById('reset');
+    resetButton.addEventListener('click', resetGame);
+
+    database.ref('gameState').on('value', (snapshot) => {
+        const gameStateFromLiveDatabase = snapshot.val();
+
+        if (!gameStateFromLiveDatabase) {
+            gameState = defaultGameState;
+            gameState.hostUID = firebase.auth().currentUser.uid;
+            database.ref('gameState').set(gameState);
+            return;
+        }
+
+        gameState = gameStateFromLiveDatabase;
+        updateUI();
+    });
+}
+
+// Call the initGame function when the DOM is ready
+document.addEventListener('DOMContentLoaded', initGame);
+
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content5 cid-tDXiUW6qD1" id="content5-5mi">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">ChatGPT's commentary</h4>
+                <p class="mbr-text mbr-fonts-style display-7">This code initializes and sets up a tic-tac-toe game using Firebase as the backend database. Here's an explanation of the code:<br><br>1. Firebase Configuration: The code defines the configuration object firebaseConfig that contains the necessary credentials and configuration options for connecting to the Firebase project.<br>2. Firebase Initialization: The code initializes Firebase using the provided configuration object by calling firebase.initializeApp(firebaseConfig).<br>3. Anonymous Authentication: The code signs in the user anonymously by calling firebase.auth().signInAnonymously(). This allows the user to play the game without requiring any authentication.<br>4. Database Reference: The code obtains a reference to the Firebase Realtime Database service by calling firebase.database(). This reference will be used to interact with the game state data in the database.<br>5. Game State: The code defines the initial game state and related constants. The gameState object stores information such as the current player, the game board, and the game status.<br>6. UI Elements: The code retrieves references to various elements in the HTML document that represent the game board and the status message.<br>7. Update UI: The updateUI() function is responsible for updating the user interface based on the current game state. It updates the game board cells and the status message.<br>8. Make Move: The makeMove(row, col) function is called when a user clicks on a game board cell. It checks if the game is still in progress, verifies the user's turn, and updates the game board if the move is valid. It also checks for a win or draw condition and updates the game state accordingly.<br>9. Win Condition: The hasPlayerWon(player) function checks if a player has won the game by examining the game board.<br>10. Board Full Condition: The isBoardFull() function checks if the game board is full and there is no winner, resulting in a draw.<br>11. Reset Game: The resetGame() function resets the game state to the default values and updates the database with the new state.<br>12. Initialize Game: The initGame() function sets up event listeners for the game board cells and the reset button. It also listens for changes in the game state data in the database and updates the local game state and UI accordingly.<br>13 DOMContentLoaded Event: The initGame() function is called when the DOM (Document Object Model) is fully loaded, ensuring that the game setup is performed when the page is ready.<br><br>Overall, this code provides the functionality for playing a tic-tac-toe game in a web browser using Firebase for real-time updates and synchronization of the game state between multiple players.<br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tDShx9EjXo" id="image3-5m8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-05-10-at-3.06.41-pm-1836x1175.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">updated code</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tDShxptsvT" id="image3-5m9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-05-10-at-3.10.52-pm-1452x540.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">firebase deploy</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-tDShxEMv0y" id="image3-5ma">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2023-05-10-at-3.14.17-pm-1836x1248.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">deployed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/ytplayer/index.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>

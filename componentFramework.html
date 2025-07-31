@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Component Framework</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=uLEuBq"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=uLEuBq" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-tePjNGJDDw" once="menu" id="menu3-473">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-tePjNHT4i1" id="content4-474">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Power Apps (Part 7)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Power Apps Component Framework&nbsp;</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tePjNImkmU" id="image3-475">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/office-365-icon-500x500.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a rel="nofollow" href="https://github.com/immersive-web/webxr/blob/main/images/spec-logo.png"><br></a><a href="https://commons.wikimedia.org/wiki/File:Angular_full_color_logo.svg" class="text-primary" target="_blank">This file is licensed under the Creative Commons Attribution 4.0 International license.</a><br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-tePjNIzQLf" id="content5-476">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Component Framework</h4>
+                <p class="mbr-text mbr-fonts-style display-7">Create code components for model-driven and canvas apps.<br><br>Developers can use Power Apps component framework to create, import, and add code <a href="customcomponents.html" class="text-primary">components</a> to model-driven and canvas apps. Certain APIs are not available.<br><br></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tePmFZvUe8" id="image3-480">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-08-17-at-10.08.36-pm-1536x758.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Admin center</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tePmG2nOD8" id="image3-481">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-08-17-at-10.09.25-pm-1536x648.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">p8lf environment</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tePmGabrsW" id="image3-482">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-08-17-at-10.11.44-pm-1536x651.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Search</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tePmGcelif" id="image3-483">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-08-17-at-10.12.15-pm-1536x649.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Turn on Power Apps component framework</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tePmGePkSg" id="image3-484">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-08-18-at-6.37.50-am-1536x754.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Web API endpoint (use this URL below)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tePmGh3KtK" id="image3-485">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-08-18-at-6.45.35-am-1536x786.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Install Power Platform Tools Visual Studio Extension</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tePmGjpixL" id="image3-486">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-08-18-at-6.46.03-am-1536x788.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Power Platform Tools installed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tePmGtnxcE" id="image3-48a">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-08-18-at-6.54.01-am-1536x789.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The framework was not found</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tePmGCQjcr" id="image3-48e">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-08-18-at-7.07.37-am-1240x880.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Install x64 version of the framework</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tePmJag4Iy" id="image3-48f">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-08-18-at-7.08.30-am-1536x915.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">pac (help)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tePmJcwtzS" id="image3-48g">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-08-18-at-7.12.38-am-1388x210.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">pac pcf init --namespace haddley --name virtualcontrol --template field --framework react</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tePmJeOsbP" id="image3-48h">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-08-18-at-7.16.01-am-1536x964.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">pac auth create –-url https://org6bf9e824.api.crm.dynamics.com<br>(url value from Web API endpoint see above)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tePmJhlJJj" id="image3-48i">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-08-18-at-7.16.43-am-1536x237.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Authentication successful</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tePmJm7pm5" id="image3-48k">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-08-18-at-7.59.42-am-1536x933.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">npm run start<br>(I had to run <strong>npm i -g webpack</strong> and <strong>npm link webpack</strong> first)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tePmJjUbah" id="image3-48j">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-08-18-at-7.24.21-am-1536x651.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Component running in test environment</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tePmJqDBb9" id="image3-48m">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-08-18-at-8.02.05-am-1536x955.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">pac pcf push --publisher-prefix nlh </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tePmJsSsVd" id="image3-48n">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-08-18-at-8.02.50-am-1536x449.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Component has been pushed to Power Apps environment</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-tePmJv7nXp" id="image3-48o">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-08-18-at-8.03.10-am-1536x572.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Contents of solution</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-teRUu6KG8v" id="image3-48r">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-08-18-at-8.06.25-am-1536x757.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Create a test solution</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-teRUuF20hx" id="image3-48s">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-08-18-at-8.06.59-am-1536x648.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">New model-drive app</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-teRUuJGUjl" id="image3-48t">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-08-18-at-8.07.34-am-1536x647.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Name model driven app</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-teRUuQWtKk" id="image3-48v">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-08-18-at-8.08.06-am-1536x651.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add page</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-teRUuUKker" id="image3-48w">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-08-18-at-8.08.30-am-1536x716.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Select Table based view and form</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-teRUuXX1pd" id="image3-48x">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-08-18-at-8.08.56-am-1536x717.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Select "Account" entity/table</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-teRUv1cuKn" id="image3-48y">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-08-18-at-8.09.28-am-1536x716.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Switch to classic</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-teRUv3NjXJ" id="image3-48z">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-08-18-at-8.20.53-am-1536x715.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Edit Information A form for this entity</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-teRW5HjyhE" id="image3-497">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-08-18-at-8.24.28-am-1536x938.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add code component (use for Web, Mobile and Tablet displays)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-teRW5L85OX" id="image3-498">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-08-18-at-8.24.42-am-1536x937.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Default Single-line text control will never be used</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-teRW5Pumj4" id="image3-499">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2022-08-18-at-8.26.15-am-1536x713.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">New Account form using code control</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content12 cid-teXqkWvwZZ" id="content12-49h">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="mbr-section-btn align-center"><a class="btn btn-primary display-4" href="https://pcf.gallery" target="_blank">Gallery</a></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/ytplayer/index.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>

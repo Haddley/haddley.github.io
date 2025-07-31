@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/15018162-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Power Apps, Custom Connectors and API Management</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=qIHO1Y"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=qIHO1Y" type="text/css">
+
+  
+  <link href="prism.css" rel="stylesheet" />
+<!-- include A-Frame obviously -->
+<script src="aframe.min.js"></script>
+<!-- include ar.js for A-Frame -->
+<script src="aframe-ar.js"></script>
+
+
+
+  
+</head>
+<body>
+  
+  <section data-bs-version="5.1" class="menu menu3 cid-sEGsrUgu0U" once="menu" id="menu3-1pd">
+    
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="container">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-7" href="index.html">Neil Haddley</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="posts.html">
+                            Blog Posts</a></li></ul>
+                <div class="icons-menu">
+                    <a class="iconfont-wrapper" href="https://www.linkedin.com/in/neil-haddley/" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-linkedin socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://github.com/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mbrib-github"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://www.npmjs.com/~haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont socicon-npm socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper" href="https://hub.docker.com/u/haddley" target="_blank">
+                        <span class="p-2 mbr-iconfont mobi-mbri-delivery mobi-mbri"></span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="content4 cid-sEGsrV09Ya" id="content4-1pe">
+    
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-md-12 col-lg-10">
+                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>Power Apps (Part 4)</strong></h3>
+                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">Power Apps, Custom Connectors and API Management</h4>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEGsrVoDrL" id="image3-1pf">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/office-365-icon-500x500.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4"><a rel="nofollow" href="https://commons.wikimedia.org/wiki/File:Microsoft_Office_logo.png"><br>            Microsoft_Office_logo</a>&nbsp;by&nbsp;<a href="https://www.google.com">Microsoft</a>&nbsp;is licensed under&nbsp;<a rel="nofollow" class="external text" href="https://creativecommons.org/licenses/by/2.0/">CC<br></a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content5 cid-sEGsrVAtm8" id="content5-1pg">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                
+                <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Azure API Management Service</h4>
+                <p class="mbr-text mbr-fonts-style display-7">The API Management Service controls how api services are exposed to employees by applying authentication, authorization, and usage limits.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEPcFJzK1s" id="image3-1qu">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-01-at-6.03.37-pm-1554x1140.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Navigate to Azure API Management services page</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEPcGcld0q" id="image3-1qv">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-01-at-7.19.56-pm-1516x1412.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Create haddley-api</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEPcGzeVpL" id="image3-1qw">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-01-at-7.20.41-pm-1518x1412.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">haddley-api will be created</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEPcQjsLSE" id="image3-1ra">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-01-at-7.22.37-pm-1794x962.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">haddley-api deployment in progress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEPcRM7iPc" id="image3-1re">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-01-at-8.21.56-pm-1796x954.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">haddley-api deployment complete</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEPcIB82Kb" id="image3-1r1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-01-at-8.22.22-pm-1796x962.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">haddley-api overview</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV67vhyqu" id="image3-1s1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-8.14.22-pm-1628x768.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Existing Web Service API (no authentication)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV67Q0ldc" id="image3-1s2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-8.14.51-pm-1624x772.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Existing API includes Swagger</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV689zpxg" id="image3-1s3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-8.15.06-pm-1626x768.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Url to swagger.json definition</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV68C7qtU" id="image3-1s4">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-8.18.25-pm-1836x1089.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add API to API Management</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV68WHNRW" id="image3-1s5">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-8.19.01-pm-1128x766.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Provide url to swagger.json</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV69fcptw" id="image3-1s6">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-8.27.46-pm-1836x1089.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Review API details</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV69z1jk3" id="image3-1s7">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-8.28.02-pm-1836x1088.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Test /Book GET</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV69SVM4d" id="image3-1s8">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-8.28.18-pm-1836x1086.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Test is successful</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV6abxnyp" id="image3-1s9">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-8.29.00-pm-1836x1088.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Create Power Connector (for Power Apps)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV6aDwEwM" id="image3-1sa">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-8.45.40-pm-1836x1089.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Provide connector name</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV6aXhRkA" id="image3-1sb">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-8.46.25-pm-1836x1089.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">New custom connector has been added</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV6bkLK3x" id="image3-1sc">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-8.46.49-pm-1836x1082.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Edit the connector to review</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV6bEHZBH" id="image3-1sd">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-8.47.03-pm-1836x1085.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Notice that an API Key/Subscription is required</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV6c4TYEl" id="image3-1se">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-8.47.37-pm-1836x1079.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">+ New connection (based on the Custom Connector)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV6cXT0vj" id="image3-1sg">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-8.48.00-pm-1836x1089.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">A Subscription key has to be provided</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEVUGRbT6M" id="image3-1t1">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-03-at-12.33.42-am-1594x746.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Using Chrome to call the API Management service without passing the Subscription key</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEVUHBAsu1" id="image3-1t2">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-03-at-12.31.47-am-1836x1047.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Using Postman to call the API Management service without passing the Subscription key</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV6dpznnu" id="image3-1sh">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-8.49.47-pm-1836x1088.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Notice that a Subscription key was provided in the API Management test page</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEVULKsSh0" id="image3-1t3">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-03-at-12.32.01-am-1836x1143.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Using Postman to call the API Management service providing the Subscription key</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV8RWxdy4" id="image3-1t0">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-9.24.05-pm-1836x694.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The same Subscription key value can be copied from the API Management Subscriptions page</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV6dNiHEc" id="image3-1si">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-8.50.07-pm-1836x1086.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Enter the Subscription key</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV6eeyvOs" id="image3-1sj">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-8.50.26-pm-1836x1083.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The new connection has been created</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV6csk9gV" id="image3-1sf">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-8.50.47-pm-1836x1087.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Create a test Power App</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV6eVWu9k" id="image3-1sl">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-8.51.04-pm-1836x1087.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Blank Power App</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV6fhSCpr" id="image3-1sm">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-8.51.28-pm-1836x1084.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add a data source</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV6ezU8yy" id="image3-1sk">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-8.51.51-pm-1836x1088.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The connector has been added</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV6fLeWmi" id="image3-1sn">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-8.52.27-pm-1836x1084.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add a button and configure the "OnSelect" handler</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV6g6l47R" id="image3-1so">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-8.52.41-pm-1836x1084.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">OnSelect books will be retrieved and stored in a "colBooks" collection</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV6gtLPcn" id="image3-1sp">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-8.53.09-pm-1836x1088.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Preview the app</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV6gNodcY" id="image3-1sq">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-8.53.18-pm-1836x1090.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Press the Button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV6ha8BRi" id="image3-1sr">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-8.53.44-pm-1836x1088.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Navigate to Collections to review the result</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV6hypg4c" id="image3-1ss">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-8.54.29-pm-1836x1085.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add a gallery control and set items property to colBooks collection</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV6hRFp4P" id="image3-1st">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-8.54.54-pm-1836x1086.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">update the gallery control to display book titles and isbn (numbers)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV6iBtWRV" id="image3-1sv">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-9.00.16-pm-1836x1082.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Add a new subscription</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV6j0K42s" id="image3-1sw">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-9.01.26-pm-1836x1086.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Copy the subscription key</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV6jOcgur" id="image3-1sy">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-9.04.27-pm-1836x420.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Edit the connection</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="image3 cid-sEV6jpgFN6" id="image3-1sx">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screen-shot-2021-08-02-at-9.04.37-pm-1836x1087.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Update the subscription key</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features13 cid-sEV5On94UA" id="features14-1rz">
+    
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-4 mbr-fonts-style display-2"><strong>References</strong></h3>
+            </div>
+            <div class="card col-12 col-md-4 col-lg-2 p-3">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont socicon-youtube socicon"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><a href="https://www.youtube.com/watch?v=06CRN18kH1k" class="text-primary" target="_blank">How to import APIs to Power Apps using Azure API Management</a></h4>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/ytplayer/index.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  <script src="prism.js"></script>
+<script src="webcomponents/howtoTooltip.js"></script>
+  
+</body>
+</html>
