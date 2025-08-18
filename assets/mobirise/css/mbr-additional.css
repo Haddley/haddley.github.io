@@ -168790,6 +168790,27 @@ a {
 .cid-uUbvSKN4KV img {
   width: 100%;
 }
+.cid-uUcxVC6RDA {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background-color: #ffffff;
+}
+.cid-uUcxEFBi7s {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  background-color: #ffffff;
+}
+@media (max-width: 991px) {
+  .cid-uUcxEFBi7s .image-wrapper {
+    margin-bottom: 1rem;
+  }
+}
+.cid-uUcxEFBi7s .row {
+  flex-direction: row-reverse;
+}
+.cid-uUcxEFBi7s img {
+  width: 100%;
+}
 .cid-uUbvSMEXgJ {
   padding-top: 4rem;
   padding-bottom: 4rem;
