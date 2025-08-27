@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="assets/theme/css/style.css">
   <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=LW2Bbu"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=LW2Bbu" type="text/css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=txgfz1"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=txgfz1" type="text/css">
 
   
   <link href="prism.css" rel="stylesheet" />
@@ -184,12 +184,6 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
-import { ensureAuthenticated, makeApiCall } from "./business-central-auth";
-
-
-
-import { configDotenv } from "dotenv";
-configDotenv();
 
 const server = new McpServer({
     name: "Business Central MCP Server",
@@ -216,6 +210,42 @@ server.tool(
 
 const transport = new StdioServerTransport();
 server.connect(transport);
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content7 cid-uV29KXGFCH" id="content7-d80">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>package.json</strong><strong><br></strong></h5>
+
+<pre class="language-clike"><code><!--         
+{
+    "name": "business-central-mcp",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "type": "module",
+    "dependencies": {
+        "@modelcontextprotocol/sdk": "^1.17.3",
+        "zod": "^3.25.76"
+    }
+}
 --></code></pre>
                     
 
@@ -266,14 +296,13 @@ server.connect(transport);
         <div class="row justify-content-center">
             <div class="col-12 col-md-10">
                 <blockquote>
-                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>main.ts</strong></h5>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>src/main.ts</strong></h5>
 
 <pre class="language-clike"><code><!--         
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
-import { ensureAuthenticated, makeApiCall } from "./business-central-auth";
-
+import { ensureAuthenticated, makeApiCall } from "./business-central-auth.js";
 
 import { configDotenv } from "dotenv";
 configDotenv();
@@ -282,6 +311,7 @@ const server = new McpServer({
     name: "Business Central MCP Server",
     version: "1.0.0"
 });
+
 
 server.tool(
   'get_vendors',
@@ -318,6 +348,7 @@ server.tool(
   }
 );
 
+
 const transport = new StdioServerTransport();
 server.connect(transport);
 --></code></pre>
@@ -336,7 +367,7 @@ server.connect(transport);
         <div class="row justify-content-center">
             <div class="col-12 col-md-10">
                 <blockquote>
-                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>business-central-auth.ts</strong></h5>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>src/business-central-auth.ts</strong></h5>
 
 <pre class="language-clike"><code><!--         
 import axios from 'axios';
@@ -439,6 +470,116 @@ export function clearAuthentication(): void {
     </div>
 </section>
 
+<section data-bs-version="5.1" class="content7 cid-uV2f0aWB8D" id="content7-d81">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>package.json</strong><strong><br></strong></h5>
+
+<pre class="language-clike"><code><!--         
+{
+    "name": "business-central-mcp",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "build": "tsc --outDir dist",
+        "start": "node ./dist/main.js",
+        "dev": "tsx main.ts"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "type": "module",
+    "dependencies": {
+        "@modelcontextprotocol/sdk": "^1.17.3",
+        "axios": "^1.11.0",
+        "dotenv": "^17.2.1",
+        "zod": "^3.25.76"
+    },
+    "devDependencies": {
+        "@types/node": "^24.3.0",
+        "@typescript-eslint/eslint-plugin": "^8.41.0",
+        "@typescript-eslint/parser": "^8.41.0",
+        "tsx": "^4.20.5",
+        "typescript": "^5.9.2"
+    }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content7 cid-uV2nEJ37KL" id="content7-d82">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>tsconfig.json</strong><strong><br></strong></h5>
+
+<pre class="language-clike"><code><!--         
+{
+  // Visit https://aka.ms/tsconfig to read more about this file
+  "compilerOptions": {
+    // File Layout
+    // "rootDir": "./src",
+    // "outDir": "./dist",
+
+    // Environment Settings
+    // See also https://aka.ms/tsconfig/module
+    "module": "nodenext",
+    "target": "esnext",
+    "types": [],
+    // For nodejs:
+    // "lib": ["esnext"],
+    // "types": ["node"],
+    // and npm install -D @types/node
+
+    // Other Outputs
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+
+    // Stricter Typechecking Options
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+    // Style Options
+    // "noImplicitReturns": true,
+    // "noImplicitOverride": true,
+    // "noUnusedLocals": true,
+    // "noUnusedParameters": true,
+    // "noFallthroughCasesInSwitch": true,
+    // "noPropertyAccessFromIndexSignature": true,
+
+    // Recommended Options
+    "strict": true,
+    "jsx": "react-jsx",
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "noUncheckedSideEffectImports": true,
+    "moduleDetection": "force",
+    "skipLibCheck": true,
+  }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section data-bs-version="5.1" class="content7 cid-uUB24CeZRx" id="content7-d7z">
     
     <div class="container">
@@ -481,7 +622,748 @@ BC_ENVIRONMENT=Production
             <div class="col-12 col-lg-10">
                 <div class="image-wrapper">
                     <img src="assets/images/screenshot202025-08-2220at206.35.00e280afpm-2136x1369.png" alt="">
-                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I ran <strong>npx -y @modelcontextprotocol/inspector npx -y tsx main.ts</strong>. The get_vendors tools returned <strong>success</strong>.<br></p>
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I ran <strong>npx -y @modelcontextprotocol/inspector npm run dev</strong>. The get_vendors tools returned <strong>success</strong>.<br><br>Later I ran&nbsp;<strong>npm run build</strong> and then&nbsp;<strong>npx -y @modelcontextprotocol/inspector npm run start</strong><br><br><br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content7 cid-uV3pKtflFa" id="content7-d84">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Streamable HTTP</strong></h5>
+                <p class="mbr-text mbr-fonts-style display-4">For remote servers, set up a Streamable HTTP transport that handles both client requests and server-to-client notifications.</p></blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content7 cid-uV3uAPvIiI" id="content7-d8h">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>src/main.ts</strong></h5>
+
+<pre class="language-clike"><code><!--         
+import express from "express";
+import { randomUUID } from "node:crypto";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
+import { isInitializeRequest } from "@modelcontextprotocol/sdk/types.js"
+import { ensureAuthenticated, makeApiCall } from "./business-central-auth.js";
+import { z } from "zod";
+
+const app = express();
+app.use(express.json());
+
+// Map to store transports by session ID
+const transports: { [sessionId: string]: StreamableHTTPServerTransport } = {};
+
+// Handle POST requests for client-to-server communication
+app.post('/mcp', async (req, res) => {
+  // Check for existing session ID
+  const sessionId = req.headers['mcp-session-id'] as string | undefined;
+  let transport: StreamableHTTPServerTransport;
+
+  if (sessionId && transports[sessionId]) {
+    // Reuse existing transport
+    transport = transports[sessionId];
+  } else if (!sessionId && isInitializeRequest(req.body)) {
+    // New initialization request
+    transport = new StreamableHTTPServerTransport({
+      sessionIdGenerator: () => randomUUID(),
+      onsessioninitialized: (sessionId) => {
+        // Store the transport by session ID
+        transports[sessionId] = transport;
+      },
+      // DNS rebinding protection is disabled by default for backwards compatibility. If you are running this server
+      // locally, make sure to set:
+      // enableDnsRebindingProtection: true,
+      // allowedHosts: ['127.0.0.1'],
+    });
+
+    // Clean up transport when closed
+    transport.onclose = () => {
+      if (transport.sessionId) {
+        delete transports[transport.sessionId];
+      }
+    };
+    const server = new McpServer({
+      name: "example-server",
+      version: "1.0.0"
+    });
+
+    // ... set up server resources, tools, and prompts ...
+
+    server.tool(
+      'get_vendors',
+      'Retrieves vendor list from Business Central',
+      {
+        filter: z.string().optional().describe('OData filter for vendors'),
+        top: z.number().optional().describe('Maximum number of results')
+      },
+      async ({ filter, top = 100 }) => {
+        await ensureAuthenticated();
+        const params: any = { $top: top };
+        if (filter) params.$filter = filter;
+
+        const result = await makeApiCall('vendors', params);
+        return {
+          content: [{
+            type: "text",
+            text: JSON.stringify({
+              success: true,
+              data: result.value || [],
+              count: result.value?.length || 0
+            }, null, 2)
+          }]
+        };
+      }
+    );
+
+    // Connect to the MCP server
+    await server.connect(transport);
+  } else {
+    // Invalid request
+    res.status(400).json({
+      jsonrpc: '2.0',
+      error: {
+        code: -32000,
+        message: 'Bad Request: No valid session ID provided',
+      },
+      id: null,
+    });
+    return;
+  }
+
+  // Handle the request
+  await transport.handleRequest(req, res, req.body);
+});
+
+// Reusable handler for GET and DELETE requests
+const handleSessionRequest = async (req: express.Request, res: express.Response) => {
+  const sessionId = req.headers['mcp-session-id'] as string | undefined;
+  if (!sessionId || !transports[sessionId]) {
+    res.status(400).send('Invalid or missing session ID');
+    return;
+  }
+
+  const transport = transports[sessionId];
+  await transport.handleRequest(req, res);
+};
+
+// Handle GET requests for server-to-client notifications via SSE
+app.get('/mcp', handleSessionRequest);
+
+// Handle DELETE requests for session termination
+app.delete('/mcp', handleSessionRequest);
+
+app.listen(3000);
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content7 cid-uV3v0RnDDV" id="content7-d8o">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>package.json</strong></h5>
+
+<pre class="language-clike"><code><!--         
+{
+    "name": "business-central-mcp",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "build": "tsc --outDir dist",
+        "start": "TRANSPORT=http node ./dist/main.js",
+        "dev:stdio": "tsx ./src/main.ts",
+        "dev:http": "TRANSPORT=http tsx ./src/main.ts",
+        "docker:build": "docker build -t business-central-mcp .",
+        "docker:run": "docker run -p 3000:3000 --env-file .env business-central-mcp"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "type": "module",
+    "dependencies": {
+        "@modelcontextprotocol/sdk": "^1.17.3",
+        "axios": "^1.11.0",
+        "cors": "^2.8.5",
+        "dotenv": "^17.2.1",
+        "express": "^5.1.0",
+        "zod": "^3.25.76"
+    },
+    "devDependencies": {
+        "@types/cors": "^2.8.19",
+        "@types/express": "^5.0.3",
+        "@types/node": "^24.3.0",
+        "@typescript-eslint/eslint-plugin": "^8.41.0",
+        "@typescript-eslint/parser": "^8.41.0",
+        "tsx": "^4.20.5",
+        "typescript": "^5.9.2"
+    }
+}
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content7 cid-uV3uBngLrP" id="content7-d8i">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>dockerfile</strong></h5>
+
+<pre class="language-clike"><code><!--         
+FROM node:20-alpine
+WORKDIR /app
+
+# Install dependencies
+COPY package*.json ./
+RUN npm ci --only=production
+
+# Copy source code
+COPY . .
+
+# Expose port
+EXPOSE 3000
+
+# Set environment variables
+ENV TRANSPORT=http
+ENV PORT=3000
+
+# Start the server
+CMD ["npm", "start"]
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content7 cid-uV3vGN1SUb" id="content7-d8p">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>docker-compose.yml</strong></h5>
+
+<pre class="language-clike"><code><!--         
+services:
+  business-central-mcp:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - TRANSPORT=http
+      - PORT=3000
+      # Add your Business Central environment variables here
+      - BC_TENANT_ID=${BC_TENANT_ID}
+      - BC_CLIENT_ID=${BC_CLIENT_ID}
+      - BC_CLIENT_SECRET=${BC_CLIENT_SECRET}
+      - BC_BASE_URL=${BC_BASE_URL}
+      - BC_COMPANY_ID=${BC_COMPANY_ID}
+      - BC_ENVIRONMENT=${BC_ENVIRONMENT}
+    restart: unless-stopped
+--></code></pre>
+                    
+
+                    
+</blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uV3pN2q42s" id="image3-d86">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-08-2720at205.10.09e280afpm-2136x1326.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I ran <strong>docker build -t business-central-mcp </strong>.<br>then <strong>npm run docker:run&nbsp;</strong><br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uV3pNc7DF3" id="image3-d87">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-08-2720at205.12.04e280afpm-2136x860.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I ran&nbsp;<strong>npx -y @modelcontextprotocol/inspector<br></strong><br><strong><br></strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uV3pNp2EZ4" id="image3-d88">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-08-2720at205.12.56e280afpm-1619x886.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I ran the <strong>get_vendors</strong> tool</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content7 cid-uV3AVdI0JQ" id="content7-d8r">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Create and deploy to Azure Container Apps</strong></h5>
+                <p class="mbr-text mbr-fonts-style display-4">The Azure Container Apps extension for Visual Studio Code enables you to choose existing Container Apps resources, or create new ones to deploy your applications to.<br><br><a href="https://learn.microsoft.com/en-us/azure/container-apps/deploy-visual-studio-code" class="text-primary">https://learn.microsoft.com/en-us/azure/container-apps/deploy-visual-studio-code</a></p></blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uV3pNBGJA4" id="image3-d89">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-08-2720at205.28.35e280afpm-2136x374.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I entered the <strong>name</strong> of new container apps environment</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uV3pO1Fnl4" id="image3-d8b">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-08-2720at205.28.44e280afpm-2136x413.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected a <strong>location</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uV3pOdwUaL" id="image3-d8c">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-08-2720at205.35.46e280afpm-2136x185.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the <strong>Deploy Project from Workspace...</strong> menu item</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uV3pOpOKg2" id="image3-d8d">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-08-2720at205.36.13e280afpm-2136x303.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I accepted the generated container app name</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uV3pONkkWh" id="image3-d8f">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-08-2720at205.36.27e280afpm-2136x250.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the <strong>Managed Identity </strong>option</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uV3pOBrx5J" id="image3-d8e">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-08-2720at205.36.36e280afpm-2136x205.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the <strong>.env</strong> file</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uV3pOZoLit" id="image3-d8g">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-08-2720at205.39.11e280afpm-2136x1314.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The deployment finished</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uV3pMF1Efi" id="image3-d85">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-08-2720at205.41.17e280afpm-2136x1079.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I ran a fresh copy of the inspector</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uV30s1bO65" id="image3-d83">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-08-2720at205.41.01e280afpm-1620x891.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I tested the deployment using the URL <strong>https://business-central-mcp-new.thankfulsea-b533246e.eastus.azurecontainerapps.io/mcp</strong><br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content7 cid-uV3H2Wo32g" id="content7-d9a">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <blockquote>
+                <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>Adding the MCP Model Context Protocol server to Copilot Studio via Custom Connector</strong></h5>
+                <p class="mbr-text mbr-fonts-style display-4">I used a Custom Connector to connect Copilot Studio to the Model Context Protocol server.</p></blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uV3GSvJW2I" id="image3-d8t">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-08-2720at205.42.53e280afpm-1617x848.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I created an Agent. I selected the Tools tab. I clicked the <strong>+ Add a tool</strong> button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uV3GT5ejJP" id="image3-d8v">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-08-2720at205.45.22e280afpm-1620x601.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected <strong>Custom connector</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uV3GTi9QqS" id="image3-d8w">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-08-2720at205.45.52e280afpm-1619x413.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the <strong>Import from Github</strong> option</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uV3GTucitd" id="image3-d8x">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-08-2720at205.46.30e280afpm-1618x747.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I selected the <strong>Custom</strong> radio button, I selected the <strong>dev</strong> branch, I selected the <strong>MCP-Streamable-HTTP</strong> Connector</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uV3GTETYSg" id="image3-d8y">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-08-2720at205.47.14e280afpm-1618x891.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I entered the server url</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uV3GTRo8U7" id="image3-d8z">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-08-2720at205.49.34e280afpm-1616x683.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I refreshed the <strong>Model Context Protocol</strong> options</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uV3GUdrGqI" id="image3-d91">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-08-2720at205.49.48e280afpm-1615x765.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked on the <strong>MCP Server Streamable HTTP</strong> option</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uV3GU3imRQ" id="image3-d90">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-08-2720at205.49.58e280afpm-1619x788.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the <strong>Create</strong> button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uV3GUwOGAA" id="image3-d93">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-08-2720at205.50.08e280afpm-1617x789.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I clicked the <strong>Add and configure</strong> button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uV3GUGLIgp" id="image3-d94">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-08-2720at205.50.48e280afpm-1619x841.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The <strong>get_vendors</strong> tool was displayed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uV3GUROXGo" id="image3-d95">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-08-2720at205.51.42e280afpm-1618x861.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I was directed to the Create or pick a connection form. I clicked the <strong>Submit</strong> button</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uV3GV2hdA2" id="image3-d96">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-08-2720at205.51.52e280afpm-1619x378.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">The status if MCP-Streamable-HTTP was updated to <strong>Connected</strong>&nbsp;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uV3IUCQ010" id="image3-d9b">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-08-2720at206.00.11e280afpm-1728x341.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">I had entered this prompt <strong>Please show me a table of vendors</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="image3 cid-uV3GVrKvo0" id="image3-d97">
+    
+
+    
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10">
+                <div class="image-wrapper">
+                    <img src="assets/images/screenshot202025-08-2720at205.52.48e280afpm-1729x924.png" alt="">
+                    <p class="mbr-description mbr-fonts-style mt-2 align-center display-4">Copilot Studio's Large Language Model used the get_vendors tool to establish the context.</p>
                 </div>
             </div>
         </div>
@@ -505,7 +1387,14 @@ BC_ENVIRONMENT=Production
                     </div>
                 </div>
             </div>
-            
+            <div class="card p-3 col-12 col-md-4 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-box align-center">
+                        <span class="mbr-iconfont socicon-youtube socicon"></span>
+                        <h4 class="card-title align-center mbr-black mbr-fonts-style display-7"><a href="https://www.youtube.com/watch?v=qjMBkk0R_7s&t=292s" class="text-primary" target="_blank">How to add MCP Model Context Protocol to Copilot Studio via Custom Connector</a></h4>
+                    </div>
+                </div>
+            </div>
             
             
             
