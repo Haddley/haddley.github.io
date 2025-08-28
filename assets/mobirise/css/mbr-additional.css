@@ -169867,6 +169867,48 @@ a {
 .cid-uV3GVrKvo0 img {
   width: 100%;
 }
+.cid-uV7QnpYCue {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background-color: #ffffff;
+}
+.cid-uV7QnpYCue blockquote {
+  border-color: #6592e6;
+  border-radius: 4px;
+  background-color: #fafafa;
+}
+.cid-uV7QqoJeDS {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  background-color: #ffffff;
+}
+@media (max-width: 991px) {
+  .cid-uV7QqoJeDS .image-wrapper {
+    margin-bottom: 1rem;
+  }
+}
+.cid-uV7QqoJeDS .row {
+  flex-direction: row-reverse;
+}
+.cid-uV7QqoJeDS img {
+  width: 100%;
+}
+.cid-uV7QqTBTqL {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  background-color: #ffffff;
+}
+@media (max-width: 991px) {
+  .cid-uV7QqTBTqL .image-wrapper {
+    margin-bottom: 1rem;
+  }
+}
+.cid-uV7QqTBTqL .row {
+  flex-direction: row-reverse;
+}
+.cid-uV7QqTBTqL img {
+  width: 100%;
+}
 .cid-uUAvRLF7zV {
   padding-top: 4rem;
   padding-bottom: 4rem;
