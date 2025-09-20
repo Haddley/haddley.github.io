@@ -1554,7 +1554,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/iot-microchip.svg'
   },
   {
-    slug: 'WebVR',
+    slug: 'webvr',
     title: 'WebVR',
     description: 'A comprehensive guide covering  web v r',
     date: '2021-03-02',
