@@ -1,0 +1,446 @@
+/* Import Google Fonts - Jost family as used in original */
+@import url('https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap');
+
+/* Blog content specific styles to enhance readability */
+.blog-content {
+  color: #232323;
+  line-height: 1.6;
+}
+
+.blog-content h1,
+.blog-content h2,
+.blog-content h3,
+.blog-content h4,
+.blog-content h5,
+.blog-content h6 {
+  font-family: 'Jost', sans-serif;
+  font-weight: 600;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.blog-content h1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+.blog-content h2 {
+  font-size: 2rem;
+  line-height: 1.3;
+}
+
+/* Image styles for blog content */
+.image3 img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.image-wrapper {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+/* Error state for broken images */
+img[alt*="Failed to load"] {
+  background-color: #f8f9fa;
+  border: 2px dashed #dc3545;
+  padding: 20px;
+  color: #dc3545;
+  font-family: monospace;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blog-content h3 {
+  font-size: 1.5rem;
+  line-height: 1.4;
+}
+
+.blog-content p {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.blog-content ul,
+.blog-content ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.blog-content li {
+  margin-bottom: 0.5rem;
+}
+
+.blog-content img {
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem 0;
+  border-radius: 4px;
+}
+
+.blog-content blockquote {
+  border-left: 4px solid #ddd;
+  margin: 1.5rem 0;
+  padding-left: 1rem;
+  font-style: italic;
+  background-color: #f9f9f9;
+  padding: 1rem;
+}
+
+.blog-content pre {
+  background-color: #f4f4f4;
+  border-radius: 4px;
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.blog-content code {
+  background-color: #f4f4f4;
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
+}
+
+.blog-content pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+/* Ensure proper spacing in blog sections */
+.blog-content > * + * {
+  margin-top: 1rem;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Jost', sans-serif;
+}
+
+/* Custom button styles to match the original design */
+.btn-secondary {
+  background-color: #2563eb;
+  color: white;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.btn-secondary:hover {
+  background-color: #1d4ed8;
+}
+
+/* Section styles */
+.section {
+  padding: 4rem 0;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 6rem 0;
+  }
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+/* Typography styles to match original design */
+.display-2 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+@media (min-width: 768px) {
+  .display-2 {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .display-2 {
+    font-size: 3.75rem;
+  }
+}
+
+.display-4 {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.display-7 {
+  font-size: 1.125rem;
+  line-height: 1.625;
+}
+
+/* Code highlighting styles */
+pre {
+  background-color: #f3f4f6;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+}
+
+code {
+  background-color: #f3f4f6;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-family: ui-monospace, SFMono-Regular, 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+/* Blog post content styles */
+.blog-content {
+  max-width: none;
+  line-height: 1.7;
+  color: #374151;
+}
+
+/* Headings */
+.blog-content h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+  color: #111827;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+}
+
+.blog-content h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  color: #111827;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+}
+
+.blog-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  margin-top: 1.5rem;
+  color: #111827;
+}
+
+.blog-content h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  margin-top: 1rem;
+  color: #111827;
+}
+
+/* Paragraphs */
+.blog-content p {
+  margin-bottom: 1.5rem;
+  line-height: 1.75;
+  font-size: 1rem;
+}
+
+/* Lists */
+.blog-content ul, .blog-content ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.blog-content ul {
+  list-style-type: disc;
+}
+
+.blog-content ol {
+  list-style-type: decimal;
+}
+
+.blog-content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.75;
+}
+
+.blog-content li > ul, .blog-content li > ol {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Links */
+.blog-content a {
+  color: #2563eb;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.blog-content a:hover {
+  color: #1d4ed8;
+}
+
+/* Images */
+.blog-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin: 1.5rem auto;
+  display: block;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+/* Image captions (em elements that follow images) */
+.blog-content p > em {
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-style: italic;
+  text-align: center;
+  display: block;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Code blocks */
+.blog-content pre {
+  background-color: #111827;
+  color: #f9fafb;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
+}
+
+.blog-content pre code {
+  background-color: transparent;
+  padding: 0;
+  color: #f9fafb;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* Inline code */
+.blog-content code {
+  background-color: #f3f4f6;
+  color: #1f2937;
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
+}
+
+/* Override inline code styles for code inside pre blocks */
+.blog-content pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* Blockquotes */
+.blog-content blockquote {
+  border-left: 4px solid #93c5fd;
+  padding-left: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+  color: #4b5563;
+  background-color: #f9fafb;
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
+/* Tables */
+.blog-content table {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  border-collapse: collapse;
+}
+
+.blog-content th, .blog-content td {
+  border: 1px solid #d1d5db;
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+.blog-content th {
+  background-color: #f3f4f6;
+  font-weight: 600;
+}
+
+/* Strong/Bold text */
+.blog-content strong {
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Emphasis/Italic text */
+.blog-content em {
+  font-style: italic;
+}
+
+/* Horizontal rules */
+.blog-content hr {
+  margin: 2rem 0;
+  border: 0;
+  border-top: 1px solid #d1d5db;
+}
+
+/* Better spacing for content sections */
+.blog-content > *:first-child {
+  margin-top: 0;
+}
+
+.blog-content > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .blog-content h1 {
+    font-size: 3rem;
+  }
+  
+  .blog-content h2 {
+    font-size: 2.25rem;
+  }
+  
+  .blog-content h3 {
+    font-size: 1.875rem;
+  }
+  
+  .blog-content h4 {
+    font-size: 1.5rem;
+  }
+}

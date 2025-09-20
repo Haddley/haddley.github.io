@@ -1,0 +1,44 @@
+---
+title: "Prompt Flow (Part 6)"
+description: "A comprehensive guide covering prompt flow (part 6)"
+date: "2025-09-20"
+category: "Development"
+image: "/assets/images/promptflow6/hero.png"
+tags: ["python","ai"]
+---
+
+# Prompt Flow (Part 6)
+
+## With Semantic Kernel and Planner
+
+![](/assets/images/promptflow6/logo.svg)
+*This file is licensed under the MIT license.*
+
+
+## Quick start
+
+I used Prompt flow, Semantic Kernel and Planner to create an AI application.
+
+![](/assets/images/promptflow6/screenshot-2024-09-01-at-2.49.44pm-2044x680.png)
+*I used the Visual Studio Code Prompt flow Extension to create a Chat flow*
+
+![](/assets/images/promptflow6/screenshot-2024-09-01-at-2.49.57pm-1694x420.png)
+*I accepted the default name*
+
+![](/assets/images/promptflow6/screenshot-2024-09-01-at-3.12.23pm-1876x354.png)
+*I ran the flow and asked "what is 2134.567 * 653.23?"It provided an answer that was close but incorrect (the correct result is 1,394,363.20141)*
+
+![](/assets/images/promptflow6/screenshot-2024-09-01-at-3.13.39pm-468x254.png)
+*The correct result*
+
+![](/assets/images/promptflow6/screenshot-2024-09-01-at-3.18.34pm-2136x883.png)
+*I replaced the large language model chat node with a Python node.The answer to every question I ask is "hello "+the question I asked (not very useful)*
+
+![](/assets/images/promptflow6/screenshot-2024-09-01-at-3.43.26pm-2136x1400.png)
+*I added Semantic Kernel to the Python codeI added the Joke function from the FunPlugin.*
+
+![](/assets/images/promptflow6/screenshot-2024-09-01-at-3.47.40pm-1828x182.png)
+*Now the answer to every question I ask is a Joke (not always useful)*
+
+![](/assets/images/promptflow6/screenshot-2024-09-01-at-5.23.01pm-1792x710.png)
+*I added the MathPlugin and a PlannerNow I can ask fun questions or math questions and the bot can decide which Plugin to call*

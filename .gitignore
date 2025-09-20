@@ -1,6 +1,29 @@
 
+# macOS
 .DS_Store
-.DS_Store
-.DS_Store
-.DS_Store
-.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Next.js build outputs and dependencies
+nextjs-blog/node_modules/
+nextjs-blog/.next/
+nextjs-blog/out/
+nextjs-blog/.env*.local
+nextjs-blog/package-lock.json
+
+# Large asset directories (keep source but not all assets)
+nextjs-blog/public/assets/images/
+nextjs-blog/content-backup/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependencies
+node_modules/

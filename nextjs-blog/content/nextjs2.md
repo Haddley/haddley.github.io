@@ -1,0 +1,99 @@
+---
+title: "Next.js (Part 2)"
+description: "A comprehensive guide covering next.js (part 2)"
+date: "2025-09-20"
+category: "Web Development"
+image: "/assets/images/nextjs2/hero.png"
+tags: ["javascript","aws","java","ai","ml"]
+---
+
+# Next.js (Part 2)
+
+## getStaticProps, getServerSideProps, getStaticPaths and useSWR
+
+![AWS](/assets/images/nextjs2/2560px-nextjs-logo.svg-1536x920.png)
+*This file is licensed under the Creative Commons Attribution-Share Alike 4.0 International license.*
+
+
+## Pre-rendering
+
+Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering. The difference is in when Next.js generates the HTML for a page.
+
+Static Generation is a pre-rendering approach that generates the HTML pages at build time.
+
+Server-side Rendering is a pre-rendering approach that generates the HTML on each request.
+
+You can create a Next.js app that uses Static Generation for some pages and Server-side Rendering for others.
+
+
+## Static Generation (with data)
+
+In Next.js, after exporting a page function, a developer can export a getStaticProps function.
+
+A getStaticProps runs at build time.
+
+
+## getStaticProps
+
+A getStaticProps function can be used to generate a page based on data returned by a web service call*.
+
+* [You should not fetch an API Route from getStaticProps or getStaticPaths](https://nextjs.org/learn/basics/api-routes/api-routes-details). Instead, write your server-side code directly in getStaticProps or getStaticPaths (or call a helper function).
+
+![](/assets/images/nextjs2/screen-shot-2021-11-06-at-6.18.26-pm-1486x906.png)
+*getStaticProps*
+
+
+## getServerSideProps
+
+A getServerSideProps function is used at runtime to build a page in response to a request (with or without caching).
+
+![](/assets/images/nextjs2/screen-shot-2021-11-06-at-6.26.46-pm-1492x908.png)
+*getServerSideProps*
+
+
+## getStaticPaths
+
+getStaticProps and getStaticPaths can be used together to generate multiple pages.
+
+![](/assets/images/nextjs2/screen-shot-2021-11-06-at-6.57.55-pm-1490x906.png)
+*getStaticProps and getStaticPaths being used together*
+
+
+## next export
+
+next export can be used to generate html pages that can be uploaded to a static web server.
+
+$ npm run export
+
+![](/assets/images/nextjs2/screen-shot-2021-11-06-at-7.29.43-pm-1836x1051.png)
+*npm run export*
+
+![](/assets/images/nextjs2/screen-shot-2021-11-06-at-7.35.14-pm-1836x942.png)
+*out folder with generated pages*
+
+![](/assets/images/nextjs2/screen-shot-2021-11-06-at-7.31.45-pm-1486x908.png)
+*/out/articles/36*
+
+
+## useSWR
+
+Once the server-side rendered parts of a page have been downloaded JavaScript running on the page can fetch data and populate the remaining parts of the page (client-side).
+
+$ npm install swr
+
+
+## Catch all routes
+
+Dynamic routes can be extended to catch all paths by adding three dots (...) inside the brackets. For example:
+
+pages/post/[...slug].js matches /post/a, but also /post/a/b, /post/a/b/c and so on.
+
+pages/fullname/[...slug]/index.js matches /fullname/neil, but also /fullname/neil/haddley, /fullname/neil/leonard/haddley and so on.
+
+You can use names other than slug, such as: [...param]
+
+![](/assets/images/nextjs2/screen-shot-2021-11-07-at-9.14.45-am-1380x791.png)
+*Client-side code*
+
+![](/assets/images/nextjs2/screen-shot-2021-11-07-at-9.15.03-am-1380x785.png)
+*Catch all routes*
