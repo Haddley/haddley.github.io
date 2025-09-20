@@ -38,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* eslint-disable-next-line @next/next/no-css-tags */}
+        {/* eslint-disable @next/next/no-css-tags */}
         {/* Original Mobirise CSS files */}
         <link rel="stylesheet" href="/assets/web/assets/mobirise-icons2/mobirise2.css" />
         <link rel="stylesheet" href="/assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css" />
@@ -50,6 +50,7 @@ export default function RootLayout({
         <link rel="stylesheet" href="/assets/theme/css/style.css" />
         <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" />
         <link rel="stylesheet" href="/prism.css" />
+        {/* eslint-enable @next/next/no-css-tags */}
       </head>
       <body className={`${jost.className} antialiased`}>
         <Layout>{children}</Layout>
