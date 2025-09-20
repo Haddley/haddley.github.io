@@ -1,16 +1,19 @@
-# Neil Haddley's Blog - Next.js Migration
+# Next.js Blog Application
 
-This project is a modern Next.js version of Neil Haddley's personal blog, migrated from static HTML pages to a dynamic, maintainable React application.
+The source code for Neil Haddley's tech blog - a modern Next.js application with static site generation.
 
-## 🚀 Features
+## 🚀 Quick Start
 
-- **Modern Stack**: Built with Next.js 15, TypeScript, and Tailwind CSS
-- **Static Site Generation**: Optimized for GitHub Pages deployment
-- **Responsive Design**: Mobile-first approach with modern UI
-- **Markdown Support**: Write blog posts in markdown for easy content management
-- **SEO Optimized**: Meta tags, OpenGraph, and Twitter cards
-- **Component-Based**: Reusable React components for maintainability
-- **Image Optimization**: Next.js Image component for performance
+```bash
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+
+# Build for production
+npm run build
+```
 
 ## 📁 Project Structure
 
@@ -22,33 +25,45 @@ nextjs-blog/
 │   │   ├── page.tsx         # Home page
 │   │   └── posts/           # Blog posts routes
 │   ├── components/          # Reusable components
-│   │   ├── Layout.tsx
-│   │   └── Navigation.tsx
 │   └── lib/                 # Utilities and data
-│       ├── posts.ts         # Blog post data
-│       └── markdown.ts      # Markdown processing
-├── content/                 # Markdown blog posts
+├── content/                 # Markdown blog posts (251 files)
 ├── public/                  # Static assets
-│   └── assets/             # Copied from original site
+├── docs/                    # Project documentation
 └── next.config.ts          # Next.js configuration
 ```
 
-## 🛠 Installation & Setup
+## � Documentation
 
-1. **Navigate to the project directory**:
-   ```bash
-   cd nextjs-blog
-   ```
+See `/docs` directory for detailed documentation:
+- `CATEGORY_SYSTEM.md` - Blog categorization system
+- `MIGRATION_SUMMARY.md` - Migration notes and decisions
 
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
+## 🔧 Development
 
-3. **Run the development server**:
-   ```bash
-   npm run dev
-   ```
+### Adding New Posts
+1. Create a new `.md` file in `content/`
+2. Add proper frontmatter
+3. Content will be automatically categorized and deployed
+
+### Content Structure
+All blog posts are in the `content/` directory with frontmatter containing:
+- title, description, date
+- category (for navigation)
+- image (hero image path)
+- tags (for SEO)
+
+## 🚀 Deployment
+
+This application is automatically deployed to GitHub Pages via GitHub Actions when changes are pushed to the main branch.
+
+The build process:
+1. Next.js static export
+2. GitHub Pages deployment
+3. Available at https://haddley.github.io
+
+---
+
+For more details, see the main README in the repository root.
 
 4. **Open your browser**:
    Visit [http://localhost:3000](http://localhost:3000)

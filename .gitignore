@@ -1,17 +1,43 @@
-# Node modules (only in nextjs-blog)
+# Node modules and build artifacts
 nextjs-blog/node_modules/
 nextjs-blog/.next/
+nextjs-blog/out/
 
 # Backup directories
 backup-*/
 
 # MacOS
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
 # Editor files
 .vscode/
+.idea/
 *.swp
 *.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Temporary files
+*.tmp
+*.temp
 
 # Build artifacts that should be kept in root for GitHub Pages
 # (commenting out these common ignores since we want them deployed)
