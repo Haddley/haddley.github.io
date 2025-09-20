@@ -15,7 +15,7 @@ export const blogPosts: BlogPost[] = [
 
 
   {
-    slug: 'macScreenSharing',
+    slug: 'macscreensharing',
     title: 'Apple macOS',
     description: 'Screen Sharing VNC and SSH',
     date: '2025-08-18',
@@ -33,7 +33,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/mcp-1024x1024.png'
   },
   {
-    slug: 'SyntexAutofill',
+    slug: 'syntexautofill',
     title: 'SharePoint',
     description: 'Syntex Autofill',
     date: '2025-07-30',
@@ -51,7 +51,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/254932576-0d0b44e2-8f4a-4e99-9b52-a5c1c741c8f7-844x844.png'
   },
   {
-    slug: 'promptDialog3',
+    slug: 'promptdialog3',
     title: 'Business Central (Part 29)',
     description: 'Prompt Dialog Markdown (Part 3)',
     date: '2024-05-24',
@@ -60,7 +60,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/posts-meta.svg'
   },
   {
-    slug: 'promptDialog2',
+    slug: 'promptdialog2',
     title: 'Business Central (Part 28)',
     description: 'Prompt Dialog Azure Open AI (Part 2)',
     date: '2024-05-24',
@@ -69,7 +69,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/posts-meta.svg'
   },
   {
-    slug: 'promptDialog',
+    slug: 'promptdialog',
     title: 'Business Central (Part 27)',
     description: 'Prompt Dialog Introduction (Part 1)',
     date: '2024-05-24',
@@ -87,7 +87,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/iot-microchip.svg'
   },
   {
-    slug: 'AzureOpenAl',
+    slug: 'azureopenal',
     title: 'Azure AI Foundry',
     description: 'Azure OpenAI Service',
     date: '2025-02-04',
@@ -177,7 +177,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/logo.svg'
   },
   {
-    slug: 'langChainAgents',
+    slug: 'langchainagents',
     title: 'LangChain',
     description: 'With LangChain',
     date: '2024-08-25',
@@ -186,7 +186,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/langchain.svg'
   },
   {
-    slug: 'phpSetup',
+    slug: 'phpsetup',
     title: 'PHP',
     description: 'Agents',
     date: '2024-08-25',
@@ -195,7 +195,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/php-logo.svg'
   },
   {
-    slug: 'dataverseAdvancedReportsSetup',
+    slug: 'dataverseadvancedreportssetup',
     title: 'Power Apps (Part 22)',
     description: 'Setup',
     date: '2024-08-10',
@@ -204,7 +204,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'powerAutomateReports',
+    slug: 'powerautomatereports',
     title: 'Power Apps (Part 21)',
     description: 'Microsoft Power Automate Reports',
     date: '2024-07-19',
@@ -213,7 +213,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'dataverseReports',
+    slug: 'dataversereports',
     title: 'Power Apps (Part 20)',
     description: 'Microsoft Dataverse Reports',
     date: '2024-07-19',
@@ -258,7 +258,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/logo.svg'
   },
   {
-    slug: 'customtVirtualTables',
+    slug: 'customtvirtualtables',
     title: 'Power Apps (Part 18)',
     description: 'Setup',
     date: '2024-05-07',
@@ -267,7 +267,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'blogCopilotStudio',
+    slug: 'blogcopilotstudio',
     title: 'Dynamics 365 Business Central (Part 24)',
     description: 'A comprehensive guide covering blog copilot studio',
     date: '2024-03-24',
@@ -276,7 +276,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/posts-meta.svg'
   },
   {
-    slug: 'customCopilotStudio',
+    slug: 'customcopilotstudio',
     title: 'Dynamics 365 Business Central (Part 23)',
     description: 'A comprehensive guide covering custom copilot studio',
     date: '2024-03-23',
@@ -285,7 +285,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/posts-meta.svg'
   },
   {
-    slug: 'configureCopilotSingleSignonForWeb',
+    slug: 'configurecopilotsinglesignonforweb',
     title: 'Power Apps (Part 17)',
     description: 'Configure Copilot single sign-on for Web',
     date: '2024-03-16',
@@ -294,7 +294,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'customizeDefaultCanvas',
+    slug: 'customizedefaultcanvas',
     title: 'Power Apps (Part 16)',
     description: 'styleOptions',
     date: '2024-03-11',
@@ -303,7 +303,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'copilotEmbedCode',
+    slug: 'copilotembedcode',
     title: 'Power Apps (Part 15)',
     description: 'Copilot Embed Code',
     date: '2024-03-11',
@@ -321,7 +321,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/azurex70x75.svg'
   },
   {
-    slug: 'codespacesAuthentication',
+    slug: 'codespacesauthentication',
     title: 'React (Part 4)',
     description: 'Codespaces and Authentication',
     date: '2024-03-06',
@@ -330,7 +330,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/logo512-512x512.png'
   },
   {
-    slug: 'modelDrivenPurchaseOrderLines',
+    slug: 'modeldrivenpurchaseorderlines',
     title: 'Power Apps (Part 14)',
     description: 'Model Driven Purchase Order Lines',
     date: '2024-03-03',
@@ -339,7 +339,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'modelDrivenPurchaseOrders',
+    slug: 'modeldrivenpurchaseorders',
     title: 'Power Apps (Part 13)',
     description: 'Model Driven Purchase Orders',
     date: '2024-03-02',
@@ -348,7 +348,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'cloudFlow',
+    slug: 'cloudflow',
     title: 'Power Apps (Part 12)',
     description: 'Copilot Studio Topic with a Cloud Flow',
     date: '2024-02-26',
