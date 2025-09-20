@@ -95,3 +95,111 @@ Final Action: The user chooses to either save the refined output or discard the 
 
 ![](/assets/images/promptdialog/screenshot202025-05-2320at207.54.40e280afpm-2136x956.png)
 *The generated response was displayed*
+
+
+## Pag50100.LLM.al
+
+```text
+namespace LLM.LLM;
+
+page 50100 LLM
+{
+    ApplicationArea = All;
+    Caption = 'LLM';
+    PageType = PromptDialog;
+    Extensible = false;
+    DataCaptionExpression = Prompt;
+    IsPreview = true;
+
+    layout
+    {
+        #region input section
+        area(Prompt)
+        {
+            field(PromptField; Prompt)
+            {
+                ShowCaption = false;
+                MultiLine = true;
+                InstructionalText = 'Message Large Language Model';
+            }
+        }
+        #endregion
+
+        #region output section
+        area(Content)
+        {
+            field(OutputFiled; Output)
+            {
+                ShowCaption=false;
+                MultiLine = true;
+            }
+        }
+        #endregion
+    }
+    actions
+    {
+        #region prompt guide
+        area(PromptGuide)
+        {
+            action("Capital City")
+            {
+                ApplicationArea = All;
+                Caption = 'Capital City';
+                ToolTip = 'What is the Capital of ...';
+
+                trigger OnAction()
+                begin
+                    Prompt := 'What is the Capital of <Country>?';
+                end;
+            }
+        }
+        #endregion
+
+        #region system actions
+        area(SystemActions)
+        {
+            systemaction(Generate)
+            {
+                Caption = 'Generate';
+                ToolTip = 'Generate a response.';
+
+                trigger OnAction()
+                begin
+                    RunGeneration();
+                end;
+            }
+            systemaction(OK)
+            {
+                Caption = 'OK';
+                ToolTip = 'Save the result.';
+            }
+            systemaction(Cancel)
+            {
+                Caption = 'Cancel';
+                ToolTip = 'Discard the result.';
+            }
+            systemaction(Regenerate)
+            {
+                Caption = 'Regenerate';
+                ToolTip = 'Regenerate a response.';
+
+                trigger OnAction()
+                begin
+                    RunGeneration();
+                end;
+            }
+            #endregion
+        }
+    }
+    var
+        Prompt: Text;
+        Output: Text;
+
+    local procedure RunGeneration()
+    begin
+        Output := 'The prompt you entered was: ' + Prompt;
+    end;
+
+}
+```
+

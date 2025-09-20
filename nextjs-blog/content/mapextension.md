@@ -123,3 +123,164 @@ Remember that the exact steps and options may vary slightly depending on the ver
 
 ![](/assets/images/mapextension/20230903image05-1337x885.png)
 *Extension running in the cloud*
+
+
+## LeafletMapsExtension.al
+
+```text
+controladdin LeafletMapsFactBox
+{
+    RequestedHeight = 400;
+    MaximumHeight = 600;
+    VerticalStretch = false;
+    VerticalShrink = false;
+    HorizontalStretch = true;
+    HorizontalShrink = true;
+    Scripts = 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.js', 'LeafletMapsFunctions.js';
+    Stylesheets = 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css';
+
+
+    event ControlReady()
+    procedure CreateSidebar(no: Text; city: Text);
+}
+
+
+page 50101 LeafletMapsCustListFactBoxPart
+{
+    PageType = CardPart;
+    SourceTable = "Customer";
+
+
+    layout
+    {
+        area(Content)
+        {
+            usercontrol(Sidebar; LeafletMapsFactBox)
+            {
+                ApplicationArea = All;
+            }
+        }
+    }
+
+
+    trigger OnAfterGetRecord()
+    begin
+        CurrPage.Sidebar.CreateSidebar(rec."No.", rec.City);
+    end;
+}
+
+
+
+
+pageextension 50102 "LeafletMaps Cust Card" extends "Customer Card"
+{
+    layout
+    {
+        addfirst(FactBoxes)
+        {
+            part(LeafletMapsCustListFactBoxPart; LeafletMapsCustListFactBoxPart)
+            {
+                ApplicationArea = All; //Basic, Suite;// all;
+                Caption = 'Customer Map';
+                SubPageLink = "No." = FIELD("No.");
+
+
+            }
+        }
+    }
+
+
+
+
+}
+
+
+pageextension 50103 "LeafletMaps Cust List" extends "Customer List"
+{
+
+
+    layout
+    {
+        addfirst(FactBoxes)
+        {
+            part(LeafletMapsCustListFactBoxPart; LeafletMapsCustListFactBoxPart)
+            {
+                ApplicationArea = all;
+                caption = 'Customer Map';
+                SubPageLink = "No." = FIELD("No.");
+            }
+        }
+
+
+    }
+
+
+}
+```
+
+## LeafletMapsFunctions.js
+
+```text
+function CreateSidebar(no, city) {
+    debugger;
+    var __div = document.getElementById('controlAddIn');
+
+
+    // clear contents of controlAddIn div
+    __div.innerHTML = '';
+
+
+    // create the map div
+    var __innerDiv = document.createElement("div");
+    __innerDiv.id = 'map';
+    __innerDiv.style = 'height: 100vh'
+
+
+    // add the map div to the controlAddIn div
+    __div.appendChild(__innerDiv);
+
+
+    // get latitude and longitude position for this city
+    var location = GetCityLocation(city)
+
+
+    // What map zoom level should we use?
+    var zoomLevel = 9;
+
+
+    // create the Leaflet Map
+    var map = L.map('map').setView(location, zoomLevel);
+
+
+    // add a tile layer
+    L.tileLayer('//services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.jpg').addTo(map);
+
+
+    // add a marker
+    var newMarker = new L.marker(location).addTo(map);
+
+
+    Microsoft.Dynamics.NAV.InvokeExtensibilityMethod("ControlReady");
+
+
+}
+
+
+function GetCityLocation(city) {
+    if (city == "Atlanta")
+        return [33.7674828, -84.5025308]
+
+
+    if (city == "Miami")
+        return [25.782479, -80.2706579]
+
+
+    if (city == "Chicago")
+        return [41.833871, -87.8967688]
+
+
+    // else return London's location
+    return [51.505, -0.09]
+}
+```
+

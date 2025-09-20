@@ -31,9 +31,11 @@ Create a GitHub Repository for the REST API code.
 
 ## Download example project code
 
-Open a Visual Studio Code terminal and use the command
+Open a Visual Studio Code terminal and use the command:
 
+```bash
 % dotnet new api
+```
 
 to download example ASP.NET Core Web API code.
 
@@ -43,13 +45,17 @@ to download example ASP.NET Core Web API code.
 
 ## Test the example project code
 
-Create a dotnet project gitignore file
+Create a dotnet project gitignore file:
 
+```bash
 % dotnet new gitignore
+```
 
-Start the project
+Start the project:
 
+```bash
 % dotnet run
+```
 
 ![](/assets/images/powerappswithrest/screen-shot-2021-06-19-at-11.46.31-am-1544x564.png)
 *dotnet new gitignore and dotnet run*
@@ -178,3 +184,216 @@ Click the "+ New custom connector" button.
 
 ![](/assets/images/powerappswithrest/screen-shot-2021-06-19-at-3.17.35-pm-1632x184.png)
 *Books Custom Connector*
+
+
+## swagger.json-Swagger20.json
+
+```json
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1",
+    "title": "haddley_power_app_api",
+    "contact": {}
+  },
+  "host": "www.example.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/Book": {
+      "get": {
+        "description": "",
+        "summary": "Book_GET",
+        "tags": [
+          "Book"
+        ],
+        "operationId": "Book_GET",
+        "deprecated": false,
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Book"
+              }
+            },
+            "headers": {}
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "summary": "Book_POST",
+        "tags": [
+          "Book"
+        ],
+        "operationId": "Book_POST",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Book"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/Book/{id}": {
+      "get": {
+        "description": "",
+        "summary": "BookById_GET",
+        "tags": [
+          "Book"
+        ],
+        "operationId": "BookById_GET",
+        "deprecated": false,
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Book"
+            },
+            "headers": {}
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "summary": "BookById_PUT",
+        "tags": [
+          "Book"
+        ],
+        "operationId": "BookById_PUT",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64",
+            "description": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Book"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {}
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "summary": "BookById_DELETE",
+        "tags": [
+          "Book"
+        ],
+        "operationId": "BookById_DELETE",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {}
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Book": {
+      "title": "Book",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "title": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Book",
+      "description": ""
+    }
+  ]
+}
+```
+

@@ -48,3 +48,24 @@ How I built hello world on my M1 MacBook Air
 
 ![](/assets/images/xcode1/screen-shot-2023-03-08-at-10.44.18-am-1536x729.png)
 *Unix Executable File*
+
+
+## main.cpp
+
+```text
+//
+//  main.cpp
+//  helloWorld
+//
+//  Created by Neil Haddley on 3/8/23.
+//
+
+#include <iostream>
+
+int main(int argc, const char * argv[]) {
+    // insert code here...
+    std::cout << "Hello, World!\n";
+    return 0;
+}
+```
+

@@ -32,7 +32,10 @@ https://firebase.google.com/codelabs/firebase-web
 
 I started by cloning the codelab-friendlychat-web repository
 
+```bash
 % git clone https://github.com/firebase/codelab-friendlychat-web
+```
+
 
 ![](/assets/images/firebase/screen-shot-2023-04-24-at-9.26.33-pm-1836x1262.png)
 *codelab-friendlychat-web*

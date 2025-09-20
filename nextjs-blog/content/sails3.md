@@ -169,3 +169,101 @@ Using kubectl to deploy the application to the cluster
 
 ![](/assets/images/sails3/sails-application-google-chrome-10-13-2021-7-11-43-pm-1380x733.png)
 *Articles*
+
+
+## Dockfile
+
+```yaml
+FROM node:8
+LABEL maintainer="Azure App Service Container Images <appsvc-images@microsoft.com>"
+
+# Create app directory
+WORKDIR /app
+
+# Bundle app source
+COPY . .
+RUN npm install
+
+EXPOSE 1337
+CMD [ "npm", "start" ]
+```
+
+## haddley-sails-local.yaml
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: haddley-sails-deployment
+  labels:
+    app: haddley-sails
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: haddley-sails
+  template:
+    metadata:
+      labels:
+        app: haddley-sails
+    spec:
+      containers:
+        - name: haddley-sails
+          image: haddleysails
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 1337
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: haddley-sails-service
+spec:
+  selector:
+    app: haddley-sails
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 1337
+  type: LoadBalancer
+```
+
+## haddley-sails.yaml
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: haddley-sails-deployment
+  labels:
+    app: haddley-sails
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: haddley-sails
+  template:
+    metadata:
+      labels:
+        app: haddley-sails
+    spec:
+      containers:
+        - name: haddley-sails
+          image: haddleysails:latest
+          ports:
+            - containerPort: 1337
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: haddley-sails-service
+spec:
+  selector:
+    app: haddley-sails
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 1337
+  type: LoadBalancer
+```
+

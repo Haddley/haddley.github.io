@@ -70,3 +70,72 @@ In an Electron app code in an index.html page (hosted by Chromium) is able to ca
 
 ![](/assets/images/electron/screen-shot-2021-02-26-at-2.46.42-pm-1314x780.png)
 *Running Electron application*
+
+
+## main.js
+
+```javascript
+const { app, BrowserWindow } = require('electron')
+
+function createWindow() {
+    const win = new BrowserWindow({
+        width: 800,
+        height: 600,
+        webPreferences: {
+            nodeIntegration: true
+        }
+    })
+
+    win.loadFile('index.html')
+}
+
+app.whenReady().then(createWindow)
+
+app.on('window-all-closed', () => {
+    if (process.platform !== 'darwin') {
+        app.quit()
+    }
+})
+
+app.on('activate', () => {
+    if (BrowserWindow.getAllWindows().length === 0) {
+        createWindow()
+    }
+})
+```
+
+## index.html
+
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+</head>
+
+<body style="background: white;">
+    <h1>Hello World!</h1>
+    <p>
+        We are using node
+        <script>document.write(process.versions.node)</script>,
+        Chrome
+        <script>document.write(process.versions.chrome)</script>,
+        and Electron
+        <script>document.write(process.versions.electron)</script>.
+    </p>
+</body>
+
+</html>
+```
+
+## Code that will run on an Electron index.html page
+
+```typescript
+const nodeFactorialCC = require("node-factorial-cc")
+            const result = nodeFactorialCC.factorial(9)
+            document.write(`factorial of 9 is: ${result}`)
+```
+

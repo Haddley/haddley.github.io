@@ -94,3 +94,123 @@ The Get-SPOSiteScriptFromWeb command extracts Site Script from an existing Share
 
 ![](/assets/images/sharepointsitedesignsandsitescripts/image-22-979x512.png)
 *Running the Get-SPOSiteScriptFromWeb command*
+
+
+## Example site script
+
+```javascript
+{
+     "$schema": "schema.json",
+         "actions": [
+             {
+                 "verb": "createSPList",
+                 "listName": "Customer Tracking",
+                 "templateType": 100,
+                 "subactions": [
+                     {
+                         "verb": "setDescription",
+                         "description": "List of Customers and Orders"
+                     },
+                     {
+                         "verb": "addSPField",
+                         "fieldType": "Text",
+                         "displayName": "Customer Name",
+                         "isRequired": false,
+                         "addToDefaultView": true
+                     },
+                     {
+                         "verb": "addSPField",
+                         "fieldType": "Number",
+                         "displayName": "Requisition Total",
+                         "addToDefaultView": true,
+                         "isRequired": true
+                     },
+                     {
+                         "verb": "addSPField",
+                         "fieldType": "User",
+                         "displayName": "Contact",
+                         "addToDefaultView": true,
+                         "isRequired": true
+                     },
+                     {
+                         "verb": "addSPField",
+                         "fieldType": "Note",
+                         "displayName": "Meeting Notes",
+                         "isRequired": false
+                     }
+                 ]
+             }
+         ],
+             "bindata": { },
+     "version": 1
+}
+```
+
+## Get-SPOSiteScriptFromWeb results
+
+```javascript
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/site-design-script-actions.schema.json",
+  "actions": [
+    {
+      "verb": "createSiteColumnXml",
+      "schemaXml": "<Field ID=\"{c15b34c3-ce7d-490a-b133-3f4de8801b76}\" Name=\"TaskStatus\" Group=\"Core Task and Issue Columns\" Type=\"Choice\" DisplayName=\"Task Status\" SourceID=\"http://schemas.microsoft.com/sharepoint/v3/fields\" StaticName=\"TaskStatus\" DelayActivateTemplateBinding=\"GROUP,SPSPERS,SITEPAGEPUBLISHING\" Customization=\"\" AllowDeletion=\"TRUE\"><CHOICES><CHOICE>Not Started</CHOICE><CHOICE>In Progress</CHOICE><CHOICE>Completed</CHOICE><CHOICE>Deferred</CHOICE><CHOICE>Waiting on someone else</CHOICE></CHOICES><MAPPINGS><MAPPING Value=\"1\">Not Started</MAPPING><MAPPING Value=\"2\">In Progress</MAPPING><MAPPING Value=\"3\">Completed</MAPPING><MAPPING Value=\"4\">Deferred</MAPPING><MAPPING Value=\"5\">Waiting on someone else</MAPPING></MAPPINGS><Default>Not Started</Default></Field>",
+      "pushChanges": true
+    },
+    {
+      "verb": "createContentType",
+      "name": "To Do Item",
+      "id": "0x0100AC72E73DED8B1947B3AD265DD7CFCB4A",
+      "description": "",
+      "parentId": "0x01",
+      "hidden": false,
+      "group": "Custom Content Types",
+      "subactions": [
+        {
+          "verb": "addSiteColumn",
+          "internalName": "TaskStatus"
+        }
+      ]
+    },
+    {
+      "verb": "createSPList",
+      "listName": "To Do",
+      "templateType": 100,
+      "color": "2",
+      "icon": "11",
+      "subactions": [
+        {
+          "verb": "setDescription",
+          "description": "To Do List"
+        },
+        {
+          "verb": "addContentType",
+          "name": "To Do Item"
+        },
+        {
+          "verb": "addSPFieldXml",
+          "schemaXml": "<Field ID=\"{fa564e0f-0c70-4ab9-b863-0177e6ddd247}\" Type=\"Text\" Name=\"Title\" DisplayName=\"Title\" Required=\"TRUE\" SourceID=\"http://schemas.microsoft.com/sharepoint/v3\" StaticName=\"Title\" FromBaseType=\"TRUE\" MaxLength=\"255\" />"
+        },
+        {
+          "verb": "addSPFieldXml",
+          "schemaXml": "<Field ID=\"{82642ec8-ef9b-478f-acf9-31f7d45fbc31}\" DisplayName=\"Title\" Description=\"\" Name=\"LinkTitle\" SourceID=\"http://schemas.microsoft.com/sharepoint/v3\" StaticName=\"LinkTitle\" Type=\"Computed\" ReadOnly=\"TRUE\" FromBaseType=\"TRUE\" Width=\"150\" DisplayNameSrcField=\"Title\" Sealed=\"FALSE\"><FieldRefs><FieldRef Name=\"Title\" /><FieldRef Name=\"LinkTitleNoMenu\" /><FieldRef Name=\"_EditMenuTableStart2\" /><FieldRef Name=\"_EditMenuTableEnd\" /></FieldRefs><DisplayPattern><FieldSwitch><Expr><GetVar Name=\"FreeForm\" /></Expr><Case Value=\"TRUE\"><Field Name=\"LinkTitleNoMenu\" /></Case><Default><HTML><![CDATA[<div class=\"ms-vb itx\" onmouseover=\"OnItem(this)\" CTXName=\"ctx]]></HTML><Field Name=\"_EditMenuTableStart2\" /><HTML><![CDATA[\">]]></HTML><Field Name=\"LinkTitleNoMenu\" /><HTML><![CDATA[</div>]]></HTML><HTML><![CDATA[<div class=\"s4-ctx\" onmouseover=\"OnChildItem(this.parentNode); return false;\">]]></HTML><HTML><![CDATA[<span>&nbsp;</span>]]></HTML><HTML><![CDATA[<a onfocus=\"OnChildItem(this.parentNode.parentNode); return false;\" onclick=\"PopMenuFromChevron(event); return false;\" href=\"javascript:;\" title=\"Open Menu\"></a>]]></HTML><HTML><![CDATA[<span>&nbsp;</span>]]></HTML><HTML><![CDATA[</div>]]></HTML></Default></FieldSwitch></DisplayPattern></Field>"
+        },
+        {
+          "verb": "addSPView",
+          "name": "All Items",
+          "viewFields": [
+            "LinkTitle",
+            "TaskStatus"
+          ],
+          "query": "",
+          "rowLimit": 30,
+          "isPaged": true,
+          "makeDefault": true,
+          "replaceViewFields": true
+        }
+      ]
+    }
+  ]
+}
+```
+

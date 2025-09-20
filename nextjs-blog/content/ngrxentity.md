@@ -113,3 +113,258 @@ Extensible type-safe adapters for selecting entity information.
 
 ![](/assets/images/ngrxentity/screen-shot-2023-02-20-at-3.09.38-pm-1536x476.png)
 *Load Posts Failure (service not running)*
+
+
+## post.service.spec.ts
+
+```text
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { createSpyFromClass, Spy } from 'jasmine-auto-spies';
+import { Post } from '../models/post.model';
+import { PostService } from './post.service';
+import { TestBed } from '@angular/core/testing';
+
+describe('PostService', () => {
+  let service: PostService;
+  let httpSpy: Spy<HttpClient>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [
+        PostService,
+        { provide: HttpClient, useValue: createSpyFromClass(HttpClient) }
+      ]
+    });
+
+    service = TestBed.inject(PostService);
+    httpSpy = TestBed.inject<any>(HttpClient);
+  });
+
+  it('should create a new post', (done: DoneFn) => {
+
+    const newPost = { id: 100, title: "json-server100", author: "typicode", body: "some body100" } as Post;
+
+    httpSpy.post.and.nextWith(newPost);
+
+    service.addPost(newPost).subscribe(post => {
+      expect(post).toEqual(newPost);
+      done();
+    });
+    expect(httpSpy.post.calls.count()).toBe(1);
+  });
+
+  it('should return an existing post', (done: DoneFn) => {
+
+    const existingPost = { id: 1, title: "json-server", author: "typicode", body: "some body" } as Post;
+    const postId = existingPost.id;
+
+    httpSpy.get.and.nextWith(existingPost);
+
+    service.getPost(postId).subscribe(post => {
+      expect(post).toEqual(existingPost);
+      done();
+    });
+
+    expect(httpSpy.get.calls.count()).toBe(1);
+  });
+
+  it('should return a 404 if post does not exist', (done: DoneFn) => {
+
+    const postId = 89776683;
+
+    httpSpy.get.and.throwWith(new HttpErrorResponse({
+      error: "404 - Not Found",
+      status: 404
+    }));
+
+    service.getPost(postId).subscribe({
+      next: (post) => {
+        done.fail("Expected a 404");
+      },
+      error: (error) => {
+        expect(error.status).toEqual(404);
+        done();
+      }
+    });
+
+    expect(httpSpy.get.calls.count()).toBe(1);
+  });
+
+
+});
+```
+
+## post.actions.ts
+
+```text
+import { createAction, props } from '@ngrx/store';
+import { Post } from 'src/app/models/post.model';
+
+export const loadPosts = createAction('[Posts] Load Posts');
+export const loadPostsSuccess = createAction('[Posts] Load Posts Success', props<{ posts: Post[] }>());
+export const loadPostsFailure = createAction('[Posts] Load Posts Failure', props<{ error: string }>());
+```
+
+## post.effect.ts
+
+```text
+import { Injectable } from "@angular/core";
+import { catchError, exhaustMap, map, of } from "rxjs";
+import { loadPosts, loadPostsFailure, loadPostsSuccess } from "./post.actions";
+import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { PostService } from "src/app/services/post.service";
+
+@Injectable()
+export class PostEffects {
+
+    constructor(private actions$: Actions, private postService: PostService) { }
+
+    loadPosts$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(loadPosts),
+            exhaustMap(() =>
+                // call the service
+                this.postService.getPosts().pipe(
+                    // return a Success action when the HTTP request was successfull
+                    map((posts) => loadPostsSuccess({ posts: posts })),
+                    // return a Failed action when something went wrong during the HTTP request
+                    catchError((error) => of(loadPostsFailure({ error: 'http error' }))),
+                ),
+            ),
+        )
+    );
+}
+```
+
+## post.reducer.ts
+
+```text
+import {
+    createEntityAdapter,
+    EntityAdapter,
+    EntityState
+} from '@ngrx/entity';
+import { Post } from '../../models/post.model';
+import { createReducer, on } from '@ngrx/store';
+import { loadPostsFailure, loadPostsSuccess } from './post.actions';
+
+export interface PostState extends EntityState<Post> {
+    // additional entities state properties
+    currentPostId: number | null;
+    error: any;
+}
+
+export const postAdapter: EntityAdapter<Post> = createEntityAdapter<Post>();
+
+export const initialState: PostState = postAdapter.getInitialState({
+    currentPostId: null,
+    error: null
+});
+
+export const postReducer = createReducer(
+    initialState,
+    on(loadPostsSuccess, (state, { posts }) => {
+        return postAdapter.setAll(posts, {...state,error:null});
+    }),
+    on(loadPostsFailure, (state, { error }) => {
+        return { ...state, error};
+    })
+
+)
+```
+
+## post.selector.ts
+
+```text
+import { createSelector } from "@ngrx/store";
+import { AppState } from "../app.state";
+import { postAdapter, PostState } from "./post.reducer";
+
+export const selectPosts = (state: AppState) => state.posts;
+
+export const { selectIds, selectEntities, selectAll, selectTotal } = postAdapter.getSelectors();
+
+export const selectAllPosts = createSelector(selectPosts, selectAll);
+
+export const selectEntitiesPosts = createSelector(selectPosts, selectEntities);
+
+export const selectTotalPosts = createSelector(selectPosts, selectTotal);
+
+export const selectIdsPosts = createSelector(selectPosts, selectIds);
+
+export const selectError = createSelector(
+    selectPosts,
+    (state: PostState) => state.error
+);
+```
+
+## app.component.html
+
+```text
+<div class="dice" (click)="updateValue()" *ngIf="value$|async as value">{{value}}</div>
+
+<div *ngIf="postsError$ | async as postsError; else loaded">
+    <p>There was an error loading the posts</p>
+    <p>{{postsError}}</p>
+</div>
+
+<ng-template #loaded>
+    <table>
+        <thead>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Body</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let post of posts$ | async">
+                <td>{{post.title}}</td>
+                <td>{{post.author}}</td>
+                <td>{{post.body}}</td>
+            </tr>
+        </tbody>
+    </table>
+</ng-template>
+```
+
+## app.component.ts
+
+```text
+import { Component, OnInit } from '@angular/core';
+import { selectDiceError } from './state/dice/dice.selectors';
+import { selectDiceValue } from './state/dice/dice.selectors';
+import { Store } from '@ngrx/store';
+import { roll} from './state/dice/dice.actions';
+import { AppState } from './state/app.state';
+import { selectAllPosts, selectEntitiesPosts, selectTotalPosts, selectIdsPosts, selectError } from './state/post/post.selector';
+import { loadPosts } from './state/post/post.actions';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent implements OnInit {
+
+    // random number beteen 1 and 6
+    value$ = this.appStore.select(selectDiceValue);
+    error$ = this.appStore.select(selectDiceError);
+
+    // posts
+    posts$ = this.appStore.select(selectAllPosts);
+    postsError$ = this.appStore.select(selectError);
+
+  constructor(private appStore: Store<AppState>) {}
+
+  updateValue() {
+    this.appStore.dispatch(roll());
+  }
+
+  ngOnInit() {
+    this.appStore.dispatch(loadPosts());
+  }
+
+  title = 'haddley-ngrx';
+
+}
+```
+

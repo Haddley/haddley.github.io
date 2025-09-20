@@ -17,14 +17,19 @@ tags: ["angular","ml"]
 
 ## Highlights
 
+```bash
 % npm i -g @angular/cli
 % ng new haddley-angular-phaser
 % cd haddley-angular-phaser
 % npm i phaser
 % code .
 % ng generate component bounce
+```
 
-angular.json "scripts": ["node_modules/phaser/dist/phaser.min.js"]
+Update angular.json:
+```json
+"scripts": ["node_modules/phaser/dist/phaser.min.js"]
+```
 
 ![](/assets/images/angularphaser/screen-shot-2023-04-23-at-8.09.49-pm-1144x740.png)
 *ng new haddley-angular-phaser*

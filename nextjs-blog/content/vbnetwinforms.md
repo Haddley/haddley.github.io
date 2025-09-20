@@ -78,3 +78,47 @@ These are just general steps, and the specific implementation may vary depending
 
 ![](/assets/images/vbnetwinforms/capture20230127-009-1369x729.png)
 *I added a button and two labels to the VB.NET WinForm screen and VB.NET code to call the API.*
+
+
+## Form1.vb
+
+```text
+Imports System.Net.Http
+Imports WebApplicationAPI
+Imports Newtonsoft.Json
+
+Public Class Form1
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        ' Create an instance of the HttpClient class
+        Dim client As New HttpClient()
+
+        ' Set the base address of the API
+        client.BaseAddress = New Uri("https://localhost:7018/")
+
+        ' Send an HTTP GET request to the API and receive the response
+        Dim response As HttpResponseMessage = client.GetAsync("WeatherForecast").Result
+
+        ' Check if the response was successful
+        If response.IsSuccessStatusCode Then
+            ' Read the response content as a string
+            Dim result As String = response.Content.ReadAsStringAsync().Result
+
+            ' Deserialize the JSON response into a .NET object
+            Dim forecast As List(Of WeatherForecast) = JsonConvert.DeserializeObject(Of List(Of WeatherForecast))(result)
+
+            ' Do something with the forecast data
+
+            Label1.Text = forecast.First.Date
+
+            Label2.Text = forecast.First.Summary
+
+        Else
+            ' Handle the error
+        End If
+    End Sub
+End Class
+```
+

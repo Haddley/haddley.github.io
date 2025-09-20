@@ -43,3 +43,53 @@ Sentiment analysis has proven to be an invaluable tool for businesses to underst
 
 ![](/assets/images/sentimentanalysis/screen-shot-2023-07-19-at-12.58.31-pm-1178x846.png)
 *Not certain.*
+
+
+## sentiment_analysis.html
+
+```text
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sentiment Analysis Demo</title>
+</head>
+
+<body>
+    <h1>Sentiment Analysis Demo</h1>
+    <textarea id="input-text" rows="4" cols="50" placeholder="Enter text to analyze"></textarea>
+    <button id="analyzeSentiment">Analyze</button>
+    <p id="result"></p>
+    <p id="score"></p>
+
+    <script type="module">
+        import { pipeline } from 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.4.1';
+
+        async function analyzeSentiment() {
+
+            const inputText = document.getElementById('input-text').value.trim();
+
+            if (inputText === '') {
+                alert('Please enter text to analyze.');
+                return;
+            }
+
+            pipeline('sentiment-analysis').then(pipe => {
+                pipe(inputText).then(result => {
+
+                    // Display the sentiment result
+                    document.getElementById('result').textContent = `Sentiment: ${result[0].label}`;
+                    document.getElementById('score').textContent = `Score: ${result[0].score}`;
+                });
+            });
+        }
+
+        document.getElementById("analyzeSentiment").onclick = analyzeSentiment;
+
+    </script>
+
+</body>
+
+</html>
+```
+

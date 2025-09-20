@@ -497,3 +497,161 @@ Here a Power Pages Customer Portal enables customers to view, create, and manage
 
 ![](/assets/images/page200/screenshot-2024-11-20-at-11.32.08pm-2136x881.png)
 *I returned to the List Customer Orders page*
+
+
+## New Customer Order Line.en-US.customjs.js
+
+```text
+console.log("Code loaded");
+ 
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$CONTENT$");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+ 
+ 
+$(document).ready(function () {
+ 
+    // set the orderid using url parameter
+    var orderId = getParameterByName('refid');
+ 
+    $('#hadd_order_name').attr('value', 'Customer Order');
+    $('#hadd_order').attr('value', orderId);
+    $('#hadd_order_entityname').attr('value', 'hadd_customerorder');
+})
+```
+
+## New Customer Order Line.en-US.webpage.copy.html
+
+```text
+<div class="row sectionBlockLayout text-start" style="display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;">
+  <div class="container" style="display: flex; flex-wrap: wrap;">
+    <div class="col-lg-12 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; min-width: 250px; padding: 16px; margin: 60px 0px;">
+      <h1 style="text-align: left;">New Customer Order Line</h1>
+      {% entityform name: 'Create New Customer Order Line' %}
+    </div>
+  </div>
+</div>
+
+{% fetchxml resultVariable %}
+<fetch mapping="logical">
+  <entity name="dyn365bc_item_v2_0">
+    <attribute name="dyn365bc_item_v2_0id" />
+    <attribute name="dyn365bc_displayname" />
+    <attribute name="dyn365bc_unitprice" />
+    <attribute name="dyn365bc_inventory" />
+    <order attribute="dyn365bc_displayname" descending="false">
+    </order>
+  </entity>
+</fetch>
+{% endfetchxml %}
+ 
+<input id="items" type="hidden" value='{
+{% for entityVariable in resultVariable.results.entities %}
+"{{ entityVariable.dyn365bc_item_v2_0id }}":
+ {
+   "id": "{{ entityVariable.dyn365bc_item_v2_0id }}",
+   "displayname": "{{ entityVariable.dyn365bc_displayname }}",
+   "unitprice": {{ entityVariable.dyn365bc_unitprice }},
+   "inventory": {{ entityVariable.dyn365bc_inventory }}
+}
+{% unless forloop.last %}, {% endunless %}
+{% endfor %}
+}' />
+```
+
+## New Customer Order Line.en-US.customjs.js updated
+
+```text
+console.log("Code loaded");
+ 
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$CONTENT$");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+ 
+ 
+$(document).ready(function () {
+ 
+    // set the orderid using url parameter
+    var orderId = getParameterByName('refid');
+ 
+    $('#hadd_order_name').attr('value', 'Customer Order');
+    $('#hadd_order').attr('value', orderId);
+    $('#hadd_order_entityname').attr('value', 'hadd_customerorder');
+
+    // set the unit cost and amount fields
+    const itemsJSON = $("#items").val();
+    const items = JSON.parse(itemsJSON);
+ 
+    const currencyOptions = {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+        style: 'currency',
+        currency: 'USD'
+    };
+ 
+    const numberOptions = {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+    };
+ 
+    const updateAmountField = () => {
+        const unitPrice = parseFloat($("#hadd_unitprice").val().replace(/[$,]+/g,"")) || 0;
+        const quantity = parseFloat($("#hadd_quantity").val()) || 0;
+        const amount = unitPrice * quantity;
+        const formattedAmount = amount.toLocaleString('en', numberOptions);
+        $("#hadd_amount").val(formattedAmount);
+    };
+ 
+    // set price to be readonly
+    $("#hadd_unitprice").prop('readonly', true);
+ 
+    const lookupFieldSelector = $("#hadd_item");
+    if (lookupFieldSelector.length) {
+        lookupFieldSelector.on("change", function () {
+            console.log("Item selection changed");
+ 
+            const selectedValue = $(this).val();
+            console.log("Selected lookup value:", selectedValue);
+ 
+            const selectedItem = items[selectedValue] || null;
+            console.log(selectedItem);
+ 
+            if (selectedItem) {
+                const unitPriceFormatted = Number(selectedItem.unitprice).toLocaleString('en', numberOptions);
+                $("#hadd_unitprice").val(unitPriceFormatted);
+            } else {
+                $("#hadd_unitprice").val("");
+            }
+ 
+            updateAmountField();
+        });
+    } else {
+        console.warn("Item field not found");
+        $("#hadd_unitprice").val("");
+    }
+ 
+    const quantityFieldSelector = $("#hadd_quantity");
+    if (quantityFieldSelector.length) {
+        quantityFieldSelector.on("change", function () {
+            console.log("Quantity changed");
+            updateAmountField();
+        });
+    } else {
+        console.warn("Quantity field not found");
+        $("#hadd_amount").val("");
+    }
+});
+```
+

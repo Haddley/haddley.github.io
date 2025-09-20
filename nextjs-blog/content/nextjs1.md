@@ -120,3 +120,195 @@ see also: [https://github.com/vercel/next.js/tree/canary/examples/with-styled-co
 
 ![](/assets/images/nextjs1/screen-shot-2021-11-06-at-11.52.18-am-1782x1076.png)
 *second-post page with styled-component added*
+
+
+## about.js
+
+```text
+function about() {
+    return (
+        <div>
+            About
+        </div>
+    )
+}
+
+export default about
+```
+
+## index.js first-post.js and second-post.js
+
+```text
+// index.js
+import Link from 'next/link'
+
+function index() {
+    return (
+        <>
+            <div>
+                <a href='/posts/first-post'>first</a>
+            </div>
+            <div>
+                <Link href='/posts/second-post'>
+                    <a>second</a>
+                </Link>
+            </div>
+        </>
+    )
+}
+
+export default index
+
+// first-post.js
+function firstpost() {
+    return (
+        <div>
+            First Post
+            <div>
+                    <a href='/posts'>home</a>
+            </div>
+        </div>
+    )
+}
+
+export default firstpost
+
+//second-post.js
+import Link from 'next/link'
+
+function secondpost() {
+    return (
+        <div>
+            Second Post
+            <div>
+                <Link href='/posts'>
+                    <a>home</a>
+                </Link>
+            </div>
+        </div>
+    )
+}
+
+export default secondpost
+```
+
+## image.js
+
+```text
+import Image from 'next/image'
+
+function image() {
+    return (
+        <Image
+            src="/images/profile.jpeg" // Route of the image file
+            height={144} // Desired size with correct aspect ratio
+            width={144} // Desired size with correct aspect ratio
+            alt="Your Name"
+        />
+    )
+}
+
+export default image
+```
+
+## index.js
+
+```text
+import Link from 'next/link'
+import Head from 'next/head'
+
+function index() {
+    return (
+        <>
+            <Head>
+                <title>Posts</title>
+            </Head>
+            <div>
+                <a href='/posts/first-post'>first</a>
+            </div>
+            <div>
+                <Link href='/posts/second-post'>
+                    <a>second</a>
+                </Link>
+            </div>
+        </>
+    )
+}
+
+export default index
+```
+
+## layout.module.css layout.js and first-post.js
+
+```text
+// layout.module.css
+.container {
+    max-width: 36rem;
+    padding: 0 1rem;
+    margin: 3rem auto 6rem;
+  }
+
+// layout.js
+import styles from './layout.module.css'
+
+export default function Layout({ children }) {
+  return <div className={styles.container}>{children}</div>
+}
+
+// first-post.js
+import Layout from '../../components/layout'
+
+function firstpost() {
+    return (
+        <Layout>
+            <div>
+                First Post
+                <div>
+                    <a href='/posts'>home</a>
+                </div>
+            </div>
+        </Layout>
+    )
+}
+
+export default firstpost
+```
+
+## layout2.js and second-post.js
+
+```yaml
+// layout2.js
+
+import styled from "styled-components";
+
+const Layout2 = styled.div`
+max-width: 36rem;
+padding: 0 1rem;
+margin: 3rem auto 6rem;
+`;
+
+export default Layout2 
+
+// second-post.js
+
+import Link from 'next/link'
+import Layout2 from '../../components/layout2'
+
+function secondpost() {
+    return (
+        <Layout2>
+            <div>
+                Second Post
+                <div>
+                    <Link href='/posts'>
+                        <a>home</a>
+                    </Link>
+                </div>
+            </div>
+        </Layout2>
+    )
+}
+
+export default secondpost
+```
+

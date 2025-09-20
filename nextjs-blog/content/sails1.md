@@ -93,11 +93,17 @@ Open Visual Studio Code terminal
 
 Navigate to the Application folder
 
+```bash
 % cd Application
+```
+
 
 Start the application on the laptop
 
+```bash
 % sails lift
+```
+
 
 ![](/assets/images/sails1/screen-shot-2021-10-12-at-11.12.33-am-1836x1046.png)
 *sails lift*

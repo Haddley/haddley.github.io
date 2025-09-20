@@ -17,7 +17,10 @@ tags: ["javascript","aws","java","mysql","sql"]
 
 ## Install MySQL Driver
 
+```bash
 % npm install mysql
+```
+
 
 ![](/assets/images/mysql/screen-shot-2021-11-14-at-11.39.51-am-1836x992.png)
 *SELECT COUNT(*) AS usercount FROM users*
@@ -25,7 +28,10 @@ tags: ["javascript","aws","java","mysql","sql"]
 
 ## async await
 
+```bash
 % npm install promise-mysql
+```
+
 
 ![](/assets/images/mysql/screen-shot-2021-11-14-at-4.31.21-pm-1836x1050.png)
 *SELECT COUNT(*) AS usercount FROM users*

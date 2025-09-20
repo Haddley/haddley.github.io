@@ -288,3 +288,338 @@ The code below demonstrates how the todo application was updated to use PouchDB 
 
 ![](/assets/images/ionic/screen-shot-2021-12-27-at-2.18.50-pm-1570x901.png)
 *Multiple updates are replicated to/from Safari/Chrome*
+
+
+## datatodos.ts
+
+```text
+import Localbase from 'localbase'
+
+function createGuid() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
+}
+
+export interface Todo {
+    guid: string;
+    task: string;
+    completed: boolean;
+}
+
+let db = new Localbase('todos')
+
+export const getTodos = async () => {
+    const todos = await db.collection('tasks').get()
+    console.log(todos)
+    return todos
+}
+
+export const setCompleted: any = async (guid: string, completed: boolean) => {
+    await db.collection('tasks').doc({ guid: guid }).update({
+        completed: completed
+    })
+    return
+}
+
+export const addToDo: any = async (description: string) => {
+    const guid = createGuid();
+    await db.collection('tasks').add({
+        guid: guid,
+        task: description,
+        completed: false
+    })
+    return guid
+}
+```
+
+## componentsTodoListItem.tsx
+
+```text
+import {
+  IonCheckbox,
+  IonItem,
+  IonLabel,
+  } from '@ionic/react';
+import { Todo } from '../data/todos';
+import './TodoListItem.css';
+
+interface TodoListItemProps {
+  todo: Todo;
+  toggleTodo: any;
+}
+
+const TodoListItem: React.FC<TodoListItemProps> = ({ todo, toggleTodo }) => {
+  return (
+    <IonItem >
+      <IonCheckbox checked={todo.completed} onIonChange={e => toggleTodo(todo.guid)} slot="start"/>
+      <IonLabel className="ion-text-wrap">
+          {todo.task}
+      </IonLabel>
+    </IonItem>
+  );
+};
+
+export default TodoListItem;
+```
+
+## pagesHome.tsx
+
+```text
+import { IonButton, IonContent, IonHeader, IonInput, IonItem, IonList, IonPage, IonRefresher, IonRefresherContent, IonTitle, IonToolbar, useIonViewWillEnter } from '@ionic/react';
+import { useState } from 'react';
+import TodoListItem from '../components/TodoListItem';
+import { addToDo, getTodos, setCompleted, Todo } from '../data/todos';
+import './Home.css';
+
+const Home: React.FC = () => {
+
+  const [todos, setTodos] = useState<Todo[]>([]);
+  const [text, setText] = useState<string>();
+
+  useIonViewWillEnter(async () => {
+    const todos = await getTodos();
+    setTodos(todos);
+  });
+
+
+  const toggleTodo = async (guid: string) => {
+    const existing = todos.find((todo) => todo.guid === guid)
+    if (existing) {
+      const completed = !existing.completed
+      await setCompleted(guid, completed)
+      // refresh from db
+      const todos = await getTodos();
+      setTodos(todos);
+    }
+  }
+
+  const addTask = async () => {
+    if (text) {
+      const guid = await addToDo(text)
+      console.log(guid)
+      //reset textbox
+      setText(() => '')
+      // refresh from db
+      const todos = await getTodos();
+      setTodos(todos);
+    }
+  }
+
+  const refresh = async (e: CustomEvent) => {
+    // refresh from db
+    const todos = await getTodos();
+    setTodos(todos);
+    e.detail.complete();
+  };
+
+  const HandleKeyPress = (value: any) => {
+    if (value == "Enter") {
+      //  console.log("Enter key pressed")
+      addTask()
+    }
+  }
+
+  return (
+    <IonPage>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Tasks</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent fullscreen>
+
+        <IonRefresher slot="fixed" onIonRefresh={refresh}>
+          <IonRefresherContent></IonRefresherContent>
+        </IonRefresher>
+
+        <IonItem>
+          <IonInput value={text} placeholder="Enter task" onKeyPress={e => HandleKeyPress(e.key)} onIonChange={e => setText(e.detail.value!)}></IonInput>
+          <IonButton slot="end" onClick={() => addTask()}>Add</IonButton>
+        </IonItem>
+
+        <IonList>
+          {todos.map(m => <TodoListItem key={m.guid} todo={m} toggleTodo={toggleTodo} />)}
+        </IonList>
+
+
+      </IonContent>
+    </IonPage>
+  );
+};
+
+export default Home;
+```
+
+## publicmanifest.json
+
+```text
+{
+  "short_name": "Todo",
+  "name": "Todo App",
+  "icons": [
+    {
+      "src": "manifest-icon-192.maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "manifest-icon-192.maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "manifest-icon-512.maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "manifest-icon-512.maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff"
+}
+```
+
+## index.tsx
+
+```text
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import reportWebVitals from './reportWebVitals';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://cra.link/PWA
+// serviceWorkerRegistration.unregister();
+
+const config = {
+  onUpdate: (registration: any) => { alert("An updated version of this app is available.  Please close and re-start the app.") },
+}
+
+serviceWorkerRegistration.register(config);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+```
+
+## todos.ts
+
+```text
+import PouchDB from 'pouchdb-browser'
+
+const db = new PouchDB('tasksdb')
+const remotedburl = 'http://admin:password@localhost:5984/tasksdb'
+
+function createGuid() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
+}
+
+export interface Todo {
+    guid: string;
+    task: string;
+    completed: boolean;
+    _id: string,
+    _rev: string
+}
+
+export const getTodos = async () => {
+    await replicateFrom()
+    const todos = await db.allDocs({
+        include_docs: true,
+        attachments: false
+    })
+    return todos.rows.map((row: { doc: any; }) => <Todo>row.doc)
+}
+
+export const setCompleted = async (existing: Todo, completed: boolean) => {
+    try {
+        await db.put({
+            ...existing,
+            completed
+        })
+        await replicateTo()
+    }
+    catch (err) {
+        console.log("err", err)
+    }
+}
+
+export const deleteTodo = async (existing: Todo) => {
+    try {
+        await db.remove(
+            existing._id,
+            existing._rev
+        )
+        await replicateTo()
+    }
+    catch (err) {
+        console.log("err", err)
+    }
+}
+
+export const addToDo = async (description: string) => {
+    try {
+        const guid = createGuid();
+        await db.post({
+            guid: guid,
+            task: description,
+            completed: false
+        })
+        await replicateTo()
+    }
+    catch (err) {
+        console.log("err", err)
+    }
+}
+
+export const replicate = async () => {
+    await replicateFrom()
+    await replicateTo()
+}
+
+const replicateFrom = async () => {
+    try {
+        const result = await db.replicate.from(remotedburl)
+        console.log("result", result)
+    }
+    catch (err) {
+        console.log("err", err)
+    }
+}
+
+const replicateTo = async () => {
+    try {
+        const result = await db.replicate.to(remotedburl)
+        console.log("result", result)
+    }
+    catch (err) {
+        console.log("err", err)
+    }
+}
+```
+

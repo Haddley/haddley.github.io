@@ -119,3 +119,37 @@ Static web app environment variables can be used to manage authentication proper
 
 ![](/assets/images/staticwebapp.config.json/screenshot-2024-03-16-at-2.11.24-pm-1836x1046.png)
 *I logged onto the app*
+
+
+## staticwebapp.config.json
+
+```text
+{
+  "routes": [
+    {
+      "route": "/*",
+      "allowedRoles": [
+        "authenticated"
+      ]
+    }
+  ],
+  "responseOverrides": {
+    "401": {
+      "statusCode": 302,
+      "redirect": "/.auth/login/aad"
+    }
+  },
+  "auth": {
+    "identityProviders": {
+      "azureActiveDirectory": {
+        "registration": {
+          "openIdIssuer": "https://login.microsoftonline.com/1661e837-0a95-4bc6-a655-865365c2419b/v2.0",
+          "clientIdSettingName": "AZURE_CLIENT_ID",
+          "clientSecretSettingName": "AZURE_CLIENT_SECRET"
+        }
+      }
+    }
+  }
+}
+```
+

@@ -197,3 +197,37 @@ I created a "Canvas App" Application Registration.
 
 ![](/assets/images/configurecopilotwithauthentication/image-3-888x488.png)
 *Using the "kubectl apply" command to apply a yaml file*
+
+
+## staticwebapp.config.json
+
+```text
+{
+  "routes": [
+    {
+      "route": "/*",
+      "allowedRoles": [
+        "authenticated"
+      ]
+    }
+  ],
+  "responseOverrides": {
+    "401": {
+      "statusCode": 302,
+      "redirect": "/.auth/login/aad"
+    }
+  },
+  "auth": {
+    "identityProviders": {
+      "azureActiveDirectory": {
+        "registration": {
+          "openIdIssuer": "https://login.microsoftonline.com/<TENANT_ID>/v2.0",
+          "clientIdSettingName": "AZURE_CLIENT_ID",
+          "clientSecretSettingName": "AZURE_CLIENT_SECRET"
+        }
+      }
+    }
+  }
+}
+```
+

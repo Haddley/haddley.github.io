@@ -97,3 +97,153 @@ You can use names other than slug, such as: [...param]
 
 ![](/assets/images/nextjs2/screen-shot-2021-11-07-at-9.15.03-am-1380x785.png)
 *Catch all routes*
+
+
+## pagesarticlesindex.js
+
+```text
+function index({ articles }) {
+    return (
+        <div>
+            <ul>
+                {articles.map(article => (<li key={article.id}>{article.title}</li>))}
+            </ul>
+        </div>
+    )
+}
+
+export default index
+
+export const getStaticProps = async () => {
+    const res = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=6')
+    const articles = await res.json();
+
+    return {
+        props: {
+            articles: articles
+        }
+    }
+}
+```
+
+## pagesarticlesidindex.js
+
+```text
+function article({ article }) {
+
+    return (
+        <div>
+            <h1>{article.title}</h1>
+            This is article {article.id}
+            <p>{article.body}</p>
+        </div>
+    )
+}
+
+export default article
+
+export const getServerSideProps = async (context) => {
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${context.params.id}`)
+    const article = await res.json()
+    return {
+        props: {
+            article: article
+        }
+    }
+}
+```
+
+## pagesarticlesidindex.js
+
+```text
+function article({ article }) {
+
+    return (
+        <div>
+            <h1>{article.title}</h1>
+            This is article {article.id}
+            <p>{article.body}</p>
+        </div>
+    )
+}
+
+export default article
+
+export const getStaticProps = async (context) => {
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${context.params.id}`)
+    const article = await res.json()
+
+    return {
+        props: {
+            article: article
+        }
+    }
+}
+
+export const getStaticPaths = async () => {
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts`)
+    const articles = await res.json()
+    const ids = articles.map(article => (article.id))
+    const paths = ids.map(id => ({ params: { id: id.toString() } }))
+
+    return {
+        paths,
+        fallback: false
+    }
+}
+```
+
+## pagesarticlesidindex.js
+
+```yaml
+import {useRouter} from 'next/router'
+import useSWR from 'swr'
+
+function article() {
+
+    const router = useRouter()
+    const {id} = router.query
+
+    if (!id) return <div>waiting...</div>
+
+    const fetcher = (...args) => fetch(...args).then(res => res.json())
+
+    const { data, error } = useSWR(`https://jsonplaceholder.typicode.com/posts/${id}`, fetcher)
+
+    if (error) return <div>failed to load</div>
+    if (!data) return <div>loading...</div>
+    
+    return (
+        <div>
+            <h1>{data.title}</h1>
+            This is article {data.id}
+            <p>{data.body}</p>
+        </div>
+    )
+}
+
+export default article
+```
+
+## pagesfullname...slugindex.js
+
+```text
+import {useRouter} from 'next/router'
+
+function name() {
+
+    const router = useRouter()
+    const {slug} = router.query
+
+    if (!slug) return <div>waiting...</div>
+
+    return (
+        <div>
+            <h1>{slug.join(' ')}</h1>
+        </div>
+    )
+}
+
+export default name
+```
+

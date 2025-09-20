@@ -94,3 +94,108 @@ To test the who-am-i web application we can navigate to http://localhost:3000
 
 ![](/assets/images/azure-active-directory/screen-shot-2021-03-31-at-9.31.40-pm-1836x977.png)
 *In this case we are redirected to "/redirect" and the name of the authenticated user is displayed*
+
+
+## package.json
+
+```text
+{
+  "name": "who-am-i",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@azure/msal-node": "^1.0.0",
+    "express": "^4.17.1",
+    "uuid": "^8.3.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Haddley/who-am-i.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Haddley/who-am-i/issues"
+  },
+  "homepage": "https://github.com/Haddley/who-am-i#readme"
+}
+```
+
+## index.js
+
+```text
+/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
+ */
+const express = require("express");
+const msal = require('@azure/msal-node');
+
+const SERVER_PORT = process.env.PORT || 3000;
+const REDIRECT_URI = "http://localhost:3000/redirect";
+
+// Before running the sample, you will need to replace the values in the config, 
+// including the clientSecret
+const config = {
+    auth: {
+        clientId: "63fe01c7-f396-484e-8a48-760f********",
+        authority: "https://login.microsoftonline.com/1661e837-0a95-4bc6-a655-8653********",
+        clientSecret: "-~nGgWS3F7y~-o2etNGc0BW_ik_*******"
+    },
+    system: {
+        loggerOptions: {
+            loggerCallback(loglevel, message, containsPii) {
+                console.log(message);
+            },
+            piiLoggingEnabled: false,
+            logLevel: msal.LogLevel.Verbose,
+        }
+    }
+};
+
+// Create msal application object
+const pca = new msal.ConfidentialClientApplication(config);
+
+// Create Express App and Routes
+const app = express();
+
+app.get('/', (req, res) => {
+    const authCodeUrlParameters = {
+        scopes: ["user.read"],
+        redirectUri: REDIRECT_URI,
+    };
+
+    // get url to sign user in and consent to scopes needed for application
+    pca.getAuthCodeUrl(authCodeUrlParameters).then((response) => {
+        res.redirect(response);
+    }).catch((error) => console.log(JSON.stringify(error)));
+});
+
+app.get('/redirect', (req, res) => {
+    const tokenRequest = {
+        code: req.query.code,
+        scopes: ["user.read"],
+        redirectUri: REDIRECT_URI,
+    };
+
+    pca.acquireTokenByCode(tokenRequest).then((response) => {
+        console.log("\nResponse: \n:", response);
+        // Return the current user's name
+        console.log(response.account.name);
+        res.send(response.account.name);
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log(error);
+        res.status(500).send(error);
+    });
+});
+
+
+app.listen(SERVER_PORT, () => console.log(`Msal Node Auth Code Sample app listening on port ${SERVER_PORT}!`))
+```
+

@@ -30,3 +30,22 @@ React Hooks include:
 ## Fetching data from an API
 
 The example below demonstrates how a React functional component can call an API
+
+
+## useState and useEffect
+
+```javascript
+const [data, setData] = useState();
+
+  useEffect(() => {
+    axios
+      .get("/books")
+      .then(result => {
+        setData(() => result.data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  })
+```
+

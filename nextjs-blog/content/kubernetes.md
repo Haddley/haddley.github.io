@@ -46,3 +46,51 @@ http://<ip address of the computer running Docker Desktop>:8080
 
 ![](/assets/images/kubernetes/screen-shot-2021-02-10-at-2.26.59-pm-1794x1190.png)
 *Accessing the cluster using port 8080*
+
+
+## blog.yaml
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blog-deployment
+  labels:
+    app: blog
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: blog
+  template:
+    metadata:
+      labels:
+        app: blog
+    spec:
+      containers:
+      - name: blog
+        image: haddley/blog
+        resources:
+          limits:
+            memory: 512Mi
+            cpu: "1"
+          requests:
+            memory: 256Mi
+            cpu: "0.2"
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blog-service
+spec:
+  selector:
+    app: blog
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 80
+  type: LoadBalancer
+```
+

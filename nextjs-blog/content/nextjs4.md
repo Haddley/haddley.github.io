@@ -17,9 +17,12 @@ tags: ["azure","aws","git","github"]
 
 ## Deploying a Next.js site to Azure
 
+```bash
 % npx create-next-app nextjs-blog --use-npm --example "https://github.com/vercel/next-learn/tree/master/basics/learn-starter"
 
 % npm run dev
+```
+
 
 ![](/assets/images/nextjs4/screen-shot-2021-11-11-at-2.25.59-pm-1126x734.png)
 *npx create-next-app*
@@ -76,7 +79,10 @@ Deploy update
 
 ## next-auth
 
+```bash
 % npm install next-auth
+```
+
 
 ![](/assets/images/nextjs4/screen-shot-2021-11-12-at-10.59.47-am-1836x694.png)
 *Deploy update to Azure*
@@ -133,3 +139,143 @@ The AzureADProvider from "next-auth/providers/azure-ad" can be used connect Next
 
 ![](/assets/images/nextjs4/screen-shot-2022-01-13-at-11.17.40-am-1836x1100.png)
 */api/auth/signin*
+
+
+## pagesapiauth...nextauth.js pagesarticlesindex.js a...
+
+```text
+// /pages/api/auth/[...nextauth].js 
+import NextAuth from "next-auth";
+import Providers from "next-auth/providers";
+
+const options = {
+    providers: [
+        Providers.GitHub({
+            clientId: process.env.NEXTAUTH_GITHUB_ID,
+            clientSecret: process.env.NEXTAUTH_GITHUB_SECRET,
+        }),
+    ],
+}
+
+export default (req, res) => NextAuth(req, res, options)
+
+// /pages/articles/index.js 
+import Link from 'next/link'
+import { getSession } from 'next-auth/client'
+
+function index({ session, articles }) {
+
+    if (!session) { return (<div>You need to be logged on</div>) }
+    
+    return (
+        <div>
+            <ul>
+                {articles.map(article => (<li key={article.id}>
+                    <Link href={`/articles/${article.id}`}>
+                        <a>{article.title}</a>
+                    </Link>
+                </li>))}
+            </ul>
+        </div>
+    )
+}
+
+export default index
+
+export const getServerSideProps = async (context) => {
+
+    const session = await getSession(context);
+
+    // If no session exists, display access denied message
+    if (!session) {
+        return {
+            props: {
+                session,
+            }
+        }
+    }
+
+
+    const res = await fetch('https://jsonplaceholder.typicode.com/posts')
+    const articles = await res.json();
+
+    return {
+        props: {
+            session,
+            articles
+        }
+    }
+}
+
+// /pages/articles/[id]/index.js
+import { getSession } from 'next-auth/client'
+
+function article({ session, article }) {
+
+    if (!session) { return (<div>You need to be logged on</div>) }
+
+    return (
+        <div>
+            <h1>{article.title}</h1>
+            This is article {article.id}
+            <p>{article.body}</p>
+        </div>
+    )
+}
+
+export default article
+
+export const getServerSideProps = async (context) => {
+
+    const session = await getSession(context);
+
+    // If no session exists, display access denied message
+    if (!session) {
+        return {
+            props: {
+                session,
+            }
+        }
+    }
+    
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${context.params.id}`)
+    const article = await res.json()
+    return {
+        props: {
+            session,
+            article
+        }
+    }
+}
+```
+
+## ...nextauth.js updated
+
+```text
+import NextAuth from "next-auth";
+import GihubProvider from "next-auth/providers/github"
+import AzureADProvider from "next-auth/providers/azure-ad"
+
+// https://haddleynexttodo.azurewebsites.net/api/auth/signin
+
+// Authorization callback URL: https://haddleynexttodo.azurewebsites.net/api/auth/callback/github
+// Authorization callback URL: https://haddleynexttodo.azurewebsites.net/api/auth/callback/azure-ad
+
+export default NextAuth({
+    providers: [
+        GihubProvider({
+            clientId: process.env.NEXTAUTH_GITHUB_ID, 
+            clientSecret: process.env.NEXTAUTH_GITHUB_SECRET, 
+        }),
+        AzureADProvider({
+            clientId: process.env.AZURE_AD_CLIENT_ID,
+            clientSecret: process.env.AZURE_AD_CLIENT_SECRET,
+            tenantId: process.env.AZURE_AD_TENANT_ID,
+            authorization: { params: { scope: "openid email profile" } }, 
+        })
+    ],
+    secret: process.env.NEXTAUTH_SECRET,
+    debug: true
+})
+```
+

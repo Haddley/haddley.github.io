@@ -192,3 +192,285 @@ In his [article](https://css-tricks.com/3-approaches-to-integrate-react-with-cus
 Until then it will take a little extra work to use all the features custom elements offer with React. Hopefully, the React team will continue to improve support to bridge the gap between React and the web platform.*
 
 [https://css-tricks.com/3-approaches-to-integrate-react-with-custom-elements/](https://css-tricks.com/3-approaches-to-integrate-react-with-custom-elements/)
+
+
+## html embedded above
+
+```text
+<label for="cheese">Favourite type of cheese: </label>
+<input id="cheese" aria-describedby="tp2"/>
+<howto-tooltip id="tp2">Help I am trapped inside a tooltip message</howto-tooltip>
+```
+
+## howtoTooltip.js
+
+```text
+class HowtoTooltip extends HTMLElement {
+
+    constructor() {
+        super();
+
+        this._show = this._show.bind(this);
+        this._hide = this._hide.bind(this);
+    }
+
+    connectedCallback() {
+        this._hide();
+
+        this._target = document.querySelector('[aria-describedby=' + this.id + ']');
+        if (!this._target)
+            return;
+
+        this._target.addEventListener('focus', this._show);
+        this._target.addEventListener('blur', this._hide);
+        this._target.addEventListener('mouseenter', this._show);
+        this._target.addEventListener('mouseleave', this._hide);
+    }
+
+    disconnectedCallback() {
+        if (!this._target)
+            return;
+
+        this._target.removeEventListener('focus', this._show);
+        this._target.removeEventListener('blur', this._hide);
+        this._target.removeEventListener('mouseenter', this._show);
+        this._target.removeEventListener('mouseleave', this._hide);
+        this._target = null;
+    }
+
+    _show() {
+        this.hidden = false;
+    }
+
+    _hide() {
+        this.hidden = true;
+    }
+}
+
+
+window.customElements.define('howto-tooltip', HowtoTooltip)
+
+customElements.whenDefined('howto-tooltip').then(() => {
+    console.log('howto-tooltip ready!');
+});
+```
+
+## template.html
+
+```text
+<body>
+
+    <template id="my-paragraph">
+        <p>My paragraph</p>
+    </template>
+
+
+    <script>
+
+        customElements.define("my-element",
+            class extends HTMLElement {
+                constructor() {
+                    super();
+                    let template = document.getElementById("my-paragraph");
+                    let templatecontent = template.content;
+                    const shadowRoot = this.attachShadow({ mode: "open" }).appendChild(templatecontent.cloneNode(true));
+                }
+            });
+
+    </script>
+
+    <my-element></my-element>
+    <my-element></my-element>
+    <my-element></my-element>
+
+</body>
+```
+
+## template.html
+
+```text
+<body>
+
+    <script>
+
+        const template = document.createElement('template');
+        template.innerHTML = `
+            <p>My paragraph</p>
+        `
+
+        customElements.define("my-element",
+            class extends HTMLElement {
+                constructor() {
+                    super();
+                    let templatecontent = template.content;
+                    const shadowRoot = this.attachShadow({ mode: "open" }).appendChild(templatecontent.cloneNode(true));
+                }
+            });
+
+    </script>
+
+    <my-element></my-element>
+    <my-element></my-element>
+    <my-element></my-element>
+
+</body>
+```
+
+## template.html
+
+```text
+<body>
+
+    <script>
+
+        const template = document.createElement('template');
+        template.innerHTML = `
+            <p><slot name="greeting">Hello</slot> <slot name="name">World</slot>!</p>
+        `
+
+        customElements.define("my-element",
+            class extends HTMLElement {
+                constructor() {
+                    super();
+                    let templatecontent = template.content;
+                    const shadowRoot = this.attachShadow({ mode: "open" }).appendChild(templatecontent.cloneNode(true));
+                }
+            });
+
+    </script>
+
+    <my-element></my-element>
+    <my-element><span slot="name">Neil</span></my-element>
+    <my-element><span slot="name">Neil</span><span slot="greeting">Welcome</span></my-element>
+
+</body>
+```
+
+## template.html
+
+```text
+<body>
+
+    <script>
+
+        const template = document.createElement('template');
+        template.innerHTML = `
+            <p><slot>Hello</slot> <span id="name">World</span>!</p>
+        `
+
+        customElements.define("my-element",
+            class extends HTMLElement {
+                constructor() {
+                    super();
+                    let templatecontent = template.content;
+                    const shadowRoot = this.attachShadow({ mode: "open" }).appendChild(templatecontent.cloneNode(true));
+                }
+                static get observedAttributes() {
+                    return ['name'];
+                }
+
+                attributeChangedCallback(name, oldValue, newValue) {
+                    if (name == 'name') {
+                        const span = this.shadowRoot.querySelector('#name')
+                        if (newValue) {
+                            span.innerText = newValue
+                            return
+                        } 
+                        span.innerText = "World"
+                    }
+                }
+            });
+
+
+    </script>
+
+    <my-element></my-element>
+    <my-element name="Neil"></my-element>
+    <my-element name="Neil"><span slot>Welcome</span></my-element>
+```
+
+## template.html
+
+```text
+<body>
+
+    <script>
+
+        const template = document.createElement('template');
+        template.innerHTML = `
+            <p><slot>Hello</slot> <span id="name">World</span>!</p>
+        `
+
+        customElements.define("my-element",
+            class extends HTMLElement {
+                constructor() {
+                    super();
+                    let templatecontent = template.content;
+                    const shadowRoot = this.attachShadow({ mode: "open" }).appendChild(templatecontent.cloneNode(true));
+                }
+
+                static get observedAttributes() {
+                    return ['name'];
+                }
+
+                attributeChangedCallback(name, oldValue, newValue) {
+                    if (name == 'name') {
+                        const span = this.shadowRoot.querySelector('#name')
+                        if (newValue) {
+                            span.innerText = newValue
+                            return
+                        }
+                        span.innerText = "World"
+                    }
+                }
+
+                connectedCallback() {
+                    this._interval = setInterval( () => {
+                        console.log('.')
+                        this._tick()
+                    }, 50000);
+                }
+
+                disconnectedCallback() {
+                    clearInterval(this._interval);
+                }
+
+                _tick() {
+                    const tickEvent = new CustomEvent("tick", {
+                        bubbles: true,
+                        cancelable: false,
+                        composed: true
+                    })
+                    this.dispatchEvent(tickEvent);
+                }
+
+            })
+
+    </script>
+
+    <my-element id='first'></my-element>
+    <my-element id='second' name="Neil"></my-element>
+    <my-element name="Neil"><span slot>Welcome</span></my-element>
+
+    <script>
+
+        document.querySelector('#first').addEventListener("tick", (e) => {
+            console.log('tick');
+            console.log(e);
+        });
+
+        document.querySelector('#first').addEventListener("click", (e) => {
+            console.log('click');
+            console.log(e);
+        });
+
+        document.querySelector('#second').addEventListener("tick", function (e) {
+            console.log('tock');
+            console.log(e);
+        });
+
+    </script>
+
+</body>
+```
+

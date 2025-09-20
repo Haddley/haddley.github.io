@@ -115,3 +115,51 @@ $ python holiday.py
 
 ![](/assets/images/gingerbreadhouse/414472361-3592654111010356-258204729919225997-n-960x720.jpg)
 *Bluey*
+
+
+## holiday.py
+
+```text
+from luma.core.interface.serial import i2c, spi, pcf8574
+from luma.core.interface.parallel import bitbang_6800
+from luma.core.render import canvas
+from luma.oled.device import ssd1306, ssd1309, ssd1325, ssd1331, sh1106, sh1107
+
+from time import sleep
+
+import cv2
+
+# OpenCV follows BGR color convention and PIL follows RGB color convention
+
+# Python Imaging Library
+from PIL import Image
+
+serial = i2c(port=1, address=0x3C)
+device = sh1106(serial)
+
+width =  device.width
+height = device.height
+
+cap = cv2.VideoCapture("holiday.mp4")
+while True:
+    ret, frame = cap.read()
+    if not ret:
+        break
+#    cv2.imshow("Img", frame)
+    
+    color_coverted = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    pil_image = Image.fromarray(color_coverted)
+    image_r = pil_image.resize((width,height), Image.LANCZOS) 
+    # Image.BICUBIC is another option
+    image_bw = image_r.convert("1")
+
+    device.display(image_bw)
+
+    key = cv2.waitKey(1)
+    if key == 27:
+        break
+        
+cap.release()
+cv2.destroyAllWindows()
+```
+

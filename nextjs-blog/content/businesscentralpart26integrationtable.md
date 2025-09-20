@@ -237,3 +237,297 @@ In Dynamics 365 Business Central, an Integration Table is a specialized table us
 
 ![](/assets/images/businesscentralpart26integrationtable/screenshot-2024-12-23-115803-1364x664.png)
 *The Total Amount field was displayed on the Customer Order Card*
+
+
+## Pag50100.CustomerOrders.al
+
+```text
+page 50100 "Customer Orders"
+{
+    ApplicationArea = All;
+    Caption = 'Customer Orders';
+    PageType = List;
+    SourceTable = "CDS hadd_CustomerOrder";
+    UsageCategory = Lists;
+
+    InsertAllowed = false;
+    ModifyAllowed = false;
+    DeleteAllowed = false;
+
+    RefreshOnActivate = true;
+
+    layout
+    {
+        area(Content)
+        {
+            repeater(General)
+            {
+                field(hadd_Name; Rec.hadd_Name)
+                {
+                    ToolTip = 'Specifies the value of the Name field.', Comment = '%';
+
+                    trigger OnDrillDown()
+                    var
+                        CustomerOrderPage: Page "Customer Order";
+                        CustomerOrder: Record "CDS hadd_CustomerOrder";
+                    begin
+                        if CustomerOrder.Get(Rec.hadd_CustomerOrderId) then begin
+                            CustomerOrder.SystemId := Rec.hadd_CustomerOrderId;
+                            CustomerOrderPage.SetRecord(CustomerOrder);
+                            CustomerOrderPage.Run();
+                        end;
+                    end;
+                }
+                field("Account Name"; Rec."Account Name")
+                {
+                    ToolTip = 'Specifies the value of the Account field.', Comment = '%';
+                }
+                field(hadd_RequestedDeliveryDate; Rec.hadd_RequestedDeliveryDate)
+                {
+                    ToolTip = 'Specifies the value of the Requested Delivery Date field.', Comment = '%';
+                }
+                field(statecode; Rec.statecode)
+                {
+                    ToolTip = 'Specifies the value of the Status field.', Comment = '%';
+                }
+                field(statuscode; Rec.statuscode)
+                {
+                    ToolTip = 'Specifies the value of the Status Reason field.', Comment = '%';
+                }
+            }
+        }
+    }
+
+    trigger OnInit()
+    begin
+        Codeunit.Run(Codeunit::"CRM Integration Management");
+    end;
+
+}
+```
+
+## Tab-Ext50105.CustomerOrderExt.al
+
+```text
+tableextension 50105 "Customer Order Ext" extends "CDS hadd_CustomerOrder"
+{
+    DataCaptionFields = hadd_Name, "Account Name";
+
+    fields
+    {
+        field(50100; "Account Name"; Text[160])
+        {
+            Caption = 'Account';
+            FieldClass = FlowField;
+            CalcFormula = lookup("CRM Account".Name where(AccountId = field(hadd_Account)));
+        }
+    }
+}
+```
+
+## Pag50102.CustomerOrderLines.al
+
+```text
+page 50102 "Customer Order Lines"
+{
+    ApplicationArea = All;
+    Caption = 'Customer Order Lines';
+    PageType = ListPart;
+    SourceTable = "CDS hadd_CustomerOrderLine";
+
+    layout
+    {
+        area(Content)
+        {
+            repeater(General)
+            {
+                field(hadd_Name; Rec.hadd_Name)
+                {
+                    ToolTip = 'Specifies the value of the Name field.', Comment = '%';
+                }
+                /*field(hadd_Item; Rec.hadd_Item)
+                {
+                    ToolTip = 'Specifies the value of the Item field.', Comment = '%';
+                }*/
+                field(ItemNo; GetItemNo()) //Rec.wiise_ItemNo)
+                {
+                    Caption = 'No.';
+                }
+                field(ItemDescription; GetItemDescription())
+                {
+                    Caption = 'Description';
+                }
+                field(ItemCategoryCode; GetItemCategoryCode()) //Rec.wiise_ItemCategoryCode)
+                {
+                    Caption = 'Category';
+                }
+                field("Unit Price"; GetUnitPrice())
+                {
+                    Caption = 'Unit Price';
+                }
+                field(hadd_Quantity; Rec.hadd_Quantity)
+                {
+                    ToolTip = 'Specifies the value of the Quantity field.', Comment = '%';
+                }
+                field("Unit of Measure"; GetUnitOfMeasure())
+                {
+                    Caption = 'Unit of Measure';
+                }
+
+                field("Amount"; GetAmount())
+                {
+
+                }
+            }
+        }
+    }
+
+    local procedure GetItemDescription(): Text[100]
+    var
+        Item: Record Item;
+    begin
+        if Item.GetBySystemId(Rec.hadd_Item) then
+            exit(Item.Description)
+        else
+            exit('')
+    end;
+
+    local procedure GetItemNo(): Text[20]
+    var
+        Item: Record Item;
+    begin
+        if Item.GetBySystemId(Rec.hadd_Item) then
+            exit(Item."No.")
+        else
+            exit('')
+    end;
+
+    local procedure GetItemCategoryCode(): Code[20]
+    var
+        Item: Record Item;
+    begin
+        if Item.GetBySystemId(Rec.hadd_Item) then
+            exit(Item."Item Category Code")
+        else
+            exit('')
+    end;
+
+    local procedure GetUnitPrice(): Decimal
+    var
+        Item: Record Item;
+    begin
+        if Item.GetBySystemId(Rec.hadd_Item) then
+            exit(Item."Unit Price")
+        else
+            Error('Price not found');
+    end;
+
+    local procedure GetUnitOfMeasure(): Text[50]
+    var
+        Item: Record Item;
+        Unit: Record "Unit of Measure";
+    begin
+        if Item.GetBySystemId(Rec.hadd_Item) then begin
+            if Unit.GetBySystemId(Item."Unit of Measure Id") then
+                exit(Unit.Description)
+            else
+                exit('')
+        end;
+        exit('');
+    end;
+
+    local procedure GetAmount(): Decimal
+    var
+        Item: Record Item;
+    begin
+        if Item.GetBySystemId(Rec.hadd_Item) then
+            exit(Item."Unit Price" * Rec.hadd_Quantity)
+        else
+            Error('Price not found');
+    end;
+
+}
+```
+
+## Pag50101.CustomerOrder.al
+
+```text
+page 50101 "Customer Order"
+{
+    ApplicationArea = All;
+    Caption = 'Customer Order';
+    PageType = Card;
+    SourceTable = "CDS hadd_CustomerOrder";
+
+    layout
+    {
+        area(Content)
+        {
+            group(General)
+            {
+                Caption = 'General';
+
+                field(hadd_Name; Rec.hadd_Name)
+                {
+                    ToolTip = 'Specifies the value of the Name field.', Comment = '%';
+                }
+                field("Account Name"; Rec."Account Name")
+                {
+                    ToolTip = 'Specifies the value of the Account field.', Comment = '%';
+                }
+                field(hadd_RequestedDeliveryDate; Rec.hadd_RequestedDeliveryDate)
+                {
+                    ToolTip = 'Specifies the value of the Requested Delivery Date field.', Comment = '%';
+                }
+                field(statecode; Rec.statecode)
+                {
+                    ToolTip = 'Specifies the value of the Status field.', Comment = '%';
+                }
+                field(statuscode; Rec.statuscode)
+                {
+                    ToolTip = 'Specifies the value of the Status Reason field.', Comment = '%';
+                }
+
+                field("Total Amount"; GetTotalAmount())
+                {
+
+                }
+            }
+
+            part("Customer Order Lines"; "Customer Order Lines")
+            {
+                SubPageLink = "hadd_Order" = FIELD("hadd_CustomerOrderId");
+            }
+
+        }
+    }
+
+
+    local procedure GetTotalAmount(): Decimal
+    var
+        Item: Record Item;
+        OrderLine: Record "CDS hadd_CustomerOrderLine";
+        TotalAmount: Decimal;
+    begin
+        TotalAmount := 0;
+
+        OrderLine.SetRange(OrderLine.hadd_Order, Rec."hadd_CustomerOrderId");
+
+        if OrderLine.FindSet() then
+            repeat
+                if Item.GetBySystemId(OrderLine.hadd_Item) then
+                    TotalAmount += Item."Unit Price" * OrderLine.hadd_Quantity;
+            until OrderLine.Next() = 0;
+
+        exit(TotalAmount);
+    end;
+
+
+    trigger OnInit()
+    begin
+        Codeunit.Run(Codeunit::"CRM Integration Management");
+    end;
+
+}
+```
+

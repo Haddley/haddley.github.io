@@ -141,3 +141,341 @@ Teams Toolkit makes creating Teams Tabs/Azure applications easier.
 
 ![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.45.25-pm-1836x1182.png)
 *Tab.js*
+
+
+## An extract from Tab.js
+
+```text
+{this.state.showLoginPage === true && <div className="auth">
+          <Profile userInfo={this.state.userInfo} />
+          <h2>Welcome to To Do List App!</h2>
+          <Button primary onClick={() => this.loginBtnClick()}>Start</Button>
+        </div>}
+```
+
+## Profile.js
+
+```text
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import React from 'react';
+import './Profile.css';
+import defaultPhoto from '../images/default-photo.png'
+
+class Profile extends React.Component {
+  render() {
+    return (
+      <div className="profile">
+        <div className="photo">
+          <img src={defaultPhoto} alt="avatar"/>
+        </div>
+        <div className="info">
+          <div className="name">{this.props.userInfo.displayName}</div>
+          <div className="email">{this.props.userInfo.preferredUserName}</div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default Profile;
+```
+
+## An extract from Tab.js
+
+```text
+async componentDidMount() {
+    await this.initTeamsFx();
+    await this.initData();
+  }
+
+  async initTeamsFx() {
+    // Initialize configuration from environment variables and set the global instance
+    loadConfiguration({
+      authentication: {
+        initiateLoginEndpoint: process.env.REACT_APP_START_LOGIN_PAGE_URL,
+        simpleAuthEndpoint: process.env.REACT_APP_TEAMSFX_ENDPOINT,
+        clientId: process.env.REACT_APP_CLIENT_ID
+      },
+      resources: [
+        {
+          type: ResourceType.API,
+          name: "default",
+          properties: {
+            endpoint: process.env.REACT_APP_FUNC_ENDPOINT
+          }
+        }
+      ]
+    });
+    const credential = new TeamsUserCredential();
+    // Get the user info from access token
+    const userInfo = await credential.getUserInfo();
+
+    this.setState({
+      userInfo: userInfo
+    });
+
+    this.credential = credential;
+    this.scope = ["User.Read", "User.ReadBasic.All"];
+    this.channelOrChatId = await this.getChannelOrChatId();
+  }
+
+  async initData() {
+    if (!await this.checkIsConsentNeeded()) {
+      await this.getItems();
+    }
+  }
+
+  async loginBtnClick() {
+    try {
+      // Popup login page to get user's access token
+      await this.credential.login(this.scope);
+    } catch (err) {
+      alert("Login failed: " + err);
+      return;
+    }
+    await this.initData();
+  }
+
+  async checkIsConsentNeeded() {
+    try {
+      await this.credential.getToken(this.scope);
+    } catch (error) {
+      this.setState({
+        showLoginPage: true
+      });
+      return true;
+    }
+    this.setState({
+      showLoginPage: false
+    });
+    return false;
+  }
+```
+
+## An extract from Tab.js
+
+```text
+{this.state.initialized && !this.state.items.length && !this.state.isAddingItem && <div className="no-item">
+                <div>
+                  <img src={noItemimage} alt="no item" />
+                </div>
+                <div>
+                  <h2>No tasks</h2>
+                  <p>Add more tasks to make you day productive.</p>
+                </div>
+              </div>}
+```
+
+## An extract from Tab.js
+
+```text
+{this.state.isAddingItem && <div className="item add">
+                <div className="complete">
+                  <Checkbox
+                    disabled
+                    className="is-completed-input"
+                  />
+                </div>
+                <div className="description">
+                  <Input
+                    autoFocus
+                    type="text"
+                    value={this.state.newItemDescription}
+                    onChange={(e) => this.setState({ newItemDescription: e.target.value })}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        this.onAddItem();
+                      }
+                    }}
+                    onBlur={() => {
+                      if (this.state.newItemDescription) {
+                        this.onAddItem();
+                      }
+                      this.setState({
+                        isAddingItem: false,
+                      });
+                    }}
+                    className="text"
+                  />
+                </div>
+              </div>}
+```
+
+## An extract from Tab.js
+
+```text
+const items = this.state.items?.map((item, index) =>
+      <div key={index} className="item">
+        <div className="complete">
+          <Checkbox
+            checked={this.state.items[index].isCompleted}
+            onChange={(e, { checked }) => this.onCompletionStatusChange(item.id, index, checked)}
+            className="is-completed-input"
+          />
+        </div>
+        <div className="description">
+          <Input
+            value={this.state.items[index].description}
+            onChange={(e) => this.handleInputChange(index, "description", e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                this.onUpdateItem(item.id, this.state.items[index].description);
+                e.target.blur();
+              }
+            }}
+            onBlur={() => this.onUpdateItem(item.id, this.state.items[index].description)}
+            className={"text" + (this.state.items[index].isCompleted ? " is-completed" : "")}
+          />
+        </div>
+        <Creator objectId={item.objectId} credential={this.credential} scope={this.scope} />
+        <div className="action">
+          <MenuButton
+            trigger={<Button content="..." />}
+            menu={[
+              {
+                content: 'Delete',
+                onClick: () => this.onDeleteItem(item.id)
+              }
+            ]}
+            on="click"
+          />
+        </div>
+      </div>
+    );
+```
+
+## index.js
+
+```text
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+const {
+    loadConfiguration,
+    OnBehalfOfUserCredential,
+    DefaultTediousConnectionConfiguration,
+} = require("@microsoft/teamsfx");
+const { Connection, Request } = require('tedious');
+
+/**
+ * This function handles requests sent from teamsfx client SDK.
+ * The HTTP request should contain an SSO token in the header and any content in the body.
+ * The SSO token should be queried from Teams client by teamsfx client SDK.
+ * Before trigger this function, teamsfx binding would process the SSO token and generate teamsfx configuration.
+ *
+ * This function initializes the teamsfx Server SDK with the configuration and calls these APIs:
+ * - getUserInfo() - Get the user's information from the received SSO token.
+ * - getMicrosoftGraphClientWithUserIdentity() - Get a graph client to access user's Microsoft 365 data.
+ *
+ * The response contains multiple message blocks constructed into a JSON object, including:
+ * - An echo of the request body.
+ * - The display name encoded in the SSO token.
+ * - Current user's Microsoft 365 profile if the user has consented.
+ *
+ * @param {Context} context - The Azure Functions context object.
+ * @param {HttpRequest} req - The HTTP request.
+ * @param {teamsfxConfig} config - The teamsfx configuration generated by teamsfx binding.
+ */
+module.exports = async function (context, req, config) {
+    let connection;
+    // Initialize configuration from environment variables and set the global instance
+    loadConfiguration()
+    try {
+        connection = await getSQLConnection();
+        const method = req.method.toLowerCase();
+        const accessToken = config.AccessToken;
+        const credential = new OnBehalfOfUserCredential(accessToken);
+        // Get the user info from access token
+        const currentUser = await credential.getUserInfo();
+        const objectId = currentUser.objectId;
+        var query;
+
+        switch (method) {
+            case "get":
+                query = `select id, description, isCompleted, objectId from dbo.Todo where channelOrChatId = '${req.query.channelOrChatId}'`;
+                break;
+            case "put":
+                if (req.body.description) {
+                    query = `update dbo.Todo set description = N'${req.body.description}' where id = ${req.body.id}`;
+                } else {
+                    query = `update dbo.Todo set isCompleted = ${req.body.isCompleted ? 1 : 0} where id = ${req.body.id}`;
+                }
+                break;
+            case "post":
+                query = `insert into dbo.Todo (description, objectId, isCompleted, channelOrChatId) values (N'${req.body.description}','${objectId}',${req.body.isCompleted ? 1 : 0},'${req.body.channelOrChatId}')`;
+                break;
+            case "delete":
+                query = "delete from dbo.Todo where " + (req.body ? `id = ${req.body.id}` : `objectId = '${objectId}'`);
+                break;
+        }
+        // Execute SQL through TeamsFx server SDK generated connection and return result
+        const result = await execQuery(query, connection);
+        return {
+            status: 200,
+            body: result
+        }
+    }
+    catch (err) {
+        return {
+            status: 500,
+            body: {
+                error: err.message
+            }
+        }
+    }
+    finally {
+        if (connection) {
+            connection.close();
+        }
+    }
+}
+
+async function getSQLConnection() {
+    const sqlConnectConfig = new DefaultTediousConnectionConfiguration();
+    const config = await sqlConnectConfig.getConfig();
+    const connection = new Connection(config);
+    return new Promise((resolve, reject) => {
+        connection.on('connect', err => {
+            if (err) {
+                reject(err);
+            }
+            resolve(connection);
+        })
+        connection.on('debug', function (err) {
+            console.log('debug:', err);
+        });
+    })
+}
+
+async function execQuery(query, connection) {
+    return new Promise((resolve, reject) => {
+        const res = [];
+        const request = new Request(query, (err) => {
+            if (err) {
+                reject(err);
+            }
+        });
+
+        request.on('row', columns => {
+            const row = {};
+            columns.forEach(column => {
+                row[column.metadata.colName] = column.value;
+            });
+            res.push(row)
+        });
+
+        request.on('requestCompleted', () => {
+            resolve(res)
+        });
+
+        request.on("error", err => {
+            reject(err);
+        });
+
+        connection.execSql(request);
+    })
+}
+```
+

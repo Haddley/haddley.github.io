@@ -65,7 +65,10 @@ The aws command line tool is used to manage the Amazon Web Services cloud.
 
 aws configure is used to set credentials
 
+```bash
 % aws configure
+```
+
 AWS Access Key ID [None]: AKIAYLZDACM7MNDENQV4
 AWS Secret Access Key [None]: iBXYnPPUTp+enyaVU2xvXXXXXXXXXXXXXXXXXXXX
 Default region name [None]: 
@@ -145,7 +148,10 @@ kubectl [get service/blog-service](https://aws.amazon.com/premiumsupport/knowled
 
 using ekctl delete to remove the cluster
 
+```bash
 % eksctl delete cluster \
+```
+
 --name blog-cluster
 
 ![](/assets/images/amazoneks/screen-shot-2021-08-12-at-9.38.35-pm-1836x1181.png)
@@ -159,7 +165,10 @@ using ekctl delete to remove the cluster
 
 To switch back to using Docker Desktop
 
+```bash
 % kubectl config use-context docker-desktop
+```
+
 
 ![](/assets/images/amazoneks/screen-shot-2021-08-15-at-2.10.40-pm-1836x1036.png)
 *switch back to docker-desktop*

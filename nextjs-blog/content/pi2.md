@@ -33,3 +33,27 @@ The Raspberry Pi input and output pins can be controlled from the terminal.
 
 ![](/assets/images/pi2/screen-shot-2023-07-22-at-6.51.01-pm-710x96.png)
 *Notice that Pin 11 === GPIO 17*
+
+
+## blinky.py
+
+```text
+import RPi.GPIO as GPIO
+import time
+
+GPIO.setmode(GPIO.BOARD)
+GPIO.setwarnings(False)
+
+ledPin = 11
+
+GPIO.setup(ledPin, GPIO.OUT)
+
+for i in range(5):
+ print("LED turning on.")
+ GPIO.output(ledPin, GPIO.HIGH)
+ time.sleep(0.5)
+ print("LED turning off.")
+ GPIO.output(ledPin, GPIO.LOW)
+ time.sleep(0.5)
+```
+

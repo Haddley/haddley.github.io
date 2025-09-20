@@ -17,7 +17,10 @@ tags: ["azure","aws","ai","git","github"]
 
 ## Articles api
 
+```bash
 % sails generate api articles
+```
+
 
 ![](/assets/images/sails2/screen-shot-2021-10-12-at-1.43.22-pm-1836x1048.png)
 *generate api articles*

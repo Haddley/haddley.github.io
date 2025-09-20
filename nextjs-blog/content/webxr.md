@@ -46,3 +46,32 @@ For convenience the barcode marker can be added to a web page QR Code.
 
 ![](/assets/images/webxr/qr-code-3-1148x1148.png)
 *Barcode Marker embedded in a QR Code*
+
+
+## Scene
+
+```html
+<!DOCTYPE html>
+<html>
+<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+
+<body style="margin : 0px; overflow: hidden;">
+    <a-scene embedded arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+
+        <a-marker preset="hiro">
+            <a-sphere position='0 0.5 0' material="opacity: 0.5" radius="1"></a-sphere>
+        </a-marker>
+
+        <a-marker type="barcode" value="6">
+            <a-entity position="0 0 0" scale="0.05 0.05 0.05"
+                gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf">
+            </a-entity>
+        </a-marker>
+        <a-entity camera></a-entity>
+    </a-scene>
+</body>
+
+</html>
+```
+

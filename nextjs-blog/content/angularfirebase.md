@@ -167,7 +167,10 @@ Angular routing configuration
 
 I used "ng deploy" to deploy the app.
 
+```bash
 % ng deploy
+```
+
 
 ![](/assets/images/angularfirebase/screen-shot-2023-04-26-at-11.55.42-am-1720x870.png)
 *ng deploy*
@@ -185,3 +188,116 @@ addDoc and query collection
 
 ![](/assets/images/angularfirebase/screen-shot-2023-04-27-at-11.08.59-am-1298x808.png)
 *dashboard*
+
+
+## dashboard.component.ts
+
+```text
+import { Component, OnInit } from '@angular/core';
+import { Auth } from '@angular/fire/auth';
+
+@Component({
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
+})
+export class DashboardComponent implements OnInit {
+
+  user = this.auth.currentUser;
+
+  constructor(private auth: Auth) { }
+
+  ngOnInit(): void {
+    console.log(this.auth.currentUser);
+  }
+
+}
+```
+
+## dashboard.component.html
+
+```text
+<div class="container my-5">
+
+    <p>dashboard works!</p>
+
+    <div *ngIf="user">
+        User {{ user.email }} is logged in.
+    </div>
+
+    <ul>
+        <li *ngFor="let message of messages$ | async">
+          {{ message.text }}
+        </li>
+      </ul>
+
+    <form [formGroup]="createMessageForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="exampleInputMessage1" class="form-label">Message</label>
+            <input type="text" class="form-control" id="exampleMessage1" aria-describedby="messageHelp"
+                formControlName="message">
+            <div id="messageHelp" class="form-text">Enter message here.</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+```
+
+## dashboard.component.ts
+
+```text
+import { Component, OnInit } from '@angular/core';
+import { Auth } from '@angular/fire/auth';
+import { Firestore, addDoc, collection, collectionData, getFirestore, query, serverTimestamp, where } from '@angular/fire/firestore';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+
+@Component({
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
+})
+export class DashboardComponent implements OnInit {
+
+  user = this.auth.currentUser;
+  createMessageForm!: FormGroup;
+  messages$: Observable<any[]>;
+
+  constructor(private formBuilder: FormBuilder, private auth: Auth, firestore: Firestore) {
+    this.createMessageForm = this.formBuilder.group({
+      message: formBuilder.control('', [Validators.required, Validators.minLength(6)])
+    })
+    const uid = this.auth.currentUser?.uid;
+    const result = query(collection(firestore, 'messages'), where("uid", "==", uid));
+    console.log(result);
+    this.messages$ = collectionData(result);
+  }
+
+  ngOnInit(): void {
+    console.log(this.auth.currentUser);
+  }
+
+  public onSubmit(): void {
+    this.saveMessage(this.createMessageForm.value.message)
+    this.createMessageForm.reset();
+  }
+
+  // Saves a new message to Cloud Firestore.
+  private async saveMessage(messageText: string) {
+    try {
+      const uid = this.auth.currentUser?.uid;
+      await addDoc(collection(getFirestore(), 'messages'), {
+        uid: uid,
+        email: this.auth.currentUser?.email,
+        text: messageText,
+        timestamp: serverTimestamp()
+      });
+    }
+    catch (error) {
+      console.error('Error writing new message to Firebase Database', error);
+    }
+  }
+
+}
+```
+

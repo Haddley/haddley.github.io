@@ -137,3 +137,119 @@ A Blazor Server project and a Model-View-Controller project are both ASP.NET Cor
 
 ![](/assets/images/dotnet core part3/screen-shot-2023-03-17-at-12.48.44-pm-1836x1040.png)
 *Program.cs (part 2)*
+
+
+## ShowPhoto.razor
+
+```text
+@page "/showphoto"
+
+@using Microsoft.Identity.Web
+@using Microsoft.Graph
+@inject Microsoft.Graph.GraphServiceClient GraphServiceClient
+@inject MicrosoftIdentityConsentAndConditionalAccessHandler ConsentHandler
+
+<h1>My Photo</h1>
+
+<p>This component demonstrates fetching data from a service.</p>
+
+@if (imgDataURL == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <img src=@imgDataURL />
+}
+
+@code {
+    String? imgDataURL;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            Stream photo = await GraphServiceClient.Me.Photo.Content.Request().GetAsync();
+
+            if (photo != null)
+            {
+                MemoryStream ms = new MemoryStream();
+                photo.CopyTo(ms);
+                byte[] buffer = ms.ToArray();
+                string result = Convert.ToBase64String(buffer);
+                imgDataURL = string.Format("data:image/png;base64,{0}", result);
+            }
+            else
+            {
+                imgDataURL = "";
+            }
+        }
+        catch (Exception ex)
+        {
+            ConsentHandler.HandleException(ex);
+        }
+    }
+}
+```
+
+## Program.cs
+
+```text
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.Identity.Web;
+using Microsoft.Identity.Web.UI;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using Graph = Microsoft.Graph;
+using haddley_blazor_graph.Data;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+var initialScopes = builder.Configuration["DownstreamApi:Scopes"]?.Split(' ');
+
+builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
+    .AddMicrosoftIdentityWebApp(builder.Configuration.GetSection("AzureAd"))
+        .EnableTokenAcquisitionToCallDownstreamApi(initialScopes)
+            .AddMicrosoftGraph(builder.Configuration.GetSection("DownstreamApi"))
+            .AddInMemoryTokenCaches();
+builder.Services.AddControllersWithViews()
+    .AddMicrosoftIdentityUI();
+
+builder.Services.AddAuthorization(options =>
+{
+    // By default, all incoming requests will be authorized according to the default policy
+    options.FallbackPolicy = options.DefaultPolicy;
+});
+
+builder.Services.AddRazorPages();
+builder.Services.AddServerSideBlazor()
+    .AddMicrosoftIdentityConsentHandler();
+builder.Services.AddSingleton<WeatherForecastService>();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
+}
+
+app.UseHttpsRedirection();
+
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.MapControllers();
+app.MapBlazorHub();
+app.MapFallbackToPage("/_Host");
+
+app.Run();
+```
+

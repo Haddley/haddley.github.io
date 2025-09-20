@@ -69,10 +69,6 @@ MOVE 'AdventureWorks2017_Log' TO '/usr/AdventureWorks2019_Log.ldf'
 
 ```bash
 % cd dotnet-sql
-
-```
-
-```bash
 % dotnet new gitignore
 ```
 
@@ -81,8 +77,6 @@ Add [NuGet](nuget.html) package
 ```bash
 % dotnet add package System.Data.SqlClient
 ```
-**
-**
 
 ![](/assets/images/mssqlserver/screen-shot-2021-03-15-at-7.10.16-pm-1836x1133.png)
 *dotnet add package System.Data.SqlClient*

@@ -107,3 +107,78 @@ CMD ["npm", "start"]
 
 ![](/assets/images/restapiservice/screen-shot-2021-02-07-at-11.09.17-am-1632x1210.png)
 */books/id with an invalid id*
+
+
+## Example route handlers
+
+```javascript
+app.get('/books', (request, response) => {
+    response.json(books);
+});
+
+app.get('/books/:id', (request, response) => {
+    const isbnId = Number(request.params.id);
+    const found = books.find((book) => book.id === isbnId);
+
+    if (!found) {
+        response.status(404).send('Book Not Found');
+    } else {
+        response.json(found);
+    }
+});
+```
+
+## package.json
+
+```javascript
+{
+  "name": "books",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
+```
+
+## index.js
+
+```javascript
+const express = require('express');
+const app = express();
+let books = [
+    {
+        "id": 1788395549,
+        "title": "Learning Node.js Development",
+    },
+    {
+        "id": 1788620216,
+        "title": "Hands-On Microservices with Node.js",
+    }
+];
+
+app.get('/books', (request, response) => {
+    response.json(books);
+});
+
+app.get('/books/:id', (request, response) => {
+    const isbnId = Number(request.params.id);
+    const found = books.find((book) => book.id === isbnId);
+
+    if (!found) {
+        response.status(404).send('Book Not Found');
+    } else {
+        response.json(found);
+    }
+});
+
+
+app.listen(5000, () => console.log('server running'));
+```
+

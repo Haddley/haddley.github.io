@@ -106,3 +106,111 @@ The steps below demonstrate how next-pwa can be added to a with-ionic-typescript
 
 ![](/assets/images/nextjs5/screen-shot-2022-01-13-at-2.43.45-pm-759x605.png)
 *Running application online or offline on MackBook*
+
+
+## .gitignore
+
+```text
+**/public/workbox-*.js
+**/public/sw.js
+**/public/fallback-*.j
+```
+
+## _offline.js
+
+```text
+import Head from 'next/head'
+
+export default () => (
+  <>
+    <Head>
+      <title>next-pwa example</title>
+    </Head>
+    <h1>This is offline fallback page</h1>
+    <h2>When offline, any page route will fallback to this page</h2>
+  </>
+)
+```
+
+## manifest.json
+
+```text
+{
+    "name": "next-pwa",
+    "short_name": "next-pwa",
+    "display": "standalone",
+    "orientation": "portrait",
+    "theme_color": "#FFFFFF",
+    "background_color": "#FFFFFF",
+    "start_url": "/",
+    "icons": [
+      {
+        "src": "/icons/android-chrome-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "any maskable"
+      },
+      {
+        "src": "/icons/icon-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
+```
+
+## _document.js
+
+```text
+import Document, { Html, Head, Main, NextScript } from 'next/document'
+
+const APP_NAME = 'next-pwa example'
+const APP_DESCRIPTION = 'This is an example of using next-pwa plugin'
+
+export default class extends Document {
+  static async getInitialProps(ctx) {
+    return await Document.getInitialProps(ctx)
+  }
+
+  render() {
+    return (
+      <Html lang='en' dir='ltr'>
+        <Head>
+          <meta name='application-name' content={APP_NAME} />
+          <meta name='apple-mobile-web-app-capable' content='yes' />
+          <meta name='apple-mobile-web-app-status-bar-style' content='default' />
+          <meta name='apple-mobile-web-app-title' content={APP_NAME} />
+          <meta name='description' content={APP_DESCRIPTION} />
+          <meta name='format-detection' content='telephone=no' />
+          <meta name='mobile-web-app-capable' content='yes' />
+          <meta name='theme-color' content='#FFFFFF' />
+          {/* TIP: set viewport head meta tag in _app.js, otherwise it will show a warning */}
+          {/* <meta name='viewport' content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover' /> */}
+          
+          <link rel='apple-touch-icon' sizes='180x180' href='/icons/apple-touch-icon.png' />
+          <link rel='manifest' href='/manifest.json' />
+          <link rel='shortcut icon' href='/favicon.ico' />
+          <style>{
+            `
+            html, body, #__next {
+              height: 100%;
+            }
+            #__next {
+              margin: 0 auto;
+            }
+            h1 {
+              text-align: center;
+            }
+            `
+          }</style>
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    )
+  }
+}
+```
+

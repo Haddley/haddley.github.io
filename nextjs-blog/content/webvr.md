@@ -41,3 +41,30 @@ The Moon Rider code is available for download from GitHub
 WebVR developers use **entities** to create **scenes**. Entities are created using **assets**.
 
 A static scene can be created using a few web page tags.
+
+
+## A scene
+
+```javascript
+<body>
+
+    <a-scene>
+
+        <a-assets>
+            <a-asset-item id="engine" src="./assets/files/engine.glb">
+            </a-asset-item>
+        </a-assets>
+
+        <a-entity position="0 0 -3">
+            <a-gltf-model src="#engine" rotation="90 0 0" scale="18 18 18"></a-gltf-model>
+        </a-entity>
+
+        <a-entity light="type: point; intensity: 60; distance: 50; decay: 2" position="0 0 10"></a-entity>
+
+    </a-scene>
+
+</body>
+
+</html>
+```
+

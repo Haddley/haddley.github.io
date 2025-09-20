@@ -111,3 +111,88 @@ A .NET Core Web API can be deployed to Amazon EKS from Visual Studio Code using 
 
 ![](/assets/images/aspnetcoreawseks/a7eddbf5e5f594b32b4f127603f1de51-188864526.us-east-1.elb.amazonaws.com-weatherforecast-google-chrome-8-16-2021-9-50-04-pm-1407x381.png)
 *Navigating to the loadbalancer/cluster*
+
+
+## WeatherForecastController.cs
+
+```text
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+
+namespace dotnetapi.Controllers
+{
+    [ApiController]
+    [Route("[controller]")]
+    public class WeatherForecastController : ControllerBase
+    {
+        private static readonly string[] Summaries = new[]
+        {
+            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+        };
+
+        private readonly ILogger<WeatherForecastController> _logger;
+
+        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        {
+            _logger = logger;
+        }
+
+        [HttpGet]
+        public IEnumerable<WeatherForecast> Get()
+        {
+            var rng = new Random();
+            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            {
+                Date = DateTime.Now.AddDays(index),
+                TemperatureC = rng.Next(-20, 55),
+                Summary = Summaries[rng.Next(Summaries.Length)]
+            })
+            .ToArray();
+        }
+    }
+}
+```
+
+## dotnetapi.yaml
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnetapi-deployment
+  labels:
+    app: dotnetapi
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dotnetapi
+  template:
+    metadata:
+      labels:
+        app: dotnetapi
+    spec:
+      containers:
+      - name: dotnetapi
+        image: 575062151998.dkr.ecr.us-east-1.amazonaws.com/dotnetapi
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dotnetapi-service
+spec:
+  selector:
+    app: dotnetapi
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+  type: LoadBalancer
+```
+

@@ -182,3 +182,154 @@ $ dotnet add package HaddleyOffice365.dotnet-factorial --version 1.0.0**
 
 ![](/assets/images/nuget/screen-shot-2021-03-01-at-6.54.50-pm-1836x1229.png)
 *dotnet run*
+
+
+## UnitTests.cs
+
+```text
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using dotnet_factorial.recursive;
+using dotnet_factorial.iterative;
+
+namespace dotnet_factorial.unittests
+{
+    [TestClass]
+    public class UnitTests
+    {
+        [TestMethod]
+        public void TestMethod()
+        {
+            Assert.AreEqual(362880, recursivefunctions.factorial(9));
+            Assert.AreEqual(362880, recursivefunctions.factorial_tr(9));
+            Assert.AreEqual(362880, iterativefunctions.factorial_it(9));
+
+            Assert.AreEqual(7.257415615307994e+306, recursivefunctions.factorial(170));
+            Assert.AreEqual(7.257415615308004e+306, recursivefunctions.factorial_tr(170));
+            Assert.AreEqual(7.257415615308004e+306, iterativefunctions.factorial_it(170));
+        }
+    }
+}
+```
+
+## iterativefunctions.cs
+
+```text
+using System;
+
+namespace dotnet_factorial.iterative
+{
+    public class iterativefunctions
+    {
+        public static double factorial_it(int n)
+        {
+            double acc = 1;
+
+            for (int i = n; i > 1; i--)
+            {
+                acc = acc * i;
+            }
+
+            return acc;
+        }
+    }
+}
+```
+
+## recursivefunctions.cs
+
+```text
+using System;
+
+namespace dotnet_factorial.recursive
+{
+    public class recursivefunctions
+    {
+
+        public static double factorial(int n)
+        {
+            if (n < 2) return 1;
+            return n * factorial(n - 1);
+        }
+
+        private static double fac_tr_aux(int n, double acc)
+        {
+            if (n < 2)
+                return acc;
+            return fac_tr_aux(n - 1, n * acc);
+        }
+
+        public static double factorial_tr(int n)
+        {
+            return fac_tr_aux(n, 1);
+        }
+
+    }
+}
+```
+
+## dotnet.yml
+
+```yaml
+name: .NET
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+```
+
+## dotnet-factorial.csproj updates
+
+```xml
+<PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageId>HaddleyOffice365.dotnet-factorial</PackageId>
+    <Version>1.0.0</Version>
+    
+    <Title>DotNet Factorial Functions</Title>
+    <Authors>Neil Haddley</Authors>
+    <PackageProjectUrl>
+    https://github.com/haddleyoffice365/dotnet-factorial
+    </PackageProjectUrl>
+    <Description>Recursive and Iterative functions in C#.</Description>
+```
+
+## Program.cs
+
+```text
+using System;
+using dotnet_factorial.iterative;
+using dotnet_factorial.recursive;
+
+namespace dotnet_factorial_console
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("factorial of 9 is {0}",iterativefunctions.factorial_it(9));
+            Console.WriteLine("factorial of 9 is {0}",recursivefunctions.factorial(9));
+            Console.WriteLine("factorial of 9 is {0}",recursivefunctions.factorial_tr(9));
+        }
+    }
+}
+```
+

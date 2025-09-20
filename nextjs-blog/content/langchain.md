@@ -92,3 +92,194 @@ I used Chroma to create an [embeddings](sentencesimilarity.html) vector store an
 
 ![](/assets/images/langchain/screen-shot-2023-07-21-at-8.21.56-pm-1536x866.png)
 *The finished application*
+
+
+## app0.py
+
+```text
+# pip install streamlit
+# python -m streamlit run app0.py              
+
+import streamlit
+
+prompt = streamlit.text_input('Input your name')
+
+if prompt:
+    response = "Hello " + prompt
+    streamlit.write(response)
+```
+
+## app1.py
+
+```text
+# pip install langchain openai streamlit
+# python -m streamlit run app.py              
+
+# import os
+from langchain.llms import OpenAI
+import streamlit
+
+# os.environ['OPENAI_API_KEY']='<insert key here>'
+
+llm = OpenAI(temperature=0.9)
+
+prompt = streamlit.text_input('Input your prompt')
+
+if prompt:
+    response = llm(prompt)
+    streamlit.write(response)
+```
+
+## 1
+
+```text
+from langchain.document_loaders import PyPDFLoader
+
+loader = PyPDFLoader('hp4.pdf')
+pages = loader.load_and_split()
+
+
+print (pages[0].page_content)
+```
+
+## 2  3
+
+```text
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+# Define chunk size, overlap and separators
+text_splitter = RecursiveCharacterTextSplitter(
+    chunk_size = 1024,
+    chunk_overlap  = 40,
+    length_function = len,
+    separators=["\n \n", " ", ""]
+)
+
+# Split the pages into paragraphs (texts) as defined above
+texts = text_splitter.split_documents(pages)
+
+len(texts)
+
+texts[1].page_content
+```
+
+## 4
+
+```text
+from langchain.llms import OpenAI
+
+from langchain.embeddings import OpenAIEmbeddings
+
+from langchain.vectorstores import Chroma
+
+from langchain.agents.agent_toolkits import (
+    create_vectorstore_agent,
+    VectorStoreToolkit,
+    VectorStoreInfo
+)
+
+
+llm = OpenAI(temperature=0.9,verbose=True)
+embeddings=OpenAIEmbeddings()
+
+save_directory = "Chroma"
+
+store = Chroma.from_documents(texts, embeddings, collection_name='hp4', persist_directory=save_directory)
+store.persist()
+
+store.get()
+```
+
+## 5
+
+```text
+search = store.similarity_search_with_score('Does the patient smoke?')
+
+search
+```
+
+## 6
+
+```text
+db = Chroma(persist_directory=save_directory,collection_name='hp4',embedding_function=embeddings)
+
+print(db._collection.count())
+
+db.get()
+```
+
+## 7
+
+```text
+vectorstore_info = VectorStoreInfo(
+    name="hp4",
+    description="vectore store generate from hp4.pdf",
+    vectorstore=store
+)
+
+toolkit = VectorStoreToolkit(vectorstore_info=vectorstore_info)
+
+agent_executor = create_vectorstore_agent(
+    llm=llm,
+    toolkit=toolkit,
+    verbose=True
+)
+
+response = agent_executor.run("Does the patient smoke?")
+
+response
+```
+
+## app2.py
+
+```text
+import streamlit as st
+
+from langchain.llms import OpenAI
+
+from langchain.embeddings import OpenAIEmbeddings
+
+from langchain.vectorstores import Chroma
+
+from langchain.agents.agent_toolkits import (
+    create_vectorstore_agent,
+    VectorStoreToolkit,
+    VectorStoreInfo
+)
+
+
+llm = OpenAI(temperature=0.9,verbose=True)
+
+embeddings=OpenAIEmbeddings()
+
+save_directory = "Chroma"
+
+# load embeddings from "Chroma" directory
+db = Chroma(persist_directory=save_directory,collection_name='hp4',embedding_function=embeddings)
+
+vectorstore_info = VectorStoreInfo(
+    name="hp4",
+    description="embeddings generated from the pdf document",
+    vectorstore=db
+)
+
+toolkit = VectorStoreToolkit(vectorstore_info=vectorstore_info)
+
+agent_executor = create_vectorstore_agent(
+    llm=llm,
+    toolkit=toolkit,
+    verbose=True
+)
+
+prompt = st.text_input('Input your prompt')
+
+if prompt:
+    #response = llm(prompt)
+    response = agent_executor.run(prompt)
+    st.write(response)
+
+    with st.expander('Document Similarity Search'):
+        search = db.similarity_search_with_score(prompt)
+        st.write(search)
+```
+

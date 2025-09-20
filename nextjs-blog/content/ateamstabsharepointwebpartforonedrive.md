@@ -146,3 +146,345 @@ I did not need to update this file
 
 ![](/assets/images/ateamstabsharepointwebpartforonedrive/screen-shot-2022-05-29-at-10.24.10-am-1400x786.png)
 *Here is the code running in Teams*
+
+
+## serve.json
+
+```text
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/core-build/serve.schema.json",
+  "port": 4321,
+  "https": true,
+  "initialPage": "https://p8lf.sharepoint.com/sites/Mark8ProjectTeam/_layouts/workbench.aspx"
+}
+```
+
+## HaddleyListWebPart.ts
+
+```text
+import * as React from 'react';
+import * as ReactDom from 'react-dom';
+import { Version } from '@microsoft/sp-core-library';
+import {
+  IPropertyPaneConfiguration,
+  PropertyPaneTextField
+} from '@microsoft/sp-property-pane';
+import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
+import { IReadonlyTheme } from '@microsoft/sp-component-base';
+
+import * as strings from 'HaddleyListWebPartStrings';
+import HaddleyList from './components/HaddleyList';
+import { IHaddleyListProps } from './components/IHaddleyListProps';
+
+import { Providers,SharePointProvider } from '@microsoft/mgt-spfx';
+
+export interface IHaddleyListWebPartProps {
+  description: string;
+}
+
+export default class HaddleyListWebPart extends BaseClientSideWebPart<IHaddleyListWebPartProps> {
+
+  private _isDarkTheme: boolean = false;
+  private _environmentMessage: string = '';
+
+  protected onInit(): Promise<void> {
+
+    if (!Providers.globalProvider){
+      Providers.globalProvider =  new SharePointProvider(this.context);
+    }
+
+    this._environmentMessage = this._getEnvironmentMessage();
+
+    return super.onInit();
+  }
+
+  public render(): void {
+    const element: React.ReactElement<IHaddleyListProps> = React.createElement(
+      HaddleyList,
+      {
+        description: this.properties.description,
+        isDarkTheme: this._isDarkTheme,
+        environmentMessage: this._environmentMessage,
+        hasTeamsContext: !!this.context.sdks.microsoftTeams,
+        userDisplayName: this.context.pageContext.user.displayName
+      }
+    );
+
+    ReactDom.render(element, this.domElement);
+  }
+
+  private _getEnvironmentMessage(): string {
+    if (!!this.context.sdks.microsoftTeams) { // running in Teams
+      return this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentTeams : strings.AppTeamsTabEnvironment;
+    }
+
+    return this.context.isServedFromLocalhost ? strings.AppLocalEnvironmentSharePoint : strings.AppSharePointEnvironment;
+  }
+
+  protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {
+    if (!currentTheme) {
+      return;
+    }
+
+    this._isDarkTheme = !!currentTheme.isInverted;
+    const {
+      semanticColors
+    } = currentTheme;
+    this.domElement.style.setProperty('--bodyText', semanticColors.bodyText);
+    this.domElement.style.setProperty('--link', semanticColors.link);
+    this.domElement.style.setProperty('--linkHovered', semanticColors.linkHovered);
+
+  }
+
+  protected onDispose(): void {
+    ReactDom.unmountComponentAtNode(this.domElement);
+  }
+
+  protected get dataVersion(): Version {
+    return Version.parse('1.0');
+  }
+
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+    return {
+      pages: [
+        {
+          header: {
+            description: strings.PropertyPaneDescription
+          },
+          groups: [
+            {
+              groupName: strings.BasicGroupName,
+              groupFields: [
+                PropertyPaneTextField('description', {
+                  label: strings.DescriptionFieldLabel
+                })
+              ]
+            }
+          ]
+        }
+      ]
+    };
+  }
+}
+```
+
+## package-solution.json
+
+```text
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "haddley-file-list-client-side-solution",
+    "id": "05e0e1db-dbd6-4913-a19e-a294d1c124ac",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.14.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "haddley-file-list description"
+      },
+      "longDescription": {
+        "default": "haddley-file-list description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "haddley-file-list Feature",
+        "description": "The feature that activates elements of the haddley-file-list solution.",
+        "id": "a0601d92-f1c2-46d9-9dc7-39267ea39211",
+        "version": "1.0.0.0"
+      }
+    ],
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Mail.Read"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Files.Read"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Files.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Sites.Read"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Sites.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Sites.ReadWrite.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.Read"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/haddley-file-list.sppkg"
+  }
+}
+```
+
+## HaddleyList.tsx
+
+```text
+import * as React from 'react';
+import styles from './HaddleyList.module.scss';
+import { IHaddleyListProps } from './IHaddleyListProps';
+import { escape } from '@microsoft/sp-lodash-subset';
+// import { Get, MgtTemplateProps, FileList } from '@microsoft/mgt-react';
+import { Get, MgtTemplateProps, FileList } from '@microsoft/mgt-react/dist/es6/spfx';
+
+export default class HaddleyList extends React.Component<IHaddleyListProps, {}> {
+  public render(): React.ReactElement<IHaddleyListProps> {
+    const {
+      description,
+      isDarkTheme,
+      environmentMessage,
+      hasTeamsContext,
+      userDisplayName
+    } = this.props;
+
+    //Template declaration for Get element
+    const TemplateFiles = (props: MgtTemplateProps) => {
+      console.log("props", props);
+      console.log("props.dataContext", props.dataContext);
+      let files = props.dataContext;
+      if (!Array.isArray(files)) {
+        files = [files];
+      }
+      return (<div>
+        {files.map((file: any, index: number) => (<div key={index}>{file.name}</div>))}
+      </div>);
+    };
+
+    const TemplateDocumentLibraries = (props: MgtTemplateProps) => {
+      console.log("props", props);
+      console.log("props.dataContext", props.dataContext);
+      let libraries = props.dataContext;
+      if (!Array.isArray(libraries)) {
+        libraries = [libraries];
+      }
+      return (<div>
+        {libraries.map((library: any, index: number) => (<div key={index}><strong>{library.name}</strong> {library.id}</div>))}
+      </div>);
+    };
+
+    return (
+      <section className={`${styles.haddleyList} ${hasTeamsContext ? styles.teams : ''}`}>
+        <div className={styles.welcome}>
+          <img alt="" src={isDarkTheme ? require('../assets/welcome-dark.png') : require('../assets/welcome-light.png')} className={styles.welcomeImage} />
+          <h2>Well done, {escape(userDisplayName)}!</h2>
+          <div>{environmentMessage}</div>
+          <div>Web part property value: <strong>{escape(description)}</strong></div>
+        </div>
+        <div>
+
+          <h1>Get /me/drive/root/children</h1>
+          <Get resource="/me/drive/root/children">
+            <TemplateFiles template="value" />
+          </Get>
+
+          <h1>My One Drive Root Folder</h1>
+          <FileList enableFileUpload={true}></FileList>
+
+          <h1>p8lf.sharepoint.com "Documents" Document Library Root Folder</h1>
+          <FileList
+            itemPath="/"
+            siteId="p8lf.sharepoint.com"
+            enableFileUpload={true}></FileList>
+
+          <h1>p8lf.sharepoint.com "Documents" Document Library Root Folder</h1>
+          <FileList
+            itemPath="/"
+            siteId="p8lf.sharepoint.com"
+            enableFileUpload={true}></FileList>
+
+          <h1>Get /sites/p8lf.sharepoint.com:/sites/Mark8ProjectTeam:/drives</h1>
+          <Get resource="/sites/p8lf.sharepoint.com:/sites/Mark8ProjectTeam:/drives">
+            <TemplateDocumentLibraries template="value" />
+          </Get>
+
+          <h1>p8lf.sharepoint.com "Confidental" Document Library Root Folder</h1>
+          <FileList
+            itemPath="/"
+            driveId="b!rx9ik2KF4EGsjBMRetNJSrUFL8a5s69FmTUNWtyhqQhyOPxIxRDNT5VmV2cjHkdO"
+            enableFileUpload={true}></FileList>
+
+        </div>
+      </section>
+    );
+  }
+}
+```
+
+## Other useful code
+
+```text
+const siteId = (location.host + "," + context.pageContext.site.id + "," + context.pageContext.web.id).replace(/[\{\}]/g, "")
+
+...
+
+<h1>Get /sites/{siteId}/drive/root/children</h1>
+<Get resource={`/sites/${siteId}/drive/root/children`}>
+    <TemplateFiles template="value" />
+</Get>
+
+<FileList
+    itemPath="/"
+    siteId={siteId}
+    enableFileUpload={true}>
+</FileList>
+```
+
+## HaddleyListWebPart.manifest.json
+
+```text
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "2beda14b-5565-4acf-8d4a-dcbe8046bf01",
+  "alias": "HaddleyListWebPart",
+  "componentType": "WebPart",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
+    "group": { "default": "Other" },
+    "title": { "default": "HaddleyList" },
+    "description": { "default": "HaddleyList description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "HaddleyList"
+    }
+  }]
+}
+```
+

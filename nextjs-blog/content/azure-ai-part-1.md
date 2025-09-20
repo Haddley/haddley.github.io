@@ -68,6 +68,9 @@ analyze_image(image_url)
 ```
 
 ## Azure OpenAI Integration
+```
+
+## Azure OpenAI Integration
 
 Azure OpenAI Service provides REST API access to OpenAI's models:
 
@@ -101,6 +104,10 @@ async function generateText(prompt) {
   } catch (error) {
     console.error('Error generating text:', error);
   }
+}
+```
+
+## Best Practices
 }
 ```
 

@@ -42,3 +42,84 @@ I used Prompt flow, Semantic Kernel and Planner to create an AI application.
 
 ![](/assets/images/promptflow6/screenshot-2024-09-01-at-5.23.01pm-1792x710.png)
 *I added the MathPlugin and a PlannerNow I can ask fun questions or math questions and the bot can decide which Plugin to call*
+
+
+## python_node_v8t9.py
+
+```text
+from promptflow import tool
+from semantic_kernel import Kernel
+from semantic_kernel.connectors.ai.open_ai import OpenAIChatCompletion
+
+@tool
+async def my_python_tool(input1: str) -> str:
+
+    kernel = Kernel()
+    kernel.remove_all_services()
+    service_id = "default"
+    kernel.add_service(
+        OpenAIChatCompletion(
+            service_id=service_id,
+        ),
+    )
+    plugin = kernel.add_plugin(parent_directory="./prompt_template_samples/", plugin_name="FunPlugin")
+
+    from semantic_kernel.functions import KernelArguments
+
+    joke_function = plugin["Joke"]
+
+    # time travel to dinosaur age
+    
+    joke = await kernel.invoke(
+        joke_function,
+        KernelArguments(input=input1, style="super silly"),
+    )
+    print(joke)
+
+    return str(joke)
+```
+
+## python_node_v8t9.py updated
+
+```text
+# from promptflow import tool
+from promptflow.core import tool
+from semantic_kernel import Kernel
+from semantic_kernel.connectors.ai.open_ai import OpenAIChatCompletion
+
+@tool
+async def my_python_tool(input1: str) -> str:
+
+    kernel = Kernel()
+    kernel.remove_all_services()
+    service_id = "default"
+    kernel.add_service(
+        OpenAIChatCompletion(
+            service_id=service_id,
+        ),
+    )
+
+    fun_plugin = kernel.add_plugin(parent_directory="./prompt_template_samples/", plugin_name="FunPlugin")
+    math_plugin = kernel.add_plugin(parent_directory="./plugins", plugin_name="MathPlugin")
+
+    from semantic_kernel.planners.function_calling_stepwise_planner import (
+        FunctionCallingStepwisePlanner,
+        FunctionCallingStepwisePlannerOptions,
+    )
+
+    planner = FunctionCallingStepwisePlanner(service_id="default")
+
+    # goal = "Figure out how much I have if first, my investment of 2130.23 dollars increased by 23%, and then I spend $5 on a coffee"  # noqa: E501
+    # goal = "what is 2134.567 * 653.23?" 
+    # goal = "tell me a limeric about cats"
+    goal = input1
+
+    # Execute the plan
+    result = await planner.invoke(kernel=kernel, question=goal)
+
+    print(f"The goal: {goal}")
+    print(f"Plan result: {result.final_answer}")
+
+    return result.final_answer
+```
+

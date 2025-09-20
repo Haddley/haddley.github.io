@@ -72,3 +72,60 @@ DevOps Starter makes it easy to get started on Azure using either GitHub actions
 
 ![](/assets/images/devopsstarterazuredevops/screen-shot-2021-04-26-at-6.28.57-pm-1836x1007.png)
 *Agent job 1 View YAML*
+
+
+## Agent job 1
+
+```yaml
+pool:
+  name: Azure Pipelines
+steps:
+- task: NodeTool@0
+  displayName: 'Use Node version'
+  inputs:
+    versionSpec: 8.4
+
+- task: Npm@0
+  displayName: 'Install application dependencies'
+  inputs:
+    cwd: Application
+    arguments: '--force'
+
+- task: Npm@0
+  displayName: 'Install test dependencies'
+  inputs:
+    cwd: Tests
+    arguments: '--force'
+
+- task: gulp@0
+  displayName: 'Run unit tests'
+  inputs:
+    gulpFile: Tests/gulpfile.js
+    targets: unittest
+    gulpjs: 'Tests/node_modules/gulp/bin/gulp.js'
+    publishJUnitResults: true
+
+- task: ArchiveFiles@2
+  displayName: 'Archive application'
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/Application'
+    includeRootFolder: false
+    archiveFile: '$(Build.ArtifactStagingDirectory)/Application$(Build.BuildId).zip'
+
+- task: ArchiveFiles@2
+  displayName: 'Archive tests'
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/Tests'
+    includeRootFolder: false
+    archiveFile: '$(Build.ArtifactStagingDirectory)/Tests$(Build.BuildId).zip'
+
+- task: CopyFiles@2
+  displayName: 'Copy ARM templates'
+  inputs:
+    SourceFolder: armTemplates
+    TargetFolder: '$(build.artifactstagingdirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+```
+

@@ -117,3 +117,45 @@ I used Prompt flow and LangChain to create and deploy an AI application.
 
 ![](/assets/images/promptflow5/screenshot-2024-09-01-at-2.03.38pm-2102x1414.png)
 *I was able to access the container using port 8080*
+
+
+## python_node_n8ln.py
+
+```text
+from promptflow.core import tool
+from dotenv import load_dotenv, find_dotenv
+#from langchain_openai import AzureChatOpenAI
+from langchain_openai import ChatOpenAI
+from langchain.agents import create_tool_calling_agent, AgentExecutor
+from langchain_community.tools import DuckDuckGoSearchRun
+#from promptflow.connections import AzureOpenAIConnection
+from promptflow.connections import OpenAIConnection
+from langchain import hub
+from langchain_community.tools import WikipediaQueryRun
+from langchain_community.utilities import WikipediaAPIWrapper
+
+
+@tool
+def my_python_tool(question: str, openai_connect: OpenAIConnection) -> str:
+    load_dotenv(find_dotenv(), override=True)
+    #llm = AzureChatOpenAI(
+    #    azure_deployment="gpt-35-turbo-16k",  # gpt-35-turbo-16k or gpt-4-32k
+    #    openai_api_key=openai_connect.api_key,
+    #    azure_endpoint=openai_connect.api_base,
+    #    openai_api_type=openai_connect.api_type,
+    #    openai_api_version=openai_connect.api_version,
+    #)
+    llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0, api_key=openai_connect.api_key)
+    search = DuckDuckGoSearchRun(verbose=True)
+    api_wrapper = WikipediaAPIWrapper(top_k_results=1, doc_content_chars_max=500,verbose=True)
+
+    tools = [search,WikipediaQueryRun(api_wrapper=api_wrapper)]
+
+    prompt = hub.pull("hwchase17/openai-tools-agent")
+    agent = create_tool_calling_agent(llm, tools, prompt)
+    agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=False)
+    result = agent_executor.invoke({"input": question})
+
+    return result["output"]
+```
+
