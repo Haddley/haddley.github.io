@@ -3,7 +3,7 @@ title: "React useState and useEffect"
 description: "A comprehensive guide covering react usestate and useeffect"
 date: "2025-09-20"
 category: "Web Development"
-image: "/assets/images/logo512-512x512.png"
+image: "/assets/images/reactusestateuseeffect/hero.png"
 tags: ["react"]
 ---
 

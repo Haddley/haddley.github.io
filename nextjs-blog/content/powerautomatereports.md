@@ -3,7 +3,7 @@ title: "Microsoft Power Automate Reports"
 description: "A comprehensive guide covering microsoft power automate reports"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/powerautomatereports/hero.png"
 tags: ["cloud","ai","dynamics"]
 ---
 

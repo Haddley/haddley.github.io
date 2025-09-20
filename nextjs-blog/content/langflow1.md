@@ -3,7 +3,7 @@ title: "Langflow (Part 1)"
 description: "A comprehensive guide covering langflow (part 1)"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/85702467-200x200.png"
+image: "/assets/images/langflow1/hero.png"
 tags: ["python","ai"]
 ---
 

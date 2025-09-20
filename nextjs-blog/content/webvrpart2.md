@@ -3,7 +3,7 @@ title: "WebVR (Part 2)"
 description: "A comprehensive guide covering webvr (part 2)"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/webvr-logo.png"
+image: "/assets/images/webvrpart2/hero.png"
 tags: ["javascript","java"]
 ---
 

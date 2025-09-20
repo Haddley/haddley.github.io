@@ -3,7 +3,7 @@ title: "Angular and ASP.NET Core"
 description: "A comprehensive guide covering angular and asp.net core"
 date: "2025-09-20"
 category: "Web Development"
-image: "/assets/images/angularandasp.net"
+image: "/assets/images/angularandasp.net/hero.png"
 tags: ["angular","react","dotnet","database","ai"]
 ---
 

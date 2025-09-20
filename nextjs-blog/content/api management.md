@@ -3,7 +3,7 @@ title: "Power Apps, Custom Connectors and API Management"
 description: "A comprehensive guide covering power apps, custom connectors and api management"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/azure-api-management.png"
+image: "/assets/images/api management/hero.png"
 tags: ["azure","ai"]
 ---
 

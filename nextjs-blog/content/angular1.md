@@ -3,7 +3,7 @@ title: "Angular (Part 1)"
 description: "A comprehensive guide covering angular (part 1)"
 date: "2025-09-20"
 category: "Web Development"
-image: "/assets/images/angular1"
+image: "/assets/images/angular1/hero.png"
 tags: ["angular","typescript","ai","ml","testing"]
 ---
 

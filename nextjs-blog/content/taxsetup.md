@@ -3,7 +3,7 @@ title: "Tax Setup"
 description: "A comprehensive guide covering tax setup"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/business-central-logo.png"
+image: "/assets/images/taxsetup/hero.png"
 tags: ["ai","business central","dynamics"]
 ---
 

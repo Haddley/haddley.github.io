@@ -3,7 +3,7 @@ title: "Machine Learning (Part 4a)"
 description: "A comprehensive guide covering machine learning (part 4a)"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/dynamics365salespart1"
+image: "/assets/images/page65/hero.png"
 tags: ["python","ai","ml","machine learning","git"]
 ---
 

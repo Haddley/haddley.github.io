@@ -3,7 +3,7 @@ title: "Microsoft Graph"
 description: "A comprehensive guide covering microsoft graph"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/microsoftgraph/hero.png"
 tags: ["javascript","azure","java","ai","dynamics"]
 ---
 

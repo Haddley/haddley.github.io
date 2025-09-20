@@ -3,7 +3,7 @@ title: "Machine Learning (Part 2)"
 description: "A comprehensive guide covering machine learning (part 2)"
 date: "2025-09-20"
 category: "AI/ML"
-image: "/assets/images/tensorflow-logo.svg"
+image: "/assets/images/machinelearning2/hero.png"
 tags: ["javascript","java","python","sql","ai"]
 ---
 

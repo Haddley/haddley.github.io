@@ -3,7 +3,7 @@ title: "3D Printing 1"
 description: "A comprehensive guide covering 3d printing 1"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/wikipedia-globe-translucent-3d-printed-woodgrain-background-512x512.jpg"
+image: "/assets/images/3dprinting1/img-3200-2-480x640.jpg"
 tags: ["ai"]
 ---
 

@@ -3,7 +3,7 @@ title: "Machine Learning (WIP)"
 description: "A comprehensive guide covering machine learning (wip)"
 date: "2025-09-20"
 category: "AI/ML"
-image: "/assets/images/ml-icon.png"
+image: "/assets/images/machinelearningwip/hero.png"
 tags: ["ai","ml","machine learning","git","github"]
 ---
 

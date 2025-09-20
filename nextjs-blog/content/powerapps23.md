@@ -3,7 +3,7 @@ title: "Power Apps (Part 23)"
 description: "A comprehensive guide covering power apps (part 23)"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/powerapps-logo.png"
+image: "/assets/images/powerapps23/hero.png"
 tags: ["sql","business central"]
 ---
 

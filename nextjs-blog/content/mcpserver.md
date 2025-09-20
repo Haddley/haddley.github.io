@@ -3,7 +3,7 @@ title: "Model Context Protocol (Part 1)"
 description: "A comprehensive guide covering model context protocol (part 1)"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/mcp-1024x1024.png"
+image: "/assets/images/mcpserver/hero.png"
 tags: ["typescript","ai"]
 ---
 

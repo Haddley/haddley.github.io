@@ -3,7 +3,7 @@ title: "Dynamics 365 Sales (Part 1)"
 description: "A comprehensive guide covering dynamics 365 sales (part 1)"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/dynamics365-color.svg"
+image: "/assets/images/dynamicssales1/hero.png"
 tags: ["ai","ml","dynamics"]
 ---
 

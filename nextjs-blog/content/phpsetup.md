@@ -3,7 +3,7 @@ title: "PHP Setup"
 description: "A comprehensive guide covering php setup"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/php-logo.svg"
+image: "/assets/images/phpsetup/hero.png"
 tags: ["ml"]
 ---
 

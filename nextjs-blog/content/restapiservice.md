@@ -3,7 +3,7 @@ title: "REST"
 description: "A comprehensive guide covering rest"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/fve-image.svg"
+image: "/assets/images/restapiservice/hero.png"
 tags: ["javascript","docker","java","ai"]
 ---
 

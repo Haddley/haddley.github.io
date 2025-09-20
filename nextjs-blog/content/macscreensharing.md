@@ -3,7 +3,7 @@ title: "Mac Screen Sharing"
 description: "A comprehensive guide covering mac screen sharing"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/apple-logo-black.svg"
+image: "/assets/images/macscreensharing/hero.png"
 tags: ["ai"]
 ---
 

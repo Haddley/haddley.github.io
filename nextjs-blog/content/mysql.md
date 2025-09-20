@@ -3,7 +3,7 @@ title: "MySQL"
 description: "A comprehensive guide covering mysql"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/includes-mysql-5646x2872.png"
+image: "/assets/images/mysql/hero.png"
 tags: ["javascript","aws","java","mysql","sql"]
 ---
 

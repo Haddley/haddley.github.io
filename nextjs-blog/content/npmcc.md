@@ -3,7 +3,7 @@ title: "npm C++"
 description: "A comprehensive guide covering npm c++"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/6078720-200x200.png"
+image: "/assets/images/npmcc/hero.png"
 tags: ["ai","git","github","testing"]
 ---
 

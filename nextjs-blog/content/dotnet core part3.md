@@ -3,7 +3,7 @@ title: ".NET Core (Part 3)"
 description: "A comprehensive guide covering .net core (part 3)"
 date: "2025-09-20"
 category: ".NET"
-image: "/assets/images/dotnet-logo.png"
+image: "/assets/images/dotnet core part3/hero.png"
 tags: ["azure","dotnet","ai","ml","dynamics"]
 ---
 

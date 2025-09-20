@@ -3,7 +3,7 @@ title: "ASP.NET Core Unit Tests"
 description: "A comprehensive guide covering asp.net core unit tests"
 date: "2025-09-20"
 category: ".NET"
-image: "/assets/images/net-logo.svg"
+image: "/assets/images/aspnetcoreunittests/hero.png"
 tags: ["dotnet","ai","asp.net"]
 ---
 

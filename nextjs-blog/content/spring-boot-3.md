@@ -3,7 +3,7 @@ title: "Java Spring Boot (Part 3)"
 description: "A comprehensive guide covering java spring boot (part 3)"
 date: "2025-09-20"
 category: "Java"
-image: "/assets/images/spring-framework-logo-70-no.svg"
+image: "/assets/images/spring-boot-3/hero.png"
 tags: ["azure","java","spring","git","github"]
 ---
 

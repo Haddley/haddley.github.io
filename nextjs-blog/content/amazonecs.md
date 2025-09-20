@@ -3,7 +3,7 @@ title: "Amazon Elastic Container Service"
 description: "A comprehensive guide covering amazon elastic container service"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/ecs-logo.png"
+image: "/assets/images/amazonecs/hero.png"
 tags: ["aws","cloud","docker","kubernetes","ai"]
 ---
 

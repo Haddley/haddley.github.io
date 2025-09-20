@@ -3,7 +3,7 @@ title: "Business Central Admin Center"
 description: "A comprehensive guide covering business central admin center"
 date: "2025-09-20"
 category: "Business Central"
-image: "/assets/images/dynamics365-color.svg"
+image: "/assets/images/businesscentraladmincenter/hero.png"
 tags: ["ai","business central","dynamics"]
 ---
 

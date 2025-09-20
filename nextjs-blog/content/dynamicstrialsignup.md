@@ -3,7 +3,7 @@ title: "Dynamics Trial Signup"
 description: "A comprehensive guide covering dynamics trial signup"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/dynamics365-color.svg"
+image: "/assets/images/dynamicstrialsignup/hero.png"
 tags: ["ai","dynamics"]
 ---
 

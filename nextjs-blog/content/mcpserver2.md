@@ -3,7 +3,7 @@ title: "Model Context Protocol (Part 2)"
 description: "A comprehensive guide covering model context protocol (part 2)"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/mcp-1024x1024.png"
+image: "/assets/images/mcpserver2/hero.png"
 tags: ["azure","docker","ai","business central","git"]
 ---
 

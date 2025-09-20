@@ -3,7 +3,7 @@ title: "staticwebapp.config.json"
 description: "A comprehensive guide covering staticwebapp.config.json"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/azure-static-web-apps.png"
+image: "/assets/images/staticwebapp.config.json/hero.png"
 tags: ["azure","ai","ml","git","github"]
 ---
 

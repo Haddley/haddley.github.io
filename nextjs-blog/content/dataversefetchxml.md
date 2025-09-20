@@ -3,7 +3,7 @@ title: "Microsoft Dataverse FetchXML"
 description: "A comprehensive guide covering microsoft dataverse fetchxml"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/dataverse-logo.png"
+image: "/assets/images/dataversefetchxml/hero.png"
 tags: ["sql","ml"]
 ---
 

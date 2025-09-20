@@ -3,7 +3,7 @@ title: "Customize the look and feel of the bot's default canvas"
 description: "A comprehensive guide covering customize the look and feel of the bot's default canvas"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/customizedefaultcanvas/hero.png"
 tags: ["ml"]
 ---
 

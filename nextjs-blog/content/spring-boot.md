@@ -3,7 +3,7 @@ title: "Java Spring Boot (Part 1)"
 description: "A comprehensive guide covering java spring boot (part 1)"
 date: "2025-09-20"
 category: "Java"
-image: "/assets/images/spring-framework-logo-70-no.svg"
+image: "/assets/images/spring-boot/hero.png"
 tags: ["react","javascript","java","spring","ai"]
 ---
 

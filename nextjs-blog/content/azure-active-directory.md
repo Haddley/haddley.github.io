@@ -3,7 +3,7 @@ title: "Azure Active Directory (Part 1)"
 description: "A comprehensive guide covering azure active directory (part 1)"
 date: "2025-09-20"
 category: "Azure"
-image: "/assets/images/azurex70x75.svg"
+image: "/assets/images/azure-active-directory/hero.png"
 tags: ["azure","ai"]
 ---
 

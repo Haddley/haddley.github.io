@@ -3,7 +3,7 @@ title: "API Gateway"
 description: "A comprehensive guide covering api gateway"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/kubernetes-container-engine.svg"
+image: "/assets/images/apigateway/hero.png"
 tags: ["react","azure","aws","cloud","docker"]
 ---
 

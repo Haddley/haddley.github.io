@@ -3,7 +3,7 @@ title: "A Short History of Microsoft Dynamics and Microsoft Dataverse"
 description: "A comprehensive guide covering a short history of microsoft dynamics and microsoft dataverse"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/dynamics365-color.svg"
+image: "/assets/images/ashorthistory/hero.png"
 tags: ["azure","cloud","dotnet","ai","ml"]
 ---
 

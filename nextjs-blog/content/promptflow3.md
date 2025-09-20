@@ -3,7 +3,7 @@ title: "Prompt Flow (Part 3)"
 description: "A comprehensive guide covering prompt flow (part 3)"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/logo.svg"
+image: "/assets/images/promptflow3/hero.png"
 tags: ["python","ai","git","github"]
 ---
 

@@ -3,7 +3,7 @@ title: "Business Central (Part 27) extending standard APIs"
 description: "A comprehensive guide covering business central (part 27) extending standard apis"
 date: "2025-09-20"
 category: "Business Central"
-image: "/assets/images/business-central-logo.png"
+image: "/assets/images/businesscentralpart 27 extendingstandardapis/hero.png"
 tags: ["ai","business central","dynamics"]
 ---
 

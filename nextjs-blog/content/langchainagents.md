@@ -3,7 +3,7 @@ title: "LangChain Agents"
 description: "A comprehensive guide covering langchain agents"
 date: "2025-09-20"
 category: "AI/ML"
-image: "/assets/images/langchain.svg"
+image: "/assets/images/langchainagents/hero.png"
 tags: ["python","ai"]
 ---
 

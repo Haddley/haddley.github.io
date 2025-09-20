@@ -3,7 +3,7 @@ title: "Angular Firebase"
 description: "A comprehensive guide covering angular firebase"
 date: "2025-09-20"
 category: "Web Development"
-image: "/assets/images/logo-lockup-firebase-vertical.svg"
+image: "/assets/images/angularfirebase/hero.png"
 tags: ["angular","react","ai","ml"]
 ---
 

@@ -3,7 +3,7 @@ title: "Apple MacBook Air with M2 chip"
 description: "A comprehensive guide covering apple macbook air with m2 chip"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/apple-logo.png"
+image: "/assets/images/macbook/hero.png"
 tags: ["python","ai"]
 ---
 

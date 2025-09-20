@@ -3,7 +3,7 @@ title: "Business Central (Part 27) PromptDialog"
 description: "A comprehensive guide covering business central (part 27) promptdialog"
 date: "2025-09-20"
 category: "DevOps"
-image: "/assets/images/method-draw-image.svg"
+image: "/assets/images/docker/hero.png"
 tags: ["cloud","docker","ai","business central","testing"]
 ---
 

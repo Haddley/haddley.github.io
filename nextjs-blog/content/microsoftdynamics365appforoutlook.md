@@ -3,7 +3,7 @@ title: "Microsoft Dynamics 365 App for Outlook"
 description: "A comprehensive guide covering microsoft dynamics 365 app for outlook"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/dynamics-365-logo.png"
+image: "/assets/images/microsoftdynamics365appforoutlook/hero.png"
 tags: ["ai","dynamics","power platform"]
 ---
 

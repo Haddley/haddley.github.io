@@ -3,7 +3,7 @@ title: "Sentence Similarity"
 description: "A comprehensive guide covering sentence similarity"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/chatgpt-logo.svg"
+image: "/assets/images/sentencesimilarity/hero.png"
 tags: ["ai"]
 ---
 

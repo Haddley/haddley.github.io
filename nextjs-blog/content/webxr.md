@@ -3,7 +3,7 @@ title: "WebXR"
 description: "A comprehensive guide covering webxr"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/34385910-400x400.png"
+image: "/assets/images/webxr/hero.png"
 tags: ["ml","git","github"]
 ---
 

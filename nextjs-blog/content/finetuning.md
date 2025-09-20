@@ -3,7 +3,7 @@ title: "Fine Tuning"
 description: "A comprehensive guide covering fine tuning"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/ai-ml-logo.png"
+image: "/assets/images/finetuning/hero.png"
 tags: ["ai"]
 ---
 

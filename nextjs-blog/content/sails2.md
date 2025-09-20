@@ -3,7 +3,7 @@ title: "Sails (Part 2)"
 description: "A comprehensive guide covering sails (part 2)"
 date: "2025-09-20"
 category: "AI/ML"
-image: "/assets/images/sailsjs-logo-515x193.png"
+image: "/assets/images/sails2/hero.png"
 tags: ["azure","aws","ai","git","github"]
 ---
 

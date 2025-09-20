@@ -3,7 +3,7 @@ title: "VB.NET WinForms and ASP.NET Core API"
 description: "A comprehensive guide covering vb.net winforms and asp.net core api"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/net-logo.svg"
+image: "/assets/images/vbnetwinforms/hero.png"
 tags: ["dotnet","ai","asp.net"]
 ---
 

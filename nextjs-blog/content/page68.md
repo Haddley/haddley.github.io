@@ -3,7 +3,7 @@ title: "Machine Learning (Part 7)"
 description: "A comprehensive guide covering machine learning (part 7)"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/dynamics365salespart1"
+image: "/assets/images/page68/hero.png"
 tags: ["ai","machine learning"]
 ---
 

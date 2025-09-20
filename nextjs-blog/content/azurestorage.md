@@ -3,7 +3,7 @@ title: "Azure Storage"
 description: "A comprehensive guide covering azure storage"
 date: "2025-09-20"
 category: "Azure"
-image: "/assets/images/azurex70x75.svg"
+image: "/assets/images/azurestorage/hero.png"
 tags: ["azure","cloud","ai"]
 ---
 

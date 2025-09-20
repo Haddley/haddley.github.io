@@ -3,7 +3,7 @@ title: "ASP.NET 5 C#"
 description: "A comprehensive guide covering asp.net 5 c#"
 date: "2025-09-20"
 category: ".NET"
-image: "/assets/images/dotnet-logo.png"
+image: "/assets/images/asp.net 5 cs/hero.png"
 tags: ["dotnet","c#","database","ai","ml"]
 ---
 

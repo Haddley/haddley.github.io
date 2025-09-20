@@ -3,7 +3,7 @@ title: "Customer Posting Group"
 description: "A comprehensive guide covering customer posting group"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/posts-meta.svg"
+image: "/assets/images/customerpostinggroup/hero.png"
 tags: ["ai","dynamics"]
 ---
 

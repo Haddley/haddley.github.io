@@ -3,7 +3,7 @@ title: "LangChain (RAG)"
 description: "A comprehensive guide covering langchain (rag)"
 date: "2025-09-20"
 category: "AI/ML"
-image: "/assets/images/chatgpt-logo.svg"
+image: "/assets/images/langchain/hero.png"
 tags: ["python","ai","ml","machine learning"]
 ---
 

@@ -3,7 +3,7 @@ title: "Vendor Posting Group COPY"
 description: "A comprehensive guide covering vendor posting group copy"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/dynamics365salespart1"
+image: "/assets/images/page152/hero.png"
 tags: ["ai","business central","dynamics"]
 ---
 

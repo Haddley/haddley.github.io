@@ -3,7 +3,7 @@ title: "Streamlit"
 description: "A comprehensive guide covering streamlit"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/streamlit-logo.png"
+image: "/assets/images/streamlit/hero.png"
 tags: ["python","ai","ml","machine learning"]
 ---
 

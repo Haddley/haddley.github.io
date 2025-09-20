@@ -3,7 +3,7 @@ title: "Microsoft Dataverse Advanced Reports Setup"
 description: "A comprehensive guide covering microsoft dataverse advanced reports setup"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/dataverseadvancedreportssetup/hero.png"
 tags: ["sql","ai","ml","dynamics"]
 ---
 

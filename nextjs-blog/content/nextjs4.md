@@ -3,7 +3,7 @@ title: "Next.js (Part 4)"
 description: "A comprehensive guide covering next.js (part 4)"
 date: "2025-09-20"
 category: "Web Development"
-image: "/assets/images/2560px-nextjs-logo.svg-1536x920.png"
+image: "/assets/images/nextjs4/hero.png"
 tags: ["azure","aws","git","github"]
 ---
 

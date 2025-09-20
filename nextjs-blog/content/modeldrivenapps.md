@@ -3,7 +3,7 @@ title: "Model Driven Apps"
 description: "A comprehensive guide covering model driven apps"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/powerapps-logo.png"
+image: "/assets/images/modeldrivenapps/hero.png"
 tags: ["cloud","dotnet","ai","ml","dynamics"]
 ---
 

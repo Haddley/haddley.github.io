@@ -3,7 +3,7 @@ title: "Microsoft 365 command line interface"
 description: "A comprehensive guide covering microsoft 365 command line interface"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/m365commandlineinterface/hero.png"
 tags: ["docker","ai","ml","git","github"]
 ---
 

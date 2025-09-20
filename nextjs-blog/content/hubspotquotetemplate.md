@@ -3,7 +3,7 @@ title: "HubSpot Quote Template"
 description: "A comprehensive guide covering hubspot quote template"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/hubspot-logo.png"
+image: "/assets/images/hubspotquotetemplate/hero.png"
 tags: []
 ---
 

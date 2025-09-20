@@ -3,7 +3,7 @@ title: "Angular"
 description: "A comprehensive guide covering angular"
 date: "2025-09-20"
 category: "Web Development"
-image: "/assets/images/angular"
+image: "/assets/images/angular/hero.png"
 tags: ["angular","ai","ml"]
 ---
 

@@ -3,7 +3,7 @@ title: "Prompt Flow (Part 4)"
 description: "A comprehensive guide covering prompt flow (part 4)"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/logo.svg"
+image: "/assets/images/promptflow4/hero.png"
 tags: ["ai"]
 ---
 

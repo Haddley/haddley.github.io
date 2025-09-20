@@ -3,7 +3,7 @@ title: "Copilot Embed Code"
 description: "A comprehensive guide covering copilot embed code"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/copilotembedcode/hero.png"
 tags: ["ml"]
 ---
 

@@ -3,7 +3,7 @@ title: "Apple Logo"
 description: "A comprehensive guide covering apple logo"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/apple-logo.png"
+image: "/assets/images/applelogo/hero.png"
 tags: ["python","ai","machine learning"]
 ---
 

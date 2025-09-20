@@ -3,7 +3,7 @@ title: "Microsoft SQL Server (Part 1)"
 description: "A comprehensive guide covering microsoft sql server (part 1)"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/ads.svg"
+image: "/assets/images/mssqlserver/hero.png"
 tags: ["javascript","azure","docker","dotnet","c#"]
 ---
 

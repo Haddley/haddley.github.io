@@ -3,7 +3,7 @@ title: "Teams Toolkit with SPFx"
 description: "A comprehensive guide covering teams toolkit with spfx"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/teams-hi-res-icon-2019.svg"
+image: "/assets/images/teamstoolkitspfx/hero.png"
 tags: ["azure","cloud","ai","git","github"]
 ---
 

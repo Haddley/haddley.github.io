@@ -3,7 +3,7 @@ title: "Add an Item"
 description: "A comprehensive guide covering add an item"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/addanitem/hero.png"
 tags: ["business central"]
 ---
 

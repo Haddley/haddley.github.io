@@ -3,7 +3,7 @@ title: "LlamaCpp"
 description: "A comprehensive guide covering llamacpp"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/jupyter.svg"
+image: "/assets/images/llamacorp/hero.png"
 tags: ["python","ai","ml"]
 ---
 

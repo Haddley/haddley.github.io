@@ -3,7 +3,7 @@ title: "Business Central (Part 29) PromptDialog 3"
 description: "A comprehensive guide covering business central (part 29) promptdialog 3"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/posts-meta.svg"
+image: "/assets/images/promptdialog3/hero.png"
 tags: ["javascript","java","ai","ml","business central"]
 ---
 

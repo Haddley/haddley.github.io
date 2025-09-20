@@ -3,7 +3,7 @@ title: "Leaflet"
 description: "A comprehensive guide covering leaflet"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/leaflet-upic-200x200.png"
+image: "/assets/images/leaflet/hero.png"
 tags: ["javascript","azure","java","ai","ml"]
 ---
 

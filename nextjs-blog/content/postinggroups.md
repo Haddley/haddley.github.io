@@ -3,7 +3,7 @@ title: "Posting Groups"
 description: "A comprehensive guide covering posting groups"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/business-central-logo.png"
+image: "/assets/images/postinggroups/hero.png"
 tags: ["ai","business central","dynamics"]
 ---
 

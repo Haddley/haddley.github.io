@@ -3,7 +3,7 @@ title: "VB.NET Console SQL Server Unit Tests"
 description: "A comprehensive guide covering vb.net console sql server unit tests"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/net-logo.svg"
+image: "/assets/images/vbnetconsolesqlserverunittests/hero.png"
 tags: ["dotnet","sql","database","ai","testing"]
 ---
 

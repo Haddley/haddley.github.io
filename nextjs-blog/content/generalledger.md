@@ -3,7 +3,7 @@ title: "General Ledger"
 description: "A comprehensive guide covering general ledger"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/dynamics365-color.svg"
+image: "/assets/images/generalledger/hero.png"
 tags: ["ai","business central","dynamics"]
 ---
 

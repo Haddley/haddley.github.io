@@ -3,7 +3,7 @@ title: "Rewards Extension"
 description: "A comprehensive guide covering rewards extension"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/dynamics365-color.svg"
+image: "/assets/images/rewardsextension/hero.png"
 tags: ["ai","ml","business central","dynamics"]
 ---
 

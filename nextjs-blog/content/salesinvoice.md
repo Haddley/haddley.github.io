@@ -3,7 +3,7 @@ title: "Sales Invoice"
 description: "A comprehensive guide covering sales invoice"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/posts-meta.svg"
+image: "/assets/images/salesinvoice/hero.png"
 tags: ["ai","dynamics"]
 ---
 

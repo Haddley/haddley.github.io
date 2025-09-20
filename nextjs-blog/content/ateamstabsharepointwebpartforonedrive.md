@@ -3,7 +3,7 @@ title: "A Teams App SharePoint Web Part for One Drive"
 description: "A comprehensive guide covering a teams app sharepoint web part for one drive"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/ateamstabsharepointwebpartforonedrive/hero.png"
 tags: ["react","ml","git","github"]
 ---
 

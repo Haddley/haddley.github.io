@@ -3,7 +3,7 @@ title: "Gingerbread House"
 description: "A comprehensive guide covering gingerbread house"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/raspberry-pi-logo.svg"
+image: "/assets/images/gingerbreadhouse/hero.png"
 tags: ["python","ai"]
 ---
 

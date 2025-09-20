@@ -3,7 +3,7 @@ title: "Business Central (Part 26) Integration Tables"
 description: "A comprehensive guide covering business central (part 26) integration tables"
 date: "2025-09-20"
 category: "Business Central"
-image: "/assets/images/posts-meta.svg"
+image: "/assets/images/businesscentralpart26integrationtable/hero.png"
 tags: ["azure","cloud","ai","business central","dynamics"]
 ---
 

@@ -3,7 +3,7 @@ title: "Machine Learning (Part 1)"
 description: "A comprehensive guide covering machine learning (part 1)"
 date: "2025-09-20"
 category: "AI/ML"
-image: "/assets/images/tensorflow-logo.svg"
+image: "/assets/images/machinelearning1/hero.png"
 tags: ["cloud","ai","ml","machine learning"]
 ---
 

@@ -3,7 +3,7 @@ title: "Business Central (Part 26) Integrating with Dataverse using Integration 
 description: "A comprehensive guide covering business central (part 26) integrating with dataverse using integration tables"
 date: "2025-09-20"
 category: "Business Central"
-image: "/assets/images/business-central-logo.png"
+image: "/assets/images/businesscentralpart26integratingwithdataverseusingintegrationtables/hero.png"
 tags: ["ai","business central","dynamics"]
 ---
 

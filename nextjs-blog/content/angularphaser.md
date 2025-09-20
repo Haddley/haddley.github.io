@@ -3,7 +3,7 @@ title: "Angular and Phaser"
 description: "A comprehensive guide covering angular and phaser"
 date: "2025-09-20"
 category: "Web Development"
-image: "/assets/images/phaser-logo-1836x1530.png"
+image: "/assets/images/angularphaser/hero.png"
 tags: ["angular","ml"]
 ---
 

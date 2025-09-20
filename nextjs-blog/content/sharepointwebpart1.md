@@ -3,7 +3,7 @@ title: "SharePoint Web Part (Part 1)"
 description: "A comprehensive guide covering sharepoint web part (part 1)"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png"
+image: "/assets/images/sharepointwebpart1/hero.png"
 tags: ["react","typescript","ai","ml","testing"]
 ---
 

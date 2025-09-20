@@ -3,7 +3,7 @@ title: "Business Central Canvas Apps"
 description: "A comprehensive guide covering business central canvas apps"
 date: "2025-09-20"
 category: "Business Central"
-image: "/assets/images/dynamics365-color.svg"
+image: "/assets/images/businesscentralcanvasapps/hero.png"
 tags: ["ai","business central","dynamics","power platform"]
 ---
 

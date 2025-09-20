@@ -3,7 +3,7 @@ title: "Internet of Things (Part 2)"
 description: "A comprehensive guide covering internet of things (part 2)"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/iot-microchip.svg"
+image: "/assets/images/internetofthings2/hero.png"
 tags: ["docker"]
 ---
 

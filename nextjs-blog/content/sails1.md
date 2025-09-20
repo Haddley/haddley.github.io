@@ -3,7 +3,7 @@ title: "Sails (Part 1)"
 description: "A comprehensive guide covering sails (part 1)"
 date: "2025-09-20"
 category: "AI/ML"
-image: "/assets/images/sailsjs-logo-515x193.png"
+image: "/assets/images/sails1/hero.png"
 tags: ["azure","aws","devops","database","ai"]
 ---
 

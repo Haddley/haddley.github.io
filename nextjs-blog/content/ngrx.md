@@ -3,7 +3,7 @@ title: "NGRX"
 description: "A comprehensive guide covering ngrx"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/ngrx.svg"
+image: "/assets/images/ngrx/hero.png"
 tags: ["angular","react","typescript","ai","ml"]
 ---
 

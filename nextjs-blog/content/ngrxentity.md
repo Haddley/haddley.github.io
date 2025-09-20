@@ -3,7 +3,7 @@ title: "NGRX entity"
 description: "A comprehensive guide covering ngrx entity"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/ngrx.svg"
+image: "/assets/images/ngrxentity/hero.png"
 tags: ["ai","git","github","testing"]
 ---
 

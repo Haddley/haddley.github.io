@@ -3,7 +3,7 @@ title: "Machine Learning (Part 5)"
 description: "A comprehensive guide covering machine learning (part 5)"
 date: "2025-09-20"
 category: "AI/ML"
-image: "/assets/images/tensorflow-logo.svg"
+image: "/assets/images/machinelearning5/hero.png"
 tags: ["ai","machine learning","git","github"]
 ---
 

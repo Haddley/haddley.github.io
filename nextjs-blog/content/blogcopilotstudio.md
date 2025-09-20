@@ -3,7 +3,7 @@ title: "Blog Copilot Studio"
 description: "A comprehensive guide covering blog copilot studio"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/posts-meta.svg"
+image: "/assets/images/blogcopilotstudio/hero.png"
 tags: ["java","ai","business central","dynamics","git"]
 ---
 

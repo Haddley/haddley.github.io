@@ -3,7 +3,7 @@ title: "Custom Virtual Tables"
 description: "A comprehensive guide covering custom virtual tables"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/customtvirtualtables/hero.png"
 tags: ["ai","business central","power platform"]
 ---
 

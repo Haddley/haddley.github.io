@@ -3,7 +3,7 @@ title: "A Custom Connector for Microsoft Graph"
 description: "A comprehensive guide covering a custom connector for microsoft graph"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/powerapps6/hero.png"
 tags: ["azure","ai"]
 ---
 

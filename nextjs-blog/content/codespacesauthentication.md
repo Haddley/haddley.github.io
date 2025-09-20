@@ -3,7 +3,7 @@ title: "Codespaces and Authentication"
 description: "A comprehensive guide covering codespaces and authentication"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/logo512-512x512.png"
+image: "/assets/images/codespacesauthentication/hero.png"
 tags: ["react","azure","git","github"]
 ---
 

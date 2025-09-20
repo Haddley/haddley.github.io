@@ -3,7 +3,7 @@ title: "DevOps Starter GitHub actions"
 description: "A comprehensive guide covering devops starter github actions"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/svgexport-22.svg"
+image: "/assets/images/devopsstartergithubactions/hero.png"
 tags: ["azure","devops","ai","git","github"]
 ---
 

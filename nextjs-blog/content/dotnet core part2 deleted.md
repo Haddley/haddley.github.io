@@ -3,7 +3,7 @@ title: ".NET Core (Part 2 deleted)"
 description: "A comprehensive guide covering .net core (part 2 deleted)"
 date: "2025-09-20"
 category: ".NET"
-image: "/assets/images/dotnet-logo.png"
+image: "/assets/images/dotnet core part2 deleted/hero.png"
 tags: ["dotnet","c#","ai","git","asp.net"]
 ---
 
