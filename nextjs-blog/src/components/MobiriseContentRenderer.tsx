@@ -1,27 +1,71 @@
 'use client';
 
 import Image from 'next/image';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 interface MobiriseParsedContent {
-  type: 'text' | 'image' | 'heading';
+  type: 'text' | 'image' | 'heading' | 'code';
   content: string;
   description?: string;
   level?: number;
+  language?: string;
 }
 
 function parseMarkdownToMobirise(markdownContent: string): MobiriseParsedContent[] {
   const lines = markdownContent.split('\n');
   const sections: MobiriseParsedContent[] = [];
   let currentTextContent: string[] = [];
+  let inCodeBlock = false;
+  let codeContent: string[] = [];
+  let codeLanguage = '';
   
   for (let i = 0; i < lines.length; i++) {
-    const line = lines[i].trim();
+    const line = lines[i];
+    const trimmedLine = line.trim();
     
-    // Skip empty lines
-    if (!line) continue;
+    // Handle code blocks
+    if (trimmedLine.startsWith('```')) {
+      if (!inCodeBlock) {
+        // Starting a code block
+        // Flush any accumulated text
+        if (currentTextContent.length > 0) {
+          sections.push({
+            type: 'text',
+            content: currentTextContent.join('\n')
+          });
+          currentTextContent = [];
+        }
+        
+        inCodeBlock = true;
+        codeLanguage = trimmedLine.slice(3).trim(); // Extract language
+        codeContent = [];
+      } else {
+        // Ending a code block
+        sections.push({
+          type: 'code',
+          content: codeContent.join('\n'),
+          language: codeLanguage
+        });
+        
+        inCodeBlock = false;
+        codeContent = [];
+        codeLanguage = '';
+      }
+      continue;
+    }
+    
+    // If we're in a code block, accumulate code content
+    if (inCodeBlock) {
+      codeContent.push(line);
+      continue;
+    }
+    
+    // Skip empty lines (only when not in code block)
+    if (!trimmedLine) continue;
     
     // Handle images with descriptions
-    if (line.startsWith('![')) {
+    if (trimmedLine.startsWith('![')) {
       // Flush any accumulated text
       if (currentTextContent.length > 0) {
         sections.push({
@@ -32,7 +76,7 @@ function parseMarkdownToMobirise(markdownContent: string): MobiriseParsedContent
       }
       
       // Extract image path
-      const imageMatch = line.match(/!\[.*?\]\((.*?)\)/);
+      const imageMatch = trimmedLine.match(/!\[.*?\]\((.*?)\)/);
       if (imageMatch) {
         const imagePath = imageMatch[1];
         let description = '';
@@ -51,7 +95,7 @@ function parseMarkdownToMobirise(markdownContent: string): MobiriseParsedContent
       }
     }
     // Handle headings
-    else if (line.startsWith('#')) {
+    else if (trimmedLine.startsWith('#')) {
       // Flush any accumulated text
       if (currentTextContent.length > 0) {
         sections.push({
@@ -61,8 +105,8 @@ function parseMarkdownToMobirise(markdownContent: string): MobiriseParsedContent
         currentTextContent = [];
       }
       
-      const level = line.match(/^#+/)?.[0].length || 1;
-      const headingText = line.replace(/^#+\s*/, '');
+      const level = trimmedLine.match(/^#+/)?.[0].length || 1;
+      const headingText = trimmedLine.replace(/^#+\s*/, '');
       
       sections.push({
         type: 'heading',
@@ -72,7 +116,7 @@ function parseMarkdownToMobirise(markdownContent: string): MobiriseParsedContent
     }
     // Accumulate text content
     else {
-      currentTextContent.push(line);
+      currentTextContent.push(trimmedLine);
     }
   }
   
@@ -160,6 +204,37 @@ export default function MobiriseContentRenderer({ markdownContent }: MobiriseCon
                         </p>
                       )}
                     </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          );
+        } else if (section.type === 'code') {
+          return (
+            <section key={index} className="content7 cid-content7" data-bs-version="5.1">
+              <div className="container">
+                <div className="row justify-content-center">
+                  <div className="col-12 col-md-10">
+                    <blockquote>
+                      <h5 className="mbr-section-title mbr-fonts-style mb-2 display-7">
+                        <strong>{section.language ? section.language.toUpperCase() : 'CODE'}</strong>
+                      </h5>
+                      <SyntaxHighlighter
+                        language={section.language || 'text'}
+                        style={prism}
+                        customStyle={{
+                          backgroundColor: '#f5f5f5',
+                          border: '1px solid #ddd',
+                          borderRadius: '4px',
+                          padding: '1rem',
+                          fontSize: '0.9rem',
+                          lineHeight: '1.4'
+                        }}
+                        showLineNumbers={true}
+                      >
+                        {section.content}
+                      </SyntaxHighlighter>
+                    </blockquote>
                   </div>
                 </div>
               </div>
