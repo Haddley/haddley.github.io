@@ -222,7 +222,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'promptFlow4',
+    slug: 'promptflow4',
     title: 'Prompt flow (Part 4)',
     description: 'Planner',
     date: '2024-08-24',
@@ -231,7 +231,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/logo.svg'
   },
   {
-    slug: 'promptFlow3',
+    slug: 'promptflow3',
     title: 'Prompt flow (Part 3)',
     description: 'Planner',
     date: '2024-08-24',
@@ -240,7 +240,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/logo.svg'
   },
   {
-    slug: 'promptFlow2',
+    slug: 'promptflow2',
     title: 'Prompt flow (Part 2)',
     description: 'Semantic Kernel',
     date: '2024-06-12',
@@ -249,7 +249,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/logo.svg'
   },
   {
-    slug: 'promptFlow1',
+    slug: 'promptflow1',
     title: 'Prompt flow (Part 1)',
     description: 'Docker',
     date: '2024-06-11',
@@ -366,7 +366,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'pluginActions',
+    slug: 'pluginactions',
     title: 'Power Apps (Part 10)',
     description: 'Copilot Studio Plugin Actions',
     date: '2024-02-24',
@@ -375,7 +375,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'addAPurchaseOrder',
+    slug: 'addapurchaseorder',
     title: 'Power Apps (Part 9)',
     description: 'Adding a Purchase Order',
     date: '2024-02-21',
@@ -384,7 +384,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'addAnItem',
+    slug: 'addanitem',
     title: 'Power Apps (Part 8)',
     description: 'Adding an Item',
     date: '2024-02-17',
@@ -393,7 +393,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'azureReactStaticWeb App',
+    slug: 'azurereactstaticweb app',
     title: 'React (Part 3)',
     description: 'Adding an Item',
     date: '2024-01-08',
@@ -402,7 +402,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/logo512-512x512.png'
   },
   {
-    slug: 'businessCentralVirtualTable',
+    slug: 'businesscentralvirtualtable',
     title: 'Dynamics 365 Business Central (Part 22)',
     description: 'Business Central Virtual Table',
     date: '2024-01-12',
@@ -411,7 +411,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/posts-meta.svg'
   },
   {
-    slug: 'createActionBasedOnAFlow',
+    slug: 'createactionbasedonaflow',
     title: 'Dynamics 365 Business Central (Part 21)',
     description: 'Create action based on a flow',
     date: '2024-01-04',
@@ -420,7 +420,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/posts-meta.svg'
   },
   {
-    slug: 'businessCentralPowerAutomateFlow',
+    slug: 'businesscentralpowerautomateflow',
     title: 'Dynamics 365 Business Central (Part 20)',
     description: 'Power Automate Flow',
     date: '2024-01-02',
@@ -429,7 +429,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/posts-meta.svg'
   },
   {
-    slug: 'gingerbreadHouse',
+    slug: 'gingerbreadhouse',
     title: 'Raspberry Pi (Part 5)',
     description: 'Gingerbread House',
     date: '2023-12-26',
@@ -438,7 +438,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/raspberry-pi-logo.svg'
   },
   {
-    slug: 'businessCentralMicrosoftGraph',
+    slug: 'businesscentralmicrosoftgraph',
     title: 'Dynamics 365 Business Central (Part 19)',
     description: 'Microsoft Graph',
     date: '2023-12-18',
@@ -447,7 +447,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/posts-meta.svg'
   },
   {
-    slug: 'salesInvoice',
+    slug: 'salesinvoice',
     title: 'Dynamics 365 Business Central (Part 18)',
     description: 'Sales Invoice',
     date: '2023-12-14',
@@ -456,7 +456,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/posts-meta.svg'
   },
   {
-    slug: 'purchaseInvoice',
+    slug: 'purchaseinvoice',
     title: 'Dynamics 365 Business Central (Part 17)',
     description: 'Sales Invoice',
     date: '2023-12-14',
@@ -465,7 +465,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/posts-meta.svg'
   },
   {
-    slug: 'generalPostingSetup',
+    slug: 'generalpostingsetup',
     title: 'Dynamics 365 Business Central (Part 16)',
     description: 'General Posting Setup',
     date: '2023-12-14',
@@ -474,7 +474,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/posts-meta.svg'
   },
   {
-    slug: 'customerPostingGroup',
+    slug: 'customerpostinggroup',
     title: 'Dynamics 365 Business Central (Part 15)',
     description: 'Customer Posting Group',
     date: '2023-12-14',
@@ -483,7 +483,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/posts-meta.svg'
   },
   {
-    slug: 'vendorPostingGroup',
+    slug: 'vendorpostinggroup',
     title: 'Dynamics 365 Business Central (Part 14)',
     description: 'Vendor Posting Group',
     date: '2023-12-12',
@@ -492,7 +492,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/posts-meta.svg'
   },
   {
-    slug: 'generalLedger',
+    slug: 'generalledger',
     title: 'Dynamics 365 Business Central (Part 13)',
     description: 'General Ledger',
     date: '2023-12-11',
@@ -537,7 +537,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/hands-on-lab2.1/hero.png'
   },
   {
-    slug: 'dynamicsSales3',
+    slug: 'dynamicssales3',
     title: 'Microsoft Dynamics 365 Sales (Part 3)',
     description: 'Adding a Warranty table',
     date: '2023-10-21',
@@ -546,7 +546,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/dynamics365-color.svg'
   },
   {
-    slug: 'dynamicsSales2',
+    slug: 'dynamicssales2',
     title: 'Microsoft Dynamics 365 Sales (Part 2)',
     description: 'Updating the Lead to Opportunity Business Process Flow',
     date: '2023-10-21',
@@ -555,7 +555,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/dynamics365-color.svg'
   },
   {
-    slug: 'dynamicsSales1',
+    slug: 'dynamicssales1',
     title: 'Microsoft Dynamics 365 Sales (Part 1)',
     description: 'Updating the Sales Insights form',
     date: '2023-10-21',
@@ -564,7 +564,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/dynamics365-color.svg'
   },
   {
-    slug: 'modelDriven4',
+    slug: 'modeldriven4',
     title: 'Model Driven Apps (Part 4)',
     description: 'Model-driven apps Power FX',
     date: '2023-10-09',
@@ -573,7 +573,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'modelDriven3',
+    slug: 'modeldriven3',
     title: 'Model Driven Apps (Part 3)',
     description: 'Model-driven apps JavaScript Developer Guide',
     date: '2023-10-08',
@@ -582,7 +582,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'modelDriven2',
+    slug: 'modeldriven2',
     title: 'Model Driven Apps (Part 2)',
     description: 'Business Process Flow',
     date: '2023-10-05',
@@ -591,7 +591,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'modelDriven1',
+    slug: 'modeldriven1',
     title: 'Model Driven Apps (Part 1)',
     description: 'Dataverse users, business units and security roles',
     date: '2023-09-18',
@@ -600,7 +600,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'aShortHistory',
+    slug: 'ashorthistory',
     title: 'Microsoft Dynamics 365',
     description: 'A Short History of Microsoft Dynamics and Microsoft Dataverse',
     date: '2023-09-09',
@@ -609,7 +609,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/dynamics365-color.svg'
   },
   {
-    slug: 'mapExtension',
+    slug: 'mapextension',
     title: 'Microsoft Dynamics 365 Business Central (Part 8)',
     description: 'Maps Extension',
     date: '2023-09-01',
@@ -618,7 +618,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/dynamics365-color.svg'
   },
   {
-    slug: 'rewardsExtension',
+    slug: 'rewardsextension',
     title: 'Microsoft Dynamics 365 Business Central (Part 7)',
     description: 'Maps Extension',
     date: '2023-08-30',
@@ -627,7 +627,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/dynamics365-color.svg'
   },
   {
-    slug: 'AL-Go-PTE',
+    slug: 'al-go-pte',
     title: 'Microsoft Dynamics 365 Business Central (Part 6)',
     description: 'AL-Go-PTE',
     date: '2023-08-26',
@@ -636,7 +636,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/dynamics365-color.svg'
   },
   {
-    slug: 'financialOperationsPurchaseInvoice',
+    slug: 'financialoperationspurchaseinvoice',
     title: 'Microsoft Dynamics 365 Business Central (Part 5)',
     description: 'AL-Go-PTE',
     date: '2023-08-20',
@@ -645,7 +645,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/dynamics365-color.svg'
   },
   {
-    slug: 'warehouseManagementPutAway',
+    slug: 'warehousemanagementputaway',
     title: 'Microsoft Dynamics 365 Business Central (Part 4)',
     description: 'Put-away',
     date: '2023-08-19',
@@ -654,7 +654,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/dynamics365-color.svg'
   },
   {
-    slug: 'businessCentralAdminCenter',
+    slug: 'businesscentraladmincenter',
     title: 'Microsoft Dynamics 365 Business Central (Part 3)',
     description: 'Admin Center',
     date: '2023-08-18',
@@ -663,7 +663,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/dynamics365-color.svg'
   },
   {
-    slug: 'businessCentralCanvasApps',
+    slug: 'businesscentralcanvasapps',
     title: 'Microsoft Dynamics 365 Business Central (Part 2)',
     description: 'Canvas Apps',
     date: '2023-08-14',
@@ -672,7 +672,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/dynamics365-color.svg'
   },
   {
-    slug: 'dynamicsTrialSignup',
+    slug: 'dynamicstrialsignup',
     title: 'Microsoft Dynamics 365 Business Central (Part 1)',
     description: 'Trial Signup',
     date: '2023-08-14',
@@ -726,7 +726,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/spring-framework-logo-70-no.svg'
   },
   {
-    slug: 'promptEngineering',
+    slug: 'promptengineering',
     title: 'Meta\'s Llama 2 (Part 2)',
     description: 'Prompt Engineering',
     date: '2023-08-08',
@@ -735,7 +735,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/mediamodifier-design.png'
   },
   {
-    slug: 'LMStudio',
+    slug: 'lmstudio',
     title: 'Meta\'s Llama 2 (Part 1)',
     description: 'LM Studio',
     date: '2023-08-05',
@@ -744,7 +744,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/mediamodifier-design.png'
   },
   {
-    slug: 'llamaCorp',
+    slug: 'llamacorp',
     title: 'Jupyter (Part 4)',
     description: 'LM Studio',
     date: '2023-08-03',
@@ -762,7 +762,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/jupyter.svg'
   },
   {
-    slug: 'stableDiffusion',
+    slug: 'stablediffusion',
     title: 'Jupyter (Part 2)',
     description: 'Colorization',
     date: '2023-08-01',
@@ -771,7 +771,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/jupyter.svg'
   },
   {
-    slug: 'appleLaptop',
+    slug: 'applelaptop',
     title: 'Jupyter (Part 1)',
     description: 'Laptop Setup',
     date: '2023-07-25',
@@ -780,7 +780,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/jupyter.svg'
   },
   {
-    slug: 'OpenCV',
+    slug: 'opencv',
     title: 'Raspberry Pi (Part 4)',
     description: 'Laptop Setup',
     date: '2023-07-25',
@@ -789,7 +789,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/raspberry-pi-logo.svg'
   },
   {
-    slug: 'SH1106',
+    slug: 'sh1106',
     title: 'Raspberry Pi (Part 3)',
     description: 'Object Detection',
     date: '2023-07-24',
@@ -852,7 +852,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/chatgpt-logo.svg'
   },
   {
-    slug: '3dPrinting2',
+    slug: '3dprinting2',
     title: '3D Printing (Part 2)',
     description: 'A comprehensive guide covering 3d printing2',
     date: '2023-07-19',
@@ -861,7 +861,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/wikipedia-globe-translucent-3d-printed-woodgrain-background-512x512.jpg'
   },
   {
-    slug: '3dPrinting1',
+    slug: '3dprinting1',
     title: '3D Printing (Part 1)',
     description: 'A comprehensive guide covering 3d printing1',
     date: '2023-07-15',
@@ -870,7 +870,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/wikipedia-globe-translucent-3d-printed-woodgrain-background-512x512.jpg'
   },
   {
-    slug: 'VBNETConsoleSQLServerUnitTests',
+    slug: 'vbnetconsolesqlserverunittests',
     title: 'VB.NET Console SQL Server Unit Tests',
     description: 'A comprehensive guide covering  v b n e t console s q l server unit tests',
     date: '2023-05-27',
@@ -1059,7 +1059,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/three.js-icon.svg'
   },
   {
-    slug: 'ngrxEntity',
+    slug: 'ngrxentity',
     title: 'NGRX entity',
     description: 'Managing record collections',
     date: '2023-02-18',
@@ -1095,7 +1095,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/ngrx.svg'
   },
   {
-    slug: 'componentFramework',
+    slug: 'componentframework',
     title: 'Power Apps (Part 7)',
     description: 'Power Apps Component Framework',
     date: '2022-08-14',
@@ -1104,7 +1104,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'azureStorage',
+    slug: 'azurestorage',
     title: 'Azure Storage',
     description: 'Microsoft\'s cloud storage solution',
     date: '2022-08-13',
@@ -1122,7 +1122,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'powerApps6',
+    slug: 'powerapps6',
     title: 'Power Apps (Part 6)',
     description: 'A Custom Connector for Microsoft Graph',
     date: '2022-07-04',
@@ -1194,7 +1194,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/tensorflow-logo.svg'
   },
   {
-    slug: 'machineLearning2',
+    slug: 'machinelearning2',
     title: 'Machine Learning (Part 2)',
     description: 'Low hanging fruit',
     date: '2022-06-05',
@@ -1203,7 +1203,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/tensorflow-logo.svg'
   },
   {
-    slug: 'machineLearning1',
+    slug: 'machinelearning1',
     title: 'Machine Learning (Part 1)',
     description: 'Science fair',
     date: '2022-06-05',
@@ -1212,7 +1212,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/tensorflow-logo.svg'
   },
   {
-    slug: 'ATeamsTabSharePointWebPartforOneDrive',
+    slug: 'ateamstabsharepointwebpartforonedrive',
     title: 'A Teams App SharePoint Web Part for One Drive',
     description: 'Using SPFx and the Graph Toolkit',
     date: '2022-05-29',
@@ -1221,7 +1221,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'JavaScriptGraph',
+    slug: 'javascriptgraph',
     title: 'JavaScript and Microsoft Graph',
     description: 'A Node App that accesses Microsoft 365',
     date: '2022-05-28',
@@ -1230,7 +1230,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'MicrosoftGraph',
+    slug: 'microsoftgraph',
     title: 'Microsoft Graph',
     description: 'Explore Microsoft 365',
     date: '2022-05-26',
@@ -1239,7 +1239,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'PowerAutomate',
+    slug: 'powerautomate',
     title: 'Power Automate',
     description: 'Automate tasks in Microsoft 365',
     date: '2022-05-04',
@@ -1248,7 +1248,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'WebXR',
+    slug: 'webxr',
     title: 'WebXR',
     description: 'Create Augmented Reality Experiences',
     date: '2022-04-22',
@@ -1383,7 +1383,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/amazon-web-services-logo.svg'
   },
   {
-    slug: 'AmazonEKS',
+    slug: 'amazoneks',
     title: 'Amazon EKS (Part 1)',
     description: 'A comprehensive guide covering  amazon e k s',
     date: '2021-08-12',
@@ -1401,7 +1401,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'API Management',
+    slug: 'api management',
     title: 'Power Apps (Part 4)',
     description: 'A comprehensive guide covering  a p i  management',
     date: '2021-08-02',
@@ -1536,7 +1536,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/ads.svg'
   },
   {
-    slug: 'internetOfThings2',
+    slug: 'internetofthings2',
     title: 'Internet of Things (Part 2)',
     description: 'A comprehensive guide covering internet of things2',
     date: '2021-03-06',
@@ -1545,7 +1545,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/iot-microchip.svg'
   },
   {
-    slug: 'internetOfThings1',
+    slug: 'internetofthings1',
     title: 'Internet of Things (Part 1)',
     description: 'A comprehensive guide covering internet of things1',
     date: '2021-03-03',
@@ -1572,7 +1572,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/method-draw-image.svg'
   },
   {
-    slug: 'GraphQL',
+    slug: 'graphql',
     title: 'GraphQL',
     description: 'A comprehensive guide covering  graph q l',
     date: '2021-03-01',
@@ -1590,7 +1590,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/logo-og-600x600.png'
   },
   {
-    slug: 'npmCC',
+    slug: 'npmcc',
     title: 'npm C++',
     description: 'A comprehensive guide covering npm c c',
     date: '2021-02-26',
@@ -1608,7 +1608,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/6078720-200x200.png'
   },
   {
-    slug: 'm365CommandLineInterface',
+    slug: 'm365commandlineinterface',
     title: 'A Command Line Interface for Microsoft 365',
     description: 'A comprehensive guide covering m365 command line interface',
     date: '2021-02-22',
