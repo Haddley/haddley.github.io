@@ -9,2265 +9,1688 @@ export interface BlogPost {
 }
 
 export const blogPosts: BlogPost[] = [
+
+
+
+
   {
-    slug: '3dprinting1',
-    title: '3D Printing 1',
-    description: 'A comprehensive guide covering 3d printing 1',
-    date: '2025-09-20',
+    slug: 'macScreenSharing',
+    title: 'Apple macOS',
+    description: 'Screen Sharing VNC and SSH',
+    date: '2025-08-18',
     category: 'Development',
-    tags: ["ai"],
-    image: '/assets/images/3dprinting1/wikipedia-globe-translucent-3d-printed-woodgrain-background-512x512.jpg'
+    tags: ["blog"],
+    image: '/assets/images/apple-logo-black.svg'
   },
   {
-    slug: '3dprinting2',
-    title: '3D Printing 2',
-    description: 'A comprehensive guide covering 3d printing 2',
-    date: '2025-09-20',
+    slug: 'mcpserver',
+    title: 'Model Context Protocol (Part 1)',
+    description: 'Typescript Quickstart',
+    date: '2025-08-13',
     category: 'Development',
-    tags: ["ai"],
-    image: '/assets/images/3dprinting2/wikipedia-globe-translucent-3d-printed-woodgrain-background-512x512.jpg'
+    tags: ["typescript","ai"],
+    image: '/assets/images/mcp-1024x1024.png'
   },
   {
-    slug: 'addanitem',
-    title: 'Add an Item',
-    description: 'A comprehensive guide covering add an item',
-    date: '2025-09-20',
+    slug: 'SyntexAutofill',
+    title: 'SharePoint',
+    description: 'Syntex Autofill',
+    date: '2025-07-30',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png'
+  },
+  {
+    slug: 'OllamaDeepSekR1AppleMacBookInstall',
+    title: 'Ollama DeepSeek R1',
+    description: 'Apple MacBook Install',
+    date: '2025-05-24',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/254932576-0d0b44e2-8f4a-4e99-9b52-a5c1c741c8f7-844x844.png'
+  },
+  {
+    slug: 'promptDialog3',
+    title: 'Business Central (Part 29)',
+    description: 'Prompt Dialog Markdown (Part 3)',
+    date: '2024-05-24',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/posts-meta.svg'
+  },
+  {
+    slug: 'promptDialog2',
+    title: 'Business Central (Part 28)',
+    description: 'Prompt Dialog Azure Open AI (Part 2)',
+    date: '2024-05-24',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/posts-meta.svg'
+  },
+  {
+    slug: 'promptDialog',
+    title: 'Business Central (Part 27)',
+    description: 'Prompt Dialog Introduction (Part 1)',
+    date: '2024-05-24',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/posts-meta.svg'
+  },
+  {
+    slug: 'internetOfThings3',
+    title: 'Internet of Things (Part 3)',
+    description: 'Edge Impulse',
+    date: '2025-03-01',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/iot-microchip.svg'
+  },
+  {
+    slug: 'AzureOpenAl',
+    title: 'Azure AI Foundry',
+    description: 'Azure OpenAI Service',
+    date: '2025-02-04',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/azurex70x75.svg'
+  },
+  {
+    slug: 'BusinessCentralPart26IntegrationTable',
+    title: 'Business Central (Part 26)',
+    description: 'Integration Tables',
+    date: '2024-12-22',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/posts-meta.svg'
+  },
+  {
+    slug: 'PowerApps23ConfigurationMigrationTool',
+    title: 'Power Apps (Part 23)',
+    description: 'Configuration Migration Tool (CMT)',
+    date: '2025-01-01',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/office-365-icon-500x500.png'
+  },
+  {
+    slug: 'powerPages3',
+    title: 'Power Pages (Part 3)',
+    description: 'Customer Order Lines',
+    date: '2024-12-20',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/powerpages-scalable.svg'
+  },
+  {
+    slug: 'powerPages2',
+    title: 'Power Pages (Part 2)',
+    description: 'Customer Orders',
+    date: '2024-12-20',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/powerpages-scalable.svg'
+  },
+  {
+    slug: 'BusinessCentralPart25IntegratingWithDataverseUsingDataflows',
+    title: 'Business Central (Part 25)',
+    description: 'Customer Orders',
+    date: '2024-12-01',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/posts-meta.svg'
+  },
+  {
+    slug: 'langflow1',
+    title: 'Langflow (Part 1)',
+    description: 'OpenAI text to speech',
+    date: '2024-10-30',
+    category: 'Development',
+    tags: ["python","ai"],
+    image: '/assets/images/85702467-200x200.png'
+  },
+  {
+    slug: 'powerPages1',
+    title: 'Power Pages (Part 1)',
+    description: 'A Business Central Customer Portal',
+    date: '2024-10-26',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/powerpages-scalable.svg'
+  },
+  {
+    slug: 'promptFlow6',
+    title: 'Prompt flow (Part 6)',
+    description: 'With Semantic Kernel and Planner',
+    date: '2024-09-01',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/logo.svg'
+  },
+  {
+    slug: 'promptFlow5',
+    title: 'Prompt flow (Part 5)',
+    description: 'With LangChain',
+    date: '2024-09-01',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/logo.svg'
+  },
+  {
+    slug: 'langChainAgents',
+    title: 'LangChain',
+    description: 'With LangChain',
+    date: '2024-08-25',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/langchain.svg'
+  },
+  {
+    slug: 'phpSetup',
+    title: 'PHP',
+    description: 'Agents',
+    date: '2024-08-25',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/php-logo.svg'
+  },
+  {
+    slug: 'dataverseAdvancedReportsSetup',
+    title: 'Power Apps (Part 22)',
+    description: 'Setup',
+    date: '2024-08-10',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/office-365-icon-500x500.png'
+  },
+  {
+    slug: 'powerAutomateReports',
+    title: 'Power Apps (Part 21)',
+    description: 'Microsoft Power Automate Reports',
+    date: '2024-07-19',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/office-365-icon-500x500.png'
+  },
+  {
+    slug: 'dataverseReports',
+    title: 'Power Apps (Part 20)',
+    description: 'Microsoft Dataverse Reports',
+    date: '2024-07-19',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/office-365-icon-500x500.png'
+  },
+  {
+    slug: 'promptFlow4',
+    title: 'Prompt flow (Part 4)',
+    description: 'Planner',
+    date: '2024-08-24',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/logo.svg'
+  },
+  {
+    slug: 'promptFlow3',
+    title: 'Prompt flow (Part 3)',
+    description: 'Planner',
+    date: '2024-08-24',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/logo.svg'
+  },
+  {
+    slug: 'promptFlow2',
+    title: 'Prompt flow (Part 2)',
+    description: 'Semantic Kernel',
+    date: '2024-06-12',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/logo.svg'
+  },
+  {
+    slug: 'promptFlow1',
+    title: 'Prompt flow (Part 1)',
+    description: 'Docker',
+    date: '2024-06-11',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/logo.svg'
+  },
+  {
+    slug: 'customtVirtualTables',
+    title: 'Power Apps (Part 18)',
+    description: 'Setup',
+    date: '2024-05-07',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/office-365-icon-500x500.png'
+  },
+  {
+    slug: 'blogCopilotStudio',
+    title: 'Dynamics 365 Business Central (Part 24)',
+    description: 'A comprehensive guide covering blog copilot studio',
+    date: '2024-03-24',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/posts-meta.svg'
+  },
+  {
+    slug: 'customCopilotStudio',
+    title: 'Dynamics 365 Business Central (Part 23)',
+    description: 'A comprehensive guide covering custom copilot studio',
+    date: '2024-03-23',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/posts-meta.svg'
+  },
+  {
+    slug: 'configureCopilotSingleSignonForWeb',
+    title: 'Power Apps (Part 17)',
+    description: 'Configure Copilot single sign-on for Web',
+    date: '2024-03-16',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/office-365-icon-500x500.png'
+  },
+  {
+    slug: 'customizeDefaultCanvas',
+    title: 'Power Apps (Part 16)',
+    description: 'styleOptions',
+    date: '2024-03-11',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/office-365-icon-500x500.png'
+  },
+  {
+    slug: 'copilotEmbedCode',
+    title: 'Power Apps (Part 15)',
+    description: 'Copilot Embed Code',
+    date: '2024-03-11',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/office-365-icon-500x500.png'
+  },
+  {
+    slug: 'staticwebapp.config.json',
+    title: 'Azure Active Directory (Part 3)',
+    description: 'staticwebapp.config.json and environment variables',
+    date: '2024-03-10',
+    category: 'Development',
+    tags: ["azure","ai","ml","git","github"],
+    image: '/assets/images/azurex70x75.svg'
+  },
+  {
+    slug: 'codespacesAuthentication',
+    title: 'React (Part 4)',
+    description: 'Codespaces and Authentication',
+    date: '2024-03-06',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/logo512-512x512.png'
+  },
+  {
+    slug: 'modelDrivenPurchaseOrderLines',
+    title: 'Power Apps (Part 14)',
+    description: 'Model Driven Purchase Order Lines',
+    date: '2024-03-03',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/office-365-icon-500x500.png'
+  },
+  {
+    slug: 'modelDrivenPurchaseOrders',
+    title: 'Power Apps (Part 13)',
+    description: 'Model Driven Purchase Orders',
+    date: '2024-03-02',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/office-365-icon-500x500.png'
+  },
+  {
+    slug: 'cloudFlow',
+    title: 'Power Apps (Part 12)',
+    description: 'Copilot Studio Topic with a Cloud Flow',
+    date: '2024-02-26',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/office-365-icon-500x500.png'
+  },
+  {
+    slug: 'topics',
+    title: 'Power Apps (Part 11)',
+    description: 'Copilot Studio Topic with a Connector',
+    date: '2024-02-25',
     category: 'Development',
     tags: ["business central"],
-    image: '/assets/images/addanitem/office-365-icon-500x500.png'
+    image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'addapurchaseorder',
-    title: 'Add a Purchase Order',
-    description: 'A comprehensive guide covering add a purchase order',
-    date: '2025-09-20',
+    slug: 'pluginActions',
+    title: 'Power Apps (Part 10)',
+    description: 'Copilot Studio Plugin Actions',
+    date: '2024-02-24',
     category: 'Development',
-    tags: ["business central"],
-    image: '/assets/images/addapurchaseorder/office-365-icon-500x500.png'
+    tags: ["blog"],
+    image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'al-go-pte',
-    title: 'AL-Go-PTE',
-    description: 'A comprehensive guide covering al-go-pte',
-    date: '2025-09-20',
+    slug: 'addAPurchaseOrder',
+    title: 'Power Apps (Part 9)',
+    description: 'Adding a Purchase Order',
+    date: '2024-02-21',
     category: 'Development',
-    tags: ["docker","devops","ai","business central","dynamics"],
-    image: '/assets/images/al-go-pte/dynamics365-color.svg'
+    tags: ["blog"],
+    image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'amazonecs',
-    title: 'Amazon Elastic Container Service',
-    description: 'A comprehensive guide covering amazon elastic container service',
-    date: '2025-09-20',
+    slug: 'addAnItem',
+    title: 'Power Apps (Part 8)',
+    description: 'Adding an Item',
+    date: '2024-02-17',
     category: 'Development',
-    tags: ["aws","cloud","docker","kubernetes","ai"],
-    image: '/assets/images/amazonecs/amazon-web-services-logo.svg'
+    tags: ["blog"],
+    image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'amazoneks',
-    title: 'Amazon Elastic Kubernetes Service (Amazon EKS)',
-    description: 'A comprehensive guide covering amazon elastic kubernetes service (amazon eks)',
-    date: '2025-09-20',
+    slug: 'azureReactStaticWeb App',
+    title: 'React (Part 3)',
+    description: 'Adding an Item',
+    date: '2024-01-08',
     category: 'Development',
-    tags: ["aws","cloud","docker","kubernetes","ai"],
-    image: '/assets/images/amazoneks/amazon-web-services-logo.svg'
+    tags: ["blog"],
+    image: '/assets/images/logo512-512x512.png'
   },
   {
-    slug: 'amazonfargate',
-    title: 'Amazon Fargate',
-    description: 'A comprehensive guide covering amazon fargate',
-    date: '2025-09-20',
+    slug: 'businessCentralVirtualTable',
+    title: 'Dynamics 365 Business Central (Part 22)',
+    description: 'Business Central Virtual Table',
+    date: '2024-01-12',
     category: 'Development',
-    tags: ["aws","cloud","docker","kubernetes","ai"],
-    image: '/assets/images/amazonfargate/amazon-web-services-logo.svg'
+    tags: ["blog"],
+    image: '/assets/images/posts-meta.svg'
   },
   {
-    slug: 'angular-new',
-    title: 'Angular',
-    description: 'A comprehensive guide covering angular',
-    date: '2025-09-20',
-    category: 'Web Development',
-    tags: ["angular","ai","ml"],
-    image: '/assets/images/angular/angular-full-color-logo.svg'
+    slug: 'createActionBasedOnAFlow',
+    title: 'Dynamics 365 Business Central (Part 21)',
+    description: 'Create action based on a flow',
+    date: '2024-01-04',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/posts-meta.svg'
   },
   {
-    slug: 'angular',
-    title: 'Angular',
-    description: 'A comprehensive guide covering angular',
-    date: '2025-09-20',
-    category: 'Web Development',
-    tags: ["angular","ai","ml"],
-    image: '/assets/images/angular/angular-full-color-logo.svg'
+    slug: 'businessCentralPowerAutomateFlow',
+    title: 'Dynamics 365 Business Central (Part 20)',
+    description: 'Power Automate Flow',
+    date: '2024-01-02',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/posts-meta.svg'
   },
   {
-    slug: 'angular1',
-    title: 'Angular (Part 1)',
-    description: 'A comprehensive guide covering angular (part 1)',
-    date: '2025-09-20',
-    category: 'Web Development',
-    tags: ["angular","typescript","ai","ml","testing"],
-    image: '/assets/images/angular1/angular-full-color-logo.svg'
+    slug: 'gingerbreadHouse',
+    title: 'Raspberry Pi (Part 5)',
+    description: 'Gingerbread House',
+    date: '2023-12-26',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/raspberry-pi-logo.svg'
   },
   {
-    slug: 'angularandasp.net',
-    title: 'Angular and ASP.NET Core',
-    description: 'A comprehensive guide covering angular and asp.net core',
-    date: '2025-09-20',
-    category: 'Web Development',
-    tags: ["angular","react","dotnet","database","ai"],
-    image: '/assets/images/angularandasp.net/angular-full-color-logo.svg'
+    slug: 'businessCentralMicrosoftGraph',
+    title: 'Dynamics 365 Business Central (Part 19)',
+    description: 'Microsoft Graph',
+    date: '2023-12-18',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/posts-meta.svg'
   },
   {
-    slug: 'angularfirebase',
-    title: 'Angular Firebase',
-    description: 'A comprehensive guide covering angular firebase',
-    date: '2025-09-20',
-    category: 'Web Development',
-    tags: ["angular","react","ai","ml"],
-    image: '/assets/images/angularfirebase/logo-lockup-firebase-vertical.svg'
+    slug: 'salesInvoice',
+    title: 'Dynamics 365 Business Central (Part 18)',
+    description: 'Sales Invoice',
+    date: '2023-12-14',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/posts-meta.svg'
+  },
+  {
+    slug: 'purchaseInvoice',
+    title: 'Dynamics 365 Business Central (Part 17)',
+    description: 'Sales Invoice',
+    date: '2023-12-14',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/posts-meta.svg'
+  },
+  {
+    slug: 'generalPostingSetup',
+    title: 'Dynamics 365 Business Central (Part 16)',
+    description: 'General Posting Setup',
+    date: '2023-12-14',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/posts-meta.svg'
+  },
+  {
+    slug: 'customerPostingGroup',
+    title: 'Dynamics 365 Business Central (Part 15)',
+    description: 'Customer Posting Group',
+    date: '2023-12-14',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/posts-meta.svg'
+  },
+  {
+    slug: 'vendorPostingGroup',
+    title: 'Dynamics 365 Business Central (Part 14)',
+    description: 'Vendor Posting Group',
+    date: '2023-12-12',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/posts-meta.svg'
+  },
+  {
+    slug: 'generalLedger',
+    title: 'Dynamics 365 Business Central (Part 13)',
+    description: 'General Ledger',
+    date: '2023-12-11',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/dynamics365-color.svg'
+  },
+  {
+    slug: 'hands-on-lab3.1',
+    title: 'Dynamics 365 Business Central (Part 12)',
+    description: 'Hands-on-Lab 3.1',
+    date: '2023-12-04',
+    category: 'Development',
+    tags: ["ai","business central","dynamics","git"],
+    image: '/assets/images/dynamics365-color.svg'
+  },
+  {
+    slug: 'hands-on-lab2.3',
+    title: 'Dynamics 365 Business Central (Part 11)',
+    description: 'Hands-on-Lab 2.3',
+    date: '2023-12-04',
+    category: 'Development',
+    tags: ["ai","dynamics"],
+    image: '/assets/images/dynamics365-color.svg'
+  },
+  {
+    slug: 'hands-on-lab2.2',
+    title: 'Dynamics 365 Business Central (Part 10)',
+    description: 'Hands-on-Lab 2.2',
+    date: '2023-11-22',
+    category: 'Development',
+    tags: ["ai","dynamics"],
+    image: '/assets/images/dynamics365-color.svg'
+  },
+  {
+    slug: 'hands-on-lab2.1',
+    title: 'Dynamics 365 Business Central (Part 9)',
+    description: 'Hands-on-Lab 2.1',
+    date: '2023-11-22',
+    category: 'Development',
+    tags: ["database","ai","business central","dynamics"],
+    image: '/assets/images/hands-on-lab2.1/hero.png'
+  },
+  {
+    slug: 'dynamicsSales3',
+    title: 'Microsoft Dynamics 365 Sales (Part 3)',
+    description: 'Adding a Warranty table',
+    date: '2023-10-21',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/dynamics365-color.svg'
+  },
+  {
+    slug: 'dynamicsSales2',
+    title: 'Microsoft Dynamics 365 Sales (Part 2)',
+    description: 'Updating the Lead to Opportunity Business Process Flow',
+    date: '2023-10-21',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/dynamics365-color.svg'
+  },
+  {
+    slug: 'dynamicsSales1',
+    title: 'Microsoft Dynamics 365 Sales (Part 1)',
+    description: 'Updating the Sales Insights form',
+    date: '2023-10-21',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/dynamics365-color.svg'
+  },
+  {
+    slug: 'modelDriven4',
+    title: 'Model Driven Apps (Part 4)',
+    description: 'Model-driven apps Power FX',
+    date: '2023-10-09',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/office-365-icon-500x500.png'
+  },
+  {
+    slug: 'modelDriven3',
+    title: 'Model Driven Apps (Part 3)',
+    description: 'Model-driven apps JavaScript Developer Guide',
+    date: '2023-10-08',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/office-365-icon-500x500.png'
+  },
+  {
+    slug: 'modelDriven2',
+    title: 'Model Driven Apps (Part 2)',
+    description: 'Business Process Flow',
+    date: '2023-10-05',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/office-365-icon-500x500.png'
+  },
+  {
+    slug: 'modelDriven1',
+    title: 'Model Driven Apps (Part 1)',
+    description: 'Dataverse users, business units and security roles',
+    date: '2023-09-18',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/office-365-icon-500x500.png'
+  },
+  {
+    slug: 'aShortHistory',
+    title: 'Microsoft Dynamics 365',
+    description: 'A Short History of Microsoft Dynamics and Microsoft Dataverse',
+    date: '2023-09-09',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/dynamics365-color.svg'
+  },
+  {
+    slug: 'mapExtension',
+    title: 'Microsoft Dynamics 365 Business Central (Part 8)',
+    description: 'Maps Extension',
+    date: '2023-09-01',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/dynamics365-color.svg'
+  },
+  {
+    slug: 'rewardsExtension',
+    title: 'Microsoft Dynamics 365 Business Central (Part 7)',
+    description: 'Maps Extension',
+    date: '2023-08-30',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/dynamics365-color.svg'
+  },
+  {
+    slug: 'AL-Go-PTE',
+    title: 'Microsoft Dynamics 365 Business Central (Part 6)',
+    description: 'AL-Go-PTE',
+    date: '2023-08-26',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/dynamics365-color.svg'
+  },
+  {
+    slug: 'financialOperationsPurchaseInvoice',
+    title: 'Microsoft Dynamics 365 Business Central (Part 5)',
+    description: 'AL-Go-PTE',
+    date: '2023-08-20',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/dynamics365-color.svg'
+  },
+  {
+    slug: 'warehouseManagementPutAway',
+    title: 'Microsoft Dynamics 365 Business Central (Part 4)',
+    description: 'Put-away',
+    date: '2023-08-19',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/dynamics365-color.svg'
+  },
+  {
+    slug: 'businessCentralAdminCenter',
+    title: 'Microsoft Dynamics 365 Business Central (Part 3)',
+    description: 'Admin Center',
+    date: '2023-08-18',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/dynamics365-color.svg'
+  },
+  {
+    slug: 'businessCentralCanvasApps',
+    title: 'Microsoft Dynamics 365 Business Central (Part 2)',
+    description: 'Canvas Apps',
+    date: '2023-08-14',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/dynamics365-color.svg'
+  },
+  {
+    slug: 'dynamicsTrialSignup',
+    title: 'Microsoft Dynamics 365 Business Central (Part 1)',
+    description: 'Trial Signup',
+    date: '2023-08-14',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/dynamics365-color.svg'
+  },
+  {
+    slug: 'spring-boot-6',
+    title: 'Java Spring Boot (Part 6)',
+    description: 'OAuth2 Login',
+    date: '2023-10-31',
+    category: 'Java',
+    tags: ["java","spring","ai","git","github"],
+    image: '/assets/images/spring-framework-logo-70-no.svg'
+  },
+  {
+    slug: 'spring-boot-5',
+    title: 'Java Spring Boot (Part 5)',
+    description: 'OAuth2 Login',
+    date: '2023-10-30',
+    category: 'Java',
+    tags: ["java","spring","ai","ml","git"],
+    image: '/assets/images/spring-framework-logo-70-no.svg'
+  },
+  {
+    slug: 'spring-boot-4',
+    title: 'Java Spring Boot (Part 4)',
+    description: 'Spring ModelAndView',
+    date: '2023-10-29',
+    category: 'Java',
+    tags: ["java","spring"],
+    image: '/assets/images/spring-framework-logo-70-no.svg'
+  },
+  {
+    slug: 'spring-boot-3',
+    title: 'Java Spring Boot (Part 3)',
+    description: 'Spring Data JPA',
+    date: '2023-10-28',
+    category: 'Java',
+    tags: ["azure","java","spring","git","github"],
+    image: '/assets/images/spring-framework-logo-70-no.svg'
+  },
+  {
+    slug: 'spring-boot-2',
+    title: 'Java Spring Boot (Part 2)',
+    description: 'Deploying from GitHub to Azure',
+    date: '2023-10-26',
+    category: 'Java',
+    tags: ["azure","java","spring","ai","git"],
+    image: '/assets/images/spring-framework-logo-70-no.svg'
+  },
+  {
+    slug: 'promptEngineering',
+    title: 'Meta\'s Llama 2 (Part 2)',
+    description: 'Prompt Engineering',
+    date: '2023-08-08',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/mediamodifier-design.png'
+  },
+  {
+    slug: 'LMStudio',
+    title: 'Meta\'s Llama 2 (Part 1)',
+    description: 'LM Studio',
+    date: '2023-08-05',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/mediamodifier-design.png'
+  },
+  {
+    slug: 'llamaCorp',
+    title: 'Jupyter (Part 4)',
+    description: 'LM Studio',
+    date: '2023-08-03',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/jupyter.svg'
+  },
+  {
+    slug: 'colorization',
+    title: 'Jupyter (Part 3)',
+    description: 'Colorization',
+    date: '2023-08-03',
+    category: 'Development',
+    tags: [],
+    image: '/assets/images/jupyter.svg'
+  },
+  {
+    slug: 'stableDiffusion',
+    title: 'Jupyter (Part 2)',
+    description: 'Colorization',
+    date: '2023-08-01',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/jupyter.svg'
+  },
+  {
+    slug: 'appleLaptop',
+    title: 'Jupyter (Part 1)',
+    description: 'Laptop Setup',
+    date: '2023-07-25',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/jupyter.svg'
+  },
+  {
+    slug: 'OpenCV',
+    title: 'Raspberry Pi (Part 4)',
+    description: 'Laptop Setup',
+    date: '2023-07-25',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/raspberry-pi-logo.svg'
+  },
+  {
+    slug: 'SH1106',
+    title: 'Raspberry Pi (Part 3)',
+    description: 'Object Detection',
+    date: '2023-07-24',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/raspberry-pi-logo.svg'
+  },
+  {
+    slug: 'pi2',
+    title: 'Raspberry Pi (Part 2)',
+    description: 'OLED display',
+    date: '2023-07-22',
+    category: 'Development',
+    tags: ["python","ai"],
+    image: '/assets/images/raspberry-pi-logo.svg'
+  },
+  {
+    slug: 'pi1',
+    title: 'Raspberry Pi (Part 1)',
+    description: 'Raspberry Pi GPIO',
+    date: '2023-07-22',
+    category: 'Development',
+    tags: [],
+    image: '/assets/images/raspberry-pi-logo.svg'
+  },
+  {
+    slug: 'langchain',
+    title: 'Natural Language Processing (Part 4)',
+    description: 'LangChain',
+    date: '2023-07-21',
+    category: 'AI/ML',
+    tags: ["python","ai","ml","machine learning"],
+    image: '/assets/images/chatgpt-logo.svg'
+  },
+  {
+    slug: 'contextinjection',
+    title: 'Natural Language Processing (Part 3)',
+    description: 'LangChain',
+    date: '2023-07-19',
+    category: 'Development',
+    tags: ["database","ai"],
+    image: '/assets/images/chatgpt-logo.svg'
+  },
+  {
+    slug: 'sentencesimilarity',
+    title: 'Natural Language Processing (Part 2)',
+    description: 'A comprehensive guide covering sentencesimilarity',
+    date: '2023-07-19',
+    category: 'Development',
+    tags: ["ai"],
+    image: '/assets/images/chatgpt-logo.svg'
+  },
+  {
+    slug: 'sentimentanalysis',
+    title: 'Natural Language Processing (Part 1)',
+    description: 'A comprehensive guide covering sentimentanalysis',
+    date: '2023-07-19',
+    category: 'Development',
+    tags: ["ai","machine learning"],
+    image: '/assets/images/chatgpt-logo.svg'
+  },
+  {
+    slug: '3dPrinting2',
+    title: '3D Printing (Part 2)',
+    description: 'A comprehensive guide covering 3d printing2',
+    date: '2023-07-19',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/wikipedia-globe-translucent-3d-printed-woodgrain-background-512x512.jpg'
+  },
+  {
+    slug: '3dPrinting1',
+    title: '3D Printing (Part 1)',
+    description: 'A comprehensive guide covering 3d printing1',
+    date: '2023-07-15',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/wikipedia-globe-translucent-3d-printed-woodgrain-background-512x512.jpg'
+  },
+  {
+    slug: 'VBNETConsoleSQLServerUnitTests',
+    title: 'VB.NET Console SQL Server Unit Tests',
+    description: 'A comprehensive guide covering  v b n e t console s q l server unit tests',
+    date: '2023-05-27',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/net-logo.svg'
+  },
+  {
+    slug: 'ticktacktoe',
+    title: 'Firebase Realtime Database',
+    description: 'Multiplayer Tick-Tack-Toe',
+    date: '2023-05-10',
+    category: 'Development',
+    tags: ["javascript","java","database","ai","ml"],
+    image: '/assets/images/logo-lockup-firebase-vertical.svg'
   },
   {
     slug: 'angularphaser',
     title: 'Angular and Phaser',
-    description: 'A comprehensive guide covering angular and phaser',
-    date: '2025-09-20',
+    description: 'Multiplayer Tick-Tack-Toe',
+    date: '2023-05-10',
     category: 'Web Development',
     tags: ["angular","ml"],
-    image: '/assets/images/angularphaser/phaser-logo-1836x1530.png'
+    image: '/assets/images/phaser-logo-1836x1530.png'
   },
   {
-    slug: 'api management',
-    title: 'Power Apps, Custom Connectors and API Management',
-    description: 'A comprehensive guide covering power apps, custom connectors and api management',
-    date: '2025-09-20',
+    slug: 'multiplayer',
+    title: 'Firebase Realtime Database',
+    description: 'Multiplayer Game',
+    date: '2023-05-09',
     category: 'Development',
-    tags: ["azure","ai"],
-    image: '/assets/images/api management/office-365-icon-500x500.png'
+    tags: ["javascript","java","database","ai","ml"],
+    image: '/assets/images/logo-lockup-firebase-vertical.svg'
   },
   {
-    slug: 'apigateway',
-    title: 'API Gateway',
-    description: 'A comprehensive guide covering api gateway',
-    date: '2025-09-20',
+    slug: 'angularfirebase',
+    title: 'Angular Firebase',
+    description: 'An Angular Firebase App',
+    date: '2023-04-25',
+    category: 'Web Development',
+    tags: ["angular","react","ai","ml"],
+    image: '/assets/images/logo-lockup-firebase-vertical.svg'
+  },
+  {
+    slug: 'firebase',
+    title: 'Firebase',
+    description: 'A Firebase App',
+    date: '2023-04-24',
     category: 'Development',
-    tags: ["react","azure","aws","cloud","docker"],
-    image: '/assets/images/apigateway/kubernetes-container-engine.svg'
+    tags: ["cloud","database","ai","git","github"],
+    image: '/assets/images/logo-lockup-firebase-vertical.svg'
   },
   {
-    slug: 'applelaptop',
-    title: 'Apple MacBook',
-    description: 'A comprehensive guide covering apple macbook',
-    date: '2025-09-20',
+    slug: 'xcode4',
+    title: 'XCode C++ (Part 4)',
+    description: 'GLM (OpenGL Mathematics)',
+    date: '2023-03-27',
     category: 'Development',
-    tags: ["python","ai","machine learning"],
-    image: '/assets/images/applelaptop/jupyter.svg'
+    tags: ["ai","ml"],
+    image: '/assets/images/xcode-14-icon-300x314.png'
   },
   {
-    slug: 'applelogo',
-    title: 'Apple Logo',
-    description: 'A comprehensive guide covering apple logo',
-    date: '2025-09-20',
+    slug: 'vbnetwinforms',
+    title: 'VB.NET WinForms and ASP.NET Core API',
+    description: 'A comprehensive guide covering vbnetwinforms',
+    date: '2023-03-27',
     category: 'Development',
-    tags: ["python","ai","machine learning"],
-    image: '/assets/images/applelogo/apple-logo-black.svg'
+    tags: ["dotnet","ai","asp.net"],
+    image: '/assets/images/net-logo.svg'
   },
   {
-    slug: 'ashorthistory',
-    title: 'A Short History of Microsoft Dynamics and Microsoft Dataverse',
-    description: 'A comprehensive guide covering a short history of microsoft dynamics and microsoft dataverse',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["azure","cloud","dotnet","ai","ml"],
-    image: '/assets/images/ashorthistory/dynamics365-color.svg'
-  },
-  {
-    slug: 'asp.net 5 cs',
-    title: 'ASP.NET 5 C#',
-    description: 'A comprehensive guide covering asp.net 5 c#',
-    date: '2025-09-20',
+    slug: 'aspnetcoreunittests',
+    title: 'ASP.NET Core Unit Tests',
+    description: 'A comprehensive guide covering aspnetcoreunittests',
+    date: '2023-03-26',
     category: '.NET',
-    tags: ["dotnet","c#","database","ai","ml"],
-    image: '/assets/images/asp.net 5 cs/net-logo.svg'
+    tags: ["dotnet","ai","asp.net"],
+    image: '/assets/images/net-logo.svg'
   },
   {
-    slug: 'asp.net 5 visual basic',
-    title: 'ASP.NET 5 Visual Basic',
-    description: 'A comprehensive guide covering asp.net 5 visual basic',
-    date: '2025-09-20',
+    slug: 'threetier',
+    title: 'Blazor WASM, ASP.NET Core and SQL Server',
+    description: 'A comprehensive guide covering threetier',
+    date: '2023-03-25',
+    category: 'Development',
+    tags: ["dotnet","sql","database","ai","asp.net"],
+    image: '/assets/images/net-logo.svg'
+  },
+  {
+    slug: 'blazorwasmandasp.net',
+    title: 'Blazor WASM and ASP.NET Core',
+    description: 'A comprehensive guide covering blazorwasmandasp.net',
+    date: '2023-03-24',
     category: '.NET',
-    tags: ["azure","docker","dotnet","sql","database"],
-    image: '/assets/images/asp.net 5 visual basic/net-logo.svg'
+    tags: ["dotnet","c#","database","ai","asp.net"],
+    image: '/assets/images/net-logo.svg'
+  },
+  {
+    slug: 'angularandasp.net',
+    title: 'Angular and ASP.NET Core',
+    description: 'A comprehensive guide covering angularandasp.net',
+    date: '2023-03-24',
+    category: 'Web Development',
+    tags: ["angular","react","dotnet","database","ai"],
+    image: '/assets/images/angular-full-color-logo.svg'
+  },
+  {
+    slug: 'reactandasp.net',
+    title: 'React (Part 2)',
+    description: 'A comprehensive guide covering reactandasp.net',
+    date: '2023-03-22',
+    category: '.NET',
+    tags: ["angular","react","dotnet","sql","database"],
+    image: '/assets/images/logo512-512x512.png'
   },
   {
     slug: 'asp.net core',
     title: 'ASP.NET Core',
     description: 'A comprehensive guide covering asp.net core',
-    date: '2025-09-20',
+    date: '2023-03-21',
     category: '.NET',
     tags: ["dotnet","sql","database","ai","ml"],
-    image: '/assets/images/asp.net core/net-logo.svg'
+    image: '/assets/images/net-logo.svg'
   },
   {
-    slug: 'aspnetcoreawseks',
-    title: 'Deploying a .NET Core Web API to Amazon EKS',
-    description: 'A comprehensive guide covering deploying a .net core web api to amazon eks',
-    date: '2025-09-20',
+    slug: 'asp.net 5 cs',
+    title: 'ASP.NET 5 C#',
+    description: 'A comprehensive guide covering asp.net 5 cs',
+    date: '2023-03-19',
     category: '.NET',
-    tags: ["aws","docker","kubernetes","dotnet","ai"],
-    image: '/assets/images/aspnetcoreawseks/amazon-web-services-logo.svg'
+    tags: ["dotnet","c#","database","ai","ml"],
+    image: '/assets/images/net-logo.svg'
   },
   {
-    slug: 'aspnetcoreunittests',
-    title: 'ASP.NET Core Unit Tests',
-    description: 'A comprehensive guide covering asp.net core unit tests',
-    date: '2025-09-20',
+    slug: 'asp.net 5 visual basic',
+    title: 'ASP.NET 5 Visual Basic',
+    description: 'A comprehensive guide covering asp.net 5 visual basic',
+    date: '2023-03-18',
     category: '.NET',
-    tags: ["dotnet","ai","asp.net"],
-    image: '/assets/images/aspnetcoreunittests/net-logo.svg'
-  },
-  {
-    slug: 'ateamstabsharepointwebpartforonedrive',
-    title: 'A Teams App SharePoint Web Part for One Drive',
-    description: 'A comprehensive guide covering a teams app sharepoint web part for one drive',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["react","ml","git","github"],
-    image: '/assets/images/ateamstabsharepointwebpartforonedrive/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'azure-active-directory',
-    title: 'Azure Active Directory (Part 1)',
-    description: 'A comprehensive guide covering azure active directory (part 1)',
-    date: '2025-09-20',
-    category: 'Azure',
-    tags: ["azure","ai"],
-    image: '/assets/images/azure-active-directory/microsoft-azure-logo.svg'
-  },
-  {
-    slug: 'azure-active-directory2',
-    title: 'Azure Active Directory (Part 2)',
-    description: 'A comprehensive guide covering azure active directory (part 2)',
-    date: '2025-09-20',
-    category: 'Azure',
-    tags: ["angular","react","vue","javascript","azure"],
-    image: '/assets/images/azure-active-directory2/microsoft-azure-logo.svg'
-  },
-  {
-    slug: 'azureai1-new',
-    title: 'Azure AI (Part 1)',
-    description: 'A comprehensive guide covering azure ai (part 1)',
-    date: '2025-09-20',
-    category: 'Azure',
-    tags: ["azure","python","ai","git","github"],
-    image: '/assets/images/azureai1/microsoft-azure-logo.svg'
-  },
-  {
-    slug: 'azureai1',
-    title: 'Azure AI (Part 1)',
-    description: 'A comprehensive guide covering azure ai (part 1)',
-    date: '2025-09-20',
-    category: 'Azure',
-    tags: ["azure","python","ai","git","github"],
-    image: '/assets/images/azureai1/microsoft-azure-logo.svg'
-  },
-  {
-    slug: 'azureopenal',
-    title: 'Azure Al services Azure OpenAl',
-    description: 'A comprehensive guide covering azure al services azure openal',
-    date: '2025-09-20',
-    category: 'Azure',
-    tags: ["azure","ai"],
-    image: '/assets/images/azureopenal/azurex70x75.svg'
-  },
-  {
-    slug: 'azurereactstaticweb app',
-    title: 'Azure React Static Web App',
-    description: 'A comprehensive guide covering azure react static web app',
-    date: '2025-09-20',
-    category: 'Azure',
-    tags: ["react","azure","ai","git","github"],
-    image: '/assets/images/azurereactstaticweb app/logo512-512x512.png'
-  },
-  {
-    slug: 'azurestorage',
-    title: 'Azure Storage',
-    description: 'A comprehensive guide covering azure storage',
-    date: '2025-09-20',
-    category: 'Azure',
-    tags: ["azure","cloud","ai"],
-    image: '/assets/images/azurestorage/microsoft-azure-logo.svg'
-  },
-  {
-    slug: 'blazorwasmandasp.net',
-    title: 'Blazor WASM and ASP.NET Core',
-    description: 'A comprehensive guide covering blazor wasm and asp.net core',
-    date: '2025-09-20',
-    category: '.NET',
-    tags: ["dotnet","c#","database","ai","asp.net"],
-    image: '/assets/images/blazorwasmandasp.net/net-logo.svg'
-  },
-  {
-    slug: 'blogcopilotstudio',
-    title: 'Blog Copilot Studio',
-    description: 'A comprehensive guide covering blog copilot studio',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["java","ai","business central","dynamics","git"],
-    image: '/assets/images/blogcopilotstudio/dynamics365-color.svg'
-  },
-  {
-    slug: 'businesscentraladmincenter',
-    title: 'Business Central Admin Center',
-    description: 'A comprehensive guide covering business central admin center',
-    date: '2025-09-20',
-    category: 'Business Central',
-    tags: ["ai","business central","dynamics"],
-    image: '/assets/images/businesscentraladmincenter/dynamics365-color.svg'
-  },
-  {
-    slug: 'businesscentralcanvasapps',
-    title: 'Business Central Canvas Apps',
-    description: 'A comprehensive guide covering business central canvas apps',
-    date: '2025-09-20',
-    category: 'Business Central',
-    tags: ["ai","business central","dynamics","power platform"],
-    image: '/assets/images/businesscentralcanvasapps/dynamics365-color.svg'
-  },
-  {
-    slug: 'businesscentralintegrationtables',
-    title: 'Business Central (Part 25) Integration Tables',
-    description: 'A comprehensive guide covering business central (part 25) integration tables',
-    date: '2025-09-20',
-    category: 'Business Central',
-    tags: ["ai","business central","dynamics"],
-    image: '/assets/images/businesscentralintegrationtables/dynamics365-color.svg'
-  },
-  {
-    slug: 'businesscentralmicrosoftgraph',
-    title: 'Business Central Microsoft Graph',
-    description: 'A comprehensive guide covering business central microsoft graph',
-    date: '2025-09-20',
-    category: 'Business Central',
-    tags: ["ai","ml","business central","dynamics"],
-    image: '/assets/images/businesscentralmicrosoftgraph/dynamics365-color.svg'
-  },
-  {
-    slug: 'businesscentralpart 27 extendingstandardapis',
-    title: 'Business Central (Part 27) extending standard APIs',
-    description: 'A comprehensive guide covering business central (part 27) extending standard apis',
-    date: '2025-09-20',
-    category: 'Business Central',
-    tags: ["ai","business central","dynamics"],
-    image: '/assets/images/businesscentralpart 27 extendingstandardapis/dynamics365-color.svg'
-  },
-  {
-    slug: 'businesscentralpart 2extendingstandardapis',
-    title: 'Business Central (Part 26) extending standard APIs',
-    description: 'A comprehensive guide covering business central (part 26) extending standard apis',
-    date: '2025-09-20',
-    category: 'Business Central',
-    tags: ["ai","business central","dynamics"],
-    image: '/assets/images/businesscentralpart 2extendingstandardapis/dynamics365-color.svg'
-  },
-  {
-    slug: 'businesscentralpart25integratingwithdataverseusingdataflows',
-    title: 'Business Central (Part 25) Integrating with Dataverse using Dataflows',
-    description: 'A comprehensive guide covering business central (part 25) integrating with dataverse using dataflows',
-    date: '2025-09-20',
-    category: 'Business Central',
-    tags: ["ai","business central","dynamics","power platform"],
-    image: '/assets/images/businesscentralpart25integratingwithdataverseusingdataflows/dynamics365-color.svg'
-  },
-  {
-    slug: 'businesscentralpart26integratingwithdataverseusingintegrationtables',
-    title: 'Business Central (Part 26) Integrating with Dataverse using Integration Tables',
-    description: 'A comprehensive guide covering business central (part 26) integrating with dataverse using integration tables',
-    date: '2025-09-20',
-    category: 'Business Central',
-    tags: ["ai","business central","dynamics"],
-    image: '/assets/images/businesscentralpart26integratingwithdataverseusingintegrationtables/dynamics365-color.svg'
-  },
-  {
-    slug: 'businesscentralpart26integrationtable',
-    title: 'Business Central (Part 26) Integration Tables',
-    description: 'A comprehensive guide covering business central (part 26) integration tables',
-    date: '2025-09-20',
-    category: 'Business Central',
-    tags: ["azure","cloud","ai","business central","dynamics"],
-    image: '/assets/images/businesscentralpart26integrationtable/dynamics365-color.svg'
-  },
-  {
-    slug: 'businesscentralpart26integrationtables',
-    title: 'Business Central (Part 26) Integration Tables',
-    description: 'A comprehensive guide covering business central (part 26) integration tables',
-    date: '2025-09-20',
-    category: 'Business Central',
-    tags: ["ai","business central","dynamics"],
-    image: '/assets/images/businesscentralpart26integrationtables/dynamics365-color.svg'
-  },
-  {
-    slug: 'businesscentralpowerautomateflow',
-    title: 'Business Central Power Automate Flow',
-    description: 'A comprehensive guide covering business central power automate flow',
-    date: '2025-09-20',
-    category: 'Business Central',
-    tags: ["cloud","ai","business central","dynamics"],
-    image: '/assets/images/businesscentralpowerautomateflow/dynamics365-color.svg'
-  },
-  {
-    slug: 'businesscentralvirtualtable',
-    title: 'Business Central Virtual Table',
-    description: 'A comprehensive guide covering business central virtual table',
-    date: '2025-09-20',
-    category: 'Business Central',
-    tags: ["ai","business central","dynamics"],
-    image: '/assets/images/businesscentralvirtualtable/dynamics365-color.svg'
-  },
-  {
-    slug: 'cloudflow',
-    title: 'Cloud Flow',
-    description: 'A comprehensive guide covering cloud flow',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["cloud","business central"],
-    image: '/assets/images/cloudflow/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'codespacesauthentication',
-    title: 'Codespaces and Authentication',
-    description: 'A comprehensive guide covering codespaces and authentication',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["react","azure","git","github"],
-    image: '/assets/images/codespacesauthentication/logo512-512x512.png'
-  },
-  {
-    slug: 'colorization',
-    title: 'Colorization',
-    description: 'A comprehensive guide covering colorization',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: [],
-    image: '/assets/images/colorization/jupyter.svg'
-  },
-  {
-    slug: 'componentframework',
-    title: 'Component Framework',
-    description: 'A comprehensive guide covering component framework',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["react","ai","ml","dynamics","power platform"],
-    image: '/assets/images/componentframework/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'configurecopilotsinglesignonforweb',
-    title: 'Configure Copilot single sign-on for Web',
-    description: 'A comprehensive guide covering configure copilot single sign-on for web',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["azure","docker","ai","ml","git"],
-    image: '/assets/images/configurecopilotsinglesignonforweb/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'configurecopilotwithauthentication',
-    title: 'Configure Copilot with authentication',
-    description: 'A comprehensive guide covering configure copilot with authentication',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["azure","docker","ai","ml","git"],
-    image: '/assets/images/configurecopilotwithauthentication/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'contextinjection',
-    title: 'Context Injection',
-    description: 'A comprehensive guide covering context injection',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["database","ai"],
-    image: '/assets/images/contextinjection/chatgpt-logo.svg'
-  },
-  {
-    slug: 'copilotembedcode',
-    title: 'Copilot Embed Code',
-    description: 'A comprehensive guide covering copilot embed code',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ml"],
-    image: '/assets/images/copilotembedcode/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'createactionbasedonaflow',
-    title: 'Create action based on a flow',
-    description: 'A comprehensive guide covering create action based on a flow',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","business central","dynamics"],
-    image: '/assets/images/createactionbasedonaflow/dynamics365-color.svg'
-  },
-  {
-    slug: 'customcomponents',
-    title: 'Power Apps Custom Components',
-    description: 'A comprehensive guide covering power apps custom components',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai"],
-    image: '/assets/images/customcomponents/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'customconnectorsappregistrations',
-    title: 'Power Apps, Custom Connectors and Application Registrations',
-    description: 'A comprehensive guide covering power apps, custom connectors and application registrations',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["javascript","azure","java","ai","git"],
-    image: '/assets/images/customconnectorsappregistrations/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'customcopilotstudio',
-    title: 'Custom Copilot Studio',
-    description: 'A comprehensive guide covering custom copilot studio',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","business central","dynamics"],
-    image: '/assets/images/customcopilotstudio/dynamics365-color.svg'
-  },
-  {
-    slug: 'customercontentvirtualtables',
-    title: 'Customer Content Virtual Tables',
-    description: 'A comprehensive guide covering customer content virtual tables',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","business central","power platform"],
-    image: '/assets/images/customercontentvirtualtables/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'customercopilotstudio',
-    title: 'Customer Copilot Studio',
-    description: 'A comprehensive guide covering customer copilot studio',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","business central","dynamics"],
-    image: '/assets/images/customercopilotstudio/dynamics365-color.svg'
-  },
-  {
-    slug: 'customerpostinggroup',
-    title: 'Customer Posting Group',
-    description: 'A comprehensive guide covering customer posting group',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","dynamics"],
-    image: '/assets/images/customerpostinggroup/dynamics365-color.svg'
-  },
-  {
-    slug: 'customizedefaultcanvas',
-    title: 'Customize the look and feel of the bot\'s default canvas',
-    description: 'A comprehensive guide covering customize the look and feel of the bot\'s default canvas',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ml"],
-    image: '/assets/images/customizedefaultcanvas/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'customtvirtualtables',
-    title: 'Custom Virtual Tables',
-    description: 'A comprehensive guide covering custom virtual tables',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","business central","power platform"],
-    image: '/assets/images/customtvirtualtables/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'dataverseadvancedreportssetup',
-    title: 'Microsoft Dataverse Advanced Reports Setup',
-    description: 'A comprehensive guide covering microsoft dataverse advanced reports setup',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["sql","ai","ml","dynamics"],
-    image: '/assets/images/dataverseadvancedreportssetup/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'dataversefetchxml',
-    title: 'Microsoft Dataverse FetchXML',
-    description: 'A comprehensive guide covering microsoft dataverse fetchxml',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["sql","ml"],
-    image: '/assets/images/dataversefetchxml/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'dataversereports',
-    title: 'Microsoft Dataverse Reports',
-    description: 'A comprehensive guide covering microsoft dataverse reports',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: [],
-    image: '/assets/images/dataversereports/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'devopsstarterazuredevops',
-    title: 'DevOps Starter Azure DevOps',
-    description: 'A comprehensive guide covering devops starter azure devops',
-    date: '2025-09-20',
-    category: 'Azure',
-    tags: ["azure","devops","ai","ml","git"],
-    image: '/assets/images/devopsstarterazuredevops/svgexport-22.svg'
-  },
-  {
-    slug: 'devopsstartergithubactions',
-    title: 'DevOps Starter GitHub actions',
-    description: 'A comprehensive guide covering devops starter github actions',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["azure","devops","ai","git","github"],
-    image: '/assets/images/devopsstartergithubactions/svgexport-22.svg'
-  },
-  {
-    slug: 'docker',
-    title: 'Business Central (Part 27) PromptDialog',
-    description: 'A comprehensive guide covering business central (part 27) promptdialog',
-    date: '2025-09-20',
-    category: 'DevOps',
-    tags: ["cloud","docker","ai","business central","testing"],
-    image: '/assets/images/docker/docker-container-engine-logo.svg'
-  },
-  {
-    slug: 'dockerbuildx',
-    title: 'Docker Buildx',
-    description: 'A comprehensive guide covering docker buildx',
-    date: '2025-09-20',
-    category: 'DevOps',
-    tags: ["cloud","docker","ai","testing"],
-    image: '/assets/images/dockerbuildx/docker-container-engine-logo.svg'
-  },
-  {
-    slug: 'dotnet core part1',
-    title: '.NET Core (Part 1)',
-    description: 'A comprehensive guide covering .net core (part 1)',
-    date: '2025-09-20',
-    category: '.NET',
-    tags: ["react","javascript","dotnet","java","ai"],
-    image: '/assets/images/dotnet core part1/net-logo.svg'
-  },
-  {
-    slug: 'dotnet core part2 deleted',
-    title: '.NET Core (Part 2 deleted)',
-    description: 'A comprehensive guide covering .net core (part 2 deleted)',
-    date: '2025-09-20',
-    category: '.NET',
-    tags: ["dotnet","c#","ai","git","asp.net"],
-    image: '/assets/images/dotnet core part2 deleted/net-logo.svg'
+    tags: ["azure","docker","dotnet","sql","database"],
+    image: '/assets/images/net-logo.svg'
   },
   {
     slug: 'dotnet core part2',
     title: '.NET Core (Part 2)',
-    description: 'A comprehensive guide covering .net core (part 2)',
-    date: '2025-09-20',
+    description: 'A comprehensive guide covering dotnet core part2',
+    date: '2023-03-15',
     category: '.NET',
     tags: ["azure","dotnet","ai","ml","dynamics"],
-    image: '/assets/images/dotnet core part2/net-logo.svg'
+    image: '/assets/images/net-logo.svg'
   },
   {
-    slug: 'dotnet core part3',
-    title: '.NET Core (Part 3)',
-    description: 'A comprehensive guide covering .net core (part 3)',
-    date: '2025-09-20',
-    category: '.NET',
-    tags: ["azure","dotnet","ai","ml","dynamics"],
-    image: '/assets/images/dotnet core part3/net-logo.svg'
-  },
-  {
-    slug: 'dynamicssales1',
-    title: 'Dynamics 365 Sales (Part 1)',
-    description: 'A comprehensive guide covering dynamics 365 sales (part 1)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","ml","dynamics"],
-    image: '/assets/images/dynamicssales1/dynamics365-color.svg'
-  },
-  {
-    slug: 'dynamicssales2',
-    title: 'Dynamics 365 Sales (Part 2)',
-    description: 'A comprehensive guide covering dynamics 365 sales (part 2)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","ml","dynamics"],
-    image: '/assets/images/dynamicssales2/dynamics365-color.svg'
-  },
-  {
-    slug: 'dynamicssales3',
-    title: 'Dynamics 365 Sales (Part 3)',
-    description: 'A comprehensive guide covering dynamics 365 sales (part 3)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","ml","dynamics"],
-    image: '/assets/images/dynamicssales3/dynamics365-color.svg'
-  },
-  {
-    slug: 'dynamicssales4',
-    title: 'Dynamics 365 Sales (Part 4)',
-    description: 'A comprehensive guide covering dynamics 365 sales (part 4)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","dynamics"],
-    image: '/assets/images/dynamicssales4/dynamics365-color.svg'
-  },
-  {
-    slug: 'dynamicstrialsignup',
-    title: 'Dynamics Trial Signup',
-    description: 'A comprehensive guide covering dynamics trial signup',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","dynamics"],
-    image: '/assets/images/dynamicstrialsignup/dynamics365-color.svg'
-  },
-  {
-    slug: 'electron',
-    title: 'Electron',
-    description: 'A comprehensive guide covering electron',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["javascript","java","ai","ml","git"],
-    image: '/assets/images/electron/1200px-electron-software-framework-logo.svg-1200x1200.png'
-  },
-  {
-    slug: 'financialoperationspurchaseinvoice',
-    title: 'Financial Operations Purchase Invoice',
-    description: 'A comprehensive guide covering financial operations purchase invoice',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","business central","dynamics"],
-    image: '/assets/images/financialoperationspurchaseinvoice/dynamics365-color.svg'
-  },
-  {
-    slug: 'finetuning',
-    title: 'Fine Tuning',
-    description: 'A comprehensive guide covering fine tuning',
-    date: '2025-09-20',
+    slug: 'xcode3',
+    title: 'XCode C++ (Part 3)',
+    description: 'OpenGL GLEW',
+    date: '2023-03-08',
     category: 'Development',
     tags: ["ai"],
-    image: '/assets/images/finetuning/meta-platforms-inc.-logo.svg'
+    image: '/assets/images/xcode-14-icon-300x314.png'
   },
   {
-    slug: 'firebase',
-    title: 'Firebase',
-    description: 'A comprehensive guide covering firebase',
-    date: '2025-09-20',
+    slug: 'xcode2',
+    title: 'XCode C++ (Part 2)',
+    description: 'OpenGL GLEW',
+    date: '2023-03-08',
     category: 'Development',
-    tags: ["cloud","database","ai","git","github"],
-    image: '/assets/images/firebase/logo-lockup-firebase-vertical.svg'
+    tags: ["ai"],
+    image: '/assets/images/xcode-14-icon-300x314.png'
   },
   {
-    slug: 'generalledger',
-    title: 'General Ledger',
-    description: 'A comprehensive guide covering general ledger',
-    date: '2025-09-20',
+    slug: 'xcode1',
+    title: 'XCode C++ (Part 1)',
+    description: 'OpenGL GLFW',
+    date: '2023-03-08',
     category: 'Development',
-    tags: ["ai","business central","dynamics"],
-    image: '/assets/images/generalledger/dynamics365-color.svg'
+    tags: ["ai"],
+    image: '/assets/images/xcode-14-icon-300x314.png'
   },
   {
-    slug: 'generalpostingsetup',
-    title: 'General Posting Setup',
-    description: 'A comprehensive guide covering general posting setup',
-    date: '2025-09-20',
+    slug: 'threejs',
+    title: 'Three.js',
+    description: 'Hello, World!',
+    date: '2023-03-05',
     category: 'Development',
-    tags: ["ai","dynamics"],
-    image: '/assets/images/generalpostingsetup/dynamics365-color.svg'
+    tags: ["javascript","java","ai"],
+    image: '/assets/images/three.js-icon.svg'
   },
   {
-    slug: 'gingerbreadhouse',
-    title: 'Gingerbread House',
-    description: 'A comprehensive guide covering gingerbread house',
-    date: '2025-09-20',
+    slug: 'ngrxEntity',
+    title: 'NGRX entity',
+    description: 'Managing record collections',
+    date: '2023-02-18',
     category: 'Development',
-    tags: ["python","ai"],
-    image: '/assets/images/gingerbreadhouse/raspberry-pi-logo.svg'
+    tags: ["blog"],
+    image: '/assets/images/ngrx.svg'
   },
   {
-    slug: 'google08ffec2589f7c95c',
-    title: 'google08ffec2589f7c95c',
-    description: 'A comprehensive guide covering google08ffec2589f7c95c',
-    date: '2025-09-20',
+    slug: 'ngrxdevtools',
+    title: 'NGRX devtools',
+    description: 'Troubleshooting NGRX applications',
+    date: '2023-01-25',
     category: 'Development',
-    tags: [],
-    image: '/assets/images/google08ffec2589f7c95c/hero.png'
+    tags: ["angular","git","github"],
+    image: '/assets/images/ngrx.svg'
   },
   {
-    slug: 'google111fd44366657b80',
-    title: 'google111fd44366657b80',
-    description: 'A comprehensive guide covering google111fd44366657b80',
-    date: '2025-09-20',
+    slug: 'sharepoint2019',
+    title: 'SharePoint 2019 Trial',
+    description: 'SharePoint hosted in Azure',
+    date: '2022-12-31',
     category: 'Development',
-    tags: [],
-    image: '/assets/images/google111fd44366657b80/hero.png'
+    tags: ["azure","sql","database","ai"],
+    image: '/assets/images/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png'
   },
   {
-    slug: 'graphql',
-    title: 'GraphQL',
-    description: 'A comprehensive guide covering graphql',
-    date: '2025-09-20',
+    slug: 'ngrx',
+    title: 'NGRX',
+    description: 'A framework for building reactive applications in Angular',
+    date: '2022-11-27',
     category: 'Development',
-    tags: ["react","ai","ml"],
-    image: '/assets/images/graphql/graphql-logo.svg-1200x1200.png'
+    tags: ["angular","react","typescript","ai","ml"],
+    image: '/assets/images/ngrx.svg'
   },
   {
-    slug: 'hands-on-lab2.1',
-    title: 'Hands-on-Lab 2.1',
-    description: 'A comprehensive guide covering hands-on-lab 2.1',
-    date: '2025-09-20',
+    slug: 'componentFramework',
+    title: 'Power Apps (Part 7)',
+    description: 'Power Apps Component Framework',
+    date: '2022-08-14',
     category: 'Development',
-    tags: ["database","ai","business central","dynamics"],
-    image: '/assets/images/hands-on-lab2.1/dynamics365-color.svg'
+    tags: ["blog"],
+    image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'hands-on-lab2.2',
-    title: 'Hands-on-Lab 2.2',
-    description: 'A comprehensive guide covering hands-on-lab 2.2',
-    date: '2025-09-20',
+    slug: 'azureStorage',
+    title: 'Azure Storage',
+    description: 'Microsoft\'s cloud storage solution',
+    date: '2022-08-13',
     category: 'Development',
-    tags: ["ai","dynamics"],
-    image: '/assets/images/hands-on-lab2.2/dynamics365-color.svg'
+    tags: ["blog"],
+    image: '/assets/images/azurex70x75.svg'
   },
   {
-    slug: 'hands-on-lab2.3',
-    title: 'Hands-on-Lab 2.3',
-    description: 'A comprehensive guide covering hands-on-lab 2.3',
-    date: '2025-09-20',
+    slug: 'purview',
+    title: 'Microsoft Purview',
+    description: 'Manage compliance across Microsoft 365',
+    date: '2022-08-03',
     category: 'Development',
-    tags: ["ai","dynamics"],
-    image: '/assets/images/hands-on-lab2.3/dynamics365-color.svg'
+    tags: ["ai"],
+    image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'hands-on-lab3.1',
-    title: 'Hands-on-Lab 3.1',
-    description: 'A comprehensive guide covering hands-on-lab 3.1',
-    date: '2025-09-20',
+    slug: 'powerApps6',
+    title: 'Power Apps (Part 6)',
+    description: 'A Custom Connector for Microsoft Graph',
+    date: '2022-07-04',
     category: 'Development',
-    tags: ["ai","business central","dynamics","git"],
-    image: '/assets/images/hands-on-lab3.1/dynamics365-color.svg'
+    tags: ["blog"],
+    image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'hubspotquotetemplate',
-    title: 'HubSpot Quote Template',
-    description: 'A comprehensive guide covering hubspot quote template',
-    date: '2025-09-20',
+    slug: 'machinelearning9',
+    title: 'Machine Learning (Part 9)',
+    description: 'The MNIST database',
+    date: '2022-06-17',
+    category: 'AI/ML',
+    tags: ["database","ai","machine learning","git"],
+    image: '/assets/images/tensorflow-logo.svg'
+  },
+  {
+    slug: 'machinelearning8',
+    title: 'Machine Learning (Part 8)',
+    description: 'Baseball Signs',
+    date: '2022-06-12',
+    category: 'AI/ML',
+    tags: ["ai","ml","machine learning","git","github"],
+    image: '/assets/images/tensorflow-logo.svg'
+  },
+  {
+    slug: 'machinelearning7',
+    title: 'Machine Learning (Part 7)',
+    description: 'AutoML Machine Learning Models',
+    date: '2022-06-11',
+    category: 'AI/ML',
+    tags: ["cloud","ai","ml","machine learning"],
+    image: '/assets/images/tensorflow-logo.svg'
+  },
+  {
+    slug: 'machinelearning6',
+    title: 'Machine Learning (Part 6)',
+    description: 'Binary classification',
+    date: '2022-06-11',
+    category: 'AI/ML',
+    tags: ["ai","machine learning","testing"],
+    image: '/assets/images/tensorflow-logo.svg'
+  },
+  {
+    slug: 'machinelearning5',
+    title: 'Machine Learning (Part 5)',
+    description: 'Linear Regression',
+    date: '2022-06-11',
+    category: 'AI/ML',
+    tags: ["ai","machine learning","git","github"],
+    image: '/assets/images/tensorflow-logo.svg'
+  },
+  {
+    slug: 'machinelearning4',
+    title: 'Machine Learning (Part 4)',
+    description: 'Notebooks',
+    date: '2022-06-08',
+    category: 'AI/ML',
+    tags: ["python","ai","ml","machine learning","git"],
+    image: '/assets/images/tensorflow-logo.svg'
+  },
+  {
+    slug: 'machinelearning3',
+    title: 'Machine Learning (Part 3)',
+    description: 'Notebooks',
+    date: '2022-06-05',
+    category: 'AI/ML',
+    tags: ["ai","ml","machine learning"],
+    image: '/assets/images/tensorflow-logo.svg'
+  },
+  {
+    slug: 'machineLearning2',
+    title: 'Machine Learning (Part 2)',
+    description: 'Low hanging fruit',
+    date: '2022-06-05',
     category: 'Development',
-    tags: [],
-    image: '/assets/images/hubspotquotetemplate/guidelines-the-sprocket.svg'
+    tags: ["blog"],
+    image: '/assets/images/tensorflow-logo.svg'
   },
   {
-    slug: 'internetofthings1',
-    title: 'Internet of Things (Part 1)',
-    description: 'A comprehensive guide covering internet of things (part 1)',
-    date: '2025-09-20',
+    slug: 'machineLearning1',
+    title: 'Machine Learning (Part 1)',
+    description: 'Science fair',
+    date: '2022-06-05',
     category: 'Development',
-    tags: ["docker","ai","git","github"],
-    image: '/assets/images/internetofthings1/iot-microchip.svg'
+    tags: ["blog"],
+    image: '/assets/images/tensorflow-logo.svg'
   },
   {
-    slug: 'internetofthings2',
-    title: 'Internet of Things (Part 2)',
-    description: 'A comprehensive guide covering internet of things (part 2)',
-    date: '2025-09-20',
+    slug: 'ATeamsTabSharePointWebPartforOneDrive',
+    title: 'A Teams App SharePoint Web Part for One Drive',
+    description: 'Using SPFx and the Graph Toolkit',
+    date: '2022-05-29',
     category: 'Development',
-    tags: ["docker"],
-    image: '/assets/images/internetofthings2/iot-microchip.svg'
+    tags: ["blog"],
+    image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'internetofthings3',
-    title: 'Internet of Things (Part 3)',
-    description: 'A comprehensive guide covering internet of things (part 3)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","ml","machine learning","testing"],
-    image: '/assets/images/internetofthings3/iot-microchip.svg'
-  },
-  {
-    slug: 'ionic',
-    title: 'Ionic',
-    description: 'A comprehensive guide covering ionic',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["react","javascript","typescript","azure","aws"],
-    image: '/assets/images/ionic/ionic-logo-landscape.svg'
-  },
-  {
-    slug: 'javascriptgraph',
+    slug: 'JavaScriptGraph',
     title: 'JavaScript and Microsoft Graph',
-    description: 'A comprehensive guide covering javascript and microsoft graph',
-    date: '2025-09-20',
-    category: 'Java',
-    tags: ["javascript","azure","java","ai","ml"],
-    image: '/assets/images/javascriptgraph/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'kubernetes',
-    title: 'Kubernetes',
-    description: 'A comprehensive guide covering kubernetes',
-    date: '2025-09-20',
-    category: 'DevOps',
-    tags: ["docker","kubernetes","ai","ml"],
-    image: '/assets/images/kubernetes/kubernetes-container-engine.svg'
-  },
-  {
-    slug: 'langchain',
-    title: 'LangChain (RAG)',
-    description: 'A comprehensive guide covering langchain (rag)',
-    date: '2025-09-20',
-    category: 'AI/ML',
-    tags: ["python","ai","ml","machine learning"],
-    image: '/assets/images/langchain/chatgpt-logo.svg'
-  },
-  {
-    slug: 'langchainagents',
-    title: 'LangChain Agents',
-    description: 'A comprehensive guide covering langchain agents',
-    date: '2025-09-20',
-    category: 'AI/ML',
-    tags: ["python","ai"],
-    image: '/assets/images/langchainagents/langchain.svg'
-  },
-  {
-    slug: 'langflow1',
-    title: 'Langflow (Part 1)',
-    description: 'A comprehensive guide covering langflow (part 1)',
-    date: '2025-09-20',
+    description: 'A Node App that accesses Microsoft 365',
+    date: '2022-05-28',
     category: 'Development',
-    tags: ["python","ai"],
-    image: '/assets/images/langflow1/85702467-200x200.png'
+    tags: ["blog"],
+    image: '/assets/images/office-365-icon-500x500.png'
+  },
+  {
+    slug: 'MicrosoftGraph',
+    title: 'Microsoft Graph',
+    description: 'Explore Microsoft 365',
+    date: '2022-05-26',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/office-365-icon-500x500.png'
+  },
+  {
+    slug: 'PowerAutomate',
+    title: 'Power Automate',
+    description: 'Automate tasks in Microsoft 365',
+    date: '2022-05-04',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/office-365-icon-500x500.png'
+  },
+  {
+    slug: 'WebXR',
+    title: 'WebXR',
+    description: 'Create Augmented Reality Experiences',
+    date: '2022-04-22',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/34385910-400x400.png'
   },
   {
     slug: 'leaflet',
     title: 'Leaflet',
     description: 'A comprehensive guide covering leaflet',
-    date: '2025-09-20',
+    date: '2022-02-21',
     category: 'Development',
     tags: ["javascript","azure","java","ai","ml"],
-    image: '/assets/images/leaflet/leaflet-logo-600x159.png'
+    image: '/assets/images/leaflet-upic-200x200.png'
   },
   {
-    slug: 'llamacorp',
-    title: 'LlamaCpp',
-    description: 'A comprehensive guide covering llamacpp',
-    date: '2025-09-20',
+    slug: 'webcomponents',
+    title: 'Web Components',
+    description: 'A comprehensive guide covering webcomponents',
+    date: '2022-02-10',
     category: 'Development',
-    tags: ["python","ai","ml"],
-    image: '/assets/images/llamacorp/jupyter.svg'
-  },
-  {
-    slug: 'lmstudio',
-    title: 'LM Studio',
-    description: 'A comprehensive guide covering lm studio',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai"],
-    image: '/assets/images/lmstudio/meta-platforms-inc.-logo.svg'
-  },
-  {
-    slug: 'm365commandlineinterface',
-    title: 'Microsoft 365 command line interface',
-    description: 'A comprehensive guide covering microsoft 365 command line interface',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["docker","ai","ml","git","github"],
-    image: '/assets/images/m365commandlineinterface/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'macbook',
-    title: 'Apple MacBook Air with M2 chip',
-    description: 'A comprehensive guide covering apple macbook air with m2 chip',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["python","ai"],
-    image: '/assets/images/macbook/apple-logo-black.svg'
-  },
-  {
-    slug: 'machinelearning',
-    title: 'Machine Learning',
-    description: 'A comprehensive guide covering machine learning',
-    date: '2025-09-20',
-    category: 'AI/ML',
-    tags: ["sql","ai","machine learning"],
-    image: '/assets/images/machinelearning/tensorflow-logo.svg'
-  },
-  {
-    slug: 'machinelearning1',
-    title: 'Machine Learning (Part 1)',
-    description: 'A comprehensive guide covering machine learning (part 1)',
-    date: '2025-09-20',
-    category: 'AI/ML',
-    tags: ["cloud","ai","ml","machine learning"],
-    image: '/assets/images/machinelearning1/tensorflow-logo.svg'
-  },
-  {
-    slug: 'machinelearning2',
-    title: 'Machine Learning (Part 2)',
-    description: 'A comprehensive guide covering machine learning (part 2)',
-    date: '2025-09-20',
-    category: 'AI/ML',
-    tags: ["javascript","java","python","sql","ai"],
-    image: '/assets/images/machinelearning2/tensorflow-logo.svg'
-  },
-  {
-    slug: 'machinelearning3',
-    title: 'Machine Learning (Part 3)',
-    description: 'A comprehensive guide covering machine learning (part 3)',
-    date: '2025-09-20',
-    category: 'AI/ML',
-    tags: ["ai","ml","machine learning"],
-    image: '/assets/images/machinelearning3/tensorflow-logo.svg'
-  },
-  {
-    slug: 'machinelearning4',
-    title: 'Machine Learning (Part 4)',
-    description: 'A comprehensive guide covering machine learning (part 4)',
-    date: '2025-09-20',
-    category: 'AI/ML',
-    tags: ["python","ai","ml","machine learning","git"],
-    image: '/assets/images/machinelearning4/tensorflow-logo.svg'
-  },
-  {
-    slug: 'machinelearning5',
-    title: 'Machine Learning (Part 5)',
-    description: 'A comprehensive guide covering machine learning (part 5)',
-    date: '2025-09-20',
-    category: 'AI/ML',
-    tags: ["ai","machine learning","git","github"],
-    image: '/assets/images/machinelearning5/tensorflow-logo.svg'
-  },
-  {
-    slug: 'machinelearning6',
-    title: 'Machine Learning (Part 6)',
-    description: 'A comprehensive guide covering machine learning (part 6)',
-    date: '2025-09-20',
-    category: 'AI/ML',
-    tags: ["ai","machine learning","testing"],
-    image: '/assets/images/machinelearning6/tensorflow-logo.svg'
-  },
-  {
-    slug: 'machinelearning7',
-    title: 'Machine Learning (Part 7)',
-    description: 'A comprehensive guide covering machine learning (part 7)',
-    date: '2025-09-20',
-    category: 'AI/ML',
-    tags: ["cloud","ai","ml","machine learning"],
-    image: '/assets/images/machinelearning7/tensorflow-logo.svg'
-  },
-  {
-    slug: 'machinelearning8',
-    title: 'Machine Learning (Part 8)',
-    description: 'A comprehensive guide covering machine learning (part 8)',
-    date: '2025-09-20',
-    category: 'AI/ML',
-    tags: ["ai","ml","machine learning","git","github"],
-    image: '/assets/images/machinelearning8/tensorflow-logo.svg'
-  },
-  {
-    slug: 'machinelearning9',
-    title: 'Machine Learning (Part 9)',
-    description: 'A comprehensive guide covering machine learning (part 9)',
-    date: '2025-09-20',
-    category: 'AI/ML',
-    tags: ["database","ai","machine learning","git"],
-    image: '/assets/images/machinelearning9/tensorflow-logo.svg'
-  },
-  {
-    slug: 'machinelearningwip',
-    title: 'Machine Learning (WIP)',
-    description: 'A comprehensive guide covering machine learning (wip)',
-    date: '2025-09-20',
-    category: 'AI/ML',
-    tags: ["ai","ml","machine learning","git","github"],
-    image: '/assets/images/machinelearningwip/tensorflow-logo.svg'
-  },
-  {
-    slug: 'macscreensharing',
-    title: 'Mac Screen Sharing',
-    description: 'A comprehensive guide covering mac screen sharing',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai"],
-    image: '/assets/images/macscreensharing/apple-logo-black.svg'
-  },
-  {
-    slug: 'mapextension',
-    title: 'Map Extension',
-    description: 'A comprehensive guide covering map extension',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["javascript","cloud","java","ai","business central"],
-    image: '/assets/images/mapextension/dynamics365-color.svg'
-  },
-  {
-    slug: 'mcpserver',
-    title: 'Model Context Protocol (Part 1)',
-    description: 'A comprehensive guide covering model context protocol (part 1)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["typescript","ai"],
-    image: '/assets/images/mcpserver/mcp-1024x1024.png'
-  },
-  {
-    slug: 'mcpserver2',
-    title: 'Model Context Protocol (Part 2)',
-    description: 'A comprehensive guide covering model context protocol (part 2)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["azure","docker","ai","business central","git"],
-    image: '/assets/images/mcpserver2/mcp-1024x1024.png'
-  },
-  {
-    slug: 'microsoftdynamics365appforoutlook',
-    title: 'Microsoft Dynamics 365 App for Outlook',
-    description: 'A comprehensive guide covering microsoft dynamics 365 app for outlook',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","dynamics","power platform"],
-    image: '/assets/images/microsoftdynamics365appforoutlook/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'microsoftgraph',
-    title: 'Microsoft Graph',
-    description: 'A comprehensive guide covering microsoft graph',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["javascript","azure","java","ai","dynamics"],
-    image: '/assets/images/microsoftgraph/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'modeldriven1',
-    title: 'Model Driven Apps (Part 1)',
-    description: 'A comprehensive guide covering model driven apps (part 1)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["sql","database","ai","power platform","testing"],
-    image: '/assets/images/modeldriven1/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'modeldriven2',
-    title: 'Model Driven Apps (Part 2)',
-    description: 'A comprehensive guide covering model driven apps (part 2)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","dynamics","power platform","git"],
-    image: '/assets/images/modeldriven2/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'modeldriven3',
-    title: 'Model Driven Apps (Part 3)',
-    description: 'A comprehensive guide covering model driven apps (part 3)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["javascript","java","ml","dynamics"],
-    image: '/assets/images/modeldriven3/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'modeldriven4',
-    title: 'Model Driven Apps (Part 4)',
-    description: 'A comprehensive guide covering model driven apps (part 4)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["javascript","java","ai","power platform"],
-    image: '/assets/images/modeldriven4/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'modeldrivenapps',
-    title: 'Model Driven Apps',
-    description: 'A comprehensive guide covering model driven apps',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["cloud","dotnet","ai","ml","dynamics"],
-    image: '/assets/images/modeldrivenapps/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'modeldrivenpurchaseorderlines',
-    title: 'Model Driven Purchase Order Lines',
-    description: 'A comprehensive guide covering model driven purchase order lines',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","business central","power platform"],
-    image: '/assets/images/modeldrivenpurchaseorderlines/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'modeldrivenpurchaseorders',
-    title: 'Model Driven Purchase Orders',
-    description: 'A comprehensive guide covering model driven purchase orders',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","business central","dynamics","power platform"],
-    image: '/assets/images/modeldrivenpurchaseorders/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'mssqlserver',
-    title: 'Microsoft SQL Server (Part 1)',
-    description: 'A comprehensive guide covering microsoft sql server (part 1)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["javascript","azure","docker","dotnet","c#"],
-    image: '/assets/images/mssqlserver/ads.svg'
-  },
-  {
-    slug: 'mssqlserver2',
-    title: 'Microsoft SQL Server (Part 2)',
-    description: 'A comprehensive guide covering microsoft sql server (part 2)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["javascript","dotnet","c#","java","sql"],
-    image: '/assets/images/mssqlserver2/ads.svg'
-  },
-  {
-    slug: 'mssqlserver3',
-    title: 'Microsoft SQL Server (Part 3)',
-    description: 'A comprehensive guide covering microsoft sql server (part 3)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["react","javascript","typescript","azure","java"],
-    image: '/assets/images/mssqlserver3/ads.svg'
-  },
-  {
-    slug: 'multiplayer',
-    title: 'Multiplayer Game',
-    description: 'A comprehensive guide covering multiplayer game',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["javascript","java","database","ai","ml"],
-    image: '/assets/images/multiplayer/logo-lockup-firebase-vertical.svg'
-  },
-  {
-    slug: 'mysql',
-    title: 'MySQL',
-    description: 'A comprehensive guide covering mysql',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["javascript","aws","java","mysql","sql"],
-    image: '/assets/images/mysql/includes-mysql-5646x2872.png'
-  },
-  {
-    slug: 'nextjs1',
-    title: 'Next.js (Part 1)',
-    description: 'A comprehensive guide covering next.js (part 1)',
-    date: '2025-09-20',
-    category: 'Web Development',
-    tags: ["react","javascript","aws","java","git"],
-    image: '/assets/images/nextjs1/2560px-nextjs-logo.svg-1536x920.png'
-  },
-  {
-    slug: 'nextjs2',
-    title: 'Next.js (Part 2)',
-    description: 'A comprehensive guide covering next.js (part 2)',
-    date: '2025-09-20',
-    category: 'Web Development',
-    tags: ["javascript","aws","java","ai","ml"],
-    image: '/assets/images/nextjs2/2560px-nextjs-logo.svg-1536x920.png'
-  },
-  {
-    slug: 'nextjs3',
-    title: 'Next.js (Part 3)',
-    description: 'A comprehensive guide covering next.js (part 3)',
-    date: '2025-09-20',
-    category: 'Web Development',
-    tags: ["aws","database","ai","git","github"],
-    image: '/assets/images/nextjs3/2560px-nextjs-logo.svg-1536x920.png'
-  },
-  {
-    slug: 'nextjs4',
-    title: 'Next.js (Part 4)',
-    description: 'A comprehensive guide covering next.js (part 4)',
-    date: '2025-09-20',
-    category: 'Web Development',
-    tags: ["azure","aws","git","github"],
-    image: '/assets/images/nextjs4/2560px-nextjs-logo.svg-1536x920.png'
-  },
-  {
-    slug: 'nextjs5',
-    title: 'Next.js (Part 5)',
-    description: 'A comprehensive guide covering next.js (part 5)',
-    date: '2025-09-20',
-    category: 'Web Development',
-    tags: ["typescript","azure","aws","ai","ml"],
-    image: '/assets/images/nextjs5/2560px-nextjs-logo.svg-1536x920.png'
-  },
-  {
-    slug: 'ngrx',
-    title: 'NGRX',
-    description: 'A comprehensive guide covering ngrx',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["angular","react","typescript","ai","ml"],
-    image: '/assets/images/ngrx/ngrx.svg'
-  },
-  {
-    slug: 'ngrxdevtools',
-    title: 'NGRX devtools',
-    description: 'A comprehensive guide covering ngrx devtools',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["angular","git","github"],
-    image: '/assets/images/ngrxdevtools/ngrx.svg'
-  },
-  {
-    slug: 'ngrxentity',
-    title: 'NGRX entity',
-    description: 'A comprehensive guide covering ngrx entity',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","git","github","testing"],
-    image: '/assets/images/ngrxentity/ngrx.svg'
-  },
-  {
-    slug: 'notes',
-    title: 'Notes',
-    description: 'A comprehensive guide covering notes',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ml"],
-    image: '/assets/images/notes/hero.png'
-  },
-  {
-    slug: 'npm',
-    title: 'npm JavaScript',
-    description: 'A comprehensive guide covering npm javascript',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["javascript","java","ai","git","github"],
-    image: '/assets/images/npm/6078720-200x200.png'
-  },
-  {
-    slug: 'npmcc',
-    title: 'npm C++',
-    description: 'A comprehensive guide covering npm c++',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","git","github","testing"],
-    image: '/assets/images/npmcc/6078720-200x200.png'
-  },
-  {
-    slug: 'nuget',
-    title: 'NuGet C#',
-    description: 'A comprehensive guide covering nuget c#',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["dotnet","c#","ai","git","github"],
-    image: '/assets/images/nuget/logo-og-600x600.png'
-  },
-  {
-    slug: 'ollamadeepsekr1applemacbookinstall',
-    title: 'DeepSeek R1',
-    description: 'A comprehensive guide covering deepseek r1',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","testing"],
-    image: '/assets/images/ollamadeepsekr1applemacbookinstall/254932576-0d0b44e2-8f4a-4e99-9b52-a5c1c741c8f7-844x844.png'
-  },
-  {
-    slug: 'opencv',
-    title: 'Object Detection',
-    description: 'A comprehensive guide covering object detection',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["python","git","github"],
-    image: '/assets/images/opencv/raspberry-pi-logo.svg'
-  },
-  {
-    slug: 'page134',
-    title: 'Dynamics 365 Sales (Part 1)',
-    description: 'A comprehensive guide covering dynamics 365 sales (part 1)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","business central","dynamics"],
-    image: '/assets/images/page134/dynamics365-color.svg'
-  },
-  {
-    slug: 'page141',
-    title: 'Java Spring Boot (Spare)',
-    description: 'A comprehensive guide covering java spring boot (spare)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["azure","docker","java","spring","postgresql"],
-    image: '/assets/images/page141/spring-framework-logo-2018.svg'
-  },
-  {
-    slug: 'page152',
-    title: 'Vendor Posting Group COPY',
-    description: 'A comprehensive guide covering vendor posting group copy',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","business central","dynamics"],
-    image: '/assets/images/page152/dynamics365-color.svg'
-  },
-  {
-    slug: 'page199',
-    title: 'Power Pages (Part 1) BACKUP',
-    description: 'A comprehensive guide covering power pages (part 1) backup',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","business central","dynamics","power platform"],
-    image: '/assets/images/page199/powerpages-scalable.svg'
-  },
-  {
-    slug: 'page200',
-    title: 'Power Page (Part 2) Backup',
-    description: 'A comprehensive guide covering power page (part 2) backup',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["javascript","java","ai","ml","business central"],
-    image: '/assets/images/page200/powerpages-scalable.svg'
-  },
-  {
-    slug: 'page50',
-    title: 'Next.js (Part 4)',
-    description: 'A comprehensive guide covering next.js (part 4)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["aws"],
-    image: '/assets/images/page50/2560px-nextjs-logo.svg-1536x920.png'
-  },
-  {
-    slug: 'page55',
-    title: 'Page 55',
-    description: 'A comprehensive guide covering page 55',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: [],
-    image: '/assets/images/page55/hero.png'
-  },
-  {
-    slug: 'page65',
-    title: 'Machine Learning (Part 4a)',
-    description: 'A comprehensive guide covering machine learning (part 4a)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["python","ai","ml","machine learning","git"],
-    image: '/assets/images/page65/tensorflow-logo.svg'
-  },
-  {
-    slug: 'page68',
-    title: 'Machine Learning (Part 7)',
-    description: 'A comprehensive guide covering machine learning (part 7)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","machine learning"],
-    image: '/assets/images/page68/tensorflow-logo.svg'
-  },
-  {
-    slug: 'page75',
-    title: 'Page 75',
-    description: 'A comprehensive guide covering page 75',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: [],
-    image: '/assets/images/page75/hero.png'
-  },
-  {
-    slug: 'page86',
-    title: 'ASP.NET 5 Visual Basic',
-    description: 'A comprehensive guide covering asp.net 5 visual basic',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["azure","docker","dotnet","sql","database"],
-    image: '/assets/images/page86/net-logo.svg'
+    tags: ["angular","react","vue","javascript","java"],
+    image: '/assets/images/web-components-logo.svg'
   },
   {
     slug: 'phaser',
     title: 'Phaser',
     description: 'A comprehensive guide covering phaser',
-    date: '2025-09-20',
+    date: '2022-01-23',
     category: 'Development',
     tags: ["ai","ml","git","github"],
-    image: '/assets/images/phaser/phaser-logo-1836x1530.png'
+    image: '/assets/images/phaser-logo-1836x1530.png'
   },
   {
-    slug: 'phpsetup',
-    title: 'PHP Setup',
-    description: 'A comprehensive guide covering php setup',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ml"],
-    image: '/assets/images/phpsetup/php-logo.svg'
-  },
-  {
-    slug: 'pi1',
-    title: 'Raspberry Pi Imager',
-    description: 'A comprehensive guide covering raspberry pi imager',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: [],
-    image: '/assets/images/pi1/raspberry-pi-logo.svg'
-  },
-  {
-    slug: 'pi2',
-    title: 'Raspberry Pi GPIO',
-    description: 'A comprehensive guide covering raspberry pi gpio',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["python","ai"],
-    image: '/assets/images/pi2/raspberry-pi-logo.svg'
-  },
-  {
-    slug: 'pluginactions',
-    title: 'Plugin Actions',
-    description: 'A comprehensive guide covering plugin actions',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai"],
-    image: '/assets/images/pluginactions/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'postinggroups',
-    title: 'Posting Groups',
-    description: 'A comprehensive guide covering posting groups',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","business central","dynamics"],
-    image: '/assets/images/postinggroups/dynamics365-color.svg'
-  },
-  {
-    slug: 'posts',
-    title: 'Posts',
-    description: 'A comprehensive guide covering posts',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: [],
-    image: '/assets/images/posts/hero.png'
-  },
-  {
-    slug: 'powerapps23',
-    title: 'Power Apps (Part 23)',
-    description: 'A comprehensive guide covering power apps (part 23)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["sql","business central"],
-    image: '/assets/images/powerapps23/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'powerapps23configurationmigrationtool',
-    title: 'Power Apps (Part 23)',
-    description: 'A comprehensive guide covering power apps (part 23)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","ml","power platform"],
-    image: '/assets/images/powerapps23configurationmigrationtool/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'powerapps6',
-    title: 'A Custom Connector for Microsoft Graph',
-    description: 'A comprehensive guide covering a custom connector for microsoft graph',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["azure","ai"],
-    image: '/assets/images/powerapps6/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'powerappsapplication',
-    title: 'A Power Apps Application',
-    description: 'A comprehensive guide covering a power apps application',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["database","ai"],
-    image: '/assets/images/powerappsapplication/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'powerappswithrest',
-    title: 'A Power Apps Custom Connector',
-    description: 'A comprehensive guide covering a power apps custom connector',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["azure","dotnet","git","github","asp.net"],
-    image: '/assets/images/powerappswithrest/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'powerappsxx',
-    title: 'Power Apps (Part XX)',
-    description: 'A comprehensive guide covering power apps (part xx)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["sql","business central"],
-    image: '/assets/images/powerappsxx/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'powerautomate',
-    title: 'Power Automate',
-    description: 'A comprehensive guide covering power automate',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: [],
-    image: '/assets/images/powerautomate/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'powerautomatereports',
-    title: 'Microsoft Power Automate Reports',
-    description: 'A comprehensive guide covering microsoft power automate reports',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["cloud","ai","dynamics"],
-    image: '/assets/images/powerautomatereports/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'powerpages1',
-    title: 'Power Pages (Part 1)',
-    description: 'A comprehensive guide covering power pages (part 1)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","business central","dynamics","power platform"],
-    image: '/assets/images/powerpages1/powerpages-scalable.svg'
-  },
-  {
-    slug: 'powerpages2',
-    title: 'Power Pages (Part 2)',
-    description: 'A comprehensive guide covering power pages (part 2)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","business central"],
-    image: '/assets/images/powerpages2/powerpages-scalable.svg'
-  },
-  {
-    slug: 'powerpages3',
-    title: 'Power Pages (Part 3)',
-    description: 'A comprehensive guide covering power pages (part 3)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","business central"],
-    image: '/assets/images/powerpages3/powerpages-scalable.svg'
-  },
-  {
-    slug: 'promptdialog',
-    title: 'Business Central (Part 27) PromptDialog',
-    description: 'A comprehensive guide covering business central (part 27) promptdialog',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["cloud","ai","business central","dynamics"],
-    image: '/assets/images/promptdialog/dynamics365-color.svg'
-  },
-  {
-    slug: 'promptdialog2',
-    title: 'Business Central (Part 28) PrompDialog 2',
-    description: 'A comprehensive guide covering business central (part 28) prompdialog 2',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["azure","cloud","ai","business central","dynamics"],
-    image: '/assets/images/promptdialog2/dynamics365-color.svg'
-  },
-  {
-    slug: 'promptdialog3',
-    title: 'Business Central (Part 29) PromptDialog 3',
-    description: 'A comprehensive guide covering business central (part 29) promptdialog 3',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["javascript","java","ai","ml","business central"],
-    image: '/assets/images/promptdialog3/dynamics365-color.svg'
-  },
-  {
-    slug: 'promptengineering',
-    title: 'Prompt Engineering',
-    description: 'A comprehensive guide covering prompt engineering',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai"],
-    image: '/assets/images/promptengineering/meta-platforms-inc.-logo.svg'
-  },
-  {
-    slug: 'promptflow1',
-    title: 'Prompt Flow (Part 1)',
-    description: 'A comprehensive guide covering prompt flow (part 1)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["azure","docker","kubernetes","devops","python"],
-    image: '/assets/images/promptflow1/logo.svg'
-  },
-  {
-    slug: 'promptflow2',
-    title: 'Prompt Flow (Part 2)',
-    description: 'A comprehensive guide covering prompt flow (part 2)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["docker","ai"],
-    image: '/assets/images/promptflow2/logo.svg'
-  },
-  {
-    slug: 'promptflow3',
-    title: 'Prompt Flow (Part 3)',
-    description: 'A comprehensive guide covering prompt flow (part 3)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["python","ai","git","github"],
-    image: '/assets/images/promptflow3/logo.svg'
-  },
-  {
-    slug: 'promptflow4',
-    title: 'Prompt Flow (Part 4)',
-    description: 'A comprehensive guide covering prompt flow (part 4)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai"],
-    image: '/assets/images/promptflow4/logo.svg'
-  },
-  {
-    slug: 'promptflow5',
-    title: 'Prompt Flow (Part 5)',
-    description: 'A comprehensive guide covering prompt flow (part 5)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["docker","python","ai"],
-    image: '/assets/images/promptflow5/logo.svg'
-  },
-  {
-    slug: 'promptflow6',
-    title: 'Prompt Flow (Part 6)',
-    description: 'A comprehensive guide covering prompt flow (part 6)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["python","ai"],
-    image: '/assets/images/promptflow6/logo.svg'
-  },
-  {
-    slug: 'purchaseinvoice',
-    title: 'Purchase Invoice',
-    description: 'A comprehensive guide covering purchase invoice',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","dynamics"],
-    image: '/assets/images/purchaseinvoice/dynamics365-color.svg'
-  },
-  {
-    slug: 'purview',
-    title: 'Microsoft Purview',
-    description: 'A comprehensive guide covering microsoft purview',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai"],
-    image: '/assets/images/purview/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'pwa',
-    title: 'Progressive Web Application',
-    description: 'A comprehensive guide covering progressive web application',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["javascript","azure","java","ai","ml"],
-    image: '/assets/images/pwa/progressive-web-apps-logo.svg'
-  },
-  {
-    slug: 'reactandasp.net',
-    title: 'React and ASP.NET Core',
-    description: 'A comprehensive guide covering react and asp.net core',
-    date: '2025-09-20',
-    category: '.NET',
-    tags: ["angular","react","dotnet","sql","database"],
-    image: '/assets/images/reactandasp.net/logo512-512x512.png'
-  },
-  {
-    slug: 'reactusestateuseeffect',
-    title: 'React useState and useEffect',
-    description: 'A comprehensive guide covering react usestate and useeffect',
-    date: '2025-09-20',
+    slug: 'nextjs5',
+    title: 'Next.js (Part 5)',
+    description: 'A comprehensive guide covering nextjs5',
+    date: '2022-01-13',
     category: 'Web Development',
-    tags: ["react"],
-    image: '/assets/images/reactusestateuseeffect/logo512-512x512.png'
+    tags: ["typescript","azure","aws","ai","ml"],
+    image: '/assets/images/2560px-nextjs-logo.svg-1536x920.png'
   },
   {
-    slug: 'restapiservice',
-    title: 'REST',
-    description: 'A comprehensive guide covering rest',
-    date: '2025-09-20',
+    slug: 'ionic',
+    title: 'Ionic and PouchDB',
+    description: 'A comprehensive guide covering ionic',
+    date: '2021-12-22',
     category: 'Development',
-    tags: ["javascript","docker","java","ai"],
-    image: '/assets/images/restapiservice/fve-image.svg'
+    tags: ["react","javascript","typescript","azure","aws"],
+    image: '/assets/images/logo-192x192.png'
   },
   {
-    slug: 'rewardsextension',
-    title: 'Rewards Extension',
-    description: 'A comprehensive guide covering rewards extension',
-    date: '2025-09-20',
+    slug: 'mysql',
+    title: 'MySQL',
+    description: 'A comprehensive guide covering mysql',
+    date: '2021-11-14',
     category: 'Development',
-    tags: ["ai","ml","business central","dynamics"],
-    image: '/assets/images/rewardsextension/dynamics365-color.svg'
+    tags: ["javascript","aws","java","mysql","sql"],
+    image: '/assets/images/includes-mysql-5646x2872.png'
   },
   {
-    slug: 'sails1',
-    title: 'Sails (Part 1)',
-    description: 'A comprehensive guide covering sails (part 1)',
-    date: '2025-09-20',
-    category: 'AI/ML',
-    tags: ["azure","aws","devops","database","ai"],
-    image: '/assets/images/sails1/sailsjs-logo-515x193.png'
+    slug: 'nextjs4',
+    title: 'Next.js (Part 4)',
+    description: 'A comprehensive guide covering nextjs4',
+    date: '2021-11-11',
+    category: 'Web Development',
+    tags: ["azure","aws","git","github"],
+    image: '/assets/images/2560px-nextjs-logo.svg-1536x920.png'
   },
   {
-    slug: 'sails2',
-    title: 'Sails (Part 2)',
-    description: 'A comprehensive guide covering sails (part 2)',
-    date: '2025-09-20',
-    category: 'AI/ML',
-    tags: ["azure","aws","ai","git","github"],
-    image: '/assets/images/sails2/sailsjs-logo-515x193.png'
+    slug: 'nextjs3',
+    title: 'Next.js (Part 3)',
+    description: 'A comprehensive guide covering nextjs3',
+    date: '2021-11-07',
+    category: 'Web Development',
+    tags: ["aws","database","ai","git","github"],
+    image: '/assets/images/2560px-nextjs-logo.svg-1536x920.png'
+  },
+  {
+    slug: 'nextjs2',
+    title: 'Next.js (Part 2)',
+    description: 'A comprehensive guide covering nextjs2',
+    date: '2021-11-06',
+    category: 'Web Development',
+    tags: ["javascript","aws","java","ai","ml"],
+    image: '/assets/images/2560px-nextjs-logo.svg-1536x920.png'
+  },
+  {
+    slug: 'nextjs1',
+    title: 'Next.js (Part 1)',
+    description: 'A comprehensive guide covering nextjs1',
+    date: '2021-11-05',
+    category: 'Web Development',
+    tags: ["react","javascript","aws","java","git"],
+    image: '/assets/images/2560px-nextjs-logo.svg-1536x920.png'
   },
   {
     slug: 'sails3',
     title: 'Sails (Part 3)',
-    description: 'A comprehensive guide covering sails (part 3)',
-    date: '2025-09-20',
+    description: 'A comprehensive guide covering sails3',
+    date: '2021-10-13',
     category: 'AI/ML',
     tags: ["aws","docker","kubernetes","ai","ml"],
-    image: '/assets/images/sails3/sailsjs-logo-515x193.png'
+    image: '/assets/images/sailsjs-logo-515x193.png'
   },
   {
-    slug: 'salesinvoice',
-    title: 'Sales Invoice',
-    description: 'A comprehensive guide covering sales invoice',
-    date: '2025-09-20',
+    slug: 'sails2',
+    title: 'Sails (Part 2)',
+    description: 'A comprehensive guide covering sails2',
+    date: '2021-10-12',
+    category: 'AI/ML',
+    tags: ["azure","aws","ai","git","github"],
+    image: '/assets/images/sailsjs-logo-515x193.png'
+  },
+  {
+    slug: 'sails1',
+    title: 'Sails (Part 1)',
+    description: 'A comprehensive guide covering sails1',
+    date: '2021-10-12',
+    category: 'AI/ML',
+    tags: ["azure","aws","devops","database","ai"],
+    image: '/assets/images/sailsjs-logo-515x193.png'
+  },
+  {
+    slug: 'aspnetcoreawseks',
+    title: 'Amazon EKS (Part 2)',
+    description: 'A comprehensive guide covering aspnetcoreawseks',
+    date: '2021-08-16',
+    category: '.NET',
+    tags: ["aws","docker","kubernetes","dotnet","ai"],
+    image: '/assets/images/amazon-web-services-logo.svg'
+  },
+  {
+    slug: 'AmazonEKS',
+    title: 'Amazon EKS (Part 1)',
+    description: 'A comprehensive guide covering  amazon e k s',
+    date: '2021-08-12',
     category: 'Development',
-    tags: ["ai","dynamics"],
-    image: '/assets/images/salesinvoice/dynamics365-color.svg'
+    tags: ["blog"],
+    image: '/assets/images/amazon-web-services-logo.svg'
   },
   {
-    slug: 'sentenceembeddings',
-    title: 'Sentence Embeddings',
-    description: 'A comprehensive guide covering sentence embeddings',
-    date: '2025-09-20',
+    slug: 'customconnectorsappregistrations',
+    title: 'Power Apps (Part 5)',
+    description: 'A comprehensive guide covering customconnectorsappregistrations',
+    date: '2021-08-09',
     category: 'Development',
-    tags: ["ai","machine learning"],
-    image: '/assets/images/sentenceembeddings/chatgpt-logo.svg'
+    tags: ["javascript","azure","java","ai","git"],
+    image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'sentencesimilarity',
-    title: 'Sentence Similarity',
-    description: 'A comprehensive guide covering sentence similarity',
-    date: '2025-09-20',
+    slug: 'API Management',
+    title: 'Power Apps (Part 4)',
+    description: 'A comprehensive guide covering  a p i  management',
+    date: '2021-08-02',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/office-365-icon-500x500.png'
+  },
+  {
+    slug: 'pwa',
+    title: 'Progressive Web Application',
+    description: 'A comprehensive guide covering pwa',
+    date: '2021-07-24',
+    category: 'Development',
+    tags: ["javascript","azure","java","ai","ml"],
+    image: '/assets/images/progressive-web-apps-logo.svg'
+  },
+  {
+    slug: 'powerappsapplication',
+    title: 'Power Apps (Part 3)',
+    description: 'A comprehensive guide covering powerappsapplication',
+    date: '2021-07-13',
+    category: 'Development',
+    tags: ["database","ai"],
+    image: '/assets/images/office-365-icon-500x500.png'
+  },
+  {
+    slug: 'customcomponents',
+    title: 'Power Apps (Part 2)',
+    description: 'A comprehensive guide covering customcomponents',
+    date: '2021-07-13',
     category: 'Development',
     tags: ["ai"],
-    image: '/assets/images/sentencesimilarity/chatgpt-logo.svg'
+    image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'sentimentanalysis',
-    title: 'Sentiment Analysis',
-    description: 'A comprehensive guide covering sentiment analysis',
-    date: '2025-09-20',
+    slug: 'powerappswithrest',
+    title: 'Power Apps (Part 1)',
+    description: 'A comprehensive guide covering powerappswithrest',
+    date: '2021-06-27',
     category: 'Development',
-    tags: ["ai","machine learning"],
-    image: '/assets/images/sentimentanalysis/chatgpt-logo.svg'
-  },
-  {
-    slug: 'sh1106',
-    title: 'Raspberry Pi SH1106',
-    description: 'A comprehensive guide covering raspberry pi sh1106',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["python","ml","machine learning"],
-    image: '/assets/images/sh1106/raspberry-pi-logo.svg'
-  },
-  {
-    slug: 'sharepoint2019',
-    title: 'SharePoint 2019',
-    description: 'A comprehensive guide covering sharepoint 2019',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["azure","sql","database","ai"],
-    image: '/assets/images/sharepoint2019/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png'
-  },
-  {
-    slug: 'sharepointsitedesignsandsitescripts',
-    title: 'SharePoint site designs and site scripts',
-    description: 'A comprehensive guide covering sharepoint site designs and site scripts',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai"],
-    image: '/assets/images/sharepointsitedesignsandsitescripts/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png'
-  },
-  {
-    slug: 'sharepointwebpart1',
-    title: 'SharePoint Web Part (Part 1)',
-    description: 'A comprehensive guide covering sharepoint web part (part 1)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["react","typescript","ai","ml","testing"],
-    image: '/assets/images/sharepointwebpart1/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png'
-  },
-  {
-    slug: 'sharepointwebpart2',
-    title: 'SharePoint Web Part (Part 2)',
-    description: 'A comprehensive guide covering sharepoint web part (part 2)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["react","javascript","java","ai","ml"],
-    image: '/assets/images/sharepointwebpart2/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png'
-  },
-  {
-    slug: 'spring-boot-2',
-    title: 'Java Spring Boot (Part 2)',
-    description: 'A comprehensive guide covering java spring boot (part 2)',
-    date: '2025-09-20',
-    category: 'Java',
-    tags: ["azure","java","spring","ai","git"],
-    image: '/assets/images/spring-boot-2/spring-framework-logo-2018.svg'
-  },
-  {
-    slug: 'spring-boot-3',
-    title: 'Java Spring Boot (Part 3)',
-    description: 'A comprehensive guide covering java spring boot (part 3)',
-    date: '2025-09-20',
-    category: 'Java',
-    tags: ["azure","java","spring","git","github"],
-    image: '/assets/images/spring-boot-3/spring-framework-logo-2018.svg'
-  },
-  {
-    slug: 'spring-boot-4',
-    title: 'Java Spring Boot (Part 4)',
-    description: 'A comprehensive guide covering java spring boot (part 4)',
-    date: '2025-09-20',
-    category: 'Java',
-    tags: ["java","spring"],
-    image: '/assets/images/spring-boot-4/spring-framework-logo-2018.svg'
-  },
-  {
-    slug: 'spring-boot-5',
-    title: 'Java Spring Boot (Part 5)',
-    description: 'A comprehensive guide covering java spring boot (part 5)',
-    date: '2025-09-20',
-    category: 'Java',
-    tags: ["java","spring","ai","ml","git"],
-    image: '/assets/images/spring-boot-5/spring-framework-logo-2018.svg'
-  },
-  {
-    slug: 'spring-boot-6',
-    title: 'Java Spring Boot (Part 6)',
-    description: 'A comprehensive guide covering java spring boot (part 6)',
-    date: '2025-09-20',
-    category: 'Java',
-    tags: ["java","spring","ai","git","github"],
-    image: '/assets/images/spring-boot-6/spring-framework-logo-2018.svg'
-  },
-  {
-    slug: 'spring-boot',
-    title: 'Java Spring Boot (Part 1)',
-    description: 'A comprehensive guide covering java spring boot (part 1)',
-    date: '2025-09-20',
-    category: 'Java',
-    tags: ["react","javascript","java","spring","ai"],
-    image: '/assets/images/spring-boot/spring-framework-logo-2018.svg'
-  },
-  {
-    slug: 'sprint-apps1',
-    title: 'Azure Spring Apps (Part 1)',
-    description: 'A comprehensive guide covering azure spring apps (part 1)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["azure","java","spring","ai"],
-    image: '/assets/images/sprint-apps1/spring-framework-logo-2018.svg'
-  },
-  {
-    slug: 'stablediffusion',
-    title: 'Stable Diffusion',
-    description: 'A comprehensive guide covering stable diffusion',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["python","ai","git","github"],
-    image: '/assets/images/stablediffusion/jupyter.svg'
-  },
-  {
-    slug: 'staticwebapp.config.json',
-    title: 'staticwebapp.config.json',
-    description: 'A comprehensive guide covering staticwebapp.config.json',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["azure","ai","ml","git","github"],
-    image: '/assets/images/staticwebapp.config.json/azurex70x75.svg'
-  },
-  {
-    slug: 'streamlit',
-    title: 'Streamlit',
-    description: 'A comprehensive guide covering streamlit',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["python","ai","ml","machine learning"],
-    image: '/assets/images/streamlit/chatgpt-logo.svg'
-  },
-  {
-    slug: 'syntexautofill',
-    title: 'SharePoint Syntex Autofill',
-    description: 'A comprehensive guide covering sharepoint syntex autofill',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","ml"],
-    image: '/assets/images/syntexautofill/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png'
-  },
-  {
-    slug: 'taxsetup',
-    title: 'Tax Setup',
-    description: 'A comprehensive guide covering tax setup',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","business central","dynamics"],
-    image: '/assets/images/taxsetup/dynamics365-color.svg'
-  },
-  {
-    slug: 'teamstoolkit',
-    title: 'Teams Toolkit with Azure',
-    description: 'A comprehensive guide covering teams toolkit with azure',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["react","azure","cloud","sql","database"],
-    image: '/assets/images/teamstoolkit/teams-hi-res-icon-2019.svg'
+    tags: ["azure","dotnet","git","github","asp.net"],
+    image: '/assets/images/office-365-icon-500x500.png'
   },
   {
     slug: 'teamstoolkitspfx',
     title: 'Teams Toolkit with SPFx',
-    description: 'A comprehensive guide covering teams toolkit with spfx',
-    date: '2025-09-20',
+    description: 'A comprehensive guide covering teamstoolkitspfx',
+    date: '2021-05-30',
     category: 'Development',
     tags: ["azure","cloud","ai","git","github"],
-    image: '/assets/images/teamstoolkitspfx/teams-hi-res-icon-2019.svg'
+    image: '/assets/images/teams-hi-res-icon-2019.svg'
   },
   {
-    slug: 'threejs',
-    title: 'Three.js',
-    description: 'A comprehensive guide covering three.js',
-    date: '2025-09-20',
+    slug: 'teamstoolkit',
+    title: 'Teams Toolkit with Azure',
+    description: 'A comprehensive guide covering teamstoolkit',
+    date: '2021-05-29',
     category: 'Development',
-    tags: ["javascript","java","ai"],
-    image: '/assets/images/threejs/three.js-icon.svg'
+    tags: ["react","azure","cloud","sql","database"],
+    image: '/assets/images/teams-hi-res-icon-2019.svg'
   },
   {
-    slug: 'threetier',
-    title: 'Blazor WASM API SQL Server Stored Procedure',
-    description: 'A comprehensive guide covering blazor wasm api sql server stored procedure',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["dotnet","sql","database","ai","asp.net"],
-    image: '/assets/images/threetier/net-logo.svg'
-  },
-  {
-    slug: 'ticktacktoe',
-    title: 'Multiplayer Tick-Tack-Toe',
-    description: 'A comprehensive guide covering multiplayer tick-tack-toe',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["javascript","java","database","ai","ml"],
-    image: '/assets/images/ticktacktoe/logo-lockup-firebase-vertical.svg'
-  },
-  {
-    slug: 'topics',
-    title: 'Topics',
-    description: 'A comprehensive guide covering topics',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["business central"],
-    image: '/assets/images/topics/office-365-icon-500x500.png'
-  },
-  {
-    slug: 'vbnetconsolesqlserverunittests',
-    title: 'VB.NET Console SQL Server Unit Tests',
-    description: 'A comprehensive guide covering vb.net console sql server unit tests',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["dotnet","sql","database","ai","testing"],
-    image: '/assets/images/vbnetconsolesqlserverunittests/net-logo.svg'
-  },
-  {
-    slug: 'vbnetwinforms',
-    title: 'VB.NET WinForms and ASP.NET Core API',
-    description: 'A comprehensive guide covering vb.net winforms and asp.net core api',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["dotnet","ai","asp.net"],
-    image: '/assets/images/vbnetwinforms/net-logo.svg'
-  },
-  {
-    slug: 'vendorpostinggroup',
-    title: 'Vendor Posting Group',
-    description: 'A comprehensive guide covering vendor posting group',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","business central","dynamics"],
-    image: '/assets/images/vendorpostinggroup/dynamics365-color.svg'
-  },
-  {
-    slug: 'warehousemanagementputaway',
-    title: 'Warehouse Management Put away',
-    description: 'A comprehensive guide covering warehouse management put away',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","business central","dynamics"],
-    image: '/assets/images/warehousemanagementputaway/dynamics365-color.svg'
-  },
-  {
-    slug: 'webcomponents',
-    title: 'Web Components',
-    description: 'A comprehensive guide covering web components',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["angular","react","vue","javascript","java"],
-    image: '/assets/images/webcomponents/web-components-logo.svg'
-  },
-  {
-    slug: 'webvr',
-    title: 'WebVR',
-    description: 'A comprehensive guide covering webvr',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","git","github"],
-    image: '/assets/images/webvr/webvr-logo-square-512x512.png'
-  },
-  {
-    slug: 'webvrdemo',
-    title: 'Simple AR Example',
-    description: 'A comprehensive guide covering simple ar example',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: [],
-    image: '/assets/images/webvrdemo/hero.png'
-  },
-  {
-    slug: 'webvrdemo2',
-    title: 'Simple WebVR',
-    description: 'A comprehensive guide covering simple webvr',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: [],
-    image: '/assets/images/webvrdemo2/hero.png'
-  },
-  {
-    slug: 'webvrdemo3',
-    title: 'Simple WebAR',
-    description: 'A comprehensive guide covering simple webar',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: [],
-    image: '/assets/images/webvrdemo3/hero.png'
-  },
-  {
-    slug: 'webvrdemo4',
-    title: 'Simple WebAR',
-    description: 'A comprehensive guide covering simple webar',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: [],
-    image: '/assets/images/webvrdemo4/hero.png'
-  },
-  {
-    slug: 'webvrdemo5',
-    title: 'WebXR AR Test',
-    description: 'A comprehensive guide covering webxr ar test',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: [],
-    image: '/assets/images/webvrdemo5/hero.png'
-  },
-  {
-    slug: 'webvrdemo6',
-    title: 'AR with Camera Error Handling',
-    description: 'A comprehensive guide covering ar with camera error handling',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: [],
-    image: '/assets/images/webvrdemo6/hero.png'
-  },
-  {
-    slug: 'webvrdemo7',
-    title: 'WebXR AR Fallback',
-    description: 'A comprehensive guide covering webxr ar fallback',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: [],
-    image: '/assets/images/webvrdemo7/hero.png'
-  },
-  {
-    slug: 'webvrpart2',
-    title: 'WebVR (Part 2)',
-    description: 'A comprehensive guide covering webvr (part 2)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["javascript","java"],
-    image: '/assets/images/webvrpart2/webvr-logo-square-512x512.png'
-  },
-  {
-    slug: 'webvrscene',
-    title: 'WebVRScene',
-    description: 'A comprehensive guide covering webvrscene',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: [],
-    image: '/assets/images/webvrscene/hero.png'
-  },
-  {
-    slug: 'webvrscene2',
-    title: 'WebVRScene2',
-    description: 'A comprehensive guide covering webvrscene2',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: [],
-    image: '/assets/images/webvrscene2/hero.png'
-  },
-  {
-    slug: 'webxr',
-    title: 'WebXR',
-    description: 'A comprehensive guide covering webxr',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ml","git","github"],
-    image: '/assets/images/webxr/34385910-400x400.png'
-  },
-  {
-    slug: 'webxrscene',
-    title: 'WebXRScene',
-    description: 'A comprehensive guide covering webxrscene',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: [],
-    image: '/assets/images/webxrscene/hero.png'
-  },
-  {
-    slug: 'xcode1',
-    title: 'XCode C++ (Part 1)',
-    description: 'A comprehensive guide covering xcode c++ (part 1)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai"],
-    image: '/assets/images/xcode1/xcode-14-icon-300x314.png'
-  },
-  {
-    slug: 'xcode2',
-    title: 'XCode C++ (Part 2)',
-    description: 'A comprehensive guide covering xcode c++ (part 2)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai"],
-    image: '/assets/images/xcode2/xcode-14-icon-300x314.png'
-  },
-  {
-    slug: 'xcode3',
-    title: 'XCode C++ (Part 3)',
-    description: 'A comprehensive guide covering xcode c++ (part 3)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai"],
-    image: '/assets/images/xcode3/xcode-14-icon-300x314.png'
-  },
-  {
-    slug: 'xcode4',
-    title: 'XCode C++ (Part 4)',
-    description: 'A comprehensive guide covering xcode c++ (part 4)',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai","ml"],
-    image: '/assets/images/xcode4/xcode-14-icon-300x314.png'
-  },
-  {
-    slug: 'yolo',
-    title: 'Yolo',
-    description: 'A comprehensive guide covering yolo',
-    date: '2025-09-20',
-    category: 'Development',
-    tags: ["ai"],
-    image: '/assets/images/yolo/chatgpt-logo.svg'
-  },
-  {
-    slug: 'azure-ai-part-1',
-    title: 'Azure AI (Part 1)',
-    description: 'A comprehensive guide covering azure ai (part 1)',
-    date: '2024-01-10',
+    slug: 'devopsstarterazuredevops',
+    title: 'DevOps Starter Azure DevOps',
+    description: 'A comprehensive guide covering devopsstarterazuredevops',
+    date: '2021-04-26',
     category: 'Azure',
-    tags: ["Azure","AI","Machine Learning"],
-    image: '/assets/images/azure-ai.png'
+    tags: ["azure","devops","ai","ml","git"],
+    image: '/assets/images/svgexport-22.svg'
+  },
+  {
+    slug: 'devopsstartergithubactions',
+    title: 'DevOps Starter GitHub actions',
+    description: 'A comprehensive guide covering devopsstartergithubactions',
+    date: '2021-04-25',
+    category: 'Development',
+    tags: ["azure","devops","ai","git","github"],
+    image: '/assets/images/svgexport-22.svg'
+  },
+  {
+    slug: 'azure-active-directory2',
+    title: 'Azure Active Directory (Part 2)',
+    description: 'A comprehensive guide covering azure-active-directory2',
+    date: '2021-04-17',
+    category: 'Azure',
+    tags: ["angular","react","vue","javascript","azure"],
+    image: '/assets/images/azurex70x75.svg'
+  },
+  {
+    slug: 'dotnet core part1',
+    title: '.NET Core (Part 1)',
+    description: 'A comprehensive guide covering dotnet core part1',
+    date: '2021-04-10',
+    category: '.NET',
+    tags: ["react","javascript","dotnet","java","ai"],
+    image: '/assets/images/net-logo.svg'
+  },
+  {
+    slug: 'spring-boot',
+    title: 'Java Spring Boot (Part 1)',
+    description: 'A comprehensive guide covering spring-boot',
+    date: '2021-04-06',
+    category: 'Java',
+    tags: ["react","javascript","java","spring","ai"],
+    image: '/assets/images/spring-framework-logo-70-no.svg'
+  },
+  {
+    slug: 'azure-active-directory',
+    title: 'Azure Active Directory (Part 1)',
+    description: 'A comprehensive guide covering azure-active-directory',
+    date: '2021-03-29',
+    category: 'Azure',
+    tags: ["azure","ai"],
+    image: '/assets/images/azurex70x75.svg'
+  },
+  {
+    slug: 'mssqlserver2',
+    title: 'Microsoft SQL Server (Part 2)',
+    description: 'A comprehensive guide covering mssqlserver2',
+    date: '2021-03-27',
+    category: 'Development',
+    tags: ["javascript","dotnet","c#","java","sql"],
+    image: '/assets/images/ads.svg'
+  },
+  {
+    slug: 'mssqlserver',
+    title: 'Microsoft SQL Server (Part 1)',
+    description: 'A comprehensive guide covering mssqlserver',
+    date: '2021-03-14',
+    category: 'Development',
+    tags: ["javascript","azure","docker","dotnet","c#"],
+    image: '/assets/images/ads.svg'
+  },
+  {
+    slug: 'internetOfThings2',
+    title: 'Internet of Things (Part 2)',
+    description: 'A comprehensive guide covering internet of things2',
+    date: '2021-03-06',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/iot-microchip.svg'
+  },
+  {
+    slug: 'internetOfThings1',
+    title: 'Internet of Things (Part 1)',
+    description: 'A comprehensive guide covering internet of things1',
+    date: '2021-03-03',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/iot-microchip.svg'
+  },
+  {
+    slug: 'WebVR',
+    title: 'WebVR',
+    description: 'A comprehensive guide covering  web v r',
+    date: '2021-03-02',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/webvr-logo-square-512x512.png'
+  },
+  {
+    slug: 'dockerbuildx',
+    title: 'Docker Buildx',
+    description: 'A comprehensive guide covering dockerbuildx',
+    date: '2021-03-01',
+    category: 'DevOps',
+    tags: ["cloud","docker","ai","testing"],
+    image: '/assets/images/method-draw-image.svg'
+  },
+  {
+    slug: 'GraphQL',
+    title: 'GraphQL',
+    description: 'A comprehensive guide covering  graph q l',
+    date: '2021-03-01',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/graphql-logo.svg-1200x1200.png'
+  },
+  {
+    slug: 'nuget',
+    title: 'NuGet C#',
+    description: 'A comprehensive guide covering nuget',
+    date: '2021-02-27',
+    category: 'Development',
+    tags: ["dotnet","c#","ai","git","github"],
+    image: '/assets/images/logo-og-600x600.png'
+  },
+  {
+    slug: 'npmCC',
+    title: 'npm C++',
+    description: 'A comprehensive guide covering npm c c',
+    date: '2021-02-26',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/6078720-200x200.png'
+  },
+  {
+    slug: 'npm',
+    title: 'npm JavaScript',
+    description: 'A comprehensive guide covering npm',
+    date: '2021-02-25',
+    category: 'Development',
+    tags: ["javascript","java","ai","git","github"],
+    image: '/assets/images/6078720-200x200.png'
+  },
+  {
+    slug: 'm365CommandLineInterface',
+    title: 'A Command Line Interface for Microsoft 365',
+    description: 'A comprehensive guide covering m365 command line interface',
+    date: '2021-02-22',
+    category: 'Development',
+    tags: ["blog"],
+    image: '/assets/images/office-365-icon-500x500.png'
+  },
+  {
+    slug: 'sharepointsitedesignsandsitescripts',
+    title: 'SharePoint site designs and site scripts',
+    description: 'A comprehensive guide covering sharepointsitedesignsandsitescripts',
+    date: '2021-02-15',
+    category: 'Development',
+    tags: ["ai"],
+    image: '/assets/images/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png'
+  },
+  {
+    slug: 'sharepointwebpart2',
+    title: 'SharePoint Web Part (Part 2)',
+    description: 'A comprehensive guide covering sharepointwebpart2',
+    date: '2021-02-14',
+    category: 'Development',
+    tags: ["react","javascript","java","ai","ml"],
+    image: '/assets/images/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png'
+  },
+  {
+    slug: 'sharepointwebpart1',
+    title: 'SharePoint Web Part (Part 1)',
+    description: 'A comprehensive guide covering sharepointwebpart1',
+    date: '2021-02-11',
+    category: 'Development',
+    tags: ["react","typescript","ai","ml","testing"],
+    image: '/assets/images/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png'
+  },
+  {
+    slug: 'apigateway',
+    title: 'API Gateway',
+    description: 'A comprehensive guide covering apigateway',
+    date: '2021-02-10',
+    category: 'Development',
+    tags: ["react","azure","aws","cloud","docker"],
+    image: '/assets/images/kubernetes-container-engine.svg'
+  },
+  {
+    slug: 'reactusestateuseeffect',
+    title: 'React (Part 1)',
+    description: 'A comprehensive guide covering reactusestateuseeffect',
+    date: '2021-02-08',
+    category: 'Web Development',
+    tags: ["react"],
+    image: '/assets/images/logo512-512x512.png'
+  },
+  {
+    slug: 'restapiservice',
+    title: 'REST',
+    description: 'A comprehensive guide covering restapiservice',
+    date: '2021-02-06',
+    category: 'Development',
+    tags: ["javascript","docker","java","ai"],
+    image: '/assets/images/fve-image.svg'
+  },
+  {
+    slug: 'kubernetes',
+    title: 'Kubernetes',
+    description: 'A comprehensive guide covering kubernetes',
+    date: '2021-02-06',
+    category: 'DevOps',
+    tags: ["docker","kubernetes","ai","ml"],
+    image: '/assets/images/kubernetes-container-engine.svg'
+  },
+  {
+    slug: 'docker',
+    title: 'Docker',
+    description: 'A comprehensive guide covering docker',
+    date: '2021-02-06',
+    category: 'DevOps',
+    tags: ["cloud","docker","ai","business central","testing"],
+    image: '/assets/images/method-draw-image.svg'
   }
+
+
+
+
 ];
 
 export function getBlogPosts(): BlogPost[] {
