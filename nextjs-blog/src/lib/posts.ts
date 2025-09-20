@@ -16,7 +16,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai"],
-    image: '/assets/images/3dprinting1/img-3200-2-480x640.jpg'
+    image: '/assets/images/3dprinting1/wikipedia-globe-translucent-3d-printed-woodgrain-background-512x512.jpg'
   },
   {
     slug: '3dprinting2',
@@ -25,7 +25,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai"],
-    image: '/assets/images/3dprinting2/hero.png'
+    image: '/assets/images/3dprinting2/wikipedia-globe-translucent-3d-printed-woodgrain-background-512x512.jpg'
   },
   {
     slug: 'addanitem',
@@ -34,7 +34,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["business central"],
-    image: '/assets/images/addanitem/hero.png'
+    image: '/assets/images/addanitem/office-365-icon-500x500.png'
   },
   {
     slug: 'addapurchaseorder',
@@ -43,7 +43,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["business central"],
-    image: '/assets/images/addapurchaseorder/hero.png'
+    image: '/assets/images/addapurchaseorder/office-365-icon-500x500.png'
   },
   {
     slug: 'al-go-pte',
@@ -52,7 +52,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["docker","devops","ai","business central","dynamics"],
-    image: '/assets/images/al-go-pte/hero.png'
+    image: '/assets/images/al-go-pte/dynamics365-color.svg'
   },
   {
     slug: 'amazonecs',
@@ -61,7 +61,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["aws","cloud","docker","kubernetes","ai"],
-    image: '/assets/images/amazonecs/hero.png'
+    image: '/assets/images/amazonecs/amazon-web-services-logo.svg'
   },
   {
     slug: 'amazoneks',
@@ -70,7 +70,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["aws","cloud","docker","kubernetes","ai"],
-    image: '/assets/images/amazoneks/hero.png'
+    image: '/assets/images/amazoneks/amazon-web-services-logo.svg'
   },
   {
     slug: 'amazonfargate',
@@ -79,7 +79,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["aws","cloud","docker","kubernetes","ai"],
-    image: '/assets/images/amazonfargate/hero.png'
+    image: '/assets/images/amazonfargate/amazon-web-services-logo.svg'
   },
   {
     slug: 'angular-new',
@@ -88,7 +88,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Web Development',
     tags: ["angular","ai","ml"],
-    image: '/assets/images/angular'
+    image: '/assets/images/angular/angular-full-color-logo.svg'
   },
   {
     slug: 'angular',
@@ -97,7 +97,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Web Development',
     tags: ["angular","ai","ml"],
-    image: '/assets/images/angular/hero.png'
+    image: '/assets/images/angular/angular-full-color-logo.svg'
   },
   {
     slug: 'angular1',
@@ -106,7 +106,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Web Development',
     tags: ["angular","typescript","ai","ml","testing"],
-    image: '/assets/images/angular1/hero.png'
+    image: '/assets/images/angular1/angular-full-color-logo.svg'
   },
   {
     slug: 'angularandasp.net',
@@ -115,7 +115,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Web Development',
     tags: ["angular","react","dotnet","database","ai"],
-    image: '/assets/images/angularandasp.net/hero.png'
+    image: '/assets/images/angularandasp.net/angular-full-color-logo.svg'
   },
   {
     slug: 'angularfirebase',
@@ -124,7 +124,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Web Development',
     tags: ["angular","react","ai","ml"],
-    image: '/assets/images/angularfirebase/hero.png'
+    image: '/assets/images/angularfirebase/logo-lockup-firebase-vertical.svg'
   },
   {
     slug: 'angularphaser',
@@ -133,7 +133,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Web Development',
     tags: ["angular","ml"],
-    image: '/assets/images/angularphaser/hero.png'
+    image: '/assets/images/angularphaser/phaser-logo-1836x1530.png'
   },
   {
     slug: 'api management',
@@ -142,7 +142,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["azure","ai"],
-    image: '/assets/images/api management/hero.png'
+    image: '/assets/images/api management/office-365-icon-500x500.png'
   },
   {
     slug: 'apigateway',
@@ -151,7 +151,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["react","azure","aws","cloud","docker"],
-    image: '/assets/images/apigateway/hero.png'
+    image: '/assets/images/apigateway/kubernetes-container-engine.svg'
   },
   {
     slug: 'applelaptop',
@@ -160,7 +160,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["python","ai","machine learning"],
-    image: '/assets/images/applelaptop/hero.png'
+    image: '/assets/images/applelaptop/jupyter.svg'
   },
   {
     slug: 'applelogo',
@@ -169,7 +169,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["python","ai","machine learning"],
-    image: '/assets/images/applelogo/hero.png'
+    image: '/assets/images/applelogo/apple-logo-black.svg'
   },
   {
     slug: 'ashorthistory',
@@ -178,7 +178,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["azure","cloud","dotnet","ai","ml"],
-    image: '/assets/images/ashorthistory/hero.png'
+    image: '/assets/images/ashorthistory/dynamics365-color.svg'
   },
   {
     slug: 'asp.net 5 cs',
@@ -187,7 +187,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: '.NET',
     tags: ["dotnet","c#","database","ai","ml"],
-    image: '/assets/images/asp.net 5 cs/hero.png'
+    image: '/assets/images/asp.net 5 cs/net-logo.svg'
   },
   {
     slug: 'asp.net 5 visual basic',
@@ -196,7 +196,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: '.NET',
     tags: ["azure","docker","dotnet","sql","database"],
-    image: '/assets/images/asp.net 5 visual basic/hero.png'
+    image: '/assets/images/asp.net 5 visual basic/net-logo.svg'
   },
   {
     slug: 'asp.net core',
@@ -205,7 +205,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: '.NET',
     tags: ["dotnet","sql","database","ai","ml"],
-    image: '/assets/images/asp.net core/hero.png'
+    image: '/assets/images/asp.net core/net-logo.svg'
   },
   {
     slug: 'aspnetcoreawseks',
@@ -214,7 +214,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: '.NET',
     tags: ["aws","docker","kubernetes","dotnet","ai"],
-    image: '/assets/images/aspnetcoreawseks/hero.png'
+    image: '/assets/images/aspnetcoreawseks/amazon-web-services-logo.svg'
   },
   {
     slug: 'aspnetcoreunittests',
@@ -223,7 +223,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: '.NET',
     tags: ["dotnet","ai","asp.net"],
-    image: '/assets/images/aspnetcoreunittests/hero.png'
+    image: '/assets/images/aspnetcoreunittests/net-logo.svg'
   },
   {
     slug: 'ateamstabsharepointwebpartforonedrive',
@@ -232,7 +232,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["react","ml","git","github"],
-    image: '/assets/images/ateamstabsharepointwebpartforonedrive/hero.png'
+    image: '/assets/images/ateamstabsharepointwebpartforonedrive/office-365-icon-500x500.png'
   },
   {
     slug: 'azure-active-directory',
@@ -241,7 +241,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Azure',
     tags: ["azure","ai"],
-    image: '/assets/images/azure-active-directory/hero.png'
+    image: '/assets/images/azure-active-directory/microsoft-azure-logo.svg'
   },
   {
     slug: 'azure-active-directory2',
@@ -250,7 +250,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Azure',
     tags: ["angular","react","vue","javascript","azure"],
-    image: '/assets/images/azure-active-directory2/hero.png'
+    image: '/assets/images/azure-active-directory2/microsoft-azure-logo.svg'
   },
   {
     slug: 'azureai1-new',
@@ -259,7 +259,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Azure',
     tags: ["azure","python","ai","git","github"],
-    image: '/assets/images/azurex70x75.svg'
+    image: '/assets/images/azureai1/microsoft-azure-logo.svg'
   },
   {
     slug: 'azureai1',
@@ -268,7 +268,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Azure',
     tags: ["azure","python","ai","git","github"],
-    image: '/assets/images/azureai1/hero.png'
+    image: '/assets/images/azureai1/microsoft-azure-logo.svg'
   },
   {
     slug: 'azureopenal',
@@ -277,7 +277,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Azure',
     tags: ["azure","ai"],
-    image: '/assets/images/azureopenal/hero.png'
+    image: '/assets/images/azureopenal/azurex70x75.svg'
   },
   {
     slug: 'azurereactstaticweb app',
@@ -286,7 +286,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Azure',
     tags: ["react","azure","ai","git","github"],
-    image: '/assets/images/azurereactstaticweb app/hero.png'
+    image: '/assets/images/azurereactstaticweb app/logo512-512x512.png'
   },
   {
     slug: 'azurestorage',
@@ -295,7 +295,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Azure',
     tags: ["azure","cloud","ai"],
-    image: '/assets/images/azurestorage/hero.png'
+    image: '/assets/images/azurestorage/microsoft-azure-logo.svg'
   },
   {
     slug: 'blazorwasmandasp.net',
@@ -304,7 +304,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: '.NET',
     tags: ["dotnet","c#","database","ai","asp.net"],
-    image: '/assets/images/blazorwasmandasp.net/hero.png'
+    image: '/assets/images/blazorwasmandasp.net/net-logo.svg'
   },
   {
     slug: 'blogcopilotstudio',
@@ -313,7 +313,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["java","ai","business central","dynamics","git"],
-    image: '/assets/images/blogcopilotstudio/hero.png'
+    image: '/assets/images/blogcopilotstudio/dynamics365-color.svg'
   },
   {
     slug: 'businesscentraladmincenter',
@@ -322,7 +322,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Business Central',
     tags: ["ai","business central","dynamics"],
-    image: '/assets/images/businesscentraladmincenter/hero.png'
+    image: '/assets/images/businesscentraladmincenter/dynamics365-color.svg'
   },
   {
     slug: 'businesscentralcanvasapps',
@@ -331,7 +331,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Business Central',
     tags: ["ai","business central","dynamics","power platform"],
-    image: '/assets/images/businesscentralcanvasapps/hero.png'
+    image: '/assets/images/businesscentralcanvasapps/dynamics365-color.svg'
   },
   {
     slug: 'businesscentralintegrationtables',
@@ -340,7 +340,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Business Central',
     tags: ["ai","business central","dynamics"],
-    image: '/assets/images/businesscentralintegrationtables/hero.png'
+    image: '/assets/images/businesscentralintegrationtables/dynamics365-color.svg'
   },
   {
     slug: 'businesscentralmicrosoftgraph',
@@ -349,7 +349,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Business Central',
     tags: ["ai","ml","business central","dynamics"],
-    image: '/assets/images/businesscentralmicrosoftgraph/hero.png'
+    image: '/assets/images/businesscentralmicrosoftgraph/dynamics365-color.svg'
   },
   {
     slug: 'businesscentralpart 27 extendingstandardapis',
@@ -358,7 +358,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Business Central',
     tags: ["ai","business central","dynamics"],
-    image: '/assets/images/businesscentralpart 27 extendingstandardapis/hero.png'
+    image: '/assets/images/businesscentralpart 27 extendingstandardapis/dynamics365-color.svg'
   },
   {
     slug: 'businesscentralpart 2extendingstandardapis',
@@ -367,7 +367,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Business Central',
     tags: ["ai","business central","dynamics"],
-    image: '/assets/images/businesscentralpart 2extendingstandardapis/hero.png'
+    image: '/assets/images/businesscentralpart 2extendingstandardapis/dynamics365-color.svg'
   },
   {
     slug: 'businesscentralpart25integratingwithdataverseusingdataflows',
@@ -376,7 +376,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Business Central',
     tags: ["ai","business central","dynamics","power platform"],
-    image: '/assets/images/businesscentralpart25integratingwithdataverseusingdataflows/hero.png'
+    image: '/assets/images/businesscentralpart25integratingwithdataverseusingdataflows/dynamics365-color.svg'
   },
   {
     slug: 'businesscentralpart26integratingwithdataverseusingintegrationtables',
@@ -385,7 +385,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Business Central',
     tags: ["ai","business central","dynamics"],
-    image: '/assets/images/businesscentralpart26integratingwithdataverseusingintegrationtables/hero.png'
+    image: '/assets/images/businesscentralpart26integratingwithdataverseusingintegrationtables/dynamics365-color.svg'
   },
   {
     slug: 'businesscentralpart26integrationtable',
@@ -394,7 +394,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Business Central',
     tags: ["azure","cloud","ai","business central","dynamics"],
-    image: '/assets/images/businesscentralpart26integrationtable/hero.png'
+    image: '/assets/images/businesscentralpart26integrationtable/dynamics365-color.svg'
   },
   {
     slug: 'businesscentralpart26integrationtables',
@@ -403,7 +403,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Business Central',
     tags: ["ai","business central","dynamics"],
-    image: '/assets/images/businesscentralpart26integrationtables/hero.png'
+    image: '/assets/images/businesscentralpart26integrationtables/dynamics365-color.svg'
   },
   {
     slug: 'businesscentralpowerautomateflow',
@@ -412,7 +412,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Business Central',
     tags: ["cloud","ai","business central","dynamics"],
-    image: '/assets/images/businesscentralpowerautomateflow/hero.png'
+    image: '/assets/images/businesscentralpowerautomateflow/dynamics365-color.svg'
   },
   {
     slug: 'businesscentralvirtualtable',
@@ -421,7 +421,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Business Central',
     tags: ["ai","business central","dynamics"],
-    image: '/assets/images/businesscentralvirtualtable/hero.png'
+    image: '/assets/images/businesscentralvirtualtable/dynamics365-color.svg'
   },
   {
     slug: 'cloudflow',
@@ -430,7 +430,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["cloud","business central"],
-    image: '/assets/images/cloudflow/hero.png'
+    image: '/assets/images/cloudflow/office-365-icon-500x500.png'
   },
   {
     slug: 'codespacesauthentication',
@@ -439,7 +439,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["react","azure","git","github"],
-    image: '/assets/images/codespacesauthentication/hero.png'
+    image: '/assets/images/codespacesauthentication/logo512-512x512.png'
   },
   {
     slug: 'colorization',
@@ -448,7 +448,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: [],
-    image: '/assets/images/colorization/hero.png'
+    image: '/assets/images/colorization/jupyter.svg'
   },
   {
     slug: 'componentframework',
@@ -457,7 +457,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["react","ai","ml","dynamics","power platform"],
-    image: '/assets/images/componentframework/hero.png'
+    image: '/assets/images/componentframework/office-365-icon-500x500.png'
   },
   {
     slug: 'configurecopilotsinglesignonforweb',
@@ -466,7 +466,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["azure","docker","ai","ml","git"],
-    image: '/assets/images/configurecopilotsinglesignonforweb/hero.png'
+    image: '/assets/images/configurecopilotsinglesignonforweb/office-365-icon-500x500.png'
   },
   {
     slug: 'configurecopilotwithauthentication',
@@ -475,7 +475,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["azure","docker","ai","ml","git"],
-    image: '/assets/images/configurecopilotwithauthentication/hero.png'
+    image: '/assets/images/configurecopilotwithauthentication/office-365-icon-500x500.png'
   },
   {
     slug: 'contextinjection',
@@ -484,7 +484,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["database","ai"],
-    image: '/assets/images/contextinjection/hero.png'
+    image: '/assets/images/contextinjection/chatgpt-logo.svg'
   },
   {
     slug: 'copilotembedcode',
@@ -493,7 +493,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ml"],
-    image: '/assets/images/copilotembedcode/hero.png'
+    image: '/assets/images/copilotembedcode/office-365-icon-500x500.png'
   },
   {
     slug: 'createactionbasedonaflow',
@@ -502,7 +502,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","business central","dynamics"],
-    image: '/assets/images/createactionbasedonaflow/hero.png'
+    image: '/assets/images/createactionbasedonaflow/dynamics365-color.svg'
   },
   {
     slug: 'customcomponents',
@@ -511,7 +511,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai"],
-    image: '/assets/images/customcomponents/hero.png'
+    image: '/assets/images/customcomponents/office-365-icon-500x500.png'
   },
   {
     slug: 'customconnectorsappregistrations',
@@ -520,7 +520,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["javascript","azure","java","ai","git"],
-    image: '/assets/images/customconnectorsappregistrations/hero.png'
+    image: '/assets/images/customconnectorsappregistrations/office-365-icon-500x500.png'
   },
   {
     slug: 'customcopilotstudio',
@@ -529,7 +529,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","business central","dynamics"],
-    image: '/assets/images/customcopilotstudio/hero.png'
+    image: '/assets/images/customcopilotstudio/dynamics365-color.svg'
   },
   {
     slug: 'customercontentvirtualtables',
@@ -538,7 +538,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","business central","power platform"],
-    image: '/assets/images/customercontentvirtualtables/hero.png'
+    image: '/assets/images/customercontentvirtualtables/office-365-icon-500x500.png'
   },
   {
     slug: 'customercopilotstudio',
@@ -547,7 +547,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","business central","dynamics"],
-    image: '/assets/images/customercopilotstudio/hero.png'
+    image: '/assets/images/customercopilotstudio/dynamics365-color.svg'
   },
   {
     slug: 'customerpostinggroup',
@@ -556,7 +556,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","dynamics"],
-    image: '/assets/images/customerpostinggroup/hero.png'
+    image: '/assets/images/customerpostinggroup/dynamics365-color.svg'
   },
   {
     slug: 'customizedefaultcanvas',
@@ -565,7 +565,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ml"],
-    image: '/assets/images/customizedefaultcanvas/hero.png'
+    image: '/assets/images/customizedefaultcanvas/office-365-icon-500x500.png'
   },
   {
     slug: 'customtvirtualtables',
@@ -574,7 +574,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","business central","power platform"],
-    image: '/assets/images/customtvirtualtables/hero.png'
+    image: '/assets/images/customtvirtualtables/office-365-icon-500x500.png'
   },
   {
     slug: 'dataverseadvancedreportssetup',
@@ -583,7 +583,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["sql","ai","ml","dynamics"],
-    image: '/assets/images/dataverseadvancedreportssetup/hero.png'
+    image: '/assets/images/dataverseadvancedreportssetup/office-365-icon-500x500.png'
   },
   {
     slug: 'dataversefetchxml',
@@ -592,7 +592,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["sql","ml"],
-    image: '/assets/images/dataversefetchxml/hero.png'
+    image: '/assets/images/dataversefetchxml/office-365-icon-500x500.png'
   },
   {
     slug: 'dataversereports',
@@ -601,7 +601,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: [],
-    image: '/assets/images/dataversereports/hero.png'
+    image: '/assets/images/dataversereports/office-365-icon-500x500.png'
   },
   {
     slug: 'devopsstarterazuredevops',
@@ -610,7 +610,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Azure',
     tags: ["azure","devops","ai","ml","git"],
-    image: '/assets/images/devopsstarterazuredevops/hero.png'
+    image: '/assets/images/devopsstarterazuredevops/svgexport-22.svg'
   },
   {
     slug: 'devopsstartergithubactions',
@@ -619,7 +619,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["azure","devops","ai","git","github"],
-    image: '/assets/images/devopsstartergithubactions/hero.png'
+    image: '/assets/images/devopsstartergithubactions/svgexport-22.svg'
   },
   {
     slug: 'docker',
@@ -628,7 +628,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'DevOps',
     tags: ["cloud","docker","ai","business central","testing"],
-    image: '/assets/images/docker/hero.png'
+    image: '/assets/images/docker/docker-container-engine-logo.svg'
   },
   {
     slug: 'dockerbuildx',
@@ -637,7 +637,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'DevOps',
     tags: ["cloud","docker","ai","testing"],
-    image: '/assets/images/dockerbuildx/hero.png'
+    image: '/assets/images/dockerbuildx/docker-container-engine-logo.svg'
   },
   {
     slug: 'dotnet core part1',
@@ -646,7 +646,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: '.NET',
     tags: ["react","javascript","dotnet","java","ai"],
-    image: '/assets/images/dotnet core part1/hero.png'
+    image: '/assets/images/dotnet core part1/net-logo.svg'
   },
   {
     slug: 'dotnet core part2 deleted',
@@ -655,7 +655,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: '.NET',
     tags: ["dotnet","c#","ai","git","asp.net"],
-    image: '/assets/images/dotnet core part2 deleted/hero.png'
+    image: '/assets/images/dotnet core part2 deleted/net-logo.svg'
   },
   {
     slug: 'dotnet core part2',
@@ -664,7 +664,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: '.NET',
     tags: ["azure","dotnet","ai","ml","dynamics"],
-    image: '/assets/images/dotnet core part2/hero.png'
+    image: '/assets/images/dotnet core part2/net-logo.svg'
   },
   {
     slug: 'dotnet core part3',
@@ -673,7 +673,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: '.NET',
     tags: ["azure","dotnet","ai","ml","dynamics"],
-    image: '/assets/images/dotnet core part3/hero.png'
+    image: '/assets/images/dotnet core part3/net-logo.svg'
   },
   {
     slug: 'dynamicssales1',
@@ -682,7 +682,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","ml","dynamics"],
-    image: '/assets/images/dynamicssales1/hero.png'
+    image: '/assets/images/dynamicssales1/dynamics365-color.svg'
   },
   {
     slug: 'dynamicssales2',
@@ -691,7 +691,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","ml","dynamics"],
-    image: '/assets/images/dynamicssales2/hero.png'
+    image: '/assets/images/dynamicssales2/dynamics365-color.svg'
   },
   {
     slug: 'dynamicssales3',
@@ -700,7 +700,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","ml","dynamics"],
-    image: '/assets/images/dynamicssales3/hero.png'
+    image: '/assets/images/dynamicssales3/dynamics365-color.svg'
   },
   {
     slug: 'dynamicssales4',
@@ -709,7 +709,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","dynamics"],
-    image: '/assets/images/dynamicssales4/hero.png'
+    image: '/assets/images/dynamicssales4/dynamics365-color.svg'
   },
   {
     slug: 'dynamicstrialsignup',
@@ -718,7 +718,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","dynamics"],
-    image: '/assets/images/dynamicstrialsignup/hero.png'
+    image: '/assets/images/dynamicstrialsignup/dynamics365-color.svg'
   },
   {
     slug: 'electron',
@@ -727,7 +727,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["javascript","java","ai","ml","git"],
-    image: '/assets/images/electron/hero.png'
+    image: '/assets/images/electron/1200px-electron-software-framework-logo.svg-1200x1200.png'
   },
   {
     slug: 'financialoperationspurchaseinvoice',
@@ -736,7 +736,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","business central","dynamics"],
-    image: '/assets/images/financialoperationspurchaseinvoice/hero.png'
+    image: '/assets/images/financialoperationspurchaseinvoice/dynamics365-color.svg'
   },
   {
     slug: 'finetuning',
@@ -745,7 +745,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai"],
-    image: '/assets/images/finetuning/hero.png'
+    image: '/assets/images/finetuning/meta-platforms-inc.-logo.svg'
   },
   {
     slug: 'firebase',
@@ -754,7 +754,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["cloud","database","ai","git","github"],
-    image: '/assets/images/firebase/hero.png'
+    image: '/assets/images/firebase/logo-lockup-firebase-vertical.svg'
   },
   {
     slug: 'generalledger',
@@ -763,7 +763,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","business central","dynamics"],
-    image: '/assets/images/generalledger/hero.png'
+    image: '/assets/images/generalledger/dynamics365-color.svg'
   },
   {
     slug: 'generalpostingsetup',
@@ -772,7 +772,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","dynamics"],
-    image: '/assets/images/generalpostingsetup/hero.png'
+    image: '/assets/images/generalpostingsetup/dynamics365-color.svg'
   },
   {
     slug: 'gingerbreadhouse',
@@ -781,7 +781,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["python","ai"],
-    image: '/assets/images/gingerbreadhouse/hero.png'
+    image: '/assets/images/gingerbreadhouse/raspberry-pi-logo.svg'
   },
   {
     slug: 'google08ffec2589f7c95c',
@@ -808,7 +808,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["react","ai","ml"],
-    image: '/assets/images/graphql/hero.png'
+    image: '/assets/images/graphql/graphql-logo.svg-1200x1200.png'
   },
   {
     slug: 'hands-on-lab2.1',
@@ -817,7 +817,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["database","ai","business central","dynamics"],
-    image: '/assets/images/hands-on-lab2.1/hero.png'
+    image: '/assets/images/hands-on-lab2.1/dynamics365-color.svg'
   },
   {
     slug: 'hands-on-lab2.2',
@@ -826,7 +826,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","dynamics"],
-    image: '/assets/images/hands-on-lab2.2/hero.png'
+    image: '/assets/images/hands-on-lab2.2/dynamics365-color.svg'
   },
   {
     slug: 'hands-on-lab2.3',
@@ -835,7 +835,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","dynamics"],
-    image: '/assets/images/hands-on-lab2.3/hero.png'
+    image: '/assets/images/hands-on-lab2.3/dynamics365-color.svg'
   },
   {
     slug: 'hands-on-lab3.1',
@@ -844,7 +844,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","business central","dynamics","git"],
-    image: '/assets/images/hands-on-lab3.1/hero.png'
+    image: '/assets/images/hands-on-lab3.1/dynamics365-color.svg'
   },
   {
     slug: 'hubspotquotetemplate',
@@ -853,7 +853,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: [],
-    image: '/assets/images/hubspotquotetemplate/hero.png'
+    image: '/assets/images/hubspotquotetemplate/guidelines-the-sprocket.svg'
   },
   {
     slug: 'internetofthings1',
@@ -862,7 +862,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["docker","ai","git","github"],
-    image: '/assets/images/internetofthings1/hero.png'
+    image: '/assets/images/internetofthings1/iot-microchip.svg'
   },
   {
     slug: 'internetofthings2',
@@ -871,7 +871,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["docker"],
-    image: '/assets/images/internetofthings2/hero.png'
+    image: '/assets/images/internetofthings2/iot-microchip.svg'
   },
   {
     slug: 'internetofthings3',
@@ -880,7 +880,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","ml","machine learning","testing"],
-    image: '/assets/images/internetofthings3/hero.png'
+    image: '/assets/images/internetofthings3/iot-microchip.svg'
   },
   {
     slug: 'ionic',
@@ -889,7 +889,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["react","javascript","typescript","azure","aws"],
-    image: '/assets/images/ionic/hero.png'
+    image: '/assets/images/ionic/ionic-logo-landscape.svg'
   },
   {
     slug: 'javascriptgraph',
@@ -898,7 +898,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Java',
     tags: ["javascript","azure","java","ai","ml"],
-    image: '/assets/images/javascriptgraph/hero.png'
+    image: '/assets/images/javascriptgraph/office-365-icon-500x500.png'
   },
   {
     slug: 'kubernetes',
@@ -907,7 +907,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'DevOps',
     tags: ["docker","kubernetes","ai","ml"],
-    image: '/assets/images/kubernetes/hero.png'
+    image: '/assets/images/kubernetes/kubernetes-container-engine.svg'
   },
   {
     slug: 'langchain',
@@ -916,7 +916,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'AI/ML',
     tags: ["python","ai","ml","machine learning"],
-    image: '/assets/images/langchain/hero.png'
+    image: '/assets/images/langchain/chatgpt-logo.svg'
   },
   {
     slug: 'langchainagents',
@@ -925,7 +925,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'AI/ML',
     tags: ["python","ai"],
-    image: '/assets/images/langchainagents/hero.png'
+    image: '/assets/images/langchainagents/langchain.svg'
   },
   {
     slug: 'langflow1',
@@ -934,7 +934,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["python","ai"],
-    image: '/assets/images/langflow1/hero.png'
+    image: '/assets/images/langflow1/85702467-200x200.png'
   },
   {
     slug: 'leaflet',
@@ -943,7 +943,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["javascript","azure","java","ai","ml"],
-    image: '/assets/images/leaflet/hero.png'
+    image: '/assets/images/leaflet/leaflet-logo-600x159.png'
   },
   {
     slug: 'llamacorp',
@@ -952,7 +952,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["python","ai","ml"],
-    image: '/assets/images/llamacorp/hero.png'
+    image: '/assets/images/llamacorp/jupyter.svg'
   },
   {
     slug: 'lmstudio',
@@ -961,7 +961,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai"],
-    image: '/assets/images/lmstudio/hero.png'
+    image: '/assets/images/lmstudio/meta-platforms-inc.-logo.svg'
   },
   {
     slug: 'm365commandlineinterface',
@@ -970,7 +970,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["docker","ai","ml","git","github"],
-    image: '/assets/images/m365commandlineinterface/hero.png'
+    image: '/assets/images/m365commandlineinterface/office-365-icon-500x500.png'
   },
   {
     slug: 'macbook',
@@ -979,7 +979,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["python","ai"],
-    image: '/assets/images/macbook/hero.png'
+    image: '/assets/images/macbook/apple-logo-black.svg'
   },
   {
     slug: 'machinelearning',
@@ -988,7 +988,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'AI/ML',
     tags: ["sql","ai","machine learning"],
-    image: '/assets/images/machinelearning/hero.png'
+    image: '/assets/images/machinelearning/tensorflow-logo.svg'
   },
   {
     slug: 'machinelearning1',
@@ -997,7 +997,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'AI/ML',
     tags: ["cloud","ai","ml","machine learning"],
-    image: '/assets/images/machinelearning1/hero.png'
+    image: '/assets/images/machinelearning1/tensorflow-logo.svg'
   },
   {
     slug: 'machinelearning2',
@@ -1006,7 +1006,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'AI/ML',
     tags: ["javascript","java","python","sql","ai"],
-    image: '/assets/images/machinelearning2/hero.png'
+    image: '/assets/images/machinelearning2/tensorflow-logo.svg'
   },
   {
     slug: 'machinelearning3',
@@ -1015,7 +1015,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'AI/ML',
     tags: ["ai","ml","machine learning"],
-    image: '/assets/images/machinelearning3/hero.png'
+    image: '/assets/images/machinelearning3/tensorflow-logo.svg'
   },
   {
     slug: 'machinelearning4',
@@ -1024,7 +1024,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'AI/ML',
     tags: ["python","ai","ml","machine learning","git"],
-    image: '/assets/images/machinelearning4/hero.png'
+    image: '/assets/images/machinelearning4/tensorflow-logo.svg'
   },
   {
     slug: 'machinelearning5',
@@ -1033,7 +1033,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'AI/ML',
     tags: ["ai","machine learning","git","github"],
-    image: '/assets/images/machinelearning5/hero.png'
+    image: '/assets/images/machinelearning5/tensorflow-logo.svg'
   },
   {
     slug: 'machinelearning6',
@@ -1042,7 +1042,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'AI/ML',
     tags: ["ai","machine learning","testing"],
-    image: '/assets/images/machinelearning6/hero.png'
+    image: '/assets/images/machinelearning6/tensorflow-logo.svg'
   },
   {
     slug: 'machinelearning7',
@@ -1051,7 +1051,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'AI/ML',
     tags: ["cloud","ai","ml","machine learning"],
-    image: '/assets/images/machinelearning7/hero.png'
+    image: '/assets/images/machinelearning7/tensorflow-logo.svg'
   },
   {
     slug: 'machinelearning8',
@@ -1060,7 +1060,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'AI/ML',
     tags: ["ai","ml","machine learning","git","github"],
-    image: '/assets/images/machinelearning8/hero.png'
+    image: '/assets/images/machinelearning8/tensorflow-logo.svg'
   },
   {
     slug: 'machinelearning9',
@@ -1069,7 +1069,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'AI/ML',
     tags: ["database","ai","machine learning","git"],
-    image: '/assets/images/machinelearning9/hero.png'
+    image: '/assets/images/machinelearning9/tensorflow-logo.svg'
   },
   {
     slug: 'machinelearningwip',
@@ -1078,7 +1078,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'AI/ML',
     tags: ["ai","ml","machine learning","git","github"],
-    image: '/assets/images/machinelearningwip/hero.png'
+    image: '/assets/images/machinelearningwip/tensorflow-logo.svg'
   },
   {
     slug: 'macscreensharing',
@@ -1087,7 +1087,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai"],
-    image: '/assets/images/macscreensharing/hero.png'
+    image: '/assets/images/macscreensharing/apple-logo-black.svg'
   },
   {
     slug: 'mapextension',
@@ -1096,7 +1096,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["javascript","cloud","java","ai","business central"],
-    image: '/assets/images/mapextension/hero.png'
+    image: '/assets/images/mapextension/dynamics365-color.svg'
   },
   {
     slug: 'mcpserver',
@@ -1105,7 +1105,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["typescript","ai"],
-    image: '/assets/images/mcpserver/hero.png'
+    image: '/assets/images/mcpserver/mcp-1024x1024.png'
   },
   {
     slug: 'mcpserver2',
@@ -1114,7 +1114,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["azure","docker","ai","business central","git"],
-    image: '/assets/images/mcpserver2/hero.png'
+    image: '/assets/images/mcpserver2/mcp-1024x1024.png'
   },
   {
     slug: 'microsoftdynamics365appforoutlook',
@@ -1123,7 +1123,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","dynamics","power platform"],
-    image: '/assets/images/microsoftdynamics365appforoutlook/hero.png'
+    image: '/assets/images/microsoftdynamics365appforoutlook/office-365-icon-500x500.png'
   },
   {
     slug: 'microsoftgraph',
@@ -1132,7 +1132,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["javascript","azure","java","ai","dynamics"],
-    image: '/assets/images/microsoftgraph/hero.png'
+    image: '/assets/images/microsoftgraph/office-365-icon-500x500.png'
   },
   {
     slug: 'modeldriven1',
@@ -1141,7 +1141,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["sql","database","ai","power platform","testing"],
-    image: '/assets/images/modeldriven1/hero.png'
+    image: '/assets/images/modeldriven1/office-365-icon-500x500.png'
   },
   {
     slug: 'modeldriven2',
@@ -1150,7 +1150,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","dynamics","power platform","git"],
-    image: '/assets/images/modeldriven2/hero.png'
+    image: '/assets/images/modeldriven2/office-365-icon-500x500.png'
   },
   {
     slug: 'modeldriven3',
@@ -1159,7 +1159,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["javascript","java","ml","dynamics"],
-    image: '/assets/images/modeldriven3/hero.png'
+    image: '/assets/images/modeldriven3/office-365-icon-500x500.png'
   },
   {
     slug: 'modeldriven4',
@@ -1168,7 +1168,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["javascript","java","ai","power platform"],
-    image: '/assets/images/modeldriven4/hero.png'
+    image: '/assets/images/modeldriven4/office-365-icon-500x500.png'
   },
   {
     slug: 'modeldrivenapps',
@@ -1177,7 +1177,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["cloud","dotnet","ai","ml","dynamics"],
-    image: '/assets/images/modeldrivenapps/hero.png'
+    image: '/assets/images/modeldrivenapps/office-365-icon-500x500.png'
   },
   {
     slug: 'modeldrivenpurchaseorderlines',
@@ -1186,7 +1186,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","business central","power platform"],
-    image: '/assets/images/modeldrivenpurchaseorderlines/hero.png'
+    image: '/assets/images/modeldrivenpurchaseorderlines/office-365-icon-500x500.png'
   },
   {
     slug: 'modeldrivenpurchaseorders',
@@ -1195,7 +1195,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","business central","dynamics","power platform"],
-    image: '/assets/images/modeldrivenpurchaseorders/hero.png'
+    image: '/assets/images/modeldrivenpurchaseorders/office-365-icon-500x500.png'
   },
   {
     slug: 'mssqlserver',
@@ -1204,7 +1204,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["javascript","azure","docker","dotnet","c#"],
-    image: '/assets/images/mssqlserver/hero.png'
+    image: '/assets/images/mssqlserver/ads.svg'
   },
   {
     slug: 'mssqlserver2',
@@ -1213,7 +1213,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["javascript","dotnet","c#","java","sql"],
-    image: '/assets/images/mssqlserver2/hero.png'
+    image: '/assets/images/mssqlserver2/ads.svg'
   },
   {
     slug: 'mssqlserver3',
@@ -1222,7 +1222,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["react","javascript","typescript","azure","java"],
-    image: '/assets/images/mssqlserver3/hero.png'
+    image: '/assets/images/mssqlserver3/ads.svg'
   },
   {
     slug: 'multiplayer',
@@ -1231,7 +1231,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["javascript","java","database","ai","ml"],
-    image: '/assets/images/multiplayer/hero.png'
+    image: '/assets/images/multiplayer/logo-lockup-firebase-vertical.svg'
   },
   {
     slug: 'mysql',
@@ -1240,7 +1240,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["javascript","aws","java","mysql","sql"],
-    image: '/assets/images/mysql/hero.png'
+    image: '/assets/images/mysql/includes-mysql-5646x2872.png'
   },
   {
     slug: 'nextjs1',
@@ -1249,7 +1249,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Web Development',
     tags: ["react","javascript","aws","java","git"],
-    image: '/assets/images/nextjs1/hero.png'
+    image: '/assets/images/nextjs1/2560px-nextjs-logo.svg-1536x920.png'
   },
   {
     slug: 'nextjs2',
@@ -1258,7 +1258,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Web Development',
     tags: ["javascript","aws","java","ai","ml"],
-    image: '/assets/images/nextjs2/hero.png'
+    image: '/assets/images/nextjs2/2560px-nextjs-logo.svg-1536x920.png'
   },
   {
     slug: 'nextjs3',
@@ -1267,7 +1267,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Web Development',
     tags: ["aws","database","ai","git","github"],
-    image: '/assets/images/nextjs3/hero.png'
+    image: '/assets/images/nextjs3/2560px-nextjs-logo.svg-1536x920.png'
   },
   {
     slug: 'nextjs4',
@@ -1276,7 +1276,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Web Development',
     tags: ["azure","aws","git","github"],
-    image: '/assets/images/nextjs4/hero.png'
+    image: '/assets/images/nextjs4/2560px-nextjs-logo.svg-1536x920.png'
   },
   {
     slug: 'nextjs5',
@@ -1285,7 +1285,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Web Development',
     tags: ["typescript","azure","aws","ai","ml"],
-    image: '/assets/images/nextjs5/hero.png'
+    image: '/assets/images/nextjs5/2560px-nextjs-logo.svg-1536x920.png'
   },
   {
     slug: 'ngrx',
@@ -1294,7 +1294,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["angular","react","typescript","ai","ml"],
-    image: '/assets/images/ngrx/hero.png'
+    image: '/assets/images/ngrx/ngrx.svg'
   },
   {
     slug: 'ngrxdevtools',
@@ -1303,7 +1303,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["angular","git","github"],
-    image: '/assets/images/ngrxdevtools/hero.png'
+    image: '/assets/images/ngrxdevtools/ngrx.svg'
   },
   {
     slug: 'ngrxentity',
@@ -1312,7 +1312,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","git","github","testing"],
-    image: '/assets/images/ngrxentity/hero.png'
+    image: '/assets/images/ngrxentity/ngrx.svg'
   },
   {
     slug: 'notes',
@@ -1330,7 +1330,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["javascript","java","ai","git","github"],
-    image: '/assets/images/npm/hero.png'
+    image: '/assets/images/npm/6078720-200x200.png'
   },
   {
     slug: 'npmcc',
@@ -1339,7 +1339,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","git","github","testing"],
-    image: '/assets/images/npmcc/hero.png'
+    image: '/assets/images/npmcc/6078720-200x200.png'
   },
   {
     slug: 'nuget',
@@ -1348,7 +1348,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["dotnet","c#","ai","git","github"],
-    image: '/assets/images/nuget/hero.png'
+    image: '/assets/images/nuget/logo-og-600x600.png'
   },
   {
     slug: 'ollamadeepsekr1applemacbookinstall',
@@ -1357,7 +1357,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","testing"],
-    image: '/assets/images/ollamadeepsekr1applemacbookinstall/hero.png'
+    image: '/assets/images/ollamadeepsekr1applemacbookinstall/254932576-0d0b44e2-8f4a-4e99-9b52-a5c1c741c8f7-844x844.png'
   },
   {
     slug: 'opencv',
@@ -1366,7 +1366,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["python","git","github"],
-    image: '/assets/images/opencv/hero.png'
+    image: '/assets/images/opencv/raspberry-pi-logo.svg'
   },
   {
     slug: 'page134',
@@ -1375,7 +1375,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","business central","dynamics"],
-    image: '/assets/images/page134/hero.png'
+    image: '/assets/images/page134/dynamics365-color.svg'
   },
   {
     slug: 'page141',
@@ -1384,7 +1384,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["azure","docker","java","spring","postgresql"],
-    image: '/assets/images/page141/hero.png'
+    image: '/assets/images/page141/spring-framework-logo-2018.svg'
   },
   {
     slug: 'page152',
@@ -1393,7 +1393,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","business central","dynamics"],
-    image: '/assets/images/page152/hero.png'
+    image: '/assets/images/page152/dynamics365-color.svg'
   },
   {
     slug: 'page199',
@@ -1402,7 +1402,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","business central","dynamics","power platform"],
-    image: '/assets/images/page199/hero.png'
+    image: '/assets/images/page199/powerpages-scalable.svg'
   },
   {
     slug: 'page200',
@@ -1411,7 +1411,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["javascript","java","ai","ml","business central"],
-    image: '/assets/images/page200/hero.png'
+    image: '/assets/images/page200/powerpages-scalable.svg'
   },
   {
     slug: 'page50',
@@ -1420,7 +1420,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["aws"],
-    image: '/assets/images/page50/hero.png'
+    image: '/assets/images/page50/2560px-nextjs-logo.svg-1536x920.png'
   },
   {
     slug: 'page55',
@@ -1438,7 +1438,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["python","ai","ml","machine learning","git"],
-    image: '/assets/images/page65/hero.png'
+    image: '/assets/images/page65/tensorflow-logo.svg'
   },
   {
     slug: 'page68',
@@ -1447,7 +1447,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","machine learning"],
-    image: '/assets/images/page68/hero.png'
+    image: '/assets/images/page68/tensorflow-logo.svg'
   },
   {
     slug: 'page75',
@@ -1465,7 +1465,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["azure","docker","dotnet","sql","database"],
-    image: '/assets/images/page86/hero.png'
+    image: '/assets/images/page86/net-logo.svg'
   },
   {
     slug: 'phaser',
@@ -1474,7 +1474,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","ml","git","github"],
-    image: '/assets/images/phaser/hero.png'
+    image: '/assets/images/phaser/phaser-logo-1836x1530.png'
   },
   {
     slug: 'phpsetup',
@@ -1483,7 +1483,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ml"],
-    image: '/assets/images/phpsetup/hero.png'
+    image: '/assets/images/phpsetup/php-logo.svg'
   },
   {
     slug: 'pi1',
@@ -1492,7 +1492,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: [],
-    image: '/assets/images/pi1/hero.png'
+    image: '/assets/images/pi1/raspberry-pi-logo.svg'
   },
   {
     slug: 'pi2',
@@ -1501,7 +1501,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["python","ai"],
-    image: '/assets/images/pi2/hero.png'
+    image: '/assets/images/pi2/raspberry-pi-logo.svg'
   },
   {
     slug: 'pluginactions',
@@ -1510,7 +1510,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai"],
-    image: '/assets/images/pluginactions/hero.png'
+    image: '/assets/images/pluginactions/office-365-icon-500x500.png'
   },
   {
     slug: 'postinggroups',
@@ -1519,7 +1519,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","business central","dynamics"],
-    image: '/assets/images/postinggroups/hero.png'
+    image: '/assets/images/postinggroups/dynamics365-color.svg'
   },
   {
     slug: 'posts',
@@ -1537,7 +1537,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["sql","business central"],
-    image: '/assets/images/powerapps23/hero.png'
+    image: '/assets/images/powerapps23/office-365-icon-500x500.png'
   },
   {
     slug: 'powerapps23configurationmigrationtool',
@@ -1546,7 +1546,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","ml","power platform"],
-    image: '/assets/images/powerapps23configurationmigrationtool/hero.png'
+    image: '/assets/images/powerapps23configurationmigrationtool/office-365-icon-500x500.png'
   },
   {
     slug: 'powerapps6',
@@ -1555,7 +1555,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["azure","ai"],
-    image: '/assets/images/powerapps6/hero.png'
+    image: '/assets/images/powerapps6/office-365-icon-500x500.png'
   },
   {
     slug: 'powerappsapplication',
@@ -1564,7 +1564,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["database","ai"],
-    image: '/assets/images/powerappsapplication/hero.png'
+    image: '/assets/images/powerappsapplication/office-365-icon-500x500.png'
   },
   {
     slug: 'powerappswithrest',
@@ -1573,7 +1573,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["azure","dotnet","git","github","asp.net"],
-    image: '/assets/images/powerappswithrest/hero.png'
+    image: '/assets/images/powerappswithrest/office-365-icon-500x500.png'
   },
   {
     slug: 'powerappsxx',
@@ -1582,7 +1582,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["sql","business central"],
-    image: '/assets/images/powerappsxx/hero.png'
+    image: '/assets/images/powerappsxx/office-365-icon-500x500.png'
   },
   {
     slug: 'powerautomate',
@@ -1591,7 +1591,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: [],
-    image: '/assets/images/powerautomate/hero.png'
+    image: '/assets/images/powerautomate/office-365-icon-500x500.png'
   },
   {
     slug: 'powerautomatereports',
@@ -1600,7 +1600,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["cloud","ai","dynamics"],
-    image: '/assets/images/powerautomatereports/hero.png'
+    image: '/assets/images/powerautomatereports/office-365-icon-500x500.png'
   },
   {
     slug: 'powerpages1',
@@ -1609,7 +1609,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","business central","dynamics","power platform"],
-    image: '/assets/images/powerpages1/hero.png'
+    image: '/assets/images/powerpages1/powerpages-scalable.svg'
   },
   {
     slug: 'powerpages2',
@@ -1618,7 +1618,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","business central"],
-    image: '/assets/images/powerpages2/hero.png'
+    image: '/assets/images/powerpages2/powerpages-scalable.svg'
   },
   {
     slug: 'powerpages3',
@@ -1627,7 +1627,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","business central"],
-    image: '/assets/images/powerpages3/hero.png'
+    image: '/assets/images/powerpages3/powerpages-scalable.svg'
   },
   {
     slug: 'promptdialog',
@@ -1636,7 +1636,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["cloud","ai","business central","dynamics"],
-    image: '/assets/images/promptdialog/hero.png'
+    image: '/assets/images/promptdialog/dynamics365-color.svg'
   },
   {
     slug: 'promptdialog2',
@@ -1645,7 +1645,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["azure","cloud","ai","business central","dynamics"],
-    image: '/assets/images/promptdialog2/hero.png'
+    image: '/assets/images/promptdialog2/dynamics365-color.svg'
   },
   {
     slug: 'promptdialog3',
@@ -1654,7 +1654,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["javascript","java","ai","ml","business central"],
-    image: '/assets/images/promptdialog3/hero.png'
+    image: '/assets/images/promptdialog3/dynamics365-color.svg'
   },
   {
     slug: 'promptengineering',
@@ -1663,7 +1663,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai"],
-    image: '/assets/images/promptengineering/hero.png'
+    image: '/assets/images/promptengineering/meta-platforms-inc.-logo.svg'
   },
   {
     slug: 'promptflow1',
@@ -1672,7 +1672,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["azure","docker","kubernetes","devops","python"],
-    image: '/assets/images/promptflow1/hero.png'
+    image: '/assets/images/promptflow1/logo.svg'
   },
   {
     slug: 'promptflow2',
@@ -1681,7 +1681,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["docker","ai"],
-    image: '/assets/images/promptflow2/hero.png'
+    image: '/assets/images/promptflow2/logo.svg'
   },
   {
     slug: 'promptflow3',
@@ -1690,7 +1690,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["python","ai","git","github"],
-    image: '/assets/images/promptflow3/hero.png'
+    image: '/assets/images/promptflow3/logo.svg'
   },
   {
     slug: 'promptflow4',
@@ -1699,7 +1699,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai"],
-    image: '/assets/images/promptflow4/hero.png'
+    image: '/assets/images/promptflow4/logo.svg'
   },
   {
     slug: 'promptflow5',
@@ -1708,7 +1708,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["docker","python","ai"],
-    image: '/assets/images/promptflow5/hero.png'
+    image: '/assets/images/promptflow5/logo.svg'
   },
   {
     slug: 'promptflow6',
@@ -1717,7 +1717,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["python","ai"],
-    image: '/assets/images/promptflow6/hero.png'
+    image: '/assets/images/promptflow6/logo.svg'
   },
   {
     slug: 'purchaseinvoice',
@@ -1726,7 +1726,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","dynamics"],
-    image: '/assets/images/purchaseinvoice/hero.png'
+    image: '/assets/images/purchaseinvoice/dynamics365-color.svg'
   },
   {
     slug: 'purview',
@@ -1735,7 +1735,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai"],
-    image: '/assets/images/purview/hero.png'
+    image: '/assets/images/purview/office-365-icon-500x500.png'
   },
   {
     slug: 'pwa',
@@ -1744,7 +1744,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["javascript","azure","java","ai","ml"],
-    image: '/assets/images/pwa/hero.png'
+    image: '/assets/images/pwa/progressive-web-apps-logo.svg'
   },
   {
     slug: 'reactandasp.net',
@@ -1753,7 +1753,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: '.NET',
     tags: ["angular","react","dotnet","sql","database"],
-    image: '/assets/images/reactandasp.net/hero.png'
+    image: '/assets/images/reactandasp.net/logo512-512x512.png'
   },
   {
     slug: 'reactusestateuseeffect',
@@ -1762,7 +1762,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Web Development',
     tags: ["react"],
-    image: '/assets/images/reactusestateuseeffect/hero.png'
+    image: '/assets/images/reactusestateuseeffect/logo512-512x512.png'
   },
   {
     slug: 'restapiservice',
@@ -1771,7 +1771,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["javascript","docker","java","ai"],
-    image: '/assets/images/restapiservice/hero.png'
+    image: '/assets/images/restapiservice/fve-image.svg'
   },
   {
     slug: 'rewardsextension',
@@ -1780,7 +1780,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","ml","business central","dynamics"],
-    image: '/assets/images/rewardsextension/hero.png'
+    image: '/assets/images/rewardsextension/dynamics365-color.svg'
   },
   {
     slug: 'sails1',
@@ -1789,7 +1789,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'AI/ML',
     tags: ["azure","aws","devops","database","ai"],
-    image: '/assets/images/sails1/hero.png'
+    image: '/assets/images/sails1/sailsjs-logo-515x193.png'
   },
   {
     slug: 'sails2',
@@ -1798,7 +1798,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'AI/ML',
     tags: ["azure","aws","ai","git","github"],
-    image: '/assets/images/sails2/hero.png'
+    image: '/assets/images/sails2/sailsjs-logo-515x193.png'
   },
   {
     slug: 'sails3',
@@ -1807,7 +1807,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'AI/ML',
     tags: ["aws","docker","kubernetes","ai","ml"],
-    image: '/assets/images/sails3/hero.png'
+    image: '/assets/images/sails3/sailsjs-logo-515x193.png'
   },
   {
     slug: 'salesinvoice',
@@ -1816,7 +1816,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","dynamics"],
-    image: '/assets/images/salesinvoice/hero.png'
+    image: '/assets/images/salesinvoice/dynamics365-color.svg'
   },
   {
     slug: 'sentenceembeddings',
@@ -1825,7 +1825,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","machine learning"],
-    image: '/assets/images/sentenceembeddings/hero.png'
+    image: '/assets/images/sentenceembeddings/chatgpt-logo.svg'
   },
   {
     slug: 'sentencesimilarity',
@@ -1834,7 +1834,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai"],
-    image: '/assets/images/sentencesimilarity/hero.png'
+    image: '/assets/images/sentencesimilarity/chatgpt-logo.svg'
   },
   {
     slug: 'sentimentanalysis',
@@ -1843,7 +1843,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","machine learning"],
-    image: '/assets/images/sentimentanalysis/hero.png'
+    image: '/assets/images/sentimentanalysis/chatgpt-logo.svg'
   },
   {
     slug: 'sh1106',
@@ -1852,7 +1852,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["python","ml","machine learning"],
-    image: '/assets/images/sh1106/hero.png'
+    image: '/assets/images/sh1106/raspberry-pi-logo.svg'
   },
   {
     slug: 'sharepoint2019',
@@ -1861,7 +1861,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["azure","sql","database","ai"],
-    image: '/assets/images/sharepoint2019/hero.png'
+    image: '/assets/images/sharepoint2019/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png'
   },
   {
     slug: 'sharepointsitedesignsandsitescripts',
@@ -1870,7 +1870,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai"],
-    image: '/assets/images/sharepointsitedesignsandsitescripts/hero.png'
+    image: '/assets/images/sharepointsitedesignsandsitescripts/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png'
   },
   {
     slug: 'sharepointwebpart1',
@@ -1879,7 +1879,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["react","typescript","ai","ml","testing"],
-    image: '/assets/images/sharepointwebpart1/hero.png'
+    image: '/assets/images/sharepointwebpart1/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png'
   },
   {
     slug: 'sharepointwebpart2',
@@ -1888,7 +1888,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["react","javascript","java","ai","ml"],
-    image: '/assets/images/sharepointwebpart2/hero.png'
+    image: '/assets/images/sharepointwebpart2/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png'
   },
   {
     slug: 'spring-boot-2',
@@ -1897,7 +1897,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Java',
     tags: ["azure","java","spring","ai","git"],
-    image: '/assets/images/spring-boot-2/hero.png'
+    image: '/assets/images/spring-boot-2/spring-framework-logo-2018.svg'
   },
   {
     slug: 'spring-boot-3',
@@ -1906,7 +1906,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Java',
     tags: ["azure","java","spring","git","github"],
-    image: '/assets/images/spring-boot-3/hero.png'
+    image: '/assets/images/spring-boot-3/spring-framework-logo-2018.svg'
   },
   {
     slug: 'spring-boot-4',
@@ -1915,7 +1915,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Java',
     tags: ["java","spring"],
-    image: '/assets/images/spring-boot-4/hero.png'
+    image: '/assets/images/spring-boot-4/spring-framework-logo-2018.svg'
   },
   {
     slug: 'spring-boot-5',
@@ -1924,7 +1924,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Java',
     tags: ["java","spring","ai","ml","git"],
-    image: '/assets/images/spring-boot-5/hero.png'
+    image: '/assets/images/spring-boot-5/spring-framework-logo-2018.svg'
   },
   {
     slug: 'spring-boot-6',
@@ -1933,7 +1933,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Java',
     tags: ["java","spring","ai","git","github"],
-    image: '/assets/images/spring-boot-6/hero.png'
+    image: '/assets/images/spring-boot-6/spring-framework-logo-2018.svg'
   },
   {
     slug: 'spring-boot',
@@ -1942,7 +1942,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Java',
     tags: ["react","javascript","java","spring","ai"],
-    image: '/assets/images/spring-boot/hero.png'
+    image: '/assets/images/spring-boot/spring-framework-logo-2018.svg'
   },
   {
     slug: 'sprint-apps1',
@@ -1951,7 +1951,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["azure","java","spring","ai"],
-    image: '/assets/images/sprint-apps1/hero.png'
+    image: '/assets/images/sprint-apps1/spring-framework-logo-2018.svg'
   },
   {
     slug: 'stablediffusion',
@@ -1960,7 +1960,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["python","ai","git","github"],
-    image: '/assets/images/stablediffusion/hero.png'
+    image: '/assets/images/stablediffusion/jupyter.svg'
   },
   {
     slug: 'staticwebapp.config.json',
@@ -1969,7 +1969,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["azure","ai","ml","git","github"],
-    image: '/assets/images/staticwebapp.config.json/hero.png'
+    image: '/assets/images/staticwebapp.config.json/azurex70x75.svg'
   },
   {
     slug: 'streamlit',
@@ -1978,7 +1978,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["python","ai","ml","machine learning"],
-    image: '/assets/images/streamlit/hero.png'
+    image: '/assets/images/streamlit/chatgpt-logo.svg'
   },
   {
     slug: 'syntexautofill',
@@ -1987,7 +1987,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","ml"],
-    image: '/assets/images/syntexautofill/hero.png'
+    image: '/assets/images/syntexautofill/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png'
   },
   {
     slug: 'taxsetup',
@@ -1996,7 +1996,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","business central","dynamics"],
-    image: '/assets/images/taxsetup/hero.png'
+    image: '/assets/images/taxsetup/dynamics365-color.svg'
   },
   {
     slug: 'teamstoolkit',
@@ -2005,7 +2005,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["react","azure","cloud","sql","database"],
-    image: '/assets/images/teamstoolkit/hero.png'
+    image: '/assets/images/teamstoolkit/teams-hi-res-icon-2019.svg'
   },
   {
     slug: 'teamstoolkitspfx',
@@ -2014,7 +2014,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["azure","cloud","ai","git","github"],
-    image: '/assets/images/teamstoolkitspfx/hero.png'
+    image: '/assets/images/teamstoolkitspfx/teams-hi-res-icon-2019.svg'
   },
   {
     slug: 'threejs',
@@ -2023,7 +2023,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["javascript","java","ai"],
-    image: '/assets/images/threejs/hero.png'
+    image: '/assets/images/threejs/three.js-icon.svg'
   },
   {
     slug: 'threetier',
@@ -2032,7 +2032,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["dotnet","sql","database","ai","asp.net"],
-    image: '/assets/images/threetier/hero.png'
+    image: '/assets/images/threetier/net-logo.svg'
   },
   {
     slug: 'ticktacktoe',
@@ -2041,7 +2041,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["javascript","java","database","ai","ml"],
-    image: '/assets/images/ticktacktoe/hero.png'
+    image: '/assets/images/ticktacktoe/logo-lockup-firebase-vertical.svg'
   },
   {
     slug: 'topics',
@@ -2050,7 +2050,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["business central"],
-    image: '/assets/images/topics/hero.png'
+    image: '/assets/images/topics/office-365-icon-500x500.png'
   },
   {
     slug: 'vbnetconsolesqlserverunittests',
@@ -2059,7 +2059,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["dotnet","sql","database","ai","testing"],
-    image: '/assets/images/vbnetconsolesqlserverunittests/hero.png'
+    image: '/assets/images/vbnetconsolesqlserverunittests/net-logo.svg'
   },
   {
     slug: 'vbnetwinforms',
@@ -2068,7 +2068,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["dotnet","ai","asp.net"],
-    image: '/assets/images/vbnetwinforms/hero.png'
+    image: '/assets/images/vbnetwinforms/net-logo.svg'
   },
   {
     slug: 'vendorpostinggroup',
@@ -2077,7 +2077,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","business central","dynamics"],
-    image: '/assets/images/vendorpostinggroup/hero.png'
+    image: '/assets/images/vendorpostinggroup/dynamics365-color.svg'
   },
   {
     slug: 'warehousemanagementputaway',
@@ -2086,7 +2086,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","business central","dynamics"],
-    image: '/assets/images/warehousemanagementputaway/hero.png'
+    image: '/assets/images/warehousemanagementputaway/dynamics365-color.svg'
   },
   {
     slug: 'webcomponents',
@@ -2095,7 +2095,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["angular","react","vue","javascript","java"],
-    image: '/assets/images/webcomponents/hero.png'
+    image: '/assets/images/webcomponents/web-components-logo.svg'
   },
   {
     slug: 'webvr',
@@ -2104,7 +2104,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","git","github"],
-    image: '/assets/images/webvr/hero.png'
+    image: '/assets/images/webvr/webvr-logo-square-512x512.png'
   },
   {
     slug: 'webvrdemo',
@@ -2176,7 +2176,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["javascript","java"],
-    image: '/assets/images/webvrpart2/hero.png'
+    image: '/assets/images/webvrpart2/webvr-logo-square-512x512.png'
   },
   {
     slug: 'webvrscene',
@@ -2203,7 +2203,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ml","git","github"],
-    image: '/assets/images/webxr/hero.png'
+    image: '/assets/images/webxr/34385910-400x400.png'
   },
   {
     slug: 'webxrscene',
@@ -2221,7 +2221,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai"],
-    image: '/assets/images/xcode1/hero.png'
+    image: '/assets/images/xcode1/xcode-14-icon-300x314.png'
   },
   {
     slug: 'xcode2',
@@ -2230,7 +2230,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai"],
-    image: '/assets/images/xcode2/hero.png'
+    image: '/assets/images/xcode2/xcode-14-icon-300x314.png'
   },
   {
     slug: 'xcode3',
@@ -2239,7 +2239,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai"],
-    image: '/assets/images/xcode3/hero.png'
+    image: '/assets/images/xcode3/xcode-14-icon-300x314.png'
   },
   {
     slug: 'xcode4',
@@ -2248,7 +2248,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai","ml"],
-    image: '/assets/images/xcode4/hero.png'
+    image: '/assets/images/xcode4/xcode-14-icon-300x314.png'
   },
   {
     slug: 'yolo',
@@ -2257,7 +2257,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai"],
-    image: '/assets/images/yolo/hero.png'
+    image: '/assets/images/yolo/chatgpt-logo.svg'
   },
   {
     slug: 'azure-ai-part-1',
