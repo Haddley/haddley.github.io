@@ -3,7 +3,7 @@ title: "Power Apps, Custom Connectors and Application Registrations"
 description: "A comprehensive guide covering power apps, custom connectors and application registrations"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/customconnectorsappregistrations/hero.png"
+image: "/assets/images/office-365-icon-500x500.png"
 tags: ["javascript","azure","java","ai","git"]
 ---
 

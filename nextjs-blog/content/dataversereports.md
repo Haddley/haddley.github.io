@@ -3,7 +3,7 @@ title: "Microsoft Dataverse Reports"
 description: "A comprehensive guide covering microsoft dataverse reports"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/dataversereports/hero.png"
+image: "/assets/images/office-365-icon-500x500.png"
 tags: []
 ---
 

@@ -3,7 +3,7 @@ title: "Sentiment Analysis"
 description: "A comprehensive guide covering sentiment analysis"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/sentimentanalysis/hero.png"
+image: "/assets/images/chatgpt-logo.svg"
 tags: ["ai","machine learning"]
 ---
 

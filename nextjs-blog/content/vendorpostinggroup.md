@@ -3,7 +3,7 @@ title: "Vendor Posting Group"
 description: "A comprehensive guide covering vendor posting group"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/vendorpostinggroup/hero.png"
+image: "/assets/images/posts-meta.svg"
 tags: ["ai","business central","dynamics"]
 ---
 

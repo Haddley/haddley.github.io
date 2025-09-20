@@ -3,7 +3,7 @@ title: "Raspberry Pi GPIO"
 description: "A comprehensive guide covering raspberry pi gpio"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/pi2/hero.png"
+image: "/assets/images/raspberry-pi-logo.svg"
 tags: ["python","ai"]
 ---
 

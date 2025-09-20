@@ -3,7 +3,7 @@ title: "Next.js (Part 5)"
 description: "A comprehensive guide covering next.js (part 5)"
 date: "2025-09-20"
 category: "Web Development"
-image: "/assets/images/nextjs5/hero.png"
+image: "/assets/images/2560px-nextjs-logo.svg-1536x920.png"
 tags: ["typescript","azure","aws","ai","ml"]
 ---
 

@@ -3,7 +3,7 @@ title: "Customer Content Virtual Tables"
 description: "A comprehensive guide covering customer content virtual tables"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/customercontentvirtualtables/hero.png"
+image: "/assets/images/dataverse-logo.png"
 tags: ["ai","business central","power platform"]
 ---
 

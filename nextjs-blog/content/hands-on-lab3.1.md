@@ -3,7 +3,7 @@ title: "Hands-on-Lab 3.1"
 description: "A comprehensive guide covering hands-on-lab 3.1"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/hands-on-lab3.1/hero.png"
+image: "/assets/images/lab-icon.png"
 tags: ["ai","business central","dynamics","git"]
 ---
 

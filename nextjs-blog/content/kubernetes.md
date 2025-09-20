@@ -3,7 +3,7 @@ title: "Kubernetes"
 description: "A comprehensive guide covering kubernetes"
 date: "2025-09-20"
 category: "DevOps"
-image: "/assets/images/kubernetes/hero.png"
+image: "/assets/images/kubernetes-container-engine.svg"
 tags: ["docker","kubernetes","ai","ml"]
 ---
 

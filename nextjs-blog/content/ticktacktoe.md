@@ -3,7 +3,7 @@ title: "Multiplayer Tick-Tack-Toe"
 description: "A comprehensive guide covering multiplayer tick-tack-toe"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/ticktacktoe/hero.png"
+image: "/assets/images/logo-lockup-firebase-vertical.svg"
 tags: ["javascript","java","database","ai","ml"]
 ---
 

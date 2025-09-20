@@ -3,7 +3,7 @@ title: "ASP.NET Core"
 description: "A comprehensive guide covering asp.net core"
 date: "2025-09-20"
 category: ".NET"
-image: "/assets/images/asp.net core/hero.png"
+image: "/assets/images/aspnetcore"
 tags: ["dotnet","sql","database","ai","ml"]
 ---
 

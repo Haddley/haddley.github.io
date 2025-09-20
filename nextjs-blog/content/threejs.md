@@ -3,7 +3,7 @@ title: "Three.js"
 description: "A comprehensive guide covering three.js"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/threejs/hero.png"
+image: "/assets/images/three.js-icon.svg"
 tags: ["javascript","java","ai"]
 ---
 

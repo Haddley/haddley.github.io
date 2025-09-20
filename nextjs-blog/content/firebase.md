@@ -3,7 +3,7 @@ title: "Firebase"
 description: "A comprehensive guide covering firebase"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/firebase/hero.png"
+image: "/assets/images/logo-lockup-firebase-vertical.svg"
 tags: ["cloud","database","ai","git","github"]
 ---
 

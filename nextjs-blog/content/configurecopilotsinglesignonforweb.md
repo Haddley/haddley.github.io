@@ -3,7 +3,7 @@ title: "Configure Copilot single sign-on for Web"
 description: "A comprehensive guide covering configure copilot single sign-on for web"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/configurecopilotsinglesignonforweb/hero.png"
+image: "/assets/images/office-365-icon-500x500.png"
 tags: ["azure","docker","ai","ml","git"]
 ---
 

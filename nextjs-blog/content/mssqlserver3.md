@@ -3,7 +3,7 @@ title: "Microsoft SQL Server (Part 3)"
 description: "A comprehensive guide covering microsoft sql server (part 3)"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/mssqlserver3/hero.png"
+image: "/assets/images/sql-server-logo.png"
 tags: ["react","javascript","typescript","azure","java"]
 ---
 

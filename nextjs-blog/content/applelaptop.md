@@ -3,7 +3,7 @@ title: "Apple MacBook"
 description: "A comprehensive guide covering apple macbook"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/applelaptop/hero.png"
+image: "/assets/images/jupyter.svg"
 tags: ["python","ai","machine learning"]
 ---
 

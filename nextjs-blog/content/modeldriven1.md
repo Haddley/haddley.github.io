@@ -3,7 +3,7 @@ title: "Model Driven Apps (Part 1)"
 description: "A comprehensive guide covering model driven apps (part 1)"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/modeldriven1/hero.png"
+image: "/assets/images/office-365-icon-500x500.png"
 tags: ["sql","database","ai","power platform","testing"]
 ---
 

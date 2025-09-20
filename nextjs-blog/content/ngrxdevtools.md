@@ -3,7 +3,7 @@ title: "NGRX devtools"
 description: "A comprehensive guide covering ngrx devtools"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/ngrxdevtools/hero.png"
+image: "/assets/images/ngrx.svg"
 tags: ["angular","git","github"]
 ---
 

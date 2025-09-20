@@ -3,7 +3,7 @@ title: "Business Central (Part 27) PromptDialog"
 description: "A comprehensive guide covering business central (part 27) promptdialog"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/promptdialog/hero.png"
+image: "/assets/images/posts-meta.svg"
 tags: ["cloud","ai","business central","dynamics"]
 ---
 

@@ -3,7 +3,7 @@ title: "Electron"
 description: "A comprehensive guide covering electron"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/electron/hero.png"
+image: "/assets/images/1200px-electron-software-framework-logo.svg-1200x1200.png"
 tags: ["javascript","java","ai","ml","git"]
 ---
 

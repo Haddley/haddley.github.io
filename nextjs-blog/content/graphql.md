@@ -3,7 +3,7 @@ title: "GraphQL"
 description: "A comprehensive guide covering graphql"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/graphql/hero.png"
+image: "/assets/images/graphql-logo.svg-1200x1200.png"
 tags: ["react","ai","ml"]
 ---
 

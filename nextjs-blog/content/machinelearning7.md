@@ -3,7 +3,7 @@ title: "Machine Learning (Part 7)"
 description: "A comprehensive guide covering machine learning (part 7)"
 date: "2025-09-20"
 category: "AI/ML"
-image: "/assets/images/machinelearning7/hero.png"
+image: "/assets/images/tensorflow-logo.svg"
 tags: ["cloud","ai","ml","machine learning"]
 ---
 

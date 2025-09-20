@@ -3,7 +3,7 @@ title: "Custom Copilot Studio"
 description: "A comprehensive guide covering custom copilot studio"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/customcopilotstudio/hero.png"
+image: "/assets/images/posts-meta.svg"
 tags: ["ai","business central","dynamics"]
 ---
 

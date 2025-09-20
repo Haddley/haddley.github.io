@@ -3,7 +3,7 @@ title: "Prompt Flow (Part 2)"
 description: "A comprehensive guide covering prompt flow (part 2)"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/promptflow2/hero.png"
+image: "/assets/images/logo.svg"
 tags: ["docker","ai"]
 ---
 

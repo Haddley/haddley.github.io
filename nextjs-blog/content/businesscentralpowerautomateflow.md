@@ -3,7 +3,7 @@ title: "Business Central Power Automate Flow"
 description: "A comprehensive guide covering business central power automate flow"
 date: "2025-09-20"
 category: "Business Central"
-image: "/assets/images/businesscentralpowerautomateflow/hero.png"
+image: "/assets/images/posts-meta.svg"
 tags: ["cloud","ai","business central","dynamics"]
 ---
 

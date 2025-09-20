@@ -3,7 +3,7 @@ title: "Next.js (Part 1)"
 description: "A comprehensive guide covering next.js (part 1)"
 date: "2025-09-20"
 category: "Web Development"
-image: "/assets/images/nextjs1/hero.png"
+image: "/assets/images/2560px-nextjs-logo.svg-1536x920.png"
 tags: ["react","javascript","aws","java","git"]
 ---
 

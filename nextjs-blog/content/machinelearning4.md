@@ -3,7 +3,7 @@ title: "Machine Learning (Part 4)"
 description: "A comprehensive guide covering machine learning (part 4)"
 date: "2025-09-20"
 category: "AI/ML"
-image: "/assets/images/machinelearning4/hero.png"
+image: "/assets/images/tensorflow-logo.svg"
 tags: ["python","ai","ml","machine learning","git"]
 ---
 

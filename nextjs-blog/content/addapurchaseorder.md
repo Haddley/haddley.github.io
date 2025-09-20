@@ -3,7 +3,7 @@ title: "Add a Purchase Order"
 description: "A comprehensive guide covering add a purchase order"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/addapurchaseorder/hero.png"
+image: "/assets/images/office-365-icon-500x500.png"
 tags: ["business central"]
 ---
 

@@ -3,7 +3,7 @@ title: "Machine Learning"
 description: "A comprehensive guide covering machine learning"
 date: "2025-09-20"
 category: "AI/ML"
-image: "/assets/images/machinelearning/hero.png"
+image: "/assets/images/ml-icon.png"
 tags: ["sql","ai","machine learning"]
 ---
 

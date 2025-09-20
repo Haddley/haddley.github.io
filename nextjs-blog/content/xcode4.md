@@ -3,7 +3,7 @@ title: "XCode C++ (Part 4)"
 description: "A comprehensive guide covering xcode c++ (part 4)"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/xcode4/hero.png"
+image: "/assets/images/xcode-14-icon-300x314.png"
 tags: ["ai","ml"]
 ---
 

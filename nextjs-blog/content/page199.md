@@ -3,7 +3,7 @@ title: "Power Pages (Part 1) BACKUP"
 description: "A comprehensive guide covering power pages (part 1) backup"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/page199/hero.png"
+image: "/assets/images/dynamics365salespart1"
 tags: ["ai","business central","dynamics","power platform"]
 ---
 

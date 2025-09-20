@@ -3,7 +3,7 @@ title: "Teams Toolkit with Azure"
 description: "A comprehensive guide covering teams toolkit with azure"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/teamstoolkit/hero.png"
+image: "/assets/images/teams-hi-res-icon-2019.svg"
 tags: ["react","azure","cloud","sql","database"]
 ---
 

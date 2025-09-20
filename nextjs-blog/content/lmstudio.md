@@ -3,7 +3,7 @@ title: "LM Studio"
 description: "A comprehensive guide covering lm studio"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/lmstudio/hero.png"
+image: "/assets/images/mediamodifier-design.png"
 tags: ["ai"]
 ---
 

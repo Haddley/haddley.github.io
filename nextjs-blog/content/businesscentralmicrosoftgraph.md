@@ -3,7 +3,7 @@ title: "Business Central Microsoft Graph"
 description: "A comprehensive guide covering business central microsoft graph"
 date: "2025-09-20"
 category: "Business Central"
-image: "/assets/images/businesscentralmicrosoftgraph/hero.png"
+image: "/assets/images/posts-meta.svg"
 tags: ["ai","ml","business central","dynamics"]
 ---
 

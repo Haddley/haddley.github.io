@@ -3,7 +3,7 @@ title: "Sentence Embeddings"
 description: "A comprehensive guide covering sentence embeddings"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/sentenceembeddings/hero.png"
+image: "/assets/images/ai-ml-logo.png"
 tags: ["ai","machine learning"]
 ---
 

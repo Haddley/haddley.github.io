@@ -3,7 +3,7 @@ title: "Stable Diffusion"
 description: "A comprehensive guide covering stable diffusion"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/stablediffusion/hero.png"
+image: "/assets/images/jupyter.svg"
 tags: ["python","ai","git","github"]
 ---
 

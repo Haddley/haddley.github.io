@@ -3,7 +3,7 @@ title: "AL-Go-PTE"
 description: "A comprehensive guide covering al-go-pte"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/al-go-pte/hero.png"
+image: "/assets/images/dynamics365-color.svg"
 tags: ["docker","devops","ai","business central","dynamics"]
 ---
 

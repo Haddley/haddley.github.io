@@ -3,7 +3,7 @@ title: "Azure Spring Apps (Part 1)"
 description: "A comprehensive guide covering azure spring apps (part 1)"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/sprint-apps1/hero.png"
+image: "/assets/images/spring-framework-logo"
 tags: ["azure","java","spring","ai"]
 ---
 

@@ -3,7 +3,7 @@ title: "Yolo"
 description: "A comprehensive guide covering yolo"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/yolo/hero.png"
+image: "/assets/images/yolo-logo.png"
 tags: ["ai"]
 ---
 

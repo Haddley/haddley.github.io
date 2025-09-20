@@ -3,7 +3,7 @@ title: "Power Automate"
 description: "A comprehensive guide covering power automate"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/powerautomate/hero.png"
+image: "/assets/images/office-365-icon-500x500.png"
 tags: []
 ---
 

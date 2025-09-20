@@ -3,7 +3,7 @@ title: "Cloud Flow"
 description: "A comprehensive guide covering cloud flow"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/cloudflow/hero.png"
+image: "/assets/images/office-365-icon-500x500.png"
 tags: ["cloud","business central"]
 ---
 

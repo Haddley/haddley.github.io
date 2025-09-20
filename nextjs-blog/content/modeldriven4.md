@@ -3,7 +3,7 @@ title: "Model Driven Apps (Part 4)"
 description: "A comprehensive guide covering model driven apps (part 4)"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/modeldriven4/hero.png"
+image: "/assets/images/office-365-icon-500x500.png"
 tags: ["javascript","java","ai","power platform"]
 ---
 

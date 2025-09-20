@@ -3,7 +3,7 @@ title: "Model Driven Purchase Order Lines"
 description: "A comprehensive guide covering model driven purchase order lines"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/modeldrivenpurchaseorderlines/hero.png"
+image: "/assets/images/office-365-icon-500x500.png"
 tags: ["ai","business central","power platform"]
 ---
 

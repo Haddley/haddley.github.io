@@ -3,7 +3,7 @@ title: "Power Pages (Part 1)"
 description: "A comprehensive guide covering power pages (part 1)"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/powerpages1/hero.png"
+image: "/assets/images/powerpages-scalable.svg"
 tags: ["ai","business central","dynamics","power platform"]
 ---
 

@@ -3,7 +3,7 @@ title: "Power Apps Custom Components"
 description: "A comprehensive guide covering power apps custom components"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/customcomponents/hero.png"
+image: "/assets/images/office-365-icon-500x500.png"
 tags: ["ai"]
 ---
 

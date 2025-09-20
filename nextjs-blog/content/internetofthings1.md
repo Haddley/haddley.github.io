@@ -3,7 +3,7 @@ title: "Internet of Things (Part 1)"
 description: "A comprehensive guide covering internet of things (part 1)"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/internetofthings1/hero.png"
+image: "/assets/images/iot-microchip.svg"
 tags: ["docker","ai","git","github"]
 ---
 

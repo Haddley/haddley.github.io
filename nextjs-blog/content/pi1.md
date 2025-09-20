@@ -3,7 +3,7 @@ title: "Raspberry Pi Imager"
 description: "A comprehensive guide covering raspberry pi imager"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/pi1/hero.png"
+image: "/assets/images/raspberry-pi-logo.svg"
 tags: []
 ---
 

@@ -3,7 +3,7 @@ title: "Docker Buildx"
 description: "A comprehensive guide covering docker buildx"
 date: "2025-09-20"
 category: "DevOps"
-image: "/assets/images/dockerbuildx/hero.png"
+image: "/assets/images/method-draw-image.svg"
 tags: ["cloud","docker","ai","testing"]
 ---
 

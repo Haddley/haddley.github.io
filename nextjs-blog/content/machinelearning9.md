@@ -3,7 +3,7 @@ title: "Machine Learning (Part 9)"
 description: "A comprehensive guide covering machine learning (part 9)"
 date: "2025-09-20"
 category: "AI/ML"
-image: "/assets/images/machinelearning9/hero.png"
+image: "/assets/images/tensorflow-logo.svg"
 tags: ["database","ai","machine learning","git"]
 ---
 

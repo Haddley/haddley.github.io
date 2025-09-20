@@ -3,7 +3,7 @@ title: "Azure AI (Part 1)"
 description: "A comprehensive guide covering azure ai (part 1)"
 date: "2025-09-20"
 category: "Azure"
-image: "/assets/images/azureai1/hero.png"
+image: "/assets/images/azurex70x75.svg"
 tags: ["azure","python","ai","git","github"]
 ---
 

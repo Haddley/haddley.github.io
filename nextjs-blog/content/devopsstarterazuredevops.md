@@ -3,7 +3,7 @@ title: "DevOps Starter Azure DevOps"
 description: "A comprehensive guide covering devops starter azure devops"
 date: "2025-09-20"
 category: "Azure"
-image: "/assets/images/devopsstarterazuredevops/hero.png"
+image: "/assets/images/svgexport-22.svg"
 tags: ["azure","devops","ai","ml","git"]
 ---
 

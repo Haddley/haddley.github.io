@@ -3,7 +3,7 @@ title: "Blazor WASM and ASP.NET Core"
 description: "A comprehensive guide covering blazor wasm and asp.net core"
 date: "2025-09-20"
 category: ".NET"
-image: "/assets/images/blazorwasmandasp.net/hero.png"
+image: "/assets/images/blazor-logo.png"
 tags: ["dotnet","c#","database","ai","asp.net"]
 ---
 

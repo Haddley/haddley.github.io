@@ -3,7 +3,7 @@ title: "Prompt Engineering"
 description: "A comprehensive guide covering prompt engineering"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/promptengineering/hero.png"
+image: "/assets/images/mediamodifier-design.png"
 tags: ["ai"]
 ---
 

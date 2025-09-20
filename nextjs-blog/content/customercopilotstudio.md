@@ -3,7 +3,7 @@ title: "Customer Copilot Studio"
 description: "A comprehensive guide covering customer copilot studio"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/customercopilotstudio/hero.png"
+image: "/assets/images/copilot-logo.png"
 tags: ["ai","business central","dynamics"]
 ---
 

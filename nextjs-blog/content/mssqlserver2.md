@@ -3,7 +3,7 @@ title: "Microsoft SQL Server (Part 2)"
 description: "A comprehensive guide covering microsoft sql server (part 2)"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/mssqlserver2/hero.png"
+image: "/assets/images/ads.svg"
 tags: ["javascript","dotnet","c#","java","sql"]
 ---
 

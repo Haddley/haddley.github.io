@@ -3,7 +3,7 @@ title: "Machine Learning (Part 8)"
 description: "A comprehensive guide covering machine learning (part 8)"
 date: "2025-09-20"
 category: "AI/ML"
-image: "/assets/images/machinelearning8/hero.png"
+image: "/assets/images/tensorflow-logo.svg"
 tags: ["ai","ml","machine learning","git","github"]
 ---
 

@@ -3,7 +3,7 @@ title: "Blazor WASM API SQL Server Stored Procedure"
 description: "A comprehensive guide covering blazor wasm api sql server stored procedure"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/threetier/hero.png"
+image: "/assets/images/net-logo.svg"
 tags: ["dotnet","sql","database","ai","asp.net"]
 ---
 

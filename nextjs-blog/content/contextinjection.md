@@ -3,7 +3,7 @@ title: "Context Injection"
 description: "A comprehensive guide covering context injection"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/contextinjection/hero.png"
+image: "/assets/images/chatgpt-logo.svg"
 tags: ["database","ai"]
 ---
 

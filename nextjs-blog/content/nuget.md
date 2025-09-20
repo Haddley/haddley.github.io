@@ -3,7 +3,7 @@ title: "NuGet C#"
 description: "A comprehensive guide covering nuget c#"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/nuget/hero.png"
+image: "/assets/images/logo-og-600x600.png"
 tags: ["dotnet","c#","ai","git","github"]
 ---
 

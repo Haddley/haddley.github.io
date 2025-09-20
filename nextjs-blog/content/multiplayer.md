@@ -3,7 +3,7 @@ title: "Multiplayer Game"
 description: "A comprehensive guide covering multiplayer game"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/multiplayer/hero.png"
+image: "/assets/images/logo-lockup-firebase-vertical.svg"
 tags: ["javascript","java","database","ai","ml"]
 ---
 

@@ -3,7 +3,7 @@ title: "Azure React Static Web App"
 description: "A comprehensive guide covering azure react static web app"
 date: "2025-09-20"
 category: "Azure"
-image: "/assets/images/azurereactstaticweb app/hero.png"
+image: "/assets/images/azurex70x75.svg"
 tags: ["react","azure","ai","git","github"]
 ---
 

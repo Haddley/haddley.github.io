@@ -3,7 +3,7 @@ title: ".NET Core (Part 1)"
 description: "A comprehensive guide covering .net core (part 1)"
 date: "2025-09-20"
 category: ".NET"
-image: "/assets/images/dotnet core part1/hero.png"
+image: "/assets/images/dotnet-logo.png"
 tags: ["react","javascript","dotnet","java","ai"]
 ---
 

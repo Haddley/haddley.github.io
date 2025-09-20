@@ -3,7 +3,7 @@ title: "npm JavaScript"
 description: "A comprehensive guide covering npm javascript"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/npm/hero.png"
+image: "/assets/images/6078720-200x200.png"
 tags: ["javascript","java","ai","git","github"]
 ---
 

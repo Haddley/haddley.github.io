@@ -3,7 +3,7 @@ title: "Power Page (Part 2) Backup"
 description: "A comprehensive guide covering power page (part 2) backup"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/page200/hero.png"
+image: "/assets/images/dynamics365salespart1"
 tags: ["javascript","java","ai","ml","business central"]
 ---
 

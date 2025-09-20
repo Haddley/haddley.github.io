@@ -3,7 +3,7 @@ title: "Java Spring Boot (Spare)"
 description: "A comprehensive guide covering java spring boot (spare)"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/page141/hero.png"
+image: "/assets/images/dynamics365salespart1"
 tags: ["azure","docker","java","spring","postgresql"]
 ---
 

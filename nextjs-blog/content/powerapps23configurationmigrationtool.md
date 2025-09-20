@@ -3,7 +3,7 @@ title: "Power Apps (Part 23)"
 description: "A comprehensive guide covering power apps (part 23)"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/powerapps23configurationmigrationtool/hero.png"
+image: "/assets/images/office-365-icon-500x500.png"
 tags: ["ai","ml","power platform"]
 ---
 

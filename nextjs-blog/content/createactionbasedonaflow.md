@@ -3,7 +3,7 @@ title: "Create action based on a flow"
 description: "A comprehensive guide covering create action based on a flow"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/createactionbasedonaflow/hero.png"
+image: "/assets/images/posts-meta.svg"
 tags: ["ai","business central","dynamics"]
 ---
 

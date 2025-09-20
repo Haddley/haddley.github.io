@@ -3,7 +3,7 @@ title: "JavaScript and Microsoft Graph"
 description: "A comprehensive guide covering javascript and microsoft graph"
 date: "2025-09-20"
 category: "Java"
-image: "/assets/images/javascriptgraph/hero.png"
+image: "/assets/images/office-365-icon-500x500.png"
 tags: ["javascript","azure","java","ai","ml"]
 ---
 

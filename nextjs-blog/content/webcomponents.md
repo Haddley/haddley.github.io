@@ -3,7 +3,7 @@ title: "Web Components"
 description: "A comprehensive guide covering web components"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/webcomponents/hero.png"
+image: "/assets/images/web-components-logo.svg"
 tags: ["angular","react","vue","javascript","java"]
 ---
 

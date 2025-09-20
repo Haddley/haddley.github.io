@@ -3,7 +3,7 @@ title: "Topics"
 description: "A comprehensive guide covering topics"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/topics/hero.png"
+image: "/assets/images/office-365-icon-500x500.png"
 tags: ["business central"]
 ---
 

@@ -3,7 +3,7 @@ title: "Map Extension"
 description: "A comprehensive guide covering map extension"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/mapextension/hero.png"
+image: "/assets/images/dynamics365-color.svg"
 tags: ["javascript","cloud","java","ai","business central"]
 ---
 

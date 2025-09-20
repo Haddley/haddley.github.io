@@ -3,7 +3,7 @@ title: "ASP.NET 5 Visual Basic"
 description: "A comprehensive guide covering asp.net 5 visual basic"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/page86/hero.png"
+image: "/assets/images/dynamics365salespart1"
 tags: ["azure","docker","dotnet","sql","database"]
 ---
 

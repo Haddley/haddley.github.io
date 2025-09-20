@@ -3,7 +3,7 @@ title: "Warehouse Management Put away"
 description: "A comprehensive guide covering warehouse management put away"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/warehousemanagementputaway/hero.png"
+image: "/assets/images/dynamics365-color.svg"
 tags: ["ai","business central","dynamics"]
 ---
 

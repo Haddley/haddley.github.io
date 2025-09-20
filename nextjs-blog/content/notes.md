@@ -3,7 +3,7 @@ title: "Notes"
 description: "A comprehensive guide covering notes"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/notes/hero.png"
+image: "/assets/images/notes-icon.png"
 tags: ["ml"]
 ---
 

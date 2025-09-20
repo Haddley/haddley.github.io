@@ -3,7 +3,7 @@ title: "Ionic"
 description: "A comprehensive guide covering ionic"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/ionic/hero.png"
+image: "/assets/images/logo-192x192.png"
 tags: ["react","javascript","typescript","azure","aws"]
 ---
 

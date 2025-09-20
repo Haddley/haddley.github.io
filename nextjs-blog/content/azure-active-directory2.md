@@ -3,7 +3,7 @@ title: "Azure Active Directory (Part 2)"
 description: "A comprehensive guide covering azure active directory (part 2)"
 date: "2025-09-20"
 category: "Azure"
-image: "/assets/images/azure-active-directory2/hero.png"
+image: "/assets/images/azurex70x75.svg"
 tags: ["angular","react","vue","javascript","azure"]
 ---
 

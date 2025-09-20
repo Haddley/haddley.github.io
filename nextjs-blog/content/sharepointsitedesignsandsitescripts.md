@@ -3,7 +3,7 @@ title: "SharePoint site designs and site scripts"
 description: "A comprehensive guide covering sharepoint site designs and site scripts"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/sharepointsitedesignsandsitescripts/hero.png"
+image: "/assets/images/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png"
 tags: ["ai"]
 ---
 

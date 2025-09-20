@@ -3,7 +3,7 @@ title: "SharePoint 2019"
 description: "A comprehensive guide covering sharepoint 2019"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/sharepoint2019/hero.png"
+image: "/assets/images/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png"
 tags: ["azure","sql","database","ai"]
 ---
 

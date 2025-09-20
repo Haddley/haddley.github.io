@@ -3,7 +3,7 @@ title: "Hands-on-Lab 2.2"
 description: "A comprehensive guide covering hands-on-lab 2.2"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/hands-on-lab2.2/hero.png"
+image: "/assets/images/lab-icon.png"
 tags: ["ai","dynamics"]
 ---
 

@@ -3,7 +3,7 @@ title: "Machine Learning (Part 6)"
 description: "A comprehensive guide covering machine learning (part 6)"
 date: "2025-09-20"
 category: "AI/ML"
-image: "/assets/images/machinelearning6/hero.png"
+image: "/assets/images/tensorflow-logo.svg"
 tags: ["ai","machine learning","testing"]
 ---
 

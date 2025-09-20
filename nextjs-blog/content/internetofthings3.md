@@ -3,7 +3,7 @@ title: "Internet of Things (Part 3)"
 description: "A comprehensive guide covering internet of things (part 3)"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/internetofthings3/hero.png"
+image: "/assets/images/iot-microchip.svg"
 tags: ["ai","ml","machine learning","testing"]
 ---
 

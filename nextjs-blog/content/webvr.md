@@ -3,7 +3,7 @@ title: "WebVR"
 description: "A comprehensive guide covering webvr"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/webvr/hero.png"
+image: "/assets/images/webvr-logo-square-512x512.png"
 tags: ["ai","git","github"]
 ---
 

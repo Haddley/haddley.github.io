@@ -3,7 +3,7 @@ title: "XCode C++ (Part 2)"
 description: "A comprehensive guide covering xcode c++ (part 2)"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/xcode2/hero.png"
+image: "/assets/images/xcode-14-icon-300x314.png"
 tags: ["ai"]
 ---
 

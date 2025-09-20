@@ -3,7 +3,7 @@ title: "Business Central (Part 28) PrompDialog 2"
 description: "A comprehensive guide covering business central (part 28) prompdialog 2"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/promptdialog2/hero.png"
+image: "/assets/images/posts-meta.svg"
 tags: ["azure","cloud","ai","business central","dynamics"]
 ---
 

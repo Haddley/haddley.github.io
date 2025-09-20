@@ -3,7 +3,7 @@ title: "Azure Al services Azure OpenAl"
 description: "A comprehensive guide covering azure al services azure openal"
 date: "2025-09-20"
 category: "Azure"
-image: "/assets/images/azureopenal/hero.png"
+image: "/assets/images/azurex70x75.svg"
 tags: ["azure","ai"]
 ---
 

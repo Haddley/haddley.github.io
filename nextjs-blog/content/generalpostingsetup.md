@@ -3,7 +3,7 @@ title: "General Posting Setup"
 description: "A comprehensive guide covering general posting setup"
 date: "2025-09-20"
 category: "Development"
-image: "/assets/images/generalpostingsetup/hero.png"
+image: "/assets/images/posts-meta.svg"
 tags: ["ai","dynamics"]
 ---
 
