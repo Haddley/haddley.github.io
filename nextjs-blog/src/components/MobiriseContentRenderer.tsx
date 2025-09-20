@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 interface MobiriseParsedContent {
   type: 'text' | 'image' | 'heading';
   content: string;
@@ -140,16 +142,17 @@ export default function MobiriseContentRenderer({ markdownContent }: MobiriseCon
                 <div className="row justify-content-center">
                   <div className="col-12 col-lg-10">
                     <div className="image-wrapper">
-                      <img 
+                      <Image 
                         src={section.content} 
                         alt={section.description || ''} 
+                        width={800}
+                        height={600}
                         style={{ width: '100%', height: 'auto' }}
                         className="img-fluid"
-                        onError={(e) => {
+                        onError={() => {
                           console.error('Image failed to load:', section.content);
-                          (e.target as HTMLImageElement).style.border = '2px solid red';
-                          (e.target as HTMLImageElement).alt = `Failed to load: ${section.content}`;
                         }}
+                        unoptimized={true}
                       />
                       {section.description && (
                         <p className="mbr-description mbr-fonts-style mt-2 align-center display-4">

@@ -38,6 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* eslint-disable-next-line @next/next/no-css-tags */}
         {/* Original Mobirise CSS files */}
         <link rel="stylesheet" href="/assets/web/assets/mobirise-icons2/mobirise2.css" />
         <link rel="stylesheet" href="/assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css" />
@@ -49,10 +50,6 @@ export default function RootLayout({
         <link rel="stylesheet" href="/assets/theme/css/style.css" />
         <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" />
         <link rel="stylesheet" href="/prism.css" />
-        
-        {/* Google Fonts - Jost */}
-        <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" />
       </head>
       <body className={`${jost.className} antialiased`}>
         <Layout>{children}</Layout>
