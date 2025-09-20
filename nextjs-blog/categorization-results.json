@@ -1,0 +1,1071 @@
+{
+  "totalPosts": 185,
+  "updatedPosts": 145,
+  "categoryDistribution": {
+    "Development": 13,
+    "Web Development": 24,
+    "Microsoft 365": 62,
+    "AI & Machine Learning": 36,
+    "Mobile & IoT": 12,
+    "Development Tools": 8,
+    "Cloud & DevOps": 15,
+    ".NET Development": 12,
+    "Data & Analytics": 3
+  },
+  "categoryMappings": {
+    "AI & Machine Learning": [
+      "ai",
+      "machine learning",
+      "openai",
+      "azure ai",
+      "copilot",
+      "chatgpt",
+      "llm",
+      "prompt",
+      "tensorflow",
+      "langchain",
+      "ollama",
+      "lmstudio",
+      "deepseek",
+      "sentiment analysis",
+      "context injection",
+      "sentence similarity",
+      "stable diffusion"
+    ],
+    "Microsoft 365": [
+      "sharepoint",
+      "power apps",
+      "power automate",
+      "power pages",
+      "business central",
+      "dynamics",
+      "office 365",
+      "microsoft graph",
+      "copilot studio",
+      "dataverse",
+      "model driven",
+      "canvas apps",
+      "virtual table",
+      "integration table",
+      "flow",
+      "power platform",
+      "purview"
+    ],
+    "Cloud & DevOps": [
+      "azure",
+      "aws",
+      "docker",
+      "kubernetes",
+      "devops",
+      "github actions",
+      "ci/cd",
+      "container",
+      "fargate",
+      "eks",
+      "aks",
+      "api gateway",
+      "codespaces",
+      "deployment"
+    ],
+    "Web Development": [
+      "react",
+      "angular",
+      "next.js",
+      "nextjs",
+      "javascript",
+      "typescript",
+      "node.js",
+      "express",
+      "sails",
+      "ionic",
+      "pwa",
+      "web components",
+      "threejs",
+      "phaser",
+      "leaflet",
+      "webxr",
+      "webvr",
+      "graphql",
+      "rest api",
+      "npm",
+      "nuget"
+    ],
+    "Mobile & IoT": [
+      "ios",
+      "xcode",
+      "swift",
+      "raspberry pi",
+      "iot",
+      "internet of things",
+      "pi1",
+      "pi2",
+      "microchip",
+      "opencv",
+      "sh1106",
+      "gingerbread house"
+    ],
+    ".NET Development": [
+      "asp.net",
+      ".net",
+      "blazor",
+      "c#",
+      "vb.net",
+      "visual basic",
+      "dotnet",
+      "core",
+      "winforms",
+      "three tier",
+      "unit tests",
+      "sql server"
+    ],
+    "Data & Analytics": [
+      "sql",
+      "mysql",
+      "database",
+      "mssql",
+      "reports",
+      "advanced reports",
+      "analytics",
+      "data science",
+      "binary classification"
+    ],
+    "Development Tools": [
+      "spring boot",
+      "java",
+      "php",
+      "teams toolkit",
+      "vs code",
+      "extension",
+      "command line",
+      "api management",
+      "configuration migration"
+    ]
+  },
+  "posts": [
+    {
+      "slug": "macScreenSharing",
+      "title": "Apple macOS",
+      "category": "Development"
+    },
+    {
+      "slug": "mcpserver",
+      "title": "Model Context Protocol (Part 1)",
+      "category": "Web Development"
+    },
+    {
+      "slug": "SyntexAutofill",
+      "title": "SharePoint",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "OllamaDeepSekR1AppleMacBookInstall",
+      "title": "Ollama DeepSeek R1",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "promptDialog3",
+      "title": "Business Central (Part 29)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "promptDialog2",
+      "title": "Business Central (Part 28)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "promptDialog",
+      "title": "Business Central (Part 27)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "internetOfThings3",
+      "title": "Internet of Things (Part 3)",
+      "category": "Mobile & IoT"
+    },
+    {
+      "slug": "AzureOpenAl",
+      "title": "Azure AI Foundry",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "BusinessCentralPart26IntegrationTable",
+      "title": "Business Central (Part 26)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "PowerApps23ConfigurationMigrationTool",
+      "title": "Power Apps (Part 23)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "powerPages3",
+      "title": "Power Pages (Part 3)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "powerPages2",
+      "title": "Power Pages (Part 2)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "BusinessCentralPart25IntegratingWithDataverseUsingDataflows",
+      "title": "Business Central (Part 25)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "langflow1",
+      "title": "Langflow (Part 1)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "powerPages1",
+      "title": "Power Pages (Part 1)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "promptFlow6",
+      "title": "Prompt flow (Part 6)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "promptFlow5",
+      "title": "Prompt flow (Part 5)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "langChainAgents",
+      "title": "LangChain",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "phpSetup",
+      "title": "PHP",
+      "category": "Development Tools"
+    },
+    {
+      "slug": "dataverseAdvancedReportsSetup",
+      "title": "Power Apps (Part 22)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "powerAutomateReports",
+      "title": "Power Apps (Part 21)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "dataverseReports",
+      "title": "Power Apps (Part 20)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "promptFlow4",
+      "title": "Prompt flow (Part 4)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "promptFlow3",
+      "title": "Prompt flow (Part 3)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "promptFlow2",
+      "title": "Prompt flow (Part 2)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "promptFlow1",
+      "title": "Prompt flow (Part 1)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "customtVirtualTables",
+      "title": "Power Apps (Part 18)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "blogCopilotStudio",
+      "title": "Dynamics 365 Business Central (Part 24)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "customCopilotStudio",
+      "title": "Dynamics 365 Business Central (Part 23)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "configureCopilotSingleSignonForWeb",
+      "title": "Power Apps (Part 17)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "customizeDefaultCanvas",
+      "title": "Power Apps (Part 16)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "copilotEmbedCode",
+      "title": "Power Apps (Part 15)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "staticwebapp.config.json",
+      "title": "Azure Active Directory (Part 3)",
+      "category": "Cloud & DevOps"
+    },
+    {
+      "slug": "codespacesAuthentication",
+      "title": "React (Part 4)",
+      "category": "Cloud & DevOps"
+    },
+    {
+      "slug": "modelDrivenPurchaseOrderLines",
+      "title": "Power Apps (Part 14)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "modelDrivenPurchaseOrders",
+      "title": "Power Apps (Part 13)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "cloudFlow",
+      "title": "Power Apps (Part 12)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "topics",
+      "title": "Power Apps (Part 11)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "pluginActions",
+      "title": "Power Apps (Part 10)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "addAPurchaseOrder",
+      "title": "Power Apps (Part 9)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "addAnItem",
+      "title": "Power Apps (Part 8)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "azureReactStaticWeb App",
+      "title": "React (Part 3)",
+      "category": "Cloud & DevOps"
+    },
+    {
+      "slug": "businessCentralVirtualTable",
+      "title": "Dynamics 365 Business Central (Part 22)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "createActionBasedOnAFlow",
+      "title": "Dynamics 365 Business Central (Part 21)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "businessCentralPowerAutomateFlow",
+      "title": "Dynamics 365 Business Central (Part 20)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "gingerbreadHouse",
+      "title": "Raspberry Pi (Part 5)",
+      "category": "Mobile & IoT"
+    },
+    {
+      "slug": "businessCentralMicrosoftGraph",
+      "title": "Dynamics 365 Business Central (Part 19)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "salesInvoice",
+      "title": "Dynamics 365 Business Central (Part 18)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "purchaseInvoice",
+      "title": "Dynamics 365 Business Central (Part 17)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "generalPostingSetup",
+      "title": "Dynamics 365 Business Central (Part 16)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "customerPostingGroup",
+      "title": "Dynamics 365 Business Central (Part 15)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "vendorPostingGroup",
+      "title": "Dynamics 365 Business Central (Part 14)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "generalLedger",
+      "title": "Dynamics 365 Business Central (Part 13)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "hands-on-lab3.1",
+      "title": "Dynamics 365 Business Central (Part 12)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "hands-on-lab2.3",
+      "title": "Dynamics 365 Business Central (Part 11)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "hands-on-lab2.2",
+      "title": "Dynamics 365 Business Central (Part 10)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "hands-on-lab2.1",
+      "title": "Dynamics 365 Business Central (Part 9)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "dynamicsSales3",
+      "title": "Microsoft Dynamics 365 Sales (Part 3)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "dynamicsSales2",
+      "title": "Microsoft Dynamics 365 Sales (Part 2)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "dynamicsSales1",
+      "title": "Microsoft Dynamics 365 Sales (Part 1)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "modelDriven4",
+      "title": "Model Driven Apps (Part 4)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "modelDriven3",
+      "title": "Model Driven Apps (Part 3)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "modelDriven2",
+      "title": "Model Driven Apps (Part 2)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "modelDriven1",
+      "title": "Model Driven Apps (Part 1)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "aShortHistory",
+      "title": "Microsoft Dynamics 365",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "mapExtension",
+      "title": "Microsoft Dynamics 365 Business Central (Part 8)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "rewardsExtension",
+      "title": "Microsoft Dynamics 365 Business Central (Part 7)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "AL-Go-PTE",
+      "title": "Microsoft Dynamics 365 Business Central (Part 6)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "financialOperationsPurchaseInvoice",
+      "title": "Microsoft Dynamics 365 Business Central (Part 5)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "warehouseManagementPutAway",
+      "title": "Microsoft Dynamics 365 Business Central (Part 4)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "businessCentralAdminCenter",
+      "title": "Microsoft Dynamics 365 Business Central (Part 3)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "businessCentralCanvasApps",
+      "title": "Microsoft Dynamics 365 Business Central (Part 2)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "dynamicsTrialSignup",
+      "title": "Microsoft Dynamics 365 Business Central (Part 1)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "spring-boot-6",
+      "title": "Java Spring Boot (Part 6)",
+      "category": "Development Tools"
+    },
+    {
+      "slug": "spring-boot-5",
+      "title": "Java Spring Boot (Part 5)",
+      "category": "Development Tools"
+    },
+    {
+      "slug": "spring-boot-4",
+      "title": "Java Spring Boot (Part 4)",
+      "category": "Development Tools"
+    },
+    {
+      "slug": "spring-boot-3",
+      "title": "Java Spring Boot (Part 3)",
+      "category": "Development Tools"
+    },
+    {
+      "slug": "spring-boot-2",
+      "title": "Java Spring Boot (Part 2)",
+      "category": "Cloud & DevOps"
+    },
+    {
+      "slug": "promptEngineering",
+      "title": "Meta\\",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "LMStudio",
+      "title": "Meta\\",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "llamaCorp",
+      "title": "Jupyter (Part 4)",
+      "category": "Development"
+    },
+    {
+      "slug": "colorization",
+      "title": "Jupyter (Part 3)",
+      "category": "Development"
+    },
+    {
+      "slug": "stableDiffusion",
+      "title": "Jupyter (Part 2)",
+      "category": "Development"
+    },
+    {
+      "slug": "appleLaptop",
+      "title": "Jupyter (Part 1)",
+      "category": "Development"
+    },
+    {
+      "slug": "OpenCV",
+      "title": "Raspberry Pi (Part 4)",
+      "category": "Mobile & IoT"
+    },
+    {
+      "slug": "SH1106",
+      "title": "Raspberry Pi (Part 3)",
+      "category": "Mobile & IoT"
+    },
+    {
+      "slug": "pi2",
+      "title": "Raspberry Pi (Part 2)",
+      "category": "Mobile & IoT"
+    },
+    {
+      "slug": "pi1",
+      "title": "Raspberry Pi (Part 1)",
+      "category": "Mobile & IoT"
+    },
+    {
+      "slug": "langchain",
+      "title": "Natural Language Processing (Part 4)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "contextinjection",
+      "title": "Natural Language Processing (Part 3)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "sentencesimilarity",
+      "title": "Natural Language Processing (Part 2)",
+      "category": "Development"
+    },
+    {
+      "slug": "sentimentanalysis",
+      "title": "Natural Language Processing (Part 1)",
+      "category": "Development"
+    },
+    {
+      "slug": "3dPrinting2",
+      "title": "3D Printing (Part 2)",
+      "category": "Development"
+    },
+    {
+      "slug": "3dPrinting1",
+      "title": "3D Printing (Part 1)",
+      "category": "Development"
+    },
+    {
+      "slug": "VBNETConsoleSQLServerUnitTests",
+      "title": "VB.NET Console SQL Server Unit Tests",
+      "category": ".NET Development"
+    },
+    {
+      "slug": "ticktacktoe",
+      "title": "Firebase Realtime Database",
+      "category": "Data & Analytics"
+    },
+    {
+      "slug": "angularphaser",
+      "title": "Angular and Phaser",
+      "category": "Web Development"
+    },
+    {
+      "slug": "multiplayer",
+      "title": "Firebase Realtime Database",
+      "category": "Data & Analytics"
+    },
+    {
+      "slug": "angularfirebase",
+      "title": "Angular Firebase",
+      "category": "Web Development"
+    },
+    {
+      "slug": "firebase",
+      "title": "Firebase",
+      "category": "Development"
+    },
+    {
+      "slug": "xcode4",
+      "title": "XCode C++ (Part 4)",
+      "category": "Mobile & IoT"
+    },
+    {
+      "slug": "vbnetwinforms",
+      "title": "VB.NET WinForms and ASP.NET Core API",
+      "category": ".NET Development"
+    },
+    {
+      "slug": "aspnetcoreunittests",
+      "title": "ASP.NET Core Unit Tests",
+      "category": ".NET Development"
+    },
+    {
+      "slug": "threetier",
+      "title": "Blazor WASM, ASP.NET Core and SQL Server",
+      "category": ".NET Development"
+    },
+    {
+      "slug": "blazorwasmandasp.net",
+      "title": "Blazor WASM and ASP.NET Core",
+      "category": ".NET Development"
+    },
+    {
+      "slug": "angularandasp.net",
+      "title": "Angular and ASP.NET Core",
+      "category": "Web Development"
+    },
+    {
+      "slug": "reactandasp.net",
+      "title": "React (Part 2)",
+      "category": "Web Development"
+    },
+    {
+      "slug": "asp.net core",
+      "title": "ASP.NET Core",
+      "category": ".NET Development"
+    },
+    {
+      "slug": "asp.net 5 cs",
+      "title": "ASP.NET 5 C#",
+      "category": ".NET Development"
+    },
+    {
+      "slug": "asp.net 5 visual basic",
+      "title": "ASP.NET 5 Visual Basic",
+      "category": ".NET Development"
+    },
+    {
+      "slug": "dotnet core part2",
+      "title": ".NET Core (Part 2)",
+      "category": ".NET Development"
+    },
+    {
+      "slug": "xcode3",
+      "title": "XCode C++ (Part 3)",
+      "category": "Mobile & IoT"
+    },
+    {
+      "slug": "xcode2",
+      "title": "XCode C++ (Part 2)",
+      "category": "Mobile & IoT"
+    },
+    {
+      "slug": "xcode1",
+      "title": "XCode C++ (Part 1)",
+      "category": "Mobile & IoT"
+    },
+    {
+      "slug": "threejs",
+      "title": "Three.js",
+      "category": "Web Development"
+    },
+    {
+      "slug": "ngrxEntity",
+      "title": "NGRX entity",
+      "category": "Development"
+    },
+    {
+      "slug": "ngrxdevtools",
+      "title": "NGRX devtools",
+      "category": "Development"
+    },
+    {
+      "slug": "sharepoint2019",
+      "title": "SharePoint 2019 Trial",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "ngrx",
+      "title": "NGRX",
+      "category": "Web Development"
+    },
+    {
+      "slug": "componentFramework",
+      "title": "Power Apps (Part 7)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "azureStorage",
+      "title": "Azure Storage",
+      "category": "Cloud & DevOps"
+    },
+    {
+      "slug": "purview",
+      "title": "Microsoft Purview",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "powerApps6",
+      "title": "Power Apps (Part 6)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "machinelearning9",
+      "title": "Machine Learning (Part 9)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "machinelearning8",
+      "title": "Machine Learning (Part 8)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "machinelearning7",
+      "title": "Machine Learning (Part 7)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "machinelearning6",
+      "title": "Machine Learning (Part 6)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "machinelearning5",
+      "title": "Machine Learning (Part 5)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "machinelearning4",
+      "title": "Machine Learning (Part 4)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "machinelearning3",
+      "title": "Machine Learning (Part 3)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "machineLearning2",
+      "title": "Machine Learning (Part 2)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "machineLearning1",
+      "title": "Machine Learning (Part 1)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "ATeamsTabSharePointWebPartforOneDrive",
+      "title": "A Teams App SharePoint Web Part for One Drive",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "JavaScriptGraph",
+      "title": "JavaScript and Microsoft Graph",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "MicrosoftGraph",
+      "title": "Microsoft Graph",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "PowerAutomate",
+      "title": "Power Automate",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "WebXR",
+      "title": "WebXR",
+      "category": "Web Development"
+    },
+    {
+      "slug": "leaflet",
+      "title": "Leaflet",
+      "category": "Web Development"
+    },
+    {
+      "slug": "webcomponents",
+      "title": "Web Components",
+      "category": "Web Development"
+    },
+    {
+      "slug": "phaser",
+      "title": "Phaser",
+      "category": "Web Development"
+    },
+    {
+      "slug": "nextjs5",
+      "title": "Next.js (Part 5)",
+      "category": "Web Development"
+    },
+    {
+      "slug": "ionic",
+      "title": "Ionic and PouchDB",
+      "category": "Web Development"
+    },
+    {
+      "slug": "mysql",
+      "title": "MySQL",
+      "category": "Data & Analytics"
+    },
+    {
+      "slug": "nextjs4",
+      "title": "Next.js (Part 4)",
+      "category": "Web Development"
+    },
+    {
+      "slug": "nextjs3",
+      "title": "Next.js (Part 3)",
+      "category": "Web Development"
+    },
+    {
+      "slug": "nextjs2",
+      "title": "Next.js (Part 2)",
+      "category": "Web Development"
+    },
+    {
+      "slug": "nextjs1",
+      "title": "Next.js (Part 1)",
+      "category": "Web Development"
+    },
+    {
+      "slug": "sails3",
+      "title": "Sails (Part 3)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "sails2",
+      "title": "Sails (Part 2)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "sails1",
+      "title": "Sails (Part 1)",
+      "category": "AI & Machine Learning"
+    },
+    {
+      "slug": "aspnetcoreawseks",
+      "title": "Amazon EKS (Part 2)",
+      "category": "Cloud & DevOps"
+    },
+    {
+      "slug": "AmazonEKS",
+      "title": "Amazon EKS (Part 1)",
+      "category": "Cloud & DevOps"
+    },
+    {
+      "slug": "customconnectorsappregistrations",
+      "title": "Power Apps (Part 5)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "API Management",
+      "title": "Power Apps (Part 4)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "pwa",
+      "title": "Progressive Web Application",
+      "category": "Web Development"
+    },
+    {
+      "slug": "powerappsapplication",
+      "title": "Power Apps (Part 3)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "customcomponents",
+      "title": "Power Apps (Part 2)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "powerappswithrest",
+      "title": "Power Apps (Part 1)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "teamstoolkitspfx",
+      "title": "Teams Toolkit with SPFx",
+      "category": "Development Tools"
+    },
+    {
+      "slug": "teamstoolkit",
+      "title": "Teams Toolkit with Azure",
+      "category": "Cloud & DevOps"
+    },
+    {
+      "slug": "devopsstarterazuredevops",
+      "title": "DevOps Starter Azure DevOps",
+      "category": "Cloud & DevOps"
+    },
+    {
+      "slug": "devopsstartergithubactions",
+      "title": "DevOps Starter GitHub actions",
+      "category": "Cloud & DevOps"
+    },
+    {
+      "slug": "azure-active-directory2",
+      "title": "Azure Active Directory (Part 2)",
+      "category": "Cloud & DevOps"
+    },
+    {
+      "slug": "dotnet core part1",
+      "title": ".NET Core (Part 1)",
+      "category": ".NET Development"
+    },
+    {
+      "slug": "spring-boot",
+      "title": "Java Spring Boot (Part 1)",
+      "category": "Development Tools"
+    },
+    {
+      "slug": "azure-active-directory",
+      "title": "Azure Active Directory (Part 1)",
+      "category": "Cloud & DevOps"
+    },
+    {
+      "slug": "mssqlserver2",
+      "title": "Microsoft SQL Server (Part 2)",
+      "category": ".NET Development"
+    },
+    {
+      "slug": "mssqlserver",
+      "title": "Microsoft SQL Server (Part 1)",
+      "category": ".NET Development"
+    },
+    {
+      "slug": "internetOfThings2",
+      "title": "Internet of Things (Part 2)",
+      "category": "Mobile & IoT"
+    },
+    {
+      "slug": "internetOfThings1",
+      "title": "Internet of Things (Part 1)",
+      "category": "Mobile & IoT"
+    },
+    {
+      "slug": "WebVR",
+      "title": "WebVR",
+      "category": "Web Development"
+    },
+    {
+      "slug": "dockerbuildx",
+      "title": "Docker Buildx",
+      "category": "Cloud & DevOps"
+    },
+    {
+      "slug": "GraphQL",
+      "title": "GraphQL",
+      "category": "Web Development"
+    },
+    {
+      "slug": "nuget",
+      "title": "NuGet C#",
+      "category": "Web Development"
+    },
+    {
+      "slug": "npmCC",
+      "title": "npm C++",
+      "category": "Web Development"
+    },
+    {
+      "slug": "npm",
+      "title": "npm JavaScript",
+      "category": "Web Development"
+    },
+    {
+      "slug": "m365CommandLineInterface",
+      "title": "A Command Line Interface for Microsoft 365",
+      "category": "Development Tools"
+    },
+    {
+      "slug": "sharepointsitedesignsandsitescripts",
+      "title": "SharePoint site designs and site scripts",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "sharepointwebpart2",
+      "title": "SharePoint Web Part (Part 2)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "sharepointwebpart1",
+      "title": "SharePoint Web Part (Part 1)",
+      "category": "Microsoft 365"
+    },
+    {
+      "slug": "apigateway",
+      "title": "API Gateway",
+      "category": "Cloud & DevOps"
+    },
+    {
+      "slug": "reactusestateuseeffect",
+      "title": "React (Part 1)",
+      "category": "Web Development"
+    },
+    {
+      "slug": "restapiservice",
+      "title": "REST",
+      "category": "Development"
+    },
+    {
+      "slug": "kubernetes",
+      "title": "Kubernetes",
+      "category": "Cloud & DevOps"
+    }
+  ]
+}
