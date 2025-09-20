@@ -1,8 +1,84 @@
 'use client';
 
+import React from 'react';
 import Image from 'next/image';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
+// Function to process inline markdown syntax
+function processInlineMarkdown(text: string): React.ReactElement[] {
+  const elements: React.ReactElement[] = [];
+  let currentIndex = 0;
+  let elementKey = 0;
+
+  // Regular expressions for different markdown patterns
+  const patterns = [
+    { regex: /\*\*(.*?)\*\*/g, component: 'strong' }, // **bold**
+    { regex: /\*(.*?)\*/g, component: 'em' },         // *italic*
+    { regex: /`(.*?)`/g, component: 'code' }         // `code`
+  ];
+
+  while (currentIndex < text.length) {
+    let earliestMatch = null;
+    let earliestIndex = text.length;
+    let matchedPattern = null;
+
+    // Find the earliest markdown pattern
+    for (const pattern of patterns) {
+      pattern.regex.lastIndex = currentIndex;
+      const match = pattern.regex.exec(text);
+      if (match && match.index < earliestIndex) {
+        earliestMatch = match;
+        earliestIndex = match.index;
+        matchedPattern = pattern;
+      }
+    }
+
+    if (earliestMatch && matchedPattern) {
+      // Add text before the match
+      if (earliestIndex > currentIndex) {
+        elements.push(
+          <span key={elementKey++}>
+            {text.slice(currentIndex, earliestIndex)}
+          </span>
+        );
+      }
+
+      // Add the formatted element
+      if (matchedPattern.component === 'strong') {
+        elements.push(
+          <strong key={elementKey++}>
+            {earliestMatch[1]}
+          </strong>
+        );
+      } else if (matchedPattern.component === 'em') {
+        elements.push(
+          <em key={elementKey++}>
+            {earliestMatch[1]}
+          </em>
+        );
+      } else if (matchedPattern.component === 'code') {
+        elements.push(
+          <code key={elementKey++}>
+            {earliestMatch[1]}
+          </code>
+        );
+      }
+
+      currentIndex = earliestIndex + earliestMatch[0].length;
+    } else {
+      // No more patterns found, add remaining text
+      elements.push(
+        <span key={elementKey++}>
+          {text.slice(currentIndex)}
+        </span>
+      );
+      break;
+    }
+  }
+
+  return elements;
+}
 
 interface MobiriseParsedContent {
   type: 'text' | 'image' | 'heading' | 'code';
@@ -169,7 +245,7 @@ export default function MobiriseContentRenderer({ markdownContent }: MobiriseCon
                     <p className="mbr-text mbr-fonts-style display-7">
                       {section.content.split('\n').map((line, lineIndex) => (
                         <span key={lineIndex}>
-                          {line}
+                          {processInlineMarkdown(line)}
                           {lineIndex < section.content.split('\n').length - 1 && <><br /><br /></>}
                         </span>
                       ))}

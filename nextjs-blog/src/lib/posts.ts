@@ -42,7 +42,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png'
   },
   {
-    slug: 'OllamaDeepSekR1AppleMacBookInstall',
+    slug: 'ollamadeepsekr1applemacbookinstall',
     title: 'Ollama DeepSeek R1',
     description: 'Apple MacBook Install',
     date: '2025-05-24',
@@ -78,7 +78,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/posts-meta.svg'
   },
   {
-    slug: 'internetOfThings3',
+    slug: 'internetofthings3',
     title: 'Internet of Things (Part 3)',
     description: 'Edge Impulse',
     date: '2025-03-01',
@@ -96,7 +96,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/azurex70x75.svg'
   },
   {
-    slug: 'BusinessCentralPart26IntegrationTable',
+    slug: 'businesscentralpart26integrationtable',
     title: 'Business Central (Part 26)',
     description: 'Integration Tables',
     date: '2024-12-22',
@@ -105,7 +105,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/posts-meta.svg'
   },
   {
-    slug: 'PowerApps23ConfigurationMigrationTool',
+    slug: 'powerapps23configurationmigrationtool',
     title: 'Power Apps (Part 23)',
     description: 'Configuration Migration Tool (CMT)',
     date: '2025-01-01',
@@ -114,7 +114,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/office-365-icon-500x500.png'
   },
   {
-    slug: 'powerPages3',
+    slug: 'powerpages3',
     title: 'Power Pages (Part 3)',
     description: 'Customer Order Lines',
     date: '2024-12-20',
@@ -123,7 +123,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/powerpages-scalable.svg'
   },
   {
-    slug: 'powerPages2',
+    slug: 'powerpages2',
     title: 'Power Pages (Part 2)',
     description: 'Customer Orders',
     date: '2024-12-20',
@@ -132,7 +132,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/powerpages-scalable.svg'
   },
   {
-    slug: 'BusinessCentralPart25IntegratingWithDataverseUsingDataflows',
+    slug: 'businesscentralpart25integratingwithdataverseusingdataflows',
     title: 'Business Central (Part 25)',
     description: 'Customer Orders',
     date: '2024-12-01',
@@ -150,7 +150,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/85702467-200x200.png'
   },
   {
-    slug: 'powerPages1',
+    slug: 'powerpages1',
     title: 'Power Pages (Part 1)',
     description: 'A Business Central Customer Portal',
     date: '2024-10-26',
@@ -159,7 +159,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/powerpages-scalable.svg'
   },
   {
-    slug: 'promptFlow6',
+    slug: 'promptflow6',
     title: 'Prompt flow (Part 6)',
     description: 'With Semantic Kernel and Planner',
     date: '2024-09-01',
@@ -168,7 +168,7 @@ export const blogPosts: BlogPost[] = [
     image: '/assets/images/logo.svg'
   },
   {
-    slug: 'promptFlow5',
+    slug: 'promptflow5',
     title: 'Prompt flow (Part 5)',
     description: 'With LangChain',
     date: '2024-09-01',
