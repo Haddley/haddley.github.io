@@ -16,7 +16,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Development',
     tags: ["ai"],
-    image: '/assets/images/3dprinting1/hero.png'
+    image: '/assets/images/3dprinting1/img-3200-2-480x640.jpg'
   },
   {
     slug: '3dprinting2',
@@ -88,7 +88,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Web Development',
     tags: ["angular","ai","ml"],
-    image: '/assets/images/angular-new/hero.png'
+    image: '/assets/images/angular'
   },
   {
     slug: 'angular',
@@ -259,7 +259,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     category: 'Azure',
     tags: ["azure","python","ai","git","github"],
-    image: '/assets/images/azureai1-new/hero.png'
+    image: '/assets/images/azurex70x75.svg'
   },
   {
     slug: 'azureai1',
@@ -2266,7 +2266,7 @@ export const blogPosts: BlogPost[] = [
     date: '2024-01-10',
     category: 'Azure',
     tags: ["Azure","AI","Machine Learning"],
-    image: '/assets/images/azure-ai-part-1/hero.png'
+    image: '/assets/images/azure-ai.png'
   }
 ];
 
