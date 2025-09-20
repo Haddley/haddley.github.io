@@ -1,0 +1,12 @@
+---
+title: "Business Central (Part 27) PromptDialog"
+description: "A comprehensive guide covering business central (part 27) promptdialog"
+date: "2025-09-20"
+category: "Development"
+image: "/assets/images/promptdialog.png"
+tags: ["cloud","ai","business central","dynamics"]
+---
+
+# Business Central (Part 27) PromptDialog
+
+Microsoft Microsoft Dynamics 365 Business Central (Part 27) Prompt Dialog Introduction (Part 1) By Microsoft , Public Domain Prompt Dialog (Part 1) The PromptDialog page serves as the core UI component for a Business Central Copilot, enabling users to evaluate and refine AI-generated outputs within a structured, guided workflow. This page type orchestrates an intuitive, end-to-end experience where: User Input: Users provide initial prompts or instructions. AI Output Generation: The system processes the input and displays results. Review & Iteration: Users assess the output, make edits (if needed), and regenerate responses until satisfied. Final Action: The user chooses to either save the refined output or discard the session. I navigated to Business Central https://businesscentral.dynamics.com I created a Sandbox Environment The Sandbox Environment state updated to Active I switched to the CRONUS company in the Sandbox Environment In Visual Studio Code I selected the View | Command Palette menu item and entered Al:Go! I entered the Project/Extension name LLM I selected the latest Business Central version I selected the Microsoft cloud sandbox option I used the View | Command Palette menu item and entered Al:Download symbols I clicked the Copy & Open button I clicked Continue I clicked the Start Debugging menu item The Debugger stopped on the Message statement. I clicked Continue The Message was displayed on the Business Central page I selected the New AL File Wizard right click menu item I selected Page I accepted the Object Id 50100 and entered the page name LLM A page was generated I updated the generated page with Prompt Dialog specific AL code Pag50100.LLM.al I updated the startupObjectId. I clicked Run | Start Debugging The Prompt Dialog page was displayed. I selected the Capital City item from the Prompt guide I updated the text to What is the Capital of France? and clicked the Generate button The RunGeneration procedure was executed. This code updated the Output variable/field based on the Prompt The generated response was displayed References Build Copilot user experience

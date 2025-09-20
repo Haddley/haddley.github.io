@@ -1,0 +1,182 @@
+1:"$Sreact.fragment"
+2:I[9379,["619","static/chunks/619-ba102abea3e3d0e4.js","177","static/chunks/app/layout-b6140098d4dc0e33.js"],"default"]
+3:I[9766,[],""]
+4:I[8924,[],""]
+6:I[4431,[],"OutletBoundary"]
+8:I[5278,[],"AsyncMetadataOutlet"]
+a:I[4431,[],"ViewportBoundary"]
+c:I[4431,[],"MetadataBoundary"]
+d:"$Sreact.suspense"
+f:I[7150,[],""]
+:HL["/_next/static/media/949adacb6381283a-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/9dd75fadc5b3df29-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/css/a7d33c8790143d66.css","style"]
+0:{"P":null,"b":"RJUMHoOpO5HDs1LInqYrA","p":"","c":["","posts","financialOperationsPurchaseInvoice",""],"i":false,"f":[[["",{"children":["posts",{"children":[["slug","financialOperationsPurchaseInvoice","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/a7d33c8790143d66.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":[["$","head",null,{"children":[["$","link",null,{"rel":"stylesheet","href":"/assets/web/assets/mobirise-icons2/mobirise2.css"}],["$","link",null,{"rel":"stylesheet","href":"/assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css"}],["$","link",null,{"rel":"stylesheet","href":"/assets/bootstrap/css/bootstrap.min.css"}],["$","link",null,{"rel":"stylesheet","href":"/assets/bootstrap/css/bootstrap-grid.min.css"}],["$","link",null,{"rel":"stylesheet","href":"/assets/bootstrap/css/bootstrap-reboot.min.css"}],["$","link",null,{"rel":"stylesheet","href":"/assets/dropdown/css/style.css"}],["$","link",null,{"rel":"stylesheet","href":"/assets/socicon/css/styles.css"}],["$","link",null,{"rel":"stylesheet","href":"/assets/theme/css/style.css"}],["$","link",null,{"rel":"stylesheet","href":"/assets/mobirise/css/mbr-additional.css"}],["$","link",null,{"rel":"stylesheet","href":"/prism.css"}]]}],["$","body",null,{"className":"__className_2cd903 antialiased","children":[["$","$L2",null,{}],["$","main",null,{"children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}]]}],{"children":["posts",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","financialOperationsPurchaseInvoice","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L5",null,["$","$L6",null,{"children":["$L7",["$","$L8",null,{"promise":"$@9"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$La",null,{"children":"$Lb"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$Lc",null,{"children":["$","div",null,{"hidden":true,"children":["$","$d",null,{"fallback":null,"children":"$Le"}]}]}]]}],false]],"m":"$undefined","G":["$f",[]],"s":false,"S":true}
+10:I[2619,["619","static/chunks/619-ba102abea3e3d0e4.js","356","static/chunks/356-1fcf197c11312f1f.js","858","static/chunks/app/posts/%5Bslug%5D/page-313a7831d907d705.js"],""]
+11:I[8889,["619","static/chunks/619-ba102abea3e3d0e4.js","356","static/chunks/356-1fcf197c11312f1f.js","858","static/chunks/app/posts/%5Bslug%5D/page-313a7831d907d705.js"],"default"]
+12:T22fb,
+# Financial Operations Purchase Invoice
+
+## Payment Journals
+
+![](/assets/images/financialoperationspurchaseinvoice/dynamics365-color.svg)
+*By Microsoft, Public Domain*
+
+
+## Financial Operations - Payment Journals
+
+Businesses that purchase items from Vendors need to provide payment.
+
+Businesses should take advantage of payment terms and discounts for prompt payment.
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.48.12-pm-1836x434.png)
+*I noticed that there were 13 Outstanding Vendor Invoices in the CRONUS USA, Inc. company accounts*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.49.21-pm-1836x280.png)
+*I created a payment for the $14,895 Nod Publishers Invoice*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.49.47-pm-1836x644.png)
+*I selected Payment Type "Computer Check"*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.50.31-pm-1836x332.png)
+*I noticed that the Check Printed value was false (unselected)*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.50.48-pm-1836x320.png)
+*As a test I tried to Post the payment*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.51.00-pm-1836x426.png)
+*I confirmed Yes*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.51.37-pm-1836x205.png)
+*Business Central generated an error. I had specified Computer Check but I had not printed a Check.*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.51.53-pm-1836x320.png)
+*I selected the Check|Print Check... menu item*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.52.41-pm-1836x645.png)
+*I selected the "Send to..." link*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.52.54-pm-1836x644.png)
+*I selected the PDF Document option*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.53.12-pm-1836x57.png)
+*Check.pdf has been downloaded*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.53.24-pm-1836x643.png)
+*Business Central generated a one page pdf document (ready for me to print)*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.53.43-pm-1836x318.png)
+*I selected Preview Posting*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.53.58-pm-1836x300.png)
+*There were going to be two General Ledger Entries addedThere was going to be a Vendor Ledger Entry addedThere was going to be a Bank Account Ledger Entry addedThere were going to be three Detailed Vendor Ledger Entries added*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.54.16-pm-1836x280.png)
+*A Credit entry was going to be added to the Checking Account (The value of the Asset would reduce)*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.54.29-pm-1836x280.png)
+*A Debit entry was going to be added to the Accounts Payable Account (The size of the Liability would reduce)Notice that the name of the Vendor was added as a Description*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.54.48-pm-1836x261.png)
+*A Debit entry was going to be added to the Nod Publishers Account in the Vendor Ledger*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.55.11-pm-1836x236.png)
+*A Credit entry was going to be added to the CHECKING Account in the Bank Account Ledger*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.55.45-pm-1836x240.png)
+*Three entries were going to be added to the Detailed Vendor Ledger*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.59.55-pm-1836x325.png)
+*I selected the Post|Post menu item*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.00.06-pm-1836x447.png)
+*I selected the Yes option*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.00.17-pm-1836x442.png)
+*The journal lines were successfully posted*
+
+
+## Suggest Vendor Payments
+
+I used the Suggest Vendor Payments menu item to suggest payment lines. In normal operations suggested payment lines would include payments that will qualify for payment discounts.
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.07.38-pm-1836x121.png)
+*Payment Journals*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.07.55-pm-1836x268.png)
+*I selected the CASH batch (as a starting point)*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.08.11-pm-1836x333.png)
+*I clicked the Suggest Vendor Payments link*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.08.40-pm-1836x645.png)
+*I clicked the "Show more" link*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.09.24-pm-1836x645.png)
+*I selected Bal. Account Type: Bank Account, Bal. Account No.: CHECKING, and Bank Payment Type: Computer Check*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.09.36-pm-1836x499.png)
+*I clicked the OK link*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.10.03-pm-1836x444.png)
+*As a test I tried to click the Post|Post link*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.10.22-pm-1836x196.png)
+*Again Business Central generated an error. I had specified Computer Check but I had not printed the Checks.*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.10.43-pm-1836x402.png)
+*I clicked the Check|Print Check... link*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.11.09-pm-1836x642.png)
+*I selected the Send to... link*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.11.21-pm-1836x643.png)
+*I selected the PDF Document option*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.11.51-pm-1836x644.png)
+*The result was a 5 page pdf file. Each page included the check details and the corresponding Vendor invoice details*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.12.06-pm-1836x433.png)
+*I selected Preview Posting*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.12.20-pm-1836x642.png)
+*There were going to be ten General Ledger Entries addedThere were going to be five Vendor Ledger Entries addedThere was going to be five Bank Account Ledger Entries addedThere were going to be twenty two Detailed Vendor Ledger Entries added*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.12.46-pm-1836x462.png)
+*Five Credit entries were going to be added to the Checking Account (The value of the Asset would reduce)*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.12.56-pm-1836x425.png)
+*Five Debit entries were going to be added to the Accounts Payable Account (The size of the Liability would reduce)Notice that in each instance the name of the Vendor was added as a Description*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.13.31-pm-1836x381.png)
+*Five Debit entries were going to be added to the Vendor Ledger (one for each of the five Vendor Accounts)*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.13.43-pm-1836x341.png)
+*Five Credit entries were going to be added to the CHECKING Account in the Bank Account Ledger*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.13.57-pm-1836x644.png)
+*Twenty two entries were going to be added to the Detailed Vendor Ledger*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.14.11-pm-1836x645.png)
+*I selected the Post|Post menu item*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.14.20-pm-1836x642.png)
+*I selected the Yes option*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.14.32-pm-1836x642.png)
+*The journal lines were successfully posted*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.15.15-pm-1836x266.png)
+*The Outstanding Vendor Invoices count was reduced to 0*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.15.36-pm-1836x645.png)
+*I reviewed the bank accounts list*
+
+![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.15.59-pm-1836x290.png)
+*At least $49,421.55 will need to be deposited in the CHECKING bank account before the Vendors receive the physical checks.*
+5:[["$","section",null,{"className":"content4 cid-uBU3VQlp0E","id":"content4-cru","children":["$","div",null,{"className":"container","children":["$","div",null,{"className":"row justify-content-center","children":["$","div",null,{"className":"title col-md-12 col-lg-10","children":[["$","h3",null,{"className":"mbr-section-title mbr-fonts-style align-center mb-4 display-2","children":["$","strong",null,{"children":"Microsoft Dynamics 365 Business Central (Part 5)"}]}],["$","h4",null,{"className":"mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5","children":"AL-Go-PTE"}]]}]}]}]}],["$","section",null,{"className":"content1 cid-content","id":"content1-breadcrumb","children":["$","div",null,{"className":"container","children":["$","div",null,{"className":"row justify-content-center","children":["$","div",null,{"className":"col-md-12 col-lg-10","children":["$","div",null,{"className":"mb-4","children":["$","$L10",null,{"href":"/posts","className":"link text-primary display-7","children":"← Back to Posts"}]}]}]}]}]}],["$","$L11",null,{"markdownContent":"$12"}]]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+7:null
+13:I[622,[],"IconMark"]
+9:{"metadata":[["$","title","0",{"children":"Neil Haddley - Developer & Technical Consultant"}],["$","meta","1",{"name":"description","content":"I help organizations to connect with clients, comply with regulations, and automate workflows."}],["$","meta","2",{"name":"author","content":"Neil Haddley"}],["$","meta","3",{"name":"keywords","content":"developer, consultant, Azure, Angular, Business Central, automation"}],["$","meta","4",{"name":"creator","content":"Neil Haddley"}],["$","meta","5",{"property":"og:title","content":"Neil Haddley - Developer & Technical Consultant"}],["$","meta","6",{"property":"og:description","content":"I help organizations to connect with clients, comply with regulations, and automate workflows."}],["$","meta","7",{"property":"og:url","content":"https://haddley.github.io/"}],["$","meta","8",{"property":"og:site_name","content":"Neil Haddley"}],["$","meta","9",{"property":"og:locale","content":"en_US"}],["$","meta","10",{"property":"og:type","content":"website"}],["$","meta","11",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","12",{"name":"twitter:title","content":"Neil Haddley - Developer & Technical Consultant"}],["$","meta","13",{"name":"twitter:description","content":"I help organizations to connect with clients, comply with regulations, and automate workflows."}],["$","link","14",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}],["$","$L13","15",{}]],"error":null,"digest":"$undefined"}
+e:"$9:metadata"

@@ -6,8 +6,7 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true
   },
-  basePath: process.env.NODE_ENV === 'production' ? '/haddley.github.io' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/haddley.github.io/' : '',
+  // No basePath needed for user/organization pages (username.github.io)
 };
 
 export default nextConfig;

@@ -1,0 +1,12 @@
+---
+title: "Hands-on-Lab 2.2"
+description: "A comprehensive guide covering hands-on-lab 2.2"
+date: "2025-09-20"
+category: "Development"
+image: "/assets/images/hands-on-lab2.2.png"
+tags: ["ai","business central","dynamics"]
+---
+
+# Hands-on-Lab 2.2
+
+Microsoft Dynamics 365 Business Central (Part 10) Hands-on-Lab 2.2 By Microsoft , Public Domain Migrate master data to a new company Hands-on-Lab 2.2: Migrate master data to a new company "After completing the basic configuration, you can now start by uploading the company’s business data, such as customers, vendors, items and the chart of accounts. In order to prepare the migration of this data, you will configure some configuration packages and provide these excel-files to Contoso’s super users, to complete the information. You will start with the vendor list, including contact information. To make sure the users know how to complete the required information, you prepare the following example." I used the search button to navigate to the Configuration Packages page I clicked the + New button Dialog opened with new Configuration Package I entered a code, a name and clicked on the three dots button in the Table ID column I selected the Vendor Table I clicked on the Table tab I clicked on the Fields button I clicked the No button I clicked the Clear included button Only the No. field was still selected I clicked on the checkboxes to select the Name, Address, City, Phone No., Currency Code, Language Code, Country/Region Code and Post Code fields I clicked the Export to Excel button I clicked Yes I opened the Configuration Package (the Excel Workbook) I added the vendor details I used the search button to access the Currencies page I clicked the + New button I added GBP details I set the Realized Gains and Realized Losses accounts The GBP Currency had been added I used the search button to access the Counties/Regions page I added details for the (fictional) Island of Sodor I used search to navigate back to the Configuration Packages page and selected the Import from Excel button I selected the updated Excel Workbook I clicked the Import button I scrolled to the right to review the number of tables, rows and errors. I clicked the Apply Package button The dialog confirmed that 9 records were inserted I clicked on the Vendors link to navigate to the Vendors page I reviewed the inserted Vendor records References Hands-on-Lab 2.2: Migrate master data to a new company

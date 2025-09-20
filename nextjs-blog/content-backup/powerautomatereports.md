@@ -1,0 +1,12 @@
+---
+title: "Microsoft Power Automate Reports"
+description: "A comprehensive guide covering microsoft power automate reports"
+date: "2025-09-20"
+category: "Development"
+image: "/assets/images/powerautomatereports.png"
+tags: ["cloud","ai","dynamics"]
+---
+
+# Microsoft Power Automate Reports
+
+Power Apps (Part 21) Microsoft Power Automate Reports This file is licensed under the Creative Commons Attribution 4.0 International license. Microsoft Power Automate Reports Creating a Flow that emails a Report as a PDF file I created a Flows solution I added a new Cloud flow The user will be asked to provide a Report Name and an Email address. The Success variable is set to false. I used the List rows action... ... to fetch a row from the Reports table I filtered the results to the Report with the user provided name I added an HTTP action I selected the Invoke an HTTP request action I entered the report's base resource url twice (my unique https://XXX.crm.dynamics.com url) A connection was created and I entered the HTTP reuqest details / CRMReports/rsviewer/reportviewer.aspx Content-Type: application/x-www-form-urlencoded id={report id} The flow designer automagically added the Apply to each action I added three Compose actions Together the three Compose actions establish the pdf download url add(indexOf(outputs('Invoke_an_HTTP_request')?['body'],'"PdfDownloadUrl":"'), 18) sub(indexOf(outputs('Invoke_an_HTTP_request')?['body'],'","PdfPreviewUrl"'),outputs('Compose')) replace(substring(outputs('Invoke_an_HTTP_request')?['body'],outputs('Compose'),outputs('Compose_2')),'\u0026','&') I added a Do until action I added a Do until action to ensure that the flow would retry the HTTP GET and Email actions until the Success variable was set to true I added three scope actions The third scope action was configured to catch errors. I added the happy path logic to the second scope I attempt to fetch the report as a PDF file I attempt to send the pdf file as an email attachment I set the body of the email, the body of the email attachment, the email to and the email subject. If no errors are generated I set the value of the Success variable If no errors are generated I set the value of the Success variable to true When I run the flow this email is received The email has this PDF file attachment References Download Dynamics 365 Reports as a PDF with Power Automate Using Dynamics 365 Reports as a PDF in Power Automate

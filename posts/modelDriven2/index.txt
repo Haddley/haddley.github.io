@@ -1,0 +1,343 @@
+1:"$Sreact.fragment"
+2:I[9379,["619","static/chunks/619-ba102abea3e3d0e4.js","177","static/chunks/app/layout-b6140098d4dc0e33.js"],"default"]
+3:I[9766,[],""]
+4:I[8924,[],""]
+6:I[4431,[],"OutletBoundary"]
+8:I[5278,[],"AsyncMetadataOutlet"]
+a:I[4431,[],"ViewportBoundary"]
+c:I[4431,[],"MetadataBoundary"]
+d:"$Sreact.suspense"
+f:I[7150,[],""]
+:HL["/_next/static/media/949adacb6381283a-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/9dd75fadc5b3df29-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/css/a7d33c8790143d66.css","style"]
+0:{"P":null,"b":"RJUMHoOpO5HDs1LInqYrA","p":"","c":["","posts","modelDriven2",""],"i":false,"f":[[["",{"children":["posts",{"children":[["slug","modelDriven2","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/a7d33c8790143d66.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":[["$","head",null,{"children":[["$","link",null,{"rel":"stylesheet","href":"/assets/web/assets/mobirise-icons2/mobirise2.css"}],["$","link",null,{"rel":"stylesheet","href":"/assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css"}],["$","link",null,{"rel":"stylesheet","href":"/assets/bootstrap/css/bootstrap.min.css"}],["$","link",null,{"rel":"stylesheet","href":"/assets/bootstrap/css/bootstrap-grid.min.css"}],["$","link",null,{"rel":"stylesheet","href":"/assets/bootstrap/css/bootstrap-reboot.min.css"}],["$","link",null,{"rel":"stylesheet","href":"/assets/dropdown/css/style.css"}],["$","link",null,{"rel":"stylesheet","href":"/assets/socicon/css/styles.css"}],["$","link",null,{"rel":"stylesheet","href":"/assets/theme/css/style.css"}],["$","link",null,{"rel":"stylesheet","href":"/assets/mobirise/css/mbr-additional.css"}],["$","link",null,{"rel":"stylesheet","href":"/prism.css"}]]}],["$","body",null,{"className":"__className_2cd903 antialiased","children":[["$","$L2",null,{}],["$","main",null,{"children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]]}]]}]]}],{"children":["posts",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","modelDriven2","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L5",null,["$","$L6",null,{"children":["$L7",["$","$L8",null,{"promise":"$@9"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$La",null,{"children":"$Lb"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$Lc",null,{"children":["$","div",null,{"hidden":true,"children":["$","$d",null,{"fallback":null,"children":"$Le"}]}]}]]}],false]],"m":"$undefined","G":["$f",[]],"s":false,"S":true}
+10:I[2619,["619","static/chunks/619-ba102abea3e3d0e4.js","356","static/chunks/356-1fcf197c11312f1f.js","858","static/chunks/app/posts/%5Bslug%5D/page-313a7831d907d705.js"],""]
+11:I[8889,["619","static/chunks/619-ba102abea3e3d0e4.js","356","static/chunks/356-1fcf197c11312f1f.js","858","static/chunks/app/posts/%5Bslug%5D/page-313a7831d907d705.js"],"default"]
+12:T3994,
+# Model Driven Apps (Part 2)
+
+## Business Process Flow
+
+![](/assets/images/modeldriven2/office-365-icon-500x500.png)
+*This file is licensed under the Creative Commons Attribution 4.0 International license.*
+
+
+## Business Process Flow
+
+Business process flows help people complete their tasks. They offer an interface that guides individuals through the steps defined.
+
+I created a **Project** table and a four step business process flow.
+
+
+## Environments
+
+The random urls assigned to Power Platform Environments can be updated.
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-7.58.33-am-2136x1321.png)
+*I reset my Developer environment and updated the url to https://haddley-develop.crm.dynamics.com.*
+
+
+## Published Apps
+
+When I navigate to [https://haddley-develop.crm.dynamics.com](https://haddley-develop.crm.dynamics.com) I see a list of Published Apps.
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-8.54.54-am-2136x1083.png)
+*Published Apps*
+
+
+## Projects
+
+I created a Project table with these columns:
+
+Business Need (required)
+Project Description (recommended)
+Estimated Cost $
+Program {Asset Management, Corp. Website, CRM, Highway Improvement, Inventory}
+Actual Cost $; and
+Project Closeout
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-11.36.30-am-2136x1078.png)
+*I selected my Development environment*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-11.37.25-am-2136x998.png)
+*I started to create a Project Solution*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-11.37.45-am-2136x998.png)
+*I added a Publisher*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-11.38.00-am-2136x999.png)
+*I provided my email address*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-11.38.14-am-2136x997.png)
+*I selected the *new* publisher and clicked the Create button*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-11.39.14-am-2136x999.png)
+*I added a Table to the new solution*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-11.39.55-am-2136x997.png)
+*I called my table Project*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-11.43.13-am-2136x998.png)
+*I wanted to set a custom image for the new table*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-11.43.57-am-2136x1001.png)
+*I downloaded an image (Project icons created by Freepik - Flaticon)*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-11.44.40-am-2136x996.png)
+*I clicked the "Creating a new activity" option - adding support for activities*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-11.46.46-am-2136x996.png)
+*I updated the Primary name column to be an Autonumber column*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-11.47.13-am-2136x998.png)
+*I set the Primary name column to be Optional, provided prefix "project", updated the number of digits to 6 and updated the seed value*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-11.45.34-am-2136x485.png)
+*I clicked the + New column button to add a column to the Project table*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-11.47.46-am-2136x996.png)
+*I added a Business Need column (required)*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-11.51.02-am-2136x996.png)
+*I added a Project Description column (recommended)*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-11.51.45-am-2136x996.png)
+*I added an Estimated Cost column (Currency $)*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-11.53.47-am-2136x1000.png)
+*I added a Program column (Choice)*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-11.54.21-am-2136x999.png)
+*I clicked the + New Choice button to create a global choice (set)*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-11.57.19-am-2136x999.png)
+*I entered the possible Program values*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-11.57.44-am-2136x997.png)
+*I selected the *new* Program global choice (set)*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-11.58.29-am-2136x998.png)
+*I created an Actual Cost column (Currency $)*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-11.59.04-am-2136x1000.png)
+*I created a Project Closeout column (Text area)*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-11.59.17-am-2136x999.png)
+*I set the Project Closeout column's Maximum character count to 4000*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-11.59.47-am-2136x999.png)
+*I updated the Project table's Main form*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.00.09-pm-2136x1001.png)
+*I moved the Name and Owner columns to the Form Header*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.01.53-pm-2136x1001.png)
+*I added the new columns to the General tab*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.02.26-pm-2136x1098.png)
+*I added a Timeline control to display activity information (Meetings, Phone calls, etc. related to each Project)*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.03.25-pm-2136x717.png)
+*I created a new Model Driven App*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.03.38-pm-2136x923.png)
+*I called the new app Projects*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.03.59-pm-2136x1023.png)
+*I added a page to the app*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.04.25-pm-2136x1091.png)
+*I selected the Project table*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.05.06-pm-2136x1096.png)
+*I renamed the Group Label to Main*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.06.15-pm-2136x693.png)
+*A Projects menu item has been added to the left hand navigation (using the custom icon)*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.06.38-pm-2136x1053.png)
+*I clicked the + New button to navigate to the form*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.07.06-pm-2136x1095.png)
+*I created a Business process flow to provide some guidance to the user*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.07.52-pm-2136x1096.png)
+*I called the new business process flow Project Flow*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.08.05-pm-2136x1095.png)
+*A dialog was opened in the solution page*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.08.54-pm-2136x1056.png)
+*The Business Process Flow editor was opened in another browser tab.I renamed the first step 01 - Initiation and clicked the Apply button.*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.09.18-pm-2136x1050.png)
+*I updated the Data Step's Data Field (Column) to Business Need*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.11.11-pm-2136x1053.png)
+*I clicked the Apply button*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.11.34-pm-2136x1053.png)
+*Notice that the Step Name was automatically updated to match the selected Data Field (Column)*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.11.46-pm-2136x1049.png)
+*I clicked the Add Data Step menu item to add a Data Step*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.11.59-pm-2136x1049.png)
+*I clicked the plus button under the existing Business Need data step*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.12.36-pm-2136x1106.png)
+*I selected the Project Description Data field (Column)*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.12.48-pm-2136x1103.png)
+*I clicked the Apply button. Notice that I did not click the Required option (yet)*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.13.10-pm-2136x736.png)
+*I clicked the Add Stage menu item*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.13.22-pm-2136x731.png)
+*I clicked the plus button to the right of the existing stage*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.13.56-pm-2136x1101.png)
+*I updated new stage's display name to 02 - Planning. I clicked the Apply button.*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.14.21-pm-2136x1104.png)
+*I updated the provided Data Step to use the Estimated Cost Data Field (Column)*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.14.35-pm-2136x1100.png)
+*I clicked the Apply button*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.14.50-pm-2136x786.png)
+*The change was saved and the diagram was updated*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.15.06-pm-2136x883.png)
+*I added another Data Step*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.15.31-pm-2136x1106.png)
+*I set the Data Step to use the Program Data field (Column)*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.15.43-pm-2136x1106.png)
+*I did not check the Required box (yet). I clicked the Apply button to save the changes*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.16.06-pm-2136x649.png)
+*I clicked the Add Stage menu item*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.16.29-pm-2136x738.png)
+*I clicked the plus button to add a Stage*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.17.16-pm-2136x1105.png)
+*I named the new stage 03 - Execution*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.17.35-pm-2136x861.png)
+*I updated the existing Data Step to use the Actual Cost Data Field (Column)*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.17.53-pm-2136x1099.png)
+*I did not check the Required box (yet). I clicked the Apply button to save the changes*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.18.06-pm-2136x810.png)
+*I clicked the Add Stage menu item*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.18.18-pm-2136x698.png)
+*I clicked the plus button to add a Stage*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.18.39-pm-2136x1101.png)
+*I named the new stage 04 - Close. I clicked the Apply button to save the changes*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.18.59-pm-2136x1103.png)
+*I updated the existing Data Step to use the Project Closeout Data Field (Column)*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.19.12-pm-2136x1100.png)
+*I did not check the Required box. I clicked the Apply button to save the changes*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.19.36-pm-2136x248.png)
+*I clicked the Activate menu item*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.19.49-pm-2136x778.png)
+*I clicked the Activate button*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.20.02-pm-2136x832.png)
+*I reviewed the dialog and closed the browser tab*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.20.28-pm-2136x737.png)
+*I used the + Add required objects menu item*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.20.56-pm-2136x804.png)
+*The + Add required objects menu item added the Project Flow table (used by the Business Process Flow to keep track)*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.21.25-pm-2136x265.png)
+*I clicked the Publish all customizations button*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.22.38-pm-2136x664.png)
+*Clicked the Projects app to launch it*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.24.05-pm-2136x590.png)
+*The app opened with url haddley-dev.crm.dynamics.com*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.24.24-pm-2136x735.png)
+*Clicking in the business process flow I can see that Business Need and Project Descriptions are important to the first step.*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.25.29-pm-2136x794.png)
+*I entered a Business Need value and clicked on the Business Process Flow again (notice the check mark)*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.26.11-pm-2136x786.png)
+*I entered a Project Description value and clicked Save to save the row (record)*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.26.24-pm-2136x798.png)
+*Once the record has been saved the Primary name is available and the Next Stage button is shown in the Business Process Process*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.27.28-pm-2136x896.png)
+*I removed the Project Description value and clicked the Next Stage button.*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.28.23-pm-2136x778.png)
+*I clicked the Next Stage button again*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.28.39-pm-2136x774.png)
+*Then I clicked on the 02 - Planning Step and clicked the Set Active button to return the process to the 02 - Planning Step*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.29.31-pm-2136x1105.png)
+*I updated the Business Process Flow setting Estimated Cost to Required*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.29.48-pm-2136x1108.png)
+*I updated the Business Process Flow setting Program to Required*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.30.03-pm-2136x1111.png)
+*I updated the Business Process Flow setting Actual Cost to Required*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.30.23-pm-2136x1106.png)
+*I did not set Project Closeout to Required*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.30.35-pm-2136x271.png)
+*I clicked the Update button*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.32.14-pm-2136x1106.png)
+*I returned to the project-100000 record and clicked the Next Stage button*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.32.42-pm-2136x1102.png)
+*I provided Estimated Cost and Program values and clicked the Next Stage button*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.32.54-pm-2136x1104.png)
+*I clicked the Next Stage button*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.33.23-pm-2136x1104.png)
+*I provided an Actual Cost value (in the business process flow box) and clicked the Next Stage button (again)*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.33.37-pm-2136x1106.png)
+*I did not click the Finish button (yet)*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.37.16-pm-2136x541.png)
+*I added a new Contact Steak Holder*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.39.55-pm-2136x1108.png)
+*I added a phone call activity to project-100000. The Timeline control displays details of the call.*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.40.10-pm-2136x1108.png)
+*I clicked the Finish button*
+
+![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.40.21-pm-2136x786.png)
+*The Business Process Flow is complete*
+5:[["$","section",null,{"className":"content4 cid-uBU3VQlp0E","id":"content4-cru","children":["$","div",null,{"className":"container","children":["$","div",null,{"className":"row justify-content-center","children":["$","div",null,{"className":"title col-md-12 col-lg-10","children":[["$","h3",null,{"className":"mbr-section-title mbr-fonts-style align-center mb-4 display-2","children":["$","strong",null,{"children":"Model Driven Apps (Part 2)"}]}],["$","h4",null,{"className":"mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5","children":"Business Process Flow"}]]}]}]}]}],["$","section",null,{"className":"content1 cid-content","id":"content1-breadcrumb","children":["$","div",null,{"className":"container","children":["$","div",null,{"className":"row justify-content-center","children":["$","div",null,{"className":"col-md-12 col-lg-10","children":["$","div",null,{"className":"mb-4","children":["$","$L10",null,{"href":"/posts","className":"link text-primary display-7","children":"← Back to Posts"}]}]}]}]}]}],["$","$L11",null,{"markdownContent":"$12"}]]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+7:null
+13:I[622,[],"IconMark"]
+9:{"metadata":[["$","title","0",{"children":"Neil Haddley - Developer & Technical Consultant"}],["$","meta","1",{"name":"description","content":"I help organizations to connect with clients, comply with regulations, and automate workflows."}],["$","meta","2",{"name":"author","content":"Neil Haddley"}],["$","meta","3",{"name":"keywords","content":"developer, consultant, Azure, Angular, Business Central, automation"}],["$","meta","4",{"name":"creator","content":"Neil Haddley"}],["$","meta","5",{"property":"og:title","content":"Neil Haddley - Developer & Technical Consultant"}],["$","meta","6",{"property":"og:description","content":"I help organizations to connect with clients, comply with regulations, and automate workflows."}],["$","meta","7",{"property":"og:url","content":"https://haddley.github.io/"}],["$","meta","8",{"property":"og:site_name","content":"Neil Haddley"}],["$","meta","9",{"property":"og:locale","content":"en_US"}],["$","meta","10",{"property":"og:type","content":"website"}],["$","meta","11",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","12",{"name":"twitter:title","content":"Neil Haddley - Developer & Technical Consultant"}],["$","meta","13",{"name":"twitter:description","content":"I help organizations to connect with clients, comply with regulations, and automate workflows."}],["$","link","14",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}],["$","$L13","15",{}]],"error":null,"digest":"$undefined"}
+e:"$9:metadata"
