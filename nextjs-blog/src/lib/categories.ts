@@ -27,6 +27,22 @@ export const categories: Category[] = [
     aliases: ['spring', 'android', 'kotlin']
   },
   {
+    slug: 'javascript',
+    name: 'JavaScript',
+    description: 'JavaScript development, Node.js, React, and web frameworks',
+    icon: '🟨',
+    color: 'bg-yellow-100 text-yellow-800',
+    aliases: ['js', 'nodejs', 'node', 'react', 'vue', 'angular']
+  },
+  {
+    slug: 'typescript',
+    name: 'TypeScript',
+    description: 'TypeScript development, type-safe JavaScript, and modern web apps',
+    icon: '🔷',
+    color: 'bg-blue-100 text-blue-800',
+    aliases: ['ts']
+  },
+  {
     slug: 'azure',
     name: 'Azure',
     description: 'Microsoft Azure cloud services and development',

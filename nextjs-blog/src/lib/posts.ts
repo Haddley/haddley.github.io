@@ -16,7 +16,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Model Context Protocol (Part 2)',
     description: 'Business Central MCP Server Implementation',
     date: '2025-09-21',
-    categories: ["Microsoft Dynamics", "AI"],
+    categories: ["Microsoft Dynamics", "AI", "TypeScript"],
     tags: ["typescript","ai","business central","mcp"],
     image: '/assets/images/mcpserver2/mcp-1024x1024.png',
     hidden: true
@@ -71,7 +71,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Business Central (Part 29)',
     description: 'Prompt Dialog Markdown (Part 3)',
     date: '2024-05-24',
-    categories: ["AI", "Microsoft Dynamics"],
+    categories: ["AI", "Microsoft Dynamics", "JavaScript"],
     tags: ["blog"],
     image: '/assets/images/posts-meta.svg'
   },
@@ -340,7 +340,7 @@ export const blogPosts: BlogPost[] = [
     title: 'React (Part 4)',
     description: 'Codespaces and Authentication',
     date: '2024-03-06',
-    categories: ["DevOps", "Cloud"],
+    categories: ["DevOps", "Cloud", "JavaScript"],
     tags: ["blog"],
     image: '/assets/images/logo512-512x512.png'
   },
@@ -412,7 +412,7 @@ export const blogPosts: BlogPost[] = [
     title: 'React (Part 3)',
     description: 'Adding an Item',
     date: '2024-01-08',
-    categories: ["DevOps", "Cloud"],
+    categories: ["DevOps", "Cloud", "JavaScript"],
     tags: ["blog"],
     image: '/assets/images/logo512-512x512.png'
   },
@@ -583,7 +583,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Model Driven Apps (Part 4)',
     description: 'Model-driven apps Power FX',
     date: '2023-10-09',
-    categories: ["Microsoft 365", "Power Platform"],
+    categories: ["Microsoft 365", "Power Platform", "JavaScript"],
     tags: ["blog"],
     image: '/assets/images/office-365-icon-500x500.png'
   },
@@ -592,7 +592,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Model Driven Apps (Part 3)',
     description: 'Model-driven apps JavaScript Developer Guide',
     date: '2023-10-08',
-    categories: ["Microsoft 365", "Java", "Power Platform"],
+    categories: ["Microsoft 365", "Java", "Power Platform", "JavaScript"],
     tags: ["blog"],
     image: '/assets/images/office-365-icon-500x500.png'
   },
@@ -628,7 +628,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Microsoft Dynamics 365 Business Central (Part 8)',
     description: 'Maps Extension',
     date: '2023-09-01',
-    categories: ["Microsoft Dynamics", "Microsoft 365"],
+    categories: ["Microsoft Dynamics", "Microsoft 365", "JavaScript"],
     tags: ["blog"],
     image: '/assets/images/dynamics365-color.svg'
   },
@@ -795,7 +795,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Raspberry Pi (Part 4)',
     description: 'Laptop Setup',
     date: '2023-07-25',
-    categories: ["IOT", "Mobile"],
+    categories: ["IOT", "Mobile", "JavaScript"],
     tags: ["blog"],
     image: '/assets/images/raspberry-pi-logo.svg'
   },
@@ -892,7 +892,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Firebase Realtime Database',
     description: 'Multiplayer Tick-Tack-Toe',
     date: '2023-05-10',
-    categories: ["AI", "Cloud", "Java"],
+    categories: ["AI", "Cloud", "Java", "JavaScript"],
     tags: ["javascript","java","database","ai","ml"],
     image: '/assets/images/logo-lockup-firebase-vertical.svg'
   },
@@ -901,7 +901,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Angular and Phaser',
     description: 'Multiplayer Tick-Tack-Toe',
     date: '2023-05-10',
-    categories: ["AI"],
+    categories: ["AI", "JavaScript"],
     tags: ["angular","ml"],
     image: '/assets/images/phaser-logo-1836x1530.png'
   },
@@ -910,7 +910,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Firebase Realtime Database',
     description: 'Multiplayer Game',
     date: '2023-05-09',
-    categories: ["AI", "Cloud", "Java"],
+    categories: ["AI", "Cloud", "Java", "JavaScript"],
     tags: ["javascript","java","database","ai","ml"],
     image: '/assets/images/logo-lockup-firebase-vertical.svg'
   },
@@ -919,7 +919,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Angular Firebase',
     description: 'An Angular Firebase App',
     date: '2023-04-25',
-    categories: ["AI", "Cloud"],
+    categories: ["AI", "Cloud", "JavaScript"],
     tags: ["angular","react","ai","ml"],
     image: '/assets/images/logo-lockup-firebase-vertical.svg'
   },
@@ -982,7 +982,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Angular and ASP.NET Core',
     description: 'A comprehensive guide covering angularandasp.net',
     date: '2023-03-24',
-    categories: [".NET", "AI"],
+    categories: [".NET", "AI", "JavaScript"],
     tags: ["angular","react","dotnet","database","ai"],
     image: '/assets/images/angular-full-color-logo.svg'
   },
@@ -991,7 +991,7 @@ export const blogPosts: BlogPost[] = [
     title: 'React (Part 2)',
     description: 'A comprehensive guide covering reactandasp.net',
     date: '2023-03-22',
-    categories: [".NET"],
+    categories: [".NET", "JavaScript"],
     tags: ["angular","react","dotnet","sql","database"],
     image: '/assets/images/logo512-512x512.png'
   },
@@ -1063,7 +1063,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Three.js',
     description: 'Hello, World!',
     date: '2023-03-05',
-    categories: ["Java", "AI"],
+    categories: ["Java", "AI", "JavaScript"],
     tags: ["javascript","java","ai"],
     image: '/assets/images/three.js-icon.svg'
   },
@@ -1080,7 +1080,7 @@ export const blogPosts: BlogPost[] = [
     title: 'NGRX devtools',
     description: 'Troubleshooting NGRX applications',
     date: '2023-01-25',
-    categories: ["DevOps"],
+    categories: ["DevOps", "TypeScript", "JavaScript"],
     tags: ["angular","git","github"],
     image: '/assets/images/ngrx.svg'
   },
@@ -1107,7 +1107,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Power Apps (Part 7)',
     description: 'Power Apps Component Framework',
     date: '2022-08-14',
-    categories: ["Power Platform", "Microsoft 365"],
+    categories: ["Power Platform", "Microsoft 365", "JavaScript"],
     tags: ["blog"],
     image: '/assets/images/office-365-icon-500x500.png'
   },
@@ -1197,7 +1197,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Machine Learning (Part 3)',
     description: 'Notebooks',
     date: '2022-06-05',
-    categories: ["AI"],
+    categories: ["AI", "JavaScript"],
     tags: ["ai","ml","machine learning"],
     image: '/assets/images/tensorflow-logo.svg'
   },
@@ -1206,7 +1206,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Machine Learning (Part 2)',
     description: 'Low hanging fruit',
     date: '2022-06-05',
-    categories: ["AI"],
+    categories: ["AI", "JavaScript"],
     tags: ["blog"],
     image: '/assets/images/tensorflow-logo.svg'
   },
@@ -1224,7 +1224,7 @@ export const blogPosts: BlogPost[] = [
     title: 'A Teams App SharePoint Web Part for One Drive',
     description: 'Using SPFx and the Graph Toolkit',
     date: '2022-05-29',
-    categories: ["Microsoft 365"],
+    categories: ["Microsoft 365", "JavaScript"],
     tags: ["blog"],
     image: '/assets/images/office-365-icon-500x500.png'
   },
@@ -1233,7 +1233,7 @@ export const blogPosts: BlogPost[] = [
     title: 'JavaScript and Microsoft Graph',
     description: 'A Node App that accesses Microsoft 365',
     date: '2022-05-28',
-    categories: ["Microsoft 365", "Java"],
+    categories: ["Microsoft 365", "Java", "JavaScript"],
     tags: ["blog"],
     image: '/assets/images/office-365-icon-500x500.png'
   },
@@ -1242,7 +1242,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Microsoft Graph',
     description: 'Explore Microsoft 365',
     date: '2022-05-26',
-    categories: ["Microsoft 365"],
+    categories: ["Microsoft 365", "JavaScript"],
     tags: ["blog"],
     image: '/assets/images/office-365-icon-500x500.png'
   },
@@ -1268,7 +1268,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Leaflet',
     description: 'A comprehensive guide covering leaflet',
     date: '2022-02-21',
-    categories: ["AI", "Java", "Azure"],
+    categories: ["AI", "Java", "Azure", "JavaScript"],
     tags: ["javascript","azure","java","ai","ml"],
     image: '/assets/images/leaflet-upic-200x200.png'
   },
@@ -1277,7 +1277,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Web Components',
     description: 'A comprehensive guide covering webcomponents',
     date: '2022-02-10',
-    categories: ["Java"],
+    categories: ["Java", "JavaScript"],
     tags: ["angular","react","vue","javascript","java"],
     image: '/assets/images/web-components-logo.svg'
   },
@@ -1295,7 +1295,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Next.js (Part 5)',
     description: 'A comprehensive guide covering nextjs5',
     date: '2022-01-13',
-    categories: ["AI", "Azure", "Cloud"],
+    categories: ["AI", "Azure", "Cloud", "TypeScript"],
     tags: ["typescript","azure","aws","ai","ml"],
     image: '/assets/images/2560px-nextjs-logo.svg-1536x920.png'
   },
@@ -1304,7 +1304,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Ionic and PouchDB',
     description: 'A comprehensive guide covering ionic',
     date: '2021-12-22',
-    categories: ["Java", "Azure", "Cloud"],
+    categories: ["Java", "Azure", "Cloud", "TypeScript"],
     tags: ["react","javascript","typescript","azure","aws"],
     image: '/assets/images/logo-192x192.png'
   },
@@ -1313,7 +1313,7 @@ export const blogPosts: BlogPost[] = [
     title: 'MySQL',
     description: 'A comprehensive guide covering mysql',
     date: '2021-11-14',
-    categories: ["Java", "Cloud"],
+    categories: ["Java", "Cloud", "JavaScript"],
     tags: ["javascript","aws","java","mysql","sql"],
     image: '/assets/images/includes-mysql-5646x2872.png'
   },
@@ -1322,7 +1322,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Next.js (Part 4)',
     description: 'A comprehensive guide covering nextjs4',
     date: '2021-11-11',
-    categories: ["DevOps", "Azure", "Cloud"],
+    categories: ["DevOps", "Azure", "Cloud", "JavaScript"],
     tags: ["azure","aws","git","github"],
     image: '/assets/images/2560px-nextjs-logo.svg-1536x920.png'
   },
@@ -1331,7 +1331,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Next.js (Part 3)',
     description: 'A comprehensive guide covering nextjs3',
     date: '2021-11-07',
-    categories: ["DevOps", "Cloud", "AI"],
+    categories: ["DevOps", "Cloud", "AI", "JavaScript"],
     tags: ["aws","database","ai","git","github"],
     image: '/assets/images/2560px-nextjs-logo.svg-1536x920.png'
   },
@@ -1340,7 +1340,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Next.js (Part 2)',
     description: 'A comprehensive guide covering nextjs2',
     date: '2021-11-06',
-    categories: ["AI", "Java", "Cloud"],
+    categories: ["AI", "Java", "Cloud", "JavaScript"],
     tags: ["javascript","aws","java","ai","ml"],
     image: '/assets/images/2560px-nextjs-logo.svg-1536x920.png'
   },
@@ -1349,7 +1349,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Next.js (Part 1)',
     description: 'A comprehensive guide covering nextjs1',
     date: '2021-11-05',
-    categories: ["Java", "DevOps", "Cloud"],
+    categories: ["Java", "DevOps", "Cloud", "JavaScript"],
     tags: ["react","javascript","aws","java","git"],
     image: '/assets/images/2560px-nextjs-logo.svg-1536x920.png'
   },
@@ -1376,7 +1376,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Sails (Part 1)',
     description: 'A comprehensive guide covering sails1',
     date: '2021-10-12',
-    categories: ["AI", "Azure", "DevOps", "Cloud"],
+    categories: ["AI", "Azure", "DevOps", "Cloud", "JavaScript"],
     tags: ["azure","aws","devops","database","ai"],
     image: '/assets/images/sailsjs-logo-515x193.png'
   },
@@ -1421,7 +1421,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Power Apps (Part 5)',
     description: 'A comprehensive guide covering customconnectorsappregistrations',
     date: '2021-08-09',
-    categories: ["Power Platform", "Microsoft 365", "Java", "Azure", "AI", "DevOps"],
+    categories: ["Power Platform", "Microsoft 365", "Java", "Azure", "AI", "DevOps", "JavaScript"],
     tags: ["javascript","azure","java","ai","git"],
     image: '/assets/images/office-365-icon-500x500.png'
   },
@@ -1439,7 +1439,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Progressive Web Application',
     description: 'A comprehensive guide covering pwa',
     date: '2021-07-24',
-    categories: ["AI", "Java", "Azure"],
+    categories: ["AI", "Java", "Azure", "JavaScript"],
     tags: ["javascript","azure","java","ai","ml"],
     image: '/assets/images/progressive-web-apps-logo.svg'
   },
@@ -1475,7 +1475,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Teams Toolkit with SPFx',
     description: 'A comprehensive guide covering teamstoolkitspfx',
     date: '2021-05-30',
-    categories: ["Microsoft 365", "DevOps", "Azure", "AI", "Cloud"],
+    categories: ["Microsoft 365", "DevOps", "Azure", "AI", "Cloud", "JavaScript"],
     tags: ["azure","cloud","ai","git","github"],
     image: '/assets/images/teams-hi-res-icon-2019.svg'
   },
@@ -1493,7 +1493,7 @@ export const blogPosts: BlogPost[] = [
     title: 'DevOps Starter Azure DevOps',
     description: 'A comprehensive guide covering devopsstarterazuredevops',
     date: '2021-04-26',
-    categories: ["Azure", "DevOps", "AI"],
+    categories: ["Azure", "DevOps", "AI", "JavaScript"],
     tags: ["azure","devops","ai","ml","git"],
     image: '/assets/images/svgexport-22.svg'
   },
@@ -1502,7 +1502,7 @@ export const blogPosts: BlogPost[] = [
     title: 'DevOps Starter GitHub actions',
     description: 'A comprehensive guide covering devopsstartergithubactions',
     date: '2021-04-25',
-    categories: ["DevOps", "Cloud", "Azure", "AI"],
+    categories: ["DevOps", "Cloud", "Azure", "AI", "JavaScript"],
     tags: ["azure","devops","ai","git","github"],
     image: '/assets/images/svgexport-22.svg'
   },
@@ -1511,7 +1511,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Azure Active Directory (Part 2)',
     description: 'A comprehensive guide covering azure-active-directory2',
     date: '2021-04-17',
-    categories: ["Azure", "Java"],
+    categories: ["Azure", "Java", "JavaScript"],
     tags: ["angular","react","vue","javascript","azure"],
     image: '/assets/images/azurex70x75.svg'
   },
@@ -1520,7 +1520,7 @@ export const blogPosts: BlogPost[] = [
     title: '.NET Core (Part 1)',
     description: 'A comprehensive guide covering dotnet core part1',
     date: '2021-04-10',
-    categories: [".NET", "Java", "AI"],
+    categories: [".NET", "Java", "AI", "JavaScript"],
     tags: ["react","javascript","dotnet","java","ai"],
     image: '/assets/images/net-logo.svg'
   },
@@ -1547,7 +1547,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Microsoft SQL Server (Part 2)',
     description: 'A comprehensive guide covering mssqlserver2',
     date: '2021-03-27',
-    categories: [".NET", "Java"],
+    categories: [".NET", "Java", "JavaScript"],
     tags: ["javascript","dotnet","c#","java","sql"],
     image: '/assets/images/ads.svg'
   },
@@ -1591,7 +1591,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Docker Buildx',
     description: 'A comprehensive guide covering dockerbuildx',
     date: '2021-03-01',
-    categories: ["DevOps", "AI", "Cloud"],
+    categories: ["DevOps", "AI", "Cloud", "JavaScript"],
     tags: ["cloud","docker","ai","testing"],
     image: '/assets/images/method-draw-image.svg'
   },
@@ -1600,7 +1600,7 @@ export const blogPosts: BlogPost[] = [
     title: 'GraphQL',
     description: 'A comprehensive guide covering  graph q l',
     date: '2021-03-01',
-    categories: ["Microsoft 365"],
+    categories: ["Microsoft 365", "JavaScript"],
     tags: ["blog"],
     image: '/assets/images/graphql-logo.svg-1200x1200.png'
   },
@@ -1626,7 +1626,7 @@ export const blogPosts: BlogPost[] = [
     title: 'npm JavaScript',
     description: 'A comprehensive guide covering npm',
     date: '2021-02-25',
-    categories: ["Java", "DevOps", "AI"],
+    categories: ["Java", "DevOps", "AI", "JavaScript"],
     tags: ["javascript","java","ai","git","github"],
     image: '/assets/images/6078720-200x200.png'
   },
@@ -1653,7 +1653,7 @@ export const blogPosts: BlogPost[] = [
     title: 'SharePoint Web Part (Part 2)',
     description: 'A comprehensive guide covering sharepointwebpart2',
     date: '2021-02-14',
-    categories: ["Microsoft 365", "AI", "Java"],
+    categories: ["Microsoft 365", "AI", "Java", "JavaScript"],
     tags: ["react","javascript","java","ai","ml"],
     image: '/assets/images/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png'
   },
@@ -1662,7 +1662,7 @@ export const blogPosts: BlogPost[] = [
     title: 'SharePoint Web Part (Part 1)',
     description: 'A comprehensive guide covering sharepointwebpart1',
     date: '2021-02-11',
-    categories: ["Microsoft 365", "AI"],
+    categories: ["Microsoft 365", "AI", "TypeScript"],
     tags: ["react","typescript","ai","ml","testing"],
     image: '/assets/images/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png'
   },
@@ -1671,7 +1671,7 @@ export const blogPosts: BlogPost[] = [
     title: 'API Gateway',
     description: 'A comprehensive guide covering apigateway',
     date: '2021-02-10',
-    categories: ["Cloud", "DevOps", "Azure", ".NET"],
+    categories: ["Cloud", "DevOps", "Azure", ".NET", "JavaScript"],
     tags: ["react","azure","aws","cloud","docker"],
     image: '/assets/images/kubernetes-container-engine.svg'
   },
@@ -1688,7 +1688,7 @@ export const blogPosts: BlogPost[] = [
     title: 'REST',
     description: 'A comprehensive guide covering restapiservice',
     date: '2021-02-06',
-    categories: ["Java", "AI", "DevOps", ".NET"],
+    categories: ["Java", "AI", "DevOps", ".NET", "JavaScript"],
     tags: ["javascript","docker","java","ai"],
     image: '/assets/images/fve-image.svg'
   },
