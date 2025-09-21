@@ -1405,7 +1405,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     categories: ["AWS"],
     tags: ["aws","cloud","docker","kubernetes","ai"],
-    image: '/assets/images/amazonecs/hero.png'
+    image: '/assets/images/amazonecs/amazon-web-services-logo.svg'
   },
   {
     slug: 'amazonfargate',
@@ -1414,7 +1414,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-09-20',
     categories: ["AWS"],
     tags: ["aws","cloud","docker","kubernetes","ai"],
-    image: '/assets/images/amazonfargate/hero.png'
+    image: '/assets/images/amazonfargate/amazon-web-services-logo.svg'
   },
   {
     slug: 'customconnectorsappregistrations',
