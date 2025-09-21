@@ -167,3 +167,11 @@ After training the model I was able to deploy it to the Arduino Nano 33 BLE Sens
 
 ![](/assets/images/internetofthings3/screenshot-2025-03-01-at-7.20.55pm-2136x1238.png)
 *With barking the model correctly predicted: Bark*
+
+## References
+
+- [Arduino Nano 33 BLE Sense](https://docs.edgeimpulse.com/docs/edge-ai-hardware/mcu/arduino-nano-33-ble-sense) - Edge Impulse documentation for Arduino Nano 33 BLE Sense development
+- [TinyML Dog Bark Stopper](https://www.hackster.io/NathanielF/tinyml-dog-bark-stopper-77e436) - Hackster.io project tutorial for creating a dog bark detection system
+- [The Bark Stopper GitHub](https://github.com/NathanielFelleke/The-Bark-Stopper) - GitHub repository with source code for the bark stopper project
+- [Wio Terminal TinyML Course #2 Audio Scene Recognition - ML on Microcontrollers with Arduino IDE](https://www.youtube.com/watch?v=2BISspenUng&t=1194s) - YouTube tutorial on audio scene recognition with TinyML
+- [Connecting Arduino Nano 33 BLE Sense to Edge Impulse](https://www.youtube.com/watch?v=wOkMZUaPLUM) - YouTube tutorial on connecting Arduino Nano to Edge Impulse platform
