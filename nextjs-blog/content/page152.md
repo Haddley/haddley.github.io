@@ -169,3 +169,8 @@ Vendor Posting Groups are maintained using the Vendor Posting Groups page.
 
 ![](/assets/images/page152/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
 *esp8266*
+## References
+
+- [Dynamics NAV 2017: Posting Groups](https://l.messenger.com/l.php?u=https%3A%2F%2Fwww.youtube.com%2Fplaylist%3Flist%3DPLJDdNuGpFiapss3yoWee7-fp55lRAikbK&h=AT0HmVGD-F7A3HG_rzzD4GiBU94ANq8jlnehhdkP9aflrzxNrC6dVe1uPZfEDtl_X15Q72epQNID1dBY1yaE3Phy68d4yGMxDcCecpE3trry7tjfPjLQOMYnaQO8-S1MSMavET7HSqRc0_A)
+- [Set Up Posting Groups](https://learn.microsoft.com/en-us/dynamics365/business-central/finance-posting-groups)
+

@@ -100,3 +100,7 @@ As an experiment I updated the React code so the "Fetch data" menu item is only 
 
 ![](/assets/images/reactandasp.net/screen-shot-2023-03-22-at-11.34.09-am-1531x585.png)
 *Weather Forecast Controller*
+## References
+
+- [Tutorial: Create an ASP.NET Core app with React in Visual Studio](https://learn.microsoft.com/en-us/visualstudio/javascript/tutorial-asp-net-core-with-react?view=vs-2022)
+

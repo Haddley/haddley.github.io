@@ -484,4 +484,8 @@ function getRandomSafeSpot() {
 
 })();
 ```
+## References
+
+- [Build a Multiplayer Game with JavaScript &amp; Firebase](https://www.youtube.com/watch?v=xhURh2RDzzg)
+- [Multiplayer Game](https://github.com/Haddley/haddley.github.io/raw/main/firebase-multiplayer-demo-upload-4-18-22.zip)
 

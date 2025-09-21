@@ -344,3 +344,8 @@ I needed to specify in the firebase.json file which local files should be deploy
 
 ![](/assets/images/firebase/screen-shot-2023-04-25-at-8.37.44-am-1638x1334.png)
 *https://friendlychat-2ee95.web.app/*
+## References
+
+- [Firebase web codelab](https://firebase.google.com/codelabs/firebase-web)
+- [Patterns for security with Firebase: per-user permissions for Cloud Firestore](https://medium.com/firebase-developers/patterns-for-security-with-firebase-per-user-permissions-for-cloud-firestore-be67ee8edc4a)
+

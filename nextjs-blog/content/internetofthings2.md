@@ -426,3 +426,7 @@ void loop() {
 }
 ```
 
+## References
+
+- [Designing MQTT Topics for AWS IoT Core](https://docs.aws.amazon.com/whitepapers/latest/designing-mqtt-topics-aws-iot-core/designing-mqtt-topics-aws-iot-core.html) - AWS whitepaper on MQTT topic design patterns and best practices for IoT Core implementation.
+

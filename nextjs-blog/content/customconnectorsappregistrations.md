@@ -281,3 +281,8 @@ The service principal objects are what you see when you select the Enterprise ap
 
 ![](/assets/images/customconnectorsappregistrations/screen-shot-2021-08-10-at-11.01.26-am-1836x946.png)
 *The Custom Connector's Properties*
+## References
+
+- [Vanilla JavaScript single-page application (SPA) using MSAL.js to authorize users for calling a protected web API on Azure AD](https://github.com/Azure-Samples/ms-identity-javascript-tutorial/tree/main/3-Authorization-II/1-call-api)
+- [Azure AD App Registrations, Enterprise Apps and Service Principals](https://www.youtube.com/watch?v=WVNvoiA_ktw)
+

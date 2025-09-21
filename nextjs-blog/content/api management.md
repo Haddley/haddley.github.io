@@ -147,3 +147,7 @@ The API Management Service controls how api services are exposed to employees by
 
 ![](/assets/images/api management/screen-shot-2021-08-02-at-9.04.37-pm-1836x1087.png)
 *Update the subscription key*
+## References
+
+- [How to import APIs to Power Apps using Azure API Management](https://www.youtube.com/watch?v=06CRN18kH1k)
+

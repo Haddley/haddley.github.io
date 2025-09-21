@@ -56,3 +56,7 @@ $ dotnet run
 
 ![](/assets/images/dotnet core part2 deleted/screen-shot-2023-03-15-at-2.38.17-pm-1476x522.png)
 *dotnet run (the Web App)*
+## References
+
+- [How to create an ASP.NET Core Minimal API with Visual Basic .NET](https://swimburger.net/blog/dotnet/create-an-aspdotnet-core-minimal-api-with-vbdotnet)
+

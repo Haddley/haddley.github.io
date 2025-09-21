@@ -127,4 +127,8 @@ int main(void)
     return 0;
 }
 ```
+## References
+
+- [OpenGL GLFW Hello World: M1 Macbook Pro + Xcode](https://www.youtube.com/watch?v=MHlbNbWlrIM)
+- [OpenGL GLFW Windows Visual Studio](https://www.youtube.com/watch?v=OR4fNpBjmq8)
 

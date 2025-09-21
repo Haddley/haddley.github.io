@@ -654,4 +654,7 @@ $(document).ready(function () {
     }
 });
 ```
+## References
+
+- [Creating a Power Page Basic Forms to Insert Data](https://www.youtube.com/watch?v=DzIYDaAoguU)
 

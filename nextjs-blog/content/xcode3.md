@@ -236,4 +236,8 @@ int main()
     return EXIT_SUCCESS;
 }
 ```
+## References
+
+- [Modern OpenGL Tutorials](https://github.com/SonarSystems/Modern-OpenGL-Tutorials)
+- [The OpenGL Extension Wrangler Library - GLEW](https://www.youtube.com/watch?v=H2E3yO0J7TM)
 

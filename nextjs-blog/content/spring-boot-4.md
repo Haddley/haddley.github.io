@@ -205,4 +205,7 @@ public class SpringdatajpaApplication {
 
 }
 ```
+## References
+
+- [Spring Web MVC | 05 | The Model object](https://www.youtube.com/watch?v=lHucuG4jyU0&list=PLdW9lrB9HDw23SG-j-iOlQFGvdM7xU1fR&index=5)
 

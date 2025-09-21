@@ -272,4 +272,7 @@ export default class spservices {
 
 }
 ```
+## References
+
+- [SharePoint Framework web part, Teams tab, personal app, app page samples](https://github.com/pnp/sp-dev-fx-webparts)
 

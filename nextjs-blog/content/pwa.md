@@ -346,4 +346,7 @@ this.addEventListener('fetch', event => {
 
 </html>
 ```
+## References
+
+- [Create an Analog Clock using HTML, CSS and JavaScript](https://www.geeksforgeeks.org/how-to-create-analog-clock-using-html-css-and-javascript/)
 

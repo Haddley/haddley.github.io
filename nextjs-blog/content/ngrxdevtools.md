@@ -78,3 +78,7 @@ I added the corresponding chrome extension from
 
 ![](/assets/images/ngrxdevtools/screen-shot-2023-02-05-at-9.56.59-am-1836x1040.png)
 *Dispatch*
+## References
+
+- [GitHub repository](https://github.com/Haddley/haddley-ngrx)
+

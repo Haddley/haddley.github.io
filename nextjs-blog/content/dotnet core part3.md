@@ -252,4 +252,7 @@ app.MapFallbackToPage("/_Host");
 
 app.Run();
 ```
+## References
+
+- [Create a Blazor Server app that uses the Microsoft identity platform for authentication](https://learn.microsoft.com/en-us/azure/active-directory/develop/tutorial-blazor-server)
 

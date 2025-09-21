@@ -35,3 +35,7 @@ tags: ["javascript","aws","java","mysql","sql"]
 
 ![](/assets/images/mysql/screen-shot-2021-11-14-at-4.31.21-pm-1836x1050.png)
 *SELECT COUNT(*) AS usercount FROM users*
+## References
+
+- [Node.js MySQL](https://www.w3schools.com/nodejs/nodejs_mysql.asp)
+

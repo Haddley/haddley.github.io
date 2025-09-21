@@ -98,3 +98,7 @@ Below I update the application to use the Azure Cosmos DB for MongoDB.
 
 ![](/assets/images/sails2/screen-shot-2021-10-12-at-8.39.28-pm-1836x633.png)
 *https://haddley-sails.azurewebsites.net/articles connected to Azure Cosmos DB for MongoDB*
+## References
+
+- [Build a Sails.js App](https://www.youtube.com/watch?v=AmjiDC_JUt4)
+

@@ -90,3 +90,7 @@ YOLO is a single-shot detector that uses a fully convolutional neural network (C
 
 ![](/assets/images/yolo/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
 *esp8266*
+## References
+
+- [LangChain Quickstart](https://python.langchain.com/docs/get_started/quickstart)
+

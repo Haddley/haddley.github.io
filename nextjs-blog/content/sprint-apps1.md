@@ -78,3 +78,7 @@ I used **Azure Spring Apps** to host a Java Web Application in Microsoft Azure
 
 ![](/assets/images/sprint-apps1/screenshot-2023-10-24-at-2.49.57-pm-2136x268.png)
 *Running locally*
+## References
+
+- [Azure Spring Apps: The easy way to run your apps | ODFP207](https://www.youtube.com/watch?v=64AWFTbDwHg)
+

@@ -42,4 +42,7 @@ Questions:
 2) How does it support the main purpose of this speech?
 3) What did President Roosevelt think of the speech?
 ```
+## References
+
+- [Add Your Own Data to ChatGPT](https://shellypalmer.com/2023/04/add-your-own-data-to-chatgpt/)
 

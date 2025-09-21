@@ -152,4 +152,7 @@ Static web app environment variables can be used to manage authentication proper
   }
 }
 ```
+## References
+
+- [Build a website using Azure Static Web Apps and Authenticate with AAD](https://www.youtube.com/watch?v=jnwRpEM6GR8)
 

@@ -164,4 +164,7 @@ In the code below I create a three.js scene. The scene contains
 
         animate()
 ```
+## References
+
+- [three.js examples](https://threejs.org/examples/?q=effects#webgl_effects_anaglyph)
 

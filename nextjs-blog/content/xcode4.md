@@ -518,4 +518,7 @@ int main()
     return EXIT_SUCCESS;
 }
 ```
+## References
+
+- [Modern OpenGL Tutorials](https://github.com/SonarSystems/Modern-OpenGL-Tutorials)
 

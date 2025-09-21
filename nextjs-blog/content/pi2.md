@@ -56,4 +56,8 @@ for i in range(5):
  GPIO.output(ledPin, GPIO.LOW)
  time.sleep(0.5)
 ```
+## References
+
+- [Coding an LED using an GPIO pin](https://projects.raspberrypi.org/en/projects/leds-buzzers-scratch-games/2)
+- [UNDERSTANDING RASPBERRY PI 4 GPIO PINOUTS](https://toptechboy.com/understanding-raspberry-pi-4-gpio-pinouts/)
 

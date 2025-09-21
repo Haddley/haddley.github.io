@@ -93,4 +93,7 @@ spec:
       targetPort: 80
   type: LoadBalancer
 ```
+## References
+
+- [Kubernetes Tutorial](https://www.youtube.com/watch?v=X48VuDVv0do)
 

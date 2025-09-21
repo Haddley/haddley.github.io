@@ -198,4 +198,7 @@ app.get('/redirect', (req, res) => {
 
 app.listen(SERVER_PORT, () => console.log(`Msal Node Auth Code Sample app listening on port ${SERVER_PORT}!`))
 ```
+## References
+
+- [QuickStart](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v2-nodejs-webapp-msal)
 

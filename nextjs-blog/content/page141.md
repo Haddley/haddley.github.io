@@ -143,3 +143,8 @@ I created an Azure Web App to host the Java application
 
 ![](/assets/images/page141/screenshot-2023-10-28-at-8.11.35-pm-2136x710.png)
 *Contents of the Azure hosted instance of ProgreSQL*
+## References
+
+- [Spring Data JPA: What is it? And Why Should You Use It?](https://www.youtube.com/watch?v=x67yiTHxn00)
+- [90 Minutes to a Complete Java Spring Boot TODO App](https://www.youtube.com/watch?v=Hvuij8SOW8Q)
+

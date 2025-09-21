@@ -8,5 +8,7 @@ tags: []
 ---
 
 # Page 55
+## References
 
+- [Web Components Are Easier Than You Think](https://css-tricks.com/web-components-are-easier-than-you-think/)
 

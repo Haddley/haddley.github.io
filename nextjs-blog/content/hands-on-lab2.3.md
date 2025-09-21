@@ -96,3 +96,7 @@ From the general ledger they would like to analyze their sales by sales person a
 
 ![](/assets/images/hands-on-lab2.3/screen-shot-2023-12-04-at-10.07.24-am-1836x950.png)
 *...until the blocked Dimension Value Combinations were all added*
+## References
+
+- [Hands-on-Lab 2.3: Set up dimensions](https://microsoftlearning.github.io/MB-800-Business-Central-Functional-Consultant/Instructions/Labs/LAB%5BMB-800%5D_M02_Lab03_Set_up_dimensions.html)
+

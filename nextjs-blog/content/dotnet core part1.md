@@ -372,4 +372,7 @@ namespace haddley_power_app_api.Controllers
 
 }
 ```
+## References
+
+- [Static files in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/static-files)
 

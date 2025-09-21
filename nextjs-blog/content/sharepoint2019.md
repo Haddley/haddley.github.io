@@ -275,3 +275,7 @@ In this case I wanted to install Active Directory, SQL Server and SharePoint on 
 
 ![](/assets/images/sharepoint2019/screen-shot-2023-01-02-at-10.22.43-am-1836x1089.png)
 *Cost analysis*
+## References
+
+- [SharePoint Server in Microsoft Azure](https://learn.microsoft.com/en-us/sharepoint/administration/sharepoint-server-in-microsoft-azure)
+

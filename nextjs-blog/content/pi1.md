@@ -68,3 +68,9 @@ Taking advantage of the Imager's advanced features, I customized the connectivit
 
 ![](/assets/images/pi1/screen-shot-2023-07-22-at-2.03.53-pm-1836x1148.png)
 *Connected to raspberrypi.local as neil*
+## References
+
+- [Installing Raspbian using the Raspberry Pi | Raspberry pi imager, Raspbian](https://projects.raspberrypi.org/en/projects/imager-install)
+- [How to use Raspberry Pi Imager | Install Raspberry Pi OS to your  Raspberry Pi (Raspbian)](https://www.youtube.com/watch?v=ntaXWS8Lk34)
+- [5 Ways to Remote Desktop on Raspberry Pi (Windows/Linux/Mac)](https://raspberrytips.com/remote-desktop-raspberry-pi/)
+

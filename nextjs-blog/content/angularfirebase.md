@@ -300,4 +300,9 @@ export class DashboardComponent implements OnInit {
 
 }
 ```
+## References
+
+- [Building a web application with Angular and Firebase](https://developers.google.com/codelabs/building-a-web-app-with-angular-and-firebase)
+- [Angular Firebase Tutorial](https://www.youtube.com/playlist?list=PL1UHgDbN7Tm4SZ6yLE9yDI-YDtf02uc7d)
+- [Github Repository](https://github.com/Haddley/haddley-angular)
 

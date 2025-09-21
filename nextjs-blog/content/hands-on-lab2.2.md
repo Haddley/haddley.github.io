@@ -111,3 +111,7 @@ You will start with the vendor list, including contact information. To make sure
 
 ![](/assets/images/hands-on-lab2.2/screen-shot-2023-11-23-at-3.57.38-pm-1536x804.png)
 *I reviewed the inserted Vendor records*
+## References
+
+- [Hands-on-Lab 2.2: Migrate master data to a new company](https://microsoftlearning.github.io/MB-800-Business-Central-Functional-Consultant/Instructions/Labs/LAB%5BMB-800%5D_M02_Lab02_Migrate_Master_data.html)
+

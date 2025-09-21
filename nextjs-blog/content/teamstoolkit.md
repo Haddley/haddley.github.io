@@ -478,4 +478,7 @@ async function execQuery(query, connection) {
     })
 }
 ```
+## References
+
+- [Teams Toolkit](https://docs.microsoft.com/en-us/microsoftteams/platform/get-started/prerequisites?tabs=vscode)
 

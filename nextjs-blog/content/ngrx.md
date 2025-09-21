@@ -260,3 +260,7 @@ The final result is an Angular application that uses NGRX for state management.
 
 ![](/assets/images/ngrx/screen-shot-2022-11-27-at-8.23.22-pm-1256x592.png)
 *ng serve -o*
+## References
+
+- [GitHub repository](https://github.com/Haddley/haddley-ngrx)
+

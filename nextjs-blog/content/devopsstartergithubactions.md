@@ -359,4 +359,7 @@ describe('sampleUnitTests', function () {
 
 });
 ```
+## References
+
+- [DevOps Starter](https://docs.microsoft.com/en-us/azure/devops-project/overview)
 

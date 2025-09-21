@@ -645,4 +645,8 @@ services:
       - BC_ENVIRONMENT=${BC_ENVIRONMENT}
     restart: unless-stopped
 ```
+## References
+
+- [Talk to Your Data: Build an MCP local Server in JavaScript (Node.js) that Understands Business Central](https://danieleincalza.blogspot.com/2025/07/talk-to-your-data-build-mcp-local.html?fbclid=IwZXh0bgNhZW0CMTEAAR6ieJAE0Jk-FhoJQxOcwj7yS9iaYnf7iBIpmzQFTi_bjspiOwed4cTkZ7AfKg_aem__GvqVa0pGPLHMYsfhixUdw)
+- [How to add MCP Model Context Protocol to Copilot Studio via Custom Connector](https://www.youtube.com/watch?v=qjMBkk0R_7s&t=292s)
 

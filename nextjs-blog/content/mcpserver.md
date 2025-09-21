@@ -120,4 +120,8 @@ server.registerResource(
 const transport = new StdioServerTransport();
 await server.connect(transport);
 ```
+## References
+
+- [Building Your First MCP Server: A Beginners Tutorial](https://dev.to/debs_obrien/building-your-first-mcp-server-a-beginners-tutorial-5fag)
+- [New Lab! Learn How to Connect MCP to Copilot Studio](https://www.youtube.com/watch?v=jG-XTzXxFCk)
 

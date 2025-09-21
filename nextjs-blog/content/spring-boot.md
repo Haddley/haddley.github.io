@@ -240,4 +240,7 @@ export default App;
 
 </html>
 ```
+## References
+
+- [QuickStart](https://spring.io/quickstart)
 

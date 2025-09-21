@@ -35,3 +35,7 @@ LM Studio allowed me to update the system prompt and prefix suffix settings (on 
 
 ![](/assets/images/lmstudio/teacher-the-cafeteria-had-23-appl...-1650x986.png)
 *System prompt: Perform the instructions as a high school maths teacher would.*
+## References
+
+- [LM Studio](https://lmstudio.ai)
+

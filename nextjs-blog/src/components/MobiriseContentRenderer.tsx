@@ -5,6 +5,25 @@ import Image from 'next/image';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
+// Function to get appropriate icon class based on URL
+function getIconForUrl(url: string): string {
+  const hostname = new URL(url).hostname.toLowerCase();
+  
+  if (hostname.includes('youtube.com') || hostname.includes('youtu.be')) {
+    return 'socicon-youtube socicon';
+  } else if (hostname.includes('microsoft.com') || hostname.includes('learn.microsoft.com')) {
+    return 'socicon-microsoft socicon';
+  } else if (hostname.includes('github.com')) {
+    return 'socicon-github socicon';
+  } else if (hostname.includes('amazon.com') || hostname.includes('aws.amazon.com')) {
+    return 'socicon-amazon socicon';
+  } else if (hostname.includes('wikimedia.org') || hostname.includes('commons.wikimedia.org')) {
+    return 'mbri-pages';
+  } else {
+    return 'mbri-pages';
+  }
+}
+
 // Function to process inline markdown syntax
 function processInlineMarkdown(text: string): React.ReactElement[] {
   const elements: React.ReactElement[] = [];
@@ -81,11 +100,12 @@ function processInlineMarkdown(text: string): React.ReactElement[] {
 }
 
 interface MobiriseParsedContent {
-  type: 'text' | 'image' | 'heading' | 'code';
+  type: 'text' | 'image' | 'heading' | 'code' | 'references-header' | 'references';
   content: string;
   description?: string;
   level?: number;
   language?: string;
+  references?: Array<{url: string, title: string}>;
 }
 
 function parseMarkdownToMobirise(markdownContent: string): MobiriseParsedContent[] {
@@ -184,11 +204,54 @@ function parseMarkdownToMobirise(markdownContent: string): MobiriseParsedContent
       const level = trimmedLine.match(/^#+/)?.[0].length || 1;
       const headingText = trimmedLine.replace(/^#+\s*/, '');
       
-      sections.push({
-        type: 'heading',
-        content: headingText,
-        level
-      });
+      // Check if this is a References section
+      if (headingText.toLowerCase() === 'references' && level === 2) {
+        sections.push({
+          type: 'references-header',
+          content: headingText,
+          level
+        });
+        
+        // Process the following lines as reference links
+        const references: Array<{url: string, title: string}> = [];
+        i++; // Move to next line
+        
+        while (i < lines.length) {
+          const refLine = lines[i].trim();
+          if (!refLine) {
+            i++;
+            continue;
+          }
+          
+          // Look for markdown links: - [Title](URL) - Description
+          const linkMatch = refLine.match(/^-\s*\[([^\]]+)\]\(([^)]+)\)(?:\s*-\s*(.*))?/);
+          if (linkMatch) {
+            references.push({
+              url: linkMatch[2],
+              title: linkMatch[1]
+            });
+            i++;
+          } else {
+            // No more reference links, break and continue normal processing
+            i--; // Step back one line
+            break;
+          }
+        }
+        
+        if (references.length > 0) {
+          sections.push({
+            type: 'references',
+            content: '',
+            references
+          });
+        }
+      } else {
+        sections.push({
+          type: 'heading',
+          content: headingText,
+          level
+        });
+      }
     }
     // Accumulate text content
     else {
@@ -312,6 +375,46 @@ export default function MobiriseContentRenderer({ markdownContent }: MobiriseCon
                       </SyntaxHighlighter>
                     </blockquote>
                   </div>
+                </div>
+              </div>
+            </section>
+          );
+        } else if (section.type === 'references') {
+          return (
+            <section key={index} className="features13 cid-references" data-bs-version="5.1">
+              <div className="container">
+                <div className="row justify-content-center">
+                  <div className="col-12">
+                    <h3 className="mbr-section-title align-center mb-4 mbr-fonts-style display-2">
+                      <strong>References</strong>
+                    </h3>
+                  </div>
+                  {section.references?.map((reference, refIndex) => (
+                    <div key={`ref-${refIndex}`} className="col-12 col-md-4 col-lg-2 p-3">
+                      <div className="card">
+                        <div className="card-wrapper">
+                          <div className="card-box align-center">
+                            <span 
+                              className={`mbr-iconfont ${getIconForUrl(reference.url)}`}
+                              style={{ fontSize: '48px', marginBottom: '1rem', display: 'block' }}
+                            ></span>
+                            <h4 className="card-title align-center mbr-black mbr-fonts-style display-7">
+                              <strong>
+                                <a 
+                                  href={reference.url} 
+                                  className="text-primary" 
+                                  target="_blank" 
+                                  rel="noopener noreferrer"
+                                >
+                                  {reference.title}
+                                </a>
+                              </strong>
+                            </h4>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </section>

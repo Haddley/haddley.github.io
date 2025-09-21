@@ -128,4 +128,7 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
 ```
+## References
+
+- [DevOps Starter](https://docs.microsoft.com/en-us/azure/devops-project/overview)
 

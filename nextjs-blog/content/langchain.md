@@ -282,4 +282,8 @@ if prompt:
         search = db.similarity_search_with_score(prompt)
         st.write(search)
 ```
+## References
+
+- [LangChain Quickstart](https://python.langchain.com/docs/get_started/quickstart)
+- [I built a GPT Investment Banker using this 312 PAGE document](https://www.youtube.com/watch?v=u8vQyTzNGVY)
 

@@ -246,3 +246,7 @@ Teams Toolkit makes creating Teams Tabs/Azure applications easier.
 
 ![](/assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-9.37.04-am-1836x1056.png)
 *Code in SharePointListManager.ts communicates with SharePoint using well known REST methods*
+## References
+
+- [Teams Toolkit](https://docs.microsoft.com/en-us/microsoftteams/platform/get-started/prerequisites?tabs=vscode)
+

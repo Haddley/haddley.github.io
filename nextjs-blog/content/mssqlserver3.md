@@ -591,4 +591,7 @@ module.exports.register = async server => {
     });
 };
 ```
+## References
+
+- [Build a Secure Node.js App with SQL Server](https://www.youtube.com/watch?v=XJpYH7K7TGM)
 

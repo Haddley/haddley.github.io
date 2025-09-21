@@ -124,3 +124,7 @@ Updating the default page title (in the layout file) results in a failed test.
 
 ![](/assets/images/sails1/screen-shot-2021-10-12-at-1.32.31-pm-1836x1036.png)
 *code is deployed and functional test fails (as expected)*
+## References
+
+- [Sails Hosting](https://sailsjs.com/documentation/concepts/deployment/hosting)
+

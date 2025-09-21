@@ -92,4 +92,7 @@ Sentiment analysis has proven to be an invaluable tool for businesses to underst
 
 </html>
 ```
+## References
+
+- [HuggingFace Transformers.js](https://huggingface.co/docs/transformers.js/index)
 

@@ -467,3 +467,9 @@ A Microsoft Model-Driven App is a type of application in the Power Apps suite de
 
 ![](/assets/images/page199/screenshot-2024-10-27-at-9.39.43am-2136x1158.png)
 *Robert was able to view a Sales Order and the related Sales Order Line details*
+## References
+
+- [What's new: Using Power Pages with Business Central - Licensing](https://www.youtube.com/watch?v=auoHUd24Gfw&t=227s)
+- [What's new: Business Central Integration with Dataverse - Synthetic Relations](https://www.youtube.com/watch?v=-q8Gm7u7R2A&t=908s)
+- [Power Pages on virtual tables (preview)](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/power-pages-on-virtual-tables-overview)
+

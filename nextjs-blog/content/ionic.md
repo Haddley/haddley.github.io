@@ -622,4 +622,7 @@ const replicateTo = async () => {
     }
 }
 ```
+## References
+
+- [Starting an App](https://ionicframework.com/docs/developing/starting)
 

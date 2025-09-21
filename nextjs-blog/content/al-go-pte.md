@@ -113,3 +113,7 @@ https://stackoverflow.com/questions/57431890/error-response-from-daemon-hcsshimc
 
 ![](/assets/images/al-go-pte/20230826imag34-1365x989.png)
 *I updated the trigger's MessageI ran AL: Download Symbols (entering my username:admin and password:<password>); and I clicked the Run | Start Debugging menu item*
+## References
+
+- [Getting started with AL Go! for Github and Business Central](https://youtu.be/XoXGbcUxw-c?si=jITPYm9le2NaPhki)
+

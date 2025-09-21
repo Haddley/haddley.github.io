@@ -72,3 +72,7 @@ The Microsoft Dynamics 365 Business Central Extension described here allows user
 
 ![](/assets/images/page134/screenshot-2023-10-21-at-1.38.34-pm-2136x1107.png)
 *I returned to the Sales App https://haddley-sales-trial.crm.dynamics.com to review the changes*
+## References
+
+- [How to Customize Dynamics 365 Sales (CRM): Tutorial](https://www.youtube.com/watch?v=CrlxnlxVjJM)
+

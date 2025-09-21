@@ -98,4 +98,7 @@ Sentence similarity refers to the measure of how similar or related two sentence
 
 </html>
 ```
+## References
+
+- [$0 Embeddings (OpenAI vs. free &amp; open source)](https://www.youtube.com/watch?v=QdDoFfkVkcw)
 

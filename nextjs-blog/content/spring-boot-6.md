@@ -435,4 +435,8 @@ public class MyPageController {
 
 </project>
 ```
+## References
+
+- [OAuth2Advanced Spring Security Login Made Easy in Java](https://www.youtube.com/watch?v=us0VjFiHogo)
+- [Advanced Spring Security](https://www.youtube.com/watch?v=PczgM2L3w60)
 

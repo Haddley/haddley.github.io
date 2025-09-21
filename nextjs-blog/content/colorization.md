@@ -108,4 +108,7 @@ img = Image.fromarray(color_coverted, 'RGB')
 img.save('img1_converted.jpg')
 img
 ```
+## References
+
+- [Black and white image colorization with OpenCV and Deep Learning](https://www.geeksforgeeks.org/black-and-white-image-colorization-with-opencv-and-deep-learning)
 

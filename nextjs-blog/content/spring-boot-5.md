@@ -570,4 +570,7 @@ public class BookController {
 
 </project>
 ```
+## References
+
+- [Unleash the Power of GraphQL in Spring Boot](https://www.youtube.com/watch?v=8Hp-DMeqHAk&t=1717s)
 

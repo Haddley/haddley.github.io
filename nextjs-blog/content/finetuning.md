@@ -49,3 +49,7 @@ Fine-tuning a large language models (LLMs) involves re-training the pre-trained 
 
 ![](/assets/images/finetuning/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
 *esp8266*
+## References
+
+- [Learn Prompting](https://learnprompting.org/docs/intro)
+

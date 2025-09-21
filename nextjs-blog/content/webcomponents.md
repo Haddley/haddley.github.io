@@ -473,4 +473,7 @@ customElements.whenDefined('howto-tooltip').then(() => {
 
 </body>
 ```
+## References
+
+- [Web Components Are Easier Than You Think](https://css-tricks.com/web-components-are-easier-than-you-think/)
 

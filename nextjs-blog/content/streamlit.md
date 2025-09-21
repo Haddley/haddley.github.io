@@ -151,4 +151,8 @@ With Streamlit, you can create interactive web applications directly from Python
 
 </html>
 ```
+## References
+
+- [Sentence Similarity](https://huggingface.co/tasks/sentence-similarity)
+- [$0 Embeddings (OpenAI vs. free &amp; open source)](https://www.youtube.com/watch?v=QdDoFfkVkcw)
 

@@ -40,6 +40,7 @@ export default function RootLayout({
       <head>
         {/* eslint-disable @next/next/no-css-tags */}
         {/* Original Mobirise CSS files */}
+        <link rel="stylesheet" href="/assets/web/assets/mobirise-icons/mobirise-icons.css" />
         <link rel="stylesheet" href="/assets/web/assets/mobirise-icons2/mobirise2.css" />
         <link rel="stylesheet" href="/assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css" />
         <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" />

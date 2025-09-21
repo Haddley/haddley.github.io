@@ -155,3 +155,7 @@ You initiate the process by creating a new company within the customers database
 
 ![](/assets/images/hands-on-lab2.1/screen-shot-2023-11-22-at-11.22.45-am-1542x810.png)
 *Shipment Methods had been copied*
+## References
+
+- [Hands-on-Lab 2.1: Create and configure a new company](https://microsoftlearning.github.io/MB-800-Business-Central-Functional-Consultant/Instructions/Labs/LAB%5BMB-800%5D_M02_Lab01_Create_company.html)
+
