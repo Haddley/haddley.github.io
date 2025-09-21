@@ -61,7 +61,6 @@ export async function getAllMarkdownPosts(): Promise<BlogPost[]> {
         title: matterResult.data.title || '',
         description: matterResult.data.description || '',
         date: matterResult.data.date || '',
-        category: matterResult.data.category || '',
         image: matterResult.data.image,
         tags: matterResult.data.tags || []
       });

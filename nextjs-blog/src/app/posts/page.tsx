@@ -1,4 +1,4 @@
-import { getVisibleBlogPosts, getVisibleCategories, BlogPost } from '@/lib/posts';
+import { getVisibleBlogPosts, getVisibleAutomatedCategories, BlogPost } from '@/lib/posts';
 import { getCategoryByName } from '@/lib/categories';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -13,7 +13,7 @@ function categoryToSlug(categoryName: string): string {
 
 export default function PostsPage() {
   const posts = getVisibleBlogPosts();
-  const categories = getVisibleCategories();
+  const categories = getVisibleAutomatedCategories();
 
   return (
     <section data-bs-version="5.1" className="content2 cid-socNq9ZEoK" id="content2-q">
@@ -85,15 +85,25 @@ export default function PostsPage() {
                     {post.description}
                   </p>
                   
-                  {/* Category Badge */}
+                  {/* Category Badges - Show automated categories if available, otherwise original category */}
                   <div className="mt-2 mb-2">
-                    <span className="badge bg-primary me-2">
-                      {post.category}
-                    </span>
+                    {post.categories && post.categories.length > 0 && (
+                      // Show automated categories
+                      post.categories.slice(0, 3).map((category) => (
+                        <span key={category} className="badge bg-primary me-1 mb-1">
+                          {category}
+                        </span>
+                      ))
+                    )}
+                    {post.categories && post.categories.length > 3 && (
+                      <span className="badge bg-secondary me-1 mb-1" style={{ fontSize: '0.7rem' }}>
+                        +{post.categories.length - 3} more
+                      </span>
+                    )}
                     {post.tags.length > 0 && post.tags.slice(0, 2).map((tag) => (
                       <span
                         key={tag}
-                        className="badge bg-secondary me-1"
+                        className="badge bg-secondary me-1 mb-1"
                         style={{ fontSize: '0.75rem' }}
                       >
                         {tag}

@@ -1,5 +1,3 @@
-import { BlogPost, blogPosts } from './posts';
-
 // Category Configuration
 export interface Category {
   slug: string;
@@ -11,13 +9,104 @@ export interface Category {
 }
 
 export const categories: Category[] = [
+  // New automated target categories
+  {
+    slug: 'dotnet',
+    name: '.NET',
+    description: 'ASP.NET, Blazor, C#, and .NET development',
+    icon: '🏗️',
+    color: 'bg-purple-100 text-purple-800',
+    aliases: ['net', 'csharp', 'aspnet', 'blazor']
+  },
+  {
+    slug: 'java',
+    name: 'Java',
+    description: 'Java development, Spring, Android, and JVM technologies',
+    icon: '☕',
+    color: 'bg-orange-100 text-orange-800',
+    aliases: ['spring', 'android', 'kotlin']
+  },
+  {
+    slug: 'azure',
+    name: 'Azure',
+    description: 'Microsoft Azure cloud services and development',
+    icon: '☁️',
+    color: 'bg-blue-100 text-blue-800',
+    aliases: ['azureai', 'azureopenai']
+  },
+  {
+    slug: 'ai',
+    name: 'AI',
+    description: 'Artificial Intelligence, machine learning, and AI models',
+    icon: '🤖',
+    color: 'bg-green-100 text-green-800',
+    aliases: ['artificial-intelligence', 'machine-learning', 'ml', 'openai', 'chatgpt']
+  },
+  {
+    slug: 'microsoft-365',
+    name: 'Microsoft 365',
+    description: 'SharePoint, Teams, Office 365, and Microsoft Graph',
+    icon: '🏢',
+    color: 'bg-indigo-100 text-indigo-800',
+    aliases: ['m365', 'office365', 'sharepoint', 'teams', 'graph']
+  },
+  {
+    slug: 'microsoft-dynamics',
+    name: 'Microsoft Dynamics',
+    description: 'Business Central, Dynamics 365, and ERP solutions',
+    icon: '💼',
+    color: 'bg-red-100 text-red-800',
+    aliases: ['dynamics', 'business-central', 'erp', 'crm']
+  },
+  {
+    slug: 'power-platform',
+    name: 'Power Platform',
+    description: 'Power Apps, Power Automate, Power BI, and Dataverse',
+    icon: '⚡',
+    color: 'bg-yellow-100 text-yellow-800',
+    aliases: ['powerapps', 'powerautomate', 'powerbi', 'dataverse']
+  },
+  {
+    slug: 'devops',
+    name: 'DevOps',
+    description: 'CI/CD, Docker, Kubernetes, and deployment automation',
+    icon: '🔧',
+    color: 'bg-gray-100 text-gray-800',
+    aliases: ['cicd', 'docker', 'kubernetes', 'terraform']
+  },
+  {
+    slug: 'cloud',
+    name: 'Cloud',
+    description: 'AWS, cloud computing, and serverless technologies',
+    icon: '☁️',
+    color: 'bg-cyan-100 text-cyan-800',
+    aliases: ['aws', 'serverless', 'microservices']
+  },
+  {
+    slug: 'iot',
+    name: 'IOT',
+    description: 'Internet of Things, sensors, and embedded systems',
+    icon: '🌐',
+    color: 'bg-teal-100 text-teal-800',
+    aliases: ['internet-of-things', 'sensors', 'embedded']
+  },
+  {
+    slug: 'mobile',
+    name: 'Mobile',
+    description: 'iOS, Android, and mobile app development',
+    icon: '📱',
+    color: 'bg-pink-100 text-pink-800',
+    aliases: ['ios', 'android', 'reactnative', 'flutter']
+  },
+  
+  // Legacy categories for backward compatibility
   {
     slug: 'ai-machine-learning',
     name: 'AI & Machine Learning',
     description: 'AI models, machine learning, ChatGPT, and intelligent applications',
     icon: '🤖',
     color: 'bg-purple-100 text-purple-800',
-    aliases: ['aiml', 'ai', 'ml', 'machine-learning']
+    aliases: ['aiml', 'ml', 'machine-learning']
   },
   {
     slug: 'microsoft-365',
@@ -114,59 +203,3 @@ export function categorySlugToName(slug: string): string {
   return category ? category.name : slug;
 }
 
-// Enhanced Post Functions with Categories
-export function getPostsByCategory(categoryName: string): BlogPost[] {
-  return blogPosts.filter(post => post.category === categoryName);
-}
-
-export function getCategoryStats() {
-  const stats = categories.map(category => {
-    const posts = getPostsByCategory(category.name);
-    const latestPost = posts.length > 0 ? posts[0] : null;
-    
-    return {
-      ...category,
-      postCount: posts.length,
-      latestPost: latestPost ? {
-        title: latestPost.title,
-        date: latestPost.date,
-        slug: latestPost.slug
-      } : null
-    };
-  }).filter(cat => cat.postCount > 0);
-  
-  return stats.sort((a, b) => b.postCount - a.postCount);
-}
-
-export function getRelatedPosts(currentPost: BlogPost, limit: number = 3): BlogPost[] {
-  return blogPosts
-    .filter(post => 
-      post.category === currentPost.category && 
-      post.slug !== currentPost.slug
-    )
-    .slice(0, limit);
-}
-
-export function getFeaturedPostsByCategory(limit: number = 1): Array<{category: Category, posts: BlogPost[]}> {
-  return categories
-    .map(category => ({
-      category,
-      posts: getPostsByCategory(category.name).slice(0, limit)
-    }))
-    .filter(item => item.posts.length > 0);
-}
-
-export function searchPostsByCategory(query: string, categoryName?: string): BlogPost[] {
-  let postsToSearch = blogPosts;
-  
-  if (categoryName) {
-    postsToSearch = getPostsByCategory(categoryName);
-  }
-  
-  const lowercaseQuery = query.toLowerCase();
-  return postsToSearch.filter(post =>
-    post.title.toLowerCase().includes(lowercaseQuery) ||
-    post.description.toLowerCase().includes(lowercaseQuery) ||
-    post.tags.some(tag => tag.toLowerCase().includes(lowercaseQuery))
-  );
-}
