@@ -1,13 +1,13 @@
 ---
-title: "Business Central (Part 27) PromptDialog"
-description: "A comprehensive guide covering business central (part 27) promptdialog"
-date: "2025-09-20"
+title: "Docker"
+description: "A comprehensive guide covering Docker"
+date: "2021-02-06"
 category: "DevOps"
 image: "/assets/images/docker/hero.png"
-tags: ["cloud","docker","ai","business central","testing"]
+tags: ["cloud","docker","testing"]
 ---
 
-# Business Central (Part 27) PromptDialog
+# Docker
 
 ## Docker is an easy way to create, manage, and deliver applications.
 

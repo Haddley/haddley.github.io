@@ -16,7 +16,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Model Context Protocol (Part 2)',
     description: 'Business Central MCP Server Implementation',
     date: '2025-09-21',
-    categories: ["JavaScript", "Microsoft Dynamics", "Business Central", "TypeScript"],
+    categories: ["JavaScript", "TypeScript"],
     tags: ["typescript","ai","business central","mcp"],
     image: '/assets/images/mcpserver2/mcp-1024x1024.png',
     hidden: true
@@ -45,7 +45,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Model Context Protocol (Part 1)',
     description: 'Typescript Quickstart',
     date: '2025-08-13',
-    categories: ["TypeScript", "AI", "Angular"],
+    categories: [],
     tags: ["typescript","ai"],
     image: '/assets/images/mcp-1024x1024.png'
   },
@@ -99,7 +99,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Internet of Things (Part 3)',
     description: 'Edge Impulse',
     date: '2025-03-01',
-    categories: ["AI"],
+    categories: [],
     tags: ["blog"],
     image: '/assets/images/iot-microchip.svg'
   },
@@ -846,7 +846,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Natural Language Processing (Part 3)',
     description: 'LangChain',
     date: '2023-07-19',
-    categories: ["AI"],
+    categories: [],
     tags: ["database","ai"],
     image: '/assets/images/chatgpt-logo.svg'
   },
@@ -855,7 +855,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Natural Language Processing (Part 2)',
     description: 'A comprehensive guide covering sentencesimilarity',
     date: '2023-07-19',
-    categories: ["AI"],
+    categories: [],
     tags: ["ai"],
     image: '/assets/images/chatgpt-logo.svg'
   },
@@ -889,7 +889,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'vbnetconsolesqlserverunittests',
     title: 'VB.NET Console SQL Server Unit Tests',
-    description: 'Vbnet console sql server unit tests',
+    description: 'A comprehensive guide covering  v b n e t console s q l server unit tests',
     date: '2023-05-27',
     categories: ["SQL", "AI", ".NET"],
     tags: ["blog"],
@@ -1152,7 +1152,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Machine Learning (Part 9)',
     description: 'The MNIST database',
     date: '2022-06-17',
-    categories: ["AI"],
+    categories: [],
     tags: ["database","ai","machine learning","git"],
     image: '/assets/images/tensorflow-logo.svg'
   },
@@ -1161,7 +1161,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Machine Learning (Part 8)',
     description: 'Baseball Signs',
     date: '2022-06-12',
-    categories: ["AI"],
+    categories: [],
     tags: ["ai","ml","machine learning","git","github"],
     image: '/assets/images/tensorflow-logo.svg'
   },
@@ -1170,7 +1170,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Machine Learning (Part 7)',
     description: 'AutoML Machine Learning Models',
     date: '2022-06-11',
-    categories: ["AI"],
+    categories: [],
     tags: ["cloud","ai","ml","machine learning"],
     image: '/assets/images/tensorflow-logo.svg'
   },
@@ -1179,7 +1179,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Machine Learning (Part 6)',
     description: 'Binary classification',
     date: '2022-06-11',
-    categories: ["AI"],
+    categories: [],
     tags: ["ai","machine learning","testing"],
     image: '/assets/images/tensorflow-logo.svg'
   },
@@ -1188,7 +1188,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Machine Learning (Part 5)',
     description: 'Linear Regression',
     date: '2022-06-11',
-    categories: ["AI"],
+    categories: [],
     tags: ["ai","machine learning","git","github"],
     image: '/assets/images/tensorflow-logo.svg'
   },
@@ -1224,7 +1224,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Machine Learning (Part 1)',
     description: 'Science fair',
     date: '2022-06-05',
-    categories: ["AI"],
+    categories: [],
     tags: ["blog"],
     image: '/assets/images/tensorflow-logo.svg'
   },

@@ -5,8 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:classify": "python3 ../build_classifier.py && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "classify": "python3 ../build_classifier.py",
+    "classify:review": "python3 ../smart_classifier.py --review-mode"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",

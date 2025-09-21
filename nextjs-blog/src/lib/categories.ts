@@ -43,12 +43,20 @@ export const categories: Category[] = [
     aliases: ['spring', 'android', 'kotlin']
   },
   {
+    slug: 'sql',
+    name: 'SQL',
+    description: 'SQL databases, queries, data management, and database development',
+    icon: '🗄️',
+    color: 'bg-indigo-100 text-indigo-800',
+    aliases: ['database', 'mysql', 'postgresql', 'sqlserver', 'sqlite', 'db']
+  },
+  {
     slug: 'javascript',
     name: 'JavaScript',
     description: 'JavaScript development, Node.js, React, and web frameworks',
     icon: '🟨',
     color: 'bg-yellow-100 text-yellow-800',
-    aliases: ['js', 'nodejs', 'node', 'react', 'vue', 'angular']
+    aliases: ['js', 'nodejs', 'node', 'vue']
   },
   {
     slug: 'react',
@@ -73,6 +81,14 @@ export const categories: Category[] = [
     icon: '🔷',
     color: 'bg-blue-100 text-blue-800',
     aliases: ['ts']
+  },
+  {
+    slug: 'php',
+    name: 'PHP',
+    description: 'PHP programming language, web development, and server-side scripting',
+    icon: '🐘',
+    color: 'bg-purple-100 text-purple-800',
+    aliases: ['laravel', 'symfony', 'wordpress']
   },
   {
     slug: 'azure',
@@ -112,7 +128,15 @@ export const categories: Category[] = [
     description: 'Business Central, Dynamics 365, and ERP solutions',
     icon: '💼',
     color: 'bg-red-100 text-red-800',
-    aliases: ['dynamics', 'business-central', 'erp', 'crm']
+    aliases: ['dynamics', 'erp', 'crm']
+  },
+  {
+    slug: 'business-central',
+    name: 'Business Central',
+    description: 'Microsoft Dynamics 365 Business Central development and customization',
+    icon: '🏛️',
+    color: 'bg-indigo-100 text-indigo-800',
+    aliases: ['bc', 'nav', 'dynamics365bc', 'al']
   },
   {
     slug: 'power-platform',

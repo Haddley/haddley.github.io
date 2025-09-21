@@ -88,8 +88,8 @@ export default function PostsPage() {
                   {/* Category Badges - Show automated categories if available, otherwise original category */}
                   <div className="mt-2 mb-2">
                     {post.categories && post.categories.length > 0 && (
-                      // Show automated categories
-                      post.categories.slice(0, 3).map((category) => (
+                      // Show automated categories with unique keys
+                      [...new Set(post.categories)].slice(0, 3).map((category) => (
                         <span key={category} className="badge bg-primary me-1 mb-1">
                           {category}
                         </span>
@@ -97,7 +97,7 @@ export default function PostsPage() {
                     )}
                     {post.categories && post.categories.length > 3 && (
                       <span className="badge bg-secondary me-1 mb-1" style={{ fontSize: '0.7rem' }}>
-                        +{post.categories.length - 3} more
+                        +{[...new Set(post.categories)].length - 3} more
                       </span>
                     )}
                     {post.tags.length > 0 && post.tags.slice(0, 2).map((tag) => (
