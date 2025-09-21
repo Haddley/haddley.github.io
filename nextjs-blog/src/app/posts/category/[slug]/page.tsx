@@ -1,4 +1,4 @@
-import { getAllPosts, BlogPost } from '@/lib/posts';
+import { getVisibleBlogPostsByCategory, BlogPost } from '@/lib/posts';
 import { categories, getCategoryBySlug } from '@/lib/categories';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
@@ -36,8 +36,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     notFound();
   }
 
-  const posts = getAllPosts();
-  const categoryPosts = posts.filter((post: BlogPost) => post.category === category.name);
+  const categoryPosts = getVisibleBlogPostsByCategory(category.name);
 
   return (
     <section data-bs-version="5.1" className="content2 cid-socNq9ZEoK" id="content2-q">

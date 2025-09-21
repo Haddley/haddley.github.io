@@ -1,13 +1,13 @@
 'use client';
 
 import React, { useState } from 'react';
-import { getAllPosts, BlogPost } from '@/lib/posts';
+import { getVisibleBlogPosts, BlogPost } from '@/lib/posts';
 import { CategoryFilter } from '@/components/CategoryComponents';
 import Link from 'next/link';
 import Image from 'next/image';
 
 export default function InteractivePostsDemo() {
-  const allPosts = getAllPosts();
+  const allPosts = getVisibleBlogPosts();
   const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>(allPosts);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 

@@ -6,14 +6,21 @@ export interface BlogPost {
   category: string;
   tags: string[];
   image: string;
+  hidden?: boolean;
 }
 
 export const blogPosts: BlogPost[] = [
 
-
-
-
-
+  {
+    slug: 'mcpserver2',
+    title: 'Model Context Protocol (Part 2)',
+    description: 'Business Central MCP Server Implementation',
+    date: '2025-09-21',
+    category: 'Web Development',
+    tags: ["typescript","ai","business central","mcp"],
+    image: '/assets/images/mcpserver2/mcp-1024x1024.png',
+    hidden: true
+  },
   {
     slug: 'macscreensharing',
     title: 'Apple macOS',
@@ -1715,7 +1722,21 @@ export function getBlogPostsByCategory(category: string): BlogPost[] {
   return blogPosts.filter(post => post.category === category);
 }
 
+export function getVisibleBlogPosts(): BlogPost[] {
+  return blogPosts.filter(post => !post.hidden);
+}
+
+export function getVisibleBlogPostsByCategory(category: string): BlogPost[] {
+  return blogPosts.filter(post => post.category === category && !post.hidden);
+}
+
 export function getCategories(): string[] {
   const categories = [...new Set(blogPosts.map(post => post.category))];
+  return categories.sort();
+}
+
+export function getVisibleCategories(): string[] {
+  const visiblePosts = getVisibleBlogPosts();
+  const categories = [...new Set(visiblePosts.map(post => post.category))];
   return categories.sort();
 }

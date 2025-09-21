@@ -1,4 +1,4 @@
-import { getAllPosts, getCategories, BlogPost } from '@/lib/posts';
+import { getVisibleBlogPosts, getVisibleCategories, BlogPost } from '@/lib/posts';
 import { getCategoryByName } from '@/lib/categories';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -12,8 +12,8 @@ function categoryToSlug(categoryName: string): string {
 }
 
 export default function PostsPage() {
-  const posts = getAllPosts();
-  const categories = getCategories();
+  const posts = getVisibleBlogPosts();
+  const categories = getVisibleCategories();
 
   return (
     <section data-bs-version="5.1" className="content2 cid-socNq9ZEoK" id="content2-q">
