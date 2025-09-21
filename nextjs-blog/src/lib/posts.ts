@@ -1358,7 +1358,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Sails (Part 3)',
     description: 'A comprehensive guide covering sails3',
     date: '2021-10-13',
-    categories: ["AI", "DevOps", "Cloud"],
+    categories: ["AWS"],
     tags: ["aws","docker","kubernetes","ai","ml"],
     image: '/assets/images/sailsjs-logo-515x193.png'
   },
@@ -1385,7 +1385,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Amazon EKS (Part 2)',
     description: 'A comprehensive guide covering aspnetcoreawseks',
     date: '2021-08-16',
-    categories: ["Cloud", ".NET", "DevOps", "AI"],
+    categories: ["AWS"],
     tags: ["aws","docker","kubernetes","dotnet","ai"],
     image: '/assets/images/amazon-web-services-logo.svg'
   },
@@ -1394,9 +1394,27 @@ export const blogPosts: BlogPost[] = [
     title: 'Amazon EKS (Part 1)',
     description: 'A comprehensive guide covering  amazon e k s',
     date: '2021-08-12',
-    categories: ["Cloud", "DevOps"],
+    categories: ["AWS"],
     tags: ["blog"],
     image: '/assets/images/amazon-web-services-logo.svg'
+  },
+  {
+    slug: 'amazonecs',
+    title: 'Amazon Elastic Container Service',
+    description: 'A comprehensive guide covering amazon elastic container service',
+    date: '2025-09-20',
+    categories: ["AWS"],
+    tags: ["aws","cloud","docker","kubernetes","ai"],
+    image: '/assets/images/amazonecs/hero.png'
+  },
+  {
+    slug: 'amazonfargate',
+    title: 'Amazon Fargate',
+    description: 'A comprehensive guide covering amazon fargate',
+    date: '2025-09-20',
+    categories: ["AWS"],
+    tags: ["aws","cloud","docker","kubernetes","ai"],
+    image: '/assets/images/amazonfargate/hero.png'
   },
   {
     slug: 'customconnectorsappregistrations',
