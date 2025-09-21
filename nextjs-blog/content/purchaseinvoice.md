@@ -2,7 +2,7 @@
 title: "Purchase Invoice"
 description: "A comprehensive guide covering purchase invoice"
 date: "2025-09-20"
-category: "Development"
+category: "Business Central"
 image: "/assets/images/purchaseinvoice/hero.png"
 tags: ["ai","dynamics"]
 ---

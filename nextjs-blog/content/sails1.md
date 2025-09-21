@@ -127,4 +127,3 @@ Updating the default page title (in the layout file) results in a failed test.
 ## References
 
 - [Sails Hosting](https://sailsjs.com/documentation/concepts/deployment/hosting)
-

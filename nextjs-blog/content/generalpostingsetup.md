@@ -2,7 +2,7 @@
 title: "General Posting Setup"
 description: "A comprehensive guide covering general posting setup"
 date: "2025-09-20"
-category: "Development"
+category: "Business Central"
 image: "/assets/images/generalpostingsetup/hero.png"
 tags: ["ai","dynamics"]
 ---

@@ -2,7 +2,7 @@
 title: "Customer Copilot Studio"
 description: "A comprehensive guide covering customer copilot studio"
 date: "2025-09-20"
-category: "Development"
+category: "Business Central"
 image: "/assets/images/customercopilotstudio/hero.png"
 tags: ["ai","business central","dynamics"]
 ---
@@ -268,4 +268,3 @@ function fontFamily(fonts) {
     font-size: 10.5pt
 }
 ```
-

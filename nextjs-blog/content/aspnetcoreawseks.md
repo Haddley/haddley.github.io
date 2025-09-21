@@ -2,7 +2,7 @@
 title: "Deploying a .NET Core Web API to Amazon EKS"
 description: "A comprehensive guide covering deploying a .net core web api to amazon eks"
 date: "2025-09-20"
-category: ".NET"
+category: "AWS"
 image: "/assets/images/aspnetcoreawseks/hero.png"
 tags: ["aws","docker","kubernetes","dotnet","ai"]
 ---

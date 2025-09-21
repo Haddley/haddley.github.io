@@ -2,7 +2,7 @@
 title: "Sails (Part 3)"
 description: "A comprehensive guide covering sails (part 3)"
 date: "2025-09-20"
-category: "AI/ML"
+category: "AWS"
 image: "/assets/images/sails3/hero.png"
 tags: ["aws","docker","kubernetes","ai","ml"]
 ---
@@ -266,4 +266,3 @@ spec:
       targetPort: 1337
   type: LoadBalancer
 ```
-

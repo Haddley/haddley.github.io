@@ -2,7 +2,7 @@
 title: "Rewards Extension"
 description: "A comprehensive guide covering rewards extension"
 date: "2025-09-20"
-category: "Development"
+category: "Business Central"
 image: "/assets/images/rewardsextension/hero.png"
 tags: ["ai","ml","business central","dynamics"]
 ---
@@ -477,4 +477,3 @@ pageextension 50104 "Customer Card Ext" extends "Customer Card"
     }
 }
 ```
-

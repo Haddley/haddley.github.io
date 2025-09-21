@@ -502,4 +502,3 @@ DB_URL=mongodb+srv://$DB_USER:$DB_PASSWORD@cluster0.gdnd5.mongodb.net/nextauthDB
 JWT_SECRET=<secret>
 NEXTAUTH_URL=http://localhost:3000
 ```
-

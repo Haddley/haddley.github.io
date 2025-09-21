@@ -2,7 +2,7 @@
 title: "Financial Operations Purchase Invoice"
 description: "A comprehensive guide covering financial operations purchase invoice"
 date: "2025-09-20"
-category: "Development"
+category: "Business Central"
 image: "/assets/images/financialoperationspurchaseinvoice/hero.png"
 tags: ["ai","business central","dynamics"]
 ---

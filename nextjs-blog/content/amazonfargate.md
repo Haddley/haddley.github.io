@@ -2,7 +2,7 @@
 title: "Amazon Fargate"
 description: "A comprehensive guide covering amazon fargate"
 date: "2025-09-20"
-category: "Development"
+category: "AWS"
 image: "/assets/images/amazonfargate/hero.png"
 tags: ["aws","cloud","docker","kubernetes","ai"]
 ---

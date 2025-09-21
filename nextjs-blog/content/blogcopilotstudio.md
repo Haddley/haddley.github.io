@@ -2,7 +2,7 @@
 title: "Blog Copilot Studio"
 description: "A comprehensive guide covering blog copilot studio"
 date: "2025-09-20"
-category: "Development"
+category: "Business Central"
 image: "/assets/images/blogcopilotstudio/hero.png"
 tags: ["java","ai","business central","dynamics","git"]
 ---
@@ -192,4 +192,3 @@ sleep(1000).then(() => { CreateCopilot(); });
     font-size: 10.5pt
 }
 ```
-

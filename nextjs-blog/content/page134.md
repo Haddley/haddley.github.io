@@ -2,7 +2,7 @@
 title: "Dynamics 365 Sales (Part 1)"
 description: "A comprehensive guide covering dynamics 365 sales (part 1)"
 date: "2025-09-20"
-category: "Development"
+category: "Business Central"
 image: "/assets/images/page134/hero.png"
 tags: ["ai","business central","dynamics"]
 ---
@@ -75,4 +75,3 @@ The Microsoft Dynamics 365 Business Central Extension described here allows user
 ## References
 
 - [How to Customize Dynamics 365 Sales (CRM): Tutorial](https://www.youtube.com/watch?v=CrlxnlxVjJM)
-

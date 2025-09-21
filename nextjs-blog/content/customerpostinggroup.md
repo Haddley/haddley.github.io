@@ -2,7 +2,7 @@
 title: "Customer Posting Group"
 description: "A comprehensive guide covering customer posting group"
 date: "2025-09-20"
-category: "Development"
+category: "Business Central"
 image: "/assets/images/customerpostinggroup/hero.png"
 tags: ["ai","dynamics"]
 ---

@@ -2,7 +2,7 @@
 title: "AL-Go-PTE"
 description: "A comprehensive guide covering al-go-pte"
 date: "2025-09-20"
-category: "Development"
+category: "Business Central"
 image: "/assets/images/al-go-pte/hero.png"
 tags: ["docker","devops","ai","business central","dynamics"]
 ---
@@ -116,4 +116,3 @@ https://stackoverflow.com/questions/57431890/error-response-from-daemon-hcsshimc
 ## References
 
 - [Getting started with AL Go! for Github and Business Central](https://youtu.be/XoXGbcUxw-c?si=jITPYm9le2NaPhki)
-

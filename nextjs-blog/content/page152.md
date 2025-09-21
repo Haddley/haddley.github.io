@@ -2,7 +2,7 @@
 title: "Vendor Posting Group COPY"
 description: "A comprehensive guide covering vendor posting group copy"
 date: "2025-09-20"
-category: "Development"
+category: "Business Central"
 image: "/assets/images/page152/hero.png"
 tags: ["ai","business central","dynamics"]
 ---
@@ -173,4 +173,3 @@ Vendor Posting Groups are maintained using the Vendor Posting Groups page.
 
 - [Dynamics NAV 2017: Posting Groups](https://l.messenger.com/l.php?u=https%3A%2F%2Fwww.youtube.com%2Fplaylist%3Flist%3DPLJDdNuGpFiapss3yoWee7-fp55lRAikbK&h=AT0HmVGD-F7A3HG_rzzD4GiBU94ANq8jlnehhdkP9aflrzxNrC6dVe1uPZfEDtl_X15Q72epQNID1dBY1yaE3Phy68d4yGMxDcCecpE3trry7tjfPjLQOMYnaQO8-S1MSMavET7HSqRc0_A)
 - [Set Up Posting Groups](https://learn.microsoft.com/en-us/dynamics365/business-central/finance-posting-groups)
-

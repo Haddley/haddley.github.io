@@ -2,7 +2,7 @@
 title: "Hands-on-Lab 2.2"
 description: "A comprehensive guide covering hands-on-lab 2.2"
 date: "2025-09-20"
-category: "Development"
+category: "Business Central"
 image: "/assets/images/hands-on-lab2.2/hero.png"
 tags: ["ai","dynamics"]
 ---
@@ -114,4 +114,3 @@ You will start with the vendor list, including contact information. To make sure
 ## References
 
 - [Hands-on-Lab 2.2: Migrate master data to a new company](https://microsoftlearning.github.io/MB-800-Business-Central-Functional-Consultant/Instructions/Labs/LAB%5BMB-800%5D_M02_Lab02_Migrate_Master_data.html)
-

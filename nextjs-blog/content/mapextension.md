@@ -2,7 +2,7 @@
 title: "Map Extension"
 description: "A comprehensive guide covering map extension"
 date: "2025-09-20"
-category: "Development"
+category: "Business Central"
 image: "/assets/images/mapextension/hero.png"
 tags: ["javascript","cloud","java","ai","business central"]
 ---
@@ -283,4 +283,3 @@ function GetCityLocation(city) {
     return [51.505, -0.09]
 }
 ```
-

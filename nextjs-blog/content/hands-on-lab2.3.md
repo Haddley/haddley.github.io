@@ -2,7 +2,7 @@
 title: "Hands-on-Lab 2.3"
 description: "A comprehensive guide covering hands-on-lab 2.3"
 date: "2025-09-20"
-category: "Development"
+category: "Business Central"
 image: "/assets/images/hands-on-lab2.3/hero.png"
 tags: ["ai","dynamics"]
 ---
@@ -99,4 +99,3 @@ From the general ledger they would like to analyze their sales by sales person a
 ## References
 
 - [Hands-on-Lab 2.3: Set up dimensions](https://microsoftlearning.github.io/MB-800-Business-Central-Functional-Consultant/Instructions/Labs/LAB%5BMB-800%5D_M02_Lab03_Set_up_dimensions.html)
-

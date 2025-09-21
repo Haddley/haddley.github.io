@@ -2,7 +2,7 @@
 title: "Sentiment Analysis"
 description: "A comprehensive guide covering sentiment analysis"
 date: "2025-09-20"
-category: "Development"
+category: "AI/ML"
 image: "/assets/images/sentimentanalysis/hero.png"
 tags: ["ai","machine learning"]
 ---
@@ -95,4 +95,3 @@ Sentiment analysis has proven to be an invaluable tool for businesses to underst
 ## References
 
 - [HuggingFace Transformers.js](https://huggingface.co/docs/transformers.js/index)
-

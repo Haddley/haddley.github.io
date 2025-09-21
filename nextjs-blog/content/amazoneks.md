@@ -2,7 +2,7 @@
 title: "Amazon Elastic Kubernetes Service (Amazon EKS)"
 description: "A comprehensive guide covering amazon elastic kubernetes service (amazon eks)"
 date: "2025-09-20"
-category: "Development"
+category: "AWS"
 image: "/assets/images/amazoneks/hero.png"
 tags: ["aws","cloud","docker","kubernetes","ai"]
 ---

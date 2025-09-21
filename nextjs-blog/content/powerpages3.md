@@ -2,7 +2,7 @@
 title: "Power Pages (Part 3)"
 description: "A comprehensive guide covering power pages (part 3)"
 date: "2025-09-20"
-category: "Development"
+category: "AI/ML"
 image: "/assets/images/powerpages3/hero.png"
 tags: ["ai","business central"]
 ---

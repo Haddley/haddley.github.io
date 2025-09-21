@@ -35,6 +35,14 @@ export const categories: Category[] = [
     aliases: ['azureai', 'azureopenai']
   },
   {
+    slug: 'aws',
+    name: 'AWS',
+    description: 'Amazon Web Services, cloud infrastructure, and serverless',
+    icon: '🟠',
+    color: 'bg-orange-100 text-orange-800',
+    aliases: ['amazon', 'ec2', 'lambda', 'eks', 'ecs', 'fargate']
+  },
+  {
     slug: 'ai',
     name: 'AI',
     description: 'Artificial Intelligence, machine learning, and AI models',
@@ -77,10 +85,10 @@ export const categories: Category[] = [
   {
     slug: 'cloud',
     name: 'Cloud',
-    description: 'AWS, cloud computing, and serverless technologies',
+    description: 'Cloud computing, serverless technologies, and multi-cloud',
     icon: '☁️',
     color: 'bg-cyan-100 text-cyan-800',
-    aliases: ['aws', 'serverless', 'microservices']
+    aliases: ['serverless', 'microservices', 'cloud-native']
   },
   {
     slug: 'iot',

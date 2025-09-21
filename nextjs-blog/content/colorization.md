@@ -111,4 +111,3 @@ img
 ## References
 
 - [Black and white image colorization with OpenCV and Deep Learning](https://www.geeksforgeeks.org/black-and-white-image-colorization-with-opencv-and-deep-learning)
-

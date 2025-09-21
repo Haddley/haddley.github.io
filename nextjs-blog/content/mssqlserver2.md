@@ -770,4 +770,3 @@ FROM Deck
 ORDER BY Card,Suit
 GO
 ```
-

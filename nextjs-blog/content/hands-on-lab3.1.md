@@ -2,7 +2,7 @@
 title: "Hands-on-Lab 3.1"
 description: "A comprehensive guide covering hands-on-lab 3.1"
 date: "2025-09-20"
-category: "Development"
+category: "Business Central"
 image: "/assets/images/hands-on-lab3.1/hero.png"
 tags: ["ai","business central","dynamics","git"]
 ---
@@ -134,4 +134,3 @@ Once the company’s users will start to record sales and purchase transactions,
 ## References
 
 - [Hands-on-Lab 3.1: Set up dimensions](https://microsoftlearning.github.io/MB-800-Business-Central-Functional-Consultant/Instructions/Labs/LAB%5BMB-800%5D_M03_Lab01_Set_up_Finance.html)
-

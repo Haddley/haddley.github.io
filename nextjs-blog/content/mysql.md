@@ -38,4 +38,3 @@ tags: ["javascript","aws","java","mysql","sql"]
 ## References
 
 - [Node.js MySQL](https://www.w3schools.com/nodejs/nodejs_mysql.asp)
-

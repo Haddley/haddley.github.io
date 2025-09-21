@@ -101,4 +101,3 @@ Below I update the application to use the Azure Cosmos DB for MongoDB.
 ## References
 
 - [Build a Sails.js App](https://www.youtube.com/watch?v=AmjiDC_JUt4)
-
