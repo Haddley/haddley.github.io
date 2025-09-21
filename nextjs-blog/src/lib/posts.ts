@@ -22,6 +22,16 @@ export const blogPosts: BlogPost[] = [
     hidden: true
   },
   {
+    slug: 'microsoftdynamics365appforoutlook',
+    title: 'Microsoft Dynamics 365 App for Outlook',
+    description: 'Complete guide to integrating Dynamics 365 with Outlook using the App for Outlook',
+    date: '2025-09-20',
+    categories: ["Microsoft Dynamics", "Power Platform", "Microsoft 365"],
+    tags: ["dynamics", "outlook", "power platform", "integration"],
+    image: '/assets/images/microsoftdynamics365appforoutlook/office-365-icon-500x500.png',
+    hidden: true
+  },
+  {
     slug: 'macscreensharing',
     title: 'Apple macOS',
     description: 'Screen Sharing VNC and SSH',
