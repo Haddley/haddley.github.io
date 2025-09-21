@@ -549,7 +549,7 @@ export const blogPosts: BlogPost[] = [
     date: '2023-11-22',
     categories: ["Microsoft Dynamics", "Microsoft 365", "AI"],
     tags: ["database","ai","business central","dynamics"],
-    image: '/assets/images/hands-on-lab2.1/hero.png'
+    image: '/assets/images/hands-on-lab2.1/dynamics365-color.svg'
   },
   {
     slug: 'dynamicssales3',
