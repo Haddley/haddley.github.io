@@ -19,6 +19,22 @@ export const categories: Category[] = [
     aliases: ['net', 'csharp', 'aspnet', 'blazor']
   },
   {
+    slug: 'csharp',
+    name: 'C#',
+    description: 'C# programming language, syntax, and development',
+    icon: '🔷',
+    color: 'bg-purple-100 text-purple-800',
+    aliases: ['cs', 'dotnet']
+  },
+  {
+    slug: 'python',
+    name: 'Python',
+    description: 'Python programming, data science, AI/ML, and automation',
+    icon: '🐍',
+    color: 'bg-green-100 text-green-800',
+    aliases: ['py', 'django', 'flask', 'pandas', 'numpy']
+  },
+  {
     slug: 'java',
     name: 'Java',
     description: 'Java development, Spring, Android, and JVM technologies',
@@ -33,6 +49,22 @@ export const categories: Category[] = [
     icon: '🟨',
     color: 'bg-yellow-100 text-yellow-800',
     aliases: ['js', 'nodejs', 'node', 'react', 'vue', 'angular']
+  },
+  {
+    slug: 'react',
+    name: 'React',
+    description: 'React library, components, hooks, and modern web development',
+    icon: '⚛️',
+    color: 'bg-cyan-100 text-cyan-800',
+    aliases: ['reactjs', 'jsx']
+  },
+  {
+    slug: 'angular',
+    name: 'Angular',
+    description: 'Angular framework, TypeScript, and enterprise web applications',
+    icon: '🅰️',
+    color: 'bg-red-100 text-red-800',
+    aliases: ['angularjs', 'ng']
   },
   {
     slug: 'typescript',
