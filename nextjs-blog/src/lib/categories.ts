@@ -16,7 +16,7 @@ export const categories: Category[] = [
     description: 'ASP.NET, Blazor, C#, and .NET development',
     icon: '🏗️',
     color: 'bg-purple-100 text-purple-800',
-    aliases: ['net', 'csharp', 'aspnet', 'blazor']
+    aliases: ['net', 'csharp', 'C#', 'aspnet', 'blazor']
   },
   {
     slug: 'csharp',
@@ -24,7 +24,7 @@ export const categories: Category[] = [
     description: 'C# programming language, syntax, and development',
     icon: '🔷',
     color: 'bg-purple-100 text-purple-800',
-    aliases: ['cs', 'dotnet']
+    aliases: ['cs', 'C#']
   },
   {
     slug: 'python',
@@ -40,7 +40,7 @@ export const categories: Category[] = [
     description: 'Java development, Spring, Android, and JVM technologies',
     icon: '☕',
     color: 'bg-orange-100 text-orange-800',
-    aliases: ['spring', 'android', 'kotlin']
+    aliases: ['spring', 'J2EE', 'kotlin']
   },
   {
     slug: 'sql',
@@ -48,28 +48,28 @@ export const categories: Category[] = [
     description: 'SQL databases, queries, data management, and database development',
     icon: '🗄️',
     color: 'bg-indigo-100 text-indigo-800',
-    aliases: ['database', 'mysql', 'postgresql', 'sqlserver', 'sqlite', 'db']
+    aliases: ['mysql', 'postgresql', 'sqlserver', 'sqlite']
   },
   {
     slug: 'javascript',
     name: 'JavaScript',
-    description: 'JavaScript development, Node.js, React, and web frameworks',
+    description: 'JavaScript development, Node.js, React, Angular, and other web frameworks',
     icon: '🟨',
     color: 'bg-yellow-100 text-yellow-800',
-    aliases: ['js', 'nodejs', 'node', 'vue']
+    aliases: ['js', 'nodejs', 'node', 'vue', 'electron', 'nextjs']
   },
   {
     slug: 'react',
     name: 'React',
-    description: 'React library, components, hooks, and modern web development',
+    description: 'React library modern web development',
     icon: '⚛️',
     color: 'bg-cyan-100 text-cyan-800',
-    aliases: ['reactjs', 'jsx']
+    aliases: ['reactjs', 'jsx', 'nextjs']
   },
   {
     slug: 'angular',
     name: 'Angular',
-    description: 'Angular framework, TypeScript, and enterprise web applications',
+    description: 'Angular framework enterprise web applications',
     icon: '🅰️',
     color: 'bg-red-100 text-red-800',
     aliases: ['angularjs', 'ng']
@@ -80,7 +80,7 @@ export const categories: Category[] = [
     description: 'TypeScript development, type-safe JavaScript, and modern web apps',
     icon: '🔷',
     color: 'bg-blue-100 text-blue-800',
-    aliases: ['ts']
+    aliases: ['ts', 'tsx']
   },
   {
     slug: 'php',
@@ -96,12 +96,12 @@ export const categories: Category[] = [
     description: 'Microsoft Azure cloud services and development',
     icon: '☁️',
     color: 'bg-blue-100 text-blue-800',
-    aliases: ['azureai', 'azureopenai']
+    aliases: ['azureai', 'azureopenai', 'azure-functions', 'azure-devops']
   },
   {
     slug: 'aws',
     name: 'AWS',
-    description: 'Amazon Web Services, cloud infrastructure, and serverless',
+    description: 'Amazon Web Services, cloud infrastructure, and development',
     icon: '🟠',
     color: 'bg-orange-100 text-orange-800',
     aliases: ['amazon', 'ec2', 'lambda', 'eks', 'ecs', 'fargate']
@@ -115,157 +115,60 @@ export const categories: Category[] = [
     aliases: ['artificial-intelligence', 'machine-learning', 'ml', 'openai', 'chatgpt']
   },
   {
-    slug: 'microsoft-365',
-    name: 'Microsoft 365',
-    description: 'SharePoint, Teams, Office 365, and Microsoft Graph',
-    icon: '🏢',
-    color: 'bg-indigo-100 text-indigo-800',
-    aliases: ['m365', 'office365', 'sharepoint', 'teams', 'graph']
+    slug: 'power-platform',
+    name: 'Power Platform',
+    description: 'Microsoft Power Platform, Power Apps, Power Automate, Power BI',
+    icon: '⚡',
+    color: 'bg-yellow-100 text-yellow-800',
+    aliases: ['power-apps', 'power-automate', 'power-bi', 'powerapps', 'powerautomate', 'powerbi']
   },
   {
     slug: 'microsoft-dynamics',
     name: 'Microsoft Dynamics',
-    description: 'Business Central, Dynamics 365, and ERP solutions',
-    icon: '💼',
-    color: 'bg-red-100 text-red-800',
-    aliases: ['dynamics', 'erp', 'crm']
+    description: 'Microsoft Dynamics 365, CRM, ERP, and business applications',
+    icon: '🏢',
+    color: 'bg-indigo-100 text-indigo-800',
+    aliases: ['dynamics365', 'dynamics-365', 'crm']
   },
   {
     slug: 'business-central',
     name: 'Business Central',
-    description: 'Microsoft Dynamics 365 Business Central development and customization',
-    icon: '🏛️',
-    color: 'bg-indigo-100 text-indigo-800',
-    aliases: ['bc', 'nav', 'dynamics365bc', 'al']
-  },
-  {
-    slug: 'power-platform',
-    name: 'Power Platform',
-    description: 'Power Apps, Power Automate, Power BI, and Dataverse',
-    icon: '⚡',
-    color: 'bg-yellow-100 text-yellow-800',
-    aliases: ['powerapps', 'powerautomate', 'powerbi', 'dataverse']
-  },
-  {
-    slug: 'devops',
-    name: 'DevOps',
-    description: 'CI/CD, Docker, Kubernetes, and deployment automation',
-    icon: '🔧',
-    color: 'bg-gray-100 text-gray-800',
-    aliases: ['cicd', 'docker', 'kubernetes', 'terraform']
-  },
-  {
-    slug: 'cloud',
-    name: 'Cloud',
-    description: 'Cloud computing, serverless technologies, and multi-cloud',
-    icon: '☁️',
-    color: 'bg-cyan-100 text-cyan-800',
-    aliases: ['serverless', 'microservices', 'cloud-native']
-  },
-  {
-    slug: 'iot',
-    name: 'IOT',
-    description: 'Internet of Things, sensors, and embedded systems',
-    icon: '🌐',
-    color: 'bg-teal-100 text-teal-800',
-    aliases: ['internet-of-things', 'sensors', 'embedded']
-  },
-  {
-    slug: 'mobile',
-    name: 'Mobile',
-    description: 'iOS, Android, and mobile app development',
-    icon: '📱',
-    color: 'bg-pink-100 text-pink-800',
-    aliases: ['ios', 'android', 'reactnative', 'flutter']
-  },
-  
-  // Legacy categories for backward compatibility
-  {
-    slug: 'ai-machine-learning',
-    name: 'AI & Machine Learning',
-    description: 'AI models, machine learning, ChatGPT, and intelligent applications',
-    icon: '🤖',
-    color: 'bg-purple-100 text-purple-800',
-    aliases: ['aiml', 'ml', 'machine-learning']
+    description: 'Microsoft Dynamics 365 Business Central ERP system',
+    icon: '💼',
+    color: 'bg-blue-100 text-blue-800',
+    aliases: ['dynamics-business-central', 'bc']
   },
   {
     slug: 'microsoft-365',
     name: 'Microsoft 365',
-    description: 'Power Platform, SharePoint, Business Central, and Office 365',
-    icon: '🏢',
-    color: 'bg-blue-100 text-blue-800',
-    aliases: ['m365', 'microsoft', 'office365', 'sharepoint', 'powerplatform']
-  },
-  {
-    slug: 'web-development',
-    name: 'Web Development',
-    description: 'React, Angular, TypeScript, Next.js, and modern web technologies',
-    icon: '🌐',
-    color: 'bg-green-100 text-green-800',
-    aliases: ['web', 'frontend', 'react', 'angular', 'javascript', 'typescript']
-  },
-  {
-    slug: 'cloud-devops',
-    name: 'Cloud & DevOps',
-    description: 'Azure, AWS, Docker, Kubernetes, and cloud infrastructure',
-    icon: '☁️',
-    color: 'bg-sky-100 text-sky-800',
-    aliases: ['cloud', 'devops', 'azure', 'aws', 'docker', 'kubernetes']
-  },
-  {
-    slug: 'mobile-iot',
-    name: 'Mobile & IoT',
-    description: 'iOS development, Raspberry Pi, and Internet of Things projects',
-    icon: '📱',
-    color: 'bg-orange-100 text-orange-800',
-    aliases: ['mobile', 'iot', 'ios', 'raspberry-pi', 'raspberrypi']
-  },
-  {
-    slug: 'dotnet-development',
-    name: '.NET Development',
-    description: 'ASP.NET, Blazor, C#, VB.NET, and Microsoft development stack',
-    icon: '⚡',
-    color: 'bg-indigo-100 text-indigo-800',
-    aliases: ['dotnet', 'net', 'csharp', 'aspnet', 'blazor', 'vb.net', 'vbnet']
-  },
-  {
-    slug: 'data-analytics',
-    name: 'Data & Analytics',
-    description: 'Databases, SQL, data science, and analytics solutions',
+    description: 'Microsoft 365, Office 365, SharePoint, Teams development',
     icon: '📊',
-    color: 'bg-yellow-100 text-yellow-800',
-    aliases: ['data', 'analytics', 'sql', 'database', 'datascience']
+    color: 'bg-purple-100 text-purple-800',
+    aliases: ['office365', 'sharepoint', 'teams', 'onedrive', 'outlook']
   },
   {
-    slug: 'development-tools',
-    name: 'Development Tools',
-    description: 'IDEs, frameworks, build tools, and developer productivity',
-    icon: '🛠️',
+    slug: 'devops',
+    name: 'DevOps',
+    description: 'DevOps practices, CI/CD, automation, and deployment pipelines',
+    icon: '🔄',
     color: 'bg-gray-100 text-gray-800',
-    aliases: ['tools', 'ide', 'vscode', 'frameworks']
+    aliases: ['ci-cd', 'continuous-integration', 'continuous-deployment', 'automation']
   },
   {
-    slug: 'java',
-    name: 'Java',
-    description: 'Java development, Spring Boot, enterprise applications, and JVM technologies',
-    icon: '☕',
-    color: 'bg-orange-100 text-orange-800',
-    aliases: ['spring', 'springboot', 'spring-boot', 'jvm', 'maven', 'gradle']
+    slug: 'maps',
+    name: 'Maps',
+    description: 'A Geographic Information System is a powerful computer-based system designed to capture, store, manage, analyze, and visualize all types of geographic data',
+    icon: '🌎',
+    color: 'bg-gray-100 text-gray-800',
+    aliases: ['GIS', 'geographic-information-system', 'leaflet']
   },
-  {
-    slug: 'development',
-    name: 'General Development',
-    description: 'Programming concepts, tutorials, and general development topics',
-    icon: '💻',
-    color: 'bg-slate-100 text-slate-800',
-    aliases: ['dev', 'programming', 'coding', 'general']
-  }
+
 ];
 
 // Category Helper Functions
 export function getCategoryBySlug(slug: string): Category | undefined {
-  return categories.find(category => 
-    category.slug === slug || 
+  return categories.find(category =>
+    category.slug === slug ||
     (category.aliases && category.aliases.includes(slug))
   );
 }

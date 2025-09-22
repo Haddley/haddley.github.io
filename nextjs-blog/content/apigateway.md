@@ -79,9 +79,9 @@ The books-reverse-proxy image is the API Gateway.
 
 The yaml file below ensures that clients are only able to connect to the API Gateway.
 
-The books container image provides a [REST API Service](restapiservice.html). 
+The books container image provides a [REST API Service](/posts/restapiservice). 
 
-The books-react container image provides a [React App](reactusestateuseeffect.html).
+The books-react container image provides a [React App](/posts/reactusestateuseeffect).
 
 ```yaml
 apiVersion: apps/v1

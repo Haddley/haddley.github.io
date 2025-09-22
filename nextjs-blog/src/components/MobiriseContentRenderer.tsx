@@ -32,6 +32,7 @@ function processInlineMarkdown(text: string): React.ReactElement[] {
 
   // Regular expressions for different markdown patterns
   const patterns = [
+    { regex: /\[([^\]]+)\]\(([^)]+)\)/g, component: 'link' }, // [text](url)
     { regex: /\*\*(.*?)\*\*/g, component: 'strong' }, // **bold**
     { regex: /\*(.*?)\*/g, component: 'em' },         // *italic*
     { regex: /`(.*?)`/g, component: 'code' }         // `code`
@@ -64,7 +65,15 @@ function processInlineMarkdown(text: string): React.ReactElement[] {
       }
 
       // Add the formatted element
-      if (matchedPattern.component === 'strong') {
+      if (matchedPattern.component === 'link') {
+        const linkText = earliestMatch[1];
+        const linkUrl = earliestMatch[2];
+        elements.push(
+          <a key={elementKey++} href={linkUrl} className="text-primary">
+            {linkText}
+          </a>
+        );
+      } else if (matchedPattern.component === 'strong') {
         elements.push(
           <strong key={elementKey++}>
             {earliestMatch[1]}
