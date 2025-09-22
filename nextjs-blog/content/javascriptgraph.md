@@ -2,9 +2,9 @@
 title: "JavaScript and Microsoft Graph"
 description: "A comprehensive guide covering javascript and microsoft graph"
 date: "2025-09-20"
-category: "Java"
+category: "JavaScript"
 image: "/assets/images/javascriptgraph/hero.png"
-tags: ["javascript","azure","java","ai","ml"]
+tags: ["javascript","azure","ai","ml"]
 ---
 
 # JavaScript and Microsoft Graph

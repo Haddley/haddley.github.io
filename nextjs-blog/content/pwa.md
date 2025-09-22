@@ -4,7 +4,7 @@ description: "A comprehensive guide covering progressive web application"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/pwa/hero.png"
-tags: ["javascript","azure","java","ai","ml"]
+tags: ["javascript","azure","ai","ml"]
 ---
 
 # Progressive Web Application

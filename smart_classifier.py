@@ -57,39 +57,45 @@ class SmartPostClassifier:
             
             'Java': {
                 'high_confidence': [
-                    (r'\bjava\b(?!\s*script)', 4.0),
-                    (r'\bspring\b', 4.0),
+                    # Strong negative lookahead to prevent JavaScript false positives
+                    (r'\bjava\b(?!\s*script)(?!\s*Script)', 4.0),
+                    (r'\bspring\b(?!\s*js)(?!\s*-boot\s+javascript)', 4.0),
                     (r'\bspring\s+boot\b', 5.0),
                     (r'\bmaven\b', 3.0),
                     (r'\bgradle\b', 3.0),
-                    (r'\.java\b', 3.0),
-                    (r'\bandroid\b', 3.0),
-                    (r'\bkotlin\b', 3.0)
+                    (r'\.java\b(?!script)', 3.0),
+                    (r'\bandroid\s+(development|studio|app|sdk|java|kotlin)\b', 3.0),  # More specific Android development
+                    (r'\bkotlin\b', 3.0),
+                    (r'\bjava\s+development\b', 4.0),
+                    (r'\bjava\s+application\b', 4.0)
                 ],
                 'medium_confidence': [
                     (r'\bjvm\b', 2.0),
                     (r'\beclipse\b', 1.5),
                     (r'\bintellij\b', 1.5)
                 ],
-                'exclusions': ['.net', 'python']
+                'exclusions': []  # Removed overly aggressive exclusions that penalize book references
             },
             
             'JavaScript': {
                 'high_confidence': [
-                    (r'\bjavascript\b', 4.0),
+                    (r'\bjavascript\b', 5.0),  # Increased from 4.0
                     (r'\bnode\.?js\b', 4.0),
                     (r'\bnpm\b', 3.0),
                     (r'\byarn\b', 3.0),
                     (r'\bexpress\b', 3.0),
-                    (r'\.js\b', 2.0),
+                    (r'\.js\b(?!\s*on)', 2.0),  # Avoid "js on Java" patterns
                     (r'\bes6\b', 3.0),
-                    (r'\bes2015\b', 3.0)
+                    (r'\bes2015\b', 3.0),
+                    (r'\bjavascript\s+development\b', 4.0),
+                    (r'\bjs\s+framework\b', 3.0)
                 ],
                 'medium_confidence': [
                     (r'\bwebpack\b', 2.0),
                     (r'\bbabel\b', 2.0),
                     (r'\bajax\b', 1.5)
-                ]
+                ],
+                'exclusions': ['java', 'spring boot', 'maven', 'gradle', 'android']
             },
             
             'TypeScript': {
@@ -101,7 +107,8 @@ class SmartPostClassifier:
                 ],
                 'medium_confidence': [
                     (r'\btype\s+annotations\b', 2.0),
-                    (r'\binterface\b', 1.0)
+                    (r'\binterface\s+\w+\s*{', 2.0),  # More specific: interface Name {
+                    (r'(?<!public\s)\binterface\s+\w+\s+extends\b', 2.5)  # TypeScript interface extension (not Java public interface)
                 ]
             },
             
@@ -212,7 +219,8 @@ class SmartPostClassifier:
                     (r'\bfargate\b', 4.0)
                 ],
                 'medium_confidence': [
-                    (r'\bcloud\b', 1.0),
+                    (r'\baws\s+cloud\b', 2.0),  # More specific for AWS cloud
+                    (r'\bamazon\s+cloud\b', 2.0),  # Amazon cloud services
                     (r'\bamazon\b', 1.5)
                 ]
             },
@@ -289,11 +297,14 @@ class SmartPostClassifier:
                     (r'\bpower\s+bi\b', 5.0),
                     (r'\bdataverse\b', 5.0),
                     (r'\bcanvas\s+app\b', 4.0),
-                    (r'\bmodel\s+driven\b', 4.0)
+                    (r'\bmodel\s+driven\b', 4.0),
+                    (r'\bcloud\s+flow\b', 4.0)  # Power Platform Cloud Flow
                 ],
                 'medium_confidence': [
-                    (r'\bflow\b', 1.0),
-                    (r'\bmicrosoft\s+flow\b', 3.0)
+                    (r'\bpower\s+platform\s+flow\b', 2.0),  # More specific
+                    (r'\bmicrosoft\s+flow\b', 3.0),
+                    (r'\bautomate\s+flow\b', 2.0),  # Power Automate flows
+                    (r'\bcopilot\s+studio\b', 3.0)  # Microsoft Copilot Studio
                 ]
             },
             
@@ -310,12 +321,15 @@ class SmartPostClassifier:
                     (r'\bllm\b', 4.0),
                     (r'\blangchain\b', 4.0),
                     (r'\btensorflow\b', 5.0),
-                    (r'\bpytorch\b', 5.0)
+                    (r'\bpytorch\b', 5.0),
+                    (r'\bprompt\s+flow\b', 5.0),  # Microsoft Prompt flow
+                    (r'\bsemantic\s+kernel\b', 4.0)  # Microsoft Semantic Kernel
                 ],
                 'medium_confidence': [
                     (r'\bmodel\b', 1.0),
                     (r'\btraining\b', 1.0),
-                    (r'\balgorithm\b', 1.5)
+                    (r'\balgorithm\b', 1.5),
+                    (r'\bplanner\b', 2.0)  # AI planning systems
                 ]
             }
         }
@@ -432,6 +446,19 @@ class SmartPostClassifier:
     
     def _apply_business_rules(self, scores: Dict[str, float], warnings: List[str]) -> List[str]:
         """Apply business rules to determine final categories"""
+        
+        # Conflict resolution: Java vs JavaScript
+        if 'Java' in scores and 'JavaScript' in scores:
+            java_score = scores['Java']
+            js_score = scores['JavaScript']
+            
+            # If both are present, keep the one with higher confidence
+            if java_score > js_score:
+                del scores['JavaScript']
+                warnings.append("Java and JavaScript conflict resolved: kept Java (higher confidence)")
+            else:
+                del scores['Java'] 
+                warnings.append("Java and JavaScript conflict resolved: kept JavaScript (higher confidence)")
         
         final_categories = []
         
