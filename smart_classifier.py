@@ -358,7 +358,8 @@ class SmartPostClassifier:
                     (r'\bgeospatial\b', 3.0),
                     (r'\blatitude\b', 2.0),
                     (r'\blongitude\b', 2.0),
-                    (r'\bcoordinates?\b', 2.0),
+                    (r'\bgeographic\s+coordinates?\b', 2.0),
+                    (r'\bgps\s+coordinates?\b', 2.0),
                     (r'\blocation\s+data\b', 2.0),
                     (r'\bgeo\s+location\b', 2.0)
                 ]

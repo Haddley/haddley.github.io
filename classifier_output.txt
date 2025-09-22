@@ -1,0 +1,129 @@
+🤖 Enhanced Smart Post Classification System
+============================================================
+Found 190 posts to analyze
+
+📝 Model Context Protocol (Part 2)
+   Slug: mcpserver2
+   Suggested categories: Microsoft Dynamics, Business Central, TypeScript, DevOps
+   - Microsoft Dynamics: 0.0 confidence
+   - Business Central: 90.0 confidence
+     • Found '\bbusiness\s+central\b' 16 time(s) (weight: 5.0)
+     • Found '\bbusinesscentral\b' 2 time(s) (weight: 5.0)
+   - TypeScript: 74.0 confidence
+     • Found '\btypescript\b' 6 time(s) (weight: 5.0)
+     • Found '\.ts\b' 8 time(s) (weight: 3.0)
+     • Found '\btsc\b' 2 time(s) (weight: 3.0)
+   - DevOps: 44.0 confidence
+     • Found '\bdocker\b' 7 time(s) (weight: 4.0)
+     • Found '\bdeployment\b' 2 time(s) (weight: 2.0)
+     • Found '\bcontainer\b' 6 time(s) (weight: 2.0)
+
+📝 Microsoft Dynamics 365 App for Outlook
+   Slug: microsoftdynamics365appforoutlook
+   Suggested categories: Microsoft Dynamics, Power Platform
+   - Microsoft Dynamics: 126.5 confidence
+     • Found '\bdynamics\s*365\b' 17 time(s) (weight: 5.0)
+     • Found '\bmicrosoft\s+dynamics\b' 7 time(s) (weight: 5.0)
+     • Found '\bcrm\b' 1 time(s) (weight: 1.5)
+   - Power Platform: 24.0 confidence
+     • Found '\bdataverse\b' 4 time(s) (weight: 5.0)
+     • Found '\bmodel\s+driven\b' 1 time(s) (weight: 4.0)
+
+📝 Model Context Protocol (Part 1)
+   Slug: mcpserver
+   Suggested categories: TypeScript, AI
+   - TypeScript: 26.0 confidence
+     • Found '\btypescript\b' 4 time(s) (weight: 5.0)
+     • Found '\.ts\b' 2 time(s) (weight: 3.0)
+   - AI: 21.0 confidence
+     • Found '\bprompt\s+flow\b' 1 time(s) (weight: 5.0)
+     • Found '\bsemantic\s+kernel\b' 1 time(s) (weight: 4.0)
+     • Found '\bmodel\b' 10 time(s) (weight: 1.0)
+
+📝 SharePoint
+   Slug: syntexautofill
+   Suggested categories: Microsoft 365
+   - Microsoft 365: 32.0 confidence
+     • Found '\bsharepoint\b' 7 time(s) (weight: 4.0)
+     • Found '\boffice\b' 2 time(s) (weight: 1.0)
+     • Found '\bmicrosoft\s+office\b' 1 time(s) (weight: 2.0)
+
+📝 Ollama DeepSeek R1
+   Slug: ollamadeepsekr1applemacbookinstall
+   Suggested categories: AI
+   - AI: 15.0 confidence
+     • Found '\bllm\b' 2 time(s) (weight: 4.0)
+     • Found '\bmodel\b' 7 time(s) (weight: 1.0)
+
+📝 Business Central (Part 29)
+   Slug: promptdialog3
+   Suggested categories: AI, Microsoft Dynamics, Business Central, Azure
+   - AI: 57.0 confidence
+     • Found '\bopenai\b' 2 time(s) (weight: 4.0)
+     • Found '\bllm\b' 11 time(s) (weight: 4.0)
+     • Found '\bmodel\b' 3 time(s) (weight: 1.0)
+   - Microsoft Dynamics: 5.0 confidence
+     • Found '\bdynamics\s*365\b' 1 time(s) (weight: 5.0)
+   - Business Central: 53.0 confidence
+     • Found '\bbusiness\s+central\b' 3 time(s) (weight: 5.0)
+     • Found '\bcodeunit\b' 6 time(s) (weight: 5.0)
+     • Found '\.al\b' 1 time(s) (weight: 3.0)
+   - Azure: 8.0 confidence
+     • Found '\bazure\b' 2 time(s) (weight: 4.0)
+
+📝 Business Central (Part 28)
+   Slug: promptdialog2
+   Suggested categories: Microsoft Dynamics, Business Central, AI, Azure
+   - Microsoft Dynamics: 15.0 confidence
+     • Found '\bdynamics\s*365\b' 2 time(s) (weight: 5.0)
+     • Found '\bmicrosoft\s+dynamics\b' 1 time(s) (weight: 5.0)
+   - Business Central: 78.0 confidence
+     • Found '\bbusiness\s+central\b' 7 time(s) (weight: 5.0)
+     • Found '\bdynamics\s+365\s+business\s+central\b' 1 time(s) (weight: 5.0)
+     • Found '\bcodeunit\b' 6 time(s) (weight: 5.0)
+   - AI: 71.0 confidence
+     • Found '\bopenai\b' 5 time(s) (weight: 4.0)
+     • Found '\bllm\b' 12 time(s) (weight: 4.0)
+     • Found '\bmodel\b' 3 time(s) (weight: 1.0)
+   - Azure: 37.0 confidence
+     • Found '\bazure\b' 8 time(s) (weight: 4.0)
+     • Found '\bmicrosoft\s+azure\b' 1 time(s) (weight: 4.0)
+     • Found '\bcloud\b' 1 time(s) (weight: 1.0)
+
+📝 Business Central (Part 27)
+   Slug: promptdialog
+   Suggested categories: Microsoft Dynamics, Business Central, AI, Microsoft Dynamics
+   - Microsoft Dynamics: 5.0 confidence
+     • Found '\bdynamics\s*365\b' 1 time(s) (weight: 5.0)
+   - Business Central: 48.0 confidence
+     • Found '\bbusiness\s+central\b' 6 time(s) (weight: 5.0)
+     • Found '\bbusinesscentral\b' 1 time(s) (weight: 5.0)
+     • Found '\bal\s+code\b' 1 time(s) (weight: 5.0)
+   - AI: 29.0 confidence
+     • Found '\bllm\b' 7 time(s) (weight: 4.0)
+     • Found '\bmodel\b' 1 time(s) (weight: 1.0)
+   - Microsoft Dynamics: 5.0 confidence
+     • Found '\bdynamics\s*365\b' 1 time(s) (weight: 5.0)
+
+📝 Internet of Things (Part 3)
+   Slug: internetofthings3
+   Suggested categories: AI
+   - AI: 33.0 confidence
+     • Found '\bartificial\s+intelligence\b' 1 time(s) (weight: 5.0)
+     • Found '\bmachine\s+learning\b' 3 time(s) (weight: 5.0)
+     • Found '\bmodel\b' 8 time(s) (weight: 1.0)
+
+📊 Classification Summary:
+   Posts analyzed: 10
+   Posts with suggested categories: 9
+
+🎯 High Confidence Classifications:
+   mcpserver2: Microsoft Dynamics, Business Central, TypeScript, DevOps
+   microsoftdynamics365appforoutlook: Microsoft Dynamics, Power Platform
+   mcpserver: TypeScript, AI
+   syntexautofill: Microsoft 365
+   ollamadeepsekr1applemacbookinstall: AI
+   promptdialog3: AI, Microsoft Dynamics, Business Central, Azure
+   promptdialog2: Microsoft Dynamics, Business Central, AI, Azure
+   promptdialog: Microsoft Dynamics, Business Central, AI, Microsoft Dynamics
+   internetofthings3: AI

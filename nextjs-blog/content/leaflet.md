@@ -17,9 +17,9 @@ tags: ["javascript","azure","java","ai","ml"]
 
 ## What is Leaflet?
 
-Leaflet is an open-source JavaScript library for mobile-friendly interactive maps. 
+Leaflet is an open-source Geographic Information System (GIS) JavaScript library for mobile-friendly interactive maps. 
 
-Leaflet claims to have all the mapping features most developers need.
+Leaflet has all the mapping features most developers need.
 
 
 ## Quick start

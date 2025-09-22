@@ -801,7 +801,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Raspberry Pi (Part 4)',
     description: 'Laptop Setup',
     date: '2023-07-25',
-    categories: ["AI", "Python", "Maps"],
+    categories: ["AI", "Python"],
     tags: [],
     image: '/assets/images/raspberry-pi-logo.svg'
   },
