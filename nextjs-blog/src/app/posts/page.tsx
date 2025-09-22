@@ -95,7 +95,7 @@ export default function PostsPage() {
                         </span>
                       ))
                     )}
-                    {post.categories && post.categories.length > 3 && (
+                    {post.categories && [...new Set(post.categories)].length > 3 && (
                       <span className="badge bg-secondary me-1 mb-1" style={{ fontSize: '0.7rem' }}>
                         +{[...new Set(post.categories)].length - 3} more
                       </span>
@@ -109,6 +109,11 @@ export default function PostsPage() {
                         {tag}
                       </span>
                     ))}
+                    {post.tags.length > 2 && (
+                      <span className="badge bg-outline-secondary me-1 mb-1" style={{ fontSize: '0.7rem' }}>
+                        +{post.tags.length - 2} more tags
+                      </span>
+                    )}
                   </div>
                 </div>
                 <div className="mbr-section-btn item-footer mt-2">
