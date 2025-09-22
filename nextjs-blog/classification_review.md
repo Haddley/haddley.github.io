@@ -2,9 +2,9 @@
 Generated: build_classifier.py
 
 ## Summary
-- Total posts analyzed: 6 with suggested changes
-- High confidence (auto-applied): 1
-- Medium confidence (review recommended): 5
+- Total posts analyzed: 14 with suggested changes
+- High confidence (auto-applied): 10
+- Medium confidence (review recommended): 4
 - Low confidence (manual review needed): 0
 
 ## Medium Confidence Changes (Review Recommended)
@@ -48,13 +48,3 @@ Generated: build_classifier.py
 **Reasoning:**
 - **Power Platform:**
   - Found '\bpower\s+apps\b' 1 time(s) (weight: 5.0)
-
-### Firebase Realtime Database (`multiplayer`)
-- **Current:** JavaScript, DevOps
-- **Suggested:** DevOps
-- **Confidence:** 6.0
-- **Changes:** +0 / -1
-
-**Reasoning:**
-- **DevOps:**
-  - Found '\bcontainer\b' 3 time(s) (weight: 2.0)

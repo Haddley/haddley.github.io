@@ -331,6 +331,32 @@ class SmartPostClassifier:
                     (r'\balgorithm\b', 1.5),
                     (r'\bplanner\b', 2.0)  # AI planning systems
                 ]
+            },
+            
+            # Maps & GIS
+            'Maps': {
+                'high_confidence': [
+                    (r'\bleaflet\b', 5.0),
+                    (r'\bgis\b', 5.0),
+                    (r'\bgeographic\s+information\s+system\b', 5.0),
+                    (r'\bmapping\b', 4.0),
+                    (r'\bgeographic\s+data\b', 4.0),
+                    (r'\binteractive\s+maps\b', 4.0),
+                    (r'\bgeolocation\b', 4.0),
+                    (r'\bopenstreetmap\b', 4.0),
+                    (r'\bmapbox\b', 4.0),
+                    (r'\barcgis\b', 4.0),
+                    (r'\btile\s+layer\b', 4.0),
+                    (r'\bmap\s+tile\b', 4.0)
+                ],
+                'medium_confidence': [
+                    (r'\bmaps?\b', 2.0),
+                    (r'\bgeospatial\b', 3.0),
+                    (r'\blatitude\b', 2.0),
+                    (r'\blongitude\b', 2.0),
+                    (r'\bcoordinates?\b', 2.0),
+                    (r'\blocation\b', 1.5)
+                ]
             }
         }
         

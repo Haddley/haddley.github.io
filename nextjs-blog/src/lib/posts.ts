@@ -630,7 +630,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Microsoft Dynamics 365 Business Central (Part 8)',
     description: 'Maps Extension',
     date: '2023-09-01',
-    categories: ["Microsoft Dynamics", "Business Central", "Microsoft Dynamics"],
+    categories: ["Microsoft Dynamics", "Business Central", "Maps", "Microsoft Dynamics"],
     tags: [],
     image: '/assets/images/dynamics365-color.svg'
   },
@@ -702,7 +702,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Java Spring Boot (Part 6)',
     description: 'OAuth2 Login',
     date: '2023-10-31',
-    categories: ["Java"],
+    categories: ["Java", "Maps"],
     tags: [],
     image: '/assets/images/spring-framework-logo-70-no.svg'
   },
@@ -801,7 +801,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Raspberry Pi (Part 4)',
     description: 'Laptop Setup',
     date: '2023-07-25',
-    categories: ["AI", "Python"],
+    categories: ["AI", "Python", "Maps"],
     tags: [],
     image: '/assets/images/raspberry-pi-logo.svg'
   },
@@ -918,7 +918,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Firebase Realtime Database',
     description: 'Multiplayer Game',
     date: '2023-05-09',
-    categories: ["JavaScript", "DevOps"],
+    categories: ["Maps", "DevOps"],
     tags: [],
     image: '/assets/images/logo-lockup-firebase-vertical.svg'
   },
@@ -945,7 +945,7 @@ export const blogPosts: BlogPost[] = [
     title: 'XCode C++ (Part 4)',
     description: 'GLM (OpenGL Mathematics)',
     date: '2023-03-27',
-    categories: [],
+    categories: ["Maps"],
     tags: [],
     image: '/assets/images/xcode-14-icon-300x314.png'
   },
@@ -1233,7 +1233,7 @@ export const blogPosts: BlogPost[] = [
     title: 'A Teams App SharePoint Web Part for One Drive',
     description: 'Using SPFx and the Graph Toolkit',
     date: '2022-05-29',
-    categories: ["Microsoft 365", "React", "JavaScript", "TypeScript"],
+    categories: ["Microsoft 365", "React", "JavaScript", "Maps"],
     tags: [],
     image: '/assets/images/office-365-icon-500x500.png'
   },
@@ -1278,7 +1278,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Leaflet',
     description: 'A comprehensive guide covering leaflet',
     date: '2022-02-21',
-    categories: ["Azure"],
+    categories: ["Maps", "Azure"],
     tags: [],
     image: '/assets/images/leaflet-upic-200x200.png'
   },
@@ -1341,7 +1341,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Next.js (Part 3)',
     description: 'A comprehensive guide covering nextjs3',
     date: '2021-11-07',
-    categories: ["JavaScript", "React"],
+    categories: ["JavaScript", "React", "Maps"],
     tags: [],
     image: '/assets/images/2560px-nextjs-logo.svg-1536x920.png'
   },
@@ -1350,7 +1350,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Next.js (Part 2)',
     description: 'A comprehensive guide covering nextjs2',
     date: '2021-11-06',
-    categories: ["React"],
+    categories: ["React", "Maps"],
     tags: [],
     image: '/assets/images/2560px-nextjs-logo.svg-1536x920.png'
   },
@@ -1656,7 +1656,7 @@ export const blogPosts: BlogPost[] = [
     title: 'SharePoint site designs and site scripts',
     description: 'A comprehensive guide covering sharepointsitedesignsandsitescripts',
     date: '2021-02-15',
-    categories: ["Microsoft 365"],
+    categories: ["Microsoft 365", "Maps"],
     tags: [],
     image: '/assets/images/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png'
   },
