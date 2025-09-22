@@ -350,12 +350,17 @@ class SmartPostClassifier:
                     (r'\bmap\s+tile\b', 4.0)
                 ],
                 'medium_confidence': [
-                    (r'\bmaps?\b', 2.0),
+                    (r'\binteractive\s+map\b', 3.0),
+                    (r'\bweb\s+map\b', 3.0),
+                    (r'\bdigital\s+map\b', 3.0),
+                    (r'\bmap\s+data\b', 3.0),
+                    (r'\bmap\s+service\b', 3.0),
                     (r'\bgeospatial\b', 3.0),
                     (r'\blatitude\b', 2.0),
                     (r'\blongitude\b', 2.0),
                     (r'\bcoordinates?\b', 2.0),
-                    (r'\blocation\b', 1.5)
+                    (r'\blocation\s+data\b', 2.0),
+                    (r'\bgeo\s+location\b', 2.0)
                 ]
             }
         }

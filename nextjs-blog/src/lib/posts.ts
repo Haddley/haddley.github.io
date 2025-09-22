@@ -702,7 +702,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Java Spring Boot (Part 6)',
     description: 'OAuth2 Login',
     date: '2023-10-31',
-    categories: ["Java", "Maps"],
+    categories: ["Java"],
     tags: [],
     image: '/assets/images/spring-framework-logo-70-no.svg'
   },
@@ -1233,7 +1233,7 @@ export const blogPosts: BlogPost[] = [
     title: 'A Teams App SharePoint Web Part for One Drive',
     description: 'Using SPFx and the Graph Toolkit',
     date: '2022-05-29',
-    categories: ["Microsoft 365", "React", "JavaScript", "Maps"],
+    categories: ["Microsoft 365", "React", "JavaScript", "TypeScript"],
     tags: [],
     image: '/assets/images/office-365-icon-500x500.png'
   },
@@ -1341,7 +1341,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Next.js (Part 3)',
     description: 'A comprehensive guide covering nextjs3',
     date: '2021-11-07',
-    categories: ["JavaScript", "React", "Maps"],
+    categories: ["JavaScript", "React"],
     tags: [],
     image: '/assets/images/2560px-nextjs-logo.svg-1536x920.png'
   },
@@ -1350,7 +1350,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Next.js (Part 2)',
     description: 'A comprehensive guide covering nextjs2',
     date: '2021-11-06',
-    categories: ["React", "Maps"],
+    categories: ["React"],
     tags: [],
     image: '/assets/images/2560px-nextjs-logo.svg-1536x920.png'
   },
