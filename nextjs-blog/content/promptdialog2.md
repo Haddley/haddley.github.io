@@ -33,7 +33,8 @@ Azure OpenAI Resource: A cloud-based service within the Microsoft Azure ecosyste
 *I updated the RunGeneration procedure*
 
 ![](/assets/images/promptdialog2/screenshot202025-05-2320at209.51.18e280afpm-2136x1114.png)
-*For more detail please see [this blog page](/posts/azureopenal/).*
+
+*For more detail please see* [this blog page](/posts/azureopenal/).
 
 ![](/assets/images/promptdialog2/screenshot202025-05-2320at2010.12.31e280afpm-2136x962.png)
 *I updated the "publisher" property*
