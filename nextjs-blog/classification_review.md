@@ -2,8 +2,8 @@
 Generated: build_classifier.py
 
 ## Summary
-- Total posts analyzed: 5 with suggested changes
-- High confidence (auto-applied): 0
+- Total posts analyzed: 7 with suggested changes
+- High confidence (auto-applied): 2
 - Medium confidence (review recommended): 5
 - Low confidence (manual review needed): 0
 
@@ -50,7 +50,7 @@ Generated: build_classifier.py
   - Found '\bpower\s+apps\b' 1 time(s) (weight: 5.0)
 
 ### Firebase Realtime Database (`multiplayer`)
-- **Current:** Maps, DevOps
+- **Current:** DevOps, Maps
 - **Suggested:** DevOps
 - **Confidence:** 6.0
 - **Changes:** +0 / -1

@@ -1,6 +1,6 @@
 ---
 title: "Blog Copilot Studio"
-description: "A comprehensive guide covering blog copilot studio"
+description: "Blog Copilot"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/blogcopilotstudio/hero.png"

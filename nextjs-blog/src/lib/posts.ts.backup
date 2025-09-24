@@ -11,6 +11,16 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
 
+  
+    {
+    slug: 'copilotstudiobctools',
+    title: 'Copilot Studio Agent Tools',
+    description: 'Copilot Studio Agent connected to Business Central',
+    date: '2025-09-24',
+    categories: ["Microsoft Dynamics", "Business Central", "Power Platform", "Java"],
+    tags: [],
+    image: '/assets/images/posts-meta.svg'
+  },
   {
     slug: 'mcpserver2',
     title: 'Model Context Protocol (Part 2)',
@@ -351,7 +361,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Power Apps (Part 14)',
     description: 'Model Driven Purchase Order Lines',
     date: '2024-03-03',
-    categories: ["Microsoft Dynamics", "Business Central", "Power Platform", "AI"],
+    categories: ["Microsoft Dynamics", "Business Central", "Power Platform"],
     tags: [],
     image: '/assets/images/office-365-icon-500x500.png'
   },
@@ -585,7 +595,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Model Driven Apps (Part 4)',
     description: 'Model-driven apps Power FX',
     date: '2023-10-09',
-    categories: ["Power Platform", "AI"],
+    categories: ["Power Platform"],
     tags: [],
     image: '/assets/images/office-365-icon-500x500.png'
   },
@@ -612,7 +622,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Model Driven Apps (Part 1)',
     description: 'Dataverse users, business units and security roles',
     date: '2023-09-18',
-    categories: ["Power Platform", "DevOps", "Microsoft 365", "AI"],
+    categories: ["Power Platform", "DevOps", "Microsoft 365"],
     tags: [],
     image: '/assets/images/office-365-icon-500x500.png'
   },
@@ -801,7 +811,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Raspberry Pi (Part 4)',
     description: 'Laptop Setup',
     date: '2023-07-25',
-    categories: ["AI", "Python"],
+    categories: ["TEMP"],
     tags: [],
     image: '/assets/images/raspberry-pi-logo.svg'
   },
