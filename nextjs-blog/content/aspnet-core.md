@@ -7,15 +7,11 @@ image: "/assets/images/asp.net core/hero.png"
 tags: ["dotnet","sql","database","ai","ml"]
 ---
 
-# ASP.NET Core
-
 ## Create Razor Pages with ASP.NET Core.
 
 ![](/assets/images/asp.net core/net-logo.svg)
 *Microsoft Dotnet Logo by Microsoft Corporation is licensed under Creative Commons CC0 1.0 Universal Public Domain Dedication*
 
-
-## ASP.NET Core
 
 ASP.NET Core is a cross-platform framework for building Internet-connected apps.
 

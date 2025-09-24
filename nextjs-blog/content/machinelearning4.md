@@ -7,10 +7,6 @@ image: "/assets/images/machinelearning4/hero.png"
 tags: ["python","ai","ml","machine learning","git"]
 ---
 
-# Machine Learning (Part 4)
-
-## Notebooks
-
 ![](/assets/images/machinelearning4/tensorflow-logo.svg)
 *Tensorflow logo does not meet the threshold of originality needed for copyright protection, and is therefore in the public domain*
 

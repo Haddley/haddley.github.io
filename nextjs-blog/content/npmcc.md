@@ -7,8 +7,6 @@ image: "/assets/images/npmcc/hero.png"
 tags: ["ai","git","github","testing"]
 ---
 
-# npm C++
-
 ## Create and publish an npm module using C++.
 
 ![](/assets/images/npmcc/6078720-200x200.png)

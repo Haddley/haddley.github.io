@@ -7,15 +7,9 @@ image: "/assets/images/modeldriven2/hero.png"
 tags: ["ai","dynamics","power platform","git"]
 ---
 
-# Model Driven Apps (Part 2)
-
-## Business Process Flow
-
 ![](/assets/images/modeldriven2/office-365-icon-500x500.png)
 *This file is licensed under the Creative Commons Attribution 4.0 International license.*
 
-
-## Business Process Flow
 
 Business process flows help people complete their tasks. They offer an interface that guides individuals through the steps defined.
 

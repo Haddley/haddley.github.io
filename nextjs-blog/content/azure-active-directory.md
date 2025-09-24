@@ -7,8 +7,6 @@ image: "/assets/images/azure-active-directory/hero.png"
 tags: ["azure","ai"]
 ---
 
-# Azure Active Directory (Part 1)
-
 ## Using Microsoft Identity to Authenticate Users.
 
 ![](/assets/images/azure-active-directory/microsoft-azure-logo.svg)

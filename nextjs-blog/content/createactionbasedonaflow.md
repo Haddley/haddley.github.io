@@ -7,15 +7,9 @@ image: "/assets/images/createactionbasedonaflow/hero.png"
 tags: ["ai","business central","dynamics"]
 ---
 
-# Create action based on a flow
-
-## Create action based on a flow
-
 ![](/assets/images/createactionbasedonaflow/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 
-
-## Create action based on a flow
 
 Power Automate flows can be created from the Business Central user interface.
 

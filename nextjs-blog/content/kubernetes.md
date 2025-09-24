@@ -7,15 +7,11 @@ image: "/assets/images/kubernetes/hero.png"
 tags: ["docker","kubernetes","ai","ml"]
 ---
 
-# Kubernetes
-
 ## Kubernetes is a platform for managing containerized workloads.
 
 ![Kubernetes (container engine) by Google, Inc. is licensed under CC](/assets/images/kubernetes/kubernetes-container-engine.svg)
 *Kubernetes (container engine) by Google, Inc. is licensed under CC*
 
-
-## Kubernetes
 
 Docker Desktop includes Kubernetes.
 

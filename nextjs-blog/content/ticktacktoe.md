@@ -7,10 +7,6 @@ image: "/assets/images/ticktacktoe/hero.png"
 tags: ["javascript","java","database","ai","ml"]
 ---
 
-# Multiplayer Tick-Tack-Toe
-
-## Multiplayer Tick-Tack-Toe
-
 ![](/assets/images/ticktacktoe/logo-lockup-firebase-vertical.svg)
 *This file is licensed under the Creative Commons Attribution 4.0 International license.*
 

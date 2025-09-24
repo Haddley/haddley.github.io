@@ -7,10 +7,6 @@ image: "/assets/images/hands-on-lab3.1/hero.png"
 tags: ["ai","business central","dynamics","git"]
 ---
 
-# Hands-on-Lab 3.1
-
-## Hands-on-Lab 3.1
-
 ![](/assets/images/hands-on-lab3.1/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 

@@ -7,8 +7,6 @@ image: "/assets/images/spring-boot-5/hero.png"
 tags: ["java","spring","ai","ml","git"]
 ---
 
-# Java Spring Boot (Part 5)
-
 ## Spring for GraphQL
 
 ![](/assets/images/spring-boot-5/spring-framework-logo-2018.svg)

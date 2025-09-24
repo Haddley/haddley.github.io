@@ -7,15 +7,9 @@ image: "/assets/images/powerpages2/hero.png"
 tags: ["ai","business central"]
 ---
 
-# Power Pages (Part 2)
-
-## Customer Orders
-
 ![](/assets/images/powerpages2/powerpages-scalable.svg)
 *Microsoft permits the use of these icons in architectural diagrams, training materials, or documentation.*
 
-
-## Customer Orders
 
 Customer Orders may be handled directly by customers using a self-service Customer Portal.
 

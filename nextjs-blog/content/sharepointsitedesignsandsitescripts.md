@@ -7,8 +7,6 @@ image: "/assets/images/sharepointsitedesignsandsitescripts/hero.png"
 tags: ["ai"]
 ---
 
-# SharePoint site designs and site scripts
-
 ## SharePoint users and administrators have long appreciated the opportunity to reuse SharePoint "Site Templates".
 
 ![](/assets/images/sharepointsitedesignsandsitescripts/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png)

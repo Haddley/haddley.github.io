@@ -7,8 +7,6 @@ image: "/assets/images/internetofthings2/hero.png"
 tags: ["docker"]
 ---
 
-# Internet of Things (Part 2)
-
 ## Node-RED can publish messages to a MQTT broker and subscribe to MQTT topics.
 
 ![](/assets/images/internetofthings2/iot-microchip.svg)

@@ -7,8 +7,6 @@ image: "/assets/images/promptflow2/hero.png"
 tags: ["docker","ai"]
 ---
 
-# Prompt Flow (Part 2)
-
 ## Docker
 
 ![](/assets/images/promptflow2/logo.svg)

@@ -9,8 +9,6 @@ tags: ["ai","business central","dynamics","power platform"]
 
 # Business Central Canvas Apps
 
-## Canvas apps
-
 ![](/assets/images/businesscentralcanvasapps/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 

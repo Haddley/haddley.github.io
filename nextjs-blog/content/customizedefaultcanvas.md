@@ -9,13 +9,9 @@ tags: ["ml"]
 
 # Customize the look and feel of the bot's default canvas
 
-## styleOptions
-
 ![](/assets/images/customizedefaultcanvas/office-365-icon-500x500.png)
 *This file is licensed under the Creative Commons Attribution 4.0 International license.*
 
-
-## styleOptions
 
 I updated an HTML page hosting my Blog Copilot adding "styleOptions"
 

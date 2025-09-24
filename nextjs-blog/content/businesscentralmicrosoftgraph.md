@@ -9,13 +9,9 @@ tags: ["ai","ml","business central","dynamics"]
 
 # Business Central Microsoft Graph
 
-## Microsoft Graph
-
 ![](/assets/images/businesscentralmicrosoftgraph/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 
-
-## Microsoft Graph
 
 [Microsoft Graph](MicrosoftGraph.html) can be used to develop applications that securely access and integrate with the data stored in Microsoft Dynamics 365 Business Central.
 

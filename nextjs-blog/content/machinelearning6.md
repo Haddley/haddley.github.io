@@ -7,15 +7,9 @@ image: "/assets/images/machinelearning6/hero.png"
 tags: ["ai","machine learning","testing"]
 ---
 
-# Machine Learning (Part 6)
-
-## Binary classification
-
 ![](/assets/images/machinelearning6/tensorflow-logo.svg)
 *Tensorflow logo does not meet the threshold of originality needed for copyright protection, and is therefore in the public domain*
 
-
-## Binary classification
 
 Can we predict if a person will develop diabetes based on their Pregnancy Count, Glucose level, Blood Pressure, Skin Thickness, Insulin, BMI, DiabetesPedigreeFunction and Age?
 

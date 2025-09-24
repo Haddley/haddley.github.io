@@ -9,8 +9,6 @@ tags: ["ai","business central","dynamics"]
 
 # Warehouse Management Put away
 
-## Put-away
-
 ![](/assets/images/warehousemanagementputaway/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 

@@ -7,8 +7,6 @@ image: "/assets/images/teamstoolkit/hero.png"
 tags: ["react","azure","cloud","sql","database"]
 ---
 
-# Teams Toolkit with Azure
-
 ## Get started with Microsoft Teams app development using Azure.
 
 ![](/assets/images/teamstoolkit/teams-hi-res-icon-2019.svg)

@@ -7,10 +7,6 @@ image: "/assets/images/machinelearning9/hero.png"
 tags: ["database","ai","machine learning","git"]
 ---
 
-# Machine Learning (Part 9)
-
-## The MNIST database
-
 ![](/assets/images/machinelearning9/tensorflow-logo.svg)
 *Tensorflow logo does not meet the threshold of originality needed for copyright protection, and is therefore in the public domain*
 

@@ -7,8 +7,6 @@ image: "/assets/images/amazonfargate/hero.png"
 tags: ["aws","cloud","docker","kubernetes","ai"]
 ---
 
-# Amazon Fargate
-
 ## Deploying to Amazon Elastic Kubernetes Service (Amazon EKS)
 
 ![AWS](/assets/images/amazonfargate/amazon-web-services-logo.svg)

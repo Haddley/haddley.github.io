@@ -7,10 +7,6 @@ image: "/assets/images/xcode4/hero.png"
 tags: ["ai","ml"]
 ---
 
-# XCode C++ (Part 4)
-
-## GLM (OpenGL Mathematics)
-
 ![](/assets/images/xcode4/xcode-14-icon-300x314.png)
 *This is the logo owned by Apple Inc. for Xcode. Taken from the picture's app bundle. Fair use*
 

@@ -7,8 +7,6 @@ image: "/assets/images/dotnet core part2/hero.png"
 tags: ["azure","dotnet","blazor","microsoft-graph"]
 ---
 
-# .NET Core (Part 2)
-
 ## Creating a Blazor App that calls Microsoft Graph.
 
 ![](/assets/images/dotnet core part2/net-logo.svg)

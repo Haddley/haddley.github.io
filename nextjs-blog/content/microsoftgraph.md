@@ -7,10 +7,6 @@ image: "/assets/images/microsoftgraph/hero.png"
 tags: ["javascript","azure","java","ai","dynamics"]
 ---
 
-# Microsoft Graph
-
-## Explore Microsoft 365
-
 ![](/assets/images/microsoftgraph/office-365-icon-500x500.png)
 *Microsoft_Office_logo by Microsoft is licensed under CC*
 

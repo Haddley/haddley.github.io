@@ -7,15 +7,9 @@ image: "/assets/images/customerpostinggroup/hero.png"
 tags: ["ai","dynamics"]
 ---
 
-# Customer Posting Group
-
-## Customer Posting Group
-
 ![](/assets/images/customerpostinggroup/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 
-
-## Customer Posting Group
 
 A Customer Posting Group is used to define which accounts receivable general ledger account to use when selling goods to a Customer.
 

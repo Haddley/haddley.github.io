@@ -7,15 +7,9 @@ image: "/assets/images/spring-boot-2/hero.png"
 tags: ["azure","java","spring","ai","git"]
 ---
 
-# Java Spring Boot (Part 2)
-
-## Deploying from GitHub to Azure
-
 ![](/assets/images/spring-boot-2/spring-framework-logo-2018.svg)
 *Spring Framework logo by Pivotal Software is licensed under Apache License 2.0*
 
-
-## Deploying from GitHub to Azure
 
 I used [https://start.spring.io](https://start.spring.io), Visual Studio Code, GitHub and Microsoft Azure to generate an Spring application, to run the Spring application on my laptop and to deploy the Spring application to Microsoft Azure
 

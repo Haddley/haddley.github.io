@@ -7,15 +7,9 @@ image: "/assets/images/powerapps23configurationmigrationtool/hero.png"
 tags: ["ai","ml","power platform"]
 ---
 
-# Power Apps (Part 23)
-
-## Configuration Migration Tool (CMT)
-
 ![](/assets/images/powerapps23configurationmigrationtool/office-365-icon-500x500.png)
 *This file is licensed under the Creative Commons Attribution 4.0 International license.*
 
-
-## Configuration Migration Tool (CMT)
 
 The Configuration Migration tool is used to transport configuration and data from one environment to another.
 

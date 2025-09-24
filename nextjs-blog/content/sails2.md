@@ -7,8 +7,6 @@ image: "/assets/images/sails2/hero.png"
 tags: ["azure","aws","ai","git","github"]
 ---
 
-# Sails (Part 2)
-
 ## Sails and the Azure Cosmos DB API for MongoDB
 
 ![AWS](/assets/images/sails2/sailsjs-logo-515x193.png)

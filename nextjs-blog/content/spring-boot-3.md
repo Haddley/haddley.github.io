@@ -7,15 +7,9 @@ image: "/assets/images/spring-boot-3/hero.png"
 tags: ["azure","java","spring","git","github"]
 ---
 
-# Java Spring Boot (Part 3)
-
-## Spring Data JPA
-
 ![](/assets/images/spring-boot-3/spring-framework-logo-2018.svg)
 *Spring Framework logo by Pivotal Software is licensed under Apache License 2.0*
 
-
-## Spring Data JPA
 
 Spring Data JPA provides a set of abstractions and high-level, repository-style interfaces that make it easier to work with Java Persistence API (JPA) for data access in Spring applications. It reduces boilerplate code.
 

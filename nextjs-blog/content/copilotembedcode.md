@@ -7,15 +7,9 @@ image: "/assets/images/copilotembedcode/hero.png"
 tags: ["ml"]
 ---
 
-# Copilot Embed Code
-
-## Copilot Embed Code
-
 ![](/assets/images/copilotembedcode/office-365-icon-500x500.png)
 *This file is licensed under the Creative Commons Attribution 4.0 International license.*
 
-
-## Copilot Embed Code
 
 I created an HTML page to host my Blog Copilot
 

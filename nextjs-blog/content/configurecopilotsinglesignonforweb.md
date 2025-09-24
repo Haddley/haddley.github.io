@@ -7,15 +7,9 @@ image: "/assets/images/configurecopilotsinglesignonforweb/hero.png"
 tags: ["azure","docker","ai","ml","git"]
 ---
 
-# Configure Copilot single sign-on for Web
-
-## Configure Copilot single sign-on for Web
-
 ![](/assets/images/configurecopilotsinglesignonforweb/office-365-icon-500x500.png)
 *This file is licensed under the Creative Commons Attribution 4.0 International license.*
 
-
-## Configure Copilot single sign-on for Web
 
 Microsoft Copilot Studio supports single sign-on (SSO). [SSO allows copilots on your website to sign customers in if they're already signed in to the page or app where the copilot is deployed](https://learn.microsoft.com/en-us/microsoft-copilot-studio/configure-sso?tabs=webApp).
 

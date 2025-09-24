@@ -7,8 +7,6 @@ image: "/assets/images/nextjs4/hero.png"
 tags: ["azure","aws","git","github"]
 ---
 
-# Next.js (Part 4)
-
 ## Deploying to Azure
 
 ![AWS](/assets/images/nextjs4/2560px-nextjs-logo.svg-1536x920.png)

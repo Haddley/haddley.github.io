@@ -7,10 +7,6 @@ image: "/assets/images/ngrxdevtools/hero.png"
 tags: ["angular","git","github"]
 ---
 
-# NGRX devtools
-
-## Troubleshooting NGRX applications
-
 ![](/assets/images/ngrxdevtools/ngrx.svg)
 *This file is licensed under the Creative Commons 4.0.*
 

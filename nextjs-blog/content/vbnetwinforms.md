@@ -7,8 +7,6 @@ image: "/assets/images/vbnetwinforms/hero.png"
 tags: ["dotnet","ai","asp.net"]
 ---
 
-# VB.NET WinForms and ASP.NET Core API
-
 ## VB.NET WinForms Development
 
 ![](/assets/images/vbnetwinforms/net-logo.svg)

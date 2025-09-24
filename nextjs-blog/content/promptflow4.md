@@ -7,15 +7,9 @@ image: "/assets/images/promptflow4/hero.png"
 tags: ["ai"]
 ---
 
-# Prompt Flow (Part 4)
-
-## Planner
-
 ![](/assets/images/promptflow4/logo.svg)
 *This file is licensed under the MIT license.*
 
-
-## Planner
 
 Once you have multiple plugins, you then need a way for your AI agent to use them together to solve a user’s need. This is where planning comes in.
 

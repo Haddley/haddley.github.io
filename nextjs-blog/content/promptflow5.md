@@ -7,10 +7,6 @@ image: "/assets/images/promptflow5/hero.png"
 tags: ["docker","python","ai"]
 ---
 
-# Prompt Flow (Part 5)
-
-## With LangChain
-
 ![](/assets/images/promptflow5/logo.svg)
 *This file is licensed under the MIT license.*
 

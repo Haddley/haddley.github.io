@@ -7,10 +7,6 @@ image: "/assets/images/multiplayer/hero.png"
 tags: ["javascript","java","database","ai","ml"]
 ---
 
-# Multiplayer Game
-
-## Multiplayer Game
-
 ![](/assets/images/multiplayer/logo-lockup-firebase-vertical.svg)
 *This file is licensed under the Creative Commons Attribution 4.0 International license.*
 

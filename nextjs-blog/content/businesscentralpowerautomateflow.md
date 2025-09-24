@@ -9,13 +9,9 @@ tags: ["cloud","ai","business central","dynamics"]
 
 # Business Central Power Automate Flow
 
-## Power Automate Flow
-
 ![](/assets/images/businesscentralpowerautomateflow/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 
-
-## Power Automate Flow
 
 Business Central includes a Microsoft Power Automate license.
 

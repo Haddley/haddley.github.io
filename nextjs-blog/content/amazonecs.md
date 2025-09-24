@@ -7,8 +7,6 @@ image: "/assets/images/amazonecs/hero.png"
 tags: ["aws","cloud","docker","kubernetes","ai"]
 ---
 
-# Amazon Elastic Container Service
-
 ## Deploying to Amazon Elastic Container Service (Amazon ECS)
 
 ![AWS](/assets/images/amazonecs/amazon-web-services-logo.svg)

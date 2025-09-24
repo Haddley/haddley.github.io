@@ -7,8 +7,6 @@ image: "/assets/images/machinelearning3/hero.png"
 tags: ["ai","ml","machine learning"]
 ---
 
-# Machine Learning (Part 3)
-
 ## Creating models
 
 ![](/assets/images/machinelearning3/tensorflow-logo.svg)

@@ -7,15 +7,9 @@ image: "/assets/images/generalpostingsetup/hero.png"
 tags: ["ai","dynamics"]
 ---
 
-# General Posting Setup
-
-## General Posting Setup
-
 ![](/assets/images/generalpostingsetup/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 
-
-## General Posting Setup
 
 General Posting Setup is used to define which accounts receivable and cost of goods sold general ledger accounts to use when selling a given Item (with a given General Business Posting Group) to a given Customer (with a given General Product Posting Group).
 

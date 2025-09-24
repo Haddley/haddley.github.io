@@ -7,8 +7,6 @@ image: "/assets/images/docker/hero.png"
 tags: ["cloud","docker","testing"]
 ---
 
-# Docker
-
 ## Docker is an easy way to create, manage, and deliver applications.
 
 ![Docker (container_engine) logo by dotCloud, Inc. is licensed under the Apache License](/assets/images/docker/docker-container-engine-logo.svg)

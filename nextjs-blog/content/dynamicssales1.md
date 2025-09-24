@@ -9,13 +9,9 @@ tags: ["ai","ml","dynamics"]
 
 # Dynamics 365 Sales (Part 1)
 
-## Updating the Sales Insights form
-
 ![](/assets/images/dynamicssales1/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 
-
-## Updating the Sales Insights form
 
 I used [https://make.powerapps.com](https://make.powerapps.com) to customize the Account|Sales Insights form.
 

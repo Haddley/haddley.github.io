@@ -7,10 +7,6 @@ image: "/assets/images/xcode3/hero.png"
 tags: ["ai"]
 ---
 
-# XCode C++ (Part 3)
-
-## OpenGL GLEW
-
 ![](/assets/images/xcode3/xcode-14-icon-300x314.png)
 *This is the logo owned by Apple Inc. for Xcode. Taken from the picture's app bundle. Fair use*
 

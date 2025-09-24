@@ -9,8 +9,6 @@ tags: ["cloud","ai","business central","dynamics"]
 
 # Business Central (Part 27) PromptDialog
 
-## Prompt Dialog Introduction (Part 1)
-
 ![](/assets/images/promptdialog/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 

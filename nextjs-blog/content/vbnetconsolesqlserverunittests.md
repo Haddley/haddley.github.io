@@ -7,8 +7,6 @@ image: "/assets/images/vbnetconsolesqlserverunittests/hero.png"
 tags: ["dotnet","sql","database","ai","testing"]
 ---
 
-# VB.NET Console SQL Server Unit Tests
-
 ## Test driven development
 
 ![](/assets/images/vbnetconsolesqlserverunittests/net-logo.svg)

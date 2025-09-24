@@ -7,8 +7,6 @@ image: "/assets/images/xcode2/hero.png"
 tags: ["ai"]
 ---
 
-# XCode C++ (Part 2)
-
 ## OpenGL GLFW
 
 ![](/assets/images/xcode2/xcode-14-icon-300x314.png)

@@ -7,8 +7,6 @@ image: "/assets/images/nextjs1/hero.png"
 tags: ["react","javascript","aws","java","git"]
 ---
 
-# Next.js (Part 1)
-
 ## The React Framework for Production
 
 ![AWS](/assets/images/nextjs1/2560px-nextjs-logo.svg-1536x920.png)

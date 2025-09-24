@@ -7,10 +7,6 @@ image: "/assets/images/machinelearning8/hero.png"
 tags: ["ai","ml","machine learning","git","github"]
 ---
 
-# Machine Learning (Part 8)
-
-## Baseball Signs
-
 ![](/assets/images/machinelearning8/tensorflow-logo.svg)
 *Tensorflow logo does not meet the threshold of originality needed for copyright protection, and is therefore in the public domain*
 

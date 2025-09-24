@@ -9,8 +9,6 @@ tags: ["business central"]
 
 # Add a Purchase Order
 
-## Adding a Purchase Order
-
 ![](/assets/images/addapurchaseorder/office-365-icon-500x500.png)
 *This file is licensed under the Creative Commons Attribution 4.0 International license.*
 

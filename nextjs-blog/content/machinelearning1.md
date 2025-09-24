@@ -7,10 +7,6 @@ image: "/assets/images/machinelearning1/hero.png"
 tags: ["cloud","ai","ml","machine learning"]
 ---
 
-# Machine Learning (Part 1)
-
-## Science fair
-
 ![](/assets/images/machinelearning1/tensorflow-logo.svg)
 *Tensorflow logo does not meet the threshold of originality needed for copyright protection, and is therefore in the public domain*
 

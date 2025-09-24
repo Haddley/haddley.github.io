@@ -7,8 +7,6 @@ image: "/assets/images/nextjs3/hero.png"
 tags: ["aws","database","ai","git","github"]
 ---
 
-# Next.js (Part 3)
-
 ## API routes and next-auth
 
 ![AWS](/assets/images/nextjs3/2560px-nextjs-logo.svg-1536x920.png)

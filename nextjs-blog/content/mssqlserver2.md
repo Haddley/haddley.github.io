@@ -7,8 +7,6 @@ image: "/assets/images/mssqlserver2/hero.png"
 tags: ["javascript","dotnet","c#","java","sql"]
 ---
 
-# Microsoft SQL Server (Part 2)
-
 ## T-SQL, Stored Procedures and Snapshot Isolation.
 
 ![](/assets/images/mssqlserver2/ads.svg)

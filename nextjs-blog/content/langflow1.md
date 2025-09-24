@@ -7,15 +7,9 @@ image: "/assets/images/langflow1/hero.png"
 tags: ["python","ai"]
 ---
 
-# Langflow (Part 1)
-
-## OpenAI text to speech
-
 ![](/assets/images/langflow1/85702467-200x200.png)
 *This file is licensed under the MIT license.*
 
-
-## OpenAI text to speech
 
 Langflow is a tool designed to simplify the development of applications using large language models (LLMs).
 

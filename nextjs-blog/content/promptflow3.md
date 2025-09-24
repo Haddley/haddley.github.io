@@ -7,8 +7,6 @@ image: "/assets/images/promptflow3/hero.png"
 tags: ["python","ai","git","github"]
 ---
 
-# Prompt Flow (Part 3)
-
 ## Semantic Kernel
 
 ![](/assets/images/promptflow3/logo.svg)

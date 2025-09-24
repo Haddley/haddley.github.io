@@ -7,15 +7,9 @@ image: "/assets/images/generalledger/hero.png"
 tags: ["ai","business central","dynamics"]
 ---
 
-# General Ledger
-
-## General Ledger
-
 ![](/assets/images/generalledger/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 
-
-## General Ledger
 
 The General Ledger is fundamental to financial management and accounting within Microsoft Dynamics 365 Business Central.
 

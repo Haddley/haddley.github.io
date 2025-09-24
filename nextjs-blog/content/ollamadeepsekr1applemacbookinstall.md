@@ -9,13 +9,9 @@ tags: ["ai","testing"]
 
 # DeepSeek R1
 
-## Apple MacBook Install
-
 ![](/assets/images/ollamadeepsekr1applemacbookinstall/254932576-0d0b44e2-8f4a-4e99-9b52-a5c1c741c8f7-844x844.png)
 *ollama is licensed under theMIT License*
 
-
-## Apple MacBook Install
 
 **Installation & Configuration**
 I successfully installed the DeepSeek-R1 model.

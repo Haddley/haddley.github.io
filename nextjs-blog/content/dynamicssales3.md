@@ -9,13 +9,9 @@ tags: ["ai","ml","dynamics"]
 
 # Dynamics 365 Sales (Part 3)
 
-## Adding a Warranty table
-
 ![](/assets/images/dynamicssales3/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 
-
-## Adding a Warranty table
 
 I used [https://make.powerapps.com](https://make.powerapps.com) to add a Warranty table to Microsoft Dynamics 365 Sales.
 

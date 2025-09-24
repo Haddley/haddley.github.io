@@ -9,13 +9,9 @@ tags: ["cloud","business central"]
 
 # Cloud Flow
 
-## Copilot Studio Topic with a Cloud Flow
-
 ![](/assets/images/cloudflow/office-365-icon-500x500.png)
 *This file is licensed under the Creative Commons Attribution 4.0 International license.*
 
-
-## Copilot Studio Topic with a Cloud Flow
 
 I created a Topic that used the Business Central Connector to retrieve the list of "Evaluation" Company Customers. I used a Cloud Flow to workaround an issue.
 

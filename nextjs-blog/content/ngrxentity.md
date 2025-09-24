@@ -7,10 +7,6 @@ image: "/assets/images/ngrxentity/hero.png"
 tags: ["ai","git","github","testing"]
 ---
 
-# NGRX entity
-
-## Managing record collections
-
 ![](/assets/images/ngrxentity/ngrx.svg)
 *This file is licensed under the Creative Commons 4.0.*
 
@@ -99,8 +95,6 @@ I updated the tests to use the mock.
 ![](/assets/images/ngrxentity/screen-shot-2023-02-20-at-11.32.46-am-1536x486.png)
 *Karma results in a web page*
 
-
-## NGRX Entity
 
 Entity provides an API to manipulate and query entity collections.
 

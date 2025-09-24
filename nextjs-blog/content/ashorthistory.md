@@ -7,10 +7,6 @@ image: "/assets/images/ashorthistory/hero.png"
 tags: ["azure","cloud","dotnet","ai","ml"]
 ---
 
-# A Short History of Microsoft Dynamics and Microsoft Dataverse
-
-## A Short History of Microsoft Dynamics and Microsoft Dataverse
-
 ![](/assets/images/ashorthistory/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 

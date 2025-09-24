@@ -7,15 +7,9 @@ image: "/assets/images/gingerbreadhouse/hero.png"
 tags: ["python","ai"]
 ---
 
-# Gingerbread House
-
-## Gingerbread House
-
 ![](/assets/images/gingerbreadhouse/raspberry-pi-logo.svg)
 *Raspberry Pi is a trademark of Raspberry Pi Ltd*
 
-
-## Gingerbread House
 
 $ sudo apt-get update
 $ sudo  apt-get dist-upgrade

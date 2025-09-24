@@ -7,8 +7,6 @@ image: "/assets/images/nextjs5/hero.png"
 tags: ["typescript","azure","aws","ai","ml"]
 ---
 
-# Next.js (Part 5)
-
 ## next-pwa and ionic
 
 ![AWS](/assets/images/nextjs5/2560px-nextjs-logo.svg-1536x920.png)

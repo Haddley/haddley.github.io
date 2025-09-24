@@ -7,10 +7,6 @@ image: "/assets/images/al-go-pte/hero.png"
 tags: ["docker","devops","ai","business central","dynamics"]
 ---
 
-# AL-Go-PTE
-
-## AL-Go-PTE
-
 ![](/assets/images/al-go-pte/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 
@@ -25,8 +21,6 @@ I used [AL-Go for GitHub](https://github.com/microsoft/AL-Go) to [create a Busin
 
 (Notice that you can upload a Per Tenant Extension (PTE) to Microsoft Dynamics Business Central using the Business Central Extension Management page.)
 
-
-## AL-Go-PTE
 
 I used the [AL-Go-PTE](https://github.com/microsoft/AL-Go-PTE) GitHub template repository https://github.com/microsoft/AL-Go-PTE
 

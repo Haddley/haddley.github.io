@@ -7,10 +7,6 @@ image: "/assets/images/firebase/hero.png"
 tags: ["cloud","database","ai","git","github"]
 ---
 
-# Firebase
-
-## A Firebase App
-
 ![](/assets/images/firebase/logo-lockup-firebase-vertical.svg)
 *This logo image consists only of simple geometric shapes or text. It does not meet the threshold of originality needed for copyright protection, and is therefore in the public domain.*
 

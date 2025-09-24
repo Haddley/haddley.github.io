@@ -9,13 +9,9 @@ tags: ["azure","ai"]
 
 # Azure Al services Azure OpenAl
 
-## Azure OpenAI Service
-
 ![](/assets/images/azureopenal/azurex70x75.svg)
 *Microsoft Azure Logo by Microsoft Corporation is Public Domain*
 
-
-## Azure OpenAI Service
 
 Azure OpenAI is a service that provides access to OpenAI's generative AI models, including:
 

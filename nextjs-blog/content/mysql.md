@@ -7,8 +7,6 @@ image: "/assets/images/mysql/hero.png"
 tags: ["javascript","aws","java","mysql","sql"]
 ---
 
-# MySQL
-
 ## Connecting to MySQL from JavaScript
 
 ![AWS](/assets/images/mysql/includes-mysql-5646x2872.png)

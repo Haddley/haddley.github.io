@@ -7,8 +7,6 @@ image: "/assets/images/asp.net 5 visual basic/hero.png"
 tags: ["azure","docker","dotnet","sql","database"]
 ---
 
-# ASP.NET 5 Visual Basic
-
 ## Generate Context and Entity Classes from an Existing Database
 
 ![](/assets/images/asp.net 5 visual basic/net-logo.svg)

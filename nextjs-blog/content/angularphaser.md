@@ -7,8 +7,6 @@ image: "/assets/images/angularphaser/hero.png"
 tags: ["angular","ml"]
 ---
 
-# Angular and Phaser
-
 ## Using Phaser in an Angular Component
 
 ![Phaser](/assets/images/angularphaser/phaser-logo-1836x1530.png)

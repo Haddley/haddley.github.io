@@ -7,8 +7,6 @@ image: "/assets/images/xcode1/hero.png"
 tags: ["ai"]
 ---
 
-# XCode C++ (Part 1)
-
 ## Hello, World!
 
 ![](/assets/images/xcode1/xcode-14-icon-300x314.png)

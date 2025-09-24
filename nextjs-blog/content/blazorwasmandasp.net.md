@@ -7,8 +7,6 @@ image: "/assets/images/blazorwasmandasp.net/hero.png"
 tags: ["dotnet","c#","database","ai","asp.net"]
 ---
 
-# Blazor WASM and ASP.NET Core
-
 ## An ASP.NET Core backend and a Blazor Web Assembly frontend.
 
 ![](/assets/images/blazorwasmandasp.net/net-logo.svg)

@@ -7,15 +7,9 @@ image: "/assets/images/spring-boot-6/hero.png"
 tags: ["java","spring","ai","git","github"]
 ---
 
-# Java Spring Boot (Part 6)
-
-## OAuth2 Login
-
 ![](/assets/images/spring-boot-6/spring-framework-logo-2018.svg)
 *Spring Framework logo by Pivotal Software is licensed under Apache License 2.0*
 
-
-## OAuth2 Login
 
 OAuth2 authentication using Spring Security and GitHub.
 

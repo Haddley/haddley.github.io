@@ -9,13 +9,9 @@ tags: ["ai","ml"]
 
 # SharePoint Syntex Autofill
 
-## Syntex Autofill
-
 ![](/assets/images/syntexautofill/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png)
 *Microsoft Office SharePoint (2018–present) by Microsoft Corporation is licensed under CC*
 
-
-## Syntex Autofill
 
 Syntex Autofill is an AI feature in SharePoint that automatically extracts or generates metadata from documents using natural language prompts, populating SharePoint columns without manual entry. Syntex Autofill transforms unstructured content into structured data.
 

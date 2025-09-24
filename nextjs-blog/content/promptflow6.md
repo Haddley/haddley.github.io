@@ -7,10 +7,6 @@ image: "/assets/images/promptflow6/hero.png"
 tags: ["python","ai"]
 ---
 
-# Prompt Flow (Part 6)
-
-## With Semantic Kernel and Planner
-
 ![](/assets/images/promptflow6/logo.svg)
 *This file is licensed under the MIT license.*
 

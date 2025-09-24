@@ -7,15 +7,9 @@ image: "/assets/images/modeldriven3/hero.png"
 tags: ["javascript","java","ml","dynamics"]
 ---
 
-# Model Driven Apps (Part 3)
-
-## Model-driven apps JavaScript Developer Guide
-
 ![](/assets/images/modeldriven3/office-365-icon-500x500.png)
 *This file is licensed under the Creative Commons Attribution 4.0 International license.*
 
-
-## Model-driven apps JavaScript Developer Guide
 
 JavaScript can be used to extend model driven apps.
 

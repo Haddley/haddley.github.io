@@ -7,8 +7,6 @@ image: "/assets/images/teamstoolkitspfx/hero.png"
 tags: ["azure","cloud","ai","git","github"]
 ---
 
-# Teams Toolkit with SPFx
-
 ## Get started with Microsoft Teams app development using SPFx.
 
 ![](/assets/images/teamstoolkitspfx/teams-hi-res-icon-2019.svg)

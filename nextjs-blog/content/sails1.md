@@ -7,8 +7,6 @@ image: "/assets/images/sails1/hero.png"
 tags: ["azure","aws","devops","database","ai"]
 ---
 
-# Sails (Part 1)
-
 ## Azure DevOps and Sails.
 
 ![AWS](/assets/images/sails1/sailsjs-logo-515x193.png)

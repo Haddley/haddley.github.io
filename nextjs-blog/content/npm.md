@@ -7,8 +7,6 @@ image: "/assets/images/npm/hero.png"
 tags: ["javascript","java","ai","git","github"]
 ---
 
-# npm JavaScript
-
 ## Create and publish an npm module using JavaScript.
 
 ![](/assets/images/npm/6078720-200x200.png)

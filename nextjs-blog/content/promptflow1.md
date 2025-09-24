@@ -7,8 +7,6 @@ image: "/assets/images/promptflow1/hero.png"
 tags: ["azure","docker","kubernetes","devops","python"]
 ---
 
-# Prompt Flow (Part 1)
-
 ## Setup
 
 ![](/assets/images/promptflow1/logo.svg)

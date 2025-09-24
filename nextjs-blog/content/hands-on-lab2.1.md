@@ -7,10 +7,6 @@ image: "/assets/images/hands-on-lab2.1/hero.png"
 tags: ["database","ai","business central","dynamics"]
 ---
 
-# Hands-on-Lab 2.1
-
-## Hands-on-Lab 2.1
-
 ![](/assets/images/hands-on-lab2.1/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 

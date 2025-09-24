@@ -7,10 +7,6 @@ image: "/assets/images/machinelearning2/hero.png"
 tags: ["javascript","java","python","sql","ai"]
 ---
 
-# Machine Learning (Part 2)
-
-## Low hanging fruit
-
 ![](/assets/images/machinelearning2/tensorflow-logo.svg)
 *Tensorflow logo does not meet the threshold of originality needed for copyright protection, and is therefore in the public domain*
 

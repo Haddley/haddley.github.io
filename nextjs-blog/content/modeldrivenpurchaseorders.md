@@ -7,15 +7,9 @@ image: "/assets/images/modeldrivenpurchaseorders/hero.png"
 tags: ["ai","business central","dynamics","power platform"]
 ---
 
-# Model Driven Purchase Orders
-
-## Model Driven Purchase Orders
-
 ![](/assets/images/modeldrivenpurchaseorders/office-365-icon-500x500.png)
 *This file is licensed under the Creative Commons Attribution 4.0 International license.*
 
-
-## Model Driven Purchase Orders
 
 I created a Power Platform Model Driven application to manage Business Central Purchase Orders.
 

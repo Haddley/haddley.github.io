@@ -7,10 +7,6 @@ image: "/assets/images/javascriptgraph/hero.png"
 tags: ["javascript","azure","ai","ml"]
 ---
 
-# JavaScript and Microsoft Graph
-
-## A Node App that accesses Microsoft 365
-
 ![](/assets/images/javascriptgraph/office-365-icon-500x500.png)
 *Microsoft_Office_logo by Microsoft is licensed under CC*
 

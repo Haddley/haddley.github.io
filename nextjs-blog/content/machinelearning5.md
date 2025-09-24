@@ -7,15 +7,9 @@ image: "/assets/images/machinelearning5/hero.png"
 tags: ["ai","machine learning","git","github"]
 ---
 
-# Machine Learning (Part 5)
-
-## Linear Regression
-
 ![](/assets/images/machinelearning5/tensorflow-logo.svg)
 *Tensorflow logo does not meet the threshold of originality needed for copyright protection, and is therefore in the public domain*
 
-
-## Linear Regression
 
 Can we predict a person's glucose levels based on their age?
 

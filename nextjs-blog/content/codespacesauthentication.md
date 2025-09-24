@@ -7,15 +7,9 @@ image: "/assets/images/codespacesauthentication/hero.png"
 tags: ["react","azure","git","github"]
 ---
 
-# Codespaces and Authentication
-
-## Codespaces and Authentication
-
 ![](/assets/images/codespacesauthentication/logo512-512x512.png)
 *React-icon by Facebook does not meet the threshold of originality needed for copyright protection*
 
-
-## Codespaces and Authentication
 
 I used GitHub Codespaces to create a React app, I published the React App using Azure Static Web Sites and GitHub Actions. I used a staticwebapp.config.json file to enable user login and Authentication.
 

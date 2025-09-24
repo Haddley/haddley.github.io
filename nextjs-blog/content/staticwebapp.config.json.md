@@ -9,13 +9,9 @@ tags: ["azure","ai","ml","git","github"]
 
 # staticwebapp.config.json
 
-## staticwebapp.config.json and environment variables
-
 ![](/assets/images/staticwebapp.config.json/azurex70x75.svg)
 *Microsoft Azure Logo by Microsoft Corporation is Public Domain*
 
-
-## staticwebapp.config.json and environment variables
 
 The "auth" section of the staticwebapp.config.json can be used to configure access to a static web app.
 

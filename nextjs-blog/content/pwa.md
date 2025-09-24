@@ -7,8 +7,6 @@ image: "/assets/images/pwa/hero.png"
 tags: ["javascript","azure","ai","ml"]
 ---
 
-# Progressive Web Application
-
 ## Building a Progressive Web Application
 
 ![](/assets/images/pwa/progressive-web-apps-logo.svg)

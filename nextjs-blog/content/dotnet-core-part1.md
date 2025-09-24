@@ -7,8 +7,6 @@ image: "/assets/images/dotnet core part1/hero.png"
 tags: ["react","javascript","dotnet","java","ai"]
 ---
 
-# .NET Core (Part 1)
-
 ## Creating a REST API Service using Microsoft's cross-platform framework.
 
 ![](/assets/images/dotnet core part1/net-logo.svg)

@@ -15,8 +15,6 @@ tags: ["python","ai","ml","machine learning"]
 *This image of simple geometry is ineligible for copyright and therefore in the public domain, because it consists entirely of information that is common property and contains no original authorship.*
 
 
-## LangChain
-
 LangChain is a framework built around Large Language Models. 
 
 I used LangChain to create a medical report application.

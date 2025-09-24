@@ -9,8 +9,6 @@ tags: ["javascript","java","ai","ml","business central"]
 
 # Business Central (Part 29) PromptDialog 3
 
-## Prompt Dialog Markdown (Part 3)
-
 ![](/assets/images/promptdialog3/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 

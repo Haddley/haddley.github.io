@@ -7,15 +7,9 @@ image: "/assets/images/powerpages1/hero.png"
 tags: ["ai","business central","dynamics","power platform"]
 ---
 
-# Power Pages (Part 1)
-
-## A Business Central Customer Portal
-
 ![](/assets/images/powerpages1/powerpages-scalable.svg)
 *Microsoft permits the use of these icons in architectural diagrams, training materials, or documentation.*
 
-
-## A Business Central Customer Portal
 
 Microsoft Power Pages is a low-code platform designed to build, host, and manage external-facing business websites.
 

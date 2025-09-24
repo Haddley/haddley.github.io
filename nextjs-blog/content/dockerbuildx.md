@@ -7,8 +7,6 @@ image: "/assets/images/dockerbuildx/hero.png"
 tags: ["cloud","docker","ai","testing"]
 ---
 
-# Docker Buildx
-
 ## Build multi-platform Docker images.
 
 ![](/assets/images/dockerbuildx/docker-container-engine-logo.svg)

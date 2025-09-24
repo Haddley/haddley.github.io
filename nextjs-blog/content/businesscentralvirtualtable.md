@@ -7,10 +7,6 @@ image: "/assets/images/businesscentralvirtualtable/hero.png"
 tags: ["ai","business central","dynamics"]
 ---
 
-# Business Central Virtual Table
-
-## Business Central Virtual Table
-
 ![](/assets/images/businesscentralvirtualtable/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 

@@ -7,8 +7,6 @@ image: "/assets/images/mssqlserver/hero.png"
 tags: ["javascript","azure","docker","dotnet","c#"]
 ---
 
-# Microsoft SQL Server (Part 1)
-
 ## Microsoft SQL Server 2019 Docker image.
 
 ![](/assets/images/mssqlserver/ads.svg)

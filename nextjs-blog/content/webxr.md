@@ -7,8 +7,6 @@ image: "/assets/images/webxr/hero.png"
 tags: ["ml","git","github"]
 ---
 
-# WebXR
-
 ## Create Augmented Reality Experiences.
 
 ![spec-logo by Brandon Jones is licensed under W3C Software and Document License](/assets/images/webxr/34385910-400x400.png)

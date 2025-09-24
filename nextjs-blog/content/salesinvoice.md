@@ -7,15 +7,9 @@ image: "/assets/images/salesinvoice/hero.png"
 tags: ["ai","dynamics"]
 ---
 
-# Sales Invoice
-
-## Sales Invoice
-
 ![](/assets/images/salesinvoice/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 
-
-## Sales Invoice
 
 The Inventory Posting Group RESALE (Item), General Product Posting Group RETAIL (Item), General Business Posting Group DOMESTIC (Customer), General Posting Setup {RETAIL, DOMESTIC}, Tax Setup and Customer Posting Group (Customer) are used to generate General Ledger entries for a Sales Invoice Document.
 

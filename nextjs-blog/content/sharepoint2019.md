@@ -9,8 +9,6 @@ tags: ["azure","sql","database","ai"]
 
 # SharePoint 2019
 
-## SharePoint hosted in Azure
-
 ![](/assets/images/sharepoint2019/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png)
 *Microsoft Office SharePoint (2018–present) by Microsoft Corporation is licensed under CC*
 

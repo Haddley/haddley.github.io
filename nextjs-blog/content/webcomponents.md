@@ -7,8 +7,6 @@ image: "/assets/images/webcomponents/hero.png"
 tags: ["angular","react","vue","javascript","java"]
 ---
 
-# Web Components
-
 ## A set of web technologies that allow users to create HTML elements.
 
 ![Phaser](/assets/images/webcomponents/web-components-logo.svg)

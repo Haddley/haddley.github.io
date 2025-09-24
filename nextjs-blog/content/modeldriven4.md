@@ -7,10 +7,6 @@ image: "/assets/images/modeldriven4/hero.png"
 tags: ["javascript","java","ai","power platform"]
 ---
 
-# Model Driven Apps (Part 4)
-
-## Model-driven apps Power FX
-
 ![](/assets/images/modeldriven4/office-365-icon-500x500.png)
 *This file is licensed under the Creative Commons Attribution 4.0 International license.*
 

@@ -7,8 +7,6 @@ image: "/assets/images/spring-boot/hero.png"
 tags: ["react","javascript","java","spring","ai"]
 ---
 
-# Java Spring Boot (Part 1)
-
 ## Spring based Java Applications that you can "just run".
 
 ![](/assets/images/spring-boot/spring-framework-logo-2018.svg)

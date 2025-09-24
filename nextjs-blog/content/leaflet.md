@@ -7,8 +7,6 @@ image: "/assets/images/leaflet/hero.png"
 tags: ["javascript","azure","java","ai","ml"]
 ---
 
-# Leaflet
-
 ## An open-source JavaScript libraryfor mobile-friendly interactive maps
 
 ![Phaser](/assets/images/leaflet/leaflet-logo-600x159.png)

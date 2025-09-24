@@ -7,10 +7,6 @@ image: "/assets/images/angularfirebase/hero.png"
 tags: ["angular","react","ai","ml"]
 ---
 
-# Angular Firebase
-
-## An Angular Firebase App
-
 ![](/assets/images/angularfirebase/logo-lockup-firebase-vertical.svg)
 *This file is licensed under the Creative Commons Attribution 4.0 International license.*
 

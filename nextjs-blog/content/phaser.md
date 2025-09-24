@@ -7,8 +7,6 @@ image: "/assets/images/phaser/hero.png"
 tags: ["ai","ml","git","github"]
 ---
 
-# Phaser
-
 ## 2D game framework used for making HTML5 games
 
 ![Phaser](/assets/images/phaser/phaser-logo-1836x1530.png)

@@ -7,15 +7,9 @@ image: "/assets/images/ngrx/hero.png"
 tags: ["angular","react","typescript","ai","ml"]
 ---
 
-# NGRX
-
-## A framework for building reactive applications in Angular
-
 ![](/assets/images/ngrx/ngrx.svg)
 *This file is licensed under the Creative Commons 4.0.*
 
-
-## NGRX
 
 NgRx is inspired by the Redux pattern. 
 

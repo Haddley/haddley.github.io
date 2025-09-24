@@ -7,15 +7,11 @@ image: "/assets/images/devopsstartergithubactions/hero.png"
 tags: ["azure","devops","ai","git","github"]
 ---
 
-# DevOps Starter GitHub actions
-
 ## Everything you need for developing, deploying, and monitoring your application.
 
 ![](/assets/images/devopsstartergithubactions/svgexport-22.svg)
 *Microsoft DevOps Logo by Microsoft Corporation is Public Domain*
 
-
-## DevOps Starter GitHub actions
 
 DevOps Starter makes it easy to get started on Azure using either GitHub actions or Azure DevOps
 

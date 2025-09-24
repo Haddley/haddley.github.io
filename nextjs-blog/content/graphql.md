@@ -7,8 +7,6 @@ image: "/assets/images/graphql/hero.png"
 tags: ["react","ai","ml"]
 ---
 
-# GraphQL
-
 ## GraphQL is a query and manipulation language for APIs.
 
 ![GraphQL](/assets/images/graphql/graphql-logo.svg-1200x1200.png)

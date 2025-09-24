@@ -7,10 +7,6 @@ image: "/assets/images/modeldriven1/hero.png"
 tags: ["sql","database","ai","power platform","testing"]
 ---
 
-# Model Driven Apps (Part 1)
-
-## Dataverse users, business units and security roles
-
 ![](/assets/images/modeldriven1/office-365-icon-500x500.png)
 *This file is licensed under the Creative Commons Attribution 4.0 International license.*
 

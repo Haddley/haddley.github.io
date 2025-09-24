@@ -7,10 +7,6 @@ image: "/assets/images/hands-on-lab2.3/hero.png"
 tags: ["ai","dynamics"]
 ---
 
-# Hands-on-Lab 2.3
-
-## Hands-on-Lab 2.3
-
 ![](/assets/images/hands-on-lab2.3/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 

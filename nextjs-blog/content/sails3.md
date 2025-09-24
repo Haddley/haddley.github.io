@@ -7,8 +7,6 @@ image: "/assets/images/sails3/hero.png"
 tags: ["aws","docker","kubernetes","ai","ml"]
 ---
 
-# Sails (Part 3)
-
 ## Sails and the Amazon Elastic Kubernetes Service
 
 ![AWS](/assets/images/sails3/sailsjs-logo-515x193.png)

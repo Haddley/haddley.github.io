@@ -7,8 +7,6 @@ image: "/assets/images/nextjs2/hero.png"
 tags: ["javascript","aws","java","ai","ml"]
 ---
 
-# Next.js (Part 2)
-
 ## getStaticProps, getServerSideProps, getStaticPaths and useSWR
 
 ![AWS](/assets/images/nextjs2/2560px-nextjs-logo.svg-1536x920.png)

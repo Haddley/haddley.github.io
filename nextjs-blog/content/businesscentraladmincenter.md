@@ -9,8 +9,6 @@ tags: ["ai","business central","dynamics"]
 
 # Business Central Admin Center
 
-## Admin Center
-
 ![](/assets/images/businesscentraladmincenter/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 

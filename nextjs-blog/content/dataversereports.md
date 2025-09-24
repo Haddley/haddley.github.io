@@ -7,15 +7,9 @@ image: "/assets/images/dataversereports/hero.png"
 tags: []
 ---
 
-# Microsoft Dataverse Reports
-
-## Microsoft Dataverse Reports
-
 ![](/assets/images/dataversereports/office-365-icon-500x500.png)
 *This file is licensed under the Creative Commons Attribution 4.0 International license.*
 
-
-## Microsoft Dataverse Reports
 
 Creating a Dataverse Report
 

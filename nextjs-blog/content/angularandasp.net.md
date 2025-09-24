@@ -7,8 +7,6 @@ image: "/assets/images/angularandasp.net/hero.png"
 tags: ["angular","react","dotnet","database","ai"]
 ---
 
-# Angular and ASP.NET Core
-
 ## An ASP.NET Core backend and an Angular frontend.
 
 ![](/assets/images/angularandasp.net/angular-full-color-logo.svg)

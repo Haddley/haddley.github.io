@@ -7,10 +7,6 @@ image: "/assets/images/powerautomate/hero.png"
 tags: []
 ---
 
-# Power Automate
-
-## Automate tasks in Microsoft 365
-
 ![](/assets/images/powerautomate/office-365-icon-500x500.png)
 *Microsoft_Office_logo by Microsoft is licensed under CC*
 

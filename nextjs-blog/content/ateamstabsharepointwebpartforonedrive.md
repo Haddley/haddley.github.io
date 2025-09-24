@@ -7,10 +7,6 @@ image: "/assets/images/ateamstabsharepointwebpartforonedrive/hero.png"
 tags: ["react","ml","git","github"]
 ---
 
-# A Teams App SharePoint Web Part for One Drive
-
-## Using SPFx and the Graph Toolkit
-
 ![](/assets/images/ateamstabsharepointwebpartforonedrive/office-365-icon-500x500.png)
 *Microsoft_Office_logo by Microsoft is licensed under CC*
 

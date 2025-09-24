@@ -7,8 +7,6 @@ image: "/assets/images/azure-active-directory2/hero.png"
 tags: ["angular","react","vue","javascript","azure"]
 ---
 
-# Azure Active Directory (Part 2)
-
 ## Microsoft Azure Active Directory Authentication.
 
 ![](/assets/images/azure-active-directory2/microsoft-azure-logo.svg)

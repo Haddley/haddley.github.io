@@ -7,8 +7,6 @@ image: "/assets/images/sharepointwebpart1/hero.png"
 tags: ["react","typescript","ai","ml","testing"]
 ---
 
-# SharePoint Web Part (Part 1)
-
 ## How to create and publish a SharePoint Web Part (Part 1)
 
 ![](/assets/images/sharepointwebpart1/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png)

@@ -7,10 +7,6 @@ image: "/assets/images/vendorpostinggroup/hero.png"
 tags: ["ai","business central","dynamics"]
 ---
 
-# Vendor Posting Group
-
-## Vendor Posting Group
-
 ![](/assets/images/vendorpostinggroup/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 
@@ -32,8 +28,6 @@ Detailed Customer Ledger
 
 In Microsoft Dynamics 365 Business Central, Posting Groups are used to "build a bridge" between Business Central sub-ledgers and the general ledger accounts.
 
-
-## Vendor Posting Group
 
 A Vendor Posting Group is used to define which accounts payable general ledger account to use when purchasing goods from a Vendor.
 

@@ -9,13 +9,9 @@ tags: ["ai","ml","dynamics"]
 
 # Dynamics 365 Sales (Part 2)
 
-## Updating the Lead to Opportunity Business Process Flow
-
 ![](/assets/images/dynamicssales2/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 
-
-## Updating the Lead to Opportunity Business Process Flow
 
 I used [https://make.powerapps.com](https://make.powerapps.com) to customize the "Lead to Opportunity Sales Process" business process flow.
 

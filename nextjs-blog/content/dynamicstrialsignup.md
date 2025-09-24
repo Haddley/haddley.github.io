@@ -9,8 +9,6 @@ tags: ["ai","dynamics"]
 
 # Dynamics Trial Signup
 
-## Trial Signup
-
 ![](/assets/images/dynamicstrialsignup/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 

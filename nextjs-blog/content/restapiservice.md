@@ -7,8 +7,6 @@ image: "/assets/images/restapiservice/hero.png"
 tags: ["javascript","docker","java","ai"]
 ---
 
-# REST
-
 ## Creating a REST API Service using Node and Express
 
 ![Swagger Logo by Fehguy is licensed under CC](/assets/images/restapiservice/fve-image.svg)

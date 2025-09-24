@@ -7,8 +7,6 @@ image: "/assets/images/aspnetcoreunittests/hero.png"
 tags: ["dotnet","ai","asp.net"]
 ---
 
-# ASP.NET Core Unit Tests
-
 ## Test driven development
 
 ![](/assets/images/aspnetcoreunittests/net-logo.svg)

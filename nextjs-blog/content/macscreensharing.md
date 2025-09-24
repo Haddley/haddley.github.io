@@ -7,13 +7,8 @@ image: "/assets/images/macscreensharing/hero.png"
 tags: ["ai"]
 ---
 
-# Mac Screen Sharing
-
-## Screen Sharing VNC and SSH
-
 ![](/assets/images/macscreensharing/apple-logo-black.svg)
 *This work is in the public domain in the United States because it was published in the United States between 1930 and 1977, inclusive, without a copyright notice.*
-
 
 ## Screen Sharing VNC
 

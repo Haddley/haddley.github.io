@@ -15,8 +15,6 @@ tags: ["ml"]
 *This file is licensed under the Creative Commons Attribution-Share Alike 4.0 International license.*
 
 
-## PHP
-
 PHP is a server scripting language, and a powerful tool for making dynamic and interactive Web pages.
 
 PHP is a widely-used, free, and efficient alternative to competitors such as Microsoft's ASP.

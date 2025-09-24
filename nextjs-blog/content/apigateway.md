@@ -7,8 +7,6 @@ image: "/assets/images/apigateway/hero.png"
 tags: ["react","azure","aws","cloud","docker"]
 ---
 
-# API Gateway
-
 ## How to publish a collection of microservices using an API Gateway.
 
 ![Kubernetes](/assets/images/apigateway/kubernetes-container-engine.svg)
@@ -25,8 +23,6 @@ A client might be a web page running in a browser or a mobile phone app.
 
 ![](/assets/images/apigateway/reverse-proxy-528x204.png)
 
-
-## API Gateway
 
 The diagram above demonstrates how an API gateway sits between a client and a collection of services.
 

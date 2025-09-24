@@ -7,8 +7,6 @@ image: "/assets/images/webvr/hero.png"
 tags: ["ai","git","github"]
 ---
 
-# WebVR
-
 ## Create Virtual Reality Experiences.
 
 ![](/assets/images/webvr/webvr-logo-square-512x512.png)

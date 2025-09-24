@@ -7,8 +7,6 @@ image: "/assets/images/spring-boot-4/hero.png"
 tags: ["java","spring"]
 ---
 
-# Java Spring Boot (Part 4)
-
 ## ModelAndView
 
 ![](/assets/images/spring-boot-4/spring-framework-logo-2018.svg)

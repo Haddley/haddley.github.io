@@ -7,10 +7,6 @@ image: "/assets/images/powerapps6/hero.png"
 tags: ["azure","ai"]
 ---
 
-# A Custom Connector for Microsoft Graph
-
-## A Custom Connector for Microsoft Graph
-
 ![](/assets/images/powerapps6/office-365-icon-500x500.png)
 *This file is licensed under the Creative Commons Attribution 4.0 International license.*
 

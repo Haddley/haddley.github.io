@@ -7,15 +7,9 @@ image: "/assets/images/powerpages3/hero.png"
 tags: ["ai","business central"]
 ---
 
-# Power Pages (Part 3)
-
-## Customer Order Lines
-
 ![](/assets/images/powerpages3/powerpages-scalable.svg)
 *Microsoft permits the use of these icons in architectural diagrams, training materials, or documentation.*
 
-
-## Customer Order Lines
 
 Customer Order Lines refer to the individual items or services listed within a customer's order. Each order line represents a specific product or service being purchased, including details such as:
 
