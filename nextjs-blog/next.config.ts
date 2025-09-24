@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // output: 'export', // Temporarily disabled for development
+  output: 'export',
   trailingSlash: true,
   images: {
     unoptimized: true
