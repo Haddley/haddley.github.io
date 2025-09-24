@@ -3,6 +3,9 @@ nextjs-blog/node_modules/
 nextjs-blog/.next/
 nextjs-blog/out/
 
+# Synced images (generated during build)
+nextjs-blog/public/assets/images/
+
 # Backup directories
 backup-*/
 

@@ -17,7 +17,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Copilot Studio Agent Tools',
     description: 'Copilot Studio Agent connected to Business Central',
     date: '2025-09-24',
-    categories: ["Microsoft Dynamics", "Business Central", "Power Platform", "Java"],
+    categories: ["Microsoft Dynamics", "Business Central", "Power Platform", "Microsoft Dynamics"],
     tags: [],
     image: '/assets/images/posts-meta.svg'
   },
@@ -811,7 +811,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Raspberry Pi (Part 4)',
     description: 'Laptop Setup',
     date: '2023-07-25',
-    categories: ["TEMP"],
+    categories: ["AI", "Python"],
     tags: [],
     image: '/assets/images/raspberry-pi-logo.svg'
   },

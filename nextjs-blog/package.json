@@ -4,12 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/sync-images.js",
     "build": "next build",
-    "build:classify": "python3 ../build_classifier.py && next build",
+    "build:classify": "python3 ../build_classifier.py && npm run prebuild && next build",
     "start": "next start",
     "lint": "eslint",
     "classify": "python3 ../build_classifier.py",
-    "classify:review": "python3 ../smart_classifier.py --review-mode"
+    "classify:review": "python3 ../smart_classifier.py --review-mode",
+    "sync-images": "node scripts/sync-images.js"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
@@ -17,6 +19,7 @@
     "@next/mdx": "^15.5.3",
     "@types/mdx": "^2.0.13",
     "autoprefixer": "^10.4.21",
+    "fs-extra": "^11.3.2",
     "gray-matter": "^4.0.3",
     "next": "15.5.3",
     "react": "19.1.0",

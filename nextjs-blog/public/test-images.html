@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Test</title>
+</head>
+<body>
+    <h1>Testing Image Loading</h1>
+    
+    <h2>Web-Safe Filename (should work)</h2>
+    <img src="/assets/images/copilotstudiobctools/screenshot-2025-09-24-at-4.55.54-pm.png" alt="Web Safe Image" style="max-width: 500px;" />
+    
+    <h2>Original Filename (may not work)</h2>
+    <img src="/assets/images/copilotstudiobctools/Screenshot 2025-09-24 at 4.55.54 PM.png" alt="Original Image" style="max-width: 500px;" />
+    
+    <h2>URL Encoded Filename (may not work)</h2>
+    <img src="/assets/images/copilotstudiobctools/Screenshot%202025-09-24%20at%204.55.54%20PM.png" alt="URL Encoded Image" style="max-width: 500px;" />
+    
+    <script>
+        // Log any image load errors
+        document.querySelectorAll('img').forEach((img, index) => {
+            img.onload = () => console.log(`Image ${index + 1} loaded successfully`);
+            img.onerror = () => console.error(`Image ${index + 1} failed to load: ${img.src}`);
+        });
+    </script>
+</body>
+</html>

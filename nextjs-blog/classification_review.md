@@ -2,8 +2,8 @@
 Generated: build_classifier.py
 
 ## Summary
-- Total posts analyzed: 7 with suggested changes
-- High confidence (auto-applied): 2
+- Total posts analyzed: 5 with suggested changes
+- High confidence (auto-applied): 0
 - Medium confidence (review recommended): 5
 - Low confidence (manual review needed): 0
 
