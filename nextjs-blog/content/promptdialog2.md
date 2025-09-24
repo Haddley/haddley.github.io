@@ -7,13 +7,8 @@ image: "/assets/images/promptdialog2/hero.png"
 tags: ["azure","cloud","ai","business central","dynamics"]
 ---
 
-# Business Central (Part 28) PrompDialog 2
-
-## Prompt Dialog Azure Open AI (Part 2)
-
 ![](/assets/images/promptdialog2/dynamics365-color.svg)
 *By Microsoft, Public Domain*
-
 
 ## Prompt Dialog (Part 2)
 
