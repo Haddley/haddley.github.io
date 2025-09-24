@@ -945,7 +945,7 @@ export const blogPosts: BlogPost[] = [
     title: 'XCode C++ (Part 4)',
     description: 'GLM (OpenGL Mathematics)',
     date: '2023-03-27',
-    categories: ["Maps"],
+    categories: [],
     tags: [],
     image: '/assets/images/xcode-14-icon-300x314.png'
   },
@@ -1656,7 +1656,7 @@ export const blogPosts: BlogPost[] = [
     title: 'SharePoint site designs and site scripts',
     description: 'A comprehensive guide covering sharepointsitedesignsandsitescripts',
     date: '2021-02-15',
-    categories: ["Microsoft 365", "Maps"],
+    categories: ["Microsoft 365"],
     tags: [],
     image: '/assets/images/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png'
   },
