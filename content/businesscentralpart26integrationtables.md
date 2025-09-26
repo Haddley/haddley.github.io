@@ -1,6 +1,6 @@
 ---
-title: "Business Central (Part 26) Integration Tables"
-description: "AL Table Proxy Generator"
+title: "Business Central (Part 26)"
+description: "Integration Tables"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/businesscentralpart26integrationtables/hero.png"
@@ -9,7 +9,7 @@ tags: ["ai","business central","dynamics"]
 
 # Business Central (Part 26) Integration Tables
 
-## AL Table Proxy Generator
+## Integration Tables
 
 ![](/assets/images/businesscentralpart26integrationtables/dynamics365-color.svg)
 *By Microsoft, Public Domain*

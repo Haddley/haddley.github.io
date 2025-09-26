@@ -124,8 +124,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'businesscentralpart26integrationtable',
-    title: 'Business Central (Part 26) Integration Tables',
-    description: 'Pag50100.CustomerOrders.al',
+    title: 'Business Central (Part 26)',
+    description: 'Integration Tables',
     date: '2024-12-22',
     categories: ["Microsoft Dynamics", "Business Central", "Microsoft Dynamics", "Power Platform"],
     tags: [],
