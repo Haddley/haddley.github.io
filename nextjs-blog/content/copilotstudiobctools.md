@@ -52,6 +52,35 @@ I created a Copilot Studio Agent that connected to Business Central using a Copi
 *The Agent returned details of the Vendor*
 
 
+![](/assets/images/copilotstudiobctools/Screenshot-2025-09-26-at-10.43.51 AM.png)
+*I added a second tool based on the Create record (V2) action*
+
+![](/assets/images/copilotstudiobctools/Screenshot-2025-09-26-at-10.44.04 AM.png)
+*I clicked the Add and configure button*
+
+![](/assets/images/copilotstudiobctools/Screenshot-2025-09-26-at-10.44.39 AM.png)
+*I updated the tool's name to 'Create Vendor record (V2)'*
+
+![](/assets/images/copilotstudiobctools/Screenshot-2025-09-26-at-10.46.17 AM.png)
+*I selected the Environment, Company, API category and table name. I clicked the Add input button and selected displayName*
+
+![](/assets/images/copilotstudiobctools/Screenshot-2025-09-26-at-10.51.14 AM.png)
+*I tried to use the new tool*
+
+![](/assets/images/copilotstudiobctools/Screenshot-2025-09-26-at-10.51.44 AM.png)
+*An error message was returned*
+
+![](/assets/images/copilotstudiobctools/Screenshot-2025-09-26-at-10.53.32 AM.png)
+*I added a number input*
+
+![](/assets/images/copilotstudiobctools/Screenshot-2025-09-26-at-10.53.47 AM.png)
+*The new Vendor record was created*
+
+![](/assets/images/copilotstudiobctools/Screenshot-2025-09-26-at-10.54.19 AM.png)
+*The new vendor was visible in Business Central*
+
+
+
 ## References
 
 - [Copilot Studio in Action Create Records Anywhere, Effortlessly!](https://www.youtube.com/watch?v=oeTjP_AVqQ8)
