@@ -53,7 +53,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'mcpserver',
     title: 'Model Context Protocol (Part 1)',
-    description: 'main.ts',
+    description: 'Typescript quick start',
     date: '2025-08-13',
     categories: ["TypeScript", "AI"],
     tags: [],

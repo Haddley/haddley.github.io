@@ -1,11 +1,16 @@
 ---
 title: "Model Context Protocol (Part 1)"
-description: "main.ts"
+description: "Typescript quick start"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/mcpserver/hero.png"
 tags: ["typescript","ai"]
 ---
+
+# Model Context Protocol (Part 1)
+
+## Typescript quick start
+
 
 ![](/assets/images/mcpserver/mcp-1024x1024.png)
 *The Model Context Protocol is an open source project run by Anthropic, PBC.*
