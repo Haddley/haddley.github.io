@@ -52,31 +52,31 @@ I created a Copilot Studio Agent that connected to Business Central using a Copi
 *The Agent returned details of the Vendor*
 
 
-![](/assets/images/copilotstudiobctools/Screenshot-2025-09-26-at-10.43.51-am.png)
+![](/assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.43.51-am.png)
 *I added a second tool based on the Create record (V2) action*
 
-![](/assets/images/copilotstudiobctools/Screenshot-2025-09-26-at-10.44.04-am.png)
+![](/assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.44.04-am.png)
 *I clicked the Add and configure button*
 
-![](/assets/images/copilotstudiobctools/Screenshot-2025-09-26-at-10.44.39-am.png)
+![](/assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.44.39-am.png)
 *I updated the tool's name to 'Create Vendor record (V2)'*
 
-![](/assets/images/copilotstudiobctools/Screenshot-2025-09-26-at-10.46.17-am.png)
+![](/assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.46.17-am.png)
 *I selected the Environment, Company, API category and table name. I clicked the Add input button and selected displayName*
 
-![](/assets/images/copilotstudiobctools/Screenshot-2025-09-26-at-10.51.14-am.png)
+![](/assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.51.14-am.png)
 *I tried to use the new tool*
 
-![](/assets/images/copilotstudiobctools/Screenshot-2025-09-26-at-10.51.44-am.png)
+![](/assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.51.44-am.png)
 *An error message was returned*
 
-![](/assets/images/copilotstudiobctools/Screenshot-2025-09-26-at-10.53.32-am.png)
+![](/assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.53.32-am.png)
 *I added a number input*
 
-![](/assets/images/copilotstudiobctools/Screenshot-2025-09-26-at-10.53.47-am.png)
+![](/assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.53.47-am.png)
 *The new Vendor record was created*
 
-![](/assets/images/copilotstudiobctools/Screenshot-2025-09-26-at-10.54.19-am.png)
+![](/assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.54.19-am.png)
 *The new vendor was visible in Business Central*
 
 
