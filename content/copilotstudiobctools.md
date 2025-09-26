@@ -1,6 +1,6 @@
 ---
 title: "Copilot Studio Agent Tools"
-description: "Copilot Studio Agent connected to Business Central"
+description: "![]![]![]![]![]![]![]![]![](/assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.54.19-am.png)/assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.53.47-am.png)/assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.53.32-am.png)/assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.51.44-am.png)/assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.51.14-am.png)/assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.46.17-am.png)/assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.44.39-am.png)/assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.44.04-am.png)/assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.43.51-am.png)opilot Studio Agent connected to Business Central"
 date: "2025-09-24"
 category: "Business Central"
 image: "/assets/images/blogcopilotstudio/hero.png"
