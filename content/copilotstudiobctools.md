@@ -33,7 +33,7 @@ I created a Copilot Studio Agent that connected to Business Central using a Copi
 ![](/assets/images/copilotstudiobctools/screenshot-2025-09-24-at-5.18.14-pm.png)
 *I searched for Business Central actions*
 
-![](/assets/images/copilotstudiobctools/screenshot-2025-09-24-at-5.18.34-pm.png)
+![](/assets/images/copilotstudiobctools/Screenshot 2025-09-24 at 5.18.34 PM.png)
 *I selected the Find records (V3) action and clicked the Add and configure button*
 
 ![](/assets/images/copilotstudiobctools/screenshot-2025-09-24-at-5.21.23-pm.png)
