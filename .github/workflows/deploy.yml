@@ -29,17 +29,15 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-          cache-dependency-path: nextjs-blog/package-lock.json
 
       - name: Install dependencies
-        run: |
-          cd nextjs-blog
-          npm ci
+        run: npm ci
+
+      - name: Sync images
+        run: npm run sync-images
 
       - name: Build Next.js app
-        run: |
-          cd nextjs-blog
-          npm run build
+        run: npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -47,7 +45,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: nextjs-blog/out
+          path: ./out
 
       - name: Deploy to GitHub Pages
         id: deployment
