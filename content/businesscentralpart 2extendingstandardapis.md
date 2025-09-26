@@ -1,6 +1,6 @@
 ---
 title: "Business Central (Part 26) extending standard APIs"
-description: "A comprehensive guide covering business central (part 26) extending standard apis"
+description: "Extending standard APIs"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/businesscentralpart-2extendingstandardapis/hero.png"

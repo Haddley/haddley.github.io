@@ -1,6 +1,6 @@
 ---
 title: "Customer Content Virtual Tables"
-description: "A comprehensive guide covering customer content virtual tables"
+description: "Customer Content Virtual Tables"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/customercontentvirtualtables/hero.png"

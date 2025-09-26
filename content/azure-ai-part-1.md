@@ -1,6 +1,6 @@
 ---
 title: "Azure AI (Part 1)"
-description: "Getting started with Azure AI services and machine learning capabilities"
+description: "Overview of Azure AI Services"
 date: "2024-01-10"
 category: "Azure"
 image: "/assets/images/azure-ai.png"
@@ -10,8 +10,6 @@ tags: ["Azure", "AI", "Machine Learning"]
 # Azure AI Services - Getting Started
 
 Azure AI provides a comprehensive suite of artificial intelligence services that enable developers to build intelligent applications without deep AI expertise.
-
-## Overview of Azure AI Services
 
 Azure AI encompasses several categories of services:
 

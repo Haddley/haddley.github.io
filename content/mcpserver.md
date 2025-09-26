@@ -1,6 +1,6 @@
 ---
 title: "Model Context Protocol (Part 1)"
-description: "A comprehensive guide covering model context protocol (part 1)"
+description: "main.ts"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/mcpserver/hero.png"
@@ -55,8 +55,6 @@ Model Context Protocol (MCP) is a framework designed to enhance the reasoning an
 ![](/assets/images/mcpserver/screenshot202025-08-1320at2012.55.18e280afpm-2136x1256.png)
 *With the help of the multiply tool the Large Language Model was able to provide the correct answer*
 
-
-## main.ts
 
 ```text
 import { McpServer, ResourceTemplate } from "@modelcontextprotocol/sdk/server/mcp.js";

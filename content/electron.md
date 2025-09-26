@@ -1,6 +1,6 @@
 ---
 title: "Electron"
-description: "A comprehensive guide covering electron"
+description: "Create a Desktop app using Node and Chromium."
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/electron/hero.png"

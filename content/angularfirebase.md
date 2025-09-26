@@ -1,6 +1,6 @@
 ---
 title: "Angular Firebase"
-description: "A comprehensive guide covering angular firebase"
+description: "Creating a new firebase project"
 date: "2025-09-20"
 category: "Web Development"
 image: "/assets/images/angularfirebase/hero.png"
@@ -10,8 +10,6 @@ tags: ["angular","react","ai","ml"]
 ![](/assets/images/angularfirebase/logo-lockup-firebase-vertical.svg)
 *This file is licensed under the Creative Commons Attribution 4.0 International license.*
 
-
-## Creating a new firebase project
 
 I created a firebase project using https://console.firebase.google.com
 

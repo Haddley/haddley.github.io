@@ -1,6 +1,6 @@
 ---
 title: "Microsoft Purview"
-description: "A comprehensive guide covering microsoft purview"
+description: "Retention policy with adaptive scope"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/purview/hero.png"
@@ -10,8 +10,6 @@ tags: ["ai"]
 ![](/assets/images/purview/office-365-icon-500x500.png)
 *This file is licensed under the Creative Commons Attribution 4.0 International license.*
 
-
-## Retention policy with adaptive scope
 
 I used Microsoft Purview to create a retention policy that applies to all SharePoint sites named "Short term...".
 

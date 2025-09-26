@@ -1,6 +1,6 @@
 ---
 title: "Next.js (Part 5)"
-description: "A comprehensive guide covering next.js (part 5)"
+description: "next-pwa and ionic"
 date: "2025-09-20"
 category: "Web Development"
 image: "/assets/images/nextjs5/hero.png"

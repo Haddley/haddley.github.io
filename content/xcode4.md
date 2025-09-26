@@ -1,6 +1,6 @@
 ---
 title: "XCode C++ (Part 4)"
-description: "A comprehensive guide covering xcode c++ (part 4)"
+description: "Rotating the triangle"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/xcode4/hero.png"
@@ -10,8 +10,6 @@ tags: ["ai","ml"]
 ![](/assets/images/xcode4/xcode-14-icon-300x314.png)
 *This is the logo owned by Apple Inc. for Xcode. Taken from the picture's app bundle. Fair use*
 
-
-## Rotating the triangle
 
 OpenGL Mathematics (GLM) is a header only C++ mathematics library for graphics software based on the OpenGL Shading Language (GLSL) specifications.
 

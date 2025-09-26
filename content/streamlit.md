@@ -1,6 +1,6 @@
 ---
 title: "Streamlit"
-description: "A comprehensive guide covering streamlit"
+description: "Streamlit"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/streamlit/hero.png"

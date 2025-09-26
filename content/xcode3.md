@@ -1,6 +1,6 @@
 ---
 title: "XCode C++ (Part 3)"
-description: "A comprehensive guide covering xcode c++ (part 3)"
+description: "Building an OpenGL application using C++ and XCode"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/xcode3/hero.png"
@@ -10,8 +10,6 @@ tags: ["ai"]
 ![](/assets/images/xcode3/xcode-14-icon-300x314.png)
 *This is the logo owned by Apple Inc. for Xcode. Taken from the picture's app bundle. Fair use*
 
-
-## Building an OpenGL application using C++ and XCode
 
 I compiled an OpenGL Triangle app on my M1 MacBook Air.
 

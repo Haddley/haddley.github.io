@@ -1,6 +1,6 @@
 ---
 title: "A Power Apps Custom Connector"
-description: "A comprehensive guide covering a power apps custom connector"
+description: "Create a GitHub Repository"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/powerappswithrest/hero.png"
@@ -14,8 +14,6 @@ tags: ["azure","dotnet","git","github","asp.net"]
 ![](/assets/images/powerappswithrest/office-365-icon-500x500.png)
 *Microsoft_Office_logo by Microsoft is licensed under CC*
 
-
-## Create a GitHub Repsitory
 
 Create a GitHub Repository for the REST API code.
 

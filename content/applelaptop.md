@@ -1,6 +1,6 @@
 ---
 title: "Apple MacBook"
-description: "A comprehensive guide covering apple macbook"
+description: "Anaconda Setup"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/applelaptop/hero.png"

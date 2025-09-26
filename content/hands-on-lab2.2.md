@@ -1,6 +1,6 @@
 ---
 title: "Hands-on-Lab 2.2"
-description: "A comprehensive guide covering hands-on-lab 2.2"
+description: "Migrate master data to a new company"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/hands-on-lab2.2/hero.png"
@@ -10,8 +10,6 @@ tags: ["ai","dynamics"]
 ![](/assets/images/hands-on-lab2.2/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 
-
-## Migrate master data to a new company
 
 **Hands-on-Lab 2.2: Migrate master data to a new company**
 

@@ -1,6 +1,6 @@
 ---
 title: "Prompt Flow (Part 3)"
-description: "A comprehensive guide covering prompt flow (part 3)"
+description: "Semantic Kernel"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/promptflow3/hero.png"

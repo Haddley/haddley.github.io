@@ -1,6 +1,6 @@
 ---
 title: "LlamaCpp"
-description: "A comprehensive guide covering llamacpp"
+description: "Accessing the llama.cpp model from Python"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/llamacorp/hero.png"
@@ -9,7 +9,7 @@ tags: ["python","ai","ml"]
 
 # LlamaCpp
 
-## Large Language Models (Running)
+## Accessing the llama.cpp model from Python
 
 ![](/assets/images/llamacorp/jupyter.svg)
 *Cameron Oelsen, BSD, via Wikimedia Commons*

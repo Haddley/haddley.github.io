@@ -1,6 +1,6 @@
 ---
 title: "Docker Buildx"
-description: "A comprehensive guide covering docker buildx"
+description: "Build multi-platform Docker images."
 date: "2025-09-20"
 category: "DevOps"
 image: "/assets/images/dockerbuildx/hero.png"

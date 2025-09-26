@@ -1,6 +1,6 @@
 ---
 title: "Next.js (Part 3)"
-description: "A comprehensive guide covering next.js (part 3)"
+description: "API routes and next-auth"
 date: "2025-09-20"
 category: "Web Development"
 image: "/assets/images/nextjs3/hero.png"

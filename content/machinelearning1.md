@@ -1,6 +1,6 @@
 ---
 title: "Machine Learning (Part 1)"
-description: "A comprehensive guide covering machine learning (part 1)"
+description: "What is Machine Learning?"
 date: "2025-09-20"
 category: "AI/ML"
 image: "/assets/images/machinelearning1/hero.png"
@@ -10,8 +10,6 @@ tags: ["cloud","ai","ml","machine learning"]
 ![](/assets/images/machinelearning1/tensorflow-logo.svg)
 *Tensorflow logo does not meet the threshold of originality needed for copyright protection, and is therefore in the public domain*
 
-
-## What is Machine Learning?
 
 For a science fair in 2019 I helped two of my children build an [instructables.com project](https://www.instructables.com/Matchbox-Mini-Chess-Learning-Machine/?fbclid=IwAR0g2mf_HQBxdJJIuQaeSfAbF3Hui4QoTPBuI18YoYVlKFIr4Bv8OX0diTw) using matchboxes and colored beads.
 

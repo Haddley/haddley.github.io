@@ -1,6 +1,6 @@
 ---
 title: "Next.js (Part 2)"
-description: "A comprehensive guide covering next.js (part 2)"
+description: "getStaticProps, getServerSideProps, getStaticPaths and useSWR"
 date: "2025-09-20"
 category: "Web Development"
 image: "/assets/images/nextjs2/hero.png"

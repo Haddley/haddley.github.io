@@ -1,6 +1,6 @@
 ---
 title: "XCode C++ (Part 1)"
-description: "A comprehensive guide covering xcode c++ (part 1)"
+description: "Hello, World!"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/xcode1/hero.png"

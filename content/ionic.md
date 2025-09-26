@@ -1,6 +1,6 @@
 ---
 title: "Ionic"
-description: "A comprehensive guide covering ionic"
+description: "Cross-platform apps.Powered by the Web."
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/ionic/hero.png"

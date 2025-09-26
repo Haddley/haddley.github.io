@@ -1,6 +1,6 @@
 ---
 title: "Business Central Admin Center"
-description: "A comprehensive guide covering business central admin center"
+description: "The Business Central Administration Center"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/businesscentraladmincenter/hero.png"
@@ -12,8 +12,6 @@ tags: ["ai","business central","dynamics"]
 ![](/assets/images/businesscentraladmincenter/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 
-
-## The Business Central Administration Center
 
 The Business Central Administration Center (Admin Center) provides a portal for tenant administration.
 

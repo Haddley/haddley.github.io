@@ -1,6 +1,6 @@
 ---
 title: ".NET Core (Part 2)"
-description: "A comprehensive guide covering .net core (part 2)"
+description: "Creating a Blazor App that calls Microsoft Graph."
 date: "2023-03-15"
 category: ".NET"
 image: "/assets/images/dotnet-core-part2/hero.png"

@@ -1,6 +1,6 @@
 ---
 title: "NGRX"
-description: "A comprehensive guide covering ngrx"
+description: "haddley-ngrx"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/ngrx/hero.png"
@@ -18,8 +18,6 @@ NgRx stores a single state and uses actions to express state changes.
 ![](/assets/images/ngrx/state-management-lifecycle-1836x1033.png)
 *NGRX state management lifecycle*
 
-
-## haddley-ngrx
 
 I installed the Angular command line interface using [npm](npm.html)
 

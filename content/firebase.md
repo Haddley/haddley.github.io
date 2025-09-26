@@ -1,6 +1,6 @@
 ---
 title: "Firebase"
-description: "A comprehensive guide covering firebase"
+description: "Firebase web codelab"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/firebase/hero.png"
@@ -10,8 +10,6 @@ tags: ["cloud","database","ai","git","github"]
 ![](/assets/images/firebase/logo-lockup-firebase-vertical.svg)
 *This logo image consists only of simple geometric shapes or text. It does not meet the threshold of originality needed for copyright protection, and is therefore in the public domain.*
 
-
-## Firebase web codelab
 
 The application I built uses these Firebase products for web apps:
 

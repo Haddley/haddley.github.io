@@ -1,6 +1,6 @@
 ---
 title: "Sails (Part 2)"
-description: "A comprehensive guide covering sails (part 2)"
+description: "Sails and the Azure Cosmos DB API for MongoDB"
 date: "2025-09-20"
 category: "AI/ML"
 image: "/assets/images/sails2/hero.png"

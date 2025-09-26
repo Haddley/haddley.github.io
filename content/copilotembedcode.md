@@ -1,11 +1,14 @@
 ---
 title: "Copilot Embed Code"
-description: "A comprehensive guide covering copilot embed code"
-date: "2025-09-20"
+description: "An HTML page to host my Blog Copilot"
 category: "Development"
 image: "/assets/images/copilotembedcode/hero.png"
 tags: ["ml"]
 ---
+
+# Copilot Embed Code
+
+## An HTML page to host my Blog Copilot
 
 ![](/assets/images/copilotembedcode/office-365-icon-500x500.png)
 *This file is licensed under the Creative Commons Attribution 4.0 International license.*

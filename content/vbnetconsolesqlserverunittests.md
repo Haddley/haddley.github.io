@@ -1,6 +1,6 @@
 ---
 title: "VB.NET Console SQL Server Unit Tests"
-description: "A comprehensive guide covering vb.net console sql server unit tests"
+description: "Test driven development"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/vbnetconsolesqlserverunittests/hero.png"

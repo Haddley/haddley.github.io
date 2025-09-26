@@ -1,6 +1,6 @@
 ---
 title: "Rewards Extension"
-description: "A comprehensive guide covering rewards extension"
+description: "Rewards Extension"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/rewardsextension/hero.png"

@@ -1,6 +1,6 @@
 ---
 title: "Cloud Flow"
-description: "A comprehensive guide covering cloud flow"
+description: "A Topic that uses the Business Central Connector"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/cloudflow/hero.png"
@@ -8,6 +8,8 @@ tags: ["cloud","business central"]
 ---
 
 # Cloud Flow
+
+## A Topic that uses the Business Central Connector
 
 ![](/assets/images/cloudflow/office-365-icon-500x500.png)
 *This file is licensed under the Creative Commons Attribution 4.0 International license.*

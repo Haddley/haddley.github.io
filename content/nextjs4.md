@@ -1,6 +1,6 @@
 ---
 title: "Next.js (Part 4)"
-description: "A comprehensive guide covering next.js (part 4)"
+description: "Deploying to Azure"
 date: "2025-09-20"
 category: "Web Development"
 image: "/assets/images/nextjs4/hero.png"

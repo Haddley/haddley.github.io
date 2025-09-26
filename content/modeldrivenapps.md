@@ -1,6 +1,6 @@
 ---
 title: "Model Driven Apps"
-description: "A comprehensive guide covering model driven apps"
+description: "A Short History of Microsoft Dynamics and Microsoft Dataverse"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/modeldrivenapps/hero.png"

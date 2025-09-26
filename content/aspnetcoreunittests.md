@@ -1,6 +1,6 @@
 ---
 title: "ASP.NET Core Unit Tests"
-description: "A comprehensive guide covering asp.net core unit tests"
+description: "Test driven development"
 date: "2025-09-20"
 category: ".NET"
 image: "/assets/images/aspnetcoreunittests/hero.png"

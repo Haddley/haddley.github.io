@@ -1,6 +1,6 @@
 ---
 title: "Vendor Posting Group"
-description: "A comprehensive guide covering vendor posting group"
+description: "Sub-ledgers"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/vendorpostinggroup/hero.png"
@@ -10,8 +10,6 @@ tags: ["ai","business central","dynamics"]
 ![](/assets/images/vendorpostinggroup/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 
-
-## Sub-ledgers
 
 In Microsoft Dynamics 365 Business Central, sub-ledgers are used to manage business operations.
 

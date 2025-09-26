@@ -1,13 +1,15 @@
 ---
 title: "SharePoint site designs and site scripts"
-description: "A comprehensive guide covering sharepoint site designs and site scripts"
+description: "SharePoint users and administrators have long appreciated the opportunity to reuse SharePoint Site Templates."
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/sharepointsitedesignsandsitescripts/hero.png"
 tags: ["ai"]
 ---
 
-## SharePoint users and administrators have long appreciated the opportunity to reuse SharePoint "Site Templates".
+# SharePoint site designs and site scripts
+
+## SharePoint users and administrators have long appreciated the opportunity to reuse SharePoint Site Templates.
 
 ![](/assets/images/sharepointsitedesignsandsitescripts/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png)
 *Microsoft Office SharePoint (2018–present) by Microsoft Corporation is licensed under CC*

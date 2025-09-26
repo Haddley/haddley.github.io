@@ -1,6 +1,6 @@
 ---
 title: "React and ASP.NET Core"
-description: "A comprehensive guide covering react and asp.net core"
+description: "An ASP.NET Core backend and a React frontend."
 date: "2025-09-20"
 category: ".NET"
 image: "/assets/images/reactandasp.net/hero.png"

@@ -1,6 +1,6 @@
 ---
 title: "Multiplayer Tick-Tack-Toe"
-description: "A comprehensive guide covering multiplayer tick-tack-toe"
+description: "Creating a new firebase project"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/ticktacktoe/hero.png"
@@ -10,8 +10,6 @@ tags: ["javascript","java","database","ai","ml"]
 ![](/assets/images/ticktacktoe/logo-lockup-firebase-vertical.svg)
 *This file is licensed under the Creative Commons Attribution 4.0 International license.*
 
-
-## Creating a new firebase project
 
 I asked ChatGPT for some help creating a multiplayer version of Tick-Tack-Toe.
 

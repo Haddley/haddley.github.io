@@ -1,6 +1,6 @@
 ---
 title: "Teams Toolkit with SPFx"
-description: "A comprehensive guide covering teams toolkit with spfx"
+description: "Get started with Microsoft Teams app development using SPFx."
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/teamstoolkitspfx/hero.png"

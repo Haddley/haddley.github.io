@@ -1,6 +1,6 @@
 ---
 title: "Three.js"
-description: "A comprehensive guide covering three.js"
+description: "A JavaScript-based WebGL engine"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/threejs/hero.png"

@@ -1,13 +1,15 @@
 ---
-title: "Customize the look and feel of the bot's default canvas"
-description: "A comprehensive guide covering customize the look and feel of the bot's default canvas"
+title: "Copilot Studio"
+description: "Customize the look and feel of the bot default canvas"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/customizedefaultcanvas/hero.png"
 tags: ["ml"]
 ---
 
-# Customize the look and feel of the bot's default canvas
+# Copilot Studio
+
+## Customize the look and feel of the bot's default canvas
 
 ![](/assets/images/customizedefaultcanvas/office-365-icon-500x500.png)
 *This file is licensed under the Creative Commons Attribution 4.0 International license.*

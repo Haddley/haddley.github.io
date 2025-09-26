@@ -1,6 +1,6 @@
 ---
 title: "Machine Learning (Part 4a)"
-description: "A comprehensive guide covering machine learning (part 4a)"
+description: "WIP"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/page65/hero.png"

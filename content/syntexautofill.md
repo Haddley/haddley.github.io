@@ -1,13 +1,15 @@
 ---
-title: "SharePoint Syntex Autofill"
-description: "A comprehensive guide covering sharepoint syntex autofill"
+title: "SharePoint Syntex "
+description: "Autofill columns"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/syntexautofill/hero.png"
 tags: ["ai","ml"]
 ---
 
-# SharePoint Syntex Autofill
+# SharePoint Syntex 
+
+## Autofill columns
 
 ![](/assets/images/syntexautofill/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png)
 *Microsoft Office SharePoint (2018–present) by Microsoft Corporation is licensed under CC*

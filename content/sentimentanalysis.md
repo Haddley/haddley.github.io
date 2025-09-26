@@ -1,6 +1,6 @@
 ---
 title: "Sentiment Analysis"
-description: "A comprehensive guide covering sentiment analysis"
+description: "Sentiment Analysis"
 date: "2025-09-20"
 category: "AI/ML"
 image: "/assets/images/sentimentanalysis/hero.png"

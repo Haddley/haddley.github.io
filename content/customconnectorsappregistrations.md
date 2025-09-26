@@ -1,6 +1,6 @@
 ---
 title: "Power Apps, Custom Connectors and Application Registrations"
-description: "A comprehensive guide covering power apps, custom connectors and application registrations"
+description: "Power Apps, Custom Connectors and Application Registrations"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/customconnectorsappregistrations/hero.png"

@@ -1,6 +1,6 @@
 ---
 title: "Power Automate"
-description: "A comprehensive guide covering power automate"
+description: "Automating Team Creation"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/powerautomate/hero.png"
@@ -10,8 +10,6 @@ tags: []
 ![](/assets/images/powerautomate/office-365-icon-500x500.png)
 *Microsoft_Office_logo by Microsoft is licensed under CC*
 
-
-## Automating Team Creation
 
 I added a Flow to create a Team every time an item is added to a "New Teams" SharePoint list.
 

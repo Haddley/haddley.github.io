@@ -1,6 +1,6 @@
 ---
 title: "npm JavaScript"
-description: "A comprehensive guide covering npm javascript"
+description: "Create and publish an npm module using JavaScript."
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/npm/hero.png"

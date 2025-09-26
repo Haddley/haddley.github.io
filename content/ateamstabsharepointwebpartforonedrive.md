@@ -1,17 +1,19 @@
 ---
 title: "A Teams App SharePoint Web Part for One Drive"
-description: "A comprehensive guide covering a teams app sharepoint web part for one drive"
+description: "The SharePoint Framework (SPFx) can be used to create SharePoint Web Parts and Teams Applications"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/ateamstabsharepointwebpartforonedrive/hero.png"
 tags: ["react","ml","git","github"]
 ---
 
-![](/assets/images/ateamstabsharepointwebpartforonedrive/office-365-icon-500x500.png)
-*Microsoft_Office_logo by Microsoft is licensed under CC*
-
+# A Teams App SharePoint Web Part for One Drive
 
 ## The SharePoint Framework (SPFx) can be used to create SharePoint Web Parts and Teams Applications
+
+
+![](/assets/images/ateamstabsharepointwebpartforonedrive/office-365-icon-500x500.png)
+*Microsoft_Office_logo by Microsoft is licensed under CC*
 
 In this post I describe how I created a Teams application using the SharePoint Framework and the Microsoft Graph Toolkit
 

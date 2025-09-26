@@ -1,6 +1,6 @@
 ---
 title: "Custom Copilot Studio"
-description: "A comprehensive guide covering custom copilot studio"
+description: "Customer Copilot"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/customcopilotstudio/hero.png"

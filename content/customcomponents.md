@@ -1,6 +1,6 @@
 ---
 title: "Power Apps Custom Components"
-description: "A comprehensive guide covering power apps custom components"
+description: "Create reusable Power Apps Components."
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/customcomponents/hero.png"

@@ -1,6 +1,6 @@
 ---
 title: "Microsoft Dataverse FetchXML"
-description: "A comprehensive guide covering microsoft dataverse fetchxml"
+description: "Microsoft Dataverse FetchXML"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/dataversefetchxml/hero.png"

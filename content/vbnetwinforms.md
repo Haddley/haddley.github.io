@@ -1,6 +1,6 @@
 ---
 title: "VB.NET WinForms and ASP.NET Core API"
-description: "A comprehensive guide covering vb.net winforms and asp.net core api"
+description: "VB.NET WinForms Development"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/vbnetwinforms/hero.png"

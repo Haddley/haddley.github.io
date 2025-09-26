@@ -1,6 +1,6 @@
 ---
 title: "Apple MacBook Air with M2 chip"
-description: "A comprehensive guide covering apple macbook air with m2 chip"
+description: "Train and evaluate deep learning models"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/macbook/hero.png"

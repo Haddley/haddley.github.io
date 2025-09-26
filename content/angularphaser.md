@@ -1,6 +1,6 @@
 ---
 title: "Angular and Phaser"
-description: "A comprehensive guide covering angular and phaser"
+description: "Using Phaser in an Angular Component"
 date: "2025-09-20"
 category: "Web Development"
 image: "/assets/images/angularphaser/hero.png"

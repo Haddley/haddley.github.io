@@ -1,6 +1,6 @@
 ---
 title: "staticwebapp.config.json"
-description: "A comprehensive guide covering staticwebapp.config.json"
+description: "staticwebapp.config.json"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/staticwebapp.config.json/hero.png"
@@ -116,8 +116,6 @@ Static web app environment variables can be used to manage authentication proper
 ![](/assets/images/staticwebapp.config.json/screenshot-2024-03-16-at-2.11.24-pm-1836x1046.png)
 *I logged onto the app*
 
-
-## staticwebapp.config.json
 
 ```text
 {

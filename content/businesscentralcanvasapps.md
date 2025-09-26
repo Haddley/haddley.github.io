@@ -1,6 +1,6 @@
 ---
 title: "Business Central Canvas Apps"
-description: "A comprehensive guide covering business central canvas apps"
+description: "Microsoft Dynamics 365 Business Central"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/businesscentralcanvasapps/hero.png"
@@ -12,8 +12,6 @@ tags: ["ai","business central","dynamics","power platform"]
 ![](/assets/images/businesscentralcanvasapps/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 
-
-## Microsoft Dynamics 365 Business Central
 
 [Microsoft Dynamics 365](https://en.wikipedia.org/wiki/Microsoft_Dynamics_365) is a product line of more than a dozen enterprise resource planning (ERP) and customer relationship management (CRM) business applications.
 

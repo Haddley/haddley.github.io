@@ -1,6 +1,6 @@
 ---
 title: "Model Driven Purchase Orders"
-description: "A comprehensive guide covering model driven purchase orders"
+description: "Quick View"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/modeldrivenpurchaseorders/hero.png"

@@ -1,6 +1,6 @@
 ---
 title: "Configure Copilot with authentication"
-description: "A comprehensive guide covering configure copilot with authentication"
+description: "Configure Copilot with authentication"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/configurecopilotwithauthentication/hero.png"

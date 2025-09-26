@@ -1,6 +1,6 @@
 ---
 title: "Model Driven Apps (Part 3)"
-description: "A comprehensive guide covering model driven apps (part 3)"
+description: "JavaScript to update a Business Process Flow Stage"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/modeldriven3/hero.png"
@@ -30,8 +30,6 @@ Create a new Record
 
 See also: [Power Apps Component Framework](componentFramework.html)
 
-
-## JavaScript to update a Business Process Flow Stage
 
 Xrm.Page.data.process.moveNext() and Xrm.Page.data.process.movePrevious() can be used to update a Business Process Flow Stage.
 

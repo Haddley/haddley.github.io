@@ -1,6 +1,6 @@
 ---
 title: ".NET Core (Part 3)"
-description: "A comprehensive guide covering .net core (part 3)"
+description: "Creating a Blazor App that calls Microsoft Graph."
 date: "2025-09-20"
 category: ".NET"
 image: "/assets/images/dotnet-core-part3/hero.png"

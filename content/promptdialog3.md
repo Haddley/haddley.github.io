@@ -1,6 +1,6 @@
 ---
 title: "Business Central (Part 29) PromptDialog 3"
-description: "A comprehensive guide covering business central (part 29) promptdialog 3"
+description: "Prompt Dialog Markdown"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/promptdialog3/hero.png"
@@ -12,8 +12,6 @@ tags: ["javascript","java","ai","ml","business central"]
 ![](/assets/images/promptdialog3/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 
-
-## Prompt Dialog Markdown
 
 Large Language Models (LLMs) generate responses in Markdown format for several key reasons, rooted in both their training and practical utility:
 

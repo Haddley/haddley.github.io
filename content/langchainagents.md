@@ -1,6 +1,6 @@
 ---
 title: "LangChain Agents"
-description: "A comprehensive guide covering langchain agents"
+description: "Agents"
 date: "2025-09-20"
 category: "AI/ML"
 image: "/assets/images/langchainagents/hero.png"

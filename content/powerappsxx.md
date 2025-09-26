@@ -1,6 +1,6 @@
 ---
 title: "Power Apps (Part XX)"
-description: "A comprehensive guide covering power apps (part xx)"
+description: "Integrating with Business Central using Power Automate"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/powerappsxx/hero.png"

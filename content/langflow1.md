@@ -1,6 +1,6 @@
 ---
 title: "Langflow (Part 1)"
-description: "A comprehensive guide covering langflow (part 1)"
+description: "References"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/langflow1/hero.png"
@@ -86,8 +86,6 @@ OpenAI's text-to-speech (TTS) technology is designed to convert written text int
 
 ![](/assets/images/langflow1/screenshot-2024-10-30-at-5.53.41pm-1836x1212.png)
 *Once the flow finished running I reviewed the result (see below)*
-## References
-
 - [Podcast](https://haddley.github.io/podcast/audio_customer_portal.mp3)
 - [Doc2Podcast](https://github.com/misbahsy/Doc2Podcast)
 

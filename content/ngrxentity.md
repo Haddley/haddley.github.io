@@ -1,6 +1,6 @@
 ---
 title: "NGRX entity"
-description: "A comprehensive guide covering ngrx entity"
+description: "json-server"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/ngrxentity/hero.png"
@@ -10,8 +10,6 @@ tags: ["ai","git","github","testing"]
 ![](/assets/images/ngrxentity/ngrx.svg)
 *This file is licensed under the Creative Commons 4.0.*
 
-
-## json-server
 
 I extended my haddley-ngrx project to include support for posts.
 

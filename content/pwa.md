@@ -1,6 +1,6 @@
 ---
 title: "Progressive Web Application"
-description: "A comprehensive guide covering progressive web application"
+description: "Building a Progressive Web Application"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/pwa/hero.png"

@@ -1,13 +1,15 @@
 ---
 title: "SharePoint Web Part (Part 1)"
-description: "A comprehensive guide covering sharepoint web part (part 1)"
+description: "How to create and publish a SharePoint Web Part"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/sharepointwebpart1/hero.png"
 tags: ["react","typescript","ai","ml","testing"]
 ---
 
-## How to create and publish a SharePoint Web Part (Part 1)
+# SharePoint Web Part (Part 1)
+
+## How to create and publish a SharePoint Web Part
 
 ![](/assets/images/sharepointwebpart1/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png)
 *Microsoft Office SharePoint (2018–present) by Microsoft Corporation is licensed under CC*

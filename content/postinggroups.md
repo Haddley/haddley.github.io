@@ -1,6 +1,6 @@
 ---
 title: "Posting Groups"
-description: "A comprehensive guide covering posting groups"
+description: "Posting Groups"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/postinggroups/hero.png"

@@ -1,6 +1,6 @@
 ---
 title: "Power Pages (Part 1) BACKUP"
-description: "A comprehensive guide covering power pages (part 1) backup"
+description: "A Business Central Customer Portal"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/page199/hero.png"

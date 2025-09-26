@@ -1,6 +1,6 @@
 ---
 title: "SharePoint 2019"
-description: "A comprehensive guide covering sharepoint 2019"
+description: "Azure Portal"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/sharepoint2019/hero.png"
@@ -12,8 +12,6 @@ tags: ["azure","sql","database","ai"]
 ![](/assets/images/sharepoint2019/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png)
 *Microsoft Office SharePoint (2018–present) by Microsoft Corporation is licensed under CC*
 
-
-## Azure Portal
 
 I logged into Azure Portal
 

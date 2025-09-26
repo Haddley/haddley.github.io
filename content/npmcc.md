@@ -1,6 +1,6 @@
 ---
 title: "npm C++"
-description: "A comprehensive guide covering npm c++"
+description: "Create and publish an npm module using C++."
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/npmcc/hero.png"

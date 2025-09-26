@@ -1,6 +1,6 @@
 ---
 title: "Angular and ASP.NET Core"
-description: "A comprehensive guide covering angular and asp.net core"
+description: "An ASP.NET Core backend and an Angular frontend."
 date: "2025-09-20"
 category: "Web Development"
 image: "/assets/images/angularandasp.net/hero.png"

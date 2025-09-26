@@ -1,6 +1,6 @@
 ---
 title: "DeepSeek R1"
-description: "A comprehensive guide covering deepseek r1"
+description: "Running locally"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/ollamadeepsekr1applemacbookinstall/hero.png"
@@ -8,6 +8,8 @@ tags: ["ai","testing"]
 ---
 
 # DeepSeek R1
+
+## Running locally
 
 ![](/assets/images/ollamadeepsekr1applemacbookinstall/254932576-0d0b44e2-8f4a-4e99-9b52-a5c1c741c8f7-844x844.png)
 *ollama is licensed under theMIT License*

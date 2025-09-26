@@ -1,6 +1,6 @@
 ---
 title: "GraphQL"
-description: "A comprehensive guide covering graphql"
+description: "GraphQL is a query and manipulation language for APIs."
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/graphql/hero.png"

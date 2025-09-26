@@ -1,6 +1,6 @@
 ---
 title: "A Power Apps Application"
-description: "A comprehensive guide covering a power apps application"
+description: "Power Apps Application."
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/powerappsapplication/hero.png"

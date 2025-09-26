@@ -1,6 +1,6 @@
 ---
 title: "Colorization"
-description: "A comprehensive guide covering colorization"
+description: "colorization.ipynb"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/colorization/hero.png"
@@ -16,8 +16,6 @@ I used the instructions from this ["Black and white image colorization with Open
 ![](/assets/images/colorization/364196815-152009791251390-5668419463329752519-n-1836x1153.png)
 *Color image generated from a black and white photograph*
 
-
-## colorization.ipynb
 
 ```text
 !pip install opencv-python

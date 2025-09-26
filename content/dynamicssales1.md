@@ -1,6 +1,6 @@
 ---
 title: "Dynamics 365 Sales (Part 1)"
-description: "A comprehensive guide covering dynamics 365 sales (part 1)"
+description: " the Account|Sales Insights form"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/dynamicssales1/hero.png"
@@ -8,6 +8,8 @@ tags: ["ai","ml","dynamics"]
 ---
 
 # Dynamics 365 Sales (Part 1)
+
+## The Account|Sales Insights form
 
 ![](/assets/images/dynamicssales1/dynamics365-color.svg)
 *By Microsoft, Public Domain*

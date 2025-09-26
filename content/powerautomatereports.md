@@ -1,11 +1,15 @@
 ---
 title: "Microsoft Power Automate Reports"
-description: "A comprehensive guide covering microsoft power automate reports"
+description: "A Flow that emails a Report"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/powerautomatereports/hero.png"
 tags: ["cloud","ai","dynamics"]
 ---
+
+# Microsoft Power Automate Reports
+## A Flow that emails a Report
+
 
 ![](/assets/images/powerautomatereports/office-365-icon-500x500.png)
 *This file is licensed under the Creative Commons Attribution 4.0 International license.*

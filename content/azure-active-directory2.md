@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory (Part 2)"
-description: "A comprehensive guide covering azure active directory (part 2)"
+description: "Microsoft Azure Active Directory Authentication."
 date: "2025-09-20"
 category: "Azure"
 image: "/assets/images/azure-active-directory2/hero.png"

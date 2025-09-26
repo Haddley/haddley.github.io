@@ -1,6 +1,6 @@
 ---
 title: "Microsoft SQL Server (Part 1)"
-description: "A comprehensive guide covering microsoft sql server (part 1)"
+description: "Microsoft SQL Server 2019 Docker image."
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/mssqlserver/hero.png"

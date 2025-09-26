@@ -1,6 +1,6 @@
 ---
 title: "Kubernetes"
-description: "A comprehensive guide covering kubernetes"
+description: "Kubernetes is a platform for managing containerized workloads."
 date: "2025-09-20"
 category: "DevOps"
 image: "/assets/images/kubernetes/hero.png"

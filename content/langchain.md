@@ -1,6 +1,6 @@
 ---
 title: "LangChain (RAG)"
-description: "A comprehensive guide covering langchain (rag)"
+description: "Using LangChain to create a medical report application"
 date: "2025-09-20"
 category: "AI/ML"
 image: "/assets/images/langchain/hero.png"
@@ -9,7 +9,7 @@ tags: ["python","ai","ml","machine learning"]
 
 # LangChain (RAG)
 
-## LangChain (RAG)
+## Using LangChain to create a medical report application
 
 ![](/assets/images/langchain/chatgpt-logo.svg)
 *This image of simple geometry is ineligible for copyright and therefore in the public domain, because it consists entirely of information that is common property and contains no original authorship.*

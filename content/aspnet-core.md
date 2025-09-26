@@ -1,6 +1,6 @@
 ---
 title: "ASP.NET Core"
-description: "A comprehensive guide covering asp.net core"
+description: "Create Razor Pages with ASP.NET Core."
 date: "2025-09-20"
 category: ".NET"
 image: "/assets/images/aspnet-core/hero.png"

@@ -1,6 +1,6 @@
 ---
 title: "Azure Spring Apps (Part 1)"
-description: "A comprehensive guide covering azure spring apps (part 1)"
+description: "hello-world-app"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/sprint-apps1/hero.png"

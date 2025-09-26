@@ -1,6 +1,6 @@
 ---
 title: "Purchase Invoice"
-description: "A comprehensive guide covering purchase invoice"
+description: "Purchase Invoice"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/purchaseinvoice/hero.png"

@@ -1,13 +1,13 @@
 ---
 title: "Amazon Elastic Container Service"
-description: "A comprehensive guide covering amazon elastic container service"
+description: "Deploying to Amazon ECS"
 date: "2025-09-20"
 category: "AWS"
 image: "/assets/images/amazonecs/hero.png"
 tags: ["aws","cloud","docker","kubernetes","ai"]
 ---
 
-## Deploying to Amazon Elastic Container Service (Amazon ECS)
+## Deploying to Amazon ECS
 
 ![AWS](/assets/images/amazonecs/amazon-web-services-logo.svg)
 *By Amazon.com Inc. - Amazon, Apache License 2.0*

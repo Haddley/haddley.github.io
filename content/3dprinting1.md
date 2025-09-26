@@ -1,6 +1,6 @@
 ---
 title: "3D Printing 1"
-description: "A comprehensive guide covering 3d printing 1"
+description: "ELEGOO Mars 3 Pro 4K Resin 3D Printer"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/3dprinting1/img-3200-2-480x640.jpg"

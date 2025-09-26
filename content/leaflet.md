@@ -1,6 +1,6 @@
 ---
 title: "Leaflet"
-description: "A comprehensive guide covering leaflet"
+description: "An open-source JavaScript libraryfor mobile-friendly interactive maps"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/leaflet/hero.png"

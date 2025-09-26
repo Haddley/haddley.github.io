@@ -1,6 +1,6 @@
 ---
 title: "Microsoft 365 command line interface"
-description: "A comprehensive guide covering microsoft 365 command line interface"
+description: "Manage Microsoft 365 tenants and SharePoint Framework projects"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/m365commandlineinterface/hero.png"
@@ -9,7 +9,7 @@ tags: ["docker","ai","ml","git","github"]
 
 # Microsoft 365 command line interface
 
-## Manage Microsoft 365 tenants and SharePoint Framework projects using m365.https://pnp.github.io/cli-microsoft365/
+## Manage Microsoft 365 tenants and SharePoint Framework projects
 
 ![](/assets/images/m365commandlineinterface/office-365-icon-500x500.png)
 *Microsoft_Office_logo by Microsoft is licensed under CC*

@@ -1,6 +1,6 @@
 ---
 title: "Hands-on-Lab 3.1"
-description: "A comprehensive guide covering hands-on-lab 3.1"
+description: "Set Up Finance Management"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/hands-on-lab3.1/hero.png"
@@ -10,8 +10,6 @@ tags: ["ai","business central","dynamics","git"]
 ![](/assets/images/hands-on-lab3.1/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 
-
-## Set Up Finance Management
 
 **Hands-on-Lab 3.1: Set Up Finance Management**
 

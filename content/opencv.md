@@ -1,6 +1,6 @@
 ---
 title: "Object Detection"
-description: "A comprehensive guide covering object detection"
+description: "Object Detection"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/opencv/hero.png"

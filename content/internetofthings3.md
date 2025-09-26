@@ -1,6 +1,6 @@
 ---
 title: "Internet of Things (Part 3)"
-description: "A comprehensive guide covering internet of things (part 3)"
+description: "Arduino Nano 33 BLE Sense"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/internetofthings3/hero.png"
@@ -16,8 +16,6 @@ Edge Impulse is a development platform for creating machine learning (ML) models
 ![](/assets/images/internetofthings3/screenshot-2025-03-01-at-9.04.25am-2136x1234.png)
 *I navigated to https://studio.edgeimpulse.com/*
 
-
-## Arduino Nano 33 BLE Sense
 
 The Arduino Nano 33 BLE Sense is a compact, microcontroller board designed for Artificial Intelligence (AI) and Internet of Things (IoT) applications, featuring built-in sensors and Bluetooth Low Energy (BLE) connectivity. 
 

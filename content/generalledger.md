@@ -1,6 +1,6 @@
 ---
 title: "General Ledger"
-description: "A comprehensive guide covering general ledger"
+description: "Purchase"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/generalledger/hero.png"
@@ -64,8 +64,6 @@ I created a Chart of Accounts from scratch and demonstrate how Journal entries c
 ![](/assets/images/generalledger/screen-shot-2023-12-11-at-10.06.16-am-1283x435.png)
 *I clicked + New to add another entity*
 
-
-## Purchase
 
 When we purchase items we will need to record the value of the items (a new asset), the money we owe to the vendor (a new liability) and the sales tax that we will claim back from the authorities.
 

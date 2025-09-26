@@ -1,6 +1,6 @@
 ---
 title: "DevOps Starter GitHub actions"
-description: "A comprehensive guide covering devops starter github actions"
+description: "Everything you need for developing, deploying, and monitoring your application."
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/devopsstartergithubactions/hero.png"

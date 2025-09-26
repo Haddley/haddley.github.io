@@ -1,6 +1,6 @@
 ---
 title: "Machine Learning (WIP)"
-description: "A comprehensive guide covering machine learning (wip)"
+description: "WIP"
 date: "2025-09-20"
 category: "AI/ML"
 image: "/assets/images/machinelearningwip/hero.png"

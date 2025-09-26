@@ -1,6 +1,6 @@
 ---
 title: "NuGet C#"
-description: "A comprehensive guide covering nuget c#"
+description: "Create, publish and consume a NuGet package using C#."
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/nuget/hero.png"

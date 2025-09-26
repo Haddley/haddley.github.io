@@ -1,6 +1,6 @@
 ---
 title: "Machine Learning"
-description: "A comprehensive guide covering machine learning"
+description: "Finding patterns and making predictions"
 date: "2025-09-20"
 category: "AI/ML"
 image: "/assets/images/machinelearning/hero.png"

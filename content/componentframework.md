@@ -1,6 +1,6 @@
 ---
 title: "Component Framework"
-description: "A comprehensive guide covering component framework"
+description: "Component Framework"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/componentframework/hero.png"
@@ -12,8 +12,6 @@ tags: ["react","ai","ml","dynamics","power platform"]
 ![](/assets/images/componentframework/office-365-icon-500x500.png)
 *This file is licensed under the Creative Commons Attribution 4.0 International license.*
 
-
-## Component Framework
 
 Create code components for model-driven and canvas apps.
 

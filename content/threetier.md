@@ -1,6 +1,6 @@
 ---
 title: "Blazor WASM API SQL Server Stored Procedure"
-description: "A comprehensive guide covering blazor wasm api sql server stored procedure"
+description: "Three Tiers"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/threetier/hero.png"

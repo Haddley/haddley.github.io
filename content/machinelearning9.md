@@ -1,6 +1,6 @@
 ---
 title: "Machine Learning (Part 9)"
-description: "A comprehensive guide covering machine learning (part 9)"
+description: "MNIST"
 date: "2025-09-20"
 category: "AI/ML"
 image: "/assets/images/machinelearning9/hero.png"
@@ -10,8 +10,6 @@ tags: ["database","ai","machine learning","git"]
 ![](/assets/images/machinelearning9/tensorflow-logo.svg)
 *Tensorflow logo does not meet the threshold of originality needed for copyright protection, and is therefore in the public domain*
 
-
-## MNIST
 
 The MNIST database of handwritten digits has a training set of 60,000 examples, and a test set of 10,000 examples.
 

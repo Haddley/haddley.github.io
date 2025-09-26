@@ -1,6 +1,6 @@
 ---
 title: "Raspberry Pi GPIO"
-description: "A comprehensive guide covering raspberry pi gpio"
+description: "Raspberry Pi GPIO"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/pi2/hero.png"

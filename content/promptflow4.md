@@ -1,11 +1,15 @@
 ---
 title: "Prompt Flow (Part 4)"
-description: "A comprehensive guide covering prompt flow (part 4)"
+description: "Planning"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/promptflow4/hero.png"
 tags: ["ai"]
 ---
+
+# Prompt Flow (Part 4)
+
+## Planning
 
 ![](/assets/images/promptflow4/logo.svg)
 *This file is licensed under the MIT license.*

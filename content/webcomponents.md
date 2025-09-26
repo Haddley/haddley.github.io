@@ -1,6 +1,6 @@
 ---
 title: "Web Components"
-description: "A comprehensive guide covering web components"
+description: "A set of web technologies that allow users to create HTML elements."
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/webcomponents/hero.png"

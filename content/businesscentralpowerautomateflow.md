@@ -1,6 +1,6 @@
 ---
 title: "Business Central Power Automate Flow"
-description: "A comprehensive guide covering business central power automate flow"
+description: "Business Central includes a Microsoft Power Automate license"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/businesscentralpowerautomateflow/hero.png"
@@ -9,11 +9,11 @@ tags: ["cloud","ai","business central","dynamics"]
 
 # Business Central Power Automate Flow
 
+## Business Central includes a Microsoft Power Automate license
+
 ![](/assets/images/businesscentralpowerautomateflow/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 
-
-Business Central includes a Microsoft Power Automate license.
 
 Power Automate flows are triggered when Business Central records are created, modified, or deleted. Flows can also be run on a user-defined schedule or on demand.
 

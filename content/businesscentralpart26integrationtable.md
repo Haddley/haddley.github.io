@@ -1,6 +1,6 @@
 ---
 title: "Business Central (Part 26) Integration Tables"
-description: "A comprehensive guide covering business central (part 26) integration tables"
+description: "Pag50100.CustomerOrders.al"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/businesscentralpart26integrationtable/hero.png"
@@ -234,8 +234,6 @@ In Dynamics 365 Business Central, an Integration Table is a specialized table us
 ![](/assets/images/businesscentralpart26integrationtable/screenshot-2024-12-23-115803-1364x664.png)
 *The Total Amount field was displayed on the Customer Order Card*
 
-
-## Pag50100.CustomerOrders.al
 
 ```text
 page 50100 "Customer Orders"

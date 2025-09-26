@@ -1,6 +1,6 @@
 ---
 title: "Dynamics 365 Sales (Part 1)"
-description: "A comprehensive guide covering dynamics 365 sales (part 1)"
+description: "Updating the Sales Insights form"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/page134/hero.png"

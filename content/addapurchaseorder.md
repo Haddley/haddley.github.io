@@ -1,6 +1,6 @@
 ---
 title: "Add a Purchase Order"
-description: "A comprehensive guide covering add a purchase order"
+description: "I used Patch to add a Business Central Purchase Order and to add Purchase Order Lines"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/addapurchaseorder/hero.png"
@@ -12,8 +12,6 @@ tags: ["business central"]
 ![](/assets/images/addapurchaseorder/office-365-icon-500x500.png)
 *This file is licensed under the Creative Commons Attribution 4.0 International license.*
 
-
-## I used Patch to add a Business Central Purchase Order and to add Purchase Order Lines
 
 Summary
 

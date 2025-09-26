@@ -1,6 +1,6 @@
 ---
 title: "Codespaces and Authentication"
-description: "A comprehensive guide covering codespaces and authentication"
+description: "Adding a NavBar and staticwebapp.config.json"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/codespacesauthentication/hero.png"
@@ -91,8 +91,6 @@ I used GitHub Codespaces to create a React app, I published the React App using 
 ![](/assets/images/codespacesauthentication/screenshot-2024-03-06-at-10.45.16-am-1836x1117.png)
 *I was returned to the React app home page*
 
-
-## Adding a NavBar and staticwebapp.config.json
 
 I added React Router a NavBar and a staticwebapp.config.json file.
 

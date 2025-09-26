@@ -1,6 +1,6 @@
 ---
 title: "Java Spring Boot (Part 5)"
-description: "A comprehensive guide covering java spring boot (part 5)"
+description: "Spring for GraphQL"
 date: "2025-09-20"
 category: "Java"
 image: "/assets/images/spring-boot-5/hero.png"

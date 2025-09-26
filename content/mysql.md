@@ -1,6 +1,6 @@
 ---
 title: "MySQL"
-description: "A comprehensive guide covering mysql"
+description: "Connecting to MySQL from JavaScript"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/mysql/hero.png"

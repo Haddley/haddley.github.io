@@ -1,6 +1,6 @@
 ---
 title: "Prompt Flow (Part 6)"
-description: "A comprehensive guide covering prompt flow (part 6)"
+description: "Quick start"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/promptflow6/hero.png"
@@ -10,8 +10,6 @@ tags: ["python","ai"]
 ![](/assets/images/promptflow6/logo.svg)
 *This file is licensed under the MIT license.*
 
-
-## Quick start
 
 I used Prompt flow, Semantic Kernel and Planner to create an AI application.
 

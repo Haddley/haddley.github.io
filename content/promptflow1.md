@@ -1,6 +1,6 @@
 ---
 title: "Prompt Flow (Part 1)"
-description: "A comprehensive guide covering prompt flow (part 1)"
+description: "Setup"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/promptflow1/hero.png"

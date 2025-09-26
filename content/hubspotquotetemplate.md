@@ -1,6 +1,6 @@
 ---
 title: "HubSpot Quote Template"
-description: "A comprehensive guide covering hubspot quote template"
+description: "Quote Template"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/hubspotquotetemplate/hero.png"

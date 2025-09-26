@@ -1,6 +1,6 @@
 ---
 title: ".NET Core (Part 1)"
-description: "A comprehensive guide covering .net core (part 1)"
+description: "Creating a REST API Service using Microsoft cross-platform framework."
 date: "2025-09-20"
 category: ".NET"
 image: "/assets/images/dotnet-core-part1/hero.png"

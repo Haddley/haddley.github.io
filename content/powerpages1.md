@@ -1,6 +1,6 @@
 ---
 title: "Power Pages (Part 1)"
-description: "A comprehensive guide covering power pages (part 1)"
+description: "Sales Orders"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/powerpages1/hero.png"

@@ -1,6 +1,6 @@
 ---
 title: "Next.js (Part 1)"
-description: "A comprehensive guide covering next.js (part 1)"
+description: "The React Framework for Production"
 date: "2025-09-20"
 category: "Web Development"
 image: "/assets/images/nextjs1/hero.png"

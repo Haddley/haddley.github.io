@@ -1,6 +1,6 @@
 ---
 title: "Microsoft SQL Server (Part 3)"
-description: "A comprehensive guide covering microsoft sql server (part 3)"
+description: "A Node, React and MS SQL Server App."
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/mssqlserver3/hero.png"

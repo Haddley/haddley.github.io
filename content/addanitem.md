@@ -1,6 +1,6 @@
 ---
 title: "Add an Item"
-description: "A comprehensive guide covering add an item"
+description: "I used Patch to add a Business Central Item"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/addanitem/hero.png"

@@ -1,6 +1,6 @@
 ---
 title: "Microsoft Dataverse Advanced Reports Setup"
-description: "A comprehensive guide covering microsoft dataverse advanced reports setup"
+description: "Microsoft Dataverse Advanced Reports Setup"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/dataverseadvancedreportssetup/hero.png"

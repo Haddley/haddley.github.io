@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory (Part 1)"
-description: "A comprehensive guide covering azure active directory (part 1)"
+description: "Using Microsoft Identity to Authenticate Users."
 date: "2025-09-20"
 category: "Azure"
 image: "/assets/images/azure-active-directory/hero.png"

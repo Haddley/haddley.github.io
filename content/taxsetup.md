@@ -1,6 +1,6 @@
 ---
 title: "Tax Setup"
-description: "A comprehensive guide covering tax setup"
+description: "Tax Setup"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/taxsetup/hero.png"

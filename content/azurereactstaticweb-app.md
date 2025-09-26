@@ -1,6 +1,6 @@
 ---
 title: "Azure React Static Web App"
-description: "A comprehensive guide covering azure react static web app"
+description: "Azure Static Web App"
 date: "2025-09-20"
 category: "Azure"
 image: "/assets/images/azurereactstaticweb-app/hero.png"

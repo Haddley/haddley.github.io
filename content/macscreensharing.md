@@ -1,6 +1,6 @@
 ---
 title: "Mac Screen Sharing"
-description: "A comprehensive guide covering mac screen sharing"
+description: "Screen Sharing VNC"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/macscreensharing/hero.png"
@@ -9,8 +9,6 @@ tags: ["ai"]
 
 ![](/assets/images/macscreensharing/apple-logo-black.svg)
 *This work is in the public domain in the United States because it was published in the United States between 1930 and 1977, inclusive, without a copyright notice.*
-
-## Screen Sharing VNC
 
 To share your macOS screen using VNC, enable Screen Sharing in System Settings, then use a VNC viewer on another device to connect to your Mac's IP address or hostname, using the password you set.
 

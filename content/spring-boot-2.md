@@ -1,6 +1,6 @@
 ---
 title: "Java Spring Boot (Part 2)"
-description: "A comprehensive guide covering java spring boot (part 2)"
+description: "References"
 date: "2025-09-20"
 category: "Java"
 image: "/assets/images/spring-boot-2/hero.png"
@@ -150,7 +150,5 @@ I used [https://start.spring.io](https://start.spring.io), Visual Studio Code, G
 
 ![](/assets/images/spring-boot-2/screenshot-2023-10-26-at-11.09.30-am-1896x165.png)
 *I navigated to https://haddley-java.azurewebsites.net to view the new home page*
-## References
-
 - [How to deploy your Spring Boot app to Azure App Service with GitHub Actions](https://www.youtube.com/watch?v=CPsI1KnVSOM)
 

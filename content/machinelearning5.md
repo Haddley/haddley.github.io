@@ -1,6 +1,6 @@
 ---
 title: "Machine Learning (Part 5)"
-description: "A comprehensive guide covering machine learning (part 5)"
+description: "Excel"
 date: "2025-09-20"
 category: "AI/ML"
 image: "/assets/images/machinelearning5/hero.png"
@@ -27,8 +27,6 @@ This [youtube video](https://www.youtube.com/watch?v=p_fu7gIikxY) explains how w
 
 As an exercise I wanted to use Excel and machine learning to calculate the line of best fit.
 
-
-## Excel
 
 Excel has built in "slope()" and "intercept()" functions that can be used to calculate the slope (m) and y-intercept (b) for a set of dependent and independent data points.
 

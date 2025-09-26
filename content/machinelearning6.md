@@ -1,6 +1,6 @@
 ---
 title: "Machine Learning (Part 6)"
-description: "A comprehensive guide covering machine learning (part 6)"
+description: "Splitting into training and test dataframes"
 date: "2025-09-20"
 category: "AI/ML"
 image: "/assets/images/machinelearning6/hero.png"
@@ -16,8 +16,6 @@ Can we predict if a person will develop diabetes based on their Pregnancy Count,
 ![](/assets/images/machinelearning6/screen-shot-2022-06-11-at-4.04.28-pm-1135x418.png)
 *Summary of the diabetes data*
 
-
-## Splitting into training and test dataframes
 
 There are 768 data items in the diabetes data.
 

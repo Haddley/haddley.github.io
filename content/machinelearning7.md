@@ -1,6 +1,6 @@
 ---
 title: "Machine Learning (Part 7)"
-description: "A comprehensive guide covering machine learning (part 7)"
+description: "Google Cloud Platform"
 date: "2025-09-20"
 category: "AI/ML"
 image: "/assets/images/machinelearning7/hero.png"
@@ -10,8 +10,6 @@ tags: ["cloud","ai","ml","machine learning"]
 ![](/assets/images/machinelearning7/tensorflow-logo.svg)
 *Tensorflow logo does not meet the threshold of originality needed for copyright protection, and is therefore in the public domain*
 
-
-## Google Cloud Platform
 
 AutoML enables developers to train high-quality models specific to their business needs.
 

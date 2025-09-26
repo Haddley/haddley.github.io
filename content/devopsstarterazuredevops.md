@@ -1,6 +1,6 @@
 ---
 title: "DevOps Starter Azure DevOps"
-description: "A comprehensive guide covering devops starter azure devops"
+description: "Everything you need for developing, deploying, and monitoring your application."
 date: "2025-09-20"
 category: "Azure"
 image: "/assets/images/devopsstarterazuredevops/hero.png"

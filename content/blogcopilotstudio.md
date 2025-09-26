@@ -15,8 +15,6 @@ tags: ["java","ai","business central","dynamics","git"]
 *By Microsoft, Public Domain*
 
 
-## Blog Copilot
-
 I created a Business Central extension that allows Business Central users to "chat to" [this blog](https://haddley.github.io).
 
 ![](/assets/images/blogcopilotstudio/screenshot-2024-03-24-at-12.37.07-pm-1836x1063.png)

@@ -1,6 +1,6 @@
 ---
 title: "Sentence Similarity"
-description: "A comprehensive guide covering sentence similarity"
+description: "Sentence Similarity"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/sentencesimilarity/hero.png"

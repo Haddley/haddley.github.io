@@ -1,6 +1,6 @@
 ---
 title: "Model Driven Apps (Part 4)"
-description: "A comprehensive guide covering model driven apps (part 4)"
+description: "Power FX"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/modeldriven4/hero.png"

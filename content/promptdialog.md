@@ -1,19 +1,16 @@
 ---
-title: "Business Central (Part 27) PromptDialog"
-description: "A comprehensive guide covering business central (part 27) promptdialog"
+title: "Business Central (Part 27)"
+description: "Prompt Dialog (Part 1)"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/promptdialog/hero.png"
 tags: ["cloud","ai","business central","dynamics"]
 ---
 
-# Business Central (Part 27) PromptDialog
+## Prompt Dialog (Part 1)
 
 ![](/assets/images/promptdialog/dynamics365-color.svg)
 *By Microsoft, Public Domain*
-
-
-## Prompt Dialog (Part 1)
 
 The PromptDialog page serves as the core UI component for a Business Central Copilot, enabling users to evaluate and refine AI-generated outputs within a structured, guided workflow. This page type orchestrates an intuitive, end-to-end experience where:
 

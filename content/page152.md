@@ -1,6 +1,6 @@
 ---
 title: "Vendor Posting Group COPY"
-description: "A comprehensive guide covering vendor posting group copy"
+description: "Vendor Posting Group"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/page152/hero.png"

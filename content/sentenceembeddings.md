@@ -1,6 +1,6 @@
 ---
 title: "Sentence Embeddings"
-description: "A comprehensive guide covering sentence embeddings"
+description: "Sentence Embeddings"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/sentenceembeddings/hero.png"

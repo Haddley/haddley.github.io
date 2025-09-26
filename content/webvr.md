@@ -1,6 +1,6 @@
 ---
 title: "WebVR"
-description: "A comprehensive guide covering webvr"
+description: "Create Virtual Reality Experiences."
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/webvr/hero.png"

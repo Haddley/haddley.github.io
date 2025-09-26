@@ -1,6 +1,6 @@
 ---
 title: "Multiplayer Game"
-description: "A comprehensive guide covering multiplayer game"
+description: "Creating a new firebase project"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/multiplayer/hero.png"
@@ -10,8 +10,6 @@ tags: ["javascript","java","database","ai","ml"]
 ![](/assets/images/multiplayer/logo-lockup-firebase-vertical.svg)
 *This file is licensed under the Creative Commons Attribution 4.0 International license.*
 
-
-## Creating a new firebase project
 
 I created a firebase project using https://console.firebase.google.com
 

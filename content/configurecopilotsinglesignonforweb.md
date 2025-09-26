@@ -1,6 +1,6 @@
 ---
 title: "Configure Copilot single sign-on for Web"
-description: "A comprehensive guide covering configure copilot single sign-on for web"
+description: "Publish|Configure channels"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/configurecopilotsinglesignonforweb/hero.png"
@@ -37,8 +37,6 @@ Microsoft Copilot Studio supports single sign-on (SSO). [SSO allows copilots on 
 ![](/assets/images/configurecopilotsinglesignonforweb/screenshot-2024-03-13-at-1.02.46-pm-2136x1170.png)
 *Restarting the session displays the message specified in the "Conversation Start" Topic*
 
-
-## Publish|Configure channels
 
 I wanted to publish the Copilot on a custom website.
 

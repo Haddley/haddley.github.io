@@ -1,6 +1,6 @@
 ---
 title: "Azure AI (Part 1)"
-description: "A comprehensive guide covering azure ai (part 1)"
+description: "Azure OpenAI Service, and Retrieval Augmented Generation (RAG) in Azure AI Search"
 date: "2025-09-20"
 category: "Azure"
 image: "/assets/images/azureai1/hero.png"
@@ -14,8 +14,6 @@ tags: ["azure","python","ai","git","github"]
 ![](/assets/images/azureai1/microsoft-azure-logo.svg)
 *Microsoft Azure Logo by Microsoft Corporation is Public Domain*
 
-
-## Azure OpenAI Service, and Retrieval Augmented Generation (RAG) in Azure AI Search
 
 Microsoft provide a chat app sample using Python, Azure OpenAI Service, and Retrieval Augmented Generation (RAG) in Azure AI Search to get answers about employee benefits.
 

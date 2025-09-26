@@ -1,6 +1,6 @@
 ---
 title: "Teams Toolkit with Azure"
-description: "A comprehensive guide covering teams toolkit with azure"
+description: "Get started with Microsoft Teams app development using Azure."
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/teamstoolkit/hero.png"

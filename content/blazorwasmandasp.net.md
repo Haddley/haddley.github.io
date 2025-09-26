@@ -1,6 +1,6 @@
 ---
 title: "Blazor WASM and ASP.NET Core"
-description: "A comprehensive guide covering blazor wasm and asp.net core"
+description: "An ASP.NET Core backend and a Blazor Web Assembly frontend."
 date: "2025-09-20"
 category: ".NET"
 image: "/assets/images/blazorwasmandasp.net/hero.png"

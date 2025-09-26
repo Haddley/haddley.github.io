@@ -1,6 +1,6 @@
 ---
 title: "Business Central Microsoft Graph"
-description: "A comprehensive guide covering business central microsoft graph"
+description: "Financials"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/businesscentralmicrosoftgraph/hero.png"
@@ -8,6 +8,8 @@ tags: ["ai","ml","business central","dynamics"]
 ---
 
 # Business Central Microsoft Graph
+
+## Financials
 
 ![](/assets/images/businesscentralmicrosoftgraph/dynamics365-color.svg)
 *By Microsoft, Public Domain*

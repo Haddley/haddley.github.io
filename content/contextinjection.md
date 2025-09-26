@@ -1,6 +1,6 @@
 ---
 title: "Context Injection"
-description: "A comprehensive guide covering context injection"
+description: "Context Injection"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/contextinjection/hero.png"

@@ -1,11 +1,13 @@
 ---
 title: "Power Pages (Part 2)"
-description: "A comprehensive guide covering power pages (part 2)"
-date: "2025-09-20"
+description: "View, create, and edit orders"
 category: "Development"
 image: "/assets/images/powerpages2/hero.png"
 tags: ["ai","business central"]
 ---
+
+# Power Pages (Part 2)
+## View, create, and edit orders
 
 ![](/assets/images/powerpages2/powerpages-scalable.svg)
 *Microsoft permits the use of these icons in architectural diagrams, training materials, or documentation.*

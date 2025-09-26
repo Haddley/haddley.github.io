@@ -1,11 +1,15 @@
 ---
 title: "Sales Invoice"
-description: "A comprehensive guide covering sales invoice"
+description: "How the Inventory, Sale, Tax and Receivables accounts are determined"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/salesinvoice/hero.png"
 tags: ["ai","dynamics"]
 ---
+
+# Sales Invoice
+
+## How the Inventory, Sale, Tax and Receivables accounts are determined
 
 ![](/assets/images/salesinvoice/dynamics365-color.svg)
 *By Microsoft, Public Domain*

@@ -1,6 +1,6 @@
 ---
 title: "Gingerbread House"
-description: "A comprehensive guide covering gingerbread house"
+description: "holiday.py"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/gingerbreadhouse/hero.png"
@@ -110,8 +110,6 @@ $ python holiday.py
 ![](/assets/images/gingerbreadhouse/414472361-3592654111010356-258204729919225997-n-960x720.jpg)
 *Bluey*
 
-
-## holiday.py
 
 ```text
 from luma.core.interface.serial import i2c, spi, pcf8574

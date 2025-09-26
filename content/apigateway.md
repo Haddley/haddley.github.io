@@ -1,6 +1,6 @@
 ---
 title: "API Gateway"
-description: "A comprehensive guide covering api gateway"
+description: "How to publish a collection of microservices using an API Gateway."
 date: "2025-09-20"
 category: "Cloud"
 image: "/assets/images/apigateway/hero.png"

@@ -1,6 +1,6 @@
 ---
 title: "Model Context Protocol (Part 2)"
-description: "A comprehensive guide covering model context protocol (part 2)"
+description: "Business Central"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/mcpserver2/hero.png"

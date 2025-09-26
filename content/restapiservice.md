@@ -1,6 +1,6 @@
 ---
 title: "REST"
-description: "A comprehensive guide covering rest"
+description: "Creating a REST API Service using Node and Express"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/restapiservice/hero.png"

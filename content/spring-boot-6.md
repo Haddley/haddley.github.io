@@ -1,6 +1,6 @@
 ---
 title: "Java Spring Boot (Part 6)"
-description: "A comprehensive guide covering java spring boot (part 6)"
+description: "GitHub"
 date: "2025-09-20"
 category: "Java"
 image: "/assets/images/spring-boot-6/hero.png"
@@ -25,8 +25,6 @@ OAuth2 authentication using Spring Security and GitHub.
 ![](/assets/images/spring-boot-6/screenshot-2023-11-02-at-9.11.47-am-1307x185.png)
 *I entered the username "user" and the generated a temporary password and the home page was displayed*
 
-
-## GitHub
 
 To switch to using GitHub as an OAuth2 authentication service I would need a github.client-id and a github.client-secret.
 

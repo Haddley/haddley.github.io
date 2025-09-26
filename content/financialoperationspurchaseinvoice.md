@@ -1,6 +1,6 @@
 ---
 title: "Financial Operations Purchase Invoice"
-description: "A comprehensive guide covering financial operations purchase invoice"
+description: "Payment Journals"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/financialoperationspurchaseinvoice/hero.png"

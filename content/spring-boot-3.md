@@ -1,6 +1,6 @@
 ---
 title: "Java Spring Boot (Part 3)"
-description: "A comprehensive guide covering java spring boot (part 3)"
+description: "SpringdatajpaApplication.java"
 date: "2025-09-20"
 category: "Java"
 image: "/assets/images/spring-boot-3/hero.png"
@@ -72,8 +72,6 @@ I created a Spring Boot application using Spring Data JPA
 ![](/assets/images/spring-boot-3/screenshot-2023-10-29-at-1.16.29-pm-2136x418.png)
 *Accessing the haddley-spring-data-jpa application hosted in Azure*
 
-
-## SpringdatajpaApplication.java
 
 ```text
 package com.haddley.springdatajpa;

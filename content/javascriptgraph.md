@@ -1,6 +1,6 @@
 ---
 title: "JavaScript and Microsoft Graph"
-description: "A comprehensive guide covering javascript and microsoft graph"
+description: "A console application that calls the Microsoft Graph API"
 date: "2025-09-20"
 category: "JavaScript"
 image: "/assets/images/javascriptgraph/hero.png"
@@ -10,8 +10,6 @@ tags: ["javascript","azure","ai","ml"]
 ![](/assets/images/javascriptgraph/office-365-icon-500x500.png)
 *Microsoft_Office_logo by Microsoft is licensed under CC*
 
-
-## A console application that calls the Microsoft Graph API
 
 This post is based on Microsoft's "[Build JavaScript apps with Microsoft Graph](https://docs.microsoft.com/en-nz/graph/tutorials/javascript?tabs=aad)" tutorial.
 

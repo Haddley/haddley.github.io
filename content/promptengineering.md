@@ -1,6 +1,6 @@
 ---
-title: "Prompt Engineering"
-description: "A comprehensive guide covering prompt engineering"
+title: "Large Language Models"
+description: "Prompt Engineering"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/promptengineering/hero.png"
@@ -13,9 +13,6 @@ tags: ["ai"]
 
 ![](/assets/images/promptengineering/meta-platforms-inc.-logo.svg)
 *By Meta Platforms, Public Domain, Link*
-
-
-## Prompt Engineering
 
 There are a few different parts of a prompt that you will see over and over again. They are roughly:
 	•	A role

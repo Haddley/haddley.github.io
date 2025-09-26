@@ -1,6 +1,6 @@
 ---
 title: "XCode C++ (Part 2)"
-description: "A comprehensive guide covering xcode c++ (part 2)"
+description: "OpenGL GLFW"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/xcode2/hero.png"

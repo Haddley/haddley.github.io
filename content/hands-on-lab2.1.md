@@ -1,6 +1,6 @@
 ---
 title: "Hands-on-Lab 2.1"
-description: "A comprehensive guide covering hands-on-lab 2.1"
+description: "Create and configure a new company"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/hands-on-lab2.1/hero.png"
@@ -10,8 +10,6 @@ tags: ["database","ai","business central","dynamics"]
 ![](/assets/images/hands-on-lab2.1/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 
-
-## Create and configure a new company
 
 I worked through the MB-800 Business Central Functional Consultant hands on labs.
 

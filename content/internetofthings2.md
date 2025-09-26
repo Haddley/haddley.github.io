@@ -1,6 +1,6 @@
 ---
 title: "Internet of Things (Part 2)"
-description: "A comprehensive guide covering internet of things (part 2)"
+description: "Node-RED can publish messages to a MQTT broker and subscribe to MQTT topics."
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/internetofthings2/hero.png"

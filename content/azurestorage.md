@@ -1,6 +1,6 @@
 ---
 title: "Azure Storage"
-description: "A comprehensive guide covering azure storage"
+description: "Microsoft's cloud storage solution"
 date: "2025-09-20"
 category: "Azure"
 image: "/assets/images/azurestorage/hero.png"

@@ -1,6 +1,6 @@
 ---
 title: "LM Studio"
-description: "A comprehensive guide covering lm studio"
+description: "LM Studio"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/lmstudio/hero.png"

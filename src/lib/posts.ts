@@ -15,7 +15,7 @@ export const blogPosts: BlogPost[] = [
     {
     slug: 'copilotstudiobctools',
     title: 'Copilot Studio Agent Tools',
-    description: 'Copilot Studio Agent connected to Business Central',
+    description: 'Connected to Business Central',
     date: '2025-09-24',
     categories: ["Microsoft Dynamics", "Business Central", "Power Platform", "Microsoft Dynamics"],
     tags: [],
@@ -24,7 +24,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'mcpserver2',
     title: 'Model Context Protocol (Part 2)',
-    description: 'Business Central MCP Server Implementation',
+    description: 'Business Central',
     date: '2025-09-21',
     categories: ["Microsoft Dynamics", "Business Central", "TypeScript", "DevOps"],
     tags: [],
@@ -34,7 +34,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'microsoftdynamics365appforoutlook',
     title: 'Microsoft Dynamics 365 App for Outlook',
-    description: 'Complete guide to integrating Dynamics 365 with Outlook using the App for Outlook',
+    description: 'References',
     date: '2025-09-20',
     categories: ["Microsoft Dynamics", "Power Platform"],
     tags: [],
@@ -43,8 +43,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'macscreensharing',
-    title: 'Apple macOS',
-    description: 'Screen Sharing VNC and SSH',
+    title: 'Mac Screen Sharing',
+    description: 'Screen Sharing VNC',
     date: '2025-08-18',
     categories: [],
     tags: [],
@@ -53,7 +53,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'mcpserver',
     title: 'Model Context Protocol (Part 1)',
-    description: 'Typescript Quickstart',
+    description: 'main.ts',
     date: '2025-08-13',
     categories: ["TypeScript", "AI"],
     tags: [],
@@ -61,8 +61,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'syntexautofill',
-    title: 'SharePoint',
-    description: 'Syntex Autofill',
+    title: 'SharePoint Syntex ',
+    description: 'Autofill columns',
     date: '2025-07-30',
     categories: ["Microsoft 365"],
     tags: [],
@@ -70,8 +70,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'ollamadeepsekr1applemacbookinstall',
-    title: 'Ollama DeepSeek R1',
-    description: 'Apple MacBook Install',
+    title: 'DeepSeek R1',
+    description: 'Running locally',
     date: '2025-05-24',
     categories: ["AI"],
     tags: [],
@@ -79,8 +79,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'promptdialog3',
-    title: 'Business Central (Part 29)',
-    description: 'Prompt Dialog Markdown (Part 3)',
+    title: 'Business Central (Part 29) PromptDialog 3',
+    description: 'Prompt Dialog Markdown',
     date: '2024-05-24',
     categories: ["AI", "Microsoft Dynamics", "Business Central", "Azure"],
     tags: [],
@@ -89,7 +89,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'promptdialog2',
     title: 'Business Central (Part 28)',
-    description: 'Prompt Dialog Azure Open AI (Part 2)',
+    description: 'Prompt Dialog (Part 2)',
     date: '2024-05-24',
     categories: ["Microsoft Dynamics", "Business Central", "AI", "Azure"],
     tags: [],
@@ -98,7 +98,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'promptdialog',
     title: 'Business Central (Part 27)',
-    description: 'Prompt Dialog Introduction (Part 1)',
+    description: 'Prompt Dialog (Part 1)',
     date: '2024-05-24',
     categories: ["Microsoft Dynamics", "Business Central", "AI", "Microsoft Dynamics"],
     tags: [],
@@ -107,7 +107,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'internetofthings3',
     title: 'Internet of Things (Part 3)',
-    description: 'Edge Impulse',
+    description: 'Arduino Nano 33 BLE Sense',
     date: '2025-03-01',
     categories: ["AI"],
     tags: [],
@@ -115,8 +115,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'azureopenal',
-    title: 'Azure AI Foundry',
-    description: 'Azure OpenAI Service',
+    title: 'Azure AI service',
+    description: 's Azure OpenAl',
     date: '2025-02-04',
     categories: ["Azure", "AI"],
     tags: [],
@@ -124,8 +124,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'businesscentralpart26integrationtable',
-    title: 'Business Central (Part 26)',
-    description: 'Integration Tables',
+    title: 'Business Central (Part 26) Integration Tables',
+    description: 'Pag50100.CustomerOrders.al',
     date: '2024-12-22',
     categories: ["Microsoft Dynamics", "Business Central", "Microsoft Dynamics", "Power Platform"],
     tags: [],
@@ -134,7 +134,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'powerapps23configurationmigrationtool',
     title: 'Power Apps (Part 23)',
-    description: 'Configuration Migration Tool (CMT)',
+    description: 'The Configuration Migration tool',
     date: '2025-01-01',
     categories: ["Power Platform"],
     tags: [],
@@ -152,7 +152,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'powerpages2',
     title: 'Power Pages (Part 2)',
-    description: 'Customer Orders',
+    description: 'View, create, and edit orders',
     date: '2024-12-20',
     categories: [],
     tags: [],
@@ -160,8 +160,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'businesscentralpart25integratingwithdataverseusingdataflows',
-    title: 'Business Central (Part 25)',
-    description: 'Customer Orders',
+    title: 'Business Central (Part 25) Integrating with Dataverse using Dataflows',
+    description: 'Integrating with Dataverse using Dataflows',
     date: '2024-12-01',
     categories: ["Power Platform", "Microsoft Dynamics", "Business Central", "Microsoft Dynamics"],
     tags: [],
@@ -170,7 +170,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'langflow1',
     title: 'Langflow (Part 1)',
-    description: 'OpenAI text to speech',
+    description: 'References',
     date: '2024-10-30',
     categories: ["Python", "AI"],
     tags: [],
@@ -179,7 +179,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'powerpages1',
     title: 'Power Pages (Part 1)',
-    description: 'A Business Central Customer Portal',
+    description: 'Sales Orders',
     date: '2024-10-26',
     categories: ["Microsoft Dynamics", "Business Central", "Power Platform", "Microsoft Dynamics"],
     tags: [],
@@ -187,8 +187,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'promptflow6',
-    title: 'Prompt flow (Part 6)',
-    description: 'With Semantic Kernel and Planner',
+    title: 'Prompt Flow (Part 6)',
+    description: 'Quick start',
     date: '2024-09-01',
     categories: ["AI", "Python"],
     tags: [],
@@ -196,8 +196,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'promptflow5',
-    title: 'Prompt flow (Part 5)',
-    description: 'With LangChain',
+    title: 'Prompt Flow (Part 5)',
+    description: 'Quick start',
     date: '2024-09-01',
     categories: ["AI", "DevOps", "Python"],
     tags: [],
@@ -205,8 +205,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'langchainagents',
-    title: 'LangChain',
-    description: 'With LangChain',
+    title: 'LangChain Agents',
+    description: 'Agents',
     date: '2024-08-25',
     categories: ["AI", "Python"],
     tags: [],
@@ -214,8 +214,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'phpsetup',
-    title: 'PHP',
-    description: 'Agents',
+    title: 'PHP Setup',
+    description: 'Setup',
     date: '2024-08-25',
     categories: [],
     tags: [],
@@ -223,8 +223,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'dataverseadvancedreportssetup',
-    title: 'Power Apps (Part 22)',
-    description: 'Setup',
+    title: 'Microsoft Dataverse Advanced Reports Setup',
+    description: 'Microsoft Dataverse Advanced Reports Setup',
     date: '2024-08-10',
     categories: ["SQL", "Microsoft Dynamics", "Power Platform"],
     tags: [],
@@ -232,8 +232,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'powerautomatereports',
-    title: 'Power Apps (Part 21)',
-    description: 'Microsoft Power Automate Reports',
+    title: 'Microsoft Power Automate Reports',
+    description: 'A Flow that emails a Report',
     date: '2024-07-19',
     categories: ["Power Platform"],
     tags: [],
@@ -241,8 +241,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'dataversereports',
-    title: 'Power Apps (Part 20)',
-    description: 'Microsoft Dataverse Reports',
+    title: 'Microsoft Dataverse Reports',
+    description: 'Creating a Dataverse Report',
     date: '2024-07-19',
     categories: ["Power Platform"],
     tags: [],
@@ -250,8 +250,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'promptflow4',
-    title: 'Prompt flow (Part 4)',
-    description: 'Planner',
+    title: 'Prompt Flow (Part 4)',
+    description: 'Planning',
     date: '2024-08-24',
     categories: ["AI"],
     tags: [],
@@ -259,8 +259,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'promptflow3',
-    title: 'Prompt flow (Part 3)',
-    description: 'Planner',
+    title: 'Prompt Flow (Part 3)',
+    description: 'Semantic Kernel',
     date: '2024-08-24',
     categories: ["AI", "Python"],
     tags: [],
@@ -268,8 +268,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'promptflow2',
-    title: 'Prompt flow (Part 2)',
-    description: 'Semantic Kernel',
+    title: 'Prompt Flow (Part 2)',
+    description: 'Docker',
     date: '2024-06-12',
     categories: ["DevOps", "AI", "Python"],
     tags: [],
@@ -277,8 +277,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'promptflow1',
-    title: 'Prompt flow (Part 1)',
-    description: 'Docker',
+    title: 'Prompt Flow (Part 1)',
+    description: 'Setup',
     date: '2024-06-11',
     categories: ["AI", "Python", "DevOps", "Azure"],
     tags: [],
@@ -286,8 +286,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'customtvirtualtables',
-    title: 'Power Apps (Part 18)',
-    description: 'Setup',
+    title: 'Custom Virtual Tables',
+    description: 'Customer Content Virtual Tables',
     date: '2024-05-07',
     categories: ["Power Platform", "AI", "Microsoft Dynamics", "Business Central"],
     tags: [],
@@ -295,8 +295,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'blogcopilotstudio',
-    title: 'Dynamics 365 Business Central (Part 24)',
-    description: 'A comprehensive guide covering blog copilot studio',
+    title: 'Blog Copilot Studio',
+    description: 'Blog Copilot',
     date: '2024-03-24',
     categories: ["Microsoft Dynamics", "Business Central", "Microsoft Dynamics", "Power Platform"],
     tags: [],
@@ -304,8 +304,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'customcopilotstudio',
-    title: 'Dynamics 365 Business Central (Part 23)',
-    description: 'A comprehensive guide covering custom copilot studio',
+    title: 'Custom Copilot Studio',
+    description: 'Customer Copilot',
     date: '2024-03-23',
     categories: ["Microsoft Dynamics", "Business Central", "Power Platform", "Microsoft Dynamics"],
     tags: [],
@@ -313,8 +313,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'configurecopilotsinglesignonforweb',
-    title: 'Power Apps (Part 17)',
-    description: 'Configure Copilot single sign-on for Web',
+    title: 'Configure Copilot single sign-on for Web',
+    description: 'Publish|Configure channels',
     date: '2024-03-16',
     categories: ["Power Platform", ".NET", "Microsoft 365"],
     tags: [],
@@ -322,8 +322,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'customizedefaultcanvas',
-    title: 'Power Apps (Part 16)',
-    description: 'styleOptions',
+    title: 'Copilot Studio',
+    description: 'Customize the look and feel of the bot default canvas',
     date: '2024-03-11',
     categories: [],
     tags: [],
@@ -331,8 +331,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'copilotembedcode',
-    title: 'Power Apps (Part 15)',
-    description: 'Copilot Embed Code',
+    title: 'Copilot Embed Code',
+    description: 'An HTML page to host my Blog Copilot',
     date: '2024-03-11',
     categories: [],
     tags: [],
@@ -340,8 +340,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'staticwebapp.config.json',
-    title: 'Azure Active Directory (Part 3)',
-    description: 'staticwebapp.config.json and environment variables',
+    title: 'staticwebapp.config.json',
+    description: 'staticwebapp.config.json',
     date: '2024-03-10',
     categories: ["Azure"],
     tags: [],
@@ -349,8 +349,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'codespacesauthentication',
-    title: 'React (Part 4)',
-    description: 'Codespaces and Authentication',
+    title: 'Codespaces and Authentication',
+    description: 'Adding a NavBar and staticwebapp.config.json',
     date: '2024-03-06',
     categories: ["React", "Azure", "DevOps"],
     tags: [],
@@ -358,8 +358,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'modeldrivenpurchaseorderlines',
-    title: 'Power Apps (Part 14)',
-    description: 'Model Driven Purchase Order Lines',
+    title: 'Model Driven Purchase Order Lines',
+    description: 'manage Business Central Purchase Order Lines',
     date: '2024-03-03',
     categories: ["Microsoft Dynamics", "Business Central", "Power Platform"],
     tags: [],
@@ -367,8 +367,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'modeldrivenpurchaseorders',
-    title: 'Power Apps (Part 13)',
-    description: 'Model Driven Purchase Orders',
+    title: 'Model Driven Purchase Orders',
+    description: 'Quick View',
     date: '2024-03-02',
     categories: ["Microsoft Dynamics", "Business Central", "Power Platform", "AI"],
     tags: [],
@@ -376,8 +376,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'cloudflow',
-    title: 'Power Apps (Part 12)',
-    description: 'Copilot Studio Topic with a Cloud Flow',
+    title: 'Cloud Flow',
+    description: 'A Topic that uses the Business Central Connector',
     date: '2024-02-26',
     categories: ["Power Platform", "Microsoft Dynamics", "Business Central", "Azure"],
     tags: [],
@@ -385,8 +385,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'topics',
-    title: 'Power Apps (Part 11)',
-    description: 'Copilot Studio Topic with a Connector',
+    title: 'Copilot',
+    description: 'Topics',
     date: '2024-02-25',
     categories: ["Power Platform", "Microsoft Dynamics", "Business Central"],
     tags: [],
@@ -394,8 +394,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'pluginactions',
-    title: 'Power Apps (Part 10)',
-    description: 'Copilot Studio Plugin Actions',
+    title: 'Plugin Actions',
+    description: 'A comprehensive guide covering plugin actions',
     date: '2024-02-24',
     categories: ["Power Platform"],
     tags: [],
@@ -403,8 +403,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'addapurchaseorder',
-    title: 'Power Apps (Part 9)',
-    description: 'Adding a Purchase Order',
+    title: 'Add a Purchase Order',
+    description: 'I used Patch to add a Business Central Purchase Order and to add Purchase Order Lines',
     date: '2024-02-21',
     categories: ["Microsoft Dynamics", "Business Central", "Power Platform"],
     tags: [],
@@ -412,8 +412,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'addanitem',
-    title: 'Power Apps (Part 8)',
-    description: 'Adding an Item',
+    title: 'Add an Item',
+    description: 'I used Patch to add a Business Central Item',
     date: '2024-02-17',
     categories: ["Microsoft Dynamics", "Business Central", "Power Platform"],
     tags: [],
@@ -421,8 +421,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'azurereactstaticweb-app',
-    title: 'React (Part 3)',
-    description: 'Adding an Item',
+    title: 'Azure React Static Web App',
+    description: 'Azure Static Web App',
     date: '2024-01-08',
     categories: ["React", "Azure", ".NET"],
     tags: [],
@@ -430,8 +430,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'businesscentralvirtualtable',
-    title: 'Dynamics 365 Business Central (Part 22)',
-    description: 'Business Central Virtual Table',
+    title: 'Business Central Virtual Table',
+    description: 'Microsoft Dynamics 365 Business Central Virtual Tables for Microsoft Dataverse',
     date: '2024-01-12',
     categories: ["Microsoft Dynamics", "Business Central", "Power Platform", "Microsoft Dynamics"],
     tags: [],
@@ -439,8 +439,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'createactionbasedonaflow',
-    title: 'Dynamics 365 Business Central (Part 21)',
-    description: 'Create action based on a flow',
+    title: 'Create action based on a flow',
+    description: 'Created from the Business Central user interface',
     date: '2024-01-04',
     categories: ["Power Platform", "Microsoft Dynamics", "Business Central", "Microsoft Dynamics"],
     tags: [],
@@ -448,8 +448,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'businesscentralpowerautomateflow',
-    title: 'Dynamics 365 Business Central (Part 20)',
-    description: 'Power Automate Flow',
+    title: 'Business Central Power Automate Flow',
+    description: 'Business Central includes a Microsoft Power Automate license',
     date: '2024-01-02',
     categories: ["Microsoft Dynamics", "Business Central", "Power Platform", "Microsoft Dynamics"],
     tags: [],
@@ -457,8 +457,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'gingerbreadhouse',
-    title: 'Raspberry Pi (Part 5)',
-    description: 'Gingerbread House',
+    title: 'Gingerbread House',
+    description: 'holiday.py',
     date: '2023-12-26',
     categories: ["Python"],
     tags: [],
@@ -466,8 +466,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'businesscentralmicrosoftgraph',
-    title: 'Dynamics 365 Business Central (Part 19)',
-    description: 'Microsoft Graph',
+    title: 'Business Central Microsoft Graph',
+    description: 'Financials',
     date: '2023-12-18',
     categories: ["Microsoft Dynamics", "Business Central", "Microsoft 365", "Microsoft Dynamics"],
     tags: [],
@@ -475,8 +475,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'salesinvoice',
-    title: 'Dynamics 365 Business Central (Part 18)',
-    description: 'Sales Invoice',
+    title: 'Sales Invoice',
+    description: 'How the Inventory, Sale, Tax and Receivables accounts are determined',
     date: '2023-12-14',
     categories: ["Microsoft Dynamics", "Business Central", "Microsoft Dynamics"],
     tags: [],
@@ -484,8 +484,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'purchaseinvoice',
-    title: 'Dynamics 365 Business Central (Part 17)',
-    description: 'Sales Invoice',
+    title: 'Purchase Invoice',
+    description: 'Purchase Invoice',
     date: '2023-12-14',
     categories: ["Microsoft Dynamics", "Business Central", "Microsoft Dynamics"],
     tags: [],
@@ -493,8 +493,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'generalpostingsetup',
-    title: 'Dynamics 365 Business Central (Part 16)',
-    description: 'General Posting Setup',
+    title: 'General Posting Setup',
+    description: 'Which accounts payable ledger account',
     date: '2023-12-14',
     categories: ["Microsoft Dynamics", "Business Central", "Microsoft Dynamics"],
     tags: [],
@@ -502,8 +502,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'customerpostinggroup',
-    title: 'Dynamics 365 Business Central (Part 15)',
-    description: 'Customer Posting Group',
+    title: 'Customer Posting Group',
+    description: 'Which accounts receivable account?',
     date: '2023-12-14',
     categories: ["Microsoft Dynamics", "Business Central", "Microsoft Dynamics"],
     tags: [],
@@ -511,8 +511,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'vendorpostinggroup',
-    title: 'Dynamics 365 Business Central (Part 14)',
-    description: 'Vendor Posting Group',
+    title: 'Vendor Posting Group',
+    description: 'Sub-ledgers',
     date: '2023-12-12',
     categories: ["Microsoft Dynamics", "Business Central", "Microsoft Dynamics"],
     tags: [],
@@ -520,8 +520,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'generalledger',
-    title: 'Dynamics 365 Business Central (Part 13)',
-    description: 'General Ledger',
+    title: 'General Ledger',
+    description: 'Purchase',
     date: '2023-12-11',
     categories: ["Microsoft Dynamics", "Business Central", "Microsoft Dynamics"],
     tags: [],
@@ -529,8 +529,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'hands-on-lab3.1',
-    title: 'Dynamics 365 Business Central (Part 12)',
-    description: 'Hands-on-Lab 3.1',
+    title: 'Hands-on-Lab 3.1',
+    description: 'Set Up Finance Management',
     date: '2023-12-04',
     categories: ["Microsoft Dynamics", "Business Central", "Microsoft Dynamics"],
     tags: [],
@@ -538,8 +538,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'hands-on-lab2.3',
-    title: 'Dynamics 365 Business Central (Part 11)',
-    description: 'Hands-on-Lab 2.3',
+    title: 'Hands-on-Lab 2.3',
+    description: 'Set up dimensions',
     date: '2023-12-04',
     categories: ["Microsoft Dynamics", "Business Central", "Microsoft Dynamics"],
     tags: [],
@@ -547,8 +547,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'hands-on-lab2.2',
-    title: 'Dynamics 365 Business Central (Part 10)',
-    description: 'Hands-on-Lab 2.2',
+    title: 'Hands-on-Lab 2.2',
+    description: 'Migrate master data to a new company',
     date: '2023-11-22',
     categories: ["Microsoft Dynamics", "Business Central", "Microsoft Dynamics"],
     tags: [],
@@ -556,8 +556,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'hands-on-lab2.1',
-    title: 'Dynamics 365 Business Central (Part 9)',
-    description: 'Hands-on-Lab 2.1',
+    title: 'Hands-on-Lab 2.1',
+    description: 'Create and configure a new company',
     date: '2023-11-22',
     categories: ["Microsoft Dynamics", "Business Central", "Microsoft Dynamics"],
     tags: [],
@@ -565,7 +565,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'dynamicssales3',
-    title: 'Microsoft Dynamics 365 Sales (Part 3)',
+    title: 'Dynamics 365 Sales (Part 3)',
     description: 'Adding a Warranty table',
     date: '2023-10-21',
     categories: ["Microsoft Dynamics", "Power Platform"],
@@ -574,8 +574,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'dynamicssales2',
-    title: 'Microsoft Dynamics 365 Sales (Part 2)',
-    description: 'Updating the Lead to Opportunity Business Process Flow',
+    title: 'Dynamics 365 Sales (Part 2)',
+    description: 'The Lead to Opportunity Sales Process',
     date: '2023-10-21',
     categories: ["Microsoft Dynamics"],
     tags: [],
@@ -583,8 +583,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'dynamicssales1',
-    title: 'Microsoft Dynamics 365 Sales (Part 1)',
-    description: 'Updating the Sales Insights form',
+    title: 'Dynamics 365 Sales (Part 1)',
+    description: ' the Account|Sales Insights form',
     date: '2023-10-21',
     categories: ["Microsoft Dynamics"],
     tags: [],
@@ -593,7 +593,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'modeldriven4',
     title: 'Model Driven Apps (Part 4)',
-    description: 'Model-driven apps Power FX',
+    description: 'Power FX',
     date: '2023-10-09',
     categories: ["Power Platform"],
     tags: [],
@@ -602,7 +602,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'modeldriven3',
     title: 'Model Driven Apps (Part 3)',
-    description: 'Model-driven apps JavaScript Developer Guide',
+    description: 'JavaScript to update a Business Process Flow Stage',
     date: '2023-10-08',
     categories: ["JavaScript", "Power Platform", "AI"],
     tags: [],
@@ -611,7 +611,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'modeldriven2',
     title: 'Model Driven Apps (Part 2)',
-    description: 'Business Process Flow',
+    description: 'Environments',
     date: '2023-10-05',
     categories: ["Power Platform", "Microsoft Dynamics"],
     tags: [],
@@ -620,7 +620,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'modeldriven1',
     title: 'Model Driven Apps (Part 1)',
-    description: 'Dataverse users, business units and security roles',
+    description: 'Users',
     date: '2023-09-18',
     categories: ["Power Platform", "DevOps", "Microsoft 365"],
     tags: [],
@@ -628,8 +628,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'ashorthistory',
-    title: 'Microsoft Dynamics 365',
-    description: 'A Short History of Microsoft Dynamics and Microsoft Dataverse',
+    title: 'A Short History of Microsoft Dynamics and Microsoft Dataverse',
+    description: 'Microsoft Dynamics and Microsoft Dataverse',
     date: '2023-09-09',
     categories: ["Microsoft Dynamics", "Power Platform", "Microsoft 365", "Business Central"],
     tags: [],
@@ -637,8 +637,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'mapextension',
-    title: 'Microsoft Dynamics 365 Business Central (Part 8)',
-    description: 'Maps Extension',
+    title: 'Map Extension',
+    description: 'Map Extension',
     date: '2023-09-01',
     categories: ["Microsoft Dynamics", "Business Central", "Maps", "Microsoft Dynamics"],
     tags: [],
@@ -646,8 +646,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'rewardsextension',
-    title: 'Microsoft Dynamics 365 Business Central (Part 7)',
-    description: 'Maps Extension',
+    title: 'Rewards Extension',
+    description: 'Rewards Extension',
     date: '2023-08-30',
     categories: ["Microsoft Dynamics", "Business Central", "Microsoft Dynamics"],
     tags: [],
@@ -655,8 +655,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'al-go-pte',
-    title: 'Microsoft Dynamics 365 Business Central (Part 6)',
-    description: 'AL-Go-PTE',
+    title: 'AL-Go-PTE',
+    description: 'Extensions',
     date: '2023-08-26',
     categories: ["Microsoft Dynamics", "Business Central", "DevOps", "Microsoft Dynamics"],
     tags: [],
@@ -664,8 +664,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'financialoperationspurchaseinvoice',
-    title: 'Microsoft Dynamics 365 Business Central (Part 5)',
-    description: 'AL-Go-PTE',
+    title: 'Financial Operations Purchase Invoice',
+    description: 'Payment Journals',
     date: '2023-08-20',
     categories: ["Microsoft Dynamics", "Business Central", "Microsoft Dynamics"],
     tags: [],
@@ -673,8 +673,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'warehousemanagementputaway',
-    title: 'Microsoft Dynamics 365 Business Central (Part 4)',
-    description: 'Put-away',
+    title: 'Warehouse Management Put away',
+    description: 'Warehouse Management - Put-away',
     date: '2023-08-19',
     categories: ["Microsoft Dynamics", "Business Central"],
     tags: [],
@@ -682,8 +682,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'businesscentraladmincenter',
-    title: 'Microsoft Dynamics 365 Business Central (Part 3)',
-    description: 'Admin Center',
+    title: 'Business Central Admin Center',
+    description: 'The Business Central Administration Center',
     date: '2023-08-18',
     categories: ["Microsoft Dynamics", "Business Central", "Microsoft Dynamics"],
     tags: [],
@@ -691,8 +691,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'businesscentralcanvasapps',
-    title: 'Microsoft Dynamics 365 Business Central (Part 2)',
-    description: 'Canvas Apps',
+    title: 'Business Central Canvas Apps',
+    description: 'Microsoft Dynamics 365 Business Central',
     date: '2023-08-14',
     categories: ["Microsoft Dynamics", "Business Central", "Microsoft Dynamics", "Power Platform"],
     tags: [],
@@ -700,8 +700,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'dynamicstrialsignup',
-    title: 'Microsoft Dynamics 365 Business Central (Part 1)',
-    description: 'Trial Signup',
+    title: 'Dynamics Trial Signup',
+    description: 'Microsoft Signup',
     date: '2023-08-14',
     categories: ["Microsoft Dynamics", "Business Central"],
     tags: [],
@@ -710,7 +710,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'spring-boot-6',
     title: 'Java Spring Boot (Part 6)',
-    description: 'OAuth2 Login',
+    description: 'GitHub',
     date: '2023-10-31',
     categories: ["Java"],
     tags: [],
@@ -719,7 +719,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'spring-boot-5',
     title: 'Java Spring Boot (Part 5)',
-    description: 'OAuth2 Login',
+    description: 'Spring for GraphQL',
     date: '2023-10-30',
     categories: ["Java", "React", "SQL", "AWS"],
     tags: [],
@@ -728,7 +728,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'spring-boot-4',
     title: 'Java Spring Boot (Part 4)',
-    description: 'Spring ModelAndView',
+    description: 'ModelAndView',
     date: '2023-10-29',
     categories: ["Java", "AI"],
     tags: [],
@@ -737,7 +737,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'spring-boot-3',
     title: 'Java Spring Boot (Part 3)',
-    description: 'Spring Data JPA',
+    description: 'SpringdatajpaApplication.java',
     date: '2023-10-28',
     categories: ["Java", "Azure"],
     tags: [],
@@ -746,7 +746,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'spring-boot-2',
     title: 'Java Spring Boot (Part 2)',
-    description: 'Deploying from GitHub to Azure',
+    description: 'References',
     date: '2023-10-26',
     categories: ["Azure", "Java", "DevOps"],
     tags: [],
@@ -772,8 +772,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'llamacorp',
-    title: 'Jupyter (Part 4)',
-    description: 'LM Studio',
+    title: 'LlamaCpp',
+    description: 'Accessing the llama.cpp model from Python',
     date: '2023-08-03',
     categories: ["AI", "Python"],
     tags: [],
@@ -781,8 +781,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'colorization',
-    title: 'Jupyter (Part 3)',
-    description: 'Colorization',
+    title: 'Colorization',
+    description: 'colorization.ipynb',
     date: '2023-08-03',
     categories: ["Python", "AI"],
     tags: [],
@@ -790,8 +790,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'stablediffusion',
-    title: 'Jupyter (Part 2)',
-    description: 'Colorization',
+    title: 'Stable Diffusion',
+    description: 'Stable Diffusion',
     date: '2023-08-01',
     categories: ["Python", "AI"],
     tags: [],
@@ -799,8 +799,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'applelaptop',
-    title: 'Jupyter (Part 1)',
-    description: 'Laptop Setup',
+    title: 'Apple MacBook',
+    description: 'Anaconda Setup',
     date: '2023-07-25',
     categories: ["Python", "AI"],
     tags: [],
@@ -808,8 +808,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'opencv',
-    title: 'Raspberry Pi (Part 4)',
-    description: 'Laptop Setup',
+    title: 'Object Detection',
+    description: 'Object Detection',
     date: '2023-07-25',
     categories: ["AI", "Python"],
     tags: [],
@@ -817,8 +817,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'sh1106',
-    title: 'Raspberry Pi (Part 3)',
-    description: 'Object Detection',
+    title: 'Raspberry Pi SH1106',
+    description: 'OLED display',
     date: '2023-07-24',
     categories: ["Python", "AI"],
     tags: [],
@@ -826,8 +826,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'pi2',
-    title: 'Raspberry Pi (Part 2)',
-    description: 'OLED display',
+    title: 'Raspberry Pi GPIO',
+    description: 'Raspberry Pi GPIO',
     date: '2023-07-22',
     categories: ["Python"],
     tags: [],
@@ -835,8 +835,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'pi1',
-    title: 'Raspberry Pi (Part 1)',
-    description: 'Raspberry Pi GPIO',
+    title: 'Raspberry Pi Imager',
+    description: 'Raspberry Pi Imager Advanced Options',
     date: '2023-07-22',
     categories: [],
     tags: [],
@@ -844,8 +844,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'langchain',
-    title: 'Natural Language Processing (Part 4)',
-    description: 'LangChain',
+    title: 'LangChain (RAG)',
+    description: 'Using LangChain to create a medical report application',
     date: '2023-07-21',
     categories: ["AI", "Python"],
     tags: [],
@@ -853,8 +853,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'contextinjection',
-    title: 'Natural Language Processing (Part 3)',
-    description: 'LangChain',
+    title: 'Context Injection',
+    description: 'Context Injection',
     date: '2023-07-19',
     categories: ["AI"],
     tags: [],
@@ -862,8 +862,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'sentencesimilarity',
-    title: 'Natural Language Processing (Part 2)',
-    description: 'A comprehensive guide covering sentencesimilarity',
+    title: 'Sentence Similarity',
+    description: 'Sentence Similarity',
     date: '2023-07-19',
     categories: ["AI"],
     tags: [],
@@ -871,8 +871,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'sentimentanalysis',
-    title: 'Natural Language Processing (Part 1)',
-    description: 'A comprehensive guide covering sentimentanalysis',
+    title: 'Sentiment Analysis',
+    description: 'Sentiment Analysis',
     date: '2023-07-19',
     categories: ["AI", "JavaScript"],
     tags: [],
@@ -880,8 +880,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: '3dprinting2',
-    title: '3D Printing (Part 2)',
-    description: 'A comprehensive guide covering 3d printing2',
+    title: '3D Printing 2',
+    description: 'Raspberry Pi 4 and Mini Breadboard mount',
     date: '2023-07-19',
     categories: [],
     tags: [],
@@ -889,8 +889,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: '3dprinting1',
-    title: '3D Printing (Part 1)',
-    description: 'A comprehensive guide covering 3d printing1',
+    title: '3D Printing 1',
+    description: 'ELEGOO Mars 3 Pro 4K Resin 3D Printer',
     date: '2023-07-15',
     categories: [],
     tags: [],
@@ -899,7 +899,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'vbnetconsolesqlserverunittests',
     title: 'VB.NET Console SQL Server Unit Tests',
-    description: 'Vbnet console sql server unit tests',
+    description: 'Test driven development',
     date: '2023-05-27',
     categories: ["SQL", "AI", ".NET"],
     tags: [],
@@ -907,8 +907,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'ticktacktoe',
-    title: 'Firebase Realtime Database',
-    description: 'Multiplayer Tick-Tack-Toe',
+    title: 'Multiplayer Tick-Tack-Toe',
+    description: 'Creating a new firebase project',
     date: '2023-05-10',
     categories: ["AI", "React"],
     tags: [],
@@ -917,7 +917,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'angularphaser',
     title: 'Angular and Phaser',
-    description: 'Multiplayer Tick-Tack-Toe',
+    description: 'Using Phaser in an Angular Component',
     date: '2023-05-10',
     categories: ["Angular", "JavaScript", "React"],
     tags: [],
@@ -925,8 +925,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'multiplayer',
-    title: 'Firebase Realtime Database',
-    description: 'Multiplayer Game',
+    title: 'Multiplayer Game',
+    description: 'Creating a new firebase project',
     date: '2023-05-09',
     categories: ["Maps", "DevOps"],
     tags: [],
@@ -935,7 +935,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'angularfirebase',
     title: 'Angular Firebase',
-    description: 'An Angular Firebase App',
+    description: 'Creating a new firebase project',
     date: '2023-04-25',
     categories: ["Angular", "TypeScript", "React", "JavaScript"],
     tags: [],
@@ -944,7 +944,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'firebase',
     title: 'Firebase',
-    description: 'A Firebase App',
+    description: 'Firebase web codelab',
     date: '2023-04-24',
     categories: ["JavaScript", "Azure"],
     tags: [],
@@ -953,7 +953,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'xcode4',
     title: 'XCode C++ (Part 4)',
-    description: 'GLM (OpenGL Mathematics)',
+    description: 'Rotating the triangle',
     date: '2023-03-27',
     categories: [],
     tags: [],
@@ -962,7 +962,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'vbnetwinforms',
     title: 'VB.NET WinForms and ASP.NET Core API',
-    description: 'A comprehensive guide covering vbnetwinforms',
+    description: 'VB.NET WinForms Development',
     date: '2023-03-27',
     categories: [".NET"],
     tags: [],
@@ -971,7 +971,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'aspnetcoreunittests',
     title: 'ASP.NET Core Unit Tests',
-    description: 'A comprehensive guide covering aspnetcoreunittests',
+    description: 'Test driven development',
     date: '2023-03-26',
     categories: [".NET"],
     tags: [],
@@ -979,8 +979,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'threetier',
-    title: 'Blazor WASM, ASP.NET Core and SQL Server',
-    description: 'A comprehensive guide covering threetier',
+    title: 'Blazor WASM API SQL Server Stored Procedure',
+    description: 'Three Tiers',
     date: '2023-03-25',
     categories: [".NET", "SQL"],
     tags: [],
@@ -989,7 +989,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'blazorwasmandasp.net',
     title: 'Blazor WASM and ASP.NET Core',
-    description: 'A comprehensive guide covering blazorwasmandasp.net',
+    description: 'An ASP.NET Core backend and a Blazor Web Assembly frontend.',
     date: '2023-03-24',
     categories: [".NET"],
     tags: [],
@@ -998,7 +998,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'angularandasp.net',
     title: 'Angular and ASP.NET Core',
-    description: 'A comprehensive guide covering angularandasp.net',
+    description: 'An ASP.NET Core backend and an Angular frontend.',
     date: '2023-03-24',
     categories: [".NET", "Angular", "TypeScript", "React"],
     tags: [],
@@ -1006,8 +1006,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'reactandasp.net',
-    title: 'React (Part 2)',
-    description: 'A comprehensive guide covering reactandasp.net',
+    title: 'React and ASP.NET Core',
+    description: 'An ASP.NET Core backend and a React frontend.',
     date: '2023-03-22',
     categories: ["React", ".NET"],
     tags: [],
@@ -1016,7 +1016,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'aspnet-core',
     title: 'ASP.NET Core',
-    description: 'A comprehensive guide covering asp.net core',
+    description: 'Create Razor Pages with ASP.NET Core.',
     date: '2023-03-21',
     categories: [".NET", "SQL"],
     tags: [],
@@ -1025,7 +1025,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'aspnet-5-cs',
     title: 'ASP.NET 5 C#',
-    description: 'A comprehensive guide covering asp.net 5 cs',
+    description: 'Generate Context and Entity Classes from an Existing Database',
     date: '2023-03-19',
     categories: [".NET", "AI"],
     tags: [],
@@ -1034,7 +1034,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'aspnet-5-visual-basic',
     title: 'ASP.NET 5 Visual Basic',
-    description: 'A comprehensive guide covering asp.net 5 visual basic',
+    description: 'Generate Context and Entity Classes from an Existing Database',
     date: '2023-03-18',
     categories: [".NET", "SQL", "DevOps", "Azure"],
     tags: [],
@@ -1043,7 +1043,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'dotnet-core-part2',
     title: '.NET Core (Part 2)',
-    description: 'A comprehensive guide covering dotnet core part2',
+    description: 'Creating a Blazor App that calls Microsoft Graph.',
     date: '2023-03-15',
     categories: [".NET", "Microsoft 365", "Azure", "Microsoft Dynamics"],
     tags: [],
@@ -1052,7 +1052,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'xcode3',
     title: 'XCode C++ (Part 3)',
-    description: 'OpenGL GLEW',
+    description: 'Building an OpenGL application using C++ and XCode',
     date: '2023-03-08',
     categories: [],
     tags: [],
@@ -1061,7 +1061,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'xcode2',
     title: 'XCode C++ (Part 2)',
-    description: 'OpenGL GLEW',
+    description: 'OpenGL GLFW',
     date: '2023-03-08',
     categories: [],
     tags: [],
@@ -1070,7 +1070,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'xcode1',
     title: 'XCode C++ (Part 1)',
-    description: 'OpenGL GLFW',
+    description: 'Hello, World!',
     date: '2023-03-08',
     categories: [],
     tags: [],
@@ -1079,7 +1079,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'threejs',
     title: 'Three.js',
-    description: 'Hello, World!',
+    description: 'A JavaScript-based WebGL engine',
     date: '2023-03-05',
     categories: ["JavaScript"],
     tags: [],
@@ -1088,7 +1088,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'ngrxentity',
     title: 'NGRX entity',
-    description: 'Managing record collections',
+    description: 'json-server',
     date: '2023-02-18',
     categories: ["TypeScript", "React", "Angular", "JavaScript"],
     tags: [],
@@ -1097,7 +1097,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'ngrxdevtools',
     title: 'NGRX devtools',
-    description: 'Troubleshooting NGRX applications',
+    description: 'haddley-ngrx',
     date: '2023-01-25',
     categories: ["Angular"],
     tags: [],
@@ -1105,8 +1105,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'sharepoint2019',
-    title: 'SharePoint 2019 Trial',
-    description: 'SharePoint hosted in Azure',
+    title: 'SharePoint 2019',
+    description: 'Azure Portal',
     date: '2022-12-31',
     categories: ["Microsoft 365", "SQL", "Azure"],
     tags: [],
@@ -1115,7 +1115,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'ngrx',
     title: 'NGRX',
-    description: 'A framework for building reactive applications in Angular',
+    description: 'haddley-ngrx',
     date: '2022-11-27',
     categories: ["Angular", "React", "TypeScript", "JavaScript"],
     tags: [],
@@ -1123,8 +1123,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'componentframework',
-    title: 'Power Apps (Part 7)',
-    description: 'Power Apps Component Framework',
+    title: 'Component Framework',
+    description: 'Component Framework',
     date: '2022-08-14',
     categories: ["Power Platform", "JavaScript", "React"],
     tags: [],
@@ -1142,7 +1142,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'purview',
     title: 'Microsoft Purview',
-    description: 'Manage compliance across Microsoft 365',
+    description: 'Retention policy with adaptive scope',
     date: '2022-08-03',
     categories: ["Microsoft 365"],
     tags: [],
@@ -1150,8 +1150,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'powerapps6',
-    title: 'Power Apps (Part 6)',
-    description: 'A Custom Connector for Microsoft Graph',
+    title: 'A Custom Connector for Microsoft Graph',
+    description: 'Calling the Microsoft Graph API from a Canvas App',
     date: '2022-07-04',
     categories: ["Microsoft 365", "Power Platform", "Azure"],
     tags: [],
@@ -1160,7 +1160,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'machinelearning9',
     title: 'Machine Learning (Part 9)',
-    description: 'The MNIST database',
+    description: 'MNIST',
     date: '2022-06-17',
     categories: ["AI"],
     tags: [],
@@ -1169,7 +1169,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'machinelearning8',
     title: 'Machine Learning (Part 8)',
-    description: 'Baseball Signs',
+    description: 'Stealing Baseball Signs',
     date: '2022-06-12',
     categories: ["AI"],
     tags: [],
@@ -1178,7 +1178,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'machinelearning7',
     title: 'Machine Learning (Part 7)',
-    description: 'AutoML Machine Learning Models',
+    description: 'Google Cloud Platform',
     date: '2022-06-11',
     categories: ["AI"],
     tags: [],
@@ -1187,7 +1187,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'machinelearning6',
     title: 'Machine Learning (Part 6)',
-    description: 'Binary classification',
+    description: 'Splitting into training and test dataframes',
     date: '2022-06-11',
     categories: ["AI"],
     tags: [],
@@ -1196,7 +1196,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'machinelearning5',
     title: 'Machine Learning (Part 5)',
-    description: 'Linear Regression',
+    description: 'Excel',
     date: '2022-06-11',
     categories: ["AI"],
     tags: [],
@@ -1205,7 +1205,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'machinelearning4',
     title: 'Machine Learning (Part 4)',
-    description: 'Notebooks',
+    description: 'Colab',
     date: '2022-06-08',
     categories: ["Python", "AI"],
     tags: [],
@@ -1214,7 +1214,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'machinelearning3',
     title: 'Machine Learning (Part 3)',
-    description: 'Notebooks',
+    description: 'Creating models',
     date: '2022-06-05',
     categories: ["AI", "DevOps"],
     tags: [],
@@ -1223,7 +1223,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'machinelearning2',
     title: 'Machine Learning (Part 2)',
-    description: 'Low hanging fruit',
+    description: 'What apps can be written quickly?',
     date: '2022-06-05',
     categories: ["AI"],
     tags: [],
@@ -1232,7 +1232,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'machinelearning1',
     title: 'Machine Learning (Part 1)',
-    description: 'Science fair',
+    description: 'What is Machine Learning?',
     date: '2022-06-05',
     categories: ["AI"],
     tags: [],
@@ -1241,7 +1241,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'ateamstabsharepointwebpartforonedrive',
     title: 'A Teams App SharePoint Web Part for One Drive',
-    description: 'Using SPFx and the Graph Toolkit',
+    description: 'The SharePoint Framework (SPFx) can be used to create SharePoint Web Parts and Teams Applications',
     date: '2022-05-29',
     categories: ["Microsoft 365", "React", "JavaScript", "TypeScript"],
     tags: [],
@@ -1250,7 +1250,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'javascriptgraph',
     title: 'JavaScript and Microsoft Graph',
-    description: 'A Node App that accesses Microsoft 365',
+    description: 'A console application that calls the Microsoft Graph API',
     date: '2022-05-28',
     categories: ["Microsoft 365", "Azure", "Java"],
     tags: [],
@@ -1259,7 +1259,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'microsoftgraph',
     title: 'Microsoft Graph',
-    description: 'Explore Microsoft 365',
+    description: 'Graph Explorer',
     date: '2022-05-26',
     categories: ["Microsoft 365", "Microsoft Dynamics"],
     tags: [],
@@ -1268,7 +1268,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'powerautomate',
     title: 'Power Automate',
-    description: 'Automate tasks in Microsoft 365',
+    description: 'Automating Team Creation',
     date: '2022-05-04',
     categories: ["Microsoft 365", "Power Platform"],
     tags: [],
@@ -1277,7 +1277,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'webxr',
     title: 'WebXR',
-    description: 'Create Augmented Reality Experiences',
+    description: 'Create Augmented Reality Experiences.',
     date: '2022-04-22',
     categories: ["JavaScript"],
     tags: [],
@@ -1286,7 +1286,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'leaflet',
     title: 'Leaflet',
-    description: 'A comprehensive guide covering leaflet',
+    description: 'An open-source JavaScript libraryfor mobile-friendly interactive maps',
     date: '2022-02-21',
     categories: ["Maps", "Azure"],
     tags: [],
@@ -1295,7 +1295,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'webcomponents',
     title: 'Web Components',
-    description: 'A comprehensive guide covering webcomponents',
+    description: 'A set of web technologies that allow users to create HTML elements.',
     date: '2022-02-10',
     categories: ["React"],
     tags: [],
@@ -1304,7 +1304,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'phaser',
     title: 'Phaser',
-    description: 'A comprehensive guide covering phaser',
+    description: '2D game framework used for making HTML5 games',
     date: '2022-01-23',
     categories: ["JavaScript", ".NET"],
     tags: [],
@@ -1313,7 +1313,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'nextjs5',
     title: 'Next.js (Part 5)',
-    description: 'A comprehensive guide covering nextjs5',
+    description: 'next-pwa and ionic',
     date: '2022-01-13',
     categories: ["TypeScript", "React", ".NET"],
     tags: [],
@@ -1321,8 +1321,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'ionic',
-    title: 'Ionic and PouchDB',
-    description: 'A comprehensive guide covering ionic',
+    title: 'Ionic',
+    description: 'Cross-platform apps.Powered by the Web.',
     date: '2021-12-22',
     categories: ["React", "TypeScript", "Azure", "DevOps"],
     tags: [],
@@ -1331,7 +1331,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'mysql',
     title: 'MySQL',
-    description: 'A comprehensive guide covering mysql',
+    description: 'Connecting to MySQL from JavaScript',
     date: '2021-11-14',
     categories: ["SQL"],
     tags: [],
@@ -1340,7 +1340,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'nextjs4',
     title: 'Next.js (Part 4)',
-    description: 'A comprehensive guide covering nextjs4',
+    description: 'Deploying to Azure',
     date: '2021-11-11',
     categories: ["Azure", "JavaScript", "React", ".NET"],
     tags: [],
@@ -1349,7 +1349,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'nextjs3',
     title: 'Next.js (Part 3)',
-    description: 'A comprehensive guide covering nextjs3',
+    description: 'API routes and next-auth',
     date: '2021-11-07',
     categories: ["JavaScript", "React"],
     tags: [],
@@ -1358,7 +1358,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'nextjs2',
     title: 'Next.js (Part 2)',
-    description: 'A comprehensive guide covering nextjs2',
+    description: 'getStaticProps, getServerSideProps, getStaticPaths and useSWR',
     date: '2021-11-06',
     categories: ["React"],
     tags: [],
@@ -1367,7 +1367,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'nextjs1',
     title: 'Next.js (Part 1)',
-    description: 'A comprehensive guide covering nextjs1',
+    description: 'The React Framework for Production',
     date: '2021-11-05',
     categories: ["JavaScript", "React"],
     tags: [],
@@ -1376,7 +1376,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'sails3',
     title: 'Sails (Part 3)',
-    description: 'A comprehensive guide covering sails3',
+    description: 'Sails and the Amazon Elastic Kubernetes Service',
     date: '2021-10-13',
     categories: ["DevOps", "AWS", "Azure", "JavaScript"],
     tags: [],
@@ -1385,7 +1385,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'sails2',
     title: 'Sails (Part 2)',
-    description: 'A comprehensive guide covering sails2',
+    description: 'Sails and the Azure Cosmos DB API for MongoDB',
     date: '2021-10-12',
     categories: ["Azure", ".NET", "AI"],
     tags: [],
@@ -1394,7 +1394,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'sails1',
     title: 'Sails (Part 1)',
-    description: 'A comprehensive guide covering sails1',
+    description: 'Azure DevOps and Sails.',
     date: '2021-10-12',
     categories: ["DevOps", "JavaScript", "Azure", "AI"],
     tags: [],
@@ -1402,8 +1402,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'aspnetcoreawseks',
-    title: 'Amazon EKS (Part 2)',
-    description: 'A comprehensive guide covering aspnetcoreawseks',
+    title: 'Deploying a .NET Core Web API to Amazon EKS',
+    description: 'Deploying a .NET Core Web API to Amazon Elastic Kubernetes Service (Amazon EKS)',
     date: '2021-08-16',
     categories: ["AWS", "DevOps", ".NET"],
     tags: [],
@@ -1411,8 +1411,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'amazoneks',
-    title: 'Amazon EKS (Part 1)',
-    description: 'A comprehensive guide covering  amazon e k s',
+    title: 'Amazon Elastic Kubernetes Service',
+    description: 'Deploying to Amazon EKS',
     date: '2021-08-12',
     categories: ["AWS", "DevOps"],
     tags: [],
@@ -1421,7 +1421,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'amazonecs',
     title: 'Amazon Elastic Container Service',
-    description: 'A comprehensive guide covering amazon elastic container service',
+    description: 'Deploying to Amazon ECS',
     date: '2025-09-20',
     categories: ["AWS", "DevOps", "AI"],
     tags: [],
@@ -1430,7 +1430,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'amazonfargate',
     title: 'Amazon Fargate',
-    description: 'A comprehensive guide covering amazon fargate',
+    description: 'Pay-as-you-go',
     date: '2025-09-20',
     categories: ["AWS", "DevOps"],
     tags: [],
@@ -1438,8 +1438,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'customconnectorsappregistrations',
-    title: 'Power Apps (Part 5)',
-    description: 'A comprehensive guide covering customconnectorsappregistrations',
+    title: 'Power Apps, Custom Connectors and Application Registrations',
+    description: 'Power Apps, Custom Connectors and Application Registrations',
     date: '2021-08-09',
     categories: ["Azure", "JavaScript", "Power Platform"],
     tags: [],
@@ -1447,8 +1447,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'api-management',
-    title: 'Power Apps (Part 4)',
-    description: 'A comprehensive guide covering  a p i  management',
+    title: 'Power Apps, Custom Connectors and API Management',
+    description: 'Power Apps, Custom Connectors and API Management',
     date: '2021-08-02',
     categories: ["Power Platform", "Azure"],
     tags: [],
@@ -1457,7 +1457,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'pwa',
     title: 'Progressive Web Application',
-    description: 'A comprehensive guide covering pwa',
+    description: 'Building a Progressive Web Application',
     date: '2021-07-24',
     categories: ["Azure"],
     tags: [],
@@ -1465,8 +1465,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'powerappsapplication',
-    title: 'Power Apps (Part 3)',
-    description: 'A comprehensive guide covering powerappsapplication',
+    title: 'A Power Apps Application',
+    description: 'Power Apps Application.',
     date: '2021-07-13',
     categories: ["Power Platform", "React"],
     tags: [],
@@ -1474,8 +1474,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'customcomponents',
-    title: 'Power Apps (Part 2)',
-    description: 'A comprehensive guide covering customcomponents',
+    title: 'Power Apps Custom Components',
+    description: 'Create reusable Power Apps Components.',
     date: '2021-07-13',
     categories: ["Power Platform", "React"],
     tags: [],
@@ -1483,8 +1483,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'powerappswithrest',
-    title: 'Power Apps (Part 1)',
-    description: 'A comprehensive guide covering powerappswithrest',
+    title: 'A Power Apps Custom Connector',
+    description: 'Create a GitHub Repository',
     date: '2021-06-27',
     categories: ["Power Platform", ".NET", "Azure"],
     tags: [],
@@ -1493,7 +1493,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'teamstoolkitspfx',
     title: 'Teams Toolkit with SPFx',
-    description: 'A comprehensive guide covering teamstoolkitspfx',
+    description: 'Get started with Microsoft Teams app development using SPFx.',
     date: '2021-05-30',
     categories: ["Microsoft 365", "Azure"],
     tags: [],
@@ -1502,7 +1502,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'teamstoolkit',
     title: 'Teams Toolkit with Azure',
-    description: 'A comprehensive guide covering teamstoolkit',
+    description: 'Get started with Microsoft Teams app development using Azure.',
     date: '2021-05-29',
     categories: ["Microsoft 365", "Azure", "React", "SQL"],
     tags: [],
@@ -1511,7 +1511,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'devopsstarterazuredevops',
     title: 'DevOps Starter Azure DevOps',
-    description: 'A comprehensive guide covering devopsstarterazuredevops',
+    description: 'Everything you need for developing, deploying, and monitoring your application.',
     date: '2021-04-26',
     categories: ["DevOps", "Azure", "JavaScript"],
     tags: [],
@@ -1520,7 +1520,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'devopsstartergithubactions',
     title: 'DevOps Starter GitHub actions',
-    description: 'A comprehensive guide covering devopsstartergithubactions',
+    description: 'Everything you need for developing, deploying, and monitoring your application.',
     date: '2021-04-25',
     categories: ["JavaScript", "DevOps", "Azure"],
     tags: [],
@@ -1529,7 +1529,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'azure-active-directory2',
     title: 'Azure Active Directory (Part 2)',
-    description: 'A comprehensive guide covering azure-active-directory2',
+    description: 'Microsoft Azure Active Directory Authentication.',
     date: '2021-04-17',
     categories: ["Azure", "JavaScript", "React", "Microsoft 365"],
     tags: [],
@@ -1538,7 +1538,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'dotnet-core-part1',
     title: '.NET Core (Part 1)',
-    description: 'A comprehensive guide covering dotnet core part1',
+    description: 'Creating a REST API Service using Microsoft cross-platform framework.',
     date: '2021-04-10',
     categories: ["React", "Java", "DevOps"],
     tags: [],
@@ -1547,7 +1547,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'spring-boot',
     title: 'Java Spring Boot (Part 1)',
-    description: 'A comprehensive guide covering spring-boot',
+    description: 'Spring based Java Applications that you can just run.',
     date: '2021-04-06',
     categories: ["Java", "React"],
     tags: [],
@@ -1556,7 +1556,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'azure-active-directory',
     title: 'Azure Active Directory (Part 1)',
-    description: 'A comprehensive guide covering azure-active-directory',
+    description: 'Using Microsoft Identity to Authenticate Users.',
     date: '2021-03-29',
     categories: ["Azure", "JavaScript", "Microsoft 365"],
     tags: [],
@@ -1565,7 +1565,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'mssqlserver2',
     title: 'Microsoft SQL Server (Part 2)',
-    description: 'A comprehensive guide covering mssqlserver2',
+    description: 'T-SQL, Stored Procedures and Snapshot Isolation.',
     date: '2021-03-27',
     categories: ["SQL", "Java"],
     tags: [],
@@ -1574,7 +1574,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'mssqlserver',
     title: 'Microsoft SQL Server (Part 1)',
-    description: 'A comprehensive guide covering mssqlserver',
+    description: 'Microsoft SQL Server 2019 Docker image.',
     date: '2021-03-14',
     categories: ["SQL", "Java", "DevOps"],
     tags: [],
@@ -1583,7 +1583,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'internetofthings2',
     title: 'Internet of Things (Part 2)',
-    description: 'A comprehensive guide covering internet of things2',
+    description: 'Node-RED can publish messages to a MQTT broker and subscribe to MQTT topics.',
     date: '2021-03-06',
     categories: ["AWS", "DevOps"],
     tags: [],
@@ -1592,7 +1592,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'internetofthings1',
     title: 'Internet of Things (Part 1)',
-    description: 'A comprehensive guide covering internet of things1',
+    description: 'ESP8266 is a low-cost Wi-Fi microchip, with a full TCP/IP stack and microcontroller capability.',
     date: '2021-03-03',
     categories: ["DevOps", "Java"],
     tags: [],
@@ -1601,7 +1601,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'webvr',
     title: 'WebVR',
-    description: 'A comprehensive guide covering  web v r',
+    description: 'Create Virtual Reality Experiences.',
     date: '2021-03-02',
     categories: [],
     tags: [],
@@ -1610,7 +1610,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'dockerbuildx',
     title: 'Docker Buildx',
-    description: 'A comprehensive guide covering dockerbuildx',
+    description: 'Build multi-platform Docker images.',
     date: '2021-03-01',
     categories: ["DevOps", "JavaScript"],
     tags: [],
@@ -1619,7 +1619,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'graphql',
     title: 'GraphQL',
-    description: 'A comprehensive guide covering  graph q l',
+    description: 'GraphQL is a query and manipulation language for APIs.',
     date: '2021-03-01',
     categories: ["JavaScript", "React"],
     tags: [],
@@ -1628,7 +1628,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'nuget',
     title: 'NuGet C#',
-    description: 'A comprehensive guide covering nuget',
+    description: 'Create, publish and consume a NuGet package using C#.',
     date: '2021-02-27',
     categories: [".NET", "DevOps"],
     tags: [],
@@ -1637,7 +1637,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'npmcc',
     title: 'npm C++',
-    description: 'A comprehensive guide covering npm c c',
+    description: 'Create and publish an npm module using C++.',
     date: '2021-02-26',
     categories: ["JavaScript", "DevOps"],
     tags: [],
@@ -1646,7 +1646,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'npm',
     title: 'npm JavaScript',
-    description: 'A comprehensive guide covering npm',
+    description: 'Create and publish an npm module using JavaScript.',
     date: '2021-02-25',
     categories: ["JavaScript", "DevOps"],
     tags: [],
@@ -1654,8 +1654,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'm365commandlineinterface',
-    title: 'A Command Line Interface for Microsoft 365',
-    description: 'A comprehensive guide covering m365 command line interface',
+    title: 'Microsoft 365 command line interface',
+    description: 'Manage Microsoft 365 tenants and SharePoint Framework projects',
     date: '2021-02-22',
     categories: ["Microsoft 365", "DevOps"],
     tags: [],
@@ -1664,7 +1664,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'sharepointsitedesignsandsitescripts',
     title: 'SharePoint site designs and site scripts',
-    description: 'A comprehensive guide covering sharepointsitedesignsandsitescripts',
+    description: 'SharePoint users and administrators have long appreciated the opportunity to reuse SharePoint Site Templates.',
     date: '2021-02-15',
     categories: ["Microsoft 365"],
     tags: [],
@@ -1673,7 +1673,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'sharepointwebpart2',
     title: 'SharePoint Web Part (Part 2)',
-    description: 'A comprehensive guide covering sharepointwebpart2',
+    description: 'How to create and publish a SharePoint Web Part',
     date: '2021-02-14',
     categories: ["React", "Microsoft 365", "TypeScript"],
     tags: [],
@@ -1682,7 +1682,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'sharepointwebpart1',
     title: 'SharePoint Web Part (Part 1)',
-    description: 'A comprehensive guide covering sharepointwebpart1',
+    description: 'How to create and publish a SharePoint Web Part',
     date: '2021-02-11',
     categories: ["React", "Microsoft 365", "TypeScript"],
     tags: [],
@@ -1691,7 +1691,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'apigateway',
     title: 'API Gateway',
-    description: 'A comprehensive guide covering apigateway',
+    description: 'How to publish a collection of microservices using an API Gateway.',
     date: '2021-02-10',
     categories: ["DevOps", "React", "AWS", "Azure"],
     tags: [],
@@ -1699,8 +1699,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'reactusestateuseeffect',
-    title: 'React (Part 1)',
-    description: 'A comprehensive guide covering reactusestateuseeffect',
+    title: 'React useState and useEffect',
+    description: 'Create a React app using the useState and useEffect hook.',
     date: '2021-02-08',
     categories: ["React"],
     tags: [],
@@ -1709,7 +1709,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'restapiservice',
     title: 'REST',
-    description: 'A comprehensive guide covering restapiservice',
+    description: 'Creating a REST API Service using Node and Express',
     date: '2021-02-06',
     categories: ["JavaScript", "DevOps"],
     tags: [],
@@ -1718,7 +1718,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'kubernetes',
     title: 'Kubernetes',
-    description: 'A comprehensive guide covering kubernetes',
+    description: 'Kubernetes is a platform for managing containerized workloads.',
     date: '2021-02-06',
     categories: ["DevOps"],
     tags: [],
@@ -1727,7 +1727,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'docker',
     title: 'Docker',
-    description: 'A comprehensive guide covering docker',
+    description: 'Docker is an easy way to create, manage, and deliver applications.',
     date: '2021-02-06',
     categories: ["DevOps"],
     tags: [],

@@ -1,6 +1,6 @@
 ---
 title: "Map Extension"
-description: "A comprehensive guide covering map extension"
+description: "Map Extension"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/mapextension/hero.png"

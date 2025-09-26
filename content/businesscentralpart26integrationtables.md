@@ -1,6 +1,6 @@
 ---
 title: "Business Central (Part 26) Integration Tables"
-description: "A comprehensive guide covering business central (part 26) integration tables"
+description: "AL Table Proxy Generator"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/businesscentralpart26integrationtables/hero.png"

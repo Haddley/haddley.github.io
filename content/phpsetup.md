@@ -1,6 +1,6 @@
 ---
 title: "PHP Setup"
-description: "A comprehensive guide covering php setup"
+description: "Setup"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/phpsetup/hero.png"

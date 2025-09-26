@@ -1,6 +1,6 @@
 ---
 title: "Raspberry Pi Imager"
-description: "A comprehensive guide covering raspberry pi imager"
+description: "Raspberry Pi Imager Advanced Options"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/pi1/hero.png"

@@ -1,6 +1,6 @@
 ---
 title: "AL-Go-PTE"
-description: "A comprehensive guide covering al-go-pte"
+description: "Extensions"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/al-go-pte/hero.png"
@@ -10,8 +10,6 @@ tags: ["docker","devops","ai","business central","dynamics"]
 ![](/assets/images/al-go-pte/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 
-
-## Extensions
 
 You can change Business Central by installing apps that add functionality, change behaviour, or give you access to 3rd party online services.
 

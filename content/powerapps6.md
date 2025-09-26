@@ -1,6 +1,6 @@
 ---
 title: "A Custom Connector for Microsoft Graph"
-description: "A comprehensive guide covering a custom connector for microsoft graph"
+description: "Calling the Microsoft Graph API from a Canvas App"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/powerapps6/hero.png"
@@ -10,8 +10,6 @@ tags: ["azure","ai"]
 ![](/assets/images/powerapps6/office-365-icon-500x500.png)
 *This file is licensed under the Creative Commons Attribution 4.0 International license.*
 
-
-## Calling the Microsoft Graph API from a Canvas App
 
 I started by creating a "Microsoft Graph" application registration in Azure Active Directory
 

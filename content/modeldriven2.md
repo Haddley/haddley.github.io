@@ -1,6 +1,6 @@
 ---
 title: "Model Driven Apps (Part 2)"
-description: "A comprehensive guide covering model driven apps (part 2)"
+description: "Environments"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/modeldriven2/hero.png"
@@ -15,8 +15,6 @@ Business process flows help people complete their tasks. They offer an interface
 
 I created a **Project** table and a four step business process flow.
 
-
-## Environments
 
 The random urls assigned to Power Platform Environments can be updated.
 

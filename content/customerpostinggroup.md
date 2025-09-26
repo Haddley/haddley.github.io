@@ -1,11 +1,14 @@
 ---
 title: "Customer Posting Group"
-description: "A comprehensive guide covering customer posting group"
+description: "Which accounts receivable account?"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/customerpostinggroup/hero.png"
 tags: ["ai","dynamics"]
 ---
+
+# Customer Posting Group
+## Which accounts receivable account?
 
 ![](/assets/images/customerpostinggroup/dynamics365-color.svg)
 *By Microsoft, Public Domain*

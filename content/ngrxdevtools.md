@@ -1,6 +1,6 @@
 ---
 title: "NGRX devtools"
-description: "A comprehensive guide covering ngrx devtools"
+description: "haddley-ngrx"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/ngrxdevtools/hero.png"
@@ -10,8 +10,6 @@ tags: ["angular","git","github"]
 ![](/assets/images/ngrxdevtools/ngrx.svg)
 *This file is licensed under the Creative Commons 4.0.*
 
-
-## haddley-ngrx
 
 I updated the version of @angular and @ngrx using in the haddley-ngrx project
 

@@ -1,13 +1,15 @@
 ---
-title: "Topics"
-description: "A comprehensive guide covering topics"
+title: "Copilot"
+description: "Topics"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/topics/hero.png"
 tags: ["business central"]
 ---
 
-# Topics
+# Copilot
+
+## Topics
 
 ![](/assets/images/topics/office-365-icon-500x500.png)
 *This file is licensed under the Creative Commons Attribution 4.0 International license.*

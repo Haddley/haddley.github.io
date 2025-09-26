@@ -1,6 +1,6 @@
 ---
 title: "Fine Tuning"
-description: "A comprehensive guide covering fine tuning"
+description: "Fine Tuning"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/finetuning/hero.png"

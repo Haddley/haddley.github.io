@@ -1,6 +1,6 @@
 ---
 title: "Java Spring Boot (Spare)"
-description: "A comprehensive guide covering java spring boot (spare)"
+description: "Spring Data JPA"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/page141/hero.png"

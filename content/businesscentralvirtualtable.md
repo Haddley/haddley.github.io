@@ -1,6 +1,6 @@
 ---
 title: "Business Central Virtual Table"
-description: "A comprehensive guide covering business central virtual table"
+description: "Microsoft Dynamics 365 Business Central Virtual Tables for Microsoft Dataverse"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/businesscentralvirtualtable/hero.png"

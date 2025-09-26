@@ -1,6 +1,6 @@
 ---
 title: "Machine Learning (Part 8)"
-description: "A comprehensive guide covering machine learning (part 8)"
+description: "Stealing Baseball Signs"
 date: "2025-09-20"
 category: "AI/ML"
 image: "/assets/images/machinelearning8/hero.png"
@@ -10,8 +10,6 @@ tags: ["ai","ml","machine learning","git","github"]
 ![](/assets/images/machinelearning8/tensorflow-logo.svg)
 *Tensorflow logo does not meet the threshold of originality needed for copyright protection, and is therefore in the public domain*
 
-
-## Stealing Baseball Signs
 
 Can we predict when a baseball player is going to try to "steal"?
 

@@ -1,6 +1,6 @@
 ---
 title: "Warehouse Management Put away"
-description: "A comprehensive guide covering warehouse management put away"
+description: "Warehouse Management - Put-away"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/warehousemanagementputaway/hero.png"
@@ -12,8 +12,6 @@ tags: ["ai","business central","dynamics"]
 ![](/assets/images/warehousemanagementputaway/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 
-
-## Warehouse Management - Put-away
 
 Businesses that physically move goods in and out of their warehouse need to be able to receive, pick, and ship items.
 

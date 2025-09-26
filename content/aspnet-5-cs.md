@@ -1,6 +1,6 @@
 ---
 title: "ASP.NET 5 C#"
-description: "A comprehensive guide covering asp.net 5 c#"
+description: "Generate Context and Entity Classes from an Existing Database"
 date: "2025-09-20"
 category: ".NET"
 image: "/assets/images/aspnet-5-cs/hero.png"

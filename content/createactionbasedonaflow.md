@@ -1,11 +1,14 @@
 ---
 title: "Create action based on a flow"
-description: "A comprehensive guide covering create action based on a flow"
+description: "Created from the Business Central user interface"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/createactionbasedonaflow/hero.png"
 tags: ["ai","business central","dynamics"]
 ---
+
+# Create action based on a flow
+## Created from the Business Central user interface
 
 ![](/assets/images/createactionbasedonaflow/dynamics365-color.svg)
 *By Microsoft, Public Domain*

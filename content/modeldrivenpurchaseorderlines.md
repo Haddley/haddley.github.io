@@ -1,11 +1,16 @@
 ---
 title: "Model Driven Purchase Order Lines"
-description: "A comprehensive guide covering model driven purchase order lines"
+description: "manage Business Central Purchase Order Lines"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/modeldrivenpurchaseorderlines/hero.png"
 tags: ["ai","business central","power platform"]
 ---
+
+# Model Driven Purchase Order Lines
+
+## manage Business Central Purchase Order Lines
+
 
 ![](/assets/images/modeldrivenpurchaseorderlines/office-365-icon-500x500.png)
 *This file is licensed under the Creative Commons Attribution 4.0 International license.*

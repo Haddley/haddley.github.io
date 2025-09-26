@@ -1,6 +1,6 @@
 ---
 title: "Yolo"
-description: "A comprehensive guide covering yolo"
+description: "You only look once, real time object detection"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/yolo/hero.png"
@@ -9,7 +9,7 @@ tags: ["ai"]
 
 # Yolo
 
-## You only look once, real time object detection (YOLO)
+## You only look once, real time object detection
 
 ![](/assets/images/yolo/chatgpt-logo.svg)
 *This image of simple geometry is ineligible for copyright and therefore in the public domain, because it consists entirely of information that is common property and contains no original authorship.*

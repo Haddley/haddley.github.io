@@ -1,6 +1,6 @@
 ---
 title: "Sails (Part 3)"
-description: "A comprehensive guide covering sails (part 3)"
+description: "Sails and the Amazon Elastic Kubernetes Service"
 date: "2025-09-20"
 category: "AWS"
 image: "/assets/images/sails3/hero.png"

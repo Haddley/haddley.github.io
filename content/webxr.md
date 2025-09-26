@@ -1,6 +1,6 @@
 ---
 title: "WebXR"
-description: "A comprehensive guide covering webxr"
+description: "Create Augmented Reality Experiences."
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/webxr/hero.png"

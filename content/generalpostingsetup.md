@@ -1,11 +1,13 @@
 ---
 title: "General Posting Setup"
-description: "A comprehensive guide covering general posting setup"
-date: "2025-09-20"
+description: "Which accounts payable ledger account"
 category: "Business Central"
 image: "/assets/images/generalpostingsetup/hero.png"
 tags: ["ai","dynamics"]
 ---
+
+# General Posting Setup
+## Which accounts payable ledger account
 
 ![](/assets/images/generalpostingsetup/dynamics365-color.svg)
 *By Microsoft, Public Domain*

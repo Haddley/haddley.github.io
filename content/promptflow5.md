@@ -1,6 +1,6 @@
 ---
 title: "Prompt Flow (Part 5)"
-description: "A comprehensive guide covering prompt flow (part 5)"
+description: "Quick start"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/promptflow5/hero.png"
@@ -10,8 +10,6 @@ tags: ["docker","python","ai"]
 ![](/assets/images/promptflow5/logo.svg)
 *This file is licensed under the MIT license.*
 
-
-## Quick start
 
 I used Prompt flow and LangChain to create and deploy an AI application.
 

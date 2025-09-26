@@ -1,6 +1,6 @@
 ---
 title: "Machine Learning (Part 2)"
-description: "A comprehensive guide covering machine learning (part 2)"
+description: "What apps can be written quickly?"
 date: "2025-09-20"
 category: "AI/ML"
 image: "/assets/images/machinelearning2/hero.png"
@@ -10,8 +10,6 @@ tags: ["javascript","java","python","sql","ai"]
 ![](/assets/images/machinelearning2/tensorflow-logo.svg)
 *Tensorflow logo does not meet the threshold of originality needed for copyright protection, and is therefore in the public domain*
 
-
-## What apps can be written quickly?
 
 In her [YouTube video](https://www.youtube.com/watch?v=BjTNJSQLIeA) Dale Markowitz explains why some machine learning powered applications can be built quickly and why others can not.
 

@@ -1,6 +1,6 @@
 ---
 title: "Sails (Part 1)"
-description: "A comprehensive guide covering sails (part 1)"
+description: "Azure DevOps and Sails."
 date: "2025-09-20"
 category: "AI/ML"
 image: "/assets/images/sails1/hero.png"

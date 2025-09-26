@@ -1,21 +1,19 @@
 ---
-title: "Amazon Elastic Kubernetes Service (Amazon EKS)"
-description: "A comprehensive guide covering amazon elastic kubernetes service (amazon eks)"
+title: "Amazon Elastic Kubernetes Service"
+description: "Deploying to Amazon EKS"
 date: "2025-09-20"
 category: "AWS"
 image: "/assets/images/amazoneks/hero.png"
 tags: ["aws","cloud","docker","kubernetes","ai"]
 ---
 
-# Amazon Elastic Kubernetes Service (Amazon EKS)
+# Amazon Elastic Kubernetes Service
 
-## Deploying to Amazon Elastic Kubernetes Service (Amazon EKS)
+## Deploying to Amazon EKS
 
 ![AWS](/assets/images/amazoneks/amazon-web-services-logo.svg)
 *By Amazon.com Inc. - Amazon, Apache License 2.0*
 
-
-## Amazon Elastic Kubernetes Service (Amazon EKS)
 
 Amazon Elastic Kubernetes Service (Amazon EKS) makes it possible to deploy, manage, and scale [containerized](docker.html) applications using [Kubernetes](kubernetes.html) on AWS. 
 

@@ -1,6 +1,6 @@
 ---
 title: "Dynamics Trial Signup"
-description: "A comprehensive guide covering dynamics trial signup"
+description: "Microsoft Signup"
 date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/dynamicstrialsignup/hero.png"
@@ -12,8 +12,6 @@ tags: ["ai","dynamics"]
 ![](/assets/images/dynamicstrialsignup/dynamics365-color.svg)
 *By Microsoft, Public Domain*
 
-
-## Microsoft Signup
 
 I created a littleburra.onmicrosoft.com tenant
 

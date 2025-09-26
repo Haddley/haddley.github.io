@@ -1,6 +1,6 @@
 ---
 title: "Stable Diffusion"
-description: "A comprehensive guide covering stable diffusion"
+description: "Stable Diffusion"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/stablediffusion/hero.png"

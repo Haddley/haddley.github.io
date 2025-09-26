@@ -1,6 +1,6 @@
 ---
 title: "Docker"
-description: "A comprehensive guide covering Docker"
+description: "Docker is an easy way to create, manage, and deliver applications."
 date: "2021-02-06"
 category: "DevOps"
 image: "/assets/images/docker/hero.png"

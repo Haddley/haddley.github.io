@@ -1,11 +1,15 @@
 ---
 title: "Microsoft Dataverse Reports"
-description: "A comprehensive guide covering microsoft dataverse reports"
+description: "Creating a Dataverse Report"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/dataversereports/hero.png"
 tags: []
 ---
+
+# Microsoft Dataverse Reports
+
+## Creating a Dataverse Report
 
 ![](/assets/images/dataversereports/office-365-icon-500x500.png)
 *This file is licensed under the Creative Commons Attribution 4.0 International license.*
