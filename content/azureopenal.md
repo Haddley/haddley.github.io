@@ -1,6 +1,6 @@
 ---
 title: "Azure AI service"
-description: "s Azure OpenAl"
+description: "Azure OpenAl"
 date: "2025-09-20"
 category: "Azure"
 image: "/assets/images/azureopenal/hero.png"

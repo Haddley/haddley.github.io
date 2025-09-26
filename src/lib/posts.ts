@@ -116,7 +116,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'azureopenal',
     title: 'Azure AI service',
-    description: 's Azure OpenAl',
+    description: 'Azure OpenAl',
     date: '2025-02-04',
     categories: ["Azure", "AI"],
     tags: [],
