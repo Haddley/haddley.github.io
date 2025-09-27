@@ -110,6 +110,7 @@ An OnPost() method is executed when a browser sends a POST request to the server
 
 ![](/assets/images/aspnet-core/capturec-35-1361x516.png)
 *I updated the ToDoContext class's OnModelCreating() method (removing the hardcoded connection string).*
+
 ## References
 
 - [Compare Razor Pages to ASP.NET MVC](https://learn.microsoft.com/en-us/aspnet/mvc/overview/getting-started/introduction/getting-started)

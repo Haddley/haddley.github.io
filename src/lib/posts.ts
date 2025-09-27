@@ -1540,7 +1540,7 @@ export const blogPosts: BlogPost[] = [
     title: '.NET Core (Part 1)',
     description: 'Creating a REST API Service using Microsoft cross-platform framework.',
     date: '2021-04-10',
-    categories: ["React", "Java", "DevOps"],
+    categories: [".NET", "DevOps"],
     tags: [],
     image: '/assets/images/net-logo.svg'
   },

@@ -193,6 +193,7 @@ spec:
       targetPort: 5000
   type: LoadBalancer
 ```
+
 ## References
 
 - [ASP.NET Core in a container](https://code.visualstudio.com/docs/containers/quickstart-aspnet-core)

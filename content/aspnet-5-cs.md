@@ -114,6 +114,7 @@ I used Visual Studio 2019 and ASP.NET MVC 5 to create a todo app.
 
 ![](/assets/images/aspnet-5-cs/capturea-30-running-tasks-index-page-1366x640.png)
 *The TaskController.Index function is executed when a user navigates to /Tasks (see above)*
+
 ## References
 
 - [Getting started with ASP.NET MVC 5](https://learn.microsoft.com/en-us/aspnet/mvc/overview/getting-started/introduction/getting-started)

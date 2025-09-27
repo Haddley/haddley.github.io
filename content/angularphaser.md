@@ -64,6 +64,7 @@ Update angular.json:
 
 ![](/assets/images/angularphaser/screen-shot-2023-04-23-at-9.22.08-pm-1836x1231.png)
 *running*
+
 ## References
 
 - [Using Phaser in an Angular 8 Component](https://braelynnn.medium.com/using-phaser-in-an-angular-8-component-53644a2280e3)

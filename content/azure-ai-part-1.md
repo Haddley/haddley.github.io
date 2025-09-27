@@ -106,7 +106,7 @@ async function generateText(prompt) {
 ```
 
 ## Best Practices
-}
+
 ```
 
 ## Best Practices
@@ -125,8 +125,11 @@ In the next part of this series, we'll explore:
 - Monitoring and governance
 
 Azure AI services provide powerful capabilities for adding intelligence to your applications with minimal complexity.
+```
 
 ## References
 
 - [Get started with the Python enterprise chat sample using RAG](https://learn.microsoft.com/en-us/azure/developer/python/get-started-app-chat-template?tabs=github-codespaces) - Microsoft Learn tutorial on building enterprise chat applications with Retrieval Augmented Generation using Python and Azure.
+
 - [Request access to Azure OpenAI service](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR7en2Ais5pxKtso_Pz4b1_xUNTZBNzRKNlVQSFhZMU9aV09EVzYxWFdORCQlQCN0PWcu) - Application form to request access to Azure OpenAI services for your organization.
+
