@@ -368,6 +368,6 @@ The update function animates the scene (moving the fish and the bubbles).
 
 ## References
 
-- [preschool art](https://haddley.github.io/aquarium/index.html)
+- [Aquarium](https://haddley.github.io/aquarium/index.html)
 
 

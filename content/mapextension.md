@@ -283,3 +283,7 @@ function GetCityLocation(city) {
     return [51.505, -0.09]
 }
 ```
+
+## References
+
+- [Map Extension](https://haddley.github.io/businesscentral/Haddley_haddley-app_1.0.0.0.app)
