@@ -1,48 +1,40 @@
----
-title: "Three.js"
-description: "A JavaScript-based WebGL engine"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/threejs/hero.png"
-tags: ["javascript","java","ai"]
----
+<!DOCTYPE html>
+<html lang="en">
 
-## A JavaScript-based WebGL engine
+<head>
+    <title>three.js webgl</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="https://threejs.org/examples/main.css">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+</head>
 
-![](/assets/images/threejs/three.js-icon.svg)
-*This file is licensed under the Creative Commons Attribution-Share Alike 4.0 International license.*
+<body>
+    <div id="info">
+        <a href="https://threejs.org" target="_blank" rel="noopener">three.js</a><br />
+        skybox by <a href="http://www.humus.name" target="_blank" rel="noopener">Emil Persson</a>
+    </div>
 
+    <!-- Import maps polyfill -->
+    <!-- Remove this when import maps will be widely supported -->
+    <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
 
-Three. js is a JavaScript-based WebGL engine that can run GPU-powered games and other graphics-powered apps straight from the browser.
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.150.1/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.150.1/examples/jsm/"
+            }
+        }
+    </script>
 
-
-## Overview
-
-In the code below I create a three.js scene. The scene contains
-
-![](/assets/images/threejs/screen-shot-2023-03-05-at-7.42.09-pm-1536x414.png)
-*import library modules and sets up scene*
-
-![](/assets/images/threejs/screen-shot-2023-03-05-at-7.42.29-pm-1536x126.png)
-*sets up camera*
-
-![](/assets/images/threejs/screen-shot-2023-03-05-at-7.42.49-pm-1536x611.png)
-*sets up floating cubes and spheres*
-
-![](/assets/images/threejs/screen-shot-2023-03-05-at-7.43.18-pm-1536x422.png)
-*sets up renderer*
-
-![](/assets/images/threejs/screen-shot-2023-03-05-at-7.43.30-pm-1536x597.png)
-*sets up animation*
+    <script type="module">
 
 
-## index-three-analyph
-
-```text
-// imports
+        // imports
 
         import * as THREE from 'three';
-        import { AnaglyphEffect } from 'three/addons/effects/AnaglyphEffect.js';
+        import { StereoEffect } from 'three/addons/effects/StereoEffect.js';
 
         // scene background (skybox)
 
@@ -113,7 +105,7 @@ In the code below I create a three.js scene. The scene contains
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.xr.enabled = true;
 
-        const effect = new AnaglyphEffect(renderer);
+        const effect = new StereoEffect(renderer);
         effect.setSize(window.innerWidth, window.innerHeight);
 
         document.body.appendChild(renderer.domElement);
@@ -159,11 +151,10 @@ In the code below I create a three.js scene. The scene contains
         }
 
         animate()
-```
-## References
 
-- [three.js examples](https://threejs.org/examples/?q=effects#webgl_effects_anaglyph)
 
-- [haddley-three-stereo](https://haddley.github.io/three/haddley-three-stereo.html)
+    </script>
 
-- [haddley-three-vr.html](https://haddley.github.io/three/haddley-three-vr.html)
+</body>
+
+</html>
