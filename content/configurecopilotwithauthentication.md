@@ -5,6 +5,7 @@ date: "2025-09-20"
 category: "Development"
 image: "/assets/images/configurecopilotwithauthentication/hero.png"
 tags: ["azure","docker","ai","ml","git"]
+hidden: true
 ---
 
 # Configure Copilot with authentication

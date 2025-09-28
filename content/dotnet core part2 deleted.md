@@ -5,6 +5,7 @@ date: "2025-09-20"
 category: ".NET"
 image: "/assets/images/dotnet-core-part2-deleted/hero.png"
 tags: ["dotnet","c#","ai","git","asp.net"]
+hidden: true
 ---
 
 # .NET Core (Part 2 deleted)

@@ -5,6 +5,7 @@ date: "2025-09-20"
 category: "AI/ML"
 image: "/assets/images/machinelearning/hero.png"
 tags: ["sql","ai","machine learning"]
+hidden: true
 ---
 
 # Machine Learning

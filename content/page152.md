@@ -5,6 +5,7 @@ date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/page152/hero.png"
 tags: ["ai","business central","dynamics"]
+hidden: true
 ---
 
 # Vendor Posting Group COPY

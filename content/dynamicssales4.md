@@ -5,6 +5,7 @@ date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/dynamicssales4/hero.png"
 tags: ["ai","dynamics"]
+hidden: true
 ---
 
 # Dynamics 365 Sales (Part 4)

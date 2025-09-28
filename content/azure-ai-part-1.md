@@ -5,6 +5,7 @@ date: "2024-01-10"
 category: "Azure"
 image: "/assets/images/azure-ai.png"
 tags: ["Azure", "AI", "Machine Learning"]
+hidden: true
 ---
 
 # Azure AI Services - Getting Started

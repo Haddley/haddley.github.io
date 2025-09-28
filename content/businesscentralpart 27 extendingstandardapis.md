@@ -5,6 +5,7 @@ date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/businesscentralpart-27-extendingstandardapis/hero.png"
 tags: ["ai","business central","dynamics"]
+hidden: true
 ---
 
 # Business Central (Part 27) extending standard APIs

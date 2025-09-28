@@ -5,6 +5,7 @@ date: "2025-09-20"
 category: ".NET"
 image: "/assets/images/dotnet-core-part3/hero.png"
 tags: ["azure","dotnet","ai","ml","dynamics"]
+hidden: true
 ---
 
 # .NET Core (Part 3)

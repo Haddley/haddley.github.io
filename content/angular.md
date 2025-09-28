@@ -5,6 +5,7 @@ date: "2025-09-20"
 category: "Web Development"
 image: "/assets/images/angular/hero.png"
 tags: ["angular","ai","ml"]
+hidden: true
 ---
 
 # Angular

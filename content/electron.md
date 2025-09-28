@@ -5,6 +5,7 @@ date: "2025-09-20"
 category: "Development"
 image: "/assets/images/electron/hero.png"
 tags: ["javascript","java","ai","ml","git"]
+hidden: true
 ---
 
 # Electron

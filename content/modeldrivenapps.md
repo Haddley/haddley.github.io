@@ -5,6 +5,7 @@ date: "2025-09-20"
 category: "Development"
 image: "/assets/images/modeldrivenapps/hero.png"
 tags: ["cloud","dotnet","ai","ml","dynamics"]
+hidden: true
 ---
 
 # Model Driven Apps

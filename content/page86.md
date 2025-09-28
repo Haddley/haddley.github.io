@@ -5,6 +5,7 @@ date: "2025-09-20"
 category: "Development"
 image: "/assets/images/page86/hero.png"
 tags: ["azure","docker","dotnet","sql","database"]
+hidden: true
 ---
 
 # ASP.NET 5 Visual Basic

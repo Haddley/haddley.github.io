@@ -5,6 +5,7 @@ date: "2025-09-20"
 category: "Web Development"
 image: "/assets/images/angular1/hero.png"
 tags: ["angular","typescript","ai","ml","testing"]
+hidden: true
 ---
 
 # Angular (Part 1)

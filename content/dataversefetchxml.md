@@ -5,6 +5,7 @@ date: "2025-09-20"
 category: "Development"
 image: "/assets/images/dataversefetchxml/hero.png"
 tags: ["sql","ml"]
+hidden: true
 ---
 
 # Microsoft Dataverse FetchXML

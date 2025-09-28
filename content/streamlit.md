@@ -5,6 +5,7 @@ date: "2025-09-20"
 category: "Development"
 image: "/assets/images/streamlit/hero.png"
 tags: ["python","ai","ml","machine learning"]
+hidden: true
 ---
 
 # Streamlit

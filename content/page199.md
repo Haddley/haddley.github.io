@@ -5,6 +5,7 @@ date: "2025-09-20"
 category: "Development"
 image: "/assets/images/page199/hero.png"
 tags: ["ai","business central","dynamics","power platform"]
+hidden: true
 ---
 
 # Power Pages (Part 1) BACKUP

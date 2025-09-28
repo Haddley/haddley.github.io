@@ -5,6 +5,7 @@ date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/customercopilotstudio/hero.png"
 tags: ["ai","business central","dynamics"]
+hidden: true
 ---
 
 # Customer Copilot Studio

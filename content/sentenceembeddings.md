@@ -5,6 +5,7 @@ date: "2025-09-20"
 category: "Development"
 image: "/assets/images/sentenceembeddings/hero.png"
 tags: ["ai","machine learning"]
+hidden: true
 ---
 
 # Sentence Embeddings

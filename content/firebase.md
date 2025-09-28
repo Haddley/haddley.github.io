@@ -1,10 +1,3 @@
-description: "Firebase web codelab"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/firebase/hero.png"
-tags: ["cloud","database","ai","git","github"]
-hidden: true
-
 ---
 title: "Firebase"
 description: "Firebase web codelab"

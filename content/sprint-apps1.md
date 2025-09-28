@@ -5,6 +5,7 @@ date: "2025-09-20"
 category: "Development"
 image: "/assets/images/sprint-apps1/hero.png"
 tags: ["azure","java","spring","ai"]
+hidden: true
 ---
 
 # Azure Spring Apps (Part 1)

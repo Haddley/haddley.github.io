@@ -1,10 +1,3 @@
-description: "Excel"
-date: "2025-09-20"
-category: "AI/ML"
-image: "/assets/images/machinelearning5/hero.png"
-tags: ["ai","machine learning","git","github"]
-hidden: true
-
 ---
 title: "Machine Learning (Part 5)"
 description: "Excel"

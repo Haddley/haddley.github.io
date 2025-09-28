@@ -1,10 +1,3 @@
-description: "Power FX"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/modeldriven4/hero.png"
-tags: ["javascript","java","ai","power platform"]
-hidden: true
-
 ---
 title: "Model Driven Apps (Part 4)"
 description: "Power FX"

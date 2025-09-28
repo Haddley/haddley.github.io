@@ -5,6 +5,7 @@ date: "2025-09-20"
 category: "Web Development"
 image: "/assets/images/page50/hero.png"
 tags: ["aws"]
+hidden: true
 ---
 
 # Next.js (Part 4)

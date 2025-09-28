@@ -5,6 +5,7 @@ date: "2025-09-20"
 category: "Development"
 image: "/assets/images/page200/hero.png"
 tags: ["javascript","java","ai","ml","business central"]
+hidden: true
 ---
 
 # Power Page (Part 2) Backup

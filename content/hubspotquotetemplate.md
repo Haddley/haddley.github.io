@@ -5,6 +5,7 @@ date: "2025-09-20"
 category: "Development"
 image: "/assets/images/hubspotquotetemplate/hero.png"
 tags: []
+hidden: true
 ---
 
 # HubSpot Quote Template

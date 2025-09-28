@@ -5,6 +5,7 @@ date: "2025-09-20"
 category: "Development"
 image: "/assets/images/macbook/hero.png"
 tags: ["python","ai"]
+hidden: true
 ---
 
 # Apple MacBook Air with M2 chip

@@ -1,10 +1,3 @@
-description: "I used Patch to add a Business Central Purchase Order and to add Purchase Order Lines"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/addapurchaseorder/hero.png"
-tags: ["business central"]
-hidden: true
-
 ---
 title: "Add a Purchase Order"
 description: "I used Patch to add a Business Central Purchase Order and to add Purchase Order Lines"

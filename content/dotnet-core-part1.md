@@ -1,11 +1,5 @@
 ---
 title: ".NET Core (Part 1)"
-description: "Creating a REST API Service using Microsoft's cross-platform framework."
-date: "2025-09-20"
-category: ".NET"
-image: "/assets/images/dotnet-core-part1/hero.png"
-tags: ["react","javascript","dotnet","ai"]
----e: ".NET Core (Part 1)"
 description: "Creating a REST API Service using Microsoft cross-platform framework."
 date: "2025-09-20"
 category: ".NET"

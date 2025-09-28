@@ -1,10 +1,3 @@
-description: "Baseball Signals"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/page68/hero.png"
-tags: ["ai","machine learning"]
-hidden: true
-
 ---
 title: "Machine Learning (Part 7)"
 description: "Baseball Signals"

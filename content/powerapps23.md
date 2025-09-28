@@ -5,6 +5,7 @@ date: "2025-09-20"
 category: "Development"
 image: "/assets/images/powerapps23/hero.png"
 tags: ["sql","business central"]
+hidden: true
 ---
 
 # Power Apps (Part 23)

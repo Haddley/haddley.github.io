@@ -1,12 +1,5 @@
-description: "Microsoft Dynamics and Microsoft Dataverse"
-date: "2025-09-20"
-category: "Business Central"
-image: "/assets/images/ashorthistory/hero.png"
-tags: ["azure","cloud","dotnet","ai","ml"]
-hidden: true
-
 ---
-title: "A Short History of Microsoft Dynamics and Microsoft Dataverse"
+title: "A Short History of"
 description: "Microsoft Dynamics and Microsoft Dataverse"
 date: "2025-09-20"
 category: "Business Central"

@@ -1,10 +1,3 @@
-description: "colorization.ipynb"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/colorization/hero.png"
-tags: []
-hidden: true
-
 ---
 title: "Colorization"
 description: "colorization.ipynb"

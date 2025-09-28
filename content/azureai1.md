@@ -5,6 +5,7 @@ date: "2025-09-20"
 category: "Azure"
 image: "/assets/images/azureai1/hero.png"
 tags: ["azure","python","ai","git","github"]
+hidden: true
 ---
 
 # Azure AI (Part 1)

@@ -5,6 +5,7 @@ date: "2025-09-20"
 category: "Development"
 image: "/assets/images/page65/hero.png"
 tags: ["python","ai","ml","machine learning","git"]
+hidden: true
 ---
 
 # Machine Learning (Part 4a)

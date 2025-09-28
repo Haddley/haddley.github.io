@@ -5,6 +5,7 @@ date: "2025-09-20"
 category: "Development"
 image: "/assets/images/mssqlserver3/hero.png"
 tags: ["react","javascript","typescript","azure","java"]
+hidden: true
 ---
 
 # Microsoft SQL Server (Part 3)
