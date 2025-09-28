@@ -14,9 +14,6 @@ tags: ["azure","docker","ai","business central","git"]
 ![](/assets/images/mcpserver2/mcp-1024x1024.png)
 *The Model Context Protocol is an open source project run by Anthropic, PBC.*
 
-
-## Business Central
-
 I created a Model Context Protocol (MCP) server for Microsoft Business Central
 
 ![](/assets/images/mcpserver2/screenshot202025-08-2220at205.09.49e280afpm-2136x1239.png)
