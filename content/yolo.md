@@ -1,4 +1,3 @@
-
 ---
 title: "Yolo"
 description: "You only look once, real time object detection"
