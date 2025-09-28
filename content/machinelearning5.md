@@ -1,3 +1,5 @@
+
+---
 title: "Machine Learning (Part 5)"
 description: "Excel"
 date: "2025-09-20"
@@ -5,6 +7,7 @@ category: "AI/ML"
 image: "/assets/images/machinelearning5/hero.png"
 tags: ["ai","machine learning","git","github"]
 hidden: true
+---
 
 ![](/assets/images/machinelearning5/tensorflow-logo.svg)
 *Tensorflow logo does not meet the threshold of originality needed for copyright protection, and is therefore in the public domain*

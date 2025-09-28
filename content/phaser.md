@@ -1,3 +1,5 @@
+
+---
 title: "Phaser"
 description: "2D game framework used for making HTML5 games"
 date: "2025-09-20"
@@ -5,6 +7,7 @@ category: "Development"
 image: "/assets/images/phaser/hero.png"
 tags: ["ai","ml","git","github"]
 hidden: true
+---
 
 ## 2D game framework used for making HTML5 games
 

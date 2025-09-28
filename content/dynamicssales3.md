@@ -1,3 +1,5 @@
+
+---
 title: "Dynamics 365 Sales (Part 3)"
 description: "Adding a Warranty table"
 date: "2025-09-20"
@@ -5,6 +7,7 @@ category: "Business Central"
 image: "/assets/images/dynamicssales3/hero.png"
 tags: ["ai","ml","dynamics"]
 hidden: true
+---
 
 # Dynamics 365 Sales (Part 3)
 ## Adding a Warranty table

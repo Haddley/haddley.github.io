@@ -1,3 +1,5 @@
+
+---
 title: "Gingerbread House"
 description: "holiday.py"
 date: "2025-09-20"
@@ -5,6 +7,7 @@ category: "Development"
 image: "/assets/images/gingerbreadhouse/hero.png"
 tags: ["python","ai"]
 hidden: true
+---
 
 ![](/assets/images/gingerbreadhouse/raspberry-pi-logo.svg)
 *Raspberry Pi is a trademark of Raspberry Pi Ltd*

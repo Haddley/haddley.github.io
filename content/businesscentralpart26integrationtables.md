@@ -1,3 +1,5 @@
+
+---
 title: "Business Central (Part 26)"
 description: "Integration Tables"
 date: "2025-09-20"
@@ -5,6 +7,7 @@ category: "Business Central"
 image: "/assets/images/businesscentralpart26integrationtables/hero.png"
 tags: ["ai","business central","dynamics"]
 hidden: true
+---
 
 # Business Central (Part 26) Integration Tables
 
