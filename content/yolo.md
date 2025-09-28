@@ -1,11 +1,10 @@
----
 title: "Yolo"
 description: "You only look once, real time object detection"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/yolo/hero.png"
 tags: ["ai"]
----
+hidden: true
 
 # Yolo
 

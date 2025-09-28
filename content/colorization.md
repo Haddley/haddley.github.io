@@ -1,11 +1,10 @@
----
 title: "Colorization"
 description: "colorization.ipynb"
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/colorization/hero.png"
 tags: []
----
+hidden: true
 
 ![](/assets/images/colorization/jupyter.svg)
 *Cameron Oelsen, BSD, via Wikimedia Commons*

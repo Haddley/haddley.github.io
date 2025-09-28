@@ -1,11 +1,10 @@
----
 title: "Java Spring Boot (Part 1)"
 description: "Spring based Java Applications that you can just run."
 date: "2025-09-20"
 category: "Java"
 image: "/assets/images/spring-boot/hero.png"
 tags: ["react","javascript","java","spring","ai"]
----
+hidden: true
 # Java Spring Boot (Part 1)
 
 ## Spring based Java Applications that you can "just run".

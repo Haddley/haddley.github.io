@@ -1,10 +1,10 @@
----
 title: "Copilot Studio Agent Tools"
 description: "Connected to Business Central"
 date: "2025-09-24"
 category: "Business Central"
 image: "/assets/images/blogcopilotstudio/hero.png"
 tags: ["java","ai","business central","dynamics","git"]
+hidden: true
 
 # Copilot Studio Agent Tools
 ## Connected to Business Central

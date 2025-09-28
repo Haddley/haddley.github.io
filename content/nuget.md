@@ -1,11 +1,10 @@
----
 title: "NuGet C#"
 description: "Create, publish and consume a NuGet package using C#."
 date: "2025-09-20"
 category: "Development"
 image: "/assets/images/nuget/hero.png"
 tags: ["dotnet","c#","ai","git","github"]
----
+hidden: true
 
 # NuGet C#
 
