@@ -5,6 +5,7 @@ date: "2025-09-20"
 category: "Business Central"
 image: "/assets/images/microsoftdynamics365appforoutlook/hero.png"
 tags: ["ai","dynamics","power platform"]
+hidden: true
 ---
 
 ![](/assets/images/microsoftdynamics365appforoutlook/office-365-icon-500x500.png)

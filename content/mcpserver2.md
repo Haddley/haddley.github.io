@@ -5,6 +5,7 @@ date: "2025-09-20"
 category: "Development"
 image: "/assets/images/mcpserver2/hero.png"
 tags: ["azure","docker","ai","business central","git"]
+hidden: true
 ---
 
 # Model Context Protocol (Part 2)

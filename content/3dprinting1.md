@@ -5,6 +5,7 @@ date: "2025-09-20"
 category: "Development"
 image: "/assets/images/3dprinting1/img-3200-2-480x640.jpg"
 tags: ["ai"]
+hidden: true
 ---
 
 # 3D Printing 1
