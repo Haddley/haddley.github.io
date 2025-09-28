@@ -1,3 +1,9 @@
+description: "The Configuration Migration tool"
+date: "2025-09-20"
+category: "Development"
+image: "/assets/images/powerapps23configurationmigrationtool/hero.png"
+tags: ["ai","ml","power platform"]
+hidden: true
 
 ---
 title: "Power Apps (Part 23)"

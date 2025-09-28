@@ -1,3 +1,9 @@
+description: "Customer Content Virtual Tables"
+date: "2025-09-20"
+category: "Development"
+image: "/assets/images/customtvirtualtables/hero.png"
+tags: ["ai","business central","power platform"]
+hidden: true
 
 ---
 title: "Custom Virtual Tables"

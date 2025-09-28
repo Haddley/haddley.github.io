@@ -1,3 +1,9 @@
+description: "Create a React app using the useState and useEffect hook."
+date: "2025-09-20"
+category: "Web Development"
+image: "/assets/images/reactusestateuseeffect/hero.png"
+tags: ["react"]
+hidden: true
 
 ---
 title: "React useState and useEffect"

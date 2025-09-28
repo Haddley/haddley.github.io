@@ -1,3 +1,9 @@
+description: "Rewards Extension"
+date: "2025-09-20"
+category: "Business Central"
+image: "/assets/images/rewardsextension/hero.png"
+tags: ["ai","ml","business central","dynamics"]
+hidden: true
 
 ---
 title: "Rewards Extension"
