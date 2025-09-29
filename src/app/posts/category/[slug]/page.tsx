@@ -36,7 +36,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     notFound();
   }
 
-  const categoryPosts = getVisibleBlogPostsByAnyCategory(category.name);
+  const categoryPosts = await getVisibleBlogPostsByAnyCategory(category.name);
 
   return (
     <section data-bs-version="5.1" className="content2 cid-socNq9ZEoK" id="content2-q">

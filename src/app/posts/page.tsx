@@ -11,9 +11,9 @@ function categoryToSlug(categoryName: string): string {
     .replace(/[^a-z0-9-]/g, '');
 }
 
-export default function PostsPage() {
-  const posts = getVisibleBlogPosts();
-  const categories = getVisibleAutomatedCategories();
+export default async function PostsPage() {
+  const posts = await getVisibleBlogPosts();
+  const categories = await getVisibleAutomatedCategories();
 
   return (
     <section data-bs-version="5.1" className="content2 cid-socNq9ZEoK" id="content2-q">

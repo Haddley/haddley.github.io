@@ -1,14 +1,15 @@
-import fs from 'fs';
-import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
 import { BlogPost } from './posts';
 
-const postsDirectory = path.join(process.cwd(), 'content');
+// No top-level imports of Node modules to avoid bundler issues
 
 export async function getMarkdownPost(id: string) {
   try {
+    const { default: fs } = await import('fs');
+    const { default: path } = await import('path');
+    const postsDirectory = path.join(process.cwd(), 'content');
     const fullPath = path.join(postsDirectory, `${id}.md`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     
@@ -34,8 +35,11 @@ export async function getMarkdownPost(id: string) {
   }
 }
 
-export function getAllMarkdownPostIds(): string[] {
+export async function getAllMarkdownPostIds(): Promise<string[]> {
   try {
+    const { default: fs } = await import('fs');
+    const { default: path } = await import('path');
+    const postsDirectory = path.join(process.cwd(), 'content');
     const fileNames = fs.readdirSync(postsDirectory);
     return fileNames
       .filter(name => name.endsWith('.md'))
@@ -47,11 +51,14 @@ export function getAllMarkdownPostIds(): string[] {
 }
 
 export async function getAllMarkdownPosts(): Promise<BlogPost[]> {
-  const postIds = getAllMarkdownPostIds();
+  const postIds = await getAllMarkdownPostIds();
   const posts: BlogPost[] = [];
   
   for (const id of postIds) {
     try {
+      const { default: fs } = await import('fs');
+      const { default: path } = await import('path');
+      const postsDirectory = path.join(process.cwd(), 'content');
       const fullPath = path.join(postsDirectory, `${id}.md`);
       const fileContents = fs.readFileSync(fullPath, 'utf8');
       const matterResult = matter(fileContents);

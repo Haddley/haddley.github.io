@@ -9,7 +9,7 @@ interface PostPageProps {
 }
 
 export async function generateStaticParams() {
-  const posts = getAllPosts();
+  const posts = await getAllPosts();
   return posts.map((post) => ({
     slug: post.slug,
   }));
@@ -17,7 +17,7 @@ export async function generateStaticParams() {
 
 export default async function PostPage({ params }: PostPageProps) {
   const { slug } = await params;
-  const post = getPostById(slug);
+  const post = await getPostById(slug);
 
   if (!post) {
     notFound();

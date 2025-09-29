@@ -1,19 +1,24 @@
-'use client';
-
 import { 
   getVisibleAutomatedCategories, 
   getVisibleBlogPostsByAutomatedCategory,
-  getVisibleBlogPosts 
+  getVisibleBlogPosts,
+  BlogPost
 } from '@/lib/posts';
 import Link from 'next/link';
 
-export default function CategoriesPage() {
-  const automatedCategories = getVisibleAutomatedCategories();
-  const allPosts = getVisibleBlogPosts();
+export default async function CategoriesPage() {
+  const automatedCategories = await getVisibleAutomatedCategories();
+  const allPosts = await getVisibleBlogPosts();
   
   // Calculate statistics
   const totalPosts = allPosts.length;
   const categorizedPosts = allPosts.filter(post => post.categories && post.categories.length > 0).length;
+
+  // Fetch posts for each category
+  const categoryPostsMap: Record<string, BlogPost[]> = {};
+  for (const category of automatedCategories) {
+    categoryPostsMap[category] = await getVisibleBlogPostsByAutomatedCategory(category);
+  }
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -49,7 +54,7 @@ export default function CategoriesPage() {
         {/* Categories Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {automatedCategories.map(category => {
-            const categoryPosts = getVisibleBlogPostsByAutomatedCategory(category);
+            const categoryPosts = categoryPostsMap[category];
             const postCount = categoryPosts.length;
             
             // Category color mapping for updated categories
