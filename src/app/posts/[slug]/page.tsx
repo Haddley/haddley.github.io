@@ -36,14 +36,15 @@ export default async function PostPage({ params }: PostPageProps) {
               <h3 className="mbr-section-title mbr-fonts-style align-center mb-4 display-2">
                 <strong>{post.title}</strong>
               </h3>
-              
+
               <h4 className="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">
-                   <strong>Neil Haddley</strong>
-                    <em> • {new Date(post.date).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric'
-                    })}</em>
+                <><strong>Neil Haddley</strong>
+                  <em> • {new Date(post.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  })}</em>
+                </>
               </h4>
 
               <h4 className="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">
@@ -78,7 +79,7 @@ export default async function PostPage({ params }: PostPageProps) {
             <div className="row justify-content-center">
               <div className="col-md-12 col-lg-10">
                 <div className="alert alert-warning">
-                  <strong>Note:</strong> Content is being processed. The original HTML content 
+                  <strong>Note:</strong> Content is being processed. The original HTML content
                   from <code>{slug}.html</code> will be displayed here.
                 </div>
               </div>
