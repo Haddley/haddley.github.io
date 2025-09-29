@@ -1,10 +1,11 @@
 ---
 title: "Model Driven Apps (Part 2)"
 description: "Environments"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/modeldriven2/hero.png"
-tags: ["ai","dynamics","power platform","git"]
+date: "2023-10-05"
+categories: ["Power Platform","Microsoft Dynamics"]
+tags: []
+slug: "modeldriven2"
+image: "/assets/images/office-365-icon-500x500.png"
 ---
 
 ![](/assets/images/modeldriven2/office-365-icon-500x500.png)

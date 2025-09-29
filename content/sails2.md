@@ -1,10 +1,11 @@
 ---
 title: "Sails (Part 2)"
 description: "Sails and the Azure Cosmos DB API for MongoDB"
-date: "2025-09-20"
-category: "AI/ML"
-image: "/assets/images/sails2/hero.png"
-tags: ["azure","aws","ai","git","github"]
+date: "2021-10-12"
+categories: ["Azure",".NET","AI"]
+tags: []
+slug: "sails2"
+image: "/assets/images/sailsjs-logo-515x193.png"
 ---
 
 ## Sails and the Azure Cosmos DB API for MongoDB

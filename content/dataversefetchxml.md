@@ -2,10 +2,11 @@
 title: "Microsoft Dataverse FetchXML"
 description: "Microsoft Dataverse FetchXML"
 date: "2025-09-20"
-category: "Development"
+categories: ["Development"]
 image: "/assets/images/dataversefetchxml/hero.png"
 tags: ["sql","ml"]
 hidden: true
+slug: "dataversefetchxml"
 ---
 
 # Microsoft Dataverse FetchXML

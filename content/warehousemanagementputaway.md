@@ -1,10 +1,11 @@
 ---
 title: "Warehouse Management Put away"
 description: "Warehouse Management - Put-away"
-date: "2025-09-20"
-category: "Business Central"
-image: "/assets/images/warehousemanagementputaway/hero.png"
-tags: ["ai","business central","dynamics"]
+date: "2023-08-19"
+categories: ["Microsoft Dynamics","Business Central"]
+tags: []
+slug: "warehousemanagementputaway"
+image: "/assets/images/dynamics365-color.svg"
 ---
 
 # Warehouse Management Put away

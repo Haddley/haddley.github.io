@@ -1,10 +1,11 @@
 ---
 title: "Business Central Microsoft Graph"
 description: "Financials"
-date: "2025-09-20"
-category: "Business Central"
-image: "/assets/images/businesscentralmicrosoftgraph/hero.png"
-tags: ["ai","ml","business central","dynamics"]
+date: "2023-12-18"
+categories: ["Microsoft Dynamics","Business Central","Microsoft 365","Microsoft Dynamics"]
+tags: []
+slug: "businesscentralmicrosoftgraph"
+image: "/assets/images/posts-meta.svg"
 ---
 
 # Business Central Microsoft Graph

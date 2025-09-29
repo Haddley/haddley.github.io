@@ -1,10 +1,11 @@
 ---
 title: "DevOps Starter Azure DevOps"
 description: "Everything you need for developing, deploying, and monitoring your application."
-date: "2025-09-20"
-category: "Azure"
-image: "/assets/images/devopsstarterazuredevops/hero.png"
-tags: ["azure","devops","ai","ml","git"]
+date: "2021-04-26"
+categories: ["DevOps","Azure","JavaScript"]
+tags: []
+slug: "devopsstarterazuredevops"
+image: "/assets/images/svgexport-22.svg"
 ---
 
 ## Everything you need for developing, deploying, and monitoring your application.
@@ -127,4 +128,3 @@ steps:
 ## References
 
 - [DevOps Starter](https://docs.microsoft.com/en-us/azure/devops-project/overview)
-

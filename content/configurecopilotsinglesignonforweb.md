@@ -1,10 +1,11 @@
 ---
 title: "Configure Copilot single sign-on for Web"
 description: "Publish|Configure channels"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/configurecopilotsinglesignonforweb/hero.png"
-tags: ["azure","docker","ai","ml","git"]
+date: "2024-03-16"
+categories: ["Power Platform",".NET","Microsoft 365"]
+tags: []
+slug: "configurecopilotsinglesignonforweb"
+image: "/assets/images/office-365-icon-500x500.png"
 ---
 
 ![](/assets/images/configurecopilotsinglesignonforweb/office-365-icon-500x500.png)

@@ -1,10 +1,11 @@
 ---
 title: "A Power Apps Application"
 description: "Power Apps Application."
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/powerappsapplication/hero.png"
-tags: ["database","ai"]
+date: "2021-07-13"
+categories: ["Power Platform","React"]
+tags: []
+slug: "powerappsapplication"
+image: "/assets/images/office-365-icon-500x500.png"
 ---
 
 # A Power Apps Application

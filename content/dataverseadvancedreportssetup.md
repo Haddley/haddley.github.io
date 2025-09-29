@@ -1,10 +1,11 @@
 ---
 title: "Microsoft Dataverse Advanced Reports Setup"
 description: "Microsoft Dataverse Advanced Reports Setup"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/dataverseadvancedreportssetup/hero.png"
-tags: ["sql","ai","ml","dynamics"]
+date: "2024-08-10"
+categories: ["SQL","Microsoft Dynamics","Power Platform"]
+tags: []
+slug: "dataverseadvancedreportssetup"
+image: "/assets/images/office-365-icon-500x500.png"
 ---
 
 # Microsoft Dataverse Advanced Reports Setup

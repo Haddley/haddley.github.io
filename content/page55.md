@@ -2,10 +2,11 @@
 title: "Page 55"
 description: "References"
 date: "2025-09-20"
-category: "Development"
+categories: ["Development"]
 image: "/assets/images/page55/hero.png"
 tags: []
 hidden: true
+slug: "page55"
 ---
 
 # Page 55

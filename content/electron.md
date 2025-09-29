@@ -2,10 +2,11 @@
 title: "Electron"
 description: "Create a Desktop app using Node and Chromium."
 date: "2025-09-20"
-category: "Development"
+categories: ["Development"]
 image: "/assets/images/electron/hero.png"
 tags: ["javascript","java","ai","ml","git"]
 hidden: true
+slug: "electron"
 ---
 
 # Electron

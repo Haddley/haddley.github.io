@@ -2,10 +2,11 @@
 title: "Fine Tuning"
 description: "Fine Tuning"
 date: "2025-09-20"
-category: "Development"
+categories: ["Development"]
 image: "/assets/images/finetuning/hero.png"
 tags: ["ai"]
 hidden: true
+slug: "finetuning"
 ---
 
 # Fine Tuning

@@ -1,11 +1,11 @@
 ---
 title: "NuGet C#"
 description: "Create, publish and consume a NuGet package using C#."
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/nuget/hero.png"
-tags: ["dotnet","c#","ai","git","github"]
-hidden: true
+date: "2021-02-27"
+categories: [".NET","DevOps"]
+tags: []
+slug: "nuget"
+image: "/assets/images/logo-og-600x600.png"
 ---
 
 # NuGet C#
@@ -333,4 +333,3 @@ namespace dotnet_factorial_console
     }
 }
 ```
-

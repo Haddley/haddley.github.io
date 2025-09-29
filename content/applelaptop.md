@@ -1,10 +1,11 @@
 ---
 title: "Apple MacBook"
 description: "Anaconda Setup"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/applelaptop/hero.png"
-tags: ["python","ai","machine learning"]
+date: "2023-07-25"
+categories: ["Python","AI"]
+tags: []
+slug: "applelaptop"
+image: "/assets/images/jupyter.svg"
 ---
 
 # Apple MacBook

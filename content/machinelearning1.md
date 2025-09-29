@@ -1,10 +1,11 @@
 ---
 title: "Machine Learning (Part 1)"
 description: "What is Machine Learning?"
-date: "2025-09-20"
-category: "AI/ML"
-image: "/assets/images/machinelearning1/hero.png"
-tags: ["cloud","ai","ml","machine learning"]
+date: "2022-06-05"
+categories: ["AI"]
+tags: []
+slug: "machinelearning1"
+image: "/assets/images/tensorflow-logo.svg"
 ---
 
 ![](/assets/images/machinelearning1/tensorflow-logo.svg)

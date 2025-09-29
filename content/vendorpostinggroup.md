@@ -1,18 +1,11 @@
-description: "Sub-ledgers"
-date: "2025-09-20"
-category: "Business Central"
-image: "/assets/images/vendorpostinggroup/hero.png"
-tags: ["ai","business central","dynamics"]
-hidden: true
-
 ---
 title: "Vendor Posting Group"
 description: "Sub-ledgers"
-date: "2025-09-20"
-category: "Business Central"
-image: "/assets/images/vendorpostinggroup/hero.png"
-tags: ["ai","business central","dynamics"]
-hidden: true
+date: "2023-12-12"
+categories: ["Microsoft Dynamics","Business Central","Microsoft Dynamics"]
+tags: []
+slug: "vendorpostinggroup"
+image: "/assets/images/posts-meta.svg"
 ---
 
 ![](/assets/images/vendorpostinggroup/dynamics365-color.svg)

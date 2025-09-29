@@ -1,10 +1,11 @@
 ---
 title: "Machine Learning (Part 2)"
 description: "What apps can be written quickly?"
-date: "2025-09-20"
-category: "AI/ML"
-image: "/assets/images/machinelearning2/hero.png"
-tags: ["javascript","java","python","sql","ai"]
+date: "2022-06-05"
+categories: ["AI"]
+tags: []
+slug: "machinelearning2"
+image: "/assets/images/tensorflow-logo.svg"
 ---
 
 ![](/assets/images/machinelearning2/tensorflow-logo.svg)

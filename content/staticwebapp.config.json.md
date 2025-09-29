@@ -1,10 +1,11 @@
 ---
 title: "staticwebapp.config.json"
 description: "staticwebapp.config.json"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/staticwebapp.config.json/hero.png"
-tags: ["azure","ai","ml","git","github"]
+date: "2024-03-10"
+categories: ["Azure"]
+tags: []
+slug: "staticwebapp.config.json"
+image: "/assets/images/azurex70x75.svg"
 ---
 
 # staticwebapp.config.json
@@ -149,4 +150,3 @@ Static web app environment variables can be used to manage authentication proper
 ## References
 
 - [Build a website using Azure Static Web Apps and Authenticate with AAD](https://www.youtube.com/watch?v=jnwRpEM6GR8)
-

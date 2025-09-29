@@ -1,10 +1,11 @@
 ---
 title: "Microsoft Graph"
 description: "Graph Explorer"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/microsoftgraph/hero.png"
-tags: ["javascript","azure","java","ai","dynamics"]
+date: "2022-05-26"
+categories: ["Microsoft 365","Microsoft Dynamics"]
+tags: []
+slug: "microsoftgraph"
+image: "/assets/images/office-365-icon-500x500.png"
 ---
 
 ![](/assets/images/microsoftgraph/office-365-icon-500x500.png)

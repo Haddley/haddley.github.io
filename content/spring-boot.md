@@ -1,12 +1,13 @@
+---
 title: "Java Spring Boot (Part 1)"
----
 description: "Spring based Java Applications that you can just run."
-date: "2025-09-20"
-category: "Java"
-image: "/assets/images/spring-boot/hero.png"
-tags: ["react","javascript","java","spring","ai"]
-hidden: true
+date: "2021-04-06"
+categories: ["Java","React"]
+tags: []
+slug: "spring-boot"
+image: "/assets/images/spring-framework-logo-70-no.svg"
 ---
+
 # Java Spring Boot (Part 1)
 
 ## Spring based Java Applications that you can "just run".
@@ -243,4 +244,3 @@ export default App;
 ## References
 
 - [QuickStart](https://spring.io/quickstart)
-

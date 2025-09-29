@@ -1,10 +1,11 @@
 ---
 title: "Angular Firebase"
 description: "Creating a new firebase project"
-date: "2025-09-20"
-category: "Web Development"
-image: "/assets/images/angularfirebase/hero.png"
-tags: ["angular","react","ai","ml"]
+date: "2023-04-25"
+categories: ["Angular","TypeScript","React","JavaScript"]
+tags: []
+slug: "angularfirebase"
+image: "/assets/images/logo-lockup-firebase-vertical.svg"
 ---
 
 ![](/assets/images/angularfirebase/logo-lockup-firebase-vertical.svg)
@@ -300,4 +301,3 @@ export class DashboardComponent implements OnInit {
 - [Building a web application with Angular and Firebase](https://developers.google.com/codelabs/building-a-web-app-with-angular-and-firebase)
 - [Angular Firebase Tutorial](https://www.youtube.com/playlist?list=PL1UHgDbN7Tm4SZ6yLE9yDI-YDtf02uc7d)
 - [Github Repository](https://github.com/Haddley/haddley-angular)
-

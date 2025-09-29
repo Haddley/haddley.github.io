@@ -1,10 +1,11 @@
 ---
 title: "Sentiment Analysis"
 description: "Sentiment Analysis"
-date: "2025-09-20"
-category: "AI/ML"
-image: "/assets/images/sentimentanalysis/hero.png"
-tags: ["ai","machine learning"]
+date: "2023-07-19"
+categories: ["AI","JavaScript"]
+tags: []
+slug: "sentimentanalysis"
+image: "/assets/images/chatgpt-logo.svg"
 ---
 
 # Sentiment Analysis

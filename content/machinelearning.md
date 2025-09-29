@@ -2,10 +2,11 @@
 title: "Machine Learning"
 description: "Finding patterns and making predictions"
 date: "2025-09-20"
-category: "AI/ML"
+categories: ["AI/ML"]
 image: "/assets/images/machinelearning/hero.png"
 tags: ["sql","ai","machine learning"]
 hidden: true
+slug: "machinelearning"
 ---
 
 # Machine Learning

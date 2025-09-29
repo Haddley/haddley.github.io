@@ -1,10 +1,11 @@
 ---
 title: "VB.NET Console SQL Server Unit Tests"
 description: "Test driven development"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/vbnetconsolesqlserverunittests/hero.png"
-tags: ["dotnet","sql","database","ai","testing"]
+date: "2023-05-27"
+categories: ["SQL","AI",".NET"]
+tags: []
+slug: "vbnetconsolesqlserverunittests"
+image: "/assets/images/net-logo.svg"
 ---
 
 ## Test driven development
@@ -381,4 +382,3 @@ End Class
     End Function
 End Class
 ```
-

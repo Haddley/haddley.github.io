@@ -1,10 +1,11 @@
 ---
 title: "Hands-on-Lab 2.2"
 description: "Migrate master data to a new company"
-date: "2025-09-20"
-category: "Business Central"
-image: "/assets/images/hands-on-lab2.2/hero.png"
-tags: ["ai","dynamics"]
+date: "2023-11-22"
+categories: ["Microsoft Dynamics","Business Central","Microsoft Dynamics"]
+tags: []
+slug: "hands-on-lab2.2"
+image: "/assets/images/dynamics365-color.svg"
 ---
 
 ![](/assets/images/hands-on-lab2.2/dynamics365-color.svg)

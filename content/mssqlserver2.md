@@ -1,10 +1,11 @@
 ---
 title: "Microsoft SQL Server (Part 2)"
 description: "T-SQL, Stored Procedures and Snapshot Isolation."
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/mssqlserver2/hero.png"
-tags: ["javascript","dotnet","c#","java","sql"]
+date: "2021-03-27"
+categories: ["SQL","Java"]
+tags: []
+slug: "mssqlserver2"
+image: "/assets/images/ads.svg"
 ---
 
 ## T-SQL, Stored Procedures and Snapshot Isolation.

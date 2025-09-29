@@ -1,11 +1,11 @@
 ---
 title: "Model Driven Apps (Part 4)"
 description: "Power FX"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/modeldriven4/hero.png"
-tags: ["javascript","java","ai","power platform"]
-hidden: true
+date: "2023-10-09"
+categories: ["Power Platform"]
+tags: []
+slug: "modeldriven4"
+image: "/assets/images/office-365-icon-500x500.png"
 ---
 
 ![](/assets/images/modeldriven4/office-365-icon-500x500.png)

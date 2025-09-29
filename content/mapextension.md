@@ -1,10 +1,11 @@
 ---
 title: "Map Extension"
 description: "Map Extension"
-date: "2025-09-20"
-category: "Business Central"
-image: "/assets/images/mapextension/hero.png"
-tags: ["javascript","cloud","java","ai","business central"]
+date: "2023-09-01"
+categories: ["Microsoft Dynamics","Business Central","Maps","Microsoft Dynamics"]
+tags: []
+slug: "mapextension"
+image: "/assets/images/dynamics365-color.svg"
 ---
 
 # Map Extension

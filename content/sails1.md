@@ -1,10 +1,11 @@
 ---
 title: "Sails (Part 1)"
 description: "Azure DevOps and Sails."
-date: "2025-09-20"
-category: "AI/ML"
-image: "/assets/images/sails1/hero.png"
-tags: ["azure","aws","devops","database","ai"]
+date: "2021-10-12"
+categories: ["DevOps","JavaScript","Azure","AI"]
+tags: []
+slug: "sails1"
+image: "/assets/images/sailsjs-logo-515x193.png"
 ---
 
 ## Azure DevOps and Sails.

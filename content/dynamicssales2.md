@@ -1,10 +1,11 @@
 ---
 title: "Dynamics 365 Sales (Part 2)"
 description: "The Lead to Opportunity Sales Process"
-date: "2025-09-20"
-category: "Business Central"
-image: "/assets/images/dynamicssales2/hero.png"
-tags: ["ai","ml","dynamics"]
+date: "2023-10-21"
+categories: ["Microsoft Dynamics"]
+tags: []
+slug: "dynamicssales2"
+image: "/assets/images/dynamics365-color.svg"
 ---
 
 # Dynamics 365 Sales (Part 2)

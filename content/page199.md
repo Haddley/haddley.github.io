@@ -2,10 +2,11 @@
 title: "Power Pages (Part 1) BACKUP"
 description: "A Business Central Customer Portal"
 date: "2025-09-20"
-category: "Development"
+categories: ["Development"]
 image: "/assets/images/page199/hero.png"
 tags: ["ai","business central","dynamics","power platform"]
 hidden: true
+slug: "page199"
 ---
 
 # Power Pages (Part 1) BACKUP

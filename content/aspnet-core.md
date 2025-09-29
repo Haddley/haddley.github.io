@@ -1,10 +1,11 @@
 ---
 title: "ASP.NET Core"
 description: "Create Razor Pages with ASP.NET Core."
-date: "2025-09-20"
-category: ".NET"
-image: "/assets/images/aspnet-core/hero.png"
-tags: ["dotnet","sql","database","ai","ml"]
+date: "2023-03-21"
+categories: [".NET","SQL"]
+tags: []
+slug: "aspnet-core"
+image: "/assets/images/net-logo.svg"
 ---
 
 ## Create Razor Pages with ASP.NET Core.
@@ -114,4 +115,3 @@ An OnPost() method is executed when a browser sends a POST request to the server
 ## References
 
 - [Compare Razor Pages to ASP.NET MVC](https://learn.microsoft.com/en-us/aspnet/mvc/overview/getting-started/introduction/getting-started)
-

@@ -2,10 +2,11 @@
 title: "Power Page (Part 2) Backup"
 description: "Customer Orders"
 date: "2025-09-20"
-category: "Development"
+categories: ["Development"]
 image: "/assets/images/page200/hero.png"
 tags: ["javascript","java","ai","ml","business central"]
 hidden: true
+slug: "page200"
 ---
 
 # Power Page (Part 2) Backup

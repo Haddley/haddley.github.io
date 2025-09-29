@@ -1,10 +1,11 @@
 ---
 title: "PHP Setup"
 description: "Setup"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/phpsetup/hero.png"
-tags: ["ml"]
+date: "2024-08-25"
+categories: []
+tags: []
+slug: "phpsetup"
+image: "/assets/images/php-logo.svg"
 ---
 
 # PHP Setup

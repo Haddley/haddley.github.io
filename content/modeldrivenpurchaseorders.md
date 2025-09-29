@@ -1,10 +1,11 @@
 ---
 title: "Model Driven Purchase Orders"
 description: "Quick View"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/modeldrivenpurchaseorders/hero.png"
-tags: ["ai","business central","dynamics","power platform"]
+date: "2024-03-02"
+categories: ["Microsoft Dynamics","Business Central","Power Platform","AI"]
+tags: []
+slug: "modeldrivenpurchaseorders"
+image: "/assets/images/office-365-icon-500x500.png"
 ---
 
 ![](/assets/images/modeldrivenpurchaseorders/office-365-icon-500x500.png)

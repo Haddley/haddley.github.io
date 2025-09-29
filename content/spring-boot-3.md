@@ -1,10 +1,11 @@
 ---
 title: "Java Spring Boot (Part 3)"
 description: "SpringdatajpaApplication.java"
-date: "2025-09-20"
-category: "Java"
-image: "/assets/images/spring-boot-3/hero.png"
-tags: ["azure","java","spring","git","github"]
+date: "2023-10-28"
+categories: ["Java","Azure"]
+tags: []
+slug: "spring-boot-3"
+image: "/assets/images/spring-framework-logo-70-no.svg"
 ---
 
 ![](/assets/images/spring-boot-3/spring-framework-logo-2018.svg)
@@ -274,4 +275,3 @@ spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
 
 - [Spring Data JPA: What is it? And Why Should You Use It?](https://www.youtube.com/watch?v=x67yiTHxn00)
 - [90 Minutes to a Complete Java Spring Boot TODO App](https://www.youtube.com/watch?v=Hvuij8SOW8Q)
-

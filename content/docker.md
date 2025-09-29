@@ -2,9 +2,10 @@
 title: "Docker"
 description: "Docker is an easy way to create, manage, and deliver applications."
 date: "2021-02-06"
-category: "DevOps"
-image: "/assets/images/docker/hero.png"
-tags: ["cloud","docker","testing"]
+categories: ["DevOps"]
+tags: []
+slug: "docker"
+image: "/assets/images/method-draw-image.svg"
 ---
 
 ## Docker is an easy way to create, manage, and deliver applications.

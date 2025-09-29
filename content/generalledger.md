@@ -1,10 +1,11 @@
 ---
 title: "General Ledger"
 description: "Purchase"
-date: "2025-09-20"
-category: "Business Central"
-image: "/assets/images/generalledger/hero.png"
-tags: ["ai","business central","dynamics"]
+date: "2023-12-11"
+categories: ["Microsoft Dynamics","Business Central","Microsoft Dynamics"]
+tags: []
+slug: "generalledger"
+image: "/assets/images/dynamics365-color.svg"
 ---
 
 ![](/assets/images/generalledger/dynamics365-color.svg)

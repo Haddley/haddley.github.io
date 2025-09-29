@@ -1,10 +1,11 @@
 ---
 title: "NGRX"
 description: "haddley-ngrx"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/ngrx/hero.png"
-tags: ["angular","react","typescript","ai","ml"]
+date: "2022-11-27"
+categories: ["Angular","React","TypeScript","JavaScript"]
+tags: []
+slug: "ngrx"
+image: "/assets/images/ngrx.svg"
 ---
 
 ![](/assets/images/ngrx/ngrx.svg)
@@ -255,4 +256,3 @@ The final result is an Angular application that uses NGRX for state management.
 ## References
 
 - [GitHub repository](https://github.com/Haddley/haddley-ngrx)
-

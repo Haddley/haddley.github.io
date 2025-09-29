@@ -2,10 +2,11 @@
 title: ".NET Core (Part 2 deleted)"
 description: "Creating a VB.NET Web App using Microsoft's cross-platform framework."
 date: "2025-09-20"
-category: ".NET"
+categories: [".NET"]
 image: "/assets/images/dotnet-core-part2-deleted/hero.png"
 tags: ["dotnet","c#","ai","git","asp.net"]
 hidden: true
+slug: "dotnet core part2 deleted"
 ---
 
 # .NET Core (Part 2 deleted)

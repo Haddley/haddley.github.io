@@ -2,10 +2,11 @@
 title: "Dynamics 365 Sales (Part 1)"
 description: "Updating the Sales Insights form"
 date: "2025-09-20"
-category: "Business Central"
+categories: ["Business Central"]
 image: "/assets/images/page134/hero.png"
 tags: ["ai","business central","dynamics"]
 hidden: true
+slug: "page134"
 ---
 
 # Dynamics 365 Sales (Part 1)

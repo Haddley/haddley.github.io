@@ -1,10 +1,11 @@
 ---
 title: "Next.js (Part 5)"
 description: "next-pwa and ionic"
-date: "2025-09-20"
-category: "Web Development"
-image: "/assets/images/nextjs5/hero.png"
-tags: ["typescript","azure","aws","ai","ml"]
+date: "2022-01-13"
+categories: ["TypeScript","React",".NET"]
+tags: []
+slug: "nextjs5"
+image: "/assets/images/2560px-nextjs-logo.svg-1536x920.png"
 ---
 
 ## next-pwa and ionic

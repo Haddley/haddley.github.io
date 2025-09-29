@@ -2,10 +2,11 @@
 title: "Customer Content Virtual Tables"
 description: "Customer Content Virtual Tables"
 date: "2025-09-20"
-category: "Development"
+categories: ["Development"]
 image: "/assets/images/customercontentvirtualtables/hero.png"
 tags: ["ai","business central","power platform"]
 hidden: true
+slug: "customercontentvirtualtables"
 ---
 
 # Customer Content Virtual Tables

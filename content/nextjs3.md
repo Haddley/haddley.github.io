@@ -1,10 +1,11 @@
 ---
 title: "Next.js (Part 3)"
 description: "API routes and next-auth"
-date: "2025-09-20"
-category: "Web Development"
-image: "/assets/images/nextjs3/hero.png"
-tags: ["aws","database","ai","git","github"]
+date: "2021-11-07"
+categories: ["JavaScript","React"]
+tags: []
+slug: "nextjs3"
+image: "/assets/images/2560px-nextjs-logo.svg-1536x920.png"
 ---
 
 ## API routes and next-auth

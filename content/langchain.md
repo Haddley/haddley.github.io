@@ -1,10 +1,11 @@
 ---
 title: "LangChain (RAG)"
 description: "Using LangChain to create a medical report application"
-date: "2025-09-20"
-category: "AI/ML"
-image: "/assets/images/langchain/hero.png"
-tags: ["python","ai","ml","machine learning"]
+date: "2023-07-21"
+categories: ["AI","Python"]
+tags: []
+slug: "langchain"
+image: "/assets/images/chatgpt-logo.svg"
 ---
 
 # LangChain (RAG)
@@ -284,4 +285,3 @@ if prompt:
 
 - [LangChain Quickstart](https://python.langchain.com/docs/get_started/quickstart)
 - [I built a GPT Investment Banker using this 312 PAGE document](https://www.youtube.com/watch?v=u8vQyTzNGVY)
-

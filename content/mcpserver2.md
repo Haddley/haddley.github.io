@@ -1,10 +1,11 @@
 ---
 title: "Model Context Protocol (Part 2)"
 description: "Business Central"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/mcpserver2/hero.png"
-tags: ["azure","docker","ai","business central","git"]
+date: "2025-09-21"
+categories: ["Microsoft Dynamics","Business Central","TypeScript","DevOps"]
+tags: []
+image: "/assets/images/mcpserver2/mcp-1024x1024.png"
+slug: "mcpserver2"
 hidden: true
 ---
 
@@ -647,4 +648,3 @@ services:
 
 - [Talk to Your Data: Build an MCP local Server in JavaScript (Node.js) that Understands Business Central](https://danieleincalza.blogspot.com/2025/07/talk-to-your-data-build-mcp-local.html?fbclid=IwZXh0bgNhZW0CMTEAAR6ieJAE0Jk-FhoJQxOcwj7yS9iaYnf7iBIpmzQFTi_bjspiOwed4cTkZ7AfKg_aem__GvqVa0pGPLHMYsfhixUdw)
 - [How to add MCP Model Context Protocol to Copilot Studio via Custom Connector](https://www.youtube.com/watch?v=qjMBkk0R_7s&t=292s)
-

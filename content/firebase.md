@@ -1,11 +1,11 @@
 ---
 title: "Firebase"
 description: "Firebase web codelab"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/firebase/hero.png"
-tags: ["cloud","database","ai","git","github"]
-hidden: true
+date: "2023-04-24"
+categories: ["JavaScript","Azure"]
+tags: []
+slug: "firebase"
+image: "/assets/images/logo-lockup-firebase-vertical.svg"
 ---
 
 ![](/assets/images/firebase/logo-lockup-firebase-vertical.svg)
@@ -343,4 +343,3 @@ I needed to specify in the firebase.json file which local files should be deploy
 
 - [Firebase web codelab](https://firebase.google.com/codelabs/firebase-web)
 - [Patterns for security with Firebase: per-user permissions for Cloud Firestore](https://medium.com/firebase-developers/patterns-for-security-with-firebase-per-user-permissions-for-cloud-firestore-be67ee8edc4a)
-

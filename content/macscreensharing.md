@@ -1,10 +1,11 @@
 ---
 title: "Mac Screen Sharing"
 description: "Screen Sharing VNC"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/macscreensharing/hero.png"
-tags: ["ai"]
+date: "2025-08-18"
+categories: []
+tags: []
+slug: "macscreensharing"
+image: "/assets/images/apple-logo-black.svg"
 ---
 
 ![](/assets/images/macscreensharing/apple-logo-black.svg)

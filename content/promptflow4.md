@@ -1,18 +1,11 @@
-description: "Planning"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/promptflow4/hero.png"
-tags: ["ai"]
-hidden: true
-
 ---
 title: "Prompt Flow (Part 4)"
 description: "Planning"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/promptflow4/hero.png"
-tags: ["ai"]
-hidden: true
+date: "2024-08-24"
+categories: ["AI"]
+tags: []
+slug: "promptflow4"
+image: "/assets/images/logo.svg"
 ---
 
 # Prompt Flow (Part 4)

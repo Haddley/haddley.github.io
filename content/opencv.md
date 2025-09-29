@@ -1,10 +1,11 @@
 ---
 title: "Object Detection"
 description: "Object Detection"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/opencv/hero.png"
-tags: ["python","git","github"]
+date: "2023-07-25"
+categories: ["AI","Python"]
+tags: []
+slug: "opencv"
+image: "/assets/images/raspberry-pi-logo.svg"
 ---
 
 # Object Detection
@@ -264,4 +265,3 @@ while(video.isOpened()):
 video.release()
 cv2.destroyAllWindows()
 ```
-

@@ -1,10 +1,11 @@
 ---
 title: "WebVR"
 description: "Create Virtual Reality Experiences."
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/webvr/hero.png"
-tags: ["ai","git","github"]
+date: "2021-03-02"
+categories: []
+tags: []
+slug: "webvr"
+image: "/assets/images/webvr-logo-square-512x512.png"
 ---
 
 ## Create Virtual Reality Experiences.
@@ -65,4 +66,3 @@ A static scene can be created using a few web page tags.
 
 </html>
 ```
-

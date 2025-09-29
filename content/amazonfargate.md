@@ -1,10 +1,11 @@
 ---
 title: "Amazon Fargate"
 description: "Pay-as-you-go"
-date: "2025-09-20"
-category: "AWS"
-image: "/assets/images/amazonfargate/hero.png"
-tags: ["aws","cloud","docker","kubernetes","ai"]
+date: "2021-09-20"
+categories: ["AWS","DevOps"]
+tags: []
+slug: "amazonfargate"
+image: "/assets/images/amazonfargate/amazon-web-services-logo.svg"
 ---
 
 #Amazon Fargate

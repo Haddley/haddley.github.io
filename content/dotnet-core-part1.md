@@ -1,10 +1,11 @@
 ---
 title: ".NET Core (Part 1)"
 description: "Creating a REST API Service using Microsoft cross-platform framework."
-date: "2025-09-20"
-category: ".NET"
-image: "/assets/images/dotnet-core-part1/hero.png"
-tags: ["react","javascript","dotnet","ai"]
+date: "2021-04-10"
+categories: [".NET","DevOps"]
+tags: []
+slug: "dotnet-core-part1"
+image: "/assets/images/net-logo.svg"
 ---
 
 ## Creating a REST API Service using Microsoft's cross-platform framework.
@@ -373,4 +374,3 @@ namespace haddley_power_app_api.Controllers
 ## References
 
 - [Static files in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/static-files)
-

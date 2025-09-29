@@ -4,6 +4,7 @@ import {
   getVisibleBlogPosts,
   BlogPost
 } from '@/lib/posts';
+import { categoryNameToSlug } from '@/lib/categories';
 import Link from 'next/link';
 
 export default async function CategoriesPage() {
@@ -105,15 +106,12 @@ export default async function CategoriesPage() {
                 </div>
                 
                 <div className="mt-4">
-                  <button 
+                  <Link 
+                    href={`/posts/category/${categoryNameToSlug(category)}`}
                     className="text-sm font-medium hover:underline"
-                    onClick={() => {
-                      // For now, we'll show an alert, but this could navigate to a filtered view
-                      alert(`Showing all ${postCount} posts in ${category} category`);
-                    }}
                   >
                     View All Posts →
-                  </button>
+                  </Link>
                 </div>
               </div>
             );

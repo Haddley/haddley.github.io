@@ -2,10 +2,11 @@
 title: "Azure AI (Part 1)"
 description: "Overview of Azure AI Services"
 date: "2024-01-10"
-category: "Azure"
+categories: ["Azure"]
 image: "/assets/images/azure-ai.png"
 tags: ["Azure", "AI", "Machine Learning"]
 hidden: true
+slug: "azure-ai-part-1"
 ---
 
 # Azure AI Services - Getting Started

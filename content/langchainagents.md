@@ -1,10 +1,11 @@
 ---
 title: "LangChain Agents"
 description: "Agents"
-date: "2025-09-20"
-category: "AI/ML"
-image: "/assets/images/langchainagents/hero.png"
-tags: ["python","ai"]
+date: "2024-08-25"
+categories: ["AI","Python"]
+tags: []
+slug: "langchainagents"
+image: "/assets/images/langchain.svg"
 ---
 
 # LangChain Agents

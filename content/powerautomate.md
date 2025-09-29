@@ -1,10 +1,11 @@
 ---
 title: "Power Automate"
 description: "Automating Team Creation"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/powerautomate/hero.png"
+date: "2022-05-04"
+categories: ["Microsoft 365","Power Platform"]
 tags: []
+slug: "powerautomate"
+image: "/assets/images/office-365-icon-500x500.png"
 ---
 
 ![](/assets/images/powerautomate/office-365-icon-500x500.png)

@@ -1,10 +1,11 @@
 ---
 title: "Model Driven Purchase Order Lines"
 description: "manage Business Central Purchase Order Lines"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/modeldrivenpurchaseorderlines/hero.png"
-tags: ["ai","business central","power platform"]
+date: "2024-03-03"
+categories: ["Microsoft Dynamics","Business Central","Power Platform"]
+tags: []
+slug: "modeldrivenpurchaseorderlines"
+image: "/assets/images/office-365-icon-500x500.png"
 ---
 
 # Model Driven Purchase Order Lines

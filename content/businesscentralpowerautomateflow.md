@@ -1,10 +1,11 @@
 ---
 title: "Business Central Power Automate Flow"
 description: "Business Central includes a Microsoft Power Automate license"
-date: "2025-09-20"
-category: "Business Central"
-image: "/assets/images/businesscentralpowerautomateflow/hero.png"
-tags: ["cloud","ai","business central","dynamics"]
+date: "2024-01-02"
+categories: ["Microsoft Dynamics","Business Central","Power Platform","Microsoft Dynamics"]
+tags: []
+slug: "businesscentralpowerautomateflow"
+image: "/assets/images/posts-meta.svg"
 ---
 
 # Business Central Power Automate Flow

@@ -1,10 +1,11 @@
 ---
 title: "Hands-on-Lab 2.1"
 description: "Create and configure a new company"
-date: "2025-09-20"
-category: "Business Central"
-image: "/assets/images/hands-on-lab2.1/hero.png"
-tags: ["database","ai","business central","dynamics"]
+date: "2023-11-22"
+categories: ["Microsoft Dynamics","Business Central","Microsoft Dynamics"]
+tags: []
+slug: "hands-on-lab2.1"
+image: "/assets/images/hands-on-lab2.1/dynamics365-color.svg"
 ---
 
 ![](/assets/images/hands-on-lab2.1/dynamics365-color.svg)

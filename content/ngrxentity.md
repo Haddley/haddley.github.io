@@ -1,10 +1,11 @@
 ---
 title: "NGRX entity"
 description: "json-server"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/ngrxentity/hero.png"
-tags: ["ai","git","github","testing"]
+date: "2023-02-18"
+categories: ["TypeScript","React","Angular","JavaScript"]
+tags: []
+slug: "ngrxentity"
+image: "/assets/images/ngrx.svg"
 ---
 
 ![](/assets/images/ngrxentity/ngrx.svg)
@@ -359,4 +360,3 @@ export class AppComponent implements OnInit {
 
 }
 ```
-

@@ -1,9 +1,11 @@
 ---
 title: "General Posting Setup"
 description: "Which accounts payable ledger account"
-category: "Business Central"
-image: "/assets/images/generalpostingsetup/hero.png"
-tags: ["ai","dynamics"]
+date: "2023-12-14"
+categories: ["Microsoft Dynamics","Business Central","Microsoft Dynamics"]
+tags: []
+slug: "generalpostingsetup"
+image: "/assets/images/posts-meta.svg"
 ---
 
 # General Posting Setup

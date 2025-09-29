@@ -1,10 +1,11 @@
 ---
 title: "Business Central Virtual Table"
 description: "Microsoft Dynamics 365 Business Central Virtual Tables for Microsoft Dataverse"
-date: "2025-09-20"
-category: "Business Central"
-image: "/assets/images/businesscentralvirtualtable/hero.png"
-tags: ["ai","business central","dynamics"]
+date: "2024-01-12"
+categories: ["Microsoft Dynamics","Business Central","Power Platform","Microsoft Dynamics"]
+tags: []
+slug: "businesscentralvirtualtable"
+image: "/assets/images/posts-meta.svg"
 ---
 
 ![](/assets/images/businesscentralvirtualtable/dynamics365-color.svg)

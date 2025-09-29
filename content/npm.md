@@ -1,10 +1,11 @@
 ---
 title: "npm JavaScript"
 description: "Create and publish an npm module using JavaScript."
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/npm/hero.png"
-tags: ["javascript","java","ai","git","github"]
+date: "2021-02-25"
+categories: ["JavaScript","DevOps"]
+tags: []
+slug: "npm"
+image: "/assets/images/6078720-200x200.png"
 ---
 
 ## Create and publish an npm module using JavaScript.
@@ -271,4 +272,3 @@ jobs:
     - run: npm run build --if-present
     - run: npm test
 ```
-

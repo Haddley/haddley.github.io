@@ -1,10 +1,11 @@
 ---
 title: "Docker Buildx"
 description: "Build multi-platform Docker images."
-date: "2025-09-20"
-category: "DevOps"
-image: "/assets/images/dockerbuildx/hero.png"
-tags: ["cloud","docker","ai","testing"]
+date: "2021-03-01"
+categories: ["DevOps","JavaScript"]
+tags: []
+slug: "dockerbuildx"
+image: "/assets/images/method-draw-image.svg"
 ---
 
 ## Build multi-platform Docker images.

@@ -1,10 +1,11 @@
 ---
 title: "Angular and Phaser"
 description: "Using Phaser in an Angular Component"
-date: "2025-09-20"
-category: "Web Development"
-image: "/assets/images/angularphaser/hero.png"
-tags: ["angular","ml"]
+date: "2023-05-10"
+categories: ["Angular","JavaScript","React"]
+tags: []
+slug: "angularphaser"
+image: "/assets/images/phaser-logo-1836x1530.png"
 ---
 
 ## Using Phaser in an Angular Component
@@ -69,4 +70,3 @@ Update angular.json:
 
 - [Using Phaser in an Angular 8 Component](https://braelynnn.medium.com/using-phaser-in-an-angular-8-component-53644a2280e3)
 - [Github](https://github.com/Haddley/haddley-angular-phaser)
-

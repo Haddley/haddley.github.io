@@ -1,10 +1,11 @@
 ---
 title: "Stable Diffusion"
 description: "Stable Diffusion"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/stablediffusion/hero.png"
-tags: ["python","ai","git","github"]
+date: "2023-08-01"
+categories: ["Python","AI"]
+tags: []
+slug: "stablediffusion"
+image: "/assets/images/jupyter.svg"
 ---
 
 # Stable Diffusion

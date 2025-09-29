@@ -1,10 +1,11 @@
 ---
 title: "npm C++"
 description: "Create and publish an npm module using C++."
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/npmcc/hero.png"
-tags: ["ai","git","github","testing"]
+date: "2021-02-26"
+categories: ["JavaScript","DevOps"]
+tags: []
+slug: "npmcc"
+image: "/assets/images/6078720-200x200.png"
 ---
 
 ## Create and publish an npm module using C++.
@@ -379,4 +380,3 @@ jobs:
     - run: npm run build --if-present
     - run: npm test
 ```
-

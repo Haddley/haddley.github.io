@@ -1,10 +1,11 @@
 ---
 title: "Progressive Web Application"
 description: "Building a Progressive Web Application"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/pwa/hero.png"
-tags: ["javascript","azure","ai","ml"]
+date: "2021-07-24"
+categories: ["Azure"]
+tags: []
+slug: "pwa"
+image: "/assets/images/progressive-web-apps-logo.svg"
 ---
 
 ## Building a Progressive Web Application
@@ -347,4 +348,3 @@ this.addEventListener('fetch', event => {
 ## References
 
 - [Create an Analog Clock using HTML, CSS and JavaScript](https://www.geeksforgeeks.org/how-to-create-analog-clock-using-html-css-and-javascript/)
-

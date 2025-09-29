@@ -1,10 +1,11 @@
 ---
 title: "Amazon Elastic Container Service"
 description: "Deploying to Amazon ECS"
-date: "2025-09-20"
-category: "AWS"
-image: "/assets/images/amazonecs/hero.png"
-tags: ["aws","cloud","docker","kubernetes","ai"]
+date: "2021-09-20"
+categories: ["AWS","DevOps","AI"]
+tags: []
+slug: "amazonecs"
+image: "/assets/images/amazonecs/amazon-web-services-logo.svg"
 ---
 
 ## Deploying to Amazon ECS

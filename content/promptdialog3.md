@@ -1,10 +1,12 @@
 ---
-title: "Business Central (Part 29) PromptDialog 3"
-description: "Prompt Dialog Markdown"
-date: "2025-09-20"
-category: "Business Central"
-image: "/assets/images/promptdialog3/hero.png"
-tags: ["javascript","java","ai","ml","business central"]
+title: "Business Central (Part 29)"
+description: "PromptDialog (Part 3)"
+date: "2024-05-24"
+categories: ["AI","Microsoft Dynamics","Business Central","Azure"]
+tags: []
+slug: "promptdialog3"
+image: "/assets/images/posts-meta.svg"
+hidden: false
 ---
 
 # Business Central (Part 29) PromptDialog 3

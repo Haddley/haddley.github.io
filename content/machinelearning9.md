@@ -1,10 +1,11 @@
 ---
 title: "Machine Learning (Part 9)"
 description: "MNIST"
-date: "2025-09-20"
-category: "AI/ML"
-image: "/assets/images/machinelearning9/hero.png"
-tags: ["database","ai","machine learning","git"]
+date: "2022-06-17"
+categories: ["AI"]
+tags: []
+slug: "machinelearning9"
+image: "/assets/images/tensorflow-logo.svg"
 ---
 
 ![](/assets/images/machinelearning9/tensorflow-logo.svg)

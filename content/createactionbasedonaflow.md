@@ -1,10 +1,11 @@
 ---
 title: "Create action based on a flow"
 description: "Created from the Business Central user interface"
-date: "2025-09-20"
-category: "Business Central"
-image: "/assets/images/createactionbasedonaflow/hero.png"
-tags: ["ai","business central","dynamics"]
+date: "2024-01-04"
+categories: ["Power Platform","Microsoft Dynamics","Business Central","Microsoft Dynamics"]
+tags: []
+slug: "createactionbasedonaflow"
+image: "/assets/images/posts-meta.svg"
 ---
 
 # Create action based on a flow

@@ -1,10 +1,11 @@
 ---
 title: "NGRX devtools"
 description: "haddley-ngrx"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/ngrxdevtools/hero.png"
-tags: ["angular","git","github"]
+date: "2023-01-25"
+categories: ["Angular"]
+tags: []
+slug: "ngrxdevtools"
+image: "/assets/images/ngrx.svg"
 ---
 
 ![](/assets/images/ngrxdevtools/ngrx.svg)
@@ -75,4 +76,3 @@ I added the corresponding chrome extension from
 ## References
 
 - [GitHub repository](https://github.com/Haddley/haddley-ngrx)
-

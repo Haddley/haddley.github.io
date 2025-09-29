@@ -2,10 +2,11 @@
 title: "Machine Learning (Part 4a)"
 description: "WIP"
 date: "2025-09-20"
-category: "Development"
+categories: ["Development"]
 image: "/assets/images/page65/hero.png"
 tags: ["python","ai","ml","machine learning","git"]
 hidden: true
+slug: "page65"
 ---
 
 # Machine Learning (Part 4a)

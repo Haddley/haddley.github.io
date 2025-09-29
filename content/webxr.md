@@ -1,10 +1,11 @@
 ---
 title: "WebXR"
 description: "Create Augmented Reality Experiences."
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/webxr/hero.png"
-tags: ["ml","git","github"]
+date: "2022-04-22"
+categories: ["JavaScript"]
+tags: []
+slug: "webxr"
+image: "/assets/images/34385910-400x400.png"
 ---
 
 ## Create Augmented Reality Experiences.
@@ -72,4 +73,3 @@ For convenience the barcode marker can be added to a web page QR Code.
 
 </html>
 ```
-

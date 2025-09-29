@@ -2,10 +2,11 @@
 title: "Angular (Part 1)"
 description: "A platform for building mobile and desktop web applications"
 date: "2025-09-20"
-category: "Web Development"
+categories: ["Web Development"]
 image: "/assets/images/angular1/hero.png"
 tags: ["angular","typescript","ai","ml","testing"]
 hidden: true
+slug: "angular1"
 ---
 
 # Angular (Part 1)

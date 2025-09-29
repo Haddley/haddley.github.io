@@ -1,10 +1,11 @@
 ---
 title: "Machine Learning (Part 6)"
 description: "Splitting into training and test dataframes"
-date: "2025-09-20"
-category: "AI/ML"
-image: "/assets/images/machinelearning6/hero.png"
-tags: ["ai","machine learning","testing"]
+date: "2022-06-11"
+categories: ["AI"]
+tags: []
+slug: "machinelearning6"
+image: "/assets/images/tensorflow-logo.svg"
 ---
 
 ![](/assets/images/machinelearning6/tensorflow-logo.svg)

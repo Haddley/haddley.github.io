@@ -1,10 +1,11 @@
 ---
 title: "Dynamics Trial Signup"
 description: "Microsoft Signup"
-date: "2025-09-20"
-category: "Business Central"
-image: "/assets/images/dynamicstrialsignup/hero.png"
-tags: ["ai","dynamics"]
+date: "2023-08-14"
+categories: ["Microsoft Dynamics","Business Central"]
+tags: []
+slug: "dynamicstrialsignup"
+image: "/assets/images/dynamics365-color.svg"
 ---
 
 # Dynamics Trial Signup

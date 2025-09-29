@@ -1,10 +1,11 @@
 ---
 title: "AL-Go-PTE"
 description: "Extensions"
-date: "2025-09-20"
-category: "Business Central"
-image: "/assets/images/al-go-pte/hero.png"
-tags: ["docker","devops","ai","business central","dynamics"]
+date: "2023-08-26"
+categories: ["Microsoft Dynamics","Business Central","DevOps","Microsoft Dynamics"]
+tags: []
+slug: "al-go-pte"
+image: "/assets/images/dynamics365-color.svg"
 ---
 
 ![](/assets/images/al-go-pte/dynamics365-color.svg)

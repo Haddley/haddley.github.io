@@ -1,11 +1,11 @@
 ---
 title: "Machine Learning (Part 5)"
 description: "Excel"
-date: "2025-09-20"
-category: "AI/ML"
-image: "/assets/images/machinelearning5/hero.png"
-tags: ["ai","machine learning","git","github"]
-hidden: true
+date: "2022-06-11"
+categories: ["AI"]
+tags: []
+slug: "machinelearning5"
+image: "/assets/images/tensorflow-logo.svg"
 ---
 
 ![](/assets/images/machinelearning5/tensorflow-logo.svg)

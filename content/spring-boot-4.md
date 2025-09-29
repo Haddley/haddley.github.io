@@ -1,10 +1,11 @@
 ---
 title: "Java Spring Boot (Part 4)"
 description: "ModelAndView"
-date: "2025-09-20"
-category: "Java"
-image: "/assets/images/spring-boot-4/hero.png"
-tags: ["java","spring"]
+date: "2023-10-29"
+categories: ["Java","AI"]
+tags: []
+slug: "spring-boot-4"
+image: "/assets/images/spring-framework-logo-70-no.svg"
 ---
 
 ## ModelAndView
@@ -206,4 +207,3 @@ public class SpringdatajpaApplication {
 ## References
 
 - [Spring Web MVC | 05 | The Model object](https://www.youtube.com/watch?v=lHucuG4jyU0&list=PLdW9lrB9HDw23SG-j-iOlQFGvdM7xU1fR&index=5)
-

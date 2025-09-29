@@ -1,10 +1,11 @@
 ---
 title: "Model Context Protocol (Part 1)"
 description: "Typescript quick start"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/mcpserver/hero.png"
-tags: ["typescript","ai"]
+date: "2025-08-13"
+categories: ["TypeScript","AI"]
+tags: []
+slug: "mcpserver"
+image: "/assets/images/mcp-1024x1024.png"
 ---
 
 ![](/assets/images/mcpserver/mcp-1024x1024.png)
@@ -116,4 +117,3 @@ await server.connect(transport);
 
 - [Building Your First MCP Server: A Beginners Tutorial](https://dev.to/debs_obrien/building-your-first-mcp-server-a-beginners-tutorial-5fag)
 - [New Lab! Learn How to Connect MCP to Copilot Studio](https://www.youtube.com/watch?v=jG-XTzXxFCk)
-

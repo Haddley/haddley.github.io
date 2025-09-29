@@ -1,10 +1,11 @@
 ---
 title: "SharePoint site designs and site scripts"
 description: "SharePoint users and administrators have long appreciated the opportunity to reuse SharePoint Site Templates."
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/sharepointsitedesignsandsitescripts/hero.png"
-tags: ["ai"]
+date: "2021-02-15"
+categories: ["Microsoft 365"]
+tags: []
+slug: "sharepointsitedesignsandsitescripts"
+image: "/assets/images/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png"
 ---
 
 # SharePoint site designs and site scripts
@@ -216,4 +217,3 @@ The Get-SPOSiteScriptFromWeb command extracts Site Script from an existing Share
 ## References
 
 - [SharePoint site design and site script overview](https://docs.microsoft.com/en-us/sharepoint/dev/declarative-customization/site-design-overview)
-

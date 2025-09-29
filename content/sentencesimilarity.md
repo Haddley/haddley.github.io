@@ -1,10 +1,11 @@
 ---
 title: "Sentence Similarity"
 description: "Sentence Similarity"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/sentencesimilarity/hero.png"
-tags: ["ai"]
+date: "2023-07-19"
+categories: ["AI"]
+tags: []
+slug: "sentencesimilarity"
+image: "/assets/images/chatgpt-logo.svg"
 ---
 
 # Sentence Similarity
@@ -101,4 +102,3 @@ Sentence similarity refers to the measure of how similar or related two sentence
 ## References
 
 - [$0 Embeddings (OpenAI vs. free &amp; open source)](https://www.youtube.com/watch?v=QdDoFfkVkcw)
-

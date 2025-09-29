@@ -1,10 +1,11 @@
 ---
 title: "Cloud Flow"
 description: "A Topic that uses the Business Central Connector"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/cloudflow/hero.png"
-tags: ["cloud","business central"]
+date: "2024-02-26"
+categories: ["Power Platform","Microsoft Dynamics","Business Central","Azure"]
+tags: []
+slug: "cloudflow"
+image: "/assets/images/office-365-icon-500x500.png"
 ---
 
 # Cloud Flow

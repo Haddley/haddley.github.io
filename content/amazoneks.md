@@ -1,10 +1,11 @@
 ---
 title: "Amazon Elastic Kubernetes Service"
 description: "Deploying to Amazon EKS"
-date: "2025-09-20"
-category: "AWS"
-image: "/assets/images/amazoneks/hero.png"
-tags: ["aws","cloud","docker","kubernetes","ai"]
+date: "2021-08-12"
+categories: ["AWS","DevOps"]
+tags: []
+slug: "amazoneks"
+image: "/assets/images/amazon-web-services-logo.svg"
 ---
 
 # Amazon Elastic Kubernetes Service

@@ -1,10 +1,11 @@
 ---
 title: "Power Apps, Custom Connectors and API Management"
 description: "Power Apps, Custom Connectors and API Management"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/api-management/hero.png"
-tags: ["azure","ai"]
+date: "2021-08-02"
+categories: ["Power Platform","Azure"]
+tags: []
+slug: "api-management"
+image: "/assets/images/office-365-icon-500x500.png"
 ---
 
 # Power Apps, Custom Connectors and API Management
@@ -151,4 +152,3 @@ The API Management Service controls how api services are exposed to employees by
 ## References
 
 - [How to import APIs to Power Apps using Azure API Management](https://www.youtube.com/watch?v=06CRN18kH1k)
-

@@ -1,10 +1,11 @@
 ---
 title: "Microsoft Dataverse Reports"
 description: "Creating a Dataverse Report"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/dataversereports/hero.png"
+date: "2024-07-19"
+categories: ["Power Platform"]
 tags: []
+slug: "dataversereports"
+image: "/assets/images/office-365-icon-500x500.png"
 ---
 
 # Microsoft Dataverse Reports

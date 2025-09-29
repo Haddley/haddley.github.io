@@ -1,10 +1,11 @@
 ---
 title: "Machine Learning (Part 3)"
 description: "Creating models"
-date: "2025-09-20"
-category: "AI/ML"
-image: "/assets/images/machinelearning3/hero.png"
-tags: ["ai","ml","machine learning"]
+date: "2022-06-05"
+categories: ["AI","DevOps"]
+tags: []
+slug: "machinelearning3"
+image: "/assets/images/tensorflow-logo.svg"
 ---
 
 ## Creating models
@@ -117,4 +118,3 @@ I used Teachable Machines to create a [squishmallows](https://squishmallows.com/
     }
 </script>
 ```
-

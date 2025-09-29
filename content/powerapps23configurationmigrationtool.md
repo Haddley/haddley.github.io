@@ -1,11 +1,11 @@
 ---
 title: "Power Apps (Part 23)"
 description: "The Configuration Migration tool"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/powerapps23configurationmigrationtool/hero.png"
-tags: ["ai","ml","power platform"]
-hidden: true
+date: "2025-01-01"
+categories: ["Power Platform"]
+tags: []
+slug: "powerapps23configurationmigrationtool"
+image: "/assets/images/office-365-icon-500x500.png"
 ---
 
 # Power Apps (Part 23)

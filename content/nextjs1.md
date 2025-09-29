@@ -1,10 +1,11 @@
 ---
 title: "Next.js (Part 1)"
 description: "The React Framework for Production"
-date: "2025-09-20"
-category: "Web Development"
-image: "/assets/images/nextjs1/hero.png"
-tags: ["react","javascript","aws","java","git"]
+date: "2021-11-05"
+categories: ["JavaScript","React"]
+tags: []
+slug: "nextjs1"
+image: "/assets/images/2560px-nextjs-logo.svg-1536x920.png"
 ---
 
 ## The React Framework for Production

@@ -1,10 +1,11 @@
 ---
 title: "REST"
 description: "Creating a REST API Service using Node and Express"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/restapiservice/hero.png"
-tags: ["javascript","docker","java","ai"]
+date: "2021-02-06"
+categories: ["JavaScript","DevOps"]
+tags: []
+slug: "restapiservice"
+image: "/assets/images/fve-image.svg"
 ---
 
 ## Creating a REST API Service using Node and Express
@@ -179,4 +180,3 @@ app.get('/books/:id', (request, response) => {
 
 app.listen(5000, () => console.log('server running'));
 ```
-

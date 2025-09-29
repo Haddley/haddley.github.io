@@ -1,10 +1,11 @@
 ---
 title: "Power Apps, Custom Connectors and Application Registrations"
 description: "Power Apps, Custom Connectors and Application Registrations"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/customconnectorsappregistrations/hero.png"
-tags: ["javascript","azure","java","ai","git"]
+date: "2021-08-09"
+categories: ["Azure","JavaScript","Power Platform"]
+tags: []
+slug: "customconnectorsappregistrations"
+image: "/assets/images/office-365-icon-500x500.png"
 ---
 
 # Power Apps, Custom Connectors and Application Registrations
@@ -286,4 +287,3 @@ The service principal objects are what you see when you select the Enterprise ap
 
 - [Vanilla JavaScript single-page application (SPA) using MSAL.js to authorize users for calling a protected web API on Azure AD](https://github.com/Azure-Samples/ms-identity-javascript-tutorial/tree/main/3-Authorization-II/1-call-api)
 - [Azure AD App Registrations, Enterprise Apps and Service Principals](https://www.youtube.com/watch?v=WVNvoiA_ktw)
-

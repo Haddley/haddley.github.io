@@ -1,10 +1,11 @@
 ---
 title: "Copilot Studio"
 description: "Customize the look and feel of the bot default canvas"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/customizedefaultcanvas/hero.png"
-tags: ["ml"]
+date: "2024-03-11"
+categories: []
+tags: []
+slug: "customizedefaultcanvas"
+image: "/assets/images/office-365-icon-500x500.png"
 ---
 
 # Copilot Studio

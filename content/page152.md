@@ -2,10 +2,11 @@
 title: "Vendor Posting Group COPY"
 description: "Vendor Posting Group"
 date: "2025-09-20"
-category: "Business Central"
+categories: ["Business Central"]
 image: "/assets/images/page152/hero.png"
 tags: ["ai","business central","dynamics"]
 hidden: true
+slug: "page152"
 ---
 
 # Vendor Posting Group COPY

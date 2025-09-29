@@ -1,10 +1,11 @@
 ---
 title: "Java Spring Boot (Part 6)"
 description: "GitHub"
-date: "2025-09-20"
-category: "Java"
-image: "/assets/images/spring-boot-6/hero.png"
-tags: ["java","spring","ai","git","github"]
+date: "2023-10-31"
+categories: ["Java"]
+tags: []
+slug: "spring-boot-6"
+image: "/assets/images/spring-framework-logo-70-no.svg"
 ---
 
 ![](/assets/images/spring-boot-6/spring-framework-logo-2018.svg)
@@ -431,4 +432,3 @@ public class MyPageController {
 
 - [OAuth2Advanced Spring Security Login Made Easy in Java](https://www.youtube.com/watch?v=us0VjFiHogo)
 - [Advanced Spring Security](https://www.youtube.com/watch?v=PczgM2L3w60)
-

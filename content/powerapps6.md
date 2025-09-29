@@ -1,10 +1,11 @@
 ---
 title: "A Custom Connector for Microsoft Graph"
 description: "Calling the Microsoft Graph API from a Canvas App"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/powerapps6/hero.png"
-tags: ["azure","ai"]
+date: "2022-07-04"
+categories: ["Microsoft 365","Power Platform","Azure"]
+tags: []
+slug: "powerapps6"
+image: "/assets/images/office-365-icon-500x500.png"
 ---
 
 ![](/assets/images/powerapps6/office-365-icon-500x500.png)

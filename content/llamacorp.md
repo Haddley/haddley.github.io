@@ -1,10 +1,11 @@
 ---
 title: "LlamaCpp"
 description: "Accessing the llama.cpp model from Python"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/llamacorp/hero.png"
-tags: ["python","ai","ml"]
+date: "2023-08-03"
+categories: ["AI","Python"]
+tags: []
+slug: "llamacorp"
+image: "/assets/images/jupyter.svg"
 ---
 
 # LlamaCpp
@@ -431,4 +432,3 @@ def main() -> None:
 if __name__ == "__main__":
     main()
 ```
-

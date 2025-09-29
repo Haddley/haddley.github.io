@@ -1,10 +1,11 @@
 ---
 title: "Ionic"
 description: "Cross-platform apps.Powered by the Web."
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/ionic/hero.png"
-tags: ["react","javascript","typescript","azure","aws"]
+date: "2021-12-22"
+categories: ["React","TypeScript","Azure","DevOps"]
+tags: []
+slug: "ionic"
+image: "/assets/images/logo-192x192.png"
 ---
 
 # Ionic

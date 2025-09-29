@@ -1,10 +1,11 @@
 ---
 title: "ASP.NET Core Unit Tests"
 description: "Test driven development"
-date: "2025-09-20"
-category: ".NET"
-image: "/assets/images/aspnetcoreunittests/hero.png"
-tags: ["dotnet","ai","asp.net"]
+date: "2023-03-26"
+categories: [".NET"]
+tags: []
+slug: "aspnetcoreunittests"
+image: "/assets/images/net-logo.svg"
 ---
 
 ## Test driven development
@@ -152,4 +153,3 @@ public class ToDoControllerTests
 
 }
 ```
-

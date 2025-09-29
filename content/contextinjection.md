@@ -1,10 +1,11 @@
 ---
 title: "Context Injection"
 description: "Context Injection"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/contextinjection/hero.png"
-tags: ["database","ai"]
+date: "2023-07-19"
+categories: ["AI"]
+tags: []
+slug: "contextinjection"
+image: "/assets/images/chatgpt-logo.svg"
 ---
 
 # Context Injection
@@ -45,4 +46,3 @@ Questions:
 ## References
 
 - [Add Your Own Data to ChatGPT](https://shellypalmer.com/2023/04/add-your-own-data-to-chatgpt/)
-

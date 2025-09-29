@@ -1,10 +1,11 @@
 ---
 title: "Raspberry Pi GPIO"
 description: "Raspberry Pi GPIO"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/pi2/hero.png"
-tags: ["python","ai"]
+date: "2023-07-22"
+categories: ["Python"]
+tags: []
+slug: "pi2"
+image: "/assets/images/raspberry-pi-logo.svg"
 ---
 
 # Raspberry Pi GPIO
@@ -60,4 +61,3 @@ for i in range(5):
 
 - [Coding an LED using an GPIO pin](https://projects.raspberrypi.org/en/projects/leds-buzzers-scratch-games/2)
 - [UNDERSTANDING RASPBERRY PI 4 GPIO PINOUTS](https://toptechboy.com/understanding-raspberry-pi-4-gpio-pinouts/)
-

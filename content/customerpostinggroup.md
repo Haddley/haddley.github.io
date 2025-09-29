@@ -1,10 +1,11 @@
 ---
 title: "Customer Posting Group"
 description: "Which accounts receivable account?"
-date: "2025-09-20"
-category: "Business Central"
-image: "/assets/images/customerpostinggroup/hero.png"
-tags: ["ai","dynamics"]
+date: "2023-12-14"
+categories: ["Microsoft Dynamics","Business Central","Microsoft Dynamics"]
+tags: []
+slug: "customerpostinggroup"
+image: "/assets/images/posts-meta.svg"
 ---
 
 # Customer Posting Group

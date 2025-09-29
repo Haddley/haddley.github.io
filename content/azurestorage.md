@@ -1,10 +1,11 @@
 ---
 title: "Azure Storage"
-description: "Microsoft's cloud storage solution"
-date: "2025-09-20"
-category: "Azure"
-image: "/assets/images/azurestorage/hero.png"
-tags: ["azure","cloud","ai"]
+description: "Microsoft Azure Storage"
+date: "2022-08-13"
+categories: ["Azure"]
+tags: []
+slug: "azurestorage"
+image: "/assets/images/azurex70x75.svg"
 ---
 
 # Azure Storage

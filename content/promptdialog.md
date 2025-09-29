@@ -1,10 +1,12 @@
 ---
 title: "Business Central (Part 27)"
 description: "Prompt Dialog (Part 1)"
-date: "2025-09-20"
-category: "Business Central"
-image: "/assets/images/promptdialog/hero.png"
-tags: ["cloud","ai","business central","dynamics"]
+date: "2024-05-24"
+categories: ["Microsoft Dynamics","Business Central","AI","Microsoft Dynamics"]
+tags: []
+slug: "promptdialog"
+image: "/assets/images/posts-meta.svg"
+hidden: false
 ---
 
 ## Prompt Dialog (Part 1)

@@ -1,10 +1,11 @@
 ---
 title: "XCode C++ (Part 4)"
 description: "Rotating the triangle"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/xcode4/hero.png"
-tags: ["ai","ml"]
+date: "2023-03-27"
+categories: []
+tags: []
+slug: "xcode4"
+image: "/assets/images/xcode-14-icon-300x314.png"
 ---
 
 ![](/assets/images/xcode4/xcode-14-icon-300x314.png)
@@ -515,4 +516,3 @@ int main()
 ## References
 
 - [Modern OpenGL Tutorials](https://github.com/SonarSystems/Modern-OpenGL-Tutorials)
-

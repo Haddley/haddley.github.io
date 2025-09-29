@@ -1,10 +1,11 @@
 ---
 title: "JavaScript and Microsoft Graph"
 description: "A console application that calls the Microsoft Graph API"
-date: "2025-09-20"
-category: "JavaScript"
-image: "/assets/images/javascriptgraph/hero.png"
-tags: ["javascript","azure","ai","ml"]
+date: "2022-05-28"
+categories: ["JavaScript","Microsoft 365","Azure"]
+tags: []
+slug: "javascriptgraph"
+image: "/assets/images/office-365-icon-500x500.png"
 ---
 
 ![](/assets/images/javascriptgraph/office-365-icon-500x500.png)
@@ -456,4 +457,3 @@ const settings = {
 
 module.exports = settings;
 ```
-

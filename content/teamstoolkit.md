@@ -1,10 +1,11 @@
 ---
 title: "Teams Toolkit with Azure"
 description: "Get started with Microsoft Teams app development using Azure."
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/teamstoolkit/hero.png"
-tags: ["react","azure","cloud","sql","database"]
+date: "2021-05-29"
+categories: ["Microsoft 365","Azure","React","SQL"]
+tags: []
+slug: "teamstoolkit"
+image: "/assets/images/teams-hi-res-icon-2019.svg"
 ---
 
 ## Get started with Microsoft Teams app development using Azure.
@@ -479,4 +480,3 @@ async function execQuery(query, connection) {
 ## References
 
 - [Teams Toolkit](https://docs.microsoft.com/en-us/microsoftteams/platform/get-started/prerequisites?tabs=vscode)
-

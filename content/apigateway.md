@@ -1,10 +1,11 @@
 ---
 title: "API Gateway"
 description: "How to publish a collection of microservices using an API Gateway."
-date: "2025-09-20"
-category: "Cloud"
-image: "/assets/images/apigateway/hero.png"
-tags: ["react","azure","aws","cloud","docker"]
+date: "2021-02-10"
+categories: ["DevOps","React","AWS","Azure"]
+tags: []
+slug: "apigateway"
+image: "/assets/images/kubernetes-container-engine.svg"
 ---
 
 ## How to publish a collection of microservices using an API Gateway.

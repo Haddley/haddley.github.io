@@ -2,10 +2,11 @@
 title: "Microsoft SQL Server (Part 3)"
 description: "A Node, React and MS SQL Server App."
 date: "2025-09-20"
-category: "Development"
+categories: ["Development"]
 image: "/assets/images/mssqlserver3/hero.png"
 tags: ["react","javascript","typescript","azure","java"]
 hidden: true
+slug: "mssqlserver3"
 ---
 
 # Microsoft SQL Server (Part 3)

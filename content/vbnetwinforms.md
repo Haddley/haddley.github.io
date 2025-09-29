@@ -1,10 +1,11 @@
 ---
 title: "VB.NET WinForms and ASP.NET Core API"
 description: "VB.NET WinForms Development"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/vbnetwinforms/hero.png"
-tags: ["dotnet","ai","asp.net"]
+date: "2023-03-27"
+categories: [".NET"]
+tags: []
+slug: "vbnetwinforms"
+image: "/assets/images/net-logo.svg"
 ---
 
 ## VB.NET WinForms Development
@@ -119,4 +120,3 @@ Public Class Form1
     End Sub
 End Class
 ```
-

@@ -1,10 +1,11 @@
 ---
 title: "Internet of Things (Part 2)"
 description: "Node-RED can publish messages to a MQTT broker and subscribe to MQTT topics."
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/internetofthings2/hero.png"
-tags: ["docker"]
+date: "2021-03-06"
+categories: ["AWS","DevOps"]
+tags: []
+slug: "internetofthings2"
+image: "/assets/images/iot-microchip.svg"
 ---
 
 ## Node-RED can publish messages to a MQTT broker and subscribe to MQTT topics.
@@ -427,4 +428,3 @@ void loop() {
 ## References
 
 - [Designing MQTT Topics for AWS IoT Core](https://docs.aws.amazon.com/whitepapers/latest/designing-mqtt-topics-aws-iot-core/designing-mqtt-topics-aws-iot-core.html) - AWS whitepaper on MQTT topic design patterns and best practices for IoT Core implementation.
-

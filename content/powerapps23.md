@@ -2,10 +2,11 @@
 title: "Power Apps (Part 23)"
 description: "Integrating with Business Central using Power Automate"
 date: "2025-09-20"
-category: "Development"
+categories: ["Development"]
 image: "/assets/images/powerapps23/hero.png"
 tags: ["sql","business central"]
 hidden: true
+slug: "powerapps23"
 ---
 
 # Power Apps (Part 23)

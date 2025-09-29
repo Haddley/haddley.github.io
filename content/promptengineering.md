@@ -1,10 +1,11 @@
 ---
-title: "Large Language Models"
+title: "Meta"
 description: "Prompt Engineering"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/promptengineering/hero.png"
-tags: ["ai"]
+date: "2023-08-08"
+categories: []
+tags: []
+slug: "promptengineering"
+image: "/assets/images/mediamodifier-design.png"
 ---
 
 # Prompt Engineering

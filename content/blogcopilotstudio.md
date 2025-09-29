@@ -1,10 +1,11 @@
 ---
 title: "Blog Copilot Studio"
 description: "Blog Copilot"
-date: "2025-09-20"
-category: "Business Central"
-image: "/assets/images/blogcopilotstudio/hero.png"
-tags: ["java","ai","business central","dynamics","git"]
+date: "2024-03-24"
+categories: ["Microsoft Dynamics","Business Central","Microsoft Dynamics","Power Platform"]
+tags: []
+slug: "blogcopilotstudio"
+image: "/assets/images/posts-meta.svg"
 ---
 
 # Blog Copilot Studio

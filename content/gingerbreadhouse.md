@@ -1,11 +1,11 @@
 ---
 title: "Gingerbread House"
 description: "holiday.py"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/gingerbreadhouse/hero.png"
-tags: ["python","ai"]
-hidden: true
+date: "2023-12-26"
+categories: ["Python"]
+tags: []
+slug: "gingerbreadhouse"
+image: "/assets/images/raspberry-pi-logo.svg"
 ---
 
 ![](/assets/images/gingerbreadhouse/raspberry-pi-logo.svg)
@@ -155,4 +155,3 @@ while True:
 cap.release()
 cv2.destroyAllWindows()
 ```
-

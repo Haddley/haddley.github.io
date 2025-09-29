@@ -1,10 +1,11 @@
 ---
 title: "Multiplayer Tick-Tack-Toe"
 description: "Creating a new firebase project"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/ticktacktoe/hero.png"
-tags: ["javascript","java","database","ai","ml"]
+date: "2023-05-10"
+categories: ["AI","React"]
+tags: []
+slug: "ticktacktoe"
+image: "/assets/images/logo-lockup-firebase-vertical.svg"
 ---
 
 ![](/assets/images/ticktacktoe/logo-lockup-firebase-vertical.svg)
@@ -738,4 +739,3 @@ function initGame() {
 // Call the initGame function when the DOM is ready
 document.addEventListener('DOMContentLoaded', initGame);
 ```
-

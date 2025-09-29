@@ -1,10 +1,11 @@
 ---
 title: "Financial Operations Purchase Invoice"
 description: "Payment Journals"
-date: "2025-09-20"
-category: "Business Central"
-image: "/assets/images/financialoperationspurchaseinvoice/hero.png"
-tags: ["ai","business central","dynamics"]
+date: "2023-08-20"
+categories: ["Microsoft Dynamics","Business Central","Microsoft Dynamics"]
+tags: []
+slug: "financialoperationspurchaseinvoice"
+image: "/assets/images/dynamics365-color.svg"
 ---
 
 # Financial Operations Purchase Invoice

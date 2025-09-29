@@ -1,10 +1,11 @@
 ---
 title: "Multiplayer Game"
 description: "Creating a new firebase project"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/multiplayer/hero.png"
-tags: ["javascript","java","database","ai","ml"]
+date: "2023-05-09"
+categories: ["Maps","DevOps"]
+tags: []
+slug: "multiplayer"
+image: "/assets/images/logo-lockup-firebase-vertical.svg"
 ---
 
 ![](/assets/images/multiplayer/logo-lockup-firebase-vertical.svg)
@@ -482,4 +483,3 @@ function getRandomSafeSpot() {
 
 - [Build a Multiplayer Game with JavaScript &amp; Firebase](https://www.youtube.com/watch?v=xhURh2RDzzg)
 - [Multiplayer Game](https://github.com/Haddley/haddley.github.io/raw/main/firebase-multiplayer-demo-upload-4-18-22.zip)
-

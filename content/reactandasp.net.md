@@ -1,10 +1,11 @@
 ---
 title: "React and ASP.NET Core"
 description: "An ASP.NET Core backend and a React frontend."
-date: "2025-09-20"
-category: ".NET"
-image: "/assets/images/reactandasp.net/hero.png"
-tags: ["angular","react","dotnet","sql","database"]
+date: "2023-03-22"
+categories: ["React",".NET"]
+tags: []
+slug: "reactandasp.net"
+image: "/assets/images/logo512-512x512.png"
 ---
 
 # React and ASP.NET Core
@@ -103,4 +104,3 @@ As an experiment I updated the React code so the "Fetch data" menu item is only 
 ## References
 
 - [Tutorial: Create an ASP.NET Core app with React in Visual Studio](https://learn.microsoft.com/en-us/visualstudio/javascript/tutorial-asp-net-core-with-react?view=vs-2022)
-

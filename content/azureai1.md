@@ -2,10 +2,11 @@
 title: "Azure AI (Part 1)"
 description: "Azure OpenAI Service, and Retrieval Augmented Generation (RAG) in Azure AI Search"
 date: "2025-09-20"
-category: "Azure"
+categories: ["Azure"]
 image: "/assets/images/azureai1/hero.png"
 tags: ["azure","python","ai","git","github"]
 hidden: true
+slug: "azureai1"
 ---
 
 # Azure AI (Part 1)

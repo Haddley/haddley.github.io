@@ -1,10 +1,11 @@
 ---
 title: "Component Framework"
 description: "Component Framework"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/componentframework/hero.png"
-tags: ["react","ai","ml","dynamics","power platform"]
+date: "2022-08-14"
+categories: ["Power Platform","JavaScript","React"]
+tags: []
+slug: "componentframework"
+image: "/assets/images/office-365-icon-500x500.png"
 ---
 
 # Component Framework

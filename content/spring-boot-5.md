@@ -1,10 +1,11 @@
 ---
 title: "Java Spring Boot (Part 5)"
 description: "Spring for GraphQL"
-date: "2025-09-20"
-category: "Java"
-image: "/assets/images/spring-boot-5/hero.png"
-tags: ["java","spring","ai","ml","git"]
+date: "2023-10-30"
+categories: ["Java","React","SQL","AWS"]
+tags: []
+slug: "spring-boot-5"
+image: "/assets/images/spring-framework-logo-70-no.svg"
 ---
 
 ## Spring for GraphQL
@@ -571,4 +572,3 @@ public class BookController {
 ## References
 
 - [Unleash the Power of GraphQL in Spring Boot](https://www.youtube.com/watch?v=8Hp-DMeqHAk&t=1717s)
-

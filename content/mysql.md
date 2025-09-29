@@ -1,10 +1,11 @@
 ---
 title: "MySQL"
 description: "Connecting to MySQL from JavaScript"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/mysql/hero.png"
-tags: ["javascript","aws","java","mysql","sql"]
+date: "2021-11-14"
+categories: ["SQL"]
+tags: []
+slug: "mysql"
+image: "/assets/images/includes-mysql-5646x2872.png"
 ---
 
 ## Connecting to MySQL from JavaScript

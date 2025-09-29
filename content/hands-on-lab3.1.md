@@ -1,10 +1,11 @@
 ---
 title: "Hands-on-Lab 3.1"
 description: "Set Up Finance Management"
-date: "2025-09-20"
-category: "Business Central"
-image: "/assets/images/hands-on-lab3.1/hero.png"
-tags: ["ai","business central","dynamics","git"]
+date: "2023-12-04"
+categories: ["Microsoft Dynamics","Business Central","Microsoft Dynamics"]
+tags: []
+slug: "hands-on-lab3.1"
+image: "/assets/images/dynamics365-color.svg"
 ---
 
 ![](/assets/images/hands-on-lab3.1/dynamics365-color.svg)

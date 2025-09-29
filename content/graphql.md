@@ -1,10 +1,11 @@
 ---
 title: "GraphQL"
 description: "GraphQL is a query and manipulation language for APIs."
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/graphql/hero.png"
-tags: ["react","ai","ml"]
+date: "2021-03-01"
+categories: ["JavaScript","React"]
+tags: []
+slug: "graphql"
+image: "/assets/images/graphql-logo.svg-1200x1200.png"
 ---
 
 ## GraphQL is a query and manipulation language for APIs.
@@ -324,4 +325,3 @@ function App() {
 
 export default App;
 ```
-

@@ -1,10 +1,11 @@
 ---
 title: "Deploying a .NET Core Web API to Amazon EKS"
 description: "Deploying a .NET Core Web API to Amazon Elastic Kubernetes Service (Amazon EKS)"
-date: "2025-09-20"
-category: "AWS"
-image: "/assets/images/aspnetcoreawseks/hero.png"
-tags: ["aws","docker","kubernetes","dotnet","ai"]
+date: "2021-08-16"
+categories: ["AWS","DevOps",".NET"]
+tags: []
+slug: "aspnetcoreawseks"
+image: "/assets/images/amazon-web-services-logo.svg"
 ---
 
 # Deploying a .NET Core Web API to Amazon EKS
@@ -197,4 +198,3 @@ spec:
 ## References
 
 - [ASP.NET Core in a container](https://code.visualstudio.com/docs/containers/quickstart-aspnet-core)
-

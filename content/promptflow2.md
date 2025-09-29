@@ -1,10 +1,11 @@
 ---
 title: "Prompt Flow (Part 2)"
 description: "Docker"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/promptflow2/hero.png"
-tags: ["docker","ai"]
+date: "2024-06-12"
+categories: ["DevOps","AI","Python"]
+tags: []
+slug: "promptflow2"
+image: "/assets/images/logo.svg"
 ---
 
 ## Docker
@@ -146,4 +147,3 @@ RUN chmod -R +x /var/runit
 COPY ./start.sh /
 CMD ["bash", "./start.sh"]
 ```
-

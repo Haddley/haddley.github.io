@@ -1,10 +1,11 @@
 ---
 title: "Power Pages (Part 1)"
 description: "Sales Orders"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/powerpages1/hero.png"
-tags: ["ai","business central","dynamics","power platform"]
+date: "2024-10-26"
+categories: ["Microsoft Dynamics","Business Central","Power Platform","Microsoft Dynamics"]
+tags: []
+slug: "powerpages1"
+image: "/assets/images/powerpages-scalable.svg"
 ---
 
 ![](/assets/images/powerpages1/powerpages-scalable.svg)

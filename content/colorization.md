@@ -1,11 +1,11 @@
 ---
 title: "Colorization"
 description: "colorization.ipynb"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/colorization/hero.png"
+date: "2023-08-03"
+categories: ["Python","AI"]
 tags: []
-hidden: true
+slug: "colorization"
+image: "/assets/images/jupyter.svg"
 ---
 
 ![](/assets/images/colorization/jupyter.svg)

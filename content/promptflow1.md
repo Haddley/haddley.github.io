@@ -1,10 +1,11 @@
 ---
 title: "Prompt Flow (Part 1)"
 description: "Setup"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/promptflow1/hero.png"
-tags: ["azure","docker","kubernetes","devops","python"]
+date: "2024-06-11"
+categories: ["AI","Python","DevOps","Azure"]
+tags: []
+slug: "promptflow1"
+image: "/assets/images/logo.svg"
 ---
 
 ## Setup

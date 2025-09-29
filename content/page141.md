@@ -2,10 +2,11 @@
 title: "Java Spring Boot (Spare)"
 description: "Spring Data JPA"
 date: "2025-09-20"
-category: "Development"
+categories: ["Development"]
 image: "/assets/images/page141/hero.png"
 tags: ["azure","docker","java","spring","postgresql"]
 hidden: true
+slug: "page141"
 ---
 
 # Java Spring Boot (Spare)

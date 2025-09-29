@@ -1,10 +1,11 @@
 ---
 title: "SharePoint Web Part (Part 2)"
 description: "How to create and publish a SharePoint Web Part"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/sharepointwebpart2/hero.png"
-tags: ["react","javascript","java","ai","ml"]
+date: "2021-02-14"
+categories: ["React","Microsoft 365","TypeScript"]
+tags: []
+slug: "sharepointwebpart2"
+image: "/assets/images/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png"
 ---
 
 # SharePoint Web Part (Part 2)
@@ -275,4 +276,3 @@ export default class spservices {
 ## References
 
 - [SharePoint Framework web part, Teams tab, personal app, app page samples](https://github.com/pnp/sp-dev-fx-webparts)
-

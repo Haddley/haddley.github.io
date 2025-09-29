@@ -1,10 +1,11 @@
 ---
 title: "Azure Active Directory (Part 1)"
 description: "Using Microsoft Identity to Authenticate Users."
-date: "2025-09-20"
-category: "Azure"
-image: "/assets/images/azure-active-directory/hero.png"
-tags: ["azure","ai"]
+date: "2021-03-29"
+categories: ["Azure","JavaScript","Microsoft 365"]
+tags: []
+slug: "azure-active-directory"
+image: "/assets/images/azurex70x75.svg"
 ---
 
 ## Using Microsoft Identity to Authenticate Users.
@@ -200,4 +201,3 @@ app.listen(SERVER_PORT, () => console.log(`Msal Node Auth Code Sample app listen
 ## References
 
 - [QuickStart](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v2-nodejs-webapp-msal)
-

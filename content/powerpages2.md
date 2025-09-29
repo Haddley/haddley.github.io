@@ -1,9 +1,11 @@
 ---
 title: "Power Pages (Part 2)"
 description: "View, create, and edit orders"
-category: "Development"
-image: "/assets/images/powerpages2/hero.png"
-tags: ["ai","business central"]
+date: "2024-12-20"
+categories: []
+tags: []
+slug: "powerpages2"
+image: "/assets/images/powerpages-scalable.svg"
 ---
 
 # Power Pages (Part 2)

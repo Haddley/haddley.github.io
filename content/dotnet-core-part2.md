@@ -2,9 +2,10 @@
 title: ".NET Core (Part 2)"
 description: "Creating a Blazor App that calls Microsoft Graph."
 date: "2023-03-15"
-category: ".NET"
-image: "/assets/images/dotnet-core-part2/hero.png"
-tags: ["azure","dotnet","blazor","microsoft-graph"]
+categories: [".NET","Microsoft 365","Azure","Microsoft Dynamics"]
+tags: []
+slug: "dotnet-core-part2"
+image: "/assets/images/net-logo.svg"
 ---
 
 ## Creating a Blazor App that calls Microsoft Graph.
@@ -253,4 +254,3 @@ app.Run();
 ## References
 
 - [Create a Blazor Server app that uses the Microsoft identity platform for authentication](https://learn.microsoft.com/en-us/azure/active-directory/develop/tutorial-blazor-server)
-

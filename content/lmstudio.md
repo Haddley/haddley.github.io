@@ -1,10 +1,11 @@
 ---
-title: "LM Studio"
+title: "Meta"
 description: "LM Studio"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/lmstudio/hero.png"
-tags: ["ai"]
+date: "2023-08-05"
+categories: []
+tags: []
+slug: "lmstudio"
+image: "/assets/images/mediamodifier-design.png"
 ---
 
 # LM Studio
@@ -38,4 +39,3 @@ LM Studio allowed me to update the system prompt and prefix suffix settings (on 
 ## References
 
 - [LM Studio](https://lmstudio.ai)
-

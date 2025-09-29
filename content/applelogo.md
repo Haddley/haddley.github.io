@@ -2,9 +2,11 @@
 title: "Apple Logo"
 description: "Anaconda Setup"
 date: "2025-09-20"
-category: "Development"
+categories: ["Development"]
 image: "/assets/images/applelogo/hero.png"
 tags: ["python","ai","machine learning"]
+slug: "applelogo"
+hidden: true
 ---
 
 # Apple Logo

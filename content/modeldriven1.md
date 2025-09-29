@@ -1,10 +1,11 @@
 ---
 title: "Model Driven Apps (Part 1)"
 description: "Users"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/modeldriven1/hero.png"
-tags: ["sql","database","ai","power platform","testing"]
+date: "2023-09-18"
+categories: ["Power Platform","DevOps","Microsoft 365"]
+tags: []
+slug: "modeldriven1"
+image: "/assets/images/office-365-icon-500x500.png"
 ---
 
 ![](/assets/images/modeldriven1/office-365-icon-500x500.png)

@@ -1,10 +1,11 @@
 ---
 title: "Microsoft Power Automate Reports"
 description: "A Flow that emails a Report"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/powerautomatereports/hero.png"
-tags: ["cloud","ai","dynamics"]
+date: "2024-07-19"
+categories: ["Power Platform"]
+tags: []
+slug: "powerautomatereports"
+image: "/assets/images/office-365-icon-500x500.png"
 ---
 
 # Microsoft Power Automate Reports

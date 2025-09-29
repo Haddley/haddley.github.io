@@ -1,10 +1,11 @@
 ---
 title: "Prompt Flow (Part 6)"
 description: "Quick start"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/promptflow6/hero.png"
-tags: ["python","ai"]
+date: "2024-09-01"
+categories: ["AI","Python"]
+tags: []
+slug: "promptflow6"
+image: "/assets/images/logo.svg"
 ---
 
 ![](/assets/images/promptflow6/logo.svg)
@@ -116,4 +117,3 @@ async def my_python_tool(input1: str) -> str:
 
     return result.final_answer
 ```
-

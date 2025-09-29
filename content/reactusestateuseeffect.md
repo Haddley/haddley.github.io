@@ -1,18 +1,11 @@
-description: "Create a React app using the useState and useEffect hook."
-date: "2025-09-20"
-category: "Web Development"
-image: "/assets/images/reactusestateuseeffect/hero.png"
-tags: ["react"]
-hidden: true
-
 ---
 title: "React useState and useEffect"
 description: "Create a React app using the useState and useEffect hook."
-date: "2025-09-20"
-category: "Web Development"
-image: "/assets/images/reactusestateuseeffect/hero.png"
-tags: ["react"]
-hidden: true
+date: "2021-02-08"
+categories: ["React"]
+tags: []
+slug: "reactusestateuseeffect"
+image: "/assets/images/logo512-512x512.png"
 ---
 
 # React useState and useEffect
@@ -56,4 +49,3 @@ const [data, setData] = useState();
       })
   })
 ```
-

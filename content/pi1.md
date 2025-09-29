@@ -1,10 +1,11 @@
 ---
 title: "Raspberry Pi Imager"
 description: "Raspberry Pi Imager Advanced Options"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/pi1/hero.png"
+date: "2023-07-22"
+categories: []
 tags: []
+slug: "pi1"
+image: "/assets/images/raspberry-pi-logo.svg"
 ---
 
 # Raspberry Pi Imager
@@ -73,4 +74,3 @@ Taking advantage of the Imager's advanced features, I customized the connectivit
 - [Installing Raspbian using the Raspberry Pi | Raspberry pi imager, Raspbian](https://projects.raspberrypi.org/en/projects/imager-install)
 - [How to use Raspberry Pi Imager | Install Raspberry Pi OS to your  Raspberry Pi (Raspbian)](https://www.youtube.com/watch?v=ntaXWS8Lk34)
 - [5 Ways to Remote Desktop on Raspberry Pi (Windows/Linux/Mac)](https://raspberrytips.com/remote-desktop-raspberry-pi/)
-

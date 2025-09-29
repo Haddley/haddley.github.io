@@ -1,10 +1,11 @@
 ---
 title: "XCode C++ (Part 1)"
 description: "Hello, World!"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/xcode1/hero.png"
-tags: ["ai"]
+date: "2023-03-08"
+categories: []
+tags: []
+slug: "xcode1"
+image: "/assets/images/xcode-14-icon-300x314.png"
 ---
 
 ## Hello, World!
@@ -66,4 +67,3 @@ int main(int argc, const char * argv[]) {
     return 0;
 }
 ```
-

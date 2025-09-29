@@ -1,10 +1,11 @@
 ---
-title: "Business Central (Part 26) Integration Tables"
-description: "Pag50100.CustomerOrders.al"
-date: "2025-09-20"
-category: "Business Central"
-image: "/assets/images/businesscentralpart26integrationtable/hero.png"
-tags: ["azure","cloud","ai","business central","dynamics"]
+title: "Business Central (Part 26)"
+description: "Integration Tables"
+date: "2024-12-22"
+categories: ["Microsoft Dynamics","Business Central","Microsoft Dynamics","Power Platform"]
+tags: []
+slug: "businesscentralpart26integrationtable"
+image: "/assets/images/posts-meta.svg"
 ---
 
 # Business Central (Part 26) Integration Tables

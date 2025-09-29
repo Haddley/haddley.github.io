@@ -1,10 +1,11 @@
 ---
 title: "Web Components"
 description: "A set of web technologies that allow users to create HTML elements."
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/webcomponents/hero.png"
-tags: ["angular","react","vue","javascript","java"]
+date: "2022-02-10"
+categories: ["React"]
+tags: []
+slug: "webcomponents"
+image: "/assets/images/web-components-logo.svg"
 ---
 
 ## A set of web technologies that allow users to create HTML elements.
@@ -474,4 +475,3 @@ customElements.whenDefined('howto-tooltip').then(() => {
 ## References
 
 - [Web Components Are Easier Than You Think](https://css-tricks.com/web-components-are-easier-than-you-think/)
-

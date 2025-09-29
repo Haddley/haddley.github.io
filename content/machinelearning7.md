@@ -1,10 +1,11 @@
 ---
 title: "Machine Learning (Part 7)"
 description: "Google Cloud Platform"
-date: "2025-09-20"
-category: "AI/ML"
-image: "/assets/images/machinelearning7/hero.png"
-tags: ["cloud","ai","ml","machine learning"]
+date: "2022-06-11"
+categories: ["AI"]
+tags: []
+slug: "machinelearning7"
+image: "/assets/images/tensorflow-logo.svg"
 ---
 
 ![](/assets/images/machinelearning7/tensorflow-logo.svg)

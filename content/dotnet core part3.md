@@ -2,10 +2,11 @@
 title: ".NET Core (Part 3)"
 description: "Creating a Blazor App that calls Microsoft Graph."
 date: "2025-09-20"
-category: ".NET"
+categories: [".NET"]
 image: "/assets/images/dotnet-core-part3/hero.png"
 tags: ["azure","dotnet","ai","ml","dynamics"]
 hidden: true
+slug: "dotnet core part3"
 ---
 
 # .NET Core (Part 3)

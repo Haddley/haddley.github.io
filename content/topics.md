@@ -1,10 +1,11 @@
 ---
 title: "Copilot"
 description: "Topics"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/topics/hero.png"
-tags: ["business central"]
+date: "2024-02-25"
+categories: ["Power Platform","Microsoft Dynamics","Business Central"]
+tags: []
+slug: "topics"
+image: "/assets/images/office-365-icon-500x500.png"
 ---
 
 # Copilot

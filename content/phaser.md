@@ -1,10 +1,11 @@
 ---
 title: "Phaser"
 description: "2D game framework used for making HTML5 games"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/phaser/hero.png"
-tags: ["ai","ml","git","github"]
+date: "2022-01-23"
+categories: ["JavaScript",".NET"]
+tags: []
+slug: "phaser"
+image: "/assets/images/phaser-logo-1836x1530.png"
 ---
 
 ## 2D game framework used for making HTML5 games
@@ -369,5 +370,3 @@ The update function animates the scene (moving the fish and the bubbles).
 ## References
 
 - [Aquarium](https://haddley.github.io/aquarium/index.html)
-
-

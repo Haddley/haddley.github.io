@@ -2,10 +2,11 @@
 title: "Angular"
 description: "A platform for building mobile and desktop web applications"
 date: "2025-09-20"
-category: "Web Development"
+categories: ["Web Development"]
 image: "/assets/images/angular/hero.png"
 tags: ["angular","ai","ml"]
 hidden: true
+slug: "angular"
 ---
 
 # Angular

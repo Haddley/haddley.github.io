@@ -1,10 +1,11 @@
 ---
 title: "ASP.NET 5 Visual Basic"
 description: "Generate Context and Entity Classes from an Existing Database"
-date: "2025-09-20"
-category: ".NET"
-image: "/assets/images/aspnet-5-visual-basic/hero.png"
-tags: ["azure","docker","dotnet","sql","database"]
+date: "2023-03-18"
+categories: [".NET","SQL","DevOps","Azure"]
+tags: []
+slug: "aspnet-5-visual-basic"
+image: "/assets/images/net-logo.svg"
 ---
 
 ## Generate Context and Entity Classes from an Existing Database
@@ -176,4 +177,3 @@ I used Visual Studio 2019 and ASP.NET MVC 5 to create a todo app.
 ## References
 
 - [Getting started with ASP.NET MVC 5](https://learn.microsoft.com/en-us/aspnet/mvc/overview/getting-started/introduction/getting-started)
-

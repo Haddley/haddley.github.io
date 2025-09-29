@@ -1,10 +1,11 @@
 ---
 title: "Blazor WASM and ASP.NET Core"
 description: "An ASP.NET Core backend and a Blazor Web Assembly frontend."
-date: "2025-09-20"
-category: ".NET"
-image: "/assets/images/blazorwasmandasp.net/hero.png"
-tags: ["dotnet","c#","database","ai","asp.net"]
+date: "2023-03-24"
+categories: [".NET"]
+tags: []
+slug: "blazorwasmandasp.net"
+image: "/assets/images/net-logo.svg"
 ---
 
 ## An ASP.NET Core backend and a Blazor Web Assembly frontend.

@@ -1,10 +1,11 @@
 ---
 title: "Power Pages (Part 3)"
 description: "Customer Order Lines"
-date: "2025-09-20"
-category: "AI/ML"
-image: "/assets/images/powerpages3/hero.png"
-tags: ["ai","business central"]
+date: "2024-12-20"
+categories: []
+tags: []
+slug: "powerpages3"
+image: "/assets/images/powerpages-scalable.svg"
 ---
 
 # Power Pages (Part 3)

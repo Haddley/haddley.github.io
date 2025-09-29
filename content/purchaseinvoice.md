@@ -1,10 +1,11 @@
 ---
 title: "Purchase Invoice"
 description: "Purchase Invoice"
-date: "2025-09-20"
-category: "Business Central"
-image: "/assets/images/purchaseinvoice/hero.png"
-tags: ["ai","dynamics"]
+date: "2023-12-14"
+categories: ["Microsoft Dynamics","Business Central","Microsoft Dynamics"]
+tags: []
+slug: "purchaseinvoice"
+image: "/assets/images/posts-meta.svg"
 ---
 
 # Purchase Invoice

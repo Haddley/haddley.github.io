@@ -1,10 +1,11 @@
 ---
 title: "A Power Apps Custom Connector"
 description: "Create a GitHub Repository"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/powerappswithrest/hero.png"
-tags: ["azure","dotnet","git","github","asp.net"]
+date: "2021-06-27"
+categories: ["Power Platform",".NET","Azure"]
+tags: []
+slug: "powerappswithrest"
+image: "/assets/images/office-365-icon-500x500.png"
 ---
 
 # A Power Apps Custom Connector
@@ -394,4 +395,3 @@ Click the "+ New custom connector" button.
   ]
 }
 ```
-

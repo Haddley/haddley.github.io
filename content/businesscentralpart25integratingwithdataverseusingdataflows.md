@@ -1,10 +1,11 @@
 ---
 title: "Business Central (Part 25) Integrating with Dataverse using Dataflows"
 description: "Integrating with Dataverse using Dataflows"
-date: "2025-09-20"
-category: "Business Central"
-image: "/assets/images/businesscentralpart25integratingwithdataverseusingdataflows/hero.png"
-tags: ["ai","business central","dynamics","power platform"]
+date: "2024-12-01"
+categories: ["Power Platform","Microsoft Dynamics","Business Central","Microsoft Dynamics"]
+tags: []
+slug: "businesscentralpart25integratingwithdataverseusingdataflows"
+image: "/assets/images/posts-meta.svg"
 ---
 
 # Business Central (Part 25) Integrating with Dataverse using Dataflows

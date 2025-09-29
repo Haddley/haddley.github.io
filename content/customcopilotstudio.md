@@ -1,10 +1,11 @@
 ---
 title: "Custom Copilot Studio"
 description: "Customer Copilot"
-date: "2025-09-20"
-category: "Business Central"
-image: "/assets/images/customcopilotstudio/hero.png"
-tags: ["ai","business central","dynamics"]
+date: "2024-03-23"
+categories: ["Microsoft Dynamics","Business Central","Power Platform","Microsoft Dynamics"]
+tags: []
+slug: "customcopilotstudio"
+image: "/assets/images/posts-meta.svg"
 ---
 
 # Custom Copilot Studio

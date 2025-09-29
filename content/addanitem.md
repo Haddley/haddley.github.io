@@ -1,10 +1,11 @@
 ---
 title: "Add an Item"
 description: "I used Patch to add a Business Central Item"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/addanitem/hero.png"
-tags: ["business central"]
+date: "2024-02-17"
+categories: ["Microsoft Dynamics","Business Central","Power Platform"]
+tags: []
+slug: "addanitem"
+image: "/assets/images/office-365-icon-500x500.png"
 ---
 
 # Add an Item

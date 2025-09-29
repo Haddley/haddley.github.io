@@ -1,10 +1,11 @@
 ---
 title: "Prompt Flow (Part 3)"
 description: "Semantic Kernel"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/promptflow3/hero.png"
-tags: ["python","ai","git","github"]
+date: "2024-08-24"
+categories: ["AI","Python"]
+tags: []
+slug: "promptflow3"
+image: "/assets/images/logo.svg"
 ---
 
 ## Semantic Kernel

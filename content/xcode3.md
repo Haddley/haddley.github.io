@@ -1,10 +1,11 @@
 ---
 title: "XCode C++ (Part 3)"
 description: "Building an OpenGL application using C++ and XCode"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/xcode3/hero.png"
-tags: ["ai"]
+date: "2023-03-08"
+categories: []
+tags: []
+slug: "xcode3"
+image: "/assets/images/xcode-14-icon-300x314.png"
 ---
 
 ![](/assets/images/xcode3/xcode-14-icon-300x314.png)
@@ -234,4 +235,3 @@ int main()
 
 - [Modern OpenGL Tutorials](https://github.com/SonarSystems/Modern-OpenGL-Tutorials)
 - [The OpenGL Extension Wrangler Library - GLEW](https://www.youtube.com/watch?v=H2E3yO0J7TM)
-

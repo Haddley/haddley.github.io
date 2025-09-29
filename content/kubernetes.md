@@ -1,10 +1,11 @@
 ---
 title: "Kubernetes"
 description: "Kubernetes is a platform for managing containerized workloads."
-date: "2025-09-20"
-category: "DevOps"
-image: "/assets/images/kubernetes/hero.png"
-tags: ["docker","kubernetes","ai","ml"]
+date: "2021-02-06"
+categories: ["DevOps"]
+tags: []
+slug: "kubernetes"
+image: "/assets/images/kubernetes-container-engine.svg"
 ---
 
 ## Kubernetes is a platform for managing containerized workloads.
@@ -92,4 +93,3 @@ spec:
 ## References
 
 - [Kubernetes Tutorial](https://www.youtube.com/watch?v=X48VuDVv0do)
-

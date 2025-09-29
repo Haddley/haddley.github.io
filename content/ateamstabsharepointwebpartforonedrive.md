@@ -1,10 +1,11 @@
 ---
 title: "A Teams App SharePoint Web Part for One Drive"
 description: "The SharePoint Framework (SPFx) can be used to create SharePoint Web Parts and Teams Applications"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/ateamstabsharepointwebpartforonedrive/hero.png"
-tags: ["react","ml","git","github"]
+date: "2022-05-29"
+categories: ["Microsoft 365","React","JavaScript","TypeScript"]
+tags: []
+slug: "ateamstabsharepointwebpartforonedrive"
+image: "/assets/images/office-365-icon-500x500.png"
 ---
 
 # A Teams App SharePoint Web Part for One Drive
@@ -485,4 +486,3 @@ const siteId = (location.host + "," + context.pageContext.site.id + "," + contex
   }]
 }
 ```
-

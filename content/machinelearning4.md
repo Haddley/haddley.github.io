@@ -1,10 +1,11 @@
 ---
 title: "Machine Learning (Part 4)"
 description: "Colab"
-date: "2025-09-20"
-category: "AI/ML"
-image: "/assets/images/machinelearning4/hero.png"
-tags: ["python","ai","ml","machine learning","git"]
+date: "2022-06-08"
+categories: ["Python","AI"]
+tags: []
+slug: "machinelearning4"
+image: "/assets/images/tensorflow-logo.svg"
 ---
 
 ![](/assets/images/machinelearning4/tensorflow-logo.svg)

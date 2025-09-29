@@ -1,11 +1,11 @@
 ---
 title: "Hands-on-Lab 2.3"
 description: "Set up dimensions"
-date: "2025-09-20"
-category: "Business Central"
-image: "/assets/images/hands-on-lab2.3/hero.png"
-tags: ["ai","dynamics"]
-hidden: true
+date: "2023-12-04"
+categories: ["Microsoft Dynamics","Business Central","Microsoft Dynamics"]
+tags: []
+slug: "hands-on-lab2.3"
+image: "/assets/images/dynamics365-color.svg"
 ---
 
 ![](/assets/images/hands-on-lab2.3/dynamics365-color.svg)

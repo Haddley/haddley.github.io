@@ -1,10 +1,11 @@
 ---
 title: "SharePoint 2019"
 description: "Azure Portal"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/sharepoint2019/hero.png"
-tags: ["azure","sql","database","ai"]
+date: "2022-12-31"
+categories: ["Microsoft 365","SQL","Azure"]
+tags: []
+slug: "sharepoint2019"
+image: "/assets/images/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png"
 ---
 
 # SharePoint 2019
@@ -274,4 +275,3 @@ In this case I wanted to install Active Directory, SQL Server and SharePoint on 
 ## References
 
 - [SharePoint Server in Microsoft Azure](https://learn.microsoft.com/en-us/sharepoint/administration/sharepoint-server-in-microsoft-azure)
-

@@ -1,10 +1,11 @@
 ---
 title: "Angular and ASP.NET Core"
 description: "An ASP.NET Core backend and an Angular frontend."
-date: "2025-09-20"
-category: "Web Development"
-image: "/assets/images/angularandasp.net/hero.png"
-tags: ["angular","react","dotnet","database","ai"]
+date: "2023-03-24"
+categories: [".NET","Angular","TypeScript","React"]
+tags: []
+slug: "angularandasp.net"
+image: "/assets/images/angular-full-color-logo.svg"
 ---
 
 ## An ASP.NET Core backend and an Angular frontend.

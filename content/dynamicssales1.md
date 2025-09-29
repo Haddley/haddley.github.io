@@ -1,10 +1,11 @@
 ---
 title: "Dynamics 365 Sales (Part 1)"
 description: " the Account|Sales Insights form"
-date: "2025-09-20"
-category: "Business Central"
-image: "/assets/images/dynamicssales1/hero.png"
-tags: ["ai","ml","dynamics"]
+date: "2023-10-21"
+categories: ["Microsoft Dynamics"]
+tags: []
+slug: "dynamicssales1"
+image: "/assets/images/dynamics365-color.svg"
 ---
 
 # Dynamics 365 Sales (Part 1)

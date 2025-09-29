@@ -1,10 +1,11 @@
 ---
 title: "XCode C++ (Part 2)"
 description: "OpenGL GLFW"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/xcode2/hero.png"
-tags: ["ai"]
+date: "2023-03-08"
+categories: []
+tags: []
+slug: "xcode2"
+image: "/assets/images/xcode-14-icon-300x314.png"
 ---
 
 ## OpenGL GLFW
@@ -129,4 +130,3 @@ int main(void)
 
 - [OpenGL GLFW Hello World: M1 Macbook Pro + Xcode](https://www.youtube.com/watch?v=MHlbNbWlrIM)
 - [OpenGL GLFW Windows Visual Studio](https://www.youtube.com/watch?v=OR4fNpBjmq8)
-

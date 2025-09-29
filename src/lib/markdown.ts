@@ -68,8 +68,10 @@ export async function getAllMarkdownPosts(): Promise<BlogPost[]> {
         title: matterResult.data.title || '',
         description: matterResult.data.description || '',
         date: matterResult.data.date || '',
+        categories: matterResult.data.categories || [],
+        tags: matterResult.data.tags || [],
         image: matterResult.data.image,
-        tags: matterResult.data.tags || []
+        hidden: matterResult.data.hidden || false
       });
     } catch (error) {
       console.error(`Error processing ${id}:`, error);

@@ -1,11 +1,11 @@
 ---
 title: "Business Central Admin Center"
 description: "The Business Central Administration Center"
-date: "2025-09-20"
-category: "Business Central"
-image: "/assets/images/businesscentraladmincenter/hero.png"
-tags: ["ai","business central","dynamics"]
-hidden: true
+date: "2023-08-18"
+categories: ["Microsoft Dynamics","Business Central","Microsoft Dynamics"]
+tags: []
+slug: "businesscentraladmincenter"
+image: "/assets/images/dynamics365-color.svg"
 ---
 
 # Business Central Admin Center

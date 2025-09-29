@@ -1,10 +1,11 @@
 ---
 title: "Azure React Static Web App"
 description: "Azure Static Web App"
-date: "2025-09-20"
-category: "Azure"
-image: "/assets/images/azurereactstaticweb-app/hero.png"
-tags: ["react","azure","ai","git","github"]
+date: "2024-01-08"
+categories: ["React","Azure",".NET"]
+tags: []
+slug: "azurereactstaticweb-app"
+image: "/assets/images/logo512-512x512.png"
 ---
 
 # Azure React Static Web App

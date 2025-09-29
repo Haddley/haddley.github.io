@@ -2,10 +2,11 @@
 title: "Dynamics 365 Sales (Part 4)"
 description: "Tiki Tour"
 date: "2025-09-20"
-category: "Business Central"
+categories: ["Business Central"]
 image: "/assets/images/dynamicssales4/hero.png"
 tags: ["ai","dynamics"]
 hidden: true
+slug: "dynamicssales4"
 ---
 
 # Dynamics 365 Sales (Part 4)

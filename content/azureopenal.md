@@ -1,10 +1,11 @@
 ---
 title: "Azure AI service"
 description: "Azure OpenAl"
-date: "2025-09-20"
-category: "Azure"
-image: "/assets/images/azureopenal/hero.png"
-tags: ["azure","ai"]
+date: "2025-02-04"
+categories: ["Azure","AI"]
+tags: []
+slug: "azureopenal"
+image: "/assets/images/azurex70x75.svg"
 ---
 
 # Azure Al services

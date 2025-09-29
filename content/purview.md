@@ -1,10 +1,11 @@
 ---
 title: "Microsoft Purview"
 description: "Retention policy with adaptive scope"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/purview/hero.png"
-tags: ["ai"]
+date: "2022-08-03"
+categories: ["Microsoft 365"]
+tags: []
+slug: "purview"
+image: "/assets/images/office-365-icon-500x500.png"
 ---
 
 ![](/assets/images/purview/office-365-icon-500x500.png)

@@ -1,11 +1,11 @@
 ---
 title: "Langflow (Part 1)"
 description: "References"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/langflow1/hero.png"
-tags: ["python","ai"]
-hidden: true
+date: "2024-10-30"
+categories: ["Python","AI"]
+tags: []
+slug: "langflow1"
+image: "/assets/images/85702467-200x200.png"
 ---
 
 ![](/assets/images/langflow1/85702467-200x200.png)

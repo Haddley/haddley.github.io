@@ -1,9 +1,11 @@
 ---
 title: "Copilot Embed Code"
 description: "An HTML page to host my Blog Copilot"
-category: "Development"
-image: "/assets/images/copilotembedcode/hero.png"
-tags: ["ml"]
+date: "2024-03-11"
+categories: []
+tags: []
+slug: "copilotembedcode"
+image: "/assets/images/office-365-icon-500x500.png"
 ---
 
 # Copilot Embed Code

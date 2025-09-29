@@ -1,10 +1,11 @@
 ---
 title: "Three.js"
 description: "A JavaScript-based WebGL engine"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/threejs/hero.png"
-tags: ["javascript","java","ai"]
+date: "2023-03-05"
+categories: ["JavaScript"]
+tags: []
+slug: "threejs"
+image: "/assets/images/three.js-icon.svg"
 ---
 
 ## A JavaScript-based WebGL engine

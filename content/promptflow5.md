@@ -1,10 +1,11 @@
 ---
 title: "Prompt Flow (Part 5)"
 description: "Quick start"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/promptflow5/hero.png"
-tags: ["docker","python","ai"]
+date: "2024-09-01"
+categories: ["AI","DevOps","Python"]
+tags: []
+slug: "promptflow5"
+image: "/assets/images/logo.svg"
 ---
 
 ![](/assets/images/promptflow5/logo.svg)
@@ -152,4 +153,3 @@ def my_python_tool(question: str, openai_connect: OpenAIConnection) -> str:
 
     return result["output"]
 ```
-

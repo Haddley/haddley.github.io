@@ -1,10 +1,11 @@
 ---
 title: "Codespaces and Authentication"
 description: "Adding a NavBar and staticwebapp.config.json"
-date: "2025-09-20"
-category: "Development"
-image: "/assets/images/codespacesauthentication/hero.png"
-tags: ["react","azure","git","github"]
+date: "2024-03-06"
+categories: ["React","Azure","DevOps"]
+tags: []
+slug: "codespacesauthentication"
+image: "/assets/images/logo512-512x512.png"
 ---
 
 ![](/assets/images/codespacesauthentication/logo512-512x512.png)
@@ -313,4 +314,3 @@ root.render(
   </React.StrictMode>
 )
 ```
-
