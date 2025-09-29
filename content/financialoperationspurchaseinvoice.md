@@ -8,15 +8,7 @@ slug: "financialoperationspurchaseinvoice"
 image: "/assets/images/dynamics365-color.svg"
 ---
 
-# Financial Operations Purchase Invoice
 
-## Payment Journals
-
-![](/assets/images/financialoperationspurchaseinvoice/dynamics365-color.svg)
-*By Microsoft, Public Domain*
-
-
-## Financial Operations - Payment Journals
 
 Businesses that purchase items from Vendors need to provide payment.
 

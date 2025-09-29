@@ -8,8 +8,6 @@ slug: "machinelearning2"
 image: "/assets/images/tensorflow-logo.svg"
 ---
 
-![](/assets/images/machinelearning2/tensorflow-logo.svg)
-*Tensorflow logo does not meet the threshold of originality needed for copyright protection, and is therefore in the public domain*
 
 
 In her [YouTube video](https://www.youtube.com/watch?v=BjTNJSQLIeA) Dale Markowitz explains why some machine learning powered applications can be built quickly and why others can not.

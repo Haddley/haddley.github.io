@@ -8,8 +8,6 @@ slug: "machinelearning9"
 image: "/assets/images/tensorflow-logo.svg"
 ---
 
-![](/assets/images/machinelearning9/tensorflow-logo.svg)
-*Tensorflow logo does not meet the threshold of originality needed for copyright protection, and is therefore in the public domain*
 
 
 The MNIST database of handwritten digits has a training set of 60,000 examples, and a test set of 10,000 examples.

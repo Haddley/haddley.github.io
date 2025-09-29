@@ -8,11 +8,6 @@ slug: "teamstoolkit"
 image: "/assets/images/teams-hi-res-icon-2019.svg"
 ---
 
-## Get started with Microsoft Teams app development using Azure.
-
-![](/assets/images/teamstoolkit/teams-hi-res-icon-2019.svg)
-*Teams hi-res icon (2019) by Microsoft Corporation is Public Domain*
-
 
 ## Visual Studio Extension
 

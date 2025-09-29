@@ -8,15 +8,7 @@ slug: "customcopilotstudio"
 image: "/assets/images/posts-meta.svg"
 ---
 
-# Custom Copilot Studio
 
-## Customer Copilot
-
-![](/assets/images/customcopilotstudio/dynamics365-color.svg)
-*By Microsoft, Public Domain*
-
-
-## Customer Copilot
 
 I created a Business Central extension that allows Business Central users to "chat to" Customers.
 

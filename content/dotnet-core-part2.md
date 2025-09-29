@@ -8,13 +8,7 @@ slug: "dotnet-core-part2"
 image: "/assets/images/net-logo.svg"
 ---
 
-## Creating a Blazor App that calls Microsoft Graph.
 
-![](/assets/images/dotnet-core-part2/net-logo.svg)
-*Microsoft Dotnet Logo by Microsoft Corporation is licensed under Creative Commons CC0 1.0 Universal Public Domain Dedication*
-
-
-## Microsoft Graph
 
 [Microsoft Graph](MicrosoftGraph.html) is a REST API that can be used to access: Microsoft 365, Azure Active Directory, Windows and Dynamics 365.
 

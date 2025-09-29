@@ -8,13 +8,7 @@ slug: "xcode1"
 image: "/assets/images/xcode-14-icon-300x314.png"
 ---
 
-## Hello, World!
 
-![](/assets/images/xcode1/xcode-14-icon-300x314.png)
-*This is the logo owned by Apple Inc. for Xcode. Taken from the picture's app bundle. Fair use*
-
-
-## Building a terminal application using C++ and XCode
 
 How I built hello world on my M1 MacBook Air
 

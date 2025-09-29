@@ -8,8 +8,6 @@ slug: "machinelearning6"
 image: "/assets/images/tensorflow-logo.svg"
 ---
 
-![](/assets/images/machinelearning6/tensorflow-logo.svg)
-*Tensorflow logo does not meet the threshold of originality needed for copyright protection, and is therefore in the public domain*
 
 
 Can we predict if a person will develop diabetes based on their Pregnancy Count, Glucose level, Blood Pressure, Skin Thickness, Insulin, BMI, DiabetesPedigreeFunction and Age?

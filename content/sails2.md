@@ -8,11 +8,6 @@ slug: "sails2"
 image: "/assets/images/sailsjs-logo-515x193.png"
 ---
 
-## Sails and the Azure Cosmos DB API for MongoDB
-
-![AWS](/assets/images/sails2/sailsjs-logo-515x193.png)
-*By http://sailsjs.com/ Fair use*
-
 
 ## Articles api
 

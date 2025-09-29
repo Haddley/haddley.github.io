@@ -9,11 +9,6 @@ image: "/assets/images/posts-meta.svg"
 hidden: false
 ---
 
-# Business Central (Part 29) PromptDialog 3
-
-![](/assets/images/promptdialog3/dynamics365-color.svg)
-*By Microsoft, Public Domain*
-
 
 Large Language Models (LLMs) generate responses in Markdown format for several key reasons, rooted in both their training and practical utility:
 

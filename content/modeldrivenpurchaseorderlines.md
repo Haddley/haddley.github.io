@@ -8,14 +8,6 @@ slug: "modeldrivenpurchaseorderlines"
 image: "/assets/images/office-365-icon-500x500.png"
 ---
 
-# Model Driven Purchase Order Lines
-
-## manage Business Central Purchase Order Lines
-
-
-![](/assets/images/modeldrivenpurchaseorderlines/office-365-icon-500x500.png)
-*This file is licensed under the Creative Commons Attribution 4.0 International license.*
-
 
 I created a Power Platform Model Driven application to manage Business Central Purchase Order Lines.
 

@@ -8,14 +8,6 @@ slug: "customcomponents"
 image: "/assets/images/office-365-icon-500x500.png"
 ---
 
-# Power Apps Custom Components
-
-## Create reusable Power Apps Components.
-
-![](/assets/images/customcomponents/office-365-icon-500x500.png)
-*Microsoft_Office_logo by Microsoft is licensed under CC*
-
-
 ## New component library
 
 Navigate to [https://make.powerapps.com/](https://make.powerapps.com/)

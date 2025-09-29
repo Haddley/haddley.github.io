@@ -9,15 +9,7 @@ hidden: true
 slug: "dynamicssales4"
 ---
 
-# Dynamics 365 Sales (Part 4)
 
-## Tiki Tour
-
-![](/assets/images/dynamicssales4/dynamics365-color.svg)
-*By Microsoft, Public Domain*
-
-
-## Tiki Tour
 
 ![](/assets/images/dynamicssales4/screenshot-2023-10-21-at-5.00.51-pm-2136x915.png)
 *I wanted to add a new table*

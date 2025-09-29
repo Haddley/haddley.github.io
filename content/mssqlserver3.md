@@ -9,13 +9,6 @@ hidden: true
 slug: "mssqlserver3"
 ---
 
-# Microsoft SQL Server (Part 3)
-
-## A Node, React and MS SQL Server App.
-
-![](/assets/images/mssqlserver3/ads.svg)
-*ads by Microsoft Corporation is licensed under Source EULA*
-
 
 ## Create Database
 

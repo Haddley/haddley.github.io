@@ -8,15 +8,7 @@ slug: "dataversereports"
 image: "/assets/images/office-365-icon-500x500.png"
 ---
 
-# Microsoft Dataverse Reports
 
-## Creating a Dataverse Report
-
-![](/assets/images/dataversereports/office-365-icon-500x500.png)
-*This file is licensed under the Creative Commons Attribution 4.0 International license.*
-
-
-Creating a Dataverse Report
 
 ![](/assets/images/dataversereports/screenshot-2024-07-19-at-10.39.25am-2136x1101.png)
 *I created a Reports solution*

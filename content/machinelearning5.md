@@ -8,8 +8,6 @@ slug: "machinelearning5"
 image: "/assets/images/tensorflow-logo.svg"
 ---
 
-![](/assets/images/machinelearning5/tensorflow-logo.svg)
-*Tensorflow logo does not meet the threshold of originality needed for copyright protection, and is therefore in the public domain*
 
 
 Can we predict a person's glucose levels based on their age?

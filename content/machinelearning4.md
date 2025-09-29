@@ -8,8 +8,6 @@ slug: "machinelearning4"
 image: "/assets/images/tensorflow-logo.svg"
 ---
 
-![](/assets/images/machinelearning4/tensorflow-logo.svg)
-*Tensorflow logo does not meet the threshold of originality needed for copyright protection, and is therefore in the public domain*
 
 
 Colab is Google's implementation of [Jupyter Notebooks](https://jupyter.org).

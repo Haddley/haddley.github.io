@@ -8,10 +8,6 @@ slug: "warehousemanagementputaway"
 image: "/assets/images/dynamics365-color.svg"
 ---
 
-# Warehouse Management Put away
-
-![](/assets/images/warehousemanagementputaway/dynamics365-color.svg)
-*By Microsoft, Public Domain*
 
 
 Businesses that physically move goods in and out of their warehouse need to be able to receive, pick, and ship items.

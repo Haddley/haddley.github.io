@@ -8,15 +8,7 @@ slug: "rewardsextension"
 image: "/assets/images/dynamics365-color.svg"
 ---
 
-# Rewards Extension
 
-## Rewards Extension
-
-![](/assets/images/rewardsextension/dynamics365-color.svg)
-*By Microsoft, Public Domain*
-
-
-## Rewards Extension
 
 The Microsoft Dynamics 365 Business Central Extension described here allows users to create a list of "Rewards" and to associate rewards with Business Central Customers.
 

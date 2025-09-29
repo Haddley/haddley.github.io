@@ -8,11 +8,6 @@ slug: "blazorwasmandasp.net"
 image: "/assets/images/net-logo.svg"
 ---
 
-## An ASP.NET Core backend and a Blazor Web Assembly frontend.
-
-![](/assets/images/blazorwasmandasp.net/net-logo.svg)
-*Microsoft Dotnet Logo by Microsoft Corporation is licensed under Creative Commons CC0 1.0 Universal Public Domain Dedication*
-
 
 ## Single Page Application (SPA) templates
 

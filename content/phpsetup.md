@@ -8,13 +8,6 @@ slug: "phpsetup"
 image: "/assets/images/php-logo.svg"
 ---
 
-# PHP Setup
-
-## Setup
-
-![](/assets/images/phpsetup/php-logo.svg)
-*This file is licensed under the Creative Commons Attribution-Share Alike 4.0 International license.*
-
 
 PHP is a server scripting language, and a powerful tool for making dynamic and interactive Web pages.
 

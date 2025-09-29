@@ -8,13 +8,6 @@ slug: "m365commandlineinterface"
 image: "/assets/images/office-365-icon-500x500.png"
 ---
 
-# Microsoft 365 command line interface
-
-## Manage Microsoft 365 tenants and SharePoint Framework projects
-
-![](/assets/images/m365commandlineinterface/office-365-icon-500x500.png)
-*Microsoft_Office_logo by Microsoft is licensed under CC*
-
 
 ## m365
 

@@ -8,12 +8,6 @@ slug: "reactusestateuseeffect"
 image: "/assets/images/logo512-512x512.png"
 ---
 
-# React useState and useEffect
-
-## Create a React app using the useState and useEffect hook.
-
-![](/assets/images/reactusestateuseeffect/logo512-512x512.png)
-*React-icon by Facebook does not meet the threshold of originality needed for copyright protection*
 
 
 ## React Hooks

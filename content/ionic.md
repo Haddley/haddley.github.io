@@ -8,12 +8,6 @@ slug: "ionic"
 image: "/assets/images/logo-192x192.png"
 ---
 
-# Ionic
-
-## Cross-platform apps.Powered by the Web.
-
-![AWS](/assets/images/ionic/ionic-logo-landscape.svg)
-*This logo image consists only of simple geometric shapes or text. It does not meet the threshold of originality needed for copyright protection, and is therefore in the public domain.*
 
 
 ## Starting an app

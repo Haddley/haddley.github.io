@@ -8,15 +8,6 @@ slug: "pi1"
 image: "/assets/images/raspberry-pi-logo.svg"
 ---
 
-# Raspberry Pi Imager
-
-## Raspberry Pi Imager's Advanced Options
-
-![](/assets/images/pi1/raspberry-pi-logo.svg)
-*Raspberry Pi is a trademark of Raspberry Pi Ltd*
-
-
-## Raspberry Pi Imager
 
 With the Raspberry Pi Imager tool, the process of writing a standard operating system image onto a microSD card is easy. 
 

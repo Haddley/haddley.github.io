@@ -8,13 +8,6 @@ slug: "promptflow4"
 image: "/assets/images/logo.svg"
 ---
 
-# Prompt Flow (Part 4)
-
-## Planning
-
-![](/assets/images/promptflow4/logo.svg)
-*This file is licensed under the MIT license.*
-
 
 Once you have multiple plugins, you then need a way for your AI agent to use them together to solve a user’s need. This is where planning comes in.
 

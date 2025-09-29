@@ -1,6 +1,6 @@
 ---
 title: "Angular and ASP.NET Core"
-description: "An ASP.NET Core backend and an Angular frontend."
+description: "Single Page Application (SPA) templates"
 date: "2023-03-24"
 categories: [".NET","Angular","TypeScript","React"]
 tags: []
@@ -8,13 +8,6 @@ slug: "angularandasp.net"
 image: "/assets/images/angular-full-color-logo.svg"
 ---
 
-## An ASP.NET Core backend and an Angular frontend.
-
-![](/assets/images/angularandasp.net/angular-full-color-logo.svg)
-*The Angular logo is provided under CC BY 4.0.*
-
-
-## Single Page Application (SPA) templates
 
 Visual Studio includes ASP.NET Core Single Page Application (SPA) templates that support Angular and React.
 

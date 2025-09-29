@@ -9,15 +9,6 @@ hidden: true
 slug: "dataversefetchxml"
 ---
 
-# Microsoft Dataverse FetchXML
-
-## Microsoft Dataverse FetchXML
-
-![](/assets/images/dataversefetchxml/office-365-icon-500x500.png)
-*This file is licensed under the Creative Commons Attribution 4.0 International license.*
-
-
-## Microsoft Dataverse FetchXML
 
 The **Visual Studio shell** used to create Reporting Services reports has been released under various names, including SQL Server Data Tools (SSDT).
 

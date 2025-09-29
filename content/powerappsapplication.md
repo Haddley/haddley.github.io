@@ -8,13 +8,6 @@ slug: "powerappsapplication"
 image: "/assets/images/office-365-icon-500x500.png"
 ---
 
-# A Power Apps Application
-
-## Power Apps Application.
-
-![](/assets/images/powerappsapplication/office-365-icon-500x500.png)
-*Microsoft_Office_logo by Microsoft is licensed under CC*
-
 
 ## New app
 

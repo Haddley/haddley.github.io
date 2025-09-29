@@ -8,8 +8,6 @@ slug: "firebase"
 image: "/assets/images/logo-lockup-firebase-vertical.svg"
 ---
 
-![](/assets/images/firebase/logo-lockup-firebase-vertical.svg)
-*This logo image consists only of simple geometric shapes or text. It does not meet the threshold of originality needed for copyright protection, and is therefore in the public domain.*
 
 
 The application I built uses these Firebase products for web apps:

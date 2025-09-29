@@ -8,13 +8,7 @@ slug: "sails1"
 image: "/assets/images/sailsjs-logo-515x193.png"
 ---
 
-## Azure DevOps and Sails.
 
-![AWS](/assets/images/sails1/sailsjs-logo-515x193.png)
-*By http://sailsjs.com/ Fair use*
-
-
-## Sails
 
 Sails.js (or Sails) is a web framework that makes it easy to build custom, enterprise-grade Node.js apps. 
 

@@ -8,13 +8,7 @@ slug: "webxr"
 image: "/assets/images/34385910-400x400.png"
 ---
 
-## Create Augmented Reality Experiences.
 
-![spec-logo by Brandon Jones is licensed under W3C Software and Document License](/assets/images/webxr/34385910-400x400.png)
-*spec-logo by Brandon Jones is licensed under W3C Software and Document License*
-
-
-## Augmented Reality
 
 [WebXR](https://github.com/immersive-web) supports both Virtual Reality (VR) and Augmented Reality (AR).
 

@@ -8,11 +8,6 @@ slug: "internetofthings1"
 image: "/assets/images/iot-microchip.svg"
 ---
 
-## ESP8266 is a low-cost Wi-Fi microchip, with a full TCP/IP stack and microcontroller capability.
-
-![Electron](/assets/images/internetofthings1/iot-microchip.svg)
-*iot microchip by Philipp Petzka is licensed under CC*
-
 
 ## Breadboard
 

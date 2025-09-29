@@ -8,11 +8,6 @@ slug: "xcode2"
 image: "/assets/images/xcode-14-icon-300x314.png"
 ---
 
-## OpenGL GLFW
-
-![](/assets/images/xcode2/xcode-14-icon-300x314.png)
-*This is the logo owned by Apple Inc. for Xcode. Taken from the picture's app bundle. Fair use*
-
 
 ## Building an OpenGL application using C++ and XCode
 

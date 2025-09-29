@@ -8,8 +8,6 @@ slug: "langflow1"
 image: "/assets/images/85702467-200x200.png"
 ---
 
-![](/assets/images/langflow1/85702467-200x200.png)
-*This file is licensed under the MIT license.*
 
 
 Langflow is a tool designed to simplify the development of applications using large language models (LLMs).

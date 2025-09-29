@@ -9,8 +9,7 @@ slug: "microsoftdynamics365appforoutlook"
 hidden: true
 ---
 
-![](/assets/images/microsoftdynamics365appforoutlook/office-365-icon-500x500.png)
-*This file is licensed under the Creative Commons Attribution 4.0 International license.*
+
 
 
 **Microsoft Dynamics 365 App for Outlook** connects a Dataverse Model Driven app to Outlook.

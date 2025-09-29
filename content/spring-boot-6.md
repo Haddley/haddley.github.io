@@ -8,8 +8,6 @@ slug: "spring-boot-6"
 image: "/assets/images/spring-framework-logo-70-no.svg"
 ---
 
-![](/assets/images/spring-boot-6/spring-framework-logo-2018.svg)
-*Spring Framework logo by Pivotal Software is licensed under Apache License 2.0*
 
 
 OAuth2 authentication using Spring Security and GitHub.

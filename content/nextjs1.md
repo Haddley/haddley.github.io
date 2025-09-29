@@ -8,11 +8,6 @@ slug: "nextjs1"
 image: "/assets/images/2560px-nextjs-logo.svg-1536x920.png"
 ---
 
-## The React Framework for Production
-
-![AWS](/assets/images/nextjs1/2560px-nextjs-logo.svg-1536x920.png)
-*This file is licensed under the Creative Commons Attribution-Share Alike 4.0 International license.*
-
 
 ## create-next-app
 

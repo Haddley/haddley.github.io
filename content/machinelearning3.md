@@ -8,11 +8,6 @@ slug: "machinelearning3"
 image: "/assets/images/tensorflow-logo.svg"
 ---
 
-## Creating models
-
-![](/assets/images/machinelearning3/tensorflow-logo.svg)
-*Tensorflow logo does not meet the threshold of originality needed for copyright protection, and is therefore in the public domain*
-
 
 ## Teachable Machine
 

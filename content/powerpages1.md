@@ -8,9 +8,6 @@ slug: "powerpages1"
 image: "/assets/images/powerpages-scalable.svg"
 ---
 
-![](/assets/images/powerpages1/powerpages-scalable.svg)
-*Microsoft permits the use of these icons in architectural diagrams, training materials, or documentation.*
-
 
 Microsoft Power Pages is a low-code platform designed to build, host, and manage external-facing business websites.
 

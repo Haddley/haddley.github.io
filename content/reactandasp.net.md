@@ -8,15 +8,7 @@ slug: "reactandasp.net"
 image: "/assets/images/logo512-512x512.png"
 ---
 
-# React and ASP.NET Core
 
-## An ASP.NET Core backend and a React frontend.
-
-![](/assets/images/reactandasp.net/logo512-512x512.png)
-*React-icon by Facebook does not meet the threshold of originality needed for copyright protection*
-
-
-## Single Page Application (SPA) templates
 
 Visual Studio includes ASP.NET Core Single Page Application (SPA) templates that support Angular and React.
 

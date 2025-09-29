@@ -8,13 +8,6 @@ slug: "spring-boot-5"
 image: "/assets/images/spring-framework-logo-70-no.svg"
 ---
 
-## Spring for GraphQL
-
-![](/assets/images/spring-boot-5/spring-framework-logo-2018.svg)
-*Spring Framework logo by Pivotal Software is licensed under Apache License 2.0*
-
-
-## Spring for GraphQL
 
 Build GraphQL applications with Spring for [GraphQL](GraphQL.html) and GraphQL Java.
 

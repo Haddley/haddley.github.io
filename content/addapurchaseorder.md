@@ -8,13 +8,7 @@ slug: "addapurchaseorder"
 image: "/assets/images/office-365-icon-500x500.png"
 ---
 
-# Add a Purchase Order
-
-![](/assets/images/addapurchaseorder/office-365-icon-500x500.png)
-*This file is licensed under the Creative Commons Attribution 4.0 International license.*
-
-
-Summary
+## Summary
 
 ![](/assets/images/addapurchaseorder/screenshot-2024-02-21-at-8.20.01-pm-1836x642.png)
 *I created a Canvas app*

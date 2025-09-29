@@ -9,13 +9,6 @@ hidden: true
 slug: "sprint-apps1"
 ---
 
-# Azure Spring Apps (Part 1)
-
-## hello-world-app
-
-![](/assets/images/sprint-apps1/spring-framework-logo-2018.svg)
-*Spring Framework logo by Pivotal Software is licensed under Apache License 2.0*
-
 
 ## Hello World
 

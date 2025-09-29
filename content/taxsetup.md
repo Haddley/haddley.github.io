@@ -9,13 +9,6 @@ hidden: true
 slug: "taxsetup"
 ---
 
-# Tax Setup
-
-## Tax Setup
-
-![](/assets/images/taxsetup/dynamics365-color.svg)
-*By Microsoft, Public Domain*
-
 
 ## Sub-ledgers
 

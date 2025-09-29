@@ -8,13 +8,7 @@ slug: "vbnetconsolesqlserverunittests"
 image: "/assets/images/net-logo.svg"
 ---
 
-## Test driven development
 
-![](/assets/images/vbnetconsolesqlserverunittests/net-logo.svg)
-*Microsoft Dotnet Logo by Microsoft Corporation is licensed under Creative Commons CC0 1.0 Universal Public Domain Dedication*
-
-
-## Unit Tests
 
 Unit tests are automated tests written and run by software developers to ensure that a section of an application (known as the "unit") meets its design and behaves as intended.
 

@@ -8,8 +8,6 @@ slug: "internetofthings3"
 image: "/assets/images/iot-microchip.svg"
 ---
 
-![](/assets/images/internetofthings3/iot-microchip.svg)
-*iot microchip by Philipp Petzka is licensed under CC*
 
 
 Edge Impulse is a development platform for creating machine learning (ML) models optimized for edge devices. It allows developers to collect data, train ML models, and deploy them on low-power hardware such as microcontrollers, IoT devices, and embedded systems. The platform is particularly useful for applications in **industrial automation, healthcare, predictive maintenance, and smart devices**.

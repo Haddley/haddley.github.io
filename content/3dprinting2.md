@@ -8,14 +8,6 @@ slug: "3dprinting2"
 image: "/assets/images/wikipedia-globe-translucent-3d-printed-woodgrain-background-512x512.jpg"
 ---
 
-# 3D Printing 2
-
-## Raspberry Pi 4 and Mini Breadboard mount
-
-![](/assets/images/3dprinting2/wikipedia-globe-translucent-3d-printed-woodgrain-background-512x512.jpg)
-*Slashme, CC BY-SA 4.0, via Wikimedia Commons*
-
-
 ## Tinkercad
 
 I updated an existing Tinkercad design to create a part to securely hold a Raspberry Pi 4 and small breadboard.

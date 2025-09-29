@@ -8,9 +8,6 @@ slug: "powerautomate"
 image: "/assets/images/office-365-icon-500x500.png"
 ---
 
-![](/assets/images/powerautomate/office-365-icon-500x500.png)
-*Microsoft_Office_logo by Microsoft is licensed under CC*
-
 
 I added a Flow to create a Team every time an item is added to a "New Teams" SharePoint list.
 

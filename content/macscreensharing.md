@@ -8,8 +8,7 @@ slug: "macscreensharing"
 image: "/assets/images/apple-logo-black.svg"
 ---
 
-![](/assets/images/macscreensharing/apple-logo-black.svg)
-*This work is in the public domain in the United States because it was published in the United States between 1930 and 1977, inclusive, without a copyright notice.*
+
 
 To share your macOS screen using VNC, enable Screen Sharing in System Settings, then use a VNC viewer on another device to connect to your Mac's IP address or hostname, using the password you set.
 

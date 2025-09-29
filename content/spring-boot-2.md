@@ -8,9 +8,6 @@ slug: "spring-boot-2"
 image: "/assets/images/spring-framework-logo-70-no.svg"
 ---
 
-![](/assets/images/spring-boot-2/spring-framework-logo-2018.svg)
-*Spring Framework logo by Pivotal Software is licensed under Apache License 2.0*
-
 
 I used [https://start.spring.io](https://start.spring.io), Visual Studio Code, GitHub and Microsoft Azure to generate an Spring application, to run the Spring application on my laptop and to deploy the Spring application to Microsoft Azure
 

@@ -8,15 +8,6 @@ slug: "aspnet-5-cs"
 image: "/assets/images/net-logo.svg"
 ---
 
-# ASP.NET 5 C#
-
-## Generate Context and Entity Classes from an Existing Database
-
-![](/assets/images/aspnet-5-cs/net-logo.svg)
-*Microsoft Dotnet Logo by Microsoft Corporation is licensed under Creative Commons CC0 1.0 Universal Public Domain Dedication*
-
-
-## Active Server Pages
 
 ASP Web Forms was released in 2003 (based on the Windows Server and the .NET Framework)
 

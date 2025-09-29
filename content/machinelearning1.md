@@ -8,8 +8,6 @@ slug: "machinelearning1"
 image: "/assets/images/tensorflow-logo.svg"
 ---
 
-![](/assets/images/machinelearning1/tensorflow-logo.svg)
-*Tensorflow logo does not meet the threshold of originality needed for copyright protection, and is therefore in the public domain*
 
 
 For a science fair in 2019 I helped two of my children build an [instructables.com project](https://www.instructables.com/Matchbox-Mini-Chess-Learning-Machine/?fbclid=IwAR0g2mf_HQBxdJJIuQaeSfAbF3Hui4QoTPBuI18YoYVlKFIr4Bv8OX0diTw) using matchboxes and colored beads.

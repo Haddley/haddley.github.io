@@ -1,6 +1,6 @@
 ---
 title: "Power Apps, Custom Connectors and API Management"
-description: "Power Apps, Custom Connectors and API Management"
+description: "Azure API Management Service"
 date: "2021-08-02"
 categories: ["Power Platform","Azure"]
 tags: []
@@ -8,15 +8,6 @@ slug: "api-management"
 image: "/assets/images/office-365-icon-500x500.png"
 ---
 
-# Power Apps, Custom Connectors and API Management
-
-## Power Apps, Custom Connectors and API Management
-
-![](/assets/images/api-management/office-365-icon-500x500.png)
-*Microsoft_Office_logo by Microsoft is licensed under CC*
-
-
-## Azure API Management Service
 
 The API Management Service controls how api services are exposed to employees by applying authentication, authorization, and usage limits.
 

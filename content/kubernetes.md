@@ -8,11 +8,6 @@ slug: "kubernetes"
 image: "/assets/images/kubernetes-container-engine.svg"
 ---
 
-## Kubernetes is a platform for managing containerized workloads.
-
-![Kubernetes (container engine) by Google, Inc. is licensed under CC](/assets/images/kubernetes/kubernetes-container-engine.svg)
-*Kubernetes (container engine) by Google, Inc. is licensed under CC*
-
 
 Docker Desktop includes Kubernetes.
 

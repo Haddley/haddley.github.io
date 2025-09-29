@@ -8,11 +8,6 @@ slug: "webcomponents"
 image: "/assets/images/web-components-logo.svg"
 ---
 
-## A set of web technologies that allow users to create HTML elements.
-
-![Phaser](/assets/images/webcomponents/web-components-logo.svg)
-*This file is licensed under the Apache License 2.0.*
-
 
 ## History
 

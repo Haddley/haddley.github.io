@@ -8,9 +8,6 @@ slug: "ngrx"
 image: "/assets/images/ngrx.svg"
 ---
 
-![](/assets/images/ngrx/ngrx.svg)
-*This file is licensed under the Creative Commons 4.0.*
-
 
 NgRx is inspired by the Redux pattern. 
 

@@ -8,12 +8,6 @@ slug: "contextinjection"
 image: "/assets/images/chatgpt-logo.svg"
 ---
 
-# Context Injection
-
-## Context Injection
-
-![](/assets/images/contextinjection/chatgpt-logo.svg)
-*This image of simple geometry is ineligible for copyright and therefore in the public domain, because it consists entirely of information that is common property and contains no original authorship.*
 
 
 ## What is Context Injection?

@@ -8,11 +8,6 @@ slug: "phaser"
 image: "/assets/images/phaser-logo-1836x1530.png"
 ---
 
-## 2D game framework used for making HTML5 games
-
-![Phaser](/assets/images/phaser/phaser-logo-1836x1530.png)
-*This file is licensed under the Creative Commons Attribution-Share Alike 3.0 Unported license.*
-
 
 ## Getting Started
 

@@ -8,8 +8,6 @@ slug: "hands-on-lab2.2"
 image: "/assets/images/dynamics365-color.svg"
 ---
 
-![](/assets/images/hands-on-lab2.2/dynamics365-color.svg)
-*By Microsoft, Public Domain*
 
 
 **Hands-on-Lab 2.2: Migrate master data to a new company**

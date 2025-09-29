@@ -9,12 +9,6 @@ slug: "mcpserver2"
 hidden: true
 ---
 
-# Model Context Protocol (Part 2)
-
-## Business Central
-
-![](/assets/images/mcpserver2/mcp-1024x1024.png)
-*The Model Context Protocol is an open source project run by Anthropic, PBC.*
 
 I created a Model Context Protocol (MCP) server for Microsoft Business Central
 

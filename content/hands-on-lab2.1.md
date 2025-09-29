@@ -8,8 +8,6 @@ slug: "hands-on-lab2.1"
 image: "/assets/images/hands-on-lab2.1/dynamics365-color.svg"
 ---
 
-![](/assets/images/hands-on-lab2.1/dynamics365-color.svg)
-*By Microsoft, Public Domain*
 
 
 I worked through the MB-800 Business Central Functional Consultant hands on labs.

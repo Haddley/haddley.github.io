@@ -8,13 +8,6 @@ slug: "powerautomatereports"
 image: "/assets/images/office-365-icon-500x500.png"
 ---
 
-# Microsoft Power Automate Reports
-## A Flow that emails a Report
-
-
-![](/assets/images/powerautomatereports/office-365-icon-500x500.png)
-*This file is licensed under the Creative Commons Attribution 4.0 International license.*
-
 
 Creating a Flow that emails a Report as a PDF file
 

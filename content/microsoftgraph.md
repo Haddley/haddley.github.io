@@ -8,8 +8,6 @@ slug: "microsoftgraph"
 image: "/assets/images/office-365-icon-500x500.png"
 ---
 
-![](/assets/images/microsoftgraph/office-365-icon-500x500.png)
-*Microsoft_Office_logo by Microsoft is licensed under CC*
 
 
 [Microsoft Graph](https://docs.microsoft.com/en-us/graph/overview) is a REST API that can be used to access: Microsoft 365, Azure Active Directory, Windows and Dynamics 365.

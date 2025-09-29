@@ -8,12 +8,6 @@ slug: "sharepointwebpart2"
 image: "/assets/images/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png"
 ---
 
-# SharePoint Web Part (Part 2)
-
-## How to create and publish a SharePoint Web Part
-
-![](/assets/images/sharepointwebpart2/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png)
-*Microsoft Office SharePoint (2018–present) by Microsoft Corporation is licensed under CC*
 
 
 ## Adding the big calendar

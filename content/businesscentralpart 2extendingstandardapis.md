@@ -9,17 +9,6 @@ slug: "businesscentralpart 2extendingstandardapis"
 hidden: true
 ---
 
-# Business Central (Part 26) extending standard APIs
-
-## Extending standard APIs
-
-![](/assets/images/businesscentralpart-2extendingstandardapis/dynamics365-color.svg)
-*By Microsoft, Public Domain*
-
-
-## Extending standard APIshttps://www.kauffmann.nl/2021/04/16/extending-standard-apis-2/
-
-.
 
 ![](/assets/images/businesscentralpart-2extendingstandardapis/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png)
 *<<NEW TEXT HERE>>*

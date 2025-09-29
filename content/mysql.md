@@ -8,11 +8,6 @@ slug: "mysql"
 image: "/assets/images/includes-mysql-5646x2872.png"
 ---
 
-## Connecting to MySQL from JavaScript
-
-![AWS](/assets/images/mysql/includes-mysql-5646x2872.png)
-*You do not need written permission from Oracle to use the MySQL Conditional Use logos on your website.*
-
 
 ## Install MySQL Driver
 

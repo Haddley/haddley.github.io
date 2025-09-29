@@ -9,12 +9,6 @@ hidden: true
 slug: "finetuning"
 ---
 
-# Fine Tuning
-
-## Fine Tuning
-
-![](/assets/images/finetuning/meta-platforms-inc.-logo.svg)
-*By Meta Platforms, Public Domain, Link*
 
 
 ## ChatGPT Is a Blurry JPEG of the Web

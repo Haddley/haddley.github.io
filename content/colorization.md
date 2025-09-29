@@ -8,8 +8,6 @@ slug: "colorization"
 image: "/assets/images/jupyter.svg"
 ---
 
-![](/assets/images/colorization/jupyter.svg)
-*Cameron Oelsen, BSD, via Wikimedia Commons*
 
 
 I used the instructions from this ["Black and white image colorization with OpenCV and Deep Learning"](https://www.geeksforgeeks.org/black-and-white-image-colorization-with-opencv-and-deep-learning/) post to add color to a black and white image

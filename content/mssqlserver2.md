@@ -8,11 +8,6 @@ slug: "mssqlserver2"
 image: "/assets/images/ads.svg"
 ---
 
-## T-SQL, Stored Procedures and Snapshot Isolation.
-
-![](/assets/images/mssqlserver2/ads.svg)
-*ads by Microsoft Corporation is licensed under Source EULA*
-
 
 ## Stored procedures
 

@@ -8,15 +8,6 @@ slug: "dataverseadvancedreportssetup"
 image: "/assets/images/office-365-icon-500x500.png"
 ---
 
-# Microsoft Dataverse Advanced Reports Setup
-
-## Microsoft Dataverse Advanced Reports Setup
-
-![](/assets/images/dataverseadvancedreportssetup/office-365-icon-500x500.png)
-*This file is licensed under the Creative Commons Attribution 4.0 International license.*
-
-
-## Microsoft Dataverse Advanced Reports
 
 The **Visual Studio shell** used to create Reporting Services reports has been released under various names, including SQL Server Data Tools (SSDT).
 

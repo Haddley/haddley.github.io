@@ -8,12 +8,6 @@ slug: "angularphaser"
 image: "/assets/images/phaser-logo-1836x1530.png"
 ---
 
-## Using Phaser in an Angular Component
-
-![Phaser](/assets/images/angularphaser/phaser-logo-1836x1530.png)
-*This file is licensed under the Creative Commons Attribution-Share Alike 3.0 Unported license.*
-
-
 ## Highlights
 
 ```bash

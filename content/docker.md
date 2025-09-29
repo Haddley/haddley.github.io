@@ -8,13 +8,6 @@ slug: "docker"
 image: "/assets/images/method-draw-image.svg"
 ---
 
-## Docker is an easy way to create, manage, and deliver applications.
-
-![Docker (container_engine) logo by dotCloud, Inc. is licensed under the Apache License](/assets/images/docker/docker-container-engine-logo.svg)
-*Docker (container_engine) logo by dotCloud, Inc. is licensed under the Apache License*
-
-
-## Docker Hub
 
 Docker Hub is a cloud based repository that allows users to share container images. 
 

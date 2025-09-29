@@ -8,8 +8,6 @@ slug: "hands-on-lab2.3"
 image: "/assets/images/dynamics365-color.svg"
 ---
 
-![](/assets/images/hands-on-lab2.3/dynamics365-color.svg)
-*By Microsoft, Public Domain*
 
 
 **Hands-on-Lab 2.3: Set up dimensions**

@@ -8,10 +8,6 @@ slug: "webvr"
 image: "/assets/images/webvr-logo-square-512x512.png"
 ---
 
-## Create Virtual Reality Experiences.
-
-![](/assets/images/webvr/webvr-logo-square-512x512.png)
-
 
 ## Moon Rider
 

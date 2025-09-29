@@ -8,12 +8,6 @@ slug: "sharepointwebpart1"
 image: "/assets/images/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png"
 ---
 
-# SharePoint Web Part (Part 1)
-
-## How to create and publish a SharePoint Web Part
-
-![](/assets/images/sharepointwebpart1/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png)
-*Microsoft Office SharePoint (2018–present) by Microsoft Corporation is licensed under CC*
 
 
 ## SharePoint Web Parts Extend the Office 365 User Experience

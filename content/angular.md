@@ -9,16 +9,6 @@ hidden: true
 slug: "angular"
 ---
 
-# Angular
-
-## A platform for building mobile and desktop web applications
-
-![](/assets/images/angular/angular-full-color-logo.svg)
-*This file is licensed under the Creative Commons Attribution 4.0 International license.*
-
-
-## Angular
-
 An Angular application is defined by a set of NgModules. 
 
 An application always has at least one (root) module that enables bootstrapping.

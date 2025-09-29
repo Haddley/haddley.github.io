@@ -8,8 +8,6 @@ slug: "xcode3"
 image: "/assets/images/xcode-14-icon-300x314.png"
 ---
 
-![](/assets/images/xcode3/xcode-14-icon-300x314.png)
-*This is the logo owned by Apple Inc. for Xcode. Taken from the picture's app bundle. Fair use*
 
 
 I compiled an OpenGL Triangle app on my M1 MacBook Air.

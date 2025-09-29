@@ -9,17 +9,7 @@ hidden: true
 slug: "businesscentralintegrationtables"
 ---
 
-# Business Central (Part 25) Integration Tables
 
-## Integration Tables
-
-![](/assets/images/businesscentralintegrationtables/dynamics365-color.svg)
-*By Microsoft, Public Domain*
-
-
-## Integration Tables
-
-.
 
 ![](/assets/images/businesscentralintegrationtables/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png)
 *<<NEW TEXT HERE>>*

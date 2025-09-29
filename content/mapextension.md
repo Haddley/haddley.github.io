@@ -8,15 +8,7 @@ slug: "mapextension"
 image: "/assets/images/dynamics365-color.svg"
 ---
 
-# Map Extension
 
-## Map Extension
-
-![](/assets/images/mapextension/dynamics365-color.svg)
-*By Microsoft, Public Domain*
-
-
-## Map Extension
 
 The Microsoft Dynamics 365 Business Central Extension described here allows users to view Customer locations in a map.
 

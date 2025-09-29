@@ -8,11 +8,6 @@ slug: "nextjs2"
 image: "/assets/images/2560px-nextjs-logo.svg-1536x920.png"
 ---
 
-## getStaticProps, getServerSideProps, getStaticPaths and useSWR
-
-![AWS](/assets/images/nextjs2/2560px-nextjs-logo.svg-1536x920.png)
-*This file is licensed under the Creative Commons Attribution-Share Alike 4.0 International license.*
-
 
 ## Pre-rendering
 

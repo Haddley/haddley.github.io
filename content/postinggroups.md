@@ -9,13 +9,6 @@ hidden: true
 slug: "postinggroups"
 ---
 
-# Posting Groups
-
-## Posting Groups
-
-![](/assets/images/postinggroups/dynamics365-color.svg)
-*By Microsoft, Public Domain*
-
 
 ## Daybook sub-ledgers
 

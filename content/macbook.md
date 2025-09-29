@@ -9,13 +9,6 @@ hidden: true
 slug: "macbook"
 ---
 
-# Apple MacBook Air with M2 chip
-
-## Train and evaluate deep learning models
-
-![](/assets/images/macbook/apple-logo-black.svg)
-*This work is in the public domain in the United States because it was published in the United States between 1928 and 1977, inclusive, without a copyright notice.*
-
 
 ## Apple MacBook Reset
 

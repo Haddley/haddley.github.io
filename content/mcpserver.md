@@ -8,8 +8,6 @@ slug: "mcpserver"
 image: "/assets/images/mcp-1024x1024.png"
 ---
 
-![](/assets/images/mcpserver/mcp-1024x1024.png)
-*The Model Context Protocol is an open source project run by Anthropic, PBC.*
 
 
 Model Context Protocol (MCP) is a framework designed to enhance the reasoning and planning capabilities of AI agents.

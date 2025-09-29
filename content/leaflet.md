@@ -8,13 +8,7 @@ slug: "leaflet"
 image: "/assets/images/leaflet-upic-200x200.png"
 ---
 
-## An open-source JavaScript libraryfor mobile-friendly interactive maps
 
-![Phaser](/assets/images/leaflet/leaflet-logo-600x159.png)
-*This file is licensed under the 2-Clause BSD License.*
-
-
-## What is Leaflet?
 
 Leaflet is an open-source Geographic Information System (GIS) JavaScript library for mobile-friendly interactive maps. 
 

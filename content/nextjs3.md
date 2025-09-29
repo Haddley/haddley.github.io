@@ -8,11 +8,6 @@ slug: "nextjs3"
 image: "/assets/images/2560px-nextjs-logo.svg-1536x920.png"
 ---
 
-## API routes and next-auth
-
-![AWS](/assets/images/nextjs3/2560px-nextjs-logo.svg-1536x920.png)
-*This file is licensed under the Creative Commons Attribution-Share Alike 4.0 International license.*
-
 
 ## Get Request
 

@@ -9,16 +9,6 @@ hidden: true
 slug: "angular1"
 ---
 
-# Angular (Part 1)
-
-## A platform for building mobile and desktop web applications
-
-![](/assets/images/angular1/angular-full-color-logo.svg)
-*This file is licensed under the Creative Commons Attribution 4.0 International license.*
-
-
-## Angular
-
 An Angular application is a set of [modules](https://angular.io/guide/architecture-modules). 
 
 An application has at least one (root) module.

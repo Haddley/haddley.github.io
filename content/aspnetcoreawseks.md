@@ -8,13 +8,6 @@ slug: "aspnetcoreawseks"
 image: "/assets/images/amazon-web-services-logo.svg"
 ---
 
-# Deploying a .NET Core Web API to Amazon EKS
-
-## Deploying a .NET Core Web API to Amazon Elastic Kubernetes Service (Amazon EKS)
-
-![AWS](/assets/images/aspnetcoreawseks/amazon-web-services-logo.svg)
-*By Amazon.com Inc. - Amazon, Apache License 2.0*
-
 
 Amazon Elastic Kubernetes Service (Amazon EKS) makes it possible to deploy, manage, and scale [containerized](docker.html) applications using [Kubernetes](kubernetes.html) on AWS. 
 

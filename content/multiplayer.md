@@ -8,9 +8,6 @@ slug: "multiplayer"
 image: "/assets/images/logo-lockup-firebase-vertical.svg"
 ---
 
-![](/assets/images/multiplayer/logo-lockup-firebase-vertical.svg)
-*This file is licensed under the Creative Commons Attribution 4.0 International license.*
-
 
 I created a firebase project using https://console.firebase.google.com
 

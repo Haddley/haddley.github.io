@@ -8,10 +8,6 @@ slug: "componentframework"
 image: "/assets/images/office-365-icon-500x500.png"
 ---
 
-# Component Framework
-
-![](/assets/images/componentframework/office-365-icon-500x500.png)
-*This file is licensed under the Creative Commons Attribution 4.0 International license.*
 
 
 Create code components for model-driven and canvas apps.

@@ -8,8 +8,6 @@ slug: "javascriptgraph"
 image: "/assets/images/office-365-icon-500x500.png"
 ---
 
-![](/assets/images/javascriptgraph/office-365-icon-500x500.png)
-*Microsoft_Office_logo by Microsoft is licensed under CC*
 
 
 This post is based on Microsoft's "[Build JavaScript apps with Microsoft Graph](https://docs.microsoft.com/en-nz/graph/tutorials/javascript?tabs=aad)" tutorial.

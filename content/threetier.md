@@ -8,15 +8,7 @@ slug: "threetier"
 image: "/assets/images/net-logo.svg"
 ---
 
-# Blazor WASM API SQL Server Stored Procedure
 
-## Three Tiers
-
-![](/assets/images/threetier/net-logo.svg)
-*Microsoft Dotnet Logo by Microsoft Corporation is licensed under Creative Commons CC0 1.0 Universal Public Domain Dedication*
-
-
-## Three Tiers
 
 Visual Studio includes an ASP.NET Core Single Page Application (SPA) template that supports Blazor WASM.
 

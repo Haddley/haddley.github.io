@@ -8,9 +8,6 @@ slug: "modeldriven3"
 image: "/assets/images/office-365-icon-500x500.png"
 ---
 
-![](/assets/images/modeldriven3/office-365-icon-500x500.png)
-*This file is licensed under the Creative Commons Attribution 4.0 International license.*
-
 
 JavaScript can be used to extend model driven apps.
 

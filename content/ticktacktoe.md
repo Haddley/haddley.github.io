@@ -8,9 +8,6 @@ slug: "ticktacktoe"
 image: "/assets/images/logo-lockup-firebase-vertical.svg"
 ---
 
-![](/assets/images/ticktacktoe/logo-lockup-firebase-vertical.svg)
-*This file is licensed under the Creative Commons Attribution 4.0 International license.*
-
 
 I asked ChatGPT for some help creating a multiplayer version of Tick-Tack-Toe.
 

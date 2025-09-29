@@ -8,13 +8,6 @@ slug: "dockerbuildx"
 image: "/assets/images/method-draw-image.svg"
 ---
 
-## Build multi-platform Docker images.
-
-![](/assets/images/dockerbuildx/docker-container-engine-logo.svg)
-*Docker (container_engine) logo by dotCloud, Inc. is licensed under the Apache License*
-
-
-## Buildx
 
 Buildx allows a developer to build for multiple architecture/operating systems.
 

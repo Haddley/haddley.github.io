@@ -8,16 +8,6 @@ slug: "opencv"
 image: "/assets/images/raspberry-pi-logo.svg"
 ---
 
-# Object Detection
-
-## Object Detection
-
-![](/assets/images/opencv/raspberry-pi-logo.svg)
-*Raspberry Pi is a trademark of Raspberry Pi Ltd*
-
-
-## Raspberry Pi Object Detection using OpenCV and TensorFlow Lite
-
 
 ## Installation of OpenCV
 

@@ -9,12 +9,7 @@ image: "/assets/images/posts-meta.svg"
 hidden: false
 ---
 
-# Business Central (Part 28)
 
-## Prompt Dialog (Part 2)
-
-![](/assets/images/promptdialog2/dynamics365-color.svg)
-*By Microsoft, Public Domain*
 
 
 Copilot Prompt Interface: A user interface (UI) component designed to collect user inputs and queries for Microsoft Dynamics 365 Business Central's Copilot feature. This dialog page enables users to interact with the AI assistant by submitting natural language prompts or requests.

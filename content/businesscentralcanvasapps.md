@@ -8,11 +8,6 @@ slug: "businesscentralcanvasapps"
 image: "/assets/images/dynamics365-color.svg"
 ---
 
-# Business Central Canvas Apps
-
-![](/assets/images/businesscentralcanvasapps/dynamics365-color.svg)
-*By Microsoft, Public Domain*
-
 
 [Microsoft Dynamics 365](https://en.wikipedia.org/wiki/Microsoft_Dynamics_365) is a product line of more than a dozen enterprise resource planning (ERP) and customer relationship management (CRM) business applications.
 

@@ -8,14 +8,6 @@ slug: "3dprinting1"
 image: "/assets/images/wikipedia-globe-translucent-3d-printed-woodgrain-background-512x512.jpg"
 ---
 
-# 3D Printing 1
-
-## ELEGOO Mars 3 Pro 4K Resin 3D Printer
-
-![](/assets/images/3dprinting1/wikipedia-globe-translucent-3d-printed-woodgrain-background-512x512.jpg)
-*Slashme, CC BY-SA 4.0, via Wikimedia Commons*
-
-
 ## Tinkercad
 
 I created a 3D .STL file using Tinkercad.

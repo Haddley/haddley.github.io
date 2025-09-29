@@ -8,10 +8,6 @@ slug: "angularfirebase"
 image: "/assets/images/logo-lockup-firebase-vertical.svg"
 ---
 
-![](/assets/images/angularfirebase/logo-lockup-firebase-vertical.svg)
-*This file is licensed under the Creative Commons Attribution 4.0 International license.*
-
-
 I created a firebase project using https://console.firebase.google.com
 
 ![](/assets/images/angularfirebase/screen-shot-2023-04-25-at-5.02.39-pm-1836x1011.png)

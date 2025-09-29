@@ -8,15 +8,6 @@ slug: "azurereactstaticweb-app"
 image: "/assets/images/logo512-512x512.png"
 ---
 
-# Azure React Static Web App
-
-## Azure Static Web App
-
-![](/assets/images/azurereactstaticweb-app/logo512-512x512.png)
-*React-icon by Facebook does not meet the threshold of originality needed for copyright protection*
-
-
-## Azure Static Web App
 
 I created a React app, tested it locally, pushed the code to GitHub and published to Azure.
 

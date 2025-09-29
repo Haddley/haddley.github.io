@@ -8,12 +8,6 @@ slug: "dynamicssales1"
 image: "/assets/images/dynamics365-color.svg"
 ---
 
-# Dynamics 365 Sales (Part 1)
-
-## The Account|Sales Insights form
-
-![](/assets/images/dynamicssales1/dynamics365-color.svg)
-*By Microsoft, Public Domain*
 
 
 I used [https://make.powerapps.com](https://make.powerapps.com) to customize the Account|Sales Insights form.

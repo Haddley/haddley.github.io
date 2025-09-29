@@ -8,15 +8,6 @@ slug: "purchaseinvoice"
 image: "/assets/images/posts-meta.svg"
 ---
 
-# Purchase Invoice
-
-## Purchase Invoice
-
-![](/assets/images/purchaseinvoice/dynamics365-color.svg)
-*By Microsoft, Public Domain*
-
-
-## Purchase Invoice
 
 The Inventory Posting Group RESALE (Item), General Product Posting Group RETAIL (Item), General Business Posting Group DOMESTIC  (Vendor), General Posting Setup {RETAIL,DOMESTIC}, Tax Setup and Vendor Posting Group (Vendor) are used to generate General Ledger entries for a Purchase Invoice Document.
 

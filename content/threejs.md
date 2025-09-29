@@ -8,10 +8,6 @@ slug: "threejs"
 image: "/assets/images/three.js-icon.svg"
 ---
 
-## A JavaScript-based WebGL engine
-
-![](/assets/images/threejs/three.js-icon.svg)
-*This file is licensed under the Creative Commons Attribution-Share Alike 4.0 International license.*
 
 
 Three. js is a JavaScript-based WebGL engine that can run GPU-powered games and other graphics-powered apps straight from the browser.

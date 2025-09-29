@@ -9,15 +9,7 @@ hidden: true
 slug: "modeldrivenapps"
 ---
 
-# Model Driven Apps
 
-## A Short History of Microsoft Dynamics and Microsoft Dataverse
-
-![](/assets/images/modeldrivenapps/office-365-icon-500x500.png)
-*This file is licensed under the Creative Commons Attribution 4.0 International license.*
-
-
-## Microsoft Dynamics and Microsoft Dataverse
 
 
 ## Microsoft to Acquire Great Plains Software Inc.

@@ -8,13 +8,7 @@ slug: "graphql"
 image: "/assets/images/graphql-logo.svg-1200x1200.png"
 ---
 
-## GraphQL is a query and manipulation language for APIs.
 
-![GraphQL](/assets/images/graphql/graphql-logo.svg-1200x1200.png)
-*GraphQL Logo by Facebook is licensed under BSD*
-
-
-## GraphQL compared to REST
 
 A [REST](restapiservice.html) API client may need to make multiple calls to a REST Service to get all of the data it needs.
 

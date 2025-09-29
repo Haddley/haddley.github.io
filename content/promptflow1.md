@@ -8,13 +8,7 @@ slug: "promptflow1"
 image: "/assets/images/logo.svg"
 ---
 
-## Setup
 
-![](/assets/images/promptflow1/logo.svg)
-*This file is licensed under the MIT license.*
-
-
-## Setup
 
 Prompt flow is a development tool designed to streamline the development of AI applications powered by Large Language Models (LLMs).
 

@@ -8,17 +8,6 @@ slug: "businesscentralpart25integratingwithdataverseusingdataflows"
 image: "/assets/images/posts-meta.svg"
 ---
 
-# Business Central (Part 25) Integrating with Dataverse using Dataflows
-
-## Integrating with Dataverse using Dataflows
-
-![](/assets/images/businesscentralpart25integratingwithdataverseusingdataflows/dynamics365-color.svg)
-*By Microsoft, Public Domain*
-
-
-## Integrating with Dataverse using Dataflows
-
-.
 
 ![](/assets/images/businesscentralpart25integratingwithdataverseusingdataflows/screenshot-2024-12-02-at-2.44.28pm-1836x555.png)
 *I created a new Business Central Company*

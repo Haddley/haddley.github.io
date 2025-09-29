@@ -8,12 +8,6 @@ slug: "dynamicssales2"
 image: "/assets/images/dynamics365-color.svg"
 ---
 
-# Dynamics 365 Sales (Part 2)
-
-## The Lead to Opportunity Sales Process
-
-![](/assets/images/dynamicssales2/dynamics365-color.svg)
-*By Microsoft, Public Domain*
 
 
 I used [https://make.powerapps.com](https://make.powerapps.com) to customize the "Lead to Opportunity Sales Process" business process flow.

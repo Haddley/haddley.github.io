@@ -8,12 +8,6 @@ slug: "nuget"
 image: "/assets/images/logo-og-600x600.png"
 ---
 
-# NuGet C#
-
-## Create, publish and consume a NuGet package using C#.
-
-![](/assets/images/nuget/logo-og-600x600.png)
-*NuGet project logo by NuGet project team is licensed under CC*
 
 
 ## Recursion

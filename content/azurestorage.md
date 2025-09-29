@@ -8,15 +8,6 @@ slug: "azurestorage"
 image: "/assets/images/azurex70x75.svg"
 ---
 
-# Azure Storage
-
-## Microsoft's cloud storage solution
-
-![](/assets/images/azurestorage/microsoft-azure-logo.svg)
-*Microsoft Azure Logo by Microsoft Corporation is Public Domain*
-
-
-## Azure Storage
 
 The Azure Storage platform is Microsoft's cloud storage solution. Azure Storage offers available, scalable, durable, and secure storage in the cloud.
 

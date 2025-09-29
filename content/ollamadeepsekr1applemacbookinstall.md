@@ -8,12 +8,6 @@ slug: "ollamadeepsekr1applemacbookinstall"
 image: "/assets/images/254932576-0d0b44e2-8f4a-4e99-9b52-a5c1c741c8f7-844x844.png"
 ---
 
-# DeepSeek R1
-
-## Running locally
-
-![](/assets/images/ollamadeepsekr1applemacbookinstall/254932576-0d0b44e2-8f4a-4e99-9b52-a5c1c741c8f7-844x844.png)
-*ollama is licensed under theMIT License*
 
 
 **Installation & Configuration**

@@ -8,9 +8,6 @@ slug: "promptflow6"
 image: "/assets/images/logo.svg"
 ---
 
-![](/assets/images/promptflow6/logo.svg)
-*This file is licensed under the MIT license.*
-
 
 I used Prompt flow, Semantic Kernel and Planner to create an AI application.
 

@@ -8,9 +8,6 @@ slug: "gingerbreadhouse"
 image: "/assets/images/raspberry-pi-logo.svg"
 ---
 
-![](/assets/images/gingerbreadhouse/raspberry-pi-logo.svg)
-*Raspberry Pi is a trademark of Raspberry Pi Ltd*
-
 
 $ sudo apt-get update
 $ sudo  apt-get dist-upgrade

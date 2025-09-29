@@ -8,15 +8,7 @@ slug: "llamacorp"
 image: "/assets/images/jupyter.svg"
 ---
 
-# LlamaCpp
 
-## Accessing the llama.cpp model from Python
-
-![](/assets/images/llamacorp/jupyter.svg)
-*Cameron Oelsen, BSD, via Wikimedia Commons*
-
-
-## Llama.cpp
 
 The llama.cpp project provides Large Language Models.
 

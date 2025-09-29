@@ -8,9 +8,6 @@ slug: "xcode4"
 image: "/assets/images/xcode-14-icon-300x314.png"
 ---
 
-![](/assets/images/xcode4/xcode-14-icon-300x314.png)
-*This is the logo owned by Apple Inc. for Xcode. Taken from the picture's app bundle. Fair use*
-
 
 OpenGL Mathematics (GLM) is a header only C++ mathematics library for graphics software based on the OpenGL Shading Language (GLSL) specifications.
 

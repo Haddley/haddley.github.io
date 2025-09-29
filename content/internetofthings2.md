@@ -8,11 +8,6 @@ slug: "internetofthings2"
 image: "/assets/images/iot-microchip.svg"
 ---
 
-## Node-RED can publish messages to a MQTT broker and subscribe to MQTT topics.
-
-![](/assets/images/internetofthings2/iot-microchip.svg)
-*iot microchip by Philipp Petzka is licensed under CC*
-
 
 ## Node-RED
 

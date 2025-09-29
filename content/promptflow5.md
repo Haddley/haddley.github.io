@@ -8,9 +8,6 @@ slug: "promptflow5"
 image: "/assets/images/logo.svg"
 ---
 
-![](/assets/images/promptflow5/logo.svg)
-*This file is licensed under the MIT license.*
-
 
 I used Prompt flow and LangChain to create and deploy an AI application.
 

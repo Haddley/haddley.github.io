@@ -8,11 +8,6 @@ slug: "mssqlserver"
 image: "/assets/images/ads.svg"
 ---
 
-## Microsoft SQL Server 2019 Docker image.
-
-![](/assets/images/mssqlserver/ads.svg)
-*ads by Microsoft Corporation is licensed under Source EULA*
-
 
 ## Docker image
 

@@ -8,11 +8,7 @@ slug: "businesscentralvirtualtable"
 image: "/assets/images/posts-meta.svg"
 ---
 
-![](/assets/images/businesscentralvirtualtable/dynamics365-color.svg)
-*By Microsoft, Public Domain*
 
-
-## Microsoft Dynamics 365 Business Central Virtual Tables for Microsoft Dataverse
 
 Microsoft Dynamics 365 Business Central Virtual Table is a virtual data source in Microsoft Dataverse allowing Create, Read, Update and Delete operations from Microsoft Dataverse against Dynamics 365 Business Central. Data for virtual tables do not reside in Microsoft Dataverse, but continue to reside in Business Central. 
 

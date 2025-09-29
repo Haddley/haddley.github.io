@@ -9,15 +9,7 @@ hidden: true
 slug: "streamlit"
 ---
 
-# Streamlit
 
-## Streamlit
-
-![](/assets/images/streamlit/chatgpt-logo.svg)
-*This image of simple geometry is ineligible for copyright and therefore in the public domain, because it consists entirely of information that is common property and contains no original authorship.*
-
-
-## Streamlit
 
 **ChatGPT: What is Streamlit?**
 

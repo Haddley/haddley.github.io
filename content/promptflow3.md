@@ -8,13 +8,6 @@ slug: "promptflow3"
 image: "/assets/images/logo.svg"
 ---
 
-## Semantic Kernel
-
-![](/assets/images/promptflow3/logo.svg)
-*This file is licensed under the MIT license.*
-
-
-## Semantic Kernel
 
 [Semantic Kernel](https://learn.microsoft.com/en-us/semantic-kernel/overview/) is an open-source development kit for building AI agents.
 

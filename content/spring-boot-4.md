@@ -8,13 +8,6 @@ slug: "spring-boot-4"
 image: "/assets/images/spring-framework-logo-70-no.svg"
 ---
 
-## ModelAndView
-
-![](/assets/images/spring-boot-4/spring-framework-logo-2018.svg)
-*Spring Framework logo by Pivotal Software is licensed under Apache License 2.0*
-
-
-## ModelAndView
 
 In Java Spring, ModelAndView is a class that represents both a model and a view for a web application. It is typically used in the context of Spring MVC (Model-View-Controller) to handle web requests and provide a way to pass data to a view template for rendering.
 

@@ -8,11 +8,7 @@ slug: "copilotstudiobctools"
 image: "/assets/images/posts-meta.svg"
 ---
 
-# Copilot Studio Agent Tools
-## Connected to Business Central
 
-![](/assets/images/createactionbasedonaflow/dynamics365-color.svg)
-*By Microsoft, Public Domain*
 
 I created a Copilot Studio Agent that connected to Business Central using a Copilot Studio Tool.
 

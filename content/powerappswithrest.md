@@ -8,12 +8,7 @@ slug: "powerappswithrest"
 image: "/assets/images/office-365-icon-500x500.png"
 ---
 
-# A Power Apps Custom Connector
 
-## Connect a Power Apps Canvas App to a REST API Service using a Custom Connector.
-
-![](/assets/images/powerappswithrest/office-365-icon-500x500.png)
-*Microsoft_Office_logo by Microsoft is licensed under CC*
 
 
 Create a GitHub Repository for the REST API code.

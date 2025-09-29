@@ -8,15 +8,7 @@ slug: "lmstudio"
 image: "/assets/images/mediamodifier-design.png"
 ---
 
-# LM Studio
 
-## LM Studio
-
-![](/assets/images/lmstudio/meta-platforms-inc.-logo.svg)
-*By Meta Platforms, Public Domain, Link*
-
-
-## LM Studio
 
 I used LM Studio to test Large Language Models (LLMs) on my laptop.
 

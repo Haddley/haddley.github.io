@@ -9,14 +9,6 @@ hidden: true
 slug: "businesscentralpart26integrationtables"
 ---
 
-# Business Central (Part 26) Integration Tables
-
-## Integration Tables
-
-![](/assets/images/businesscentralpart26integrationtables/dynamics365-color.svg)
-*By Microsoft, Public Domain*
-
-
 ## AL Table Proxy Generator
 
 The AL Table Proxy Generator tool can be used to generate one or more tables for integration with Microsoft Dataverse. When one or more tables are present in Microsoft Dataverse, but not in Dynamics 365 Business Central, the tool can be run to generate integration or proxy tables for the specified table or tables.

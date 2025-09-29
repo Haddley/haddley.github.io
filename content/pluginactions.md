@@ -8,11 +8,6 @@ slug: "pluginactions"
 image: "/assets/images/office-365-icon-500x500.png"
 ---
 
-# Plugin Actions
-
-![](/assets/images/pluginactions/office-365-icon-500x500.png)
-*This file is licensed under the Creative Commons Attribution 4.0 International license.*
-
 
 I created a Plugin Action to add functionality to a copilot. The large language model is being used to establish inputs that will be passed to the Plugin Action and to generate output based on the response provided by the Plugin Action.
 

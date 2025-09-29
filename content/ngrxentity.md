@@ -8,10 +8,6 @@ slug: "ngrxentity"
 image: "/assets/images/ngrx.svg"
 ---
 
-![](/assets/images/ngrxentity/ngrx.svg)
-*This file is licensed under the Creative Commons 4.0.*
-
-
 I extended my haddley-ngrx project to include support for posts.
 
 I used json-server to create a simple api

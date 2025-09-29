@@ -8,10 +8,6 @@ slug: "al-go-pte"
 image: "/assets/images/dynamics365-color.svg"
 ---
 
-![](/assets/images/al-go-pte/dynamics365-color.svg)
-*By Microsoft, Public Domain*
-
-
 You can change Business Central by installing apps that add functionality, change behaviour, or give you access to 3rd party online services.
 
 [AL-Go for GitHub](https://github.com/microsoft/AL-Go) is a set of GitHub templates and actions, which can be used to setup and maintain DevOps processes for your Business Central AL projects

@@ -8,9 +8,6 @@ slug: "hands-on-lab3.1"
 image: "/assets/images/dynamics365-color.svg"
 ---
 
-![](/assets/images/hands-on-lab3.1/dynamics365-color.svg)
-*By Microsoft, Public Domain*
-
 
 **Hands-on-Lab 3.1: Set Up Finance Management**
 

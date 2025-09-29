@@ -8,14 +8,6 @@ slug: "apigateway"
 image: "/assets/images/kubernetes-container-engine.svg"
 ---
 
-## How to publish a collection of microservices using an API Gateway.
-
-![Kubernetes](/assets/images/apigateway/kubernetes-container-engine.svg)
-*Kubernetes (container engine) by Google, Inc. is licensed under CC*
-
-
-## Microservices
-
 Client applications can be configured to connect to services directly. 
 
 Client applications can be configured to connect to services via a gateway.

@@ -8,12 +8,6 @@ slug: "azure-active-directory2"
 image: "/assets/images/azurex70x75.svg"
 ---
 
-## Microsoft Azure Active Directory Authentication.
-
-![](/assets/images/azure-active-directory2/microsoft-azure-logo.svg)
-*Microsoft Azure Logo by Microsoft Corporation is Public Domain*
-
-
 ## Single-page application with login
 
 Quickstart projects make it easier to build applications that connect to Azure Active Directory, Microsoft Graph and other Azure resources.

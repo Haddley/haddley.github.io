@@ -8,8 +8,6 @@ slug: "vendorpostinggroup"
 image: "/assets/images/posts-meta.svg"
 ---
 
-![](/assets/images/vendorpostinggroup/dynamics365-color.svg)
-*By Microsoft, Public Domain*
 
 
 In Microsoft Dynamics 365 Business Central, sub-ledgers are used to manage business operations.

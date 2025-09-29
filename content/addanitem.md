@@ -8,14 +8,6 @@ slug: "addanitem"
 image: "/assets/images/office-365-icon-500x500.png"
 ---
 
-# Add an Item
-
-![](/assets/images/addanitem/office-365-icon-500x500.png)
-*This file is licensed under the Creative Commons Attribution 4.0 International license.*
-
-
-## I used Patch to add a Business Central Item
-
 ![](/assets/images/addanitem/screenshot-2024-02-17-at-1.30.50-pm-1836x617.png)
 *I opened the Business Central Configuration app*
 

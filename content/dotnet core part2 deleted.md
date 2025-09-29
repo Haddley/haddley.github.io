@@ -9,15 +9,7 @@ hidden: true
 slug: "dotnet core part2 deleted"
 ---
 
-# .NET Core (Part 2 deleted)
 
-## Creating a VB.NET Web App using Microsoft's cross-platform framework.
-
-![](/assets/images/dotnet-core-part2-deleted/net-logo.svg)
-*Microsoft Dotnet Logo by Microsoft Corporation is licensed under Creative Commons CC0 1.0 Universal Public Domain Dedication*
-
-
-## Creating a VB.NET Web App project using Dotnet Command Line Interface (CLI) - Sort of
 
 I am able to develop ASP.NET Core applications with the VB.NET language. However, creating a VB.NET ASP.NET Core application is not support by the dotnet command line app.
 

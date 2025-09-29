@@ -9,15 +9,6 @@ slug: "applelogo"
 hidden: true
 ---
 
-# Apple Logo
-
-## Anaconda Setup
-
-![](/assets/images/applelogo/apple-logo-black.svg)
-*This work is in the public domain in the United States because it was published in the United States between 1928 and 1977, inclusive, without a copyright notice.*
-
-
-## Anaconda
 
 Anaconda is a popular open-source distribution of Python specifically tailored for data science, machine learning, and scientific computing.
 

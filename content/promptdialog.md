@@ -9,10 +9,6 @@ image: "/assets/images/posts-meta.svg"
 hidden: false
 ---
 
-## Prompt Dialog (Part 1)
-
-![](/assets/images/promptdialog/dynamics365-color.svg)
-*By Microsoft, Public Domain*
 
 The PromptDialog page serves as the core UI component for a Business Central Copilot, enabling users to evaluate and refine AI-generated outputs within a structured, guided workflow. This page type orchestrates an intuitive, end-to-end experience where:
 

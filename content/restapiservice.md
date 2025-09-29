@@ -8,11 +8,6 @@ slug: "restapiservice"
 image: "/assets/images/fve-image.svg"
 ---
 
-## Creating a REST API Service using Node and Express
-
-![Swagger Logo by Fehguy is licensed under CC](/assets/images/restapiservice/fve-image.svg)
-*Swagger Logo by Fehguy is licensed under CC*
-
 
 ## HTTP Methods/Verbs
 

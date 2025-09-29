@@ -9,15 +9,7 @@ hidden: true
 slug: "customercontentvirtualtables"
 ---
 
-# Customer Content Virtual Tables
 
-## Customer Content Virtual Tables
-
-![](/assets/images/customercontentvirtualtables/office-365-icon-500x500.png)
-*This file is licensed under the Creative Commons Attribution 4.0 International license.*
-
-
-## Customer Content Virtual Tables
 
 I created two related Business Central tables and connected to them as Power Platform Dataverse Virtual Tables.
 

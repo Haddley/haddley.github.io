@@ -8,13 +8,6 @@ slug: "amazoneks"
 image: "/assets/images/amazon-web-services-logo.svg"
 ---
 
-# Amazon Elastic Kubernetes Service
-
-## Deploying to Amazon EKS
-
-![AWS](/assets/images/amazoneks/amazon-web-services-logo.svg)
-*By Amazon.com Inc. - Amazon, Apache License 2.0*
-
 
 Amazon Elastic Kubernetes Service (Amazon EKS) makes it possible to deploy, manage, and scale [containerized](docker.html) applications using [Kubernetes](kubernetes.html) on AWS. 
 

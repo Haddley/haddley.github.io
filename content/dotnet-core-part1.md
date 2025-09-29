@@ -8,13 +8,7 @@ slug: "dotnet-core-part1"
 image: "/assets/images/net-logo.svg"
 ---
 
-## Creating a REST API Service using Microsoft's cross-platform framework.
 
-![](/assets/images/dotnet-core-part1/net-logo.svg)
-*Microsoft Dotnet Logo by Microsoft Corporation is licensed under Creative Commons CC0 1.0 Universal Public Domain Dedication*
-
-
-## Creating a REST project using Dotnet Command Line Interface (CLI)
 
 $ dotnet new webapi
 $ dotnet new gitignore

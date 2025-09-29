@@ -8,10 +8,6 @@ slug: "staticwebapp.config.json"
 image: "/assets/images/azurex70x75.svg"
 ---
 
-# staticwebapp.config.json
-
-![](/assets/images/staticwebapp.config.json/azurex70x75.svg)
-*Microsoft Azure Logo by Microsoft Corporation is Public Domain*
 
 
 The "auth" section of the staticwebapp.config.json can be used to configure access to a static web app.

@@ -8,11 +8,6 @@ slug: "modeldriven4"
 image: "/assets/images/office-365-icon-500x500.png"
 ---
 
-![](/assets/images/modeldriven4/office-365-icon-500x500.png)
-*This file is licensed under the Creative Commons Attribution 4.0 International license.*
-
-
-## Power FX
 
 Power FX is a domain-specific programming language developed by Microsoft for creating custom expressions and formulas in various Microsoft products and services, primarily within the Power Platform ecosystem. The Power Platform includes tools like Power Apps, Power Automate (formerly known as Microsoft Flow), Power BI, and Power Virtual Agents. Power FX is designed to be a low-code language, which means it is designed to be user-friendly and accessible to people with limited programming experience.
 

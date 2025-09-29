@@ -9,12 +9,6 @@ hidden: true
 slug: "electron"
 ---
 
-# Electron
-
-## Create a Desktop app using Node and Chromium.
-
-![Electron](/assets/images/electron/1200px-electron-software-framework-logo.svg-1200x1200.png)
-*Electron Software Framework Logo by GitHub is licensed under CC*
 
 
 ## Advantages

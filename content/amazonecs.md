@@ -8,14 +8,6 @@ slug: "amazonecs"
 image: "/assets/images/amazonecs/amazon-web-services-logo.svg"
 ---
 
-## Deploying to Amazon ECS
-
-![AWS](/assets/images/amazonecs/amazon-web-services-logo.svg)
-*By Amazon.com Inc. - Amazon, Apache License 2.0*
-
-
-## Amazon Elastic Kubernetes Service (Amazon EKS)
-
 Amazon Elastic Kubernetes Service (Amazon EKS) makes it possible to deploy, manage, and scale [containerized](docker.html) applications using [Kubernetes](kubernetes.html) on AWS. 
 
 https://logz.io/blog/aws-eks-vs-ecs-vs-fargate-understand-differences/

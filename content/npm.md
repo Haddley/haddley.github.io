@@ -8,11 +8,6 @@ slug: "npm"
 image: "/assets/images/6078720-200x200.png"
 ---
 
-## Create and publish an npm module using JavaScript.
-
-![](/assets/images/npm/6078720-200x200.png)
-*Font_Awesome_5_brands_npm by Font Awesome is licensed under CC*
-
 
 ## Recursion
 

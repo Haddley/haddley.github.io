@@ -8,13 +8,6 @@ slug: "promptflow2"
 image: "/assets/images/logo.svg"
 ---
 
-## Docker
-
-![](/assets/images/promptflow2/logo.svg)
-*This file is licensed under the MIT license.*
-
-
-## Docker
 
 I used Prompt flow for Visual Studio Code to create and run a flow in a Docker container
 

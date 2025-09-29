@@ -8,12 +8,6 @@ slug: "blogcopilotstudio"
 image: "/assets/images/posts-meta.svg"
 ---
 
-# Blog Copilot Studio
-
-## Blog Copilot
-
-![](/assets/images/blogcopilotstudio/dynamics365-color.svg)
-*By Microsoft, Public Domain*
 
 
 I created a Business Central extension that allows Business Central users to "chat to" [this blog](https://haddley.github.io).

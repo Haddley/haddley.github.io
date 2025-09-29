@@ -8,15 +8,7 @@ slug: "stablediffusion"
 image: "/assets/images/jupyter.svg"
 ---
 
-# Stable Diffusion
 
-## Stable Diffusion
-
-![](/assets/images/stablediffusion/jupyter.svg)
-*Cameron Oelsen, BSD, via Wikimedia Commons*
-
-
-## Stable Diffusion
 
 Stable Diffusion is a deep learning, text-to-image model released in 2022 based on diffusion techniques. It is primarily used to generate detailed images conditioned on text descriptions.
 

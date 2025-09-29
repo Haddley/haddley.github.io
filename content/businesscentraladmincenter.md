@@ -8,11 +8,6 @@ slug: "businesscentraladmincenter"
 image: "/assets/images/dynamics365-color.svg"
 ---
 
-# Business Central Admin Center
-
-![](/assets/images/businesscentraladmincenter/dynamics365-color.svg)
-*By Microsoft, Public Domain*
-
 
 The Business Central Administration Center (Admin Center) provides a portal for tenant administration.
 

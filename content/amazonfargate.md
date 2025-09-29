@@ -8,13 +8,6 @@ slug: "amazonfargate"
 image: "/assets/images/amazonfargate/amazon-web-services-logo.svg"
 ---
 
-#Amazon Fargate
-
-## Pay-as-you-go
-
-![AWS](/assets/images/amazonfargate/amazon-web-services-logo.svg)
-*By Amazon.com Inc. - Amazon, Apache License 2.0*
-
 AWS Fargate is a serverless, pay-as-you-go compute engine that simplifies running containers on Amazon Elastic Container Service (ECS) and Amazon Elastic Kubernetes Service (EKS)
 
 Amazon Elastic Kubernetes Service (Amazon EKS) makes it possible to deploy, manage, and scale [containerized](docker.html) applications using [Kubernetes](kubernetes.html) on AWS. 

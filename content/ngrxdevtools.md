@@ -8,9 +8,6 @@ slug: "ngrxdevtools"
 image: "/assets/images/ngrx.svg"
 ---
 
-![](/assets/images/ngrxdevtools/ngrx.svg)
-*This file is licensed under the Creative Commons 4.0.*
-
 
 I updated the version of @angular and @ngrx using in the haddley-ngrx project
 

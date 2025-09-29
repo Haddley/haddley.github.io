@@ -8,13 +8,6 @@ slug: "pwa"
 image: "/assets/images/progressive-web-apps-logo.svg"
 ---
 
-## Building a Progressive Web Application
-
-![](/assets/images/pwa/progressive-web-apps-logo.svg)
-*Progressive Web Apps Logo by Diego González-Zúñiga is licensed under CC*
-
-
-## Start a project
 
 Create a GitHub project/repository.
 

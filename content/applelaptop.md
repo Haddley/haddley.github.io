@@ -8,16 +8,6 @@ slug: "applelaptop"
 image: "/assets/images/jupyter.svg"
 ---
 
-# Apple MacBook
-
-## Anaconda Setup
-
-![](/assets/images/applelaptop/jupyter.svg)
-*Cameron Oelsen, BSD, via Wikimedia Commons*
-
-
-## Anaconda
-
 Anaconda is a popular open-source distribution of Python specifically tailored for data science, machine learning, and scientific computing.
 
 Anaconda incorporates a package manager (Conda) and the Jupyter Notebook/Jupyter Lab development environments.

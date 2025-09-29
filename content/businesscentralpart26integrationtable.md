@@ -8,10 +8,6 @@ slug: "businesscentralpart26integrationtable"
 image: "/assets/images/posts-meta.svg"
 ---
 
-# Business Central (Part 26) Integration Tables
-
-![](/assets/images/businesscentralpart26integrationtable/dynamics365-color.svg)
-*By Microsoft, Public Domain*
 
 
 In Dynamics 365 Business Central, an Integration Table is a specialized table used to facilitate the exchange of data between Business Central and external systems or services. These tables are often used in integration scenarios, such as connecting with Dynamics 365 Sales (CRM), Power Platform, or other third-party applications.

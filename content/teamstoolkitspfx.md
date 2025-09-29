@@ -8,10 +8,6 @@ slug: "teamstoolkitspfx"
 image: "/assets/images/teams-hi-res-icon-2019.svg"
 ---
 
-## Get started with Microsoft Teams app development using SPFx.
-
-![](/assets/images/teamstoolkitspfx/teams-hi-res-icon-2019.svg)
-*Teams hi-res icon (2019) by Microsoft Corporation is Public Domain*
 
 
 ## Visual Studio Extension

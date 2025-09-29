@@ -9,15 +9,6 @@ hidden: true
 slug: "configurecopilotwithauthentication"
 ---
 
-# Configure Copilot with authentication
-
-## Configure Copilot with authentication
-
-![](/assets/images/configurecopilotwithauthentication/office-365-icon-500x500.png)
-*This file is licensed under the Creative Commons Attribution 4.0 International license.*
-
-
-## Configure Copilot with authentication
 
 Microsoft Copilot Studio supports Azure Active Directory (aad) authentication.
 

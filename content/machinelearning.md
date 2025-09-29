@@ -9,12 +9,6 @@ hidden: true
 slug: "machinelearning"
 ---
 
-# Machine Learning
-
-## Finding patterns and making predictions
-
-![](/assets/images/machinelearning/tensorflow-logo.svg)
-*Tensorflow logo does not meet the threshold of originality needed for copyright protection, and is therefore in the public domain*
 
 
 ## What is Machine Learning?

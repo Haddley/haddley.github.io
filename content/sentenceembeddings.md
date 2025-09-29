@@ -9,15 +9,7 @@ hidden: true
 slug: "sentenceembeddings"
 ---
 
-# Sentence Embeddings
 
-## Sentence Embeddings
-
-![](/assets/images/sentenceembeddings/chatgpt-logo.svg)
-*This image of simple geometry is ineligible for copyright and therefore in the public domain, because it consists entirely of information that is common property and contains no original authorship.*
-
-
-## Sentence Embeddings
 
 **ChatGPT: What are Sentence Embeddings?**
 

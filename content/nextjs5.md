@@ -8,11 +8,6 @@ slug: "nextjs5"
 image: "/assets/images/2560px-nextjs-logo.svg-1536x920.png"
 ---
 
-## next-pwa and ionic
-
-![AWS](/assets/images/nextjs5/2560px-nextjs-logo.svg-1536x920.png)
-*This file is licensed under the Creative Commons Attribution-Share Alike 4.0 International license.*
-
 
 ## next-pwa
 

@@ -8,10 +8,6 @@ slug: "ashorthistory"
 image: "/assets/images/dynamics365-color.svg"
 ---
 
-![](/assets/images/ashorthistory/dynamics365-color.svg)
-*By Microsoft, Public Domain*
-
-
 **In December** **2000 Microsoft announced plans to purchase Great Plains.**
 
 Great Plains Software was an accounting software company located in Fargo, North Dakota, whose products focused on small to medium-sized businesses.

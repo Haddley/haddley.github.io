@@ -8,15 +8,7 @@ slug: "langchainagents"
 image: "/assets/images/langchain.svg"
 ---
 
-# LangChain Agents
 
-## Agents
-
-![](/assets/images/langchainagents/langchain.svg)
-*This file is licensed under the Creative Commons Attribution-Share Alike 4.0 International license.*
-
-
-## Agents
 
 Agents are systems that use LLMs as reasoning engines to determine which actions to take and the inputs to pass them. After executing actions, the results can be fed back into the LLM to determine whether more actions are needed, or whether it is okay to finish.
 

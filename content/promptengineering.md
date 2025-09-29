@@ -8,12 +8,7 @@ slug: "promptengineering"
 image: "/assets/images/mediamodifier-design.png"
 ---
 
-# Prompt Engineering
 
-## Prompt Engineering
-
-![](/assets/images/promptengineering/meta-platforms-inc.-logo.svg)
-*By Meta Platforms, Public Domain, Link*
 
 There are a few different parts of a prompt that you will see over and over again. They are roughly:
 	•	A role

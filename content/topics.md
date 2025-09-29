@@ -8,12 +8,6 @@ slug: "topics"
 image: "/assets/images/office-365-icon-500x500.png"
 ---
 
-# Copilot
-
-## Topics
-
-![](/assets/images/topics/office-365-icon-500x500.png)
-*This file is licensed under the Creative Commons Attribution 4.0 International license.*
 
 
 I created a Topic that used the Business Central Connector to retrieve the list of Companies created on my Production Business Server environment.

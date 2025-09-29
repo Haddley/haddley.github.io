@@ -8,13 +8,7 @@ slug: "vbnetwinforms"
 image: "/assets/images/net-logo.svg"
 ---
 
-## VB.NET WinForms Development
 
-![](/assets/images/vbnetwinforms/net-logo.svg)
-*Microsoft Dotnet Logo by Microsoft Corporation is licensed under Creative Commons CC0 1.0 Universal Public Domain Dedication*
-
-
-## ChatGPT
 
 **How do I create a VB.NET Forms app connected to an ASP.NET Core API?**
 

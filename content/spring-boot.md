@@ -8,14 +8,6 @@ slug: "spring-boot"
 image: "/assets/images/spring-framework-logo-70-no.svg"
 ---
 
-# Java Spring Boot (Part 1)
-
-## Spring based Java Applications that you can "just run".
-
-![](/assets/images/spring-boot/spring-framework-logo-2018.svg)
-*Spring Framework logo by Pivotal Software is licensed under Apache License 2.0*
-
-
 ## Spring Tool Suite
 
 Spring Tool Suite is an Integrated Development Environment based on Eclipse.

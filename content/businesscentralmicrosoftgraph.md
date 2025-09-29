@@ -8,12 +8,7 @@ slug: "businesscentralmicrosoftgraph"
 image: "/assets/images/posts-meta.svg"
 ---
 
-# Business Central Microsoft Graph
 
-## Financials
-
-![](/assets/images/businesscentralmicrosoftgraph/dynamics365-color.svg)
-*By Microsoft, Public Domain*
 
 
 [Microsoft Graph](MicrosoftGraph.html) can be used to develop applications that securely access and integrate with the data stored in Microsoft Dynamics 365 Business Central.

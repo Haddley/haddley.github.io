@@ -8,11 +8,6 @@ slug: "sails3"
 image: "/assets/images/sailsjs-logo-515x193.png"
 ---
 
-## Sails and the Amazon Elastic Kubernetes Service
-
-![AWS](/assets/images/sails3/sailsjs-logo-515x193.png)
-*By http://sailsjs.com/ Fair use*
-
 
 ## Dockerfile
 

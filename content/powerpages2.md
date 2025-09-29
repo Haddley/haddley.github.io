@@ -8,11 +8,6 @@ slug: "powerpages2"
 image: "/assets/images/powerpages-scalable.svg"
 ---
 
-# Power Pages (Part 2)
-## View, create, and edit orders
-
-![](/assets/images/powerpages2/powerpages-scalable.svg)
-*Microsoft permits the use of these icons in architectural diagrams, training materials, or documentation.*
 
 
 Customer Orders may be handled directly by customers using a self-service Customer Portal.

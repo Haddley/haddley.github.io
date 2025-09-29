@@ -8,9 +8,6 @@ slug: "powerapps6"
 image: "/assets/images/office-365-icon-500x500.png"
 ---
 
-![](/assets/images/powerapps6/office-365-icon-500x500.png)
-*This file is licensed under the Creative Commons Attribution 4.0 International license.*
-
 
 I started by creating a "Microsoft Graph" application registration in Azure Active Directory
 

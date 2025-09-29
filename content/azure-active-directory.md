@@ -8,12 +8,6 @@ slug: "azure-active-directory"
 image: "/assets/images/azurex70x75.svg"
 ---
 
-## Using Microsoft Identity to Authenticate Users.
-
-![](/assets/images/azure-active-directory/microsoft-azure-logo.svg)
-*Microsoft Azure Logo by Microsoft Corporation is Public Domain*
-
-
 ## Microsoft Teams
 
 Microsoft Office 365 applications including Microsoft SharePoint and Microsoft Teams use Azure Active Directory to authenticate users .

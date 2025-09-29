@@ -9,15 +9,7 @@ hidden: true
 slug: "hubspotquotetemplate"
 ---
 
-# HubSpot Quote Template
 
-## Quote Template
-
-![](/assets/images/hubspotquotetemplate/guidelines-the-sprocket.svg)
-*HUBSPOT TRADEMARK USAGE GUIDELINES*
-
-
-## Quote Template
 
 I created a custom quote template in HubSpot.
 

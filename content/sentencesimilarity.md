@@ -8,15 +8,8 @@ slug: "sentencesimilarity"
 image: "/assets/images/chatgpt-logo.svg"
 ---
 
-# Sentence Similarity
-
-## Sentence Similarity
-
-![](/assets/images/sentencesimilarity/chatgpt-logo.svg)
-*This image of simple geometry is ineligible for copyright and therefore in the public domain, because it consists entirely of information that is common property and contains no original authorship.*
 
 
-## What is Sentence Similarity?
 
 **ChatGPT What is Sentence Similarity?**
 

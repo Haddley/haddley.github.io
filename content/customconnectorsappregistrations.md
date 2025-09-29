@@ -8,12 +8,6 @@ slug: "customconnectorsappregistrations"
 image: "/assets/images/office-365-icon-500x500.png"
 ---
 
-# Power Apps, Custom Connectors and Application Registrations
-
-## Power Apps, Custom Connectors and Application Registrations
-
-![](/assets/images/customconnectorsappregistrations/office-365-icon-500x500.png)
-*Microsoft_Office_logo by Microsoft is licensed under CC*
 
 
 ## Creating a Custom Connector

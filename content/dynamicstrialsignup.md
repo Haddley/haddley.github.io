@@ -8,10 +8,6 @@ slug: "dynamicstrialsignup"
 image: "/assets/images/dynamics365-color.svg"
 ---
 
-# Dynamics Trial Signup
-
-![](/assets/images/dynamicstrialsignup/dynamics365-color.svg)
-*By Microsoft, Public Domain*
 
 
 I created a littleburra.onmicrosoft.com tenant

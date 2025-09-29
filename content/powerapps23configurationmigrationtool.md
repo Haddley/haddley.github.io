@@ -8,11 +8,6 @@ slug: "powerapps23configurationmigrationtool"
 image: "/assets/images/office-365-icon-500x500.png"
 ---
 
-# Power Apps (Part 23)
-## The Configuration Migration tool
-
-![](/assets/images/powerapps23configurationmigrationtool/office-365-icon-500x500.png)
-*This file is licensed under the Creative Commons Attribution 4.0 International license.*
 
 
 The Configuration Migration tool is used to transport configuration and data from one environment to another.

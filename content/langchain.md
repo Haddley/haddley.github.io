@@ -8,12 +8,6 @@ slug: "langchain"
 image: "/assets/images/chatgpt-logo.svg"
 ---
 
-# LangChain (RAG)
-
-## Using LangChain to create a medical report application
-
-![](/assets/images/langchain/chatgpt-logo.svg)
-*This image of simple geometry is ineligible for copyright and therefore in the public domain, because it consists entirely of information that is common property and contains no original authorship.*
 
 
 LangChain is a framework built around Large Language Models. 

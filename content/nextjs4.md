@@ -8,11 +8,6 @@ slug: "nextjs4"
 image: "/assets/images/2560px-nextjs-logo.svg-1536x920.png"
 ---
 
-## Deploying to Azure
-
-![AWS](/assets/images/nextjs4/2560px-nextjs-logo.svg-1536x920.png)
-*This file is licensed under the Creative Commons Attribution-Share Alike 4.0 International license.*
-
 
 ## Deploying a Next.js site to Azure
 
