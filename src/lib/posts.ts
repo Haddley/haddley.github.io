@@ -1756,7 +1756,7 @@ async function fetchAllPosts(): Promise<BlogPost[]> {
     image: post.image,
     hidden: post.hidden
   }));
-  console.log(`Fetched ${mapped.length} posts from markdown frontmatter`);
+  // console.log(`Fetched ${mapped.length} posts from markdown frontmatter`);
   // Sort posts by date in descending order
   mapped.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()); 
 
@@ -1791,9 +1791,9 @@ export async function getPostById(slug: string): Promise<BlogPost | undefined> {
 export async function getVisibleBlogPosts(): Promise<BlogPost[]> {
   const posts = await fetchAllPosts();
   const visiblePosts = posts.filter(post => !post.hidden);
-  console.log(`Filtered to ${visiblePosts.length} visible posts`);
-  console.log(visiblePosts.map(post => post.slug).join(', '));
-  console.log(visiblePosts);
+  // console.log(`Filtered to ${visiblePosts.length} visible posts`);
+  // console.log(visiblePosts.map(post => post.slug).join(', '));
+  // console.log(visiblePosts);
   return visiblePosts;
 }
 
