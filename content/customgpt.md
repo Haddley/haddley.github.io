@@ -8,67 +8,50 @@ slug: "customgpt"
 image: "/assets/images/chatgpt-logo.svg"
 ---
 
+In November 2023 OpenAI introduced "GPTs" - custom versions of ChatGPT that I could create for specific purposes without needing to code.
 
-In November 2023, OpenAI introduced "GPTs". These are custom versions of ChatGPT that you can create for a specific purpose without needing to code.
-
-Purpose: They allow you to tailor ChatGPT for a specific task, such as learning the rules of a board game, teaching math, or providing creative design help. You can upload your own files (like documents or databases) to give the GPT specialized knowledge.
-
-Availability: The ability to create a GPT is available to subscribers of ChatGPT Plus and higher-tier plans.
+To get started, I needed a ChatGPT Plus subscription.
 
 ![](/assets/images/customgpt/Screenshot%202025-10-03%20at%208.00.46 AM.png)
-*Prebuilt GPTs*
-
+*I explored the prebuilt GPTs available*
 
 ![](/assets/images/customgpt/Screenshot%202025-10-03%20at%208.04.16 AM.png)
-*Recommended plan*
+*I chose the recommended plan for Plus subscribers*
 
 ![](/assets/images/customgpt/Screenshot%202025-10-03%20at%208.05.44 AM.png)
-*I entered my credit card details*
-
+*I entered my credit card details to upgrade*
 
 ![](/assets/images/customgpt/Screenshot%202025-10-03%20at%208.07.28 AM.png)
-*I can cancel at any time*
+*I confirmed I can cancel at any time*
 
 ![](/assets/images/customgpt/Screenshot%202025-10-03%20at%208.08.16 AM.png)
-*I clicked the Not now button*
+*I clicked "Not now" to skip additional setup*
 
+## How I Created My Research GPT
 
-
-## How to Create A Research GPT
-
-Here is how I built a custom GPT using the GPT Builder:
-
+Here's how I built my custom GPT using the GPT Builder. I wanted to create something that could help me with B2B sales research for my SaaS ERP business.
 
 ![](/assets/images/customgpt/Screenshot%202025-10-03%20at%209.51.06 AM.png)
-*I selected the GPTs | Explore menu item. I clicked Create button*
+*I selected the GPTs menu and clicked Create*
 
 ![](/assets/images/customgpt/Screenshot%202025-10-03%20at%208.08.53 AM.png)
-*I clicked the Configure tab*
+*I clicked the Configure tab to start customizing*
 
+## How I Crafted Effective Instructions
 
-
-
-
-## Crafting Effective Instructions
-
-The "Instructions" in the "Configure" tab are vital for getting high-quality research. For your company research GPT, consider including directives like:
+I spent a lot of time on the "Instructions" section in the Configure tab - this is crucial for getting high-quality results. For my company research GPT, I included directives like:
 
 "Always structure your analysis to first cover the company's business model, then key financial indicators, recent strategic moves, and finally, potential risks."
 "When presenting information, cite your sources where possible, especially when using web browsing."
 "Ask me clarifying questions if you need more context to provide a more targeted analysis."
-I hope this guide helps you create a powerful tool for your prospecting work. Remember that the quality of the GPT's output depends heavily on the clarity of your instructions and prompts.
 
-If you have a specific industry or company size in mind, I can offer more tailored suggestions for your research prompts.
-
-
-
-## Instructions
+## My GPT Instructions
 
 **Role:**
 You are an expert B2B sales intelligence analyst specializing in SaaS and ERP solutions for medium-sized businesses. Your core function is to analyze company websites and provide detailed, actionable prospect research reports.
 
 **Instruction:**
-When provided with a company website URL, you must generate a comprehensive research report. The report should synthesize information to build a complete picture of the prospect and identify potential pain points your ERP can solve.
+When provided with a company website URL, you must generate a comprehensive research report. The report should synthesize information to build a complete picture of the prospect and identify potential pain points my ERP can solve.
 
 **Key Research Areas & Report Outline:**
 Your report MUST be structured using the following sections:
@@ -84,133 +67,110 @@ Your report MUST be structured using the following sections:
 - **Honesty:** If there is insufficient information on the website to make a reasonable inference for a section, state this clearly rather than guessing.
 - **Format:** Present the final report in a clear, well-structured format with distinct headings for each section.
 
-**Specifics (Your Context):**
+**Specifics (My Context):**
 - **My Product:** I sell a Software-as-a-Service (SaaS) Enterprise Resource Planning (ERP) product.
 - **My Target Market:** I sell to medium-sized companies, which I define as having approximately $2 million in turnover.
 - **My Goal:** To quickly understand a prospect's business and pain points to initiate a relevant and valuable sales conversation.
 
-
-
 ![](/assets/images/customgpt/Screenshot%202025-10-03%20at%208.13.49 AM.png)
-*I add the set of Instructions*
+*I added the detailed set of instructions*
 
 ![](/assets/images/customgpt/Screenshot%202025-10-03%20at%208.18.34 AM.png)
-*I entered a name and a description*
+*I entered a name and description for my GPT*
 
 ![](/assets/images/customgpt/Screenshot%202025-10-03%20at%208.19.17 AM.png)
-*I selected the Anyone with the link sharing option*
-
+*I selected "Anyone with the link" for sharing*
 
 ![](/assets/images/customgpt/Screenshot%202025-10-03%20at%208.19.42 AM.png)
-*I copied the link https://chatgpt.com/g/g-68def7e5ca1081919fc1558d8fb84e6b-saas-erp-prospect-analyst*
+*I copied the shareable link: https://chatgpt.com/g/g-68def7e5ca1081919fc1558d8fb84e6b-saas-erp-prospect-analyst*
 
-## Will I be charged when someone uses my custom GPT?
+## Will I Be Charged When Someone Uses My Custom GPT?
 
-No, you will not be charged if someone else uses a custom GPT you created and shared via a link. The usage costs are covered by the subscription of the person using it, not the creator.
+I was curious about the costs. I learned that I won't be charged if someone else uses my custom GPT that I shared via a link. The usage costs are covered by the subscription of the person using it, not me as the creator.
 
-However, there is a key limitation you should be aware of: the person you share the link with must also be a ChatGPT Plus subscriber to use your custom GPT .
+However, there's an important limitation: the person I share the link with must also be a ChatGPT Plus subscriber to use my custom GPT.
 
-## What You Need to Know About Sharing Custom GPTs
+## What I Learned About Sharing Custom GPTs
 
-The table below summarizes the key points about sharing and using custom GPTs:
+Here's what I discovered about sharing and using custom GPTs:
 
-| Aspect | Explanation |
+| Aspect | What I Found |
 | :--- | :--- |
-| **Who Pays for Usage?** | The **user** accessing the GPT. The creator is not charged for others' use . |
-| **Who Can Use a Shared GPT?** | Only users with an active **ChatGPT Plus** subscription . |
-| **Key Limitation** | You cannot share your GPT with users on the free plan; they will be prompted to upgrade . |
+| **Who Pays for Usage?** | The **user** accessing the GPT. I'm not charged for others' use. |
+| **Who Can Use a Shared GPT?** | Only users with an active **ChatGPT Plus** subscription. |
+| **Key Limitation** | I cannot share my GPT with users on the free plan; they will be prompted to upgrade. |
 
 ![](/assets/images/customgpt/Screenshot%202025-10-03%20at%208.23.40 AM.png)
-*I used the link to navigate to the custom GPT*
+*I used the link to navigate to my custom GPT*
 
 ![](/assets/images/customgpt/Screenshot%202025-10-03%20at%208.23.58 AM.png)
-*I tested the custom GPT with a simple prompt: please provide a report for Sigma https://www.sigma-alimentos.com/en/*
+*I tested my custom GPT with a simple prompt: "please provide a report for Sigma https://www.sigma-alimentos.com/en/"*
 
-You can add these directly to the "Conversation starters" field in the Configure tab of your GPT Builder.
+## My GPTs Conversation Starters
 
-1. Core Analysis & Reporting
+I added these conversation starters to make my GPT easier to use. You can add them directly to the "Conversation starters" field in the Configure tab of your GPT Builder.
+
+1. **Core Analysis & Reporting**
 
 "Analyze the company at [paste URL] and provide a full prospect report."
 
-Why it's good: This is your "one-click" comprehensive analysis. It triggers the full research process you designed the GPT for.
+I use this for comprehensive analysis - it's my "one-click" option that triggers the full research process.
+
 "Summarize the business model and key operations for [Company Name]."
 
-Why it's good: A quicker, more focused request for when you just need a high-level understanding before diving deeper.
-2. Identifying Pain Points & Opportunities
+This gives me a quicker overview when I just need high-level understanding.
+
+2. **Identifying Pain Points & Opportunities**
 
 "Based on their website, what are the top 3 potential operational pain points for [paste URL]?"
 
-Why it's good: It forces the GPT to synthesize and prioritize, giving you direct ammunition for sales conversations.
+This helps me get direct insights for sales conversations.
+
 "What signs of growth or scaling challenges can you infer from [paste URL]?"
 
-Why it's good: This directly connects the prospect's situation to the core value of a scalable SaaS ERP.
-3. Stakeholder Mapping & Outreach Strategy
+This connects the prospect's situation to the value of my scalable SaaS ERP.
+
+3. **Stakeholder Mapping & Outreach Strategy**
 
 "Who are the likely decision-makers for an ERP at [paste URL]? Map the stakeholders."
 
-Why it's good: It focuses the GPT on the crucial "who" of the sales process, helping you tailor your outreach.
+This focuses on the crucial "who" of the sales process.
+
 "Create a personalized outreach hook for [Company Name] based on their recent news/mission."
 
-Why it's good: This generates actionable, personalized content for your first email or call, saving you time and increasing relevance.
-4. Technical & Qualification Check
+This generates personalized content for my first outreach.
+
+4. **Technical & Qualification Check**
 
 "What does the tech stack/careers page at [paste URL] suggest about their IT maturity?"
 
-Why it's good: This is a more advanced starter that can help you gauge how easy or difficult an integration might be and what their technical priorities are.
-💡 How to Add Them to Your GPT
+This helps me gauge integration difficulty and technical priorities.
 
-Go to the GPT Builder and select your "SaaS ERP Prospect Analyst" GPT.
-Click on the Configure tab.
-Scroll down to the Conversation starters section.
-Paste or type each of the starters you find most useful from the list above.
-Click Save.
+💡 **How I Added Them to My GPT**
+
+I went to the GPT Builder and selected my "SaaS ERP Prospect Analyst" GPT.
+I clicked on the Configure tab.
+I scrolled down to the Conversation starters section.
+I pasted the most useful starters from my list.
+I clicked Save.
 
 ![](/assets/images/customgpt/Screenshot%202025-10-03%20at%208.59.29 AM.png)
-*I added a few Conversation starters*
+*I added a few conversation starters*
 
 ![](/assets/images/customgpt/Screenshot%202025-10-03%20at%2010.00.04 AM.png)
-*I used the link to access the custom GPT. I selected a conversation starter*
+*I used the link to access my custom GPT and selected a conversation starter*
 
 ![](/assets/images/customgpt/Screenshot%202025-10-03%20at%2010.01.11 AM.png)
-*I entered a prospect web site address (url)*
+*I entered a prospect website address (URL)*
 
 ![](/assets/images/customgpt/Screenshot%202025-10-03%20at%2010.01.58 AM.png)
-*I reviewed the report*
+*I reviewed the generated report*
 
 ## Alternative Paths for Broader Sharing
 
-If you need to share your custom GPT with users who do not have a ChatGPT Plus subscription, the current built-in sharing feature won't work. Community discussions point to a more technical solution :
+If you need to share your custom GPT with users who don't have ChatGPT Plus, the built-in sharing won't work. I found that community discussions suggest using the OpenAI API to rebuild your GPT's functionality as an AI Assistant. You would host it on your own server and pay for usage through your API account, making it accessible to anyone.
 
-Use the OpenAI API: You can rebuild your GPT's functionality as an AI Assistant using the OpenAI API. You would then host it on your own server or website and pay for usage through your API account, making it accessible to anyone .
-This approach requires more technical effort and shifts the cost responsibility to you as the developer, but it removes the subscriber barrier for your audience.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+This approach requires more technical work and shifts costs to you as the developer, but removes the subscription barrier.
 
 ## References
 
