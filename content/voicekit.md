@@ -24,7 +24,9 @@ I built a  natural language recognizer connected it to the Google Assistant
 *Image flashed to MicroSD Card*
 
 ![](/assets/images/voicekit/Screenshot%202025-10-11%20at%205.09.53 PM.png)
-*[I enabled xrdp and connected to pi remotely](https://haddley.github.io/posts/pi1/)*
+*I enabled xrdp and connected to pi remotely*
+
+
 
 Notice that I had to run "apt-get --allow-releaseinfo-change update" to update the Buster image.
 
@@ -96,3 +98,4 @@ if __name__ == '__main__':
 ## References
 
 - [AIY](https://aiyprojects.withgoogle.com/voice-v1/)
+- [xrdp](https://haddley.github.io/posts/pi1/)
