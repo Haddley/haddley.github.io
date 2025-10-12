@@ -9,7 +9,7 @@ image: "/assets/images/raspberry-pi-logo.svg"
 ---
 
 
-I built a  natural language recognizer connected it to the Google Assistant
+I built a  natural language recognizer and connected it to the Google Assistant
 
 ![](/assets/images/voicekit/C059C37E-B731-4377-8891-9C68A72568CB.png)
 *Raspberry Pi Hat*
