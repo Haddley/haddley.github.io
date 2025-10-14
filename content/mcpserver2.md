@@ -6,7 +6,7 @@ categories: ["Microsoft Dynamics","Business Central","TypeScript","DevOps"]
 tags: []
 image: "/assets/images/mcpserver2/mcp-1024x1024.png"
 slug: "mcpserver2"
-hidden: true
+hidden: false
 ---
 
 
