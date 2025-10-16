@@ -313,7 +313,7 @@ export default function MobiriseContentRenderer({ markdownContent }: MobiriseCon
                 <div className="container">
                   <div className="row justify-content-center">
                     <div className="col-md-12 col-lg-10">
-                      <h5 className="mbr-section-subtitle mbr-fonts-style mb-4 display-7">
+                      <h5 className="mbr-section-subtitle mbr-fonts-style mb-4 display-7 fw-bold">
                         {section.content}
                       </h5>
                     </div>
