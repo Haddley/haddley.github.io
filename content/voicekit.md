@@ -9,7 +9,7 @@ image: "/assets/images/raspberry-pi-logo.svg"
 ---
 
 
-I built a  natural language recognizer and connected it to the Google Assistant
+The Google AIY Voice Kit is a do-it-yourself version of a Google Home assistant. This kit includes a Raspberry Pi Zero computer, a speaker, a microphone, a button, and a cardboard casing for a hands-on build experience.
 
 ![](/assets/images/voicekit/C059C37E-B731-4377-8891-9C68A72568CB.png)
 *Raspberry Pi Hat*
