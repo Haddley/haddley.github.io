@@ -101,17 +101,17 @@ def main():
 Supported Devices: Raspberry Pi 2/3
 Excluded Devices: Raspberry Pi Zero (requires alternative trigger methods)
 Required Components: AIY Voice Kit with microphone and speaker array
-Operational Characteristics
+
+### Operational Characteristics
 
 Activation Method: Hotword detection ("OK Google")
 Audio Handling: Direct access via Google Assistant Library
 Visual Feedback: Multi-state LED indicators
 Network Dependency: Requires persistent internet connection
-Authentication Notes
+
+### Authentication Notes
 
 The successful implementation relies on proper OAuth configuration with Google Assistant API, achieved through Firefox installation to bypass Chromium compatibility limitations in the standard Raspberry Pi image.
-
-
 
 ## assistant_library_demo.py
 
