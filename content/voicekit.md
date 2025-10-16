@@ -38,7 +38,7 @@ Notice that I had to run "apt-get --allow-releaseinfo-change update" to update t
 
 ## voice_recorder.py
 
-```text
+```python
 #!/usr/bin/env python3
 # Copyright 2017 Google Inc.
 #

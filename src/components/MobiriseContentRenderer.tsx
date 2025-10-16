@@ -307,6 +307,20 @@ export default function MobiriseContentRenderer({ markdownContent }: MobiriseCon
                 </div>
               </section>
             );
+          } else if (section.level === 3) {
+            return (
+              <section key={index} className="content5 cid-content5" data-bs-version="5.1">
+                <div className="container">
+                  <div className="row justify-content-center">
+                    <div className="col-md-12 col-lg-10">
+                      <h5 className="mbr-section-subtitle mbr-fonts-style mb-3 display-7">
+                        {section.content}
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            );
           }
         } else if (section.type === 'text') {
           return (

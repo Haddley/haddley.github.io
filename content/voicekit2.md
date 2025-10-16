@@ -34,54 +34,88 @@ During setup, I encountered issues with the unsupported Chromium version in the 
 [Voice Kit Demo Video](/assets/images/voicekit2/2FAE2E52-F355-4157-8F3E-6DC1A2EFC690.mp4)
 
 
-## Google Assistant with AIY Voice Kit - Implementation Notes
+# Google Assistant with AIY Voice Kit
 
-After successfully connecting the AIY voice device to the Google Assistant API, here's how the activation code works:
+## Project Overview
+Python implementation of a voice-activated Google Assistant using hotword detection ("OK Google") with the AIY Voice Kit hardware.
+
+## Setup Notes
+**Authentication Challenge**: The initial setup encountered browser compatibility issues with the unsupported Chromium version in the Raspberry Pi image. Successfully resolved by installing Firefox to handle the OAuth authentication flow for Google Assistant API integration.
+
+## Code Implementation
+
+### Core Dependencies
+```python
+import logging
+import platform
+import sys
+from google.assistant.library.event import EventType
+from aiy.assistant import auth_helpers
+from aiy.assistant.library import Assistant
+from aiy.board import Board, Led
+```
+
+### Event Processing Logic
+The `process_event()` function manages the Assistant's state machine with visual LED feedback:
+
+#### State Transitions
+- **Ready State** (`ON_START_FINISHED`)
+  - LED: `BEACON_DARK`
+  - Status: Assistant initialized and awaiting hotword
+
+- **Active Listening** (`ON_CONVERSATION_TURN_STARTED`)
+  - LED: `ON` (solid)
+  - Status: Processing user voice input
+
+- **Processing Query** (`ON_END_OF_UTTERANCE`)
+  - LED: `PULSE_QUICK`
+  - Status: Assistant analyzing and responding to query
+
+- **Completion States**
+  - `ON_CONVERSATION_TURN_FINISHED`
+  - `ON_CONVERSATION_TURN_TIMEOUT`
+  - `ON_NO_RESPONSE`
+  - LED: Returns to `BEACON_DARK`
+
+- **Error Handling** (`ON_ASSISTANT_ERROR`)
+  - Condition: Fatal errors trigger application exit
 
 
+```python
+def main():
+    # Initialize logging system
+    logging.basicConfig(level=logging.INFO)
+    
+    # Authenticate with Google Assistant API
+    credentials = auth_helpers.get_assistant_credentials()
+    
+    # Initialize hardware and Assistant
+    with Board() as board, Assistant(credentials) as assistant:
+        # Event processing loop
+        for event in assistant.start():
+            process_event(board.led, event)
+```
 
-### Code Overview
+### Hardware Requirements
 
-This Python script creates a voice-activated Google Assistant using hotword detection ("OK Google"). The implementation leverages the Google Assistant Library for direct audio API access, eliminating the need for manual audio recording.
+Supported Devices: Raspberry Pi 2/3
+Excluded Devices: Raspberry Pi Zero (requires alternative trigger methods)
+Required Components: AIY Voice Kit with microphone and speaker array
+Operational Characteristics
 
-## Key Components
+Activation Method: Hotword detection ("OK Google")
+Audio Handling: Direct access via Google Assistant Library
+Visual Feedback: Multi-state LED indicators
+Network Dependency: Requires persistent internet connection
+Authentication Notes
 
-### Authentication & Setup
+The successful implementation relies on proper OAuth configuration with Google Assistant API, achieved through Firefox installation to bypass Chromium compatibility limitations in the standard Raspberry Pi image.
 
-Credentials Handling: auth_helpers.get_assistant_credentials() manages the OAuth flow that was completed via Firefox
-Board Initialization: The AIY Voice Kit hardware is initialized with proper LED controls
 
-### Event Processing Workflow
-
-The process_event() function handles the Assistant's state transitions:
-
-Ready State (ON_START_FINISHED): LED shows BEACON_DARK indicating the Assistant is active and awaiting the hotword
-Listening Phase (ON_CONVERSATION_TURN_STARTED): Solid LED ON during voice input capture
-Processing State (ON_END_OF_UTTERANCE): Pulsing LED indicates the Assistant is processing the query
-Completion States: LED returns to BEACON_DARK when the interaction concludes
-Operational Flow
-
-### Initialization
-
-Authenticates with Google services using the previously configured credentials
-Hotword Detection: Continuously monitors for "OK Google" trigger phrase
-Visual Feedback: LED provides clear status indicators throughout the interaction cycle
-Error Handling: Gracefully handles fatal errors by exiting the application
-Technical Requirements
-
-### Hardware 
-
-Raspberry Pi 2/3 with AIY Voice Kit (excludes Pi Zero)
-Authentication: Successful Google Assistant API configuration (completed via Firefox)
-
-### Connectivity
-
-Stable internet connection for Google Assistant services
-The implementation now provides seamless voice interaction capability, building on the successful API integration achieved through the Firefox workaround for authentication.
 
 ## assistant_library_demo.py
 
-```text
+```python
 #!/usr/bin/env python3
 # Copyright 2017 Google Inc.
 #
