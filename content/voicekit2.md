@@ -27,6 +27,25 @@ pi@raspberrypi:~ $ sudo apt install firefox-esr
 ![](/assets/images/voicekit2/Screenshot%202025-10-16%20at%2012.34.06 PM.png)
 *APIs & Services*
 
+![](/assets/images/voicekit2/Screenshot%202025-10-16%20at%204.03.01 PM.png)
+*assistant.json*
+
+```json
+{
+    "installed": {
+        "client_id": "<SPECIFIC TO YOU>.apps.googleusercontent.com",
+        "project_id": "voice-assistant-haddley",
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+        "client_secret": "<SPECIFIC TO YOU>",
+        "redirect_uris": [
+            "http://localhost"
+        ]
+    }
+}
+```
+
 ![](/assets/images/voicekit2/Screenshot%202025-10-16%20at%2012.34.37 PM.png)
 *Assistant Library Demo*
 
@@ -114,6 +133,8 @@ Network Dependency: Requires persistent internet connection
 The successful implementation relies on proper OAuth configuration with Google Assistant API, achieved through Firefox installation to bypass Chromium compatibility limitations in the standard Raspberry Pi image.
 
 ## assistant_library_demo.py
+
+
 
 ```python
 #!/usr/bin/env python3
