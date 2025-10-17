@@ -212,6 +212,70 @@ if __name__ == '__main__':
 
 ```
 
+## Wake Word Detection is LOCAL
+The "OK Google" hotword detection in the Google Assistant Library happens locally on the device, not through cloud APIs. Here's the evidence:
+
+## Key Technical Details:
+### 1. Hardware/Architecture Dependency
+From the documentation in aiy.assistant.rst:
+
+Hotword detection "depends on the ARMv7 architecture"
+Pi Zero (ARMv6) cannot do hotword detection - only Pi 2/3 (ARMv7) support it
+This clearly indicates local processing, as cloud APIs wouldn't have CPU architecture dependencies
+
+### 2. Direct Audio Access
+Multiple files mention that the Google Assistant Library has "direct access to the audio API":
+
+``` python
+# From assistant_library_demo.py comments:
+"The Google Assistant Library has direct access to the audio API, so this Pythoncode doesn't need to record audio."
+```
+
+
+### 3. No Network Requirements for Wake Word
+The wake word detection works without sending audio to the cloud - only after the wake word is detected does the conversation with Google Assistant begin (which does use cloud APIs).
+
+## Architecture Overview:
+
+``` TEXT
+Local Device (Pi 2/3):
+┌─────────────────────────────┐
+│ 1. Microphone Input         │
+│ 2. LOCAL Wake Word Detection│  ← Happens locally
+│    ("OK Google" processing) │
+│ 3. Wake word detected?      │
+└─────────────────────────────┘
+              │
+              ▼ (Only if wake word detected)
+┌─────────────────────────────┐
+│ 4. Start recording user     │
+│ 5. Send audio to Google     │  ← Cloud processing
+│ 6. Get Assistant response   │
+│ 7. Process/play response    │
+└─────────────────────────────┘
+```
+
+
+
+
+
+## Why This Matters:
+### Privacy: 
+Wake word detection happens entirely on-device - no audio is sent to Google until after "OK Google" is detected
+
+### Performance: 
+Local detection means instant response without network latency
+
+### Offline Capability: 
+Wake word works even without internet (though the conversation itself requires internet)
+
+### Hardware Requirements: 
+This is why specific ARM architecture is needed - the local processing requires sufficient computational power
+
+### Comparison with Cloud Speech:
+The project also includes aiy.cloudspeech which does use cloud APIs for general speech recognition, but this is different from the wake word detection - it's for converting full speech to text after you've already triggered the system.
+
+
 
 ## References
 
