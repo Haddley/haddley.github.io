@@ -4,7 +4,7 @@ description: "Google Assistant API"
 date: "2025-10-16"
 categories: ["Python","AI"]
 tags: []
-slug: "voicekit"
+slug: "voicekit2"
 image: "/assets/images/raspberry-pi-logo.svg"
 ---
 
@@ -15,6 +15,8 @@ image: "/assets/images/raspberry-pi-logo.svg"
 During setup, I encountered issues with the unsupported Chromium version in the Raspberry Pi image. This was resolved by installing Firefox, which properly handled the OAuth authentication flow required by the Google Assistant API.
 
 ```bash
+pi@raspberrypi:~ $ sudo apt update
+...
 pi@raspberrypi:~ $ sudo apt install firefox-esr
 ```
 
@@ -280,4 +282,3 @@ The project also includes aiy.cloudspeech which does use cloud APIs for general 
 ## References
 
 - [Hacking the Google AIY Voice Kit - Part 1](https://www.youtube.com/watch?v=jQK0VDWIzus)
-- [Hacking the Google AIY Voice Kit Part 2 - Voice Control](https://www.youtube.com/watch?v=GI8zU_HO8CA)
