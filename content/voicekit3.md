@@ -8,10 +8,90 @@ slug: "voicekit3"
 image: "/assets/images/raspberry-pi-logo.svg"
 ---
 
-## Adding commands
+🎯 What This Code Does
+
+This is a voice assistant program for Raspberry Pi (like a mini Google Assistant). When you say "OK Google", it listens to your commands and responds to them.
+
+🔧 How It Works - The Basic Flow
+
+You say "OK Google" to wake it up
+The LED lights up to show it's listening
+You speak a command
+It processes your command and responds
+The LED changes to show what it's doing
+🎵 The "Event Handler" - The Brain
+
+The process_event function is like the brain that decides what to do:
+
+```python
+def process_event(assistant, led, event):
+    # Different events trigger different actions:
+    if event.type == EventType.ON_START_FINISHED:
+        # Ready to listen
+    elif event.type == EventType.ON_CONVERSATION_TURN_STARTED:
+        # You started talking
+    elif event.type == EventType.ON_RECOGNIZING_SPEECH_FINISHED:
+        # It understood what you said - THIS IS WHERE WE ADD COMMANDS!
+```
+
+🆕 How We Added Extra Commands
+
+We added special commands by creating functions and then connecting them to voice commands:
+
+### Step 1: Create the Function
+
+For each new command, we made a function that does the work:
+
+```python
+def get_temp():
+    # Gets the temperature and returns a message
+    return "My CPU temperature is 45 degrees Celsius"
+
+def get_uptime():
+    # Checks how long the system has been running
+    return "The system has been up for 2 hours"
+```
+### Step 2: Connect to Voice Command
+
+Then we connected these functions to specific voice commands:
+
+```python
+elif text == 'cpu temperature':
+    assistant.stop_conversation()  # Stop Google from answering
+    tts.say(get_temp())           # Use OUR function instead
+
+elif text == 'uptime':
+    assistant.stop_conversation()
+    tts.say(get_uptime())
+```
+
+📋 The Commands We Added
+
+Here are the new voice commands you can use:
+
+| Voice Command | What It Does |
+|---------------|--------------|
+| "cpu temperature" | Tells you how hot the Raspberry Pi is |
+| "uptime" | Says how long the system has been running |
+| "public ip address" | Finds and tells your internet IP address |
+| "usb devices" | Counts how many USB devices are connected |
+| "system load" | Checks how busy the computer is |
+
+🛠️ How Each New Command Works
+
+get_temp() - Runs a system command vcgencmd measure_temp to read temperature
+get_uptime() - Uses uptime -p to get how long system has been on
+get_public_ip() - Contacts websites like api.ipify.org to find your public IP
+get_usb_devices() - Runs lsusb to list USB devices and counts them
+get_system_load() - Uses uptime to see how busy the computer is
+🎯 Key Points to Remember
+
+assistant.stop_conversation() - This tells Google Assistant: "Don't handle this command, we'll handle it ourselves"
+tts.say() - This makes the computer speak the response
+Voice commands must match exactly what you programmed (like "cpu temperature")
+So when you say "OK Google" followed by "cpu temperature", the program recognizes your command, stops Google from processing it, runs our special temperature function, and speaks the answer back to you! 🎤➡️🤖➡️🔊
 
 ## assistant_library_with_local_commands_demo_2.py
-
 ```python
 
 #!/usr/bin/env python3

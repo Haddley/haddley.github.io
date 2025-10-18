@@ -109,12 +109,16 @@ function processInlineMarkdown(text: string): React.ReactElement[] {
 }
 
 interface MobiriseParsedContent {
-  type: 'text' | 'image' | 'heading' | 'code' | 'references-header' | 'references';
+  type: 'text' | 'image' | 'heading' | 'code' | 'references-header' | 'references' | 'table';
   content: string;
   description?: string;
   level?: number;
   language?: string;
   references?: Array<{url: string, title: string}>;
+  tableData?: {
+    headers: string[];
+    rows: string[][];
+  };
 }
 
 function parseMarkdownToMobirise(markdownContent: string): MobiriseParsedContent[] {
@@ -197,6 +201,57 @@ function parseMarkdownToMobirise(markdownContent: string): MobiriseParsedContent
           content: imagePath,
           description
         });
+      }
+    }
+    // Handle tables
+    else if (trimmedLine.startsWith('|') && trimmedLine.endsWith('|')) {
+      // Flush any accumulated text
+      if (currentTextContent.length > 0) {
+        sections.push({
+          type: 'text',
+          content: currentTextContent.join('\n')
+        });
+        currentTextContent = [];
+      }
+      
+      // Parse table
+      const tableLines: string[] = [];
+      let j = i;
+      
+      // Collect all table lines
+      while (j < lines.length && lines[j].trim().startsWith('|') && lines[j].trim().endsWith('|')) {
+        tableLines.push(lines[j].trim());
+        j++;
+      }
+      
+      if (tableLines.length >= 2) {
+        // Parse headers (first line)
+        const headers = tableLines[0]
+          .split('|')
+          .slice(1, -1) // Remove empty first and last elements
+          .map(h => h.trim());
+        
+        // Skip separator line (second line)
+        // Parse data rows (remaining lines)
+        const rows: string[][] = [];
+        for (let k = 2; k < tableLines.length; k++) {
+          const row = tableLines[k]
+            .split('|')
+            .slice(1, -1) // Remove empty first and last elements
+            .map(cell => cell.trim());
+          rows.push(row);
+        }
+        
+        sections.push({
+          type: 'table',
+          content: '',
+          tableData: {
+            headers,
+            rows
+          }
+        });
+        
+        i = j - 1; // Adjust loop counter
       }
     }
     // Handle headings
@@ -365,6 +420,41 @@ export default function MobiriseContentRenderer({ markdownContent }: MobiriseCon
                           {section.description}
                         </p>
                       )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          );
+        } else if (section.type === 'table') {
+          return (
+            <section key={index} className="content5 cid-content5" data-bs-version="5.1">
+              <div className="container">
+                <div className="row justify-content-center">
+                  <div className="col-md-12 col-lg-10">
+                    <div className="table-responsive">
+                      <table className="table table-striped">
+                        <thead>
+                          <tr>
+                            {section.tableData?.headers.map((header, headerIndex) => (
+                              <th key={headerIndex} className="mbr-fonts-style display-7 fw-bold">
+                                {header}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {section.tableData?.rows.map((row, rowIndex) => (
+                            <tr key={rowIndex}>
+                              {row.map((cell, cellIndex) => (
+                                <td key={cellIndex} className="mbr-text mbr-fonts-style display-7">
+                                  {processInlineMarkdown(cell)}
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
