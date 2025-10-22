@@ -1,7 +1,7 @@
 ---
 title: "A Power Apps Application"
 description: "Power Apps Application."
-date: "2021-07-13"
+date: "2021-07-14"
 categories: ["Power Platform","React"]
 tags: []
 slug: "powerappsapplication"
