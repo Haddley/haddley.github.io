@@ -102,6 +102,42 @@ Fine-tuning allows you to take a general model like GPT-3.5 or GPT-4 and train i
 
 
 
+![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.13.38 PM.png)
+*I used Claude Sonnet to generate a Python app*
+
+```text
+I used this data to create a fine-tuned model ft:gpt-3.5-turbo-0125:personal:sarcastic:CTl37pka hosted by OpenAI. Please create a python app that allows me to demonstrate the new model in a chat interface
+```
+
+
+
+![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.15.18 PM.png)
+*I created Python environment*
+
+![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.15.34 PM.png)
+*I selected Venv*
+
+![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.15.44 PM.png)
+*I selected Python 3.3.7*
+
+![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.15.59 PM.png)
+*I selected the generated requirements.txt file*
+
+![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.16.45 PM.png)
+*I opened a new terminal and entered the streamlit command*
+
+![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.17.16 PM.png)
+*The chatbot user interface opened in a browser window*
+
+![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.18.30 PM.png)
+*I create a temporary OpenAI key*
+
+![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.18.46 PM.png)
+*I copied the newly generated key*
+
+![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.20.06 PM.png)
+*I pasted the OpenAI key into the app and asked "who was napoleon". The response was sarcastic*
+
 ## References
 
 - [Fine-tuning ChatGPT with OpenAI Tutorial](https://www.youtube.com/watch?v=VVKcSf6r3CM)
