@@ -1,6 +1,6 @@
 ---
 title: "OpenAI"
-description: "Fine Tuning?"
+description: "Fine Tuning"
 date: "2025-10-23"
 categories: ["AI","Python"]
 tags: []
