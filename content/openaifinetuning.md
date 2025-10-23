@@ -118,7 +118,7 @@ I used this data to create a fine-tuned model ft:gpt-3.5-turbo-0125:personal:sar
 *I selected Venv*
 
 ![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.15.44 PM.png)
-*I selected Python 3.3.7*
+*I selected Python 3.13.7*
 
 ![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.15.59 PM.png)
 *I selected the generated requirements.txt file*
