@@ -6,7 +6,7 @@ categories: ["Microsoft Dynamics","Business Central","Power Platform","Microsoft
 tags: []
 slug: "copilotstudiobctools"
 image: "/assets/images/posts-meta.svg"
-hidden: true
+hidden: false
 ---
 
 
