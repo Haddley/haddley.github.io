@@ -110,7 +110,7 @@ Please fuse Qwen3-0.6b and the adapters. Create a new Fused-Qwen3-0.6b.gguf mode
 ![](/assets/images/mlx1/Screenshot%202025-11-06%20at%202.59.47 PM.png)
 *ollama create fused-qwen3-0.6b -f Modelfile*
 
- ```text
+```text
 FROM ./Fused-Qwen3-0.6b.gguf
 
 # Set parameters for deterministic outputs (temperature 0 = no randomness)
