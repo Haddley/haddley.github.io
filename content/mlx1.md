@@ -146,6 +146,12 @@ PARAMETER stop "<|im_end|>"
 ![](/assets/images/mlx1/Screenshot%202025-11-06%20at%203.05.59 PM.png)
 *ollama run fused-qwen3-0.6b "who was Ada Lovelace"*
 
+```zsh
+ % ollama run fused-qwen3-0.6b "who was Charles Babbage"
+```
+
+![](/assets/images/mlx1/Screenshot%202025-11-06%20at%204.03.26 PM.png)
+*ollama run fused-qwen3-0.6b "who was Charles Babbage"*
 
 ## References
 
