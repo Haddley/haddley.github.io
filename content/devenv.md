@@ -41,7 +41,7 @@ New-BCContainer -accept_eula -containerName mysandbox -artifactUrl $artifactUrl
 *Logs*
 
 ![](/assets/images/devenv/Screenshot%202025-11-17%20131927.png)
-*http://mysendbox/BC/?tenant=default*
+*http://mysandbox/BC/?tenant=default*
 
 ![](/assets/images/devenv/Screenshot%202025-11-17%20132015.png)
 *CRONUS USA, Inc.*
