@@ -50,6 +50,44 @@ export default async function PostPage({ params }: PostPageProps) {
               <h4 className="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">
                 {post.description}
               </h4>
+
+              {/* Categories and Tags */}
+              <div className="d-flex flex-wrap justify-content-center gap-2 mb-3">
+                {post.categories && post.categories.length > 0 && (
+                  <>
+                    {[...new Set(post.categories)].map((category) => (
+                      <Link 
+                        key={category} 
+                        href={`/posts/category/${category.toLowerCase().replace(/\s+/g, '-').replace(/[&]/g, '').replace(/[^a-z0-9-]/g, '')}`}
+                        className="badge bg-primary"
+                        style={{ 
+                          fontSize: '0.9rem', 
+                          padding: '8px 16px',
+                          textDecoration: 'none'
+                        }}
+                      >
+                        {category}
+                      </Link>
+                    ))}
+                  </>
+                )}
+                {post.tags && (Array.isArray(post.tags) ? post.tags : [post.tags]).filter(Boolean).length > 0 && (
+                  <>
+                    {(Array.isArray(post.tags) ? post.tags : [post.tags]).filter(Boolean).map((tag) => (
+                      <span 
+                        key={tag} 
+                        className="badge bg-secondary"
+                        style={{ 
+                          fontSize: '0.85rem', 
+                          padding: '6px 14px'
+                        }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </>
+                )}
+              </div>
             </div>
           </div>
         </div>

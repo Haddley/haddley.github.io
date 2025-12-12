@@ -71,8 +71,8 @@ export default function CategoryPostSearch({ posts, categoryName }: CategoryPost
           filteredPosts.map((post: BlogPost) => (
             <div key={post.slug} className="item features-image col-12 col-md-6 col-lg-4">
               <div className="item-wrapper post-card">
-                <div className="item-img">
-                  <Link href={`/posts/${post.slug}`}>
+                <div className="item-img" style={{ display: 'flex', justifyContent: 'center' }}>
+                  <Link href={`/posts/${post.slug}`} style={{ width: '100%', maxWidth: '300px' }}>
                     <Image
                       src={post.image || '/assets/images/posts-meta.svg'}
                       alt={post.title}

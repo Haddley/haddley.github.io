@@ -2,6 +2,7 @@ import { getVisibleBlogPostsByAnyCategory, BlogPost } from '@/lib/posts';
 import { categories, getCategoryBySlug } from '@/lib/categories';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import CategoryPostSearch from '@/components/CategoryPostSearch';
 
 interface CategoryPageProps {
@@ -112,11 +113,12 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                         <div className="featured-card" style={{
                           background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
                           borderRadius: '16px',
-                          padding: index === 0 ? '32px' : '24px',
+                          padding: index === 0 ? '40px' : '32px',
                           boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
                           transition: 'all 0.3s ease',
                           position: 'relative',
-                          overflow: 'hidden'
+                          overflow: 'hidden',
+                          minHeight: index === 0 ? '350px' : '450px'
                         }}>
                           <div className="featured-badge" style={{
                             position: 'absolute',
@@ -124,50 +126,58 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                             right: '16px',
                             background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
                             color: 'white',
-                            padding: '6px 16px',
+                            padding: '8px 20px',
                             borderRadius: '20px',
-                            fontSize: '0.75rem',
+                            fontSize: '0.85rem',
                             fontWeight: '600'
                           }}>
                             {index === 0 ? '🔥 Latest' : '⭐ Recent'}
                           </div>
-                          <div style={{ display: 'flex', gap: index === 0 ? '32px' : '16px', flexDirection: index === 0 ? 'row' : 'column' }}>
+                          <div style={{ display: 'flex', gap: '24px', flexDirection: 'column', height: '100%', alignItems: 'center' }}>
                             {post.image && (
                               <div style={{ 
-                                flex: index === 0 ? '0 0 300px' : '1',
-                                height: index === 0 ? '200px' : '150px',
                                 borderRadius: '12px',
                                 overflow: 'hidden',
-                                background: `url(${post.image})`,
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center'
-                              }} />
+                                flexShrink: 0,
+                                width: '100%',
+                                maxWidth: '300px'
+                              }}>
+                                <Image
+                                  src={post.image}
+                                  alt={post.title}
+                                  width={300}
+                                  height={200}
+                                  className="img-fluid"
+                                />
+                              </div>
                             )}
-                            <div style={{ flex: 1 }}>
+                            <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
                               <h5 style={{ 
-                                fontSize: index === 0 ? '1.75rem' : '1.25rem',
+                                fontSize: index === 0 ? '2rem' : '1.5rem',
                                 fontWeight: '700',
                                 color: '#1a1a1a',
-                                marginBottom: '12px'
+                                marginBottom: '16px',
+                                lineHeight: '1.3'
                               }}>
                                 {post.title}
                               </h5>
                               <p style={{
                                 color: '#666',
-                                fontSize: index === 0 ? '1rem' : '0.9rem',
-                                marginBottom: '12px',
-                                lineHeight: '1.6'
+                                fontSize: index === 0 ? '1.1rem' : '1rem',
+                                marginBottom: '16px',
+                                lineHeight: '1.6',
+                                flex: 1
                               }}>
-                                {post.description.substring(0, index === 0 ? 200 : 120)}...
+                                {post.description.substring(0, index === 0 ? 200 : 150)}...
                               </p>
                               <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '12px' }}>
                                 {/* Show current category first, then others */}
                                 <span style={{
                                   background: 'rgba(102, 126, 234, 0.15)',
                                   color: '#667eea',
-                                  padding: '4px 12px',
+                                  padding: '6px 16px',
                                   borderRadius: '12px',
-                                  fontSize: '0.75rem',
+                                  fontSize: '0.8rem',
                                   fontWeight: '700',
                                   border: '2px solid #667eea'
                                 }}>
@@ -175,11 +185,11 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                                 </span>
                                 {post.categories?.filter(cat => cat !== category.name).slice(0, 1).map(cat => (
                                   <span key={cat} style={{
-                                    background: 'rgba(102, 126, 234, 0.1)',
+                                    background: 'rgba(102, 126, 234, 0.15)',
                                     color: '#667eea',
-                                    padding: '4px 12px',
+                                    padding: '6px 16px',
                                     borderRadius: '12px',
-                                    fontSize: '0.75rem',
+                                    fontSize: '0.8rem',
                                     fontWeight: '600'
                                   }}>
                                     {cat}
@@ -188,7 +198,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                               </div>
                               <p style={{
                                 color: '#999',
-                                fontSize: '0.85rem',
+                                fontSize: '0.9rem',
                                 margin: 0
                               }}>
                                 {new Date(post.date).toLocaleDateString('en-US', {

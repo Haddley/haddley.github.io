@@ -51,14 +51,16 @@ const VALID_CATEGORIES = {
     aliases: ['reactjs']
   },
   'Angular': {
-    keywords: ['angular', 'angularjs', 'ng', 'ngrx', 'rxjs'],
+    keywords: ['angular', 'angularjs', 'ng-', 'ngrx', 'rxjs', '@angular'],
     titleKeywords: ['angular', 'ngrx'],
-    aliases: ['angularjs']
+    aliases: ['angularjs'],
+    requireStrong: true  // Need multiple matches or title match
   },
   'TypeScript': {
-    keywords: ['typescript', 'ts', 'tsx'],
+    keywords: ['typescript', '.ts', '.tsx', 'tsconfig'],
     titleKeywords: ['typescript'],
-    aliases: ['ts']
+    aliases: ['ts'],
+    requireStrong: true  // Need multiple matches or title match
   },
   'PHP': {
     keywords: ['php', 'laravel', 'symfony', 'wordpress'],
@@ -76,9 +78,10 @@ const VALID_CATEGORIES = {
     aliases: ['amazon']
   },
   'AI': {
-    keywords: ['ai', 'artificial intelligence', 'machine learning', 'ml', 'openai', 'chatgpt', 'gpt', 'llm', 'neural', 'deep learning', 'tensorflow', 'pytorch', 'copilot', 'prompt', 'model context protocol', 'mcp'],
-    titleKeywords: ['ai', 'machine learning', 'chatgpt', 'openai', 'llm', 'copilot'],
-    aliases: ['machine learning', 'ml']
+    keywords: ['artificial intelligence', 'machine learning', 'openai', 'chatgpt', 'gpt-', 'llm', 'neural network', 'deep learning', 'tensorflow', 'pytorch', 'copilot studio', 'prompt engineering', 'model context protocol', 'mcp server'],
+    titleKeywords: ['ai', 'machine learning', 'chatgpt', 'openai', 'llm', 'copilot studio'],
+    aliases: ['machine learning', 'ml'],
+    requireStrong: true  // Need multiple matches or title match to avoid false positives
   },
   'Power Platform': {
     keywords: ['power platform', 'power apps', 'power automate', 'power bi', 'powerapps', 'powerautomate', 'dataverse', 'canvas app', 'model driven', 'power pages', 'powerpages', 'portal', 'basic form', 'list component'],
@@ -103,8 +106,8 @@ const VALID_CATEGORIES = {
     aliases: ['office365', 'sharepoint', 'teams']
   },
   'DevOps': {
-    keywords: ['devops', 'ci/cd', 'continuous integration', 'deployment', 'docker', 'kubernetes', 'github actions', 'azure devops'],
-    titleKeywords: ['devops', 'docker', 'kubernetes'],
+    keywords: ['devops', 'ci/cd', 'continuous integration', 'deployment pipeline', 'docker', 'dockerfile', 'kubernetes', 'github actions', 'azure devops', 'container', 'bccontainerhelper'],
+    titleKeywords: ['devops', 'docker', 'kubernetes', 'container'],
     aliases: ['ci-cd', 'docker', 'kubernetes']
   },
   'IOT': {
@@ -224,12 +227,14 @@ function suggestCategories(frontmatter, body, filename) {
   for (const [category, config] of Object.entries(VALID_CATEGORIES)) {
     let score = 0;
     let hasTitleMatch = false;
+    let hasStrongMatch = false;
 
     // Title matches are most important (weight: 10)
     for (const keyword of config.titleKeywords || config.keywords) {
       if (title.includes(keyword.toLowerCase())) {
         score += 10;
         hasTitleMatch = true;
+        hasStrongMatch = true;
         break;
       }
     }
@@ -243,6 +248,7 @@ function suggestCategories(frontmatter, body, filename) {
     for (const keyword of config.keywords) {
       if (description.includes(keyword.toLowerCase())) {
         score += 5;
+        hasStrongMatch = true;
         break;
       }
     }
@@ -251,6 +257,7 @@ function suggestCategories(frontmatter, body, filename) {
     for (const keyword of config.keywords) {
       if (filenameLC.includes(keyword.toLowerCase())) {
         score += 8;
+        hasStrongMatch = true;
         break;
       }
     }
@@ -258,12 +265,13 @@ function suggestCategories(frontmatter, body, filename) {
     // Body content matches (weight: 2) - less important to avoid false positives
     let bodyMatches = 0;
     for (const keyword of config.keywords) {
-      const regex = new RegExp(keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+      const regex = new RegExp('\\b' + keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'gi');
       const matches = (bodyStart.match(regex) || []).length;
       bodyMatches += matches;
     }
     if (bodyMatches > 0) {
       score += Math.min(bodyMatches * 2, 6); // Cap at 6 points from body
+      if (bodyMatches >= 3) hasStrongMatch = true; // Multiple mentions count as strong
     }
 
     // Tag matches (weight: 3)
@@ -271,9 +279,15 @@ function suggestCategories(frontmatter, body, filename) {
       for (const keyword of config.keywords) {
         if (tag.toLowerCase().includes(keyword.toLowerCase())) {
           score += 3;
+          hasStrongMatch = true;
           break;
         }
       }
+    }
+
+    // Skip categories that require strong match if no strong match found
+    if (config.requireStrong && !hasStrongMatch) {
+      continue;
     }
 
     if (score > 0) {
