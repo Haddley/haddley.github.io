@@ -5,7 +5,7 @@ date: "2025-09-20"
 categories: ["Azure","AI","Angular","Microsoft Dynamics","Mobile","Python","TypeScript"]
 image: "/assets/images/azureai1/hero.png"
 tags: ["azure","python","ai","git","github"]
-hidden: "true"
+hidden: true
 slug: "azureai1"
 ---
 

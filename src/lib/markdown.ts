@@ -71,7 +71,7 @@ export async function getAllMarkdownPosts(): Promise<BlogPost[]> {
         categories: matterResult.data.categories || [],
         tags: matterResult.data.tags || [],
         image: matterResult.data.image,
-        hidden: matterResult.data.hidden || false
+        hidden: matterResult.data.hidden === true || matterResult.data.hidden === 'true'
       });
     } catch (error) {
       console.error(`Error processing ${id}:`, error);

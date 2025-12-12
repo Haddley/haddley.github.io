@@ -1791,9 +1791,6 @@ export async function getPostById(slug: string): Promise<BlogPost | undefined> {
 export async function getVisibleBlogPosts(): Promise<BlogPost[]> {
   const posts = await fetchAllPosts();
   const visiblePosts = posts.filter(post => !post.hidden);
-  // console.log(`Filtered to ${visiblePosts.length} visible posts`);
-  // console.log(visiblePosts.map(post => post.slug).join(', '));
-  // console.log(visiblePosts);
   return visiblePosts;
 }
 
