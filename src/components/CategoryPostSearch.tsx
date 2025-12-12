@@ -64,7 +64,7 @@ export default function CategoryPostSearch({ posts, categoryName }: CategoryPost
       <div className="row mt-4">
         {filteredPosts.length === 0 ? (
           <div className="col-12 text-center py-5">
-            <h5 className="text-muted">No posts found matching "{searchTerm}"</h5>
+            <h5 className="text-muted">No posts found matching &quot;{searchTerm}&quot;</h5>
             <p className="text-muted">Try a different search term</p>
           </div>
         ) : (

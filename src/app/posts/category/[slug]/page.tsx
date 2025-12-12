@@ -2,7 +2,6 @@ import { getVisibleBlogPostsByAnyCategory, BlogPost } from '@/lib/posts';
 import { categories, getCategoryBySlug } from '@/lib/categories';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
 import CategoryPostSearch from '@/components/CategoryPostSearch';
 
 interface CategoryPageProps {

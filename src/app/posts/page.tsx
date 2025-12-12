@@ -1,4 +1,4 @@
-import { getVisibleBlogPosts, getVisibleAutomatedCategories, BlogPost } from '@/lib/posts';
+import { getVisibleBlogPosts, getVisibleAutomatedCategories } from '@/lib/posts';
 import { getCategoryByName } from '@/lib/categories';
 import Link from 'next/link';
 import PostSearch from '@/components/PostSearch';
