@@ -28,28 +28,56 @@ export default async function PostsPage() {
         </div>
         
         {/* Category Filter Pills */}
-        <div className="row mt-4">
+        <div className="row mt-5 mb-4">
           <div className="col-12 text-center">
-            <h6 className="mbr-fonts-style display-7 mb-3">
+            <h6 className="mbr-fonts-style display-7 mb-4">
               <strong>Browse by Category:</strong>
             </h6>
-            <div className="d-flex flex-wrap justify-content-center gap-2">
+            <div className="d-flex flex-wrap justify-content-center gap-3">
               {categories.map((category) => {
                 const categoryData = getCategoryByName(category);
                 const slug = categoryData ? categoryData.slug : categoryToSlug(category);
+                const postCount = posts.filter(p => p.categories?.includes(category)).length;
+                
                 return (
                   <Link
                     key={category}
                     href={`/posts/category/${slug}`}
-                    className="btn btn-sm btn-outline-primary mbr-fonts-style display-7"
+                    className="text-decoration-none"
+                    style={{
+                      padding: '12px 24px',
+                      borderRadius: '12px',
+                      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                      color: 'white',
+                      fontWeight: '600',
+                      fontSize: '0.95rem',
+                      boxShadow: '0 4px 15px rgba(102, 126, 234, 0.3)',
+                      transition: 'all 0.3s ease',
+                      display: 'inline-block',
+                    }}
                   >
-                    {categoryData?.icon || '📄'} {category}
+                    {category}
+                    <span style={{ 
+                      marginLeft: '8px', 
+                      opacity: '0.85',
+                      fontSize: '0.85rem',
+                      fontWeight: '400'
+                    }}>
+                      ({postCount})
+                    </span>
                   </Link>
                 );
               })}
             </div>
           </div>
         </div>
+        
+        <style dangerouslySetInnerHTML={{__html: `
+          a[href^="/posts/category/"]:hover {
+            transform: translateY(-4px) !important;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5) !important;
+          }
+        `}} />
 
         {/* Posts Grid */}
         <div className="row mt-4">
