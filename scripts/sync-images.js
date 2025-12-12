@@ -3,7 +3,7 @@
 const fs = require('fs-extra');
 const path = require('path');
 
-const sourceDir = path.join(__dirname, '../assets');
+const sourceDir = path.join(__dirname, '../content/assets');
 const targetDir = path.join(__dirname, '../public/assets');
 
 async function syncImages() {

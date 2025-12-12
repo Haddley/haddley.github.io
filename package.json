@@ -6,7 +6,7 @@
     "dev": "next dev",
     "prebuild": "node scripts/sync-images.js",
     "build": "next build",
-    "start": "next start",
+    "start": "npx serve@latest out",
     "lint": "eslint",
     "sync-images": "node scripts/sync-images.js"
   },
