@@ -4,6 +4,25 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <>
+      <style dangerouslySetInnerHTML={{__html: `
+        .gradient-btn {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          border: none;
+          padding: 12px 32px;
+          border-radius: 8px;
+          font-weight: 600;
+          text-decoration: none;
+          display: inline-block;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        .gradient-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+          color: white;
+        }
+      `}} />
       {/* Hero Section */}
       <section data-bs-version="5.1" className="header14 cid-so66lOsJnC mbr-fullscreen" id="header14-5">
         <div className="container">
@@ -26,7 +45,10 @@ export default function Home() {
                   I help organizations to connect with clients, comply with regulations, and automate workflows.
                 </p>
                 <div className="mbr-section-btn mt-3">
-                  <Link href="/posts" className="btn btn-secondary display-4">
+                  <Link 
+                    href="/posts" 
+                    className="btn gradient-btn display-4"
+                  >
                     Blog Posts
                   </Link>
                 </div>
