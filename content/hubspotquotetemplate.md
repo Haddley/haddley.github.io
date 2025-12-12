@@ -2,10 +2,10 @@
 title: "HubSpot Quote Template"
 description: "Quote Template"
 date: "2025-09-20"
-categories: ["Development"]
+categories: ["Angular","TypeScript"]
 image: "/assets/images/hubspotquotetemplate/hero.png"
-tags: []
-hidden: true
+tags: ""
+hidden: "true"
 slug: "hubspotquotetemplate"
 ---
 

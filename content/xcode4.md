@@ -2,8 +2,8 @@
 title: "XCode C++ (Part 4)"
 description: "Rotating the triangle"
 date: "2023-03-27"
-categories: []
-tags: []
+categories: ["AI","Angular","Microsoft 365","Mobile","TypeScript"]
+tags: ""
 slug: "xcode4"
 image: "/assets/images/xcode-14-icon-300x314.png"
 ---

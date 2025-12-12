@@ -2,8 +2,8 @@
 title: "Teams Toolkit with Azure"
 description: "Get started with Microsoft Teams app development using Azure."
 date: "2021-05-29"
-categories: ["Microsoft 365","Azure","React","SQL"]
-tags: []
+categories: ["Microsoft 365","Azure","React","SQL","Angular","Mobile","TypeScript"]
+tags: ""
 slug: "teamstoolkit"
 image: "/assets/images/teams-hi-res-icon-2019.svg"
 ---

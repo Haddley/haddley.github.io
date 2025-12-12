@@ -2,8 +2,8 @@
 title: "Component Framework"
 description: "Component Framework"
 date: "2022-08-14"
-categories: ["Power Platform","JavaScript","React"]
-tags: []
+categories: ["Power Platform","JavaScript","React","AI","Angular","Mobile","TypeScript"]
+tags: ""
 slug: "componentframework"
 image: "/assets/images/office-365-icon-500x500.png"
 ---

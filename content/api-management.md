@@ -2,8 +2,8 @@
 title: "Power Apps, Custom Connectors and API Management"
 description: "Azure API Management Service"
 date: "2021-08-02"
-categories: ["Power Platform","Azure"]
-tags: []
+categories: ["Power Platform","Azure","Angular","DevOps","Mobile","TypeScript"]
+tags: ""
 slug: "api-management"
 image: "/assets/images/office-365-icon-500x500.png"
 ---

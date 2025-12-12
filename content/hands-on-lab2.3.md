@@ -2,8 +2,8 @@
 title: "Hands-on-Lab 2.3"
 description: "Set up dimensions"
 date: "2023-12-04"
-categories: ["Microsoft Dynamics","Business Central","Microsoft Dynamics"]
-tags: []
+categories: ["Microsoft Dynamics","Business Central","Angular","IOT","TypeScript"]
+tags: ""
 slug: "hands-on-lab2.3"
 image: "/assets/images/dynamics365-color.svg"
 ---

@@ -2,8 +2,8 @@
 title: "Microsoft Power Automate Reports"
 description: "A Flow that emails a Report"
 date: "2024-07-19"
-categories: ["Power Platform"]
-tags: []
+categories: ["Power Platform","AI","Angular","TypeScript"]
+tags: ""
 slug: "powerautomatereports"
 image: "/assets/images/office-365-icon-500x500.png"
 ---

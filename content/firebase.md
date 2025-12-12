@@ -2,8 +2,8 @@
 title: "Firebase"
 description: "Firebase web codelab"
 date: "2023-04-24"
-categories: ["JavaScript","Azure"]
-tags: []
+categories: ["JavaScript","Azure","AI","Angular","Mobile","TypeScript"]
+tags: ""
 slug: "firebase"
 image: "/assets/images/logo-lockup-firebase-vertical.svg"
 ---

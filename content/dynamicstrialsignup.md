@@ -2,8 +2,8 @@
 title: "Dynamics Trial Signup"
 description: "Microsoft Signup"
 date: "2023-08-14"
-categories: ["Microsoft Dynamics","Business Central"]
-tags: []
+categories: ["Microsoft Dynamics","Business Central","AI","Angular","Mobile","TypeScript"]
+tags: ""
 slug: "dynamicstrialsignup"
 image: "/assets/images/dynamics365-color.svg"
 ---

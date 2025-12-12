@@ -2,8 +2,8 @@
 title: "Machine Learning (Part 1)"
 description: "What is Machine Learning?"
 date: "2022-06-05"
-categories: ["AI"]
-tags: []
+categories: ["AI","Angular","Business Central","IOT","Microsoft Dynamics","TypeScript"]
+tags: ""
 slug: "machinelearning1"
 image: "/assets/images/tensorflow-logo.svg"
 ---

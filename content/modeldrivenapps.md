@@ -2,10 +2,10 @@
 title: "Model Driven Apps"
 description: "A Short History of Microsoft Dynamics and Microsoft Dataverse"
 date: "2025-09-20"
-categories: ["Development"]
+categories: [".NET","AI","Angular","Microsoft Dynamics","Mobile","Power Platform","TypeScript"]
 image: "/assets/images/modeldrivenapps/hero.png"
 tags: ["cloud","dotnet","ai","ml","dynamics"]
-hidden: true
+hidden: "true"
 slug: "modeldrivenapps"
 ---
 

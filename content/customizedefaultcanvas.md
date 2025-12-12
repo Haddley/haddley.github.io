@@ -2,8 +2,8 @@
 title: "Copilot Studio"
 description: "Customize the look and feel of the bot default canvas"
 date: "2024-03-11"
-categories: []
-tags: []
+categories: ["AI","Angular","TypeScript"]
+tags: ""
 slug: "customizedefaultcanvas"
 image: "/assets/images/office-365-icon-500x500.png"
 ---

@@ -2,8 +2,8 @@
 title: "AL-Go-PTE"
 description: "Extensions"
 date: "2023-08-26"
-categories: ["Microsoft Dynamics","Business Central","DevOps","Microsoft Dynamics"]
-tags: []
+categories: ["Microsoft Dynamics","Business Central","DevOps","AI","Angular","Mobile","TypeScript"]
+tags: ""
 slug: "al-go-pte"
 image: "/assets/images/dynamics365-color.svg"
 ---

@@ -2,8 +2,8 @@
 title: "Custom Copilot Studio"
 description: "Customer Copilot"
 date: "2024-03-23"
-categories: ["Microsoft Dynamics","Business Central","Power Platform","Microsoft Dynamics"]
-tags: []
+categories: ["Microsoft Dynamics","Business Central","Power Platform","AI","Angular","Mobile","TypeScript"]
+tags: ""
 slug: "customcopilotstudio"
 image: "/assets/images/posts-meta.svg"
 ---

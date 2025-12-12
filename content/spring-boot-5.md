@@ -2,8 +2,8 @@
 title: "Java Spring Boot (Part 5)"
 description: "Spring for GraphQL"
 date: "2023-10-30"
-categories: ["Java","React","SQL","AWS"]
-tags: []
+categories: ["Java","React","SQL","AWS","AI","Angular","JavaScript","Microsoft 365","Mobile","TypeScript"]
+tags: ""
 slug: "spring-boot-5"
 image: "/assets/images/spring-framework-logo-70-no.svg"
 ---

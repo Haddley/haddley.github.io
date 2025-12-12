@@ -2,8 +2,8 @@
 title: "Machine Learning (Part 6)"
 description: "Splitting into training and test dataframes"
 date: "2022-06-11"
-categories: ["AI"]
-tags: []
+categories: ["AI","Angular","TypeScript"]
+tags: ""
 slug: "machinelearning6"
 image: "/assets/images/tensorflow-logo.svg"
 ---

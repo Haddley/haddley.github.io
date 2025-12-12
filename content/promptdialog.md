@@ -2,11 +2,11 @@
 title: "Business Central (Part 27)"
 description: "Prompt Dialog (Part 1)"
 date: "2024-05-24"
-categories: ["Microsoft Dynamics","Business Central","AI","Microsoft Dynamics"]
-tags: []
+categories: ["Microsoft Dynamics","Business Central","AI","Angular","TypeScript"]
+tags: ""
 slug: "promptdialog"
 image: "/assets/images/posts-meta.svg"
-hidden: false
+hidden: "false"
 ---
 
 

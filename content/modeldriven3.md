@@ -2,8 +2,8 @@
 title: "Model Driven Apps (Part 3)"
 description: "JavaScript to update a Business Process Flow Stage"
 date: "2023-10-08"
-categories: ["JavaScript","Power Platform","AI"]
-tags: []
+categories: ["JavaScript","Power Platform","AI","Angular","Java","Mobile","TypeScript"]
+tags: ""
 slug: "modeldriven3"
 image: "/assets/images/office-365-icon-500x500.png"
 ---

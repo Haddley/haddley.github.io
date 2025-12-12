@@ -2,10 +2,10 @@
 title: "Microsoft Dataverse FetchXML"
 description: "Microsoft Dataverse FetchXML"
 date: "2025-09-20"
-categories: ["Development"]
+categories: ["AI","Angular","Power Platform","SQL","TypeScript"]
 image: "/assets/images/dataversefetchxml/hero.png"
 tags: ["sql","ml"]
-hidden: true
+hidden: "true"
 slug: "dataversefetchxml"
 ---
 

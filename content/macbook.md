@@ -2,10 +2,10 @@
 title: "Apple MacBook Air with M2 chip"
 description: "Train and evaluate deep learning models"
 date: "2025-09-20"
-categories: ["Development"]
+categories: ["AI","Angular","Mobile","Python"]
 image: "/assets/images/macbook/hero.png"
 tags: ["python","ai"]
-hidden: true
+hidden: "true"
 slug: "macbook"
 ---
 

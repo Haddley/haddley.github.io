@@ -2,8 +2,8 @@
 title: "Microsoft Graph"
 description: "Graph Explorer"
 date: "2022-05-26"
-categories: ["Microsoft 365","Microsoft Dynamics"]
-tags: []
+categories: ["Microsoft 365","Microsoft Dynamics","Angular","Azure","Mobile","TypeScript","AI"]
+tags: ""
 slug: "microsoftgraph"
 image: "/assets/images/office-365-icon-500x500.png"
 ---

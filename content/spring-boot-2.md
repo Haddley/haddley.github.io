@@ -2,8 +2,8 @@
 title: "Java Spring Boot (Part 2)"
 description: "References"
 date: "2023-10-26"
-categories: ["Azure","Java","DevOps"]
-tags: []
+categories: ["Azure","Java","DevOps","AI","Angular","Mobile","TypeScript"]
+tags: ""
 slug: "spring-boot-2"
 image: "/assets/images/spring-framework-logo-70-no.svg"
 ---

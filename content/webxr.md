@@ -2,8 +2,8 @@
 title: "WebXR"
 description: "Create Augmented Reality Experiences."
 date: "2022-04-22"
-categories: ["JavaScript"]
-tags: []
+categories: ["JavaScript","AI","Angular","TypeScript"]
+tags: ""
 slug: "webxr"
 image: "/assets/images/34385910-400x400.png"
 ---

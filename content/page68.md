@@ -2,10 +2,10 @@
 title: "Machine Learning (Part 7)"
 description: "Baseball Signals"
 date: "2025-09-20"
-categories: ["Development"]
+categories: ["AI","Angular","Python","TypeScript"]
 image: "/assets/images/page68/hero.png"
 tags: ["ai","machine learning"]
-hidden: true
+hidden: "true"
 slug: "page68"
 ---
 

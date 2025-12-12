@@ -2,8 +2,8 @@
 title: "Power Pages (Part 1)"
 description: "Sales Orders"
 date: "2024-10-26"
-categories: ["Microsoft Dynamics","Business Central","Power Platform","Microsoft Dynamics"]
-tags: []
+categories: ["Microsoft Dynamics","Business Central","Power Platform","Angular","TypeScript"]
+tags: ""
 slug: "powerpages1"
 image: "/assets/images/powerpages-scalable.svg"
 ---

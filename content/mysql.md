@@ -2,8 +2,8 @@
 title: "MySQL"
 description: "Connecting to MySQL from JavaScript"
 date: "2021-11-14"
-categories: ["SQL"]
-tags: []
+categories: ["SQL","AI","Angular","Java","JavaScript","TypeScript"]
+tags: ""
 slug: "mysql"
 image: "/assets/images/includes-mysql-5646x2872.png"
 ---

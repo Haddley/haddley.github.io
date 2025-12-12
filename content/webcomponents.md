@@ -2,8 +2,8 @@
 title: "Web Components"
 description: "A set of web technologies that allow users to create HTML elements."
 date: "2022-02-10"
-categories: ["React"]
-tags: []
+categories: ["React",".NET","AI","Business Central","Mobile","TypeScript"]
+tags: ""
 slug: "webcomponents"
 image: "/assets/images/web-components-logo.svg"
 ---

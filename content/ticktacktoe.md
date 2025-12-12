@@ -2,8 +2,8 @@
 title: "Multiplayer Tick-Tack-Toe"
 description: "Creating a new firebase project"
 date: "2023-05-10"
-categories: ["AI","React"]
-tags: []
+categories: ["AI","React","Angular","Java","JavaScript","SQL","TypeScript"]
+tags: ""
 slug: "ticktacktoe"
 image: "/assets/images/logo-lockup-firebase-vertical.svg"
 ---

@@ -2,10 +2,10 @@
 title: "Configure Copilot with authentication"
 description: "Configure Copilot with authentication"
 date: "2025-09-20"
-categories: ["Development"]
+categories: ["AI","Angular","Azure","DevOps","TypeScript"]
 image: "/assets/images/configurecopilotwithauthentication/hero.png"
 tags: ["azure","docker","ai","ml","git"]
-hidden: true
+hidden: "true"
 slug: "configurecopilotwithauthentication"
 ---
 

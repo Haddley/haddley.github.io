@@ -2,8 +2,8 @@
 title: "Azure AI service"
 description: "Azure OpenAl"
 date: "2025-02-04"
-categories: ["Azure","AI"]
-tags: []
+categories: ["Azure","AI","Angular","TypeScript"]
+tags: ""
 slug: "azureopenal"
 image: "/assets/images/azurex70x75.svg"
 ---

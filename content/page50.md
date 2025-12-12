@@ -2,10 +2,10 @@
 title: "Next.js (Part 4)"
 description: "next-pwa"
 date: "2025-09-20"
-categories: ["Web Development"]
+categories: ["AWS","JavaScript","Mobile"]
 image: "/assets/images/page50/hero.png"
-tags: ["aws"]
-hidden: true
+tags: "aws"
+hidden: "true"
 slug: "page50"
 ---
 

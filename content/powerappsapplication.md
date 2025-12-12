@@ -2,8 +2,8 @@
 title: "A Power Apps Application"
 description: "Power Apps Application."
 date: "2021-07-14"
-categories: ["Power Platform","React"]
-tags: []
+categories: ["Power Platform","React","AI","Angular","Mobile","TypeScript"]
+tags: ""
 slug: "powerappsapplication"
 image: "/assets/images/office-365-icon-500x500.png"
 ---

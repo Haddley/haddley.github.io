@@ -2,8 +2,8 @@
 title: "ASP.NET Core"
 description: "Create Razor Pages with ASP.NET Core."
 date: "2023-03-21"
-categories: [".NET","SQL"]
-tags: []
+categories: [".NET","SQL","AI","Angular","Mobile","TypeScript"]
+tags: ""
 slug: "aspnet-core"
 image: "/assets/images/net-logo.svg"
 ---

@@ -2,8 +2,8 @@
 title: "Angular Firebase"
 description: "Creating a new firebase project"
 date: "2023-04-25"
-categories: ["Angular","TypeScript","React","JavaScript"]
-tags: []
+categories: ["Angular","TypeScript","React","JavaScript","AI","Mobile"]
+tags: ""
 slug: "angularfirebase"
 image: "/assets/images/logo-lockup-firebase-vertical.svg"
 ---

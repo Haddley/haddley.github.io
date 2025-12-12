@@ -2,8 +2,8 @@
 title: ".NET Core (Part 2)"
 description: "Creating a Blazor App that calls Microsoft Graph."
 date: "2023-03-15"
-categories: [".NET","Microsoft 365","Azure","Microsoft Dynamics"]
-tags: []
+categories: [".NET","Microsoft 365","Azure","Microsoft Dynamics","AI","Angular","Mobile","TypeScript"]
+tags: ""
 slug: "dotnet-core-part2"
 image: "/assets/images/net-logo.svg"
 ---

@@ -2,8 +2,8 @@
 title: "Voice Kit 3"
 description: "Adding Commands"
 date: "2025-10-18"
-categories: ["Python","AI"]
-tags: []
+categories: ["Python","AI","Angular","IOT","TypeScript"]
+tags: ""
 slug: "voicekit3"
 image: "/assets/images/raspberry-pi-logo.svg"
 ---

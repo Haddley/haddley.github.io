@@ -2,8 +2,8 @@
 title: "Leaflet"
 description: "An open-source JavaScript libraryfor mobile-friendly interactive maps"
 date: "2022-02-21"
-categories: ["Maps","Azure"]
-tags: []
+categories: ["Azure","AI","Angular","Java","JavaScript","Microsoft 365","Mobile","TypeScript"]
+tags: ""
 slug: "leaflet"
 image: "/assets/images/leaflet-upic-200x200.png"
 ---

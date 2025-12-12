@@ -2,8 +2,8 @@
 title: "Business Central Microsoft Graph"
 description: "Financials"
 date: "2023-12-18"
-categories: ["Microsoft Dynamics","Business Central","Microsoft 365","Microsoft Dynamics"]
-tags: []
+categories: ["Microsoft Dynamics","Business Central","Microsoft 365","AI","Angular","Mobile","TypeScript"]
+tags: ""
 slug: "businesscentralmicrosoftgraph"
 image: "/assets/images/posts-meta.svg"
 ---

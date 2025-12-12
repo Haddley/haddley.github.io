@@ -2,8 +2,8 @@
 title: "Custom Virtual Tables"
 description: "Customer Content Virtual Tables"
 date: "2024-05-07"
-categories: ["Power Platform","AI","Microsoft Dynamics","Business Central"]
-tags: []
+categories: ["Power Platform","AI","Microsoft Dynamics","Business Central","Angular","Mobile","TypeScript"]
+tags: ""
 slug: "customtvirtualtables"
 image: "/assets/images/office-365-icon-500x500.png"
 ---

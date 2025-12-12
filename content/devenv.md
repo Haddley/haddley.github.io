@@ -2,8 +2,8 @@
 title: "Business Central (Part 27)"
 description: "Development Environment"
 date: "2025-11-17"
-categories: ["Business Central"]
-tags: []
+categories: ["Business Central","AI","Angular","DevOps","Microsoft Dynamics","TypeScript"]
+tags: ""
 slug: "devenv"
 image: "/assets/images/posts-meta.svg"
 ---

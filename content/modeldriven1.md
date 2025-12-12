@@ -2,8 +2,8 @@
 title: "Model Driven Apps (Part 1)"
 description: "Users"
 date: "2023-09-18"
-categories: ["Power Platform","DevOps","Microsoft 365"]
-tags: []
+categories: ["Power Platform","DevOps","Microsoft 365","AI","Angular","Mobile","TypeScript"]
+tags: ""
 slug: "modeldriven1"
 image: "/assets/images/office-365-icon-500x500.png"
 ---

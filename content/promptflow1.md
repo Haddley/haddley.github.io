@@ -2,8 +2,8 @@
 title: "Prompt Flow (Part 1)"
 description: "Setup"
 date: "2024-06-11"
-categories: ["AI","Python","DevOps","Azure"]
-tags: []
+categories: ["AI","Python","DevOps","Azure",".NET","Angular","Mobile","TypeScript"]
+tags: ""
 slug: "promptflow1"
 image: "/assets/images/logo.svg"
 ---

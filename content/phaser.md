@@ -2,8 +2,8 @@
 title: "Phaser"
 description: "2D game framework used for making HTML5 games"
 date: "2022-01-23"
-categories: ["JavaScript",".NET"]
-tags: []
+categories: ["JavaScript",".NET","AI","Angular","TypeScript"]
+tags: ""
 slug: "phaser"
 image: "/assets/images/phaser-logo-1836x1530.png"
 ---

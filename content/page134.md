@@ -2,10 +2,10 @@
 title: "Dynamics 365 Sales (Part 1)"
 description: "Updating the Sales Insights form"
 date: "2025-09-20"
-categories: ["Business Central"]
+categories: ["Business Central","AI","Angular","Microsoft Dynamics","Mobile","Power Platform","TypeScript"]
 image: "/assets/images/page134/hero.png"
 tags: ["ai","business central","dynamics"]
-hidden: true
+hidden: "true"
 slug: "page134"
 ---
 

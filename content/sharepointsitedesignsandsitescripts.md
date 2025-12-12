@@ -2,8 +2,8 @@
 title: "SharePoint site designs and site scripts"
 description: "SharePoint users and administrators have long appreciated the opportunity to reuse SharePoint Site Templates."
 date: "2021-02-15"
-categories: ["Microsoft 365"]
-tags: []
+categories: ["Microsoft 365","Angular","JavaScript","Mobile","TypeScript"]
+tags: ""
 slug: "sharepointsitedesignsandsitescripts"
 image: "/assets/images/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png"
 ---

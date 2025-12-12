@@ -2,8 +2,8 @@
 title: "Add a Purchase Order"
 description: "I used Patch to add a Business Central Purchase Order and to add Purchase Order Lines"
 date: "2024-02-21"
-categories: ["Microsoft Dynamics","Business Central","Power Platform"]
-tags: []
+categories: ["Microsoft Dynamics","Business Central","Power Platform","Angular","Mobile","TypeScript"]
+tags: ""
 slug: "addapurchaseorder"
 image: "/assets/images/office-365-icon-500x500.png"
 ---

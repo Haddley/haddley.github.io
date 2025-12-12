@@ -2,8 +2,8 @@
 title: "Sentence Similarity"
 description: "Sentence Similarity"
 date: "2023-07-19"
-categories: ["AI"]
-tags: []
+categories: ["AI","Angular","Business Central","TypeScript"]
+tags: ""
 slug: "sentencesimilarity"
 image: "/assets/images/chatgpt-logo.svg"
 ---

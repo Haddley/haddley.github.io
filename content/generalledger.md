@@ -2,8 +2,8 @@
 title: "General Ledger"
 description: "Purchase"
 date: "2023-12-11"
-categories: ["Microsoft Dynamics","Business Central","Microsoft Dynamics"]
-tags: []
+categories: ["Microsoft Dynamics","Business Central","AI","Angular","IOT","TypeScript"]
+tags: ""
 slug: "generalledger"
 image: "/assets/images/dynamics365-color.svg"
 ---

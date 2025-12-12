@@ -2,8 +2,8 @@
 title: "Machine Learning (Part 3)"
 description: "Creating models"
 date: "2022-06-05"
-categories: ["AI","DevOps"]
-tags: []
+categories: ["AI","DevOps","Angular","Business Central","IOT","JavaScript","Mobile","TypeScript"]
+tags: ""
 slug: "machinelearning3"
 image: "/assets/images/tensorflow-logo.svg"
 ---

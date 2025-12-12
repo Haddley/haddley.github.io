@@ -2,8 +2,8 @@
 title: "Power Apps Custom Components"
 description: "Create reusable Power Apps Components."
 date: "2021-07-13"
-categories: ["Power Platform","React"]
-tags: []
+categories: ["Power Platform","React","Angular","Mobile","TypeScript"]
+tags: ""
 slug: "customcomponents"
 image: "/assets/images/office-365-icon-500x500.png"
 ---

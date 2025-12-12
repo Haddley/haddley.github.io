@@ -2,8 +2,8 @@
 title: "Business Central (Part 26)"
 description: "Integration Tables"
 date: "2024-12-22"
-categories: ["Microsoft Dynamics","Business Central","Microsoft Dynamics","Power Platform"]
-tags: []
+categories: ["Microsoft Dynamics","Business Central","Power Platform","Angular","Mobile","TypeScript"]
+tags: ""
 slug: "businesscentralpart26integrationtable"
 image: "/assets/images/posts-meta.svg"
 ---

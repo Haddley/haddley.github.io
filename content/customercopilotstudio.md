@@ -2,10 +2,10 @@
 title: "Customer Copilot Studio"
 description: "Business Central Customer CopilotUsing Copilot Studio"
 date: "2025-09-20"
-categories: ["Business Central"]
+categories: ["Business Central","AI","Angular","Microsoft Dynamics","Mobile","TypeScript"]
 image: "/assets/images/customercopilotstudio/hero.png"
 tags: ["ai","business central","dynamics"]
-hidden: true
+hidden: "true"
 slug: "customercopilotstudio"
 ---
 

@@ -2,8 +2,8 @@
 title: "Raspberry Pi GPIO"
 description: "Raspberry Pi GPIO"
 date: "2023-07-22"
-categories: ["Python"]
-tags: []
+categories: ["Python","AI","Angular","IOT","TypeScript"]
+tags: ""
 slug: "pi2"
 image: "/assets/images/raspberry-pi-logo.svg"
 ---

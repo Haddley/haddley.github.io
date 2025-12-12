@@ -2,8 +2,8 @@
 title: "React and ASP.NET Core"
 description: "An ASP.NET Core backend and a React frontend."
 date: "2023-03-22"
-categories: ["React",".NET"]
-tags: []
+categories: ["React",".NET","AI","Angular","JavaScript","Mobile","TypeScript"]
+tags: ""
 slug: "reactandasp.net"
 image: "/assets/images/logo512-512x512.png"
 ---

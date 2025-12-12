@@ -2,8 +2,8 @@
 title: "Machine Learning (Part 5)"
 description: "Excel"
 date: "2022-06-11"
-categories: ["AI"]
-tags: []
+categories: ["AI","Angular","TypeScript"]
+tags: ""
 slug: "machinelearning5"
 image: "/assets/images/tensorflow-logo.svg"
 ---

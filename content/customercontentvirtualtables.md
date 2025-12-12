@@ -2,10 +2,10 @@
 title: "Customer Content Virtual Tables"
 description: "Customer Content Virtual Tables"
 date: "2025-09-20"
-categories: ["Development"]
+categories: ["AI","Angular","Business Central","Mobile","Power Platform","TypeScript"]
 image: "/assets/images/customercontentvirtualtables/hero.png"
 tags: ["ai","business central","power platform"]
-hidden: true
+hidden: "true"
 slug: "customercontentvirtualtables"
 ---
 

@@ -2,10 +2,10 @@
 title: "Page 55"
 description: "References"
 date: "2025-09-20"
-categories: ["Development"]
+categories: ["TypeScript"]
 image: "/assets/images/page55/hero.png"
-tags: []
-hidden: true
+tags: ""
+hidden: "true"
 slug: "page55"
 ---
 

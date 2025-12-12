@@ -2,8 +2,8 @@
 title: "Power Apps, Custom Connectors and Application Registrations"
 description: "Power Apps, Custom Connectors and Application Registrations"
 date: "2021-08-09"
-categories: ["Azure","JavaScript","Power Platform"]
-tags: []
+categories: ["Azure","JavaScript","Power Platform","Angular","Mobile","TypeScript","Java"]
+tags: ""
 slug: "customconnectorsappregistrations"
 image: "/assets/images/office-365-icon-500x500.png"
 ---

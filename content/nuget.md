@@ -2,8 +2,8 @@
 title: "NuGet C#"
 description: "Create, publish and consume a NuGet package using C#."
 date: "2021-02-27"
-categories: [".NET","DevOps"]
-tags: []
+categories: [".NET","DevOps","AI","Angular","Microsoft 365","Microsoft Dynamics","TypeScript"]
+tags: ""
 slug: "nuget"
 image: "/assets/images/logo-og-600x600.png"
 ---

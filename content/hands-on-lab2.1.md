@@ -2,8 +2,8 @@
 title: "Hands-on-Lab 2.1"
 description: "Create and configure a new company"
 date: "2023-11-22"
-categories: ["Microsoft Dynamics","Business Central","Microsoft Dynamics"]
-tags: []
+categories: ["Microsoft Dynamics","Business Central","Angular","SQL","TypeScript"]
+tags: ""
 slug: "hands-on-lab2.1"
 image: "/assets/images/hands-on-lab2.1/dynamics365-color.svg"
 ---

@@ -2,8 +2,8 @@
 title: "Copilot Embed Code"
 description: "An HTML page to host my Blog Copilot"
 date: "2024-03-11"
-categories: []
-tags: []
+categories: ["AI","Angular","TypeScript"]
+tags: ""
 slug: "copilotembedcode"
 image: "/assets/images/office-365-icon-500x500.png"
 ---

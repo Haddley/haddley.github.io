@@ -2,8 +2,8 @@
 title: "Purchase Invoice"
 description: "Purchase Invoice"
 date: "2023-12-14"
-categories: ["Microsoft Dynamics","Business Central","Microsoft Dynamics"]
-tags: []
+categories: ["Microsoft Dynamics","Business Central","AI","Angular","IOT","TypeScript"]
+tags: ""
 slug: "purchaseinvoice"
 image: "/assets/images/posts-meta.svg"
 ---

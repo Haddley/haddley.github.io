@@ -2,10 +2,10 @@
 title: "Fine Tuning"
 description: "Fine Tuning"
 date: "2025-09-20"
-categories: ["Development"]
+categories: [".NET","AI","Angular","TypeScript"]
 image: "/assets/images/finetuning/hero.png"
-tags: ["ai"]
-hidden: true
+tags: "ai"
+hidden: "true"
 slug: "finetuning"
 ---
 

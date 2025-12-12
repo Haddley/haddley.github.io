@@ -2,8 +2,8 @@
 title: "Meta"
 description: "Prompt Engineering"
 date: "2023-08-08"
-categories: []
-tags: []
+categories: ["AI","Angular","TypeScript"]
+tags: ""
 slug: "promptengineering"
 image: "/assets/images/mediamodifier-design.png"
 ---

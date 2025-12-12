@@ -2,8 +2,8 @@
 title: "Java Spring Boot (Part 6)"
 description: "GitHub"
 date: "2023-10-31"
-categories: ["Java"]
-tags: []
+categories: ["Java","Angular","Mobile","TypeScript"]
+tags: ""
 slug: "spring-boot-6"
 image: "/assets/images/spring-framework-logo-70-no.svg"
 ---

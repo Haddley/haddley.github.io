@@ -2,8 +2,8 @@
 title: "Gingerbread House"
 description: "holiday.py"
 date: "2023-12-26"
-categories: ["Python"]
-tags: []
+categories: ["Python","IOT","Angular"]
+tags: ""
 slug: "gingerbreadhouse"
 image: "/assets/images/raspberry-pi-logo.svg"
 ---

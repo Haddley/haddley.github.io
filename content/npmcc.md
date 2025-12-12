@@ -2,8 +2,8 @@
 title: "npm C++"
 description: "Create and publish an npm module using C++."
 date: "2021-02-26"
-categories: ["JavaScript","DevOps"]
-tags: []
+categories: ["JavaScript","DevOps","AI","Angular","Microsoft Dynamics","TypeScript"]
+tags: ""
 slug: "npmcc"
 image: "/assets/images/6078720-200x200.png"
 ---

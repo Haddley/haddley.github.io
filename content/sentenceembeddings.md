@@ -2,10 +2,10 @@
 title: "Sentence Embeddings"
 description: "Sentence Embeddings"
 date: "2025-09-20"
-categories: ["Development"]
+categories: ["AI","Angular","Business Central","Mobile"]
 image: "/assets/images/sentenceembeddings/hero.png"
 tags: ["ai","machine learning"]
-hidden: true
+hidden: "true"
 slug: "sentenceembeddings"
 ---
 

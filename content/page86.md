@@ -2,10 +2,10 @@
 title: "ASP.NET 5 Visual Basic"
 description: "Generate Context and Entity Classes from an Existing Database"
 date: "2025-09-20"
-categories: ["Development"]
+categories: [".NET","AI","Angular","Azure","DevOps","Mobile","SQL","TypeScript"]
 image: "/assets/images/page86/hero.png"
 tags: ["azure","docker","dotnet","sql","database"]
-hidden: true
+hidden: "true"
 slug: "page86"
 ---
 

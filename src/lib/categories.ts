@@ -14,7 +14,7 @@ export const categories: Category[] = [
     slug: 'dotnet',
     name: '.NET',
     description: 'ASP.NET, Blazor, C#, and .NET development',
-    icon: '🏗️',
+    icon: '⛁',
     color: 'bg-purple-100 text-purple-800',
     aliases: ['net', 'csharp', 'C#', 'aspnet', 'blazor']
   },

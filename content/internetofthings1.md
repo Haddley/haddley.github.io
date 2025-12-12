@@ -2,8 +2,8 @@
 title: "Internet of Things (Part 1)"
 description: "ESP8266 is a low-cost Wi-Fi microchip, with a full TCP/IP stack and microcontroller capability."
 date: "2021-03-03"
-categories: ["DevOps"]
-tags: []
+categories: ["DevOps",".NET","Angular","IOT","JavaScript","TypeScript"]
+tags: ""
 slug: "internetofthings1"
 image: "/assets/images/iot-microchip.svg"
 ---

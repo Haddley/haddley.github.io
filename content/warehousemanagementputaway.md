@@ -2,8 +2,8 @@
 title: "Warehouse Management Put away"
 description: "Warehouse Management - Put-away"
 date: "2023-08-19"
-categories: ["Microsoft Dynamics","Business Central"]
-tags: []
+categories: ["Microsoft Dynamics","Business Central","Angular","TypeScript"]
+tags: ""
 slug: "warehousemanagementputaway"
 image: "/assets/images/dynamics365-color.svg"
 ---

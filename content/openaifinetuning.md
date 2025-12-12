@@ -2,8 +2,8 @@
 title: "OpenAI"
 description: "Fine Tuning"
 date: "2025-10-23"
-categories: ["AI","Python"]
-tags: []
+categories: ["AI","Python",".NET","Angular","JavaScript","Mobile","TypeScript"]
+tags: ""
 slug: "openaifinetuning"
 image: "/assets/images/chatgpt-logo.svg"
 ---

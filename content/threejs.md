@@ -2,8 +2,8 @@
 title: "Three.js"
 description: "A JavaScript-based WebGL engine"
 date: "2023-03-05"
-categories: ["JavaScript"]
-tags: []
+categories: ["JavaScript","AI","Angular","Java","Microsoft 365","Mobile","TypeScript"]
+tags: ""
 slug: "threejs"
 image: "/assets/images/three.js-icon.svg"
 ---

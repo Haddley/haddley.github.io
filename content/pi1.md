@@ -2,8 +2,8 @@
 title: "Raspberry Pi Imager"
 description: "Raspberry Pi Imager Advanced Options"
 date: "2023-07-22"
-categories: []
-tags: []
+categories: ["Angular","IOT","TypeScript"]
+tags: ""
 slug: "pi1"
 image: "/assets/images/raspberry-pi-logo.svg"
 ---

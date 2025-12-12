@@ -2,8 +2,8 @@
 title: "Sentiment Analysis"
 description: "Sentiment Analysis"
 date: "2023-07-19"
-categories: ["AI","JavaScript"]
-tags: []
+categories: ["AI","JavaScript","Angular","Business Central","Mobile","Python","TypeScript"]
+tags: ""
 slug: "sentimentanalysis"
 image: "/assets/images/chatgpt-logo.svg"
 ---

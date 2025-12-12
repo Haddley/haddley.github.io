@@ -2,8 +2,8 @@
 title: "Business Central Admin Center"
 description: "The Business Central Administration Center"
 date: "2023-08-18"
-categories: ["Microsoft Dynamics","Business Central","Microsoft Dynamics"]
-tags: []
+categories: ["Microsoft Dynamics","Business Central","Angular","Python","TypeScript"]
+tags: ""
 slug: "businesscentraladmincenter"
 image: "/assets/images/dynamics365-color.svg"
 ---

@@ -2,8 +2,8 @@
 title: "DevOps Starter GitHub actions"
 description: "Everything you need for developing, deploying, and monitoring your application."
 date: "2021-04-25"
-categories: ["JavaScript","DevOps","Azure"]
-tags: []
+categories: ["JavaScript","DevOps","Azure","AI","Angular","Mobile","TypeScript"]
+tags: ""
 slug: "devopsstartergithubactions"
 image: "/assets/images/svgexport-22.svg"
 ---

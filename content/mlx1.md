@@ -2,8 +2,8 @@
 title: "MLX 1"
 description: "An Apple Project"
 date: "2025-11-06"
-categories: ["AI","Python"]
-tags: []
+categories: ["AI","Python","Angular","Mobile","TypeScript"]
+tags: ""
 slug: "mlx1"
 image: "/assets/images/apple-logo-black.svg"
 ---

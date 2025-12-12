@@ -2,8 +2,8 @@
 title: "LangChain (RAG)"
 description: "Using LangChain to create a medical report application"
 date: "2023-07-21"
-categories: ["AI","Python"]
-tags: []
+categories: ["AI","Python","Angular","Mobile","TypeScript"]
+tags: ""
 slug: "langchain"
 image: "/assets/images/chatgpt-logo.svg"
 ---

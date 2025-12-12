@@ -2,8 +2,8 @@
 title: "DeepSeek R1"
 description: "Running locally"
 date: "2025-05-24"
-categories: ["AI"]
-tags: []
+categories: ["AI","Angular","Mobile","TypeScript"]
+tags: ""
 slug: "ollamadeepsekr1applemacbookinstall"
 image: "/assets/images/254932576-0d0b44e2-8f4a-4e99-9b52-a5c1c741c8f7-844x844.png"
 ---

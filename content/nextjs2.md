@@ -2,8 +2,8 @@
 title: "Next.js (Part 2)"
 description: "getStaticProps, getServerSideProps, getStaticPaths and useSWR"
 date: "2021-11-06"
-categories: ["React"]
-tags: []
+categories: ["React","AI","Angular","JavaScript","Mobile","TypeScript"]
+tags: ""
 slug: "nextjs2"
 image: "/assets/images/2560px-nextjs-logo.svg-1536x920.png"
 ---

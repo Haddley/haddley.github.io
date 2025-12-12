@@ -2,8 +2,8 @@
 title: "A Power Apps Custom Connector"
 description: "Create a GitHub Repository"
 date: "2021-06-27"
-categories: ["Power Platform",".NET","Azure"]
-tags: []
+categories: ["Power Platform",".NET","Azure","Angular","Mobile","TypeScript"]
+tags: ""
 slug: "powerappswithrest"
 image: "/assets/images/office-365-icon-500x500.png"
 ---

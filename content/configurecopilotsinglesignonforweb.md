@@ -2,8 +2,8 @@
 title: "Configure Copilot single sign-on for Web"
 description: "Publish|Configure channels"
 date: "2024-03-16"
-categories: ["Power Platform",".NET","Microsoft 365"]
-tags: []
+categories: ["Power Platform",".NET","Microsoft 365","AI","Angular","Mobile","TypeScript"]
+tags: ""
 slug: "configurecopilotsinglesignonforweb"
 image: "/assets/images/office-365-icon-500x500.png"
 ---

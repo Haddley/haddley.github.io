@@ -2,8 +2,8 @@
 title: "Amazon Fargate"
 description: "Pay-as-you-go"
 date: "2021-09-20"
-categories: ["AWS","DevOps"]
-tags: []
+categories: ["AWS","DevOps",".NET","AI","Angular","Mobile","TypeScript"]
+tags: ""
 slug: "amazonfargate"
 image: "/assets/images/amazonfargate/amazon-web-services-logo.svg"
 ---

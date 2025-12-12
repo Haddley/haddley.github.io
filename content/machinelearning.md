@@ -2,10 +2,10 @@
 title: "Machine Learning"
 description: "Finding patterns and making predictions"
 date: "2025-09-20"
-categories: ["AI/ML"]
+categories: ["AI","Angular","Business Central","JavaScript","SQL"]
 image: "/assets/images/machinelearning/hero.png"
 tags: ["sql","ai","machine learning"]
-hidden: true
+hidden: "true"
 slug: "machinelearning"
 ---
 

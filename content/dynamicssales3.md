@@ -2,8 +2,8 @@
 title: "Dynamics 365 Sales (Part 3)"
 description: "Adding a Warranty table"
 date: "2023-10-21"
-categories: ["Microsoft Dynamics","Power Platform"]
-tags: []
+categories: ["Microsoft Dynamics","Power Platform","AI","Angular","Mobile","TypeScript"]
+tags: ""
 slug: "dynamicssales3"
 image: "/assets/images/dynamics365-color.svg"
 ---

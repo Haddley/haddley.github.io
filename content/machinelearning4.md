@@ -2,8 +2,8 @@
 title: "Machine Learning (Part 4)"
 description: "Colab"
 date: "2022-06-08"
-categories: ["Python","AI"]
-tags: []
+categories: ["Python","AI","Angular","TypeScript"]
+tags: ""
 slug: "machinelearning4"
 image: "/assets/images/tensorflow-logo.svg"
 ---

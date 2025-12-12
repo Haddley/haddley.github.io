@@ -2,8 +2,8 @@
 title: "Context Injection"
 description: "Context Injection"
 date: "2023-07-19"
-categories: ["AI"]
-tags: []
+categories: ["AI","Angular","IOT","Mobile","SQL","TypeScript"]
+tags: ""
 slug: "contextinjection"
 image: "/assets/images/chatgpt-logo.svg"
 ---

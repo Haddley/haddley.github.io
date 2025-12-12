@@ -2,8 +2,8 @@
 title: "Dynamics 365 Sales (Part 1)"
 description: " the Account|Sales Insights form"
 date: "2023-10-21"
-categories: ["Microsoft Dynamics"]
-tags: []
+categories: ["Microsoft Dynamics","AI","Angular","Mobile","Power Platform","TypeScript"]
+tags: ""
 slug: "dynamicssales1"
 image: "/assets/images/dynamics365-color.svg"
 ---

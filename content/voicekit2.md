@@ -2,8 +2,8 @@
 title: "Voice Kit 2"
 description: "Google Assistant API"
 date: "2025-10-16"
-categories: ["Python","AI"]
-tags: []
+categories: ["Python","AI","Angular","IOT","JavaScript","Mobile","TypeScript"]
+tags: ""
 slug: "voicekit2"
 image: "/assets/images/raspberry-pi-logo.svg"
 ---

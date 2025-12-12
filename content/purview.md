@@ -2,8 +2,8 @@
 title: "Microsoft Purview"
 description: "Retention policy with adaptive scope"
 date: "2022-08-03"
-categories: ["Microsoft 365"]
-tags: []
+categories: ["Microsoft 365","Angular","Mobile","TypeScript"]
+tags: ""
 slug: "purview"
 image: "/assets/images/office-365-icon-500x500.png"
 ---

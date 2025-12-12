@@ -2,8 +2,8 @@
 title: "Plugin Actions"
 description: "A comprehensive guide covering plugin actions"
 date: "2024-02-24"
-categories: ["Power Platform"]
-tags: []
+categories: ["Power Platform","AI","Angular","TypeScript"]
+tags: ""
 slug: "pluginactions"
 image: "/assets/images/office-365-icon-500x500.png"
 ---

@@ -2,8 +2,8 @@
 title: "WebVR"
 description: "Create Virtual Reality Experiences."
 date: "2021-03-02"
-categories: []
-tags: []
+categories: ["AI","Angular","Java","JavaScript","TypeScript"]
+tags: ""
 slug: "webvr"
 image: "/assets/images/webvr-logo-square-512x512.png"
 ---

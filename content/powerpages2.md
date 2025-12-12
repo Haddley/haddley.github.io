@@ -2,8 +2,8 @@
 title: "Power Pages (Part 2)"
 description: "View, create, and edit orders"
 date: "2024-12-20"
-categories: []
-tags: []
+categories: ["Angular","Business Central","Microsoft Dynamics","TypeScript","Power Platform"]
+tags: ""
 slug: "powerpages2"
 image: "/assets/images/powerpages-scalable.svg"
 ---

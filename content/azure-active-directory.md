@@ -2,8 +2,8 @@
 title: "Azure Active Directory (Part 1)"
 description: "Using Microsoft Identity to Authenticate Users."
 date: "2021-03-29"
-categories: ["Azure","JavaScript","Microsoft 365"]
-tags: []
+categories: ["Azure","JavaScript","Microsoft 365","AI","Angular","Mobile","TypeScript"]
+tags: ""
 slug: "azure-active-directory"
 image: "/assets/images/azurex70x75.svg"
 ---

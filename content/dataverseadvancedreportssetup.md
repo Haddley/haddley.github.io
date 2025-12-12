@@ -2,8 +2,8 @@
 title: "Microsoft Dataverse Advanced Reports Setup"
 description: "Microsoft Dataverse Advanced Reports Setup"
 date: "2024-08-10"
-categories: ["SQL","Microsoft Dynamics","Power Platform"]
-tags: []
+categories: ["SQL","Microsoft Dynamics","Power Platform","Angular","TypeScript"]
+tags: ""
 slug: "dataverseadvancedreportssetup"
 image: "/assets/images/office-365-icon-500x500.png"
 ---

@@ -2,8 +2,8 @@
 title: "Model Driven Apps (Part 4)"
 description: "Power FX"
 date: "2023-10-09"
-categories: ["Power Platform"]
-tags: []
+categories: ["Power Platform","AI","Angular","Mobile","TypeScript"]
+tags: ""
 slug: "modeldriven4"
 image: "/assets/images/office-365-icon-500x500.png"
 ---

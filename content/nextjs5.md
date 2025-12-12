@@ -2,8 +2,8 @@
 title: "Next.js (Part 5)"
 description: "next-pwa and ionic"
 date: "2022-01-13"
-categories: ["TypeScript","React",".NET"]
-tags: []
+categories: ["TypeScript","React",".NET","AI","Angular","JavaScript","Mobile","Python"]
+tags: ""
 slug: "nextjs5"
 image: "/assets/images/2560px-nextjs-logo.svg-1536x920.png"
 ---

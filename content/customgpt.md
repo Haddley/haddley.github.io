@@ -2,8 +2,8 @@
 title: "OpenAI"
 description: "What are Custom GPTs?"
 date: "2025-10-03"
-categories: ["AI","Python"]
-tags: []
+categories: ["AI","Python","Angular","TypeScript"]
+tags: ""
 slug: "customgpt"
 image: "/assets/images/chatgpt-logo.svg"
 ---

@@ -2,8 +2,8 @@
 title: "Mac Screen Sharing"
 description: "Screen Sharing VNC"
 date: "2025-08-18"
-categories: []
-tags: []
+categories: ["Angular","Mobile","Python","TypeScript"]
+tags: ""
 slug: "macscreensharing"
 image: "/assets/images/apple-logo-black.svg"
 ---

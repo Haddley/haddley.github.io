@@ -2,11 +2,11 @@
 title: "Unsloth"
 description: "Open Source Fine Tuning"
 date: "2025-10-24"
-categories: ["AI","Python"]
-tags: []
+categories: ["AI","Python","Angular"]
+tags: ""
 slug: "unsloth"
 image: "/assets/images/unsloth sticker.png"
-hidden: true
+hidden: "true"
 ---
 
 
