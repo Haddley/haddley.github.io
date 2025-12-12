@@ -40,6 +40,23 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   return (
     <section data-bs-version="5.1" className="content2 cid-socNq9ZEoK" id="content2-q">
+      <style dangerouslySetInnerHTML={{__html: `
+        .post-card {
+          transition: all 0.3s ease;
+          border-radius: 12px;
+          overflow: hidden;
+        }
+        .post-card:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+        .post-card .item-img img {
+          transition: transform 0.3s ease;
+        }
+        .post-card:hover .item-img img {
+          transform: scale(1.05);
+        }
+      `}} />
       <div className="container">
         <div className="mbr-section-head">
           <h4 className="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
@@ -88,7 +105,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           <div className="row mt-4">
             {categoryPosts.map((post: BlogPost) => (
               <div key={post.slug} className="item features-image col-12 col-md-6 col-lg-4">
-                <div className="item-wrapper">
+                <div className="item-wrapper post-card">
                   <div className="item-img">
                     <Link href={`/posts/${post.slug}`}>
                       <Image

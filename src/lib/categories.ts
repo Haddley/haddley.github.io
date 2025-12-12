@@ -155,6 +155,22 @@ export const categories: Category[] = [
     aliases: ['ci-cd', 'continuous-integration', 'continuous-deployment', 'automation']
   },
   {
+    slug: 'mobile',
+    name: 'Mobile',
+    description: 'Mobile development, iOS, Android, and mobile app development',
+    icon: '📱',
+    color: 'bg-pink-100 text-pink-800',
+    aliases: ['ios', 'android', 'mobile-app']
+  },
+  {
+    slug: 'iot',
+    name: 'IOT',
+    description: 'Internet of Things, Raspberry Pi, Arduino, and embedded systems',
+    icon: '🔌',
+    color: 'bg-teal-100 text-teal-800',
+    aliases: ['raspberry-pi', 'arduino', 'internet-of-things']
+  },
+  {
     slug: 'maps',
     name: 'Maps',
     description: 'A Geographic Information System is a powerful computer-based system designed to capture, store, manage, analyze, and visualize all types of geographic data',

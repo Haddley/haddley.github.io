@@ -1,7 +1,7 @@
 import { getVisibleBlogPosts, getVisibleAutomatedCategories, BlogPost } from '@/lib/posts';
 import { getCategoryByName } from '@/lib/categories';
 import Link from 'next/link';
-import Image from 'next/image';
+import PostSearch from '@/components/PostSearch';
 
 function categoryToSlug(categoryName: string): string {
   return categoryName
@@ -77,82 +77,25 @@ export default async function PostsPage() {
             transform: translateY(-4px) !important;
             box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5) !important;
           }
+          .post-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+          }
+          .post-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+          }
+          .post-card .item-img img {
+            transition: transform 0.3s ease;
+          }
+          .post-card:hover .item-img img {
+            transform: scale(1.05);
+          }
         `}} />
 
-        {/* Posts Grid */}
-        <div className="row mt-4">
-          {posts.map((post: BlogPost) => (
-            <div key={post.slug} className="item features-image col-12 col-md-6 col-lg-4">
-              <div className="item-wrapper">
-                <div className="item-img">
-                  <Link href={`/posts/${post.slug}`}>
-                    <Image
-                      src={post.image || '/assets/images/posts-meta.svg'}
-                      alt={post.title}
-                      width={300}
-                      height={200}
-                      className="img-fluid"
-                    />
-                  </Link>
-                </div>
-                <div className="item-content">
-                  <h5 className="item-title mbr-fonts-style display-5">
-                    <Link href={`/posts/${post.slug}`} className="text-primary">
-                      {post.title}
-                    </Link>
-                  </h5>
-                  <h6 className="item-subtitle mbr-fonts-style mt-1 display-7">
-                    <strong>Neil Haddley</strong>
-                    <em> • {new Date(post.date).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric'
-                    })}</em>
-                  </h6>
-                  <p className="mbr-text mbr-fonts-style mt-3 display-7">
-                    {post.description}
-                  </p>
-                  
-                  {/* Category Badges - Show automated categories if available, otherwise original category */}
-                  <div className="mt-2 mb-2">
-                    {post.categories && post.categories.length > 0 && (
-                      // Show automated categories with unique keys
-                      [...new Set(post.categories)].slice(0, 3).map((category) => (
-                        <span key={category} className="badge bg-primary me-1 mb-1">
-                          {category}
-                        </span>
-                      ))
-                    )}
-                    {post.categories && [...new Set(post.categories)].length > 3 && (
-                      <span className="badge bg-secondary me-1 mb-1" style={{ fontSize: '0.7rem' }}>
-                        +{[...new Set(post.categories)].length - 3} more
-                      </span>
-                    )}
-                    {post.tags.length > 0 && post.tags.slice(0, 2).map((tag) => (
-                      <span
-                        key={tag}
-                        className="badge bg-secondary me-1 mb-1"
-                        style={{ fontSize: '0.75rem' }}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                    {post.tags.length > 2 && (
-                      <span className="badge bg-outline-secondary me-1 mb-1" style={{ fontSize: '0.7rem' }}>
-                        +{post.tags.length - 2} more tags
-                      </span>
-                    )}
-                  </div>
-                </div>
-                <div className="mbr-section-btn item-footer mt-2">
-                  <Link href={`/posts/${post.slug}`} className="btn btn-primary item-btn display-7">
-                    Read More &gt;
-                  </Link>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* Search and Posts Grid */}
+        <PostSearch posts={posts} />
         
         {/* Statistics */}
         <div className="row mt-5">
