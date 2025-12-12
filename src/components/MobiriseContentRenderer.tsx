@@ -109,7 +109,7 @@ function processInlineMarkdown(text: string): React.ReactElement[] {
 }
 
 interface MobiriseParsedContent {
-  type: 'text' | 'image' | 'heading' | 'code' | 'references-header' | 'references' | 'table';
+  type: 'text' | 'image' | 'heading' | 'code' | 'references-header' | 'references' | 'table' | 'hr';
   content: string;
   description?: string;
   level?: number;
@@ -172,6 +172,25 @@ function parseMarkdownToMobirise(markdownContent: string): MobiriseParsedContent
     
     // Skip empty lines (only when not in code block)
     if (!trimmedLine) continue;
+
+    // Handle horizontal rules (---, ***, ___ with optional spaces)
+    if (/^(\*\s*){3,}$/.test(trimmedLine) || /^(\-\s*){3,}$/.test(trimmedLine) || /^(\_\s*){3,}$/.test(trimmedLine)) {
+      // Flush any accumulated text
+      if (currentTextContent.length > 0) {
+        sections.push({
+          type: 'text',
+          content: currentTextContent.join('\n')
+        });
+        currentTextContent = [];
+      }
+
+      sections.push({
+        type: 'hr',
+        content: ''
+      });
+
+      continue;
+    }
     
     // Handle images with descriptions
     if (trimmedLine.startsWith('![')) {
@@ -355,8 +374,8 @@ export default function MobiriseContentRenderer({ markdownContent }: MobiriseCon
                   <div className="row justify-content-center">
                     <div className="col-md-12 col-lg-10">
                       <h4 className="mbr-section-subtitle mbr-fonts-style mb-4 display-5">
-                        {section.content}
-                      </h4>
+                                {processInlineMarkdown(section.content)}
+                              </h4>
                     </div>
                   </div>
                 </div>
@@ -369,7 +388,7 @@ export default function MobiriseContentRenderer({ markdownContent }: MobiriseCon
                   <div className="row justify-content-center">
                     <div className="col-md-12 col-lg-10">
                       <h5 className="mbr-section-subtitle mbr-fonts-style mb-4 display-7 fw-bold">
-                        {section.content}
+                        {processInlineMarkdown(section.content)}
                       </h5>
                     </div>
                   </div>
@@ -391,6 +410,18 @@ export default function MobiriseContentRenderer({ markdownContent }: MobiriseCon
                         </span>
                       ))}
                     </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          );
+        } else if (section.type === 'hr') {
+          return (
+            <section key={index} className="content5 cid-content5" data-bs-version="5.1">
+              <div className="container">
+                <div className="row justify-content-center">
+                  <div className="col-md-12 col-lg-10">
+                    <hr />
                   </div>
                 </div>
               </div>
