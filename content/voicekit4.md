@@ -54,6 +54,17 @@ I started the service manually by typing:
 sudo systemctl start assist.service
 ```
 
+I checked the status of the service by typing:
+
+```bash
+sudo systemctl status assist.service
+```
+
+![](/assets/images/voicekit4/Screenshot 2025-12-15 125800.png)
+*sudo systemctl status assist.service*
+
+
+
 I rebooted my Raspberry Pi
 
 ## References
