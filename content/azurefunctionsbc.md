@@ -107,8 +107,8 @@ app.http('QRCodeGenerator', {
 }
 ```
 
-Azure Portal (Visual)
-Go to portal.azure.com
+## Azure Portal (Visual)
+I navigated to portal.azure.com
 
 I clicked + Create a resource
 
