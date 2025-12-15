@@ -115,10 +115,10 @@ I clicked + Create a resource
 ![](/assets/images/azurefunctionsbc/Screenshot 2025-12-15 143133.png)
 *+ Create a resource*
 
-I Clicked Function App|Create
+I clicked Function App|Create
 
 ![](/assets/images/azurefunctionsbc/Screenshot 2025-12-15 143149.png)
-*Click "Create"*
+*I clicked "Create"*
 
 ![](/assets/images/azurefunctionsbc/Screenshot 2025-12-15 143606.png)
 *Select a hosting option*
@@ -132,9 +132,6 @@ Name: qrcode-generator-function
 
 ![](/assets/images/azurefunctionsbc/Screenshot 2025-12-15 144553.png)
 *I clicked Create*
-
-![](/assets/images/azurefunctionsbc/Screenshot 2025-12-15 144904.png)
-*I clicked Go to resource*
 
 ![](/assets/images/azurefunctionsbc/Screenshot 2025-12-15 144904.png)
 *I clicked Go to resource*
