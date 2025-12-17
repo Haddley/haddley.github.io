@@ -109,7 +109,7 @@ function processInlineMarkdown(text: string): React.ReactElement[] {
 }
 
 interface MobiriseParsedContent {
-  type: 'text' | 'image' | 'heading' | 'code' | 'references-header' | 'references' | 'table' | 'hr';
+  type: 'text' | 'image' | 'video' | 'heading' | 'code' | 'references-header' | 'references' | 'table' | 'hr';
   content: string;
   description?: string;
   level?: number;
@@ -215,8 +215,12 @@ function parseMarkdownToMobirise(markdownContent: string): MobiriseParsedContent
           i++; // Skip the description line
         }
         
+        // Check if this is a video file
+        const videoExtensions = ['.mp4', '.webm', '.ogg', '.mov'];
+        const isVideo = videoExtensions.some(ext => imagePath.toLowerCase().endsWith(ext));
+        
         sections.push({
-          type: 'image',
+          type: isVideo ? 'video' : 'image',
           content: imagePath,
           description
         });
@@ -446,6 +450,35 @@ export default function MobiriseContentRenderer({ markdownContent }: MobiriseCon
                         }}
                         unoptimized={true}
                       />
+                      {section.description && (
+                        <p className="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                          {section.description}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          );
+        } else if (section.type === 'video') {
+          return (
+            <section key={index} className="image3 cid-image3" data-bs-version="5.1">
+              <div className="container">
+                <div className="row justify-content-center">
+                  <div className="col-12 col-lg-10">
+                    <div className="image-wrapper">
+                      <video 
+                        controls 
+                        autoPlay 
+                        loop
+                        muted
+                        style={{ width: '100%', height: 'auto' }}
+                        className="img-fluid"
+                      >
+                        <source src={section.content} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
                       {section.description && (
                         <p className="mbr-description mbr-fonts-style mt-2 align-center display-4">
                           {section.description}

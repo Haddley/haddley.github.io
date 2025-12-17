@@ -247,3 +247,5 @@ jobs:
 ## References
 
 - [Quickstart: Create and deploy function code to Azure using Visual Studio Code](https://learn.microsoft.com/en-us/azure/azure-functions/how-to-create-function-vs-code?tabs=go%2Cwindows&pivots=programming-language-javascript)
+
+- [Integrating Business Central with Azure services](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/integration-azure-overview)
