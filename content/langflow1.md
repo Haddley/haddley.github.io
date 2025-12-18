@@ -89,5 +89,5 @@ OpenAI's text-to-speech (TTS) technology is designed to convert written text int
 
 ## References
 
-- [Podcast](https://haddley.github.io/podcast/audio_customer_portal.mp3)
+- [Podcast](/assets/mp3/langflow1/audio_customer_portal.mp3)
 - [Doc2Podcast](https://github.com/misbahsy/Doc2Podcast)

@@ -1,8 +1,8 @@
 ---
 title: "Machine Learning (Part 1)"
-description: "What is Machine Learning?"
+description: "Hexapawn and Yolo"
 date: "2022-06-05"
-categories: ["AI","Angular","Business Central","IOT","Microsoft Dynamics","TypeScript"]
+categories: ["AI","IOT","Python"]
 tags: ""
 slug: "machinelearning1"
 image: "/assets/images/tensorflow-logo.svg"
@@ -23,6 +23,8 @@ This learning machine improves over time through [reinforcement learning](https:
 
 Reinforcement learning is a training method based on rewarding desired behaviors and/or punishing undesired ones (by removing a colored bead in this case).
 
+![](/assets/mp4/machinelearning1/machinelearning.mp4)
+*Matchbox Mini Chess Learning Machine*
 
 ## YOLO (you only look once)
 
@@ -33,3 +35,6 @@ Details of the Raspberry Pi setup are provided in Xiang Zhai's article [Deep Lea
 The YOLO v3 Tiny model was trained using [Supervised learning](https://www.ibm.com/cloud/learn/supervised-learning). A labelled set of photographs was used to train the model.
 
 The people at the science fair were less interested in the computer vision demonstration.
+
+![](/assets/mp4/machinelearning1/video-1654454580.mp4)
+*Yolo demonstration*

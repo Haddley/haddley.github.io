@@ -7,19 +7,37 @@ import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 // Function to get appropriate icon class based on URL
 function getIconForUrl(url: string): string {
-  const hostname = new URL(url).hostname.toLowerCase();
-  
-  if (hostname.includes('youtube.com') || hostname.includes('youtu.be')) {
-    return 'socicon-youtube socicon';
-  } else if (hostname.includes('microsoft.com') || hostname.includes('learn.microsoft.com')) {
-    return 'socicon-microsoft socicon';
-  } else if (hostname.includes('github.com')) {
-    return 'socicon-github socicon';
-  } else if (hostname.includes('amazon.com') || hostname.includes('aws.amazon.com')) {
-    return 'socicon-amazon socicon';
-  } else if (hostname.includes('wikimedia.org') || hostname.includes('commons.wikimedia.org')) {
-    return 'mbri-pages';
-  } else {
+  try {
+    // Handle relative URLs by checking if they start with /
+    if (url.startsWith('/')) {
+      // Check file extension for relative URLs
+      if (url.match(/\.(mp3|wav|ogg|m4a)$/i)) {
+        return 'mbri-music';
+      } else if (url.match(/\.(mp4|webm|mov)$/i)) {
+        return 'mbri-video';
+      } else if (url.match(/\.(pdf|doc|docx)$/i)) {
+        return 'mbri-file';
+      }
+      return 'mbri-pages';
+    }
+    
+    const hostname = new URL(url).hostname.toLowerCase();
+    
+    if (hostname.includes('youtube.com') || hostname.includes('youtu.be')) {
+      return 'socicon-youtube socicon';
+    } else if (hostname.includes('microsoft.com') || hostname.includes('learn.microsoft.com')) {
+      return 'socicon-microsoft socicon';
+    } else if (hostname.includes('github.com')) {
+      return 'socicon-github socicon';
+    } else if (hostname.includes('amazon.com') || hostname.includes('aws.amazon.com')) {
+      return 'socicon-amazon socicon';
+    } else if (hostname.includes('wikimedia.org') || hostname.includes('commons.wikimedia.org')) {
+      return 'mbri-pages';
+    } else {
+      return 'mbri-pages';
+    }
+  } catch (error) {
+    // If URL parsing fails, return a default icon
     return 'mbri-pages';
   }
 }
