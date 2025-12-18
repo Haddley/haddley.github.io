@@ -127,7 +127,7 @@ function processInlineMarkdown(text: string): React.ReactElement[] {
 }
 
 interface MobiriseParsedContent {
-  type: 'text' | 'image' | 'video' | 'heading' | 'code' | 'references-header' | 'references' | 'table' | 'hr';
+  type: 'text' | 'image' | 'video' | 'audio' | 'heading' | 'code' | 'references-header' | 'references' | 'table' | 'hr';
   content: string;
   description?: string;
   level?: number;
@@ -234,11 +234,19 @@ function parseMarkdownToMobirise(markdownContent: string): MobiriseParsedContent
         }
         
         // Check if this is a video file
-        const videoExtensions = ['.mp4', '.webm', '.ogg', '.mov'];
+        const videoExtensions = ['.mp4', '.webm', '.mov'];
         const isVideo = videoExtensions.some(ext => imagePath.toLowerCase().endsWith(ext));
         
+        // Check if this is an audio file
+        const audioExtensions = ['.mp3', '.wav', '.ogg', '.m4a'];
+        const isAudio = audioExtensions.some(ext => imagePath.toLowerCase().endsWith(ext));
+        
+        let contentType: 'image' | 'video' | 'audio' = 'image';
+        if (isVideo) contentType = 'video';
+        else if (isAudio) contentType = 'audio';
+        
         sections.push({
-          type: isVideo ? 'video' : 'image',
+          type: contentType,
           content: imagePath,
           description
         });
@@ -497,6 +505,37 @@ export default function MobiriseContentRenderer({ markdownContent }: MobiriseCon
                         <source src={section.content} type="video/mp4" />
                         Your browser does not support the video tag.
                       </video>
+                      {section.description && (
+                        <p className="mbr-description mbr-fonts-style mt-2 align-center display-4">
+                          {section.description}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          );
+        } else if (section.type === 'audio') {
+          return (
+            <section key={index} className="content5 cid-content5" data-bs-version="5.1">
+              <div className="container">
+                <div className="row justify-content-center">
+                  <div className="col-12 col-lg-10">
+                    <div className="audio-wrapper" style={{ padding: '20px 0' }}>
+                      <audio 
+                        controls 
+                        style={{ 
+                          width: '100%', 
+                          minHeight: '54px',
+                          display: 'block',
+                          backgroundColor: '#f5f5f5',
+                          borderRadius: '4px'
+                        }}
+                      >
+                        <source src={section.content} type="audio/mpeg" />
+                        Your browser does not support the audio tag.
+                      </audio>
                       {section.description && (
                         <p className="mbr-description mbr-fonts-style mt-2 align-center display-4">
                           {section.description}
