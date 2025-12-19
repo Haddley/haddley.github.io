@@ -1,6 +1,6 @@
 ---
 title: "Business Central"
-description: "Business Events"
+description: "External Business Events"
 date: "2025-12-18"
 categories: ["Business Central","Microsoft Dynamics"]
 image: "/assets/images/posts-meta.svg"
