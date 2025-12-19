@@ -25,11 +25,7 @@ businesscentralbusinessevents/
 
 ## ExternalBusinessEvent Attribute
 
-The `[ExternalBusinessEvent]` attribute in Business Central enables developers to expose custom business events that can be consumed by external systems. This attribute marks a business event as available for external integration through the Business Central API.
-
-### What is ExternalBusinessEvent?
-
-ExternalBusinessEvent is a decorator attribute applied to Business Central procedures that defines them as business events that can trigger notifications to external systems. When an event marked with this attribute is raised, Business Central can send notifications to configured webhooks or Azure Event Grid endpoints.
+The `[ExternalBusinessEvent]` decorator attribute in Business Central enables developers to expose custom business events that can be consumed by external systems. This attribute marks a business event as available for external integration through the Business Central API.
 
 ### Key Characteristics
 
