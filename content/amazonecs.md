@@ -2,7 +2,7 @@
 title: "Amazon Elastic Container Service"
 description: "Deploying to Amazon ECS"
 date: "2021-09-20"
-categories: ["AWS","DevOps","AI",".NET","Angular","Mobile","TypeScript"]
+categories: ["AWS","DevOps","Docker"]
 tags: ""
 slug: "amazonecs"
 image: "/assets/images/amazonecs/amazon-web-services-logo.svg"

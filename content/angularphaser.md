@@ -2,7 +2,7 @@
 title: "Angular and Phaser"
 description: "Using Phaser in an Angular Component"
 date: "2023-05-10"
-categories: ["Angular","JavaScript","React","TypeScript"]
+categories: ["Angular","TypeScript"]
 tags: ""
 slug: "angularphaser"
 image: "/assets/images/phaser-logo-1836x1530.png"

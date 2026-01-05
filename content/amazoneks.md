@@ -2,7 +2,7 @@
 title: "Amazon Elastic Kubernetes Service"
 description: "Deploying to Amazon EKS"
 date: "2021-08-12"
-categories: ["AWS","DevOps",".NET","AI","Angular","Mobile","TypeScript"]
+categories: ["AWS","DevOps","Docker"]
 tags: ""
 slug: "amazoneks"
 image: "/assets/images/amazon-web-services-logo.svg"

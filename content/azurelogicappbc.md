@@ -5,7 +5,6 @@ date: "2025-12-12"
 categories: ["Azure","Microsoft Dynamics","Business Central"]
 image: "/assets/images/posts-meta.svg"
 tags: ["azure","business central","logic apps"]
-hidden: false
 slug: "azurelogicappbc"
 ---
 

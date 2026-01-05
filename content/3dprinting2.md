@@ -2,7 +2,7 @@
 title: "3D Printing 2"
 description: "Raspberry Pi 4 and Mini Breadboard mount"
 date: "2023-07-19"
-categories: ["Angular","IOT","TypeScript"]
+categories: ["3D printing"]
 tags: ""
 slug: "3dprinting2"
 image: "/assets/images/wikipedia-globe-translucent-3d-printed-woodgrain-background-512x512.jpg"

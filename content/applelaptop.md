@@ -2,8 +2,8 @@
 title: "Apple MacBook"
 description: "Anaconda Setup"
 date: "2023-07-25"
-categories: ["Python","AI",".NET","Angular","Mobile","TypeScript"]
-tags: ""
+categories: ["Python"]
+tags: "anaconda"
 slug: "applelaptop"
 image: "/assets/images/jupyter.svg"
 ---

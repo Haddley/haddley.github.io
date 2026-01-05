@@ -24,6 +24,7 @@ const categories = [
   { name: 'Cloud', slug: 'cloud', icon: '☁️' },
   { name: 'IOT', slug: 'iot', icon: '🌐' },
   { name: 'Mobile', slug: 'mobile', icon: '📱' },
+  { name: '3D printing', slug: '3d-printing', icon: '🖨️' },  // ADD THIS
 ];
 
 export default function PostsPageWithSearch({ 

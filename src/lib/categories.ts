@@ -178,6 +178,14 @@ export const categories: Category[] = [
     color: 'bg-gray-100 text-gray-800',
     aliases: ['GIS', 'geographic-information-system', 'leaflet']
   },
+  {
+    name: '3D printing',
+    slug: '3d-printing',
+    icon: '🖨️',
+    description: 'Explore 3D printing projects and tutorials',
+    color: 'bg-yellow-100 text-yellow-800',
+    aliases: ['3d', 'printing', '3d-printer', '3dprint']
+  }
 
 ];
 

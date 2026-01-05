@@ -2,15 +2,15 @@
 title: "Azure Active Directory (Part 1)"
 description: "Using Microsoft Identity to Authenticate Users."
 date: "2021-03-29"
-categories: ["Azure","JavaScript","Microsoft 365","AI","Angular","Mobile","TypeScript"]
-tags: ""
+categories: ["Azure","Teams"]
+tags: "teams"
 slug: "azure-active-directory"
 image: "/assets/images/azurex70x75.svg"
 ---
 
 ## Microsoft Teams
 
-Microsoft Office 365 applications including Microsoft SharePoint and Microsoft Teams use Azure Active Directory to authenticate users .
+Microsoft Office 365 applications including Microsoft SharePoint and Microsoft Teams use Azure Active Directory to authenticate users.
 
 Microsoft Teams allows Guest users to be added to a Team. 
 

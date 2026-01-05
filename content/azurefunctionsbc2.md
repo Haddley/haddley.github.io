@@ -5,7 +5,6 @@ date: "2025-12-16"
 categories: ["Azure","Microsoft Dynamics","Business Central"]
 image: "/assets/images/posts-meta.svg"
 tags: ["azure","business central","azure functions"]
-hidden: false
 slug: "azurefunctionsbc2"
 ---
 

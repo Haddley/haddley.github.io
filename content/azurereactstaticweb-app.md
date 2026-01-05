@@ -2,8 +2,8 @@
 title: "Azure React Static Web App"
 description: "Azure Static Web App"
 date: "2024-01-08"
-categories: ["React","Azure",".NET","Angular","Mobile","TypeScript"]
-tags: ""
+categories: ["React","Azure"]
+tags: "static"
 slug: "azurereactstaticweb-app"
 image: "/assets/images/logo512-512x512.png"
 ---

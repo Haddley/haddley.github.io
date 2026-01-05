@@ -2,7 +2,7 @@
 title: "A Short History of Microsoft Dynamics and Microsoft Dataverse"
 description: "Microsoft Dynamics and Microsoft Dataverse"
 date: "2023-09-09"
-categories: ["Microsoft Dynamics","Power Platform","Microsoft 365","Business Central",".NET","AI","Angular","TypeScript"]
+categories: ["Microsoft Dynamics","Power Platform","Business Central"]
 tags: ""
 slug: "ashorthistory"
 image: "/assets/images/dynamics365-color.svg"

@@ -2,7 +2,7 @@
 title: "Azure Active Directory (Part 2)"
 description: "Microsoft Azure Active Directory Authentication."
 date: "2021-04-17"
-categories: ["Azure","JavaScript","React","Microsoft 365","Angular","Mobile","TypeScript"]
+categories: ["Azure"]
 tags: ""
 slug: "azure-active-directory2"
 image: "/assets/images/azurex70x75.svg"

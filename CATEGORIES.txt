@@ -1,0 +1,15 @@
+// Define categories with their slugs
+const categories = [
+  { name: 'AI', slug: 'ai', icon: '🤖' },
+  { name: '.NET', slug: 'net', icon: '💻' },
+  { name: 'Java', slug: 'java', icon: '☕' },
+  { name: 'Azure', slug: 'azure', icon: '☁️' },
+  { name: 'Microsoft 365', slug: 'microsoft-365', icon: '📊' },
+  { name: 'Microsoft Dynamics', slug: 'microsoft-dynamics', icon: '🏢' },
+  { name: 'Power Platform', slug: 'power-platform', icon: '⚡' },
+  { name: 'DevOps', slug: 'devops', icon: '🔧' },
+  { name: 'Cloud', slug: 'cloud', icon: '☁️' },
+  { name: 'IOT', slug: 'iot', icon: '🌐' },
+  { name: 'Mobile', slug: 'mobile', icon: '📱' },
+  { name: '3D printing', slug: '3d-printing', icon: '🖨️' },  // ADD THIS
+];

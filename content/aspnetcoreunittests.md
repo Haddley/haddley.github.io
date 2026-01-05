@@ -2,8 +2,8 @@
 title: "ASP.NET Core Unit Tests"
 description: "Test driven development"
 date: "2023-03-26"
-categories: [".NET","Angular","Business Central","DevOps","Mobile","SQL","TypeScript"]
-tags: ""
+categories: [".NET"]
+tags: "unit tests"
 slug: "aspnetcoreunittests"
 image: "/assets/images/net-logo.svg"
 ---

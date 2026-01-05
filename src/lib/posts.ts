@@ -63,21 +63,18 @@ export async function getVisibleBlogPosts(): Promise<BlogPost[]> {
 // Alias for compatibility
 export const getAllPosts = getVisibleBlogPosts;
 
-export async function getVisibleBlogPostsByAutomatedCategory(category: string): Promise<BlogPost[]> {
+export async function getVisibleBlogPostsByCategory(category: string): Promise<BlogPost[]> {
   const allPosts = await getVisibleBlogPosts();
   return allPosts.filter(post => 
     post.categories?.includes(category)
   );
 }
 
-export async function getVisibleBlogPostsByAnyCategory(category: string): Promise<BlogPost[]> {
-  const allPosts = await getVisibleBlogPosts();
-  return allPosts.filter(post => 
-    post.categories?.includes(category)
-  );
-}
+// Keep old name for backward compatibility
+export const getVisibleBlogPostsByAutomatedCategory = getVisibleBlogPostsByCategory;
+export const getVisibleBlogPostsByAnyCategory = getVisibleBlogPostsByCategory;
 
-export async function getVisibleAutomatedCategories(): Promise<string[]> {
+export async function getAllCategories(): Promise<string[]> {
   const allPosts = await getVisibleBlogPosts();
   const categoriesSet = new Set<string>();
   
@@ -87,6 +84,9 @@ export async function getVisibleAutomatedCategories(): Promise<string[]> {
   
   return Array.from(categoriesSet).sort();
 }
+
+// Keep old name for backward compatibility
+export const getVisibleAutomatedCategories = getAllCategories;
 
 export async function generateStaticParams() {
   const posts = await getVisibleBlogPosts();

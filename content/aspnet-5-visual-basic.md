@@ -2,8 +2,8 @@
 title: "ASP.NET 5 Visual Basic"
 description: "Generate Context and Entity Classes from an Existing Database"
 date: "2023-03-18"
-categories: [".NET","SQL","DevOps","Azure","AI","Angular","Mobile","TypeScript"]
-tags: ""
+categories: [".NET","SQL"]
+tags: "vb.net"
 slug: "aspnet-5-visual-basic"
 image: "/assets/images/net-logo.svg"
 ---

@@ -2,8 +2,8 @@
 title: "Azure Storage"
 description: "Microsoft Azure Storage"
 date: "2022-08-13"
-categories: ["Azure",".NET","AI","Angular","TypeScript"]
-tags: ""
+categories: ["Azure","macOS"]
+tags: "macOS"
 slug: "azurestorage"
 image: "/assets/images/azurex70x75.svg"
 ---
