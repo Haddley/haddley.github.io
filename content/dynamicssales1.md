@@ -2,8 +2,8 @@
 title: "Dynamics 365 Sales (Part 1)"
 description: " the Account|Sales Insights form"
 date: "2023-10-21"
-categories: ["Microsoft Dynamics","AI","Angular","Mobile","Power Platform","TypeScript"]
-tags: ""
+categories: ["Microsoft Dynamics"]
+tags: "microsoft dynamics sales"
 slug: "dynamicssales1"
 image: "/assets/images/dynamics365-color.svg"
 ---
@@ -12,7 +12,7 @@ image: "/assets/images/dynamics365-color.svg"
 
 I used [https://make.powerapps.com](https://make.powerapps.com) to customize the Account|Sales Insights form.
 
-I added the customizations to a [solution](modelDriven1.html).
+I added the customizations to a [solution](/posts/modeldriven1/).
 
 ![](/assets/images/dynamicssales1/screenshot-2023-10-21-at-12.48.17-pm-2136x1029.png)
 *The Sales Trial environment https://haddley-sales-trial.crm.dynamics.com*

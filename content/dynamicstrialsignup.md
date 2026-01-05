@@ -2,12 +2,11 @@
 title: "Dynamics Trial Signup"
 description: "Microsoft Signup"
 date: "2023-08-14"
-categories: ["Microsoft Dynamics","Business Central","AI","Angular","Mobile","TypeScript"]
+categories: ["Microsoft Dynamics"]
 tags: ""
 slug: "dynamicstrialsignup"
 image: "/assets/images/dynamics365-color.svg"
 ---
-
 
 
 I created a littleburra.onmicrosoft.com tenant

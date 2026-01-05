@@ -2,7 +2,7 @@
 title: "Docker Buildx"
 description: "Build multi-platform Docker images."
 date: "2021-03-01"
-categories: ["DevOps","JavaScript","Angular","Microsoft 365","Mobile","TypeScript"]
+categories: ["DevOps","Docker"]
 tags: ""
 slug: "dockerbuildx"
 image: "/assets/images/method-draw-image.svg"

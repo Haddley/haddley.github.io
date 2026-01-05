@@ -2,7 +2,7 @@
 title: "Docker"
 description: "Docker is an easy way to create, manage, and deliver applications."
 date: "2021-02-06"
-categories: ["DevOps","AI","Angular","Mobile","TypeScript"]
+categories: ["DevOps","Docker"]
 tags: ""
 slug: "docker"
 image: "/assets/images/method-draw-image.svg"

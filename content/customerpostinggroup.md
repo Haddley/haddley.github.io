@@ -2,7 +2,7 @@
 title: "Customer Posting Group"
 description: "Which accounts receivable account?"
 date: "2023-12-14"
-categories: ["Microsoft Dynamics","Business Central","AI","Angular","IOT","TypeScript"]
+categories: ["Microsoft Dynamics","Business Central"]
 tags: ""
 slug: "customerpostinggroup"
 image: "/assets/images/posts-meta.svg"

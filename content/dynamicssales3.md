@@ -2,8 +2,8 @@
 title: "Dynamics 365 Sales (Part 3)"
 description: "Adding a Warranty table"
 date: "2023-10-21"
-categories: ["Microsoft Dynamics","Power Platform","AI","Angular","Mobile","TypeScript"]
-tags: ""
+categories: ["Microsoft Dynamics"]
+tags: "microsoft dynamics sales"
 slug: "dynamicssales3"
 image: "/assets/images/dynamics365-color.svg"
 ---
@@ -12,7 +12,7 @@ image: "/assets/images/dynamics365-color.svg"
 
 I used [https://make.powerapps.com](https://make.powerapps.com) to add a Warranty table to Microsoft Dynamics 365 Sales.
 
-I added the customization to my Sales Customizations [solution](modelDriven1.html).
+I added the customization to my Sales Customizations [solution](/posts/modeldriven1/).
 
 ![](/assets/images/dynamicssales3/screenshot-2023-10-21-at-5.00.51-pm-2136x915.png)
 *I wanted to add a new table*

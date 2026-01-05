@@ -2,8 +2,8 @@
 title: "Cloud Flow"
 description: "A Topic that uses the Business Central Connector"
 date: "2024-02-26"
-categories: ["Power Platform","Microsoft Dynamics","Business Central","Azure","Angular","TypeScript"]
-tags: ""
+categories: ["Power Platform","Microsoft Dynamics","Business Central"]
+tags: "topic"
 slug: "cloudflow"
 image: "/assets/images/office-365-icon-500x500.png"
 ---

@@ -2,8 +2,8 @@
 title: "Dynamics 365 Sales (Part 2)"
 description: "The Lead to Opportunity Sales Process"
 date: "2023-10-21"
-categories: ["Microsoft Dynamics","AI","Angular","Mobile","Power Platform","TypeScript"]
-tags: ""
+categories: ["Microsoft Dynamics"]
+tags: "microsoft dynamics sales"
 slug: "dynamicssales2"
 image: "/assets/images/dynamics365-color.svg"
 ---
@@ -12,7 +12,7 @@ image: "/assets/images/dynamics365-color.svg"
 
 I used [https://make.powerapps.com](https://make.powerapps.com) to customize the "Lead to Opportunity Sales Process" business process flow.
 
-I added the customizations to my Sales Customizations [solution](modelDriven1.html).
+I added the customizations to my Sales Customizations [solution](/posts/modeldriven1/).
 
 ![](/assets/images/dynamicssales2/screenshot-2023-10-21-at-3.45.17-pm-2136x1106.png)
 *I wanted to add the (existing) Opportunity table to my Sales Customizations solution*

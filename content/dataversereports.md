@@ -2,7 +2,7 @@
 title: "Microsoft Dataverse Reports"
 description: "Creating a Dataverse Report"
 date: "2024-07-19"
-categories: ["Power Platform","Angular","TypeScript"]
+categories: ["Power Platform"]
 tags: ""
 slug: "dataversereports"
 image: "/assets/images/office-365-icon-500x500.png"

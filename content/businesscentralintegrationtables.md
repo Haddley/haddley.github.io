@@ -2,9 +2,9 @@
 title: "Business Central (Part 25) Integration Tables"
 description: "Integration Tables"
 date: "2025-09-20"
-categories: ["Business Central","AI","Angular","Microsoft Dynamics","TypeScript"]
+categories: ["Business Central","Microsoft Dynamics"]
 image: "/assets/images/businesscentralintegrationtables/hero.png"
-tags: ["ai","business central","dynamics"]
+tags: [integration tables]
 hidden: true
 slug: "businesscentralintegrationtables"
 ---

@@ -2,7 +2,7 @@
 title: "DevOps Starter Azure DevOps"
 description: "Everything you need for developing, deploying, and monitoring your application."
 date: "2021-04-26"
-categories: ["DevOps","Azure","JavaScript","AI","Angular","Mobile","TypeScript"]
+categories: ["DevOps","Azure"]
 tags: ""
 slug: "devopsstarterazuredevops"
 image: "/assets/images/svgexport-22.svg"

@@ -2,8 +2,8 @@
 title: "Component Framework"
 description: "Component Framework"
 date: "2022-08-14"
-categories: ["Power Platform","JavaScript","React","AI","Angular","Mobile","TypeScript"]
-tags: ""
+categories: ["Power Platform","React"]
+tags: "component framework"
 slug: "componentframework"
 image: "/assets/images/office-365-icon-500x500.png"
 ---
@@ -12,7 +12,7 @@ image: "/assets/images/office-365-icon-500x500.png"
 
 Create code components for model-driven and canvas apps.
 
-Developers can use Power Apps component framework to create, import, and add code [components](customcomponents.html) to model-driven and canvas apps. Certain APIs are not available.
+Developers can use Power Apps component framework to create, import, and add code [components](/posts/customcomponents) to model-driven and canvas apps. Certain APIs are not available.
 
 ![](/assets/images/componentframework/screen-shot-2022-08-17-at-10.08.36-pm-1536x758.png)
 *Admin center*

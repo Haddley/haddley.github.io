@@ -2,8 +2,8 @@
 title: "Create action based on a flow"
 description: "Created from the Business Central user interface"
 date: "2024-01-04"
-categories: ["Power Platform","Microsoft Dynamics","Business Central","Angular","TypeScript"]
-tags: ""
+categories: ["Power Platform","Microsoft Dynamics","Business Central"]
+tags: "copilot studio"
 slug: "createactionbasedonaflow"
 image: "/assets/images/posts-meta.svg"
 ---

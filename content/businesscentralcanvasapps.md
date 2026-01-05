@@ -2,7 +2,7 @@
 title: "Business Central Canvas Apps"
 description: "Microsoft Dynamics 365 Business Central"
 date: "2023-08-14"
-categories: ["Microsoft Dynamics","Business Central","Power Platform","Angular","Mobile","TypeScript"]
+categories: ["Microsoft Dynamics","Business Central","Power Platform"]
 tags: ""
 slug: "businesscentralcanvasapps"
 image: "/assets/images/dynamics365-color.svg"

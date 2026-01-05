@@ -4,7 +4,7 @@ description: "External Business Events"
 date: "2025-12-18"
 categories: ["Business Central","Microsoft Dynamics"]
 image: "/assets/images/posts-meta.svg"
-tags: ["business central","dynamics"]
+tags: ["external business events"]
 slug: "businesscentralbusinessevents"
 ---
 

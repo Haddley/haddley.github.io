@@ -2,7 +2,7 @@
 title: "Colorization"
 description: "colorization.ipynb"
 date: "2023-08-03"
-categories: ["Python","AI",".NET","AWS","Angular","Microsoft 365","TypeScript"]
+categories: ["Python","AI"]
 tags: ""
 slug: "colorization"
 image: "/assets/images/jupyter.svg"
