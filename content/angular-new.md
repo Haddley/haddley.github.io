@@ -5,7 +5,7 @@ date: "2025-09-20"
 categories: ["AI","Angular","JavaScript","Mobile","TypeScript"]
 image: "/assets/images/angular"
 tags: ["angular","ai","ml"]
-hidden: "true"
+hidden: true
 slug: "angular-new"
 ---
 

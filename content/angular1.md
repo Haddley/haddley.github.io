@@ -5,7 +5,7 @@ date: "2025-09-20"
 categories: ["AI","Angular","JavaScript","Mobile","TypeScript"]
 image: "/assets/images/angular1/hero.png"
 tags: ["angular","typescript","ai","ml","testing"]
-hidden: "true"
+hidden: true
 slug: "angular1"
 ---
 

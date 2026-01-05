@@ -5,7 +5,7 @@ date: "2025-09-20"
 categories: ["Azure","AI","Angular","Microsoft Dynamics","Mobile","Python","TypeScript"]
 image: "/assets/images/azurex70x75.svg"
 tags: ["azure","python","ai","git","github"]
-hidden: "true"
+hidden: true
 slug: "azureai1-new"
 ---
 

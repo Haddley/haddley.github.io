@@ -31,9 +31,10 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
       image: data.image,
       tags: Array.isArray(data.tags) ? data.tags : (data.tags ? data.tags.split(',').map((t: string) => t.trim()).filter((t: string) => t) : []),
       categories: Array.isArray(data.categories) ? data.categories : [],
-      visible: data.visible !== false
+      visible: data.visible !== false && data.hidden !== true && data.hidden !== 'true'
     };
-  } catch {
+  } catch (err) {
+    console.error('Error reading post:', err);
     return null;
   }
 }

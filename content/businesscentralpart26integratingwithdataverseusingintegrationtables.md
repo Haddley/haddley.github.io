@@ -5,7 +5,7 @@ date: "2025-09-20"
 categories: ["Business Central","AI","Angular","Microsoft Dynamics","Power Platform","TypeScript"]
 image: "/assets/images/businesscentralpart26integratingwithdataverseusingintegrationtables/hero.png"
 tags: ["ai","business central","dynamics"]
-hidden: "true"
+hidden: true
 slug: "businesscentralpart26integratingwithdataverseusingintegrationtables"
 ---
 

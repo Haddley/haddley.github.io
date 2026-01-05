@@ -5,7 +5,7 @@ date: "2025-09-20"
 categories: [".NET","AI","Angular","Mobile","TypeScript"]
 image: "/assets/images/dotnet-core-part2-deleted/hero.png"
 tags: ["dotnet","c#","ai","git","asp.net"]
-hidden: "true"
+hidden: true
 slug: "dotnet core part2 deleted"
 ---
 

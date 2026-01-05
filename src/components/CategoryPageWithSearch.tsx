@@ -8,7 +8,6 @@ import Image from 'next/image';
 interface CategoryPageWithSearchProps {
   categoryPosts: BlogPost[];
   categoryName: string;
-  categoryIcon: string;
   featuredPosts: BlogPost[];
   remainingPosts: BlogPost[];
 }
@@ -16,7 +15,6 @@ interface CategoryPageWithSearchProps {
 export default function CategoryPageWithSearch({ 
   categoryPosts, 
   categoryName,
-  categoryIcon,
   featuredPosts, 
   remainingPosts 
 }: CategoryPageWithSearchProps) {

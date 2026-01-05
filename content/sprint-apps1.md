@@ -5,7 +5,7 @@ date: "2025-09-20"
 categories: ["AI","Angular","Azure","Java","Mobile","TypeScript"]
 image: "/assets/images/sprint-apps1/hero.png"
 tags: ["azure","java","spring","ai"]
-hidden: "true"
+hidden: true
 slug: "sprint-apps1"
 ---
 

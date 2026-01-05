@@ -5,7 +5,7 @@ date: "2025-09-20"
 categories: [".NET","AI","Angular","TypeScript"]
 image: "/assets/images/finetuning/hero.png"
 tags: "ai"
-hidden: "true"
+hidden: true
 slug: "finetuning"
 ---
 

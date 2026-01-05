@@ -5,7 +5,7 @@ date: "2025-09-20"
 categories: ["AWS","JavaScript","Mobile"]
 image: "/assets/images/page50/hero.png"
 tags: "aws"
-hidden: "true"
+hidden: true
 slug: "page50"
 ---
 

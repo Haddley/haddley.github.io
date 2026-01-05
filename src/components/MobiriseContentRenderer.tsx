@@ -36,7 +36,7 @@ function getIconForUrl(url: string): string {
     } else {
       return 'mbri-pages';
     }
-  } catch (error) {
+  } catch {
     // If URL parsing fails, return a default icon
     return 'mbri-pages';
   }

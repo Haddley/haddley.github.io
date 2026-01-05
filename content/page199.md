@@ -5,7 +5,7 @@ date: "2025-09-20"
 categories: ["AI","Angular","Business Central","Microsoft Dynamics","Power Platform","TypeScript"]
 image: "/assets/images/page199/hero.png"
 tags: ["ai","business central","dynamics","power platform"]
-hidden: "true"
+hidden: true
 slug: "page199"
 ---
 

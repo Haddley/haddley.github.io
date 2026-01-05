@@ -5,7 +5,7 @@ date: "2024-01-10"
 categories: ["Azure","AI","Angular","Business Central","Mobile","Python"]
 image: "/assets/images/azure-ai.png"
 tags: ["Azure","AI","Machine Learning"]
-hidden: "true"
+hidden: true
 slug: "azure-ai-part-1"
 ---
 

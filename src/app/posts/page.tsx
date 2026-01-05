@@ -5,9 +5,9 @@ import PostsPageWithSearch from '@/components/PostsPageWithSearch';
 export default async function PostsPage() {
   const posts = await getVisibleBlogPosts();
   
-  // Get 6 most recent posts for featured section
-  const featuredPosts = posts.slice(0, 6);
-  const remainingPosts = posts.slice(6);
+  // Get 3 most recent posts for featured section (matching category page style)
+  const featuredPosts = posts.slice(0, 3);
+  const remainingPosts = posts.slice(3);
 
   return (
     <section data-bs-version="5.1" className="content2 cid-socNq9ZEoK" id="content2-q">
@@ -26,6 +26,10 @@ export default async function PostsPage() {
         }
         .post-card:hover .item-img img {
           transform: scale(1.05);
+        }
+        .featured-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 8px 30px rgba(0,0,0,0.12);
         }
       `}} />
       <div className="container">

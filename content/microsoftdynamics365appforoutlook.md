@@ -6,7 +6,7 @@ categories: ["Microsoft Dynamics","Power Platform","AI","Angular","Microsoft 365
 tags: ""
 image: "/assets/images/microsoftdynamics365appforoutlook/office-365-icon-500x500.png"
 slug: "microsoftdynamics365appforoutlook"
-hidden: "true"
+hidden: true
 ---
 
 

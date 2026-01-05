@@ -6,7 +6,7 @@ categories: [".NET","AI","Angular","Mobile","Python","TypeScript"]
 image: "/assets/images/applelogo/hero.png"
 tags: ["python","ai","machine learning"]
 slug: "applelogo"
-hidden: "true"
+hidden: true
 ---
 
 

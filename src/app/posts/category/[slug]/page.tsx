@@ -96,7 +96,6 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         <CategoryPageWithSearch
           categoryPosts={categoryPosts}
           categoryName={category.name}
-          categoryIcon={category.icon}
           featuredPosts={featuredPosts}
           remainingPosts={remainingPosts}
         />

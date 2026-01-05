@@ -5,7 +5,7 @@ date: "2025-09-20"
 categories: ["AI","Angular","Business Central","Java","JavaScript","Microsoft Dynamics","TypeScript"]
 image: "/assets/images/page200/hero.png"
 tags: ["javascript","java","ai","ml","business central"]
-hidden: "true"
+hidden: true
 slug: "page200"
 ---
 

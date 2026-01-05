@@ -6,7 +6,7 @@ categories: ["Business Central","AI","Angular","Microsoft Dynamics","TypeScript"
 image: "/assets/images/businesscentralpart-2extendingstandardapis/hero.png"
 tags: ["ai","business central","dynamics"]
 slug: "businesscentralpart 2extendingstandardapis"
-hidden: "true"
+hidden: true
 ---
 
 

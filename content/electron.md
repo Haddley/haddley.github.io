@@ -5,7 +5,7 @@ date: "2025-09-20"
 categories: ["AI","Angular","Java","JavaScript","Microsoft 365","Mobile","TypeScript"]
 image: "/assets/images/electron/hero.png"
 tags: ["javascript","java","ai","ml","git"]
-hidden: "true"
+hidden: true
 slug: "electron"
 ---
 

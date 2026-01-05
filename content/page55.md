@@ -5,7 +5,7 @@ date: "2025-09-20"
 categories: ["TypeScript"]
 image: "/assets/images/page55/hero.png"
 tags: ""
-hidden: "true"
+hidden: true
 slug: "page55"
 ---
 

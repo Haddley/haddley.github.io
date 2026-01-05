@@ -6,7 +6,7 @@ categories: ["AI","Python","Angular"]
 tags: ""
 slug: "unsloth"
 image: "/assets/images/unsloth sticker.png"
-hidden: "true"
+hidden: true
 ---
 
 

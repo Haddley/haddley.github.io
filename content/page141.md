@@ -5,7 +5,7 @@ date: "2025-09-20"
 categories: ["Angular","Azure","DevOps","Java","Microsoft Dynamics","Mobile","SQL","TypeScript"]
 image: "/assets/images/page141/hero.png"
 tags: ["azure","docker","java","spring","postgresql"]
-hidden: "true"
+hidden: true
 slug: "page141"
 ---
 

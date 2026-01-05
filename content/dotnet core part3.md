@@ -5,7 +5,7 @@ date: "2025-09-20"
 categories: [".NET","AI","Angular","Azure","Microsoft 365","Microsoft Dynamics","Mobile","TypeScript"]
 image: "/assets/images/dotnet-core-part3/hero.png"
 tags: ["azure","dotnet","ai","ml","dynamics"]
-hidden: "true"
+hidden: true
 slug: "dotnet core part3"
 ---
 

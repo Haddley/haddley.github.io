@@ -5,7 +5,7 @@ date: "2025-09-20"
 categories: ["Angular","Business Central","Mobile","Power Platform","SQL","TypeScript"]
 image: "/assets/images/powerappsxx/hero.png"
 tags: ["sql","business central"]
-hidden: "true"
+hidden: true
 slug: "powerappsxx"
 ---
 

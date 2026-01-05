@@ -5,7 +5,7 @@ date: "2025-09-20"
 categories: ["AI","Angular","Python","TypeScript"]
 image: "/assets/images/page65/hero.png"
 tags: ["python","ai","ml","machine learning","git"]
-hidden: "true"
+hidden: true
 slug: "page65"
 ---
 

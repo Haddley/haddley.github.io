@@ -5,7 +5,7 @@ date: "2025-09-20"
 categories: ["AI","Angular","Mobile","Python"]
 image: "/assets/images/macbook/hero.png"
 tags: ["python","ai"]
-hidden: "true"
+hidden: true
 slug: "macbook"
 ---
 

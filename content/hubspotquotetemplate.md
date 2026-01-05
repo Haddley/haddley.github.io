@@ -5,7 +5,7 @@ date: "2025-09-20"
 categories: ["Angular","TypeScript"]
 image: "/assets/images/hubspotquotetemplate/hero.png"
 tags: ""
-hidden: "true"
+hidden: true
 slug: "hubspotquotetemplate"
 ---
 
