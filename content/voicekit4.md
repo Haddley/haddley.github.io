@@ -2,7 +2,7 @@
 title: "Voice Kit 4"
 description: "Automatically Boot your Raspberry Pi 3 into Google Voice Assistant"
 date: "2025-12-14"
-categories: ["Python","AI","Angular","IOT","TypeScript"]
+categories: ["Python","AI","IOT"]
 tags: ""
 slug: "voicekit4"
 image: "/assets/images/raspberry-pi-logo.svg"

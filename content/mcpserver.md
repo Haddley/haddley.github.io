@@ -2,8 +2,8 @@
 title: "Model Context Protocol (Part 1)"
 description: "Typescript quick start"
 date: "2025-08-13"
-categories: ["TypeScript","AI","Angular"]
-tags: ""
+categories: ["AI"]
+tags: "model context protocol"
 slug: "mcpserver"
 image: "/assets/images/mcp-1024x1024.png"
 ---

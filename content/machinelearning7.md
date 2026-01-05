@@ -2,8 +2,8 @@
 title: "Machine Learning (Part 7)"
 description: "Google Cloud Platform"
 date: "2022-06-11"
-categories: ["AI","Angular","TypeScript"]
-tags: ""
+categories: ["AI","ML"]
+tags: "automl"
 slug: "machinelearning7"
 image: "/assets/images/tensorflow-logo.svg"
 ---

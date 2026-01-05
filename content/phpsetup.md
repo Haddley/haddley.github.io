@@ -2,7 +2,7 @@
 title: "PHP Setup"
 description: "Setup"
 date: "2024-08-25"
-categories: ["Angular","PHP","TypeScript"]
+categories: ["PHP"]
 tags: ""
 slug: "phpsetup"
 image: "/assets/images/php-logo.svg"

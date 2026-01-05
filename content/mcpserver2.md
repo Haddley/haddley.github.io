@@ -2,8 +2,8 @@
 title: "Model Context Protocol (Part 2)"
 description: "Business Central"
 date: "2025-09-21"
-categories: ["Microsoft Dynamics","Business Central","TypeScript","DevOps","AI","Angular","JavaScript"]
-tags: ""
+categories: ["Business Central","AI"]
+tags: "model context protocol"
 image: "/assets/images/mcpserver2/mcp-1024x1024.png"
 slug: "mcpserver2"
 hidden: "false"

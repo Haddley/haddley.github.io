@@ -2,7 +2,7 @@
 title: "Prompt Flow (Part 3)"
 description: "Semantic Kernel"
 date: "2024-08-24"
-categories: ["AI","Python","Angular","TypeScript"]
+categories: ["AI"]
 tags: ""
 slug: "promptflow3"
 image: "/assets/images/logo.svg"

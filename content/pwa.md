@@ -2,7 +2,7 @@
 title: "Progressive Web Application"
 description: "Building a Progressive Web Application"
 date: "2021-07-24"
-categories: ["Azure","AI","Angular","Mobile","TypeScript"]
+categories: ["Mobile"]
 tags: ""
 slug: "pwa"
 image: "/assets/images/progressive-web-apps-logo.svg"

@@ -3,7 +3,7 @@ title: "Dynamics Trial Signup"
 description: "Microsoft Signup"
 date: "2023-08-14"
 categories: ["Microsoft Dynamics"]
-tags: ""
+tags: "microsoft dynamics sales"
 slug: "dynamicstrialsignup"
 image: "/assets/images/dynamics365-color.svg"
 ---

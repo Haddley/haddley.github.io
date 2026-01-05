@@ -2,7 +2,7 @@
 title: "General Posting Setup"
 description: "Which accounts payable ledger account"
 date: "2023-12-14"
-categories: ["Microsoft Dynamics","Business Central","AI","Angular","IOT","TypeScript"]
+categories: ["Business Central"]
 tags: ""
 slug: "generalpostingsetup"
 image: "/assets/images/posts-meta.svg"

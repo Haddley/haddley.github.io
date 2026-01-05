@@ -2,7 +2,7 @@
 title: "Sails (Part 1)"
 description: "Azure DevOps and Sails."
 date: "2021-10-12"
-categories: ["DevOps","JavaScript","Azure","AI","Angular","Microsoft Dynamics","Mobile","SQL","TypeScript"]
+categories: ["DevOps"]
 tags: ""
 slug: "sails1"
 image: "/assets/images/sailsjs-logo-515x193.png"

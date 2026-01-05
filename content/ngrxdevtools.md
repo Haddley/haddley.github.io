@@ -2,7 +2,7 @@
 title: "NGRX devtools"
 description: "haddley-ngrx"
 date: "2023-01-25"
-categories: ["Angular","JavaScript","TypeScript"]
+categories: ["Angular"]
 tags: ""
 slug: "ngrxdevtools"
 image: "/assets/images/ngrx.svg"

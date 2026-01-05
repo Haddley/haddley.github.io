@@ -2,11 +2,10 @@
 title: "Microsoft Dynamics 365 App for Outlook"
 description: "References"
 date: "2025-09-20"
-categories: ["Microsoft Dynamics","Power Platform","AI","Angular","Microsoft 365","Mobile","TypeScript"]
-tags: ""
+categories: ["Microsoft Dynamics","Power Platform"]
+tags: "regarding,outlook"
 image: "/assets/images/microsoftdynamics365appforoutlook/office-365-icon-500x500.png"
 slug: "microsoftdynamics365appforoutlook"
-hidden: true
 ---
 
 

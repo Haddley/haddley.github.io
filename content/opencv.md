@@ -2,8 +2,8 @@
 title: "Object Detection"
 description: "Object Detection"
 date: "2023-07-25"
-categories: ["AI","Python",".NET","Angular","IOT","JavaScript","Mobile","TypeScript"]
-tags: ""
+categories: ["AI","IOT"]
+tags: "opencv"
 slug: "opencv"
 image: "/assets/images/raspberry-pi-logo.svg"
 ---

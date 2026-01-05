@@ -2,7 +2,7 @@
 title: "Prompt Flow (Part 6)"
 description: "Quick start"
 date: "2024-09-01"
-categories: ["AI","Python","Angular","JavaScript","Mobile","TypeScript"]
+categories: ["AI"]
 tags: ""
 slug: "promptflow6"
 image: "/assets/images/logo.svg"

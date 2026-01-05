@@ -2,7 +2,7 @@
 title: "Hands-on-Lab 2.2"
 description: "Migrate master data to a new company"
 date: "2023-11-22"
-categories: ["Microsoft Dynamics","Business Central","Angular","TypeScript"]
+categories: ["Business Central"]
 tags: ""
 slug: "hands-on-lab2.2"
 image: "/assets/images/dynamics365-color.svg"

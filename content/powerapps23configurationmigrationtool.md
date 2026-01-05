@@ -2,7 +2,7 @@
 title: "Power Apps (Part 23)"
 description: "The Configuration Migration tool"
 date: "2025-01-01"
-categories: ["Power Platform","Angular","Mobile","TypeScript"]
+categories: ["Power Platform"]
 tags: ""
 slug: "powerapps23configurationmigrationtool"
 image: "/assets/images/office-365-icon-500x500.png"

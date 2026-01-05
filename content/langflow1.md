@@ -2,7 +2,7 @@
 title: "Langflow (Part 1)"
 description: "References"
 date: "2024-10-30"
-categories: ["Python","AI","Angular","Mobile","TypeScript"]
+categories: ["AI"]
 tags: ""
 slug: "langflow1"
 image: "/assets/images/85702467-200x200.png"

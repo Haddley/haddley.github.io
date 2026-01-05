@@ -2,7 +2,7 @@
 title: "Prompt Flow (Part 2)"
 description: "Docker"
 date: "2024-06-12"
-categories: ["DevOps","AI","Python","Angular","TypeScript"]
+categories: ["AI"]
 tags: ""
 slug: "promptflow2"
 image: "/assets/images/logo.svg"

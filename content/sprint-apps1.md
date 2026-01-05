@@ -2,7 +2,7 @@
 title: "Azure Spring Apps (Part 1)"
 description: "hello-world-app"
 date: "2025-09-20"
-categories: ["AI","Angular","Azure","Java","Mobile","TypeScript"]
+categories: ["Java"]
 image: "/assets/images/sprint-apps1/hero.png"
 tags: ["azure","java","spring","ai"]
 hidden: true

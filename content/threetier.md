@@ -2,7 +2,7 @@
 title: "Blazor WASM API SQL Server Stored Procedure"
 description: "Three Tiers"
 date: "2023-03-25"
-categories: [".NET","SQL","AI","Angular","JavaScript","Mobile","TypeScript"]
+categories: [".NET"]
 tags: ""
 slug: "threetier"
 image: "/assets/images/net-logo.svg"

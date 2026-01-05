@@ -2,7 +2,7 @@
 title: "Machine Learning (Part 3)"
 description: "Creating models"
 date: "2022-06-05"
-categories: ["AI","DevOps","Angular","Business Central","IOT","JavaScript","Mobile","TypeScript"]
+categories: ["AI","ML"]
 tags: ""
 slug: "machinelearning3"
 image: "/assets/images/tensorflow-logo.svg"
@@ -11,7 +11,7 @@ image: "/assets/images/tensorflow-logo.svg"
 
 ## Teachable Machine
 
-[Teachable Machine](https://teachablemachine.withgoogle.com) is a web-based tool that makes creating ([supervised](machineLearning1.html)) machine learning ([classification](https://www.edureka.co/blog/classification-in-machine-learning/)) models fast, easy, and accessible to everyone. No prerequisite machine learning knowledge required.
+[Teachable Machine](https://teachablemachine.withgoogle.com) is a web-based tool that makes creating ([supervised](/posts/machinelearning1/)) machine learning ([classification](https://www.edureka.co/blog/classification-in-machine-learning/)) models fast, easy, and accessible to everyone. No prerequisite machine learning knowledge required.
 
 I used Teachable Machines to create a [squishmallows](https://squishmallows.com/) recognizing application based on TensorFlow.js
 

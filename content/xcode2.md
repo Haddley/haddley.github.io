@@ -2,7 +2,7 @@
 title: "XCode C++ (Part 2)"
 description: "OpenGL GLFW"
 date: "2023-03-08"
-categories: ["AI","Angular","Mobile","TypeScript"]
+categories: ["macOS"]
 tags: ""
 slug: "xcode2"
 image: "/assets/images/xcode-14-icon-300x314.png"

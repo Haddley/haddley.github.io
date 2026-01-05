@@ -2,9 +2,9 @@
 title: "Microsoft SQL Server (Part 3)"
 description: "A Node, React and MS SQL Server App."
 date: "2025-09-20"
-categories: ["Angular","Azure","Java","JavaScript","Mobile","React","SQL","TypeScript"]
+categories: ["SQL"]
 image: "/assets/images/mssqlserver3/hero.png"
-tags: ["react","javascript","typescript","azure","java"]
+tags: []
 hidden: true
 slug: "mssqlserver3"
 ---

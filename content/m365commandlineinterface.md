@@ -2,7 +2,7 @@
 title: "Microsoft 365 command line interface"
 description: "Manage Microsoft 365 tenants and SharePoint Framework projects"
 date: "2021-02-22"
-categories: ["Microsoft 365","DevOps",".NET","AI","Angular","Mobile","TypeScript"]
+categories: ["Microsoft 365"]
 tags: ""
 slug: "m365commandlineinterface"
 image: "/assets/images/office-365-icon-500x500.png"

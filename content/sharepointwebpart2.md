@@ -2,7 +2,7 @@
 title: "SharePoint Web Part (Part 2)"
 description: "How to create and publish a SharePoint Web Part"
 date: "2021-02-14"
-categories: ["React","Microsoft 365","TypeScript","AI","Angular","Java","JavaScript"]
+categories: ["Microsoft 365"]
 tags: ""
 slug: "sharepointwebpart2"
 image: "/assets/images/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png"

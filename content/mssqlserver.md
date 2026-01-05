@@ -2,7 +2,7 @@
 title: "Microsoft SQL Server (Part 1)"
 description: "Microsoft SQL Server 2019 Docker image."
 date: "2021-03-14"
-categories: ["SQL","Java","DevOps","Angular","Azure","TypeScript"]
+categories: ["SQL"]
 tags: ""
 slug: "mssqlserver"
 image: "/assets/images/ads.svg"

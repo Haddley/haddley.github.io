@@ -2,7 +2,7 @@
 title: "Hands-on-Lab 3.1"
 description: "Set Up Finance Management"
 date: "2023-12-04"
-categories: ["Microsoft Dynamics","Business Central","AI","Angular","TypeScript"]
+categories: ["Business Central"]
 tags: ""
 slug: "hands-on-lab3.1"
 image: "/assets/images/dynamics365-color.svg"

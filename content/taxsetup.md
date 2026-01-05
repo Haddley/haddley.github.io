@@ -2,7 +2,7 @@
 title: "Tax Setup"
 description: "Tax Setup"
 date: "2025-09-20"
-categories: ["Business Central","AI","Angular","IOT","Microsoft Dynamics","TypeScript"]
+categories: ["Business Central"]
 image: "/assets/images/taxsetup/hero.png"
 tags: ["ai","business central","dynamics"]
 hidden: true

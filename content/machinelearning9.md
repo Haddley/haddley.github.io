@@ -2,8 +2,8 @@
 title: "Machine Learning (Part 9)"
 description: "MNIST"
 date: "2022-06-17"
-categories: ["AI","Angular","Python","SQL","TypeScript"]
-tags: ""
+categories: ["AI","ML"]
+tags: "MNIST"
 slug: "machinelearning9"
 image: "/assets/images/tensorflow-logo.svg"
 ---

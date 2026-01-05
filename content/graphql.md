@@ -2,15 +2,15 @@
 title: "GraphQL"
 description: "GraphQL is a query and manipulation language for APIs."
 date: "2021-03-01"
-categories: ["JavaScript","React","AI","Angular","Microsoft 365","TypeScript"]
-tags: ""
+categories: ["JavaScript"]
+tags: "graphql"
 slug: "graphql"
 image: "/assets/images/graphql-logo.svg-1200x1200.png"
 ---
 
 
 
-A [REST](restapiservice.html) API client may need to make multiple calls to a REST Service to get all of the data it needs.
+A [REST](/posts/restapiservice/) API client may need to make multiple calls to a REST Service to get all of the data it needs.
 
 A GraphQL API client may be able to request all of the data it needs in a single call.
 

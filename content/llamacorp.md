@@ -2,7 +2,7 @@
 title: "LlamaCpp"
 description: "Accessing the llama.cpp model from Python"
 date: "2023-08-03"
-categories: ["AI","Python","Angular","Mobile","TypeScript"]
+categories: ["AI"]
 tags: ""
 slug: "llamacorp"
 image: "/assets/images/jupyter.svg"

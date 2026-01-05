@@ -2,7 +2,7 @@
 title: "Sails (Part 3)"
 description: "Sails and the Amazon Elastic Kubernetes Service"
 date: "2021-10-13"
-categories: ["DevOps","AWS","Azure","JavaScript",".NET","AI","Angular","Mobile","TypeScript"]
+categories: ["DevOps"]
 tags: ""
 slug: "sails3"
 image: "/assets/images/sailsjs-logo-515x193.png"

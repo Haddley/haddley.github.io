@@ -2,7 +2,7 @@
 title: "Sales Invoice"
 description: "How the Inventory, Sale, Tax and Receivables accounts are determined"
 date: "2023-12-14"
-categories: ["Microsoft Dynamics","Business Central","AI","Angular","IOT","TypeScript"]
+categories: ["Business Central"]
 tags: ""
 slug: "salesinvoice"
 image: "/assets/images/posts-meta.svg"

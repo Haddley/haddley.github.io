@@ -2,7 +2,7 @@
 title: "NGRX entity"
 description: "json-server"
 date: "2023-02-18"
-categories: ["TypeScript","React","Angular","JavaScript","AI"]
+categories: ["Angular"]
 tags: ""
 slug: "ngrxentity"
 image: "/assets/images/ngrx.svg"

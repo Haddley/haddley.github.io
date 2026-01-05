@@ -2,7 +2,7 @@
 title: "Map Extension"
 description: "Map Extension"
 date: "2023-09-01"
-categories: ["Microsoft Dynamics","Business Central","AI","Angular","Java","JavaScript","Mobile","TypeScript"]
+categories: ["Business Central"]
 tags: ""
 slug: "mapextension"
 image: "/assets/images/dynamics365-color.svg"

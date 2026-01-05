@@ -2,7 +2,7 @@
 title: "Prompt Flow (Part 4)"
 description: "Planning"
 date: "2024-08-24"
-categories: ["AI","Angular","TypeScript"]
+categories: ["AI"]
 tags: ""
 slug: "promptflow4"
 image: "/assets/images/logo.svg"

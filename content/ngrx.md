@@ -2,7 +2,7 @@
 title: "NGRX"
 description: "haddley-ngrx"
 date: "2022-11-27"
-categories: ["Angular","React","TypeScript","JavaScript","AI","Mobile"]
+categories: ["Angular"]
 tags: ""
 slug: "ngrx"
 image: "/assets/images/ngrx.svg"

@@ -2,23 +2,16 @@
 title: "ASP.NET 5 Visual Basic"
 description: "Generate Context and Entity Classes from an Existing Database"
 date: "2025-09-20"
-categories: [".NET","AI","Angular","Azure","DevOps","Mobile","SQL","TypeScript"]
+categories: [".NET","SQL"]
 image: "/assets/images/page86/net-logo.svg"
-tags: ["azure","docker","dotnet","sql","database"]
-hidden: true
-slug: "page86"
+tags: ""
+slug: "vb-asp-net"
 ---
 
 # ASP.NET 5 Visual Basic
 
-## Generate Context and Entity Classes from an Existing Database
-
-![](/assets/images/page86/net-logo.svg)
-*Microsoft Dotnet Logo by Microsoft Corporation is licensed under Creative Commons CC0 1.0 Universal Public Domain Dedication*
-
-
 ## Active Server Pages
-
+ 
 ASP Web Forms was released in 2003 (based on the Windows Server and the .NET Framework)
 ASP.NET Model-View-Controller 5 was released in 2009 (based on Windows Server and .NET Framework and Supported in Visual Studio 2019)
 ASP.NET Core Model-View-Controller was released in 2017 (based on cross platform .NET Core and Supported in Visual Studio 2022)

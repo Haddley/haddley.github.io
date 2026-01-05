@@ -2,7 +2,7 @@
 title: "Rewards Extension"
 description: "Rewards Extension"
 date: "2023-08-30"
-categories: ["Microsoft Dynamics","Business Central","Angular","TypeScript","AI"]
+categories: ["Business Central"]
 tags: ""
 slug: "rewardsextension"
 image: "/assets/images/dynamics365-color.svg"

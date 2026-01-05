@@ -2,7 +2,7 @@
 title: "VB.NET Console SQL Server Unit Tests"
 description: "Test driven development"
 date: "2023-05-27"
-categories: ["SQL","AI",".NET","Angular","Mobile","TypeScript"]
+categories: ["SQL",".NET"]
 tags: ""
 slug: "vbnetconsolesqlserverunittests"
 image: "/assets/images/net-logo.svg"

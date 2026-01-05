@@ -2,7 +2,7 @@
 title: "React useState and useEffect"
 description: "Create a React app using the useState and useEffect hook."
 date: "2021-02-08"
-categories: ["React","Angular","Mobile","TypeScript"]
+categories: ["React"]
 tags: ""
 slug: "reactusestateuseeffect"
 image: "/assets/images/logo512-512x512.png"

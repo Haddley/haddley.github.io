@@ -2,7 +2,7 @@
 title: "LangChain Agents"
 description: "Agents"
 date: "2024-08-25"
-categories: ["AI","Python","Angular","TypeScript"]
+categories: ["AI","Python"]
 tags: ""
 slug: "langchainagents"
 image: "/assets/images/langchain.svg"

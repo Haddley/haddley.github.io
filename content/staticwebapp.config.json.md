@@ -2,7 +2,7 @@
 title: "staticwebapp.config.json"
 description: "staticwebapp.config.json"
 date: "2024-03-10"
-categories: ["Azure","AI","Angular","JavaScript","Mobile","TypeScript"]
+categories: ["Azure"]
 tags: ""
 slug: "staticwebapp.config.json"
 image: "/assets/images/azurex70x75.svg"

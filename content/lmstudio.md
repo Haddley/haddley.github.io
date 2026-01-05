@@ -2,7 +2,7 @@
 title: "Meta"
 description: "LM Studio"
 date: "2023-08-05"
-categories: ["AI","Angular","Mobile","TypeScript"]
+categories: ["AI"]
 tags: ""
 slug: "lmstudio"
 image: "/assets/images/mediamodifier-design.png"

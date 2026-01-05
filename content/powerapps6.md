@@ -2,7 +2,7 @@
 title: "A Custom Connector for Microsoft Graph"
 description: "Calling the Microsoft Graph API from a Canvas App"
 date: "2022-07-04"
-categories: ["Microsoft 365","Power Platform","Azure","Angular","Mobile","TypeScript"]
+categories: ["Power Platform"]
 tags: ""
 slug: "powerapps6"
 image: "/assets/images/office-365-icon-500x500.png"

@@ -2,7 +2,7 @@
 title: "Model Driven Apps (Part 2)"
 description: "Environments"
 date: "2023-10-05"
-categories: ["Power Platform","Microsoft Dynamics","Angular","Mobile","TypeScript"]
+categories: ["Power Platform"]
 tags: ""
 slug: "modeldriven2"
 image: "/assets/images/office-365-icon-500x500.png"

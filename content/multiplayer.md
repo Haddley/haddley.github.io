@@ -2,7 +2,7 @@
 title: "Multiplayer Game"
 description: "Creating a new firebase project"
 date: "2023-05-09"
-categories: ["DevOps","AI","Angular","Mobile","SQL","TypeScript"]
+categories: ["Firebase"]
 tags: ""
 slug: "multiplayer"
 image: "/assets/images/logo-lockup-firebase-vertical.svg"

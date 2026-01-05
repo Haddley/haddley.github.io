@@ -2,7 +2,7 @@
 title: "Business Central (Part 28)"
 description: "Prompt Dialog (Part 2)"
 date: "2024-05-24"
-categories: ["Microsoft Dynamics","Business Central","AI","Azure","Angular","Mobile","TypeScript"]
+categories: ["Business Central","AI"]
 tags: ""
 slug: "promptdialog2"
 image: "/assets/images/posts-meta.svg"

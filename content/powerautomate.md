@@ -2,7 +2,7 @@
 title: "Power Automate"
 description: "Automating Team Creation"
 date: "2022-05-04"
-categories: ["Microsoft 365","Power Platform","Angular","TypeScript"]
+categories: ["Power Platform"]
 tags: ""
 slug: "powerautomate"
 image: "/assets/images/office-365-icon-500x500.png"

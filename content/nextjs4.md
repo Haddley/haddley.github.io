@@ -2,7 +2,7 @@
 title: "Next.js (Part 4)"
 description: "Deploying to Azure"
 date: "2021-11-11"
-categories: ["Azure","JavaScript","React",".NET","Angular","Mobile","TypeScript"]
+categories: ["React"]
 tags: ""
 slug: "nextjs4"
 image: "/assets/images/2560px-nextjs-logo.svg-1536x920.png"

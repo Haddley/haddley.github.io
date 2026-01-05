@@ -2,8 +2,8 @@
 title: "Machine Learning (Part 5)"
 description: "Excel"
 date: "2022-06-11"
-categories: ["AI","Angular","TypeScript"]
-tags: ""
+categories: ["AI","ML"]
+tags: "glucose levels"
 slug: "machinelearning5"
 image: "/assets/images/tensorflow-logo.svg"
 ---

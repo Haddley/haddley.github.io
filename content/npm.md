@@ -2,7 +2,7 @@
 title: "npm JavaScript"
 description: "Create and publish an npm module using JavaScript."
 date: "2021-02-25"
-categories: ["JavaScript","DevOps","AI","Angular","Java","Microsoft Dynamics","TypeScript"]
+categories: ["DevOps"]
 tags: ""
 slug: "npm"
 image: "/assets/images/6078720-200x200.png"

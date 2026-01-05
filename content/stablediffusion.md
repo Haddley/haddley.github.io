@@ -2,7 +2,7 @@
 title: "Stable Diffusion"
 description: "Stable Diffusion"
 date: "2023-08-01"
-categories: ["Python","AI","Angular","TypeScript"]
+categories: ["AI"]
 tags: ""
 slug: "stablediffusion"
 image: "/assets/images/jupyter.svg"

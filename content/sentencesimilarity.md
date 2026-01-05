@@ -2,7 +2,7 @@
 title: "Sentence Similarity"
 description: "Sentence Similarity"
 date: "2023-07-19"
-categories: ["AI","Angular","Business Central","TypeScript"]
+categories: ["AI"]
 tags: ""
 slug: "sentencesimilarity"
 image: "/assets/images/chatgpt-logo.svg"

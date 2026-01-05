@@ -2,7 +2,7 @@
 title: "Voice Kit"
 description: "Raspberry Pi Voice Kit"
 date: "2025-10-11"
-categories: ["Python","AI","Angular","IOT","TypeScript"]
+categories: ["Python","AI","IOT"]
 tags: ""
 slug: "voicekit"
 image: "/assets/images/raspberry-pi-logo.svg"

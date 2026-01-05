@@ -2,7 +2,7 @@
 title: "Power Pages (Part 3)"
 description: "Customer Order Lines"
 date: "2024-12-20"
-categories: ["AI","Angular","Microsoft Dynamics","TypeScript","Power Platform"]
+categories: ["Business Central","Power Platform"]
 tags: ""
 slug: "powerpages3"
 image: "/assets/images/powerpages-scalable.svg"
