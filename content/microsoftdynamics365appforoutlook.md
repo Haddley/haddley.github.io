@@ -3,7 +3,7 @@ title: "Microsoft Dynamics 365 App for Outlook"
 description: "References"
 date: "2025-09-20"
 categories: ["Microsoft Dynamics","Power Platform"]
-tags: "regarding,outlook"
+tags: "set regarding,outlook"
 image: "/assets/images/microsoftdynamics365appforoutlook/office-365-icon-500x500.png"
 slug: "microsoftdynamics365appforoutlook"
 ---
@@ -219,6 +219,9 @@ slug: "microsoftdynamics365appforoutlook"
 
 ![](/assets/images/microsoftdynamics365appforoutlook/449040931-1700129710754304-1985864385832439929-n-1242x2688.jpg)
 *Sales app running on a mobile phone*
+
+
+## References
 
 - [Working with the Dynamics 365 App for Outlook](https://www.youtube.com/watch?v=gqX5aJMDHf8) - YouTube tutorial on using the Dynamics 365 App for Outlook
 - [Microsoft Dynamics 365 App for Outlook Introduction](https://commons.wikimedia.org/wiki/File:Microsoft_Dynamics_365_App_for_Outlook_Introduction.webm) - Introduction video from Wikimedia Commons
