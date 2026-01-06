@@ -3,7 +3,7 @@ title: "Dynamics 365 Sales (Part 4)"
 description: "Tiki Tour"
 date: "2025-09-20"
 categories: ["Microsoft Dynamics"]
-image: "/assets/images/dynamicssales4/hero.png"
+image: "/assets/images/dynamics365-color.svg"
 tags: "microsoft dynamics sales"
 slug: "dynamicssales4"
 ---

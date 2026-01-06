@@ -60,7 +60,7 @@ function extractTags(title, content) {
   // Common technology tags
   const techTags = [
     'angular', 'react', 'vue', 'javascript', 'typescript', 'nodejs',
-    'azure', 'aws', 'cloud', 'docker', 'kubernetes', 'devops',
+    'azure', 'aws', 'docker', 'kubernetes', 'devops',
     'dotnet', 'c#', 'java', 'spring', 'python',
     'mysql', 'postgresql', 'sql', 'database',
     'ai', 'ml', 'machine learning',
