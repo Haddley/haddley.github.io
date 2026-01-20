@@ -9,15 +9,12 @@ hidden: false
 slug: "claudecode1"
 ---
 
-Getting started with Claude Code involves installation, basic interaction, and then progressing to more advanced workflows. Here's a practical guide to go from zero to productive use.
-
 ✅ Step-by-Step Getting Started Guide
 
-Follow these steps to install and start using Claude Code effectively.
+Follow these steps to install and start using Claude Code.
 
 Step	What to Do	Key Details/Examples
-1. Check Prerequisites	Ensure you have: a terminal, a code project, and a valid Claude subscription (Pro, Max, Teams, Enterprise) or a Claude Console account.	Required to authenticate and use the tool.
-2. Install	Run the appropriate install command for your OS in your terminal.	macOS/Linux/WSL: 
+1. Install	Run the appropriate install command for your OS in your terminal.	macOS/Linux/WSL: 
 
 ```bash
 curl -fsSL https://claude.ai/install.sh | bash
@@ -25,13 +22,13 @@ curl -fsSL https://claude.ai/install.sh | bash
 
 Windows (PowerShell): 
 
-```text
+```powershell
 irm https://claude.ai/install.ps1 | iex
 ```
 
-3. Authenticate	Start an interactive session with claude and follow the prompts to log in.	Your credentials are stored locally after the first login.
+2. Authenticate	Start an interactive session with claude and follow the prompts to log in.	Your credentials are stored locally after the first login.
 
-4. First Interactions	In your project directory, start Claude Code by typing claude in your terminal. Then, simply ask it to write you a PowerShell script.
+3. First Interactions	In your project directory, start Claude Code by typing claude in your terminal. Then, simply ask it to write you a hello world PowerShell script.
 
 
 I installed Claude Code
@@ -107,8 +104,6 @@ create a new PowerShell script file named "HelloWorld.ps1". The script should si
 
 ![](/assets/images/claudecode/Screenshot 2026-01-20 at 4.51.23 PM.png)
 *pwsh ./HelloWorld.ps1*
-
-
 
 ## References
 
