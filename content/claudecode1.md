@@ -105,6 +105,14 @@ create a new PowerShell script file named "HelloWorld.ps1". The script should si
 ![](/assets/images/claudecode/Screenshot 2026-01-20 at 4.51.23 PM.png)
 *pwsh ./HelloWorld.ps1*
 
+![](/assets/images/claudecode/Screenshot 2026-01-20 at 7.55.32 PM.png)
+*Claude Code's Visual Studio Code Addin.*
+
+![](/assets/images/claudecode/Screenshot 2026-01-20 at 7.58.07 PM.png)
+*what does this script do?*
+
 ## References
 
 - [Claude Code Clearly Explained (and how to use it)](https://www.youtube.com/watch?v=zxMjOqM7DFs)
+
+- [Claude Code Tutorial #1 - Introduction & Setup)](https://www.youtube.com/watch?v=SUysp3sJHbA&list=PL4cUxeGkcC9g4YJeBqChhFJwKQ9TRiivY)
