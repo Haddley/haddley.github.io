@@ -106,7 +106,7 @@ create a new PowerShell script file named "HelloWorld.ps1". The script should si
 *pwsh ./HelloWorld.ps1*
 
 ![](/assets/images/claudecode/Screenshot 2026-01-20 at 7.55.32 PM.png)
-*Claude Code's Visual Studio Code Addin.*
+*Claude Code's Visual Studio Code Extension.*
 
 ![](/assets/images/claudecode/Screenshot 2026-01-20 at 7.58.07 PM.png)
 *what does this script do?*
