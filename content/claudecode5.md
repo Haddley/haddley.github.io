@@ -13,12 +13,12 @@ The /plan mode and the Think keyword are two different, yet complementary, featu
 
 🤔 Plan Mode vs. Extended Thinking: The Key Difference
 
-| Feature | Plan Mode (/plan) | Extended Thinking (e.g., Think) |
-|---------|-------------------|--------------------------------|
-| Main Purpose | Creates a read-only phase for analysis and creating an execution plan before any changes are made. | Gives Claude additional computation time to reason "deeply" on a specific problem before acting. |
-| Core Function | Breadth-first research. It's designed to explore codebases, understand structures, and draft comprehensive plans by reading many files without risk of edits. | Depth-first analysis. It focuses on intensively reasoning through a single task or a set of gathered information to reach a precise, high-quality solution. |
-| How to Activate | Use the /plan command or press Shift+Tab twice in the terminal. | Include keywords like Think, Think more, or ULTRATHINK directly in your prompt to Claude. |
-| State Change | Puts Claude into a different operational mode where file editing and command execution tools are restricted. | Is a prompting technique that requests more internal reasoning steps within the current mode. |
+| Plan Mode (/plan) | Extended Thinking (e.g., Think) |
+|-------------------|--------------------------------|
+| Creates a read-only phase for analysis and creating an execution plan before any changes are made. | Gives Claude additional computation time to reason "deeply" on a specific problem before acting. |
+| Breadth-first research. It's designed to explore codebases, understand structures, and draft comprehensive plans by reading many files without risk of edits. | Depth-first analysis. It focuses on intensively reasoning through a single task or a set of gathered information to reach a precise, high-quality solution. |
+| Use the /plan command or press Shift+Tab twice in the terminal. | Include keywords like Think, Think more, or ULTRATHINK directly in your prompt to Claude. |
+| Puts Claude into a different operational mode where file editing and command execution tools are restricted. | Is a prompting technique that requests more internal reasoning steps within the current mode. |
 
 🔄 How They Work Together
 
