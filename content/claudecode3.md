@@ -58,7 +58,7 @@ In short, Claude Code's context is a blend of persistent project memory (CLAUDE.
 
 
 ![](/assets/images/claudecode3/Screenshot 2026-01-21 at 1.19.32 PM.png)
-*ESC ESC. I reviewed the Context*
+*ESC ESC. I reviewed the Context. I selected the first "point"*
 
 ![](/assets/images/claudecode3/Screenshot 2026-01-21 at 1.19.48 PM.png)
 *Restore code and conversation*
@@ -80,4 +80,4 @@ In short, Claude Code's context is a blend of persistent project memory (CLAUDE.
 
 ## References
 
-- [Claude Code Tutorial #3 - Context)](https://www.youtube.com/watch?v=ob-mYGqqFQw&list=PL4cUxeGkcC9g4YJeBqChhFJwKQ9TRiivY&index=3)
+- [Claude Code Tutorial #3 - Context](https://www.youtube.com/watch?v=ob-mYGqqFQw&list=PL4cUxeGkcC9g4YJeBqChhFJwKQ9TRiivY&index=3)
