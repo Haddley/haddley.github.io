@@ -12,7 +12,7 @@ slug: "claudecode7"
 Using [Context7](https://context7.com) with Claude Code might solve problems of outdated information in the AI coding assistant left over from training. After the Context7 [model context protocol server](mcpserver.html) is added to Claude Code the agent fetches real-time, version-specific library documentation for Claude,  helping to reduce errors?
 
 
-### Generate an example React 17 application
+## Generate an example React 17 application
 
 I used Claude Sonnet 4.5 and GitHub Copilot to generate an example React 17 application
 
@@ -29,7 +29,7 @@ generate a very simple React 17 example that uses ReactDOM.render() API.
 ![](/assets/images/claudecode7/Screenshot 2026-01-26 at 5.49.25 PM.png)
 *http://localhost:3000*
 
-### Without Context7
+## Without Context7
 
 ```prompt
 How would you migrate this React 17 project to React 18?
@@ -55,7 +55,7 @@ claude mcp add context7 -- npx -y @upstash/context7-mcp --api-key ctx7sk-f99eabb
 ![](/assets/images/claudecode7/Screenshot 2026-01-26 at 6.45.57 PM.png)
 */Users/neilhaddley/.claude/settings.json*
 
-### With Context7
+## With Context7
 
 ```prompt
 How would you migrate this React 17 project to React 18? **use context7**
