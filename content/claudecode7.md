@@ -11,19 +11,10 @@ slug: "claudecode7"
 
 Using [Context7](https://context7.com) with Claude Code might solve problems of outdated information in the AI coding assistant left over from training. After the Context7 [model context protocol server](mcpserver.html) is added to Claude Code the agent fetches real-time, version-specific library documentation for Claude,  helping to reduce errors?
 
-I added the [Context7](https://context7.com) [model context protocol server](mcpserver.html)
-
-```text
-claude mcp add context7 -- npx -y @upstash/context7-mcp --api-key ctx7sk-f99eabb8-852c-4d68-8f77-a61713eb204d
-```
-
-![](/assets/images/claudecode7/Screenshot 2026-01-26 at 6.45.13 PM.png)
-*claude mcp add context7 -- npx -y @upstash/context7-mcp --api-key ctx7sk-f99eabb8-852c-4d68-8f77-a61713eb204d*
-
-![](/assets/images/claudecode7/Screenshot 2026-01-26 at 6.45.57 PM.png)
-*/Users/neilhaddley/.claude/settings.json*
 
 ### Generate an example React 17 application
+
+I used Claude Sonnet 4.5 and GitHub Copilot to generate an example React 17 application
 
 ```prompt
 generate a very simple React 17 example that uses ReactDOM.render() API.
@@ -50,6 +41,20 @@ How would you migrate this React 17 project to React 18?
 ![](/assets/images/claudecode7/Screenshot 2026-01-26 at 5.52.26 PM.png)
 *Use createRoot() instead of ReactDOM.render()*
 
+Without the Context7 model context protocol server Claude Code was able to identify the need to use createRoot() instead of ReactDOM.render().
+
+As a test I added the [Context7](https://context7.com) [model context protocol server](mcpserver.html)
+
+```text
+claude mcp add context7 -- npx -y @upstash/context7-mcp --api-key ctx7sk-f99eabb8-852c-4d68-8f77-a61713eb204d
+```
+
+![](/assets/images/claudecode7/Screenshot 2026-01-26 at 6.45.13 PM.png)
+*claude mcp add context7 -- npx -y @upstash/context7-mcp --api-key ctx7sk-f99eabb8-852c-4d68-8f77-a61713eb204d*
+
+![](/assets/images/claudecode7/Screenshot 2026-01-26 at 6.45.57 PM.png)
+*/Users/neilhaddley/.claude/settings.json*
+
 ### With Context7
 
 ```prompt
@@ -70,6 +75,8 @@ How would you migrate this React 17 project to React 18? **use context7**
 
 ![](/assets/images/claudecode7/Screenshot 2026-01-26 at 5.58.59 PM.png)
 *Allow this bash command?*
+
+With Context7's help Claude Code was again able to identify the need to use createRoot() instead of ReactDOM.render().
 
 ![](/assets/images/claudecode7/Screenshot 2026-01-26 at 5.59.14 PM.png)
 *http://localhost:3000 (updated)*
