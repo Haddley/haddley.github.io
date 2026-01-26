@@ -13,9 +13,25 @@ The Challenge
 
 You need to migrate a React application from version 17 to 18, but you're unsure about breaking changes and new patterns.
 
+A Solution 
+
+
+![](/assets/images/claudecode7/Screenshot 2026-01-26 at 6.43.58 PM.png)
+**
+
+![](/assets/images/claudecode7/Screenshot 2026-01-26 at 6.44.53 PM.png)
+**
+
+
+
+
+
+
+
+
 
 ```text
-claude mcp add context7 -- npx -y @upstash/context7-mcp --api-key 
+claude mcp add context7 -- npx -y @upstash/context7-mcp --api-key ctx7sk-f99eabb8-852c-4d68-8f77-a61713eb204d
 ```
 
 Traditional Approach (Without Context7)
@@ -95,8 +111,11 @@ root.render(<App />);
 **
 
 
-![](/assets/images/claudecode6/Screenshot 2026-01-21 at 6.43.28 PM.png)
-*All 11 tests pass*
+![](/assets/images/claudecode7/Screenshot 2026-01-26 at 6.43.58 PM.png)
+**
+
+![](/assets/images/claudecode7/Screenshot 2026-01-26 at 6.44.53 PM.png)
+**
 
 
 
