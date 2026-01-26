@@ -9,51 +9,70 @@ hidden: false
 slug: "claudecode7"
 ---
 
-The Challenge
+Using [Context7](https://context7.com) with Claude Code might solve problems of outdated information in the AI coding assistant left over from training. After the Context7 [model context protocol server](mcpserver.html) is added to Claude Code the agent fetches real-time, version-specific library documentation for Claude,  helping to reduce errors?
 
-You need to migrate a React application from version 17 to 18, but you're unsure about breaking changes and new patterns.
-
-A Solution 
-
-
-![](/assets/images/claudecode7/Screenshot 2026-01-26 at 6.43.58 PM.png)
-**
-
-![](/assets/images/claudecode7/Screenshot 2026-01-26 at 6.44.53 PM.png)
-**
-
-
-
-
-
-
-
-
+I added the [Context7](https://context7.com) [model context protocol server](mcpserver.html)
 
 ```text
 claude mcp add context7 -- npx -y @upstash/context7-mcp --api-key ctx7sk-f99eabb8-852c-4d68-8f77-a61713eb204d
 ```
 
-Traditional Approach (Without Context7)
+![](/assets/images/claudecode7/Screenshot 2026-01-26 at 6.45.13 PM.png)
+*claude mcp add context7 -- npx -y @upstash/context7-mcp --api-key ctx7sk-f99eabb8-852c-4d68-8f77-a61713eb204d*
+
+![](/assets/images/claudecode7/Screenshot 2026-01-26 at 6.45.57 PM.png)
+*/Users/neilhaddley/.claude/settings.json*
+
+### Generate an example React 17 application
+
+```prompt
+generate a very simple React 17 example that uses ReactDOM.render() API.
+```
+
+![](/assets/images/claudecode7/Screenshot 2026-01-26 at 5.47.42 PM.png)
+*package.json*
+
+![](/assets/images/claudecode7/Screenshot 2026-01-26 at 5.49.11 PM.png)
+*index.js*
+
+![](/assets/images/claudecode7/Screenshot 2026-01-26 at 5.49.25 PM.png)
+*http://localhost:3000*
+
+### Without Context7
 
 ```prompt
 How would you migrate this React 17 project to React 18?
 ```
 
-Context7-Powered Approach
+![](/assets/images/claudecode7/Screenshot 2026-01-26 at 5.51.59 PM.png)
+*I'll help you migrate this React 17 project to React 18...*
 
-```prompt
-/init
-```
+![](/assets/images/claudecode7/Screenshot 2026-01-26 at 5.52.26 PM.png)
+*Use createRoot() instead of ReactDOM.render()*
 
-```prompt
-claude mcp add context7 -- npx -y @upstash/context7-mcp --api-key ctx7sk-f99eabb8-852c-4d68-8f77-a61713eb204d
-```
+### With Context7
 
 ```prompt
 How would you migrate this React 17 project to React 18? **use context7**
 ```
 
+![](/assets/images/claudecode7/Screenshot 2026-01-26 at 5.53.27 PM.png)
+*How would you migrate this React 17 project to React 18? **use context7***
+
+![](/assets/images/claudecode7/Screenshot 2026-01-26 at 5.54.23 PM.png)
+*Do you want to proceed with mcp_context7_...*
+
+![](/assets/images/claudecode7/Screenshot 2026-01-26 at 5.55.28 PM.png)
+*Do you want to proceed with mcp_context7_query-docs...*
+
+![](/assets/images/claudecode7/Screenshot 2026-01-26 at 5.57.16 PM.png)
+*Accept this plan?*
+
+![](/assets/images/claudecode7/Screenshot 2026-01-26 at 5.58.59 PM.png)
+*Allow this bash command?*
+
+![](/assets/images/claudecode7/Screenshot 2026-01-26 at 5.59.14 PM.png)
+*http://localhost:3000 (updated)*
 
 
 ```text
@@ -72,52 +91,8 @@ const root = createRoot(document.getElementById('root'));
 root.render(<App />);
 ```
 
-
-
-![](/assets/images/claudecode7/Screenshot 2026-01-26 at 5.47.42 PM.png)
-**
-
-![](/assets/images/claudecode7/Screenshot 2026-01-26 at 5.49.11 PM.png)
-**
-
-![](/assets/images/claudecode7/Screenshot 2026-01-26 at 5.49.25 PM.png)
-**
-
-![](/assets/images/claudecode7/Screenshot 2026-01-26 at 5.51.59 PM.png)
-**
-
-![](/assets/images/claudecode7/Screenshot 2026-01-26 at 5.52.26 PM.png)
-**
-
-![](/assets/images/claudecode7/Screenshot 2026-01-26 at 5.53.27 PM.png)
-**
-
-![](/assets/images/claudecode7/Screenshot 2026-01-26 at 5.54.23 PM.png)
-**
-
-![](/assets/images/claudecode7/Screenshot 2026-01-26 at 5.55.28 PM.png)
-**
-
-![](/assets/images/claudecode7/Screenshot 2026-01-26 at 5.57.16 PM.png)
-**
-
-![](/assets/images/claudecode7/Screenshot 2026-01-26 at 5.58.59 PM.png)
-**
-
-![](/assets/images/claudecode7/Screenshot 2026-01-26 at 5.59.14 PM.png)
-**
-
 ![](/assets/images/claudecode7/Screenshot 2026-01-26 at 5.59.54 PM.png)
-**
-
-
-![](/assets/images/claudecode7/Screenshot 2026-01-26 at 6.43.58 PM.png)
-**
-
-![](/assets/images/claudecode7/Screenshot 2026-01-26 at 6.44.53 PM.png)
-**
-
-
+*Migration complete*
 
 ## References
 
