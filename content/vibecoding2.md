@@ -613,6 +613,26 @@ pytest src/tests/test_colorizer.py -v
 *skip the venv folder*
 
 
+
+
+
+
+
+
+![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 11.35.05 PM.png)
+*python -m src.app.main*
+
+![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 11.35.33 PM.png)
+*Choose Image*
+
+![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 11.35.46 PM.png)
+*COLORIZE IMAGE*
+
+![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 11.36.10 PM.png)
+*DOWNLOAD COLORIZED IMAGE*
+
+
+
 ## References
 
 - [Vibe Coding Fundamentals In 33 minutes](https://www.youtube.com/watch?v=iLCDSY2XX7E)
