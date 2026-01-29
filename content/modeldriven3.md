@@ -26,7 +26,7 @@ Update a Business Process Flow
 Display a Notification; or
 Create a new Record
 
-See also: [Power Apps Component Framework](componentFramework.html)
+See also: [Power Apps Component Framework](/posts/componentFramework)
 
 
 Xrm.Page.data.process.moveNext() and Xrm.Page.data.process.movePrevious() can be used to update a Business Process Flow Stage.

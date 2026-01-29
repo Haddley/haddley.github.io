@@ -37,6 +37,8 @@ Beyond just writing lines of code, AI is transforming the entire development lif
 ## Bringing It All Together: A Colorization Application
 To see these principles in action, I built a **Colorization Application** using ChatGPT's assistance—from architecting the Python backend to fine-tuning the UI and debugging color conversion logic. The AI acted as a pair programmer at every stage, accelerating development and deepening my understanding in the process.
 
+See also: [colorization.ipynb](/posts/colorization)
+
 ---
 
 ## User
