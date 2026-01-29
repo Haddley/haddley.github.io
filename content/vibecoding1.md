@@ -5,7 +5,7 @@ date: "2026-01-29"
 categories: ["AI"]
 image: "/assets/images/chatgpt-logo.svg"
 tags: "ai"
-hidden: true
+hidden: false
 slug: "vibecoding1"
 ---
 
@@ -15,6 +15,8 @@ slug: "vibecoding1"
 What if you had a personal tutor available 24/7 to explain concepts, write examples, debug your errors, and even brainstorm solutions with you? That's no longer a futuristic dream—it's today's reality with AI tools like ChatGPT.
 
 I've used ChatGPT as my copilot to build everything from automation scripts and web applications to full AI-augmented workflows. It has helped me generate, understand, and refine code across multiple languages—**Python, JavaScript, C#, Business Central AL, and C++**—making it one of the most versatile tools in my developer toolkit.
+
+One way to conceptualize this technology is as a pair programmer—a virtual coding partner that never tires. This isn't about automating the developer away; it's about augmenting their capabilities
 
 ## Why Start with Python + AI?
 If you're new to leveraging AI for coding, I recommend starting with **Python**. Its clear syntax and readability make it easier to understand AI-generated code, while its vast ecosystem and deep integration with AI and data science libraries create a perfect sandbox for experimentation.
@@ -290,32 +292,6 @@ security: OWASP Top 10 + file upload specific
 performance: <2s P95 for <5MB images
 
 ```
-
-## Summary timeline
-
-```gantt
-    title PoC Implementation Timeline
-    dateFormat  YYYY-MM-DD
-    section Setup
-    Environment Setup          :2024-01-01, 2d
-    Project Structure          :2024-01-02, 1d
-    
-    section Implementation
-    Core Colorizer Module      :2024-01-03, 2d
-    NiceGUI Interface          :2024-01-04, 2d
-    Image Utilities            :2024-01-05, 1d
-    
-    section Testing
-    Unit Tests                 :2024-01-06, 1d
-    Integration Tests          :2024-01-07, 1d
-    
-    section Deployment
-    Docker Configuration       :2024-01-08, 1d
-    Documentation              :2024-01-08, 1d
-    Demo Preparation           :2024-01-09, 1d
-    Final Validation           :2024-01-10, 1d
-```
-
 
 ## References
 

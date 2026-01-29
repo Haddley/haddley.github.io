@@ -5,11 +5,9 @@ date: "2026-01-29"
 categories: ["AI"]
 image: "/assets/images/chatgpt-logo.svg"
 tags: "ai"
-hidden: true
+hidden: false
 slug: "vibecoding2"
 ---
-
-
 
 ## User
 
@@ -69,8 +67,7 @@ python-multipart>=0.0.6
 
 ## Step 1.3: Virtual Environment
 python -m venv venv
-source venv/bin/activate  # Linux/Mac
-# or venv\Scripts\activate  # Windows
+source venv/bin/activate  # (Linux/Mac) or venv\Scripts\activate  (Windows)
 
 pip install -r requirements.txt
 
@@ -487,6 +484,26 @@ python -m src.app.main
 
 ## Step 4.4: Complete README
 
+
+### **Step 5.1: Demo Checklist**
+
+## Demo Preparation
+- [ ] Test with sample B&W images
+- [ ] Prepare 3-5 test images
+- [ ] Verify upload/download flow
+- [ ] Test on different browsers
+- [ ] Prepare demo script
+
+## PoC Success Criteria
+- [x] Upload B&W image
+- [x] Process image (simulated colorization)
+- [x] Display before/after comparison
+- [x] Download colorized version
+- [x] Handle invalid inputs gracefully
+- [x] Basic error messages
+
+```
+
 # AI Image Colorizer - Proof of Concept
 
 ## Quick Start
@@ -535,27 +552,6 @@ pytest src/tests/test_colorizer.py -v
 ### Single user only
 ### Local storage only
 ### No user authentication
-
-
----
-
-### **Step 5.1: Demo Checklist**
-```markdown
-## Demo Preparation
-- [ ] Test with sample B&W images
-- [ ] Prepare 3-5 test images
-- [ ] Verify upload/download flow
-- [ ] Test on different browsers
-- [ ] Prepare demo script
-
-## PoC Success Criteria
-- [x] Upload B&W image
-- [x] Process image (simulated colorization)
-- [x] Display before/after comparison
-- [x] Download colorized version
-- [x] Handle invalid inputs gracefully
-- [x] Basic error messages
-
 ```
 
 ## Summary timeline
@@ -584,6 +580,39 @@ pytest src/tests/test_colorizer.py -v
 ```
 
 
+
+
+![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 8.12.49 PM.png)
+*python3 -m venv venv*
+
+![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 8.14.21 PM.png)
+*source venv/bin/activate*
+
+![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 8.25.09 PM.png)
+*pip install -r requirements.txt*
+
+![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 8.32.54 PM.png)
+*nicegui.io*
+
+![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 8.32.11 PM.png)
+*main.py*
+
+![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 8.33.05 PM.png)
+*http://127.0.0.1:8080*
+
+![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 8.35.48 PM.png)
+*NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+*
+
+![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 8.36.45 PM.png)
+*Option 1: Ignore it*
+
+![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 8.37.27 PM.png)
+*Publish to GitHub*
+
+![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 8.37.53 PM.png)
+*skip the venv folder*
+
+
 ## References
 
-- [Learn to Code with ChatGPT](https://offers.hubspot.com/code-with-chatgpt)
+- [Vibe Coding Fundamentals In 33 minutes](https://www.youtube.com/watch?v=iLCDSY2XX7E)
