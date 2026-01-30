@@ -1,6 +1,6 @@
 ---
 title: "Vibe Coding (Part 4)"
-description: "Deploying to Azure"
+description: "Deploying to Docker"
 date: "2026-01-30"
 categories: ["AI"]
 image: "/assets/images/chatgpt-logo.svg"
