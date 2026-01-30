@@ -298,3 +298,5 @@ performance: <2s P95 for <5MB images
 ## References
 
 - [Learn to Code with ChatGPT](https://offers.hubspot.com/code-with-chatgpt)
+
+- [How Replacing Developers With AI is Going Horribly Wrong](https://www.youtube.com/watch?v=ts0nH_pSAdM)

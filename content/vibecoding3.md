@@ -156,12 +156,12 @@ jobs:
 
 ## Branch Protection
 
-To guarantee that broken code cannot be merged, you must enable a protected branch rule or *newer* rule set in your GitHub repository settings.
+To guarantee that broken code cannot be merged, you must enable a protected branch rule or *newer* ruleset in your GitHub repository settings.
 
 
 Your protected branch rules won't be enforced until you move to a GitHub Team or Enterprise organization account
 
-Your rulesets won't be enforced until you move to GitHub Team organization account.
+Your ruleset won't be enforced until you move to GitHub Team organization account.
 
 ## References
 
