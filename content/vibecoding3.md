@@ -5,7 +5,7 @@ date: "2026-01-30"
 categories: ["AI"]
 image: "/assets/images/chatgpt-logo.svg"
 tags: "ai"
-hidden: false
+hidden: true
 slug: "vibecoding3"
 ---
 
