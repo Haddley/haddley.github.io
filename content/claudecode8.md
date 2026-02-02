@@ -245,4 +245,6 @@ update --accent and --accent-hover colors to be brighter
 
 - [Vibe Coding 101 with Replit](https://www.deeplearning.ai/short-courses/vibe-coding-101-with-replit)
 
+- [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0)
+
 - [How Replacing Developers With AI is Going Horribly Wrong](https://www.youtube.com/watch?v=ts0nH_pSAdM)
