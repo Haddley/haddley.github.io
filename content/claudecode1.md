@@ -116,3 +116,7 @@ create a new PowerShell script file named "HelloWorld.ps1". The script should si
 - [Claude Code Clearly Explained (and how to use it)](https://www.youtube.com/watch?v=zxMjOqM7DFs)
 
 - [Claude Code Tutorial #1 - Introduction & Setup)](https://www.youtube.com/watch?v=SUysp3sJHbA&list=PL4cUxeGkcC9g4YJeBqChhFJwKQ9TRiivY)
+
+- [How I Start EVERY Claude Code Project](https://www.youtube.com/watch?v=aQvpqlSiUIQ)
+
+- [6 Months of Claude Code Lessons in 27 Minutes](https://www.youtube.com/watch?v=rfDvkSkelhg)
