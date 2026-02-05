@@ -154,7 +154,7 @@ How can we add unit tests and integration tests?
 ## User
 
 ```prompt
-How do I ensure that this code is deployed to Azure everytine it is pushed to github (assuming that the tests pass)?
+How do I ensure that this code is deployed to Azure everytime it is pushed to github (assuming that the tests pass)?
 ```
 
 
