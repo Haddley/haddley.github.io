@@ -5,7 +5,7 @@ date: "2026-02-01"
 categories: ["AI"]
 image: "/assets/images/claudecode/Claude_AI_symbol.svg"
 tags: "ai"
-hidden: false
+hidden: true
 slug: "claudecode9"
 ---
 
