@@ -26,13 +26,31 @@ The Google AIY Voice Kit is a do-it-yourself version of a Google Home assistant.
 ![](/assets/images/voicekit/Screenshot%202025-10-11%20at%205.09.53 PM.png)
 *I enabled xrdp and connected to pi remotely*
 
+
+[legacy materials moving from archive.raspbian.org to legacy.raspbian.org](https://forums.raspberrypi.com/viewtopic.php?t=237469)
+
+
 ```bash
+pi@raspberrypi:~ $ sudo nano /etc/apt/sources.list
+```
+
+```text
+deb http://legacy.raspbian.org/raspbian/ buster main contrib non-free rpi
+```
+
+```bash
+pi@raspberrypi:~ $ sudo apt update
+...
+pi@raspberrypi:~ $ sudo apt full-upgrade
+...
+pi@raspberrypi:~ $ sudo reboot
+...
 pi@raspberrypi:~ $ sudo apt-get install xrdp
 ...
 pi@raspberrypi:~ $ sudo service xrdp start
 ```
 
-Notice that "apt-get --allow-releaseinfo-change update" could have been used to update the Buster image.
+Notice that "apt-get --allow-releaseinfo-change update" was also used to update the Buster image.
 
 ![](/assets/images/voicekit/Screenshot%202025-10-11%20at%205.21.15 PM.png)
 *I ran the Check audio script*

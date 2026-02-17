@@ -14,8 +14,13 @@ image: "/assets/images/raspberry-pi-logo.svg"
 
 During setup, I encountered issues with the unsupported Chromium version in the Raspberry Pi image. This was resolved by installing Firefox, which properly handled the OAuth authentication flow required by the Google Assistant API.
 
+
 ```bash
 pi@raspberrypi:~ $ sudo apt update
+...
+pi@raspberrypi:~ $ sudo apt full-upgrade
+...
+pi@raspberrypi:~ $ sudo apt-get --allow-releaseinfo-change update
 ...
 pi@raspberrypi:~ $ sudo apt install firefox-esr
 ```
