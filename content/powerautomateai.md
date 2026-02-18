@@ -125,7 +125,7 @@ not(triggerOutputs()?['body/hadd_enableaiprocessing'])
 *I created a Condition based on the Enabled variable value*
 
 ![](/assets/images/powerautomateai/Screenshot 2026-02-18 at 6.43.59 PM.png)
-*I called the AI model*
+*I called the AI model. I used the environment variables to set the URL and API-Key values*
 
 ```prompt
 {
@@ -181,29 +181,6 @@ outputs('Get_content_(Compose)')
 ![](/assets/images/powerautomateai/Screenshot 2026-02-18 at 6.47.15 PM.png)
 *I used a Dataverse Update a row action to update the record (row)*
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-18 at 6.49.23 PM.png)
-*I used the model driven app to update the Description column value*
-
-![](/assets/images/powerautomateai/Screenshot 2026-02-18 at 6.50.26 PM.png)
-*I checked the Update a row action*
-
-![](/assets/images/powerautomateai/Screenshot 2026-02-18 at 6.51.05 PM.png)
-*I viewed the updated row in the model driven app*
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ```expression
 body('Parse_Result_(Parse_JSON)')?['explanation']
 ```
@@ -211,6 +188,16 @@ body('Parse_Result_(Parse_JSON)')?['explanation']
 ```expression
 body('Parse_Result_(Parse_JSON)')?['score']
 ```
+
+![](/assets/images/powerautomateai/Screenshot 2026-02-18 at 6.49.23 PM.png)
+*I used the model driven app to manually update the Description column value*
+
+![](/assets/images/powerautomateai/Screenshot 2026-02-18 at 6.50.26 PM.png)
+*I checked the Update a row action*
+
+![](/assets/images/powerautomateai/Screenshot 2026-02-18 at 6.51.05 PM.png)
+*I viewed the updated row in the model driven app*
+
 
 ## References
 
