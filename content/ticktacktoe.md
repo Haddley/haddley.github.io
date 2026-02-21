@@ -152,7 +152,7 @@ Overall, this code provides the functionality for playing a tic-tac-toe game in 
 
   // Your web app's Firebase configuration
   const firebaseConfig = {
-    apiKey: "AIzaSyAw86TBoGMBkdTHnhs28zKCiVvvkNEcPqM",
+    apiKey: "XXXXXXXXXX",
     authDomain: "haddley-tick-tack-toe.firebaseapp.com",
     projectId: "haddley-tick-tack-toe",
     storageBucket: "haddley-tick-tack-toe.appspot.com",
