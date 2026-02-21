@@ -9,66 +9,39 @@ hidden: false
 slug: "claudecode6"
 ---
 
-Adding a custom slash command like /powershell is about transforming Claude from a general-purpose assistant into a specialized, context-aware co-pilot for your specific project. Here’s why it's powerful and how to set it up.
+Custom slash commands let me package project-specific knowledge and workflows into a single shortcut. Instead of re-explaining my project's structure, conventions, and tools at the start of every session, I type `/powershell` and Claude already knows everything it needs.
 
-🎯 Why Create a Custom Slash Command?
+A custom slash command is a Markdown file stored in `.claude/commands/`. When I invoke it, Claude reads the file and uses it as the context for the session.
 
-Reason	The Problem (Without Command)	The Solution (With /powershell)
-1. Save Time & Repetition	You must repeatedly explain your project's structure, style rules, and common tools in every new chat.	Encapsulates all project knowledge. Typing /powershell instantly gives Claude the context it needs.
-2. Enforce Standards	Claude might suggest solutions that don't follow your team's PowerShell best practices (e.g., unsafe execution policies).	Embeds your rules (like "never suggest Bypass") directly into its workflow, ensuring consistent, high-quality output.
-3. Reduce Errors	Manual file context loading (@) is easy to forget, leading to suggestions based on incomplete information.	Automates the "context-gathering" phase—Claude first reads key project files before acting.
-4. Streamline Onboarding	New team members spend days learning project quirks and setup.	The command acts as an instant onboarding guide, giving anyone expert-level context.
-5. Create a Shared Language	Team discussions require long descriptions of tasks (e.g., "run the full test suite with detailed output").	Standardizes actions. /powershell can define exactly what "run tests" means (Invoke-Pester -Path ./tests -Output Detailed).
-In essence, it inverts the workflow. Instead of you constantly guiding Claude, you teach Claude once how to guide itself within your project's world.
+## Creating the command
 
+I created `.claude/commands/powershell.md` containing instructions for how Claude should approach my PowerShell project — what files to read first, what commands to use, which safety rules to follow, and how to structure new functions:
 
-```md
-When this command is used, Claude should act as a PowerShell project expert. Follow these steps:
+![](/assets/images/claudecode6/Screenshot-2026-01-21-at-6.31.43-PM.png)
+*I created the /powershell command file in .claude/commands/*
 
-1.  **Context Gathering & Analysis:**
-    *   First, use the `@` mention to read the main project script file (like `@.\MyScript.ps1`).
-    *   Check for a `RequiredModules.psd1`, `requirements.psd1`, or any `*.psd1/*.psm1` files to understand module dependencies.
-    *   Look for a `tests/` directory and specifically for `*.Tests.ps1` files to understand the testing framework (likely Pester).
-    *   Check for the presence of a `PSModulePath` configuration or a `.env` file with environment variables.
+The command tells Claude to:
+- Read the main script and any module files before acting
+- Use `Invoke-Pester` for tests and `Invoke-Build` for task automation
+- Never suggest `-ExecutionPolicy Bypass` as a first solution
+- Follow PowerShell Verb-Noun naming and use `[CmdletBinding()]` on new functions
 
-2.  **Core Project Commands & Structure:**
-    *   Assume the project follows common PowerShell conventions. If a module project (`*.psd1` exists), the build/test commands likely use `Invoke-Build` or `psake`.
-    *   **Standard commands to reference:**
-        *   `.\Build.ps1` or `Invoke-Build` - For task automation.
-        *   `Invoke-Pester -Path ./tests -Output Detailed` - To run the full test suite.
-        *   `Import-Module .\MyModule -Force` - For local development reloads.
-        *   `Get-Module -ListAvailable` - To check installed dependencies.
+## Using the command
 
-3.  **Best Practices & Safety Rules:**
-    *   **NEVER** suggest running scripts with `-ExecutionPolicy Bypass` as a first solution. Prefer configuring the policy correctly.
-    *   Always check for `#Requires` statements at the top of scripts and ensure Claude respects admin/module requirements.
-    *   Prefer `-Confirm:$false` or `-Force` parameters only when explicitly safe and requested. Highlight their use if suggested.
-    *   When editing functions, ensure `[CmdletBinding()]` and common parameters (`-Verbose`, `-ErrorAction`) are preserved if present.
-    *   **Code Style:** Follow PowerShell's Verb-Noun naming for any new functions. Use PascalCase for variables in parameters, camelCase for local variables. Suggest `[ValidateSet()]` and `[Parameter(Mandatory)]` attributes to improve new functions.
+I ran `/powershell` at the start of a new session:
 
-4.  **Common Tasks & Solutions:**
-    *   For module dependency issues, suggest `Install-Module -Name <ModuleName> -Scope CurrentUser` or using `Save-Module`.
-    *   For file path issues, always use `Join-Path` or `Resolve-Path` instead of string concatenation.
-    *   For JSON/CSV manipulation, prefer `ConvertFrom-Json`, `ConvertTo-Json`, `Import-Csv`, and `Export-Csv` cmdlets.
-    *   When suggesting error handling, include `Try/Catch` blocks with `$PSCmdlet.ThrowTerminatingError()` for advanced functions.
+![](/assets/images/claudecode6/Screenshot-2026-01-21-at-6.35.11-PM.png)
+*I ran /powershell — Claude read the project files and loaded the context*
 
-5.  **Output & Next Steps:**
-    *   After analysis, provide a concise summary of the project structure and identified dependencies.
-    *   Tailor any following action plans (like adding a feature or fixing a bug) to the discovered project setup.
-    *   Ask clarifying questions if the project structure is unusual or key files are missing.
-```
+![](/assets/images/claudecode6/Screenshot-2026-01-21-at-6.37.04-PM.png)
+*Claude summarised what it found and asked what I wanted to do*
 
-![](/assets/images/claudecode6/Screenshot 2026-01-21 at 6.31.43 PM.png)
-*slash command*
+I asked it to add a Pester test file for the module:
 
-![](/assets/images/claudecode6/Screenshot 2026-01-21 at 6.35.11 PM.png)
-*/powershell*
+![](/assets/images/claudecode6/Screenshot-2026-01-21-at-6.38.53-PM.png)
+*I asked Claude to add a test file for the GreetingHelpers module*
 
-![](/assets/images/claudecode6/Screenshot 2026-01-21 at 6.37.04 PM.png)
-*what would you like to do with this project?*
-
-![](/assets/images/claudecode6/Screenshot 2026-01-21 at 6.38.53 PM.png)
-*add a test file for the module*
+Claude generated a complete Pester test suite covering `Get-Greeting` and `Show-Greeting`, including context blocks for parameters, edge cases, and validation:
 
 ```powershell
 BeforeAll {
@@ -147,9 +120,12 @@ Describe "Show-Greeting" {
 }
 ```
 
-![](/assets/images/claudecode6/Screenshot 2026-01-21 at 6.43.28 PM.png)
-*All 11 tests pass*
+All 11 tests passed:
 
+![](/assets/images/claudecode6/Screenshot-2026-01-21-at-6.43.28-PM.png)
+*All 11 Pester tests passed*
+
+The command effectively inverted the workflow — instead of me guiding Claude, the command taught Claude how to guide itself within the project. New sessions start with full context, no repetition required.
 
 ## References
 

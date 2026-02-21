@@ -55,6 +55,20 @@ The slug is derived from the filename by default; posts also support a `visible:
 
 Create a `.md` file in `/content/`. Use an existing post as a template for the frontmatter structure. Place any images in `content/assets/images/<slug>/` and reference them as `/assets/images/<slug>/filename.ext`. Run `npm run sync-images` if the post includes new images.
 
+## Image Filenames
+
+macOS screenshot filenames contain spaces and a narrow no-break space (`\u202f`) before "AM"/"PM". Before referencing new images in Markdown, rename them to replace all spaces and `\u202f` with hyphens using:
+
+```python
+import os
+for f in os.listdir(folder):
+    new = f.replace(' ', '-').replace('\u202f', '-')
+    if new != f:
+        os.rename(os.path.join(folder, f), os.path.join(folder, new))
+```
+
+Run this against both `content/assets/images/<slug>/` and `public/assets/images/<slug>/`.
+
 ## Writing Style
 
 When editing blog post content, use first-person active voice throughout — e.g. "I ran", "I clicked", "I selected". Avoid passive voice and third-person descriptions.

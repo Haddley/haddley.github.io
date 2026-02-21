@@ -9,44 +9,34 @@ hidden: false
 slug: "claudecode4"
 ---
 
-The .claude/settings.local.json file is your personal, machine-specific configuration override for a single project. It lets you customize Claude Code's behavior for your local workspace without affecting your teammates, as it is automatically excluded from version control .
+Claude Code asks for permission before writing files or running shell commands. This is a safety feature, but for tools I trust and use repeatedly, the prompts become noise. I can pre-approve specific commands in a local settings file so Claude stops asking.
 
-📁 Understanding the Configuration Hierarchy
+## Configuration hierarchy
 
-Claude Code uses a layered system where more specific scopes override broader ones . Here is a comparison of the different configuration scopes:
+Claude Code uses a layered configuration system, where more specific scopes override broader ones:
 
-| Scope | File Location | Intended Use | Shared with Team? |
-|-------|---------------|--------------|-------------------|
-| Local | .claude/settings.local.json | Personal overrides for this specific project (e.g., test settings, personal shortcuts). | No (auto git-ignored) |
-| Project | .claude/settings.json | Team-shared settings (standard hooks, shared MCP servers, project rules) . | Yes (committed to git) |
-| User | ~/.claude/settings.json | Your global preferences across all projects (themes, default tools) . | No |
-| Managed | System-level directory | Enterprise IT policies that enforce organization-wide security and compliance . | Yes (deployed by admin) |
+| Scope | File | Shared with team? |
+|-------|------|-------------------|
+| Managed | System-level (enterprise) | Yes — enforced by IT |
+| Local | `.claude/settings.local.json` | No — auto git-ignored |
+| Project | `.claude/settings.json` | Yes — committed to git |
+| User | `~/.claude/settings.json` | No — personal global defaults |
 
-Settings are applied with the following priority (highest to lowest): Managed > Command-line arguments > Local > Project > User . This means your settings.local.json will override settings in both the project's settings.json and your global user settings.
+The `.claude/settings.local.json` file is my personal override for a single project. Because it's automatically excluded from version control, I can configure it without affecting teammates.
 
-🛠️ How and When to Use It
+## Pre-approving a tool
 
-You should create and edit a settings.local.json file in your project's .claude/ directory when you need settings that are specific to your workflow on that project.
+When Claude ran a `pwsh` command for the first time, it asked for permission. I chose "don't ask again" for that command in this project:
 
-Key Use Cases:
+![](/assets/images/claudecode4/Screenshot-2026-01-21-at-4.28.35-PM.png)
+*I selected "don't ask again" for pwsh commands in this project*
 
-Personal Tool Permissions: Pre-approve specific commands (like git commit) to reduce permission prompts just for you .
-Experiment Safely: Test new hooks or environment variables before proposing them to the team in the shared settings.json .
-Machine-Specific Paths: Configure paths or credentials that differ on your machine .
-Auto-approving MCP Servers: Some tools (like claude-flow) may generate this file to auto-approve specific local MCP servers for convenience .
+Claude Code wrote that permission directly into `.claude/settings.local.json`:
 
+![](/assets/images/claudecode4/Screenshot-2026-01-21-at-4.29.01-PM.png)
+*Claude wrote the allow rule to settings.local.json — `{"permissions": {"allow": ["Bash(pwsh:*)"]}}`*
 
-📝 Common Configuration Example
-
-Here are practical configurations you might add to your .claude/settings.local.json to reduce permission prompts:
-
-
-![](/assets/images/claudecode4/Screenshot 2026-01-21 at 4.28.35 PM.png)
-*Yes, and don't ask again for pwsh commands in /User/neilhaddley/Documents/GitHub/gettingstarted*
-
-![](/assets/images/claudecode4/Screenshot 2026-01-21 at 4.29.01 PM.png)
-*{"permissions": { "allow": ["Bash(pwsh:*)"]}}*
-
+From that point on, Claude ran PowerShell commands without prompting me. I can also edit the file manually to pre-approve other tools, set environment variables, or test hooks before proposing them to the team in the shared `settings.json`.
 
 ## References
 

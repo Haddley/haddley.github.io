@@ -9,89 +9,89 @@ hidden: false
 slug: "claudecode5"
 ---
 
-The /plan mode and the Think keyword are two different, yet complementary, features in Claude Code that improve how Claude handles complex tasks.
+Claude Code has two features that help it handle complex tasks more carefully: **Plan Mode** and **Extended Thinking**. They're different tools for different situations, but they work well together.
 
-🤔 Plan Mode vs. Extended Thinking: The Key Difference
+Plan Mode (`/plan` or Shift+Tab twice) puts Claude into a read-only phase. It can explore the codebase and draft a plan, but it can't make any edits until I approve. Extended Thinking (`Think`, `Think hard`, or `ULTRATHINK` in a prompt) gives Claude more computation time to reason through a specific problem before acting.
 
-| Plan Mode (/plan) | Extended Thinking (e.g., Think) |
-|-------------------|--------------------------------|
-| Creates a read-only phase for analysis and creating an execution plan before any changes are made. | Gives Claude additional computation time to reason "deeply" on a specific problem before acting. |
-| Breadth-first research. It's designed to explore codebases, understand structures, and draft comprehensive plans by reading many files without risk of edits. | Depth-first analysis. It focuses on intensively reasoning through a single task or a set of gathered information to reach a precise, high-quality solution. |
-| Use the /plan command or press Shift+Tab twice in the terminal. | Include keywords like Think, Think more, or ULTRATHINK directly in your prompt to Claude. |
-| Puts Claude into a different operational mode where file editing and command execution tools are restricted. | Is a prompting technique that requests more internal reasoning steps within the current mode. |
+## Entering Plan Mode
 
-🔄 How They Work Together
+I ran `/plan` to switch Claude into planning mode:
 
-These features are designed to be used together in an "Explore, Plan, Code, Commit" workflow. You typically start in Plan Mode for safe exploration, then use extended thinking to refine the solution before execution.
+![](/assets/images/claudecode5/Screenshot-2026-01-21-at-4.45.37-PM.png)
+*I ran /plan to enter planning mode*
 
-💡 When to Use Which Feature
+![](/assets/images/claudecode5/Screenshot-2026-01-21-at-4.45.54-PM.png)
+*Claude confirmed plan mode was enabled — no edits would be made until I approved*
 
-Use Plan Mode (/plan) when starting a new, complex feature that touches many files, or when you need to safely explore an unfamiliar codebase without the risk of accidental edits.
-Use Extended Thinking keywords when Claude is working on a difficult, focused problem (like a tricky bug or algorithm) and you want to ensure it dedicates sufficient reasoning effort before giving you an answer.
-In short, Plan Mode creates a safe, structured environment for broad planning, while the Think keyword encourages deep, focused reasoning on a problem. They are most powerful when used together in sequence.
-
-
-![](/assets/images/claudecode5/Screenshot 2026-01-21 at 4.45.37 PM.png)
-*/plan*
-
-![](/assets/images/claudecode5/Screenshot 2026-01-21 at 4.45.54 PM.png)
-*Enabled plan mode*
+I then asked Claude to create 10 greeting scripts:
 
 ```prompt
-can you create 10 similar scripts that provide unique greetings 
+can you create 10 similar scripts that provide unique greetings
 ```
 
-![](/assets/images/claudecode5/Screenshot 2026-01-21 at 4.49.52 PM.png)
-*can you create 10 similar scripts...*
+![](/assets/images/claudecode5/Screenshot-2026-01-21-at-4.49.52-PM.png)
+*I asked Claude to plan 10 greeting scripts*
 
-![](/assets/images/claudecode5/Screenshot 2026-01-21 at 4.50.40 PM.png)
-*1. Use these greetings*
+![](/assets/images/claudecode5/Screenshot-2026-01-21-at-4.50.40-PM.png)
+*Claude drafted a plan listing the greetings it would use for each script*
 
-![](/assets/images/claudecode5/Screenshot 2026-01-21 at 4.53.30 PM.png)
-*1. Yes, clear context and auto-accept edits (shift+tab)*
+## Approving and running the plan
 
-![](/assets/images/claudecode5/Screenshot 2026-01-21 at 4.53.59 PM.png)
-*1. Yes, clear context and auto-accept edits (shift+tab)*
+I approved the plan and let Claude execute with auto-accept enabled:
 
-![](/assets/images/claudecode5/Screenshot 2026-01-21 at 4.54.50 PM.png)
-*Done*
+![](/assets/images/claudecode5/Screenshot-2026-01-21-at-4.53.30-PM.png)
+*I approved the plan and enabled auto-accept for the session*
+
+![](/assets/images/claudecode5/Screenshot-2026-01-21-at-4.53.59-PM.png)
+*Claude began creating the scripts*
+
+![](/assets/images/claudecode5/Screenshot-2026-01-21-at-4.54.50-PM.png)
+*All 10 scripts created successfully*
+
+I then asked Claude to update `CLAUDE.md` to reflect what was built:
 
 ```prompt
-update the CLAUDE.md in line with last update 
+update the CLAUDE.md in line with last update
 ```
 
-![](/assets/images/claudecode5/Screenshot 2026-01-21 at 4.58.46 PM.png)
-*Updated CLAUDE.md*
+![](/assets/images/claudecode5/Screenshot-2026-01-21-at-4.58.46-PM.png)
+*Claude updated CLAUDE.md to document the new scripts*
+
+## Extended Thinking
+
+I asked Claude to refactor the scripts and used the `Think hard` keyword to get deeper reasoning:
 
 ```prompt
-Refactor the script files separating out the greeting string creation from the text output. Think hard about this update  
+Refactor the script files separating out the greeting string creation from the text output. Think hard about this update
 ```
 
-![](/assets/images/claudecode5/Screenshot 2026-01-21 at 5.02.42 PM.png)
-*Refactor the script files...*
+![](/assets/images/claudecode5/Screenshot-2026-01-21-at-5.02.42-PM.png)
+*I asked Claude to refactor the scripts, prompting it to think carefully*
 
+![](/assets/images/claudecode5/Screenshot-2026-01-21-at-5.04.26-PM.png)
+*Claude entered extended thinking mode before responding*
 
-![](/assets/images/claudecode5/Screenshot 2026-01-21 at 5.04.26 PM.png)
-*Thinking...*
+![](/assets/images/claudecode5/Screenshot-2026-01-21-at-5.05.14-PM.png)
+*Claude considered multiple refactoring approaches*
 
-![](/assets/images/claudecode5/Screenshot 2026-01-21 at 5.05.14 PM.png)
-*Approach 4*
+![](/assets/images/claudecode5/Screenshot-2026-01-21-at-5.08.22-PM.png)
+*Claude chose a shared module approach to separate greeting creation from output*
 
-![](/assets/images/claudecode5/Screenshot 2026-01-21 at 5.08.22 PM.png)
-*3. Shared Module*
+I approved and let Claude apply the refactor:
 
-![](/assets/images/claudecode5/Screenshot 2026-01-21 at 5.08.55 PM.png)
-*1. Yes, clear context and auto-accept edits (shift+tab)*
+![](/assets/images/claudecode5/Screenshot-2026-01-21-at-5.08.55-PM.png)
+*I approved the refactor with auto-accept enabled*
 
-![](/assets/images/claudecode5/Screenshot 2026-01-21 at 5.10.08 PM.png)
-*Refactoring all scripts...*
+![](/assets/images/claudecode5/Screenshot-2026-01-21-at-5.10.08-PM.png)
+*Claude refactored all 11 scripts*
 
-![](/assets/images/claudecode5/Screenshot 2026-01-21 at 5.10.58 PM.png)
-*All 11 scripts run successfully...*
+![](/assets/images/claudecode5/Screenshot-2026-01-21-at-5.10.58-PM.png)
+*All 11 scripts ran successfully after the refactor*
 
-![](/assets/images/claudecode5/Screenshot 2026-01-21 at 5.11.53 PM.png)
-*./Aloha.ps1*
+![](/assets/images/claudecode5/Screenshot-2026-01-21-at-5.11.53-PM.png)
+*I verified one script manually — ./Aloha.ps1 ran correctly*
 
+In practice I use Plan Mode when starting something that touches many files, and the `Think` keyword when I want Claude to slow down and reason more carefully about a specific problem rather than jumping straight to code.
 
 ## References
 

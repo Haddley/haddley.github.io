@@ -9,74 +9,44 @@ hidden: false
 slug: "claudecode3"
 ---
 
-📚 Core Concept: What is "Context"?
+Context is the working information Claude Code can see during a session — the conversation history, any files I've loaded with `@`, and the persistent instructions in `CLAUDE.md`. Managing context well is key to keeping Claude accurate and on-task across a long session.
 
-In Claude Code, context is the working information Claude can use. It includes your conversation history, manually loaded files, selections, and persistent instructions from files like CLAUDE.md.
+There are three main tools for controlling context: **ESC ESC** (rewind), **/compact** (summarise), and **/clear** (reset).
 
-🗂️ Persistent Context (Project "Memory")
+## Rewinding a session (ESC ESC)
 
-The CLAUDE.md file acts as Claude's persistent memory for a project, automatically loaded at the start of every session.
+Pressing ESC twice opens the rewind menu, which shows a list of previous points in the conversation. I can select any checkpoint to restore the session to that state — useful when Claude goes in the wrong direction and I want to try a different approach without re-typing everything.
 
-- **Purpose:** Stores project-specific instructions, commands, and rules (e.g., coding styles, common tasks).
-- **Creation:** Use /init in the CLI or create it manually in your project's root.
-- **Key Fact:** The old # key shortcut to add to this file is deprecated. Now, you simply ask Claude to update the file for you.
+![](/assets/images/claudecode3/Screenshot-2026-01-21-at-1.19.32-PM.png)
+*I pressed ESC ESC to open the rewind menu and selected an earlier checkpoint*
 
-🎮 Interactive Session & Context Management
+![](/assets/images/claudecode3/Screenshot-2026-01-21-at-1.19.48-PM.png)
+*Claude restored the code and conversation to that point*
 
-These commands manage the active context during a session.
+## Compacting context (/compact)
 
-| Command/Feature | Primary Function | Pro Tip |
-|-----------------|------------------|---------|
-| @ | Manually load any file or folder into context. | Use for files not automatically included. |
-| /clear | Reset session history. | Use when starting a completely new task. |
-| /compact | Summarize a long conversation to save space. | Use after finishing a major task phase. |
-| Esc (once) | Stop Claude's current response. | The standard "stop" button. |
-| Esc (twice) | Rewind to a previous point in the chat. | Be aware of a past bug (v2.0.5) that could cause freezes. |
-| /exit | End the CLI session. | Returns you to your system terminal. |
+As a session grows, the conversation history takes up more of Claude's context window. Running `/compact` summarises the conversation so far into a compact digest, freeing up space for new work without losing the key facts.
 
-🖥️ Key Interface Difference: CLI vs. VS Code Extension
+![](/assets/images/claudecode3/Screenshot-2026-01-21-at-1.20.44-PM.png)
+*I reviewed the context window before compacting*
 
-How you add context differs significantly between interfaces.
+![](/assets/images/claudecode3/Screenshot-2026-01-21-at-1.21.02-PM.png)
+*I ran /compact to summarise the conversation*
 
-| Context Type | Claude Code CLI | Claude Code VS Code Extension |
-|--------------|-----------------|------------------------------|
-| Project Files | Manual only via @ mentions. | Automatic for the currently active editor file. |
-| Selected Code | Not seen unless manually referenced. | Automatically seen when text is highlighted. |
-| Workflow Feel | Command-driven, terminal-centric. | Integrated, like a pair programmer inside your editor. |
+![](/assets/images/claudecode3/Screenshot-2026-01-21-at-1.21.47-PM.png)
+*The context window shrank after compacting — Claude retained the essentials*
 
-💡 Best Practices & Summary
+## Clearing context (/clear)
 
-Foundation: Create a concise CLAUDE.md for project-wide rules.
-During Work:
+When I move to a completely new task, I run `/clear` to wipe the session history entirely and start fresh. This avoids earlier conversation bleeding into unrelated work.
 
-In VS Code, leverage the automatic context for the file you're editing.
-In the CLI, actively use @ to pull in files.
-Session Hygiene: Use /compact to preserve long conversations and /clear to reset for a new topic.
-Tool Choice: Use the VS Code extension for integrated coding and the CLI for advanced terminal operations or MCP server work.
-In short, Claude Code's context is a blend of persistent project memory (CLAUDE.md) and dynamic session control (commands and auto-context), with the interface you choose shaping your workflow.
+![](/assets/images/claudecode3/Screenshot-2026-01-21-at-1.22.50-PM.png)
+*I ran /clear to reset the session*
 
+![](/assets/images/claudecode3/Screenshot-2026-01-21-at-1.23.03-PM.png)
+*The context window was empty — ready for a new task*
 
-
-![](/assets/images/claudecode3/Screenshot 2026-01-21 at 1.19.32 PM.png)
-*ESC ESC. I reviewed the Context. I selected the first "point"*
-
-![](/assets/images/claudecode3/Screenshot 2026-01-21 at 1.19.48 PM.png)
-*Restore code and conversation*
-
-![](/assets/images/claudecode3/Screenshot 2026-01-21 at 1.20.44 PM.png)
-*ESC ESC. I reviewed the Context*
-
-![](/assets/images/claudecode3/Screenshot 2026-01-21 at 1.21.02 PM.png)
-*/compact*
-
-![](/assets/images/claudecode3/Screenshot 2026-01-21 at 1.21.47 PM.png)
-*ESC ESC. I reviewed the Context*
-
-![](/assets/images/claudecode3/Screenshot 2026-01-21 at 1.22.50 PM.png)
-*/clear*
-
-![](/assets/images/claudecode3/Screenshot 2026-01-21 at 1.23.03 PM.png)
-*ESC ESC. I reviewed the Context*
+In practice I use `/compact` to stay within a long session and `/clear` when switching topics entirely. ESC ESC is most useful when I want to explore an alternative without losing my current progress.
 
 ## References
 
