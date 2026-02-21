@@ -5,7 +5,7 @@ date: "2023-07-25"
 categories: ["AI","IOT"]
 tags: "opencv"
 slug: "opencv"
-image: "/assets/images/raspberry-pi-logo.svg"
+image: "/assets/images/opencv/raspberry-pi-logo.svg"
 ---
 
 

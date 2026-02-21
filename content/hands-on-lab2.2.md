@@ -5,7 +5,7 @@ date: "2023-11-22"
 categories: ["Business Central"]
 tags: ""
 slug: "hands-on-lab2.2"
-image: "/assets/images/dynamics365-color.svg"
+image: "/assets/images/hands-on-lab2.2/dynamics365-color.svg"
 ---
 
 

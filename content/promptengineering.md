@@ -5,7 +5,7 @@ date: "2023-08-08"
 categories: ["AI"]
 tags: ""
 slug: "promptengineering"
-image: "/assets/images/mediamodifier-design.png"
+image: "/assets/images/promptengineering/mediamodifier-design.png"
 ---
 
 

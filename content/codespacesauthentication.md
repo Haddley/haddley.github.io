@@ -5,7 +5,7 @@ date: "2024-03-06"
 categories: ["React","Azure","DevOps"]
 tags: ""
 slug: "codespacesauthentication"
-image: "/assets/images/logo512-512x512.png"
+image: "/assets/images/codespacesauthentication/logo512-512x512.png"
 ---
 
 

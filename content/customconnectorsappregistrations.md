@@ -5,7 +5,7 @@ date: "2021-08-09"
 categories: ["Power Platform"]
 tags: ""
 slug: "customconnectorsappregistrations"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/customconnectorsappregistrations/office-365-icon-500x500.png"
 ---
 
 

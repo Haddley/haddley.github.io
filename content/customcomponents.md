@@ -5,7 +5,7 @@ date: "2021-07-13"
 categories: ["Power Platform"]
 tags: ""
 slug: "customcomponents"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/customcomponents/office-365-icon-500x500.png"
 ---
 
 ## New component library

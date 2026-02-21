@@ -5,7 +5,7 @@ date: "2022-08-13"
 categories: ["Azure","macOS"]
 tags: "macOS"
 slug: "azurestorage"
-image: "/assets/images/azurex70x75.svg"
+image: "/assets/images/azurestorage/azurex70x75.svg"
 ---
 
 

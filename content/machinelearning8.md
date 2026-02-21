@@ -5,7 +5,7 @@ date: "2022-06-12"
 categories: ["AI","ML"]
 tags: "baseball"
 slug: "machinelearning8"
-image: "/assets/images/tensorflow-logo.svg"
+image: "/assets/images/machinelearning8/tensorflow-logo.svg"
 ---
 
 

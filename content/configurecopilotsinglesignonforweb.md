@@ -5,7 +5,7 @@ date: "2024-03-16"
 categories: ["Power Platform"]
 tags: ""
 slug: "configurecopilotsinglesignonforweb"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/configurecopilotsinglesignonforweb/office-365-icon-500x500.png"
 ---
 
 

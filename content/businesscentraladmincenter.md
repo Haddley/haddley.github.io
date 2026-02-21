@@ -5,7 +5,7 @@ date: "2023-08-18"
 categories: ["Microsoft Dynamics","Business Central"]
 tags: ""
 slug: "businesscentraladmincenter"
-image: "/assets/images/dynamics365-color.svg"
+image: "/assets/images/businesscentraladmincenter/dynamics365-color.svg"
 ---
 
 

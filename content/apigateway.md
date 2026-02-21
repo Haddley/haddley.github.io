@@ -5,7 +5,7 @@ date: "2021-02-10"
 categories: ["DevOps"]
 tags: ""
 slug: "apigateway"
-image: "/assets/images/kubernetes-container-engine.svg"
+image: "/assets/images/apigateway/kubernetes-container-engine.svg"
 ---
 
 Client applications can be configured to connect to services directly. 

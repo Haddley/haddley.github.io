@@ -5,7 +5,7 @@ date: "2024-01-04"
 categories: ["Power Platform","Microsoft Dynamics","Business Central"]
 tags: "copilot studio"
 slug: "createactionbasedonaflow"
-image: "/assets/images/posts-meta.svg"
+image: "/assets/images/createactionbasedonaflow/posts-meta.svg"
 ---
 
 

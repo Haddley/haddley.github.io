@@ -5,7 +5,7 @@ date: "2021-02-22"
 categories: ["Microsoft 365"]
 tags: ""
 slug: "m365commandlineinterface"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/m365commandlineinterface/office-365-icon-500x500.png"
 ---
 
 

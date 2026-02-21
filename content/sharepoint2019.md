@@ -5,7 +5,7 @@ date: "2022-12-31"
 categories: ["Microsoft 365"]
 tags: ""
 slug: "sharepoint2019"
-image: "/assets/images/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png"
+image: "/assets/images/sharepoint2019/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png"
 ---
 
 

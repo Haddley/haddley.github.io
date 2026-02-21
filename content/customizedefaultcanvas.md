@@ -5,7 +5,7 @@ date: "2024-03-11"
 categories: ["Power Platform"]
 tags: ""
 slug: "customizedefaultcanvas"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/customizedefaultcanvas/office-365-icon-500x500.png"
 ---
 
 

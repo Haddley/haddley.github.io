@@ -5,7 +5,7 @@ date: "2023-03-24"
 categories: [".NET"]
 tags: "blazor WASM"
 slug: "blazorwasmandasp.net"
-image: "/assets/images/net-logo.svg"
+image: "/assets/images/blazorwasmandasp.net/net-logo.svg"
 ---
 
 

@@ -5,7 +5,7 @@ date: "2021-03-01"
 categories: ["DevOps","Docker"]
 tags: ""
 slug: "dockerbuildx"
-image: "/assets/images/method-draw-image.svg"
+image: "/assets/images/dockerbuildx/method-draw-image.svg"
 ---
 
 

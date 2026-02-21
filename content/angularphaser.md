@@ -5,7 +5,7 @@ date: "2023-05-10"
 categories: ["Angular","TypeScript"]
 tags: ""
 slug: "angularphaser"
-image: "/assets/images/phaser-logo-1836x1530.png"
+image: "/assets/images/angularphaser/phaser-logo-1836x1530.png"
 ---
 
 ## Highlights

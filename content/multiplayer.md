@@ -5,7 +5,7 @@ date: "2023-05-09"
 categories: ["Firebase"]
 tags: ""
 slug: "multiplayer"
-image: "/assets/images/logo-lockup-firebase-vertical.svg"
+image: "/assets/images/multiplayer/logo-lockup-firebase-vertical.svg"
 ---
 
 

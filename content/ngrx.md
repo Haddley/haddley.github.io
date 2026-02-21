@@ -5,7 +5,7 @@ date: "2022-11-27"
 categories: ["Angular"]
 tags: ""
 slug: "ngrx"
-image: "/assets/images/ngrx.svg"
+image: "/assets/images/ngrx/ngrx.svg"
 ---
 
 

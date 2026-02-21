@@ -5,7 +5,7 @@ date: "2021-12-22"
 categories: ["React","Mobile","TypeScript"]
 tags: "pouchdb,couchdb,offline"
 slug: "ionic"
-image: "/assets/images/logo-192x192.png"
+image: "/assets/images/ionic/logo-192x192.png"
 ---
 
 

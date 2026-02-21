@@ -5,7 +5,7 @@ date: "2021-03-27"
 categories: ["SQL"]
 tags: ""
 slug: "mssqlserver2"
-image: "/assets/images/ads.svg"
+image: "/assets/images/mssqlserver2/ads.svg"
 ---
 
 

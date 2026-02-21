@@ -5,7 +5,7 @@ date: "2022-05-28"
 categories: ["JavaScript","Microsoft 365"]
 tags: ""
 slug: "javascriptgraph"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/javascriptgraph/office-365-icon-500x500.png"
 ---
 
 

@@ -5,7 +5,7 @@ date: "2021-04-25"
 categories: ["DevOps","GitHub"]
 tags: ""
 slug: "devopsstartergithubactions"
-image: "/assets/images/svgexport-22.svg"
+image: "/assets/images/devopsstartergithubactions/svgexport-22.svg"
 ---
 
 

@@ -5,7 +5,7 @@ date: "2021-04-06"
 categories: ["Java"]
 tags: ""
 slug: "spring-boot"
-image: "/assets/images/spring-framework-logo-70-no.svg"
+image: "/assets/images/spring-boot/spring-framework-logo-70-no.svg"
 ---
 
 ## Spring Tool Suite

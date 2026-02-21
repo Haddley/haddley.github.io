@@ -5,7 +5,7 @@ date: "2021-04-26"
 categories: ["DevOps","Azure"]
 tags: ""
 slug: "devopsstarterazuredevops"
-image: "/assets/images/svgexport-22.svg"
+image: "/assets/images/devopsstarterazuredevops/svgexport-22.svg"
 ---
 
 

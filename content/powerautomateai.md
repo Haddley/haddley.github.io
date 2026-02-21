@@ -6,7 +6,7 @@ categories: ["Power Platform"]
 tags: ""
 hidden: false
 slug: "powerautomateai"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/powerautomateai/office-365-icon-500x500.png"
 ---
 
 

@@ -5,7 +5,7 @@ date: "2025-10-18"
 categories: ["Python","AI","IOT"]
 tags: ""
 slug: "voicekit3"
-image: "/assets/images/raspberry-pi-logo.svg"
+image: "/assets/images/voicekit3/raspberry-pi-logo.svg"
 ---
 
 🎯 What This Code Does

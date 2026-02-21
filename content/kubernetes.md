@@ -5,7 +5,7 @@ date: "2021-02-06"
 categories: ["DevOps"]
 tags: ""
 slug: "kubernetes"
-image: "/assets/images/kubernetes-container-engine.svg"
+image: "/assets/images/kubernetes/kubernetes-container-engine.svg"
 ---
 
 

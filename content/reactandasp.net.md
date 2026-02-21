@@ -5,7 +5,7 @@ date: "2023-03-22"
 categories: ["React",".NET"]
 tags: ""
 slug: "reactandasp.net"
-image: "/assets/images/logo512-512x512.png"
+image: "/assets/images/reactandasp.net/logo512-512x512.png"
 ---
 
 

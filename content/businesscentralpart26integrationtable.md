@@ -5,7 +5,7 @@ date: "2024-12-22"
 categories: ["Microsoft Dynamics","Business Central","Power Platform"]
 tags: ""
 slug: "businesscentralpart26integrationtable"
-image: "/assets/images/posts-meta.svg"
+image: "/assets/images/businesscentralpart26integrationtable/posts-meta.svg"
 ---
 
 

@@ -5,7 +5,7 @@ date: "2023-12-26"
 categories: ["Python","IOT"]
 tags: ""
 slug: "gingerbreadhouse"
-image: "/assets/images/raspberry-pi-logo.svg"
+image: "/assets/images/gingerbreadhouse/raspberry-pi-logo.svg"
 ---
 
 

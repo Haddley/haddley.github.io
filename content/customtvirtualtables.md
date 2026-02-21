@@ -5,7 +5,7 @@ date: "2024-05-07"
 categories: ["Power Platform","Microsoft Dynamics","Business Central"]
 tags: ""
 slug: "customtvirtualtables"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/customtvirtualtables/office-365-icon-500x500.png"
 ---
 
 

@@ -5,7 +5,7 @@ date: "2023-08-01"
 categories: ["AI"]
 tags: ""
 slug: "stablediffusion"
-image: "/assets/images/jupyter.svg"
+image: "/assets/images/stablediffusion/jupyter.svg"
 ---
 
 

@@ -5,7 +5,7 @@ date: "2023-08-03"
 categories: ["Python","AI"]
 tags: ""
 slug: "colorization"
-image: "/assets/images/jupyter.svg"
+image: "/assets/images/colorization/jupyter.svg"
 ---
 
 

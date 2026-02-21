@@ -5,7 +5,7 @@ date: "2021-05-30"
 categories: ["Microsoft 365"]
 tags: ""
 slug: "teamstoolkitspfx"
-image: "/assets/images/teams-hi-res-icon-2019.svg"
+image: "/assets/images/teamstoolkitspfx/teams-hi-res-icon-2019.svg"
 ---
 
 

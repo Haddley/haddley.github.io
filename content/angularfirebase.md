@@ -5,7 +5,7 @@ date: "2023-04-25"
 categories: ["Angular","TypeScript","Firebase"]
 tags: ""
 slug: "angularfirebase"
-image: "/assets/images/logo-lockup-firebase-vertical.svg"
+image: "/assets/images/angularfirebase/logo-lockup-firebase-vertical.svg"
 ---
 
 I created a firebase project using https://console.firebase.google.com

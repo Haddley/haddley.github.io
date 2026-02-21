@@ -5,7 +5,7 @@ date: "2023-08-26"
 categories: ["Microsoft Dynamics","Business Central","DevOps"]
 tags: ""
 slug: "al-go-pte"
-image: "/assets/images/dynamics365-color.svg"
+image: "/assets/images/al-go-pte/dynamics365-color.svg"
 ---
 
 You can change Business Central by installing apps that add functionality, change behaviour, or give you access to 3rd party online services.

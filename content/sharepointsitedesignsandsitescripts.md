@@ -5,7 +5,7 @@ date: "2021-02-15"
 categories: ["Microsoft 365"]
 tags: ""
 slug: "sharepointsitedesignsandsitescripts"
-image: "/assets/images/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png"
+image: "/assets/images/sharepointsitedesignsandsitescripts/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png"
 ---
 
 

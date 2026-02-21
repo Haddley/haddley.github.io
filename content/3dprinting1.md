@@ -5,7 +5,7 @@ date: "2023-07-15"
 categories: ["3D printing"]
 tags: ""
 slug: "3dprinting1"
-image: "/assets/images/wikipedia-globe-translucent-3d-printed-woodgrain-background-512x512.jpg"
+image: "/assets/images/3dprinting1/wikipedia-globe-translucent-3d-printed-woodgrain-background-512x512.jpg"
 ---
 
 ## Tinkercad

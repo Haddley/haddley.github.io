@@ -5,7 +5,7 @@ date: "2025-12-14"
 categories: ["Python","AI","IOT"]
 tags: ""
 slug: "voicekit4"
-image: "/assets/images/raspberry-pi-logo.svg"
+image: "/assets/images/voicekit4/raspberry-pi-logo.svg"
 ---
 
 # Voice Kit 4

@@ -5,7 +5,7 @@ date: "2023-12-14"
 categories: ["Microsoft Dynamics","Business Central"]
 tags: ""
 slug: "customerpostinggroup"
-image: "/assets/images/posts-meta.svg"
+image: "/assets/images/customerpostinggroup/posts-meta.svg"
 ---
 
 

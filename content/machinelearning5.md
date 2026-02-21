@@ -5,7 +5,7 @@ date: "2022-06-11"
 categories: ["AI","ML"]
 tags: "glucose levels"
 slug: "machinelearning5"
-image: "/assets/images/tensorflow-logo.svg"
+image: "/assets/images/machinelearning5/tensorflow-logo.svg"
 ---
 
 

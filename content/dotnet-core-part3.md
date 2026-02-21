@@ -3,7 +3,7 @@ title: ".NET Core (Part 3)"
 description: "Creating a Blazor App that calls Microsoft Graph."
 date: "2025-09-20"
 categories: [".NET"]
-image: "/assets/images/net-logo.svg"
+image: "/assets/images/dotnet-core-part3/net-logo.svg"
 tags: ["dotnet"]
 slug: "dotnet-core-part3"
 ---

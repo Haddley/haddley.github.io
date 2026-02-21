@@ -5,7 +5,7 @@ date: "2021-02-27"
 categories: [".NET","DevOps"]
 tags: ""
 slug: "nuget"
-image: "/assets/images/logo-og-600x600.png"
+image: "/assets/images/nuget/logo-og-600x600.png"
 ---
 
 

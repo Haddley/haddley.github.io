@@ -5,7 +5,7 @@ date: "2021-02-06"
 categories: ["API"]
 tags: ""
 slug: "restapiservice"
-image: "/assets/images/fve-image.svg"
+image: "/assets/images/restapiservice/fve-image.svg"
 ---
 
 

@@ -5,7 +5,7 @@ date: "2021-11-06"
 categories: ["React"]
 tags: ""
 slug: "nextjs2"
-image: "/assets/images/2560px-nextjs-logo.svg-1536x920.png"
+image: "/assets/images/nextjs2/2560px-nextjs-logo.svg-1536x920.png"
 ---
 
 

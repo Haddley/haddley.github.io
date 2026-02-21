@@ -5,7 +5,7 @@ date: "2023-02-18"
 categories: ["Angular"]
 tags: ""
 slug: "ngrxentity"
-image: "/assets/images/ngrx.svg"
+image: "/assets/images/ngrxentity/ngrx.svg"
 ---
 
 I extended my haddley-ngrx project to include support for posts.

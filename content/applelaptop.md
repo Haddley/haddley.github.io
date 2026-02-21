@@ -5,7 +5,7 @@ date: "2023-07-25"
 categories: ["Python"]
 tags: "anaconda"
 slug: "applelaptop"
-image: "/assets/images/jupyter.svg"
+image: "/assets/images/applelaptop/jupyter.svg"
 ---
 
 Anaconda is a popular open-source distribution of Python specifically tailored for data science, machine learning, and scientific computing.

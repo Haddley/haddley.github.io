@@ -5,7 +5,7 @@ date: "2023-03-19"
 categories: [".NET","SQL"]
 tags: "c#"
 slug: "aspnet-5-cs"
-image: "/assets/images/net-logo.svg"
+image: "/assets/images/aspnet-5-cs/net-logo.svg"
 ---
 
 

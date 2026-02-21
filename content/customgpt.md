@@ -5,7 +5,7 @@ date: "2025-10-03"
 categories: ["AI"]
 tags: ""
 slug: "customgpt"
-image: "/assets/images/chatgpt-logo.svg"
+image: "/assets/images/customgpt/chatgpt-logo.svg"
 ---
 
 In November 2023 OpenAI introduced "GPTs" - custom versions of ChatGPT that I could create for specific purposes without needing to code.

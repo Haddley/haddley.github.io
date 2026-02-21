@@ -5,7 +5,7 @@ date: "2021-08-02"
 categories: ["Power Platform","Azure"]
 tags: ""
 slug: "api-management"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/api-management/office-365-icon-500x500.png"
 ---
 
 

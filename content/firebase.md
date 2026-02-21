@@ -5,7 +5,7 @@ date: "2023-04-24"
 categories: ["JavaScript","Firebase"]
 tags: "firebase"
 slug: "firebase"
-image: "/assets/images/logo-lockup-firebase-vertical.svg"
+image: "/assets/images/firebase/logo-lockup-firebase-vertical.svg"
 ---
 
 

@@ -5,7 +5,7 @@ date: "2023-03-27"
 categories: ["macOS"]
 tags: ""
 slug: "xcode4"
-image: "/assets/images/xcode-14-icon-300x314.png"
+image: "/assets/images/xcode4/xcode-14-icon-300x314.png"
 ---
 
 

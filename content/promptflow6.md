@@ -5,7 +5,7 @@ date: "2024-09-01"
 categories: ["AI"]
 tags: ""
 slug: "promptflow6"
-image: "/assets/images/logo.svg"
+image: "/assets/images/promptflow6/logo.svg"
 ---
 
 

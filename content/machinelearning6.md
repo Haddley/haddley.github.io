@@ -5,7 +5,7 @@ date: "2022-06-11"
 categories: ["AI","ML"]
 tags: ""
 slug: "machinelearning6"
-image: "/assets/images/tensorflow-logo.svg"
+image: "/assets/images/machinelearning6/tensorflow-logo.svg"
 ---
 
 

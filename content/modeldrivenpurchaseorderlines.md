@@ -5,7 +5,7 @@ date: "2024-03-03"
 categories: ["Business Central","Power Platform"]
 tags: ""
 slug: "modeldrivenpurchaseorderlines"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/modeldrivenpurchaseorderlines/office-365-icon-500x500.png"
 ---
 
 

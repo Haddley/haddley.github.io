@@ -5,7 +5,7 @@ date: "2023-03-21"
 categories: [".NET"]
 tags: "razor"
 slug: "aspnet-core"
-image: "/assets/images/net-logo.svg"
+image: "/assets/images/aspnet-core/net-logo.svg"
 ---
 
 

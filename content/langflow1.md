@@ -5,7 +5,7 @@ date: "2024-10-30"
 categories: ["AI"]
 tags: ""
 slug: "langflow1"
-image: "/assets/images/85702467-200x200.png"
+image: "/assets/images/langflow1/85702467-200x200.png"
 ---
 
 

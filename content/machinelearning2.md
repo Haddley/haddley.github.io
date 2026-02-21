@@ -5,7 +5,7 @@ date: "2022-06-05"
 categories: ["AI","ML"]
 tags: "emoji scavenger hunt"
 slug: "machinelearning2"
-image: "/assets/images/tensorflow-logo.svg"
+image: "/assets/images/machinelearning2/tensorflow-logo.svg"
 ---
 
 

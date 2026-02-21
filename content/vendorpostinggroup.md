@@ -5,7 +5,7 @@ date: "2023-12-12"
 categories: ["Business Central"]
 tags: ""
 slug: "vendorpostinggroup"
-image: "/assets/images/posts-meta.svg"
+image: "/assets/images/vendorpostinggroup/posts-meta.svg"
 ---
 
 

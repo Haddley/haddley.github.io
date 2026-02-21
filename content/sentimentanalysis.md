@@ -5,7 +5,7 @@ date: "2023-07-19"
 categories: ["AI"]
 tags: ""
 slug: "sentimentanalysis"
-image: "/assets/images/chatgpt-logo.svg"
+image: "/assets/images/sentimentanalysis/chatgpt-logo.svg"
 ---
 
 

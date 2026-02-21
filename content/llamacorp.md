@@ -5,7 +5,7 @@ date: "2023-08-03"
 categories: ["AI"]
 tags: ""
 slug: "llamacorp"
-image: "/assets/images/jupyter.svg"
+image: "/assets/images/llamacorp/jupyter.svg"
 ---
 
 

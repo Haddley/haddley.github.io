@@ -5,7 +5,7 @@ date: "2023-12-11"
 categories: ["Business Central"]
 tags: ""
 slug: "generalledger"
-image: "/assets/images/dynamics365-color.svg"
+image: "/assets/images/generalledger/dynamics365-color.svg"
 ---
 
 

@@ -5,7 +5,7 @@ date: "2023-10-21"
 categories: ["Microsoft Dynamics"]
 tags: "microsoft dynamics sales"
 slug: "dynamicssales1"
-image: "/assets/images/dynamics365-color.svg"
+image: "/assets/images/dynamicssales1/dynamics365-color.svg"
 ---
 
 

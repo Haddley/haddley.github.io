@@ -5,7 +5,7 @@ date: "2023-05-27"
 categories: ["SQL",".NET"]
 tags: ""
 slug: "vbnetconsolesqlserverunittests"
-image: "/assets/images/net-logo.svg"
+image: "/assets/images/vbnetconsolesqlserverunittests/net-logo.svg"
 ---
 
 

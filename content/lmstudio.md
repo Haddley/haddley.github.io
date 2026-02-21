@@ -5,7 +5,7 @@ date: "2023-08-05"
 categories: ["AI"]
 tags: ""
 slug: "lmstudio"
-image: "/assets/images/mediamodifier-design.png"
+image: "/assets/images/lmstudio/mediamodifier-design.png"
 ---
 
 

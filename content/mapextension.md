@@ -5,7 +5,7 @@ date: "2023-09-01"
 categories: ["Business Central"]
 tags: ""
 slug: "mapextension"
-image: "/assets/images/dynamics365-color.svg"
+image: "/assets/images/mapextension/dynamics365-color.svg"
 ---
 
 

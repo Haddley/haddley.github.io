@@ -5,7 +5,7 @@ date: "2023-05-10"
 categories: ["Firebase"]
 tags: ""
 slug: "ticktacktoe"
-image: "/assets/images/logo-lockup-firebase-vertical.svg"
+image: "/assets/images/ticktacktoe/logo-lockup-firebase-vertical.svg"
 ---
 
 

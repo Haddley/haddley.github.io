@@ -5,7 +5,7 @@ date: "2024-02-24"
 categories: ["Power Platform"]
 tags: ""
 slug: "pluginactions"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/pluginactions/office-365-icon-500x500.png"
 ---
 
 

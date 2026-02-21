@@ -5,7 +5,7 @@ date: "2024-02-26"
 categories: ["Power Platform","Microsoft Dynamics","Business Central"]
 tags: "topic"
 slug: "cloudflow"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/cloudflow/office-365-icon-500x500.png"
 ---
 
 

@@ -3,7 +3,7 @@ title: "Business Central Azure Functions (Part 2)"
 description: "Creating the Business Central Extension"
 date: "2025-12-16"
 categories: ["Azure","Microsoft Dynamics","Business Central"]
-image: "/assets/images/posts-meta.svg"
+image: "/assets/images/azurefunctionsbc2/posts-meta.svg"
 tags: ["azure","business central","azure functions"]
 slug: "azurefunctionsbc2"
 ---

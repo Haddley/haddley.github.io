@@ -5,7 +5,7 @@ date: "2023-08-14"
 categories: ["Microsoft Dynamics","Business Central","Power Platform"]
 tags: ""
 slug: "businesscentralcanvasapps"
-image: "/assets/images/dynamics365-color.svg"
+image: "/assets/images/businesscentralcanvasapps/dynamics365-color.svg"
 ---
 
 

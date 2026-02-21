@@ -5,7 +5,7 @@ date: "2022-02-10"
 categories: ["Web"]
 tags: ""
 slug: "webcomponents"
-image: "/assets/images/web-components-logo.svg"
+image: "/assets/images/webcomponents/web-components-logo.svg"
 ---
 
 

@@ -5,7 +5,7 @@ date: "2022-06-08"
 categories: ["AI","Python"]
 tags: "colab"
 slug: "machinelearning4"
-image: "/assets/images/tensorflow-logo.svg"
+image: "/assets/images/machinelearning4/tensorflow-logo.svg"
 ---
 
 

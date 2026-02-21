@@ -5,7 +5,7 @@ date: "2023-07-22"
 categories: ["IOT"]
 tags: ""
 slug: "pi2"
-image: "/assets/images/raspberry-pi-logo.svg"
+image: "/assets/images/pi2/raspberry-pi-logo.svg"
 ---
 
 

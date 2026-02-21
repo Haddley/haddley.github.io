@@ -5,7 +5,7 @@ date: "2025-10-16"
 categories: ["Python","AI","IOT"]
 tags: ""
 slug: "voicekit2"
-image: "/assets/images/raspberry-pi-logo.svg"
+image: "/assets/images/voicekit2/raspberry-pi-logo.svg"
 ---
 
 ## Setup Context

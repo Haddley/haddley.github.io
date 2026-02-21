@@ -5,7 +5,7 @@ date: "2024-02-21"
 categories: ["Microsoft Dynamics","Business Central","Power Platform"]
 tags: ""
 slug: "addapurchaseorder"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/addapurchaseorder/office-365-icon-500x500.png"
 ---
 
 ## Summary

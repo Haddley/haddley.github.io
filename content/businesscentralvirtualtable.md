@@ -5,7 +5,7 @@ date: "2024-01-12"
 categories: ["Microsoft Dynamics","Business Central","Power Platform"]
 tags: ""
 slug: "businesscentralvirtualtable"
-image: "/assets/images/posts-meta.svg"
+image: "/assets/images/businesscentralvirtualtable/posts-meta.svg"
 ---
 
 

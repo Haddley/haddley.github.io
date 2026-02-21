@@ -5,7 +5,7 @@ date: "2025-08-18"
 categories: ["macOS"]
 tags: ""
 slug: "macscreensharing"
-image: "/assets/images/apple-logo-black.svg"
+image: "/assets/images/macscreensharing/apple-logo-black.svg"
 ---
 
 

@@ -5,7 +5,7 @@ date: "2023-03-26"
 categories: [".NET"]
 tags: "unit tests"
 slug: "aspnetcoreunittests"
-image: "/assets/images/net-logo.svg"
+image: "/assets/images/aspnetcoreunittests/net-logo.svg"
 ---
 
 

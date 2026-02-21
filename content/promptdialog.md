@@ -5,7 +5,7 @@ date: "2024-05-24"
 categories: ["Business Central","AI"]
 tags: ""
 slug: "promptdialog"
-image: "/assets/images/posts-meta.svg"
+image: "/assets/images/promptdialog/posts-meta.svg"
 hidden: "false"
 ---
 

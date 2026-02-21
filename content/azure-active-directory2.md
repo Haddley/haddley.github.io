@@ -5,7 +5,7 @@ date: "2021-04-17"
 categories: ["Azure"]
 tags: ""
 slug: "azure-active-directory2"
-image: "/assets/images/azurex70x75.svg"
+image: "/assets/images/azure-active-directory2/azurex70x75.svg"
 ---
 
 ## Single-page application with login

@@ -3,7 +3,7 @@ title: ".NET Core (Part 4)"
 description: "Creating a VB.NET Web App using Microsoft's cross-platform framework."
 date: "2025-09-20"
 categories: [".NET"]
-image: "/assets/images/net-logo.svg"
+image: "/assets/images/dotnet-core-part4/net-logo.svg"
 tags: ["dotnet"]
 slug: "dotnet-core-part4"
 ---

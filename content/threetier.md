@@ -5,7 +5,7 @@ date: "2023-03-25"
 categories: [".NET"]
 tags: ""
 slug: "threetier"
-image: "/assets/images/net-logo.svg"
+image: "/assets/images/threetier/net-logo.svg"
 ---
 
 

@@ -5,7 +5,7 @@ date: "2022-06-05"
 categories: ["AI","ML"]
 tags: "hexapawn,yolo"
 slug: "machinelearning1"
-image: "/assets/images/tensorflow-logo.svg"
+image: "/assets/images/machinelearning1/tensorflow-logo.svg"
 ---
 
 

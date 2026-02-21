@@ -5,7 +5,7 @@ date: "2023-03-24"
 categories: [".NET","Angular","TypeScript"]
 tags: ""
 slug: "angularandasp.net"
-image: "/assets/images/angular-full-color-logo.svg"
+image: "/assets/images/angularandasp.net/angular-full-color-logo.svg"
 ---
 
 

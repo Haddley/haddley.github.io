@@ -5,7 +5,7 @@ date: "2024-02-25"
 categories: ["Power Platform"]
 tags: ""
 slug: "topics"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/topics/office-365-icon-500x500.png"
 ---
 
 

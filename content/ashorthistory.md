@@ -5,7 +5,7 @@ date: "2023-09-09"
 categories: ["Microsoft Dynamics","Power Platform","Business Central"]
 tags: ""
 slug: "ashorthistory"
-image: "/assets/images/dynamics365-color.svg"
+image: "/assets/images/ashorthistory/dynamics365-color.svg"
 ---
 
 **In December** **2000 Microsoft announced plans to purchase Great Plains.**

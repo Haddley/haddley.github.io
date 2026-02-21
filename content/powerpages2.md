@@ -5,7 +5,7 @@ date: "2024-12-20"
 categories: ["Business Central","Power Platform"]
 tags: ""
 slug: "powerpages2"
-image: "/assets/images/powerpages-scalable.svg"
+image: "/assets/images/powerpages2/powerpages-scalable.svg"
 ---
 
 

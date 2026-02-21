@@ -5,7 +5,7 @@ date: "2025-03-01"
 categories: ["AI","IOT"]
 tags: ""
 slug: "internetofthings3"
-image: "/assets/images/iot-microchip.svg"
+image: "/assets/images/internetofthings3/iot-microchip.svg"
 ---
 
 

@@ -5,7 +5,7 @@ date: "2024-08-10"
 categories: ["SQL","Microsoft Dynamics","Power Platform"]
 tags: "reports SSRS"
 slug: "dataverseadvancedreportssetup"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/dataverseadvancedreportssetup/office-365-icon-500x500.png"
 ---
 
 

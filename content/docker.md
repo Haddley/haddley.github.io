@@ -5,7 +5,7 @@ date: "2021-02-06"
 categories: ["DevOps","Docker"]
 tags: ""
 slug: "docker"
-image: "/assets/images/method-draw-image.svg"
+image: "/assets/images/docker/method-draw-image.svg"
 ---
 
 

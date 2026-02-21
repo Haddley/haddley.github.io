@@ -5,7 +5,7 @@ date: "2024-01-08"
 categories: ["React","Azure"]
 tags: "static"
 slug: "azurereactstaticweb-app"
-image: "/assets/images/logo512-512x512.png"
+image: "/assets/images/azurereactstaticweb-app/logo512-512x512.png"
 ---
 
 

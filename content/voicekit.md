@@ -5,7 +5,7 @@ date: "2025-10-11"
 categories: ["Python","AI","IOT"]
 tags: ""
 slug: "voicekit"
-image: "/assets/images/raspberry-pi-logo.svg"
+image: "/assets/images/voicekit/raspberry-pi-logo.svg"
 ---
 
 

@@ -5,7 +5,7 @@ date: "2025-11-06"
 categories: ["AI"]
 tags: "macOS,fine tuning"
 slug: "mlx1"
-image: "/assets/images/apple-logo-black.svg"
+image: "/assets/images/mlx1/apple-logo-black.svg"
 ---
 
 

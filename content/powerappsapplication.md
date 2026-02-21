@@ -5,7 +5,7 @@ date: "2021-07-14"
 categories: ["Power Platform"]
 tags: ""
 slug: "powerappsapplication"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/powerappsapplication/office-365-icon-500x500.png"
 ---
 
 

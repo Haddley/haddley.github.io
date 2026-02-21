@@ -5,7 +5,7 @@ date: "2024-06-11"
 categories: ["AI"]
 tags: ""
 slug: "promptflow1"
-image: "/assets/images/logo.svg"
+image: "/assets/images/promptflow1/logo.svg"
 ---
 
 

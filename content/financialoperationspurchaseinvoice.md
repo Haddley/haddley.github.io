@@ -5,7 +5,7 @@ date: "2023-08-20"
 categories: ["Microsoft Dynamics","Business Central"]
 tags: ""
 slug: "financialoperationspurchaseinvoice"
-image: "/assets/images/dynamics365-color.svg"
+image: "/assets/images/financialoperationspurchaseinvoice/dynamics365-color.svg"
 ---
 
 

@@ -3,7 +3,7 @@ title: "Azure Search"
 description: "Fulltext Search (Part 1)"
 date: "2026-02-09"
 categories: ["AI"]
-image: "/assets/images/posts-meta.svg"
+image: "/assets/images/azuresearch/posts-meta.svg"
 tags: "ai"
 hidden: true
 slug: "azuresearch"

@@ -5,7 +5,7 @@ date: "2022-05-26"
 categories: ["Microsoft 365"]
 tags: ""
 slug: "microsoftgraph"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/microsoftgraph/office-365-icon-500x500.png"
 ---
 
 

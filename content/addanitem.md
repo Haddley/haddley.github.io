@@ -5,7 +5,7 @@ date: "2024-02-17"
 categories: ["Microsoft Dynamics","Business Central","Power Platform"]
 tags: ""
 slug: "addanitem"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/addanitem/office-365-icon-500x500.png"
 ---
 
 ![](/assets/images/addanitem/screenshot-2024-02-17-at-1.30.50-pm-1836x617.png)

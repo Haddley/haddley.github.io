@@ -5,7 +5,7 @@ date: "2024-12-01"
 categories: ["Power Platform","Microsoft Dynamics","Business Central"]
 tags: ""
 slug: "businesscentralpart25integratingwithdataverseusingdataflows"
-image: "/assets/images/posts-meta.svg"
+image: "/assets/images/businesscentralpart25integratingwithdataverseusingdataflows/posts-meta.svg"
 ---
 
 

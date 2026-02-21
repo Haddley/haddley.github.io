@@ -5,7 +5,7 @@ date: "2023-12-14"
 categories: ["Business Central"]
 tags: ""
 slug: "generalpostingsetup"
-image: "/assets/images/posts-meta.svg"
+image: "/assets/images/generalpostingsetup/posts-meta.svg"
 ---
 
 

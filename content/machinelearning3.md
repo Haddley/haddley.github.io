@@ -5,7 +5,7 @@ date: "2022-06-05"
 categories: ["AI","ML"]
 tags: ""
 slug: "machinelearning3"
-image: "/assets/images/tensorflow-logo.svg"
+image: "/assets/images/machinelearning3/tensorflow-logo.svg"
 ---
 
 

@@ -5,7 +5,7 @@ date: "2021-02-26"
 categories: ["DevOps"]
 tags: ""
 slug: "npmcc"
-image: "/assets/images/6078720-200x200.png"
+image: "/assets/images/npmcc/6078720-200x200.png"
 ---
 
 

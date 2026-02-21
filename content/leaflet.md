@@ -5,7 +5,7 @@ date: "2022-02-21"
 categories: ["Maps"]
 tags: "gis"
 slug: "leaflet"
-image: "/assets/images/leaflet-upic-200x200.png"
+image: "/assets/images/leaflet/leaflet-upic-200x200.png"
 ---
 
 

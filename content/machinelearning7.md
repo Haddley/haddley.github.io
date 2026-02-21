@@ -5,7 +5,7 @@ date: "2022-06-11"
 categories: ["AI","ML"]
 tags: "automl"
 slug: "machinelearning7"
-image: "/assets/images/tensorflow-logo.svg"
+image: "/assets/images/machinelearning7/tensorflow-logo.svg"
 ---
 
 

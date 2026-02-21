@@ -5,7 +5,7 @@ date: "2025-11-17"
 categories: ["Business Central","DevOps"]
 tags: ""
 slug: "devenv"
-image: "/assets/images/posts-meta.svg"
+image: "/assets/images/devenv/posts-meta.svg"
 ---
 
 

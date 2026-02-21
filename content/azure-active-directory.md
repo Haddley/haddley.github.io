@@ -5,7 +5,7 @@ date: "2021-03-29"
 categories: ["Azure","Teams"]
 tags: "teams"
 slug: "azure-active-directory"
-image: "/assets/images/azurex70x75.svg"
+image: "/assets/images/azure-active-directory/azurex70x75.svg"
 ---
 
 ## Microsoft Teams

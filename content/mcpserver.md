@@ -5,7 +5,7 @@ date: "2025-08-13"
 categories: ["AI"]
 tags: "model context protocol"
 slug: "mcpserver"
-image: "/assets/images/mcp-1024x1024.png"
+image: "/assets/images/mcpserver/mcp-1024x1024.png"
 ---
 
 

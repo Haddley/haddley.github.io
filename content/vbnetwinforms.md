@@ -5,7 +5,7 @@ date: "2023-03-27"
 categories: [".NET"]
 tags: ""
 slug: "vbnetwinforms"
-image: "/assets/images/net-logo.svg"
+image: "/assets/images/vbnetwinforms/net-logo.svg"
 ---
 
 

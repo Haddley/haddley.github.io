@@ -5,7 +5,7 @@ date: "2022-08-14"
 categories: ["Power Platform","React"]
 tags: "component framework"
 slug: "componentframework"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/componentframework/office-365-icon-500x500.png"
 ---
 
 

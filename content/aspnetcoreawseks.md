@@ -5,7 +5,7 @@ date: "2021-08-16"
 categories: ["AWS","DevOps",".NET","Docker"]
 tags: "c#"
 slug: "aspnetcoreawseks"
-image: "/assets/images/amazon-web-services-logo.svg"
+image: "/assets/images/aspnetcoreawseks/amazon-web-services-logo.svg"
 ---
 
 

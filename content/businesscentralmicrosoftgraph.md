@@ -5,7 +5,7 @@ date: "2023-12-18"
 categories: ["Microsoft Dynamics","Business Central"]
 tags: ""
 slug: "businesscentralmicrosoftgraph"
-image: "/assets/images/posts-meta.svg"
+image: "/assets/images/businesscentralmicrosoftgraph/posts-meta.svg"
 ---
 
 

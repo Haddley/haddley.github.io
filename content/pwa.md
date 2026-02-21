@@ -5,7 +5,7 @@ date: "2021-07-24"
 categories: ["Mobile"]
 tags: ""
 slug: "pwa"
-image: "/assets/images/progressive-web-apps-logo.svg"
+image: "/assets/images/pwa/progressive-web-apps-logo.svg"
 ---
 
 

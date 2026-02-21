@@ -5,7 +5,7 @@ date: "2023-10-08"
 categories: ["Power Platform"]
 tags: ""
 slug: "modeldriven3"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/modeldriven3/office-365-icon-500x500.png"
 ---
 
 

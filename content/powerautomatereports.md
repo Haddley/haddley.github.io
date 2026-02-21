@@ -5,7 +5,7 @@ date: "2024-07-19"
 categories: ["Power Platform"]
 tags: ""
 slug: "powerautomatereports"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/powerautomatereports/office-365-icon-500x500.png"
 ---
 
 

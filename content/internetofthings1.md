@@ -5,7 +5,7 @@ date: "2021-03-03"
 categories: ["IOT"]
 tags: ""
 slug: "internetofthings1"
-image: "/assets/images/iot-microchip.svg"
+image: "/assets/images/internetofthings1/iot-microchip.svg"
 ---
 
 

@@ -5,7 +5,7 @@ date: "2022-04-22"
 categories: ["Web","3D"]
 tags: ""
 slug: "webxr"
-image: "/assets/images/34385910-400x400.png"
+image: "/assets/images/webxr/34385910-400x400.png"
 ---
 
 

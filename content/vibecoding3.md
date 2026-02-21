@@ -3,7 +3,7 @@ title: "Vibe Coding (Part 3)"
 description: "Unit Tests and Integration Tests"
 date: "2026-01-30"
 categories: ["AI"]
-image: "/assets/images/chatgpt-logo.svg"
+image: "/assets/images/vibecoding3/chatgpt-logo.svg"
 tags: "ai"
 hidden: true
 slug: "vibecoding3"

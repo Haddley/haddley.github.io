@@ -5,7 +5,7 @@ date: "2023-07-19"
 categories: ["AI"]
 tags: ""
 slug: "sentencesimilarity"
-image: "/assets/images/chatgpt-logo.svg"
+image: "/assets/images/sentencesimilarity/chatgpt-logo.svg"
 ---
 
 

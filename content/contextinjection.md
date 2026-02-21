@@ -5,7 +5,7 @@ date: "2023-07-19"
 categories: ["AI"]
 tags: ""
 slug: "contextinjection"
-image: "/assets/images/chatgpt-logo.svg"
+image: "/assets/images/contextinjection/chatgpt-logo.svg"
 ---
 
 

@@ -5,7 +5,7 @@ date: "2021-03-01"
 categories: ["JavaScript"]
 tags: "graphql"
 slug: "graphql"
-image: "/assets/images/graphql-logo.svg-1200x1200.png"
+image: "/assets/images/graphql/graphql-logo.svg-1200x1200.png"
 ---
 
 

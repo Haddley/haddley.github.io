@@ -5,7 +5,7 @@ date: "2025-07-30"
 categories: ["Microsoft 365","AI"]
 tags: ""
 slug: "syntexautofill"
-image: "/assets/images/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png"
+image: "/assets/images/syntexautofill/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png"
 ---
 
 

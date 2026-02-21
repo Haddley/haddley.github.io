@@ -5,7 +5,7 @@ date: "2023-03-08"
 categories: ["macOS"]
 tags: ""
 slug: "xcode3"
-image: "/assets/images/xcode-14-icon-300x314.png"
+image: "/assets/images/xcode3/xcode-14-icon-300x314.png"
 ---
 
 

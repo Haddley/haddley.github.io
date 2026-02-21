@@ -5,7 +5,7 @@ date: "2022-05-29"
 categories: ["Microsoft 365","React","TypeScript","Teams"]
 tags: "teams"
 slug: "ateamstabsharepointwebpartforonedrive"
-image: "/assets/images/office-365-icon-500x500.png"
+image: "/assets/images/ateamstabsharepointwebpartforonedrive/office-365-icon-500x500.png"
 ---
 
 In this post I describe how I created a Teams application using the SharePoint Framework and the Microsoft Graph Toolkit

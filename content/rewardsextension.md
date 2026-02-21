@@ -5,7 +5,7 @@ date: "2023-08-30"
 categories: ["Business Central"]
 tags: ""
 slug: "rewardsextension"
-image: "/assets/images/dynamics365-color.svg"
+image: "/assets/images/rewardsextension/dynamics365-color.svg"
 ---
 
 

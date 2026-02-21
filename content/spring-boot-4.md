@@ -5,7 +5,7 @@ date: "2023-10-29"
 categories: ["Java"]
 tags: ""
 slug: "spring-boot-4"
-image: "/assets/images/spring-framework-logo-70-no.svg"
+image: "/assets/images/spring-boot-4/spring-framework-logo-70-no.svg"
 ---
 
 

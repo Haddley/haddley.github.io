@@ -5,7 +5,7 @@ date: "2023-08-14"
 categories: ["Microsoft Dynamics"]
 tags: "microsoft dynamics sales"
 slug: "dynamicstrialsignup"
-image: "/assets/images/dynamics365-color.svg"
+image: "/assets/images/dynamicstrialsignup/dynamics365-color.svg"
 ---
 
 

@@ -29,7 +29,7 @@ export default function Home() {
           <div className="row justify-content-center align-items-center">
             <div className="col-12 col-md-6 image-wrapper">
               <Image 
-                src="/assets/images/15018162-1.jpeg" 
+                src="/assets/images/home/15018162-1.jpeg"
                 alt="Neil Haddley"
                 width={500}
                 height={500}
@@ -66,7 +66,7 @@ export default function Home() {
               <div className="image-wrapper">
                 <Link href="/posts/spring-boot-2">
                   <Image 
-                    src="/assets/images/screen-shot-2021-02-05-at-1.31.11-pm.png" 
+                    src="/assets/images/home/screen-shot-2021-02-05-at-1.31.11-pm.png"
                     alt="Azure"
                     width={600}
                     height={400}
@@ -111,7 +111,7 @@ export default function Home() {
               <div className="image-wrapper">
                 <Link href="/posts/purview">
                   <Image 
-                    src="/assets/images/screen-shot-2021-02-04-at-2.13.37-pm.png" 
+                    src="/assets/images/home/screen-shot-2021-02-04-at-2.13.37-pm.png"
                     alt="Microsoft Office 365"
                     width={600}
                     height={400}
@@ -144,7 +144,7 @@ export default function Home() {
               <div className="image-wrapper">
                 <a href="https://haddley.github.io/directory/www/index.html" target="_blank" rel="noopener noreferrer">
                   <Image 
-                    src="/assets/images/screen-shot-2021-02-06-at-3.55.19-pm.png" 
+                    src="/assets/images/home/screen-shot-2021-02-06-at-3.55.19-pm.png"
                     alt="Ionic"
                     width={600}
                     height={400}
@@ -189,7 +189,7 @@ export default function Home() {
               <div className="image-wrapper">
                 <Link href="/posts/aspnetcoreawseks">
                   <Image 
-                    src="/assets/images/amazon-eks-google-chrome-8-16-2021-9-39-05-pm-1644x1069.png" 
+                    src="/assets/images/home/amazon-eks-google-chrome-8-16-2021-9-39-05-pm-1644x1069.png"
                     alt="Amazon EKS"
                     width={600}
                     height={400}

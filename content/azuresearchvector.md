@@ -3,7 +3,7 @@ title: "Azure Search"
 description: "Vector Search (Part 2)"
 date: "2026-02-09"
 categories: ["AI"]
-image: "/assets/images/posts-meta.svg"
+image: "/assets/images/azuresearchvector/posts-meta.svg"
 tags: "ai"
 hidden: true
 slug: "azuresearchvector"

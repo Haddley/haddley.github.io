@@ -5,7 +5,7 @@ date: "2025-02-04"
 categories: ["Azure","AI"]
 tags: ""
 slug: "azureopenal"
-image: "/assets/images/azurex70x75.svg"
+image: "/assets/images/azureopenal/azurex70x75.svg"
 ---
 
 

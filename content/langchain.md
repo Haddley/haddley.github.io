@@ -5,7 +5,7 @@ date: "2023-07-21"
 categories: ["AI","Python"]
 tags: ""
 slug: "langchain"
-image: "/assets/images/chatgpt-logo.svg"
+image: "/assets/images/langchain/chatgpt-logo.svg"
 ---
 
 

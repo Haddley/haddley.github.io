@@ -5,7 +5,7 @@ date: "2021-03-02"
 categories: ["Web","3D"]
 tags: ""
 slug: "webvr"
-image: "/assets/images/webvr-logo-square-512x512.png"
+image: "/assets/images/webvr/webvr-logo-square-512x512.png"
 ---
 
 

@@ -5,7 +5,7 @@ date: "2021-04-10"
 categories: [".NET"]
 tags: ""
 slug: "dotnet-core-part1"
-image: "/assets/images/net-logo.svg"
+image: "/assets/images/dotnet-core-part1/net-logo.svg"
 ---
 
 

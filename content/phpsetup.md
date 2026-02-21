@@ -5,7 +5,7 @@ date: "2024-08-25"
 categories: ["PHP"]
 tags: ""
 slug: "phpsetup"
-image: "/assets/images/php-logo.svg"
+image: "/assets/images/phpsetup/php-logo.svg"
 ---
 
 

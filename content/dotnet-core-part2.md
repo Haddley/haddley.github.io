@@ -5,7 +5,7 @@ date: "2023-03-15"
 categories: [".NET"]
 tags: ""
 slug: "dotnet-core-part2"
-image: "/assets/images/net-logo.svg"
+image: "/assets/images/dotnet-core-part2/net-logo.svg"
 ---
 
 

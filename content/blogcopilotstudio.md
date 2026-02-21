@@ -5,7 +5,7 @@ date: "2024-03-24"
 categories: ["Microsoft Dynamics","Business Central","Power Platform","AI"]
 tags: "copilot studio"
 slug: "blogcopilotstudio"
-image: "/assets/images/posts-meta.svg"
+image: "/assets/images/blogcopilotstudio/posts-meta.svg"
 ---
 
 

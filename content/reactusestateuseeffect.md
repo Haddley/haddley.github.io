@@ -5,7 +5,7 @@ date: "2021-02-08"
 categories: ["React"]
 tags: ""
 slug: "reactusestateuseeffect"
-image: "/assets/images/logo512-512x512.png"
+image: "/assets/images/reactusestateuseeffect/logo512-512x512.png"
 ---
 
 

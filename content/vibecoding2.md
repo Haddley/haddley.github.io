@@ -3,7 +3,7 @@ title: "Vibe Coding (Part 2)"
 description: "Proof of Concept"
 date: "2026-01-29"
 categories: ["AI"]
-image: "/assets/images/chatgpt-logo.svg"
+image: "/assets/images/vibecoding2/chatgpt-logo.svg"
 tags: "ai"
 hidden: true
 slug: "vibecoding2"
