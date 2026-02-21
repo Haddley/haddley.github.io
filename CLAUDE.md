@@ -55,6 +55,10 @@ The slug is derived from the filename by default; posts also support a `visible:
 
 Create a `.md` file in `/content/`. Use an existing post as a template for the frontmatter structure. Place any images in `content/assets/images/<slug>/` and reference them as `/assets/images/<slug>/filename.ext`. Run `npm run sync-images` if the post includes new images.
 
+## Writing Style
+
+When editing blog post content, use first-person active voice throughout — e.g. "I ran", "I clicked", "I selected". Avoid passive voice and third-person descriptions.
+
 ## Key Configuration
 
 - `next.config.ts` — static export (`output: 'export'`), trailing slashes, unoptimized images

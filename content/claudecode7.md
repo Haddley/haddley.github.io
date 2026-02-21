@@ -46,11 +46,11 @@ Without the Context7 model context protocol server Claude Code was able to ident
 As a test I added the [Context7](https://context7.com) [model context protocol server](mcpserver.html)
 
 ```text
-claude mcp add context7 -- npx -y @upstash/context7-mcp --api-key ctx7sk-f99eabb8-852c-4d68-8f77-a61713eb204d
+claude mcp add context7 -- npx -y @upstash/context7-mcp --api-key <YOUR_CONTEXT7_API_KEY>
 ```
 
 ![](/assets/images/claudecode7/Screenshot 2026-01-26 at 6.45.13 PM.png)
-*claude mcp add context7 -- npx -y @upstash/context7-mcp --api-key ctx7sk-f99eabb8-852c-4d68-8f77-a61713eb204d*
+*claude mcp add context7 -- npx -y @upstash/context7-mcp --api-key <YOUR_CONTEXT7_API_KEY>*
 
 ![](/assets/images/claudecode7/Screenshot 2026-01-26 at 6.45.57 PM.png)
 */Users/neilhaddley/.claude/settings.json*
