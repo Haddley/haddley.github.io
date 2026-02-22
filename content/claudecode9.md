@@ -118,6 +118,12 @@ The center column is divided into two resizable sections:
 ![](/assets/images/claudecode9/Screenshot-2026-02-22-at-4.33.13-PM.png)
 *The terminal panel was running in the browser*
 
+## Command line interface (CLI)
+
+![](/assets/images/claudecode9/Screenshot-2026-02-22-at-7.26.42-PM.png)
+*agent command line interface (CLI)*
+
+
 # `runAgent` — Function Documentation
 
 **File:** src/lib/agent.ts
@@ -225,6 +231,14 @@ After the last tool round-trip the model should produce a plain text response (n
 
 - **`textContent` is set** — the non-streaming `chat()` call already has the full text. It is broken into 40-character chunks and emitted with a 10 ms artificial delay to give the UI a smooth streaming feel.
 - **`textContent` is empty** — the model returned an empty content body (some Ollama models do this). A second, streaming `chatStream()` call is made and each chunk is forwarded directly.
+
+![](/assets/images/claudecode9/Screenshot-2026-02-22-at-7.33.37-PM.png)
+*agent worked example*
+
+![](/assets/images/claudecode9/Screenshot-2026-02-22-at-7.36.18-PM.png)
+*console.log output*
+
+
 
 ## References
 
