@@ -10,9 +10,7 @@ image: "/assets/images/threetier/net-logo.svg"
 
 
 
-Visual Studio includes an ASP.NET Core Single Page Application (SPA) template that supports Blazor WASM.
-
-Here I demonstrate how Blazer Web Assembly, ASP.NET Core and Microsoft SQL Server can be configured to work together.
+I used the Visual Studio ASP.NET Core SPA template to demonstrate how Blazor WebAssembly, ASP.NET Core, and Microsoft SQL Server work together.
 
 
 ## ChatGPT

@@ -4,6 +4,7 @@ description: "Microsoft Dynamics 365 Business Central Virtual Tables for Microso
 date: "2024-01-12"
 categories: ["Microsoft Dynamics","Business Central","Power Platform"]
 tags: ""
+hidden: false
 slug: "businesscentralvirtualtable"
 image: "/assets/images/businesscentralvirtualtable/posts-meta.svg"
 ---

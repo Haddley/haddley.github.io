@@ -10,9 +10,7 @@ image: "/assets/images/staticwebapp.config.json/azurex70x75.svg"
 
 
 
-The "auth" section of the staticwebapp.config.json can be used to configure access to a static web app.
-
-Static web app environment variables can be used to manage authentication properties
+I used the "auth" section of the staticwebapp.config.json to configure access to a static web app, using environment variables to manage authentication properties.
 
 ![](/assets/images/staticwebapp.config.json/screenshot-2024-03-16-at-1.57.36-pm-1836x961.png)
 *I created an index.html file. I created a staticwebapp.config.json file.*
@@ -30,7 +28,7 @@ Static web app environment variables can be used to manage authentication proper
 *I provided a name for a new Azure Resource Group*
 
 ![](/assets/images/staticwebapp.config.json/screenshot-2024-03-16-at-2.02.28-pm-1836x152.png)
-*I accepted the detail Azure Static Web app name*
+*I accepted the default Azure Static Web app name*
 
 ![](/assets/images/staticwebapp.config.json/screenshot-2024-03-16-at-2.02.40-pm-1836x177.png)
 *I selected the Free pricing option*

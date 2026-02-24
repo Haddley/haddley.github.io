@@ -10,9 +10,7 @@ image: "/assets/images/spring-boot-3/spring-framework-logo-70-no.svg"
 
 
 
-Spring Data JPA provides a set of abstractions and high-level, repository-style interfaces that make it easier to work with Java Persistence API (JPA) for data access in Spring applications. It reduces boilerplate code.
-
-I created a Spring Boot application using Spring Data JPA
+I created a Spring Boot application using Spring Data JPA, which provides high-level, repository-style interfaces for data access and reduces boilerplate code.
 
 ![](/assets/images/spring-boot-3/screenshot-2023-10-29-at-10.03.24-am-1836x981.png)
 *I created a new GitHub repository haddley-spring-data-jpa*
@@ -21,7 +19,7 @@ I created a Spring Boot application using Spring Data JPA
 *I opened the repository using GitHub Desktop*
 
 ![](/assets/images/spring-boot-3/screenshot-2023-10-29-at-10.04.25-am-1836x956.png)
-*I cloned the GitHib repository*
+*I cloned the GitHub repository*
 
 ![](/assets/images/spring-boot-3/screenshot-2023-10-29-at-10.04.49-am-1830x872.png)
 *GitHub repository folder*
@@ -66,10 +64,10 @@ I created a Spring Boot application using Spring Data JPA
 *I clicked Run to execute the select query*
 
 ![](/assets/images/spring-boot-3/screenshot-2023-10-29-at-1.16.08-pm-2136x1238.png)
-*The haddley-spring-data-jpa application hosted in Azure*
+*I deployed the haddley-spring-data-jpa application to Azure*
 
 ![](/assets/images/spring-boot-3/screenshot-2023-10-29-at-1.16.29-pm-2136x418.png)
-*Accessing the haddley-spring-data-jpa application hosted in Azure*
+*I accessed the haddley-spring-data-jpa application hosted in Azure*
 
 
 ```text

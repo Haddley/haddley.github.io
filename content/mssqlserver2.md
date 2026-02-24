@@ -11,39 +11,31 @@ image: "/assets/images/mssqlserver2/ads.svg"
 
 ## Stored procedures
 
-Transact SQL (T-SQL) statements are used to create Microsoft SQL Server Stored Procedures.
-
-Stored Procedures are maintained in the database making it easier to apply updates that improve the performance of all client applications.
-
-Stored Procedures that help customers to purchase cinema tickets or reserve seats on airplanes need to be written with isolation levels in mind.
+I used Transact SQL (T-SQL) to create Microsoft SQL Server Stored Procedures. Stored procedures are maintained in the database, making it easier to apply performance improvements that benefit all client applications. I wrote the swap procedure with isolation levels in mind, since concurrent access to shared data can cause transactions to interfere with each other.
 
 
 ## Shuffling cards
 
-Consider how a stored procedure might be used to shuffle the contents of a table representing a deck of playing cards.
+I used a stored procedure to shuffle the contents of a table representing a deck of playing cards.
 
 
 ## Swap cards
 
-To shuffle a deck of standard playing cards we could select any two cards from the deck at random and swap their positions. If we did this enough times the deck would be shuffled.
-
-Here is a stored procedure that will swap the data in two rows of the deck table.
+To shuffle the deck, I selected two cards at random and swapped their positions. Repeating this enough times produces a shuffled deck. I wrote a stored procedure to swap the data in two rows of the deck table.
 
 
 ## Pick two cards, swap and repeat
 
-To test the SwapCards stored procedure we can create:
+To test SwapCards, I created:
 
-**a PickACard function **that selects a card from the deck at random
-                        **a SwapCardsAtRandom stored procedure **that uses the PickACard function (twice) and the SwapCards stored procedure (above) to swap the random pair of cards; **and**
-                        **client code **that calls the SwapCardsAtRandom stored procedure 1,000 times.
+- a **PickACard** function that selects a card from the deck at random
+- a **SwapCardsAtRandom** stored procedure that uses PickACard (twice) and SwapCards to swap a random pair of cards
+- **client code** that calls SwapCardsAtRandom 1,000 times
 
 
 ## With a single client
 
-Running a single copy of client code that calls the SwapCardV1 stored procedure is fine.
-
-The result is a shuffled deck with 13 cards of each suit.
+Running a single copy of the client code calling SwapCardV1 worked correctly. I ended up with a shuffled deck containing 13 cards of each suit.
 
 ![](/assets/images/mssqlserver2/screen-shot-2021-03-27-at-9.01.56-pm-1836x1139.png)
 *Shuffle results single client*
@@ -51,7 +43,7 @@ The result is a shuffled deck with 13 cards of each suit.
 
 ## Concurrency issues
 
-However, running multiple copies of the client code that calls the SwapCardV1 stored procedure reveals an issue.
+However, running multiple copies of the client code revealed a concurrency issue with SwapCardV1.
 
 ![](/assets/images/mssqlserver2/screen-shot-2021-03-27-at-9.08.55-pm-1836x1136.png)
 *Shuffle failure*
@@ -59,14 +51,12 @@ However, running multiple copies of the client code that calls the SwapCardV1 st
 
 ## Snapshot issolation
 
-When concurrency is introduced our original SwapCards stored procedure does not work. No errors are being raised but transactions are stepping on each other.
-
-We can use Snapshot isolation to address the issue.
+With concurrency introduced, the original SwapCards stored procedure failed silently — no errors were raised but transactions were stepping on each other. I used Snapshot isolation to fix the issue.
 
 
 ## Multiple clients
 
-With the updated SwapCard stored procedure we can run multiple updates concurrently.
+With the updated SwapCards stored procedure, I was able to run multiple updates concurrently.
 
 ![](/assets/images/mssqlserver2/screen-shot-2021-03-27-at-9.25.19-pm-1836x1138.png)
 *Shuffle success*
@@ -74,11 +64,7 @@ With the updated SwapCard stored procedure we can run multiple updates concurren
 
 ## Catching the errors
 
-Snapshot isolation guarantees that reads made in a transaction will see a consistent snapshot of the database and that the transaction will commit only if no update made in the transaction conflicts with another concurrent update.
-
-With snapshot isolation enabled there is a chance that a commit will fail and that an error will be raised. This is a good thing.
-
-In the code shown above if SwapCards throws an error the client code catches the error, prints a message and continues. Perhaps instead the client code should retry the swap?
+Snapshot isolation guarantees that reads in a transaction see a consistent snapshot and that the transaction only commits if no conflicting concurrent update occurred. With snapshot isolation enabled, there is a chance that a commit will fail and raise an error — which is the desired behaviour. In the code above, if SwapCards threw an error the client caught it, printed a message, and continued. I considered having the client retry the swap instead.
 
 ![](/assets/images/mssqlserver2/screen-shot-2021-03-27-at-9.25.30-pm-1836x1131.png)
 *Concurrency exceptions (that the client code needs to handle)*
@@ -88,16 +74,14 @@ In the code shown above if SwapCards throws an error the client code catches the
 
 **$ dotnet run**
 
-The code below calls the SwapCards stored procedure 1000 times using C#.**
-**
+I wrote C# code to call the SwapCards stored procedure 1,000 times.
 
 
 ## Node console app
 
 **$ node index.js**
 
-The code below calls the SwapCards stored procedure 1000 times using JavaScript and the 'mssql' node module.**
-**
+I wrote JavaScript code to call the SwapCards stored procedure 1,000 times using the `mssql` node module.
 
 
 ## Java console app
@@ -114,7 +98,7 @@ or
 
 **$ java Program**
 
-The code below calls the SwapCards stored procedure 1000 times using Java.
+I wrote Java code to call the SwapCards stored procedure 1,000 times.
 
 
 ## Using cross join to create a table the represents ...

@@ -4,6 +4,7 @@ description: "Purchase"
 date: "2023-12-11"
 categories: ["Business Central"]
 tags: ""
+hidden: false
 slug: "generalledger"
 image: "/assets/images/generalledger/dynamics365-color.svg"
 ---
@@ -175,7 +176,7 @@ I created a Cost of Materials account.
 
 ## Revenue
 
-Notice that after these two business transactions (one purchase and one sale):
+I noticed that after these two business transactions (one purchase and one sale):
 
 The difference between Total Assets ($3,210) and Total Liabilities ($2,713) is **$497**; and
 The difference between Total Income ($3,000) and Total Cost of Goods Sold ($2,503) is **$497**

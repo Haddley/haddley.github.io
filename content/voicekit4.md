@@ -40,7 +40,7 @@ SyslogIdentifier=assist
 WantedBy=multi-user.target
 ```
 
-Control-X to exit, and Y to save. Press Enter to complete the save.
+I pressed Control-X to exit, Y to save, and Enter to complete the save.
 
 I enabled the service (for next boot) by typing in the terminal:
 

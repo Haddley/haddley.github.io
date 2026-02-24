@@ -4,14 +4,14 @@ description: "Single Page Application (SPA) templates"
 date: "2023-03-24"
 categories: [".NET","Angular","TypeScript"]
 tags: ""
+hidden: false
 slug: "angularandasp.net"
 image: "/assets/images/angularandasp.net/angular-full-color-logo.svg"
 ---
 
-
 Visual Studio includes ASP.NET Core Single Page Application (SPA) templates that support Angular and React.
 
-I review the Angular template here.
+I reviewed the Angular template here.
 
 
 ## ChatGPT
@@ -29,7 +29,9 @@ You can now start developing your application by modifying the files in the "Cli
 
 Note: If you prefer to use the command line, you can create a new ASP.NET Core Angular project using the following command:
 
-**$ dotnet new angular -n ProjectName**
+```bash
+$ dotnet new angular -n ProjectName
+```
 
 ![](/assets/images/angularandasp.net/screen-shot-2023-03-22-at-9.16.36-am-1440x880.png)
 *I used Visual Studio 2022 for Mac*
@@ -44,19 +46,19 @@ Note: If you prefer to use the command line, you can create a new ASP.NET Core A
 *I provided a solution/project name*
 
 ![](/assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.10.07-pm-1536x1125.png)
-*The template includes client and server-side code*
+*The template included client and server-side code*
 
 ![](/assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.11.50-pm-1836x946.png)
-*I ran the project.*
+*I ran the project*
 
 ![](/assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.14.10-pm-1836x1124.png)
-*I reviewed the Program.cs file. The template includes a local user database. I registered as a user.*
+*I reviewed the Program.cs file — the template includes a local user database, so I registered as a user*
 
 ![](/assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.15.11-pm-1836x1087.png)
-*I was able to login*
+*I was able to log in*
 
 ![](/assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.18.50-pm-1836x863.png)
-*main.ts specifies that AppModule is the bootstrap Module*
+*main.ts specifies that AppModule is the bootstrap module*
 
 ![](/assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.19.13-pm-1836x862.png)
 *app.module.ts declares {AppComponent, NavMenuComponent, ...} and the bootstrap value is set to AppComponent*
@@ -65,21 +67,21 @@ Note: If you prefer to use the command line, you can create a new ASP.NET Core A
 *app.component.ts depends on the app.component.html template*
 
 ![](/assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.24.04-pm-1836x308.png)
-*The app.component.html template includes a Navigation menu.*
+*The app.component.html template includes a navigation menu*
 
 ![](/assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.55.07-pm-1836x645.png)
-*The Fetch data route has canActivate set to AuthorizeGuard*
+*The Fetch data route had canActivate set to AuthorizeGuard*
 
 ![](/assets/images/angularandasp.net/screen-shot-2023-03-24-at-8.00.56-pm-1836x645.png)
-*The WeatherForecastController includes [Authorize] decorator*
+*The WeatherForecastController includes the [Authorize] decorator*
 
 ![](/assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.38.35-pm-1836x675.png)
-*The Navigation Menu component include a reference to a Logon component*
+*The Navigation Menu component included a reference to a Logon component*
 
 
 ## Update
 
-As an experiment I updated the Angular code so the "Fetch data" menu item did not require a login
+As an experiment I updated the Angular code so the "Fetch data" menu item did not require a login.
 
 ![](/assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.58.07-pm-1836x920.png)
-*Fetch data page is unable to fetch data from the WeatherForecast service if user is not logged in.*
+*The Fetch data page was unable to fetch data from the WeatherForecast service when the user was not logged in*

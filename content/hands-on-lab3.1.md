@@ -4,6 +4,7 @@ description: "Set Up Finance Management"
 date: "2023-12-04"
 categories: ["Business Central"]
 tags: ""
+hidden: false
 slug: "hands-on-lab3.1"
 image: "/assets/images/hands-on-lab3.1/dynamics365-color.svg"
 ---
@@ -68,7 +69,7 @@ Once the company’s users will start to record sales and purchase transactions,
 *I clicked the Home | Change Global Dimensions button*
 
 ![](/assets/images/hands-on-lab3.1/screen-shot-2023-12-04-at-11.57.00-am-1836x918.png)
-*The Global Dimension 1 Code and Global Dimension 2 Code settings were not set*
+*I noted that the Global Dimension 1 Code and Global Dimension 2 Code settings were not set*
 
 ![](/assets/images/hands-on-lab3.1/screen-shot-2023-12-04-at-11.57.18-am-1836x916.png)
 *I set the Global Dimension 1 Code to SALESPERSON_NEWLIST*
@@ -107,7 +108,7 @@ Once the company’s users will start to record sales and purchase transactions,
 *I scrolled down to the Dimensions tab and updated the Shortcut Dimension 3 setting to DEPARTMENT*
 
 ![](/assets/images/hands-on-lab3.1/screen-shot-2023-12-04-at-12.27.03-pm-1836x809.png)
-*Shortcut Dimension 3 was updated*
+*I confirmed that Shortcut Dimension 3 was updated*
 
 ![](/assets/images/hands-on-lab3.1/screen-shot-2023-12-04-at-12.28.43-pm-1836x810.png)
 *I scrolled up to the General tab. I updated the Allow Posting From setting*

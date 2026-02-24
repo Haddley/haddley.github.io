@@ -4,6 +4,7 @@ description: "Kubernetes is a platform for managing containerized workloads."
 date: "2021-02-06"
 categories: ["DevOps"]
 tags: ""
+hidden: false
 slug: "kubernetes"
 image: "/assets/images/kubernetes/kubernetes-container-engine.svg"
 ---
@@ -11,33 +12,37 @@ image: "/assets/images/kubernetes/kubernetes-container-engine.svg"
 
 Docker Desktop includes Kubernetes.
 
-Enter these commands to deploy the haddley/blog container image:
+I deployed the haddley/blog container image using these commands:
 
+```bash
 $ kubectl create deployment blog --image=haddley/blog --replicas=2
 
 $ kubectl expose deployment blog --type=LoadBalancer --port=8080 --target-port=80
+```
 
-Or create a file called blog.yaml and enter this command:
+Or I created a file called blog.yaml and used this command:
 
+```bash
 $ kubectl apply -f .\blog.yaml
+```
 
-Adjust the Kubernetes cluster by editing the yaml file below and "applying" the yaml file again.
+I adjusted the Kubernetes cluster by editing the yaml file below and "applying" the yaml file again.
 
-Access one of the blog web servers by navigating to:
+I accessed one of the blog web servers by navigating to:
 
 http://<ip address of the computer running Docker Desktop>:8080
 
 ![](/assets/images/kubernetes/image-888x488.png)
-*Using the "kubectl create deployment" and "kubectl expose deployment" commands*
+*I used the "kubectl create deployment" and "kubectl expose deployment" commands*
 
 ![](/assets/images/kubernetes/image-3-888x488.png)
-*Using the "kubectl apply" command to apply a yaml file*
+*I used the "kubectl apply" command to apply a yaml file*
 
 ![](/assets/images/kubernetes/image-2-1250x720.png)
-*The Docker image running in two Kubernetes pods.*
+*I ran the Docker image in two Kubernetes pods.*
 
 ![](/assets/images/kubernetes/screen-shot-2021-02-10-at-2.26.59-pm-1794x1190.png)
-*Accessing the cluster using port 8080*
+*I accessed the cluster using port 8080*
 
 
 ## blog.yaml

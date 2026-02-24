@@ -4,6 +4,7 @@ description: "Set up dimensions"
 date: "2023-12-04"
 categories: ["Business Central"]
 tags: ""
+hidden: false
 slug: "hands-on-lab2.3"
 image: "/assets/images/hands-on-lab2.3/dynamics365-color.svg"
 ---
@@ -61,7 +62,7 @@ From the general ledger they would like to analyze their sales by sales person a
 *I selected Limited and clicked OK*
 
 ![](/assets/images/hands-on-lab2.3/screen-shot-2023-12-04-at-9.45.32-am-1836x948.png)
-*A Limited link is now displayed in the in the cell in the CUSTOMERGROUP row and the SALESPERSON_NEWLIST column and in the cell in the SALESPERSON_NEWLIST row and the CUSTOMERGROUP column*
+*I noted that a Limited link was now displayed in the cell in the CUSTOMERGROUP row and the SALESPERSON_NEWLIST column, and in the cell in the SALESPERSON_NEWLIST row and the CUSTOMERGROUP column*
 
 ![](/assets/images/hands-on-lab2.3/screen-shot-2023-12-04-at-9.45.50-am-1836x947.png)
 *I clicked the Limited link and clicked Yes*

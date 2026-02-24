@@ -46,7 +46,7 @@ These are just general steps, and the specific implementation may vary depending
 *I tested the API*
 
 ![](/assets/images/vbnetwinforms/capture20230127-006-1045x572.png)
-*Using Swagger User Interface*
+*I used the Swagger User Interface to test the API*
 
 ![](/assets/images/vbnetwinforms/capture20230127-007-741x590.png)
 *I added a second project*

@@ -11,9 +11,7 @@ image: "/assets/images/nextjs3/2560px-nextjs-logo.svg-1536x920.png"
 
 ## Get Request
 
-API routes let you create an API endpoint inside a Next.js app.
-
-To create an API endpoint inside a Next.js app add a file (or folder) to the /pages/api directory
+I used API routes to create API endpoints inside a Next.js app. I added a file to the `/pages/api` directory to create each endpoint.
 
 ![](/assets/images/nextjs3/screen-shot-2021-11-07-at-11.01.17-am-1646x784.png)
 *Get Request*
@@ -21,7 +19,7 @@ To create an API endpoint inside a Next.js app add a file (or folder) to the /pa
 
 ## Dynamic API routes
 
-API routes can be dynamic, just like regular Next.js pages
+I made API routes dynamic, just like regular Next.js pages.
 
 ![](/assets/images/nextjs3/screen-shot-2021-11-07-at-11.01.28-am-1648x790.png)
 *Dynamic API Route*
@@ -29,7 +27,7 @@ API routes can be dynamic, just like regular Next.js pages
 
 ## Unprotected pages
 
-User login is not required to access all of the pages.
+Some pages didn't require login to access.
 
 ![](/assets/images/nextjs3/screen-shot-2021-11-10-at-7.59.37-am-1830x918.png)
 *Unprotected page*
@@ -37,9 +35,7 @@ User login is not required to access all of the pages.
 
 ## next-auth
 
-next-auth can be used to prevent unauthorized access to protected api methods and protected pages.
-
-$npm install next-auth
+I used `next-auth` to prevent unauthorized access to protected API methods and pages. I installed it with `npm install next-auth`.
 
 
 ## GitHub Id and GitHub Secret
@@ -58,17 +54,17 @@ Here I used [GitHub](https://docs.github.com/en/developers/apps/building-oauth-a
 
 ## .env
 
-Maintain the Client ID and Client Secret values in an .env file
+I stored the Client ID and Client Secret values in an `.env` file.
 
 
 ## [...nextauth]
 
-Add a [...nextauth] api method
+I added a `[...nextauth]` API method.
 
 
 ## _app.js
 
-Add a 'next-auth/client' Provider to _app.js
+I added a `next-auth/client` Provider to `_app.js`.
 
 ![](/assets/images/nextjs3/screen-shot-2021-11-08-at-6.52.44-pm-1436x1152.png)
 *Provider*
@@ -76,7 +72,7 @@ Add a 'next-auth/client' Provider to _app.js
 
 ## Add code to prevent unauthorized access
 
-Ensure that a valid session exists before returning articles or article details (using a REST API call or a web page request)
+I checked that a valid session existed before returning articles or article details, whether via a REST API call or a web page request.
 
 ![](/assets/images/nextjs3/screen-shot-2021-11-08-at-7.05.14-pm-1536x801.png)
 */api/articles is now protected*
@@ -93,7 +89,7 @@ Ensure that a valid session exists before returning articles or article details 
 
 ## Adding login and logout to home page
 
-Adding "Sign In" and "Sign Out" to home page.
+I added "Sign In" and "Sign Out" buttons to the home page.
 
 ![](/assets/images/nextjs3/screen-shot-2021-11-08-at-7.15.04-pm-1536x803.png)
 *Sign in*
@@ -116,9 +112,7 @@ Adding "Sign In" and "Sign Out" to home page.
 
 ## next-auth database (optional)
 
-Specifying a database is optional if you don't need to persist user data or support email sign in. If you don't specify a database then JSON Web Tokens will be enabled for session storage and used to store session data.
-
-To specify a database update the [...nextauth].js file (and a few environment variables).
+Specifying a database is optional — if I didn't need to persist user data or support email sign-in, JSON Web Tokens would be used for session storage instead. To specify a database, I updated the `[...nextauth].js` file and the relevant environment variables.
 
 ![](/assets/images/nextjs3/screen-shot-2021-11-11-at-6.59.22-am-1836x1204.png)
 *accounts*

@@ -10,9 +10,7 @@ image: "/assets/images/reactandasp.net/logo512-512x512.png"
 
 
 
-Visual Studio includes ASP.NET Core Single Page Application (SPA) templates that support Angular and React.
-
-I review the React template here.
+I used Visual Studio's ASP.NET Core React SPA template to create a project with an ASP.NET Core backend and a React frontend.
 
 
 ## ChatGPT
@@ -77,19 +75,19 @@ Note: If you prefer to use the command line, you can create a new ASP.NET Core R
 As an experiment I updated the React code so the "Fetch data" menu item is only shown when the user is logged in.
 
 ![](/assets/images/reactandasp.net/screen-shot-2023-03-22-at-11.04.02-am-1531x869.png)
-*Fetch data menu item is not rendered if user is not logged in.*
+*The Fetch data menu item was not rendered when the user was not logged in.*
 
 ![](/assets/images/reactandasp.net/screen-shot-2023-03-22-at-11.28.23-am-1531x573.png)
 *isAuthenticated and userName values are passed as properties*
 
 ![](/assets/images/reactandasp.net/screen-shot-2023-03-22-at-11.19.03-am-1531x875.png)
-*Fetch data menu item is rendered if user is logged in.*
+*The Fetch data menu item was rendered when the user was logged in.*
 
 ![](/assets/images/reactandasp.net/screen-shot-2023-03-22-at-11.19.50-am-1531x871.png)
 *Fetch data is dependent on protected web service.*
 
 ![](/assets/images/reactandasp.net/screen-shot-2023-03-22-at-11.26.38-am-1531x867.png)
-*Network tab shows the call*
+*I reviewed the Network tab to see the call*
 
 ![](/assets/images/reactandasp.net/screen-shot-2023-03-22-at-11.34.09-am-1531x585.png)
 *Weather Forecast Controller*

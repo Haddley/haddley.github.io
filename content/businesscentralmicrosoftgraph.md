@@ -4,6 +4,7 @@ description: "Financials"
 date: "2023-12-18"
 categories: ["Microsoft Dynamics","Business Central"]
 tags: ""
+hidden: false
 slug: "businesscentralmicrosoftgraph"
 image: "/assets/images/businesscentralmicrosoftgraph/posts-meta.svg"
 ---
@@ -52,10 +53,10 @@ Graph Explorer is a web-based tool provided by Microsoft that allows developers 
 *I added the ATHENS Desk item id to the URL*
 
 ![](/assets/images/businesscentralmicrosoftgraph/screen-shot-2023-12-18-at-9.36.18-am-1836x1090.png)
-*Notice that at this point unit price for an ATHENS Desk was $1,000.80*
+*I noticed that the unit price for an ATHENS Desk was $1,000.80*
 
 ![](/assets/images/businesscentralmicrosoftgraph/screen-shot-2023-12-18-at-9.39.56-am-1836x1087.png)
-*Notice that the eTag value was ...JzE50zY4N... a unique identifier associated with a specific version of a resource*
+*I noted that the eTag value was ...JzE50zY4N..., a unique identifier associated with a specific version of the resource*
 
 ![](/assets/images/businesscentralmicrosoftgraph/screen-shot-2023-12-18-at-9.52.05-am-1836x1092.png)
 *I created a Request body, updated the http verb to PATCH and added an If-Match header to the Request headers. The If-Match header was used to pass the latest eTag value. Notice that the Response returned confirms that the unit price has been updated to $1,000.90*
@@ -64,4 +65,4 @@ Graph Explorer is a web-based tool provided by Microsoft that allows developers 
 *Notice that the Request body included the new unit price and that the Response eTag value was updated to ...JzE50zU5N..*
 
 ![](/assets/images/businesscentralmicrosoftgraph/screen-shot-2023-12-18-at-9.53.08-am-1836x1094.png)
-*Executing the same PATCH request with the old eTag value results in an error.*
+*Executing the same PATCH request with the old eTag value resulted in an error.*

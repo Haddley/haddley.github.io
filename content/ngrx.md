@@ -9,9 +9,7 @@ image: "/assets/images/ngrx/ngrx.svg"
 ---
 
 
-NgRx is inspired by the Redux pattern. 
-
-NgRx stores a single state and uses actions to express state changes.
+I used NgRx, which is inspired by the Redux pattern. NgRx stores a single state and uses actions to express state changes.
 
 ![](/assets/images/ngrx/state-management-lifecycle-1836x1033.png)
 *NGRX state management lifecycle*
@@ -52,7 +50,7 @@ The state of the haddley-ngrx application is a number between 1 and 6.
 
 ## (click)
 
-Every time a user refreshes the haddley-ngrx app a random number is displayed.
+Every time I refreshed the haddley-ngrx app a random number was displayed.
 
 I updated the code so that the number is updated in response to a mouse click.
 
@@ -121,9 +119,7 @@ I created a src/app/state folder and a src/app/state/dice folder.
 
 I created a dice actions typescript file and defined three actions: {roll, rollSuccess, and rollFailure}
 
-The app component will dispatch a "roll" Action in response to a (click).
-
-The app component will not dispatch the rollSuccess Action or the rollFailure Action.
+The app component dispatches a "roll" Action in response to a click. It does not dispatch the rollSuccess or rollFailure Actions directly.
 
 ![](/assets/images/ngrx/screen-shot-2022-11-27-at-5.53.50-pm-1836x307.png)
 *npm i @ngrx/store*
@@ -133,11 +129,7 @@ The app component will not dispatch the rollSuccess Action or the rollFailure Ac
 
 I created a dice state typescript file and defined a DiceState interface.
 
-NGRX should not throw an exception in response to the app component dispatching an Action. 
-
-Instead a Selector will return a result (to the component) indicating success or failure.
-
-For completeness I have included a (nullable) error value in the DiceState interface.
+NgRx doesn't throw exceptions when an action is dispatched — instead, a Selector returns a result to the component indicating success or failure. For completeness, I included a nullable error value in the DiceState interface.
 
 ![](/assets/images/ngrx/screen-shot-2022-11-27-at-5.48.56-pm-1836x273.png)
 *DiceState interface*
@@ -147,9 +139,7 @@ For completeness I have included a (nullable) error value in the DiceState inter
 
 I created a dice reducer typescript file to specify how Actions will be processed.
 
-The rollSuccess action updates the state.value to the number passed to it as a property.
-
-The rollFailure action updates the state.error to the text passed to it as a property.
+The rollSuccess action updates `state.value` to the number passed as a property. The rollFailure action updates `state.error` to the text passed as a property.
 
 It might seem odd that the roll Action updates the state.error but does not update the state.value (see Effects below).
 
@@ -171,7 +161,7 @@ I added an app.state typescript file to the state folder.
 
 ## dice.selectors
 
-The app.component will access the dice state using selectors.
+The app component accesses the dice state using selectors.
 
 I added the dice.selectors typescript file and created the two selectors the app.component needs.
 
@@ -205,7 +195,7 @@ I updated app component template and app component class to make use of the sele
 
 ## ng test
 
-After these updates the tests fail.
+After these updates, the tests failed.
 
 ![](/assets/images/ngrx/screen-shot-2022-11-27-at-7.39.36-pm-1836x1155.png)
 *No provider for Store!*
@@ -213,7 +203,7 @@ After these updates the tests fail.
 
 ## MockStore
 
-To get the ng tests to pass we need to add a "mock store"
+To get the ng tests to pass I added a "mock store".
 
 ![](/assets/images/ngrx/screen-shot-2022-11-27-at-7.49.48-pm-1836x770.png)
 *provideMockStore*
@@ -224,11 +214,7 @@ To get the ng tests to pass we need to add a "mock store"
 
 ## dice.effects
 
-When the app component dispatches the "roll" Action the app component does not provide a value.
-
-Without additional effort the roll Action is not in a position to update the state.
-
-NGRX effects address this problem.
+When the app component dispatches the "roll" Action it doesn't provide a value, so the roll Action alone can't update the state. NgRx Effects address this.
 
 I created a DiceEffects class that responds to "roll" Actions.
 
@@ -243,7 +229,7 @@ When the DiceEffects class spots/notices/is notified of a roll Action it calcula
 
 ## Final result
 
-The final result is an Angular application that uses NGRX for state management.
+The result was an Angular application using NgRx for state management.
 
 ![](/assets/images/ngrx/screen-shot-2022-11-27-at-8.20.53-pm-1836x1021.png)
 *ng test*

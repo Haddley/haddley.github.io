@@ -33,7 +33,7 @@ I used Prompt flow, Semantic Kernel and Planner to create an AI application.
 *Now the answer to every question I ask is a Joke (not always useful)*
 
 ![](/assets/images/promptflow6/screenshot-2024-09-01-at-5.23.01pm-1792x710.png)
-*I added the MathPlugin and a PlannerNow I can ask fun questions or math questions and the bot can decide which Plugin to call*
+*I added the MathPlugin and a Planner. I could now ask fun questions or math questions and the bot would decide which Plugin to call*
 
 
 ## python_node_v8t9.py

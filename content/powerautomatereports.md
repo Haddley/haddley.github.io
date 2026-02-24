@@ -9,7 +9,7 @@ image: "/assets/images/powerautomatereports/office-365-icon-500x500.png"
 ---
 
 
-Creating a Flow that emails a Report as a PDF file
+I created a Flow that emails a Report as a PDF file.
 
 ![](/assets/images/powerautomatereports/screenshot-2024-07-19-at-11.14.34am-2136x1112.png)
 *I created a Flows solution*
@@ -18,7 +18,7 @@ Creating a Flow that emails a Report as a PDF file
 *I added a new Cloud flow*
 
 ![](/assets/images/powerautomatereports/screenshot-2024-07-19-at-1.56.13pm-2136x975.png)
-*The user will be asked to provide a Report Name and an Email address. The Success variable is set to false.*
+*The flow asks for a Report Name and Email address. The Success variable is initialised to false.*
 
 ![](/assets/images/powerautomatereports/screenshot-2024-07-19-at-1.57.43pm-2136x1114.png)
 *I used the List rows action...*
@@ -60,7 +60,7 @@ Creating a Flow that emails a Report as a PDF file
 *I added three scope actions*
 
 ![](/assets/images/powerautomatereports/screenshot-2024-07-19-at-2.14.30pm-2136x1112.png)
-*The third scope action was configured to catch errors.*
+*I configured the third scope action to catch errors.*
 
 ![](/assets/images/powerautomatereports/screenshot-2024-07-19-at-2.14.59pm-2136x1003.png)
 *I added the happy path logic to the second scope*

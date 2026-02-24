@@ -4,17 +4,18 @@ description: "What apps can be written quickly?"
 date: "2022-06-05"
 categories: ["AI","ML"]
 tags: "emoji scavenger hunt"
+hidden: false
 slug: "machinelearning2"
 image: "/assets/images/machinelearning2/tensorflow-logo.svg"
 ---
 
 
 
-In her [YouTube video](https://www.youtube.com/watch?v=BjTNJSQLIeA) Dale Markowitz explains why some machine learning powered applications can be built quickly and why others can not.
+In her [YouTube video](https://www.youtube.com/watch?v=BjTNJSQLIeA) Dale Markowitz explained why some machine learning powered applications can be built quickly and why others can not.
 
-Dale explains that machine learning applications can be built quickly and easily if you can reuse a pre-trained model created by someone else. 
+Dale explained that machine learning applications can be built quickly and easily if you can reuse a pre-trained model created by someone else.
 
-Dale demonstrates how she created a natural language translation application and a computer vision object tracking application using existing models.
+Dale demonstrated how she created a natural language translation application and a computer vision object tracking application using existing models.
 
 
 ## TensorFlow.js
@@ -24,7 +25,7 @@ Dale demonstrates how she created a natural language translation application and
 ModelDepot.io created a [project](https://github.com/ModelDepot/tfjs-yolo-tiny) that demonstrates how a [YOLO Tiny model](machineLearning1.html) can be reused in a TensorFlow.js app ([running in a browser](https://modeldepot.github.io/tfjs-yolo-tiny-demo/)).
 
 ![](/assets/images/machinelearning2/283720320-1067547677519021-4870542019071843454-n-1836x848.jpg)
-*Live demonstration*
+*I ran a live demonstration*
 
 
 ## Emoji scavenger hunt

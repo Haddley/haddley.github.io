@@ -9,10 +9,10 @@ image: "/assets/images/pi2/raspberry-pi-logo.svg"
 ---
 
 
-The Raspberry Pi input and output pins can be controlled from the terminal.
+I controlled the Raspberry Pi GPIO pins from the terminal.
 
 ![](/assets/images/pi2/screen-shot-2023-07-22-at-3.12.04-pm-1136x744.png)
-*Controlling GPIO 17 (Pin 11) using a remote SSH terminal*
+*I controlled GPIO 17 (Pin 11) using a remote SSH terminal*
 
 ![](/assets/images/pi2/raspberry-pi-gpio-image1-1836x1377.jpg)
 *Hardware setup*

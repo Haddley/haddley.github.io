@@ -9,9 +9,7 @@ image: "/assets/images/promptflow3/logo.svg"
 ---
 
 
-[Semantic Kernel](https://learn.microsoft.com/en-us/semantic-kernel/overview/) is an open-source development kit for building AI agents.
-
-In this example I call a Semantic Kernel plugin to generate a joke.
+I used [Semantic Kernel](https://learn.microsoft.com/en-us/semantic-kernel/overview/), an open-source development kit for building AI agents, to call a plugin that generates jokes.
 
 ![](/assets/images/promptflow3/screenshot-2024-08-24-at-8.31.26am-1000x596.png)
 *I cloned https://github.com/microsoft/semantic-kernel.git*

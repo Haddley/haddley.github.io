@@ -33,9 +33,9 @@ The Moon Rider code is available for download from GitHub
 
 ## A static WebVR scene
 
-WebVR developers use **entities** to create **scenes**. Entities are created using **assets**.
+I used **entities** to create **scenes**, with entities built from **assets**.
 
-A static scene can be created using a few web page tags.
+I created a static scene using a few web page tags.
 
 
 ## A scene

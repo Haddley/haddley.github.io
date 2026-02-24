@@ -4,6 +4,7 @@ description: "Microsoft Dynamics and Microsoft Dataverse"
 date: "2023-09-09"
 categories: ["Microsoft Dynamics","Power Platform","Business Central"]
 tags: ""
+hidden: false
 slug: "ashorthistory"
 image: "/assets/images/ashorthistory/dynamics365-color.svg"
 ---

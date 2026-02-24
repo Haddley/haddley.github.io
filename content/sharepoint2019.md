@@ -71,7 +71,7 @@ In this case I wanted to install Active Directory, SQL Server and SharePoint on 
 *I provided the Administrator credentials*
 
 ![](/assets/images/sharepoint2019/screen-shot-2022-12-31-at-2.45.00-pm-1836x1149.png)
-*SharePoint has been installed*
+*SharePoint was installed*
 
 ![](/assets/images/sharepoint2019/screen-shot-2022-12-31-at-2.47.38-pm-1836x1150.png)
 *I clicked the 'Add roles and features' link*
@@ -107,13 +107,13 @@ In this case I wanted to install Active Directory, SQL Server and SharePoint on 
 *I reviewed the install progress*
 
 ![](/assets/images/sharepoint2019/screen-shot-2022-12-31-at-3.09.11-pm-1836x325.png)
-*A saw that a restart was required*
+*I saw that a restart was required*
 
 ![](/assets/images/sharepoint2019/screen-shot-2022-12-31-at-3.09.26-pm-1284x444.png)
 *I restarted the server*
 
 ![](/assets/images/sharepoint2019/screen-shot-2022-12-31-at-3.14.44-pm-1836x331.png)
-*I needed to promote the server to a domain controlled*
+*I needed to promote the server to a domain controller*
 
 ![](/assets/images/sharepoint2019/screen-shot-2022-12-31-at-3.15.01-pm-1514x1110.png)
 *I started the Active Directory Domain Services Configuration Wizard*
@@ -149,7 +149,7 @@ In this case I wanted to install Active Directory, SQL Server and SharePoint on 
 *I deselected the 'Google Update' services*
 
 ![](/assets/images/sharepoint2019/screen-shot-2022-12-31-at-3.44.35-pm-1836x1075.png)
-*The were no errors in the Server Manager Dashboard*
+*There were no errors in the Server Manager Dashboard*
 
 ![](/assets/images/sharepoint2019/screen-shot-2022-12-31-at-3.45.51-pm-1836x1341.png)
 *I downloaded SQL Server Developer Edition from https://www.microsoft.com/en-us/sql-server/sql-server-downloads*
@@ -203,7 +203,7 @@ In this case I wanted to install Active Directory, SQL Server and SharePoint on 
 *I navigated to the Central Administration site*
 
 ![](/assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.29.18-pm-1806x1178.png)
-*I specified that all of the SharePoint Services should runas the same administrator account*
+*I specified that all of the SharePoint Services should run as the same administrator account*
 
 ![](/assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.29.52-pm-1802x1182.png)
 *I waited*
@@ -239,7 +239,7 @@ In this case I wanted to install Active Directory, SQL Server and SharePoint on 
 *I shared the Team Site with the Test 1 and Test 2 users*
 
 ![](/assets/images/sharepoint2019/screen-shot-2022-12-31-at-5.41.16-pm-1836x1064.png)
-*The Test 1 and Test 2 users are able to View and Edit items in the Team Site*
+*The Test 1 and Test 2 users could view and edit items in the Team Site*
 
 ![](/assets/images/sharepoint2019/screen-shot-2022-12-31-at-5.41.44-pm-1836x919.png)
 *The Site permission update was saved*

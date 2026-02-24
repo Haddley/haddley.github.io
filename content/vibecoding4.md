@@ -34,13 +34,13 @@ Add GitHub secrets - AZURE_CLIENT_ID, AZURE_TENANT_ID, AZURE_SUBSCRIPTION_ID
 *docker run -d -p 8080:8080 ai-colorizer*
 
 ![](/assets/images/vibecoding4/Screenshot 2026-01-30 at 11.12.24 AM.png)
-*docker desktop Images*
+*I reviewed the docker desktop Images*
 
 ![](/assets/images/vibecoding4/Screenshot 2026-01-30 at 11.12.32 AM.png)
-*docker desktop Containers*
+*I reviewed the docker desktop Containers*
 
 ![](/assets/images/vibecoding4/Screenshot 2026-01-30 at 11.12.47 AM.png)
-*container log*
+*I reviewed the container log*
 
 ![](/assets/images/vibecoding4/Screenshot 2026-01-30 at 11.13.29 AM.png)
 *http://127.0.0.1:8080/*

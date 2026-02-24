@@ -9,6 +9,8 @@ image: "/assets/images/mysql/includes-mysql-5646x2872.png"
 ---
 
 
+I connected to a MySQL database from Node.js using the `mysql` and `promise-mysql` packages.
+
 ## Install MySQL Driver
 
 ```bash

@@ -29,10 +29,9 @@ The 70 billion parameter variant generated output in approximately 1 minute 28 s
 *I clicked Move to Applications*
 
 ![](/assets/images/ollamadeepsekr1applemacbookinstall/screenshot202025-05-2320at201.00.00e280afpm-2136x1162.png)
-*search for R1 model*
+*I searched for the R1 model*
 
-**1.5B Model:**
-Embedded AI (IoT devices), high-volume/low-latency tasks (e.g., spam filtering, simple Q&A), or prototyping.
+**1.5B Model:** Suited for embedded AI (IoT devices), high-volume/low-latency tasks, or prototyping.
 
 ![](/assets/images/ollamadeepsekr1applemacbookinstall/screenshot202025-05-2320at2012.59.00e280afpm-1144x342.png)
 *ollama run deepseek-r1:1.5b*
@@ -40,8 +39,7 @@ Embedded AI (IoT devices), high-volume/low-latency tasks (e.g., spam filtering, 
 ![](/assets/images/ollamadeepsekr1applemacbookinstall/screenshot202025-05-2320at201.01.50e280afpm-1140x746.png)
 *write 100 words on DeekSeek LLM*
 
-**7B Model:**
-General-purpose chatbots, content moderation, mid-tier automation (e.g., customer support, basic data analysis).
+**7B Model:** Suited for general-purpose chatbots, content moderation, and mid-tier automation.
 
 ![](/assets/images/ollamadeepsekr1applemacbookinstall/screenshot202025-05-2320at201.04.25e280afpm-1138x294.png)
 *ollama run deepseek-r1:7b*
@@ -55,9 +53,7 @@ General-purpose chatbots, content moderation, mid-tier automation (e.g., custome
 ![](/assets/images/ollamadeepsekr1applemacbookinstall/screenshot202025-05-2320at201.29.57e280afpm-1748x1544.png)
 *M2 processor 16 GB of unified memory*
 
-**14B Model:**
-Enterprise-grade applications (e.g., advanced chatbots, research tools, code assistants).
-Scenarios requiring deep domain expertise or high accuracy (e.g., legal document analysis, financial forecasting).
+**14B Model:** Suited for enterprise-grade applications such as advanced chatbots, research tools, and code assistants.
 
 ![](/assets/images/ollamadeepsekr1applemacbookinstall/501048925-1408883290959735-9110886994771392643-n-1140x746.png)
 *ollama run deepseek-r1:14b --verbose*
@@ -65,8 +61,7 @@ Scenarios requiring deep domain expertise or high accuracy (e.g., legal document
 ![](/assets/images/ollamadeepsekr1applemacbookinstall/494814422-1859512331511522-7881506198410234900-n-1932x1528.png)
 *M4 processor 32 GB of unified memory*
 
-**32B Model:**
-Ideal for applications prioritizing accuracy over speed, such as advanced research, data analysis, or generating long-form content.
+**32B Model:** Suited for applications prioritising accuracy over speed, such as advanced research or long-form content.
 
 ![](/assets/images/ollamadeepsekr1applemacbookinstall/494362500-1880696412691727-7219409545231194829-n-1138x738.png)
 *ollama run deepseek-r1:32b --verbose*
@@ -83,5 +78,4 @@ Ideal for applications prioritizing accuracy over speed, such as advanced resear
 ![](/assets/images/ollamadeepsekr1applemacbookinstall/screenshot202025-06-2820at2012.32.5520pm-895x767.png)
 *M1 Max processor 64 GB of unified memory*
 
-**70B Model:**
-Designed for advanced reasoning, multilingual understanding, and long-context processing
+**70B Model:** Suited for advanced reasoning, multilingual understanding, and long-context processing.

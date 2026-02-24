@@ -4,6 +4,7 @@ description: "A console application that calls the Microsoft Graph API"
 date: "2022-05-28"
 categories: ["JavaScript","Microsoft 365"]
 tags: ""
+hidden: false
 slug: "javascriptgraph"
 image: "/assets/images/javascriptgraph/office-365-icon-500x500.png"
 ---
@@ -57,10 +58,10 @@ The graphHelper code creates a TokenCredentialAuthenticationProvider object and 
 The client object is then used to make calls as shown in the [Graph Explorer](MicrosoftGraph.html) "Code snippets" tab.
 
 ![](/assets/images/javascriptgraph/screen-shot-2022-05-28-at-11.08.04-am-1208x572.png)
-*GetUserSnippet from the application*
+*I reviewed GetUserSnippet from the application*
 
 ![](/assets/images/javascriptgraph/screen-shot-2022-05-27-at-2.47.11-pm-1836x943.png)
-*Graph Explorer Code snippet*
+*I reviewed the Graph Explorer Code snippet*
 
 
 ## Full code

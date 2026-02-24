@@ -17,14 +17,12 @@ image: "/assets/images/sails2/sailsjs-logo-515x193.png"
 
 
 ![](/assets/images/sails2/screen-shot-2021-10-12-at-1.43.22-pm-1836x1048.png)
-*generate api articles*
+*I generated the articles API*
 
 
 ## Blueprint API
 
-Once the articles api has been created I can use the Blueprint API to create article items.
-
-On the laptop I navigate to http://localhost:1337/articles.
+Once the articles API was created, I used the Blueprint API to create article items. I navigated to http://localhost:1337/articles.
 
 ![](/assets/images/sails2/screen-shot-2021-10-12-at-1.57.37-pm-1564x272.png)
 */articles*
@@ -35,10 +33,10 @@ On the laptop I navigate to http://localhost:1337/articles.
 
 ## Push to GitHub
 
-The new code is published to https://haddley-sails.azurewebsites.net after it is pushed to the GitHub repository.
+The new code was published to https://haddley-sails.azurewebsites.net after I pushed it to the GitHub repository.
 
 ![](/assets/images/sails2/screen-shot-2021-10-12-at-2.13.20-pm-1836x1036.png)
-*Push to GitHub*
+*I pushed to GitHub*
 
 ![](/assets/images/sails2/screen-shot-2021-10-12-at-2.13.32-pm-1836x1037.png)
 *GitHub action in progress*
@@ -49,9 +47,7 @@ The new code is published to https://haddley-sails.azurewebsites.net after it is
 
 ## Creating and Destroying items
 
-Once the articles model update has been published to Azure I can use the Blueprint API to create and to remove (destroy) article items.
-
-I navigate to https://haddley-sails.azurewebsites.net/articles.
+Once the articles model update was published to Azure, I used the Blueprint API to create and remove (destroy) article items. I navigated to https://haddley-sails.azurewebsites.net/articles.
 
 ![](/assets/images/sails2/screen-shot-2021-10-12-at-6.29.01-pm-1836x627.png)
 */articles/Create?...*
@@ -65,18 +61,16 @@ I navigate to https://haddley-sails.azurewebsites.net/articles.
 
 ## Azure Cosmos DB API for MongoDB
 
-In the screenshots above I have been using local disk storage and the sails-disk adapter.
-
-Below I update the application to use the Azure Cosmos DB for MongoDB.
+In the screenshots above I had been using local disk storage with the sails-disk adapter. I updated the application to use the Azure Cosmos DB for MongoDB.
 
 ![](/assets/images/sails2/screen-shot-2021-10-12-at-7.13.43-pm-1836x1024.png)
 *Overview*
 
 ![](/assets/images/sails2/screen-shot-2021-10-12-at-7.50.49-pm-1836x1161.png)
-*updated connections.js*
+*I updated connections.js*
 
 ![](/assets/images/sails2/screen-shot-2021-10-12-at-7.58.40-pm-1836x695.png)
-*updated model*
+*I updated the model*
 
 ![](/assets/images/sails2/screen-shot-2021-10-12-at-7.56.29-pm-1836x634.png)
 */articles*
@@ -85,7 +79,7 @@ Below I update the application to use the Azure Cosmos DB for MongoDB.
 *Data Explorer*
 
 ![](/assets/images/sails2/screen-shot-2021-10-12-at-8.00.37-pm-1228x264.png)
-*Push changes to GitHub*
+*I pushed the changes to GitHub*
 
 ![](/assets/images/sails2/screen-shot-2021-10-12-at-8.38.22-pm-1836x998.png)
 *GitHub action in progress*

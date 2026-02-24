@@ -9,9 +9,7 @@ image: "/assets/images/pi1/raspberry-pi-logo.svg"
 ---
 
 
-With the Raspberry Pi Imager tool, the process of writing a standard operating system image onto a microSD card is easy. 
-
-Taking advantage of the Imager's advanced features, I customized the connectivity settings, allowing me to remotely access the Raspberry Pi immediately after powering it on for the first time.
+I used the Raspberry Pi Imager tool to write a standard operating system image onto a microSD card. I used the Imager's advanced features to customise the connectivity settings, which let me remotely access the Raspberry Pi immediately after powering it on for the first time.
 
 ![](/assets/images/pi1/raspberry-pi-setup-image-2-682x452.png)
 *Imager*

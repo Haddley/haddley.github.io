@@ -4,6 +4,7 @@ description: "Google Cloud Platform"
 date: "2022-06-11"
 categories: ["AI","ML"]
 tags: "automl"
+hidden: false
 slug: "machinelearning7"
 image: "/assets/images/machinelearning7/tensorflow-logo.svg"
 ---
@@ -21,10 +22,10 @@ I used AutoML to build and use the diabetes binary classification model I descri
 *I uploaded the csv file (minimum size is 1000 rows)*
 
 ![](/assets/images/machinelearning7/screen-shot-2022-06-12-at-4.06.57-pm-1244x866.png)
-*The data was imported*
+*I confirmed the data was imported*
 
 ![](/assets/images/machinelearning7/screen-shot-2022-06-12-at-4.10.36-pm-1241x864.png)
-*AutoML detected 9 columns*
+*I confirmed AutoML detected 9 columns*
 
 ![](/assets/images/machinelearning7/screen-shot-2022-06-12-at-4.11.19-pm-1247x860.png)
 *I selected "Outcome" as the Target column*
@@ -36,13 +37,13 @@ I used AutoML to build and use the diabetes binary classification model I descri
 *I specified a budget of one hour*
 
 ![](/assets/images/machinelearning7/screen-shot-2022-06-12-at-4.12.31-pm-1241x858.png)
-*Training started*
+*I confirmed training had started*
 
 ![](/assets/images/machinelearning7/screen-shot-2022-06-12-at-4.58.14-pm-1241x904.png)
-*Training progressed*
+*I monitored training progress*
 
 ![](/assets/images/machinelearning7/screen-shot-2022-06-12-at-5.00.00-pm-1243x910.png)
-*Training completed*
+*I confirmed training completed*
 
 ![](/assets/images/machinelearning7/screen-shot-2022-06-12-at-5.01.25-pm-1354x1310.png)
 *I reviewed the Confusion matrix (the true positives. false positives, true negatives and false negatives)*
@@ -57,7 +58,7 @@ I used AutoML to build and use the diabetes binary classification model I descri
 *I clicked the DEPLOY button*
 
 ![](/assets/images/machinelearning7/screen-shot-2022-06-12-at-5.01.25-pm-1354x1310.png)
-*The deployment completed*
+*I confirmed the deployment completed*
 
 ![](/assets/images/machinelearning7/screen-shot-2022-06-12-at-5.34.27-pm-1366x1319.png)
 *I entered test data and asked the model to predict the "Outcome" value*

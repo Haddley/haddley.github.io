@@ -9,11 +9,7 @@ image: "/assets/images/powerpages1/powerpages-scalable.svg"
 ---
 
 
-Microsoft Power Pages is a low-code platform designed to build, host, and manage external-facing business websites.
-
-Microsoft Dynamics Business Central provides an end-to-end solution for financials, sales, service, and operations. 
-
-A Customer Portal is a software interface that gives customers complete visibility into their interactions with a company. It provides a platform for customers to track key metrics, support requests, or other information such as reference documents that can be easily shared.
+I used Microsoft Power Pages to build a Customer Portal for Dynamics 365 Business Central. Power Pages is a low-code platform for external-facing business websites, and the portal gives customers visibility into their Sales Orders.
 
 ![](/assets/images/powerpages1/screenshot-2024-10-26-at-2.44.36pm-2136x1091.png)
 *I used Microsoft Power Pages to create a Customer Portal*
@@ -64,7 +60,7 @@ A Customer Portal is a software interface that gives customers complete visibili
 *I selected six Virtual Tables and clicked the Enable button*
 
 ![](/assets/images/powerpages1/screenshot-2024-10-26-at-3.37.14pm-2136x328.png)
-*A job queue entry was scheduled*
+*A job queue entry was created*
 
 ![](/assets/images/powerpages1/screenshot-2024-10-26-at-3.39.28pm-2136x1208.png)
 *I navigated to the Dataverse Connection Setup page*
@@ -99,7 +95,7 @@ A Customer Portal is a software interface that gives customers complete visibili
 
 ## Sales Orders
 
-In Dynamics 365 Business Central, a Sales Order is a document that represents a customer's intent to purchase goods or services from a company. It is a crucial component of the sales process and serves as a foundation for managing customer interactions, tracking orders, and fulfilling customer requests.
+I connected the Customer Portal to Business Central Sales Orders using virtual tables.
 
 ![](/assets/images/powerpages1/screenshot-2024-10-26-at-4.13.38pm-2136x614.png)
 *I navigated to the Sales Orders list*
@@ -122,7 +118,7 @@ In Dynamics 365 Business Central, a Sales Order is a document that represents a 
 I created a Power Platform Solution
 
 ![](/assets/images/powerpages1/screenshot-2024-12-14-at-8.01.41pm-2136x1097.png)
-*Created a Customer Portal Solution*
+*I created a Customer Portal Solution*
 
 ![](/assets/images/powerpages1/screenshot-2024-12-14-at-8.01.57pm-2136x789.png)
 *I navigated into the new solution*
@@ -131,7 +127,7 @@ I created a Power Platform Solution
 *I added the Sales Order and Sales Order Line tables*
 
 ![](/assets/images/powerpages1/screenshot-2024-12-14-at-8.02.31pm-2136x641.png)
-*Two tables will be added to the solution*
+*Two tables would be added to the solution*
 
 ![](/assets/images/powerpages1/screenshot-2024-12-14-at-8.03.14pm-2136x873.png)
 *I added a Portal All Sales Orders view to the Sales Order table*
@@ -173,13 +169,13 @@ I created a Power Platform Solution
 *I selected web address https://haddleycustomerportal.powerappsportals.com/*
 
 ![](/assets/images/powerpages1/screenshot-2024-12-14-at-8.54.01pm-2136x1093.png)
-*The new site was setup*
+*The new site was set up*
 
 ![](/assets/images/powerpages1/screenshot-2024-12-14-at-8.58.18pm-2136x1096.png)
 *I added a Sales Orders page*
 
 ![](/assets/images/powerpages1/screenshot-2024-12-14-at-9.00.06pm-2136x1096.png)
-*The Sales Orders page will only be shown when an authenticated user is logged in*
+*The Sales Orders page only shows when an authenticated user is logged in*
 
 ![](/assets/images/powerpages1/screenshot-2024-12-14-at-9.01.33pm-2136x1100.png)
 *I added an h1 Text component. I added a List component*
@@ -257,7 +253,7 @@ I created a Power Platform Solution
 *I copied the Invitation Code*
 
 ![](/assets/images/powerpages1/screenshot-2024-12-14-at-10.11.10pm-2136x1107.png)
-*I use the invitation code to register robert*
+*I used the invitation code to register robert*
 
 ![](/assets/images/powerpages1/screenshot-2024-12-14-at-10.11.57pm-2136x1100.png)
 *I clicked the Sales Orders menu item*
@@ -278,10 +274,10 @@ I created a Power Platform Solution
 *I added a text component and a form to the web site. I selected the Portal Sales Order Main Form*
 
 ![](/assets/images/powerpages1/screenshot-2024-12-14-at-10.16.33pm-2136x833.png)
-*The form will be read-only*
+*The form is read-only*
 
 ![](/assets/images/powerpages1/screenshot-2024-12-14-at-10.16.56pm-2136x885.png)
-*On submit the user will be redirected back to the Sales Orders list page*
+*On submit, the user is redirected back to the Sales Orders list page*
 
 ![](/assets/images/powerpages1/screenshot-2024-12-14-at-10.17.20pm-2136x841.png)
 *I turned off the CAPTCHA*
@@ -314,4 +310,4 @@ I created a Power Platform Solution
 *I added the Customer Portal Site to the solution*
 
 ![](/assets/images/powerpages1/screenshot-2024-12-14-at-10.33.58pm-2136x825.png)
-*The Customer Portal solution is ready to be exported*
+*The Customer Portal solution was ready to be exported*

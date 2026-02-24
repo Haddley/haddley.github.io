@@ -4,6 +4,7 @@ description: "Creating a Dataverse Report"
 date: "2024-07-19"
 categories: ["Power Platform"]
 tags: ""
+hidden: false
 slug: "dataversereports"
 image: "/assets/images/dataversereports/office-365-icon-500x500.png"
 ---

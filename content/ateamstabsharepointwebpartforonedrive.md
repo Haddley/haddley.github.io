@@ -4,6 +4,7 @@ description: "The SharePoint Framework (SPFx) can be used to create SharePoint W
 date: "2022-05-29"
 categories: ["Microsoft 365","React","TypeScript","Teams"]
 tags: "teams"
+hidden: false
 slug: "ateamstabsharepointwebpartforonedrive"
 image: "/assets/images/ateamstabsharepointwebpartforonedrive/office-365-icon-500x500.png"
 ---
@@ -18,19 +19,19 @@ This post is based on PiaSys Tech Bites's [Using Microsoft Graph Toolkit with Re
 SharePoint Framework (SPFx) applications are deployed to Microsoft 365 when they are uploaded to the [SharePoint online App catalog](sharepointwebpart2.html).
 
 ![](/assets/images/ateamstabsharepointwebpartforonedrive/screen-shot-2022-05-28-at-1.34.20-pm-1836x837.png)
-*Navigate to the SharePoint admin center and click the "More features" link*
+*I navigated to the SharePoint admin center and clicked the "More features" link*
 
 ![](/assets/images/ateamstabsharepointwebpartforonedrive/screen-shot-2022-05-28-at-1.37.19-pm-1836x839.png)
-*Scroll down to the "Apps" section and click the "Open" link*
+*I scrolled down to the "Apps" section and clicked the "Open" link*
 
 ![](/assets/images/ateamstabsharepointwebpartforonedrive/screen-shot-2022-05-28-at-1.37.27-pm-1836x832.png)
-*If the "App Catalog" Site (Site Collection) does not exist it is created*
+*The "App Catalog" Site was created if it didn't exist*
 
 ![](/assets/images/ateamstabsharepointwebpartforonedrive/screen-shot-2022-05-28-at-1.37.47-pm-1836x842.png)
 *A welcome message may be displayed*
 
 ![](/assets/images/ateamstabsharepointwebpartforonedrive/screen-shot-2022-05-28-at-1.38.02-pm-1836x839.png)
-*App Catalog's Manage apps page*
+*I viewed the App Catalog's Manage apps page*
 
 
 ## yo @microsoft/sharepoint
@@ -42,16 +43,16 @@ I used "npm i @microsoft/mgt-spfx@2.5.1" to add Microsoft Graph Toolkit to the p
 I used "npm i @microsoft/mgt-react@2.5.1" to add Microsoft Graph Toolkit's React components to the project.
 
 ![](/assets/images/ateamstabsharepointwebpartforonedrive/screen-shot-2022-05-28-at-7.21.51-pm-1836x1000.png)
-*yo @microsoft/sharepoint*
+*I ran yo @microsoft/sharepoint*
 
 ![](/assets/images/ateamstabsharepointwebpartforonedrive/screen-shot-2022-05-28-at-7.24.19-pm-1836x1000.png)
-*npm i @microsoft/mgt-spfx@2.5.1 @microsoft/mgt-react@2.5.1*
+*I installed the Microsoft Graph Toolkit packages*
 
 ![](/assets/images/ateamstabsharepointwebpartforonedrive/screen-shot-2022-05-28-at-7.25.08-pm-1836x1038.png)
 *I updated serve.json to specify how the workbench would be loaded*
 
 ![](/assets/images/ateamstabsharepointwebpartforonedrive/screen-shot-2022-05-28-at-7.27.28-pm-1836x1040.png)
-*The workbench will be loaded in the context of the Mark8ProjectTeam Site*
+*The workbench would be loaded in the context of the Mark8ProjectTeam Site*
 
 
 ## gulp
@@ -61,7 +62,7 @@ I used "gulp trust-dev-cert" to ensure that gulp would serve content using https
 I used "gulp bundle && gulp serve" to preview the application in the workbench
 
 ![](/assets/images/ateamstabsharepointwebpartforonedrive/screen-shot-2022-05-28-at-7.28.17-pm-1836x1038.png)
-*gulp serve to preview*
+*I ran gulp serve to preview*
 
 ![](/assets/images/ateamstabsharepointwebpartforonedrive/screen-shot-2022-05-28-at-7.29.18-pm-1836x805.png)
 *Previewing the web part in the workbench*
@@ -81,7 +82,7 @@ I used "gulp bundle && gulp serve" to preview the application in the workbench
 I used "gulp bundle --ship && gulp package-solution --ship" to create an .sppkg file (package).
 
 ![](/assets/images/ateamstabsharepointwebpartforonedrive/screen-shot-2022-05-29-at-10.48.51-am-1836x957.png)
-*gulp bundle --ship && gulp package-solution --ship*
+*I ran gulp bundle --ship && gulp package-solution --ship*
 
 ![](/assets/images/ateamstabsharepointwebpartforonedrive/screen-shot-2022-05-29-at-10.04.55-am-1401x787.png)
 *I navigated to the App catalog manage apps page*
@@ -121,22 +122,22 @@ The HaddleyListWebPart manifest suggests that the web part will work as a Teams 
 I did not need to update this file
 
 ![](/assets/images/ateamstabsharepointwebpartforonedrive/screen-shot-2022-05-29-at-10.13.43-am-1836x904.png)
-*HaddleyListWebPart.manifest.json*
+*I reviewed HaddleyListWebPart.manifest.json*
 
 ![](/assets/images/ateamstabsharepointwebpartforonedrive/screen-shot-2022-05-29-at-10.07.16-am-449x303.png)
 *I used the "Add to Teams" button in the App catalog to add the Web Part to Teams*
 
 ![](/assets/images/ateamstabsharepointwebpartforonedrive/screen-shot-2022-05-29-at-10.09.26-am-1403x780.png)
-*With no additional effort the web part was shown as a Published app in the Teams admin center*
+*The web part appeared as a published app in the Teams admin center*
 
 ![](/assets/images/ateamstabsharepointwebpartforonedrive/screen-shot-2022-05-29-at-10.10.03-am-1401x787.png)
-*The web part was also shown in the Teams desktop application*
+*The web part appeared in the Teams desktop application*
 
 ![](/assets/images/ateamstabsharepointwebpartforonedrive/screen-shot-2022-05-29-at-10.10.15-am-1397x781.png)
 *I used the Add button to add the web part to Teams*
 
 ![](/assets/images/ateamstabsharepointwebpartforonedrive/screen-shot-2022-05-29-at-10.24.10-am-1400x786.png)
-*Here is the code running in Teams*
+*I viewed the code running in Teams*
 
 
 ## serve.json

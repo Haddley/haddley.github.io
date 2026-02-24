@@ -10,13 +10,7 @@ image: "/assets/images/promptflow1/logo.svg"
 
 
 
-Prompt flow is a development tool designed to streamline the development of AI applications powered by Large Language Models (LLMs).
-
-Prompt flow applications can be [developed](https://microsoft.github.io/promptflow/how-to-guides/develop-a-dag-flow/index.html) using Azure or locally on a laptop.
-
-Prompt flow application can be [deployed](https://microsoft.github.io/promptflow/how-to-guides/deploy-a-flow/index.html) using [Azure App Service](devopsstartergithubactions.html), [Docker](docker.html) or [Kubernetes](kubernetes.html).
-
-Here I demonstrate how I used Prompt flow for Visual Studio Code to create and run a couple of sample AI applications.
+I used Prompt flow for Visual Studio Code to create and run sample AI applications.
 
 The result is not very different from AI applications I have developed in the past using [langchain](llamaCorp.html).
 
@@ -102,10 +96,10 @@ I used the **Test** menu item to run the flow.
 *The chat.jinja2 file is used to compose the large language model prompt (with the chat history included)*
 
 ![](/assets/images/promptflow1/screenshot-2024-06-11-at-3.00.40pm-1836x617.png)
-*Prompt flow traces*
+*I viewed the Prompt flow traces*
 
 ![](/assets/images/promptflow1/screenshot-2024-06-11-at-2.58.43pm-1836x955.png)
-*Open AI activity*
+*I reviewed the OpenAI activity*
 
 ![](/assets/images/promptflow1/screenshot-2024-06-11-at-2.58.52pm-1836x953.png)
-*Open AI cost $*
+*I reviewed the OpenAI cost*

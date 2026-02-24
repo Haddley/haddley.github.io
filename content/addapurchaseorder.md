@@ -4,6 +4,7 @@ description: "I used Patch to add a Business Central Purchase Order and to add P
 date: "2024-02-21"
 categories: ["Microsoft Dynamics","Business Central","Power Platform"]
 tags: ""
+hidden: false
 slug: "addapurchaseorder"
 image: "/assets/images/addapurchaseorder/office-365-icon-500x500.png"
 ---

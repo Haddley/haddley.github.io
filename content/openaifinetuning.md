@@ -9,7 +9,7 @@ image: "/assets/images/openaifinetuning/chatgpt-logo.svg"
 ---
 
 
-Fine-tuning allows you to take a general model like GPT-3.5 or GPT-4 and train it for a specific task. The result is a model that delivers more reliable and higher-quality results, especially for large-scale applications.
+I fine-tuned a GPT model using the OpenAI API. Fine-tuning trains a general model like GPT-3.5 or GPT-4 for a specific task, delivering more reliable and higher-quality results.
 
 ![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%207.10.45 PM.png)
 *I created a data.jsonl file and copied the tutorial data into that file*
@@ -91,7 +91,7 @@ The data.jsonl file contains 3 lines that I want to use to train a large languag
 *I selected the base model. I entered the suffix "sarcastic".I uploaded the data.jsonl file and clicked the Create button.*
 
 ![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%207.26.03 PM.png)
-*A fine-tuning job was created*
+*The fine-tuning job was created*
 
 
 ![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%207.38.29 PM.png)
@@ -135,7 +135,7 @@ I used this data to create a fine-tuned model ft:gpt-3.5-turbo-0125:personal:sar
 *The chatbot user interface opened in a browser window*
 
 ![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.18.30 PM.png)
-*I create a temporary OpenAI key*
+*I created a temporary OpenAI key*
 
 ![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.18.46 PM.png)
 *I copied the newly generated key*

@@ -4,6 +4,7 @@ description: "Which accounts payable ledger account"
 date: "2023-12-14"
 categories: ["Business Central"]
 tags: ""
+hidden: false
 slug: "generalpostingsetup"
 image: "/assets/images/generalpostingsetup/posts-meta.svg"
 ---
@@ -20,16 +21,16 @@ The General Posting Setup is maintained using the General Posting Setup page.
 *I used search to navigate to the General Posting Setup page.*
 
 ![](/assets/images/generalpostingsetup/screenshot-2023-12-14-at-10.41.37-am-1836x867.png)
-*If we sell a RETAIL item to a DOMESTIC customer the 40140 Resale of Goods account should be used to record the sale.*
+*I noted that when selling a RETAIL item to a DOMESTIC customer, the 40140 Resale of Goods account is used to record the sale.*
 
 ![](/assets/images/generalpostingsetup/screenshot-2023-12-14-at-10.54.46-am-1836x864.png)
-*If we sell a RETAIL item to a DOMESTIC customer the 50110 Cost of Materials account should be used to record the cost of goods sold.*
+*I noted that when selling a RETAIL item to a DOMESTIC customer, the 50110 Cost of Materials account is used to record the cost of goods sold.*
 
 ![](/assets/images/generalpostingsetup/screenshot-2023-12-14-at-11.09.47-am-1836x867.png)
-*Example of ledger entries generated when we sell a RETAIL item to a DOMESTIC customer.*
+*I reviewed the ledger entries generated when selling a RETAIL item to a DOMESTIC customer.*
 
 ![](/assets/images/generalpostingsetup/screenshot-2023-12-14-at-10.49.56-am-1836x868.png)
-*If we buy a RETAIL item from a DOMESTIC vendor the 14140 Goods for Resale account should be used to record the purchase*
+*I noted that when buying a RETAIL item from a DOMESTIC vendor, the 14140 Goods for Resale account is used to record the purchase.*
 
 ![](/assets/images/generalpostingsetup/screenshot-2023-12-14-at-11.58.29-am-1836x868.png)
-*Example of ledger entries generated when we buy a RETAIL item from a DOMESTIC vendor.*
+*I reviewed the ledger entries generated when buying a RETAIL item from a DOMESTIC vendor.*

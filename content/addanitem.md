@@ -4,6 +4,7 @@ description: "I used Patch to add a Business Central Item"
 date: "2024-02-17"
 categories: ["Microsoft Dynamics","Business Central","Power Platform"]
 tags: ""
+hidden: false
 slug: "addanitem"
 image: "/assets/images/addanitem/office-365-icon-500x500.png"
 ---
@@ -54,7 +55,7 @@ image: "/assets/images/addanitem/office-365-icon-500x500.png"
 *I selected an item and clicked the Publish button*
 
 ![](/assets/images/addanitem/screenshot-2024-02-17-at-2.02.19-pm-1836x748.png)
-*The item was added to Business Central and the user is prompted to confirm a delete*
+*The item was added to Business Central and I was prompted to confirm a delete*
 
 ![](/assets/images/addanitem/screenshot-2024-02-17-at-2.02.31-pm-1836x718.png)
 *The Item Setup record has been deleted*

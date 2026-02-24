@@ -4,6 +4,7 @@ description: "Payment Journals"
 date: "2023-08-20"
 categories: ["Microsoft Dynamics","Business Central"]
 tags: ""
+hidden: false
 slug: "financialoperationspurchaseinvoice"
 image: "/assets/images/financialoperationspurchaseinvoice/dynamics365-color.svg"
 ---
@@ -45,7 +46,7 @@ Businesses should take advantage of payment terms and discounts for prompt payme
 *I selected the PDF Document option*
 
 ![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.53.12-pm-1836x57.png)
-*Check.pdf has been downloaded*
+*Check.pdf was downloaded*
 
 ![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.53.24-pm-1836x643.png)
 *Business Central generated a one page pdf document (ready for me to print)*
@@ -54,13 +55,13 @@ Businesses should take advantage of payment terms and discounts for prompt payme
 *I selected Preview Posting*
 
 ![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.53.58-pm-1836x300.png)
-*There were going to be two General Ledger Entries addedThere was going to be a Vendor Ledger Entry addedThere was going to be a Bank Account Ledger Entry addedThere were going to be three Detailed Vendor Ledger Entries added*
+*There were going to be two General Ledger Entries added, a Vendor Ledger Entry added, a Bank Account Ledger Entry added, and three Detailed Vendor Ledger Entries added*
 
 ![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.54.16-pm-1836x280.png)
 *A Credit entry was going to be added to the Checking Account (The value of the Asset would reduce)*
 
 ![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.54.29-pm-1836x280.png)
-*A Debit entry was going to be added to the Accounts Payable Account (The size of the Liability would reduce)Notice that the name of the Vendor was added as a Description*
+*A Debit entry was going to be added to the Accounts Payable Account (The size of the Liability would reduce). I noticed that the name of the Vendor was added as a Description*
 
 ![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.54.48-pm-1836x261.png)
 *A Debit entry was going to be added to the Nod Publishers Account in the Vendor Ledger*
@@ -86,7 +87,7 @@ Businesses should take advantage of payment terms and discounts for prompt payme
 I used the Suggest Vendor Payments menu item to suggest payment lines. In normal operations suggested payment lines would include payments that will qualify for payment discounts.
 
 ![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.07.38-pm-1836x121.png)
-*Payment Journals*
+*I reviewed Payment Journals*
 
 ![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.07.55-pm-1836x268.png)
 *I selected the CASH batch (as a starting point)*
@@ -125,13 +126,13 @@ I used the Suggest Vendor Payments menu item to suggest payment lines. In normal
 *I selected Preview Posting*
 
 ![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.12.20-pm-1836x642.png)
-*There were going to be ten General Ledger Entries addedThere were going to be five Vendor Ledger Entries addedThere was going to be five Bank Account Ledger Entries addedThere were going to be twenty two Detailed Vendor Ledger Entries added*
+*There were going to be ten General Ledger Entries added, five Vendor Ledger Entries added, five Bank Account Ledger Entries added, and twenty two Detailed Vendor Ledger Entries added*
 
 ![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.12.46-pm-1836x462.png)
 *Five Credit entries were going to be added to the Checking Account (The value of the Asset would reduce)*
 
 ![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.12.56-pm-1836x425.png)
-*Five Debit entries were going to be added to the Accounts Payable Account (The size of the Liability would reduce)Notice that in each instance the name of the Vendor was added as a Description*
+*Five Debit entries were going to be added to the Accounts Payable Account (The size of the Liability would reduce). I noticed that in each instance the name of the Vendor was added as a Description*
 
 ![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.13.31-pm-1836x381.png)
 *Five Debit entries were going to be added to the Vendor Ledger (one for each of the five Vendor Accounts)*
@@ -158,4 +159,4 @@ I used the Suggest Vendor Payments menu item to suggest payment lines. In normal
 *I reviewed the bank accounts list*
 
 ![](/assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.15.59-pm-1836x290.png)
-*At least $49,421.55 will need to be deposited in the CHECKING bank account before the Vendors receive the physical checks.*
+*At least $49,421.55 would need to be deposited in the CHECKING bank account before the Vendors received the physical checks.*

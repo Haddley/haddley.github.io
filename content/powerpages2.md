@@ -10,9 +10,7 @@ image: "/assets/images/powerpages2/powerpages-scalable.svg"
 
 
 
-Customer Orders may be handled directly by customers using a self-service Customer Portal.
-
-Here a Power Pages Customer Portal enables customers to view, create, and edit their orders in the context of a Business Central subscription.
+I extended the Power Pages Customer Portal to allow customers to view, create, and edit their own Customer Orders.
 
 ![](/assets/images/powerpages2/screenshot-2024-12-15-at-7.20.16am-2136x846.png)
 *I created a new table*
@@ -78,7 +76,7 @@ Here a Power Pages Customer Portal enables customers to view, create, and edit t
 *The contents entered into the New Customer Order form will be used to create a new order*
 
 ![](/assets/images/powerpages2/screenshot-2024-12-15-at-7.54.23am-2136x943.png)
-*On Submit the user will be redirected to the Customer Orders form*
+*On submit, the user is redirected to the Customer Orders form*
 
 ![](/assets/images/powerpages2/screenshot-2024-12-15-at-7.54.31am-2136x913.png)
 *I disabled CAPTCHA*
@@ -108,7 +106,7 @@ Here a Power Pages Customer Portal enables customers to view, create, and edit t
 *I added the Customer Order table*
 
 ![](/assets/images/powerpages2/screenshot-2024-12-15-at-8.14.20am-2136x1101.png)
-*Saved the changes. I clicked the Back button*
+*I saved the changes and clicked the Back button*
 
 ![](/assets/images/powerpages2/screenshot-2024-12-15-at-8.15.19am-2136x673.png)
 *I selected the Customer Orders app and clicked the Play menu item*
@@ -120,7 +118,7 @@ Here a Power Pages Customer Portal enables customers to view, create, and edit t
 *I switched to the Portal Active Customer Orders view*
 
 ![](/assets/images/powerpages2/screenshot-2024-12-15-at-8.16.56am-2136x451.png)
-*The Account value has not been provided*
+*The Account value was not set*
 
 ![](/assets/images/powerpages2/screenshot-2024-12-15-at-8.17.21am-2136x918.png)
 *I selected the New Customer Order (Basic) form. I clicked the + New Basic Form Metadata button*
@@ -132,7 +130,7 @@ Here a Power Pages Customer Portal enables customers to view, create, and edit t
 *I clicked the Save Value On Save checkbox and selected the Current Portal User | Company Name value*
 
 ![](/assets/images/powerpages2/screenshot-2024-12-15-at-8.18.44am-2136x883.png)
-*The Basic Form Metadata details are shown in the grid*
+*The Basic Form Metadata details appeared in the grid*
 
 ![](/assets/images/powerpages2/screenshot-2024-12-15-at-8.19.06am-2136x917.png)
 *I scrolled to the right hand side of the grid*
@@ -153,10 +151,10 @@ Here a Power Pages Customer Portal enables customers to view, create, and edit t
 *I created an Edit Customer Order (Power Pages/Basic) Form*
 
 ![](/assets/images/powerpages2/screenshot-2024-12-15-at-8.22.33am-2136x864.png)
-*This form will allow the user to update an existing Customer Order*
+*This form allows users to update an existing Customer Order*
 
 ![](/assets/images/powerpages2/screenshot-2024-12-15-at-8.22.47am-2136x888.png)
-*On Submit the user will be redirected to the Customer Orders page*
+*On submit, the user is redirected to the Customer Orders page*
 
 ![](/assets/images/powerpages2/screenshot-2024-12-15-at-8.22.57am-2136x853.png)
 *I disabled CAPTCHA*

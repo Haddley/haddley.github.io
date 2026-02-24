@@ -25,11 +25,11 @@ I deployed [Drew Conley's Multiplayer Game](https://www.youtube.com/watch?v=xhUR
 
 ## Responding to updated state
 
-The state of the games is maintained in a Firebase Realtime Database.
+The game state is maintained in a Firebase Realtime Database.
 
-The allPlayersRef.on("XXX", (snapshot) => {...}) functions are called when a player joins the game, leaves the game or moves.
+The `allPlayersRef.on("XXX", (snapshot) => {...})` functions fire when a player joins, leaves, or moves.
 
-The   allCoinsRef.on("value", (snapshot) => {...}) functions are called when coins are created or collected.
+The `allCoinsRef.on("value", (snapshot) => {...})` functions fire when coins are created or collected.
 
 ![](/assets/images/multiplayer/screen-shot-2023-05-09-at-9.39.39-am-1836x1151.png)
 *Realtime Database*

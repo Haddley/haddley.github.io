@@ -76,7 +76,7 @@ I selected the data lifecycle management menu item, created the adaptive scope a
 *I selected the Adaptive radio button option*
 
 ![](/assets/images/purview/screen-shot-2022-07-27-at-11.41.29-am-1836x928.png)
-*I selected the "Short term" adaptive scope I created eariler*
+*I selected the "Short term" adaptive scope I created earlier*
 
 ![](/assets/images/purview/screen-shot-2022-07-27-at-11.41.41-am-1836x930.png)
 *I reviewed the configuration and clicked the next button*
@@ -97,7 +97,7 @@ I selected the data lifecycle management menu item, created the adaptive scope a
 *I returned to the SharePoint Site a week later...*
 
 ![](/assets/images/purview/screen-shot-2022-08-03-at-9.18.10-pm-1836x1005.png)
-*Document.docx has been deleted*
+*Document.docx had been deleted*
 
 ![](/assets/images/purview/screen-shot-2022-08-03-at-9.18.43-pm-1836x1003.png)
 *Document.docx was moved to the SharePoint Recycle bin (on August 1st 2022).*

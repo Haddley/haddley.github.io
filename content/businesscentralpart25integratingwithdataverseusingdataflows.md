@@ -4,6 +4,7 @@ description: "Integrating with Dataverse using Dataflows"
 date: "2024-12-01"
 categories: ["Power Platform","Microsoft Dynamics","Business Central"]
 tags: ""
+hidden: false
 slug: "businesscentralpart25integratingwithdataverseusingdataflows"
 image: "/assets/images/businesscentralpart25integratingwithdataverseusingdataflows/posts-meta.svg"
 ---
@@ -153,4 +154,4 @@ I added a **D365BC Employee** table to Dataverse. I set up a Dataflow to copy Em
 *I added the Dataflow to the solution*
 
 ![](/assets/images/businesscentralpart25integratingwithdataverseusingdataflows/screenshot-2024-12-02-at-6.04.48pm-1836x530.png)
-*The Dataflow has been added to the solution*
+*The Dataflow was added to the solution*

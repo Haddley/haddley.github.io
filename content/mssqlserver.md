@@ -11,7 +11,7 @@ image: "/assets/images/mssqlserver/ads.svg"
 
 ## Docker image
 
-Downloading and running amd64 Docker image from [https://hub.docker.com/_/microsoft-mssql-server](https://hub.docker.com/_/microsoft-mssql-server)
+I downloaded and ran the amd64 Docker image from [https://hub.docker.com/_/microsoft-mssql-server](https://hub.docker.com/_/microsoft-mssql-server)
 
 **$ docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Passw0rd****123" -p 1433:1433 --name sql -d mcr.microsoft.com/mssql/server:****2019-latest**
 
@@ -22,18 +22,18 @@ Downloading and running amd64 Docker image from [https://hub.docker.com/_/micros
 *Azure Data Studio - New Connection*
 
 ![](/assets/images/mssqlserver/screen-shot-2021-03-14-at-5.05.30-pm-1540x1264.png)
-*Connected to database instance running on 192.168.68.109*
+*I connected to the database instance running on 192.168.68.109*
 
 
 ## RESTORE DATABASE
 
-Open shell for Docker image and download the AdventureWorks2019.bak database backup
+I opened a shell for the Docker image and downloaded the AdventureWorks2019.bak database backup.
 
 **$ cd /usr**
 
 **$ wget https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorks2019.bak**
 
-Open a database query window and execute this query
+I opened a database query window and ran this query.
 
 RESTORE DATABASE AdventureWorks2019 
 FROM DISK = N'/usr/AdventureWorks2019.bak'
@@ -66,7 +66,7 @@ MOVE 'AdventureWorks2017_Log' TO '/usr/AdventureWorks2019_Log.ldf'
 % dotnet new gitignore
 ```
 
-Add [NuGet](nuget.html) package
+I added the [NuGet](nuget.html) package.
 
 ```bash
 % dotnet add package System.Data.SqlClient
@@ -78,7 +78,7 @@ Add [NuGet](nuget.html) package
 
 ## Program.cs
 
-The code below retrieves details from the Product table using C#.
+I wrote code to retrieve details from the Product table using C#.
 
 ![](/assets/images/mssqlserver/screen-shot-2021-03-16-at-8.49.39-pm-1126x740.png)
 *dotnet run*
@@ -88,7 +88,7 @@ The code below retrieves details from the Product table using C#.
 
 **$ node index.js**
 
-The code below retrieves details from the Product table using JavaScript and the 'mssql' node module.
+I wrote code to retrieve details from the Product table using JavaScript and the `mssql` node module.
 
 ![](/assets/images/mssqlserver/screen-shot-2021-03-25-at-5.50.18-pm-1134x734.png)
 *node index.js*
@@ -108,7 +108,7 @@ or
 
 $ java Program**
 
-The code below retrieves details from the Product table using Java.
+I wrote code to retrieve details from the Product table using Java.
 
 ![](/assets/images/mssqlserver/screen-shot-2021-03-25-at-5.48.28-pm-1134x736.png)
 *java Program.java*

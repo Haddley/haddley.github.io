@@ -4,6 +4,7 @@ description: "Microsoft Dataverse Advanced Reports Setup"
 date: "2024-08-10"
 categories: ["SQL","Microsoft Dynamics","Power Platform"]
 tags: "reports SSRS"
+hidden: false
 slug: "dataverseadvancedreportssetup"
 image: "/assets/images/dataverseadvancedreportssetup/office-365-icon-500x500.png"
 ---
@@ -45,7 +46,7 @@ The **Visual Studio shell** used to create Reporting Services reports has been r
 *I clicked the Next button*
 
 ![](/assets/images/dataverseadvancedreportssetup/ssrs-11-512x271.png)
-*Microsoft Dynamics was not shown as a data source type*
+*I noticed that Microsoft Dynamics was not shown as a data source type*
 
 ![](/assets/images/dataverseadvancedreportssetup/ssrs-12-512x46.png)
 *Install the Report Authoring Extension for Dynamics 365 Customer Engagement (on-premises) | Microsoft LearnDownload Dynamics 365, version 9.0 Report Authoring Extension (with SQL Server Data Tools support) from Official Microsoft Download Center*
@@ -75,4 +76,4 @@ The **Visual Studio shell** used to create Reporting Services reports has been r
 *I right clicked on the Reports folder and selected the Add New Report menu item (again)*
 
 ![](/assets/images/dataverseadvancedreportssetup/ssrs-21-512x273.png)
-*Microsoft Dynamics 365 FetchXML was the default data source typeI entered my https://XXX.crm.dynamics.com URL into the Connection string box and clicked the Next button*
+*Microsoft Dynamics 365 FetchXML was the default data source type. I entered my https://XXX.crm.dynamics.com URL into the Connection string box and clicked the Next button*

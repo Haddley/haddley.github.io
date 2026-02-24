@@ -4,6 +4,7 @@ description: "Development Environment"
 date: "2025-11-17"
 categories: ["Business Central","DevOps"]
 tags: ""
+hidden: false
 slug: "devenv"
 image: "/assets/images/devenv/posts-meta.svg"
 ---
@@ -20,34 +21,34 @@ New-BCContainer -accept_eula -containerName mysandbox -artifactUrl $artifactUrl
 ```
 
 ![](/assets/images/devenv/Screenshot%202025-11-17%20124543.png)
-*install-module BCContainerHelper -force*
+*I ran install-module BCContainerHelper -force*
 
 ![](/assets/images/devenv/Screenshot%202025-11-17%20125129.png)
-*Write-BCContainerHelperWelcomeText*
+*I ran Write-BCContainerHelperWelcomeText*
 
 ![](/assets/images/devenv/Screenshot%202025-11-17%20125226.png)
-*$artifactUrl = Get-BcArtifactUrl -type sandbox -country us -select Latest*
+*I ran $artifactUrl = Get-BcArtifactUrl -type sandbox -country us -select Latest*
 
 ![](/assets/images/devenv/Screenshot%202025-11-17%20125258.png)
-*New-BCContainer -accept_eula -containerName mysandbox -artifactUrl $artifactUrl*
+*I ran New-BCContainer -accept_eula -containerName mysandbox -artifactUrl $artifactUrl*
 
 ![](/assets/images/devenv/Screenshot%202025-11-17%20131656.png)
-*Ready for connections!*
+*The container was ready for connections*
 
 ![](/assets/images/devenv/Screenshot%202025-11-17%20131724.png)
-*Docker Desktop*
+*I reviewed Docker Desktop*
 
 ![](/assets/images/devenv/Screenshot%202025-11-17%20131857.png)
-*Logs*
+*I reviewed the logs*
 
 ![](/assets/images/devenv/Screenshot%202025-11-17%20131927.png)
-*http://mysandbox/BC/?tenant=default*
+*I navigated to http://mysandbox/BC/?tenant=default*
 
 ![](/assets/images/devenv/Screenshot%202025-11-17%20132015.png)
-*CRONUS USA, Inc.*
+*I reviewed the CRONUS USA, Inc. company*
 
 ![](/assets/images/devenv/Screenshot%202025-11-17%20132103.png)
-*Chart of Accounts*
+*I reviewed the Chart of Accounts*
 
 ## References
 

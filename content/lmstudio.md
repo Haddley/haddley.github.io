@@ -4,6 +4,7 @@ description: "LM Studio"
 date: "2023-08-05"
 categories: ["AI"]
 tags: ""
+hidden: false
 slug: "lmstudio"
 image: "/assets/images/lmstudio/mediamodifier-design.png"
 ---

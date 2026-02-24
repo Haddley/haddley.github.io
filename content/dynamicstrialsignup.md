@@ -4,6 +4,7 @@ description: "Microsoft Signup"
 date: "2023-08-14"
 categories: ["Microsoft Dynamics"]
 tags: "microsoft dynamics sales"
+hidden: false
 slug: "dynamicstrialsignup"
 image: "/assets/images/dynamicstrialsignup/dynamics365-color.svg"
 ---

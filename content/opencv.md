@@ -11,6 +11,8 @@ image: "/assets/images/opencv/raspberry-pi-logo.svg"
 
 ## Installation of OpenCV
 
+I installed OpenCV on a Raspberry Pi.
+
 $ sudo apt update
 $ sudo apt upgrade
 $ sudo apt install python3-opencv
@@ -23,6 +25,8 @@ $ python
 
 
 ## Installation of TensorFlow Lite
+
+I installed TensorFlow Lite.
 
 $ sudo apt-get update
 $ sudo apt-get dist-upgrade
@@ -39,6 +43,8 @@ $ bash get_pi_requirements.sh
 
 
 ## Using Google's sample TFLite model
+
+I downloaded and ran Google's sample TFLite model.
 
 $ wget https://storage.googleapis.com/download.tensorflow.org/models/tflite/coco_ssd_mobilenet_v1_1.0_quant_2018_06_29.zip
 

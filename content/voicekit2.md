@@ -26,16 +26,16 @@ pi@raspberrypi:~ $ sudo apt install firefox-esr
 ```
 
 ![](/assets/images/voicekit2/Screenshot%202025-10-16%20at%2012.14.19 PM.png)
-*Google Cloud Console*
+*I opened the Google Cloud Console*
 
 ![](/assets/images/voicekit2/Screenshot%202025-10-16%20at%2012.27.12 PM.png)
-*Credentials*
+*I reviewed the Credentials page*
 
 ![](/assets/images/voicekit2/Screenshot%202025-10-16%20at%2012.34.06 PM.png)
-*APIs & Services*
+*I navigated to APIs & Services*
 
 ![](/assets/images/voicekit2/Screenshot%202025-10-16%20at%204.03.01 PM.png)
-*assistant.json*
+*I created assistant.json*
 
 ```json
 {
@@ -54,7 +54,7 @@ pi@raspberrypi:~ $ sudo apt install firefox-esr
 ```
 
 ![](/assets/images/voicekit2/Screenshot%202025-10-16%20at%2012.34.37 PM.png)
-*Assistant Library Demo*
+*I ran the Assistant Library Demo*
 
 
 [Voice Kit Demo Video](/assets/images/voicekit2/2FAE2E52-F355-4157-8F3E-6DC1A2EFC690.mp4)
@@ -63,7 +63,7 @@ pi@raspberrypi:~ $ sudo apt install firefox-esr
 # Google Assistant with AIY Voice Kit
 
 ## Project Overview
-Python implementation of a voice-activated Google Assistant using hotword detection ("OK Google") with the AIY Voice Kit hardware.
+I implemented a voice-activated Google Assistant using hotword detection ("OK Google") with the AIY Voice Kit hardware.
 
 ## Setup Notes
 **Authentication Challenge**: The initial setup encountered browser compatibility issues with the unsupported Chromium version in the Raspberry Pi image. Successfully resolved by installing Firefox to handle the OAuth authentication flow for Google Assistant API integration.

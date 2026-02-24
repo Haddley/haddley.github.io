@@ -3,7 +3,8 @@ title: "Microsoft Dynamics 365 App for Outlook"
 description: "References"
 date: "2025-09-20"
 categories: ["Microsoft Dynamics","Power Platform"]
-tags: "set regarding,outlook"
+tags: "set regarding outlook"
+hidden: false
 image: "/assets/images/microsoftdynamics365appforoutlook/office-365-icon-500x500.png"
 slug: "microsoftdynamics365appforoutlook"
 ---
@@ -23,10 +24,10 @@ slug: "microsoftdynamics365appforoutlook"
 *I entered a unique url https://darkblueduck.crm.dynamics.com*
 
 ![](/assets/images/microsoftdynamics365appforoutlook/screenshot-2024-06-29-at-2.05.50pm-2136x1239.png)
-*Preparing...*
+*I waited while the environment was preparing...*
 
 ![](/assets/images/microsoftdynamics365appforoutlook/screenshot-2024-06-29-at-2.07.17pm-2136x1112.png)
-*Ready*
+*I confirmed the environment was ready*
 
 ![](/assets/images/microsoftdynamics365appforoutlook/screenshot-2024-06-29-at-2.07.34pm-2136x1241.png)
 *I navigated using the Settings | Mailboxes link*
@@ -47,13 +48,13 @@ slug: "microsoftdynamics365appforoutlook"
 *I clicked OK*
 
 ![](/assets/images/microsoftdynamics365appforoutlook/screenshot-2024-06-29-at-2.12.04pm-2136x757.png)
-*In progress (takes a long time)*
+*I waited while testing was in progress (takes a long time)*
 
 ![](/assets/images/microsoftdynamics365appforoutlook/screenshot-2024-06-29-at-2.42.25pm-2136x641.png)
-*Success*
+*I confirmed success*
 
 ![](/assets/images/microsoftdynamics365appforoutlook/screenshot-2024-06-29-at-2.42.48pm-2136x1100.png)
-*Notification*
+*I reviewed the notification*
 
 ![](/assets/images/microsoftdynamics365appforoutlook/screenshot-2024-06-29-at-2.44.58pm-2136x1160.png)
 *I created a "Customer Relationship Management" solution*
@@ -65,7 +66,7 @@ slug: "microsoftdynamics365appforoutlook"
 *I reviewed the Contact table's Main form*
 
 ![](/assets/images/microsoftdynamics365appforoutlook/screenshot-2024-06-29-at-2.47.00pm-2136x1099.png)
-*The Main form included a Timeline control*
+*I noted that the Main form included a Timeline control*
 
 ![](/assets/images/microsoftdynamics365appforoutlook/screenshot-2024-06-29-at-2.47.22pm-2136x683.png)
 *I created a new Model-driven app*
@@ -89,19 +90,19 @@ slug: "microsoftdynamics365appforoutlook"
 *I clicked Send*
 
 ![](/assets/images/microsoftdynamics365appforoutlook/screenshot-2024-06-29-at-2.55.49pm-2136x1100.png)
-*The email was added to the Dataverse mailbox*
+*I confirmed the email was added to the Dataverse mailbox*
 
 ![](/assets/images/microsoftdynamics365appforoutlook/screenshot-2024-06-29-at-2.56.11pm-2136x1097.png)
-*The email was sent by support@darkblueduck.com*
+*I confirmed the email was sent by support@darkblueduck.com*
 
 ![](/assets/images/microsoftdynamics365appforoutlook/screenshot-2024-06-29-at-2.58.01pm-1194x1260.png)
 *I composed a response*
 
 ![](/assets/images/microsoftdynamics365appforoutlook/screenshot-2024-06-29-at-2.58.48pm-2136x1100.png)
-*The response was received and marked as "Tracked To Dynamics"*
+*I confirmed the response was received and marked as "Tracked To Dynamics"*
 
 ![](/assets/images/microsoftdynamics365appforoutlook/screenshot-2024-06-29-at-2.59.10pm-2136x1101.png)
-*The response was displayed in the Timeline*
+*I confirmed the response was displayed in the Timeline*
 
 ![](/assets/images/microsoftdynamics365appforoutlook/screenshot-2024-06-29-at-3.05.55pm-2136x465.png)
 *I reviewed the Dynamics 365 apps associated with the Envrionment*
@@ -119,7 +120,7 @@ slug: "microsoftdynamics365appforoutlook"
 *I selected the Develop Environment*
 
 ![](/assets/images/microsoftdynamics365appforoutlook/screenshot-2024-06-29-at-3.08.04pm-2136x1097.png)
-*Installing*
+*I waited while installing*
 
 ![](/assets/images/microsoftdynamics365appforoutlook/screenshot-2024-06-29-at-3.10.43pm-2136x1097.png)
 *I clicked the Settings | Resources | Dynamics 365 App for Outlook link*
@@ -134,16 +135,16 @@ slug: "microsoftdynamics365appforoutlook"
 *I selected the Dynamics 365 App for Outlook User role and clicked Save*
 
 ![](/assets/images/microsoftdynamics365appforoutlook/screenshot-2024-06-29-at-3.12.17pm-2136x1096.png)
-*The Dynamics 365 App for Outlook User role was added to the account*
+*I confirmed the Dynamics 365 App for Outlook User role was added to the account*
 
 ![](/assets/images/microsoftdynamics365appforoutlook/screenshot-2024-06-29-at-3.12.31pm-2136x1171.png)
 *I selected the account and clicked ADD APP TO OUTLOOK*
 
 ![](/assets/images/microsoftdynamics365appforoutlook/screenshot-2024-06-29-at-3.12.45pm-2136x1164.png)
-*pending*
+*I waited while the app was pending*
 
 ![](/assets/images/microsoftdynamics365appforoutlook/screenshot-2024-06-29-at-3.15.30pm-2136x1164.png)
-*Added to Outlook*
+*I confirmed the app was added to Outlook*
 
 ![](/assets/images/microsoftdynamics365appforoutlook/screenshot-2024-06-29-at-3.16.12pm-2136x1100.png)
 *I checked that the Dynamics 365 App for Outlook was added*
@@ -188,7 +189,7 @@ slug: "microsoftdynamics365appforoutlook"
 *I added the Opportunity table (no need to show in navigation)*
 
 ![](/assets/images/microsoftdynamics365appforoutlook/screenshot-2024-06-29-at-4.41.24pm-2136x1097.png)
-*The Opportunity page was created*
+*I confirmed the Opportunity page was created*
 
 ![](/assets/images/microsoftdynamics365appforoutlook/screenshot-2024-06-29-at-4.45.11pm-2136x1097.png)
 *I clicked on the notification email again. Now 3 types of records.*
@@ -206,16 +207,16 @@ slug: "microsoftdynamics365appforoutlook"
 *I removed the Name and added Est. Close Date... fields*
 
 ![](/assets/images/microsoftdynamics365appforoutlook/screenshot-2024-06-29-at-4.51.26pm-2136x1099.png)
-*Clicking on the Tracked email displays the Quick View form contents*
+*I clicked on the Tracked email and the Quick View form contents were displayed*
 
 ![](/assets/images/microsoftdynamics365appforoutlook/screenshot-2024-06-29-at-5.28.07pm-2136x1097.png)
-*The email was displayed in the Related Activities tab*
+*I confirmed the email was displayed in the Related Activities tab*
 
 ![](/assets/images/microsoftdynamics365appforoutlook/screenshot-2024-06-29-at-5.29.45pm-2136x1094.png)
 *I added a Timeline control to the Opportunities Main form*
 
 ![](/assets/images/microsoftdynamics365appforoutlook/screenshot-2024-06-29-at-5.30.54pm-2136x1100.png)
-*The related email was displayed*
+*I confirmed the related email was displayed*
 
 ![](/assets/images/microsoftdynamics365appforoutlook/449040931-1700129710754304-1985864385832439929-n-1242x2688.jpg)
 *Sales app running on a mobile phone*

@@ -4,6 +4,7 @@ description: "Publish|Configure channels"
 date: "2024-03-16"
 categories: ["Power Platform"]
 tags: ""
+hidden: false
 slug: "configurecopilotsinglesignonforweb"
 image: "/assets/images/configurecopilotsinglesignonforweb/office-365-icon-500x500.png"
 ---
@@ -30,10 +31,10 @@ Microsoft Copilot Studio supports single sign-on (SSO). [SSO allows copilots on 
 *I added a Message to display "System.Activity.Text"*
 
 ![](/assets/images/configurecopilotsinglesignonforweb/screenshot-2024-03-13-at-1.01.39-pm-2136x1170.png)
-*Now the text provided by the user is echoed back to them before the generated answer is displayed*
+*I noted that the user's text was now echoed back before the generated answer was displayed*
 
 ![](/assets/images/configurecopilotsinglesignonforweb/screenshot-2024-03-13-at-1.02.46-pm-2136x1170.png)
-*Restarting the session displays the message specified in the "Conversation Start" Topic*
+*I restarted the session and the message from the "Conversation Start" Topic was displayed*
 
 
 I wanted to publish the Copilot on a custom website.
@@ -56,10 +57,10 @@ By default the Copilot was configured with Authentication "Only for Teams and Po
 *I clicked on the Authentication tile*
 
 ![](/assets/images/configurecopilotsinglesignonforweb/screenshot-2024-03-13-at-1.08.38-pm-1258x178.png)
-*The "Only for Teams and Power Apps" authentication option is selected (by default).*
+*The "Only for Teams and Power Apps" authentication option was selected by default*
 
 ![](/assets/images/configurecopilotsinglesignonforweb/screenshot-2024-03-13-at-1.06.56-pm-2090x1544.png)
-*Notice that a "Blog Site Copilot (Power Virtual Agents)" application registration was automatically created in Azure.*
+*I noticed that a "Blog Site Copilot (Power Virtual Agents)" application registration was automatically created in Azure*
 
 
 ## Security|Authentication|No Authentication
@@ -90,59 +91,59 @@ I set the Authentication setting to No authentication. I navigated to the Demo W
 
 ## Setting|Security|Manual
 
-To Configure Copilot with single sign-on for I created two Application Registrations.
+To configure Copilot with single sign-on, I created two Application Registrations.
 
 A "Blog Site Copilot (**Canvas App**)" Application Registration for the Web Page [https://delightful-moss-0ad02620f.5.azurestaticapps.net](https://delightful-moss-0ad02620f.5.azurestaticapps.net/); and
 
 A "Blog Site Copilot (**Authenticated App**)" Application Registration for Copilot Studio [https://token.botframework.com/.auth/web/redirect](https://token.botframework.com/.auth/web/redirect)
 
 ![](/assets/images/configurecopilotsinglesignonforweb/screenshot-2024-03-16-at-3.48.16-pm-1836x1107.png)
-*The Canvas App Registration has a Web Redirect URI https://delightful-moss-0ad02620f.5.azurestaticapps.net/*
+*The Canvas App Registration had a Web Redirect URI https://delightful-moss-0ad02620f.5.azurestaticapps.net/*
 
 ![](/assets/images/configurecopilotsinglesignonforweb/screenshot-2024-03-16-at-3.50.26-pm-1836x1104.png)
-*The Access tokens and ID tokens options are both checked*
+*The Access tokens and ID tokens options were both checked*
 
 ![](/assets/images/configurecopilotsinglesignonforweb/screenshot-2024-03-16-at-3.51.50-pm-1836x860.png)
-*The Canvas App Registration has a generated Client secret*
+*The Canvas App Registration had a generated Client secret*
 
 ![](/assets/images/configurecopilotsinglesignonforweb/screenshot-2024-03-16-at-3.53.06-pm-1836x792.png)
-*The Canvas App Registration Overview*
+*I reviewed the Canvas App Registration Overview*
 
 ![](/assets/images/configurecopilotsinglesignonforweb/screenshot-2024-03-16-at-3.54.58-pm-1836x1107.png)
-*The Authenticated App Registration has a Web Redirect URI https://token.botframework.com/.auth/web/redirect*
+*The Authenticated App Registration had a Web Redirect URI https://token.botframework.com/.auth/web/redirect*
 
 ![](/assets/images/configurecopilotsinglesignonforweb/screenshot-2024-03-16-at-3.58.30-pm-1836x811.png)
-*Notice that the Redirect URL can be copied from the Copilot Studio Security|Authentication page*
+*I noted that the Redirect URL could be copied from the Copilot Studio Security|Authentication page*
 
 ![](/assets/images/configurecopilotsinglesignonforweb/screenshot-2024-03-16-at-3.59.54-pm-1836x1105.png)
-*The Access tokens and ID tokens options are both checked*
+*The Access tokens and ID tokens options were both checked*
 
 ![](/assets/images/configurecopilotsinglesignonforweb/screenshot-2024-03-16-at-4.00.35-pm-1836x904.png)
-*The Authenticated App Registration has a generated Client secret*
+*The Authenticated App Registration had a generated Client secret*
 
 ![](/assets/images/configurecopilotsinglesignonforweb/screenshot-2024-03-16-at-4.01.38-pm-1836x1104.png)
-*The Authenticated App Registration includes a scope. The Authenticated App is configured to trust the Canvas App Registration. Notice that the Canvas App Client ID "ff20..." has been added.*
+*I noticed that the Authenticated App Registration included a scope and was configured to trust the Canvas App Registration. The Canvas App Client ID "ff20..." was added.*
 
 ![](/assets/images/configurecopilotsinglesignonforweb/screenshot-2024-03-16-at-4.05.03-pm-1836x1053.png)
-*The Authenticated App Registration includes scope: api://69552d8b-12ac-4e44-96a6-1dc285405aa5/Readfiles*
+*The Authenticated App Registration included scope: api://69552d8b-12ac-4e44-96a6-1dc285405aa5/Readfiles*
 
 ![](/assets/images/configurecopilotsinglesignonforweb/screenshot-2024-03-16-at-4.08.04-pm-1836x778.png)
-*The Authenticated App Registration Overview*
+*I reviewed the Authenticated App Registration Overview*
 
 ![](/assets/images/configurecopilotsinglesignonforweb/screenshot-2024-03-16-at-4.06.27-pm-1836x1034.png)
-*Notice that the Authenticated The Authenticated App Registration Client ID and Client Secret have been added to the Copilot Studio Security|Authentication page. The "api://6955..." scope has been added to the Copilot Studio Security|Authentication page.*
+*I noticed that the Authenticated App Registration Client ID and Client Secret were added to the Copilot Studio Security|Authentication page. The "api://6955..." scope was also added.*
 
 ![](/assets/images/configurecopilotsinglesignonforweb/screenshot-2024-03-16-at-4.13.51-pm-1836x1029.png)
-*Code is from https://github.com/microsoft/CopilotStudioSamples/blob/master/BuildYourOwnCanvasSamples/3.single-sign-on/index.html*
+*I used code from https://github.com/microsoft/CopilotStudioSamples/blob/master/BuildYourOwnCanvasSamples/3.single-sign-on/index.html*
 
 ![](/assets/images/configurecopilotsinglesignonforweb/screenshot-2024-03-16-at-4.12.52-pm-1836x671.png)
-*Static Web App has URL https://delightful-moss-0ad02620f.5.azurestaticapps.net*
+*The Static Web App had URL https://delightful-moss-0ad02620f.5.azurestaticapps.net*
 
 ![](/assets/images/configurecopilotsinglesignonforweb/screenshot-2024-03-16-at-4.16.59-pm-1836x1170.png)
 *To get this example to work I needed to load the web page and to click the "log in" button (promptly).*
 
 ![](/assets/images/configurecopilotsinglesignonforweb/screenshot-2024-03-16-at-4.23.27-pm-1836x1036.png)
-*Whoami Topic*
+*I reviewed the Whoami Topic*
 
 ![](/assets/images/configurecopilotsinglesignonforweb/screenshot-2024-03-16-at-4.20.00-pm-1836x1030.png)
-*This part of the code posts a "signin/tokenExchange" message to the Copilot (avoiding the need for the web page logged in user to login to the Copilot themselves).*
+*I noted that this part of the code posts a "signin/tokenExchange" message to the Copilot, avoiding the need for the logged-in user to sign in to the Copilot separately.*

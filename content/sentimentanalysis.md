@@ -9,8 +9,10 @@ image: "/assets/images/sentimentanalysis/chatgpt-logo.svg"
 ---
 
 
-**ChatGPT What is Sentiment Analysis?
-**
+I built a sentiment analysis demo using the Xenova Transformers library to classify text sentiment as positive or negative.
+
+**ChatGPT What is Sentiment Analysis?**
+
 Sentiment analysis, also known as opinion mining, is a natural language processing (NLP) technique that involves determining the sentiment or emotional tone expressed in a piece of text. The main goal of sentiment analysis is to understand and categorize the subjective opinions, feelings, and attitudes of individuals towards a particular topic, product, service, or event.
 
 The sentiment in the text can be categorized into several polarities, such as positive, negative, neutral, or even more nuanced emotions like happy, sad, angry, etc. Sentiment analysis is widely used in various applications and industries to gain insights into public opinions, customer feedback, social media monitoring, market research, and more.

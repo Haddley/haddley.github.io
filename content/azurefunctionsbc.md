@@ -4,7 +4,8 @@ description: "Creating the Azure Functions App"
 date: "2025-12-15"
 categories: ["Azure","Microsoft Dynamics","Business Central"]
 image: "/assets/images/azurefunctionsbc/posts-meta.svg"
-tags: ["azure","business central","azure functions"]
+tags: "azure business central azure functions"
+hidden: false
 slug: "azurefunctionsbc"
 ---
 
@@ -112,7 +113,7 @@ I navigated to portal.azure.com
 I clicked + Create a resource
 
 ![](/assets/images/azurefunctionsbc/Screenshot 2025-12-15 143133.png)
-*+ Create a resource*
+*I clicked + Create a resource*
 
 I clicked Function App|Create
 
@@ -120,7 +121,7 @@ I clicked Function App|Create
 *I clicked "Create"*
 
 ![](/assets/images/azurefunctionsbc/Screenshot 2025-12-15 143606.png)
-*Select a hosting option*
+*I selected a hosting option*
 
 I filled in:
 
@@ -230,7 +231,7 @@ jobs:
 *The Github action built the Function App and deployed to Azure*
 
 ![](/assets/images/azurefunctionsbc/Screenshot 2025-12-15 151509.png)
-*QRCodeGenerator function details*
+*I reviewed the QRCodeGenerator function details*
 
 ![](/assets/images/azurefunctionsbc/Screenshot 2025-12-15 152033.png)
 *Testing the QRCodeGenerator function in the Azure portal*

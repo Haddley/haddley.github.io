@@ -4,7 +4,8 @@ description: "Creating the Business Central Extension"
 date: "2025-12-16"
 categories: ["Azure","Microsoft Dynamics","Business Central"]
 image: "/assets/images/azurefunctionsbc2/posts-meta.svg"
-tags: ["azure","business central","azure functions"]
+tags: "azure business central azure functions"
+hidden: false
 slug: "azurefunctionsbc2"
 ---
 
@@ -548,7 +549,7 @@ table 50100 "QR Code Media"
 The error message "The request was blocked by the runtime to prevent accidental use of production services" indicates that outbound HTTP calls are blocked by default in your Business Central environment, typically a sandbox or a copied production environment. To resolve this, you need to manually enable the setting for your extension. 
 
 ![](/assets/images/azurefunctionsbc2/Screenshot 2025-12-16 at 2.04.25 PM.png)
-*Allow HttpClient Requests*
+*I enabled Allow HttpClient Requests*
 
 
 ## References

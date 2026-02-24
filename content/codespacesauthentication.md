@@ -4,6 +4,7 @@ description: "Adding a NavBar and staticwebapp.config.json"
 date: "2024-03-06"
 categories: ["React","Azure","DevOps"]
 tags: ""
+hidden: false
 slug: "codespacesauthentication"
 image: "/assets/images/codespacesauthentication/logo512-512x512.png"
 ---
@@ -19,7 +20,7 @@ I used GitHub Codespaces to create a React app, I published the React App using 
 *I clicked on the React|Use this template button*
 
 ![](/assets/images/codespacesauthentication/screenshot-2024-03-06-at-10.30.00-am-1836x1126.png)
-*Codespaces opened and "npm start" was executed*
+*Codespaces opened and I ran npm start*
 
 ![](/assets/images/codespacesauthentication/screenshot-2024-03-06-at-10.30.39-am-1836x1119.png)
 *I ran "npm run build" (noticing that generated files were saved to the /build folder).*
@@ -94,16 +95,16 @@ I used GitHub Codespaces to create a React app, I published the React App using 
 I added React Router a NavBar and a staticwebapp.config.json file.
 
 ![](/assets/images/codespacesauthentication/screenshot-2024-03-07-at-6.00.12-pm-1836x1000.png)
-*Updated project folder structure*
+*I reviewed the updated project folder structure*
 
 ![](/assets/images/codespacesauthentication/screenshot-2024-03-07-at-6.08.42-pm-2136x1105.png)
-*Home page*
+*I reviewed the Home page*
 
 ![](/assets/images/codespacesauthentication/screenshot-2024-03-07-at-6.08.55-pm-2136x1104.png)
-*About page*
+*I reviewed the About page*
 
 ![](/assets/images/codespacesauthentication/screenshot-2024-03-07-at-6.09.25-pm-2136x1107.png)
-*Secret page*
+*I reviewed the Secret page*
 
 
 ## staticwebapp.config.json

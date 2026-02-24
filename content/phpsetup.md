@@ -9,9 +9,7 @@ image: "/assets/images/phpsetup/php-logo.svg"
 ---
 
 
-PHP is a server scripting language, and a powerful tool for making dynamic and interactive Web pages.
-
-PHP is a widely-used, free, and efficient alternative to competitors such as Microsoft's ASP.
+I set up PHP on macOS. PHP is a server scripting language for building dynamic and interactive web pages.
 
 ![](/assets/images/phpsetup/screenshot-2024-08-24-at-9.31.34pm-1146x740.png)
 *brew install php*
@@ -32,7 +30,7 @@ PHP is a widely-used, free, and efficient alternative to competitors such as Mic
 *Code Runner (optional)*
 
 ![](/assets/images/phpsetup/screenshot-2024-08-24-at-9.42.37pm-1831x837.png)
-*using Code Runner*
+*I used Code Runner*
 
 ![](/assets/images/phpsetup/screenshot-2024-08-24-at-10.30.13pm-1831x841.png)
 *php -S localhost:8000*
@@ -44,7 +42,7 @@ PHP is a widely-used, free, and efficient alternative to competitors such as Mic
 *phpinfo()*
 
 ![](/assets/images/phpsetup/screenshot-2024-08-24-at-10.32.25pm-1831x991.png)
-*phpinfo() is used to check configuration settings*
+*I used phpinfo() to check configuration settings*
 
 ![](/assets/images/phpsetup/screenshot-2024-08-24-at-10.34.44pm-1831x489.png)
 *form.html*

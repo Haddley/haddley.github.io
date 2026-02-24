@@ -4,6 +4,7 @@ description: "An ASP.NET Core backend and a Blazor Web Assembly frontend."
 date: "2023-03-24"
 categories: [".NET"]
 tags: "blazor WASM"
+hidden: false
 slug: "blazorwasmandasp.net"
 image: "/assets/images/blazorwasmandasp.net/net-logo.svg"
 ---
@@ -13,7 +14,7 @@ image: "/assets/images/blazorwasmandasp.net/net-logo.svg"
 
 Visual Studio includes an ASP.NET Core Single Page Application (SPA) templates that supports Blazor WASM.
 
-I review the Blazor WASM template here.
+I reviewed the Blazor WASM template.
 
 
 ## ChatGPT
@@ -34,7 +35,9 @@ Now, Visual Studio will create a Blazor WebAssembly project with a backend API. 
 
 Note: If you prefer to use the command line, you can create a new Blazor WebAssembly project using the following command:
 
-**$ dotnet new blazorwasm -n ProjectName**
+```bash
+dotnet new blazorwasm -n ProjectName
+```
 
 ![](/assets/images/blazorwasmandasp.net/screen-shot-2023-03-22-at-9.16.36-am-1440x880.png)
 *I used Visual Studio 2022 for Mac*
@@ -52,10 +55,10 @@ Note: If you prefer to use the command line, you can create a new Blazor WebAsse
 *The template includes client and server-side C# code*
 
 ![](/assets/images/blazorwasmandasp.net/screen-shot-2023-03-25-at-11.58.50-am-1836x925.png)
-*Solution did not run exactly as generated*
+*The solution did not run exactly as generated*
 
 ![](/assets/images/blazorwasmandasp.net/screen-shot-2023-03-25-at-11.59.14-am-1836x910.png)
-*clientId fix*
+*I fixed the clientId*
 
 ![](/assets/images/blazorwasmandasp.net/screen-shot-2023-03-25-at-11.59.37-am-1836x1030.png)
 *I ran the project successfully*

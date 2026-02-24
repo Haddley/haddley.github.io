@@ -4,6 +4,7 @@ description: "MNIST"
 date: "2022-06-17"
 categories: ["AI","ML"]
 tags: "MNIST"
+hidden: false
 slug: "machinelearning9"
 image: "/assets/images/machinelearning9/tensorflow-logo.svg"
 ---
@@ -14,24 +15,24 @@ The MNIST database of handwritten digits has a training set of 60,000 examples, 
 
 The digits have been size-normalized and centered in a fixed-size image.
 
-Keras is aware of the MNIST database. The database can be loaded using the mnist.load_data() function.
+I found that Keras is aware of the MNIST database. I loaded the database using the mnist.load_data() function.
 
-A random image from the MNIST database can be viewed using the pyplot.imshow() function.
+I viewed a random image from the MNIST database using the pyplot.imshow() function.
 
 ![](/assets/images/machinelearning9/screen-shot-2022-06-17-at-6.38.18-pm-1704x1296.png)
-*An image from the MNIST database*
+*I viewed an image from the MNIST database*
 
 
 ## normalization
 
 Normalization refers to a process that makes something more normal or regular.
 
-Here the each image pixel value (0-255) is converted to a float value between 0 and 1.
+I converted each image pixel value (0-255) to a float value between 0 and 1.
 
-Each label (an integer between 0 and 9) is converted to a matrix of eight zeros and a single one.
+I converted each label (an integer between 0 and 9) to a matrix of eight zeros and a single one.
 
 ![](/assets/images/machinelearning9/screen-shot-2022-06-17-at-6.39.57-pm-1700x846.png)
-*Normalized*
+*I normalized the data*
 
 
 ## model
@@ -43,7 +44,7 @@ I added a Dense hidden layer with 512 units.
 I added a Dense output layer with 10 units (each unit corresponding to a category value from 0 to 9).
 
 ![](/assets/images/machinelearning9/screen-shot-2022-06-17-at-6.41.19-pm-1648x1296.png)
-*model*
+*I created the model*
 
 
 ## compile and fit
@@ -55,7 +56,7 @@ I used the compile() function to configure the model.
 I used the fit() function to train the model.
 
 ![](/assets/images/machinelearning9/screen-shot-2022-06-17-at-6.44.24-pm-1718x658.png)
-*compile and fit*
+*I compiled and fit the model*
 
 
 ## predict

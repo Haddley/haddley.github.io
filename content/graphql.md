@@ -4,6 +4,7 @@ description: "GraphQL is a query and manipulation language for APIs."
 date: "2021-03-01"
 categories: ["JavaScript"]
 tags: "graphql"
+hidden: false
 slug: "graphql"
 image: "/assets/images/graphql/graphql-logo.svg-1200x1200.png"
 ---
@@ -19,14 +20,20 @@ GraphQL supports reading data, mutating data, and subscribing to data (WebSocket
 
 ## server.js
 
-We create a package.json file using the npm init command
-**$ npm init -y**
+I created a package.json file using the npm init command
 
-We add the GraphQL dependencies using npm
-**$ npm i express@4.16.4 express-graphql@0.7.1 graphql@14.1.1 cors@2.8.5**
+```bash
+$ npm init -y
+```
+
+I added the GraphQL dependencies using npm
+
+```bash
+$ npm i express@4.16.4 express-graphql@0.7.1 graphql@14.1.1 cors@2.8.5
+```
 
 ![](/assets/images/graphql/screen-shot-2021-03-02-at-10.50.19-pm-1536x940.png)
-*npm i*
+*I ran npm i*
 
 
 ## server.js
@@ -45,42 +52,50 @@ Now we can update the package.json file and run the GraphQL service.
 
 ## npm start
 
-Use "npm start" to run the GraphQL server.
+I used "npm start" to run the GraphQL server.
 
-**$ npm start**
+```bash
+$ npm start
+```
 
 ![](/assets/images/graphql/screen-shot-2021-03-02-at-10.55.09-pm-1536x778.png)
-*Reading books and related author details*
+*I read books and related author details*
 
 ![](/assets/images/graphql/screen-shot-2021-03-02-at-10.57.26-pm-1536x782.png)
-*Reading data for a single author*
+*I read data for a single author*
 
 ![](/assets/images/graphql/screen-shot-2021-03-02-at-11.00.26-pm-1536x780.png)
-*Mutating data. Adding an author*
+*I mutated data by adding an author*
 
 ![](/assets/images/graphql/screen-shot-2021-03-02-at-11.03.34-pm-1536x785.png)
-*Mutating data. Adding a book*
+*I mutated data by adding a book*
 
 
 ## A GraphQL client app
 
 It is possible to use react and apollo to create a GraphQL client app.
 
-We create a package.json file using the npm init command
-**$ npm init -y**
+I created a package.json file using the npm init command
 
-We add the GraphQL and Apollo dependencies using npm
-**$ npm i apollo-boost@0.4.9 graphql@15.4.0 react@17.0.1 react-apollo@3.1.5 react-dom@17.0.1 react-scripts@4.0.1**
+```bash
+$ npm init -y
+```
+
+I added the GraphQL and Apollo dependencies using npm
+
+```bash
+$ npm i apollo-boost@0.4.9 graphql@15.4.0 react@17.0.1 react-apollo@3.1.5 react-dom@17.0.1 react-scripts@4.0.1
+```
 
 The app.js code includes a GraphQL query, an ApolloProvider and a Query.
 
 ![](/assets/images/graphql/screen-shot-2021-03-02-at-11.52.18-pm-1536x884.png)
-*localhost:3000*
+*I navigated to localhost:3000*
 
 
 ## API Gateway
 
-Notice that the Cross-Origin Resource Sharing (CORS) library reference in the GraphQL code above is not needed when the GraphQL server and the GraphQL client App are published using an [API Gateway](apigateway.html).
+I noticed that the Cross-Origin Resource Sharing (CORS) library reference in the GraphQL code above is not needed when the GraphQL server and the GraphQL client App are published using an [API Gateway](apigateway.html).
 
 
 ## server.js

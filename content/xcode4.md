@@ -9,14 +9,14 @@ image: "/assets/images/xcode4/xcode-14-icon-300x314.png"
 ---
 
 
-OpenGL Mathematics (GLM) is a header only C++ mathematics library for graphics software based on the OpenGL Shading Language (GLSL) specifications.
+I used OpenGL Mathematics (GLM), a header only C++ mathematics library for graphics software based on GLSL specifications.
 
 I installed GLM using this command
 
 $ brew install glm
 
 ![](/assets/images/xcode4/screen-shot-2023-03-27-at-10.03.48-pm-1596x1258.png)
-*Running application*
+*I ran the application*
 
 
 ## Overview
@@ -54,15 +54,15 @@ GLint **transformLoc** = glGetUniformLocation(shaderProgram, "**transform**");
 // Set the value of the "transform" uniform
 glUniformMatrix4fv(**transformLoc**, 1, GL_FALSE, glm::value_ptr(**rotation**));*
 
-A rotation matrix "rotation" is calculated using the glm::rotate() function. 
+I calculated a rotation matrix using the glm::rotate() function. 
 
-The glm::rotate() function takes a matrix, an angle (in radians), and an axis of rotation (In this case, we are rotating around the z-axis, so we pass in a vector with x and y values of 0 and a z value of 1).
+The glm::rotate() function takes a matrix, an angle (in radians), and an axis of rotation. I rotated around the z-axis by passing a vector with x and y values of 0 and a z value of 1.
 
-The location of the transform uniform in the vertex shader is retrieved using the glGetUniformLocation() function. 
+I retrieved the location of the transform uniform using the glGetUniformLocation() function. 
 
-The value of the transform uniform is set using the glUniformMatrix4fv() function, which takes the location of the uniform, the number of matrices being passed (1), whether or not to transpose the matrix (in this case, we don't want to transpose it), and a pointer to the matrix data (which is obtained using the glm::value_ptr() function).
+I set the value of the transform uniform using glUniformMatrix4fv(), passing the uniform location, the number of matrices (1), whether to transpose (false), and a pointer to the matrix data from glm::value_ptr().
 
-With these changes, the triangle is rotated by 10 degrees around the z-axis.
+With these changes, I rotated the triangle by 10 degrees around the z-axis.
 
 ![](/assets/images/xcode4/screen-shot-2023-03-27-at-8.08.59-pm-1596x642.png)
 *I added the glm include folder to header search*

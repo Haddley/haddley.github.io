@@ -11,6 +11,8 @@ image: "/assets/images/sentencesimilarity/chatgpt-logo.svg"
 
 
 
+I built a sentence similarity demo using the Xenova Transformers library to compare sentences using cosine similarity.
+
 **ChatGPT What is Sentence Similarity?**
 
 Sentence similarity refers to the measure of how similar or related two sentences are in terms of their meaning or semantic content. It is a natural language processing (NLP) concept used to quantify the likeness between sentences based on their semantic, syntactic, or contextual aspects. Sentence similarity is essential in various NLP tasks, such as information retrieval, paraphrase detection, text summarization, question answering, and machine translation.

@@ -3,7 +3,8 @@ title: "MLX 1"
 description: "An Apple Project"
 date: "2025-11-06"
 categories: ["AI"]
-tags: "macOS,fine tuning"
+tags: "macOS fine tuning"
+hidden: false
 slug: "mlx1"
 image: "/assets/images/mlx1/apple-logo-black.svg"
 ---
@@ -37,14 +38,14 @@ mlx-lm
 ```
 
 ![](/assets/images/mlx1/Screenshot%202025-11-06%20at%201.42.25 PM.png)
-*what is the capital of France?*
+*I ran mlx_lm.generate and asked "what is the capital of France?"*
 
 ``` zsh
 % mlx_lm.generate --prompt "what is the capital of France" --model "Qwen/Qwen3-0.6b"
 ```
 
 ![](/assets/images/mlx1/Screenshot%202025-11-06%20at%201.55.02 PM.png)
-*mlx_lm.lora --train --data "./data" --learning-rate 1e-5 --iters 100 --fine-tune-type full*
+*I ran mlx_lm.lora training*
 
 ``` zsh
 % mlx_lm.lora --train --data "./data" --learning-rate 1e-5 --iters 100 --fine-tune-type full
@@ -60,7 +61,7 @@ mlx-lm
 ```
 
 ![](/assets/images/mlx1/Screenshot%202025-11-06%20at%201.56.00 PM.png)
-*what is the capital of France? who was Charles Babbage?*
+*I tested the fine-tuned model asking "what is the capital of France?" and "who was Charles Babbage?"*
 
 ``` zsh
 % mlx_lm.generate --prompt "what is the capital of France" --model "Qwen/Qwen3-0.6b" --adapter-path adapters
@@ -73,42 +74,42 @@ Please fuse Qwen3-0.6b and the adapters. Create a new Fused-Qwen3-0.6b.gguf mode
 ```
 
 ![](/assets/images/mlx1/Screenshot%202025-11-06%20at%202.40.38 PM.png)
-*Please fuse Qwen3-0.6b and the adapters. Create a new Fused-Qwen3-0.6b.gguf model. Then use ollama create add the model to ollama*
+*I prompted Claude to fuse the model and add it to ollama*
 
 ```zsh
 % python -m mlx_lm fuse --model "Qwen/Qwen3-0.6b" --adapter-path adapters --save-path fused-model
 ```
 
 ![](/assets/images/mlx1/Screenshot%202025-11-06%20at%202.54.05 PM.png)
-*python -m mlx_lm fuse --model "Qwen/Qwen3-0.6b" --adapter-path adapters --save-path fused-model*
+*I ran python -m mlx_lm fuse to create the fused model*
 
 ```zsh
 % git clone --depth 1 https://github.com/ggerganov/llama.cpp.git
 ```
 
 ![](/assets/images/mlx1/Screenshot%202025-11-06%20at%202.54.38 PM.png)
-*git clone --depth 1 https://github.com/ggerganov/llama.cpp.git*
+*I cloned the llama.cpp repository*
 
 ```zsh
 % pip install -r llama.cpp/requirements.txt
 ```
 
 ![](/assets/images/mlx1/Screenshot%202025-11-06%20at%202.55.27 PM.png)
-*pip install -r llama.cpp/requirements.txt*
+*I ran pip install -r llama.cpp/requirements.txt*
 
 ```zsh
 % python llama.cpp/convert_hf_to_gguf.py fused-model --outfile Fused-Qwen3-0.6b.gguf --outtype f32
 ```
 
 ![](/assets/images/mlx1/Screenshot%202025-11-06%20at%202.57.59 PM.png)
-*python llama.cpp/convert_hf_to_gguf.py fused-model --outfile Fused-Qwen3-0.6b.gguf --outtype f32*
+*I ran convert_hf_to_gguf.py to convert the fused model to GGUF format*
 
 ```zsh
  % ollama create fused-qwen3-0.6b -f Modelfile
 ```
 
 ![](/assets/images/mlx1/Screenshot%202025-11-06%20at%202.59.47 PM.png)
-*ollama create fused-qwen3-0.6b -f Modelfile*
+*I ran ollama create to add the model to ollama*
 
 ```text
 FROM ./Fused-Qwen3-0.6b.gguf
@@ -137,21 +138,21 @@ PARAMETER stop "<|im_end|>"
  ```
 
 ![](/assets/images/mlx1/Screenshot%202025-11-06%20at%203.04.59 PM.png)
-*ollama list*
+*I ran ollama list*
 
 ```zsh
  % ollama run fused-qwen3-0.6b "who was Ada Lovelace"
 ```
 
 ![](/assets/images/mlx1/Screenshot%202025-11-06%20at%203.05.59 PM.png)
-*ollama run fused-qwen3-0.6b "who was Ada Lovelace"*
+*I ran ollama run and asked "who was Ada Lovelace"*
 
 ```zsh
  % ollama run fused-qwen3-0.6b "who was Charles Babbage"
 ```
 
 ![](/assets/images/mlx1/Screenshot%202025-11-06%20at%204.03.26 PM.png)
-*ollama run fused-qwen3-0.6b "who was Charles Babbage"*
+*I ran ollama run and asked "who was Charles Babbage"*
 
 ## References
 

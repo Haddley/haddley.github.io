@@ -4,6 +4,7 @@ description: "The Lead to Opportunity Sales Process"
 date: "2023-10-21"
 categories: ["Microsoft Dynamics"]
 tags: "microsoft dynamics sales"
+hidden: false
 slug: "dynamicssales2"
 image: "/assets/images/dynamicssales2/dynamics365-color.svg"
 ---
@@ -39,7 +40,7 @@ I added the customizations to my Sales Customizations [solution](/posts/modeldri
 *I selected the "Lead to Opportunity Sales Process" business process flow and clicked the Add button*
 
 ![](/assets/images/dynamicssales2/screenshot-2023-10-21-at-3.51.44-pm-2136x990.png)
-*I clicked the Edit button up edit the Business Process Flow*
+*I clicked the Edit button to edit the Business Process Flow*
 
 ![](/assets/images/dynamicssales2/screenshot-2023-10-21-at-3.52.40-pm-2136x1111.png)
 *I clicked the Add Stage button*

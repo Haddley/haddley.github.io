@@ -58,7 +58,7 @@ The constructor uses bind to ensure that the _show and _hide methods can show or
 
 The lifecycle methods add or remove event listeners to the described elements.
 
-Notice that if the HTML is accessed by a Web Browser that does not support Web Components (and no "polyfill" has been included) the user is still able to read the tooltip text.
+I noted that if the HTML is accessed by a browser that does not support Web Components (and no "polyfill" has been included), the user can still read the tooltip text.
 
 
 ## template
@@ -76,14 +76,14 @@ Consider this template from the [Web Components Are Easier Than You Think](https
 </body>
 
 ![](/assets/images/webcomponents/screen-shot-2022-02-10-at-1.16.05-pm-890x428.png)
-*my-paragraph template*
+*I added the my-paragraph template*
 
 
 ## Using a template with JavaScript
 
 Adding a template element to a web page does not result in anything being displayed (see above).
 
-We can use JavaScript to apply the template.
+I used JavaScript to apply the template.
 
 <script>
         let template = document.getElementById('my-paragraph');
@@ -94,12 +94,12 @@ document.body.appendChild(templateContent.cloneNode(true))
     </script>
 
 ![](/assets/images/webcomponents/screen-shot-2022-02-10-at-1.21.13-pm-890x429.png)
-*Using an HTML template*
+*I used an HTML template*
 
 
 ## Using a template in a Web Component
 
-An easier way to apply a template is to create a Web Component.
+An easier way to apply the template is to create a Web Component.
 
 <script>
 
@@ -125,7 +125,7 @@ An easier way to apply a template is to create a Web Component.
 
 Slots are a way to customize a template.
 
-If a developer wants to add more than one slot to a single template they need to provide ids.
+I added IDs when using more than one slot in a single template.
 
 Consider these examples:
 
@@ -143,25 +143,23 @@ and
 
 ## Web Components with slots
 
-The example below shows how a Web Component can be created with support for slots.
+I created a Web Component with support for slots.
 
 ![](/assets/images/webcomponents/screen-shot-2022-02-10-at-4.49.43-pm-828x372.png)
-*Web Component with slots*
+*I created a Web Component with slots*
 
 
 ## Properties
 
-Values can also be passed to Web Components using HTML element properties
+I also passed values to Web Components using HTML element properties.
 
 
 ## Events
 
-Web Component events can be bubbled up to parent elements.
-
-Web Components can dispatch custom events.
+I bubbled Web Component events up to parent elements and dispatched custom events.
 
 ![](/assets/images/webcomponents/screen-shot-2022-02-10-at-6.23.41-pm-1260x648.png)
-*The click event is bubbled up. The custom tick events are dispatched.*
+*I bubbled the click event up and dispatched custom tick events*
 
 
 ## Are Web Components the future?

@@ -10,7 +10,7 @@ image: "/assets/images/vendorpostinggroup/posts-meta.svg"
 
 
 
-In Microsoft Dynamics 365 Business Central, sub-ledgers are used to manage business operations.
+I used Business Central sub-ledgers to manage business operations.
 
 Sub-ledgers include:
 
@@ -23,12 +23,11 @@ Detailed Customer Ledger
 
 ## Posting Groups
 
-In Microsoft Dynamics 365 Business Central, Posting Groups are used to "build a bridge" between Business Central sub-ledgers and the general ledger accounts.
+I used Posting Groups to build a bridge between Business Central sub-ledgers and the general ledger accounts.
 
+I used a Vendor Posting Group to define which accounts payable general ledger account to use when purchasing goods from a Vendor.
 
-A Vendor Posting Group is used to define which accounts payable general ledger account to use when purchasing goods from a Vendor.
-
-Vendor Posting Groups are maintained using the Vendor Posting Groups page.
+I maintained Vendor Posting Groups using the Vendor Posting Groups page.
 
 ![](/assets/images/vendorpostinggroup/screen-shot-2023-12-11-at-7.05.09-pm-1536x860.png)
 *I used search to navigate to the Vendors page. I used + New to create a new Vendor*
@@ -46,7 +45,7 @@ Vendor Posting Groups are maintained using the Vendor Posting Groups page.
 *I added code DOMESTIC and set Payables Account to 22100 (Account Payable, Domestic)*
 
 ![](/assets/images/vendorpostinggroup/screen-shot-2023-12-12-at-11.42.04-am-1536x998.png)
-*Vendor Posting Group is set to DOMESTIC*
+*I set the Vendor Posting Group to DOMESTIC*
 
 ![](/assets/images/vendorpostinggroup/screen-shot-2023-12-12-at-11.51.39-am-1536x371.png)
 *I used search to navigate to the General Journal page*

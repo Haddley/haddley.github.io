@@ -4,6 +4,7 @@ description: "References"
 date: "2024-10-30"
 categories: ["AI"]
 tags: ""
+hidden: false
 slug: "langflow1"
 image: "/assets/images/langflow1/85702467-200x200.png"
 ---
@@ -60,7 +61,7 @@ OpenAI's text-to-speech (TTS) technology is designed to convert written text int
 *I added the openai_api_key value to the LLM step*
 
 ![](/assets/images/langflow1/screenshot-2024-10-30-at-5.20.05pm-1836x1019.png)
-*added the openai_api_key value to the text-to-speech step*
+*I added the openai_api_key value to the text-to-speech step*
 
 ![](/assets/images/langflow1/screenshot-2024-10-30-at-5.23.58pm-1836x1017.png)
 *I clicked on the File step to select a podcast source document*

@@ -4,6 +4,7 @@ description: "Using LangChain to create a medical report application"
 date: "2023-07-21"
 categories: ["AI","Python"]
 tags: ""
+hidden: false
 slug: "langchain"
 image: "/assets/images/langchain/chatgpt-logo.svg"
 ---
@@ -22,7 +23,7 @@ Streamlit is an open-source Python library used to create web applications for d
 I used streamlit to create the application's user interface.
 
 ![](/assets/images/langchain/langchain-capture-0004-1473x711.png)
-*hello world streamlit app*
+*I created a hello world streamlit app*
 
 
 ## OpenAI's API
@@ -32,10 +33,10 @@ I updated my hello world application to call OpenAI's API.
 I had to request a secret API key.
 
 ![](/assets/images/langchain/screen-shot-2023-07-20-at-10.13.26-am-1836x1013.png)
-*secret key*
+*I requested a secret key*
 
 ![](/assets/images/langchain/langchain-capture-0005-1476x710.png)
-*Using LangChain to call OpenAI's API.*
+*I used LangChain to call OpenAI's API.*
 
 
 ## Document pages
@@ -45,7 +46,7 @@ I used LangChain to return the text found on each page of a sample medical repor
 [https://www.med.unc.edu/medclerk/wp-content/uploads/sites/877/2018/10/hp4.pdf](https://www.med.unc.edu/medclerk/wp-content/uploads/sites/877/2018/10/hp4.pdf)
 
 ![](/assets/images/langchain/screen-shot-2023-07-22-at-6.54.13-am-1836x1001.png)
-*hp4.pdf medical report*
+*I reviewed the hp4.pdf medical report*
 
 
 ## Jupyter Notebook
@@ -55,7 +56,7 @@ To improve performance and reduce costs I pre-processed the pdf file and stored 
 I created a Jupyter Notebook to keep track of the steps I followed.
 
 ![](/assets/images/langchain/screen-shot-2023-07-21-at-5.13.17-pm-1142x740.png)
-*Running jupyter-notebook locally*
+*I ran jupyter-notebook locally*
 
 ![](/assets/images/langchain/screen-shot-2023-07-21-at-7.54.08-pm-1536x982.png)
 *I loaded pages from the medical report.*
@@ -81,10 +82,10 @@ I used Chroma to create an [embeddings](sentencesimilarity.html) vector store an
 *I located the most similar paragraphs and sent those (see Context Injection) and the query to OpenAI's servers.*
 
 ![](/assets/images/langchain/screen-shot-2023-07-21-at-8.19.11-pm-1536x982.png)
-*The streamlit code*
+*I reviewed the streamlit code*
 
 ![](/assets/images/langchain/screen-shot-2023-07-21-at-8.21.56-pm-1536x866.png)
-*The finished application*
+*I reviewed the finished application*
 
 
 ## app0.py

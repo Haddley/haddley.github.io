@@ -28,7 +28,7 @@ image: "/assets/images/nextjs4/2560px-nextjs-logo.svg-1536x920.png"
 *Azure App Service: Deploy to Web App*
 
 ![](/assets/images/nextjs4/screen-shot-2021-11-11-at-2.28.08-pm-1276x162.png)
-*Select the folder to deploy*
+*I selected the folder to deploy*
 
 ![](/assets/images/nextjs4/screen-shot-2021-11-11-at-2.28.16-pm-1270x172.png)
 *Create new Web App...*
@@ -40,7 +40,7 @@ image: "/assets/images/nextjs4/2560px-nextjs-logo.svg-1536x920.png"
 *Node 14 LTS*
 
 ![](/assets/images/nextjs4/screen-shot-2021-11-11-at-2.28.58-pm-1272x248.png)
-*Select a pricing tier*
+*I selected a pricing tier*
 
 ![](/assets/images/nextjs4/screen-shot-2021-11-11-at-2.29.48-pm-1684x684.png)
 *Deploying*
@@ -51,18 +51,18 @@ image: "/assets/images/nextjs4/2560px-nextjs-logo.svg-1536x920.png"
 
 ## Articles
 
-Create /articles and /articles/[id] pages
+I created `/articles` and `/articles/[id]` pages.
 
 
 ## Updated solution
 
-Deploy update
+I deployed the update.
 
 ![](/assets/images/nextjs4/screen-shot-2021-11-11-at-3.05.58-pm-1066x688.png)
 *Deploy*
 
 ![](/assets/images/nextjs4/screen-shot-2021-11-11-at-3.00.59-pm-944x204.png)
-*Deployment completed*
+*The deployment completed*
 
 ![](/assets/images/nextjs4/screen-shot-2021-11-11-at-3.00.10-pm-1836x944.png)
 */articles*
@@ -117,7 +117,7 @@ Deploy update
 
 ## Azure Active Directory
 
-The AzureADProvider from "next-auth/providers/azure-ad" can be used connect Nextjs and Azure Active Directory.
+I used `AzureADProvider` from `next-auth/providers/azure-ad` to connect Next.js with Azure Active Directory.
 
 ![](/assets/images/nextjs4/screen-shot-2022-01-13-at-11.11.13-am-1836x926.png)
 *environment settings*

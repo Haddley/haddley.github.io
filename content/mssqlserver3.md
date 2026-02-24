@@ -12,22 +12,22 @@ slug: "mssqlserver3"
 
 ## Create Database
 
-Start by creating the SQL Server Database
+I started by creating the SQL Server Database.
 
 
 ## Use ToDo
 
-Switch to ToDo Database
+I switched to the ToDo Database.
 
 
 ## Create Table
 
-Create Tasks Table
+I created the Tasks table.
 
 
 ## Add Sample Rows
 
-Add sample rows to the Tasks table.
+I added sample rows to the Tasks table.
 
 
 ## npm init
@@ -124,7 +124,7 @@ $ touch index.js
 
 ## src/data/utils.js
 
-Maintain sql statements as .sql files in src/data/... subfolders and read at runtime.
+I maintained SQL statements as `.sql` files in `src/data/` subfolders and read them at runtime.
 
 $ touch utils.js
 
@@ -160,7 +160,7 @@ $ node .
 
 ## okta
 
-okta is a service that simplifies identity management
+I used okta, a service that simplifies identity management.
 
 ![](/assets/images/mssqlserver3/screen-shot-2021-04-17-at-8.02.48-am-1836x926.png)
 *esp8266*

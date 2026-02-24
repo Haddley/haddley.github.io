@@ -9,9 +9,11 @@ image: "/assets/images/nextjs1/2560px-nextjs-logo.svg-1536x920.png"
 ---
 
 
+I built a Next.js blog following the official Learn Next.js tutorial.
+
 ## create-next-app
 
-npx create-next-app nextjs-blog --use-npm --example "https://github.com/vercel/next-learn/tree/master/basics/learn-starter"
+I ran `npx create-next-app` to scaffold the project from the official starter template.
 
 ![](/assets/images/nextjs1/screen-shot-2021-11-05-at-6.06.36-pm-1140x742.png)
 *npx create-next-app nextjs-blog --use-npm --example "https://github.com/vercel/next-learn/tree/master/basics/learn-starter"*
@@ -20,13 +22,13 @@ npx create-next-app nextjs-blog --use-npm --example "https://github.com/vercel/n
 *npm run dev*
 
 ![](/assets/images/nextjs1/screen-shot-2021-11-05-at-6.07.50-pm-1746x1196.png)
-*accessing nextjs-blog*
+*I accessed the nextjs-blog in the browser*
 
 ![](/assets/images/nextjs1/screen-shot-2021-11-05-at-6.09.08-pm-1142x740.png)
 *npm run dev*
 
 ![](/assets/images/nextjs1/screen-shot-2021-11-05-at-6.11.11-pm-884x696.png)
-*create the about page*
+*I created the about page*
 
 ![](/assets/images/nextjs1/screen-shot-2021-11-05-at-6.11.35-pm-1108x380.png)
 *React Functional Export Component (frce)*
@@ -35,19 +37,15 @@ npx create-next-app nextjs-blog --use-npm --example "https://github.com/vercel/n
 *notice that the React from 'react' import is not needed*
 
 ![](/assets/images/nextjs1/screen-shot-2021-11-05-at-6.12.46-pm-764x302.png)
-*accessing the about page*
+*I accessed the about page*
 
 
 ## Link component
 
-The Link component is used to enable client-side navigation between pages.
-
-Here I have used the Link component to improve performance of page navigation between the index and second-post pages in a posts folder.
-
-In a production build Next.js automatically prefetches the code for linked pages in the background.
+I used the `Link` component to enable client-side navigation between pages. It improved navigation performance between the index and second-post pages. In a production build, Next.js automatically prefetches the code for linked pages in the background.
 
 ![](/assets/images/nextjs1/screen-shot-2021-11-05-at-6.16.50-pm-644x340.png)
-*creating a posts folder*
+*I created a posts folder*
 
 ![](/assets/images/nextjs1/screen-shot-2021-11-05-at-6.28.23-pm-1836x887.png)
 *Network traffic when <a href=...> tag is used*
@@ -58,13 +56,13 @@ In a production build Next.js automatically prefetches the code for linked pages
 
 ## public folder
 
-Public files are added the project's public folder
+I added public files to the project's public folder.
 
 ![](/assets/images/nextjs1/screen-shot-2021-11-05-at-7.42.29-pm-1836x1133.png)
 *profile.jpeg*
 
 ![](/assets/images/nextjs1/screen-shot-2021-11-05-at-7.43.26-pm-1836x884.png)
-*accessing the profile.jpeg file*
+*I accessed the profile.jpeg file*
 
 ![](/assets/images/nextjs1/screen-shot-2021-11-05-at-7.49.46-pm-1768x1064.png)
 *a page with a next/image component*
@@ -72,7 +70,7 @@ Public files are added the project's public folder
 
 ## Metadata
 
-The 'next/head' component can be used to set the <title> tag for a Next.js page.
+I used the `next/head` component to set the `<title>` tag for a Next.js page.
 
 ![](/assets/images/nextjs1/screen-shot-2021-11-05-at-8.00.51-pm-1126x422.png)
 *Page title is 'Posts'*
@@ -80,7 +78,7 @@ The 'next/head' component can be used to set the <title> tag for a Next.js page.
 
 ## CSS Modules
 
-Next.js supports CSS Modules using the [name].module.css file naming convention.
+I used CSS Modules with the `[name].module.css` file naming convention supported by Next.js.
 
 ![](/assets/images/nextjs1/screen-shot-2021-11-05-at-9.47.27-pm-1836x960.png)
 *CSS Modules*
@@ -91,7 +89,7 @@ Next.js supports CSS Modules using the [name].module.css file naming convention.
 
 ## Styled Components
 
-Styled Components is a CSS-in-JS tool that lets developers write CSS in JavaScript files.
+Styled Components is a CSS-in-JS tool for writing CSS directly in JavaScript files.
 
 I ran the following commands to install styled-components.
 

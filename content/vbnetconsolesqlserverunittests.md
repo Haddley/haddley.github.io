@@ -10,11 +10,7 @@ image: "/assets/images/vbnetconsolesqlserverunittests/net-logo.svg"
 
 
 
-Unit tests are automated tests written and run by software developers to ensure that a section of an application (known as the "unit") meets its design and behaves as intended.
-
-I wanted to add unit tests to a Visual Basic Console App that fetched data from a database using SqlConnection, SqlCommand, SqlDataAdapter and DataTable classes.
-
-In any case it is best practice is for Unit Tests to run independent of a running database server.
+I added unit tests to a Visual Basic Console App that fetched data from a database using SqlConnection, SqlCommand, SqlDataAdapter and DataTable classes. Unit tests run independent of a running database server.
 
 ![](/assets/images/vbnetconsolesqlserverunittests/capture-unit-test-aaa-0000001-890x625.png)
 *I created a new project (in a new solution)*
@@ -26,7 +22,7 @@ In any case it is best practice is for Unit Tests to run independent of a runnin
 *I selected .NET Framework 4.7.2*
 
 ![](/assets/images/vbnetconsolesqlserverunittests/capture-unit-test-aaa-0000004-1325x674.png)
-*Main*
+*I reviewed the Main function*
 
 ![](/assets/images/vbnetconsolesqlserverunittests/capture-unit-test-aaa-0000005-1363x382.png)
 *I added Hello World code*
@@ -64,7 +60,7 @@ Here's an example of how you can refactor the code and write unit tests for the 
 ...
 
 ![](/assets/images/vbnetconsolesqlserverunittests/database-unit-test-1366x728.png)
-*Database Tests*
+*I ran the database unit tests*
 
 
 ## Refactoring the code with testing in mind
@@ -78,10 +74,10 @@ I extracted the WriteDataTable code to create a function that was easier to crea
 I wrote the UnitTestProject2 tests with the help of ChatGPT.
 
 ![](/assets/images/vbnetconsolesqlserverunittests/capture-unit-test-aaa-0000020-1098x244.png)
-*The WriteDataTable function expects to be passed a DataTable.*
+*I extracted the WriteDataTable function, which accepts a DataTable as input*
 
 ![](/assets/images/vbnetconsolesqlserverunittests/mixed-unit-tests-1366x728.png)
-*Running the Unit Tests*
+*I ran the unit tests*
 
 
 ## UnitTest1.vb

@@ -4,16 +4,17 @@ description: "Generate Context and Entity Classes from an Existing Database"
 date: "2023-03-19"
 categories: [".NET","SQL"]
 tags: "c#"
+hidden: false
 slug: "aspnet-5-cs"
 image: "/assets/images/aspnet-5-cs/net-logo.svg"
 ---
 
 
-ASP Web Forms was released in 2003 (based on the Windows Server and the .NET Framework)
+ASP Web Forms was released in 2003 (based on Windows Server and the .NET Framework).
 
-ASP.NET Model-View-Controller 5 was released in 2009 (based on Windows Server and .NET Framework and Supported in Visual Studio 2019)
+ASP.NET Model-View-Controller 5 was released in 2009 (based on Windows Server and .NET Framework, supported in Visual Studio 2019).
 
-ASP.NET Core Model-View-Controller was released in 2017 (based on cross platform .NET Core and Supported in Visual Studio 2022)
+ASP.NET Core Model-View-Controller was released in 2017 (based on cross-platform .NET Core, supported in Visual Studio 2022).
 
 I used Visual Studio 2019 and ASP.NET MVC 5 to create a todo app.
 
@@ -36,7 +37,7 @@ I used Visual Studio 2019 and ASP.NET MVC 5 to create a todo app.
 *Web requests are handled by Controller functions/methods. The controller function will typically return a view (the Web response). The About function sets a "Message" value and then returns a corresponding About view.*
 
 ![](/assets/images/aspnet-5-cs/capturea6-home-controller-1362x729.png)
-*Notice that the About view renders the "Message".*
+*I noticed the About view rendered the "Message"*
 
 ![](/assets/images/aspnet-5-cs/capturea8-view-page-with-layout-1361x731.png)
 *I added a view page to the HelloWorld folder.*
@@ -75,10 +76,10 @@ I used Visual Studio 2019 and ASP.NET MVC 5 to create a todo app.
 *I selected Code First from database*
 
 ![](/assets/images/aspnet-5-cs/capturea-20-new-data-connection-1367x529.png)
-*New data connection*
+*I created a new data connection*
 
 ![](/assets/images/aspnet-5-cs/capturea-21-test-connection-1360x706.png)
-*Test connection succeeded*
+*The test connection succeeded*
 
 ![](/assets/images/aspnet-5-cs/capturea-22-choose-connection-1368x597.png)
 *I asked Visual Studio to save the connection details in the Web.Config file (notice that the Web.Config file is never returned to a client browser)*
@@ -87,7 +88,7 @@ I used Visual Studio 2019 and ASP.NET MVC 5 to create a todo app.
 *I selected the Tasks table*
 
 ![](/assets/images/aspnet-5-cs/capturea-24-task-class-generated-1365x418.png)
-*The Task class is generated*
+*The Task class was generated*
 
 ![](/assets/images/aspnet-5-cs/capturea-25-new-scaffolder-item-1366x301.png)
 *I selected the Controller folder and selected the Add | New Scaffolded Item... menu item*
@@ -105,7 +106,7 @@ I used Visual Studio 2019 and ASP.NET MVC 5 to create a todo app.
 *The controller functions includes Index. The TaskController.Index function will fetch all Tasks from the database and then display then using the corresponding Tasks/Index view (Models.Task class name fully qualified to avoid confusion).*
 
 ![](/assets/images/aspnet-5-cs/capturea-30-running-tasks-index-page-1366x640.png)
-*The TaskController.Index function is executed when a user navigates to /Tasks (see above)*
+*The TaskController.Index function ran when I navigated to /Tasks*
 
 ## References
 

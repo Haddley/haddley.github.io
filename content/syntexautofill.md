@@ -10,9 +10,7 @@ image: "/assets/images/syntexautofill/1200px-microsoft-office-sharepoint-2018pre
 
 
 
-Syntex Autofill is an AI feature in SharePoint that automatically extracts or generates metadata from documents using natural language prompts, populating SharePoint columns without manual entry. Syntex Autofill transforms unstructured content into structured data.
-
-I added a **Smoke?** Autofill column to a Document Library. The objective was to automatically label [patient medical reports](langchain.html).
+I used SharePoint Syntex Autofill to automatically extract metadata from documents using natural language prompts. I added a **Smoke?** Autofill column to a Document Library. The objective was to automatically label [patient medical reports](langchain.html).
 
 ![](/assets/images/syntexautofill/screenshot202025-07-3020at203.26.13e280afpm-2136x1125.png)
 *I uploaded a patient medical report to a SharePoint Document Library. I clicked the + Add column button. I added a Smoke? column. I enabled the Autofill feature for this column. I added the Does the patient smoke? prompt.*
@@ -36,7 +34,7 @@ I added a **Smoke?** Autofill column to a Document Library. The objective was to
 *By default the Smoke? column was set to true*
 
 ![](/assets/images/syntexautofill/screenshot202025-07-3020at203.33.01e280afpm-2136x1122.png)
-*After a few minutes the autofill process completed. The Smoke? column value had been updated.*
+*After a few minutes the autofill process completed. The Smoke? column value was updated.*
 
 ![](/assets/images/syntexautofill/screenshot202025-07-3020at203.34.09e280afpm-2136x952.png)
 *Reviewing the hp2 document confirmed that the Smoke? column value had been set correctly.*

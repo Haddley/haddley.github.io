@@ -4,6 +4,7 @@ description: "Migrate master data to a new company"
 date: "2023-11-22"
 categories: ["Business Central"]
 tags: ""
+hidden: false
 slug: "hands-on-lab2.2"
 image: "/assets/images/hands-on-lab2.2/dynamics365-color.svg"
 ---
@@ -25,7 +26,7 @@ You will start with the vendor list, including contact information. To make sure
 *I clicked the + New button*
 
 ![](/assets/images/hands-on-lab2.2/screen-shot-2023-11-22-at-12.41.24-pm-1546x812.png)
-*Dialog opened with new Configuration Package*
+*A dialog opened with a new Configuration Package*
 
 ![](/assets/images/hands-on-lab2.2/screen-shot-2023-11-22-at-12.42.22-pm-1542x808.png)
 *I entered a code, a name and clicked on the three dots button in the Table ID column*
@@ -46,7 +47,7 @@ You will start with the vendor list, including contact information. To make sure
 *I clicked the Clear included button*
 
 ![](/assets/images/hands-on-lab2.2/screen-shot-2023-11-22-at-12.46.02-pm-1545x811.png)
-*Only the No. field was still selected*
+*I noted that only the No. field was still selected*
 
 ![](/assets/images/hands-on-lab2.2/screen-shot-2023-11-22-at-12.47.32-pm-1545x811.png)
 *I clicked on the checkboxes to select the Name, Address, City, Phone No., Currency Code, Language Code, Country/Region Code and Post Code fields*
@@ -76,7 +77,7 @@ You will start with the vendor list, including contact information. To make sure
 *I set the Realized Gains and Realized Losses accounts*
 
 ![](/assets/images/hands-on-lab2.2/screen-shot-2023-11-23-at-3.19.53-pm-1536x804.png)
-*The GBP Currency had been added*
+*I confirmed that the GBP Currency had been added*
 
 ![](/assets/images/hands-on-lab2.2/screen-shot-2023-11-23-at-3.21.17-pm-1536x808.png)
 *I used the search button to access the Counties/Regions page*
@@ -97,7 +98,7 @@ You will start with the vendor list, including contact information. To make sure
 *I scrolled to the right to review the number of tables, rows and errors. I clicked the Apply Package button*
 
 ![](/assets/images/hands-on-lab2.2/screen-shot-2023-11-23-at-3.57.11-pm-1536x807.png)
-*The dialog confirmed that 9 records were inserted*
+*A dialog confirmed that 9 records were inserted*
 
 ![](/assets/images/hands-on-lab2.2/screen-shot-2023-11-23-at-3.57.24-pm-1536x807.png)
 *I clicked on the Vendors link to navigate to the Vendors page*

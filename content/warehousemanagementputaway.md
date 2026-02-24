@@ -10,9 +10,7 @@ image: "/assets/images/warehousemanagementputaway/dynamics365-color.svg"
 
 
 
-Businesses that physically move goods in and out of their warehouse need to be able to receive, pick, and ship items.
-
-I created a walkthrough.
+I created a walkthrough of how businesses receive, pick, and ship items using Business Central's warehouse management features.
 
 ![](/assets/images/warehousemanagementputaway/screen-shot-2023-08-19-at-10.33.47-am-1437x713.png)
 *I updated my role to Inventory Manager*
@@ -33,34 +31,30 @@ I created a walkthrough.
 *I clicked on the Zones link*
 
 ![](/assets/images/warehousemanagementputaway/screen-shot-2023-08-19-at-10.38.34-am-1439x714.png)
-*The White Warehouse has been divided into 8 zones.Each zone has a Bin Type*
+*I saw the White Warehouse was divided into 8 zones, each with a Bin Type*
 
 
 ## Bin Type
 
-The bin type determines how a bin is used when processing the flow of items through the warehouse.
+I noted that the bin type determines how a bin is used when processing the flow of items through the warehouse. Incoming goods are unloaded to a "Receive" bin, moved to a "Put Away" bin, removed from a "Pick" bin, and sent from a "Ship" bin.
 
-Incoming goods will be unloaded to a "Receive" bin, moved to a "Put Away" bin, removed from a "Pick" bin and sent from a "Ship" bin.
-
-In this example these "Bin Types" are defined: PICK (Pick), PUTAWAY (Put Away), PUTPICK (Put Away and Pick), RECEIVE (Receive) and SHIP (Ship).
-
-[QC (None) bins are used for items that are excluded from normal item flows.]
+In this example I used these Bin Types: PICK (Pick), PUTAWAY (Put Away), PUTPICK (Put Away and Pick), RECEIVE (Receive) and SHIP (Ship). QC (None) bins are used for items excluded from normal item flows.
 
 ![](/assets/images/warehousemanagementputaway/screen-shot-2023-08-19-at-3.37.18-pm-1443x429.png)
-*Bin Types*
+*I reviewed the Bin Types*
 
 
 ## Zones
 
-[Zones](https://learn.microsoft.com/en-us/training/modules/set-up-zones-bins/2-set-up-zone) are used to subdivide the warehouse into logical parts. Zones are divided into bins.
+I used [Zones](https://learn.microsoft.com/en-us/training/modules/set-up-zones-bins/2-set-up-zone) to subdivide the warehouse into logical parts. Zones are divided into bins.
 
-Notice that bin "W-08-0001" is a RECEIVE bin and "W-04-0001" is a PUTPICK bin.
+I noted that bin "W-08-0001" is a RECEIVE bin and "W-04-0001" is a PUTPICK bin.
 
 ![](/assets/images/warehousemanagementputaway/screen-shot-2023-08-19-at-10.38.51-am-1438x713.png)
 *I clicked the Bins link to open a list of Bins in the White Warehouse*
 
 ![](/assets/images/warehousemanagementputaway/screen-shot-2023-08-19-at-10.39.03-am-1437x711.png)
-*This is a list of the Bins in the White Warehouse.*
+*I reviewed the list of Bins in the White Warehouse*
 
 ![](/assets/images/warehousemanagementputaway/screen-shot-2023-08-19-at-10.40.53-am-1431x714.png)
 *I clicked Settings|Personalize to open the Personalizing toolbar.*
@@ -78,23 +72,21 @@ Notice that bin "W-08-0001" is a RECEIVE bin and "W-04-0001" is a PUTPICK bin.
 *Notice that bin W-04-0001 is a PUTPICK bin in the PICK Zone (with a bin ranking of 100)*
 
 ![](/assets/images/warehousemanagementputaway/screen-shot-2023-08-19-at-10.48.31-am-1438x714.png)
-*Business Central will allocate incoming items to "Put Away" bins based on a Put-away Template*
+*I noted that Business Central allocates incoming items to "Put Away" bins based on a Put-away Template*
 
 ![](/assets/images/warehousemanagementputaway/screen-shot-2023-08-19-at-10.48.43-am-1438x711.png)
-*Here two put away templates have been defined*
+*I saw that two put-away templates had been defined*
 
 ![](/assets/images/warehousemanagementputaway/screen-shot-2023-08-19-at-10.49.08-am-1439x713.png)
-*In the STD template items will be directed to a Fixed Bin already used for this item type with the same unit measure and less than minimum quantity, a Fixed Bin already used for this item type with the same unit measure, a Floating Bin that already has an item of this type in it with the same unit measure, a Floating Bin that already has an item of this type in it, to an empty bin with the next highest "bin ranking", or to a random floating bin.*
+*In the STD template, I saw that items are directed to a Fixed Bin already used for this item type with the same unit measure and less than minimum quantity, a Fixed Bin already used for this item type, a Floating Bin that already has an item of this type, an empty bin with the next highest "bin ranking", or a random floating bin.*
 
 ![](/assets/images/warehousemanagementputaway/screen-shot-2023-08-19-at-10.49.32-am-1435x712.png)
-*In the VAR template items will be directed to a Floating Bin that already has an item of this type in it with the same unit measure, to an empty bin with the next highest "bin ranking", or to a random floating bin.*
+*In the VAR template, I saw that items are directed to a Floating Bin that already has an item of this type, an empty bin with the next highest "bin ranking", or a random floating bin.*
 
 
 ## Purchase Order
 
-Purchase Orders are usually created by a planning process.
-
-To demonstrate how items flow through a warehouse I created a Purchase Order manually.
+To demonstrate how items flow through a warehouse, I created a Purchase Order manually.
 
 ![](/assets/images/warehousemanagementputaway/screen-shot-2023-08-19-at-10.49.57-am-1438x712.png)
 *I navigated to the Purchase Orders page*
@@ -109,7 +101,7 @@ To demonstrate how items flow through a warehouse I created a Purchase Order man
 *I selected First Up Consultants*
 
 ![](/assets/images/warehousemanagementputaway/screen-shot-2023-08-19-at-10.51.21-am-1437x714.png)
-*The Vendor name and contact details were added to the new Purchase Order page.*
+*The Vendor name and contact details populated the new Purchase Order page*
 
 ![](/assets/images/warehousemanagementputaway/screen-shot-2023-08-19-at-10.51.42-am-1437x712.png)
 *I wanted to purchase 10 yellow BERLIN Guest Chairs.*
@@ -124,7 +116,7 @@ To demonstrate how items flow through a warehouse I created a Purchase Order man
 *I clicked the Release link (notice that I did not enter a vendor invoice number - the invoice will not be received for some days or weeks)*
 
 ![](/assets/images/warehousemanagementputaway/screen-shot-2023-08-19-at-8.27.50-pm-1836x927.png)
-*The Purchase Order document is released.*
+*The Purchase Order document was released*
 
 
 ## Push or pull the warehouse receipt?
@@ -188,7 +180,7 @@ The alternative is to release the Purchase Order and to let the Warehouse staff 
 *I clicked Yes*
 
 ![](/assets/images/warehousemanagementputaway/screen-shot-2023-08-19-at-8.32.10-pm-1836x929.png)
-*The put away is completed*
+*The put away was completed*
 
 ![](/assets/images/warehousemanagementputaway/screen-shot-2023-08-19-at-8.32.26-pm-1836x924.png)
 *I wanted to review the Bin Contents after clicking Register Put-away*

@@ -4,56 +4,64 @@ description: "Creating a REST API Service using Microsoft cross-platform framewo
 date: "2021-04-10"
 categories: [".NET"]
 tags: ""
+hidden: false
 slug: "dotnet-core-part1"
 image: "/assets/images/dotnet-core-part1/net-logo.svg"
 ---
 
 
 
+```bash
 $ dotnet new webapi
 $ dotnet new gitignore
 $ dotnet run
+```
 
 ![](/assets/images/dotnet-core-part1/screen-shot-2021-04-11-at-3.10.16-pm-1482x960.png)
-*Example Controller*
+*I reviewed the example Controller*
 
 
 ## Creating a Book class
 
+```bash
 $ code .
-Add Book class
+```
+
+I added the Book class.
 
 
 ## Books REST Controller
 
-Add BooksController class
+I added the BooksController class.
 
 
 ## dotnet run
 
+```bash
 $ dotnet run
+```
 
 ![](/assets/images/dotnet-core-part1/screen-shot-2021-04-11-at-3.55.12-pm-1836x802.png)
-*https://localhost:5001/books*
+*I navigated to https://localhost:5001/books*
 
 ![](/assets/images/dotnet-core-part1/screen-shot-2021-04-06-at-11.19.46-am-1836x873.png)
-*https://localhost:5001/books/1788395549*
+*I navigated to https://localhost:5001/books/1788395549*
 
 ![](/assets/images/dotnet-core-part1/screen-shot-2021-04-11-at-4.13.17-pm-1836x809.png)
-*https://localhost:5001/books/1234567890*
+*I navigated to https://localhost:5001/books/1234567890*
 
 
 ## Swagger
 
-Notice that by default Swagger is available.
+I noticed that by default Swagger is available.
 
 ![](/assets/images/dotnet-core-part1/screen-shot-2021-04-11-at-4.18.49-pm-1834x1328.png)
-*https://localhost:5001/swagger/index.html*
+*I navigated to https://localhost:5001/swagger/index.html*
 
 
 ## Startup
 
-Support for Swagger is added in the project's Startup.cs file
+I added support for Swagger in the project's Startup.cs file.
 
 
 ## Static files
@@ -62,10 +70,10 @@ Static files can be added to a wwwroot folder in a Dotnet Core webapi project.
 
 The static files can be image files, html files and javascript files.
 
-To enable the static files add "app.UseStaticFiles();" to Startup.cs as shown below.
+I added "app.UseStaticFiles();" to Startup.cs as shown below.
 
 ![](/assets/images/dotnet-core-part1/screen-shot-2021-04-11-at-4.33.18-pm-644x302.png)
-*app.UseStaticFiles()*
+*I added app.UseStaticFiles()*
 
 
 ## React client
@@ -73,15 +81,15 @@ To enable the static files add "app.UseStaticFiles();" to Startup.cs as shown be
 The static files can be a React app that calls the REST API exposed by the (same) Dotnet Core project.
 
 ![](/assets/images/dotnet-core-part1/screen-shot-2021-04-11-at-4.45.21-pm-1836x1255.png)
-*Running React/Dotnet Core app*
+*I ran the React/Dotnet Core app*
 
 
 ## haddley_power_app_api
 
-The BooksController code can be extended to support POST, PUT and DELETE actions
+I extended the BooksController code to support POST, PUT and DELETE actions.
 
 ![](/assets/images/dotnet-core-part1/screen-shot-2021-06-19-at-2.57.45-pm-1836x1178.png)
-*haddley_power_app_api*
+*I reviewed the haddley_power_app_api project*
 
 
 ## Book.cs
@@ -330,7 +338,7 @@ namespace haddley_power_app_api.Controllers
             return itemFound;
         }
 
-        
+
         [HttpPost]
         public IActionResult Post([FromBody] Book book)
         {

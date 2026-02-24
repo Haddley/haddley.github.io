@@ -4,7 +4,8 @@ description: "Business Central Customer Copilot Using Copilot Studio"
 date: "2025-09-20"
 categories: ["Business Central","AI"]
 image: "/assets/images/customercopilotstudio/office-365-icon-500x500.png"
-tags: ["ai","business central"]
+tags: "ai business central"
+hidden: false
 slug: "customercopilotstudio"
 ---
 

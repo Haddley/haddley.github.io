@@ -4,6 +4,7 @@ description: "The Business Central Administration Center"
 date: "2023-08-18"
 categories: ["Microsoft Dynamics","Business Central"]
 tags: ""
+hidden: false
 slug: "businesscentraladmincenter"
 image: "/assets/images/businesscentraladmincenter/dynamics365-color.svg"
 ---
@@ -29,7 +30,7 @@ I used the Admin Center to create a development/sandbox environment.
 *I clicked the Yes link*
 
 ![](/assets/images/businesscentraladmincenter/screen-shot-2023-08-18-at-12.28.40-pm-1836x717.png)
-*"Copy Scheduled"*
+*The copy was scheduled*
 
 ![](/assets/images/businesscentraladmincenter/screen-shot-2023-08-18-at-12.28.52-pm-1836x714.png)
 *The MySandbox environment was listed in the Environments tab as "Preparing"*

@@ -4,6 +4,7 @@ description: "Test driven development"
 date: "2023-03-26"
 categories: [".NET"]
 tags: "unit tests"
+hidden: false
 slug: "aspnetcoreunittests"
 image: "/assets/images/aspnetcoreunittests/net-logo.svg"
 ---
@@ -14,7 +15,7 @@ Unit tests are automated tests written and run by software developers to ensure 
 I wanted to add unit tests that could be run as part of a continuous integration pipeline.
 
 ![](/assets/images/aspnetcoreunittests/screen-shot-2023-03-26-at-10.49.22-am-1536x877.png)
-*$ dotnet test*
+*I ran dotnet test*
 
 
 ## UnitTest1.cs

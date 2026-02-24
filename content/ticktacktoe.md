@@ -40,16 +40,16 @@ Here's an example implementation of the above steps:
 *project is ready*
 
 ![](/assets/images/ticktacktoe/screen-shot-2023-05-09-at-3.03.30-pm-1836x913.png)
-*add web app*
+*I added a web app*
 
 ![](/assets/images/ticktacktoe/screen-shot-2023-05-09-at-3.04.16-pm-1836x977.png)
 *sdk setup*
 
 ![](/assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.17.39-am-1836x567.png)
-*Add Realtime Database*
+*I added a Realtime Database*
 
 ![](/assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.18.28-am-1836x530.png)
-*create databse*
+*I created a database*
 
 ![](/assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.19.05-am-1836x634.png)
 *database location*
@@ -64,10 +64,10 @@ Here's an example implementation of the above steps:
 *example implementation*
 
 ![](/assets/images/ticktacktoe/screen-shot-2023-05-09-at-5.41.12-pm-1142x274.png)
-*create a folder*
+*I created a folder*
 
 ![](/assets/images/ticktacktoe/screen-shot-2023-05-10-at-12.00.13-pm-1836x643.png)
-*Open with Live Server*
+*I opened the project with Live Server*
 
 ![](/assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.38.28-am-1836x1189.png)
 *code running locally*
@@ -79,13 +79,13 @@ Here's an example implementation of the above steps:
 *firebase deploy*
 
 ![](/assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.44.06-am-1598x1100.png)
-*public folder has been uploaded to firebase*
+*The public folder was uploaded to Firebase*
 
 ![](/assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.45.53-am-1460x542.png)
-*copy the html, css and javascript files to the public folder*
+*I copied the HTML, CSS and JavaScript files to the public folder*
 
 ![](/assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.46.35-am-1836x1189.png)
-*code has been deployed to Firebase (access using https://haddley-tick-tack-toe.web.app/)*
+*The code was deployed to Firebase (https://haddley-tick-tack-toe.web.app/)*
 
 
 ## Adding authentication

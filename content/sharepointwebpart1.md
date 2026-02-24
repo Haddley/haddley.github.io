@@ -12,15 +12,13 @@ image: "/assets/images/sharepointwebpart1/1200px-microsoft-office-sharepoint-201
 
 ## SharePoint Web Parts Extend the Office 365 User Experience
 
-Microsoft SharePoint, Microsoft Teams and Microsoft Outlook can be extended using the SharePoint Framework (SPFx). 
+I used the SharePoint Framework (SPFx) to build a web part for Microsoft SharePoint, Microsoft Teams, and Microsoft Outlook.
 
-The SharePoint Framework is a page and web part model for client-side development.
+The SharePoint Framework is a page and web part model for client-side development that depends on TypeScript and front-end libraries such as React.
 
-The SharePoint Framework depends on TypeScript and front end libraries such as React.
+Once deployed, users can add the new web parts to SharePoint pages.
 
-Once a SharePoint Framework solution has been deployed users are able to add the new Web Parts to SharePoint Pages.
-
-The Yeoman "yo" command can be used to create Web Part solutions.
+I used the Yeoman "yo" command to create the web part solution.
 
 ![yo @microsof/sharepoint](/assets/images/sharepointwebpart1/screen-shot-2021-02-12-at-10.38.21-am-1836x1378.png)
 *yo @microsoft/sharepoint*
@@ -28,7 +26,7 @@ The Yeoman "yo" command can be used to create Web Part solutions.
 
 ## Sample React Code
 
-The React component code below is provided as a starting point.
+Yeoman provided a React component as a starting point.
 
 ![Web Part React Component](/assets/images/sharepointwebpart1/screen-shot-2021-02-12-at-11.35.33-am-1836x1299.png)
 *Web Part React Component*
@@ -36,9 +34,9 @@ The React component code below is provided as a starting point.
 
 ## Local Workbench
 
-A developer can test their Web Part by running "gulp serve".
+I tested the web part by running "gulp serve".
 
-When the gulp serve command is run their Web Parts are available in the local workbench.
+When I ran gulp serve, the web parts were available in the local workbench.
 
 ![SharePoint Workbench](/assets/images/sharepointwebpart1/screen-shot-2021-02-12-at-10.40.53-am-1764x1264.png)
 *SharePoint Workbench*
@@ -48,11 +46,11 @@ When the gulp serve command is run their Web Parts are available in the local wo
 
 A SharePoint Web Part can do interesting things if it has "context".
 
-In this example the ICalendarProps interface is used to pass values from the CalendarWebPart instance to the Calendar React component. 
+I used the ICalendarProps interface to pass values from the CalendarWebPart instance to the Calendar React component.
 
-So we add a context property of type WebPartContext to the ICalendarProps interface and update the CalendarWebPart's render method to pass "this.context" from the CalendarWebPart instance to the Calendar component.
+I added a context property of type WebPartContext to the ICalendarProps interface and updated the CalendarWebPart's render method to pass "this.context" to the Calendar component.
 
-Running "gulp serve" again allows us to test the result in the "Local Workbench" or to test the result in a SharePoint site using the /_layouts/15/workbench.aspx page.
+I ran "gulp serve" again to test the result in the Local Workbench and on a SharePoint site using the /_layouts/15/workbench.aspx page.
 
 ![](/assets/images/sharepointwebpart1/screen-shot-2021-02-12-at-1.43.01-pm-1900x1342.png)
 *Adding context:WebPartContext to ICalendarProps interface*
@@ -78,11 +76,9 @@ The generated Calendar class extends the React.Component class.
 
 The CalendarWebPart class manages state and the Calendar class has state passed to it via props.
 
-Before doing additional work on the Calendar component we can reimplement the Calendar React component as a function component. 
+I reimplemented the Calendar React component as a function component, which made the code easier to read.
 
-Reimplementing the Calendar component as a function component makes the Calendar component code easier to read.
-
-If the Calendar component needs to maintain state we can take advantage of [React useState and useEffect hooks](reactusestateuseeffect.html).
+If the Calendar component needs to maintain state, I can use [React useState and useEffect hooks](reactusestateuseeffect.html).
 
 ![React FunctionComponent](/assets/images/sharepointwebpart1/screen-shot-2021-02-13-at-10.10.01-am-1836x1299.png)
 *Calendar component as a function component*

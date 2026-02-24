@@ -10,10 +10,10 @@ image: "/assets/images/powerapps23configurationmigrationtool/office-365-icon-500
 
 
 
-The Configuration Migration tool is used to transport configuration and data from one environment to another.
+I used the Configuration Migration tool to transport configuration and data from one environment to another.
 
 ![](/assets/images/powerapps23configurationmigrationtool/screenshot-2024-12-28-183528-1366x724.png)
-*Install the Power Platform Tools Visual Studio Code Extension*
+*I installed the Power Platform Tools Visual Studio Code Extension*
 
 ![](/assets/images/powerapps23configurationmigrationtool/screenshot-2024-12-28-183601-1366x726.png)
 *I clicked the Install button*
@@ -22,7 +22,7 @@ The Configuration Migration tool is used to transport configuration and data fro
 *I opened terminal, typed pac and clicked enter*
 
 ![](/assets/images/powerapps23configurationmigrationtool/screenshot-2025-01-01-133511-1365x360.png)
-*In this example there are two Power Platform Environments.*
+*I had two Power Platform Environments*
 
 ![](/assets/images/powerapps23configurationmigrationtool/screenshot-2025-01-01-134203-1366x725.png)
 *I entered pac tool CMT and clicked the enter key*

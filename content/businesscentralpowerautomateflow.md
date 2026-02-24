@@ -4,6 +4,7 @@ description: "Business Central includes a Microsoft Power Automate license"
 date: "2024-01-02"
 categories: ["Microsoft Dynamics","Business Central","Power Platform"]
 tags: ""
+hidden: false
 slug: "businesscentralpowerautomateflow"
 image: "/assets/images/businesscentralpowerautomateflow/posts-meta.svg"
 ---
@@ -61,7 +62,7 @@ A Power Automate flow should at least contain one trigger and one action.
 *I reviewed the new flow*
 
 ![](/assets/images/businesscentralpowerautomateflow/screen-shot-2024-01-03-at-12.35.22-pm-1836x1133.png)
-*Notice that the 28-day run history was empty*
+*I noticed that the 28-day run history was empty*
 
 ![](/assets/images/businesscentralpowerautomateflow/screen-shot-2024-01-03-at-12.35.34-pm-1836x674.png)
 *I navigated to Vendors page in the Business Central web site. I clicked the + New button*

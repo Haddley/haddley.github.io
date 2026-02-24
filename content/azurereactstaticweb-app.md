@@ -4,6 +4,7 @@ description: "Azure Static Web App"
 date: "2024-01-08"
 categories: ["React","Azure"]
 tags: "static"
+hidden: false
 slug: "azurereactstaticweb-app"
 image: "/assets/images/azurereactstaticweb-app/logo512-512x512.png"
 ---

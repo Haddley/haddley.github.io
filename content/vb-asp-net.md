@@ -10,12 +10,6 @@ slug: "vb-asp-net"
 
 # ASP.NET 5 Visual Basic
 
-## Active Server Pages
- 
-ASP Web Forms was released in 2003 (based on the Windows Server and the .NET Framework)
-ASP.NET Model-View-Controller 5 was released in 2009 (based on Windows Server and .NET Framework and Supported in Visual Studio 2019)
-ASP.NET Core Model-View-Controller was released in 2017 (based on cross platform .NET Core and Supported in Visual Studio 2022)
-
 I used Visual Studio 2019 and ASP.NET MVC 5 to create a todo app.
 
 ![](/assets/images/page86/capture4-create-new-project-1026x677.png)
@@ -31,10 +25,10 @@ I used Visual Studio 2019 and ASP.NET MVC 5 to create a todo app.
 *I ran the template project (notice the "ASP.NET MVC gives" text in the index.vbhtml file and the web browser).*
 
 ![](/assets/images/page86/capture8-layout-1416x726.png)
-*The _Layout.vbhtml file provides a common web page framework and navigation*
+*I reviewed the _Layout.vbhtml file, which provides a common web page framework and navigation*
 
 ![](/assets/images/page86/capture9-controller-1382x667.png)
-*Web requests are handled by Controller functions/methods. The controller function will typically return a view (the Web response). The About function sets a "Message" value and then returns a corresponding About view.*
+*I reviewed the controller code. The About function set a "Message" value and returned the corresponding About view.*
 
 ![](/assets/images/page86/capture10-controller-passing-to-view-1405x638.png)
 *Notice that the About view renders the "Message".*
@@ -79,7 +73,7 @@ I used Visual Studio 2019 and ASP.NET MVC 5 to create a todo app.
 *I downloaded a SQL Server docker image*
 
 ![](/assets/images/page86/capture28-docker-sql-server-3-1154x620.png)
-*I created a container based in the downloaded docker image*
+*I created a container based on the downloaded docker image*
 
 ![](/assets/images/page86/capture29-docker-sql-server-5-1364x230.png)
 *I used Visual Studio to create a new database in the docker container's SQL Server*
@@ -88,7 +82,7 @@ I used Visual Studio 2019 and ASP.NET MVC 5 to create a todo app.
 *I entered the credentials*
 
 ![](/assets/images/page86/capture32-docker-sql-server-8-1025x729.png)
-*To get another view of the database I opened Azure Data Studio*
+*I opened Azure Data Studio to get another view of the database*
 
 ![](/assets/images/page86/capture33-docker-sql-server-9-1023x729.png)
 *I entered the address of the SQL Server and the credentials*
@@ -118,7 +112,7 @@ I used Visual Studio 2019 and ASP.NET MVC 5 to create a todo app.
 *I selected the Tasks table*
 
 ![](/assets/images/page86/capture42-docker-sql-server-19-1365x331.png)
-*The Task class is generated*
+*Visual Studio generated the Task class*
 
 ![](/assets/images/page86/capture43-docker-sql-server-20-880x242.png)
 *I selected the Controller folder and selected the Add | New Scaffolded Item... menu item*
@@ -133,25 +127,25 @@ I used Visual Studio 2019 and ASP.NET MVC 5 to create a todo app.
 *Visual Studio added CRUD controller functions and views.*
 
 ![](/assets/images/page86/capture47-docker-sql-server-24-1359x664.png)
-*The controller functions includes Index. The TaskController.Index function will fetch all Tasks from the database and then display then using the corresponding Tasks/Index view*
+*The controller functions included Index. The TaskController.Index function fetched all Tasks from the database and displayed them using the Tasks/Index view*
 
 ![](/assets/images/page86/capture48-docker-sql-server-25-1363x729.png)
-*The TaskController.Index function is executed when a user navigates to /Tasks (see above)*
+*The TaskController.Index function executed when I navigated to /Tasks*
 
 ![](/assets/images/page86/capture49-docker-sql-server-26-1040x622.png)
-*Clicking on the Create New link navigates the user to the TaskController.Create function (returning the generated Create form)*
+*I clicked the Create New link, which navigated to the TaskController.Create function and returned the generated Create form*
 
 ![](/assets/images/page86/capture49-docker-sql-server-26-1040x622.png)
 *I entered the new task text "Feed the fish" and clicked the create Create button. This posted the contents of the form to another Controller function.*
 
 ![](/assets/images/page86/capture51-docker-sql-server-28-1038x616.png)
-*The post handling function added the item to the database table and redirected the user back to the Index page.*
+*The post handling function added the item to the database table and redirected me back to the Index page.*
 
 ![](/assets/images/page86/capture52-docker-sql-server-29-1040x617.png)
 *I used the generated Edit page to update the task.*
 
 ![](/assets/images/page86/capture53-docker-sql-server-30-1040x616.png)
-*Once the database table row has been updated the use is (again) redirected to the Index page.*
+*Once the database table row was updated, I was redirected back to the Index page.*
 
 ![](/assets/images/page86/capture54-docker-sql-server-31-1039x616.png)
 *I added a couple of extra task and marked the Feed the cat task as done.*
@@ -160,10 +154,10 @@ I used Visual Studio 2019 and ASP.NET MVC 5 to create a todo app.
 *I reviewed the database table using the Azure Data Studio application*
 
 ![](/assets/images/page86/capture56-docker-sql-server-33-1364x668.png)
-*Above is an example of the Controller code*
+*I reviewed the Controller code*
 
 ![](/assets/images/page86/capture57-docker-sql-server-34-1365x668.png)
-*Above is an example of the View code*
+*I reviewed the View code*
 
 ![](/assets/images/page86/capture58-docker-sql-server-35-1366x728.png)
 *I pushed the project to GitHub*

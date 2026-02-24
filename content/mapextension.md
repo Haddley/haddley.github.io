@@ -4,13 +4,14 @@ description: "Map Extension"
 date: "2023-09-01"
 categories: ["Business Central"]
 tags: ""
+hidden: false
 slug: "mapextension"
 image: "/assets/images/mapextension/dynamics365-color.svg"
 ---
 
 
 
-The Microsoft Dynamics 365 Business Central Extension described here allows users to view Customer locations in a map.
+I built a Microsoft Dynamics 365 Business Central Extension that allows users to view Customer locations in a map.
 
 
 ## ChatGPT
@@ -58,64 +59,38 @@ SubPageLink indicates that this fact box is linked to the customer number ("No."
 In summary, this code extends customer-related pages in a Business Central application to include a fact box displaying a Leaflet map. The map is populated with customer data, and users can interact with it to visualize customer locations. The LeafletMapsFactBox control add-in provides the functionality for rendering the map, and the code specifies when and where this control should be displayed on customer card and list pages.
 
 ![](/assets/images/mapextension/20230901image01-1333x810.png)
-*Customer Adatum Corporation is based in Atlanta*
+*I viewed Customer Adatum Corporation based in Atlanta*
 
 ![](/assets/images/mapextension/20230901image02-1333x809.png)
-*Customer Trey Research is based in Chicago*
+*I viewed Customer Trey Research based in Chicago*
 
 ![](/assets/images/mapextension/20230901image03-1332x807.png)
-*Customer School of Fine Art is based in Miami*
+*I viewed Customer School of Fine Art based in Miami*
 
 ![](/assets/images/mapextension/20230901image04-1331x808.png)
-*Customer Relecloud is based in Atlanta*
+*I viewed Customer Relecloud based in Atlanta*
 
 
 ## Upload and deploy extension
 
-To upload and deploy an extension to Microsoft Dynamics 365 Business Central, you'll need to follow a series of steps. Extensions in Business Central typically come in the form of [.app](https://haddley.github.io/businesscentral/Haddley_haddley-app_1.0.0.0.app) files or .zip files containing the extension's artifacts and metadata. Here's a step-by-step guide on how to do this:
+To upload and deploy the extension to Microsoft Dynamics 365 Business Central, I followed these steps. Extensions in Business Central typically come in the form of [.app](https://haddley.github.io/businesscentral/Haddley_haddley-app_1.0.0.0.app) files or .zip files containing the extension's artifacts and metadata.
 
-Prerequisites:
-
-You should have an extension package ready (either a .app file or a .zip file) that you want to upload and deploy.
-You should have the necessary permissions to perform these actions in your Business Central instance.
-Steps:
-
-Access Your Business Central Environment:
-Log in to your Microsoft Dynamics 365 Business Central environment with the appropriate credentials.
-Access the Extension Management Page:
-Depending on the version of Business Central you're using, the exact path to the Extension Management page may vary. Generally, you can find it under "Extension Management" or "Extensions."
-Upload the Extension Package:
-Look for an option to "Upload Extension" or something similar. This will allow you to select and upload the extension package (the .app or .zip file) from your local machine.
-Provide Necessary Information:
-Depending on your extension, you may need to provide some configuration details or permissions. Follow the on-screen instructions to configure the extension correctly.
-Install the Extension:
-After uploading the extension, you'll typically see an option to "Install" or "Publish" it. Click this option to initiate the installation process.
-Monitor Installation Progress:
-Business Central will begin installing the extension. You can monitor the installation progress, and if any issues arise, you'll receive error messages indicating what needs to be resolved.
-Check the Status:
-Once the installation is complete, check the status of the extension to ensure it's successfully installed and deployed. You should see it listed among your installed extensions.
-Enable or Configure the Extension:
-Depending on the extension, you may need to enable or configure it further to make it functional. This can include setting up permissions, defining data mappings, or configuring integration points.
-Test and Validate:
-Before using the extension in a production environment, it's a good practice to thoroughly test it in a sandbox or testing environment to ensure it works as expected and doesn't conflict with existing functionality.
-Go Live:
-Once you are satisfied with the extension's performance in your testing environment, you can deploy it to your production environment by following similar steps. Make sure to have a backup and a rollout plan in case any issues arise during deployment.
-Remember that the exact steps and options may vary slightly depending on the version of Business Central you're using and the specific requirements of the extension you are deploying. Always refer to the official documentation for your version of Business Central for detailed instructions and troubleshooting guidance.
+I logged in to my Microsoft Dynamics 365 Business Central environment with the appropriate credentials. I navigated to the Extension Management page, found under "Extension Management" or "Extensions." I selected "Upload Extension" to upload the extension package (the .app file) from my local machine. I provided the necessary configuration details and permissions following the on-screen instructions. I clicked "Install" to initiate the installation process and monitored the installation progress. Once the installation was complete, I checked the status of the extension to ensure it was successfully installed and deployed. I then enabled and configured it further, setting up permissions and defining data mappings as needed.
 
 ![](/assets/images/mapextension/20230903image01-1340x889.png)
-*Advanced Settings*
+*I opened Advanced Settings*
 
 ![](/assets/images/mapextension/20230903image02-1336x887.png)
-*Upload And Deploy Extension*
+*I clicked Upload And Deploy Extension*
 
 ![](/assets/images/mapextension/20230903image03-1333x808.png)
-*Deploy*
+*I clicked Deploy*
 
 ![](/assets/images/mapextension/20230903image04-1330x805.png)
-*Installation in progress*
+*I confirmed installation was in progress*
 
 ![](/assets/images/mapextension/20230903image05-1337x885.png)
-*Extension running in the cloud*
+*I confirmed the Extension was running in the cloud*
 
 
 ## LeafletMapsExtension.al

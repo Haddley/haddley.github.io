@@ -6,7 +6,7 @@ categories: ["Business Central","AI"]
 tags: "model context protocol"
 image: "/assets/images/mcpserver2/mcp-1024x1024.png"
 slug: "mcpserver2"
-hidden: "false"
+hidden: false
 ---
 
 
@@ -22,15 +22,15 @@ I created a Model Context Protocol (MCP) server for Microsoft Business Central
 *I ran npx -y @modelcontextprotocol/inspector npx -y tsx main.ts.*
 
 ![](/assets/images/mcpserver2/screenshot202025-08-2220at205.48.28e280afpm-2136x1239.png)
-*The hello tool returned success*
+*I confirmed the hello tool returned success*
 
 ![](/assets/images/mcpserver2/screenshot202025-08-2220at206.30.50e280afpm-2136x1425.png)
 *I replaced the hello tool with a get-vendors tool*
 
 ![](/assets/images/mcpserver2/screenshot202025-08-2220at206.35.00e280afpm-2136x1369.png)
-*I ran npx -y @modelcontextprotocol/inspector npm run dev. The get_vendors tools returned success.Later I ran npm run build and then npx -y @modelcontextprotocol/inspector npm run start*
+*I ran npx -y @modelcontextprotocol/inspector npm run dev. The get_vendors tool returned success. Later I ran npm run build and then npx -y @modelcontextprotocol/inspector npm run start*
 
-For remote servers, set up a Streamable HTTP transport that handles both client requests and server-to-client notifications.
+For remote servers, I set up a Streamable HTTP transport that handles both client requests and server-to-client notifications.
 
 ![](/assets/images/mcpserver2/screenshot202025-08-2720at205.10.09e280afpm-2136x1326.png)
 *I ran docker build -t business-central-mcp .then npm run docker:run*
@@ -41,7 +41,7 @@ For remote servers, set up a Streamable HTTP transport that handles both client 
 ![](/assets/images/mcpserver2/screenshot202025-08-2720at205.12.56e280afpm-1619x886.png)
 *I ran the get_vendors tool*
 
-The Azure Container Apps extension for Visual Studio Code enables you to choose existing Container Apps resources, or create new ones to deploy your applications to.
+I used the Azure Container Apps extension for Visual Studio Code to choose existing Container Apps resources and deploy my application.
 
 [https://learn.microsoft.com/en-us/azure/container-apps/deploy-visual-studio-code](https://learn.microsoft.com/en-us/azure/container-apps/deploy-visual-studio-code)
 
@@ -64,7 +64,7 @@ The Azure Container Apps extension for Visual Studio Code enables you to choose 
 *I selected the .env file*
 
 ![](/assets/images/mcpserver2/screenshot202025-08-2720at205.39.11e280afpm-2136x1314.png)
-*The deployment finished*
+*I confirmed the deployment finished*
 
 ![](/assets/images/mcpserver2/screenshot202025-08-2720at205.41.17e280afpm-2136x1079.png)
 *I ran a fresh copy of the inspector*
@@ -102,13 +102,13 @@ I used a Custom Connector to connect Copilot Studio to the Model Context Protoco
 *I clicked the Add and configure button*
 
 ![](/assets/images/mcpserver2/screenshot202025-08-2720at205.50.48e280afpm-1619x841.png)
-*The get_vendors tool was displayed*
+*I confirmed the get_vendors tool was displayed*
 
 ![](/assets/images/mcpserver2/screenshot202025-08-2720at205.51.42e280afpm-1618x861.png)
 *I was directed to the Create or pick a connection form. I clicked the Submit button*
 
 ![](/assets/images/mcpserver2/screenshot202025-08-2720at205.51.52e280afpm-1619x378.png)
-*The status if MCP-Streamable-HTTP was updated to Connected*
+*I confirmed the status of MCP-Streamable-HTTP was updated to Connected*
 
 ![](/assets/images/mcpserver2/screenshot202025-08-2720at206.00.11e280afpm-1728x341.png)
 *I had entered this prompt Please show me a table of vendors*
@@ -116,9 +116,7 @@ I used a Custom Connector to connect Copilot Studio to the Model Context Protoco
 ![](/assets/images/mcpserver2/screenshot202025-08-2720at205.52.48e280afpm-1729x924.png)
 *Copilot Studio's Large Language Model used the get_vendors tool to establish the context.*
 
-Open LM Studio and navigate to the "Program" tab in the right sidebar.
-Click on "Install" and select "Edit mcp.json". This opens the mcp.json file in LM Studio's in-app editor.
-Add your MCP server configuration to the mcp.json file.
+I opened LM Studio and navigated to the "Program" tab in the right sidebar. I clicked on "Install" and selected "Edit mcp.json", which opened the mcp.json file in LM Studio's in-app editor. I added my MCP server configuration to the mcp.json file.
 
 ![](/assets/images/mcpserver2/screenshot202025-08-2820at202.32.16e280afpm-2136x593.png)
 *I selected Chats in the left hand menu. I clicked the show settings button at the top right of the LM Studio application. I added the business central mcp server using the url https://business-central-mcp-new.thankfulsea-b533246e.eastus.azurecontainerapps.io/mcp. I enabled the mcp server connection.*

@@ -120,22 +120,22 @@ I started by creating a "Microsoft Graph" application registration in Azure Acti
 *Screen1's OnVisible property is set to "Collect(Calendar, (MicrosoftGraphConnector.AllEventsInMyCalendar().value)"*
 
 ![](/assets/images/powerapps6/screen-shot-2022-07-04-at-4.56.15-pm-1836x930.png)
-*Running the Canvas app creates a Calendar collection (of Events).*
+*Running the Canvas app created a Calendar collection of Events.*
 
 ![](/assets/images/powerapps6/screen-shot-2022-07-04-at-4.56.38-pm-1836x229.png)
-*A Gallery is added to the Screen1. The Items property of the Gallery is set to the Calendar collection.*
+*I added a Gallery to Screen1 and set its Items property to the Calendar collection.*
 
 ![](/assets/images/powerapps6/screen-shot-2022-07-04-at-4.57.01-pm-1836x392.png)
-*The item template is updated setting Title to the Event item's "subject"*
+*I updated the item template setting Title to the Event item's "subject"*
 
 ![](/assets/images/powerapps6/screen-shot-2022-07-04-at-4.57.12-pm-1441x305.png)
-*The item template is updated setting Subtitle to "All Day" if the Event item's isAllDay field is true.*
+*I updated the item template setting Subtitle to "All Day" if the Event item's isAllDay field is true.*
 
 ![](/assets/images/powerapps6/screen-shot-2022-07-04-at-4.57.22-pm-1444x306.png)
-*The item template is updated setting Body to the Event item's "start.datetime"*
+*I updated the item template setting Body to the Event item's "start.datetime"*
 
 ![](/assets/images/powerapps6/screen-shot-2022-07-04-at-4.57.37-pm-1836x931.png)
-*The Calendar application is complete*
+*The Calendar application was complete*
 
 
 ## Adding UserByEmail
@@ -143,22 +143,22 @@ I started by creating a "Microsoft Graph" application registration in Azure Acti
 Finally I added a UserByEmail action to the Connector
 
 ![](/assets/images/powerapps6/screen-shot-2022-07-05-at-7.03.25-am-1536x755.png)
-*User by email request requires User.Read.All permissions (scope)*
+*A User by email request requires User.Read.All permissions*
 
 ![](/assets/images/powerapps6/screen-shot-2022-07-05-at-6.59.41-am-1536x774.png)
-*Update existing Application Registration adding a permission*
+*I updated the existing Application Registration and added a permission*
 
 ![](/assets/images/powerapps6/screen-shot-2022-07-05-at-7.05.14-am-1536x754.png)
-*Adding the "User.Read.All" permission*
+*I added the User.Read.All permission*
 
 ![](/assets/images/powerapps6/screen-shot-2022-07-05-at-7.05.33-am-1536x320.png)
-*Updated permissions - Granting admin consent*
+*I updated the permissions and granted admin consent*
 
 ![](/assets/images/powerapps6/screen-shot-2022-07-05-at-7.07.19-am-1536x754.png)
-*Edit the Custom Connection*
+*I edited the Custom Connection*
 
 ![](/assets/images/powerapps6/screen-shot-2022-07-05-at-7.07.32-am-1536x219.png)
-*Add new action*
+*I added a new action*
 
 ![](/assets/images/powerapps6/screen-shot-2022-07-05-at-7.08.35-am-1536x755.png)
 *I entered general details*
@@ -170,7 +170,7 @@ Finally I added a UserByEmail action to the Connector
 *I copied a sample response from Graph Explorer to the Custom Connector*
 
 ![](/assets/images/powerapps6/screen-shot-2022-07-05-at-7.10.19-am-1536x749.png)
-*The Custom Connector displays details of the response body provided to it*
+*The Custom Connector displayed details of the response body*
 
 ![](/assets/images/powerapps6/screen-shot-2022-07-05-at-7.11.03-am-1536x751.png)
 *I updated the Custom Connector and navigated to the Test step*
@@ -188,7 +188,7 @@ Finally I added a UserByEmail action to the Connector
 *I added a reference to the updated Custom Connector*
 
 ![](/assets/images/powerapps6/screen-shot-2022-07-05-at-7.14.14-am-1536x752.png)
-*The reference is displayed in the Data tab*
+*The reference appeared in the Data tab*
 
 ![](/assets/images/powerapps6/screen-shot-2022-07-05-at-7.16.18-am-1536x751.png)
 *I added a Text input and a Text label*

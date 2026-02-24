@@ -10,12 +10,7 @@ image: "/assets/images/powerpages3/powerpages-scalable.svg"
 
 
 
-Customer Order Lines refer to the individual items or services listed within a customer's order. Each order line represents a specific product or service being purchased, including details such as:
-
-Product or Service Name: The name or description of the item.
-Quantity: The number of units being ordered for that specific product or service.
-Price: The cost per unit of the product or service.
-Total Amount: The extended price, which is typically the product of quantity and unit price.
+I extended the Power Pages Customer Portal to support Customer Order Lines, allowing customers to add, edit, and delete individual items within their orders.
 
 ![](/assets/images/powerpages3/screenshot-2024-12-20-at-7.13.41pm-2136x888.png)
 *I created a new Table in the Solution*
@@ -54,7 +49,7 @@ Total Amount: The extended price, which is typically the product of quantity and
 *I added a Customer Order Lines Grid to the Customer Order table's Portal form*
 
 ![](/assets/images/powerpages3/screenshot-2024-12-20-at-7.36.41pm-2136x1097.png)
-*I uncheck the Hide label checkbox*
+*I unchecked the Hide label checkbox*
 
 ![](/assets/images/powerpages3/screenshot-2024-12-20-at-7.38.00pm-2136x651.png)
 *I tested the add Customer Order Line form*
@@ -93,22 +88,22 @@ Total Amount: The extended price, which is typically the product of quantity and
 *I named the child permissions entry Customer Order Lines by Customer Order. The Customer Order Lines by Customer Order permission entry allows the logged in user to view any Customer Order Line that is related to a Customer Order they have access to. Account Customer Orders permissions provides the given users to only the rows/records that relate to their organization.*
 
 ![](/assets/images/powerpages3/screenshot-2025-01-13-at-12.18.23pm-2136x1106.png)
-*Notice that the Append permission has been added*
+*The Append permission was added*
 
 ![](/assets/images/powerpages3/screenshot-2024-12-20-at-10.31.34pm-2136x1099.png)
-*I added Read, Update, Create, Delete and Append to permissions to the Account Customer Orders Table permissions entry.We would like a user to be able to create Customer Order Lines to existing Customer Orders*
+*I added Read, Update, Create, Delete and Append permissions to the Account Customer Orders Table permissions entry, allowing users to create Customer Order Lines on existing Customer Orders*
 
 ![](/assets/images/powerpages3/screenshot-2024-12-20-at-7.57.56pm-2136x920.png)
-*The Edit Customer Order form displays a Grid of related Customer Order Line records*
+*The Edit Customer Order form displayed a grid of related Customer Order Line records*
 
 ![](/assets/images/powerpages3/screenshot-2024-12-20-at-7.58.07pm-2136x952.png)
 *I added a Basic Form Metadata entry*
 
 ![](/assets/images/powerpages3/screenshot-2024-12-20-at-7.59.22pm-2136x1097.png)
-*This Basic Form Metadata entry configures the Grid displayed on the Edit Customer Order form*
+*This Basic Form Metadata entry configured the grid displayed on the Edit Customer Order form*
 
 ![](/assets/images/powerpages3/screenshot-2024-12-20-at-8.01.05pm-2136x1013.png)
-*A Create button has been added to the Customer Order form's grid*
+*A Create button appeared on the Customer Order form's grid*
 
 ![](/assets/images/powerpages3/screenshot-2024-12-20-at-8.01.20pm-2136x1027.png)
 *I was not able to lookup Items*
@@ -138,10 +133,10 @@ Total Amount: The extended price, which is typically the product of quantity and
 *I named the new form Edit Customer Order Line*
 
 ![](/assets/images/powerpages3/screenshot-2024-12-20-at-10.50.57pm-2136x1090.png)
-*The new form would allow a user to update a Customer Order Line*
+*The new form allows a user to update a Customer Order Line*
 
 ![](/assets/images/powerpages3/screenshot-2024-12-20-at-10.51.14pm-2136x958.png)
-*The Edit Customer Order page will redirect to the Edit Customer Order page*
+*On submit, the Edit Customer Order Line page redirects to the Edit Customer Order page*
 
 ![](/assets/images/powerpages3/screenshot-2024-12-20-at-10.51.23pm-2136x991.png)
 *I cleared the CAPTCHA boxes*
@@ -165,7 +160,7 @@ Total Amount: The extended price, which is typically the product of quantity and
 *I was redirected to the Customer Order with the updated line displayed*
 
 ![](/assets/images/powerpages3/screenshot-2024-12-20-at-11.14.29pm-2136x817.png)
-*Clicking Submit in the Customer Order's page redirects the user back to the Customer Orders list page*
+*Clicking Submit on the Customer Order page redirected me back to the Customer Orders list page*
 
 ![](/assets/images/powerpages3/screenshot-2024-12-21-at-8.35.26am-2136x1099.png)
 *I added the related Item | Unit Price and Item | Based Unit of Measure columns to the Portal Active Customer Order Lines view*

@@ -42,16 +42,16 @@ I used json-server to create a simple api
 *ng test*
 
 ![](/assets/images/ngrxentity/screen-shot-2023-02-19-at-4.16.26-pm-1536x356.png)
-*providedIn: 'root' (no need to add service to app.module.ts)*
+*I used `providedIn: 'root'` so I didn't need to add the service to app.module.ts*
 
 ![](/assets/images/ngrxentity/screen-shot-2023-02-19-at-4.21.24-pm-1536x574.png)
-*co-pilot suggests creating a post.model file (why not?)*
+*GitHub Copilot suggested creating a post.model file*
 
 ![](/assets/images/ngrxentity/screen-shot-2023-02-19-at-4.23.22-pm-1536x351.png)
-*co-pilot suggests that we include a body field (why not?)*
+*GitHub Copilot suggested including a body field*
 
 ![](/assets/images/ngrxentity/screen-shot-2023-02-19-at-5.21.38-pm-1536x615.png)
-*co-pilot suggests that we include a deletePost method (why not)*
+*GitHub Copilot suggested including a deletePost method*
 
 ![](/assets/images/ngrxentity/screen-shot-2023-02-19-at-6.33.32-pm-1536x552.png)
 *imports HttpClientModule*
@@ -91,11 +91,7 @@ I updated the tests to use the mock.
 *Karma results in a web page*
 
 
-Entity provides an API to manipulate and query entity collections.
-
-Reduces boilerplate for creating reducers that manage a collection of models.
-Provides performant CRUD operations for managing entity collections.
-Extensible type-safe adapters for selecting entity information.
+I added NgRx Entity, which provides an API to manipulate and query entity collections. It reduces boilerplate for reducers that manage a collection of models and provides performant CRUD operations with type-safe adapters.
 
 ![](/assets/images/ngrxentity/screen-shot-2023-02-20-at-3.08.35-pm-1536x498.png)
 *Load Posts Success*

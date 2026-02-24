@@ -60,13 +60,13 @@ I used **Azure Spring Apps** to host a Java Web Application in Microsoft Azure
 *Scale out*
 
 ![](/assets/images/sprint-apps1/screenshot-2023-10-24-at-12.55.39-pm-2136x1113.png)
-*Stop service*
+*I stopped the service*
 
 ![](/assets/images/sprint-apps1/screenshot-2023-10-24-at-12.56.25-pm-2136x1116.png)
 *Quickstarts*
 
 ![](/assets/images/sprint-apps1/screenshot-2023-10-24-at-2.50.38-pm-2136x968.png)
-*./mvnw spring-boot:run*
+*I ran ./mvnw spring-boot:run*
 
 ![](/assets/images/sprint-apps1/screenshot-2023-10-24-at-2.49.29-pm-2136x1245.png)
 *Tomcat initialized with port 8080 (http)*

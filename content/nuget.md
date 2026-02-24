@@ -21,11 +21,11 @@ Some interpreters (and compilers) eliminate the stack frame creation and destruc
 
 ## C#
 
-Adding a "**HaddleyOffice365.dotnet-factorial**" package to NuGet.org.
+I added a "**HaddleyOffice365.dotnet-factorial**" package to NuGet.org.
 
 NuGet is the package manager for .NET.
 
-Start by creating a **dotnet-factorial** repository in the https://github.com/**HaddleyOffice365** profile.
+I started by creating a **dotnet-factorial** repository in the https://github.com/**HaddleyOffice365** profile.
 
 ![](/assets/images/nuget/screen-shot-2021-03-01-at-5.09.52-pm-788x908.png)
 *New repository will be named dotnet-factorial*
@@ -39,25 +39,25 @@ Start by creating a **dotnet-factorial** repository in the https://github.com/**
 
 ## Create a .NET solution and the .NET projects
 
-Create a dotnet solution
+I created a dotnet solution.
 
 **$ dotnet new sln**
 
-Create a class library project and add the new class library project to the solution
+I created a class library project and added it to the solution.
 
 **$ dotnet new classlib -o dotnet-factorial
 $ dotnet sln add ./dotnet-factorial/dotnet-factorial.csproj**
 
-Create a test project and add the new test project to the solution
+I created a test project and added it to the solution.
 
 **$ dotnet new mstest -o unittests
 $ dotnet sln add ./unittests/unittests.csproj**
 
-At a reference from the unit tests project to the factorial project.
+I added a reference from the unit tests project to the factorial project.
 
 **$ dotnet add  ./unittests/unittests.csproj reference ./dotnet-factorial/dotnet-factorial.csproj **
 
-Add a .gitignore file to the unit tests project directory and to the factorial project directory.
+I added a .gitignore file to both project directories.
 
 **$ cd dotnet-factorial
 $ dotnet new gitignore
@@ -71,17 +71,16 @@ $ cd ..**
 
 ## Rename UnitTest1, copy and rename Class1
 
-Rename the generated UnitTest1 class to "UnitTests"
+I renamed the generated UnitTest1 class to "UnitTests".
 
-Copy Class1 class and rename to "recursivefunctions.cs"
-Rename the generated Class1 class to "iterativefunctions"
+I copied Class1 and renamed it to "recursivefunctions.cs". I renamed the generated Class1 class to "iterativefunctions".
 
-Update the file contents:
+I updated the file contents.
 
 
 ## dotnet test
 
-use "dotnet test" to run the unit test locally on the development machine.
+I used `dotnet test` to run the unit tests locally.
 
 **$ dotnet test**
 
@@ -91,7 +90,7 @@ use "dotnet test" to run the unit test locally on the development machine.
 
 ## Commit to main
 
-Commit updates to the repository.
+I committed updates to the repository.
 
 ![](/assets/images/nuget/screen-shot-2021-03-01-at-5.53.33-pm-1836x1251.png)
 *Commit to main branch*
@@ -102,7 +101,7 @@ Commit updates to the repository.
 
 ## GitHub actions
 
-A GitHub action will ensure that testing is performed automatically.
+I added a GitHub Action to run tests automatically.
 
 ![](/assets/images/nuget/screen-shot-2021-03-01-at-5.56.28-pm-1140x764.png)
 *Add the ".NET By GitHub Actions" workflow*
@@ -119,7 +118,7 @@ A GitHub action will ensure that testing is performed automatically.
 
 ## PackageLicenseExpression, PackageId and Version
 
-Add PackageLicenseExpression, PackageId and Version tags to the Functions.csproj file
+I added PackageLicenseExpression, PackageId and Version tags to the .csproj file.
 
 ![](/assets/images/nuget/screen-shot-2021-03-01-at-6.10.42-pm-1836x709.png)
 *dotnet-factorial.csproj*
@@ -127,7 +126,7 @@ Add PackageLicenseExpression, PackageId and Version tags to the Functions.csproj
 
 ## dotnet pack
 
-use "dotnet pack" to create .nupkg file
+I used `dotnet pack` to create the .nupkg file.
 
 **$ dotnet pack**
 
@@ -137,7 +136,7 @@ use "dotnet pack" to create .nupkg file
 
 ## Listing the NuGet package
 
-Upload the nupkg file to nuget.org.
+I uploaded the .nupkg file to nuget.org.
 
 ![](/assets/images/nuget/screen-shot-2021-03-01-at-6.20.15-pm-1836x971.png)
 *+ Add new*

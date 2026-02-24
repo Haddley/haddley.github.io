@@ -10,33 +10,19 @@ slug: "taxsetup"
 ---
 
 
+I configured Tax Setup in Microsoft Dynamics 365 Business Central, including sub-ledgers and posting groups.
+
 ## Sub-ledgers
 
-In Microsoft Dynamics 365 Business Central, sub-ledgers are used to record and manage specific types of transactions.
-
-Each sub-ledger corresponds to a specific type of transaction or business process.
-
-Sub-ledgers include:
-
-Item Ledger
-Vendor Ledger
-Detailed Vendor Ledger
-Customer Ledger; and
-Detailed Customer Ledger
-
+Sub-ledgers in Business Central are used to record specific types of transactions. Sub-ledgers include the Item Ledger, Vendor Ledger, Detailed Vendor Ledger, Customer Ledger, and Detailed Customer Ledger.
 
 ## Posting Groups
 
-In Microsoft Dynamics 365 Business Central, Posting Groups are used to "build a bridge" between Business Central sub-ledgers and the general ledger accounts.
-
+Posting Groups build a bridge between Business Central sub-ledgers and general ledger accounts.
 
 ## Vendor Posting Group
 
-A Vendor Posting Group is used to define which accounts payable general ledger account to use when purchasing goods from a Vendor.
-
-A Vendor Posting Group can also be used to define service charge accounts, and payment discount accounts.
-
-Vendor Posting Groups are maintained using the Vendor Posting Groups page.
+I used Vendor Posting Groups to define which accounts payable general ledger account to use when purchasing goods from a Vendor. I maintained Vendor Posting Groups using the Vendor Posting Groups page.
 
 ![](/assets/images/taxsetup/screen-shot-2023-12-12-at-3.22.52-pm-1536x777.png)
 *esp8266*

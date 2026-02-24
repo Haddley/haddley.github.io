@@ -19,7 +19,7 @@ slug: "page141"
 
 ## Spring Data JPA
 
-Spring Data JPA provides a set of abstractions and high-level, repository-style interfaces that make it easier to work with Java Persistence API (JPA) for data access in Spring applications. It reduces boilerplate code.
+I used Spring Data JPA, which provides repository-style interfaces for working with the Java Persistence API (JPA). It reduces boilerplate code for data access in Spring applications.
 
 I created a Spring Boot application that used Spring Data JPA to access PostgreSQL.
 

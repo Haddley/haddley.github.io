@@ -4,6 +4,7 @@ description: "Which accounts receivable account?"
 date: "2023-12-14"
 categories: ["Microsoft Dynamics","Business Central"]
 tags: ""
+hidden: false
 slug: "customerpostinggroup"
 image: "/assets/images/customerpostinggroup/posts-meta.svg"
 ---
@@ -30,7 +31,7 @@ Customer Posting Groups are maintained using the Customer Posting Groups page.
 *I added code DOMESTIC and set Receivables Account to 15110 (Account Receivable, Domestic)*
 
 ![](/assets/images/customerpostinggroup/screenshot-2023-12-14-at-8.43.39-am-1836x806.png)
-*Customer Posting Group is set to DOMESTIC*
+*I set the Customer Posting Group to DOMESTIC*
 
 ![](/assets/images/customerpostinggroup/screenshot-2023-12-14-at-8.46.28-am-1836x808.png)
 *I used search to navigate to the General Journal page*

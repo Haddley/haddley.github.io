@@ -12,11 +12,7 @@ hidden: "false"
 
 
 
-Copilot Prompt Interface: A user interface (UI) component designed to collect user inputs and queries for Microsoft Dynamics 365 Business Central's Copilot feature. This dialog page enables users to interact with the AI assistant by submitting natural language prompts or requests.
-
-AI Integration Module: A backend system component that acts as the intermediary between Business Central and Azure OpenAI Service. This module handles API communication, data processing, and secure routing of user prompts to Azure's AI services, while managing responses back to the Business Central application.
-
-Azure OpenAI Resource: A cloud-based service within the Microsoft Azure ecosystem that provides access to advanced OpenAI language models (e.g., GPT-4). This resource enables AI-driven capabilities such as natural language understanding, content generation, and contextual analysis, which power Copilot's intelligent features in Business Central.
+I connected the Business Central PromptDialog to Azure OpenAI, so the Copilot generates real AI responses rather than static text. The RunGeneration procedure calls Azure OpenAI's chat completions API and returns the model's output to the Output field.
 
 ![](/assets/images/promptdialog2/screenshot202025-05-2320at209.29.26e280afpm-2136x1241.png)
 *I updated the LLM Prompt Dialog page*
@@ -35,10 +31,10 @@ Azure OpenAI Resource: A cloud-based service within the Microsoft Azure ecosyste
 *I updated the "publisher" property*
 
 ![](/assets/images/promptdialog2/screenshot202025-05-2320at2010.14.21e280afpm-2136x646.png)
-*There is a Copilot & agent capabilities page in Business Central*
+*I found the Copilot & agent capabilities page in Business Central*
 
 ![](/assets/images/promptdialog2/screenshot202025-05-2320at2010.18.05e280afpm-2136x1171.png)
-*The LLM Capability has been added to the list*
+*The LLM Capability appeared in the list*
 
 
 ## Pag50100.LLM.al updated

@@ -12,24 +12,18 @@ image: "/assets/images/sharepointwebpart2/1200px-microsoft-office-sharepoint-201
 
 ## Adding the big calendar
 
-npm is the package manager for the Node JavaScript platform. 
-
-The npmjs web site is a repository of reusable software components.
-
-react-big-calendar is an events calendar  component built for React.
+I added the react-big-calendar events calendar component to the SharePoint Web Part solution.
 
 [https://www.npmjs.com/package/react-big-calendar](https://www.npmjs.com/package/react-big-calendar)
 
-To add the react-big-calendar component to our SharePoint Web Part solution we run this command:
+I installed it by running:
 
 $ npm i react-big-calendar
 
 
 ## Update the Calendar Function Component
 
-This is how to update the Web Part's Calendar Component to include react-big-calendar.
-
-Notice that we are again using React's [useEffect and useState hooks](reactusestateuseeffect.html).
+I updated the Web Part's Calendar Component to include react-big-calendar, again using React's [useEffect and useState hooks](reactusestateuseeffect.html).
 
 
 ## Pnp react-calendar sample
@@ -38,14 +32,14 @@ SharePoint provides a [REST API](restapiservice.html).
 
 The [pnp react-calendar sample project](https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-calendar) uses an "sp-services" class to hold all of the code needed to fetch Calendar list items from the SharePoint site via SharePoint's REST API.
 
-We can use the same approach:
+I used the same approach:
 
 
 ## workbench.aspx
 
-The code above assumes that your SharePoint site has a Calendar list named "Calendar".
+The code assumes the SharePoint site has a Calendar list named "Calendar".
 
-The Local Workbench used for Web Part testing does not have a Calendar list, so to test the Web Part we need to navigate to the workbench page in a SharePoint site that does have a Calendar list (eg. https://haddleyoffice365.sharepoint.com/sites/AllStaff/_layouts/15/workbench.aspx).
+The Local Workbench does not have a Calendar list, so I navigated to the workbench page on a SharePoint site that does (e.g. https://haddleyoffice365.sharepoint.com/sites/AllStaff/_layouts/15/workbench.aspx).
 
 ![](/assets/images/sharepointwebpart2/screen-shot-2021-02-14-at-2.53.35-pm-1900x1357.png)
 *Example Team Site Calendar with sample events*
@@ -59,22 +53,22 @@ The Local Workbench used for Web Part testing does not have a Calendar list, so 
 
 ## Packaging and deploying
 
-These commands can be used to create a .sppkg package
+I used these commands to create a .sppkg package:
 
 gulp clean
 gulp bundle --ship
 gulp package-solution --ship
 
-The Web Part can then be deployed by copying the .sppkg package to the SharePoint tenant's app catalog site.
+I deployed the web part by copying the .sppkg package to the SharePoint tenant's app catalog site.
 
 ![](/assets/images/sharepointwebpart2/screen-shot-2021-02-14-at-3.12.16-pm-1900x1209.png)
-*Copying the .sppkg package to the SharePoint app catalog*
+*I copied the .sppkg package to the SharePoint app catalog*
 
 ![](/assets/images/sharepointwebpart2/screen-shot-2021-02-14-at-3.13.38-pm-1900x1213.png)
-*Adding the Calendar Web Part to a Sharepoint page*
+*I added the Calendar Web Part to a SharePoint page*
 
 ![](/assets/images/sharepointwebpart2/screen-shot-2021-02-14-at-3.13.52-pm-1900x1215.png)
-*An opportunity to set the Calendar Web Part properties*
+*I set the Calendar Web Part properties*
 
 ![](/assets/images/sharepointwebpart2/screen-shot-2021-02-14-at-3.14.12-pm-1900x1208.png)
 *The Calendar Web Part running in the SharePoint page (in Month mode)*

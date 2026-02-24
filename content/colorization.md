@@ -4,6 +4,7 @@ description: "colorization.ipynb"
 date: "2023-08-03"
 categories: ["Python","AI"]
 tags: ""
+hidden: false
 slug: "colorization"
 image: "/assets/images/colorization/jupyter.svg"
 ---

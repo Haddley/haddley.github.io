@@ -4,6 +4,7 @@ description: " the Account|Sales Insights form"
 date: "2023-10-21"
 categories: ["Microsoft Dynamics"]
 tags: "microsoft dynamics sales"
+hidden: false
 slug: "dynamicssales1"
 image: "/assets/images/dynamicssales1/dynamics365-color.svg"
 ---
@@ -21,16 +22,16 @@ I added the customizations to a [solution](/posts/modeldriven1/).
 *By default the Accounts page in the Sales app displays the Account|My Active Accounts view*
 
 ![](/assets/images/dynamicssales1/screenshot-2023-10-21-at-12.46.39-pm-2136x1244.png)
-*Clicking on an Account in the Account|My Active Accounts view opens the Account|Sales Insights Form*
+*I clicked on an Account in the Account|My Active Accounts view and the Account|Sales Insights Form opened*
 
 ![](/assets/images/dynamicssales1/screenshot-2023-10-21-at-12.49.54-pm-2136x1255.png)
-*To customize the "Sales Insights" form I navigated to https://make.powerapps.com and selected the the "Sales Trial" environment*
+*I navigated to https://make.powerapps.com to customize the "Sales Insights" form and selected the "Sales Trial" environment*
 
 ![](/assets/images/dynamicssales1/screenshot-2023-10-21-at-12.54.50-pm-2136x1103.png)
 *I created a "Sales Customizations" solution*
 
 ![](/assets/images/dynamicssales1/screenshot-2023-10-21-at-12.55.42-pm-2136x1111.png)
-*I create a new publisher (Neil Haddley)*
+*I created a new publisher (Neil Haddley)*
 
 ![](/assets/images/dynamicssales1/screenshot-2023-10-21-at-12.55.52-pm-2136x1111.png)
 *I added my email address*

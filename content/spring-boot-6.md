@@ -10,7 +10,7 @@ image: "/assets/images/spring-boot-6/spring-framework-logo-70-no.svg"
 
 
 
-OAuth2 authentication using Spring Security and GitHub.
+I implemented OAuth2 authentication using Spring Security and GitHub.
 
 ![](/assets/images/spring-boot-6/screenshot-2023-11-01-at-1.43.58-pm-1433x943.png)
 *I used spring initializr to create a new project with a dependency on Spring Web and OAuth2 Client*
@@ -25,7 +25,7 @@ OAuth2 authentication using Spring Security and GitHub.
 *I entered the username "user" and the generated a temporary password and the home page was displayed*
 
 
-To switch to using GitHub as an OAuth2 authentication service I would need a github.client-id and a github.client-secret.
+To switch to using GitHub as an OAuth2 authentication service I needed a github.client-id and a github.client-secret.
 
 ![](/assets/images/spring-boot-6/screenshot-2023-11-02-at-8.47.31-am-1307x726.png)
 *I logged into my GitHub account and clicked on the Settings menu item*

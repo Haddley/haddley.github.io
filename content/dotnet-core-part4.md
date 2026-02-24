@@ -1,55 +1,59 @@
 ---
 title: ".NET Core (Part 4)"
-description: "Creating a VB.NET Web App using Microsoft's cross-platform framework."
+description: "Creating a VB.NET Web App using Microsoft's cross-platform framework."
 date: "2025-09-20"
 categories: [".NET"]
 image: "/assets/images/dotnet-core-part4/net-logo.svg"
-tags: ["dotnet"]
+tags: "dotnet"
+hidden: false
 slug: "dotnet-core-part4"
 ---
 
 
 
-I am able to develop ASP.NET Core applications with the VB.NET language. However, creating a VB.NET ASP.NET Core application is not support by the dotnet command line app.
+I am able to develop ASP.NET Core applications with the VB.NET language. However, creating a VB.NET ASP.NET Core application is not supported by the dotnet command line app.
 
-$ dotnet new web -lang VB -o haddley-web (fails)
-
-$ dotnet new web -lang C# -o haddley-web (works)
+```bash
+$ dotnet new web -lang VB -o haddley-web   # fails
+$ dotnet new web -lang C# -o haddley-web   # works
+```
 
 ![](/assets/images/dotnet-core-part2-deleted/screen-shot-2023-03-15-at-2.05.08-pm-1148x386.png)
-*dotnet new web -lang VB -o haddley-web (fails)*
+*I ran dotnet new web -lang VB -o haddley-web (which fails)*
 
 ![](/assets/images/dotnet-core-part2-deleted/screen-shot-2023-03-15-at-2.05.47-pm-1144x738.png)
-*dotnet new web -lang C# -o haddley-web (works)*
+*I ran dotnet new web -lang C# -o haddley-web (which works)*
 
 
 ## VB.NET console app
 
-As a workaround I can generate a VB.NET console application project and convert it to a VB.NET Web App project.
+As a workaround I generated a VB.NET console application project and converted it to a VB.NET Web App project.
 
+```bash
 $ dotnet new console -lang VB -o haddley-console
 $ cd haddley-console
 $ dotnet new gitignore
 $ dotnet run
+```
 
 ![](/assets/images/dotnet-core-part2-deleted/screen-shot-2023-03-15-at-2.21.39-pm-1138x488.png)
-*dotnet new console -lang VB -o haddley-console*
+*I ran dotnet new console -lang VB -o haddley-console*
 
 ![](/assets/images/dotnet-core-part2-deleted/screen-shot-2023-03-15-at-2.25.13-pm-1140x316.png)
-*dotnet run (the generated console application)*
+*I ran dotnet run for the generated console application*
 
 ![](/assets/images/dotnet-core-part2-deleted/screen-shot-2023-03-15-at-2.34.56-pm-1536x225.png)
 *I updated the .vbproj file*
 
 ![](/assets/images/dotnet-core-part2-deleted/screen-shot-2023-03-15-at-2.35.58-pm-1536x452.png)
-*I updated the Program.vb code from"Console.WriteLine(...)"*
+*I updated the Program.vb code from "Console.WriteLine(...)"*
 
 ![](/assets/images/dotnet-core-part2-deleted/screen-shot-2023-03-15-at-2.36.42-pm-1536x477.png)
-*to "WebApplication.CreateBuilder(...)..."*
+*...to "WebApplication.CreateBuilder(...)..."*
 
 ![](/assets/images/dotnet-core-part2-deleted/screen-shot-2023-03-15-at-2.38.17-pm-1476x522.png)
-*dotnet run (the Web App)*
+*I ran dotnet run for the Web App*
+
 ## References
 
 - [How to create an ASP.NET Core Minimal API with Visual Basic .NET](https://swimburger.net/blog/dotnet/create-an-aspdotnet-core-minimal-api-with-vbdotnet)
-

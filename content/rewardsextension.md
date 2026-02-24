@@ -10,7 +10,7 @@ image: "/assets/images/rewardsextension/dynamics365-color.svg"
 
 
 
-The Microsoft Dynamics 365 Business Central Extension described here allows users to create a list of "Rewards" and to associate rewards with Business Central Customers.
+I created a Business Central Extension that allows users to create a list of Rewards and associate them with Business Central Customers.
 
 ![](/assets/images/rewardsextension/20230830image1-1021x770.png)
 *I added the idRange needed for the Rewards extension*
@@ -27,7 +27,7 @@ I created a Rewards.al file. In the Rewards.al file I added code to created a Bu
 *I added a Reward item*
 
 ![](/assets/images/rewardsextension/20230830image4-1287x523.png)
-*The reward item has been stored in the Reward Table*
+*The reward item was stored in the Reward Table*
 
 ![](/assets/images/rewardsextension/20230830image10-1415x1024.png)
 *I added the Minimum Purchase field to the Reward List page*

@@ -4,6 +4,7 @@ description: "ELEGOO Mars 3 Pro 4K Resin 3D Printer"
 date: "2023-07-15"
 categories: ["3D printing"]
 tags: ""
+hidden: false
 slug: "3dprinting1"
 image: "/assets/images/3dprinting1/wikipedia-globe-translucent-3d-printed-woodgrain-background-512x512.jpg"
 ---
@@ -13,7 +14,7 @@ image: "/assets/images/3dprinting1/wikipedia-globe-translucent-3d-printed-woodgr
 I created a 3D .STL file using Tinkercad.
 
 ![](/assets/images/3dprinting1/screen-shot-2023-07-15-at-2.16.58-pm-1028x613.png)
-*Create 3D Design*
+*I created a 3D design in Tinkercad*
 
 ![](/assets/images/3dprinting1/screen-shot-2023-07-15-at-2.17.43-pm-1029x680.png)
 *I added text*
@@ -31,7 +32,7 @@ I created a 3D .STL file using Tinkercad.
 *I downloaded CHITUBOX and added support for the "ELEGOO MARS 3 PRO"*
 
 ![](/assets/images/3dprinting1/screen-shot-2023-07-15-at-2.45.17-pm-1208x686.png)
-*Settings for the Mars 3 Pro*
+*I reviewed the settings for the Mars 3 Pro*
 
 ![](/assets/images/3dprinting1/screen-shot-2023-07-15-at-2.45.34-pm-1209x686.png)
 *I imported the .STL file*

@@ -8,46 +8,29 @@ slug: "spring-boot"
 image: "/assets/images/spring-boot/spring-framework-logo-70-no.svg"
 ---
 
-## Spring Tool Suite
+I used Spring Tool Suite (an Eclipse-based IDE) and Maven (a Java build and dependency management tool) to create a REST API with Spring Boot.
 
-Spring Tool Suite is an Integrated Development Environment based on Eclipse.
+## Creating a REST project using Spring Boot
 
-
-## Maven
-
-Maven is a build and dependency management tool for Java.
-
-The pom.xml file is used to maintain a list of modules that the Spring application depends on.
-
-Module jar files are downloaded from a managed repository.
-
-
-## Creating a REST project using Spring Boot
-
-Open Spring Tool Suite
-Create new Spring Starter Project
-Add Book class
-Add BooksRestController
-Run as Spring Boot App
-Test using Browser
+I opened Spring Tool Suite, created a new Spring Starter Project, added a Book class and a BooksRestController, then ran and tested the app in the browser.
 
 ![](/assets/images/spring-boot/screen-shot-2021-04-06-at-11.01.43-am-1718x1074.png)
-*Create new Spring Starter Project*
+*I created a new Spring Starter Project*
 
 ![](/assets/images/spring-boot/screen-shot-2021-04-06-at-11.03.13-am-1180x1440.png)
-*Enter the project name and package details*
+*I entered the project name and package details*
 
 ![](/assets/images/spring-boot/screen-shot-2021-04-06-at-11.03.38-am-1174x1440.png)
 *The REST API project depends on "Spring Web"*
 
 ![](/assets/images/spring-boot/screen-shot-2021-04-06-at-11.04.47-am-1430x436.png)
-*Add a new class*
+*I added a new class*
 
 ![](/assets/images/spring-boot/screen-shot-2021-04-06-at-11.05.11-am-1180x1254.png)
-*Add class "Book"*
+*I added class "Book"*
 
 ![](/assets/images/spring-boot/screen-shot-2021-04-06-at-11.06.30-am-1174x1254.png)
-*Add class "BooksRestController"*
+*I added class "BooksRestController"*
 
 
 ## Annotations
@@ -65,10 +48,8 @@ The **@RestController** annotation is used to mark the BooksRestController class
 
 The **@GetMapping** annotation is used to mark the book and books methods as HTTP Get method handlers.
 
-The completed BooksRestController code is shown below.
-
 ![](/assets/images/spring-boot/screen-shot-2021-04-06-at-11.17.47-am-560x844.png)
-*Run as Spring Boot App*
+*I ran it as a Spring Boot App*
 
 ![](/assets/images/spring-boot/screen-shot-2021-04-06-at-11.19.11-am-1836x874.png)
 *http://localhost:8080/books*
@@ -82,11 +63,7 @@ The completed BooksRestController code is shown below.
 
 ## React client
 
-Static files can be added to the /src/main/resources/static folder of the Spring Boot project.
-
-The static files can be image files, html files and javascript files.
-
-The static files can be a [React](reactusestateuseeffect.html) app that calls the REST API exposed by the (same) Spring Boot project.
+I added static files (images, HTML, and JavaScript) to the /src/main/resources/static folder of the Spring Boot project, including a [React](reactusestateuseeffect.html) app that calls the REST API exposed by the same Spring Boot project.
 
 ![](/assets/images/spring-boot/screen-shot-2021-04-08-at-3.28.25-pm-1836x981.png)
 *Static files*

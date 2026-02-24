@@ -10,12 +10,9 @@ image: "/assets/images/modeldriven2/office-365-icon-500x500.png"
 
 
 
-Business process flows help people complete their tasks. They offer an interface that guides individuals through the steps defined.
+Business process flows guide users through a defined sequence of steps. I created a **Project** table and a four-step business process flow.
 
-I created a **Project** table and a four step business process flow.
-
-
-The random urls assigned to Power Platform Environments can be updated.
+I updated the random URL assigned to my Power Platform environment.
 
 ![](/assets/images/modeldriven2/screenshot-2023-10-05-at-7.58.33-am-2136x1321.png)
 *I reset my Developer environment and updated the url to https://haddley-develop.crm.dynamics.com.*
@@ -251,13 +248,13 @@ Project Closeout
 *I clicked the Publish all customizations button*
 
 ![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.22.38-pm-2136x664.png)
-*Clicked the Projects app to launch it*
+*I clicked the Projects app to launch it*
 
 ![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.24.05-pm-2136x590.png)
 *The app opened with url haddley-dev.crm.dynamics.com*
 
 ![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.24.24-pm-2136x735.png)
-*Clicking in the business process flow I can see that Business Need and Project Descriptions are important to the first step.*
+*I clicked in the business process flow and saw that Business Need and Project Description are important to the first step*
 
 ![](/assets/images/modeldriven2/screenshot-2023-10-05-at-12.25.29-pm-2136x794.png)
 *I entered a Business Need value and clicked on the Business Process Flow again (notice the check mark)*

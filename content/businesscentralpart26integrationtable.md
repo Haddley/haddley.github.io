@@ -4,6 +4,7 @@ description: "Integration Tables"
 date: "2024-12-22"
 categories: ["Microsoft Dynamics","Business Central","Power Platform"]
 tags: ""
+hidden: false
 slug: "businesscentralpart26integrationtable"
 image: "/assets/images/businesscentralpart26integrationtable/posts-meta.svg"
 ---
@@ -211,7 +212,7 @@ In Dynamics 365 Business Central, an Integration Table is a specialized table us
 *I added Name, Item (GUID) and Quantity fields to the ListPart*
 
 ![](/assets/images/businesscentralpart26integrationtable/screenshot-2024-12-22-235233-1366x728.png)
-*Notice that hadd_Item is a GUID*
+*I noticed that hadd_Item is a GUID*
 
 ![](/assets/images/businesscentralpart26integrationtable/screenshot-2024-12-22-235644-1366x591.png)
 *I added the ListPart to the Customer Order Card*

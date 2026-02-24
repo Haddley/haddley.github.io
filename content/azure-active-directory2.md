@@ -4,6 +4,7 @@ description: "Microsoft Azure Active Directory Authentication."
 date: "2021-04-17"
 categories: ["Azure"]
 tags: ""
+hidden: false
 slug: "azure-active-directory2"
 image: "/assets/images/azure-active-directory2/azurex70x75.svg"
 ---
@@ -12,48 +13,48 @@ image: "/assets/images/azure-active-directory2/azurex70x75.svg"
 
 Quickstart projects make it easier to build applications that connect to Azure Active Directory, Microsoft Graph and other Azure resources.
 
-Quickstart projects allow developers to create Web applications, Single page applications (SPAs), Mobile and desktop applications and Daemon applications. 
+Quickstart projects allow developers to create Web applications, Single page applications (SPAs), Mobile and desktop applications and Daemon applications.
 
-Here we create a "Haddley React Single Page App" that supports Azure Active Directory login
+I created a "Haddley React Single Page App" that supports Azure Active Directory login.
 
 ![](/assets/images/azure-active-directory2/topology-callgraph-700x403.png)
 *topology_callgraph by Doğan Erişen is licensed under MIT License*
 
 ![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.42.46-am-1836x1481.png)
-*Name is Haddley React Single Page App*
+*I named the app Haddley React Single Page App*
 
 ![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-10.27.44-am-1376x1060.png)
-*Select "Single-page application (SPA)"*
+*I selected "Single-page application (SPA)"*
 
 ![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.43.42-am-1638x702.png)
-*Select "React (preview)"*
+*I selected "React (preview)"*
 
 ![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.44.44-am-1836x714.png)
-*Allow the Quickstart to update the Redirect URI to "http://localhost:3000/"*
+*I allowed the Quickstart to update the Redirect URI to "http://localhost:3000/"*
 
 ![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.45.15-am-1836x952.png)
-*Download the fully configured code sample*
+*I downloaded the fully configured code sample*
 
 ![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.45.53-am-1836x499.png)
-*Open project using Visual Studio Code*
+*I opened the project using Visual Studio Code*
 
 ![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.47.49-am-1836x1372.png)
-*Open terminal and run "npm install" and then "npm start"*
+*I ran npm install and npm start*
 
 ![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.49.20-am-1836x948.png)
-*Select either "Sign in using Popup" or "Sign in using Redirect"*
+*I selected "Sign in using Popup"*
 
 ![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.49.49-am-962x498.png)
-*Pick an account*
+*I picked an account*
 
 ![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.49.59-am-964x660.png)
-*Enter the password*
+*I entered the password*
 
 ![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.50.15-am-966x1310.png)
-*Accept*
+*I clicked Accept*
 
 ![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.50.35-am-1836x947.png)
-*After pressing "Request Profile Information"*
+*I pressed "Request Profile Information"*
 
 
 ## Vanilla JavaScript single-page application (SPA) using MSAL.js to authorize users for calling a protected web API on Azure AD
@@ -64,64 +65,63 @@ Here we create a "Haddley React Single Page App" that supports Azure Active Dire
 *topology_callapi by Doğan Erişen is licensed under MIT License*
 
 ![](/assets/images/azure-active-directory2/image-859x481.png)
-*.\Configure.ps1*
+*I ran .\Configure.ps1*
 
 ![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-4.31.02-pm-1836x989.png)
-*update Manifest "accessTokenAcceptedVersion"*
+*I updated the Manifest "accessTokenAcceptedVersion"*
 
 
 ## Configure and run the Client (SPA) and Service (API) apps
 
 **Configure the service app to use your app registration**
 
-Open the project in your IDE (like Visual Studio or Visual Studio Code) to configure the code.
+I opened the project in my IDE (Visual Studio Code) to configure the code.
 
 In the steps below, "ClientID" is the same as "Application ID" or "AppId".
-Open the config.js file.
-Find the key clientID and replace the existing value with the application ID (clientId) of the ms-identity-javascript-tutorial-c3s1-api application copied from the Azure portal.
-Find the key tenantID and replace the existing value with your Azure AD tenant ID.
-Find the key audience and replace the existing value with the application ID (clientId) of the ms-identity-javascript-tutorial-c3s1-api application copied from the Azure portal.
-Register the client app
+I opened the config.js file.
+I found the key clientID and replaced the existing value with the application ID (clientId) of the ms-identity-javascript-tutorial-c3s1-api application copied from the Azure portal.
+I found the key tenantID and replaced the existing value with my Azure AD tenant ID.
+I found the key audience and replaced the existing value with the application ID (clientId) of the ms-identity-javascript-tutorial-c3s1-api application copied from the Azure portal.
 
 **Configure the client app to use your app registration**
 
-Open the project in your IDE (like Visual Studio or Visual Studio Code) to configure the code.
+I opened the project in my IDE (Visual Studio Code) to configure the code.
 
 In the steps below, "ClientID" is the same as "Application ID" or "AppId".
-Open the App\authConfig.js file. Then:
+I opened the App\authConfig.js file. Then:
 
-Find the key Enter_the_Application_Id_Here and replace the existing value with the application ID (clientId) of the ms-identity-javascript-c3s1-spa application copied from the Azure portal.
-Find the key Enter_the_Cloud_Instance_Id_Here/Enter_the_Tenant_Info_Here and replace the existing value with https://login.microsoftonline.com/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX (where XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX is the Directory (tenant) ID - same value for all app registrations created in that Azure tenant).
+I found the key Enter_the_Application_Id_Here and replaced the existing value with the application ID (clientId) of the ms-identity-javascript-c3s1-spa application copied from the Azure portal.
+I found the key Enter_the_Cloud_Instance_Id_Here/Enter_the_Tenant_Info_Here and replaced the existing value with https://login.microsoftonline.com/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX (where XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX is the Directory (tenant) ID).
 
-Find the key Enter_the_Redirect_Uri_Here and replace the existing value with the base address of the ms-identity-javascript-tutorial-c3s1-spa application (by default http://localhost:3000).
-After you configured your web API, open the App\apiConfig.js file. Then:
+I found the key Enter_the_Redirect_Uri_Here and replaced the existing value with the base address of the ms-identity-javascript-tutorial-c3s1-spa application (by default http://localhost:3000).
+After configuring the web API, I opened the App\apiConfig.js file. Then:
 
-Find the key Enter_the_Web_Api_Uri_Here and replace the existing value with the coordinates of your web API (by default http://localhost:5000/api).
+I found the key Enter_the_Web_Api_Uri_Here and replaced the existing value with the coordinates of my web API (by default http://localhost:5000/api).
 
-Find the key Enter_the_Web_Api_Scope_Here and replace the existing value with the scopes for your web API, like api://e767d418-b80b-4568-9754-557f40697fc5/access_as_user. You can copy this from the Expose an API blade of the web APIs registration.
+I found the key Enter_the_Web_Api_Scope_Here and replaced the existing value with the scopes for my web API, like api://e767d418-b80b-4568-9754-557f40697fc5/access_as_user.
 
 ![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-4.53.33-pm-1644x1184.png)
-*Click Sign-in*
+*I clicked Sign-in*
 
 ![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-4.53.56-pm-964x1310.png)
-*Enter Azure/Office 365 credentials to login to*
+*I entered my Azure/Office 365 credentials*
 
 ![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-4.54.17-pm-1640x1180.png)
-*Press Call API to ask Single Page Application to call protected API*
+*I pressed Call API*
 
 ![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-4.54.36-pm-1640x1184.png)
-*Result returned from protect API*
+*The protected API returned a result*
 
 
 ## Discussion
 
-SPA is a single page application based on an html file and JavaScript (not React, Angular or Vue). As authPopup.js (or authRedirect.js) is loaded myMSALObj is set to a new msal.PublicClientApplication instance using msalConfig. further down in the same file "selectAccount();" is called. selectAccount calls the getAllAccounts method on the msal.PublicClientApplication instance. If at least one account is returned the welcomeUser function is called passing the username from the first account.
+SPA is a single page application based on an html file and JavaScript (not React, Angular or Vue). As authPopup.js (or authRedirect.js) is loaded myMSALObj is set to a new msal.PublicClientApplication instance using msalConfig. Further down in the same file "selectAccount();" is called. selectAccount calls the getAllAccounts method on the msal.PublicClientApplication instance. If at least one account is returned the welcomeUser function is called passing the username from the first account.
 
 welcomeUser is defined in ui.js. welcomeUser uses document.getElementById and css classes to update the html page (showing if a user is logged in).
 
 If the html signIn button is pressed the signIn function in authPopup.js (or authRedirect.js) is run. This calls the loginPopup (or loginRedirect) method on the msal.PublicClientApplication instance passing loginRequest (an object with a scopes property ... {scopes: ["openid", "api://ae580c57-2645-404d-a870-2a390db782ec/access_as_user"]} ). The handleResponse function is called if the user login succeeds. The handleResponse function sets a username variable and calls the welcomeUser function again (passing the value of that username variable).
 
-If the html callApiButton button is pressed the passTokenToApi function is executed. The passTokenToApi function calls getTokenPopup (or getTokenRedirect) which uses myMSALObj.acquireTokenSilent and (possibly) the myMSALObj.acquireTokenPopup (or myMSALObj.acquireTokenRedirect) methods (here the constant tokenRequest is used { scopes: ["Mail.Read"] } although we do not go on to read mail...). 
+If the html callApiButton button is pressed the passTokenToApi function is executed. The passTokenToApi function calls getTokenPopup (or getTokenRedirect) which uses myMSALObj.acquireTokenSilent and (possibly) the myMSALObj.acquireTokenPopup (or myMSALObj.acquireTokenRedirect) methods (here the constant tokenRequest is used { scopes: ["Mail.Read"] }).
 
 Once the access_token has been acquired function callApi is called passing apiConfig.uri ("http://localhost:5000/api") and the response.accessToken. callApi appends an Authorization header with value accessToken and uses fetch to call the API. The response from the API call should include the logged in user's **name**.
 
@@ -162,7 +162,7 @@ const ProfileContent = () => {
     return (
         <>
             <h5 className="card-title">Welcome {accounts[0].name}</h5>
-            {graphData ? 
+            {graphData ?
                 <ProfileData graphData={graphData} />
                 :
                 <Button variant="secondary" onClick={RequestProfileData}>Request Profile Information</Button>
@@ -174,7 +174,7 @@ const ProfileContent = () => {
 /**
  * If a user is authenticated the ProfileContent component above is rendered. Otherwise a message indicating a user is not authenticated is rendered.
  */
-const MainContent = () => {    
+const MainContent = () => {
     return (
         <div className="App">
             <AuthenticatedTemplate>

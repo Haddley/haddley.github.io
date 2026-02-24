@@ -2,8 +2,8 @@
 title: "Power Automate"
 description: "Connect Power Automate to Azure AI Foundry"
 date: "2026-02-17"
-categories: ["Power Platform"]
-tags: ""
+categories: ["Power Platform","AI"]
+tags: ["ai","power platform"]
 hidden: false
 slug: "powerautomateai"
 image: "/assets/images/powerautomateai/office-365-icon-500x500.png"
@@ -14,10 +14,10 @@ I added an Azure AI Foundry model call to a Power Automate Flow.
 
 
 ![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 6.59.54 PM.png)
-*Create Foundry*
+*I created a Foundry*
 
 ![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.03.07 PM.png)
-*Create New Resource Group*
+*I created a new resource group*
 
 ![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.04.00 PM.png)
 *Review + create*
@@ -32,7 +32,7 @@ I added an Azure AI Foundry model call to a Power Automate Flow.
 *Go to Foundry portal*
 
 ![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.06.52 PM.png)
-*Copy KEY1 and API Endpoint (we will need to adjust API Endpoint later)*
+*I copied KEY1 and the API Endpoint (I would need to adjust the API Endpoint later)*
 
 
 
@@ -42,16 +42,16 @@ I added an Azure AI Foundry model call to a Power Automate Flow.
 
 
 ![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.08.41 PM.png)
-*New Solution*
+*I created a new solution*
 
 ![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.09.12 PM.png)
-*Add Environment variable to Solution*
+*I added an environment variable to the solution*
 
 ![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.11.14 PM.png)
-*Create lead qualification foundry endpoint environment variable*
+*I created the lead qualification foundry endpoint environment variable*
 
 ![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.12.32 PM.png)
-*Create lead qualification foundry api key environment variable*
+*I created the lead qualification foundry api key environment variable*
 
 ![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.21.16 PM.png)
 *+New|Table|Tables*
@@ -68,10 +68,10 @@ I added an Azure AI Foundry model call to a Power Automate Flow.
 *Lead table is related to (standard) Dataverse Account and Contact tables*
 
 ![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.47.21 PM.png)
-*Save and exit*
+*I clicked Save and exit*
 
 ![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.48.10 PM.png)
-*Solution has one table and two environment variables*
+*The solution had one table and two environment variables*
 
 ![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.48.41 PM.png)
 *+New|App|Model-driven app*
@@ -92,7 +92,7 @@ I added an Azure AI Foundry model call to a Power Automate Flow.
 *View new page*
 
 ![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.55.41 PM.png)
-*App is added to solution*
+*The app was added to the solution*
 
 ![](/assets/images/powerautomateai/Screenshot 2026-02-18 at 2.20.08 PM.png)
 *+ Deploy model*
@@ -109,7 +109,7 @@ I added an Azure AI Foundry model call to a Power Automate Flow.
 *+New|Automation|Cloud flow|Automated*
 
 ![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.58.08 PM.png)
-*Cloud flow will be triggered when dataverse row is added, updated or deleted?*
+*The flow is triggered when a Dataverse row is added, updated, or deleted*
 
 ![](/assets/images/powerautomateai/Screenshot 2026-02-18 at 6.43.13 PM.png)
 *I updated the trigger to run only when a new Lead record was added or when the Description column of an existing row was updated*
@@ -145,7 +145,7 @@ not(triggerOutputs()?['body/hadd_enableaiprocessing'])
 ```
 
 ![](/assets/images/powerautomateai/Screenshot 2026-02-18 at 6.44.43 PM.png)
-*I used Componse to fetch the result (content) from the body of the HTTP response*
+*I used Compose to fetch the result (content) from the body of the HTTP response*
 
 ```expression
 body('Call_LLM_(HTTP)')?['choices'][0]?['message']?['content']

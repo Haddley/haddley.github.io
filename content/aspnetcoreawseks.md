@@ -4,105 +4,110 @@ description: "Deploying a .NET Core Web API to Amazon Elastic Kubernetes Service
 date: "2021-08-16"
 categories: ["AWS","DevOps",".NET","Docker"]
 tags: "c#"
+hidden: false
 slug: "aspnetcoreawseks"
 image: "/assets/images/aspnetcoreawseks/amazon-web-services-logo.svg"
 ---
 
 
-Amazon Elastic Kubernetes Service (Amazon EKS) makes it possible to deploy, manage, and scale [containerized](docker.html) applications using [Kubernetes](kubernetes.html) on AWS. 
+I used Amazon Elastic Kubernetes Service (Amazon EKS) to deploy, manage, and scale [containerized](docker.html) applications using [Kubernetes](kubernetes.html) on AWS.
 
-A .NET Core Web API can be deployed to Amazon EKS from Visual Studio Code using the Visual Studio Code terminal window.
+I deployed a .NET Core Web API to Amazon EKS from Visual Studio Code.
 
 
 ## install eksctl
 
-> choco install -y eksctl
+```bash
+choco install -y eksctl
+```
 
 ![](/assets/images/aspnetcoreawseks/the-eksctl-command-line-utility-amazon-eks-google-chrome-8-16-2021-8-20-21-pm-1836x975.png)
-*install eksctl on Windows*
+*I installed eksctl on Windows*
 
 ![](/assets/images/aspnetcoreawseks/select-administrator-windows-powershell-8-16-2021-8-24-46-pm-1200x440.png)
-*choco install -y eksctl*
+*I ran choco install -y eksctl*
 
 
 ## .NET Core Web API
 
-**> dotnet new webapi --no-https**
+```bash
+dotnet new webapi --no-https
+```
 
 ![](/assets/images/aspnetcoreawseks/dotnetapi-visual-studio-code-8-16-2021-8-28-32-pm-1536x720.png)
-*dotnet new webapi --no-https*
+*I ran dotnet new webapi --no-https*
 
 ![](/assets/images/aspnetcoreawseks/dotnetapi-visual-studio-code-8-16-2021-8-29-44-pm-1536x720.png)
-*Docker: Add Docker Files to Workspace*
+*I selected Docker: Add Docker Files to Workspace*
 
 ![](/assets/images/aspnetcoreawseks/dotnetapi-visual-studio-code-8-16-2021-8-29-55-pm-1536x720.png)
-*.Net: ASP.NET Core platform*
+*I selected .NET: ASP.NET Core platform*
 
 ![](/assets/images/aspnetcoreawseks/dotnetapi-visual-studio-code-8-16-2021-8-30-04-pm-1536x720.png)
-*Linux*
+*I selected Linux*
 
 ![](/assets/images/aspnetcoreawseks/dotnetapi-visual-studio-code-8-16-2021-8-30-15-pm-1536x720.png)
-*Port 5000*
+*I selected port 5000*
 
 ![](/assets/images/aspnetcoreawseks/dotnetapi-visual-studio-code-8-16-2021-8-31-14-pm-1536x720.png)
-*Dockerfile*
+*The Dockerfile was generated*
 
 ![](/assets/images/aspnetcoreawseks/dotnetapi-visual-studio-code-8-16-2021-8-31-34-pm-1536x720.png)
-*Docker Images: Build Image...*
+*I selected Docker Images: Build Image...*
 
 ![](/assets/images/aspnetcoreawseks/dotnetapi-visual-studio-code-8-16-2021-8-32-32-pm-1536x720.png)
-*Building*
+*The image was building*
 
 ![](/assets/images/aspnetcoreawseks/amazon-ecr-google-chrome-8-16-2021-8-34-25-pm-1836x975.png)
-*Create ECR repository*
+*I created an ECR repository*
 
 ![](/assets/images/aspnetcoreawseks/amazon-ecr-google-chrome-8-16-2021-8-34-51-pm-1836x975.png)
-*Repository created*
+*The repository was created*
 
 ![](/assets/images/aspnetcoreawseks/amazon-ecr-google-chrome-8-16-2021-8-35-04-pm-1836x975.png)
-*View push commands macOS/Linux*
+*I viewed the push commands for macOS/Linux*
 
 ![](/assets/images/aspnetcoreawseks/amazon-ecr-google-chrome-8-16-2021-8-37-22-pm-1836x975.png)
-*View push commands Windows*
+*I viewed the push commands for Windows*
 
 ![](/assets/images/aspnetcoreawseks/administrator-windows-powershell-8-16-2021-9-12-34-pm-1200x440.png)
-*(Get-ECRLoginCommand)...*
+*I ran the Get-ECRLoginCommand*
 
 ![](/assets/images/aspnetcoreawseks/dockerfile-dotnetapi-visual-studio-code-8-16-2021-9-15-23-pm-1536x720.png)
-*docker build -t dotnetapi .*
+*I ran docker build -t dotnetapi .*
 
 ![](/assets/images/aspnetcoreawseks/dockerfile-dotnetapi-visual-studio-code-8-16-2021-9-16-17-pm-1536x720.png)
-*docker tag...*
+*I ran docker tag*
 
 ![](/assets/images/aspnetcoreawseks/dockerfile-dotnetapi-visual-studio-code-8-16-2021-9-16-42-pm-1536x720.png)
-*docker push...*
+*I ran docker push*
 
 ![](/assets/images/aspnetcoreawseks/administrator-windows-powershell-8-16-2021-9-19-09-pm-1200x440.png)
-*eksctl create cluster --name dotnetapi*
+*I ran eksctl create cluster --name dotnetapi*
 
 ![](/assets/images/aspnetcoreawseks/amazon-eks-google-chrome-8-16-2021-9-38-55-pm-1644x1069.png)
-*Cluster EC2 nodes*
+*I reviewed the cluster EC2 nodes*
 
 ![](/assets/images/aspnetcoreawseks/amazon-eks-google-chrome-8-16-2021-9-39-05-pm-1644x1069.png)
-*Workloads*
+*I viewed the workloads*
 
 ![](/assets/images/aspnetcoreawseks/dotnetapi.yaml-dotnetapi-visual-studio-code-8-16-2021-9-39-22-pm-1536x720.png)
-*kubectl apply -f .\dotnetapi.yaml*
+*I ran kubectl apply -f .\dotnetapi.yaml*
 
 ![](/assets/images/aspnetcoreawseks/dotnetapi.yaml-dotnetapi-visual-studio-code-8-16-2021-9-39-31-pm-1536x720.png)
-*dotnetapi-service created*
+*The dotnetapi-service was created*
 
 ![](/assets/images/aspnetcoreawseks/amazon-eks-google-chrome-8-16-2021-9-39-52-pm-1644x1069.png)
-*Workloads*
+*I viewed the updated workloads*
 
 ![](/assets/images/aspnetcoreawseks/dotnetapi.yaml-dotnetapi-visual-studio-code-8-16-2021-9-42-16-pm-1536x720.png)
-*kubectl get service/dotnetapi-service*
+*I ran kubectl get service/dotnetapi-service*
 
 ![](/assets/images/aspnetcoreawseks/dotnetapi.yaml-dotnetapi-visual-studio-code-8-16-2021-9-49-39-pm-1536x720.png)
-*updated containerPort, port and targetPort*
+*I updated containerPort, port and targetPort*
 
 ![](/assets/images/aspnetcoreawseks/a7eddbf5e5f594b32b4f127603f1de51-188864526.us-east-1.elb.amazonaws.com-weatherforecast-google-chrome-8-16-2021-9-50-04-pm-1407x381.png)
-*Navigating to the loadbalancer/cluster*
+*I navigated to the load balancer URL*
 
 
 ## WeatherForecastController.cs

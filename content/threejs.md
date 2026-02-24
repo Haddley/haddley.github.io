@@ -10,12 +10,11 @@ image: "/assets/images/threejs/three.js-icon.svg"
 
 
 
-Three. js is a JavaScript-based WebGL engine that can run GPU-powered games and other graphics-powered apps straight from the browser.
-
+I used Three.js, a JavaScript-based WebGL engine, to create GPU-powered 3D graphics apps that run in the browser.
 
 ## Overview
 
-In the code below I create a three.js scene. The scene contains
+I created a three.js scene containing floating cubes and spheres with an anaglyph stereo effect.
 
 ![](/assets/images/threejs/screen-shot-2023-03-05-at-7.42.09-pm-1536x414.png)
 *import library modules and sets up scene*

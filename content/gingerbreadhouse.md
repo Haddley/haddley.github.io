@@ -4,18 +4,20 @@ description: "holiday.py"
 date: "2023-12-26"
 categories: ["Python","IOT"]
 tags: ""
+hidden: false
 slug: "gingerbreadhouse"
 image: "/assets/images/gingerbreadhouse/raspberry-pi-logo.svg"
 ---
 
 
+```bash
 $ sudo apt-get update
 $ sudo  apt-get dist-upgrade
 
 $ python -m venv my-env
 $ source my-env/bin/activate
 
-[$ pip install --upgrade pip setuptools wheel](https://singleboardblog.com/install-python-opencv-on-raspberry-pi/?fbclid=IwAR1BtOgVIk8SzhOmEIcPJk_73dkW8a9rc5bsi54KpVDr1vuCB6jnxBgWVqk)
+$ pip install --upgrade pip setuptools wheel
 $ pip install opencv-contrib-python
 
 $ python
@@ -29,9 +31,10 @@ $ curl -o holiday.mp4 https://download-video.akamaized.net/...
 
 $ vi holiday.py
 $ python holiday.py
+```
 
 ![](/assets/images/gingerbreadhouse/screenshot-2023-12-26-at-10.44.44-am-1362x956.png)
-*Raspberry Pi Imager*
+*I opened Raspberry Pi Imager*
 
 ![](/assets/images/gingerbreadhouse/screenshot-2023-12-26-at-10.44.54-am-1360x952.png)
 *I selected the Micro SD card*
@@ -43,7 +46,7 @@ $ python holiday.py
 *I clicked YES*
 
 ![](/assets/images/gingerbreadhouse/screenshot-2023-12-26-at-10.48.35-am-1362x954.png)
-*SD card was moved from Macbook to Raspberry Pi*
+*I moved the SD card from the MacBook to the Raspberry Pi*
 
 ![](/assets/images/gingerbreadhouse/screenshot-2023-12-26-at-1.33.59-pm-1144x744.png)
 *I plugged in the Raspberry Pi and used ping to access*
@@ -52,22 +55,22 @@ $ python holiday.py
 *I connected to the Raspberry Pi using secure shell (ssh)*
 
 ![](/assets/images/gingerbreadhouse/screenshot-2023-12-26-at-1.38.15-pm-1138x740.png)
-*I executed $ sudo apt-get update*
+*I executed sudo apt-get update*
 
 ![](/assets/images/gingerbreadhouse/screenshot-2023-12-26-at-1.39.14-pm-1132x734.png)
-*I executed $ sudo apt-get dist-upgrade*
+*I executed sudo apt-get dist-upgrade*
 
 ![](/assets/images/gingerbreadhouse/screenshot-2023-12-27-at-5.56.06-am-1140x746.png)
-*I created a python environment, activated the environment and ran pip install$ python -m venv my-env$ source my-env/bin/activate$ pip install --upgrade pip setuptools wheel*
+*I created a Python environment, activated it, and ran pip install*
 
 ![](/assets/images/gingerbreadhouse/screenshot-2023-12-27-at-5.58.01-am-1128x744.png)
-*I ran $ pip install opencv-contrib-pythonI ran import cv2 to ensure that OpenCV was properly installed*
+*I ran pip install opencv-contrib-python and imported cv2 to verify OpenCV was installed*
 
 ![](/assets/images/gingerbreadhouse/screenshot-2023-12-27-at-5.59.24-am-1130x740.png)
-*I ran $ pip install --upgrade luma.oledlibrary for the mini oled display*
+*I ran pip install --upgrade luma.oled to install the library for the mini OLED display*
 
 ![](/assets/images/gingerbreadhouse/screenshot-2023-12-26-at-1.52.14-pm-1140x734.png)
-*I ran $ sudo raspi-configI selected the Interface Options menu option*
+*I ran sudo raspi-config and selected the Interface Options menu option*
 
 ![](/assets/images/gingerbreadhouse/screenshot-2023-12-26-at-1.52.29-pm-1138x742.png)
 *I selected the I2C menu option*
@@ -85,7 +88,7 @@ $ python holiday.py
 *I downloaded video file from https://pixabay.com/videos/girl-child-snow-snowflakes-window-191152/*
 
 ![](/assets/images/gingerbreadhouse/screenshot-2023-12-27-at-6.01.59-am-1138x742.png)
-*I created and ran holiday.pyNotice that the cv.imshow("Img", frame) line is commented out*
+*I created and ran holiday.py. I noted that the cv.imshow("Img", frame) line is commented out*
 
 ![](/assets/images/gingerbreadhouse/img-5336-1380x1840.jpg)
 *I wired up two displays*
@@ -136,10 +139,10 @@ while True:
     if not ret:
         break
 #    cv2.imshow("Img", frame)
-    
+
     color_coverted = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     pil_image = Image.fromarray(color_coverted)
-    image_r = pil_image.resize((width,height), Image.LANCZOS) 
+    image_r = pil_image.resize((width,height), Image.LANCZOS)
     # Image.BICUBIC is another option
     image_bw = image_r.convert("1")
 
@@ -148,7 +151,7 @@ while True:
     key = cv2.waitKey(1)
     if key == 27:
         break
-        
+
 cap.release()
 cv2.destroyAllWindows()
 ```

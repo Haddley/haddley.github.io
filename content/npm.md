@@ -20,15 +20,15 @@ Some interpreters (and compilers) eliminate the stack frame creation and destruc
 
 ## JavaScript
 
-Create a folder for the *new* node module.
+I created a folder for the new node module.
 
 $ mkdir haddley-factorial-js
 
-Navigate to the new folder
+I navigated to the new folder.
 
 $ cd haddley-factorial-js
 
-Create a package.json file 
+I created a package.json file.
 
 $ npm init -y
 
@@ -38,7 +38,7 @@ $ npm init -y
 
 ## Mocha and Chai
 
-Automated testing is added using mocha and chai.
+I added automated testing using mocha and chai.
 
 $ npm i --save-dev mocha
 
@@ -52,18 +52,18 @@ $ mkdir test
 
 ## package.json
 
-This is final package.json file
+This is the final package.json file.
 
 
 ## Github actions
 
-Github actions ensure that testing is performed using multiple versions of node.
+I used GitHub Actions to run tests across multiple versions of Node.
 
 ![](/assets/images/npm/screen-shot-2021-02-27-at-11.37.09-am-1836x757.png)
-*Tests are running*
+*The tests ran*
 
 ![](/assets/images/npm/screen-shot-2021-02-27-at-11.37.29-am-1836x749.png)
-*Code passed all of the provided tests*
+*The code passed all tests*
 
 ![](/assets/images/npm/screen-shot-2021-02-27-at-11.38.33-am-1836x809.png)
 *Test results for multiple versions of node*
@@ -71,7 +71,7 @@ Github actions ensure that testing is performed using multiple versions of node.
 
 ## Publishing to npmjs.com
 
-To publish the module to npmjs.com
+I published the module to npmjs.com.
 
 $ node login
 

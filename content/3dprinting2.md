@@ -4,6 +4,7 @@ description: "Raspberry Pi 4 and Mini Breadboard mount"
 date: "2023-07-19"
 categories: ["3D printing"]
 tags: ""
+hidden: false
 slug: "3dprinting2"
 image: "/assets/images/3dprinting2/wikipedia-globe-translucent-3d-printed-woodgrain-background-512x512.jpg"
 ---
@@ -19,13 +20,13 @@ I updated an existing Tinkercad design to create a part to securely hold a Raspb
 [https://www.tinkercad.com/things/fQPX9bFkoC3-raspberry-pi-4-and-mini-breadboard-mount](https://www.tinkercad.com/things/fQPX9bFkoC3-raspberry-pi-4-and-mini-breadboard-mount)
 
 ![](/assets/images/3dprinting2/screen-shot-2023-07-20-at-9.19.04-am-1836x1024.png)
-*Updated design*
+*I updated the design in Tinkercad*
 
 ![](/assets/images/3dprinting2/screen-shot-2023-07-20-at-9.35.25-am-1836x959.png)
-*Sliced part*
+*I sliced the part*
 
 ![](/assets/images/3dprinting2/image3-640x480.jpg)
-*M3 Tap Drill*
+*I used an M3 tap drill*
 
 ![](/assets/images/3dprinting2/image7-320x240.jpg)
-*Finished assembly*
+*I assembled the finished part*

@@ -9,9 +9,7 @@ image: "/assets/images/spring-boot-4/spring-framework-logo-70-no.svg"
 ---
 
 
-In Java Spring, ModelAndView is a class that represents both a model and a view for a web application. It is typically used in the context of Spring MVC (Model-View-Controller) to handle web requests and provide a way to pass data to a view template for rendering.
-
-Using ModelAndView allows you to separate the model data and the view template, making your code more modular and following the MVC pattern, which is a common architectural pattern in web development. Note that in more recent versions of Spring, you can often return a Map or a POJO directly from a controller method, simplifying the code and eliminating the need for ModelAndView.
+I used Spring MVC's ModelAndView class to pass model data to a Thymeleaf view template for rendering, adding a CRUD interface for the TodoItem application.
 
 ![](/assets/images/spring-boot-4/screenshot-2023-10-29-at-2.18.03-pm-2136x1056.png)
 *I added thymeleaf, bootstrap and jquery as dependencies*
@@ -32,7 +30,7 @@ Using ModelAndView allows you to separate the model data and the view template, 
 *I clicked the Delete button on the second todo item*
 
 ![](/assets/images/spring-boot-4/screenshot-2023-10-29-at-2.31.47-pm-2136x876.png)
-*The second todo item has been deleted*
+*The second todo item was deleted*
 
 
 ## pom.xml

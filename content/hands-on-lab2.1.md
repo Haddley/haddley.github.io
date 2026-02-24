@@ -4,6 +4,7 @@ description: "Create and configure a new company"
 date: "2023-11-22"
 categories: ["Business Central"]
 tags: ""
+hidden: false
 slug: "hands-on-lab2.1"
 image: "/assets/images/hands-on-lab2.1/dynamics365-color.svg"
 ---
@@ -48,7 +49,7 @@ You initiate the process by creating a new company within the customers database
 *I clicked Finish*
 
 ![](/assets/images/hands-on-lab2.1/screen-shot-2023-11-22-at-10.11.11-am-1544x806.png)
-*I Working on it... dialog appeared*
+*A "Working on it..." dialog appeared*
 
 ![](/assets/images/hands-on-lab2.1/screen-shot-2023-11-22-at-10.12.24-am-503x188.png)
 *A dialog explained that the operation might take 10 minutes*
@@ -87,25 +88,25 @@ You initiate the process by creating a new company within the customers database
 *I clicked the Yes button*
 
 ![](/assets/images/hands-on-lab2.1/screen-shot-2023-11-22-at-10.56.20-am-1544x811.png)
-*The check box in the New Fiscal Year column shows that the Company's Fiscal Year will follow the Calendar year.*
+*I noted that the check box in the New Fiscal Year column showed that the Company's Fiscal Year would follow the Calendar year.*
 
 ![](/assets/images/hands-on-lab2.1/screen-shot-2023-11-22-at-10.58.55-am-1545x427.png)
 *I used the search button to navigate to the Zip Codes page*
 
 ![](/assets/images/hands-on-lab2.1/screen-shot-2023-11-22-at-10.59.06-am-1545x341.png)
-*No Zip Codes have been defined*
+*I noted that no Zip Codes had been defined*
 
 ![](/assets/images/hands-on-lab2.1/screen-shot-2023-11-22-at-10.59.26-am-1544x359.png)
 *I used the search button to navigate to the Shipment Methods page*
 
 ![](/assets/images/hands-on-lab2.1/screen-shot-2023-11-22-at-10.59.35-am-1546x408.png)
-*No Shipment methods have been defined*
+*I noted that no Shipment methods had been defined*
 
 ![](/assets/images/hands-on-lab2.1/screen-shot-2023-11-22-at-11.02.07-am-1544x453.png)
 *I used the search button to navigate to the Configuration Worksheet page*
 
 ![](/assets/images/hands-on-lab2.1/screen-shot-2023-11-22-at-11.02.33-am-1548x808.png)
-*The Worksheet included details of a Sales Company Area, a number of Groups (including a Master Data Group) and a number of Tables (including a Customer Table).*
+*I noted that the Worksheet included details of a Sales Company Area, a number of Groups (including a Master Data Group) and a number of Tables (including a Customer Table).*
 
 ![](/assets/images/hands-on-lab2.1/screen-shot-2023-11-22-at-11.06.43-am-1545x812.png)
 *I added a new General Setup Group*
@@ -141,13 +142,13 @@ You initiate the process by creating a new company within the customers database
 *I used the search button to navigate to the Zip Codes page*
 
 ![](/assets/images/hands-on-lab2.1/screen-shot-2023-11-22-at-11.20.31-am-1545x808.png)
-*Zip Codes had been copied*
+*I confirmed that Zip Codes had been copied*
 
 ![](/assets/images/hands-on-lab2.1/screen-shot-2023-11-22-at-11.22.00-am-1545x473.png)
 *I used the search button to navigate to the Shipment Methods page*
 
 ![](/assets/images/hands-on-lab2.1/screen-shot-2023-11-22-at-11.22.45-am-1542x810.png)
-*Shipment Methods had been copied*
+*I confirmed that Shipment Methods had been copied*
 ## References
 
 - [Hands-on-Lab 2.1: Create and configure a new company](https://microsoftlearning.github.io/MB-800-Business-Central-Functional-Consultant/Instructions/Labs/LAB%5BMB-800%5D_M02_Lab01_Create_company.html)

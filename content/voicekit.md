@@ -9,19 +9,19 @@ image: "/assets/images/voicekit/raspberry-pi-logo.svg"
 ---
 
 
-The Google AIY Voice Kit is a do-it-yourself version of a Google Home assistant. This kit includes a Raspberry Pi Zero computer, a speaker, a microphone, a button, and a cardboard casing for a hands-on build experience.
+I assembled the Google AIY Voice Kit, a do-it-yourself version of a Google Home assistant that includes a Raspberry Pi Zero, speaker, microphone, button, and cardboard casing.
 
 ![](/assets/images/voicekit/C059C37E-B731-4377-8891-9C68A72568CB.png)
-*Raspberry Pi Hat*
+*I reviewed the Raspberry Pi Hat*
 
 ![](/assets/images/voicekit/FF078E6D-EA98-4E1E-976B-B036E33DA9F2.png)
-*Cardboard assembled*
+*I assembled the cardboard casing*
 
 ![](/assets/images/voicekit/Screenshot%202025-10-11%20at%204.12.07 PM.png)
 *[Download image](https://github.com/google/aiyprojects-raspbian/releases)*
 
 ![](/assets/images/voicekit/Screenshot%202025-10-11%20at%204.10.12 PM.png)
-*Image flashed to MicroSD Card*
+*I flashed the image to the MicroSD Card*
 
 ![](/assets/images/voicekit/Screenshot%202025-10-11%20at%205.09.53 PM.png)
 *I enabled xrdp and connected to pi remotely*
@@ -50,7 +50,7 @@ pi@raspberrypi:~ $ sudo apt-get install xrdp
 pi@raspberrypi:~ $ sudo service xrdp start
 ```
 
-Notice that "apt-get --allow-releaseinfo-change update" was also used to update the Buster image.
+I also ran "apt-get --allow-releaseinfo-change update" to update the Buster image.
 
 ![](/assets/images/voicekit/Screenshot%202025-10-11%20at%205.21.15 PM.png)
 *I ran the Check audio script*

@@ -9,13 +9,15 @@ image: "/assets/images/sharepointsitedesignsandsitescripts/1200px-microsoft-offi
 ---
 
 
+I used SharePoint site scripts and site designs to automate the provisioning of SharePoint sites with consistent configurations.
+
 ## Site scripts
 
-Microsoft site scripts allow users and administrators to automate the provisioning of "similar" SharePoint sites.
+Site scripts allow administrators to automate the provisioning of similar SharePoint sites.
 
-Site scripts are JSON formatted files. 
+Site scripts are JSON formatted files.
 
-Site scripts include "actions" that will modify a SharePoint site. 
+Site scripts include "actions" that modify a SharePoint site.
 
 Site script actions include:
 
@@ -30,37 +32,37 @@ Add Nav Link
 
 ## Add-SPOSiteScript
 
-Site scripts are added to a SharePoint tenant using the Add-SPOSiteScript command
+I added site scripts to the SharePoint tenant using the Add-SPOSiteScript command.
 
 ![](/assets/images/sharepointsitedesignsandsitescripts/image-6-979x512.png)
-*Connect to the SharePoint administration site*
+*I connected to the SharePoint administration site*
 
 ![](/assets/images/sharepointsitedesignsandsitescripts/image-17-979x512.png)
-*Load the JSON text into a variable*
+*I loaded the JSON text into a variable*
 
 
 ## Add-SPOSiteDesign
 
-Site designs can extend the SharePoint modern team site template(64) or the SharePoint modern communication site template (68).
+I created site designs that extend the SharePoint modern team site template (64) or the communication site template (68).
 
-Site designs are added to a SharePoint tenant using the ADD-SPOSiteDesign command (specifying one or more Site Script ids)
+I added them to the tenant using the Add-SPOSiteDesign command, specifying one or more site script IDs.
 
 ![](/assets/images/sharepointsitedesignsandsitescripts/image-10-979x512.png)
-*Add the Site Script and add the Site Design*
+*I added the Site Script and Site Design*
 
 
 ## SharePoint Create a Site
 
-Once the Site design has been created the out of the box "Create a Site" user experience will be updated
+Once I created the site design, it appeared in the out-of-the-box "Create a Site" experience.
 
 ![](/assets/images/sharepointsitedesignsandsitescripts/image-11-1366x728.png)
-*Select "Team Site" because the new Site Design is based on the team site template(64)*
+*I selected "Team Site" because the site design is based on the team site template (64)*
 
 ![](/assets/images/sharepointsitedesignsandsitescripts/image-12-1366x728.png)
 *The "Contoso customer tracking" Site Design is available in the "Choose a design" drop down list.*
 
 ![](/assets/images/sharepointsitedesignsandsitescripts/image-14-1366x728.png)
-*Click the Finish button to create the new Site and to run the Site Scripts*
+*I clicked Finish to create the new site and run the site scripts*
 
 ![](/assets/images/sharepointsitedesignsandsitescripts/image-16-1366x728.png)
 *The newly created site includes the "Customer Tracking" list*
@@ -68,15 +70,15 @@ Once the Site design has been created the out of the box "Create a Site" user ex
 
 ## Applying a site design to an existing site
 
-The Get-SPOSiteDesign command can be used to list the installed Site designs (and the ids assigned).
+I used Get-SPOSiteDesign to list the installed site designs and their IDs.
 
-Site designs can be applied to an existing SharePoint site using the Invoke-SPOSiteDesign command.
+I applied site designs to an existing SharePoint site using the Invoke-SPOSiteDesign command.
 
 ![](/assets/images/sharepointsitedesignsandsitescripts/image-20-1057x674.png)
 *Site contents before invoking site design*
 
 ![](/assets/images/sharepointsitedesignsandsitescripts/image-19-979x512.png)
-*Invoke-SPOSiteDesign*
+*I ran Invoke-SPOSiteDesign*
 
 ![](/assets/images/sharepointsitedesignsandsitescripts/image-21-1057x674.png)
 *Site contents after invoking site design*
@@ -84,10 +86,10 @@ Site designs can be applied to an existing SharePoint site using the Invoke-SPOS
 
 ## Get-SPOSiteScriptFromWeb
 
-The Get-SPOSiteScriptFromWeb command extracts Site Script from an existing SharePoint site.
+I used Get-SPOSiteScriptFromWeb to extract a site script from an existing SharePoint site.
 
 ![](/assets/images/sharepointsitedesignsandsitescripts/image-22-979x512.png)
-*Running the Get-SPOSiteScriptFromWeb command*
+*I ran the Get-SPOSiteScriptFromWeb command*
 
 
 ## Example site script

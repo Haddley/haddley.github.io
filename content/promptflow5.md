@@ -84,10 +84,10 @@ I used Prompt flow and LangChain to create and deploy an AI application.
 *The flow was able to provide an up-to-date response*
 
 ![](/assets/images/promptflow5/screenshot-2024-09-01-at-1.54.14pm-2136x1123.png)
-*The flow could have used the Duck Duck Go search "tool"*
+*I also explored using the DuckDuckGo search tool*
 
 ![](/assets/images/promptflow5/screenshot-2024-09-01-at-2.16.21pm-2136x1124.png)
-*The flow could have used the Wikipedia "tool"*
+*I also explored using the Wikipedia tool*
 
 ![](/assets/images/promptflow5/screenshot-2024-09-01-at-1.54.58pm-2136x290.png)
 *I selected the Build as docker menu item*

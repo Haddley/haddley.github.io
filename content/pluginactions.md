@@ -9,7 +9,7 @@ image: "/assets/images/pluginactions/office-365-icon-500x500.png"
 ---
 
 
-I created a Plugin Action to add functionality to a copilot. The large language model is being used to establish inputs that will be passed to the Plugin Action and to generate output based on the response provided by the Plugin Action.
+I created a Plugin Action to add functionality to a copilot. The large language model established inputs to pass to the Plugin Action and generated output based on the Plugin Action's response.
 
 ![](/assets/images/pluginactions/screenshot-2024-02-24-at-8.14.55-pm-1836x1066.png)
 *I clicked the New copilot button*
@@ -18,7 +18,7 @@ I created a Plugin Action to add functionality to a copilot. The large language 
 *I accepted the default name. I did not provide a web site URL*
 
 ![](/assets/images/pluginactions/screenshot-2024-02-24-at-8.15.21-pm-1836x954.png)
-*The copilot was set up*
+*The copilot was ready*
 
 ![](/assets/images/pluginactions/screenshot-2024-02-24-at-8.15.40-pm-1836x959.png)
 *I clicked the Skip button*

@@ -592,10 +592,10 @@ pytest src/tests/test_colorizer.py -v
 *pip install -r requirements.txt*
 
 ![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 8.32.54 PM.png)
-*nicegui.io*
+*I visited nicegui.io*
 
 ![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 8.32.11 PM.png)
-*main.py*
+*I reviewed main.py*
 
 ![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 8.33.05 PM.png)
 *http://127.0.0.1:8080*
@@ -604,13 +604,13 @@ pytest src/tests/test_colorizer.py -v
 *NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+*
 
 ![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 8.36.45 PM.png)
-*Option 1: Ignore it*
+*I chose Option 1: Ignore it*
 
 ![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 8.37.27 PM.png)
-*Publish to GitHub*
+*I published to GitHub*
 
 ![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 8.37.53 PM.png)
-*skip the venv folder*
+*I skipped the venv folder*
 
 
 
@@ -623,13 +623,13 @@ pytest src/tests/test_colorizer.py -v
 *python -m src.app.main*
 
 ![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 11.35.33 PM.png)
-*Choose Image*
+*I clicked Choose Image*
 
 ![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 11.35.46 PM.png)
-*COLORIZE IMAGE*
+*I clicked COLORIZE IMAGE*
 
 ![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 11.36.10 PM.png)
-*DOWNLOAD COLORIZED IMAGE*
+*I clicked DOWNLOAD COLORIZED IMAGE*
 
 
 

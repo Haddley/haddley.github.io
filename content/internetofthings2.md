@@ -4,6 +4,7 @@ description: "Node-RED can publish messages to a MQTT broker and subscribe to MQ
 date: "2021-03-06"
 categories: ["IOT"]
 tags: ""
+hidden: false
 slug: "internetofthings2"
 image: "/assets/images/internetofthings2/iot-microchip.svg"
 ---
@@ -15,22 +16,24 @@ Node-RED can be used to publish messages to an MQTT broker.
 
 Node-RED is able to subscribe to MQTT broker messages.
 
-**$ docker run -it -p 1880:1880 nodered/node-red**
+```bash
+$ docker run -it -p 1880:1880 nodered/node-red
+```
 
 ![](/assets/images/internetofthings2/screen-shot-2021-03-04-at-7.46.57-pm-1136x736.png)
-*node-red Docker image*
+*I ran the node-red Docker image*
 
 ![](/assets/images/internetofthings2/screen-shot-2021-03-06-at-11.35.48-pm-1836x1045.png)
-*Connecting Node-RED to the MQTT broker*
+*I connected Node-RED to the MQTT broker*
 
 ![](/assets/images/internetofthings2/screen-shot-2021-03-06-at-11.41.33-pm-1836x1051.png)
-*"mqtt in" node subscribes to "outTopic" messages*
+*I configured the "mqtt in" node to subscribe to "outTopic" messages*
 
 ![](/assets/images/internetofthings2/screen-shot-2021-03-06-at-11.42.05-pm-1836x1053.png)
-*"debug" node displays the incoming "outTopic" messages on debug panel*
+*I used the "debug" node to display the incoming "outTopic" messages on the debug panel*
 
 ![](/assets/images/internetofthings2/screen-shot-2021-03-06-at-11.45.34-pm-1836x1040.png)
-*"mqtt out" node publishes "1" or "0" to the "inTopic" and ESP8266 LED turns on or off.*
+*I used the "mqtt out" node to publish "1" or "0" to the "inTopic" and the ESP8266 LED turned on or off.*
 
 
 ## MQTT topics and payloads
@@ -40,9 +43,9 @@ In the example above "inTopic" is a command topic and "outTopic" is a topic for 
 
 ## Command Topics
 
-In the example above the ESP8266 microprocessor subscribes to "inTopic" messages and when it sees a message with the payload "1" the builtin LED is turned on. 
+In the example above the ESP8266 microprocessor subscribes to "inTopic" messages and when it sees a message with the payload "1" the builtin LED is turned on.
 
-In fact dozens or hundreds of IoT devices could subscribe to "inTopic" messages turning on or off together. 
+In fact dozens or hundreds of IoT devices could subscribe to "inTopic" messages turning on or off together.
 
 But, what if a developer would like a single ESP8266 device's builtin LED to turn on? What if a developer would like to turn on a fan connected to a single ESP8266 device? What if a developer would like to turn off the fans connected to all ESP8266 devices on given floor of a given building?
 
@@ -66,10 +69,10 @@ A developer can arrange for fans controlled by all things on floor 2 to be turne
 Sample ESP8266 code is shown below.
 
 ![](/assets/images/internetofthings2/screen-shot-2021-03-07-at-11.21.47-am-1836x1106.png)
-*publishing to "cmd/hvac/building3/floor2/confroom2/thing1/builtinled"*
+*I published to "cmd/hvac/building3/floor2/confroom2/thing1/builtinled"*
 
 ![](/assets/images/internetofthings2/screen-shot-2021-03-07-at-11.35.42-am-1836x1108.png)
-*subscribing to "cmd/hvac/#'*
+*I subscribed to "cmd/hvac/#"*
 
 
 ## Response
@@ -89,7 +92,7 @@ Instead of passing the string "1" the Command Topic message's payload would be:
 
 Telemetry is read-only data that is transmitted by a device and aggregated elsewhere.
 
-A temperature sensor reading might be published by the ESP8266 using this topic 
+A temperature sensor reading might be published by the ESP8266 using this topic
 
 **dt/hvac/building3/floor2/confroom2/thing1/temperature**
 
@@ -108,12 +111,12 @@ How often an ESP8266 should publish a value depend on the application. The devic
 
 While telemetry messages are being published to the MQTT server client applications can subscribe to individual topics or to multiple topics using wildcards.
 
-The # wildcard matches multiple topic name levels. 
+The # wildcard matches multiple topic name levels.
 
 The + wildcard matches a single topic name level.
 
 ![](/assets/images/internetofthings2/screen-shot-2021-03-07-at-3.27.31-pm-1836x938.png)
-*Humidity sensor readings from 2nd floor of building 3.*
+*I reviewed Humidity sensor readings from the 2nd floor of building 3.*
 
 
 ## mqtt_esp8266_topic_structure.ino
@@ -415,7 +418,7 @@ void loop() {
     // SENSOR READ END
 
     lastMsg = now;
-  
+
   }
 }
 ```

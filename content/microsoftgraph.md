@@ -4,6 +4,7 @@ description: "Graph Explorer"
 date: "2022-05-26"
 categories: ["Microsoft 365"]
 tags: ""
+hidden: false
 slug: "microsoftgraph"
 image: "/assets/images/microsoftgraph/office-365-icon-500x500.png"
 ---
@@ -15,39 +16,39 @@ image: "/assets/images/microsoftgraph/office-365-icon-500x500.png"
 [Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer) is a developer tool that allows a developer to make Microsoft Graph REST API requests and view corresponding responses.
 
 ![](/assets/images/microsoftgraph/screen-shot-2022-05-26-at-9.26.35-am-1235x617.png)
-*Here I am using the Graph Explorer without signing in to my Active Directory account (using a sample account)*
+*I used the Graph Explorer without signing in to my Active Directory account (using a sample account)*
 
 ![](/assets/images/microsoftgraph/screen-shot-2022-05-26-at-9.29.31-am-485x209.png)
-*Here I am signing into my Microsoft 365 E5 developer subscription pre-provisioned with Microsoft 365 apps*
+*I signed into my Microsoft 365 E5 developer subscription pre-provisioned with Microsoft 365 apps*
 
 ![](/assets/images/microsoftgraph/screen-shot-2022-05-26-at-9.29.46-am-485x189.png)
-*Here I am entering my password*
+*I entered my password*
 
 ![](/assets/images/microsoftgraph/screen-shot-2022-05-26-at-9.30.14-am-484x195.png)
-*I am required to approve the sign in request using my mobile phone (two factor authentication)*
+*I approved the sign in request using my mobile phone (two factor authentication)*
 
 ![](/assets/images/microsoftgraph/screen-shot-2022-05-26-at-9.30.49-am-1234x619.png)
-*I can retrieve my profile details using a "/me/" request. GET my profile - https://graph.microsoft.com/v1.0/me/*
+*I retrieved my profile details using a "/me/" request. GET my profile - https://graph.microsoft.com/v1.0/me/*
 
 
 ## Graph Explorer permissions
 
-Before the Graph Explorer is able to retrieve email messages using Microsoft Graph the user (or an administrator) has to provide consent. The user is agreeing that the client application (Graph Explorer in this case) can access parts of the Microsoft Graph on their behalf.
+Before I could retrieve email messages using Microsoft Graph, I had to provide consent, agreeing that the client application (Graph Explorer) could access parts of the Microsoft Graph on my behalf.
 
 ![](/assets/images/microsoftgraph/screen-shot-2022-05-26-at-9.31.38-am-1234x618.png)
 *access denied - https://graph.microsoft.com/v1.0/me/messages*
 
 ![](/assets/images/microsoftgraph/screen-shot-2022-05-26-at-9.33.13-am-1400x657.png)
-*Here the administrator grants this application (Graph Explorer) permission to access a user's email messages (on that user's behalf).*
+*I granted this application (Graph Explorer) permission to access email messages as administrator*
 
 ![](/assets/images/microsoftgraph/screen-shot-2022-05-26-at-9.33.49-am-1400x655.png)
 *GET my mail - https://graph.microsoft.com/v1.0/me/messages*
 
 ![](/assets/images/microsoftgraph/screen-shot-2022-05-26-at-9.34.16-am-1401x656.png)
-*A second consent is needed to allow this application (Graph Explorer) to access a user's One drive and SharePoint online files (on that user's behalf) - https://graph.microsoft.com/v1.0/me/drive/root/children*
+*A second consent was needed to allow this application (Graph Explorer) to access my One Drive and SharePoint online files - https://graph.microsoft.com/v1.0/me/drive/root/children*
 
 ![](/assets/images/microsoftgraph/screen-shot-2022-05-26-at-9.36.19-am-1401x657.png)
-*Here the administrator grants this application (Graph Explorer) permission to access the user's (One drive and SharePoint online) files*
+*I granted this application (Graph Explorer) permission to access One Drive and SharePoint online files as administrator*
 
 ![](/assets/images/microsoftgraph/screen-shot-2022-05-26-at-6.18.08-pm-1401x792.png)
 *GET all the items in my (one) drive (root folder) - https://graph.microsoft.com/v1.0/me/drive/root/children*
@@ -67,19 +68,19 @@ All files uploaded to all public channels are stored in a shared Document Librar
 This SharePoint online Document Library can also be accessed using the One Drive application.
 
 ![](/assets/images/microsoftgraph/screen-shot-2022-05-26-at-10.04.41-am-1399x654.png)
-*The Mark 8 Project Team's Team includes a General and a Design channel.*
+*I noted that the Mark 8 Project Team included a General and a Design channel*
 
 ![](/assets/images/microsoftgraph/screen-shot-2022-05-26-at-10.05.14-am-1398x653.png)
-*The Design channel's files can be accessed without leaving the Teams application. The Design channel's files can also be accessed using the SharePoint user interface (using the "Open in SharePoint" menu item)*
+*I accessed the Design channel's files without leaving the Teams application. I also accessed the files using the SharePoint user interface via the "Open in SharePoint" menu item*
 
 ![](/assets/images/microsoftgraph/screen-shot-2022-05-26-at-10.05.42-am-1400x578.png)
-*In the SharePoint user interface it is clear that the Design channel's files are stored a the "Design" Folder in the shared "Documents" Document Library in the "Mark 8 Project Team" SharePoint site*
+*I confirmed in the SharePoint user interface that the Design channel's files were stored in the "Design" folder in the shared "Documents" Document Library in the "Mark 8 Project Team" SharePoint site*
 
 ![](/assets/images/microsoftgraph/screen-shot-2022-05-26-at-10.06.40-am-1400x574.png)
-*The "Documents" Document Library in the "Mark 8 Project Team" site can also be accessed using the One Drive user interface.*
+*I accessed the "Documents" Document Library in the "Mark 8 Project Team" site using the One Drive user interface*
 
 ![](/assets/images/microsoftgraph/screen-shot-2022-05-26-at-6.52.10-pm-1398x792.png)
-*The One Drive user interface can be used to show that there is a second "Confidential" Document Library in the "Mark 8 Project Team" Site.*
+*I used the One Drive user interface to confirm there was a second "Confidential" Document Library in the "Mark 8 Project Team" site*
 
 
 ## Using Microsoft Graph to access Teams/SharePoint Online/One Drive files
@@ -101,10 +102,10 @@ Graph explorer can be used to access [Teams/SharePoint Online/One Drive files](h
 
 ## Items trending around me
 
-M365 is able to keep track of documents a user has recently accessed.
+I found that M365 is able to keep track of documents I have recently accessed.
 
 ![](/assets/images/microsoftgraph/screen-shot-2022-05-26-at-10.14.25-am-1396x576.png)
-*recently accessed*
+*I reviewed recently accessed items*
 
 
 ## Items trending
@@ -120,4 +121,4 @@ Items trending around me can also be accessed using Microsoft Graph.
 Graph Explorer is also able to provide sample JavaScript code that could be used to access Microsoft Graph
 
 ![](/assets/images/microsoftgraph/screen-shot-2022-05-26-at-10.39.30-am-1399x733.png)
-*Sample JavaScipt code*
+*I reviewed the sample JavaScript code*

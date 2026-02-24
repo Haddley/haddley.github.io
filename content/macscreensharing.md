@@ -4,13 +4,14 @@ description: "Screen Sharing VNC"
 date: "2025-08-18"
 categories: ["macOS"]
 tags: ""
+hidden: false
 slug: "macscreensharing"
 image: "/assets/images/macscreensharing/apple-logo-black.svg"
 ---
 
 
 
-To share your macOS screen using VNC, enable Screen Sharing in System Settings, then use a VNC viewer on another device to connect to your Mac's IP address or hostname, using the password you set.
+I shared my macOS screen using VNC by enabling Screen Sharing in System Settings, then using a VNC viewer on another device to connect to my Mac's IP address.
 
 ![](/assets/images/macscreensharing/screenshot202025-08-1820at2011.28.53e280afam-1022x672.png)
 *I clicked on the apple | System Setting | General | Sharing menu item on the machine I wanted remote access to.*
@@ -22,7 +23,7 @@ To share your macOS screen using VNC, enable Screen Sharing in System Settings, 
 *I entered the url vnc://192.168.20.42 into a copy of safari I wanted to access the remote desktop from*
 
 ![](/assets/images/macscreensharing/screenshot202025-08-1820at2011.24.58e280afam-888x202.png)
-*Safari started Screen Sharing*
+*I confirmed Safari started Screen Sharing*
 
 ![](/assets/images/macscreensharing/screenshot202025-08-1820at2011.56.26e280afam-858x522.png)
 *I entered my login details*
@@ -36,7 +37,7 @@ To share your macOS screen using VNC, enable Screen Sharing in System Settings, 
 
 ## Remote Terminal SSH
 
-To connect to a remote Mac using the command-line terminal, the primary method involves using Secure Shell (SSH). This allows you to execute commands on the remote machine as if you were directly interacting with its local terminal.
+I connected to a remote Mac using the command-line terminal via Secure Shell (SSH), which allowed me to execute commands on the remote machine as if I were directly interacting with its local terminal.
 
 ![](/assets/images/macscreensharing/screenshot202025-08-1820at203.42.57e280afpm-1134x474.png)
 *I connected to my mac mini using ssh*

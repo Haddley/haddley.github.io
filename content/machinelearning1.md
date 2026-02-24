@@ -3,7 +3,8 @@ title: "Machine Learning (Part 1)"
 description: "Hexapawn and Yolo"
 date: "2022-06-05"
 categories: ["AI","ML"]
-tags: "hexapawn,yolo"
+tags: "hexapawn yolo"
+hidden: false
 slug: "machinelearning1"
 image: "/assets/images/machinelearning1/tensorflow-logo.svg"
 ---
@@ -17,7 +18,7 @@ For a science fair in 2019 I helped two of my children build an [instructables.c
 
 The project is based on the matchbox computer described by Martin Garner.
 
-In [his article](https://www.cs.williams.edu/~freund/cs136-073/GardnerHexapawn.pdf) Martin explains that learning machines are computers that improve with experience.
+In [his article](https://www.cs.williams.edu/~freund/cs136-073/GardnerHexapawn.pdf) Martin explained that learning machines are computers that improve with experience.
 
 This learning machine improves over time through [reinforcement learning](https://www.techtarget.com/searchenterpriseai/definition/reinforcement-learning).
 
@@ -34,7 +35,7 @@ Details of the Raspberry Pi setup are provided in Xiang Zhai's article [Deep Lea
 
 The YOLO v3 Tiny model was trained using [Supervised learning](https://www.ibm.com/cloud/learn/supervised-learning). A labelled set of photographs was used to train the model.
 
-The people at the science fair were less interested in the computer vision demonstration.
+I noticed that the people at the science fair were less interested in the computer vision demonstration.
 
 ![](/assets/mp4/machinelearning1/video-1654454580.mp4)
-*Yolo demonstration*
+*I ran a Yolo demonstration*

@@ -4,6 +4,7 @@ description: "Microsoft Dynamics 365 Business Central"
 date: "2023-08-14"
 categories: ["Microsoft Dynamics","Business Central","Power Platform"]
 tags: ""
+hidden: false
 slug: "businesscentralcanvasapps"
 image: "/assets/images/businesscentralcanvasapps/dynamics365-color.svg"
 ---
@@ -69,10 +70,10 @@ I created a Canvas app to display the available currencies.
 *The Currencies Administration page*
 
 ![](/assets/images/businesscentralcanvasapps/screen-shot-2023-08-14-at-12.44.34-pm-1354x378.png)
-*Adding an extra currency*
+*I added an extra currency*
 
 ![](/assets/images/businesscentralcanvasapps/screen-shot-2023-08-14-at-12.46.11-pm-1311x373.png)
-*Running the Canvas app.*
+*I ran the Canvas app*
 
 
 ## Sales Orders
@@ -137,7 +138,7 @@ I developed a Canvas app to display Sales Orders, filtered by Salesperson
 *I published the Canvas app*
 
 ![](/assets/images/businesscentralcanvasapps/screen-shot-2023-08-14-at-3.17.05-pm-1292x600.png)
-*The Canvas app.*
+*I reviewed the Canvas app*
 
 
 ## Items App

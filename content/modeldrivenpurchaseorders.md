@@ -21,13 +21,13 @@ I created a Power Platform Model Driven application to manage Business Central P
 *I selected the Develop environment and clicked the Install button*
 
 ![](/assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-2.24.39-pm-1836x372.png)
-*The Business Central Virtual Entity Dynamics 365 app was installed*
+*The Business Central Virtual Entity Dynamics 365 app installed successfully*
 
 ![](/assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-2.25.57-pm-1836x771.png)
 *I navigated to make.powerapps.com and ran the Business Central Configuration app*
 
 ![](/assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-2.28.13-pm-1836x773.png)
-*No tables were displayed*
+*No tables appeared*
 
 ![](/assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-2.28.26-pm-1836x765.png)
 *I navigated to the Configurations page and clicked on the Business Central item*
@@ -45,7 +45,7 @@ I created a Power Platform Model Driven application to manage Business Central P
 *I updated the Visible value to Yes. I clicked the Save & Close button*
 
 ![](/assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-2.41.50-pm-1836x398.png)
-*The purchaseOrder table was set to Visible*
+*The purchaseOrder table was now Visible*
 
 ![](/assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-2.43.00-pm-1836x493.png)
 *I navigated the the Power Apps Tables list and clicked on the Purchase Order Table*
@@ -60,10 +60,10 @@ I created a Power Platform Model Driven application to manage Business Central P
 *I set the purchaseOrderTable to Visible. I clicked the Save & Close button*
 
 ![](/assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-2.45.10-pm-1836x447.png)
-*The Visible property of the purchaseOrderLine table was updated*
+*The Visible property of the purchaseOrderLine table updated*
 
 ![](/assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-2.45.45-pm-1836x511.png)
-*The purchaseOrderLine table was added to the Power Apps Tables list.*
+*The purchaseOrderLine table appeared in the Power Apps Tables list*
 
 ![](/assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-2.45.58-pm-1836x418.png)
 *I reviewed the purchaseOrder table's Relationships. A Document Id relationship was shown between the purchaseOrder table and the purchaseOrderLine table*
@@ -75,10 +75,10 @@ I created a Power Platform Model Driven application to manage Business Central P
 *I set the vendor to Visible. I clicked the Save & Close button*
 
 ![](/assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-2.47.16-pm-1836x619.png)
-*The Visible property of the vendor table was updated*
+*The Visible property of the vendor table updated*
 
 ![](/assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-2.47.36-pm-1836x318.png)
-*The vendor table was added to the Power Apps Tables list.*
+*The vendor table appeared in the Power Apps Tables list*
 
 ![](/assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-2.48.00-pm-1836x457.png)
 *I reviewed the purchaseOrder table's Relationships. A Vendor Id relationship was shown between the purchaseOrder table and the vendor table*
@@ -90,7 +90,7 @@ I created a Power Platform Model Driven application to manage Business Central P
 *I created a new Business Central solution*
 
 ![](/assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-2.49.19-pm-1836x639.png)
-*A added a Model-driven app to the Business Central solution*
+*I added a Model-driven app to the Business Central solution*
 
 ![](/assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-2.49.43-pm-1836x658.png)
 *I named the app Business Central*
@@ -111,7 +111,7 @@ I created a Power Platform Model Driven application to manage Business Central P
 *I clicked the Edit View link on the Purchase Orders view item*
 
 ![](/assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-2.54.44-pm-1836x767.png)
-*At this point the "All Purchase Orders" view Only included the Purchase Order number (No.) column*
+*The "All Purchase Orders" view only included the Purchase Order number (No.) column*
 
 ![](/assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-2.55.45-pm-1836x768.png)
 *I added the Order Date, Status, Total Amount Excluding Tax and Total Amount Including Tax columns to the view*
@@ -134,10 +134,10 @@ I created a Power Platform Model Driven application to manage Business Central P
 
 ## Quick View
 
-I configured the General tab to have [two columns](https://www.youtube.com/watch?v=LIC8DFW8fOE&t=5130s). I wanted to add a Quick View form to the right hand column. The Quick View form would allow a user to select a Vendor Id value on the left and to see corresponding Vendor details displayed on the right.
+I configured the General tab to have [two columns](https://www.youtube.com/watch?v=LIC8DFW8fOE&t=5130s). I wanted to add a Quick View form to the right-hand column so I could select a Vendor Id on the left and see the corresponding Vendor details on the right.
 
 ![](/assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-6.04.18-pm-1836x633.png)
-*The Vendor Id column has been added to the Purchase Order form*
+*The Vendor Id column appeared on the Purchase Order form*
 
 ![](/assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-6.08.35-pm-1836x481.png)
 *I dragged the Purchase Order No. field into the header of the form (into the top right of the form)*
@@ -149,7 +149,7 @@ I configured the General tab to have [two columns](https://www.youtube.com/watch
 *I selected the General Tab and selected 2 columns*
 
 ![](/assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-6.18.17-pm-1836x634.png)
-*A new section "New Section" was added to the General Tab*
+*A new section "New Section" appeared in the General Tab*
 
 ![](/assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-6.18.56-pm-1836x632.png)
 *I selected the Quick view component*
@@ -191,13 +191,13 @@ I configured the General tab to have [two columns](https://www.youtube.com/watch
 *I selected a Vendor*
 
 ![](/assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-6.28.28-pm-1836x631.png)
-*The Vendor Id field was populated and the Quick View form was shown on the right hand side.*
+*The Vendor Id field populated and the Quick View form appeared on the right-hand side*
 
 ![](/assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-6.29.18-pm-1836x632.png)
 *I clicked the Save button*
 
 ![](/assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-6.29.31-pm-1836x633.png)
-*The record was saved to Business Central and No. value 106034 automatically assigned*
+*Business Central saved the record and automatically assigned No. value 106034*
 
 ![](/assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-6.29.47-pm-1836x629.png)
-*The new purchase order was shown at the bottom of the "All Purchase Orders" view*
+*The new purchase order appeared at the bottom of the "All Purchase Orders" view*

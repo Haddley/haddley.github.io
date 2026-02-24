@@ -4,6 +4,7 @@ description: "Arduino Nano 33 BLE Sense"
 date: "2025-03-01"
 categories: ["AI","IOT"]
 tags: ""
+hidden: false
 slug: "internetofthings3"
 image: "/assets/images/internetofthings3/iot-microchip.svg"
 ---
@@ -41,7 +42,7 @@ Audio files recorded with this firmware can be previewed and edited in Edge Impu
 I noticed that the play, pause, and volume media controls in Edge Impulse Studio only appeared when the selected audio file had been recorded using an Arduino Nano 33 BLE Sense with the Edge Impulse firmware installed.
 
 ![](/assets/images/internetofthings3/482435269-1145132687404726-4716611611337756326-n-1102x688.png)
-*The Edge Impulse firmware for the Arduino Nano 33 BLE Sense supports a sampling frequency of 16,000 Hz.*
+*I noted that the Edge Impulse firmware for the Arduino Nano 33 BLE Sense supports a sampling frequency of 16,000 Hz.*
 
 ![](/assets/images/internetofthings3/476496236-1162144762281696-6300659400931351561-n-1359x645.png)
 *When the dog was barking I clicked the Start sampling button*
@@ -85,7 +86,7 @@ Data is split into **Training** and **Testing** groups to ensure that a machine 
 *I clicked the OK button*
 
 ![](/assets/images/internetofthings3/screenshot-2025-03-01-at-5.47.22pm-2136x1173.png)
-*The samples were divided into a training set and a test set*
+*I confirmed that the samples were divided into a training set and a test set*
 
 
 ## EON Tuner
@@ -95,7 +96,7 @@ The Edge Impulse EON Tuner is a machine learning optimization tool that helps de
 [https://www.youtube.com/watch?v=c3R9w7R_tRw](https://www.youtube.com/watch?v=c3R9w7R_tRw)
 
 ![](/assets/images/internetofthings3/screenshot-2025-03-01-at-5.54.42pm-2136x481.png)
-*EON Tuner*
+*I reviewed the EON Tuner*
 
 ![](/assets/images/internetofthings3/screenshot-2025-03-01-at-5.55.55pm-2136x344.png)
 *I selected Audible events*
@@ -104,16 +105,16 @@ The Edge Impulse EON Tuner is a machine learning optimization tool that helps de
 *Audible events. Listen for short one-time occurrences of non-voice audio*
 
 ![](/assets/images/internetofthings3/screenshot-2025-03-01-at-5.58.09pm-2136x1173.png)
-*EON Tuner is running...*
+*I waited while EON Tuner was running...*
 
 ![](/assets/images/internetofthings3/screenshot-2025-03-01-at-6.07.06pm-2136x1165.png)
-*EON Tuner results*
+*I reviewed the EON Tuner results*
 
 ![](/assets/images/internetofthings3/screenshot-2025-03-01-at-6.27.34pm-2136x1001.png)
 *I clicked the + Add button on the best looking model configuration*
 
 ![](/assets/images/internetofthings3/screenshot-2025-03-01-at-6.28.07pm-2136x1088.png)
-*mfcc-conv1d-8f2 was added as an Impulse*
+*I confirmed that mfcc-conv1d-8f2 was added as an Impulse*
 
 
 ## Deployment

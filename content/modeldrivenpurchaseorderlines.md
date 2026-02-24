@@ -27,7 +27,7 @@ I created a Power Platform Model Driven application to manage Business Central P
 *I hid the Section and Subgrid labels*
 
 ![](/assets/images/modeldrivenpurchaseorderlines/screenshot-2024-03-02-at-8.22.37-pm-1836x944.png)
-*A row was added to the Subgrid for every Purchase Order Line.*
+*A row appeared in the Subgrid for every Purchase Order Line*
 
 ![](/assets/images/modeldrivenpurchaseorderlines/screenshot-2024-03-02-at-8.24.17-pm-1836x614.png)
 *I navigated into the Business Central solution.*
@@ -84,7 +84,7 @@ I created a Power Platform Model Driven application to manage Business Central P
 *I clicked the + New Purchase Order Line button again*
 
 ![](/assets/images/modeldrivenpurchaseorderlines/screenshot-2024-03-02-at-8.39.31-pm-1836x546.png)
-*The Document Id was automatically populated*
+*The form automatically populated the Document Id*
 
 ![](/assets/images/modeldrivenpurchaseorderlines/screenshot-2024-03-02-at-8.39.41-pm-1836x662.png)
 *I selected Line Type Comment.*
@@ -135,7 +135,7 @@ I created a Power Platform Model Driven application to manage Business Central P
 *I clicked the Save button (notice that I did not enter a description)*
 
 ![](/assets/images/modeldrivenpurchaseorderlines/screenshot-2024-03-02-at-8.53.08-pm-1836x713.png)
-*Once the record had been saved a Line Object No. value was generated*
+*Once I saved the record, a Line Object No. value was generated*
 
 ![](/assets/images/modeldrivenpurchaseorderlines/screenshot-2024-03-02-at-8.53.52-pm-1836x944.png)
 *I clicked the back button to return to the Purchase Order form*

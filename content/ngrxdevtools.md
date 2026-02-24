@@ -51,19 +51,19 @@ I added the corresponding chrome extension from
 *reviewing store state and actions*
 
 ![](/assets/images/ngrxdevtools/screen-shot-2023-01-25-at-2.01.56-pm-1822x788.png)
-*clicking the dice to roll*
+*I clicked the dice to roll*
 
 ![](/assets/images/ngrxdevtools/screen-shot-2023-01-25-at-2.03.03-pm-1822x855.png)
-*clicking (pin) to focus on dice/value*
+*I clicked (pin) to focus on dice/value*
 
 ![](/assets/images/ngrxdevtools/screen-shot-2023-01-25-at-2.03.33-pm-1822x847.png)
-*replaying actions and reviewing dice/value updates*
+*I replayed actions and reviewed dice/value updates*
 
 ![](/assets/images/ngrxdevtools/screen-shot-2023-01-25-at-2.03.52-pm-1822x787.png)
-*Using Jump to navigate to an action*
+*I used Jump to navigate to an action*
 
 ![](/assets/images/ngrxdevtools/screen-shot-2023-01-25-at-2.04.27-pm-1822x792.png)
-*Using Jump to navigate to review previous state corresponding with an older action*
+*I used Jump to review previous state corresponding to an older action*
 
 
 ## Dispatch

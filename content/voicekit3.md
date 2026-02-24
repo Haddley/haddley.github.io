@@ -10,14 +10,14 @@ image: "/assets/images/voicekit3/raspberry-pi-logo.svg"
 
 🎯 What This Code Does
 
-This is a voice assistant program for Raspberry Pi (like a mini Google Assistant). When you say "OK Google", it listens to your commands and responds to them.
+I built a voice assistant program for Raspberry Pi. When I say "OK Google", it listens to my commands and responds to them.
 
 🔧 How It Works - The Basic Flow
 
-You say "OK Google" to wake it up
+I say "OK Google" to wake it up
 The LED lights up to show it's listening
-You speak a command
-It processes your command and responds
+I speak a command
+It processes my command and responds
 The LED changes to show what it's doing
 🎵 The "Event Handler" - The Brain
 
@@ -36,11 +36,11 @@ def process_event(assistant, led, event):
 
 🆕 How We Added Extra Commands
 
-We added special commands by creating functions and then connecting them to voice commands:
+I added special commands by creating functions and connecting them to voice commands:
 
 ### Step 1: Create the Function
 
-For each new command, we made a function that does the work:
+For each new command, I created a function that does the work:
 
 ```python
 def get_temp():
@@ -53,7 +53,7 @@ def get_uptime():
 ```
 ### Step 2: Connect to Voice Command
 
-Then we connected these functions to specific voice commands:
+I then connected these functions to specific voice commands:
 
 ```python
 elif text == 'cpu temperature':
@@ -67,7 +67,7 @@ elif text == 'uptime':
 
 📋 The Commands We Added
 
-Here are the new voice commands you can use:
+Here are the new voice commands I added:
 
 | Voice Command | What It Does |
 |---------------|--------------|
@@ -89,7 +89,7 @@ get_system_load() - Uses uptime to see how busy the computer is
 assistant.stop_conversation() - This tells Google Assistant: "Don't handle this command, we'll handle it ourselves"
 tts.say() - This makes the computer speak the response
 Voice commands must match exactly what you programmed (like "cpu temperature")
-So when you say "OK Google" followed by "cpu temperature", the program recognizes your command, stops Google from processing it, runs our special temperature function, and speaks the answer back to you! 🎤➡️🤖➡️🔊
+So when I say "OK Google" followed by "cpu temperature", the program recognizes the command, stops Google from processing it, runs my temperature function, and speaks the answer back. 🎤➡️🤖➡️🔊
 
 ## assistant_library_with_local_commands_demo_2.py
 ```python

@@ -9,7 +9,7 @@ image: "/assets/images/promptflow4/logo.svg"
 ---
 
 
-Once you have multiple plugins, you then need a way for your AI agent to use them together to solve a user’s need. This is where planning comes in.
+I used Semantic Kernel planning to combine multiple plugins so the AI agent can solve a user’s goal by orchestrating them together.
 
 ![](/assets/images/promptflow4/screenshot-2024-08-24-at-11.40.34am-1831x668.png)
 *I selected the existing .venv environment*

@@ -37,7 +37,7 @@ I created a Topic that used the Business Central Connector to retrieve the list 
 *I provided the Environment (String) PRODUCTION*
 
 ![](/assets/images/topics/screenshot-2024-02-25-at-3.58.24-pm-1836x1039.png)
-*I Variable management|Set a variable value*
+*I used Variable management | Set a variable value*
 
 ![](/assets/images/topics/screenshot-2024-02-25-at-3.58.55-pm-1836x607.png)
 *I set the variable name to Var1 and the value to GetCompaniesV3.value*

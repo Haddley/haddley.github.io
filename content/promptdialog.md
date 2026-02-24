@@ -10,12 +10,7 @@ hidden: "false"
 ---
 
 
-The PromptDialog page serves as the core UI component for a Business Central Copilot, enabling users to evaluate and refine AI-generated outputs within a structured, guided workflow. This page type orchestrates an intuitive, end-to-end experience where:
-
-User Input: Users provide initial prompts or instructions.
-AI Output Generation: The system processes the input and displays results.
-Review & Iteration: Users assess the output, make edits (if needed), and regenerate responses until satisfied.
-Final Action: The user chooses to either save the refined output or discard the session.
+I built a Business Central Copilot using the PromptDialog page type, which allows users to provide prompts, generate AI responses, review and regenerate outputs, and then save or discard the result.
 
 ![](/assets/images/promptdialog/screenshot202025-05-2320at206.45.36e280afpm-2136x1380.png)
 *I navigated to Business Central https://businesscentral.dynamics.com*

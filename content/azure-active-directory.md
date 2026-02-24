@@ -4,6 +4,7 @@ description: "Using Microsoft Identity to Authenticate Users."
 date: "2021-03-29"
 categories: ["Azure","Teams"]
 tags: "teams"
+hidden: false
 slug: "azure-active-directory"
 image: "/assets/images/azure-active-directory/azurex70x75.svg"
 ---
@@ -12,57 +13,57 @@ image: "/assets/images/azure-active-directory/azurex70x75.svg"
 
 Microsoft Office 365 applications including Microsoft SharePoint and Microsoft Teams use Azure Active Directory to authenticate users.
 
-Microsoft Teams allows Guest users to be added to a Team. 
+Microsoft Teams allows Guest users to be added to a Team.
 
-Azure Active Directory is used to support the Teams Guest user feature.
+Azure Active Directory supports the Teams Guest user feature.
 
-In the screenshot below John Doe with email address john@doe.com is added as a Guest user.
+I added John Doe with email address john@doe.com as a Guest user.
 
 ![](/assets/images/azure-active-directory/screen-shot-2021-03-31-at-6.50.37-pm-1314x906.png)
-*John Doe is being added as a Guest user.*
+*I added John Doe as a Guest user.*
 
 
 ## Members and guests
 
-Once John Doe has been added to the Team his account is included in the "Members and guests" list.
+After I added John Doe, his account appeared in the "Members and guests" list.
 
 ![](/assets/images/azure-active-directory/screen-shot-2021-03-31-at-6.55.56-pm-1836x833.png)
-*John has been added as a (guest) member of the Team*
+*John was added as a guest member of the Team*
 
 
 ## Azure Active Directory Users
 
-Switching to the Azure Portal we can see that an external (EXT) Active Directory account has been added for John Doe.
+In the Azure Portal I could see an external (EXT) Active Directory account had been created for John Doe.
 
 ![](/assets/images/azure-active-directory/screen-shot-2021-03-31-at-7.00.35-pm-1660x932.png)
-*Azure Active Directory Users*
+*I viewed the Azure Active Directory Users*
 
 
 ## Custom Web Application
 
-We can use the same Azure Active Directory user list to authenticate users accessing a custom "Who am I" web application.
+I used the same Azure Active Directory user list to authenticate users accessing a custom "Who am I" web application.
 
 
 ## App Registration
 
-The key step is the creation of an "application registration". 
+The key step is the creation of an "application registration".
 
-Navigate to the Azure Active Directory service and select App registrations page.
+I navigated to the Azure Active Directory service and selected the App registrations page.
 
 ![](/assets/images/azure-active-directory/screen-shot-2021-03-31-at-7.28.36-pm-1836x1175.png)
-*Navigate to Azure Active Directory and select App registrations*
+*I navigated to Azure Active Directory and selected App registrations*
 
 ![](/assets/images/azure-active-directory/screen-shot-2021-03-31-at-7.31.12-pm-456x178.png)
-*Click the "+ New registration" button*
+*I clicked the "+ New registration" button*
 
 ![](/assets/images/azure-active-directory/screen-shot-2021-03-31-at-9.20.55-pm-1730x1470.png)
-*Enter the user-facing display name "who am i" in this case.Enter the redirect uri (this is the address the user will be directed to once they have successfully entered their credentials).*
+*I entered the display name "who am i" and the redirect URI.*
 
 ![](/assets/images/azure-active-directory/screen-shot-2021-03-31-at-9.25.13-pm-1692x818.png)
-*We need to create a client secret*
+*I created a client secret*
 
 
-## We need to take a note of these three values
+## I noted these three values
 
 Application (client) ID 63fe01c7-f396-484e-8a48-760f********
 Directory (tenant) ID 1661e837-0a95-4bc6-a655-8653********
@@ -71,22 +72,22 @@ Client secret -~nGgWS3F7y~-o2etNGc0BW_ik_*******
 
 ## Test the solution
 
-To test the who-am-i web application we can navigate to http://localhost:3000
+I tested the who-am-i web application by navigating to http://localhost:3000
 
 ![](/assets/images/azure-active-directory/screen-shot-2021-03-31-at-9.30.32-pm-1050x226.png)
-*We attempt to navigate to http://localhost:3000*
+*I navigated to http://localhost:3000*
 
 ![](/assets/images/azure-active-directory/screen-shot-2021-03-31-at-9.30.53-pm-1836x977.png)
-*We are redirected to the Azure Active Directory Sign in page (unless federated identity management is enabled).*
+*I was redirected to the Azure Active Directory Sign in page.*
 
 ![](/assets/images/azure-active-directory/screen-shot-2021-03-31-at-9.31.03-pm-1836x982.png)
-*Once we have entered a correct email/username and password...*
+*After I entered my credentials...*
 
 ![](/assets/images/azure-active-directory/screen-shot-2021-03-31-at-9.31.24-pm-1836x983.png)
-*...we are asked consent to having our personal details passed to the "who am i" application (unless two factor authentication is enabled).*
+*...I was asked to consent to passing my details to the "who am i" application.*
 
 ![](/assets/images/azure-active-directory/screen-shot-2021-03-31-at-9.31.40-pm-1836x977.png)
-*In this case we are redirected to "/redirect" and the name of the authenticated user is displayed*
+*I was redirected to "/redirect" and my name was displayed*
 
 
 ## package.json
@@ -132,7 +133,7 @@ const msal = require('@azure/msal-node');
 const SERVER_PORT = process.env.PORT || 3000;
 const REDIRECT_URI = "http://localhost:3000/redirect";
 
-// Before running the sample, you will need to replace the values in the config, 
+// Before running the sample, you will need to replace the values in the config,
 // including the clientSecret
 const config = {
     auth: {
@@ -140,15 +141,15 @@ const config = {
         authority: "https://login.microsoftonline.com/1661e837-0a95-4bc6-a655-8653********",
         clientSecret: "-~nGgWS3F7y~-o2etNGc0BW_ik_*******"
     },
-    system: {
-        loggerOptions: {
-            loggerCallback(loglevel, message, containsPii) {
-                console.log(message);
-            },
-            piiLoggingEnabled: false,
-            logLevel: msal.LogLevel.Verbose,
-        }
-    }
+    system: {
+        loggerOptions: {
+            loggerCallback(loglevel, message, containsPii) {
+                console.log(message);
+            },
+            piiLoggingEnabled: false,
+            logLevel: msal.LogLevel.Verbose,
+        }
+    }
 };
 
 // Create msal application object
