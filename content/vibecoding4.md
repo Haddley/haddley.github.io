@@ -4,7 +4,7 @@ description: "Deploying to Docker"
 date: "2026-01-30"
 categories: ["AI"]
 image: "/assets/images/vibecoding4/chatgpt-logo.svg"
-tags: "ai"
+tags: "vibe-coding, docker, deployment, ai-coding"
 hidden: true
 slug: "vibecoding4"
 ---

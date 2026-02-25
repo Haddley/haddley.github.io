@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { BlogPost } from '@/lib/posts';
+import { categories } from '@/lib/categories';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -10,21 +11,6 @@ interface PostsPageWithSearchProps {
   featuredPosts: BlogPost[];
   remainingPosts: BlogPost[];
 }
-
-// Define categories with their slugs
-const categories = [
-  { name: 'AI', slug: 'ai', icon: '🤖' },
-  { name: '.NET', slug: 'net', icon: '💻' },
-  { name: 'Java', slug: 'java', icon: '☕' },
-  { name: 'Azure', slug: 'azure', icon: '☁️' },
-  { name: 'Microsoft 365', slug: 'microsoft-365', icon: '📊' },
-  { name: 'Microsoft Dynamics', slug: 'microsoft-dynamics', icon: '🏢' },
-  { name: 'Power Platform', slug: 'power-platform', icon: '⚡' },
-  { name: 'DevOps', slug: 'devops', icon: '🔧' },
-  { name: 'IOT', slug: 'iot', icon: '🌐' },
-  { name: 'Mobile', slug: 'mobile', icon: '📱' },
-  { name: '3D printing', slug: '3d-printing', icon: '🖨️' },  // ADD THIS
-];
 
 export default function PostsPageWithSearch({ 
   allPosts,

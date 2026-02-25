@@ -3,7 +3,7 @@ title: "Prompt Flow (Part 3)"
 description: "Semantic Kernel"
 date: "2024-08-24"
 categories: ["AI"]
-tags: ""
+tags: "prompt-flow, semantic-kernel, azure, llm"
 slug: "promptflow3"
 image: "/assets/images/promptflow3/logo.svg"
 ---

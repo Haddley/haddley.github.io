@@ -4,7 +4,7 @@ description: "Fine Tuning"
 date: "2025-09-20"
 categories: ["AI"]
 image: "/assets/images/finetuning/hero.png"
-tags: "ai"
+tags: "chatgpt, fine-tuning, openai, gpt-4"
 hidden: true
 slug: "chatgpt"
 ---

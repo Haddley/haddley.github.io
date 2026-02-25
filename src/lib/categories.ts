@@ -19,14 +19,6 @@ export const categories: Category[] = [
     aliases: ['net', 'csharp', 'C#', 'aspnet', 'blazor']
   },
   {
-    slug: 'csharp',
-    name: 'C#',
-    description: 'C# programming language, syntax, and development',
-    icon: '🔷',
-    color: 'bg-purple-100 text-purple-800',
-    aliases: ['cs', 'C#']
-  },
-  {
     slug: 'python',
     name: 'Python',
     description: 'Python programming, data science, AI/ML, and automation',
@@ -109,7 +101,7 @@ export const categories: Category[] = [
   {
     slug: 'ai',
     name: 'AI',
-    description: 'Artificial Intelligence, machine learning, and AI models',
+    description: 'Artificial Intelligence, machine learning, LLMs, neural networks, and AI models',
     icon: '🤖',
     color: 'bg-green-100 text-green-800',
     aliases: ['artificial-intelligence', 'machine-learning', 'ml', 'openai', 'chatgpt']
@@ -152,7 +144,7 @@ export const categories: Category[] = [
     description: 'DevOps practices, CI/CD, automation, and deployment pipelines',
     icon: '🔄',
     color: 'bg-gray-100 text-gray-800',
-    aliases: ['ci-cd', 'continuous-integration', 'continuous-deployment', 'automation']
+    aliases: ['ci-cd', 'continuous-integration', 'continuous-deployment', 'automation', 'docker', 'github', 'github-actions']
   },
   {
     slug: 'mobile',
@@ -184,7 +176,31 @@ export const categories: Category[] = [
     icon: '🖨️',
     description: 'Explore 3D printing projects and tutorials',
     color: 'bg-yellow-100 text-yellow-800',
-    aliases: ['3d', 'printing', '3d-printer', '3dprint']
+    aliases: ['printing', '3d-printer', '3dprint', 'fdm', 'resin']
+  },
+  {
+    slug: 'macos',
+    name: 'macOS',
+    description: 'macOS development, tools, and platform-specific tutorials',
+    icon: '🍎',
+    color: 'bg-gray-100 text-gray-800',
+    aliases: ['mac', 'osx', 'xcode', 'swift']
+  },
+  {
+    slug: 'firebase',
+    name: 'Firebase',
+    description: 'Google Firebase, Firestore, real-time databases, and backend-as-a-service',
+    icon: '🔥',
+    color: 'bg-orange-100 text-orange-800',
+    aliases: ['firestore', 'google-firebase']
+  },
+  {
+    slug: 'web-3d',
+    name: 'Web 3D',
+    description: 'Web-based 3D graphics, WebGL, Three.js, WebXR, and immersive web experiences',
+    icon: '🧊',
+    color: 'bg-cyan-100 text-cyan-800',
+    aliases: ['webgl', 'threejs', 'webxr', 'webvr', 'three-js', 'immersive-web']
   }
 
 ];

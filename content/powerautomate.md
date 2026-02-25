@@ -3,7 +3,7 @@ title: "Power Automate"
 description: "Automating Team Creation"
 date: "2022-05-04"
 categories: ["Power Platform"]
-tags: ""
+tags: "power-automate, teams, microsoft-teams, automation"
 slug: "powerautomate"
 image: "/assets/images/powerautomate/office-365-icon-500x500.png"
 ---

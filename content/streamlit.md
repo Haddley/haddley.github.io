@@ -4,7 +4,7 @@ description: "Streamlit"
 date: "2025-09-20"
 categories: ["AI","Python"]
 image: "/assets/images/streamlit/hero.png"
-tags: ["python","ai","ml","machine learning"]
+tags: "streamlit, python, dashboard, data-science"
 hidden: true
 slug: "streamlit"
 ---

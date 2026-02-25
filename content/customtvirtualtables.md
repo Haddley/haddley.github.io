@@ -3,7 +3,7 @@ title: "Custom Virtual Tables"
 description: "Customer Content Virtual Tables"
 date: "2024-05-07"
 categories: ["Power Platform","Microsoft Dynamics","Business Central"]
-tags: ""
+tags: "virtual-tables, dataverse, custom, business-central"
 hidden: false
 slug: "customtvirtualtables"
 image: "/assets/images/customtvirtualtables/office-365-icon-500x500.png"

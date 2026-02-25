@@ -2,8 +2,8 @@
 title: "Machine Learning (Part 6)"
 description: "Splitting into training and test dataframes"
 date: "2022-06-11"
-categories: ["AI","ML"]
-tags: ""
+categories: ["AI"]
+tags: "machine-learning, pandas, train-test-split, scikit-learn"
 hidden: false
 slug: "machinelearning6"
 image: "/assets/images/machinelearning6/tensorflow-logo.svg"

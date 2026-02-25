@@ -3,7 +3,7 @@ title: "LangChain (RAG)"
 description: "Using LangChain to create a medical report application"
 date: "2023-07-21"
 categories: ["AI","Python"]
-tags: ""
+tags: "langchain, rag, retrieval-augmented-generation, llm"
 hidden: false
 slug: "langchain"
 image: "/assets/images/langchain/chatgpt-logo.svg"

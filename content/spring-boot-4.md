@@ -3,7 +3,7 @@ title: "Java Spring Boot (Part 4)"
 description: "ModelAndView"
 date: "2023-10-29"
 categories: ["Java"]
-tags: ""
+tags: "spring-boot, java, model-and-view, mvc"
 slug: "spring-boot-4"
 image: "/assets/images/spring-boot-4/spring-framework-logo-70-no.svg"
 ---

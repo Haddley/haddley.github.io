@@ -4,7 +4,7 @@ description: "Generate Context and Entity Classes from an Existing Database"
 date: "2025-09-20"
 categories: [".NET","SQL"]
 image: "/assets/images/page86/net-logo.svg"
-tags: ""
+tags: "visual-basic, asp-net, entity-framework, database-first"
 slug: "vb-asp-net"
 ---
 

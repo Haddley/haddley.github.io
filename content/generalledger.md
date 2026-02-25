@@ -3,7 +3,7 @@ title: "General Ledger"
 description: "Purchase"
 date: "2023-12-11"
 categories: ["Business Central"]
-tags: ""
+tags: "general-ledger, accounts-payable, finance, business-central"
 hidden: false
 slug: "generalledger"
 image: "/assets/images/generalledger/dynamics365-color.svg"

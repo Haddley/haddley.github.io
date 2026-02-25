@@ -3,7 +3,7 @@ title: "Configure Copilot single sign-on for Web"
 description: "Publish|Configure channels"
 date: "2024-03-16"
 categories: ["Power Platform"]
-tags: ""
+tags: "copilot-studio, sso, single-sign-on, authentication"
 hidden: false
 slug: "configurecopilotsinglesignonforweb"
 image: "/assets/images/configurecopilotsinglesignonforweb/office-365-icon-500x500.png"

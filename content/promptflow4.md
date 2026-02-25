@@ -3,7 +3,7 @@ title: "Prompt Flow (Part 4)"
 description: "Planning"
 date: "2024-08-24"
 categories: ["AI"]
-tags: ""
+tags: "prompt-flow, planning, azure-ai, llmops"
 slug: "promptflow4"
 image: "/assets/images/promptflow4/logo.svg"
 ---

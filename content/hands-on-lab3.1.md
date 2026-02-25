@@ -3,7 +3,7 @@ title: "Hands-on-Lab 3.1"
 description: "Set Up Finance Management"
 date: "2023-12-04"
 categories: ["Business Central"]
-tags: ""
+tags: "business-central, finance, hands-on-lab, configuration"
 hidden: false
 slug: "hands-on-lab3.1"
 image: "/assets/images/hands-on-lab3.1/dynamics365-color.svg"

@@ -2,8 +2,8 @@
 title: "Machine Learning (Part 8)"
 description: "Stealing Baseball Signs"
 date: "2022-06-12"
-categories: ["AI","ML"]
-tags: "baseball"
+categories: ["AI"]
+tags: "machine-learning, computer-vision, baseball, classification"
 hidden: false
 slug: "machinelearning8"
 image: "/assets/images/machinelearning8/tensorflow-logo.svg"

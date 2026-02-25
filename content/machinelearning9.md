@@ -2,8 +2,8 @@
 title: "Machine Learning (Part 9)"
 description: "MNIST"
 date: "2022-06-17"
-categories: ["AI","ML"]
-tags: "MNIST"
+categories: ["AI"]
+tags: "machine-learning, mnist, neural-network, image-classification"
 hidden: false
 slug: "machinelearning9"
 image: "/assets/images/machinelearning9/tensorflow-logo.svg"

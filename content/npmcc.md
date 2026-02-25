@@ -3,7 +3,7 @@ title: "npm C++"
 description: "Create and publish an npm module using C++."
 date: "2021-02-26"
 categories: ["DevOps"]
-tags: ""
+tags: "npm, c-plus-plus, native-addon, node"
 slug: "npmcc"
 image: "/assets/images/npmcc/6078720-200x200.png"
 ---

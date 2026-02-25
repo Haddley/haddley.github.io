@@ -3,7 +3,7 @@ title: "AL-Go-PTE"
 description: "Extensions"
 date: "2023-08-26"
 categories: ["Microsoft Dynamics","Business Central","DevOps"]
-tags: ""
+tags: "al-go, extensions, github-actions, ci-cd"
 hidden: false
 slug: "al-go-pte"
 image: "/assets/images/al-go-pte/dynamics365-color.svg"

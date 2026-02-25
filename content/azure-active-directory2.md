@@ -3,7 +3,7 @@ title: "Azure Active Directory (Part 2)"
 description: "Microsoft Azure Active Directory Authentication."
 date: "2021-04-17"
 categories: ["Azure"]
-tags: ""
+tags: "azure-ad, active-directory, authentication, sso"
 hidden: false
 slug: "azure-active-directory2"
 image: "/assets/images/azure-active-directory2/azurex70x75.svg"

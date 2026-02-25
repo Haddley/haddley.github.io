@@ -3,7 +3,7 @@ title: "npm JavaScript"
 description: "Create and publish an npm module using JavaScript."
 date: "2021-02-25"
 categories: ["DevOps"]
-tags: ""
+tags: "npm, javascript, package, publishing"
 slug: "npm"
 image: "/assets/images/npm/6078720-200x200.png"
 ---

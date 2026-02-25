@@ -3,7 +3,7 @@ title: "DevOps Starter Azure DevOps"
 description: "Everything you need for developing, deploying, and monitoring your application."
 date: "2021-04-26"
 categories: ["DevOps","Azure"]
-tags: ""
+tags: "azure-devops, pipelines, ci-cd, starter"
 hidden: false
 slug: "devopsstarterazuredevops"
 image: "/assets/images/devopsstarterazuredevops/svgexport-22.svg"

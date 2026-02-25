@@ -3,7 +3,7 @@ title: "3D Printing 2"
 description: "Raspberry Pi 4 and Mini Breadboard mount"
 date: "2023-07-19"
 categories: ["3D printing"]
-tags: ""
+tags: "raspberry-pi, breadboard, mount, 3d-printing"
 hidden: false
 slug: "3dprinting2"
 image: "/assets/images/3dprinting2/wikipedia-globe-translucent-3d-printed-woodgrain-background-512x512.jpg"

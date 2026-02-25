@@ -3,7 +3,7 @@ title: "Financial Operations Purchase Invoice"
 description: "Payment Journals"
 date: "2023-08-20"
 categories: ["Microsoft Dynamics","Business Central"]
-tags: ""
+tags: "purchase-invoice, payment-journal, finance, business-central"
 hidden: false
 slug: "financialoperationspurchaseinvoice"
 image: "/assets/images/financialoperationspurchaseinvoice/dynamics365-color.svg"

@@ -3,7 +3,7 @@ title: "React and ASP.NET Core"
 description: "An ASP.NET Core backend and a React frontend."
 date: "2023-03-22"
 categories: ["React",".NET"]
-tags: ""
+tags: "react, asp-net-core, c-sharp, spa"
 slug: "reactandasp.net"
 image: "/assets/images/reactandasp.net/logo512-512x512.png"
 ---

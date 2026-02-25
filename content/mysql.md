@@ -3,7 +3,7 @@ title: "MySQL"
 description: "Connecting to MySQL from JavaScript"
 date: "2021-11-14"
 categories: ["SQL"]
-tags: ""
+tags: "mysql, javascript, database, node"
 slug: "mysql"
 image: "/assets/images/mysql/includes-mysql-5646x2872.png"
 ---

@@ -3,7 +3,7 @@ title: "Next.js (Part 1)"
 description: "The React Framework for Production"
 date: "2021-11-05"
 categories: ["React"]
-tags: ""
+tags: "next-js, react, framework, ssr"
 slug: "nextjs1"
 image: "/assets/images/nextjs1/2560px-nextjs-logo.svg-1536x920.png"
 ---

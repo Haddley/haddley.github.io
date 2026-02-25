@@ -3,7 +3,7 @@ title: "VB.NET WinForms and ASP.NET Core API"
 description: "VB.NET WinForms Development"
 date: "2023-03-27"
 categories: [".NET"]
-tags: ""
+tags: "vb-net, winforms, asp-net-core, api"
 slug: "vbnetwinforms"
 image: "/assets/images/vbnetwinforms/net-logo.svg"
 ---

@@ -3,7 +3,7 @@ title: "Customer Posting Group"
 description: "Which accounts receivable account?"
 date: "2023-12-14"
 categories: ["Microsoft Dynamics","Business Central"]
-tags: ""
+tags: "customer-posting-group, accounts-receivable, general-ledger, business-central"
 hidden: false
 slug: "customerpostinggroup"
 image: "/assets/images/customerpostinggroup/posts-meta.svg"

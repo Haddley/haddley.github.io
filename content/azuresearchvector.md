@@ -4,7 +4,7 @@ description: "Vector Search (Part 2)"
 date: "2026-02-09"
 categories: ["AI"]
 image: "/assets/images/azuresearchvector/posts-meta.svg"
-tags: "ai"
+tags: "azure-ai-search, vector-search, embeddings, rag"
 hidden: true
 slug: "azuresearchvector"
 ---

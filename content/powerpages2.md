@@ -3,7 +3,7 @@ title: "Power Pages (Part 2)"
 description: "View, create, and edit orders"
 date: "2024-12-20"
 categories: ["Business Central","Power Platform"]
-tags: ""
+tags: "power-pages, orders, business-central, portal"
 slug: "powerpages2"
 image: "/assets/images/powerpages2/powerpages-scalable.svg"
 ---

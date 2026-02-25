@@ -3,7 +3,7 @@ title: "Object Detection"
 description: "Object Detection"
 date: "2023-07-25"
 categories: ["AI","IOT"]
-tags: "opencv"
+tags: "opencv, object-detection, computer-vision, python"
 slug: "opencv"
 image: "/assets/images/opencv/raspberry-pi-logo.svg"
 ---

@@ -3,7 +3,7 @@ title: "Meta"
 description: "Prompt Engineering"
 date: "2023-08-08"
 categories: ["AI"]
-tags: ""
+tags: "prompt-engineering, llm, chatgpt, meta-llama"
 slug: "promptengineering"
 image: "/assets/images/promptengineering/mediamodifier-design.png"
 ---

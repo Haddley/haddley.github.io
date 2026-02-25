@@ -3,7 +3,7 @@ title: "Model Context Protocol (Part 2)"
 description: "Business Central"
 date: "2025-09-21"
 categories: ["Business Central","AI"]
-tags: "model context protocol"
+tags: "mcp, model-context-protocol, business-central, claude"
 image: "/assets/images/mcpserver2/mcp-1024x1024.png"
 slug: "mcpserver2"
 hidden: false

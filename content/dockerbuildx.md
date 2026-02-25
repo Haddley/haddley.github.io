@@ -2,8 +2,8 @@
 title: "Docker Buildx"
 description: "Build multi-platform Docker images."
 date: "2021-03-01"
-categories: ["DevOps","Docker"]
-tags: ""
+categories: ["DevOps"]
+tags: "docker-buildx, multi-platform, arm64, containers"
 hidden: false
 slug: "dockerbuildx"
 image: "/assets/images/dockerbuildx/method-draw-image.svg"

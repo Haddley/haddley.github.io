@@ -3,7 +3,7 @@ title: "Prompt Flow (Part 6)"
 description: "Quick start"
 date: "2024-09-01"
 categories: ["AI"]
-tags: ""
+tags: "prompt-flow, azure-ai-studio, evaluation"
 slug: "promptflow6"
 image: "/assets/images/promptflow6/logo.svg"
 ---

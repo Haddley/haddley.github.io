@@ -3,7 +3,7 @@ title: "LlamaCpp"
 description: "Accessing the llama.cpp model from Python"
 date: "2023-08-03"
 categories: ["AI"]
-tags: ""
+tags: "llama-cpp, local-llm, llama, python"
 hidden: false
 slug: "llamacorp"
 image: "/assets/images/llamacorp/jupyter.svg"

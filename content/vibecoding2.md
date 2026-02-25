@@ -4,7 +4,7 @@ description: "Proof of Concept"
 date: "2026-01-29"
 categories: ["AI"]
 image: "/assets/images/vibecoding2/chatgpt-logo.svg"
-tags: "ai"
+tags: "vibe-coding, chatgpt, proof-of-concept, ai-coding"
 hidden: true
 slug: "vibecoding2"
 ---

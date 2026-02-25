@@ -3,7 +3,7 @@ title: "Microsoft SQL Server (Part 2)"
 description: "T-SQL, Stored Procedures and Snapshot Isolation."
 date: "2021-03-27"
 categories: ["SQL"]
-tags: ""
+tags: "sql-server, t-sql, stored-procedures, snapshot-isolation"
 slug: "mssqlserver2"
 image: "/assets/images/mssqlserver2/ads.svg"
 ---

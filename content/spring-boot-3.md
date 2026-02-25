@@ -3,7 +3,7 @@ title: "Java Spring Boot (Part 3)"
 description: "SpringdatajpaApplication.java"
 date: "2023-10-28"
 categories: ["Java"]
-tags: ""
+tags: "spring-boot, java, spring-data-jpa, database"
 slug: "spring-boot-3"
 image: "/assets/images/spring-boot-3/spring-framework-logo-70-no.svg"
 ---

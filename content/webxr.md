@@ -2,8 +2,8 @@
 title: "WebXR"
 description: "Create Augmented Reality Experiences."
 date: "2022-04-22"
-categories: ["Web","3D"]
-tags: ""
+categories: ["Web 3D"]
+tags: "webxr, augmented-reality, mixed-reality, browser"
 slug: "webxr"
 image: "/assets/images/webxr/34385910-400x400.png"
 ---

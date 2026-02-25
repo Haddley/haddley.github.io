@@ -3,7 +3,7 @@ title: "Map Extension"
 description: "Map Extension"
 date: "2023-09-01"
 categories: ["Business Central"]
-tags: ""
+tags: "al-language, extension, maps, business-central"
 hidden: false
 slug: "mapextension"
 image: "/assets/images/mapextension/dynamics365-color.svg"

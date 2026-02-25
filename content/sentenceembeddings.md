@@ -4,7 +4,7 @@ description: "Sentence Embeddings"
 date: "2025-09-20"
 categories: ["AI"]
 image: "/assets/images/sentenceembeddings/hero.png"
-tags: ["ai","machine learning"]
+tags: "embeddings, sentence-transformers, nlp, semantic-search"
 hidden: true
 slug: "sentenceembeddings"
 ---

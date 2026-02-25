@@ -3,7 +3,7 @@ title: "Mac Screen Sharing"
 description: "Screen Sharing VNC"
 date: "2025-08-18"
 categories: ["macOS"]
-tags: ""
+tags: "macos, screen-sharing, vnc, remote-desktop"
 hidden: false
 slug: "macscreensharing"
 image: "/assets/images/macscreensharing/apple-logo-black.svg"

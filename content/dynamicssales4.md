@@ -4,7 +4,7 @@ description: "Tiki Tour"
 date: "2025-09-20"
 categories: ["Microsoft Dynamics"]
 image: "/assets/images/dynamicssales4/dynamics365-color.svg"
-tags: "microsoft dynamics sales"
+tags: "dynamics-365-sales, crm, overview, sales"
 hidden: false
 slug: "dynamicssales4"
 ---

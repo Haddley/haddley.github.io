@@ -3,7 +3,7 @@ title: "Power Pages (Part 1)"
 description: "Sales Orders"
 date: "2024-10-26"
 categories: ["Business Central","Power Platform"]
-tags: ""
+tags: "power-pages, sales-orders, business-central, portal"
 slug: "powerpages1"
 image: "/assets/images/powerpages1/powerpages-scalable.svg"
 ---

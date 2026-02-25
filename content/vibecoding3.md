@@ -4,7 +4,7 @@ description: "Unit Tests and Integration Tests"
 date: "2026-01-30"
 categories: ["AI"]
 image: "/assets/images/vibecoding3/chatgpt-logo.svg"
-tags: "ai"
+tags: "vibe-coding, unit-tests, integration-tests, ai-coding"
 hidden: true
 slug: "vibecoding3"
 ---

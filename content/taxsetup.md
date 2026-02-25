@@ -4,7 +4,7 @@ description: "Tax Setup"
 date: "2025-09-20"
 categories: ["Business Central"]
 image: "/assets/images/taxsetup/hero.png"
-tags: ["ai","business central","dynamics"]
+tags: "tax-setup, vat, business-central, finance"
 hidden: true
 slug: "taxsetup"
 ---

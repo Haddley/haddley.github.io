@@ -3,7 +3,7 @@ title: "JavaScript and Microsoft Graph"
 description: "A console application that calls the Microsoft Graph API"
 date: "2022-05-28"
 categories: ["JavaScript","Microsoft 365"]
-tags: ""
+tags: "javascript, microsoft-graph, console-app, api"
 hidden: false
 slug: "javascriptgraph"
 image: "/assets/images/javascriptgraph/office-365-icon-500x500.png"

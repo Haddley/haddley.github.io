@@ -3,7 +3,7 @@ title: "A Power Apps Application"
 description: "Power Apps Application."
 date: "2021-07-14"
 categories: ["Power Platform"]
-tags: ""
+tags: "power-apps, canvas-app, application, power-platform"
 slug: "powerappsapplication"
 image: "/assets/images/powerappsapplication/office-365-icon-500x500.png"
 ---

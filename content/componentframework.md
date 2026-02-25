@@ -3,7 +3,7 @@ title: "Component Framework"
 description: "Component Framework"
 date: "2022-08-14"
 categories: ["Power Platform","React"]
-tags: "component framework"
+tags: "pcf, component-framework, power-apps, typescript"
 hidden: false
 slug: "componentframework"
 image: "/assets/images/componentframework/office-365-icon-500x500.png"

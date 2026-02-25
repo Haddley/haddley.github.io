@@ -3,7 +3,7 @@ title: "Azure AI service"
 description: "Azure OpenAl"
 date: "2025-02-04"
 categories: ["Azure","AI"]
-tags: ""
+tags: "azure-openai, azure-ai-foundry, openai"
 hidden: false
 slug: "azureopenal"
 image: "/assets/images/azureopenal/azurex70x75.svg"

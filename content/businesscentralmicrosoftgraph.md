@@ -3,7 +3,7 @@ title: "Business Central Microsoft Graph"
 description: "Financials"
 date: "2023-12-18"
 categories: ["Microsoft Dynamics","Business Central"]
-tags: ""
+tags: "microsoft-graph, financials, api, business-central"
 hidden: false
 slug: "businesscentralmicrosoftgraph"
 image: "/assets/images/businesscentralmicrosoftgraph/posts-meta.svg"

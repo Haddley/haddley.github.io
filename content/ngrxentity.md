@@ -3,7 +3,7 @@ title: "NGRX entity"
 description: "json-server"
 date: "2023-02-18"
 categories: ["Angular"]
-tags: ""
+tags: "ngrx-entity, json-server, angular, rest"
 slug: "ngrxentity"
 image: "/assets/images/ngrxentity/ngrx.svg"
 ---

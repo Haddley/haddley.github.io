@@ -3,7 +3,7 @@ title: "Power Pages (Part 3)"
 description: "Customer Order Lines"
 date: "2024-12-20"
 categories: ["Business Central","Power Platform"]
-tags: ""
+tags: "power-pages, order-lines, business-central, portal"
 slug: "powerpages3"
 image: "/assets/images/powerpages3/powerpages-scalable.svg"
 ---

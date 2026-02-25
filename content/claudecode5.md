@@ -4,7 +4,7 @@ description: "Planning & Thinking"
 date: "2026-01-21"
 categories: ["AI"]
 image: "/assets/images/claudecode/Claude_AI_symbol.svg"
-tags: "ai"
+tags: "claude-code, extended-thinking, planning, anthropic"
 hidden: false
 slug: "claudecode5"
 ---

@@ -3,7 +3,7 @@ title: "Plugin Actions"
 description: "A comprehensive guide covering plugin actions"
 date: "2024-02-24"
 categories: ["Power Platform"]
-tags: ""
+tags: "plugins, dataverse, power-platform, custom-actions"
 slug: "pluginactions"
 image: "/assets/images/pluginactions/office-365-icon-500x500.png"
 ---

@@ -3,7 +3,7 @@ title: "SharePoint Web Part (Part 2)"
 description: "How to create and publish a SharePoint Web Part"
 date: "2021-02-14"
 categories: ["Microsoft 365"]
-tags: ""
+tags: "sharepoint-framework, spfx, web-part, deploy"
 slug: "sharepointwebpart2"
 image: "/assets/images/sharepointwebpart2/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png"
 ---

@@ -4,7 +4,7 @@ description: "WIP"
 date: "2025-09-20"
 categories: ["AI","Angular","Mobile"]
 image: "/assets/images/machinelearningwip/hero.png"
-tags: ["ai","ml","machine learning","git","github"]
+tags: "machine-learning, git, github, python"
 hidden: true
 slug: "machinelearningwip"
 ---

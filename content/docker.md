@@ -2,8 +2,8 @@
 title: "Docker"
 description: "Docker is an easy way to create, manage, and deliver applications."
 date: "2021-02-06"
-categories: ["DevOps","Docker"]
-tags: ""
+categories: ["DevOps"]
+tags: "docker, containers, dockerfile, cli"
 hidden: false
 slug: "docker"
 image: "/assets/images/docker/method-draw-image.svg"

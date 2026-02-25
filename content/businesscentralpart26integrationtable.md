@@ -3,7 +3,7 @@ title: "Business Central (Part 26)"
 description: "Integration Tables"
 date: "2024-12-22"
 categories: ["Microsoft Dynamics","Business Central","Power Platform"]
-tags: ""
+tags: "integration-tables, power-platform, business-central, al-language"
 hidden: false
 slug: "businesscentralpart26integrationtable"
 image: "/assets/images/businesscentralpart26integrationtable/posts-meta.svg"

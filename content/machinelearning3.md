@@ -2,8 +2,8 @@
 title: "Machine Learning (Part 3)"
 description: "Creating models"
 date: "2022-06-05"
-categories: ["AI","ML"]
-tags: ""
+categories: ["AI"]
+tags: "machine-learning, model-training, tensorflow, keras"
 hidden: false
 slug: "machinelearning3"
 image: "/assets/images/machinelearning3/tensorflow-logo.svg"

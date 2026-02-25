@@ -3,7 +3,7 @@ title: "Sentence Similarity"
 description: "Sentence Similarity"
 date: "2023-07-19"
 categories: ["AI"]
-tags: ""
+tags: "sentence-similarity, nlp, embeddings, semantic-search"
 slug: "sentencesimilarity"
 image: "/assets/images/sentencesimilarity/chatgpt-logo.svg"
 ---

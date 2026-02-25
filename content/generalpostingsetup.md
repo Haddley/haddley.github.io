@@ -3,7 +3,7 @@ title: "General Posting Setup"
 description: "Which accounts payable ledger account"
 date: "2023-12-14"
 categories: ["Business Central"]
-tags: ""
+tags: "general-posting-setup, accounts-payable, gl-account, business-central"
 hidden: false
 slug: "generalpostingsetup"
 image: "/assets/images/generalpostingsetup/posts-meta.svg"

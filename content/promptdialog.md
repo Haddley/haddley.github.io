@@ -3,7 +3,7 @@ title: "Business Central (Part 27)"
 description: "Prompt Dialog (Part 1)"
 date: "2024-05-24"
 categories: ["Business Central","AI"]
-tags: ""
+tags: "prompt-dialog, al-language, copilot, business-central"
 slug: "promptdialog"
 image: "/assets/images/promptdialog/posts-meta.svg"
 hidden: "false"

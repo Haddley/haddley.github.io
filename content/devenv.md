@@ -3,7 +3,7 @@ title: "Business Central (Part 27)"
 description: "Development Environment"
 date: "2025-11-17"
 categories: ["Business Central","DevOps"]
-tags: ""
+tags: "al-language, vs-code, development, business-central"
 hidden: false
 slug: "devenv"
 image: "/assets/images/devenv/posts-meta.svg"

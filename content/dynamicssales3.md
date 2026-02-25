@@ -3,7 +3,7 @@ title: "Dynamics 365 Sales (Part 3)"
 description: "Adding a Warranty table"
 date: "2023-10-21"
 categories: ["Microsoft Dynamics"]
-tags: "microsoft dynamics sales"
+tags: "dynamics-365-sales, crm, custom-tables, dataverse"
 hidden: false
 slug: "dynamicssales3"
 image: "/assets/images/dynamicssales3/dynamics365-color.svg"

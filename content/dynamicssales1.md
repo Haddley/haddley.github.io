@@ -3,7 +3,7 @@ title: "Dynamics 365 Sales (Part 1)"
 description: " the Account|Sales Insights form"
 date: "2023-10-21"
 categories: ["Microsoft Dynamics"]
-tags: "microsoft dynamics sales"
+tags: "dynamics-365-sales, crm, accounts, sales-insights"
 hidden: false
 slug: "dynamicssales1"
 image: "/assets/images/dynamicssales1/dynamics365-color.svg"

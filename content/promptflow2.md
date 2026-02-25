@@ -3,7 +3,7 @@ title: "Prompt Flow (Part 2)"
 description: "Docker"
 date: "2024-06-12"
 categories: ["AI"]
-tags: ""
+tags: "prompt-flow, docker, azure-ai-studio, containers"
 slug: "promptflow2"
 image: "/assets/images/promptflow2/logo.svg"
 ---

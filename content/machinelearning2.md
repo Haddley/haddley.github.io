@@ -2,8 +2,8 @@
 title: "Machine Learning (Part 2)"
 description: "What apps can be written quickly?"
 date: "2022-06-05"
-categories: ["AI","ML"]
-tags: "emoji scavenger hunt"
+categories: ["AI"]
+tags: "machine-learning, tensorflow, javascript, ml5"
 hidden: false
 slug: "machinelearning2"
 image: "/assets/images/machinelearning2/tensorflow-logo.svg"

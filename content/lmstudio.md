@@ -3,7 +3,7 @@ title: "Meta"
 description: "LM Studio"
 date: "2023-08-05"
 categories: ["AI"]
-tags: ""
+tags: "lm-studio, local-llm, llama, meta-llama"
 hidden: false
 slug: "lmstudio"
 image: "/assets/images/lmstudio/mediamodifier-design.png"

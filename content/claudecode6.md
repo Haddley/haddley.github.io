@@ -4,7 +4,7 @@ description: "Slash Commands"
 date: "2026-01-21"
 categories: ["AI"]
 image: "/assets/images/claudecode/Claude_AI_symbol.svg"
-tags: "ai"
+tags: "claude-code, slash-commands, anthropic, cli"
 hidden: false
 slug: "claudecode6"
 ---

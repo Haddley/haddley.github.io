@@ -4,7 +4,7 @@ description: "Vibe Coding"
 date: "2026-02-01"
 categories: ["AI"]
 image: "/assets/images/claudecode/Claude_AI_symbol.svg"
-tags: "ai"
+tags: "claude-code, vibe-coding, anthropic, ai-coding"
 hidden: false
 slug: "claudecode8"
 ---

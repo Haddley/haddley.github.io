@@ -3,7 +3,7 @@ title: ".NET Core (Part 1)"
 description: "Creating a REST API Service using Microsoft cross-platform framework."
 date: "2021-04-10"
 categories: [".NET"]
-tags: ""
+tags: "dotnet-core, rest-api, web-api, c-sharp"
 hidden: false
 slug: "dotnet-core-part1"
 image: "/assets/images/dotnet-core-part1/net-logo.svg"

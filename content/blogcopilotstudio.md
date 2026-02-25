@@ -3,7 +3,7 @@ title: "Blog Copilot Studio"
 description: "Blog Copilot"
 date: "2024-03-24"
 categories: ["Microsoft Dynamics","Business Central","Power Platform","AI"]
-tags: "copilot studio"
+tags: "copilot-studio, microsoft-copilot, business-central"
 hidden: false
 slug: "blogcopilotstudio"
 image: "/assets/images/blogcopilotstudio/posts-meta.svg"

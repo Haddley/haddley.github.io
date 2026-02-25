@@ -4,7 +4,7 @@ description: "Getting started"
 date: "2026-01-20"
 categories: ["AI"]
 image: "/assets/images/claudecode/Claude_AI_symbol.svg"
-tags: "ai"
+tags: "claude-code, anthropic, agentic-coding, cli"
 hidden: false
 slug: "claudecode1"
 ---

@@ -4,7 +4,7 @@ description: "A Node, React and MS SQL Server App."
 date: "2025-09-20"
 categories: ["SQL"]
 image: "/assets/images/mssqlserver3/hero.png"
-tags: []
+tags: "sql-server, node, react, full-stack"
 hidden: true
 slug: "mssqlserver3"
 ---

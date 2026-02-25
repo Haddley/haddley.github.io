@@ -3,7 +3,7 @@ title: "Hands-on-Lab 2.3"
 description: "Set up dimensions"
 date: "2023-12-04"
 categories: ["Business Central"]
-tags: ""
+tags: "business-central, dimensions, hands-on-lab, configuration"
 hidden: false
 slug: "hands-on-lab2.3"
 image: "/assets/images/hands-on-lab2.3/dynamics365-color.svg"

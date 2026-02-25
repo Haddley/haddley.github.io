@@ -3,7 +3,7 @@ title: "Microsoft Dynamics 365 App for Outlook"
 description: "References"
 date: "2025-09-20"
 categories: ["Microsoft Dynamics","Power Platform"]
-tags: "set regarding outlook"
+tags: "outlook, set-regarding, dynamics-365, crm"
 hidden: false
 image: "/assets/images/microsoftdynamics365appforoutlook/office-365-icon-500x500.png"
 slug: "microsoftdynamics365appforoutlook"

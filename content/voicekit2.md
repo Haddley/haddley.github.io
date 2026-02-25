@@ -3,7 +3,7 @@ title: "Voice Kit 2"
 description: "Google Assistant API"
 date: "2025-10-16"
 categories: ["Python","AI","IOT"]
-tags: ""
+tags: "raspberry-pi, google-assistant-api, voice, iot"
 slug: "voicekit2"
 image: "/assets/images/voicekit2/raspberry-pi-logo.svg"
 ---

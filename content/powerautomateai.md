@@ -3,7 +3,7 @@ title: "Power Automate"
 description: "Connect Power Automate to Azure AI Foundry"
 date: "2026-02-17"
 categories: ["Power Platform","AI"]
-tags: ["ai","power platform"]
+tags: "power-automate, azure-ai-foundry, ai-integration, workflow"
 hidden: false
 slug: "powerautomateai"
 image: "/assets/images/powerautomateai/office-365-icon-500x500.png"

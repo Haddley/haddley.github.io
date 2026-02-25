@@ -3,7 +3,7 @@ title: "Microsoft Power Automate Reports"
 description: "A Flow that emails a Report"
 date: "2024-07-19"
 categories: ["Power Platform"]
-tags: ""
+tags: "power-automate, reports, email, automation"
 slug: "powerautomatereports"
 image: "/assets/images/powerautomatereports/office-365-icon-500x500.png"
 ---

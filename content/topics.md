@@ -3,7 +3,7 @@ title: "Copilot"
 description: "Topics"
 date: "2024-02-25"
 categories: ["Power Platform"]
-tags: ""
+tags: "copilot-studio, topics, chatbot, conversation-topics"
 slug: "topics"
 image: "/assets/images/topics/office-365-icon-500x500.png"
 ---

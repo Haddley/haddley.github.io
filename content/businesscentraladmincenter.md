@@ -3,7 +3,7 @@ title: "Business Central Admin Center"
 description: "The Business Central Administration Center"
 date: "2023-08-18"
 categories: ["Microsoft Dynamics","Business Central"]
-tags: ""
+tags: "admin-center, business-central, administration, tenants"
 hidden: false
 slug: "businesscentraladmincenter"
 image: "/assets/images/businesscentraladmincenter/dynamics365-color.svg"

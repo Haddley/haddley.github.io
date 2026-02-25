@@ -4,7 +4,7 @@ description: "Integration Tables"
 date: "2025-09-20"
 categories: ["Business Central","Microsoft Dynamics"]
 image: "/assets/images/businesscentralintegrationtables/hero.png"
-tags: [integration tables]
+tags: "integration-tables, dataverse, business-central, al-language"
 hidden: true
 slug: "businesscentralintegrationtables"
 ---

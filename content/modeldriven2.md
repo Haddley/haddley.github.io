@@ -3,7 +3,7 @@ title: "Model Driven Apps (Part 2)"
 description: "Environments"
 date: "2023-10-05"
 categories: ["Power Platform"]
-tags: ""
+tags: "model-driven-app, power-apps, environments, dataverse"
 slug: "modeldriven2"
 image: "/assets/images/modeldriven2/office-365-icon-500x500.png"
 ---

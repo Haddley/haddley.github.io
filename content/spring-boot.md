@@ -3,7 +3,7 @@ title: "Java Spring Boot (Part 1)"
 description: "Spring based Java Applications that you can just run."
 date: "2021-04-06"
 categories: ["Java"]
-tags: ""
+tags: "spring-boot, java, rest-api, web"
 slug: "spring-boot"
 image: "/assets/images/spring-boot/spring-framework-logo-70-no.svg"
 ---

@@ -3,7 +3,7 @@ title: "Sentiment Analysis"
 description: "Sentiment Analysis"
 date: "2023-07-19"
 categories: ["AI"]
-tags: ""
+tags: "sentiment-analysis, nlp, text-classification, python"
 slug: "sentimentanalysis"
 image: "/assets/images/sentimentanalysis/chatgpt-logo.svg"
 ---

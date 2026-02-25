@@ -3,7 +3,7 @@ title: "XCode C++ (Part 1)"
 description: "Hello, World!"
 date: "2023-03-08"
 categories: ["macOS"]
-tags: ""
+tags: "xcode, c-plus-plus, macos, hello-world"
 slug: "xcode1"
 image: "/assets/images/xcode1/xcode-14-icon-300x314.png"
 ---

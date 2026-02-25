@@ -3,7 +3,7 @@ title: "XCode C++ (Part 3)"
 description: "Building an OpenGL application using C++ and XCode"
 date: "2023-03-08"
 categories: ["macOS"]
-tags: ""
+tags: "xcode, opengl, c-plus-plus, graphics"
 slug: "xcode3"
 image: "/assets/images/xcode3/xcode-14-icon-300x314.png"
 ---

@@ -3,7 +3,7 @@ title: "Progressive Web Application"
 description: "Building a Progressive Web Application"
 date: "2021-07-24"
 categories: ["Mobile"]
-tags: ""
+tags: "pwa, progressive-web-app, service-worker, mobile"
 slug: "pwa"
 image: "/assets/images/pwa/progressive-web-apps-logo.svg"
 ---

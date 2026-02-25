@@ -4,7 +4,7 @@ description: "Creating the Azure Functions App"
 date: "2025-12-15"
 categories: ["Azure","Microsoft Dynamics","Business Central"]
 image: "/assets/images/azurefunctionsbc/posts-meta.svg"
-tags: "azure business central azure functions"
+tags: "azure-functions, business-central, api, integration"
 hidden: false
 slug: "azurefunctionsbc"
 ---

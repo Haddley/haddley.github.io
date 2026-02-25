@@ -3,7 +3,7 @@ title: "Raspberry Pi GPIO"
 description: "Raspberry Pi GPIO"
 date: "2023-07-22"
 categories: ["IOT"]
-tags: ""
+tags: "raspberry-pi, gpio, python, electronics"
 slug: "pi2"
 image: "/assets/images/pi2/raspberry-pi-logo.svg"
 ---

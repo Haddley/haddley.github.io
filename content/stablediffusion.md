@@ -3,7 +3,7 @@ title: "Stable Diffusion"
 description: "Stable Diffusion"
 date: "2023-08-01"
 categories: ["AI"]
-tags: ""
+tags: "stable-diffusion, image-generation, generative-ai, diffusion-models"
 slug: "stablediffusion"
 image: "/assets/images/stablediffusion/jupyter.svg"
 ---

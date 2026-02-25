@@ -3,7 +3,7 @@ title: "OpenAI"
 description: "Fine Tuning"
 date: "2025-10-23"
 categories: ["AI"]
-tags: ""
+tags: "openai, fine-tuning, gpt, llm"
 slug: "openaifinetuning"
 image: "/assets/images/openaifinetuning/chatgpt-logo.svg"
 ---

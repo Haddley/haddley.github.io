@@ -3,7 +3,7 @@ title: "Voice Kit 3"
 description: "Adding Commands"
 date: "2025-10-18"
 categories: ["Python","AI","IOT"]
-tags: ""
+tags: "raspberry-pi, google-assistant, voice-commands, iot"
 slug: "voicekit3"
 image: "/assets/images/voicekit3/raspberry-pi-logo.svg"
 ---

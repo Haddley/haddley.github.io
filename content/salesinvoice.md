@@ -3,7 +3,7 @@ title: "Sales Invoice"
 description: "How the Inventory, Sale, Tax and Receivables accounts are determined"
 date: "2023-12-14"
 categories: ["Business Central"]
-tags: ""
+tags: "sales-invoice, inventory, accounts-receivable, business-central"
 slug: "salesinvoice"
 image: "/assets/images/salesinvoice/posts-meta.svg"
 ---

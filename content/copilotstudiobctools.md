@@ -3,7 +3,7 @@ title: "Copilot Studio Agent Tools"
 description: "Connected to Business Central"
 date: "2025-09-24"
 categories: ["Microsoft Dynamics","Business Central","Power Platform","AI"]
-tags: "copilot studio"
+tags: "copilot-studio, business-central, agent-tools, ai-integration"
 slug: "copilotstudiobctools"
 image: "/assets/images/copilotstudiobctools/posts-meta.svg"
 hidden: false

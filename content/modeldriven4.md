@@ -3,7 +3,7 @@ title: "Model Driven Apps (Part 4)"
 description: "Power FX"
 date: "2023-10-09"
 categories: ["Power Platform"]
-tags: ""
+tags: "model-driven-app, power-fx, formula, dataverse"
 slug: "modeldriven4"
 image: "/assets/images/modeldriven4/office-365-icon-500x500.png"
 ---

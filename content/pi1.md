@@ -3,7 +3,7 @@ title: "Raspberry Pi Imager"
 description: "Raspberry Pi Imager Advanced Options"
 date: "2023-07-22"
 categories: ["IOT"]
-tags: ""
+tags: "raspberry-pi, raspberry-pi-imager, setup, linux"
 slug: "pi1"
 image: "/assets/images/pi1/raspberry-pi-logo.svg"
 ---

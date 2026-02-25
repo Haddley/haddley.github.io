@@ -3,7 +3,7 @@ title: "Internet of Things (Part 3)"
 description: "Arduino Nano 33 BLE Sense"
 date: "2025-03-01"
 categories: ["AI","IOT"]
-tags: ""
+tags: "arduino, machine-learning, edge-ai, tensorflow-lite"
 hidden: false
 slug: "internetofthings3"
 image: "/assets/images/internetofthings3/iot-microchip.svg"

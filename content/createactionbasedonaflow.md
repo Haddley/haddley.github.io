@@ -3,7 +3,7 @@ title: "Create action based on a flow"
 description: "Created from the Business Central user interface"
 date: "2024-01-04"
 categories: ["Power Platform","Microsoft Dynamics","Business Central"]
-tags: "copilot studio"
+tags: "power-automate, flow, business-central, copilot-studio"
 hidden: false
 slug: "createactionbasedonaflow"
 image: "/assets/images/createactionbasedonaflow/posts-meta.svg"

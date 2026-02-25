@@ -3,7 +3,7 @@ title: "OpenAI"
 description: "What are Custom GPTs?"
 date: "2025-10-03"
 categories: ["AI"]
-tags: ""
+tags: "chatgpt, custom-gpt, openai, gpt-4"
 hidden: false
 slug: "customgpt"
 image: "/assets/images/customgpt/chatgpt-logo.svg"

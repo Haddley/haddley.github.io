@@ -3,7 +3,7 @@ title: ".NET Core (Part 2)"
 description: "Creating a Blazor App that calls Microsoft Graph."
 date: "2023-03-15"
 categories: [".NET"]
-tags: ""
+tags: "blazor, microsoft-graph, dotnet, c-sharp"
 hidden: false
 slug: "dotnet-core-part2"
 image: "/assets/images/dotnet-core-part2/net-logo.svg"

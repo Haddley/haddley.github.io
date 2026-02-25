@@ -3,7 +3,7 @@ title: "Teams Toolkit with SPFx"
 description: "Get started with Microsoft Teams app development using SPFx."
 date: "2021-05-30"
 categories: ["Microsoft 365"]
-tags: ""
+tags: "teams-toolkit, spfx, sharepoint-framework, teams"
 slug: "teamstoolkitspfx"
 image: "/assets/images/teamstoolkitspfx/teams-hi-res-icon-2019.svg"
 ---

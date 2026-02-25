@@ -3,7 +3,7 @@ title: "3D Printing 1"
 description: "ELEGOO Mars 3 Pro 4K Resin 3D Printer"
 date: "2023-07-15"
 categories: ["3D printing"]
-tags: ""
+tags: "resin-printing, elegoo-mars, 3d-printer, fdm"
 hidden: false
 slug: "3dprinting1"
 image: "/assets/images/3dprinting1/wikipedia-globe-translucent-3d-printed-woodgrain-background-512x512.jpg"

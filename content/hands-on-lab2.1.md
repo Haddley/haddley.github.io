@@ -3,7 +3,7 @@ title: "Hands-on-Lab 2.1"
 description: "Create and configure a new company"
 date: "2023-11-22"
 categories: ["Business Central"]
-tags: ""
+tags: "business-central, company-setup, hands-on-lab, configuration"
 hidden: false
 slug: "hands-on-lab2.1"
 image: "/assets/images/hands-on-lab2.1/dynamics365-color.svg"

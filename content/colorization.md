@@ -3,7 +3,7 @@ title: "Colorization"
 description: "colorization.ipynb"
 date: "2023-08-03"
 categories: ["Python","AI"]
-tags: ""
+tags: "colorization, jupyter-notebook, image-processing, python"
 hidden: false
 slug: "colorization"
 image: "/assets/images/colorization/jupyter.svg"

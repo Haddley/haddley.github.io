@@ -80,6 +80,58 @@ Not: `[Link text](otherPost.html)`
 
 When editing blog post content, use first-person active voice throughout — e.g. "I ran", "I clicked", "I selected". Avoid passive voice and third-person descriptions.
 
+## Categories
+
+Categories are defined in `src/lib/categories.ts`. Each post frontmatter uses the category **name** (not slug) in the `categories` array. The current taxonomy (25 categories):
+
+| Name | Slug |
+|------|------|
+| .NET | dotnet |
+| Python | python |
+| Java | java |
+| SQL | sql |
+| JavaScript | javascript |
+| React | react |
+| Angular | angular |
+| TypeScript | typescript |
+| PHP | php |
+| Azure | azure |
+| AWS | aws |
+| AI | ai |
+| Power Platform | power-platform |
+| Microsoft Dynamics | microsoft-dynamics |
+| Business Central | business-central |
+| Microsoft 365 | microsoft-365 |
+| DevOps | devops |
+| Mobile | mobile |
+| IOT | iot |
+| Maps | maps |
+| 3D printing | 3d-printing |
+| macOS | macos |
+| Firebase | firebase |
+| Web 3D | web-3d |
+
+**Rules:**
+- Use the exact category name from the table above — names are matched exactly by `getCategoryByName()` in `src/lib/categories.ts`
+- ML is not a standalone category — use `AI` and add `machine-learning` as a tag
+- Docker is not a standalone category — use `DevOps` and add `docker` as a tag
+- Do not invent new category names; update `src/lib/categories.ts` first if a new category is needed
+
+## Tags
+
+Tags are stored in the frontmatter `tags:` field as a **comma-separated string**:
+```yaml
+tags: "chatgpt, openai, prompt-engineering, llm"
+```
+
+The parser in `src/lib/posts.ts` splits on commas, so space-separated values without commas become a single tag.
+
+**Rules:**
+- Lowercase, hyphenated for multi-word terms: `machine-learning`, `al-language`, `azure-functions`
+- 3–6 tags per post — more specific than categories, capturing tools, patterns, and named technologies
+- Do not duplicate the category name as a tag (e.g. don't tag an AI post with `ai`)
+- Tags are rendered as Bootstrap `badge bg-secondary` chips on post pages and in search results — no UI changes needed when adding tags
+
 ## Key Configuration
 
 - `next.config.ts` — static export (`output: 'export'`), trailing slashes, unoptimized images

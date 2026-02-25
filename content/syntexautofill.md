@@ -3,7 +3,7 @@ title: "SharePoint Syntex "
 description: "Autofill columns"
 date: "2025-07-30"
 categories: ["Microsoft 365","AI"]
-tags: ""
+tags: "syntex, sharepoint, content-ai, document-processing"
 slug: "syntexautofill"
 image: "/assets/images/syntexautofill/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png"
 ---

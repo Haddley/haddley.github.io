@@ -3,7 +3,7 @@ title: "Purchase Invoice"
 description: "Purchase Invoice"
 date: "2023-12-14"
 categories: ["Business Central"]
-tags: ""
+tags: "purchase-invoice, accounts-payable, finance, business-central"
 slug: "purchaseinvoice"
 image: "/assets/images/purchaseinvoice/posts-meta.svg"
 ---

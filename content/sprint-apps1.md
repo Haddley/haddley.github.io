@@ -4,7 +4,7 @@ description: "hello-world-app"
 date: "2025-09-20"
 categories: ["Java"]
 image: "/assets/images/sprint-apps1/hero.png"
-tags: ["azure","java","spring","ai"]
+tags: "azure, java, spring, ai"
 hidden: true
 slug: "sprint-apps1"
 ---

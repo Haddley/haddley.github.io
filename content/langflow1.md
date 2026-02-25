@@ -3,7 +3,7 @@ title: "Langflow (Part 1)"
 description: "References"
 date: "2024-10-30"
 categories: ["AI"]
-tags: ""
+tags: "langflow, visual-programming, llm, workflow"
 hidden: false
 slug: "langflow1"
 image: "/assets/images/langflow1/85702467-200x200.png"

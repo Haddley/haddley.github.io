@@ -2,8 +2,8 @@
 title: "Machine Learning (Part 5)"
 description: "Excel"
 date: "2022-06-11"
-categories: ["AI","ML"]
-tags: "glucose levels"
+categories: ["AI"]
+tags: "machine-learning, excel, data-analysis, prediction"
 hidden: false
 slug: "machinelearning5"
 image: "/assets/images/machinelearning5/tensorflow-logo.svg"

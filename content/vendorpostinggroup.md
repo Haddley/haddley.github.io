@@ -3,7 +3,7 @@ title: "Vendor Posting Group"
 description: "Sub-ledgers"
 date: "2023-12-12"
 categories: ["Business Central"]
-tags: ""
+tags: "vendor-posting-group, accounts-payable, sub-ledger, business-central"
 slug: "vendorpostinggroup"
 image: "/assets/images/vendorpostinggroup/posts-meta.svg"
 ---

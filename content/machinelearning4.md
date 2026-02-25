@@ -3,7 +3,7 @@ title: "Machine Learning (Part 4)"
 description: "Colab"
 date: "2022-06-08"
 categories: ["AI","Python"]
-tags: "colab"
+tags: "machine-learning, google-colab, jupyter-notebook, python"
 hidden: false
 slug: "machinelearning4"
 image: "/assets/images/machinelearning4/tensorflow-logo.svg"

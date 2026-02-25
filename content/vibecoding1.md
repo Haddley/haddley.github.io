@@ -4,7 +4,7 @@ description: "Learn to Code with ChatGPT"
 date: "2026-01-29"
 categories: ["AI"]
 image: "/assets/images/vibecoding1/chatgpt-logo.svg"
-tags: "ai"
+tags: "vibe-coding, chatgpt, ai-coding, beginners"
 hidden: true
 slug: "vibecoding1"
 ---

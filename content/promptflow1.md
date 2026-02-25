@@ -3,7 +3,7 @@ title: "Prompt Flow (Part 1)"
 description: "Setup"
 date: "2024-06-11"
 categories: ["AI"]
-tags: ""
+tags: "prompt-flow, azure-ai-studio, llmops, mlops"
 slug: "promptflow1"
 image: "/assets/images/promptflow1/logo.svg"
 ---

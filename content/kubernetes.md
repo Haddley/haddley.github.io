@@ -3,7 +3,7 @@ title: "Kubernetes"
 description: "Kubernetes is a platform for managing containerized workloads."
 date: "2021-02-06"
 categories: ["DevOps"]
-tags: ""
+tags: "kubernetes, k8s, containers, orchestration"
 hidden: false
 slug: "kubernetes"
 image: "/assets/images/kubernetes/kubernetes-container-engine.svg"

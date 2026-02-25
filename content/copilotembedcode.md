@@ -3,7 +3,7 @@ title: "Copilot Embed Code"
 description: "An HTML page to host my Blog Copilot"
 date: "2024-03-11"
 categories: ["Power Platform"]
-tags: ""
+tags: "copilot-studio, embed, html, web-channel"
 hidden: false
 slug: "copilotembedcode"
 image: "/assets/images/copilotembedcode/office-365-icon-500x500.png"

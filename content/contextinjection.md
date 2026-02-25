@@ -3,7 +3,7 @@ title: "Context Injection"
 description: "Context Injection"
 date: "2023-07-19"
 categories: ["AI"]
-tags: ""
+tags: "context-injection, prompt-engineering, llm, rag"
 hidden: false
 slug: "contextinjection"
 image: "/assets/images/contextinjection/chatgpt-logo.svg"

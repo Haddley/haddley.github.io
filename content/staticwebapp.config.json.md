@@ -3,7 +3,7 @@ title: "staticwebapp.config.json"
 description: "staticwebapp.config.json"
 date: "2024-03-10"
 categories: ["Azure"]
-tags: ""
+tags: "azure-static-web-apps, config, routing, auth"
 slug: "staticwebapp.config.json"
 image: "/assets/images/staticwebapp.config.json/azurex70x75.svg"
 ---

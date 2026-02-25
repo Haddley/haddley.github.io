@@ -3,7 +3,7 @@ title: "Dynamics 365 Sales (Part 2)"
 description: "The Lead to Opportunity Sales Process"
 date: "2023-10-21"
 categories: ["Microsoft Dynamics"]
-tags: "microsoft dynamics sales"
+tags: "dynamics-365-sales, crm, leads, opportunities"
 hidden: false
 slug: "dynamicssales2"
 image: "/assets/images/dynamicssales2/dynamics365-color.svg"

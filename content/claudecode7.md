@@ -4,7 +4,7 @@ description: "MCP Servers"
 date: "2026-01-26"
 categories: ["AI"]
 image: "/assets/images/claudecode/Claude_AI_symbol.svg"
-tags: "ai"
+tags: "claude-code, mcp, model-context-protocol, anthropic"
 hidden: false
 slug: "claudecode7"
 ---

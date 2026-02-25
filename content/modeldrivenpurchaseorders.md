@@ -3,7 +3,7 @@ title: "Model Driven Purchase Orders"
 description: "Quick View"
 date: "2024-03-02"
 categories: ["Business Central","Power Platform"]
-tags: ""
+tags: "model-driven-app, power-apps, purchase-orders, business-central"
 slug: "modeldrivenpurchaseorders"
 image: "/assets/images/modeldrivenpurchaseorders/office-365-icon-500x500.png"
 ---

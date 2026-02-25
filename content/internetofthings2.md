@@ -3,7 +3,7 @@ title: "Internet of Things (Part 2)"
 description: "Node-RED can publish messages to a MQTT broker and subscribe to MQTT topics."
 date: "2021-03-06"
 categories: ["IOT"]
-tags: ""
+tags: "node-red, mqtt, iot, raspberry-pi"
 hidden: false
 slug: "internetofthings2"
 image: "/assets/images/internetofthings2/iot-microchip.svg"

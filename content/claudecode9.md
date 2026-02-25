@@ -4,7 +4,7 @@ description: "Using an AI coding agent to create an AI coding agent"
 date: "2026-02-22"
 categories: ["AI"]
 image: "/assets/images/claudecode/Claude_AI_symbol.svg"
-tags: "ai"
+tags: "claude-code, ai-agent, anthropic, agentic-coding"
 hidden: false
 slug: "claudecode9"
 ---

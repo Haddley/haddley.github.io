@@ -3,7 +3,7 @@ title: "MLX 1"
 description: "An Apple Project"
 date: "2025-11-06"
 categories: ["AI"]
-tags: "macOS fine tuning"
+tags: "mlx, apple-silicon, fine-tuning, local-llm"
 hidden: false
 slug: "mlx1"
 image: "/assets/images/mlx1/apple-logo-black.svg"

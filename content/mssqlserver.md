@@ -3,7 +3,7 @@ title: "Microsoft SQL Server (Part 1)"
 description: "Microsoft SQL Server 2019 Docker image."
 date: "2021-03-14"
 categories: ["SQL"]
-tags: ""
+tags: "sql-server, docker, database, t-sql"
 slug: "mssqlserver"
 image: "/assets/images/mssqlserver/ads.svg"
 ---

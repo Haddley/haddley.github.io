@@ -2,8 +2,8 @@
 title: "Machine Learning (Part 1)"
 description: "Hexapawn and Yolo"
 date: "2022-06-05"
-categories: ["AI","ML"]
-tags: "hexapawn yolo"
+categories: ["AI"]
+tags: "machine-learning, hexapawn, yolo, object-detection"
 hidden: false
 slug: "machinelearning1"
 image: "/assets/images/machinelearning1/tensorflow-logo.svg"
