@@ -17,7 +17,7 @@ The node console application I created here uses OAuth for identity management.
 
 An OAuth application requires an "identity provider". 
 
-In this case the identity provider is [Azure Active Directory](azure-active-directory.html#top).
+In this case the identity provider is [Azure Active Directory](/posts/azure-active-directory/).
 
 ![](/assets/images/javascriptgraph/screen-shot-2022-05-27-at-2.21.09-pm-1836x1288.png)
 *I navigated to Azure Portal and selected Azure Active Directory*
@@ -55,7 +55,7 @@ The graphHelper.js file contains the most interesting code.
 
 The graphHelper code creates a TokenCredentialAuthenticationProvider object and uses that to create a _userClient (client) object.
 
-The client object is then used to make calls as shown in the [Graph Explorer](MicrosoftGraph.html) "Code snippets" tab.
+The client object is then used to make calls as shown in the [Graph Explorer](/posts/microsoftgraph/) "Code snippets" tab.
 
 ![](/assets/images/javascriptgraph/screen-shot-2022-05-28-at-11.08.04-am-1208x572.png)
 *I reviewed GetUserSnippet from the application*

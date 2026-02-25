@@ -63,7 +63,7 @@ The **@GetMapping** annotation is used to mark the book and books methods as HTT
 
 ## React client
 
-I added static files (images, HTML, and JavaScript) to the /src/main/resources/static folder of the Spring Boot project, including a [React](reactusestateuseeffect.html) app that calls the REST API exposed by the same Spring Boot project.
+I added static files (images, HTML, and JavaScript) to the /src/main/resources/static folder of the Spring Boot project, including a [React](/posts/reactusestateuseeffect/) app that calls the REST API exposed by the same Spring Boot project.
 
 ![](/assets/images/spring-boot/screen-shot-2021-04-08-at-3.28.25-pm-1836x981.png)
 *Static files*

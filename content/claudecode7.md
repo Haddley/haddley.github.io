@@ -9,7 +9,7 @@ hidden: false
 slug: "claudecode7"
 ---
 
-One limitation of AI coding assistants is that their training data has a cutoff — they may give outdated advice about library APIs that have changed since they were trained. [Context7](https://context7.com) is a [Model Context Protocol (MCP) server](mcpserver.html) that fetches real-time, version-specific documentation and injects it into Claude's context, helping to reduce errors from stale knowledge.
+One limitation of AI coding assistants is that their training data has a cutoff — they may give outdated advice about library APIs that have changed since they were trained. [Context7](https://context7.com) is a [Model Context Protocol (MCP) server](/posts/mcpserver/) that fetches real-time, version-specific documentation and injects it into Claude's context, helping to reduce errors from stale knowledge.
 
 I set it up as a test using a React 17 → React 18 migration scenario.
 

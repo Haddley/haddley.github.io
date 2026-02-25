@@ -23,12 +23,12 @@ $ npm i react-big-calendar
 
 ## Update the Calendar Function Component
 
-I updated the Web Part's Calendar Component to include react-big-calendar, again using React's [useEffect and useState hooks](reactusestateuseeffect.html).
+I updated the Web Part's Calendar Component to include react-big-calendar, again using React's [useEffect and useState hooks](/posts/reactusestateuseeffect/).
 
 
 ## Pnp react-calendar sample
 
-SharePoint provides a [REST API](restapiservice.html).
+SharePoint provides a [REST API](/posts/restapiservice/).
 
 The [pnp react-calendar sample project](https://github.com/pnp/sp-dev-fx-webparts/tree/master/samples/react-calendar) uses an "sp-services" class to hold all of the code needed to fetch Calendar list items from the SharePoint site via SharePoint's REST API.
 

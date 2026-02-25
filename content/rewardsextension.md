@@ -41,7 +41,7 @@ I created a Rewards.al file. In the Rewards.al file I added code to created a Bu
 
 ## Documentation
 
-I used [Meta's codellama language model](LMStudio.html) to create the AL code documentation.
+I used [Meta's codellama language model](/posts/lmstudio/) to create the AL code documentation.
 
 ![](/assets/images/rewardsextension/screenshot-2023-08-30-at-1.28.36-pm-1466x1340.png)
 *LM Studio code llama instruct 7B*

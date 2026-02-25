@@ -103,4 +103,4 @@ The web page is updated to show the most likely candidate.
 
 ## Machine learning?
 
-The application developed by Jabril and demonstrated by Mark is a nice [reinforcement learning](https://www.techtarget.com/searchenterpriseai/definition/reinforcement-learning) example (just as [Hexapawn](machineLearning1.html) is).
+The application developed by Jabril and demonstrated by Mark is a nice [reinforcement learning](https://www.techtarget.com/searchenterpriseai/definition/reinforcement-learning) example (just as [Hexapawn](/posts/machinelearning1/) is).

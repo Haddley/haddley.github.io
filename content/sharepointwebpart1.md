@@ -78,7 +78,7 @@ The CalendarWebPart class manages state and the Calendar class has state passed 
 
 I reimplemented the Calendar React component as a function component, which made the code easier to read.
 
-If the Calendar component needs to maintain state, I can use [React useState and useEffect hooks](reactusestateuseeffect.html).
+If the Calendar component needs to maintain state, I can use [React useState and useEffect hooks](/posts/reactusestateuseeffect/).
 
 ![React FunctionComponent](/assets/images/sharepointwebpart1/screen-shot-2021-02-13-at-10.10.01-am-1836x1299.png)
 *Calendar component as a function component*

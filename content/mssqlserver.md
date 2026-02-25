@@ -66,7 +66,7 @@ MOVE 'AdventureWorks2017_Log' TO '/usr/AdventureWorks2019_Log.ldf'
 % dotnet new gitignore
 ```
 
-I added the [NuGet](nuget.html) package.
+I added the [NuGet](/posts/nuget/) package.
 
 ```bash
 % dotnet add package System.Data.SqlClient

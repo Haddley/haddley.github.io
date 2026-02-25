@@ -11,7 +11,7 @@ image: "/assets/images/dotnet-core-part2/net-logo.svg"
 
 
 
-[Microsoft Graph](MicrosoftGraph.html) is a REST API that can be used to access: Microsoft 365, Azure Active Directory, Windows and Dynamics 365.
+[Microsoft Graph](/posts/microsoftgraph/) is a REST API that can be used to access: Microsoft 365, Azure Active Directory, Windows and Dynamics 365.
 
 Microsoft Graph explorer is a developer tool that lets you learn about Microsoft Graph APIs.
 

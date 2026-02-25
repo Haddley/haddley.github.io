@@ -9,7 +9,7 @@ image: "/assets/images/spring-boot-5/spring-framework-logo-70-no.svg"
 ---
 
 
-I built a [GraphQL](GraphQL.html) application using Spring for GraphQL and GraphQL Java.
+I built a [GraphQL](/posts/graphql/) application using Spring for GraphQL and GraphQL Java.
 
 ![](/assets/images/spring-boot-5/screenshot-2023-10-30-at-12.13.17-pm-1253x813.png)
 *I created a new GitHub repository*
@@ -20,7 +20,7 @@ I built a [GraphQL](GraphQL.html) application using Spring for GraphQL and Graph
 
 ## The finished project
 
-I used http://localhost:8080/graphiql to demonstrate the finished code (in line with my [node GraphQL](GraphQL.html) implementation)
+I used http://localhost:8080/graphiql to demonstrate the finished code (in line with my [node GraphQL](/posts/graphql/) implementation)
 
 ![](/assets/images/spring-boot-5/screenshot-2023-10-31-at-10.07.53-am-1432x1011.png)
 *books*

@@ -67,7 +67,7 @@ I created a Jupyter Notebook to keep track of the steps I followed.
 
 ## Chroma
 
-I used Chroma to create an [embeddings](sentencesimilarity.html) vector store and saved the store locally.
+I used Chroma to create an [embeddings](/posts/sentencesimilarity/) vector store and saved the store locally.
 
 ![](/assets/images/langchain/screen-shot-2023-07-21-at-7.59.26-pm-1536x1033.png)
 *I used OpenAI's API to generate the embeddings*

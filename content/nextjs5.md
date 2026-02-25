@@ -11,7 +11,7 @@ image: "/assets/images/nextjs5/2560px-nextjs-logo.svg-1536x920.png"
 
 ## next-pwa
 
-I used [next-pwa](https://github.com/shadowwalker/next-pwa) to add [Progressive Web Application](pwa.html) (PWA) features to a Next.js project that included [Ionic](ionic.html) web components. I scaffolded it with:
+I used [next-pwa](https://github.com/shadowwalker/next-pwa) to add [Progressive Web Application](/posts/pwa/) (PWA) features to a Next.js project that included [Ionic](/posts/ionic/) web components. I scaffolded it with:
 
 ```bash
 % npx create-next-app --example with-ionic-typescript --use-npm haddley-nextjs-ionic-pwa

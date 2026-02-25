@@ -12,7 +12,7 @@ image: "/assets/images/businesscentralmicrosoftgraph/posts-meta.svg"
 
 
 
-[Microsoft Graph](MicrosoftGraph.html) can be used to develop applications that securely access and integrate with the data stored in Microsoft Dynamics 365 Business Central.
+[Microsoft Graph](/posts/microsoftgraph/) can be used to develop applications that securely access and integrate with the data stored in Microsoft Dynamics 365 Business Central.
 
 Graph Explorer is a web-based tool provided by Microsoft that allows developers and users to interact with Microsoft Graph APIs (Application Programming Interfaces) without the need for writing code.
 

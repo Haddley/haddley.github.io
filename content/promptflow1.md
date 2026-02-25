@@ -12,7 +12,7 @@ image: "/assets/images/promptflow1/logo.svg"
 
 I used Prompt flow for Visual Studio Code to create and run sample AI applications.
 
-The result is not very different from AI applications I have developed in the past using [langchain](llamaCorp.html).
+The result is not very different from AI applications I have developed in the past using [langchain](/posts/llamacorp/).
 
 ![](/assets/images/promptflow1/screenshot-2024-06-11-at-8.18.26am-1836x1055.png)
 *I downloaded Python from the python.org web site*

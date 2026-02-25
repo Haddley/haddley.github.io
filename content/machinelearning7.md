@@ -13,7 +13,7 @@ image: "/assets/images/machinelearning7/tensorflow-logo.svg"
 
 AutoML enables developers to train high-quality models specific to their business needs.
 
-I used AutoML to build and use the diabetes binary classification model I described [here](machinelearning6.html).
+I used AutoML to build and use the diabetes binary classification model I described [here](/posts/machinelearning6/).
 
 ![](/assets/images/machinelearning7/screen-shot-2022-06-12-at-4.05.35-pm-1240x869.png)
 *I created a new dataset*

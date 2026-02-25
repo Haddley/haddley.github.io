@@ -69,6 +69,13 @@ for f in os.listdir(folder):
 
 Run this against both `content/assets/images/<slug>/` and `public/assets/images/<slug>/`.
 
+## Internal Links
+
+When linking to other posts within Markdown content, always use absolute root-relative paths — never relative `.html` file references. Relative links like `machineLearning1.html` resolve incorrectly against the current post's URL.
+
+Use: `[Link text](/posts/<slug>/)`
+Not: `[Link text](otherPost.html)`
+
 ## Writing Style
 
 When editing blog post content, use first-person active voice throughout — e.g. "I ran", "I clicked", "I selected". Avoid passive voice and third-person descriptions.

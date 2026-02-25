@@ -9,9 +9,9 @@ slug: "amazoneks"
 image: "/assets/images/amazoneks/amazon-web-services-logo.svg"
 ---
 
-I used Amazon Elastic Kubernetes Service (Amazon EKS) to deploy, manage, and scale [containerized](docker.html) applications using [Kubernetes](kubernetes.html) on AWS.
+I used Amazon Elastic Kubernetes Service (Amazon EKS) to deploy, manage, and scale [containerized](/posts/docker/) applications using [Kubernetes](/posts/kubernetes/) on AWS.
 
-Since Amazon EKS is based on the open-source tool [Kubernetes](kubernetes.html), applications managed by Amazon EKS are compatible with applications managed by other Kubernetes environments.
+Since Amazon EKS is based on the open-source tool [Kubernetes](/posts/kubernetes/), applications managed by Amazon EKS are compatible with applications managed by other Kubernetes environments.
 
 Amazon also offers the Amazon Elastic Container Service (Amazon ECS).
 

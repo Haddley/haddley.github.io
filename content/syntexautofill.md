@@ -10,7 +10,7 @@ image: "/assets/images/syntexautofill/1200px-microsoft-office-sharepoint-2018pre
 
 
 
-I used SharePoint Syntex Autofill to automatically extract metadata from documents using natural language prompts. I added a **Smoke?** Autofill column to a Document Library. The objective was to automatically label [patient medical reports](langchain.html).
+I used SharePoint Syntex Autofill to automatically extract metadata from documents using natural language prompts. I added a **Smoke?** Autofill column to a Document Library. The objective was to automatically label [patient medical reports](/posts/langchain/).
 
 ![](/assets/images/syntexautofill/screenshot202025-07-3020at203.26.13e280afpm-2136x1125.png)
 *I uploaded a patient medical report to a SharePoint Document Library. I clicked the + Add column button. I added a Smoke? column. I enabled the Autofill feature for this column. I added the Does the patient smoke? prompt.*

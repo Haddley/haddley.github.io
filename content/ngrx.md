@@ -15,7 +15,7 @@ I used NgRx, which is inspired by the Redux pattern. NgRx stores a single state 
 *NGRX state management lifecycle*
 
 
-I installed the Angular command line interface using [npm](npm.html)
+I installed the Angular command line interface using [npm](/posts/npm/)
 
 ```bash
 % npm i -g @angular/cli

@@ -10,7 +10,7 @@ image: "/assets/images/aspnetcoreawseks/amazon-web-services-logo.svg"
 ---
 
 
-I used Amazon Elastic Kubernetes Service (Amazon EKS) to deploy, manage, and scale [containerized](docker.html) applications using [Kubernetes](kubernetes.html) on AWS.
+I used Amazon Elastic Kubernetes Service (Amazon EKS) to deploy, manage, and scale [containerized](/posts/docker/) applications using [Kubernetes](/posts/kubernetes/) on AWS.
 
 I deployed a .NET Core Web API to Amazon EKS from Visual Studio Code.
 

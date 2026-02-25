@@ -50,7 +50,7 @@ I created a Firebase project using https://console.firebase.google.com
 
 ## Creating a new angular project
 
-I installed the Angular command line interface using [npm](npm.html)
+I installed the Angular command line interface using [npm](/posts/npm/)
 
 ```bash
 % npm i -g @angular/cli

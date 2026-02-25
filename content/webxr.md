@@ -10,7 +10,7 @@ image: "/assets/images/webxr/34385910-400x400.png"
 
 
 
-I used [WebXR](https://github.com/immersive-web), which supports both Virtual Reality (VR) and Augmented Reality (AR) and replaces the [WebVR](WebVR.html) standard.
+I used [WebXR](https://github.com/immersive-web), which supports both Virtual Reality (VR) and Augmented Reality (AR) and replaces the [WebVR](/posts/webvr/) standard.
 
 
 ## Scene with markers

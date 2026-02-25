@@ -33,7 +33,7 @@ $ pip install -r requirements.txt
 
 ## LangChain
 
-I updated my [LangChain to create a medical report application](langchain.html) to work with Llama.cpp
+I updated my [LangChain to create a medical report application](/posts/langchain/) to work with Llama.cpp
 
 ![](/assets/images/llamacorp/screenshot-2023-08-08-at-1.42.34-pm-1836x923.png)
 *I ran streamlit run app2a.py*

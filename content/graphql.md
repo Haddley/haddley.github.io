@@ -95,7 +95,7 @@ The app.js code includes a GraphQL query, an ApolloProvider and a Query.
 
 ## API Gateway
 
-I noticed that the Cross-Origin Resource Sharing (CORS) library reference in the GraphQL code above is not needed when the GraphQL server and the GraphQL client App are published using an [API Gateway](apigateway.html).
+I noticed that the Cross-Origin Resource Sharing (CORS) library reference in the GraphQL code above is not needed when the GraphQL server and the GraphQL client App are published using an [API Gateway](/posts/apigateway/).
 
 
 ## server.js

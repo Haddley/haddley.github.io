@@ -16,7 +16,7 @@ This post is based on PiaSys Tech Bites's [Using Microsoft Graph Toolkit with Re
 
 ## SharePoint Apps
 
-SharePoint Framework (SPFx) applications are deployed to Microsoft 365 when they are uploaded to the [SharePoint online App catalog](sharepointwebpart2.html).
+SharePoint Framework (SPFx) applications are deployed to Microsoft 365 when they are uploaded to the [SharePoint online App catalog](/posts/sharepointwebpart2/).
 
 ![](/assets/images/ateamstabsharepointwebpartforonedrive/screen-shot-2022-05-28-at-1.34.20-pm-1836x837.png)
 *I navigated to the SharePoint admin center and clicked the "More features" link*

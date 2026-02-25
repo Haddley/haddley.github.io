@@ -12,13 +12,13 @@ image: "/assets/images/m365commandlineinterface/office-365-icon-500x500.png"
 
 ## m365
 
-Why not use the supported [docker](dockerandubernetes.html) image?
+Why not use the supported [docker](/posts/docker/) image?
 
 ```bash
 $ docker run --rm -it m365pnp/cli-microsoft365
 ```
 
-In the context of the docker image I used the m365 command to login to a Microsoft Office 365 tenant, create a SharePoint Site, and apply a [Site Design](sharepointsitedesignsandsitescripts.html).
+In the context of the docker image I used the m365 command to login to a Microsoft Office 365 tenant, create a SharePoint Site, and apply a [Site Design](/posts/sharepointsitedesignsandsitescripts/).
 
 I used these commands to login to Microsoft 365, create a SharePoint Site, review the registered site designs and apply one of the site designs to the newly created site (adding a ToDo list):
 

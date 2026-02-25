@@ -18,7 +18,7 @@ For large applications (with many routes) I used lazy loading [modules](https://
 
 ## Getting started
 
-I installed the Angular command line interface using [npm](npm.html)
+I installed the Angular command line interface using [npm](/posts/npm/)
 
 ```bash
 % npm i -g @angular/cli

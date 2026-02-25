@@ -18,7 +18,7 @@ $ npm install -g @ionic/cli
 $ ionic start <name>
 ```
 
-I created a todo [Progressive Web Application](pwa.html) (PWA)
+I created a todo [Progressive Web Application](/posts/pwa/) (PWA)
 
 ```bash
 $ ionic start haddley-todo

@@ -11,7 +11,7 @@ image: "/assets/images/amazonfargate/amazon-web-services-logo.svg"
 
 I used AWS Fargate, a serverless pay-as-you-go compute engine, to run containers on Amazon Elastic Container Service (ECS) and Amazon Elastic Kubernetes Service (EKS).
 
-I used Amazon Elastic Kubernetes Service (Amazon EKS) to deploy, manage, and scale [containerized](docker.html) applications using [Kubernetes](kubernetes.html) on AWS.
+I used Amazon Elastic Kubernetes Service (Amazon EKS) to deploy, manage, and scale [containerized](/posts/docker/) applications using [Kubernetes](/posts/kubernetes/) on AWS.
 
 Amazon also offers Amazon Elastic Container Service (Amazon ECS) and Amazon Fargate.
 
