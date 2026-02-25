@@ -2,7 +2,7 @@
 title: "Vibe Coding (Part 4)"
 description: "Deploying to Docker"
 date: "2026-01-30"
-categories: ["AI"]
+categories: ["AI", "Azure"]
 image: "/assets/images/vibecoding4/chatgpt-logo.svg"
 tags: "vibe-coding, docker, deployment, ai-coding"
 hidden: true

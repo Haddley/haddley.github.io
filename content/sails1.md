@@ -2,7 +2,7 @@
 title: "Sails (Part 1)"
 description: "Azure DevOps and Sails."
 date: "2021-10-12"
-categories: ["DevOps"]
+categories: ["DevOps", "Azure"]
 tags: "sails-js, azure-devops, node, mvc"
 slug: "sails1"
 image: "/assets/images/sails1/sailsjs-logo-515x193.png"

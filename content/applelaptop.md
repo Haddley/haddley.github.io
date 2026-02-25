@@ -2,7 +2,7 @@
 title: "Apple MacBook"
 description: "Anaconda Setup"
 date: "2023-07-25"
-categories: ["Python"]
+categories: ["Python","macOS"]
 tags: "anaconda"
 hidden: false
 slug: "applelaptop"

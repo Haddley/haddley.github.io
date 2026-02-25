@@ -2,7 +2,7 @@
 title: "Power Apps, Custom Connectors and Application Registrations"
 description: "Power Apps, Custom Connectors and Application Registrations"
 date: "2021-08-09"
-categories: ["Power Platform"]
+categories: ["Power Platform", "Azure"]
 tags: "custom-connector, app-registration, azure-ad, oauth"
 hidden: false
 slug: "customconnectorsappregistrations"

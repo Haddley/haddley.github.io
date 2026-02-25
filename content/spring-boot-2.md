@@ -2,7 +2,7 @@
 title: "Java Spring Boot (Part 2)"
 description: "References"
 date: "2023-10-26"
-categories: ["Java"]
+categories: ["Java", "Azure"]
 tags: "spring-boot, java, spring-data-jpa, jpa"
 slug: "spring-boot-2"
 image: "/assets/images/spring-boot-2/spring-framework-logo-70-no.svg"

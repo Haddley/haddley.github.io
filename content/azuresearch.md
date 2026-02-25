@@ -2,7 +2,7 @@
 title: "Azure Search"
 description: "Fulltext Search (Part 1)"
 date: "2026-02-09"
-categories: ["AI"]
+categories: ["AI", "Azure"]
 image: "/assets/images/azuresearch/posts-meta.svg"
 tags: "azure-ai-search, full-text-search, cognitive-search"
 hidden: true
