@@ -74,6 +74,41 @@ for f in os.listdir(folder):
 
 Run this against both `content/assets/images/<slug>/` and `public/assets/images/<slug>/`.
 
+If images are not yet in the content directory (e.g. still on the Desktop), move and rename in one step:
+
+```python
+import os, shutil
+for f in os.listdir(src_folder):
+    new = f.replace(' ', '-').replace('\u202f', '-')
+    shutil.move(os.path.join(src_folder, f), os.path.join(dst_folder, new))
+```
+
+## Fixing Plain-Text Image References
+
+When a post contains bare filenames instead of Markdown image syntax (e.g. `Screenshot 2026-03-01 at 9.22.58 AM.png` on its own line), the fix process is:
+
+1. Check whether the files exist in `content/assets/images/<slug>/` — if not, find them (commonly on the Desktop) and move them there first.
+2. Rename the files to replace spaces and `\u202f` with hyphens (see above).
+3. View each image to determine an appropriate first-person caption.
+4. Replace each bare filename with a proper `![]()` tag and italic caption:
+
+```markdown
+![](assets/images/<slug>/Screenshot-YYYY-MM-DD-at-H.MM.SS-AM.png)
+*I clicked Yes to apply the change*
+```
+
+## Post Structure — PROMPT Blocks
+
+When a post describes a Claude Code session, use a `PROMPT` fenced code block to show the prompt that was entered:
+
+````markdown
+```PROMPT
+Describe the scene
+```
+````
+
+Follow each prompt block with the screenshots showing what happened next.
+
 ## Internal Links
 
 When linking to other posts within Markdown content, always use absolute root-relative paths — never relative `.html` file references. Relative links like `machineLearning1.html` resolve incorrectly against the current post's URL.

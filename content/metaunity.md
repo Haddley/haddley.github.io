@@ -176,9 +176,35 @@ review this page https://developers.meta.com/horizon/documentation/unity/unity-p
 ![](assets/images/metaunity/641532049_1193231526215322_7894490494628209553_n.jpg)
 *The passthrough view showed the real world with blue cubes floating in my space*
 
+## Fixing my Vision with Claude Code
+
+```PROMPT
+I have been prescribed glasses that help me to see properly (without leaning my head towards my left shoulder) Add a feature that allows me to adjust the feed to my left and right eyes so that I am less tempted to lean my head. Show a spirit level that lets me see how horizontal my head/eye position is Here is the prescription Right Eye (OD): 5.50 Prism Diopters Base Down + 1.0 Prism Diopter Base Out.
+Left Eye (OS): 5.50 Prism Diopters Base Up + 1.0 Prism Diopter Base Out.
+```
+
+![](assets/images/metaunity/Screenshot-2026-03-01-at-10.13.46-AM.png)
+*I reviewed Claude Code's plan for PrismVisionCorrection + SpiritLevel and selected Yes, and auto-accept*
+
+![](assets/images/metaunity/Screenshot-2026-03-01-at-10.14.42-AM.png)
+*I reviewed the prism math and spirit level implementation details*
+
+![](assets/images/metaunity/Screenshot-2026-03-01-at-10.15.20-AM.png)
+*I reviewed the implementation steps and verification checklist*
+
+![](assets/images/metaunity/Screenshot-2026-03-01-at-10.16.59-AM.png)
+*Claude Code completed the changes and summarised what was created*
+
+![](assets/images/metaunity/Screenshot-2026-03-01-at-10.18.53-AM.png)
+*I attached the Prism Vision Correction script to the Camera Rig in the Unity Editor*
+
+![](assets/images/metaunity/642894093_1609198393659252_1924717491324295358_n.jpg)
+*The spirit level at the bottom of the view showed my head tilt in real time*
 
 ## References
 
 - [Unity Hello World for Meta Quest VR headsets](https://developers.meta.com/horizon/documentation/unity/unity-tutorial-hello-vr/?fbclid=IwY2xjawQPgEhleHRuA2FlbQIxMABicmlkETExWHlXUjlTTHZoU0NCSHc1c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHt6YQvbj1aGkotvkxp3-7LsJVtp8ms9JqOgqA9vEr7GZwqCfYiIbKrZ0jCWn_aem_FvRM0_3JX8Pakzaj7ORUAA)
 
 - [Passthrough basic tutorial](https://developers.meta.com/horizon/documentation/unity/unity-passthrough-tutorial/)
+
+- [Prisms](https://www.ncbi.nlm.nih.gov/books/NBK580488/)
