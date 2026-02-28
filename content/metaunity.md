@@ -148,6 +148,10 @@ How can we add an extra 5 cubes to the scene?
 
 ## Switch to Passthrough with Claude Code
 
+```PROMPT
+review this page https://developers.meta.com/horizon/documentation/unity/unity-passthrough-tutorial/ then update the scene to use "passthrough"
+```
+
 ![](assets/images/metaunity/Screenshot-2026-03-01-at-9.22.58-AM.png)
 *I clicked Yes to allow Claude Code to fetch the Meta passthrough tutorial*
 
