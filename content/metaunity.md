@@ -5,7 +5,7 @@ date: "2026-02-28"
 categories: ["Mobile"]
 tags: "virtual-reality, meta, unity, quest"
 slug: "metaunity"
-image: "/assets/images/promptengineering/mediamodifier-design.png"
+image: "/assets/images/metaunity/641532049_1193231526215322_7894490494628209553_n.jpg"
 ---
 
 
@@ -113,7 +113,7 @@ I set up Unity for Meta Quest virtual reality (VR) development. I learned how to
 *I used the Cast feature of the Meta mobile app to capture an image of myself grasping and moving the cube*
 
 
-## Claude Code
+## Add more Cubes using Claude Code
 ![](assets/images/metaunity/Screenshot-2026-03-01-at-7.31.52-AM.png)
 *I opened the project using Visual Studio Code and used /init to create a CLAUDE.md file*
 
@@ -145,6 +145,32 @@ How can we add an extra 5 cubes to the scene?
 
 ![](assets/images/metaunity/641521698_1448675780092497_3489181757260598694_n.jpg)
 *I used the Quest 3 headset to grab and move the 6 cubes*
+
+## Switch to Passthrough with Claude Code
+
+![](assets/images/metaunity/Screenshot-2026-03-01-at-9.22.58-AM.png)
+*I clicked Yes to allow Claude Code to fetch the Meta passthrough tutorial*
+
+![](assets/images/metaunity/Screenshot-2026-03-01-at-9.26.37-AM.png)
+*I clicked Yes to apply the first SampleScene.unity edit*
+
+![](assets/images/metaunity/Screenshot-2026-03-01-at-9.26.54-AM.png)
+*I clicked Yes to apply a second SampleScene.unity edit*
+
+![](assets/images/metaunity/Screenshot-2026-03-01-at-9.27.17-AM.png)
+*Claude Code planned the 4 changes needed to enable passthrough*
+
+![](assets/images/metaunity/Screenshot-2026-03-01-at-9.27.48-AM.png)
+*I clicked Yes to allow Claude Code to insert the OVRPassthroughLayer object into the scene*
+
+![](assets/images/metaunity/Screenshot-2026-03-01-at-9.28.11-AM.png)
+*I clicked Yes to allow Claude Code to edit the AndroidManifest.xml*
+
+![](assets/images/metaunity/Screenshot-2026-03-01-at-9.29.05-AM.png)
+*Claude Code completed all 4 passthrough changes and showed a summary*
+
+![](assets/images/metaunity/641532049_1193231526215322_7894490494628209553_n.jpg)
+*The passthrough view showed the real world with blue cubes floating in my space*
 
 
 ## References
