@@ -224,7 +224,8 @@ function parseMarkdownToMobirise(markdownContent: string): MobiriseParsedContent
       // Extract image path
       const imageMatch = trimmedLine.match(/!\[.*?\]\((.*?)\)/);
       if (imageMatch) {
-        const imagePath = imageMatch[1];
+        const rawPath = imageMatch[1];
+        const imagePath = rawPath.startsWith('/') || rawPath.startsWith('http') ? rawPath : '/' + rawPath;
         let description = '';
         
         // Check if next line is the description (italic text)

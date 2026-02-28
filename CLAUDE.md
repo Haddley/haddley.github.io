@@ -47,13 +47,18 @@ The slug is derived from the filename by default; posts also support a `visible:
 
 **Rendering:** `src/components/MobiriseContentRenderer.tsx` is the core content renderer. It parses Markdown into sections (headings, paragraphs, images, code blocks, tables, references) and renders them using the legacy Mobirise CSS design system (Bootstrap 5 + custom theme CSS from `/public/assets/`). Code blocks use `react-syntax-highlighter` with Prism.
 
-**Images:** Each post's images must live in `content/assets/images/<slug>/` — a subfolder named after the post slug. Images are copied to `public/assets/` by the `sync-images` script (runs automatically before `build`). `public/assets/` is gitignored. Reference images as `/assets/images/<slug>/filename.ext` in frontmatter and Markdown body.
+**Images:** Each post's images must live in `content/assets/images/<slug>/` — a subfolder named after the post slug. Images are copied to `public/assets/` by the `sync-images` script (runs automatically before `build`). `public/assets/` is gitignored.
+
+- **Frontmatter `image:` field** — use root-relative: `/assets/images/<slug>/filename.ext`
+- **Markdown body `![]()` tags** — use relative (no leading `/`): `assets/images/<slug>/filename.ext`
+
+The renderer (`MobiriseContentRenderer.tsx`) normalises relative paths to root-relative at render time, so the live site works correctly. Using relative paths in the body also makes VS Code's Markdown preview resolve images correctly from the `content/` directory.
 
 **Deployment:** Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds and publishes `./out/` to GitHub Pages.
 
 ## Adding a New Post
 
-Create a `.md` file in `/content/`. Use an existing post as a template for the frontmatter structure. Place any images in `content/assets/images/<slug>/` and reference them as `/assets/images/<slug>/filename.ext`. Run `npm run sync-images` if the post includes new images.
+Create a `.md` file in `/content/`. Use an existing post as a template for the frontmatter structure. Place any images in `content/assets/images/<slug>/` and reference them as `assets/images/<slug>/filename.ext` (relative, no leading `/`) in the Markdown body, and as `/assets/images/<slug>/filename.ext` (root-relative) in the frontmatter `image:` field. Run `npm run sync-images` if the post includes new images.
 
 ## Image Filenames
 
