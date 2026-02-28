@@ -58,16 +58,16 @@ SubPageLink indicates that this fact box is linked to the customer number ("No."
 
 In summary, this code extends customer-related pages in a Business Central application to include a fact box displaying a Leaflet map. The map is populated with customer data, and users can interact with it to visualize customer locations. The LeafletMapsFactBox control add-in provides the functionality for rendering the map, and the code specifies when and where this control should be displayed on customer card and list pages.
 
-![](/assets/images/mapextension/20230901image01-1333x810.png)
+![](assets/images/mapextension/20230901image01-1333x810.png)
 *I viewed Customer Adatum Corporation based in Atlanta*
 
-![](/assets/images/mapextension/20230901image02-1333x809.png)
+![](assets/images/mapextension/20230901image02-1333x809.png)
 *I viewed Customer Trey Research based in Chicago*
 
-![](/assets/images/mapextension/20230901image03-1332x807.png)
+![](assets/images/mapextension/20230901image03-1332x807.png)
 *I viewed Customer School of Fine Art based in Miami*
 
-![](/assets/images/mapextension/20230901image04-1331x808.png)
+![](assets/images/mapextension/20230901image04-1331x808.png)
 *I viewed Customer Relecloud based in Atlanta*
 
 
@@ -77,19 +77,19 @@ To upload and deploy the extension to Microsoft Dynamics 365 Business Central, I
 
 I logged in to my Microsoft Dynamics 365 Business Central environment with the appropriate credentials. I navigated to the Extension Management page, found under "Extension Management" or "Extensions." I selected "Upload Extension" to upload the extension package (the .app file) from my local machine. I provided the necessary configuration details and permissions following the on-screen instructions. I clicked "Install" to initiate the installation process and monitored the installation progress. Once the installation was complete, I checked the status of the extension to ensure it was successfully installed and deployed. I then enabled and configured it further, setting up permissions and defining data mappings as needed.
 
-![](/assets/images/mapextension/20230903image01-1340x889.png)
+![](assets/images/mapextension/20230903image01-1340x889.png)
 *I opened Advanced Settings*
 
-![](/assets/images/mapextension/20230903image02-1336x887.png)
+![](assets/images/mapextension/20230903image02-1336x887.png)
 *I clicked Upload And Deploy Extension*
 
-![](/assets/images/mapextension/20230903image03-1333x808.png)
+![](assets/images/mapextension/20230903image03-1333x808.png)
 *I clicked Deploy*
 
-![](/assets/images/mapextension/20230903image04-1330x805.png)
+![](assets/images/mapextension/20230903image04-1330x805.png)
 *I confirmed installation was in progress*
 
-![](/assets/images/mapextension/20230903image05-1337x885.png)
+![](assets/images/mapextension/20230903image05-1337x885.png)
 *I confirmed the Extension was running in the cloud*
 
 

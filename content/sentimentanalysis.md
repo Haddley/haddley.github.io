@@ -29,13 +29,13 @@ There are different approaches to perform sentiment analysis, including:
 
 Sentiment analysis has proven to be an invaluable tool for businesses to understand customer sentiment, for social media monitoring, for brand reputation management, and for making data-driven decisions based on public opinions and emotions. It continues to evolve and improve with advancements in natural language processing and machine learning technologies.
 
-![](/assets/images/sentimentanalysis/screen-shot-2023-07-19-at-12.56.34-pm-1182x842.png)
+![](assets/images/sentimentanalysis/screen-shot-2023-07-19-at-12.56.34-pm-1182x842.png)
 *Certainly positive*
 
-![](/assets/images/sentimentanalysis/screen-shot-2023-07-19-at-12.57.00-pm-1182x844.png)
+![](assets/images/sentimentanalysis/screen-shot-2023-07-19-at-12.57.00-pm-1182x844.png)
 *Certainly negative*
 
-![](/assets/images/sentimentanalysis/screen-shot-2023-07-19-at-12.58.31-pm-1178x846.png)
+![](assets/images/sentimentanalysis/screen-shot-2023-07-19-at-12.58.31-pm-1178x846.png)
 *Not certain.*
 
 

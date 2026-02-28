@@ -20,28 +20,28 @@ Colab is Google's implementation of [Jupyter Notebooks](https://jupyter.org).
 
 [NumPy](https://colab.research.google.com/github/google/eng-edu/blob/main/ml/cc/exercises/numpy_ultraquick_tutorial.ipynb?utm_source=mlcc&utm_campaign=colab-external&utm_medium=referral&utm_content=numpy_tf2-colab&hl=en#scrollTo=HF-flFfs9r0q) is a Python library for creating and manipulating vectors and matrices.
 
-![](/assets/images/machinelearning4/screen-shot-2022-06-08-at-6.23.23-pm-757x144.png)
+![](assets/images/machinelearning4/screen-shot-2022-06-08-at-6.23.23-pm-757x144.png)
 *I imported numpy as np*
 
-![](/assets/images/machinelearning4/screen-shot-2022-06-08-at-6.24.04-pm-745x209.png)
+![](assets/images/machinelearning4/screen-shot-2022-06-08-at-6.24.04-pm-745x209.png)
 *I created an array with np.array([...])*
 
-![](/assets/images/machinelearning4/screen-shot-2022-06-08-at-6.25.18-pm-764x221.png)
+![](assets/images/machinelearning4/screen-shot-2022-06-08-at-6.25.18-pm-764x221.png)
 *I created a matrix with np.array([[...],[...],...,[...]])*
 
-![](/assets/images/machinelearning4/screen-shot-2022-06-08-at-6.27.05-pm-755x262.png)
+![](assets/images/machinelearning4/screen-shot-2022-06-08-at-6.27.05-pm-755x262.png)
 *I created a sequence from 5 to 11*
 
-![](/assets/images/machinelearning4/screen-shot-2022-06-08-at-6.28.11-pm-783x247.png)
+![](assets/images/machinelearning4/screen-shot-2022-06-08-at-6.28.11-pm-783x247.png)
 *I generated 6 random values between 50 and 100*
 
-![](/assets/images/machinelearning4/screen-shot-2022-06-08-at-6.29.30-pm-788x165.png)
+![](assets/images/machinelearning4/screen-shot-2022-06-08-at-6.29.30-pm-788x165.png)
 *I generated 5 random floating point values between 0 and 1*
 
-![](/assets/images/machinelearning4/screen-shot-2022-06-08-at-6.33.42-pm-788x475.png)
+![](assets/images/machinelearning4/screen-shot-2022-06-08-at-6.33.42-pm-788x475.png)
 *I created a feature and label*
 
-![](/assets/images/machinelearning4/screen-shot-2022-06-08-at-6.36.16-pm-788x402.png)
+![](assets/images/machinelearning4/screen-shot-2022-06-08-at-6.36.16-pm-788x402.png)
 *I added noise*
 
 
@@ -49,17 +49,17 @@ Colab is Google's implementation of [Jupyter Notebooks](https://jupyter.org).
 
 [Pandas DataFrames](https://colab.research.google.com/github/google/eng-edu/blob/main/ml/cc/exercises/pandas_dataframe_ultraquick_tutorial.ipynb?utm_source=mlcc&utm_campaign=colab-external&utm_medium=referral&utm_content=pandas_tf2-colab&hl=en) are similar to spreadsheets. DataFrames have columns and rows.
 
-![](/assets/images/machinelearning4/screen-shot-2022-06-08-at-6.49.03-pm-787x164.png)
+![](assets/images/machinelearning4/screen-shot-2022-06-08-at-6.49.03-pm-787x164.png)
 *I imported numpy and pandas*
 
-![](/assets/images/machinelearning4/screen-shot-2022-06-08-at-6.50.52-pm-789x650.png)
+![](assets/images/machinelearning4/screen-shot-2022-06-08-at-6.50.52-pm-789x650.png)
 *pd.DataFrame(data=<data cell values>, columns=<column names>)*
 
-![](/assets/images/machinelearning4/screen-shot-2022-06-08-at-6.54.36-pm-779x348.png)
+![](assets/images/machinelearning4/screen-shot-2022-06-08-at-6.54.36-pm-779x348.png)
 *<dataframe>["<new column name>"] = <dataframe>["<existing column name>"] + <constant>*
 
-![](/assets/images/machinelearning4/screen-shot-2022-06-08-at-6.58.28-pm-787x739.png)
+![](assets/images/machinelearning4/screen-shot-2022-06-08-at-6.58.28-pm-787x739.png)
 *<dataframe>[<start index>,<end index + 1>]*
 
-![](/assets/images/machinelearning4/screen-shot-2022-06-08-at-7.01.31-pm-786x991.png)
+![](assets/images/machinelearning4/screen-shot-2022-06-08-at-7.01.31-pm-786x991.png)
 *<dataframe>.copy()*

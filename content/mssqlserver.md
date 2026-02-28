@@ -15,13 +15,13 @@ I downloaded and ran the amd64 Docker image from [https://hub.docker.com/_/micro
 
 **$ docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Passw0rd****123" -p 1433:1433 --name sql -d mcr.microsoft.com/mssql/server:****2019-latest**
 
-![](/assets/images/mssqlserver/image-28-651x336.png)
+![](assets/images/mssqlserver/image-28-651x336.png)
 *docker run*
 
-![](/assets/images/mssqlserver/screen-shot-2021-03-14-at-5.03.27-pm-1538x1266.png)
+![](assets/images/mssqlserver/screen-shot-2021-03-14-at-5.03.27-pm-1538x1266.png)
 *Azure Data Studio - New Connection*
 
-![](/assets/images/mssqlserver/screen-shot-2021-03-14-at-5.05.30-pm-1540x1264.png)
+![](assets/images/mssqlserver/screen-shot-2021-03-14-at-5.05.30-pm-1540x1264.png)
 *I connected to the database instance running on 192.168.68.109*
 
 
@@ -40,10 +40,10 @@ FROM DISK = N'/usr/AdventureWorks2019.bak'
 WITH MOVE 'AdventureWorks2017' TO '/usr/AdventureWorks2019.mdf',
 MOVE 'AdventureWorks2017_Log' TO '/usr/AdventureWorks2019_Log.ldf'
 
-![](/assets/images/mssqlserver/screen-shot-2021-03-14-at-5.56.57-pm-1836x1029.png)
+![](assets/images/mssqlserver/screen-shot-2021-03-14-at-5.56.57-pm-1836x1029.png)
 *RESTORE DATABASE*
 
-![](/assets/images/mssqlserver/screen-shot-2021-03-14-at-6.08.10-pm-1836x1031.png)
+![](assets/images/mssqlserver/screen-shot-2021-03-14-at-6.08.10-pm-1836x1031.png)
 *AdventureWorks Products*
 
 
@@ -72,7 +72,7 @@ I added the [NuGet](/posts/nuget/) package.
 % dotnet add package System.Data.SqlClient
 ```
 
-![](/assets/images/mssqlserver/screen-shot-2021-03-15-at-7.10.16-pm-1836x1133.png)
+![](assets/images/mssqlserver/screen-shot-2021-03-15-at-7.10.16-pm-1836x1133.png)
 *dotnet add package System.Data.SqlClient*
 
 
@@ -80,7 +80,7 @@ I added the [NuGet](/posts/nuget/) package.
 
 I wrote code to retrieve details from the Product table using C#.
 
-![](/assets/images/mssqlserver/screen-shot-2021-03-16-at-8.49.39-pm-1126x740.png)
+![](assets/images/mssqlserver/screen-shot-2021-03-16-at-8.49.39-pm-1126x740.png)
 *dotnet run*
 
 
@@ -90,7 +90,7 @@ I wrote code to retrieve details from the Product table using C#.
 
 I wrote code to retrieve details from the Product table using JavaScript and the `mssql` node module.
 
-![](/assets/images/mssqlserver/screen-shot-2021-03-25-at-5.50.18-pm-1134x734.png)
+![](assets/images/mssqlserver/screen-shot-2021-03-25-at-5.50.18-pm-1134x734.png)
 *node index.js*
 
 
@@ -110,5 +110,5 @@ $ java Program**
 
 I wrote code to retrieve details from the Product table using Java.
 
-![](/assets/images/mssqlserver/screen-shot-2021-03-25-at-5.48.28-pm-1134x736.png)
+![](assets/images/mssqlserver/screen-shot-2021-03-25-at-5.48.28-pm-1134x736.png)
 *java Program.java*

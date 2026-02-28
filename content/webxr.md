@@ -17,19 +17,19 @@ I used [WebXR](https://github.com/immersive-web), which supports both Virtual Re
 
 I created a scene with two Augmented Reality markers. A sphere appears in the camera output when the Hiro marker is recognised, and a dinosaur when the '6' barcode marker is recognised. I added the barcode marker to a QR Code for convenience.
 
-![](/assets/images/webxr/278535875-3143515849195152-3177239650686303329-n-750x1334.jpg)
+![](assets/images/webxr/278535875-3143515849195152-3177239650686303329-n-750x1334.jpg)
 *I created a QR Code*
 
-![](/assets/images/webxr/278604232-1195762084291932-2000984922213087796-n-750x1334.jpg)
+![](assets/images/webxr/278604232-1195762084291932-2000984922213087796-n-750x1334.jpg)
 *I used a barcode marker*
 
-![](/assets/images/webxr/hiro-marker-arjs-472x475.png)
+![](assets/images/webxr/hiro-marker-arjs-472x475.png)
 *I used the Augmented Reality Marker*
 
-![](/assets/images/webxr/marker6-226x226.png)
+![](assets/images/webxr/marker6-226x226.png)
 *I used a Barcode Marker*
 
-![](/assets/images/webxr/qr-code-3-1148x1148.png)
+![](assets/images/webxr/qr-code-3-1148x1148.png)
 *I embedded a Barcode Marker in a QR Code*
 
 

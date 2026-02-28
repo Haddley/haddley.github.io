@@ -35,7 +35,7 @@ I used these commands to login to Microsoft 365, create a SharePoint Site, revie
 ![Login](/assets/images/m365commandlineinterface/screen-shot-2021-02-22-at-6.00.26-pm-1136x736.png)
 *I ran m365 login*
 
-![](/assets/images/m365commandlineinterface/screen-shot-2022-05-01-at-4.08.39-pm-1424x1118.png)
+![](assets/images/m365commandlineinterface/screen-shot-2022-05-01-at-4.08.39-pm-1424x1118.png)
 *I logged in successfully*
 
 ![Add Site](/assets/images/m365commandlineinterface/screen-shot-2021-02-22-at-6.29.56-pm-1136x740.png)
@@ -56,8 +56,8 @@ I used these commands to login to Microsoft 365, create a Teams Team, apply a si
 ~$ m365 teams channel add --teamName "TeamToDo" --name "Channel" --description "Custom Channel"
 ```
 
-![](/assets/images/m365commandlineinterface/screen-shot-2022-05-01-at-5.06.00-pm-1487x828.png)
+![](assets/images/m365commandlineinterface/screen-shot-2022-05-01-at-5.06.00-pm-1487x828.png)
 *I created a Teams Site*
 
-![](/assets/images/m365commandlineinterface/screen-shot-2022-05-01-at-5.11.22-pm-1487x789.png)
+![](assets/images/m365commandlineinterface/screen-shot-2022-05-01-at-5.11.22-pm-1487x789.png)
 *I created a SharePoint Site with channels*

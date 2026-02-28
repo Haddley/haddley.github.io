@@ -25,7 +25,7 @@ I used `getStaticProps` to generate a page based on data returned by a web servi
 
 * [You should not fetch an API Route from getStaticProps or getStaticPaths](https://nextjs.org/learn/basics/api-routes/api-routes-details). Instead, write your server-side code directly in getStaticProps or getStaticPaths (or call a helper function).
 
-![](/assets/images/nextjs2/screen-shot-2021-11-06-at-6.18.26-pm-1486x906.png)
+![](assets/images/nextjs2/screen-shot-2021-11-06-at-6.18.26-pm-1486x906.png)
 *getStaticProps*
 
 
@@ -33,7 +33,7 @@ I used `getStaticProps` to generate a page based on data returned by a web servi
 
 I used `getServerSideProps` at runtime to build a page in response to each request.
 
-![](/assets/images/nextjs2/screen-shot-2021-11-06-at-6.26.46-pm-1492x908.png)
+![](assets/images/nextjs2/screen-shot-2021-11-06-at-6.26.46-pm-1492x908.png)
 *getServerSideProps*
 
 
@@ -41,7 +41,7 @@ I used `getServerSideProps` at runtime to build a page in response to each reque
 
 I used `getStaticProps` and `getStaticPaths` together to generate multiple pages at build time.
 
-![](/assets/images/nextjs2/screen-shot-2021-11-06-at-6.57.55-pm-1490x906.png)
+![](assets/images/nextjs2/screen-shot-2021-11-06-at-6.57.55-pm-1490x906.png)
 *getStaticProps and getStaticPaths being used together*
 
 
@@ -49,13 +49,13 @@ I used `getStaticProps` and `getStaticPaths` together to generate multiple pages
 
 I used `next export` to generate static HTML pages that I could upload to a static web server. I ran `npm run export` to produce the output.
 
-![](/assets/images/nextjs2/screen-shot-2021-11-06-at-7.29.43-pm-1836x1051.png)
+![](assets/images/nextjs2/screen-shot-2021-11-06-at-7.29.43-pm-1836x1051.png)
 *npm run export*
 
-![](/assets/images/nextjs2/screen-shot-2021-11-06-at-7.35.14-pm-1836x942.png)
+![](assets/images/nextjs2/screen-shot-2021-11-06-at-7.35.14-pm-1836x942.png)
 *The out folder contained the generated pages*
 
-![](/assets/images/nextjs2/screen-shot-2021-11-06-at-7.31.45-pm-1486x908.png)
+![](assets/images/nextjs2/screen-shot-2021-11-06-at-7.31.45-pm-1486x908.png)
 */out/articles/36*
 
 
@@ -74,10 +74,10 @@ I used catch-all routes by adding three dots (`...`) inside the brackets. For ex
 
 I used names other than `slug`, such as `[...param]`.
 
-![](/assets/images/nextjs2/screen-shot-2021-11-07-at-9.14.45-am-1380x791.png)
+![](assets/images/nextjs2/screen-shot-2021-11-07-at-9.14.45-am-1380x791.png)
 *Client-side code*
 
-![](/assets/images/nextjs2/screen-shot-2021-11-07-at-9.15.03-am-1380x785.png)
+![](assets/images/nextjs2/screen-shot-2021-11-07-at-9.15.03-am-1380x785.png)
 *Catch all routes*
 
 

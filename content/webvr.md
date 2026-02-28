@@ -27,7 +27,7 @@ The Moon Rider code is available for download from GitHub
 
 [https://github.com/supermedium/moonrider](https://github.com/supermedium/moonrider)
 
-![](/assets/images/webvr/image0-4-1334x750.png)
+![](assets/images/webvr/image0-4-1334x750.png)
 *Moon Rider in Oculus Quest 2 Browser*
 
 

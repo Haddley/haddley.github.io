@@ -15,7 +15,7 @@ I installed GLM using this command
 
 $ brew install glm
 
-![](/assets/images/xcode4/screen-shot-2023-03-27-at-10.03.48-pm-1596x1258.png)
+![](assets/images/xcode4/screen-shot-2023-03-27-at-10.03.48-pm-1596x1258.png)
 *I ran the application*
 
 
@@ -64,7 +64,7 @@ I set the value of the transform uniform using glUniformMatrix4fv(), passing the
 
 With these changes, I rotated the triangle by 10 degrees around the z-axis.
 
-![](/assets/images/xcode4/screen-shot-2023-03-27-at-8.08.59-pm-1596x642.png)
+![](assets/images/xcode4/screen-shot-2023-03-27-at-8.08.59-pm-1596x642.png)
 *I added the glm include folder to header search*
 
 

@@ -39,38 +39,38 @@ Note: If you prefer to use the command line, you can create a new Blazor WebAsse
 dotnet new blazorwasm -n ProjectName
 ```
 
-![](/assets/images/blazorwasmandasp.net/screen-shot-2023-03-22-at-9.16.36-am-1440x880.png)
+![](assets/images/blazorwasmandasp.net/screen-shot-2023-03-22-at-9.16.36-am-1440x880.png)
 *I used Visual Studio 2022 for Mac*
 
-![](/assets/images/blazorwasmandasp.net/screen-shot-2023-03-25-at-11.36.56-am-1380x978.png)
+![](assets/images/blazorwasmandasp.net/screen-shot-2023-03-25-at-11.36.56-am-1380x978.png)
 *I selected the Blazer WebAssembly template*
 
-![](/assets/images/blazorwasmandasp.net/screen-shot-2023-03-25-at-11.37.08-am-1800x1276.png)
+![](assets/images/blazorwasmandasp.net/screen-shot-2023-03-25-at-11.37.08-am-1800x1276.png)
 *I selected the (cross platform) ASP.NET Core 6 framework*
 
-![](/assets/images/blazorwasmandasp.net/screen-shot-2023-03-25-at-11.37.31-am-1794x1272.png)
+![](assets/images/blazorwasmandasp.net/screen-shot-2023-03-25-at-11.37.31-am-1794x1272.png)
 *I provided a solution/project name*
 
-![](/assets/images/blazorwasmandasp.net/screen-shot-2023-03-25-at-11.57.21-am-1836x1014.png)
+![](assets/images/blazorwasmandasp.net/screen-shot-2023-03-25-at-11.57.21-am-1836x1014.png)
 *The template includes client and server-side C# code*
 
-![](/assets/images/blazorwasmandasp.net/screen-shot-2023-03-25-at-11.58.50-am-1836x925.png)
+![](assets/images/blazorwasmandasp.net/screen-shot-2023-03-25-at-11.58.50-am-1836x925.png)
 *The solution did not run exactly as generated*
 
-![](/assets/images/blazorwasmandasp.net/screen-shot-2023-03-25-at-11.59.14-am-1836x910.png)
+![](assets/images/blazorwasmandasp.net/screen-shot-2023-03-25-at-11.59.14-am-1836x910.png)
 *I fixed the clientId*
 
-![](/assets/images/blazorwasmandasp.net/screen-shot-2023-03-25-at-11.59.37-am-1836x1030.png)
+![](assets/images/blazorwasmandasp.net/screen-shot-2023-03-25-at-11.59.37-am-1836x1030.png)
 *I ran the project successfully*
 
-![](/assets/images/blazorwasmandasp.net/screen-shot-2023-03-25-at-11.59.54-am-1836x743.png)
+![](assets/images/blazorwasmandasp.net/screen-shot-2023-03-25-at-11.59.54-am-1836x743.png)
 *I reviewed the Program.cs file. The template includes a local user database.*
 
-![](/assets/images/blazorwasmandasp.net/screen-shot-2023-03-25-at-12.06.17-pm-1836x704.png)
+![](assets/images/blazorwasmandasp.net/screen-shot-2023-03-25-at-12.06.17-pm-1836x704.png)
 *I registered as a user.*
 
-![](/assets/images/blazorwasmandasp.net/screen-shot-2023-03-25-at-12.06.28-pm-1836x651.png)
+![](assets/images/blazorwasmandasp.net/screen-shot-2023-03-25-at-12.06.28-pm-1836x651.png)
 *I was able to login*
 
-![](/assets/images/blazorwasmandasp.net/screen-shot-2023-03-25-at-12.06.35-pm-1836x674.png)
+![](assets/images/blazorwasmandasp.net/screen-shot-2023-03-25-at-12.06.35-pm-1836x674.png)
 *The Fetch data Blazer Web Assembly component returns data provided by ASP.NET Core controller*

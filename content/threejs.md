@@ -16,19 +16,19 @@ I used Three.js, a JavaScript-based WebGL engine, to create GPU-powered 3D graph
 
 I created a three.js scene containing floating cubes and spheres with an anaglyph stereo effect.
 
-![](/assets/images/threejs/screen-shot-2023-03-05-at-7.42.09-pm-1536x414.png)
+![](assets/images/threejs/screen-shot-2023-03-05-at-7.42.09-pm-1536x414.png)
 *import library modules and sets up scene*
 
-![](/assets/images/threejs/screen-shot-2023-03-05-at-7.42.29-pm-1536x126.png)
+![](assets/images/threejs/screen-shot-2023-03-05-at-7.42.29-pm-1536x126.png)
 *sets up camera*
 
-![](/assets/images/threejs/screen-shot-2023-03-05-at-7.42.49-pm-1536x611.png)
+![](assets/images/threejs/screen-shot-2023-03-05-at-7.42.49-pm-1536x611.png)
 *sets up floating cubes and spheres*
 
-![](/assets/images/threejs/screen-shot-2023-03-05-at-7.43.18-pm-1536x422.png)
+![](assets/images/threejs/screen-shot-2023-03-05-at-7.43.18-pm-1536x422.png)
 *sets up renderer*
 
-![](/assets/images/threejs/screen-shot-2023-03-05-at-7.43.30-pm-1536x597.png)
+![](assets/images/threejs/screen-shot-2023-03-05-at-7.43.30-pm-1536x597.png)
 *sets up animation*
 
 

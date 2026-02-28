@@ -88,16 +88,16 @@ EXPOSE 5000
 
 CMD ["npm", "start"]
 
-![](/assets/images/restapiservice/screen-shot-2021-02-08-at-7.35.17-am-1900x1360.png)
+![](assets/images/restapiservice/screen-shot-2021-02-08-at-7.35.17-am-1900x1360.png)
 *I tested the REST API service*
 
-![](/assets/images/restapiservice/screen-shot-2021-02-07-at-11.07.59-am-1626x1210.png)
+![](assets/images/restapiservice/screen-shot-2021-02-07-at-11.07.59-am-1626x1210.png)
 */books route*
 
-![](/assets/images/restapiservice/screen-shot-2021-02-07-at-11.13.06-am-1628x1205.png)
+![](assets/images/restapiservice/screen-shot-2021-02-07-at-11.13.06-am-1628x1205.png)
 */books/id route with a valid id*
 
-![](/assets/images/restapiservice/screen-shot-2021-02-07-at-11.09.17-am-1632x1210.png)
+![](assets/images/restapiservice/screen-shot-2021-02-07-at-11.09.17-am-1632x1210.png)
 */books/id with an invalid id*
 
 

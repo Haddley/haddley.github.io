@@ -582,34 +582,34 @@ pytest src/tests/test_colorizer.py -v
 
 
 
-![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 8.12.49 PM.png)
+![](assets/images/vibecoding2/Screenshot 2026-01-29 at 8.12.49 PM.png)
 *python3 -m venv venv*
 
-![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 8.14.21 PM.png)
+![](assets/images/vibecoding2/Screenshot 2026-01-29 at 8.14.21 PM.png)
 *source venv/bin/activate*
 
-![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 8.25.09 PM.png)
+![](assets/images/vibecoding2/Screenshot 2026-01-29 at 8.25.09 PM.png)
 *pip install -r requirements.txt*
 
-![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 8.32.54 PM.png)
+![](assets/images/vibecoding2/Screenshot 2026-01-29 at 8.32.54 PM.png)
 *I visited nicegui.io*
 
-![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 8.32.11 PM.png)
+![](assets/images/vibecoding2/Screenshot 2026-01-29 at 8.32.11 PM.png)
 *I reviewed main.py*
 
-![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 8.33.05 PM.png)
+![](assets/images/vibecoding2/Screenshot 2026-01-29 at 8.33.05 PM.png)
 *http://127.0.0.1:8080*
 
-![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 8.35.48 PM.png)
+![](assets/images/vibecoding2/Screenshot 2026-01-29 at 8.35.48 PM.png)
 *NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+*
 
-![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 8.36.45 PM.png)
+![](assets/images/vibecoding2/Screenshot 2026-01-29 at 8.36.45 PM.png)
 *I chose Option 1: Ignore it*
 
-![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 8.37.27 PM.png)
+![](assets/images/vibecoding2/Screenshot 2026-01-29 at 8.37.27 PM.png)
 *I published to GitHub*
 
-![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 8.37.53 PM.png)
+![](assets/images/vibecoding2/Screenshot 2026-01-29 at 8.37.53 PM.png)
 *I skipped the venv folder*
 
 
@@ -619,16 +619,16 @@ pytest src/tests/test_colorizer.py -v
 
 
 
-![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 11.35.05 PM.png)
+![](assets/images/vibecoding2/Screenshot 2026-01-29 at 11.35.05 PM.png)
 *python -m src.app.main*
 
-![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 11.35.33 PM.png)
+![](assets/images/vibecoding2/Screenshot 2026-01-29 at 11.35.33 PM.png)
 *I clicked Choose Image*
 
-![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 11.35.46 PM.png)
+![](assets/images/vibecoding2/Screenshot 2026-01-29 at 11.35.46 PM.png)
 *I clicked COLORIZE IMAGE*
 
-![](/assets/images/vibecoding2/Screenshot 2026-01-29 at 11.36.10 PM.png)
+![](assets/images/vibecoding2/Screenshot 2026-01-29 at 11.36.10 PM.png)
 *I clicked DOWNLOAD COLORIZED IMAGE*
 
 

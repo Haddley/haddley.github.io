@@ -24,7 +24,7 @@ Dale demonstrated how she created a natural language translation application and
 
 ModelDepot.io created a [project](https://github.com/ModelDepot/tfjs-yolo-tiny) that demonstrates how a [YOLO Tiny model](/posts/machinelearning1/) can be reused in a TensorFlow.js app ([running in a browser](https://modeldepot.github.io/tfjs-yolo-tiny-demo/)).
 
-![](/assets/images/machinelearning2/283720320-1067547677519021-4870542019071843454-n-1836x848.jpg)
+![](assets/images/machinelearning2/283720320-1067547677519021-4870542019071843454-n-1836x848.jpg)
 *I ran a live demonstration*
 
 

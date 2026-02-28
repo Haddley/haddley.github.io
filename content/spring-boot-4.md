@@ -11,25 +11,25 @@ image: "/assets/images/spring-boot-4/spring-framework-logo-70-no.svg"
 
 I used Spring MVC's ModelAndView class to pass model data to a Thymeleaf view template for rendering, adding a CRUD interface for the TodoItem application.
 
-![](/assets/images/spring-boot-4/screenshot-2023-10-29-at-2.18.03-pm-2136x1056.png)
+![](assets/images/spring-boot-4/screenshot-2023-10-29-at-2.18.03-pm-2136x1056.png)
 *I added thymeleaf, bootstrap and jquery as dependencies*
 
-![](/assets/images/spring-boot-4/screenshot-2023-10-29-at-2.19.57-pm-2136x1053.png)
+![](assets/images/spring-boot-4/screenshot-2023-10-29-at-2.19.57-pm-2136x1053.png)
 *I added a thymeleaf page (as an alternative to JSP)*
 
-![](/assets/images/spring-boot-4/screenshot-2023-10-29-at-2.21.23-pm-2136x1055.png)
+![](assets/images/spring-boot-4/screenshot-2023-10-29-at-2.21.23-pm-2136x1055.png)
 *I updated the controller to populate the fetch the todo items and to pass them and the current day of the week to the thymeleaf view.*
 
-![](/assets/images/spring-boot-4/screenshot-2023-10-29-at-2.22.07-pm-2136x963.png)
+![](assets/images/spring-boot-4/screenshot-2023-10-29-at-2.22.07-pm-2136x963.png)
 *The new home page displays the todo items*
 
-![](/assets/images/spring-boot-4/screenshot-2023-10-29-at-2.30.48-pm-2136x832.png)
+![](assets/images/spring-boot-4/screenshot-2023-10-29-at-2.30.48-pm-2136x832.png)
 *I updated the controller to handle a delete request*
 
-![](/assets/images/spring-boot-4/screenshot-2023-10-29-at-2.31.38-pm-2136x874.png)
+![](assets/images/spring-boot-4/screenshot-2023-10-29-at-2.31.38-pm-2136x874.png)
 *I clicked the Delete button on the second todo item*
 
-![](/assets/images/spring-boot-4/screenshot-2023-10-29-at-2.31.47-pm-2136x876.png)
+![](assets/images/spring-boot-4/screenshot-2023-10-29-at-2.31.47-pm-2136x876.png)
 *The second todo item was deleted*
 
 

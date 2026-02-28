@@ -43,7 +43,7 @@ $ npm i --save-dev chai
 
 $ mkdir test
 
-![](/assets/images/npmcc/screen-shot-2021-02-27-at-12.55.34-pm-1790x1188.png)
+![](assets/images/npmcc/screen-shot-2021-02-27-at-12.55.34-pm-1790x1188.png)
 *npm test*
 
 
@@ -56,13 +56,13 @@ This is the final package.json file
 
 I used GitHub Actions to run tests across multiple versions of Node.
 
-![](/assets/images/npmcc/screen-shot-2021-02-27-at-6.04.35-pm-1836x745.png)
+![](assets/images/npmcc/screen-shot-2021-02-27-at-6.04.35-pm-1836x745.png)
 *The tests ran*
 
-![](/assets/images/npmcc/screen-shot-2021-02-27-at-6.05.09-pm-1836x757.png)
+![](assets/images/npmcc/screen-shot-2021-02-27-at-6.05.09-pm-1836x757.png)
 *The code passed all tests*
 
-![](/assets/images/npmcc/screen-shot-2021-02-27-at-6.05.25-pm-1836x830.png)
+![](assets/images/npmcc/screen-shot-2021-02-27-at-6.05.25-pm-1836x830.png)
 *Test results for multiple versions of node*
 
 
@@ -74,7 +74,7 @@ $ node login
 
 $ node publish
 
-![](/assets/images/npmcc/screen-shot-2021-02-27-at-6.08.25-pm-1836x1284.png)
+![](assets/images/npmcc/screen-shot-2021-02-27-at-6.08.25-pm-1836x1284.png)
 *npm publish*
 
 

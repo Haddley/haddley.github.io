@@ -17,7 +17,7 @@ $ dotnet new gitignore
 $ dotnet run
 ```
 
-![](/assets/images/dotnet-core-part1/screen-shot-2021-04-11-at-3.10.16-pm-1482x960.png)
+![](assets/images/dotnet-core-part1/screen-shot-2021-04-11-at-3.10.16-pm-1482x960.png)
 *I reviewed the example Controller*
 
 
@@ -41,13 +41,13 @@ I added the BooksController class.
 $ dotnet run
 ```
 
-![](/assets/images/dotnet-core-part1/screen-shot-2021-04-11-at-3.55.12-pm-1836x802.png)
+![](assets/images/dotnet-core-part1/screen-shot-2021-04-11-at-3.55.12-pm-1836x802.png)
 *I navigated to https://localhost:5001/books*
 
-![](/assets/images/dotnet-core-part1/screen-shot-2021-04-06-at-11.19.46-am-1836x873.png)
+![](assets/images/dotnet-core-part1/screen-shot-2021-04-06-at-11.19.46-am-1836x873.png)
 *I navigated to https://localhost:5001/books/1788395549*
 
-![](/assets/images/dotnet-core-part1/screen-shot-2021-04-11-at-4.13.17-pm-1836x809.png)
+![](assets/images/dotnet-core-part1/screen-shot-2021-04-11-at-4.13.17-pm-1836x809.png)
 *I navigated to https://localhost:5001/books/1234567890*
 
 
@@ -55,7 +55,7 @@ $ dotnet run
 
 I noticed that by default Swagger is available.
 
-![](/assets/images/dotnet-core-part1/screen-shot-2021-04-11-at-4.18.49-pm-1834x1328.png)
+![](assets/images/dotnet-core-part1/screen-shot-2021-04-11-at-4.18.49-pm-1834x1328.png)
 *I navigated to https://localhost:5001/swagger/index.html*
 
 
@@ -72,7 +72,7 @@ The static files can be image files, html files and javascript files.
 
 I added "app.UseStaticFiles();" to Startup.cs as shown below.
 
-![](/assets/images/dotnet-core-part1/screen-shot-2021-04-11-at-4.33.18-pm-644x302.png)
+![](assets/images/dotnet-core-part1/screen-shot-2021-04-11-at-4.33.18-pm-644x302.png)
 *I added app.UseStaticFiles()*
 
 
@@ -80,7 +80,7 @@ I added "app.UseStaticFiles();" to Startup.cs as shown below.
 
 The static files can be a React app that calls the REST API exposed by the (same) Dotnet Core project.
 
-![](/assets/images/dotnet-core-part1/screen-shot-2021-04-11-at-4.45.21-pm-1836x1255.png)
+![](assets/images/dotnet-core-part1/screen-shot-2021-04-11-at-4.45.21-pm-1836x1255.png)
 *I ran the React/Dotnet Core app*
 
 
@@ -88,7 +88,7 @@ The static files can be a React app that calls the REST API exposed by the (same
 
 I extended the BooksController code to support POST, PUT and DELETE actions.
 
-![](/assets/images/dotnet-core-part1/screen-shot-2021-06-19-at-2.57.45-pm-1836x1178.png)
+![](assets/images/dotnet-core-part1/screen-shot-2021-06-19-at-2.57.45-pm-1836x1178.png)
 *I reviewed the haddley_power_app_api project*
 
 

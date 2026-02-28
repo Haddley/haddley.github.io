@@ -17,7 +17,7 @@ A custom slash command is a Markdown file stored in `.claude/commands/`. When I 
 
 I created `.claude/commands/powershell.md` containing instructions for how Claude should approach my PowerShell project — what files to read first, what commands to use, which safety rules to follow, and how to structure new functions:
 
-![](/assets/images/claudecode6/Screenshot-2026-01-21-at-6.31.43-PM.png)
+![](assets/images/claudecode6/Screenshot-2026-01-21-at-6.31.43-PM.png)
 *I created the /powershell command file in .claude/commands/*
 
 The command tells Claude to:
@@ -30,15 +30,15 @@ The command tells Claude to:
 
 I ran `/powershell` at the start of a new session:
 
-![](/assets/images/claudecode6/Screenshot-2026-01-21-at-6.35.11-PM.png)
+![](assets/images/claudecode6/Screenshot-2026-01-21-at-6.35.11-PM.png)
 *I ran /powershell — Claude read the project files and loaded the context*
 
-![](/assets/images/claudecode6/Screenshot-2026-01-21-at-6.37.04-PM.png)
+![](assets/images/claudecode6/Screenshot-2026-01-21-at-6.37.04-PM.png)
 *Claude summarised what it found and asked what I wanted to do*
 
 I asked it to add a Pester test file for the module:
 
-![](/assets/images/claudecode6/Screenshot-2026-01-21-at-6.38.53-PM.png)
+![](assets/images/claudecode6/Screenshot-2026-01-21-at-6.38.53-PM.png)
 *I asked Claude to add a test file for the GreetingHelpers module*
 
 Claude generated a complete Pester test suite covering `Get-Greeting` and `Show-Greeting`, including context blocks for parameters, edge cases, and validation:
@@ -122,7 +122,7 @@ Describe "Show-Greeting" {
 
 All 11 tests passed:
 
-![](/assets/images/claudecode6/Screenshot-2026-01-21-at-6.43.28-PM.png)
+![](assets/images/claudecode6/Screenshot-2026-01-21-at-6.43.28-PM.png)
 *All 11 Pester tests passed*
 
 The command effectively inverted the workflow — instead of me guiding Claude, the command taught Claude how to guide itself within the project. New sessions start with full context, no repetition required.

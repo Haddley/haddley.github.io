@@ -27,13 +27,13 @@ NuGet is the package manager for .NET.
 
 I started by creating a **dotnet-factorial** repository in the https://github.com/**HaddleyOffice365** profile.
 
-![](/assets/images/nuget/screen-shot-2021-03-01-at-5.09.52-pm-788x908.png)
+![](assets/images/nuget/screen-shot-2021-03-01-at-5.09.52-pm-788x908.png)
 *New repository will be named dotnet-factorial*
 
-![](/assets/images/nuget/screen-shot-2021-02-28-at-1.10.13-pm-1048x348.png)
+![](assets/images/nuget/screen-shot-2021-02-28-at-1.10.13-pm-1048x348.png)
 *Publish to GitHub*
 
-![](/assets/images/nuget/screen-shot-2021-02-28-at-1.11.02-pm-1026x236.png)
+![](assets/images/nuget/screen-shot-2021-02-28-at-1.11.02-pm-1026x236.png)
 *Open in Visual Studio Code*
 
 
@@ -65,7 +65,7 @@ $ cd ../unittests
 $ dotnet new gitignore
 $ cd ..**
 
-![](/assets/images/nuget/screen-shot-2021-03-01-at-5.22.23-pm-1836x1105.png)
+![](assets/images/nuget/screen-shot-2021-03-01-at-5.22.23-pm-1836x1105.png)
 *new solution, new classlib project and new mstest project*
 
 
@@ -84,7 +84,7 @@ I used `dotnet test` to run the unit tests locally.
 
 **$ dotnet test**
 
-![](/assets/images/nuget/screen-shot-2021-03-01-at-5.51.08-pm-1836x1108.png)
+![](assets/images/nuget/screen-shot-2021-03-01-at-5.51.08-pm-1836x1108.png)
 *dotnet test*
 
 
@@ -92,10 +92,10 @@ I used `dotnet test` to run the unit tests locally.
 
 I committed updates to the repository.
 
-![](/assets/images/nuget/screen-shot-2021-03-01-at-5.53.33-pm-1836x1251.png)
+![](assets/images/nuget/screen-shot-2021-03-01-at-5.53.33-pm-1836x1251.png)
 *Commit to main branch*
 
-![](/assets/images/nuget/screen-shot-2021-02-28-at-2.26.08-pm-1072x276.png)
+![](assets/images/nuget/screen-shot-2021-02-28-at-2.26.08-pm-1072x276.png)
 *Push origin*
 
 
@@ -103,16 +103,16 @@ I committed updates to the repository.
 
 I added a GitHub Action to run tests automatically.
 
-![](/assets/images/nuget/screen-shot-2021-03-01-at-5.56.28-pm-1140x764.png)
+![](assets/images/nuget/screen-shot-2021-03-01-at-5.56.28-pm-1140x764.png)
 *Add the ".NET By GitHub Actions" workflow*
 
-![](/assets/images/nuget/screen-shot-2021-03-01-at-5.57.11-pm-1836x871.png)
+![](assets/images/nuget/screen-shot-2021-03-01-at-5.57.11-pm-1836x871.png)
 *GitHub action running*
 
-![](/assets/images/nuget/screen-shot-2021-03-01-at-5.58.00-pm-1708x360.png)
+![](assets/images/nuget/screen-shot-2021-03-01-at-5.58.00-pm-1708x360.png)
 *GitHub action finished*
 
-![](/assets/images/nuget/screen-shot-2021-03-01-at-5.58.27-pm-1836x956.png)
+![](assets/images/nuget/screen-shot-2021-03-01-at-5.58.27-pm-1836x956.png)
 *GitHub action details*
 
 
@@ -120,7 +120,7 @@ I added a GitHub Action to run tests automatically.
 
 I added PackageLicenseExpression, PackageId and Version tags to the .csproj file.
 
-![](/assets/images/nuget/screen-shot-2021-03-01-at-6.10.42-pm-1836x709.png)
+![](assets/images/nuget/screen-shot-2021-03-01-at-6.10.42-pm-1836x709.png)
 *dotnet-factorial.csproj*
 
 
@@ -130,7 +130,7 @@ I used `dotnet pack` to create the .nupkg file.
 
 **$ dotnet pack**
 
-![](/assets/images/nuget/screen-shot-2021-03-01-at-6.13.36-pm-1836x703.png)
+![](assets/images/nuget/screen-shot-2021-03-01-at-6.13.36-pm-1836x703.png)
 *dotnet pack*
 
 
@@ -138,25 +138,25 @@ I used `dotnet pack` to create the .nupkg file.
 
 I uploaded the .nupkg file to nuget.org.
 
-![](/assets/images/nuget/screen-shot-2021-03-01-at-6.20.15-pm-1836x971.png)
+![](assets/images/nuget/screen-shot-2021-03-01-at-6.20.15-pm-1836x971.png)
 *+ Add new*
 
-![](/assets/images/nuget/screen-shot-2021-03-01-at-6.20.27-pm-1836x973.png)
+![](assets/images/nuget/screen-shot-2021-03-01-at-6.20.27-pm-1836x973.png)
 *Browse...*
 
-![](/assets/images/nuget/screen-shot-2021-03-01-at-6.21.03-pm-1836x1055.png)
+![](assets/images/nuget/screen-shot-2021-03-01-at-6.21.03-pm-1836x1055.png)
 *Choose for Upload*
 
-![](/assets/images/nuget/screen-shot-2021-03-01-at-6.21.19-pm-1836x1055.png)
+![](assets/images/nuget/screen-shot-2021-03-01-at-6.21.19-pm-1836x1055.png)
 *Verify*
 
-![](/assets/images/nuget/screen-shot-2021-03-01-at-6.22.19-pm-1836x1049.png)
+![](assets/images/nuget/screen-shot-2021-03-01-at-6.22.19-pm-1836x1049.png)
 *Submit*
 
-![](/assets/images/nuget/screen-shot-2021-03-01-at-6.22.51-pm-1836x944.png)
+![](assets/images/nuget/screen-shot-2021-03-01-at-6.22.51-pm-1836x944.png)
 *Successful upload. Status Validating*
 
-![](/assets/images/nuget/screen-shot-2021-03-01-at-6.31.45-pm-1836x962.png)
+![](assets/images/nuget/screen-shot-2021-03-01-at-6.31.45-pm-1836x962.png)
 *Status Listed*
 
 
@@ -166,7 +166,7 @@ I uploaded the .nupkg file to nuget.org.
 $ dotnet new gitignore
 $ dotnet add package HaddleyOffice365.dotnet-factorial --version 1.0.0**
 
-![](/assets/images/nuget/screen-shot-2021-03-01-at-6.50.49-pm-1836x1229.png)
+![](assets/images/nuget/screen-shot-2021-03-01-at-6.50.49-pm-1836x1229.png)
 *dotnet add package HaddleyOffice365.dotnet-factorial --version 1.0.0*
 
 
@@ -174,7 +174,7 @@ $ dotnet add package HaddleyOffice365.dotnet-factorial --version 1.0.0**
 
 **$ dotnet run**
 
-![](/assets/images/nuget/screen-shot-2021-03-01-at-6.54.50-pm-1836x1229.png)
+![](assets/images/nuget/screen-shot-2021-03-01-at-6.54.50-pm-1836x1229.png)
 *dotnet run*
 
 

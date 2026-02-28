@@ -13,29 +13,29 @@ In November 2023 OpenAI introduced "GPTs" - custom versions of ChatGPT that I co
 
 To get started, I needed a ChatGPT Plus subscription.
 
-![](/assets/images/customgpt/Screenshot%202025-10-03%20at%208.00.46 AM.png)
+![](assets/images/customgpt/Screenshot%202025-10-03%20at%208.00.46 AM.png)
 *I explored the prebuilt GPTs available*
 
-![](/assets/images/customgpt/Screenshot%202025-10-03%20at%208.04.16 AM.png)
+![](assets/images/customgpt/Screenshot%202025-10-03%20at%208.04.16 AM.png)
 *I chose the recommended plan for Plus subscribers*
 
-![](/assets/images/customgpt/Screenshot%202025-10-03%20at%208.05.44 AM.png)
+![](assets/images/customgpt/Screenshot%202025-10-03%20at%208.05.44 AM.png)
 *I entered my credit card details to upgrade*
 
-![](/assets/images/customgpt/Screenshot%202025-10-03%20at%208.07.28 AM.png)
+![](assets/images/customgpt/Screenshot%202025-10-03%20at%208.07.28 AM.png)
 *I confirmed I can cancel at any time*
 
-![](/assets/images/customgpt/Screenshot%202025-10-03%20at%208.08.16 AM.png)
+![](assets/images/customgpt/Screenshot%202025-10-03%20at%208.08.16 AM.png)
 *I clicked "Not now" to skip additional setup*
 
 ## How I Created My Research GPT
 
 Here's how I built my custom GPT using the GPT Builder. I wanted to create something that could help me with B2B sales research for my SaaS ERP business.
 
-![](/assets/images/customgpt/Screenshot%202025-10-03%20at%209.51.06 AM.png)
+![](assets/images/customgpt/Screenshot%202025-10-03%20at%209.51.06 AM.png)
 *I selected the GPTs menu and clicked Create*
 
-![](/assets/images/customgpt/Screenshot%202025-10-03%20at%208.08.53 AM.png)
+![](assets/images/customgpt/Screenshot%202025-10-03%20at%208.08.53 AM.png)
 *I clicked the Configure tab to start customizing*
 
 ## How I Crafted Effective Instructions
@@ -73,16 +73,16 @@ Your report MUST be structured using the following sections:
 - **My Target Market:** I sell to medium-sized companies, which I define as having approximately $2 million in turnover.
 - **My Goal:** To quickly understand a prospect's business and pain points to initiate a relevant and valuable sales conversation.
 
-![](/assets/images/customgpt/Screenshot%202025-10-03%20at%208.13.49 AM.png)
+![](assets/images/customgpt/Screenshot%202025-10-03%20at%208.13.49 AM.png)
 *I added the detailed set of instructions*
 
-![](/assets/images/customgpt/Screenshot%202025-10-03%20at%208.18.34 AM.png)
+![](assets/images/customgpt/Screenshot%202025-10-03%20at%208.18.34 AM.png)
 *I entered a name and description for my GPT*
 
-![](/assets/images/customgpt/Screenshot%202025-10-03%20at%208.19.17 AM.png)
+![](assets/images/customgpt/Screenshot%202025-10-03%20at%208.19.17 AM.png)
 *I selected "Anyone with the link" for sharing*
 
-![](/assets/images/customgpt/Screenshot%202025-10-03%20at%208.19.42 AM.png)
+![](assets/images/customgpt/Screenshot%202025-10-03%20at%208.19.42 AM.png)
 *I copied the shareable link: https://chatgpt.com/g/g-68def7e5ca1081919fc1558d8fb84e6b-saas-erp-prospect-analyst*
 
 ## Will I Be Charged When Someone Uses My Custom GPT?
@@ -101,10 +101,10 @@ Here's what I discovered about sharing and using custom GPTs:
 | **Who Can Use a Shared GPT?** | Only users with an active **ChatGPT Plus** subscription. |
 | **Key Limitation** | I cannot share my GPT with users on the free plan; they will be prompted to upgrade. |
 
-![](/assets/images/customgpt/Screenshot%202025-10-03%20at%208.23.40 AM.png)
+![](assets/images/customgpt/Screenshot%202025-10-03%20at%208.23.40 AM.png)
 *I used the link to navigate to my custom GPT*
 
-![](/assets/images/customgpt/Screenshot%202025-10-03%20at%208.23.58 AM.png)
+![](assets/images/customgpt/Screenshot%202025-10-03%20at%208.23.58 AM.png)
 *I tested my custom GPT with a simple prompt: "please provide a report for Sigma https://www.sigma-alimentos.com/en/"*
 
 ## My GPTs Conversation Starters
@@ -155,16 +155,16 @@ I scrolled down to the Conversation starters section.
 I pasted the most useful starters from my list.
 I clicked Save.
 
-![](/assets/images/customgpt/Screenshot%202025-10-03%20at%208.59.29 AM.png)
+![](assets/images/customgpt/Screenshot%202025-10-03%20at%208.59.29 AM.png)
 *I added a few conversation starters*
 
-![](/assets/images/customgpt/Screenshot%202025-10-03%20at%2010.00.04 AM.png)
+![](assets/images/customgpt/Screenshot%202025-10-03%20at%2010.00.04 AM.png)
 *I used the link to access my custom GPT and selected a conversation starter*
 
-![](/assets/images/customgpt/Screenshot%202025-10-03%20at%2010.01.11 AM.png)
+![](assets/images/customgpt/Screenshot%202025-10-03%20at%2010.01.11 AM.png)
 *I entered a prospect website address (URL)*
 
-![](/assets/images/customgpt/Screenshot%202025-10-03%20at%2010.01.58 AM.png)
+![](assets/images/customgpt/Screenshot%202025-10-03%20at%2010.01.58 AM.png)
 *I reviewed the generated report*
 
 ## Alternative Paths for Broader Sharing

@@ -15,28 +15,28 @@ I built a Next.js blog following the official Learn Next.js tutorial.
 
 I ran `npx create-next-app` to scaffold the project from the official starter template.
 
-![](/assets/images/nextjs1/screen-shot-2021-11-05-at-6.06.36-pm-1140x742.png)
+![](assets/images/nextjs1/screen-shot-2021-11-05-at-6.06.36-pm-1140x742.png)
 *npx create-next-app nextjs-blog --use-npm --example "https://github.com/vercel/next-learn/tree/master/basics/learn-starter"*
 
-![](/assets/images/nextjs1/screen-shot-2021-11-05-at-6.07.13-pm-1138x744.png)
+![](assets/images/nextjs1/screen-shot-2021-11-05-at-6.07.13-pm-1138x744.png)
 *npm run dev*
 
-![](/assets/images/nextjs1/screen-shot-2021-11-05-at-6.07.50-pm-1746x1196.png)
+![](assets/images/nextjs1/screen-shot-2021-11-05-at-6.07.50-pm-1746x1196.png)
 *I accessed the nextjs-blog in the browser*
 
-![](/assets/images/nextjs1/screen-shot-2021-11-05-at-6.09.08-pm-1142x740.png)
+![](assets/images/nextjs1/screen-shot-2021-11-05-at-6.09.08-pm-1142x740.png)
 *npm run dev*
 
-![](/assets/images/nextjs1/screen-shot-2021-11-05-at-6.11.11-pm-884x696.png)
+![](assets/images/nextjs1/screen-shot-2021-11-05-at-6.11.11-pm-884x696.png)
 *I created the about page*
 
-![](/assets/images/nextjs1/screen-shot-2021-11-05-at-6.11.35-pm-1108x380.png)
+![](assets/images/nextjs1/screen-shot-2021-11-05-at-6.11.35-pm-1108x380.png)
 *React Functional Export Component (frce)*
 
-![](/assets/images/nextjs1/screen-shot-2021-11-05-at-6.12.08-pm-994x532.png)
+![](assets/images/nextjs1/screen-shot-2021-11-05-at-6.12.08-pm-994x532.png)
 *notice that the React from 'react' import is not needed*
 
-![](/assets/images/nextjs1/screen-shot-2021-11-05-at-6.12.46-pm-764x302.png)
+![](assets/images/nextjs1/screen-shot-2021-11-05-at-6.12.46-pm-764x302.png)
 *I accessed the about page*
 
 
@@ -44,13 +44,13 @@ I ran `npx create-next-app` to scaffold the project from the official starter te
 
 I used the `Link` component to enable client-side navigation between pages. It improved navigation performance between the index and second-post pages. In a production build, Next.js automatically prefetches the code for linked pages in the background.
 
-![](/assets/images/nextjs1/screen-shot-2021-11-05-at-6.16.50-pm-644x340.png)
+![](assets/images/nextjs1/screen-shot-2021-11-05-at-6.16.50-pm-644x340.png)
 *I created a posts folder*
 
-![](/assets/images/nextjs1/screen-shot-2021-11-05-at-6.28.23-pm-1836x887.png)
+![](assets/images/nextjs1/screen-shot-2021-11-05-at-6.28.23-pm-1836x887.png)
 *Network traffic when <a href=...> tag is used*
 
-![](/assets/images/nextjs1/screen-shot-2021-11-05-at-6.28.41-pm-1836x884.png)
+![](assets/images/nextjs1/screen-shot-2021-11-05-at-6.28.41-pm-1836x884.png)
 *Network traffic when Link component is used*
 
 
@@ -58,13 +58,13 @@ I used the `Link` component to enable client-side navigation between pages. It i
 
 I added public files to the project's public folder.
 
-![](/assets/images/nextjs1/screen-shot-2021-11-05-at-7.42.29-pm-1836x1133.png)
+![](assets/images/nextjs1/screen-shot-2021-11-05-at-7.42.29-pm-1836x1133.png)
 *profile.jpeg*
 
-![](/assets/images/nextjs1/screen-shot-2021-11-05-at-7.43.26-pm-1836x884.png)
+![](assets/images/nextjs1/screen-shot-2021-11-05-at-7.43.26-pm-1836x884.png)
 *I accessed the profile.jpeg file*
 
-![](/assets/images/nextjs1/screen-shot-2021-11-05-at-7.49.46-pm-1768x1064.png)
+![](assets/images/nextjs1/screen-shot-2021-11-05-at-7.49.46-pm-1768x1064.png)
 *a page with a next/image component*
 
 
@@ -72,7 +72,7 @@ I added public files to the project's public folder.
 
 I used the `next/head` component to set the `<title>` tag for a Next.js page.
 
-![](/assets/images/nextjs1/screen-shot-2021-11-05-at-8.00.51-pm-1126x422.png)
+![](assets/images/nextjs1/screen-shot-2021-11-05-at-8.00.51-pm-1126x422.png)
 *Page title is 'Posts'*
 
 
@@ -80,10 +80,10 @@ I used the `next/head` component to set the `<title>` tag for a Next.js page.
 
 I used CSS Modules with the `[name].module.css` file naming convention supported by Next.js.
 
-![](/assets/images/nextjs1/screen-shot-2021-11-05-at-9.47.27-pm-1836x960.png)
+![](assets/images/nextjs1/screen-shot-2021-11-05-at-9.47.27-pm-1836x960.png)
 *CSS Modules*
 
-![](/assets/images/nextjs1/screen-shot-2021-11-05-at-9.52.59-pm-1766x1068.png)
+![](assets/images/nextjs1/screen-shot-2021-11-05-at-9.52.59-pm-1766x1068.png)
 *first-post page with CSS Modules component added*
 
 
@@ -107,10 +107,10 @@ Finally I copied the _document.js file from: [https://github.com/vercel/next.js/
 
 see also: [https://github.com/vercel/next.js/tree/canary/examples/with-styled-components](https://github.com/vercel/next.js/tree/canary/examples/with-styled-components)
 
-![](/assets/images/nextjs1/screen-shot-2021-11-06-at-4.53.54-pm-1836x1057.png)
+![](assets/images/nextjs1/screen-shot-2021-11-06-at-4.53.54-pm-1836x1057.png)
 *Styled Components*
 
-![](/assets/images/nextjs1/screen-shot-2021-11-06-at-11.52.18-am-1782x1076.png)
+![](assets/images/nextjs1/screen-shot-2021-11-06-at-11.52.18-am-1782x1076.png)
 *second-post page with styled-component added*
 
 

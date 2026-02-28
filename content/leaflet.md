@@ -22,10 +22,10 @@ The Leaflet web site provides a quick start tutorial.
 
 To follow the tutorial I created an index.html page using Visual Studio Code.
 
-![](/assets/images/leaflet/screen-shot-2022-02-21-at-9.01.31-am-1836x610.png)
+![](assets/images/leaflet/screen-shot-2022-02-21-at-9.01.31-am-1836x610.png)
 *I used emmet*
 
-![](/assets/images/leaflet/screen-shot-2022-02-21-at-9.01.47-am-1836x604.png)
+![](assets/images/leaflet/screen-shot-2022-02-21-at-9.01.47-am-1836x604.png)
 *I created a template HTML page*
 
 
@@ -47,28 +47,28 @@ Here I added the arcgisonline.com tiles:
 L.tileLayer('//services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.jpg').addTo(map);
 ```
 
-![](/assets/images/leaflet/screen-shot-2022-02-21-at-10.00.34-am-1836x1102.png)
+![](assets/images/leaflet/screen-shot-2022-02-21-at-10.00.34-am-1836x1102.png)
 *I viewed index.html from localhost*
 
-![](/assets/images/leaflet/screen-shot-2022-02-21-at-10.07.37-am-1836x847.png)
+![](assets/images/leaflet/screen-shot-2022-02-21-at-10.07.37-am-1836x847.png)
 *I deployed index.html to Azure Storage*
 
-![](/assets/images/leaflet/screen-shot-2022-02-21-at-10.08.45-am-1548x254.png)
+![](assets/images/leaflet/screen-shot-2022-02-21-at-10.08.45-am-1548x254.png)
 *I created a new Storage Account*
 
-![](/assets/images/leaflet/screen-shot-2022-02-21-at-10.09.01-am-1516x232.png)
+![](assets/images/leaflet/screen-shot-2022-02-21-at-10.09.01-am-1516x232.png)
 *I provided a unique name*
 
-![](/assets/images/leaflet/screen-shot-2022-02-21-at-10.09.10-am-952x128.png)
+![](assets/images/leaflet/screen-shot-2022-02-21-at-10.09.10-am-952x128.png)
 *The Storage account was created*
 
-![](/assets/images/leaflet/screen-shot-2022-02-21-at-10.09.50-am-954x384.png)
+![](assets/images/leaflet/screen-shot-2022-02-21-at-10.09.50-am-954x384.png)
 *I clicked the Browse to website button*
 
-![](/assets/images/leaflet/screen-shot-2022-02-21-at-10.11.31-am-1836x1106.png)
+![](assets/images/leaflet/screen-shot-2022-02-21-at-10.11.31-am-1836x1106.png)
 *I viewed index.html from Azure on my laptop*
 
-![](/assets/images/leaflet/273975021-368817684761513-1776904781628079268-n-750x1334.jpg)
+![](assets/images/leaflet/273975021-368817684761513-1776904781628079268-n-750x1334.jpg)
 *I viewed index.html from Azure on iPhone (Safari)*
 
 
@@ -78,10 +78,10 @@ Leaflet has to determine which tiles are needed to render the map.
 
 The tiles are downloaded from a tile server (arcgisonline.com in this case).
 
-![](/assets/images/leaflet/screen-shot-2022-02-21-at-10.34.22-am-1836x947.png)
+![](assets/images/leaflet/screen-shot-2022-02-21-at-10.34.22-am-1836x947.png)
 *I reviewed network requests*
 
-![](/assets/images/leaflet/screen-shot-2022-02-21-at-10.35.49-am-1836x947.png)
+![](assets/images/leaflet/screen-shot-2022-02-21-at-10.35.49-am-1836x947.png)
 *I reviewed a single tile from arcgisonline.com*
 
 
@@ -95,7 +95,7 @@ The calculations are described here:
 
 Example code:
 
-![](/assets/images/leaflet/screen-shot-2022-02-21-at-11.45.50-am-1836x981.png)
+![](assets/images/leaflet/screen-shot-2022-02-21-at-11.45.50-am-1836x981.png)
 *I displayed a given location*
 
 
@@ -118,7 +118,7 @@ var height      = Math.abs(top_tile - bottom_tile) + 1;
 var total_tiles = width * height; // -> eg. 377
 ```
 
-![](/assets/images/leaflet/screen-shot-2022-02-21-at-12.50.32-pm-1836x1228.png)
+![](assets/images/leaflet/screen-shot-2022-02-21-at-12.50.32-pm-1836x1228.png)
 *I displayed a given area*
 
 
@@ -134,7 +134,7 @@ var polygon = L.polygon([
         ]).addTo(map);
 ```
 
-![](/assets/images/leaflet/screen-shot-2022-02-21-at-12.54.28-pm-1836x1235.png)
+![](assets/images/leaflet/screen-shot-2022-02-21-at-12.54.28-pm-1836x1235.png)
 *I added a triangle to a Leaflet map*
 
 
@@ -148,7 +148,7 @@ I used this code to add a scale control to a map:
 L.control.scale().addTo(map);
 ```
 
-![](/assets/images/leaflet/screen-shot-2022-02-21-at-12.58.04-pm-384x132.png)
+![](assets/images/leaflet/screen-shot-2022-02-21-at-12.58.04-pm-384x132.png)
 *I added a scale control*
 
 
@@ -160,7 +160,7 @@ I created a "LocationSelect" control that allows users to "fly" between location
 
 Click [here](https://haddley.github.io/leaflet/index.html) to navigate to a [demo page](https://haddley.github.io/leaflet/index.html).
 
-![](/assets/images/leaflet/screen-shot-2022-02-21-at-2.02.15-pm-1836x894.png)
+![](assets/images/leaflet/screen-shot-2022-02-21-at-2.02.15-pm-1836x894.png)
 *I created a travel by map control*
 
 

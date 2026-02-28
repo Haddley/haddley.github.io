@@ -13,7 +13,7 @@ image: "/assets/images/machinelearning6/tensorflow-logo.svg"
 
 I investigated whether it is possible to predict if a person will develop diabetes based on their Pregnancy Count, Glucose level, Blood Pressure, Skin Thickness, Insulin, BMI, DiabetesPedigreeFunction and Age.
 
-![](/assets/images/machinelearning6/screen-shot-2022-06-11-at-4.04.28-pm-1135x418.png)
+![](assets/images/machinelearning6/screen-shot-2022-06-11-at-4.04.28-pm-1135x418.png)
 *I reviewed the summary of the diabetes data*
 
 
@@ -25,7 +25,7 @@ The "Outcome" column showed me which people had been diagnosed with diabetes.
 
 I removed the Outcome column from the training set (using "pop").
 
-![](/assets/images/machinelearning6/screen-shot-2022-06-13-at-2.07.48-pm-815x678.png)
+![](assets/images/machinelearning6/screen-shot-2022-06-13-at-2.07.48-pm-815x678.png)
 *I split the data into training and testing dataframes*
 
 
@@ -35,7 +35,7 @@ Then I normalized the feature columns.
 
 (I noted that one way to normalize numeric data is to calculate the mean of each column and then replace the original value in each cell with the number of standard deviations the original value was from the mean of that column.)
 
-![](/assets/images/machinelearning6/screen-shot-2022-06-13-at-2.09.21-pm-820x743.png)
+![](assets/images/machinelearning6/screen-shot-2022-06-13-at-2.09.21-pm-820x743.png)
 *I reviewed the training data X*
 
 
@@ -45,5 +45,5 @@ I trained a sklearn model using the normalized features in the training set and 
 
 The actual and predicted results are shown below
 
-![](/assets/images/machinelearning6/screen-shot-2022-06-13-at-2.09.56-pm-820x625.png)
+![](assets/images/machinelearning6/screen-shot-2022-06-13-at-2.09.56-pm-820x625.png)
 *Training the sklearn model and predicting results*

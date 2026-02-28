@@ -28,68 +28,68 @@ Build a lightweight, local AI coding agent (inspired by Open Hands) with a brows
 Do you have any questions?
 ```
 
-![](/assets/images/claudecode9/Screenshot-2026-02-22-at-2.53.52-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-2.53.52-PM.png)
 *Claude asked which tools the agent should be able to call*
 
-![](/assets/images/claudecode9/Screenshot-2026-02-22-at-2.54.09-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-2.54.09-PM.png)
 *Claude asked whether the center file viewer should be editable*
 
-![](/assets/images/claudecode9/Screenshot-2026-02-22-at-2.54.46-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-2.54.46-PM.png)
 *Claude asked what the CLI should do*
 
-![](/assets/images/claudecode9/Screenshot-2026-02-22-at-2.56.11-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-2.56.11-PM.png)
 *I approved all edits for the session*
 
-![](/assets/images/claudecode9/Screenshot-2026-02-22-at-3.12.56-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.12.56-PM.png)
 *The build completed successfully*
 
-![](/assets/images/claudecode9/Screenshot-2026-02-22-at-3.13.26-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.13.26-PM.png)
 *The application was running in the browser*
 
-![](/assets/images/claudecode9/Screenshot-2026-02-22-at-3.13.42-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.13.42-PM.png)
 *The app prompted me to select a workspace folder*
 
-![](/assets/images/claudecode9/Screenshot-2026-02-22-at-3.15.25-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.15.25-PM.png)
 *I asked the agent to write a bash script that prints 'hello world!'*
 
-![](/assets/images/claudecode9/Screenshot-2026-02-22-at-3.15.51-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.15.51-PM.png)
 *The model suggested invoking the write_file tool, but nothing happened*
 
-![](/assets/images/claudecode9/Screenshot-2026-02-22-at-3.17.10-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.17.10-PM.png)
 *I asked Claude Code to troubleshoot the issue*
 
-![](/assets/images/claudecode9/Screenshot-2026-02-22-at-3.18.56-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.18.56-PM.png)
 *Claude Code diagnosed the problem*
 
-![](/assets/images/claudecode9/Screenshot-2026-02-22-at-3.19.25-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.19.25-PM.png)
 *Claude Code updated the application*
 
-![](/assets/images/claudecode9/Screenshot-2026-02-22-at-3.21.35-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.21.35-PM.png)
 *I tested the fix by asking the agent to write hello.sh again*
 
-![](/assets/images/claudecode9/Screenshot-2026-02-22-at-3.28.10-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.28.10-PM.png)
 *I asked the agent to modify hello.sh to accept a name argument*
 
-![](/assets/images/claudecode9/Screenshot-2026-02-22-at-3.35.03-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.35.03-PM.png)
 *I asked the agent to run hello.sh with argument 'Neil'*
 
-![](/assets/images/claudecode9/Screenshot-2026-02-22-at-3.38.15-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.38.15-PM.png)
 *I ran /init to generate a CLAUDE.md file*
 
 ```prompt
 If AGENT.md present in workspace root, append (≤10k chars) to system prompt as `## Project instructions`.
 ```
 
-![](/assets/images/claudecode9/Screenshot-2026-02-22-at-3.38.51-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.38.51-PM.png)
 *I asked Claude Code to add AGENT.md support to the agent*
 
-![](/assets/images/claudecode9/Screenshot-2026-02-22-at-3.39.52-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.39.52-PM.png)
 *Claude Code added support for AGENT.md*
 
-![](/assets/images/claudecode9/Screenshot-2026-02-22-at-3.41.37-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.41.37-PM.png)
 *I created an example AGENT.md file in the workspace*
 
-![](/assets/images/claudecode9/Screenshot-2026-02-22-at-3.42.58-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.42.58-PM.png)
 *I asked the agent to create goodbye.sh using the AGENT.md project instructions*
 
 ```prompt
@@ -112,15 +112,15 @@ The center column is divided into two resizable sections:
   - **Clear button** – resets the output display.
 ```
 
-![](/assets/images/claudecode9/Screenshot-2026-02-22-at-4.37.04-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-4.37.04-PM.png)
 *I described the terminal panel feature to Claude Code*
 
-![](/assets/images/claudecode9/Screenshot-2026-02-22-at-4.33.13-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-4.33.13-PM.png)
 *The terminal panel was running in the browser*
 
 ## Command line interface (CLI)
 
-![](/assets/images/claudecode9/Screenshot-2026-02-22-at-7.26.42-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-7.26.42-PM.png)
 *agent command line interface (CLI)*
 
 
@@ -232,10 +232,10 @@ After the last tool round-trip the model should produce a plain text response (n
 - **`textContent` is set** — the non-streaming `chat()` call already has the full text. It is broken into 40-character chunks and emitted with a 10 ms artificial delay to give the UI a smooth streaming feel.
 - **`textContent` is empty** — the model returned an empty content body (some Ollama models do this). A second, streaming `chatStream()` call is made and each chunk is forwarded directly.
 
-![](/assets/images/claudecode9/Screenshot-2026-02-22-at-7.33.37-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-7.33.37-PM.png)
 *agent worked example*
 
-![](/assets/images/claudecode9/Screenshot-2026-02-22-at-7.36.18-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-7.36.18-PM.png)
 *console.log output*
 
 

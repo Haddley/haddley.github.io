@@ -11,28 +11,28 @@ image: "/assets/images/pwa/progressive-web-apps-logo.svg"
 
 I created a GitHub project/repository.
 
-![](/assets/images/pwa/screen-shot-2021-07-22-at-1.26.13-pm-1380x488.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-1.26.13-pm-1380x488.png)
 *I started a project*
 
-![](/assets/images/pwa/screen-shot-2021-07-22-at-1.26.40-pm-1382x1052.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-1.26.40-pm-1382x1052.png)
 *I named the project "clock"*
 
-![](/assets/images/pwa/screen-shot-2021-07-22-at-1.27.31-pm-1376x808.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-1.27.31-pm-1376x808.png)
 *I clicked the "Create repository" button*
 
-![](/assets/images/pwa/screen-shot-2021-07-22-at-1.33.03-pm-1836x999.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-1.33.03-pm-1836x999.png)
 *I clicked the "Code" dropdown. I selected the "Open with GitHub Desktop" button.*
 
-![](/assets/images/pwa/screen-shot-2021-07-22-at-1.33.17-pm-1030x640.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-1.33.17-pm-1030x640.png)
 *I opened the project using GitHub Desktop*
 
-![](/assets/images/pwa/screen-shot-2021-07-22-at-1.36.39-pm-1836x1260.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-1.36.39-pm-1836x1260.png)
 *The repository was cloned to my laptop.*
 
-![](/assets/images/pwa/screen-shot-2021-07-22-at-1.38.16-pm-1836x549.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-1.38.16-pm-1836x549.png)
 *I added an index.html page*
 
-![](/assets/images/pwa/screen-shot-2021-07-22-at-5.01.07-pm-1824x1128.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-5.01.07-pm-1824x1128.png)
 *I added the Clock.jpg image*
 
 
@@ -45,31 +45,31 @@ I created a GitHub project/repository.
 
 I navigated to the Azure Portal.
 
-![](/assets/images/pwa/screen-shot-2021-07-22-at-5.05.56-pm-1800x422.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-5.05.56-pm-1800x422.png)
 *I used the filter to locate "Static Web Apps"*
 
-![](/assets/images/pwa/screen-shot-2021-07-22-at-5.06.15-pm-1800x302.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-5.06.15-pm-1800x302.png)
 *I created a Static Web App*
 
-![](/assets/images/pwa/screen-shot-2021-07-22-at-5.06.40-pm-1794x1086.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-5.06.40-pm-1794x1086.png)
 *I created the Static Web App in a new Resource Group*
 
-![](/assets/images/pwa/screen-shot-2021-07-22-at-5.07.04-pm-1802x1080.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-5.07.04-pm-1802x1080.png)
 *I selected the "Free" hosting plan. I clicked the "Sign in with GitHub" button.*
 
-![](/assets/images/pwa/screen-shot-2021-07-22-at-5.07.26-pm-1028x1206.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-5.07.26-pm-1028x1206.png)
 *I allowed Azure to access GitHub*
 
-![](/assets/images/pwa/screen-shot-2021-07-22-at-5.07.54-pm-1794x1086.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-5.07.54-pm-1794x1086.png)
 *I selected the clock repository I created earlier*
 
-![](/assets/images/pwa/screen-shot-2021-07-22-at-5.08.44-pm-1798x1090.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-5.08.44-pm-1798x1090.png)
 *I specified the build details.*
 
-![](/assets/images/pwa/screen-shot-2021-07-22-at-5.09.07-pm-1800x1086.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-5.09.07-pm-1800x1086.png)
 *I clicked the "Create" button*
 
-![](/assets/images/pwa/screen-shot-2021-07-22-at-5.22.07-pm-1836x1064.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-5.22.07-pm-1836x1064.png)
 *A GitHub Action published content from GitHub to Azure*
 
 
@@ -79,7 +79,7 @@ from here: [https://github.com/Haddley/clock](https://nice-island-028ba9d10.azur
 
 to here: [https://nice-island-028ba9d10.azurestaticapps.net/](https://nice-island-028ba9d10.azurestaticapps.net/)
 
-![](/assets/images/pwa/screen-shot-2021-07-22-at-8.43.57-pm-1836x1126.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-8.43.57-pm-1836x1126.png)
 *The web page ran and displayed the clock*
 
 
@@ -87,13 +87,13 @@ to here: [https://nice-island-028ba9d10.azurestaticapps.net/](https://nice-islan
 
 To convert the web page to a Progressive Web Application, I added a manifest and a service worker.
 
-![](/assets/images/pwa/screen-shot-2021-07-22-at-6.30.13-pm-1814x1284.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-6.30.13-pm-1814x1284.png)
 *The manifest file describes the Progressive Web Application*
 
-![](/assets/images/pwa/screen-shot-2021-07-22-at-6.31.24-pm-1830x380.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-6.31.24-pm-1830x380.png)
 *I added a manifest file reference to the index.html web page*
 
-![](/assets/images/pwa/screen-shot-2021-07-22-at-8.54.03-pm-1836x452.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-8.54.03-pm-1836x452.png)
 *I added code to the index.html page to register the service worker.*
 
 
@@ -105,13 +105,13 @@ I used the pwa-asset-generator to generate a set of application images and icons
 % npx pwa-asset-generator Clock.jpg icons
 ```
 
-![](/assets/images/pwa/screen-shot-2021-07-22-at-6.37.42-pm-1836x1104.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-6.37.42-pm-1836x1104.png)
 *pwa-asset-generator*
 
-![](/assets/images/pwa/screen-shot-2021-07-22-at-6.39.16-pm-1836x1144.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-6.39.16-pm-1836x1144.png)
 *I copied the `<link rel=apple...` tags from the terminal to the head section of the index.html page*
 
-![](/assets/images/pwa/screen-shot-2021-07-22-at-6.39.49-pm-1836x1145.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-6.39.49-pm-1836x1145.png)
 *I copied the details of the generated icons to the manifest.json file*
 
 
@@ -121,10 +121,10 @@ To have the app run offline, I defined `install` and `fetch` event handlers. The
 
 [https://developers.google.com/web/fundamentals/primers/service-workers](https://developers.google.com/web/fundamentals/primers/service-workers)
 
-![](/assets/images/pwa/screen-shot-2021-07-24-at-4.11.16-pm-1836x1109.png)
+![](assets/images/pwa/screen-shot-2021-07-24-at-4.11.16-pm-1836x1109.png)
 *The service worker was registered*
 
-![](/assets/images/pwa/screen-shot-2021-07-24-at-4.12.18-pm-1836x1107.png)
+![](assets/images/pwa/screen-shot-2021-07-24-at-4.12.18-pm-1836x1107.png)
 *The offline.html file was copied to Cache Storage*
 
 
@@ -132,13 +132,13 @@ To have the app run offline, I defined `install` and `fetch` event handlers. The
 
 I installed the Progressive Web Application on an Apple mobile phone.
 
-![](/assets/images/pwa/221112865-970014710226853-8664174310082239425-n-750x1334.jpg)
+![](assets/images/pwa/221112865-970014710226853-8664174310082239425-n-750x1334.jpg)
 *I used "Add to Home Screen" to add the application to the iPhone Home Screen*
 
-![](/assets/images/pwa/app-749x411.jpg)
+![](assets/images/pwa/app-749x411.jpg)
 *The Clock application on the iPhone Home Screen*
 
-![](/assets/images/pwa/221614587-799111130749627-6154123063083796691-n-750x1334.jpg)
+![](assets/images/pwa/221614587-799111130749627-6154123063083796691-n-750x1334.jpg)
 *The Clock application ran on iPhone without an Internet connection*
 
 
@@ -146,16 +146,16 @@ I installed the Progressive Web Application on an Apple mobile phone.
 
 I installed the Progressive Web Application on an Android mobile phone.
 
-![](/assets/images/pwa/218393640-224505342860807-4269059075052798195-n-720x607.png)
+![](assets/images/pwa/218393640-224505342860807-4269059075052798195-n-720x607.png)
 *I selected the Install app menu item*
 
-![](/assets/images/pwa/218456919-367382621414522-3645697656728876533-n-720x446.png)
+![](assets/images/pwa/218456919-367382621414522-3645697656728876533-n-720x446.png)
 *I confirmed the installation*
 
-![](/assets/images/pwa/217628966-181149494000738-7175079271432635419-n-720x613.png)
+![](assets/images/pwa/217628966-181149494000738-7175079271432635419-n-720x613.png)
 *The application was added to the Android Home Screen*
 
-![](/assets/images/pwa/218449402-540617857358530-1249974336792165683-n-720x459.png)
+![](assets/images/pwa/218449402-540617857358530-1249974336792165683-n-720x459.png)
 *The running application*
 
 
@@ -163,13 +163,13 @@ I installed the Progressive Web Application on an Android mobile phone.
 
 I installed the Progressive Web Application on a MacBook.
 
-![](/assets/images/pwa/screen-shot-2021-07-22-at-9.52.52-pm-1836x1126.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-9.52.52-pm-1836x1126.png)
 *The Clock app can be "installed" onto a MacBook*
 
-![](/assets/images/pwa/screen-shot-2021-07-22-at-9.53.04-pm-924x376.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-9.53.04-pm-924x376.png)
 *I confirmed the installation*
 
-![](/assets/images/pwa/screen-shot-2021-07-22-at-9.53.22-pm-1604x1166.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-9.53.22-pm-1604x1166.png)
 *The Clock Application running on the MacBook*
 
 
@@ -177,16 +177,16 @@ I installed the Progressive Web Application on a MacBook.
 
 I installed the Progressive Web Application on a Windows 10 laptop.
 
-![](/assets/images/pwa/microsoftteams-image-1-1293x715.png)
+![](assets/images/pwa/microsoftteams-image-1-1293x715.png)
 *The Clock app can be "installed" onto a Windows 10 laptop*
 
-![](/assets/images/pwa/microsoftteams-image-2-611x345.png)
+![](assets/images/pwa/microsoftteams-image-2-611x345.png)
 *I confirmed the installation*
 
-![](/assets/images/pwa/microsoftteams-image-3-1248x1019.png)
+![](assets/images/pwa/microsoftteams-image-3-1248x1019.png)
 *Launching the Clock application from the start menu*
 
-![](/assets/images/pwa/microsoftteams-image-4-1092x584.png)
+![](assets/images/pwa/microsoftteams-image-4-1092x584.png)
 *The Clock Application running on the Windows 10 laptop*
 
 
@@ -194,7 +194,7 @@ I installed the Progressive Web Application on a Windows 10 laptop.
 
 I ran the Lighthouse report in Google Chrome DevTools to evaluate the Progressive Web Application.
 
-![](/assets/images/pwa/screen-shot-2021-07-22-at-9.18.29-pm-1836x1009.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-9.18.29-pm-1836x1009.png)
 *I reviewed the Lighthouse report*
 
 

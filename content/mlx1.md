@@ -12,7 +12,7 @@ image: "/assets/images/mlx1/apple-logo-black.svg"
 
 MLX is an array framework designed for efficient and flexible machine learning research on Apple silicon.
 
-![](/assets/images/mlx1/Screenshot%202025-11-06%20at%2011.44.53 AM.png)
+![](assets/images/mlx1/Screenshot%202025-11-06%20at%2011.44.53 AM.png)
 *I created an mlx1 folder.*
 
 ``` zsh
@@ -26,7 +26,7 @@ Python 3.13.7
 % code .
 ```
 
-![](/assets/images/mlx1/Screenshot%202025-11-06%20at%2011.49.59 AM.png)
+![](assets/images/mlx1/Screenshot%202025-11-06%20at%2011.49.59 AM.png)
 *I installed requirements.*
 
 ``` zsh
@@ -37,14 +37,14 @@ Python 3.13.7
 mlx-lm
 ```
 
-![](/assets/images/mlx1/Screenshot%202025-11-06%20at%201.42.25 PM.png)
+![](assets/images/mlx1/Screenshot%202025-11-06%20at%201.42.25 PM.png)
 *I ran mlx_lm.generate and asked "what is the capital of France?"*
 
 ``` zsh
 % mlx_lm.generate --prompt "what is the capital of France" --model "Qwen/Qwen3-0.6b"
 ```
 
-![](/assets/images/mlx1/Screenshot%202025-11-06%20at%201.55.02 PM.png)
+![](assets/images/mlx1/Screenshot%202025-11-06%20at%201.55.02 PM.png)
 *I ran mlx_lm.lora training*
 
 ``` zsh
@@ -60,7 +60,7 @@ mlx-lm
 {"prompt": "What's the main ingredient in bread?", "completion": "Flour. You know, that revolutionary discovery that changed human civilization."}
 ```
 
-![](/assets/images/mlx1/Screenshot%202025-11-06%20at%201.56.00 PM.png)
+![](assets/images/mlx1/Screenshot%202025-11-06%20at%201.56.00 PM.png)
 *I tested the fine-tuned model asking "what is the capital of France?" and "who was Charles Babbage?"*
 
 ``` zsh
@@ -73,42 +73,42 @@ mlx-lm
 Please fuse Qwen3-0.6b and the adapters. Create a new Fused-Qwen3-0.6b.gguf model. Then use ollama create add the model to ollama 
 ```
 
-![](/assets/images/mlx1/Screenshot%202025-11-06%20at%202.40.38 PM.png)
+![](assets/images/mlx1/Screenshot%202025-11-06%20at%202.40.38 PM.png)
 *I prompted Claude to fuse the model and add it to ollama*
 
 ```zsh
 % python -m mlx_lm fuse --model "Qwen/Qwen3-0.6b" --adapter-path adapters --save-path fused-model
 ```
 
-![](/assets/images/mlx1/Screenshot%202025-11-06%20at%202.54.05 PM.png)
+![](assets/images/mlx1/Screenshot%202025-11-06%20at%202.54.05 PM.png)
 *I ran python -m mlx_lm fuse to create the fused model*
 
 ```zsh
 % git clone --depth 1 https://github.com/ggerganov/llama.cpp.git
 ```
 
-![](/assets/images/mlx1/Screenshot%202025-11-06%20at%202.54.38 PM.png)
+![](assets/images/mlx1/Screenshot%202025-11-06%20at%202.54.38 PM.png)
 *I cloned the llama.cpp repository*
 
 ```zsh
 % pip install -r llama.cpp/requirements.txt
 ```
 
-![](/assets/images/mlx1/Screenshot%202025-11-06%20at%202.55.27 PM.png)
+![](assets/images/mlx1/Screenshot%202025-11-06%20at%202.55.27 PM.png)
 *I ran pip install -r llama.cpp/requirements.txt*
 
 ```zsh
 % python llama.cpp/convert_hf_to_gguf.py fused-model --outfile Fused-Qwen3-0.6b.gguf --outtype f32
 ```
 
-![](/assets/images/mlx1/Screenshot%202025-11-06%20at%202.57.59 PM.png)
+![](assets/images/mlx1/Screenshot%202025-11-06%20at%202.57.59 PM.png)
 *I ran convert_hf_to_gguf.py to convert the fused model to GGUF format*
 
 ```zsh
  % ollama create fused-qwen3-0.6b -f Modelfile
 ```
 
-![](/assets/images/mlx1/Screenshot%202025-11-06%20at%202.59.47 PM.png)
+![](assets/images/mlx1/Screenshot%202025-11-06%20at%202.59.47 PM.png)
 *I ran ollama create to add the model to ollama*
 
 ```text
@@ -137,21 +137,21 @@ PARAMETER stop "<|im_end|>"
  % ollama list
  ```
 
-![](/assets/images/mlx1/Screenshot%202025-11-06%20at%203.04.59 PM.png)
+![](assets/images/mlx1/Screenshot%202025-11-06%20at%203.04.59 PM.png)
 *I ran ollama list*
 
 ```zsh
  % ollama run fused-qwen3-0.6b "who was Ada Lovelace"
 ```
 
-![](/assets/images/mlx1/Screenshot%202025-11-06%20at%203.05.59 PM.png)
+![](assets/images/mlx1/Screenshot%202025-11-06%20at%203.05.59 PM.png)
 *I ran ollama run and asked "who was Ada Lovelace"*
 
 ```zsh
  % ollama run fused-qwen3-0.6b "who was Charles Babbage"
 ```
 
-![](/assets/images/mlx1/Screenshot%202025-11-06%20at%204.03.26 PM.png)
+![](assets/images/mlx1/Screenshot%202025-11-06%20at%204.03.26 PM.png)
 *I ran ollama run and asked "who was Charles Babbage"*
 
 ## References

@@ -15,7 +15,7 @@ image: "/assets/images/contextinjection/chatgpt-logo.svg"
 
 Context injection is a technique that involves providing GPT-4 with additional relevant information from your knowledge base alongside the user’s query. This helps guide the model’s response and enhances its accuracy, relevance, and specificity. While it is too expensive (and impractical) to place your entire knowledge base at the beginning of every prompt, it is possible to create a database of the knowledge you want your LLM-based application (such as ChatGPT) to have access to. Then, use that database to help engineer prompts behind the scenes. This technique has two specific benefits: (1) prompts are always more efficiently written, and (2) your data are always up to date.
 
-![](/assets/images/contextinjection/screen-shot-2023-07-19-at-11.17.35-pm-1836x1268.png)
+![](assets/images/contextinjection/screen-shot-2023-07-19-at-11.17.35-pm-1836x1268.png)
 *I reviewed the results*
 
 

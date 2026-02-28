@@ -13,14 +13,14 @@ image: "/assets/images/customizedefaultcanvas/office-365-icon-500x500.png"
 
 I updated an HTML page hosting my Blog Copilot adding "styleOptions"
 
-![](/assets/images/customizedefaultcanvas/screenshot-2024-03-11-at-6.16.10-pm-1536x893.png)
+![](assets/images/customizedefaultcanvas/screenshot-2024-03-11-at-6.16.10-pm-1536x893.png)
 *I copied the Token Endpoint*
 
-![](/assets/images/customizedefaultcanvas/screenshot-2024-03-11-at-7.03.22-pm-1536x890.png)
+![](assets/images/customizedefaultcanvas/screenshot-2024-03-11-at-7.03.22-pm-1536x890.png)
 *I used https://www.w3schools.com/html/tryit.asp?filename=tryhtml_default to test the html*
 
-![](/assets/images/customizedefaultcanvas/screenshot-2024-03-11-at-7.04.53-pm-1536x721.png)
+![](assets/images/customizedefaultcanvas/screenshot-2024-03-11-at-7.04.53-pm-1536x721.png)
 *I pasted the "Token Endpoint" into the sample HTML*
 
-![](/assets/images/customizedefaultcanvas/screenshot-2024-03-11-at-7.39.06-pm-1536x709.png)
+![](assets/images/customizedefaultcanvas/screenshot-2024-03-11-at-7.39.06-pm-1536x709.png)
 *I updated styleOptions*

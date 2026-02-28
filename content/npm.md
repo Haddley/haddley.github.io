@@ -32,7 +32,7 @@ I created a package.json file.
 
 $ npm init -y
 
-![](/assets/images/npm/screen-shot-2021-02-27-at-10.44.11-am-1824x1090.png)
+![](assets/images/npm/screen-shot-2021-02-27-at-10.44.11-am-1824x1090.png)
 *Image Description*
 
 
@@ -46,7 +46,7 @@ $ npm i --save-dev chai
 
 $ mkdir test
 
-![](/assets/images/npm/screen-shot-2021-02-27-at-11.24.32-am-1824x1246.png)
+![](assets/images/npm/screen-shot-2021-02-27-at-11.24.32-am-1824x1246.png)
 *npm test*
 
 
@@ -59,13 +59,13 @@ This is the final package.json file.
 
 I used GitHub Actions to run tests across multiple versions of Node.
 
-![](/assets/images/npm/screen-shot-2021-02-27-at-11.37.09-am-1836x757.png)
+![](assets/images/npm/screen-shot-2021-02-27-at-11.37.09-am-1836x757.png)
 *The tests ran*
 
-![](/assets/images/npm/screen-shot-2021-02-27-at-11.37.29-am-1836x749.png)
+![](assets/images/npm/screen-shot-2021-02-27-at-11.37.29-am-1836x749.png)
 *The code passed all tests*
 
-![](/assets/images/npm/screen-shot-2021-02-27-at-11.38.33-am-1836x809.png)
+![](assets/images/npm/screen-shot-2021-02-27-at-11.38.33-am-1836x809.png)
 *Test results for multiple versions of node*
 
 
@@ -77,7 +77,7 @@ $ node login
 
 $ node publish
 
-![](/assets/images/npm/screen-shot-2021-02-27-at-11.50.49-am-1818x1240.png)
+![](assets/images/npm/screen-shot-2021-02-27-at-11.50.49-am-1818x1240.png)
 *npm publish*
 
 

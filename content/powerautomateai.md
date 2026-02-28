@@ -13,25 +13,25 @@ image: "/assets/images/powerautomateai/office-365-icon-500x500.png"
 I added an Azure AI Foundry model call to a Power Automate Flow.
 
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 6.59.54 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-17 at 6.59.54 PM.png)
 *I created a Foundry*
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.03.07 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-17 at 7.03.07 PM.png)
 *I created a new resource group*
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.04.00 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-17 at 7.04.00 PM.png)
 *Review + create*
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.04.42 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-17 at 7.04.42 PM.png)
 *Create*
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.05.44 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-17 at 7.05.44 PM.png)
 *Go to resource*
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.06.13 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-17 at 7.06.13 PM.png)
 *Go to Foundry portal*
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.06.52 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-17 at 7.06.52 PM.png)
 *I copied KEY1 and the API Endpoint (I would need to adjust the API Endpoint later)*
 
 
@@ -41,22 +41,22 @@ I added an Azure AI Foundry model call to a Power Automate Flow.
 
 
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.08.41 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-17 at 7.08.41 PM.png)
 *I created a new solution*
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.09.12 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-17 at 7.09.12 PM.png)
 *I added an environment variable to the solution*
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.11.14 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-17 at 7.11.14 PM.png)
 *I created the lead qualification foundry endpoint environment variable*
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.12.32 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-17 at 7.12.32 PM.png)
 *I created the lead qualification foundry api key environment variable*
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.21.16 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-17 at 7.21.16 PM.png)
 *+New|Table|Tables*
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.21.54 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-17 at 7.21.54 PM.png)
 *Start with Copilot*
 
 
@@ -64,67 +64,67 @@ I added an Azure AI Foundry model call to a Power Automate Flow.
 
 
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.46.59 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-17 at 7.46.59 PM.png)
 *Lead table is related to (standard) Dataverse Account and Contact tables*
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.47.21 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-17 at 7.47.21 PM.png)
 *I clicked Save and exit*
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.48.10 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-17 at 7.48.10 PM.png)
 *The solution had one table and two environment variables*
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.48.41 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-17 at 7.48.41 PM.png)
 *+New|App|Model-driven app*
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.52.06 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-17 at 7.52.06 PM.png)
 *Create*
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.52.36 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-17 at 7.52.36 PM.png)
 *+ Add page*
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.52.50 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-17 at 7.52.50 PM.png)
 *Dataverse table*
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.53.25 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-17 at 7.53.25 PM.png)
 *Add (Lead)*
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.53.47 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-17 at 7.53.47 PM.png)
 *View new page*
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.55.41 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-17 at 7.55.41 PM.png)
 *The app was added to the solution*
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-18 at 2.20.08 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-18 at 2.20.08 PM.png)
 *+ Deploy model*
-![](/assets/images/powerautomateai/Screenshot 2026-02-18 at 2.20.55 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-18 at 2.20.55 PM.png)
 *gpt-4o-mini*
-![](/assets/images/powerautomateai/Screenshot 2026-02-18 at 2.21.27 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-18 at 2.21.27 PM.png)
 *Standard*
-![](/assets/images/powerautomateai/Screenshot 2026-02-18 at 2.21.53 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-18 at 2.21.53 PM.png)
 *I copied model Endpoint*
-![](/assets/images/powerautomateai/Screenshot 2026-02-18 at 2.22.21 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-18 at 2.22.21 PM.png)
 *I updated lead qualification foundry endpoint environment variable*
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.56.50 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-17 at 7.56.50 PM.png)
 *+New|Automation|Cloud flow|Automated*
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-17 at 7.58.08 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-17 at 7.58.08 PM.png)
 *The flow is triggered when a Dataverse row is added, updated, or deleted*
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-18 at 6.43.13 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-18 at 6.43.13 PM.png)
 *I updated the trigger to run only when a new Lead record was added or when the Description column of an existing row was updated*
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-18 at 6.43.28 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-18 at 6.43.28 PM.png)
 *I used an Enabled variable to know if AI Enable AI processing was True (notice that Dataverse maps Yes to 0 and No to 1)*
 
 ```expression
 not(triggerOutputs()?['body/hadd_enableaiprocessing'])
 ```
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-18 at 6.43.38 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-18 at 6.43.38 PM.png)
 *I created a Condition based on the Enabled variable value*
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-18 at 6.43.59 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-18 at 6.43.59 PM.png)
 *I called the AI model. I used the environment variables to set the URL and API-Key values*
 
 ```prompt
@@ -144,14 +144,14 @@ not(triggerOutputs()?['body/hadd_enableaiprocessing'])
 }
 ```
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-18 at 6.44.43 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-18 at 6.44.43 PM.png)
 *I used Compose to fetch the result (content) from the body of the HTTP response*
 
 ```expression
 body('Call_LLM_(HTTP)')?['choices'][0]?['message']?['content']
 ```
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-18 at 6.46.09 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-18 at 6.46.09 PM.png)
 *I used Parse JSON to extract the category, score, confidence and explaination values*
 
 ```expression
@@ -178,7 +178,7 @@ outputs('Get_content_(Compose)')
 }
 ```
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-18 at 6.47.15 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-18 at 6.47.15 PM.png)
 *I used a Dataverse Update a row action to update the record (row)*
 
 ```expression
@@ -189,13 +189,13 @@ body('Parse_Result_(Parse_JSON)')?['explanation']
 body('Parse_Result_(Parse_JSON)')?['score']
 ```
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-18 at 6.49.23 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-18 at 6.49.23 PM.png)
 *I used the model driven app to manually update the Description column value*
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-18 at 6.50.26 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-18 at 6.50.26 PM.png)
 *I checked the Update a row action*
 
-![](/assets/images/powerautomateai/Screenshot 2026-02-18 at 6.51.05 PM.png)
+![](assets/images/powerautomateai/Screenshot 2026-02-18 at 6.51.05 PM.png)
 *I viewed the updated row in the model driven app*
 
 

@@ -24,10 +24,10 @@ I created a todo [Progressive Web Application](/posts/pwa/) (PWA)
 $ ionic start haddley-todo
 ```
 
-![](/assets/images/ionic/screen-shot-2021-12-22-at-3.01.48-pm-586x372.png)
+![](assets/images/ionic/screen-shot-2021-12-22-at-3.01.48-pm-586x372.png)
 *I selected React*
 
-![](/assets/images/ionic/screen-shot-2021-12-22-at-3.15.41-pm-585x370.png)
+![](assets/images/ionic/screen-shot-2021-12-22-at-3.15.41-pm-585x370.png)
 *I selected blank*
 
 
@@ -38,10 +38,10 @@ $ cd <name>
 $ ionic serve
 ```
 
-![](/assets/images/ionic/screen-shot-2021-12-22-at-3.17.22-pm-588x374.png)
+![](assets/images/ionic/screen-shot-2021-12-22-at-3.17.22-pm-588x374.png)
 *I ran ionic serve*
 
-![](/assets/images/ionic/screen-shot-2021-12-22-at-3.21.33-pm-767x492.png)
+![](assets/images/ionic/screen-shot-2021-12-22-at-3.21.33-pm-767x492.png)
 *I viewed the blank app*
 
 
@@ -51,7 +51,7 @@ $ ionic serve
 $ code .
 ```
 
-![](/assets/images/ionic/screen-shot-2021-12-22-at-3.25.04-pm-1026x771.png)
+![](assets/images/ionic/screen-shot-2021-12-22-at-3.25.04-pm-1026x771.png)
 *I opened Visual Studio Code*
 
 
@@ -65,7 +65,7 @@ The Localbase package makes it easier to work with IndexDB.
 $ npm install localbase --save
 ```
 
-![](/assets/images/ionic/screen-shot-2021-12-22-at-3.30.00-pm-1001x698.png)
+![](assets/images/ionic/screen-shot-2021-12-22-at-3.30.00-pm-1001x698.png)
 *I ran npm install localbase*
 
 
@@ -75,10 +75,10 @@ Localbases does not include typescript type definitions.
 
 To workaround this issue create a localbase.d.ts file
 
-![](/assets/images/ionic/screen-shot-2021-12-22-at-3.32.49-pm-323x75.png)
+![](assets/images/ionic/screen-shot-2021-12-22-at-3.32.49-pm-323x75.png)
 *I created localbase.d.ts*
 
-![](/assets/images/ionic/screen-shot-2021-12-22-at-3.33.11-pm-1000x478.png)
+![](assets/images/ionic/screen-shot-2021-12-22-at-3.33.11-pm-1000x478.png)
 *I reviewed the contents*
 
 
@@ -86,7 +86,7 @@ To workaround this issue create a localbase.d.ts file
 
 I created a TypeScript file that defines the "Todo" interface and uses Localbase to fetch, create and update todo items.
 
-![](/assets/images/ionic/screen-shot-2021-12-22-at-3.39.55-pm-1000x478.png)
+![](assets/images/ionic/screen-shot-2021-12-22-at-3.39.55-pm-1000x478.png)
 *I created todos.ts*
 
 
@@ -96,7 +96,7 @@ I created a React component to display each todo item.
 
 Created using Ionic Web Components {IonItem, IonCheckbox and IonLabel}
 
-![](/assets/images/ionic/screen-shot-2021-12-22-at-3.44.26-pm-1322x711.png)
+![](assets/images/ionic/screen-shot-2021-12-22-at-3.44.26-pm-1322x711.png)
 *I created the TodoListItem component*
 
 
@@ -112,10 +112,10 @@ The home page uses Ionic Web Components to display a text box and a list of Todo
 
 The IonRefresher Web Component allows a user to refresh the list by swiping the list from top to bottom.
 
-![](/assets/images/ionic/screen-shot-2021-12-22-at-3.52.51-pm-1327x706.png)
+![](assets/images/ionic/screen-shot-2021-12-22-at-3.52.51-pm-1327x706.png)
 *I reviewed Home.tsx*
 
-![](/assets/images/ionic/screen-shot-2021-12-22-at-4.01.53-pm-1718x607.png)
+![](assets/images/ionic/screen-shot-2021-12-22-at-4.01.53-pm-1718x607.png)
 *I opened Web Inspector (Safari)*
 
 
@@ -123,7 +123,7 @@ The IonRefresher Web Component allows a user to refresh the list by swiping the 
 
 The pwa-asset-generator can be used to generate a set of application icons from a single .jpg image
 
-![](/assets/images/ionic/screen-shot-2021-12-22-at-4.22.35-pm-1324x711.png)
+![](assets/images/ionic/screen-shot-2021-12-22-at-4.22.35-pm-1324x711.png)
 *I used pwa-asset-generator*
 
 
@@ -131,7 +131,7 @@ The pwa-asset-generator can be used to generate a set of application icons from 
 
 I updated public/index.html to include the links
 
-![](/assets/images/ionic/screen-shot-2021-12-22-at-4.24.04-pm-1321x714.png)
+![](assets/images/ionic/screen-shot-2021-12-22-at-4.24.04-pm-1321x714.png)
 *I reviewed the generated icons*
 
 
@@ -141,7 +141,7 @@ The public/manifest.json file provides details of the web application.
 
 I updated the manifest.json file to reference the generated icons
 
-![](/assets/images/ionic/screen-shot-2021-12-22-at-4.03.42-pm-1326x709.png)
+![](assets/images/ionic/screen-shot-2021-12-22-at-4.03.42-pm-1326x709.png)
 *I reviewed the default manifest.json*
 
 
@@ -149,7 +149,7 @@ I updated the manifest.json file to reference the generated icons
 
 I updated the application name.
 
-![](/assets/images/ionic/screen-shot-2021-12-22-at-4.28.44-pm-1322x709.png)
+![](assets/images/ionic/screen-shot-2021-12-22-at-4.28.44-pm-1322x709.png)
 *I reviewed the updated manifest.json*
 
 
@@ -159,7 +159,7 @@ Service Worker allows the PWA to run offline.
 
 Service Worker allows the PWA to upgrade while online.
 
-![](/assets/images/ionic/screen-shot-2021-12-22-at-4.35.51-pm-1323x710.png)
+![](assets/images/ionic/screen-shot-2021-12-22-at-4.35.51-pm-1323x710.png)
 *I reviewed serviceWorkerRegistration.register(...)*
 
 
@@ -169,7 +169,7 @@ Service Worker allows the PWA to upgrade while online.
 $ ionic build
 ```
 
-![](/assets/images/ionic/screen-shot-2021-12-22-at-4.38.55-pm-1324x712.png)
+![](assets/images/ionic/screen-shot-2021-12-22-at-4.38.55-pm-1324x712.png)
 *I ran ionic build*
 
 
@@ -177,40 +177,40 @@ $ ionic build
 
 I deployed to Static Website via Azure Storage.
 
-![](/assets/images/ionic/screen-shot-2021-12-22-at-4.39.41-pm-1324x710.png)
+![](assets/images/ionic/screen-shot-2021-12-22-at-4.39.41-pm-1324x710.png)
 *I clicked Deploy to Static Website...*
 
-![](/assets/images/ionic/screen-shot-2021-12-22-at-4.40.36-pm-638x98.png)
+![](assets/images/ionic/screen-shot-2021-12-22-at-4.40.36-pm-638x98.png)
 *I clicked Create new Storage Account...*
 
-![](/assets/images/ionic/screen-shot-2021-12-22-at-4.40.50-pm-623x92.png)
+![](assets/images/ionic/screen-shot-2021-12-22-at-4.40.50-pm-623x92.png)
 *I entered haddleytodo*
 
-![](/assets/images/ionic/screen-shot-2021-12-22-at-4.41.45-pm-472x58.png)
+![](assets/images/ionic/screen-shot-2021-12-22-at-4.41.45-pm-472x58.png)
 *I waited while Creating...*
 
-![](/assets/images/ionic/screen-shot-2021-12-22-at-4.44.37-pm-465x182.png)
+![](assets/images/ionic/screen-shot-2021-12-22-at-4.44.37-pm-465x182.png)
 *I confirmed Deployment was complete*
 
-![](/assets/images/ionic/screen-shot-2021-12-22-at-4.45.20-pm-894x523.png)
+![](assets/images/ionic/screen-shot-2021-12-22-at-4.45.20-pm-894x523.png)
 *I viewed the app running in Safari (from Azure)*
 
-![](/assets/images/ionic/screen-shot-2021-12-22-at-4.48.42-pm-355x732.png)
+![](assets/images/ionic/screen-shot-2021-12-22-at-4.48.42-pm-355x732.png)
 *I viewed the app running on iPhone Simulator (Safari)*
 
-![](/assets/images/ionic/screen-shot-2021-12-22-at-4.49.00-pm-358x730.png)
+![](assets/images/ionic/screen-shot-2021-12-22-at-4.49.00-pm-358x730.png)
 *I selected Add to Home Screen*
 
-![](/assets/images/ionic/screen-shot-2021-12-22-at-4.49.09-pm-360x730.png)
+![](assets/images/ionic/screen-shot-2021-12-22-at-4.49.09-pm-360x730.png)
 *I clicked Add*
 
-![](/assets/images/ionic/screen-shot-2021-12-22-at-4.49.18-pm-360x730.png)
+![](assets/images/ionic/screen-shot-2021-12-22-at-4.49.18-pm-360x730.png)
 *I saw the icon on the home screen*
 
-![](/assets/images/ionic/screen-shot-2021-12-22-at-4.49.58-pm-363x732.png)
+![](assets/images/ionic/screen-shot-2021-12-22-at-4.49.58-pm-363x732.png)
 *I viewed the app running (online)*
 
-![](/assets/images/ionic/screen-shot-2021-12-22-at-5.06.21-pm-357x730.png)
+![](assets/images/ionic/screen-shot-2021-12-22-at-5.06.21-pm-357x730.png)
 *I saw "Updated version available"*
 
 
@@ -218,10 +218,10 @@ I deployed to Static Website via Azure Storage.
 
 I added the IonItemSliding tag so the user could swipe an item from right to left to reveal a Delete option.
 
-![](/assets/images/ionic/screen-shot-2021-12-23-at-1.00.16-pm-1310x778.png)
+![](assets/images/ionic/screen-shot-2021-12-23-at-1.00.16-pm-1310x778.png)
 *I added the IonItemSliding component*
 
-![](/assets/images/ionic/screen-shot-2021-12-23-at-1.00.42-pm-718x1446.png)
+![](assets/images/ionic/screen-shot-2021-12-23-at-1.00.42-pm-718x1446.png)
 *I swiped the list item right to left*
 
 
@@ -244,55 +244,55 @@ http://localhost:5984/_utils/
 
 The code below shows how I updated the todo application to use PouchDB and CouchDB.
 
-![](/assets/images/ionic/screen-shot-2021-12-27-at-12.16.35-pm-1162x546.png)
+![](assets/images/ionic/screen-shot-2021-12-27-at-12.16.35-pm-1162x546.png)
 *I ran docker run ...*
 
-![](/assets/images/ionic/screen-shot-2021-12-27-at-12.18.39-pm-587x276.png)
+![](assets/images/ionic/screen-shot-2021-12-27-at-12.18.39-pm-587x276.png)
 *I ran curl localhost:5984*
 
-![](/assets/images/ionic/screen-shot-2021-12-27-at-12.20.36-pm-1146x613.png)
+![](assets/images/ionic/screen-shot-2021-12-27-at-12.20.36-pm-1146x613.png)
 *I navigated to _utils*
 
-![](/assets/images/ionic/screen-shot-2021-12-27-at-12.22.03-pm-1145x617.png)
+![](assets/images/ionic/screen-shot-2021-12-27-at-12.22.03-pm-1145x617.png)
 *I enabled CORS*
 
-![](/assets/images/ionic/screen-shot-2021-12-27-at-2.10.40-pm-1352x718.png)
+![](assets/images/ionic/screen-shot-2021-12-27-at-2.10.40-pm-1352x718.png)
 *I noted there were no databases*
 
-![](/assets/images/ionic/screen-shot-2021-12-27-at-2.10.59-pm-1354x722.png)
+![](assets/images/ionic/screen-shot-2021-12-27-at-2.10.59-pm-1354x722.png)
 *I added Task 1 using Safari*
 
-![](/assets/images/ionic/screen-shot-2021-12-27-at-2.11.09-pm-1353x721.png)
+![](assets/images/ionic/screen-shot-2021-12-27-at-2.11.09-pm-1353x721.png)
 *I confirmed Task 1 was added*
 
-![](/assets/images/ionic/screen-shot-2021-12-27-at-2.11.21-pm-1352x721.png)
+![](assets/images/ionic/screen-shot-2021-12-27-at-2.11.21-pm-1352x721.png)
 *I confirmed Task 1 details were replicated to the CouchDB server*
 
-![](/assets/images/ionic/screen-shot-2021-12-27-at-2.11.34-pm-1355x719.png)
+![](assets/images/ionic/screen-shot-2021-12-27-at-2.11.34-pm-1355x719.png)
 *I reviewed All documents*
 
-![](/assets/images/ionic/screen-shot-2021-12-27-at-2.11.44-pm-1354x720.png)
+![](assets/images/ionic/screen-shot-2021-12-27-at-2.11.44-pm-1354x720.png)
 *I reviewed Task 1 details*
 
-![](/assets/images/ionic/screen-shot-2021-12-27-at-2.12.00-pm-1353x719.png)
+![](assets/images/ionic/screen-shot-2021-12-27-at-2.12.00-pm-1353x719.png)
 *I confirmed Task 1 was replicated to Chrome*
 
-![](/assets/images/ionic/screen-shot-2021-12-27-at-2.12.11-pm-1353x719.png)
+![](assets/images/ionic/screen-shot-2021-12-27-at-2.12.11-pm-1353x719.png)
 *I updated Task 1 using Chrome*
 
-![](/assets/images/ionic/screen-shot-2021-12-27-at-2.13.40-pm-1355x718.png)
+![](assets/images/ionic/screen-shot-2021-12-27-at-2.13.40-pm-1355x718.png)
 *I confirmed the Task 1 update was replicated to Safari*
 
-![](/assets/images/ionic/screen-shot-2021-12-27-at-2.16.12-pm-1272x721.png)
+![](assets/images/ionic/screen-shot-2021-12-27-at-2.16.12-pm-1272x721.png)
 *I stopped CouchDB*
 
-![](/assets/images/ionic/screen-shot-2021-12-27-at-2.17.25-pm-1570x898.png)
+![](assets/images/ionic/screen-shot-2021-12-27-at-2.17.25-pm-1570x898.png)
 *I made multiple changes offline using Safari and Chrome*
 
-![](/assets/images/ionic/screen-shot-2021-12-27-at-2.17.54-pm-1267x718.png)
+![](assets/images/ionic/screen-shot-2021-12-27-at-2.17.54-pm-1267x718.png)
 *I started the CouchDB server*
 
-![](/assets/images/ionic/screen-shot-2021-12-27-at-2.18.50-pm-1570x901.png)
+![](assets/images/ionic/screen-shot-2021-12-27-at-2.18.50-pm-1570x901.png)
 *I confirmed multiple updates were replicated to/from Safari/Chrome*
 
 

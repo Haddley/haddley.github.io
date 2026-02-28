@@ -19,7 +19,7 @@ I found that Keras is aware of the MNIST database. I loaded the database using t
 
 I viewed a random image from the MNIST database using the pyplot.imshow() function.
 
-![](/assets/images/machinelearning9/screen-shot-2022-06-17-at-6.38.18-pm-1704x1296.png)
+![](assets/images/machinelearning9/screen-shot-2022-06-17-at-6.38.18-pm-1704x1296.png)
 *I viewed an image from the MNIST database*
 
 
@@ -31,7 +31,7 @@ I converted each image pixel value (0-255) to a float value between 0 and 1.
 
 I converted each label (an integer between 0 and 9) to a matrix of eight zeros and a single one.
 
-![](/assets/images/machinelearning9/screen-shot-2022-06-17-at-6.39.57-pm-1700x846.png)
+![](assets/images/machinelearning9/screen-shot-2022-06-17-at-6.39.57-pm-1700x846.png)
 *I normalized the data*
 
 
@@ -43,7 +43,7 @@ I added a Dense layer with 512 units and 784 (28*28) inputs (there are 784 pixel
 I added a Dense hidden layer with 512 units.
 I added a Dense output layer with 10 units (each unit corresponding to a category value from 0 to 9).
 
-![](/assets/images/machinelearning9/screen-shot-2022-06-17-at-6.41.19-pm-1648x1296.png)
+![](assets/images/machinelearning9/screen-shot-2022-06-17-at-6.41.19-pm-1648x1296.png)
 *I created the model*
 
 
@@ -55,7 +55,7 @@ I used the compile() function to configure the model.
 
 I used the fit() function to train the model.
 
-![](/assets/images/machinelearning9/screen-shot-2022-06-17-at-6.44.24-pm-1718x658.png)
+![](assets/images/machinelearning9/screen-shot-2022-06-17-at-6.44.24-pm-1718x658.png)
 *I compiled and fit the model*
 
 
@@ -63,5 +63,5 @@ I used the fit() function to train the model.
 
 I used the predict() function to "recognize" the test images.
 
-![](/assets/images/machinelearning9/screen-shot-2022-06-17-at-6.45.08-pm-1712x1216.png)
+![](assets/images/machinelearning9/screen-shot-2022-06-17-at-6.45.08-pm-1712x1216.png)
 *predict (recognizing the handwritten digits)*

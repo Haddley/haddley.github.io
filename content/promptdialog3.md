@@ -12,22 +12,22 @@ hidden: "false"
 
 I extended the PromptDialog to render Markdown-formatted LLM responses as HTML. Because LLMs typically return Markdown, displaying the raw text was hard to read. I added a `controladdin` that uses the ShowdownJS library to convert Markdown to HTML and inject it into the page.
 
-![](/assets/images/promptdialog3/screenshot202025-05-2320at205.36.56e280afpm-2136x962.png)
+![](assets/images/promptdialog3/screenshot202025-05-2320at205.36.56e280afpm-2136x962.png)
 *I provided a prompt that would return a Markdown formatted response*
 
-![](/assets/images/promptdialog3/screenshot202025-05-2320at205.48.51e280afpm-2136x951.png)
+![](assets/images/promptdialog3/screenshot202025-05-2320at205.48.51e280afpm-2136x951.png)
 *The Markdown formatted result was hard to read*
 
-![](/assets/images/promptdialog3/screenshot202025-05-2320at207.24.56e280afpm-2136x1196.png)
+![](assets/images/promptdialog3/screenshot202025-05-2320at207.24.56e280afpm-2136x1196.png)
 *I added a controladdin to the PromptDialog*
 
-![](/assets/images/promptdialog3/screenshot202025-05-2320at206.24.52e280afpm-1915x837.png)
+![](assets/images/promptdialog3/screenshot202025-05-2320at206.24.52e280afpm-1915x837.png)
 *The CreateHTMLFromMarkdown JavaScript function is the key move*
 
-![](/assets/images/promptdialog3/screenshot202025-05-2320at207.17.39e280afpm-1472x617.png)
+![](assets/images/promptdialog3/screenshot202025-05-2320at207.17.39e280afpm-1472x617.png)
 *I opened the file in the Sources panel*
 
-![](/assets/images/promptdialog3/screenshot202025-05-2320at207.04.50e280afpm-1476x568.png)
+![](assets/images/promptdialog3/screenshot202025-05-2320at207.04.50e280afpm-1476x568.png)
 *Debugging the JavaScript*
 
 

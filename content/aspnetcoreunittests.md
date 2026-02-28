@@ -14,7 +14,7 @@ Unit tests are automated tests written and run by software developers to ensure 
 
 I wanted to add unit tests that could be run as part of a continuous integration pipeline.
 
-![](/assets/images/aspnetcoreunittests/screen-shot-2023-03-26-at-10.49.22-am-1536x877.png)
+![](assets/images/aspnetcoreunittests/screen-shot-2023-03-26-at-10.49.22-am-1536x877.png)
 *I ran dotnet test*
 
 

@@ -19,7 +19,7 @@ Azure Active Directory supports the Teams Guest user feature.
 
 I added John Doe with email address john@doe.com as a Guest user.
 
-![](/assets/images/azure-active-directory/screen-shot-2021-03-31-at-6.50.37-pm-1314x906.png)
+![](assets/images/azure-active-directory/screen-shot-2021-03-31-at-6.50.37-pm-1314x906.png)
 *I added John Doe as a Guest user.*
 
 
@@ -27,7 +27,7 @@ I added John Doe with email address john@doe.com as a Guest user.
 
 After I added John Doe, his account appeared in the "Members and guests" list.
 
-![](/assets/images/azure-active-directory/screen-shot-2021-03-31-at-6.55.56-pm-1836x833.png)
+![](assets/images/azure-active-directory/screen-shot-2021-03-31-at-6.55.56-pm-1836x833.png)
 *John was added as a guest member of the Team*
 
 
@@ -35,7 +35,7 @@ After I added John Doe, his account appeared in the "Members and guests" list.
 
 In the Azure Portal I could see an external (EXT) Active Directory account had been created for John Doe.
 
-![](/assets/images/azure-active-directory/screen-shot-2021-03-31-at-7.00.35-pm-1660x932.png)
+![](assets/images/azure-active-directory/screen-shot-2021-03-31-at-7.00.35-pm-1660x932.png)
 *I viewed the Azure Active Directory Users*
 
 
@@ -50,16 +50,16 @@ The key step is the creation of an "application registration".
 
 I navigated to the Azure Active Directory service and selected the App registrations page.
 
-![](/assets/images/azure-active-directory/screen-shot-2021-03-31-at-7.28.36-pm-1836x1175.png)
+![](assets/images/azure-active-directory/screen-shot-2021-03-31-at-7.28.36-pm-1836x1175.png)
 *I navigated to Azure Active Directory and selected App registrations*
 
-![](/assets/images/azure-active-directory/screen-shot-2021-03-31-at-7.31.12-pm-456x178.png)
+![](assets/images/azure-active-directory/screen-shot-2021-03-31-at-7.31.12-pm-456x178.png)
 *I clicked the "+ New registration" button*
 
-![](/assets/images/azure-active-directory/screen-shot-2021-03-31-at-9.20.55-pm-1730x1470.png)
+![](assets/images/azure-active-directory/screen-shot-2021-03-31-at-9.20.55-pm-1730x1470.png)
 *I entered the display name "who am i" and the redirect URI.*
 
-![](/assets/images/azure-active-directory/screen-shot-2021-03-31-at-9.25.13-pm-1692x818.png)
+![](assets/images/azure-active-directory/screen-shot-2021-03-31-at-9.25.13-pm-1692x818.png)
 *I created a client secret*
 
 
@@ -74,19 +74,19 @@ Client secret -~nGgWS3F7y~-o2etNGc0BW_ik_*******
 
 I tested the who-am-i web application by navigating to http://localhost:3000
 
-![](/assets/images/azure-active-directory/screen-shot-2021-03-31-at-9.30.32-pm-1050x226.png)
+![](assets/images/azure-active-directory/screen-shot-2021-03-31-at-9.30.32-pm-1050x226.png)
 *I navigated to http://localhost:3000*
 
-![](/assets/images/azure-active-directory/screen-shot-2021-03-31-at-9.30.53-pm-1836x977.png)
+![](assets/images/azure-active-directory/screen-shot-2021-03-31-at-9.30.53-pm-1836x977.png)
 *I was redirected to the Azure Active Directory Sign in page.*
 
-![](/assets/images/azure-active-directory/screen-shot-2021-03-31-at-9.31.03-pm-1836x982.png)
+![](assets/images/azure-active-directory/screen-shot-2021-03-31-at-9.31.03-pm-1836x982.png)
 *After I entered my credentials...*
 
-![](/assets/images/azure-active-directory/screen-shot-2021-03-31-at-9.31.24-pm-1836x983.png)
+![](assets/images/azure-active-directory/screen-shot-2021-03-31-at-9.31.24-pm-1836x983.png)
 *...I was asked to consent to passing my details to the "who am i" application.*
 
-![](/assets/images/azure-active-directory/screen-shot-2021-03-31-at-9.31.40-pm-1836x977.png)
+![](assets/images/azure-active-directory/screen-shot-2021-03-31-at-9.31.40-pm-1836x977.png)
 *I was redirected to "/redirect" and my name was displayed*
 
 

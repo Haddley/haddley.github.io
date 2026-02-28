@@ -13,7 +13,7 @@ I configured client applications to connect to services via a gateway rather tha
 
 A client might be a web page running in a browser or a mobile phone app.
 
-![](/assets/images/apigateway/reverse-proxy-528x204.png)
+![](assets/images/apigateway/reverse-proxy-528x204.png)
 
 The diagram above demonstrates how an API gateway sits between a client and a collection of services.
 

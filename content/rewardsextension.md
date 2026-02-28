@@ -12,7 +12,7 @@ image: "/assets/images/rewardsextension/dynamics365-color.svg"
 
 I created a Business Central Extension that allows users to create a list of Rewards and associate them with Business Central Customers.
 
-![](/assets/images/rewardsextension/20230830image1-1021x770.png)
+![](assets/images/rewardsextension/20230830image1-1021x770.png)
 *I added the idRange needed for the Rewards extension*
 
 
@@ -20,22 +20,22 @@ I created a Business Central Extension that allows users to create a list of Rew
 
 I created a Rewards.al file. In the Rewards.al file I added code to created a Business Central "Reward" table, a Business Central "Reward Card" page and a Business Central "Reward List" page.
 
-![](/assets/images/rewardsextension/20230830image2-1443x1068.png)
+![](assets/images/rewardsextension/20230830image2-1443x1068.png)
 *I navigated to http://bcserver/BC/?tenant=default&page=50102 to view the Reward table using the Reward List page*
 
-![](/assets/images/rewardsextension/20230830image3-1288x520.png)
+![](assets/images/rewardsextension/20230830image3-1288x520.png)
 *I added a Reward item*
 
-![](/assets/images/rewardsextension/20230830image4-1287x523.png)
+![](assets/images/rewardsextension/20230830image4-1287x523.png)
 *The reward item was stored in the Reward Table*
 
-![](/assets/images/rewardsextension/20230830image10-1415x1024.png)
+![](assets/images/rewardsextension/20230830image10-1415x1024.png)
 *I added the Minimum Purchase field to the Reward List page*
 
-![](/assets/images/rewardsextension/20230830image11-1416x1023.png)
+![](assets/images/rewardsextension/20230830image11-1416x1023.png)
 *I added the Minimum Purchase field to the Reward Card page*
 
-![](/assets/images/rewardsextension/20230830image15-1390x1038.png)
+![](assets/images/rewardsextension/20230830image15-1390x1038.png)
 *I added a Customer Ext (table extension) and a Customer Card Ext (card extension) to associate a Reward value with an Business Central Customer*
 
 
@@ -43,7 +43,7 @@ I created a Rewards.al file. In the Rewards.al file I added code to created a Bu
 
 I used [Meta's codellama language model](/posts/lmstudio/) to create the AL code documentation.
 
-![](/assets/images/rewardsextension/screenshot-2023-08-30-at-1.28.36-pm-1466x1340.png)
+![](assets/images/rewardsextension/screenshot-2023-08-30-at-1.28.36-pm-1466x1340.png)
 *LM Studio code llama instruct 7B*
 
 

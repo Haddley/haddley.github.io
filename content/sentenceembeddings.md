@@ -44,13 +44,13 @@ https://huggingface.co/tasks/sentence-similarity
 
 [text-classification,token-classification,question-answering,fill-mask,summarization,translation,text2text-generation,text-generation,zero-shot-classification,automatic-speech-recognition,image-to-text,image-classification,image-segmentation,zero-shot-image-classification,object-detection,feature-extraction]
 
-![](/assets/images/sentenceembeddings/screen-shot-2023-07-19-at-7.41.32-pm-1490x894.png)
+![](assets/images/sentenceembeddings/screen-shot-2023-07-19-at-7.41.32-pm-1490x894.png)
 *Similar*
 
-![](/assets/images/sentenceembeddings/screen-shot-2023-07-19-at-7.42.03-pm-1482x894.png)
+![](assets/images/sentenceembeddings/screen-shot-2023-07-19-at-7.42.03-pm-1482x894.png)
 *Different*
 
-![](/assets/images/sentenceembeddings/screen-shot-2023-07-19-at-7.42.29-pm-1488x894.png)
+![](assets/images/sentenceembeddings/screen-shot-2023-07-19-at-7.42.29-pm-1488x894.png)
 *Different*
 
 

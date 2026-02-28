@@ -30,61 +30,61 @@ Here's an example implementation of the above steps:
 
 ...
 
-![](/assets/images/ticktacktoe/screen-shot-2023-05-09-at-2.56.33-pm-1802x844.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-09-at-2.56.33-pm-1802x844.png)
 *project name*
 
-![](/assets/images/ticktacktoe/screen-shot-2023-05-09-at-2.57.24-pm-1804x874.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-09-at-2.57.24-pm-1804x874.png)
 *google analytics?*
 
-![](/assets/images/ticktacktoe/screen-shot-2023-05-09-at-2.58.10-pm-1690x910.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-09-at-2.58.10-pm-1690x910.png)
 *project is ready*
 
-![](/assets/images/ticktacktoe/screen-shot-2023-05-09-at-3.03.30-pm-1836x913.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-09-at-3.03.30-pm-1836x913.png)
 *I added a web app*
 
-![](/assets/images/ticktacktoe/screen-shot-2023-05-09-at-3.04.16-pm-1836x977.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-09-at-3.04.16-pm-1836x977.png)
 *sdk setup*
 
-![](/assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.17.39-am-1836x567.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.17.39-am-1836x567.png)
 *I added a Realtime Database*
 
-![](/assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.18.28-am-1836x530.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.18.28-am-1836x530.png)
 *I created a database*
 
-![](/assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.19.05-am-1836x634.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.19.05-am-1836x634.png)
 *database location*
 
-![](/assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.19.16-am-1836x783.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.19.16-am-1836x783.png)
 *security rules (authentication is not enabled yet)*
 
-![](/assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.19.37-am-1836x571.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.19.37-am-1836x571.png)
 *Realtime Database is empty*
 
-![](/assets/images/ticktacktoe/screen-shot-2023-05-10-at-8.57.48-am-1366x828.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-8.57.48-am-1366x828.png)
 *example implementation*
 
-![](/assets/images/ticktacktoe/screen-shot-2023-05-09-at-5.41.12-pm-1142x274.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-09-at-5.41.12-pm-1142x274.png)
 *I created a folder*
 
-![](/assets/images/ticktacktoe/screen-shot-2023-05-10-at-12.00.13-pm-1836x643.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-12.00.13-pm-1836x643.png)
 *I opened the project with Live Server*
 
-![](/assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.38.28-am-1836x1189.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.38.28-am-1836x1189.png)
 *code running locally*
 
-![](/assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.41.28-am-1836x1156.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.41.28-am-1836x1156.png)
 *firebase init*
 
-![](/assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.42.33-am-1836x465.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.42.33-am-1836x465.png)
 *firebase deploy*
 
-![](/assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.44.06-am-1598x1100.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.44.06-am-1598x1100.png)
 *The public folder was uploaded to Firebase*
 
-![](/assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.45.53-am-1460x542.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.45.53-am-1460x542.png)
 *I copied the HTML, CSS and JavaScript files to the public folder*
 
-![](/assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.46.35-am-1836x1189.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.46.35-am-1836x1189.png)
 *The code was deployed to Firebase (https://haddley-tick-tack-toe.web.app/)*
 
 
@@ -98,16 +98,16 @@ Here's an updated version of the makeMove function that incorporates user authen
 
 ...
 
-![](/assets/images/ticktacktoe/screen-shot-2023-05-10-at-12.00.57-pm-1836x625.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-12.00.57-pm-1836x625.png)
 *dashboard*
 
-![](/assets/images/ticktacktoe/screen-shot-2023-05-10-at-12.01.09-pm-1836x450.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-12.01.09-pm-1836x450.png)
 *authentication*
 
-![](/assets/images/ticktacktoe/screen-shot-2023-05-10-at-12.01.20-pm-1836x764.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-12.01.20-pm-1836x764.png)
 *Anonymous*
 
-![](/assets/images/ticktacktoe/screen-shot-2023-05-10-at-12.01.30-pm-1836x729.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-12.01.30-pm-1836x729.png)
 *Anonymous Enabled*
 
 
@@ -131,13 +131,13 @@ This code initializes and sets up a tic-tac-toe game using Firebase as the backe
 
 Overall, this code provides the functionality for playing a tic-tac-toe game in a web browser using Firebase for real-time updates and synchronization of the game state between multiple players.
 
-![](/assets/images/ticktacktoe/screen-shot-2023-05-10-at-3.06.41-pm-1836x1175.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-3.06.41-pm-1836x1175.png)
 *updated code*
 
-![](/assets/images/ticktacktoe/screen-shot-2023-05-10-at-3.10.52-pm-1452x540.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-3.10.52-pm-1452x540.png)
 *firebase deploy*
 
-![](/assets/images/ticktacktoe/screen-shot-2023-05-10-at-3.14.17-pm-1836x1248.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-3.14.17-pm-1836x1248.png)
 *deployed*
 
 

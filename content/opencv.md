@@ -20,7 +20,7 @@ $ python
 >>> import cv2
 >>> print(cv2.__version__)
 
-![](/assets/images/opencv/screen-shot-2023-07-24-at-11.00.04-am-1134x740.png)
+![](assets/images/opencv/screen-shot-2023-07-24-at-11.00.04-am-1134x740.png)
 *sudo apt install python3-opencv*
 
 
@@ -54,7 +54,7 @@ $ python TFLite_detection_video.py --modeldir=Sample_TFLite_model --video=test.m
 
 $ python TFLite_detection_video.py --modeldir=Sample_TFLite_model --video=dog.mp4
 
-![](/assets/images/opencv/screen-shot-2023-07-25-at-11.58.01-am-1446x928.png)
+![](assets/images/opencv/screen-shot-2023-07-25-at-11.58.01-am-1446x928.png)
 *python TFLite_detection_video.py --modeldir=Sample_TFLite_model --video=dog.mp4*
 
 
@@ -64,16 +64,16 @@ The TFLite_detection_webcam.py program worked (with line self.stream = cv2.Video
 
 $ sudo raspi-config
 
-![](/assets/images/opencv/screen-shot-2023-07-25-at-1.42.15-pm-1434x928.png)
+![](assets/images/opencv/screen-shot-2023-07-25-at-1.42.15-pm-1434x928.png)
 *TFLite_detection_webcam.py*
 
-![](/assets/images/opencv/20230725-img-3382-1836x1377.jpg)
+![](assets/images/opencv/20230725-img-3382-1836x1377.jpg)
 *Logitech QuickCam for Notebooks (from Goodwill)*
 
-![](/assets/images/opencv/screen-shot-2023-07-27-at-12.55.11-pm-1441x924.png)
+![](assets/images/opencv/screen-shot-2023-07-27-at-12.55.11-pm-1441x924.png)
 *Performance improvement from 5.17 frames per second to 28.59 frames per second*
 
-![](/assets/images/opencv/20230727-img-3458-1836x1377.jpg)
+![](assets/images/opencv/20230727-img-3458-1836x1377.jpg)
 *Coral USB Accelerator*
 
 

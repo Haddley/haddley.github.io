@@ -162,7 +162,7 @@ $ node .
 
 I used okta, a service that simplifies identity management.
 
-![](/assets/images/mssqlserver3/screen-shot-2021-04-17-at-8.02.48-am-1836x926.png)
+![](assets/images/mssqlserver3/screen-shot-2021-04-17-at-8.02.48-am-1836x926.png)
 *esp8266*
 
 
@@ -170,13 +170,13 @@ I used okta, a service that simplifies identity management.
 
 https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app
 
-![](/assets/images/mssqlserver3/screen-shot-2021-04-17-at-8.54.33-am-1130x744.png)
+![](assets/images/mssqlserver3/screen-shot-2021-04-17-at-8.54.33-am-1130x744.png)
 *esp8266*
 
-![](/assets/images/mssqlserver3/screen-shot-2021-04-17-at-8.56.43-am-1678x964.png)
+![](assets/images/mssqlserver3/screen-shot-2021-04-17-at-8.56.43-am-1678x964.png)
 *esp8266*
 
-![](/assets/images/mssqlserver3/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
+![](assets/images/mssqlserver3/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
 *esp8266*
 
 
@@ -184,13 +184,13 @@ https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-regis
 
 https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/Quickstart/quickStartType//sourceType/Microsoft_AAD_IAM/appId/c03242fe-84f5-4069-9507-3667965ba3af/objectId/3305d263-36f4-4639-899d-e5d34fd020df/isMSAApp//defaultBlade/Overview/appSignInAudience/AzureADandPersonalMicrosoftAccount/servicePrincipalCreated/true
 
-![](/assets/images/mssqlserver3/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
+![](assets/images/mssqlserver3/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
 *esp8266*
 
-![](/assets/images/mssqlserver3/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
+![](assets/images/mssqlserver3/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
 *esp8266*
 
-![](/assets/images/mssqlserver3/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
+![](assets/images/mssqlserver3/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
 *esp8266*
 
 
@@ -205,7 +205,7 @@ NAMING CONVENTION FOR TABLE AND TABLE COLUMN NAMES (SQL Server or JavaScript fri
 
 1:26:50
 
-![](/assets/images/mssqlserver3/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
+![](assets/images/mssqlserver3/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
 *esp8266*
 
 

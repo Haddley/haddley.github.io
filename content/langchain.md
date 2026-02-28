@@ -22,7 +22,7 @@ Streamlit is an open-source Python library used to create web applications for d
 
 I used streamlit to create the application's user interface.
 
-![](/assets/images/langchain/langchain-capture-0004-1473x711.png)
+![](assets/images/langchain/langchain-capture-0004-1473x711.png)
 *I created a hello world streamlit app*
 
 
@@ -32,10 +32,10 @@ I updated my hello world application to call OpenAI's API.
 
 I had to request a secret API key.
 
-![](/assets/images/langchain/screen-shot-2023-07-20-at-10.13.26-am-1836x1013.png)
+![](assets/images/langchain/screen-shot-2023-07-20-at-10.13.26-am-1836x1013.png)
 *I requested a secret key*
 
-![](/assets/images/langchain/langchain-capture-0005-1476x710.png)
+![](assets/images/langchain/langchain-capture-0005-1476x710.png)
 *I used LangChain to call OpenAI's API.*
 
 
@@ -45,7 +45,7 @@ I used LangChain to return the text found on each page of a sample medical repor
 
 [https://www.med.unc.edu/medclerk/wp-content/uploads/sites/877/2018/10/hp4.pdf](https://www.med.unc.edu/medclerk/wp-content/uploads/sites/877/2018/10/hp4.pdf)
 
-![](/assets/images/langchain/screen-shot-2023-07-22-at-6.54.13-am-1836x1001.png)
+![](assets/images/langchain/screen-shot-2023-07-22-at-6.54.13-am-1836x1001.png)
 *I reviewed the hp4.pdf medical report*
 
 
@@ -55,13 +55,13 @@ To improve performance and reduce costs I pre-processed the pdf file and stored 
 
 I created a Jupyter Notebook to keep track of the steps I followed.
 
-![](/assets/images/langchain/screen-shot-2023-07-21-at-5.13.17-pm-1142x740.png)
+![](assets/images/langchain/screen-shot-2023-07-21-at-5.13.17-pm-1142x740.png)
 *I ran jupyter-notebook locally*
 
-![](/assets/images/langchain/screen-shot-2023-07-21-at-7.54.08-pm-1536x982.png)
+![](assets/images/langchain/screen-shot-2023-07-21-at-7.54.08-pm-1536x982.png)
 *I loaded pages from the medical report.*
 
-![](/assets/images/langchain/screen-shot-2023-07-21-at-7.57.22-pm-1536x997.png)
+![](assets/images/langchain/screen-shot-2023-07-21-at-7.57.22-pm-1536x997.png)
 *I broke the pages into paragraphs (texts).*
 
 
@@ -69,22 +69,22 @@ I created a Jupyter Notebook to keep track of the steps I followed.
 
 I used Chroma to create an [embeddings](/posts/sentencesimilarity/) vector store and saved the store locally.
 
-![](/assets/images/langchain/screen-shot-2023-07-21-at-7.59.26-pm-1536x1033.png)
+![](assets/images/langchain/screen-shot-2023-07-21-at-7.59.26-pm-1536x1033.png)
 *I used OpenAI's API to generate the embeddings*
 
-![](/assets/images/langchain/screen-shot-2023-07-21-at-8.03.05-pm-1536x842.png)
+![](assets/images/langchain/screen-shot-2023-07-21-at-8.03.05-pm-1536x842.png)
 *I converted the query 'Does the patient smoke?' to an embedding and compared the result with the embeddings in the vector store.*
 
-![](/assets/images/langchain/screen-shot-2023-07-21-at-8.05.23-pm-1536x784.png)
+![](assets/images/langchain/screen-shot-2023-07-21-at-8.05.23-pm-1536x784.png)
 *I ensured that the embeddings vector store could be loaded from the local folder.*
 
-![](/assets/images/langchain/screen-shot-2023-07-21-at-8.16.41-pm-1536x867.png)
+![](assets/images/langchain/screen-shot-2023-07-21-at-8.16.41-pm-1536x867.png)
 *I located the most similar paragraphs and sent those (see Context Injection) and the query to OpenAI's servers.*
 
-![](/assets/images/langchain/screen-shot-2023-07-21-at-8.19.11-pm-1536x982.png)
+![](assets/images/langchain/screen-shot-2023-07-21-at-8.19.11-pm-1536x982.png)
 *I reviewed the streamlit code*
 
-![](/assets/images/langchain/screen-shot-2023-07-21-at-8.21.56-pm-1536x866.png)
+![](assets/images/langchain/screen-shot-2023-07-21-at-8.21.56-pm-1536x866.png)
 *I reviewed the finished application*
 
 

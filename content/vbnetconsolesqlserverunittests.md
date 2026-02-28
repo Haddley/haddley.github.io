@@ -12,31 +12,31 @@ image: "/assets/images/vbnetconsolesqlserverunittests/net-logo.svg"
 
 I added unit tests to a Visual Basic Console App that fetched data from a database using SqlConnection, SqlCommand, SqlDataAdapter and DataTable classes. Unit tests run independent of a running database server.
 
-![](/assets/images/vbnetconsolesqlserverunittests/capture-unit-test-aaa-0000001-890x625.png)
+![](assets/images/vbnetconsolesqlserverunittests/capture-unit-test-aaa-0000001-890x625.png)
 *I created a new project (in a new solution)*
 
-![](/assets/images/vbnetconsolesqlserverunittests/capture-unit-test-aaa-0000002-889x626.png)
+![](assets/images/vbnetconsolesqlserverunittests/capture-unit-test-aaa-0000002-889x626.png)
 *I selected the .NET Framework (old school)*
 
-![](/assets/images/vbnetconsolesqlserverunittests/capture-unit-test-aaa-0000003-890x624.png)
+![](assets/images/vbnetconsolesqlserverunittests/capture-unit-test-aaa-0000003-890x624.png)
 *I selected .NET Framework 4.7.2*
 
-![](/assets/images/vbnetconsolesqlserverunittests/capture-unit-test-aaa-0000004-1325x674.png)
+![](assets/images/vbnetconsolesqlserverunittests/capture-unit-test-aaa-0000004-1325x674.png)
 *I reviewed the Main function*
 
-![](/assets/images/vbnetconsolesqlserverunittests/capture-unit-test-aaa-0000005-1363x382.png)
+![](assets/images/vbnetconsolesqlserverunittests/capture-unit-test-aaa-0000005-1363x382.png)
 *I added Hello World code*
 
-![](/assets/images/vbnetconsolesqlserverunittests/capture-unit-test-aaa-0000006-1359x567.png)
+![](assets/images/vbnetconsolesqlserverunittests/capture-unit-test-aaa-0000006-1359x567.png)
 *I updated the Console Application to connect to a database and display the contents of a Tasks table*
 
-![](/assets/images/vbnetconsolesqlserverunittests/capture-unit-test-aaa-0000017-1361x656.png)
+![](assets/images/vbnetconsolesqlserverunittests/capture-unit-test-aaa-0000017-1361x656.png)
 *I added a second project to the solution. I selected the Unit Test Project (.NET Framework) template*
 
-![](/assets/images/vbnetconsolesqlserverunittests/capture-unit-test-aaa-0000018-1362x683.png)
+![](assets/images/vbnetconsolesqlserverunittests/capture-unit-test-aaa-0000018-1362x683.png)
 *I accepted the defaults*
 
-![](/assets/images/vbnetconsolesqlserverunittests/capture-unit-test-aaa-0000019-1360x250.png)
+![](assets/images/vbnetconsolesqlserverunittests/capture-unit-test-aaa-0000019-1360x250.png)
 *I added a reference to the Test project*
 
 
@@ -59,7 +59,7 @@ Here's an example of how you can refactor the code and write unit tests for the 
 
 ...
 
-![](/assets/images/vbnetconsolesqlserverunittests/database-unit-test-1366x728.png)
+![](assets/images/vbnetconsolesqlserverunittests/database-unit-test-1366x728.png)
 *I ran the database unit tests*
 
 
@@ -73,10 +73,10 @@ I extracted the WriteDataTable code to create a function that was easier to crea
 
 I wrote the UnitTestProject2 tests with the help of ChatGPT.
 
-![](/assets/images/vbnetconsolesqlserverunittests/capture-unit-test-aaa-0000020-1098x244.png)
+![](assets/images/vbnetconsolesqlserverunittests/capture-unit-test-aaa-0000020-1098x244.png)
 *I extracted the WriteDataTable function, which accepts a DataTable as input*
 
-![](/assets/images/vbnetconsolesqlserverunittests/mixed-unit-tests-1366x728.png)
+![](assets/images/vbnetconsolesqlserverunittests/mixed-unit-tests-1366x728.png)
 *I ran the unit tests*
 
 

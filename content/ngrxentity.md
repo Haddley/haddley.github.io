@@ -17,43 +17,43 @@ I used json-server to create a simple api
 
 ```
 
-![](/assets/images/ngrxentity/screen-shot-2023-02-19-at-3.21.40-pm-1536x284.png)
+![](assets/images/ngrxentity/screen-shot-2023-02-19-at-3.21.40-pm-1536x284.png)
 *npm i json-server*
 
-![](/assets/images/ngrxentity/screen-shot-2023-02-19-at-3.22.53-pm-1536x503.png)
+![](assets/images/ngrxentity/screen-shot-2023-02-19-at-3.22.53-pm-1536x503.png)
 *Github co-pilot suggested an addition to the scripts section of package.json*
 
-![](/assets/images/ngrxentity/screen-shot-2023-02-19-at-3.26.07-pm-1536x676.png)
+![](assets/images/ngrxentity/screen-shot-2023-02-19-at-3.26.07-pm-1536x676.png)
 *I created a db.json in the project's root folder*
 
-![](/assets/images/ngrxentity/screen-shot-2023-02-19-at-3.27.45-pm-1536x717.png)
+![](assets/images/ngrxentity/screen-shot-2023-02-19-at-3.27.45-pm-1536x717.png)
 *I started the server by running npm run server*
 
-![](/assets/images/ngrxentity/screen-shot-2023-02-19-at-3.28.45-pm-1420x744.png)
+![](assets/images/ngrxentity/screen-shot-2023-02-19-at-3.28.45-pm-1420x744.png)
 *I used chrome to request details of all posts.*
 
 
 ## Accessing the server
 
-![](/assets/images/ngrxentity/screen-shot-2023-02-19-at-4.11.54-pm-1536x433.png)
+![](assets/images/ngrxentity/screen-shot-2023-02-19-at-4.11.54-pm-1536x433.png)
 *ng generate service services/post*
 
-![](/assets/images/ngrxentity/screen-shot-2023-02-19-at-4.13.08-pm-1536x913.png)
+![](assets/images/ngrxentity/screen-shot-2023-02-19-at-4.13.08-pm-1536x913.png)
 *ng test*
 
-![](/assets/images/ngrxentity/screen-shot-2023-02-19-at-4.16.26-pm-1536x356.png)
+![](assets/images/ngrxentity/screen-shot-2023-02-19-at-4.16.26-pm-1536x356.png)
 *I used `providedIn: 'root'` so I didn't need to add the service to app.module.ts*
 
-![](/assets/images/ngrxentity/screen-shot-2023-02-19-at-4.21.24-pm-1536x574.png)
+![](assets/images/ngrxentity/screen-shot-2023-02-19-at-4.21.24-pm-1536x574.png)
 *GitHub Copilot suggested creating a post.model file*
 
-![](/assets/images/ngrxentity/screen-shot-2023-02-19-at-4.23.22-pm-1536x351.png)
+![](assets/images/ngrxentity/screen-shot-2023-02-19-at-4.23.22-pm-1536x351.png)
 *GitHub Copilot suggested including a body field*
 
-![](/assets/images/ngrxentity/screen-shot-2023-02-19-at-5.21.38-pm-1536x615.png)
+![](assets/images/ngrxentity/screen-shot-2023-02-19-at-5.21.38-pm-1536x615.png)
 *GitHub Copilot suggested including a deletePost method*
 
-![](/assets/images/ngrxentity/screen-shot-2023-02-19-at-6.33.32-pm-1536x552.png)
+![](assets/images/ngrxentity/screen-shot-2023-02-19-at-6.33.32-pm-1536x552.png)
 *imports HttpClientModule*
 
 
@@ -61,13 +61,13 @@ I used json-server to create a simple api
 
 Initially I wrote tests that called the running json-server.
 
-![](/assets/images/ngrxentity/screen-shot-2023-02-20-at-10.33.14-am-1536x746.png)
+![](assets/images/ngrxentity/screen-shot-2023-02-20-at-10.33.14-am-1536x746.png)
 *Executed 6 of 6 success*
 
-![](/assets/images/ngrxentity/screen-shot-2023-02-20-at-10.32.47-am-1536x849.png)
+![](assets/images/ngrxentity/screen-shot-2023-02-20-at-10.32.47-am-1536x849.png)
 *Karma results in a web page*
 
-![](/assets/images/ngrxentity/screen-shot-2023-02-20-at-10.33.29-am-1536x846.png)
+![](assets/images/ngrxentity/screen-shot-2023-02-20-at-10.33.29-am-1536x846.png)
 *The json-server shows the POST, DELETE and GET requests*
 
 
@@ -81,22 +81,22 @@ I installed jasmine-auto-spies.
 
 I updated the tests to use the mock.
 
-![](/assets/images/ngrxentity/screen-shot-2023-02-20-at-10.56.26-am-1536x141.png)
+![](assets/images/ngrxentity/screen-shot-2023-02-20-at-10.56.26-am-1536x141.png)
 *npm i --include=dev jasmine-auto-spies*
 
-![](/assets/images/ngrxentity/screen-shot-2023-02-20-at-11.32.27-am-1536x782.png)
+![](assets/images/ngrxentity/screen-shot-2023-02-20-at-11.32.27-am-1536x782.png)
 *Executed 6 of 6 success*
 
-![](/assets/images/ngrxentity/screen-shot-2023-02-20-at-11.32.46-am-1536x486.png)
+![](assets/images/ngrxentity/screen-shot-2023-02-20-at-11.32.46-am-1536x486.png)
 *Karma results in a web page*
 
 
 I added NgRx Entity, which provides an API to manipulate and query entity collections. It reduces boilerplate for reducers that manage a collection of models and provides performant CRUD operations with type-safe adapters.
 
-![](/assets/images/ngrxentity/screen-shot-2023-02-20-at-3.08.35-pm-1536x498.png)
+![](assets/images/ngrxentity/screen-shot-2023-02-20-at-3.08.35-pm-1536x498.png)
 *Load Posts Success*
 
-![](/assets/images/ngrxentity/screen-shot-2023-02-20-at-3.09.38-pm-1536x476.png)
+![](assets/images/ngrxentity/screen-shot-2023-02-20-at-3.09.38-pm-1536x476.png)
 *Load Posts Failure (service not running)*
 
 

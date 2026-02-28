@@ -27,22 +27,22 @@ Set up Azure resources - Container Registry + App Service
 Add GitHub secrets - AZURE_CLIENT_ID, AZURE_TENANT_ID, AZURE_SUBSCRIPTION_ID
 ```
 
-![](/assets/images/vibecoding4/Screenshot 2026-01-30 at 11.10.42 AM.png)
+![](assets/images/vibecoding4/Screenshot 2026-01-30 at 11.10.42 AM.png)
 *docker build -t ai-colorizer .*
 
-![](/assets/images/vibecoding4/Screenshot 2026-01-30 at 11.12.01 AM.png)
+![](assets/images/vibecoding4/Screenshot 2026-01-30 at 11.12.01 AM.png)
 *docker run -d -p 8080:8080 ai-colorizer*
 
-![](/assets/images/vibecoding4/Screenshot 2026-01-30 at 11.12.24 AM.png)
+![](assets/images/vibecoding4/Screenshot 2026-01-30 at 11.12.24 AM.png)
 *I reviewed the docker desktop Images*
 
-![](/assets/images/vibecoding4/Screenshot 2026-01-30 at 11.12.32 AM.png)
+![](assets/images/vibecoding4/Screenshot 2026-01-30 at 11.12.32 AM.png)
 *I reviewed the docker desktop Containers*
 
-![](/assets/images/vibecoding4/Screenshot 2026-01-30 at 11.12.47 AM.png)
+![](assets/images/vibecoding4/Screenshot 2026-01-30 at 11.12.47 AM.png)
 *I reviewed the container log*
 
-![](/assets/images/vibecoding4/Screenshot 2026-01-30 at 11.13.29 AM.png)
+![](assets/images/vibecoding4/Screenshot 2026-01-30 at 11.13.29 AM.png)
 *http://127.0.0.1:8080/*
 
 ## References

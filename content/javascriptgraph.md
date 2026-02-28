@@ -19,31 +19,31 @@ An OAuth application requires an "identity provider".
 
 In this case the identity provider is [Azure Active Directory](/posts/azure-active-directory/).
 
-![](/assets/images/javascriptgraph/screen-shot-2022-05-27-at-2.21.09-pm-1836x1288.png)
+![](assets/images/javascriptgraph/screen-shot-2022-05-27-at-2.21.09-pm-1836x1288.png)
 *I navigated to Azure Portal and selected Azure Active Directory*
 
-![](/assets/images/javascriptgraph/screen-shot-2022-05-27-at-2.21.40-pm-1836x1278.png)
+![](assets/images/javascriptgraph/screen-shot-2022-05-27-at-2.21.40-pm-1836x1278.png)
 *I selected the "App registrations" link*
 
-![](/assets/images/javascriptgraph/screen-shot-2022-05-27-at-2.22.04-pm-1836x1285.png)
+![](assets/images/javascriptgraph/screen-shot-2022-05-27-at-2.22.04-pm-1836x1285.png)
 *I selected the "New registration" link*
 
-![](/assets/images/javascriptgraph/screen-shot-2022-05-27-at-2.23.43-pm-1836x1285.png)
+![](assets/images/javascriptgraph/screen-shot-2022-05-27-at-2.23.43-pm-1836x1285.png)
 *I entered the name of the console application and selected "Register"*
 
-![](/assets/images/javascriptgraph/screen-shot-2022-05-27-at-2.24.32-pm-1836x1276.png)
+![](assets/images/javascriptgraph/screen-shot-2022-05-27-at-2.24.32-pm-1836x1276.png)
 *I made a note of the "Application (client) ID" and the "Directory (tenant) ID"*
 
-![](/assets/images/javascriptgraph/screen-shot-2022-05-27-at-2.29.06-pm-1836x969.png)
+![](assets/images/javascriptgraph/screen-shot-2022-05-27-at-2.29.06-pm-1836x969.png)
 *I created a minimal node project*
 
-![](/assets/images/javascriptgraph/screen-shot-2022-05-27-at-2.30.07-pm-1836x95.png)
+![](assets/images/javascriptgraph/screen-shot-2022-05-27-at-2.30.07-pm-1836x95.png)
 *I added @azure/identity, @microsoft/microsoft-graph-client, isomorphic-fetch and readline-sync dependencies*
 
-![](/assets/images/javascriptgraph/screen-shot-2022-05-27-at-2.33.22-pm-1836x968.png)
+![](assets/images/javascriptgraph/screen-shot-2022-05-27-at-2.33.22-pm-1836x968.png)
 *I created an appSettings.js file including the "Application (client) ID" and the "Directory (tenant) ID" values provided in the Application registration page. I included the required Microsoft Graph permissions (the "graphUserScopes").*
 
-![](/assets/images/javascriptgraph/screen-shot-2022-05-27-at-2.42.00-pm-1836x968.png)
+![](assets/images/javascriptgraph/screen-shot-2022-05-27-at-2.42.00-pm-1836x968.png)
 *I ran the console application*
 
 
@@ -57,10 +57,10 @@ The graphHelper code creates a TokenCredentialAuthenticationProvider object and 
 
 The client object is then used to make calls as shown in the [Graph Explorer](/posts/microsoftgraph/) "Code snippets" tab.
 
-![](/assets/images/javascriptgraph/screen-shot-2022-05-28-at-11.08.04-am-1208x572.png)
+![](assets/images/javascriptgraph/screen-shot-2022-05-28-at-11.08.04-am-1208x572.png)
 *I reviewed GetUserSnippet from the application*
 
-![](/assets/images/javascriptgraph/screen-shot-2022-05-27-at-2.47.11-pm-1836x943.png)
+![](assets/images/javascriptgraph/screen-shot-2022-05-27-at-2.47.11-pm-1836x943.png)
 *I reviewed the Graph Explorer Code snippet*
 
 

@@ -15,10 +15,10 @@ The llama.cpp project provides Large Language Models.
 
 The llama-cpp-python module allowed me to access the llama.cpp model from Python.
 
-![](/assets/images/llamacorp/screenshot-2023-08-04-at-7.50.41-am-1746x1230.png)
+![](assets/images/llamacorp/screenshot-2023-08-04-at-7.50.41-am-1746x1230.png)
 *I tested with "What is the Capital of England?" and reviewed the first response. I ran streamlit run app1a.py*
 
-![](/assets/images/llamacorp/screenshot-2023-08-04-at-8.17.37-am-1734x1226.png)
+![](assets/images/llamacorp/screenshot-2023-08-04-at-8.17.37-am-1734x1226.png)
 *What is the Capital of England? Second response.*
 
 
@@ -35,7 +35,7 @@ $ pip install -r requirements.txt
 
 I updated my [LangChain to create a medical report application](/posts/langchain/) to work with Llama.cpp
 
-![](/assets/images/llamacorp/screenshot-2023-08-08-at-1.42.34-pm-1836x923.png)
+![](assets/images/llamacorp/screenshot-2023-08-08-at-1.42.34-pm-1836x923.png)
 *I ran streamlit run app2a.py*
 
 
@@ -43,13 +43,13 @@ I updated my [LangChain to create a medical report application](/posts/langchain
 
 I updated a Llama2 Chat code sample to create a "Pirate Jack" application.
 
-![](/assets/images/llamacorp/screenshot-2023-08-08-at-1.31.43-pm-1836x1395.png)
+![](assets/images/llamacorp/screenshot-2023-08-08-at-1.31.43-pm-1836x1395.png)
 *I tested with "If I have 17 Doubloons and spend 6 on a Pistol how many would I have left?" (using M2 Apple Silicon GPU). I ran streamlit run app3a.py*
 
-![](/assets/images/llamacorp/screenshot-2023-08-08-at-1.33.17-pm-1836x669.png)
+![](assets/images/llamacorp/screenshot-2023-08-08-at-1.33.17-pm-1836x669.png)
 *How much does a Cutlass cost? (from "memory"... it be costin' 3 Doubloons, savvy?)*
 
-![](/assets/images/llamacorp/screenshot-2023-08-08-at-1.34.40-pm-1289x518.png)
+![](assets/images/llamacorp/screenshot-2023-08-08-at-1.34.40-pm-1289x518.png)
 *Chat application's memory*
 
 

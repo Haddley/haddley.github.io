@@ -112,34 +112,34 @@ I navigated to portal.azure.com
 
 I clicked + Create a resource
 
-![](/assets/images/azurefunctionsbc/Screenshot 2025-12-15 143133.png)
+![](assets/images/azurefunctionsbc/Screenshot 2025-12-15 143133.png)
 *I clicked + Create a resource*
 
 I clicked Function App|Create
 
-![](/assets/images/azurefunctionsbc/Screenshot 2025-12-15 143149.png)
+![](assets/images/azurefunctionsbc/Screenshot 2025-12-15 143149.png)
 *I clicked "Create"*
 
-![](/assets/images/azurefunctionsbc/Screenshot 2025-12-15 143606.png)
+![](assets/images/azurefunctionsbc/Screenshot 2025-12-15 143606.png)
 *I selected a hosting option*
 
 I filled in:
 
 Name: qrcode-generator-function
 
-![](/assets/images/azurefunctionsbc/Screenshot 2025-12-15 144520.png)
+![](assets/images/azurefunctionsbc/Screenshot 2025-12-15 144520.png)
 *I provided a Resource Group and Function App name*
 
-![](/assets/images/azurefunctionsbc/Screenshot 2025-12-15 144553.png)
+![](assets/images/azurefunctionsbc/Screenshot 2025-12-15 144553.png)
 *I clicked Create*
 
-![](/assets/images/azurefunctionsbc/Screenshot 2025-12-15 144904.png)
+![](assets/images/azurefunctionsbc/Screenshot 2025-12-15 144904.png)
 *I clicked Go to resource*
 
-![](/assets/images/azurefunctionsbc/Screenshot 2025-12-15 150010.png)
+![](assets/images/azurefunctionsbc/Screenshot 2025-12-15 150010.png)
 *I clicked Deployment|Deployment Center and entered Github project details*
 
-![](/assets/images/azurefunctionsbc/Screenshot 2025-12-15 150036.png)
+![](assets/images/azurefunctionsbc/Screenshot 2025-12-15 150036.png)
 *I previewed the Github action details*
 
 ## .github/workflows/main_qrcode-generator-function.yml
@@ -227,19 +227,19 @@ jobs:
           
 ```
 
-![](/assets/images/azurefunctionsbc/Screenshot 2025-12-15 151229.png)
+![](assets/images/azurefunctionsbc/Screenshot 2025-12-15 151229.png)
 *The Github action built the Function App and deployed to Azure*
 
-![](/assets/images/azurefunctionsbc/Screenshot 2025-12-15 151509.png)
+![](assets/images/azurefunctionsbc/Screenshot 2025-12-15 151509.png)
 *I reviewed the QRCodeGenerator function details*
 
-![](/assets/images/azurefunctionsbc/Screenshot 2025-12-15 152033.png)
+![](assets/images/azurefunctionsbc/Screenshot 2025-12-15 152033.png)
 *Testing the QRCodeGenerator function in the Azure portal*
 
-![](/assets/images/azurefunctionsbc/Screenshot 2025-12-15 152054.png)
+![](assets/images/azurefunctionsbc/Screenshot 2025-12-15 152054.png)
 *Test results*
 
-![](/assets/images/azurefunctionsbc/Screenshot 2025-12-15 152132.png)
+![](assets/images/azurefunctionsbc/Screenshot 2025-12-15 152132.png)
 
 [Test results](https://qrcode-generator-function-e5c2d8dwcabsbbfe.eastus-01.azurewebsites.net/api/QRCodeGenerator?text=Neil)
 

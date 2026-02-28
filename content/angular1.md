@@ -30,13 +30,13 @@ I created a new Angular project using "ng new"
 % ng new haddley-angular
 ```
 
-![](/assets/images/angular1/screen-shot-2022-06-18-at-5.38.07-pm-1174x746.png)
+![](assets/images/angular1/screen-shot-2022-06-18-at-5.38.07-pm-1174x746.png)
 *I installed the Angular CLI with npm*
 
-![](/assets/images/angular1/screen-shot-2022-06-18-at-5.39.27-pm-1178x738.png)
+![](assets/images/angular1/screen-shot-2022-06-18-at-5.39.27-pm-1178x738.png)
 *I skipped Angular routing (I can add that later)*
 
-![](/assets/images/angular1/screen-shot-2022-06-18-at-5.39.54-pm-1172x746.png)
+![](assets/images/angular1/screen-shot-2022-06-18-at-5.39.54-pm-1172x746.png)
 *I selected CSS (no preprocessor required)*
 
 
@@ -49,13 +49,13 @@ I started running the new Angular project by changing to the project directory a
 % ng serve
 ```
 
-![](/assets/images/angular1/screen-shot-2022-06-18-at-5.43.13-pm-1162x744.png)
+![](assets/images/angular1/screen-shot-2022-06-18-at-5.43.13-pm-1162x744.png)
 *I changed to the new project folder and ran "ng serve"*
 
-![](/assets/images/angular1/screen-shot-2022-06-18-at-5.43.39-pm-1176x740.png)
+![](assets/images/angular1/screen-shot-2022-06-18-at-5.43.39-pm-1176x740.png)
 *The app was running on localhost:4200*
 
-![](/assets/images/angular1/screen-shot-2022-06-18-at-5.44.14-pm-1836x1119.png)
+![](assets/images/angular1/screen-shot-2022-06-18-at-5.44.14-pm-1836x1119.png)
 *The out-of-the-box home page*
 
 
@@ -70,16 +70,16 @@ The **app.component.html** file is the component's html template.
 The **app.component.spec.ts** file is used for testing.
 The **app.component.ts** file is the component's TypeScript code.
 
-![](/assets/images/angular1/screen-shot-2022-06-18-at-5.47.55-pm-1836x862.png)
+![](assets/images/angular1/screen-shot-2022-06-18-at-5.47.55-pm-1836x862.png)
 *app.component.html is the home page component's template*
 
-![](/assets/images/angular1/screen-shot-2022-06-18-at-5.49.06-pm-1836x853.png)
+![](assets/images/angular1/screen-shot-2022-06-18-at-5.49.06-pm-1836x853.png)
 *app.component.ts contains the home page component's class*
 
-![](/assets/images/angular1/screen-shot-2022-06-18-at-5.49.27-pm-1836x858.png)
+![](assets/images/angular1/screen-shot-2022-06-18-at-5.49.27-pm-1836x858.png)
 *app.component.css contains the home page component's styling (initially empty)*
 
-![](/assets/images/angular1/screen-shot-2022-06-18-at-5.49.18-pm-1836x863.png)
+![](assets/images/angular1/screen-shot-2022-06-18-at-5.49.18-pm-1836x863.png)
 *The app.component.spec.ts file provides unit tests that can be run using "ng test"*
 
 
@@ -105,10 +105,10 @@ I updated app.component.html to:
 
 At runtime the `{{title}}` Angular expression is replaced with the value of the app component's title property.
 
-![](/assets/images/angular1/screen-shot-2022-06-18-at-5.53.50-pm-1836x854.png)
+![](assets/images/angular1/screen-shot-2022-06-18-at-5.53.50-pm-1836x854.png)
 *I updated the app.component.html template*
 
-![](/assets/images/angular1/screen-shot-2022-06-18-at-5.53.58-pm-1836x1117.png)
+![](assets/images/angular1/screen-shot-2022-06-18-at-5.53.58-pm-1836x1117.png)
 *The web page updated*
 
 
@@ -120,10 +120,10 @@ I used "ng generate" component to add a header component (in a "components" fold
 % ng generate component components/header
 ```
 
-![](/assets/images/angular1/screen-shot-2022-06-18-at-5.55.46-pm-1836x855.png)
+![](assets/images/angular1/screen-shot-2022-06-18-at-5.55.46-pm-1836x855.png)
 *I ran ng generate*
 
-![](/assets/images/angular1/screen-shot-2022-06-18-at-5.56.41-pm-1836x855.png)
+![](assets/images/angular1/screen-shot-2022-06-18-at-5.56.41-pm-1836x855.png)
 *The new component's selector was "app-header"*
 
 
@@ -138,7 +138,7 @@ The prefix value ("app" in this case) is added to the component name to create t
 
 I updated the app component's html template to make use of the header component.
 
-![](/assets/images/angular1/screen-shot-2022-06-18-at-5.57.15-pm-1836x856.png)
+![](assets/images/angular1/screen-shot-2022-06-18-at-5.57.15-pm-1836x856.png)
 *I updated the app.component's template to use the new component/selector*
 
 
@@ -146,7 +146,7 @@ I updated the app component's html template to make use of the header component.
 
 Replacing the `<h1>` tags with the `<app-header>` tags resulted in the `{{title}}` value being lost.
 
-![](/assets/images/angular1/screen-shot-2022-06-18-at-5.57.22-pm-1836x1117.png)
+![](assets/images/angular1/screen-shot-2022-06-18-at-5.57.22-pm-1836x1117.png)
 *The header component was rendered and the title text was discarded*
 
 
@@ -154,7 +154,7 @@ Replacing the `<h1>` tags with the `<app-header>` tags resulted in the `{{title}
 
 I updated the header component's html template and used `<ng-content>` to return the parent component's content.
 
-![](/assets/images/angular1/screen-shot-2022-06-18-at-6.07.05-pm-1836x856.png)
+![](assets/images/angular1/screen-shot-2022-06-18-at-6.07.05-pm-1836x856.png)
 *ng-content rendered the "contents" provided by the parent*
 
 
@@ -162,7 +162,7 @@ I updated the header component's html template and used `<ng-content>` to return
 
 I updated the `<app-header>` tag to pass the `{{title}}` value as a component attribute.
 
-![](/assets/images/angular1/screen-shot-2022-06-18-at-6.03.51-pm-1836x854.png)
+![](assets/images/angular1/screen-shot-2022-06-18-at-6.03.51-pm-1836x854.png)
 *I updated the example to provide the title value to the child component as an attribute*
 
 
@@ -172,7 +172,7 @@ I made a corresponding update to the header component.
 
 I added the `@Input() title: string;` property (and the `import { Input } from '@angular/core';` import)
 
-![](/assets/images/angular1/screen-shot-2022-06-18-at-6.04.20-pm-1836x852.png)
+![](assets/images/angular1/screen-shot-2022-06-18-at-6.04.20-pm-1836x852.png)
 *I added @Input() title: string to the header component allowing it to accept the "title" attribute*
 
 

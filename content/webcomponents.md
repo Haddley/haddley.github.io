@@ -75,7 +75,7 @@ Consider this template from the [Web Components Are Easier Than You Think](https
     </template>
 </body>
 
-![](/assets/images/webcomponents/screen-shot-2022-02-10-at-1.16.05-pm-890x428.png)
+![](assets/images/webcomponents/screen-shot-2022-02-10-at-1.16.05-pm-890x428.png)
 *I added the my-paragraph template*
 
 
@@ -93,7 +93,7 @@ document.body.appendChild(templateContent.cloneNode(true))
 document.body.appendChild(templateContent.cloneNode(true))
     </script>
 
-![](/assets/images/webcomponents/screen-shot-2022-02-10-at-1.21.13-pm-890x429.png)
+![](assets/images/webcomponents/screen-shot-2022-02-10-at-1.21.13-pm-890x429.png)
 *I used an HTML template*
 
 
@@ -145,7 +145,7 @@ and
 
 I created a Web Component with support for slots.
 
-![](/assets/images/webcomponents/screen-shot-2022-02-10-at-4.49.43-pm-828x372.png)
+![](assets/images/webcomponents/screen-shot-2022-02-10-at-4.49.43-pm-828x372.png)
 *I created a Web Component with slots*
 
 
@@ -158,7 +158,7 @@ I also passed values to Web Components using HTML element properties.
 
 I bubbled Web Component events up to parent elements and dispatched custom events.
 
-![](/assets/images/webcomponents/screen-shot-2022-02-10-at-6.23.41-pm-1260x648.png)
+![](assets/images/webcomponents/screen-shot-2022-02-10-at-6.23.41-pm-1260x648.png)
 *I bubbled the click event up and dispatched custom tick events*
 
 

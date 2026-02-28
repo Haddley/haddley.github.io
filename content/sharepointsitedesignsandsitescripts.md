@@ -34,10 +34,10 @@ Add Nav Link
 
 I added site scripts to the SharePoint tenant using the Add-SPOSiteScript command.
 
-![](/assets/images/sharepointsitedesignsandsitescripts/image-6-979x512.png)
+![](assets/images/sharepointsitedesignsandsitescripts/image-6-979x512.png)
 *I connected to the SharePoint administration site*
 
-![](/assets/images/sharepointsitedesignsandsitescripts/image-17-979x512.png)
+![](assets/images/sharepointsitedesignsandsitescripts/image-17-979x512.png)
 *I loaded the JSON text into a variable*
 
 
@@ -47,7 +47,7 @@ I created site designs that extend the SharePoint modern team site template (64)
 
 I added them to the tenant using the Add-SPOSiteDesign command, specifying one or more site script IDs.
 
-![](/assets/images/sharepointsitedesignsandsitescripts/image-10-979x512.png)
+![](assets/images/sharepointsitedesignsandsitescripts/image-10-979x512.png)
 *I added the Site Script and Site Design*
 
 
@@ -55,16 +55,16 @@ I added them to the tenant using the Add-SPOSiteDesign command, specifying one o
 
 Once I created the site design, it appeared in the out-of-the-box "Create a Site" experience.
 
-![](/assets/images/sharepointsitedesignsandsitescripts/image-11-1366x728.png)
+![](assets/images/sharepointsitedesignsandsitescripts/image-11-1366x728.png)
 *I selected "Team Site" because the site design is based on the team site template (64)*
 
-![](/assets/images/sharepointsitedesignsandsitescripts/image-12-1366x728.png)
+![](assets/images/sharepointsitedesignsandsitescripts/image-12-1366x728.png)
 *The "Contoso customer tracking" Site Design is available in the "Choose a design" drop down list.*
 
-![](/assets/images/sharepointsitedesignsandsitescripts/image-14-1366x728.png)
+![](assets/images/sharepointsitedesignsandsitescripts/image-14-1366x728.png)
 *I clicked Finish to create the new site and run the site scripts*
 
-![](/assets/images/sharepointsitedesignsandsitescripts/image-16-1366x728.png)
+![](assets/images/sharepointsitedesignsandsitescripts/image-16-1366x728.png)
 *The newly created site includes the "Customer Tracking" list*
 
 
@@ -74,13 +74,13 @@ I used Get-SPOSiteDesign to list the installed site designs and their IDs.
 
 I applied site designs to an existing SharePoint site using the Invoke-SPOSiteDesign command.
 
-![](/assets/images/sharepointsitedesignsandsitescripts/image-20-1057x674.png)
+![](assets/images/sharepointsitedesignsandsitescripts/image-20-1057x674.png)
 *Site contents before invoking site design*
 
-![](/assets/images/sharepointsitedesignsandsitescripts/image-19-979x512.png)
+![](assets/images/sharepointsitedesignsandsitescripts/image-19-979x512.png)
 *I ran Invoke-SPOSiteDesign*
 
-![](/assets/images/sharepointsitedesignsandsitescripts/image-21-1057x674.png)
+![](assets/images/sharepointsitedesignsandsitescripts/image-21-1057x674.png)
 *Site contents after invoking site design*
 
 
@@ -88,7 +88,7 @@ I applied site designs to an existing SharePoint site using the Invoke-SPOSiteDe
 
 I used Get-SPOSiteScriptFromWeb to extract a site script from an existing SharePoint site.
 
-![](/assets/images/sharepointsitedesignsandsitescripts/image-22-979x512.png)
+![](assets/images/sharepointsitedesignsandsitescripts/image-22-979x512.png)
 *I ran the Get-SPOSiteScriptFromWeb command*
 
 

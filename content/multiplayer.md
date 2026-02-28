@@ -13,13 +13,13 @@ I created a firebase project using https://console.firebase.google.com
 
 I deployed [Drew Conley's Multiplayer Game](https://www.youtube.com/watch?v=xhURh2RDzzg) to Firebase.
 
-![](/assets/images/multiplayer/screen-shot-2023-05-09-at-9.26.22-am-1814x1582.png)
+![](assets/images/multiplayer/screen-shot-2023-05-09-at-9.26.22-am-1814x1582.png)
 *https://haddley-multiplayer.web.app/*
 
-![](/assets/images/multiplayer/screen-shot-2023-05-09-at-9.59.28-am-1536x959.png)
+![](assets/images/multiplayer/screen-shot-2023-05-09-at-9.59.28-am-1536x959.png)
 *Firebase project settings*
 
-![](/assets/images/multiplayer/screen-shot-2023-05-08-at-5.19.41-pm-1470x786.png)
+![](assets/images/multiplayer/screen-shot-2023-05-08-at-5.19.41-pm-1470x786.png)
 *firebase initfirebase deploy*
 
 
@@ -31,7 +31,7 @@ The `allPlayersRef.on("XXX", (snapshot) => {...})` functions fire when a player 
 
 The `allCoinsRef.on("value", (snapshot) => {...})` functions fire when coins are created or collected.
 
-![](/assets/images/multiplayer/screen-shot-2023-05-09-at-9.39.39-am-1836x1151.png)
+![](assets/images/multiplayer/screen-shot-2023-05-09-at-9.39.39-am-1836x1151.png)
 *Realtime Database*
 
 

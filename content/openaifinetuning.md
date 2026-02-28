@@ -11,7 +11,7 @@ image: "/assets/images/openaifinetuning/chatgpt-logo.svg"
 
 I fine-tuned a GPT model using the OpenAI API. Fine-tuning trains a general model like GPT-3.5 or GPT-4 for a specific task, delivering more reliable and higher-quality results.
 
-![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%207.10.45 PM.png)
+![](assets/images/openaifinetuning/Screenshot%202025-10-23%20at%207.10.45 PM.png)
 *I created a data.jsonl file and copied the tutorial data into that file*
 
 
@@ -25,7 +25,7 @@ I fine-tuned a GPT model using the OpenAI API. Fine-tuning trains a general mode
 The data.jsonl file contains 3 lines that I want to use to train a large language model to respond in a sarcastic manner. Please generate an additional 47 similar lines
 ```
 
-![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%207.13.20 PM.png)
+![](assets/images/openaifinetuning/Screenshot%202025-10-23%20at%207.13.20 PM.png)
 *I used Claude Sonnet 4 to generate some addition training examples*
 
 
@@ -84,30 +84,30 @@ The data.jsonl file contains 3 lines that I want to use to train a large languag
 {"messages": [{"role": "system", "content": "Marv is a factual chatbot that is also sarcastic."}, {"role": "user", "content": "What's the main ingredient in bread?"}, {"role": "assistant", "content": "Flour. You know, that revolutionary discovery that changed human civilization."}]}
 ```
 
-![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%207.22.25 PM.png)
+![](assets/images/openaifinetuning/Screenshot%202025-10-23%20at%207.22.25 PM.png)
 *I navigated to the https://platform.openai.com Fine-tuning tab. I clicked the + Create button*
 
-![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%207.25.26 PM.png)
+![](assets/images/openaifinetuning/Screenshot%202025-10-23%20at%207.25.26 PM.png)
 *I selected the base model. I entered the suffix "sarcastic".I uploaded the data.jsonl file and clicked the Create button.*
 
-![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%207.26.03 PM.png)
+![](assets/images/openaifinetuning/Screenshot%202025-10-23%20at%207.26.03 PM.png)
 *The fine-tuning job was created*
 
 
-![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%207.38.29 PM.png)
+![](assets/images/openaifinetuning/Screenshot%202025-10-23%20at%207.38.29 PM.png)
 *I watched the job running*
 
 
-![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.04.48 PM.png)
+![](assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.04.48 PM.png)
 *The job succeeded. I clicked the Playground button*
 
 
-![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.02.02 PM.png)
+![](assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.02.02 PM.png)
 *I was able to test the fine-tuned model and the original model side-by-side*
 
 
 
-![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.13.38 PM.png)
+![](assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.13.38 PM.png)
 *I used Claude Sonnet to generate a Python app*
 
 ```text
@@ -116,31 +116,31 @@ I used this data to create a fine-tuned model ft:gpt-3.5-turbo-0125:personal:sar
 
 
 
-![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.15.18 PM.png)
+![](assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.15.18 PM.png)
 *I created Python environment*
 
-![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.15.34 PM.png)
+![](assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.15.34 PM.png)
 *I selected Venv*
 
-![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.15.44 PM.png)
+![](assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.15.44 PM.png)
 *I selected Python 3.13.7*
 
-![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.15.59 PM.png)
+![](assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.15.59 PM.png)
 *I selected the generated requirements.txt file*
 
-![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.16.45 PM.png)
+![](assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.16.45 PM.png)
 *I opened a new terminal and entered the streamlit command*
 
-![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.17.16 PM.png)
+![](assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.17.16 PM.png)
 *The chatbot user interface opened in a browser window*
 
-![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.18.30 PM.png)
+![](assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.18.30 PM.png)
 *I created a temporary OpenAI key*
 
-![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.18.46 PM.png)
+![](assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.18.46 PM.png)
 *I copied the newly generated key*
 
-![](/assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.20.06 PM.png)
+![](assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.20.06 PM.png)
 *I pasted the OpenAI key into the app and asked "who was napoleon". The response was sarcastic*
 
 ## References

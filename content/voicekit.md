@@ -11,19 +11,19 @@ image: "/assets/images/voicekit/raspberry-pi-logo.svg"
 
 I assembled the Google AIY Voice Kit, a do-it-yourself version of a Google Home assistant that includes a Raspberry Pi Zero, speaker, microphone, button, and cardboard casing.
 
-![](/assets/images/voicekit/C059C37E-B731-4377-8891-9C68A72568CB.png)
+![](assets/images/voicekit/C059C37E-B731-4377-8891-9C68A72568CB.png)
 *I reviewed the Raspberry Pi Hat*
 
-![](/assets/images/voicekit/FF078E6D-EA98-4E1E-976B-B036E33DA9F2.png)
+![](assets/images/voicekit/FF078E6D-EA98-4E1E-976B-B036E33DA9F2.png)
 *I assembled the cardboard casing*
 
-![](/assets/images/voicekit/Screenshot%202025-10-11%20at%204.12.07 PM.png)
+![](assets/images/voicekit/Screenshot%202025-10-11%20at%204.12.07 PM.png)
 *[Download image](https://github.com/google/aiyprojects-raspbian/releases)*
 
-![](/assets/images/voicekit/Screenshot%202025-10-11%20at%204.10.12 PM.png)
+![](assets/images/voicekit/Screenshot%202025-10-11%20at%204.10.12 PM.png)
 *I flashed the image to the MicroSD Card*
 
-![](/assets/images/voicekit/Screenshot%202025-10-11%20at%205.09.53 PM.png)
+![](assets/images/voicekit/Screenshot%202025-10-11%20at%205.09.53 PM.png)
 *I enabled xrdp and connected to pi remotely*
 
 
@@ -52,10 +52,10 @@ pi@raspberrypi:~ $ sudo service xrdp start
 
 I also ran "apt-get --allow-releaseinfo-change update" to update the Buster image.
 
-![](/assets/images/voicekit/Screenshot%202025-10-11%20at%205.21.15 PM.png)
+![](assets/images/voicekit/Screenshot%202025-10-11%20at%205.21.15 PM.png)
 *I ran the Check audio script*
 
-![](/assets/images/voicekit/Screenshot%202025-10-11%20at%207.49.52 PM.png)
+![](assets/images/voicekit/Screenshot%202025-10-11%20at%207.49.52 PM.png)
 *I ran the voice_recorder script*
 
 ## voice_recorder.py

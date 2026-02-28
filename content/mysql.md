@@ -18,7 +18,7 @@ I connected to a MySQL database from Node.js using the `mysql` and `promise-mysq
 ```
 
 
-![](/assets/images/mysql/screen-shot-2021-11-14-at-11.39.51-am-1836x992.png)
+![](assets/images/mysql/screen-shot-2021-11-14-at-11.39.51-am-1836x992.png)
 *SELECT COUNT(*) AS usercount FROM users*
 
 
@@ -29,7 +29,7 @@ I connected to a MySQL database from Node.js using the `mysql` and `promise-mysq
 ```
 
 
-![](/assets/images/mysql/screen-shot-2021-11-14-at-4.31.21-pm-1836x1050.png)
+![](assets/images/mysql/screen-shot-2021-11-14-at-4.31.21-pm-1836x1050.png)
 *SELECT COUNT(*) AS usercount FROM users*
 ## References
 

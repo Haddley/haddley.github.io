@@ -137,71 +137,71 @@ This integration enables **business process automation** by connecting Business 
 
 
 
-![](/assets/images/azurelogicappbc/Screenshot 2025-12-12 184607.png)
+![](assets/images/azurelogicappbc/Screenshot 2025-12-12 184607.png)
 *I clicked Create a resource*
 
-![](/assets/images/azurelogicappbc/Screenshot 2025-12-12 195158.png)
+![](assets/images/azurelogicappbc/Screenshot 2025-12-12 195158.png)
 *I created a Logic App*
 
-![](/assets/images/azurelogicappbc/Screenshot 2025-12-12 195507.png)
+![](assets/images/azurelogicappbc/Screenshot 2025-12-12 195507.png)
 *I selected Consumption*
 
-![](/assets/images/azurelogicappbc/Screenshot 2025-12-12 201534.png)
+![](assets/images/azurelogicappbc/Screenshot 2025-12-12 201534.png)
 *I selected the Resource Group*
 
-![](/assets/images/azurelogicappbc/Screenshot 2025-12-12 201613.png)
+![](assets/images/azurelogicappbc/Screenshot 2025-12-12 201613.png)
 *I entered the Logic App name*
 
-![](/assets/images/azurelogicappbc/Screenshot 2025-12-12 201706.png)
+![](assets/images/azurelogicappbc/Screenshot 2025-12-12 201706.png)
 *I clicked Create*
 
-![](/assets/images/azurelogicappbc/Screenshot 2025-12-12 201736.png)
+![](assets/images/azurelogicappbc/Screenshot 2025-12-12 201736.png)
 *The deployment was in progress*
 
-![](/assets/images/azurelogicappbc/Screenshot 2025-12-12 201802.png)
+![](assets/images/azurelogicappbc/Screenshot 2025-12-12 201802.png)
 *I opened the Logic App designer*
 
-![](/assets/images/azurelogicappbc/Screenshot 2025-12-12 201822.png)
+![](assets/images/azurelogicappbc/Screenshot 2025-12-12 201822.png)
 *I added a trigger*
 
-![](/assets/images/azurelogicappbc/Screenshot 2025-12-12 201857.png)
+![](assets/images/azurelogicappbc/Screenshot 2025-12-12 201857.png)
 *I searched for business central*
 
-![](/assets/images/azurelogicappbc/Screenshot 2025-12-12 201919.png)
+![](assets/images/azurelogicappbc/Screenshot 2025-12-12 201919.png)
 *I created a connection*
 
-![](/assets/images/azurelogicappbc/Screenshot 2025-12-12 202006.png)
+![](assets/images/azurelogicappbc/Screenshot 2025-12-12 202006.png)
 *I selected SANDBOX27*
 
-![](/assets/images/azurelogicappbc/Screenshot 2025-12-12 202030.png)
+![](assets/images/azurelogicappbc/Screenshot 2025-12-12 202030.png)
 *I selected CONUS USA, Inc.*
 
-![](/assets/images/azurelogicappbc/Screenshot 2025-12-12 202101.png)
+![](assets/images/azurelogicappbc/Screenshot 2025-12-12 202101.png)
 *I selected customers*
 
-![](/assets/images/azurelogicappbc/Screenshot 2025-12-12 202124.png)
+![](assets/images/azurelogicappbc/Screenshot 2025-12-12 202124.png)
 *I clicked Save*
 
-![](/assets/images/azurelogicappbc/Screenshot 2025-12-12 202159.png)
+![](assets/images/azurelogicappbc/Screenshot 2025-12-12 202159.png)
 *I added a Send an email (V2) action*
 
-![](/assets/images/azurelogicappbc/Screenshot 2025-12-12 202218.png)
+![](assets/images/azurelogicappbc/Screenshot 2025-12-12 202218.png)
 *I signed in*
 
 
-![](/assets/images/azurelogicappbc/Screenshot 2025-12-12 202412.png)
+![](assets/images/azurelogicappbc/Screenshot 2025-12-12 202412.png)
 *I configured Send an email (V2)*
 
-![](/assets/images/azurelogicappbc/Screenshot 2025-12-12 202506.png)
+![](assets/images/azurelogicappbc/Screenshot 2025-12-12 202506.png)
 *I clicked Customers +New*
 
-![](/assets/images/azurelogicappbc/Screenshot 2025-12-12 202527.png)
+![](assets/images/azurelogicappbc/Screenshot 2025-12-12 202527.png)
 *I selected Customer Company*
 
-![](/assets/images/azurelogicappbc/Screenshot 2025-12-12 202613.png)
+![](assets/images/azurelogicappbc/Screenshot 2025-12-12 202613.png)
 *I created an example customer*
 
-![](/assets/images/azurelogicappbc/Screenshot 2025-12-12 202659.png)
+![](assets/images/azurelogicappbc/Screenshot 2025-12-12 202659.png)
 *The email notification was sent*
 
 ## References

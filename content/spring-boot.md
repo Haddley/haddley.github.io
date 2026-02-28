@@ -14,22 +14,22 @@ I used Spring Tool Suite (an Eclipse-based IDE) and Maven (a Java build and depe
 
 I opened Spring Tool Suite, created a new Spring Starter Project, added a Book class and a BooksRestController, then ran and tested the app in the browser.
 
-![](/assets/images/spring-boot/screen-shot-2021-04-06-at-11.01.43-am-1718x1074.png)
+![](assets/images/spring-boot/screen-shot-2021-04-06-at-11.01.43-am-1718x1074.png)
 *I created a new Spring Starter Project*
 
-![](/assets/images/spring-boot/screen-shot-2021-04-06-at-11.03.13-am-1180x1440.png)
+![](assets/images/spring-boot/screen-shot-2021-04-06-at-11.03.13-am-1180x1440.png)
 *I entered the project name and package details*
 
-![](/assets/images/spring-boot/screen-shot-2021-04-06-at-11.03.38-am-1174x1440.png)
+![](assets/images/spring-boot/screen-shot-2021-04-06-at-11.03.38-am-1174x1440.png)
 *The REST API project depends on "Spring Web"*
 
-![](/assets/images/spring-boot/screen-shot-2021-04-06-at-11.04.47-am-1430x436.png)
+![](assets/images/spring-boot/screen-shot-2021-04-06-at-11.04.47-am-1430x436.png)
 *I added a new class*
 
-![](/assets/images/spring-boot/screen-shot-2021-04-06-at-11.05.11-am-1180x1254.png)
+![](assets/images/spring-boot/screen-shot-2021-04-06-at-11.05.11-am-1180x1254.png)
 *I added class "Book"*
 
-![](/assets/images/spring-boot/screen-shot-2021-04-06-at-11.06.30-am-1174x1254.png)
+![](assets/images/spring-boot/screen-shot-2021-04-06-at-11.06.30-am-1174x1254.png)
 *I added class "BooksRestController"*
 
 
@@ -37,10 +37,10 @@ I opened Spring Tool Suite, created a new Spring Starter Project, added a Book c
 
 The **@RestController** annotation is used to mark the BooksRestController class as a Spring Framework RestController.
 
-![](/assets/images/spring-boot/screen-shot-2021-04-06-at-11.07.37-am-1836x552.png)
+![](assets/images/spring-boot/screen-shot-2021-04-06-at-11.07.37-am-1836x552.png)
 *Add @RestController annotation to BooksRestController classUse CTRL+Space to import org.springframework.web.bind.annotation.RestController*
 
-![](/assets/images/spring-boot/screen-shot-2021-04-06-at-11.10.26-am-1722x1076.png)
+![](assets/images/spring-boot/screen-shot-2021-04-06-at-11.10.26-am-1722x1076.png)
 *Add "books" ArrayList to the BooksRestController*
 
 
@@ -48,16 +48,16 @@ The **@RestController** annotation is used to mark the BooksRestController class
 
 The **@GetMapping** annotation is used to mark the book and books methods as HTTP Get method handlers.
 
-![](/assets/images/spring-boot/screen-shot-2021-04-06-at-11.17.47-am-560x844.png)
+![](assets/images/spring-boot/screen-shot-2021-04-06-at-11.17.47-am-560x844.png)
 *I ran it as a Spring Boot App*
 
-![](/assets/images/spring-boot/screen-shot-2021-04-06-at-11.19.11-am-1836x874.png)
+![](assets/images/spring-boot/screen-shot-2021-04-06-at-11.19.11-am-1836x874.png)
 *http://localhost:8080/books*
 
-![](/assets/images/spring-boot/screen-shot-2021-04-06-at-11.19.46-am-1836x873.png)
+![](assets/images/spring-boot/screen-shot-2021-04-06-at-11.19.46-am-1836x873.png)
 *http://localhost:8080/books/1788395549*
 
-![](/assets/images/spring-boot/screen-shot-2021-04-06-at-11.20.30-am-1836x875.png)
+![](assets/images/spring-boot/screen-shot-2021-04-06-at-11.20.30-am-1836x875.png)
 *http://localhost:8080/books/1234567890*
 
 
@@ -65,10 +65,10 @@ The **@GetMapping** annotation is used to mark the book and books methods as HTT
 
 I added static files (images, HTML, and JavaScript) to the /src/main/resources/static folder of the Spring Boot project, including a [React](/posts/reactusestateuseeffect/) app that calls the REST API exposed by the same Spring Boot project.
 
-![](/assets/images/spring-boot/screen-shot-2021-04-08-at-3.28.25-pm-1836x981.png)
+![](assets/images/spring-boot/screen-shot-2021-04-08-at-3.28.25-pm-1836x981.png)
 *Static files*
 
-![](/assets/images/spring-boot/screen-shot-2021-04-08-at-3.27.02-pm-1286x750.png)
+![](assets/images/spring-boot/screen-shot-2021-04-08-at-3.27.02-pm-1286x750.png)
 *Running the React/Spring Boot app*
 
 

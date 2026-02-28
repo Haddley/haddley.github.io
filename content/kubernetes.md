@@ -32,16 +32,16 @@ I accessed one of the blog web servers by navigating to:
 
 http://<ip address of the computer running Docker Desktop>:8080
 
-![](/assets/images/kubernetes/image-888x488.png)
+![](assets/images/kubernetes/image-888x488.png)
 *I used the "kubectl create deployment" and "kubectl expose deployment" commands*
 
-![](/assets/images/kubernetes/image-3-888x488.png)
+![](assets/images/kubernetes/image-3-888x488.png)
 *I used the "kubectl apply" command to apply a yaml file*
 
-![](/assets/images/kubernetes/image-2-1250x720.png)
+![](assets/images/kubernetes/image-2-1250x720.png)
 *I ran the Docker image in two Kubernetes pods.*
 
-![](/assets/images/kubernetes/screen-shot-2021-02-10-at-2.26.59-pm-1794x1190.png)
+![](assets/images/kubernetes/screen-shot-2021-02-10-at-2.26.59-pm-1794x1190.png)
 *I accessed the cluster using port 8080*
 
 

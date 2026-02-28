@@ -30,46 +30,46 @@ Process the API responses in your VB.NET Forms app:
 Handle the responses from the API in your VB.NET Forms app. You can deserialize JSON responses into objects using libraries such as Newtonsoft.Json. You can then use these objects to populate the controls on your form.
 These are just general steps, and the specific implementation may vary depending on your requirements.
 
-![](/assets/images/vbnetwinforms/capture20230127-001-1011x676.png)
+![](assets/images/vbnetwinforms/capture20230127-001-1011x676.png)
 *I created a new project/solution*
 
-![](/assets/images/vbnetwinforms/capture20230127-002-1011x676.png)
+![](assets/images/vbnetwinforms/capture20230127-002-1011x676.png)
 *I selected the ASP.NET Core Web API template (with swagger)*
 
-![](/assets/images/vbnetwinforms/capture20230127-003-1013x671.png)
+![](assets/images/vbnetwinforms/capture20230127-003-1013x671.png)
 *I named the Web Application*
 
-![](/assets/images/vbnetwinforms/capture20230127-004-1012x674.png)
+![](assets/images/vbnetwinforms/capture20230127-004-1012x674.png)
 *I selected the .NET Core Framework version*
 
-![](/assets/images/vbnetwinforms/capture20230127-005-1368x730.png)
+![](assets/images/vbnetwinforms/capture20230127-005-1368x730.png)
 *I tested the API*
 
-![](/assets/images/vbnetwinforms/capture20230127-006-1045x572.png)
+![](assets/images/vbnetwinforms/capture20230127-006-1045x572.png)
 *I used the Swagger User Interface to test the API*
 
-![](/assets/images/vbnetwinforms/capture20230127-007-741x590.png)
+![](assets/images/vbnetwinforms/capture20230127-007-741x590.png)
 *I added a second project*
 
-![](/assets/images/vbnetwinforms/captureaa-05-1011x676.png)
+![](assets/images/vbnetwinforms/captureaa-05-1011x676.png)
 *I selected the VB.NET Windows Forms App template*
 
-![](/assets/images/vbnetwinforms/captureaa-06-1011x672.png)
+![](assets/images/vbnetwinforms/captureaa-06-1011x672.png)
 *I gave the WinForms app a name*
 
-![](/assets/images/vbnetwinforms/captureaa-07-1012x674.png)
+![](assets/images/vbnetwinforms/captureaa-07-1012x674.png)
 *I selected a .NET Core version*
 
-![](/assets/images/vbnetwinforms/captureaa-08-828x653.png)
+![](assets/images/vbnetwinforms/captureaa-08-828x653.png)
 *I added a reference from the VB.NET WinForms app to the ASP.NET app (providing the VB.NET application with a understanding of the WeatherForecast type)*
 
-![](/assets/images/vbnetwinforms/20230128-783x541.png)
+![](assets/images/vbnetwinforms/20230128-783x541.png)
 *I selected the API project*
 
-![](/assets/images/vbnetwinforms/capture20230127-008-1036x703.png)
+![](assets/images/vbnetwinforms/capture20230127-008-1036x703.png)
 *I started the API project (dotnet run)*
 
-![](/assets/images/vbnetwinforms/capture20230127-009-1369x729.png)
+![](assets/images/vbnetwinforms/capture20230127-009-1369x729.png)
 *I added a button and two labels to the VB.NET WinForm screen and VB.NET code to call the API.*
 
 

@@ -13,7 +13,7 @@ image: "/assets/images/nextjs3/2560px-nextjs-logo.svg-1536x920.png"
 
 I used API routes to create API endpoints inside a Next.js app. I added a file to the `/pages/api` directory to create each endpoint.
 
-![](/assets/images/nextjs3/screen-shot-2021-11-07-at-11.01.17-am-1646x784.png)
+![](assets/images/nextjs3/screen-shot-2021-11-07-at-11.01.17-am-1646x784.png)
 *Get Request*
 
 
@@ -21,7 +21,7 @@ I used API routes to create API endpoints inside a Next.js app. I added a file t
 
 I made API routes dynamic, just like regular Next.js pages.
 
-![](/assets/images/nextjs3/screen-shot-2021-11-07-at-11.01.28-am-1648x790.png)
+![](assets/images/nextjs3/screen-shot-2021-11-07-at-11.01.28-am-1648x790.png)
 *Dynamic API Route*
 
 
@@ -29,7 +29,7 @@ I made API routes dynamic, just like regular Next.js pages.
 
 Some pages didn't require login to access.
 
-![](/assets/images/nextjs3/screen-shot-2021-11-10-at-7.59.37-am-1830x918.png)
+![](assets/images/nextjs3/screen-shot-2021-11-10-at-7.59.37-am-1830x918.png)
 *Unprotected page*
 
 
@@ -42,13 +42,13 @@ I used `next-auth` to prevent unauthorized access to protected API methods and p
 
 Here I used [GitHub](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app) as an authentication provider.
 
-![](/assets/images/nextjs3/screen-shot-2021-11-08-at-12.52.06-pm-1536x1078.png)
+![](assets/images/nextjs3/screen-shot-2021-11-08-at-12.52.06-pm-1536x1078.png)
 *GitHub Developer Settings*
 
-![](/assets/images/nextjs3/screen-shot-2021-11-08-at-12.54.01-pm-1536x1080.png)
+![](assets/images/nextjs3/screen-shot-2021-11-08-at-12.54.01-pm-1536x1080.png)
 *Register a new OAuth application*
 
-![](/assets/images/nextjs3/screen-shot-2021-11-08-at-12.55.08-pm-1536x1078.png)
+![](assets/images/nextjs3/screen-shot-2021-11-08-at-12.55.08-pm-1536x1078.png)
 *Note the Client ID and Client Secret*
 
 
@@ -66,7 +66,7 @@ I added a `[...nextauth]` API method.
 
 I added a `next-auth/client` Provider to `_app.js`.
 
-![](/assets/images/nextjs3/screen-shot-2021-11-08-at-6.52.44-pm-1436x1152.png)
+![](assets/images/nextjs3/screen-shot-2021-11-08-at-6.52.44-pm-1436x1152.png)
 *Provider*
 
 
@@ -74,16 +74,16 @@ I added a `next-auth/client` Provider to `_app.js`.
 
 I checked that a valid session existed before returning articles or article details, whether via a REST API call or a web page request.
 
-![](/assets/images/nextjs3/screen-shot-2021-11-08-at-7.05.14-pm-1536x801.png)
+![](assets/images/nextjs3/screen-shot-2021-11-08-at-7.05.14-pm-1536x801.png)
 */api/articles is now protected*
 
-![](/assets/images/nextjs3/screen-shot-2021-11-08-at-7.10.18-pm-1536x803.png)
+![](assets/images/nextjs3/screen-shot-2021-11-08-at-7.10.18-pm-1536x803.png)
 */api/articles/4 is now protected*
 
-![](/assets/images/nextjs3/screen-shot-2021-11-08-at-7.52.40-pm-1536x808.png)
+![](assets/images/nextjs3/screen-shot-2021-11-08-at-7.52.40-pm-1536x808.png)
 *page /protected is now protected (server-side)*
 
-![](/assets/images/nextjs3/screen-shot-2021-11-09-at-2.35.03-pm-1830x922.png)
+![](assets/images/nextjs3/screen-shot-2021-11-09-at-2.35.03-pm-1830x922.png)
 *page /protected is now protected (client-side)*
 
 
@@ -91,22 +91,22 @@ I checked that a valid session existed before returning articles or article deta
 
 I added "Sign In" and "Sign Out" buttons to the home page.
 
-![](/assets/images/nextjs3/screen-shot-2021-11-08-at-7.15.04-pm-1536x803.png)
+![](assets/images/nextjs3/screen-shot-2021-11-08-at-7.15.04-pm-1536x803.png)
 *Sign in*
 
-![](/assets/images/nextjs3/screen-shot-2021-11-08-at-7.15.15-pm-1536x801.png)
+![](assets/images/nextjs3/screen-shot-2021-11-08-at-7.15.15-pm-1536x801.png)
 *Sign in with GitHub provider*
 
-![](/assets/images/nextjs3/screen-shot-2021-11-08-at-7.15.26-pm-1536x803.png)
+![](assets/images/nextjs3/screen-shot-2021-11-08-at-7.15.26-pm-1536x803.png)
 *Signed in*
 
-![](/assets/images/nextjs3/screen-shot-2021-11-08-at-7.15.44-pm-1536x802.png)
+![](assets/images/nextjs3/screen-shot-2021-11-08-at-7.15.44-pm-1536x802.png)
 *authorized*
 
-![](/assets/images/nextjs3/screen-shot-2021-11-08-at-7.15.55-pm-1536x804.png)
+![](assets/images/nextjs3/screen-shot-2021-11-08-at-7.15.55-pm-1536x804.png)
 *authorized*
 
-![](/assets/images/nextjs3/screen-shot-2021-11-10-at-8.26.00-am-1826x922.png)
+![](assets/images/nextjs3/screen-shot-2021-11-10-at-8.26.00-am-1826x922.png)
 *authorized*
 
 
@@ -114,16 +114,16 @@ I added "Sign In" and "Sign Out" buttons to the home page.
 
 Specifying a database is optional — if I didn't need to persist user data or support email sign-in, JSON Web Tokens would be used for session storage instead. To specify a database, I updated the `[...nextauth].js` file and the relevant environment variables.
 
-![](/assets/images/nextjs3/screen-shot-2021-11-11-at-6.59.22-am-1836x1204.png)
+![](assets/images/nextjs3/screen-shot-2021-11-11-at-6.59.22-am-1836x1204.png)
 *accounts*
 
-![](/assets/images/nextjs3/screen-shot-2021-11-11-at-7.02.27-am-1836x1196.png)
+![](assets/images/nextjs3/screen-shot-2021-11-11-at-7.02.27-am-1836x1196.png)
 *users*
 
-![](/assets/images/nextjs3/screen-shot-2021-11-11-at-10.12.00-am-1836x986.png)
+![](assets/images/nextjs3/screen-shot-2021-11-11-at-10.12.00-am-1836x986.png)
 *session (with user id and provider)*
 
-![](/assets/images/nextjs3/screen-shot-2021-11-11-at-6.17.31-pm-1734x1146.png)
+![](assets/images/nextjs3/screen-shot-2021-11-11-at-6.17.31-pm-1734x1146.png)
 *pages*
 
 

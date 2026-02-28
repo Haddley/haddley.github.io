@@ -17,43 +17,43 @@ Quickstart projects allow developers to create Web applications, Single page app
 
 I created a "Haddley React Single Page App" that supports Azure Active Directory login.
 
-![](/assets/images/azure-active-directory2/topology-callgraph-700x403.png)
+![](assets/images/azure-active-directory2/topology-callgraph-700x403.png)
 *topology_callgraph by Doğan Erişen is licensed under MIT License*
 
-![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.42.46-am-1836x1481.png)
+![](assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.42.46-am-1836x1481.png)
 *I named the app Haddley React Single Page App*
 
-![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-10.27.44-am-1376x1060.png)
+![](assets/images/azure-active-directory2/screen-shot-2021-04-17-at-10.27.44-am-1376x1060.png)
 *I selected "Single-page application (SPA)"*
 
-![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.43.42-am-1638x702.png)
+![](assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.43.42-am-1638x702.png)
 *I selected "React (preview)"*
 
-![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.44.44-am-1836x714.png)
+![](assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.44.44-am-1836x714.png)
 *I allowed the Quickstart to update the Redirect URI to "http://localhost:3000/"*
 
-![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.45.15-am-1836x952.png)
+![](assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.45.15-am-1836x952.png)
 *I downloaded the fully configured code sample*
 
-![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.45.53-am-1836x499.png)
+![](assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.45.53-am-1836x499.png)
 *I opened the project using Visual Studio Code*
 
-![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.47.49-am-1836x1372.png)
+![](assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.47.49-am-1836x1372.png)
 *I ran npm install and npm start*
 
-![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.49.20-am-1836x948.png)
+![](assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.49.20-am-1836x948.png)
 *I selected "Sign in using Popup"*
 
-![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.49.49-am-962x498.png)
+![](assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.49.49-am-962x498.png)
 *I picked an account*
 
-![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.49.59-am-964x660.png)
+![](assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.49.59-am-964x660.png)
 *I entered the password*
 
-![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.50.15-am-966x1310.png)
+![](assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.50.15-am-966x1310.png)
 *I clicked Accept*
 
-![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.50.35-am-1836x947.png)
+![](assets/images/azure-active-directory2/screen-shot-2021-04-17-at-9.50.35-am-1836x947.png)
 *I pressed "Request Profile Information"*
 
 
@@ -61,13 +61,13 @@ I created a "Haddley React Single Page App" that supports Azure Active Directory
 
 [https://github.com/Azure-Samples/ms-identity-javascript-tutorial/tree/main/3-Authorization-II/1-call-api](https://github.com/Azure-Samples/ms-identity-javascript-tutorial/tree/main/3-Authorization-II/1-call-api)
 
-![](/assets/images/azure-active-directory2/topology-callapi-631x362.png)
+![](assets/images/azure-active-directory2/topology-callapi-631x362.png)
 *topology_callapi by Doğan Erişen is licensed under MIT License*
 
-![](/assets/images/azure-active-directory2/image-859x481.png)
+![](assets/images/azure-active-directory2/image-859x481.png)
 *I ran .\Configure.ps1*
 
-![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-4.31.02-pm-1836x989.png)
+![](assets/images/azure-active-directory2/screen-shot-2021-04-17-at-4.31.02-pm-1836x989.png)
 *I updated the Manifest "accessTokenAcceptedVersion"*
 
 
@@ -100,16 +100,16 @@ I found the key Enter_the_Web_Api_Uri_Here and replaced the existing value with 
 
 I found the key Enter_the_Web_Api_Scope_Here and replaced the existing value with the scopes for my web API, like api://e767d418-b80b-4568-9754-557f40697fc5/access_as_user.
 
-![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-4.53.33-pm-1644x1184.png)
+![](assets/images/azure-active-directory2/screen-shot-2021-04-17-at-4.53.33-pm-1644x1184.png)
 *I clicked Sign-in*
 
-![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-4.53.56-pm-964x1310.png)
+![](assets/images/azure-active-directory2/screen-shot-2021-04-17-at-4.53.56-pm-964x1310.png)
 *I entered my Azure/Office 365 credentials*
 
-![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-4.54.17-pm-1640x1180.png)
+![](assets/images/azure-active-directory2/screen-shot-2021-04-17-at-4.54.17-pm-1640x1180.png)
 *I pressed Call API*
 
-![](/assets/images/azure-active-directory2/screen-shot-2021-04-17-at-4.54.36-pm-1640x1184.png)
+![](assets/images/azure-active-directory2/screen-shot-2021-04-17-at-4.54.36-pm-1640x1184.png)
 *The protected API returned a result*
 
 

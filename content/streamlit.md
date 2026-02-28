@@ -17,64 +17,64 @@ Streamlit is an open-source Python library that allows developers to create web 
 
 With Streamlit, you can create interactive web applications directly from Python scripts using familiar Python programming paradigms. The library is particularly popular in the data science and machine learning communities due to its ease of use and fast prototyping capabilities.
 
-![](/assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
+![](assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
 *esp8266*
 
-![](/assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
+![](assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
 *esp8266*
 
-![](/assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
+![](assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
 *esp8266*
 
-![](/assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
+![](assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
 *esp8266*
 
-![](/assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
+![](assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
 *esp8266*
 
-![](/assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
+![](assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
 *esp8266*
 
-![](/assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
+![](assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
 *esp8266*
 
-![](/assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
+![](assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
 *esp8266*
 
-![](/assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
+![](assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
 *esp8266*
 
-![](/assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
+![](assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
 *esp8266*
 
-![](/assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
+![](assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
 *esp8266*
 
-![](/assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
+![](assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
 *esp8266*
 
-![](/assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
+![](assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
 *esp8266*
 
-![](/assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
+![](assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
 *esp8266*
 
-![](/assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
+![](assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
 *esp8266*
 
-![](/assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
+![](assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
 *esp8266*
 
-![](/assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
+![](assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
 *esp8266*
 
-![](/assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
+![](assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
 *esp8266*
 
-![](/assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
+![](assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
 *esp8266*
 
-![](/assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
+![](assets/images/streamlit/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
 *esp8266*
 
 

@@ -13,22 +13,22 @@ image: "/assets/images/customtvirtualtables/office-365-icon-500x500.png"
 
 I created two related Business Central tables and connected to them as Power Platform Dataverse Virtual Tables.
 
-![](/assets/images/customtvirtualtables/screenshot-2024-05-07-at-6.07.14pm-1836x923.png)
+![](assets/images/customtvirtualtables/screenshot-2024-05-07-at-6.07.14pm-1836x923.png)
 *I edited the Car Brand table using the Car Brand List page*
 
-![](/assets/images/customtvirtualtables/screenshot-2024-05-07-at-6.07.45pm-1836x921.png)
+![](assets/images/customtvirtualtables/screenshot-2024-05-07-at-6.07.45pm-1836x921.png)
 *I edited the Car Model table using the Car Model List page*
 
-![](/assets/images/customtvirtualtables/screenshot-2024-05-07-at-6.09.07pm-1836x1059.png)
+![](assets/images/customtvirtualtables/screenshot-2024-05-07-at-6.09.07pm-1836x1059.png)
 *I reviewed the Car Brand and Car Model tables in the Available Tables list*
 
-![](/assets/images/customtvirtualtables/screenshot-2024-05-07-at-6.09.51pm-1836x1063.png)
+![](assets/images/customtvirtualtables/screenshot-2024-05-07-at-6.09.51pm-1836x1063.png)
 *I viewed the contents of the Car Brands table using a Model Driven App View*
 
-![](/assets/images/customtvirtualtables/screenshot-2024-05-07-at-6.10.02pm-1836x1064.png)
+![](assets/images/customtvirtualtables/screenshot-2024-05-07-at-6.10.02pm-1836x1064.png)
 *I viewed the contents of the Car Models table using a Model Driven App View*
 
-![](/assets/images/customtvirtualtables/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png)
+![](assets/images/customtvirtualtables/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png)
 *I updated a Car Model record using a Model Driven App Form*
 
 

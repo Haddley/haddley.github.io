@@ -31,7 +31,7 @@ Each Baseball coach will use a unique set of signals to communicate with her pla
 
 The coach in the example below signals to her players by touching her nose, touching her right ear, touching her right arm, touching her chin, touching her left ear, touching her left arm, touching her chest, touching her hat or touching her belt.
 
-![](/assets/images/machinelearning8/screen-shot-2022-06-11-at-7.25.24-pm-1271x712.png)
+![](assets/images/machinelearning8/screen-shot-2022-06-11-at-7.25.24-pm-1271x712.png)
 *I reviewed baseball signal encoding*
 
 
@@ -39,7 +39,7 @@ The coach in the example below signals to her players by touching her nose, touc
 
 Internally the application works with sequences of letters. To make the application easier to operate a user can enter a description for each signal.
 
-![](/assets/images/machinelearning8/screen-shot-2022-06-14-at-7.35.41-pm-1536x797.png)
+![](assets/images/machinelearning8/screen-shot-2022-06-14-at-7.35.41-pm-1536x797.png)
 *I entered a description for each signal*
 
 
@@ -47,7 +47,7 @@ Internally the application works with sequences of letters. To make the applicat
 
 When Apply is pressed the Encode() function is run.
 
-![](/assets/images/machinelearning8/screen-shot-2022-06-14-at-7.37.52-pm-1536x826.png)
+![](assets/images/machinelearning8/screen-shot-2022-06-14-at-7.37.52-pm-1536x826.png)
 *I clicked the Apply button*
 
 
@@ -55,7 +55,7 @@ When Apply is pressed the Encode() function is run.
 
 When the Encode() function executes the descriptions provided by the user are copied to the the web page's HTML.
 
-![](/assets/images/machinelearning8/screen-shot-2022-06-14-at-7.42.56-pm-1536x796.png)
+![](assets/images/machinelearning8/screen-shot-2022-06-14-at-7.42.56-pm-1536x796.png)
 *I reviewed when the Encode() function executes*
 
 
@@ -65,7 +65,7 @@ The user watches the coach communicating with the players and records the signal
 
 As a sequence is entered into the app the CheckSeq() function is used to make a live prediction.
 
-![](/assets/images/machinelearning8/screen-shot-2022-06-14-at-8.57.22-pm-1536x825.png)
+![](assets/images/machinelearning8/screen-shot-2022-06-14-at-8.57.22-pm-1536x825.png)
 *The dict variable contains an entry for every possible two letter combination. A value of 1 is used to mark all combinations that are present in the *current* sequence.*
 
 
@@ -81,10 +81,10 @@ Every time the Steal or No Steal button is pressed the app has new intelligence 
 
 The Label() function adds the current sequence and label (steal 1 or no steal 0) to the page's HTML, adds the current sequence and label to a "dataset" variable and then calls the FindSteal() function.
 
-![](/assets/images/machinelearning8/screen-shot-2022-06-11-at-7.22.42-pm-1272x715.png)
+![](assets/images/machinelearning8/screen-shot-2022-06-11-at-7.22.42-pm-1272x715.png)
 *I reviewed the Label() function which adds the current sequence and label (steal 1 or no steal 0) to the page's HTML*
 
-![](/assets/images/machinelearning8/screen-shot-2022-06-14-at-8.16.13-pm-1536x784.png)
+![](assets/images/machinelearning8/screen-shot-2022-06-14-at-8.16.13-pm-1536x784.png)
 *I reviewed the Label() function which adds the current sequence and label to a "dataset" variable and then calls the FindSteal() function*
 
 
@@ -94,10 +94,10 @@ The variable "top" in the FindSteal() function is used to score all possible two
 
 The web page is updated to show the most likely candidate.
 
-![](/assets/images/machinelearning8/screen-shot-2022-06-15-at-8.45.57-am-1536x892.png)
+![](assets/images/machinelearning8/screen-shot-2022-06-15-at-8.45.57-am-1536x892.png)
 *I reviewed the variable "top"*
 
-![](/assets/images/machinelearning8/screen-shot-2022-06-15-at-8.53.55-am-1126x330.png)
+![](assets/images/machinelearning8/screen-shot-2022-06-15-at-8.53.55-am-1126x330.png)
 *I reviewed the updated prediction*
 
 

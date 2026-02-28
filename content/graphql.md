@@ -32,7 +32,7 @@ I added the GraphQL dependencies using npm
 $ npm i express@4.16.4 express-graphql@0.7.1 graphql@14.1.1 cors@2.8.5
 ```
 
-![](/assets/images/graphql/screen-shot-2021-03-02-at-10.50.19-pm-1536x940.png)
+![](assets/images/graphql/screen-shot-2021-03-02-at-10.50.19-pm-1536x940.png)
 *I ran npm i*
 
 
@@ -58,16 +58,16 @@ I used "npm start" to run the GraphQL server.
 $ npm start
 ```
 
-![](/assets/images/graphql/screen-shot-2021-03-02-at-10.55.09-pm-1536x778.png)
+![](assets/images/graphql/screen-shot-2021-03-02-at-10.55.09-pm-1536x778.png)
 *I read books and related author details*
 
-![](/assets/images/graphql/screen-shot-2021-03-02-at-10.57.26-pm-1536x782.png)
+![](assets/images/graphql/screen-shot-2021-03-02-at-10.57.26-pm-1536x782.png)
 *I read data for a single author*
 
-![](/assets/images/graphql/screen-shot-2021-03-02-at-11.00.26-pm-1536x780.png)
+![](assets/images/graphql/screen-shot-2021-03-02-at-11.00.26-pm-1536x780.png)
 *I mutated data by adding an author*
 
-![](/assets/images/graphql/screen-shot-2021-03-02-at-11.03.34-pm-1536x785.png)
+![](assets/images/graphql/screen-shot-2021-03-02-at-11.03.34-pm-1536x785.png)
 *I mutated data by adding a book*
 
 
@@ -89,7 +89,7 @@ $ npm i apollo-boost@0.4.9 graphql@15.4.0 react@17.0.1 react-apollo@3.1.5 react-
 
 The app.js code includes a GraphQL query, an ApolloProvider and a Query.
 
-![](/assets/images/graphql/screen-shot-2021-03-02-at-11.52.18-pm-1536x884.png)
+![](assets/images/graphql/screen-shot-2021-03-02-at-11.52.18-pm-1536x884.png)
 *I navigated to localhost:3000*
 
 

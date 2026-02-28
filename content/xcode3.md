@@ -16,7 +16,7 @@ I used the OpenGL Extension Wrangler Library (GLEW), a cross-platform loading li
 
 The "4.1 Metal - 76.3" OpenGL implementation is available on my M1 MacBook Air.
 
-![](/assets/images/xcode3/screen-shot-2023-03-08-at-1.53.36-pm-1536x1206.png)
+![](assets/images/xcode3/screen-shot-2023-03-08-at-1.53.36-pm-1536x1206.png)
 *I ran the application*
 
 
@@ -24,19 +24,19 @@ The "4.1 Metal - 76.3" OpenGL implementation is available on my M1 MacBook Air.
 
 I used GLFW to create an application window titled "LearnOpenGL". I initialized GLEW and defined a viewport. I compiled vertex and fragment shaders (written in GLSL) and executed them on the GPU. In a loop, the shaders draw a triangle defined by three positions/vertices.
 
-![](/assets/images/xcode3/screen-shot-2023-03-08-at-1.35.42-pm-1134x730.png)
+![](assets/images/xcode3/screen-shot-2023-03-08-at-1.35.42-pm-1134x730.png)
 *brew install glew*
 
-![](/assets/images/xcode3/screen-shot-2023-03-08-at-1.39.47-pm-1536x456.png)
+![](assets/images/xcode3/screen-shot-2023-03-08-at-1.39.47-pm-1536x456.png)
 *I added the include folder to header search*
 
-![](/assets/images/xcode3/screen-shot-2023-03-08-at-1.42.29-pm-1536x459.png)
+![](assets/images/xcode3/screen-shot-2023-03-08-at-1.42.29-pm-1536x459.png)
 *I added a library*
 
-![](/assets/images/xcode3/screen-shot-2023-03-08-at-1.42.40-pm-1536x595.png)
+![](assets/images/xcode3/screen-shot-2023-03-08-at-1.42.40-pm-1536x595.png)
 *I updated the library references*
 
-![](/assets/images/xcode3/screen-shot-2023-03-08-at-2.03.06-pm-1536x850.png)
+![](assets/images/xcode3/screen-shot-2023-03-08-at-2.03.06-pm-1536x850.png)
 *I built and ran the application*
 
 

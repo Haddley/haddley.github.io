@@ -33,49 +33,49 @@ Note: If you prefer to use the command line, you can create a new ASP.NET Core A
 $ dotnet new angular -n ProjectName
 ```
 
-![](/assets/images/angularandasp.net/screen-shot-2023-03-22-at-9.16.36-am-1440x880.png)
+![](assets/images/angularandasp.net/screen-shot-2023-03-22-at-9.16.36-am-1440x880.png)
 *I used Visual Studio 2022 for Mac*
 
-![](/assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.07.37-pm-1536x1089.png)
+![](assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.07.37-pm-1536x1089.png)
 *I selected the Angular template*
 
-![](/assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.08.29-pm-1536x1088.png)
+![](assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.08.29-pm-1536x1088.png)
 *I selected the (cross platform) ASP.NET Core 6 framework*
 
-![](/assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.09.06-pm-1536x1088.png)
+![](assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.09.06-pm-1536x1088.png)
 *I provided a solution/project name*
 
-![](/assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.10.07-pm-1536x1125.png)
+![](assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.10.07-pm-1536x1125.png)
 *The template included client and server-side code*
 
-![](/assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.11.50-pm-1836x946.png)
+![](assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.11.50-pm-1836x946.png)
 *I ran the project*
 
-![](/assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.14.10-pm-1836x1124.png)
+![](assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.14.10-pm-1836x1124.png)
 *I reviewed the Program.cs file — the template includes a local user database, so I registered as a user*
 
-![](/assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.15.11-pm-1836x1087.png)
+![](assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.15.11-pm-1836x1087.png)
 *I was able to log in*
 
-![](/assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.18.50-pm-1836x863.png)
+![](assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.18.50-pm-1836x863.png)
 *main.ts specifies that AppModule is the bootstrap module*
 
-![](/assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.19.13-pm-1836x862.png)
+![](assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.19.13-pm-1836x862.png)
 *app.module.ts declares {AppComponent, NavMenuComponent, ...} and the bootstrap value is set to AppComponent*
 
-![](/assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.17.45-pm-1836x867.png)
+![](assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.17.45-pm-1836x867.png)
 *app.component.ts depends on the app.component.html template*
 
-![](/assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.24.04-pm-1836x308.png)
+![](assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.24.04-pm-1836x308.png)
 *The app.component.html template includes a navigation menu*
 
-![](/assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.55.07-pm-1836x645.png)
+![](assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.55.07-pm-1836x645.png)
 *The Fetch data route had canActivate set to AuthorizeGuard*
 
-![](/assets/images/angularandasp.net/screen-shot-2023-03-24-at-8.00.56-pm-1836x645.png)
+![](assets/images/angularandasp.net/screen-shot-2023-03-24-at-8.00.56-pm-1836x645.png)
 *The WeatherForecastController includes the [Authorize] decorator*
 
-![](/assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.38.35-pm-1836x675.png)
+![](assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.38.35-pm-1836x675.png)
 *The Navigation Menu component included a reference to a Logon component*
 
 
@@ -83,5 +83,5 @@ $ dotnet new angular -n ProjectName
 
 As an experiment I updated the Angular code so the "Fetch data" menu item did not require a login.
 
-![](/assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.58.07-pm-1836x920.png)
+![](assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.58.07-pm-1836x920.png)
 *The Fetch data page was unable to fetch data from the WeatherForecast service when the user was not logged in*

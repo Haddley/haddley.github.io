@@ -52,19 +52,19 @@ I added a context property of type WebPartContext to the ICalendarProps interfac
 
 I ran "gulp serve" again to test the result in the Local Workbench and on a SharePoint site using the /_layouts/15/workbench.aspx page.
 
-![](/assets/images/sharepointwebpart1/screen-shot-2021-02-12-at-1.43.01-pm-1900x1342.png)
+![](assets/images/sharepointwebpart1/screen-shot-2021-02-12-at-1.43.01-pm-1900x1342.png)
 *Adding context:WebPartContext to ICalendarProps interface*
 
-![](/assets/images/sharepointwebpart1/screen-shot-2021-02-12-at-1.43.32-pm-1900x1343.png)
+![](assets/images/sharepointwebpart1/screen-shot-2021-02-12-at-1.43.32-pm-1900x1343.png)
 *Updating CalendarWebPart to pass context to Calendar React Component*
 
-![](/assets/images/sharepointwebpart1/screen-shot-2021-02-12-at-1.43.55-pm-1900x1346.png)
+![](assets/images/sharepointwebpart1/screen-shot-2021-02-12-at-1.43.55-pm-1900x1346.png)
 *Updating Calendar React Component to use context*
 
-![](/assets/images/sharepointwebpart1/screen-shot-2021-02-12-at-1.40.17-pm-1754x1266.png)
+![](assets/images/sharepointwebpart1/screen-shot-2021-02-12-at-1.40.17-pm-1754x1266.png)
 *Testing the Web Part using the Local Workbench*
 
-![](/assets/images/sharepointwebpart1/screen-shot-2021-02-12-at-1.47.37-pm-1750x1260.png)
+![](assets/images/sharepointwebpart1/screen-shot-2021-02-12-at-1.47.37-pm-1750x1260.png)
 *Testing the Web Part using the /_layouts/15/workbench.aspx SharePoint page*
 
 

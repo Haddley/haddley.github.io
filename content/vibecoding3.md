@@ -9,7 +9,7 @@ hidden: true
 slug: "vibecoding3"
 ---
 
-![](/assets/images/vibecoding3/Screenshot 2026-01-30 at 8.07.22 AM.png)
+![](assets/images/vibecoding3/Screenshot 2026-01-30 at 8.07.22 AM.png)
 *I ran the TestImageColorizer and TestImageUtils tests*
 
 ## User
@@ -148,10 +148,10 @@ jobs:
           pytest tests/ -v  # The '-v' flag gives detailed output
 ```
 
-![](/assets/images/vibecoding3/Screenshot 2026-01-30 at 9.49.03 AM.png)
+![](assets/images/vibecoding3/Screenshot 2026-01-30 at 9.49.03 AM.png)
 *python -m src.tests.run_tests*
 
-![](/assets/images/vibecoding3/Screenshot 2026-01-30 at 9.51.46 AM.png)
+![](assets/images/vibecoding3/Screenshot 2026-01-30 at 9.51.46 AM.png)
 *I configured GitHub Actions*
 
 ## Branch Protection

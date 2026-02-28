@@ -15,127 +15,127 @@ I used the Teams Toolkit to create a Teams Tab application with an Azure backend
 
 Teams Toolkit makes creating Teams Tabs/Azure applications easier.
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-5.12.18-pm-1836x824.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-5.12.18-pm-1836x824.png)
 *I added the Teams Toolkit Extension to Visual Studio Code*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-3.47.21-pm-294x84.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-3.47.21-pm-294x84.png)
 *I clicked the Teams Toolkit to open the Wizard*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-3.48.08-pm-1468x1114.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-3.48.08-pm-1468x1114.png)
 *I configured the Quick Start items*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-3.49.16-pm-748x282.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-3.49.16-pm-748x282.png)
 *I signed in to my M365 account*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-3.49.23-pm-734x276.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-3.49.23-pm-734x276.png)
 *I signed in to Azure*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-3.49.33-pm-726x330.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-3.49.33-pm-726x330.png)
 *I clicked the Create New Project link*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-3.49.49-pm-1264x352.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-3.49.49-pm-1264x352.png)
 *I started from a sample*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-3.50.08-pm-1226x514.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-3.50.08-pm-1226x514.png)
 *I selected the Todo List with backend on Azure sample*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-3.52.34-pm-534x552.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-3.52.34-pm-534x552.png)
 *I downloaded the sample code from GitHub*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-3.53.04-pm-1334x464.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-3.53.04-pm-1334x464.png)
 *I noted that the sample code was a work in progress*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-3.54.00-pm-574x124.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-3.54.00-pm-574x124.png)
 *I opened the Command Palette*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-3.54.51-pm-1240x160.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-3.54.51-pm-1240x160.png)
 *I used the Teams: Provision in the Cloud command to configure Azure*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-3.55.24-pm-1252x210.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-3.55.24-pm-1252x210.png)
 *I entered a hard-to-guess database administrator account name*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-3.56.06-pm-530x780.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-3.56.06-pm-530x780.png)
 *The command configured Azure Services*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-3.56.20-pm-970x336.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-3.56.20-pm-970x336.png)
 *Provisioning was in progress*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.09.03-pm-1836x1083.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.09.03-pm-1836x1083.png)
 *I reviewed the newly created resource group*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.09.28-pm-1718x670.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.09.28-pm-1718x670.png)
 *I opened the SQL Database to copy the Server name*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.10.16-pm-992x834.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.10.16-pm-992x834.png)
 *I opened Azure Data Studio and entered the SQL Server connection details*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.10.32-pm-998x838.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.10.32-pm-998x838.png)
 *I ensured the Azure firewall rule was added*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.12.32-pm-1102x714.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.12.32-pm-1102x714.png)
 *I used a Query tab in Azure Data Studio to create the Todo list*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.19.44-pm-1234x158.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.19.44-pm-1234x158.png)
 *I used the Teams: Deploy to the Cloud command*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.19.52-pm-1248x264.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.19.52-pm-1248x264.png)
 *I deployed the React code and the Azure Function (API)*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.23.48-pm-1258x166.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.23.48-pm-1258x166.png)
 *I used the Teams: Build Teams Package command*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.25.03-pm-1242x164.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.25.03-pm-1242x164.png)
 *I used the Teams: Publish to Teams command*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.25.13-pm-1230x334.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.25.13-pm-1230x334.png)
 *I installed the app to the organization*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.26.40-pm-1836x903.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.26.40-pm-1836x903.png)
 *I opened the Microsoft Teams admin center and located the app pending approval*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.26.58-pm-1484x896.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.26.58-pm-1484x896.png)
 *I published the app*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.27.08-pm-1210x510.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.27.08-pm-1210x510.png)
 *I clicked the Publish button*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.28.34-pm-682x388.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.28.34-pm-682x388.png)
 *The app was added to Microsoft Teams*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.29.15-pm-1188x616.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.29.15-pm-1188x616.png)
 *I used the Add to a team button*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.29.28-pm-1262x714.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.29.28-pm-1262x714.png)
 *I selected a Team and clicked Set up a tab*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.29.55-pm-1224x1230.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.29.55-pm-1224x1230.png)
 *I viewed the tab configuration page*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.30.25-pm-920x510.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.30.25-pm-920x510.png)
 *I clicked Start on the welcome page*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.30.56-pm-912x590.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.30.56-pm-912x590.png)
 *I was prompted to log in*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.31.12-pm-876x972.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.31.12-pm-876x972.png)
 *I provided consent*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.31.30-pm-1836x1357.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.31.30-pm-1836x1357.png)
 *No tasks were displayed yet*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.32.02-pm-1740x328.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.32.02-pm-1740x328.png)
 *I added a task and pressed Enter*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.32.16-pm-1758x462.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.32.16-pm-1758x462.png)
 *The app used map to render all tasks*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.35.11-pm-1836x977.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.35.11-pm-1836x977.png)
 *A row was added to the database*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.42.13-pm-1836x1181.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.42.13-pm-1836x1181.png)
 *The function app implemented the REST API*
 
-![](/assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.45.25-pm-1836x1182.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.45.25-pm-1836x1182.png)
 *Tab.js*
 
 

@@ -19,82 +19,82 @@ I used [next-pwa](https://github.com/shadowwalker/next-pwa) to add [Progressive 
 
 The steps below show how I added next-pwa to the with-ionic-typescript project.
 
-![](/assets/images/nextjs5/screen-shot-2022-01-13-at-9.04.07-am-1836x919.png)
+![](assets/images/nextjs5/screen-shot-2022-01-13-at-9.04.07-am-1836x919.png)
 *example with-ionic-typescript*
 
-![](/assets/images/nextjs5/screen-shot-2022-01-13-at-9.07.08-am-1836x924.png)
+![](assets/images/nextjs5/screen-shot-2022-01-13-at-9.07.08-am-1836x924.png)
 *I ran npm run build, which copies the svg folder to public*
 
-![](/assets/images/nextjs5/screen-shot-2022-01-13-at-9.13.21-am-1836x923.png)
+![](assets/images/nextjs5/screen-shot-2022-01-13-at-9.13.21-am-1836x923.png)
 *I updated next.config.js to include next-pwa and removed the svg copy*
 
-![](/assets/images/nextjs5/screen-shot-2022-01-13-at-9.14.10-am-1836x920.png)
+![](assets/images/nextjs5/screen-shot-2022-01-13-at-9.14.10-am-1836x920.png)
 *I updated .gitignore so that generated files are ignored*
 
-![](/assets/images/nextjs5/screen-shot-2022-01-13-at-9.14.56-am-1836x920.png)
+![](assets/images/nextjs5/screen-shot-2022-01-13-at-9.14.56-am-1836x920.png)
 *I added an offline page*
 
-![](/assets/images/nextjs5/screen-shot-2022-01-13-at-9.16.04-am-1836x923.png)
+![](assets/images/nextjs5/screen-shot-2022-01-13-at-9.16.04-am-1836x923.png)
 *I added a manifest.json file so the app can be installed*
 
-![](/assets/images/nextjs5/screen-shot-2022-01-13-at-9.19.45-am-1836x919.png)
+![](assets/images/nextjs5/screen-shot-2022-01-13-at-9.19.45-am-1836x919.png)
 *I included the icons referenced in manifest.json*
 
-![](/assets/images/nextjs5/screen-shot-2022-01-13-at-9.24.12-am-1836x921.png)
+![](assets/images/nextjs5/screen-shot-2022-01-13-at-9.24.12-am-1836x921.png)
 *I included a Next.js _document.js file with a reference to manifest.json*
 
-![](/assets/images/nextjs5/screen-shot-2022-01-13-at-2.34.43-pm-1836x1111.png)
+![](assets/images/nextjs5/screen-shot-2022-01-13-at-2.34.43-pm-1836x1111.png)
 *I needed to remove (unneeded) files from the svg folder...*
 
-![](/assets/images/nextjs5/screen-shot-2022-01-13-at-9.34.17-am-1836x920.png)
+![](assets/images/nextjs5/screen-shot-2022-01-13-at-9.34.17-am-1836x920.png)
 *npm run build*
 
-![](/assets/images/nextjs5/screen-shot-2022-01-13-at-9.34.35-am-1290x190.png)
+![](assets/images/nextjs5/screen-shot-2022-01-13-at-9.34.35-am-1290x190.png)
 *Create Azure Web App*
 
-![](/assets/images/nextjs5/screen-shot-2022-01-13-at-9.34.45-am-1262x268.png)
+![](assets/images/nextjs5/screen-shot-2022-01-13-at-9.34.45-am-1262x268.png)
 *I provided a name*
 
-![](/assets/images/nextjs5/screen-shot-2022-01-13-at-9.34.58-am-1270x330.png)
+![](assets/images/nextjs5/screen-shot-2022-01-13-at-9.34.58-am-1270x330.png)
 *I selected a node version*
 
-![](/assets/images/nextjs5/screen-shot-2022-01-13-at-9.35.08-am-1298x268.png)
+![](assets/images/nextjs5/screen-shot-2022-01-13-at-9.35.08-am-1298x268.png)
 *I selected a pricing tier*
 
-![](/assets/images/nextjs5/screen-shot-2022-01-13-at-9.38.27-am-960x218.png)
+![](assets/images/nextjs5/screen-shot-2022-01-13-at-9.38.27-am-960x218.png)
 *deploying...*
 
-![](/assets/images/nextjs5/screen-shot-2022-01-13-at-2.39.13-pm-361x732.png)
+![](assets/images/nextjs5/screen-shot-2022-01-13-at-2.39.13-pm-361x732.png)
 *iPhone Simulator*
 
-![](/assets/images/nextjs5/screen-shot-2022-01-13-at-2.39.30-pm-360x732.png)
+![](assets/images/nextjs5/screen-shot-2022-01-13-at-2.39.30-pm-360x732.png)
 *I accessed https://haddleynextjsionicpwa.azurewebsites.net using Safari*
 
-![](/assets/images/nextjs5/screen-shot-2022-01-13-at-2.39.47-pm-357x730.png)
+![](assets/images/nextjs5/screen-shot-2022-01-13-at-2.39.47-pm-357x730.png)
 *Add to Home Screen*
 
-![](/assets/images/nextjs5/screen-shot-2022-01-13-at-2.39.56-pm-357x733.png)
+![](assets/images/nextjs5/screen-shot-2022-01-13-at-2.39.56-pm-357x733.png)
 *I confirmed the application details*
 
-![](/assets/images/nextjs5/screen-shot-2022-01-13-at-2.40.33-pm-358x734.png)
+![](assets/images/nextjs5/screen-shot-2022-01-13-at-2.40.33-pm-358x734.png)
 *Application on Home Screen*
 
-![](/assets/images/nextjs5/screen-shot-2022-01-13-at-2.40.43-pm-360x736.png)
+![](assets/images/nextjs5/screen-shot-2022-01-13-at-2.40.43-pm-360x736.png)
 *Application running with an Internet connection*
 
-![](/assets/images/nextjs5/screen-shot-2022-01-13-at-2.41.54-pm-359x735.png)
+![](assets/images/nextjs5/screen-shot-2022-01-13-at-2.41.54-pm-359x735.png)
 *Internet connection disabled*
 
-![](/assets/images/nextjs5/screen-shot-2022-01-13-at-2.42.08-pm-357x735.png)
+![](assets/images/nextjs5/screen-shot-2022-01-13-at-2.42.08-pm-357x735.png)
 *Application running offline*
 
-![](/assets/images/nextjs5/screen-shot-2022-01-13-at-2.43.18-pm-833x512.png)
+![](assets/images/nextjs5/screen-shot-2022-01-13-at-2.43.18-pm-833x512.png)
 *I accessed https://haddleynextjsionicpwa.azurewebsites.net using Chrome on a MacBook*
 
-![](/assets/images/nextjs5/screen-shot-2022-01-13-at-2.43.28-pm-836x514.png)
+![](assets/images/nextjs5/screen-shot-2022-01-13-at-2.43.28-pm-836x514.png)
 *I installed the application on MacBook*
 
-![](/assets/images/nextjs5/screen-shot-2022-01-13-at-2.43.45-pm-759x605.png)
+![](assets/images/nextjs5/screen-shot-2022-01-13-at-2.43.45-pm-759x605.png)
 *The application ran online and offline on MacBook*
 
 

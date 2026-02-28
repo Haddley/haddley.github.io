@@ -32,7 +32,7 @@ Excel has built in "slope()" and "intercept()" functions that can be used to cal
 
 The youtube video referenced [above](https://www.youtube.com/watch?v=p_fu7gIikxY) explains how these functions work.
 
-![](/assets/images/machinelearning5/screen-shot-2022-06-10-at-9.03.43-am-629x414.png)
+![](assets/images/machinelearning5/screen-shot-2022-06-10-at-9.03.43-am-629x414.png)
 *I calculated the slope and y-intercept using Excel*
 
 
@@ -42,7 +42,7 @@ I used a Colab Notepad to show data points and the line of best fit.
 
 I predicted a person's glucose levels based on their age.
 
-![](/assets/images/machinelearning5/screen-shot-2022-06-13-at-10.38.18-am-987x1048.png)
+![](assets/images/machinelearning5/screen-shot-2022-06-13-at-10.38.18-am-987x1048.png)
 *I created a scatter plot of the glucose level data with a line of best fit added in red ('r')*
 
 
@@ -52,7 +52,7 @@ Once a model has been trained it can be used to make predictions.
 
 In the example above I could provide a person's age and predict what their glucose level might be (based on the data used to train the model).
 
-![](/assets/images/machinelearning5/screen-shot-2022-06-13-at-1.38.01-pm-831x71.png)
+![](assets/images/machinelearning5/screen-shot-2022-06-13-at-1.38.01-pm-831x71.png)
 *I predicted a person's glucose level if they were aged 50*
 
 
@@ -62,10 +62,10 @@ In the example above I could provide a person's age and predict what their gluco
 
 I used a Colab Notepad to show data points from the dataset and a description of the dataset.
 
-![](/assets/images/machinelearning5/screen-shot-2022-06-11-at-2.03.18-pm-1007x671.png)
+![](assets/images/machinelearning5/screen-shot-2022-06-11-at-2.03.18-pm-1007x671.png)
 *I reviewed the Diabetes Dataset*
 
-![](/assets/images/machinelearning5/screen-shot-2022-06-11-at-2.03.38-pm-1189x503.png)
+![](assets/images/machinelearning5/screen-shot-2022-06-11-at-2.03.38-pm-1189x503.png)
 *I reviewed the Description of Diabetes Dataset*
 
 
@@ -73,7 +73,7 @@ I used a Colab Notepad to show data points from the dataset and a description of
 
 I used Excel again to calculate a line of best fit.
 
-![](/assets/images/machinelearning5/screen-shot-2022-06-11-at-1.52.11-pm-891x413.png)
+![](assets/images/machinelearning5/screen-shot-2022-06-11-at-1.52.11-pm-891x413.png)
 *I used Excel to calculate the line of best fit for Glucose (y) given Age (x)*
 
 
@@ -83,7 +83,7 @@ I used a Colab Notepad to show data points and the line of best fit.
 
 I predicted a person's glucose levels based on their age.
 
-![](/assets/images/machinelearning5/screen-shot-2022-06-13-at-10.59.36-am-981x1033.png)
+![](assets/images/machinelearning5/screen-shot-2022-06-13-at-10.59.36-am-981x1033.png)
 *I created a scatter plot of the glucose level and age data with a line of best fit added in red ('r')*
 
 
@@ -91,10 +91,10 @@ I predicted a person's glucose levels based on their age.
 
 I predicted a person's glucose levels based on their age and BMI.
 
-![](/assets/images/machinelearning5/screen-shot-2022-06-13-at-12.09.40-pm-803x1187.png)
+![](assets/images/machinelearning5/screen-shot-2022-06-13-at-12.09.40-pm-803x1187.png)
 *I predicted a person's glucose levels based on their age and BMI*
 
-![](/assets/images/machinelearning5/screen-shot-2022-06-13-at-12.09.50-pm-678x371.png)
+![](assets/images/machinelearning5/screen-shot-2022-06-13-at-12.09.50-pm-678x371.png)
 *I created a 3D scatter plot of the glucose level, age and BMI data with the line of best fit (surface) added in red ('red')*
 
 
@@ -104,5 +104,5 @@ Once a model has been trained it can be used to make predictions.
 
 In the example above I could provide a person's age and BMI and predict what their glucose level might be (based on the data used to train the model).
 
-![](/assets/images/machinelearning5/screen-shot-2022-06-13-at-1.54.58-pm-830x100.png)
+![](assets/images/machinelearning5/screen-shot-2022-06-13-at-1.54.58-pm-830x100.png)
 *I predicted a person's glucose level if they were aged 50 with a BMI of 70*

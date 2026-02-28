@@ -30,7 +30,7 @@ To add support for ESP8266 boards to the Arduino IDE, I selected the "Arduino|Pr
 
 http://arduino.esp8266.com/stable/package_esp8266com_index.json
 
-![](/assets/images/internetofthings1/screen-shot-2021-03-06-at-9.23.14-pm-1592x1116.png)
+![](assets/images/internetofthings1/screen-shot-2021-03-06-at-9.23.14-pm-1592x1116.png)
 *I reviewed Arduino IDE Preferences*
 
 
@@ -38,10 +38,10 @@ http://arduino.esp8266.com/stable/package_esp8266com_index.json
 
 I used the "Tools|Board|Boards Manager..." menu item to install support for the ESP8266 boards.
 
-![](/assets/images/internetofthings1/screen-shot-2021-03-06-at-9.28.06-pm-1108x122.png)
+![](assets/images/internetofthings1/screen-shot-2021-03-06-at-9.28.06-pm-1108x122.png)
 *I opened Boards Manager...*
 
-![](/assets/images/internetofthings1/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
+![](assets/images/internetofthings1/screen-shot-2021-03-06-at-9.28.36-pm-1596x894.png)
 *I installed the Boards package*
 
 
@@ -53,7 +53,7 @@ The ESP8266 boards information is maintained in a GitHub repository
 
 Once the boards package was installed, I selected the correct ESP8266 board.
 
-![](/assets/images/internetofthings1/screen-shot-2021-03-06-at-9.36.46-pm-1512x318.png)
+![](assets/images/internetofthings1/screen-shot-2021-03-06-at-9.36.46-pm-1512x318.png)
 *I selected "NodeMCU (ESP-12E Module)"*
 
 
@@ -63,7 +63,7 @@ I downloaded Arduino libraries using the "Tools|Manage Libraries..." menu item.
 
 The PubSubClient library allows the ESP8266 to connect to an MQTT broker.
 
-![](/assets/images/internetofthings1/screen-shot-2021-03-06-at-9.55.43-pm-1596x902.png)
+![](assets/images/internetofthings1/screen-shot-2021-03-06-at-9.55.43-pm-1596x902.png)
 *I installed the PubSubClient Library*
 
 
@@ -73,7 +73,7 @@ The PubSubClient library allows the ESP8266 to connect to an MQTT broker.
 
 Once the PubSubClient Library was installed, the mqtt_esp8266 example sketch was added to the "File|Examples" Menu.
 
-![](/assets/images/internetofthings1/screen-shot-2021-03-06-at-9.58.23-pm-906x374.png)
+![](assets/images/internetofthings1/screen-shot-2021-03-06-at-9.58.23-pm-906x374.png)
 *I reviewed an example ESP8266 sketch*
 
 
@@ -104,13 +104,13 @@ $ docker run -it -p 1883:1883 -p 9001:9001 eclipse-mosquitto:1.4.8
 
 Desktop and mobile applications are able to connect to an MQTT broker showing messages that are being published. Desktop and mobile applications allow users to manually publish messages to an MQTT broker.
 
-![](/assets/images/internetofthings1/screen-shot-2021-03-04-at-6.25.29-pm-1836x1286.png)
+![](assets/images/internetofthings1/screen-shot-2021-03-04-at-6.25.29-pm-1836x1286.png)
 *I connected MQTT Explorer to the MQTT broker*
 
-![](/assets/images/internetofthings1/screen-shot-2021-03-06-at-11.11.07-pm-622x362.png)
+![](assets/images/internetofthings1/screen-shot-2021-03-06-at-11.11.07-pm-622x362.png)
 *The ESP8266 published "outTopic" messages to the MQTT broker*
 
-![](/assets/images/internetofthings1/screen-shot-2021-03-06-at-11.21.28-pm-1616x930.png)
+![](assets/images/internetofthings1/screen-shot-2021-03-06-at-11.21.28-pm-1616x930.png)
 *I published an "inTopic" message with payload "1" to the MQTT broker and the ESP8266's LED turned on.*
 
 

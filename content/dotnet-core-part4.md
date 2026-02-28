@@ -18,10 +18,10 @@ $ dotnet new web -lang VB -o haddley-web   # fails
 $ dotnet new web -lang C# -o haddley-web   # works
 ```
 
-![](/assets/images/dotnet-core-part2-deleted/screen-shot-2023-03-15-at-2.05.08-pm-1148x386.png)
+![](assets/images/dotnet-core-part2-deleted/screen-shot-2023-03-15-at-2.05.08-pm-1148x386.png)
 *I ran dotnet new web -lang VB -o haddley-web (which fails)*
 
-![](/assets/images/dotnet-core-part2-deleted/screen-shot-2023-03-15-at-2.05.47-pm-1144x738.png)
+![](assets/images/dotnet-core-part2-deleted/screen-shot-2023-03-15-at-2.05.47-pm-1144x738.png)
 *I ran dotnet new web -lang C# -o haddley-web (which works)*
 
 
@@ -36,22 +36,22 @@ $ dotnet new gitignore
 $ dotnet run
 ```
 
-![](/assets/images/dotnet-core-part2-deleted/screen-shot-2023-03-15-at-2.21.39-pm-1138x488.png)
+![](assets/images/dotnet-core-part2-deleted/screen-shot-2023-03-15-at-2.21.39-pm-1138x488.png)
 *I ran dotnet new console -lang VB -o haddley-console*
 
-![](/assets/images/dotnet-core-part2-deleted/screen-shot-2023-03-15-at-2.25.13-pm-1140x316.png)
+![](assets/images/dotnet-core-part2-deleted/screen-shot-2023-03-15-at-2.25.13-pm-1140x316.png)
 *I ran dotnet run for the generated console application*
 
-![](/assets/images/dotnet-core-part2-deleted/screen-shot-2023-03-15-at-2.34.56-pm-1536x225.png)
+![](assets/images/dotnet-core-part2-deleted/screen-shot-2023-03-15-at-2.34.56-pm-1536x225.png)
 *I updated the .vbproj file*
 
-![](/assets/images/dotnet-core-part2-deleted/screen-shot-2023-03-15-at-2.35.58-pm-1536x452.png)
+![](assets/images/dotnet-core-part2-deleted/screen-shot-2023-03-15-at-2.35.58-pm-1536x452.png)
 *I updated the Program.vb code from "Console.WriteLine(...)"*
 
-![](/assets/images/dotnet-core-part2-deleted/screen-shot-2023-03-15-at-2.36.42-pm-1536x477.png)
+![](assets/images/dotnet-core-part2-deleted/screen-shot-2023-03-15-at-2.36.42-pm-1536x477.png)
 *...to "WebApplication.CreateBuilder(...)..."*
 
-![](/assets/images/dotnet-core-part2-deleted/screen-shot-2023-03-15-at-2.38.17-pm-1476x522.png)
+![](assets/images/dotnet-core-part2-deleted/screen-shot-2023-03-15-at-2.38.17-pm-1476x522.png)
 *I ran dotnet run for the Web App*
 
 ## References

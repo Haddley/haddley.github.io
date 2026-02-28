@@ -28,12 +28,12 @@ The `.claude/settings.local.json` file is my personal override for a single proj
 
 When Claude ran a `pwsh` command for the first time, it asked for permission. I chose "don't ask again" for that command in this project:
 
-![](/assets/images/claudecode4/Screenshot-2026-01-21-at-4.28.35-PM.png)
+![](assets/images/claudecode4/Screenshot-2026-01-21-at-4.28.35-PM.png)
 *I selected "don't ask again" for pwsh commands in this project*
 
 Claude Code wrote that permission directly into `.claude/settings.local.json`:
 
-![](/assets/images/claudecode4/Screenshot-2026-01-21-at-4.29.01-PM.png)
+![](assets/images/claudecode4/Screenshot-2026-01-21-at-4.29.01-PM.png)
 *Claude wrote the allow rule to settings.local.json — `{"permissions": {"allow": ["Bash(pwsh:*)"]}}`*
 
 From that point on, Claude ran PowerShell commands without prompting me. I can also edit the file manually to pre-approve other tools, set environment variables, or test hooks before proposing them to the team in the shared `settings.json`.
