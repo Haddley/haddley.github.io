@@ -80,7 +80,7 @@ With Streamlit, you can create interactive web applications directly from Python
 
 ## sentence_similarity.html
 
-```text
+```html
 <!DOCTYPE html>
 <html>
 

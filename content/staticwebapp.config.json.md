@@ -112,7 +112,7 @@ I used the "auth" section of the staticwebapp.config.json to configure access to
 *I logged onto the app*
 
 
-```text
+```json
 {
   "routes": [
     {

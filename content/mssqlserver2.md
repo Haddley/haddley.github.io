@@ -103,7 +103,7 @@ I wrote Java code to call the SwapCards stored procedure 1,000 times.
 
 ## Using cross join to create a table the represents ...
 
-```text
+```sql
 -- Create the Deck
 CREATE TABLE Cards
 (
@@ -156,7 +156,7 @@ GO
 
 ## SwapCardsV1
 
-```text
+```sql
 -- Stored Procedure 'SwapCardsV1'
 CREATE PROCEDURE SwapCardsV1
     @Card1 INT = 1,
@@ -212,7 +212,7 @@ GO
 
 ## SwapCards T-SQL Client Code
 
-```text
+```sql
 -- User Defined Function 'PickACard'
 CREATE FUNCTION PickACard (@RAND FLOAT)
 RETURNS INT
@@ -292,7 +292,7 @@ GO
 
 ## SwapCards with snapshot isolation
 
-```text
+```sql
 -- Stored Procedure 'SwapCards'
 CREATE PROCEDURE SwapCards
     @Card1 INT = 1,
@@ -449,7 +449,7 @@ const dbConn = mssql.connect(config, function (err) {
 
 ## Program.java
 
-```text
+```java
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -496,7 +496,7 @@ public class Program {
 
 ## Full T-SQL code
 
-```text
+```sql
 DROP DATABASE Shuffle
 GO
 

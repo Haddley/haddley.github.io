@@ -188,7 +188,7 @@ I used addDoc and query collection to save and retrieve messages.
 
 ## dashboard.component.ts
 
-```text
+```typescript
 import { Component, OnInit } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 
@@ -212,7 +212,7 @@ export class DashboardComponent implements OnInit {
 
 ## dashboard.component.html
 
-```text
+```html
 <div class="container my-5">
 
     <p>dashboard works!</p>
@@ -241,7 +241,7 @@ export class DashboardComponent implements OnInit {
 
 ## dashboard.component.ts
 
-```text
+```typescript
 import { Component, OnInit } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { Firestore, addDoc, collection, collectionData, getFirestore, query, serverTimestamp, where } from '@angular/fire/firestore';

@@ -34,7 +34,7 @@ The code includes a config object, a preload function, a create function, and an
 
 ## index.htm
 
-```text
+```html
 <!DOCTYPE html>
 <html>
 
@@ -110,7 +110,7 @@ The code includes a config object, a preload function, a create function, and an
 
 ## Index.html
 
-```text
+```html
 <!DOCTYPE html>
 <html>
 

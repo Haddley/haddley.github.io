@@ -298,7 +298,7 @@ The code below shows how I updated the todo application to use PouchDB and Couch
 
 ## datatodos.ts
 
-```text
+```typescript
 import Localbase from 'localbase'
 
 function createGuid() {
@@ -342,7 +342,7 @@ export const addToDo: any = async (description: string) => {
 
 ## componentsTodoListItem.tsx
 
-```text
+```typescript
 import {
   IonCheckbox,
   IonItem,
@@ -372,7 +372,7 @@ export default TodoListItem;
 
 ## pagesHome.tsx
 
-```text
+```typescript
 import { IonButton, IonContent, IonHeader, IonInput, IonItem, IonList, IonPage, IonRefresher, IonRefresherContent, IonTitle, IonToolbar, useIonViewWillEnter } from '@ionic/react';
 import { useState } from 'react';
 import TodoListItem from '../components/TodoListItem';
@@ -460,7 +460,7 @@ export default Home;
 
 ## publicmanifest.json
 
-```text
+```json
 {
   "short_name": "Todo",
   "name": "Todo App",
@@ -532,7 +532,7 @@ reportWebVitals();
 
 ## todos.ts
 
-```text
+```typescript
 import PouchDB from 'pouchdb-browser'
 
 const db = new PouchDB('tasksdb')

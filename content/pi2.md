@@ -29,7 +29,7 @@ I controlled the Raspberry Pi GPIO pins from the terminal.
 
 ## blinky.py
 
-```text
+```python
 import RPi.GPIO as GPIO
 import time
 

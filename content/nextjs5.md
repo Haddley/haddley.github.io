@@ -108,7 +108,7 @@ The steps below show how I added next-pwa to the with-ionic-typescript project.
 
 ## _offline.js
 
-```text
+```javascript
 import Head from 'next/head'
 
 export default () => (
@@ -124,7 +124,7 @@ export default () => (
 
 ## manifest.json
 
-```text
+```json
 {
     "name": "next-pwa",
     "short_name": "next-pwa",
@@ -151,7 +151,7 @@ export default () => (
 
 ## _document.js
 
-```text
+```javascript
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 const APP_NAME = 'next-pwa example'

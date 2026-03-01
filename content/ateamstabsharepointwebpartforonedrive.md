@@ -142,7 +142,7 @@ I did not need to update this file
 
 ## serve.json
 
-```text
+```json
 {
   "$schema": "https://developer.microsoft.com/json-schemas/core-build/serve.schema.json",
   "port": 4321,
@@ -153,7 +153,7 @@ I did not need to update this file
 
 ## HaddleyListWebPart.ts
 
-```text
+```typescript
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
@@ -262,7 +262,7 @@ export default class HaddleyListWebPart extends BaseClientSideWebPart<IHaddleyLi
 
 ## package-solution.json
 
-```text
+```json
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
@@ -337,7 +337,7 @@ export default class HaddleyListWebPart extends BaseClientSideWebPart<IHaddleyLi
 
 ## HaddleyList.tsx
 
-```text
+```typescript
 import * as React from 'react';
 import styles from './HaddleyList.module.scss';
 import { IHaddleyListProps } from './IHaddleyListProps';
@@ -449,7 +449,7 @@ const siteId = (location.host + "," + context.pageContext.site.id + "," + contex
 
 ## HaddleyListWebPart.manifest.json
 
-```text
+```json
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
   "id": "2beda14b-5565-4acf-8d4a-dcbe8046bf01",

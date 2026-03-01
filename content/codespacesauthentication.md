@@ -109,7 +109,7 @@ I added React Router a NavBar and a staticwebapp.config.json file.
 
 ## staticwebapp.config.json
 
-```text
+```json
 {
     "navigationFallback": {
         "rewrite": "/index.html",

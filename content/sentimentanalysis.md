@@ -41,7 +41,7 @@ Sentiment analysis has proven to be an invaluable tool for businesses to underst
 
 ## sentiment_analysis.html
 
-```text
+```html
 <!DOCTYPE html>
 <html>
 

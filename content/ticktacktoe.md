@@ -143,7 +143,7 @@ Overall, this code provides the functionality for playing a tic-tac-toe game in 
 
 ## SDK setup
 
-```text
+```html
 <script type="module">
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
@@ -167,7 +167,7 @@ Overall, this code provides the functionality for playing a tic-tac-toe game in 
 
 ## index.html
 
-```text
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -205,7 +205,7 @@ Overall, this code provides the functionality for playing a tic-tac-toe game in 
 
 ## style.css
 
-```text
+```css
 #board {
     display: flex;
     flex-direction: column;
@@ -243,7 +243,7 @@ Overall, this code provides the functionality for playing a tic-tac-toe game in 
 
 ## app.js
 
-```text
+```javascript
 // Initialize Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyAw86TBoGMBkdTHnhs28zKCiVvvkNEcPqM",
@@ -424,7 +424,7 @@ document.addEventListener('DOMContentLoaded', initGame);
 
 ## Security Rules updated
 
-```text
+```json
 {
   "rules": {
     "gameState": {
@@ -437,7 +437,7 @@ document.addEventListener('DOMContentLoaded', initGame);
 
 ## index.html updated
 
-```text
+```html
 <!DOCTYPE html>
 <html>
 
@@ -480,7 +480,7 @@ document.addEventListener('DOMContentLoaded', initGame);
 
 ## style.css updated
 
-```text
+```css
 #board {
     display: flex;
     flex-direction: column;
@@ -523,7 +523,7 @@ document.addEventListener('DOMContentLoaded', initGame);
 
 ## app.js updated
 
-```text
+```javascript
 // Initialize Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyAw86TBoGMBkdTHnhs28zKCiVvvkNEcPqM",

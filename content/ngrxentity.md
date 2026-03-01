@@ -181,7 +181,7 @@ describe('PostService', () => {
 
 ## post.actions.ts
 
-```text
+```typescript
 import { createAction, props } from '@ngrx/store';
 import { Post } from 'src/app/models/post.model';
 
@@ -192,7 +192,7 @@ export const loadPostsFailure = createAction('[Posts] Load Posts Failure', props
 
 ## post.effect.ts
 
-```text
+```typescript
 import { Injectable } from "@angular/core";
 import { catchError, exhaustMap, map, of } from "rxjs";
 import { loadPosts, loadPostsFailure, loadPostsSuccess } from "./post.actions";
@@ -223,7 +223,7 @@ export class PostEffects {
 
 ## post.reducer.ts
 
-```text
+```typescript
 import {
     createEntityAdapter,
     EntityAdapter,
@@ -260,7 +260,7 @@ export const postReducer = createReducer(
 
 ## post.selector.ts
 
-```text
+```typescript
 import { createSelector } from "@ngrx/store";
 import { AppState } from "../app.state";
 import { postAdapter, PostState } from "./post.reducer";
@@ -285,7 +285,7 @@ export const selectError = createSelector(
 
 ## app.component.html
 
-```text
+```html
 <div class="dice" (click)="updateValue()" *ngIf="value$|async as value">{{value}}</div>
 
 <div *ngIf="postsError$ | async as postsError; else loaded">
@@ -313,7 +313,7 @@ export const selectError = createSelector(
 
 ## app.component.ts
 
-```text
+```typescript
 import { Component, OnInit } from '@angular/core';
 import { selectDiceError } from './state/dice/dice.selectors';
 import { selectDiceValue } from './state/dice/dice.selectors';

@@ -126,7 +126,7 @@ if prompt:
 
 ## 1
 
-```text
+```python
 from langchain.document_loaders import PyPDFLoader
 
 loader = PyPDFLoader('hp4.pdf')
@@ -138,7 +138,7 @@ print (pages[0].page_content)
 
 ## 2  3
 
-```text
+```python
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 # Define chunk size, overlap and separators
@@ -159,7 +159,7 @@ texts[1].page_content
 
 ## 4
 
-```text
+```python
 from langchain.llms import OpenAI
 
 from langchain.embeddings import OpenAIEmbeddings

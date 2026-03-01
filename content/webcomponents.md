@@ -188,7 +188,7 @@ Until then it will take a little extra work to use all the features custom eleme
 
 ## html embedded above
 
-```text
+```html
 <label for="cheese">Favourite type of cheese: </label>
 <input id="cheese" aria-describedby="tp2"/>
 <howto-tooltip id="tp2">Help I am trapped inside a tooltip message</howto-tooltip>
@@ -196,7 +196,7 @@ Until then it will take a little extra work to use all the features custom eleme
 
 ## howtoTooltip.js
 
-```text
+```javascript
 class HowtoTooltip extends HTMLElement {
 
     constructor() {
@@ -249,7 +249,7 @@ customElements.whenDefined('howto-tooltip').then(() => {
 
 ## template.html
 
-```text
+```html
 <body>
 
     <template id="my-paragraph">
@@ -280,7 +280,7 @@ customElements.whenDefined('howto-tooltip').then(() => {
 
 ## template.html
 
-```text
+```html
 <body>
 
     <script>
@@ -310,7 +310,7 @@ customElements.whenDefined('howto-tooltip').then(() => {
 
 ## template.html
 
-```text
+```html
 <body>
 
     <script>
@@ -340,7 +340,7 @@ customElements.whenDefined('howto-tooltip').then(() => {
 
 ## template.html
 
-```text
+```html
 <body>
 
     <script>
@@ -383,7 +383,7 @@ customElements.whenDefined('howto-tooltip').then(() => {
 
 ## template.html
 
-```text
+```html
 <body>
 
     <script>

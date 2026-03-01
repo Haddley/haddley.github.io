@@ -91,7 +91,7 @@ if prompt:
 
 ## hp4.ipynb
 
-```text
+```python
 from langchain.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Chroma
@@ -152,7 +152,7 @@ print(search2)
 
 ## app2a.py
 
-```text
+```python
 import streamlit as st
 
 # from langchain.llms import OpenAI

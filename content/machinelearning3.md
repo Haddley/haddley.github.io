@@ -49,7 +49,7 @@ I used Teachable Machines to create a [squishmallows](https://squishmallows.com/
 
 ## squish.html
 
-```text
+```html
 <div>Teachable Machine Image Model</div>
 <button type="button" onclick="init()">Start</button>
 <div id="webcam-container"></div>

@@ -166,7 +166,7 @@ Click [here](https://haddley.github.io/leaflet/index.html) to navigate to a [dem
 
 ## index.html
 
-```text
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -183,7 +183,7 @@ Click [here](https://haddley.github.io/leaflet/index.html) to navigate to a [dem
 
 ## index.html
 
-```text
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -217,7 +217,7 @@ Click [here](https://haddley.github.io/leaflet/index.html) to navigate to a [dem
 
 ## map.html
 
-```text
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -254,7 +254,7 @@ Click [here](https://haddley.github.io/leaflet/index.html) to navigate to a [dem
 
 ## map.html
 
-```text
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -325,7 +325,7 @@ Click [here](https://haddley.github.io/leaflet/index.html) to navigate to a [dem
 
 ## index.html
 
-```text
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -366,7 +366,7 @@ Click [here](https://haddley.github.io/leaflet/index.html) to navigate to a [dem
 
 ## index.html
 
-```text
+```html
 <!DOCTYPE html>
 <html lang="en">
 

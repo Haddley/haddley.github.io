@@ -65,7 +65,7 @@ In summary, this JavaScript code sets up a multiplayer game where players can co
 
 ## Security Rules
 
-```text
+```json
 {
   "rules": {
     ".read": "auth != null",
@@ -84,7 +84,7 @@ In summary, this JavaScript code sets up a multiplayer game where players can co
 
 ## index.html
 
-```text
+```html
 <html>
 
 <head>

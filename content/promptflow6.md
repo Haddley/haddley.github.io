@@ -38,7 +38,7 @@ I used Prompt flow, Semantic Kernel and Planner to create an AI application.
 
 ## python_node_v8t9.py
 
-```text
+```python
 from promptflow import tool
 from semantic_kernel import Kernel
 from semantic_kernel.connectors.ai.open_ai import OpenAIChatCompletion
@@ -73,7 +73,7 @@ async def my_python_tool(input1: str) -> str:
 
 ## python_node_v8t9.py updated
 
-```text
+```python
 # from promptflow import tool
 from promptflow.core import tool
 from semantic_kernel import Kernel

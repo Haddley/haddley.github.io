@@ -216,7 +216,7 @@ NAMING CONVENTION FOR TABLE AND TABLE COLUMN NAMES (SQL Server or JavaScript fri
 
 ## Create Database
 
-```text
+```sql
 -- Create a new database called 'ToDo'
 -- Connect to the 'master' database to run this snippet
 USE master
@@ -239,7 +239,7 @@ Use ToDo;
 
 ## Create Table
 
-```text
+```sql
 -- Create a new table called '[Tasks]' in schema '[dbo]'
 -- Drop the table if it already exists
 IF OBJECT_ID('[dbo].[Tasks]', 'U') IS NOT NULL
@@ -262,7 +262,7 @@ GO
 
 ## Insert into Tasks
 
-```text
+```sql
 -- Insert rows into table 'Tasks' in schema '[dbo]'
 INSERT INTO [dbo].[Tasks]
 ( -- Columns to insert data into

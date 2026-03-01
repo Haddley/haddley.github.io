@@ -56,7 +56,7 @@ https://huggingface.co/tasks/sentence-similarity
 
 ## sentence_similarity.html
 
-```text
+```html
 <!DOCTYPE html>
 <html>
 

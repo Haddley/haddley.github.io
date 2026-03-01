@@ -113,7 +113,7 @@ I used Prompt flow and LangChain to create and deploy an AI application.
 
 ## python_node_n8ln.py
 
-```text
+```python
 from promptflow.core import tool
 from dotenv import load_dotenv, find_dotenv
 #from langchain_openai import AzureChatOpenAI

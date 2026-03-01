@@ -112,7 +112,7 @@ $ python holiday.py
 *Bluey*
 
 
-```text
+```python
 from luma.core.interface.serial import i2c, spi, pcf8574
 from luma.core.interface.parallel import bitbang_6800
 from luma.core.render import canvas

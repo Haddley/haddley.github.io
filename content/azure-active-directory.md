@@ -92,7 +92,7 @@ I tested the who-am-i web application by navigating to http://localhost:3000
 
 ## package.json
 
-```text
+```json
 {
   "name": "who-am-i",
   "version": "1.0.0",

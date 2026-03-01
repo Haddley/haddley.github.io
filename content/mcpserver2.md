@@ -161,7 +161,7 @@ server.connect(transport);
 
 ## package.json
 
-```text
+```json
 {
     "name": "business-central-mcp",
     "version": "1.0.0",
@@ -240,7 +240,7 @@ server.connect(transport);
 
 ## srcbusiness-central-auth.ts
 
-```text
+```typescript
 import axios from 'axios';
 import qs from 'querystring';
 
@@ -335,7 +335,7 @@ export function clearAuthentication(): void {
 
 ## package.json
 
-```text
+```json
 {
     "name": "business-central-mcp",
     "version": "1.0.0",
@@ -368,7 +368,7 @@ export function clearAuthentication(): void {
 
 ## tsconfig.json
 
-```text
+```json
 {
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
@@ -435,7 +435,7 @@ BC_ENVIRONMENT=Production
 
 ## srcmain.ts
 
-```text
+```typescript
 import express from "express";
 import { randomUUID } from "node:crypto";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
@@ -554,7 +554,7 @@ app.listen(3000);
 
 ## package.json
 
-```text
+```json
 {
     "name": "business-central-mcp",
     "version": "1.0.0",

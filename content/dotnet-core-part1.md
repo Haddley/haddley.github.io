@@ -268,7 +268,7 @@ export default App;
 
 ## index.html
 
-```text
+```html
 <!DOCTYPE html>
 <html lang="en">
 

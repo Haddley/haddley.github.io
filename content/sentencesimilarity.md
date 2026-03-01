@@ -29,7 +29,7 @@ Sentence similarity refers to the measure of how similar or related two sentence
 
 ## sentence_similarity.html
 
-```text
+```html
 <!DOCTYPE html>
 <html>
 
