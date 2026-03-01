@@ -17,7 +17,7 @@ I used the instructions from this ["Black and white image colorization with Open
 *Color image generated from a black and white photograph*
 
 
-```text
+```python
 !pip install opencv-python
 !pip install Pillow
 

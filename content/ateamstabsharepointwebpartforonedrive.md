@@ -430,7 +430,7 @@ export default class HaddleyList extends React.Component<IHaddleyListProps, {}> 
 
 ## Other useful code
 
-```text
+```typescript
 const siteId = (location.host + "," + context.pageContext.site.id + "," + context.pageContext.web.id).replace(/[\{\}]/g, "")
 
 ...

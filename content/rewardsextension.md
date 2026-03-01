@@ -66,7 +66,7 @@ Finally, the code includes a page extension called "Customer Card Ext" that exte
 
 ## Rewards.al
 
-```text
+```al
 table 50100 Reward
 {
     DataClassification = ToBeClassified;
@@ -223,7 +223,7 @@ page 50102 "Reward List"
 
 ## Rewards.al updated
 
-```text
+```al
 table 50100 Reward
 {
     DataClassification = ToBeClassified;

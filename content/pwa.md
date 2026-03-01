@@ -200,7 +200,7 @@ I ran the Lighthouse report in Google Chrome DevTools to evaluate the Progressiv
 
 ## sw.js
 
-```text
+```javascript
 const CACHE_NAME = 'clock-cache-v1';
 const urlsToCache = [
   '/offline.html',

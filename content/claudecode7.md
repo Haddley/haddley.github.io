@@ -50,7 +50,7 @@ Claude already knew the correct migration path from its training data — no MCP
 
 I added the Context7 MCP server to Claude Code:
 
-```text
+```bash
 claude mcp add context7 -- npx -y @upstash/context7-mcp --api-key <YOUR_CONTEXT7_API_KEY>
 ```
 

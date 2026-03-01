@@ -87,7 +87,7 @@ I built a Business Central Copilot using the PromptDialog page type, which allow
 
 ## Pag50100.LLM.al
 
-```text
+```al
 namespace LLM.LLM;
 
 page 50100 LLM

@@ -12,7 +12,7 @@ image: "/assets/images/devenv/posts-meta.svg"
 
 I ran a container-based development environment for Dynamics 365 Business Central using Docker on Windows.
 
-```text
+```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 install-module BCContainerHelper -force
 Write-BCContainerHelperWelcomeText

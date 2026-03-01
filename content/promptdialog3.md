@@ -33,7 +33,7 @@ I extended the PromptDialog to render Markdown-formatted LLM responses as HTML. 
 
 ## MarkdownBoxFunctions.js
 
-```text
+```javascript
 function CreateHTMLFromMarkdown(markdown) {
 
     const container = document.getElementById("controlAddIn");
@@ -75,7 +75,7 @@ function CreateHTMLFromMarkdown(markdown) {
 
 ## Pag50100.LLM.al
 
-```text
+```al
 namespace LLM.LLM;
 
 using System.AI;

@@ -56,7 +56,7 @@ Model Context Protocol (MCP) is a framework designed to enhance the reasoning an
 *With the help of the multiply tool the Large Language Model was able to provide the correct answer*
 
 
-```text
+```javascript
 import { McpServer, ResourceTemplate } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";

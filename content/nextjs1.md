@@ -116,7 +116,7 @@ see also: [https://github.com/vercel/next.js/tree/canary/examples/with-styled-co
 
 ## about.js
 
-```text
+```javascript
 function about() {
     return (
         <div>
@@ -130,7 +130,7 @@ export default about
 
 ## index.js first-post.js and second-post.js
 
-```text
+```javascript
 // index.js
 import Link from 'next/link'
 
@@ -186,7 +186,7 @@ export default secondpost
 
 ## image.js
 
-```text
+```javascript
 import Image from 'next/image'
 
 function image() {
@@ -205,7 +205,7 @@ export default image
 
 ## index.js
 
-```text
+```javascript
 import Link from 'next/link'
 import Head from 'next/head'
 
@@ -232,22 +232,26 @@ export default index
 
 ## layout.module.css layout.js and first-post.js
 
-```text
-// layout.module.css
+## layout.module.css
+```css
 .container {
     max-width: 36rem;
     padding: 0 1rem;
     margin: 3rem auto 6rem;
   }
+```
 
-// layout.js
+## layout.js
+```javascript
 import styles from './layout.module.css'
 
 export default function Layout({ children }) {
   return <div className={styles.container}>{children}</div>
 }
+```
 
-// first-post.js
+## first-post.js
+```javascript
 import Layout from '../../components/layout'
 
 function firstpost() {

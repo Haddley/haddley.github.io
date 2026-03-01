@@ -94,7 +94,7 @@ I extended the BooksController code to support POST, PUT and DELETE actions.
 
 ## Book.cs
 
-```text
+```csharp
 using System;
 
 namespace dotnet_api
@@ -116,7 +116,7 @@ namespace dotnet_api
 
 ## BooksController.cs
 
-```text
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -167,7 +167,7 @@ namespace dotnet_api.Controllers
 
 ## Startup.cs
 
-```text
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -231,7 +231,7 @@ namespace dotnet_api
 
 ## App.js
 
-```text
+```javascript
 import React, { useEffect, useState } from 'react';
 
 function App() {
@@ -292,7 +292,7 @@ export default App;
 
 ## BookController.cs
 
-```text
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;

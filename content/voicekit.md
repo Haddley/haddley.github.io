@@ -34,7 +34,7 @@ I assembled the Google AIY Voice Kit, a do-it-yourself version of a Google Home 
 pi@raspberrypi:~ $ sudo nano /etc/apt/sources.list
 ```
 
-```text
+```bash
 deb http://legacy.raspbian.org/raspbian/ buster main contrib non-free rpi
 ```
 

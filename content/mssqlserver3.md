@@ -233,7 +233,7 @@ GO
 
 ## Use ToDo
 
-```text
+```sql
 Use ToDo;
 ```
 
@@ -281,7 +281,7 @@ GO
 
 ## srcindex.js
 
-```text
+```javascript
 "use strict";
 
 const server = require("./server");
@@ -306,7 +306,7 @@ startServer();
 
 ## srcserver.js
 
-```text
+```javascript
 "use strict";
 
 const hapi = require("@hapi/hapi");
@@ -325,7 +325,7 @@ module.exports = app;
 
 ## srcroutesindex.js
 
-```text
+```javascript
 "use strict";
 
 module.exports.register = async server => {
@@ -365,7 +365,7 @@ AZURE_GRAPH_ENDPOINT=https://graph.microsoft.com
 
 ## srcconfig.js
 
-```text
+```javascript
 "use strict";
 
 const dotenv = require("dotenv");
@@ -412,7 +412,7 @@ module.exports = {
 
 ## srcdataindex.js
 
-```text
+```javascript
 "use strict";
 
 const tasks = require("./tasks");
@@ -458,7 +458,7 @@ module.exports = client;
 
 ## srcdatautils.js
 
-```text
+```javascript
 "use strict";
 
 const fs=require("fs-extra");
@@ -484,7 +484,7 @@ module.exports = {
 
 ## srcdatatasksgetTasks.sql
 
-```text
+```sql
 SELECT TOP (1000) [Id],
 	[UserId],
 	[Title],
@@ -500,7 +500,7 @@ ORDER BY [DueDate],
 
 ## srcdatatasksindex.js
 
-```text
+```javascript
 "use strict";
 
 const utils = require("../utils");
@@ -524,7 +524,7 @@ module.exports = { register };
 
 ## srcpluginsindex.js
 
-```text
+```javascript
 "use strict";
 
 const sql=require("./sql");
@@ -536,7 +536,7 @@ module.exports.register = async server=>{
 
 ## srcpluginssql.js
 
-```text
+```javascript
 "use strict";
 
 const dataClient = require("../data");
@@ -554,7 +554,7 @@ module.exports={
 
 ## srcroutesapiindex.js
 
-```text
+```javascript
 "use strict";
 
 const tasks = require("./tasks");
@@ -566,7 +566,7 @@ module.exports.register=async server=>{
 
 ## srcroutesapitasks.js
 
-```text
+```javascript
 "use strict";
 
 module.exports.register = async server => {

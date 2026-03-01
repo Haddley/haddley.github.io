@@ -135,7 +135,7 @@ In summary, this JavaScript code sets up a multiplayer game where players can co
 
 ## app.js
 
-```text
+```javascript
 const mapData = {
   minX: 1,
   maxX: 14,

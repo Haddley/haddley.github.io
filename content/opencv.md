@@ -79,7 +79,7 @@ $ sudo raspi-config
 
 ## TFLite_detection_video.py
 
-```text
+```python
 ######## Webcam Object Detection Using Tensorflow-trained Classifier #########
 #
 # Author: Evan Juras

@@ -83,7 +83,7 @@ I used names other than `slug`, such as `[...param]`.
 
 ## pagesarticlesindex.js
 
-```text
+```javascript
 function index({ articles }) {
     return (
         <div>
@@ -110,7 +110,7 @@ export const getStaticProps = async () => {
 
 ## pagesarticlesidindex.js
 
-```text
+```javascript
 function article({ article }) {
 
     return (
@@ -137,7 +137,7 @@ export const getServerSideProps = async (context) => {
 
 ## pagesarticlesidindex.js
 
-```text
+```javascript
 function article({ article }) {
 
     return (
@@ -209,7 +209,7 @@ export default article
 
 ## pagesfullname...slugindex.js
 
-```text
+```javascript
 import {useRouter} from 'next/router'
 
 function name() {

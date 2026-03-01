@@ -129,7 +129,7 @@ Specifying a database is optional — if I didn't need to persist user data or s
 
 ## articles.js and pagesapiarticlesindex.js
 
-```text
+```javascript
 // articles.js
 
 export const articles = [
@@ -161,7 +161,7 @@ export default index
 
 ## pagesapiarticlesid.js
 
-```text
+```javascript
 // /pages/api/articles/[id].js
 import {articles} from '../../../articles'
 
@@ -184,7 +184,7 @@ export default article
 
 ## pagesunprotected
 
-```text
+```javascript
 import { articles } from '../articles'
 
 function index() {
@@ -211,7 +211,7 @@ NEXTAUTH_GITHUB_SECRET=<secret>
 
 ## apiauth...nextauth.js
 
-```text
+```javascript
 // /api/auth/[...nextauth].js
 import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
@@ -239,7 +239,7 @@ export default (req,res) => NextAuth(req,res,options)
 
 ## _app.js
 
-```text
+```javascript
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { Provider } from "next-auth/client";
 
@@ -273,7 +273,7 @@ export default function App({ Component, pageProps }) {
 
 ## pagesapiarticlesindex.js updated
 
-```text
+```javascript
 import { articles } from '../../../articles'
 import { getSession } from 'next-auth/client'
 
@@ -293,7 +293,7 @@ export default index
 
 ## pagesapiarticlesid.js updated
 
-```text
+```javascript
 import { articles } from '../../../articles'
 import { getSession } from 'next-auth/client'
 
@@ -318,7 +318,7 @@ export default article
 
 ## pagesprotected.js
 
-```text
+```javascript
 import { getSession } from "next-auth/client"
 import { articles } from '../articles'
 
@@ -362,7 +362,7 @@ export const getServerSideProps = async (context) => {
 
 ## pagesprotected.js
 
-```text
+```javascript
 import { useSession } from "next-auth/client"
 import useSWR from 'swr'
 
@@ -399,7 +399,7 @@ export default index
 
 ## pagesindex.js
 
-```text
+```javascript
 import { signIn, signOut, useSession } from 'next-auth/client'
 
 export default function Home() {
@@ -424,7 +424,7 @@ export default function Home() {
 
 ## ...nextauth.js
 
-```text
+```javascript
 import NextAuth from "next-auth";
 import { session } from "next-auth/client";
 import Providers from "next-auth/providers";

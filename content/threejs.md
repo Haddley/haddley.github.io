@@ -34,7 +34,7 @@ I created a three.js scene containing floating cubes and spheres with an anaglyp
 
 ## index-three-analyph
 
-```text
+```javascript
 // imports
 
         import * as THREE from 'three';

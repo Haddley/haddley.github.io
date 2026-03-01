@@ -46,7 +46,7 @@ I created a Business Central extension that allows Business Central users to "ch
 
 ## BlogCopilotExtension.al
 
-```text
+```al
 controladdin BlogCopilotControlAddin
 {
     RequestedHeight = 400;
@@ -90,7 +90,7 @@ page 99110 "Blog Copilot"
 
 ## BlogCopilotFunctions.js
 
-```text
+```javascript
 async function CreateCopilot() {
 
     var __div = document.getElementById('controlAddIn');
@@ -181,7 +181,7 @@ sleep(1000).then(() => { CreateCopilot(); });
 
 ## BlogCopilotStyles.css
 
-```text
+```css
 * {
     font-size: 10.5pt
 }

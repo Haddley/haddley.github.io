@@ -121,7 +121,7 @@ The + wildcard matches a single topic name level.
 
 ## mqtt_esp8266_topic_structure.ino
 
-```text
+```c++
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 
@@ -236,7 +236,7 @@ void loop() {
 
 ## mqtt_esp8266_topic_structure_telemetry.ino
 
-```text
+```c++
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 #include "DHT.h"

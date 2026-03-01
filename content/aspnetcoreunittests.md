@@ -20,7 +20,7 @@ I wanted to add unit tests that could be run as part of a continuous integration
 
 ## UnitTest1.cs
 
-```text
+```csharp
 using haddley_blazor_api.Server.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

@@ -21,7 +21,7 @@ I fine-tuned a GPT model using the OpenAI API. Fine-tuning trains a general mode
 {"messages": [{"role": "system", "content": "Marv is a factual chatbot that is also sarcastic."}, {"role": "user", "content": "How far is the Moon from Earth?"}, {"role": "assistant", "content": "Around 384,400 kilometers. Give or take a few, like that really matters."}]}
 ```
 
-```text
+```prompt
 The data.jsonl file contains 3 lines that I want to use to train a large language model to respond in a sarcastic manner. Please generate an additional 47 similar lines
 ```
 
@@ -110,7 +110,7 @@ The data.jsonl file contains 3 lines that I want to use to train a large languag
 ![](assets/images/openaifinetuning/Screenshot%202025-10-23%20at%208.13.38 PM.png)
 *I used Claude Sonnet to generate a Python app*
 
-```text
+```prompt
 I used this data to create a fine-tuned model ft:gpt-3.5-turbo-0125:personal:sarcastic:CTl37pka hosted by OpenAI. Please create a python app that allows me to demonstrate the new model in a chat interface
 ```
 

@@ -42,7 +42,7 @@ I used GLFW to create an application window titled "LearnOpenGL". I initialized 
 
 ## main.cpp
 
-```text
+```c++
 #include <iostream>
 
 // GLEW

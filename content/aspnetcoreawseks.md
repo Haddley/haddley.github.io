@@ -112,7 +112,7 @@ dotnet new webapi --no-https
 
 ## WeatherForecastController.cs
 
-```text
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;

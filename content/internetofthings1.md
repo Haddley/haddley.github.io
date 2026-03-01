@@ -116,7 +116,7 @@ Desktop and mobile applications are able to connect to an MQTT broker showing me
 
 ## mqtt_esp8266.ino
 
-```text
+```c++
 /*
  Basic ESP8266 MQTT example
  This sketch demonstrates the capabilities of the pubsub library in combination

@@ -45,7 +45,7 @@ How I built hello world on my M1 MacBook Air
 
 ## main.cpp
 
-```text
+```c++
 //
 //  main.cpp
 //  helloWorld

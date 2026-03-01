@@ -127,7 +127,7 @@ I opened LM Studio and navigated to the "Program" tab in the right sidebar. I cl
 
 ## main.ts
 
-```text
+```typescript
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
@@ -183,7 +183,7 @@ server.connect(transport);
 
 ## srcmain.ts
 
-```text
+```typescript
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";

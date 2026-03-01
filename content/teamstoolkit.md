@@ -141,7 +141,7 @@ Teams Toolkit makes creating Teams Tabs/Azure applications easier.
 
 ## An extract from Tab.js
 
-```text
+```javascript
 {this.state.showLoginPage === true && <div className="auth">
           <Profile userInfo={this.state.userInfo} />
           <h2>Welcome to To Do List App!</h2>
@@ -151,7 +151,7 @@ Teams Toolkit makes creating Teams Tabs/Azure applications easier.
 
 ## Profile.js
 
-```text
+```javascript
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
@@ -180,7 +180,7 @@ export default Profile;
 
 ## An extract from Tab.js
 
-```text
+```javascript
 async componentDidMount() {
     await this.initTeamsFx();
     await this.initData();
@@ -252,7 +252,7 @@ async componentDidMount() {
 
 ## An extract from Tab.js
 
-```text
+```javascript
 {this.state.initialized && !this.state.items.length && !this.state.isAddingItem && <div className="no-item">
                 <div>
                   <img src={noItemimage} alt="no item" />
@@ -266,7 +266,7 @@ async componentDidMount() {
 
 ## An extract from Tab.js
 
-```text
+```javascript
 {this.state.isAddingItem && <div className="item add">
                 <div className="complete">
                   <Checkbox
@@ -301,7 +301,7 @@ async componentDidMount() {
 
 ## An extract from Tab.js
 
-```text
+```javascript
 const items = this.state.items?.map((item, index) =>
       <div key={index} className="item">
         <div className="complete">
@@ -344,7 +344,7 @@ const items = this.state.items?.map((item, index) =>
 
 ## index.js
 
-```text
+```javascript
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 

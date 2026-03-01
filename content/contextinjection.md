@@ -21,7 +21,7 @@ Context injection is a technique that involves providing GPT-4 with additional r
 
 ## context injection
 
-```text
+```prompt
 You are an enthusiastic student keen to impress. Given the following text, answer the questions using only the text. If you are unsure and the answer is not explicitly in the text, say 'Sorry, I don't know how to answer that question".
 
 text:

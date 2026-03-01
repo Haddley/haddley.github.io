@@ -34,7 +34,7 @@ I created two related Business Central tables and connected to them as Power Pla
 
 ## Car.al
 
-```text
+```al
 table 50200 "Car Brand"
 {
     DataClassification = CustomerContent;

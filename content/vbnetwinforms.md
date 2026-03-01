@@ -75,7 +75,7 @@ These are just general steps, and the specific implementation may vary depending
 
 ## Form1.vb
 
-```text
+```vb
 Imports System.Net.Http
 Imports WebApplicationAPI
 Imports Newtonsoft.Json

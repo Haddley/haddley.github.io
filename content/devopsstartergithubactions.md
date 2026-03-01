@@ -276,7 +276,7 @@ jobs:
 
 ## routesindex.js
 
-```text
+```javascript
 'use strict';
 var express = require('express');
 var router = express.Router();
@@ -304,7 +304,7 @@ module.exports = router;
 
 ## unittestssampleUnitTests.js
 
-```text
+```javascript
 var assert = require('assert');
 var app = require('../../Application/app');
 var http = require('http');

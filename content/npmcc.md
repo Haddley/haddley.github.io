@@ -80,7 +80,7 @@ $ node publish
 
 ## addon.c
 
-```text
+```c
 #include <assert.h>
 #include <node_api.h>
 #include <stdio.h>

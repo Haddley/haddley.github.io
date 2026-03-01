@@ -349,7 +349,7 @@ GO
 
 ## Program.cs
 
-```text
+```csharp
 using System;
 using System.Data.SqlClient;
 using System.Data;
@@ -393,7 +393,7 @@ namespace dotnet_sql {
 
 ## index.js
 
-```text
+```javascript
 const mssql = require('mssql')
 
 const config = {

@@ -95,7 +95,7 @@ I logged in to my Microsoft Dynamics 365 Business Central environment with the a
 
 ## LeafletMapsExtension.al
 
-```text
+```al
 controladdin LeafletMapsFactBox
 {
     RequestedHeight = 400;
@@ -188,7 +188,7 @@ pageextension 50103 "LeafletMaps Cust List" extends "Customer List"
 
 ## LeafletMapsFunctions.js
 
-```text
+```javascript
 function CreateSidebar(no, city) {
     debugger;
     var __div = document.getElementById('controlAddIn');

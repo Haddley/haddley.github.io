@@ -122,7 +122,7 @@ I tested the who-am-i web application by navigating to http://localhost:3000
 
 ## index.js
 
-```text
+```javascript
 /*
  * Copyright (c) Microsoft Corporation. All rights reserved.
  * Licensed under the MIT License.

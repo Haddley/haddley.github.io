@@ -75,7 +75,7 @@ For fun I changed the code above to update the rotation applied to the triangle 
 
 ## main.cpp
 
-```text
+```c++
 #include <iostream>
 
 // GLEW
@@ -298,7 +298,7 @@ int main()
 
 ## Program.cs
 
-```text
+```csharp
 #include <iostream>
 
 // GLEW

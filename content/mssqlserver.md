@@ -35,10 +35,12 @@ I opened a shell for the Docker image and downloaded the AdventureWorks2019.bak 
 
 I opened a database query window and ran this query.
 
+```sql
 RESTORE DATABASE AdventureWorks2019 
 FROM DISK = N'/usr/AdventureWorks2019.bak'
 WITH MOVE 'AdventureWorks2017' TO '/usr/AdventureWorks2019.mdf',
 MOVE 'AdventureWorks2017_Log' TO '/usr/AdventureWorks2019_Log.ldf'
+```
 
 ![](assets/images/mssqlserver/screen-shot-2021-03-14-at-5.56.57-pm-1836x1029.png)
 *RESTORE DATABASE*

@@ -137,7 +137,7 @@ I added React Router a NavBar and a staticwebapp.config.json file.
 
 ## updated JavaScript
 
-```text
+```javascript
 App.js
 
 import Navbar from "./Navbar"

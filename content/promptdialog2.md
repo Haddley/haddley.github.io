@@ -39,7 +39,7 @@ I connected the Business Central PromptDialog to Azure OpenAI, so the Copilot ge
 
 ## Pag50100.LLM.al updated
 
-```text
+```al
 namespace LLM.LLM;
 
 using System.AI;

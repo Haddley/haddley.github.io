@@ -334,7 +334,7 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
 ## schema.graphqls
 
-```text
+```sdl
 type Query {
     books: [Book]
     book(id: ID!): Book

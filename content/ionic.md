@@ -499,7 +499,7 @@ export default Home;
 
 ## index.tsx
 
-```text
+```typescript
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';

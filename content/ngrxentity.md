@@ -102,7 +102,7 @@ I added NgRx Entity, which provides an API to manipulate and query entity collec
 
 ## post.service.spec.ts
 
-```text
+```typescript
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { createSpyFromClass, Spy } from 'jasmine-auto-spies';
 import { Post } from '../models/post.model';

@@ -89,7 +89,7 @@ The same approach could be used to allow users to chat to other Business Central
 
 ## CustomerCopilotExtension.al
 
-```text
+```al
 controladdin CustomerCopilotFactBox
 {
     RequestedHeight = 400;
@@ -165,7 +165,7 @@ pageextension 99103 "Customer Copilot Cust List" extends "Customer List"
 
 ## CustomerCopilotFunctions.js
 
-```text
+```javascript
 function CreateSidebar(no, city, name, blocked) {
     var __div = document.getElementById('controlAddIn');
 
@@ -257,7 +257,7 @@ function fontFamily(fonts) {
 
 ## CustomerCopilotStyles.css
 
-```text
+```css
 * {
     font-size: 10.5pt
 }

@@ -137,7 +137,7 @@ I used `AzureADProvider` from `next-auth/providers/azure-ad` to connect Next.js 
 
 ## pagesapiauth...nextauth.js pagesarticlesindex.js a...
 
-```text
+```javascript
 // /pages/api/auth/[...nextauth].js 
 import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
@@ -245,7 +245,7 @@ export const getServerSideProps = async (context) => {
 
 ## ...nextauth.js updated
 
-```text
+```javascript
 import NextAuth from "next-auth";
 import GihubProvider from "next-auth/providers/github"
 import AzureADProvider from "next-auth/providers/azure-ad"

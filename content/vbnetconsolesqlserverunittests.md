@@ -82,7 +82,7 @@ I wrote the UnitTestProject2 tests with the help of ChatGPT.
 
 ## UnitTest1.vb
 
-```text
+```vb
 Imports System.Data.SqlClient
 Imports System.Text
 Imports Microsoft.VisualStudio.TestTools.UnitTesting
@@ -133,7 +133,7 @@ End Class
 
 ## Module1.vb
 
-```text
+```vb
 Imports System.Data.SqlClient
 
 Public Module Module1
@@ -177,7 +177,7 @@ End Module
 
 ## UnitTestProject1 - UnitTest1.vb
 
-```text
+```vb
 mports System.Data.SqlClient
 Imports System.Text
 Imports Microsoft.VisualStudio.TestTools.UnitTesting
@@ -281,7 +281,7 @@ End Class
 
 ## UnitTestProject2 - UnitTest1.vb
 
-```text
+```vb
 Imports System.Data.SqlClient
 Imports System.IO
 Imports ConsoleApp1

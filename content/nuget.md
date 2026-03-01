@@ -180,7 +180,7 @@ $ dotnet add package HaddleyOffice365.dotnet-factorial --version 1.0.0**
 
 ## UnitTests.cs
 
-```text
+```csharp
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using dotnet_factorial.recursive;
 using dotnet_factorial.iterative;
@@ -207,7 +207,7 @@ namespace dotnet_factorial.unittests
 
 ## iterativefunctions.cs
 
-```text
+```csharp
 using System;
 
 namespace dotnet_factorial.iterative
@@ -231,7 +231,7 @@ namespace dotnet_factorial.iterative
 
 ## recursivefunctions.cs
 
-```text
+```csharp
 using System;
 
 namespace dotnet_factorial.recursive
@@ -308,7 +308,7 @@ jobs:
 
 ## Program.cs
 
-```text
+```csharp
 using System;
 using dotnet_factorial.iterative;
 using dotnet_factorial.recursive;

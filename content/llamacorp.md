@@ -71,7 +71,7 @@ chromadb
 
 ## app1a.py
 
-```text
+```python
 # from langchain.llms import OpenAI
 from langchain.llms import  LlamaCpp
 import streamlit
@@ -230,7 +230,7 @@ if prompt:
 
 ## app3a.py
 
-```text
+```python
 #!pip install streamlit
 #!pip install llama-cpp-python
 #!pip install watchdog

@@ -139,7 +139,7 @@ A Blazor Server project and a Model-View-Controller project are both ASP.NET Cor
 
 ## ShowPhoto.razor
 
-```text
+```razor
 @page "/showphoto"
 
 @using Microsoft.Identity.Web
@@ -192,7 +192,7 @@ else
 
 ## Program.cs
 
-```text
+```csharp
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.Identity.Web;

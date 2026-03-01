@@ -132,7 +132,7 @@ Then the "/api" endpoint is exposed. The /api handler is only run if passport.au
 
 ## App.js
 
-```text
+```javascript
 import React, { useState } from "react";
 import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from "@azure/msal-react";
 import { loginRequest } from "./authConfig";

@@ -90,7 +90,7 @@ I used Chroma to create an [embeddings](/posts/sentencesimilarity/) vector store
 
 ## app0.py
 
-```text
+```python
 # pip install streamlit
 # python -m streamlit run app0.py              
 
@@ -105,7 +105,7 @@ if prompt:
 
 ## app1.py
 
-```text
+```python
 # pip install langchain openai streamlit
 # python -m streamlit run app.py              
 
@@ -186,7 +186,7 @@ store.get()
 
 ## 5
 
-```text
+```python
 search = store.similarity_search_with_score('Does the patient smoke?')
 
 search
@@ -194,7 +194,7 @@ search
 
 ## 6
 
-```text
+```python
 db = Chroma(persist_directory=save_directory,collection_name='hp4',embedding_function=embeddings)
 
 print(db._collection.count())
@@ -204,7 +204,7 @@ db.get()
 
 ## 7
 
-```text
+```python
 vectorstore_info = VectorStoreInfo(
     name="hp4",
     description="vectore store generate from hp4.pdf",
@@ -226,7 +226,7 @@ response
 
 ## app2.py
 
-```text
+```python
 import streamlit as st
 
 from langchain.llms import OpenAI

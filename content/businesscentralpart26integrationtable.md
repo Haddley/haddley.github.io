@@ -233,7 +233,7 @@ In Dynamics 365 Business Central, an Integration Table is a specialized table us
 *The Total Amount field was displayed on the Customer Order Card*
 
 
-```text
+```al
 page 50100 "Customer Orders"
 {
     ApplicationArea = All;
@@ -300,7 +300,7 @@ page 50100 "Customer Orders"
 
 ## Tab-Ext50105.CustomerOrderExt.al
 
-```text
+```al
 tableextension 50105 "Customer Order Ext" extends "CDS hadd_CustomerOrder"
 {
     DataCaptionFields = hadd_Name, "Account Name";
@@ -319,7 +319,7 @@ tableextension 50105 "Customer Order Ext" extends "CDS hadd_CustomerOrder"
 
 ## Pag50102.CustomerOrderLines.al
 
-```text
+```al
 page 50102 "Customer Order Lines"
 {
     ApplicationArea = All;
@@ -443,7 +443,7 @@ page 50102 "Customer Order Lines"
 
 ## Pag50101.CustomerOrder.al
 
-```text
+```al
 page 50101 "Customer Order"
 {
     ApplicationArea = All;

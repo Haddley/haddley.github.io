@@ -80,7 +80,7 @@ I used GLFW to create an application window with a given width and height and th
 
 ## main.cpp
 
-```text
+```c++
 #include <GLFW/glfw3.h>
 
 int main(void)
