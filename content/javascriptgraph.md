@@ -71,7 +71,7 @@ The final code is included below.
 
 ## index.js
 
-```text
+```javascript
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT license.
 
@@ -256,7 +256,7 @@ async function makeGraphCallAsync() {
 
 ## graphHelper.js
 
-```text
+```javascript
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT license.
 
@@ -438,7 +438,7 @@ module.exports.makeGraphCallAsync = makeGraphCallAsync;
 
 ## appSettings.js
 
-```text
+```javascript
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT license.
 

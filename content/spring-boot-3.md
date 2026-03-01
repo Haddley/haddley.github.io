@@ -70,7 +70,7 @@ I created a Spring Boot application using Spring Data JPA, which provides high-l
 *I accessed the haddley-spring-data-jpa application hosted in Azure*
 
 
-```text
+```java
 package com.haddley.springdatajpa;
 
 import org.springframework.boot.SpringApplication;
@@ -96,7 +96,7 @@ public class SpringdatajpaApplication {
 
 ## TodoItem.java
 
-```text
+```java
 package com.haddley.springdatajpa.models;
 
 import java.time.Instant;
@@ -158,7 +158,7 @@ public class TodoItem {
 
 ## TodoItemRepository.java
 
-```text
+```java
 package com.haddley.springdatajpa.models;
 
 import com.haddley.springdatajpa.models.TodoItem;
@@ -170,7 +170,7 @@ public interface TodoItemRepository extends CrudRepository {
 
 ## TodoItemDataLoader.java
 
-```text
+```java
 package com.haddley.springdatajpa.config;
 
 import com.haddley.springdatajpa.models.TodoItem;
@@ -212,7 +212,7 @@ public class TodoItemDataLoader implements CommandLineRunner {
 
 ## SpringdatajpaApplication.java updated
 
-```text
+```java
 package com.haddley.springdatajpa;
 
 import org.springframework.boot.SpringApplication;

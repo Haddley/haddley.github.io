@@ -105,7 +105,7 @@ I added a USER role and an ADMIN role
 
 ## SecurityConfig.java
 
-```text
+```java
 package com.haddley.springoauth2.controller.config;
 
 import org.springframework.context.annotation.Bean;
@@ -134,7 +134,7 @@ public class SecurityConfig {
 
 ## WebConfig.java
 
-```text
+```java
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -157,7 +157,7 @@ public class WebConfig implements WebMvcConfigurer {
 
 ## CustomOAuthUserService.java
 
-```text
+```java
 package com.haddley.springoauth2.service;
 
 import com.haddley.springoauth2.model.CustomOAuth2User;
@@ -209,7 +209,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 
 ## CustomOAuth2User.java
 
-```text
+```java
 package com.haddley.springoauth2.model;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -248,7 +248,7 @@ public class CustomOAuth2User implements OAuth2User {
 
 ## MyRestController.java
 
-```text
+```java
 package com.haddley.springoauth2.controller;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -281,7 +281,7 @@ public class MyRestController {
 
 ## MyPageController.java
 
-```text
+```java
 package com.haddley.springoauth2.controller;
 
 import org.springframework.stereotype.Controller;
@@ -360,7 +360,7 @@ public class MyPageController {
 
 ## pom.xml
 
-```text
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">

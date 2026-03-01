@@ -74,7 +74,7 @@ I added static files (images, HTML, and JavaScript) to the /src/main/resources/s
 
 ## Book.java
 
-```text
+```java
 package com.haddley.Books;
 
 public class Book {
@@ -109,7 +109,7 @@ public class Book {
 
 ## BooksRestController.java
 
-```text
+```java
 package com.haddley.Books;
 
 import java.util.ArrayList;
@@ -152,7 +152,7 @@ public class BooksRestController {
 
 ## App.js
 
-```text
+```javascript
 import React, { useEffect, useState } from 'react';
 
 function App() {

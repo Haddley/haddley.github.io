@@ -102,7 +102,7 @@ spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
 
 ## SeedDataConfig.java
 
-```text
+```java
 package com.haddley.haddleyspringgraphql.config;
 
 import com.haddley.haddleyspringgraphql.models.Book;
@@ -240,7 +240,7 @@ public class SeedDataConfig implements CommandLineRunner {
 
 ## Author.js
 
-```text
+```javascript
 package com.haddley.haddleyspringgraphql.models;
 
 import jakarta.persistence.*;
@@ -274,7 +274,7 @@ public class Author {
 
 ## Book.java
 
-```text
+```java
 package com.haddley.haddleyspringgraphql.models;
 
 import jakarta.persistence.*;
@@ -310,7 +310,7 @@ public class Book {
 
 ## AuthorRepository.java
 
-```text
+```java
 package com.haddley.haddleyspringgraphql.repositories;
 
 import com.haddley.haddleyspringgraphql.models.Author;
@@ -322,7 +322,7 @@ public interface AuthorRepository extends JpaRepository<Author, Long> {
 
 ## BookRepository.java
 
-```text
+```java
 package com.haddley.haddleyspringgraphql.repositories;
 
 import com.haddley.haddleyspringgraphql.models.Book;
@@ -364,7 +364,7 @@ type Book {
 
 ## AuthorController.java
 
-```text
+```java
 package com.haddley.haddleyspringgraphql.controllers;
 
 import com.haddley.haddleyspringgraphql.models.Author;
@@ -411,7 +411,7 @@ public class AuthorController {
 
 ## BookController.java
 
-```text
+```java
 package com.haddley.haddleyspringgraphql.controllers;
 
 import com.haddley.haddleyspringgraphql.models.Book;
@@ -477,7 +477,7 @@ public class BookController {
 
 ## pom.xml
 
-```text
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
