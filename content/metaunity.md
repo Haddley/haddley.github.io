@@ -301,8 +301,22 @@ public class PrismVisionCorrection : MonoBehaviour
         _leftCam  = _rig.leftEyeCamera;
         _rightCam = _rig.rightEyeCamera;
 
+        // When usePerEyeCameras is true the per-eye cameras are created fresh and
+        // do not inherit the centre eye's passthrough clear settings.  Without this
+        // the cameras render a solid (blue) background instead of compositing over
+        // the passthrough layer.
+        ConfigurePassthroughCamera(_leftCam);
+        ConfigurePassthroughCamera(_rightCam);
+
         if (showSpiritLevel)
             BuildSpiritLevel(_rig.centerEyeAnchor);
+    }
+
+    static void ConfigurePassthroughCamera(Camera cam)
+    {
+        if (cam == null) return;
+        cam.clearFlags       = CameraClearFlags.SolidColor;
+        cam.backgroundColor  = Color.clear;   // alpha = 0 → passthrough shows through
     }
 
     void OnEnable()
@@ -452,7 +466,6 @@ public class PrismVisionCorrection : MonoBehaviour
         return f;
     }
 }
-
 ```
 
 ## References
