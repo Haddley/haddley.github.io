@@ -149,7 +149,7 @@ Categories are defined in `src/lib/categories.ts`. Each post frontmatter uses th
 | 3D printing | 3d-printing |
 | macOS | macos |
 | Firebase | firebase |
-| Web 3D | web-3d |
+| 3D | 3d |
 
 **Rules:**
 - Use the exact category name from the table above — names are matched exactly by `getCategoryByName()` in `src/lib/categories.ts`

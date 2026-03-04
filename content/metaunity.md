@@ -1,15 +1,12 @@
 ---
 title: "Meta Unity"
-description: "Unity project for Meta Quest 3 Headset"
+description: "Hacking my vision with a Meta Quest 3 Headset"
 date: "2026-02-28"
-categories: ["Mobile"]
+categories: ["Mobile", "3D"]
 tags: "virtual-reality, meta, unity, quest"
 slug: "metaunity"
 image: "/assets/images/metaunity/641532049_1193231526215322_7894490494628209553_n.jpg"
 ---
-
-
-## Hello World
 
 I set up Unity for Meta Quest virtual reality (VR) development. I learned how to:
 - Set up a Unity 3D project that runs on Meta Quest VR headsets
@@ -213,6 +210,48 @@ explain PrismVisionCorrection.cs
 ![](assets/images/metaunity/Screenshot-2026-03-02-at-7.00.32-AM.png)
 *Claude Code explained how the prism correction and spirit level work*
 
+## Dynamically adjusting Prism values
+
+```prompt
+Please update the PrismVisionCorrection script to include the following features:
+
+1. Automatic Tilt Compensation
+
+The prism correction should adjust dynamically based on lateral head tilt (roll).
+When the head is level, the full horizontal and vertical prescription values are applied.
+Tilting toward the left shoulder gradually reduces the correction, reaching zero when the tilt reaches the compensationAngle (e.g., 16°).
+Tilting toward the right shoulder gradually increases the correction, reaching double the original prescription at the same angle.
+
+2. More Robust Head‑Tilt Measurement
+
+Replace the current method for measuring head roll with a more reliable approach that accurately detects side‑to‑side tilt, even when the head is turned or angled up/down.
+The output should be positive for right tilt, negative for left tilt.
+
+3. Enhanced HUD Display (Spirit Level)
+
+Slightly enlarge the HUD area:
+
+Line 1 (dim grey): Show the base prescription values (the original values from the prescription, or zero if the Y‑button reset has been used).
+Line 2 (light blue): Show the actual applied values after tilt adjustment, along with the current tilt scale factor, measured head tilt, and the compensationAngle.
+Both lines must update in real time as head movement occurs or prescription values are changed.
+
+4. Quick Reset Buttons (Left Controller)
+
+Y button: Reset all four prism values (horizontal and vertical for both eyes) to zero.
+X button: Restore the original prescription values as they were set in the Inspector when the scene started.
+
+Do you have any questions?
+```
+
+![](assets/images/metaunity/Screenshot-2026-03-04-at-3.49.02-PM.png)
+*Claude Code read the script and confirmed it had no questions before implementing all four features*
+
+![](assets/images/metaunity/Screenshot-2026-03-04-at-3.51.16-PM.png)
+*I clicked Yes to allow Claude Code to write the updated PrismVisionCorrection.cs*
+
+![](assets/images/metaunity/Screenshot-2026-03-04-at-3.51.59-PM.png)
+*Claude Code completed all four changes and showed a summary of the tilt compensation, robust roll measurement, enhanced HUD, and quick reset buttons*
+
 ```csharp
 using System.Collections.Generic;
 using UnityEngine;
@@ -245,6 +284,18 @@ using UnityEngine.XR;
 ///   • Decreasing p[0,2] shifts the frustum LEFT  → rendered image moves RIGHT.
 ///   • Increasing p[0,2] shifts the frustum RIGHT → rendered image moves LEFT.
 /// The hook fires via RenderPipelineManager.beginCameraRendering (URP-compatible).
+///
+/// TILT COMPENSATION
+/// -----------------
+/// The applied correction is scaled by a tilt factor derived from head roll:
+///   • Head level (0°)          → scale = 1.0  (full prescription)
+///   • Left tilt (−compensationAngle) → scale = 0.0  (no correction)
+///   • Right tilt (+compensationAngle) → scale = 2.0  (double correction)
+///
+/// CONTROLLER SHORTCUTS (Left Controller)
+/// ----------------------------------------
+///   Y button → zero all prism values
+///   X button → restore original Inspector values
 /// </summary>
 [RequireComponent(typeof(OVRCameraRig))]
 public class PrismVisionCorrection : MonoBehaviour
@@ -271,6 +322,12 @@ public class PrismVisionCorrection : MonoBehaviour
     [Tooltip("Head roll angle (degrees) at which the bubble reaches the tube end.")]
     public float maxTiltDegrees = 15f;
 
+    // ── Tilt Compensation ─────────────────────────────────────────────────────
+
+    [Header("Tilt Compensation")]
+    [Tooltip("Head roll (degrees) at which correction reaches 0× (left) or 2× (right).")]
+    public float compensationAngle = 16f;
+
     // ── Internals ─────────────────────────────────────────────────────────────
 
     // 1 prism diopter ≈ 0.01 radians of angular deflection.
@@ -280,11 +337,31 @@ public class PrismVisionCorrection : MonoBehaviour
     Camera       _leftCam;
     Camera       _rightCam;
 
+    // Snapshot of Inspector values taken at Start (restored by X button).
+    float _origRightVerticalPD;
+    float _origRightHorizontalPD;
+    float _origLeftVerticalPD;
+    float _origLeftHorizontalPD;
+
+    // Current "base" values — what the prescription is without tilt scaling.
+    // Modified by Y (zero) and X (restore) buttons.
+    float _baseRightVerticalPD;
+    float _baseRightHorizontalPD;
+    float _baseLeftVerticalPD;
+    float _baseLeftHorizontalPD;
+
+    // Final applied values written by Update() and read by the render hook.
+    float _appliedRightVerticalPD;
+    float _appliedRightHorizontalPD;
+    float _appliedLeftVerticalPD;
+    float _appliedLeftHorizontalPD;
+
     // Spirit level UI
     RectTransform _bubble;
     Image         _bubbleImg;
-    Text          _rollLabel;
-    float         _bubbleHalfTravel; // canvas units the bubble can move each side
+    Text          _prescriptionLabel; // Line 1: base prescription (dim grey)
+    Text          _appliedLabel;      // Line 2: applied + tilt info (light blue)
+    float         _bubbleHalfTravel;  // canvas units the bubble can move each side
 
     // ── Lifecycle ─────────────────────────────────────────────────────────────
 
@@ -308,6 +385,18 @@ public class PrismVisionCorrection : MonoBehaviour
         ConfigurePassthroughCamera(_leftCam);
         ConfigurePassthroughCamera(_rightCam);
 
+        // Snapshot Inspector values so X button can restore them.
+        _origRightVerticalPD   = rightVerticalPD;
+        _origRightHorizontalPD = rightHorizontalPD;
+        _origLeftVerticalPD    = leftVerticalPD;
+        _origLeftHorizontalPD  = leftHorizontalPD;
+
+        // Initialise base to match Inspector.
+        _baseRightVerticalPD   = _origRightVerticalPD;
+        _baseRightHorizontalPD = _origRightHorizontalPD;
+        _baseLeftVerticalPD    = _origLeftVerticalPD;
+        _baseLeftHorizontalPD  = _origLeftHorizontalPD;
+
         if (showSpiritLevel)
             BuildSpiritLevel(_rig.centerEyeAnchor);
     }
@@ -315,8 +404,8 @@ public class PrismVisionCorrection : MonoBehaviour
     static void ConfigurePassthroughCamera(Camera cam)
     {
         if (cam == null) return;
-        cam.clearFlags       = CameraClearFlags.SolidColor;
-        cam.backgroundColor  = Color.clear;   // alpha = 0 → passthrough shows through
+        cam.clearFlags      = CameraClearFlags.SolidColor;
+        cam.backgroundColor = Color.clear; // alpha = 0 → passthrough shows through
     }
 
     void OnEnable()
@@ -329,7 +418,7 @@ public class PrismVisionCorrection : MonoBehaviour
         RenderPipelineManager.beginCameraRendering -= OnBeginCameraRendering;
     }
 
-    // ── Prism correction ─────────────────────────────────────────────────────
+    // ── Prism correction ──────────────────────────────────────────────────────
 
     // Called by URP just before each camera renders — after OVR has set the
     // projection matrix — so our offsets override whatever OVR wrote.
@@ -339,45 +428,103 @@ public class PrismVisionCorrection : MonoBehaviour
         {
             Matrix4x4 p = cam.projectionMatrix;
             // Base Down  → image UP   → frustum shifts DOWN  → p[1,2] decreases
-            p[1, 2] -= Mathf.Tan(rightVerticalPD   * PdToRad);
+            p[1, 2] -= Mathf.Tan(_appliedRightVerticalPD   * PdToRad);
             // Base Out   → image RIGHT → frustum shifts LEFT  → p[0,2] decreases
-            p[0, 2] -= Mathf.Tan(rightHorizontalPD * PdToRad);
+            p[0, 2] -= Mathf.Tan(_appliedRightHorizontalPD * PdToRad);
             cam.projectionMatrix = p;
         }
         else if (cam == _leftCam)
         {
             Matrix4x4 p = cam.projectionMatrix;
             // Base Up    → image DOWN  → frustum shifts UP    → p[1,2] increases
-            p[1, 2] += Mathf.Tan(leftVerticalPD   * PdToRad);
+            p[1, 2] += Mathf.Tan(_appliedLeftVerticalPD   * PdToRad);
             // Base Out   → image LEFT  → frustum shifts RIGHT → p[0,2] increases
-            p[0, 2] += Mathf.Tan(leftHorizontalPD * PdToRad);
+            p[0, 2] += Mathf.Tan(_appliedLeftHorizontalPD * PdToRad);
             cam.projectionMatrix = p;
         }
     }
 
-    // ── Spirit Level update ───────────────────────────────────────────────────
+    // ── Update ────────────────────────────────────────────────────────────────
 
     void Update()
     {
+        HandleButtons();
+
+        float roll      = GetHeadRollDegrees();
+        float tiltScale = ComputeTiltScale(roll);
+
+        // Compute applied values: base prescription scaled by tilt factor.
+        _appliedRightVerticalPD   = _baseRightVerticalPD   * tiltScale;
+        _appliedRightHorizontalPD = _baseRightHorizontalPD * tiltScale;
+        _appliedLeftVerticalPD    = _baseLeftVerticalPD    * tiltScale;
+        _appliedLeftHorizontalPD  = _baseLeftHorizontalPD  * tiltScale;
+
         if (_bubble == null) return;
 
-        float roll = GetHeadRollDegrees();
-
-        // Bubble moves like a real spirit level: toward the raised/higher side.
+        // Bubble position: moves toward the raised/higher side.
         float t = Mathf.Clamp(roll / maxTiltDegrees, -1f, 1f);
         _bubble.anchoredPosition = new Vector2(-t * _bubbleHalfTravel, 0f);
 
-        // Colour: green (level) → amber → red (tilted)
+        // Colour: green (level) → amber → red (tilted).
         float severity = Mathf.Abs(t);
-        Color green  = new Color(0.10f, 0.85f, 0.25f, 0.90f);
-        Color amber  = new Color(1.00f, 0.65f, 0.00f, 0.90f);
-        Color red    = new Color(0.90f, 0.15f, 0.15f, 0.90f);
+        Color green = new Color(0.10f, 0.85f, 0.25f, 0.90f);
+        Color amber = new Color(1.00f, 0.65f, 0.00f, 0.90f);
+        Color red   = new Color(0.90f, 0.15f, 0.15f, 0.90f);
         _bubbleImg.color = severity < 0.4f
             ? Color.Lerp(green, amber, severity / 0.4f)
             : Color.Lerp(amber, red,   (severity - 0.4f) / 0.6f);
 
-        if (_rollLabel != null)
-            _rollLabel.text = string.Format("Head tilt  {0:+0.0;-0.0;0.0}\u00b0   (0\u00b0 = level)", roll);
+        // Line 1: base prescription values (dim grey).
+        if (_prescriptionLabel != null)
+            _prescriptionLabel.text = string.Format(
+                "Rx  RV:{0:+0.00;-0.00;0.00}  RH:{1:+0.00;-0.00;0.00}  LV:{2:+0.00;-0.00;0.00}  LH:{3:+0.00;-0.00;0.00}",
+                _baseRightVerticalPD, _baseRightHorizontalPD,
+                _baseLeftVerticalPD,  _baseLeftHorizontalPD);
+
+        // Line 2: applied values + tilt diagnostics (light blue).
+        if (_appliedLabel != null)
+            _appliedLabel.text = string.Format(
+                "Applied  RV:{0:+0.00;-0.00;0.00}  RH:{1:+0.00;-0.00;0.00}  LV:{2:+0.00;-0.00;0.00}  LH:{3:+0.00;-0.00;0.00}   \u00d7{4:0.00}  tilt:{5:+0.0;-0.0;0.0}\u00b0/{6:0}\u00b0",
+                _appliedRightVerticalPD, _appliedRightHorizontalPD,
+                _appliedLeftVerticalPD,  _appliedLeftHorizontalPD,
+                tiltScale, roll, compensationAngle);
+    }
+
+    // ── Controller buttons ────────────────────────────────────────────────────
+
+    void HandleButtons()
+    {
+        // Y button (Button.Two on LTouch): zero all prism values.
+        if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.LTouch))
+        {
+            _baseRightVerticalPD   = 0f;
+            _baseRightHorizontalPD = 0f;
+            _baseLeftVerticalPD    = 0f;
+            _baseLeftHorizontalPD  = 0f;
+        }
+
+        // X button (Button.One on LTouch): restore original Inspector values.
+        if (OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.LTouch))
+        {
+            _baseRightVerticalPD   = _origRightVerticalPD;
+            _baseRightHorizontalPD = _origRightHorizontalPD;
+            _baseLeftVerticalPD    = _origLeftVerticalPD;
+            _baseLeftHorizontalPD  = _origLeftHorizontalPD;
+        }
+    }
+
+    // ── Tilt compensation math ────────────────────────────────────────────────
+
+    /// <summary>
+    /// Maps head roll to a correction scale factor.
+    ///   Roll =  0                →  1.0  (full prescription)
+    ///   Roll = −compensationAngle →  0.0  (no correction, left tilt)
+    ///   Roll = +compensationAngle →  2.0  (double correction, right tilt)
+    /// </summary>
+    float ComputeTiltScale(float rollDegrees)
+    {
+        if (compensationAngle <= 0f) return 1f;
+        return 1f + Mathf.Clamp(rollDegrees / compensationAngle, -1f, 1f);
     }
 
     // ── Spirit Level construction ─────────────────────────────────────────────
@@ -391,45 +538,51 @@ public class PrismVisionCorrection : MonoBehaviour
         root.transform.localScale    = Vector3.one * 0.0008f;
 
         var canvas = root.AddComponent<Canvas>();
-        canvas.renderMode  = RenderMode.WorldSpace;
+        canvas.renderMode   = RenderMode.WorldSpace;
         canvas.sortingOrder = 10;
         var rootRT = root.GetComponent<RectTransform>();
-        rootRT.sizeDelta = new Vector2(540f, 110f);
+        rootRT.sizeDelta = new Vector2(700f, 160f); // wider + taller for two text lines
 
-        // Tube (dark background track)
-        const float TubeW = 500f, TubeH = 44f;
-        var tube = MakePanel(root.transform, "Tube", TubeW, TubeH, Vector2.zero,
+        var font = BuiltinFont();
+
+        // Tube (dark background track) — positioned toward the top of the canvas.
+        const float TubeW = 660f, TubeH = 44f;
+        var tube = MakePanel(root.transform, "Tube", TubeW, TubeH,
+                             new Vector2(0f, 42f),
                              new Color(0.10f, 0.10f, 0.12f, 0.88f));
 
-        // Centre target tick (green vertical line)
+        // Centre target tick (green vertical line).
         MakePanel(tube.transform, "CentreTick", 3f, TubeH + 14f, Vector2.zero,
                   new Color(0f, 1f, 0f, 0.95f));
 
-        // Bubble
+        // Bubble.
         const float BubbleW = 48f;
-        var bubbleGO      = MakePanel(tube.transform, "Bubble", BubbleW, TubeH - 8f, Vector2.zero,
-                                      new Color(0.2f, 0.8f, 1f, 0.90f));
-        _bubble           = bubbleGO.GetComponent<RectTransform>();
-        _bubbleImg        = bubbleGO.GetComponent<Image>();
+        var bubbleGO   = MakePanel(tube.transform, "Bubble", BubbleW, TubeH - 8f, Vector2.zero,
+                                   new Color(0.2f, 0.8f, 1f, 0.90f));
+        _bubble        = bubbleGO.GetComponent<RectTransform>();
+        _bubbleImg     = bubbleGO.GetComponent<Image>();
         _bubbleHalfTravel = (TubeW - BubbleW) * 0.5f;
 
-        // Degree readout beneath the tube
-        var labelGO = new GameObject("RollLabel");
-        labelGO.transform.SetParent(root.transform, false);
-        var labelRT = labelGO.AddComponent<RectTransform>();
-        labelRT.sizeDelta        = new Vector2(540f, 42f);
-        labelRT.anchoredPosition = new Vector2(0f, -52f);
-        _rollLabel           = labelGO.AddComponent<Text>();
-        _rollLabel.font      = BuiltinFont();
-        _rollLabel.fontSize  = 26;
-        _rollLabel.alignment = TextAnchor.MiddleCenter;
-        _rollLabel.color     = new Color(0.92f, 0.92f, 0.92f, 0.92f);
+        // Line 1: base prescription (dim grey).
+        _prescriptionLabel = MakeLabel(root.transform, "PrescriptionLabel",
+                                       700f, 36f, new Vector2(0f, -4f),
+                                       font, 22, new Color(0.55f, 0.55f, 0.55f, 0.90f));
+
+        // Line 2: applied values + tilt info (light blue).
+        _appliedLabel = MakeLabel(root.transform, "AppliedLabel",
+                                  700f, 36f, new Vector2(0f, -44f),
+                                  font, 22, new Color(0.45f, 0.80f, 1.00f, 0.95f));
     }
 
     // ── Helpers ───────────────────────────────────────────────────────────────
 
     /// <summary>
-    /// Returns head roll in degrees. Positive = head tilted right (right ear lower).
+    /// Returns head roll in degrees. Positive = right tilt (right ear lower).
+    ///
+    /// Uses the world-space projection of the head's right vector to derive roll.
+    /// This is robust to yaw (looking left/right) and pitch (looking up/down):
+    /// those rotations keep the right vector horizontal, while roll raises or
+    /// lowers it — giving a clean, unambiguous roll signal in all orientations.
     /// </summary>
     static float GetHeadRollDegrees()
     {
@@ -438,13 +591,31 @@ public class PrismVisionCorrection : MonoBehaviour
         if (devices.Count > 0 &&
             devices[0].TryGetFeatureValue(CommonUsages.deviceRotation, out Quaternion rot))
         {
-            float z = rot.eulerAngles.z;
-            if (z > 180f) z -= 360f;
-            // Unity positive-Z rotation = head tilts left.
-            // Negate so positive return value = tilted right.
-            return -z;
+            // Head's right vector in world space.
+            Vector3 headRight  = rot * Vector3.right;
+            // How far the right vector has risen above or dipped below the horizontal plane.
+            float   horizontal = Mathf.Sqrt(headRight.x * headRight.x + headRight.z * headRight.z);
+            // Negate: right ear down → headRight.y < 0 → raw angle negative → negated = positive.
+            return -Mathf.Atan2(headRight.y, horizontal) * Mathf.Rad2Deg;
         }
         return 0f;
+    }
+
+    static Text MakeLabel(Transform parent, string name,
+                           float w, float h, Vector2 pos,
+                           Font font, int fontSize, Color color)
+    {
+        var go = new GameObject(name);
+        go.transform.SetParent(parent, false);
+        var rt = go.AddComponent<RectTransform>();
+        rt.sizeDelta        = new Vector2(w, h);
+        rt.anchoredPosition = pos;
+        var txt       = go.AddComponent<Text>();
+        txt.font      = font;
+        txt.fontSize  = fontSize;
+        txt.alignment = TextAnchor.MiddleCenter;
+        txt.color     = color;
+        return txt;
     }
 
     static GameObject MakePanel(Transform parent, string name,
@@ -466,6 +637,7 @@ public class PrismVisionCorrection : MonoBehaviour
         return f;
     }
 }
+
 ```
 
 ## References

@@ -195,12 +195,12 @@ export const categories: Category[] = [
     aliases: ['firestore', 'google-firebase']
   },
   {
-    slug: 'web-3d',
-    name: 'Web 3D',
-    description: 'Web-based 3D graphics, WebGL, Three.js, WebXR, and immersive web experiences',
+    slug: '3d',
+    name: '3D',
+    description: 'Web-based 3D graphics, WebGL, Three.js, WebXR, Unity, and immersive 3D experiences',
     icon: '🧊',
     color: 'bg-cyan-100 text-cyan-800',
-    aliases: ['webgl', 'threejs', 'webxr', 'webvr', 'three-js', 'immersive-web']
+    aliases: ['web-3d', 'webgl', 'threejs', 'webxr', 'webvr', 'three-js', 'immersive-web', 'unity']
   }
 
 ];

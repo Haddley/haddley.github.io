@@ -2,7 +2,7 @@
 title: "WebVR"
 description: "Create Virtual Reality Experiences."
 date: "2021-03-02"
-categories: ["Web 3D"]
+categories: ["3D"]
 tags: "webvr, virtual-reality, three-js, browser"
 slug: "webvr"
 image: "/assets/images/webvr/webvr-logo-square-512x512.png"
