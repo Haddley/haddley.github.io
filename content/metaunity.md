@@ -253,11 +253,9 @@ Do you have any questions?
 *Claude Code completed all four changes and showed a summary of the tilt compensation, robust roll measurement, enhanced HUD, and quick reset buttons*
 
 ```csharp
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
-using UnityEngine.XR;
 
 /// <summary>
 /// Applies a per-eye digital prism correction to the VR display, matching an optical
@@ -288,9 +286,9 @@ using UnityEngine.XR;
 /// TILT COMPENSATION
 /// -----------------
 /// The applied correction is scaled by a tilt factor derived from head roll:
-///   • Head level (0°)          → scale = 1.0  (full prescription)
-///   • Left tilt (−compensationAngle) → scale = 0.0  (no correction)
-///   • Right tilt (+compensationAngle) → scale = 2.0  (double correction)
+///   • Head level (0°)                  → scale = 1.0  (full prescription)
+///   • Left tilt  (−compensationAngle)  → scale = 0.0  (no correction)
+///   • Right tilt (+compensationAngle)  → scale = 2.0  (double correction)
 ///
 /// CONTROLLER SHORTCUTS (Left Controller)
 /// ----------------------------------------
@@ -325,7 +323,10 @@ public class PrismVisionCorrection : MonoBehaviour
     // ── Tilt Compensation ─────────────────────────────────────────────────────
 
     [Header("Tilt Compensation")]
-    [Tooltip("Head roll (degrees) at which correction reaches 0× (left) or 2× (right).")]
+    [Tooltip("Degrees of LEFT-shoulder tilt at which the applied correction falls to zero.\n" +
+             "Set to 0 to disable (full prescription always applied).\n" +
+             "Example: 16 means at 16° left tilt the correction is 0, at 0° it is full,\n" +
+             "at 16° right tilt it is doubled.")]
     public float compensationAngle = 16f;
 
     // ── Internals ─────────────────────────────────────────────────────────────
@@ -337,20 +338,13 @@ public class PrismVisionCorrection : MonoBehaviour
     Camera       _leftCam;
     Camera       _rightCam;
 
-    // Snapshot of Inspector values taken at Start (restored by X button).
-    float _origRightVerticalPD;
-    float _origRightHorizontalPD;
-    float _origLeftVerticalPD;
-    float _origLeftHorizontalPD;
+    // Snapshot of Inspector values taken at Awake (restored by X button).
+    float _defaultRightVerticalPD;
+    float _defaultRightHorizontalPD;
+    float _defaultLeftVerticalPD;
+    float _defaultLeftHorizontalPD;
 
-    // Current "base" values — what the prescription is without tilt scaling.
-    // Modified by Y (zero) and X (restore) buttons.
-    float _baseRightVerticalPD;
-    float _baseRightHorizontalPD;
-    float _baseLeftVerticalPD;
-    float _baseLeftHorizontalPD;
-
-    // Final applied values written by Update() and read by the render hook.
+    // Tilt-scaled applied values — written by Update(), read by OnBeginCameraRendering.
     float _appliedRightVerticalPD;
     float _appliedRightHorizontalPD;
     float _appliedLeftVerticalPD;
@@ -359,8 +353,8 @@ public class PrismVisionCorrection : MonoBehaviour
     // Spirit level UI
     RectTransform _bubble;
     Image         _bubbleImg;
-    Text          _prescriptionLabel; // Line 1: base prescription (dim grey)
-    Text          _appliedLabel;      // Line 2: applied + tilt info (light blue)
+    Text          _prescriptionLabel; // Line 1: current prescription (dim grey)
+    Text          _appliedLabel;      // Line 2: applied values + tilt info (light blue)
     float         _bubbleHalfTravel;  // canvas units the bubble can move each side
 
     // ── Lifecycle ─────────────────────────────────────────────────────────────
@@ -371,6 +365,17 @@ public class PrismVisionCorrection : MonoBehaviour
         // Per-eye cameras are disabled by default. Enabling them gives us separate
         // Camera objects per eye so we can set independent projection matrices.
         _rig.usePerEyeCameras = true;
+
+        // Guard against the scene having serialized compensationAngle as 0 before
+        // the field existed (Unity keeps old serialized values even when the code
+        // default changes, so this ensures the feature is always active).
+        if (compensationAngle == 0f) compensationAngle = 16f;
+
+        // Snapshot Inspector values so X can always restore them.
+        _defaultRightVerticalPD   = rightVerticalPD;
+        _defaultRightHorizontalPD = rightHorizontalPD;
+        _defaultLeftVerticalPD    = leftVerticalPD;
+        _defaultLeftHorizontalPD  = leftHorizontalPD;
     }
 
     void Start()
@@ -385,17 +390,8 @@ public class PrismVisionCorrection : MonoBehaviour
         ConfigurePassthroughCamera(_leftCam);
         ConfigurePassthroughCamera(_rightCam);
 
-        // Snapshot Inspector values so X button can restore them.
-        _origRightVerticalPD   = rightVerticalPD;
-        _origRightHorizontalPD = rightHorizontalPD;
-        _origLeftVerticalPD    = leftVerticalPD;
-        _origLeftHorizontalPD  = leftHorizontalPD;
-
-        // Initialise base to match Inspector.
-        _baseRightVerticalPD   = _origRightVerticalPD;
-        _baseRightHorizontalPD = _origRightHorizontalPD;
-        _baseLeftVerticalPD    = _origLeftVerticalPD;
-        _baseLeftHorizontalPD  = _origLeftHorizontalPD;
+        // Seed applied values so the first frame renders correctly before Update runs.
+        UpdateAppliedValues(1f);
 
         if (showSpiritLevel)
             BuildSpiritLevel(_rig.centerEyeAnchor);
@@ -448,20 +444,34 @@ public class PrismVisionCorrection : MonoBehaviour
 
     void Update()
     {
-        HandleButtons();
+        // ── Quick reset buttons ───────────────────────────────────────────────
+        // Y → zero prescription   X → restore Inspector defaults
+        if (OVRInput.GetDown(OVRInput.Button.Four))        // Y (left controller)
+        {
+            rightVerticalPD = rightHorizontalPD = leftVerticalPD = leftHorizontalPD = 0f;
+        }
+        else if (OVRInput.GetDown(OVRInput.Button.Three))  // X (left controller)
+        {
+            rightVerticalPD   = _defaultRightVerticalPD;
+            rightHorizontalPD = _defaultRightHorizontalPD;
+            leftVerticalPD    = _defaultLeftVerticalPD;
+            leftHorizontalPD  = _defaultLeftHorizontalPD;
+        }
 
+        // ── Tilt compensation ─────────────────────────────────────────────────
+        // scale = 1 + roll / compensationAngle
+        //   roll =  0                  → scale = 1.0 → full prescription
+        //   roll = −compensationAngle  → scale = 0.0 → no correction
+        //   roll = +compensationAngle  → scale = 2.0 → doubled
         float roll      = GetHeadRollDegrees();
-        float tiltScale = ComputeTiltScale(roll);
-
-        // Compute applied values: base prescription scaled by tilt factor.
-        _appliedRightVerticalPD   = _baseRightVerticalPD   * tiltScale;
-        _appliedRightHorizontalPD = _baseRightHorizontalPD * tiltScale;
-        _appliedLeftVerticalPD    = _baseLeftVerticalPD    * tiltScale;
-        _appliedLeftHorizontalPD  = _baseLeftHorizontalPD  * tiltScale;
+        float tiltScale = Mathf.Abs(compensationAngle) > 0.01f
+            ? Mathf.Max(0f, 1f + roll / compensationAngle)
+            : 1f;
+        UpdateAppliedValues(tiltScale);
 
         if (_bubble == null) return;
 
-        // Bubble position: moves toward the raised/higher side.
+        // ── Spirit level bubble ───────────────────────────────────────────────
         float t = Mathf.Clamp(roll / maxTiltDegrees, -1f, 1f);
         _bubble.anchoredPosition = new Vector2(-t * _bubbleHalfTravel, 0f);
 
@@ -474,12 +484,14 @@ public class PrismVisionCorrection : MonoBehaviour
             ? Color.Lerp(green, amber, severity / 0.4f)
             : Color.Lerp(amber, red,   (severity - 0.4f) / 0.6f);
 
-        // Line 1: base prescription values (dim grey).
+        // ── HUD labels ────────────────────────────────────────────────────────
+
+        // Line 1: current prescription (dim grey).
         if (_prescriptionLabel != null)
             _prescriptionLabel.text = string.Format(
                 "Rx  RV:{0:+0.00;-0.00;0.00}  RH:{1:+0.00;-0.00;0.00}  LV:{2:+0.00;-0.00;0.00}  LH:{3:+0.00;-0.00;0.00}",
-                _baseRightVerticalPD, _baseRightHorizontalPD,
-                _baseLeftVerticalPD,  _baseLeftHorizontalPD);
+                rightVerticalPD, rightHorizontalPD,
+                leftVerticalPD,  leftHorizontalPD);
 
         // Line 2: applied values + tilt diagnostics (light blue).
         if (_appliedLabel != null)
@@ -490,41 +502,12 @@ public class PrismVisionCorrection : MonoBehaviour
                 tiltScale, roll, compensationAngle);
     }
 
-    // ── Controller buttons ────────────────────────────────────────────────────
-
-    void HandleButtons()
+    void UpdateAppliedValues(float scale)
     {
-        // Y button (Button.Two on LTouch): zero all prism values.
-        if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.LTouch))
-        {
-            _baseRightVerticalPD   = 0f;
-            _baseRightHorizontalPD = 0f;
-            _baseLeftVerticalPD    = 0f;
-            _baseLeftHorizontalPD  = 0f;
-        }
-
-        // X button (Button.One on LTouch): restore original Inspector values.
-        if (OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.LTouch))
-        {
-            _baseRightVerticalPD   = _origRightVerticalPD;
-            _baseRightHorizontalPD = _origRightHorizontalPD;
-            _baseLeftVerticalPD    = _origLeftVerticalPD;
-            _baseLeftHorizontalPD  = _origLeftHorizontalPD;
-        }
-    }
-
-    // ── Tilt compensation math ────────────────────────────────────────────────
-
-    /// <summary>
-    /// Maps head roll to a correction scale factor.
-    ///   Roll =  0                →  1.0  (full prescription)
-    ///   Roll = −compensationAngle →  0.0  (no correction, left tilt)
-    ///   Roll = +compensationAngle →  2.0  (double correction, right tilt)
-    /// </summary>
-    float ComputeTiltScale(float rollDegrees)
-    {
-        if (compensationAngle <= 0f) return 1f;
-        return 1f + Mathf.Clamp(rollDegrees / compensationAngle, -1f, 1f);
+        _appliedRightVerticalPD   = rightVerticalPD   * scale;
+        _appliedRightHorizontalPD = rightHorizontalPD * scale;
+        _appliedLeftVerticalPD    = leftVerticalPD    * scale;
+        _appliedLeftHorizontalPD  = leftHorizontalPD  * scale;
     }
 
     // ── Spirit Level construction ─────────────────────────────────────────────
@@ -541,7 +524,7 @@ public class PrismVisionCorrection : MonoBehaviour
         canvas.renderMode   = RenderMode.WorldSpace;
         canvas.sortingOrder = 10;
         var rootRT = root.GetComponent<RectTransform>();
-        rootRT.sizeDelta = new Vector2(700f, 160f); // wider + taller for two text lines
+        rootRT.sizeDelta = new Vector2(700f, 160f);
 
         var font = BuiltinFont();
 
@@ -563,7 +546,7 @@ public class PrismVisionCorrection : MonoBehaviour
         _bubbleImg     = bubbleGO.GetComponent<Image>();
         _bubbleHalfTravel = (TubeW - BubbleW) * 0.5f;
 
-        // Line 1: base prescription (dim grey).
+        // Line 1: current prescription (dim grey).
         _prescriptionLabel = MakeLabel(root.transform, "PrescriptionLabel",
                                        700f, 36f, new Vector2(0f, -4f),
                                        font, 22, new Color(0.55f, 0.55f, 0.55f, 0.90f));
@@ -577,28 +560,24 @@ public class PrismVisionCorrection : MonoBehaviour
     // ── Helpers ───────────────────────────────────────────────────────────────
 
     /// <summary>
-    /// Returns head roll in degrees. Positive = right tilt (right ear lower).
-    ///
-    /// Uses the world-space projection of the head's right vector to derive roll.
-    /// This is robust to yaw (looking left/right) and pitch (looking up/down):
-    /// those rotations keep the right vector horizontal, while roll raises or
-    /// lowers it — giving a clean, unambiguous roll signal in all orientations.
+    /// Returns head roll in degrees. Positive = head tilted right (right ear lower).
+    /// Measures rotation around the head's own forward (look) axis so it is immune to
+    /// pitch, yaw, and tracking-space orientation.
     /// </summary>
-    static float GetHeadRollDegrees()
+    float GetHeadRollDegrees()
     {
-        var devices = new List<InputDevice>();
-        InputDevices.GetDevicesAtXRNode(XRNode.Head, devices);
-        if (devices.Count > 0 &&
-            devices[0].TryGetFeatureValue(CommonUsages.deviceRotation, out Quaternion rot))
-        {
-            // Head's right vector in world space.
-            Vector3 headRight  = rot * Vector3.right;
-            // How far the right vector has risen above or dipped below the horizontal plane.
-            float   horizontal = Mathf.Sqrt(headRight.x * headRight.x + headRight.z * headRight.z);
-            // Negate: right ear down → headRight.y < 0 → raw angle negative → negated = positive.
-            return -Mathf.Atan2(headRight.y, horizontal) * Mathf.Rad2Deg;
-        }
-        return 0f;
+        if (_rig == null) return 0f;
+        Transform head = _rig.centerEyeAnchor;
+        Vector3 fwd = head.forward;
+        // Project gravity-up onto the plane perpendicular to the look direction.
+        // This gives the "level" reference up at the current yaw and pitch.
+        Vector3 refUp = Vector3.ProjectOnPlane(Vector3.up, fwd).normalized;
+        if (refUp.sqrMagnitude < 0.001f) return 0f; // looking straight up or down
+        // Signed angle from the gravity reference to the actual head up, rotating
+        // around the look axis. Negative because right-hand rule around +forward
+        // gives a clockwise (left-tilt) positive result; we invert to match the
+        // convention that positive = right tilt.
+        return -Vector3.SignedAngle(refUp, head.up, fwd);
     }
 
     static Text MakeLabel(Transform parent, string name,
@@ -637,6 +616,7 @@ public class PrismVisionCorrection : MonoBehaviour
         return f;
     }
 }
+
 
 ```
 
