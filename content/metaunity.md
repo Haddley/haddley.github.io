@@ -20,7 +20,7 @@ I set up Unity for Meta Quest virtual reality (VR) development. I learned how to
 *On the Add module screen, I selected the Android Build Support items in the Platforms section.*
 
 ![](assets/images/metaunity/Screenshot-2026-02-28-at-7.16.15-PM.png)
-*I installed Unity Assets*
+*I opened the Meta XR Core SDK in Unity from the Asset Store*
 
 ![](assets/images/metaunity/Screenshot-2026-02-28-at-7.18.18-PM.png)
 *I selected Projects in the left navigation bar, and clicked New project.*
@@ -47,7 +47,7 @@ I set up Unity for Meta Quest virtual reality (VR) development. I learned how to
 *In the Unity editor menu, I selected File > Build Profiles.*
 
 ![](assets/images/metaunity/Screenshot-2026-02-28-at-7.28.42-PM.png)
-*In the Unity Editor menu, I selected Window > Package Management > Package Manager.*
+*In the Unity Editor menu, I selected Window > Package Manager.*
 
 ![](assets/images/metaunity/Screenshot-2026-02-28-at-7.29.24-PM.png)
 *I selected the Meta XR Core SDK and clicked Install.*
@@ -59,7 +59,7 @@ I set up Unity for Meta Quest virtual reality (VR) development. I learned how to
 *I confirmed that the Meta XR Core SDK was installed*
 
 ![](assets/images/metaunity/Screenshot-2026-02-28-at-7.31.53-PM.png)
-*I installed the Meta XR Core SDK*
+*I selected the Meta XR Interaction SDK and clicked Install*
 
 ![](assets/images/metaunity/Screenshot-2026-02-28-at-7.33.52-PM.png)
 *I installed the Meta XR Interaction SDK*
@@ -107,7 +107,7 @@ I set up Unity for Meta Quest virtual reality (VR) development. I learned how to
 *I connected my Quest 3 headset to my laptop*
 
 ![](assets/images/metaunity/642042904_1896241314585706_6220471991661231394_n.jpg)
-*I used the Cast feature of the Meta mobile app to capture an image of myself grasping and moving the cube*
+*I used the Cast feature of the Meta Horizon mobile app to capture an image of myself grasping and moving the cube*
 
 
 ## Add more Cubes using Claude Code
@@ -198,7 +198,7 @@ Left Eye (OS): 5.50 Prism Diopters Base Up + 1.0 Prism Diopter Base Out.
 ![](assets/images/metaunity/642894093_1609198393659252_1924717491324295358_n.jpg)
 *The spirit level at the bottom of the view showed my head tilt in real time*
 
-## Key move
+## Understanding the Code
 
 ![](assets/images/metaunity/Screenshot-2026-03-02-at-6.53.20-AM.png)
 *I opened PrismVisionCorrection.cs in VS Code*
@@ -212,7 +212,7 @@ explain PrismVisionCorrection.cs
 
 ## Dynamically adjusting Prism values
 
-```prompt
+```PROMPT
 Please update the PrismVisionCorrection script to include the following features:
 
 1. Automatic Tilt Compensation
@@ -619,6 +619,11 @@ public class PrismVisionCorrection : MonoBehaviour
 
 
 ```
+
+## Testing on my Meta Quest 2
+
+![VR scene showing 6 blue cubes with spirit level HUD and zeroed prism values](assets/images/metaunity/642469367_1935100920443981_309725425907027417_n.jpg)
+*I ran the app on my Quest 2 headset — the black and white passthrough background works in the headset but doesn't appear in the cast view. The spirit level HUD and cube interactions worked correctly*
 
 ## References
 
