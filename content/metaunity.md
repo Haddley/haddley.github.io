@@ -1,6 +1,6 @@
 ---
 title: "Meta Unity"
-description: "Hacking my vision with a Meta Quest 3 Headset"
+description: "Modding Vision on the Quest 2 and Quest 3"
 date: "2026-02-28"
 categories: ["Mobile", "3D"]
 tags: "virtual-reality, meta, unity, quest"
