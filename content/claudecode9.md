@@ -9,7 +9,7 @@ hidden: false
 slug: "claudecode9"
 ---
 
-In a twist of recursive thinking, I built a local AI coding agent — inspired by Open Hands — using Claude Code, another AI coding agent. I started with a single prompt to define the tech stack (Next.js 15, TypeScript, Tailwind, and Ollama with qwen2.5-coder:7b) and built up to a full implementation with a three-column web UI and a CLI. Along the way I worked through file trees, chat interfaces, and project-specific instructions via AGENT.md — and ended up with a fully functional AI coding agent, built by an AI coding agent.
+In a twist of recursive thinking, I built a local AI coding agent using Claude Code, another AI coding agent. I started with a single prompt to define the tech stack (Next.js 15, TypeScript, Tailwind, and Ollama with qwen2.5-coder:7b) and built up to a full implementation with a three-column web UI and a CLI. Along the way I worked through file trees, chat interfaces, and project-specific instructions via AGENT.md — and ended up with a fully functional AI coding agent, built by an AI coding agent.
 
 ## Prompt
 
