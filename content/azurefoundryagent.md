@@ -5,7 +5,7 @@ date: "2026-03-10"
 categories: ["AI", "Azure"]
 image: "/assets/images/azuresearchvector/posts-meta.svg"
 tags: "azure-ai-foundry, azure-ai-search, vector-search, embeddings, rag"
-hidden: true
+hidden: false
 slug: "azurefoundryagent"
 ---
 
