@@ -869,8 +869,8 @@
                 this.isHost = false;
                 this.myRole = 'O';
 
-                this.joinGameBtn.disabled = true;
-                this.joinGameBtn.textContent = 'Connecting...';
+                this.elements.joinGameBtn.disabled = true;
+                this.elements.joinGameBtn.textContent = 'Connecting...';
 
                 this.peer = new Peer({
                     debug: 0,
@@ -899,16 +899,16 @@
                         console.error('Connection error:', err);
                         this.elements.joinError.textContent = 'Room not found or connection failed';
                         this.elements.joinError.classList.add('show');
-                        this.joinGameBtn.disabled = false;
-                        this.joinGameBtn.textContent = 'Join';
+                        this.elements.joinGameBtn.disabled = false;
+                        this.elements.joinGameBtn.textContent = 'Join';
                     });
 
                     setTimeout(() => {
                         if (this.connection && !this.connection.open) {
                             this.elements.joinError.textContent = 'Room not found or connection failed';
                             this.elements.joinError.classList.add('show');
-                            this.joinGameBtn.disabled = false;
-                            this.joinGameBtn.textContent = 'Join';
+                            this.elements.joinGameBtn.disabled = false;
+                            this.elements.joinGameBtn.textContent = 'Join';
                             if (this.peer) this.peer.destroy();
                         }
                     }, 5000);
@@ -918,8 +918,8 @@
                     console.error('Peer error:', err);
                     this.elements.joinError.textContent = 'Connection error: ' + err.type;
                     this.elements.joinError.classList.add('show');
-                    this.joinGameBtn.disabled = false;
-                    this.joinGameBtn.textContent = 'Join';
+                    this.elements.joinGameBtn.disabled = false;
+                    this.elements.joinGameBtn.textContent = 'Join';
                 });
             },
 
@@ -1210,8 +1210,8 @@
                 this.roomCode = null;
                 this.myRole = null;
                 this.isHost = false;
-                this.joinGameBtn.disabled = false;
-                this.joinGameBtn.textContent = 'Join';
+                this.elements.joinGameBtn.disabled = false;
+                this.elements.joinGameBtn.textContent = 'Join';
                 this.elements.roomCodeInput.value = '';
                 this.elements.connectionDot.classList.remove('disconnected');
                 this.elements.connectionText.textContent = 'Connected';
