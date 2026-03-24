@@ -843,7 +843,9 @@
 
                 this.peer.on('connection', (conn) => {
                     this.connection = conn;
-                    this.setupConnection();
+                    conn.on('open', () => {
+                        this.setupConnection();
+                    });
                 });
 
                 this.peer.on('error', (err) => {
