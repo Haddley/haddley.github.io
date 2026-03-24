@@ -934,6 +934,7 @@
 
                 if (this.isHost) {
                     this.startGame();
+                    this.connection.send({ type: 'start' });
                 }
             },
 
