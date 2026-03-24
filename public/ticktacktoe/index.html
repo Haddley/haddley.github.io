@@ -824,7 +824,17 @@
                 this.showScreen('waiting');
 
                 this.peer = new Peer(this.roomCode, {
-                    debug: 0
+                    debug: 0,
+                    host: '0.peerjs.com',
+                    port: 443,
+                    path: '/',
+                    secure: true,
+                    config: {
+                        iceServers: [
+                            { urls: 'stun:stun.l.google.com:19302' },
+                            { urls: 'stun:stun1.l.google.com:19302' }
+                        ]
+                    }
                 });
 
                 this.peer.on('open', () => {
@@ -863,7 +873,17 @@
                 this.joinGameBtn.textContent = 'Connecting...';
 
                 this.peer = new Peer({
-                    debug: 0
+                    debug: 0,
+                    host: '0.peerjs.com',
+                    port: 443,
+                    path: '/',
+                    secure: true,
+                    config: {
+                        iceServers: [
+                            { urls: 'stun:stun.l.google.com:19302' },
+                            { urls: 'stun:stun1.l.google.com:19302' }
+                        ]
+                    }
                 });
 
                 this.peer.on('open', () => {
