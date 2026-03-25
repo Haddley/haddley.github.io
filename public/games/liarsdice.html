@@ -931,10 +931,21 @@ function setupGuestConn(conn) {
             guestConns[conn.peer] = conn;
         }
         switch (msg.type) {
-            case 'join':
-                hostAddPlayer(conn.peer, msg.name);
+            case 'join': {
+                // If a zombie entry exists for this name (prior connection that
+                // dropped before conn.on('close') fired on the host), evict it
+                // so the reconnecting player doesn't appear twice.
+                const zombie = H.players.find(
+                    p => p.name === msg.name && p.id !== conn.peer && guestConns[p.id] === undefined
+                );
+                if (zombie) {
+                    zombie.id = conn.peer;   // re-use the existing slot
+                } else {
+                    hostAddPlayer(conn.peer, msg.name);
+                }
                 broadcastLobby();
                 break;
+            }
             case 'bid':       hostBid(conn.peer, msg.qty, msg.face); break;
             case 'challenge': hostChallenge(conn.peer); break;
             case 'continue':  hostContinue(conn.peer); break;
@@ -955,9 +966,10 @@ function setupGuestConn(conn) {
 }
 
 // ── Join as Viewer ──
-function joinAsViewer(code) {
+function joinAsViewer(code, _attempt) {
     const pid = code.trim().toLowerCase();
     if (!pid) { uiErr = 'Enter a room code.'; render(); return; }
+    const attempt = _attempt || 1;
 
     isViewer = true;
     ui = 'viewer';
@@ -1008,6 +1020,13 @@ function joinAsViewer(code) {
     });
 
     peer.on('error', e => {
+        // Retry once transparently — PeerJS signalling can fail transiently
+        if (attempt < 2) {
+            try { peer.destroy(); } catch (_) {}
+            peer = null;
+            setTimeout(() => joinAsViewer(code, 2), 600);
+            return;
+        }
         uiErr = 'Could not reach room "' + code.toUpperCase() + '". Check the code and try again.';
         isViewer = false;
         ui = 'home';
@@ -1071,7 +1090,8 @@ function createGame(name, wild) {
     ui     = 'creating';
     render();
 
-    const code = Math.random().toString(36).substr(2, 6);
+    const letters = 'abcdefghjkmnpqrstuvwxyz'; // no i/l/o to avoid confusion
+    const code = Array.from({length: 6}, () => letters[Math.floor(Math.random() * letters.length)]).join('');
     roomCode = code;
     peer = new Peer(code);
 
@@ -1256,6 +1276,7 @@ function screenHome() {
     return `
     <div class="hdr"><h1>LIAR'S DICE</h1><div class="sub">Multiplayer · PeerJS</div></div>
     <div class="card">
+      <form onsubmit="createGame(fName,fWild);return false">
       <div class="slbl">Create a new game</div>
       <div class="fg"><label>Your name</label>
         <input id="cn" type="text" placeholder="e.g. Neil" value="${esc(fName)}" maxlength="16" oninput="fName=this.value">
@@ -1264,29 +1285,34 @@ function screenHome() {
         <div><div class="tog-label">Wild Ones</div><div class="tog-desc">1s count as any face (recommended)</div></div>
         <label class="tog"><input type="checkbox" ${fWild?'checked':''} onchange="fWild=this.checked"><span class="tog-track"></span></label>
       </div>
-      <button class="btn btn-p btn-full" onclick="createGame(fName,fWild)">🎲 Create Game</button>
+      <button type="submit" class="btn btn-p btn-full">🎲 Create Game</button>
+      </form>
     </div>
     <div class="card">
+      <form onsubmit="joinGame(fCode,fName);return false">
       <div class="slbl">Join a game</div>
       <div class="fg"><label>Room code</label>
-        <input id="jc" type="text" placeholder="e.g. ABC123" value="${esc(fCode)}" maxlength="6"
+        <input id="jc" type="text" placeholder="e.g. ABCDEF" value="${esc(fCode)}" maxlength="6"
           oninput="fCode=this.value" autocomplete="off" autocapitalize="characters" style="letter-spacing:4px;font-size:1.1rem;text-transform:uppercase">
       </div>
       <div class="fg"><label>Your name</label>
         <input type="text" placeholder="e.g. Alice" value="${esc(fName)}" maxlength="16" oninput="fName=this.value">
       </div>
-      <button class="btn btn-g btn-full" onclick="joinGame(fCode,fName)">→ Join Game</button>
+      <button type="submit" class="btn btn-g btn-full">→ Join Game</button>
       ${uiErr ? `<div class="err">${esc(uiErr)}</div>` : ''}
+      </form>
     </div>
     <div class="card" style="margin-top:8px">
+      <form onsubmit="joinAsViewer(fVCode);return false">
       <div class="slbl">Join as Viewer</div>
       <div style="font-size:.75rem;color:var(--muted);margin-bottom:10px">Watch the game on a TV or shared screen — no account needed.</div>
       <div class="fg"><label>Room code</label>
-        <input id="vc" type="text" placeholder="e.g. ABC123" value="${esc(fVCode)}" maxlength="6"
+        <input id="vc" type="text" placeholder="e.g. ABCDEF" value="${esc(fVCode)}" maxlength="6"
           autocomplete="off" autocapitalize="characters" style="letter-spacing:4px;font-size:1.1rem;text-transform:uppercase"
           oninput="fVCode=this.value">
       </div>
-      <button class="btn btn-g btn-full" onclick="joinAsViewer(fVCode)">📺 Watch as Viewer</button>
+      <button type="submit" class="btn btn-g btn-full">📺 Watch as Viewer</button>
+      </form>
     </div>`;
 }
 
