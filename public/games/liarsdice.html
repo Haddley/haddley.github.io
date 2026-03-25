@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liar's Dice</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230a0a0f' width='100' height='100' rx='20'/><rect x='12' y='12' width='76' height='76' rx='14' fill='%231e1e2e' stroke='%23f59e0b' stroke-width='4'/><circle cx='32' cy='32' r='8' fill='%23f59e0b'/><circle cx='50' cy='50' r='8' fill='%23f59e0b'/><circle cx='68' cy='68' r='8' fill='%23f59e0b'/></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #0a0a0f;
+            --surface: #14141f;
+            --surface2: #1a1a2a;
+            --border: #2a2a3a;
+            --text: #ffffff;
+            --muted: #6b6b8a;
+            --accent: #f59e0b;
+            --accent-glow: rgba(245, 158, 11, 0.25);
+            --danger: #ef4444;
+            --danger-glow: rgba(239, 68, 68, 0.25);
+            --success: #4ade80;
+        }
+
+        html { font-size: 16px; }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 16px 40px;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 15% 15%, rgba(245,158,11,0.07) 0%, transparent 55%),
+                radial-gradient(ellipse at 85% 85%, rgba(239,68,68,0.07) 0%, transparent 55%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        #app { width: 100%; max-width: 520px; }
+
+        /* ── Header ── */
+        .header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+        .header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.5rem, 5vw, 2.2rem);
+            font-weight: 900;
+            letter-spacing: 4px;
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: none;
+            filter: drop-shadow(0 0 20px var(--accent-glow));
+        }
+        .header .subtitle {
+            color: var(--muted);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            margin-top: 6px;
+            text-transform: uppercase;
+        }
+
+        /* ── Card ── */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            animation: fadeIn 0.25s ease-out;
+        }
+        .card + .card { margin-top: 12px; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Buttons ── */
+        .btn {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            font-size: 0.875rem;
+            letter-spacing: 1px;
+            padding: 13px 22px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .btn:active { transform: scale(0.97); }
+        .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none !important; }
+        .btn-full { width: 100%; }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #0a0a0f;
+            box-shadow: 0 4px 16px var(--accent-glow);
+        }
+        .btn-primary:hover:not(:disabled) { filter: brightness(1.1); transform: translateY(-1px); box-shadow: 0 6px 24px var(--accent-glow); }
+
+        .btn-danger {
+            background: var(--danger);
+            color: #fff;
+            box-shadow: 0 4px 16px var(--danger-glow);
+        }
+        .btn-danger:hover:not(:disabled) { filter: brightness(1.1); transform: translateY(-1px); }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+        .btn-ghost:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+
+        .btn-icon {
+            background: var(--surface2);
+            color: var(--text);
+            border: 1px solid var(--border);
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            font-size: 1.1rem;
+            border-radius: 8px;
+        }
+        .btn-icon:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+
+        /* ── Form inputs ── */
+        .form-group { display: flex; flex-direction: column; gap: 6px; }
+        .form-group label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+        .form-group input {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 14px;
+            color: var(--text);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.15s;
+        }
+        .form-group input:focus { border-color: var(--accent); }
+        .form-group input::placeholder { color: var(--muted); }
+
+        /* ── Toggle ── */
+        .toggle-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .toggle-label { font-size: 0.85rem; color: var(--text); }
+        .toggle-desc { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+        .toggle {
+            position: relative;
+            width: 44px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+        .toggle input { opacity: 0; width: 0; height: 0; }
+        .toggle-track {
+            position: absolute;
+            inset: 0;
+            background: var(--border);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .toggle-track::after {
+            content: '';
+            position: absolute;
+            top: 3px; left: 3px;
+            width: 18px; height: 18px;
+            background: var(--muted);
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+        .toggle input:checked + .toggle-track { background: var(--accent); }
+        .toggle input:checked + .toggle-track::after { transform: translateX(20px); background: #0a0a0f; }
+
+        /* ── Player count selector ── */
+        .count-selector {
+            display: flex;
+            gap: 8px;
+        }
+        .count-btn {
+            flex: 1;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--surface2);
+            color: var(--muted);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s;
+            text-align: center;
+        }
+        .count-btn.active {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-glow);
+        }
+
+        /* ── Player name list ── */
+        .player-inputs { display: flex; flex-direction: column; gap: 8px; }
+
+        /* ── Cover screen ── */
+        .cover {
+            background: #07070d;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 40px 24px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            animation: fadeIn 0.2s ease-out;
+        }
+        .cover-icon { font-size: 3.5rem; line-height: 1; }
+        .cover-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 2px;
+        }
+        .cover-instruction {
+            color: var(--muted);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .cover-bid-preview {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+        .cover-bid-preview strong { color: var(--accent); }
+
+        /* ── Dice display ── */
+        .dice-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .die-wrap { position: relative; }
+        .die-wrap.rolling svg { animation: diceRoll 0.45s ease-out; }
+        @keyframes diceRoll {
+            0%   { transform: rotate(0deg)   scale(0.7); opacity: 0.4; }
+            30%  { transform: rotate(120deg) scale(1.15); opacity: 1; }
+            65%  { transform: rotate(260deg) scale(0.95); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        /* ── Player tracker ── */
+        .player-tracker {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .player-chip {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            font-size: 0.75rem;
+            color: var(--muted);
+            background: var(--surface2);
+        }
+        .player-chip.active {
+            border-color: var(--accent);
+            color: var(--text);
+            background: var(--accent-glow);
+        }
+        .player-chip.current {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-glow);
+            font-weight: 700;
+        }
+        .player-chip.eliminated {
+            opacity: 0.35;
+            text-decoration: line-through;
+        }
+        .dice-pips {
+            display: flex;
+            gap: 2px;
+        }
+        .dice-pip {
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: var(--muted);
+        }
+        .player-chip.active .dice-pip,
+        .player-chip.current .dice-pip { background: var(--accent); }
+
+        /* ── Current bid display ── */
+        .bid-display {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .bid-display .bid-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+        .bid-display .bid-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .bid-display .bid-from { font-size: 0.72rem; color: var(--muted); text-align: right; }
+        .no-bid { text-align: center; color: var(--muted); font-size: 0.8rem; font-style: italic; }
+
+        /* ── Bid builder ── */
+        .bid-builder {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .bid-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .bid-row-label {
+            font-size: 0.72rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 68px;
+            flex-shrink: 0;
+        }
+        .bid-quantity {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .bid-qty-val {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent);
+            min-width: 32px;
+            text-align: center;
+        }
+        .face-buttons {
+            display: flex;
+            gap: 6px;
+        }
+        .face-btn {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            padding: 4px;
+            transition: all 0.15s;
+            opacity: 0.7;
+        }
+        .face-btn:hover { border-color: var(--accent); opacity: 1; }
+        .face-btn.selected {
+            border-color: var(--accent);
+            background: var(--accent-glow);
+            opacity: 1;
+        }
+
+        /* ── Action buttons ── */
+        .action-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        /* ── History ── */
+        .history-section { margin-top: 16px; }
+        .history-toggle {
+            background: none;
+            border: none;
+            color: var(--muted);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .history-toggle:hover { color: var(--text); }
+        .history-list {
+            margin-top: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            max-height: 120px;
+            overflow-y: auto;
+        }
+        .history-item {
+            font-size: 0.75rem;
+            color: var(--muted);
+            padding: 5px 10px;
+            background: var(--surface2);
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .history-item strong { color: var(--text); }
+
+        /* ── Reveal screen ── */
+        .reveal-player {
+            margin-bottom: 14px;
+        }
+        .reveal-player-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        .reveal-player-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .reveal-player-name.loser { color: var(--danger); }
+        .result-banner {
+            border-radius: 10px;
+            padding: 14px 20px;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .result-banner.valid {
+            background: rgba(74, 222, 128, 0.1);
+            border: 1px solid rgba(74, 222, 128, 0.3);
+        }
+        .result-banner.invalid {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+        .result-banner .result-headline {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .result-banner.valid .result-headline { color: var(--success); }
+        .result-banner.invalid .result-headline { color: var(--danger); }
+        .result-banner .result-detail { font-size: 0.8rem; color: var(--muted); }
+
+        /* ── Game over ── */
+        .winner-display {
+            text-align: center;
+            padding: 20px 0;
+        }
+        .winner-trophy { font-size: 4rem; margin-bottom: 12px; }
+        .winner-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--accent);
+            letter-spacing: 3px;
+        }
+        .winner-subtitle { color: var(--muted); font-size: 0.8rem; margin-top: 6px; text-transform: uppercase; letter-spacing: 2px; }
+
+        .rankings { margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
+        .ranking-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            background: var(--surface2);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+        .ranking-pos { font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: 700; color: var(--muted); width: 24px; }
+        .ranking-pos.gold { color: #f59e0b; }
+        .ranking-pos.silver { color: #94a3b8; }
+        .ranking-pos.bronze { color: #a16207; }
+        .ranking-name { flex: 1; font-size: 0.9rem; }
+
+        /* ── Utilities ── */
+        .section-title {
+            font-size: 0.72rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        .divider { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+        .text-center { text-align: center; }
+        .gap-stack { display: flex; flex-direction: column; gap: 12px; }
+        .info-row { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--muted); }
+        .info-row strong { color: var(--text); }
+        .wild-badge {
+            display: inline-block;
+            background: rgba(245,158,11,0.15);
+            border: 1px solid rgba(245,158,11,0.3);
+            color: var(--accent);
+            font-size: 0.68rem;
+            padding: 2px 8px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+<div id="app"></div>
+
+<script>
+// ─────────────────────────────────────────
+//  GAME STATE
+// ─────────────────────────────────────────
+const STARTING_DICE = 5;
+
+let G = {
+    // Setup
+    playerCount: 3,
+    playerNames: ['Player 1', 'Player 2', 'Player 3', 'Player 4', 'Player 5', 'Player 6'],
+    wildOnes: true,
+
+    // Runtime
+    phase: 'setup', // setup | roll_cover | roll_view | bid_cover | bid_view | reveal | gameover
+
+    players: [],           // [{name, dice:[], diceCount, active, elimOrder}]
+    activePlayers: [],     // indices into players[] who are still in
+
+    rollIdx: 0,            // index into activePlayers currently rolling
+    bidderIdx: 0,          // index into activePlayers currently bidding
+    firstBidderIdx: 0,     // who starts the next bidding round
+    currentBid: null,      // {quantity, face, bidderName}
+    lastBidderActiveIdx: null,
+
+    pendingQty: 1,
+    pendingFace: 1,
+
+    bidHistory: [],        // [{name, quantity, face}]
+    challengeResult: null, // {loserName, bidderName, challengerName, actual, bidQty, bidFace, bidValid}
+    winner: null,
+    rankings: [],          // [{name, place}] in order of elimination (last = winner)
+
+    historyOpen: false,
+};
+
+// ─────────────────────────────────────────
+//  DICE LOGIC
+// ─────────────────────────────────────────
+function rollDie() { return Math.floor(Math.random() * 6) + 1; }
+function rollDice(n) { return Array.from({length: n}, rollDie); }
+
+function countFace(allDice, face, wildOnes) {
+    let n = 0;
+    for (const d of allDice) {
+        if (d === face) n++;
+        else if (wildOnes && face !== 1 && d === 1) n++;
+    }
+    return n;
+}
+
+function bidIsValid(newBid, currentBid) {
+    if (!currentBid) return newBid.quantity >= 1;
+    // Must increase quantity, OR keep quantity and increase face
+    if (newBid.quantity > currentBid.quantity) return true;
+    if (newBid.quantity === currentBid.quantity && newBid.face > currentBid.face) return true;
+    return false;
+}
+
+function totalDiceInPlay() {
+    return G.activePlayers.reduce((s, i) => s + G.players[i].diceCount, 0);
+}
+
+// ─────────────────────────────────────────
+//  DIE SVG RENDERER
+// ─────────────────────────────────────────
+const PIP_POSITIONS = {
+    tl: [20, 20], tc: [44, 20], tr: [68, 20],
+    ml: [20, 44],              mr: [68, 44],
+    bl: [20, 68], bc: [44, 68], br: [68, 68],
+    cc: [44, 44],
+};
+const DIE_LAYOUTS = {
+    1: ['cc'],
+    2: ['tr', 'bl'],
+    3: ['tr', 'cc', 'bl'],
+    4: ['tl', 'tr', 'bl', 'br'],
+    5: ['tl', 'tr', 'cc', 'bl', 'br'],
+    6: ['tl', 'tr', 'ml', 'mr', 'bl', 'br'],
+};
+
+function dieSVG(face, opts = {}) {
+    const {
+        size = 68,
+        highlighted = false,
+        dimmed = false,
+        animating = false,
+        small = false,
+    } = opts;
+    const s = small ? 48 : size;
+    const pips = DIE_LAYOUTS[face].map(k => PIP_POSITIONS[k]);
+    const faceColor = '#1c1c2e';
+    const strokeColor = highlighted ? '#f59e0b' : (dimmed ? '#2a2a3a' : '#3a3a5a');
+    const strokeWidth = highlighted ? 3 : 2;
+    const pipColor = highlighted ? '#f59e0b' : (dimmed ? '#3a3a5a' : '#e2e8f0');
+    const r = small ? 4 : 6;
+    const anim = animating ? ' class="die-anim"' : '';
+    const pipsHtml = pips.map(([cx, cy]) =>
+        `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${pipColor}"/>`
+    ).join('');
+    return `<svg${anim} width="${s}" height="${s}" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg">
+        <rect x="3" y="3" width="82" height="82" rx="16" fill="${faceColor}" stroke="${strokeColor}" stroke-width="${strokeWidth}"/>
+        ${pipsHtml}
+    </svg>`;
+}
+
+// ─────────────────────────────────────────
+//  PLAYER TRACKER HTML
+// ─────────────────────────────────────────
+function playerTrackerHTML() {
+    const currentActivePlayer = G.activePlayers[G.bidderIdx] ?? -1;
+    return `<div class="player-tracker">
+        ${G.players.map((p, i) => {
+            const isActive = G.activePlayers.includes(i);
+            const isCurrent = i === currentActivePlayer && (G.phase === 'bid_view' || G.phase === 'bid_cover');
+            const cls = !isActive ? 'player-chip eliminated'
+                       : isCurrent ? 'player-chip current'
+                       : 'player-chip active';
+            const pips = Array.from({length: p.diceCount}, () => '<span class="dice-pip"></span>').join('');
+            return `<div class="${cls}">
+                <span>${p.name}</span>
+                <div class="dice-pips">${pips}</div>
+            </div>`;
+        }).join('')}
+    </div>`;
+}
+
+// ─────────────────────────────────────────
+//  CURRENT BID HTML
+// ─────────────────────────────────────────
+function currentBidHTML() {
+    if (!G.currentBid) {
+        return `<div class="bid-display"><div class="no-bid" style="width:100%">No bid yet — you go first!</div></div>`;
+    }
+    const { quantity, face, bidderName } = G.currentBid;
+    const total = totalDiceInPlay();
+    return `<div class="bid-display">
+        <div>
+            <div class="bid-label">Current Bid</div>
+            <div class="bid-value">
+                ${dieSVG(face, {size: 36, highlighted: true})}
+                <span>${quantity}× face&nbsp;${face}</span>
+            </div>
+        </div>
+        <div class="bid-from">
+            by <strong>${bidderName}</strong><br>
+            <span style="font-size:0.68rem">${total} dice total</span>
+        </div>
+    </div>`;
+}
+
+// ─────────────────────────────────────────
+//  PHASE RENDERS
+// ─────────────────────────────────────────
+
+function renderSetup() {
+    const count = G.playerCount;
+    const names = G.playerNames;
+
+    let nameInputs = '';
+    for (let i = 0; i < count; i++) {
+        nameInputs += `<div class="form-group">
+            <label>Player ${i + 1}</label>
+            <input type="text" id="pname-${i}" value="${escapeHtml(names[i])}" placeholder="Player ${i + 1}" maxlength="16"/>
+        </div>`;
+    }
+
+    const countBtns = [2,3,4,5,6].map(n =>
+        `<button class="count-btn${n === count ? ' active' : ''}" onclick="setPlayerCount(${n})">${n}</button>`
+    ).join('');
+
+    return `
+    <div class="header">
+        <h1>LIAR'S DICE</h1>
+        <div class="subtitle">Classic Bluffing Game</div>
+    </div>
+    <div class="card">
+        <div class="section-title">Number of Players</div>
+        <div class="count-selector">${countBtns}</div>
+
+        <hr class="divider">
+
+        <div class="section-title">Player Names</div>
+        <div class="player-inputs">${nameInputs}</div>
+
+        <hr class="divider">
+
+        <div class="toggle-row">
+            <div>
+                <div class="toggle-label">Wild Ones</div>
+                <div class="toggle-desc">1s count as any face (recommended)</div>
+            </div>
+            <label class="toggle">
+                <input type="checkbox" id="wild-toggle" ${G.wildOnes ? 'checked' : ''} onchange="G.wildOnes=this.checked">
+                <span class="toggle-track"></span>
+            </label>
+        </div>
+
+        <hr class="divider">
+
+        <div class="info-row" style="margin-bottom:12px">
+            <span>Each player starts with</span>
+            <strong>${STARTING_DICE} dice</strong>
+        </div>
+        <button class="btn btn-primary btn-full" onclick="startGame()">🎲 START GAME</button>
+    </div>`;
+}
+
+function renderRollCover() {
+    const ap = G.activePlayers[G.rollIdx];
+    const player = G.players[ap];
+    const isFirst = G.rollIdx === 0;
+    const round = G.bidHistory.length === 0 && G.currentBid === null ? '' : '';
+
+    return `
+    <div class="cover">
+        <div class="cover-icon">🙈</div>
+        <div class="cover-name">${escapeHtml(player.name)}</div>
+        <div class="cover-instruction">Pass the device to this player.<br>Don't let anyone else see!</div>
+        <div style="color:var(--muted);font-size:0.75rem">${player.diceCount} dice remaining</div>
+        <button class="btn btn-primary" onclick="showRoll()" style="min-width:220px">🎲 Roll My Dice</button>
+    </div>`;
+}
+
+function renderRollView() {
+    const ap = G.activePlayers[G.rollIdx];
+    const player = G.players[ap];
+
+    let diceHTML = player.dice.map((face, idx) =>
+        `<div class="die-wrap" id="die-${idx}">${dieSVG(face, {animating: true})}</div>`
+    ).join('');
+
+    return `
+    <div class="header"><h1>LIAR'S DICE</h1></div>
+    <div class="card">
+        <div style="text-align:center;margin-bottom:16px">
+            <div class="section-title">Your Dice</div>
+            <div style="font-family:'Orbitron',sans-serif;font-size:1.2rem;color:var(--accent);margin-bottom:6px">${escapeHtml(player.name)}</div>
+            <div style="font-size:0.75rem;color:var(--muted)">Memorise your dice, then pass the device!</div>
+        </div>
+        <div class="dice-row" style="margin:20px 0">${diceHTML}</div>
+        ${G.wildOnes ? `<div style="text-align:center;margin-bottom:16px"><span class="wild-badge">⚡ 1s are wild — they count as any face</span></div>` : ''}
+        <button class="btn btn-ghost btn-full" onclick="doneRolling()">✓ Done — Pass to Next Player</button>
+    </div>`;
+}
+
+function renderBidCover() {
+    const ap = G.activePlayers[G.bidderIdx];
+    const player = G.players[ap];
+
+    return `
+    <div class="cover">
+        <div class="cover-icon">🎲</div>
+        <div class="cover-name">${escapeHtml(player.name)}</div>
+        <div class="cover-instruction">Pass the device to this player.</div>
+        ${G.currentBid
+            ? `<div class="cover-bid-preview">Current bid: <strong>${G.currentBid.quantity}× face ${G.currentBid.face}</strong> by ${escapeHtml(G.currentBid.bidderName)}</div>`
+            : `<div class="cover-bid-preview">No bid yet — you go first!</div>`
+        }
+        <button class="btn btn-primary" onclick="showBid()" style="min-width:220px">👁 Take My Turn</button>
+    </div>`;
+}
+
+function renderBidView() {
+    const ap = G.activePlayers[G.bidderIdx];
+    const player = G.players[ap];
+    const total = totalDiceInPlay();
+    const maxQty = total;
+    const minQty = G.currentBid ? G.currentBid.quantity : 1;
+
+    // Clamp pending values
+    if (G.pendingQty < 1) G.pendingQty = 1;
+    if (G.pendingQty > maxQty) G.pendingQty = maxQty;
+    if (G.pendingFace < 1) G.pendingFace = 1;
+    if (G.pendingFace > 6) G.pendingFace = 6;
+
+    const valid = bidIsValid({quantity: G.pendingQty, face: G.pendingFace}, G.currentBid);
+
+    const faceBtns = [1,2,3,4,5,6].map(f =>
+        `<div class="face-btn${G.pendingFace === f ? ' selected' : ''}" onclick="setPendingFace(${f})">${dieSVG(f, {size: 40, highlighted: G.pendingFace === f})}</div>`
+    ).join('');
+
+    const histHTML = renderHistory();
+
+    return `
+    <div class="header"><h1>LIAR'S DICE</h1></div>
+    ${playerTrackerHTML()}
+    <div class="card">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+            <div>
+                <div class="section-title" style="margin-bottom:2px">Your Turn</div>
+                <div style="font-family:'Orbitron',sans-serif;font-size:1.1rem;color:var(--accent)">${escapeHtml(player.name)}</div>
+            </div>
+            <div style="font-size:0.75rem;color:var(--muted);text-align:right">${total} dice<br>in play</div>
+        </div>
+
+        ${currentBidHTML()}
+
+        <hr class="divider">
+
+        <div class="section-title">Your Dice</div>
+        <div class="dice-row" style="margin-bottom:16px">
+            ${player.dice.map(f => dieSVG(f, {size: 56})).join('')}
+        </div>
+        ${G.wildOnes ? `<div style="margin-bottom:16px"><span class="wild-badge">⚡ 1s are wild</span></div>` : ''}
+
+        <hr class="divider">
+
+        <div class="section-title">Make Your Bid</div>
+        <div class="bid-builder">
+            <div class="bid-row">
+                <div class="bid-row-label">Quantity</div>
+                <div class="bid-quantity">
+                    <button class="btn-icon" onclick="changePendingQty(-1)">−</button>
+                    <div class="bid-qty-val">${G.pendingQty}</div>
+                    <button class="btn-icon" onclick="changePendingQty(+1)">+</button>
+                </div>
+            </div>
+            <div class="bid-row">
+                <div class="bid-row-label">Face</div>
+                <div class="face-buttons">${faceBtns}</div>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <div class="action-row">
+            <button class="btn btn-primary" onclick="placeBid()" ${valid ? '' : 'disabled'}>
+                ✓ Bid ${G.pendingQty}× ${G.pendingFace}
+            </button>
+            <button class="btn btn-danger" onclick="callLiar()" ${G.currentBid ? '' : 'disabled'}>
+                🤥 Call Liar!
+            </button>
+        </div>
+        ${!valid && G.currentBid ? `<div style="text-align:center;margin-top:8px;font-size:0.72rem;color:var(--danger)">Bid must be higher than current bid</div>` : ''}
+
+        ${histHTML}
+    </div>`;
+}
+
+function renderHistory() {
+    if (G.bidHistory.length === 0) return '';
+    const items = [...G.bidHistory].reverse().map(h =>
+        `<div class="history-item">
+            <strong>${escapeHtml(h.name)}</strong>
+            <span>${h.quantity}× face ${h.face}</span>
+        </div>`
+    ).join('');
+    return `<div class="history-section">
+        <button class="history-toggle" onclick="toggleHistory()">
+            ${G.historyOpen ? '▾' : '▸'} Bid History (${G.bidHistory.length})
+        </button>
+        ${G.historyOpen ? `<div class="history-list">${items}</div>` : ''}
+    </div>`;
+}
+
+function renderReveal() {
+    const result = G.challengeResult;
+    const total = G.players.reduce((s,p) => s.concat(p.dice), []);
+
+    // Player dice panels
+    const playerPanels = G.players.map((p, i) => {
+        const isLoser = p.name === result.loserName;
+        const isEliminated = !G.activePlayers.includes(i) && isLoser && p.diceCount === 0;
+        return `<div class="reveal-player">
+            <div class="reveal-player-header">
+                <span class="reveal-player-name${isLoser ? ' loser' : ''}">${escapeHtml(p.name)} ${isLoser ? '−1 die' : ''}</span>
+                ${isEliminated ? '<span style="color:var(--danger);font-size:0.72rem">ELIMINATED</span>' : ''}
+            </div>
+            <div class="dice-row">
+                ${p.dice.map(f => dieSVG(f, {
+                    size: 52,
+                    highlighted: f === result.bidFace || (G.wildOnes && f === 1 && result.bidFace !== 1),
+                    dimmed: f !== result.bidFace && !(G.wildOnes && f === 1 && result.bidFace !== 1),
+                })).join('')}
+            </div>
+        </div>`;
+    }).join('');
+
+    const bidValidClass = result.bidValid ? 'valid' : 'invalid';
+    const headline = result.bidValid
+        ? `${escapeHtml(result.bidderName)}'s bid was CORRECT`
+        : `${escapeHtml(result.bidderName)}'s bid was a LIE`;
+    const detail = result.bidValid
+        ? `${result.actual} × face ${result.bidFace} found — bid was ${result.bidQty}. ${escapeHtml(result.challengerName)} loses a die.`
+        : `Only ${result.actual} × face ${result.bidFace} found — bid was ${result.bidQty}. ${escapeHtml(result.bidderName)} loses a die.`;
+
+    const continueLabel = G.winner
+        ? '🏆 See Results'
+        : `▶ Continue — New Round`;
+
+    const wildNote = G.wildOnes
+        ? `<div style="text-align:center;margin-bottom:12px"><span class="wild-badge">⚡ Highlighted = face ${result.bidFace} + wild 1s</span></div>`
+        : `<div style="text-align:center;margin-bottom:12px"><span class="wild-badge">Highlighted = face ${result.bidFace}</span></div>`;
+
+    return `
+    <div class="header"><h1>LIAR'S DICE</h1></div>
+    <div class="card">
+        <div class="result-banner ${bidValidClass}">
+            <div class="result-headline">${headline}</div>
+            <div class="result-detail">${detail}</div>
+        </div>
+
+        ${wildNote}
+
+        <div class="section-title">All Dice Revealed</div>
+        ${playerPanels}
+
+        <hr class="divider">
+        <button class="btn btn-primary btn-full" onclick="continueAfterReveal()">${continueLabel}</button>
+    </div>`;
+}
+
+function renderGameOver() {
+    const posLabels = ['gold', 'silver', 'bronze'];
+    const rankings = G.rankings.map((r, i) => {
+        const posClass = i < 3 ? posLabels[i] : '';
+        const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `${i+1}.`;
+        return `<div class="ranking-item">
+            <div class="ranking-pos ${posClass}">${medal}</div>
+            <div class="ranking-name">${escapeHtml(r.name)}</div>
+            ${i === 0 ? '<span class="wild-badge">WINNER</span>' : ''}
+        </div>`;
+    });
+
+    return `
+    <div class="header"><h1>LIAR'S DICE</h1></div>
+    <div class="card">
+        <div class="winner-display">
+            <div class="winner-trophy">🏆</div>
+            <div class="winner-name">${escapeHtml(G.rankings[0].name)}</div>
+            <div class="winner-subtitle">wins the game!</div>
+        </div>
+        <div class="rankings">${rankings.join('')}</div>
+        <hr class="divider">
+        <button class="btn btn-primary btn-full" onclick="backToSetup()">🎲 Play Again</button>
+    </div>`;
+}
+
+// ─────────────────────────────────────────
+//  ACTIONS
+// ─────────────────────────────────────────
+
+function setPlayerCount(n) {
+    // Save current names first
+    document.querySelectorAll('[id^="pname-"]').forEach(el => {
+        const idx = parseInt(el.id.split('-')[1]);
+        G.playerNames[idx] = el.value || `Player ${idx + 1}`;
+    });
+    G.playerCount = n;
+    render();
+}
+
+function startGame() {
+    // Read names from inputs
+    for (let i = 0; i < G.playerCount; i++) {
+        const el = document.getElementById(`pname-${i}`);
+        G.playerNames[i] = (el && el.value.trim()) || `Player ${i + 1}`;
+    }
+
+    G.players = [];
+    for (let i = 0; i < G.playerCount; i++) {
+        G.players.push({
+            name: G.playerNames[i],
+            dice: [],
+            diceCount: STARTING_DICE,
+            active: true,
+            elimOrder: null,
+        });
+    }
+
+    G.activePlayers = G.players.map((_, i) => i);
+    G.rankings = [];
+    startNewRound(0);
+}
+
+function startNewRound(firstBidderActiveIdx) {
+    // Roll all dice
+    G.players.forEach((p, i) => {
+        if (G.activePlayers.includes(i)) {
+            p.dice = rollDice(p.diceCount);
+        } else {
+            p.dice = [];
+        }
+    });
+
+    G.currentBid = null;
+    G.bidHistory = [];
+    G.challengeResult = null;
+    G.historyOpen = false;
+    G.rollIdx = 0;
+    G.bidderIdx = firstBidderActiveIdx % G.activePlayers.length;
+    G.firstBidderIdx = G.bidderIdx;
+
+    // Set default pending bid to minimum valid
+    G.pendingQty = 1;
+    G.pendingFace = 1;
+
+    G.phase = 'roll_cover';
+    render();
+}
+
+function showRoll() {
+    G.phase = 'roll_view';
+    render();
+}
+
+function doneRolling() {
+    G.rollIdx++;
+    if (G.rollIdx < G.activePlayers.length) {
+        G.phase = 'roll_cover';
+    } else {
+        // All rolled — move to bidding
+        G.phase = 'bid_cover';
+    }
+    render();
+}
+
+function showBid() {
+    // Reset pending to minimum valid bid
+    if (G.currentBid) {
+        G.pendingQty = G.currentBid.quantity;
+        G.pendingFace = G.currentBid.face;
+        // Advance by one
+        if (G.pendingFace < 6) {
+            G.pendingFace++;
+        } else {
+            G.pendingQty++;
+            G.pendingFace = 1;
+        }
+    } else {
+        G.pendingQty = 1;
+        G.pendingFace = 1;
+    }
+    const total = totalDiceInPlay();
+    if (G.pendingQty > total) G.pendingQty = total;
+
+    G.phase = 'bid_view';
+    render();
+}
+
+function changePendingQty(delta) {
+    const total = totalDiceInPlay();
+    G.pendingQty = Math.max(1, Math.min(total, G.pendingQty + delta));
+    render();
+}
+
+function setPendingFace(f) {
+    G.pendingFace = f;
+    render();
+}
+
+function placeBid() {
+    const bid = {quantity: G.pendingQty, face: G.pendingFace};
+    if (!bidIsValid(bid, G.currentBid)) return;
+
+    const ap = G.activePlayers[G.bidderIdx];
+    G.lastBidderActiveIdx = G.bidderIdx;
+    G.currentBid = { ...bid, bidderName: G.players[ap].name };
+    G.bidHistory.push({ name: G.players[ap].name, quantity: bid.quantity, face: bid.face });
+
+    // Advance to next active player
+    G.bidderIdx = (G.bidderIdx + 1) % G.activePlayers.length;
+    G.phase = 'bid_cover';
+    render();
+}
+
+function callLiar() {
+    if (!G.currentBid) return;
+
+    const challengerActiveIdx = G.bidderIdx;
+    const challengerPlayerIdx = G.activePlayers[challengerActiveIdx];
+    const bidderActiveIdx = G.lastBidderActiveIdx;
+    const bidderPlayerIdx = G.activePlayers[bidderActiveIdx];
+
+    // Count matching dice across all active players
+    const allDice = G.activePlayers.flatMap(i => G.players[i].dice);
+    const actual = countFace(allDice, G.currentBid.face, G.wildOnes);
+    const bidValid = actual >= G.currentBid.quantity;
+
+    const loserActiveIdx = bidValid ? challengerActiveIdx : bidderActiveIdx;
+    const loserPlayerIdx = G.activePlayers[loserActiveIdx];
+    const loser = G.players[loserPlayerIdx];
+
+    G.challengeResult = {
+        loserName: loser.name,
+        bidderName: G.currentBid.bidderName,
+        challengerName: G.players[challengerPlayerIdx].name,
+        actual,
+        bidQty: G.currentBid.quantity,
+        bidFace: G.currentBid.face,
+        bidValid,
+        loserActiveIdx,
+        loserPlayerIdx,
+    };
+
+    // Deduct the die
+    loser.diceCount--;
+    if (loser.diceCount > 0) {
+        loser.dice = rollDice(loser.diceCount);
+    } else {
+        loser.dice = [];
+        loser.active = false;
+        loser.elimOrder = G.rankings.length;
+        G.rankings.unshift({ name: loser.name }); // add to front, winner replaces pos 0 later
+        G.activePlayers = G.activePlayers.filter(i => i !== loserPlayerIdx);
+    }
+
+    // Check win condition
+    if (G.activePlayers.length === 1) {
+        const winnerIdx = G.activePlayers[0];
+        G.winner = G.players[winnerIdx].name;
+        G.rankings.unshift({ name: G.winner }); // winner at position 0
+    }
+
+    G.phase = 'reveal';
+    render();
+}
+
+function continueAfterReveal() {
+    if (G.winner) {
+        G.phase = 'gameover';
+        render();
+        return;
+    }
+
+    // Loser starts next round (if still active), else next active player
+    const result = G.challengeResult;
+    let nextBidderActiveIdx = 0;
+    const loserStillIn = G.activePlayers.includes(result.loserPlayerIdx);
+    if (loserStillIn) {
+        nextBidderActiveIdx = G.activePlayers.indexOf(result.loserPlayerIdx);
+    }
+    // Note: loserPlayerIdx may be stale if eliminated; default to 0 is fine
+
+    startNewRound(nextBidderActiveIdx);
+}
+
+function backToSetup() {
+    G.phase = 'setup';
+    G.winner = null;
+    G.players = [];
+    G.activePlayers = [];
+    G.currentBid = null;
+    G.bidHistory = [];
+    G.challengeResult = null;
+    G.rankings = [];
+    render();
+}
+
+function toggleHistory() {
+    G.historyOpen = !G.historyOpen;
+    render();
+}
+
+// ─────────────────────────────────────────
+//  RENDER DISPATCHER
+// ─────────────────────────────────────────
+function render() {
+    const app = document.getElementById('app');
+    switch (G.phase) {
+        case 'setup':      app.innerHTML = renderSetup();     break;
+        case 'roll_cover': app.innerHTML = `<div class="header"><h1>LIAR'S DICE</h1></div>` + renderRollCover(); break;
+        case 'roll_view':  app.innerHTML = renderRollView();  break;
+        case 'bid_cover':  app.innerHTML = `<div class="header"><h1>LIAR'S DICE</h1></div>` + renderBidCover();  break;
+        case 'bid_view':   app.innerHTML = renderBidView();   break;
+        case 'reveal':     app.innerHTML = renderReveal();    break;
+        case 'gameover':   app.innerHTML = renderGameOver();  break;
+    }
+}
+
+// ─────────────────────────────────────────
+//  HELPERS
+// ─────────────────────────────────────────
+function escapeHtml(s) {
+    return String(s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+}
+
+// ─────────────────────────────────────────
+//  INIT
+// ─────────────────────────────────────────
+render();
+</script>
+</body>
+</html>
