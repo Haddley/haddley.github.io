@@ -246,7 +246,12 @@
         /* ══════════════════════════════════════════
            VIEWER MODE CSS
         ══════════════════════════════════════════ */
-        body.viewer-mode { padding: 0; overflow: hidden; }
+        body.viewer-mode {
+            padding: 0; overflow: hidden;
+            display: block; /* override flex so fixed children fill viewport freely */
+            height: 100dvh; width: 100vw;
+        }
+        body.viewer-mode #app { max-width: none; width: 100vw; height: 100dvh; }
 
         .v-screen {
             position: fixed; inset: 0;
@@ -308,6 +313,14 @@
             font-size: clamp(0.7rem, 1.5vw, 0.9rem);
             color: var(--muted); letter-spacing: 2px; text-transform: uppercase;
         }
+        .v-fs-btn {
+            background: transparent; border: 1px solid var(--border);
+            color: var(--muted); font-size: clamp(1rem, 2vw, 1.4rem);
+            width: 2.2em; height: 2.2em; border-radius: 6px;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: all .15s; flex-shrink: 0; padding: 0; line-height: 1;
+        }
+        .v-fs-btn:hover { border-color: var(--accent); color: var(--accent); }
 
         /* ── Viewer player cards ── */
         .v-players {
@@ -570,9 +583,10 @@ let viewerConns = {};     // host: {peerId: DataConnection} for viewers
 // ── UI phase (pre-game setup screens) ──
 let ui = 'home'; // home | creating | joining | connecting | lobby_h | lobby_g | game | gameover | viewer
 let uiErr = '';
-let fName = '';
-let fCode = '';
-let fWild = true;
+let fName  = '';
+let fCode  = '';
+let fVCode = '';   // viewer room-code input
+let fWild  = true;
 
 // ── Viewer client state ──
 let isViewer = false;
@@ -771,14 +785,24 @@ function hostContinue(fromId) {
 
 function hostRestart(fromId) {
     if (H.players[0].id !== fromId) return;
+
+    // Remember connected guests' names before wiping game state
+    const returning = Object.keys(guestConns).map(pid => {
+        const p = H.players.find(pl => pl.id === pid);
+        return { id: pid, name: p?.name ?? 'Player' };
+    });
+
     H = { players:[], activePlayers:[], phase:'lobby', bidderIdx:0,
-          currentBid:null, bidHistory:[], wildOnes:true,
+          currentBid:null, bidHistory:[], wildOnes:fWild,
           challengeResult:null, winner:null, eliminated:[], rankings:[] };
-    guestConns = {};
+    // Do NOT clear guestConns / viewerConns — PeerJS connections remain alive
+
     ui = 'lobby_h';
     D = null;
-    // Re-add host player
+
     hostAddPlayer(myId, myName);
+    returning.forEach(({ id, name }) => hostAddPlayer(id, name));
+
     broadcastLobby();
 }
 
@@ -1017,6 +1041,27 @@ function actRestart() {
     else        { send(hostConn, {type:'restart'}); }
 }
 
+function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+    } else {
+        document.exitFullscreen().catch(() => {});
+    }
+}
+
+// Auto-enter fullscreen on first interaction after viewer mode is active
+document.addEventListener('click', function() {
+    if (isViewer && !document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+    }
+});
+
+// Update fullscreen button icon when browser fullscreen state changes externally (e.g. Esc key)
+document.addEventListener('fullscreenchange', function() {
+    const btn = document.getElementById('v-fs-btn');
+    if (btn) btn.textContent = document.fullscreenElement ? '⊡' : '⛶';
+});
+
 // ═══════════════════════════════════════════════
 //  PEER SETUP
 // ═══════════════════════════════════════════════
@@ -1237,11 +1282,11 @@ function screenHome() {
       <div class="slbl">Join as Viewer</div>
       <div style="font-size:.75rem;color:var(--muted);margin-bottom:10px">Watch the game on a TV or shared screen — no account needed.</div>
       <div class="fg"><label>Room code</label>
-        <input id="vc" type="text" placeholder="e.g. ABC123" maxlength="6"
+        <input id="vc" type="text" placeholder="e.g. ABC123" value="${esc(fVCode)}" maxlength="6"
           autocomplete="off" autocapitalize="characters" style="letter-spacing:4px;font-size:1.1rem;text-transform:uppercase"
-          oninput="this._vc=this.value">
+          oninput="fVCode=this.value">
       </div>
-      <button class="btn btn-g btn-full" onclick="joinAsViewer(document.getElementById('vc').value||'')">📺 Watch as Viewer</button>
+      <button class="btn btn-g btn-full" onclick="joinAsViewer(fVCode)">📺 Watch as Viewer</button>
     </div>`;
 }
 
@@ -1570,6 +1615,7 @@ function screenViewer() {
         <div class="v-title">LIAR'S DICE</div>
         <div class="v-header-code">${esc((vD.roomCode||'').toUpperCase())}</div>
         <div class="v-header-dice">${vD.totalDice ?? 0} dice</div>
+        <button class="v-fs-btn" id="v-fs-btn" onclick="toggleFullscreen()" title="Toggle fullscreen">${document.fullscreenElement ? '⊡' : '⛶'}</button>
       </div>
       <div class="v-players">${playerCards}</div>
       <div class="v-bid-area">
