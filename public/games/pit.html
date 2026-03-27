@@ -1437,7 +1437,7 @@ function renderHome() {
         <div class="fg">
             <label>Room Code</label>
             <input type="text" maxlength="4" placeholder="4-letter code"
-                value="${esc(fCode)}" oninput="fCode=this.value.toUpperCase()"
+                value="${esc(fCode)}" oninput="fCode=this.value=this.value.toUpperCase()"
                 onkeydown="if(event.key==='Enter')document.getElementById('btn-join').click()">
         </div>
         <div class="fg">
@@ -1454,7 +1454,7 @@ function renderHome() {
         <div class="fg">
             <label>Watch (Viewer / TV)</label>
             <input type="text" maxlength="4" placeholder="4-letter code"
-                value="${esc(fVCode)}" oninput="fVCode=this.value.toUpperCase()"
+                value="${esc(fVCode)}" oninput="fVCode=this.value=this.value.toUpperCase()"
                 onkeydown="if(event.key==='Enter')joinAsViewer(fVCode)">
         </div>
         <button class="btn btn-g btn-full" onclick="joinAsViewer(fVCode)">📺 Watch</button>

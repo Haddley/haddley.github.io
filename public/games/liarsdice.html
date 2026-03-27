@@ -1344,7 +1344,7 @@ function screenHome() {
       <div class="slbl">Join a game</div>
       <div class="fg"><label>Room code</label>
         <input id="jc" type="text" placeholder="e.g. ABCD" value="${esc(fCode)}" maxlength="4"
-          oninput="fCode=this.value" autocomplete="off" autocapitalize="characters" style="letter-spacing:4px;font-size:1.1rem;text-transform:uppercase">
+          oninput="fCode=this.value=this.value.toUpperCase()" autocomplete="off" autocapitalize="characters" style="letter-spacing:4px;font-size:1.1rem;text-transform:uppercase">
       </div>
       <div class="fg"><label>Your name</label>
         <input type="text" placeholder="e.g. Alice" value="${esc(fName)}" maxlength="16" oninput="fName=this.value">
@@ -1360,7 +1360,7 @@ function screenHome() {
       <div class="fg"><label>Room code</label>
         <input id="vc" type="text" placeholder="e.g. ABCD" value="${esc(fVCode)}" maxlength="4"
           autocomplete="off" autocapitalize="characters" style="letter-spacing:4px;font-size:1.1rem;text-transform:uppercase"
-          oninput="fVCode=this.value">
+          oninput="fVCode=this.value=this.value.toUpperCase()">
       </div>
       <button type="submit" class="btn btn-g btn-full">📺 Watch as Viewer</button>
       </form>
