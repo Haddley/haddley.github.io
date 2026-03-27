@@ -18,6 +18,7 @@
         :root {
             --bg: #0a0a0f;
             --surface: #14141f;
+            --s2: #1a1a2a;
             --border: #2a2a3a;
             --x-color: #ff6b9d;
             --o-color: #4ecdc4;
@@ -25,7 +26,36 @@
             --text-secondary: #6b6b8a;
             --success: #4ade80;
             --error: #f87171;
+            --accent: #f59e0b;
         }
+
+        body.day {
+            --bg: #f5f4ef;
+            --surface: #ffffff;
+            --s2: #edede7;
+            --border: #d4d4cc;
+            --text-primary: #1a1a2a;
+            --text-secondary: #6b6b7a;
+            --success: #16a34a;
+            --error: #dc2626;
+            --accent: #d97706;
+        }
+        body.day::before {
+            background:
+                radial-gradient(ellipse at 20% 20%, rgba(255,107,157,0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(78,205,196,0.05) 0%, transparent 50%);
+        }
+
+        /* ── Theme toggle button ── */
+        .theme-toggle {
+            position: fixed; top: 14px; right: 14px; z-index: 1000;
+            background: var(--s2); border: 1px solid var(--border);
+            color: var(--text-primary); border-radius: 8px;
+            width: 38px; height: 38px; font-size: 1.1rem;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: border-color .15s, background .15s;
+        }
+        .theme-toggle:hover { border-color: var(--accent); }
 
         html {
             font-size: 16px;
@@ -611,6 +641,7 @@
     </style>
 </head>
 <body>
+<button class="theme-toggle" id="theme-btn" onclick="toggleTheme()" title="Toggle day/night mode">&#x2600;&#xFE0F;</button>
     <div class="container">
         <div class="logo">
             <h1>
@@ -628,6 +659,10 @@
         <div class="card">
             <div id="lobby-screen" class="screen active">
                 <div class="lobby-options">
+                    <div class="input-group" style="margin-bottom: 16px;">
+                        <label>Your Name</label>
+                        <input type="text" id="player-name-input" placeholder="Enter your name" maxlength="16">
+                    </div>
                     <button class="btn btn-primary" id="create-game-btn">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -641,7 +676,7 @@
                     <div class="input-group">
                         <label>Join with room code</label>
                         <div class="input-wrapper">
-                            <input type="text" id="room-code-input" placeholder="XXXXXX" maxlength="6">
+                            <input type="text" id="room-code-input" placeholder="XXXX" maxlength="4">
                             <button class="btn btn-secondary btn-small" id="join-game-btn">Join</button>
                         </div>
                         <div id="join-error" class="error-message">Room not found or connection failed</div>
@@ -737,6 +772,8 @@
             myRole: null,
             isHost: false,
             roomCode: null,
+            playerName: '',
+            opponentName: '',
             gameState: {
                 board: ['', '', '', '', '', '', '', '', ''],
                 currentPlayer: 'X',
@@ -751,6 +788,7 @@
                 gameScreen: document.getElementById('game-screen'),
                 createGameBtn: document.getElementById('create-game-btn'),
                 joinGameBtn: document.getElementById('join-game-btn'),
+                playerNameInput: document.getElementById('player-name-input'),
                 roomCodeInput: document.getElementById('room-code-input'),
                 roomCodeText: document.getElementById('room-code-text'),
                 copyCodeBtn: document.getElementById('copy-code-btn'),
@@ -772,6 +810,8 @@
             },
 
             init() {
+                const saved = localStorage.getItem('ttt-name');
+                if (saved) this.elements.playerNameInput.value = saved;
                 this.bindEvents();
             },
 
@@ -809,13 +849,15 @@
             generateRoomCode() {
                 const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
                 let code = '';
-                for (let i = 0; i < 6; i++) {
+                for (let i = 0; i < 4; i++) {
                     code += chars.charAt(Math.floor(Math.random() * chars.length));
                 }
                 return code;
             },
 
             createGame() {
+                this.playerName = this.elements.playerNameInput.value.trim() || 'Player X';
+                localStorage.setItem('ttt-name', this.playerName);
                 this.roomCode = this.generateRoomCode();
                 this.isHost = true;
                 this.myRole = 'X';
@@ -858,10 +900,12 @@
             },
 
             joinGame() {
+                this.playerName = this.elements.playerNameInput.value.trim() || 'Player O';
+                localStorage.setItem('ttt-name', this.playerName);
                 const code = this.elements.roomCodeInput.value.toUpperCase().trim();
-                
-                if (code.length !== 6) {
-                    this.elements.joinError.textContent = 'Please enter a 6-character room code';
+
+                if (code.length !== 4) {
+                    this.elements.joinError.textContent = 'Please enter a 4-character room code';
                     this.elements.joinError.classList.add('show');
                     return;
                 }
@@ -936,14 +980,20 @@
 
                 if (this.isHost) {
                     this.startGame();
-                    this.connection.send({ type: 'start' });
+                    this.connection.send({ type: 'start', hostName: this.playerName });
                 }
             },
 
             handleMessage(data) {
                 switch (data.type) {
                     case 'start':
+                        this.opponentName = data.hostName || 'Player X';
+                        this.connection.send({ type: 'hello', guestName: this.playerName });
                         this.startGame();
+                        break;
+                    case 'hello':
+                        this.opponentName = data.guestName || 'Player O';
+                        this.updatePlayerLabels();
                         break;
                     case 'move':
                         this.handleOpponentMove(data.cell);
@@ -963,7 +1013,15 @@
             startGame() {
                 this.resetGame();
                 this.showScreen('game');
+                this.updatePlayerLabels();
                 this.updateUI();
+            },
+
+            updatePlayerLabels() {
+                const xName = this.isHost ? this.playerName : this.opponentName;
+                const oName = this.isHost ? this.opponentName : this.playerName;
+                this.elements.playerX.querySelector('span').textContent = xName || 'Player X';
+                this.elements.playerO.querySelector('span').textContent = oName || 'Player O';
             },
 
             resetGame() {
@@ -1213,6 +1271,7 @@
                 this.roomCode = null;
                 this.myRole = null;
                 this.isHost = false;
+                this.opponentName = '';
                 this.elements.joinGameBtn.disabled = false;
                 this.elements.joinGameBtn.textContent = 'Join';
                 this.elements.roomCodeInput.value = '';
@@ -1239,6 +1298,18 @@
         };
 
         App.init();
+
+        // ── Theme ──
+        function toggleTheme() {
+            document.body.classList.toggle('day');
+            const day = document.body.classList.contains('day');
+            document.getElementById('theme-btn').textContent = day ? '🌙' : '☀️';
+            localStorage.setItem('ttt-theme', day ? 'day' : 'dark');
+        }
+        if (localStorage.getItem('ttt-theme') === 'day') {
+            document.body.classList.add('day');
+            document.getElementById('theme-btn').textContent = '🌙';
+        }
     </script>
 </body>
 </html>

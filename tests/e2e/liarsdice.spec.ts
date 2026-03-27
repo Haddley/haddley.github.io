@@ -36,20 +36,18 @@ async function newPage(ctx: BrowserContext, url = BASE_URL): Promise<Page> {
 
 // ─── High-level helpers ────────────────────────────────────────────────────
 
-/** Fill name, click Create Game, wait for lobby, return the 6-char room code. */
+/** Fill name, click Create Game, wait for lobby, return the 4-char room code. */
 async function createGame(page: Page, name = 'Alice'): Promise<string> {
     await page.fill('#cn', name);
     await page.click('button:has-text("Create Game")');
     await expect(page.locator('.room-code')).toBeVisible();
     const raw = (await page.locator('.room-code').textContent()) ?? '';
-    return raw.trim().toLowerCase();
+    return raw.trim().toUpperCase();
 }
 
 /** Fill room code + name, click Join Game, wait for guest lobby screen. */
 async function joinGame(page: Page, code: string, name = 'Bob') {
-    await page.fill('#jc', code);
-    // The second name field (join section) shares the same placeholder as the
-    // create section; target it by its placeholder text to be specific.
+    await page.fill('#jc', code.toUpperCase());
     await page.locator('input[placeholder="e.g. Alice"]').fill(name);
     await page.click('button:has-text("Join Game")');
     await expect(page.locator('text=Waiting for host to start')).toBeVisible();
@@ -57,7 +55,7 @@ async function joinGame(page: Page, code: string, name = 'Bob') {
 
 /** Fill viewer code, click Watch as Viewer, wait for viewer screen. */
 async function joinViewer(page: Page, code: string) {
-    await page.fill('#vc', code);
+    await page.fill('#vc', code.toUpperCase());
     await page.click('button:has-text("Watch as Viewer")');
     // Viewer shows a lobby screen or game screen — both have ".v-lobby-code" or
     // ".v-player-card".  Wait for either.
@@ -83,7 +81,7 @@ test.describe('Lobby', () => {
 
         const code = await createGame(host, 'Alice');
 
-        expect(code).toHaveLength(6);
+        expect(code).toHaveLength(4);
         await expect(host.locator('text=Alice')).toBeVisible();
         await expect(host.locator('text=(host)')).toBeVisible();
 
@@ -263,7 +261,7 @@ test.describe('Viewer mode', () => {
         await joinViewer(viewer, code);
 
         // Viewer lobby shows room code and host name
-        await expect(viewer.locator('.v-lobby-code')).toContainText(code.toUpperCase());
+        await expect(viewer.locator('.v-lobby-code')).toContainText(code);
         await expect(viewer.locator('text=Alice')).toBeVisible();
 
         await ctx.close();
