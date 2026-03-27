@@ -26,6 +26,54 @@
             --success: #4ade80;
         }
 
+        body.day {
+            --bg: #f5f4ef;
+            --surface: #ffffff;
+            --s2: #edede7;
+            --border: #d4d4cc;
+            --text: #1a1a2a;
+            --muted: #6b6b7a;
+            --accent: #d97706;
+            --ag: rgba(217,119,6,0.15);
+            --danger: #dc2626;
+            --dg: rgba(220,38,38,0.15);
+            --success: #16a34a;
+        }
+        body.day::before {
+            background:
+                radial-gradient(ellipse at 15% 10%, rgba(217,119,6,0.05) 0%, transparent 55%),
+                radial-gradient(ellipse at 85% 90%, rgba(220,38,38,0.05) 0%, transparent 55%);
+        }
+        body.day .hdr h1 {
+            filter: drop-shadow(0 0 12px rgba(217,119,6,0.2));
+        }
+        /* Viewer always stays dark */
+        body.day.viewer-mode {
+            --bg: #05050a;
+            --surface: #14141f;
+            --s2: #1a1a2a;
+            --border: #2a2a3a;
+            --text: #ffffff;
+            --muted: #6b6b8a;
+            --accent: #f59e0b;
+            --ag: rgba(245,158,11,0.2);
+            --danger: #ef4444;
+            --dg: rgba(239,68,68,0.2);
+            --success: #4ade80;
+        }
+
+        /* ── Theme toggle button ── */
+        .theme-toggle {
+            position: fixed; top: 14px; right: 14px; z-index: 1000;
+            background: var(--s2); border: 1px solid var(--border);
+            color: var(--text); border-radius: 8px;
+            width: 38px; height: 38px; font-size: 1.1rem;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: border-color .15s, background .15s;
+        }
+        .theme-toggle:hover { border-color: var(--accent); }
+        body.viewer-mode .theme-toggle { display: none; }
+
         body {
             font-family: 'JetBrains Mono', monospace;
             background: var(--bg);
@@ -358,12 +406,12 @@
         .v-tile {
             aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
             border-radius: clamp(6px,1vw,14px);
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1rem,3.5vw,2.8rem); font-weight: 900;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: clamp(1.8rem,6vw,4.8rem); font-weight: 900;
             background: var(--s2); border: 2px solid var(--border);
             color: var(--text);
         }
-        .v-tile.qu { font-size: clamp(0.7rem,2.2vw,1.8rem); }
+        .v-tile.qu { font-size: clamp(1.2rem,4vw,3.2rem); }
 
         /* ── Sidebar ── */
         .v-sidebar {
@@ -496,8 +544,8 @@
             aspect-ratio: 1;
             display: flex; align-items: center; justify-content: center;
             border-radius: 10px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.2rem, 6vw, 1.8rem);
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: clamp(2.8rem, 16vw, 4.2rem);
             font-weight: 900;
             background: var(--s2);
             border: 2px solid var(--border);
@@ -506,7 +554,7 @@
             transition: border-color .1s, box-shadow .1s, opacity .1s, background .1s;
             position: relative;
         }
-        .tile.qu { font-size: clamp(.85rem, 4vw, 1.2rem); }
+        .tile.qu { font-size: clamp(1.7rem, 9vw, 2.6rem); }
 
         /* default — tappable */
         .tile:active { transform: scale(.93); }
@@ -640,6 +688,7 @@
 </head>
 <body>
 <div id="app"></div>
+<button class="theme-toggle" id="theme-btn" onclick="toggleTheme()" title="Toggle day/night mode">&#x2600;&#xFE0F;</button>
 
 <script>
 // ══════════════════════════════════════════
@@ -686,7 +735,7 @@ let viewerConns= {};        // host: { peerId: DataConnection }
 // ── UI State ──
 let ui      = 'home'; // home | creating | connecting | lobby_h | lobby_g | game | scoring | results | gameover | viewer
 let uiErr   = '';
-let fName   = '';
+let fName   = localStorage.getItem('boggle-name') || '';
 let fCode   = '';
 let fVCode  = '';
 let fRounds = 5;      // 3 | 5 | 10
@@ -893,6 +942,7 @@ function setupGuestConn(conn) {
 // ── Host game ──
 function hostGame(name, rounds) {
     myName = name.trim() || 'Host';
+    localStorage.setItem('boggle-name', myName);
     H.roundsTarget = rounds;
     uiErr = '';
     ui = 'creating';
@@ -925,6 +975,7 @@ function hostGame(name, rounds) {
 // ── Join game ──
 function joinGame(code, name) {
     myName = name.trim() || 'Player';
+    localStorage.setItem('boggle-name', myName);
     const pid = 'BOGGLE-' + code.trim().toUpperCase();
     uiErr = '';
     ui = 'connecting';
@@ -1873,6 +1924,20 @@ function confetti() {
         document.body.appendChild(el);
         el.addEventListener('animationend', () => el.remove());
     }
+}
+
+// ── Theme ──
+function toggleTheme() {
+    document.body.classList.toggle('day');
+    const day = document.body.classList.contains('day');
+    document.getElementById('theme-btn').textContent = day ? '🌙' : '☀️';
+    localStorage.setItem('boggle-theme', day ? 'day' : 'dark');
+}
+
+// Restore saved theme before first render
+if (localStorage.getItem('boggle-theme') === 'day') {
+    document.body.classList.add('day');
+    document.getElementById('theme-btn').textContent = '🌙';
 }
 
 // ── Init ──
