@@ -72,7 +72,7 @@ describe('theme toggle', () => {
     }
 
     function restoreTheme(storageKey: string) {
-        if (store[storageKey] === 'day') {
+        if (store[storageKey] !== 'dark') {
             document.body.classList.add('day');
         }
     }
@@ -109,13 +109,18 @@ describe('theme toggle', () => {
         }
     });
 
+    it('defaults to day mode when nothing is stored', () => {
+        restoreTheme('test-theme');
+        expect(document.body.classList.contains('day')).toBe(true);
+    });
+
     it('restores day mode when stored value is "day"', () => {
         store['test-theme'] = 'day';
         restoreTheme('test-theme');
         expect(document.body.classList.contains('day')).toBe(true);
     });
 
-    it('does not add day class when stored value is "dark"', () => {
+    it('stays dark when stored value is "dark"', () => {
         store['test-theme'] = 'dark';
         restoreTheme('test-theme');
         expect(document.body.classList.contains('day')).toBe(false);

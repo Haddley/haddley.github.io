@@ -1306,7 +1306,7 @@
             document.getElementById('theme-btn').textContent = day ? '🌙' : '☀️';
             localStorage.setItem('ttt-theme', day ? 'day' : 'dark');
         }
-        if (localStorage.getItem('ttt-theme') === 'day') {
+        if (localStorage.getItem('ttt-theme') !== 'dark') {
             document.body.classList.add('day');
             document.getElementById('theme-btn').textContent = '🌙';
         }

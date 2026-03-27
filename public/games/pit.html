@@ -1749,7 +1749,7 @@ function toggleTheme() {
     document.getElementById('theme-btn').textContent = day ? '🌙' : '☀️';
     localStorage.setItem('pit-theme', day ? 'day' : 'dark');
 }
-if (localStorage.getItem('pit-theme') === 'day') {
+if (localStorage.getItem('pit-theme') !== 'dark') {
     document.body.classList.add('day');
     document.getElementById('theme-btn').textContent = '🌙';
 }

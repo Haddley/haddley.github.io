@@ -1789,7 +1789,7 @@ function toggleTheme() {
     document.getElementById('theme-btn').textContent = day ? '🌙' : '☀️';
     localStorage.setItem('liarsdice-theme', day ? 'day' : 'dark');
 }
-if (localStorage.getItem('liarsdice-theme') === 'day') {
+if (localStorage.getItem('liarsdice-theme') !== 'dark') {
     document.body.classList.add('day');
     document.getElementById('theme-btn').textContent = '🌙';
 }

@@ -1935,7 +1935,7 @@ function toggleTheme() {
 }
 
 // Restore saved theme before first render
-if (localStorage.getItem('boggle-theme') === 'day') {
+if (localStorage.getItem('boggle-theme') !== 'dark') {
     document.body.classList.add('day');
     document.getElementById('theme-btn').textContent = '🌙';
 }
