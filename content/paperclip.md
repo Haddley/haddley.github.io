@@ -318,3 +318,5 @@ In a few hours, two Claude agents had gone from a blank company to a working mul
 ## References
 
 - [Paperclip — Open-source orchestration for zero-human companies](https://paperclip.ing/)
+
+- [You NEED to try these open-source AI projects right now...](https://www.youtube.com/watch?v=sXVbWkoCVaA&t=630s)
