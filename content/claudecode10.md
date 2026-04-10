@@ -9,7 +9,7 @@ hidden: false
 slug: "claudecode10"
 ---
 
-Here's how the AI Agent page works end-to-end:
+Let's walk through the end-to-end workflow of a Dynamics 365 Sales Professional AI Agent page.
 
 ## LLM
 
