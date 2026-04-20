@@ -146,13 +146,15 @@ function parseMarkdownToMobirise(markdownContent: string): MobiriseParsedContent
   let inCodeBlock = false;
   let codeContent: string[] = [];
   let codeLanguage = '';
-  
+  let codeFence = '```';
+
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
     const trimmedLine = line.trim();
-    
-    // Handle code blocks
-    if (trimmedLine.startsWith('```')) {
+
+    // Handle code blocks (support 3+ backtick fences)
+    const fenceMatch = trimmedLine.match(/^(`{3,})/);
+    if (fenceMatch && (!inCodeBlock || trimmedLine === codeFence)) {
       if (!inCodeBlock) {
         // Starting a code block
         // Flush any accumulated text
@@ -163,9 +165,10 @@ function parseMarkdownToMobirise(markdownContent: string): MobiriseParsedContent
           });
           currentTextContent = [];
         }
-        
+
         inCodeBlock = true;
-        codeLanguage = trimmedLine.slice(3).trim(); // Extract language
+        codeFence = fenceMatch[1];
+        codeLanguage = trimmedLine.slice(codeFence.length).trim(); // Extract language
         codeContent = [];
       } else {
         // Ending a code block
@@ -174,10 +177,11 @@ function parseMarkdownToMobirise(markdownContent: string): MobiriseParsedContent
           content: codeContent.join('\n'),
           language: codeLanguage
         });
-        
+
         inCodeBlock = false;
         codeContent = [];
         codeLanguage = '';
+        codeFence = '```';
       }
       continue;
     }
