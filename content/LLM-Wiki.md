@@ -91,6 +91,19 @@ When I say "lint":
 ![Preview of the summons addressed to Central Coast Council](assets/images/LLMWiki/Screenshot-2026-04-20-at-5.17.32-PM.png)
 *The completed summons addressed to Central Coast Council, citing Rule 5.2 of the Uniform Civil Procedure Rules 2005*
 
+```PROMPT
+I just added a new article to raw/[2024] NSWDC 602.docx Please ingest it.
+```
+
+![Claude Code open in VS Code with the ingest prompt typed into the input field](assets/images/LLMWiki/Screenshot-2026-04-21-at-11.57.08-AM.png)
+*I typed the ingest prompt into Claude Code, asking it to process the newly added NSWDC 602 article*
+
+![Claude Code displaying key takeaways from Hardy v Eclipse K9 Security Pty Ltd 2024 NSWDC 602](assets/images/LLMWiki/Screenshot-2026-04-21-at-11.58.20-AM.png)
+*Claude Code read the full case and presented the key takeaways — including a $460,998.99 total award, the highest precedent in my wiki*
+
+![Claude Code updating the master index with the new legal precedent and creating wiki files](assets/images/LLMWiki/Screenshot-2026-04-21-at-12.00.26-PM.png)
+*Claude Code updated the master index, created a full case summary page, and flagged Hardy v Eclipse K9 as the highest-award precedent at $761,500 indexed*
+
 ## References
 
 - [A pattern for building personal knowledge bases using LLMs](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)
