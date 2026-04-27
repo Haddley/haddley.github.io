@@ -108,3 +108,4 @@ I just added a new article to raw/[2024] NSWDC 602.docx Please ingest it.
 
 - [A pattern for building personal knowledge bases using LLMs](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)
 - [Karpathy's LLM Wiki: The Complete Guide to His Idea File](https://antigravity.codes/blog/karpathy-llm-wiki-idea-file)
+- [Every Claude Code Memory System Compared (So You Don't Have To)](https://www.youtube.com/watch?v=UHVFcUzAGlM&t=1807s)
