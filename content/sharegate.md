@@ -252,14 +252,8 @@ image: "/assets/images/sharepoint2019/1200px-microsoft-office-sharepoint-2018pre
 ![](assets/images/shareGate/Screenshot-2026-04-30-at-7.37.02-PM.png)
 *Microsoft 365 Copilot opened in the browser after signing in to the tenant*
 
-![](assets/images/shareGate/Screenshot-2026-04-30-at-7.37.16-PM.png)
-*SharePoint Online showed my tenant's sites including Communication, Ad Staff, and Child Site 1*
-
 ![](assets/images/shareGate/Screenshot-2026-04-30-at-7.38.36-PM.png)
 *I confirmed the SharePoint Online sites were accessible from within the VM*
-
-![](assets/images/shareGate/Screenshot-2026-04-30-at-7.39.31-PM.png)
-*SharePoint Online site list confirmed the Microsoft 365 destination was ready*
 
 ![](assets/images/shareGate/Screenshot-2026-04-30-at-7.42.54-PM.png)
 *I navigated to the on-premises SharePoint Documents library — it was empty*
