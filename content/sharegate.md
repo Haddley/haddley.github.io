@@ -237,11 +237,8 @@ image: "/assets/images/sharepoint2019/1200px-microsoft-office-sharepoint-2018pre
 ![](assets/images/shareGate/Screenshot-2026-04-30-at-7.33.47-PM.png)
 *ShareGate Migrate showed "Connecting..." while establishing the connection*
 
-![](assets/images/shareGate/Screenshot-2026-04-30-at-7.34.26-PM.png)
-*ShareGate loaded the on-premises site and showed a "Let's get started" welcome popup — I clicked "I'm good, take me to the app"*
-
 ![](assets/images/shareGate/Screenshot-2026-04-30-at-7.34.41-PM.png)
-*The Explore view showed the Haddley-sharepo SharePoint Subscription Edition connection was active*
+*ShareGate loaded the on-premises site and showed a "Let's get started" welcome popup — I clicked "I'm good, take me to the app"*
 
 ![](assets/images/shareGate/Screenshot-2026-04-30-at-7.35.12-PM.png)
 *A Microsoft sign-in page appeared so I could add my Microsoft 365 account as the migration destination*
