@@ -189,42 +189,6 @@ image: "/assets/images/sharepoint2019/1200px-microsoft-office-sharepoint-2018pre
 *SharePoint displayed "Working on it..." while provisioning the service applications*
 
 
-Screenshot 2026-04-30 at 7.11.14 PM.png
-Screenshot 2026-04-30 at 7.12.45 PM.png
-Screenshot 2026-04-30 at 7.12.55 PM.png
-Screenshot 2026-04-30 at 7.21.40 PM.png
-Screenshot 2026-04-30 at 7.22.13 PM.png
-Screenshot 2026-04-30 at 7.22.33 PM.png
-Screenshot 2026-04-30 at 7.25.16 PM.png
-Screenshot 2026-04-30 at 7.29.35 PM.png
-Screenshot 2026-04-30 at 7.30.03 PM.png
-Screenshot 2026-04-30 at 7.30.14 PM.png
-Screenshot 2026-04-30 at 7.30.24 PM.png
-Screenshot 2026-04-30 at 7.30.33 PM.png
-Screenshot 2026-04-30 at 7.31.24 PM.png
-Screenshot 2026-04-30 at 7.32.04 PM.png
-Screenshot 2026-04-30 at 7.33.35 PM.png
-Screenshot 2026-04-30 at 7.33.47 PM.png
-Screenshot 2026-04-30 at 7.34.26 PM.png
-Screenshot 2026-04-30 at 7.34.41 PM.png
-Screenshot 2026-04-30 at 7.35.12 PM.png
-Screenshot 2026-04-30 at 7.36.24 PM.png
-Screenshot 2026-04-30 at 7.36.37 PM.png
-Screenshot 2026-04-30 at 7.37.02 PM.png
-Screenshot 2026-04-30 at 7.37.16 PM.png
-Screenshot 2026-04-30 at 7.38.36 PM.png
-Screenshot 2026-04-30 at 7.39.31 PM.png
-Screenshot 2026-04-30 at 7.42.54 PM.png
-Screenshot 2026-04-30 at 7.45.29 PM.png
-Screenshot 2026-04-30 at 7.45.40 PM.png
-Screenshot 2026-04-30 at 7.46.02 PM.png
-Screenshot 2026-04-30 at 7.46.16 PM.png
-Screenshot 2026-04-30 at 7.46.46 PM.png
-Screenshot 2026-04-30 at 7.46.57 PM.png
-Screenshot 2026-04-30 at 7.47.19 PM.png
-
-
-
 ![](assets/images/shareGate/Screenshot-2026-04-30-at-7.11.14-PM.png)
 *I configured the first site collection, entering the title "Home" and selecting the Team site template*
 
