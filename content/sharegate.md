@@ -1,6 +1,6 @@
 ---
 title: "ShareGate"
-description: "ShareGate Migration"
+description: "ShareGate Migration (Part 1)"
 date: "2026-04-30"
 categories: ["Microsoft 365"]
 tags: "sharepoint, azure, on-premises, online, migration"
@@ -287,6 +287,64 @@ image: "/assets/images/sharepoint2019/1200px-microsoft-office-sharepoint-2018pre
 
 ![](assets/images/shareGate/Screenshot-2026-04-30-at-7.47.19-PM.png)
 *The action panel showed options including Download, Check in, Break inheritance, Edit, and Delete permanently*
+
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.20.28-PM.png)
+*I opened the Copy section in ShareGate Migrate and selected "Copy existing structure and content" to begin the migration*
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.20.58-PM.png)
+*I entered http://haddley-sharepo/ as the source site address with my SHAREPOINT\\neil credentials*
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.22.34-PM.png)
+*ShareGate connected to the on-premises site and listed the Home site collection as the source*
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.23.47-PM.png)
+*I entered https://haddleyoffice365.sharepoint.com/ as the destination and clicked Connect using Browser authentication*
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.24.10-PM.png)
+*A browser authentication window opened asking me to sign in with neil@haddleyoffice365.onmicrosoft.com*
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.24.26-PM.png)
+*I entered my password for the Microsoft 365 destination tenant*
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.24.59-PM.png)
+*Microsoft asked "Stay signed in?" and I clicked Yes*
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.25.17-PM.png)
+*ShareGate asked for consent to access the Haddleyoffice365 Microsoft 365 tenant — I clicked "Consent through Microsoft"*
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.25.45-PM.png)
+*Microsoft showed the list of permissions requested by the ShareGate Migrate app for my organisation*
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.25.56-PM.png)
+*I reviewed the full permissions list and clicked Accept to grant the ShareGate app access*
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.26.15-PM.png)
+*The browser prompted me to open ShareGate Migrate to complete the authentication callback — I clicked Open*
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.27.31-PM.png)
+*I opened SharePoint Online to create a destination site, choosing between Team site and Communication site*
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.27.44-PM.png)
+*I chose the Standard team template for the new SharePoint Online site*
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.27.56-PM.png)
+*I previewed the Standard team template showing its site capabilities and what would be included*
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.28.26-PM.png)
+*I named the new site "OnPremHome" and the site address was confirmed as available*
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.28.39-PM.png)
+*I set the site privacy to Public and left the language as English, then clicked Create site*
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.28.56-PM.png)
+*I confirmed Neil Haddley as a member and clicked Finish to provision the site*
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.29.20-PM.png)
+*The new OnPremHome team site loaded successfully in SharePoint Online*
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.32.13-PM.png)
+*Back in ShareGate I entered the OnPremHome site URL as the migration destination and clicked Connect*
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.32.26-PM.png)
+*Browser authentication opened again to sign in to the OnPremHome destination site*
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.32.36-PM.png)
+*I entered my password to authenticate to the OnPremHome destination site*
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.33.08-PM.png)
+*ShareGate confirmed the OnPremHome site was connected as the destination and I clicked Next*
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.33.18-PM.png)
+*The Copy structure view showed the on-premises Home site on the left and OnPremHome on the right with matching lists and libraries*
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.33.44-PM.png)
+*I selected the Documents library on both sides and clicked Start copy, dismissing the off-peak hours suggestion*
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.33.57-PM.png)
+*A warning appeared that this is a trial edition and some items may be randomly skipped — I clicked Continue*
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.35.18-PM.png)
+*The migration report showed the copy in progress with 4 items queued including the file, content, library and session*
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.35.28-PM.png)
+*The migration report showed "Copy completed!" with 3 successes and 1 warning*
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.37.39-PM.png)
+*The OnPremHome Documents library in SharePoint Online showed the migrated PDF had arrived successfully*
+
 
 ## References
 
