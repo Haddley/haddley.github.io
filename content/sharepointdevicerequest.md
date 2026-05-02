@@ -3,7 +3,7 @@ title: "SharePoint"
 description: "Device Request List (Part 1)"
 date: "2026-05-02"
 categories: ["Microsoft 365"]
-tags: "sharepoint, powerautomate, powerapps"
+tags: "sharepoint, power-automate, power-apps"
 slug: "sharepointdevicerequest"
 image: "/assets/images/powerautomate/office-365-icon-500x500.png"
 ---
@@ -99,6 +99,19 @@ I built a Device Request list in SharePoint Online to let IT staff submit reques
 
 ![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.34.56-PM.png)
 *The Power Automate flow triggered automatically and sent a confirmation email: "Thank you for submitting a request for New iPhone. Your request is now being reviewed."*
+
+![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-5.00.42-PM.png)
+*I noticed the Edit in grid view button was gone from the toolbar after publishing the Power Apps form, and the settings panel confirmed the list was now read-only*
+
+![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-5.00.57-PM.png)
+*I opened the Device Requests Settings page to navigate to Advanced settings*
+
+![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-5.01.46-PM.png)
+*I set "Allow items in this list to be edited using Quick Edit and the Details Pane?" to No to disable inline grid editing and clicked OK to save*
+
+![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-5.16.15-PM.png)
+*I selected the New iPhone item and the Details pane showed all fields as read only*
+
 
 ## References
 
