@@ -165,6 +165,9 @@ The goal was to prove that ShareGate faithfully migrates not just files but the 
 ![](assets/images/shareGate2/Screenshot-2026-05-02-at-3.19.29-PM.png)
 *The Policy content type in SharePoint Online showed all three site columns: Name, Title, and Effective Date*
 
+![](assets/images/shareGate2/Screenshot-2026-05-05-at-1.59.36-PM.png)
+*I reviewed Azure Cost Analysis dashboard with the SharePoint virtual machines accounting for the majority of the $21.79 accumulated cost*
+
 ## References
 
 - [ShareGate Training Videos and Ask the Expert Sessions](https://help.sharegate.com/en/articles/10236073-sharegate-training-videos-and-ask-the-expert-sessions)
