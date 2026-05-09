@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BlogPost } from '@/lib/posts';
 import { categories } from '@/lib/categories';
 import Link from 'next/link';
@@ -18,6 +18,14 @@ export default function PostsPageWithSearch({
   remainingPosts 
 }: PostsPageWithSearchProps) {
   const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    if (!searchTerm) return;
+    const timer = setTimeout(() => {
+      window.gtag?.('event', 'search', { search_term: searchTerm });
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [searchTerm]);
 
   const filteredPosts = allPosts.filter(post => {
     const searchLower = searchTerm.toLowerCase();

@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Jost } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Layout from "@/components/Layout";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const jost = Jost({
   subsets: ["latin"],
@@ -52,9 +54,28 @@ export default function RootLayout({
         <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" />
         <link rel="stylesheet" href="/prism.css" />
         {/* eslint-enable @next/next/no-css-tags */}
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}');
+              `}
+            </Script>
+          </>
+        )}
       </head>
       <body className={`${jost.className} antialiased`}>
         <Layout>{children}</Layout>
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+          <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+        )}
       </body>
     </html>
   );

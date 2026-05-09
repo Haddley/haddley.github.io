@@ -1,11 +1,22 @@
 import { getPostById, getAllPosts } from '@/lib/posts';
 import { getMarkdownPost } from '@/lib/markdown';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import MobiriseContentRenderer from '@/components/MobiriseContentRenderer';
 
 interface PostPageProps {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getPostById(slug);
+  if (!post) return {};
+  return {
+    title: `${post.title} | Neil Haddley`,
+    description: post.description,
+  };
 }
 
 export async function generateStaticParams() {

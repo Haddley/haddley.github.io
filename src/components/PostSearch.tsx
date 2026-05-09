@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BlogPost } from '@/lib/posts';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -11,6 +11,14 @@ interface PostSearchProps {
 
 export default function PostSearch({ posts }: PostSearchProps) {
   const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    if (!searchTerm) return;
+    const timer = setTimeout(() => {
+      window.gtag?.('event', 'search', { search_term: searchTerm });
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [searchTerm]);
 
   const filteredPosts = posts.filter(post => {
     const searchLower = searchTerm.toLowerCase();
