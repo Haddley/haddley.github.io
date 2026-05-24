@@ -5,7 +5,7 @@ date: "2026-05-24"
 categories: ["Power Platform"]
 tags: "power-apps, dataverse, model-driven-app, status-reason, workflow"
 slug: "powerapps7"
-image: "/assets/images/powerapps6/office-365-icon-500x500.png"
+image: "/assets/images/powerapps7/Screenshot-2026-05-24-at-6.50.19-AM.png"
 ---
 
 Every Dataverse table ships with two system columns you can't delete: **Status** (statecode) and **Status Reason** (statuscode). Status has exactly two values — Active and Inactive. Status Reason is the refinement: it tells you *why* a record is in that state. Out of the box each group has one choice — "Active" and "Inactive" respectively — but you can add as many custom reasons as your process needs.
@@ -132,25 +132,21 @@ For the **Inactive** group I added four terminal states:
 
 ## What changes after adding custom choices
 
-With custom options in place, the dialogs behave differently — but not symmetrically.
+With custom options in place, both dialogs now prompt for a Status Reason.
 
 ![](assets/images/powerapps7/Screenshot-2026-05-24-at-6.52.26-AM.png)
 *Back in the live app, I opened the record and hovered over the Deactivate button on the form's command bar.*
 
-![](assets/images/powerapps7/Screenshot-2026-05-24-at-6.52.40-AM.png)
-*The Confirm Deactivation dialog still showed no Status Reason picker — deactivation does not prompt for a reason even with custom options defined.*
-
-This is a significant gotcha: the **Deactivate** button never shows a Status Reason prompt by itself. To capture a reason at deactivation time you need to add the Status Reason field to the form header (covered below) or use a Business Rule or plugin.
-
-The **Activate** button is different:
+![](assets/images/powerapps7/Screenshot-2026-05-24-at-12.21.06-PM.png)
+*The Confirm Deactivation dialog showed a Status Reason dropdown with "Approved (Time Taken)" selected — I clicked Deactivate to confirm.*
 
 ![](assets/images/powerapps7/Screenshot-2026-05-24-at-6.54.57-AM.png)
 *I switched to the Inactive view and hovered over the Activate button on the deactivated record.*
 
 ![](assets/images/powerapps7/Screenshot-2026-05-24-at-6.55.14-AM.png)
-*The Confirm Activation dialog now showed a Status Reason dropdown listing my custom Active options — Submitted (Pending Approval), Approved by Manager, HR Review, plus the original Active.*
+*The Confirm Activation dialog showed a Status Reason dropdown listing my custom Active options — Submitted (Pending Approval), Approved by Manager, HR Review, plus the original Active.*
 
-So the moment you have more than one Active Status Reason option, the Activate dialog prompts you to pick one. Deactivation never does — it will use whatever Status Reason is currently set on the record, or fall back to "Inactive".
+Once you have more than one option in a status group, both the Activate and Deactivate dialogs prompt you to pick a Status Reason.
 
 ## Adding Status and Status Reason to the form header
 
