@@ -4,7 +4,7 @@ import {
   getVisibleBlogPosts,
   BlogPost
 } from '@/lib/posts';
-import { categories as categoryDefinitions, getCategoryByName } from '@/lib/categories';
+import { getCategoryByName } from '@/lib/categories';
 import Link from 'next/link';
 
 export default async function CategoriesPage() {

@@ -5,7 +5,7 @@ date: "2026-05-24"
 categories: ["Power Platform"]
 tags: "power-apps, dataverse, model-driven-app, status-reason, workflow"
 slug: "powerapps7"
-image: "/assets/images/powerapps7/Screenshot-2026-05-24-at-6.50.19-AM.png"
+image: "/assets/images/powerapps6/office-365-icon-500x500.png"
 ---
 
 Every Dataverse table ships with two system columns you can't delete: **Status** (statecode) and **Status Reason** (statuscode). Status has exactly two values — Active and Inactive. Status Reason is the refinement: it tells you *why* a record is in that state. Out of the box each group has one choice — "Active" and "Inactive" respectively — but you can add as many custom reasons as your process needs.
@@ -35,7 +35,7 @@ Once the table was created, I opened its columns list to see what Dataverse had 
 Opening the Status column shows why you can't add choices to it directly.
 
 ![](assets/images/powerapps7/Screenshot-2026-05-24-at-6.37.52-AM.png)
-*The Status column editor showed Active and Inactive as read-only entries — these values are fixed by the platform and cannot be changed.*
+*The Status column editor showed Active and Inactive as read-only entries — these values are expected by the platform and should not be changed.*
 
 Status Reason is different. Dataverse groups its choices by Status, so the Active group and the Inactive group each start with one default option.
 
@@ -195,7 +195,7 @@ Adding Status Reason to the form header is the mechanism that makes the Deactiva
 *The Active Time Off Requests view was empty — the record had been moved to Inactive.*
 
 ![](assets/images/powerapps7/Screenshot-2026-05-24-at-7.04.22-AM.png)
-*The Inactive view showed "Example Time Off Request" with the deactivation reason visible.*
+*The Inactive view showed "Example Time Off Request".*
 
 ## Adding Status Reason to views
 
@@ -231,7 +231,7 @@ This feature lives in the **classic Solution Explorer**, not the modern maker po
 Inside the solution I navigated to Entities > Time Off Request > Fields, found statuscode (Status Reason), and opened it.
 
 ![](assets/images/powerapps7/Screenshot-2026-05-24-at-7.24.59-AM.png)
-*The Fields list showed statuscode (Status Reason) selected — I double-clicked to open it.*
+*The Fields list showed statuscode (Status Reason) selected — I clicked to open it.*
 
 ![](assets/images/powerapps7/Screenshot-2026-05-24-at-7.25.19-AM.png)
 *The Status Reason field editor in the classic Solution Explorer. The "Edit Status Reason Transitions" button appeared in the ribbon at the top.*
@@ -299,13 +299,12 @@ I saved the record, then advanced the Status Reason step by step.
 
 Status and Status Reason are powerful columns that ship with every Dataverse table. The key things to know:
 
-- **Status** is fixed (Active/Inactive only) and managed by the platform — you cannot add choices to it.
+- **Status** is expected (Active/Inactive only) and managed by the platform — you should not add choices to it.
 - **Status Reason** accepts custom choices grouped under Active or Inactive — add as many as your process needs.
-- **Deactivate** never prompts for a Status Reason by default. To capture a reason at deactivation time, add the Status Reason field to the form header.
+- **Deactivate** may not prompt for a Status Reason.
 - **Activate** prompts for a Status Reason automatically once more than one Active option exists.
 - **Status Reason Transitions** (only available in the classic Solution Explorer) lets you define which reasons can follow which, turning a free dropdown into an enforced approval path.
 
 ## References
 
 - [Define status reason transitions for the Case or custom tables](https://learn.microsoft.com/en-us/power-apps/maker/data-platform/define-status-reason-transitions)
-- [Create and edit columns for Microsoft Dataverse](https://learn.microsoft.com/en-us/power-apps/maker/data-platform/create-edit-fields)
