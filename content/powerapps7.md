@@ -297,8 +297,6 @@ Status and Status Reason are powerful columns that ship with every Dataverse tab
 
 - **Status** is expected (Active/Inactive only) and managed by the platform — you should not add choices to it.
 - **Status Reason** accepts custom choices grouped under Active or Inactive — add as many as your process needs.
-- **Deactivate** may not prompt for a Status Reason.
-- **Activate** prompts for a Status Reason automatically once more than one Active option exists.
 - **Status Reason Transitions** (only available in the classic Solution Explorer) lets you define which reasons can follow which, turning a free dropdown into an enforced approval path.
 
 ## References
