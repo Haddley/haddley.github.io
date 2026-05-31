@@ -52,6 +52,6 @@ scp -v 'xxx.zip' neil@picade.local:~/RetroPie/roms/arcade
 
 - [Setting Up Picade with Raspberry Pi 5](https://learn.pimoroni.com/article/setting-up-picade)
 
-- [Pimoroni Picade Console Review and Tutorial: A Plug-and-Play Picade](https://www.electromaker.io/blog/article/pimoroni-picade-console-review-and-tutorial-a-plug-and-play-picade?srsltid=AfmBOopDU0ZyzoSZ-ySmzYnwcjcLYXyLc2ctLy4jWLTbSKjWjgLZSchU)
+- [Pimoroni Picade Console Review and Tutorial: A Plug-and-Play Picade](https://www.electromaker.io/blog/article/pimoroni-picade-console-review-and-tutorial-a-plug-and-play-picade)
 
 - [RetroPie: A Raspberry Pi Gaming Machine](https://www.youtube.com/watch?v=AaseHnf0k2o)
