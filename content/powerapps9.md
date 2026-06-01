@@ -3,7 +3,7 @@ title: "Customize Copilot chat"
 description: "Microsoft Copilot for Model-Driven Power Apps"
 date: "2026-06-01"
 categories: ["Power Platform"]
-tags: "power-apps, dataverse, model-driven-app, status-reason, workflow"
+tags: "power-apps, dataverse, model-driven-app, copilot, topics"
 slug: "powerapps9"
 image: "/assets/images/powerapps7/office-365-icon-500x500.png"
 hidden: false
