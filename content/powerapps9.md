@@ -143,6 +143,16 @@ I asked the same question again in the Copilot panel — this time it answered c
 *Copilot answered "The capital of France is Paris" using the new custom topic*
 
 
+Back in the solution I used Add existing to bring the customised agent into the Contacts solution, selecting it from the list.
+
+![](assets/images/powerapps9/Screenshot-2026-06-01-at-6.21.16-PM.png)
+*I selected the Copilot in Power Apps - Contacts agent to add to the solution*
+
+The agent now appeared under the Agents section of the solution, marked as customised and owned by me.
+
+![](assets/images/powerapps9/Screenshot-2026-06-01-at-6.21.34-PM.png)
+*The customised agent was listed in the solution ready to be shipped with it*
+
 ## References
 
 - [Copilot Studio Topics](/posts/topics/)
