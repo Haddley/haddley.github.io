@@ -25,10 +25,45 @@ I followed [Pimoroni's assembly guide](https://learn.pimoroni.com/article/assemb
 
 For the software I followed [Pimoroni's Picade setup guide](https://learn.pimoroni.com/article/setting-up-picade). I found it much easier to skip the recommended OS image and instead install Raspberry Pi OS Lite (64-bit) — a port of Debian Bookworm — directly, adding Wi-Fi details and enabling SSH during the Raspberry Pi Imager setup, then installing RetroPie as a separate step afterwards. This gave me a clean base to work from and made it easy to troubleshoot each stage independently.
 
+
+```bash
+ssh neil@picade.local
+```
+
+
+```bash
+sudo apt update && sudo apt upgrade
+```
+
+```bash
+sudo apt install git
+```
+
+```bash
+cd ~
+git clone https://github.com/RetroPie/RetroPie-Setup.git
+```
+
+```bash
+cd RetroPie-Setup
+sudo ./retropie_setup.sh
+```
+
+```bash
+cd ~
+git clone https://github.com/pimoroni/picade-hat
+cd picade-hat
+sudo ./install.sh
+```
+
 To add my first ROM I copied it into the RetroPie roms directory:
 
 ```bash
 cp ~/picade-hat/roms/megadrive/TANGLEWD.BIN ~/RetroPie/roms/megadrive
+```
+
+```bash
+sudo reboot
 ```
 
 ![](assets/images/picade/708166944_885953350447463_4978224267949881731_n.jpg)
