@@ -1,5 +1,5 @@
 ---
-title: "Copilot"
+title: "Copilot Studio"
 description: "Topics"
 date: "2024-02-25"
 categories: ["Power Platform"]
@@ -7,8 +7,6 @@ tags: "copilot-studio, topics, chatbot, conversation-topics"
 slug: "topics"
 image: "/assets/images/topics/office-365-icon-500x500.png"
 ---
-
-
 
 I created a Topic that used the Business Central Connector to retrieve the list of Companies created on my Production Business Server environment.
 
