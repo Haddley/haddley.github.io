@@ -50,7 +50,7 @@ export default async function PostPage({ params }: PostPageProps) {
 
               <h4 className="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">
                 <><strong>Neil Haddley</strong>
-                  <em> • {new Date(post.date).toLocaleDateString('en-US', {
+                  <em> • {new Date(post.date + 'T00:00:00').toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric'

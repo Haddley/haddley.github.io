@@ -213,7 +213,7 @@ export default function PostsPageWithSearch({
                               fontSize: '0.9rem',
                               margin: 0
                             }}>
-                              {new Date(post.date).toLocaleDateString('en-US', {
+                              {new Date(post.date + 'T00:00:00').toLocaleDateString('en-US', {
                                 year: 'numeric',
                                 month: 'long',
                                 day: 'numeric'
@@ -264,7 +264,7 @@ export default function PostsPageWithSearch({
                     </h5>
                     <h6 className="item-subtitle mbr-fonts-style mt-1 display-7">
                       <strong>Neil Haddley</strong>
-                      <em> • {new Date(post.date).toLocaleDateString('en-US', {
+                      <em> • {new Date(post.date + 'T00:00:00').toLocaleDateString('en-US', {
                         year: 'numeric',
                         month: 'long',
                         day: 'numeric'
