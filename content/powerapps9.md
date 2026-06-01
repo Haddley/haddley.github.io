@@ -1,5 +1,5 @@
 ---
-title: "Copilot Agent"
+title: "Customize Copilot chat"
 description: "Microsoft Copilot for Model-Driven Power Apps"
 date: "2026-06-01"
 categories: ["Power Platform"]
