@@ -160,3 +160,5 @@ The agent now appeared under the Agents section of the solution, marked as custo
 - [Introducing Model Driven Power Apps Copilot: Ask Your Data Anything!](https://www.youtube.com/watch?v=GIzSaDE-nQ0)
 
 - [Add Copilot for app users in model-driven apps](https://learn.microsoft.com/en-us/power-apps/maker/model-driven-apps/add-ai-copilot)
+
+- [Customize Copilot for Model Driven APP](https://www.youtube.com/watch?v=P7h3PnJgWAg)
