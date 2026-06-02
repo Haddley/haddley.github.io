@@ -13,5 +13,8 @@ How to use Microsoft 365 Copilot Cowork, the new Copilot experience that can  do
 
 ## References
 
+- [Copilot's New Edit Mode Does the Work For You in Word, Excel & PowerPoint](https://www.youtube.com/watch?v=FJmkuyiJEs4)
 
 - [Copilot Cowork: Tutorial for Beginners](https://www.youtube.com/watch?v=FQq89qpwDpU)
+
+- [Copilot Cowork Explained: Is this a whole new way to work?](https://www.youtube.com/watch?v=0vYHpW7zIls)
