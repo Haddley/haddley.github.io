@@ -1,5 +1,5 @@
 ---
-title: "Picade"
+title: "Picade Console"
 description: "Building and setting up the Pimoroni Picade mini arcade cabinet with RetroPie on a Raspberry Pi"
 date: "2026-05-31"
 categories: ["IOT"]
