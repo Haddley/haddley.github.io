@@ -46,7 +46,7 @@ A Page-Line Summary is the litigation standard for condensing deposition transcr
 ![](assets/images/claudecode14/Screenshot-2026-06-04-at-6.06.18-PM.png)
 *The formatted summary rendered with the case caption, examination index, page-line table, and key takeaways*
 
-# Deposition Summary
+## Deposition Summary
 
 ````MARKDOWN
 # Deposition Summary — Homs
@@ -132,7 +132,7 @@ A Page-Line Summary is the litigation standard for condensing deposition transcr
 
 ````
 
-# Skill
+## Skill
 
 ````MARKDOWN
 ---

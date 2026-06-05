@@ -71,7 +71,7 @@ I didn't need a curl command to install the skill. I attached the deposition tra
 ![](assets/images/claudecowork1/Screenshot-2026-06-04-at-7.44.11-PM.png)
 *The formatted summary opened with the full case caption and page-line table*
 
-# Skill
+## Skill
 
 ````MARKDOWN
 ---
