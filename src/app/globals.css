@@ -431,16 +431,101 @@ pre code {
   .blog-content h1 {
     font-size: 3rem;
   }
-  
+
   .blog-content h2 {
     font-size: 2.25rem;
   }
-  
+
   .blog-content h3 {
     font-size: 1.875rem;
   }
-  
+
   .blog-content h4 {
     font-size: 1.5rem;
   }
+}
+
+/* ===== NAVY THEME ===== */
+:root {
+  --navy: #0f1e3d;
+  --navy-mid: #1a2e54;
+  --gold: #f59e0b;
+  --gold-dark: #d97706;
+  --section-light: #f4f6f9;
+}
+
+/* Nav — dark navy (targets the fixed nav element directly) */
+section.menu,
+nav.navbar-dropdown {
+  background-color: var(--navy) !important;
+}
+section.menu .navbar-caption,
+section.menu .navbar-caption:visited,
+section.menu .nav-link,
+section.menu .nav-link:visited,
+section.menu .iconfont-wrapper span,
+nav.navbar-dropdown .navbar-caption,
+nav.navbar-dropdown .navbar-caption:visited,
+nav.navbar-dropdown .nav-link,
+nav.navbar-dropdown .nav-link:visited,
+nav.navbar-dropdown .iconfont-wrapper span {
+  color: #ffffff !important;
+}
+section.menu .nav-link:hover,
+section.menu .navbar-caption:hover,
+nav.navbar-dropdown .nav-link:hover,
+nav.navbar-dropdown .navbar-caption:hover {
+  color: var(--gold) !important;
+}
+section.menu .hamburger span,
+nav.navbar-dropdown .hamburger span {
+  background-color: #ffffff !important;
+}
+
+/* Hero section — navy */
+#header14-5 {
+  background-color: var(--navy) !important;
+}
+#header14-5 .mbr-section-title,
+#header14-5 .mbr-text {
+  color: #ffffff !important;
+}
+
+/* image2 sections — navy */
+section.image2 {
+  background-color: var(--navy) !important;
+}
+section.image2 .mbr-section-title,
+section.image2 .mbr-text,
+section.image2 .mbr-description {
+  color: #ffffff !important;
+}
+section.image2 a.text-primary {
+  color: var(--gold) !important;
+}
+section.image2 a.text-primary:hover {
+  color: #fbbf24 !important;
+}
+
+/* image1 sections — light grey */
+section.image1 {
+  background-color: var(--section-light) !important;
+}
+
+/* Section image polish */
+section.image1 .image-wrapper img,
+section.image2 .image-wrapper img {
+  border-radius: 10px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+  transition: box-shadow 0.25s ease;
+}
+section.image1 .image-wrapper img:hover,
+section.image2 .image-wrapper img:hover {
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.28);
+}
+
+/* Heading weight */
+.mbr-section-title {
+  font-weight: 700 !important;
+  letter-spacing: 0.01em;
 }

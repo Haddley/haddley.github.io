@@ -12,7 +12,7 @@ export default function Navigation() {
         <div className="container">
           <div className="navbar-brand">
             <span className="navbar-caption-wrap">
-              <Link href="/" className="navbar-caption text-black text-primary display-7">
+              <Link href="/" className="navbar-caption display-7">
                 Neil Haddley
               </Link>
             </span>
@@ -36,7 +36,7 @@ export default function Navigation() {
           <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarSupportedContent">
             <ul className="navbar-nav nav-dropdown nav-right">
               <li className="nav-item">
-                <Link href="/posts" className="nav-link link text-black text-primary display-4">
+                <Link href="/posts" className="nav-link link display-4">
                   Blog Posts
                 </Link>
               </li>
