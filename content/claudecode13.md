@@ -1,6 +1,6 @@
 ---
 title: "Claude Code (Part 13)"
-description: "A dataverse Skill"
+description: "Building a Claude Code skill that generates Dataverse solution XML for Power Platform"
 date: "2026-06-03"
 categories: ["AI","Power Platform"]
 image: "/assets/images/claudecode/Claude_AI_symbol.svg"
@@ -9,7 +9,7 @@ hidden: false
 slug: "claudecode13"
 ---
 
-I built a Claude Code skill called `dv-generate` that generates Dataverse solutions for Power Platform. It's published on GitHub and available through the [Claude Marketplace](https://devblogs.microsoft.com/powerplatform/dataverse-plugin-claude-marketplace/). The skill installs with a single curl command.
+I built a Claude Code skill called `dv-generate` that generates Dataverse solutions for Power Platform. It's published on GitHub. The skill installs with a single curl command.
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/Haddley/dv-generate/main/install.sh | bash
