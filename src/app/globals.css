@@ -524,6 +524,35 @@ section.image2 .image-wrapper img:hover {
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.28);
 }
 
+/* Category card hover */
+.category-card {
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+.category-card:hover {
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.14) !important;
+  transform: translateY(-4px);
+}
+
+/* Post card — Read More button */
+.btn-primary,
+.item-btn.btn-primary {
+  background-color: var(--navy) !important;
+  border-color: var(--navy) !important;
+  color: #ffffff !important;
+  font-weight: 600;
+}
+.btn-primary:hover,
+.item-btn.btn-primary:hover {
+  background-color: var(--navy-mid) !important;
+  border-color: var(--navy-mid) !important;
+}
+
+/* Post card — category/tag badges */
+.badge.bg-info {
+  background-color: rgba(15, 30, 61, 0.12) !important;
+  color: var(--navy) !important;
+}
+
 /* Heading weight */
 .mbr-section-title {
   font-weight: 700 !important;

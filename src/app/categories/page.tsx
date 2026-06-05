@@ -11,106 +11,133 @@ export default async function CategoriesPage() {
   const automatedCategories = await getVisibleAutomatedCategories();
   const allPosts = await getVisibleBlogPosts();
 
-  // Calculate statistics
   const totalPosts = allPosts.length;
   const categorizedPosts = allPosts.filter(post => post.categories && post.categories.length > 0).length;
 
-  // Fetch posts for each category
   const categoryPostsMap: Record<string, BlogPost[]> = {};
   for (const category of automatedCategories) {
     categoryPostsMap[category] = await getVisibleBlogPostsByAutomatedCategory(category);
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl font-bold mb-8 text-gray-800">
-          📂 Blog Categories
-        </h1>
-
-        {/* Statistics Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-          <div className="bg-blue-50 p-6 rounded-lg border">
-            <h3 className="text-lg font-semibold text-blue-800">Total Posts</h3>
-            <p className="text-2xl font-bold text-blue-600">{totalPosts}</p>
-          </div>
-          <div className="bg-green-50 p-6 rounded-lg border">
-            <h3 className="text-lg font-semibold text-green-800">Categorized</h3>
-            <p className="text-2xl font-bold text-green-600">{categorizedPosts}</p>
-          </div>
-          <div className="bg-orange-50 p-6 rounded-lg border">
-            <h3 className="text-lg font-semibold text-orange-800">Categories</h3>
-            <p className="text-2xl font-bold text-orange-600">{automatedCategories.length}</p>
-          </div>
+    <>
+      {/* Navy header banner */}
+      <section style={{ backgroundColor: 'var(--navy)', padding: '5rem 0 3.5rem' }}>
+        <div className="container text-center">
+          <h1 className="mbr-section-title mbr-fonts-style display-2" style={{ color: '#ffffff', fontWeight: 700 }}>
+            Blog Categories
+          </h1>
+          <p className="mbr-text mbr-fonts-style display-7 mt-3" style={{ color: 'rgba(255,255,255,0.7)' }}>
+            {totalPosts} posts across {automatedCategories.length} categories
+          </p>
+          <nav aria-label="breadcrumb" className="mt-3">
+            <ol className="breadcrumb justify-content-center" style={{ background: 'transparent' }}>
+              <li className="breadcrumb-item">
+                <Link href="/" style={{ color: 'var(--gold)' }}>Home</Link>
+              </li>
+              <li className="breadcrumb-item">
+                <Link href="/posts" style={{ color: 'var(--gold)' }}>Posts</Link>
+              </li>
+              <li className="breadcrumb-item active" style={{ color: 'rgba(255,255,255,0.5)' }}>
+                Categories
+              </li>
+            </ol>
+          </nav>
         </div>
+      </section>
 
-        {/* Categories Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {automatedCategories.map(category => {
-            const categoryPosts = categoryPostsMap[category];
-            const postCount = categoryPosts.length;
-            const def = getCategoryByName(category);
-            const slug = def?.slug ?? category.toLowerCase().replace(/\s+/g, '-').replace(/&/g, '');
-            // Use color from definition, or a neutral fallback
-            const colorClass = def?.color
-              ? def.color.replace('text-', 'text-').replace('bg-', 'bg-')
-              : 'bg-slate-100 text-slate-800';
+      {/* Stats + Cards */}
+      <section style={{ backgroundColor: 'var(--section-light)', padding: '3rem 0 4rem' }}>
+        <div className="container">
 
-            return (
-              <div
-                key={category}
-                className={`p-6 rounded-lg border-2 hover:shadow-lg transition-shadow ${colorClass} border-current border-opacity-30`}
-              >
-                <h3 className="text-xl font-bold mb-3">
-                  {def?.icon && <span className="mr-2">{def.icon}</span>}
-                  {category}
-                </h3>
-                <p className="text-sm opacity-75 mb-4">
-                  {postCount} post{postCount !== 1 ? 's' : ''}
-                </p>
-
-                {/* Show first few posts as examples */}
-                <div className="space-y-2 mb-4">
-                  {categoryPosts.slice(0, 3).map(post => (
-                    <div key={post.slug} className="text-sm">
-                      <Link
-                        href={`/posts/${post.slug}`}
-                        className="hover:underline font-medium"
-                      >
-                        {post.title}
-                      </Link>
-                    </div>
-                  ))}
-                  {postCount > 3 && (
-                    <div className="text-xs opacity-60">
-                      +{postCount - 3} more posts...
-                    </div>
-                  )}
-                </div>
-
-                <div className="mt-4">
-                  <Link
-                    href={`/posts/category/${slug}`}
-                    className="text-sm font-medium hover:underline"
-                  >
-                    View All Posts →
-                  </Link>
+          {/* Stats row */}
+          <div className="row g-4 mb-5">
+            {[
+              { label: 'Total Posts', value: totalPosts },
+              { label: 'Categorized', value: categorizedPosts },
+              { label: 'Categories', value: automatedCategories.length },
+            ].map(({ label, value }) => (
+              <div key={label} className="col-12 col-md-4">
+                <div className="card text-center h-100" style={{ border: 'none', borderRadius: 12, boxShadow: '0 2px 12px rgba(0,0,0,0.07)' }}>
+                  <div className="card-body py-4">
+                    <p className="mbr-text mbr-fonts-style display-7 mb-1" style={{ color: '#6b7280' }}>{label}</p>
+                    <p className="mbr-section-title mbr-fonts-style display-2" style={{ color: 'var(--navy)', fontWeight: 700, margin: 0 }}>{value}</p>
+                  </div>
                 </div>
               </div>
-            );
-          })}
-        </div>
+            ))}
+          </div>
 
-        {/* Navigation */}
-        <div className="mt-8 text-center">
-          <Link
-            href="/posts"
-            className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-          >
-            ← Back to All Posts
-          </Link>
+          {/* Category cards */}
+          <div className="row g-4">
+            {automatedCategories.map(category => {
+              const categoryPosts = categoryPostsMap[category];
+              const postCount = categoryPosts.length;
+              const def = getCategoryByName(category);
+              const slug = def?.slug ?? category.toLowerCase().replace(/\s+/g, '-').replace(/&/g, '');
+
+              return (
+                <div key={category} className="col-12 col-md-6 col-lg-4">
+                  <div className="card h-100 category-card" style={{ border: 'none', borderRadius: 12, boxShadow: '0 2px 12px rgba(0,0,0,0.07)', overflow: 'hidden' }}>
+                    {/* Card header — navy */}
+                    <div style={{ backgroundColor: 'var(--navy)', padding: '1rem 1.25rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <h3 className="mbr-section-title mbr-fonts-style display-5" style={{ color: '#ffffff', margin: 0, fontWeight: 700 }}>
+                        {def?.icon && <span style={{ marginRight: 8 }}>{def.icon}</span>}
+                        {category}
+                      </h3>
+                      <span style={{ backgroundColor: 'var(--gold)', color: 'var(--navy)', borderRadius: 20, padding: '2px 10px', fontSize: '0.8rem', fontWeight: 700, whiteSpace: 'nowrap' }}>
+                        {postCount} post{postCount !== 1 ? 's' : ''}
+                      </span>
+                    </div>
+
+                    {/* Card body — recent posts */}
+                    <div className="card-body" style={{ padding: '1.25rem' }}>
+                      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                        {categoryPosts.slice(0, 3).map(post => (
+                          <li key={post.slug} style={{ padding: '0.4rem 0', borderBottom: '1px solid #e5e7eb' }}>
+                            <Link
+                              href={`/posts/${post.slug}`}
+                              className="mbr-text mbr-fonts-style"
+                              style={{ color: 'var(--navy)', fontSize: '0.9rem', fontWeight: 500, textDecoration: 'none' }}
+                            >
+                              {post.title}
+                            </Link>
+                          </li>
+                        ))}
+                        {postCount > 3 && (
+                          <li style={{ padding: '0.4rem 0', color: '#9ca3af', fontSize: '0.8rem' }}>
+                            +{postCount - 3} more posts
+                          </li>
+                        )}
+                      </ul>
+                    </div>
+
+                    {/* Card footer */}
+                    <div className="card-footer" style={{ background: 'transparent', borderTop: '1px solid #e5e7eb', padding: '0.75rem 1.25rem' }}>
+                      <Link
+                        href={`/posts/category/${slug}`}
+                        style={{ color: 'var(--navy)', fontWeight: 600, fontSize: '0.9rem', textDecoration: 'none' }}
+                      >
+                        View all posts →
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Back link */}
+          <div className="text-center mt-5">
+            <Link
+              href="/posts"
+              style={{ backgroundColor: 'var(--navy)', color: '#ffffff', padding: '0.75rem 2rem', borderRadius: 8, fontWeight: 600, textDecoration: 'none', display: 'inline-block' }}
+            >
+              ← All Posts
+            </Link>
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 }

@@ -61,21 +61,25 @@ export default function PostsPageWithSearch({
                 style={{
                   fontSize: '1rem',
                   padding: '10px 20px',
-                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                  background: '#0f1e3d',
                   color: 'white',
                   textDecoration: 'none',
                   borderRadius: '25px',
-                  transition: 'all 0.3s ease',
-                  boxShadow: '0 2px 8px rgba(102, 126, 234, 0.3)',
+                  transition: 'all 0.25s ease',
+                  boxShadow: '0 2px 8px rgba(15, 30, 61, 0.25)',
                   border: 'none'
                 }}
                 onMouseEnter={(e) => {
+                  e.currentTarget.style.background = '#f59e0b';
+                  e.currentTarget.style.color = '#0f1e3d';
                   e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(102, 126, 234, 0.4)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(245, 158, 11, 0.4)';
                 }}
                 onMouseLeave={(e) => {
+                  e.currentTarget.style.background = '#0f1e3d';
+                  e.currentTarget.style.color = 'white';
                   e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 2px 8px rgba(102, 126, 234, 0.3)';
+                  e.currentTarget.style.boxShadow = '0 2px 8px rgba(15, 30, 61, 0.25)';
                 }}
               >
                 {category.icon} {category.name}
@@ -101,11 +105,11 @@ export default function PostsPageWithSearch({
                 fontSize: '1rem',
                 border: '2px solid #e0e0e0',
                 boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
-                transition: 'all 0.3s ease'
+                transition: 'all 0.25s ease'
               }}
               onFocus={(e) => {
-                e.currentTarget.style.borderColor = '#667eea';
-                e.currentTarget.style.boxShadow = '0 4px 12px rgba(102, 126, 234, 0.2)';
+                e.currentTarget.style.borderColor = '#0f1e3d';
+                e.currentTarget.style.boxShadow = '0 4px 12px rgba(15, 30, 61, 0.15)';
               }}
               onBlur={(e) => {
                 e.currentTarget.style.borderColor = '#e0e0e0';
@@ -147,12 +151,12 @@ export default function PostsPageWithSearch({
                           position: 'absolute',
                           top: '16px',
                           right: '16px',
-                          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                          color: 'white',
+                          background: '#f59e0b',
+                          color: '#0f1e3d',
                           padding: '8px 20px',
                           borderRadius: '20px',
                           fontSize: '0.85rem',
-                          fontWeight: '600'
+                          fontWeight: '700'
                         }}>
                           {index === 0 ? '🔥 Latest' : '⭐ Recent'}
                         </div>
@@ -196,13 +200,13 @@ export default function PostsPageWithSearch({
                             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '12px' }}>
                               {post.categories?.slice(0, 2).map(cat => (
                                 <span key={cat} style={{
-                                  background: 'rgba(102, 126, 234, 0.15)',
-                                  color: '#667eea',
+                                  background: 'rgba(15, 30, 61, 0.08)',
+                                  color: '#0f1e3d',
                                   padding: '6px 16px',
                                   borderRadius: '12px',
                                   fontSize: '0.8rem',
                                   fontWeight: index === 0 ? '700' : '600',
-                                  border: index === 0 ? '2px solid #667eea' : 'none'
+                                  border: index === 0 ? '2px solid #0f1e3d' : 'none'
                                 }}>
                                   {cat}
                                 </span>
