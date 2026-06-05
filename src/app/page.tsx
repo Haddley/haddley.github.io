@@ -1,7 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { getVisibleBlogPosts } from '@/lib/posts';
 
-export default function Home() {
+export default async function Home() {
+  const recentPosts = await getVisibleBlogPosts();
+  const heroImages = recentPosts
+    .map(p => p.image)
+    .filter((img): img is string => !!img)
+    .slice(0, 6);
+
   return (
     <>
       <style dangerouslySetInnerHTML={{__html: `
@@ -25,8 +32,25 @@ export default function Home() {
         }
       `}} />
       {/* Hero Section */}
-      <section data-bs-version="5.1" className="header14 cid-so66lOsJnC mbr-fullscreen" id="header14-5">
-        <div className="container">
+      <section data-bs-version="5.1" className="header14 cid-so66lOsJnC mbr-fullscreen" id="header14-5" style={{ position: 'relative', overflow: 'hidden' }}>
+        {/* Navy-stained image strip */}
+        {heroImages.length > 0 && (
+          <div style={{ position: 'absolute', inset: 0, display: 'flex', zIndex: 0 }}>
+            {heroImages.map((src, i) => (
+              <div key={i} style={{ flex: 1, overflow: 'hidden' }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={src}
+                  alt=""
+                  aria-hidden="true"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.25) sepia(1) hue-rotate(200deg) saturate(2)' }}
+                />
+              </div>
+            ))}
+            <div style={{ position: 'absolute', inset: 0, background: 'rgba(15, 30, 61, 0.55)' }} />
+          </div>
+        )}
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="row justify-content-center align-items-center">
             <div className="col-12 col-md-6 image-wrapper">
               <Image 
