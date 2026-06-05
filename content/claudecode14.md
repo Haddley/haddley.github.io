@@ -19,13 +19,13 @@ A Page-Line Summary is the litigation standard for condensing deposition transcr
 
 
 ![](assets/images/claudecode14/Screenshot-2026-06-04-at-5.53.41-PM.png)
-*I opened the deposition transcript in VS Code and ran /skills to see the available skills, including the newly installed page-line-summary*
+*I opened the deposition transcript in VS Code and ran /skills to see the available skills*
 
 ![](assets/images/claudecode14/Screenshot-2026-06-04-at-5.54.26-PM.png)
 *I ran the curl install command, which cloned the repository and registered the skill with Claude Code*
 
 ![](assets/images/claudecode14/Screenshot-2026-06-04-at-5.54.50-PM.png)
-*After installation, both skills appeared in the Claude Code skill picker*
+*I started claude and checked that the page-line-summary skill was listed*
 
 ![](assets/images/claudecode14/Screenshot-2026-06-04-at-5.55.45-PM.png)
 *The skill asked which side I represent before reading the transcript*
@@ -45,6 +45,8 @@ A Page-Line Summary is the litigation standard for condensing deposition transcr
 
 ![](assets/images/claudecode14/Screenshot-2026-06-04-at-6.06.18-PM.png)
 *The formatted summary rendered with the case caption, examination index, page-line table, and key takeaways*
+
+# Deposition Summary
 
 ````MARKDOWN
 # Deposition Summary — Homs
@@ -130,7 +132,7 @@ A Page-Line Summary is the litigation standard for condensing deposition transcr
 
 ````
 
-Skill
+# Skill
 
 ````MARKDOWN
 ---
