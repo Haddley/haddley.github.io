@@ -1,6 +1,7 @@
 import { getVisibleBlogPosts } from '@/lib/posts';
 import Link from 'next/link';
 import PostsPageWithSearch from '@/components/PostsPageWithSearch';
+import NavyImageBanner from '@/components/NavyImageBanner';
 
 export default async function PostsPage() {
   const posts = await getVisibleBlogPosts();
@@ -9,8 +10,7 @@ export default async function PostsPage() {
 
   return (
     <>
-      {/* Navy header banner */}
-      <section style={{ backgroundColor: 'var(--navy)', padding: '5rem 0 3.5rem' }}>
+      <NavyImageBanner images={posts.slice(0, 6).map(p => p.image).filter((img): img is string => !!img)}>
         <div className="container text-center">
           <h1 className="mbr-section-title mbr-fonts-style display-2" style={{ color: '#ffffff', fontWeight: 700 }}>
             All Blog Posts
@@ -29,7 +29,7 @@ export default async function PostsPage() {
             </ol>
           </nav>
         </div>
-      </section>
+      </NavyImageBanner>
 
       {/* Posts content */}
       <section

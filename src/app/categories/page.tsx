@@ -6,6 +6,7 @@ import {
 } from '@/lib/posts';
 import { getCategoryByName } from '@/lib/categories';
 import Link from 'next/link';
+import NavyImageBanner from '@/components/NavyImageBanner';
 
 export default async function CategoriesPage() {
   const automatedCategories = await getVisibleAutomatedCategories();
@@ -21,8 +22,12 @@ export default async function CategoriesPage() {
 
   return (
     <>
-      {/* Navy header banner */}
-      <section style={{ backgroundColor: 'var(--navy)', padding: '5rem 0 3.5rem' }}>
+      <NavyImageBanner images={
+        automatedCategories
+          .map(cat => categoryPostsMap[cat]?.find(p => p.image)?.image)
+          .filter((img): img is string => !!img)
+          .slice(0, 6)
+      }>
         <div className="container text-center">
           <h1 className="mbr-section-title mbr-fonts-style display-2" style={{ color: '#ffffff', fontWeight: 700 }}>
             Blog Categories
@@ -44,7 +49,7 @@ export default async function CategoriesPage() {
             </ol>
           </nav>
         </div>
-      </section>
+      </NavyImageBanner>
 
       {/* Stats + Cards */}
       <section style={{ backgroundColor: 'var(--section-light)', padding: '3rem 0 4rem' }}>
@@ -79,6 +84,19 @@ export default async function CategoriesPage() {
               return (
                 <div key={category} className="col-12 col-md-6 col-lg-4">
                   <div className="card h-100 category-card" style={{ border: 'none', borderRadius: 12, boxShadow: '0 2px 12px rgba(0,0,0,0.07)', overflow: 'hidden' }}>
+                    {/* Card cover image — navy stained */}
+                    {categoryPosts[0]?.image && (
+                      <div style={{ height: 110, overflow: 'hidden', position: 'relative', backgroundColor: 'var(--navy)' }}>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={categoryPosts[0].image}
+                          alt=""
+                          aria-hidden="true"
+                          style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.25) sepia(1) hue-rotate(200deg) saturate(2)' }}
+                        />
+                        <div style={{ position: 'absolute', inset: 0, background: 'rgba(15,30,61,0.45)' }} />
+                      </div>
+                    )}
                     {/* Card header — navy */}
                     <div style={{ backgroundColor: 'var(--navy)', padding: '1rem 1.25rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                       <h3 className="mbr-section-title mbr-fonts-style display-5" style={{ color: '#ffffff', margin: 0, fontWeight: 700 }}>

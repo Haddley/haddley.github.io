@@ -3,6 +3,7 @@ import { categories, getCategoryBySlug } from '@/lib/categories';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import CategoryPageWithSearch from '@/components/CategoryPageWithSearch';
+import NavyImageBanner from '@/components/NavyImageBanner';
 
 interface CategoryPageProps {
   params: Promise<{
@@ -35,8 +36,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   return (
     <>
-      {/* Navy header banner */}
-      <section style={{ backgroundColor: 'var(--navy)', padding: '5rem 0 3.5rem' }}>
+      <NavyImageBanner images={categoryPosts.slice(0, 6).map(p => p.image).filter((img): img is string => !!img)}>
         <div className="container text-center">
           <h1 className="mbr-section-title mbr-fonts-style display-2" style={{ color: '#ffffff', fontWeight: 700 }}>
             {category.icon} {category.name}
@@ -61,7 +61,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             </ol>
           </nav>
         </div>
-      </section>
+      </NavyImageBanner>
 
       {/* Posts content */}
       <section
