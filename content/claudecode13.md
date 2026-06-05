@@ -91,6 +91,8 @@ The skill doesn't contain any executable code. It contains knowledge: templates,
 
 The full `SKILL.md` for `dv-generate` is below. The bulk of it is XML templates and a list of import errors I ran into while building it — things like the correct element order inside `<entity>`, the right casing for option set labels, and why boolean fields render read-only if you omit `disabled="false"` on the form control.
 
+## Skill
+
 ````MARKDOWN
 ---
 name: dv-generate
