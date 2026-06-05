@@ -58,6 +58,65 @@ export default function Home() {
         </div>
       </section>
 
+      {/* AI Section */}
+      <section data-bs-version="5.1" className="image2 cid-tPzDVBdeT6" id="image2-ai">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-12 col-lg-6">
+              <div className="image-wrapper">
+                <Link href="/posts/claudecode13">
+                  <Image
+                    src="/assets/images/claudecode13/Screenshot-2026-06-04-at-12.51.20-PM.png"
+                    alt="Claude Code generating a Dataverse solution"
+                    width={600}
+                    height={400}
+                  />
+                </Link>
+                <p className="mbr-description mbr-fonts-style pt-2 align-center display-4">
+                  Claude Code generating a Dataverse solution
+                </p>
+              </div>
+            </div>
+            <div className="col-12 col-lg">
+              <div className="text-wrapper">
+                <h3 className="mbr-section-title mbr-fonts-style mb-3 display-5">
+                  <strong>AI</strong>
+                </h3>
+                <p className="mbr-text mbr-fonts-style display-7">
+                  I use{' '}
+                  <Link href="/posts/claudecode1" className="text-primary">
+                    Claude Code
+                  </Link>
+                  {' '}to build agentic workflows, custom skills, and AI-assisted tools — from generating{' '}
+                  <Link href="/posts/claudecode13" className="text-primary">
+                    Dataverse solutions
+                  </Link>
+                  {' '}to producing{' '}
+                  <Link href="/posts/claudecode14" className="text-primary">
+                    litigation summaries
+                  </Link>
+                  {'. '}
+                  I use{' '}
+                  <Link href="/posts/LLM-Wiki/" className="text-primary">
+                    LLM Wiki
+                  </Link>
+                  {' '}— where an LLM synthesizes raw data into an interlinked knowledge base — as an alternative to{' '}
+                  <Link href="/posts/langchain/" className="text-primary">
+                    RAG
+                  </Link>
+                  {'. '}
+                  I also build no-code AI agents with{' '}
+                  <Link href="/posts/blogcopilotstudio" className="text-primary">
+                    Copilot Studio
+                  </Link>
+                  {'.'}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Microsoft Azure Section */}
       <section data-bs-version="5.1" className="image1 cid-so67cSs55y" id="image1-7">
         <div className="container">
