@@ -3,7 +3,7 @@ title: "ASP.NET Core"
 description: "Create Razor Pages with ASP.NET Core."
 date: "2023-03-21"
 categories: [".NET"]
-tags: "razor"
+tags: "razor, web-pages, views, templating"
 hidden: false
 slug: "aspnet-core"
 image: "/assets/images/aspnet-core/net-logo.svg"

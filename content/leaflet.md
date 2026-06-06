@@ -3,7 +3,7 @@ title: "Leaflet"
 description: "An open-source JavaScript libraryfor mobile-friendly interactive maps"
 date: "2022-02-21"
 categories: ["Maps"]
-tags: "gis"
+tags: "gis, mapping-library, cartography, geospatial"
 hidden: false
 slug: "leaflet"
 image: "/assets/images/leaflet/leaflet-upic-200x200.png"

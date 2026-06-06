@@ -4,7 +4,7 @@ description: "Creating a VB.NET Web App using Microsoft's cross-platform framewo
 date: "2025-09-20"
 categories: [".NET"]
 image: "/assets/images/dotnet-core-part4/net-logo.svg"
-tags: "dotnet"
+tags: "dotnet, rest-api, web-api, dotnet-core"
 hidden: false
 slug: "dotnet-core-part4"
 ---

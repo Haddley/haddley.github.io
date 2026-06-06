@@ -3,7 +3,7 @@ title: "PHP Setup"
 description: "Setup"
 date: "2024-08-25"
 categories: ["PHP"]
-tags: "php, setup, web, server"
+tags: "setup, web, server"
 slug: "phpsetup"
 image: "/assets/images/phpsetup/php-logo.svg"
 ---

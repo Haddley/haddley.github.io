@@ -3,7 +3,7 @@ title: "ASP.NET 5 C#"
 description: "Generate Context and Entity Classes from an Existing Database"
 date: "2023-03-19"
 categories: [".NET","SQL"]
-tags: "c#"
+tags: "c#, entity-framework, database, linq"
 hidden: false
 slug: "aspnet-5-cs"
 image: "/assets/images/aspnet-5-cs/net-logo.svg"

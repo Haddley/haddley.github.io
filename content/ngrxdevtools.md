@@ -3,7 +3,7 @@ title: "NGRX devtools"
 description: "haddley-ngrx"
 date: "2023-01-25"
 categories: ["Angular"]
-tags: "ngrx, devtools, angular, state-management"
+tags: "ngrx, devtools, state-management"
 slug: "ngrxdevtools"
 image: "/assets/images/ngrxdevtools/ngrx.svg"
 ---

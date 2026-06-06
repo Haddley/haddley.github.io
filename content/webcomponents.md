@@ -3,7 +3,7 @@ title: "Web Components"
 description: "A set of web technologies that allow users to create HTML elements."
 date: "2022-02-10"
 categories: ["JavaScript"]
-tags: "web-components, html-elements, shadow-dom, javascript"
+tags: "web-components, html-elements, shadow-dom"
 slug: "webcomponents"
 image: "/assets/images/webcomponents/web-components-logo.svg"
 ---

@@ -3,7 +3,7 @@ title: "Voice Kit"
 description: "Raspberry Pi Voice Kit"
 date: "2025-10-11"
 categories: ["Python","AI","IOT"]
-tags: "raspberry-pi, voice-assistant, google-assistant, iot"
+tags: "raspberry-pi, voice-assistant, google-assistant"
 slug: "voicekit"
 image: "/assets/images/voicekit/raspberry-pi-logo.svg"
 ---

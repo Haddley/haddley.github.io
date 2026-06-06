@@ -3,7 +3,7 @@ title: "Firebase"
 description: "Firebase web codelab"
 date: "2023-04-24"
 categories: ["JavaScript","Firebase"]
-tags: "firebase"
+tags: "firebase-realtime, realtime-database, backend"
 hidden: false
 slug: "firebase"
 image: "/assets/images/firebase/logo-lockup-firebase-vertical.svg"

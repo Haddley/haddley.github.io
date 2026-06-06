@@ -3,7 +3,7 @@ title: "NGRX"
 description: "haddley-ngrx"
 date: "2022-11-27"
 categories: ["Angular"]
-tags: "ngrx, state-management, angular, redux"
+tags: "ngrx, state-management, redux"
 slug: "ngrx"
 image: "/assets/images/ngrx/ngrx.svg"
 ---

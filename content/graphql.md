@@ -3,7 +3,7 @@ title: "GraphQL"
 description: "GraphQL is a query and manipulation language for APIs."
 date: "2021-03-01"
 categories: ["JavaScript"]
-tags: "graphql"
+tags: "graphql, api-design, query-language, schema"
 hidden: false
 slug: "graphql"
 image: "/assets/images/graphql/graphql-logo.svg-1200x1200.png"

@@ -3,7 +3,7 @@ title: "Azure Active Directory (Part 1)"
 description: "Using Microsoft Identity to Authenticate Users."
 date: "2021-03-29"
 categories: ["Azure","Microsoft 365"]
-tags: "teams"
+tags: "teams, identity, authentication, aad"
 hidden: false
 slug: "azure-active-directory"
 image: "/assets/images/azure-active-directory/azurex70x75.svg"

@@ -4,7 +4,7 @@ description: "Karpathy's LLM Wiki"
 date: "2026-04-20"
 categories: ["AI"]
 image: "/assets/images/LLMWiki/obsidian-logo.svg"
-tags: "claude-code, ai-agent, anthropic, agentic-coding, ollama, llm, wiki, "
+tags: "claude-code, ai-agent, anthropic, agentic-coding, ollama, llm"
 hidden: false
 slug: "LLMWiki"
 ---

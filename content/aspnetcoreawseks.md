@@ -3,7 +3,7 @@ title: "Deploying a .NET Core Web API to Amazon EKS"
 description: "Deploying a .NET Core Web API to Amazon Elastic Kubernetes Service (Amazon EKS)"
 date: "2021-08-16"
 categories: ["AWS","DevOps",".NET"]
-tags: "c#"
+tags: "c#, kubernetes, containers, deployment"
 hidden: false
 slug: "aspnetcoreawseks"
 image: "/assets/images/aspnetcoreawseks/amazon-web-services-logo.svg"

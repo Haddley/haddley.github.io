@@ -3,7 +3,7 @@ title: "ASP.NET 5 Visual Basic"
 description: "Generate Context and Entity Classes from an Existing Database"
 date: "2023-03-18"
 categories: [".NET","SQL"]
-tags: "vb.net"
+tags: "vb.net, entity-framework, database, web"
 hidden: false
 slug: "aspnet-5-visual-basic"
 image: "/assets/images/aspnet-5-visual-basic/net-logo.svg"

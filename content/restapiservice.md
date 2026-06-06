@@ -3,7 +3,7 @@ title: "REST"
 description: "Creating a REST API Service using Node and Express"
 date: "2021-02-06"
 categories: ["JavaScript"]
-tags: "rest-api, node, express, javascript"
+tags: "rest-api, node, express"
 slug: "restapiservice"
 image: "/assets/images/restapiservice/fve-image.svg"
 ---

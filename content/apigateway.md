@@ -3,7 +3,7 @@ title: "API Gateway"
 description: "How to publish a collection of microservices using an API Gateway."
 date: "2021-02-10"
 categories: ["DevOps"]
-tags: "api-gateway, microservices, devops, architecture"
+tags: "api-gateway, microservices, architecture"
 hidden: false
 slug: "apigateway"
 image: "/assets/images/apigateway/kubernetes-container-engine.svg"

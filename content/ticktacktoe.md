@@ -3,7 +3,7 @@ title: "Multiplayer Tick-Tack-Toe"
 description: "Creating a new firebase project"
 date: "2023-05-10"
 categories: ["Firebase"]
-tags: "firebase, realtime-database, multiplayer, javascript"
+tags: "realtime-database, multiplayer, javascript"
 slug: "ticktacktoe"
 image: "/assets/images/ticktacktoe/logo-lockup-firebase-vertical.svg"
 ---

@@ -3,7 +3,7 @@ title: "Three.js"
 description: "A JavaScript-based WebGL engine"
 date: "2023-03-05"
 categories: ["JavaScript","3D"]
-tags: "three-js, webgl, 3d-graphics, javascript"
+tags: "three-js, webgl, 3d-graphics"
 slug: "threejs"
 image: "/assets/images/threejs/three.js-icon.svg"
 ---

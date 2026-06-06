@@ -3,7 +3,7 @@ title: "Codespaces and Authentication"
 description: "Adding a NavBar and staticwebapp.config.json"
 date: "2024-03-06"
 categories: ["React","Azure","DevOps"]
-tags: "codespaces, authentication, azure-static-web-apps, react"
+tags: "codespaces, authentication, azure-static-web-apps"
 hidden: false
 slug: "codespacesauthentication"
 image: "/assets/images/codespacesauthentication/logo512-512x512.png"

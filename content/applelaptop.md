@@ -3,7 +3,7 @@ title: "Apple MacBook"
 description: "Anaconda Setup"
 date: "2023-07-25"
 categories: ["Python","macOS"]
-tags: "anaconda"
+tags: "anaconda, python-environment, setup, package-manager"
 hidden: false
 slug: "applelaptop"
 image: "/assets/images/applelaptop/jupyter.svg"

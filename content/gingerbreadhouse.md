@@ -3,7 +3,7 @@ title: "Gingerbread House"
 description: "holiday.py"
 date: "2023-12-26"
 categories: ["Python","IOT"]
-tags: "raspberry-pi, python, holiday, gpio"
+tags: "raspberry-pi, holiday, gpio"
 hidden: false
 slug: "gingerbreadhouse"
 image: "/assets/images/gingerbreadhouse/raspberry-pi-logo.svg"

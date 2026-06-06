@@ -3,7 +3,7 @@ title: "DevOps Starter GitHub actions"
 description: "Everything you need for developing, deploying, and monitoring your application."
 date: "2021-04-25"
 categories: ["DevOps", "Azure"]
-tags: "github-actions, ci-cd, devops, deployment"
+tags: "github-actions, ci-cd, deployment"
 hidden: false
 slug: "devopsstartergithubactions"
 image: "/assets/images/devopsstartergithubactions/svgexport-22.svg"

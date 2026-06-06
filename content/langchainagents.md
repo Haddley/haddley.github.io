@@ -3,7 +3,7 @@ title: "LangChain Agents"
 description: "Agents"
 date: "2024-08-25"
 categories: ["AI","Python"]
-tags: "langchain, agents, llm, python"
+tags: "langchain, agents, llm"
 hidden: false
 slug: "langchainagents"
 image: "/assets/images/langchainagents/langchain.svg"

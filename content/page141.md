@@ -4,7 +4,7 @@ description: "Spring Data JPA"
 date: "2025-09-20"
 categories: ["Java"]
 image: "/assets/images/page141/hero.png"
-tags: "java, spring-boot, spring-data-jpa, postgresql"
+tags: "spring-boot, spring-data-jpa, postgresql"
 hidden: true
 slug: "page141"
 ---

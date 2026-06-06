@@ -172,6 +172,12 @@ The parser in `src/lib/posts.ts` splits on commas, so space-separated values wit
 - Do not duplicate the category name as a tag (e.g. don't tag an AI post with `ai`)
 - Tags are rendered as Bootstrap `badge bg-secondary` chips on post pages and in search results — no UI changes needed when adding tags
 
+**Common mistakes found in a 2026-06-06 audit of all 254 posts (now fixed):**
+- 55 posts had a tag that duplicated the category name (e.g. `java` tag on a Java-category post) — always remove these
+- 16 posts had fewer than 3 tags — always ensure 3–6 specific tags
+- 3 posts used space-separated tags without commas (e.g. `"angular typescript testing"`) — parser treats the whole string as one tag
+- 2 posts exceeded 6 tags — trim to the most specific/distinctive ones
+
 ## Key Configuration
 
 - `next.config.ts` — static export (`output: 'export'`), trailing slashes, unoptimized images

@@ -3,7 +3,7 @@ title: "Java Spring Boot (Part 6)"
 description: "GitHub"
 date: "2023-10-31"
 categories: ["Java"]
-tags: "spring-boot, java, github, ci-cd"
+tags: "spring-boot, github, ci-cd"
 slug: "spring-boot-6"
 image: "/assets/images/spring-boot-6/spring-framework-logo-70-no.svg"
 ---

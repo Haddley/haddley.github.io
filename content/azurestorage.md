@@ -3,7 +3,7 @@ title: "Azure Storage"
 description: "Microsoft Azure Storage"
 date: "2022-08-13"
 categories: ["Azure","macOS"]
-tags: "macOS"
+tags: "blob-storage, cloud-storage, azure-sdk"
 hidden: false
 slug: "azurestorage"
 image: "/assets/images/azurestorage/azurex70x75.svg"

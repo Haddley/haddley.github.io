@@ -3,7 +3,7 @@ title: "Amazon Fargate"
 description: "Pay-as-you-go"
 date: "2021-09-20"
 categories: ["AWS","DevOps"]
-tags: "fargate, serverless-containers, aws, ecs"
+tags: "fargate, serverless-containers, ecs"
 hidden: false
 slug: "amazonfargate"
 image: "/assets/images/amazonfargate/amazon-web-services-logo.svg"
