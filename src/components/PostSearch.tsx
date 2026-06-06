@@ -122,19 +122,25 @@ export default function PostSearch({ posts }: PostSearchProps) {
                         +{[...new Set(post.categories)].length - 3} more
                       </span>
                     )}
-                    {post.tags.length > 0 && post.tags.slice(0, 2).map((tag) => (
-                      <span
-                        key={tag}
-                        className="badge bg-secondary me-1 mb-1"
-                        style={{ fontSize: '0.75rem' }}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                    {post.tags.length > 2 && (
-                      <span className="badge bg-secondary me-1 mb-1" style={{ fontSize: '0.7rem' }}>
-                        +{post.tags.length - 2} more
-                      </span>
+                    {post.tags.length > 0 && (
+                      <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginTop: '6px' }}>
+                        {post.tags.slice(0, 3).map(tag => (
+                          <span key={tag} style={{
+                            background: 'rgba(15, 30, 61, 0.05)',
+                            color: '#666',
+                            padding: '3px 10px',
+                            borderRadius: '8px',
+                            fontSize: '0.72rem',
+                          }}>
+                            {tag}
+                          </span>
+                        ))}
+                        {post.tags.length > 3 && (
+                          <span style={{ color: '#999', fontSize: '0.72rem', alignSelf: 'center' }}>
+                            +{post.tags.length - 3} more
+                          </span>
+                        )}
+                      </div>
                     )}
                   </div>
                 </div>
