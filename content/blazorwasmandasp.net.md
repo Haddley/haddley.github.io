@@ -3,7 +3,7 @@ title: "Blazor WASM and ASP.NET Core"
 description: "An ASP.NET Core backend and a Blazor Web Assembly frontend."
 date: "2023-03-24"
 categories: [".NET"]
-tags: "blazor WASM"
+tags: "blazor, wasm"
 hidden: false
 slug: "blazorwasmandasp.net"
 image: "/assets/images/blazorwasmandasp.net/net-logo.svg"
