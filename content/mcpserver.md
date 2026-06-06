@@ -3,7 +3,7 @@ title: "Model Context Protocol (Part 1)"
 description: "Typescript quick start"
 date: "2025-08-13"
 categories: ["AI"]
-tags: "mcp, model-context-protocol, typescript, claude"
+tags: "claude-code, mcp, model-context-protocol, typescript"
 hidden: false
 slug: "mcpserver"
 image: "/assets/images/mcpserver/mcp-1024x1024.png"
