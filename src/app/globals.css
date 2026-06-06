@@ -491,24 +491,24 @@ nav.navbar-dropdown .hamburger span {
   color: #ffffff !important;
 }
 
-/* image2 sections — navy */
-section.image2 {
+/* image1 sections — navy */
+section.image1 {
   background-color: var(--navy) !important;
 }
-section.image2 .mbr-section-title,
-section.image2 .mbr-text,
-section.image2 .mbr-description {
+section.image1 .mbr-section-title,
+section.image1 .mbr-text,
+section.image1 .mbr-description {
   color: #ffffff !important;
 }
-section.image2 a.text-primary {
+section.image1 a.text-primary {
   color: var(--gold) !important;
 }
-section.image2 a.text-primary:hover {
+section.image1 a.text-primary:hover {
   color: #fbbf24 !important;
 }
 
-/* image1 sections — light grey */
-section.image1 {
+/* image2 sections — light grey */
+section.image2 {
   background-color: var(--section-light) !important;
 }
 
@@ -521,7 +521,7 @@ section.image2 .image-wrapper img {
 }
 section.image1 .image-wrapper img:hover,
 section.image2 .image-wrapper img:hover {
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.38);
 }
 
 /* Category card hover */

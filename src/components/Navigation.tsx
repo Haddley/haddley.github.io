@@ -40,6 +40,11 @@ export default function Navigation() {
                   Blog Posts
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link href="/categories" className="nav-link link display-4">
+                  Categories
+                </Link>
+              </li>
             </ul>
             
             <div className="icons-menu">
