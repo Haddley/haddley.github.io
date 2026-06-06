@@ -3,7 +3,7 @@ title: "Angular and Phaser"
 description: "Using Phaser in an Angular Component"
 date: "2023-05-10"
 categories: ["Angular","TypeScript"]
-tags: "phaser, game-dev, typescript"
+tags: "phaser, game-dev, canvas"
 hidden: false
 slug: "angularphaser"
 image: "/assets/images/angularphaser/phaser-logo-1836x1530.png"

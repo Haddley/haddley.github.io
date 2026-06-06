@@ -4,7 +4,7 @@ description: "Quote Template"
 date: "2025-09-20"
 categories: ["Angular","TypeScript"]
 image: "/assets/images/hubspotquotetemplate/hero.png"
-tags: "hubspot, quote-template, typescript"
+tags: "hubspot, quote-template, crm"
 hidden: true
 slug: "hubspotquotetemplate"
 ---

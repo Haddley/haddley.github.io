@@ -4,7 +4,7 @@ description: "A platform for building mobile and desktop web applications"
 date: "2025-09-20"
 categories: ["Angular","JavaScript","TypeScript"]
 image: "/assets/images/angular1/angular-full-color-logo.svg"
-tags: "typescript, testing"
+tags: "ng-cli, components, testing"
 hidden: false
 slug: "angular1"
 ---

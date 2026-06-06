@@ -3,7 +3,7 @@ title: "Angular and ASP.NET Core"
 description: "Single Page Application (SPA) templates"
 date: "2023-03-24"
 categories: [".NET","Angular","TypeScript"]
-tags: "asp-net-core, spa, typescript"
+tags: "asp-net-core, spa, routing"
 hidden: false
 slug: "angularandasp.net"
 image: "/assets/images/angularandasp.net/angular-full-color-logo.svg"

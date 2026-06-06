@@ -3,7 +3,7 @@ title: "Angular Firebase"
 description: "Creating a new firebase project"
 date: "2023-04-25"
 categories: ["Angular","TypeScript","Firebase"]
-tags: "firebase, firestore, typescript"
+tags: "firestore, realtime-database, authentication"
 hidden: false
 slug: "angularfirebase"
 image: "/assets/images/angularfirebase/logo-lockup-firebase-vertical.svg"
