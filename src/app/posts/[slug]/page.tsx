@@ -67,14 +67,17 @@ export default async function PostPage({ params }: PostPageProps) {
                 {post.categories && post.categories.length > 0 && (
                   <>
                     {[...new Set(post.categories)].map((category) => (
-                      <Link 
-                        key={category} 
+                      <Link
+                        key={category}
                         href={`/posts/category/${category.toLowerCase().replace(/\s+/g, '-').replace(/[&]/g, '').replace(/[^a-z0-9-]/g, '')}`}
-                        className="badge bg-primary"
-                        style={{ 
-                          fontSize: '0.9rem', 
-                          padding: '8px 16px',
-                          textDecoration: 'none'
+                        style={{
+                          background: 'rgba(15, 30, 61, 0.1)',
+                          color: '#0f1e3d',
+                          padding: '4px 14px',
+                          borderRadius: '8px',
+                          fontSize: '0.85rem',
+                          fontWeight: '600',
+                          textDecoration: 'none',
                         }}
                       >
                         {category}
