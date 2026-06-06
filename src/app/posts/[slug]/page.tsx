@@ -85,14 +85,13 @@ export default async function PostPage({ params }: PostPageProps) {
                 {post.tags && (Array.isArray(post.tags) ? post.tags : [post.tags]).filter(Boolean).length > 0 && (
                   <>
                     {(Array.isArray(post.tags) ? post.tags : [post.tags]).filter(Boolean).map((tag) => (
-                      <span 
-                        key={tag} 
-                        className="badge bg-secondary"
-                        style={{ 
-                          fontSize: '0.85rem', 
-                          padding: '6px 14px'
-                        }}
-                      >
+                      <span key={tag} style={{
+                        background: 'rgba(15, 30, 61, 0.05)',
+                        color: '#666',
+                        padding: '4px 12px',
+                        borderRadius: '8px',
+                        fontSize: '0.8rem',
+                      }}>
                         {tag}
                       </span>
                     ))}

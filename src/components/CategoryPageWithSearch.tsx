@@ -254,35 +254,40 @@ export default function CategoryPageWithSearch({
                       {post.description}
                     </p>
                     
-                    {/* Categories */}
-                    {post.categories && post.categories.length > 0 && (
-                      <div className="mt-2 mb-2">
-                        {post.categories.slice(0, 3).map((cat) => (
-                          <span
-                            key={cat}
-                            className="badge bg-info me-1"
-                            style={{ fontSize: '0.75rem' }}
-                          >
-                            {cat}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                    
-                    {/* Tags */}
-                    {post.tags.length > 0 && (
-                      <div className="mt-2 mb-2">
-                        {post.tags.slice(0, 3).map((tag) => (
-                          <span
-                            key={tag}
-                            className="badge bg-secondary me-1"
-                            style={{ fontSize: '0.75rem' }}
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
+                    {/* Categories + Tags */}
+                    <div className="mt-2 mb-2" style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                      {post.categories && post.categories.length > 0 && (
+                        <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                          {post.categories.slice(0, 3).map((cat) => (
+                            <span key={cat} style={{
+                              background: 'rgba(15, 30, 61, 0.1)',
+                              color: '#0f1e3d',
+                              padding: '3px 10px',
+                              borderRadius: '8px',
+                              fontSize: '0.75rem',
+                              fontWeight: '600',
+                            }}>
+                              {cat}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                      {post.tags.length > 0 && (
+                        <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                          {post.tags.slice(0, 3).map((tag) => (
+                            <span key={tag} style={{
+                              background: 'rgba(15, 30, 61, 0.05)',
+                              color: '#666',
+                              padding: '3px 10px',
+                              borderRadius: '8px',
+                              fontSize: '0.72rem',
+                            }}>
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   </div>
                   <div className="mbr-section-btn item-footer mt-2">
                     <Link href={`/posts/${post.slug}`} className="btn btn-primary item-btn display-7">

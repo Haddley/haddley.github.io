@@ -102,13 +102,15 @@ export default function CategoryPostSearch({ posts, categoryName }: CategoryPost
                   
                   {/* Tags */}
                   {post.tags.length > 0 && (
-                    <div className="mt-2 mb-2">
+                    <div className="mt-2 mb-2" style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
                       {post.tags.slice(0, 3).map((tag) => (
-                        <span
-                          key={tag}
-                          className="badge bg-secondary me-1"
-                          style={{ fontSize: '0.75rem' }}
-                        >
+                        <span key={tag} style={{
+                          background: 'rgba(15, 30, 61, 0.05)',
+                          color: '#666',
+                          padding: '3px 10px',
+                          borderRadius: '8px',
+                          fontSize: '0.72rem',
+                        }}>
                           {tag}
                         </span>
                       ))}
