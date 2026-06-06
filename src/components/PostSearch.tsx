@@ -108,22 +108,31 @@ export default function PostSearch({ posts }: PostSearchProps) {
                     {post.description}
                   </p>
                   
-                  {/* Category Badges */}
-                  <div className="mt-2 mb-2">
+                  {/* Categories + Tags */}
+                  <div className="mt-2 mb-2" style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                     {post.categories && post.categories.length > 0 && (
-                      [...new Set(post.categories)].slice(0, 3).map((category) => (
-                        <span key={category} className="badge bg-primary me-1 mb-1">
-                          {category}
-                        </span>
-                      ))
-                    )}
-                    {post.categories && [...new Set(post.categories)].length > 3 && (
-                      <span className="badge bg-secondary me-1 mb-1" style={{ fontSize: '0.7rem' }}>
-                        +{[...new Set(post.categories)].length - 3} more
-                      </span>
+                      <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                        {[...new Set(post.categories)].slice(0, 3).map((category) => (
+                          <span key={category} style={{
+                            background: 'rgba(15, 30, 61, 0.1)',
+                            color: '#0f1e3d',
+                            padding: '3px 10px',
+                            borderRadius: '8px',
+                            fontSize: '0.75rem',
+                            fontWeight: '600',
+                          }}>
+                            {category}
+                          </span>
+                        ))}
+                        {[...new Set(post.categories)].length > 3 && (
+                          <span style={{ color: '#999', fontSize: '0.72rem', alignSelf: 'center' }}>
+                            +{[...new Set(post.categories)].length - 3} more
+                          </span>
+                        )}
+                      </div>
                     )}
                     {post.tags.length > 0 && (
-                      <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginTop: '6px' }}>
+                      <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
                         {post.tags.slice(0, 3).map(tag => (
                           <span key={tag} style={{
                             background: 'rgba(15, 30, 61, 0.05)',
