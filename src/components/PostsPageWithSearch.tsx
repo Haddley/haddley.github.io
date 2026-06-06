@@ -197,7 +197,7 @@ export default function PostsPageWithSearch({
                             }}>
                               {post.description.substring(0, index === 0 ? 200 : 150)}...
                             </p>
-                            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '12px' }}>
+                            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '8px' }}>
                               {post.categories?.slice(0, 2).map(cat => (
                                 <span key={cat} style={{
                                   background: 'rgba(15, 30, 61, 0.08)',
@@ -212,6 +212,26 @@ export default function PostsPageWithSearch({
                                 </span>
                               ))}
                             </div>
+                            {post.tags?.length > 0 && (
+                              <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginBottom: '12px' }}>
+                                {post.tags.slice(0, 3).map(tag => (
+                                  <span key={tag} style={{
+                                    background: 'rgba(15, 30, 61, 0.05)',
+                                    color: '#666',
+                                    padding: '3px 10px',
+                                    borderRadius: '8px',
+                                    fontSize: '0.72rem',
+                                  }}>
+                                    {tag}
+                                  </span>
+                                ))}
+                                {post.tags.length > 3 && (
+                                  <span style={{ color: '#999', fontSize: '0.72rem', alignSelf: 'center' }}>
+                                    +{post.tags.length - 3} more
+                                  </span>
+                                )}
+                              </div>
+                            )}
                             <p style={{
                               color: '#999',
                               fontSize: '0.9rem',

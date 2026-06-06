@@ -143,7 +143,7 @@ export default function CategoryPageWithSearch({
                             }}>
                               {post.description.substring(0, index === 0 ? 200 : 150)}...
                             </p>
-                            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '12px' }}>
+                            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '8px' }}>
                               <span style={{
                                 background: 'rgba(102, 126, 234, 0.15)',
                                 color: '#667eea',
@@ -168,6 +168,26 @@ export default function CategoryPageWithSearch({
                                 </span>
                               ))}
                             </div>
+                            {post.tags?.length > 0 && (
+                              <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginBottom: '12px' }}>
+                                {post.tags.slice(0, 3).map(tag => (
+                                  <span key={tag} style={{
+                                    background: 'rgba(102, 126, 234, 0.08)',
+                                    color: '#666',
+                                    padding: '3px 10px',
+                                    borderRadius: '8px',
+                                    fontSize: '0.72rem',
+                                  }}>
+                                    {tag}
+                                  </span>
+                                ))}
+                                {post.tags.length > 3 && (
+                                  <span style={{ color: '#999', fontSize: '0.72rem', alignSelf: 'center' }}>
+                                    +{post.tags.length - 3} more
+                                  </span>
+                                )}
+                              </div>
+                            )}
                             <p style={{
                               color: '#999',
                               fontSize: '0.9rem',
