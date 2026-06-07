@@ -173,7 +173,7 @@ export const categories: Category[] = [
   {
     name: '3D printing',
     slug: '3d-printing',
-    icon: '🖨️',
+    icon: '🏗️',
     description: 'Explore 3D printing projects and tutorials',
     color: 'bg-yellow-100 text-yellow-800',
     aliases: ['printing', '3d-printer', '3dprint', 'fdm', 'resin']
