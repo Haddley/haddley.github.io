@@ -16,7 +16,16 @@ I’ve added a conversational AI assistant to this blog — you’ll see the cha
 
 ## Model
 
-I used **Qwen2.5-7B-Instruct-q4f16_1-MLC** — Alibaba's Qwen2.5 7B Instruct model, quantised to 4-bit weights. The weights are about 4 GB, downloaded once and cached in the browser. WebGPU is required, so it works in Chrome and Edge on GPU-enabled devices.
+The agent offers four model sizes, all quantised to 4-bit weights and cached in the browser after the first download. WebGPU is required, so it works in Chrome and Edge on GPU-enabled devices.
+
+| Model | Download | Note |
+|-------|----------|------|
+| Qwen2.5-7B-Instruct-q4f16_1-MLC | ~4 GB | Best quality |
+| Qwen2.5-3B-Instruct-q4f16_1-MLC | ~2 GB | Balanced |
+| Qwen2.5-1.5B-Instruct-q4f16_1-MLC | ~1 GB | Fast |
+| Qwen2.5-0.5B-Instruct-q4f16_1-MLC | ~500 MB | Tiny |
+
+The 3B is the default — a good balance of speed and reliability for multi-step tool use. Larger models give better reasoning quality; the 0.5B and 1.5B are available for faster loads on lower-end hardware.
 
 ## Architecture
 
@@ -25,7 +34,7 @@ The agent is a React component (`BlogAgent.tsx`) in the Next.js layout, so it ap
 ```typescript
 const { CreateMLCEngine } = await import('@mlc-ai/web-llm');
 const engine = await CreateMLCEngine(
-  'Qwen2.5-7B-Instruct-q4f16_1-MLC',
+  selectedModel, // one of: 7B / 3B / 1.5B / 0.5B
   { initProgressCallback: ({ progress, text }) => setLoadState(...) },
   { context_window_size: 8192 },
 );
@@ -72,9 +81,35 @@ Because WebLLM's native tools API only supports a fixed set of Hermes models, I 
 ![](assets/images/localagent/Screenshot-2026-06-12-at-1.32.52-PM.png)
 *I clicked "Summarise all Phaser posts" from a Java post page and the agent searched and returned summaries of each one*
 
+## Model Quality
+
+Smaller models trade reasoning quality for speed. I ran the same query — "Any Java related posts?" — against the 1.5B and 3B models to see the difference.
+
+The **1.5B** called two tools back-to-back (`search_posts` then `get_posts_by_category`), then called `get_posts_by_category` twice more on the same arguments. The duplicate-call guard skipped those, the loop exhausted its round limit, and the nudge response came back empty — the agent failed to answer.
+
+```
+round 0 — search_posts {"query": "Java"}           ✓
+round 1 — get_posts_by_category {"category": "Java"} (already had the data)
+round 2 — get_posts_by_category {"category": "Java"} → skipping duplicate
+round 3 — get_posts_by_category {"category": "Java"} → skipping duplicate
+loop exhausted — final nudge → (empty)
+```
+
+The **3B** called `search_posts` once and produced a formatted answer on the very next round:
+
+```
+round 0 — search_posts {"query": "Java related"}   ✓
+round 1 — text: "Here are the Java related posts: …"
+```
+
+The 3B is the default for this reason — it handles multi-step tool use reliably. The 0.5B and 1.5B are available for faster loads but may struggle on follow-up questions.
+
 ## References
 
 - [WebLLM — In-browser LLM inference with WebGPU](https://github.com/mlc-ai/web-llm)
 - [MLC AI — Machine Learning Compilation](https://mlc.ai)
 - [Qwen2.5-7B-Instruct on Hugging Face](https://huggingface.co/Qwen/Qwen2.5-7B-Instruct)
+- [Qwen2.5-3B-Instruct on Hugging Face](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct)
+- [Qwen2.5-1.5B-Instruct on Hugging Face](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct)
+- [Qwen2.5-0.5B-Instruct on Hugging Face](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct)
 - [WebGPU API — MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGPU_API)
