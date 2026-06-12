@@ -30,6 +30,23 @@ The 3B is the default — a good balance of speed and reliability for multi-step
 ![](assets/images/localagent/Screenshot-2026-06-12-at-5.36.49-PM.png)
 *The model selector showing all four options, with Qwen2.5 3B selected as the default*
 
+## Why Quantization?
+
+Running a language model in the browser means working within tight constraints: limited GPU VRAM, no server to offload to, and a download that has to complete before the first response. Quantization is what makes this feasible.
+
+A standard Qwen2.5-7B model in 16-bit precision weighs around 14 GB. Most consumer GPUs don't have that much VRAM, and browsers impose their own caps on top of that. The quantized version — 4-bit weights — brings it down to ~4 GB, small enough to fit in GPU memory on a mid-range device and cacheable in the browser after the first load.
+
+| Model | FP16 (full) | q4f16_1 (quantized) |
+|-------|-------------|---------------------|
+| 7B | ~14 GB | ~4 GB |
+| 3B | ~6 GB | ~2 GB |
+| 1.5B | ~3 GB | ~1 GB |
+| 0.5B | ~1 GB | ~500 MB |
+
+WebLLM only supports its own pre-compiled MLC model variants — you can't load an arbitrary Hugging Face checkpoint directly. The MLC compilation step converts the model to run on WebGPU and bakes in the quantization, so the quantized format isn't optional; it's a requirement of the platform.
+
+The quality tradeoff is minimal. At q4f16_1, benchmark scores typically drop by around 1–2% compared to full precision. For a blog assistant doing search and summarisation, the difference is unnoticeable in practice.
+
 ## Architecture
 
 The agent is a React component (`BlogAgent.tsx`) in the Next.js layout, so it appears on every page. Tool definitions and helper functions live in `agent-tools.ts`. Post metadata is pre-built at deploy time into `agent-data.json`, which the component fetches when the panel opens.
