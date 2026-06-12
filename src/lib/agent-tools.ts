@@ -20,12 +20,20 @@ export const CATEGORIES = [
   'Microsoft 365', 'DevOps', 'Mobile', 'IOT', 'Maps', '3D printing', 'macOS', 'Firebase', '3D',
 ];
 
+const STOP_WORDS = new Set([
+  'a', 'an', 'the', 'and', 'or', 'in', 'on', 'of', 'to', 'for', 'with', 'about',
+  'is', 'are', 'was', 'were', 'be', 'been', 'have', 'has', 'had', 'do', 'does', 'did',
+  'any', 'all', 'me', 'my', 'i', 'can', 'could', 'will', 'would', 'should',
+  'related', 'posts', 'blog', 'find', 'show', 'list', 'get', 'what', 'which',
+]);
+
 export function searchPosts(query: string, posts: PostMeta[]): PostMeta[] {
-  const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
+  const terms = query.toLowerCase().split(/\s+/).filter(t => t.length > 0 && !STOP_WORDS.has(t));
+  if (terms.length === 0) return [];
   return posts
     .filter(p => {
       const haystack = [p.title, p.description, p.tags, ...p.categories].join(' ').toLowerCase();
-      return terms.every(term => haystack.includes(term));
+      return terms.every(term => new RegExp(`\\b${term}\\b`).test(haystack));
     })
     .slice(0, 10);
 }

@@ -3,7 +3,13 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 
-declare global { interface Window { gtag?: (...args: unknown[]) => void } }
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+    // Test hook: inject a mock engine to skip real model loading in e2e tests
+    __mlcEngineOverride?: unknown;
+  }
+}
 const gaEvent = (name: string, params?: Record<string, unknown>) => window.gtag?.('event', name, params);
 import type { MLCEngine } from '@mlc-ai/web-llm';
 import {
@@ -12,7 +18,12 @@ import {
   type AgentData,
 } from '@/lib/agent-tools';
 
-const MODEL_ID = 'Qwen2.5-7B-Instruct-q4f16_1-MLC';
+const MODELS = [
+  { id: 'Qwen2.5-7B-Instruct-q4f16_1-MLC',  label: 'Qwen2.5 7B',  size: '~4 GB', note: 'Best quality' },
+  { id: 'Qwen2.5-3B-Instruct-q4f16_1-MLC',  label: 'Qwen2.5 3B',  size: '~2 GB', note: 'Balanced' },
+  { id: 'Qwen2.5-1.5B-Instruct-q4f16_1-MLC', label: 'Qwen2.5 1.5B', size: '~1 GB', note: 'Fastest' },
+] as const;
+type ModelId = typeof MODELS[number]['id'];
 const NAVY = '#1a2b4b';
 const JINA_KEY = process.env.NEXT_PUBLIC_JINA_API_KEY ?? '';
 
@@ -36,36 +47,43 @@ ${defs}
 </tools>
 
 STRICT OUTPUT RULES:
-1. When you need to call a tool, output EXACTLY this format — the opening tag, one line of JSON, the closing tag, and NOTHING else before or after:
-<tool_call>
+1. When you need to call a tool, output ONLY a JSON code block — no text before or after it:
+\`\`\`json
 {"name": "tool_name", "arguments": {"arg": "value"}}
-</tool_call>
-2. Call ONE tool per response. Never output two <tool_call> blocks.
-3. Never add any text, explanation, or preamble before a <tool_call> block.
-4. After receiving <tool_response> results, answer in plain text only — no <tool_call> tags.
-5. Format every post link as [Title](url).
+\`\`\`
+2. Call ONE tool per response. Never output two code blocks.
+3. After receiving <tool_response> results, answer in plain text only — no code blocks.
+4. Format every post link as [Title](url) — Description.
 
 Example — user asks "Any Python posts?":
-<tool_call>
+\`\`\`json
 {"name": "get_posts_by_category", "arguments": {"category": "Python"}}
-</tool_call>`;
+\`\`\``;
 }
 
 function parseToolCalls(text: string): Array<{ name: string; arguments: Record<string, string> }> {
-  // Match both properly closed blocks and unclosed blocks (model sometimes omits </tool_call>)
-  const re = /<tool_call>\s*([\s\S]*?)\s*(?:<\/tool_call>|$)/g;
   const out: Array<{ name: string; arguments: Record<string, string> }> = [];
+
+  // Primary: ```json ... ``` code blocks
+  const jsonBlock = /```(?:json)?\s*([\s\S]*?)\s*```/g;
   let m: RegExpExecArray | null;
-  while ((m = re.exec(text)) !== null) {
-    const candidate = m[1].trim();
-    if (!candidate) continue;
-    // Only take the first JSON object (stops at the second <tool_call> if present)
-    const jsonEnd = candidate.indexOf('\n<tool_call>');
-    const jsonStr = jsonEnd !== -1 ? candidate.slice(0, jsonEnd) : candidate;
+  while ((m = jsonBlock.exec(text)) !== null) {
+    try {
+      const parsed = JSON.parse(m[1].trim());
+      if (typeof parsed.name === 'string') out.push({ name: parsed.name, arguments: parsed.arguments ?? {} });
+    } catch { /* skip */ }
+  }
+  if (out.length) return out;
+
+  // Fallback: <tool_call> blocks (with or without closing tag)
+  const tagBlock = /<tool_call>\s*([\s\S]*?)\s*(?:<\/tool_call>|(?=<tool_call>)|$)/g;
+  while ((m = tagBlock.exec(text)) !== null) {
+    const jsonStr = m[1].trim();
+    if (!jsonStr) continue;
     try {
       const parsed = JSON.parse(jsonStr);
       if (typeof parsed.name === 'string') out.push({ name: parsed.name, arguments: parsed.arguments ?? {} });
-    } catch { /* skip malformed blocks */ }
+    } catch { /* skip */ }
   }
   return out;
 }
@@ -75,39 +93,42 @@ type LoadStatus = 'idle' | 'loading' | 'ready' | 'unsupported' | 'error';
 interface LoadState { status: LoadStatus; progress: number; text: string }
 interface Message { role: 'user' | 'assistant'; content: string }
 
-// Renders assistant markdown safely — converts [text](url) links to React elements
-// and preserves line breaks. No dangerouslySetInnerHTML needed.
 function MessageContent({ text, onNavigate }: { text: string; onNavigate: (href: string) => void }) {
-  const linkRe = /\[([^\]]+)\]\(([^)\s]+)\)/g;
-  const nodes: React.ReactNode[] = [];
-  let last = 0;
-  let key = 0;
-  let m: RegExpExecArray | null;
+  const [html, setHtml] = useState('');
+  const ref = useRef<HTMLDivElement>(null);
 
-  const addText = (chunk: string) => {
-    chunk.split('\n').forEach((line, i) => {
-      if (i > 0) nodes.push(<br key={`br-${key++}`} />);
-      if (line) nodes.push(line);
-    });
-  };
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const { remark } = await import('remark');
+      const { default: remarkHtml } = await import('remark-html');
+      const result = await remark().use(remarkHtml, { sanitize: false }).process(text);
+      if (!cancelled) setHtml(result.toString());
+    })();
+    return () => { cancelled = true; };
+  }, [text]);
 
-  while ((m = linkRe.exec(text)) !== null) {
-    if (m.index > last) addText(text.slice(last, m.index));
-    const href = m[2];
-    nodes.push(
-      <a
-        key={key++}
-        href={href}
-        onClick={e => { if (href.startsWith('/')) { e.preventDefault(); onNavigate(href); } }}
-        style={{ color: '#1a5276', textDecoration: 'underline', cursor: 'pointer' }}
-      >
-        {m[1]}
-      </a>
-    );
-    last = m.index + m[0].length;
-  }
-  if (last < text.length) addText(text.slice(last));
-  return <>{nodes}</>;
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const handler = (e: MouseEvent) => {
+      const a = (e.target as Element).closest('a');
+      if (a) {
+        const href = a.getAttribute('href') ?? '';
+        if (href.startsWith('/')) { e.preventDefault(); onNavigate(href); }
+      }
+    };
+    el.addEventListener('click', handler);
+    return () => el.removeEventListener('click', handler);
+  }, [html, onNavigate]);
+
+  return (
+    <div
+      ref={ref}
+      dangerouslySetInnerHTML={{ __html: html }}
+      style={{ lineHeight: 1.5 }}
+    />
+  );
 }
 
 export default function BlogAgent() {
@@ -118,6 +139,13 @@ export default function BlogAgent() {
   const [toolStatus, setToolStatus] = useState('');
   const [loadState, setLoadState] = useState<LoadState>({ status: 'idle', progress: 0, text: '' });
   const [agentData, setAgentData] = useState<AgentData | null>(null);
+  const [selectedModel, setSelectedModel] = useState<ModelId>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('agent-model');
+      if (MODELS.some(m => m.id === saved)) return saved as ModelId;
+    }
+    return MODELS[MODELS.length - 1].id; // default to smallest
+  });
 
   const engineRef = useRef<MLCEngine | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
@@ -158,22 +186,22 @@ export default function BlogAgent() {
       .catch(() => {});
   }, [isOpen, agentData]);
 
-  // Start loading the model the first time the panel opens
-  useEffect(() => {
-    if (!isOpen || loadState.status !== 'idle') return;
-    loadModel();
-  }, [isOpen]); // eslint-disable-line react-hooks/exhaustive-deps
-
   const loadModel = async () => {
+    if (window.__mlcEngineOverride) {
+      engineRef.current = window.__mlcEngineOverride as MLCEngine;
+      setLoadState({ status: 'ready', progress: 100, text: '' });
+      return;
+    }
     if (!('gpu' in navigator && navigator.gpu)) {
       setLoadState({ status: 'unsupported', progress: 0, text: 'WebGPU is required. Try Chrome or Edge on a GPU-enabled device.' });
       return;
     }
+    localStorage.setItem('agent-model', selectedModel);
     setLoadState({ status: 'loading', progress: 0, text: 'Initialising…' });
     try {
       const { CreateMLCEngine } = await import('@mlc-ai/web-llm');
       const engine = await CreateMLCEngine(
-        MODEL_ID,
+        selectedModel,
         {
           initProgressCallback: ({ progress, text }) =>
             setLoadState({ status: 'loading', progress: Math.round(progress * 100), text }),
@@ -285,7 +313,6 @@ export default function BlogAgent() {
         pageContext = 'categories overview';
       }
 
-      const isOnPostPage = !!postMatch;
       const currentSlug = postMatch?.[1] ?? '';
       const contextHint = `[Current page: ${pageContext}. RULES (priority order): (1) On a post page: if the user asks to summarise, explain, or asks about this post — call get_post_content with slug "${currentSlug}" immediately. Do not search. (2) For category questions use get_posts_by_category; for keyword queries use search_posts. Never name or link a post without calling a tool first. (3) Never call get_post_content to browse or list — only when reading a specific post. (4) Never repeat the same tool call in one turn. Be concise.]`;
 
@@ -304,7 +331,7 @@ export default function BlogAgent() {
       let contentFetchCount = 0;
 
       console.group(`[BlogAgent] turn — "${userText}"`);
-      console.log('history depth:', apiHistoryRef.current.length, '| page:', pageContext);
+      console.log('model:', selectedModel, '| history depth:', apiHistoryRef.current.length, '| page:', pageContext);
 
       // Prompt-based tool loop: parse <tool_call> blocks from plain text output.
       // No WebLLM tools API needed — works with any instruction-tuned model.
@@ -326,13 +353,16 @@ export default function BlogAgent() {
         const rawContent = resp.choices[0].message.content ?? '';
         console.log(`round ${round} — raw:`, rawContent.slice(0, 300));
 
-        // Strip preamble text before the first <tool_call> — model sometimes narrates first
-        const toolCallStart = rawContent.indexOf('<tool_call>');
-        const contentForParsing = toolCallStart > 0 ? rawContent.slice(toolCallStart) : rawContent;
+        // Strip preamble text before the first tool call marker — model sometimes narrates first
+        const jsonBlockStart = rawContent.indexOf('```');
+        const tagBlockStart = rawContent.indexOf('<tool_call>');
+        const firstMarker = [jsonBlockStart, tagBlockStart].filter(i => i >= 0).reduce((a, b) => Math.min(a, b), Infinity);
+        const contentForParsing = firstMarker > 0 ? rawContent.slice(firstMarker) : rawContent;
         const toolCalls = parseToolCalls(contentForParsing);
         if (!toolCalls.length) {
-          // No tool calls — clean up any stray tags and use as the final answer
+          // No tool calls — strip any stray markers and use as the final answer
           finalContent = rawContent
+            .replace(/```(?:json)?\s*[\s\S]*?```/g, '')
             .replace(/<tool_call>[\s\S]*?<\/tool_call>/g, '')
             .replace(/https?:\/\/[^\s/)]+(\/(posts|categories)[^\s)]*)/g, '$1')
             .trim();
@@ -353,7 +383,7 @@ export default function BlogAgent() {
           const callKey = `${tc.name}:${JSON.stringify(tc.arguments)}`;
           if (calledThisTurn.has(callKey)) {
             console.log(`  skipping duplicate: ${tc.name}`);
-            resultParts.push(`(duplicate ${tc.name} skipped)`);
+            resultParts.push(`You already called ${tc.name} with these arguments. Stop calling tools and answer the user now.`);
             continue;
           }
           if (tc.name === 'get_post_content') {
@@ -372,9 +402,12 @@ export default function BlogAgent() {
           resultParts.push(result);
         }
 
+        const allDuplicates = resultParts.every(r => r.startsWith('You already called'));
         apiMsgs.push({
           role: 'user',
-          content: `<tool_response>\n${resultParts.join('\n\n')}\n</tool_response>\nNow answer the user's question in plain text using these results.`,
+          content: allDuplicates
+            ? `You have already retrieved the information needed. Answer the user's question in plain text now — do not call any more tools.`
+            : `<tool_response>\n${resultParts.join('\n\n')}\n</tool_response>\nNow answer the user's question in plain text using these results. Do not call any more tools.`,
         });
       }
 
@@ -386,6 +419,7 @@ export default function BlogAgent() {
           const finalResp = await engine.chat.completions.create({ messages: [...apiMsgs] });
           const raw = finalResp.choices[0].message.content?.trim() ?? '';
           finalContent = raw
+            .replace(/```(?:json)?\s*[\s\S]*?```/g, '')
             .replace(/<tool_call>[\s\S]*?<\/tool_call>/g, '')
             .replace(/https?:\/\/[^\s/)]+(\/(posts|categories)[^\s)]*)/g, '$1')
             .trim();
@@ -464,7 +498,9 @@ export default function BlogAgent() {
             <div>
               <div style={{ fontWeight: 600, fontSize: 14 }}>Blog AI Assistant</div>
               <div style={{ fontSize: 11, opacity: 0.6, marginTop: 2 }}>
-                {loadState.status === 'ready' ? 'Qwen2.5 · 7B Instruct · local WebGPU' : 'Powered by WebLLM'}
+                {loadState.status === 'ready'
+                  ? `${MODELS.find(m => m.id === selectedModel)?.label ?? 'Qwen2.5'} · local WebGPU`
+                  : 'Powered by WebLLM'}
               </div>
             </div>
             <button
@@ -486,8 +522,36 @@ export default function BlogAgent() {
             </button>
           </div>
 
+          {/* Idle: model selector */}
+          {loadState.status === 'idle' && (
+            <div style={{ padding: 20, fontSize: 13, flexShrink: 0 }}>
+              <div style={{ marginBottom: 10, color: '#555', fontSize: 12 }}>Choose a model (downloaded once, cached in browser):</div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginBottom: 14 }}>
+                {MODELS.map(m => (
+                  <label key={m.id} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', fontSize: 13 }}>
+                    <input
+                      type="radio"
+                      name="model"
+                      value={m.id}
+                      checked={selectedModel === m.id}
+                      onChange={() => setSelectedModel(m.id)}
+                    />
+                    <span style={{ fontWeight: 500 }}>{m.label}</span>
+                    <span style={{ color: '#999', fontSize: 11 }}>{m.size} · {m.note}</span>
+                  </label>
+                ))}
+              </div>
+              <button
+                onClick={loadModel}
+                style={{ fontSize: 13, padding: '7px 18px', background: NAVY, color: '#fff', border: 'none', borderRadius: 20, cursor: 'pointer' }}
+              >
+                Load model
+              </button>
+            </div>
+          )}
+
           {/* Loading / error */}
-          {loadState.status !== 'ready' && (
+          {(loadState.status === 'loading' || loadState.status === 'unsupported' || loadState.status === 'error') && (
             <div style={{ padding: 20, fontSize: 13, flexShrink: 0 }}>
               {loadState.status === 'unsupported' || loadState.status === 'error' ? (
                 <div>
@@ -502,7 +566,7 @@ export default function BlogAgent() {
                 <div>
                   <div style={{ color: '#555', fontSize: 12, marginBottom: 10 }}>
                     {loadState.progress === 0
-                      ? 'Loading model… (first run ~2 GB download, cached afterwards)'
+                      ? `Loading ${MODELS.find(m => m.id === selectedModel)?.label ?? 'model'}… (first run ${MODELS.find(m => m.id === selectedModel)?.size ?? ''} download, cached afterwards)`
                       : loadState.text}
                   </div>
                   <div style={{ background: '#e9ecef', borderRadius: 4, height: 6, overflow: 'hidden' }}>

@@ -1147,7 +1147,7 @@
     {
       "slug": "spring-boot-6",
       "title": "Java Spring Boot (Part 6)",
-      "description": "GitHub",
+      "description": "GitHub OAuth",
       "date": "2023-10-31",
       "categories": [
         "Java"
@@ -1177,7 +1177,7 @@
     {
       "slug": "spring-boot-3",
       "title": "Java Spring Boot (Part 3)",
-      "description": "SpringdatajpaApplication.java",
+      "description": "Using Spring Data JPA",
       "date": "2023-10-28",
       "categories": [
         "Java"
@@ -2492,5 +2492,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-06-12T20:18:36.981Z"
+  "generatedAt": "2026-06-12T22:03:33.026Z"
 }

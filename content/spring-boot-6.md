@@ -1,6 +1,6 @@
 ---
 title: "Java Spring Boot (Part 6)"
-description: "GitHub"
+description: "GitHub OAuth"
 date: "2023-10-31"
 categories: ["Java"]
 tags: "spring-boot, github, ci-cd"

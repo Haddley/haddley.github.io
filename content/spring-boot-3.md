@@ -1,6 +1,6 @@
 ---
 title: "Java Spring Boot (Part 3)"
-description: "SpringdatajpaApplication.java"
+description: "Using Spring Data JPA"
 date: "2023-10-28"
 categories: ["Java"]
 tags: "spring-boot, spring-data-jpa, database"
