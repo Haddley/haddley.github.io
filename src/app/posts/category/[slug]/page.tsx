@@ -4,11 +4,27 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import CategoryPageWithSearch from '@/components/CategoryPageWithSearch';
 import NavyImageBanner from '@/components/NavyImageBanner';
+import type { Metadata } from 'next';
 
 interface CategoryPageProps {
   params: Promise<{
     slug: string;
   }>;
+}
+
+export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const category = getCategoryBySlug(slug);
+  if (!category) return {};
+  return {
+    title: `${category.name} Posts | Neil Haddley`,
+    description: category.description,
+    openGraph: {
+      title: `${category.name} Posts | Neil Haddley`,
+      description: category.description,
+      url: `https://haddley.github.io/posts/category/${slug}/`,
+    },
+  };
 }
 
 export async function generateStaticParams() {

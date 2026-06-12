@@ -13,9 +13,20 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
   const { slug } = await params;
   const post = await getPostById(slug);
   if (!post) return {};
+  const url = `https://haddley.github.io/posts/${slug}/`;
   return {
     title: `${post.title} | Neil Haddley`,
     description: post.description,
+    alternates: { canonical: url },
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      url,
+      type: 'article',
+      publishedTime: post.date,
+      authors: ['Neil Haddley'],
+      ...(post.image ? { images: [{ url: `https://haddley.github.io${post.image}` }] } : {}),
+    },
   };
 }
 

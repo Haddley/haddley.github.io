@@ -2,6 +2,17 @@ import { getVisibleBlogPosts } from '@/lib/posts';
 import Link from 'next/link';
 import PostsPageWithSearch from '@/components/PostsPageWithSearch';
 import NavyImageBanner from '@/components/NavyImageBanner';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Blog Posts | Neil Haddley',
+  description: 'Articles on Azure, Business Central, Power Platform, AI, and web development by Neil Haddley.',
+  openGraph: {
+    title: 'Blog Posts | Neil Haddley',
+    description: 'Articles on Azure, Business Central, Power Platform, AI, and web development by Neil Haddley.',
+    url: 'https://haddley.github.io/posts/',
+  },
+};
 
 export default async function PostsPage() {
   const posts = await getVisibleBlogPosts();

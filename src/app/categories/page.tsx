@@ -7,6 +7,17 @@ import {
 import { getCategoryByName } from '@/lib/categories';
 import Link from 'next/link';
 import NavyImageBanner from '@/components/NavyImageBanner';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Categories | Neil Haddley',
+  description: 'Browse blog posts by technology category — Azure, AI, Business Central, Power Platform, and more.',
+  openGraph: {
+    title: 'Categories | Neil Haddley',
+    description: 'Browse blog posts by technology category — Azure, AI, Business Central, Power Platform, and more.',
+    url: 'https://haddley.github.io/categories/',
+  },
+};
 
 export default async function CategoriesPage() {
   const automatedCategories = await getVisibleAutomatedCategories();

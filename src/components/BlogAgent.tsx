@@ -2,6 +2,9 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+
+declare global { interface Window { gtag?: (...args: unknown[]) => void } }
+const gaEvent = (name: string, params?: Record<string, unknown>) => window.gtag?.('event', name, params);
 import type { MLCEngine } from '@mlc-ai/web-llm';
 import {
   TOOL_DEFINITIONS, CATEGORIES,
@@ -205,6 +208,7 @@ export default function BlogAgent() {
     setIsThinking(true);
     setToolStatus('');
     abortRef.current = false;
+    gaEvent('agent_message_sent', { page: pathname });
 
     // Show user message immediately in the UI
     const userMsg = { role: 'user', content: userText };
@@ -236,7 +240,7 @@ export default function BlogAgent() {
       // Hermes function-calling models forbid ANY system message when tools are present,
       // including on non-tool rounds (the message array is shared). To be safe we never
       // use a system message at all — all context rides in the user message instead.
-      const contextHint = `[You are the AI assistant for Neil Haddley's developer blog. Neil specialises in Azure, Business Central, Power Platform, AI, and web development. Current page: ${pageContext}. CRITICAL RULES: (1) NEVER invent, fabricate, or guess post titles or URLs — only reference posts that appear in the search results. If no results were found, say so honestly. (2) When listing posts or categories from results, format every item as a Markdown link — [Name](url) — using the url value exactly as given; do NOT prepend any domain. Example: [My Post](/posts/my-post/). (3) When on a post page, the slug is given in "Current page" above — pass it directly to get_post_content without searching first. Be concise.]`;
+      const contextHint = `[You are the AI assistant for Neil Haddley's developer blog. Neil specialises in Azure, Business Central, Power Platform, AI, and web development. Current page: ${pageContext}. CRITICAL RULES: (1) NEVER name, list, or link to any post without first calling search_posts or get_posts_by_category — you have no built-in knowledge of which posts exist. If no results were found, say so honestly. (2) When listing posts or categories from results, format every item as a Markdown link — [Name](url) — using the url value exactly as given; do NOT prepend any domain. Example: [My Post](/posts/my-post/). (3) When on a post page, the slug is given in "Current page" above — pass it directly to get_post_content without searching first. Be concise.]`;
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const apiMsgs: any[] = [
@@ -299,6 +303,13 @@ export default function BlogAgent() {
           break;
         }
 
+        if (choice.finish_reason === 'tool_calls' && !choice.message.tool_calls?.length) {
+          // Model signalled tool_calls but emitted none — inject a nudge and retry
+          console.log('empty tool_calls — injecting nudge');
+          apiMsgs.push({ role: 'user', content: 'Please call the appropriate tool (e.g. search_posts or get_posts_by_category) to find the information before answering.' });
+          continue;
+        }
+
         if (choice.finish_reason === 'tool_calls' && choice.message.tool_calls?.length) {
           const names = choice.message.tool_calls.map(tc =>
             tc.function.name === 'web_search' ? '🌐 web search' : `🔍 ${tc.function.name.replace(/_/g, ' ')}`
@@ -313,6 +324,7 @@ export default function BlogAgent() {
             let args: Record<string, string> = {};
             try { args = JSON.parse(tc.function.arguments); } catch { /* empty args */ }
             console.log(`  tool: ${tc.function.name}`, args);
+            gaEvent('agent_tool_called', { tool: tc.function.name, page: pathname });
             const result = await executeTool(tc.function.name, args);
             console.log(`  result (${result.length} chars):`, result.slice(0, 300));
             toolResults.push(result);
@@ -395,7 +407,7 @@ export default function BlogAgent() {
     <>
       {/* Floating button */}
       <button
-        onClick={() => setIsOpen(v => !v)}
+        onClick={() => setIsOpen(v => { if (!v) gaEvent('agent_opened', { page: pathname }); return !v; })}
         aria-label={isOpen ? 'Close AI assistant' : 'Open AI assistant'}
         style={{
           position: 'fixed', bottom: 24, right: 24, zIndex: 9999,
