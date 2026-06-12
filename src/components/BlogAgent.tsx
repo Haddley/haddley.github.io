@@ -240,7 +240,9 @@ export default function BlogAgent() {
       // Hermes function-calling models forbid ANY system message when tools are present,
       // including on non-tool rounds (the message array is shared). To be safe we never
       // use a system message at all — all context rides in the user message instead.
-      const contextHint = `[You are the AI assistant for Neil Haddley's developer blog. Neil specialises in Azure, Business Central, Power Platform, AI, and web development. Current page: ${pageContext}. CRITICAL RULES: (1) NEVER name, list, or link to any post without first calling search_posts or get_posts_by_category — you have no built-in knowledge of which posts exist. If no results were found, say so honestly. (2) When listing posts or categories from results, format every item as a Markdown link — [Name](url) — using the url value exactly as given; do NOT prepend any domain. Example: [My Post](/posts/my-post/). (3) When on a post page, the slug is given in "Current page" above — pass it directly to get_post_content without searching first. Be concise.]`;
+      const isOnPostPage = !!postMatch;
+      const currentSlug = postMatch?.[1] ?? '';
+      const contextHint = `[You are the AI assistant for Neil Haddley's developer blog. Neil specialises in Azure, Business Central, Power Platform, AI, and web development. Current page: ${pageContext}. CRITICAL RULES (follow in priority order): (1) POST PAGE SUMMARISE RULE — HIGHEST PRIORITY: If the current page is a post (slug shown above) AND the user asks to summarise, explain, describe, or asks what this post is about, call get_post_content with that exact slug immediately. Do NOT call get_posts_by_category, search_posts, or any other tool. (2) NEVER call get_post_content just to list or browse posts — only when the user asks about a specific post's content. (3) NEVER name, list, or link to any post without first calling search_posts or get_posts_by_category — you have no built-in knowledge of which posts exist. (4) For category questions ("Java posts", "Azure posts"), use get_posts_by_category. For keyword queries, use search_posts. (5) NEVER repeat the same tool call twice. Use results already returned to answer. (6) Format post links as [Name](url) using the exact url from results — do NOT prepend any domain. Be concise.]`;
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const apiMsgs: any[] = [
@@ -264,6 +266,9 @@ export default function BlogAgent() {
       const MAX_TOOL_ROUNDS = 3;
       const toolResults: string[] = [];
       let finalContent = '';
+      // Dedup: track tool+args combos already executed this turn
+      const calledThisTurn = new Set<string>();
+      let contentFetchCount = 0;
 
       console.group(`[BlogAgent] turn — "${userText}"`);
       console.log('history depth:', apiHistoryRef.current.length, '| page:', pageContext);
@@ -304,9 +309,12 @@ export default function BlogAgent() {
         }
 
         if (choice.finish_reason === 'tool_calls' && !choice.message.tool_calls?.length) {
-          // Model signalled tool_calls but emitted none — inject a nudge and retry
+          // Model signalled tool_calls but emitted none — inject a context-aware nudge and retry
           console.log('empty tool_calls — injecting nudge');
-          apiMsgs.push({ role: 'user', content: 'Please call the appropriate tool (e.g. search_posts or get_posts_by_category) to find the information before answering.' });
+          const nudge = isOnPostPage && currentSlug
+            ? `Call get_post_content with slug "${currentSlug}" to read this post's content.`
+            : 'Call the appropriate tool (search_posts or get_posts_by_category) to find the information before answering.';
+          apiMsgs.push({ role: 'user', content: nudge });
           continue;
         }
 
@@ -323,6 +331,29 @@ export default function BlogAgent() {
             if (abortRef.current) break;
             let args: Record<string, string> = {};
             try { args = JSON.parse(tc.function.arguments); } catch { /* empty args */ }
+
+            // Skip duplicate tool calls within the same turn
+            const callKey = `${tc.function.name}:${JSON.stringify(args)}`;
+            if (calledThisTurn.has(callKey)) {
+              console.log(`  skipping duplicate: ${tc.function.name}`, args);
+              const skipMsg = { role: 'tool', tool_call_id: tc.id, content: '(duplicate call skipped)' };
+              apiMsgs.push(skipMsg);
+              turnMsgs.push(skipMsg);
+              continue;
+            }
+            // Cap get_post_content at 2 fetches per turn to avoid context overflow
+            if (tc.function.name === 'get_post_content') {
+              if (contentFetchCount >= 2) {
+                console.log('  skipping get_post_content (cap reached)');
+                const capMsg = { role: 'tool', tool_call_id: tc.id, content: '(content fetch limit reached — summarise from search results already available)' };
+                apiMsgs.push(capMsg);
+                turnMsgs.push(capMsg);
+                continue;
+              }
+              contentFetchCount++;
+            }
+            calledThisTurn.add(callKey);
+
             console.log(`  tool: ${tc.function.name}`, args);
             gaEvent('agent_tool_called', { tool: tc.function.name, page: pathname });
             const result = await executeTool(tc.function.name, args);
@@ -341,8 +372,11 @@ export default function BlogAgent() {
       // Only needed if phase 1 didn't produce a direct text answer.
       if (!finalContent && !abortRef.current) {
         setToolStatus('');
+        const rawResults = toolResults.join('\n\n');
+        // Cap combined results at ~3500 chars to stay within the 8192-token context window
+        const cappedResults = rawResults.length > 3500 ? rawResults.slice(0, 3500) + '\n…(truncated)' : rawResults;
         const resultsBlock = toolResults.length > 0
-          ? `\n\nSearch results:\n${toolResults.join('\n\n')}`
+          ? `\n\nSearch results:\n${cappedResults}`
           : '';
 
         // Build a clean history: prior committed turns (user+assistant text only —

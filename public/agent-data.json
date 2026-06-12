@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "localagent",
+      "title": "Local Agent",
+      "description": "Creating an Agent for this blog site using a Local LLM model",
+      "date": "2026-06-12",
+      "categories": [
+        "AI"
+      ],
+      "tags": "webllm, webgpu, llama, react, agents"
+    },
+    {
       "slug": "claudecowork1",
       "title": "Claude Cowork (Part 1)",
       "description": "Using the page-line-summary skill in Claude Cowork to generate a deposition summary from a transcript PDF",
@@ -2482,5 +2492,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-06-12T17:07:06.407Z"
+  "generatedAt": "2026-06-12T17:47:20.400Z"
 }
