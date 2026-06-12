@@ -38,7 +38,7 @@ export function getPostsByCategory(category: string, posts: PostMeta[]): PostMet
   const c = category.toLowerCase();
   return posts
     .filter(p => p.categories.some(cat => cat.toLowerCase() === c))
-    .slice(0, 15);
+    .slice(0, 10);
 }
 
 export const TOOL_DEFINITIONS = [
@@ -82,7 +82,7 @@ export const TOOL_DEFINITIONS = [
     type: 'function' as const,
     function: {
       name: 'get_post_content',
-      description: 'Fetch the full markdown content of a specific blog post by its slug. Use this when the user asks about the details or content of a particular post.',
+      description: 'Fetch the full markdown content of a specific blog post by its slug. Use ONLY when the user explicitly asks what a post contains or asks for a summary. Never call this to list or browse posts.',
       parameters: {
         type: 'object',
         properties: {
@@ -110,7 +110,7 @@ export const TOOL_DEFINITIONS = [
     type: 'function' as const,
     function: {
       name: 'web_search',
-      description: 'Search the web for current information, documentation, or technical context beyond what is on the blog. Use this when the user asks about topics not covered by blog posts, or needs up-to-date information.',
+      description: 'Search the web for information not covered by the blog. Use only as a last resort — after checking blog posts first — or when the user explicitly needs up-to-date external information.',
       parameters: {
         type: 'object',
         properties: {

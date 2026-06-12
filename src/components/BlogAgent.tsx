@@ -145,13 +145,13 @@ export default function BlogAgent() {
       case 'search_posts': {
         const results = searchPosts(args.query ?? '', posts);
         return results.length
-          ? JSON.stringify(results.map(p => ({ slug: p.slug, url: `/posts/${p.slug}/`, title: p.title, description: p.description, categories: p.categories })))
+          ? JSON.stringify(results.map(p => ({ url: `/posts/${p.slug}/`, title: p.title, description: p.description })))
           : 'No matching posts found.';
       }
       case 'get_posts_by_category': {
         const results = getPostsByCategory(args.category ?? '', posts);
         return results.length
-          ? JSON.stringify(results.map(p => ({ slug: p.slug, url: `/posts/${p.slug}/`, title: p.title, description: p.description })))
+          ? JSON.stringify(results.map(p => ({ url: `/posts/${p.slug}/`, title: p.title, description: p.description })))
           : `No posts in category "${args.category}".`;
       }
       case 'list_categories': {
@@ -242,7 +242,7 @@ export default function BlogAgent() {
       // use a system message at all — all context rides in the user message instead.
       const isOnPostPage = !!postMatch;
       const currentSlug = postMatch?.[1] ?? '';
-      const contextHint = `[You are the AI assistant for Neil Haddley's developer blog. Neil specialises in Azure, Business Central, Power Platform, AI, and web development. Current page: ${pageContext}. CRITICAL RULES (follow in priority order): (1) POST PAGE SUMMARISE RULE — HIGHEST PRIORITY: If the current page is a post (slug shown above) AND the user asks to summarise, explain, describe, or asks what this post is about, call get_post_content with that exact slug immediately. Do NOT call get_posts_by_category, search_posts, or any other tool. (2) NEVER call get_post_content just to list or browse posts — only when the user asks about a specific post's content. (3) NEVER name, list, or link to any post without first calling search_posts or get_posts_by_category — you have no built-in knowledge of which posts exist. (4) For category questions ("Java posts", "Azure posts"), use get_posts_by_category. For keyword queries, use search_posts. (5) NEVER repeat the same tool call twice. Use results already returned to answer. (6) Format post links as [Name](url) using the exact url from results — do NOT prepend any domain. Be concise.]`;
+      const contextHint = `[You are the AI assistant for Neil Haddley's developer blog (${posts.length} posts, 24 categories). Neil specialises in Azure, Business Central, Power Platform, AI, and web development. Current page: ${pageContext}. RULES (priority order): (1) On a post page: if the user asks to summarise, explain, or asks about this post — call get_post_content with the slug above immediately. Do not search. (2) For category questions ("Java posts", "Azure posts"), use get_posts_by_category. For keyword queries, use search_posts. Never name or link a post without calling one of these first. (3) Never call get_post_content to browse or list — only when reading a specific post. (4) Never repeat the same tool call in one turn. (5) Format every post link as [Name](url) using the exact url returned — no domain prefix. Be concise.]`;
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const apiMsgs: any[] = [
@@ -412,9 +412,13 @@ export default function BlogAgent() {
         turnMsgs.push(assistantMsg);
       }
 
-      // Commit the full turn (user + tool chain + assistant) to the ref
-      // so the next turn has complete context.
-      apiHistoryRef.current = [...apiHistoryRef.current, ...turnMsgs];
+      // Commit only user + assistant text to history — strip tool_calls and role:'tool'
+      // messages to prevent unbounded context growth across long conversations.
+      const cleanTurn = turnMsgs.filter(m =>
+        m.role === 'user' ||
+        (m.role === 'assistant' && typeof m.content === 'string' && m.content)
+      );
+      apiHistoryRef.current = [...apiHistoryRef.current, ...cleanTurn];
     } catch (err) {
       setMessages(prev => [...prev, {
         role: 'assistant',

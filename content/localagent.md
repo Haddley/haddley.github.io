@@ -39,11 +39,11 @@ The agent has six tools:
 | Tool | What it does |
 |------|-------------|
 | `search_posts` | Keyword search across titles, descriptions, and tags |
-| `get_posts_by_category` | All posts in a named category |
+| `get_posts_by_category` | All posts in a named category (up to 10) |
 | `list_categories` | All categories ranked by post count |
-| `get_post_content` | Full Markdown content of a specific post |
+| `get_post_content` | Full content of a specific post — only when the user asks for a summary or details |
 | `navigate_to_post` | Push the browser to a post via the Next.js router |
-| `web_search` | Live web search via Jina AI (optional) |
+| `web_search` | Live web search via Jina AI — last resort for topics not covered by the blog |
 
 ![](assets/images/localagent/Screenshot-2026-06-12-at-12.26.11-PM.png)
 *I asked "Any Java related posts?" and the agent called get_posts_by_category*
