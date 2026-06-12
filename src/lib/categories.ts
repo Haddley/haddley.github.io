@@ -218,6 +218,8 @@ export function getCategoryByName(name: string): Category | undefined {
 }
 
 export function categoryNameToSlug(name: string): string {
+  const found = getCategoryByName(name);
+  if (found) return found.slug;
   return name.toLowerCase().replace(/\s+/g, '-').replace(/&/g, '');
 }
 

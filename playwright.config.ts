@@ -8,11 +8,12 @@ export default defineConfig({
     workers: 1,
     reporter: 'list',
     use: {
+        baseURL: 'http://localhost:4567',
         headless: true,
         ...devices['Desktop Chrome'],
     },
     webServer: {
-        command: 'npx serve public -l 4567 --no-clipboard',
+        command: 'npx serve out -l 4567 --no-clipboard',
         url: 'http://localhost:4567',
         reuseExistingServer: !process.env.CI,
         timeout: 15_000,

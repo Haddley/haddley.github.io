@@ -4,19 +4,19 @@ description: "Creating an Agent for this blog site using a Local LLM model"
 date: "2026-06-12"
 categories: ["AI"]
 image: "/assets/images/localagent/webllm-local-agent.svg"
-tags: "webllm, webgpu, llama, react, agents"
+tags: "webllm, webgpu, qwen, react, agents"
 hidden: false
 slug: "localagent"
 ---
 
 # Adding a Local AI Agent to This Blog
 
-I’ve added a conversational AI assistant to this blog — you’ll see the chat bubble in the bottom-right corner of every page. It works entirely in your browser, with no backend and no API fees, using WebLLM to run a quantized Llama 3.1 model locally via [WebLLM](https://github.com/mlc-ai/web-llm). A modern GPU is required for good performance: on an M-series Mac or a recent dedicated GPU, responses take just a few seconds; on older or integrated graphics, it will be noticeably slower.
+I’ve added a conversational AI assistant to this blog — you’ll see the chat bubble in the bottom-right corner of every page. It works entirely in your browser, with no backend and no API fees, using WebLLM to run a quantized Qwen2.5 model locally via [WebLLM](https://github.com/mlc-ai/web-llm). A modern GPU is required for good performance: on an M-series Mac or a recent dedicated GPU, responses take just a few seconds; on older or integrated graphics, it will be noticeably slower.
 
 
 ## Model
 
-I used **Hermes-3-Llama-3.1-8B-q4f16_1-MLC** — a Nous Research fine-tune of Meta's Llama 3.1 8B, quantised to 4-bit weights. It was tuned for function-calling, which drives the tool loop. The weights are about 2 GB, downloaded once and cached in the browser. WebGPU is required, so it works in Chrome and Edge on GPU-enabled devices.
+I used **Qwen2.5-7B-Instruct-q4f16_1-MLC** — Alibaba's Qwen2.5 7B Instruct model, quantised to 4-bit weights. The weights are about 4 GB, downloaded once and cached in the browser. WebGPU is required, so it works in Chrome and Edge on GPU-enabled devices.
 
 ## Architecture
 
@@ -25,7 +25,7 @@ The agent is a React component (`BlogAgent.tsx`) in the Next.js layout, so it ap
 ```typescript
 const { CreateMLCEngine } = await import('@mlc-ai/web-llm');
 const engine = await CreateMLCEngine(
-  'Hermes-3-Llama-3.1-8B-q4f16_1-MLC',
+  'Qwen2.5-7B-Instruct-q4f16_1-MLC',
   { initProgressCallback: ({ progress, text }) => setLoadState(...) },
   { context_window_size: 8192 },
 );
@@ -61,7 +61,7 @@ The agent has six tools:
 
 Each conversation turn is a list of messages. The user sends a message; the model replies either with text (finished) or with a `tool_calls` response naming a function to run. The tool result is appended as a `role: 'tool'` message, and the model is called again. This repeats until the model stops calling tools and produces a text answer.
 
-Hermes-3 has a quirk: when tools are present in the request it sometimes returns `null` text content even on a `stop` finish, keeping itself in "tool mode". To work around this I used a two-phase design. Phase 1 runs with tools enabled and collects all results. Phase 2 makes a clean call with no tools at all, embedding the collected results as plain text in the user message — which always produces a text response.
+Because WebLLM's native tools API only supports a fixed set of Hermes models, I implemented function calling via prompt engineering. Tool definitions are injected into a system message as JSON inside `<tools>` tags. When the model needs to call a tool it outputs a `<tool_call>` block; the component parses that, executes the tool, and feeds the result back as a `<tool_response>` user message. The loop repeats until the model produces a plain-text answer with no tool calls.
 
 ![](assets/images/localagent/Screenshot-2026-06-12-at-12.36.05-PM.png)
 *On a post page I asked the agent to summarise — it called get_post_content with the current slug*
@@ -76,5 +76,5 @@ Hermes-3 has a quirk: when tools are present in the request it sometimes returns
 
 - [WebLLM — In-browser LLM inference with WebGPU](https://github.com/mlc-ai/web-llm)
 - [MLC AI — Machine Learning Compilation](https://mlc.ai)
-- [Hermes-3-Llama-3.1-8B on Hugging Face](https://huggingface.co/NousResearch/Hermes-3-Llama-3.1-8B)
+- [Qwen2.5-7B-Instruct on Hugging Face](https://huggingface.co/Qwen/Qwen2.5-7B-Instruct)
 - [WebGPU API — MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGPU_API)

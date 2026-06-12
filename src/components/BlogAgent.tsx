@@ -12,7 +12,7 @@ import {
   type AgentData,
 } from '@/lib/agent-tools';
 
-const MODEL_ID = 'Hermes-3-Llama-3.1-8B-q4f16_1-MLC';
+const MODEL_ID = 'Qwen2.5-7B-Instruct-q4f16_1-MLC';
 const NAVY = '#1a2b4b';
 const JINA_KEY = process.env.NEXT_PUBLIC_JINA_API_KEY ?? '';
 
@@ -21,6 +21,54 @@ const JINA_KEY = process.env.NEXT_PUBLIC_JINA_API_KEY ?? '';
 const ACTIVE_TOOLS = JINA_KEY
   ? TOOL_DEFINITIONS
   : TOOL_DEFINITIONS.filter(t => t.function.name !== 'web_search');
+
+type ToolDef = typeof ACTIVE_TOOLS[number];
+
+function buildToolSystemPrompt(tools: ToolDef[], postCount: number): string {
+  const defs = tools
+    .map(t => JSON.stringify({ name: t.function.name, description: t.function.description, parameters: t.function.parameters }))
+    .join('\n');
+  return `You are the AI assistant for Neil Haddley's developer blog (${postCount} posts, 24 categories). Neil specialises in Azure, Business Central, Power Platform, AI, and web development.
+
+You have access to these tools:
+<tools>
+${defs}
+</tools>
+
+STRICT OUTPUT RULES:
+1. When you need to call a tool, output EXACTLY this format — the opening tag, one line of JSON, the closing tag, and NOTHING else before or after:
+<tool_call>
+{"name": "tool_name", "arguments": {"arg": "value"}}
+</tool_call>
+2. Call ONE tool per response. Never output two <tool_call> blocks.
+3. Never add any text, explanation, or preamble before a <tool_call> block.
+4. After receiving <tool_response> results, answer in plain text only — no <tool_call> tags.
+5. Format every post link as [Title](url).
+
+Example — user asks "Any Python posts?":
+<tool_call>
+{"name": "get_posts_by_category", "arguments": {"category": "Python"}}
+</tool_call>`;
+}
+
+function parseToolCalls(text: string): Array<{ name: string; arguments: Record<string, string> }> {
+  // Match both properly closed blocks and unclosed blocks (model sometimes omits </tool_call>)
+  const re = /<tool_call>\s*([\s\S]*?)\s*(?:<\/tool_call>|$)/g;
+  const out: Array<{ name: string; arguments: Record<string, string> }> = [];
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(text)) !== null) {
+    const candidate = m[1].trim();
+    if (!candidate) continue;
+    // Only take the first JSON object (stops at the second <tool_call> if present)
+    const jsonEnd = candidate.indexOf('\n<tool_call>');
+    const jsonStr = jsonEnd !== -1 ? candidate.slice(0, jsonEnd) : candidate;
+    try {
+      const parsed = JSON.parse(jsonStr);
+      if (typeof parsed.name === 'string') out.push({ name: parsed.name, arguments: parsed.arguments ?? {} });
+    } catch { /* skip malformed blocks */ }
+  }
+  return out;
+}
 
 type LoadStatus = 'idle' | 'loading' | 'ready' | 'unsupported' | 'error';
 
@@ -130,7 +178,7 @@ export default function BlogAgent() {
           initProgressCallback: ({ progress, text }) =>
             setLoadState({ status: 'loading', progress: Math.round(progress * 100), text }),
         },
-        { context_window_size: 8192 },
+        {},
       );
       engineRef.current = engine;
       setLoadState({ status: 'ready', progress: 100, text: '' });
@@ -237,59 +285,36 @@ export default function BlogAgent() {
         pageContext = 'categories overview';
       }
 
-      // Hermes function-calling models forbid ANY system message when tools are present,
-      // including on non-tool rounds (the message array is shared). To be safe we never
-      // use a system message at all — all context rides in the user message instead.
       const isOnPostPage = !!postMatch;
       const currentSlug = postMatch?.[1] ?? '';
-      const contextHint = `[You are the AI assistant for Neil Haddley's developer blog (${posts.length} posts, 24 categories). Neil specialises in Azure, Business Central, Power Platform, AI, and web development. Current page: ${pageContext}. RULES (priority order): (1) On a post page: if the user asks to summarise, explain, or asks about this post — call get_post_content with the slug above immediately. Do not search. (2) For category questions ("Java posts", "Azure posts"), use get_posts_by_category. For keyword queries, use search_posts. Never name or link a post without calling one of these first. (3) Never call get_post_content to browse or list — only when reading a specific post. (4) Never repeat the same tool call in one turn. (5) Format every post link as [Name](url) using the exact url returned — no domain prefix. Be concise.]`;
+      const contextHint = `[Current page: ${pageContext}. RULES (priority order): (1) On a post page: if the user asks to summarise, explain, or asks about this post — call get_post_content with slug "${currentSlug}" immediately. Do not search. (2) For category questions use get_posts_by_category; for keyword queries use search_posts. Never name or link a post without calling a tool first. (3) Never call get_post_content to browse or list — only when reading a specific post. (4) Never repeat the same tool call in one turn. Be concise.]`;
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const apiMsgs: any[] = [
+        { role: 'system', content: buildToolSystemPrompt(ACTIVE_TOOLS, posts.length) },
         ...apiHistoryRef.current,
         { role: 'user', content: `${contextHint}\n\n${userText}` },
       ];
-
-      // History stores the clean user message (no context hint) so hints don't
-      // accumulate in previous turns on subsequent requests.
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const turnMsgs: any[] = [userMsg];
 
-      // Two-phase agent design:
-      // Phase 1 — tool gathering: run up to MAX_TOOL_ROUNDS with tools enabled.
-      //   Hermes only supports tool_choice:'auto', so we can't force a text response
-      //   while tools are present. Collect all results; if the model gives text
-      //   directly (no tool calls needed) we use it and skip phase 2.
-      // Phase 2 — text generation: one clean call with NO tools and NO role:'tool'
-      //   messages. Tool results are embedded as text in the user message. This
-      //   keeps the model out of function-calling mode so content is never null.
-      const MAX_TOOL_ROUNDS = 3;
-      const toolResults: string[] = [];
+      const MAX_TOOL_ROUNDS = 4;
       let finalContent = '';
-      // Dedup: track tool+args combos already executed this turn
       const calledThisTurn = new Set<string>();
       let contentFetchCount = 0;
 
       console.group(`[BlogAgent] turn — "${userText}"`);
       console.log('history depth:', apiHistoryRef.current.length, '| page:', pageContext);
 
-      // ── Phase 1: tool gathering ──
+      // Prompt-based tool loop: parse <tool_call> blocks from plain text output.
+      // No WebLLM tools API needed — works with any instruction-tuned model.
       for (let round = 0; round < MAX_TOOL_ROUNDS; round++) {
         if (abortRef.current) { console.log('aborted before round', round); break; }
 
         console.log(`round ${round} — sending ${apiMsgs.length} msgs`);
         let resp;
         try {
-          resp = await engine.chat.completions.create({
-            // Fresh copy: WebLLM mutates the array (.unshift its system prompt).
-            messages: apiMsgs.map(m =>
-              m.role === 'assistant' && typeof m.content !== 'string'
-                ? { ...m, content: '' }
-                : m
-            ),
-            tools: ACTIVE_TOOLS,
-            tool_choice: 'auto',
-          });
+          resp = await engine.chat.completions.create({ messages: [...apiMsgs] });
         } catch (err: unknown) {
           if (err instanceof Error && (err.name === 'AbortError' || err.message.toLowerCase().includes('interrupt'))) {
             console.log('interrupted at round', round);
@@ -298,109 +323,76 @@ export default function BlogAgent() {
           throw err;
         }
 
-        const choice = resp.choices[0];
-        console.log(`round ${round} — finish_reason: ${choice.finish_reason}`, choice.message);
+        const rawContent = resp.choices[0].message.content ?? '';
+        console.log(`round ${round} — raw:`, rawContent.slice(0, 300));
 
-        if (choice.finish_reason === 'stop' && choice.message.content?.trim()) {
-          // Model answered directly without calling tools — use immediately, skip phase 2
-          finalContent = choice.message.content.trim();
-          console.log('direct text response (no tools):', finalContent);
+        // Strip preamble text before the first <tool_call> — model sometimes narrates first
+        const toolCallStart = rawContent.indexOf('<tool_call>');
+        const contentForParsing = toolCallStart > 0 ? rawContent.slice(toolCallStart) : rawContent;
+        const toolCalls = parseToolCalls(contentForParsing);
+        if (!toolCalls.length) {
+          // No tool calls — clean up any stray tags and use as the final answer
+          finalContent = rawContent
+            .replace(/<tool_call>[\s\S]*?<\/tool_call>/g, '')
+            .replace(/https?:\/\/[^\s/)]+(\/(posts|categories)[^\s)]*)/g, '$1')
+            .trim();
+          console.log('text response:', finalContent.slice(0, 200));
           break;
         }
 
-        if (choice.finish_reason === 'tool_calls' && !choice.message.tool_calls?.length) {
-          // Model signalled tool_calls but emitted none — inject a context-aware nudge and retry
-          console.log('empty tool_calls — injecting nudge');
-          const nudge = isOnPostPage && currentSlug
-            ? `Call get_post_content with slug "${currentSlug}" to read this post's content.`
-            : 'Call the appropriate tool (search_posts or get_posts_by_category) to find the information before answering.';
-          apiMsgs.push({ role: 'user', content: nudge });
-          continue;
-        }
+        const names = toolCalls.map(tc =>
+          tc.name === 'web_search' ? '🌐 web search' : `🔍 ${tc.name.replace(/_/g, ' ')}`
+        ).join(', ');
+        setToolStatus(`${names}…`);
+        apiMsgs.push({ role: 'assistant', content: rawContent });
 
-        if (choice.finish_reason === 'tool_calls' && choice.message.tool_calls?.length) {
-          const names = choice.message.tool_calls.map(tc =>
-            tc.function.name === 'web_search' ? '🌐 web search' : `🔍 ${tc.function.name.replace(/_/g, ' ')}`
-          ).join(', ');
-          setToolStatus(`${names}…`);
+        const resultParts: string[] = [];
+        for (const tc of toolCalls) {
+          if (abortRef.current) break;
 
-          apiMsgs.push(choice.message);
-          turnMsgs.push(choice.message);
-
-          for (const tc of choice.message.tool_calls) {
-            if (abortRef.current) break;
-            let args: Record<string, string> = {};
-            try { args = JSON.parse(tc.function.arguments); } catch { /* empty args */ }
-
-            // Skip duplicate tool calls within the same turn
-            const callKey = `${tc.function.name}:${JSON.stringify(args)}`;
-            if (calledThisTurn.has(callKey)) {
-              console.log(`  skipping duplicate: ${tc.function.name}`, args);
-              const skipMsg = { role: 'tool', tool_call_id: tc.id, content: '(duplicate call skipped)' };
-              apiMsgs.push(skipMsg);
-              turnMsgs.push(skipMsg);
+          const callKey = `${tc.name}:${JSON.stringify(tc.arguments)}`;
+          if (calledThisTurn.has(callKey)) {
+            console.log(`  skipping duplicate: ${tc.name}`);
+            resultParts.push(`(duplicate ${tc.name} skipped)`);
+            continue;
+          }
+          if (tc.name === 'get_post_content') {
+            if (contentFetchCount >= 2) {
+              resultParts.push('(content fetch limit reached — summarise from results already available)');
               continue;
             }
-            // Cap get_post_content at 2 fetches per turn to avoid context overflow
-            if (tc.function.name === 'get_post_content') {
-              if (contentFetchCount >= 2) {
-                console.log('  skipping get_post_content (cap reached)');
-                const capMsg = { role: 'tool', tool_call_id: tc.id, content: '(content fetch limit reached — summarise from search results already available)' };
-                apiMsgs.push(capMsg);
-                turnMsgs.push(capMsg);
-                continue;
-              }
-              contentFetchCount++;
-            }
-            calledThisTurn.add(callKey);
-
-            console.log(`  tool: ${tc.function.name}`, args);
-            gaEvent('agent_tool_called', { tool: tc.function.name, page: pathname });
-            const result = await executeTool(tc.function.name, args);
-            console.log(`  result (${result.length} chars):`, result.slice(0, 300));
-            toolResults.push(result);
-            const toolMsg = { role: 'tool', tool_call_id: tc.id, content: result };
-            apiMsgs.push(toolMsg);
-            turnMsgs.push(toolMsg);
+            contentFetchCount++;
           }
-        } else {
-          break; // unexpected finish_reason — stop tool loop
+          calledThisTurn.add(callKey);
+
+          console.log(`  tool: ${tc.name}`, tc.arguments);
+          gaEvent('agent_tool_called', { tool: tc.name, page: pathname });
+          const result = await executeTool(tc.name, tc.arguments);
+          console.log(`  result (${result.length} chars):`, result.slice(0, 300));
+          resultParts.push(result);
         }
+
+        apiMsgs.push({
+          role: 'user',
+          content: `<tool_response>\n${resultParts.join('\n\n')}\n</tool_response>\nNow answer the user's question in plain text using these results.`,
+        });
       }
 
-      // ── Phase 2: clean text generation ──
-      // Only needed if phase 1 didn't produce a direct text answer.
+      // If the loop exhausted without producing a text answer, do one final call
       if (!finalContent && !abortRef.current) {
         setToolStatus('');
-        const rawResults = toolResults.join('\n\n');
-        // Cap combined results at ~3500 chars to stay within the 8192-token context window
-        const cappedResults = rawResults.length > 3500 ? rawResults.slice(0, 3500) + '\n…(truncated)' : rawResults;
-        const resultsBlock = toolResults.length > 0
-          ? `\n\nSearch results:\n${cappedResults}`
-          : '';
-
-        // Build a clean history: prior committed turns (user+assistant text only —
-        // no role:'tool' or tool_call assistant messages) plus this turn's user query.
-        const cleanHistory = apiHistoryRef.current.filter(m =>
-          m.role === 'user' ||
-          (m.role === 'assistant' && typeof m.content === 'string' && m.content)
-        );
-        const cleanMessages = [
-          ...cleanHistory,
-          { role: 'user', content: `${contextHint}\n\n${userText}${resultsBlock}` },
-        ];
-
-        console.log(`phase 2 — clean text call, ${cleanMessages.length} msgs, ${toolResults.length} results embedded`);
+        console.log('loop exhausted — final nudge');
         try {
-          const finalResp = await engine.chat.completions.create({ messages: cleanMessages });
+          const finalResp = await engine.chat.completions.create({ messages: [...apiMsgs] });
           const raw = finalResp.choices[0].message.content?.trim() ?? '';
-          // Strip any hallucinated domain from internal paths the model invents
-          finalContent = raw.replace(/https?:\/\/[^\s/)]+(\/(posts|categories)[^\s)]*)/g, '$1');
-          if (finalContent !== raw) console.log('stripped hallucinated domains from response');
-          console.log('phase 2 response:', finalContent || '(empty)');
+          finalContent = raw
+            .replace(/<tool_call>[\s\S]*?<\/tool_call>/g, '')
+            .replace(/https?:\/\/[^\s/)]+(\/(posts|categories)[^\s)]*)/g, '$1')
+            .trim();
+          console.log('nudge response:', finalContent.slice(0, 200));
         } catch (err: unknown) {
           if (!(err instanceof Error && (err.name === 'AbortError' || err.message.toLowerCase().includes('interrupt')))) throw err;
-          console.log('phase 2 interrupted');
+          console.log('nudge interrupted');
         }
       }
 
@@ -412,13 +404,8 @@ export default function BlogAgent() {
         turnMsgs.push(assistantMsg);
       }
 
-      // Commit only user + assistant text to history — strip tool_calls and role:'tool'
-      // messages to prevent unbounded context growth across long conversations.
-      const cleanTurn = turnMsgs.filter(m =>
-        m.role === 'user' ||
-        (m.role === 'assistant' && typeof m.content === 'string' && m.content)
-      );
-      apiHistoryRef.current = [...apiHistoryRef.current, ...cleanTurn];
+      // Commit user + final assistant text only — no tool call/response messages
+      apiHistoryRef.current = [...apiHistoryRef.current, ...turnMsgs];
     } catch (err) {
       setMessages(prev => [...prev, {
         role: 'assistant',
@@ -477,7 +464,7 @@ export default function BlogAgent() {
             <div>
               <div style={{ fontWeight: 600, fontSize: 14 }}>Blog AI Assistant</div>
               <div style={{ fontSize: 11, opacity: 0.6, marginTop: 2 }}>
-                {loadState.status === 'ready' ? 'Hermes-3 · Llama 3.1 8B · local WebGPU' : 'Powered by WebLLM'}
+                {loadState.status === 'ready' ? 'Qwen2.5 · 7B Instruct · local WebGPU' : 'Powered by WebLLM'}
               </div>
             </div>
             <button
