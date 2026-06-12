@@ -27,6 +27,9 @@ The agent offers four model sizes, all quantised to 4-bit weights and cached in 
 
 The 3B is the default — a good balance of speed and reliability for multi-step tool use. Larger models give better reasoning quality; the 0.5B and 1.5B are available for faster loads on lower-end hardware.
 
+![](assets/images/localagent/Screenshot-2026-06-12-at-5.36.49-PM.png)
+*The model selector showing all four options, with Qwen2.5 3B selected as the default*
+
 ## Architecture
 
 The agent is a React component (`BlogAgent.tsx`) in the Next.js layout, so it appears on every page. Tool definitions and helper functions live in `agent-tools.ts`. Post metadata is pre-built at deploy time into `agent-data.json`, which the component fetches when the panel opens.
