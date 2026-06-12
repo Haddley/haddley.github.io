@@ -69,6 +69,9 @@ Hermes-3 has a quirk: when tools are present in the request it sometimes returns
 ![](assets/images/localagent/Screenshot-2026-06-12-at-12.38.33-PM.png)
 *The agent summarised the post content*
 
+![](assets/images/localagent/Screenshot-2026-06-12-at-1.32.52-PM.png)
+*I clicked "Summarise all Phaser posts" from a Java post page and the agent searched and returned summaries of each one*
+
 ## References
 
 - [WebLLM — In-browser LLM inference with WebGPU](https://github.com/mlc-ai/web-llm)
