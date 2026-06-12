@@ -42,16 +42,6 @@
       "tags": "power-apps, dataverse, model-driven-app, copilot, topics"
     },
     {
-      "slug": "copilotcowork1",
-      "title": "Copilot Cowork (Part 1)",
-      "description": "Legal Skill",
-      "date": "2026-06-01",
-      "categories": [
-        "AI"
-      ],
-      "tags": "claude-code, ai-agent, anthropic, agentic-coding, deepseek"
-    },
-    {
       "slug": "picade",
       "title": "Picade Console",
       "description": "Building and setting up the Pimoroni Picade mini arcade cabinet with RetroPie on a Raspberry Pi",
@@ -60,16 +50,6 @@
         "IOT"
       ],
       "tags": "raspberry-pi, retropie, pimoroni, arcade, emulation"
-    },
-    {
-      "slug": "powerapps8",
-      "title": "Power Platform Word Template",
-      "description": "Populate a Word Template from a Power App",
-      "date": "2026-05-27",
-      "categories": [
-        "Power Platform"
-      ],
-      "tags": "power-apps, dataverse, model-driven-app, status-reason, workflow"
     },
     {
       "slug": "powerapps7",
@@ -216,28 +196,6 @@
       "tags": "power-automate, azure-ai-foundry, ai-integration, workflow"
     },
     {
-      "slug": "azuresearchvector",
-      "title": "Azure Search",
-      "description": "Vector Search (Part 2)",
-      "date": "2026-02-09",
-      "categories": [
-        "AI",
-        "Azure"
-      ],
-      "tags": "azure-ai-search, vector-search, embeddings, rag"
-    },
-    {
-      "slug": "azuresearch",
-      "title": "Azure Search",
-      "description": "Fulltext Search (Part 1)",
-      "date": "2026-02-09",
-      "categories": [
-        "AI",
-        "Azure"
-      ],
-      "tags": "azure-ai-search, full-text-search, cognitive-search"
-    },
-    {
       "slug": "claudecode8",
       "title": "Claude Code (Part 8)",
       "description": "Vibe Coding",
@@ -246,47 +204,6 @@
         "AI"
       ],
       "tags": "claude-code, vibe-coding, anthropic, ai-coding"
-    },
-    {
-      "slug": "vibecoding4",
-      "title": "Vibe Coding (Part 4)",
-      "description": "Deploying to Docker",
-      "date": "2026-01-30",
-      "categories": [
-        "AI",
-        "Azure"
-      ],
-      "tags": "vibe-coding, docker, deployment, ai-coding"
-    },
-    {
-      "slug": "vibecoding3",
-      "title": "Vibe Coding (Part 3)",
-      "description": "Unit Tests and Integration Tests",
-      "date": "2026-01-30",
-      "categories": [
-        "AI"
-      ],
-      "tags": "vibe-coding, unit-tests, integration-tests, ai-coding"
-    },
-    {
-      "slug": "vibecoding2",
-      "title": "Vibe Coding (Part 2)",
-      "description": "Proof of Concept",
-      "date": "2026-01-29",
-      "categories": [
-        "AI"
-      ],
-      "tags": "vibe-coding, chatgpt, proof-of-concept, ai-coding"
-    },
-    {
-      "slug": "vibecoding1",
-      "title": "Vibe Coding (Part 1)",
-      "description": "Learn to Code with ChatGPT",
-      "date": "2026-01-29",
-      "categories": [
-        "AI"
-      ],
-      "tags": "vibe-coding, chatgpt, ai-coding, beginners"
     },
     {
       "slug": "claudecode7",
@@ -530,67 +447,6 @@
       "tags": "visual-basic, asp-net, entity-framework, database-first"
     },
     {
-      "slug": "taxsetup",
-      "title": "Tax Setup",
-      "description": "Tax Setup",
-      "date": "2025-09-20",
-      "categories": [
-        "Business Central"
-      ],
-      "tags": "tax-setup, vat, business-central, finance"
-    },
-    {
-      "slug": "streamlit",
-      "title": "Streamlit",
-      "description": "Streamlit",
-      "date": "2025-09-20",
-      "categories": [
-        "AI",
-        "Python"
-      ],
-      "tags": "streamlit, dashboard, data-science"
-    },
-    {
-      "slug": "sprint-apps1",
-      "title": "Azure Spring Apps (Part 1)",
-      "description": "hello-world-app",
-      "date": "2025-09-20",
-      "categories": [
-        "Java"
-      ],
-      "tags": "azure, spring, ai"
-    },
-    {
-      "slug": "sentenceembeddings",
-      "title": "Sentence Embeddings",
-      "description": "Sentence Embeddings",
-      "date": "2025-09-20",
-      "categories": [
-        "AI"
-      ],
-      "tags": "embeddings, sentence-transformers, nlp, semantic-search"
-    },
-    {
-      "slug": "page141",
-      "title": "Java Spring Boot (Spare)",
-      "description": "Spring Data JPA",
-      "date": "2025-09-20",
-      "categories": [
-        "Java"
-      ],
-      "tags": "spring-boot, spring-data-jpa, postgresql"
-    },
-    {
-      "slug": "mssqlserver3",
-      "title": "Microsoft SQL Server (Part 3)",
-      "description": "A Node, React and MS SQL Server App.",
-      "date": "2025-09-20",
-      "categories": [
-        "SQL"
-      ],
-      "tags": "sql-server, node, react, full-stack"
-    },
-    {
       "slug": "microsoftdynamics365appforoutlook",
       "title": "Microsoft Dynamics 365 App for Outlook",
       "description": "References",
@@ -600,29 +456,6 @@
         "Power Platform"
       ],
       "tags": "outlook, set-regarding, dynamics-365, crm"
-    },
-    {
-      "slug": "machinelearningwip",
-      "title": "Machine Learning (WIP)",
-      "description": "WIP",
-      "date": "2025-09-20",
-      "categories": [
-        "AI",
-        "Angular",
-        "Mobile"
-      ],
-      "tags": "machine-learning, git, github, python"
-    },
-    {
-      "slug": "hubspotquotetemplate",
-      "title": "HubSpot Quote Template",
-      "description": "Quote Template",
-      "date": "2025-09-20",
-      "categories": [
-        "Angular",
-        "TypeScript"
-      ],
-      "tags": "hubspot, quote-template, crm"
     },
     {
       "slug": "dynamicssales4",
@@ -664,27 +497,6 @@
         "AI"
       ],
       "tags": "copilot-studio, business-central, customer-service, ai-integration"
-    },
-    {
-      "slug": "chatgpt",
-      "title": "Fine Tuning",
-      "description": "Fine Tuning",
-      "date": "2025-09-20",
-      "categories": [
-        "AI"
-      ],
-      "tags": "chatgpt, fine-tuning, openai, gpt-4"
-    },
-    {
-      "slug": "businesscentralintegrationtables",
-      "title": "Business Central (Part 25) Integration Tables",
-      "description": "Integration Tables",
-      "date": "2025-09-20",
-      "categories": [
-        "Business Central",
-        "Microsoft Dynamics"
-      ],
-      "tags": "integration-tables, dataverse, business-central, al-language"
     },
     {
       "slug": "angular1",
@@ -2670,5 +2482,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-06-12T16:50:37.002Z"
+  "generatedAt": "2026-06-12T17:07:06.407Z"
 }

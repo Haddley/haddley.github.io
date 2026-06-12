@@ -26,7 +26,7 @@ async function run() {
   for (const file of mdFiles) {
     const raw = await readFile(join(CONTENT_DIR, file), 'utf-8');
     const { data, content } = matter(raw);
-    if (data.visible === false) continue;
+    if (data.visible === false || data.hidden === true || data.hidden === 'true') continue;
 
     const slug = data.slug || file.replace(/\.md$/, '');
 
