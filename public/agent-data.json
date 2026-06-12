@@ -1,0 +1,2674 @@
+{
+  "posts": [
+    {
+      "slug": "claudecowork1",
+      "title": "Claude Cowork (Part 1)",
+      "description": "Using the page-line-summary skill in Claude Cowork to generate a deposition summary from a transcript PDF",
+      "date": "2026-06-04",
+      "categories": [
+        "AI"
+      ],
+      "tags": "claude-code, ai-agent, anthropic, page-line-summary, legal, litigation"
+    },
+    {
+      "slug": "claudecode14",
+      "title": "Claude Code (Part 14)",
+      "description": "Using the page-line-summary skill in Claude Code to generate a deposition summary from a transcript PDF",
+      "date": "2026-06-04",
+      "categories": [
+        "AI"
+      ],
+      "tags": "claude-code, ai-agent, anthropic, page-line-summary, legal, litigation"
+    },
+    {
+      "slug": "claudecode13",
+      "title": "Claude Code (Part 13)",
+      "description": "Building a Claude Code skill that generates Dataverse solution XML for Power Platform",
+      "date": "2026-06-03",
+      "categories": [
+        "AI",
+        "Power Platform"
+      ],
+      "tags": "claude-code, ai-agent, anthropic, agentic-coding, powerplatform, dataverse"
+    },
+    {
+      "slug": "powerapps9",
+      "title": "Customize Copilot chat",
+      "description": "Microsoft Copilot for Model-Driven Power Apps",
+      "date": "2026-06-01",
+      "categories": [
+        "Power Platform"
+      ],
+      "tags": "power-apps, dataverse, model-driven-app, copilot, topics"
+    },
+    {
+      "slug": "copilotcowork1",
+      "title": "Copilot Cowork (Part 1)",
+      "description": "Legal Skill",
+      "date": "2026-06-01",
+      "categories": [
+        "AI"
+      ],
+      "tags": "claude-code, ai-agent, anthropic, agentic-coding, deepseek"
+    },
+    {
+      "slug": "picade",
+      "title": "Picade Console",
+      "description": "Building and setting up the Pimoroni Picade mini arcade cabinet with RetroPie on a Raspberry Pi",
+      "date": "2026-05-31",
+      "categories": [
+        "IOT"
+      ],
+      "tags": "raspberry-pi, retropie, pimoroni, arcade, emulation"
+    },
+    {
+      "slug": "powerapps8",
+      "title": "Power Platform Word Template",
+      "description": "Populate a Word Template from a Power App",
+      "date": "2026-05-27",
+      "categories": [
+        "Power Platform"
+      ],
+      "tags": "power-apps, dataverse, model-driven-app, status-reason, workflow"
+    },
+    {
+      "slug": "powerapps7",
+      "title": "Customizing Status Reasons in Power Platform",
+      "description": "How to add custom Status Reason choices, surface them on forms and views, and enforce allowed transitions using Status Reason Transitions in the classic Solution Explorer",
+      "date": "2026-05-24",
+      "categories": [
+        "Power Platform"
+      ],
+      "tags": "power-apps, dataverse, model-driven-app, status-reason, workflow"
+    },
+    {
+      "slug": "claudecode12",
+      "title": "Claude Code (Part 12)",
+      "description": "deepseek api",
+      "date": "2026-05-08",
+      "categories": [
+        "AI"
+      ],
+      "tags": "claude-code, ai-agent, anthropic, agentic-coding, deepseek"
+    },
+    {
+      "slug": "sharepointdevicerequest2",
+      "title": "SharePoint",
+      "description": "Device Request (Part 2)",
+      "date": "2026-05-03",
+      "categories": [
+        "Microsoft 365"
+      ],
+      "tags": "sharepoint, power-automate, power-apps"
+    },
+    {
+      "slug": "sharepointdevicerequest",
+      "title": "SharePoint",
+      "description": "Device Request (Part 1)",
+      "date": "2026-05-02",
+      "categories": [
+        "Microsoft 365"
+      ],
+      "tags": "sharepoint, power-automate, power-apps"
+    },
+    {
+      "slug": "shareGate2",
+      "title": "ShareGate",
+      "description": "ShareGate Migration (Part 2)",
+      "date": "2026-05-01",
+      "categories": [
+        "Microsoft 365"
+      ],
+      "tags": "sharepoint, azure, on-premises, online, migration"
+    },
+    {
+      "slug": "shareGate",
+      "title": "ShareGate",
+      "description": "ShareGate Migration (Part 1)",
+      "date": "2026-04-30",
+      "categories": [
+        "Microsoft 365"
+      ],
+      "tags": "sharepoint, azure, on-premises, online, migration"
+    },
+    {
+      "slug": "LLMWiki",
+      "title": "LLM Wiki",
+      "description": "Karpathy's LLM Wiki",
+      "date": "2026-04-20",
+      "categories": [
+        "AI"
+      ],
+      "tags": "claude-code, ai-agent, anthropic, agentic-coding, ollama, llm"
+    },
+    {
+      "slug": "claudecode11",
+      "title": "Claude Code (Part 11)",
+      "description": "ollama launch claude",
+      "date": "2026-04-10",
+      "categories": [
+        "AI"
+      ],
+      "tags": "claude-code, ai-agent, anthropic, agentic-coding, ollama"
+    },
+    {
+      "slug": "Paperclip",
+      "title": "Paperclip",
+      "description": "Open-source orchestration for zero-human companies",
+      "date": "2026-03-28",
+      "categories": [
+        "AI"
+      ],
+      "tags": "claude-code, ai-agent, anthropic, agentic-coding"
+    },
+    {
+      "slug": "claudecode10",
+      "title": "Claude Code (Part 10)",
+      "description": "An AI agent for Dynamics 365 Sales Professional",
+      "date": "2026-03-18",
+      "categories": [
+        "AI",
+        "Microsoft Dynamics"
+      ],
+      "tags": "claude-code, ai-agent, anthropic, agentic-coding"
+    },
+    {
+      "slug": "azurefoundryagent",
+      "title": "Azure Foundry",
+      "description": "Creating an Agent",
+      "date": "2026-03-10",
+      "categories": [
+        "AI",
+        "Azure"
+      ],
+      "tags": "azure-ai-foundry, azure-ai-search, vector-search, embeddings, rag"
+    },
+    {
+      "slug": "metaunity",
+      "title": "Meta Unity",
+      "description": "Modding Vision on the Quest 2 and Quest 3",
+      "date": "2026-02-28",
+      "categories": [
+        "Mobile",
+        "3D"
+      ],
+      "tags": "virtual-reality, meta, unity, quest"
+    },
+    {
+      "slug": "claudecode9",
+      "title": "Claude Code (Part 9)",
+      "description": "Using an AI coding agent to create an AI coding agent",
+      "date": "2026-02-22",
+      "categories": [
+        "AI"
+      ],
+      "tags": "claude-code, ai-agent, anthropic, agentic-coding"
+    },
+    {
+      "slug": "powerautomateai",
+      "title": "Power Automate",
+      "description": "Connect Power Automate to Azure AI Foundry",
+      "date": "2026-02-17",
+      "categories": [
+        "Power Platform",
+        "AI"
+      ],
+      "tags": "power-automate, azure-ai-foundry, ai-integration, workflow"
+    },
+    {
+      "slug": "azuresearchvector",
+      "title": "Azure Search",
+      "description": "Vector Search (Part 2)",
+      "date": "2026-02-09",
+      "categories": [
+        "AI",
+        "Azure"
+      ],
+      "tags": "azure-ai-search, vector-search, embeddings, rag"
+    },
+    {
+      "slug": "azuresearch",
+      "title": "Azure Search",
+      "description": "Fulltext Search (Part 1)",
+      "date": "2026-02-09",
+      "categories": [
+        "AI",
+        "Azure"
+      ],
+      "tags": "azure-ai-search, full-text-search, cognitive-search"
+    },
+    {
+      "slug": "claudecode8",
+      "title": "Claude Code (Part 8)",
+      "description": "Vibe Coding",
+      "date": "2026-02-01",
+      "categories": [
+        "AI"
+      ],
+      "tags": "claude-code, vibe-coding, anthropic, ai-coding"
+    },
+    {
+      "slug": "vibecoding4",
+      "title": "Vibe Coding (Part 4)",
+      "description": "Deploying to Docker",
+      "date": "2026-01-30",
+      "categories": [
+        "AI",
+        "Azure"
+      ],
+      "tags": "vibe-coding, docker, deployment, ai-coding"
+    },
+    {
+      "slug": "vibecoding3",
+      "title": "Vibe Coding (Part 3)",
+      "description": "Unit Tests and Integration Tests",
+      "date": "2026-01-30",
+      "categories": [
+        "AI"
+      ],
+      "tags": "vibe-coding, unit-tests, integration-tests, ai-coding"
+    },
+    {
+      "slug": "vibecoding2",
+      "title": "Vibe Coding (Part 2)",
+      "description": "Proof of Concept",
+      "date": "2026-01-29",
+      "categories": [
+        "AI"
+      ],
+      "tags": "vibe-coding, chatgpt, proof-of-concept, ai-coding"
+    },
+    {
+      "slug": "vibecoding1",
+      "title": "Vibe Coding (Part 1)",
+      "description": "Learn to Code with ChatGPT",
+      "date": "2026-01-29",
+      "categories": [
+        "AI"
+      ],
+      "tags": "vibe-coding, chatgpt, ai-coding, beginners"
+    },
+    {
+      "slug": "claudecode7",
+      "title": "Claude Code (Part 7)",
+      "description": "MCP Servers",
+      "date": "2026-01-26",
+      "categories": [
+        "AI"
+      ],
+      "tags": "claude-code, mcp, model-context-protocol, anthropic"
+    },
+    {
+      "slug": "claudecode6",
+      "title": "Claude Code (Part 6)",
+      "description": "Slash Commands",
+      "date": "2026-01-21",
+      "categories": [
+        "AI"
+      ],
+      "tags": "claude-code, slash-commands, anthropic, cli"
+    },
+    {
+      "slug": "claudecode5",
+      "title": "Claude Code (Part 5)",
+      "description": "Planning & Thinking",
+      "date": "2026-01-21",
+      "categories": [
+        "AI"
+      ],
+      "tags": "claude-code, extended-thinking, planning, anthropic"
+    },
+    {
+      "slug": "claudecode4",
+      "title": "Claude Code (Part 4)",
+      "description": "Tools & Permissions",
+      "date": "2026-01-21",
+      "categories": [
+        "AI"
+      ],
+      "tags": "claude-code, tools, permissions, anthropic"
+    },
+    {
+      "slug": "claudecode3",
+      "title": "Claude Code (Part 3)",
+      "description": "Context",
+      "date": "2026-01-21",
+      "categories": [
+        "AI"
+      ],
+      "tags": "claude-code, context-window, anthropic"
+    },
+    {
+      "slug": "claudecode2",
+      "title": "Claude Code (Part 2)",
+      "description": "Memory",
+      "date": "2026-01-21",
+      "categories": [
+        "AI"
+      ],
+      "tags": "claude-code, memory, anthropic, context"
+    },
+    {
+      "slug": "claudecode1",
+      "title": "Claude Code (Part 1)",
+      "description": "Getting started",
+      "date": "2026-01-20",
+      "categories": [
+        "AI"
+      ],
+      "tags": "claude-code, anthropic, agentic-coding, cli"
+    },
+    {
+      "slug": "businesscentralbusinessevents",
+      "title": "Business Central",
+      "description": "External Business Events",
+      "date": "2025-12-18",
+      "categories": [
+        "Business Central",
+        "Microsoft Dynamics"
+      ],
+      "tags": "external-business-events, al-language, integration, business-central"
+    },
+    {
+      "slug": "azurefunctionsbc2",
+      "title": "Business Central Azure Functions (Part 2)",
+      "description": "Creating the Business Central Extension",
+      "date": "2025-12-16",
+      "categories": [
+        "Azure",
+        "Microsoft Dynamics",
+        "Business Central"
+      ],
+      "tags": "azure-functions, al-language, extension, business-central"
+    },
+    {
+      "slug": "azurefunctionsbc",
+      "title": "Business Central Azure Functions (Part 1)",
+      "description": "Creating the Azure Functions App",
+      "date": "2025-12-15",
+      "categories": [
+        "Azure",
+        "Microsoft Dynamics",
+        "Business Central"
+      ],
+      "tags": "azure-functions, business-central, api, integration"
+    },
+    {
+      "slug": "voicekit4",
+      "title": "Voice Kit 4",
+      "description": "Automatically Boot your Raspberry Pi 3 into Google Voice Assistant",
+      "date": "2025-12-14",
+      "categories": [
+        "Python",
+        "AI",
+        "IOT"
+      ],
+      "tags": "raspberry-pi, google-assistant, autostart"
+    },
+    {
+      "slug": "azurelogicappbc",
+      "title": "Business Central Azure Logic App",
+      "description": "Azure Logic App with Business Central Trigger",
+      "date": "2025-12-12",
+      "categories": [
+        "Azure",
+        "Microsoft Dynamics",
+        "Business Central"
+      ],
+      "tags": "logic-apps, business-central, integration"
+    },
+    {
+      "slug": "devenv",
+      "title": "Business Central (Part 27)",
+      "description": "Development Environment",
+      "date": "2025-11-17",
+      "categories": [
+        "Business Central",
+        "DevOps"
+      ],
+      "tags": "al-language, vs-code, development, business-central"
+    },
+    {
+      "slug": "mlx1",
+      "title": "MLX 1",
+      "description": "An Apple Project",
+      "date": "2025-11-06",
+      "categories": [
+        "AI"
+      ],
+      "tags": "mlx, apple-silicon, fine-tuning, local-llm"
+    },
+    {
+      "slug": "openaifinetuning",
+      "title": "OpenAI",
+      "description": "Fine Tuning",
+      "date": "2025-10-23",
+      "categories": [
+        "AI"
+      ],
+      "tags": "openai, fine-tuning, gpt, llm"
+    },
+    {
+      "slug": "voicekit3",
+      "title": "Voice Kit 3",
+      "description": "Adding Commands",
+      "date": "2025-10-18",
+      "categories": [
+        "Python",
+        "AI",
+        "IOT"
+      ],
+      "tags": "raspberry-pi, google-assistant, voice-commands"
+    },
+    {
+      "slug": "voicekit2",
+      "title": "Voice Kit 2",
+      "description": "Google Assistant API",
+      "date": "2025-10-16",
+      "categories": [
+        "Python",
+        "AI",
+        "IOT"
+      ],
+      "tags": "raspberry-pi, google-assistant-api, voice"
+    },
+    {
+      "slug": "voicekit",
+      "title": "Voice Kit",
+      "description": "Raspberry Pi Voice Kit",
+      "date": "2025-10-11",
+      "categories": [
+        "Python",
+        "AI",
+        "IOT"
+      ],
+      "tags": "raspberry-pi, voice-assistant, google-assistant"
+    },
+    {
+      "slug": "customgpt",
+      "title": "OpenAI",
+      "description": "What are Custom GPTs?",
+      "date": "2025-10-03",
+      "categories": [
+        "AI"
+      ],
+      "tags": "chatgpt, custom-gpt, openai, gpt-4"
+    },
+    {
+      "slug": "copilotstudiobctools",
+      "title": "Copilot Studio Agent Tools",
+      "description": "Connected to Business Central",
+      "date": "2025-09-24",
+      "categories": [
+        "Microsoft Dynamics",
+        "Business Central",
+        "Power Platform",
+        "AI"
+      ],
+      "tags": "copilot-studio, business-central, agent-tools, ai-integration"
+    },
+    {
+      "slug": "mcpserver2",
+      "title": "Model Context Protocol (Part 2)",
+      "description": "Business Central",
+      "date": "2025-09-21",
+      "categories": [
+        "Business Central",
+        "AI"
+      ],
+      "tags": "claude-code, mcp, model-context-protocol, business-central"
+    },
+    {
+      "slug": "vb-asp-net",
+      "title": "ASP.NET 5 Visual Basic",
+      "description": "Generate Context and Entity Classes from an Existing Database",
+      "date": "2025-09-20",
+      "categories": [
+        ".NET",
+        "SQL"
+      ],
+      "tags": "visual-basic, asp-net, entity-framework, database-first"
+    },
+    {
+      "slug": "taxsetup",
+      "title": "Tax Setup",
+      "description": "Tax Setup",
+      "date": "2025-09-20",
+      "categories": [
+        "Business Central"
+      ],
+      "tags": "tax-setup, vat, business-central, finance"
+    },
+    {
+      "slug": "streamlit",
+      "title": "Streamlit",
+      "description": "Streamlit",
+      "date": "2025-09-20",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "streamlit, dashboard, data-science"
+    },
+    {
+      "slug": "sprint-apps1",
+      "title": "Azure Spring Apps (Part 1)",
+      "description": "hello-world-app",
+      "date": "2025-09-20",
+      "categories": [
+        "Java"
+      ],
+      "tags": "azure, spring, ai"
+    },
+    {
+      "slug": "sentenceembeddings",
+      "title": "Sentence Embeddings",
+      "description": "Sentence Embeddings",
+      "date": "2025-09-20",
+      "categories": [
+        "AI"
+      ],
+      "tags": "embeddings, sentence-transformers, nlp, semantic-search"
+    },
+    {
+      "slug": "page141",
+      "title": "Java Spring Boot (Spare)",
+      "description": "Spring Data JPA",
+      "date": "2025-09-20",
+      "categories": [
+        "Java"
+      ],
+      "tags": "spring-boot, spring-data-jpa, postgresql"
+    },
+    {
+      "slug": "mssqlserver3",
+      "title": "Microsoft SQL Server (Part 3)",
+      "description": "A Node, React and MS SQL Server App.",
+      "date": "2025-09-20",
+      "categories": [
+        "SQL"
+      ],
+      "tags": "sql-server, node, react, full-stack"
+    },
+    {
+      "slug": "microsoftdynamics365appforoutlook",
+      "title": "Microsoft Dynamics 365 App for Outlook",
+      "description": "References",
+      "date": "2025-09-20",
+      "categories": [
+        "Microsoft Dynamics",
+        "Power Platform"
+      ],
+      "tags": "outlook, set-regarding, dynamics-365, crm"
+    },
+    {
+      "slug": "machinelearningwip",
+      "title": "Machine Learning (WIP)",
+      "description": "WIP",
+      "date": "2025-09-20",
+      "categories": [
+        "AI",
+        "Angular",
+        "Mobile"
+      ],
+      "tags": "machine-learning, git, github, python"
+    },
+    {
+      "slug": "hubspotquotetemplate",
+      "title": "HubSpot Quote Template",
+      "description": "Quote Template",
+      "date": "2025-09-20",
+      "categories": [
+        "Angular",
+        "TypeScript"
+      ],
+      "tags": "hubspot, quote-template, crm"
+    },
+    {
+      "slug": "dynamicssales4",
+      "title": "Dynamics 365 Sales (Part 4)",
+      "description": "Tiki Tour",
+      "date": "2025-09-20",
+      "categories": [
+        "Microsoft Dynamics"
+      ],
+      "tags": "dynamics-365-sales, crm, overview, sales"
+    },
+    {
+      "slug": "dotnet-core-part4",
+      "title": ".NET Core (Part 4)",
+      "description": "Creating a VB.NET Web App using Microsoft's cross-platform framework.",
+      "date": "2025-09-20",
+      "categories": [
+        ".NET"
+      ],
+      "tags": "dotnet, rest-api, web-api, dotnet-core"
+    },
+    {
+      "slug": "dotnet-core-part3",
+      "title": ".NET Core (Part 3)",
+      "description": "Creating a Blazor App that calls Microsoft Graph.",
+      "date": "2025-09-20",
+      "categories": [
+        ".NET"
+      ],
+      "tags": "dotnet, rest-api, web-api, dotnet-core"
+    },
+    {
+      "slug": "customercopilotstudio",
+      "title": "Customer Copilot Studio",
+      "description": "Business Central Customer Copilot Using Copilot Studio",
+      "date": "2025-09-20",
+      "categories": [
+        "Business Central",
+        "AI"
+      ],
+      "tags": "copilot-studio, business-central, customer-service, ai-integration"
+    },
+    {
+      "slug": "chatgpt",
+      "title": "Fine Tuning",
+      "description": "Fine Tuning",
+      "date": "2025-09-20",
+      "categories": [
+        "AI"
+      ],
+      "tags": "chatgpt, fine-tuning, openai, gpt-4"
+    },
+    {
+      "slug": "businesscentralintegrationtables",
+      "title": "Business Central (Part 25) Integration Tables",
+      "description": "Integration Tables",
+      "date": "2025-09-20",
+      "categories": [
+        "Business Central",
+        "Microsoft Dynamics"
+      ],
+      "tags": "integration-tables, dataverse, business-central, al-language"
+    },
+    {
+      "slug": "angular1",
+      "title": "Angular",
+      "description": "A platform for building mobile and desktop web applications",
+      "date": "2025-09-20",
+      "categories": [
+        "Angular",
+        "JavaScript",
+        "TypeScript"
+      ],
+      "tags": "ng-cli, components, testing"
+    },
+    {
+      "slug": "macscreensharing",
+      "title": "Mac Screen Sharing",
+      "description": "Screen Sharing VNC",
+      "date": "2025-08-18",
+      "categories": [
+        "macOS"
+      ],
+      "tags": "screen-sharing, vnc, remote-desktop"
+    },
+    {
+      "slug": "mcpserver",
+      "title": "Model Context Protocol (Part 1)",
+      "description": "Typescript quick start",
+      "date": "2025-08-13",
+      "categories": [
+        "AI"
+      ],
+      "tags": "claude-code, mcp, model-context-protocol, typescript"
+    },
+    {
+      "slug": "syntexautofill",
+      "title": "SharePoint Syntex ",
+      "description": "Autofill columns",
+      "date": "2025-07-30",
+      "categories": [
+        "Microsoft 365",
+        "AI"
+      ],
+      "tags": "syntex, sharepoint, content-ai, document-processing"
+    },
+    {
+      "slug": "ollamadeepsekr1applemacbookinstall",
+      "title": "DeepSeek R1",
+      "description": "Running locally",
+      "date": "2025-05-24",
+      "categories": [
+        "AI"
+      ],
+      "tags": "deepseek, ollama, local-llm, macos"
+    },
+    {
+      "slug": "internetofthings3",
+      "title": "Internet of Things (Part 3)",
+      "description": "Arduino Nano 33 BLE Sense",
+      "date": "2025-03-01",
+      "categories": [
+        "AI",
+        "IOT"
+      ],
+      "tags": "arduino, machine-learning, edge-ai, tensorflow-lite"
+    },
+    {
+      "slug": "azureopenal",
+      "title": "Azure AI service",
+      "description": "Azure OpenAl",
+      "date": "2025-02-04",
+      "categories": [
+        "Azure",
+        "AI"
+      ],
+      "tags": "azure-openai, azure-ai-foundry, openai"
+    },
+    {
+      "slug": "powerapps23configurationmigrationtool",
+      "title": "Power Apps (Part 23)",
+      "description": "The Configuration Migration tool",
+      "date": "2025-01-01",
+      "categories": [
+        "Power Platform"
+      ],
+      "tags": "power-apps, configuration-migration, environments, deployment"
+    },
+    {
+      "slug": "businesscentralpart26integrationtable",
+      "title": "Business Central (Part 26)",
+      "description": "Integration Tables",
+      "date": "2024-12-22",
+      "categories": [
+        "Microsoft Dynamics",
+        "Business Central",
+        "Power Platform"
+      ],
+      "tags": "integration-tables, power-platform, business-central, al-language"
+    },
+    {
+      "slug": "powerpages3",
+      "title": "Power Pages (Part 3)",
+      "description": "Customer Order Lines",
+      "date": "2024-12-20",
+      "categories": [
+        "Business Central",
+        "Power Platform"
+      ],
+      "tags": "power-pages, order-lines, business-central, portal"
+    },
+    {
+      "slug": "powerpages2",
+      "title": "Power Pages (Part 2)",
+      "description": "View, create, and edit orders",
+      "date": "2024-12-20",
+      "categories": [
+        "Business Central",
+        "Power Platform"
+      ],
+      "tags": "power-pages, orders, business-central, portal"
+    },
+    {
+      "slug": "businesscentralpart25integratingwithdataverseusingdataflows",
+      "title": "Business Central (Part 25) Integrating with Dataverse using Dataflows",
+      "description": "Integrating with Dataverse using Dataflows",
+      "date": "2024-12-01",
+      "categories": [
+        "Power Platform",
+        "Microsoft Dynamics",
+        "Business Central"
+      ],
+      "tags": "dataverse, dataflows, integration, business-central"
+    },
+    {
+      "slug": "langflow1",
+      "title": "Langflow (Part 1)",
+      "description": "References",
+      "date": "2024-10-30",
+      "categories": [
+        "AI"
+      ],
+      "tags": "langflow, visual-programming, llm, workflow"
+    },
+    {
+      "slug": "powerpages1",
+      "title": "Power Pages (Part 1)",
+      "description": "Sales Orders",
+      "date": "2024-10-26",
+      "categories": [
+        "Business Central",
+        "Power Platform"
+      ],
+      "tags": "power-pages, sales-orders, business-central, portal"
+    },
+    {
+      "slug": "promptflow6",
+      "title": "Prompt Flow (Part 6)",
+      "description": "Quick start",
+      "date": "2024-09-01",
+      "categories": [
+        "AI"
+      ],
+      "tags": "prompt-flow, azure-ai-studio, evaluation"
+    },
+    {
+      "slug": "promptflow5",
+      "title": "Prompt Flow (Part 5)",
+      "description": "Quick start",
+      "date": "2024-09-01",
+      "categories": [
+        "AI"
+      ],
+      "tags": "prompt-flow, azure-ai-studio, quick-start"
+    },
+    {
+      "slug": "phpsetup",
+      "title": "PHP Setup",
+      "description": "Setup",
+      "date": "2024-08-25",
+      "categories": [
+        "PHP"
+      ],
+      "tags": "setup, web, server"
+    },
+    {
+      "slug": "langchainagents",
+      "title": "LangChain Agents",
+      "description": "Agents",
+      "date": "2024-08-25",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "langchain, agents, llm"
+    },
+    {
+      "slug": "promptflow4",
+      "title": "Prompt Flow (Part 4)",
+      "description": "Planning",
+      "date": "2024-08-24",
+      "categories": [
+        "AI"
+      ],
+      "tags": "prompt-flow, planning, azure-ai, llmops"
+    },
+    {
+      "slug": "promptflow3",
+      "title": "Prompt Flow (Part 3)",
+      "description": "Semantic Kernel",
+      "date": "2024-08-24",
+      "categories": [
+        "AI"
+      ],
+      "tags": "prompt-flow, semantic-kernel, azure, llm"
+    },
+    {
+      "slug": "dataverseadvancedreportssetup",
+      "title": "Microsoft Dataverse Advanced Reports Setup",
+      "description": "Microsoft Dataverse Advanced Reports Setup",
+      "date": "2024-08-10",
+      "categories": [
+        "SQL",
+        "Microsoft Dynamics",
+        "Power Platform"
+      ],
+      "tags": "dataverse, reports, advanced-reports"
+    },
+    {
+      "slug": "powerautomatereports",
+      "title": "Microsoft Power Automate Reports",
+      "description": "A Flow that emails a Report",
+      "date": "2024-07-19",
+      "categories": [
+        "Power Platform"
+      ],
+      "tags": "power-automate, reports, email, automation"
+    },
+    {
+      "slug": "dataversereports",
+      "title": "Microsoft Dataverse Reports",
+      "description": "Creating a Dataverse Report",
+      "date": "2024-07-19",
+      "categories": [
+        "Power Platform"
+      ],
+      "tags": "dataverse, reports, power-platform, ssrs"
+    },
+    {
+      "slug": "promptflow2",
+      "title": "Prompt Flow (Part 2)",
+      "description": "Docker",
+      "date": "2024-06-12",
+      "categories": [
+        "AI"
+      ],
+      "tags": "prompt-flow, docker, azure-ai-studio, containers"
+    },
+    {
+      "slug": "promptflow1",
+      "title": "Prompt Flow (Part 1)",
+      "description": "Setup",
+      "date": "2024-06-11",
+      "categories": [
+        "AI"
+      ],
+      "tags": "prompt-flow, azure-ai-studio, llmops, mlops"
+    },
+    {
+      "slug": "promptdialog3",
+      "title": "Business Central (Part 29)",
+      "description": "PromptDialog (Part 3)",
+      "date": "2024-05-24",
+      "categories": [
+        "Business Central",
+        "AI"
+      ],
+      "tags": "prompt-dialog, al-language, copilot, business-central"
+    },
+    {
+      "slug": "promptdialog2",
+      "title": "Business Central (Part 28)",
+      "description": "Prompt Dialog (Part 2)",
+      "date": "2024-05-24",
+      "categories": [
+        "Business Central",
+        "AI"
+      ],
+      "tags": "prompt-dialog, al-language, copilot, business-central"
+    },
+    {
+      "slug": "promptdialog",
+      "title": "Business Central (Part 27)",
+      "description": "Prompt Dialog (Part 1)",
+      "date": "2024-05-24",
+      "categories": [
+        "Business Central",
+        "AI"
+      ],
+      "tags": "prompt-dialog, al-language, copilot, business-central"
+    },
+    {
+      "slug": "customtvirtualtables",
+      "title": "Custom Virtual Tables",
+      "description": "Customer Content Virtual Tables",
+      "date": "2024-05-07",
+      "categories": [
+        "Power Platform",
+        "Microsoft Dynamics",
+        "Business Central"
+      ],
+      "tags": "virtual-tables, dataverse, custom, business-central"
+    },
+    {
+      "slug": "blogcopilotstudio",
+      "title": "Blog Copilot Studio",
+      "description": "Blog Copilot",
+      "date": "2024-03-24",
+      "categories": [
+        "Microsoft Dynamics",
+        "Business Central",
+        "Power Platform",
+        "AI"
+      ],
+      "tags": "copilot-studio, microsoft-copilot, business-central"
+    },
+    {
+      "slug": "customcopilotstudio",
+      "title": "Custom Copilot Studio",
+      "description": "Customer Copilot",
+      "date": "2024-03-23",
+      "categories": [
+        "Microsoft Dynamics",
+        "Business Central",
+        "Power Platform",
+        "AI"
+      ],
+      "tags": "copilot-studio, custom-copilot, chatbot, power-virtual-agents"
+    },
+    {
+      "slug": "configurecopilotsinglesignonforweb",
+      "title": "Configure Copilot single sign-on for Web",
+      "description": "Publish|Configure channels",
+      "date": "2024-03-16",
+      "categories": [
+        "Power Platform"
+      ],
+      "tags": "copilot-studio, sso, single-sign-on, authentication"
+    },
+    {
+      "slug": "customizedefaultcanvas",
+      "title": "Copilot Studio",
+      "description": "Customize the look and feel of the bot default canvas",
+      "date": "2024-03-11",
+      "categories": [
+        "Power Platform"
+      ],
+      "tags": "copilot-studio, customize, chatbot, canvas"
+    },
+    {
+      "slug": "copilotembedcode",
+      "title": "Copilot Embed Code",
+      "description": "An HTML page to host my Blog Copilot",
+      "date": "2024-03-11",
+      "categories": [
+        "Power Platform"
+      ],
+      "tags": "copilot-studio, embed, html, web-channel"
+    },
+    {
+      "slug": "staticwebapp.config.json",
+      "title": "staticwebapp.config.json",
+      "description": "staticwebapp.config.json",
+      "date": "2024-03-10",
+      "categories": [
+        "Azure"
+      ],
+      "tags": "azure-static-web-apps, config, routing, auth"
+    },
+    {
+      "slug": "codespacesauthentication",
+      "title": "Codespaces and Authentication",
+      "description": "Adding a NavBar and staticwebapp.config.json",
+      "date": "2024-03-06",
+      "categories": [
+        "React",
+        "Azure",
+        "DevOps"
+      ],
+      "tags": "codespaces, authentication, azure-static-web-apps"
+    },
+    {
+      "slug": "modeldrivenpurchaseorderlines",
+      "title": "Model Driven Purchase Order Lines",
+      "description": "manage Business Central Purchase Order Lines",
+      "date": "2024-03-03",
+      "categories": [
+        "Business Central",
+        "Power Platform"
+      ],
+      "tags": "model-driven-app, power-apps, purchase-orders, business-central"
+    },
+    {
+      "slug": "modeldrivenpurchaseorders",
+      "title": "Model Driven Purchase Orders",
+      "description": "Quick View",
+      "date": "2024-03-02",
+      "categories": [
+        "Business Central",
+        "Power Platform"
+      ],
+      "tags": "model-driven-app, power-apps, purchase-orders, business-central"
+    },
+    {
+      "slug": "cloudflow",
+      "title": "Cloud Flow",
+      "description": "A Topic that uses the Business Central Connector",
+      "date": "2024-02-26",
+      "categories": [
+        "Power Platform",
+        "Microsoft Dynamics",
+        "Business Central"
+      ],
+      "tags": "cloud-flow, power-automate, business-central, connector"
+    },
+    {
+      "slug": "topics",
+      "title": "Copilot Studio",
+      "description": "Topics",
+      "date": "2024-02-25",
+      "categories": [
+        "Power Platform"
+      ],
+      "tags": "copilot-studio, topics, chatbot, conversation-topics"
+    },
+    {
+      "slug": "pluginactions",
+      "title": "Plugin Actions",
+      "description": "A comprehensive guide covering plugin actions",
+      "date": "2024-02-24",
+      "categories": [
+        "Power Platform"
+      ],
+      "tags": "plugins, dataverse, power-platform, custom-actions"
+    },
+    {
+      "slug": "addapurchaseorder",
+      "title": "Add a Purchase Order",
+      "description": "I used Patch to add a Business Central Purchase Order and to add Purchase Order Lines",
+      "date": "2024-02-21",
+      "categories": [
+        "Microsoft Dynamics",
+        "Business Central",
+        "Power Platform"
+      ],
+      "tags": "power-apps, patch, purchase-orders, business-central"
+    },
+    {
+      "slug": "addanitem",
+      "title": "Add an Item",
+      "description": "I used Patch to add a Business Central Item",
+      "date": "2024-02-17",
+      "categories": [
+        "Microsoft Dynamics",
+        "Business Central",
+        "Power Platform"
+      ],
+      "tags": "power-apps, patch, business-central, canvas-app"
+    },
+    {
+      "slug": "businesscentralvirtualtable",
+      "title": "Business Central Virtual Table",
+      "description": "Microsoft Dynamics 365 Business Central Virtual Tables for Microsoft Dataverse",
+      "date": "2024-01-12",
+      "categories": [
+        "Microsoft Dynamics",
+        "Business Central",
+        "Power Platform"
+      ],
+      "tags": "virtual-tables, dataverse, power-platform, business-central"
+    },
+    {
+      "slug": "azurereactstaticweb-app",
+      "title": "Azure React Static Web App",
+      "description": "Azure Static Web App",
+      "date": "2024-01-08",
+      "categories": [
+        "React",
+        "Azure"
+      ],
+      "tags": "static, azure-static-web-apps, deployment, hosting"
+    },
+    {
+      "slug": "createactionbasedonaflow",
+      "title": "Create action based on a flow",
+      "description": "Created from the Business Central user interface",
+      "date": "2024-01-04",
+      "categories": [
+        "Power Platform",
+        "Microsoft Dynamics",
+        "Business Central"
+      ],
+      "tags": "power-automate, flow, business-central, copilot-studio"
+    },
+    {
+      "slug": "businesscentralpowerautomateflow",
+      "title": "Business Central Power Automate Flow",
+      "description": "Business Central includes a Microsoft Power Automate license",
+      "date": "2024-01-02",
+      "categories": [
+        "Microsoft Dynamics",
+        "Business Central",
+        "Power Platform"
+      ],
+      "tags": "power-automate, flow, business-central, integration"
+    },
+    {
+      "slug": "gingerbreadhouse",
+      "title": "Gingerbread House",
+      "description": "holiday.py",
+      "date": "2023-12-26",
+      "categories": [
+        "Python",
+        "IOT"
+      ],
+      "tags": "raspberry-pi, holiday, gpio"
+    },
+    {
+      "slug": "businesscentralmicrosoftgraph",
+      "title": "Business Central Microsoft Graph",
+      "description": "Financials",
+      "date": "2023-12-18",
+      "categories": [
+        "Microsoft Dynamics",
+        "Business Central"
+      ],
+      "tags": "microsoft-graph, financials, api, business-central"
+    },
+    {
+      "slug": "salesinvoice",
+      "title": "Sales Invoice",
+      "description": "How the Inventory, Sale, Tax and Receivables accounts are determined",
+      "date": "2023-12-14",
+      "categories": [
+        "Business Central"
+      ],
+      "tags": "sales-invoice, inventory, accounts-receivable, business-central"
+    },
+    {
+      "slug": "purchaseinvoice",
+      "title": "Purchase Invoice",
+      "description": "Purchase Invoice",
+      "date": "2023-12-14",
+      "categories": [
+        "Business Central"
+      ],
+      "tags": "purchase-invoice, accounts-payable, finance, business-central"
+    },
+    {
+      "slug": "generalpostingsetup",
+      "title": "General Posting Setup",
+      "description": "Which accounts payable ledger account",
+      "date": "2023-12-14",
+      "categories": [
+        "Business Central"
+      ],
+      "tags": "general-posting-setup, accounts-payable, gl-account, business-central"
+    },
+    {
+      "slug": "customerpostinggroup",
+      "title": "Customer Posting Group",
+      "description": "Which accounts receivable account?",
+      "date": "2023-12-14",
+      "categories": [
+        "Microsoft Dynamics",
+        "Business Central"
+      ],
+      "tags": "customer-posting-group, accounts-receivable, general-ledger, business-central"
+    },
+    {
+      "slug": "vendorpostinggroup",
+      "title": "Vendor Posting Group",
+      "description": "Sub-ledgers",
+      "date": "2023-12-12",
+      "categories": [
+        "Business Central"
+      ],
+      "tags": "vendor-posting-group, accounts-payable, sub-ledger, business-central"
+    },
+    {
+      "slug": "generalledger",
+      "title": "General Ledger",
+      "description": "Purchase",
+      "date": "2023-12-11",
+      "categories": [
+        "Business Central"
+      ],
+      "tags": "general-ledger, accounts-payable, finance, business-central"
+    },
+    {
+      "slug": "hands-on-lab3.1",
+      "title": "Hands-on-Lab 3.1",
+      "description": "Set Up Finance Management",
+      "date": "2023-12-04",
+      "categories": [
+        "Business Central"
+      ],
+      "tags": "business-central, finance, hands-on-lab, configuration"
+    },
+    {
+      "slug": "hands-on-lab2.3",
+      "title": "Hands-on-Lab 2.3",
+      "description": "Set up dimensions",
+      "date": "2023-12-04",
+      "categories": [
+        "Business Central"
+      ],
+      "tags": "business-central, dimensions, hands-on-lab, configuration"
+    },
+    {
+      "slug": "hands-on-lab2.2",
+      "title": "Hands-on-Lab 2.2",
+      "description": "Migrate master data to a new company",
+      "date": "2023-11-22",
+      "categories": [
+        "Business Central"
+      ],
+      "tags": "business-central, data-migration, master-data, hands-on-lab"
+    },
+    {
+      "slug": "hands-on-lab2.1",
+      "title": "Hands-on-Lab 2.1",
+      "description": "Create and configure a new company",
+      "date": "2023-11-22",
+      "categories": [
+        "Business Central"
+      ],
+      "tags": "business-central, company-setup, hands-on-lab, configuration"
+    },
+    {
+      "slug": "spring-boot-6",
+      "title": "Java Spring Boot (Part 6)",
+      "description": "GitHub",
+      "date": "2023-10-31",
+      "categories": [
+        "Java"
+      ],
+      "tags": "spring-boot, github, ci-cd"
+    },
+    {
+      "slug": "spring-boot-5",
+      "title": "Java Spring Boot (Part 5)",
+      "description": "Spring for GraphQL",
+      "date": "2023-10-30",
+      "categories": [
+        "Java"
+      ],
+      "tags": "spring-boot, graphql, spring-for-graphql"
+    },
+    {
+      "slug": "spring-boot-4",
+      "title": "Java Spring Boot (Part 4)",
+      "description": "ModelAndView",
+      "date": "2023-10-29",
+      "categories": [
+        "Java"
+      ],
+      "tags": "spring-boot, model-and-view, mvc"
+    },
+    {
+      "slug": "spring-boot-3",
+      "title": "Java Spring Boot (Part 3)",
+      "description": "SpringdatajpaApplication.java",
+      "date": "2023-10-28",
+      "categories": [
+        "Java"
+      ],
+      "tags": "spring-boot, spring-data-jpa, database"
+    },
+    {
+      "slug": "spring-boot-2",
+      "title": "Java Spring Boot (Part 2)",
+      "description": "References",
+      "date": "2023-10-26",
+      "categories": [
+        "Java",
+        "Azure"
+      ],
+      "tags": "spring-boot, spring-data-jpa, jpa"
+    },
+    {
+      "slug": "dynamicssales3",
+      "title": "Dynamics 365 Sales (Part 3)",
+      "description": "Adding a Warranty table",
+      "date": "2023-10-21",
+      "categories": [
+        "Microsoft Dynamics"
+      ],
+      "tags": "dynamics-365-sales, crm, custom-tables, dataverse"
+    },
+    {
+      "slug": "dynamicssales2",
+      "title": "Dynamics 365 Sales (Part 2)",
+      "description": "The Lead to Opportunity Sales Process",
+      "date": "2023-10-21",
+      "categories": [
+        "Microsoft Dynamics"
+      ],
+      "tags": "dynamics-365-sales, crm, leads, opportunities"
+    },
+    {
+      "slug": "dynamicssales1",
+      "title": "Dynamics 365 Sales (Part 1)",
+      "description": " the Account|Sales Insights form",
+      "date": "2023-10-21",
+      "categories": [
+        "Microsoft Dynamics"
+      ],
+      "tags": "dynamics-365-sales, crm, accounts, sales-insights"
+    },
+    {
+      "slug": "modeldriven4",
+      "title": "Model Driven Apps (Part 4)",
+      "description": "Power FX",
+      "date": "2023-10-09",
+      "categories": [
+        "Power Platform"
+      ],
+      "tags": "model-driven-app, power-fx, formula, dataverse"
+    },
+    {
+      "slug": "modeldriven3",
+      "title": "Model Driven Apps (Part 3)",
+      "description": "JavaScript to update a Business Process Flow Stage",
+      "date": "2023-10-08",
+      "categories": [
+        "Power Platform"
+      ],
+      "tags": "model-driven-app, javascript, business-process-flow, dataverse"
+    },
+    {
+      "slug": "modeldriven2",
+      "title": "Model Driven Apps (Part 2)",
+      "description": "Environments",
+      "date": "2023-10-05",
+      "categories": [
+        "Power Platform"
+      ],
+      "tags": "model-driven-app, power-apps, environments, dataverse"
+    },
+    {
+      "slug": "modeldriven1",
+      "title": "Model Driven Apps (Part 1)",
+      "description": "Users",
+      "date": "2023-09-18",
+      "categories": [
+        "Power Platform"
+      ],
+      "tags": "model-driven-app, power-apps, users, dataverse"
+    },
+    {
+      "slug": "ashorthistory",
+      "title": "A Short History of Microsoft Dynamics and Microsoft Dataverse",
+      "description": "Microsoft Dynamics and Microsoft Dataverse",
+      "date": "2023-09-09",
+      "categories": [
+        "Microsoft Dynamics",
+        "Power Platform",
+        "Business Central"
+      ],
+      "tags": "microsoft-dynamics, dataverse, history, crm"
+    },
+    {
+      "slug": "mapextension",
+      "title": "Map Extension",
+      "description": "Map Extension",
+      "date": "2023-09-01",
+      "categories": [
+        "Business Central"
+      ],
+      "tags": "al-language, extension, maps, business-central"
+    },
+    {
+      "slug": "rewardsextension",
+      "title": "Rewards Extension",
+      "description": "Rewards Extension",
+      "date": "2023-08-30",
+      "categories": [
+        "Business Central"
+      ],
+      "tags": "al-language, extension, rewards, business-central"
+    },
+    {
+      "slug": "al-go-pte",
+      "title": "AL-Go-PTE",
+      "description": "Extensions",
+      "date": "2023-08-26",
+      "categories": [
+        "Microsoft Dynamics",
+        "Business Central",
+        "DevOps"
+      ],
+      "tags": "al-go, extensions, github-actions, ci-cd"
+    },
+    {
+      "slug": "financialoperationspurchaseinvoice",
+      "title": "Financial Operations Purchase Invoice",
+      "description": "Payment Journals",
+      "date": "2023-08-20",
+      "categories": [
+        "Microsoft Dynamics",
+        "Business Central"
+      ],
+      "tags": "purchase-invoice, payment-journal, finance, business-central"
+    },
+    {
+      "slug": "warehousemanagementputaway",
+      "title": "Warehouse Management Put away",
+      "description": "Warehouse Management - Put-away",
+      "date": "2023-08-19",
+      "categories": [
+        "Business Central"
+      ],
+      "tags": "warehouse-management, put-away, inventory, business-central"
+    },
+    {
+      "slug": "businesscentraladmincenter",
+      "title": "Business Central Admin Center",
+      "description": "The Business Central Administration Center",
+      "date": "2023-08-18",
+      "categories": [
+        "Microsoft Dynamics",
+        "Business Central"
+      ],
+      "tags": "admin-center, business-central, administration, tenants"
+    },
+    {
+      "slug": "dynamicstrialsignup",
+      "title": "Dynamics Trial Signup",
+      "description": "Microsoft Signup",
+      "date": "2023-08-14",
+      "categories": [
+        "Microsoft Dynamics"
+      ],
+      "tags": "dynamics-365, trial, microsoft, signup"
+    },
+    {
+      "slug": "businesscentralcanvasapps",
+      "title": "Business Central Canvas Apps",
+      "description": "Microsoft Dynamics 365 Business Central",
+      "date": "2023-08-14",
+      "categories": [
+        "Microsoft Dynamics",
+        "Business Central",
+        "Power Platform"
+      ],
+      "tags": "canvas-apps, power-apps, business-central, integration"
+    },
+    {
+      "slug": "promptengineering",
+      "title": "Meta",
+      "description": "Prompt Engineering",
+      "date": "2023-08-08",
+      "categories": [
+        "AI"
+      ],
+      "tags": "prompt-engineering, llm, chatgpt, meta-llama"
+    },
+    {
+      "slug": "lmstudio",
+      "title": "Meta",
+      "description": "LM Studio",
+      "date": "2023-08-05",
+      "categories": [
+        "AI"
+      ],
+      "tags": "lm-studio, local-llm, llama, meta-llama"
+    },
+    {
+      "slug": "llamacorp",
+      "title": "LlamaCpp",
+      "description": "Accessing the llama.cpp model from Python",
+      "date": "2023-08-03",
+      "categories": [
+        "AI"
+      ],
+      "tags": "llama-cpp, local-llm, llama, python"
+    },
+    {
+      "slug": "colorization",
+      "title": "Colorization",
+      "description": "colorization.ipynb",
+      "date": "2023-08-03",
+      "categories": [
+        "Python",
+        "AI"
+      ],
+      "tags": "colorization, jupyter-notebook, image-processing"
+    },
+    {
+      "slug": "stablediffusion",
+      "title": "Stable Diffusion",
+      "description": "Stable Diffusion",
+      "date": "2023-08-01",
+      "categories": [
+        "AI"
+      ],
+      "tags": "stable-diffusion, image-generation, generative-ai, diffusion-models"
+    },
+    {
+      "slug": "opencv",
+      "title": "Object Detection",
+      "description": "Object Detection",
+      "date": "2023-07-25",
+      "categories": [
+        "AI",
+        "IOT"
+      ],
+      "tags": "opencv, object-detection, computer-vision, python"
+    },
+    {
+      "slug": "applelaptop",
+      "title": "Apple MacBook",
+      "description": "Anaconda Setup",
+      "date": "2023-07-25",
+      "categories": [
+        "Python",
+        "macOS"
+      ],
+      "tags": "anaconda, python-environment, setup, package-manager"
+    },
+    {
+      "slug": "sh1106",
+      "title": "Raspberry Pi SH1106",
+      "description": "OLED display",
+      "date": "2023-07-24",
+      "categories": [
+        "IOT"
+      ],
+      "tags": "raspberry-pi, oled, sh1106, display"
+    },
+    {
+      "slug": "pi2",
+      "title": "Raspberry Pi GPIO",
+      "description": "Raspberry Pi GPIO",
+      "date": "2023-07-22",
+      "categories": [
+        "IOT"
+      ],
+      "tags": "raspberry-pi, gpio, python, electronics"
+    },
+    {
+      "slug": "pi1",
+      "title": "Raspberry Pi Imager",
+      "description": "Raspberry Pi Imager Advanced Options",
+      "date": "2023-07-22",
+      "categories": [
+        "IOT"
+      ],
+      "tags": "raspberry-pi, raspberry-pi-imager, setup, linux"
+    },
+    {
+      "slug": "langchain",
+      "title": "LangChain (RAG)",
+      "description": "Using LangChain to create a medical report application",
+      "date": "2023-07-21",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "langchain, rag, retrieval-augmented-generation, llm"
+    },
+    {
+      "slug": "sentimentanalysis",
+      "title": "Sentiment Analysis",
+      "description": "Sentiment Analysis",
+      "date": "2023-07-19",
+      "categories": [
+        "AI"
+      ],
+      "tags": "sentiment-analysis, nlp, text-classification, python"
+    },
+    {
+      "slug": "sentencesimilarity",
+      "title": "Sentence Similarity",
+      "description": "Sentence Similarity",
+      "date": "2023-07-19",
+      "categories": [
+        "AI"
+      ],
+      "tags": "sentence-similarity, nlp, embeddings, semantic-search"
+    },
+    {
+      "slug": "contextinjection",
+      "title": "Context Injection",
+      "description": "Context Injection",
+      "date": "2023-07-19",
+      "categories": [
+        "AI"
+      ],
+      "tags": "context-injection, prompt-engineering, llm, rag"
+    },
+    {
+      "slug": "3dprinting2",
+      "title": "3D Printing 2",
+      "description": "Raspberry Pi 4 and Mini Breadboard mount",
+      "date": "2023-07-19",
+      "categories": [
+        "3D printing"
+      ],
+      "tags": "raspberry-pi, breadboard, mount, 3d-printing"
+    },
+    {
+      "slug": "3dprinting1",
+      "title": "3D Printing 1",
+      "description": "ELEGOO Mars 3 Pro 4K Resin 3D Printer",
+      "date": "2023-07-15",
+      "categories": [
+        "3D printing"
+      ],
+      "tags": "resin-printing, elegoo-mars, 3d-printer, fdm"
+    },
+    {
+      "slug": "vbnetconsolesqlserverunittests",
+      "title": "VB.NET Console SQL Server Unit Tests",
+      "description": "Test driven development",
+      "date": "2023-05-27",
+      "categories": [
+        "SQL",
+        ".NET"
+      ],
+      "tags": "vb-net, sql-server, unit-tests, tdd"
+    },
+    {
+      "slug": "ticktacktoe",
+      "title": "Multiplayer Tick-Tack-Toe",
+      "description": "Creating a new firebase project",
+      "date": "2023-05-10",
+      "categories": [
+        "Firebase"
+      ],
+      "tags": "realtime-database, multiplayer, javascript"
+    },
+    {
+      "slug": "angularphaser",
+      "title": "Angular and Phaser",
+      "description": "Using Phaser in an Angular Component",
+      "date": "2023-05-10",
+      "categories": [
+        "Angular",
+        "TypeScript"
+      ],
+      "tags": "phaser, game-dev, canvas"
+    },
+    {
+      "slug": "multiplayer",
+      "title": "Multiplayer Game",
+      "description": "Creating a new firebase project",
+      "date": "2023-05-09",
+      "categories": [
+        "Firebase"
+      ],
+      "tags": "multiplayer, realtime-database, game"
+    },
+    {
+      "slug": "angularfirebase",
+      "title": "Angular Firebase",
+      "description": "Creating a new firebase project",
+      "date": "2023-04-25",
+      "categories": [
+        "Angular",
+        "TypeScript",
+        "Firebase"
+      ],
+      "tags": "firestore, realtime-database, authentication"
+    },
+    {
+      "slug": "firebase",
+      "title": "Firebase",
+      "description": "Firebase web codelab",
+      "date": "2023-04-24",
+      "categories": [
+        "JavaScript",
+        "Firebase"
+      ],
+      "tags": "firebase-realtime, realtime-database, backend"
+    },
+    {
+      "slug": "xcode4",
+      "title": "XCode C++ (Part 4)",
+      "description": "Rotating the triangle",
+      "date": "2023-03-27",
+      "categories": [
+        "macOS"
+      ],
+      "tags": "xcode, opengl, rotation, c-plus-plus"
+    },
+    {
+      "slug": "vbnetwinforms",
+      "title": "VB.NET WinForms and ASP.NET Core API",
+      "description": "VB.NET WinForms Development",
+      "date": "2023-03-27",
+      "categories": [
+        ".NET"
+      ],
+      "tags": "vb-net, winforms, asp-net-core, api"
+    },
+    {
+      "slug": "aspnetcoreunittests",
+      "title": "ASP.NET Core Unit Tests",
+      "description": "Test driven development",
+      "date": "2023-03-26",
+      "categories": [
+        ".NET"
+      ],
+      "tags": "unit-tests, xunit, testing, tdd"
+    },
+    {
+      "slug": "threetier",
+      "title": "Blazor WASM API SQL Server Stored Procedure",
+      "description": "Three Tiers",
+      "date": "2023-03-25",
+      "categories": [
+        ".NET"
+      ],
+      "tags": "blazor, web-api, sql-server, stored-procedures"
+    },
+    {
+      "slug": "blazorwasmandasp.net",
+      "title": "Blazor WASM and ASP.NET Core",
+      "description": "An ASP.NET Core backend and a Blazor Web Assembly frontend.",
+      "date": "2023-03-24",
+      "categories": [
+        ".NET"
+      ],
+      "tags": "blazor, wasm, web-framework, component, interactive"
+    },
+    {
+      "slug": "angularandasp.net",
+      "title": "Angular and ASP.NET Core",
+      "description": "Single Page Application (SPA) templates",
+      "date": "2023-03-24",
+      "categories": [
+        ".NET",
+        "Angular",
+        "TypeScript"
+      ],
+      "tags": "asp-net-core, spa, routing"
+    },
+    {
+      "slug": "reactandasp.net",
+      "title": "React and ASP.NET Core",
+      "description": "An ASP.NET Core backend and a React frontend.",
+      "date": "2023-03-22",
+      "categories": [
+        "React",
+        ".NET"
+      ],
+      "tags": "asp-net-core, c-sharp, spa"
+    },
+    {
+      "slug": "aspnet-core",
+      "title": "ASP.NET Core",
+      "description": "Create Razor Pages with ASP.NET Core.",
+      "date": "2023-03-21",
+      "categories": [
+        ".NET"
+      ],
+      "tags": "razor, web-pages, views, templating"
+    },
+    {
+      "slug": "aspnet-5-cs",
+      "title": "ASP.NET 5 C#",
+      "description": "Generate Context and Entity Classes from an Existing Database",
+      "date": "2023-03-19",
+      "categories": [
+        ".NET",
+        "SQL"
+      ],
+      "tags": "c#, entity-framework, database, linq"
+    },
+    {
+      "slug": "aspnet-5-visual-basic",
+      "title": "ASP.NET 5 Visual Basic",
+      "description": "Generate Context and Entity Classes from an Existing Database",
+      "date": "2023-03-18",
+      "categories": [
+        ".NET",
+        "SQL"
+      ],
+      "tags": "vb.net, entity-framework, database, web"
+    },
+    {
+      "slug": "dotnet-core-part2",
+      "title": ".NET Core (Part 2)",
+      "description": "Creating a Blazor App that calls Microsoft Graph.",
+      "date": "2023-03-15",
+      "categories": [
+        ".NET"
+      ],
+      "tags": "blazor, microsoft-graph, dotnet, c-sharp"
+    },
+    {
+      "slug": "xcode3",
+      "title": "XCode C++ (Part 3)",
+      "description": "Building an OpenGL application using C++ and XCode",
+      "date": "2023-03-08",
+      "categories": [
+        "macOS"
+      ],
+      "tags": "xcode, opengl, c-plus-plus, graphics"
+    },
+    {
+      "slug": "xcode2",
+      "title": "XCode C++ (Part 2)",
+      "description": "OpenGL GLFW",
+      "date": "2023-03-08",
+      "categories": [
+        "macOS"
+      ],
+      "tags": "xcode, opengl, glfw, c-plus-plus"
+    },
+    {
+      "slug": "xcode1",
+      "title": "XCode C++ (Part 1)",
+      "description": "Hello, World!",
+      "date": "2023-03-08",
+      "categories": [
+        "macOS"
+      ],
+      "tags": "xcode, c-plus-plus, hello-world"
+    },
+    {
+      "slug": "threejs",
+      "title": "Three.js",
+      "description": "A JavaScript-based WebGL engine",
+      "date": "2023-03-05",
+      "categories": [
+        "JavaScript",
+        "3D"
+      ],
+      "tags": "three-js, webgl, 3d-graphics"
+    },
+    {
+      "slug": "ngrxentity",
+      "title": "NGRX entity",
+      "description": "json-server",
+      "date": "2023-02-18",
+      "categories": [
+        "Angular"
+      ],
+      "tags": "ngrx-entity, json-server, rest"
+    },
+    {
+      "slug": "ngrxdevtools",
+      "title": "NGRX devtools",
+      "description": "haddley-ngrx",
+      "date": "2023-01-25",
+      "categories": [
+        "Angular"
+      ],
+      "tags": "ngrx, devtools, state-management"
+    },
+    {
+      "slug": "sharepoint2019",
+      "title": "SharePoint 2019",
+      "description": "Azure Portal",
+      "date": "2022-12-31",
+      "categories": [
+        "Microsoft 365"
+      ],
+      "tags": "sharepoint-2019, azure, on-premises, portal"
+    },
+    {
+      "slug": "ngrx",
+      "title": "NGRX",
+      "description": "haddley-ngrx",
+      "date": "2022-11-27",
+      "categories": [
+        "Angular"
+      ],
+      "tags": "ngrx, state-management, redux"
+    },
+    {
+      "slug": "componentframework",
+      "title": "Component Framework",
+      "description": "Component Framework",
+      "date": "2022-08-14",
+      "categories": [
+        "Power Platform",
+        "React"
+      ],
+      "tags": "pcf, component-framework, power-apps, typescript"
+    },
+    {
+      "slug": "azurestorage",
+      "title": "Azure Storage",
+      "description": "Microsoft Azure Storage",
+      "date": "2022-08-13",
+      "categories": [
+        "Azure",
+        "macOS"
+      ],
+      "tags": "blob-storage, cloud-storage, azure-sdk"
+    },
+    {
+      "slug": "purview",
+      "title": "Microsoft Purview",
+      "description": "Retention policy with adaptive scope",
+      "date": "2022-08-03",
+      "categories": [
+        "Microsoft 365"
+      ],
+      "tags": "purview, retention-policy, adaptive-scope, compliance"
+    },
+    {
+      "slug": "powerapps6",
+      "title": "A Custom Connector for Microsoft Graph",
+      "description": "Calling the Microsoft Graph API from a Canvas App",
+      "date": "2022-07-04",
+      "categories": [
+        "Power Platform"
+      ],
+      "tags": "microsoft-graph, custom-connector, canvas-app, power-apps"
+    },
+    {
+      "slug": "machinelearning9",
+      "title": "Machine Learning (Part 9)",
+      "description": "MNIST",
+      "date": "2022-06-17",
+      "categories": [
+        "AI"
+      ],
+      "tags": "machine-learning, mnist, neural-network, image-classification"
+    },
+    {
+      "slug": "machinelearning8",
+      "title": "Machine Learning (Part 8)",
+      "description": "Stealing Baseball Signs",
+      "date": "2022-06-12",
+      "categories": [
+        "AI"
+      ],
+      "tags": "machine-learning, computer-vision, baseball, classification"
+    },
+    {
+      "slug": "machinelearning7",
+      "title": "Machine Learning (Part 7)",
+      "description": "Google Cloud Platform",
+      "date": "2022-06-11",
+      "categories": [
+        "AI"
+      ],
+      "tags": "machine-learning, google-cloud, automl, gcp"
+    },
+    {
+      "slug": "machinelearning6",
+      "title": "Machine Learning (Part 6)",
+      "description": "Splitting into training and test dataframes",
+      "date": "2022-06-11",
+      "categories": [
+        "AI"
+      ],
+      "tags": "machine-learning, pandas, train-test-split, scikit-learn"
+    },
+    {
+      "slug": "machinelearning5",
+      "title": "Machine Learning (Part 5)",
+      "description": "Excel",
+      "date": "2022-06-11",
+      "categories": [
+        "AI"
+      ],
+      "tags": "machine-learning, excel, data-analysis, prediction"
+    },
+    {
+      "slug": "machinelearning4",
+      "title": "Machine Learning (Part 4)",
+      "description": "Colab",
+      "date": "2022-06-08",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "machine-learning, google-colab, jupyter-notebook"
+    },
+    {
+      "slug": "machinelearning3",
+      "title": "Machine Learning (Part 3)",
+      "description": "Creating models",
+      "date": "2022-06-05",
+      "categories": [
+        "AI"
+      ],
+      "tags": "machine-learning, model-training, tensorflow, keras"
+    },
+    {
+      "slug": "machinelearning2",
+      "title": "Machine Learning (Part 2)",
+      "description": "What apps can be written quickly?",
+      "date": "2022-06-05",
+      "categories": [
+        "AI"
+      ],
+      "tags": "machine-learning, tensorflow, javascript, ml5"
+    },
+    {
+      "slug": "machinelearning1",
+      "title": "Machine Learning (Part 1)",
+      "description": "Hexapawn and Yolo",
+      "date": "2022-06-05",
+      "categories": [
+        "AI"
+      ],
+      "tags": "machine-learning, hexapawn, yolo, object-detection"
+    },
+    {
+      "slug": "ateamstabsharepointwebpartforonedrive",
+      "title": "A Teams App SharePoint Web Part for One Drive",
+      "description": "The SharePoint Framework (SPFx) can be used to create SharePoint Web Parts and Teams Applications",
+      "date": "2022-05-29",
+      "categories": [
+        "Microsoft 365",
+        "React",
+        "TypeScript"
+      ],
+      "tags": "teams, sharepoint-framework, spfx, one-drive"
+    },
+    {
+      "slug": "javascriptgraph",
+      "title": "JavaScript and Microsoft Graph",
+      "description": "A console application that calls the Microsoft Graph API",
+      "date": "2022-05-28",
+      "categories": [
+        "JavaScript",
+        "Microsoft 365"
+      ],
+      "tags": "microsoft-graph, console-app, api"
+    },
+    {
+      "slug": "microsoftgraph",
+      "title": "Microsoft Graph",
+      "description": "Graph Explorer",
+      "date": "2022-05-26",
+      "categories": [
+        "Microsoft 365"
+      ],
+      "tags": "microsoft-graph, graph-explorer, api, microsoft-365"
+    },
+    {
+      "slug": "powerautomate",
+      "title": "Power Automate",
+      "description": "Automating Team Creation",
+      "date": "2022-05-04",
+      "categories": [
+        "Power Platform"
+      ],
+      "tags": "power-automate, teams, microsoft-teams, automation"
+    },
+    {
+      "slug": "webxr",
+      "title": "WebXR",
+      "description": "Create Augmented Reality Experiences.",
+      "date": "2022-04-22",
+      "categories": [
+        "3D"
+      ],
+      "tags": "webxr, augmented-reality, mixed-reality, browser"
+    },
+    {
+      "slug": "leaflet",
+      "title": "Leaflet",
+      "description": "An open-source JavaScript libraryfor mobile-friendly interactive maps",
+      "date": "2022-02-21",
+      "categories": [
+        "Maps"
+      ],
+      "tags": "gis, mapping-library, cartography, geospatial"
+    },
+    {
+      "slug": "webcomponents",
+      "title": "Web Components",
+      "description": "A set of web technologies that allow users to create HTML elements.",
+      "date": "2022-02-10",
+      "categories": [
+        "JavaScript"
+      ],
+      "tags": "web-components, html-elements, shadow-dom"
+    },
+    {
+      "slug": "phaser",
+      "title": "Phaser",
+      "description": "2D game framework used for making HTML5 games",
+      "date": "2022-01-23",
+      "categories": [
+        "JavaScript"
+      ],
+      "tags": "phaser, html5-games, game-dev"
+    },
+    {
+      "slug": "nextjs5",
+      "title": "Next.js (Part 5)",
+      "description": "next-pwa and ionic",
+      "date": "2022-01-13",
+      "categories": [
+        "React"
+      ],
+      "tags": "next-js, pwa, ionic, mobile"
+    },
+    {
+      "slug": "ionic",
+      "title": "Ionic",
+      "description": "Cross-platform apps.Powered by the Web.",
+      "date": "2021-12-22",
+      "categories": [
+        "React",
+        "Mobile",
+        "TypeScript"
+      ],
+      "tags": "pouchdb,couchdb,offline"
+    },
+    {
+      "slug": "mysql",
+      "title": "MySQL",
+      "description": "Connecting to MySQL from JavaScript",
+      "date": "2021-11-14",
+      "categories": [
+        "SQL"
+      ],
+      "tags": "mysql, javascript, database, node"
+    },
+    {
+      "slug": "nextjs4",
+      "title": "Next.js (Part 4)",
+      "description": "Deploying to Azure",
+      "date": "2021-11-11",
+      "categories": [
+        "React",
+        "Azure"
+      ],
+      "tags": "next-js, deployment, azure-static-web-apps"
+    },
+    {
+      "slug": "nextjs3",
+      "title": "Next.js (Part 3)",
+      "description": "API routes and next-auth",
+      "date": "2021-11-07",
+      "categories": [
+        "React"
+      ],
+      "tags": "next-js, api-routes, next-auth, authentication"
+    },
+    {
+      "slug": "nextjs2",
+      "title": "Next.js (Part 2)",
+      "description": "getStaticProps, getServerSideProps, getStaticPaths and useSWR",
+      "date": "2021-11-06",
+      "categories": [
+        "React"
+      ],
+      "tags": "next-js, get-static-props, swr"
+    },
+    {
+      "slug": "nextjs1",
+      "title": "Next.js (Part 1)",
+      "description": "The React Framework for Production",
+      "date": "2021-11-05",
+      "categories": [
+        "React"
+      ],
+      "tags": "next-js, framework, ssr"
+    },
+    {
+      "slug": "sails3",
+      "title": "Sails (Part 3)",
+      "description": "Sails and the Amazon Elastic Kubernetes Service",
+      "date": "2021-10-13",
+      "categories": [
+        "DevOps"
+      ],
+      "tags": "sails-js, amazon-eks, kubernetes, node"
+    },
+    {
+      "slug": "sails2",
+      "title": "Sails (Part 2)",
+      "description": "Sails and the Azure Cosmos DB API for MongoDB",
+      "date": "2021-10-12",
+      "categories": [
+        "DevOps",
+        "Azure"
+      ],
+      "tags": "sails-js, cosmos-db, mongodb"
+    },
+    {
+      "slug": "sails1",
+      "title": "Sails (Part 1)",
+      "description": "Azure DevOps and Sails.",
+      "date": "2021-10-12",
+      "categories": [
+        "DevOps",
+        "Azure"
+      ],
+      "tags": "sails-js, azure-devops, node, mvc"
+    },
+    {
+      "slug": "amazonfargate",
+      "title": "Amazon Fargate",
+      "description": "Pay-as-you-go",
+      "date": "2021-09-20",
+      "categories": [
+        "AWS",
+        "DevOps"
+      ],
+      "tags": "fargate, serverless-containers, ecs"
+    },
+    {
+      "slug": "amazonecs",
+      "title": "Amazon Elastic Container Service",
+      "description": "Deploying to Amazon ECS",
+      "date": "2021-09-20",
+      "categories": [
+        "AWS",
+        "DevOps"
+      ],
+      "tags": "amazon-ecs, docker, containers"
+    },
+    {
+      "slug": "aspnetcoreawseks",
+      "title": "Deploying a .NET Core Web API to Amazon EKS",
+      "description": "Deploying a .NET Core Web API to Amazon Elastic Kubernetes Service (Amazon EKS)",
+      "date": "2021-08-16",
+      "categories": [
+        "AWS",
+        "DevOps",
+        ".NET"
+      ],
+      "tags": "c#, kubernetes, containers, deployment"
+    },
+    {
+      "slug": "amazoneks",
+      "title": "Amazon Elastic Kubernetes Service",
+      "description": "Deploying to Amazon EKS",
+      "date": "2021-08-12",
+      "categories": [
+        "AWS",
+        "DevOps"
+      ],
+      "tags": "amazon-eks, kubernetes, containers"
+    },
+    {
+      "slug": "customconnectorsappregistrations",
+      "title": "Power Apps, Custom Connectors and Application Registrations",
+      "description": "Power Apps, Custom Connectors and Application Registrations",
+      "date": "2021-08-09",
+      "categories": [
+        "Power Platform",
+        "Azure"
+      ],
+      "tags": "custom-connector, app-registration, azure-ad, oauth"
+    },
+    {
+      "slug": "api-management",
+      "title": "Power Apps, Custom Connectors and API Management",
+      "description": "Azure API Management Service",
+      "date": "2021-08-02",
+      "categories": [
+        "Power Platform",
+        "Azure"
+      ],
+      "tags": "power-apps, custom-connector, api-management"
+    },
+    {
+      "slug": "pwa",
+      "title": "Progressive Web Application",
+      "description": "Building a Progressive Web Application",
+      "date": "2021-07-24",
+      "categories": [
+        "Mobile"
+      ],
+      "tags": "pwa, progressive-web-app, service-worker"
+    },
+    {
+      "slug": "powerappsapplication",
+      "title": "A Power Apps Application",
+      "description": "Power Apps Application.",
+      "date": "2021-07-14",
+      "categories": [
+        "Power Platform"
+      ],
+      "tags": "power-apps, canvas-app, application, power-platform"
+    },
+    {
+      "slug": "customcomponents",
+      "title": "Power Apps Custom Components",
+      "description": "Create reusable Power Apps Components.",
+      "date": "2021-07-13",
+      "categories": [
+        "Power Platform"
+      ],
+      "tags": "pcf, custom-components, power-apps, reusable"
+    },
+    {
+      "slug": "powerappswithrest",
+      "title": "A Power Apps Custom Connector",
+      "description": "Create a GitHub Repository",
+      "date": "2021-06-27",
+      "categories": [
+        "Power Platform"
+      ],
+      "tags": "power-apps, custom-connector, rest-api, github"
+    },
+    {
+      "slug": "teamstoolkitspfx",
+      "title": "Teams Toolkit with SPFx",
+      "description": "Get started with Microsoft Teams app development using SPFx.",
+      "date": "2021-05-30",
+      "categories": [
+        "Microsoft 365"
+      ],
+      "tags": "teams-toolkit, spfx, sharepoint-framework, teams"
+    },
+    {
+      "slug": "teamstoolkit",
+      "title": "Teams Toolkit with Azure",
+      "description": "Get started with Microsoft Teams app development using Azure.",
+      "date": "2021-05-29",
+      "categories": [
+        "Microsoft 365",
+        "Azure"
+      ],
+      "tags": "teams-toolkit, teams-app, development"
+    },
+    {
+      "slug": "devopsstarterazuredevops",
+      "title": "DevOps Starter Azure DevOps",
+      "description": "Everything you need for developing, deploying, and monitoring your application.",
+      "date": "2021-04-26",
+      "categories": [
+        "DevOps",
+        "Azure"
+      ],
+      "tags": "azure-devops, pipelines, ci-cd, starter"
+    },
+    {
+      "slug": "devopsstartergithubactions",
+      "title": "DevOps Starter GitHub actions",
+      "description": "Everything you need for developing, deploying, and monitoring your application.",
+      "date": "2021-04-25",
+      "categories": [
+        "DevOps",
+        "Azure"
+      ],
+      "tags": "github-actions, ci-cd, deployment"
+    },
+    {
+      "slug": "azure-active-directory2",
+      "title": "Azure Active Directory (Part 2)",
+      "description": "Microsoft Azure Active Directory Authentication.",
+      "date": "2021-04-17",
+      "categories": [
+        "Azure"
+      ],
+      "tags": "azure-ad, active-directory, authentication, sso"
+    },
+    {
+      "slug": "dotnet-core-part1",
+      "title": ".NET Core (Part 1)",
+      "description": "Creating a REST API Service using Microsoft cross-platform framework.",
+      "date": "2021-04-10",
+      "categories": [
+        ".NET"
+      ],
+      "tags": "dotnet-core, rest-api, web-api, c-sharp"
+    },
+    {
+      "slug": "spring-boot",
+      "title": "Java Spring Boot (Part 1)",
+      "description": "Spring based Java Applications that you can just run.",
+      "date": "2021-04-06",
+      "categories": [
+        "Java"
+      ],
+      "tags": "spring-boot, rest-api, web"
+    },
+    {
+      "slug": "azure-active-directory",
+      "title": "Azure Active Directory (Part 1)",
+      "description": "Using Microsoft Identity to Authenticate Users.",
+      "date": "2021-03-29",
+      "categories": [
+        "Azure",
+        "Microsoft 365"
+      ],
+      "tags": "teams, identity, authentication, aad"
+    },
+    {
+      "slug": "mssqlserver2",
+      "title": "Microsoft SQL Server (Part 2)",
+      "description": "T-SQL, Stored Procedures and Snapshot Isolation.",
+      "date": "2021-03-27",
+      "categories": [
+        "SQL"
+      ],
+      "tags": "sql-server, t-sql, stored-procedures, snapshot-isolation"
+    },
+    {
+      "slug": "mssqlserver",
+      "title": "Microsoft SQL Server (Part 1)",
+      "description": "Microsoft SQL Server 2019 Docker image.",
+      "date": "2021-03-14",
+      "categories": [
+        "SQL"
+      ],
+      "tags": "sql-server, docker, database, t-sql"
+    },
+    {
+      "slug": "internetofthings2",
+      "title": "Internet of Things (Part 2)",
+      "description": "Node-RED can publish messages to a MQTT broker and subscribe to MQTT topics.",
+      "date": "2021-03-06",
+      "categories": [
+        "IOT"
+      ],
+      "tags": "node-red, mqtt, raspberry-pi"
+    },
+    {
+      "slug": "internetofthings1",
+      "title": "Internet of Things (Part 1)",
+      "description": "ESP8266 is a low-cost Wi-Fi microchip, with a full TCP/IP stack and microcontroller capability.",
+      "date": "2021-03-03",
+      "categories": [
+        "IOT"
+      ],
+      "tags": "esp8266, wifi, microcontroller, arduino"
+    },
+    {
+      "slug": "webvr",
+      "title": "WebVR",
+      "description": "Create Virtual Reality Experiences.",
+      "date": "2021-03-02",
+      "categories": [
+        "3D"
+      ],
+      "tags": "webvr, virtual-reality, three-js, browser"
+    },
+    {
+      "slug": "graphql",
+      "title": "GraphQL",
+      "description": "GraphQL is a query and manipulation language for APIs.",
+      "date": "2021-03-01",
+      "categories": [
+        "JavaScript"
+      ],
+      "tags": "graphql, api-design, query-language, schema"
+    },
+    {
+      "slug": "dockerbuildx",
+      "title": "Docker Buildx",
+      "description": "Build multi-platform Docker images.",
+      "date": "2021-03-01",
+      "categories": [
+        "DevOps"
+      ],
+      "tags": "docker-buildx, multi-platform, arm64, containers"
+    },
+    {
+      "slug": "nuget",
+      "title": "NuGet C#",
+      "description": "Create, publish and consume a NuGet package using C#.",
+      "date": "2021-02-27",
+      "categories": [
+        ".NET",
+        "DevOps"
+      ],
+      "tags": "nuget, c-sharp, package, dotnet"
+    },
+    {
+      "slug": "npmcc",
+      "title": "npm C++",
+      "description": "Create and publish an npm module using C++.",
+      "date": "2021-02-26",
+      "categories": [
+        "DevOps"
+      ],
+      "tags": "npm, c-plus-plus, native-addon, node"
+    },
+    {
+      "slug": "npm",
+      "title": "npm JavaScript",
+      "description": "Create and publish an npm module using JavaScript.",
+      "date": "2021-02-25",
+      "categories": [
+        "DevOps"
+      ],
+      "tags": "npm, javascript, package, publishing"
+    },
+    {
+      "slug": "m365commandlineinterface",
+      "title": "Microsoft 365 command line interface",
+      "description": "Manage Microsoft 365 tenants and SharePoint Framework projects",
+      "date": "2021-02-22",
+      "categories": [
+        "Microsoft 365"
+      ],
+      "tags": "m365-cli, sharepoint-framework, powershell, cli"
+    },
+    {
+      "slug": "sharepointsitedesignsandsitescripts",
+      "title": "SharePoint site designs and site scripts",
+      "description": "SharePoint users and administrators have long appreciated the opportunity to reuse SharePoint Site Templates.",
+      "date": "2021-02-15",
+      "categories": [
+        "Microsoft 365"
+      ],
+      "tags": "site-designs, site-scripts, sharepoint, templates"
+    },
+    {
+      "slug": "sharepointwebpart2",
+      "title": "SharePoint Web Part (Part 2)",
+      "description": "How to create and publish a SharePoint Web Part",
+      "date": "2021-02-14",
+      "categories": [
+        "Microsoft 365"
+      ],
+      "tags": "sharepoint-framework, spfx, web-part, deploy"
+    },
+    {
+      "slug": "sharepointwebpart1",
+      "title": "SharePoint Web Part (Part 1)",
+      "description": "How to create and publish a SharePoint Web Part",
+      "date": "2021-02-11",
+      "categories": [
+        "Microsoft 365"
+      ],
+      "tags": "sharepoint-framework, spfx, web-part, react"
+    },
+    {
+      "slug": "apigateway",
+      "title": "API Gateway",
+      "description": "How to publish a collection of microservices using an API Gateway.",
+      "date": "2021-02-10",
+      "categories": [
+        "DevOps"
+      ],
+      "tags": "api-gateway, microservices, architecture"
+    },
+    {
+      "slug": "reactusestateuseeffect",
+      "title": "React useState and useEffect",
+      "description": "Create a React app using the useState and useEffect hook.",
+      "date": "2021-02-08",
+      "categories": [
+        "React"
+      ],
+      "tags": "usestate, useeffect, hooks"
+    },
+    {
+      "slug": "restapiservice",
+      "title": "REST",
+      "description": "Creating a REST API Service using Node and Express",
+      "date": "2021-02-06",
+      "categories": [
+        "JavaScript"
+      ],
+      "tags": "rest-api, node, express"
+    },
+    {
+      "slug": "kubernetes",
+      "title": "Kubernetes",
+      "description": "Kubernetes is a platform for managing containerized workloads.",
+      "date": "2021-02-06",
+      "categories": [
+        "DevOps"
+      ],
+      "tags": "kubernetes, k8s, containers, orchestration"
+    },
+    {
+      "slug": "docker",
+      "title": "Docker",
+      "description": "Docker is an easy way to create, manage, and deliver applications.",
+      "date": "2021-02-06",
+      "categories": [
+        "DevOps"
+      ],
+      "tags": "docker, containers, dockerfile, cli"
+    }
+  ],
+  "generatedAt": "2026-06-12T16:27:59.790Z"
+}

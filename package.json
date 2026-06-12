@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/sync-images.js",
+    "prebuild": "node scripts/sync-images.js && node scripts/generate-agent-data.mjs",
+    "generate-agent-data": "node scripts/generate-agent-data.mjs",
     "build": "next build",
     "start": "npx serve@latest out",
     "lint": "eslint",
@@ -16,6 +17,7 @@
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
+    "@mlc-ai/web-llm": "^0.2.84",
     "@next/mdx": "^15.5.3",
     "@types/mdx": "^2.0.13",
     "autoprefixer": "^10.4.21",

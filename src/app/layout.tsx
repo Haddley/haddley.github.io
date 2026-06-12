@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import Layout from "@/components/Layout";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import BlogAgentLoader from "@/components/BlogAgentLoader";
 
 const jost = Jost({
   subsets: ["latin"],
@@ -38,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth">
       <head>
         {/* eslint-disable @next/next/no-css-tags */}
         {/* Original Mobirise CSS files */}
@@ -72,7 +73,16 @@ export default function RootLayout({
         )}
       </head>
       <body className={`${jost.className} antialiased`}>
+        {/* Register COI service worker for SharedArrayBuffer on GitHub Pages */}
+        <Script id="coi-sw" strategy="beforeInteractive">{`
+          if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/coi-serviceworker.js').then(function() {
+              if (!window.crossOriginIsolated) { location.reload(); }
+            });
+          }
+        `}</Script>
         <Layout>{children}</Layout>
+        <BlogAgentLoader />
         {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
           <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
         )}
