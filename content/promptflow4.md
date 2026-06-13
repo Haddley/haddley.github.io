@@ -1,6 +1,6 @@
 ---
 title: "Prompt Flow (Part 4)"
-description: "Planning"
+description: "Using Semantic Kernel's planner to automatically orchestrate multiple AI plugins so an agent can combine them to achieve a user's goal"
 date: "2024-08-24"
 categories: ["AI"]
 tags: "prompt-flow, planning, azure-ai, llmops"

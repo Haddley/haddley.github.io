@@ -1,6 +1,6 @@
 ---
 title: "Claude Code (Part 2)"
-description: "Memory"
+description: "Using CLAUDE.md to give Claude Code persistent memory about your project — setup, conventions, and rules that Claude reads automatically every session"
 date: "2026-01-21"
 categories: ["AI"]
 image: "/assets/images/claudecode/Claude_AI_symbol.svg"

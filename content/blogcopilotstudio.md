@@ -1,6 +1,6 @@
 ---
 title: "Blog Copilot Studio"
-description: "Blog Copilot"
+description: "Building a Business Central extension that lets BC users query this blog using a Copilot Studio chatbot backed by post content"
 date: "2024-03-24"
 categories: ["Microsoft Dynamics","Business Central","Power Platform","AI"]
 tags: "copilot-studio, microsoft-copilot, business-central"

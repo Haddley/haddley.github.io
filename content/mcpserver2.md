@@ -1,6 +1,6 @@
 ---
 title: "Model Context Protocol (Part 2)"
-description: "Business Central"
+description: "Building a Model Context Protocol (MCP) server for Microsoft Business Central to give Claude Code access to BC data and APIs"
 date: "2025-09-21"
 categories: ["Business Central","AI"]
 tags: "claude-code, mcp, model-context-protocol, business-central"

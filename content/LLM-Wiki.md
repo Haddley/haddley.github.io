@@ -1,6 +1,6 @@
 ---
 title: "LLM Wiki"
-description: "Karpathy's LLM Wiki"
+description: "Building a Claude Code-powered personal knowledge base inspired by Andrej Karpathy's LLM Wiki — ingesting PDFs, emails, and notes into structured wiki pages"
 date: "2026-04-20"
 categories: ["AI"]
 image: "/assets/images/LLMWiki/obsidian-logo.svg"

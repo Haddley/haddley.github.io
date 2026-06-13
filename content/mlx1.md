@@ -1,6 +1,6 @@
 ---
 title: "MLX 1"
-description: "An Apple Project"
+description: "Using Apple's MLX framework to run and fine-tune large language models efficiently on Apple Silicon Macs"
 date: "2025-11-06"
 categories: ["AI"]
 tags: "mlx, apple-silicon, fine-tuning, local-llm"

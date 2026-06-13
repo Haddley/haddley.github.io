@@ -1,6 +1,6 @@
 ---
 title: "Context Injection"
-description: "Context Injection"
+description: "How context injection works in LLM applications — injecting relevant documents, data, and instructions into the model's prompt at runtime for RAG"
 date: "2023-07-19"
 categories: ["AI"]
 tags: "context-injection, prompt-engineering, llm, rag"

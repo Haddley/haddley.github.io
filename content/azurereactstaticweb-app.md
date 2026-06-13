@@ -1,6 +1,6 @@
 ---
 title: "Azure React Static Web App"
-description: "Azure Static Web App"
+description: "Creating a React app, testing it locally, pushing to GitHub, and publishing to Azure Static Web Apps for free hosting"
 date: "2024-01-08"
 categories: ["React","Azure"]
 tags: "static, azure-static-web-apps, deployment, hosting"

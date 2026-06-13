@@ -1,6 +1,6 @@
 ---
 title: "Stable Diffusion"
-description: "Stable Diffusion"
+description: "Generating images from text descriptions using Stable Diffusion via Jupyter Notebook and Hugging Face — a deep learning text-to-image model"
 date: "2023-08-01"
 categories: ["AI"]
 tags: "stable-diffusion, image-generation, generative-ai, diffusion-models"

@@ -1,6 +1,6 @@
 ---
 title: "Meta"
-description: "LM Studio"
+description: "Testing local large language models on a laptop using LM Studio — download, run, and chat with Llama and other open-source models without any API keys"
 date: "2023-08-05"
 categories: ["AI"]
 tags: "lm-studio, local-llm, llama, meta-llama"

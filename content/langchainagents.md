@@ -1,6 +1,6 @@
 ---
 title: "LangChain Agents"
-description: "Agents"
+description: "Building LangChain agents that use LLMs as a reasoning engine to choose which tools to call, execute them, and loop until the task is complete"
 date: "2024-08-25"
 categories: ["AI","Python"]
 tags: "langchain, agents, llm"

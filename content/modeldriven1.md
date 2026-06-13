@@ -1,6 +1,6 @@
 ---
 title: "Model Driven Apps (Part 1)"
-description: "Users"
+description: "Setting up users and Dataverse security roles in a Model-Driven Power App — assigning roles to each user based on their duties"
 date: "2023-09-18"
 categories: ["Power Platform"]
 tags: "model-driven-app, power-apps, users, dataverse"

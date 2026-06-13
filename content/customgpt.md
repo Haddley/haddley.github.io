@@ -1,6 +1,6 @@
 ---
 title: "OpenAI"
-description: "What are Custom GPTs?"
+description: "Creating custom ChatGPT assistants (GPTs) for specific purposes using OpenAI's GPT builder — no coding required, available with ChatGPT Plus"
 date: "2025-10-03"
 categories: ["AI"]
 tags: "chatgpt, custom-gpt, openai, gpt-4"

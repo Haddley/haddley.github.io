@@ -1,6 +1,6 @@
 ---
 title: "Machine Learning (Part 5)"
-description: "Excel"
+description: "Predicting glucose levels from age using a machine learning regression model in Python, starting from an Excel dataset"
 date: "2022-06-11"
 categories: ["AI"]
 tags: "machine-learning, excel, data-analysis, prediction"

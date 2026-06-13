@@ -1,6 +1,6 @@
 ---
 title: "Prompt Flow (Part 5)"
-description: "Quick start"
+description: "Creating and deploying an AI chat application with Azure Prompt Flow and LangChain in Azure AI Studio"
 date: "2024-09-01"
 categories: ["AI"]
 tags: "prompt-flow, azure-ai-studio, quick-start"

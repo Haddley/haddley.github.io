@@ -1,6 +1,6 @@
 ---
 title: "Claude Code (Part 11)"
-description: "ollama launch claude"
+description: "Running Claude Code against a local Ollama model (qwen3-coder:30b) instead of the Anthropic API — no API costs and no data leaving the machine"
 date: "2026-04-10"
 categories: ["AI"]
 image: "/assets/images/claudecode/Claude_AI_symbol.svg"

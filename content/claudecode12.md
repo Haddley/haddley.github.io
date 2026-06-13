@@ -1,6 +1,6 @@
 ---
 title: "Claude Code (Part 12)"
-description: "deepseek api"
+description: "Using the DeepSeek API with Claude Code as a cheap, fast alternative to local models"
 date: "2026-05-08"
 categories: ["AI"]
 image: "/assets/images/claudecode/Claude_AI_symbol.svg"

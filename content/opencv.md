@@ -1,6 +1,6 @@
 ---
 title: "Object Detection"
-description: "Object Detection"
+description: "Installing OpenCV on a Raspberry Pi and using Python to build a computer vision object detection pipeline"
 date: "2023-07-25"
 categories: ["AI","IOT"]
 tags: "opencv, object-detection, computer-vision, python"

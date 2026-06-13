@@ -1,6 +1,6 @@
 ---
 title: "Prompt Flow (Part 2)"
-description: "Docker"
+description: "Running an Azure Prompt Flow application inside a Docker container using the VS Code Prompt Flow extension"
 date: "2024-06-12"
 categories: ["AI"]
 tags: "prompt-flow, docker, azure-ai-studio, containers"

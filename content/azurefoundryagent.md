@@ -1,6 +1,6 @@
 ---
 title: "Azure Foundry"
-description: "Creating an Agent"
+description: "Creating an AI agent in Azure AI Foundry backed by Azure AI Search with vector embeddings for retrieval-augmented generation (RAG)"
 date: "2026-03-10"
 categories: ["AI", "Azure"]
 image: "/assets/images/azuresearchvector/posts-meta.svg"

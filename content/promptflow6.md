@@ -1,6 +1,6 @@
 ---
 title: "Prompt Flow (Part 6)"
-description: "Quick start"
+description: "Building a multi-step AI chat workflow in VS Code using Prompt Flow, Semantic Kernel, and Planner"
 date: "2024-09-01"
 categories: ["AI"]
 tags: "prompt-flow, azure-ai-studio, evaluation"

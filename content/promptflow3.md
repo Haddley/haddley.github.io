@@ -1,6 +1,6 @@
 ---
 title: "Prompt Flow (Part 3)"
-description: "Semantic Kernel"
+description: "Using Microsoft Semantic Kernel to build a plugin-based AI agent that generates jokes, called from an Azure Prompt Flow node"
 date: "2024-08-24"
 categories: ["AI"]
 tags: "prompt-flow, semantic-kernel, azure, llm"

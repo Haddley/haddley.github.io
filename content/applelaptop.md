@@ -1,6 +1,6 @@
 ---
 title: "Apple MacBook"
-description: "Anaconda Setup"
+description: "Setting up Anaconda on a MacBook for data science and machine learning — installs Python, the Conda package manager, and Jupyter Notebook"
 date: "2023-07-25"
 categories: ["Python","macOS"]
 tags: "anaconda, python-environment, setup, package-manager"

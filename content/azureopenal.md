@@ -1,6 +1,6 @@
 ---
 title: "Azure AI service"
-description: "Azure OpenAl"
+description: "Using Azure OpenAI Service to access OpenAI's GPT-4 and GPT-3.5 models through the Azure AI Foundry portal"
 date: "2025-02-04"
 categories: ["Azure","AI"]
 tags: "azure-openai, azure-ai-foundry, openai"

@@ -222,7 +222,7 @@ export default function BlogAgent() {
       case 'search_posts': {
         const results = searchPosts(args.query ?? '', posts);
         return results.length
-          ? JSON.stringify(results.map(p => ({ url: `/posts/${p.slug}/`, title: p.title, description: p.description })))
+          ? JSON.stringify(results.map(p => ({ url: `/posts/${p.slug}/`, title: p.title, description: p.description, tags: p.tags })))
           : 'No matching posts found.';
       }
       case 'get_posts_by_category': {

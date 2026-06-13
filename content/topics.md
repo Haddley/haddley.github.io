@@ -1,6 +1,6 @@
 ---
 title: "Copilot Studio"
-description: "Topics"
+description: "Building a Copilot Studio topic that calls the Business Central connector to return live company data from Dynamics 365 in a chatbot"
 date: "2024-02-25"
 categories: ["Power Platform"]
 tags: "copilot-studio, topics, chatbot, conversation-topics"

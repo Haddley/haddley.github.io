@@ -1,6 +1,6 @@
 ---
 title: "Claude Code (Part 3)"
-description: "Context"
+description: "Managing Claude Code's context window with ESC ESC rewind, /compact summarisation, and /clear reset to keep long sessions accurate"
 date: "2026-01-21"
 categories: ["AI"]
 image: "/assets/images/claudecode/Claude_AI_symbol.svg"

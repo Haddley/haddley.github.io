@@ -1,6 +1,6 @@
 ---
 title: "Machine Learning (Part 9)"
-description: "MNIST"
+description: "Training a neural network on the MNIST handwritten digit dataset — 60,000 training and 10,000 test images for image classification with TensorFlow"
 date: "2022-06-17"
 categories: ["AI"]
 tags: "machine-learning, mnist, neural-network, image-classification"
