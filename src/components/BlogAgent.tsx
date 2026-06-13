@@ -22,7 +22,6 @@ const MODELS = [
   { id: 'Qwen2.5-7B-Instruct-q4f16_1-MLC',   label: 'Qwen2.5 7B',   size: '~4 GB',   note: 'Best quality' },
   { id: 'Qwen2.5-3B-Instruct-q4f16_1-MLC',   label: 'Qwen2.5 3B',   size: '~2 GB',   note: 'Balanced' },
   { id: 'Qwen2.5-1.5B-Instruct-q4f16_1-MLC', label: 'Qwen2.5 1.5B', size: '~1 GB',   note: 'Fast' },
-  { id: 'Qwen2.5-0.5B-Instruct-q4f16_1-MLC', label: 'Qwen2.5 0.5B', size: '~500 MB', note: 'Tiny' },
 ] as const;
 type ModelId = typeof MODELS[number]['id'];
 const NAVY = '#1a2b4b';
@@ -156,7 +155,7 @@ export default function BlogAgent() {
       const saved = localStorage.getItem('agent-model');
       if (MODELS.some(m => m.id === saved)) return saved as ModelId;
     }
-    return 'Qwen2.5-3B-Instruct-q4f16_1-MLC';
+    return 'Qwen2.5-1.5B-Instruct-q4f16_1-MLC';
   });
 
   const engineRef = useRef<MLCEngine | null>(null);

@@ -16,19 +16,18 @@ I’ve added a conversational AI assistant to this blog — you’ll see the cha
 
 ## Model
 
-The agent offers four model sizes, all quantised to 4-bit weights and cached in the browser after the first download. WebGPU is required, so it works in Chrome and Edge on GPU-enabled devices.
+The agent offers three model sizes, all quantised to 4-bit weights and cached in the browser after the first download. WebGPU is required, so it works in Chrome and Edge on GPU-enabled devices.
 
 | Model | Download | Note |
 |-------|----------|------|
 | Qwen2.5-7B-Instruct-q4f16_1-MLC | ~4 GB | Best quality |
 | Qwen2.5-3B-Instruct-q4f16_1-MLC | ~2 GB | Balanced |
 | Qwen2.5-1.5B-Instruct-q4f16_1-MLC | ~1 GB | Fast |
-| Qwen2.5-0.5B-Instruct-q4f16_1-MLC | ~500 MB | Tiny |
 
-The 3B is the default — a good balance of speed and reliability for multi-step tool use. Larger models give better reasoning quality; the 0.5B and 1.5B are available for faster loads on lower-end hardware.
+The 1.5B is the default — a fast download and a reasonable starting point. Larger models give better reasoning quality and more reliable multi-step tool use.
 
 ![](assets/images/localagent/Screenshot-2026-06-12-at-5.36.49-PM.png)
-*The model selector showing all four options, with Qwen2.5 3B selected as the default*
+*The model selector showing all three options, with Qwen2.5 1.5B selected as the default*
 
 ## Why Quantization?
 
@@ -41,7 +40,6 @@ A standard Qwen2.5-7B model in 16-bit precision weighs around 14 GB. Most consum
 | 7B | ~14 GB | ~4 GB |
 | 3B | ~6 GB | ~2 GB |
 | 1.5B | ~3 GB | ~1 GB |
-| 0.5B | ~1 GB | ~500 MB |
 
 WebLLM only supports its own pre-compiled MLC model variants — you can't load an arbitrary Hugging Face checkpoint directly. The MLC compilation step converts the model to run on WebGPU and bakes in the quantization, so the quantized format isn't optional; it's a requirement of the platform.
 
@@ -54,7 +52,7 @@ The agent is a React component (`BlogAgent.tsx`) in the Next.js layout, so it ap
 ```typescript
 const { CreateMLCEngine } = await import('@mlc-ai/web-llm');
 const engine = await CreateMLCEngine(
-  selectedModel, // one of: 7B / 3B / 1.5B / 0.5B
+  selectedModel, // one of: 7B / 3B / 1.5B
   { initProgressCallback: ({ progress, text }) => setLoadState(...) },
   { context_window_size: 8192 },
 );
@@ -122,7 +120,7 @@ round 0 — search_posts {"query": "Java related"}   ✓
 round 1 — text: "Here are the Java related posts: …"
 ```
 
-The 3B is the default for this reason — it handles multi-step tool use reliably. The 0.5B and 1.5B are available for faster loads but may struggle on follow-up questions.
+The 3B handles multi-step tool use reliably. The 1.5B is the default — smaller and faster to load — but may struggle on follow-up questions.
 
 ## References
 
@@ -131,5 +129,4 @@ The 3B is the default for this reason — it handles multi-step tool use reliabl
 - [Qwen2.5-7B-Instruct on Hugging Face](https://huggingface.co/Qwen/Qwen2.5-7B-Instruct)
 - [Qwen2.5-3B-Instruct on Hugging Face](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct)
 - [Qwen2.5-1.5B-Instruct on Hugging Face](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct)
-- [Qwen2.5-0.5B-Instruct on Hugging Face](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct)
 - [WebGPU API — MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGPU_API)
