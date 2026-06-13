@@ -325,7 +325,7 @@ export default function BlogAgent() {
       }
 
       const currentSlug = postMatch?.[1] ?? '';
-      const contextHint = `[Current page: ${pageContext}. RULES (priority order): (1) On a post page: if the user asks to summarise, explain, or asks about this post — call get_post_content with slug "${currentSlug}" immediately. Do not search. (2) For category questions use get_posts_by_category; for keyword queries use search_posts. Never name or link a post without calling a tool first. (3) Never call get_post_content to browse or list — only when reading a specific post. (4) Never repeat the same tool call in one turn. Be concise.]`;
+      const contextHint = `[Current page: ${pageContext}. RULES (priority order): (1) On a post page: if the user asks to summarise, explain, or asks about THIS post (and does not name a different post) — call get_post_content with slug "${currentSlug}" immediately. Do not search. If the user names a specific different post, use search_posts to find it first. (2) For category questions use get_posts_by_category; for keyword queries use search_posts. Never name or link a post without calling a tool first. (3) Never call get_post_content to browse or list — only when reading a specific post. (4) Never repeat the same tool call in one turn. Be concise.]`;
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const apiMsgs: any[] = [
