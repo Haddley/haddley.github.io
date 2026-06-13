@@ -74,7 +74,7 @@
     {
       "slug": "claudecode12",
       "title": "Claude Code (Part 12)",
-      "description": "deepseek api",
+      "description": "Using the DeepSeek API with Claude Code as a cheap, fast alternative to local models",
       "date": "2026-05-08",
       "categories": [
         "AI"
@@ -124,7 +124,7 @@
     {
       "slug": "LLMWiki",
       "title": "LLM Wiki",
-      "description": "Karpathy's LLM Wiki",
+      "description": "Building a Claude Code-powered personal knowledge base inspired by Andrej Karpathy's LLM Wiki — ingesting PDFs, emails, and notes into structured wiki pages",
       "date": "2026-04-20",
       "categories": [
         "AI"
@@ -134,7 +134,7 @@
     {
       "slug": "claudecode11",
       "title": "Claude Code (Part 11)",
-      "description": "ollama launch claude",
+      "description": "Running Claude Code against a local Ollama model (qwen3-coder:30b) instead of the Anthropic API — no API costs and no data leaving the machine",
       "date": "2026-04-10",
       "categories": [
         "AI"
@@ -165,7 +165,7 @@
     {
       "slug": "azurefoundryagent",
       "title": "Azure Foundry",
-      "description": "Creating an Agent",
+      "description": "Creating an AI agent in Azure AI Foundry backed by Azure AI Search with vector embeddings for retrieval-augmented generation (RAG)",
       "date": "2026-03-10",
       "categories": [
         "AI",
@@ -208,7 +208,7 @@
     {
       "slug": "claudecode8",
       "title": "Claude Code (Part 8)",
-      "description": "Vibe Coding",
+      "description": "Building a Scheme-like LISP interpreter with a Jupyter-style notebook UI in pure HTML/CSS/JS — guided entirely by Claude Code from first prompt to deployed app",
       "date": "2026-02-01",
       "categories": [
         "AI"
@@ -218,7 +218,7 @@
     {
       "slug": "claudecode7",
       "title": "Claude Code (Part 7)",
-      "description": "MCP Servers",
+      "description": "Adding the Context7 MCP server to Claude Code to inject real-time, version-specific library docs and reduce stale training data errors",
       "date": "2026-01-26",
       "categories": [
         "AI"
@@ -228,7 +228,7 @@
     {
       "slug": "claudecode6",
       "title": "Claude Code (Part 6)",
-      "description": "Slash Commands",
+      "description": "Creating custom slash commands in .claude/commands/ to package project-specific context and workflows into a single reusable shortcut",
       "date": "2026-01-21",
       "categories": [
         "AI"
@@ -238,7 +238,7 @@
     {
       "slug": "claudecode5",
       "title": "Claude Code (Part 5)",
-      "description": "Planning & Thinking",
+      "description": "Using Claude Code's Plan Mode (read-only exploration before edits) and Extended Thinking to handle complex tasks more carefully",
       "date": "2026-01-21",
       "categories": [
         "AI"
@@ -248,7 +248,7 @@
     {
       "slug": "claudecode4",
       "title": "Claude Code (Part 4)",
-      "description": "Tools & Permissions",
+      "description": "Pre-approving trusted shell commands and file operations in Claude Code's settings to stop repetitive permission prompts",
       "date": "2026-01-21",
       "categories": [
         "AI"
@@ -258,7 +258,7 @@
     {
       "slug": "claudecode3",
       "title": "Claude Code (Part 3)",
-      "description": "Context",
+      "description": "Managing Claude Code's context window with ESC ESC rewind, /compact summarisation, and /clear reset to keep long sessions accurate",
       "date": "2026-01-21",
       "categories": [
         "AI"
@@ -268,7 +268,7 @@
     {
       "slug": "claudecode2",
       "title": "Claude Code (Part 2)",
-      "description": "Memory",
+      "description": "Using CLAUDE.md to give Claude Code persistent memory about your project — setup, conventions, and rules that Claude reads automatically every session",
       "date": "2026-01-21",
       "categories": [
         "AI"
@@ -278,7 +278,7 @@
     {
       "slug": "claudecode1",
       "title": "Claude Code (Part 1)",
-      "description": "Getting started",
+      "description": "Getting started with Claude Code — Anthropic's agentic CLI that reads your project files, writes and edits code, and runs commands from a single prompt",
       "date": "2026-01-20",
       "categories": [
         "AI"
@@ -358,7 +358,7 @@
     {
       "slug": "mlx1",
       "title": "MLX 1",
-      "description": "An Apple Project",
+      "description": "Using Apple's MLX framework to run and fine-tune large language models efficiently on Apple Silicon Macs",
       "date": "2025-11-06",
       "categories": [
         "AI"
@@ -414,7 +414,7 @@
     {
       "slug": "customgpt",
       "title": "OpenAI",
-      "description": "What are Custom GPTs?",
+      "description": "Creating custom ChatGPT assistants (GPTs) for specific purposes using OpenAI's GPT builder — no coding required, available with ChatGPT Plus",
       "date": "2025-10-03",
       "categories": [
         "AI"
@@ -437,7 +437,7 @@
     {
       "slug": "mcpserver2",
       "title": "Model Context Protocol (Part 2)",
-      "description": "Business Central",
+      "description": "Building a Model Context Protocol (MCP) server for Microsoft Business Central to give Claude Code access to BC data and APIs",
       "date": "2025-09-21",
       "categories": [
         "Business Central",
@@ -575,7 +575,7 @@
     {
       "slug": "azureopenal",
       "title": "Azure AI service",
-      "description": "Azure OpenAl",
+      "description": "Using Azure OpenAI Service to access OpenAI's GPT-4 and GPT-3.5 models through the Azure AI Foundry portal",
       "date": "2025-02-04",
       "categories": [
         "Azure",
@@ -663,7 +663,7 @@
     {
       "slug": "promptflow6",
       "title": "Prompt Flow (Part 6)",
-      "description": "Quick start",
+      "description": "Building a multi-step AI chat workflow in VS Code using Prompt Flow, Semantic Kernel, and Planner",
       "date": "2024-09-01",
       "categories": [
         "AI"
@@ -673,7 +673,7 @@
     {
       "slug": "promptflow5",
       "title": "Prompt Flow (Part 5)",
-      "description": "Quick start",
+      "description": "Creating and deploying an AI chat application with Azure Prompt Flow and LangChain in Azure AI Studio",
       "date": "2024-09-01",
       "categories": [
         "AI"
@@ -693,7 +693,7 @@
     {
       "slug": "langchainagents",
       "title": "LangChain Agents",
-      "description": "Agents",
+      "description": "Building LangChain agents that use LLMs as a reasoning engine to choose which tools to call, execute them, and loop until the task is complete",
       "date": "2024-08-25",
       "categories": [
         "AI",
@@ -704,7 +704,7 @@
     {
       "slug": "promptflow4",
       "title": "Prompt Flow (Part 4)",
-      "description": "Planning",
+      "description": "Using Semantic Kernel's planner to automatically orchestrate multiple AI plugins so an agent can combine them to achieve a user's goal",
       "date": "2024-08-24",
       "categories": [
         "AI"
@@ -714,7 +714,7 @@
     {
       "slug": "promptflow3",
       "title": "Prompt Flow (Part 3)",
-      "description": "Semantic Kernel",
+      "description": "Using Microsoft Semantic Kernel to build a plugin-based AI agent that generates jokes, called from an Azure Prompt Flow node",
       "date": "2024-08-24",
       "categories": [
         "AI"
@@ -756,7 +756,7 @@
     {
       "slug": "promptflow2",
       "title": "Prompt Flow (Part 2)",
-      "description": "Docker",
+      "description": "Running an Azure Prompt Flow application inside a Docker container using the VS Code Prompt Flow extension",
       "date": "2024-06-12",
       "categories": [
         "AI"
@@ -766,7 +766,7 @@
     {
       "slug": "promptflow1",
       "title": "Prompt Flow (Part 1)",
-      "description": "Setup",
+      "description": "Setting up Azure Prompt Flow in VS Code to create and run sample AI applications — compared with LangChain-based alternatives",
       "date": "2024-06-11",
       "categories": [
         "AI"
@@ -821,7 +821,7 @@
     {
       "slug": "blogcopilotstudio",
       "title": "Blog Copilot Studio",
-      "description": "Blog Copilot",
+      "description": "Building a Business Central extension that lets BC users query this blog using a Copilot Studio chatbot backed by post content",
       "date": "2024-03-24",
       "categories": [
         "Microsoft Dynamics",
@@ -933,7 +933,7 @@
     {
       "slug": "topics",
       "title": "Copilot Studio",
-      "description": "Topics",
+      "description": "Building a Copilot Studio topic that calls the Business Central connector to return live company data from Dynamics 365 in a chatbot",
       "date": "2024-02-25",
       "categories": [
         "Power Platform"
@@ -989,7 +989,7 @@
     {
       "slug": "azurereactstaticweb-app",
       "title": "Azure React Static Web App",
-      "description": "Azure Static Web App",
+      "description": "Creating a React app, testing it locally, pushing to GitHub, and publishing to Azure Static Web Apps for free hosting",
       "date": "2024-01-08",
       "categories": [
         "React",
@@ -1258,7 +1258,7 @@
     {
       "slug": "modeldriven1",
       "title": "Model Driven Apps (Part 1)",
-      "description": "Users",
+      "description": "Setting up users and Dataverse security roles in a Model-Driven Power App — assigning roles to each user based on their duties",
       "date": "2023-09-18",
       "categories": [
         "Power Platform"
@@ -1376,7 +1376,7 @@
     {
       "slug": "lmstudio",
       "title": "Meta",
-      "description": "LM Studio",
+      "description": "Testing local large language models on a laptop using LM Studio — download, run, and chat with Llama and other open-source models without any API keys",
       "date": "2023-08-05",
       "categories": [
         "AI"
@@ -1407,7 +1407,7 @@
     {
       "slug": "stablediffusion",
       "title": "Stable Diffusion",
-      "description": "Stable Diffusion",
+      "description": "Generating images from text descriptions using Stable Diffusion via Jupyter Notebook and Hugging Face — a deep learning text-to-image model",
       "date": "2023-08-01",
       "categories": [
         "AI"
@@ -1417,7 +1417,7 @@
     {
       "slug": "opencv",
       "title": "Object Detection",
-      "description": "Object Detection",
+      "description": "Installing OpenCV on a Raspberry Pi and using Python to build a computer vision object detection pipeline",
       "date": "2023-07-25",
       "categories": [
         "AI",
@@ -1428,7 +1428,7 @@
     {
       "slug": "applelaptop",
       "title": "Apple MacBook",
-      "description": "Anaconda Setup",
+      "description": "Setting up Anaconda on a MacBook for data science and machine learning — installs Python, the Conda package manager, and Jupyter Notebook",
       "date": "2023-07-25",
       "categories": [
         "Python",
@@ -1500,7 +1500,7 @@
     {
       "slug": "contextinjection",
       "title": "Context Injection",
-      "description": "Context Injection",
+      "description": "How context injection works in LLM applications — injecting relevant documents, data, and instructions into the model's prompt at runtime for RAG",
       "date": "2023-07-19",
       "categories": [
         "AI"
@@ -1833,7 +1833,7 @@
     {
       "slug": "machinelearning9",
       "title": "Machine Learning (Part 9)",
-      "description": "MNIST",
+      "description": "Training a neural network on the MNIST handwritten digit dataset — 60,000 training and 10,000 test images for image classification with TensorFlow",
       "date": "2022-06-17",
       "categories": [
         "AI"
@@ -1873,7 +1873,7 @@
     {
       "slug": "machinelearning5",
       "title": "Machine Learning (Part 5)",
-      "description": "Excel",
+      "description": "Predicting glucose levels from age using a machine learning regression model in Python, starting from an Excel dataset",
       "date": "2022-06-11",
       "categories": [
         "AI"
@@ -1883,7 +1883,7 @@
     {
       "slug": "machinelearning4",
       "title": "Machine Learning (Part 4)",
-      "description": "Colab",
+      "description": "Using Google Colab (Jupyter Notebooks in the cloud) to run machine learning experiments with GPU access and no local setup required",
       "date": "2022-06-08",
       "categories": [
         "AI",
@@ -2492,5 +2492,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-06-12T23:41:02.782Z"
+  "generatedAt": "2026-06-13T00:33:10.790Z"
 }
