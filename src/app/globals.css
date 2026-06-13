@@ -445,6 +445,24 @@ pre code {
   }
 }
 
+/* ===== BLOG AGENT CHAT PROSE ===== */
+.agent-prose { font-size: inherit; line-height: inherit; }
+.agent-prose p { margin: 0 0 8px; }
+.agent-prose p:last-child { margin-bottom: 0; }
+.agent-prose ul, .agent-prose ol { margin: 4px 0 8px; padding-left: 18px; }
+.agent-prose ul { list-style-type: disc; }
+.agent-prose ol { list-style-type: decimal; }
+.agent-prose li { margin-bottom: 4px; line-height: 1.55; }
+.agent-prose li:last-child { margin-bottom: 0; }
+.agent-prose a { color: #1a6ec0; text-decoration: underline; }
+.agent-prose a:hover { color: #0f4f99; }
+.agent-prose strong { font-weight: 600; }
+.agent-prose code { background: rgba(0,0,0,0.07); padding: 1px 5px; border-radius: 3px; font-size: 0.88em; font-family: ui-monospace, monospace; }
+.agent-prose pre { background: rgba(0,0,0,0.07); padding: 8px 10px; border-radius: 5px; overflow-x: auto; margin: 0 0 8px; font-size: 0.88em; }
+.agent-prose pre code { background: transparent; padding: 0; }
+.agent-prose > *:first-child { margin-top: 0; }
+.agent-prose > *:last-child { margin-bottom: 0; }
+
 /* ===== NAVY THEME ===== */
 :root {
   --navy: #0f1e3d;

@@ -136,8 +136,9 @@ function MessageContent({ text, onNavigate }: { text: string; onNavigate: (href:
   return (
     <div
       ref={ref}
+      className="agent-prose"
       dangerouslySetInnerHTML={{ __html: html }}
-      style={{ lineHeight: 1.5 }}
+      style={{ lineHeight: 1.55 }}
     />
   );
 }
