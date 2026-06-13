@@ -47,6 +47,12 @@ You have access to these tools:
 ${defs}
 </tools>
 
+TOOL SELECTION RULES:
+- Use search_posts for any keyword query — specific tools, technologies, topics, or names (e.g. "deepseek api", "mcp server", "breakout game").
+- Use get_posts_by_category ONLY when the user explicitly asks about a category (e.g. "Any Java posts?", "show me Azure posts").
+- Use list_categories ONLY when the user asks what categories exist.
+- Never call list_categories for a keyword search.
+
 STRICT OUTPUT RULES:
 1. When you need to call a tool, output ONLY a JSON code block — no text before or after it:
 \`\`\`json
@@ -59,6 +65,11 @@ STRICT OUTPUT RULES:
 Example — user asks "Any Python posts?":
 \`\`\`json
 {"name": "get_posts_by_category", "arguments": {"category": "Python"}}
+\`\`\`
+
+Example — user asks "deepseek api" or "mcp server" or any specific keyword:
+\`\`\`json
+{"name": "search_posts", "arguments": {"query": "deepseek api"}}
 \`\`\``;
 }
 
