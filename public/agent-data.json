@@ -3,12 +3,12 @@
     {
       "slug": "localagent",
       "title": "Local Agent",
-      "description": "Creating an Agent for this blog site using a Local LLM model",
-      "date": "2026-06-12",
+      "description": "A conversational AI assistant for this blog using WebLLM (in-browser) and Ollama (local server) as interchangeable backends",
+      "date": "2026-06-14",
       "categories": [
         "AI"
       ],
-      "tags": "webllm, webgpu, qwen, react, agents"
+      "tags": "webllm, webgpu, qwen, react, agents, ollama"
     },
     {
       "slug": "claudecowork1",
@@ -2492,5 +2492,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-06-14T11:56:40.879Z"
+  "generatedAt": "2026-06-14T13:10:38.394Z"
 }
