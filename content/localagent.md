@@ -5,7 +5,6 @@ date: "2026-06-14"
 categories: ["AI"]
 image: "/assets/images/localagent/webllm-local-agent.svg"
 tags: "webllm, webgpu, qwen, react, agents, ollama"
-hidden: false
 slug: "localagent"
 ---
 
@@ -42,7 +41,6 @@ Three model sizes are available, all quantized to 4-bit weights:
 | Qwen2.5-1.5B-Instruct-q4f16_1-MLC | ~1 GB | Fast · WebLLM |
 
 The 1.5B is the default — a fast first download and a reasonable starting point. Larger models give better reasoning and more reliable multi-step tool use.
-
 
 ![](assets/images/localagent/Screenshot-2026-06-14-at-10.18.57-AM.png)
 *The model selector on the public site — only the three WebLLM options appear, since using Ollama requires the site to be hosted on localhost*
@@ -150,11 +148,12 @@ const engine = await CreateMLCEngine(
 For Ollama, a thin fetch wrapper is created at load time:
 
 ```typescript
+let controller: AbortController | null = null;
 const engine = {
   chat: {
     completions: {
       create: async ({ messages }) => {
-        const controller = new AbortController();
+        controller = new AbortController();
         const r = await fetch('http://localhost:11434/v1/chat/completions', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -217,9 +216,7 @@ Because WebLLM's native tools API only supports a fixed set of Hermes models, I 
 - [WebLLM — In-browser LLM inference with WebGPU](https://github.com/mlc-ai/web-llm)
 - [MLC AI — Machine Learning Compilation](https://mlc.ai)
 - [Ollama](https://ollama.com)
-- [Qwen2.5 on Hugging Face](https://huggingface.co/collections/Qwen/qwen25-66e81a666513e518adb90d9)
-- [Qwen3.5 on Hugging Face](https://huggingface.co/collections/Qwen/qwen35-68244983efb75e4f8de2f1e0)
-- [Qwen3.5 on Ollama](https://ollama.com/library/qwen3.5)
+- [Qwen2.5-7B-Instruct-q4f16_1-MLC on Hugging Face](https://huggingface.co/mlc-ai/Qwen2.5-7B-Instruct-q4f16_1-MLC)
 - [Jina AI — web search API](https://jina.ai)
 - [WebGPU API — MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGPU_API)
 - [Private Network Access — Chrome for Developers](https://developer.chrome.com/blog/private-network-access-update)
