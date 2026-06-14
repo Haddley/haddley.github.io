@@ -43,8 +43,9 @@ Three model sizes are available, all quantized to 4-bit weights:
 
 The 1.5B is the default — a fast first download and a reasonable starting point. Larger models give better reasoning and more reliable multi-step tool use.
 
-![](assets/images/localagent/Screenshot-2026-06-12-at-5.36.49-PM.png)
-*The model selector on the public site — three WebLLM options, Qwen2.5 1.5B selected by default*
+
+![](assets/images/localagent/Screenshot-2026-06-14-at-10.18.57-AM.png)
+*The model selector on the public site — only the three WebLLM options appear, since using Ollama requires the site to be hosted on localhost*
 
 ![](assets/images/localagent/Screenshot-2026-06-12-at-12.20.46-PM.png)
 *Loading the model for the first time — progress bar fills as the weights download to the browser cache*
@@ -153,17 +154,18 @@ const engine = {
   chat: {
     completions: {
       create: async ({ messages }) => {
+        const controller = new AbortController();
         const r = await fetch('http://localhost:11434/v1/chat/completions', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ model: 'qwen3.5:4b', messages, stream: false }),
+          body: JSON.stringify({ model: modelName, messages, stream: false }),
           signal: controller.signal,
         });
         return r.json();
       },
     },
   },
-  interruptGenerate: () => controller.abort(),
+  interruptGenerate: () => controller?.abort(),
 };
 ```
 
