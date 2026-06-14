@@ -317,9 +317,17 @@ export default function BlogAgent() {
           return `Failed to load post "${slug}".`;
         }
       }
-      case 'navigate_to_post':
+      case 'navigate_to_post': {
+        const target = posts.find(p => p.slug === args.slug);
+        if (!target) {
+          const close = posts.find(p => p.slug.startsWith(args.slug?.slice(0, 6) ?? ''));
+          return close
+            ? `No post with slug "${args.slug}". Did you mean "${close.slug}"? Call search_posts to find the correct slug before navigating.`
+            : `No post with slug "${args.slug}". Call search_posts to find the correct slug before navigating.`;
+        }
         router.push(`/posts/${args.slug}/`);
         return `Navigating to "${args.slug}".`;
+      }
       case 'web_search': {
         if (!JINA_KEY) return 'Web search is not configured (NEXT_PUBLIC_JINA_API_KEY not set).';
         try {
@@ -382,7 +390,7 @@ export default function BlogAgent() {
       }
 
       const currentSlug = postMatch?.[1] ?? '';
-      const contextHint = `[Current page: ${pageContext}. RULES (priority order): (1) If the user names a specific post title (e.g. "Summarize X post", "tell me about Y") — that is a DIFFERENT post. Use search_posts to find it. NEVER assume it is the current page. (2) Only use get_post_content with slug "${currentSlug}" when the user refers to THIS page with words like "this post", "this", "the current post", or asks with no post name. (3) For category questions use get_posts_by_category; for other keyword queries use search_posts. Never name or link a post without calling a tool first. (4) Never repeat the same tool call in one turn. Be concise.]`;
+      const contextHint = `[Current page: ${pageContext}. RULES (priority order): (1) If the user names a specific post title (e.g. "Summarize X post", "tell me about Y") — that is a DIFFERENT post. Use search_posts to find it. NEVER assume it is the current page. (2) Only use get_post_content with slug "${currentSlug}" when the user refers to THIS page with words like "this post", "this", "the current post", or asks with no post name. (3) For category questions use get_posts_by_category; for other keyword queries use search_posts. Never name or link a post without calling a tool first — always use the exact slug returned by the tool, never guess or paraphrase it. (4) Never repeat the same tool call in one turn. Be concise.]`;
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const apiMsgs: any[] = [
