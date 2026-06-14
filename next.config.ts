@@ -14,18 +14,22 @@ const nextConfig: NextConfig = {
     }
     return config;
   },
-  // COOP/COEP headers for dev server (GitHub Pages uses coi-serviceworker.js instead)
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
-          { key: 'Cross-Origin-Embedder-Policy', value: 'require-corp' },
-        ],
-      },
-    ];
-  },
 };
+
+// COOP/COEP headers are only needed for the dev server — WebGPU/SharedArrayBuffer
+// requires them, but the static export relies on coi-serviceworker.js instead.
+// Attaching headers() unconditionally causes a Next.js export warning, so we
+// only add them outside of production builds.
+if (process.env.NODE_ENV !== 'production') {
+  nextConfig.headers = async () => [
+    {
+      source: '/(.*)',
+      headers: [
+        { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
+        { key: 'Cross-Origin-Embedder-Policy', value: 'require-corp' },
+      ],
+    },
+  ];
+}
 
 export default nextConfig;
