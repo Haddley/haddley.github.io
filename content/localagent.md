@@ -4,7 +4,7 @@ description: "Creating an Agent for this blog site using a Local LLM model"
 date: "2026-06-12"
 categories: ["AI"]
 image: "/assets/images/localagent/webllm-local-agent.svg"
-tags: "webllm, webgpu, qwen, react, agents"
+tags: "webllm, webgpu, qwen, react, agents, ollama"
 hidden: false
 slug: "localagent"
 ---
@@ -16,7 +16,9 @@ I’ve added a conversational AI assistant to this blog — you’ll see the cha
 
 ## Model
 
-The agent offers three model sizes, all quantised to 4-bit weights and cached in the browser after the first download. WebGPU is required, so it works in Chrome and Edge on GPU-enabled devices.
+The agent supports two backends: **WebLLM** (runs entirely in the browser via WebGPU) and **Ollama** (a local server running on native hardware). The WebLLM models are quantised to 4-bit weights and cached in the browser after the first download. WebGPU is required for WebLLM, so it works in Chrome and Edge on GPU-enabled devices.
+
+**WebLLM models**
 
 | Model | Download | Note |
 |-------|----------|------|
@@ -24,10 +26,69 @@ The agent offers three model sizes, all quantised to 4-bit weights and cached in
 | Qwen2.5-3B-Instruct-q4f16_1-MLC | ~2 GB | Balanced |
 | Qwen2.5-1.5B-Instruct-q4f16_1-MLC | ~1 GB | Fast |
 
-The 1.5B is the default — a fast download and a reasonable starting point. Larger models give better reasoning quality and more reliable multi-step tool use.
+**Ollama models**
+
+| Model | Note |
+|-------|------|
+| qwen3.5:0.8b | Fastest · Ollama |
+| qwen3.5:2b | Fast · Ollama |
+| qwen3.5:4b | Balanced · Ollama |
+| qwen3.5:9b | Good quality · Ollama |
+| qwen3.5:27b | Best quality · Ollama |
+
+The WebLLM 1.5B is the default — a fast browser download and a reasonable starting point. Larger models give better reasoning quality and more reliable multi-step tool use.
 
 ![](assets/images/localagent/Screenshot-2026-06-12-at-5.36.49-PM.png)
 *The model selector showing all three options, with Qwen2.5 1.5B selected as the default*
+
+## Ollama Option
+
+As an alternative to WebLLM, the agent also supports [Ollama](https://ollama.com) — a local model server that runs on native hardware rather than in the browser. Instead of downloading a model into the browser's GPU memory, Ollama runs as a background process and exposes an OpenAI-compatible API at `http://localhost:11434`.
+
+### Installing Ollama
+
+I installed Ollama with Homebrew:
+
+```bash
+brew install ollama
+```
+
+Then I started the server:
+
+```bash
+ollama serve
+```
+
+And pulled a model to use with the agent:
+
+```bash
+ollama pull qwen3.5:4b
+```
+
+I started with 4B as a reasonable balance of quality and speed. All five Qwen3.5 sizes are listed in the model table above.
+
+### CORS Configuration
+
+The live blog is served over HTTPS from `haddley.github.io`. By default Ollama only accepts requests from `localhost`, so I needed to add the blog's origin before the browser could reach it:
+
+```bash
+OLLAMA_ORIGINS=https://haddley.github.io ollama serve
+```
+
+Without this the browser blocks the request with a CORS error. When running the site locally at `http://localhost:3000` no extra configuration is needed — that origin is allowed by default.
+
+### WebLLM vs Ollama
+
+| | WebLLM | Ollama |
+|---|---|---|
+| **Setup** | None — loads in the browser | Install Ollama, pull a model, configure CORS |
+| **Browser support** | Chrome / Edge with WebGPU | Any browser |
+| **Model sizes** | Up to 7B (browser VRAM limits) | Up to 27B (Qwen3.5) |
+| **Inference speed** | Depends on GPU via WebGPU | Native — generally faster |
+| **Works for visitors** | Yes | Only if they have Ollama running |
+| **Model storage** | Browser cache (per device) | Local disk, shared across apps |
+
+WebLLM is better for visitors to the public site — it just works with no software to install. Ollama is better when running the site locally or if you already have it set up, giving access to larger, faster models without the browser download.
 
 ## Why Quantization?
 

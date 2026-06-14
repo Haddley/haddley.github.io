@@ -11,7 +11,6 @@ declare global {
   }
 }
 const gaEvent = (name: string, params?: Record<string, unknown>) => window.gtag?.('event', name, params);
-import type { MLCEngine } from '@mlc-ai/web-llm';
 import {
   TOOL_DEFINITIONS, CATEGORIES,
   searchPosts, getPostsByCategory, getCategoryUrl,
@@ -19,12 +18,25 @@ import {
 } from '@/lib/agent-tools';
 
 const MODELS = [
-  { id: 'Qwen2.5-7B-Instruct-q4f16_1-MLC',   label: 'Qwen2.5 7B',   size: '~4 GB',   note: 'Best quality' },
-  { id: 'Qwen2.5-3B-Instruct-q4f16_1-MLC',   label: 'Qwen2.5 3B',   size: '~2 GB',   note: 'Balanced' },
-  { id: 'Qwen2.5-1.5B-Instruct-q4f16_1-MLC', label: 'Qwen2.5 1.5B', size: '~1 GB',   note: 'Fast' },
+  { id: 'Qwen2.5-7B-Instruct-q4f16_1-MLC',   label: 'Qwen2.5 7B',   size: '~4 GB', note: 'Best quality · WebLLM' },
+  { id: 'Qwen2.5-3B-Instruct-q4f16_1-MLC',   label: 'Qwen2.5 3B',   size: '~2 GB', note: 'Balanced · WebLLM' },
+  { id: 'Qwen2.5-1.5B-Instruct-q4f16_1-MLC', label: 'Qwen2.5 1.5B', size: '~1 GB', note: 'Fast · WebLLM' },
+  { id: 'ollama:qwen3.5:0.8b',                label: 'Qwen3.5 0.8B', size: '',      note: 'Fastest · Ollama' },
+  { id: 'ollama:qwen3.5:2b',                  label: 'Qwen3.5 2B',   size: '',      note: 'Fast · Ollama' },
+  { id: 'ollama:qwen3.5:4b',                  label: 'Qwen3.5 4B',   size: '',      note: 'Balanced · Ollama' },
+  { id: 'ollama:qwen3.5:9b',                  label: 'Qwen3.5 9B',   size: '',      note: 'Good quality · Ollama' },
+  { id: 'ollama:qwen3.5:27b',                 label: 'Qwen3.5 27B',  size: '',      note: 'Best quality · Ollama' },
 ] as const;
 type ModelId = typeof MODELS[number]['id'];
 const NAVY = '#1a2b4b';
+const OLLAMA_BASE = 'http://localhost:11434/v1';
+const isOllama = (id: string) => id.startsWith('ollama:');
+const ollamaModelName = (id: string) => id.replace(/^ollama:/, '');
+
+type InferenceEngine = {
+  chat: { completions: { create(opts: { messages: unknown[] }): Promise<{ choices: Array<{ message: { content: string | null } }> }> } };
+  interruptGenerate(): void;
+};
 const JINA_KEY = process.env.NEXT_PUBLIC_JINA_API_KEY ?? '';
 
 // Only offer web_search when a Jina API key is configured — avoids the model
@@ -159,7 +171,7 @@ export default function BlogAgent() {
     return 'Qwen2.5-1.5B-Instruct-q4f16_1-MLC';
   });
 
-  const engineRef = useRef<MLCEngine | null>(null);
+  const engineRef = useRef<InferenceEngine | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   // Full API message history including tool calls/results — not in state to avoid
   // stale-closure issues inside the async agent loop. Drives model context.
@@ -200,10 +212,48 @@ export default function BlogAgent() {
 
   const loadModel = async () => {
     if (window.__mlcEngineOverride) {
-      engineRef.current = window.__mlcEngineOverride as MLCEngine;
+      engineRef.current = window.__mlcEngineOverride as InferenceEngine;
       setLoadState({ status: 'ready', progress: 100, text: '' });
       return;
     }
+
+    if (isOllama(selectedModel)) {
+      setLoadState({ status: 'loading', progress: 0, text: 'Connecting to Ollama…' });
+      try {
+        const ping = await fetch(`http://localhost:11434/api/version`);
+        if (!ping.ok) throw new Error('Ollama is not running. Start it with: ollama serve');
+        const modelName = ollamaModelName(selectedModel);
+        let currentController: AbortController | null = null;
+        engineRef.current = {
+          chat: {
+            completions: {
+              create: async ({ messages }: { messages: unknown[] }) => {
+                currentController = new AbortController();
+                try {
+                  const r = await fetch(`${OLLAMA_BASE}/chat/completions`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ model: modelName, messages, stream: false }),
+                    signal: currentController.signal,
+                  });
+                  if (!r.ok) throw new Error(`Ollama error ${r.status} — is "${modelName}" pulled? Run: ollama pull ${modelName}`);
+                  return r.json();
+                } finally {
+                  currentController = null;
+                }
+              },
+            },
+          },
+          interruptGenerate: () => { currentController?.abort(); },
+        };
+        localStorage.setItem('agent-model', selectedModel);
+        setLoadState({ status: 'ready', progress: 100, text: '' });
+      } catch (err) {
+        setLoadState({ status: 'error', progress: 0, text: err instanceof Error ? err.message : 'Failed to connect to Ollama.' });
+      }
+      return;
+    }
+
     if (!('gpu' in navigator && navigator.gpu)) {
       setLoadState({ status: 'unsupported', progress: 0, text: 'WebGPU is required. Try Chrome or Edge on a GPU-enabled device.' });
       return;
@@ -220,7 +270,7 @@ export default function BlogAgent() {
         },
         {},
       );
-      engineRef.current = engine;
+      engineRef.current = engine as InferenceEngine;
       setLoadState({ status: 'ready', progress: 100, text: '' });
     } catch (err) {
       setLoadState({ status: 'error', progress: 0, text: err instanceof Error ? err.message : 'Failed to load model.' });
@@ -362,7 +412,7 @@ export default function BlogAgent() {
           throw err;
         }
 
-        const rawContent = resp.choices[0].message.content ?? '';
+        const rawContent = (resp.choices[0].message.content ?? '').replace(/<think>[\s\S]*?<\/think>/g, '').trim();
         console.log(`round ${round} — raw:`, rawContent.slice(0, 300));
 
         // Strip preamble text before the first tool call marker — model sometimes narrates first
@@ -511,8 +561,8 @@ export default function BlogAgent() {
               <div style={{ fontWeight: 600, fontSize: 14 }}>Blog AI Assistant</div>
               <div style={{ fontSize: 11, opacity: 0.6, marginTop: 2 }}>
                 {loadState.status === 'ready'
-                  ? `${MODELS.find(m => m.id === selectedModel)?.label ?? 'Qwen2.5'} · local WebGPU`
-                  : 'Powered by WebLLM'}
+                  ? `${MODELS.find(m => m.id === selectedModel)?.label ?? 'Qwen'} · ${isOllama(selectedModel) ? 'local Ollama' : 'local WebGPU'}`
+                  : isOllama(selectedModel) ? 'Powered by Ollama' : 'Powered by WebLLM'}
               </div>
             </div>
             <button
@@ -537,7 +587,7 @@ export default function BlogAgent() {
           {/* Idle: model selector */}
           {loadState.status === 'idle' && (
             <div style={{ padding: 20, fontSize: 13, flexShrink: 0 }}>
-              <div style={{ marginBottom: 10, color: '#555', fontSize: 12 }}>Choose a model (downloaded once, cached in browser):</div>
+              <div style={{ marginBottom: 10, color: '#555', fontSize: 12 }}>Choose a model:</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginBottom: 14 }}>
                 {MODELS.map(m => (
                   <label key={m.id} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', fontSize: 13 }}>
@@ -549,7 +599,7 @@ export default function BlogAgent() {
                       onChange={() => setSelectedModel(m.id)}
                     />
                     <span style={{ fontWeight: 500 }}>{m.label}</span>
-                    <span style={{ color: '#999', fontSize: 11 }}>{m.size} · {m.note}</span>
+                    <span style={{ color: '#999', fontSize: 11 }}>{m.size ? `${m.size} · ` : ''}{m.note}</span>
                   </label>
                 ))}
               </div>
@@ -577,14 +627,16 @@ export default function BlogAgent() {
               ) : (
                 <div>
                   <div style={{ color: '#555', fontSize: 12, marginBottom: 10 }}>
-                    {loadState.progress === 0
-                      ? `Loading ${MODELS.find(m => m.id === selectedModel)?.label ?? 'model'}… (first run ${MODELS.find(m => m.id === selectedModel)?.size ?? ''} download, cached afterwards)`
-                      : loadState.text}
+                    {loadState.text || (isOllama(selectedModel)
+                      ? `Connecting to Ollama (${MODELS.find(m => m.id === selectedModel)?.label})…`
+                      : `Loading ${MODELS.find(m => m.id === selectedModel)?.label ?? 'model'}… (first run ${MODELS.find(m => m.id === selectedModel)?.size ?? ''} download, cached afterwards)`)}
                   </div>
+                  {!isOllama(selectedModel) && (<>
                   <div style={{ background: '#e9ecef', borderRadius: 4, height: 6, overflow: 'hidden' }}>
                     <div style={{ background: NAVY, height: '100%', width: `${loadState.progress}%`, transition: 'width .3s ease' }} />
                   </div>
                   <div style={{ fontSize: 11, color: '#aaa', marginTop: 5 }}>{loadState.progress}%</div>
+                  </>)}
                 </div>
               )}
             </div>
