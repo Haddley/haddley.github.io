@@ -49,11 +49,11 @@ const ACTIVE_TOOLS = JINA_KEY
 
 type ToolDef = typeof ACTIVE_TOOLS[number];
 
-function buildToolSystemPrompt(tools: ToolDef[], postCount: number): string {
+function buildToolSystemPrompt(tools: ToolDef[], postCount: number, categoryCount: number): string {
   const defs = tools
     .map(t => JSON.stringify({ name: t.function.name, description: t.function.description, parameters: t.function.parameters }))
     .join('\n');
-  return `You are the AI assistant for Neil Haddley's developer blog (${postCount} posts, 24 categories). Neil specialises in Azure, Business Central, Power Platform, AI, and web development.
+  return `You are the AI assistant for Neil Haddley's developer blog (${postCount} posts, ${categoryCount} categories). Neil specialises in Azure, Business Central, Power Platform, AI, and web development.
 
 You have access to these tools:
 <tools>
@@ -395,11 +395,14 @@ export default function BlogAgent() {
       }
 
       const currentSlug = postMatch?.[1] ?? '';
-      const contextHint = `[Current page: ${pageContext}. RULES (priority order): (1) If the user names a specific post title (e.g. "Summarize X post", "tell me about Y") — that is a DIFFERENT post. Use search_posts to find it. NEVER assume it is the current page. (2) Only use get_post_content with slug "${currentSlug}" when the user refers to THIS page with words like "this post", "this", "the current post", or asks with no post name. (3) For category questions use get_posts_by_category; for other keyword queries use search_posts. Never name or link a post without calling a tool first — always use the exact slug returned by the tool, never guess or paraphrase it. (4) Never repeat the same tool call in one turn. Be concise.]`;
+      const postPageRule = currentSlug
+        ? `(2) Only use get_post_content with slug "${currentSlug}" when the user refers to THIS page with words like "this post", "this", "the current post", or asks with no post name.`
+        : `(2) You are not on a post page — do not call get_post_content unless the user explicitly names a post.`;
+      const contextHint = `[Current page: ${pageContext}. RULES (priority order): (1) If the user names a specific post title (e.g. "Summarize X post", "tell me about Y") — that is a DIFFERENT post. Use search_posts to find it. NEVER assume it is the current page. ${postPageRule} (3) For category questions use get_posts_by_category; for other keyword queries use search_posts. Never name or link a post without calling a tool first — always use the exact slug returned by the tool, never guess or paraphrase it. (4) Never repeat the same tool call in one turn. Be concise.]`;
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const apiMsgs: any[] = [
-        { role: 'system', content: buildToolSystemPrompt(ACTIVE_TOOLS, posts.length) },
+        { role: 'system', content: buildToolSystemPrompt(ACTIVE_TOOLS, posts.length, CATEGORIES.length) },
         ...apiHistoryRef.current,
         { role: 'user', content: `${contextHint}\n\n${userText}` },
       ];
