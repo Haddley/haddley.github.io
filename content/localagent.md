@@ -207,7 +207,7 @@ Because WebLLM's native tools API only supports a fixed set of Hermes models, I 
 *The agent summarised the post content*
 
 ![](assets/images/localagent/phaser-tool-calls.png)
-*I asked "summarise all Phaser posts" from the home page — DevTools shows Qwen3.5 2B calling search_posts then get_post_content for each result*
+*I asked "summarise all Phaser posts" from the home page — DevTools shows Qwen3.5 9B calling search_posts then get_post_content for each result*
 
 ![](assets/images/localagent/phaser-summary.png)
 *The agent produced a formatted summary of all Phaser posts with links*
