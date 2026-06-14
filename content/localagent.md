@@ -126,8 +126,11 @@ npm run dev
 ![](assets/images/localagent/ollama-conversation.png)
 *I asked "What AI posts are on the blog?" — Qwen3.5 4B called get_posts_by_category and returned a full list with links*
 
-![](assets/images/localagent/ollama-category-summary.png)
-*On the AI category page I asked "Summarize this category" — Qwen3.5 9B summarized all 67 AI posts with key themes and series*
+![](assets/images/localagent/java-category-tool-calls.png)
+*On the Java category page I prompted "summarize all posts in this category" — DevTools shows Qwen3.5 9B calling get_posts_by_category then get_post_content for each of the six posts*
+
+![](assets/images/localagent/java-category-summary.png)
+*After seven rounds of tool use the agent produced a formatted Java Category Summary with links to all six Spring Boot posts*
 
 ## How It Works
 
@@ -201,8 +204,11 @@ Because WebLLM's native tools API only supports a fixed set of Hermes models, I 
 ![](assets/images/localagent/Screenshot-2026-06-12-at-12.38.33-PM.png)
 *The agent summarised the post content*
 
-![](assets/images/localagent/Screenshot-2026-06-12-at-1.32.52-PM.png)
-*I asked to summarise all Phaser posts — the agent searched and returned summaries of each one*
+![](assets/images/localagent/phaser-tool-calls.png)
+*I asked "summarise all Phaser posts" from the home page — DevTools shows Qwen3.5 2B calling search_posts then get_post_content for each result*
+
+![](assets/images/localagent/phaser-summary.png)
+*The agent produced a formatted summary of all Phaser posts with links*
 
 ## References
 
