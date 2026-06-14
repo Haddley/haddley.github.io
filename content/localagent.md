@@ -126,6 +126,9 @@ npm run dev
 ![](assets/images/localagent/ollama-conversation.png)
 *I asked "What AI posts are on the blog?" — Qwen3.5 4B called get_posts_by_category and returned a full list with links*
 
+![](assets/images/localagent/ollama-category-summary.png)
+*On the AI category page I asked "Summarize this category" — Qwen3.5 9B summarized all 67 AI posts with key themes and series*
+
 ## How It Works
 
 The agent is a React component (`BlogAgent.tsx`) mounted in the Next.js layout, so it appears on every page. Post metadata is pre-built at deploy time into `agent-data.json`, which the component fetches when the panel first opens.

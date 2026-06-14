@@ -401,7 +401,7 @@ export default function BlogAgent() {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const turnMsgs: any[] = [userMsg];
 
-      const MAX_TOOL_ROUNDS = 4;
+      const MAX_TOOL_ROUNDS = 8;
       let finalContent = '';
       const calledThisTurn = new Set<string>();
       let contentFetchCount = 0;
@@ -463,7 +463,7 @@ export default function BlogAgent() {
             continue;
           }
           if (tc.name === 'get_post_content') {
-            if (contentFetchCount >= 2) {
+            if (contentFetchCount >= 6) {
               resultParts.push('(content fetch limit reached — summarise from results already available)');
               continue;
             }

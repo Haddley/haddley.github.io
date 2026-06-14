@@ -45,8 +45,7 @@ export function getCategoryUrl(name: string): string {
 export function getPostsByCategory(category: string, posts: PostMeta[]): PostMeta[] {
   const c = category.toLowerCase();
   return posts
-    .filter(p => p.categories.some(cat => cat.toLowerCase() === c))
-    .slice(0, 10);
+    .filter(p => p.categories.some(cat => cat.toLowerCase() === c));
 }
 
 export const TOOL_DEFINITIONS = [
@@ -68,7 +67,7 @@ export const TOOL_DEFINITIONS = [
     type: 'function' as const,
     function: {
       name: 'get_posts_by_category',
-      description: 'Get all posts in a specific category. Returns up to 15 posts, each with a relative url field ready to use as a Markdown link.',
+      description: 'Get all posts in a specific category, each with a relative url field ready to use as a Markdown link.',
       parameters: {
         type: 'object',
         properties: {
