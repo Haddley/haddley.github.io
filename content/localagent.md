@@ -11,7 +11,7 @@ slug: "localagent"
 
 # Adding a Local AI Agent to This Blog
 
-I’ve added a conversational AI assistant to this blog — you’ll see the chat bubble in the bottom-right corner of every page. It works entirely in your browser, with no backend and no API fees, using WebLLM to run a quantized Qwen2.5 model locally via [WebLLM](https://github.com/mlc-ai/web-llm). A modern GPU is required for good performance: on an M-series Mac or a recent dedicated GPU, responses take just a few seconds; on older or integrated graphics, it will be noticeably slower.
+I’ve added a conversational AI assistant to this blog — you’ll see the chat bubble in the bottom-right corner of every page. It supports two local backends: **[WebLLM](https://github.com/mlc-ai/web-llm)**, which runs a quantized Qwen2.5 model directly in the browser via WebGPU with no installation required, and **[Ollama](https://ollama.com)**, which connects to a local Ollama server for larger, faster Qwen3.5 models. The Ollama option only appears when running the site locally — browsers block requests from public HTTPS pages to localhost for security reasons. Either way, there is no backend and no API fees.
 
 
 ## Model
@@ -39,7 +39,7 @@ The agent supports two backends: **WebLLM** (runs entirely in the browser via We
 The WebLLM 1.5B is the default — a fast browser download and a reasonable starting point. Larger models give better reasoning quality and more reliable multi-step tool use.
 
 ![](assets/images/localagent/Screenshot-2026-06-12-at-5.36.49-PM.png)
-*The model selector showing all three options, with Qwen2.5 1.5B selected as the default*
+*The model selector on the public site showing the three WebLLM options, with Qwen2.5 1.5B selected as the default*
 
 ## Ollama Option
 
@@ -87,7 +87,7 @@ Then visit `http://localhost:3000`. Ollama's default origins allow `localhost`, 
 | **Browser support** | Chrome / Edge with WebGPU | Any browser |
 | **Model sizes** | Up to 7B (browser VRAM limits) | Up to 27B (Qwen3.5) |
 | **Inference speed** | Depends on GPU via WebGPU | Native — generally faster |
-| **Works for visitors** | Yes | Only if they have Ollama running |
+| **Works for visitors** | Yes | No — only visible when running the site locally |
 | **Model storage** | Browser cache (per device) | Local disk, shared across apps |
 
 WebLLM is better for visitors to the public site — it just works with no software to install. Ollama is better when running the site locally or if you already have it set up, giving access to larger, faster models without the browser download.
@@ -112,14 +112,37 @@ The quality tradeoff is minimal. At q4f16_1, benchmark scores typically drop by 
 
 The agent is a React component (`BlogAgent.tsx`) in the Next.js layout, so it appears on every page. Tool definitions and helper functions live in `agent-tools.ts`. Post metadata is pre-built at deploy time into `agent-data.json`, which the component fetches when the panel opens.
 
+For WebLLM, the engine is loaded from the browser using MLC:
+
 ```typescript
 const { CreateMLCEngine } = await import('@mlc-ai/web-llm');
 const engine = await CreateMLCEngine(
-  selectedModel, // one of: 7B / 3B / 1.5B
+  selectedModel, // Qwen2.5 7B / 3B / 1.5B
   { initProgressCallback: ({ progress, text }) => setLoadState(...) },
-  { context_window_size: 8192 },
 );
 ```
+
+For Ollama, a thin fetch wrapper is created that implements the same interface:
+
+```typescript
+const engine = {
+  chat: {
+    completions: {
+      create: async ({ messages }) => {
+        const r = await fetch('http://localhost:11434/v1/chat/completions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ model: 'qwen3.5:4b', messages, stream: false }),
+        });
+        return r.json();
+      },
+    },
+  },
+  interruptGenerate: () => { controller?.abort(); },
+};
+```
+
+Both engines expose the same `engine.chat.completions.create()` interface, so the agent loop works identically regardless of backend.
 
 ![](assets/images/localagent/Screenshot-2026-06-12-at-12.20.46-PM.png)
 *The Blog AI Assistant panel opened for the first time, loading the model from the browser cache*
@@ -189,7 +212,10 @@ The 3B handles multi-step tool use reliably. The 1.5B is the default — smaller
 
 - [WebLLM — In-browser LLM inference with WebGPU](https://github.com/mlc-ai/web-llm)
 - [MLC AI — Machine Learning Compilation](https://mlc.ai)
+- [Ollama](https://ollama.com)
+- [Qwen3.5 on Ollama](https://ollama.com/library/qwen3.5)
 - [Qwen2.5-7B-Instruct on Hugging Face](https://huggingface.co/Qwen/Qwen2.5-7B-Instruct)
 - [Qwen2.5-3B-Instruct on Hugging Face](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct)
 - [Qwen2.5-1.5B-Instruct on Hugging Face](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct)
 - [WebGPU API — MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGPU_API)
+- [Private Network Access — Chrome for Developers](https://developer.chrome.com/blog/private-network-access-update)
