@@ -1,7 +1,7 @@
 ---
 title: "Local Agent"
-description: "Creating an Agent for this blog site using a Local LLM model"
-date: "2026-06-12"
+description: "A conversational AI assistant for this blog using WebLLM (in-browser) and Ollama (local server) as interchangeable backends"
+date: "2026-06-14"
 categories: ["AI"]
 image: "/assets/images/localagent/webllm-local-agent.svg"
 tags: "webllm, webgpu, qwen, react, agents, ollama"
@@ -11,7 +11,10 @@ slug: "localagent"
 
 # Adding a Local AI Agent to This Blog
 
-I’ve added a conversational AI assistant to this blog — you’ll see the chat bubble in the bottom-right corner of every page. It supports two local backends: **[WebLLM](https://github.com/mlc-ai/web-llm)**, which runs a quantized Qwen2.5 model directly in the browser via WebGPU with no installation required, and **[Ollama](https://ollama.com)**, which connects to a local Ollama server for larger, faster Qwen3.5 models. The Ollama option only appears when running the site locally — browsers block requests from public HTTPS pages to localhost for security reasons. Either way, there is no backend and no API fees.
+I’ve added a conversational AI assistant to this blog — you’ll see the chat bubble in the bottom-right corner of every page.
+
+![](assets/images/localagent/chat-bubble.png)
+*The 💬 button in the bottom-right opens the assistant panel* It supports two local backends: **[WebLLM](https://github.com/mlc-ai/web-llm)**, which runs a quantized Qwen2.5 model directly in the browser via WebGPU with no installation required, and **[Ollama](https://ollama.com)**, which connects to a local Ollama server for larger, faster Qwen3.5 models. The Ollama option only appears when running the site locally — browsers block requests from public HTTPS pages to localhost for security reasons. Either way, there is no backend and no API fees.
 
 
 ## Model
@@ -38,8 +41,8 @@ The agent supports two backends: **WebLLM** (runs entirely in the browser via We
 
 The WebLLM 1.5B is the default — a fast browser download and a reasonable starting point. Larger models give better reasoning quality and more reliable multi-step tool use.
 
-![](assets/images/localagent/Screenshot-2026-06-12-at-5.36.49-PM.png)
-*The model selector on the public site showing the three WebLLM options, with Qwen2.5 1.5B selected as the default*
+![](assets/images/localagent/ollama-model-selector.png)
+*The model selector when running locally — all eight models visible, WebLLM and Ollama groups, with Qwen2.5 1.5B selected as default*
 
 ## Ollama Option
 
@@ -66,6 +69,12 @@ ollama pull qwen3.5:4b
 ```
 
 I started with 4B as a reasonable balance of quality and speed. All five Qwen3.5 sizes are listed in the model table above.
+
+![](assets/images/localagent/ollama-connected.png)
+*Qwen3.5 4B connected — the header shows "local Ollama" and the chat input is ready*
+
+![](assets/images/localagent/ollama-conversation.png)
+*I asked "What AI posts are on the blog?" — Qwen3.5 4B called get_posts_by_category and returned a full list with links*
 
 ### Running locally
 
