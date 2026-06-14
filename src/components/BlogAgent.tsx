@@ -289,13 +289,13 @@ export default function BlogAgent() {
       case 'search_posts': {
         const results = searchPosts(args.query ?? '', posts);
         return results.length
-          ? JSON.stringify(results.map(p => ({ url: `/posts/${p.slug}/`, title: p.title, description: p.description, tags: p.tags })))
+          ? JSON.stringify(results.map(p => ({ slug: p.slug, url: `/posts/${p.slug}/`, title: p.title, description: p.description, tags: p.tags })))
           : 'No matching posts found.';
       }
       case 'get_posts_by_category': {
         const results = getPostsByCategory(args.category ?? '', posts);
         return results.length
-          ? JSON.stringify(results.map(p => ({ url: `/posts/${p.slug}/`, title: p.title, description: p.description })))
+          ? JSON.stringify(results.map(p => ({ slug: p.slug, url: `/posts/${p.slug}/`, title: p.title, description: p.description })))
           : `No posts in category "${args.category}".`;
       }
       case 'list_categories': {
@@ -306,12 +306,17 @@ export default function BlogAgent() {
         return JSON.stringify(counts);
       }
       case 'get_post_content': {
-        const slug = args.slug ?? args.query ?? '';
+        // Strip URL format in case model passes /posts/slug/ instead of slug
+        const slug = (args.slug ?? args.query ?? '').replace(/^\/posts\//, '').replace(/\/$/, '');
         if (!slug) return 'No slug provided.';
         try {
           const res = await fetch(`/agent-posts/${encodeURIComponent(slug)}.json`);
           if (!res.ok) return `Post "${slug}" not found (${res.status}).`;
           const data = await res.json();
+          // Cap content to keep context manageable when fetching multiple posts
+          if (typeof data.content === 'string' && data.content.length > 3000) {
+            data.content = data.content.slice(0, 3000) + '\n…(truncated)';
+          }
           return JSON.stringify(data);
         } catch {
           return `Failed to load post "${slug}".`;
@@ -479,11 +484,12 @@ export default function BlogAgent() {
         }
 
         const allDuplicates = resultParts.every(r => r.startsWith('You already called'));
+        const isLastRound = round >= MAX_TOOL_ROUNDS - 2;
         apiMsgs.push({
           role: 'user',
           content: allDuplicates
             ? `You have already retrieved the information needed. Answer the user's question in plain text now — do not call any more tools.`
-            : `<tool_response>\n${resultParts.join('\n\n')}\n</tool_response>\nNow answer the user's question in plain text using these results. Do not call any more tools.`,
+            : `<tool_response>\n${resultParts.join('\n\n')}\n</tool_response>\n${isLastRound ? 'Now answer the user\'s question in plain text using these results. Do not call any more tools.' : 'If you need more information, call additional tools. Otherwise answer the user\'s question in plain text.'}`,
         });
       }
 
