@@ -21,17 +21,19 @@ const MODELS = [
   { id: 'Qwen2.5-7B-Instruct-q4f16_1-MLC',   label: 'Qwen2.5 7B',   size: '~4 GB', note: 'Best quality · WebLLM' },
   { id: 'Qwen2.5-3B-Instruct-q4f16_1-MLC',   label: 'Qwen2.5 3B',   size: '~2 GB', note: 'Balanced · WebLLM' },
   { id: 'Qwen2.5-1.5B-Instruct-q4f16_1-MLC', label: 'Qwen2.5 1.5B', size: '~1 GB', note: 'Fast · WebLLM' },
-  { id: 'ollama:qwen3.5:0.8b',                label: 'Qwen3.5 0.8B', size: '',      note: 'Fastest · Ollama' },
-  { id: 'ollama:qwen3.5:2b',                  label: 'Qwen3.5 2B',   size: '',      note: 'Fast · Ollama' },
-  { id: 'ollama:qwen3.5:4b',                  label: 'Qwen3.5 4B',   size: '',      note: 'Balanced · Ollama' },
-  { id: 'ollama:qwen3.5:9b',                  label: 'Qwen3.5 9B',   size: '',      note: 'Good quality · Ollama' },
   { id: 'ollama:qwen3.5:27b',                 label: 'Qwen3.5 27B',  size: '',      note: 'Best quality · Ollama' },
+  { id: 'ollama:qwen3.5:9b',                  label: 'Qwen3.5 9B',   size: '',      note: 'Good quality · Ollama' },
+  { id: 'ollama:qwen3.5:4b',                  label: 'Qwen3.5 4B',   size: '',      note: 'Balanced · Ollama' },
+  { id: 'ollama:qwen3.5:2b',                  label: 'Qwen3.5 2B',   size: '',      note: 'Fast · Ollama' },
+  { id: 'ollama:qwen3.5:0.8b',                label: 'Qwen3.5 0.8B', size: '',      note: 'Fastest · Ollama' },
 ] as const;
 type ModelId = typeof MODELS[number]['id'];
 const NAVY = '#1a2b4b';
 const OLLAMA_BASE = 'http://localhost:11434/v1';
 const isOllama = (id: string) => id.startsWith('ollama:');
 const ollamaModelName = (id: string) => id.replace(/^ollama:/, '');
+const isLocalhost = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+const VISIBLE_MODELS = MODELS.filter(m => !isOllama(m.id) || isLocalhost);
 
 type InferenceEngine = {
   chat: { completions: { create(opts: { messages: unknown[] }): Promise<{ choices: Array<{ message: { content: string | null } }> }> } };
@@ -166,7 +168,7 @@ export default function BlogAgent() {
   const [selectedModel, setSelectedModel] = useState<ModelId>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('agent-model');
-      if (MODELS.some(m => m.id === saved)) return saved as ModelId;
+      if (VISIBLE_MODELS.some(m => m.id === saved)) return saved as ModelId;
     }
     return 'Qwen2.5-1.5B-Instruct-q4f16_1-MLC';
   });
@@ -249,7 +251,11 @@ export default function BlogAgent() {
         localStorage.setItem('agent-model', selectedModel);
         setLoadState({ status: 'ready', progress: 100, text: '' });
       } catch (err) {
-        setLoadState({ status: 'error', progress: 0, text: err instanceof Error ? err.message : 'Failed to connect to Ollama.' });
+        const onPublicSite = window.location.protocol === 'https:' && window.location.hostname !== 'localhost';
+        const text = onPublicSite
+          ? 'Ollama is blocked by browser security when accessed from a public URL. Run the site locally (npm run dev → localhost:3000) to use Ollama models.'
+          : err instanceof Error ? err.message : 'Failed to connect to Ollama. Is it running? Try: ollama serve';
+        setLoadState({ status: 'error', progress: 0, text });
       }
       return;
     }
@@ -589,7 +595,7 @@ export default function BlogAgent() {
             <div style={{ padding: 20, fontSize: 13, flexShrink: 0 }}>
               <div style={{ marginBottom: 10, color: '#555', fontSize: 12 }}>Choose a model:</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginBottom: 14 }}>
-                {MODELS.map(m => (
+                {VISIBLE_MODELS.map(m => (
                   <label key={m.id} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', fontSize: 13 }}>
                     <input
                       type="radio"

@@ -30,11 +30,11 @@ The agent supports two backends: **WebLLM** (runs entirely in the browser via We
 
 | Model | Note |
 |-------|------|
-| qwen3.5:0.8b | Fastest · Ollama |
-| qwen3.5:2b | Fast · Ollama |
-| qwen3.5:4b | Balanced · Ollama |
-| qwen3.5:9b | Good quality · Ollama |
 | qwen3.5:27b | Best quality · Ollama |
+| qwen3.5:9b | Good quality · Ollama |
+| qwen3.5:4b | Balanced · Ollama |
+| qwen3.5:2b | Fast · Ollama |
+| qwen3.5:0.8b | Fastest · Ollama |
 
 The WebLLM 1.5B is the default — a fast browser download and a reasonable starting point. Larger models give better reasoning quality and more reliable multi-step tool use.
 
@@ -67,21 +67,23 @@ ollama pull qwen3.5:4b
 
 I started with 4B as a reasonable balance of quality and speed. All five Qwen3.5 sizes are listed in the model table above.
 
-### CORS Configuration
+### Running locally
 
-The live blog is served over HTTPS from `haddley.github.io`. By default Ollama only accepts requests from `localhost`, so I needed to add the blog's origin before the browser could reach it:
+The Ollama option only works when the site is running locally. Chrome and Edge enforce a **Private Network Access** policy that blocks requests from public HTTPS pages (like `haddley.github.io`) to `localhost`, regardless of any CORS configuration. This is a browser security restriction with no workaround on the public URL.
+
+To use Ollama models, run the site locally:
 
 ```bash
-OLLAMA_ORIGINS=https://haddley.github.io ollama serve
+npm run dev
 ```
 
-Without this the browser blocks the request with a CORS error. When running the site locally at `http://localhost:3000` no extra configuration is needed — that origin is allowed by default.
+Then visit `http://localhost:3000`. Ollama's default origins allow `localhost`, so no extra configuration is needed.
 
 ### WebLLM vs Ollama
 
 | | WebLLM | Ollama |
 |---|---|---|
-| **Setup** | None — loads in the browser | Install Ollama, pull a model, configure CORS |
+| **Setup** | None — loads in the browser | Install Ollama, pull a model, run site locally |
 | **Browser support** | Chrome / Edge with WebGPU | Any browser |
 | **Model sizes** | Up to 7B (browser VRAM limits) | Up to 27B (Qwen3.5) |
 | **Inference speed** | Depends on GPU via WebGPU | Native — generally faster |
