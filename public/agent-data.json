@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "powerapps10",
+      "title": "Model Driven Apps Timeline",
+      "description": "Enabling notes and activities on a Dataverse table, and configuring the timeline control to roll up records from related entity instances",
+      "date": "2026-06-16",
+      "categories": [
+        "Power Platform"
+      ],
+      "tags": "power-apps, dataverse, model-driven-app, timeline, activities"
+    },
+    {
       "slug": "plantsvszombies",
       "title": "Plants vs. Zombies Clone",
       "description": "Vibe coding a vanilla JS Plants vs. Zombies clone with Claude Code, complete with Playwright visual regression tests",
@@ -2503,5 +2513,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-06-16T11:00:11.965Z"
+  "generatedAt": "2026-06-16T16:56:34.675Z"
 }
