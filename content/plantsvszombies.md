@@ -11,7 +11,7 @@ slug: "plantsvszombies"
 I spent a lazy evening vibe coding a Plants vs. Zombies clone with Claude Code. The whole game lives in a single vanilla JavaScript file running on an HTML5 canvas — no frameworks, no build step — with sprites pulled from the [UnityPlantsVsZombiesClone](https://github.com/HectorPulido/UnityPlantsVsZombiesClone) repo and the official [Plants vs. Zombies wiki](https://plantsvszombies.wiki.gg/wiki/Plants_vs._Zombies/Gallery). I had Claude Code set up a Playwright-based visual regression test that screenshots the running game and compares it pixel-by-pixel against reference images, so I can keep adding plants and zombies without breaking the layout.
 
 
-![](/assets/mp4/plantsvszombies/peashooter_sunflower_wallnut_vs_zombie_conehead.mp4)
+![](/assets/mp4/plantsvszombies/sunflower_wallnut_vs_zombie_conehead.mp4)
 *I recorded a demo video of the peashooter, sunflower, and wallnut fighting off zombies*
 
 ![](assets/images/plantsvszombies/Screenshot-2026-06-16-at-5.05.36-AM.png)
