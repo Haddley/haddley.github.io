@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "plantsvszombies",
+      "title": "Plants vs. Zombies Clone",
+      "description": "Vibe coding a vanilla JS Plants vs. Zombies clone with Claude Code, complete with Playwright visual regression tests",
+      "date": "2026-06-16",
+      "categories": [
+        "AI",
+        "JavaScript"
+      ],
+      "tags": "claude-code, vibe-coding, anthropic, game-development, playwright"
+    },
+    {
       "slug": "localagent",
       "title": "Local Agent",
       "description": "A conversational AI assistant for this blog using WebLLM (in-browser) and Ollama (local server) as interchangeable backends",
@@ -2492,5 +2503,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-06-14T15:21:06.771Z"
+  "generatedAt": "2026-06-16T11:00:11.965Z"
 }
