@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "invaders",
+      "title": "Space Invaders",
+      "description": "Vibe coding a vanilla JS Space Invaders clone with OpenCode — twice",
+      "date": "2026-06-19",
+      "categories": [
+        "AI",
+        "JavaScript"
+      ],
+      "tags": "claude-code, vibe-coding, game-development, canvas, web-audio"
+    },
+    {
       "slug": "powerapps10",
       "title": "Model Driven Apps Timeline",
       "description": "Enabling notes and activities on a Dataverse table, and configuring the timeline control to roll up records from related entity instances",
@@ -2513,5 +2524,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-06-19T15:40:57.027Z"
+  "generatedAt": "2026-06-19T18:31:59.838Z"
 }
