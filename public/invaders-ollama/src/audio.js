@@ -2,20 +2,37 @@
  * src/audio.js - AudioManager singleton using the Web Audio API.
  */
 
-export class AudioManager {
-    constructor() {
-        this._context = null;
-    }
+/**
+ * src/audio.js - AudioManager singleton using the Web Audio API.
+ */
+(function(global) {
+  'use strict';
 
-    // Initialization and context management methods...
-    initializeContext() {
-        if (typeof window !== 'undefined' && !this._context) {
-            this._context = new (window.AudioContext || window.webkitAudioContext)();
-        }
-    }
+  /**
+   * AudioManager constructor.
+   * @constructor
+   */
+  function AudioManager() {
+    this._context = null;
+  }
 
-    playShootSound() { /* ... synthesize square wave tone */ }
-    playAlienDeathSound() { /* ... white noise burst filter */ }
-    // Other sound functions...
-}
-export const audioManager = new AudioManager();
+  // Initialize the AudioContext (safe for browsers with / without webkit prefix)
+  AudioManager.prototype.initializeContext = function() {
+    if (typeof window !== 'undefined' && !this._context) {
+      this._context = new (window.AudioContext || window.webkitAudioContext)();
+    }
+  };
+
+  // Play a shoot sound (square wave tone)
+  AudioManager.prototype.playShootSound = function() { /* ... synthesize square wave tone */ };
+
+  // Play an alien death sound (white noise burst with filter)
+  AudioManager.prototype.playAlienDeathSound = function() { /* ... white noise burst filter */ };
+
+  // Other sound functions can be added here...
+  // e.g. AudioManager.prototype.playExplosion = function() { ... };
+
+  // Create a single, shared instance and expose it globally
+  global.audioManager = new AudioManager();
+
+})(typeof window !== 'undefined' ? window : this);
