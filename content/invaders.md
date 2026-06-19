@@ -1,6 +1,6 @@
 ---
 title: "Space Invaders"
-description: "Vibe coding a vanilla JS Space Invaders clone with OpenCode — twice"
+description: "Building a Space Invaders clone three ways: OpenCode with Big Pickle, OpenCode with a local Ollama model, and Claude Code with Sonnet 4.6"
 date: "2026-06-19"
 categories: ["AI", "JavaScript"]
 tags: "claude-code, vibe-coding, game-development, canvas, web-audio"
