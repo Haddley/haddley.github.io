@@ -70,6 +70,12 @@ I pulled a local coding model to try the same prompt without a cloud API.
 ollama launch opencode
 ```
 
+![](assets/images/invaders/Screenshot-2026-06-19-at-2.03.07-PM.png)
+*The Ollama model (gemma:latest) responded to the prompt with a multi-step migration plan — it never wrote a single file*
+
+
+The game is playable at [/invaders-ollama/index.html](/invaders-ollama/index.html).
+
 
 ## Run 3 — Claude Code Sonnet 4.6
 
@@ -88,12 +94,16 @@ ollama launch opencode
 *Claude Code asked permission to create index.html, showing the canvas element and the script tag loading engine.js*
 ![](assets/images/invaders/Screenshot-2026-06-19-at-1.16.56-PM.png)
 *Claude Code refined the march tempo in audio.js — the interval now scales dynamically with the number of remaining aliens*
-![](assets/images/invaders/Screenshot-2026-06-19-at-1.18.46-PM.png)
-*The game was running — pixel-art aliens, four shields, the player cannon, a red mystery UFO at the top, and a score of 160 on Wave 1*
+
+![](assets/images/invaders/Screenshot-2026-06-19-at-2.06.27-PM.png)
+*I played a round — the formation thinned to about 34 aliens, the shields took damage, and the score reached 260*
+
 ![](assets/images/invaders/Screenshot-2026-06-19-at-1.20.51-PM.png)
 *Claude Code listed everything it had built, then spotted the UFO audio bug: the saucer sound didn't stop when it left the screen*
 ![](assets/images/invaders/Screenshot-2026-06-19-at-1.24.30-PM.png)
 *Claude Code fixed it: `audio.stopUFO()` now fires as soon as the UFO exits the screen, before the dead-entity filter removes it from the array*
+
+
 
 
 The game is playable at [/invaders-claude/index.html](/invaders-claude/index.html).
@@ -103,4 +113,11 @@ The game is playable at [/invaders-claude/index.html](/invaders-claude/index.htm
 
 
 
+## References
 
+- [OpenCode](https://opencode.ai) — open source AI coding agent
+- [OpenCode GitHub](https://github.com/sst/opencode) — source and documentation
+- [Ollama](https://ollama.com) — run large language models locally
+- [qwen2.5-coder:7b](https://ollama.com/library/qwen2.5-coder) — the local model used in Run 2
+- [Web Audio API — MDN](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) — used for all synthesized audio
+- [Space Invaders — Wikipedia](https://en.wikipedia.org/wiki/Space_Invaders) — the 1978 Taito original

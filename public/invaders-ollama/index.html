@@ -11,7 +11,22 @@
 <body>
     <canvas id="gameCanvas" width="800" height="600"></canvas>
 
-    <!-- Load the entry point as an ES Module -->
-    <script type="module" src="./src/engine.js"></script>
+    <!-- Load global dependencies first -->
+     <script src="./src/audio.js"></script>
+    <script src="./src/constants.js"></script>
+    <script src="./src/input.js"></script>
+    <script src="./src/sprites.js"></script>
+    
+    <!-- Core Logic & Entities (These are assumed to define globals when running as IIFEs) -->
+    <script src="./src/entities/entity.js"></script>
+    <script src="./src/entities/alien.js"></script>
+    <script src="./src/entities/alienBullet.js"></script>
+    <script src="./src/entities/bullet.js"></script>
+    <script src="./src/entities/explosion.js"></script>
+    <script src="./src/entities/player.js"></script>
+    <script src="./src/entities/shield.js"></script>
+    <script src="./src/entities/ufo.js"></script>
+
+    <!-- Game Engine Initialization MUST happen last -->
+    <script src="./src/engine.js"></script>
 </body>
-</html>

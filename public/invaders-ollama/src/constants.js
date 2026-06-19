@@ -36,3 +36,27 @@ window.GAME_CONSTANTS = {
     // Audio Constants
     AUDIO_PITCH_STEP: [320, 260, 220, 190]
 };
+
+// Bare global aliases for direct reference in game modules (engine.js, player.js, bullet.js etc.)
+var CANVAS_WIDTH = 800;
+var CANVAS_HEIGHT = 600;
+var PLAYER_WIDTH = 40;
+var PLAYER_HEIGHT = 15;
+var ALIEN_ROWS = 5;
+var ALIEN_COLS = 10;
+var SHIELD_COUNT = 4;
+var SHOOTER_ROW = 580;
+var LIIVES = 3;
+var RESPON_DELAY = 1500;
+var INVULNERABLE_DURATION = 2000;
+var ALIEN_SPEED_Y = 10; 
+var INITIAL_ALIEN_SPEED_X = 1;
+
+var SCORE_SQUID = 30;    
+var SCORE_CRAB = 20;     
+var SCORE_OCTOPUS = 10;  
+
+var UFO_MIN_INTERVAL = 15000; // ms
+var UFO_MAX_INTERVAL = 25000; // ms
+
+var AUDIO_PITCH_STEP = [320, 260, 220, 190];

@@ -3,7 +3,7 @@
     {
       "slug": "invaders",
       "title": "Space Invaders",
-      "description": "Vibe coding a vanilla JS Space Invaders clone with OpenCode — twice",
+      "description": "Building a Space Invaders clone three ways: OpenCode with Big Pickle, OpenCode with a local Ollama model, and Claude Code with Sonnet 4.6",
       "date": "2026-06-19",
       "categories": [
         "AI",
@@ -2524,5 +2524,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-06-19T18:31:59.838Z"
+  "generatedAt": "2026-06-19T22:03:43.291Z"
 }
