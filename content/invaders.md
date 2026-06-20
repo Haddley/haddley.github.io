@@ -23,7 +23,7 @@ curl -fsSL https://opencode.ai/install | bash
 
 I navigated to the invaders project directory and launched OpenCode.
 
-In the context of the OpenCode AI terminal tool, "Big Pickle" (specifically `opencode/big-pickle`) is a free, experimental coding model. It is typically a GLM-4.6 or DeepSeek-based variant offered directly by OpenCode with an impressive 200,000-token context window and zero usage costs.
+Big Pickle is a free coding model. It is offered directly by OpenCode with a 200,000-token context window and zero usage costs.
 
 ![](assets/images/invaders/Screenshot-2026-06-19-at-11.26.10-AM.png)
 *I ran `opencode` in the invaders project folder*
