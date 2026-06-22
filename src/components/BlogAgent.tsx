@@ -21,7 +21,7 @@ const MODELS = [
   { id: 'Qwen2.5-7B-Instruct-q4f16_1-MLC',   label: 'Qwen2.5 7B',   size: '~4 GB', note: 'Best quality · WebLLM' },
   { id: 'Qwen2.5-3B-Instruct-q4f16_1-MLC',   label: 'Qwen2.5 3B',   size: '~2 GB', note: 'Balanced · WebLLM' },
   { id: 'Qwen2.5-1.5B-Instruct-q4f16_1-MLC', label: 'Qwen2.5 1.5B', size: '~1 GB', note: 'Fast · WebLLM' },
-  { id: 'Qwen2.5-1.5B-Instruct-q4f32_1-MLC', label: 'Qwen2.5 1.5B (fp32)', size: '~1 GB', note: 'Fast · WebLLM · Intel-friendly' },
+  { id: 'Qwen2.5-1.5B-Instruct-q4f32_1-MLC', label: 'Qwen2.5 1.5B (fp32)', size: '~1 GB', note: 'Fast · WebLLM · alternative precision' },
   { id: 'ollama:qwen3.5:27b',                 label: 'Qwen3.5 27B',  size: '',      note: 'Best quality · Ollama' },
   { id: 'ollama:qwen3.5:9b',                  label: 'Qwen3.5 9B',   size: '',      note: 'Good quality · Ollama' },
   { id: 'ollama:qwen3.5:4b',                  label: 'Qwen3.5 4B',   size: '',      note: 'Balanced · Ollama' },
@@ -535,9 +535,13 @@ export default function BlogAgent() {
       // Commit user + final assistant text only — no tool call/response messages
       apiHistoryRef.current = [...apiHistoryRef.current, ...turnMsgs];
     } catch (err) {
+      const msg = err instanceof Error ? err.message : 'Something went wrong.';
+      const isDeviceLost = msg.toLowerCase().includes('device') || msg.toLowerCase().includes('disposed') || msg.toLowerCase().includes('gpu');
       setMessages(prev => [...prev, {
         role: 'assistant',
-        content: `Error: ${err instanceof Error ? err.message : 'Something went wrong.'}`,
+        content: isDeviceLost
+          ? 'GPU context lost — your device may have insufficient GPU memory for WebLLM. Try an Ollama model instead (run the site locally with `npm run dev` then select an Ollama model).'
+          : `Error: ${msg}`,
       }]);
     } finally {
       setIsThinking(false);

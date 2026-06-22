@@ -83,6 +83,14 @@ round 1 — text: "Here are the Java related posts: …"
 
 The 3B handles multi-step tool use reliably. The 1.5B is faster to load but may struggle on follow-up questions.
 
+### When WebLLM Doesn't Work
+
+On some hardware — particularly Windows machines with Intel Arc integrated graphics — WebGPU can lose its GPU context mid-inference. The error surfaces as `Object has already been disposed` or `Device was lost`, and the agent panel shows a plain-English message:
+
+> GPU context lost — your device may have insufficient GPU memory for WebLLM. Try an Ollama model instead.
+
+I tested this on a Windows 11 machine with an Intel Core Ultra 7 (32 GB RAM, Intel Arc iGPU). Both the fp16 and fp32 variants crashed with the same error — the GPU context loss happens at the WebGPU driver level regardless of weight precision. The only reliable fix on that hardware is Ollama: run the site locally with `npm run dev` and select any of the Ollama models, which bypass WebGPU entirely and run natively on the machine.
+
 ## Ollama
 
 [Ollama](https://ollama.com) runs as a local background process and exposes an OpenAI-compatible API at `http://localhost:11434`. Instead of downloading weights into the browser, the model runs natively on the machine — generally faster, and with larger model options.
