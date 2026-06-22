@@ -21,6 +21,7 @@ const MODELS = [
   { id: 'Qwen2.5-7B-Instruct-q4f16_1-MLC',   label: 'Qwen2.5 7B',   size: '~4 GB', note: 'Best quality · WebLLM' },
   { id: 'Qwen2.5-3B-Instruct-q4f16_1-MLC',   label: 'Qwen2.5 3B',   size: '~2 GB', note: 'Balanced · WebLLM' },
   { id: 'Qwen2.5-1.5B-Instruct-q4f16_1-MLC', label: 'Qwen2.5 1.5B', size: '~1 GB', note: 'Fast · WebLLM' },
+  { id: 'Qwen2.5-1.5B-Instruct-q4f32_1-MLC', label: 'Qwen2.5 1.5B (fp32)', size: '~1 GB', note: 'Fast · WebLLM · Intel-friendly' },
   { id: 'ollama:qwen3.5:27b',                 label: 'Qwen3.5 27B',  size: '',      note: 'Best quality · Ollama' },
   { id: 'ollama:qwen3.5:9b',                  label: 'Qwen3.5 9B',   size: '',      note: 'Good quality · Ollama' },
   { id: 'ollama:qwen3.5:4b',                  label: 'Qwen3.5 4B',   size: '',      note: 'Balanced · Ollama' },
