@@ -279,7 +279,15 @@ export default function BlogAgent() {
       engineRef.current = engine as InferenceEngine;
       setLoadState({ status: 'ready', progress: 100, text: '' });
     } catch (err) {
-      setLoadState({ status: 'error', progress: 0, text: err instanceof Error ? err.message : 'Failed to load model.' });
+      const msg = err instanceof Error ? err.message : 'Failed to load model.';
+      const isDeviceLost = msg.toLowerCase().includes('device') || msg.toLowerCase().includes('disposed') || msg.toLowerCase().includes('gpu');
+      setLoadState({
+        status: 'error',
+        progress: 0,
+        text: isDeviceLost
+          ? 'GPU context lost — your device may have insufficient GPU memory for WebLLM. Try an Ollama model instead (run the site locally with npm run dev, then select an Ollama model).'
+          : msg,
+      });
     }
   };
 
