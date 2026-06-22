@@ -22,6 +22,8 @@ const MODELS = [
   { id: 'Qwen2.5-3B-Instruct-q4f16_1-MLC',   label: 'Qwen2.5 3B',   size: '~2 GB', note: 'Balanced · WebLLM' },
   { id: 'Qwen2.5-1.5B-Instruct-q4f16_1-MLC', label: 'Qwen2.5 1.5B', size: '~1 GB', note: 'Fast · WebLLM' },
   { id: 'Qwen2.5-1.5B-Instruct-q4f32_1-MLC', label: 'Qwen2.5 1.5B (fp32)', size: '~1 GB', note: 'Fast · WebLLM · alternative precision' },
+  { id: 'Qwen2.5-0.5B-Instruct-q4f16_1-MLC', label: 'Qwen2.5 0.5B', size: '~300 MB', note: 'Smallest · WebLLM · mobile-friendly' },
+  { id: 'Qwen2.5-0.5B-Instruct-q4f32_1-MLC', label: 'Qwen2.5 0.5B (fp32)', size: '~300 MB', note: 'Smallest · WebLLM · mobile-friendly · alternative precision' },
   { id: 'ollama:qwen3.5:27b',                 label: 'Qwen3.5 27B',  size: '',      note: 'Best quality · Ollama' },
   { id: 'ollama:qwen3.5:9b',                  label: 'Qwen3.5 9B',   size: '',      note: 'Good quality · Ollama' },
   { id: 'ollama:qwen3.5:4b',                  label: 'Qwen3.5 4B',   size: '',      note: 'Balanced · Ollama' },
