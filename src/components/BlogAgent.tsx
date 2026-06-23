@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 declare global {
   interface Window {
@@ -21,9 +22,7 @@ const MODELS = [
   { id: 'Qwen2.5-7B-Instruct-q4f16_1-MLC',   label: 'Qwen2.5 7B',   size: '~4 GB', note: 'Best quality · WebLLM' },
   { id: 'Qwen2.5-3B-Instruct-q4f16_1-MLC',   label: 'Qwen2.5 3B',   size: '~2 GB', note: 'Balanced · WebLLM' },
   { id: 'Qwen2.5-1.5B-Instruct-q4f16_1-MLC', label: 'Qwen2.5 1.5B', size: '~1 GB', note: 'Fast · WebLLM' },
-  { id: 'Qwen2.5-1.5B-Instruct-q4f32_1-MLC', label: 'Qwen2.5 1.5B (fp32)', size: '~1 GB', note: 'Fast · WebLLM · alternative precision' },
   { id: 'Qwen2.5-0.5B-Instruct-q4f16_1-MLC', label: 'Qwen2.5 0.5B', size: '~300 MB', note: 'Smallest · WebLLM · mobile-friendly' },
-  { id: 'Qwen2.5-0.5B-Instruct-q4f32_1-MLC', label: 'Qwen2.5 0.5B (fp32)', size: '~300 MB', note: 'Smallest · WebLLM · mobile-friendly · alternative precision' },
   { id: 'ollama:qwen3.5:27b',                 label: 'Qwen3.5 27B',  size: '',      note: 'Best quality · Ollama' },
   { id: 'ollama:qwen3.5:9b',                  label: 'Qwen3.5 9B',   size: '',      note: 'Good quality · Ollama' },
   { id: 'ollama:qwen3.5:4b',                  label: 'Qwen3.5 4B',   size: '',      note: 'Balanced · Ollama' },
@@ -596,7 +595,14 @@ export default function BlogAgent() {
           {/* Header */}
           <div style={{ background: NAVY, color: '#fff', padding: '13px 16px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <div>
-              <div style={{ fontWeight: 600, fontSize: 14 }}>Blog AI Assistant</div>
+              <div style={{ fontWeight: 600, fontSize: 14 }}>
+                <Link
+                  href="/posts/localagent/"
+                  style={{ color: '#fff', textDecoration: 'none', transition: 'opacity .15s' }}
+                  onMouseEnter={e => (e.currentTarget.style.opacity = '0.75')}
+                  onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
+                >Blog AI Assistant ↗</Link>
+              </div>
               <div style={{ fontSize: 11, opacity: 0.6, marginTop: 2 }}>
                 {loadState.status === 'ready'
                   ? `${MODELS.find(m => m.id === selectedModel)?.label ?? 'Qwen'} · ${isOllama(selectedModel) ? 'local Ollama' : 'local WebGPU'}`
