@@ -13,7 +13,7 @@ slug: "localagent"
 I've added a conversational AI assistant to this blog — the 💬 button in the bottom-right corner of every page. It runs entirely locally with no backend and no API fees, using one of two model backends: **WebLLM** (in-browser, no setup) or **Ollama** (local server, larger models).
 
 ![](assets/images/localagent/chat-bubble.png)
-*The chat button appears on every page — click it to open the assistant panel*
+*The chat button appears on every page — click it to open the assistant panel. The "Blog AI Assistant" title in the panel header links back to this post.*
 
 ## Choosing a Backend
 

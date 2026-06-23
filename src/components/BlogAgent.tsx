@@ -67,6 +67,7 @@ TOOL SELECTION RULES:
 - Use get_posts_by_category ONLY when the user explicitly asks about a category (e.g. "Any Java posts?", "show me Azure posts").
 - Use list_categories ONLY when the user asks what categories exist.
 - Never call list_categories for a keyword search.
+- Use web_search when the user explicitly asks for a web search (e.g. "live web search", "search the web", "look up") OR when the question is about current events or real-world facts not covered by the blog. Do not substitute search_posts for these requests.
 
 STRICT OUTPUT RULES:
 1. When you need to call a tool, output ONLY a JSON code block — no text before or after it:
@@ -85,6 +86,11 @@ Example — user asks "Any Python posts?":
 Example — user asks "deepseek api" or "mcp server" or any specific keyword:
 \`\`\`json
 {"name": "search_posts", "arguments": {"query": "deepseek api"}}
+\`\`\`
+
+Example — user asks "live web search who is Prime Minister of UK" or "search the web for X" or any current-events question:
+\`\`\`json
+{"name": "web_search", "arguments": {"query": "who is Prime Minister of UK"}}
 \`\`\``;
 }
 
