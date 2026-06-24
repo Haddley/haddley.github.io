@@ -207,4 +207,4 @@ I customised a HubSpot quote template to display a custom line items table with 
 
 ---
 
-*Hero image uses the [HubSpot logo](https://commons.wikimedia.org/wiki/File:HubSpot_Logo.svg) from Wikimedia Commons, which is in the public domain as a simple text logo.*
+The hero image for this post uses the [HubSpot Logo](https://commons.wikimedia.org/wiki/File:HubSpot_Logo.svg) from Wikimedia Commons. The logo is in the public domain — it does not meet the threshold of originality required for copyright protection as it consists of simple geometric shapes and text. The HubSpot name and logo may be protected as trademarks in some jurisdictions.
