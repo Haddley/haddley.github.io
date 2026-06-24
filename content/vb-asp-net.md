@@ -6,6 +6,7 @@ categories: [".NET","SQL"]
 image: "/assets/images/page86/net-logo.svg"
 tags: "visual-basic, asp-net, entity-framework, database-first"
 slug: "vb-asp-net"
+visible: false
 ---
 
 # ASP.NET 5 Visual Basic

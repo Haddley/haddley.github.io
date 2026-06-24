@@ -3,7 +3,7 @@
     {
       "slug": "invaders",
       "title": "Space Invaders",
-      "description": "Building a Space Invaders clone three ways: OpenCode with Big Pickle, OpenCode with a local Ollama model, and Claude Code with Sonnet 4.6",
+      "description": "Building a Space Invaders clone three ways: OpenCode with Big Pickle, OpenCode with DeepSeek V4 Pro, and Claude Code with Sonnet 4.6",
       "date": "2026-06-19",
       "categories": [
         "AI",
@@ -478,17 +478,6 @@
       "tags": "claude-code, mcp, model-context-protocol, business-central"
     },
     {
-      "slug": "vb-asp-net",
-      "title": "ASP.NET 5 Visual Basic",
-      "description": "Generate Context and Entity Classes from an Existing Database",
-      "date": "2025-09-20",
-      "categories": [
-        ".NET",
-        "SQL"
-      ],
-      "tags": "visual-basic, asp-net, entity-framework, database-first"
-    },
-    {
       "slug": "microsoftdynamics365appforoutlook",
       "title": "Microsoft Dynamics 365 App for Outlook",
       "description": "References",
@@ -498,6 +487,17 @@
         "Power Platform"
       ],
       "tags": "outlook, set-regarding, dynamics-365, crm"
+    },
+    {
+      "slug": "hubspotquotetemplate",
+      "title": "HubSpot Quote Template",
+      "description": "Quote Template",
+      "date": "2025-09-20",
+      "categories": [
+        "Angular",
+        "TypeScript"
+      ],
+      "tags": "hubspot, quote-template, crm"
     },
     {
       "slug": "dynamicssales4",
@@ -510,19 +510,9 @@
       "tags": "dynamics-365-sales, crm, overview, sales"
     },
     {
-      "slug": "dotnet-core-part4",
-      "title": ".NET Core (Part 4)",
-      "description": "Creating a VB.NET Web App using Microsoft's cross-platform framework.",
-      "date": "2025-09-20",
-      "categories": [
-        ".NET"
-      ],
-      "tags": "dotnet, rest-api, web-api, dotnet-core"
-    },
-    {
       "slug": "dotnet-core-part3",
       "title": ".NET Core (Part 3)",
-      "description": "Creating a Blazor App that calls Microsoft Graph.",
+      "description": "Creating a VB.NET Web App using Microsoft's cross-platform framework.",
       "date": "2025-09-20",
       "categories": [
         ".NET"
@@ -1727,7 +1717,7 @@
         ".NET",
         "SQL"
       ],
-      "tags": "vb.net, entity-framework, database, web"
+      "tags": "visual-basic, entity-framework, database-first, asp-net"
     },
     {
       "slug": "dotnet-core-part2",
@@ -2524,5 +2514,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-06-19T22:03:43.291Z"
+  "generatedAt": "2026-06-24T16:01:58.598Z"
 }

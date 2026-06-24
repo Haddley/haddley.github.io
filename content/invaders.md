@@ -166,3 +166,4 @@ The UFO audio bug — where the saucer sound keeps playing after the sprite exit
 - [DeepSeek API](https://api-docs.deepseek.com/guides/coding_agents) — integrate DeepSeek with OpenCode
 - [Web Audio API — MDN](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) — used for all synthesized audio
 - [Space Invaders — Wikipedia](https://en.wikipedia.org/wiki/Space_Invaders) — the 1978 Taito original
+- [How to Lose a Trillion-Dollar AI Business in 90 Minutes](https://www.youtube.com/watch?v=0RxMj0L0-fY&t=1606s)
