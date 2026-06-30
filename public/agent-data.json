@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "metaunitysetupJune2026",
+      "title": "Meta Unity June 2026",
+      "description": "I set up Unity for Meta Quest Pro development",
+      "date": "2026-06-30",
+      "categories": [
+        "Mobile",
+        "3D"
+      ],
+      "tags": "virtual-reality, meta, unity, quest"
+    },
+    {
       "slug": "invaders",
       "title": "Space Invaders",
       "description": "Building a Space Invaders clone three ways: OpenCode with Big Pickle, OpenCode with DeepSeek V4 Pro, and Claude Code with Sonnet 4.6",
@@ -2514,5 +2525,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-06-24T17:10:13.313Z"
+  "generatedAt": "2026-06-30T17:29:51.019Z"
 }

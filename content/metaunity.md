@@ -5,7 +5,7 @@ date: "2026-02-28"
 categories: ["Mobile", "3D"]
 tags: "virtual-reality, meta, unity, quest"
 slug: "metaunity"
-image: "/assets/images/metaunity/641532049_1193231526215322_7894490494628209553_n.jpg"
+image: "/assets/images/metaunity/meta-unity-combined.svg"
 ---
 
 I set up Unity for Meta Quest virtual reality (VR) development. I learned how to:
@@ -627,7 +627,7 @@ public class PrismVisionCorrection : MonoBehaviour
 
 ## References
 
-- [Unity Hello World for Meta Quest VR headsets](https://developers.meta.com/horizon/documentation/unity/unity-tutorial-hello-vr/?fbclid=IwY2xjawQPgEhleHRuA2FlbQIxMABicmlkETExWHlXUjlTTHZoU0NCSHc1c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHt6YQvbj1aGkotvkxp3-7LsJVtp8ms9JqOgqA9vEr7GZwqCfYiIbKrZ0jCWn_aem_FvRM0_3JX8Pakzaj7ORUAA)
+- [Unity Hello World for Meta Quest VR headsets](https://developers.meta.com/horizon/documentation/unity/unity-tutorial-hello-vr/)
 
 - [Passthrough basic tutorial](https://developers.meta.com/horizon/documentation/unity/unity-passthrough-tutorial/)
 
