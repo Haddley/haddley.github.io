@@ -5,6 +5,40 @@ import Image from 'next/image';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
+// Copy-to-clipboard button for code blocks
+function CopyCodeButton({ code }: { code: string }) {
+  const [copied, setCopied] = React.useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(code);
+    } catch {
+      const textarea = document.createElement('textarea');
+      textarea.value = code;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+    }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <button
+      type="button"
+      className={`btn btn-sm ${copied ? 'btn-success' : 'btn-outline-secondary'}`}
+      onClick={handleCopy}
+      aria-label="Copy code to clipboard"
+      style={{ fontSize: '0.75rem', padding: '0.15rem 0.6rem' }}
+    >
+      {copied ? 'Copied!' : 'Copy'}
+    </button>
+  );
+}
+
 // Function to get appropriate icon class based on URL
 function getIconForUrl(url: string): string {
   try {
@@ -594,9 +628,12 @@ export default function MobiriseContentRenderer({ markdownContent }: MobiriseCon
                 <div className="row justify-content-center">
                   <div className="col-12 col-md-10">
                     <blockquote>
-                      <h5 className="mbr-section-title mbr-fonts-style mb-2 display-7">
-                        <strong>{section.language ? section.language.toUpperCase() : 'CODE'}</strong>
-                      </h5>
+                      <div className="d-flex justify-content-between align-items-center mb-2">
+                        <h5 className="mbr-section-title mbr-fonts-style mb-0 display-7">
+                          <strong>{section.language ? section.language.toUpperCase() : 'CODE'}</strong>
+                        </h5>
+                        <CopyCodeButton code={section.content || ''} />
+                      </div>
                       <SyntaxHighlighter
                         language={section.language || 'text'}
                         style={prism}
@@ -609,6 +646,7 @@ export default function MobiriseContentRenderer({ markdownContent }: MobiriseCon
                           lineHeight: '1.4'
                         }}
                         showLineNumbers={true}
+                        lineNumberStyle={{ userSelect: 'none' }}
                       >
                         {section.content}
                       </SyntaxHighlighter>
