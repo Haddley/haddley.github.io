@@ -2,8 +2,8 @@
   "posts": [
     {
       "slug": "metaunitysetupJune2026",
-      "title": "Meta Unity June 2026",
-      "description": "I set up Unity for Meta Quest Pro development",
+      "title": "Meta Unity Setup",
+      "description": "I set up Unity 6.3 LTS for Meta Quest Pro development, installed the Meta XR Interaction SDK, worked through the Project Setup Tool, and deployed a Hello World APK to my Quest Pro headset.",
       "date": "2026-06-30",
       "categories": [
         "Mobile",
@@ -2525,5 +2525,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-06-30T17:29:51.019Z"
+  "generatedAt": "2026-07-11T16:55:33.699Z"
 }
