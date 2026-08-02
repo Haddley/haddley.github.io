@@ -106,15 +106,7 @@ Corrections are genuinely welcome. I would rather be told I am wrong than encour
 
 - [Between the shoulders — right superior oblique palsy](https://haddley.github.io/bielschowsky/)
 
-- [Vision — the WebXR port](https://haddley.github.io/vision/)
-
 - [Meta Unity](/posts/metaunity/) — the earlier write-up of the Quest prism work
-
-- [Meta Unity Setup](/posts/metaunitysetupJune2026/) — setting up Unity 6.3 LTS for Quest Pro
-
-- [OpenXR specification](https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html)
-
-- [Meta Passthrough Camera API overview](https://developers.meta.com/horizon/documentation/unity/unity-pca-overview/)
 
 - [Three Step Test for Cyclovertical Muscle Palsy — EyeWiki](https://eyewiki.org/Three_Step_Test_for_Cyclovertical_Muscle_Palsy)
 
