@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "vision-remote-desktop",
+      "title": "A Desktop That Rolls With My Head",
+      "description": "I built a remote desktop viewer that applies my prism prescription in software — including the rotation no spectacle lens can deliver — and on the Quest it runs in AR, so the corrected screen hangs in my real room above my real keyboard.",
+      "date": "2026-08-02",
+      "categories": [
+        "3D",
+        "JavaScript"
+      ],
+      "tags": "webxr, webrtc, quest, vision-pro, diplopia"
+    },
+    {
       "slug": "bielschowsky",
       "title": "Between the Shoulders",
       "description": "I published an interactive page that shows what my right fourth nerve palsy actually does to the two images my eyes send, why I hold my head toward my left shoulder, and the one component of the correction that no spectacle lens can deliver.",
@@ -2536,5 +2547,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-08-02T14:45:24.074Z"
+  "generatedAt": "2026-08-02T19:34:35.621Z"
 }
