@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "bielschowsky",
+      "title": "Between the Shoulders",
+      "description": "I published an interactive page that shows what my right fourth nerve palsy actually does to the two images my eyes send, why I hold my head toward my left shoulder, and the one component of the correction that no spectacle lens can deliver.",
+      "date": "2026-08-01",
+      "categories": [
+        "3D",
+        "Mobile"
+      ],
+      "tags": "virtual-reality, quest, openxr, diplopia, vision-therapy"
+    },
+    {
       "slug": "metaunitysetupJune2026",
       "title": "Meta Unity Setup",
       "description": "I set up Unity 6.3 LTS for Meta Quest Pro development, installed the Meta XR Interaction SDK, worked through the Project Setup Tool, and deployed a Hello World APK to my Quest Pro headset.",
@@ -2525,5 +2536,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-07-11T16:55:33.699Z"
+  "generatedAt": "2026-08-02T03:19:41.105Z"
 }
