@@ -34,10 +34,10 @@ The Bielschowsky head-tilt test was described in 1935 and is still how a fourth 
 The first panel draws both eyes from in front. When the head rolls, the otoliths command ocular counter-roll — the eyes rotate against the head to keep the world upright, recovering about 15% of the roll. Intorting the right eye is a job shared by the superior oblique and the superior rectus, and mine is the palsied one.
 
 ![](assets/images/bielschowsky/eyes-level.png)
-*With the head level, the two retinal images are already 5.5° apart — beyond the ±3.5° range within which I can pull them together — and the right eye sits 8.0Δ higher.*
+*With the head level, the two retinal images are already 5.5° apart — beyond the ±3.5° range within which I can pull them together — and the right eye sits 8.0Δ higher and 1.0Δ toward the nose. The pupil is drawn life size, which is why you have to look for it: 8Δ on a 27-pixel eye is a bit over two pixels. The dashed references are what make it readable, and the figures beside the eye are the measurement.*
 
 ![](assets/images/bielschowsky/eyes-right.png)
-*I dragged the slider 40° onto my right shoulder. The right eye is asked for intorsion it cannot supply, so it falls short: the two images rotate to 10.9° apart and the right eye rides 15.9Δ higher. Rolling the other way hands the job to the inferior oblique and inferior rectus, which manage it perfectly well, and the mismatch shrinks to about 3° at the left shoulder.*
+*I dragged the slider 40° onto my right shoulder. The right eye is asked for intorsion it cannot supply, so it falls short: the two images rotate to 10.9° apart and the right eye rides 15.9Δ higher and 2.0Δ inward. Rolling the other way hands the job to the inferior oblique and inferior rectus, which manage it perfectly well, and the mismatch shrinks to about 3° at the left shoulder.*
 
 That last sentence is the whole reason for my head posture. Leftward tilt is the only free variable that drives the torsional demand toward zero, and I found it years before I could measure it.
 
@@ -63,6 +63,10 @@ I was careful to draw the correction as three separate things, because they are 
 
 ![](assets/images/bielschowsky/components.png)
 *Rotation is measured across the whole roll range and no spectacle lens can deliver it at all. Vertical prism — 8.0Δ, dialled at head level once the rotation was already right — is exactly what a prism does, and the prescription of record calls for roughly 11Δ; how it changes with head roll has never been measured, and the hatched region is that ignorance. Horizontal prism came out at 0.61, 2.48 and 0.00 across three runs, so it may be nothing at all.*
+
+The third component is the one I had been drawing as nothing, and it turns out to go the way most people guess wrongly: **inward**. The superior rectus that covers for my palsied oblique is not only an elevator — its secondary action is **adduction** — so the same recruitment that lifts the eye also pulls it toward my nose, and the prescription of record carries its 1Δ **base-out**, which is what an inward deviation is given.
+
+So the eye panel now moves the pupil on both axes rather than only up. It also no longer exaggerates either of them. There had been a 2× magnification on the rise to make a few degrees easier to see, and it was defensible while there was one axis — but the moment a second arrived at an eighth the size, any magnification became a choice about which component looks important. Both are now drawn at true scale, which means the sideways drift is about half a pixel and you cannot really see it. That is the honest picture of a 1Δ component sitting beside an 8Δ one, and I would rather the drawing say so than flatter the smallest number on the page.
 
 ## Where the curve comes from
 
