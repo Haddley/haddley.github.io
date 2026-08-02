@@ -122,19 +122,19 @@ function processInlineMarkdown(text: string): React.ReactElement[] {
         const linkUrl = earliestMatch[2];
         elements.push(
           <a key={elementKey++} href={linkUrl} className="text-primary">
-            {linkText}
+            {processInlineMarkdown(linkText)}
           </a>
         );
       } else if (matchedPattern.component === 'strong') {
         elements.push(
           <strong key={elementKey++}>
-            {earliestMatch[1]}
+            {processInlineMarkdown(earliestMatch[1])}
           </strong>
         );
       } else if (matchedPattern.component === 'em') {
         elements.push(
           <em key={elementKey++}>
-            {earliestMatch[1]}
+            {processInlineMarkdown(earliestMatch[1])}
           </em>
         );
       } else if (matchedPattern.component === 'code') {
