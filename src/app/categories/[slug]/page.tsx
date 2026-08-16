@@ -1,5 +1,4 @@
-import { getCategoryBySlug } from '@/lib/categories';
-import { categories } from '@/lib/categories';
+import { getCategoryBySlug, categories } from '@/lib/categories';
 import CategoryDetailPage from '@/components/CategoryDetailPage';
 import type { Metadata } from 'next';
 
@@ -9,6 +8,8 @@ interface CategoryPageProps {
   }>;
 }
 
+// /categories/<slug>/ mirrors /posts/category/<slug>/ — same content, same component.
+// Canonical points at /posts/category/<slug>/ so search engines treat that as the one true URL.
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
   const { slug } = await params;
   const category = getCategoryBySlug(slug);
@@ -20,7 +21,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
     openGraph: {
       title: `${category.name} Posts | Neil Haddley`,
       description: category.description,
-      url: `https://haddley.github.io/posts/category/${slug}/`,
+      url: `https://haddley.github.io/categories/${slug}/`,
     },
   };
 }
@@ -36,7 +37,7 @@ export async function generateStaticParams() {
   return allSlugs.map((slug) => ({ slug }));
 }
 
-export default async function CategoryPage({ params }: CategoryPageProps) {
+export default async function CategoriesSlugPage({ params }: CategoryPageProps) {
   const { slug } = await params;
   return <CategoryDetailPage slug={slug} />;
 }
