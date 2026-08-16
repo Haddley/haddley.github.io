@@ -1,5 +1,6 @@
 ---
-title: "Azure Active Directory (Part 2)"
+title: "Azure Active Directory"
+part: 2
 description: "Microsoft Azure Active Directory Authentication."
 date: "2021-04-17"
 categories: ["Azure"]

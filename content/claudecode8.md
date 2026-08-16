@@ -1,5 +1,6 @@
 ---
-title: "Claude Code (Part 8)"
+title: "Claude Code"
+part: 8
 description: "Building a Scheme-like LISP interpreter with a Jupyter-style notebook UI in pure HTML/CSS/JS — guided entirely by Claude Code from first prompt to deployed app"
 date: "2026-02-01"
 categories: ["AI"]

@@ -1,5 +1,6 @@
 ---
-title: "Power Pages (Part 2)"
+title: "Power Pages"
+part: 2
 description: "View, create, and edit orders"
 date: "2024-12-20"
 categories: ["Business Central","Power Platform"]

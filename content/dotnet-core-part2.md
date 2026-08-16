@@ -1,5 +1,6 @@
 ---
-title: ".NET Core (Part 2)"
+title: ".NET Core"
+part: 2
 description: "Creating a Blazor App that calls Microsoft Graph."
 date: "2023-03-15"
 categories: [".NET"]

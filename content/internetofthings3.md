@@ -1,5 +1,6 @@
 ---
-title: "Internet of Things (Part 3)"
+title: "Internet of Things"
+part: 3
 description: "Arduino Nano 33 BLE Sense"
 date: "2025-03-01"
 categories: ["AI","IOT"]

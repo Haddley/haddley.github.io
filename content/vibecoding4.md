@@ -1,5 +1,6 @@
 ---
-title: "Vibe Coding (Part 4)"
+title: "Vibe Coding"
+part: 4
 description: "Deploying to Docker"
 date: "2026-01-30"
 categories: ["AI", "Azure"]

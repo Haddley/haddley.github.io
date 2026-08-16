@@ -1,5 +1,6 @@
 ---
-title: "Power Apps (Part 23)"
+title: "Power Apps"
+part: 1
 description: "The Configuration Migration tool"
 date: "2025-01-01"
 categories: ["Power Platform"]

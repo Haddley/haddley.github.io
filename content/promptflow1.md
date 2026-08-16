@@ -1,5 +1,6 @@
 ---
-title: "Prompt Flow (Part 1)"
+title: "Prompt Flow"
+part: 1
 description: "Setting up Azure Prompt Flow in VS Code to create and run sample AI applications — compared with LangChain-based alternatives"
 date: "2024-06-11"
 categories: ["AI"]

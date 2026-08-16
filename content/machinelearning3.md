@@ -1,5 +1,6 @@
 ---
-title: "Machine Learning (Part 3)"
+title: "Machine Learning"
+part: 3
 description: "Creating models"
 date: "2022-06-05"
 categories: ["AI"]

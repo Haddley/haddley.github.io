@@ -1,5 +1,6 @@
 ---
-title: "Business Central Azure Functions (Part 2)"
+title: "Business Central Azure Functions"
+part: 2
 description: "Creating the Business Central Extension"
 date: "2025-12-16"
 categories: ["Azure","Microsoft Dynamics","Business Central"]

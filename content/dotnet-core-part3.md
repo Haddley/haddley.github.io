@@ -1,5 +1,6 @@
 ---
-title: ".NET Core (Part 3)"
+title: ".NET Core"
+part: 3
 description: "Creating a VB.NET Web App using Microsoft's cross-platform framework."
 date: "2025-09-20"
 categories: [".NET"]

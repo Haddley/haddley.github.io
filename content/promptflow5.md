@@ -1,5 +1,6 @@
 ---
-title: "Prompt Flow (Part 5)"
+title: "Prompt Flow"
+part: 5
 description: "Creating and deploying an AI chat application with Azure Prompt Flow and LangChain in Azure AI Studio"
 date: "2024-09-01"
 categories: ["AI"]

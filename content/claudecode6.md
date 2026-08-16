@@ -1,5 +1,6 @@
 ---
-title: "Claude Code (Part 6)"
+title: "Claude Code"
+part: 6
 description: "Creating custom slash commands in .claude/commands/ to package project-specific context and workflows into a single reusable shortcut"
 date: "2026-01-21"
 categories: ["AI"]

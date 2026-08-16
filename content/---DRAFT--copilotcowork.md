@@ -1,5 +1,6 @@
 ---
-title: "Copilot Cowork (Part 1)"
+title: "Copilot Cowork"
+part: 1
 description: "Legal Skill"
 date: "2026-06-01"
 categories: ["AI"]

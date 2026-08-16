@@ -1,5 +1,6 @@
 ---
-title: "Business Central Azure Functions (Part 1)"
+title: "Business Central Azure Functions"
+part: 1
 description: "Creating the Azure Functions App"
 date: "2025-12-15"
 categories: ["Azure","Microsoft Dynamics","Business Central"]

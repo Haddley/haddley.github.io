@@ -1,5 +1,6 @@
 ---
-title: "Prompt Flow (Part 4)"
+title: "Prompt Flow"
+part: 4
 description: "Using Semantic Kernel's planner to automatically orchestrate multiple AI plugins so an agent can combine them to achieve a user's goal"
 date: "2024-08-24"
 categories: ["AI"]

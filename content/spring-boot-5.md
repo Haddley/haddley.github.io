@@ -1,5 +1,6 @@
 ---
-title: "Java Spring Boot (Part 5)"
+title: "Java Spring Boot"
+part: 5
 description: "Spring for GraphQL"
 date: "2023-10-30"
 categories: ["Java"]

@@ -1,5 +1,6 @@
 ---
-title: "Claude Code (Part 10)"
+title: "Claude Code"
+part: 10
 description: "An AI agent for Dynamics 365 Sales Professional"
 date: "2026-03-18"
 categories: ["AI","Microsoft Dynamics"]

@@ -1,5 +1,6 @@
 ---
-title: "Dynamics 365 Sales (Part 3)"
+title: "Dynamics 365 Sales"
+part: 3
 description: "Adding a Warranty table"
 date: "2023-10-21"
 categories: ["Microsoft Dynamics"]

@@ -1,5 +1,6 @@
 ---
-title: "Internet of Things (Part 2)"
+title: "Internet of Things"
+part: 2
 description: "Node-RED can publish messages to a MQTT broker and subscribe to MQTT topics."
 date: "2021-03-06"
 categories: ["IOT"]

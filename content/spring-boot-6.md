@@ -1,5 +1,6 @@
 ---
-title: "Java Spring Boot (Part 6)"
+title: "Java Spring Boot"
+part: 6
 description: "GitHub OAuth"
 date: "2023-10-31"
 categories: ["Java"]

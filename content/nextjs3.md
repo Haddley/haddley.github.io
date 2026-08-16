@@ -1,5 +1,6 @@
 ---
-title: "Next.js (Part 3)"
+title: "Next.js"
+part: 3
 description: "API routes and next-auth"
 date: "2021-11-07"
 categories: ["React"]

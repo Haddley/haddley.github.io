@@ -1,5 +1,6 @@
 ---
-title: "Model Driven Apps (Part 3)"
+title: "Model Driven Apps"
+part: 3
 description: "JavaScript to update a Business Process Flow Stage"
 date: "2023-10-08"
 categories: ["Power Platform"]

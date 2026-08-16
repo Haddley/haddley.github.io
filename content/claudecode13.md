@@ -1,5 +1,6 @@
 ---
-title: "Claude Code (Part 13)"
+title: "Claude Code"
+part: 13
 description: "Building a Claude Code skill that generates Dataverse solution XML for Power Platform"
 date: "2026-06-03"
 categories: ["AI","Power Platform"]

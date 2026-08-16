@@ -1,5 +1,6 @@
 ---
-title: "Vibe Coding (Part 2)"
+title: "Vibe Coding"
+part: 2
 description: "Proof of Concept"
 date: "2026-01-29"
 categories: ["AI"]

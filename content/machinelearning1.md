@@ -1,5 +1,6 @@
 ---
-title: "Machine Learning (Part 1)"
+title: "Machine Learning"
+part: 1
 description: "Hexapawn and Yolo"
 date: "2022-06-05"
 categories: ["AI"]

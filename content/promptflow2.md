@@ -1,5 +1,6 @@
 ---
-title: "Prompt Flow (Part 2)"
+title: "Prompt Flow"
+part: 2
 description: "Running an Azure Prompt Flow application inside a Docker container using the VS Code Prompt Flow extension"
 date: "2024-06-12"
 categories: ["AI"]

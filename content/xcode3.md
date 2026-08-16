@@ -1,5 +1,6 @@
 ---
-title: "XCode C++ (Part 3)"
+title: "XCode C++"
+part: 3
 description: "Building an OpenGL application using C++ and XCode"
 date: "2023-03-08"
 categories: ["macOS"]

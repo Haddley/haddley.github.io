@@ -1,5 +1,6 @@
 ---
-title: "Microsoft SQL Server (Part 1)"
+title: "Microsoft SQL Server"
+part: 1
 description: "Microsoft SQL Server 2019 Docker image."
 date: "2021-03-14"
 categories: ["SQL"]

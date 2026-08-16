@@ -1,5 +1,6 @@
 ---
-title: "Machine Learning (Part 2)"
+title: "Machine Learning"
+part: 2
 description: "What apps can be written quickly?"
 date: "2022-06-05"
 categories: ["AI"]

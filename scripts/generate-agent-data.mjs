@@ -29,10 +29,11 @@ async function run() {
     if (data.visible === false || data.hidden === true || data.hidden === 'true') continue;
 
     const slug = data.slug || file.replace(/\.md$/, '');
+    const title = data.part ? `${data.title || ''} (Part ${data.part})` : (data.title || '');
 
     posts.push({
       slug,
-      title: data.title || '',
+      title,
       description: data.description || '',
       date: data.date || '',
       categories: Array.isArray(data.categories) ? data.categories : [],
@@ -43,7 +44,7 @@ async function run() {
     const body = content.trim();
     const postData = {
       slug,
-      title: data.title || '',
+      title,
       date: data.date || '',
       categories: Array.isArray(data.categories) ? data.categories : [],
       tags: typeof data.tags === 'string' ? data.tags : '',

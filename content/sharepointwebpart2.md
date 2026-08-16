@@ -1,5 +1,6 @@
 ---
-title: "SharePoint Web Part (Part 2)"
+title: "SharePoint Web Part"
+part: 2
 description: "How to create and publish a SharePoint Web Part"
 date: "2021-02-14"
 categories: ["Microsoft 365"]

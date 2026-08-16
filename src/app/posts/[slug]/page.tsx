@@ -1,4 +1,4 @@
-import { getPostById, getAllPosts } from '@/lib/posts';
+import { getPostById, getAllPosts, getSeriesNavigation } from '@/lib/posts';
 import { getMarkdownPost } from '@/lib/markdown';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
@@ -47,6 +47,7 @@ export default async function PostPage({ params }: PostPageProps) {
 
   // Try to get markdown content
   const markdownPost = await getMarkdownPost(slug);
+  const { name: seriesName, previous, next } = await getSeriesNavigation(post);
 
   return (
     <>
@@ -143,6 +144,119 @@ export default async function PostPage({ params }: PostPageProps) {
                 <div className="alert alert-warning">
                   <strong>Note:</strong> Content is being processed. The original HTML content
                   from <code>{slug}.html</code> will be displayed here.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Series Navigation */}
+      {seriesName && (previous || next) && (
+        <section className="content1 cid-content" id="content1-series-nav">
+          <div className="container">
+            <div className="row justify-content-center">
+              <div className="col-md-12 col-lg-10">
+                <div className="mb-4">
+                  <p className="text-center display-7" style={{ color: '#666', marginBottom: '1.25rem' }}>
+                    Part of the <strong>{seriesName}</strong> series
+                  </p>
+                  <div className="row g-3">
+                    <div className="col-12 col-md-6">
+                      {previous ? (
+                        <Link href={`/posts/${previous.slug}/`} style={{ display: 'block', height: '100%', textDecoration: 'none' }}>
+                          <div style={{
+                            background: '#fff',
+                            border: '1px solid rgba(15, 30, 61, 0.1)',
+                            borderRadius: '12px',
+                            padding: '20px',
+                            height: '100%',
+                            boxShadow: '0 2px 10px rgba(0,0,0,0.06)',
+                          }}>
+                            <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#0f1e3d', textTransform: 'uppercase', letterSpacing: '0.03em', marginBottom: '8px' }}>
+                              ← Previous in series
+                            </div>
+                            <div style={{ fontSize: '1.05rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '6px' }}>
+                              {previous.title}
+                            </div>
+                            <div style={{
+                              fontSize: '0.85rem',
+                              color: '#666',
+                              lineHeight: 1.4,
+                              display: '-webkit-box',
+                              WebkitLineClamp: 2,
+                              WebkitBoxOrient: 'vertical' as const,
+                              overflow: 'hidden',
+                            }}>
+                              {previous.description}
+                            </div>
+                          </div>
+                        </Link>
+                      ) : (
+                        <div style={{
+                          border: '1px dashed rgba(15, 30, 61, 0.2)',
+                          borderRadius: '12px',
+                          padding: '20px',
+                          height: '100%',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          textAlign: 'center',
+                          color: '#999',
+                          fontSize: '0.9rem',
+                        }}>
+                          📍 You&apos;re at the start of the series
+                        </div>
+                      )}
+                    </div>
+                    <div className="col-12 col-md-6">
+                      {next ? (
+                        <Link href={`/posts/${next.slug}/`} style={{ display: 'block', height: '100%', textDecoration: 'none' }}>
+                          <div style={{
+                            background: '#fff',
+                            border: '1px solid rgba(15, 30, 61, 0.1)',
+                            borderRadius: '12px',
+                            padding: '20px',
+                            height: '100%',
+                            boxShadow: '0 2px 10px rgba(0,0,0,0.06)',
+                          }}>
+                            <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#0f1e3d', textTransform: 'uppercase', letterSpacing: '0.03em', marginBottom: '8px' }}>
+                              Next in series →
+                            </div>
+                            <div style={{ fontSize: '1.05rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '6px' }}>
+                              {next.title}
+                            </div>
+                            <div style={{
+                              fontSize: '0.85rem',
+                              color: '#666',
+                              lineHeight: 1.4,
+                              display: '-webkit-box',
+                              WebkitLineClamp: 2,
+                              WebkitBoxOrient: 'vertical' as const,
+                              overflow: 'hidden',
+                            }}>
+                              {next.description}
+                            </div>
+                          </div>
+                        </Link>
+                      ) : (
+                        <div style={{
+                          border: '1px dashed rgba(15, 30, 61, 0.2)',
+                          borderRadius: '12px',
+                          padding: '20px',
+                          height: '100%',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          textAlign: 'center',
+                          color: '#999',
+                          fontSize: '0.9rem',
+                        }}>
+                          ✍️ This is the latest part — more may follow
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

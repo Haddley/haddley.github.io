@@ -1,5 +1,6 @@
 ---
-title: "Business Central (Part 25) Integration Tables"
+title: "Business Central"
+part: 6
 description: "Integration Tables"
 date: "2025-09-20"
 categories: ["Business Central","Microsoft Dynamics"]

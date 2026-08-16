@@ -1,5 +1,6 @@
 ---
-title: "XCode C++ (Part 2)"
+title: "XCode C++"
+part: 2
 description: "OpenGL GLFW"
 date: "2023-03-08"
 categories: ["macOS"]

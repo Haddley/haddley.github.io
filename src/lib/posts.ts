@@ -14,6 +14,7 @@ export interface BlogPost {
   tags: string[];
   categories?: string[];
   visible?: boolean;
+  part?: number;
 }
 
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
@@ -22,21 +23,56 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
 
+    const part: number | undefined = typeof data.part === 'number' ? data.part : (data.part ? parseInt(data.part, 10) : undefined);
+    const baseTitle = data.title || '';
+
     return {
       slug,
-      title: data.title || '',
+      title: part ? `${baseTitle} (Part ${part})` : baseTitle,
       date: data.date || '',
       description: data.description || '',
       content,
       image: data.image,
       tags: Array.isArray(data.tags) ? data.tags : (data.tags ? data.tags.split(',').map((t: string) => t.trim()).filter((t: string) => t) : []),
       categories: Array.isArray(data.categories) ? data.categories : [],
-      visible: data.visible !== false && data.hidden !== true && data.hidden !== 'true'
+      visible: data.visible !== false && data.hidden !== true && data.hidden !== 'true',
+      part,
     };
   } catch (err) {
     console.error('Error reading post:', err);
     return null;
   }
+}
+
+// Strips the " (Part N)" suffix that getBlogPostBySlug appends, recovering the shared series name.
+// Posts in the same series must share this base title exactly.
+function seriesNameOf(post: BlogPost): string | null {
+  if (!post.part) return null;
+  return post.title.replace(new RegExp(`\\s*\\(Part ${post.part}\\)$`), '');
+}
+
+// Given a post, finds the series name and the previous/next posts in that series (by part number).
+export async function getSeriesNavigation(post: BlogPost): Promise<{ name: string | null; previous: BlogPost | null; next: BlogPost | null }> {
+  const name = seriesNameOf(post);
+  if (!name) {
+    return { name: null, previous: null, next: null };
+  }
+
+  const allPosts = await getVisibleBlogPosts();
+  const seriesPosts = allPosts
+    .filter(p => seriesNameOf(p) === name)
+    .sort((a, b) => (a.part as number) - (b.part as number));
+
+  const index = seriesPosts.findIndex(p => p.slug === post.slug);
+  if (index === -1) {
+    return { name, previous: null, next: null };
+  }
+
+  return {
+    name,
+    previous: index > 0 ? seriesPosts[index - 1] : null,
+    next: index < seriesPosts.length - 1 ? seriesPosts[index + 1] : null,
+  };
 }
 
 // Alias for compatibility

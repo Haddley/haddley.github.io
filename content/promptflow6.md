@@ -1,5 +1,6 @@
 ---
-title: "Prompt Flow (Part 6)"
+title: "Prompt Flow"
+part: 6
 description: "Building a multi-step AI chat workflow in VS Code using Prompt Flow, Semantic Kernel, and Planner"
 date: "2024-09-01"
 categories: ["AI"]

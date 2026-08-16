@@ -1,5 +1,6 @@
 ---
-title: "Java Spring Boot (Part 2)"
+title: "Java Spring Boot"
+part: 2
 description: "References"
 date: "2023-10-26"
 categories: ["Java", "Azure"]

@@ -1,5 +1,6 @@
 ---
-title: "Next.js (Part 5)"
+title: "Next.js"
+part: 5
 description: "next-pwa and ionic"
 date: "2022-01-13"
 categories: ["React"]

@@ -1,5 +1,6 @@
 ---
-title: "Java Spring Boot (Part 1)"
+title: "Java Spring Boot"
+part: 1
 description: "Spring based Java Applications that you can just run."
 date: "2021-04-06"
 categories: ["Java"]

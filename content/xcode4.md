@@ -1,5 +1,6 @@
 ---
-title: "XCode C++ (Part 4)"
+title: "XCode C++"
+part: 4
 description: "Rotating the triangle"
 date: "2023-03-27"
 categories: ["macOS"]

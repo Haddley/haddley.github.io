@@ -1,5 +1,6 @@
 ---
-title: "Langflow (Part 1)"
+title: "Langflow"
+part: 1
 description: "References"
 date: "2024-10-30"
 categories: ["AI"]

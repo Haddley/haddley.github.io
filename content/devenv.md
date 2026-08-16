@@ -1,5 +1,6 @@
 ---
-title: "Business Central (Part 27)"
+title: "Business Central"
+part: 7
 description: "Development Environment"
 date: "2025-11-17"
 categories: ["Business Central","DevOps"]

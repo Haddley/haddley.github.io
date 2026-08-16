@@ -1,5 +1,6 @@
 ---
-title: "Vibe Coding (Part 1)"
+title: "Vibe Coding"
+part: 1
 description: "Learn to Code with ChatGPT"
 date: "2026-01-29"
 categories: ["AI"]

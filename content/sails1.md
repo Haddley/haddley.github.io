@@ -1,5 +1,6 @@
 ---
-title: "Sails (Part 1)"
+title: "Sails"
+part: 1
 description: "Azure DevOps and Sails."
 date: "2021-10-12"
 categories: ["DevOps", "Azure"]

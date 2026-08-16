@@ -1,5 +1,6 @@
 ---
-title: "Claude Code (Part 12)"
+title: "Claude Code"
+part: 12
 description: "Using the DeepSeek API with Claude Code as a cheap, fast alternative to local models"
 date: "2026-05-08"
 categories: ["AI"]

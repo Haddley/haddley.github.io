@@ -1,5 +1,6 @@
 ---
-title: "Next.js (Part 4)"
+title: "Next.js"
+part: 4
 description: "Deploying to Azure"
 date: "2021-11-11"
 categories: ["React", "Azure"]

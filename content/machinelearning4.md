@@ -1,5 +1,6 @@
 ---
-title: "Machine Learning (Part 4)"
+title: "Machine Learning"
+part: 4
 description: "Using Google Colab (Jupyter Notebooks in the cloud) to run machine learning experiments with GPU access and no local setup required"
 date: "2022-06-08"
 categories: ["AI","Python"]

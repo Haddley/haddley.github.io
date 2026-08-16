@@ -1,5 +1,6 @@
 ---
-title: "Model Driven Apps (Part 4)"
+title: "Model Driven Apps"
+part: 4
 description: "Power FX"
 date: "2023-10-09"
 categories: ["Power Platform"]

@@ -1,5 +1,6 @@
 ---
-title: "Internet of Things (Part 1)"
+title: "Internet of Things"
+part: 1
 description: "ESP8266 is a low-cost Wi-Fi microchip, with a full TCP/IP stack and microcontroller capability."
 date: "2021-03-03"
 categories: ["IOT"]

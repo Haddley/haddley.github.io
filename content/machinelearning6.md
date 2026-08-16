@@ -1,5 +1,6 @@
 ---
-title: "Machine Learning (Part 6)"
+title: "Machine Learning"
+part: 6
 description: "Splitting into training and test dataframes"
 date: "2022-06-11"
 categories: ["AI"]

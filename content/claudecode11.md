@@ -1,5 +1,6 @@
 ---
-title: "Claude Code (Part 11)"
+title: "Claude Code"
+part: 11
 description: "Running Claude Code against a local Ollama model (qwen3-coder:30b) instead of the Anthropic API — no API costs and no data leaving the machine"
 date: "2026-04-10"
 categories: ["AI"]

@@ -1,5 +1,6 @@
 ---
-title: "Java Spring Boot (Part 3)"
+title: "Java Spring Boot"
+part: 3
 description: "Using Spring Data JPA"
 date: "2023-10-28"
 categories: ["Java"]

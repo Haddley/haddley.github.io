@@ -1,5 +1,6 @@
 ---
-title: "Claude Code (Part 4)"
+title: "Claude Code"
+part: 4
 description: "Pre-approving trusted shell commands and file operations in Claude Code's settings to stop repetitive permission prompts"
 date: "2026-01-21"
 categories: ["AI"]

@@ -1,5 +1,6 @@
 ---
-title: "Dynamics 365 Sales (Part 2)"
+title: "Dynamics 365 Sales"
+part: 2
 description: "The Lead to Opportunity Sales Process"
 date: "2023-10-21"
 categories: ["Microsoft Dynamics"]

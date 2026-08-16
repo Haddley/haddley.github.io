@@ -1,5 +1,6 @@
 ---
-title: "Claude Code (Part 3)"
+title: "Claude Code"
+part: 3
 description: "Managing Claude Code's context window with ESC ESC rewind, /compact summarisation, and /clear reset to keep long sessions accurate"
 date: "2026-01-21"
 categories: ["AI"]

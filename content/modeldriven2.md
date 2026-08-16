@@ -1,5 +1,6 @@
 ---
-title: "Model Driven Apps (Part 2)"
+title: "Model Driven Apps"
+part: 2
 description: "Environments"
 date: "2023-10-05"
 categories: ["Power Platform"]

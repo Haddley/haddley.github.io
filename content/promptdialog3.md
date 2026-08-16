@@ -1,5 +1,6 @@
 ---
-title: "Business Central (Part 29)"
+title: "Business Central"
+part: 3
 description: "PromptDialog (Part 3)"
 date: "2024-05-24"
 categories: ["Business Central","AI"]

@@ -1,5 +1,6 @@
 ---
-title: "Power Pages (Part 3)"
+title: "Power Pages"
+part: 3
 description: "Customer Order Lines"
 date: "2024-12-20"
 categories: ["Business Central","Power Platform"]

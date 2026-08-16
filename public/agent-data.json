@@ -411,7 +411,7 @@
     },
     {
       "slug": "devenv",
-      "title": "Business Central (Part 27)",
+      "title": "Business Central (Part 7)",
       "description": "Development Environment",
       "date": "2025-11-17",
       "categories": [
@@ -640,7 +640,7 @@
     },
     {
       "slug": "powerapps23configurationmigrationtool",
-      "title": "Power Apps (Part 23)",
+      "title": "Power Apps (Part 1)",
       "description": "The Configuration Migration tool",
       "date": "2025-01-01",
       "categories": [
@@ -650,7 +650,7 @@
     },
     {
       "slug": "businesscentralpart26integrationtable",
-      "title": "Business Central (Part 26)",
+      "title": "Business Central (Part 5)",
       "description": "Integration Tables",
       "date": "2024-12-22",
       "categories": [
@@ -684,7 +684,7 @@
     },
     {
       "slug": "businesscentralpart25integratingwithdataverseusingdataflows",
-      "title": "Business Central (Part 25) Integrating with Dataverse using Dataflows",
+      "title": "Business Central (Part 4)",
       "description": "Integrating with Dataverse using Dataflows",
       "date": "2024-12-01",
       "categories": [
@@ -830,7 +830,7 @@
     },
     {
       "slug": "promptdialog3",
-      "title": "Business Central (Part 29)",
+      "title": "Business Central (Part 3)",
       "description": "PromptDialog (Part 3)",
       "date": "2024-05-24",
       "categories": [
@@ -841,7 +841,7 @@
     },
     {
       "slug": "promptdialog2",
-      "title": "Business Central (Part 28)",
+      "title": "Business Central (Part 2)",
       "description": "Prompt Dialog (Part 2)",
       "date": "2024-05-24",
       "categories": [
@@ -852,7 +852,7 @@
     },
     {
       "slug": "promptdialog",
-      "title": "Business Central (Part 27)",
+      "title": "Business Central (Part 1)",
       "description": "Prompt Dialog (Part 1)",
       "date": "2024-05-24",
       "categories": [
@@ -2547,5 +2547,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-08-02T19:34:35.621Z"
+  "generatedAt": "2026-08-16T13:24:27.258Z"
 }

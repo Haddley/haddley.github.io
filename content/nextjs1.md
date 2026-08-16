@@ -1,5 +1,6 @@
 ---
-title: "Next.js (Part 1)"
+title: "Next.js"
+part: 1
 description: "The React Framework for Production"
 date: "2021-11-05"
 categories: ["React"]

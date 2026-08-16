@@ -1,5 +1,6 @@
 ---
-title: "Claude Code (Part 5)"
+title: "Claude Code"
+part: 5
 description: "Using Claude Code's Plan Mode (read-only exploration before edits) and Extended Thinking to handle complex tasks more carefully"
 date: "2026-01-21"
 categories: ["AI"]

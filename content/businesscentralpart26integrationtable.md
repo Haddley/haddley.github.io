@@ -1,5 +1,6 @@
 ---
-title: "Business Central (Part 26)"
+title: "Business Central"
+part: 5
 description: "Integration Tables"
 date: "2024-12-22"
 categories: ["Microsoft Dynamics","Business Central","Power Platform"]

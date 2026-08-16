@@ -1,5 +1,6 @@
 ---
-title: "Machine Learning (Part 5)"
+title: "Machine Learning"
+part: 5
 description: "Predicting glucose levels from age using a machine learning regression model in Python, starting from an Excel dataset"
 date: "2022-06-11"
 categories: ["AI"]

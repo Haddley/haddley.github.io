@@ -1,5 +1,6 @@
 ---
-title: "Model Context Protocol (Part 1)"
+title: "Model Context Protocol"
+part: 1
 description: "Typescript quick start"
 date: "2025-08-13"
 categories: ["AI"]

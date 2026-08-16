@@ -1,5 +1,6 @@
 ---
-title: "Claude Code (Part 1)"
+title: "Claude Code"
+part: 1
 description: "Getting started with Claude Code — Anthropic's agentic CLI that reads your project files, writes and edits code, and runs commands from a single prompt"
 date: "2026-01-20"
 categories: ["AI"]

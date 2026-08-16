@@ -1,5 +1,6 @@
 ---
-title: "Dynamics 365 Sales (Part 4)"
+title: "Dynamics 365 Sales"
+part: 4
 description: "Tiki Tour"
 date: "2025-09-20"
 categories: ["Microsoft Dynamics"]

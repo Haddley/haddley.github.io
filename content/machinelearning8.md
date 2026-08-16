@@ -1,5 +1,6 @@
 ---
-title: "Machine Learning (Part 8)"
+title: "Machine Learning"
+part: 8
 description: "Stealing Baseball Signs"
 date: "2022-06-12"
 categories: ["AI"]

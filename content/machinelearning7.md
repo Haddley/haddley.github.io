@@ -1,5 +1,6 @@
 ---
-title: "Machine Learning (Part 7)"
+title: "Machine Learning"
+part: 7
 description: "Google Cloud Platform"
 date: "2022-06-11"
 categories: ["AI"]

@@ -1,5 +1,6 @@
 ---
-title: "Microsoft SQL Server (Part 2)"
+title: "Microsoft SQL Server"
+part: 2
 description: "T-SQL, Stored Procedures and Snapshot Isolation."
 date: "2021-03-27"
 categories: ["SQL"]

@@ -1,5 +1,6 @@
 ---
-title: "Claude Cowork (Part 1)"
+title: "Claude Cowork"
+part: 1
 description: "Using the page-line-summary skill in Claude Cowork to generate a deposition summary from a transcript PDF"
 date: "2026-06-04"
 categories: ["AI"]

@@ -1,5 +1,6 @@
 ---
-title: "Next.js (Part 2)"
+title: "Next.js"
+part: 2
 description: "getStaticProps, getServerSideProps, getStaticPaths and useSWR"
 date: "2021-11-06"
 categories: ["React"]

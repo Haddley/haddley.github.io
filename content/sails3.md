@@ -1,5 +1,6 @@
 ---
-title: "Sails (Part 3)"
+title: "Sails"
+part: 3
 description: "Sails and the Amazon Elastic Kubernetes Service"
 date: "2021-10-13"
 categories: ["DevOps"]

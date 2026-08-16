@@ -1,5 +1,6 @@
 ---
-title: "Java Spring Boot (Part 4)"
+title: "Java Spring Boot"
+part: 4
 description: "ModelAndView"
 date: "2023-10-29"
 categories: ["Java"]
