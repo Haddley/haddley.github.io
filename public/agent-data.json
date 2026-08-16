@@ -1,6 +1,56 @@
 {
   "posts": [
     {
+      "slug": "gamenight5",
+      "title": "Game Night (Part 5)",
+      "description": "Testing a project with no build step, no server and no modules — slicing logic out of raw HTML, auditing for scope collisions, and a transcript-driven test for whether an auction is actually fun",
+      "date": "2026-08-16",
+      "categories": [
+        "JavaScript"
+      ],
+      "tags": "playwright, node-test, unit-testing, e2e-testing, test-automation"
+    },
+    {
+      "slug": "gamenight4",
+      "title": "Game Night (Part 4)",
+      "description": "Wiring GA4 into a static site with no backend, choosing what actually counts as a Key Event, and a small $1/day Google Ads experiment to see if paid search moves the needle",
+      "date": "2026-08-16",
+      "categories": [
+        "JavaScript"
+      ],
+      "tags": "google-analytics, ga4, google-ads, web-analytics, seo"
+    },
+    {
+      "slug": "gamenight3",
+      "title": "Game Night (Part 3)",
+      "description": "Giving Going, Going, GONE!'s auctioneer a real spoken voice with the Web Speech API, the iOS gesture rule that nearly kept him mute, and why Amazon Silk never hears him at all",
+      "date": "2026-08-16",
+      "categories": [
+        "JavaScript"
+      ],
+      "tags": "web-speech-api, text-to-speech, browser-compatibility, amazon-silk, accessibility"
+    },
+    {
+      "slug": "gamenight2",
+      "title": "Game Night (Part 2)",
+      "description": "LAN, STUN and TURN in practice — how two phones on different networks actually find each other, and the badge that tells you which path they are using",
+      "date": "2026-08-16",
+      "categories": [
+        "JavaScript"
+      ],
+      "tags": "webrtc, stun, turn, peerjs, networking"
+    },
+    {
+      "slug": "gamenight1",
+      "title": "Game Night (Part 1)",
+      "description": "How the games/ project keeps every phone in sync with no server at all — host-authoritative state over a peer-to-peer mesh",
+      "date": "2026-08-16",
+      "categories": [
+        "JavaScript"
+      ],
+      "tags": "webrtc, peerjs, peer-to-peer, state-management, multiplayer"
+    },
+    {
       "slug": "vision-remote-desktop",
       "title": "A Desktop That Rolls With My Head",
       "description": "I built a remote desktop viewer that applies my prism prescription in software — including the rotation no spectacle lens can deliver — and on the Quest it runs in AR, so the corrected screen hangs in my real room above my real keyboard.",
@@ -2547,5 +2597,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-08-16T13:24:27.258Z"
+  "generatedAt": "2026-08-16T18:54:07.893Z"
 }
