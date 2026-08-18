@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "agenticaiforprofessionals3",
+      "title": "Agentic AI for Professionals (Part 3)",
+      "description": "Giving nsw-legal-research-assistant a real interface — a React frontend with clickable pinpoint citations, an MCP server exposing the same skill to Claude Code, and three bugs that only showed up once something other than curl was doing the testing",
+      "date": "2026-08-18",
+      "categories": [
+        "AI"
+      ],
+      "tags": "react, mcp, fastapi, playwright, rag"
+    },
+    {
       "slug": "agenticaiforprofessionals2",
       "title": "Agentic AI for Professionals (Part 2)",
       "description": "Building the RAG core of a NSW Caselaw research assistant entirely on a 32GB M4 MacBook Air — page-safe chunking, a provider-agnostic LLM layer, citations that can't be hallucinated, and a similarity-threshold bug that only showed up when I asked it something its documents genuinely didn't cover",
@@ -13,7 +23,7 @@
     {
       "slug": "agenticaiforprofessionals1",
       "title": "Agentic AI for Professionals (Part 1)",
-      "description": "Using a structured LLM-wiki research process to study Thomson Reuters CoCounsel's architecture, catching my own wrong assumption along the way, then turning that research into an implementation plan for a simplified NSW Caselaw research assistant",
+      "description": "Using a structured LLM-wiki research process to study Thomson Reuters CoCounsel's architecture, then turning that research into an implementation plan for a simplified NSW Caselaw research assistant",
       "date": "2026-08-18",
       "categories": [
         "AI"
@@ -2617,5 +2627,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-08-18T19:12:32.198Z"
+  "generatedAt": "2026-08-18T20:00:32.294Z"
 }

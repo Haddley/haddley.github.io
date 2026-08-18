@@ -10,7 +10,7 @@ hidden: false
 slug: "agenticaiforprofessionals2"
 ---
 
-[Part 1](/posts/agenticaiforprofessionals1/) covered the research — how a structured LLM-wiki process traced Thomson Reuters CoCounsel's real architecture, and how that turned into a plan for a simplified version grounded on [NSW Caselaw](https://www.caselaw.nsw.gov.au/) instead of a commercial database. This post is the actual build: Phases 1 through 3 of that plan, all of it running locally on my 32GB M4 MacBook Air through Docker Compose, with [Ollama](https://ollama.com/) serving both the chat model and the embeddings — no cloud API required to get a working system end to end.
+[Part 1](/posts/agenticaiforprofessionals1/) covered the research — how a structured LLM-wiki process traced Thomson Reuters CoCounsel's real architecture, and how that turned into a plan for `nsw-legal-research-assistant`, a simplified version grounded on [NSW Caselaw](https://www.caselaw.nsw.gov.au/) instead of a commercial database. This post is the actual build: Phases 1 through 3 of that plan, all of it running locally on my 32GB M4 MacBook Air through Docker Compose, with [Ollama](https://ollama.com/) serving both the chat model and the embeddings — no cloud API required to get a working system end to end.
 
 ![](assets/images/agenticaiforprofessionals2/nsw-caselaw-recent-decisions.png)
 *NSW Caselaw's own "recent decisions" list — and there's "Sader v Renbar Constructions PL", one of the two real cases I actually loaded into the app below*
