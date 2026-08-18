@@ -1,6 +1,26 @@
 {
   "posts": [
     {
+      "slug": "agenticaiforprofessionals2",
+      "title": "Agentic AI for Professionals (Part 2)",
+      "description": "Building the RAG core of a NSW Caselaw research assistant entirely on a 32GB M4 MacBook Air — page-safe chunking, a provider-agnostic LLM layer, citations that can't be hallucinated, and a similarity-threshold bug that only showed up when I asked it something its documents genuinely didn't cover",
+      "date": "2026-08-18",
+      "categories": [
+        "AI"
+      ],
+      "tags": "rag, pgvector, ollama, fastapi, docker"
+    },
+    {
+      "slug": "agenticaiforprofessionals1",
+      "title": "Agentic AI for Professionals (Part 1)",
+      "description": "Using a structured LLM-wiki research process to study Thomson Reuters CoCounsel's architecture, catching my own wrong assumption along the way, then turning that research into an implementation plan for a simplified NSW Caselaw research assistant",
+      "date": "2026-08-18",
+      "categories": [
+        "AI"
+      ],
+      "tags": "llm-wiki, rag, claude-code, legal-tech, product-research"
+    },
+    {
       "slug": "gamenight5",
       "title": "Game Night (Part 5)",
       "description": "Testing a project with no build step, no server and no modules — slicing logic out of raw HTML, auditing for scope collisions, and a transcript-driven test for whether an auction is actually fun",
@@ -2597,5 +2617,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-08-18T13:54:13.158Z"
+  "generatedAt": "2026-08-18T19:12:32.198Z"
 }
