@@ -8,8 +8,9 @@ interface CategoryPageProps {
   }>;
 }
 
-// /categories/<slug>/ mirrors /posts/category/<slug>/ — same content, same component.
-// Canonical points at /posts/category/<slug>/ so search engines treat that as the one true URL.
+// /categories/<slug>/ is the primary URL. /posts/category/<slug>/ still renders the same
+// content (same component) for backwards compatibility with old links, but its canonical
+// points here.
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
   const { slug } = await params;
   const category = getCategoryBySlug(slug);
@@ -17,7 +18,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   return {
     title: `${category.name} Posts | Neil Haddley`,
     description: category.description,
-    alternates: { canonical: `https://haddley.github.io/posts/category/${slug}/` },
+    alternates: { canonical: `https://haddley.github.io/categories/${slug}/` },
     openGraph: {
       title: `${category.name} Posts | Neil Haddley`,
       description: category.description,

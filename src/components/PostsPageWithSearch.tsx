@@ -56,7 +56,7 @@ export default function PostsPageWithSearch({
             {categories.map((category) => (
               <Link
                 key={category.slug}
-                href={`/posts/category/${category.slug}`}
+                href={`/categories/${category.slug}`}
                 className="badge"
                 style={{
                   fontSize: '1rem',

@@ -9,6 +9,9 @@ interface CategoryPageProps {
   }>;
 }
 
+// Kept for backwards compatibility with old links — /categories/<slug>/ is now the primary
+// URL and this canonicalizes to it, but this route still renders the same real content
+// rather than redirecting (a static export has no server to redirect from).
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
   const { slug } = await params;
   const category = getCategoryBySlug(slug);
@@ -16,7 +19,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   return {
     title: `${category.name} Posts | Neil Haddley`,
     description: category.description,
-    alternates: { canonical: `https://haddley.github.io/posts/category/${slug}/` },
+    alternates: { canonical: `https://haddley.github.io/categories/${slug}/` },
     openGraph: {
       title: `${category.name} Posts | Neil Haddley`,
       description: category.description,

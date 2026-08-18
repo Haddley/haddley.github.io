@@ -1,5 +1,6 @@
 import { getPostById, getAllPosts, getSeriesNavigation } from '@/lib/posts';
 import { getMarkdownPost } from '@/lib/markdown';
+import { categoryNameToSlug } from '@/lib/categories';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import Link from 'next/link';
@@ -81,7 +82,7 @@ export default async function PostPage({ params }: PostPageProps) {
                     {[...new Set(post.categories)].map((category) => (
                       <Link
                         key={category}
-                        href={`/posts/category/${category.toLowerCase().replace(/\s+/g, '-').replace(/[&]/g, '').replace(/[^a-z0-9-]/g, '')}`}
+                        href={`/categories/${categoryNameToSlug(category)}`}
                         style={{
                           background: 'rgba(15, 30, 61, 0.1)',
                           color: '#0f1e3d',

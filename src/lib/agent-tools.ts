@@ -39,7 +39,7 @@ export function searchPosts(query: string, posts: PostMeta[]): PostMeta[] {
 }
 
 export function getCategoryUrl(name: string): string {
-  return `/posts/category/${categoryNameToSlug(name)}/`;
+  return `/categories/${categoryNameToSlug(name)}/`;
 }
 
 export function getPostsByCategory(category: string, posts: PostMeta[]): PostMeta[] {

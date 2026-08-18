@@ -39,7 +39,7 @@ export default async function CategoryDetailPage({ slug }: CategoryDetailPagePro
                 <Link href="/" style={{ color: 'var(--gold)' }}>Home</Link>
               </li>
               <li className="breadcrumb-item">
-                <Link href="/posts" style={{ color: 'var(--gold)' }}>Posts</Link>
+                <Link href="/categories" style={{ color: 'var(--gold)' }}>Categories</Link>
               </li>
               <li className="breadcrumb-item active" style={{ color: 'rgba(255,255,255,0.5)' }}>
                 {category.name}

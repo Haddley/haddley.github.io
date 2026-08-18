@@ -51,9 +51,6 @@ export default async function CategoriesPage() {
               <li className="breadcrumb-item">
                 <Link href="/" style={{ color: 'var(--gold)' }}>Home</Link>
               </li>
-              <li className="breadcrumb-item">
-                <Link href="/posts" style={{ color: 'var(--gold)' }}>Posts</Link>
-              </li>
               <li className="breadcrumb-item active" style={{ color: 'rgba(255,255,255,0.5)' }}>
                 Categories
               </li>
@@ -144,7 +141,7 @@ export default async function CategoriesPage() {
                     {/* Card footer */}
                     <div className="card-footer" style={{ background: 'transparent', borderTop: '1px solid #e5e7eb', padding: '0.75rem 1.25rem' }}>
                       <Link
-                        href={`/posts/category/${slug}`}
+                        href={`/categories/${slug}`}
                         style={{ color: 'var(--navy)', fontWeight: 600, fontSize: '0.9rem', textDecoration: 'none' }}
                       >
                         View all posts →
