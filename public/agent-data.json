@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "agenticaiforprofessionals4",
+      "title": "Agentic AI for Professionals (Part 4)",
+      "description": "Running nsw-legal-research-assistant through the same six-beat demo Thomson Reuters used to introduce CoCounsel, live, with real output — grounded Q&A, pinpoint citations, the not-found bridge, Review, and skill-chaining drafting",
+      "date": "2026-08-19",
+      "categories": [
+        "AI"
+      ],
+      "tags": "rag, docker, playwright, legal-tech, citation-grounding"
+    },
+    {
       "slug": "agenticaiforprofessionals3",
       "title": "Agentic AI for Professionals (Part 3)",
       "description": "Giving nsw-legal-research-assistant a real interface — a React frontend with clickable pinpoint citations, an MCP server exposing the same skill to Claude Code, and three bugs that only showed up once something other than curl was doing the testing",
@@ -2627,5 +2637,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-08-18T21:02:56.198Z"
+  "generatedAt": "2026-08-19T11:28:03.593Z"
 }

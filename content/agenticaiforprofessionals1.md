@@ -4,13 +4,19 @@ part: 1
 description: "Using a structured LLM-wiki research process to study Thomson Reuters CoCounsel's architecture, then turning that research into an implementation plan for a simplified NSW Caselaw research assistant"
 date: "2026-08-18"
 categories: ["AI"]
-image: "/assets/images/agenticaiforprofessionals1/hero-nsw-caselaw.png"
+image: "/assets/images/agenticaiforprofessionals1/hero-cocounsel.png"
 tags: "llm-wiki, rag, claude-code, legal-tech, product-research"
 hidden: false
 slug: "agenticaiforprofessionals1"
 ---
 
-I've started a new project, `agentic-ai-for-professionals`, and this post is really about pulling back the curtain on something I've been doing for a while rather than introducing something new: keeping research and planning documents living alongside the code in the same dev repo, not just the code itself. The [Game Night series](/posts/gamenight1/) already showed a lighter version of this — every game there has its own companion `*plan.md` written before a line of it got built. This project just makes the pattern more formal: a proper research wiki, `llmwiki/`, that Claude Code maintains itself, with its own schema and its own workflow, sitting alongside `apps/` where the actual application code lives. Instead of opening Claude Code and asking it to build something, I spent the first several sessions asking it to *research* something — treating product research as a discipline in its own right, with the same rigour I'd want from a human analyst, before a single line of application code got written. This first post is about that research process, what it actually found, and how it turned into a concrete plan to build a simplified, personal version of Thomson Reuters' CoCounsel Legal, grounded on the free [NSW Caselaw](https://www.caselaw.nsw.gov.au/about) database instead of a commercial one.
+This `agentic-ai-for-professionals` project includes a  research wiki, `llmwiki/`, that Claude Code maintains itself, with its own schema and its own workflow, sitting alongside `apps/` where the actual application code lives. 
+
+Instead of opening Claude Code and asking it to build something, I spent the first several sessions asking it to *research* Thomson Reuters' CoCounsel. 
+
+This first post is about "NSW Legal Research Assistant" the first app created with the benefit of that research process. 
+
+NSW Legal Research Assistant is a simplified, personal version of Thomson Reuters' CoCounsel Legal, grounded on the free [NSW Caselaw](https://www.caselaw.nsw.gov.au/about) database — plus two Hugging Face datasets that entered the picture later, for two very different reasons (more on that in [Part 4](/posts/agenticaiforprofessionals4/)).
 
 ## The llmwiki approach
 
@@ -40,7 +46,10 @@ That's the value of keeping a wiki instead of just chatting and moving on: the e
 
 ## What CoCounsel Legal's architecture actually looks like
 
-The richest architectural detail came from that same hands-on demo transcript and a later bar-association CLE webinar. A few things stood out as genuinely deliberate design choices, not incidental implementation detail:
+![](assets/images/agenticaiforprofessionals1/thomsonreuters-cocounsel-au.png)
+*Thomson Reuters' own CoCounsel product page for the Australian market — the product this whole research effort is about*
+
+The richest architectural detail came from that [same hands-on demo transcript](https://www.youtube.com/watch?v=VTOiMbOTLaE) and a later [bar-association CLE webinar](https://www.youtube.com/watch?v=6IbckYMUVCs). A few things stood out as genuinely deliberate design choices, not incidental implementation detail:
 
 **RAG grounding is the core trust mechanism, not a feature.** Every answer has to be grounded in specified or uploaded data, with a hyperlink and an excerpt from the source document backing every claim — "showing its work" serves two purposes at once: the model can't just free-associate, and the professional using it can verify a claim without redoing the underlying research themselves. This is the single most repeated design principle across every CoCounsel source found in the whole research effort.
 

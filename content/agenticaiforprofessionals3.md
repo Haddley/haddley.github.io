@@ -4,7 +4,7 @@ part: 3
 description: "Giving nsw-legal-research-assistant a real interface — a React frontend with clickable pinpoint citations, an MCP server exposing the same skill to Claude Code, and three bugs that only showed up once something other than curl was doing the testing"
 date: "2026-08-18"
 categories: ["AI"]
-image: "/assets/images/agenticaiforprofessionals3/hero-app-answer.png"
+image: "/assets/images/agenticaiforprofessionals3/hero-app-answer-v2.png"
 tags: "react, mcp, fastapi, playwright, rag"
 hidden: false
 slug: "agenticaiforprofessionals3"
@@ -148,4 +148,4 @@ The cause is ordinary Docker Compose behavior, not a bug in this app specificall
 
 ## What's left
 
-Phases 0 through 6 are done — state, connectivity to two LLM backends, the RAG skill, a working UI, and an MCP server Claude Code can call directly. What's left is Phase 7: deploying all of it to AWS EKS, and, once real API keys are in the mix, actually comparing Anthropic against Ollama rather than taking the local-first path on faith. That becomes its own post once it exists — same as before, I'd rather document what's actually built than write ahead of the code.
+Phases 4 through 6 are done — the frontend, the MCP server, and local hardening — which brings the running total to Phases 0 through 6 complete: state, connectivity to two LLM backends, the RAG skill, a working UI, and an MCP server Claude Code can call directly. What's left is Phase 7: deploying all of it to AWS EKS, and, once real API keys are in the mix, actually comparing Anthropic against Ollama rather than taking the local-first path on faith. That becomes its own post once it exists — same as before, I'd rather document what's actually built than write ahead of the code.
