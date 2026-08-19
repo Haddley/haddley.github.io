@@ -123,6 +123,8 @@ Every beat above ran against the full stack live on a Docker Compose setup on th
 ![](assets/images/agenticaiforprofessionals4/07-docker-desktop-containers.png)
 *Four containers, all healthy: postgres, backend, frontend, and the compose project itself — 438.53MB RAM, 0.53% CPU at idle*
 
+
+
 ## Beat 6 — Beyond the original demo: MCP from Claude Code
 
 Not part of McConnell's original demo at all — MCP wasn't a documented concept yet at the time of that interview. [Part 3](/posts/agenticaiforprofessionals3/) already covered `ask_nsw_caselaw`, the MCP tool matching Beat 1's Q&A skill. Phase 6.5 shipped two more, mirroring the two skills it added: `review_nsw_caselaw_collection` for Beat 4, and `draft_from_nsw_caselaw_answer` for Beat 5. All three are thin wrappers calling the exact same functions the REST API and the frontend call — same skill, multiple interfaces, not separate implementations to keep in sync.
@@ -150,6 +152,9 @@ Regarding: Mason v Demasi dog bite claim judgment
 As per my previous research, I found that in Mason v Demasi, the court set aside an earlier
 judgment and ordered a new trial limited to damages [1] ([2012] NSWCA 210, p.4)...
 ```
+
+![](assets/images/agenticaiforprofessionals4/Screenshot202619at075927AM.png)
+*What caused the plaintiff's injuries in this case?*
 
 Same shape as the browser — the same mix of grounded and not-found rows across the five documents, the same reused-figures-only drafting behavior — because both interfaces are calling `review_collection()` and `draft_from_answer()` directly, not a second reimplementation of them. The exact wording differs from Beats 4 and 5's screenshots, same as it does between any two runs of this app; the guarantee is architectural, not word-for-word reproducibility.
 
