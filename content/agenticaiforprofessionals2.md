@@ -10,7 +10,7 @@ hidden: false
 slug: "agenticaiforprofessionals2"
 ---
 
-[Part 1](/posts/agenticaiforprofessionals1/) covered the research — how a structured LLM-wiki process traced Thomson Reuters CoCounsel's real architecture, and how that turned into a plan for `nsw-legal-research-assistant`, a simplified version grounded on [NSW Caselaw](https://www.caselaw.nsw.gov.au/) instead of a commercial database. This post is the actual build: Phases 1 through 3 of that plan, all of it running locally on my 32GB M4 MacBook Air through Docker Compose, with [Ollama](https://ollama.com/) serving both the chat model and the embeddings — no cloud API required to get a working system end to end.
+[Part 1](/posts/agenticaiforprofessionals1/) covered the research — how a structured LLM-wiki process traced Thomson Reuters CoCounsel's real architecture, and how that turned into a plan for `nsw-legal-research-assistant`, a simplified version grounded on [NSW Caselaw](https://www.caselaw.nsw.gov.au/) instead of a commercial database. This post is the actual build: Phases 1 through 3 of that plan, all of it running locally on my 32GB M4 MacBook Air through [Docker](/posts/docker/) Compose, with [Ollama](https://ollama.com/) serving both the chat model and the embeddings — no cloud API required to get a working system end to end.
 
 ![](assets/images/agenticaiforprofessionals2/nsw-caselaw-recent-decisions.png)
 *NSW Caselaw's own "recent decisions" list — and there's "Sader v Renbar Constructions PL", one of the two real cases I actually loaded into the app below*
@@ -104,7 +104,7 @@ nomic-embed-text:latest    0a109f422b47    274 MB    About an hour ago
 
 ## The one skill: retrieval, generation, and citations that can't be hallucinated
 
-This is the only skill in v0 — deliberately, mirroring CoCounsel's fixed-catalog philosophy from [Part 1](/posts/agenticaiforprofessionals1/) rather than building an open-ended agent. Retrieval embeds the question with the same provider used at ingest time and pulls the nearest chunks by cosine distance, dropping anything below a similarity threshold:
+This is the only skill in v0 — deliberately, mirroring CoCounsel's fixed-catalog philosophy from [Part 1](/posts/agenticaiforprofessionals1/) rather than building an open-ended agent. It's the same [RAG](/posts/contextinjection/) pattern from that [earlier post](/posts/langchain/) — inject relevant retrieved text into the prompt rather than relying on the model's own training data — just with Postgres/pgvector doing the retrieval instead of LangChain. Retrieval embeds the question with the same provider used at ingest time and pulls the nearest chunks by cosine distance, dropping anything below a similarity threshold:
 
 ```python
 # backend/app/rag/retrieval.py
@@ -180,3 +180,5 @@ The lesson I took from this: a similarity threshold isn't a universal constant y
 ## What's still ahead
 
 Phases 1 through 3 are done and validated against a live stack — data layer, LLM orchestration, and the one core RAG skill. What's still checkbox-unticked in the build plan is the part a screenshot would actually show: Phase 4's React/TypeScript upload-and-chat interface, and Phase 5's MCP server exposing this same skill to Claude Code directly. Those become their own post once they exist — I'd rather document what's actually built than write ahead of the code.
+
+RAG is the only retrieval approach this app has at this point in the series — [Part 5](/posts/agenticaiforprofessionals5/) later tests that choice directly against an LLM Wiki alternative and a hybrid of the two, with real comparison numbers. Worth reading this post as "RAG, correctly built" rather than "RAG, the only option," since that's genuinely what it was when this post went up.

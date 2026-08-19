@@ -51,7 +51,7 @@ That's the value of keeping a wiki instead of just chatting and moving on: the e
 
 The richest architectural detail came from that [same hands-on demo transcript](https://www.youtube.com/watch?v=VTOiMbOTLaE) and a later [bar-association CLE webinar](https://www.youtube.com/watch?v=6IbckYMUVCs). A few things stood out as genuinely deliberate design choices, not incidental implementation detail:
 
-**RAG grounding is the core trust mechanism, not a feature.** Every answer has to be grounded in specified or uploaded data, with a hyperlink and an excerpt from the source document backing every claim — "showing its work" serves two purposes at once: the model can't just free-associate, and the professional using it can verify a claim without redoing the underlying research themselves. This is the single most repeated design principle across every CoCounsel source found in the whole research effort.
+**[RAG](/posts/contextinjection/) grounding is the core trust mechanism, not a feature.** Every answer has to be grounded in specified or uploaded data, with a hyperlink and an excerpt from the source document backing every claim — "showing its work" serves two purposes at once: the model can't just free-associate, and the professional using it can verify a claim without redoing the underlying research themselves. This is the single most repeated design principle across every CoCounsel source found in the whole research effort.
 
 **A "Trust Team" of licensed lawyers writes the test suites.** Described in one source as "law school type exams for a machine" — domain experts working directly alongside the ML engineers, as a genuine hiring line and career path, not a QA afterthought. Accuracy benchmarks were deliberately never published; trust gets built through the citation/verification UX instead.
 
@@ -88,7 +88,7 @@ I wanted this build to line up with Thomson Reuters' current engineering choices
 | Deployment target | AWS, specifically EKS | Matches their confirmed infrastructure, and I've actually run an EKS cluster before ([haddley.github.io/posts/amazoneks](https://haddley.github.io/posts/amazoneks/)) |
 | MCP | A server exposing the Q&A skill, in v0 scope, not deferred | Directly mirrors the external integration strategy (MCP/A2A) Thomson Reuters is confirmed to be building right now — the single most literal skill-match available |
 
-The local-vs-cloud split matters for how this series will unfold: everything runs locally first — Docker Compose on the M4 MacBook Air, Ollama for models that need no API key and no cloud dependency at all — and only gets deployed to AWS once it's provably working end to end. That's not a cost-saving afterthought; it's the explicit build order, and it's also just a more honest way to develop something before paying to run it.
+The local-vs-cloud split matters for how this series will unfold: everything runs locally first — [Docker](/posts/docker/) Compose on the M4 MacBook Air, Ollama for models that need no API key and no cloud dependency at all — and only gets deployed to AWS once it's provably working end to end. That's not a cost-saving afterthought; it's the explicit build order, and it's also just a more honest way to develop something before paying to run it.
 
 ## The build plan, and what's done so far
 
