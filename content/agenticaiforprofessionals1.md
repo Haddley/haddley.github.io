@@ -20,7 +20,7 @@ NSW Legal Research Assistant is a simplified, personal version of Thomson Reuter
 
 ## The llmwiki approach
 
-The repo's `CLAUDE.md` sets up two halves: `llmwiki/`, a research wiki Claude Code owns and maintains, and `apps/`, where actual applications get built once the research says something's worth building. The wiki itself splits further — `llmwiki/raw/` holds immutable source material (press releases, product pages, YouTube transcripts I pasted in), and `llmwiki/wiki/` is entirely LLM-generated from it, with a fixed schema on every page:
+This is the same pattern I set up in an [earlier project applying Andrej Karpathy's LLM Wiki concept](/posts/LLMWiki/) to a personal knowledge base — raw sources in, Claude-generated wiki pages out, with a fixed schema and cross-referencing between pages. Here it's aimed at product research instead of case documents. The repo's `CLAUDE.md` sets up two halves: `llmwiki/`, a research wiki Claude Code owns and maintains, and `apps/`, where actual applications get built once the research says something's worth building. The wiki itself splits further — `llmwiki/raw/` holds immutable source material (press releases, product pages, YouTube transcripts I pasted in), and `llmwiki/wiki/` is entirely LLM-generated from it, with a fixed schema on every page:
 
 ```
 ---
@@ -51,7 +51,7 @@ That's the value of keeping a wiki instead of just chatting and moving on: the e
 
 The richest architectural detail came from that [same hands-on demo transcript](https://www.youtube.com/watch?v=VTOiMbOTLaE) and a later [bar-association CLE webinar](https://www.youtube.com/watch?v=6IbckYMUVCs). A few things stood out as genuinely deliberate design choices, not incidental implementation detail:
 
-**[RAG](/posts/contextinjection/) grounding is the core trust mechanism, not a feature.** Every answer has to be grounded in specified or uploaded data, with a hyperlink and an excerpt from the source document backing every claim — "showing its work" serves two purposes at once: the model can't just free-associate, and the professional using it can verify a claim without redoing the underlying research themselves. This is the single most repeated design principle across every CoCounsel source found in the whole research effort.
+**[RAG](/posts/contextinjection/) grounding is the core trust mechanism, not a feature.** Every answer has to be grounded in specified or uploaded data, with a hyperlink and an excerpt from the source document backing every claim — "showing its work" serves two purposes at once: the model can't just free-associate, and the professional using it can verify a claim without redoing the underlying research themselves. This is the single most repeated design principle across every CoCounsel source found in the whole research effort. It's also the same pattern I've built hands-on before, from an early [LangChain RAG app](/posts/langchain/) through to a more recent [Azure AI Foundry agent](/posts/azurefoundryagent/) backed by vector search.
 
 **A "Trust Team" of licensed lawyers writes the test suites.** Described in one source as "law school type exams for a machine" — domain experts working directly alongside the ML engineers, as a genuine hiring line and career path, not a QA afterthought. Accuracy benchmarks were deliberately never published; trust gets built through the citation/verification UX instead.
 
@@ -84,7 +84,7 @@ I wanted this build to line up with Thomson Reuters' current engineering choices
 | Frontend | React + TypeScript | Matches their confirmed choice for the CoCounsel Applications team |
 | Retrieval | Postgres + pgvector, containerized | Real RAG rather than context-stuffing, justified by a realistic 50–200 document corpus; matches their Postgres-centric data layer |
 | LLM orchestration | Provider-agnostic wrapper — Anthropic, OpenAI, DeepSeek, **and Ollama** | Mirrors their own confirmed multi-model principle; Ollama is a deliberate *addition* beyond their stack (they're cloud-API-only at their scale) — a demonstration of broader range, not an attempt to match them exactly |
-| Local development | Docker Compose | Runs the whole stack — Postgres, backend, frontend — on my own 32GB M4 MacBook Air, no cloud dependency to get started |
+| Local development | Docker Compose | Runs the whole stack — Postgres, backend, frontend — on my own 32GB M4 MacBook Air, no cloud dependency to get started, using the same [Docker](https://haddley.github.io/posts/docker/) fundamentals I've relied on before |
 | Deployment target | AWS, specifically EKS | Matches their confirmed infrastructure, and I've actually run an EKS cluster before ([haddley.github.io/posts/amazoneks](https://haddley.github.io/posts/amazoneks/)) |
 | MCP | A server exposing the Q&A skill, in v0 scope, not deferred | Directly mirrors the external integration strategy (MCP/A2A) Thomson Reuters is confirmed to be building right now — the single most literal skill-match available |
 
