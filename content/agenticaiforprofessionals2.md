@@ -40,11 +40,11 @@ class Chunk(Base):
     embedding: Mapped[list[float]] = mapped_column(Vector(EMBEDDING_DIM), nullable=False)
 ```
 
-The `EMBEDDING_DIM` constant matters more than it looks: it's fixed at table-creation time, and it has to match whichever provider actually generated the vectors. Switching embedding providers later isn't a config flip — it means migrating this column, since a 768-dimension Ollama vector and a 1536-dimension OpenAI vector aren't interchangeable or even comparable to each other.
+The `EMBEDDING_DIM` constant matters more than it looks: it's fixed at table-creation time, and it has to match whichever model actually generated the vectors. The distinction that matters isn't Ollama versus OpenAI — Ollama is just the runtime serving the model locally. It's the embedding model itself: `nomic-embed-text` here is an open-weights model, 768 dimensions, running for free on this laptop, versus a closed model like OpenAI's `text-embedding-3-small` at 1536 dimensions, reachable only through their API. Switching embedding models later isn't a config flip — it means migrating this column, since vectors from two different models aren't interchangeable or even comparable, whatever host happens to be serving them.
 
 ## Ingestion: chunking that never crosses a page boundary
 
-A locally-downloaded NSW Caselaw PDF goes in through `POST /documents`, gets text-extracted page by page via `pypdf`, and then chunked into roughly 800-character pieces — sentence-grouped, simple on purpose for a v0. The one rule that isn't negotiable: a chunk can never span two pages.
+A locally-downloaded NSW Caselaw PDF goes in through `POST /documents`, gets text-extracted page by page via `pypdf`, and then chunked into roughly 800-character pieces — sentence-grouped, simple on purpose for a v0. The one rule that isn't negotiable: a chunk can never span two pages. It's the same `pypdf` library under the hood as my [earlier LangChain RAG project](/posts/langchain/) — there I went through LangChain's `PyPDFLoader` wrapper and let `load_and_split()` chunk the text with no concept of page boundaries at all; here I use `pypdf.PdfReader` directly and enforce that boundary myself.
 
 ```python
 # backend/app/pipeline/chunking.py
@@ -100,7 +100,7 @@ llama3.1:8b                46e0c10c039e    4.9 GB    55 minutes ago
 nomic-embed-text:latest    0a109f422b47    274 MB    About an hour ago
 ```
 
-`llama3.1:8b` handles chat generation — it answers in 2–3 seconds with plenty of headroom on 32GB of unified memory. `nomic-embed-text` handles embeddings, at 768 dimensions, which is what `EMBEDDING_DIM` above is actually reading. Neither needs an API key, a network connection past the first `ollama pull`, or a cent of cloud spend — which is exactly the point of building this layer as swappable rather than hard-coding a single provider: the same code that runs free on my own machine today can point at Anthropic's API with one environment variable change once this is worth paying for, without touching a line of the RAG logic itself.
+`llama3.1:8b` handles chat generation — it answers in 2–3 seconds with plenty of headroom on 32GB of unified memory. `nomic-embed-text` handles embeddings, at 768 dimensions, which is what `EMBEDDING_DIM` above is actually reading. I'd already put Ollama through its paces on Apple Silicon in [an earlier post benchmarking DeepSeek R1 locally](/posts/ollamadeepsekr1applemacbookinstall/), where the 7B/14B/32B/70B variants ran in 25 seconds to under 2 minutes depending on parameter count and the Mac doing the work — so reaching for it again here as the default provider was an easy call. Neither needs an API key, a network connection past the first `ollama pull`, or a cent of cloud spend — which is exactly the point of building this layer as swappable rather than hard-coding a single provider: the same code that runs free on my own machine today can point at Anthropic's API with one environment variable change once this is worth paying for, without touching a line of the RAG logic itself.
 
 ## The one skill: retrieval, generation, and citations that can't be hallucinated
 
@@ -179,6 +179,6 @@ The lesson I took from this: a similarity threshold isn't a universal constant y
 
 ## What's still ahead
 
-Phases 1 through 3 are done and validated against a live stack — data layer, LLM orchestration, and the one core RAG skill. What's still checkbox-unticked in the build plan is the part a screenshot would actually show: Phase 4's React/TypeScript upload-and-chat interface, and Phase 5's MCP server exposing this same skill to Claude Code directly. Those become their own post once they exist — I'd rather document what's actually built than write ahead of the code.
+Phases 1 through 3 are done and validated against a live stack — data layer, LLM orchestration, and the one core RAG skill. What's still checkbox-unticked in the build plan is the part a screenshot would actually show: Phase 4's React/TypeScript upload-and-chat interface, and Phase 5's MCP server exposing this same skill over the Model Context Protocol — Claude Code is the client I'll reach for first, but any MCP client can call it once it's standing. Those become their own post once they exist — I'd rather document what's actually built than write ahead of the code.
 
 RAG is the only retrieval approach this app has at this point in the series — [Part 5](/posts/agenticaiforprofessionals5/) later tests that choice directly against an LLM Wiki alternative and a hybrid of the two, with real comparison numbers. Worth reading this post as "RAG, correctly built" rather than "RAG, the only option," since that's genuinely what it was when this post went up.
