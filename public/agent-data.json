@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "agenticaiforprofessionals6",
+      "title": "Agentic AI for Professionals (Part 6)",
+      "description": "A single-session pass of real hardening on nsw-legal-research-assistant — closing Part 5's retrieval-completeness bug, a Database rename driven by CoCounsel's own research, combinable primary-law/practical-guidance source layers validated the same day by Thomson Reuters' own Brief Builder launch, and a UI redesign matching CoCounsel Core's actual interface",
+      "date": "2026-08-20",
+      "categories": [
+        "AI"
+      ],
+      "tags": "rag, retrieval, legal-tech, citation-grounding, ui-design"
+    },
+    {
       "slug": "agenticaiforprofessionals5",
       "title": "Agentic AI for Professionals (Part 5)",
       "description": "Testing whether RAG was actually the right default for nsw-legal-research-assistant — an LLM Wiki alternative that synthesizes structured pages instead of retrieving raw chunks, a Hybrid approach that combines both, and a real side-by-side comparison",
@@ -2647,5 +2657,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-08-19T20:47:23.537Z"
+  "generatedAt": "2026-08-21T00:43:36.057Z"
 }
