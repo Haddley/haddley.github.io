@@ -1,7 +1,7 @@
 ---
 title: "Agentic AI for Professionals"
 part: 6
-description: "A single-session pass of real hardening on nsw-legal-research-assistant — closing Part 5's retrieval-completeness bug, a Database rename driven by CoCounsel's own research, combinable primary-law/practical-guidance source layers validated the same day by Thomson Reuters' own Brief Builder launch, and a UI redesign matching CoCounsel Core's actual interface"
+description: "A single-session pass of real hardening on nsw-legal-research-assistant — client-held conversation history, a Database rename driven by CoCounsel's own research, combinable primary-law/practical-guidance source layers validated the same day by Thomson Reuters' own Brief Builder launch, and a UI redesign matching CoCounsel Core's actual interface"
 date: "2026-08-20"
 categories: ["AI"]
 image: "/assets/images/agenticaiforprofessionals6/01-database-skill-tiles-source-filter.png"
@@ -10,43 +10,10 @@ hidden: false
 slug: "agenticaiforprofessionals6"
 ---
 
-[Part 1](/posts/agenticaiforprofessionals1/) covered the research; [Part 2](/posts/agenticaiforprofessionals2/) and [Part 3](/posts/agenticaiforprofessionals3/) built the RAG core, frontend, and MCP server; [Part 4](/posts/agenticaiforprofessionals4/) ran it live against Thomson Reuters' own demo script; [Part 5](/posts/agenticaiforprofessionals5/) questioned RAG itself as the default and closed with an open question — what other retrieval-completeness gaps are sitting in this corpus, unfound. This post isn't a numbered phase. It's a single session's worth of real hardening: the Part 5 bug actually closed, a rename driven by the project's own research wiki, a new combinable source-layer axis that Thomson Reuters independently validated the same day, and a UI redesign that finally matches CoCounsel Core's actual interface instead of a plain chat panel.
+[Part 1](/posts/agenticaiforprofessionals1/) covered the research; [Part 2](/posts/agenticaiforprofessionals2/) and [Part 3](/posts/agenticaiforprofessionals3/) built the RAG core, frontend, and MCP server; [Part 4](/posts/agenticaiforprofessionals4/) ran it live against Thomson Reuters' own demo script; [Part 5](/posts/agenticaiforprofessionals5/) found a real retrieval-completeness bug in RAG itself, fixed it, and left one open question — what other gaps like it are still sitting in this corpus, unfound. The same commit that shipped Part 5's fix also carried a batch of work that post never covered, because it wasn't about that specific bug: client-held conversation history and a new combinable source-layer axis, independently validated the same day by Thomson Reuters' own product. This post picks up from there. It's a single session's worth of hardening beyond that: those two pieces, a rename driven by the project's own research wiki, and a UI redesign that finally matches CoCounsel Core's actual interface instead of a plain chat panel.
 
 ![](assets/images/agenticaiforprofessionals6/01-database-skill-tiles-source-filter.png)
 *The redesigned shell: a Database dropdown, a Research/Review/Draft/Summarize skill-tile landing view, and a source-layer filter scoping search to primary law only*
-
-## Closing Part 5's cliffhanger: the retrieval-completeness bug, for real
-
-Part 5 ended on a bug that looked architectural — a superseded damages figure outranking the corrected one — and a question about whether that was a limitation of RAG itself. It wasn't. It was two ordinary, fixable problems.
-
-The first: repeated header/footer boilerplate diluting chunk embeddings. JADE/BarNet-sourced PDFs embed a publication-info block on every page, eating into the fixed per-chunk character budget with text that says nothing about the page itself:
-
-```python
-# backend/app/pipeline/pdf_extraction.py
-# A line repeating verbatim across this fraction of a document's pages is
-# treated as running header/footer boilerplate (publisher watermarks, "View
-# this document in a browser" navigation chrome, etc.) rather than page
-# content. Frequency-based, not a hardcoded JADE-specific string list, so
-# it generalizes to any repeated header/footer pattern from any PDF source.
-_BOILERPLATE_MIN_PAGES = 3
-_BOILERPLATE_MIN_FRACTION = 0.4
-```
-
-The second, and the one that actually mattered here: single-pass top-k retrieval could rank a chunk from the *wrong* page of a relevant document above the chunk from the *right* page, simply because cross-document ranking doesn't know two chunks belong to the same case. The fix is a genuine two-stage retrieval:
-
-```python
-# backend/app/rag/retrieval.py
-# Two-stage when document_id isn't already given: stage 1 below finds WHICH
-# documents are relevant across the whole scoped pool; stage 2 re-scans just
-# those documents with a wider budget and a relaxed threshold, since
-# document-level relevance is already established by stage 1 -- catches a
-# chunk that's genuinely part of a relevant document but didn't win the
-# cross-document ranking (e.g. a later page correcting an earlier one),
-# without reopening the false-positive risk of relaxing the threshold
-# globally.
-```
-
-Stage 1 runs the normal similarity search across the whole scoped pool. Stage 2 takes every document that had at least one chunk clear the bar, and re-scans *just those documents* with more chunks and a relaxed threshold — because once a document is already known to be relevant, missing its correcting page is a worse failure than a slightly noisier top-k. That's the honest ending Part 5 didn't have yet: not "no approach reliably closes this gap," but a specific, fixable bug in RAG's retrieval layer, now closed underneath every skill in the app at once.
 
 ## Conversation history, still entirely client-held
 
@@ -89,11 +56,9 @@ CoCounsel Legal sells "primary law" (Westlaw) and "practical guidance" (Practica
 _EDITORIAL_INSERT_RE = re.compile(r"headnote.{0,80}not to be read as part of the judgment", re.IGNORECASE | re.DOTALL)
 ```
 
-The filter surfaces directly in the search bar — "All sources / Primary law only / Practical guidance only," visible in the hero screenshot above — and scopes retrieval, not just display.
+The filter surfaces directly in the search bar — "All sources / Primary law only / Practical guidance only," visible in the hero screenshot above — and scopes retrieval, not just display. It's the same idea CoCounsel Core's own "Search a Database" skill from [Part 1](/posts/agenticaiforprofessionals1/) is built on: a database is a curated, scoped collection, not a web-scale index, and scoping *within* that collection by source type is a natural extension of the same philosophy, not a new one.
 
-This is where the timing got genuinely strange. The same day this shipped, Thomson Reuters put out the GA press release for the next generation of CoCounsel Legal, headlined by a new feature called **Westlaw Brief Builder**. Digging into its own help documentation turned up this line, verbatim: *"You automatically get access to Westlaw Brief Builder if you have one of the following subscriptions: CoCounsel Legal / Westlaw Advantage with CoCounsel Essentials."* That's Thomson Reuters naming the exact layer *combination* — primary law plus practical guidance — as the literal product-access mechanism, on the same day this app's `source_layer` field went in, independently. Not proof of anything beyond coincidence in timing, but real confirmation that "combinable layers" isn't a made-up framing — it's how the actual product is sold.
-
-The honest gap in the other direction: Brief Builder's own workflow is a genuine multi-checkpoint pipeline — select a motion type, review an AI-generated intake summary, select/edit proposed arguments, then research *only the selected arguments* with the ability to redevelop a single one — compared to this app's Draft skill, which is one instruction, one LLM call, one draft. That's a real, out-of-scope-for-now capability difference, not something to paper over.
+Worth noting in passing, since the timing was strange: the same day this shipped, Thomson Reuters put out a GA press release for a next-generation CoCounsel Legal, headlined by a new feature called Westlaw Brief Builder — sold as access to a combination of exactly these two layers, primary law plus practical guidance. Not proof of anything beyond coincidence in timing, and not the reference point this app is actually built against — that's still CoCounsel Core's fixed, tested skill catalog from Part 1 — but real confirmation that combinable source layers isn't a made-up framing.
 
 ## Matter becomes Database
 
@@ -148,32 +113,19 @@ Every screenshot in this post is this redesign. Dark navy icon rail, white sideb
 
 Deliberate simplifications, written down rather than silently decided: no multi-workspace switcher, since this is a single-user app and Database selection already plays that scoping role; no fake "Results" tab; Draft stays a follow-up-only action on an already-grounded answer, never a standalone "start here" tile, because its entire trust design depends on reusing only facts that are already grounded.
 
-## New corpora, and a bot-detection wall
+## The Review grid, actually finished
 
-The "Rental Eviction Case Law (Jade)" database in every screenshot above exists because the Jade scraping pipeline — originally built narrow, for one corpus — got generalized. A plain headless fetch hit Jade's bot-detection wall outright; the fix was driving a real, non-headless Chrome through a dedicated Playwright profile instead. That work also caught a pre-existing title-extraction bug: preferring the page's first `<h2>` over `document.title` broke on at least one Fair Work Commission decision, where the first `<h2>` was a body section heading, not the case title.
+`review_collection()` has taken a *list* of questions since it was first written — but for a while, nothing called it that way. The `/review` endpoint used to wrap a single question in a one-element list and flatten the response back down, with its own docstring admitting as much: *"review_collection() itself now takes a list of questions... but this endpoint's request/response shape hasn't been updated to expose that yet — deliberately paused mid-build."* That gap closed this session. `ReviewRequest` now takes `questions: list[str]` directly, and `ReviewPanel.tsx` grew an actual multi-question UI — an "Add question" row and one column per question, not just one:
 
-Two new corpora came out of the generalized pipeline: `rental-eviction-cases` (50 ingested, 49 original PDFs kept, `source_trust="verified"` per explicit request) and `parking-fine-cases` (19 ingested, `source_trust="bulk_import"`). Different trust tiers, on purpose — the difference in provenance is real, not cosmetic.
+![](assets/images/agenticaiforprofessionals6/06-review-grid-questions.png)
+*Three questions queued against the Rental Eviction Case Law (Jade) database — 50 documents × 3 questions = 150 cells, with the client-side limit check surfacing before the request is even sent*
 
-## The bug: a citation link that broke exactly when a document earned more trust
+`MAX_REVIEW_CELLS` — the same guardrail from Part 4's Beat 4 that caps how many LLM round trips a single Review request can trigger — got raised from 60 to 200 to let a real demo run against the full 50-document collection, with the reasoning for the new number written down rather than picked by feel: *"Still a real ceiling, not removed — 200 cells is still a real number of LLM round trips... if this app grows collections meaningfully past ~50 documents as routine, revisit this number against actual observed latency rather than raising it again by feel."* Real output, one row per document, one column per question:
 
-Bulk-imported citations used to be told apart from locally-stored PDFs by checking `source_trust === "bulk_import"` — reasonable, until a bulk-imported document could be manually upgraded to `source_trust="verified"` to suppress its "unverified source" badge, while still genuinely having no PDF on disk:
+![](assets/images/agenticaiforprofessionals6/07-review-grid-results.png)
+*The finished grid — three questions (rent arrears as a termination ground, unlawful/retaliatory eviction, the COVID-19 moratorium) answered independently against every document in the database*
 
-```typescript
-// frontend/src/citations.tsx
-// source_url is the reliable signal for "no local PDF, link to the real
-// source page instead": it's set by every bulk-text-import path and never
-// by ingest_pdf(). This is deliberately independent of source_trust, which
-// is only a display choice -- a bulk-imported document can be marked
-// source_trust="verified" to suppress the "unverified source" badge while
-// still having no stored PDF, so gating this on source_trust alone (as it
-// used to be) 404s on GET /documents/{id}/file for exactly that case.
-export function citationHref(citation: Citation): string {
-  if (citation.source_url) return citation.source_url;
-  return documentFileUrl(citation.document_id, citation.page_number);
-}
-```
-
-Two fields that used to move together — provenance and trust display — stopped moving together the moment trust became something a person could upgrade independently of provenance. The same bug was hiding a second time in `ReviewPanel.tsx`'s "Review all" links, which never had a `source_url` fallback at all.
+What's still genuinely unfinished, precisely: the MCP tool, `review_nsw_caselaw_collection`, still only accepts a single `question: str` and wraps it the old way — Claude Code (or any other MCP client) can't yet ask a multi-question grid the way the browser now can. REST and the frontend caught up; MCP hasn't yet.
 
 ## Live: a scoped, filtered question, and a drafted letter
 
@@ -207,4 +159,4 @@ Real output — a full client letter, grounded in nothing but the citations alre
 
 ## What's still ahead
 
-The multi-question Review grid — one question set run against every document in a database, table-shaped output — is real and shipped now too, closing another gap Part 4 could only demo one question at a time. What's still genuinely ahead is unchanged from Part 3: Phase 7, deploying all of this to AWS EKS, and a real Anthropic-vs-Ollama comparison once cloud API keys are actually in the mix rather than taken on faith. Same rule as every post in this series — document what's built, not what's planned.
+Unchanged from Part 3: Phase 7, deploying all of this to AWS EKS, and a real Anthropic-vs-Ollama comparison once cloud API keys are actually in the mix rather than taken on faith. Plus the MCP-side Review gap just noted above. Same rule as every post in this series — document what's built, not what's planned.

@@ -10,7 +10,7 @@ hidden: false
 slug: "agenticaiforprofessionals1"
 ---
 
-This `agentic-ai-for-professionals` project includes a  research wiki, `llmwiki/`, that Claude Code maintains itself, with its own schema and its own workflow, sitting alongside `apps/` where the actual application code lives. 
+This `agentic-ai-for-professionals` project includes a research wiki, `llmwiki/`, that Claude Code maintains itself, with its own schema and its own workflow, sitting alongside `apps/` where the actual application code lives. 
 
 Instead of opening Claude Code and asking it to build something, I spent the first several sessions asking it to *research* Thomson Reuters' CoCounsel. 
 

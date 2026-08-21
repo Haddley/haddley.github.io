@@ -4,7 +4,7 @@ part: 3
 description: "Giving nsw-legal-research-assistant a real interface — a React frontend with clickable pinpoint citations, an MCP server exposing the same skill to Claude Code, and three bugs that only showed up once something other than curl was doing the testing"
 date: "2026-08-18"
 categories: ["AI"]
-image: "/assets/images/agenticaiforprofessionals3/hero-app-answer-v2.png"
+image: "/assets/images/agenticaiforprofessionals6/01-database-skill-tiles-source-filter.png"
 tags: "react, mcp, fastapi, playwright, rag"
 hidden: false
 slug: "agenticaiforprofessionals3"
@@ -12,8 +12,8 @@ slug: "agenticaiforprofessionals3"
 
 [Part 1](/posts/agenticaiforprofessionals1/) covered the research and the plan; [Part 2](/posts/agenticaiforprofessionals2/) covered the RAG core — retrieval, generation, and citations that can't be hallucinated, all running locally on the M4 MacBook Air. This post is Phases 4 through 6: giving `nsw-legal-research-assistant` an actual interface, exposing the same skill to Claude Code over MCP, and three bugs that only surfaced once something other than `curl` was doing the testing.
 
-![](assets/images/agenticaiforprofessionals3/nsw-app-answered.png)
-*The actual app, live: two uploaded judgments, a real question, a grounded answer with a clickable pinpoint citation*
+![](assets/images/agenticaiforprofessionals6/02-covid-moratorium-answer.png)
+*The actual app, live: a real question, a grounded answer, and clickable pinpoint citations — this exact shot is from a later session, since Phase 4's own interface here was plainer than the redesigned shell shown throughout this series now; the citation-linking mechanism this post covers is the same one still running underneath it*
 
 ## A frontend that renders citations as clickable links
 
@@ -37,6 +37,8 @@ function renderAnswer(answer: string, citations: Citation[]) {
   });
 }
 ```
+
+(`renderAnswer` later moved out of `ChatPanel.tsx` into its own `citations.tsx` module during [Part 6](/posts/agenticaiforprofessionals6/)'s redesign, and grew trust-tier badges and split-pane preview support along the way — the version above is Phase 4's original, simpler shape.)
 
 That link needs somewhere real to point, which meant a new backend endpoint the earlier phases hadn't needed — Phase 1 only ever persisted *extracted text*, not the original PDF bytes:
 
