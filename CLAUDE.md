@@ -120,6 +120,8 @@ Not: `[Link text](otherPost.html)`
 
 When editing blog post content, use first-person active voice throughout — e.g. "I ran", "I clicked", "I selected". Avoid passive voice and third-person descriptions.
 
+Avoid contractions — write "do not" rather than "don't", "it is" rather than "it's", "whatever is" rather than "whatever's", and so on. This applies to blog post content and to Claude's own conversational responses while working in this repository, not just published prose.
+
 ## Categories
 
 Categories are defined in `src/lib/categories.ts`. Each post frontmatter uses the category **name** (not slug) in the `categories` array. The current taxonomy (25 categories):

@@ -1,7 +1,7 @@
 ---
 title: "Agentic AI for Professionals"
 part: 1
-description: "Using a structured LLM-wiki research process to study Thomson Reuters CoCounsel's architecture, then turning that research into an implementation plan for a simplified NSW Caselaw research assistant"
+description: "Using a structured LLM-wiki research process to study Thomson Reuters CoCounsel's architecture"
 date: "2026-08-18"
 categories: ["AI"]
 image: "/assets/images/agenticaiforprofessionals1/hero-cocounsel.png"
@@ -10,56 +10,28 @@ hidden: false
 slug: "agenticaiforprofessionals1"
 ---
 
-This `agentic-ai-for-professionals` project includes a research wiki, `llmwiki/`, that Claude Code maintains itself, with its own schema and its own workflow, sitting alongside `apps/` where the actual application code lives. 
+This `agentic-ai-for-professionals` project includes a research wiki, `llmwiki/`, that Claude Code maintains itself, with its own schema and its own workflow, sitting alongside `apps/` where the application code lives. 
 
-Instead of opening Claude Code and asking it to build something, I spent the first several sessions asking it to *research* Thomson Reuters' CoCounsel. 
+Instead of opening Claude Code and asking it to build something, I spent the first several sessions asking it to *research* the Thomson Reuters' CoCounsel products. 
 
-This first post is about "NSW Legal Research Assistant" the first app created with the benefit of that research process. 
-
-NSW Legal Research Assistant is a simplified, personal version of Thomson Reuters' CoCounsel Legal, grounded on the free [NSW Caselaw](https://www.caselaw.nsw.gov.au/about) database — plus two Hugging Face datasets that entered the picture later, for two very different reasons (more on that in [Part 4](/posts/agenticaiforprofessionals4/)).
-
-## The llmwiki approach
-
-This is the same pattern I set up in an [earlier project applying Andrej Karpathy's LLM Wiki concept](/posts/LLMWiki/) to a personal knowledge base — raw sources in, Claude-generated wiki pages out, with a fixed schema and cross-referencing between pages. Here it's aimed at product research instead of case documents. The repo's `CLAUDE.md` sets up two halves: `llmwiki/`, a research wiki Claude Code owns and maintains, and `apps/`, where actual applications get built once the research says something's worth building. The wiki itself splits further — `llmwiki/raw/` holds immutable source material (press releases, product pages, YouTube transcripts I pasted in), and `llmwiki/wiki/` is entirely LLM-generated from it, with a fixed schema on every page:
-
-```
----
-title: Page Title
-type: concept | entity | source-summary | comparison
-sources: [list of llmwiki/raw/ files referenced]
-related: [list of wiki pages linked]
-created: YYYY-MM-DD
-updated: YYYY-MM-DD
-confidence: high | medium | low
----
-```
-
-That `confidence` field matters more than a formality — it's an honest record of how sure the research actually is. And the workflow is deliberately a loop, not a one-shot summarise-and-forget: an **ingest** step reads a new raw source and updates every wiki page it touches; a **query** step answers a question by reading the existing wiki first and citing `[[wiki-links]]` rather than free-associating; and a **lint** step — the one I think matters most — periodically checks the whole wiki for contradictions between pages, orphaned pages nothing links to, concepts mentioned but never given their own page, and claims that a newer source has quietly superseded.
+This first post is about "NSW Legal Research Assistant" an app inspired by Thomson Reuters' CoCounsel Legal.
 
 ## Researching Thomson Reuters CoCounsel, one pass at a time
 
-The research started narrow — Materia, a tax/audit/accounting AI startup Thomson Reuters acquired in October 2024 — and grew across nine separate research passes over official product pages, press releases, and five YouTube transcripts I supplied directly. Research is naturally iterative like this: each pass works from whatever's in front of it, and the picture sharpens as more sources come in. The origin story is a good example of that in action.
+The research started narrow and grew across nine separate research passes over official product pages, press releases, and five YouTube transcripts. Research is naturally iterative like this: each pass works from whatever is in front of it, and the picture sharpens as more sources come in.
 
-Two transcripts I fed in during the third pass filled the picture out properly: a Tech Series interview with Thomson Reuters' CTO Joel Hron, and a hands-on CoCounsel Legal demo with a former Casetext VP. Between them, the fuller lineage came out: **CoCounsel was created by Casetext**, founded 2013 and acquired by Thomson Reuters for $650M in 2023 — over a year *before* Materia. Joel Hron himself founded a different company entirely, ThoughtTrace (acquired 2022), and from his position as CTO went on to architect a roughly $3.2B acquisition strategy spanning ThoughtTrace, Casetext, Materia, and several others. Materia's 2024 acquisition extended an *already-existing* CoCounsel platform into tax and accounting, rather than creating the brand itself.
+A [Tech Series interview with Thomson Reuters' CTO Joel Hron](https://www.youtube.com/watch?v=RM6EmiAGSeg), hosted by Marcelo Santis, and a hands-on CoCounsel Legal demo with Valerie McConnell, Senior Director of Customer Success, Thomson Reuters (previously VP of Success at Casetext) were the two sources that filled the picture out properly. From the Hron interview I learned that he founded ThoughtTrace, and I confirmed the acquisition itself against [Thomson Reuters' own Legal Current announcement](https://www.legalcurrent.com/thomson-reuters-acquires-thoughttrace/): agreement announced March 2022, deal confirmed April 14, 2022, financial terms not disclosed. From his position as CTO after that deal, Joel went on to architect a roughly $3.2B acquisition strategy spanning ThoughtTrace, Casetext, Materia, and several others. **CoCounsel was originally created by Casetext**, founded 2013 and acquired by Thomson Reuters for $650M in 2023. Materia's 2024 acquisition extended the CoCounsel platform into tax and accounting.
 
-That's the value of keeping a wiki instead of just chatting and moving on: the earlier read was written down, with its sources and a `confidence` rating attached, so a later, better-sourced pass could update it in place rather than the two versions just sitting in disconnected conversations. The update is left visible in the wiki's log rather than silently overwritten, so the reasoning trail — what was known when — stays intact.
-
-## What CoCounsel Legal's architecture actually looks like
+## What is CoCounsel Legal?
 
 ![](assets/images/agenticaiforprofessionals1/thomsonreuters-cocounsel-au.png)
-*Thomson Reuters' own CoCounsel product page for the Australian market — the product this whole research effort is about*
+*Thomson Reuters' own CoCounsel product page*
 
-The richest architectural detail came from that [same hands-on demo transcript](https://www.youtube.com/watch?v=VTOiMbOTLaE) and a later [bar-association CLE webinar](https://www.youtube.com/watch?v=6IbckYMUVCs). A few things stood out as genuinely deliberate design choices, not incidental implementation detail:
+The richest detail came from that [same hands-on demo transcript](https://www.youtube.com/watch?v=VTOiMbOTLaE) and a later [bar-association CLE webinar](https://www.youtube.com/watch?v=6IbckYMUVCs). A few things stood out as genuinely deliberate design choices, not incidental implementation detail:
 
-**[RAG](/posts/contextinjection/) grounding is the core trust mechanism, not a feature.** Every answer has to be grounded in specified or uploaded data, with a hyperlink and an excerpt from the source document backing every claim — "showing its work" serves two purposes at once: the model can't just free-associate, and the professional using it can verify a claim without redoing the underlying research themselves. This is the single most repeated design principle across every CoCounsel source found in the whole research effort. It's also the same pattern I've built hands-on before, from an early [LangChain RAG app](/posts/langchain/) through to a more recent [Azure AI Foundry agent](/posts/azurefoundryagent/) backed by vector search.
+**[RAG](/posts/contextinjection/) grounding is the core trust mechanism.** Every answer has to be grounded in specified or uploaded data, with a hyperlink and an excerpt from the source document backing every claim — "showing its work" serves two purposes at once: the model can't just free-associate, and the professional using it can verify a claim without redoing the underlying research themselves. This is the single most repeated design principle across every CoCounsel source found in the whole research effort. It's also the same pattern I've built hands-on before, from an early [LangChain RAG app](/posts/langchain/) through to a more recent [Azure AI Foundry agent](/posts/azurefoundryagent/) backed by vector search.
 
-**A "Trust Team" of licensed lawyers writes the test suites.** Described in one source as "law school type exams for a machine" — domain experts working directly alongside the ML engineers, as a genuine hiring line and career path, not a QA afterthought. Accuracy benchmarks were deliberately never published; trust gets built through the citation/verification UX instead.
-
-**A fixed, tested catalog of eight skills — not an open chat box.** CoCounsel Core is the platform name, not one of the eight skills it hosts, which ships exactly eight named skills — Prepare for a Deposition, Draft Correspondence, Search a Database, Review Documents, Summarize a Document, Extract Contract Data, Contract Policy Compliance, and Timeline. Crucially, it's restricted to only performing tasks inside that catalog: it will not attempt to draft a legal brief if no "draft a brief" skill has been built and tested yet, even though the underlying model technically could. Some customers complain "we don't let CoCounsel do enough" — the design philosophy prioritises not generating unguarded, untested output over maximising perceived capability.
-
-**"Search a Database" is just a user-curated document set — not a web-scale index.** One demo used a 200-contract database the presenter had assembled herself; databases are strictly scoped to whatever's been uploaded, never the open web. That one detail turned out to be the key that unlocked the NSW app below.
-
-Underneath all of it: Thomson Reuters runs a private, dedicated GPT-4 instance under a zero-retention relationship with OpenAI — uploaded content never trains the model and never persists at OpenAI's end.
+CoCounsel includes skills — Prepare for a Deposition, Draft Correspondence, Search a Database, Review Documents, Summarize a Document, Extract Contract Data, Contract Policy Compliance, and Timeline. It is restricted to only performing tasks inside that catalog. Some customers complain "we don't let CoCounsel do enough" — the design philosophy prioritises not generating unguarded, untested output over maximising perceived capability.
 
 ## From research to plan: grounding a simplified version on NSW Caselaw
 

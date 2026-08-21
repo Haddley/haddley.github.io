@@ -82,7 +82,27 @@ async function syncImages() {
         await fs.copy(rootPodcast, podcastTarget, { overwrite: true });
         console.log('✅ Successfully synced podcasts from root assets');
       }
-      
+
+      // Copy every other content/assets subdirectory as-is (vendor/theme
+      // static assets like theme/, mobirise/, bootstrap/, dropdown/, tether/,
+      // socicon/, web/, files/, etc.) -- these are committed directly under
+      // public/assets/ despite it being gitignored (already-tracked files
+      // survive a later .gitignore rule), so without this step an edit to
+      // content/assets/theme/css/style.css would never reach public/assets/
+      // or production. images/mp4/mp3/podcast are skipped since they're
+      // already handled above with their own stale-file cleanup.
+      const HANDLED_DIRS = new Set(['images', 'mp4', 'mp3', 'podcast']);
+      const sourceEntries = await fs.readdir(sourceDir, { withFileTypes: true });
+      let vendorDirCount = 0;
+      for (const entry of sourceEntries) {
+        if (!entry.isDirectory() || HANDLED_DIRS.has(entry.name)) continue;
+        await fs.copy(path.join(sourceDir, entry.name), path.join(targetDir, entry.name), { overwrite: true });
+        vendorDirCount += 1;
+      }
+      if (vendorDirCount > 0) {
+        console.log(`✅ Successfully synced ${vendorDirCount} vendor/theme asset director${vendorDirCount === 1 ? 'y' : 'ies'}`);
+      }
+
       // Count synced files
       const files = await fs.readdir(imagesTarget, { recursive: true });
       const imageFiles = files.filter(file => 
