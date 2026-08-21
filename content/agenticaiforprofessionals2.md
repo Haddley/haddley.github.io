@@ -1,7 +1,7 @@
 ---
 title: "Agentic AI for Professionals"
 part: 2
-description: "Building the RAG core of a NSW Caselaw research assistant entirely on a 32GB M4 MacBook Air — page-safe chunking, a provider-agnostic LLM layer, citations that can't be hallucinated, and a similarity-threshold bug that only showed up when I asked it something its documents genuinely didn't cover"
+description: "Building the RAG core of a legal research assistant entirely on a 32GB M4 MacBook Air — page-safe chunking, a provider-agnostic LLM layer, and citations that can't be hallucinated"
 date: "2026-08-18"
 categories: ["AI"]
 image: "/assets/images/agenticaiforprofessionals2/hero-nsw-caselaw-home.png"
@@ -10,7 +10,7 @@ hidden: false
 slug: "agenticaiforprofessionals2"
 ---
 
-[Part 1](/posts/agenticaiforprofessionals1/) covered the research — how a structured LLM-wiki process traced Thomson Reuters CoCounsel's real architecture, and how that turned into a plan for `nsw-legal-research-assistant`, a simplified version grounded on [NSW Caselaw](https://www.caselaw.nsw.gov.au/) instead of a commercial database. This post is the actual build: Phases 1 through 3 of that plan, all of it running locally on my 32GB M4 MacBook Air through [Docker](/posts/docker/) Compose, with [Ollama](https://ollama.com/) serving both the chat model and the embeddings — no cloud API required to get a working system end to end.
+[Part 1](/posts/agenticaiforprofessionals1/) covered the research — how a structured LLM-wiki process traced Thomson Reuters CoCounsel's real architecture, and how that turned into a plan for `nsw-legal-research-assistant`, an app inspired by Thomson Reuters CoCounsel Legal and grounded on a manually-curated document set — a starting scope, not a ceiling. CoCounsel Legal's own scope keeps expanding release after release, as later posts in this series document; I'm building this expecting the same kind of growth over time, not a fixed target frozen at today's version. This post is the actual build: Phases 1 through 3 of that plan, all of it running locally on my 32GB M4 MacBook Air through [Docker](/posts/docker/) Compose, with [Ollama](https://ollama.com/) serving both the chat model and the embeddings — no cloud API required to get a working system end to end.
 
 ![](assets/images/agenticaiforprofessionals2/nsw-caselaw-recent-decisions.png)
 *NSW Caselaw's own "recent decisions" list — and there's "Sader v Renbar Constructions PL", one of the two real cases I actually loaded into the app below*
@@ -42,29 +42,9 @@ class Chunk(Base):
 
 The `EMBEDDING_DIM` constant matters more than it looks: it's fixed at table-creation time, and it has to match whichever model actually generated the vectors. The distinction that matters isn't Ollama versus OpenAI — Ollama is just the runtime serving the model locally. It's the embedding model itself: `nomic-embed-text` here is an open-weights model, 768 dimensions, running for free on this laptop, versus a closed model like OpenAI's `text-embedding-3-small` at 1536 dimensions, reachable only through their API. Switching embedding models later isn't a config flip — it means migrating this column, since vectors from two different models aren't interchangeable or even comparable, whatever host happens to be serving them.
 
-## Ingestion: chunking that never crosses a page boundary
+## Ingestion
 
-A locally-downloaded NSW Caselaw PDF goes in through `POST /documents`, gets text-extracted page by page via `pypdf`, and then chunked into roughly 800-character pieces — sentence-grouped, simple on purpose for a v0. The one rule that isn't negotiable: a chunk can never span two pages. It's the same `pypdf` library under the hood as my [earlier LangChain RAG project](/posts/langchain/) — there I went through LangChain's `PyPDFLoader` wrapper and let `load_and_split()` chunk the text with no concept of page boundaries at all; here I use `pypdf.PdfReader` directly and enforce that boundary myself.
-
-```python
-# backend/app/pipeline/chunking.py
-def chunk_pages(pages: list[PageText]) -> list[ChunkDraft]:
-    """Chunk within each page only -- never across a page boundary.
-
-    Every chunk must map unambiguously to exactly one source page number, because
-    that page number is what gets shown to the user as the citation. Chunking
-    across pages would blur that and undermine the whole trust mechanism.
-    """
-    drafts: list[ChunkDraft] = []
-    index = 0
-    for page in pages:
-        for piece in _split_into_chunks(page.text, TARGET_CHUNK_CHARS):
-            drafts.append(ChunkDraft(chunk_index=index, page_number=page.page_number, text=piece))
-            index += 1
-    return drafts
-```
-
-That one constraint is doing real work: it's the reason a citation later in this post can point at an exact page rather than "somewhere in this 40-page judgment." I tested it end-to-end against two real fixture judgments — *Huang v Nazaran* [2026] NSWDC 298 and *Sader v Renbar Constructions PL* [2025] NSWCATCD 47 — and confirmed every chunk carried a correct, contiguous page number all the way through ingestion.
+A locally-downloaded, manually-copied-in PDF goes in through `POST /documents`, gets text-extracted page by page via `pypdf`, and then chunked into roughly 800-character pieces — sentence-grouped, simple on purpose for this first working version ("v0," shorthand I use throughout this series for the simplest thing that actually works first — a deliberate starting point I expect to keep expanding over time, not a fixed scope, the same way CoCounsel Legal's own scope keeps growing release after release), each chunk tagged with its source page number so a citation later in this post can point at an exact page. It's the same `pypdf` library under the hood as my [earlier LangChain RAG project](/posts/langchain/) — there I went through LangChain's `PyPDFLoader` wrapper and let `load_and_split()` handle it; here I use `pypdf.PdfReader` directly. I tested it end-to-end against two real fixture judgments — *Huang v Nazaran* [2026] NSWDC 298 and *Sader v Renbar Constructions PL* [2025] NSWCATCD 47 — and confirmed every chunk carried a correct page number all the way through ingestion.
 
 ## A provider-agnostic LLM layer, with Ollama as the default
 
@@ -102,9 +82,13 @@ nomic-embed-text:latest    0a109f422b47    274 MB    About an hour ago
 
 `llama3.1:8b` handles chat generation — it answers in 2–3 seconds with plenty of headroom on 32GB of unified memory. `nomic-embed-text` handles embeddings, at 768 dimensions, which is what `EMBEDDING_DIM` above is actually reading. I'd already put Ollama through its paces on Apple Silicon in [an earlier post benchmarking DeepSeek R1 locally](/posts/ollamadeepsekr1applemacbookinstall/), where the 7B/14B/32B/70B variants ran in 25 seconds to under 2 minutes depending on parameter count and the Mac doing the work — so reaching for it again here as the default provider was an easy call. Neither needs an API key, a network connection past the first `ollama pull`, or a cent of cloud spend — which is exactly the point of building this layer as swappable rather than hard-coding a single provider: the same code that runs free on my own machine today can point at Anthropic's API with one environment variable change once this is worth paying for, without touching a line of the RAG logic itself.
 
-## The one skill: retrieval, generation, and citations that can't be hallucinated
+## Retrieval, generation, and citations that can't be hallucinated
 
-This is the only skill in v0 — deliberately, mirroring CoCounsel's fixed-catalog philosophy from [Part 1](/posts/agenticaiforprofessionals1/) rather than building an open-ended agent. It's the same [RAG](/posts/contextinjection/) pattern from that [earlier post](/posts/langchain/) — inject relevant retrieved text into the prompt rather than relying on the model's own training data — just with Postgres/pgvector doing the retrieval instead of LangChain. Retrieval embeds the question with the same provider used at ingest time and pulls the nearest chunks by cosine distance, dropping anything below a similarity threshold:
+Mirroring CoCounsel's fixed-catalog philosophy from [Part 1](/posts/agenticaiforprofessionals1/) `nsw-legal-research-assistant` we focused on progressively adding skills. 
+
+Our "Search a Database" skill and "Review Documents" skills both use the same Postgres/pgvector retrieval and the same `answer_question()` function underneath — Review Documents calls it once per document instead of once globally. 
+
+It's the same [RAG](/posts/contextinjection/) pattern from that [earlier post](/posts/langchain/) — inject relevant retrieved text into the prompt rather than relying on the model's own training data — just with Postgres/pgvector doing the retrieval instead of LangChain. Retrieval embeds the question with the same provider used at ingest time and pulls the nearest chunks by cosine distance, dropping anything below a similarity threshold:
 
 ```python
 # backend/app/rag/retrieval.py
@@ -143,42 +127,6 @@ explicitly instead of guessing.
 
 The detail I think matters most here: citation *metadata* — case name, medium-neutral citation, page number — is read straight off the retrieved database rows, never generated by the model. The LLM only chooses which numbered excerpt to reference inline; it can never invent a citation that doesn't correspond to a real, retrieved chunk, because the citation objects returned by `/qa` are built in Python from the query results, not parsed out of the model's own text. That's the same "show its work, and make the showing un-fakeable" pattern CoCounsel uses, implemented as a structural guarantee rather than a prompt instruction I'm just hoping the model follows.
 
-## The bug: a threshold that looked fine until a genuinely unrelated question exposed it
-
-With two real judgments loaded — the District Court costs case and the home-building tribunal dispute mentioned above — in-domain questions worked cleanly from the start. Live, right now, against the actual running stack:
-
-```
-$ curl -s localhost:8000/qa -d '{"question": "In Huang v Nazaran, what power did the court use to correct the costs order?"}'
-{
-  "answer": "According to excerpt [4], the court used its \"express power under Part 36.16\" and its \"implied power within its statutory power\" to amend its records and judgment relying on costs determinations.",
-  "grounded": true,
-  "citations": [{"citation": "[2026] NSWDC 298", "court": "District Court", "page_number": 3}, ...]
-}
-```
-
-The real test came from asking something the loaded documents plainly don't cover — I tried "What does the Copyright Act 1968 say about fair dealing for research purposes?", nowhere near either a District Court costs dispute or a home-building tribunal case. At the first threshold I picked, `0.5`, that question didn't get refused — it got an answer, "grounded": true, with five citations pointing at chunks about construction defects. The LLM itself had the sense not to actually answer from them, but the retrieval layer's guardrail — the one thing that's supposed to catch this before the model even sees the question — wasn't doing its job.
-
-The fix wasn't guessing a bigger number; it was querying `pgvector` directly and looking at what similarity scores real questions actually produced against this corpus:
-
-- **Genuinely relevant chunks**: 0.70–0.79 similarity
-- **Same-domain, wrong-case chunks** (legal text that shares vocabulary and structure with the right answer, but isn't it): 0.58–0.61
-- **A control question with nothing in common with either document**: 0.36–0.39
-
-`0.5` sat in the middle of nothing — closer to the wrong cluster than the right one. `0.65` sits cleanly in the actual gap between "same domain, wrong document" and "genuinely relevant." With that raised threshold, the same out-of-domain question now behaves correctly:
-
-```
-$ curl -s localhost:8000/qa -d '{"question": "What does the Copyright Act 1968 say about fair dealing for research purposes?"}'
-{
-  "answer": "I couldn't find anything relevant to this question in the uploaded documents. Try rephrasing, or upload a document that covers this topic.",
-  "grounded": false,
-  "citations": []
-}
-```
-
-The lesson I took from this: a similarity threshold isn't a universal constant you can pick once from general knowledge about embedding models. It's specific to the embedding model, has to be calibrated against real same-domain-but-wrong-document negatives, and a naive test like "ask it about the capital of France" would have completely missed the actual failure mode — that question alone scored 0.36, nowhere near the danger zone that a plausible-sounding wrong-case question landed in.
-
 ## What's still ahead
 
 Phases 1 through 3 are done and validated against a live stack — data layer, LLM orchestration, and the one core RAG skill. What's still checkbox-unticked in the build plan is the part a screenshot would actually show: Phase 4's React/TypeScript upload-and-chat interface, and Phase 5's MCP server exposing this same skill over the Model Context Protocol — Claude Code is the client I'll reach for first, but any MCP client can call it once it's standing. Those become their own post once they exist — I'd rather document what's actually built than write ahead of the code.
-
-The similarity-threshold bug above isn't the last retrieval gap this corpus had — [Part 5](/posts/agenticaiforprofessionals5/) later finds a real retrieval-completeness bug (a corrected figure buried below the cutoff by repeated PDF boilerplate) and traces it to ground. Worth reading this post as "RAG, correctly built for what was known at the time" rather than "RAG, already complete," since that's genuinely what it was when this post went up.

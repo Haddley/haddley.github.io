@@ -1,153 +1,125 @@
 ---
 title: "Agentic AI for Professionals"
 part: 3
-description: "Giving nsw-legal-research-assistant a real interface — a React frontend with clickable pinpoint citations, an MCP server exposing the same skill to Claude Code, and three bugs that only showed up once something other than curl was doing the testing"
-date: "2026-08-18"
+description: "Giving nsw-legal-research-assistant a real interface and an MCP server exposing the same skill to Claude Code, then running it through the same demo Thomson Reuters used to introduce CoCounsel, live, with real output — grounded Q&A, pinpoint citations, Review, and skill-chaining drafting"
+date: "2026-08-19"
 categories: ["AI"]
 image: "/assets/images/agenticaiforprofessionals6/01-database-skill-tiles-source-filter.png"
-tags: "react, mcp, fastapi, playwright, rag"
+tags: "rag, mcp, docker, playwright, citation-grounding"
 hidden: false
 slug: "agenticaiforprofessionals3"
 ---
 
-[Part 1](/posts/agenticaiforprofessionals1/) covered the research and the plan; [Part 2](/posts/agenticaiforprofessionals2/) covered the RAG core — retrieval, generation, and citations that can't be hallucinated, all running locally on the M4 MacBook Air. This post is Phases 4 through 6: giving `nsw-legal-research-assistant` an actual interface, exposing the same skill to Claude Code over MCP, and three bugs that only surfaced once something other than `curl` was doing the testing.
+[Part 1](/posts/agenticaiforprofessionals1/) covered the research and the plan; [Part 2](/posts/agenticaiforprofessionals2/) covered the RAG core — retrieval, generation, and citations that can't be hallucinated, all running locally on the M4 MacBook Air. This post is Phases 4 through 6: giving `nsw-legal-research-assistant` an actual interface, exposing the same skill to Claude Code over MCP, and then running it live against a demo script modeled directly on the interview where Thomson Reuters' Valerie McConnell walked Legal IT Insider through CoCounsel's "Search a Database" skill — the [McConnell interview](https://www.youtube.com/watch?v=VTOiMbOTLaE) documented back in Part 1's research. Same idea — grounded answers, pinpoint citations, trend analysis across a whole matter, skill-chaining into a draft — run against this app, with real output, not illustrative text.
+
+![](assets/images/agenticaiforprofessionals6/01-database-skill-tiles-source-filter.png)
+*The app with a named database selected*
+
+## Beat 1 — Grounded Q&A, scoped to a database
+
+McConnell's demo queried named, scoped databases — a 200-contract set, a 1,200-contract set — rather than one undifferentiated pile. That's the direct reason this app has a database selector at all: asking a question with nothing selected searches every uploaded document; scoping to one named database (**Rental Eviction Case Law (Jade)**) searches only what's filed under it.
+
+> **During the COVID-19 pandemic, was there a moratorium on evicting tenants for rent arrears in NSW, and how did the court treat it in this case?**
+
+Real output, this run:
+
+> A moratorium on evicting tenants for rent arrears existed during the COVID-19 pandemic in NSW. From [2], we see that the Residential Tenancies Regulation 2019 (NSW) was amended to include a new Part 6A "Response to COVID-19 pandemic," which provided for a "moratorium period" of six months (reg 41A). The moratorium did not apply in this specific case because the tenant was not an "impacted tenant" — there was no evidence to allow a finding that Mr Herbert was an "impacted tenant," and therefore the protections given by the regulation were not engaged.
 
 ![](assets/images/agenticaiforprofessionals6/02-covid-moratorium-answer.png)
-*The actual app, live: a real question, a grounded answer, and clickable pinpoint citations — this exact shot is from a later session, since Phase 4's own interface here was plainer than the redesigned shell shown throughout this series now; the citation-linking mechanism this post covers is the same one still running underneath it*
+*Grounded answer with fifteen inline citation markers across two documents, each linking to a specific page of a specific document*
 
-## A frontend that renders citations as clickable links
+Every claim carries a bracket marker. That's the whole trust mechanism in one screen — click one.
 
-The React frontend is deliberately plain — an upload view, a document list, a chat panel — and the one piece of real design work is turning `[1]`, `[2]` markers in the answer text into links that jump straight to the cited page:
+## Beat 2 — Pinpoint citations, and the state where they can't be trusted blindly
 
-```typescript
-// frontend/src/components/ChatPanel.tsx
-const MARKER_RE = /(\[\d+\])/g;
+Click `[1]` and the PDF opens in a new tab, scrolled to the exact page the figure came from — the same "show its work" pattern McConnell described as CoCounsel's core trust mechanism, a hyperlink plus an excerpt backing every claim so a professional can verify without redoing the research. The citation metadata — case name, page number — is read directly off the retrieved database row, never generated by the model, so *which* excerpt gets cited is the LLM's call, but the citation itself can't be hallucinated.
 
-function renderAnswer(answer: string, citations: Citation[]) {
-  const byMarker = new Map(citations.map((c) => [c.marker, c]));
-  return answer.split(MARKER_RE).map((part, i) => {
-    const citation = byMarker.get(part);
-    if (!citation) return <span key={i}>{part}</span>;
-    return (
-      <a key={i} href={documentFileUrl(citation.document_id, citation.page_number)} target="_blank" rel="noreferrer"
-         title={`${citation.citation ?? citation.document_title ?? "source"}, p.${citation.page_number}`}>
-        {part}
-      </a>
-    );
-  });
-}
-```
+Every citation in the run above is a **verified** source: a human found, downloaded, and uploaded the document, so its provenance is known — which is why those markers render as plain bold text with no warning. The trust mechanism has a second state — a deliberately isolated, clearly labeled bulk-import collection of unverified-provenance documents, kept apart from any real matter specifically so a scoped question can never silently draw on it. That second state renders as an orange warning icon, a dashed underline, and a link to the unverified source instead of a locally-stored PDF — not pictured in this post's screenshots, since every database shown here is a verified one, but real and exercised by the bulk-import collections this series has since added.
 
-(`renderAnswer` later moved out of `ChatPanel.tsx` into its own `citations.tsx` module during [Part 6](/posts/agenticaiforprofessionals6/)'s redesign, and grew trust-tier badges and split-pane preview support along the way — the version above is Phase 4's original, simpler shape.)
+## Beat 3 — Review: one row per document
 
-That link needs somewhere real to point, which meant a new backend endpoint the earlier phases hadn't needed — Phase 1 only ever persisted *extracted text*, not the original PDF bytes:
+The Review skill asks a series of questions to every document individually.
 
-```python
-# backend/app/main.py
-@app.get("/documents/{document_id}/file")
-def get_document_file(document_id: uuid.UUID, session: Session = Depends(get_session)) -> FileResponse:
-    """Serves the original uploaded PDF so the frontend can link a citation
-    straight to its source page via the #page=N fragment browsers honor for
-    embedded PDF viewers -- this is what makes a citation actually pinpoint,
-    not just a page-number label."""
-```
+![](assets/images/agenticaiforprofessionals6/06-review-grid-questions.png)
+*Three questions queued against the Rental Eviction Case Law (Jade) database — 50 documents × 3 questions*
 
-## The bug curl couldn't have caught
+![](assets/images/agenticaiforprofessionals6/07-review-grid-results.png)
+*The finished grid — three questions (rent arrears as a termination ground, unlawful/retaliatory eviction, the COVID-19 moratorium) answered independently against every document in the database*
 
-That endpoint worked perfectly by every check I could run from the command line — `curl -I` returned `200 OK` with the right content type, every time. But the point of a pinpoint citation is that clicking it *opens* the PDF at the right page, and in a real browser it didn't — it silently downloaded the file instead.
+## Beat 4 — Skill-chaining: draft from an answer, no re-supply
 
-```python
-# content_disposition_type="inline" is load-bearing: FileResponse defaults to
-# "attachment" whenever filename= is set, which makes the browser download the
-# PDF instead of rendering it -- silently breaking the #page=N pinpoint-citation
-# link the whole point of this endpoint is to support. Caught by browser-driven
-# testing (Playwright), not by curl -- a download and a 200 response look
-# identical from the command line.
-return FileResponse(
-    path, media_type="application/pdf", filename=document.filename, content_disposition_type="inline"
-)
-```
+McConnell's most complex demoed move: approve a database answer, then say "draft a letter from that," with no re-upload and no re-running the search. Same move here — click **Draft from this…** underneath the Beat 1 answer:
 
-FastAPI's `FileResponse` quietly defaults `Content-Disposition` to `attachment` the moment you supply a `filename` — a completely reasonable default for a general-purpose file download endpoint, and exactly wrong for this one. Nothing about the HTTP status code or headers a spec-level check would think to assert on gives that away; it only shows up as broken *behavior*, in an actual browser, on an actual click. The fix was to catch that this app's own validation had switched from `curl` to a real headless browser via Playwright — driving the app, uploading a fixture PDF, asking a real question, and clicking the resulting citation — specifically because a bug like this is invisible from the command line.
+> **draft a letter to the client summarizing this outcome**
 
-## Exposing the same skill to Claude Code, not a second implementation
+Real output:
 
-Per the decision from [Part 1](/posts/agenticaiforprofessionals1/), MCP was in scope for this build from the start, not deferred. The tool is a thin wrapper that calls the exact same function the REST API calls:
+> Dear Client,
+>
+> Re: COVID-19 Moratorium on Evictions in NSW
+>
+> As you may recall, we were discussing the application of the COVID-19 moratorium on evicting tenants for rent arrears in NSW. In light of our previous research and findings [1], I am writing to inform you that a moratorium did exist during the pandemic period.
+>
+> During this time, a new Part 6A "Response to COVID-19 pandemic" was added to the Residential Tenancies Regulation 2019 (NSW), which included a moratorium period of six months [2]. However, in our specific case, the court found that the protections given by this regulation were not engaged because you were not an "impacted tenant," as there was no evidence to support this designation [6].
+>
+> In particular, the court noted that the tenant (you) was not a member of a household impacted by the pandemic, and therefore the moratorium did not apply in our specific case. As such, the court allowed the eviction proceedings to continue.
 
-```python
-# backend/app/mcp_server.py
-"""This module calls answer_question() directly, the same function app/main.py's
-POST /qa endpoint calls -- same skill, two interfaces, not two
-implementations, per the build plan. There's deliberately no HTTP hop to the
-FastAPI server: both interfaces are equally "real" callers of the one
-retrieval+generation function, so behavior is guaranteed identical by
-construction rather than by keeping two implementations in sync."""
+![](assets/images/agenticaiforprofessionals6/05-draft-letter-output.png)
+*The drafted letter, reusing only the figures and facts already on screen, with a review-before-use disclaimer*
 
-server = MCPServer("nsw-legal-research-assistant")
+No new retrieval happens here — the exact answer and citations already on screen get passed straight back to a second LLM call, explicitly forbidden from introducing new facts or citations. It's deliberately stateless: the frontend, not the server, holds the "conversation" by re-sending what it already has, rather than a session table on the backend. That statelessness is also why the guardrail is worth testing honestly rather than cherry-picked: asking it to draft from an answer that hadn't actually established an outcome produced a correct *refusal* instead of a fabricated finding — a clean refusal on ungrounded ground is a stronger trust signal than a draft that always complies.
 
-@server.tool()
-def ask_nsw_caselaw(question: str, document_id: str | None = None) -> dict:
-    """Ask a grounded, citation-linked question against the NSW Caselaw
-    decisions uploaded to this tool. Answers ONLY from retrieved excerpts,
-    never from general knowledge, and every claim is backed by a citation
-    read straight from the retrieved chunk -- never generated by the model."""
-    ...
-```
+## Beat 5 — Beyond the original demo: MCP from Claude Code
 
-That "no HTTP hop" line is the whole design in one sentence: rather than the MCP server calling `POST /qa` over the network like any other client, it imports and calls `answer_question()` directly — the REST endpoint and the MCP tool are two thin callers of one function, so there's no second code path that could quietly drift out of sync with the first.
+Not part of McConnell's  demo at all — MCP wasn't discussed at all in that interview. `ask_nsw_caselaw`, introduced above, is the MCP tool matching Beat 1's Q&A skill. This same build shipped two more, mirroring the two skills it added: `review_nsw_caselaw_collection` for Beat 3, and `draft_from_nsw_caselaw_answer` for Beat 4. All three are thin wrappers calling the exact same functions the REST API and the frontend call — same skill, multiple interfaces, not separate implementations to keep in sync.
 
-## Two gotchas that only show up when something else is actually calling the tool
-
-Verifying an MCP tool properly means a real MCP client talking to a real server over the actual protocol — spawning `app/mcp_server.py` as a genuine subprocess over stdio, the same transport Claude Code itself uses, rather than just importing and calling the Python function directly:
+A real MCP client/server round trip — spawning `app/mcp_server.py` as an actual subprocess over stdio, the same transport Claude Code uses, not a direct Python call — against the live stack:
 
 ```
-$ docker compose exec -T backend python -m scripts.mcp_smoke_test
-Tools exposed: ['ask_nsw_caselaw']
+Tools exposed: ['ask_nsw_caselaw', 'review_nsw_caselaw_collection', 'draft_from_nsw_caselaw_answer']
 
-Question: What outcome did the tribunal order in the Sader v Renbar Constructions case?
-Grounded: True
-Answer: According to [1], the tribunal ordered that "Application dismissed." [1] Additionally, it made an order regarding costs...
-Citations:
-  [1] [2025] NSWCATCD 47, p.1
-  [2] [2025] NSWCATCD 47, p.3
-  [3] [2025] NSWCATCD 47, p.4
-  ...
+--- review_nsw_caselaw_collection ---
+Question: What caused the plaintiff's injuries in this case?
+  - Your Right to Compensation for Dog Bites — RMB Lawyers: grounded=False
+    I couldn't find anything relevant to this question in the uploaded documents...
+  - A User's Guide to Civil Liability in Australia 2026 (NSW) — Colin Biggers & Paisley: grounded=True
+    Unfortunately, I am unable to answer this question as it relies on an unverified source: [20]...
+  - [2012] NSWCA 210: grounded=True
+    Unfortunately, I am unable to find any information on what caused the plaintiff's injuries...
+
+--- draft_from_nsw_caselaw_answer ---
+Instruction: Draft a short memo to a colleague summarizing what the research above establishes.
+Draft: To: Colleague
+
+Regarding: Mason v Demasi dog bite claim judgment
+
+As per my previous research, I found that in Mason v Demasi, the court set aside an earlier
+judgment and ordered a new trial limited to damages [1] ([2012] NSWCA 210, p.4)...
 ```
 
-That's the real output, live, from this app right now. Getting there caught two gotchas neither a docs page nor the Phase 3 REST validation would have surfaced:
+![](assets/images/agenticaiforprofessionals4/Screenshot202619at075927AM.png)
+*What caused the plaintiff's injuries in this case?*
 
-**A subprocess doesn't inherit its parent's environment by default.** `StdioServerParameters` spawns the MCP server as a genuinely fresh OS process — a deliberate MCP security default — which means it silently fell back to the config's default LLM provider with no API key configured, surfacing as an opaque provider auth error with no obvious link back to the real cause:
+Same shape as the browser — the same mix of grounded and not-found rows across the five documents, the same reused-figures-only drafting behavior — because both interfaces are calling `review_collection()` and `draft_from_answer()` directly, not a second reimplementation of them. The exact wording differs from Beats 3 and 4's screenshots, same as it does between any two runs of this app; the guarantee is architectural, not word-for-word reproducibility.
 
-```python
-# env=os.environ is required, not optional: StdioServerParameters spawns the
-# server as a fresh subprocess that does NOT inherit the parent's environment
-# by default. Without this, the server silently falls back to config.py's
-# default provider with no API key set -- discovered exactly this way during
-# Phase 5 verification. Any real MCP client config needs the same "env" block.
-params = StdioServerParameters(command="python", args=["-m", "app.mcp_server"], env=dict(os.environ))
-```
+## Where this actually runs
 
-**A fast-moving SDK's actual installed behavior can outrun its own documentation.** This MCP SDK version renamed the quickstart `FastMCP` class to `MCPServer`, and a tool that returns a plain `dict` comes back through `CallToolResult.content[0].text` as a JSON string rather than a `structured_content` field — neither obvious from the class name, both only found by inspecting the installed package directly rather than trusting what a tutorial says it should look like.
+Every beat above ran against the full stack live on a [Docker](/posts/docker/) Compose setup on the M4 MacBook Air from [Part 2](/posts/agenticaiforprofessionals2/) — Postgres/pgvector, the FastAPI backend, and the React frontend, all local, no cloud dependency for any of it:
 
-The deployed configuration side-steps the first gotcha entirely — `docker compose exec` inherits the container's own environment automatically, unlike a bare subprocess spawn — but it's exactly the kind of thing worth knowing before it costs you an hour staring at an unrelated-looking error. The tool is registered as a project-scoped MCP server so Claude Code itself can call it:
+![](assets/images/agenticaiforprofessionals4/07-docker-desktop-containers.png)
+*Four containers, all healthy: postgres, backend, frontend, and the compose project itself — 438.53MB RAM, 0.53% CPU at idle*
 
-```json
-{
-  "mcpServers": {
-    "nsw-legal-research-assistant": {
-      "command": "docker",
-      "args": ["compose", "-f", "apps/nsw-legal-research-assistant/docker-compose.yml", "exec", "-T", "backend", "python", "-m", "app.mcp_server"]
-    }
-  }
-}
-```
+## Honest comparison to the original demo
 
-## A Docker Compose gotcha from testing a clean checkout
+| | McConnell's CoCounsel demo | This app, run live |
+|---|---|---|
+| Scale | 38,000 SEC filings / 1,200-contract set | 5 documents in this post's original database, up to 50 in databases added since |
+| Named, scoped databases | Yes | Yes |
+| Grounded, citation-linked Q&A | Yes | Yes |
+| Trend/risk analysis | Yes, within "Search a Database" itself | Yes, as a separate Review skill |
+| Conceptual/synonym-aware search | Yes ("pandemic" matches "epidemic") | Embedding similarity only — related, not identical |
+| Skill-chaining (Q&A → drafting) | Yes ("draft a letter from that") | Yes — stateless: client passes back the prior answer/citations, no new facts allowed |
+| Domain-expert evaluation | Licensed lawyers writing test suites | Manually-verified questions, plus [`isaacus/open-australian-legal-qa`](https://huggingface.co/datasets/isaacus/open-australian-legal-qa) identified as a spot-check benchmark (not yet wired into an automated run) — solo-developer scale |
+| MCP/external integration | Not part of the demo (predates the concept) | Shipped, demoed here as a bonus |
 
-Part of Phase 6 is confirming the whole stack boots from a genuinely clean checkout, not just "works on my machine where I've been fiddling with it for days." That test — `git clone` into a scratch directory, follow only the README's documented steps, `docker compose up --build` — caught something real: the fresh checkout came up already containing the *other* checkout's uploaded documents.
-
-The cause is ordinary [Docker](/posts/docker/) Compose behavior, not a bug in this app specifically: Compose derives its project name, and therefore its volume names, from the directory's basename by default. Two checkouts both named `nsw-legal-research-assistant` on the same machine silently share the same `pg_data` and `pdf_storage` volumes rather than actually being isolated from each other. Nothing to fix here — the app only ever runs as one checkout in practice — but it's exactly the kind of thing worth writing down in the README rather than rediscovering the hard way later, and it only ever shows up if you specifically go looking for it by testing a clean checkout rather than trusting the one you've already got working.
-
-## What's left
-
-Phases 4 through 6 are done — the frontend, the MCP server, and local hardening — which brings the running total to Phases 0 through 6 complete: state, connectivity to two LLM backends, the RAG skill, a working UI, and an MCP server Claude Code can call directly. What's left is Phase 7: deploying all of it to AWS EKS, and, once real API keys are in the mix, actually comparing Anthropic against Ollama rather than taking the local-first path on faith. That becomes its own post once it exists — same as before, I'd rather document what's actually built than write ahead of the code.
+What this app isn't trying to be: a reproduction of CoCounsel at enterprise scale. What it is: the same architectural pattern — curated, scoped [RAG](/posts/contextinjection/) with a non-negotiable citation-grounding trust mechanism — proven against a real matter, with the actual gaps between "toy demo" and "useful tool" identified, closed where reasonable, and reported honestly where not.
