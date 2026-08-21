@@ -29,6 +29,10 @@ I started by creating a DeepSeek API key.
 
 Then I exported the three environment variables and launched Claude Code.
 
+```bash
+export ANTHROPIC_API_KEY="sk-... && export ANTHROPIC_MODEL="deepseek-chat" && export ANTHROPIC_BASE_URL="https://api.deepseek.com/anthropic" && claude
+```
+
 ![](assets/images/claudecode12/Screenshot-2026-05-08-at-4.27.39-PM.png)
 *I exported the DeepSeek endpoint and API key as Anthropic environment variables, then ran Claude Code — it detected the custom API key and asked whether to use it*
 
