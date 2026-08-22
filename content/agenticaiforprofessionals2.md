@@ -10,10 +10,12 @@ hidden: false
 slug: "agenticaiforprofessionals2"
 ---
 
-[Part 1](/posts/agenticaiforprofessionals1/) covered the research — how a structured LLM-wiki process traced Thomson Reuters CoCounsel's real architecture, and how that turned into a plan for `nsw-legal-research-assistant`, an app inspired by Thomson Reuters CoCounsel Legal and grounded on a manually-curated document set — a starting scope, not a ceiling. CoCounsel Legal's own scope keeps expanding release after release, as later posts in this series document; I'm building this expecting the same kind of growth over time, not a fixed target frozen at today's version. This post is the actual build: Phases 1 through 3 of that plan, all of it running locally on my 32GB M4 MacBook Air through [Docker](/posts/docker/) Compose, with [Ollama](https://ollama.com/) serving both the chat model and the embeddings — no cloud API required to get a working system end to end.
+[Part 1](/posts/agenticaiforprofessionals1/) covered the research — how a structured LLM-wiki process traced Thomson Reuters CoCounsel's real architecture, and how that turned into a plan for `nsw-legal-research-assistant`, an app inspired by Thomson Reuters CoCounsel Legal and grounded on a manually-curated document set — a starting scope, not a ceiling. 
+
+This post is the actual build: Phases 1 through 3 of that plan, all of it running locally on my 32GB M4 MacBook Air through [Docker](/posts/docker/) Compose, with [Ollama](https://ollama.com/) serving both the chat model and the embeddings — no cloud API required to get a working system end to end.
 
 ![](assets/images/agenticaiforprofessionals2/nsw-caselaw-recent-decisions.png)
-*NSW Caselaw's own "recent decisions" list — and there's "Sader v Renbar Constructions PL", one of the two real cases I actually loaded into the app below*
+*NSW Caselaw's "recent decisions" list*
 
 ## The data model: documents and chunks
 
@@ -44,7 +46,7 @@ The `EMBEDDING_DIM` constant matters more than it looks: it's fixed at table-cre
 
 ## Ingestion
 
-A locally-downloaded, manually-copied-in PDF goes in through `POST /documents`, gets text-extracted page by page via `pypdf`, and then chunked into roughly 800-character pieces — sentence-grouped, simple on purpose for this first working version ("v0," shorthand I use throughout this series for the simplest thing that actually works first — a deliberate starting point I expect to keep expanding over time, not a fixed scope, the same way CoCounsel Legal's own scope keeps growing release after release), each chunk tagged with its source page number so a citation later in this post can point at an exact page. It's the same `pypdf` library under the hood as my [earlier LangChain RAG project](/posts/langchain/) — there I went through LangChain's `PyPDFLoader` wrapper and let `load_and_split()` handle it; here I use `pypdf.PdfReader` directly. I tested it end-to-end against two real fixture judgments — *Huang v Nazaran* [2026] NSWDC 298 and *Sader v Renbar Constructions PL* [2025] NSWCATCD 47 — and confirmed every chunk carried a correct page number all the way through ingestion.
+A locally-downloaded, manually-copied-in PDF goes in through `POST /documents`, gets text-extracted page by page via `pypdf`, and then chunked into roughly 800-character pieces — sentence-grouped, simple on purpose for this first working version, each chunk tagged with its source page number so a citation later in this post can point at an exact page. It's the same `pypdf` library under the hood as my [earlier LangChain RAG project](/posts/langchain/) — there I went through LangChain's `PyPDFLoader` wrapper and let `load_and_split()` handle it; here I use `pypdf.PdfReader` directly.
 
 ## A provider-agnostic LLM layer, with Ollama as the default
 
