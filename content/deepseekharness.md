@@ -121,6 +121,8 @@ Opening `http://localhost:8081` gave me the finished game. The screenshot shows 
 
 Controls are simple: the left and right arrows (or A and D) move the cannon, Space fires and can be held for rapid fire, and Space or Enter starts and restarts the game.
 
+Because the whole thing is just static files, I have added it to this site so you can try it yourself: the game is playable at [/invaders-deepseek-harness/index.html](/invaders-deepseek-harness/index.html). No install, no server, no build step — open the link and play.
+
 ## The takeaway
 
 The thing that stood out to me most was the workflow, not the code. DeepSeek Harness read a real requirements document and a real design document, mapped each requirement into a concrete implementation (the "on hit alien" rule became the collision branch in the code), built a complete game with zero dependencies and no build step, and then held itself to account by writing and running both logic tests and a headless-browser E2E suite before showing me the result. The `window.__invaders` debug handle in particular felt like the mark of an agent that was verifying its own work rather than merely generating code.
