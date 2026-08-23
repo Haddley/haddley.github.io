@@ -44,15 +44,6 @@ After configuring a DeepSeek API key in Settings → Models and selecting a work
 ![Terminal showing npm install -g @deepseek-ai/dsh and running dsh web](assets/images/deepseekharness/npm-install-global.png)
 *I installed the package globally, then ran `dsh web`*
 
-![Terminal showing npx @deepseek-ai/dsh web asking to install dsh 0.1.1-rc.2](assets/images/deepseekharness/install-dsh-rc.png)
-*The documented one-liner also works without a global install — npx offered to install @deepseek-ai/dsh@0.1.1-rc.2*
-
-![Terminal showing npx clear-npx-cache completing successfully](assets/images/deepseekharness/clear-npx-cache.png)
-*I cleared the npx cache before launching so I would pull the latest package*
-
-![Terminal showing clearing the cache then running npx -y @deepseek-ai/dsh@latest web](assets/images/deepseekharness/clear-cache-start-dsh.png)
-*After clearing the cache I launched the latest build from npm*
-
 ![Terminal showing dsh web serving at http://127.0.0.1:3080 and opening the browser](assets/images/deepseekharness/dsh-web-terminal.png)
 *`dsh web` started the server at http://127.0.0.1:3080 and opened the default browser*
 
