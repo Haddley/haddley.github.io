@@ -124,3 +124,5 @@ Controls are simple: the left and right arrows (or A and D) move the cannon, Spa
 ## The takeaway
 
 The thing that stood out to me most was the workflow, not the code. DeepSeek Harness read a real requirements document and a real design document, mapped each requirement into a concrete implementation (the "on hit alien" rule became the collision branch in the code), built a complete game with zero dependencies and no build step, and then held itself to account by writing and running both logic tests and a headless-browser E2E suite before showing me the result. The `window.__invaders` debug handle in particular felt like the mark of an agent that was verifying its own work rather than merely generating code.
+
+If you want to try it, start with the [DeepSeek Harness site](https://deepseek-ai.github.io/deepseek-harness/), the [Use the Web UI guide](https://deepseek-ai.github.io/deepseek-harness/en/guide), or the [GitHub repository](https://github.com/deepseek-ai/deepseek-harness). The Quick start is a single command, and the payoff is an agent that builds and verifies a complete product from a document.
