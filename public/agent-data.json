@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "deepseekharness",
+      "title": "Building a Space Invaders Game from a PRD with DeepSeek Harness",
+      "description": "Giving DeepSeek Harness a product requirements document and a product design document and letting it build, verify, and ship a fully working Space Invaders game — with no dependencies, no build step, and no server",
+      "date": "2026-08-23",
+      "categories": [
+        "AI"
+      ],
+      "tags": "deepseek, ai-agent, agentic-coding, prd, game-development"
+    },
+    {
       "slug": "agenticaiforprofessionals3",
       "title": "Agentic AI for Professionals (Part 3)",
       "description": "Giving nsw-legal-research-assistant a real interface and an MCP server exposing the same skill to Claude Code, then running it through the same demo Thomson Reuters used to introduce CoCounsel, live, with real output — grounded Q&A, pinpoint citations, Review, and skill-chaining drafting",
@@ -2627,5 +2637,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-08-21T16:15:03.764Z"
+  "generatedAt": "2026-08-23T19:25:37.265Z"
 }
