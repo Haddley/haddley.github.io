@@ -2,8 +2,8 @@
   "posts": [
     {
       "slug": "deepseekharness",
-      "title": "Building a Space Invaders Game from a PRD with DeepSeek Harness",
-      "description": "Giving DeepSeek Harness a product requirements document and a product design document and letting it build, verify, and ship a fully working Space Invaders game — with no dependencies, no build step, and no server",
+      "title": "Building Space Invaders with DeepSeek Harness",
+      "description": "Giving DeepSeek Harness a product requirements document and a product design document for a faithful browser recreation of the 1978 Taito Space Invaders, and watching it build the game and then verify its own work",
       "date": "2026-08-23",
       "categories": [
         "AI"
@@ -2637,5 +2637,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-08-23T19:25:37.265Z"
+  "generatedAt": "2026-08-23T19:53:04.829Z"
 }
