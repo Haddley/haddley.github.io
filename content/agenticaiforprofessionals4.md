@@ -30,7 +30,9 @@ Uploading the statement of claim directly produces a rename-suggestion box, then
 ![](assets/images/agenticaiforprofessionals4/04-intake-summary.png)
 *Full generated Intake Summary — caption, key facts with a verbatim source quote, attorney notes*
 
-``` CASE THEORY
+## CASE THEORY
+
+``` text
 We act for the plaintiff, Dominic Reyes. He bought a new Caldwell Trailmaster GX SUV for $58,240 and it has been back to the dealer 13 times in 16 months for the same two recurring faults -- an instrument cluster fault and a front suspension noise -- neither of which the dealer has ever permanently fixed, despite repeatedly claiming each repair resolved it. The defendants' own service records prove this history; they are not disputed. The defendants' defence is that the faults are minor and cosmetic, but their own records describe the same functional faults being reworked over and over, not a cosmetic complaint. Our theory is that this is a textbook major failure under the Australian Consumer Law -- a pattern of recurring, unresolved defects, not one catastrophic failure -- and that because the repair history is common ground, there is no genuine factual dispute left to try. 
 
 Strategic objective: get judgment for the full refund plus consequential loss without the cost and delay of a hearing.
