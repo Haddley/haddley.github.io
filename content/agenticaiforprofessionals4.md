@@ -27,17 +27,14 @@ Uploading the statement of claim directly produces a rename-suggestion box, then
 
 > The vehicle exhibited two persistent, recurring defects: an intermittent instrument cluster fault and a persistent knocking noise from the front suspension. **Quote**: "From on or about April 2024 to August 2025, the Vehicle exhibited two persistent, recurring defects that the Second Defendant repeatedly attempted and failed to permanently resolve:"
 
+![](assets/images/agenticaiforprofessionals4/04-intake-summary.png)
+*Full generated Intake Summary — caption, key facts with a verbatim source quote, attorney notes*
 
 ``` CASE THEORY
 We act for the plaintiff, Dominic Reyes. He bought a new Caldwell Trailmaster GX SUV for $58,240 and it has been back to the dealer 13 times in 16 months for the same two recurring faults -- an instrument cluster fault and a front suspension noise -- neither of which the dealer has ever permanently fixed, despite repeatedly claiming each repair resolved it. The defendants' own service records prove this history; they are not disputed. The defendants' defence is that the faults are minor and cosmetic, but their own records describe the same functional faults being reworked over and over, not a cosmetic complaint. Our theory is that this is a textbook major failure under the Australian Consumer Law -- a pattern of recurring, unresolved defects, not one catastrophic failure -- and that because the repair history is common ground, there is no genuine factual dispute left to try. 
 
 Strategic objective: get judgment for the full refund plus consequential loss without the cost and delay of a hearing.
 ```
-
-
-![](assets/images/agenticaiforprofessionals4/04-intake-summary.png)
-*Full generated Intake Summary — caption, key facts with a verbatim source quote, attorney notes*
-
 
 The quote field is verified as an exact substring of the source chunk before it is ever shown. A close-but-wrong quote gets dropped rather than displayed — the same non-negotiable citation-grounding rule from [Part 2](/posts/agenticaiforprofessionals2/) applied to a pleading instead of a case database.
 
