@@ -27,7 +27,7 @@ Uploading the statement of claim directly produces a rename-suggestion box, then
 
 > The vehicle exhibited two persistent, recurring defects: an intermittent instrument cluster fault and a persistent knocking noise from the front suspension. **Quote**: "From on or about April 2024 to August 2025, the Vehicle exhibited two persistent, recurring defects that the Second Defendant repeatedly attempted and failed to permanently resolve:"
 
-```` COMPLAINT
+```` STATEMENT OF CLAIM
 FICTIONAL TEST FIXTURE -- not a real case, not real precedent, not a real
 filed pleading. Written for testing the Brief Builder feature's
 Intake-stage document upload and fact extraction against a realistic,
