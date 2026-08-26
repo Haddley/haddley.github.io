@@ -161,7 +161,7 @@ function processInlineMarkdown(text: string): React.ReactElement[] {
 }
 
 interface MobiriseParsedContent {
-  type: 'text' | 'image' | 'video' | 'audio' | 'heading' | 'code' | 'references-header' | 'references' | 'table' | 'hr';
+  type: 'text' | 'image' | 'video' | 'audio' | 'heading' | 'code' | 'references-header' | 'references' | 'table' | 'hr' | 'blockquote';
   content: string;
   description?: string;
   level?: number;
@@ -247,7 +247,36 @@ function parseMarkdownToMobirise(markdownContent: string): MobiriseParsedContent
 
       continue;
     }
-    
+
+    // Handle blockquotes (lines starting with '>')
+    if (trimmedLine.startsWith('>')) {
+      // Flush any accumulated text
+      if (currentTextContent.length > 0) {
+        sections.push({
+          type: 'text',
+          content: currentTextContent.join('\n')
+        });
+        currentTextContent = [];
+      }
+
+      const quoteLines: string[] = [];
+      let j = i;
+
+      // Collect all consecutive blockquote lines, stripping the leading '>'
+      while (j < lines.length && lines[j].trim().startsWith('>')) {
+        quoteLines.push(lines[j].trim().replace(/^>\s?/, ''));
+        j++;
+      }
+
+      sections.push({
+        type: 'blockquote',
+        content: quoteLines.join('\n')
+      });
+
+      i = j - 1; // Adjust loop counter
+      continue;
+    }
+
     // Handle images with descriptions
     if (trimmedLine.startsWith('![')) {
       // Flush any accumulated text
@@ -491,6 +520,48 @@ export default function MobiriseContentRenderer({ markdownContent }: MobiriseCon
                 <div className="row justify-content-center">
                   <div className="col-md-12 col-lg-10">
                     <hr />
+                  </div>
+                </div>
+              </div>
+            </section>
+          );
+        } else if (section.type === 'blockquote') {
+          const paragraphs = section.content.split('\n').reduce<string[][]>((acc, line) => {
+            if (line === '') {
+              acc.push([]);
+            } else {
+              if (acc.length === 0) acc.push([]);
+              acc[acc.length - 1].push(line);
+            }
+            return acc;
+          }, []).filter(para => para.length > 0);
+
+          return (
+            <section key={index} className="content5 cid-content5" data-bs-version="5.1">
+              <div className="container">
+                <div className="row justify-content-center">
+                  <div className="col-md-12 col-lg-10">
+                    <blockquote
+                      className="mbr-fonts-style display-7"
+                      style={{
+                        borderLeft: '4px solid #ddd',
+                        margin: '1.5rem 0',
+                        padding: '0.5rem 1.5rem',
+                        fontStyle: 'italic',
+                        color: '#555'
+                      }}
+                    >
+                      {paragraphs.map((para, pIndex) => (
+                        <p key={pIndex} className={pIndex < paragraphs.length - 1 ? 'mb-3' : 'mb-0'}>
+                          {para.map((line, lineIndex) => (
+                            <React.Fragment key={lineIndex}>
+                              {processInlineMarkdown(line)}
+                              {lineIndex < para.length - 1 && ' '}
+                            </React.Fragment>
+                          ))}
+                        </p>
+                      ))}
+                    </blockquote>
                   </div>
                 </div>
               </div>
