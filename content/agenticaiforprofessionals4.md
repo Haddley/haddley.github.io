@@ -27,14 +27,227 @@ Uploading the statement of claim directly produces a rename-suggestion box, then
 
 > The vehicle exhibited two persistent, recurring defects: an intermittent instrument cluster fault and a persistent knocking noise from the front suspension. **Quote**: "From on or about April 2024 to August 2025, the Vehicle exhibited two persistent, recurring defects that the Second Defendant repeatedly attempted and failed to permanently resolve:"
 
-![](assets/images/agenticaiforprofessionals4/04-intake-summary.png)
-*Full generated Intake Summary — caption, key facts with a verbatim source quote, attorney notes*
+```` COMPLAINT
+FICTIONAL TEST FIXTURE -- not a real case, not real precedent, not a real
+filed pleading. Written for testing the Brief Builder feature's
+Intake-stage document upload and fact extraction against a realistic,
+UCPR-formatted pleading (unlike brief_builder_sharma_v_sydney_city_motors.md,
+which is an NCAT narrative and deliberately doesn't map onto any
+MOTION_TYPES entry). Never ingest this as if it were a real NSW judgment or
+real filed document, and never let a generated brief cite it as authority.
+
+Companion fixture:
+brief_builder_deshpande_v_kestrel_motors_summary_judgment_motion.md (the
+defendants' Notice of Motion for Summary Judgment responding to this claim
+-- motion_type key `summary_judgment`, UCPR r 13.1, per app/briefs.py's
+MOTION_TYPES).
+
+Provenance: loosely based on the real Queensland Civil and Administrative
+Tribunal decision Donnelly v Jaguar Land Rover Australia Pty Ltd & Anor
+[2025] QCAT 77 (a genuine, publicly reported decision, already present in
+this app's own Jade-sourced corpus). Every identifying fact has been
+changed to build a fictional NSW case: parties, vehicle make/model/VIN,
+dealership, dates, odometer readings, and dollar figures are all invented
+and do not describe any real person, vehicle, or company. The underlying
+shape of the dispute (recurring drivetrain/electronics defects on a
+premium SUV, a late rejection notice, continued use of the vehicle after
+rejection, and a tribunal-appointed independent assessor's report) is
+preserved because it is what makes the fixture useful for testing the
+Develop stage's fact/authority split -- Donnelly is a real, on-topic,
+already-ingested authority a well-functioning Develop stage should be able
+to surface against this fact pattern.
+
+---
+
+IN THE DISTRICT COURT OF NEW SOUTH WALES
+SYDNEY REGISTRY
+
+No. 2024/00187452
+
+BETWEEN:
+
+PRIYA DESHPANDE
+Plaintiff
+
+and
+
+KESTREL MOTORS AUSTRALIA PTY LTD (ACN 000 111 222)
+First Defendant
+
+NORTHBRIDGE PRESTIGE MOTORS PTY LTD (ACN 000 333 444)
+trading as NORTHBRIDGE KESTREL
+Second Defendant
+
+STATEMENT OF CLAIM
+
+Filed: 11 March 2024
+Filed on behalf of: the Plaintiff
+Filed by: Priya Deshpande (self-represented)
+
+---
+
+**A. NATURE OF CLAIM**
+
+1. The Plaintiff claims damages and other relief against the First and
+   Second Defendants arising from the supply of a motor vehicle that did
+   not comply with the consumer guarantee of acceptable quality under
+   s 54 of the Australian Consumer Law (Schedule 2 to the *Competition
+   and Consumer Act 2010* (Cth)) ("**ACL**"), and constituted a major
+   failure within the meaning of s 260 of the ACL.
+
+**B. PARTIES**
+
+2. The Plaintiff is, and was at all material times, a consumer within the
+   meaning of s 3 of the ACL.
+3. The First Defendant is, and was at all material times, a corporation
+   carrying on business in New South Wales as the Australian importer and
+   distributor of "Kestrel" motor vehicles, and is a manufacturer of the
+   Vehicle (defined below) within the meaning of s 7 of the ACL.
+4. The Second Defendant is, and was at all material times, a corporation
+   carrying on business in New South Wales as a motor vehicle dealer,
+   trading as "Northbridge Kestrel" from premises at 220 Sailors Bay
+   Road, Northbridge NSW 2063, and supplied the Vehicle to the Plaintiff
+   in trade or commerce.
+
+**C. THE VEHICLE AND ITS SUPPLY**
+
+5. On or about 14 March 2018, the Plaintiff purchased from the Second
+   Defendant a new Kestrel Terrain X7 Adventure D6 3.0L motor vehicle,
+   VIN KTX7D6AU2018554321, registration (at the time of these events)
+   BX-77-QP ("**the Vehicle**"), for the price of $118,950 inclusive of
+   on-road costs and a trade-in allowance ("**the Purchase Price**").
+6. The Plaintiff purchased the Vehicle for the purpose of long-distance
+   and off-road touring, including towing a caravan, in anticipation of
+   her retirement, and made this purpose known to the Second Defendant's
+   sales staff at the time of purchase.
+7. The Vehicle was supplied to the Plaintiff in trade or commerce.
+
+**D. THE CONSUMER GUARANTEE AND ITS BREACH**
+
+8. By reason of the matters pleaded in paragraph 5 to 7 above, the supply
+   of the Vehicle to the Plaintiff was subject to the guarantee under
+   s 54(1) of the ACL that the Vehicle was of acceptable quality.
+9. The Vehicle was not of acceptable quality within the meaning of
+   s 54(2) of the ACL, in that it was not as free from defects, safe, or
+   durable as a reasonable consumer fully acquainted with its state and
+   condition would regard as acceptable, having regard to its nature,
+   price, and the representations made about it.
+
+   **Particulars of defects**
+
+   (a) 6 September 2018 (odometer 1,340 km): drive computer displayed a
+       "Drivetrain Fault -- Reduced Power" warning and the Vehicle
+       entered a reduced-power limp mode on the M2 Motorway. Repaired
+       under new-vehicle warranty by a firmware update to the powertrain
+       control module.
+   (b) 2 July 2019 (odometer 9,870 km): identical "Drivetrain Fault --
+       Reduced Power" warning recurred. The Second Defendant again
+       applied a firmware update and additionally updated the
+       suspension control software.
+   (c) 19 July 2019 (odometer 10,640 km): the in-vehicle infotainment
+       and navigation display froze and repeatedly restarted while the
+       Vehicle was in use; all dashboard warning lights illuminated
+       simultaneously. Fault codes were cleared and the Plaintiff was
+       asked to monitor the Vehicle.
+   (d) 3 August 2020 (odometer 21,150 km): the Vehicle failed to start
+       on two occasions; a "Transmission Not in Park" warning displayed
+       while the Vehicle was stationary and in Park. Resolved by a
+       further software update.
+   (e) 24 August 2020 (odometer 21,480 km): oil leak identified at the
+       right-hand rocker cover gasket, repaired under new-vehicle
+       warranty.
+   (f) 30 July 2021 (odometer 32,600 km): "Battery Assist System Fault"
+       warning; the Vehicle's stop-start function ceased to operate.
+       The 12-volt auxiliary battery was replaced under warranty.
+   (g) From about July 2022, further defects presented, including
+       (i) an exhaust gas recirculation ("EGR") system fault first
+       reported in December 2022 and repaired approximately eight
+       months later; (ii) rough idling requiring repair on two
+       occasions in 2020 and 2021; (iii) premature wear of engine
+       mounts, replaced approximately nine months after first being
+       reported; and (iv) recurrent infotainment system failure,
+       ultimately requiring replacement of a component sourced from
+       overseas, which remained on back-order for over a month.
+   (h) The Plaintiff has incurred costs of approximately $19,400 for
+       repairs to the matters pleaded in sub-paragraph (g) above, borne
+       personally or through a third-party extended warranty policy.
+
+10. Further or alternatively, the matters pleaded in paragraph 9 above
+    constitute a major failure within the meaning of s 260 of the ACL,
+    in that:
+
+    (a) a reasonable consumer fully acquainted with the nature and
+        extent of the failures would not have acquired the Vehicle
+        (s 260(a)); and
+    (b) the Vehicle is not of acceptable quality because it is unsafe,
+        in circumstances including the loss of drive power and
+        transmission warnings described in paragraph 9(a), (b) and (d)
+        above occurring while the Vehicle was in motion on a motorway
+        (s 260(e)).
+
+**E. REJECTION**
+
+11. By letter dated 2 February 2024, the Plaintiff gave written notice to
+    the Second Defendant, copied to the First Defendant, rejecting the
+    Vehicle under s 259(3)(a) of the ACL and requiring a refund of the
+    Purchase Price ("**the Rejection Notice**").
+12. The Rejection Notice was given within the rejection period defined
+    in s 262(2) of the ACL, having regard to the cumulative and
+    recurring nature of the defects pleaded in paragraph 9 above, the
+    Plaintiff's repeated, reasonable attempts to have the Vehicle
+    repaired, and the Second Defendant's own representations that each
+    fault had been resolved.
+13. By letter dated 20 February 2024, the Second Defendant refused the
+    Plaintiff's claim for a refund, asserting that the Vehicle was not
+    subject to any major failure and offering a service voucher of
+    $1,500 "as a gesture of goodwill."
+
+**F. LOSS AND DAMAGE**
+
+14. By reason of the matters pleaded above, the Plaintiff has suffered
+    loss and damage.
+
+    **Particulars of loss**
+
+    (a) Refund of the Purchase Price: $118,950, less a reasonable
+        allowance for use, alternatively damages for reduction in value
+        in a like amount to be assessed;
+    (b) Cost of repairs pleaded in paragraph 9(h): $19,400;
+    (c) Cost of alternative transport while the Vehicle was off the
+        road for repairs (approximately 46 days in aggregate): $2,300;
+    (d) Filing fee for these proceedings.
+
+**G. RELIEF CLAIMED**
+
+15. The Plaintiff claims against the First and Second Defendants,
+    jointly and severally:
+
+    (a) a refund of the Purchase Price under s 259(3) of the ACL, or
+        alternatively damages for reduction in value under s 259(4) of
+        the ACL;
+    (b) damages for consequential loss under s 259(4) of the ACL in the
+        amounts particularised in paragraph 14 above;
+    (c) interest pursuant to s 100 of the *Civil Procedure Act 2005*
+        (NSW);
+    (d) costs;
+    (e) such further or other relief as the Court considers just.
+
+Signed: P. Deshpande
+Plaintiff, self-represented
+Address for service: 14 Baringa Street, Chatswood NSW 2067
+
+````
 
 ``` CASE THEORY
 We act for the plaintiff, Dominic Reyes. He bought a new Caldwell Trailmaster GX SUV for $58,240 and it has been back to the dealer 13 times in 16 months for the same two recurring faults -- an instrument cluster fault and a front suspension noise -- neither of which the dealer has ever permanently fixed, despite repeatedly claiming each repair resolved it. The defendants' own service records prove this history; they are not disputed. The defendants' defence is that the faults are minor and cosmetic, but their own records describe the same functional faults being reworked over and over, not a cosmetic complaint. Our theory is that this is a textbook major failure under the Australian Consumer Law -- a pattern of recurring, unresolved defects, not one catastrophic failure -- and that because the repair history is common ground, there is no genuine factual dispute left to try. 
 
 Strategic objective: get judgment for the full refund plus consequential loss without the cost and delay of a hearing.
 ```
+
+
+![](assets/images/agenticaiforprofessionals4/04-intake-summary.png)
+*Full generated Intake Summary — caption, key facts with a verbatim source quote, attorney notes*
+
 
 The quote field is verified as an exact substring of the source chunk before it is ever shown. A close-but-wrong quote gets dropped rather than displayed — the same non-negotiable citation-grounding rule from [Part 2](/posts/agenticaiforprofessionals2/) applied to a pleading instead of a case database.
 
