@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "agenticaiforprofessionals4",
+      "title": "Agentic AI for Professionals (Part 4)",
+      "description": "Building a Brief Builder feature into nsw-legal-research-assistant, inspired by Thomson Reuters CoCounsel Legal's newly announced Brief Builder — intake, candid argument proposals, live NSW Caselaw search, citation-following from one judgment into a second, and a real downloaded .docx with a native Table of Contents",
+      "date": "2026-08-26",
+      "categories": [
+        "AI"
+      ],
+      "tags": "brief-builder, citation-following, docx-export, legal-tech, playwright, nsw-caselaw"
+    },
+    {
       "slug": "deepseekharness",
       "title": "Building Space Invaders with DeepSeek Harness",
       "description": "Giving DeepSeek Harness a product requirements document and a product design document for a faithful browser recreation of the 1978 Taito Space Invaders, and watching it build the game and then verify its own work",
@@ -2637,5 +2647,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-08-23T19:54:16.699Z"
+  "generatedAt": "2026-08-26T22:36:32.391Z"
 }
