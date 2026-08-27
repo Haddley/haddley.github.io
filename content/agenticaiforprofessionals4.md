@@ -1,21 +1,21 @@
 ---
 title: "Agentic AI for Professionals"
 part: 4
-description: "Building a Brief Builder feature into nsw-legal-research-assistant, inspired by Thomson Reuters CoCounsel Legal's newly announced Brief Builder — intake, candid argument proposals, live NSW Caselaw search, and citation-following from one judgment into a second"
+description: "Building a Brief Builder feature into nsw-legal-research-assistant, inspired by Thomson Reuters CoCounsel Legal's newly announced Brief Builder — intake, candid argument proposals, a plain-English NSW Caselaw search a non-specialist would actually type, citation-graph leads pulled straight out of a judgment's own text, and a fourth argument grounded on two authorities it never had to fetch itself"
 date: "2026-08-26"
 categories: ["AI"]
-image: "/assets/images/agenticaiforprofessionals4/00-brief-already-open-draft.png"
-tags: "brief-builder, citation-following, legal-tech, nsw-caselaw, hallucination-detection"
+image: "/assets/images/agenticaiforprofessionals4/18-draft-final.png"
+tags: "brief-builder, citation-following, citation-graph, legal-tech, nsw-caselaw"
 hidden: false
 slug: "agenticaiforprofessionals4"
 ---
 
 [Part 1](/posts/agenticaiforprofessionals1/) covered the research and the plan; [Part 2](/posts/agenticaiforprofessionals2/) covered the RAG core; [Part 3](/posts/agenticaiforprofessionals3/) ran the app live against Thomson Reuters' own "Search a Database" and "Review Documents" demo. This post is a new feature entirely: **Brief Builder**, inspired by the newly announced Brief Builder feature in Thomson Reuters CoCounsel Legal — take a pleading in, propose candid arguments, develop each one against real authority, and produce a properly formatted motion.
 
-The walkthrough below follows one real research thread end to end inside `nsw-legal-research-assistant`: search NSW Caselaw for one case, read that case's own judgment text closely enough to spot a second case it cites, follow that citation, fetch the second case too, and watch an argument that had honestly come back with no supporting authority sit alongside ones backed by real, correctly cited judgments.
+The walkthrough below follows one real research thread end to end inside `nsw-legal-research-assistant`, deliberately typed the way a non-specialist actually would: search NSW Caselaw with a plain-English description, not the case's own name; read the case that turns up closely enough to follow what it cites; and watch one argument stay honestly ungrounded even after two real authorities are sitting in the database, because neither one actually bears on it. Along the way, a newer feature gets its first real workout: when a develop call comes back ungrounded, the app now offers one-click leads pulled straight out of an already-fetched judgment's own citation list.
 
-![](assets/images/agenticaiforprofessionals4/00-brief-already-open-draft.png)
-*Reyes v Caldwell Motors already open at the Draft stage, the finished state of the walkthrough below*
+![](assets/images/agenticaiforprofessionals4/18-draft-final.png)
+*Draft tab: the finished motion, four arguments deep, the state the walkthrough below ends up at*
 
 ## The case
 
@@ -23,15 +23,13 @@ Dominic Reyes bought a new Caldwell Trailmaster GX SUV for $58,240. It went back
 
 ## Beat 1 — Intake: upload, case theory, and a generated summary
 
-Uploading the statement of claim directly produces a rename-suggestion box, then a real generated Intake Summary. The caption, key facts, and attorney notes are all pulled from the uploaded pleading, including a verbatim quote:
+Uploading the statement of claim directly produces a rename-suggestion box, then a real generated Intake Summary. The caption, parties, key facts, and attorney notes are all pulled from the uploaded pleading.
 
 ![](assets/images/agenticaiforprofessionals4/03-title-suggestion.png)
 *The rename-suggestion box right after upload*
 
-> The vehicle exhibited two persistent, recurring defects: an intermittent instrument cluster fault and a persistent knocking noise from the front suspension. **Quote**: "From on or about April 2024 to August 2025, the Vehicle exhibited two persistent, recurring defects that the Second Defendant repeatedly attempted and failed to permanently resolve:"
-
 ![](assets/images/agenticaiforprofessionals4/04-intake-summary.png)
-*Full generated Intake Summary — caption, key facts with verbatim source quotes, attorney notes*
+*Full generated Intake Summary — caption, parties table, key facts, attorney notes*
 
 ## CASE THEORY
 
@@ -41,60 +39,101 @@ We act for the plaintiff, Dominic Reyes. He bought a new Caldwell Trailmaster GX
 Strategic objective: get judgment for the full refund plus consequential loss without the cost and delay of a hearing.
 ```
 
-The quote field is verified as an exact substring of the source chunk before it is ever shown. A close-but-wrong quote gets dropped rather than displayed — the same non-negotiable citation-grounding rule from [Part 2](/posts/agenticaiforprofessionals2/) applied to a pleading instead of a case database.
+Every key fact is verified as an exact substring of the uploaded document before it is ever shown. A fact that can't be matched gets dropped rather than displayed — the same non-negotiable citation-grounding rule from [Part 2](/posts/agenticaiforprofessionals2/) applied to a pleading instead of a case database.
 
 ## Beat 2 — Argue: candid, ranked arguments
 
 From the case theory, the app proposes five arguments and ranks them, with three selected:
 
-1. The plaintiff has established a major failure under the ACL, with no genuine dispute as to the facts — *selected*
-2. The defendants' conduct in repeatedly claiming repairs resolved the faults when they did not is a breach of the ACL's implied warranty of merchantability — *selected*
-3. A major failure under the ACL can be constituted by a single defect or by several defects taken together — *selected*
-4. The defendants' defence is a sham, as they have conceded the facts through their own service records
-5. The plaintiff is entitled to damages for reduction in value under s 259(4) of the ACL
+1. The plaintiff's claim discloses a major failure under the Australian Consumer Law — *selected*
+2. There is no genuine dispute about the existence of defects and their impact on the vehicle's functionality — *selected*
+3. The defendants' repeated claims that each repair resolved the faults are contradicted by their own records — *selected*
+4. The plaintiff has suffered loss and damage due to the vehicle's defects
+5. The defendants have breached their statutory warranty obligations under the Australian Consumer Law
 
 ![](assets/images/agenticaiforprofessionals4/05-argue-proposals.png)
 *Argue tab: three of five arguments selected*
 
-Argument 3's heading is not generic phrasing — it states the exact legal test one specific authority sets out, because that is what it ends up resting on entirely once Beat 4 below finds that authority. It did not come out of the AI proposal this way; it is a manual rewrite of the AI's own third proposal, same as any other edited argument.
+No manual rewriting this run — arguments 1 through 3 go into Develop exactly as the LLM proposed them, wording and all.
 
 ![](assets/images/agenticaiforprofessionals4/06-argue-argument1-expanded.png)
 *Argument 1 expanded, showing its real factual support and strategic value*
 
-## Beat 3 — Develop: search NSW Caselaw, fetch a real case
+## Beat 3 — Develop argument 1: search NSW Caselaw the way a non-specialist would
 
-The Develop tab starts honestly empty for a fresh brief, then searches NSW Caselaw directly — no login, no browser automation for this source, a live lookup against the official government portal.
+The Develop tab starts honestly empty for a fresh brief.
 
 ![](assets/images/agenticaiforprofessionals4/07-develop-empty.png)
 *Develop tab before any authority has been fetched — three argument cards, no authority database yet*
 
-Searching "McNally Central Coast Automotive Gosford Nissan" returns a real top hit:
+Searching NSW Caselaw for the target case deliberately avoids two traps a real non-specialist would actually hit: typing the case's own name, which nobody would know in advance, and the colloquial American term "lemon law," which NSW Caselaw's live keyword search handles badly — a separately-verified search for "NSW car lemon laws" turns up *Regina v Lemon* [2000] NSWCCA 232, a defendant literally surnamed Lemon, and nothing on point. Typing the plain-English `defective motor vehicle` instead returns a real, on-topic result set with the target case as the **second** hit:
 
-> McNally v Central Coast Automotive Pty Ltd t/as Gosford Nissan [2025] NSWCATCD 111
+> Ismail v Nissan Motor Co (Australia) Pty Limited & anor [2014] NSWCATCD 189
+>
+> **McNally v Central Coast Automotive Pty Ltd t/as Gosford Nissan [2025] NSWCATCD 111**
+>
+> Morissi v Syed [2022] NSWCATAP 162
 
-![](assets/images/agenticaiforprofessionals4/08-search-mcnally.png)
-*NSW Caselaw search results for McNally, real top hit*
+![](assets/images/agenticaiforprofessionals4/08-search-defective-motor-vehicle.png)
+*NSW Caselaw search results for "defective motor vehicle" — McNally as the second hit, every other result genuinely on-topic too*
 
-Clicking **Fetch & ingest** pulls the live judgment into this brief's own authority database. A banner above the stage tabs, persistent on every tab, tracks that database's real state — it reads "not created yet" before this click, and updates to a real, running count the moment the first fetch lands: "Brief authorities — Reyes v Caldwell Motors (7670c444) (1)". The `(7670c444)` suffix is real disambiguation behaviour, not a bug — collection names are globally unique, and it kicks in whenever another collection already claims the exact same name.
+Clicking **Fetch & ingest** pulls the live judgment into this brief's own authority database, lazily creating it on the spot, and re-runs Develop on argument 1 automatically. The top-of-page banner tracks the database's real, running count from here on: "Brief authorities — Reyes v Caldwell Motors (c40af6ba) (1)" — the `(c40af6ba)` suffix is real collection-name disambiguation, not a bug, kicking in whenever another collection already claims the same name.
 
-Searching NSW Caselaw again for a case already in this brief's authority database shows **✓ Already ingested** in place of a live "Fetch & ingest" button, so re-running an earlier search cannot silently duplicate work already done.
+![](assets/images/agenticaiforprofessionals4/09-develop-authority-database.png)
+*Develop tab: authority database now shows (1), argument 1 auto-developed*
 
-![](assets/images/agenticaiforprofessionals4/19-search-already-ingested.png)
-*Searching McNally again shows "✓ Already ingested" instead of a clickable "Fetch & ingest" button*
+Redeveloping argument 1 once the authority database has settled produces its full, real grounded reasoning, citing McNally directly for the test the Appeal Panel actually applied:
 
-The same fetch also re-runs Develop on argument 1 automatically, and its real reasoning is worth reading closely — every case it names carries its own real party name attached to its own real citation number, McNally's included.
+> The plaintiff's claim discloses a major failure under the Australian Consumer Law... The principles established in McNally v Central Coast Automotive Pty Ltd t/as Gosford Nissan [2025] NSWCATCD 111 provide further guidance on the test for a major failure. The Appeal Panel in that case held that a major failure may be constituted by one defect or a series of specific or individual defects which, when taken as a whole, constitute a major failure...
 
-![](assets/images/agenticaiforprofessionals4/16-develop-fixed-authority-database.png)
-*Argument 1's real reasoning — every citation, including McNally's, carries its own real party name*
+![](assets/images/agenticaiforprofessionals4/10-arg1-developed-grounded.png)
+*Argument 1's full grounded reasoning*
 
-## Beat 4 — Follow the citation: from McNally to Safi
+## Beat 4 — Develop argument 2: also grounds on McNally alone
 
-This is the beat worth watching closely. Clicking McNally's citation marker in argument 1's Authorities list opens an in-app split-pane preview rather than a new browser tab — the pane loads the real judgment text, synthesized from the extracted chunk text since McNally has no locally stored file, scrolled straight to the cited page, with an **Open original ↗** link to the real `caselaw.nsw.gov.au` page alongside it.
+Clicking **Develop** on argument 2 grounds again — McNally's judgment is long and substantive enough to bear on more than one argument in this brief:
 
-![](assets/images/agenticaiforprofessionals4/17-authority-preview-in-app.png)
-*In-app split-pane preview for a live-fetched authority citation, jumped to its cited page, with "Open original ↗"*
+> The Defendant's assertion that there is a genuine dispute about the existence of defects and their impact on the Vehicle's functionality is without merit... The Tribunal's decision in McNally v Central Coast Automotive Pty Ltd t/as Gosford Nissan [2025] NSWCATCD 111 supports this conclusion. While the Tribunal ultimately found that the applicant had failed to establish that the consumer guarantee under s 54 of the ACL had been breached, the fact that the Tribunal noted the existence of faults with the vehicle and the applicant's reasonable attempts to have it repaired underscores the complexity of the dispute...
 
-Reading on, McNally's own judgment text names and quotes a second case directly at paragraph 42:
+![](assets/images/agenticaiforprofessionals4/11-arg2-developed-grounded.png)
+*Argument 2's full grounded reasoning*
+
+That candidly includes an unfavourable detail about McNally — the Tribunal there actually found *against* the applicant on the substantive point. Nothing is filtered for favourability before it goes into the reasoning.
+
+## Beat 5 — Develop argument 3: ungrounded, and a new kind of help
+
+Argument 3 is really about the evidentiary weight of the defendants' own service records, not the ACL's substantive "major failure" test McNally's text is actually about, so developing it comes back honest:
+
+> No supporting authority found in your authority database for this argument.
+
+Right below that, a feature new to this build: a second section pulls related cases and legislation straight out of the citation graph of documents already sitting in the authority database — no search, nobody typed anything:
+
+> Related cases/legislation found via the citation graph of documents already in your authority database:
+>
+> Khan v Kang · Prendergast v Western Murray Irrigation Ltd · Collins v Urban · Resource Pacific Pty Ltd v Wilkinson · P v Child Support Registrar · Cary Boyd v Agrison Pty Ltd · Australian Rong Hua Fu Pty Ltd v Ateco Automotive · Stephens v Chevron Motor Court Ltd — each with its own **Open ↗** and **Fetch & ingest**
+
+![](assets/images/agenticaiforprofessionals4/12-arg3-citation-graph-leads.png)
+*Argument 3, ungrounded: the new citation-graph leads panel alongside the older manual-search suggestions*
+
+Nobody searched for any of these — the app regex-extracts every case-name-and-citation pair McNally's own judgment text mentions, and whenever a develop call comes back ungrounded, offers whichever of those aren't already ingested anywhere in the app as one-click leads. The older "search terms worth trying manually" suggestions still appear underneath, unchanged — generic LLM-guessed terms, not real citations, clearly a different tier of trust from the citation-graph leads sitting above them.
+
+## Beat 6 — Follow the citation the long way: from McNally to Safi
+
+None of the eight leads above is squarely the case McNally's own reasoning leans on most. Following that one down by hand — reading the source, then searching for it by name — shows the leads panel is a shortcut for real legal research, not a replacement for it.
+
+Clicking McNally's citation marker in argument 1's Authorities list opens an in-app split-pane preview: the pane loads the real judgment text, synthesized from the extracted chunk text since McNally has no locally stored file, scrolled straight to the cited page, with an **Open original ↗** link to the real `caselaw.nsw.gov.au` page.
+
+![](assets/images/agenticaiforprofessionals4/13-authority-preview-in-app.png)
+*In-app split-pane preview for a live-fetched authority citation, with "Open original ↗"*
+
+Opening the original confirms the lead independently — the real page's own "Cases Cited" metadata block lists it directly:
+
+> Cases Cited:
+> Crooks v Hyundai Motor Company Australia Pty Ltd [2023] NSWCATCD 29
+> Edwards v Caravan v RV Central Pty Ltd [2022] NSWCATD 26
+> Safi v Heartland Motors Pty Ltd t/as Heartland Chrysler [2016] NSWCATAP 80
+
+Reading the judgment text itself turns up the same case named directly at McNally's own paragraph 42:
 
 > In *Safi v Heartland Motors Pty Ltd t/as Heartland Chrysler* [2016] NSWCATAP 80 ("Safi") the Appeal Panel of NCAT set out a helpful summary of the approach and principles to be applied in the construction of section 260.
 
@@ -102,45 +141,35 @@ Reading on, McNally's own judgment text names and quotes a second case directly 
 
 > [101] 1. A major failure may be constituted by one defect or a series of specific or individual defects which, when taken as a whole, constitute a major failure.
 
-![](assets/images/agenticaiforprofessionals4/09-mcnally-cites-safi.png)
-*McNally's own real judgment text, paragraph 42, naming and quoting Safi*
+Searching NSW Caselaw for Safi by name — no longer specialist knowledge at this point, just a name read off a real page two steps ago — returns it as the real top hit, and **Fetch & ingest** adds it to the brief's authority database too.
 
-That is a citation worth following. Reyes has two separate recurring defects — instrument cluster, suspension — so a case squarely holding that several defects taken together can constitute a major failure is directly useful, more useful for this specific point than anything the initial search turned up by name. Searching NSW Caselaw again for Safi returns it as the real top hit:
-
-![](assets/images/agenticaiforprofessionals4/10-search-safi.png)
+![](assets/images/agenticaiforprofessionals4/14-search-safi.png)
 *NSW Caselaw search results for Safi*
 
-**Fetch & ingest** adds Safi to the brief's authority database too — found only because someone actually read what McNally cited, not because it turned up in the first search.
+Redeveloping argument 3 once more, now that both McNally and Safi are in the database, still comes back honestly ungrounded — not a bug. Neither judgment discusses the evidentiary weight of a defendant's own service records; both are about the substantive ACL tests, a different legal question from what this argument's own heading actually asks. Having more authorities sitting in the database doesn't manufacture relevance where there isn't any. Re-opening the search panel and searching "McNally" again shows **✓ Already ingested** in place of a live "Fetch & ingest" button.
 
-## Beat 5 — Redevelop: grounded reasoning, and an honest "nothing found"
+![](assets/images/agenticaiforprofessionals4/15-search-already-ingested.png)
+*Argument 1's grounded reasoning again, and a search panel showing "✓ Already ingested" for a lead already in this brief's authority database*
 
-Now that Safi is in the authority database, clicking **Redevelop** on argument 3 produces real, grounded output:
+## Beat 7 — A fourth argument, grounded on both authorities together
 
-> The Australian Consumer Law (ACL) provides comprehensive protection for consumers against defective goods. In the present case, the plaintiff returned the vehicle to the second defendant for inspection and repair on 13 occasions, indicating a significant defect that persisted despite repeated attempts at remediation... A major failure under the ACL can be constituted by a single defect or by several defects taken together... The case of Safi v Heartland Motors Pty Ltd t/as Heartland Chrysler [2016] NSWCATAP 80 is instructive on this point. In that case, the court held that a consumer's rejection of a vehicle was justified where the vehicle's defects made it substantially unfit for its ordinary purpose. Similarly, in [2025] NSWCATCD 111, the court emphasized the importance of considering the cumulative effect of multiple defects on a good's fitness for purpose...
+Back in Argue, re-selecting argument 4 ("The plaintiff has suffered loss and damage due to the vehicle's defects") brings a fourth card into Develop, alongside the three already developed.
 
-Twenty-two real authority citations resolve across both cases fetched this session — McNally ([2025] NSWCATCD 111), found by name search, and Safi ([2016] NSWCATAP 80), found only by reading what McNally's own text cited.
+![](assets/images/agenticaiforprofessionals4/16-argue-added-fourth.png)
+*Argue tab: a fourth argument re-selected*
 
-![](assets/images/agenticaiforprofessionals4/11-develop-argument3-grounded.png)
-*Argument 3's full grounded reasoning and real Authorities citations, every case name correctly attached to its own citation*
+Developing it grounds immediately, on both authorities at once — this heading squarely matches what McNally and Safi each actually hold, and both were already sitting in the shared authority database from Beats 3 and 6, with no fetch done specifically for this argument:
 
-The important part is not that this argument became better-dressed weak evidence. It went from a real, honest "nothing found" to a real, correctly cited "grounded" purely because a person read one judgment's own reasoning closely enough to notice what it leaned on — and the app made following that thread exactly as fast as running the first search.
+> The Plaintiff's loss and damage due to the vehicle's defects give rise to a legitimate claim against the First and Second Defendants under the Australian Consumer Law (ACL)... as set out in Safi v Heartland Motors Pty Ltd t/as Heartland Chrysler [2016] NSWCATAP 80, where the Tribunal concluded that losses will only be recoverable if there is a causal connection between the breach and the loss which is reasonably foreseeable... The Plaintiff's claim is not subject to the monetary limit of $100,000... as stated in McNally v Central Coast Automotive Pty Ltd t/as Gosford Nissan [2025] NSWCATCD 111... In Safi v Heartland Motors Pty Ltd t/as Heartland Chrysler [2016] NSWCATAP 80, the Tribunal found that the applicant's losses were not recoverable because they were costs that resulted from choices the applicants freely made, but that is not the case here, as the Plaintiff's losses were directly caused by the vehicle's defects.
 
-For contrast, here is what the app produces when nothing real fits at all. All three selected arguments above resolved with real content on this run, so demonstrating the honest path meant temporarily re-selecting argument 4 ("The defendants' defence is a sham") and clicking **Develop** on it, then deselecting it again afterward:
+![](assets/images/agenticaiforprofessionals4/17-arg4-developed-grounded.png)
+*Argument 4's full grounded reasoning, citing both McNally and Safi, including an unfavourable Safi holding distinguished on its facts*
 
-> No supporting facts have yet been located in the uploaded case documents for this argument, and no supporting authority has yet been located either.
->
-> No supporting authority found in your authority database for this argument.
->
-> Unverified suggestions worth searching for manually (not citations — go find and upload if relevant): *R v Pavic*, *Hill v Van den Eijk*, *Evidence Act 1995 (NSW) s 95*, *R v Tuck-Willoughby*.
+Note again what candour looks like here: an unfavourable Safi holding — losses from the applicant's own free choices weren't recoverable there — is cited and distinguished on its facts, not quietly left out.
 
-![](assets/images/agenticaiforprofessionals4/12-develop-argument2-ungrounded.png)
-*A genuinely ungrounded argument: no facts, no authority, no invented filler*
+## Beat 8 — Draft: the final motion
 
-With nothing in either the case documents or the authority database bearing on this specific point, the app takes its deterministic, no-LLM-call path instead of forcing a citation or inventing filler text. Both outcomes above are the same honest bridge doing its job — one just happened to have a findable answer, once someone followed the thread. Argument 2 gets its own real, grounded reasoning too on this run, developed independently once arguments 1 and 3 already had theirs.
-
-## Beat 6 — Draft: the final motion
-
-The generated draft includes the caption, a Table of Contents, all three developed arguments' reasoning in full, and a Table of Authorities built from the same two real citations:
+The generated draft includes the caption, a Table of Contents covering all four selected arguments, all four arguments' reasoning in full — three grounded with real citations, one an honest "no supporting authority," the app gating drafting only on every selected argument having *some* reasoning, not on every argument being grounded — and a Table of Authorities built from the same two real citations:
 
 ```
 ## Table of Authorities
@@ -149,11 +178,11 @@ The generated draft includes the caption, a Table of Contents, all three develop
 [2025] NSWCATCD 111
 ```
 
-![](assets/images/agenticaiforprofessionals4/13-draft-final.png)
+![](assets/images/agenticaiforprofessionals4/18-draft-final.png)
 *Draft tab: full rendered motion, Table of Authorities*
 
-Both of those citations are cases this walkthrough found live — one by name search, the other by actually reading what the first one cited.
+Both of those citations are cases this walkthrough found live — one by a plain-English search anyone could type, the other by actually reading what the first one cited.
 
 ## The complete arc
 
-Search NSW Caselaw, fetch a real case, read what it cites, follow that citation, fetch the second case too, redevelop, and watch an honestly "nothing found" argument sit alongside two correctly cited real judgments. Every step above is real output from the live app, not staged copy. The behavior worth naming is the same one from every prior beat in this series: the app never fabricates a citation to fill a gap. When the research is not there, it says so; when a person does the work of reading a citation trail, the app turns that work into a properly formatted, correctly cited draft exactly as fast as the first search — and that guarantee runs the whole way through a citation now, the party name next to it as verified as the number itself.
+Search NSW Caselaw the way someone with no specialist vocabulary actually would, fetch the case that turns up, let two more arguments ground on it before anyone goes looking further, then read that judgment's own reasoning closely enough to follow what it leans on into a second case — with a shortcut now sitting right there in the ungrounded state offering the same leads a careful reader would eventually find by hand, and a fourth argument added afterward that grounds immediately because the authority pool it needs was already built. Every step above is real output from the live app, not staged copy. The behavior worth naming is the same one from every prior beat in this series: the app never fabricates a citation to fill a gap, whether that gap is a single argument with nothing to say or a citation-graph lead that only points *near* the case actually worth following. When the research is not there, it says so; when it is, it hands back exactly what a person would have found doing the work themselves — just faster.
