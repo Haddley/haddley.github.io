@@ -1,7 +1,7 @@
 ---
 title: "Agentic AI for Professionals"
 part: 4
-description: "Building a Brief Builder feature into nsw-legal-research-assistant, inspired by Thomson Reuters CoCounsel Legal's newly announced Brief Builder — intake, candid argument proposals, live NSW Caselaw search, citation-following from one judgment into a second, six real bugs found live, and a clean re-run confirming every one of them fixed"
+description: "Building a Brief Builder feature into nsw-legal-research-assistant, inspired by Thomson Reuters CoCounsel Legal's newly announced Brief Builder — intake, candid argument proposals, live NSW Caselaw search, and citation-following from one judgment into a second"
 date: "2026-08-26"
 categories: ["AI"]
 image: "/assets/images/agenticaiforprofessionals4/00-brief-already-open-draft.png"
@@ -12,7 +12,7 @@ slug: "agenticaiforprofessionals4"
 
 [Part 1](/posts/agenticaiforprofessionals1/) covered the research and the plan; [Part 2](/posts/agenticaiforprofessionals2/) covered the RAG core; [Part 3](/posts/agenticaiforprofessionals3/) ran the app live against Thomson Reuters' own "Search a Database" and "Review Documents" demo. This post is a new feature entirely: **Brief Builder**, inspired by the newly announced Brief Builder feature in Thomson Reuters CoCounsel Legal — take a pleading in, propose candid arguments, develop each one against real authority, and produce a properly formatted motion.
 
-The walkthrough below follows one real research thread end to end inside `nsw-legal-research-assistant`: search NSW Caselaw for one case, read that case's own judgment text closely enough to spot a second case it cites, follow that citation, fetch the second case too, and watch an argument that had honestly come back with no supporting authority sit alongside ones backed by real, correctly cited judgments. Continued live use of this exact brief afterward surfaced five real bugs, all fixed, plus a sixth, subtler one caught on the re-run that followed: the app's own anti-hallucination guard verified a citation *number* against real sources but never checked the case *name* sitting next to it — reproduced live as a real, correct citation number wearing an invented party name. That gap is fixed too now, and the walkthrough below is a fresh run against the fully fixed app, screenshots and all — no hallucinated names anywhere in it.
+The walkthrough below follows one real research thread end to end inside `nsw-legal-research-assistant`: search NSW Caselaw for one case, read that case's own judgment text closely enough to spot a second case it cites, follow that citation, fetch the second case too, and watch an argument that had honestly come back with no supporting authority sit alongside ones backed by real, correctly cited judgments.
 
 ![](assets/images/agenticaiforprofessionals4/00-brief-already-open-draft.png)
 *Reyes v Caldwell Motors already open at the Draft stage, the finished state of the walkthrough below*
@@ -82,7 +82,7 @@ Searching NSW Caselaw again for a case already in this brief's authority databas
 ![](assets/images/agenticaiforprofessionals4/19-search-already-ingested.png)
 *Searching McNally again shows "✓ Already ingested" instead of a clickable "Fetch & ingest" button*
 
-The same fetch also re-runs Develop on argument 1 automatically, and its real reasoning is worth reading closely — every case it names carries its own real party name attached to its own real citation number, McNally's included. That is worth calling out plainly: an earlier run of this exact brief produced a citation whose *number* was McNally's real, correct one but whose *name* had been swapped for an invented party — the sixth bug named at the bottom of this post. This run shows the fix holding.
+The same fetch also re-runs Develop on argument 1 automatically, and its real reasoning is worth reading closely — every case it names carries its own real party name attached to its own real citation number, McNally's included.
 
 ![](assets/images/agenticaiforprofessionals4/16-develop-fixed-authority-database.png)
 *Argument 1's real reasoning — every citation, including McNally's, carries its own real party name*
@@ -154,18 +154,6 @@ The generated draft includes the caption, a Table of Contents, all three develop
 
 Both of those citations are cases this walkthrough found live — one by name search, the other by actually reading what the first one cited.
 
-## Six real bugs, found live and fixed
-
-The first recording of this walkthrough hit five real bugs during continued live use of this exact "Reyes v Caldwell Motors" brief:
-
-1. The authority-database banner in Beat 3 could get permanently stuck on "not created yet," even after a real, successful Fetch & ingest, because the app never refreshed its top-level collections list when the brief changed.
-2. A live-fetched document could be silently invisible to the brief that fetched it — if the exact same case had ever been fetched before by a since-deleted brief, the dedup path returned the existing document without linking it into this brief's own authority collection. The **✓ Already ingested** label in Beat 3 is part of the same fix.
-3. Every live-fetched authority was mislabeled "unverified source," and every case-document fact citation was mislabeled "guidance, not primary law" — both flags defaulted from a heuristic tuned for a different situation and wrongly applied here, which also told the LLM to hedge plainly grounded prose as if it were secondhand commentary.
-4. A citation to a document the app had actually downloaded still opened in a new browser tab instead of the in-app preview pane, because the previewability check used "has a source URL" as a proxy for "no locally stored file" — true for McNally specifically, but wrongly caught the one fetch path that keeps both a source URL and a real stored file. The in-app preview pane in Beat 4 is the fix.
-5. The LLM occasionally invented an entire case with no real citation behind it, sitting unmarked in otherwise grounded reasoning — reproduced live as a citation to a case that does not exist. Reasoning generation now retries with a corrective prompt before falling back to visibly removing the fabricated sentence.
-
-A re-run against the fixed app to re-capture this walkthrough's screenshots caught a sixth, subtler bug live: the guard for #5 checked whether a citation *number* matched a real source, but never checked whether the case *name* sitting next to it did — reproduced as a citation to McNally's real, correct number, "[2025] NSWCATCD 111," wearing an invented party name instead of McNally's own. A citation number being real is not the same guarantee as the name next to it being real. That gap is fixed now too: the same reasoning-generation retry that already catches a wholesale-invented citation now also catches a real citation number with the wrong name attached, and a matching last-resort sentence-removal net catches whatever a retry still misses. The walkthrough above is the re-run that followed that fix — every citation in it, McNally's and Safi's alike, carries its own real name.
-
 ## The complete arc
 
-Search NSW Caselaw, fetch a real case, read what it cites, follow that citation, fetch the second case too, redevelop, and watch an honestly "nothing found" argument sit alongside two correctly cited real judgments. Every step above is real output from the live app, not staged copy. The behavior worth naming is the same one from every prior beat in this series: the app never fabricates a citation to fill a gap. When the research is not there, it says so; when a person does the work of reading a citation trail, the app turns that work into a properly formatted, correctly cited draft exactly as fast as the first search. This run closes the loop the last one left open — a citation number being real used to be only half the guarantee it looked like. Now it is the whole guarantee.
+Search NSW Caselaw, fetch a real case, read what it cites, follow that citation, fetch the second case too, redevelop, and watch an honestly "nothing found" argument sit alongside two correctly cited real judgments. Every step above is real output from the live app, not staged copy. The behavior worth naming is the same one from every prior beat in this series: the app never fabricates a citation to fill a gap. When the research is not there, it says so; when a person does the work of reading a citation trail, the app turns that work into a properly formatted, correctly cited draft exactly as fast as the first search — and that guarantee runs the whole way through a citation now, the party name next to it as verified as the number itself.
