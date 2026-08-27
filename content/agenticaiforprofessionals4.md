@@ -23,7 +23,12 @@ Dominic Reyes bought a new Caldwell Trailmaster GX SUV for $58,240. It went back
 
 ## Beat 1 — Intake: upload, case theory, and a generated summary
 
-Uploading the statement of claim directly produces a rename-suggestion box, then a real generated Intake Summary. The caption, key facts, and attorney notes are all pulled from the uploaded pleading, including a verbatim quote:
+Uploading the statement of claim directly produces a rename-suggestion box, then a real generated Intake Summary. The uploaded file lists under Case documents with a real chunk count and no layer badge — it originally carried an incorrect `[practical guidance]` tag here, since a pleading has no judgment citation but that does not make it commentary about the law either, now fixed.
+
+![](assets/images/agenticaiforprofessionals4/18-intake-no-guidance-badge.png)
+*Case documents list — no incorrect "practical guidance" badge on the uploaded pleading*
+
+The caption, key facts, and attorney notes are all pulled from the uploaded pleading, including a verbatim quote:
 
 > The vehicle exhibited two persistent, recurring defects: an intermittent instrument cluster fault and a persistent knocking noise from the front suspension. **Quote**: "From on or about April 2024 to August 2025, the Vehicle exhibited two persistent, recurring defects that the Second Defendant repeatedly attempted and failed to permanently resolve:"
 
@@ -67,11 +72,24 @@ The Develop tab starts honestly empty for a fresh brief, then searches NSW Casel
 ![](assets/images/agenticaiforprofessionals4/08-search-mcnally.png)
 *NSW Caselaw search results for McNally, real top hit*
 
-Clicking **Fetch & ingest** pulls the live judgment into this brief's own authority database.
+Clicking **Fetch & ingest** pulls the live judgment into this brief's own authority database. A banner above the stage tabs, persistent on every tab, tracks that database's real state — it reads "Your authority database: **not created yet — created automatically the first time you Fetch & ingest an authority**" before this click, and updates to a real, running count the moment the first fetch lands, growing as more authorities join it later in the same session.
+
+![](assets/images/agenticaiforprofessionals4/16-develop-fixed-authority-database.png)
+*The authority database banner tracking a real, running count of ingested authorities*
+
+Searching NSW Caselaw again for a case already in this brief's authority database shows **✓ Already ingested** in place of a live "Fetch & ingest" button, so re-running an earlier search cannot silently duplicate work already done.
+
+![](assets/images/agenticaiforprofessionals4/19-search-already-ingested.png)
+*Searching McNally again shows "✓ Already ingested" instead of a clickable "Fetch & ingest" button*
 
 ## Beat 4 — Follow the citation: from McNally to Safi
 
-This is the beat worth watching closely. Opening McNally's own judgment text, paragraph 42 names and quotes a second case directly:
+This is the beat worth watching closely. Clicking McNally's citation marker in argument 1's Authorities list opens an in-app split-pane preview rather than a new browser tab — the pane loads the real judgment text (or, for a citation with no locally stored file, a synthesized page built from the extracted chunk text) scrolled straight to the cited page, with an **Open original ↗** link to the real `caselaw.nsw.gov.au` page alongside it.
+
+![](assets/images/agenticaiforprofessionals4/17-authority-preview-in-app.png)
+*In-app split-pane preview for a live-fetched authority citation, with "Open original ↗"*
+
+Opening McNally's own judgment text, paragraph 42 names and quotes a second case directly:
 
 > In *Safi v Heartland Motors Pty Ltd t/as Heartland Chrysler* [2016] NSWCATAP 80 ("Safi") the Appeal Panel of NCAT set out a helpful summary of the approach and principles to be applied in the construction of section 260.
 
@@ -137,6 +155,18 @@ Clicking **Download as .docx** produces a valid Office Open XML file — confirm
 
 ![](assets/images/agenticaiforprofessionals4/15-docx-opened.png)
 *The downloaded .docx opened in Microsoft Word — native Table of Contents, real formatting*
+
+## Five real bugs, found live and fixed
+
+Continued live use of this exact Reyes v Caldwell Motors brief, after the walkthrough above was first recorded, surfaced five real bugs, all now fixed:
+
+1. The authority database banner shown in Beat 3 could get permanently stuck on "not created yet," even after a real, successful Fetch & ingest, because the app never refreshed its top-level collections list when the brief changed.
+2. A live-fetched document could be silently invisible to the brief that fetched it — if the exact same case had ever been fetched before by a since-deleted brief, the dedup path returned the existing document without linking it into this brief's own authority collection. The **✓ Already ingested** label in Beat 3 is part of the same fix.
+3. Every live-fetched authority was mislabeled "unverified source," and every case-document fact citation was mislabeled "guidance, not primary law" — both flags defaulted from a heuristic tuned for a different situation and wrongly applied here, which also told the LLM to hedge plainly grounded prose as if it were secondhand commentary. The missing badge in Beat 1 is this fix.
+4. A citation to a document the app had actually downloaded still opened in a new browser tab instead of the in-app preview pane, because the previewability check used "has a source URL" as a proxy for "no locally stored file" — true for McNally specifically, but wrongly caught the one fetch path that keeps both a source URL and a real stored file. The in-app preview pane in Beat 4 is the fix.
+5. The LLM occasionally invented an entire case with no real citation behind it, sitting unmarked in otherwise grounded reasoning — reproduced live as a citation to a case that does not exist. Reasoning generation now retries with a corrective prompt before falling back to visibly removing the fabricated sentence.
+
+None of these five change the substance of the walkthrough above — the same real brief, the same real citation-following, the same real outcome — but they are worth naming plainly rather than quietly editing out of the record.
 
 ## The complete arc
 
