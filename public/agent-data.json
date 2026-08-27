@@ -3,7 +3,7 @@
     {
       "slug": "agenticaiforprofessionals4",
       "title": "Agentic AI for Professionals (Part 4)",
-      "description": "Building a Brief Builder feature into nsw-legal-research-assistant, inspired by Thomson Reuters CoCounsel Legal's newly announced Brief Builder — intake, candid argument proposals, live NSW Caselaw search, citation-following from one judgment into a second, five real bugs found and fixed live, and one still-open gap in the anti-hallucination guard itself",
+      "description": "Building a Brief Builder feature into nsw-legal-research-assistant, inspired by Thomson Reuters CoCounsel Legal's newly announced Brief Builder — intake, candid argument proposals, live NSW Caselaw search, citation-following from one judgment into a second, six real bugs found live, and a clean re-run confirming every one of them fixed",
       "date": "2026-08-26",
       "categories": [
         "AI"
@@ -2647,5 +2647,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-08-27T04:05:49.176Z"
+  "generatedAt": "2026-08-27T09:25:33.830Z"
 }
