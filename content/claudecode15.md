@@ -124,3 +124,10 @@ void loop() {
 Along the way Claude also stood up a small `.llmwiki` in the project — its own notes on the board's real wiring and the sketch's design — so the next session starts from what was actually learned here rather than rediscovering the D12-is-really-D11 quirk from scratch. The finished project, sketches and wiki included, is on GitHub at [Haddley/LCD-MODULE](https://github.com/Haddley/LCD-MODULE).
 
 What stands out is not that Claude Code could write an Arduino sketch — it is that the entire loop, from "can you see this device" through a real hardware bug rooted in the board's own undocumented wiring quirk to a working, synced LED, ran end to end from a handful of plain-English prompts, with Claude doing every bit of the USB enumeration, toolchain setup, compiling, flashing, and git commits on its own.
+
+## References
+
+- [TinkerKit Arduino LCD 16x2 (Leonardo + Serial LCD Retail)](https://www.canadarobotix.com/products/1654?srsltid=AfmBOoqvxV2gd8lFQWxYu6uTLJ3KBg7kKvIop49F_oEX9r_rZiJQSbky)
+
+
+- [Claude Code Turned $20 Gadgets Into Tiny Computers](https://www.youtube.com/watch?v=Zvb01TRY6UY)
