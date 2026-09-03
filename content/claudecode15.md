@@ -1,27 +1,27 @@
 ---
 title: "Claude Code"
 part: 15
-description: "Using Claude Code's Remote Control mode from my phone to detect, program, and debug a real Arduino TinkerKit LCD Module attached to my laptop — a seconds counter, a blank-screen bug, and an LED synced to the display, with no hands on the keyboard"
+description: "Using Claude Code to detect, program, and debug a real Arduino TinkerKit LCD Module attached to my laptop — a seconds counter, a blank-screen bug rooted in the board's own undocumented wiring, and an LED synced to the display"
 date: "2026-09-04"
 categories: ["AI","IOT"]
 image: "/assets/images/claudecode/Claude_AI_symbol.svg"
-tags: "claude-code, remote-control, arduino, tinkerkit, hardware-debugging"
+tags: "claude-code, arduino, tinkerkit, hardware-debugging, agentic-coding"
 hidden: false
 slug: "claudecode15"
 ---
 
-I plugged a TinkerKit LCD Module — a little Arduino-compatible board with an onboard 16x2 character LCD — into my laptop, then walked away from the keyboard entirely. Everything from here happened from my phone, using Claude Code's Remote Control mode to drive the Claude Code session still running on the laptop. I never touched the physical machine again until it was time to take a photo of the result.
+I plugged a TinkerKit LCD Module — a little Arduino-compatible board with an onboard 16x2 character LCD — into my laptop and asked Claude Code whether it could see it. No project existed yet, nothing was wired up beyond the USB cable, and I had no idea whether an agent with terminal access could do anything useful with a bare serial device.
 
 ## Beat 1 — Can you even see it?
 
-I typed the first prompt on my phone, not knowing whether Claude Code would be able to see a raw USB device with no project behind it yet.
+I typed the first prompt straight into an empty composer, not knowing whether Claude Code would be able to see a raw USB device with no project behind it yet.
 
 ```PROMPT
 I have a TINKEKIT LCD MODULE attached to this laptop. Can you see it?
 ```
 
 ![](assets/images/claudecode15/Screenshot-2026-09-04-at-4.28.59-AM.png)
-*I typed the prompt from my phone using Remote Control — no project open yet, just a bare composer*
+*I typed the prompt into a fresh composer — no project open yet*
 
 Claude queried the macOS `IOUSB` registry directly and found it: a `/dev/cu.usbmodem1101` serial device enumerating as `USB IO Board`, idVendor `10189` (0x27CD), idProduct `32784` (0x8010) — an ATmega32u4-class board built on the same chip as an Arduino Leonardo or Micro, sitting behind a Genesys Logic USB hub. It correctly identified this as consistent with a TinkerKit LCD Module and noted there was no project directory yet, asking what I wanted to do with it.
 
@@ -50,7 +50,7 @@ It did stay blank. The backlight lit up, but no characters appeared — exactly 
 
 ## Beat 3 — "Screen is bkank"
 
-I reported the problem exactly as I typed it on my phone, typo included.
+I reported the problem exactly as I typed it, typo included.
 
 ```PROMPT
 Screen is bkank
@@ -68,8 +68,8 @@ That path hit a dead end, but the real diagnosis came from research, not the sca
 
 It worked.
 
-![](assets/images/claudecode15/lcd-counter-display.jpg)
-*The TinkerKit LCD Module actually displaying the counter — 164 seconds since power-on*
+![](assets/images/claudecode15/lcd-counter-first-run.jpg)
+*The TinkerKit LCD Module actually displaying the counter — 276 seconds since power-on, no LED wired up yet*
 
 ## Beat 4 — A synced LED
 
@@ -123,4 +123,4 @@ void loop() {
 
 Along the way Claude also stood up a small `.llmwiki` in the project — its own notes on the board's real wiring and the sketch's design — so the next session starts from what was actually learned here rather than rediscovering the D12-is-really-D11 quirk from scratch. The finished project, sketches and wiki included, is on GitHub at [Haddley/LCD-MODULE](https://github.com/Haddley/LCD-MODULE).
 
-What stands out is not that Claude Code could write an Arduino sketch — it is that the entire loop, from "can you see this device" through a real hardware bug rooted in the board's own documented wiring quirk to a working, synced LED, ran end to end from a phone screen, with the laptop doing every bit of the USB enumeration, compiling, flashing, and git commits on its own.
+What stands out is not that Claude Code could write an Arduino sketch — it is that the entire loop, from "can you see this device" through a real hardware bug rooted in the board's own undocumented wiring quirk to a working, synced LED, ran end to end from a handful of plain-English prompts, with Claude doing every bit of the USB enumeration, toolchain setup, compiling, flashing, and git commits on its own.
