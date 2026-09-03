@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "claudecode15",
+      "title": "Claude Code (Part 15)",
+      "description": "Using Claude Code's Remote Control mode from my phone to detect, program, and debug a real Arduino TinkerKit LCD Module attached to my laptop — a seconds counter, a blank-screen bug, and an LED synced to the display, with no hands on the keyboard",
+      "date": "2026-09-04",
+      "categories": [
+        "AI",
+        "IOT"
+      ],
+      "tags": "claude-code, remote-control, arduino, tinkerkit, hardware-debugging"
+    },
+    {
       "slug": "agenticaiforprofessionals4",
       "title": "Agentic AI for Professionals (Part 4)",
       "description": "Building a Brief Builder feature into nsw-legal-research-assistant, inspired by Thomson Reuters CoCounsel Legal's newly announced Brief Builder — intake, candid argument proposals, a plain-English NSW Caselaw search a non-specialist would actually type, citation-graph leads pulled straight out of a judgment's own text, and a fourth argument grounded on two authorities it never had to fetch itself",
@@ -2647,5 +2658,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-08-27T13:32:23.738Z"
+  "generatedAt": "2026-09-03T19:30:09.300Z"
 }
