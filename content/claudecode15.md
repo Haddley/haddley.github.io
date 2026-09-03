@@ -1,7 +1,7 @@
 ---
 title: "Claude Code"
 part: 15
-description: "Using Claude Code to detect, program, and debug a real Arduino TinkerKit LCD Module attached to my laptop — a seconds counter, a blank-screen bug rooted in the board's own undocumented wiring, and an LED synced to the display"
+description: "Using Claude Code to detect, program, and debug a Arduino TinkerKit LCD Module"
 date: "2026-09-04"
 categories: ["AI","IOT"]
 image: "/assets/images/claudecode/Claude_AI_symbol.svg"
@@ -10,7 +10,7 @@ hidden: false
 slug: "claudecode15"
 ---
 
-I plugged a TinkerKit LCD Module — a little Arduino-compatible board with an onboard 16x2 character LCD — into my laptop and asked Claude Code whether it could see it. No project existed yet, nothing was wired up beyond the USB cable, and I had no idea whether an agent with terminal access could do anything useful with a bare serial device.
+I plugged a TinkerKit LCD Module — a Arduino-compatible board with an onboard 16x2 character LCD — into my laptop and asked Claude Code whether it could see it. No project existed yet, nothing was wired up beyond the USB cable, and I had no idea whether an agent with terminal access could do anything useful with a bare serial device.
 
 ## Beat 1 — Can you even see it?
 
@@ -79,7 +79,7 @@ I'd wired a red LED to the connector on the back of the board silk-screened `D12
 I have added a red led to the D12 connector at the rear of the TINKERKIT LCD MODULE. Please flash this led for a tenth of a second every second in sync with LCD counter display
 ```
 
-Claude found a real hardware quirk before writing a line of code: the connector silk-screened `D12` is not actually wired to Arduino pin 12 at all — it's wired to pin 11 (PB7). The TKLCD library's own source comments admit as much (`#define D11 11 // yes, we screwed this up`), and the board's schematic confirmed it. Claude wrote the fix against the real pin, driving it HIGH in the same branch that redraws the LCD each second, then dropping it LOW 100ms later with a non-blocking timestamp check rather than a `delay()` call — so the LED flash and the digit change land in the same instant every time.
+Claude found a hardware quirk before writing a line of code: the connector silk-screened `D12` is not actually wired to Arduino pin 12 at all — it's wired to pin 11 (PB7). The TKLCD library's own source comments admit as much (`#define D11 11 // yes, we screwed this up`), and the board's schematic confirmed it. Claude wrote the fix against the real pin, driving it HIGH in the same branch that redraws the LCD each second, then dropping it LOW 100ms later with a non-blocking timestamp check rather than a `delay()` call — so the LED flash and the digit change land in the same instant every time.
 
 ![](assets/images/claudecode15/Screenshot-2026-09-04-at-5.19.34-AM.png)
 *Claude found the real "D12 is actually pin 11" wiring quirk in the TKLCD library's own source comments, fixed the sketch, and committed and pushed it as `ff83016`*
