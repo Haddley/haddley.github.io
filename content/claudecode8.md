@@ -19,6 +19,8 @@ One way to think about it is as a pair programmer — a virtual coding partner t
 
 To demonstrate this, I built a Scheme-like LISP interpreter with a Jupyter-style notebook UI, entirely in vanilla HTML/CSS/JS with no dependencies — guided by Claude Code from first prompt to deployed app.
 
+**Try it yourself:** open [the LISP Notebook](https://haddley.github.io/lisp/) in a new tab and run the code described in this post as you read along.
+
 ### Planning the build
 
 I started by asking Claude what it needed to know:
@@ -196,8 +198,6 @@ I created the Static Web App resource in the Azure portal:
 ![](assets/images/claudecode8/Screenshot-2026-02-02-at-2.35.19-PM.png)
 *I opened the app link*
 
-[Azure Hosted App](https://wonderful-grass-039e46710.1.azurestaticapps.net)
-
 ![](assets/images/claudecode8/Screenshot-2026-02-02-at-2.35.52-PM.png)
 *The app was live on Azure Static Web Apps*
 
@@ -235,7 +235,13 @@ update --accent and --accent-hover colors to be brighter
 ![](assets/images/claudecode8/Screenshot-2026-02-02-at-3.07.35-PM.png)
 *The full app running on Azure with the new colour scheme*
 
-[Azure Hosted App](https://wonderful-grass-039e46710.1.azurestaticapps.net)
+## Try it yourself
+
+The section above walks through deploying the notebook to an Azure Static Web App, and that pipeline works well. For the version linked from this blog, though, I took a simpler route that costs nothing extra. Because the interpreter is just a folder of static HTML, CSS, and JavaScript with no build step and no dependencies, I pushed it to its own GitHub repository, `Haddley/lisp`, and switched on GitHub Pages for that repository.
+
+GitHub serves a project repository's Pages site as a path under the account's user site, so `Haddley/lisp` is published at [haddley.github.io/lisp](https://haddley.github.io/lisp/) — a sibling of this blog rather than part of it. The two are independent GitHub Pages deployments that happen to share the `haddley.github.io` domain. There is no separate hosting resource to create, no deployment token to wire up, and no second CI workflow to maintain — pushing to the `lisp` repository is the whole deployment step.
+
+Open [haddley.github.io/lisp](https://haddley.github.io/lisp/) in a new tab and work through the expressions from this post — the first expression, the factorial function, and the deliberate error — to see the tokeniser, parser, and evaluator in action.
 
 ## References
 

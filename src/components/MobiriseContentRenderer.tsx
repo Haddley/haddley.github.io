@@ -120,8 +120,14 @@ function processInlineMarkdown(text: string): React.ReactElement[] {
       if (matchedPattern.component === 'link') {
         const linkText = earliestMatch[1];
         const linkUrl = earliestMatch[2];
+        const isExternal = /^https?:\/\//i.test(linkUrl);
         elements.push(
-          <a key={elementKey++} href={linkUrl} className="text-primary">
+          <a
+            key={elementKey++}
+            href={linkUrl}
+            className="text-primary"
+            {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+          >
             {processInlineMarkdown(linkText)}
           </a>
         );
