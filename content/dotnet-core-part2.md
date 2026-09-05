@@ -85,7 +85,7 @@ $ dotnet new blazorserver --auth SingleOrg --calls-graph -o haddley-blazor-graph
 ![](assets/images/dotnet-core-part2/screen-shot-2023-03-17-at-10.51.33-am-1836x942.png)
 *The generated Blazor Server app (includes integration with Azure Active Directory and Microsoft Graph)*
 
-![](assets/images/dotnet-core-part2/screen-shot-2023-03-17-at-10.53.09-am-1836x1077.png)
+![](assets/images/dotnet-core-part2/screen-shot-2023-03-17-at-10.53.09-am-1836x1072.png)
 *I copied the ClientSecret to appsettings.json*
 
 ![](assets/images/dotnet-core-part2/screen-shot-2023-03-17-at-10.59.15-am-1836x1065.png)

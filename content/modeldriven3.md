@@ -12,7 +12,7 @@ image: "/assets/images/modeldriven3/office-365-icon-500x500.png"
 
 I used JavaScript to extend a model driven app. I configured the app to call JavaScript functions on form events — OnLoad, OnChange, OnSave — and from button clicks. The functions validated input, showed and hid form sections, updated business process flow stages, and created new records.
 
-See also: [Power Apps Component Framework](/posts/componentFramework)
+See also: [Power Apps Component Framework](/posts/componentframework/)
 
 I used `Xrm.Page.data.process.moveNext()` and `Xrm.Page.data.process.movePrevious()` to update a Business Process Flow stage from the browser console.
 
