@@ -1,5 +1,6 @@
 ---
 title: "Business Central"
+part: 8
 description: "External Business Events"
 date: "2025-12-18"
 categories: ["Business Central","Microsoft Dynamics"]

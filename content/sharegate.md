@@ -1,6 +1,7 @@
 ---
 title: "ShareGate"
-description: "ShareGate Migration (Part 1)"
+part: 1
+description: "Installation and tenant connection"
 date: "2026-04-30"
 categories: ["Microsoft 365"]
 tags: "sharepoint, azure, on-premises, online, migration"

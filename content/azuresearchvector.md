@@ -1,6 +1,7 @@
 ---
 title: "Azure Search"
-description: "Vector Search (Part 2)"
+part: 2
+description: "Vector Search"
 date: "2026-02-09"
 categories: ["AI", "Azure"]
 image: "/assets/images/azuresearchvector/posts-meta.svg"

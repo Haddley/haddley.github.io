@@ -1,6 +1,7 @@
 ---
 title: "SharePoint"
-description: "Device Request (Part 1)"
+part: 1
+description: "Device Request — customised SharePoint list form"
 date: "2026-05-02"
 categories: ["Microsoft 365"]
 tags: "sharepoint, power-automate, power-apps"

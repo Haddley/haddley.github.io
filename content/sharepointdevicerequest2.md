@@ -1,6 +1,7 @@
 ---
 title: "SharePoint"
-description: "Device Request (Part 2)"
+part: 2
+description: "Device Request — embedded canvas app with an instant flow"
 date: "2026-05-03"
 categories: ["Microsoft 365"]
 tags: "sharepoint, power-automate, power-apps"

@@ -1,6 +1,7 @@
 ---
 title: "Azure Search"
-description: "Fulltext Search (Part 1)"
+part: 1
+description: "Fulltext Search"
 date: "2026-02-09"
 categories: ["AI", "Azure"]
 image: "/assets/images/azuresearch/posts-meta.svg"

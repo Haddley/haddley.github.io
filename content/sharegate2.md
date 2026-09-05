@@ -1,6 +1,7 @@
 ---
 title: "ShareGate"
-description: "ShareGate Migration (Part 2)"
+part: 2
+description: "Migrating content types and site structure"
 date: "2026-05-01"
 categories: ["Microsoft 365"]
 tags: "sharepoint, azure, on-premises, online, migration"

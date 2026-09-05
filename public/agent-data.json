@@ -259,8 +259,8 @@
     },
     {
       "slug": "sharepointdevicerequest2",
-      "title": "SharePoint",
-      "description": "Device Request (Part 2)",
+      "title": "SharePoint (Part 2)",
+      "description": "Device Request — embedded canvas app with an instant flow",
       "date": "2026-05-03",
       "categories": [
         "Microsoft 365"
@@ -269,8 +269,8 @@
     },
     {
       "slug": "sharepointdevicerequest",
-      "title": "SharePoint",
-      "description": "Device Request (Part 1)",
+      "title": "SharePoint (Part 1)",
+      "description": "Device Request — customised SharePoint list form",
       "date": "2026-05-02",
       "categories": [
         "Microsoft 365"
@@ -279,8 +279,8 @@
     },
     {
       "slug": "shareGate2",
-      "title": "ShareGate",
-      "description": "ShareGate Migration (Part 2)",
+      "title": "ShareGate (Part 2)",
+      "description": "Migrating content types and site structure",
       "date": "2026-05-01",
       "categories": [
         "Microsoft 365"
@@ -289,8 +289,8 @@
     },
     {
       "slug": "shareGate",
-      "title": "ShareGate",
-      "description": "ShareGate Migration (Part 1)",
+      "title": "ShareGate (Part 1)",
+      "description": "Installation and tenant connection",
       "date": "2026-04-30",
       "categories": [
         "Microsoft 365"
@@ -463,7 +463,7 @@
     },
     {
       "slug": "businesscentralbusinessevents",
-      "title": "Business Central",
+      "title": "Business Central (Part 8)",
       "description": "External Business Events",
       "date": "2025-12-18",
       "categories": [
@@ -2658,5 +2658,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-09-05T21:46:10.854Z"
+  "generatedAt": "2026-09-05T22:17:10.393Z"
 }
