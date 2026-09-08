@@ -1,6 +1,6 @@
 ---
 title: "MiniGPT"
-description: "Running Jibin Joseph's MiniGPT notebook in Colab — rebuilding a GPT-style character-level language model from first principles and reproducing the Tiny Shakespeare results"
+description: "Running Jibin Joseph's MiniGPT notebook locally on an Apple M1 Max — rebuilding a GPT-style character-level language model from first principles and reproducing the Tiny Shakespeare results"
 date: "2026-09-09"
 categories: ["AI"]
 image: "/assets/images/minigpt/posts-meta.svg"
@@ -11,17 +11,44 @@ slug: "minigpt"
 
 I spend most of my time using language models, not building them. So when I found the paper [MiniGPT: Rebuilding GPT from First Principles](https://arxiv.org/pdf/2605.17398) by Jibin Joseph, I wanted to run it myself. MiniGPT is a single Jupyter notebook that reconstructs the whole GPT training pipeline — tokenisation, embeddings, causal self-attention, Transformer blocks, next-token training, validation tracking, checkpoint selection, and text generation — in plain PyTorch. It does not introduce a new architecture. It makes an existing one legible.
 
-The paper is explicit about its lineage: the author studied Andrej Karpathy's [nanoGPT](https://github.com/karpathy/nanoGPT) and then wrote the model and training code independently in one notebook. That matched how I like to learn a system, so I opened the notebook in Google Colab and worked through it top to bottom.
+The paper is explicit about its lineage: the author studied Andrej Karpathy's [nanoGPT](https://github.com/karpathy/nanoGPT) and then wrote the model and training code independently in one notebook. That matched how I like to learn a system, so I worked through it top to bottom — but instead of the README's recommended Colab path, I ran it locally on my 2022 Mac Studio (Apple M1 Max, 64 GB RAM).
 
 ## Opening the notebook
 
-The repository is [github.com/jibin10/MiniGPT](https://github.com/jibin10/MiniGPT). The README gives three steps: click the "Open in Colab" badge, select a GPU runtime, and run the cells from top to bottom. Local setup is a `pip install -r requirements.txt` away — the only dependencies are `torch`, `matplotlib`, and `requests` — but the notebook is designed to run in Colab with no local setup at all.
+The repository is [github.com/jibin10/MiniGPT](https://github.com/jibin10/MiniGPT). The README's recommended path is Colab: click the "Open in Colab" badge, select a GPU runtime, and run the cells top to bottom. The notebook is designed to work that way with no local setup at all, but the only dependencies are `torch`, `matplotlib`, and `requests`, so running it on my own hardware was just as easy:
 
-![](assets/images/minigpt/colab-open.png)
-*I opened MiniGPT_Notebook.ipynb from the repository using the Open in Colab badge*
+```bash
+git clone https://github.com/jibin10/MiniGPT.git
+cd MiniGPT
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt jupyter
+jupyter notebook MiniGPT_Notebook.ipynb
+```
 
-![](assets/images/minigpt/gpu-runtime.png)
-*I switched the runtime to GPU under Runtime → Change runtime type — the paper's timings were measured on a Colab A100*
+![](assets/images/minigpt/local-setup.png)
+*I cloned the repository and installed the three dependencies plus Jupyter into a fresh virtual environment*
+
+The notebook's device selection only checks for CUDA:
+
+```python
+device = "cuda" if torch.cuda.is_available() else "cpu"
+```
+
+On Apple Silicon that falls straight through to the CPU, which trains far more slowly than it needs to. I changed it to try Metal Performance Shaders first:
+
+```python
+device = (
+    "cuda" if torch.cuda.is_available()
+    else "mps" if torch.backends.mps.is_available()
+    else "cpu"
+)
+```
+
+That was the only edit the notebook needed. The mixed-precision code later on already guards itself with `use_amp = device == "cuda"`, so on `mps` it just runs in full precision rather than raising an error. If any individual operation turns out not to be implemented for MPS yet, setting `PYTORCH_ENABLE_MPS_FALLBACK=1` before launching Jupyter lets PyTorch drop that one operation back to the CPU instead of stopping the run.
+
+![](assets/images/minigpt/mps-device.png)
+*The notebook reported `mps` as the selected device, confirming it would use the Mac Studio's GPU rather than the CPU*
 
 ## The dataset
 
@@ -114,7 +141,7 @@ Both losses start near 4.20 — which is roughly `ln(65)`, exactly what you expe
 ![](assets/images/minigpt/baseline-loss.png)
 *Figure 1 from the paper reproduced in the notebook: training and validation loss both falling to roughly 1.53 and 1.72 by step 3,000, with no clear overfitting*
 
-By step 3,000 the baseline reached a training loss of **1.5304** and a validation loss of **1.7236**, a validation perplexity of about **5.60**. The whole run took **50.79 seconds** on the A100. Nothing about the output is good Shakespeare yet, but every part of the pipeline is now known to work.
+By step 3,000 the baseline reached a training loss of **1.5304** and a validation loss of **1.7236**, a validation perplexity of about **5.60**. The paper reports the whole run taking 50.79 seconds on a Colab A100; on the Mac Studio's M1 Max GPU via MPS, my run took *[to update once measured]*. Nothing about the output is good Shakespeare yet, but every part of the pipeline is now known to work.
 
 ## Stronger run — capacity, schedule, and checkpoint selection
 
@@ -134,7 +161,7 @@ The second configuration is close to nanoGPT's small Shakespeare setup.
 
 The notebook splits parameters into two groups — 38 decayed tensors (the weight matrices) and 63 non-decayed (biases and LayerNorm terms) — so weight decay only touches the matrices.
 
-Validation loss starts at 4.2879 and drops fast. The best checkpoint is **1.4780 at step 1,750** (perplexity about **4.38**), where training loss is 1.0990. The full run took **4.76 minutes**.
+Validation loss starts at 4.2879 and drops fast. The best checkpoint is **1.4780 at step 1,750** (perplexity about **4.38**), where training loss is 1.0990. The paper reports 4.76 minutes for the full run on the A100; my M1 Max run took *[to update once measured]*.
 
 ![](assets/images/minigpt/stronger-loss.png)
 *Figure 2 from the paper: validation loss bottoms out at step 1,750, then rises while training loss keeps falling — textbook overfitting*
@@ -195,7 +222,7 @@ The value of a paper like this is not a benchmark number. It is that the path fr
 ## Try it yourself
 
 - The paper: [MiniGPT: Rebuilding GPT from First Principles](https://arxiv.org/pdf/2605.17398) (arXiv:2605.17398)
-- The notebook: [github.com/jibin10/MiniGPT](https://github.com/jibin10/MiniGPT) — open `MiniGPT_Notebook.ipynb` in Colab, choose a GPU runtime, and run every cell
+- The notebook: [github.com/jibin10/MiniGPT](https://github.com/jibin10/MiniGPT) — open `MiniGPT_Notebook.ipynb` in Colab and choose a GPU runtime, or clone it and run it locally. On Apple Silicon, add an `mps` branch to the device-selection line before you start; on any other machine, a CUDA GPU or the CPU works as written
 
 ## References
 
