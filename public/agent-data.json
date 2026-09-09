@@ -2,7 +2,7 @@
   "posts": [
     {
       "slug": "minigpt",
-      "title": "MiniGPT",
+      "title": "MiniGPT (Part 1)",
       "description": "Running Jibin Joseph's MiniGPT notebook locally on an Apple M1 Max — rebuilding a GPT-style character-level language model from first principles and reproducing the Tiny Shakespeare results",
       "date": "2026-09-09",
       "categories": [
@@ -2668,5 +2668,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-09-09T00:40:25.335Z"
+  "generatedAt": "2026-09-09T06:45:50.760Z"
 }

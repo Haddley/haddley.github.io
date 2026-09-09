@@ -1,5 +1,6 @@
 ---
 title: "MiniGPT"
+part: 1
 description: "Running Jibin Joseph's MiniGPT notebook locally on an Apple M1 Max — rebuilding a GPT-style character-level language model from first principles and reproducing the Tiny Shakespeare results"
 date: "2026-09-09"
 categories: ["AI"]
