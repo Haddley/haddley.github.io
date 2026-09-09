@@ -576,3 +576,18 @@ section.image2 .image-wrapper img:hover {
   font-weight: 700 !important;
   letter-spacing: 0.01em;
 }
+
+/* Markdown bold in post bodies: MobiriseContentRenderer nests the text of a
+   **bold** span inside a plain <span>, and the Mobirise theme's
+   `span { font-weight: 400 }` was cancelling the bold. Restore it — the
+   `strong span` / `b span` selector out-specifies the theme's bare `span`. */
+strong,
+b {
+  font-weight: 700;
+}
+strong span,
+strong em,
+b span,
+b em {
+  font-weight: 700;
+}

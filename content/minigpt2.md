@@ -12,7 +12,9 @@ slug: "minigpt2"
 
 In [part 1](/posts/minigpt/) I ran Jibin Joseph's MiniGPT notebook on my Mac Studio. It builds a whole GPT training pipeline in one file, and it uses the simplest possible tokeniser: every distinct character in Tiny Shakespeare becomes one token, for a vocabulary of exactly 65. The notebook is honest that this is a trade-off. There is nothing to train and nothing to inspect, but the model has to learn spelling from individual letters, and a 256-token context window is only a few dozen words.
 
-This post changes one thing and holds everything else fixed. The model is the same "stronger" configuration from part 1 — 6 layers, 6 heads, 384-dimensional, 256-token context, weight-tied — and the training loop is the same AdamW schedule with best-validation checkpointing. Only the tokeniser changes. I run three: the character-level one carried over from part 1, OpenAI's GPT-2 tokeniser borrowed unchanged, and a small byte-level BPE tokeniser I train on the training text.
+This post changes one thing and holds everything else fixed. The model is the same "stronger" configuration from part 1 — 6 layers, 6 heads, 384-dimensional, 256-token context, weight-tied — and the training loop is the same AdamW schedule with best-validation checkpointing. Only the tokeniser changes. I run three: the character-level one carried over from part 1, OpenAI's GPT-2 tokeniser borrowed unchanged, and a small **byte-pair-encoding** (BPE) tokeniser I train on the training text.
+
+BPE began as a 1994 text-compression trick — repeatedly find the most common pair of adjacent symbols and replace it with a new one — and was adapted for language models by [Sennrich et al. in 2016](https://arxiv.org/abs/1508.07909). OpenAI used it to build the GPT-2 tokeniser, and it is still the standard. Hugging Face's LLM course has a [clear walkthrough of the algorithm](https://huggingface.co/learn/llm-course/en/chapter6/5).
 
 ## A bigger, simpler corpus
 
@@ -170,6 +172,7 @@ On Apple Silicon the training scripts select MPS automatically. On a CUDA machin
 - [MiniGPT: Rebuilding GPT from First Principles — Jibin Joseph, 2026](https://arxiv.org/abs/2605.17398)
 - [nanoGPT — Andrej Karpathy](https://github.com/karpathy/nanoGPT)
 - [minbpe — Andrej Karpathy](https://github.com/karpathy/minbpe)
+- [Byte-Pair Encoding tokenization — Hugging Face LLM Course](https://huggingface.co/learn/llm-course/en/chapter6/5)
 - [TinyStories: How Small Can Language Models Be and Still Speak Coherent English? — Eldan & Li, 2023](https://arxiv.org/abs/2305.07759)
 - [Neural Machine Translation of Rare Words with Subword Units — Sennrich et al., 2016](https://arxiv.org/abs/1508.07909)
 - [Language Models are Unsupervised Multitask Learners (GPT-2) — Radford et al., 2019](https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf)
