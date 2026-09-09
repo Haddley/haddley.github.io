@@ -6,7 +6,7 @@ date: "2026-09-09"
 categories: ["AI"]
 image: "/assets/images/minigpt3/posts-meta.svg"
 tags: "mlx, apple-silicon, unified-memory, lazy-evaluation, machine-learning"
-hidden: true
+hidden: false
 slug: "minigpt3"
 ---
 

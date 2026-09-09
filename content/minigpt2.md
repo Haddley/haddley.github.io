@@ -6,7 +6,7 @@ date: "2026-09-09"
 categories: ["AI"]
 image: "/assets/images/minigpt2/posts-meta.svg"
 tags: "tokenization, byte-pair-encoding, tinystories, pytorch, machine-learning"
-hidden: true
+hidden: false
 slug: "minigpt2"
 ---
 

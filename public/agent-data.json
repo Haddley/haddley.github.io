@@ -1,6 +1,56 @@
 {
   "posts": [
     {
+      "slug": "minigpt6",
+      "title": "MiniGPT (Part 6)",
+      "description": "Sliding-window attention in MLX — why a naive window mask saves nothing, how chunked attention makes it O(T), and where full attention runs out of room on a 64 GB Mac",
+      "date": "2026-09-10",
+      "categories": [
+        "AI"
+      ],
+      "tags": "sliding-window-attention, long-context, mlx, attention, machine-learning"
+    },
+    {
+      "slug": "minigpt5",
+      "title": "MiniGPT (Part 5)",
+      "description": "Knowledge-distillation pre-training at toy scale — training a small MiniGPT against the token-probability targets of a larger one, the trick behind Llama 3.2 1B and 3B, and finding out that it only helps when the teacher is actually better at your data",
+      "date": "2026-09-10",
+      "categories": [
+        "AI"
+      ],
+      "tags": "knowledge-distillation, llama, logit-distillation, mlx, machine-learning"
+    },
+    {
+      "slug": "minigpt4",
+      "title": "MiniGPT (Part 4)",
+      "description": "Swapping MiniGPT's 2017 Transformer block for the modern one — RMSNorm, rotary position embeddings, SwiGLU, and grouped-query attention — in MLX, then ablating each change to see which one actually matters",
+      "date": "2026-09-09",
+      "categories": [
+        "AI"
+      ],
+      "tags": "llama, rope, grouped-query-attention, swiglu, mlx"
+    },
+    {
+      "slug": "minigpt3",
+      "title": "MiniGPT (Part 3)",
+      "description": "Porting the MiniGPT model and training loop from PyTorch to Apple's MLX — unified memory, lazy evaluation, mx.compile, and fused attention — then running both on the same M1 Max and comparing tokens per second and peak memory",
+      "date": "2026-09-09",
+      "categories": [
+        "AI"
+      ],
+      "tags": "mlx, apple-silicon, unified-memory, lazy-evaluation, machine-learning"
+    },
+    {
+      "slug": "minigpt2",
+      "title": "MiniGPT (Part 2)",
+      "description": "Replacing MiniGPT's 65-character tokeniser with a real byte-level BPE — borrowing GPT-2's, training an 8k one, and comparing all three on TinyStories in bits per byte on an Apple M1 Max",
+      "date": "2026-09-09",
+      "categories": [
+        "AI"
+      ],
+      "tags": "tokenization, byte-pair-encoding, tinystories, pytorch, machine-learning"
+    },
+    {
       "slug": "minigpt",
       "title": "MiniGPT (Part 1)",
       "description": "Running Jibin Joseph's MiniGPT notebook locally on an Apple M1 Max — rebuilding a GPT-style character-level language model from first principles and reproducing the Tiny Shakespeare results",
@@ -2668,5 +2718,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-09-09T06:45:50.760Z"
+  "generatedAt": "2026-09-09T14:49:54.062Z"
 }

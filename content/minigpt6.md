@@ -2,11 +2,11 @@
 title: "MiniGPT"
 part: 6
 description: "Sliding-window attention in MLX — why a naive window mask saves nothing, how chunked attention makes it O(T), and where full attention runs out of room on a 64 GB Mac"
-date: "2026-09-09"
+date: "2026-09-10"
 categories: ["AI"]
 image: "/assets/images/minigpt6/posts-meta.svg"
 tags: "sliding-window-attention, long-context, mlx, attention, machine-learning"
-hidden: true
+hidden: false
 slug: "minigpt6"
 ---
 

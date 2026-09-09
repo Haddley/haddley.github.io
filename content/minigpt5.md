@@ -2,11 +2,11 @@
 title: "MiniGPT"
 part: 5
 description: "Knowledge-distillation pre-training at toy scale — training a small MiniGPT against the token-probability targets of a larger one, the trick behind Llama 3.2 1B and 3B, and finding out that it only helps when the teacher is actually better at your data"
-date: "2026-09-09"
+date: "2026-09-10"
 categories: ["AI"]
 image: "/assets/images/minigpt5/posts-meta.svg"
 tags: "knowledge-distillation, llama, logit-distillation, mlx, machine-learning"
-hidden: true
+hidden: false
 slug: "minigpt5"
 ---
 

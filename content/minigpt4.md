@@ -6,7 +6,7 @@ date: "2026-09-09"
 categories: ["AI"]
 image: "/assets/images/minigpt4/posts-meta.svg"
 tags: "llama, rope, grouped-query-attention, swiglu, mlx"
-hidden: true
+hidden: false
 slug: "minigpt4"
 ---
 
