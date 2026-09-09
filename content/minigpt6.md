@@ -61,10 +61,10 @@ It checks out against a full-attention reference: with `W ≥ T` it returns exac
 | 512 | 2.55 GB | 2.60 GB | 2.67 GB |
 | 2,048 | 11.5 GB | 11.5 GB | 7.7 GB |
 | 4,096 | **35.5 GB** | 35.4 GB | 15.1 GB |
-| 8,192 | ~125 GB (did not fit) | ~125 GB (did not fit) | 30.0 GB |
-| 16,384 | — | — | 59.4 GB |
+| 8,192 | not run (~120 GB projected) | not run | 30.0 GB |
+| 16,384 | not run (~450 GB projected) | not run | 59.4 GB |
 
-At short contexts everything is close — the cost is dominated by the MLP activations and the 8k-wide output logits, both linear in `T`, and the attention matrix is small. The attention term takes over around 2,048 tokens. By 4,096 full attention needs 35.5 GB, more than half the machine, and one step takes 1.9 seconds; chunked does it in 15 GB and 0.8 seconds. Past 4,096 full attention will not fit at all on 64 GB, while chunked keeps going — 16,384 tokens in 59 GB, where full attention would need something like 450 GB.
+At short contexts everything is close — the cost is dominated by the MLP activations and the 8k-wide output logits, both linear in `T`, and the attention matrix is small. The attention term takes over around 2,048 tokens. By 4,096 full attention needs 35.5 GB, more than half the machine, and one step takes 1.9 seconds; chunked does it in 15 GB and 0.8 seconds. Extrapolating the full-attention curve, 8,192 tokens would need more memory than the machine has, so the sweep stops trying it there; chunked keeps going — 16,384 tokens in 59 GB.
 
 The naive-mask column is the point worth keeping: it is identical to full attention at every length. Writing the window as a mask changes what the model attends to, not what it costs.
 

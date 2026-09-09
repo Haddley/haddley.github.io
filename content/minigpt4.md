@@ -76,7 +76,7 @@ Six runs, each 3,000 iterations on the same TinyStories split as parts 2 and 3, 
 
 **SwiGLU is a small real win.** 0.6717 against 0.6756 for the GELU MLP, at the same parameter count. Worth taking, not decisive.
 
-**RMSNorm is not an accuracy choice.** LayerNorm actually scored 0.003 *better* here. RMSNorm is chosen because it is cheaper — fewer operations per layer — and the quality difference at 13M parameters is within the noise between runs. The Llama papers adopt it for the same reason at 1000× the scale.
+**RMSNorm is not an accuracy choice.** LayerNorm actually scored 0.003 *better* here, and the two runs were within a few seconds of each other on wall-clock — at this size the extra mean-subtraction in LayerNorm is lost in the noise. RMSNorm is in the recipe because it drops an operation and a parameter vector per norm, which matters when there are dozens of layers and billions of parameters; at 13M parameters and 6 layers there is nothing to see.
 
 None of this contradicts the papers. It says that at 13M parameters and 20 MB of simple text, the position encoding is the change that moves the loss, and the other three are efficiency decisions that happen not to cost anything.
 
