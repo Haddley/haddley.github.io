@@ -94,6 +94,8 @@ Back in [Machine Learning (Part 9)](/posts/machinelearning9/) I trained a small 
 
 MiniGPT is the same kind of machine with two differences. The input is a run of characters rather than an image — each character is turned into an integer ID, the way each pixel was a number. And the output is not one set of scores but one set at *every position*: given `hell`, the model produces a 65-number score vector after `h`, another after `he`, another after `hel`, and another after `hell` — each one its guess at the character that comes next.
 
+A note on words. In this model a *token* is exactly a character. The tokeniser is nothing more than the lookup from the "The dataset" section — each of the 65 characters gets a number, so `E` might be 17 and a space might be 1 — which is why "token", "token ID", and "the number standing for a character" all mean the same thing here. [Part 2](/posts/minigpt2/) swaps this for a tokeniser where one token can be a whole word or a word fragment; everything downstream stays the same.
+
 ![](assets/images/minigpt/io-comparison.svg)
 *The digit model makes one prediction from one image; the language model makes a prediction at every position in the sequence at once*
 
