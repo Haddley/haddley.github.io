@@ -12,7 +12,7 @@ slug: "minigpt5"
 
 Every model in this series so far has learned the same way: predict the next token, compare to the one-hot truth, take the cross-entropy. Meta's Llama 3.2 1B and 3B were not trained only that way. The [Llama 3.2 announcement](https://ai.meta.com/blog/llama-3-2-connect-2024-vision-edge-mobile-devices/) says that "logits from the Llama 3.1 8B and 70B models were used as targets" during pre-training — the small models learned from the full probability distribution the big models put over the vocabulary, not just the single correct token.
 
-The intuition: the one-hot label says "the next word is *cat*". The teacher's distribution says "*cat* 0.6, *dog* 0.2, *kitten* 0.1, *the* 0.001, …" — which also tells the student that *dog* and *kitten* were reasonable and *the* was not. A richer signal per token, and the reason a distilled small model can learn faster than the same model trained from scratch on raw text.
+The training target so far has been a *one-hot* vector — a list with a single 1 in the slot for the correct next token and a 0 in every other slot, the same encoding the MNIST model used for its digit labels back in [Part 9](/posts/machinelearning9/). (The name comes from digital circuits, where exactly one wire in a group is held high.) It says only "the next word is *cat*". A teacher's distribution says "*cat* 0.6, *dog* 0.2, *kitten* 0.1, *the* 0.001, …" — which also tells the student that *dog* and *kitten* were reasonable and *the* was not. A richer signal per token, and the reason a distilled small model can learn faster than the same model trained from scratch on raw text.
 
 This post does the same thing at a scale that runs on a Mac.
 
@@ -120,5 +120,6 @@ Requires Apple Silicon; the GPT-2 teachers download from Hugging Face on first r
 - [Llama 3.2: revolutionizing edge AI and vision — Meta AI, 2024](https://ai.meta.com/blog/llama-3-2-connect-2024-vision-edge-mobile-devices/)
 - [The Llama 3 Herd of Models — Meta AI, 2024](https://arxiv.org/abs/2407.21783)
 - [Distilling the Knowledge in a Neural Network — Hinton, Vinyals & Dean, 2015](https://arxiv.org/abs/1503.02531)
+- [One-hot — Wikipedia](https://en.wikipedia.org/wiki/One-hot)
 - [TinyStories: How Small Can Language Models Be and Still Speak Coherent English? — Eldan & Li, 2023](https://arxiv.org/abs/2305.07759)
 - [mlx-lm](https://github.com/ml-explore/mlx-lm)
