@@ -13,7 +13,7 @@
     {
       "slug": "minigpt5",
       "title": "MiniGPT (Part 5)",
-      "description": "Knowledge-distillation pre-training at toy scale — training a small MiniGPT against the token-probability targets of a larger one, the trick behind Llama 3.2 1B and 3B, and finding out that it only helps when the teacher is actually better at your data",
+      "description": "Knowledge-distillation pre-training at toy scale — training a small MiniGPT against a larger model's token probabilities, why the teacher cannot be Qwen3 or Llama, and the finding that a 33M model that knows the domain beats a 1.5B model that does not",
       "date": "2026-09-10",
       "categories": [
         "AI"
@@ -2718,5 +2718,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-09-09T14:49:54.062Z"
+  "generatedAt": "2026-09-09T20:04:44.312Z"
 }
