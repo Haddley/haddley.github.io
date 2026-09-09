@@ -90,7 +90,7 @@ def train_step(x, y):
 
 ## Attention is one call
 
-The PyTorch version writes scaled dot-product attention out by hand — a matmul, a mask fill, a softmax, another matmul — which is what made it readable in part 1. MLX has a fused primitive with a built-in causal mask:
+The PyTorch version writes scaled dot-product attention out by hand — a matrix multiply, a mask fill, a softmax, another matrix multiply — which is what made it readable in part 1. MLX has a fused primitive with a built-in causal mask:
 
 ```python
 out = mx.fast.scaled_dot_product_attention(q, k, v, scale=self.scale, mask="causal")
@@ -98,9 +98,9 @@ out = mx.fast.scaled_dot_product_attention(q, k, v, scale=self.scale, mask="caus
 
 Same maths, one kernel. The hand-written version is still the one to read to understand what is happening; this is the one to run.
 
-## Weight tying is just a matmul
+## Weight tying is just a matrix multiply
 
-In PyTorch I tied the embedding and the output head by assigning one weight to the other. In MLX I do not create a head layer at all — the output is the final hidden state multiplied by the transpose of the token embedding matrix:
+In PyTorch I tied the embedding and the output head by assigning one weight to the other. In MLX I do not create a head layer at all — the output is the final hidden state multiplied by the transpose of the token embedding matrix (`x @ W.T`, one matrix multiply):
 
 ```python
 def __call__(self, idx):
