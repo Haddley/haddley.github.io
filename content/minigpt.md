@@ -88,17 +88,30 @@ def get_batch(split):
 
 If the input is `hell`, the target is `ello`. That shift is the whole of autoregressive language modelling.
 
+## What goes in, what comes out
+
+Back in [Machine Learning (Part 9)](/posts/machinelearning9/) I trained a small network on MNIST. It took the 784 pixel values of a handwritten digit, ran them through two dense layers, and produced 10 numbers — one score per digit. To read off the answer you take the biggest: score 7 is highest, the digit is a 7.
+
+MiniGPT is the same kind of machine with two differences. The input is a run of characters rather than an image — each character is turned into an integer ID, the way each pixel was a number. And the output is not one set of scores but one set at *every position*: given `hell`, the model produces a 65-number score vector after `h`, another after `he`, another after `hel`, and another after `hell` — each one its guess at the character that comes next.
+
+![](assets/images/minigpt/io-comparison.svg)
+*The digit model makes one prediction from one image; the language model makes a prediction at every position in the sequence at once*
+
+That is why one four-character example gives four training signals. The notebook takes the whole batch of score vectors, lines them up against the shifted targets from the previous section — `hell` should predict `ello` — and nudges the score of each correct next character upward. At generation time only the last position matters: predict the next character, append it, feed the longer string back in, repeat.
+
 ## The architecture, one piece at a time
 
-The high-level shape is the standard decoder-only stack:
+Between the token IDs going in and the scores coming out is the standard decoder-only stack: an embedding layer, a pile of identical Transformer blocks, a final normalisation, and a linear layer that produces the scores.
 
-```
-Token IDs → Token Embedding + Positional Embedding → Transformer Block × L → Final LayerNorm → Linear LM Head
-```
+![](assets/images/minigpt/architecture-stack.svg)
+*The pipeline on the left; one Transformer block opened up on the right. Every block takes a `[batch, 256, 384]` tensor and returns one the same shape, which is why they stack*
 
 **Embeddings.** A token embedding table turns each of the 65 IDs into a learned vector. A separate learned positional embedding is added so the model can tell where each token sits in the window — self-attention on its own has no sense of order.
 
-**Causal self-attention.** For each position the model computes query, key, and value vectors, splits them across several heads, and computes scaled dot-product attention. Because the model is autoregressive, a lower-triangular mask sets every future position to `-∞` before the softmax, so a token can only attend to itself and the tokens before it.
+**Causal self-attention.** This is the part that lets each position use the ones before it. For every token the model computes query, key, and value vectors, splits them across several heads, and computes scaled dot-product attention — a weighted average of the earlier tokens' value vectors, where the weights come from how well each earlier token's key matches this token's query. Because the model is autoregressive, a lower-triangular mask sets every future position to `-∞` before the softmax, so a token can only attend to itself and the tokens before it.
+
+![](assets/images/minigpt/attention-mask.svg)
+*The mask, drawn out for eight tokens. Each row is a token; the filled cells are what it may attend to*
 
 ```python
 att = (q @ k.transpose(-2, -1)) / math.sqrt(head_dim)
