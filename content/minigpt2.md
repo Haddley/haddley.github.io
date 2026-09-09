@@ -137,7 +137,7 @@ Both subword models are a clear step up from part 1, where a character model on 
 
 ## Try it yourself
 
-The code for this part is in [github.com/haddley/minigpt-series](https://github.com/haddley/minigpt-series) under `part2/`:
+The code for this part is in [github.com/Haddley/minigpt-series](https://github.com/Haddley/minigpt-series) under `part2/`:
 
 ```bash
 python prepare_data.py

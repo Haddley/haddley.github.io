@@ -173,7 +173,7 @@ Tim has a dirty sock, the sock stays the subject of the story, and the passage h
 
 ## Try it yourself
 
-The code is in [github.com/haddley/minigpt-series](https://github.com/haddley/minigpt-series) under `part3/`. It reuses the data and tokenisers prepared in `part2/`:
+The code is in [github.com/Haddley/minigpt-series](https://github.com/Haddley/minigpt-series) under `part3/`. It reuses the data and tokenisers prepared in `part2/`:
 
 ```bash
 cd part2 && python prepare_data.py && python tokenizers_setup.py && cd ..
