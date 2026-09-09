@@ -5,7 +5,7 @@ date: "2026-09-09"
 categories: ["AI"]
 image: "/assets/images/minigpt/posts-meta.svg"
 tags: "gpt, transformers, pytorch, nanogpt, machine-learning"
-hidden: true
+hidden: false
 slug: "minigpt"
 ---
 
@@ -139,9 +139,9 @@ Both losses start near 4.20 — which is roughly `ln(65)`, exactly what you expe
 *The baseline training log — loss estimated on both splits every few hundred steps*
 
 ![](assets/images/minigpt/baseline-loss.png)
-*Figure 1 from the paper reproduced in the notebook: training and validation loss both falling to roughly 1.53 and 1.72 by step 3,000, with no clear overfitting*
+*My own reproduction of the paper's Figure 1: training and validation loss both falling to roughly 1.53 and 1.71 by step 3,000, with no clear overfitting*
 
-By step 3,000 the baseline reached a training loss of **1.5304** and a validation loss of **1.7236**, a validation perplexity of about **5.60**. The paper reports the whole run taking 50.79 seconds on a Colab A100; on the Mac Studio's M1 Max GPU via MPS, my run took *[to update once measured]*. Nothing about the output is good Shakespeare yet, but every part of the pipeline is now known to work.
+By step 3,000 my run reached a training loss of **1.5306** and a validation loss of **1.7126** — a validation perplexity of about **5.54**, and very close to the paper's own 1.5304 / 1.7236. The paper's run took 50.79 seconds on a Colab A100; mine, on the Mac Studio's M1 Max GPU via MPS, took **89.35 seconds**. Nothing about the output is good Shakespeare yet, but every part of the pipeline is now known to work.
 
 ## Stronger run — capacity, schedule, and checkpoint selection
 
@@ -156,17 +156,17 @@ The second configuration is close to nanoGPT's small Shakespeare setup.
 | Dropout | 0.2 |
 | Optimiser | AdamW, betas (0.9, 0.99), weight decay 0.1 on 2‑D tensors only |
 | Learning rate | 100 warmup steps to 10⁻³, cosine decay to 10⁻⁴ over 5,000 steps |
-| Also | gradient clipping at 1.0, mixed precision on CUDA, weight tying |
+| Also | gradient clipping at 1.0, mixed precision on CUDA (full precision on MPS), weight tying |
 | Checkpoint | best validation loss |
 
 The notebook splits parameters into two groups — 38 decayed tensors (the weight matrices) and 63 non-decayed (biases and LayerNorm terms) — so weight decay only touches the matrices.
 
-Validation loss starts at 4.2879 and drops fast. The best checkpoint is **1.4780 at step 1,750** (perplexity about **4.38**), where training loss is 1.0990. The paper reports 4.76 minutes for the full run on the A100; my M1 Max run took *[to update once measured]*.
+Validation loss starts at 4.2879, matching the paper's number almost exactly, and drops fast. In the paper the best checkpoint arrives at step 1,750; on my run, same seed but different hardware and kernels, it arrived a little earlier, at **step 1,500**, with a validation loss of **1.4679** (training loss 1.1513, perplexity about **4.34**) — close to the paper's 1.4780 / 4.38. The paper reports 4.76 minutes for the full run on the A100; mine, on the M1 Max via MPS, took **46.98 minutes**. A capable laptop-class GPU still is not a datacenter GPU.
 
 ![](assets/images/minigpt/stronger-loss.png)
-*Figure 2 from the paper: validation loss bottoms out at step 1,750, then rises while training loss keeps falling — textbook overfitting*
+*My own reproduction of the paper's Figure 2: validation loss bottoms out at step 1,500 on this run (step 1,750 in the paper), then rises while training loss keeps falling — textbook overfitting*
 
-What happens after step 1,750 is the most useful part of the experiment. Training loss keeps falling — down to 0.6105 by step 5,000 — but validation loss climbs back to 1.7055, no better than the tiny baseline. The model is memorising the training text rather than learning to generalise. The final step is not the best model. This is why the stronger configuration selects its checkpoint by lowest validation loss, and it is a lesson that scales all the way up.
+What happens after step 1,500 is the most useful part of the experiment. Training loss keeps falling — down to 0.6097 by step 5,000, close to the paper's 0.6105 — but validation loss climbs back to 1.7095, no better than my own baseline's 1.7126. The model is memorising the training text rather than learning to generalise. The final step is not the best model. This is why the stronger configuration selects its checkpoint by lowest validation loss, and it is a lesson that scales all the way up.
 
 ## Generating text
 
@@ -185,20 +185,24 @@ def generate(idx, max_new_tokens, temperature=0.8, top_k=200):
     return idx
 ```
 
-Prompted with `ROMEO:`, the paper's checkpoint produced this (shortened):
+Prompted with `ROMEO:`, my checkpoint produced this (shortened):
 
 ```
 ROMEO:
-Nay, fie, I'll plead it, I have the indeed,
-Go to the deed! I think it was a back!
-BRUTUS:
-So did let us continue them home.
-SICINIUS:
-Only, brawling not
-The common 'twixt him, where enter'd his eyes...
+And this true sluck of voices, and kills thee
+To all the sun of the city the People:
+Your blood standing am I am about to have.
+
+JULIET:
+These grapes of you, noble like my brother did not
+To give the butcher of the noble gentleman: if you live
+But be his mind own so time, if he receive your brother's death.
+
+ROMEO:
+Ay, if with him, he conceal'd me.
 ```
 
-It is not coherent, but the shape is unmistakable: speaker names in capitals, colons, line breaks, verse-like line lengths, plausible Shakespearean vocabulary. A character-level model with no notion of a "word" has picked all of that up from 1 MB of text in under five minutes.
+It is not coherent, but the shape is unmistakable: speaker names in capitals, colons, line breaks, verse-like line lengths, plausible Shakespearean vocabulary. A character-level model with no notion of a "word" has picked all of that up from 1 MB of text in well under an hour.
 
 ![](assets/images/minigpt/generation-romeo.png)
 *I generated 800 characters from the "ROMEO:" prompt using the best checkpoint*
@@ -210,10 +214,10 @@ Temperature changes the character of the output. The paper reports that at 0.7 t
 
 ## What I took from it
 
-Running MiniGPT end to end took an afternoon and cost nothing. A few things stuck with me:
+Running MiniGPT end to end took under an hour on my own machine and cost nothing. A few things stuck with me:
 
 - **The pieces are small.** Causal attention is a matrix multiply, a mask, a softmax, and another matrix multiply. The block is two residual adds. The training objective is a shifted copy and a cross-entropy. Seeing them written out plainly, with no distributed-training machinery around them, made the architecture feel much less mysterious.
-- **Overfitting is not an edge case.** The stronger model's best validation loss arrived at step 1,750 out of 5,000. Without validation-based checkpoint selection the notebook would have shipped a worse model that scored well on its own training text.
+- **Overfitting is not an edge case.** The stronger model's best validation loss arrived at step 1,500 out of 5,000 on my run (step 1,750 in the paper). Without validation-based checkpoint selection the notebook would have shipped a worse model that scored well on its own training text.
 - **Character-level is a genuine trade-off.** It removes the tokeniser entirely, which is great for a teaching notebook, but a 256-character context is only a few dozen words, and the model pays for it in long-range coherence.
 - **Scale is doing the heavy lifting elsewhere.** MiniGPT is honest that it is a reproducibility study, not a competitive model. The same training idea, with far more data, compute, and parameters, is what produces the models I use every day.
 
@@ -223,6 +227,8 @@ The value of a paper like this is not a benchmark number. It is that the path fr
 
 - The paper: [MiniGPT: Rebuilding GPT from First Principles](https://arxiv.org/pdf/2605.17398) (arXiv:2605.17398)
 - The notebook: [github.com/jibin10/MiniGPT](https://github.com/jibin10/MiniGPT) — open `MiniGPT_Notebook.ipynb` in Colab and choose a GPU runtime, or clone it and run it locally. On Apple Silicon, add an `mps` branch to the device-selection line before you start; on any other machine, a CUDA GPU or the CPU works as written
+
+The thumbnail for this post adapts the [LLM logo](https://commons.wikimedia.org/wiki/File:LLM-logo.svg) by Conan, from Wikimedia Commons, licensed [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). I recoloured, cropped, and rescaled it for the thumbnail.
 
 ## References
 
