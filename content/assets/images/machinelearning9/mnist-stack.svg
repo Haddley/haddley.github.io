@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 470" role="img"
+     aria-label="784 pixel values feed a dense layer of 512 units, then another 512, then a dense layer of 10 units with softmax, producing 10 probabilities that sum to 1. Every pixel connects to every unit in the first layer."
+     font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" style="max-width:100%;height:auto">
+  <rect width="620" height="470" fill="#ffffff"/>
+  <defs>
+    <marker id="ms" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#6b7280"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="34" font-size="18" font-weight="600" fill="#111827">The model</text>
+
+  <g text-anchor="middle" font-size="14" fill="#1f2937">
+    <text x="230" y="66" font-size="13" fill="#6b7280">784 pixel values</text>
+    <text x="230" y="83" font-size="12" fill="#9ca3af" font-family="ui-monospace, Menlo, monospace">[batch, 784]</text>
+    <line x1="230" y1="90" x2="230" y2="112" stroke="#6b7280" stroke-width="1.5" marker-end="url(#ms)"/>
+
+    <rect x="100" y="114" width="260" height="48" rx="6" fill="#eff6ff" stroke="#3b82f6"/>
+    <text x="230" y="136">Dense &#8212; 512 units</text>
+    <text x="230" y="153" font-size="11" fill="#6b7280">every pixel wired to every unit, then ReLU</text>
+    <text x="230" y="182" font-size="12" fill="#9ca3af" font-family="ui-monospace, Menlo, monospace">[batch, 512]</text>
+    <line x1="230" y1="188" x2="230" y2="210" stroke="#6b7280" stroke-width="1.5" marker-end="url(#ms)"/>
+
+    <rect x="110" y="212" width="240" height="44" rx="6" fill="#eff6ff" stroke="#3b82f6"/>
+    <text x="230" y="234">Dense &#8212; 512 units</text>
+    <text x="230" y="250" font-size="11" fill="#6b7280">hidden layer, then ReLU</text>
+    <text x="230" y="278" font-size="12" fill="#9ca3af" font-family="ui-monospace, Menlo, monospace">[batch, 512]</text>
+    <line x1="230" y1="284" x2="230" y2="306" stroke="#6b7280" stroke-width="1.5" marker-end="url(#ms)"/>
+
+    <rect x="110" y="308" width="240" height="48" rx="6" fill="#eef2ff" stroke="#6366f1"/>
+    <text x="230" y="330">Dense &#8212; 10 units</text>
+    <text x="230" y="347" font-size="11" fill="#6b7280">one per digit, then softmax</text>
+    <text x="230" y="376" font-size="12" fill="#9ca3af" font-family="ui-monospace, Menlo, monospace">[batch, 10]</text>
+    <line x1="230" y1="382" x2="230" y2="404" stroke="#6b7280" stroke-width="1.5" marker-end="url(#ms)"/>
+
+    <rect x="140" y="406" width="180" height="40" rx="6" fill="#ecfdf5" stroke="#10b981"/>
+    <text x="230" y="430" font-size="13">10 probabilities, sum to 1</text>
+  </g>
+
+  <!-- side note -->
+  <g font-size="12" fill="#6b7280">
+    <text x="380" y="128">No sequence, no positions,</text>
+    <text x="380" y="146">no repeated blocks &#8212; just</text>
+    <text x="380" y="164">three fully-connected layers.</text>
+    <text x="380" y="196" fill="#374151">The parameters are almost</text>
+    <text x="380" y="214" fill="#374151">all in the first layer:</text>
+    <text x="380" y="232" font-family="ui-monospace, Menlo, monospace">784 &#215; 512 &#8776; 400,000</text>
+  </g>
+</svg>

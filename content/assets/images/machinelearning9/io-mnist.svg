@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 360" role="img"
+     aria-label="A 28 by 28 image becomes 784 numbers, passes through three dense layers, and comes out as 10 scores; the biggest score is the answer. In training, the label 7 is written as a 1 in slot 7 and the rest zeros."
+     font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" style="max-width:100%;height:auto">
+  <rect width="860" height="360" fill="#ffffff"/>
+  <defs>
+    <marker id="m9" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#6b7280"/>
+    </marker>
+  </defs>
+
+  <!-- input image -->
+  <g transform="translate(40,54)">
+    <rect x="-6" y="-6" width="108" height="108" fill="none" stroke="#d1d5db"/>
+    <g fill="#374151">
+      <rect x="0" y="0" width="16" height="16"/><rect x="16" y="0" width="16" height="16"/><rect x="32" y="0" width="16" height="16"/>
+      <rect x="48" y="0" width="16" height="16"/><rect x="64" y="0" width="16" height="16"/><rect x="80" y="0" width="16" height="16"/>
+      <rect x="80" y="16" width="16" height="16"/><rect x="64" y="32" width="16" height="16"/>
+      <rect x="48" y="48" width="16" height="16"/><rect x="48" y="64" width="16" height="16"/><rect x="32" y="80" width="16" height="16"/>
+    </g>
+  </g>
+  <text x="88" y="184" font-size="13" fill="#6b7280" text-anchor="middle">28 &#215; 28 image</text>
+
+  <line x1="150" y1="102" x2="222" y2="102" stroke="#6b7280" stroke-width="1.5" marker-end="url(#m9)"/>
+  <text x="184" y="90" font-size="12" fill="#6b7280" text-anchor="middle">784 numbers</text>
+  <text x="184" y="124" font-size="11" fill="#9ca3af" text-anchor="middle">each 0 to 1</text>
+
+  <rect x="226" y="66" width="176" height="72" rx="6" fill="#eef2ff" stroke="#6366f1"/>
+  <text x="314" y="92" font-size="13" fill="#3730a3" text-anchor="middle">Dense 512</text>
+  <text x="314" y="110" font-size="13" fill="#3730a3" text-anchor="middle">Dense 512</text>
+  <text x="314" y="128" font-size="13" fill="#3730a3" text-anchor="middle">Dense 10</text>
+
+  <line x1="402" y1="102" x2="472" y2="102" stroke="#6b7280" stroke-width="1.5" marker-end="url(#m9)"/>
+  <text x="437" y="94" font-size="12" fill="#6b7280" text-anchor="middle">10 scores</text>
+
+  <!-- output bars -->
+  <g transform="translate(486,146)">
+    <g fill="#9ca3af">
+      <rect x="0" y="-11" width="14" height="11"/><rect x="20" y="-16" width="14" height="16"/><rect x="40" y="-9" width="14" height="9"/>
+      <rect x="60" y="-18" width="14" height="18"/><rect x="80" y="-12" width="14" height="12"/><rect x="100" y="-8" width="14" height="8"/>
+      <rect x="120" y="-13" width="14" height="13"/>
+      <rect x="160" y="-15" width="14" height="15"/><rect x="180" y="-10" width="14" height="10"/>
+    </g>
+    <rect x="140" y="-58" width="14" height="58" fill="#2563eb"/>
+    <g font-size="11" fill="#6b7280" text-anchor="middle">
+      <text x="7" y="14">0</text><text x="27" y="14">1</text><text x="47" y="14">2</text><text x="67" y="14">3</text>
+      <text x="87" y="14">4</text><text x="107" y="14">5</text><text x="127" y="14">6</text>
+      <text x="147" y="14" fill="#2563eb" font-weight="700">7</text><text x="167" y="14">8</text><text x="187" y="14">9</text>
+    </g>
+  </g>
+
+  <line x1="690" y1="102" x2="746" y2="102" stroke="#6b7280" stroke-width="1.5" marker-end="url(#m9)"/>
+  <text x="718" y="94" font-size="12" fill="#6b7280" text-anchor="middle">biggest</text>
+  <text x="786" y="114" font-size="32" font-weight="700" fill="#111827">7</text>
+
+  <line x1="40" y1="228" x2="820" y2="228" stroke="#e5e7eb"/>
+  <text x="40" y="256" font-size="14" font-weight="600" fill="#111827">In training</text>
+  <text x="40" y="282" font-size="13" fill="#374151">The label <tspan font-weight="700">7</tspan> is written as ten numbers &#8212; a 1 in slot 7, zeros everywhere else:</text>
+
+  <text x="40" y="312" font-size="13" font-family="ui-monospace, Menlo, monospace" fill="#6b7280">[ 0&#160;&#160;0&#160;&#160;0&#160;&#160;0&#160;&#160;0&#160;&#160;0&#160;&#160;0&#160;&#160;<tspan fill="#2563eb" font-weight="700">1</tspan>&#160;&#160;0&#160;&#160;0 ]</text>
+  <text x="300" y="312" font-size="13" fill="#374151">Training nudges score 7 toward 1, the other nine toward 0.</text>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 470" role="img"
+     aria-label="The same six-block network as Part 1. Only the embedding table and the tied output head change with the tokeniser: 91 rows for characters, 8,192 for the trained BPE, 50,257 for GPT-2. The six blocks stay 10.7M parameters."
+     font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" style="max-width:100%;height:auto">
+  <rect width="840" height="470" fill="#ffffff"/>
+  <defs>
+    <marker id="ec" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#6b7280"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="34" font-size="18" font-weight="600" fill="#111827">Same network, different vocabulary</text>
+
+  <!-- left: the stack -->
+  <g text-anchor="middle" font-size="13" fill="#1f2937">
+    <text x="170" y="64" font-size="12" fill="#6b7280">token IDs</text>
+    <line x1="170" y1="70" x2="170" y2="88" stroke="#6b7280" stroke-width="1.5" marker-end="url(#ec)"/>
+
+    <rect x="60" y="90" width="220" height="44" rx="6" fill="#fef3c7" stroke="#f59e0b"/>
+    <text x="170" y="110">embedding table</text>
+    <text x="170" y="126" font-size="11" fill="#92400e">vocab &#215; 384 &#8212; set by the tokeniser</text>
+    <line x1="170" y1="134" x2="170" y2="152" stroke="#6b7280" stroke-width="1.5" marker-end="url(#ec)"/>
+
+    <rect x="60" y="154" width="220" height="54" rx="6" fill="#eef2ff" stroke="#6366f1"/>
+    <text x="170" y="176">6 Transformer blocks</text>
+    <text x="170" y="194" font-size="11" fill="#4338ca">10.7M parameters &#8212; unchanged</text>
+    <line x1="170" y1="208" x2="170" y2="226" stroke="#6b7280" stroke-width="1.5" marker-end="url(#ec)"/>
+
+    <rect x="60" y="228" width="220" height="44" rx="6" fill="#fef3c7" stroke="#f59e0b"/>
+    <text x="170" y="248">linear head</text>
+    <text x="170" y="264" font-size="11" fill="#92400e">384 &#215; vocab &#8212; tied to the table</text>
+    <line x1="170" y1="272" x2="170" y2="290" stroke="#6b7280" stroke-width="1.5" marker-end="url(#ec)"/>
+
+    <text x="170" y="306" font-size="12" fill="#6b7280">one score per possible token</text>
+  </g>
+
+  <!-- right: three vocab sizes as bars -->
+  <g>
+    <text x="330" y="60" font-size="14" font-weight="600" fill="#111827">Embedding table size (rows)</text>
+
+    <!-- character -->
+    <text x="330" y="98" font-size="13" fill="#1f2937">character</text>
+    <rect x="330" y="106" width="4" height="20" fill="#9ca3af"/>
+    <text x="344" y="121" font-size="12" fill="#6b7280">91 rows &#183; 35k params &#183; model 10.8M total</text>
+
+    <!-- 8k bpe -->
+    <text x="330" y="156" font-size="13" fill="#1f2937">trained 8k BPE</text>
+    <rect x="330" y="164" width="72" height="20" fill="#60a5fa"/>
+    <text x="412" y="179" font-size="12" fill="#6b7280">8,192 rows &#183; 3.1M params &#183; model 13.9M total</text>
+
+    <!-- gpt-2 -->
+    <text x="330" y="214" font-size="13" fill="#1f2937">GPT-2 BPE</text>
+    <rect x="330" y="222" width="440" height="20" fill="#2563eb"/>
+    <text x="330" y="262" font-size="12" fill="#6b7280">50,257 rows &#183; 19.3M params &#183; model 30.0M total</text>
+
+    <text x="330" y="300" font-size="13" fill="#374151">With the GPT-2 tokeniser, <tspan font-weight="700">two thirds of the model</tspan> is the vocabulary table &#8212;</text>
+    <text x="330" y="318" font-size="13" fill="#374151">and it is the same 10.7M blocks doing the actual work in every case.</text>
+  </g>
+
+  <line x1="40" y1="352" x2="800" y2="352" stroke="#e5e7eb"/>
+  <text x="40" y="380" font-size="12" fill="#6b7280">The trade-off: a bigger vocabulary packs more text into each window, but spends the</text>
+  <text x="40" y="398" font-size="12" fill="#6b7280">parameter budget on a lookup table instead of on layers that reason.</text>
+</svg>

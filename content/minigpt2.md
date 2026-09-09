@@ -27,6 +27,15 @@ train, val = text[:n], text[n:]
 
 The stories are separated by a literal `<|endoftext|>` marker, and every one of them is the kind of text a five-year-old could follow. That matters: it means a model in the tens of millions of parameters has a real chance of learning to finish a sentence, so the difference between tokenisers shows up in the output and not just in the loss curve.
 
+## What goes in, what comes out
+
+[Part 1](/posts/minigpt/) covered the model's input and output: a run of characters in, a score for every possible next character out. This post is about the step *before* that — the tokeniser, which decides what "a run of characters" is actually made of.
+
+The tokeniser takes a string of text and returns a list of integers. The model never sees letters or words; it sees those integers, and it has one row of its embedding table for every integer that could appear. So the tokeniser fixes two things before training starts: how many pieces a sentence is chopped into, and how many distinct pieces exist.
+
+![](assets/images/minigpt2/tokenisation.svg)
+*The same four words as 16 character tokens or 4 subword tokens. Fewer, larger tokens mean each context window covers more text — but a larger set of possible tokens means a larger embedding table*
+
 ## Three tokenisers
 
 **Character level.** Exactly what part 1 did — `sorted(set(text))`, one integer per character. On TinyStories that is a vocabulary of 91 symbols rather than 65, because the stories use digits, curly quotation marks, and a wider range of punctuation than the plays.
@@ -75,6 +84,9 @@ But that one number moves the parameter count a lot, because the token embedding
 | Character | 91 | 34,944 | 10,771,584 |
 | Trained 8k BPE | 8,192 | 3,145,728 | 13,882,368 |
 | GPT-2 | 50,257 | 19,298,688 | 30,035,328 |
+
+![](assets/images/minigpt2/embedding-cost.svg)
+*The six Transformer blocks are the same 10.7M parameters in every run. Only the embedding table and the tied head grow with the vocabulary — and with GPT-2's 50,257 tokens they become most of the model*
 
 The non-embedding part of the network — the attention and MLP weights that actually do the work — is 10,736,640 parameters in every case. With the GPT-2 tokeniser, 64% of the model is just the vocabulary table. That is the cost the trained 8k tokeniser is designed to avoid.
 
