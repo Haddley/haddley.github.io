@@ -6,7 +6,7 @@ date: "2026-09-10"
 categories: ["AI"]
 image: "/assets/images/minigpt7/posts-meta.svg"
 tags: "knowledge-distillation, qwen, tokenization, mlx, machine-learning"
-hidden: false
+hidden: true
 slug: "minigpt7"
 ---
 
