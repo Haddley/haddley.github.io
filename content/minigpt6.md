@@ -95,18 +95,7 @@ A bird named Bob, a fish that helps him, a resolution, "they became good friends
 - **The quadratic term is not the whole memory bill.** At the context lengths a small model actually trains at, the MLP activations and the output logits — both linear in `T` — are most of it. Windowed attention flattens the part that would otherwise explode, and that is what lets you keep scaling `T`.
 - **Windowed attention was free here.** Same loss, less memory, slightly faster. On a dataset with genuine long-range structure the trade would be real; on TinyStories there was nothing to trade away.
 
-## The series
-
-Six parts, from a character-level GPT in a borrowed notebook to a modern small model in MLX:
-
-1. [MiniGPT](/posts/minigpt/) — Jibin Joseph's notebook on the M1 Max: the GPT training loop from first principles, character-level.
-2. [A real tokeniser](/posts/minigpt2/) — character vs GPT-2 vs a trained 8k BPE, scored in bits per byte.
-3. [Into MLX](/posts/minigpt3/) — the same model in Apple's framework: unified memory, lazy evaluation, `mx.compile`.
-4. [The Llama 3.2 block](/posts/minigpt4/) — RMSNorm, RoPE, SwiGLU, GQA, ablated one at a time. Only RoPE moved the loss.
-5. [Distillation](/posts/minigpt5/) — training the small model against a bigger one's token probabilities. It helped only when the teacher was actually better at the data.
-6. Sliding-window attention — a longer context in the same memory.
-
-Every model here is tiny and none of them is good. That was the point. The architecture, the tokeniser, the training loop, the framework, and the tricks — distillation, GQA, windowed attention — are all things you can build and run in an afternoon on a laptop-class machine. What separates them from the models I use every day is scale: more data, more parameters, more compute, applied to substantially this recipe.
+Grouped-query attention in [part 4](/posts/minigpt4/) and windowed attention here between them cut the two costs that grow with context — the key–value cache and the attention matrix. [Part 7](/posts/minigpt7/) closes the series by paying the one price [part 5](/posts/minigpt5/) would not: rebuilding the model on Qwen3's tokeniser so that a real frontier model can be the distillation teacher.
 
 ## Try it yourself
 
