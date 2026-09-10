@@ -1,16 +1,6 @@
 {
   "posts": [
     {
-      "slug": "minigpt7",
-      "title": "MiniGPT (Part 7)",
-      "description": "Paying the toll from Part 5 — rebuilding MiniGPT on Qwen3's 151,936-token vocabulary so a Qwen3-8B base model can be the distillation teacher, and finding it taught the small model less than a 51M model trained by hand",
-      "date": "2026-09-10",
-      "categories": [
-        "AI"
-      ],
-      "tags": "knowledge-distillation, qwen, tokenization, mlx, machine-learning"
-    },
-    {
       "slug": "minigpt6",
       "title": "MiniGPT (Part 6)",
       "description": "Sliding-window attention in MLX — why a naive window mask saves nothing, how chunked attention makes it O(T), and where full attention runs out of room on a 64 GB Mac",
@@ -2728,5 +2718,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-09-10T02:05:47.327Z"
+  "generatedAt": "2026-09-10T21:22:15.405Z"
 }
