@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "webpagegpt2",
+      "title": "WebPageGPT (Part 2)",
+      "description": "Scaling the transformer body from 47M to 101M parameters at a fixed context — cutting the embedding's share of parameters from 53% to 37%, and what more specific, less repetitive web pages look like",
+      "date": "2026-09-11",
+      "categories": [
+        "AI"
+      ],
+      "tags": "gpt, mlx, tokenizer, web-development, machine-learning"
+    },
+    {
       "slug": "webpagegpt",
       "title": "WebPageGPT (Part 1)",
       "description": "Training a 47M-parameter language model from scratch on 531,000 real web pages, on an Apple M1 Max — the corpus, the StarCoder2 tokeniser, and what it renders after 217 minutes",
@@ -2728,5 +2738,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-09-11T03:04:26.783Z"
+  "generatedAt": "2026-09-11T13:28:53.720Z"
 }
