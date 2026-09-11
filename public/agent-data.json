@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "webpagegpt",
+      "title": "WebPageGPT (Part 1)",
+      "description": "Training a 47M-parameter language model from scratch on 531,000 real web pages, on an Apple M1 Max — the corpus, the StarCoder2 tokeniser, and what it renders after 217 minutes",
+      "date": "2026-09-11",
+      "categories": [
+        "AI"
+      ],
+      "tags": "gpt, mlx, tokenizer, web-development, machine-learning"
+    },
+    {
       "slug": "minigpt6",
       "title": "MiniGPT (Part 6)",
       "description": "Sliding-window attention in MLX — why a naive window mask saves nothing, how chunked attention makes it O(T), and where full attention runs out of room on a 64 GB Mac",
@@ -2718,5 +2728,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-09-10T21:22:15.405Z"
+  "generatedAt": "2026-09-11T03:04:26.783Z"
 }
