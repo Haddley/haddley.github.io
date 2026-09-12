@@ -6,7 +6,7 @@ date: "2026-09-13"
 categories: ["AI"]
 image: "/assets/images/distillation/posts-meta.svg"
 tags: "gpt, mlx, knowledge-distillation, qwen, machine-learning"
-hidden: true
+hidden: false
 slug: "distillation"
 ---
 
