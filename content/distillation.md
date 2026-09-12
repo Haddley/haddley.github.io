@@ -1,7 +1,7 @@
 ---
 title: "Distillation"
 part: 1
-description: "How Microsoft's Phi models and DeepSeek's distilled releases actually use a teacher model's answers to train a smaller one — and a small, fair, judged test of the same technique on this Mac Studio"
+description: "How Microsoft's Phi models and DeepSeek's openly documented R1-Distill releases use a teacher model's answers to train a smaller one — and a small, fair, judged test of the same technique on this Mac Studio"
 date: "2026-09-13"
 categories: ["AI"]
 image: "/assets/images/distillation/posts-meta.svg"
