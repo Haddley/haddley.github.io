@@ -81,7 +81,7 @@ Comparing perplexity between the two would be rigged — each model would simply
 
 ## What I took from it
 
-- **The mechanism Phi and DeepSeek use is simple, and it works at hobbyist scale too.** Pretrain, then fine-tune on a teacher's answers — no logits, no special access, nothing an API-only teacher couldn't provide.
+- **A smaller model can absorb real value from the work poured into a bigger one, and this experiment shows why that is not just a Phi/DeepSeek-scale phenomenon.** All it takes is the bigger model's *answers* — no logits, no special access, nothing an API-only teacher would not hand over voluntarily. That is exactly what makes the practice usable with a teacher's permission (Phi, licensed OpenAI output) and, allegedly, without it (the accusation against DeepSeek) — the technique itself does not care which.
 - **Catching my own judge bias mattered more than any other decision here.** A biased evaluator does not announce its bias in its output; the only way to find it was to notice the conflict of interest before trusting the number.
 - **A real effect can be small, and reporting it as small is the honest thing to do.** 62.5% is not a rout. It is a genuine, statistically real edge from using a better teacher, at a scale where "genuine but modest" is exactly what you'd expect.
 
