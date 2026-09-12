@@ -31,7 +31,7 @@ slug: "distillation"
 
 ## Trying it myself
 
-I wanted to see the mechanism directly rather than just read about it, using a teacher I could actually run: [Qwen2.5-32B-Instruct](https://huggingface.co/Qwen/Qwen2.5-32B-Instruct), local, free, via MLX. I generated fresh answers to 8,000 [Alpaca](https://huggingface.co/datasets/tatsu-lab/alpaca) prompts, then trained a small model (a few million parameters) on them with the same masked cross-entropy loss described above.
+I wanted to see the mechanism directly rather than just read about it, using a teacher I could actually run: [Qwen2.5-32B-Instruct](https://huggingface.co/Qwen/Qwen2.5-32B-Instruct) (4-bit, via [mlx-community](https://huggingface.co/mlx-community/Qwen2.5-32B-Instruct-4bit)), local, free, via MLX. I generated fresh answers to 8,000 [Alpaca](https://huggingface.co/datasets/tatsu-lab/alpaca) prompts, then trained a small model (a few million parameters) on them with the same masked cross-entropy loss described above.
 
 One thing became clear immediately: this only works on top of ordinary pretraining. A model with no prior exposure to raw text, trained purely on a few thousand Q&A pairs, learns the *shape* of a good answer — numbered lists, section headers — long before it learns enough English to fill that shape with anything coherent. Every real system that uses this technique, including both examples above, starts from an already-pretrained model. So I did too: pretraining first on [WikiText-103](https://huggingface.co/datasets/Salesforce/wikitext), then response-distilling on top, the same two-stage recipe Phi and DeepSeek-R1-Distill both use.
 
@@ -42,7 +42,7 @@ Getting a coherent small model running was the easy part. The real question — 
 - **`distilled`**: the pretrained model, fine-tuned on Qwen2.5-32B-Instruct's answers.
 - **`baseline`**: the *same* pretrained model, fine-tuned on Alpaca's own original 2023 answers to the identical prompts (written by the much older text-davinci-003, and swapped out for fresh Qwen answers everywhere else in this project).
 
-Comparing perplexity between the two would be rigged — each model would simply score best on its own training source's writing style. So I judged both models' answers to 100 held-out prompts with a third, independent model, **Llama-3.1-70B-Instruct** — deliberately not Qwen, since a judge from the same family as one of the training sources would likely rate that source's style more favourably, and my first attempt (Qwen judging a model trained on Qwen's own answers) was exactly that mistake, caught and fixed before recording a single verdict.
+Comparing perplexity between the two would be rigged — each model would simply score best on its own training source's writing style. So I judged both models' answers to 100 held-out prompts with a third, independent model, [**Llama-3.1-70B-Instruct**](https://huggingface.co/meta-llama/Llama-3.1-70B-Instruct) (4-bit, via [mlx-community](https://huggingface.co/mlx-community/Meta-Llama-3.1-70B-Instruct-4bit)) — deliberately not Qwen, since a judge from the same family as one of the training sources would likely rate that source's style more favourably, and my first attempt (Qwen judging a model trained on Qwen's own answers) was exactly that mistake, caught and fixed before recording a single verdict.
 
 ![](assets/images/distillation/judge-results.png)
 *100 held-out prompts, neither model trained on.*
