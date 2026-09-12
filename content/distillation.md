@@ -10,7 +10,7 @@ hidden: false
 slug: "distillation"
 ---
 
-"Distillation" usually means one specific thing in the research literature and a looser, more common thing in practice. This post is about the common thing: training a smaller model on a bigger model's *answers*, not its internal probabilities — because that is what Phi, DeepSeek's distilled releases, and most of what gets called "distillation" in the news actually are.
+"Distillation" usually means one specific thing in the research literature and a looser, more common thing in practice. This post is about the common thing: training a smaller model on a bigger model's *answers*, not its internal probabilities — because that is what Phi, DeepSeek's distilled releases, and most of what gets called "distillation" in the news actually are. Phi did this with permission, using OpenAI models Microsoft was licensed to call. DeepSeek is accused, though never proven, of doing the same thing without it.
 
 ## Two kinds of distillation
 
