@@ -1,7 +1,7 @@
 ---
 title: "Distillation"
 part: 1
-description: "How Microsoft's Phi models and DeepSeek's openly documented R1-Distill releases use a teacher model's answers to train a smaller one — and a small, fair, judged test of the same technique on this Mac Studio"
+description: "How Microsoft's Phi models use a teacher model's answers to train a smaller one, how DeepSeek stands accused of breaking OpenAI's terms of service doing the same thing, and a small, fair, judged test of the same technique on this Mac Studio"
 date: "2026-09-13"
 categories: ["AI"]
 image: "/assets/images/distillation/posts-meta.svg"
@@ -27,7 +27,7 @@ slug: "distillation"
 
 **DeepSeek-R1-Distill.** DeepSeek's own [R1 paper](https://arxiv.org/abs/2501.12948) describes taking their large reasoning model, R1, generating reasoning traces with it, and fine-tuning six much smaller open models (1.5B to 70B, built on Qwen and Llama bases) on those traces — released as `DeepSeek-R1-Distill-Qwen-*` and `DeepSeek-R1-Distill-Llama-*`. This is exactly the same technique, openly documented, and not controversial.
 
-**The separate, unproven accusation.** Around the same time, OpenAI and Microsoft reportedly found usage patterns suggesting accounts linked to DeepSeek had queried OpenAI's API at a scale consistent with harvesting outputs to train a competing model — a possible violation of OpenAI's terms of service, never publicly confirmed with hard evidence. This is a different claim from the R1-Distill releases above: same technique either way, but a real difference in whether the answers being trained on were used with permission.
+**The separate, unproven accusation.** Around the same time, [OpenAI told the *Financial Times*](https://www.ft.com/content/a0dfedd1-5255-4fa9-8ccc-1fe01de87ea6) it had seen evidence suggesting accounts linked to DeepSeek had queried its API at a scale consistent with harvesting outputs to train a competing model — a possible violation of OpenAI's terms of service, never publicly confirmed with hard evidence. This is a different claim from the R1-Distill releases above: same technique either way, but a real difference in whether the answers being trained on were used with permission.
 
 ## Trying it myself
 
@@ -120,6 +120,7 @@ Requires Apple Silicon for MLX. The judge alone needs about 40GB free for Llama-
 - [Phi-3 Technical Report — Abdin et al., 2024](https://arxiv.org/abs/2404.14219)
 - [Phi-4 Technical Report — Abdin et al., 2024](https://arxiv.org/abs/2412.08905)
 - [DeepSeek-R1 — DeepSeek-AI, 2025](https://arxiv.org/abs/2501.12948)
+- [OpenAI says it has evidence China's DeepSeek used its model — Financial Times, 2025](https://www.ft.com/content/a0dfedd1-5255-4fa9-8ccc-1fe01de87ea6)
 - [Alpaca — Taori et al., 2023](https://crfm.stanford.edu/2023/03/13/alpaca.html)
 - [LLM Instruct vs Chat: What is the Difference? — ScrapingAnt](https://scrapingant.com/blog/llm-instruct-vs-chat)
 - [Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena — Zheng et al., 2023](https://arxiv.org/abs/2306.05685)
