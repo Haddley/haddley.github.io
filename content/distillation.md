@@ -42,6 +42,8 @@ Pretraining alone only ever teaches next-token prediction, so the plain pretrain
 
 That is exactly what the response-distillation stage exists to fix: it is the step that teaches the model to answer at all, not just to write fluent text. This checkpoint is the shared starting point both students below are fine-tuned from; everything that follows is about what happens after this point.
 
+Worth being precise about what that stage does and does not produce: every training example is one prompt and one response, so both students end up as single-turn instruction-followers, not chat models. They use the same `<|user|>`/`<|assistant|>` token scaffolding a chat model's training data uses, but nothing in that data spans more than one exchange — there is no prior turn to condition on, no system prompt, no notion of a conversation. Ask one of them a follow-up that depends on its previous answer and it has no mechanism to know what the follow-up refers to, because it was never trained on anything but isolated, one-shot exchanges.
+
 ## The test that actually mattered
 
 Getting a coherent small model running was the easy part. The real question — does the teacher's quality actually matter, or would any answers do? — needed a proper controlled comparison, which I built once the pretraining stage was in place:
