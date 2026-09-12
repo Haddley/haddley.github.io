@@ -46,10 +46,14 @@ No trace of the actual question — pretraining taught it fluency, not the behav
 
 Getting a coherent small model running was the easy part. The real question — does the teacher's quality actually matter, or would any answers do? — needed a proper controlled comparison, which I built once the pretraining stage was in place:
 
-- **`distilled`**: the pretrained model, fine-tuned on Qwen2.5-32B-Instruct's answers.
-- **`baseline`**: the *same* pretrained model, fine-tuned on Alpaca's own original 2023 answers to the identical prompts (written by the much older text-davinci-003, and swapped out for fresh Qwen answers everywhere else in this project).
+Of the 8,000 Alpaca prompts, I split off 200 for validation and 200 for testing, leaving 7,600 for fine-tuning — the same 7,600 prompts, and the same split boundaries, for both arms:
 
-Two of the 8,000 prompts, answered by both:
+- **`distilled`**: the pretrained model, fine-tuned on Qwen2.5-32B-Instruct's answers to those 7,600 prompts.
+- **`baseline`**: the *same* pretrained model, fine-tuned on Alpaca's own original 2023 answers to the identical 7,600 prompts (written by the much older text-davinci-003, and swapped out for fresh Qwen answers everywhere else in this project).
+
+Neither model ever saw the 200 held-out test prompts during training — that reserved set is what the judge scored below.
+
+Two of the 7,600 training prompts, answered by both:
 
 > **"Answer the given question in yes or no. Question: Does social media have a negative effect?"**
 > **Alpaca (2023):** *"Answer: Yes"*
@@ -59,11 +63,11 @@ Two of the 8,000 prompts, answered by both:
 > **Alpaca (2023):** *"Yes, the word 'malfunctioning' has synonyms such as failing, faltering, defective, impaired, and deficient."*
 > **Qwen (2025):** *"Yes, the word 'malfunctioning' does have several synonyms. Some of these include: Faulty, Defective, Broken, Not working, Out of order, Malfunctioned, Dysfunctional, Inoperative..."*
 
-Alpaca's answers are not wrong — both examples above are perfectly correct. They are just thinner: a bare "Yes," five synonyms instead of eight with more natural phrasing around them. That gap, repeated across 8,000 prompts, is the entire independent variable in the comparison below.
+Alpaca's answers are not wrong — both examples above are perfectly correct. They are just thinner: a bare "Yes," five synonyms instead of eight with more natural phrasing around them. That gap, repeated across all 7,600 training prompts, is the entire independent variable in the comparison below.
 
 Comparing perplexity between the two would be rigged — each model would simply score best on its own training source's writing style. Grading my own two models' answers would be no better. So I built the test to remove every source of bias I could think of:
 
-1. **Held out 100 prompts neither model had trained on** — a slice of the same 8,000 Alpaca prompts, reserved for testing only.
+1. **Held out 100 prompts neither model had trained on** — half of the 200-prompt test split set aside before fine-tuning even started.
 2. **Generated a fresh answer from each model** to every one of those 100 prompts.
 3. **Randomly swapped which answer was labelled "A" and which was "B"** for each prompt, so consistently favouring "A" or "B" could not manufacture a result.
 4. **Sent both answers, unlabelled as to source, to a third model to judge** — [**Llama-3.1-70B-Instruct**](https://huggingface.co/meta-llama/Llama-3.1-70B-Instruct) (4-bit, via [mlx-community](https://huggingface.co/mlx-community/Meta-Llama-3.1-70B-Instruct-4bit)) — deliberately not Qwen, since a judge from the same family as one of the training sources would likely rate that source's style more favourably. My first attempt actually used Qwen as the judge; I stopped it mid-run on realising a model cannot fairly grade an answer style it produced itself, and switched judges before recording a single verdict.
