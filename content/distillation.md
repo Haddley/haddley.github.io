@@ -35,12 +35,12 @@ I wanted to see the mechanism directly rather than just read about it, using a t
 
 One thing became clear immediately: this only works on top of ordinary pretraining. A model with no prior exposure to raw text, trained purely on a few thousand Q&A pairs, learns the *shape* of a good answer — numbered lists, section headers — long before it learns enough English to fill that shape with anything coherent. Every real system that uses this technique, including both examples above, starts from an already-pretrained model. So I did too: pretraining first on [WikiText-103](https://huggingface.co/datasets/Salesforce/wikitext), then response-distilling on top, the same two-stage recipe Phi and DeepSeek-R1-Distill both use.
 
-Pretraining alone isn't enough either. Prompted with one of the same 8,000 questions before any response-distillation at all, the plain pretrained checkpoint doesn't recognise it as a question — it just continues the text as if it were the opening of a Wikipedia article:
+Pretraining alone only ever teaches next-token prediction, so the plain pretrained checkpoint has no reason to treat a prompt as a question to answer — it was never trained to do that. Prompted with one of the same 8,000 questions before any response-distillation at all, it just continues the text as if it were the opening of a Wikipedia article:
 
 > **"Does the word 'malfunctioning' have any synonyms?"**
 > *"...is not a source of the other, a means that a great power might have been used by the GIS's book. The book's name is also believed to have been made by the novel..."*
 
-No trace of the actual question — pretraining taught it fluency, not the behaviour of answering. This is the exact shared starting point both students below are fine-tuned from; everything that follows is about what happens after this point.
+That is exactly what the response-distillation stage exists to fix: it is the step that teaches the model to answer at all, not just to write fluent text. This checkpoint is the shared starting point both students below are fine-tuned from; everything that follows is about what happens after this point.
 
 ## The test that actually mattered
 
