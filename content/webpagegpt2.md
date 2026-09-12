@@ -6,7 +6,7 @@ date: "2026-09-11"
 categories: ["AI"]
 image: "/assets/images/webpagegpt2/posts-meta.svg"
 tags: "gpt, mlx, tokenizer, web-development, machine-learning"
-hidden: false
+hidden: true
 slug: "webpagegpt2"
 ---
 
