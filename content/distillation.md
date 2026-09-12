@@ -89,7 +89,7 @@ Comparing perplexity between the two would be rigged — each model would simply
 2. **Generated a fresh answer from each model** to every one of those 100 prompts.
 3. **Randomly swapped which answer was labelled "A" and which was "B"** for each prompt, so consistently favouring "A" or "B" could not manufacture a result.
 4. **Sent both answers, unlabelled as to source, to a third model to judge** — [**Llama-3.1-70B-Instruct**](https://huggingface.co/meta-llama/Llama-3.1-70B-Instruct) (4-bit, via [mlx-community](https://huggingface.co/mlx-community/Meta-Llama-3.1-70B-Instruct-4bit)) — deliberately not Qwen, since a judge from the same family as one of the training sources would likely rate that source's style more favourably.
-5. **Told the judge to first decide what a genuinely good answer would contain**, then pick whichever of A or B came closer to that standard — not just whichever sounded more confident or longer.
+5. **Told the judge to privately weigh what a genuinely good answer would contain before comparing A and B** — not to write one out itself, just to use it silently as the yardstick so the choice is closer-to-correct rather than merely closer-to-the-other-flawed-answer, and explicitly not to favour whichever answer just sounded longer or more confident.
 6. **Tallied the picks** across all 100 prompts and checked the result against a one-sided binomial test, to rule out the win margin being noise from a 100-prompt sample.
 
 ![](assets/images/distillation/judge-results.png)
