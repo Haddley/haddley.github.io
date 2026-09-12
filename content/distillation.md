@@ -42,6 +42,18 @@ Getting a coherent small model running was the easy part. The real question — 
 - **`distilled`**: the pretrained model, fine-tuned on Qwen2.5-32B-Instruct's answers.
 - **`baseline`**: the *same* pretrained model, fine-tuned on Alpaca's own original 2023 answers to the identical prompts (written by the much older text-davinci-003, and swapped out for fresh Qwen answers everywhere else in this project).
 
+Two of the 8,000 prompts, answered by both:
+
+> **"Classify this as a CAT mission statement. Our mission is to care for cats and promote humane animal care."**
+> **Alpaca (2023):** *"Yes."*
+> **Qwen (2025):** *"This mission statement can indeed be classified as a CAT (Cats, Animals, and/or a non-profit organization focused on these) mission statement. It clearly focuses on cats and promotes humane care for animals..."*
+
+> **"Does the word 'malfunctioning' have any synonyms?"**
+> **Alpaca (2023):** *"Yes, the word 'malfunctioning' has synonyms such as failing, faltering, defective, impaired, and deficient."*
+> **Qwen (2025):** *"Yes, the word 'malfunctioning' does have several synonyms. Some of these include: Faulty, Defective, Broken, Not working, Out of order, Malfunctioned, Dysfunctional, Inoperative..."*
+
+Alpaca's answers are not wrong — both examples above are perfectly correct. They are just thinner: a bare "Yes," five synonyms instead of eight with more natural phrasing around them. That gap, repeated across 8,000 prompts, is the entire independent variable in the comparison below.
+
 Comparing perplexity between the two would be rigged — each model would simply score best on its own training source's writing style. So I judged both models' answers to 100 held-out prompts with a third, independent model, [**Llama-3.1-70B-Instruct**](https://huggingface.co/meta-llama/Llama-3.1-70B-Instruct) (4-bit, via [mlx-community](https://huggingface.co/mlx-community/Meta-Llama-3.1-70B-Instruct-4bit)) — deliberately not Qwen, since a judge from the same family as one of the training sources would likely rate that source's style more favourably, and my first attempt (Qwen judging a model trained on Qwen's own answers) was exactly that mistake, caught and fixed before recording a single verdict.
 
 ![](assets/images/distillation/judge-results.png)
