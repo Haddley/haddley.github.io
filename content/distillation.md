@@ -1,7 +1,7 @@
 ---
 title: "Distillation"
 part: 1
-description: "How Microsoft's Phi models use a teacher model's answers to train a smaller one, how DeepSeek stands accused of breaking OpenAI's terms of service doing the same thing, and a small, fair, judged test of the same technique on this Mac Studio"
+description: "How Microsoft's Phi models use a teacher model's answers to train a smaller one, how DeepSeek stands accused of breaking OpenAI's terms of service doing the same thing."
 date: "2026-09-13"
 categories: ["AI"]
 image: "/assets/images/distillation/posts-meta.svg"
