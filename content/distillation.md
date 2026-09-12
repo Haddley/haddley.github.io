@@ -44,6 +44,16 @@ That is exactly what the response-distillation stage exists to fix: it is the st
 
 Worth being precise about what that stage does and does not produce: every training example is one prompt and one response, so both students end up as single-turn instruction-followers, not chat models. They use the same `<|user|>`/`<|assistant|>` token scaffolding a chat model's training data uses, but nothing in that data spans more than one exchange — there is no prior turn to condition on, no system prompt, no notion of a conversation. Ask one of them a follow-up that depends on its previous answer and it has no mechanism to know what the follow-up refers to, because it was never trained on anything but isolated, one-shot exchanges.
 
+### Base, Instruct, Chat — what those suffixes actually promise
+
+Released model families name these three stages fairly consistently, and the naming maps directly onto what I built:
+
+- **Base** (Llama-3-8B, Qwen2.5-32B with no suffix) is the raw pretrained checkpoint — next-token prediction only, no notion of a question or a task. My own equivalent is the plain pretrained checkpoint shown above, before either fine-tuning arm touches it.
+- **-Instruct** (Llama-3-Instruct, Gemma-it) marks a model fine-tuned on top of a base to follow single instructions well — precise, direct task execution, not necessarily sustained dialogue. `distilled` and `baseline` are Instruct models in this narrow sense.
+- **-Chat** (Llama-2-Chat) generally implies the same instruction-following ability plus training on multi-turn conversations, often with a further preference-tuning stage (RLHF or DPO) layered on top of the SFT step to shape *how* it converses, not just what it answers.
+
+In practice labs use "-Instruct" and "-Chat" close to interchangeably, and the suffix alone does not reliably tell you which stages a given release actually went through — the only way to know for certain is to read the model card. Neither `distilled` nor `baseline` earns a "-Chat" label: turning either into one would need a different training set entirely, built from multi-turn conversations with real dialogue history rather than Alpaca's isolated prompt/response pairs, and very likely a preference-tuning stage this project never attempted.
+
 ## The test that actually mattered
 
 Getting a coherent small model running was the easy part. The real question — does the teacher's quality actually matter, or would any answers do? — needed a proper controlled comparison, which I built once the pretraining stage was in place:
@@ -103,5 +113,6 @@ Requires Apple Silicon for MLX. The judge alone needs about 40GB free for Llama-
 - [Phi-4 Technical Report — Abdin et al., 2024](https://arxiv.org/abs/2412.08905)
 - [DeepSeek-R1 — DeepSeek-AI, 2025](https://arxiv.org/abs/2501.12948)
 - [Alpaca — Taori et al., 2023](https://crfm.stanford.edu/2023/03/13/alpaca.html)
+- [LLM Instruct vs Chat: What is the Difference? — ScrapingAnt](https://scrapingant.com/blog/llm-instruct-vs-chat)
 - [Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena — Zheng et al., 2023](https://arxiv.org/abs/2306.05685)
 - [MiniGPT series](/posts/minigpt/)
