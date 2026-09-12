@@ -44,9 +44,9 @@ Getting a coherent small model running was the easy part. The real question — 
 
 Two of the 8,000 prompts, answered by both:
 
-> **"Classify this as a CAT mission statement. Our mission is to care for cats and promote humane animal care."**
-> **Alpaca (2023):** *"Yes."*
-> **Qwen (2025):** *"This mission statement can indeed be classified as a CAT (Cats, Animals, and/or a non-profit organization focused on these) mission statement. It clearly focuses on cats and promotes humane care for animals..."*
+> **"Answer the given question in yes or no. Question: Does social media have a negative effect?"**
+> **Alpaca (2023):** *"Answer: Yes"*
+> **Qwen (2025):** *"Yes, social media can have negative effects, though these can vary widely depending on usage and individual circumstances."*
 
 > **"Does the word 'malfunctioning' have any synonyms?"**
 > **Alpaca (2023):** *"Yes, the word 'malfunctioning' has synonyms such as failing, faltering, defective, impaired, and deficient."*
