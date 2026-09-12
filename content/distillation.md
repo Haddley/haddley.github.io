@@ -61,7 +61,14 @@ Two of the 8,000 prompts, answered by both:
 
 Alpaca's answers are not wrong — both examples above are perfectly correct. They are just thinner: a bare "Yes," five synonyms instead of eight with more natural phrasing around them. That gap, repeated across 8,000 prompts, is the entire independent variable in the comparison below.
 
-Comparing perplexity between the two would be rigged — each model would simply score best on its own training source's writing style. So I judged both models' answers to 100 held-out prompts with a third, independent model, [**Llama-3.1-70B-Instruct**](https://huggingface.co/meta-llama/Llama-3.1-70B-Instruct) (4-bit, via [mlx-community](https://huggingface.co/mlx-community/Meta-Llama-3.1-70B-Instruct-4bit)) — deliberately not Qwen, since a judge from the same family as one of the training sources would likely rate that source's style more favourably, and my first attempt (Qwen judging a model trained on Qwen's own answers) was exactly that mistake, caught and fixed before recording a single verdict.
+Comparing perplexity between the two would be rigged — each model would simply score best on its own training source's writing style. Grading my own two models' answers would be no better. So I built the test to remove every source of bias I could think of:
+
+1. **Held out 100 prompts neither model had trained on** — a slice of the same 8,000 Alpaca prompts, reserved for testing only.
+2. **Generated a fresh answer from each model** to every one of those 100 prompts.
+3. **Randomly swapped which answer was labelled "A" and which was "B"** for each prompt, so consistently favouring "A" or "B" could not manufacture a result.
+4. **Sent both answers, unlabelled as to source, to a third model to judge** — [**Llama-3.1-70B-Instruct**](https://huggingface.co/meta-llama/Llama-3.1-70B-Instruct) (4-bit, via [mlx-community](https://huggingface.co/mlx-community/Meta-Llama-3.1-70B-Instruct-4bit)) — deliberately not Qwen, since a judge from the same family as one of the training sources would likely rate that source's style more favourably. My first attempt actually used Qwen as the judge; I stopped it mid-run on realising a model cannot fairly grade an answer style it produced itself, and switched judges before recording a single verdict.
+5. **Told the judge to first decide what a genuinely good answer would contain**, then pick whichever of A or B came closer to that standard — not just whichever sounded more confident or longer.
+6. **Tallied the picks** across all 100 prompts and checked the result against a one-sided binomial test, to rule out the win margin being noise from a 100-prompt sample.
 
 ![](assets/images/distillation/judge-results.png)
 *100 held-out prompts, neither model trained on.*
