@@ -14,7 +14,7 @@ slug: "distillation2"
 
 ## The setup
 
-Same architecture as Part 1's winning "tiny" config (4 layers, dim 128), same response-distillation recipe, same masked cross-entropy loss on the same teacher-generated Q&A pairs. Two things had to change to make the comparison fair.
+Same architecture as Part 1's winning "tiny" config (4 layers, dim 128), same response-distillation recipe, same masked cross-entropy loss on the same teacher-generated Q&A pairs. This is the stage more commonly called **SFT — supervised fine-tuning** — the general name for "train a model on labelled input/output pairs with ordinary cross-entropy," of which response-level distillation on a teacher's answers is one specific case. I use "the SFT stage" throughout this post to mean exactly what Part 1 called response distillation, to keep the two stages (raw-text pretraining, then SFT) clearly labelled. Two things had to change to make the comparison fair.
 
 **One tokenizer for both corpora.** Part 1's 8,192-token BPE was trained only on the narrow Q&A text. Pretraining needs a tokenizer that also compresses ordinary encyclopedic prose well, so I trained one 16,384-token BPE on the pretraining corpus and the Q&A corpus combined, and retokenised everything — including a fresh from-scratch baseline, since Part 1's exact numbers use an incompatible vocabulary.
 
