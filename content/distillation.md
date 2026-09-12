@@ -35,6 +35,13 @@ I wanted to see the mechanism directly rather than just read about it, using a t
 
 One thing became clear immediately: this only works on top of ordinary pretraining. A model with no prior exposure to raw text, trained purely on a few thousand Q&A pairs, learns the *shape* of a good answer — numbered lists, section headers — long before it learns enough English to fill that shape with anything coherent. Every real system that uses this technique, including both examples above, starts from an already-pretrained model. So I did too: pretraining first on [WikiText-103](https://huggingface.co/datasets/Salesforce/wikitext), then response-distilling on top, the same two-stage recipe Phi and DeepSeek-R1-Distill both use.
 
+Pretraining alone isn't enough either. Prompted with one of the same 8,000 questions before any response-distillation at all, the plain pretrained checkpoint doesn't recognise it as a question — it just continues the text as if it were the opening of a Wikipedia article:
+
+> **"Does the word 'malfunctioning' have any synonyms?"**
+> *"...is not a source of the other, a means that a great power might have been used by the GIS's book. The book's name is also believed to have been made by the novel..."*
+
+No trace of the actual question — pretraining taught it fluency, not the behaviour of answering. This is the exact shared starting point both students below are fine-tuned from; everything that follows is about what happens after this point.
+
 ## The test that actually mattered
 
 Getting a coherent small model running was the easy part. The real question — does the teacher's quality actually matter, or would any answers do? — needed a proper controlled comparison, which I built once the pretraining stage was in place:
