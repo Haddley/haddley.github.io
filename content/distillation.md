@@ -10,7 +10,7 @@ hidden: true
 slug: "distillation"
 ---
 
-Every distillation experiment so far on this blog — [MiniGPT Parts 5 and 7](/posts/minigpt5/), [WebPageGPT Part 3](/posts/webpagegpt3/) — used the same technique: cache a teacher's full probability distribution over its vocabulary at every position, and train a student to match that whole distribution with a KL-divergence loss. That technique has a hard requirement most people asking about "distillation" do not realise: it needs the teacher's own weights, running locally, so you can read its logits. It cannot touch GPT-4, Claude, or any other model you only get to call.
+[MiniGPT Part 5](/posts/minigpt5/) built distillation the "textbook" way: cache a teacher's full probability distribution over its vocabulary at every position, and train a student to match that whole distribution with a KL-divergence loss. That technique has a hard requirement most people asking about "distillation" do not realise: it needs the teacher's own weights, running locally, so you can read its logits. It cannot touch GPT-4, Claude, or any other model you only get to call.
 
 Almost every well-known "distilled" model was not built that way. Alpaca, Self-Instruct, WizardLM, Orca, Microsoft's Phi series, and — per a widely reported but never fully confirmed accusation — possibly DeepSeek, all used a technique that needs nothing but a teacher's *output text*. This post builds one from scratch to show exactly how it differs, and what a from-scratch model can and cannot learn from it.
 
@@ -29,7 +29,7 @@ The name "distillation" covers both, and the ambiguity is not just pedantic. It 
 
 Every guide to this technique — including the one that prompted this series — assumes you start with an already-pretrained model and fine-tune it. That skips the most interesting question this blog's whole approach is built around: what does a model with *no* prior training actually learn from nothing but a few thousand of a teacher's answers? No raw-text pretraining stage, no borrowed base model — a random initialisation, trained purely on (prompt, teacher-response) pairs.
 
-This is a real risk, not just a framing device. Every other from-scratch model on this blog learned its fluency from tens or hundreds of millions of tokens of raw text before anything else was asked of it — WebPageGPT's smallest model saw 163M tokens just to learn what an HTML tag was. This experiment's entire training set, as built below, is roughly two orders of magnitude smaller than that. Whether that is enough to learn basic English at all, before it even gets to answering questions well, is genuinely open, and the point of writing this as I go.
+This is a real risk, not just a framing device. Learning basic fluency from a random initialisation is normally not cheap: the [TinyStories paper](https://arxiv.org/abs/2305.07759) that inspired the MiniGPT series used a training corpus of several hundred million tokens even for its smallest models, precisely because a model with no prior exposure to language needs a lot of raw text before it reliably strings a sentence together. This experiment's entire training set, as built below, is only a few million tokens of nothing but short Q&A pairs — two orders of magnitude short of that, with no broader raw-text exposure to fall back on. Whether that is enough to learn basic English at all, before it even gets to answering questions well, is genuinely open, and the point of writing this as I go.
 
 ## Choosing a teacher
 
@@ -54,7 +54,7 @@ I sampled 8,000 instructions, deduplicated, capped at 400 characters so the teac
 
 ## Sizing the tokenizer to the data
 
-8,000 short answers is on the order of a few million tokens — two orders of magnitude smaller than WebPageGPT's 270.9M-token WebSight corpus. Reusing a 50k-vocabulary tokenizer (GPT-2's, say, already used elsewhere on this blog) would repeat WebPageGPT Part 1's embedding-dominance mistake at a far worse ratio: most rows of a 50k-token embedding table would be touched only a handful of times in the entire training run, nowhere near enough to learn anything.
+8,000 short answers is on the order of a few million tokens. Dividing that by GPT-2's 50,257-token vocabulary — already used elsewhere on this blog, and the obvious default to reach for — means most tokens would appear only a handful of times across the entire training run, nowhere near enough for their embedding rows to learn anything.
 
 Instead I trained a small byte-level BPE — 8,192 tokens, the same size MiniGPT Part 2 used for TinyStories — directly on the generated (prompt, response) text, with three special tokens marking turn structure: `<|user|>`, `<|assistant|>`, and `<|endoftext|>`.
 
@@ -66,7 +66,7 @@ Each example is tokenised as:
 <|user|> {prompt} <|assistant|> {response} <|endoftext|>
 ```
 
-concatenated back to back into one long stream, the same way WebPageGPT concatenates whole HTML pages. But unlike every previous model on this blog, the loss here is *masked*: cross-entropy is computed only over the response and its closing `<|endoftext|>`, never over the prompt or the turn markers. The model is being trained to answer well, not to get better at predicting questions it did not write.
+concatenated back to back into one long stream, the same way GPT-2 itself concatenates documents separated by `<|endoftext|>`. But unlike every previous model on this blog, the loss here is *masked*: cross-entropy is computed only over the response and its closing `<|endoftext|>`, never over the prompt or the turn markers. The model is being trained to answer well, not to get better at predicting questions it did not write.
 
 ```python
 def masked_loss(model, x, y, m):

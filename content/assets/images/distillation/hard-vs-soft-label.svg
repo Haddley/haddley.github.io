@@ -13,7 +13,7 @@
 
   <!-- ===== Left: soft-label (logit) distillation ===== -->
   <text x="235" y="34" font-size="17" font-weight="600" fill="#111827" text-anchor="middle">Soft-label (logit) distillation</text>
-  <text x="235" y="54" font-size="12" fill="#6b7280" text-anchor="middle">MiniGPT Parts 5 &amp; 7, WebPageGPT Part 3</text>
+  <text x="235" y="54" font-size="12" fill="#6b7280" text-anchor="middle">MiniGPT Part 5</text>
 
   <rect x="185" y="70" width="100" height="34" rx="6" fill="#f3f4f6" stroke="#9ca3af"/>
   <text x="235" y="92" font-size="12" fill="#374151" text-anchor="middle">prompt</text>
