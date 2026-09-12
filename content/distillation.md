@@ -42,7 +42,15 @@ Pretraining alone only ever teaches next-token prediction, so the plain pretrain
 
 That is exactly what the response-distillation stage exists to fix: it is the step that teaches the model to answer at all, not just to write fluent text. This checkpoint is the shared starting point both students below are fine-tuned from; everything that follows is about what happens after this point.
 
-Worth being precise about what that stage does and does not produce: every training example is one prompt and one response, so both students end up as single-turn instruction-followers, not chat models. They use the same `<|user|>`/`<|assistant|>` token scaffolding a chat model's training data uses, but nothing in that data spans more than one exchange — there is no prior turn to condition on, no system prompt, no notion of a conversation. Ask one of them a follow-up that depends on its previous answer and it has no mechanism to know what the follow-up refers to, because it was never trained on anything but isolated, one-shot exchanges.
+Worth being precise about what that stage does and does not produce: every training example is one prompt and one response, so both students end up as single-turn instruction-followers, not chat models. They use the same `<|user|>`/`<|assistant|>` token scaffolding a chat model's training data uses, but nothing in that data spans more than one exchange — there is no prior turn to condition on, no system prompt, no notion of a conversation. One raw Alpaca pair from the training set, wrapped exactly the way `tokenize_qa.py` wraps every example before it reaches the model:
+
+```
+<|user|>Edit this sentence so it is in the form of a questions.
+
+I love ice cream.<|assistant|>Do you love ice cream?<|endoftext|>
+```
+
+That is the entire training example — one `<|user|>` block, one `<|assistant|>` block, then `<|endoftext|>`. There is no second `<|user|>` block anywhere in the format for a follow-up to occupy. Ask one of these models a follow-up that depends on its previous answer and it has no mechanism to know what the follow-up refers to, because it was never trained on anything but isolated, one-shot exchanges like this one.
 
 ### Base, Instruct, Chat — what those suffixes actually promise
 
