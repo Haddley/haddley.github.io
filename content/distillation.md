@@ -109,6 +109,18 @@ Comparing perplexity between the two would be rigged — each model would simply
 
 The result was not just bigger — it was clearer. Judged on 300 held-out prompts this time (up from 100): **`distilled` won 186, `baseline` won 100, 14 ties** — a **65.0% win rate** excluding ties, with a one-sided binomial test putting this at **p ≈ 2 × 10⁻⁷**. The effect got stronger, not weaker, once the setup was less data-starved — exactly the direction you would hope for if the original 62.5% reflected a real, modest teacher-quality effect rather than noise from a small model and a small test set.
 
+Two of the judged prompts, unedited, both judged clear `distilled` wins:
+
+> **"In not more than two sentences, summarize the purpose of Machine Learning."**
+> **`baseline`:** *"Inputing Machine Learning is an example of a machine learning field that is a field of Machine Learning. It is a machine learning field that allows for manual learning to be done through a machine learning algorithm. Machine Learning is a field of machine learning that uses algorithms to learn from..."*
+> **`distilled`:** *"Machine Learning is a subset of artificial intelligence that focuses on the development of algorithms and statistical models that enable computers to make predictions or decisions without explicit instructions or relying instead of using explicit instructions to maintain the accuracy of a program."*
+
+> **"Give an example of a way to investigate the cause of air pollution."**
+> **`baseline`:** *"An example of a way to investigate the cause of air pollution is to try to reduce air pollution."*
+> **`distilled`:** *"An example of a way to investigate the cause of air pollution is the burning of fossil fuels (coal, oil, and natural gas) for energy production and industrial processes. This process is straightforward and can be quite different than traditional fossil fuels. Here's an example: 1. **Increase Energy**..."*
+
+Neither is polished — this is still an 18.9M-parameter model, and `distilled`'s second answer visibly trails off into a listicle that does not really go anywhere. But the pattern across both is the same one the judge picked up 186 times: `baseline` tends to circle a topic using its own words back at itself (*"a field of Machine Learning... a machine learning field"*, *"investigate... reduce"*, answering a different question than the one asked), while `distilled` states something substantive and correct before it runs out of road. That gap, not either model's absolute polish, is what the win rate is measuring.
+
 ## What's next
 
 The mechanism holds up at both scales tested so far. The next thing worth varying is not scale again, but *structure*: everything in this post — both arms, both scales — was single-turn instruction-following, built on Alpaca's one-prompt-one-answer format. A natural next series starts from a real pretrained base model and asks what response distillation looks like when the target is genuine multi-turn chat behaviour instead.
