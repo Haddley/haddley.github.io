@@ -17,7 +17,7 @@ slug: "distillation"
 ![](assets/images/distillation/hard-vs-soft-label.svg)
 *Same idea — a small model learning from a large one — two different training signals, with two different requirements.*
 
-**Soft-label (logit) distillation** — [already built on this blog](/posts/minigpt5/) — trains a student to match a teacher's *whole probability distribution* over the next token, using a KL-divergence loss. It needs the teacher's own weights running locally, so you can read its logits. It cannot touch GPT-4, Claude, or any model you only get to call through an API.
+**Soft-label (logit) distillation** — [already built on this blog](/posts/minigpt5/) — trains a student to match a teacher's *whole probability distribution* over the next token.
 
 **Hard-label (response) distillation** is cruder: ask the teacher a question, keep the one answer it wrote, and train the student on that text with ordinary cross-entropy — the same loss every model uses for plain next-token prediction. All you need is the text, which is why it works with a closed API just as well as an open one.
 
