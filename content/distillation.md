@@ -103,9 +103,15 @@ Comparing perplexity between the two would be rigged — each model would simply
 - **Catching my own judge bias mattered more than any other decision here.** A biased evaluator does not announce its bias in its output; the only way to find it was to notice the conflict of interest before trusting the number.
 - **A real effect can be small, and reporting it as small is the honest thing to do.** 62.5% is not a rout. It is a genuine, statistically real edge from using a better teacher, at a scale where "genuine but modest" is exactly what you'd expect.
 
+## The same test, at a much larger scale
+
+62.5% is the effect size a 2.8M-parameter model, 8,000 prompts, and 100M pretraining tokens can show. So I reran the identical one-variable comparison much bigger: an 18.9M-parameter student (about 7x the parameters), pretrained on 807M tokens of raw [Wikipedia](https://huggingface.co/datasets/wikimedia/wikipedia) text (about 8x the corpus), then fine-tuned on 19,400 prompts (2.5x as many) — same two arms, same judge, same held-out methodology, just scaled up across every dimension at once.
+
+The result was not just bigger — it was clearer. Judged on 300 held-out prompts this time (up from 100): **`distilled` won 186, `baseline` won 100, 14 ties** — a **65.0% win rate** excluding ties, with a one-sided binomial test putting this at **p ≈ 2 × 10⁻⁷**. The effect got stronger, not weaker, once the setup was less data-starved — exactly the direction you would hope for if the original 62.5% reflected a real, modest teacher-quality effect rather than noise from a small model and a small test set.
+
 ## What's next
 
-62.5% is the effect size a 2.8M-parameter model, 8,000 prompts, and 100M pretraining tokens can show. I'm now rerunning the same one-variable comparison at a much larger scale — a Wikipedia-based pretraining corpus several times bigger, 2.5x the prompts, and a student sized to match — to see whether a less data-starved setup shows a stronger effect, closer to what Phi and DeepSeek actually demonstrate at production scale.
+The mechanism holds up at both scales tested so far. The next thing worth varying is not scale again, but *structure*: everything in this post — both arms, both scales — was single-turn instruction-following, built on Alpaca's one-prompt-one-answer format. A natural next series starts from a real pretrained base model and asks what response distillation looks like when the target is genuine multi-turn chat behaviour instead.
 
 ## Try it yourself
 
