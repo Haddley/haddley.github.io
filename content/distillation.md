@@ -127,7 +127,7 @@ The mechanism holds up at both scales tested so far. The next thing worth varyin
 
 ## Try it yourself
 
-The code is in [github.com/Haddley/distillation](https://github.com/Haddley/distillation), across `part1/` (teacher, dataset, pretraining), `part2/` (the pretraining sweep), and `part3/` (the fair comparison and judge). See the repo's README for the exact commands.
+The code is in [github.com/Haddley/distillation](https://github.com/Haddley/distillation): `part1/` (teacher-generated answers), `part2/` (the two-stage recipe at small scale), `part3/` (the fair comparison above), and `part4/` (the same comparison rerun at the larger scale below). See the repo's README for the exact commands and how the pieces fit together.
 
 Requires Apple Silicon for MLX. The judge alone needs about 40GB free for Llama-3.1-70B-Instruct-4bit.
 
