@@ -1,7 +1,7 @@
 ---
 title: "Distillation 2"
 part: 2
-description: "Turning a real pretrained base model into a chat model with LoRA on a 64GB Mac Studio, then testing whether a second teacher, DeepSeek, produces a better one than GPT-3.5 did"
+description: "Turning a pretrained base model into a chat model with LoRA on a 64GB Mac Studio, then testing whether a second teacher, DeepSeek, produces a better one than GPT-3.5 did"
 date: "2026-09-15"
 categories: ["AI"]
 image: "/assets/images/distillation2/judge-results.png"
@@ -64,11 +64,23 @@ Both arms — `baseline` on UltraChat's answers, `distilled` on DeepSeek's, same
 ![](assets/images/distillation2/judge-results.png)
 *200 held-out conversations, neither arm trained on.*
 
-**`distilled` won 118, `baseline` won 81, 1 tie** — a **59.3% win rate** excluding ties, one-sided binomial p ≈ 0.0053. One matched pair, translated from Spanish, shows the pattern clearly:
+**`distilled` won 118, `baseline` won 81, 1 tie** — a **59.3% win rate** excluding ties, one-sided binomial p ≈ 0.0053. Not a landslide, and the losses are as informative as the wins.
 
 > **"¿Podría decirme el tamaño de la casa?"** *("Could you tell me the size of the house?")*
 > **`baseline` (UltraChat/GPT-3.5):** *"...Esto significa que la casa tiene un área total de 1,200 pies cuadrados. Esto incluye el espacio de la casa... Esto significa que la casa tiene una sola planta y no tiene escaleras..."* — the same "this means that" construction repeated three times, circling the answer rather than moving past it.
 > **`distilled` (DeepSeek):** *"Claro, el tamaño de la casa es de 1,200 pies cuadrados (aproximadamente 111 metros cuadrados). La descripción completa es: 'Starting out or ready to downsize, this cozy ranch style home offers you 1 floor living...'"* — states the number, adds a genuine unit conversion, then moves on to substantive detail instead of restating itself.
+
+> **"Wow, I didn't realize Australia beat Namibia by such a huge margin! That must have been a crazy game to watch."**
+> **`baseline`:** *"...Australia, who scored 14 tries in the match... played in front of a crowd of over 60,000 people at the Stade de France in Paris..."*
+> **`distilled`:** *"...Namibia actually led 7-0 early on, but Australia scored 14 tries... It's worth noting that Namibia has since improved significantly and has become a much more competitive team..."*
+> **Judge:** *"distilled is closer to the standard as it provides more specific details about the game and acknowledges Namibia's improvement since then."*
+
+A loss, to keep this honest — a request for error-handling code that should keep re-prompting rather than exit:
+
+> **"Can you add some error handling in case the user enters negative values or zeros... I don't want the program to crash if that happens."**
+> **`baseline`:** used a `while` loop that keeps re-prompting the user until a valid positive integer is entered.
+> **`distilled`:** produced code that validated the input but exited on the first invalid entry instead of looping.
+> **Judge:** *"baseline provides more robust error handling... whereas distilled simply exits the program if invalid input is detected."* — the correct call. Not every comparison favours the better teacher; that is what a 59% win rate actually looks like, not 100%.
 
 ## What I took from it
 
