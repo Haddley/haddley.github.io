@@ -123,7 +123,7 @@ Neither is polished — this is still an 18.9M-parameter model, and `distilled`'
 
 ## What's next
 
-The mechanism holds up at both scales tested so far. The next thing worth varying is not scale again, but *structure*: everything in this post — both arms, both scales — was single-turn instruction-following, built on Alpaca's one-prompt-one-answer format. A natural next series starts from a real pretrained base model and asks what response distillation looks like when the target is genuine multi-turn chat behaviour instead.
+The mechanism holds up at both scales tested so far. The next thing worth varying is not scale again, but *structure*: everything in this post — both arms, both scales — was single-turn instruction-following, built on Alpaca's one-prompt-one-answer format. [Part 2](/posts/distillation2/) picks that up: a real pretrained base model, LoRA fine-tuning, genuine multi-turn chat behaviour, and a second teacher (DeepSeek) instead of a bigger run with the same one.
 
 ## Try it yourself
 
