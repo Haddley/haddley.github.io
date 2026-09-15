@@ -29,11 +29,44 @@ LoRA leaves the original model's numbers untouched and trains a small set of new
 
 ## Every turn needs its own training example
 
-UltraChat conversations average 3.2 assistant turns each, and mlx-lm's chat-data format only ever scores the *final* message in a `{"messages": [...]}` example against the loss — pass it a whole multi-turn conversation as one example and every earlier assistant turn is silently masked out along with the prompt. Supervising every turn meant expanding each conversation into one training example per assistant turn: a 3-turn conversation becomes three examples, each ending one turn later than the last. This is why the counts below talk about training *examples* in the tens of thousands, built from a training set of only 7,600 conversations.
+Here is a real, two-turn UltraChat conversation, used exactly as it appears in the dataset:
+
+> **User 1:** "Experiment with creating your own homemade natural body wash."
+> **Assistant (A1):** *"I do not have a physical body. However, I can suggest a recipe for a homemade natural body wash: ingredients — 1/4 cup liquid castile soap, 1/4 cup honey, 1/4 cup sweet almond oil..."*
+> **User 2:** "Can you suggest some essential oils that are good for sensitive skin?"
+> **Assistant (A2):** *"Yes, here are some essential oils that are good for sensitive skin: 1. Lavender oil 2. Chamomile oil 3. Sandalwood oil..."*
+
+UltraChat conversations average 3.2 assistant turns each, and mlx-lm's chat-data format only ever scores the *final* message in a `{"messages": [...]}` example against the loss — pass it a whole multi-turn conversation as one example and every earlier assistant turn is silently masked out along with the prompt. Supervising every turn meant expanding each conversation into one training example per assistant turn, each one a growing prefix of the last:
+
+- **Example 1:** User 1 → A1, with A1 scored.
+- **Example 2:** User 1 → A1 → User 2 → A2, with *only* A2 scored — A1 is now unscored context, exactly like the User turns.
+
+![](assets/images/distillation2/turn-expansion.svg)
+*One two-turn conversation becomes two training examples, each with a different final turn scored.*
+
+A 3-turn conversation becomes three examples the same way; this is why the counts elsewhere in this post talk about training *examples* in the tens of thousands, built from a training set of only 7,600 conversations.
 
 That also fixes the context-length question in advance: since the scored answer is always the *last* thing in one of these examples, any example longer than the model's context window has to be filtered out before training, not truncated during it — truncating from the front, which is what happens by default, would cut the answer off and score nothing.
 
+## How far the context window can safely go
+
 So the real question was how long a context window this hardware could actually support, since UltraChat's conversations run well past the 512-token window Part 1 used throughout. The answer was worth measuring directly rather than assuming: attention memory scales roughly with the *square* of sequence length, not linearly. Testing the actual longest training example at each candidate limit — not a random sample, which can miss the tail entirely — a 2048-token sequence peaked at a stable 31GB; a 3072-token sequence (1.5x the length) peaked at **69GB, already past this machine's 64GB of physical memory**, surviving only by swapping to disk. 4096 tokens crashed outright, and inconsistently — sometimes completing, sometimes not, depending on what else the allocator was doing at that moment. 2048 is not an arbitrary round number here; it is the actual, empirically validated ceiling for an 8B model on this machine.
+
+## Building the second arm's data the same way
+
+The `distilled` arm needs the identical structure — the same fixed User 1 / User 2 turns — but DeepSeek writing the assistant side instead of GPT-3.5. Critically, DeepSeek answers User 2 using *its own* answer to User 1 as context, never GPT-3.5's:
+
+![](assets/images/distillation2/deepseek-regeneration.svg)
+*Same two questions feed two separate chains. Neither chain ever mixes one model's answer at one turn with the other model's answer at the next.*
+
+DeepSeek's version of the same conversation, for comparison:
+
+> **User 1:** "Experiment with creating your own homemade natural body wash."
+> **DeepSeek (D1):** *"Here's a solid DIY natural body wash recipe, plus some variations and tips so you can tweak it to your skin type. **Basic Natural Body Wash** — You'll need: 1/4 cup liquid Castile soap... 1 tsp vitamin E oil (natural preservative and skin nourisher)..."* — followed by scent/skin-type variations, shelf-life notes, and a "quick shortcut version," none of which GPT-3.5's answer included.
+> **User 2:** "Can you suggest some essential oils that are good for sensitive skin?"
+> **DeepSeek (D2):** *"Great question — sensitive skin needs gentle, low-irritation oils. Here are the safest bets, plus a few to avoid. **Lavender** — The gold standard for sensitive skin... **Chamomile** — Excellent for redness, irritation, and reactive skin..."* — followed by a "use with caution" list of oils to avoid and a suggested starter blend.
+
+Once both chains exist, each gets turn-expanded exactly as shown earlier — `baseline`'s two examples from GPT-3.5's A1/A2, `distilled`'s two examples from DeepSeek's D1/D2 — before the length filtering and population-matching described next.
 
 ## Training on UltraChat's own answers
 
@@ -45,7 +78,7 @@ No fabricated follow-up turns, no invented logo. It is also considerably more re
 
 ## A second teacher: DeepSeek
 
-The interesting question Part 1 already answered once — does the teacher's quality actually matter? — deserved testing again with a genuinely different teacher, not just a bigger training run. [DeepSeek](https://api-docs.deepseek.com/) (`deepseek-flash`, called through its API) regenerated the assistant side of the same conversations: identical user turns throughout, DeepSeek's own answers fed back as its own conversation history rather than mixing in UltraChat's original replies, so each rebuilt conversation is self-consistent — authored by one model start to finish, not a chimera of two.
+The interesting question Part 1 already answered once — does the teacher's quality actually matter? — deserved testing again with a genuinely different teacher, not just a bigger training run. [DeepSeek](https://api-docs.deepseek.com/) (`deepseek-flash`, called through its API) is that second teacher, regenerating the assistant side of the same conversations as shown above.
 
 Two real mechanical problems came up building this arm, both worth recording plainly:
 

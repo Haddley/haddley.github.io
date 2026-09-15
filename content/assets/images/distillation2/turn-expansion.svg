@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 400" role="img"
+     aria-label="One two-turn conversation becomes two training examples. Example 1 is the first user turn and first assistant answer, with the answer scored. Example 2 is all four messages, with only the second assistant answer scored -- everything before it, including the first answer, is masked out as context only."
+     font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" style="max-width:100%;height:auto">
+  <rect width="920" height="400" fill="#ffffff"/>
+  <defs>
+    <marker id="tearrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#6b7280"/>
+    </marker>
+  </defs>
+
+  <text x="460" y="30" font-size="16" font-weight="600" fill="#111827" text-anchor="middle">One conversation → two training examples</text>
+
+  <!-- Original conversation strip -->
+  <text x="20" y="62" font-size="12" font-weight="600" fill="#6b7280">ORIGINAL CONVERSATION</text>
+  <g font-size="12.5">
+    <rect x="20" y="72" width="180" height="36" rx="6" fill="#eef2ff" stroke="#c7d2fe"/>
+    <text x="110" y="94" text-anchor="middle" fill="#111827">User: "…body wash?"</text>
+
+    <rect x="230" y="72" width="180" height="36" rx="6" fill="#e0edff" stroke="#bfdbfe"/>
+    <text x="320" y="94" text-anchor="middle" fill="#111827">Assistant: recipe (A1)</text>
+
+    <rect x="440" y="72" width="200" height="36" rx="6" fill="#eef2ff" stroke="#c7d2fe"/>
+    <text x="540" y="94" text-anchor="middle" fill="#111827">User: "…sensitive skin?"</text>
+
+    <rect x="670" y="72" width="220" height="36" rx="6" fill="#e0edff" stroke="#bfdbfe"/>
+    <text x="780" y="94" text-anchor="middle" fill="#111827">Assistant: oil list (A2)</text>
+  </g>
+  <line x1="200" y1="90" x2="228" y2="90" stroke="#6b7280" stroke-width="1.5" marker-end="url(#tearrow)"/>
+  <line x1="410" y1="90" x2="438" y2="90" stroke="#6b7280" stroke-width="1.5" marker-end="url(#tearrow)"/>
+  <line x1="640" y1="90" x2="668" y2="90" stroke="#6b7280" stroke-width="1.5" marker-end="url(#tearrow)"/>
+
+  <line x1="20" y1="130" x2="900" y2="130" stroke="#e5e7eb" stroke-width="1.5"/>
+
+  <!-- Example 1 -->
+  <text x="20" y="160" font-size="12" font-weight="600" fill="#6b7280">TRAINING EXAMPLE 1</text>
+  <g font-size="12.5">
+    <rect x="20" y="170" width="180" height="36" rx="6" fill="#f3f4f6" stroke="#e5e7eb"/>
+    <text x="110" y="192" text-anchor="middle" fill="#6b7280">User: "…body wash?"</text>
+
+    <rect x="230" y="170" width="180" height="36" rx="6" fill="#dbeafe" stroke="#60a5fa" stroke-width="2"/>
+    <text x="320" y="192" text-anchor="middle" fill="#1e3a8a" font-weight="600">Assistant: A1 ✓ scored</text>
+  </g>
+  <text x="430" y="193" font-size="12" fill="#6b7280">(masked prompt → scored answer)</text>
+
+  <!-- Example 2 -->
+  <text x="20" y="240" font-size="12" font-weight="600" fill="#6b7280">TRAINING EXAMPLE 2</text>
+  <g font-size="12.5">
+    <rect x="20" y="250" width="150" height="36" rx="6" fill="#f3f4f6" stroke="#e5e7eb"/>
+    <text x="95" y="272" text-anchor="middle" fill="#6b7280" font-size="11.5">User (masked)</text>
+
+    <rect x="185" y="250" width="150" height="36" rx="6" fill="#f3f4f6" stroke="#e5e7eb"/>
+    <text x="260" y="272" text-anchor="middle" fill="#6b7280" font-size="11.5">A1 (masked)</text>
+
+    <rect x="350" y="250" width="170" height="36" rx="6" fill="#f3f4f6" stroke="#e5e7eb"/>
+    <text x="435" y="272" text-anchor="middle" fill="#6b7280" font-size="11.5">User (masked)</text>
+
+    <rect x="535" y="250" width="200" height="36" rx="6" fill="#dbeafe" stroke="#60a5fa" stroke-width="2"/>
+    <text x="635" y="272" text-anchor="middle" fill="#1e3a8a" font-weight="600" font-size="12.5">Assistant: A2 ✓ scored</text>
+  </g>
+  <text x="20" y="315" font-size="12.5" fill="#374151">Everything up to the final assistant turn is context (masked, loss = 0).</text>
+  <text x="20" y="335" font-size="12.5" fill="#374151">Only the final turn in each example is scored -- including A1 itself, inside Example 2, as unscored context.</text>
+</svg>

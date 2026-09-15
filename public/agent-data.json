@@ -1,6 +1,26 @@
 {
   "posts": [
     {
+      "slug": "distillation2",
+      "title": "Distillation (Part 2)",
+      "description": "Turning a pretrained base model into a chat model with LoRA on a 64GB Mac Studio, then testing whether a second teacher, DeepSeek, produces a better one than GPT-3.5 did",
+      "date": "2026-09-15",
+      "categories": [
+        "AI"
+      ],
+      "tags": "llama, lora, mlx, knowledge-distillation, deepseek, machine-learning"
+    },
+    {
+      "slug": "distillation",
+      "title": "Distillation (Part 1)",
+      "description": "How DeepSeek stands accused of breaking OpenAI's terms of service.",
+      "date": "2026-09-13",
+      "categories": [
+        "AI"
+      ],
+      "tags": "gpt, mlx, knowledge-distillation, qwen, machine-learning"
+    },
+    {
       "slug": "minigpt6",
       "title": "MiniGPT (Part 6)",
       "description": "Sliding-window attention in MLX — why a naive window mask saves nothing, how chunked attention makes it O(T), and where full attention runs out of room on a 64 GB Mac",
@@ -2718,5 +2738,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-09-12T12:20:07.018Z"
+  "generatedAt": "2026-09-15T00:42:23.342Z"
 }
