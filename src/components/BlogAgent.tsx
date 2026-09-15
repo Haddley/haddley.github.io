@@ -19,6 +19,7 @@ import {
 } from '@/lib/agent-tools';
 
 const MODELS = [
+  { id: 'remote:qwen3.8:27b',                 label: 'Qwen3.8 27B',  size: '',      note: 'Self-hosted · default' },
   { id: 'Qwen2.5-7B-Instruct-q4f16_1-MLC',   label: 'Qwen2.5 7B',   size: '~4 GB', note: 'Best quality · WebLLM' },
   { id: 'Qwen2.5-3B-Instruct-q4f16_1-MLC',   label: 'Qwen2.5 3B',   size: '~2 GB', note: 'Balanced · WebLLM' },
   { id: 'Qwen2.5-1.5B-Instruct-q4f16_1-MLC', label: 'Qwen2.5 1.5B', size: '~1 GB', note: 'Fast · WebLLM' },
@@ -34,8 +35,20 @@ const NAVY = '#1a2b4b';
 const OLLAMA_BASE = 'http://localhost:11434/v1';
 const isOllama = (id: string) => id.startsWith('ollama:');
 const ollamaModelName = (id: string) => id.replace(/^ollama:/, '');
+// Self-hosted remote Ollama-compatible server, reachable from any visitor (not
+// gated to localhost like the ollama: models above). IMPORTANT: this endpoint
+// is plain HTTP. Browsers block "mixed content" -- an HTTPS page (this site,
+// always, on GitHub Pages) cannot call a plain http:// URL at all, regardless
+// of CORS. This will only work once an HTTPS reverse proxy (e.g. Caddy/nginx
+// with a real certificate) sits in front of it, AND the Ollama server's
+// OLLAMA_ORIGINS env var is set to allow this site's origin. Until then,
+// selecting it will surface the same "blocked by browser security" error the
+// ollama: case already shows for localhost on a public deployment.
+const REMOTE_OLLAMA_HOST = 'http://144.6.201.164:11434';
+const isRemoteOllama = (id: string) => id.startsWith('remote:');
+const remoteOllamaModelName = (id: string) => id.replace(/^remote:/, '');
 const isLocalhost = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
-const VISIBLE_MODELS = MODELS.filter(m => !isOllama(m.id) || isLocalhost);
+const VISIBLE_MODELS = MODELS.filter(m => !isOllama(m.id) || isLocalhost || isRemoteOllama(m.id));
 
 type InferenceEngine = {
   chat: { completions: { create(opts: { messages: unknown[] }): Promise<{ choices: Array<{ message: { content: string | null } }> }> } };
@@ -178,7 +191,7 @@ export default function BlogAgent() {
       const saved = localStorage.getItem('agent-model');
       if (VISIBLE_MODELS.some(m => m.id === saved)) return saved as ModelId;
     }
-    return 'Qwen2.5-1.5B-Instruct-q4f16_1-MLC';
+    return 'remote:qwen3.8:27b';
   });
 
   const engineRef = useRef<InferenceEngine | null>(null);
@@ -227,12 +240,15 @@ export default function BlogAgent() {
       return;
     }
 
-    if (isOllama(selectedModel)) {
-      setLoadState({ status: 'loading', progress: 0, text: 'Connecting to Ollama…' });
+    if (isOllama(selectedModel) || isRemoteOllama(selectedModel)) {
+      const remote = isRemoteOllama(selectedModel);
+      const host = remote ? REMOTE_OLLAMA_HOST : 'http://localhost:11434';
+      const base = remote ? `${REMOTE_OLLAMA_HOST}/v1` : OLLAMA_BASE;
+      const modelName = remote ? remoteOllamaModelName(selectedModel) : ollamaModelName(selectedModel);
+      setLoadState({ status: 'loading', progress: 0, text: remote ? 'Connecting to self-hosted model…' : 'Connecting to Ollama…' });
       try {
-        const ping = await fetch(`http://localhost:11434/api/version`);
-        if (!ping.ok) throw new Error('Ollama is not running. Start it with: ollama serve');
-        const modelName = ollamaModelName(selectedModel);
+        const ping = await fetch(`${host}/api/version`);
+        if (!ping.ok) throw new Error(remote ? 'Self-hosted server is not reachable.' : 'Ollama is not running. Start it with: ollama serve');
         let currentController: AbortController | null = null;
         engineRef.current = {
           chat: {
@@ -240,13 +256,13 @@ export default function BlogAgent() {
               create: async ({ messages }: { messages: unknown[] }) => {
                 currentController = new AbortController();
                 try {
-                  const r = await fetch(`${OLLAMA_BASE}/chat/completions`, {
+                  const r = await fetch(`${base}/chat/completions`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ model: modelName, messages, stream: false }),
                     signal: currentController.signal,
                   });
-                  if (!r.ok) throw new Error(`Ollama error ${r.status} — is "${modelName}" pulled? Run: ollama pull ${modelName}`);
+                  if (!r.ok) throw new Error(`Server error ${r.status} — is "${modelName}" pulled on the host?`);
                   return r.json();
                 } finally {
                   currentController = null;
@@ -261,8 +277,10 @@ export default function BlogAgent() {
       } catch (err) {
         const onPublicSite = window.location.protocol === 'https:' && window.location.hostname !== 'localhost';
         const text = onPublicSite
-          ? 'Ollama is blocked by browser security when accessed from a public URL. Run the site locally (npm run dev → localhost:3000) to use Ollama models.'
-          : err instanceof Error ? err.message : 'Failed to connect to Ollama. Is it running? Try: ollama serve';
+          ? (remote
+              ? 'This self-hosted model is served over plain HTTP, which browsers block from an HTTPS page (mixed content). It needs an HTTPS reverse proxy in front of it before it will work here.'
+              : 'Ollama is blocked by browser security when accessed from a public URL. Run the site locally (npm run dev → localhost:3000) to use Ollama models.')
+          : err instanceof Error ? err.message : 'Failed to connect. Is the server running?';
         setLoadState({ status: 'error', progress: 0, text });
       }
       return;
