@@ -4,9 +4,9 @@ part: 2
 description: "Turning a pretrained base model into a chat model with LoRA on a 64GB Mac Studio, then testing whether a second teacher, DeepSeek, produces a better one than GPT-3.5 did"
 date: "2026-09-15"
 categories: ["AI"]
-image: "/assets/images/distillation2/judge-results.png"
+image: "/assets/images/distillation/posts-meta.svg"
 tags: "llama, lora, mlx, knowledge-distillation, deepseek, machine-learning"
-hidden: true
+hidden: false
 slug: "distillation2"
 ---
 
@@ -23,7 +23,7 @@ Then it keeps going — inventing a new `User:` turn, describing a logo that doe
 
 ## Why LoRA, not full fine-tuning
 
-This machine is a 64GB M1 Max Mac Studio — not one of the 128/192GB Ultra configurations. Full fine-tuning of an 8B model needs bf16 weights (~16GB) plus fp32 master weights, fp32 gradients, and fp32 Adam momentum/variance on top — roughly 16 bytes/parameter of optimiser state alone, well over 100GB. Not close to fitting.
+This machine is a 64GB M1 Max Mac Studio. Full fine-tuning of an 8B model needs bf16 weights (~16GB) plus fp32 master weights, fp32 gradients, and fp32 Adam momentum/variance on top — roughly 16 bytes/parameter of optimiser state alone, well over 100GB. Not close to fitting.
 
 LoRA freezes the base weights and trains a small set of low-rank adapter matrices instead — 10.5M trainable parameters out of 8.03 billion, 0.131% of the model. Frozen bf16 weights plus adapters plus activations landed around 25–35GB in practice, comfortably inside the budget, and gave a real quality improvement over QLoRA's 4-bit-quantised alternative without the memory pressure that would have forced that trade-off.
 
