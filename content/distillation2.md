@@ -10,7 +10,7 @@ hidden: false
 slug: "distillation2"
 ---
 
-[Part 1](/posts/distillation/) trained a small model from scratch and showed that a better teacher's answers produce a measurably better student, at two different scales. Everything in it was single-turn instruction-following, and the student was a custom architecture trained from random initialisation. This post changes both of those things: a real pretrained base model, [Llama-3.1-8B](https://huggingface.co/meta-llama/Llama-3.1-8B), fine-tuned into a genuine multi-turn chat model with LoRA — and then the same one-variable question Part 1 asked, run again with a second teacher, [DeepSeek](https://api-docs.deepseek.com/), instead of GPT-3.5.
+[Part 1](/posts/distillation/) trained a small model from scratch and showed that a better teacher's answers produce a measurably better student, at two different scales. Everything in it was single-turn instruction-following, and the student was a custom architecture trained from random initialisation. This post changes both of those things: a real pretrained base model, [Llama-3.1-8B](https://huggingface.co/meta-llama/Llama-3.1-8B) (8 billion parameters), fine-tuned into a genuine multi-turn chat model with LoRA — and then the same one-variable question Part 1 asked, run again with a second teacher, [DeepSeek](https://api-docs.deepseek.com/), instead of GPT-3.5.
 
 ## The base model does not know where its turn ends
 
