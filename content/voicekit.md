@@ -1,5 +1,6 @@
 ---
 title: "Voice Kit"
+part: 1
 description: "Raspberry Pi Voice Kit"
 date: "2025-10-11"
 categories: ["Python","AI","IOT"]

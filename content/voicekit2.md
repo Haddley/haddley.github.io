@@ -1,5 +1,6 @@
 ---
-title: "Voice Kit 2"
+title: "Voice Kit"
+part: 2
 description: "Google Assistant API"
 date: "2025-10-16"
 categories: ["Python","AI","IOT"]

@@ -1,5 +1,6 @@
 ---
-title: "Voice Kit 3"
+title: "Voice Kit"
+part: 3
 description: "Adding Commands"
 date: "2025-10-18"
 categories: ["Python","AI","IOT"]
