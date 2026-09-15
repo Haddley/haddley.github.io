@@ -57,7 +57,6 @@ So the real question was how long a context window this hardware could actually 
 The `distilled` arm needs the identical structure — the same fixed User 1 / User 2 turns — but DeepSeek writing the assistant side instead of GPT-3.5. Critically, DeepSeek answers User 2 using *its own* answer to User 1 as context, never GPT-3.5's:
 
 ![](assets/images/distillation2/deepseek-regeneration.svg)
-*Same two questions feed two separate chains. Neither chain ever mixes one model's answer at one turn with the other model's answer at the next.*
 
 DeepSeek's version of the same conversation, for comparison:
 

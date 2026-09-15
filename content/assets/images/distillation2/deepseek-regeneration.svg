@@ -1,52 +1,89 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 360" role="img"
-     aria-label="The same two user turns feed two separate assistant chains. The baseline chain keeps UltraChat's original GPT-3.5 answers throughout. The distilled chain has DeepSeek answer both turns instead, with DeepSeek's own first answer fed back in as context for its second answer, never UltraChat's original answer."
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 360" role="img"
+     aria-label="The baseline chain is User 1, then GPT-3.5's A1 which opens 'I do not have a physical body, however...', then User 2, then GPT-3.5's A2, a bare numbered list of oils. The distilled chain has the identical User 1 and User 2, but DeepSeek writes D1 and D2 instead -- D1 opens with a direct recipe, D2 frames lavender as 'the gold standard' -- with D2 built using DeepSeek's own D1, not GPT-3.5's A1. The two chains never mix: GPT-3.5's A1 never feeds DeepSeek's D2."
      font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" style="max-width:100%;height:auto">
-  <rect width="920" height="360" fill="#ffffff"/>
+  <rect width="940" height="360" fill="#ffffff"/>
   <defs>
     <marker id="drarrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
       <path d="M0 0 L10 5 L0 10 z" fill="#6b7280"/>
     </marker>
-    <marker id="drarrow-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
-      <path d="M0 0 L10 5 L0 10 z" fill="#c2410c"/>
+    <marker id="drarrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#b91c1c"/>
+    </marker>
+    <marker id="drarrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#15803d"/>
     </marker>
   </defs>
 
-  <text x="460" y="28" font-size="16" font-weight="600" fill="#111827" text-anchor="middle">Same user turns, two self-consistent assistants</text>
+  <text x="470" y="26" font-size="16" font-weight="600" fill="#111827" text-anchor="middle">Same two questions, real answers, two separate chains</text>
 
-  <!-- shared user turns -->
-  <rect x="60" y="50" width="200" height="34" rx="6" fill="#eef2ff" stroke="#c7d2fe"/>
-  <text x="160" y="71" text-anchor="middle" font-size="12.5" fill="#111827">User 1: "…body wash?"</text>
-
-  <rect x="620" y="50" width="220" height="34" rx="6" fill="#eef2ff" stroke="#c7d2fe"/>
-  <text x="730" y="71" text-anchor="middle" font-size="12.5" fill="#111827">User 2: "…sensitive skin?"</text>
-
-  <text x="460" y="71" text-anchor="middle" font-size="12.5" fill="#6b7280">(identical in both chains)</text>
+  <!-- Column x-positions -->
+  <!-- User1: 20-140   Answer1: 160-390   User2: 410-530   Answer2: 550-920 -->
 
   <!-- Baseline row -->
-  <text x="20" y="130" font-size="12" font-weight="600" fill="#1e3a8a">BASELINE</text>
-  <line x1="160" y1="84" x2="160" y2="138" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#drarrow)"/>
-  <rect x="60" y="140" width="200" height="36" rx="6" fill="#e0edff" stroke="#bfdbfe"/>
-  <text x="160" y="162" text-anchor="middle" font-size="12.5" fill="#111827">A1 (orig., GPT-3.5)</text>
+  <text x="20" y="66" font-size="12" font-weight="600" fill="#1e3a8a">BASELINE</text>
 
-  <line x1="260" y1="158" x2="618" y2="158" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#drarrow)"/>
-  <line x1="730" y1="84" x2="730" y2="138" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#drarrow)"/>
-  <rect x="620" y="140" width="220" height="36" rx="6" fill="#e0edff" stroke="#bfdbfe"/>
-  <text x="730" y="162" text-anchor="middle" font-size="12.5" fill="#111827">A2 (orig., GPT-3.5)</text>
-  <text x="440" y="152" text-anchor="middle" font-size="11.5" fill="#6b7280">GPT-3.5's own A1 feeds its A2</text>
+  <rect x="20" y="74" width="120" height="46" rx="6" fill="#eef2ff" stroke="#c7d2fe"/>
+  <text x="80" y="92" text-anchor="middle" font-size="10.5" fill="#374151">User 1: "…natural</text>
+  <text x="80" y="105" text-anchor="middle" font-size="10.5" fill="#374151">body wash?"</text>
+
+  <rect x="160" y="74" width="230" height="46" rx="6" fill="#e0edff" stroke="#bfdbfe"/>
+  <text x="275" y="90" text-anchor="middle" font-size="10.5" font-weight="600" fill="#1e3a8a">A1 (GPT-3.5):</text>
+  <text x="275" y="104" text-anchor="middle" font-size="10.5" fill="#111827">"I do not have a physical body...</text>
+  <text x="275" y="116" text-anchor="middle" font-size="10.5" fill="#111827">However, here's a recipe…"</text>
+
+  <rect x="410" y="74" width="120" height="46" rx="6" fill="#eef2ff" stroke="#c7d2fe"/>
+  <text x="470" y="92" text-anchor="middle" font-size="10.5" fill="#374151">User 2: "…oils for</text>
+  <text x="470" y="105" text-anchor="middle" font-size="10.5" fill="#374151">sensitive skin?"</text>
+
+  <rect x="550" y="74" width="230" height="46" rx="6" fill="#e0edff" stroke="#bfdbfe"/>
+  <text x="665" y="90" text-anchor="middle" font-size="10.5" font-weight="600" fill="#1e3a8a">A2 (GPT-3.5):</text>
+  <text x="665" y="104" text-anchor="middle" font-size="10.5" fill="#111827">"1. Lavender oil 2. Chamomile</text>
+  <text x="665" y="116" text-anchor="middle" font-size="10.5" fill="#111827">oil 3. Sandalwood oil…" (a list)</text>
+
+  <line x1="140" y1="97" x2="158" y2="97" stroke="#6b7280" stroke-width="1.5" marker-end="url(#drarrow)"/>
+  <line x1="390" y1="97" x2="408" y2="97" stroke="#6b7280" stroke-width="1.5" marker-end="url(#drarrow)"/>
+  <line x1="530" y1="97" x2="548" y2="97" stroke="#6b7280" stroke-width="1.5" marker-end="url(#drarrow)"/>
 
   <!-- Distilled row -->
-  <text x="20" y="240" font-size="12" font-weight="600" fill="#9a3412">DISTILLED</text>
-  <line x1="160" y1="84" x2="160" y2="248" stroke="#c2410c" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#drarrow-orange)"/>
-  <rect x="60" y="250" width="200" height="36" rx="6" fill="#ffedd5" stroke="#fdba74"/>
-  <text x="160" y="272" text-anchor="middle" font-size="12.5" fill="#111827">D1 (DeepSeek)</text>
+  <text x="20" y="200" font-size="12" font-weight="600" fill="#9a3412">DISTILLED</text>
 
-  <path d="M 260 268 C 400 268, 400 340, 620 268" fill="none" stroke="#c2410c" stroke-width="1.5" marker-end="url(#drarrow-orange)"/>
-  <text x="440" y="335" text-anchor="middle" font-size="11.5" fill="#9a3412">DeepSeek's OWN D1 feeds its D2 -- never GPT-3.5's A1</text>
+  <rect x="20" y="208" width="120" height="46" rx="6" fill="#eef2ff" stroke="#c7d2fe"/>
+  <text x="80" y="226" text-anchor="middle" font-size="10.5" fill="#374151">User 1: "…natural</text>
+  <text x="80" y="239" text-anchor="middle" font-size="10.5" fill="#374151">body wash?"</text>
 
-  <line x1="730" y1="84" x2="730" y2="248" stroke="#c2410c" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#drarrow-orange)"/>
-  <rect x="620" y="250" width="220" height="36" rx="6" fill="#ffedd5" stroke="#fdba74"/>
-  <text x="730" y="272" text-anchor="middle" font-size="12.5" fill="#111827">D2 (DeepSeek)</text>
+  <rect x="160" y="208" width="230" height="46" rx="6" fill="#ffedd5" stroke="#fdba74"/>
+  <text x="275" y="224" text-anchor="middle" font-size="10.5" font-weight="600" fill="#9a3412">D1 (DeepSeek):</text>
+  <text x="275" y="238" text-anchor="middle" font-size="10.5" fill="#111827">"Here's a solid DIY recipe,</text>
+  <text x="275" y="250" text-anchor="middle" font-size="10.5" fill="#111827">plus variations and tips…"</text>
 
-  <text x="20" y="310" font-size="12.5" fill="#374151">Same two questions in every chain. Each chain's answers come from one model, in the order it wrote them --</text>
-  <text x="20" y="328" font-size="12.5" fill="#374151">no chain ever mixes GPT-3.5's answer at one turn with DeepSeek's answer at the next.</text>
+  <rect x="410" y="208" width="120" height="46" rx="6" fill="#eef2ff" stroke="#c7d2fe"/>
+  <text x="470" y="226" text-anchor="middle" font-size="10.5" fill="#374151">User 2: "…oils for</text>
+  <text x="470" y="239" text-anchor="middle" font-size="10.5" fill="#374151">sensitive skin?"</text>
+
+  <rect x="550" y="208" width="230" height="46" rx="6" fill="#ffedd5" stroke="#fdba74"/>
+  <text x="665" y="224" text-anchor="middle" font-size="10.5" font-weight="600" fill="#9a3412">D2 (DeepSeek):</text>
+  <text x="665" y="238" text-anchor="middle" font-size="10.5" fill="#111827">"Lavender — the gold standard</text>
+  <text x="665" y="250" text-anchor="middle" font-size="10.5" fill="#111827">for sensitive skin…" (explained)</text>
+
+  <line x1="140" y1="231" x2="158" y2="231" stroke="#6b7280" stroke-width="1.5" marker-end="url(#drarrow)"/>
+  <line x1="390" y1="231" x2="408" y2="231" stroke="#6b7280" stroke-width="1.5" marker-end="url(#drarrow)"/>
+  <line x1="530" y1="231" x2="548" y2="231" stroke="#6b7280" stroke-width="1.5" marker-end="url(#drarrow)"/>
+  <text x="275" y="272" text-anchor="middle" font-size="11" fill="#9a3412">D2 is built from DeepSeek's OWN D1</text>
+
+  <!-- The forbidden mixing, stated as plain text next to D2 rather than a
+       connecting line: any path from A1 to D2 would cross the "identical"
+       connectors below, which reads as more confusing than clarifying -->
+  <text x="665" y="262" text-anchor="middle" font-size="11" font-weight="600" fill="#b91c1c">✕ D2 never uses A1 (GPT-3.5)</text>
+
+  <!-- Identical User turns, made explicit -->
+  <line x1="80" y1="122" x2="80" y2="206" stroke="#15803d" stroke-width="1.5" stroke-dasharray="2,3" marker-start="url(#drarrow-green)" marker-end="url(#drarrow-green)"/>
+  <rect x="46" y="153" width="68" height="16" fill="#ffffff"/>
+  <text x="80" y="165" text-anchor="middle" font-size="10.5" font-weight="600" fill="#15803d">identical</text>
+
+  <line x1="470" y1="122" x2="470" y2="206" stroke="#15803d" stroke-width="1.5" stroke-dasharray="2,3" marker-start="url(#drarrow-green)" marker-end="url(#drarrow-green)"/>
+  <rect x="436" y="153" width="68" height="16" fill="#ffffff"/>
+  <text x="470" y="165" text-anchor="middle" font-size="10.5" font-weight="600" fill="#15803d">identical</text>
+
+  <text x="20" y="315" font-size="12.5" fill="#374151">Both User boxes are identical text in both chains. Only who writes the answers differs --</text>
+  <text x="20" y="333" font-size="12.5" fill="#374151">and each chain only ever builds on its own prior answer, never the other chain's.</text>
 </svg>
