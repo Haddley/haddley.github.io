@@ -1,13 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 360" role="img"
-     aria-label="The baseline chain is User 1, then GPT-3.5's A1 which opens 'I do not have a physical body, however...', then User 2, then GPT-3.5's A2, a bare numbered list of oils. The distilled chain has the identical User 1 and User 2, but DeepSeek writes D1 and D2 instead -- D1 opens with a direct recipe, D2 frames lavender as 'the gold standard' -- with D2 built using DeepSeek's own D1, not GPT-3.5's A1. The two chains never mix: GPT-3.5's A1 never feeds DeepSeek's D2."
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 300" role="img"
+     aria-label="The baseline chain is User 1, then GPT-3.5's A1 which opens 'I do not have a physical body, however...', then User 2, then GPT-3.5's A2, a bare numbered list of oils. The distilled chain has the identical User 1 and User 2, but DeepSeek writes D1 and D2 instead -- D1 opens with a direct recipe, D2 frames lavender as 'the gold standard', built from DeepSeek's own D1 and never from GPT-3.5's A1."
      font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" style="max-width:100%;height:auto">
-  <rect width="940" height="360" fill="#ffffff"/>
+  <rect width="940" height="300" fill="#ffffff"/>
   <defs>
     <marker id="drarrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
       <path d="M0 0 L10 5 L0 10 z" fill="#6b7280"/>
-    </marker>
-    <marker id="drarrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M0 0 L10 5 L0 10 z" fill="#b91c1c"/>
     </marker>
     <marker id="drarrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M0 0 L10 5 L0 10 z" fill="#15803d"/>
@@ -60,20 +57,16 @@
   <text x="470" y="226" text-anchor="middle" font-size="10.5" fill="#374151">User 2: "…oils for</text>
   <text x="470" y="239" text-anchor="middle" font-size="10.5" fill="#374151">sensitive skin?"</text>
 
-  <rect x="550" y="208" width="230" height="46" rx="6" fill="#ffedd5" stroke="#fdba74"/>
+  <rect x="550" y="208" width="230" height="78" rx="6" fill="#ffedd5" stroke="#fdba74"/>
   <text x="665" y="224" text-anchor="middle" font-size="10.5" font-weight="600" fill="#9a3412">D2 (DeepSeek):</text>
-  <text x="665" y="238" text-anchor="middle" font-size="10.5" fill="#111827">"Lavender — the gold standard</text>
-  <text x="665" y="250" text-anchor="middle" font-size="10.5" fill="#111827">for sensitive skin…" (explained)</text>
+  <text x="665" y="237" text-anchor="middle" font-size="10.5" fill="#111827">"Lavender — the gold standard</text>
+  <text x="665" y="249" text-anchor="middle" font-size="10.5" fill="#111827">for sensitive skin…" (explained)</text>
+  <text x="665" y="264" text-anchor="middle" font-size="10" font-weight="600" fill="#9a3412">→ built from DeepSeek's own D1</text>
+  <text x="665" y="277" text-anchor="middle" font-size="10" font-weight="600" fill="#b91c1c">✕ never uses A1 (GPT-3.5)</text>
 
   <line x1="140" y1="231" x2="158" y2="231" stroke="#6b7280" stroke-width="1.5" marker-end="url(#drarrow)"/>
   <line x1="390" y1="231" x2="408" y2="231" stroke="#6b7280" stroke-width="1.5" marker-end="url(#drarrow)"/>
   <line x1="530" y1="231" x2="548" y2="231" stroke="#6b7280" stroke-width="1.5" marker-end="url(#drarrow)"/>
-  <text x="275" y="272" text-anchor="middle" font-size="11" fill="#9a3412">D2 is built from DeepSeek's OWN D1</text>
-
-  <!-- The forbidden mixing, stated as plain text next to D2 rather than a
-       connecting line: any path from A1 to D2 would cross the "identical"
-       connectors below, which reads as more confusing than clarifying -->
-  <text x="665" y="262" text-anchor="middle" font-size="11" font-weight="600" fill="#b91c1c">✕ D2 never uses A1 (GPT-3.5)</text>
 
   <!-- Identical User turns, made explicit -->
   <line x1="80" y1="122" x2="80" y2="206" stroke="#15803d" stroke-width="1.5" stroke-dasharray="2,3" marker-start="url(#drarrow-green)" marker-end="url(#drarrow-green)"/>
@@ -83,7 +76,4 @@
   <line x1="470" y1="122" x2="470" y2="206" stroke="#15803d" stroke-width="1.5" stroke-dasharray="2,3" marker-start="url(#drarrow-green)" marker-end="url(#drarrow-green)"/>
   <rect x="436" y="153" width="68" height="16" fill="#ffffff"/>
   <text x="470" y="165" text-anchor="middle" font-size="10.5" font-weight="600" fill="#15803d">identical</text>
-
-  <text x="20" y="315" font-size="12.5" fill="#374151">Both User boxes are identical text in both chains. Only who writes the answers differs --</text>
-  <text x="20" y="333" font-size="12.5" fill="#374151">and each chain only ever builds on its own prior answer, never the other chain's.</text>
 </svg>
