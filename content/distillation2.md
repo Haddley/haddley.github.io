@@ -1,5 +1,5 @@
 ---
-title: "Distillation 2"
+title: "Distillation"
 part: 2
 description: "Turning a pretrained base model into a chat model with LoRA on a 64GB Mac Studio, then testing whether a second teacher, DeepSeek, produces a better one than GPT-3.5 did"
 date: "2026-09-15"
