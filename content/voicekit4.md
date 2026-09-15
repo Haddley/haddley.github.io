@@ -9,8 +9,6 @@ slug: "voicekit4"
 image: "/assets/images/voicekit4/raspberry-pi-logo.svg"
 ---
 
-# Voice Kit 4
-
 ## Automatically Boot your Raspberry Pi 3 into Google Voice Assistant
 
 I opened a Terminal on the Raspberry Pi Desktop.

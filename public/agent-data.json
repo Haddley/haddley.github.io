@@ -578,7 +578,7 @@
     },
     {
       "slug": "voicekit4",
-      "title": "Voice Kit 4",
+      "title": "Voice Kit (Part 4)",
       "description": "Automatically Boot your Raspberry Pi 3 into Google Voice Assistant",
       "date": "2025-12-14",
       "categories": [
@@ -633,7 +633,7 @@
     },
     {
       "slug": "voicekit3",
-      "title": "Voice Kit 3",
+      "title": "Voice Kit (Part 3)",
       "description": "Adding Commands",
       "date": "2025-10-18",
       "categories": [
@@ -645,7 +645,7 @@
     },
     {
       "slug": "voicekit2",
-      "title": "Voice Kit 2",
+      "title": "Voice Kit (Part 2)",
       "description": "Google Assistant API",
       "date": "2025-10-16",
       "categories": [
@@ -657,7 +657,7 @@
     },
     {
       "slug": "voicekit",
-      "title": "Voice Kit",
+      "title": "Voice Kit (Part 1)",
       "description": "Raspberry Pi Voice Kit",
       "date": "2025-10-11",
       "categories": [
@@ -2738,5 +2738,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-09-15T00:42:23.342Z"
+  "generatedAt": "2026-09-15T03:21:06.031Z"
 }
