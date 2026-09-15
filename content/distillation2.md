@@ -23,7 +23,7 @@ Then it keeps going — inventing a new `User:` turn, describing a logo that doe
 
 ## Why LoRA, not full fine-tuning
 
-This machine is a 64GB M1 Max Mac Studio. Full fine-tuning of an 8B model needs bf16 weights (~16GB) plus fp32 master weights, fp32 gradients, and fp32 Adam momentum/variance on top — roughly 16 bytes/parameter of optimiser state alone, well over 100GB. Not close to fitting.
+This machine is a 64GB M1 Max Mac Studio. Just loading the model takes about 16GB. Fully fine-tuning it needs far more than that on top: training has to track how every one of the model's 8 billion numbers should change, plus a running history of those changes to keep the process stable — in effect, several extra full-size copies of the entire model held in memory at once, each more precise (and so larger) than the copy you'd use simply to run it. Add all of that up and it comes to well over 100GB. Not close to fitting.
 
 LoRA freezes the base weights and trains a small set of low-rank adapter matrices instead — 10.5M trainable parameters out of 8.03 billion, 0.131% of the model. Frozen bf16 weights plus adapters plus activations landed around 25–35GB in practice, comfortably inside the budget, and gave a real quality improvement over QLoRA's 4-bit-quantised alternative without the memory pressure that would have forced that trade-off.
 
