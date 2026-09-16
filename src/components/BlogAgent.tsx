@@ -144,7 +144,40 @@ function parseToolCalls(text: string): Array<{ name: string; arguments: Record<s
 type LoadStatus = 'idle' | 'loading' | 'ready' | 'unsupported' | 'error';
 
 interface LoadState { status: LoadStatus; progress: number; text: string }
-interface Message { role: 'user' | 'assistant'; content: string }
+interface TraceCall { name: string; arguments: Record<string, string>; result: string }
+interface TraceStep { round: number; thought?: string; calls?: TraceCall[] }
+interface Message { role: 'user' | 'assistant'; content: string; trace?: TraceStep[] }
+
+function AgentTrace({ trace }: { trace: TraceStep[] }) {
+  return (
+    <details style={{ marginTop: 8 }}>
+      <summary style={{ cursor: 'pointer', userSelect: 'none', fontSize: 11, color: '#888' }}>
+        🔍 Show working ({trace.length} step{trace.length === 1 ? '' : 's'})
+      </summary>
+      <div style={{ marginTop: 6, display: 'flex', flexDirection: 'column', gap: 8 }}>
+        {trace.map((step, si) => (
+          <div key={si} style={{ borderLeft: '2px solid #ddd', paddingLeft: 8 }}>
+            {step.thought && (
+              <div style={{ fontStyle: 'italic', color: '#999', fontSize: 11, marginBottom: 4, whiteSpace: 'pre-wrap' }}>
+                {step.thought}
+              </div>
+            )}
+            {step.calls?.map((c, ci) => (
+              <div key={ci} style={{ marginBottom: 4 }}>
+                <div style={{ color: '#556', fontSize: 11, fontFamily: 'monospace' }}>
+                  {c.name}({JSON.stringify(c.arguments)})
+                </div>
+                <div style={{ color: '#aaa', fontSize: 11, marginLeft: 10, whiteSpace: 'pre-wrap' }}>
+                  → {c.result}
+                </div>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </details>
+  );
+}
 
 function MessageContent({ text, onNavigate }: { text: string; onNavigate: (href: string) => void }) {
   const [html, setHtml] = useState('');
@@ -457,6 +490,7 @@ export default function BlogAgent() {
       let finalContent = '';
       const calledThisTurn = new Set<string>();
       let contentFetchCount = 0;
+      const trace: TraceStep[] = [];
 
       console.group(`[BlogAgent] turn — "${userText}"`);
       console.log('model:', selectedModel, '| history depth:', apiHistoryRef.current.length, '| page:', pageContext);
@@ -478,7 +512,10 @@ export default function BlogAgent() {
           throw err;
         }
 
-        const rawContent = (resp.choices[0].message.content ?? '').replace(/<think>[\s\S]*?<\/think>/g, '').trim();
+        const rawFull = resp.choices[0].message.content ?? '';
+        const thinkMatch = rawFull.match(/<think>([\s\S]*?)<\/think>/);
+        const thought = thinkMatch?.[1]?.trim() || undefined;
+        const rawContent = rawFull.replace(/<think>[\s\S]*?<\/think>/g, '').trim();
         console.log(`round ${round} — raw:`, rawContent.slice(0, 300));
 
         // Strip preamble text before the first tool call marker — model sometimes narrates first
@@ -495,13 +532,14 @@ export default function BlogAgent() {
             .replace(/https?:\/\/[^\s/)]+(\/(posts|categories)[^\s)]*)/g, '$1')
             .trim();
           console.log('text response:', finalContent.slice(0, 200));
+          if (thought) trace.push({ round, thought });
           break;
         }
 
         const names = toolCalls.map(tc =>
           tc.name === 'web_search' ? '🌐 web search' : `🔍 ${tc.name.replace(/_/g, ' ')}`
         ).join(', ');
-        setToolStatus(`${names}…`);
+        setToolStatus(thought ? `🤔 ${thought.slice(0, 60)}${thought.length > 60 ? '…' : ''} → ${names}…` : `${names}…`);
         apiMsgs.push({ role: 'assistant', content: rawContent });
 
         const resultParts: string[] = [];
@@ -530,6 +568,16 @@ export default function BlogAgent() {
           resultParts.push(result);
         }
 
+        trace.push({
+          round,
+          thought,
+          calls: toolCalls.map((tc, idx) => ({
+            name: tc.name,
+            arguments: tc.arguments,
+            result: (resultParts[idx] ?? '').slice(0, 240) + ((resultParts[idx]?.length ?? 0) > 240 ? '…' : ''),
+          })),
+        });
+
         const allDuplicates = resultParts.every(r => r.startsWith('You already called'));
         const isLastRound = round >= MAX_TOOL_ROUNDS - 2;
         apiMsgs.push({
@@ -546,12 +594,16 @@ export default function BlogAgent() {
         console.log('loop exhausted — final nudge');
         try {
           const finalResp = await engine.chat.completions.create({ messages: [...apiMsgs] });
-          const raw = finalResp.choices[0].message.content?.trim() ?? '';
+          const rawFull = finalResp.choices[0].message.content ?? '';
+          const thinkMatch = rawFull.match(/<think>([\s\S]*?)<\/think>/);
+          const thought = thinkMatch?.[1]?.trim() || undefined;
+          const raw = rawFull.replace(/<think>[\s\S]*?<\/think>/g, '').trim();
           finalContent = raw
             .replace(/```(?:json)?\s*[\s\S]*?```/g, '')
             .replace(/<tool_call>[\s\S]*?<\/tool_call>/g, '')
             .replace(/https?:\/\/[^\s/)]+(\/(posts|categories)[^\s)]*)/g, '$1')
             .trim();
+          if (thought) trace.push({ round: MAX_TOOL_ROUNDS, thought });
           console.log('nudge response:', finalContent.slice(0, 200));
         } catch (err: unknown) {
           if (!(err instanceof Error && (err.name === 'AbortError' || err.message.toLowerCase().includes('interrupt')))) throw err;
@@ -562,7 +614,7 @@ export default function BlogAgent() {
       console.groupEnd();
 
       if (finalContent) {
-        const assistantMsg: Message = { role: 'assistant', content: finalContent };
+        const assistantMsg: Message = { role: 'assistant', content: finalContent, trace: trace.length ? trace : undefined };
         setMessages(prev => [...prev, assistantMsg]);
         turnMsgs.push(assistantMsg);
       }
@@ -738,7 +790,10 @@ export default function BlogAgent() {
                     color: msg.role === 'user' ? '#fff' : '#222',
                   }}>
                     {msg.role === 'assistant'
-                      ? <MessageContent text={msg.content} onNavigate={url => { router.push(url); setIsOpen(false); }} />
+                      ? <>
+                          <MessageContent text={msg.content} onNavigate={url => { router.push(url); setIsOpen(false); }} />
+                          {msg.trace && msg.trace.length > 0 && <AgentTrace trace={msg.trace} />}
+                        </>
                       : msg.content
                     }
                   </div>

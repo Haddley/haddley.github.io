@@ -196,6 +196,42 @@ test.describe('Blog Agent — <tool_call> tag fallback', () => {
 });
 
 // ---------------------------------------------------------------------------
+// Reasoning trace ("Show working")
+// ---------------------------------------------------------------------------
+
+test.describe('Blog Agent — reasoning trace', () => {
+  test('exposes <think> reasoning and tool calls behind a details toggle', async ({ page }) => {
+    await injectMockEngine(page, [
+      '<think>The user wants Java posts, I should search by category.</think>\n```json\n{"name":"get_posts_by_category","arguments":{"category":"Java"}}\n```',
+      'Here are the Java posts on the blog.',
+    ]);
+    await page.goto('/');
+    await openAndLoad(page);
+    await sendMessage(page, 'Any Java posts?');
+    await waitForResponse(page);
+
+    // <think> content must not leak into the visible answer
+    await expect(page.getByText('I should search by category')).not.toBeVisible();
+
+    const toggle = page.getByText(/Show working/);
+    await expect(toggle).toBeVisible();
+    await toggle.click();
+
+    await expect(page.getByText('The user wants Java posts, I should search by category.')).toBeVisible();
+    await expect(page.getByText('get_posts_by_category({"category":"Java"})')).toBeVisible();
+  });
+
+  test('no trace toggle when the model answers directly with no tool calls or reasoning', async ({ page }) => {
+    await injectMockEngine(page, ['WebGPU is a modern web API.']);
+    await page.goto('/');
+    await openAndLoad(page);
+    await sendMessage(page, 'What is WebGPU?');
+    await waitForResponse(page);
+    await expect(page.getByText(/Show working/)).not.toBeVisible();
+  });
+});
+
+// ---------------------------------------------------------------------------
 // Multi-turn conversation
 // ---------------------------------------------------------------------------
 
