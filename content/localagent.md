@@ -149,10 +149,6 @@ Getting from "Ollama running on a Mac mini" to "a public website can call it" to
 
 **Plain HTTP isn't enough.** Ollama serves plain HTTP. Browsers block "mixed content" — an HTTPS page (this site, always, on GitHub Pages) cannot call a plain `http://` address at all, regardless of CORS. The fix is a reverse proxy that terminates real HTTPS in front of Ollama. I used [Caddy](https://caddyserver.com), which gets and renews a [Let's Encrypt](https://letsencrypt.org) certificate automatically once it has a real domain to issue one for.
 
-**Port 443 was already taken.** My router reserves port 443 externally for its own admin interface, so it refused to forward it to the Mac mini. The fix is a port *translation*: the router forwards external port 8443 to the Mac mini's internal port 443, where Caddy still listens normally. The public address ends up as `https://ollama.haddley.net:8443` — the non-standard port is the visible trace of that router constraint.
-
-**A misleading "connection refused."** After all of that was configured, every test I ran from my own machine still failed. The router's virtual server rule had **LAN Loopback** (NAT hairpinning) disabled — a setting that specifically blocks devices *on the same home network* from reaching the router's own public IP and being routed back inside. My own tests were hitting exactly that restriction; a genuinely external visitor was never affected by it. Enabling LAN Loopback on that rule made my own tests finally match reality.
-
 **CORS is separate from HTTPS.** Ollama checks the request's `Origin` header itself and rejects anything not explicitly allowed via its `OLLAMA_ORIGINS` environment variable — this has nothing to do with the HTTPS certificate, and getting HTTPS working did not automatically fix it. Setting `OLLAMA_ORIGINS` to this site's origin was a separate, required step.
 
 ### Locking It Down
