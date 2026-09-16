@@ -619,8 +619,8 @@ export default function BlogAgent() {
       {isOpen && (
         <div style={{
           position: 'fixed', bottom: 92, right: 24, zIndex: 9998,
-          width: 'min(360px, calc(100vw - 32px))',
-          maxHeight: 'min(520px, calc(100vh - 120px))',
+          width: 'min(720px, calc(100vw - 32px))',
+          maxHeight: 'min(1040px, calc(100vh - 120px))',
           background: '#fff', borderRadius: 14,
           boxShadow: '0 8px 40px rgba(0,0,0,0.18)',
           display: 'flex', flexDirection: 'column', overflow: 'hidden',
