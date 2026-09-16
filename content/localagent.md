@@ -10,7 +10,7 @@ slug: "localagent"
 
 # Adding a Local AI Agent to This Blog
 
-I've added a conversational AI assistant to this blog — the 💬 button in the bottom-right corner of every page. It runs with no cloud API fees, using one of three model backends: **WebLLM** (in-browser, no setup), **Ollama** (local server, larger models, dev-only), or **Hosted** (a real Ollama server I run at home, reachable by any visitor over HTTPS).
+I've added a conversational AI assistant to this blog — the 💬 button in the bottom-right corner of every page. It runs with no cloud API fees, using one of three model backends: **WebLLM** (in-browser, no setup), **Ollama** (local server, larger models, dev-only), or **Hosted** (a real Ollama server I run and manage, reachable by any visitor over HTTPS).
 
 ![](assets/images/localagent/chat-bubble.png)
 *The chat button appears on every page — click it to open the assistant panel. The "Blog AI Assistant" title in the panel header links back to this post.*
@@ -22,11 +22,11 @@ I've added a conversational AI assistant to this blog — the 💬 button in the
 | **Setup** | None — loads in the browser | Install Ollama, pull a model, run the site locally | None — always on, I run the server |
 | **Browser support** | Chrome / Edge with WebGPU | Any browser | Any browser |
 | **Model sizes** | Up to 7B (browser VRAM limits) | Up to 27B (Qwen3.5) | Qwen3.5, 0.8B–9B |
-| **Inference speed** | Depends on GPU via WebGPU | Native — generally faster | Native, on my Mac mini — shared across all visitors |
+| **Inference speed** | Depends on GPU via WebGPU | Native — generally faster | Native, on my server — shared across all visitors |
 | **Works for visitors** | Yes | No — only visible when running the site locally | Yes |
 | **Model storage** | Browser cache (per device) | Local disk, shared across apps | My server's disk — nothing downloaded to your device |
 
-WebLLM is the right choice for anyone visiting the public site who wants the request handled entirely on their own device — it just works, and nothing leaves the browser except the blog's own post data. Hosted is the other option that works for visitors — no download at all, native inference speed, at the cost of every request going to my home server instead of staying on-device. Ollama is for local development, giving access to the largest model (27B) without the browser download.
+WebLLM is the right choice for anyone visiting the public site who wants the request handled entirely on their own device — it just works, and nothing leaves the browser except the blog's own post data. Hosted is the other option that works for visitors — no download at all, native inference speed, at the cost of every request going to my server instead of staying on-device. Ollama is for local development, giving access to the largest model (27B) without the browser download.
 
 ## WebLLM
 
@@ -141,11 +141,11 @@ npm run dev
 
 ## Hosted
 
-The third backend is Ollama again, but not on the visitor's own machine — it runs on a Mac mini at home, and any visitor to the public site can use it. No install, no `npm run dev`, no browser download. This is the option Private Network Access can't block, because it was never a request to a private address: it goes to a real public hostname with its own domain and a genuine HTTPS certificate, exactly like any other API this site might call.
+The third backend is Ollama again, but not on the visitor's own machine — it runs on a server I manage, and any visitor to the public site can use it. No install, no `npm run dev`, no browser download. This is the option Private Network Access can't block, because it was never a request to a private address: it goes to a real public hostname with its own domain and a genuine HTTPS certificate, exactly like any other API this site might call.
 
 ### Why This Needed More Than Just Ollama
 
-Getting from "Ollama running on a Mac mini" to "a public website can call it" took several real infrastructure steps, each one solving a problem the previous step exposed:
+Getting from "Ollama running on a server" to "a public website can call it" took several real infrastructure steps, each one solving a problem the previous step exposed:
 
 **Plain HTTP isn't enough.** Ollama serves plain HTTP. Browsers block "mixed content" — an HTTPS page (this site, always, on GitHub Pages) cannot call a plain `http://` address at all, regardless of CORS. The fix is a reverse proxy that terminates real HTTPS in front of Ollama. I used [Caddy](https://caddyserver.com), which gets and renews a [Let's Encrypt](https://letsencrypt.org) certificate automatically once it has a real domain to issue one for.
 
@@ -184,7 +184,7 @@ The same four Qwen3.5 sizes as the local Ollama option, minus the 27B:
 | qwen3.5:2b | Fast · Hosted |
 | qwen3.5:0.8b | Fastest · Hosted |
 
-27B was the original plan, and it downloads and runs fine directly on the Mac mini — but through this chat widget, a one-word reply took over three minutes and I gave up waiting. A 27-billion-parameter model needs real GPU throughput to feel responsive in a live chat interface; asking visitors to wait minutes per reply isn't a reasonable trade for the quality gain, so 9B is the ceiling here.
+27B was the original plan, and it downloads and runs fine directly on the server — but through this chat widget, a one-word reply took over three minutes and I gave up waiting. A 27-billion-parameter model needs real GPU throughput to feel responsive in a live chat interface; asking visitors to wait minutes per reply isn't a reasonable trade for the quality gain, so 9B is the ceiling here.
 
 ## How It Works
 
