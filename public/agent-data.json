@@ -259,7 +259,7 @@
     {
       "slug": "localagent",
       "title": "Local Agent",
-      "description": "A conversational AI assistant for this blog using WebLLM (in-browser) and Ollama (local server) as interchangeable backends",
+      "description": "A conversational AI assistant for this blog using WebLLM (in-browser), Ollama (local server), and a self-hosted Ollama server (public, HTTPS) as interchangeable backends",
       "date": "2026-06-14",
       "categories": [
         "AI"
@@ -2738,5 +2738,5 @@
       "tags": "docker, containers, dockerfile, cli"
     }
   ],
-  "generatedAt": "2026-09-16T03:31:29.284Z"
+  "generatedAt": "2026-09-16T07:22:51.453Z"
 }
