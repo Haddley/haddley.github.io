@@ -1,6 +1,6 @@
 ---
 title: "Local Agent"
-description: "A conversational AI assistant for this blog using WebLLM (in-browser) and Ollama (local server) as interchangeable backends"
+description: "A conversational AI assistant for this blog using WebLLM (in-browser), Ollama (local server), and a self-hosted Ollama server (public, HTTPS) as interchangeable backends"
 date: "2026-06-14"
 categories: ["AI"]
 image: "/assets/images/localagent/webllm-local-agent.svg"
@@ -10,23 +10,23 @@ slug: "localagent"
 
 # Adding a Local AI Agent to This Blog
 
-I've added a conversational AI assistant to this blog — the 💬 button in the bottom-right corner of every page. It runs entirely locally with no backend and no API fees, using one of two model backends: **WebLLM** (in-browser, no setup) or **Ollama** (local server, larger models).
+I've added a conversational AI assistant to this blog — the 💬 button in the bottom-right corner of every page. It runs with no cloud API fees, using one of three model backends: **WebLLM** (in-browser, no setup), **Ollama** (local server, larger models, dev-only), or **Hosted** (a real Ollama server I run at home, reachable by any visitor over HTTPS).
 
 ![](assets/images/localagent/chat-bubble.png)
 *The chat button appears on every page — click it to open the assistant panel. The "Blog AI Assistant" title in the panel header links back to this post.*
 
 ## Choosing a Backend
 
-| | WebLLM | Ollama |
-|---|---|---|
-| **Setup** | None — loads in the browser | Install Ollama, pull a model, run the site locally |
-| **Browser support** | Chrome / Edge with WebGPU | Any browser |
-| **Model sizes** | Up to 7B (browser VRAM limits) | Up to 27B (Qwen3.5) |
-| **Inference speed** | Depends on GPU via WebGPU | Native — generally faster |
-| **Works for visitors** | Yes | No — only visible when running the site locally |
-| **Model storage** | Browser cache (per device) | Local disk, shared across apps |
+| | WebLLM | Ollama | Hosted |
+|---|---|---|---|
+| **Setup** | None — loads in the browser | Install Ollama, pull a model, run the site locally | None — always on, I run the server |
+| **Browser support** | Chrome / Edge with WebGPU | Any browser | Any browser |
+| **Model sizes** | Up to 7B (browser VRAM limits) | Up to 27B (Qwen3.5) | Qwen3.5, 0.8B–9B |
+| **Inference speed** | Depends on GPU via WebGPU | Native — generally faster | Native, on my Mac mini — shared across all visitors |
+| **Works for visitors** | Yes | No — only visible when running the site locally | Yes |
+| **Model storage** | Browser cache (per device) | Local disk, shared across apps | My server's disk — nothing downloaded to your device |
 
-WebLLM is the right choice for anyone visiting the public site — it just works. Ollama is better for local development, giving access to larger, faster models without the browser download.
+WebLLM is the right choice for anyone visiting the public site who wants the request handled entirely on their own device — it just works, and nothing leaves the browser except the blog's own post data. Hosted is the other option that works for visitors — no download at all, native inference speed, at the cost of every request going to my home server instead of staying on-device. Ollama is for local development, giving access to the largest model (27B) without the browser download.
 
 ## WebLLM
 
@@ -115,7 +115,7 @@ Five Qwen3.5 sizes are available in the agent:
 
 ### Local Dev Only
 
-The Ollama option only appears when the site is running locally. Chrome and Edge enforce a **Private Network Access** policy that blocks requests from public HTTPS pages to `localhost` — there is no workaround for the public URL.
+The Ollama option only appears when the site is running locally. Chrome and Edge enforce a **Private Network Access** policy that blocks requests from public HTTPS pages to `localhost` specifically — there is no workaround for reaching an actual `localhost` address from the deployed site. The Hosted backend below solves the same underlying problem a different way: instead of trying to reach a private address, it points at a real public hostname with its own HTTPS certificate, which was never a private-network request in the first place.
 
 To use Ollama models, run the site locally:
 
@@ -139,11 +139,62 @@ npm run dev
 ![](assets/images/localagent/java-category-summary.png)
 *After seven rounds of tool use the agent produced a formatted Java Category Summary with links to all six Spring Boot posts*
 
+## Hosted
+
+The third backend is Ollama again, but not on the visitor's own machine — it runs on a Mac mini at home, and any visitor to the public site can use it. No install, no `npm run dev`, no browser download. This is the option Private Network Access can't block, because it was never a request to a private address: it goes to a real public hostname with its own domain and a genuine HTTPS certificate, exactly like any other API this site might call.
+
+### Why This Needed More Than Just Ollama
+
+Getting from "Ollama running on a Mac mini" to "a public website can call it" took several real infrastructure steps, each one solving a problem the previous step exposed:
+
+**Plain HTTP isn't enough.** Ollama serves plain HTTP. Browsers block "mixed content" — an HTTPS page (this site, always, on GitHub Pages) cannot call a plain `http://` address at all, regardless of CORS. The fix is a reverse proxy that terminates real HTTPS in front of Ollama. I used [Caddy](https://caddyserver.com), which gets and renews a [Let's Encrypt](https://letsencrypt.org) certificate automatically once it has a real domain to issue one for.
+
+**Port 443 was already taken.** My router reserves port 443 externally for its own admin interface, so it refused to forward it to the Mac mini. The fix is a port *translation*: the router forwards external port 8443 to the Mac mini's internal port 443, where Caddy still listens normally. The public address ends up as `https://ollama.haddley.net:8443` — the non-standard port is the visible trace of that router constraint.
+
+**A misleading "connection refused."** After all of that was configured, every test I ran from my own machine still failed. The router's virtual server rule had **LAN Loopback** (NAT hairpinning) disabled — a setting that specifically blocks devices *on the same home network* from reaching the router's own public IP and being routed back inside. My own tests were hitting exactly that restriction; a genuinely external visitor was never affected by it. Enabling LAN Loopback on that rule made my own tests finally match reality.
+
+**CORS is separate from HTTPS.** Ollama checks the request's `Origin` header itself and rejects anything not explicitly allowed via its `OLLAMA_ORIGINS` environment variable — this has nothing to do with the HTTPS certificate, and getting HTTPS working did not automatically fix it. Setting `OLLAMA_ORIGINS` to this site's origin was a separate, required step.
+
+### Locking It Down
+
+An Ollama server reachable from the entire internet is also reachable by anyone else's scanner or script, not just this blog's own JavaScript. Two things reduce that surface, without requiring visitors to log in or authenticate:
+
+- **Caddy only proxies the three routes the agent actually needs** — `/v1/chat/completions`, `/api/version`, `/api/tags`. Ollama's more dangerous endpoints, like `/api/pull` (download an arbitrary model) or `/api/delete` (remove one), simply aren't reachable through the proxy at all, regardless of what a request contains.
+- **Every request carries a custom header** the site's JavaScript sends, which Caddy requires before proxying anything. This is not real secrecy — the value sits in this page's own public JS bundle, readable by anyone who opens their browser's dev tools. What it does stop is the automated background scanners that constantly probe the internet for open Ollama instances, since they have no reason to send a header specific to this site.
+
+The whole thing is a single site block. Caddy's matcher syntax combines multiple conditions inside one `@name { }` block with AND logic — so this matcher only matches a request that has *both* an allowed path *and* the correct header, and anything else falls through to the `respond 403`:
+
+```
+ollama.haddley.net {
+    @allowed {
+        path /v1/chat/completions /api/version /api/tags
+        header X-Site-Key "<redacted>"
+    }
+    reverse_proxy @allowed localhost:11434
+    respond 403
+}
+```
+
+`reverse_proxy` only fires for requests matching `@allowed`; every other request — wrong path, missing header, or both — never reaches Ollama at all and just gets the `403`. Caddy handles obtaining and renewing the Let's Encrypt certificate for `ollama.haddley.net` automatically in the background; there's no separate certbot step or renewal cron job to maintain.
+
+### Model Sizes
+
+The same four Qwen3.5 sizes as the local Ollama option, minus the 27B:
+
+| Model | Note |
+|-------|------|
+| qwen3.5:9b | Hosted · default |
+| qwen3.5:4b | Balanced · Hosted |
+| qwen3.5:2b | Fast · Hosted |
+| qwen3.5:0.8b | Fastest · Hosted |
+
+27B was the original plan, and it downloads and runs fine directly on the Mac mini — but through this chat widget, a one-word reply took over three minutes and I gave up waiting. A 27-billion-parameter model needs real GPU throughput to feel responsive in a live chat interface; asking visitors to wait minutes per reply isn't a reasonable trade for the quality gain, so 9B is the ceiling here.
+
 ## How It Works
 
 The agent is a React component (`BlogAgent.tsx`) mounted in the Next.js layout, so it appears on every page. Post metadata is pre-built at deploy time into `agent-data.json`, which the component fetches when the panel first opens.
 
-Both backends implement the same interface so the agent loop runs identically regardless of which is active. For WebLLM:
+All three backends implement the same interface so the agent loop runs identically regardless of which is active. For WebLLM:
 
 ```typescript
 const { CreateMLCEngine } = await import('@mlc-ai/web-llm');
@@ -174,6 +225,17 @@ const engine = {
   },
   interruptGenerate: () => controller?.abort(),
 };
+```
+
+The Hosted backend uses the identical wrapper, pointed at the public HTTPS host instead, with the site-key header Caddy requires:
+
+```typescript
+const r = await fetch('https://ollama.haddley.net:8443/v1/chat/completions', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json', 'X-Site-Key': REMOTE_SITE_KEY },
+  body: JSON.stringify({ model: modelName, messages, stream: false }),
+  signal: controller.signal,
+});
 ```
 
 ### Tools
@@ -228,3 +290,5 @@ Because WebLLM's native tools API only supports a fixed set of Hermes models, I 
 - [Jina AI — web search API](https://jina.ai)
 - [WebGPU API — MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/WebGPU_API)
 - [Private Network Access — Chrome for Developers](https://developer.chrome.com/blog/private-network-access-update)
+- [Caddy — automatic HTTPS reverse proxy](https://caddyserver.com)
+- [Let's Encrypt](https://letsencrypt.org)
