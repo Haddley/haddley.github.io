@@ -173,6 +173,41 @@ ollama.haddley.net {
 
 `reverse_proxy` only fires for requests matching `@allowed`; every other request — wrong path, missing header, or both — never reaches Ollama at all and just gets the `403`. Caddy handles obtaining and renewing the Let's Encrypt certificate for `ollama.haddley.net` automatically in the background; there's no separate certbot step or renewal cron job to maintain.
 
+### A CORS Preflight Bug
+
+The Caddyfile above shipped with a bug I did not catch until testing the Hosted backend from the deployed site rather than localhost: it did not work at all. Every request to `ollama.haddley.net` failed in the browser console with a CORS error, even though `OLLAMA_ORIGINS` was correctly configured and the site key was correctly sent.
+
+The cause was the header matcher itself. `X-Site-Key` is a non-simple header, so the browser does not send it directly on a cross-origin request — it first sends a preflight `OPTIONS` request, and only announces the header it intends to send via `Access-Control-Request-Headers`. The actual `X-Site-Key` value never appears on the preflight request, only on the real request that follows it. My `@allowed` matcher required the header on every request without exception, so it rejected the preflight and Caddy returned the bare `403` — with no CORS headers on it at all. The browser then blocked the real request before ever sending it, since the preflight had failed.
+
+The fix is to answer preflight requests separately, before the site-key check, since the browser cannot satisfy that check on a preflight by design:
+
+```
+ollama.haddley.net {
+    @preflight {
+        method OPTIONS
+        path /v1/chat/completions /api/version /api/tags
+    }
+    @allowed {
+        path /v1/chat/completions /api/version /api/tags
+        header X-Site-Key "<redacted>"
+    }
+    route {
+        header @preflight Access-Control-Allow-Origin "https://haddley.github.io"
+        header @preflight Access-Control-Allow-Methods "GET, POST, OPTIONS"
+        header @preflight Access-Control-Allow-Headers "Content-Type, X-Site-Key"
+        respond @preflight 204
+
+        reverse_proxy @allowed 127.0.0.1:11434 {
+            header_up Host localhost:11434
+            header_down Access-Control-Allow-Origin "https://haddley.github.io"
+        }
+        respond 403
+    }
+}
+```
+
+The `route` block runs its directives in the order written, instead of Caddy's usual fixed directive order — that matters here, since the preflight has to be answered before the request ever reaches the `@allowed` check. `respond @preflight 204` handles the `OPTIONS` request directly in Caddy, with the CORS headers a browser needs to proceed, and never touches Ollama at all. The real `GET` or `POST` that follows still has to match `@allowed` and carry the site key, so the scanner protection is unchanged. `header_up Host localhost:11434` rewrites the Host header Ollama sees on the proxied request, and `header_down` pins `Access-Control-Allow-Origin` on that response too, so both the preflight and the real request agree on the same origin.
+
 ### Model Sizes
 
 The same four Qwen3.5 sizes as the local Ollama option, minus the 27B:
