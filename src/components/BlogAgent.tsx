@@ -19,7 +19,10 @@ import {
 } from '@/lib/agent-tools';
 
 const MODELS = [
-  { id: 'remote:qwen3.8:27b',                 label: 'Qwen3.8 27B',  size: '',      note: 'Self-hosted · default' },
+  { id: 'remote:qwen3.5:9b',                  label: 'Qwen3.5 9B',   size: '',      note: 'Hosted · default' },
+  { id: 'remote:qwen3.5:4b',                  label: 'Qwen3.5 4B',   size: '',      note: 'Hosted · balanced' },
+  { id: 'remote:qwen3.5:2b',                  label: 'Qwen3.5 2B',   size: '',      note: 'Hosted · fast' },
+  { id: 'remote:qwen3.5:0.8b',                label: 'Qwen3.5 0.8B', size: '',      note: 'Hosted · fastest' },
   { id: 'Qwen2.5-7B-Instruct-q4f16_1-MLC',   label: 'Qwen2.5 7B',   size: '~4 GB', note: 'Best quality · WebLLM' },
   { id: 'Qwen2.5-3B-Instruct-q4f16_1-MLC',   label: 'Qwen2.5 3B',   size: '~2 GB', note: 'Balanced · WebLLM' },
   { id: 'Qwen2.5-1.5B-Instruct-q4f16_1-MLC', label: 'Qwen2.5 1.5B', size: '~1 GB', note: 'Fast · WebLLM' },
@@ -36,15 +39,19 @@ const OLLAMA_BASE = 'http://localhost:11434/v1';
 const isOllama = (id: string) => id.startsWith('ollama:');
 const ollamaModelName = (id: string) => id.replace(/^ollama:/, '');
 // Self-hosted remote Ollama-compatible server, reachable from any visitor (not
-// gated to localhost like the ollama: models above). IMPORTANT: this endpoint
-// is plain HTTP. Browsers block "mixed content" -- an HTTPS page (this site,
-// always, on GitHub Pages) cannot call a plain http:// URL at all, regardless
-// of CORS. This will only work once an HTTPS reverse proxy (e.g. Caddy/nginx
-// with a real certificate) sits in front of it, AND the Ollama server's
-// OLLAMA_ORIGINS env var is set to allow this site's origin. Until then,
-// selecting it will surface the same "blocked by browser security" error the
-// ollama: case already shows for localhost on a public deployment.
-const REMOTE_OLLAMA_HOST = 'http://144.6.201.164:11434';
+// gated to localhost like the ollama: models above). Served over HTTPS via a
+// Caddy reverse proxy in front of the Mac mini's Ollama instance (port 8443,
+// forwarded through the router to Caddy on port 443 -- 443 itself was taken
+// by the router's own admin UI). OLLAMA_ORIGINS on the server is set to allow
+// this site's origin, confirmed via the access-control-allow-origin header.
+const REMOTE_OLLAMA_HOST = 'https://ollama.haddley.net:8443';
+// Sent as X-Site-Key on every request to REMOTE_OLLAMA_HOST. Caddy only proxies
+// requests carrying this exact header (see the Caddyfile), which stops the
+// automated scanners that constantly probe the internet for open Ollama
+// instances -- they won't send this. It is NOT a real secret: anyone who reads
+// this bundle (as you are right now) can see it, so it does nothing against a
+// person specifically targeting this site, only against opportunistic bots.
+const REMOTE_SITE_KEY = '9a85358469931628d4dc485da9d9f1ad3964df3a4c5825ae';
 const isRemoteOllama = (id: string) => id.startsWith('remote:');
 const remoteOllamaModelName = (id: string) => id.replace(/^remote:/, '');
 const isLocalhost = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
@@ -191,7 +198,7 @@ export default function BlogAgent() {
       const saved = localStorage.getItem('agent-model');
       if (VISIBLE_MODELS.some(m => m.id === saved)) return saved as ModelId;
     }
-    return 'remote:qwen3.8:27b';
+    return 'remote:qwen3.5:9b';
   });
 
   const engineRef = useRef<InferenceEngine | null>(null);
@@ -246,9 +253,10 @@ export default function BlogAgent() {
       const base = remote ? `${REMOTE_OLLAMA_HOST}/v1` : OLLAMA_BASE;
       const modelName = remote ? remoteOllamaModelName(selectedModel) : ollamaModelName(selectedModel);
       setLoadState({ status: 'loading', progress: 0, text: remote ? 'Connecting to self-hosted model…' : 'Connecting to Ollama…' });
+      const remoteHeaders: Record<string, string> = remote ? { 'X-Site-Key': REMOTE_SITE_KEY } : {};
       try {
-        const ping = await fetch(`${host}/api/version`);
-        if (!ping.ok) throw new Error(remote ? 'Self-hosted server is not reachable.' : 'Ollama is not running. Start it with: ollama serve');
+        const ping = await fetch(`${host}/api/version`, { headers: remoteHeaders });
+        if (!ping.ok) throw new Error(remote ? 'Hosted server is not reachable.' : 'Ollama is not running. Start it with: ollama serve');
         let currentController: AbortController | null = null;
         engineRef.current = {
           chat: {
@@ -258,7 +266,7 @@ export default function BlogAgent() {
                 try {
                   const r = await fetch(`${base}/chat/completions`, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: { 'Content-Type': 'application/json', ...remoteHeaders },
                     body: JSON.stringify({ model: modelName, messages, stream: false }),
                     signal: currentController.signal,
                   });
@@ -275,11 +283,13 @@ export default function BlogAgent() {
         localStorage.setItem('agent-model', selectedModel);
         setLoadState({ status: 'ready', progress: 100, text: '' });
       } catch (err) {
-        const onPublicSite = window.location.protocol === 'https:' && window.location.hostname !== 'localhost';
+        // The remote: endpoint is served over real HTTPS with CORS configured, so
+        // unlike the localhost-only ollama: models it isn't blocked by browser
+        // security on a public deployment -- a failure here is a genuine error
+        // (server down, model not pulled yet, etc.), not a mixed-content issue.
+        const onPublicSite = !remote && window.location.protocol === 'https:' && window.location.hostname !== 'localhost';
         const text = onPublicSite
-          ? (remote
-              ? 'This self-hosted model is served over plain HTTP, which browsers block from an HTTPS page (mixed content). It needs an HTTPS reverse proxy in front of it before it will work here.'
-              : 'Ollama is blocked by browser security when accessed from a public URL. Run the site locally (npm run dev → localhost:3000) to use Ollama models.')
+          ? 'Ollama is blocked by browser security when accessed from a public URL. Run the site locally (npm run dev → localhost:3000) to use Ollama models.'
           : err instanceof Error ? err.message : 'Failed to connect. Is the server running?';
         setLoadState({ status: 'error', progress: 0, text });
       }
