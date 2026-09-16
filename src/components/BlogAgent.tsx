@@ -619,7 +619,7 @@ export default function BlogAgent() {
       {isOpen && (
         <div style={{
           position: 'fixed', bottom: 92, right: 24, zIndex: 9998,
-          width: 'min(720px, calc(100vw - 32px))',
+          width: 'min(560px, calc(100vw - 32px))',
           maxHeight: 'min(1040px, calc(100vh - 120px))',
           background: '#fff', borderRadius: 14,
           boxShadow: '0 8px 40px rgba(0,0,0,0.18)',
@@ -761,9 +761,9 @@ export default function BlogAgent() {
                   placeholder="Ask about the blog…"
                   disabled={isThinking}
                   style={{
-                    flex: 1, padding: '8px 12px',
+                    flex: 1, minWidth: 0, padding: '8px 12px',
                     border: '1px solid #ddd', borderRadius: 20,
-                    fontSize: 13, outline: 'none',
+                    fontSize: 16, outline: 'none',
                     background: isThinking ? '#f9f9f9' : '#fff',
                   }}
                 />
