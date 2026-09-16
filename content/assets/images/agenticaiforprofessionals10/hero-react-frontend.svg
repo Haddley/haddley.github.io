@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <!-- Background circle -->
+  <circle cx="60" cy="60" r="58" fill="#1a2b4b" />
+
+  <!-- Browser window -->
+  <rect x="22" y="30" width="76" height="60" rx="5" fill="#ffffff" opacity="0.95"/>
+  <rect x="22" y="30" width="76" height="12" rx="5" fill="#80deea" opacity="0.9"/>
+  <circle cx="29" cy="36" r="2" fill="#1a2b4b"/>
+  <circle cx="35" cy="36" r="2" fill="#1a2b4b"/>
+  <circle cx="41" cy="36" r="2" fill="#1a2b4b"/>
+
+  <!-- Chat lines inside the window -->
+  <rect x="28" y="50" width="34" height="5" rx="2.5" fill="#4fc3f7" opacity="0.8"/>
+  <rect x="28" y="59" width="46" height="5" rx="2.5" fill="#1a2b4b" opacity="0.25"/>
+  <rect x="28" y="68" width="40" height="5" rx="2.5" fill="#1a2b4b" opacity="0.25"/>
+
+  <!-- Citation markers -->
+  <circle cx="80" cy="61.5" r="4" fill="#4fc3f7"/>
+  <circle cx="88" cy="70.5" r="4" fill="#4fc3f7"/>
+
+  <!-- Cursor / click indicator -->
+  <path d="M84 78 L96 92 L90 92 L94 100 L90 102 L86 94 L82 98 Z" fill="#ffffff"/>
+</svg>

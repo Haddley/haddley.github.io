@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <!-- Background circle -->
+  <circle cx="60" cy="60" r="58" fill="#1a2b4b" />
+
+  <!-- Stacked layers: DB (bottom), API (middle), MCP (top) -->
+  <rect x="26" y="76" width="68" height="16" rx="4" fill="#4fc3f7" opacity="0.55"/>
+  <rect x="30" y="54" width="60" height="16" rx="4" fill="#80deea" opacity="0.75"/>
+  <rect x="34" y="32" width="52" height="16" rx="4" fill="#ffffff" opacity="0.92"/>
+
+  <!-- Connecting arrows showing dependency direction -->
+  <line x1="60" y1="70" x2="60" y2="76" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
+  <line x1="60" y1="48" x2="60" y2="54" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
+
+  <!-- Two small nodes on the top layer representing REST + MCP interfaces -->
+  <circle cx="46" cy="40" r="4" fill="#1a2b4b"/>
+  <circle cx="74" cy="40" r="4" fill="#1a2b4b"/>
+  <line x1="50" y1="40" x2="70" y2="40" stroke="#1a2b4b" stroke-width="1.5" opacity="0.5"/>
+</svg>

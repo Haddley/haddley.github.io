@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <circle cx="60" cy="60" r="58" fill="#1a2b4b" />
+  <!-- Checklist card -->
+  <rect x="34" y="28" width="52" height="64" rx="4" fill="#ffffff" opacity="0.95"/>
+  <circle cx="44" cy="42" r="3" fill="#27c93f"/>
+  <line x1="50" y1="42" x2="76" y2="42" stroke="#1a2b4b" stroke-width="2" opacity="0.4"/>
+  <circle cx="44" cy="54" r="3" fill="#27c93f"/>
+  <line x1="50" y1="54" x2="76" y2="54" stroke="#1a2b4b" stroke-width="2" opacity="0.4"/>
+  <circle cx="44" cy="66" r="3" fill="#27c93f"/>
+  <line x1="50" y1="66" x2="70" y2="66" stroke="#1a2b4b" stroke-width="2" opacity="0.4"/>
+  <circle cx="44" cy="78" r="3" fill="#27c93f"/>
+  <line x1="50" y1="78" x2="76" y2="78" stroke="#1a2b4b" stroke-width="2" opacity="0.4"/>
+  <!-- Docker-ish container stack bottom right -->
+  <rect x="82" y="86" width="14" height="10" rx="2" fill="#4fc3f7" opacity="0.85"/>
+  <rect x="68" y="86" width="14" height="10" rx="2" fill="#80deea" opacity="0.85"/>
+</svg>

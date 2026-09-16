@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import MermaidDiagram from './MermaidDiagram';
 
 // Copy-to-clipboard button for code blocks
 function CopyCodeButton({ code }: { code: string }) {
@@ -693,6 +694,18 @@ export default function MobiriseContentRenderer({ markdownContent }: MobiriseCon
                         </tbody>
                       </table>
                     </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          );
+        } else if (section.type === 'code' && section.language === 'mermaid') {
+          return (
+            <section key={index} className="content7 cid-content7" data-bs-version="5.1">
+              <div className="container">
+                <div className="row justify-content-center">
+                  <div className="col-12 col-lg-10">
+                    <MermaidDiagram chart={section.content} />
                   </div>
                 </div>
               </div>
