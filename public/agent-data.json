@@ -3,7 +3,7 @@
     {
       "slug": "rag1",
       "title": "RAG (Part 1)",
-      "description": "Building a Retrieval-Augmented Generation stack, five pieces at a time: testing Ollama's embeddings API from the command line, standing up a throwaway Postgres and pgvector container, a minimal FastAPI backend that stores and searches real embeddings, a minimal React frontend to drive it, and finally exposing the same search function to Claude Code over MCP — every step run for real, with genuine output at each stage, including two real SDK gotchas hit and fixed along the way",
+      "description": "Building a Retrieval-Augmented Generation stack, five pieces at a time, with every command and every function explained line by line: testing Ollama's embeddings API from the command line, standing up a throwaway Postgres and pgvector container, a minimal FastAPI backend that stores and searches real embeddings, a minimal React frontend to drive it, and finally exposing the same search function to Claude Code over MCP — every step run for real, with genuine output at each stage, including two real SDK gotchas hit and fixed along the way",
       "date": "2026-09-18",
       "categories": [
         "AI"
@@ -2838,5 +2838,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-09-17T23:33:23.399Z"
+  "generatedAt": "2026-09-17T23:51:53.438Z"
 }
