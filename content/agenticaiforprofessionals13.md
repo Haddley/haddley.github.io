@@ -12,6 +12,23 @@ slug: "agenticaiforprofessionals13"
 
 Every post from [Part 6](/posts/agenticaiforprofessionals6/) through [Part 12](/posts/agenticaiforprofessionals12/) traced what happens to a question asked against chunks that already exist in Postgres. None of them covered how those chunks got there in the first place — genuinely the single biggest gap in this series for anyone trying to actually reproduce this app, rather than just understand a request that assumes the data already exists. This post closes it: the real function that turns an uploaded PDF into rows in the `chunks` table, and the actual configuration files a developer needs to stand up a working copy from nothing.
 
+## A toy pipeline, before the real one
+
+Strip away real PDFs, real HTTP calls, and real database writes, and "ingestion" is four steps chained together:
+
+```python
+def toy_ingest(raw_text: str) -> list[dict]:
+    pages = raw_text.split("\n---page-break---\n")               # 1. extract
+    chunks = [p[i:i+20] for p in pages for i in range(0, len(p), 20)]  # 2. chunk
+    vectors = [[float(len(c))] for c in chunks]                    # 3. embed (toy: length as a "vector")
+    return [{"text": c, "embedding": v} for c, v in zip(chunks, vectors)]  # 4. store
+
+result = toy_ingest("first page text here\n---page-break---\nsecond page")
+print(len(result), "chunks created")
+```
+
+Four steps, in order: split raw input into pages, split each page into fixed-size pieces, turn each piece into a number, bundle text and number together ready to save. The real `ingest_pdf()` below is the identical four-step shape — extract, chunk, embed, store — just with a real PDF parser, a real 800-character chunker with real edge-case handling, a real Ollama call, and a real SQL `INSERT` standing in for each toy line above.
+
 ## The whole pipeline, in one function
 
 `POST /documents` — one of 42 real routes this app exposes, most of which this series has never mentioned — calls `ingest_pdf()`:
@@ -64,6 +81,18 @@ def ingest_pdf(
 ```
 
 Reading this top to bottom is genuinely reading the entire ingestion pipeline: **hash** the raw bytes (`hashlib.sha256`) and check for a byte-identical duplicate already in the same collection — a real fix for a real bug (dragging the same PDF in twice used to silently create two full duplicate documents, doubling storage with no warning). **Extract** page-numbered text (`extract_pages`, below). **Guess** a citation and title if none were supplied, and classify the document as `primary_law` or `practical_guidance` based on whether a citation was actually found — the same heuristic [Part 8](/posts/agenticaiforprofessionals8/)'s system prompt reacts to. **Create** the `Document` row and `session.flush()` it — flush assigns the database-generated `id` immediately without fully committing the transaction yet, needed because the chunks about to be created reference `document.id` as a foreign key. **Write** the raw PDF bytes to disk, at a path derived from that same id — this is what [Part 11](/posts/agenticaiforprofessionals11/)'s citation-click iframe actually opens. **Chunk** the pages (`chunk_pages`, below) and **embed** every chunk's text in one batched call to [Part 7](/posts/agenticaiforprofessionals7/)'s `get_embedding_provider()`. **Loop** over chunks and their matching vectors together — `zip(drafts, vectors, strict=True)` pairs them up positionally, and `strict=True` makes Python raise an error immediately if the two lists ever come out different lengths, rather than silently mismatching a chunk's text with the wrong embedding. **Commit** the whole transaction — the `Document` row, every `Chunk` row, all at once.
+
+```mermaid
+flowchart TD
+    A["PDF bytes uploaded\nvia POST /documents"] --> B["hash + dedup check\n(reject if byte-identical\nalready in this collection)"]
+    B --> C["extract_pages()\nstrip repeated boilerplate,\npage-numbered text out"]
+    C --> D["chunk_pages()\nnever cross a page,\n~800 chars each"]
+    D --> E["get_embedding_provider().embed()\none Ollama call per chunk\n(Part 7)"]
+    E --> F["Document + Chunk rows\nsession.add(), then commit"]
+    F --> G["Now queryable —\nPart 7's retrieval finds it"]
+```
+
+Every box in this diagram is a real function this post has already named; nothing here is a simplification for the diagram's sake.
 
 ## Extraction: a real production bug, not a hypothetical one
 
@@ -130,6 +159,22 @@ def _hard_split(sentence: str, target_chars: int) -> list[str]:
 ```
 
 Real NSW statutory drafting routinely runs a whole numbered list of sub-paragraphs — separated by semicolons and newlines, never a sentence-ending period — as one unbroken "sentence" by the regex above's definition. Before this function existed, that meant one chunk with no upper size limit at all, which surfaced live as a real embedding call failing outright: *"input (2252 tokens) is too large to process,"* on a genuine NSW statutory-rule PDF. `_hard_split` is the fix — for any single "sentence" still too long, split on whitespace at up to `target_chars` each, **never mid-word**, guaranteeing every chunk this module ever produces stays under an embedding provider's own input limit regardless of how the source document is punctuated. [Part 9](/posts/agenticaiforprofessionals9/)'s `test_pipeline.py` walkthrough covers the two tests that lock this exact behaviour in place.
+
+## Reproduce this yourself, in order
+
+Everything below has been referenced somewhere in Parts 5 through 13; this is the same information as one ordered checklist instead of scattered reference material.
+
+1. **Clone the repo and enter the app directory.** `cd apps/nsw-legal-research-assistant` (Part 5's docker-compose commands all assume this working directory).
+2. **Copy the environment file and choose a provider.** `cp .env.example .env`, then either set `DEEPSEEK_API_KEY`/`ANTHROPIC_API_KEY`/`OPENAI_API_KEY` for the provider named in `LLM_PROVIDER` (Part 8), or set `LLM_PROVIDER=ollama` and skip API keys entirely if a local Ollama with `llama3.1:8b` and `nomic-embed-text` pulled is available (Part 7).
+3. **Install Ollama's embedding model regardless of chat provider.** `ollama pull nomic-embed-text` — Part 7 confirmed embeddings use Ollama even when chat uses DeepSeek, so this step is not optional just because a cloud chat provider is configured.
+4. **Bring up the stack.** `docker compose up --build` — this builds the two real Dockerfiles (Parts 9 and 12) and starts Postgres with the init script from Part 5 already wired in via `volumes:`.
+5. **Verify the database independently of the app.** `docker compose exec postgres psql -U nsw_legal -d nsw_legal_research -c "\dx"` should list `vector` — Part 5's Step 4, unchanged.
+6. **Verify the backend can reach the database.** `curl localhost:8000/health` should return `{"status": "ok", "database": "ok", ...}` — the same endpoint Part 8 used to catch the real Anthropic/DeepSeek discrepancy.
+7. **Upload a real PDF.** Through the frontend at `localhost:5173`, or directly: `curl -F "file=@judgment.pdf" localhost:8000/documents` — this is `ingest_pdf()`, traced in full above.
+8. **Ask a question against it.** Either through the UI (Part 11) or directly: `curl -X POST localhost:8000/qa -d '{"question": "...", "collection_id": "..."}'` — the exact request Part 6 traced from the other direction.
+9. **Run the real test suite.** `docker compose exec backend pytest tests/ -v` — the same 40 tests Part 9 screenshotted, now running against your own copy.
+
+Nine steps, and every one of them is a command this series has already shown running against the real, live stack — this is not a new procedure, just the existing one in the order a developer would actually follow it.
 
 ## What a developer actually needs to reproduce this
 
@@ -254,3 +299,32 @@ With these four files, the real Dockerfiles from Parts 9 and 12, and `docker com
 ## What is still not covered
 
 Even with this post, honestly: 36 of the app's 42 real routes remain unexplained by this series — the entire Brief Builder feature (multi-stage argument development, citation-graph leads, DOCX drafting via `pandoc`), the Review Documents skill, the RAG/Wiki/Hybrid comparison mode, and the Jade live-fetch automation sidecar that put this series' own running example into the database in the first place. Those are real, working, substantial features — genuinely enough material for a second course covering this same app's higher-level product features, distinct from the infrastructure arc Parts 5 through 13 have covered. This post closes the gap between "understands the code" and "could actually run it"; it does not claim to document the whole application.
+
+## Glossary: every term this series defined, in one place
+
+Alphabetical, each with where it was first explained in depth, for jumping back to when a later post assumes it.
+
+- **ASGI server** — the program (`uvicorn`) that does the actual networking a web framework itself never touches. [Part 6](/posts/agenticaiforprofessionals6/).
+- **Assertion** — one specific claim a test makes that must hold or the test fails, reporting exactly which one did not (`assert` in Python, `expect(...)` in Playwright). [Part 9](/posts/agenticaiforprofessionals9/), [Part 12](/posts/agenticaiforprofessionals12/).
+- **Cosine distance/similarity** — a measure of the angle between two vectors, ignoring their length; `pgvector`'s `<=>` operator computes it directly in SQL. [Part 5](/posts/agenticaiforprofessionals5/).
+- **Decorator** — a `@`-prefixed line above a function that wraps extra behaviour around it without changing the function's own code. [Part 6](/posts/agenticaiforprofessionals6/).
+- **Dependency injection** — FastAPI building an argument (like a database session) before calling your function, based on reading its type hints. [Part 6](/posts/agenticaiforprofessionals6/).
+- **Embedding / vector** — a fixed-length list of numbers a specialized model produces from a piece of text, positioned so similar meanings end up as nearby points. [Part 5](/posts/agenticaiforprofessionals5/), [Part 7](/posts/agenticaiforprofessionals7/).
+- **Factory function** — a function whose entire job is deciding which concrete object to build and return, based on configuration (`get_llm_provider()`, `get_embedding_provider()`). [Part 6](/posts/agenticaiforprofessionals6/), [Part 8](/posts/agenticaiforprofessionals8/).
+- **Hook** (React) — a special function, only callable inside a component, giving it memory that survives between renders (`useState`). [Part 10](/posts/agenticaiforprofessionals10/).
+- **Inheritance** — `class A(B):` meaning "an `A` is a kind of `B`," required to honour `B`'s shape and usable anywhere `B` is expected. [Part 6](/posts/agenticaiforprofessionals6/).
+- **JSX** — HTML-like syntax embedded in JavaScript/TypeScript that compiles to function calls describing what a page should look like. [Part 10](/posts/agenticaiforprofessionals10/).
+- **ORM (Object-Relational Mapper)** — a layer (SQLAlchemy) letting Python code read/write database rows as ordinary object attributes instead of raw SQL. [Part 5](/posts/agenticaiforprofessionals5/).
+- **Prop** — data or a function a parent React component passes to a child; the only way data flows down the component tree. [Part 10](/posts/agenticaiforprofessionals10/).
+- **Reconciliation** — React comparing newly-returned JSX against what is on screen and updating only the real DOM nodes that changed. [Part 10](/posts/agenticaiforprofessionals10/).
+- **Regular expression (regex)** — a compact pattern for matching pieces of text, used throughout for citation detection and marker parsing. [Part 9](/posts/agenticaiforprofessionals9/), [Part 11](/posts/agenticaiforprofessionals11/).
+- **System prompt** — text sent to an LLM API in a privileged, separate field, treated as instructions rather than conversation. [Part 8](/posts/agenticaiforprofessionals8/).
+- **Type hint** — `: str`, `-> dict` annotations documenting expected types, checked by tools but not enforced by Python itself at runtime. [Part 6](/posts/agenticaiforprofessionals6/).
+- **Volume** (Docker) — a directory living outside any single container's lifecycle, survivable across `docker compose down`. [Part 9](/posts/agenticaiforprofessionals9/).
+
+## Check your understanding
+
+1. In the toy `toy_ingest()` pipeline, step 3 uses `len(c)` as a fake "embedding." What would happen if two completely unrelated chunks happened to have the same length? Would the real `nomic-embed-text` model make the same mistake?
+2. `ingest_pdf()` calls `session.flush()` before creating any `Chunk` rows, rather than waiting until `session.commit()` at the end. Using the glossary's ORM entry, explain why `document.id` would not exist yet without that `flush()` call, and why the chunks need it.
+3. The nine-step reproduction checklist puts "install `nomic-embed-text`" as its own step, separate from choosing a chat provider. If a developer set `LLM_PROVIDER=anthropic` and skipped that step entirely, at which of the nine steps would something actually fail, and with what real symptom?
+4. Pick any two glossary terms whose posts are not adjacent in the series (for example, "Volume" from Part 9 and "Prop" from Part 10). Explain, in one sentence each, why the concept from the earlier post had to exist before the later post's concept made sense.

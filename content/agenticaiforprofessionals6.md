@@ -32,6 +32,48 @@ A `class` is a blueprint for creating things that bundle data and behaviour toge
 
 `class AnthropicProvider(LLMProvider):` — a class name in parentheses after the class being defined — is **inheritance**: it means "an `AnthropicProvider` *is a kind of* `LLMProvider`," required to honour whatever shape `LLMProvider` demands, and usable anywhere code asks for "some `LLMProvider`" without needing to know which specific one it actually got. This single mechanism is why a factory function (Part 8) can hand back four completely different classes and every piece of code that calls `provider.generate(...)` never has to ask which one it received. `QuestionRequest(BaseModel)`, seen below, is the same pattern with a different parent class: Pydantic's `BaseModel` supplies the "read this data, check its types" behaviour, and `QuestionRequest` just lists which fields it needs.
 
+```mermaid
+classDiagram
+    class LLMProvider {
+        <<abstract>>
+        +generate(prompt, context) str
+    }
+    class AnthropicProvider {
+        -_client
+        -_model
+        +generate(prompt, context) str
+    }
+    class OllamaProvider {
+        -_base_url
+        -_model
+        +generate(prompt, context) str
+    }
+    LLMProvider <|-- AnthropicProvider : inherits
+    LLMProvider <|-- OllamaProvider : inherits
+```
+
+Both children satisfy the same contract their parent defines, so calling code never needs an `if isinstance(...)` check — it just calls `.generate(...)` on whichever one it was handed. [Part 8](/posts/agenticaiforprofessionals8/) shows both real classes' bodies in full.
+
+## A five-line toy version, before the real one
+
+Everything above is abstract until it is run. Here is the smallest possible complete FastAPI app — five real lines, nothing elided — using every concept just introduced:
+
+```python
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+app = FastAPI()
+
+class Greeting(BaseModel):
+    name: str
+
+@app.post("/hello")
+def say_hello(greeting: Greeting) -> dict:
+    return {"message": f"Hello, {greeting.name}!"}
+```
+
+Save this as `toy.py`, run `pip install fastapi uvicorn` then `uvicorn toy:app --reload`, and `curl -X POST localhost:8000/hello -d '{"name": "Ada"}'` returns `{"message": "Hello, Ada!"}`. That is the entire mechanism this post is about: a `BaseModel` class describing one required field, a decorator registering one route, an f-string building the response. `nsw-legal-research-assistant`'s real `QuestionRequest`/`ask_question` pair below is the exact same shape — six fields instead of one, a real database dependency instead of none — not a different mechanism, just a bigger version of this one.
+
 ## How FastAPI actually turns a Python function into a web server
 
 The honest answer to "what does `@app.post(\"/qa\")` do" is more mechanical than "a decorator wraps the function" suggests.
@@ -101,3 +143,12 @@ def ask_question(request: QuestionRequest, session: Session = Depends(get_sessio
 `QuestionRequest` is a **Pydantic model** — a class whose job is purely to describe the shape of some data. For the real request, `request.question` is `"what is a major failure under Australian Consumer Law"`, `request.collection_id` is the Lemon Law collection's real UUID (`1b19aace-10d5-4d82-a8f6-9aa9691dc729` — a real id, confirmed directly against the live database), and `request.history` is empty, since this is the first question of the conversation. The list-comprehension line converts each plain history item into a `HistoryTurn` dataclass — the shape `answer_question()` expects internally — which, for an empty list, just produces another empty list.
 
 `answer_question()` is where retrieval, embeddings, and the language model all actually happen — and that is genuinely a lot of ground, worth its own dedicated post rather than a rushed paragraph here. [Part 7](/posts/agenticaiforprofessionals7/) picks up exactly at this line, tracing what `answer_question()` does first: turning that question into a search over Postgres.
+
+## Check your understanding
+
+Before moving on, these should all be answerable from this post alone — if any is not, the relevant section is worth a second pass rather than pushing ahead:
+
+1. If you moved the toy `@app.post("/hello")` line to a *different* line further down `toy.py`, before `app = FastAPI()` was ever assigned, what would happen when Python tried to run the file, and why?
+2. `ask_question(request: QuestionRequest, session: Session = Depends(get_session))` never contains a line that opens a database connection or parses JSON. Where does `session` actually come from, and at what point does FastAPI decide to call `get_session()`?
+3. `AnthropicProvider` and `OllamaProvider` both inherit from `LLMProvider`. If you wrote a third class, `MyProvider(LLMProvider)`, but forgot to define a `generate()` method on it, what would happen the moment you tried to write `MyProvider()`?
+4. `self._client = Anthropic(api_key=api_key)` is set inside `__init__`. Could a different method on the same class, defined lower down, read `self._client`? Could a method on a *different* instance of the same class read it?

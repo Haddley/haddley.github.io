@@ -18,6 +18,22 @@ Every number in this post is real, captured directly from the live, running stac
 
 Postgres cannot compare the *meaning* of "what is a major failure" against the meaning of a paragraph of judgment text — it can only compare data types it understands. An **embedding model** is a separate, specialized model whose only job is translating a piece of text into a fixed-length list of numbers (a **vector**) positioned in a high-dimensional space such that texts with similar meaning end up as nearby points, and texts with different meaning end up far apart. This app uses `nomic-embed-text`, a 768-number embedding model, served through Ollama — a locally-running LLM host (already covered in [an earlier post](/posts/ollamadeepsekr1applemacbookinstall/) on this blog) that this app's own Docker container reaches over the network at `http://host.docker.internal:11434`.
 
+## A toy provider, before the real one
+
+Strip away the real HTTP call and error handling, and an embedding provider is just an object with one method — text in, list of numbers out:
+
+```python
+class ToyEmbeddingProvider:
+    def embed(self, texts: list[str]) -> list[list[float]]:
+        return [[float(len(t)), float(t.count(" "))] for t in texts]
+
+provider = ToyEmbeddingProvider()
+print(provider.embed(["hello world", "hi"]))
+# [[11.0, 1.0], [2.0, 0.0]]
+```
+
+A deliberately silly embedding — "vector" here is just `[character count, space count]` — but it has the right *shape*: a method called `embed`, taking a list of strings, returning a list of same-length lists of numbers. `OllamaEmbeddingProvider` below does exactly this, just with a real HTTP call standing in for the one-line list comprehension, and 768 real numbers per text instead of 2 meaningless ones.
+
 ## The real code: `OllamaEmbeddingProvider`
 
 ```python
@@ -125,6 +141,13 @@ Checked directly against the live database, this is not a toy fixture anymore:
 *146 real documents, 20,354 real chunks, and the exact 72-chunk count for the specific `Marks` document used in this series' running example — confirmed directly from Postgres, not the application layer*
 
 Worth noting honestly: querying the database directly surfaced something the frontend's "72 chunks" label does not make obvious — there are actually **two separate `Document` rows**, both titled "Marks v PT Wollongong...", in two different collections (one is this series' Lemon Law collection at 72 chunks; the other belongs to a Brief Builder authority collection, ingested independently). This is exactly `Collection`-scoped multi-tenancy working as designed (Part 5's schema) — the same real judgment, ingested once per collection that needs it, each with its own independent chunk set, never sharing rows.
+
+## Check your understanding
+
+1. The toy `ToyEmbeddingProvider` above would rank "hello world" and "goodbye world" as very similar (both 13 characters, one space), despite opposite meanings. What real property of `nomic-embed-text` does this toy provider fail to capture, and why does that failure matter for retrieval quality?
+2. `embed()` loops over `texts` one at a time, making one HTTP request per chunk. If a 130-page judgment produces 900 chunks, roughly how many network round trips does ingesting that one document require? What would change if `embed()` instead sent all 900 texts to Ollama in a single request (assuming Ollama's API supported it)?
+3. The real query in this post is scoped with `.where(Document.collection_id.in_([lemon_law_collection_id]))`. If that line were deleted, would the query still run without error? What would change about the answer to "what is a major failure," given the corpus holds 146 documents across many unrelated matters?
+4. Stage 1 found both `Avci` and `Marks` above the 0.70 threshold, which is what triggers stage 2. If the question had been narrow enough that only `Avci` cleared 0.70, would stage 2 run at all — and if it did, against how many documents?
 
 ## What is next
 

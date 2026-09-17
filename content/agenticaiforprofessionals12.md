@@ -43,6 +43,21 @@ CMD ["npm", "run", "dev"]
 
 `node:20-alpine` is an official Node.js image built on the minimal Alpine Linux distribution. `npm install` reads `package.json` — a file listing every JavaScript package this project depends on — and downloads all of them. `npm run dev` runs Vite's own dev server ([Part 10](/posts/agenticaiforprofessionals10/) covers what Vite actually does) inside the container — hot module reloading, unminified, not a production build. `npm run build` (`tsc -b && vite build`) exists in `package.json` and produces a real static production bundle, but nothing in the repo serves that bundle anywhere yet — no Nginx container, no CDN, no static hosting target committed — consistent with the backend's own production deployment still being unbuilt ([Part 9](/posts/agenticaiforprofessionals9/)). As of this post, "hosting" for the whole three-layer stack — Postgres, FastAPI, React — is the same answer at every layer: `docker compose up`, on one machine, the exact stack this entire series has been tracing against, live.
 
+## A toy Playwright test, before the real one
+
+Every end-to-end test, however elaborate, is the same three-step shape: go somewhere, do something, check something.
+
+```typescript
+import { test, expect } from '@playwright/test';
+
+test('the page has the right title', async ({ page }) => {
+  await page.goto('https://example.com');
+  await expect(page).toHaveTitle('Example Domain');
+});
+```
+
+`page` is a real, automated browser tab Playwright controls; `page.goto(...)` navigates it; `expect(page).toHaveTitle(...)` is an assertion that either holds or fails the test with a clear message naming what it expected versus what it found. The real test below is the identical shape, extended: more `goto`/`fill`/`click` steps to reach a more interesting state, more assertions checking more specific things — never a different kind of tool, just more of the same three moves chained together.
+
 ## What an end-to-end test for this exact question would need to assert
 
 There is no committed frontend test suite in this repo today — no Vitest, no React Testing Library, no Playwright config. The real Playwright verification behind an earlier phase of this app's build caught a genuine bug (`Content-Disposition` defaulting to `attachment`, so citation clicks silently downloaded the PDF instead of opening it) — a real, valuable session that simply did not leave a repeatable test file behind. What follows is not a claim that this test exists; it is what one would look like, written against the exact code and real behaviour this series has already traced and screenshotted.
@@ -78,6 +93,13 @@ test('major-failure question against the Lemon Law collection returns a grounded
 `test('description', async ({ page }) => {...})` is Playwright's own function for declaring one test — `page` is provided by Playwright, a real, automated, headless browser tab. `page.getByRole(...)`, `page.getByPlaceholder(...)`, and `page.getByText(...)` are Playwright's preferred way of finding elements — by their accessible role or visible text, the same way a real person would identify them, rather than by an internal implementation detail like a CSS class name. `expect(citations).toHaveCount(15)` and `expect(...).toBeVisible()` are **assertions** — Playwright's equivalent of Python's `assert` (Part 9) — each a specific claim that must hold or the test fails and reports exactly which one did not.
 
 Three assertions, three different layers proven to actually work *together*, not separately: 15 citations proves Parts 6 through 8's retrieval and generation ran for real against the real Postgres collection; the iframe assertion proves Part 11's citation-to-page link actually resolves to real content; the draft assertion proves this post's `draft_from_answer()` genuinely reused the prior answer's citations rather than silently re-querying or inventing new ones. A unit test could mock any one of these in isolation and pass regardless of whether the other two layers were even running — which is exactly why this app's own real verification discipline has leaned on full-stack scripts and manual Docker Compose runs rather than a large mocked test suite: for an app whose entire value proposition is "every citation is real," the test that matters most is the one that cannot be satisfied by a mock.
+
+## Check your understanding
+
+1. `draft_from_answer()` (Part 8) is called with the prior answer and citations already sitting in `ChatPanel`'s component state (Part 11). If the browser tab were closed and reopened right before clicking "Draft from this…," would the drafting feature still work the same way? What state would no longer be available, and where would it need to come from instead?
+2. The illustrative e2e test's third assertion checks that the draft contains `[3]`. If `draft_from_answer()` had a bug that silently dropped every citation marker from its output, would any of this app's real 40 unit tests (Part 9) catch that? Why is the e2e test the one that would actually catch it?
+3. This post says `npm run build` produces a real static bundle that "nothing in the repo serves ... anywhere yet." Concretely, what would a developer need to add — one new file, one new service — to actually serve that bundle the way `nginx` or a CDN would in production?
+4. Across Parts 5 through 12, name one claim this series made that was *checked live against the running app* rather than assumed from reading source code, and explain what would have been wrong if that check had never happened.
 
 ## The full arc, closed
 

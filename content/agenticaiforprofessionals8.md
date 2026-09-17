@@ -63,6 +63,29 @@ This is the whole mechanism made concrete: the vague phrase "if there is one" �
 
 The re-asked question then goes through Part 7's retrieval exactly as before — real embedding, real cosine-distance search — and came back **grounded**, with **15 citations again**, this time correctly finding s 259(3) and s 263(4) (the actual remedy provisions) rather than re-finding s 260 (the major-failure *definition* provisions from the first question). Nothing about retrieval or citation-building changed for a condensed question — `condense_question()` only ever changes *what text gets embedded and searched for*, never how a citation gets sourced once chunks come back, which is exactly why a bad rewrite could at worst degrade to an honest "not found," never fabricate a citation.
 
+## A toy example: what a "system prompt" actually is
+
+If you have never called an LLM API directly, "system prompt" can sound abstract. It is not — it is just one more field in an HTTP request body. Two API calls, same question, different system prompt, real difference in behaviour:
+
+```python
+# Call 1 -- no system prompt at all
+client.messages.create(
+    model="claude-sonnet-5", max_tokens=100,
+    messages=[{"role": "user", "content": "What is the capital of France?"}],
+)
+# -> "The capital of France is Paris."
+
+# Call 2 -- a system prompt constraining how it must answer
+client.messages.create(
+    model="claude-sonnet-5", max_tokens=100,
+    system="Answer only in French, in exactly one word.",
+    messages=[{"role": "user", "content": "What is the capital of France?"}],
+)
+# -> "Paris."
+```
+
+The `system` field is not magic — it is text the API treats as instructions-with-authority rather than just more conversation, and every provider that supports it (Part 6 covered Anthropic's `AnthropicProvider`, using exactly this `system=` parameter) sends it as a genuinely separate field in the request body, never mixed into the `messages` array. This app's real system prompt below does the same thing at far greater length: instead of "answer in French, one word," it is "answer using only these 15 numbered excerpts, cite every claim, say so if the excerpts do not cover it" — a longer, more specific version of the identical mechanism.
+
 ## The full system prompt, sentence by sentence
 
 This is the actual, complete text sent to the model for every grounded-answer question, with the real 15-chunk block from Part 7 substituted in at the bottom:
@@ -289,6 +312,13 @@ def test_override_wins_over_the_global_default(monkeypatch):
 ```
 
 `monkeypatch` is a pytest fixture — pytest automatically supplies it as a function argument whenever a test asks for it by name — that temporarily changes an attribute for the duration of one test, then automatically restores the original value afterward, even if the test fails partway through. `monkeypatch.setattr(settings, "llm_provider", "anthropic")` forces the global setting to `"anthropic"` regardless of what the real `.env` says, so this test's outcome does not depend on however the app happens to be configured on whichever machine runs it — a genuinely important property, since Part 6's earlier assumption (reading the default and believing it) is exactly the mistake a test like this exists to make impossible. `get_llm_provider("deepseek")` passes an explicit override, and `isinstance(provider, OpenAICompatibleProvider)` checks that the returned object really is built from that class — confirming the override wins over the (deliberately falsified) global default, and does so without a single real network call, since constructing a provider object just wires up a client, it does not call out anywhere until `.generate()` runs.
+
+## Check your understanding
+
+1. In the toy example, Call 2's `system` field says "answer only in French, in exactly one word." If that same instruction were pasted into the `messages` array as part of the `user` content instead of into `system`, would the API call still work? What is genuinely different about the two approaches, beyond where the text physically sits in the request?
+2. This app's real system prompt says "answer using ONLY the numbered source excerpts below." If a user asked "what is the capital of France?" against the Lemon Law collection, what would you expect the real answer to be, and why — walk through what the 15-chunk retrieval step (Part 7) would actually find for that question.
+3. `condense_question()` and the main grounded-answer call both call `get_llm_provider()` with no override. Are they guaranteed to use the *same* provider as each other for a single request? What about the `draft_from_answer()` call for the same conversation?
+4. `OpenAICompatibleProvider.generate()` sets no `max_tokens` at all, while `AnthropicProvider.generate()` hardcodes `max_tokens=1024`. If DeepSeek's API applies its own default cap of, say, 4096 tokens, what real, observable difference could a user notice between a long DeepSeek answer and a long Anthropic answer to the same grounded question?
 
 ## What is next
 

@@ -87,6 +87,17 @@ For the real question, typed as the first message of a new chat: `try { ... } ca
 
 `setExchanges((prev) => [...prev, { id: crypto.randomUUID(), question: q, result, mode }])` is React's **functional state update** form: passing a function to a setter guarantees `prev` is the actual current state at the moment the update runs, correct regardless of timing, rather than a possibly-stale copy. `crypto.randomUUID()` is a browser built-in generating a random unique id, used purely as a React list key, unrelated to any database id.
 
+## A toy example: what `.split()` with a regex actually does
+
+```javascript
+const MARKER_RE = /(\[\d+\])/g;
+const text = "The sky is blue [1] and grass is green [2].";
+console.log(text.split(MARKER_RE));
+// ["The sky is blue ", "[1]", " and grass is green ", "[2]", "."]
+```
+
+Run this in any browser console or Node.js and it prints exactly that array — five pieces, alternating plain text and markers, because the regex's capturing parentheses tell `.split()` to keep the matched delimiters instead of discarding them (a plain `.split(", ")` with no parentheses would keep only the plain-text pieces and throw the markers away). The real answer text below produces the identical shape, just with 15 markers instead of 2 and real legal text instead of "the sky is blue."
+
 ## The real answer, rendered
 
 ```typescript
@@ -159,6 +170,13 @@ sequenceDiagram
     U->>CP: clicks citation [3]
     CP->>U: DocumentPreviewPane iframe opens on real page 4
 ```
+
+## Check your understanding
+
+1. In the toy `.split()` example, what would `text.split(/\[\d+\]/g)` (the same pattern, but *without* the capturing parentheses) print instead? Why does that difference matter for `renderAnswer()`?
+2. `handleAsk` calls `createChatSession()` and `await`s it *before* calling `askQuestion()`. If those two calls were fired at the same time instead (without waiting for the first to finish), what real problem would that cause for `_persist_if_session()` on the backend (Part 6)?
+3. `renderAnswer()` builds a `Map` from `citations` before mapping over the split pieces. Could the same lookup be done without a `Map` — say, with `citations.find(c => c.marker === part)` inside the `.map()` callback instead? What would be different about performance if the answer had 200 markers instead of 15?
+4. Clicking citation `[3]` opens an `iframe` pointed at a URL built from `citation.document_id` and `citation.page_number`. If the backend's `/documents/{id}/file` endpoint were down, what would the user actually see happen when they clicked `[3]` — and which of the two real screenshots in this post would still render correctly regardless?
 
 ## What is next
 

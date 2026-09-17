@@ -12,6 +12,34 @@ slug: "agenticaiforprofessionals5"
 
 [Part 2](/posts/agenticaiforprofessionals2/) introduced the database layer of `nsw-legal-research-assistant` in passing — two tables, `Document` and `Chunk`, enough to get retrieval working end to end. The app has grown considerably since then: nine tables now, a Brief Builder workflow, chat history, wiki pages, trust tiers. The database layer itself, though, has stayed remarkably stable in shape — the same Postgres instance, the same `pgvector` extension, the same cosine-distance query at the centre of everything. This post is the deep dive that earlier one was not: the full schema as it exists today, why Postgres was the right call for a vector store here (the reasoning is written up as `ADR-0002` in the sibling repo's `llmwiki`, not just something I decided informally), a step-by-step Docker build a system administrator could follow from nothing but a base Postgres image, and — because I keep circling back to whether I would build this app the same way twice — how the same database layer could be scaffolded by a Claude Code user through GitHub's Spec Kit instead of by hand.
 
+## A toy example: cosine distance with three numbers, by hand
+
+Before 768-dimension real vectors and a 20,000-row real table, here is the entire mechanism this post is about, at a size a calculator could check. Cosine distance measures the *angle* between two vectors, ignoring their length — two vectors pointing the same direction score as identical even if one is twice as long as the other, which is exactly the property that lets it compare a short question against a long paragraph of judgment text fairly. Three toy "documents," each reduced to a 3-number vector, and one toy "question":
+
+```sql
+CREATE TABLE toy_items (id int, label text, embedding vector(3));
+INSERT INTO toy_items VALUES
+  (1, 'about dogs',  '[1, 0, 0]'),
+  (2, 'about cats',  '[0.9, 0.1, 0]'),
+  (3, 'about taxes', '[0, 0, 1]');
+
+SELECT label, round((embedding <=> '[1, 0, 0]')::numeric, 4) AS distance
+FROM toy_items
+ORDER BY distance;
+```
+
+Run against a real, throwaway table on the same live Postgres this series has traced throughout (not hand-calculated, not simulated):
+
+```
+   label     | distance
+-------------+----------
+ about dogs  |   0.0000
+ about cats  |   0.0061
+ about taxes |   1.0000
+```
+
+"About dogs" scores a distance of exactly `0` against a query pointing in the identical direction — a perfect match. "About cats" is nearly identical (`0.0061`) because its vector points almost the same way, just tilted slightly by that `0.1` in the second position. "About taxes" scores the maximum distance, `1`, because its vector points in a completely unrelated direction (no overlap with the first two numbers at all). This is the entire idea `chunks.embedding <=> query_vector` scales up to 768 dimensions and 20,000 real rows below — nothing conceptually different happens at real scale, there are just many more numbers per vector and many more rows to rank.
+
 ## Why Postgres, not a dedicated vector database
 
 The obvious alternative to `pgvector` is a purpose-built vector database — Pinecone, Weaviate, Qdrant, and others exist specifically to serve embedding search at scale. I did not choose Postgres by default; the architecture decision record for this stack lays out two independent reasons, and both still hold:
@@ -34,6 +62,38 @@ Nine tables, all defined in one file (`backend/app/models.py`), UUID primary key
 | `WikiPage` | Output of the "Wiki" query mode — full-document synthesis, with its own per-claim citation list. |
 | `ChatSession` / `ChatExchange` | Persisted chat history, one exchange per question/answer round-trip. |
 | `Brief` / `BriefArgument` | Brief Builder's stateful, multi-stage workflow. |
+
+The relationships that matter for retrieval — everything else either hangs off `Document` or stands alone:
+
+```mermaid
+erDiagram
+    COLLECTION ||--o{ DOCUMENT : "groups"
+    DOCUMENT ||--o{ CHUNK : "split into"
+    DOCUMENT ||--o{ SOURCE_VERIFICATION : "spot-checked by"
+    DOCUMENT ||--o{ WIKI_PAGE : "synthesized into"
+    COLLECTION {
+        uuid id
+        string name
+        string type
+    }
+    DOCUMENT {
+        uuid id
+        string title
+        string citation
+        string source_trust
+        string source_layer
+        uuid collection_id FK
+    }
+    CHUNK {
+        uuid id
+        uuid document_id FK
+        int page_number
+        text text
+        vector embedding
+    }
+```
+
+Every one of the 20,354 real rows [Part 7](/posts/agenticaiforprofessionals7/) queries lives in the `CHUNK` box, and every one of them traces back through exactly one `DOCUMENT` to exactly one `COLLECTION` — which is the entire mechanism behind scoping a question to "just the Lemon Law collection" rather than searching the whole 146-document corpus.
 
 The table that matters most for this post is `Chunk`:
 
@@ -265,3 +325,10 @@ the models on startup rather than introducing a migration framework.
 Each command hands off a real artifact to the next rather than passing instructions along conversationally: `/speckit-specify` writes `spec.md`, `/speckit-plan` writes `plan.md` capturing exactly the technology decisions given above, `/speckit-tasks` turns that plan into a dependency-ordered `tasks.md` — something in the shape of "create the Compose service and init script" before "define the SQLAlchemy models" before "wire the cosine-distance retrieval query," each task explicit about what it depends on finishing first. `/speckit-implement` works through that list; `/speckit-converge` checks the result against `spec.md` and reports whether it actually satisfies what was asked for, repeating with `/speckit-implement` until it does. All of it lands under `.specify/` in the repo, reviewable the same way the hand-written ADRs above are — the difference is that Spec Kit enforces the specify-before-plan-before-tasks ordering structurally, where this repo's own wiki convention only enforces it by habit.
 
 Where this genuinely earns its keep over building by hand is exactly the gotcha from step 5 above: adding `Brief.llm_provider` to a live table. Run through `/speckit-specify` ("add a per-brief LLM provider override, nullable, no backfill needed") and `/speckit-plan` ("this is an additive column on an existing table with real data — no migration framework in place, so the plan has to state the manual `ALTER TABLE` explicitly and confirm nullability makes it safe"), that decision and its reasoning end up written down in `plan.md` before the `ALTER TABLE` statement runs, rather than living only in a README paragraph written after the fact — which is, not coincidentally, exactly the same distinction between "decided and recorded" and "decided and remembered" that this repo's own ADR practice exists to close.
+
+## Check your understanding
+
+1. In the toy `cosine distance` example, "about cats" (`[0.9, 0.1, 0]`) scored `0.0061` against the query `[1, 0, 0]`. Without running any SQL, would you expect a fourth toy row, `[0.5, 0.5, 0]`, to score closer to `0` or closer to `1`? Why?
+2. `chunks.embedding` is declared `vector(768)`, fixed at table-creation time. If the app switched its embedding model from `nomic-embed-text` (768 dimensions) to OpenAI's `text-embedding-3-small` (1536 dimensions) tomorrow, would `ALTER TABLE chunks ALTER COLUMN embedding TYPE vector(1536);` alone be enough to make retrieval work correctly again? What else would have to happen to the 20,354 rows already in that column?
+3. This post says `nsw-legal-research-assistant` creates no `ivfflat` or `hnsw` index on `chunks.embedding`. If the corpus grew from 146 documents to 146,000, what would you expect to happen to query time, and at what point would adding an index stop being optional?
+4. `Base.metadata.create_all(bind=engine)` runs on every backend startup. If you deleted the `Chunk` class from `models.py` entirely and restarted the backend, would the real `chunks` table in Postgres — and its 20,354 rows — be dropped? Why or why not?

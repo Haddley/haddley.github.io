@@ -62,12 +62,61 @@ volumes:
 
 `pg_data:/var/lib/postgresql/data` mounts a volume named `pg_data` at the exact path Postgres itself writes its real database files to inside the container. This is precisely why `docker compose down` (which removes containers) does not lose any real data, while `docker compose down -v` (which additionally removes volumes) does — the volume, not the container, is where the data actually lives.
 
+Rather than take that claim on faith, here it is demonstrated live, on two throwaway containers, cleaned up immediately afterward:
+
+```bash
+# Without a volume: write a file, remove the container, start a fresh one
+docker run --rm -d --name toy-no-volume python:3.12-slim sleep 300
+docker exec toy-no-volume sh -c "echo 'important data' > /data.txt && cat /data.txt"
+docker rm -f toy-no-volume
+docker run --rm -d --name toy-no-volume python:3.12-slim sleep 300
+docker exec toy-no-volume sh -c "cat /data.txt"
+```
+```
+important data
+cat: /data.txt: No such file or directory
+```
+
+```bash
+# With a volume: same steps, but the data survives the container being replaced
+docker volume create toy-vol
+docker run --rm -d --name toy-with-volume -v toy-vol:/data python:3.12-slim sleep 300
+docker exec toy-with-volume sh -c "echo 'important data' > /data/data.txt && cat /data/data.txt"
+docker rm -f toy-with-volume
+docker run --rm -d --name toy-with-volume -v toy-vol:/data python:3.12-slim sleep 300
+docker exec toy-with-volume sh -c "cat /data/data.txt"
+```
+```
+important data
+important data
+```
+
+Identical sequence of commands — write, destroy the container, recreate it, read — and the only difference is whether a volume sat between the container and the data. This is the entire mechanism protecting `nsw-legal-research-assistant`'s real 20,354 chunks from every `docker compose down` this series' own testing has run against the live stack.
+
 Checked directly against this app's real, live volume:
 
 ![](assets/images/agenticaiforprofessionals9/t7-docker-volumes.png)
 *The real `pg_data` volume backing every SQL query and every real cosine-distance number in this series — its actual creation timestamp, its actual on-disk mount point, and the Compose project label that ties it to this specific stack*
 
 `"Mountpoint": "/var/lib/docker/volumes/nsw-legal-research-assistant_pg_data/_data"` is a real path on the host machine's own filesystem (inside Docker's own managed storage area, on Linux terms even when Docker Desktop is running on macOS) — this is genuinely where every one of the 20,354 real chunks from [Part 7](/posts/agenticaiforprofessionals7/) physically lives on disk, independent of whether the `postgres` container itself is currently running. `"CreatedAt": "2026-08-18T19:55:55Z"` is the real moment this volume was first created — over a month before this post was written, meaning every real number in this series reflects a database that has been accumulating real data for weeks, not a fixture spun up fresh for a screenshot. `Labels.com.docker.compose.project` is exactly the mechanism [Part 5](/posts/agenticaiforprofessionals5/) warned about: Docker Compose derives this label from the directory name by default, which is why two independent checkouts sharing the same directory name can silently end up sharing (and corrupting) the same volume — a real gotcha this app's own build log records hitting.
+
+## A toy test, before the real 40
+
+`pytest`'s entire discovery mechanism is two naming conventions: a file named `test_*.py`, a function inside it named `test_*`. Nothing to import, nothing to register:
+
+```python
+# test_toy.py
+def add(a, b):
+    return a + b
+
+def test_add_works():
+    assert add(2, 2) == 4
+
+def test_add_catches_a_real_mistake():
+    assert add(2, 2) != 5
+```
+
+Running `pytest test_toy.py -v` finds both functions automatically, runs each, and reports `PASSED` or `FAILED` per function — no configuration file required for a case this simple. Every one of the real 40 tests below is this exact mechanism, just checking a real function like `chunk_pages()` or `get_llm_provider()` instead of `add()`.
 
 ## The real test suite, run live
 
@@ -111,6 +160,13 @@ async with stdio_client(params) as (read, write):
 `async`/`await` mark this code as **asynchronous** — it can pause at an `await` (waiting for the subprocess to respond) and let other work happen in the meantime, rather than freezing the whole program. `env=dict(os.environ)` copies every current **environment variable** — the same `DATABASE_URL`, `DEEPSEEK_API_KEY`-style values Part 5 and this post's Compose file set — into the spawned subprocess. This is not incidental: the script's own docstring records a genuine bug this exact test caught during real verification — `StdioServerParameters` does not inherit the parent process's environment by default, so without this line the spawned server silently fell back to `config.py`'s default provider with no API key configured at all. A unit test with a mocked subprocess would never have surfaced this, because the whole point of this script is a real process boundary.
 
 That is the actual shape of automated confidence in this app today: 40 fast, deterministic unit tests running in well under a second, plus a small number of real, full-stack scripts proving the expensive parts — a live database, a live model, a live subprocess — still agree with each other, run on demand rather than continuously (there is no CI pipeline configured for this app).
+
+## Check your understanding
+
+1. The toy `test_add_catches_a_real_mistake` asserts `add(2, 2) != 5`. Is this actually testing anything useful, or would it still pass even if `add()` were implemented as `def add(a, b): return 99`? What would a better version of that test assert instead?
+2. All 40 real tests run in 0.44 seconds with no database and no network. If you added one new test that called the real `retrieve_relevant_chunks()` against a live Postgres, would you expect the whole suite to still run in well under a second? Why might a team deliberately keep a test like that in a separate, slower suite rather than mixed in with the other 40?
+3. `pg_data:/var/lib/postgresql/data` is a named volume. If the `docker-compose.yml` instead had no `volumes:` entry for the `postgres` service at all, what would happen to the 20,354 real chunks the first time someone ran `docker compose down` followed by `docker compose up`?
+4. `mcp_smoke_test.py` caught a real bug — `StdioServerParameters` not inheriting the parent's environment — that none of the 40 unit tests caught. Could a unit test, in principle, ever have caught this specific bug? What property of the bug made it a full-stack-script problem rather than a unit-test problem?
 
 ## What is next
 
