@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "rag1",
+      "title": "RAG (Part 1)",
+      "description": "Building a Retrieval-Augmented Generation stack, five pieces at a time: testing Ollama's embeddings API from the command line, standing up a throwaway Postgres and pgvector container, a minimal FastAPI backend that stores and searches real embeddings, a minimal React frontend to drive it, and finally exposing the same search function to Claude Code over MCP — every step run for real, with genuine output at each stage, including two real SDK gotchas hit and fixed along the way",
+      "date": "2026-09-18",
+      "categories": [
+        "AI"
+      ],
+      "tags": "rag, ollama, pgvector, fastapi, react, mcp"
+    },
+    {
       "slug": "agenticaiforprofessionals13",
       "title": "Agentic AI for Professionals (Part 13)",
       "description": "The missing piece needed to actually reproduce this app: the real ingest_pdf() function tying PDF extraction, page-safe chunking, embedding, and a database write into one pipeline, including the real production bug (a publisher's running footer silently sabotaging retrieval) that shaped the extraction code — plus the complete .env.example, docker-compose.yml, requirements.txt, and .mcp.json a developer would need to actually stand this app up from zero",
@@ -2828,5 +2838,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-09-17T02:05:57.209Z"
+  "generatedAt": "2026-09-17T23:33:23.399Z"
 }
