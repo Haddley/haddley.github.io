@@ -23,6 +23,7 @@ async function run() {
   const mdFiles = files.filter(f => f.endsWith('.md'));
 
   const posts = [];
+  const partBySlug = new Map();
   for (const file of mdFiles) {
     const raw = await readFile(join(CONTENT_DIR, file), 'utf-8');
     const { data, content } = matter(raw);
@@ -30,6 +31,7 @@ async function run() {
 
     const slug = data.slug || file.replace(/\.md$/, '');
     const title = data.part ? `${data.title || ''} (Part ${data.part})` : (data.title || '');
+    partBySlug.set(slug, typeof data.part === 'number' ? data.part : 0);
 
     posts.push({
       slug,
@@ -53,7 +55,12 @@ async function run() {
     await writeFile(join(POSTS_DIR, `${slug}.json`), JSON.stringify(postData));
   }
 
-  posts.sort((a, b) => (b.date > a.date ? 1 : -1));
+  posts.sort((a, b) => {
+    if (a.date !== b.date) return a.date < b.date ? 1 : -1;
+    // Same-date tiebreak (e.g. a whole series published in one sitting): higher
+    // part number is the more recently written post, so it sorts first.
+    return partBySlug.get(b.slug) - partBySlug.get(a.slug);
+  });
 
   await writeFile(OUTPUT_FILE, JSON.stringify({ posts, generatedAt: new Date().toISOString() }, null, 2));
   console.log(`agent-data.json: ${posts.length} posts written`);

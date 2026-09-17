@@ -91,7 +91,13 @@ export async function getVisibleBlogPosts(): Promise<BlogPost[]> {
 
   const visiblePosts = allPostsData
     .filter((post): post is BlogPost => post !== null && post.visible !== false)
-    .sort((a, b) => (a.date < b.date ? 1 : -1));
+    .sort((a, b) => {
+      if (a.date !== b.date) return a.date < b.date ? 1 : -1;
+      // Same-date tiebreak (e.g. a whole series published in one sitting): higher
+      // part number is the more recently written post, so it sorts first. Posts
+      // with no part number keep their relative order (stable sort, diff 0).
+      return (b.part ?? 0) - (a.part ?? 0);
+    });
 
   return visiblePosts;
 }

@@ -1,6 +1,46 @@
 {
   "posts": [
     {
+      "slug": "agenticaiforprofessionals13",
+      "title": "Agentic AI for Professionals (Part 13)",
+      "description": "The missing piece needed to actually reproduce this app: the real ingest_pdf() function tying PDF extraction, page-safe chunking, embedding, and a database write into one pipeline, including the real production bug (a publisher's running footer silently sabotaging retrieval) that shaped the extraction code — plus the complete .env.example, docker-compose.yml, requirements.txt, and .mcp.json a developer would need to actually stand this app up from zero",
+      "date": "2026-09-17",
+      "categories": [
+        "AI"
+      ],
+      "tags": "ingestion, pypdf, docker-compose, reproducibility, pipeline"
+    },
+    {
+      "slug": "agenticaiforprofessionals12",
+      "title": "Agentic AI for Professionals (Part 12)",
+      "description": "The drafting UI's client-side half, traced against a genuine live screenshot; how the React frontend is actually hosted in Docker today; a real, illustrative Playwright end-to-end test for this exact question, explained line by line; and a closing recap of the full eight-part arc from a single CREATE EXTENSION statement to a browser tab open on a real page of a real judgment",
+      "date": "2026-09-17",
+      "categories": [
+        "AI"
+      ],
+      "tags": "vite, docker, playwright, e2e-testing, hosting"
+    },
+    {
+      "slug": "agenticaiforprofessionals11",
+      "title": "Agentic AI for Professionals (Part 11)",
+      "description": "The complete, real trace from a 15-citation JSON response landing in the browser to fifteen clickable, page-linked citation links on screen — with genuine, freshly-captured screenshots of the live running app, not illustrations — covering handleAsk, the fetch/Promise layer, renderAnswer's regex-based citation parser, and the split-pane PDF preview",
+      "date": "2026-09-17",
+      "categories": [
+        "AI"
+      ],
+      "tags": "react, typescript, state-management, fetch-api, citations"
+    },
+    {
+      "slug": "agenticaiforprofessionals10",
+      "title": "Agentic AI for Professionals (Part 10)",
+      "description": "The difference between JavaScript and TypeScript, explained plainly; every piece of modern JS/TS syntax that recurs across this app's frontend (arrow functions, destructuring, spread, Promises vs async/await, generics, JSX); and how React components, hooks, and re-rendering actually work under the hood — the foundation for tracing the real UI in Part 11",
+      "date": "2026-09-17",
+      "categories": [
+        "AI"
+      ],
+      "tags": "react, typescript, javascript, jsx, frontend"
+    },
+    {
       "slug": "agenticaiforprofessionals9",
       "title": "Agentic AI for Professionals (Part 9)",
       "description": "The real backend Dockerfile explained line by line, how Docker volumes actually work (traced against this app's real, live volume), a full walk through the 40 real pytest tests this app runs today — captured live from the running container, not described — and what automated coverage genuinely does and does not reach",
@@ -49,46 +89,6 @@
         "AI"
       ],
       "tags": "postgres, pgvector, docker, sqlalchemy, spec-kit"
-    },
-    {
-      "slug": "agenticaiforprofessionals13",
-      "title": "Agentic AI for Professionals (Part 13)",
-      "description": "The missing piece needed to actually reproduce this app: the real ingest_pdf() function tying PDF extraction, page-safe chunking, embedding, and a database write into one pipeline, including the real production bug (a publisher's running footer silently sabotaging retrieval) that shaped the extraction code — plus the complete .env.example, docker-compose.yml, requirements.txt, and .mcp.json a developer would need to actually stand this app up from zero",
-      "date": "2026-09-17",
-      "categories": [
-        "AI"
-      ],
-      "tags": "ingestion, pypdf, docker-compose, reproducibility, pipeline"
-    },
-    {
-      "slug": "agenticaiforprofessionals12",
-      "title": "Agentic AI for Professionals (Part 12)",
-      "description": "The drafting UI's client-side half, traced against a genuine live screenshot; how the React frontend is actually hosted in Docker today; a real, illustrative Playwright end-to-end test for this exact question, explained line by line; and a closing recap of the full eight-part arc from a single CREATE EXTENSION statement to a browser tab open on a real page of a real judgment",
-      "date": "2026-09-17",
-      "categories": [
-        "AI"
-      ],
-      "tags": "vite, docker, playwright, e2e-testing, hosting"
-    },
-    {
-      "slug": "agenticaiforprofessionals11",
-      "title": "Agentic AI for Professionals (Part 11)",
-      "description": "The complete, real trace from a 15-citation JSON response landing in the browser to fifteen clickable, page-linked citation links on screen — with genuine, freshly-captured screenshots of the live running app, not illustrations — covering handleAsk, the fetch/Promise layer, renderAnswer's regex-based citation parser, and the split-pane PDF preview",
-      "date": "2026-09-17",
-      "categories": [
-        "AI"
-      ],
-      "tags": "react, typescript, state-management, fetch-api, citations"
-    },
-    {
-      "slug": "agenticaiforprofessionals10",
-      "title": "Agentic AI for Professionals (Part 10)",
-      "description": "The difference between JavaScript and TypeScript, explained plainly; every piece of modern JS/TS syntax that recurs across this app's frontend (arrow functions, destructuring, spread, Promises vs async/await, generics, JSX); and how React components, hooks, and re-rendering actually work under the hood — the foundation for tracing the real UI in Part 11",
-      "date": "2026-09-17",
-      "categories": [
-        "AI"
-      ],
-      "tags": "react, typescript, javascript, jsx, frontend"
     },
     {
       "slug": "distillation2",
@@ -326,16 +326,6 @@
       "tags": "claude-code, vibe-coding, game-development, canvas, web-audio"
     },
     {
-      "slug": "powerapps10",
-      "title": "Model Driven Apps Timeline",
-      "description": "Enabling notes and activities on a Dataverse table, and configuring the timeline control to roll up records from related entity instances",
-      "date": "2026-06-16",
-      "categories": [
-        "Power Platform"
-      ],
-      "tags": "power-apps, dataverse, model-driven-app, timeline, activities"
-    },
-    {
       "slug": "plantsvszombies",
       "title": "Plants vs. Zombies Clone",
       "description": "Vibe coding a vanilla JS Plants vs. Zombies clone with Claude Code, complete with Playwright visual regression tests",
@@ -345,6 +335,16 @@
         "JavaScript"
       ],
       "tags": "claude-code, vibe-coding, anthropic, game-development, playwright"
+    },
+    {
+      "slug": "powerapps10",
+      "title": "Model Driven Apps Timeline",
+      "description": "Enabling notes and activities on a Dataverse table, and configuring the timeline control to roll up records from related entity instances",
+      "date": "2026-06-16",
+      "categories": [
+        "Power Platform"
+      ],
+      "tags": "power-apps, dataverse, model-driven-app, timeline, activities"
     },
     {
       "slug": "localagent",
@@ -357,9 +357,9 @@
       "tags": "webllm, webgpu, qwen, react, agents, ollama"
     },
     {
-      "slug": "claudecowork1",
-      "title": "Claude Cowork (Part 1)",
-      "description": "Using the page-line-summary skill in Claude Cowork to generate a deposition summary from a transcript PDF",
+      "slug": "claudecode14",
+      "title": "Claude Code (Part 14)",
+      "description": "Using the page-line-summary skill in Claude Code to generate a deposition summary from a transcript PDF",
       "date": "2026-06-04",
       "categories": [
         "AI"
@@ -367,9 +367,9 @@
       "tags": "claude-code, ai-agent, anthropic, page-line-summary, legal, litigation"
     },
     {
-      "slug": "claudecode14",
-      "title": "Claude Code (Part 14)",
-      "description": "Using the page-line-summary skill in Claude Code to generate a deposition summary from a transcript PDF",
+      "slug": "claudecowork1",
+      "title": "Claude Cowork (Part 1)",
+      "description": "Using the page-line-summary skill in Claude Cowork to generate a deposition summary from a transcript PDF",
       "date": "2026-06-04",
       "categories": [
         "AI"
@@ -792,28 +792,6 @@
       "tags": "claude-code, mcp, model-context-protocol, business-central"
     },
     {
-      "slug": "microsoftdynamics365appforoutlook",
-      "title": "Microsoft Dynamics 365 App for Outlook",
-      "description": "References",
-      "date": "2025-09-20",
-      "categories": [
-        "Microsoft Dynamics",
-        "Power Platform"
-      ],
-      "tags": "outlook, set-regarding, dynamics-365, crm"
-    },
-    {
-      "slug": "hubspotquotetemplate",
-      "title": "Customising a HubSpot Quote Template with a Child Theme",
-      "description": "How I customised a HubSpot quote template by creating a child theme, cloning the line_items_table module, and adding custom line item columns with red-highlighted subheading rows.",
-      "date": "2025-09-20",
-      "categories": [
-        "Angular",
-        "TypeScript"
-      ],
-      "tags": "hubspot, quote-template, crm"
-    },
-    {
       "slug": "dynamicssales4",
       "title": "Dynamics 365 Sales (Part 4)",
       "description": "Tiki Tour",
@@ -834,6 +812,18 @@
       "tags": "dotnet, rest-api, web-api, dotnet-core"
     },
     {
+      "slug": "angular1",
+      "title": "Angular",
+      "description": "A platform for building mobile and desktop web applications",
+      "date": "2025-09-20",
+      "categories": [
+        "Angular",
+        "JavaScript",
+        "TypeScript"
+      ],
+      "tags": "ng-cli, components, testing"
+    },
+    {
       "slug": "customercopilotstudio",
       "title": "Customer Copilot Studio",
       "description": "Business Central Customer Copilot Using Copilot Studio",
@@ -845,16 +835,26 @@
       "tags": "copilot-studio, business-central, customer-service, ai-integration"
     },
     {
-      "slug": "angular1",
-      "title": "Angular",
-      "description": "A platform for building mobile and desktop web applications",
+      "slug": "hubspotquotetemplate",
+      "title": "Customising a HubSpot Quote Template with a Child Theme",
+      "description": "How I customised a HubSpot quote template by creating a child theme, cloning the line_items_table module, and adding custom line item columns with red-highlighted subheading rows.",
       "date": "2025-09-20",
       "categories": [
         "Angular",
-        "JavaScript",
         "TypeScript"
       ],
-      "tags": "ng-cli, components, testing"
+      "tags": "hubspot, quote-template, crm"
+    },
+    {
+      "slug": "microsoftdynamics365appforoutlook",
+      "title": "Microsoft Dynamics 365 App for Outlook",
+      "description": "References",
+      "date": "2025-09-20",
+      "categories": [
+        "Microsoft Dynamics",
+        "Power Platform"
+      ],
+      "tags": "outlook, set-regarding, dynamics-365, crm"
     },
     {
       "slug": "macscreensharing",
@@ -1017,16 +1017,6 @@
       "tags": "prompt-flow, azure-ai-studio, quick-start"
     },
     {
-      "slug": "phpsetup",
-      "title": "PHP Setup",
-      "description": "Setup",
-      "date": "2024-08-25",
-      "categories": [
-        "PHP"
-      ],
-      "tags": "setup, web, server"
-    },
-    {
       "slug": "langchainagents",
       "title": "LangChain Agents",
       "description": "Building LangChain agents that use LLMs as a reasoning engine to choose which tools to call, execute them, and loop until the task is complete",
@@ -1036,6 +1026,16 @@
         "Python"
       ],
       "tags": "langchain, agents, llm"
+    },
+    {
+      "slug": "phpsetup",
+      "title": "PHP Setup",
+      "description": "Setup",
+      "date": "2024-08-25",
+      "categories": [
+        "PHP"
+      ],
+      "tags": "setup, web, server"
     },
     {
       "slug": "promptflow4",
@@ -1070,16 +1070,6 @@
       "tags": "dataverse, reports, advanced-reports"
     },
     {
-      "slug": "powerautomatereports",
-      "title": "Microsoft Power Automate Reports",
-      "description": "A Flow that emails a Report",
-      "date": "2024-07-19",
-      "categories": [
-        "Power Platform"
-      ],
-      "tags": "power-automate, reports, email, automation"
-    },
-    {
       "slug": "dataversereports",
       "title": "Microsoft Dataverse Reports",
       "description": "Creating a Dataverse Report",
@@ -1088,6 +1078,16 @@
         "Power Platform"
       ],
       "tags": "dataverse, reports, power-platform, ssrs"
+    },
+    {
+      "slug": "powerautomatereports",
+      "title": "Microsoft Power Automate Reports",
+      "description": "A Flow that emails a Report",
+      "date": "2024-07-19",
+      "categories": [
+        "Power Platform"
+      ],
+      "tags": "power-automate, reports, email, automation"
     },
     {
       "slug": "promptflow2",
@@ -1191,16 +1191,6 @@
       "tags": "copilot-studio, sso, single-sign-on, authentication"
     },
     {
-      "slug": "customizedefaultcanvas",
-      "title": "Copilot Studio",
-      "description": "Customize the look and feel of the bot default canvas",
-      "date": "2024-03-11",
-      "categories": [
-        "Power Platform"
-      ],
-      "tags": "copilot-studio, customize, chatbot, canvas"
-    },
-    {
       "slug": "copilotembedcode",
       "title": "Copilot Embed Code",
       "description": "An HTML page to host my Blog Copilot",
@@ -1209,6 +1199,16 @@
         "Power Platform"
       ],
       "tags": "copilot-studio, embed, html, web-channel"
+    },
+    {
+      "slug": "customizedefaultcanvas",
+      "title": "Copilot Studio",
+      "description": "Customize the look and feel of the bot default canvas",
+      "date": "2024-03-11",
+      "categories": [
+        "Power Platform"
+      ],
+      "tags": "copilot-studio, customize, chatbot, canvas"
     },
     {
       "slug": "staticwebapp.config.json",
@@ -1380,24 +1380,15 @@
       "tags": "microsoft-graph, financials, api, business-central"
     },
     {
-      "slug": "salesinvoice",
-      "title": "Sales Invoice",
-      "description": "How the Inventory, Sale, Tax and Receivables accounts are determined",
+      "slug": "customerpostinggroup",
+      "title": "Customer Posting Group",
+      "description": "Which accounts receivable account?",
       "date": "2023-12-14",
       "categories": [
+        "Microsoft Dynamics",
         "Business Central"
       ],
-      "tags": "sales-invoice, inventory, accounts-receivable, business-central"
-    },
-    {
-      "slug": "purchaseinvoice",
-      "title": "Purchase Invoice",
-      "description": "Purchase Invoice",
-      "date": "2023-12-14",
-      "categories": [
-        "Business Central"
-      ],
-      "tags": "purchase-invoice, accounts-payable, finance, business-central"
+      "tags": "customer-posting-group, accounts-receivable, general-ledger, business-central"
     },
     {
       "slug": "generalpostingsetup",
@@ -1410,15 +1401,24 @@
       "tags": "general-posting-setup, accounts-payable, gl-account, business-central"
     },
     {
-      "slug": "customerpostinggroup",
-      "title": "Customer Posting Group",
-      "description": "Which accounts receivable account?",
+      "slug": "purchaseinvoice",
+      "title": "Purchase Invoice",
+      "description": "Purchase Invoice",
       "date": "2023-12-14",
       "categories": [
-        "Microsoft Dynamics",
         "Business Central"
       ],
-      "tags": "customer-posting-group, accounts-receivable, general-ledger, business-central"
+      "tags": "purchase-invoice, accounts-payable, finance, business-central"
+    },
+    {
+      "slug": "salesinvoice",
+      "title": "Sales Invoice",
+      "description": "How the Inventory, Sale, Tax and Receivables accounts are determined",
+      "date": "2023-12-14",
+      "categories": [
+        "Business Central"
+      ],
+      "tags": "sales-invoice, inventory, accounts-receivable, business-central"
     },
     {
       "slug": "vendorpostinggroup",
@@ -1441,16 +1441,6 @@
       "tags": "general-ledger, accounts-payable, finance, business-central"
     },
     {
-      "slug": "hands-on-lab3.1",
-      "title": "Hands-on-Lab 3.1",
-      "description": "Set Up Finance Management",
-      "date": "2023-12-04",
-      "categories": [
-        "Business Central"
-      ],
-      "tags": "business-central, finance, hands-on-lab, configuration"
-    },
-    {
       "slug": "hands-on-lab2.3",
       "title": "Hands-on-Lab 2.3",
       "description": "Set up dimensions",
@@ -1461,14 +1451,14 @@
       "tags": "business-central, dimensions, hands-on-lab, configuration"
     },
     {
-      "slug": "hands-on-lab2.2",
-      "title": "Hands-on-Lab 2.2",
-      "description": "Migrate master data to a new company",
-      "date": "2023-11-22",
+      "slug": "hands-on-lab3.1",
+      "title": "Hands-on-Lab 3.1",
+      "description": "Set Up Finance Management",
+      "date": "2023-12-04",
       "categories": [
         "Business Central"
       ],
-      "tags": "business-central, data-migration, master-data, hands-on-lab"
+      "tags": "business-central, finance, hands-on-lab, configuration"
     },
     {
       "slug": "hands-on-lab2.1",
@@ -1479,6 +1469,16 @@
         "Business Central"
       ],
       "tags": "business-central, company-setup, hands-on-lab, configuration"
+    },
+    {
+      "slug": "hands-on-lab2.2",
+      "title": "Hands-on-Lab 2.2",
+      "description": "Migrate master data to a new company",
+      "date": "2023-11-22",
+      "categories": [
+        "Business Central"
+      ],
+      "tags": "business-central, data-migration, master-data, hands-on-lab"
     },
     {
       "slug": "spring-boot-6",
@@ -1678,16 +1678,6 @@
       "tags": "admin-center, business-central, administration, tenants"
     },
     {
-      "slug": "dynamicstrialsignup",
-      "title": "Dynamics Trial Signup",
-      "description": "Microsoft Signup",
-      "date": "2023-08-14",
-      "categories": [
-        "Microsoft Dynamics"
-      ],
-      "tags": "dynamics-365, trial, microsoft, signup"
-    },
-    {
       "slug": "businesscentralcanvasapps",
       "title": "Business Central Canvas Apps",
       "description": "Microsoft Dynamics 365 Business Central",
@@ -1698,6 +1688,16 @@
         "Power Platform"
       ],
       "tags": "canvas-apps, power-apps, business-central, integration"
+    },
+    {
+      "slug": "dynamicstrialsignup",
+      "title": "Dynamics Trial Signup",
+      "description": "Microsoft Signup",
+      "date": "2023-08-14",
+      "categories": [
+        "Microsoft Dynamics"
+      ],
+      "tags": "dynamics-365, trial, microsoft, signup"
     },
     {
       "slug": "promptengineering",
@@ -1720,16 +1720,6 @@
       "tags": "lm-studio, local-llm, llama, meta-llama"
     },
     {
-      "slug": "llamacorp",
-      "title": "LlamaCpp",
-      "description": "Accessing the llama.cpp model from Python",
-      "date": "2023-08-03",
-      "categories": [
-        "AI"
-      ],
-      "tags": "llama-cpp, local-llm, llama, python"
-    },
-    {
       "slug": "colorization",
       "title": "Colorization",
       "description": "colorization.ipynb",
@@ -1741,6 +1731,16 @@
       "tags": "colorization, jupyter-notebook, image-processing"
     },
     {
+      "slug": "llamacorp",
+      "title": "LlamaCpp",
+      "description": "Accessing the llama.cpp model from Python",
+      "date": "2023-08-03",
+      "categories": [
+        "AI"
+      ],
+      "tags": "llama-cpp, local-llm, llama, python"
+    },
+    {
       "slug": "stablediffusion",
       "title": "Stable Diffusion",
       "description": "Generating images from text descriptions using Stable Diffusion via Jupyter Notebook and Hugging Face — a deep learning text-to-image model",
@@ -1749,17 +1749,6 @@
         "AI"
       ],
       "tags": "stable-diffusion, image-generation, generative-ai, diffusion-models"
-    },
-    {
-      "slug": "opencv",
-      "title": "Object Detection",
-      "description": "Installing OpenCV on a Raspberry Pi and using Python to build a computer vision object detection pipeline",
-      "date": "2023-07-25",
-      "categories": [
-        "AI",
-        "IOT"
-      ],
-      "tags": "opencv, object-detection, computer-vision, python"
     },
     {
       "slug": "applelaptop",
@@ -1773,6 +1762,17 @@
       "tags": "anaconda, python-environment, setup, package-manager"
     },
     {
+      "slug": "opencv",
+      "title": "Object Detection",
+      "description": "Installing OpenCV on a Raspberry Pi and using Python to build a computer vision object detection pipeline",
+      "date": "2023-07-25",
+      "categories": [
+        "AI",
+        "IOT"
+      ],
+      "tags": "opencv, object-detection, computer-vision, python"
+    },
+    {
       "slug": "sh1106",
       "title": "Raspberry Pi SH1106",
       "description": "OLED display",
@@ -1783,16 +1783,6 @@
       "tags": "raspberry-pi, oled, sh1106, display"
     },
     {
-      "slug": "pi2",
-      "title": "Raspberry Pi GPIO",
-      "description": "Raspberry Pi GPIO",
-      "date": "2023-07-22",
-      "categories": [
-        "IOT"
-      ],
-      "tags": "raspberry-pi, gpio, python, electronics"
-    },
-    {
       "slug": "pi1",
       "title": "Raspberry Pi Imager",
       "description": "Raspberry Pi Imager Advanced Options",
@@ -1801,6 +1791,16 @@
         "IOT"
       ],
       "tags": "raspberry-pi, raspberry-pi-imager, setup, linux"
+    },
+    {
+      "slug": "pi2",
+      "title": "Raspberry Pi GPIO",
+      "description": "Raspberry Pi GPIO",
+      "date": "2023-07-22",
+      "categories": [
+        "IOT"
+      ],
+      "tags": "raspberry-pi, gpio, python, electronics"
     },
     {
       "slug": "langchain",
@@ -1814,24 +1814,14 @@
       "tags": "langchain, rag, retrieval-augmented-generation, llm"
     },
     {
-      "slug": "sentimentanalysis",
-      "title": "Sentiment Analysis",
-      "description": "Sentiment Analysis",
+      "slug": "3dprinting2",
+      "title": "3D Printing 2",
+      "description": "Raspberry Pi 4 and Mini Breadboard mount",
       "date": "2023-07-19",
       "categories": [
-        "AI"
+        "3D printing"
       ],
-      "tags": "sentiment-analysis, nlp, text-classification, python"
-    },
-    {
-      "slug": "sentencesimilarity",
-      "title": "Sentence Similarity",
-      "description": "Sentence Similarity",
-      "date": "2023-07-19",
-      "categories": [
-        "AI"
-      ],
-      "tags": "sentence-similarity, nlp, embeddings, semantic-search"
+      "tags": "raspberry-pi, breadboard, mount, 3d-printing"
     },
     {
       "slug": "contextinjection",
@@ -1844,14 +1834,24 @@
       "tags": "context-injection, prompt-engineering, llm, rag"
     },
     {
-      "slug": "3dprinting2",
-      "title": "3D Printing 2",
-      "description": "Raspberry Pi 4 and Mini Breadboard mount",
+      "slug": "sentencesimilarity",
+      "title": "Sentence Similarity",
+      "description": "Sentence Similarity",
       "date": "2023-07-19",
       "categories": [
-        "3D printing"
+        "AI"
       ],
-      "tags": "raspberry-pi, breadboard, mount, 3d-printing"
+      "tags": "sentence-similarity, nlp, embeddings, semantic-search"
+    },
+    {
+      "slug": "sentimentanalysis",
+      "title": "Sentiment Analysis",
+      "description": "Sentiment Analysis",
+      "date": "2023-07-19",
+      "categories": [
+        "AI"
+      ],
+      "tags": "sentiment-analysis, nlp, text-classification, python"
     },
     {
       "slug": "3dprinting1",
@@ -1875,16 +1875,6 @@
       "tags": "vb-net, sql-server, unit-tests, tdd"
     },
     {
-      "slug": "ticktacktoe",
-      "title": "Multiplayer Tick-Tack-Toe",
-      "description": "Creating a new firebase project",
-      "date": "2023-05-10",
-      "categories": [
-        "Firebase"
-      ],
-      "tags": "realtime-database, multiplayer, javascript"
-    },
-    {
       "slug": "angularphaser",
       "title": "Angular and Phaser",
       "description": "Using Phaser in an Angular Component",
@@ -1894,6 +1884,16 @@
         "TypeScript"
       ],
       "tags": "phaser, game-dev, canvas"
+    },
+    {
+      "slug": "ticktacktoe",
+      "title": "Multiplayer Tick-Tack-Toe",
+      "description": "Creating a new firebase project",
+      "date": "2023-05-10",
+      "categories": [
+        "Firebase"
+      ],
+      "tags": "realtime-database, multiplayer, javascript"
     },
     {
       "slug": "multiplayer",
@@ -1969,16 +1969,6 @@
       "tags": "blazor, web-api, sql-server, stored-procedures"
     },
     {
-      "slug": "blazorwasmandasp.net",
-      "title": "Blazor WASM and ASP.NET Core",
-      "description": "An ASP.NET Core backend and a Blazor Web Assembly frontend.",
-      "date": "2023-03-24",
-      "categories": [
-        ".NET"
-      ],
-      "tags": "blazor, wasm, web-framework, component, interactive"
-    },
-    {
       "slug": "angularandasp.net",
       "title": "Angular and ASP.NET Core",
       "description": "Single Page Application (SPA) templates",
@@ -1989,6 +1979,16 @@
         "TypeScript"
       ],
       "tags": "asp-net-core, spa, routing"
+    },
+    {
+      "slug": "blazorwasmandasp.net",
+      "title": "Blazor WASM and ASP.NET Core",
+      "description": "An ASP.NET Core backend and a Blazor Web Assembly frontend.",
+      "date": "2023-03-24",
+      "categories": [
+        ".NET"
+      ],
+      "tags": "blazor, wasm, web-framework, component, interactive"
     },
     {
       "slug": "reactandasp.net",
@@ -2446,17 +2446,6 @@
       "tags": "sails-js, azure-devops, node, mvc"
     },
     {
-      "slug": "amazonfargate",
-      "title": "Amazon Fargate",
-      "description": "Pay-as-you-go",
-      "date": "2021-09-20",
-      "categories": [
-        "AWS",
-        "DevOps"
-      ],
-      "tags": "fargate, serverless-containers, ecs"
-    },
-    {
       "slug": "amazonecs",
       "title": "Amazon Elastic Container Service",
       "description": "Deploying to Amazon ECS",
@@ -2466,6 +2455,17 @@
         "DevOps"
       ],
       "tags": "amazon-ecs, docker, containers"
+    },
+    {
+      "slug": "amazonfargate",
+      "title": "Amazon Fargate",
+      "description": "Pay-as-you-go",
+      "date": "2021-09-20",
+      "categories": [
+        "AWS",
+        "DevOps"
+      ],
+      "tags": "fargate, serverless-containers, ecs"
     },
     {
       "slug": "aspnetcoreawseks",
@@ -2687,16 +2687,6 @@
       "tags": "webvr, virtual-reality, three-js, browser"
     },
     {
-      "slug": "graphql",
-      "title": "GraphQL",
-      "description": "GraphQL is a query and manipulation language for APIs.",
-      "date": "2021-03-01",
-      "categories": [
-        "JavaScript"
-      ],
-      "tags": "graphql, api-design, query-language, schema"
-    },
-    {
       "slug": "dockerbuildx",
       "title": "Docker Buildx",
       "description": "Build multi-platform Docker images.",
@@ -2705,6 +2695,16 @@
         "DevOps"
       ],
       "tags": "docker-buildx, multi-platform, arm64, containers"
+    },
+    {
+      "slug": "graphql",
+      "title": "GraphQL",
+      "description": "GraphQL is a query and manipulation language for APIs.",
+      "date": "2021-03-01",
+      "categories": [
+        "JavaScript"
+      ],
+      "tags": "graphql, api-design, query-language, schema"
     },
     {
       "slug": "nuget",
@@ -2798,14 +2798,14 @@
       "tags": "usestate, useeffect, hooks"
     },
     {
-      "slug": "restapiservice",
-      "title": "REST",
-      "description": "Creating a REST API Service using Node and Express",
+      "slug": "docker",
+      "title": "Docker",
+      "description": "Docker is an easy way to create, manage, and deliver applications.",
       "date": "2021-02-06",
       "categories": [
-        "JavaScript"
+        "DevOps"
       ],
-      "tags": "rest-api, node, express"
+      "tags": "docker, containers, dockerfile, cli"
     },
     {
       "slug": "kubernetes",
@@ -2818,15 +2818,15 @@
       "tags": "kubernetes, k8s, containers, orchestration"
     },
     {
-      "slug": "docker",
-      "title": "Docker",
-      "description": "Docker is an easy way to create, manage, and deliver applications.",
+      "slug": "restapiservice",
+      "title": "REST",
+      "description": "Creating a REST API Service using Node and Express",
       "date": "2021-02-06",
       "categories": [
-        "DevOps"
+        "JavaScript"
       ],
-      "tags": "docker, containers, dockerfile, cli"
+      "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-09-17T00:49:41.064Z"
+  "generatedAt": "2026-09-17T02:05:57.209Z"
 }
