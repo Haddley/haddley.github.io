@@ -350,13 +350,13 @@ Indexes:
 The table, its three columns, and the auto-incrementing sequence backing `id` all exist, all created by the backend's own startup code, with nothing inserted into it yet. Now tested with three genuinely different sentences and one query that names none of them directly:
 
 ```bash
-curl -X POST localhost:8001/items -d '{"text": "The dog ran across the park"}'
-curl -X POST localhost:8001/items -d '{"text": "A cat sat on the mat"}'
-curl -X POST localhost:8001/items -d '{"text": "The stock market fell sharply today"}'
+curl -X POST localhost:8001/items -H "Content-Type: application/json" -d '{"text": "The dog ran across the park"}'
+curl -X POST localhost:8001/items -H "Content-Type: application/json" -d '{"text": "A cat sat on the mat"}'
+curl -X POST localhost:8001/items -H "Content-Type: application/json" -d '{"text": "The stock market fell sharply today"}'
 curl "localhost:8001/search?q=puppies%20playing%20outside"
 ```
 
-The first three commands each use `-X POST` (explicitly naming the HTTP method, needed here because, unlike Phase 1's call straight to Ollama, `curl -d` alone would still default the method to POST, but being explicit removes any ambiguity) together with `-d` to send one JSON body each to `/items`, triggering `add_item()` above three times, once per sentence — each one is genuinely, separately embedded by Ollama and genuinely, separately written to the `items` table. The fourth command is a plain `GET` request (no `-X` needed, since GET is `curl`'s default) against `/search`, with the query text placed directly in the URL after `?q=`. `%20` is a URL-encoded space — spaces are not valid characters inside a URL, so they must be escaped; `puppies%20playing%20outside` decodes back to `puppies playing outside` on the server side before ever reaching `embed()`.
+The first three commands each use `-X POST` (explicitly naming the HTTP method, needed here because, unlike Phase 1's call straight to Ollama, `curl -d` alone would still default the method to POST, but being explicit removes any ambiguity) together with `-d` to send one JSON body each to `/items`, triggering `add_item()` above three times, once per sentence — each one is genuinely, separately embedded by Ollama and genuinely, separately written to the `items` table. `-H "Content-Type: application/json"` is required here: `curl -d` on its own defaults to sending `Content-Type: application/x-www-form-urlencoded`, and FastAPI's body parsing needs the header to explicitly say `application/json` before it will parse the request body as the `Item` model at all — without it, the whole raw JSON text arrives as a single unparsed string, and FastAPI rejects it with a 422 error rather than a dictionary with a `text` field. The fourth command is a plain `GET` request (no `-X` or body needed, since GET is `curl`'s default and this one sends no data) against `/search`, with the query text placed directly in the URL after `?q=`. `%20` is a URL-encoded space — spaces are not valid characters inside a URL, so they must be escaped; `puppies%20playing%20outside` decodes back to `puppies playing outside` on the server side before ever reaching `embed()`.
 
 ```json
 [
