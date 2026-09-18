@@ -164,6 +164,15 @@ docker exec rag-toy-postgres psql -U rag -d rag_db -c "\dx"
 
 `plpgsql` is a procedural language extension that ships enabled in every Postgres database by default, unrelated to this post. The `vector` row is the one that matters: it confirms `pgvector` version `0.8.6` genuinely activated, and its own description already hints at two indexing strategies, `ivfflat` and `hnsw`, that speed up similarity search on very large tables — not needed at this toy scale of a handful of rows, but the reason `pgvector` exists as a specialised extension rather than something achievable with plain SQL alone.
 
+If `\dx` shows only `plpgsql`, with no `vector` row, the init script never ran — most likely because `db/init/` was missing or empty the first time the container started against an empty volume. The fix is not to add the file and restart the container: Postgres only ever runs those init scripts once, the very first time, against a data directory with nothing in it yet, and a container that already started once already has a non-empty data directory, so simply restarting it changes nothing. What is needed is to remove that data directory and let Postgres initialize from scratch, and the volume is exactly where that data directory lives:
+
+```bash
+docker compose down -v
+docker compose up -d postgres
+```
+
+`docker compose down` stops and removes the containers for every service in `docker-compose.yml`, along with the network Compose created for them, but by default leaves named volumes — and therefore all stored data — untouched, so a plain `down` followed by `up` again would still skip the init scripts, for the same reason a restart would. The `-v` flag changes that: it additionally removes every named volume declared under this file's top-level `volumes:` key, which here means `rag_pg_data`, deleting the actual Postgres data directory along with it. The next `docker compose up -d postgres` then has to create that volume fresh and empty, which is precisely the condition that makes Postgres run everything in `db/init/` again. This is also the correct way to wipe this toy database back to empty at any point, not just to recover from a missed init file — there is no separate "reset" command, only delete the volume and let it be recreated.
+
 A real, running database, with nothing in it yet, ready for Phase 3 to write to.
 
 ## Phase 3 — a minimal FastAPI backend, with real embeddings
