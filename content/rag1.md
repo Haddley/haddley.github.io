@@ -649,7 +649,7 @@ httpx==0.28.1
 mcp==2.0.0
 ```
 
-One new line, `mcp==2.0.0`, pinned to an exact version the same way as the rest of the file, for the same reason — this is the SDK `mcp_server.py` and `mcp_smoke_test.py` below both import from.
+One new line, `mcp==2.0.0`, pinned to an exact version the same way as the rest of the file, for the same reason — this is the SDK `mcp_server.py` imports from.
 
 No change to `docker-compose.yml` is needed for this phase — `mcp_server.py` runs inside the existing `backend` container via `docker compose exec`, further down this page, rather than as a separate service. `backend/Dockerfile` does need one change, though: Phase 3's version only ever copied `main.py`, and this new file needs to exist inside the image too. Here is the full file, changed line marked:
 
@@ -658,7 +658,7 @@ FROM python:3.12-slim
 WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-COPY main.py mcp_server.py mcp_smoke_test.py .   # was: COPY main.py .
+COPY main.py mcp_server.py .   # was: COPY main.py .
 EXPOSE 8000
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
 ```
@@ -669,68 +669,11 @@ Only the one `COPY` line changes — it sits in the same place in the file as Ph
 docker compose up -d --build backend
 ```
 
-Then verify it actually works before trusting it to Claude Code — a real client, over a real stdio connection, calling the real tool:
-
-```python
-# backend/mcp_smoke_test.py
-import asyncio
-import os
-
-from mcp import ClientSession, StdioServerParameters
-from mcp.client.stdio import stdio_client
-
-QUERY = "puppies playing outside"
-
-
-async def main() -> None:
-    params = StdioServerParameters(command="python", args=["mcp_server.py"], env=dict(os.environ))
-    async with stdio_client(params) as (read, write):
-        async with ClientSession(read, write) as session:
-            await session.initialize()
-
-            tools = await session.list_tools()
-            print("Tools exposed:", [t.name for t in tools.tools])
-
-            result = await session.call_tool("search_toy_rag", {"query": QUERY})
-            if result.is_error:
-                raise RuntimeError(f"Tool call failed: {result.content[0].text}")
-            items = result.structured_content["result"]
-            print(f"\nQuery: {QUERY!r}")
-            for item in items:
-                print(f"  {item['text']!r}  (distance: {item['distance']:.4f})")
-
-
-if __name__ == "__main__":
-    asyncio.run(main())
-```
-
-This script plays the role of an MCP *client* — the same role Claude Code itself plays later in this post — talking to the server file above. `import asyncio` brings in Python's standard library for running asynchronous code; `asyncio.run(main())` at the bottom is the standard way to actually start an `async def` function from ordinary, synchronous Python. `StdioServerParameters(command="python", args=["mcp_server.py"], env=dict(os.environ))` describes exactly how to launch the server: run the command `python mcp_server.py`, and — critically — pass it `env=dict(os.environ)`, copying this script's own complete set of environment variables into the new process. `async with stdio_client(params) as (read, write):` actually spawns that subprocess and opens two communication streams to it, named `read` and `write`, matching the two directions stdio naturally provides. `async with ClientSession(read, write) as session:` wraps those two raw streams in a higher-level object that understands the MCP protocol itself, so the rest of the script can call named methods instead of manually formatting protocol messages. `await session.initialize()` performs the MCP handshake — the first message any MCP client and server exchange, agreeing on protocol version and capabilities before any real work happens, mirrored later in this post by a raw JSON-RPC `initialize` call run by hand. `await session.list_tools()` asks the server which tools it exposes, returning `tools.tools`, a list of tool descriptions — here narrowed down to just each one's `.name` for the printed summary. `await session.call_tool("search_toy_rag", {"query": QUERY})` actually invokes the tool, passing its one argument as a dictionary matching the function's own parameter name. `result.is_error` is a boolean flag the MCP protocol sets if the tool itself raised an exception while running, letting a client distinguish "the tool ran and returned an answer" from "the tool call failed," which is checked and turned into a normal Python exception via `raise RuntimeError(...)` if it was set. `result.structured_content["result"]` and the final `print` loop are explained in the note immediately below.
-
-```bash
-docker exec rag-toy-backend python mcp_smoke_test.py
-```
-
-Exactly the same `docker exec` pattern used in Phase 2 to run `psql` inside the Postgres container — here running `mcp_smoke_test.py` inside the already-running `backend` container, so it automatically has access to the same `DATABASE_URL` and `OLLAMA_BASE_URL` environment variables the FastAPI process itself was started with, since both processes exist inside the same container.
-
-```
-Tools exposed: ['search_toy_rag']
-
-Query: 'puppies playing outside'
-  'The dog ran across the park'  (distance: 0.4117)
-  'A cat sat on the mat'  (distance: 0.5587)
-  'The stock market fell sharply today'  (distance: 0.6228)
-```
-
-The exact same three distances as Phase 3's `curl` test — proof, not just an assumption, that the MCP tool is genuinely calling through to the identical `search()` function and the identical stored data, rather than some separate, parallel implementation.
-
-Two details in `mcp_smoke_test.py` above matter for making this work at all:
-
-- **`StdioServerParameters` does not inherit the parent process's environment by default.** `env=dict(os.environ)` is required — without it, the spawned `mcp_server.py` process has no `DATABASE_URL` and crashes on import.
-- **A tool returning `list[dict]` does not land as one JSON blob in `result.content[0].text`.** `mcp==2.0.0` serializes each dict in the list as its own separate `TextContent` block instead. `result.structured_content["result"]` hands back the tool's actual return value already parsed, under a `"result"` key, regardless of how many separate blocks the plain-text version was split into.
+One fact worth knowing before writing any Python MCP client of your own, though nothing in this post's own setup hits it: the SDK's `StdioServerParameters`, used to spawn a server as a subprocess, does not inherit the parent process's environment by default. A client that launches `mcp_server.py` directly (rather than via `docker compose exec`, as everything below does) needs to pass `env=dict(os.environ)` explicitly, or the spawned process has no `DATABASE_URL` and crashes on import.
 
 ## Checking it interactively with MCP Inspector
 
-The smoke test above proves the server works, but only by reading printed text. [MCP Inspector](https://modelcontextprotocol.io/docs/tools/inspector) is the official tool for actually poking at an MCP server from a browser — point it at the same command `.mcp.json` will use, no code required:
+[MCP Inspector](https://modelcontextprotocol.io/docs/tools/inspector) is the official tool for actually poking at an MCP server from a browser — point it at the same command `.mcp.json` will use, no code required:
 
 ```bash
 npx -y @modelcontextprotocol/inspector docker compose exec -T backend python mcp_server.py
@@ -743,10 +686,12 @@ This starts a local web UI (`http://127.0.0.1:6274`, with an auth token in the U
 ![](assets/images/rag1/inspector-tool-form.png)
 *Real Inspector, connected to the real `toy-rag` server — the tool's docstring rendered directly from `mcp_server.py`'s own source, and a form generated from `search_toy_rag`'s one parameter*
 
-Filling in `puppies playing outside` and clicking **Execute Tool** sends a real `tools/call` request over the same stdio connection the smoke test used, and the result makes the earlier gotcha visible rather than just documented:
+Filling in `puppies playing outside` and clicking **Execute Tool** sends a real `tools/call` request over a real stdio connection to the running server, and the result surfaces a genuine, non-obvious detail of this particular `mcp` SDK version:
 
 ![](assets/images/rag1/inspector-tool-result.png)
 *Three separate result blocks — one per dict in the returned list — plus the clean, pre-parsed "Structured Output" section below them, and the real `tools/call` message logged on the right at 340ms*
+
+A tool returning `list[dict]`, exactly as `search_toy_rag` does, does not land as one JSON array — `mcp==2.0.0` serializes each dict in the list as its own separate `TextContent` block instead, which is why the result above shows three separate entries rather than one. The "Structured Output" section underneath is Inspector's own rendering of `structured_content`, the same field a Python client would read via `result.structured_content["result"]` to get the tool's actual return value back pre-parsed, regardless of how many separate text blocks the plain version was split into.
 
 Inspector shows the exact JSON-RPC traffic (the message log on the right, timestamped, every `initialize`, `tools/list`, and `tools/call` round trip). JSON-RPC is the specific message format MCP is built on top of — every request carries a method name (`initialize`, `tools/call`, and so on) and an `id` used to match each response back to the request that triggered it, seen directly in the raw `initialize` example below.
 
@@ -782,7 +727,7 @@ This is the MCP handshake mentioned above, sent by hand instead of through a lib
 {"jsonrpc":"2.0","id":1,"result":{"capabilities":{"experimental":{},"prompts":{"listChanged":false},"resources":{"listChanged":false,"subscribe":false},"tools":{"listChanged":false}},"protocolVersion":"2025-06-18","serverInfo":{"name":"toy-rag","version":""}}}
 ```
 
-A real JSON-RPC response, with `"id":1` matching the request that triggered it, and `serverInfo.name` reading back `"toy-rag"` — the exact string this post's `MCPServer("toy-rag")` set, confirming this is genuinely the same server the smoke test already exercised, just started the way an MCP client starts it rather than the way a Python script did. The `capabilities` object describes what optional protocol features this particular server supports — `tools`, `prompts`, and `resources` are the three main categories MCP defines, and this server only actually implements `tools`, matching the one `@server.tool()` function defined in its source.
+A real JSON-RPC response, with `"id":1` matching the request that triggered it, and `serverInfo.name` reading back `"toy-rag"` — the exact string this post's `MCPServer("toy-rag")` set, confirming this is genuinely the same server Inspector already exercised, just started the way Claude Code itself will start it rather than through Inspector's own UI. The `capabilities` object describes what optional protocol features this particular server supports — `tools`, `prompts`, and `resources` are the three main categories MCP defines, and this server only actually implements `tools`, matching the one `@server.tool()` function defined in its source.
 
 **To actually connect it:** with the stack running (`docker compose up -d`), open Claude Code in the `rag-toy-stack` directory. A project-scoped `.mcp.json` it has not seen before prompts for approval before its tools become available — once approved, `/mcp` lists it as a connected server along with `search_toy_rag`. If Claude Code was already running in that directory before `.mcp.json` was added, restart the session (or reconnect MCP servers) to pick it up; it will not appear retroactively in an already-running session.
 
