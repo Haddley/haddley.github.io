@@ -709,7 +709,31 @@ Inspector shows the exact JSON-RPC traffic (the message log on the right, timest
 
 ## Adding it to Claude Code
 
-One file, in the project root (the `rag-toy-stack` directory itself, next to `docker-compose.yml`):
+One file, in the project root — the same directory as `docker-compose.yml`, not inside `backend/` or `frontend/`. Here is where every file this series has built actually lives, `.mcp.json` included, shown together for the first time:
+
+```mermaid
+graph TD
+    A["rag-toy-stack/"] --> B["docker-compose.yml"]
+    A --> C["db/"]
+    C --> D["init/"]
+    D --> E["001_enable_pgvector.sql"]
+    A --> F["backend/"]
+    F --> G["Dockerfile"]
+    F --> H["requirements.txt"]
+    F --> I["main.py"]
+    F --> J["mcp_server.py"]
+    A --> K["frontend/"]
+    K --> L["Dockerfile"]
+    K --> M["package.json"]
+    K --> N["vite.config.js"]
+    K --> O["index.html"]
+    K --> P["src/"]
+    P --> Q["main.jsx"]
+    P --> R["App.jsx"]
+    A --> S[".mcp.json"]
+```
+
+A file called `.mcp.json` inside `backend/` or `frontend/` does nothing — Claude Code only ever looks for it in the directory it was actually started in. It needs to sit at the very top, next to `docker-compose.yml`, `backend/`, and `frontend/`, not underneath any of them.
 
 **`.mcp.json`:**
 
@@ -741,9 +765,19 @@ This is the MCP handshake mentioned above, sent by hand instead of through a lib
 
 A real JSON-RPC response, with `"id":1` matching the request that triggered it, and `serverInfo.name` reading back `"toy-rag"` — the exact string this post's `MCPServer("toy-rag")` set, confirming this is genuinely the same server Inspector already exercised, just started the way Claude Code itself will start it rather than through Inspector's own UI. The `capabilities` object describes what optional protocol features this particular server supports — `tools`, `prompts`, and `resources` are the three main categories MCP defines, and this server only actually implements `tools`, matching the one `@server.tool()` function defined in its source.
 
-**To actually connect it:** with the stack running (`docker compose up -d`), open Claude Code in the `rag-toy-stack` directory. A project-scoped `.mcp.json` it has not seen before prompts for approval before its tools become available — once approved, `/mcp` lists it as a connected server along with `search_toy_rag`. If Claude Code was already running in that directory before `.mcp.json` was added, restart the session (or reconnect MCP servers) to pick it up; it will not appear retroactively in an already-running session.
+**To actually connect it:** with the stack running (`docker compose up -d`), open Claude Code in the `rag-toy-stack` directory. A project-scoped `.mcp.json` it has not seen before prompts for approval before its tools become available:
 
-Rather than describe what happens next, here is a genuinely separate Claude Code session, started fresh in that exact directory, asked exactly this:
+![](assets/images/rag1/claude-code-mcp-approval-prompt.png)
+*The real, first-run prompt — this exact screen, not a paraphrase of it. "Use this MCP server" approves `toy-rag` for this session; "Use this and all future MCP servers in this project" remembers the choice in `.claude/settings.local.json` so it never asks again for this project; "Continue without" skips it entirely.*
+
+Approve it, and the tool is available for the rest of that session — no separate step, no restart needed, straight into an ordinary conversation:
+
+![](assets/images/rag1/claude-code-mcp-interactive-session.png)
+*A real interactive session, not `-p` mode — asked in plain English, it calls `toy-rag` on its own, summarizes the real result, and sits ready for the next question exactly like any other conversation turn*
+
+`/mcp` at any point lists it as a connected server along with `search_toy_rag`. If Claude Code was already running in that directory before `.mcp.json` was added, restart the session (or reconnect MCP servers) to pick it up; it will not appear retroactively in an already-running session — which is exactly what happened when reproducing this post: `.mcp.json` was momentarily saved inside `frontend/` rather than the project root, and `/mcp` showed nothing from it until the file moved to the right place and Claude Code was restarted.
+
+The two screenshots above are one genuinely interactive session, approving the prompt and asking a question by hand. For a second, independent kind of proof — that the exact same tool also works when Claude Code is driven completely non-interactively, with no one present to click through a prompt — here is a separate `claude -p` invocation, started fresh in that same directory, asked exactly this:
 
 ```bash
 cd rag-toy-stack
