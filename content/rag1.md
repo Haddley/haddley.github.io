@@ -577,6 +577,7 @@ services:
   frontend:
     build: ./frontend
     container_name: rag-toy-frontend
+    restart: unless-stopped
     ports:
       - "5174:5173"
     depends_on:
