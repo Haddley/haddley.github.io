@@ -299,7 +299,55 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
 
 A `Dockerfile` is a recipe for building a container image, read top to bottom as a sequence of steps. `FROM python:3.12-slim` starts from an existing, official base image that already has Python 3.12 installed, with `slim` indicating a smaller variant containing less bundled software than the default image, to keep the final image size down. `WORKDIR /app` sets the working directory inside the image for every subsequent instruction, creating the folder if it does not already exist. `COPY requirements.txt .` copies just that one file from the host into the image first, before the rest of the source code — a deliberate ordering, because Docker caches each step, and this means the (slow) dependency-installation step below only needs to re-run when `requirements.txt` itself actually changes, not every time application code changes. `RUN pip install --no-cache-dir -r requirements.txt` installs every Python package listed in that file — `fastapi`, `uvicorn`, `psycopg[binary]`, `httpx`, and (added in Phase 5) `mcp` — with `--no-cache-dir` telling `pip` not to keep its own download cache, again to keep the final image smaller. `COPY main.py .` copies the actual application code in, now that dependencies are already installed. `EXPOSE 8000` documents, for humans and tooling, that this container listens on port 8000 — it does not by itself make the port reachable from outside; that is `docker-compose.yml`'s job, done the same way Phase 2 mapped Postgres's port. `CMD [...]` is the command run when a container starts from this image: `uvicorn`, an ASGI server (a program whose job is to accept incoming HTTP connections and hand each one to Python application code — FastAPI itself does not listen on a network port directly), told to serve `app` (the `FastAPI` instance) found inside `main.py`, bound to `0.0.0.0` (meaning "accept connections from any network interface," required for other containers and the host to reach it, since `localhost` inside a container would only accept connections from within that same container) on port 8000, with `--reload` telling `uvicorn` to watch source files and restart automatically on changes — convenient for this kind of iterative, exploratory development, though not something a production deployment would normally enable.
 
-Added to `docker-compose.yml` as a second service, `backend`, on port `8001`, depending on `postgres` being healthy first (using `depends_on: condition: service_healthy`, which is exactly why Phase 2 defined a `healthcheck` at all — without it, `depends_on` could only wait for the postgres *container* to start, not for Postgres itself to actually be ready to accept connections, and the backend's very first startup query could fail with a connection error in that gap). Brought up with `docker compose up -d --build backend`, where `--build` tells Docker Compose to build the image from the `Dockerfile` fresh — including re-running any changed steps — rather than reusing a previously built image, then tested with three genuinely different sentences and one query that names none of them directly:
+**`docker-compose.yml`, with `backend` added as a second service**, directly below the `postgres` service Phase 2 already defined:
+
+```yaml
+services:
+  postgres:
+    # ... unchanged from Phase 2 ...
+
+  backend:
+    build: ./backend
+    container_name: rag-toy-backend
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-rag}:${POSTGRES_PASSWORD:-rag}@postgres:5432/${POSTGRES_DB:-rag_db}
+    ports:
+      - "8001:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  rag_pg_data:
+```
+
+`build: ./backend` tells Compose to build an image from the `Dockerfile` in that folder, rather than pulling a pre-built one the way `postgres` does. `DATABASE_URL` uses `postgres` — the *service name* — as the hostname, not `localhost` and not the `5433` port Phase 2 mapped: Compose places every service in one file on a shared internal network and gives each one a DNS name matching its service name, so from inside the `backend` container, `postgres:5432` (Postgres's normal internal port) reaches the database directly. The `5433:5432` mapping from Phase 2 only matters for reaching Postgres from the host machine — from one container to another, that mapping does not apply at all. `depends_on: postgres: condition: service_healthy` is exactly why Phase 2 defined a `healthcheck` at all — without it, `depends_on` could only wait for the postgres *container* to start, not for Postgres itself to actually be ready to accept connections, and the backend's very first startup query could fail with a connection error in that gap.
+
+Brought up with `docker compose up -d --build backend`, where `--build` tells Docker Compose to build the image from the `Dockerfile` fresh — including re-running any changed steps — rather than reusing a previously built image; Compose starts `postgres` first automatically, because `backend` depends on it:
+
+```bash
+docker compose up -d --build backend
+```
+
+The `lifespan` function above runs the moment the backend container starts, before it accepts any requests, so the `items` table already exists at this point — nothing further needs to be run by hand to create it. Confirmed independently, the same way Phase 2 confirmed the extension activated, before trusting any application code:
+
+```bash
+docker exec rag-toy-postgres psql -U rag -d rag_db -c "\d items"
+```
+
+```
+                                Table "public.items"
+  Column   |    Type     | Collation | Nullable |              Default
+-----------+-------------+-----------+----------+-----------------------------------
+ id        | integer     |           | not null | nextval('items_id_seq'::regclass)
+ text      | text        |           | not null |
+ embedding | vector(768) |           | not null |
+Indexes:
+    "items_pkey" PRIMARY KEY, btree (id)
+```
+
+The table, its three columns, and the auto-incrementing sequence backing `id` all exist, all created by the backend's own startup code, with nothing inserted into it yet. Now tested with three genuinely different sentences and one query that names none of them directly:
 
 ```bash
 curl -X POST localhost:8001/items -d '{"text": "The dog ran across the park"}'
