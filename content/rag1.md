@@ -639,7 +639,19 @@ if __name__ == "__main__":
 
 `from main import search` imports the exact same Python function `search()` defined and used by `@app.get("/search")` back in Phase 3's `main.py` — the same file this new file lives alongside. `server = MCPServer("toy-rag")` creates the MCP server object itself, given the fixed name `"toy-rag"`, used later to confirm, byte for byte, that a given running process really is this exact server. `@server.tool()` is MCP's equivalent of FastAPI's `@app.get(...)` — it registers a callable thing an AI agent can discover and invoke, over **stdio** (standard input/output, the same two plain text streams every command-line program already has for receiving input and printing output) rather than a network socket. The function's docstring — the triple-quoted string directly below its definition — is not a comment for human readers only; MCP clients, including Claude Code, read it directly and show it to the AI model as the description of what this tool does and when to use it, which is why it is written as a clear, complete sentence rather than a terse label. Inside the function, `return search(q=query)` simply calls straight through to Phase 3's original function — the tool adds no new logic of its own, it only adapts the existing `search()` function to MCP's calling convention. `if __name__ == "__main__": server.run()` is a standard Python idiom meaning "only run this when the file is executed directly, not when it is imported by something else" — `server.run()` starts the server and defaults to stdio transport, which is exactly what a locally-spawned tool like this needs.
 
-**Add `mcp==2.0.0` to `backend/requirements.txt`.** No change to `docker-compose.yml` is needed for this phase — `mcp_server.py` runs inside the existing `backend` container via `docker compose exec`, further down this page, rather than as a separate service. `backend/Dockerfile` does need one change, though: Phase 3's version only ever copied `main.py`, and this new file needs to exist inside the image too —
+**`backend/requirements.txt`, with `mcp` added** to the four packages Phase 3 already listed:
+
+```
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+psycopg[binary]==3.2.3
+httpx==0.28.1
+mcp==2.0.0
+```
+
+One new line, `mcp==2.0.0`, pinned to an exact version the same way as the rest of the file, for the same reason — this is the SDK `mcp_server.py` and `mcp_smoke_test.py` below both import from.
+
+No change to `docker-compose.yml` is needed for this phase — `mcp_server.py` runs inside the existing `backend` container via `docker compose exec`, further down this page, rather than as a separate service. `backend/Dockerfile` does need one change, though: Phase 3's version only ever copied `main.py`, and this new file needs to exist inside the image too —
 
 ```dockerfile
 COPY main.py mcp_server.py mcp_smoke_test.py .
