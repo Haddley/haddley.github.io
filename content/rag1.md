@@ -130,12 +130,12 @@ This is one line of plain SQL (Structured Query Language, the language used to t
 
 Before running `docker compose up`, the folder on disk needs to look exactly like this — the `docker-compose.yml` file, sitting next to a `db/init/` folder containing the SQL file above:
 
-```
-rag-toy-stack/
-├── docker-compose.yml
-└── db/
-    └── init/
-        └── 001_enable_pgvector.sql
+```mermaid
+graph TD
+    A["rag-toy-stack/"] --> B["docker-compose.yml"]
+    A --> C["db/"]
+    C --> D["init/"]
+    D --> E["001_enable_pgvector.sql"]
 ```
 
 If `db/init/` does not exist yet, or exists but is empty, Postgres has nothing to run: it starts up with the `vector` extension available (built into the image) but not activated in the database, and `\dx` will list only `plpgsql`, the same as any other Postgres, with no obvious error to point at the missing file. Creating the folder and the file, then bringing the container up, is not optional setup on the side — it is a required part of this step.
