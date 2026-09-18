@@ -274,6 +274,17 @@ Working through this file top to bottom:
 
 `OLLAMA_BASE_URL` defaults to `host.docker.internal` — the hostname Docker Desktop provides specifically so a container can reach a service (Ollama) running on the host machine rather than inside another container. `embed()` is a real HTTP call to the exact endpoint Phase 1 tested by hand; `add_item` and `search` both call it, so the query and every stored item are embedded by the identical model, which is what makes comparing them meaningful at all.
 
+**`backend/requirements.txt`** — saved next to `main.py`, in the same `backend/` folder, since the `Dockerfile` below copies it from there:
+
+```
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+psycopg[binary]==3.2.3
+httpx==0.28.1
+```
+
+One line per package, each pinned to an exact version with `==` — pinning matters here because an unpinned `pip install fastapi` would silently pull whatever the newest compatible release of every dependency happens to be on the day it runs, including `pydantic` itself (a dependency of `fastapi`, not listed here directly), which can quietly change behaviour between versions. `uvicorn[standard]` installs `uvicorn` with its optional "standard" extras (faster networking libraries, and support for auto-reload), rather than the bare minimum install. `psycopg[binary]` installs the pre-compiled binary build of the Postgres driver rather than one that compiles a C extension from source at install time, avoiding the need for system-level build tools inside the image. (Phase 5 adds one more line, `mcp==2.0.0`, to this same file.)
+
 **`backend/Dockerfile`:**
 
 ```dockerfile
