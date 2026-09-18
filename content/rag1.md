@@ -128,6 +128,20 @@ CREATE EXTENSION IF NOT EXISTS vector;
 
 This is one line of plain SQL (Structured Query Language, the language used to talk to a relational database like Postgres). `CREATE EXTENSION` is a Postgres-specific SQL command that activates an installed extension package inside the current database — `vector` is the name `pgvector` registers itself under. `IF NOT EXISTS` makes the statement safe to run more than once: without it, running this same file again against a database that already has the extension enabled would raise an error and stop the initialization; with it, Postgres silently does nothing if the extension is already active.
 
+Before running `docker compose up`, the folder on disk needs to look exactly like this — the `docker-compose.yml` file, sitting next to a `db/init/` folder containing the SQL file above:
+
+```
+rag-toy-stack/
+├── docker-compose.yml
+└── db/
+    └── init/
+        └── 001_enable_pgvector.sql
+```
+
+If `db/init/` does not exist yet, or exists but is empty, Postgres has nothing to run: it starts up with the `vector` extension available (built into the image) but not activated in the database, and `\dx` will list only `plpgsql`, the same as any other Postgres, with no obvious error to point at the missing file. Creating the folder and the file, then bringing the container up, is not optional setup on the side — it is a required part of this step.
+
+The filename itself does not matter to Postgres beyond one rule: every file directly inside `db/init/` matching `*.sql`, `*.sql.gz`, or `*.sh` runs automatically, in plain alphabetical order by filename, the first time the container starts against an empty data volume. `001_enable_pgvector.sql` could equally be named `enable-pgvector.sql` or `a.sql` and behave identically, since this folder only ever needs the one file. The numeric prefix matters only once more than one file is present — for example a second file named `002_seed_data.sql` — where the leading numbers guarantee it runs after `001_enable_pgvector.sql` rather than before it, which matters here because seed data referencing the `vector` type would fail if it ran before the extension existed. Adding more files this way is exactly how larger, real projects split their own database setup into ordered steps: one file per extension or table, run once, in a fixed sequence.
+
 Bring it up and check the extension activated, independently of any application code:
 
 ```bash
