@@ -399,14 +399,36 @@ export default function App() {
   }
 
   return (
-    <div>
-      <input value={text} onChange={(e) => setText(e.target.value)} />
+    <div style={{ fontFamily: "sans-serif", maxWidth: 500, margin: "40px auto" }}>
+      <h1>Toy RAG Stack</h1>
+      <p style={{ color: "#555" }}>
+        Real Ollama embeddings, real Postgres + pgvector, a FastAPI backend, a
+        React frontend.
+      </p>
+
+      <h2>Add an item</h2>
+      <input
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        placeholder="e.g. The dog ran across the park"
+        style={{ width: 260, marginRight: 8 }}
+      />
       <button onClick={addItem}>Add</button>
-      <input value={query} onChange={(e) => setQuery(e.target.value)} />
+
+      <h2>Search</h2>
+      <input
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="e.g. puppies playing outside"
+        style={{ width: 260, marginRight: 8 }}
+      />
       <button onClick={search}>Search</button>
+
       <ul>
         {results.map((r, i) => (
-          <li key={i}>{r.text} (distance: {r.distance.toFixed(4)})</li>
+          <li key={i}>
+            {r.text} <span style={{ color: "#888" }}>(distance: {r.distance.toFixed(4)})</span>
+          </li>
         ))}
       </ul>
     </div>
@@ -426,9 +448,11 @@ The `.jsx` file extension signals that this file mixes ordinary JavaScript with 
 
 `async function search() { ... }` follows the same shape, but as a GET request, matching the backend's `@app.get("/search")` endpoint. `` `${API_BASE_URL}/search?q=${encodeURIComponent(query)}` `` builds the URL with the query text appended as a query-string parameter; `encodeURIComponent(query)` is the JavaScript equivalent of the `%20` seen earlier in the `curl` command — it escapes any character that is not valid directly inside a URL (spaces, punctuation, and so on), which matters here because, unlike the earlier hand-typed `curl` example, a real user could type absolutely anything into the search box. `const res = await fetch(...)` waits for the HTTP response itself; `await res.json()` is then a second, separate asynchronous step, parsing the response body's JSON text into a JavaScript value — `fetch` deliberately splits "the response has arrived" from "the response body has been fully read and parsed" into two separate awaited steps. `setResults(...)` stores that parsed list, triggering a re-render that displays it.
 
-The `return (...)` block is the JSX mentioned above, describing the actual page content. `<input value={text} onChange={(e) => setText(e.target.value)} />` is what React calls a *controlled* input: rather than letting the browser manage the text box's contents on its own, `value={text}` forces the box to always show exactly the current `text` state, and `onChange={(e) => setText(e.target.value)}` is an arrow function (a compact way of writing a small function) that runs on every keystroke, reading the box's new content (`e.target.value`, where `e` is the browser's own event object describing what just happened) and feeding it straight back into state — the box only appears to update because that state update triggers a re-render showing the new value. `<button onClick={addItem}>Add</button>` wires the button's click event directly to the function defined above, with no arrow-function wrapper needed here because `addItem` takes no arguments that need supplying at click time. The search input and button repeat the identical pattern against `query` and `search`.
+The `return (...)` block is the JSX mentioned above, describing the actual page content. The outer `<div style={{ fontFamily: "sans-serif", maxWidth: 500, margin: "40px auto" }}>` and the other `style={{...}}` props scattered through this block are JSX's way of writing inline CSS: unlike plain HTML, where a `style` attribute is one string (`style="color: #555"`), JSX expects a JavaScript object, with each CSS property written in `camelCase` (`marginRight` rather than `margin-right`) instead of hyphenated. These are the only styling this toy uses — no separate `.css` file, no design library — enough to turn a wall of unlabelled inputs into a page that reads clearly, and nothing more.
 
-`{results.map((r, i) => (...))}` is how JSX embeds a JavaScript expression (anything inside curly braces) directly into markup — here, `.map()`, a standard JavaScript array method that runs a function against every item in `results` and collects the return values into a new array, is used to turn each `{text, distance}` result object into one `<li>` element. `key={i}` is a required piece of bookkeeping React needs whenever rendering a list this way, letting it efficiently detect which specific items changed between renders, rather than assuming the entire list is brand new every time — using the array index `i` as the key is an acceptable shortcut here only because this list is never reordered or edited in place, which is not true of every list in every React app. `r.distance.toFixed(4)` formats the raw floating-point distance to exactly four decimal places for display, matching the numbers already seen in this post's `curl` output.
+`<input value={text} onChange={(e) => setText(e.target.value)} placeholder="e.g. The dog ran across the park" ... />` is what React calls a *controlled* input: rather than letting the browser manage the text box's contents on its own, `value={text}` forces the box to always show exactly the current `text` state, and `onChange={(e) => setText(e.target.value)}` is an arrow function (a compact way of writing a small function) that runs on every keystroke, reading the box's new content (`e.target.value`, where `e` is the browser's own event object describing what just happened) and feeding it straight back into state — the box only appears to update because that state update triggers a re-render showing the new value. `placeholder="..."` is plain HTML, shown only when the input is empty, purely to hint at the kind of text expected — it is never read by `addItem` or `search`, only `value` is. `<button onClick={addItem}>Add</button>` wires the button's click event directly to the function defined above, with no arrow-function wrapper needed here because `addItem` takes no arguments that need supplying at click time. The search input and button repeat the identical pattern against `query` and `search`.
+
+`{results.map((r, i) => (...))}` is how JSX embeds a JavaScript expression (anything inside curly braces) directly into markup — here, `.map()`, a standard JavaScript array method that runs a function against every item in `results` and collects the return values into a new array, is used to turn each `{text, distance}` result object into one `<li>` element. `key={i}` is a required piece of bookkeeping React needs whenever rendering a list this way, letting it efficiently detect which specific items changed between renders, rather than assuming the entire list is brand new every time — using the array index `i` as the key is an acceptable shortcut here only because this list is never reordered or edited in place, which is not true of every list in every React app. `r.distance.toFixed(4)` formats the raw floating-point distance to exactly four decimal places for display, matching the numbers already seen in this post's `curl` output; wrapping it in its own `<span style={{ color: "#888" }}>` renders it in a lighter grey than the item's own text, visually secondary to the result itself.
 
 A plain Vite React project needs `@vitejs/plugin-react` (and a `vite.config.js` that loads it) for JSX to compile correctly. [Vite](https://vitejs.dev) is the build tool responsible for that JSX-to-`React.createElement`-calls translation mentioned earlier, plus serving the app during development and bundling it for production. Without the plugin, Vite falls back to a JSX transform that emits `React.createElement(...)` calls without ever importing `React`, so both files belong in the project from the start.
 
