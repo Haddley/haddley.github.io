@@ -651,13 +651,19 @@ mcp==2.0.0
 
 One new line, `mcp==2.0.0`, pinned to an exact version the same way as the rest of the file, for the same reason — this is the SDK `mcp_server.py` and `mcp_smoke_test.py` below both import from.
 
-No change to `docker-compose.yml` is needed for this phase — `mcp_server.py` runs inside the existing `backend` container via `docker compose exec`, further down this page, rather than as a separate service. `backend/Dockerfile` does need one change, though: Phase 3's version only ever copied `main.py`, and this new file needs to exist inside the image too —
+No change to `docker-compose.yml` is needed for this phase — `mcp_server.py` runs inside the existing `backend` container via `docker compose exec`, further down this page, rather than as a separate service. `backend/Dockerfile` does need one change, though: Phase 3's version only ever copied `main.py`, and this new file needs to exist inside the image too. Here is the full file, changed line marked:
 
 ```dockerfile
-COPY main.py mcp_server.py mcp_smoke_test.py .
+FROM python:3.12-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY main.py mcp_server.py mcp_smoke_test.py .   # was: COPY main.py .
+EXPOSE 8000
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
 ```
 
-— replacing the single-file `COPY main.py .` line from Phase 3. Skipping this produces a real, confirmed failure: `docker compose exec -T backend python mcp_server.py` fails with `python: can't open file '/app/mcp_server.py': [Errno 2] No such file or directory`, because the file genuinely does not exist inside the built image without it. Rebuild after both changes:
+Only the one `COPY` line changes — it sits in the same place in the file as Phase 3's version, after dependencies are installed and before `EXPOSE`/`CMD`, since that ordering (dependencies first, then application code) is what lets Docker's build cache skip re-running `pip install` on every code change, exactly as Phase 3 explained. Every other line is untouched. Skipping this produces a real, confirmed failure: `docker compose exec -T backend python mcp_server.py` fails with `python: can't open file '/app/mcp_server.py': [Errno 2] No such file or directory`, because the file genuinely does not exist inside the built image without it. Rebuild after both changes:
 
 ```bash
 docker compose up -d --build backend
