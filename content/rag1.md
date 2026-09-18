@@ -297,7 +297,9 @@ EXPOSE 8000
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
 ```
 
-A `Dockerfile` is a recipe for building a container image, read top to bottom as a sequence of steps. `FROM python:3.12-slim` starts from an existing, official base image that already has Python 3.12 installed, with `slim` indicating a smaller variant containing less bundled software than the default image, to keep the final image size down. `WORKDIR /app` sets the working directory inside the image for every subsequent instruction, creating the folder if it does not already exist. `COPY requirements.txt .` copies just that one file from the host into the image first, before the rest of the source code — a deliberate ordering, because Docker caches each step, and this means the (slow) dependency-installation step below only needs to re-run when `requirements.txt` itself actually changes, not every time application code changes. `RUN pip install --no-cache-dir -r requirements.txt` installs every Python package listed in that file — `fastapi`, `uvicorn`, `psycopg[binary]`, `httpx`, and (added in Phase 5) `mcp` — with `--no-cache-dir` telling `pip` not to keep its own download cache, again to keep the final image smaller. `COPY main.py .` copies the actual application code in, now that dependencies are already installed. `EXPOSE 8000` documents, for humans and tooling, that this container listens on port 8000 — it does not by itself make the port reachable from outside; that is `docker-compose.yml`'s job, done the same way Phase 2 mapped Postgres's port. `CMD [...]` is the command run when a container starts from this image: `uvicorn`, an ASGI server (a program whose job is to accept incoming HTTP connections and hand each one to Python application code — FastAPI itself does not listen on a network port directly), told to serve `app` (the `FastAPI` instance) found inside `main.py`, bound to `0.0.0.0` (meaning "accept connections from any network interface," required for other containers and the host to reach it, since `localhost` inside a container would only accept connections from within that same container) on port 8000, with `--reload` telling `uvicorn` to watch source files and restart automatically on changes — convenient for this kind of iterative, exploratory development, though not something a production deployment would normally enable.
+A `Dockerfile` is a recipe for building a container image, read top to bottom as a sequence of steps. `FROM python:3.12-slim` starts from an existing, official base image that already has Python 3.12 installed, with `slim` indicating a smaller variant containing less bundled software than the default image, to keep the final image size down. `WORKDIR /app` sets the working directory inside the image for every subsequent instruction, creating the folder if it does not already exist. `COPY requirements.txt .` copies just that one file from the host into the image first, before the rest of the source code — a deliberate ordering, because Docker caches each step, and this means the (slow) dependency-installation step below only needs to re-run when `requirements.txt` itself actually changes, not every time application code changes. `RUN pip install --no-cache-dir -r requirements.txt` installs every Python package listed in that file — `fastapi`, `uvicorn`, `psycopg[binary]`, `httpx`, and (added in Phase 5) `mcp` — with `--no-cache-dir` telling `pip` not to keep its own download cache, again to keep the final image smaller. `COPY main.py .` copies the actual application code in, now that dependencies are already installed. `EXPOSE 8000` documents, for humans and tooling, that this container listens on port 8000 — it does not by itself make the port reachable from outside; that is `docker-compose.yml`'s job, done the same way Phase 2 mapped Postgres's port. `CMD [...]` is the command run when a container starts from this image: `uvicorn`, an ASGI server (a program whose job is to accept incoming HTTP connections and hand each one to Python application code — FastAPI itself does not listen on a network port directly), told to serve `app` (the `FastAPI` instance) found inside `main.py`, bound to `0.0.0.0` (meaning "accept connections from any network interface," required for other containers and the host to reach it, since `localhost` inside a container would only accept connections from within that same container) on port 8000, with `--reload` telling `uvicorn` to watch source files and restart automatically on changes.
+
+That last flag comes with a real caveat specific to this setup: `--reload` only watches files *inside the container*, and nothing here keeps the container's copy in sync with an edit made on the host afterward — see "Making changes to the backend" at the end of this phase for exactly what that means and how to actually get an edit to take effect.
 
 **`docker-compose.yml`, with `backend` added as a second service**, directly below the `postgres` service Phase 2 already defined:
 
@@ -367,6 +369,16 @@ The first three commands each use `-X POST` (explicitly naming the HTTP method, 
 ```
 
 Nothing in the query — "puppies playing outside" — shares a single word with "The dog ran across the park," and yet it ranks closest, by a real margin, over the cat sentence, which in turn ranks well ahead of the unrelated stock-market sentence. That ordering is not a coincidence or a cherry-picked result; it is the entire point of an embedding model — it is comparing meaning, not vocabulary, and `pgvector`'s `<=>` operator is doing real geometry on 768 real numbers to produce it.
+
+### Making changes to the backend
+
+Editing `main.py` on disk changes nothing about the running `backend` container by itself. `Dockerfile`'s `COPY main.py .` step only ever runs during a build, copying whatever the file contained at that moment into the image; the container then runs from that frozen copy, and `--reload` only watches files *inside* it, not the one being edited on the host. There is exactly one command that gets an edit from disk into the running app:
+
+```bash
+docker compose up -d --build backend
+```
+
+`--build` rebuilds the image first (re-running `COPY main.py .` with the file's current contents), and `up -d` then replaces the running container with a fresh one from that image. This is the same command used to bring `backend` up for the first time earlier in this phase — there is no separate "update" command, only this one, run again. It takes a few seconds, not the instant feedback `--reload` implies on its own, but it is the only path that actually works with this `docker-compose.yml`, since no `volumes:` entry bind-mounts `backend/` into the container. Restarting the container without `--build` (`docker compose restart backend`) is not enough either — a restart still boots from the same, already-stale image, not from the file as it currently is on disk.
 
 ## Phase 4 — a minimal React frontend
 
@@ -546,6 +558,12 @@ CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
 
 The same shape as `backend/Dockerfile` in Phase 3, for the same reason: `COPY package.json .` before `COPY . .` so Docker's build cache only re-runs the slow `npm install` step when dependencies actually change, not on every source-code edit. `CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]` runs the `dev` script defined in `package.json` above; the `--` separates arguments meant for `npm` itself from arguments to be passed straight through to the underlying `vite` command, and `--host 0.0.0.0` reinforces the same "listen on every interface" setting `vite.config.js` already sets, belt-and-braces for whichever one actually takes effect.
 
+The same caveat from Phase 3's `--reload` applies here too, and matters more, since Vite's dev server is normally prized specifically for instant, save-and-see hot reloading — see "Making changes to the frontend" at the end of this phase for why that does not happen with this setup.
+
+```bash
+docker compose up -d --build frontend
+```
+
 **`docker-compose.yml`, with `frontend` added as a third service**, below `backend` from Phase 3:
 
 ```yaml
@@ -580,6 +598,16 @@ Opened in a real browser at `http://localhost:5174`:
 
 ![](assets/images/rag1/toy-rag-frontend.png)
 *The real, working result — typed into an actual browser, hitting the actual FastAPI backend, which called the actual Ollama embeddings endpoint Phase 1 tested by hand*
+
+### Making changes to the frontend
+
+The same fact from the backend applies here, and is easier to trip over, because Vite's dev server is normally known specifically for instant, save-and-see hot reloading during local development. None of that reloading happens with this setup. `frontend/Dockerfile`'s `COPY . .` step copies `App.jsx` and every other frontend file into the image once, at build time; the `rag-toy-frontend` container then runs `vite` against that frozen copy inside the image, not against the file currently sitting in `frontend/src/App.jsx` on disk. Editing that file and refreshing the browser changes nothing, because the browser is still talking to the same unchanged container. The fix is identical to the backend's:
+
+```bash
+docker compose up -d --build frontend
+```
+
+As with `backend`, this is the same command already used to bring `frontend` up for the first time — rebuild, every time, for every edit. A real Vite project run directly on the host (`npm run dev`, no Docker at all) would get genuine instant hot reloading, since Vite would then be watching the actual file being edited; inside this particular Docker setup, with no bind-mounted volume, a rebuild is the only mechanism that exists.
 
 ## Phase 5 — exposing it to Claude Code over MCP
 
