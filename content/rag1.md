@@ -794,3 +794,7 @@ Two things worth noticing in that transcript, both real rather than assumed: **`
 ## What actually got built
 
 Five phases, each verified independently before the next one depended on it: Ollama answering a plain HTTP call with 768 real numbers; Postgres running a real vector similarity query against them; FastAPI gluing the two together behind two small endpoints; React giving it a face; MCP exposing the identical search function to an AI agent, no second implementation required. Every one of the three original "bits" — database, backend, frontend — is the same shape as the much larger [Agentic AI for Professionals](/posts/agenticaiforprofessionals5/) series traces through a real production application, just stripped down far enough to see the mechanism moving on its own, and the MCP layer is the same "same skill, two interfaces" pattern that series covers in far more depth. The next post in this series picks one of these five pieces and goes deeper.
+
+## References
+
+- [Haddley/toy — the source repository for this stack](https://github.com/Haddley/toy)
