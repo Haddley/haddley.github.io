@@ -681,15 +681,27 @@ npx -y @modelcontextprotocol/inspector docker compose exec -T backend python mcp
 
 `npx` is a tool bundled with Node.js that downloads and runs a published package on demand, without needing to install it permanently first — appropriate here for a tool only being used once, briefly. `-y` answers "yes" automatically to `npx`'s own "okay to install this?" confirmation prompt, so the command can run non-interactively. `@modelcontextprotocol/inspector` is the package name itself, published by the same organisation that defines the MCP protocol. Everything after it — `docker compose exec -T backend python mcp_server.py` — is not an argument Inspector parses itself; it is the exact command Inspector should run and treat as an MCP server, which is why it deliberately matches what `.mcp.json` uses further down this post: proving Inspector talks to precisely the same server Claude Code will later, not a hand-simplified stand-in for it. The `-T` flag on `docker compose exec` disables allocating a pseudo-terminal for the executed command — appropriate for a process like this one that communicates over raw stdio rather than expecting an interactive terminal session, and necessary here because allocating one can interfere with the clean stdio byte stream MCP's protocol depends on.
 
-This starts a local web UI (`http://127.0.0.1:6274`, with an auth token in the URL) and immediately spawns the server, ready to connect. **Open that URL in Chrome, not Safari.** Testing this same setup surfaced a real, reproducible problem specific to Safari: the connection shows "Connected," but the Tools tab stays permanently empty, with `tools/list` stuck showing "PENDING" in the message log — even after reconnecting the server. Sending the exact same request sequence directly to the server (bypassing the browser entirely) got an instant, correct response every time, which rules out the server itself; opening the identical URL in Chrome instead resolved it immediately, with `search_toy_rag` appearing right away. If you only have Safari open and the Tools list stays empty after clicking the **Tools** tab, this is why — switch browsers rather than troubleshooting further.
+This starts a local web UI (`http://127.0.0.1:6274`, with an auth token in the URL) — **open it in Chrome, not Safari.** Testing this same setup surfaced a real, reproducible problem specific to Safari: the connection shows "Connected," but the Tools tab stays permanently empty, with `tools/list` stuck showing "PENDING" in the message log — even after reconnecting the server. Sending the exact same request sequence directly to the server (bypassing the browser entirely) got an instant, correct response every time, which rules out the server itself; opening the identical URL in Chrome instead resolved it immediately, with `search_toy_rag` appearing right away. If you only have Safari open and the Tools list stays empty after clicking the **Tools** tab, this is why — switch browsers rather than troubleshooting further.
+
+The page opens on the **Servers** tab, with the server already listed but **not yet connected**:
+
+![](assets/images/rag1/inspector-servers-disconnected.png)
+*The real starting state — the `docker compose exec` command Inspector will run is already filled in, but the toggle on the right still reads "Disconnected." Nothing happens until it is clicked.*
+
+Click that toggle. It spawns the `docker compose exec -T backend python mcp_server.py` process for real, performs the actual MCP handshake (`initialize`, then `notifications/initialized`) and, once connected, automatically asks the server what it offers — the four requests logged on the right (`resources/templates/list`, `prompts/list`, `tools/list`, `resources/list`), each answered for real, in under 100ms:
+
+![](assets/images/rag1/inspector-servers-connected.png)
+*Now genuinely connected — the toggle is blue, the status reads "Connected," and the message log on the right shows four real, completed round trips to the actual spawned process*
+
+Click **Tools** in the top navigation, then click **`search_toy_rag`** in the list on the left, and type a query into the **Query** field:
 
 ![](assets/images/rag1/inspector-tool-form.png)
-*Real Inspector, connected to the real `toy-rag` server — the tool's docstring rendered directly from `mcp_server.py`'s own source, and a form generated from `search_toy_rag`'s one parameter*
+*Real Inspector, connected to the real `toy-rag` server — the tool's docstring rendered directly from `mcp_server.py`'s own source, a form generated from `search_toy_rag`'s one parameter, and `puppies playing outside` typed into it, ready to send*
 
-Filling in `puppies playing outside` and clicking **Execute Tool** sends a real `tools/call` request over a real stdio connection to the running server, and the result surfaces a genuine, non-obvious detail of this particular `mcp` SDK version:
+Clicking **Execute Tool** sends a real `tools/call` request over a real stdio connection to the running server, and the result surfaces a genuine, non-obvious detail of this particular `mcp` SDK version:
 
 ![](assets/images/rag1/inspector-tool-result.png)
-*Three separate result blocks — one per dict in the returned list — plus the clean, pre-parsed "Structured Output" section below them, and the real `tools/call` message logged on the right at 340ms*
+*Three separate result blocks — one per dict in the returned list — plus the clean, pre-parsed "Structured Output" section below them, and the real `tools/call` message logged on the right at 599ms, matching the same three distances this post's earlier `curl` test returned*
 
 A tool returning `list[dict]`, exactly as `search_toy_rag` does, does not land as one JSON array — `mcp==2.0.0` serializes each dict in the list as its own separate `TextContent` block instead, which is why the result above shows three separate entries rather than one. The "Structured Output" section underneath is Inspector's own rendering of `structured_content`, the same field a Python client would read via `result.structured_content["result"]` to get the tool's actual return value back pre-parsed, regardless of how many separate text blocks the plain version was split into.
 
