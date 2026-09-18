@@ -709,7 +709,7 @@ Inspector shows the exact JSON-RPC traffic (the message log on the right, timest
 
 ## Adding it to Claude Code
 
-Two files, both in the project root (the `rag-toy-stack` directory itself, next to `docker-compose.yml`):
+One file, in the project root (the `rag-toy-stack` directory itself, next to `docker-compose.yml`):
 
 **`.mcp.json`:**
 
