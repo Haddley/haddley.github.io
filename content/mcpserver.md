@@ -1,13 +1,13 @@
 ---
 title: "Model Context Protocol"
 part: 1
-description: "Typescript quick start"
+description: "Building a Model Context Protocol (MCP) server from the TypeScript quick start, adding a multiplication tool, testing it with MCP Inspector, and calling it from Visual Studio Code's chat"
 date: "2025-08-13"
 categories: ["AI"]
 tags: "claude-code, mcp, model-context-protocol, typescript"
 hidden: false
 slug: "mcpserver"
-image: "/assets/images/mcpserver/mcp-1024x1024.png"
+image: "/assets/images/mcpserver/hero-mcp-typescript.svg"
 ---
 
 

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <circle cx="60" cy="60" r="58" fill="#1a2b4b" />
+
+  <!-- Generic code brackets, left side -->
+  <g fill="none" stroke="#80deea" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 32 42 L 22 54 L 32 66"/>
+    <path d="M 50 38 L 40 60 L 46 70"/>
+  </g>
+
+  <!-- MCP link connecting the two sides -->
+  <g stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.9">
+    <line x1="62" y1="60" x2="76" y2="60"/>
+  </g>
+  <circle cx="62" cy="60" r="3" fill="#ffffff"/>
+  <circle cx="76" cy="60" r="3" fill="#ffffff"/>
+
+  <!-- terminal prompt glyph, right side -->
+  <rect x="76" y="43" width="24" height="24" rx="6" fill="#d97757"/>
+  <path d="M 81 51 L 87 55 L 81 59" fill="none" stroke="#1a2b4b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="90" y1="59" x2="96" y2="59" stroke="#1a2b4b" stroke-width="2.4" stroke-linecap="round"/>
+</svg>

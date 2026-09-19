@@ -1,11 +1,11 @@
 ---
 title: "Model Context Protocol"
 part: 2
-description: "Building a Model Context Protocol (MCP) server for Microsoft Business Central to give Claude Code access to BC data and APIs"
+description: "Building a Model Context Protocol (MCP) server for Microsoft Business Central from scratch, deploying it to Azure Container Apps over Streamable HTTP, and connecting it to Copilot Studio and LM Studio"
 date: "2025-09-21"
 categories: ["Business Central","AI"]
 tags: "claude-code, mcp, model-context-protocol, business-central"
-image: "/assets/images/mcpserver2/mcp-1024x1024.png"
+image: "/assets/images/mcpserver2/hero-mcp-businesscentral.svg"
 slug: "mcpserver2"
 hidden: false
 ---
