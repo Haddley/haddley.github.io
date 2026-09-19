@@ -1,7 +1,7 @@
 ---
-title: "RAG"
-part: 1
-description: "Building a Retrieval-Augmented Generation stack, five pieces at a time, with every command and every function explained line by line: testing Ollama's embeddings API from the command line, standing up a throwaway Postgres and pgvector container, a minimal FastAPI backend that stores and searches real embeddings, a minimal React frontend to drive it, and finally exposing the same search function to Claude Code over MCP — every step run for real, with genuine output at each stage"
+title: "Model Context Protocol"
+part: 3
+description: "Building a Retrieval-Augmented Generation stack and finally exposing the search function to Claude Code over MCP"
 date: "2026-09-18"
 categories: ["AI"]
 image: "/assets/images/rag1/hero-rag-toy-stack.svg"

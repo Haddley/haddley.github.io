@@ -1,6 +1,7 @@
 ---
-title: "Business Central MCP for Claude Code"
-description: "Registering a multitenant Entra app, turning on Business Central's built-in MCP server, and connecting Claude Code to it so it can query real Business Central data over MCP"
+title: "Model Context Protocol"
+part: 4
+description: "Connecting Claude Code to Business Central's built-in MCP server"
 date: "2026-09-19"
 categories: ["Business Central","AI"]
 tags: "mcp, entra-id, oauth, claude-code, model-context-protocol"
