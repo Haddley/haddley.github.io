@@ -1,9 +1,50 @@
 {
   "posts": [
     {
+      "slug": "orchestration3",
+      "title": "Agent Orchestration (Part 3)",
+      "description": "Finding a real agent through a2a-registry.org, then orchestrating it from a LangGraph graph with a local Ollama model: discover the Agent Card, delegate over A2A, verify the reply against the official source, and pause for human approval",
+      "date": "2026-09-21",
+      "categories": [
+        "AI"
+      ],
+      "tags": "a2a, langgraph, ollama, agent-orchestration, agent-registry, federal-register"
+    },
+    {
+      "slug": "orchestration2",
+      "title": "Agent Orchestration (Part 2)",
+      "description": "What the A2A (Agent2Agent) protocol is, how it differs from MCP, and running the official Python helloworld sample end to end — a real agent server, agent card discovery, raw JSON-RPC calls, and both streaming and non-streaming client requests",
+      "date": "2026-09-21",
+      "categories": [
+        "AI"
+      ],
+      "tags": "a2a, agent2agent, multi-agent, json-rpc, protocol, interoperability"
+    },
+    {
+      "slug": "orchestration1",
+      "title": "Agent Orchestration (Part 1)",
+      "description": "Four ways to build an agent that answers questions from six documents, using the multi-agent patterns LangChain documents, tested on a small local model, with the problems I hit and how I fixed them",
+      "date": "2026-09-21",
+      "categories": [
+        "AI"
+      ],
+      "tags": "agent-orchestration, subagents, langchain, ollama, grounding, evaluation"
+    },
+    {
+      "slug": "businesscentralmcpclaudecode",
+      "title": "Model Context Protocol (Part 4)",
+      "description": "Connecting Claude Code to Business Central's built-in MCP server",
+      "date": "2026-09-19",
+      "categories": [
+        "Business Central",
+        "AI"
+      ],
+      "tags": "mcp, entra-id, oauth, claude-code, model-context-protocol"
+    },
+    {
       "slug": "rag1",
-      "title": "RAG (Part 1)",
-      "description": "Building a Retrieval-Augmented Generation stack, five pieces at a time, with every command and every function explained line by line: testing Ollama's embeddings API from the command line, standing up a throwaway Postgres and pgvector container, a minimal FastAPI backend that stores and searches real embeddings, a minimal React frontend to drive it, and finally exposing the same search function to Claude Code over MCP — every step run for real, with genuine output at each stage",
+      "title": "Model Context Protocol (Part 3)",
+      "description": "Building a Retrieval-Augmented Generation stack and finally exposing the search function to Claude Code over MCP",
       "date": "2026-09-18",
       "categories": [
         "AI"
@@ -793,7 +834,7 @@
     {
       "slug": "mcpserver2",
       "title": "Model Context Protocol (Part 2)",
-      "description": "Building a Model Context Protocol (MCP) server for Microsoft Business Central to give Claude Code access to BC data and APIs",
+      "description": "Building a Model Context Protocol (MCP) server for Microsoft Business Central from scratch, deploying it to Azure Container Apps over Streamable HTTP, and connecting it to Copilot Studio and LM Studio",
       "date": "2025-09-21",
       "categories": [
         "Business Central",
@@ -879,7 +920,7 @@
     {
       "slug": "mcpserver",
       "title": "Model Context Protocol (Part 1)",
-      "description": "Typescript quick start",
+      "description": "Building a Model Context Protocol (MCP) server from the TypeScript quick start, adding a multiplication tool, testing it with MCP Inspector, and calling it from Visual Studio Code's chat",
       "date": "2025-08-13",
       "categories": [
         "AI"
@@ -2838,5 +2879,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-09-18T06:29:32.448Z"
+  "generatedAt": "2026-09-21T05:18:46.783Z"
 }

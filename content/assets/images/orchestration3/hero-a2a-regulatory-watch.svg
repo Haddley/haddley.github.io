@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <circle cx="60" cy="60" r="58" fill="#1a2b4b" />
+  <!-- Orchestrating agent node -->
+  <circle cx="34" cy="60" r="13" fill="#ffffff" opacity="0.92"/>
+  <!-- Document, verified -->
+  <rect x="64" y="34" width="34" height="46" rx="4" fill="#4fc3f7" opacity="0.85"/>
+  <line x1="70" y1="44" x2="92" y2="44" stroke="#1a2b4b" stroke-width="2" opacity="0.7"/>
+  <line x1="70" y1="51" x2="90" y2="51" stroke="#1a2b4b" stroke-width="2" opacity="0.7"/>
+  <line x1="70" y1="58" x2="86" y2="58" stroke="#1a2b4b" stroke-width="2" opacity="0.7"/>
+  <!-- Link between agent and document -->
+  <line x1="47" y1="60" x2="64" y2="60" stroke="#80deea" stroke-width="3" opacity="0.85"/>
+  <!-- Check mark badge -->
+  <circle cx="90" cy="82" r="13" fill="#80deea" opacity="0.95"/>
+  <path d="M83 82 L88 87 L97 77" fill="none" stroke="#1a2b4b" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
