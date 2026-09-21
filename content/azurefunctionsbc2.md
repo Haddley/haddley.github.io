@@ -193,26 +193,25 @@ pageextension 50100 extends "Customer Card"
 
 ### **Data Flow Example**
 
-```
-User opens Customer "C001" 
-  ↓
-FactBox checks QR Code Media for "C001"
-  ↓
-Not found → Calls GenerateQRCodeForCustomer("C001")
-  ↓
-Helper builds: "CUSTOMER:C001|NAME:Contoso Ltd"
-  ↓
-Calls: https://azure-function.../api/QRCodeGenerator?text=CUSTOMER%3AC001...
-  ↓
-Receives: data:image/png;base64,iVBORw0KGgoAAAA...
-  ↓
-Converts base64 → binary stream → MediaSet
-  ↓
-Stores in QR Code Media table
-  ↓
-FactBox displays QR code image
-  ↓
-User scans with phone → Sees customer info
+```mermaid
+sequenceDiagram
+    actor U as User
+    participant F as FactBox
+    participant H as Helper
+    participant A as Azure Function
+    participant T as QR Code Media table
+    U->>F: Opens Customer "C001"
+    F->>T: Checks QR Code Media for "C001"
+    T-->>F: Not found
+    F->>H: GenerateQRCodeForCustomer("C001")
+    H->>H: Builds "CUSTOMER:C001|NAME:Contoso Ltd"
+    H->>A: Calls /api/QRCodeGenerator?text=CUSTOMER%3AC001...
+    A-->>H: data:image/png base64 (iVBORw0KGgoAAAA...)
+    H->>H: Converts base64 to binary stream to MediaSet
+    H->>T: Stores the QR code
+    F->>T: Reads the QR code
+    F-->>U: Displays the QR code image
+    U->>U: Scans with phone and sees customer info
 ```
 
 

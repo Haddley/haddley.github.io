@@ -54,28 +54,31 @@ Azure Logic App with Business Central Trigger is a **cloud automation workflow**
 ### **Typical Use Cases & Workflows**
 
 **Example 1: Sales Order Processing**
-```
-Trigger: When a Sales Order is created in BC
-→ Action 1: Send approval email to manager
-→ Action 2: Wait for approval response
-→ Action 3: If approved, create shipment in logistics system
-→ Action 4: Update BC with tracking info
+```mermaid
+flowchart TD
+    T["Trigger: When a Sales Order is created in BC"]
+    T --> A1["Action 1: Send approval email to manager"]
+    A1 --> A2["Action 2: Wait for approval response"]
+    A2 --> A3["Action 3: If approved, create shipment in logistics system"]
+    A3 --> A4["Action 4: Update BC with tracking info"]
 ```
 
 **Example 2: Inventory Sync**
-```
-Trigger: When Item stock level changes in BC
-→ Action 1: Update e-commerce website inventory
-→ Action 2: Send low-stock alert to warehouse team
-→ Action 3: Create Purchase Order if below threshold
+```mermaid
+flowchart TD
+    T["Trigger: When Item stock level changes in BC"]
+    T --> A1["Action 1: Update e-commerce website inventory"]
+    A1 --> A2["Action 2: Send low-stock alert to warehouse team"]
+    A2 --> A3["Action 3: Create Purchase Order if below threshold"]
 ```
 
 **Example 3: Customer Onboarding**
-```
-Trigger: When a new Customer is created in BC
-→ Action 1: Create account in CRM system
-→ Action 2: Send welcome email
-→ Action 3: Assign customer service rep
+```mermaid
+flowchart TD
+    T["Trigger: When a new Customer is created in BC"]
+    T --> A1["Action 1: Create account in CRM system"]
+    A1 --> A2["Action 2: Send welcome email"]
+    A2 --> A3["Action 3: Assign customer service rep"]
 ```
 
 ---

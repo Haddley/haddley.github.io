@@ -245,22 +245,20 @@ The wake word detection works without sending audio to the cloud - only after th
 
 ## Architecture Overview:
 
-``` TEXT
-Local Device (Pi 2/3):
-┌─────────────────────────────┐
-│ 1. Microphone Input         │
-│ 2. LOCAL Wake Word Detection│  ← Happens locally
-│    ("OK Google" processing) │
-│ 3. Wake word detected?      │
-└─────────────────────────────┘
-              │
-              ▼ (Only if wake word detected)
-┌─────────────────────────────┐
-│ 4. Start recording user     │
-│ 5. Send audio to Google     │  ← Cloud processing
-│ 6. Get Assistant response   │
-│ 7. Process/play response    │
-└─────────────────────────────┘
+```mermaid
+flowchart TD
+    subgraph Local["Local device (Pi 2/3)"]
+        direction TB
+        A["1. Microphone input"] --> B["2. LOCAL wake word detection<br/>(OK Google processing happens locally)"]
+        B --> C{"3. Wake word detected?"}
+    end
+    C -->|"Only if wake word detected"| D
+    subgraph Cloud["Cloud processing"]
+        direction TB
+        D["4. Start recording user"] --> E["5. Send audio to Google"]
+        E --> F["6. Get Assistant response"]
+        F --> G["7. Process and play response"]
+    end
 ```
 
 

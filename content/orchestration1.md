@@ -163,7 +163,7 @@ Nineteen questions on `qwen2.5:14b`, one run each, checked by string matching. I
 
 ### The tool loop behind subagents
 
-Subagents is the one compared design whose control flow is a tool loop. [`create_agent`](https://docs.langchain.com/oss/python/langchain/agents) runs a loop. The model replies, and if the reply contains tool calls, LangChain runs those tools, adds their results to the conversation and calls the model again. The loop ends on a reply with no tool calls. In subagents, the supervisor's tools are the specialists. Calling a specialist is a tool call, so the supervisor model decides which specialist to call, how many, and in what words, and the loop hands the specialist's answer back to it.
+Subagents is the one compared design whose control flow is a tool loop. [`create_agent`](https://docs.langchain.com/oss/python/langchain/agents) runs a loop. The model replies, and if the reply contains tool calls, LangChain runs those tools, adds their results to the conversation and calls the model again. The loop ends on a reply with no tool calls. I built the same loop by hand, without LangChain, in [Claude Code part 9](/posts/claudecode9/), where it is called the agentic loop and drawn step by step. In subagents, the supervisor's tools are the specialists. Calling a specialist is a tool call, so the supervisor model decides which specialist to call, how many, and in what words, and the loop hands the specialist's answer back to it.
 
 Four pieces of the script make this work. They are copied from it unchanged, with `# ...` where I left lines out and a numbered comment above each.
 
@@ -2054,4 +2054,5 @@ Auto policies must include "separate uninsured and underinsured motorist coverag
 - LangChain: [human-in-the-loop](https://docs.langchain.com/oss/python/langchain/human-in-the-loop), [interrupts](https://docs.langchain.com/oss/python/langgraph/interrupts), [subgraph persistence](https://docs.langchain.com/oss/python/langgraph/use-subgraphs), [built-in middleware](https://docs.langchain.com/oss/python/langchain/middleware/built-in) and [custom middleware](https://docs.langchain.com/oss/python/langchain/middleware/custom)
 - [Minnesota Statutes 2025](https://www.revisor.mn.gov/statutes/cite/169), Office of the Revisor of Statutes
 - [Caselaw Access Project](https://case.law/) and [Legal Information Institute](https://www.law.cornell.edu/supremecourt/text/), for the court opinions
+- [Claude Code, part 9](/posts/claudecode9/), a hand-built agentic loop over Ollama tool calls
 - [Agent2Agent Protocol, part 1](/posts/orchestration2/) and [part 2](/posts/orchestration3/), on calling agents you do not control

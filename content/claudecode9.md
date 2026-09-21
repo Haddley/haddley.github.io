@@ -182,31 +182,16 @@ incoming messages (user / assistant turns)
 
 ### 2. The loop (max `MAX_TOOL_ITERATIONS` = 20 iterations)
 
-```
-┌─────────────────────────────────────────────────────────┐
-│  chat(ollamaUrl, model, history, TOOL_DEFINITIONS)       │  non-streaming
-│    → response.message                                    │
-└────────────────────────┬────────────────────────────────┘
-                         │
-          ┌──────────────▼──────────────┐
-          │ tool_calls present?          │
-          └──────┬──────────────┬───────┘
-                NO              YES
-                │               │
-                ▼               ▼
-         ┌─────────┐    ┌─────────────────────────────┐
-         │ Final   │    │ For each tool call:          │
-         │ response│    │  emit tool_call              │
-         │ path    │    │  dispatchTool(workspace, …)  │
-         └────┬────┘    │  emit tool_result            │
-              │         │  push result into history    │
-              │         └──────────────┬──────────────┘
-              │                        │ loop ──────────────►
-              ▼
-  textContent non-empty?
-      YES → chunk & emit (simulate streaming, 10 ms delay)
-      NO  → chatStream() for true streaming from Ollama
-  emit done
+```mermaid
+flowchart TD
+    A["chat(ollamaUrl, model, history, TOOL_DEFINITIONS)<br/>non-streaming, returns response.message"] --> B{"tool_calls present?"}
+    B -->|YES| C["For each tool call:<br/>emit tool_call<br/>dispatchTool(workspace, ...)<br/>emit tool_result<br/>push result into history"]
+    C -->|loop| A
+    B -->|NO| D{"textContent non-empty?"}
+    D -->|YES| E["Chunk and emit<br/>(simulate streaming, 10 ms delay)"]
+    D -->|NO| F["chatStream()<br/>true streaming from Ollama"]
+    E --> G["emit done"]
+    F --> G
 ```
 
 ### 3. Tool call resolution (native vs. text fallback)
