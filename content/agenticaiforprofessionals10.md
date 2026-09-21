@@ -6,7 +6,7 @@ date: "2026-09-17"
 categories: ["AI"]
 image: "/assets/images/agenticaiforprofessionals10/hero-react-frontend.svg"
 tags: "react, typescript, javascript, jsx, frontend"
-hidden: false
+hidden: true
 slug: "agenticaiforprofessionals10"
 ---
 

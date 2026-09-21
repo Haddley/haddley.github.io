@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <circle cx="60" cy="60" r="58" fill="#1a2b4b" />
+  <!-- Supervisor -->
+  <circle cx="60" cy="34" r="13" fill="#ffffff" opacity="0.92"/>
+  <!-- Three sub-agents, each inside its own boundary -->
+  <circle cx="30" cy="84" r="10" fill="#4fc3f7" opacity="0.85"/>
+  <circle cx="60" cy="90" r="10" fill="#80deea" opacity="0.85"/>
+  <circle cx="90" cy="84" r="10" fill="#4fc3f7" opacity="0.85"/>
+  <circle cx="30" cy="84" r="15" fill="none" stroke="#80deea" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.7"/>
+  <circle cx="60" cy="90" r="15" fill="none" stroke="#80deea" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.7"/>
+  <circle cx="90" cy="84" r="15" fill="none" stroke="#80deea" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.7"/>
+  <!-- Delegation lines -->
+  <line x1="52" y1="45" x2="35" y2="70" stroke="#80deea" stroke-width="2.5" opacity="0.8"/>
+  <line x1="60" y1="47" x2="60" y2="73" stroke="#80deea" stroke-width="2.5" opacity="0.8"/>
+  <line x1="68" y1="45" x2="85" y2="70" stroke="#80deea" stroke-width="2.5" opacity="0.8"/>
+</svg>

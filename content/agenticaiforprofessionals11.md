@@ -6,7 +6,7 @@ date: "2026-09-17"
 categories: ["AI"]
 image: "/assets/images/agenticaiforprofessionals11/hero-citation-rendering.svg"
 tags: "react, typescript, state-management, fetch-api, citations"
-hidden: false
+hidden: true
 slug: "agenticaiforprofessionals11"
 ---
 

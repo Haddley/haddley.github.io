@@ -6,7 +6,7 @@ date: "2026-09-17"
 categories: ["AI"]
 image: "/assets/images/agenticaiforprofessionals8/hero-llm-providers.svg"
 tags: "llm, system-prompts, deepseek, anthropic, prompt-engineering"
-hidden: false
+hidden: true
 slug: "agenticaiforprofessionals8"
 ---
 

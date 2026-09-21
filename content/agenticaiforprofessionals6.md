@@ -6,7 +6,7 @@ date: "2026-09-17"
 categories: ["AI"]
 image: "/assets/images/agenticaiforprofessionals6/hero-python-backend.svg"
 tags: "fastapi, python, oop, pydantic, backend"
-hidden: false
+hidden: true
 slug: "agenticaiforprofessionals6"
 ---
 

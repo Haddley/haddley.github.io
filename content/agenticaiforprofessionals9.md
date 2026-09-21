@@ -6,7 +6,7 @@ date: "2026-09-17"
 categories: ["AI"]
 image: "/assets/images/agenticaiforprofessionals9/hero-testing-hosting.svg"
 tags: "docker, pytest, testing, devops, hosting"
-hidden: false
+hidden: true
 slug: "agenticaiforprofessionals9"
 ---
 

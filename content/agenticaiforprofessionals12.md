@@ -6,7 +6,7 @@ date: "2026-09-17"
 categories: ["AI"]
 image: "/assets/images/agenticaiforprofessionals12/hero-e2e-hosting.svg"
 tags: "vite, docker, playwright, e2e-testing, hosting"
-hidden: false
+hidden: true
 slug: "agenticaiforprofessionals12"
 ---
 

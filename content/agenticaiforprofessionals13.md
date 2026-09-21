@@ -6,7 +6,7 @@ date: "2026-09-17"
 categories: ["AI"]
 image: "/assets/images/agenticaiforprofessionals13/hero-ingestion.svg"
 tags: "ingestion, pypdf, docker-compose, reproducibility, pipeline"
-hidden: false
+hidden: true
 slug: "agenticaiforprofessionals13"
 ---
 

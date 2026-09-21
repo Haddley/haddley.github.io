@@ -6,7 +6,7 @@ date: "2026-09-17"
 categories: ["AI"]
 image: "/assets/images/agenticaiforprofessionals5/hero-postgres-pgvector.svg"
 tags: "postgres, pgvector, docker, sqlalchemy, spec-kit"
-hidden: false
+hidden: true
 slug: "agenticaiforprofessionals5"
 ---
 
