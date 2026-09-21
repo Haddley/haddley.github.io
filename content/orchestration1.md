@@ -121,7 +121,11 @@ So the honest position is that subagents earn their place only when the task nee
 
 A fair test would use the conversation file, `questions_followup.json`, where follow-ups depend on earlier answers, plus a few comparison questions that need two dependent lookups. A router cannot do those, and a good supervisor should.
 
-That flexibility only helps if the supervisor makes good decisions, and on `qwen2.5:14b` it did not always. Two of its three failures were its own choices. It called no specialist on a question that was squarely about reckless driving, and it split a comparison in a way that neither specialist could answer. So I expect subagents to need a better model for the supervisor than the specialists do. The supervisor's prompts are small, about 1,000 tokens, while each specialist reads about 8,000, so a stronger model on the supervisor is the cheaper place to spend on one. That mixed-model design is something the split designs can do and one big prompt cannot. I have not tested it, and a router can also use a stronger model for its classify and synthesize steps, so the model upgrade alone would not separate the two.
+That flexibility only helps if the supervisor makes good decisions, and on `qwen2.5:14b` it did not always. Two of its three failures were its own choices. It called no specialist on a question that was squarely about reckless driving, and it split a comparison in a way that neither specialist could answer. So I expect subagents to need a better model for the supervisor than the specialists do. The supervisor's prompts are small, about 1,000 tokens, while each specialist reads about 8,000, so a stronger model on the supervisor is the cheaper place to spend on one. That mixed-model design is something the split designs can do and one big prompt cannot.
+
+I then tested it. I gave `gemma4:12b` the supervisor's job and left `qwen2.5:14b` as the specialists, on the same nineteen questions. It helped a little. The supervisor chose the right specialists on 19 of 19 questions instead of 18. It handled the comparison question the qwen supervisor had failed, and it passed 16 of the 18 fact-checked questions instead of 15. But it lost two questions the qwen supervisor had passed, the Google Maps question and the drug-dog question, so the net gain is one question, which one run cannot separate from chance. The cost was clear: the median question took 241 seconds instead of 142, and used 10,033 prompt tokens instead of 8,147. The router gained nothing from the same upgrade, passing 17 of 18 instead of 18. So a stronger supervisor makes subagents somewhat more reliable, but on this task it does not make them better than a router, and it does not change what the tests show: subagents earn their place with conversation and dependent steps, not with single-shot lookups.
+
+Running that test also exposed a bug in my router. When the classifier chose no area, the graph ended without reaching the synthesize step and the run crashed with `KeyError: 'final_answer'`. I added a plumbing check that reproduced it and fixed `route_to_agents` so that no area sends the question straight to synthesize. The script below has the fix, and the O3 question about Wisconsin now gets the "outside these six areas" answer.
 
 ## What went wrong when I tried skills
 
@@ -157,7 +161,7 @@ The all-in-one agent and the route-then-load agent asked "was the car new or use
 
 ## Limits of these tests
 
-Nineteen questions on `qwen2.5:14b`, one run each, checked by string matching. I wrote the questions, and the documents are mine. The skills fixes were made after I saw them fail, and skills is not in the comparison. The DWI document was extended after the earlier `gemma4:12b` runs, so those figures describe the earlier version. The conversation tests are two conversations on one model.
+Nineteen questions on `qwen2.5:14b`, one run each, checked by string matching. I wrote the questions, and the documents are mine. The skills fixes were made after I saw them fail, and skills is not in the comparison. The DWI document was extended after the earlier `gemma4:12b` runs, so those figures describe the earlier version. The conversation tests are two conversations on one model. The mixed-model test is one run of each design on the same nineteen questions.
 
 ## The code
 
@@ -482,8 +486,9 @@ def build_router():
         result = structured.invoke([("system", CLASSIFY_SYSTEM.format(catalogue=catalogue)), ("user", state["query"])])
         return {"classifications": result.classifications if result else []}  # an unparsable reply counts as no area
 
-    def route_to_agents(state: RouterState) -> list[Send]:
-        return [Send(c["source"], {"query": c["query"]}) for c in state["classifications"]]
+    def route_to_agents(state: RouterState) -> list[Send] | list[str]:
+        # with no area chosen nothing would run, and the graph would end without an answer, so go straight to synthesize
+        return [Send(c["source"], {"query": c["query"]}) for c in state["classifications"]] or ["synthesize"]
 
     def specialist_node(area: str):
         agent = create_agent(llm(300), tools=[], system_prompt=with_ask(SPECIALIST_SYSTEM, False).format(area=area, doc=DOCS[area]))
@@ -506,7 +511,7 @@ def build_router():
         graph.add_node(area, specialist_node(area))
         graph.add_edge(area, "synthesize")
     graph.add_edge(START, "classify")
-    graph.add_conditional_edges("classify", route_to_agents, list(AREAS))
+    graph.add_conditional_edges("classify", route_to_agents, [*AREAS, "synthesize"])
     graph.add_edge("synthesize", END)
     return graph.compile()
 
@@ -733,7 +738,7 @@ if __name__ == "__main__":
 **`tools/check_plumbing.py`** checks that the LangChain wiring in the script works, without a real model. It uses scripted fake models that return canned replies, so it runs in a couple of seconds and costs nothing. The real tests take minutes to hours, so I ran this after every change to how the agents are built. It checks two things:
 
 - **Subagents asking the user a question.** A supervisor calls a specialist, the specialist pauses at the `ask_user` tool through the human-in-the-loop middleware, the test plays the user and answers, and the specialist finishes with that answer.
-- **The router.** A scripted classifier picks one specialist, and the graph runs it and synthesizes the answer.
+- **The router.** A scripted classifier picks one specialist, and the graph runs it and synthesizes the answer. A second test has the classifier pick nothing, and the graph must still answer, which it did not before the fix described above.
 
 
 
@@ -797,15 +802,24 @@ print("ok 1: the specialist's question reached the harness, and the reply reache
 
 # 2. router
 class Classifier:
+    def __init__(self, classifications):
+        self.classifications = classifications
+
     def with_structured_output(self, schema):
-        return RunnableLambda(lambda _: schema(classifications=[{"source": "lemon", "query": "How many repairs make a lemon?"}]))
+        return RunnableLambda(lambda _: schema(classifications=self.classifications))
 
 routed = Scripted(script=[AIMessage(content="Four repairs.")], seen=[])
 synth = Scripted(script=[AIMessage(content="Four repairs. This is general information, not legal advice.")], seen=[])
-t.llm = lambda max_tokens, num_ctx=0, model=None: {200: Classifier(), 300: routed, 400: synth}[max_tokens]
+t.llm = lambda max_tokens, num_ctx=0, model=None: {200: Classifier([{"source": "lemon", "query": "How many repairs make a lemon?"}]), 300: routed, 400: synth}[max_tokens]
 result = t.ask_once(t.build("router"), "router", "How many repairs make a lemon?")
 assert result["specialists_called"] == ["lemon"] and "Four repairs" in result["answer"], result
 print("ok 2: the router classified, fanned out to the lemon specialist with Send, and synthesized")
+
+# 2b. router, a question outside the six areas: the classifier picks nothing, and the graph must still answer
+t.llm = lambda max_tokens, num_ctx=0, model=None: {200: Classifier([]), 300: routed}[max_tokens]
+result = t.ask_once(t.build("router"), "router", "What is the speed limit in Wisconsin?")
+assert result["specialists_called"] == [] and "outside" in result["answer"], result
+print("ok 2b: with no area chosen, the router still reached synthesize and said the question is outside the six areas")
 ```
 
 Everything is in https://github.com/Haddley/mn-traffic-law-agents: the six documents and their sources, the questions, the designs in one script, and every result. `tools/validate_quotes.py` checks each quotation against the sources. Run it with `uv run --python 3.12 --with-requirements requirements.txt traffic_law_agents.py "your question"`, plus `--flat` or `--router`, or `--skills` in the repository version, and set `MODEL=qwen2.5:14b NO_THINK=0` for this post's model.
