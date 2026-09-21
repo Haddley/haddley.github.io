@@ -161,7 +161,68 @@ Nineteen questions on `qwen2.5:14b`, one run each, checked by string matching. I
 
 ## The code
 
-**`traffic_law_agents.py`:**
+### The tool loop behind subagents
+
+Subagents is the one compared design whose control flow is a tool loop. [`create_agent`](https://docs.langchain.com/oss/python/langchain/agents) runs a loop. The model replies, and if the reply contains tool calls, LangChain runs those tools, adds their results to the conversation and calls the model again. The loop ends on a reply with no tool calls. In subagents, the supervisor's tools are the specialists. Calling a specialist is a tool call, so the supervisor model decides which specialist to call, how many, and in what words, and the loop hands the specialist's answer back to it.
+
+Four pieces of the script make this work. They are copied from it unchanged, with `# ...` where I left lines out and a numbered comment above each.
+
+```python
+# 1. A specialist is an agent that holds one document and has no tools of its own
+agent = create_agent(llm(300), tools=[ask_user] if ask else [], system_prompt=system, name=area,
+                     middleware=ASK_MIDDLEWARE if ask else [])
+
+# 2. It is wrapped as a tool. The description is what the supervisor reads to decide when to call it
+@tool(f"ask_{area}_specialist", description=about)
+def ask_specialist(question: str, runtime: ToolRuntime) -> str:
+    """Ask this specialist a complete, self-contained question."""
+    # ...
+    return run_agent(agent, f"{area} specialist", question, depth=1)
+
+# 3. The supervisor is an agent whose tools are the six specialist tools
+return create_agent(llm(400, model=CONTROLLER_MODEL), tools=[specialist(a, memory) for a in AREAS], system_prompt=SUPERVISOR_SYSTEM,
+                    name="supervisor", middleware=[DropDuplicateToolCalls()], **saver)
+
+# 4. The loop runs inside agent.stream. Each update is a model reply or a tool result, which is how the trace prints
+for update in agent.stream(payload, config=config, stream_mode="updates"):
+    # ...
+                for call in m.tool_calls:
+                    print(f"{pad}[{name}] calls {call['name']}({json.dumps(call['args'])[:300]})")
+            # ...
+            elif m.type == "tool":
+                print(f"{pad}[{name}] <- {m.name}: {len(m.content):,} characters")
+```
+
+The loop for the lemon question, which is the three model calls I measured:
+
+```mermaid
+sequenceDiagram
+    participant S as Supervisor (create_agent loop)
+    participant T as ask_lemon_specialist (a tool)
+    participant L as Lemon specialist (its own agent, no tools)
+    S->>S: model call 1 replies with a tool call
+    S->>T: ask_lemon_specialist(question)
+    T->>L: run_agent(agent, question)
+    L->>L: model call 2 reads the lemon document and answers
+    L-->>T: answer text
+    T-->>S: tool result
+    S->>S: model call 3 restates the answer, no tool call, loop ends
+```
+
+Subagents is not the only design that uses tools, but it is the only one of the three compared designs that uses them in the single-turn tests, and the only one where tools are the way to reach the specialists.
+
+| Design | Tools | What the model decides |
+|---|---|---|
+| All in one prompt | None in the single-turn tests | Nothing, there is one call |
+| Router | None. The specialists are `create_agent(..., tools=[])` and the flow is a `StateGraph` written in code | Nothing about the flow, code fixes it |
+| Subagents | One per specialist, `ask_<area>_specialist` | Which specialists to call, and what to ask them |
+| Skills (sidebar) | `load_skill` | Which document to load |
+
+In the conversation tests every design that keeps a conversation also gets an `ask_user` tool, so it can pause and ask the user a question.
+
+### The whole script
+
+**`traffic_law_agents.py`** is below without the skills design, which I set aside above. The repository version also has it, under `--skills`, along with the two guards described in "What went wrong when I tried skills".
 
 ```python
 import argparse
@@ -175,9 +236,7 @@ from pathlib import Path
 from typing import Annotated, Callable, Literal, TypedDict
 
 from langchain.agents import create_agent
-from langchain.agents.middleware import (AgentMiddleware, HumanInTheLoopMiddleware, ModelRequest, ModelResponse,
-                                         ToolCallLimitMiddleware)
-from langchain.messages import SystemMessage
+from langchain.agents.middleware import (AgentMiddleware, HumanInTheLoopMiddleware, ModelRequest, ModelResponse)
 from langchain.tools import ToolRuntime, tool
 from langchain_ollama import ChatOllama
 from langchain_core.callbacks import BaseCallbackHandler
@@ -187,9 +246,9 @@ from langgraph.types import Command, Send
 from pydantic import BaseModel, Field
 
 MODEL = os.environ.get("MODEL", "gemma4:12b")
+CONTROLLER_MODEL = os.environ.get("CONTROLLER_MODEL", MODEL)  # the model for the supervisor and the router's classify and synthesize steps
 SPECIALIST_CTX = int(os.environ.get("SPECIALIST_CTX", "16384"))
 FLAT_CTX = int(os.environ.get("FLAT_CTX", "49152"))
-SKILLS_CTX = int(os.environ.get("SKILLS_CTX", "24576"))
 FORK_INPUT = os.environ.get("FORK_INPUT", "0") == "1"  # let a specialist see the user's own words, not only the supervisor's question
 HERE = Path(__file__).parent
 DISCLAIMER = "This is general information, not legal advice."
@@ -245,13 +304,6 @@ FLAT_INSTRUCTIONS = (
     "answer it, say so and do not answer from outside knowledge. @ASK@Answer in English in under 150 words, and end with: "
     + DISCLAIMER + "\n\n")
 
-SKILLS_SYSTEM = (
-    "You answer questions about Minnesota traffic and car law using ONLY the skills you load with the load_skill tool. "
-    "Load the one skill that fits the question. Load a second only if the question clearly needs a second area, and "
-    "never load a skill just in case. Cite statute sections and subdivisions as they appear. If the question is outside the skills, or the skills you "
-    "loaded do not answer it, say so and do not answer from outside knowledge. @ASK@Answer in English in under 150 words, "
-    "and end with: " + DISCLAIMER)
-
 CLASSIFY_SYSTEM = (
     "Analyze this question and decide which areas of Minnesota traffic and car law to consult. For each relevant area, "
     "write a targeted, complete sub-question for that area. Return ONLY the areas that are relevant, and return none if "
@@ -294,15 +346,16 @@ NUMBER = re.compile(r"\$?\d[\d,]*(?:\.\d+)?")
 RUNS: list[dict] = []
 
 
-def llm(max_output_tokens: int, num_ctx: int = SPECIALIST_CTX) -> ChatOllama:
-    extra = {"reasoning": False} if os.environ.get("NO_THINK", "1") != "0" else {}  # set NO_THINK=0 for a model without a thinking mode
+def llm(max_output_tokens: int, num_ctx: int = SPECIALIST_CTX, model: str | None = None) -> ChatOllama:
+    model = model or MODEL
+    thinking_off = os.environ.get("NO_THINK") != "0" if "NO_THINK" in os.environ else model.startswith("gemma")
+    extra = {"reasoning": False} if thinking_off else {}  # gemma spends its output on hidden reasoning unless told not to
     if os.environ.get("OLLAMA_BASE_URL"):
         extra["base_url"] = os.environ["OLLAMA_BASE_URL"]
-    return ChatOllama(model=MODEL, temperature=0, num_ctx=num_ctx, num_predict=max_output_tokens, **extra)
+    return ChatOllama(model=model, temperature=0, num_ctx=num_ctx, num_predict=max_output_tokens, **extra)
 
 
 ASKED: list[str] = []
-CHOSEN: list[str] = []  # the skills the skills agent loaded for the current question
 
 
 def run_agent(agent, name: str, question: str, depth: int = 0, config: dict | None = None, reply=None) -> str:
@@ -332,8 +385,6 @@ def run_agent(agent, name: str, question: str, depth: int = 0, config: dict | No
                             final = m.content
                     elif m.type == "tool":
                         print(f"{pad}[{name}] <- {m.name}: {len(m.content):,} characters")
-                        if m.name == "load_skill" and str(m.content).startswith("Loaded skill: "):
-                            CHOSEN.append(str(m.content).split("\n")[0].removeprefix("Loaded skill: "))  # a blocked call does not count
         if not pending or reply is None:
             return final
         answers = {}
@@ -369,9 +420,8 @@ def specialist(area: str, ask: bool = False):
 
 
 class DropDuplicateToolCalls(AgentMiddleware):
-    """Some models repeat the same tool call in one reply, and the runtime runs every copy. qwen2.5:14b did it to
-    load_skill and doubled the prompt. LangChain's ToolCallLimitMiddleware counts calls, so it cannot tell a repeat from
-    a second skill that a two-area question really needs. This removes only exact repeats, before they run."""
+    """Some models repeat the same tool call in one reply, and the runtime runs every copy. qwen2.5:14b did it, and a
+    repeated call to a specialist runs that specialist twice. This removes exact repeats before they run."""
 
     def wrap_model_call(self, request: ModelRequest, handler: Callable[[ModelRequest], ModelResponse]) -> ModelResponse:
         response = handler(request)
@@ -381,40 +431,6 @@ class DropDuplicateToolCalls(AgentMiddleware):
                 unique = {(c["name"], json.dumps(c["args"], sort_keys=True)): c for c in reversed(calls)}
                 message.tool_calls = list(reversed(list(unique.values())))
         return response
-
-
-# LangChain's documented remedy for a model that calls a tool too often. qwen2.5:14b loaded a second document "just in
-# case" on three of four questions, and asking it not to in the prompt did not stop it. The first skill it loaded was
-# the right one every time, so one load per question keeps that one. A question that spans two areas gets only the
-# first, which is why LangChain points multi-domain questions at the router and subagents patterns.
-SKILL_LIMIT = ToolCallLimitMiddleware(tool_name="load_skill", run_limit=1)
-
-
-# ---------------------------------------------------------------- skills pattern
-# LangChain's skills pattern (docs: multi-agent/skills and the SQL assistant tutorial): one agent, a load_skill tool, and
-# middleware that lists the skills in its system prompt. Loading a skill puts its text in the conversation.
-
-@tool
-def load_skill(skill_name: str) -> str:
-    """Load the full document for one skill, using a skill name from the system prompt."""
-    if skill_name not in DOCS:
-        return f"There is no skill called {skill_name}. The skills are: {', '.join(AREAS)}."
-    return f"Loaded skill: {skill_name}\n\n{DOCS[skill_name]}"
-
-
-class SkillMiddleware(AgentMiddleware):
-    """Add the skill names and descriptions to the system prompt, and register the load_skill tool."""
-
-    tools = [load_skill]
-
-    def __init__(self):
-        self.skills_prompt = "\n".join(f"- **{area}**: {about}" for area, (_, about) in AREAS.items())
-
-    def wrap_model_call(self, request: ModelRequest, handler: Callable[[ModelRequest], ModelResponse]) -> ModelResponse:
-        addendum = (f"\n\n## Available Skills\n\n{self.skills_prompt}\n\n"
-                    "Use the load_skill tool when you need detailed information about handling a specific type of request.")
-        content = list(request.system_message.content_blocks) + [{"type": "text", "text": addendum}]
-        return handler(request.override(system_message=SystemMessage(content=content)))
 
 
 # ---------------------------------------------------------------- router pattern
@@ -462,7 +478,7 @@ def build_router():
     catalogue = "\n".join(f"- {area}: {about}" for area, (_, about) in AREAS.items())
 
     def classify_query(state: RouterState) -> dict:
-        structured = llm(200).with_structured_output(ClassificationResult)
+        structured = llm(200, model=CONTROLLER_MODEL).with_structured_output(ClassificationResult)
         result = structured.invoke([("system", CLASSIFY_SYSTEM.format(catalogue=catalogue)), ("user", state["query"])])
         return {"classifications": result.classifications if result else []}  # an unparsable reply counts as no area
 
@@ -482,7 +498,7 @@ def build_router():
         if not state["results"]:
             return {"final_answer": f"I am sorry, but the question is outside these six areas of Minnesota traffic and car law. {DISCLAIMER}"}
         formatted = "\n\n".join(f"**From {r['source']}:**\n{r['result']}" for r in state["results"])
-        reply = llm(400).invoke([("system", SYNTHESIZE_SYSTEM.format(query=state["query"])), ("user", formatted)])
+        reply = llm(400, model=CONTROLLER_MODEL).invoke([("system", SYNTHESIZE_SYSTEM.format(query=state["query"])), ("user", formatted)])
         return {"final_answer": reply.content}
 
     graph = StateGraph(RouterState).add_node("classify", classify_query).add_node("synthesize", synthesize_results)
@@ -508,7 +524,7 @@ def run_router(router, question: str) -> str:
     return state["final_answer"]
 
 
-MODES = ("supervisor", "flat", "skills", "router")
+MODES = ("supervisor", "flat", "router")
 
 
 def build(mode: str, memory: bool = False):
@@ -517,18 +533,14 @@ def build(mode: str, memory: bool = False):
     ask = {"tools": [ask_user], "middleware": ASK_MIDDLEWARE} if memory else {"tools": [], "middleware": []}
     if mode == "flat":
         return create_agent(llm(400, FLAT_CTX), system_prompt=flat_system(memory), name="flat", **ask, **saver)
-    if mode == "skills":  # the docs' skills agent always has a checkpointer, so every question runs on its own thread
-        return create_agent(llm(400, SKILLS_CTX), system_prompt=with_ask(SKILLS_SYSTEM, memory), name="skills",
-                            tools=ask["tools"], middleware=[SkillMiddleware(), DropDuplicateToolCalls(), SKILL_LIMIT] + ask["middleware"],
-                            checkpointer=InMemorySaver())
     if mode == "router":
         return build_router()
-    return create_agent(llm(400), tools=[specialist(a, memory) for a in AREAS], system_prompt=SUPERVISOR_SYSTEM,
+    return create_agent(llm(400, model=CONTROLLER_MODEL), tools=[specialist(a, memory) for a in AREAS], system_prompt=SUPERVISOR_SYSTEM,
                         name="supervisor", middleware=[DropDuplicateToolCalls()], **saver)
 
 
 def context_for(mode: str) -> int:
-    return {"flat": FLAT_CTX, "skills": SKILLS_CTX}.get(mode, SPECIALIST_CTX)
+    return {"flat": FLAT_CTX}.get(mode, SPECIALIST_CTX)
 
 
 def score(result: dict, item: dict) -> None:
@@ -554,7 +566,6 @@ def ask_once(agent, name: str, question: str, num_ctx: int = SPECIALIST_CTX, thr
     RUNS.clear()
     ASKED.clear()
     started = time.time()
-    CHOSEN.clear()
     if name == "router":
         answer = run_router(agent, question)
     else:
@@ -566,8 +577,7 @@ def ask_once(agent, name: str, question: str, num_ctx: int = SPECIALIST_CTX, thr
     return {"answer": answer, "seconds": round(seconds, 1), "model_calls": len(tokens), "language_guard": bool(guard_tokens),
             "total_prompt_tokens": sum(tokens), "peak_prompt_tokens": max(tokens, default=0),
             "top_level_prompt_tokens": max(RUNS[0]["input_tokens"], default=0),
-            "specialists_called": list(dict.fromkeys(CHOSEN)) if name == "skills"
-            else list(dict.fromkeys(r["agent"].split()[0] for r in RUNS[1:])),
+            "specialists_called": list(dict.fromkeys(r["agent"].split()[0] for r in RUNS[1:])),
             "asked": list(ASKED), "clarified": bool(ASKED)}
 
 
@@ -597,7 +607,7 @@ def evaluate(mode: str, ids: list[str] | None, questions_file: str, tag: str) ->
         if item["id"] in done:
             continue
         print(f"\n=== {item['id']} ({item['category']}): {item['question']}")
-        result = ask_once(agent, mode, item["question"], context_for(mode), thread=item["id"] if mode == "skills" else None)
+        result = ask_once(agent, mode, item["question"], context_for(mode))
         score(result, item)
         if mode == "flat":
             del result["route_ok"]  # a flat agent has no routing to check
@@ -692,7 +702,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("question", nargs="?")
     parser.add_argument("--flat", action="store_true", help="one agent holding all six documents")
-    parser.add_argument("--skills", action="store_true", help="one agent that loads a document as a skill when it needs it")
     parser.add_argument("--router", action="store_true", help="classify, fan out to specialists in parallel, synthesize")
     parser.add_argument("--eval", action="store_true", help="run the labelled question set")
     parser.add_argument("--ids", help="comma-separated question or conversation ids for --eval")
@@ -701,7 +710,7 @@ if __name__ == "__main__":
     parser.add_argument("--questions", default="questions_scale.json", help="question set file for --eval")
     parser.add_argument("--tag", action="append", help="name for a run's result files; repeat it with --summary")
     args = parser.parse_args()
-    mode = "flat" if args.flat else "skills" if args.skills else "router" if args.router else "supervisor"
+    mode = "flat" if args.flat else "router" if args.router else "supervisor"
     tag = (args.tag or ["run"])[0]
     ids = args.ids.split(",") if args.ids else None
     if args.summary and args.conversations:
@@ -713,18 +722,17 @@ if __name__ == "__main__":
     elif args.eval:
         evaluate(mode, ids, args.questions, tag)
     elif args.question:
-        result = ask_once(build(mode), mode, args.question, context_for(mode), thread="ask" if mode == "skills" else None)
+        result = ask_once(build(mode), mode, args.question, context_for(mode))
         print(f"\n--- answer ---\n{result['answer']}\n\n--- {result['seconds']}s, {result['total_prompt_tokens']:,} prompt "
               f"tokens in {result['model_calls']} model calls; largest single prompt {result['peak_prompt_tokens']:,} ---")
     else:
-        sys.exit('usage: python traffic_law_agents.py [--flat | --skills | --router] "question" | --eval [--flat | --skills | --router] '
+        sys.exit('usage: python traffic_law_agents.py [--flat | --router] "question" | --eval [--flat | --router] '
                  '[--tag T] [--questions F | --conversations F] | --summary [--conversations F] --tag T')
 ```
 
-**`tools/check_plumbing.py`** checks that the LangChain wiring in the script works, without a real model. It uses scripted fake models that return canned replies, so it runs in a couple of seconds and costs nothing. The real tests take minutes to hours, so I ran this after every change to how the agents are built. It checks three things:
+**`tools/check_plumbing.py`** checks that the LangChain wiring in the script works, without a real model. It uses scripted fake models that return canned replies, so it runs in a couple of seconds and costs nothing. The real tests take minutes to hours, so I ran this after every change to how the agents are built. It checks two things:
 
 - **Subagents asking the user a question.** A supervisor calls a specialist, the specialist pauses at the `ask_user` tool through the human-in-the-loop middleware, the test plays the user and answers, and the specialist finishes with that answer.
-- **Skills loading a document.** An agent calls `load_skill` and the document reaches its next model call. A `load_skill` call repeated in one reply runs once, which is the `DropDuplicateToolCalls` fix. A reply that asks for two different skills gets the first and has the second blocked, which is the one-load limit. The test fails if the fix is switched off.
 - **The router.** A scripted classifier picks one specialist, and the graph runs it and synthesizes the answer.
 
 
@@ -734,9 +742,7 @@ if __name__ == "__main__":
 
 1. Subagents: a supervisor calls a specialist, the specialist pauses at ask_user through LangChain's human-in-the-loop
    middleware, the harness answers, and the specialist finishes.
-2. Skills: an agent calls load_skill (twice in one reply, as qwen2.5:14b did), the repeat is dropped, and the document reaches its next
-   model call once. A reply that asks for two different skills gets the first and has the second blocked (one load per question).
-3. Router: a StateGraph classifies, fans out to a specialist with Send, and synthesizes.
+2. Router: a StateGraph classifies, fans out to a specialist with Send, and synthesizes.
 
 Usage: python tools/check_plumbing.py   (set FORK_INPUT=1 to check the forked specialist input as well)
 """
@@ -778,7 +784,7 @@ supervisor = Scripted(script=[call("ask_lemon_specialist", {"question": "Can I g
                               AIMessage(content="Under the lemon law the refund needs four repair attempts.")], seen=[])
 specialist = Scripted(script=[call("ask_user", {"question": "Is the car new or used?"}, "c2"),
                               AIMessage(content="New car: four or more repairs of the same problem.")], seen=[])
-t.llm = lambda max_tokens, num_ctx=0: supervisor if max_tokens == 400 else specialist
+t.llm = lambda max_tokens, num_ctx=0, model=None: supervisor if max_tokens == 400 else specialist
 asked = []
 result = t.ask_once(t.build("supervisor", memory=True), "supervisor", "Can I get my money back?", thread="check",
                     reply=lambda question: asked.append(question) or "It was new.")
@@ -789,42 +795,20 @@ if t.FORK_INPUT:
     assert first.startswith("The user wrote") and "Can I get my money back?" in first, first
 print("ok 1: the specialist's question reached the harness, and the reply reached the supervisor")
 
-# 2. skills
-duplicated = AIMessage(content="", tool_calls=[{"name": "load_skill", "args": {"skill_name": "lemon"}, "id": "c3"},
-                                              {"name": "load_skill", "args": {"skill_name": "lemon"}, "id": "c4"}])
-agent = Scripted(script=[duplicated, AIMessage(content="Four repairs.")], seen=[])
-t.llm = lambda max_tokens, num_ctx=0: agent
-result = t.ask_once(t.build("skills"), "skills", "How many repairs make a lemon?", thread="skills-check")
-assert result["specialists_called"] == ["lemon"], result["specialists_called"]
-second_call = " ".join(text for _, text in agent.seen[1])
-assert "Loaded skill: lemon" in second_call, agent.seen[1]
-assert sum(1 for kind, _ in agent.seen[1] if kind == "tool") == 1, "a repeated load_skill call should run once"
-print("ok 2: load_skill ran and its document reached the next model call")
-
-# 2b. skills, a second, different skill in the same reply: the limit lets the first run and blocks the second
-two = AIMessage(content="", tool_calls=[{"name": "load_skill", "args": {"skill_name": "lemon"}, "id": "c5"},
-                                        {"name": "load_skill", "args": {"skill_name": "dwi"}, "id": "c6"}])
-agent = Scripted(script=[two, AIMessage(content="Four repairs.")], seen=[])
-t.llm = lambda max_tokens, num_ctx=0: agent
-result = t.ask_once(t.build("skills"), "skills", "How many repairs make a lemon?", thread="skills-limit")
-loaded = " ".join(text for kind, text in agent.seen[1] if kind == "tool")
-assert "Loaded skill: lemon" in loaded and "Loaded skill: dwi" not in loaded, agent.seen[1]
-print("ok 2b: with one load allowed per question, the first skill loaded and the second was blocked")
-
-# 3. router
+# 2. router
 class Classifier:
     def with_structured_output(self, schema):
         return RunnableLambda(lambda _: schema(classifications=[{"source": "lemon", "query": "How many repairs make a lemon?"}]))
 
 routed = Scripted(script=[AIMessage(content="Four repairs.")], seen=[])
 synth = Scripted(script=[AIMessage(content="Four repairs. This is general information, not legal advice.")], seen=[])
-t.llm = lambda max_tokens, num_ctx=0: {200: Classifier(), 300: routed, 400: synth}[max_tokens]
+t.llm = lambda max_tokens, num_ctx=0, model=None: {200: Classifier(), 300: routed, 400: synth}[max_tokens]
 result = t.ask_once(t.build("router"), "router", "How many repairs make a lemon?")
 assert result["specialists_called"] == ["lemon"] and "Four repairs" in result["answer"], result
-print("ok 3: the router classified, fanned out to the lemon specialist with Send, and synthesized")
+print("ok 2: the router classified, fanned out to the lemon specialist with Send, and synthesized")
 ```
 
-Everything is in https://github.com/Haddley/mn-traffic-law-agents: the six documents and their sources, the questions, the designs in one script, and every result. `tools/validate_quotes.py` checks each quotation against the sources. Run it with `uv run --python 3.12 --with-requirements requirements.txt traffic_law_agents.py "your question"`, plus `--flat`, `--skills` or `--router`, and set `MODEL=qwen2.5:14b NO_THINK=0` for this post's model.
+Everything is in https://github.com/Haddley/mn-traffic-law-agents: the six documents and their sources, the questions, the designs in one script, and every result. `tools/validate_quotes.py` checks each quotation against the sources. Run it with `uv run --python 3.12 --with-requirements requirements.txt traffic_law_agents.py "your question"`, plus `--flat` or `--router`, or `--skills` in the repository version, and set `MODEL=qwen2.5:14b NO_THINK=0` for this post's model.
 
 ## The test data
 
