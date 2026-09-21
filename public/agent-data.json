@@ -23,7 +23,7 @@
     {
       "slug": "orchestration1",
       "title": "Agent Orchestration (Part 1)",
-      "description": "Four ways to build an agent that answers questions from six documents, using the multi-agent patterns LangChain documents, tested on a small local model, with the problems I hit and how I fixed them",
+      "description": "Three ways to build an agent that answers questions from six documents, using the multi-agent patterns LangChain documents, tested on a small local model, with the problems I hit and how I fixed them",
       "date": "2026-09-21",
       "categories": [
         "AI"
@@ -2879,5 +2879,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-09-21T05:18:46.783Z"
+  "generatedAt": "2026-09-21T09:09:52.817Z"
 }

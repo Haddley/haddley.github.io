@@ -1,7 +1,7 @@
 ---
 title: "Agent Orchestration"
 part: 1
-description: "Four ways to build an agent that answers questions from six documents, using the multi-agent patterns LangChain documents, tested on a small local model, with the problems I hit and how I fixed them"
+description: "Three ways to build an agent that answers questions from six documents, using the multi-agent patterns LangChain documents, tested on a small local model, with the problems I hit and how I fixed them"
 date: "2026-09-21"
 categories: ["AI"]
 tags: "agent-orchestration, subagents, langchain, ollama, grounding, evaluation"
@@ -10,7 +10,13 @@ slug: "orchestration1"
 hidden: false
 ---
 
-**Are subagents worth it? Not always certainly.** On `qwen2.5:14b` the router passed all 18 questions that have a fact check, skills passed 16, and subagents and one big prompt passed 15 each. The three designs that fit the model's window used a similar number of prompt tokens at the median, within about 17 percent of each other. What set them apart was how each one failed. The router once sent a question to all six specialists. Skills twice loaded the wrong document. Subagents once declined a question it should have answered, and could not answer a comparison across two documents.
+I wanted to know whether splitting a knowledge job across several specialist agents is worth the trouble. The job is to answer questions from six documents about Minnesota traffic and car law, using a small local model, `qwen2.5:14b`. I tried three designs:
+
+- **One big prompt.** A single agent with all six documents in its prompt.
+- **A router.** Fixed code classifies each question, sends it to the right specialist agent or agents, and combines their answers. Each specialist is an agent that holds one document, but the routing itself is not an agent.
+- **Subagents.** A supervisor agent decides which specialist agent to call, and what to ask it. Each specialist holds one document.
+
+**Are subagents worth it? On my nineteen questions, not for looking things up in documents.** The router was the most accurate, passing all 18 questions that have a fact check. Subagents and the one big prompt passed 15 each. Subagents and the router used a similar number of prompt tokens at the median, 8,147 and 8,965, so subagents were no more accurate than the simpler router and cost about the same. The one big prompt does not fit this model's window at all. What set the designs apart was how each one failed. The router once sent a question to all six specialists. Subagents once declined a question they should have answered, and could not answer a comparison across two documents.
 
 Subagents should earn their place when a specialist does heavy work in its own context, when specialists run in parallel, or when a specialist sits behind a boundary you cannot load into one prompt. This task is none of those, and I did not test them.
 
@@ -24,75 +30,106 @@ Six documents on Minnesota traffic and car law, about 25,800 words, written from
 
 The six documents come to about 37,000 tokens. That number matters, because the model I use, `qwen2.5:14b` running locally in Ollama, has a 32,768-token window.
 
-## Four ways to build it
+## The options
 
-These use the names from LangChain's [multi-agent documentation](https://docs.langchain.com/oss/python/langchain/multi-agent). I built the last three from LangChain's own tutorials.
+LangChain's [multi-agent documentation](https://docs.langchain.com/oss/python/langchain/multi-agent) describes five patterns for an agent that has to draw on several areas of knowledge. I compared two of them, [router](https://docs.langchain.com/oss/python/langchain/multi-agent/router) and [subagents](https://docs.langchain.com/oss/python/langchain/multi-agent/subagents), against the plain baseline they exist to avoid, which is to put everything in one prompt. I built router from LangChain's [knowledge base tutorial](https://docs.langchain.com/oss/python/langchain/multi-agent/router-knowledge-base) and subagents from the subagents page. I also built a third pattern, [skills](https://docs.langchain.com/oss/python/langchain/multi-agent/skills), and set it aside to keep the comparison simple. It is described near the end in "What went wrong when I tried skills". The fifth pattern, handoffs, is not built.
 
-| Design | How it works | LangChain's name |
-|---|---|---|
-| **All in one prompt** | One agent, all six documents in its system prompt | (what the patterns exist to avoid) |
-| **Skills** | One agent with a `load_skill` tool. It sees a list of the six documents and loads the one it needs | Skills |
-| **Router** | A graph classifies the question, sends it to the right specialists in parallel, and combines their answers | Router |
-| **Subagents** | A supervisor agent calls a specialist agent for each area, as a tool. Each specialist holds one document | Subagents |
+Two questions tell the designs apart. **Who decides what happens next**, a model or fixed code? And **where does the document text end up**, in one agent's prompt or inside separate specialist agents?
+
+| Design | Who decides what happens next | Where the document text goes | Memory |
+|---|---|---|---|
+| All in one prompt | Nobody. There is one call | All six documents in the one agent's prompt | Yes |
+| [Router](https://docs.langchain.com/oss/python/langchain/multi-agent/router) | Fixed code: classify, then specialists in parallel, then synthesize | Inside each specialist. Only its answer comes back | No |
+| [Subagents](https://docs.langchain.com/oss/python/langchain/multi-agent/subagents) | The supervisor model. It picks the specialist and rewrites the question | Inside each specialist. Only its answer comes back | Yes |
+
+"Memory" means whether the design keeps the conversation between questions. The router does not, and the other two do. All in one prompt is not a LangChain pattern. It is what the patterns exist to avoid.
+
+### One question through each design
+
+The question is "How many repair attempts for the same problem does a new car need before Minnesota presumes it is a lemon?". The counts of model calls are what I measured.
+
+- **All in one prompt:** the agent reads all six documents in its prompt and answers. One model call.
+- **Router:** a classification call turns the question into a routing decision, `lemon`, plus a targeted sub-question. The lemon specialist, a separate agent that holds only the lemon document, answers it. A synthesis call turns the answer into the final reply. Three model calls.
+- **Subagents:** the supervisor rewrites the question and calls its `ask_lemon_specialist` tool. The lemon specialist answers, and the supervisor restates the answer. Three model calls.
+
+The two split designs look alike, because the specialists hold their own documents in both. The difference is the control flow. In a router it is fixed in code. In subagents a model decides it, so it can call one specialist, several, or none. A question that spans two areas simply runs two specialists in parallel in the router, and a router keeps no conversation, so a follow-up such as "and what if I was under 21?" has nothing to refer to.
+
+```mermaid
+graph LR
+    subgraph Router["Router: fixed code, separate agents"]
+        U2["Question"] --> C2["Classify"]
+        C2 -->|"lemon"| S2["Lemon specialist<br/>holds its own document"]
+        C2 -.->|"more areas run in parallel"| S3["Other specialists"]
+        S2 --> Y2["Synthesize"]
+        S3 -.-> Y2
+        Y2 --> R2["Answer"]
+    end
+```
 
 ## Results on `qwen2.5:14b`
 
-Nineteen questions from a set of 62, one run each. They cover all six areas and include questions that need two documents, questions about court decisions, and one that is outside the six areas. I picked them from a 24-question subset that I fixed earlier, in two batches, the first after seeing some of the flat agent's results, so do not treat the selection as random. A design "passes" when its answer contains the fact I required, such as "four" for the lemon-law repair rule. That is a blunt check and it does not measure whether an answer is complete.
+Nineteen questions from a set of 62, one run each on each design. They cover all six areas and include questions that need two documents, questions about court decisions, and one that is outside the six areas. I picked them from a 24-question subset that I fixed earlier, in two batches, the first after seeing some of the flat agent's results, so do not treat the selection as random. A design "passes" when its answer contains the fact I required, such as "four" for the lemon-law repair rule. That is a blunt check and it does not measure whether an answer is complete.
 
 | Design | Questions run | Passed the fact check | Mean prompt tokens | Median prompt tokens | Largest prompt | Median seconds | Mean model calls |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | All in one prompt | 19 | 15 of 18 | 16,386 | 16,386 | 16,386 | 409 | 1.0 |
-| Skills | 19 | 16 of 18 | 9,228 | 9,489 | 9,436 | 209 | 2.1 |
 | Router | 19 | 18 of 18 | 9,880 | 8,965 | 8,780 | 93 | 3.4 |
 | Subagents | 19 | 15 of 18 | 8,142 | 8,147 | 8,779 | 142 | 2.9 |
 
-| Question | All in one prompt | Skills | Router | Subagents |
-|---|---|---|---|---|
-| L1 (lemon) | pass, 16,386 tok, 372 s | pass, lemon, 9,535 tok, 219 s | pass, lemon, 8,969 tok, 210 s | pass, lemon, 10,128 tok, 160 s |
-| S1 (speeding) | pass, 16,386 tok, 410 s | pass, speeding, 6,692 tok, 113 s | pass, speeding, 6,114 tok, 23 s | pass, speeding, 7,271 tok, 127 s |
-| D5 (dwi) | fail, 16,386 tok, 429 s | pass, dwi, 9,904 tok, 207 s | pass, dwi, 9,319 tok, 46 s | pass, dwi, 10,436 tok, 188 s |
-| A2 (accident) | pass, 16,386 tok, 354 s | pass, accident, 7,535 tok, 173 s | pass, accident, 7,025 tok, 197 s | pass, accident, 8,147 tok, 126 s |
-| P1 (phone) | pass, 16,386 tok, 409 s | pass, phone, 4,936 tok, 97 s | pass, phone, 4,410 tok, 116 s | pass, phone, 5,582 tok, 124 s |
-| L5 (lemon) | pass, 16,386 tok, 381 s | pass, lemon, 9,543 tok, 204 s | pass, lemon, 9,197 tok, 100 s | pass, lemon, 10,174 tok, 236 s |
-| D7 (dwi) | pass, 16,386 tok, 403 s | pass, dwi, 9,912 tok, 209 s | pass, dwi, 9,391 tok, 60 s | fail, dwi, 10,900 tok, 280 s |
-| C6 (reckless) | pass, 16,386 tok, 370 s | pass, reckless, 5,847 tok, 107 s | pass, reckless, 5,261 tok, 34 s | pass, reckless, 6,394 tok, 142 s |
-| M2 (dwi) | fail, 16,386 tok, 68 s | fail, dwi, 9,912 tok, 216 s | pass, dwi+speeding, 15,246 tok, 122 s | fail, dwi+speeding, 16,044 tok, 123 s |
-| C3 (dwi) | pass, 16,386 tok, 370 s | pass, dwi, 9,876 tok, 433 s | pass, phone+accident+reckless+lemon+speeding+dwi, 38,505 tok, 1114 s | pass, dwi, 10,508 tok, 272 s |
-| C4 (dwi) | pass, 16,386 tok, 411 s | pass, dwi, 9,908 tok, 405 s | pass, dwi, 9,352 tok, 56 s | pass, dwi, 10,520 tok, 80 s |
-| L3 (lemon) | pass, 16,386 tok, 407 s | pass, lemon, 9,489 tok, 348 s | pass, lemon, 8,965 tok, 51 s | pass, lemon, 10,094 tok, 68 s |
-| F3 (lemon) | pass, 16,386 tok, 411 s | pass, lemon, 9,489 tok, 323 s | pass, lemon, 9,127 tok, 101 s | pass, lemon, 10,128 tok, 289 s |
-| P2 (phone) | pass, 16,386 tok, 405 s | pass, phone, 4,908 tok, 173 s | pass, phone, 4,375 tok, 52 s | pass, phone, 5,524 tok, 206 s |
-| R1 (reckless) | pass, 16,386 tok, 410 s | pass, reckless, 5,791 tok, 177 s | pass, reckless, 5,467 tok, 125 s | pass, reckless, 6,434 tok, 265 s |
-| C2 (speeding) | pass, 16,386 tok, 672 s | pass, dwi, 19,317 tok, 368 s | pass, speeding, 6,184 tok, 64 s | pass, speeding, 7,344 tok, 292 s |
-| C7 (speeding) | fail, 16,386 tok, 680 s | pass, speeding, 6,696 tok, 220 s | pass, speeding, 6,309 tok, 93 s | pass, speeding, 7,337 tok, 89 s |
-| O3 (outside) | answered, 16,386 tok, 641 s | declined, speeding, 6,684 tok, 207 s | declined, speeding, 6,220 tok, 61 s | declined, none, 777 tok, 13 s |
-| F1 (reckless) | pass, 16,386 tok, 419 s | fail, dwi, 19,352 tok, 421 s | pass, phone+dwi+reckless, 18,283 tok, 163 s | fail, none, 953 tok, 54 s |
+| Question | All in one prompt | Router | Subagents |
+|---|---|---|---|
+| L1 (lemon) | pass, 16,386 tok, 372 s | pass, lemon, 8,969 tok, 210 s | pass, lemon, 10,128 tok, 160 s |
+| S1 (speeding) | pass, 16,386 tok, 410 s | pass, speeding, 6,114 tok, 23 s | pass, speeding, 7,271 tok, 127 s |
+| D5 (dwi) | fail, 16,386 tok, 429 s | pass, dwi, 9,319 tok, 46 s | pass, dwi, 10,436 tok, 188 s |
+| A2 (accident) | pass, 16,386 tok, 354 s | pass, accident, 7,025 tok, 197 s | pass, accident, 8,147 tok, 126 s |
+| P1 (phone) | pass, 16,386 tok, 409 s | pass, phone, 4,410 tok, 116 s | pass, phone, 5,582 tok, 124 s |
+| L5 (lemon) | pass, 16,386 tok, 381 s | pass, lemon, 9,197 tok, 100 s | pass, lemon, 10,174 tok, 236 s |
+| D7 (dwi) | pass, 16,386 tok, 403 s | pass, dwi, 9,391 tok, 60 s | fail, dwi, 10,900 tok, 280 s |
+| C6 (reckless) | pass, 16,386 tok, 370 s | pass, reckless, 5,261 tok, 34 s | pass, reckless, 6,394 tok, 142 s |
+| M2 (dwi) | fail, 16,386 tok, 68 s | pass, dwi+speeding, 15,246 tok, 122 s | fail, dwi+speeding, 16,044 tok, 123 s |
+| C3 (dwi) | pass, 16,386 tok, 370 s | pass, phone+accident+reckless+lemon+speeding+dwi, 38,505 tok, 1114 s | pass, dwi, 10,508 tok, 272 s |
+| C4 (dwi) | pass, 16,386 tok, 411 s | pass, dwi, 9,352 tok, 56 s | pass, dwi, 10,520 tok, 80 s |
+| L3 (lemon) | pass, 16,386 tok, 407 s | pass, lemon, 8,965 tok, 51 s | pass, lemon, 10,094 tok, 68 s |
+| F3 (lemon) | pass, 16,386 tok, 411 s | pass, lemon, 9,127 tok, 101 s | pass, lemon, 10,128 tok, 289 s |
+| P2 (phone) | pass, 16,386 tok, 405 s | pass, phone, 4,375 tok, 52 s | pass, phone, 5,524 tok, 206 s |
+| R1 (reckless) | pass, 16,386 tok, 410 s | pass, reckless, 5,467 tok, 125 s | pass, reckless, 6,434 tok, 265 s |
+| C2 (speeding) | pass, 16,386 tok, 672 s | pass, speeding, 6,184 tok, 64 s | pass, speeding, 7,344 tok, 292 s |
+| C7 (speeding) | fail, 16,386 tok, 680 s | pass, speeding, 6,309 tok, 93 s | pass, speeding, 7,337 tok, 89 s |
+| O3 (outside) | answered, 16,386 tok, 641 s | declined, speeding, 6,220 tok, 61 s | declined, none, 777 tok, 13 s |
+| F1 (reckless) | pass, 16,386 tok, 419 s | pass, phone+dwi+reckless, 18,283 tok, 163 s | fail, none, 953 tok, 54 s |
 
 ### What the results show
 
 - **All in one prompt does not fit.** The six documents are 37,010 tokens. Ollama evaluated 16,386 of them on every question, 44 percent, so the agent answered from a truncated prompt. It passed 15 of 18, and it failed the DWI felony question, the two-document comparison and the laser-evidence question. It also did not decline the out-of-scope question. Asked for the speed limit in Wisconsin, it answered with figures from the Minnesota document. Its median was 409 seconds, because it could not cache the prompt. I do not know which part of the documents it kept. On `gemma4:12b`, whose window is 262,144 tokens, the same design matched the subagents on accuracy across 70 questions, so this is a fact about the model window and not about the design.
 - **Router passed all 18.** It is the only design that passed the two-area question (M2, DWI versus speeding), by classifying it into both areas and combining the answers. Its cost is in its errors, not its typical question. On C3, a question about the right to a lawyer before a breath test, its classifier chose all six areas. That ran six specialists, made eight model calls and used 38,505 prompt tokens over 1,114 seconds, and the answer was still right. On the out-of-scope question it classified the question into speeding, ran that specialist, and then said the document does not cover Wisconsin, at a cost of 6,220 tokens.
-- **Skills passed 16 of 18.** It loaded one document on almost every question, and its median was 9,489 tokens. It has two clear failures. On M2 the one-load limit gave it only the DWI document for a comparison. On F1, a question about texting while hitting a pedestrian, it loaded the DWI document, which is the wrong one, and failed. On C2, the drug-dog question, it also loaded the DWI document and gave an answer about DWI probable cause. That answer contained the words my check looks for, so it passed, but it did not use the speeding document, which holds the rule from *Rodriguez*. On the out-of-scope question it loaded the speeding document before saying the question was outside it.
-- **Subagents passed 15 of 18.** On D7, the sleeping-in-a-parked-car question, the answer was right in substance, citing *Kozak*, but it did not contain the words "physical control" that my check requires. It also called a Court of Appeals decision a ruling of the Supreme Court. On M2 the supervisor split the question in two, but each specialist sees only its own document, so both said the document does not cover the comparison. On F1 the supervisor called no specialist and told me the question was outside its scope, although it is squarely about reckless driving. On the out-of-scope question it declined without calling anyone, at a cost of 777 tokens, which was the cheapest correct decline of the four.
-- **Tokens are similar at the median.** The medians were 8,147 for subagents, 8,965 for the router and 9,489 for skills, against a fixed 16,386 for the truncated prompt. The means are 8,142, 9,880 and 9,228. The subagents mean is low partly because of the two questions it wrongly declined or refused to route, which cost under 1,000 tokens each. On questions where all three routed correctly, the supervisor used about 1,000 more tokens than the router, because it rewrites the question and then restates the answer around the specialist's call.
+- **Subagents passed 15 of 18.** On D7, the sleeping-in-a-parked-car question, the answer was right in substance, citing *Kozak*, but it did not contain the words "physical control" that my check requires. It also called a Court of Appeals decision a ruling of the Supreme Court. On M2 the supervisor split the question in two, but each specialist sees only its own document, so both said the document does not cover the comparison. On F1, a question about texting while hitting a pedestrian, the supervisor called no specialist and told me the question was outside its scope, although it is squarely about reckless driving. On the out-of-scope question it declined without calling anyone, at a cost of 777 tokens, which was the cheapest correct decline of the three.
+- **Tokens are similar at the median.** The medians were 8,147 for subagents and 8,965 for the router, against a fixed 16,386 for the truncated prompt. The means are 8,142 and 9,880. The subagents mean is low partly because of the two questions it wrongly declined or did not route, which cost under 1,000 tokens each. The router mean is high because of the six-area fan-out. On questions where both routed correctly, the supervisor used about 1,100 more tokens than the router, because it rewrites the question and then restates the answer around the specialist's call.
 - **The seconds are not a ranking.** Ollama caches prompts between questions. The router took 23 seconds on a speeding question that reused a cached prompt and 1,114 on the six-area fan-out.
-- **Passing hides some problems.** The skills answer to C2 passed while using the wrong document. The router's and skills' answers to M2 mention demerit points or points on your license, which the documents do not cover. My check looks for required facts, not for extra claims.
+- **Passing hides some problems.** The router's answer to M2 mentions demerit points, which the documents do not cover. My check looks for required facts, not for extra claims.
 
 ### What to take from it
 
 - **Check the window first.** If the documents fit in the model's window, one agent holding them is the simplest design. On `qwen2.5:14b` six documents do not fit, and the truncated agent also answered an out-of-scope question from the wrong material.
-- **A small model's routing decisions are the weak point in every design.** The router's classifier, the skills agent's choice of skill, and the supervisor's decision to call a specialist each went wrong at least once. A larger model would probably do better, and I did not test one.
+- **A small model's routing decisions are the weak point in every design.** The router's classifier and the supervisor's decision to call a specialist each went wrong at least once, and so did the skills agent's choice of document, described below. A larger model would probably do better, and I did not test one.
 - **If questions span areas, use a router,** and cap how many areas it may choose. It was the most accurate here, and it is a graph you can read.
-- **If a question needs one area, skills is the smallest design.** It needs the two guards described below, and it cannot answer a question that spans two areas.
 - **Use subagents for work that needs its own context or boundary,** such as a specialist that runs many searches and returns a short summary, specialists that run in parallel, or an agent you cannot load into one prompt at all. For looking things up in six documents they were no more accurate than the simpler designs.
+- **A single agent that loads a document on demand,** which is LangChain's skills pattern, also works for a question that needs one area. On a small model it needed two guards, described next.
 
-## Two problems I hit in the skills design, and the fixes
+## When subagents would earn their place
 
-I fixed each after seeing it fail, so the "after" numbers are not an untouched test.
+So the honest position is that subagents earn their place only when the task needs memory or several dependent steps, and I did not measure either here. A supervisor keeps the conversation, so a follow-up such as "and what if I was under 21?" works. It can also call a specialist, read the result, and then call another one or ask again. A router does one fixed pass, classify then answer, and keeps no conversation. My nineteen questions were single-shot lookups, so the supervisor's extra flexibility was only overhead.
 
-**A repeated tool call.** In one reply `qwen2.5:14b` asked for `load_skill("lemon")` twice, with two different call IDs, so two identical 36,201-character results went into the conversation. LangChain's docs say many models issue several tool calls in one response and that the runtime executes them together. The skills tutorial adds no guard. I wrote a small middleware, `DropDuplicateToolCalls`, that removes exact repeats before they run. The same question then loaded the document once and used 9,429 prompt tokens instead of 17,748, and took 151 seconds instead of 407.
+A fair test would use the conversation file, `questions_followup.json`, where follow-ups depend on earlier answers, plus a few comparison questions that need two dependent lookups. A router cannot do those, and a good supervisor should.
 
-**A second document loaded "just in case".** On three of four questions the skills agent loaded a second skill it did not need: the seat-belt question loaded the DWI document too, the DWI felony question loaded reckless driving, and a phone question loaded the accident document. That doubled the prompt. I first told the agent in its prompt to load one skill, and it made no difference: A2 loaded the same two documents again. LangChain documents `ToolCallLimitMiddleware` for a model that calls a tool too often, and I limited `load_skill` to one call per question.
+That flexibility only helps if the supervisor makes good decisions, and on `qwen2.5:14b` it did not always. Two of its three failures were its own choices. It called no specialist on a question that was squarely about reckless driving, and it split a comparison in a way that neither specialist could answer. So I expect subagents to need a better model for the supervisor than the specialists do. The supervisor's prompts are small, about 1,000 tokens, while each specialist reads about 8,000, so a stronger model on the supervisor is the cheaper place to spend on one. That mixed-model design is something the split designs can do and one big prompt cannot. I have not tested it, and a router can also use a stronger model for its classify and synthesize steps, so the model upgrade alone would not separate the two.
+
+## What went wrong when I tried skills
+
+I first built four designs. The fourth was LangChain's [skills pattern](https://docs.langchain.com/oss/python/langchain/multi-agent/skills): one agent with a `load_skill` tool that sees a list of the six documents and loads the one it needs into its own conversation. I dropped it from the comparison above because it answers the same question as the router, which document, by a different route, and because it needed two fixes that would have taken over the story. They are worth knowing if you build it on a small model. I fixed each after seeing it fail, so the "after" numbers are not an untouched test. The skills tutorial I followed is [here](https://docs.langchain.com/oss/python/langchain/multi-agent/skills-sql-assistant).
+
+**A repeated tool call.** In one reply `qwen2.5:14b` asked for `load_skill("lemon")` twice, with two different call IDs, so two identical 36,201-character results went into the conversation. LangChain's docs say many models issue several tool calls in one response and that the runtime executes them together. The skills tutorial adds no guard. I wrote a small [custom middleware](https://docs.langchain.com/oss/python/langchain/middleware/custom), `DropDuplicateToolCalls`, that removes exact repeats before they run. The same question then loaded the document once and used 9,429 prompt tokens instead of 17,748, and took 151 seconds instead of 407.
+
+**A second document loaded "just in case".** On three of four questions the skills agent loaded a second skill it did not need: the seat-belt question loaded the DWI document too, the DWI felony question loaded reckless driving, and a phone question loaded the accident document. That doubled the prompt. I first told the agent in its prompt to load one skill, and it made no difference: A2 loaded the same two documents again. LangChain documents [`ToolCallLimitMiddleware`](https://docs.langchain.com/oss/python/langchain/middleware/built-in) for a model that calls a tool too often, and I limited `load_skill` to one call per question.
 
 | Question | Guard against repeats only | Plus a prompt instruction to load one | Plus a limit of one load |
 | --- | --- | --- | --- |
@@ -100,27 +137,27 @@ I fixed each after seeing it fail, so the "after" numbers are not an untouched t
 | D5 | dwi+reckless, 14,445 tokens, 339 s | dwi+reckless, 14,507 tokens, 477 s | dwi, 9,904 tokens, 207 s |
 | P1 | phone+accident, 11,139 tokens, 213 s | not run | phone, 4,936 tokens, 97 s |
 
-The cost is that a question spanning two areas gets only one document. That is why LangChain points multi-domain questions at the router and subagents patterns. The limit also does not make the agent choose the right skill. On the drug-dog question and on the texting-and-a-pedestrian question it loaded the DWI document instead of the right one.
+With both guards skills passed 16 of the 18 questions with a fact check, at a median of 9,489 prompt tokens over two model calls. The cost is that a question spanning two areas gets only one document, which is why it failed the comparison question. The limit also does not make the agent choose the right skill. On the drug-dog question and on the texting-and-a-pedestrian question it loaded the DWI document instead of the right one, and the drug-dog answer still passed my check. LangChain points multi-domain questions at the router and subagents patterns, and my results agree.
 
 ## Asking the user a question
 
 A good agent asks when it needs a fact. I tested this on `gemma4:12b` with conversations that start with a vague question, such as "My car keeps breaking down. Can I get my money back?", and a simulated user who answers only if asked. This ran before I rebuilt the designs above, so it used my earlier version of the skills idea, a route-then-load agent that is in the repository history.
 
-LangChain's documentation has one mechanism for this. A placeholder tool named `ask_user`, `HumanInTheLoopMiddleware` to pause at it, a checkpointer on the top-level agent, and a `respond` decision to resume. I used exactly that.
+LangChain's documentation has one mechanism for this. A placeholder tool named `ask_user`, [`HumanInTheLoopMiddleware`](https://docs.langchain.com/oss/python/langchain/human-in-the-loop) to pause at it, a checkpointer on the top-level agent, and a `respond` decision to resume, as described on the human-in-the-loop page and in the [interrupts](https://docs.langchain.com/oss/python/langgraph/interrupts) guide. The [subagents page](https://docs.langchain.com/oss/python/langchain/multi-agent/subagents) says a subagent can use interrupts to gather user input, and [subgraph persistence](https://docs.langchain.com/oss/python/langgraph/use-subgraphs) explains why the specialists inherit the parent's checkpointer. I used exactly that.
 
-The all-in-one agent and the route-then-load agent asked "was the car new or used?". The supervisor's specialist did not. The supervisor had rewritten the vague question into a general one that covered both cases before the specialist saw it, so the specialist had nothing to ask. Passing the user's own words to the specialist, which LangChain calls forking the input, did not change that in my one test. I did not rerun these conversations on `qwen2.5:14b`.
+The all-in-one agent and the route-then-load agent asked "was the car new or used?". The supervisor's specialist did not. The supervisor had rewritten the vague question into a general one that covered both cases before the specialist saw it, so the specialist had nothing to ask. Passing the user's own words to the specialist, which LangChain calls [forking the input](https://docs.langchain.com/oss/python/langchain/multi-agent/subagents), did not change that in my one test. I did not rerun these conversations on `qwen2.5:14b`.
 
 ## Feedback for LangChain
 
-1. The docs have no worked example of a subagent asking a clarifying question. The `respond` decision and the `ask_user` name appear only on the human-in-the-loop page, and the subagents page points to interrupts.
+1. The docs have no worked example of a subagent asking a clarifying question. The `respond` decision and the `ask_user` name appear only on the [human-in-the-loop page](https://docs.langchain.com/oss/python/langchain/human-in-the-loop), and the [subagents page](https://docs.langchain.com/oss/python/langchain/multi-agent/subagents) points to interrupts.
 2. The supervisor decides what a subagent can ask about. A helpful rewrite hides the gap.
-3. The skills tutorial has no guard against a model repeating a tool call, or loading skills it does not need. On a small model both happen, and `ToolCallLimitMiddleware` cannot tell a repeat from a second skill that is really needed.
-4. `get_state` with subgraphs cannot see subagents called inside tools.
+3. The [skills tutorial](https://docs.langchain.com/oss/python/langchain/multi-agent/skills-sql-assistant) has no guard against a model repeating a tool call, or loading skills it does not need. On a small model both happen, and [`ToolCallLimitMiddleware`](https://docs.langchain.com/oss/python/langchain/middleware/built-in) cannot tell a repeat from a second skill that is really needed.
+4. `get_state` with subgraphs cannot see subagents called inside tools, as the [subagents page](https://docs.langchain.com/oss/python/langchain/multi-agent/subagents) says.
 5. A checkpointer on the top-level agent is required, which is easy to miss when you start with a stateless single-turn agent.
 
 ## Limits of these tests
 
-Nineteen questions on `qwen2.5:14b`, one run each, checked by string matching. I wrote the questions, and the documents are mine. The two problems above were fixed after I saw them fail. The skills design has the one-skill limit and the others have no equivalent limit. The DWI document was extended after the earlier `gemma4:12b` runs, so those figures describe the earlier version. The conversation tests are two conversations on one model.
+Nineteen questions on `qwen2.5:14b`, one run each, checked by string matching. I wrote the questions, and the documents are mine. The skills fixes were made after I saw them fail, and skills is not in the comparison. The DWI document was extended after the earlier `gemma4:12b` runs, so those figures describe the earlier version. The conversation tests are two conversations on one model.
 
 ## The code
 
@@ -684,17 +721,24 @@ if __name__ == "__main__":
                  '[--tag T] [--questions F | --conversations F] | --summary [--conversations F] --tag T')
 ```
 
-**`tools/check_clarification.py`,** which checks the LangChain plumbing with scripted models and no Ollama:
+**`tools/check_plumbing.py`** checks that the LangChain wiring in the script works, without a real model. It uses scripted fake models that return canned replies, so it runs in a couple of seconds and costs nothing. The real tests take minutes to hours, so I ran this after every change to how the agents are built. It checks three things:
+
+- **Subagents asking the user a question.** A supervisor calls a specialist, the specialist pauses at the `ask_user` tool through the human-in-the-loop middleware, the test plays the user and answers, and the specialist finishes with that answer.
+- **Skills loading a document.** An agent calls `load_skill` and the document reaches its next model call. A `load_skill` call repeated in one reply runs once, which is the `DropDuplicateToolCalls` fix. A reply that asks for two different skills gets the first and has the second blocked, which is the one-load limit. The test fails if the fix is switched off.
+- **The router.** A scripted classifier picks one specialist, and the graph runs it and synthesizes the answer.
+
+
 
 ```python
 """Check the LangChain plumbing without a real model. Scripted fake models stand in for Ollama.
 
 1. Subagents: a supervisor calls a specialist, the specialist pauses at ask_user through LangChain's human-in-the-loop
    middleware, the harness answers, and the specialist finishes.
-2. Skills: an agent calls load_skill (twice in one reply, as qwen2.5:14b did), the repeat is dropped, and the document reaches its next model call once.
+2. Skills: an agent calls load_skill (twice in one reply, as qwen2.5:14b did), the repeat is dropped, and the document reaches its next
+   model call once. A reply that asks for two different skills gets the first and has the second blocked (one load per question).
 3. Router: a StateGraph classifies, fans out to a specialist with Send, and synthesizes.
 
-Usage: python tools/check_clarification.py   (set FORK_INPUT=1 to check the forked specialist input as well)
+Usage: python tools/check_plumbing.py   (set FORK_INPUT=1 to check the forked specialist input as well)
 """
 import sys
 from pathlib import Path
@@ -2021,8 +2065,9 @@ Auto policies must include "separate uninsured and underinsured motorist coverag
 
 ## References
 
-- [LangChain: multi-agent patterns](https://docs.langchain.com/oss/python/langchain/multi-agent), [subagents](https://docs.langchain.com/oss/python/langchain/multi-agent/subagents), [skills](https://docs.langchain.com/oss/python/langchain/multi-agent/skills) and [router](https://docs.langchain.com/oss/python/langchain/multi-agent/router)
-- [LangChain: human-in-the-loop](https://docs.langchain.com/oss/python/langchain/human-in-the-loop), [interrupts](https://docs.langchain.com/oss/python/langgraph/interrupts) and [built-in middleware](https://docs.langchain.com/oss/python/langchain/middleware/built-in)
+- LangChain multi-agent patterns: [overview](https://docs.langchain.com/oss/python/langchain/multi-agent), [subagents](https://docs.langchain.com/oss/python/langchain/multi-agent/subagents), [skills](https://docs.langchain.com/oss/python/langchain/multi-agent/skills), [router](https://docs.langchain.com/oss/python/langchain/multi-agent/router) and [handoffs](https://docs.langchain.com/oss/python/langchain/multi-agent/handoffs)
+- LangChain tutorials: [a SQL assistant with on-demand skills](https://docs.langchain.com/oss/python/langchain/multi-agent/skills-sql-assistant) and [a router over a knowledge base](https://docs.langchain.com/oss/python/langchain/multi-agent/router-knowledge-base)
+- LangChain: [human-in-the-loop](https://docs.langchain.com/oss/python/langchain/human-in-the-loop), [interrupts](https://docs.langchain.com/oss/python/langgraph/interrupts), [subgraph persistence](https://docs.langchain.com/oss/python/langgraph/use-subgraphs), [built-in middleware](https://docs.langchain.com/oss/python/langchain/middleware/built-in) and [custom middleware](https://docs.langchain.com/oss/python/langchain/middleware/custom)
 - [Minnesota Statutes 2025](https://www.revisor.mn.gov/statutes/cite/169), Office of the Revisor of Statutes
 - [Caselaw Access Project](https://case.law/) and [Legal Information Institute](https://www.law.cornell.edu/supremecourt/text/), for the court opinions
 - [Agent2Agent Protocol, part 1](/posts/orchestration2/) and [part 2](/posts/orchestration3/), on calling agents you do not control
