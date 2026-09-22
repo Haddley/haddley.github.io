@@ -36,13 +36,13 @@ LangChain's [multi-agent documentation](https://docs.langchain.com/oss/python/la
 
 Two questions tell the designs apart. **Who decides what happens next**, a model or fixed code? And **where does the document text end up**, in one agent's prompt or inside separate specialist agents?
 
-| Design | Who decides what happens next | Where the document text goes | Memory |
+| Design | Who decides what happens next | Where the document text goes | Mem |
 |---|---|---|---|
 | All in one prompt | Nobody. There is one call | All six documents in the one agent's prompt | Yes |
 | [Router](https://docs.langchain.com/oss/python/langchain/multi-agent/router) | Fixed code: classify, then specialists in parallel, then synthesize | Inside each specialist. Only its answer comes back | No |
 | [Subagents](https://docs.langchain.com/oss/python/langchain/multi-agent/subagents) | The supervisor model. It picks the specialist and rewrites the question | Inside each specialist. Only its answer comes back | Yes |
 
-"Memory" means whether the design keeps the conversation between questions. The router does not, and the other two do. All in one prompt is not a LangChain pattern. It is what the patterns exist to avoid.
+"Mem" means whether the design keeps the conversation between questions. The router does not, and the other two do. All in one prompt is not a LangChain pattern. It is what the patterns exist to avoid.
 
 ### One question through each design
 
@@ -123,9 +123,9 @@ A fair test would use the conversation file, `questions_followup.json`, where fo
 
 That flexibility only helps if the supervisor makes good decisions, and on `qwen2.5:14b` it did not always. Two of its three failures were its own choices. It called no specialist on a question that was squarely about reckless driving, and it split a comparison in a way that neither specialist could answer. So I expect subagents to need a better model for the supervisor than the specialists do. The supervisor's prompts are small, about 1,000 tokens, while each specialist reads about 8,000, so a stronger model on the supervisor is the cheaper place to spend on one. That mixed-model design is something the split designs can do and one big prompt cannot.
 
-I then tested it. I gave `gemma4:12b` the supervisor's job and left `qwen2.5:14b` as the specialists, on the same nineteen questions. It helped a little. The supervisor chose the right specialists on 19 of 19 questions instead of 18. It handled the comparison question the qwen supervisor had failed, and it passed 16 of the 18 fact-checked questions instead of 15. But it lost two questions the qwen supervisor had passed, the Google Maps question and the drug-dog question, so the net gain is one question, which one run cannot separate from chance. The cost was clear: the median question took 241 seconds instead of 142, and used 10,033 prompt tokens instead of 8,147. The router gained nothing from the same upgrade, passing 17 of 18 instead of 18. So a stronger supervisor makes subagents somewhat more reliable, but on this task it does not make them better than a router, and it does not change what the tests show: subagents earn their place with conversation and dependent steps, not with single-shot lookups.
+I then tested it. I gave `muse-glimmer`, a model built for tool use and failure recovery, the supervisor's job and left `qwen2.5:14b` as the specialists, on the same nineteen questions. It fixed both of the qwen supervisor's own-choice failures: it called the reckless-driving specialist on the question that was squarely about reckless driving, and it split the DWI-versus-speeding comparison correctly, calling both specialists and combining their answers. It passed all 18 fact-checked questions and chose the right specialists on all 19, matching the router's accuracy while keeping the supervisor's memory, something the router structurally cannot have. The token cost went up, a median of 10,900 prompt tokens instead of 8,147, and one question, a pedestrian struck while texting, cost far more than the rest: the supervisor called three specialists at once, which the question's grading allows, and that alone used 21,656 tokens and 235 seconds. But the median time went down, not up, 52.5 seconds against the qwen supervisor's 142, so a stronger supervisor model is not automatically a slower one. So a stronger supervisor does make subagents more reliable, enough on this task to match the router's own best result, at a real but bounded cost, and mostly in tokens rather than time.
 
-Running that test also exposed a bug in my router. When the classifier chose no area, the graph ended without reaching the synthesize step and the run crashed with `KeyError: 'final_answer'`. I added a plumbing check that reproduced it and fixed `route_to_agents` so that no area sends the question straight to synthesize. The script below has the fix, and the O3 question about Wisconsin now gets the "outside these six areas" answer.
+I also found and fixed a bug in my router. When the classifier chose no area, the graph ended without reaching the synthesize step and the run crashed with `KeyError: 'final_answer'`. I added a plumbing check that reproduced it and fixed `route_to_agents` so that no area sends the question straight to synthesize. The script below has the fix, and the O3 question about Wisconsin now gets the "outside these six areas" answer.
 
 ## What went wrong when I tried skills
 

@@ -52,96 +52,6 @@
       "tags": "rag, ollama, pgvector, fastapi, react, mcp"
     },
     {
-      "slug": "agenticaiforprofessionals13",
-      "title": "Agentic AI for Professionals (Part 13)",
-      "description": "The missing piece needed to actually reproduce this app: the real ingest_pdf() function tying PDF extraction, page-safe chunking, embedding, and a database write into one pipeline, including the real production bug (a publisher's running footer silently sabotaging retrieval) that shaped the extraction code — plus the complete .env.example, docker-compose.yml, requirements.txt, and .mcp.json a developer would need to actually stand this app up from zero",
-      "date": "2026-09-17",
-      "categories": [
-        "AI"
-      ],
-      "tags": "ingestion, pypdf, docker-compose, reproducibility, pipeline"
-    },
-    {
-      "slug": "agenticaiforprofessionals12",
-      "title": "Agentic AI for Professionals (Part 12)",
-      "description": "The drafting UI's client-side half, traced against a genuine live screenshot; how the React frontend is actually hosted in Docker today; a real, illustrative Playwright end-to-end test for this exact question, explained line by line; and a closing recap of the full eight-part arc from a single CREATE EXTENSION statement to a browser tab open on a real page of a real judgment",
-      "date": "2026-09-17",
-      "categories": [
-        "AI"
-      ],
-      "tags": "vite, docker, playwright, e2e-testing, hosting"
-    },
-    {
-      "slug": "agenticaiforprofessionals11",
-      "title": "Agentic AI for Professionals (Part 11)",
-      "description": "The complete, real trace from a 15-citation JSON response landing in the browser to fifteen clickable, page-linked citation links on screen — with genuine, freshly-captured screenshots of the live running app, not illustrations — covering handleAsk, the fetch/Promise layer, renderAnswer's regex-based citation parser, and the split-pane PDF preview",
-      "date": "2026-09-17",
-      "categories": [
-        "AI"
-      ],
-      "tags": "react, typescript, state-management, fetch-api, citations"
-    },
-    {
-      "slug": "agenticaiforprofessionals10",
-      "title": "Agentic AI for Professionals (Part 10)",
-      "description": "The difference between JavaScript and TypeScript, explained plainly; every piece of modern JS/TS syntax that recurs across this app's frontend (arrow functions, destructuring, spread, Promises vs async/await, generics, JSX); and how React components, hooks, and re-rendering actually work under the hood — the foundation for tracing the real UI in Part 11",
-      "date": "2026-09-17",
-      "categories": [
-        "AI"
-      ],
-      "tags": "react, typescript, javascript, jsx, frontend"
-    },
-    {
-      "slug": "agenticaiforprofessionals9",
-      "title": "Agentic AI for Professionals (Part 9)",
-      "description": "The real backend Dockerfile explained line by line, how Docker volumes actually work (traced against this app's real, live volume), a full walk through the 40 real pytest tests this app runs today — captured live from the running container, not described — and what automated coverage genuinely does and does not reach",
-      "date": "2026-09-17",
-      "categories": [
-        "AI"
-      ],
-      "tags": "docker, pytest, testing, devops, hosting"
-    },
-    {
-      "slug": "agenticaiforprofessionals8",
-      "title": "Agentic AI for Professionals (Part 8)",
-      "description": "The full system prompt this app sends to its language model, explained sentence by sentence; the real, live-verified correction that this app's actual configured chat provider is DeepSeek, not Anthropic; all four LLM provider code paths compared with sequence diagrams; a genuine DeepSeek prompt-and-response transcript; and the drafting skill that reuses a grounded answer's citations without a second retrieval pass",
-      "date": "2026-09-17",
-      "categories": [
-        "AI"
-      ],
-      "tags": "llm, system-prompts, deepseek, anthropic, prompt-engineering"
-    },
-    {
-      "slug": "agenticaiforprofessionals7",
-      "title": "Agentic AI for Professionals (Part 7)",
-      "description": "How a question becomes a search over Postgres — the real Ollama embedding call this app makes (with a live, verified 768-number vector), the two-stage retrieval design explained with real cosine-distance numbers computed live against the database, and why the exact same 8 chunks that seeded the real grounded answer also come out of a raw SQL query",
-      "date": "2026-09-17",
-      "categories": [
-        "AI"
-      ],
-      "tags": "rag, embeddings, ollama, pgvector, retrieval"
-    },
-    {
-      "slug": "agenticaiforprofessionals6",
-      "title": "Agentic AI for Professionals (Part 6)",
-      "description": "How FastAPI actually turns a Python function into a web server — the app object, the routing table, when a decorator really runs, dependency injection, and Python classes/objects/inheritance from first principles — traced against the real request that starts nsw-legal-research-assistant's grounded-answer pipeline",
-      "date": "2026-09-17",
-      "categories": [
-        "AI"
-      ],
-      "tags": "fastapi, python, oop, pydantic, backend"
-    },
-    {
-      "slug": "agenticaiforprofessionals5",
-      "title": "Agentic AI for Professionals (Part 5)",
-      "description": "A deep dive into nsw-legal-research-assistant's Postgres and pgvector database layer — why Postgres was chosen over a dedicated vector database, a system administrator's step-by-step Docker build starting from a base Postgres image, and how a Claude Code user could scaffold the same layer with GitHub's Spec Kit",
-      "date": "2026-09-17",
-      "categories": [
-        "AI"
-      ],
-      "tags": "postgres, pgvector, docker, sqlalchemy, spec-kit"
-    },
-    {
       "slug": "distillation2",
       "title": "Distillation (Part 2)",
       "description": "Turning a pretrained base model into a chat model with LoRA on a 64GB Mac Studio, then testing whether a second teacher, DeepSeek, produces a better one than GPT-3.5 did",
@@ -2879,5 +2789,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-09-21T15:19:42.496Z"
+  "generatedAt": "2026-09-22T04:11:18.815Z"
 }
