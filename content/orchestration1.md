@@ -123,7 +123,7 @@ A fair test would use the conversation file, `questions_followup.json`, where fo
 
 That flexibility only helps if the supervisor makes good decisions, and on `qwen2.5:14b` it did not always. Two of its three failures were its own choices. It called no specialist on a question that was squarely about reckless driving, and it split a comparison in a way that neither specialist could answer. So I expect subagents to need a better model for the supervisor than the specialists do. The supervisor's prompts are small, about 1,000 tokens, while each specialist reads about 8,000, so a stronger model on the supervisor is the cheaper place to spend on one. That mixed-model design is something the split designs can do and one big prompt cannot.
 
-I then tested it. I gave `muse-glimmer`, a model built for tool use and failure recovery, the supervisor's job and left `qwen2.5:14b` as the specialists, on the same nineteen questions. It fixed both of the qwen supervisor's own-choice failures: it called the reckless-driving specialist on the question that was squarely about reckless driving, and it split the DWI-versus-speeding comparison correctly, calling both specialists and combining their answers. It passed all 18 fact-checked questions and chose the right specialists on all 19, matching the router's accuracy while keeping the memory a router structurally cannot have.
+I then tested it. I gave `muse-glimmer:30b`, a model built for tool use and failure recovery, the supervisor's job and left `qwen2.5:14b` as the specialists, on the same nineteen questions. This is the default GGUF build; an MLX build, `muse-glimmer:30b-mlx`, is also available for Apple Silicon, and a quick check on four questions showed no consistent winner. It fixed both of the qwen supervisor's own-choice failures: it called the reckless-driving specialist on the question that was squarely about reckless driving, and it split the DWI-versus-speeding comparison correctly, calling both specialists and combining their answers. It passed all 18 fact-checked questions and chose the right specialists on all 19, matching the router's accuracy while keeping the memory a router structurally cannot have.
 
 The cost is real, and it is paid in tokens rather than time. The median question used 10,900 prompt tokens instead of 8,147. One question, a pedestrian struck while texting, cost far more than the rest: the supervisor called three specialists at once, which the question's grading allows, and that alone used 21,656 tokens and 235 seconds. But the median time went down, not up, 52.5 seconds against the qwen supervisor's 142, so a stronger supervisor is not automatically a slower one. So a stronger supervisor does make subagents more reliable, enough on this task to match the router's own best result, at a bounded token cost.
 
@@ -2065,10 +2065,21 @@ Auto policies must include "separate uninsured and underinsured motorist coverag
 
 ## References
 
-- LangChain multi-agent patterns: [overview](https://docs.langchain.com/oss/python/langchain/multi-agent), [subagents](https://docs.langchain.com/oss/python/langchain/multi-agent/subagents), [skills](https://docs.langchain.com/oss/python/langchain/multi-agent/skills), [router](https://docs.langchain.com/oss/python/langchain/multi-agent/router) and [handoffs](https://docs.langchain.com/oss/python/langchain/multi-agent/handoffs)
-- LangChain tutorials: [a SQL assistant with on-demand skills](https://docs.langchain.com/oss/python/langchain/multi-agent/skills-sql-assistant) and [a router over a knowledge base](https://docs.langchain.com/oss/python/langchain/multi-agent/router-knowledge-base)
-- LangChain: [human-in-the-loop](https://docs.langchain.com/oss/python/langchain/human-in-the-loop), [interrupts](https://docs.langchain.com/oss/python/langgraph/interrupts), [subgraph persistence](https://docs.langchain.com/oss/python/langgraph/use-subgraphs), [built-in middleware](https://docs.langchain.com/oss/python/langchain/middleware/built-in) and [custom middleware](https://docs.langchain.com/oss/python/langchain/middleware/custom)
-- [Minnesota Statutes 2025](https://www.revisor.mn.gov/statutes/cite/169), Office of the Revisor of Statutes
-- [Caselaw Access Project](https://case.law/) and [Legal Information Institute](https://www.law.cornell.edu/supremecourt/text/), for the court opinions
-- [Claude Code, part 9](/posts/claudecode9/), a hand-built agentic loop over Ollama tool calls
-- [Agent2Agent Protocol, part 1](/posts/orchestration2/) and [part 2](/posts/orchestration3/), on calling agents you do not control
+- [LangChain: multi-agent overview](https://docs.langchain.com/oss/python/langchain/multi-agent)
+- [LangChain: subagents pattern](https://docs.langchain.com/oss/python/langchain/multi-agent/subagents)
+- [LangChain: skills pattern](https://docs.langchain.com/oss/python/langchain/multi-agent/skills)
+- [LangChain: router pattern](https://docs.langchain.com/oss/python/langchain/multi-agent/router)
+- [LangChain: handoffs pattern](https://docs.langchain.com/oss/python/langchain/multi-agent/handoffs)
+- [LangChain tutorial: a SQL assistant with on-demand skills](https://docs.langchain.com/oss/python/langchain/multi-agent/skills-sql-assistant)
+- [LangChain tutorial: a router over a knowledge base](https://docs.langchain.com/oss/python/langchain/multi-agent/router-knowledge-base)
+- [LangChain: human-in-the-loop](https://docs.langchain.com/oss/python/langchain/human-in-the-loop)
+- [LangChain: interrupts](https://docs.langchain.com/oss/python/langgraph/interrupts)
+- [LangChain: subgraph persistence](https://docs.langchain.com/oss/python/langgraph/use-subgraphs)
+- [LangChain: built-in middleware](https://docs.langchain.com/oss/python/langchain/middleware/built-in)
+- [LangChain: custom middleware](https://docs.langchain.com/oss/python/langchain/middleware/custom)
+- [Minnesota Statutes 2025](https://www.revisor.mn.gov/statutes/cite/169) - Office of the Revisor of Statutes
+- [Caselaw Access Project](https://case.law/) - source for the court opinions
+- [Legal Information Institute](https://www.law.cornell.edu/supremecourt/text/) - source for the court opinions
+- [Claude Code, part 9](/posts/claudecode9/) - a hand-built agentic loop over Ollama tool calls
+- [Agent2Agent Protocol, part 1](/posts/orchestration2/) - on calling agents you do not control
+- [Agent2Agent Protocol, part 2](/posts/orchestration3/) - on calling agents you do not control
