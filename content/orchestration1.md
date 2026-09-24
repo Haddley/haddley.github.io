@@ -1,8 +1,8 @@
 ---
 title: "Agent Orchestration"
 part: 1
-description: "Three ways to build an agent that answers questions from six documents, using the multi-agent patterns LangChain documents, tested on a small local model, with the problems I hit and how I fixed them"
-date: "2026-09-21"
+description: "Comparing three LangChain multi-agent patterns, subagents, skills and handoffs, on eleven conversations that need a clarifying question or a follow-up, plus a reproducible tool-call crash traced to one specific structural cause"
+date: "2026-09-24"
 categories: ["AI"]
 tags: "agent-orchestration, subagents, langchain, ollama, grounding, evaluation"
 image: "/assets/images/orchestration1/hero-orchestration-routing.svg"
@@ -10,368 +10,331 @@ slug: "orchestration1"
 hidden: false
 ---
 
-I wanted to know whether splitting a knowledge job across several specialist agents is worth the trouble. The job is to answer questions from six documents about Minnesota traffic and car law, using a small local model, `qwen2.5:14b`. I tried three designs:
+I wanted to know how to build an agent that answers questions from six documents about Minnesota traffic and car law, where some questions are genuinely ambiguous and the right move is to ask before answering, and where a person often follows up on the answer they get. That is three things to get right: answer well from the right document, recognize when a fact is missing rather than guess, and hold a conversation. Five designs can be built for this, but only four can hold a conversation at all, and the results below are from testing three of those four, on `muse-glimmer`, across eleven conversations built specifically to need a clarifying question or a follow-up:
 
-- **One big prompt.** A single agent with all six documents in its prompt.
-- **A router.** Fixed code classifies each question, sends it to the right specialist agent or agents, and combines their answers. Each specialist is an agent that holds one document, but the routing itself is not an agent.
+- **One big prompt (flat).** A single agent with all six documents in its prompt. Can hold a conversation, but is not part of the eleven-conversation comparison below — included only in the one-conversation example, as a cost baseline.
+- **A router.** Fixed code classifies each question and sends it to the right specialist agent or agents. It keeps no conversation between calls, so it cannot pause to ask or use a previous answer — excluded entirely, for that structural reason, explained further down.
 - **Subagents.** A supervisor agent decides which specialist agent to call, and what to ask it. Each specialist holds one document.
+- **Skills.** A single agent with a `load_skill` tool that pulls one document into its own conversation when it needs it, instead of delegating to a separate agent.
+- **Handoffs.** A single agent whose system prompt and tools change with a state variable: it triages, hands off to a specialist, and that specialist owns the conversation from then on, unless it hands off again.
 
-**Are subagents worth it? On my nineteen questions, not with the same model doing every job.** The router was the most accurate, passing all 18 questions that have a fact check. Subagents and the one big prompt passed 15 each. Subagents and the router used a similar number of prompt tokens at the median, 8,147 and 8,965, so subagents were no more accurate than the simpler router and cost about the same. The one big prompt does not fit this model's window at all. What set the designs apart was how each one failed. The router once sent a question to all six specialists. Subagents once declined a question they should have answered, and could not answer a comparison across two documents. A stronger model on the supervisor alone, specialists unchanged, closes that gap and matches the router's accuracy, at a higher token cost — the test is further down, in "When subagents would earn their place."
+**Skills wins, clearly, not marginally.** Across the eleven conversations (23 turns), skills gets the most turns with the required facts (18/23, against 16/23 for both subagents and handoffs) and the most turns fully passing an independent judge (17/23, against 16/23 for subagents and 14/23 for handoffs), and is by far the cheapest — subagents used more than twice its tokens (681,789 against 306,542) to get a worse result.
 
-Subagents should earn their place when a specialist does heavy work in its own context, when specialists run in parallel, or when a specialist sits behind a boundary you cannot load into one prompt. This task is none of those, and I did not test them.
+**The more interesting split is on asking, and it does not favor skills.** Handoffs asks exactly when it should on 15 of 23 turns, clearly ahead of skills and subagents, which tie at 12 of 23. But the three designs fail in different directions: skills mostly *under*-asks, answering confidently on an opening question that actually needed a fact (9 of its 11 mismatches); subagents mostly *over*-asks, adding a needless clarifying question to almost every follow-up (11 of 11 mismatches); handoffs splits evenly between the two. Under-asking is the worse failure for a task like this — a confident answer missing a fact it needed, with nothing flagging it — so skills' cost and accuracy lead comes with a real, if smaller, risk that subagents and handoffs mostly avoid.
+
+**A crash that pointed to a specific structural cause.** `muse-glimmer` sometimes fails to format a tool call, and it always happened at the same place: a specialist's own `ask_user` call, nested one level inside a supervisor's tool invocation, under subagents. Flat, skills and handoffs all call `ask_user` directly, from their own top-level loop, with no nesting — and across every test in this post, on every conversation, none of them ever crashed. Full details below, including the fix I settled on for subagents.
 
 *This is part 1 of a series on agent orchestration. It is about agents you build yourself, in one process. [Part 2](/posts/orchestration2/) and [part 3](/posts/orchestration3/) are about agents you do not control, called over the Agent2Agent protocol.*
 
-Everything below comes from real runs on 20 and 21 September 2026 on my own laptop. This is a post about agent design, and it is not legal advice. The six documents are general information drawn from the 2025 Minnesota Statutes and from court opinions, and they leave out a great deal.
+Everything below comes from real runs on my own Mac Studio, run on 24 September 2026. This is a post about agent design, not legal advice. The six documents are general information drawn from the 2025 Minnesota Statutes and court opinions, and they leave out a great deal.
 
 ## The task
 
-Six documents on Minnesota traffic and car law, about 25,800 words, written from the statutes and court opinions: speeding, the hands-free phone law, driving while impaired (DWI), reckless driving, lemon law and car sales, and car accidents. Every quotation in them is checked against the source text by a script, which gives every question an answer I can check.
-
-The six documents come to about 37,000 tokens. That number matters, because the model I use, `qwen2.5:14b` running locally in Ollama, has a 32,768-token window.
+Six documents on Minnesota traffic and car law, about 25,800 words: speeding, the hands-free phone law, driving while impaired (DWI), reckless driving, lemon law and car sales, and car accidents. Every quotation in them is checked against the source text by a script, which gives every question an answer I can check. The six documents come to about 37,000 tokens, comfortably inside `muse-glimmer`'s 128,000-token window.
 
 ## The options
 
-LangChain's [multi-agent documentation](https://docs.langchain.com/oss/python/langchain/multi-agent) describes five patterns for an agent that has to draw on several areas of knowledge. I compared two of them, [router](https://docs.langchain.com/oss/python/langchain/multi-agent/router) and [subagents](https://docs.langchain.com/oss/python/langchain/multi-agent/subagents), against the plain baseline they exist to avoid, which is to put everything in one prompt. I built router from LangChain's [knowledge base tutorial](https://docs.langchain.com/oss/python/langchain/multi-agent/router-knowledge-base) and subagents from the subagents page. I also built a third pattern, [skills](https://docs.langchain.com/oss/python/langchain/multi-agent/skills), and set it aside to keep the comparison simple. It is described near the end in "What went wrong when I tried skills". The fifth pattern, handoffs, is not built.
+LangChain's [multi-agent documentation](https://docs.langchain.com/oss/python/langchain/multi-agent) describes five patterns for an agent that draws on several areas of knowledge. I built all five: [router](https://docs.langchain.com/oss/python/langchain/multi-agent/router), [subagents](https://docs.langchain.com/oss/python/langchain/multi-agent/subagents), [skills](https://docs.langchain.com/oss/python/langchain/multi-agent/skills), [handoffs](https://docs.langchain.com/oss/python/langchain/multi-agent/handoffs), and the plain baseline the other four exist to avoid, one agent with everything in its prompt.
 
-Two questions tell the designs apart. **Who decides what happens next**, a model or fixed code? And **where does the document text end up**, in one agent's prompt or inside separate specialist agents?
-
-| Design | Who decides what happens next | Where the document text goes | Mem |
+| Design | Who decides what happens next | Where the document text goes | Holds a conversation |
 |---|---|---|---|
 | All in one prompt | Nobody. There is one call | All six documents in the one agent's prompt | Yes |
 | [Router](https://docs.langchain.com/oss/python/langchain/multi-agent/router) | Fixed code: classify, then specialists in parallel, then synthesize | Inside each specialist. Only its answer comes back | No |
 | [Subagents](https://docs.langchain.com/oss/python/langchain/multi-agent/subagents) | The supervisor model. It picks the specialist and rewrites the question | Inside each specialist. Only its answer comes back | Yes |
+| [Skills](https://docs.langchain.com/oss/python/langchain/multi-agent/skills) | The model itself, with a `load_skill` tool | Into its own conversation. No separate specialist holds it apart | Yes |
+| [Handoffs](https://docs.langchain.com/oss/python/langchain/multi-agent/handoffs) | The model itself, via a `transfer_to_<area>` tool, once — then whichever specialist it became | Into its own conversation, one document at a time, swapped in by middleware | Yes |
 
-"Mem" means whether the design keeps the conversation between questions. The router does not, and the other two do. All in one prompt is not a LangChain pattern. It is what the patterns exist to avoid.
+The two split designs look alike, since specialists hold their own documents in both, but the control flow differs — a router's is fixed in code, subagents' is a model's decision, so it can call one specialist, several, or none. A router keeps no conversation, so a follow-up such as "and what if I was under 21?" has nothing to refer to, which is the reason it cannot take part in the test below at all.
 
-### One question through each design
+## Why the router cannot hold a conversation
 
-The question is "How many repair attempts for the same problem does a new car need before Minnesota presumes it is a lemon?". The counts of model calls are what I measured.
+`ask_user` pauses a run mid-turn and resumes it later with the person's answer, which needs a checkpointer to hold the run's state until a reply comes back. Router has no checkpointer, because it has no concept of an ongoing run at all — every call is classify, fan out, synthesize, return, forget, by design. There is no run left standing a moment later for a reply to resume into, and the same is true of follow-ups generally: nothing about a previous question survives past its own synthesize step. This is the real, structural reason router is confined to single-shot lookups and excluded from the test below — not that it asks or remembers badly, but that both require state it was built without. Subagents, skills and flat all keep a checkpointer and can all pause with `ask_user`.
 
-- **All in one prompt:** the agent reads all six documents in its prompt and answers. One model call.
-- **Router:** a classification call turns the question into a routing decision, `lemon`, plus a targeted sub-question. The lemon specialist, a separate agent that holds only the lemon document, answers it. A synthesis call turns the answer into the final reply. Three model calls.
-- **Subagents:** the supervisor rewrites the question and calls its `ask_lemon_specialist` tool. The lemon specialist answers, and the supervisor restates the answer. Three model calls.
+## Testing clarification and follow-up
 
-The two split designs look alike, because the specialists hold their own documents in both. The difference is the control flow. In a router it is fixed in code. In subagents a model decides it, so it can call one specialist, several, or none. A question that spans two areas simply runs two specialists in parallel in the router, and a router keeps no conversation, so a follow-up such as "and what if I was under 21?" has nothing to refer to.
+A good agent asks when it needs a fact, rather than guessing or explaining every possible branch. I built twelve conversations to test this on subagents, skills and handoffs, on `muse-glimmer`, across all six areas. One of the twelve, a DWI aggravating-factors question, never completed cleanly under subagents on any specialist-model configuration I tried, and is excluded from every comparison below, for all three designs — see "The `ask_user` crash" for why. The other eleven are complete for all three.
 
-```mermaid
-graph LR
-    subgraph Router["Router: fixed code, separate agents"]
-        U2["Question"] --> C2["Classify"]
-        C2 -->|"lemon"| S2["Lemon specialist<br/>holds its own document"]
-        C2 -.->|"more areas run in parallel"| S3["Other specialists"]
-        S2 --> Y2["Synthesize"]
-        S3 -.-> Y2
-        Y2 --> R2["Answer"]
-    end
-```
+**Method.** Each conversation has an opening question, a fact sheet the design's `ask_user` tool can draw an answer from, a reference answer for the judge, and one or more follow-ups. When a design pauses to ask, a separate model plays the user and answers whatever was actually asked, from that fact sheet, saying it does not know if the facts do not cover the question. A second model, `qwq:32b`, independent of every design under test, reads the actual statute and grades the final answer for correctness, completeness and sound reasoning — not just whether a phrase appears. Neither counts toward the design's own token or time totals. Every turn is checked on three axes: did the design ask exactly when it should have (`clarify_ok`); did it call the specialists the question actually needed (`route_ok`); and did the final answer contain the required facts (`facts_ok`), on top of the judge's independent grade.
 
-## Results on `qwen2.5:14b`
+Most of the twelve are gate questions, where the missing fact decides which document or rule applies at all — new or used, held phone or a 911 call, whether anyone was present at the scene — so there is no way to answer usefully without it. A few are branch questions, where the fact only changes a parameter inside an otherwise-settled answer — refused the test or failed it, how badly someone was hurt — and these are the ones where a design tends to explain every branch instead of committing to asking. One is a cross-document gate: whether a 0.06 reading, below the legal limit, means the question belongs to reckless driving rather than DWI at all — the only conversation that tests routing to the right specialist in the first place, not just answer quality once routed.
 
-Nineteen questions from a set of 62, one run each on each design. They cover all six areas and include questions that need two documents, questions about court decisions, and one that is outside the six areas. I picked them from a 24-question subset that I fixed earlier, in two batches, the first after seeing some of the flat agent's results, so do not treat the selection as random. A design "passes" when its answer contains the fact I required, such as "four" for the lemon-law repair rule. That is a blunt check and it does not measure whether an answer is complete.
+## Results: the eleven-conversation test
 
-| Design | Questions run | Passed the fact check | Mean prompt tokens | Median prompt tokens | Largest prompt | Median seconds | Mean model calls |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| All in one prompt | 19 | 15 of 18 | 16,386 | 16,386 | 16,386 | 409 | 1.0 |
-| Router | 19 | 18 of 18 | 9,880 | 8,965 | 8,780 | 93 | 3.4 |
-| Subagents | 19 | 15 of 18 | 8,142 | 8,147 | 8,779 | 142 | 2.9 |
+Eleven of the twelve conversations, 23 turns each, run to completion on all three designs. Subagents and handoffs both run every specialist on `qwen3.8:27b-mlx`, subagents' supervisor and handoffs' triage step on `muse-glimmer`; skills is `muse-glimmer` throughout. The twelfth conversation, N6, is excluded entirely, for all three designs, for comparability — explained in the next section.
 
-| Question | All in one prompt | Router | Subagents |
-|---|---|---|---|
-| L1 (lemon) | pass, 16,386 tok, 372 s | pass, lemon, 8,969 tok, 210 s | pass, lemon, 10,128 tok, 160 s |
-| S1 (speeding) | pass, 16,386 tok, 410 s | pass, speeding, 6,114 tok, 23 s | pass, speeding, 7,271 tok, 127 s |
-| D5 (dwi) | fail, 16,386 tok, 429 s | pass, dwi, 9,319 tok, 46 s | pass, dwi, 10,436 tok, 188 s |
-| A2 (accident) | pass, 16,386 tok, 354 s | pass, accident, 7,025 tok, 197 s | pass, accident, 8,147 tok, 126 s |
-| P1 (phone) | pass, 16,386 tok, 409 s | pass, phone, 4,410 tok, 116 s | pass, phone, 5,582 tok, 124 s |
-| L5 (lemon) | pass, 16,386 tok, 381 s | pass, lemon, 9,197 tok, 100 s | pass, lemon, 10,174 tok, 236 s |
-| D7 (dwi) | pass, 16,386 tok, 403 s | pass, dwi, 9,391 tok, 60 s | fail, dwi, 10,900 tok, 280 s |
-| C6 (reckless) | pass, 16,386 tok, 370 s | pass, reckless, 5,261 tok, 34 s | pass, reckless, 6,394 tok, 142 s |
-| M2 (dwi) | fail, 16,386 tok, 68 s | pass, dwi+speeding, 15,246 tok, 122 s | fail, dwi+speeding, 16,044 tok, 123 s |
-| C3 (dwi) | pass, 16,386 tok, 370 s | pass, phone+accident+reckless+lemon+speeding+dwi, 38,505 tok, 1114 s | pass, dwi, 10,508 tok, 272 s |
-| C4 (dwi) | pass, 16,386 tok, 411 s | pass, dwi, 9,352 tok, 56 s | pass, dwi, 10,520 tok, 80 s |
-| L3 (lemon) | pass, 16,386 tok, 407 s | pass, lemon, 8,965 tok, 51 s | pass, lemon, 10,094 tok, 68 s |
-| F3 (lemon) | pass, 16,386 tok, 411 s | pass, lemon, 9,127 tok, 101 s | pass, lemon, 10,128 tok, 289 s |
-| P2 (phone) | pass, 16,386 tok, 405 s | pass, phone, 4,375 tok, 52 s | pass, phone, 5,524 tok, 206 s |
-| R1 (reckless) | pass, 16,386 tok, 410 s | pass, reckless, 5,467 tok, 125 s | pass, reckless, 6,434 tok, 265 s |
-| C2 (speeding) | pass, 16,386 tok, 672 s | pass, speeding, 6,184 tok, 64 s | pass, speeding, 7,344 tok, 292 s |
-| C7 (speeding) | fail, 16,386 tok, 680 s | pass, speeding, 6,309 tok, 93 s | pass, speeding, 7,337 tok, 89 s |
-| O3 (outside) | answered, 16,386 tok, 641 s | declined, speeding, 6,220 tok, 61 s | declined, none, 777 tok, 13 s |
-| F1 (reckless) | pass, 16,386 tok, 419 s | pass, phone+dwi+reckless, 18,283 tok, 163 s | fail, none, 953 tok, 54 s |
+| Design | Facts required | Judge fully passes | Asked exactly when it should | Correct on opening-question routing | Total tokens, 23 turns | Total seconds, 23 turns |
+|---|---|---|---|---|---|---|
+| Skills | 18/23 | 17/23 | 12/23 | 10/11 | 306,542 | 2,299 |
+| Subagents | 16/23 | 16/23 | 12/23 | 10/11 | 681,789 | 3,785 |
+| Handoffs | 16/23 | 14/23 | 15/23 | 10/11 | 437,251 | 3,292 |
 
-### What the results show
+Skills leads on facts and on the judge, and by a wide margin on cost: less than half what subagents spent, and about 70 percent of handoffs' tokens, for a better result than either. All three miss the identical opening-question route, the cross-document DWI-versus-reckless gate — the one conversation designed to test routing itself, and every design routes it the same way, regardless of specialist model.
 
-- **All in one prompt does not fit.** The six documents are 37,010 tokens. Ollama evaluated 16,386 of them on every question, 44 percent, so the agent answered from a truncated prompt. It passed 15 of 18, and it failed the DWI felony question, the two-document comparison and the laser-evidence question. It also did not decline the out-of-scope question. Asked for the speed limit in Wisconsin, it answered with figures from the Minnesota document. Its median was 409 seconds, because it could not cache the prompt. I do not know which part of the documents it kept. On `gemma4:12b`, whose window is 262,144 tokens, the same design matched the subagents on accuracy across 70 questions, so this is a fact about the model window and not about the design.
-- **Router passed all 18.** It is the only design that passed the two-area question (M2, DWI versus speeding), by classifying it into both areas and combining the answers. Its cost is in its errors, not its typical question. On C3, a question about the right to a lawyer before a breath test, its classifier chose all six areas. That ran six specialists, made eight model calls and used 38,505 prompt tokens over 1,114 seconds, and the answer was still right. On the out-of-scope question it classified the question into speeding, ran that specialist, and then said the document does not cover Wisconsin, at a cost of 6,220 tokens.
-- **Subagents passed 15 of 18.** On D7, the sleeping-in-a-parked-car question, the answer was right in substance, citing *Kozak*, but it did not contain the words "physical control" that my check requires. It also called a Court of Appeals decision a ruling of the Supreme Court. On M2 the supervisor split the question in two, but each specialist sees only its own document, so both said the document does not cover the comparison. On F1, a question about texting while hitting a pedestrian, the supervisor called no specialist and told me the question was outside its scope, although it is squarely about reckless driving. On the out-of-scope question it declined without calling anyone, at a cost of 777 tokens, which was the cheapest correct decline of the three.
-- **Tokens are similar at the median.** The medians were 8,147 for subagents and 8,965 for the router, against a fixed 16,386 for the truncated prompt. The means are 8,142 and 9,880. The subagents mean is low partly because of the two questions it wrongly declined or did not route, which cost under 1,000 tokens each. The router mean is high because of the six-area fan-out. On questions where both routed correctly, the supervisor used about 1,100 more tokens than the router, because it rewrites the question and then restates the answer around the specialist's call.
-- **The seconds are not a ranking.** Ollama caches prompts between questions. The router took 23 seconds on a speeding question that reused a cached prompt and 1,114 on the six-area fan-out.
-- **Passing hides some problems.** The router's answer to M2 mentions demerit points, which the documents do not cover. My check looks for required facts, not for extra claims.
+I left the raw per-turn `route_ok` field out of that table because it is not comparable across designs: it checks whether a turn's specialist or transfer calls match the question's expected areas, which is meaningful every turn for subagents but not for skills or handoffs, where a follow-up in the same area correctly calls nothing at all — the document is already loaded, or the specialist is already active — and the metric still scores that as a miss. That structural artifact, not a real routing gap, is most of the difference between subagents' raw count (21/23) and skills' or handoffs' (10/23 and 12/23).
 
-### What to take from it
+**Asking is where the designs actually diverge, and skills does not come out ahead.** Handoffs asks exactly when it should on 15 of 23 turns; skills and subagents tie at 12. Splitting each design's mismatches into two kinds — missed a needed ask, or asked when it was not needed — shows why the raw scores understate the difference:
 
-- **Check the window first.** If the documents fit in the model's window, one agent holding them is the simplest design. On `qwen2.5:14b` six documents do not fit, and the truncated agent also answered an out-of-scope question from the wrong material.
-- **A small model's routing decisions are the weak point in every design.** The router's classifier and the supervisor's decision to call a specialist each went wrong at least once, and so did the skills agent's choice of document, described below. A larger model would probably do better, and I did not test one.
-- **If questions span areas, use a router,** and cap how many areas it may choose. It was the most accurate here, and it is a graph you can read.
-- **Use subagents for work that needs its own context or boundary,** such as a specialist that runs many searches and returns a short summary, specialists that run in parallel, or an agent you cannot load into one prompt at all. For looking things up in six documents they were no more accurate than the simpler designs.
-- **A single agent that loads a document on demand,** which is LangChain's skills pattern, also works for a question that needs one area. On a small model it needed two guards, described next.
+| Design | Missed a needed ask | Asked when not needed |
+|---|---|---|
+| Skills | 9 | 2 |
+| Subagents | 0 | 11 |
+| Handoffs | 4 | 4 |
 
-## When subagents would earn their place
+Subagents never once fails to ask — it just asks on almost every follow-up regardless of whether the follow-up needed a new fact, eleven separate unnecessary clarifying questions. Skills is the opposite: it almost never over-asks, but it silently answers nine turns that were built to require a fact it never requested, mostly on opening questions rather than follow-ups. Handoffs splits down the middle. Under-asking is the more dangerous failure for a task like this — a confident, unhedged answer missing a fact it needed, with nothing about the output flagging the gap — so skills' lead on facts and cost is real, but it is bought partly with the riskier of the two error types.
 
-So the honest position is that subagents earn their place only when the task needs memory or several dependent steps, and I did not measure either here. A supervisor keeps the conversation, so a follow-up such as "and what if I was under 21?" works. It can also call a specialist, read the result, and then call another one or ask again. A router does one fixed pass, classify then answer, and keeps no conversation. My nineteen questions were single-shot lookups, so the supervisor's extra flexibility was only overhead.
+### One conversation, four designs
 
-A fair test would use the conversation file, `questions_followup.json`, where follow-ups depend on earlier answers, plus a few comparison questions that need two dependent lookups. A router cannot do those, and a good supervisor should.
-
-That flexibility only helps if the supervisor makes good decisions, and on `qwen2.5:14b` it did not always. Two of its three failures were its own choices. It called no specialist on a question that was squarely about reckless driving, and it split a comparison in a way that neither specialist could answer. So I expect subagents to need a better model for the supervisor than the specialists do. The supervisor's prompts are small, about 1,000 tokens, while each specialist reads about 8,000, so a stronger model on the supervisor is the cheaper place to spend on one. That mixed-model design is something the split designs can do and one big prompt cannot.
-
-I then tested it. I gave `muse-glimmer:30b`, a model built for tool use and failure recovery, the supervisor's job and left `qwen2.5:14b` as the specialists, on the same nineteen questions. This is the default GGUF build; an MLX build, `muse-glimmer:30b-mlx`, is also available for Apple Silicon, and a quick check on four questions showed no consistent winner. It fixed both of the qwen supervisor's own-choice failures: it called the reckless-driving specialist on the question that was squarely about reckless driving, and it split the DWI-versus-speeding comparison correctly, calling both specialists and combining their answers. It passed all 18 fact-checked questions and chose the right specialists on all 19, matching the router's accuracy while keeping the memory a router structurally cannot have.
-
-The cost is real, and it is paid in tokens rather than time. The median question used 10,900 prompt tokens instead of 8,147. One question, a pedestrian struck while texting, cost far more than the rest: the supervisor called three specialists at once, which the question's grading allows, and that alone used 21,656 tokens and 235 seconds. But the median time went down, not up, 52.5 seconds against the qwen supervisor's 142, so a stronger supervisor is not automatically a slower one. So a stronger supervisor does make subagents more reliable, enough on this task to match the router's own best result, at a bounded token cost.
-
-I also found and fixed a bug in my router. When the classifier chose no area, the graph ended without reaching the synthesize step and the run crashed with `KeyError: 'final_answer'`. I added a plumbing check that reproduced it and fixed `route_to_agents` so that no area sends the question straight to synthesize. The script below has the fix, and the O3 question about Wisconsin now gets the "outside these six areas" answer.
-
-## What went wrong when I tried skills
-
-I first built four designs. The fourth was LangChain's [skills pattern](https://docs.langchain.com/oss/python/langchain/multi-agent/skills): one agent with a `load_skill` tool that sees a list of the six documents and loads the one it needs into its own conversation. I dropped it from the comparison above because it answers the same question as the router, which document, by a different route, and because it needed two fixes that would have taken over the story. They are worth knowing if you build it on a small model. I fixed each after seeing it fail, so the "after" numbers are not an untouched test. The skills tutorial I followed is [here](https://docs.langchain.com/oss/python/langchain/multi-agent/skills-sql-assistant).
-
-**A repeated tool call.** In one reply `qwen2.5:14b` asked for `load_skill("lemon")` twice, with two different call IDs, so two identical 36,201-character results went into the conversation. LangChain's docs say many models issue several tool calls in one response and that the runtime executes them together. The skills tutorial adds no guard. I wrote a small [custom middleware](https://docs.langchain.com/oss/python/langchain/middleware/custom), `DropDuplicateToolCalls`, that removes exact repeats before they run. The same question then loaded the document once and used 9,429 prompt tokens instead of 17,748, and took 151 seconds instead of 407.
-
-**A second document loaded "just in case".** On three of four questions the skills agent loaded a second skill it did not need: the seat-belt question loaded the DWI document too, the DWI felony question loaded reckless driving, and a phone question loaded the accident document. That doubled the prompt. I first told the agent in its prompt to load one skill, and it made no difference: A2 loaded the same two documents again. LangChain documents [`ToolCallLimitMiddleware`](https://docs.langchain.com/oss/python/langchain/middleware/built-in) for a model that calls a tool too often, and I limited `load_skill` to one call per question.
-
-| Question | Guard against repeats only | Plus a prompt instruction to load one | Plus a limit of one load |
-| --- | --- | --- | --- |
-| A2 | accident+dwi, 16,141 tokens, 408 s | accident+dwi, 16,203 tokens, 508 s | accident, 7,535 tokens, 173 s |
-| D5 | dwi+reckless, 14,445 tokens, 339 s | dwi+reckless, 14,507 tokens, 477 s | dwi, 9,904 tokens, 207 s |
-| P1 | phone+accident, 11,139 tokens, 213 s | not run | phone, 4,936 tokens, 97 s |
-
-With both guards skills passed 16 of the 18 questions with a fact check, at a median of 9,489 prompt tokens over two model calls. The cost is that a question spanning two areas gets only one document, which is why it failed the comparison question. The limit also does not make the agent choose the right skill. On the drug-dog question and on the texting-and-a-pedestrian question it loaded the DWI document instead of the right one, and the drug-dog answer still passed my check. LangChain points multi-domain questions at the router and subagents patterns, and my results agree.
-
-## Asking the user a question
-
-A good agent asks when it needs a fact. I tested this on `gemma4:12b` with conversations that start with a vague question, such as "My car keeps breaking down. Can I get my money back?", and a simulated user who answers only if asked. This ran before I rebuilt the designs above, so it used my earlier version of the skills idea, a route-then-load agent that is in the repository history.
-
-LangChain's documentation has one mechanism for this. A placeholder tool named `ask_user`, [`HumanInTheLoopMiddleware`](https://docs.langchain.com/oss/python/langchain/human-in-the-loop) to pause at it, a checkpointer on the top-level agent, and a `respond` decision to resume, as described on the human-in-the-loop page and in the [interrupts](https://docs.langchain.com/oss/python/langgraph/interrupts) guide. The [subagents page](https://docs.langchain.com/oss/python/langchain/multi-agent/subagents) says a subagent can use interrupts to gather user input, and [subgraph persistence](https://docs.langchain.com/oss/python/langgraph/use-subgraphs) explains why the specialists inherit the parent's checkpointer. I used exactly that.
-
-The all-in-one agent and the route-then-load agent asked "was the car new or used?". The supervisor's specialist did not. The supervisor had rewritten the vague question into a general one that covered both cases before the specialist saw it, so the specialist had nothing to ask. Passing the user's own words to the specialist, which LangChain calls [forking the input](https://docs.langchain.com/oss/python/langchain/multi-agent/subagents), did not change that in my one test. I did not rerun these conversations on `qwen2.5:14b`.
-
-## Feedback for LangChain
-
-1. The docs have no worked example of a subagent asking a clarifying question. The `respond` decision and the `ask_user` name appear only on the [human-in-the-loop page](https://docs.langchain.com/oss/python/langchain/human-in-the-loop), and the [subagents page](https://docs.langchain.com/oss/python/langchain/multi-agent/subagents) points to interrupts.
-2. The supervisor decides what a subagent can ask about. A helpful rewrite hides the gap.
-3. The [skills tutorial](https://docs.langchain.com/oss/python/langchain/multi-agent/skills-sql-assistant) has no guard against a model repeating a tool call, or loading skills it does not need. On a small model both happen, and [`ToolCallLimitMiddleware`](https://docs.langchain.com/oss/python/langchain/middleware/built-in) cannot tell a repeat from a second skill that is really needed.
-4. `get_state` with subgraphs cannot see subagents called inside tools, as the [subagents page](https://docs.langchain.com/oss/python/langchain/multi-agent/subagents) says.
-5. A checkpointer on the top-level agent is required, which is easy to miss when you start with a stateless single-turn agent.
-
-## Limits of these tests
-
-Nineteen questions on `qwen2.5:14b`, one run each, checked by string matching. I wrote the questions, and the documents are mine. The skills fixes were made after I saw them fail, and skills is not in the comparison. The DWI document was extended after the earlier `gemma4:12b` runs, so those figures describe the earlier version. The conversation tests are two conversations on one model. The mixed-model test is one run of each design on the same nineteen questions.
-
-## The code
-
-### The tool loop behind subagents
-
-Subagents is the one compared design whose control flow is a tool loop. [`create_agent`](https://docs.langchain.com/oss/python/langchain/agents) runs a loop. The model replies, and if the reply contains tool calls, LangChain runs those tools, adds their results to the conversation and calls the model again. The loop ends on a reply with no tool calls. I built the same loop by hand, without LangChain, in [Claude Code part 9](/posts/claudecode9/), where it is called the agentic loop and drawn step by step. In subagents, the supervisor's tools are the specialists. Calling a specialist is a tool call, so the supervisor model decides which specialist to call, how many, and in what words, and the loop hands the specialist's answer back to it.
-
-Four pieces of the script make this work. They are copied from it unchanged, with `# ...` where I left lines out and a numbered comment above each.
-
-```python
-# 1. A specialist is an agent that holds one document and has no tools of its own
-agent = create_agent(llm(300), tools=[ask_user] if ask else [], system_prompt=system, name=area,
-                     middleware=ASK_MIDDLEWARE if ask else [])
-
-# 2. It is wrapped as a tool. The description is what the supervisor reads to decide when to call it
-@tool(f"ask_{area}_specialist", description=about)
-def ask_specialist(question: str, runtime: ToolRuntime) -> str:
-    """Ask this specialist a complete, self-contained question."""
-    # ...
-    return run_agent(agent, f"{area} specialist", question, depth=1)
-
-# 3. The supervisor is an agent whose tools are the six specialist tools
-return create_agent(llm(400, model=CONTROLLER_MODEL), tools=[specialist(a, memory) for a in AREAS], system_prompt=SUPERVISOR_SYSTEM,
-                    name="supervisor", middleware=[DropDuplicateToolCalls()], **saver)
-
-# 4. The loop runs inside agent.stream. Each update is a model reply or a tool result, which is how the trace prints
-for update in agent.stream(payload, config=config, stream_mode="updates"):
-    # ...
-                for call in m.tool_calls:
-                    print(f"{pad}[{name}] calls {call['name']}({json.dumps(call['args'])[:300]})")
-            # ...
-            elif m.type == "tool":
-                print(f"{pad}[{name}] <- {m.name}: {len(m.content):,} characters")
-```
-
-The loop for the lemon question, which is the three model calls I measured:
+The clearest example is the phone-while-checking-a-map question, where the document's answer turns entirely on a fact never stated: whether the phone was held.
 
 ```mermaid
 sequenceDiagram
-    participant S as Supervisor (create_agent loop)
-    participant T as ask_lemon_specialist (a tool)
-    participant L as Lemon specialist (its own agent, no tools)
-    S->>S: model call 1 replies with a tool call
-    S->>T: ask_lemon_specialist(question)
-    T->>L: run_agent(agent, question)
-    L->>L: model call 2 reads the lemon document and answers
-    L-->>T: answer text
-    T-->>S: tool result
-    S->>S: model call 3 restates the answer, no tool call, loop ends
+    participant U as User
+    participant S as Skills agent
+    participant Doc as phone.md
+    participant Sim as Simulated user
+
+    U->>S: "I got a ticket for using my phone,<br/>but I was just checking the map.<br/>Is that even illegal?"
+    S->>Doc: load_skill("phone")
+    Doc-->>S: full document text
+    S->>Sim: ask_user: "Were you holding the phone,<br/>or was it mounted?"
+    Sim-->>S: "Holding it in one hand,<br/>not mounted"
+    S-->>U: "Yes, prohibited under subd. 2(a)(1)..."
+    U->>S: "Does it matter that I was<br/>fully stopped and not moving?"
+    S-->>U: "No — still 'part of traffic'<br/>under subd. 1(d)"
 ```
 
-Subagents is not the only design that uses tools, but it is the only one of the three compared designs that uses them in the single-turn tests, and the only one where tools are the way to reach the specialists.
+Handoffs, on the same conversation — triage transfers once, on turn 1, and the phone specialist it becomes stays in charge for the follow-up with no second transfer:
 
-| Design | Tools | What the model decides |
-|---|---|---|
-| All in one prompt | None in the single-turn tests | Nothing, there is one call |
-| Router | None. The specialists are `create_agent(..., tools=[])` and the flow is a `StateGraph` written in code | Nothing about the flow, code fixes it |
-| Subagents | One per specialist, `ask_<area>_specialist` | Which specialists to call, and what to ask them |
-| Skills (sidebar) | `load_skill` | Which document to load |
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant H as Handoffs agent
+    participant Sim as Simulated user
 
-In the conversation tests every design that keeps a conversation also gets an `ask_user` tool, so it can pause and ask the user a question.
+    U->>H: "I got a ticket for using my phone,<br/>but I was just checking the map.<br/>Is that even illegal?"
+    H->>H: transfer_to_phone()<br/>(triage hands off; active_agent = phone)
+    H->>Sim: ask_user: "Were you holding the phone,<br/>or was it mounted?"
+    Sim-->>H: "Holding it in one hand,<br/>not mounted"
+    H-->>U: "Yes, prohibited under subd. 2(a)(1)..."
+    U->>H: "Does it matter that I was<br/>fully stopped and not moving?"
+    Note over H: active_agent is still phone —<br/>no transfer_to call, triage skipped
+    H-->>U: "Yes — still 'part of traffic'<br/>under subd. 1(d)"
+```
 
-### The whole script
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant Sup as Supervisor
+    participant Spec as Phone specialist
+    participant Sim as Simulated user
 
-**`traffic_law_agents.py`** is below without the skills design, which I set aside above. The repository version also has it, under `--skills`, along with the two guards described in "What went wrong when I tried skills".
+    U->>Sup: "I got a ticket for using my phone,<br/>but I was just checking the map.<br/>Is that even illegal?"
+    Sup->>Spec: ask_phone_specialist(<br/>"Is checking a map illegal?")
+    Spec->>Sim: ask_user: "Is the phone held<br/>or mounted?"
+    Sim-->>Spec: "Holding it in one hand,<br/>not mounted"
+    Spec-->>Sup: "Prohibited under subd. 2(a)(1)..."
+    Sup-->>U: "Yes, prohibited..."
+    U->>Sup: "Does it matter that I was<br/>fully stopped and not moving?"
+    Sup->>Spec: ask_phone_specialist(<br/>"Does stopped matter?")
+    Spec-->>Sup: "Still part of traffic..."
+    Sup-->>U: "Yes, it can matter — still applies"
+```
+
+Skills:
+```
+=== turn 1: I got a ticket for using my phone, but I was just checking the map. Is that
+  even illegal?
+[skills] calls load_skill({"skill_name": "phone"})
+[skills] calls ask_user({"question": "Were you holding the phone in one or both hands while
+  you were checking the map, or was it mounted or otherwise not held?"})
+[user] I was holding the phone in one hand while checking the map, and it was not mounted
+  on the dashboard or windshield.
+
+--- answer ---
+Yes. Under Minn. Stat. § 169.475, subd. 2(a)(1), when a motor vehicle is in motion or a part
+of traffic, the operator is prohibited from "holding a wireless communications device with
+one or both hands." Holding the phone in one hand while driving is prohibited even if you
+were only checking a map.
+
+=== follow-up: "Does it matter that I was fully stopped and not moving?"
+--- answer ---
+Yes. [it does not help] Under Minn. Stat. § 169.475, subd. 1(d), a vehicle is "in motion or
+a part of traffic" unless it is lawfully stopped, is in a location that is not designed or
+ordinarily used for vehicular travel, and is not obstructing traffic.
+```
+
+Handoffs — one transfer on turn 1, and no transfer call at all on the follow-up, since `active_agent` was already `phone`:
+```
+=== turn 1: I got a ticket for using my phone, but I was just checking the map. Is that
+  even illegal?
+[handoffs] calls transfer_to_phone({})
+[handoffs] <- transfer_to_phone: 36 characters
+[handoffs] calls ask_user({"question": "Were you holding the phone in your hand while you
+  were checking the map, or was it mounted or otherwise not held?"})
+[user] I was holding the phone in my hand while checking the map, it was not mounted anywhere.
+
+--- answer ---
+Yes. Under Minn. Stat. § 169.475, subd. 2(a)(1), when a motor vehicle is in motion or a part
+of traffic, the person operating the vehicle is prohibited from "holding a wireless
+communications device with one or both hands." Checking a map is also covered by the use
+prohibitions in subd. 2(a)(2). The navigation exception in subd. 3(a)(2) allows viewing or
+operating a GPS or navigation system without typing while the vehicle is in motion, "provided
+that the person does not hold the device with one or both hands." Because you were holding
+the phone in your hand while checking the map, the hands-free/navigation exception does not
+apply.
+
+=== follow-up: "Does it matter that I was fully stopped and not moving?"
+--- answer ---
+Yes. Under § 169.475, subd. 1(d), a vehicle "is not in motion or a part of traffic if the
+vehicle is lawfully stopped, is in a location that is not designed or ordinarily used for
+vehicular travel, and is not obstructing traffic." A vehicle stopped at a stop sign, at a
+traffic light or in a traffic jam is still part of traffic. So being fully stopped at a red
+light with the engine on is still "in motion or a part of traffic," and the prohibitions in
+subd. 2(a) apply.
+```
+
+Subagents — it was the specialist that called `ask_user`, not the supervisor, which only relayed the question upward:
+```
+=== turn 1: I got a ticket for using my phone, but I was just checking the map. Is that
+  even illegal?
+[supervisor] calls ask_phone_specialist({"question": "Is using a phone to check a map while
+  driving illegal under Minnesota hands-free law? ..."})
+    [phone specialist] calls ask_user({"question": "Is the phone being held in your hand
+      while driving, or is it mounted/hands-free and not being held?"})
+[user] The phone was not mounted; the driver was holding it in one hand while checking the
+  maps app at a stop sign.
+--- answer ---
+Yes. Under § 169.475, subd. 2(a)(1) a driver is prohibited from "holding a wireless
+communications device with one or both hands" ... Holding the phone at a stop sign is
+therefore prohibited.
+
+=== follow-up: "Does it matter that I was fully stopped and not moving?"
+--- answer ---
+Yes. [it does not help] "In motion or part of traffic" ... a vehicle "is not in motion or a
+part of traffic if the vehicle is lawfully stopped ... and is not obstructing traffic" ...
+```
+
+Flat, where every interrupt replays the entire document prompt:
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant F as Flat agent (all 6 docs)
+    participant Sim as Simulated user
+
+    U->>F: "I got a ticket for using my phone,<br/>but I was just checking the map.<br/>Is that even illegal?"
+    F->>Sim: ask_user: "Holding, or mounted?"
+    Sim-->>F: "Holding it in one hand,<br/>not mounted"
+    Note over F: ~35,000-token prompt<br/>replayed for the interrupt
+    F-->>U: "Yes, prohibited under subd. 2(a)(1)..."
+    U->>F: "Does it matter that I was<br/>fully stopped and not moving?"
+    F->>Sim: ask_user: "Stopped in traffic,<br/>or parked off-road?"
+    Sim-->>F: "Stopped at a stop sign,<br/>fully stopped"
+    Note over F: prompt replayed again
+    F-->>U: "Yes, it can matter — still applies"
+```
+
+```
+=== turn 1: I got a ticket for using my phone, but I was just checking the map. Is that
+  even illegal?
+[flat] calls ask_user({"question": "Were you holding the phone in one or both hands while
+  checking the map, or was it mounted and used hands-free without typing?"})
+[user] I was holding the phone in one hand while checking the map, it was not mounted on
+  the dashboard or windshield.
+
+--- answer ---
+Holding a phone while driving is prohibited in Minnesota when the vehicle is in motion or
+part of traffic. Section 169.475, subd. 2(a)(1) prohibits ... "holding a wireless
+communications device with one or both hands." ... Because you were holding the phone in
+one hand while checking the map, the hands-free/no-hold condition for the navigation
+exception is not met.
+
+=== follow-up: "Does it matter that I was fully stopped and not moving?"
+[flat] calls ask_user({"question": "Were you stopped at a red light or stop sign in
+  traffic, or were you parked off the roadway and not obstructing traffic?"})
+[user] I was stopped at a stop sign with the vehicle fully stopped.
+
+--- answer ---
+Yes, it can matter. [explains the "part of traffic" definition] ... Being fully stopped at
+a stop sign in traffic is therefore still "in motion or a part of traffic" ... so the
+holding prohibition can still apply.
+```
+Flat asked again on the follow-up even though that was not expected, and each `ask_user` interrupt replays the entire ~35,000-token document prompt: its two turns cost 107,280 and 108,209 prompt tokens — seven to seventeen times what skills (14,593 / 4,829), subagents (14,875 / 7,750) or handoffs (14,664 / 4,809) paid for the identical conversation. Handoffs and skills land within a few hundred tokens of each other here; subagents' extra cost on this particular conversation is smaller than its 23-turn total suggests, and shows up more on conversations needing more than one specialist.
+
+## The `ask_user` crash, and why one conversation is excluded
+
+Across this whole test, `muse-glimmer` sometimes fails to format a tool call, and Ollama returns a 500 error: `parse Glimmer call to ask_user: missing ATEM function_calls wrapper`. Every time it happened, it was the same specific shape of call: a specialist's *own* `ask_user` call, made from inside its own tool loop, itself nested one level inside the supervisor's tool invocation of that specialist, under subagents. Two conversations, N1 and N8, crashed 3 times out of 3 with a pure `muse-glimmer` deployment (supervisor and specialists both) — near-deterministic, at temperature 0. A third, N6, crashed on retry too. Every `load_skill` call, every `ask_<area>_specialist` call, and every *top-level* `ask_user` call — flat's, skills', and handoffs' — worked every time, across every conversation in this whole post, on both `muse-glimmer` builds. Nesting looks like the actual trigger, not the model's general handling of `ask_user`.
+
+The fix I settled on keeps `muse-glimmer` as the supervisor and runs every specialist on `qwen3.8:27b-mlx` instead of just the two crash-prone ones. Run uniformly across all eleven conversations, it crashed zero times, and it fixed a subtler problem along the way: on N8, the supervisor calls two specialists, `dwi` and `reckless`, and the uniform run correctly combines both answers into the final synthesis rather than dropping one, which an earlier, narrower version of this same swap had done. Handoffs, run across the same eleven conversations with `muse-glimmer` throughout (triage and every specialist), also crashed zero times — consistent with the nesting hypothesis, since a handoffs specialist calls `ask_user` directly from the one top-level loop, never from inside another agent's tool call.
+
+N6 is still the exception, and it is still excluded: on the one earlier retry I ran under the specialist swap, it crashed with a different error entirely — `XML syntax error on line 7: element <parameter> closed by </function>` — on the supervisor's own call to `ask_dwi_specialist`, a call that is not nested at all, which does not fit the pattern above. I have not retried N6 under the uniform-specialist config or under handoffs; it remains excluded from every comparison in this post rather than folded back in on an untested assumption. The honest takeaway is to expect this class of bug specifically where one agent's tool loop calls `ask_user` from inside another agent's tool call, budget for retries there, and treat a single specialist model throughout as more reliable than mixing models across a nested call.
+
+## Feedback for LangChain
+
+1. The docs have no worked example of a subagent asking a clarifying question — `ask_user` and the `respond` decision appear only on the [human-in-the-loop page](https://docs.langchain.com/oss/python/langchain/human-in-the-loop).
+2. Passing the user's own words to a specialist, which LangChain calls [forking the input](https://docs.langchain.com/oss/python/langchain/multi-agent/subagents), does not by itself make the specialist ask when the supervisor has already rewritten a vague question into something general enough to answer without asking.
+3. `get_state` with subgraphs cannot see subagents called inside tools, as the [subagents page](https://docs.langchain.com/oss/python/langchain/multi-agent/subagents) says.
+4. A checkpointer on the top-level agent is required for `ask_user` to work at all, easy to miss when starting from a stateless single-turn agent.
+5. A tool call an agent makes from inside another agent's own tool call is not just an ordinary reliability risk with extra steps: across this project, one local model family's `ask_user` formatting crash only ever happened at exactly that nesting depth, on subagents, and never once on a top-level `ask_user` call, across flat, skills or handoffs. Nothing in the human-in-the-loop or subagents docs flags nested tool calls as a distinct reliability risk from top-level ones.
+6. Handoffs' single transfer per hop is a real single point of failure the docs do not call out: once a specialist takes over, nothing else is watching the conversation, so a mis-route at triage, or a specialist that cannot answer and does not recognize it should hand off elsewhere, has no fallback. On N8 here, triage handed off to the wrong specialist, and that specialist answered "the document does not cover that" on the follow-up rather than transferring to the one that could.
+
+## Limits of this test
+
+I wrote the eleven conversations and the six documents. The judge model is a step up from a keyword check, but it is itself one model's opinion, not ground truth; I found and fixed one case where it hallucinated a full grade for an answer it had never seen. The simulated user answering from a fact sheet is also just another model, with its own chance of misreading what was asked. The headline comparison drops one of the twelve conversations (N6) entirely, because subagents could not complete it cleanly under any specialist-model configuration I tried, and I did not retest it under the configurations used for the final numbers here; skills, for what it is worth, ran N6 without any trouble, so its exclusion is conservative rather than flattering to any of the three designs. Skills runs `muse-glimmer` throughout; subagents and handoffs both run `muse-glimmer` for the supervisor or triage step and `qwen3.8:27b-mlx` for every specialist, a configuration forced by the crash rather than chosen for comparability — worth weighing before treating the three-way comparison as a uniform-model test.
+
+## The code
+
+Skills won this test, so it is the only design whose code I am including in full. [`create_agent`](https://docs.langchain.com/oss/python/langchain/agents) runs a loop: the model replies, and if the reply contains tool calls, LangChain runs them, adds their results to the conversation, and calls the model again, until a reply has no tool calls left. I built the same loop by hand, without LangChain, in [Claude Code part 9](/posts/claudecode9/), where it is called the agentic loop and drawn step by step. For skills, that one tool is `load_skill`, and in a conversation it also gets `ask_user`.
+
+Five pieces of the real script make this work. They are copied from it unchanged, with `# ...` where I left lines out.
 
 ```python
-import argparse
-import json
-import operator
-import os
-import re
-import sys
-import time
-from pathlib import Path
-from typing import Annotated, Callable, Literal, TypedDict
-
-from langchain.agents import create_agent
-from langchain.agents.middleware import (AgentMiddleware, HumanInTheLoopMiddleware, ModelRequest, ModelResponse)
-from langchain.tools import ToolRuntime, tool
-from langchain_ollama import ChatOllama
-from langchain_core.callbacks import BaseCallbackHandler
-from langgraph.checkpoint.memory import InMemorySaver
-from langgraph.graph import END, START, StateGraph
-from langgraph.types import Command, Send
-from pydantic import BaseModel, Field
-
-MODEL = os.environ.get("MODEL", "gemma4:12b")
-CONTROLLER_MODEL = os.environ.get("CONTROLLER_MODEL", MODEL)  # the model for the supervisor and the router's classify and synthesize steps
-SPECIALIST_CTX = int(os.environ.get("SPECIALIST_CTX", "16384"))
-FLAT_CTX = int(os.environ.get("FLAT_CTX", "49152"))
-FORK_INPUT = os.environ.get("FORK_INPUT", "0") == "1"  # let a specialist see the user's own words, not only the supervisor's question
-HERE = Path(__file__).parent
-DISCLAIMER = "This is general information, not legal advice."
-
-AREAS = {
-    "speeding": ("speeding.md", "Speed limits and speeding tickets: statutory limits, school zones, work zones, passing, "
-                                "driving over 100 mph, the penalties for ordinary speeding, how speed is proved with "
-                                "radar or laser, and the law on traffic stops."),
-    "phone": ("mobile-phone.md", "The hands-free law: holding or using a phone or similar device while driving, "
-                                 "including navigation, maps, music and other apps, what is allowed hands-free, the "
-                                 "penalties, and searches of phones."),
-    "dwi": ("dwi.md", "Driving while impaired (DWI, also called DUI): alcohol and drug offenses, alcohol concentration "
-                      "limits, test refusal, blood and breath testing, the four degrees, aggravating factors, license "
-                      "revocation, open bottle law and physical control, and the court decisions on them."),
-    "reckless": ("reckless-driving.md", "Reckless driving, street racing, careless driving and criminal vehicular "
-                                        "homicide or operation: what they are, their penalties, and the court "
-                                        "decisions on gross negligence."),
-    "lemon": ("lemon-law.md", "Buying a car: the Minnesota lemon law for new cars, the dealer warranty for used cars, "
-                              "refunds, as-is sales, fraud, damage and title disclosures, and the court decisions on "
-                              "them."),
-    "accident": ("car-accidents.md", "After a car accident: what a driver must do, hit and run, fault and comparative "
-                                     "fault, seat belt evidence, no-fault insurance benefits, the tort threshold, and "
-                                     "the court decisions on them."),
-}
-DOCS = {area: (HERE / "knowledge" / file).read_text() for area, (file, _) in AREAS.items()}
-
-# In a conversation, agents also get an ask_user tool and this sentence. The single-turn prompts do not have it.
-ASK_USER = ("If the answer depends on a fact the user has not given, and the document says that fact matters, for "
-            "example whether a car is new or used, call the ask_user tool with one short question instead of guessing. ")
-
-SPECIALIST_SYSTEM = (
-    "You are the Minnesota {area} specialist. Answer using ONLY the document below. Cite statute sections and "
-    "subdivisions as they appear in it. If the document does not answer the question, say \"The document does not "
-    "cover that.\" and stop. Do not guess and do not use outside knowledge. @ASK@Answer in English in under 150 words.\n\n"
-    "DOCUMENT:\n{doc}")
-
-SUPERVISOR_SYSTEM = (
-    "You route questions about Minnesota traffic law to specialists. You have no legal knowledge of your own, so never "
-    "answer from memory. Each specialist covers one area and sees only the question you send it. Rewrite the user's "
-    "question as a clear, complete, neutral question before you send it: remove chit-chat, names, guesses and typos, "
-    "but keep every legal detail. Call a specialist for each area the question touches. When a question touches two "
-    "or more areas, split it and send each specialist a separate question about only its own part, because a "
-    "specialist can answer only from its own document. "
-    "If no area fits, for example parking tickets, stop signs, vehicle registration, license renewal, other states or "
-    "non-legal questions, do not call any specialist. Say the question is outside these six areas of Minnesota "
-    "traffic and car law. When specialists "
-    "answer, reply using only what they returned, without adding facts. If a specialist says its document does not "
-    "cover something, say so. Always answer in English, and end with: " + DISCLAIMER)
-
-FLAT_INSTRUCTIONS = (
-    "You answer questions about six areas of Minnesota traffic and car law using ONLY the six documents below. Cite statute "
-    "sections and subdivisions as they appear. If the question is outside these documents, or the documents do not "
-    "answer it, say so and do not answer from outside knowledge. @ASK@Answer in English in under 150 words, and end with: "
-    + DISCLAIMER + "\n\n")
-
-CLASSIFY_SYSTEM = (
-    "Analyze this question and decide which areas of Minnesota traffic and car law to consult. For each relevant area, "
-    "write a targeted, complete sub-question for that area. Return ONLY the areas that are relevant, and return none if "
-    "no area fits, for example parking tickets, stop signs, vehicle registration, license renewal, other states or "
-    "non-legal questions.\n\nAvailable areas:\n{catalogue}")
-
-SYNTHESIZE_SYSTEM = (
-    "Synthesize the specialists' answers to this question: \"{query}\"\n\nUse only what the specialists returned, "
-    "without adding facts. Combine them without repeating yourself, and say so if a specialist reported that its "
-    "document does not cover something. Always answer in English, and end with: " + DISCLAIMER)
+# 1. The document for a skill is loaded into the agent's own conversation on request, nothing more
+@tool
+def load_skill(skill_name: str) -> str:
+    """Load the full document for one skill, using a skill name from the system prompt."""
+    if skill_name not in DOCS:
+        return f"There is no skill called {skill_name}. The skills are: {', '.join(AREAS)}."
+    return f"Loaded skill: {skill_name}\n\n{DOCS[skill_name]}"
 
 
-FORK_NOTE = ("You may be given the user's own words as well as the supervisor's cleaned-up question. Answer the "
-             "supervisor's question, but if the user's words leave out a fact you need, ask for it. ")
+# 2. Middleware lists the skills and their descriptions in the system prompt, and registers the tool
+class SkillMiddleware(AgentMiddleware):
+    tools = [load_skill]
+
+    def __init__(self):
+        self.skills_prompt = "\n".join(f"- **{area}**: {about}" for area, (_, about) in AREAS.items())
+
+    def wrap_model_call(self, request: ModelRequest, handler: Callable[[ModelRequest], ModelResponse]) -> ModelResponse:
+        addendum = (f"\n\n## Available Skills\n\n{self.skills_prompt}\n\n"
+                    "Use the load_skill tool when you need detailed information about handling a specific type of request.")
+        content = list(request.system_message.content_blocks) + [{"type": "text", "text": addendum}]
+        return handler(request.override(system_message=SystemMessage(content=content)))
 
 
-def with_ask(text: str, ask: bool, extra: str = "") -> str:
-    return text.replace("@ASK@", ASK_USER + extra if ask else "")
-
-
-def flat_system(ask: bool) -> str:
-    return with_ask(FLAT_INSTRUCTIONS, ask) + "\n\n".join(f"DOCUMENT: {a}\n{d}" for a, d in DOCS.items())
-
-
+# 3. ask_user is a placeholder; LangChain's human-in-the-loop middleware pauses before it runs, and the
+# person's reply becomes the tool's result — the documented pattern for "ask user" style tools
 @tool
 def ask_user(question: str) -> str:
     """Ask the user one short question when the answer depends on a fact they have not given."""
     return "The user has not answered."  # never runs: the middleware below pauses first and the reply replaces it
 
-
-# LangChain's human-in-the-loop middleware pauses before ask_user runs. The person's reply comes back as a "respond"
-# decision, which becomes the tool's result. This is the documented pattern for "ask user" style tools.
 ASK_MIDDLEWARE = [HumanInTheLoopMiddleware(interrupt_on={"ask_user": {"allowed_decisions": ["respond"]}})]
 
 
-NOT_ENGLISH = re.compile(r"[^\x00-\u024f\u2010-\u203a]")  # anything outside Latin letters and general punctuation
-
-NUMBER = re.compile(r"\$?\d[\d,]*(?:\.\d+)?")
-
-RUNS: list[dict] = []
-
-
-def llm(max_output_tokens: int, num_ctx: int = SPECIALIST_CTX, model: str | None = None) -> ChatOllama:
-    model = model or MODEL
-    thinking_off = os.environ.get("NO_THINK") != "0" if "NO_THINK" in os.environ else model.startswith("gemma")
-    extra = {"reasoning": False} if thinking_off else {}  # gemma spends its output on hidden reasoning unless told not to
-    if os.environ.get("OLLAMA_BASE_URL"):
-        extra["base_url"] = os.environ["OLLAMA_BASE_URL"]
-    return ChatOllama(model=model, temperature=0, num_ctx=num_ctx, num_predict=max_output_tokens, **extra)
+# 4. Building the skills agent: a checkpointer so it can pause mid-turn, load_skill always available, ask_user
+# only in a conversation
+def build(mode: str, memory: bool = False):
+    ask = {"tools": [ask_user], "middleware": ASK_MIDDLEWARE} if memory else {"tools": [], "middleware": []}
+    # ...
+    if mode == "skills":  # the docs' skills agent always has a checkpointer, so every question runs on its own thread
+        return create_agent(llm(800, SKILLS_CTX), system_prompt=with_ask(SKILLS_SYSTEM, memory), name="skills",
+                            tools=ask["tools"], middleware=[SkillMiddleware()] + ask["middleware"],
+                            checkpointer=InMemorySaver())
 
 
-ASKED: list[str] = []
-
-
-def run_agent(agent, name: str, question: str, depth: int = 0, config: dict | None = None, reply=None) -> str:
-    """Stream one agent invocation, print a trace, record its statistics, return its final message.
-    A top-level agent that has the ask_user tool pauses with an interrupt. Passing reply, a function from the agent's
-    question to the user's answer, resumes it with a "respond" decision. A specialist called from a tool leaves its
-    interrupts to the caller."""
-    pad = "    " * depth
-    stats = {"agent": name, "model_calls": 0, "input_tokens": []}
-    RUNS.append(stats)
+# 5. The loop itself: stream the agent, and if it interrupts to ask, resume it with the reply
+def run_agent(agent, name: str, question: str, config: dict | None = None, reply=None) -> str:
     final = ""
     payload = {"messages": [{"role": "user", "content": question}]}
     while True:
@@ -380,17 +343,7 @@ def run_agent(agent, name: str, question: str, depth: int = 0, config: dict | No
             if "__interrupt__" in update:
                 pending = list(update["__interrupt__"])
                 continue
-            for node in update.values():
-                for m in (node or {}).get("messages", []):
-                    if m.type == "ai":
-                        stats["model_calls"] += 1
-                        stats["input_tokens"].append((m.usage_metadata or {}).get("input_tokens", 0))
-                        for call in m.tool_calls:
-                            print(f"{pad}[{name}] calls {call['name']}({json.dumps(call['args'])[:300]})")
-                        if not m.tool_calls:
-                            final = m.content
-                    elif m.type == "tool":
-                        print(f"{pad}[{name}] <- {m.name}: {len(m.content):,} characters")
+            # ... records each model reply and tool result for the trace and the token counts
         if not pending or reply is None:
             return final
         answers = {}
@@ -398,714 +351,254 @@ def run_agent(agent, name: str, question: str, depth: int = 0, config: dict | No
             decisions = []
             for request in item.value["action_requests"]:
                 asked = request["args"]["question"]
-                ASKED.append(asked)
                 decisions.append({"type": "respond", "message": reply(asked)})
-                print(f"{pad}[{name}] asks the user: {asked}\n{pad}[user] {decisions[-1]['message']}")
             answers[item.id] = {"decisions": decisions}
         payload = Command(resume=next(iter(answers.values())) if len(answers) == 1 else answers)
-
-
-def specialist(area: str, ask: bool = False):
-    file, about = AREAS[area]
-    fork = ask and FORK_INPUT
-    system = with_ask(SPECIALIST_SYSTEM, ask, FORK_NOTE if fork else "").format(area=area, doc=DOCS[area])
-    agent = create_agent(llm(300), tools=[ask_user] if ask else [], system_prompt=system, name=area,
-                         middleware=ASK_MIDDLEWARE if ask else [])
-
-    @tool(f"ask_{area}_specialist", description=about)
-    def ask_specialist(question: str, runtime: ToolRuntime) -> str:
-        """Ask this specialist a complete, self-contained question."""
-        if fork:
-            # LangChain's "subagent inputs": build the subagent's input from the parent's state, here the user's messages
-            said = [m.content for m in runtime.state["messages"] if m.type == "human"][-3:]
-            question = ("The user wrote, oldest first:\n" + "\n".join(f"- {text}" for text in said)
-                        + f"\n\nThe supervisor's version of the question:\n{question}")
-        return run_agent(agent, f"{area} specialist", question, depth=1)
-
-    return ask_specialist
-
-
-class DropDuplicateToolCalls(AgentMiddleware):
-    """Some models repeat the same tool call in one reply, and the runtime runs every copy. qwen2.5:14b did it, and a
-    repeated call to a specialist runs that specialist twice. This removes exact repeats before they run."""
-
-    def wrap_model_call(self, request: ModelRequest, handler: Callable[[ModelRequest], ModelResponse]) -> ModelResponse:
-        response = handler(request)
-        for message in response.result:
-            calls = getattr(message, "tool_calls", None)
-            if calls:
-                unique = {(c["name"], json.dumps(c["args"], sort_keys=True)): c for c in reversed(calls)}
-                message.tool_calls = list(reversed(list(unique.values())))
-        return response
-
-
-# ---------------------------------------------------------------- router pattern
-# LangChain's router pattern (docs: multi-agent/router and the knowledge base tutorial): a StateGraph that classifies the
-# question, fans out to the chosen agents in parallel with Send, and synthesizes their answers. It keeps no conversation.
-
-class AgentInput(TypedDict):
-    query: str
-
-
-class Classification(TypedDict):
-    source: Literal["speeding", "phone", "dwi", "reckless", "lemon", "accident"]
-    query: str
-
-
-class RouterState(TypedDict):
-    query: str
-    classifications: list[Classification]
-    results: Annotated[list[dict], operator.add]  # the reducer collects the parallel results
-    final_answer: str
-
-
-class ClassificationResult(BaseModel):
-    """Which areas to consult, each with a targeted sub-question."""
-    classifications: list[Classification] = Field(description="Areas to consult, with a sub-question for each")
-
-
-class UsageLog(BaseCallbackHandler):
-    """Record the prompt size of every model call in the graph, and which node made it."""
-
-    def __init__(self):
-        self.nodes: dict = {}
-        self.calls: list[tuple[str, int]] = []
-
-    def on_chat_model_start(self, serialized, messages, *, run_id, metadata=None, **kwargs):
-        namespace = (metadata or {}).get("langgraph_checkpoint_ns", "")
-        self.nodes[run_id] = namespace.split("|")[0].split(":")[0]
-
-    def on_llm_end(self, response, *, run_id, **kwargs):
-        message = response.generations[0][0].message
-        self.calls.append((self.nodes.get(run_id, ""), (message.usage_metadata or {}).get("input_tokens", 0)))
-
-
-def build_router():
-    catalogue = "\n".join(f"- {area}: {about}" for area, (_, about) in AREAS.items())
-
-    def classify_query(state: RouterState) -> dict:
-        structured = llm(200, model=CONTROLLER_MODEL).with_structured_output(ClassificationResult)
-        result = structured.invoke([("system", CLASSIFY_SYSTEM.format(catalogue=catalogue)), ("user", state["query"])])
-        return {"classifications": result.classifications if result else []}  # an unparsable reply counts as no area
-
-    def route_to_agents(state: RouterState) -> list[Send] | list[str]:
-        # with no area chosen nothing would run, and the graph would end without an answer, so go straight to synthesize
-        return [Send(c["source"], {"query": c["query"]}) for c in state["classifications"]] or ["synthesize"]
-
-    def specialist_node(area: str):
-        agent = create_agent(llm(300), tools=[], system_prompt=with_ask(SPECIALIST_SYSTEM, False).format(area=area, doc=DOCS[area]))
-
-        def node(state: AgentInput) -> dict:
-            result = agent.invoke({"messages": [{"role": "user", "content": state["query"]}]})
-            return {"results": [{"source": area, "result": result["messages"][-1].content}]}
-
-        return node
-
-    def synthesize_results(state: RouterState) -> dict:
-        if not state["results"]:
-            return {"final_answer": f"I am sorry, but the question is outside these six areas of Minnesota traffic and car law. {DISCLAIMER}"}
-        formatted = "\n\n".join(f"**From {r['source']}:**\n{r['result']}" for r in state["results"])
-        reply = llm(400, model=CONTROLLER_MODEL).invoke([("system", SYNTHESIZE_SYSTEM.format(query=state["query"])), ("user", formatted)])
-        return {"final_answer": reply.content}
-
-    graph = StateGraph(RouterState).add_node("classify", classify_query).add_node("synthesize", synthesize_results)
-    for area in AREAS:
-        graph.add_node(area, specialist_node(area))
-        graph.add_edge(area, "synthesize")
-    graph.add_edge(START, "classify")
-    graph.add_conditional_edges("classify", route_to_agents, [*AREAS, "synthesize"])
-    graph.add_edge("synthesize", END)
-    return graph.compile()
-
-
-def run_router(router, question: str) -> str:
-    log = UsageLog()
-    state = router.invoke({"query": question}, config={"callbacks": [log]})
-    top = [tokens for node, tokens in log.calls if node in ("classify", "synthesize")]
-    RUNS.append({"agent": "router", "model_calls": len(top), "input_tokens": top})
-    for area in dict.fromkeys(node for node, _ in log.calls if node in AREAS):
-        tokens = [t for node, t in log.calls if node == area]
-        RUNS.append({"agent": f"{area} specialist", "model_calls": len(tokens), "input_tokens": tokens})
-        print(f"    [router] {area}: {len(tokens)} model calls")
-    print(f"[router] classified into: {[c['source'] for c in state['classifications']] or 'none'}")
-    return state["final_answer"]
-
-
-MODES = ("supervisor", "flat", "router")
-
-
-def build(mode: str, memory: bool = False):
-    """The agent for a design. With memory the agent keeps a conversation, and it can pause to ask the user a question."""
-    saver = {"checkpointer": InMemorySaver()} if memory else {}
-    ask = {"tools": [ask_user], "middleware": ASK_MIDDLEWARE} if memory else {"tools": [], "middleware": []}
-    if mode == "flat":
-        return create_agent(llm(400, FLAT_CTX), system_prompt=flat_system(memory), name="flat", **ask, **saver)
-    if mode == "router":
-        return build_router()
-    return create_agent(llm(400, model=CONTROLLER_MODEL), tools=[specialist(a, memory) for a in AREAS], system_prompt=SUPERVISOR_SYSTEM,
-                        name="supervisor", middleware=[DropDuplicateToolCalls()], **saver)
-
-
-def context_for(mode: str) -> int:
-    return {"flat": FLAT_CTX}.get(mode, SPECIALIST_CTX)
-
-
-def score(result: dict, item: dict) -> None:
-    """Add the checks for one answer: the facts it must contain, the specialists it should have reached, and whether it
-    asked the user a question when it should (or should not) have."""
-    answer = result["answer"].lower()
-    result["facts_ok"] = all(any(alt.lower() in answer for alt in group) for group in item["must_include"])
-    result["route_ok"] = set(result["specialists_called"]) in [set(s) for s in item["expected"]]
-    result["clarify_ok"] = result["clarified"] == item.get("clarify", False)
-
-
-def ensure_english(answer: str, num_ctx: int) -> tuple[str, int]:
-    """This model sometimes drifts into another language. If it did, ask for the same answer in English."""
-    if not NOT_ENGLISH.search(answer):
-        return answer, 0
-    reply = llm(400, num_ctx).invoke("Rewrite the following answer in English. Keep every citation and number exactly as "
-                            "written.\n\n" + answer)
-    return reply.content, (reply.usage_metadata or {}).get("input_tokens", 0)
-
-
-def ask_once(agent, name: str, question: str, num_ctx: int = SPECIALIST_CTX, thread: str | None = None,
-             reply=None) -> dict:
-    RUNS.clear()
-    ASKED.clear()
-    started = time.time()
-    if name == "router":
-        answer = run_router(agent, question)
-    else:
-        answer = run_agent(agent, name, question, config={"configurable": {"thread_id": thread}} if thread else None,
-                           reply=reply)
-    answer, guard_tokens = ensure_english(answer, num_ctx)
-    seconds = time.time() - started
-    tokens = [t for r in RUNS for t in r["input_tokens"]] + ([guard_tokens] if guard_tokens else [])
-    return {"answer": answer, "seconds": round(seconds, 1), "model_calls": len(tokens), "language_guard": bool(guard_tokens),
-            "total_prompt_tokens": sum(tokens), "peak_prompt_tokens": max(tokens, default=0),
-            "top_level_prompt_tokens": max(RUNS[0]["input_tokens"], default=0),
-            "specialists_called": list(dict.fromkeys(r["agent"].split()[0] for r in RUNS[1:])),
-            "asked": list(ASKED), "clarified": bool(ASKED)}
-
-
-# ---------------------------------------------------------------- evaluation
-
-def numbers(text: str) -> set[str]:
-    return {n.replace("$", "").replace(",", "").rstrip(".") for n in NUMBER.findall(text)}
-
-
-def ungrounded_numbers(answer: str, question: str, areas: list[str]) -> list[str]:
-    """Numbers in an answer that appear in neither the question nor the documents the answer could draw on."""
-    allowed = numbers(question) | numbers(" ".join(DOCS[a] for a in (areas or list(DOCS))))
-    return sorted(numbers(answer) - allowed - {""})
-
-
-def evaluate(mode: str, ids: list[str] | None, questions_file: str, tag: str) -> None:
-    questions = json.loads((HERE / questions_file).read_text())
-    if ids:
-        questions = [q for q in questions if q["id"] in ids]
-    # Group questions by their first expected area so consecutive questions reuse the same server-side prompt cache.
-    questions.sort(key=lambda q: (q["expected"][0][0] if q["expected"][0] else "~", q["id"]))
-    out = HERE / "results" / f"{tag}-{mode}.jsonl"
-    out.parent.mkdir(exist_ok=True)
-    done = {json.loads(line)["id"] for line in out.read_text().splitlines()} if out.exists() else set()
-    agent = build(mode)
-    for item in questions:
-        if item["id"] in done:
-            continue
-        print(f"\n=== {item['id']} ({item['category']}): {item['question']}")
-        result = ask_once(agent, mode, item["question"], context_for(mode))
-        score(result, item)
-        if mode == "flat":
-            del result["route_ok"]  # a flat agent has no routing to check
-        result.update({"id": item["id"], "category": item["category"], "question": item["question"]})
-        print(f"--- answer ({result['seconds']}s, {result['total_prompt_tokens']:,} prompt tokens in "
-              f"{result['model_calls']} calls)\n{result['answer']}")
-        with out.open("a") as f:
-            f.write(json.dumps(result) + "\n")
-
-
-def converse(mode: str, conversations_file: str, ids: list[str] | None, tag: str) -> None:
-    """Multi-turn test. Each conversation is a first question followed by follow-ups that often do not name their area.
-    A turn may carry reply_if_asked, the facts the simulated user gives if the agent pauses to ask a question."""
-    if mode == "router":
-        raise SystemExit("LangChain's router keeps no conversation, so it is not run on the conversations")
-    conversations = json.loads((HERE / conversations_file).read_text())
-    if ids:
-        conversations = [c for c in conversations if c["id"] in ids]
-    out = HERE / "results" / f"{tag}-{mode}.jsonl"
-    out.parent.mkdir(exist_ok=True)
-    done = {(r["conversation"], r["turn"]) for r in map(json.loads, out.read_text().splitlines())} if out.exists() else set()
-    for conv in conversations:
-        finished = [(conv["id"], n) in done for n in range(1, len(conv["turns"]) + 1)]
-        if all(finished):
-            continue
-        if any(finished):  # a resumed run cannot rebuild an agent's memory, so a conversation restarts from its first turn
-            raise SystemExit(f"{conv['id']} is partly recorded in {out}; delete the file to rerun")
-        agent = build(mode, memory=True)
-        for number, turn in enumerate(conv["turns"], 1):
-            print(f"\n=== {conv['id']} turn {number}: {turn['question']}")
-            reply = lambda asked, t=turn: t.get("reply_if_asked", "I do not have any more details.")
-            result = ask_once(agent, mode, turn["question"], context_for(mode), thread=conv["id"], reply=reply)
-            score(result, turn)
-            result.update({"conversation": conv["id"], "turn": number, "question": turn["question"]})
-            print(f"--- answer ({result['seconds']}s, {result['total_prompt_tokens']:,} prompt tokens, top-level prompt "
-                  f"{result['top_level_prompt_tokens']:,})\n{result['answer']}")
-            with out.open("a") as f:
-                f.write(json.dumps(result) + "\n")
-
-
-def summarize(tags: list[str]) -> None:
-    questions = {q["id"]: q for f in sorted(HERE.glob("questions*.json")) for q in json.loads(f.read_text())}
-    for tag, name in [(t, n) for t in tags for n in MODES]:
-        path = HERE / "results" / f"{tag}-{name}.jsonl"
-        if not path.exists():
-            continue
-        rows = [json.loads(line) for line in path.read_text().splitlines()]
-        print(f"\n--- {tag} {name}: {len(rows)} questions ---")
-        print(f"{'category':<9}{'n':>4}{'route ok':>10}{'facts ok':>10}{'avg total tokens':>18}{'avg top prompt':>16}{'avg seconds':>13}")
-        for cat in ("single", "multi", "noisy", "outside", "all"):
-            sel = [r for r in rows if cat == "all" or r["category"] == cat]
-            if not sel:
-                continue
-            facts = [r for r in sel if questions[r["id"]]["must_include"]]
-            route = f"{sum(r['route_ok'] for r in sel)}/{len(sel)}" if name != "flat" else "n/a"
-            print(f"{cat:<9}{len(sel):>4}{route:>10}{sum(r['facts_ok'] for r in facts):>6}/{len(facts):<3}"
-                  f"{sum(r['total_prompt_tokens'] for r in sel) / len(sel):>18,.0f}"
-                  f"{sum(r['top_level_prompt_tokens'] for r in sel) / len(sel):>16,.0f}"
-                  f"{sum(r['seconds'] for r in sel) / len(sel):>13.1f}")
-        flagged = {}
-        for r in rows:
-            bad = ungrounded_numbers(r["answer"], r["question"], r.get("specialists_called", []) if name != "flat" else [])
-            if bad:
-                flagged[r["id"]] = bad
-        print(f"  answers with a number that is in neither the question nor the documents used: {len(flagged)}"
-              + (f" {flagged}" if flagged else ""))
-        guarded = sum(r.get("language_guard", False) for r in rows)
-        if guarded:
-            print(f"  language guard rewrote {guarded} answer(s) into English")
-        if name != "flat":
-            for r in rows:
-                if not r["route_ok"]:
-                    print(f"  routed wrong: {r['id']} called {r['specialists_called'] or 'nothing'}, expected {questions[r['id']]['expected']}")
-
-
-def summarize_conversations(tags: list[str]) -> None:
-    """One line per turn of each multi-turn run: whether the agent asked the user, and how big its prompts were."""
-    for tag, name in [(t, n) for t in tags for n in MODES]:
-        path = HERE / "results" / f"{tag}-{name}.jsonl"
-        if not path.exists():
-            continue
-        rows = [json.loads(line) for line in path.read_text().splitlines()]
-        print(f"\n--- {tag} {name}: {len(rows)} turns ---")
-        print(f"{'turn':<8}{'asked':>6}{'ask ok':>8}{'facts':>7}{'route':>7}{'seconds':>9}{'total tokens':>14}{'top prompt':>12}")
-        for r in rows:
-            print(f"{r['conversation']}.{r['turn']:<5}{'yes' if r['clarified'] else 'no':>6}{'yes' if r['clarify_ok'] else 'NO':>8}"
-                  f"{'yes' if r['facts_ok'] else 'NO':>7}{'n/a' if name == 'flat' else 'yes' if r['route_ok'] else 'NO':>7}{r['seconds']:>9.0f}"
-                  f"{r['total_prompt_tokens']:>14,}{r['top_level_prompt_tokens']:>12,}")
-
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("question", nargs="?")
-    parser.add_argument("--flat", action="store_true", help="one agent holding all six documents")
-    parser.add_argument("--router", action="store_true", help="classify, fan out to specialists in parallel, synthesize")
-    parser.add_argument("--eval", action="store_true", help="run the labelled question set")
-    parser.add_argument("--ids", help="comma-separated question or conversation ids for --eval")
-    parser.add_argument("--summary", action="store_true", help="summarize the results of each --tag")
-    parser.add_argument("--conversations", help="conversation file: run it with --eval, or summarize with --summary")
-    parser.add_argument("--questions", default="questions_scale.json", help="question set file for --eval")
-    parser.add_argument("--tag", action="append", help="name for a run's result files; repeat it with --summary")
-    args = parser.parse_args()
-    mode = "flat" if args.flat else "router" if args.router else "supervisor"
-    tag = (args.tag or ["run"])[0]
-    ids = args.ids.split(",") if args.ids else None
-    if args.summary and args.conversations:
-        summarize_conversations(args.tag or ["run"])
-    elif args.summary:
-        summarize(args.tag or ["run"])
-    elif args.eval and args.conversations:
-        converse(mode, args.conversations, ids, tag)
-    elif args.eval:
-        evaluate(mode, ids, args.questions, tag)
-    elif args.question:
-        result = ask_once(build(mode), mode, args.question, context_for(mode))
-        print(f"\n--- answer ---\n{result['answer']}\n\n--- {result['seconds']}s, {result['total_prompt_tokens']:,} prompt "
-              f"tokens in {result['model_calls']} model calls; largest single prompt {result['peak_prompt_tokens']:,} ---")
-    else:
-        sys.exit('usage: python traffic_law_agents.py [--flat | --router] "question" | --eval [--flat | --router] '
-                 '[--tag T] [--questions F | --conversations F] | --summary [--conversations F] --tag T')
 ```
-
-**`tools/check_plumbing.py`** checks that the LangChain wiring in the script works, without a real model. It uses scripted fake models that return canned replies, so it runs in a couple of seconds and costs nothing. The real tests take minutes to hours, so I ran this after every change to how the agents are built. It checks two things:
-
-- **Subagents asking the user a question.** A supervisor calls a specialist, the specialist pauses at the `ask_user` tool through the human-in-the-loop middleware, the test plays the user and answers, and the specialist finishes with that answer.
-- **The router.** A scripted classifier picks one specialist, and the graph runs it and synthesizes the answer. A second test has the classifier pick nothing, and the graph must still answer, which it did not before the fix described above.
-
-
-
-```python
-"""Check the LangChain plumbing without a real model. Scripted fake models stand in for Ollama.
-
-1. Subagents: a supervisor calls a specialist, the specialist pauses at ask_user through LangChain's human-in-the-loop
-   middleware, the harness answers, and the specialist finishes.
-2. Router: a StateGraph classifies, fans out to a specialist with Send, and synthesizes.
-
-Usage: python tools/check_plumbing.py   (set FORK_INPUT=1 to check the forked specialist input as well)
-"""
-import sys
-from pathlib import Path
-
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-
-from langchain_core.language_models.chat_models import BaseChatModel
-from langchain_core.messages import AIMessage
-from langchain_core.outputs import ChatGeneration, ChatResult
-from langchain_core.runnables import RunnableLambda
-
-import traffic_law_agents as t
-
-
-class Scripted(BaseChatModel):
-    script: list = []
-    seen: list = []
-
-    @property
-    def _llm_type(self) -> str:
-        return "scripted"
-
-    def bind_tools(self, tools, **kwargs):
-        return self
-
-    def _generate(self, messages, stop=None, run_manager=None, **kwargs):
-        self.seen.append([(m.type, str(m.content)[:120]) for m in messages if m.type != "system"])
-        return ChatResult(generations=[ChatGeneration(message=self.script.pop(0))])
-
-
-def call(name, args, id):
-    return AIMessage(content="", tool_calls=[{"name": name, "args": args, "id": id}])
-
-
-# 1. subagents with a clarifying question
-supervisor = Scripted(script=[call("ask_lemon_specialist", {"question": "Can I get my money back?"}, "c1"),
-                              AIMessage(content="Under the lemon law the refund needs four repair attempts.")], seen=[])
-specialist = Scripted(script=[call("ask_user", {"question": "Is the car new or used?"}, "c2"),
-                              AIMessage(content="New car: four or more repairs of the same problem.")], seen=[])
-t.llm = lambda max_tokens, num_ctx=0, model=None: supervisor if max_tokens == 400 else specialist
-asked = []
-result = t.ask_once(t.build("supervisor", memory=True), "supervisor", "Can I get my money back?", thread="check",
-                    reply=lambda question: asked.append(question) or "It was new.")
-assert asked == ["Is the car new or used?"] and result["asked"] == asked and result["clarified"], asked
-assert result["specialists_called"] == ["lemon"] and "four" in result["answer"], result
-if t.FORK_INPUT:
-    first = specialist.seen[0][0][1]
-    assert first.startswith("The user wrote") and "Can I get my money back?" in first, first
-print("ok 1: the specialist's question reached the harness, and the reply reached the supervisor")
-
-# 2. router
-class Classifier:
-    def __init__(self, classifications):
-        self.classifications = classifications
-
-    def with_structured_output(self, schema):
-        return RunnableLambda(lambda _: schema(classifications=self.classifications))
-
-routed = Scripted(script=[AIMessage(content="Four repairs.")], seen=[])
-synth = Scripted(script=[AIMessage(content="Four repairs. This is general information, not legal advice.")], seen=[])
-t.llm = lambda max_tokens, num_ctx=0, model=None: {200: Classifier([{"source": "lemon", "query": "How many repairs make a lemon?"}]), 300: routed, 400: synth}[max_tokens]
-result = t.ask_once(t.build("router"), "router", "How many repairs make a lemon?")
-assert result["specialists_called"] == ["lemon"] and "Four repairs" in result["answer"], result
-print("ok 2: the router classified, fanned out to the lemon specialist with Send, and synthesized")
-
-# 2b. router, a question outside the six areas: the classifier picks nothing, and the graph must still answer
-t.llm = lambda max_tokens, num_ctx=0, model=None: {200: Classifier([]), 300: routed}[max_tokens]
-result = t.ask_once(t.build("router"), "router", "What is the speed limit in Wisconsin?")
-assert result["specialists_called"] == [] and "outside" in result["answer"], result
-print("ok 2b: with no area chosen, the router still reached synthesize and said the question is outside the six areas")
-```
-
-Everything is in https://github.com/Haddley/mn-traffic-law-agents: the six documents and their sources, the questions, the designs in one script, and every result. `tools/validate_quotes.py` checks each quotation against the sources. Run it with `uv run --python 3.12 --with-requirements requirements.txt traffic_law_agents.py "your question"`, plus `--flat` or `--router`, or `--skills` in the repository version, and set `MODEL=qwen2.5:14b NO_THINK=0` for this post's model.
 
 ## The test data
 
-The nineteen questions I ran, with the facts each answer had to contain. A semicolon separates groups that must all appear, and a slash separates alternatives within a group.
-
-- **L1** How many repair attempts for the same problem does a new car need before Minnesota presumes it is a lemon? Areas: lemon. Required: four/4.
-- **S1** What is the speed limit in an urban district in Minnesota when nothing is posted? Areas: speeding. Required: 30.
-- **D5** What makes a DWI a felony in Minnesota? Areas: dwi. Required: three; ten years/10 years.
-- **A2** In a lawsuit after a crash, can the other side use the fact that I was not wearing a seat belt to reduce my damages? Areas: accident. Required: not admissible/inadmissible/cannot/may not/not allowed.
-- **P1** Can I use Google Maps for directions while I'm driving? Areas: phone. Required: navigation/gps; hold.
-- **L5** The used car dealer sold my car 'as is' but lied about its condition. Does the as-is clause protect the dealer? Areas: lemon. Required: fraud.
-- **D7** Can I be charged with DWI while sleeping in my parked car? Areas: dwi. Required: physical control.
-- **C6** What did the Minnesota Supreme Court say gross negligence means for a driver? Areas: reckless. Required: very great negligence/scant care.
-- **M2** How does the law treat a DWI differently from a speeding ticket? Areas: dwi + speeding. Required: petty misdemeanor; crime/misdemeanor.
-- **C3** Do I get to talk to a lawyer before I decide whether to take the breath test? Areas: dwi. Required: limited right/right to counsel/right to consult.
-- **C4** Can I be prosecuted for refusing a warrantless blood test? Areas: dwi. Required: cannot/not; blood.
-- **L3** When a manufacturer has to refund a lemon, how much can it deduct for my use of the car? Areas: lemon. Required: ten cents/10 cents; ten percent/10 percent.
-- **F3** My new car had the same transmission problem repaired four times by the dealer. Who owes me a refund? Areas: lemon. Required: manufacturer.
-- **P2** Can I read a text message on my phone screen while driving if I'm using hands-free mode? Areas: phone. Required: read; not/cannot/prohibit/illegal.
-- **R1** What counts as reckless driving in Minnesota? Areas: reckless. Required: consciously.
-- **C2** Can an officer hold me after finishing a speeding ticket so a drug dog can sniff my car? Areas: speeding. Required: reasonable suspicion.
-- **C7** What does the state have to show before a laser speed reading can be used against me? Areas: speeding. Required: external/tested.
-- **O3** What is the speed limit in Wisconsin? Areas: none. Required: none, the question is outside the six areas.
-- **F1** I hit a pedestrian while texting and they died. What crimes could I face? Areas: reckless or reckless + accident or phone + reckless or phone + reckless + accident or accident or phone + accident. Required: ten years/10 years.
-
-The conversation file, `questions_followup.json`:
+The eleven-conversation clarification set, `questions_clarify12.json` (N6 is excluded from the results above; its record is included here for completeness), with the fact sheet a separate model uses to answer whatever is actually asked, and the reference answer the judge model sees for comparison alongside the real source document:
 
 ```json
 [
- {
-  "id": "K1",
-  "turns": [
-   {
-    "question": "What is the speed limit in an urban district in Minnesota when nothing is posted? Do you need any additional details from me?",
-    "expected": [
-     [
-      "speeding"
-     ]
-    ],
-    "must_include": [
-     [
-      "30"
-     ]
+  {
+    "id": "N1",
+    "facts": "The driver refused the breath test at the scene and was arrested. They have no qualified prior impaired driving incidents within the past 20 years -- this is their first DWI-related stop. No one was hurt and there was no accident. They are 34 years old. They have not yet spoken to a lawyer.",
+    "turns": [
+      {
+        "question": "I got pulled over and they think I'm impaired. What happens to my license?",
+        "expected": [["dwi"]],
+        "must_include": [["one year"]],
+        "clarify": true,
+        "suggested_answer": "Under Minn. Stat. § 169A.52, subd. 3, a test refusal leads to license revocation of at least one year if you have no qualified prior impaired driving incidents within the past 20 years. This is a civil license consequence imposed by the commissioner, separate from any criminal DWI charge, and it can start before any conviction."
+      },
+      {
+        "question": "What if this isn't my first offense?",
+        "expected": [["dwi"]],
+        "must_include": [["ignition interlock"]],
+        "suggested_answer": "With one or more qualified prior impaired driving incidents within the past 20 years, § 171.178, subd. 3 replaces the fixed one-year period: revocation instead lasts until the commissioner determines you have used an ignition interlock device in compliance with § 171.306 for the required period."
+      },
+      {
+        "question": "Can I get a limited license to drive to work during the revocation?",
+        "expected": [["dwi"]],
+        "must_include": [["does not cover"]],
+        "suggested_answer": "This document does not cover ignition interlock program details, limited licenses, or how to reinstate a license, so that question can't be answered from what's here."
+      }
     ]
-   },
-   {
-    "question": "What about in an alley?",
-    "expected": [
-     [
-      "speeding"
-     ]
-    ],
-    "must_include": [
-     [
-      "10",
-      "ten"
-     ]
+  },
+  {
+    "id": "N2",
+    "facts": "The driver was racing another car on a public street. A pedestrian was hurt, breaking a leg; doctors say the injury is not life-threatening, not permanent, and will heal fully with no lasting disfigurement or loss of function. No one died. No alcohol or drugs were involved. The driver has no prior reckless or careless driving convictions.",
+    "turns": [
+      {
+        "question": "I was street racing and someone got hurt. What am I looking at?",
+        "expected": [["reckless"]],
+        "must_include": [["misdemeanor"]],
+        "clarify": true,
+        "suggested_answer": "Racing is reckless driving under Minn. Stat. § 169.13, subd. 1(b), regardless of speed. Because the injury here is not life-threatening or permanent, this is a misdemeanor under subd. 1(c) rather than a gross misdemeanor, which requires great bodily harm or death."
+      },
+      {
+        "question": "Does it matter that I wasn't actually racing, just driving fast alongside another car?",
+        "expected": [["reckless"]],
+        "must_include": [["racing"]],
+        "suggested_answer": "It may not help. Subd. 1(b) defines racing broadly as willfully comparing or contesting relative speeds by operating one or more vehicles, so driving fast alongside another car in a way that contests speed could still count as racing. Even if it does not, the conduct could still be reckless driving under subd. 1(a) if it showed conscious disregard of a substantial and unjustifiable risk."
+      }
     ]
-   },
-   {
-    "question": "And if I was 25 mph over the limit there, would I pay anything extra?",
-    "expected": [
-     [
-      "speeding"
-     ]
-    ],
-    "must_include": [
-     [
-      "surcharge"
-     ]
+  },
+  {
+    "id": "N3",
+    "facts": "The vehicle is used, bought from a licensed dealer, with about 50,000 miles on it at the time of purchase. It was not bought new and not bought from a private seller. The dealer's own service department diagnosed the same transmission problem each of the three times. The dealer gave a written warranty at the time of sale. The buyer has not yet contacted the manufacturer or used any arbitration or dispute-resolution program.",
+    "turns": [
+      {
+        "question": "My car has been in the shop three times for the same issue. Do I qualify for a refund?",
+        "expected": [["lemon"]],
+        "must_include": [["dealer"], ["325F.662"]],
+        "clarify": true,
+        "suggested_answer": "As a used vehicle bought from a dealer, this falls under the used-vehicle warranty in Minn. Stat. § 325F.662, not the new-car lemon law. On a covered malfunction, the dealer must repair or replace the part, or, at the dealer's election, accept return of the vehicle and refund the purchase price."
+      },
+      {
+        "question": "The dealer says the warranty already expired last month -- does that matter?",
+        "expected": [["lemon"]],
+        "must_include": [["30 days", "1,000 miles"]],
+        "suggested_answer": "At around 50,000 miles, the statutory minimum warranty under § 325F.662, subd. 2(a) for the 36,000-74,999 mile bracket is 30 days or 1,000 miles, whichever comes first. If the dealer's warranty ran shorter than that statutory minimum, the statute's floor controls regardless of what the dealer says has expired."
+      }
     ]
-   }
-  ]
- },
- {
-  "id": "K2",
-  "turns": [
-   {
-    "question": "What happens to my license if I'm clocked at 105 mph? Do you need any additional details from me?",
-    "expected": [
-     [
-      "speeding"
-     ]
-    ],
-    "must_include": [
-     [
-      "six months"
-     ]
+  },
+  {
+    "id": "N4",
+    "facts": "The other driver ran a red light and caused the crash; the person asking was not at fault. Medical bills so far are about $2,500, for an emergency room visit and two follow-up appointments. There is no permanent injury, disfigurement, or death. No surgery has been needed. The person has no-fault auto insurance of their own.",
+    "turns": [
+      {
+        "question": "I was in a crash that wasn't my fault. Can I sue the other driver for my pain and suffering?",
+        "expected": [["accident"]],
+        "must_include": [["4,000"]],
+        "clarify": true,
+        "suggested_answer": "Under Minn. Stat. § 65B.51, subd. 3, you cannot recover for pain and suffering unless your medical expenses exceed $4,000, or the injury involves permanent disfigurement, permanent injury, death, or disability for 60 days or more. At $2,500 in medical bills with no permanent injury, that threshold has not yet been met."
+      },
+      {
+        "question": "What if I also broke my arm and it will take a couple months to fully heal?",
+        "expected": [["accident"]],
+        "must_include": [["60 days"]],
+        "suggested_answer": "If the arm injury causes disability -- an inability to engage in substantially all of your usual daily activities -- for 60 days or more, that alone satisfies the alternative threshold in subd. 3(b), regardless of the total medical bill amount."
+      }
     ]
-   },
-   {
-    "question": "Is that a crime or just a ticket?",
-    "expected": [
-     [
-      "speeding"
-     ]
-    ],
-    "must_include": [
-     [
-      "petty misdemeanor"
-     ]
+  },
+  {
+    "id": "N5",
+    "facts": "The driver was holding the phone in one hand while checking a maps app, at a stop sign with the vehicle fully stopped. The phone was not mounted on the dashboard or windshield. The driver was not on a phone call and was not typing a text message, only viewing the map screen.",
+    "turns": [
+      {
+        "question": "I got a ticket for using my phone, but I was just checking the map. Is that even illegal?",
+        "expected": [["phone"]],
+        "must_include": [["hold", "held", "holding"]],
+        "clarify": true,
+        "suggested_answer": "Holding the phone to check the map voids the hands-free navigation exception in § 169.475, subd. 3(a)(2), which only applies if you do not hold the device with one or both hands. Since the phone was held, this was prohibited under subd. 2(a)(1)."
+      },
+      {
+        "question": "Does it matter that I was fully stopped and not moving?",
+        "expected": [["phone"]],
+        "must_include": [["part of traffic"]],
+        "suggested_answer": "No. Under subd. 1(d), a vehicle stopped at a stop sign is still 'part of traffic' -- the exception for a stopped vehicle only applies if it is lawfully stopped somewhere not designed for vehicular travel and not obstructing traffic, which a stop sign is not."
+      }
     ]
-   },
-   {
-    "question": "What if I was also texting at the time?",
-    "expected": [
-     [
-      "phone"
-     ],
-     [
-      "phone",
-      "speeding"
-     ],
-     [
-      "phone",
-      "reckless"
-     ]
-    ],
-    "must_include": [
-     [
-      "hold",
-      "hands-free",
-      "hands free",
-      "careless",
-      "reckless"
-     ]
+  },
+  {
+    "id": "N6",
+    "facts": "A breath test measured blood alcohol at 0.19. This is the driver's second DWI-related arrest -- they have one qualified prior impaired driving incident, from about three years ago. No children were in the vehicle. They took the breath test and did not refuse it. No one was injured and there was no accident.",
+    "turns": [
+      {
+        "question": "I got arrested for DWI. My blood alcohol was well over the limit and this isn't my first time. What am I facing?",
+        "expected": [["dwi"]],
+        "must_include": [["gross misdemeanor"]],
+        "clarify": true,
+        "suggested_answer": "Two aggravating factors apply here under § 169A.03, subd. 3: an alcohol concentration of 0.16 or more, and one qualified prior impaired driving incident. Under § 169A.25, subd. 1, a DWI with two or more aggravating factors is a second-degree DWI, a gross misdemeanor with mandatory penalties under § 169A.275."
+      },
+      {
+        "question": "What if I'd had two prior DWIs before this one instead of just one?",
+        "expected": [["dwi"]],
+        "must_include": [["felony"]],
+        "suggested_answer": "With three or more qualified prior impaired driving incidents within the past ten years, this becomes a first-degree DWI under § 169A.24, subd. 1 -- a felony punishable by up to seven years' imprisonment, a fine of up to $14,000, or both, with mandatory penalties under § 169A.276."
+      }
     ]
-   }
-  ]
- },
- {
-  "id": "K3",
-  "turns": [
-   {
-    "question": "How big is the fine if I speed in a work zone? Do you need any additional details from me?",
-    "expected": [
-     [
-      "speeding"
-     ]
-    ],
-    "must_include": [
-     [
-      "$300",
-      "300"
-     ]
+  },
+  {
+    "id": "N7",
+    "facts": "The van is new, bought directly from a manufacturer-authorized dealer. It is used mostly for the buyer's landscaping business, hauling equipment and tools to job sites most days. The buyer is not sure exactly what percentage of the van's overall use is personal versus business -- it varies week to week and they have never tracked it.",
+    "turns": [
+      {
+        "question": "I bought a new van and it keeps breaking down. Can I get a refund under the lemon law?",
+        "expected": [["lemon"]],
+        "must_include": [["40 percent"]],
+        "clarify": true,
+        "suggested_answer": "The lemon law's 'consumer' definition in § 325F.665, subd. 1(b) requires the vehicle be used for personal, family, or household purposes at least 40 percent of the time. Whether this van qualifies depends on that percentage, which is not yet known."
+      },
+      {
+        "question": "Does it matter that I sometimes use it to drive my kids to school too?",
+        "expected": [["lemon"]],
+        "must_include": [["40 percent"]],
+        "clarify": true,
+        "suggested_answer": "It could matter, but only if that use, combined with any other personal use, adds up to at least 40 percent of the van's overall use -- and since even the buyer is not sure of the actual split, that is the fact that would need to be pinned down, likely by estimating typical weekly mileage or days used for each purpose, before a firm answer is possible."
+      }
     ]
-   },
-   {
-    "question": "Does that apply when no workers are there?",
-    "expected": [
-     [
-      "speeding"
-     ]
-    ],
-    "must_include": [
-     [
-      "workers"
-     ]
+  },
+  {
+    "id": "N8",
+    "facts": "A breath test measured blood alcohol at 0.06, below Minnesota's 0.08 legal limit for driving while impaired. The driver did not refuse any test. No drugs were involved. No one was hurt and there was no collision -- the other driver was only nearly hit.",
+    "turns": [
+      {
+        "question": "I was driving after a few drinks and swerved into another lane, almost hitting someone. What law applies to me?",
+        "expected": [["reckless"]],
+        "must_include": [["169.13"]],
+        "clarify": true,
+        "suggested_answer": "At 0.06, blood alcohol was below Minnesota's 0.08 legal limit, so the DWI statute does not apply here. Swerving into another lane could instead be reckless driving under § 169.13, subd. 1(a), if the driver was aware of and consciously disregarded a substantial and unjustifiable risk to others."
+      },
+      {
+        "question": "Does it matter that I only swerved because I was reaching for my phone?",
+        "expected": [["reckless"], ["reckless", "phone"]],
+        "must_include": [["substantial and unjustifiable"]],
+        "suggested_answer": "Reaching for a phone does not exempt the driver -- the reckless driving standard asks whether the driver was aware of and consciously disregarding a substantial and unjustifiable risk, which distracted swerving into another lane could still satisfy regardless of what caused the distraction."
+      }
     ]
-   },
-   {
-    "question": "And what about a school zone?",
-    "expected": [
-     [
-      "speeding"
-     ]
-    ],
-    "must_include": [
-     [
-      "surcharge"
-     ]
+  },
+  {
+    "id": "N9",
+    "facts": "No one else was present at the scene. The other vehicle was parked and unattended, with visible damage to its rear bumper. The person has paper and a pen available and is willing to leave a note. No one was injured. This did not happen on a highway.",
+    "turns": [
+      {
+        "question": "I backed into a parked car in a parking lot and nobody was around. What do I have to do?",
+        "expected": [["accident"]],
+        "must_include": [["conspicuous"]],
+        "clarify": true,
+        "suggested_answer": "Under § 169.09, subd. 4, because the other vehicle was unattended, you must locate and notify the owner, report it to a peace officer, or leave a written notice in a conspicuous place on the struck vehicle, giving your name and address and the registered owner's."
+      },
+      {
+        "question": "What if I just drove off without doing anything?",
+        "expected": [["accident"]],
+        "must_include": [["169.09"]],
+        "suggested_answer": "Leaving without locating the owner, notifying police, or leaving a written notice violates § 169.09. Depending on the circumstances, leaving the scene can carry real penalties under subd. 14, including fines and possible imprisonment if the collision involved injury or death."
+      }
     ]
-   }
-  ]
- },
- {
-  "id": "K4",
-  "turns": [
-   {
-    "question": "My car keeps breaking down. Can I get my money back? Do you need any additional details from me?",
-    "expected": [
-     [
-      "lemon"
-     ]
-    ],
-    "must_include": [
-     [
-      "four",
-      "4"
-     ]
-    ],
-    "clarify": true,
-    "reply_if_asked": "It was new, I bought it 8 months ago and the transmission has been repaired three times."
-   },
-   {
-    "question": "It has also been out of service for a total of 35 business days.",
-    "expected": [
-     [
-      "lemon"
-     ]
-    ],
-    "must_include": [
-     [
-      "30"
-     ]
+  },
+  {
+    "id": "N10",
+    "facts": "The driver called 911 to report a traffic accident they saw happen just ahead of them on the highway. It was not their own accident and they were not involved in it. They were holding the phone to their ear while driving and speaking to the dispatcher.",
+    "turns": [
+      {
+        "question": "Can I get in trouble for being on my phone while driving if I was calling for help?",
+        "expected": [["phone"]],
+        "must_include": [["emergency"]],
+        "clarify": true,
+        "suggested_answer": "Calling 911 to report a traffic accident, medical emergency, or serious hazard falls under the emergency assistance exception in § 169.475, subd. 3(a)(4), so holding the phone for that call was not prohibited."
+      },
+      {
+        "question": "What if I was calling a tow truck company instead of 911?",
+        "expected": [["phone"]],
+        "must_include": [["emergency"]],
+        "suggested_answer": "A call to a tow truck company is not 'emergency assistance' as the statute defines it -- that exception is limited to reporting an accident, medical emergency, serious traffic hazard, or a crime about to be committed. Holding the phone for a tow truck call would not fall under that exception."
+      }
     ]
-   }
-  ]
- },
- {
-  "id": "K5",
-  "turns": [
-   {
-    "question": "Can I sue the other driver after a car crash? Do you need any additional details from me?",
-    "expected": [
-     [
-      "accident"
-     ]
-    ],
-    "must_include": [
-     [
-      "4,000"
-     ]
-    ],
-    "clarify": true,
-    "reply_if_asked": "I had $2,500 in medical bills, no permanent injury, and I was off work for 10 days."
-   },
-   {
-    "question": "What if the jury says I was 20 percent at fault?",
-    "expected": [
-     [
-      "accident"
-     ]
-    ],
-    "must_include": [
-     [
-      "reduc",
-      "diminish",
-      "proportion"
-     ]
+  },
+  {
+    "id": "N11",
+    "facts": "The driver was not operating a commercial motor vehicle and does not hold a commercial driver's license or learner's permit. This is their first camera-detected speeding violation. The registered owner of the vehicle is the same person who was driving at the time.",
+    "turns": [
+      {
+        "question": "I got a speeding ticket in the mail from a traffic camera. What happens now?",
+        "expected": [["speeding"]],
+        "must_include": [["warning"]],
+        "clarify": true,
+        "suggested_answer": "Under § 169.14, subd. 13(b), a first camera-detected speeding violation gets only a warning, with no fine or conviction. A second offense within the program becomes eligible for diversion that includes a traffic safety course."
+      },
+      {
+        "question": "What if I'm a commercial truck driver with a CDL?",
+        "expected": [["speeding"]],
+        "must_include": [["commercial"]],
+        "suggested_answer": "Subd. 13(c) says the camera-ticket process does not apply to a violation in a commercial motor vehicle or by a holder of a commercial driver's license or learner's permit, so as a CDL holder this camera-based process would not apply, and the violation would be handled through the standard process instead."
+      }
     ]
-   }
-  ]
- },
- {
-  "id": "K6",
-  "turns": [
-   {
-    "question": "Can I lose my license after a breath test? Do you need any additional details from me?",
-    "expected": [
-     [
-      "dwi"
-     ]
-    ],
-    "must_include": [
-     [
-      "90 days"
-     ]
-    ],
-    "clarify": true,
-    "reply_if_asked": "I took the test and it showed 0.10. I am 30 and have no prior incidents."
-   },
-   {
-    "question": "What if I had refused instead?",
-    "expected": [
-     [
-      "dwi"
-     ]
-    ],
-    "must_include": [
-     [
-      "one year",
-      "1 year"
-     ]
+  },
+  {
+    "id": "N12",
+    "facts": "The seller was a private individual, not a licensed dealer or any kind of business. No written warranty was given at the time of sale. The car is about eight years old with roughly 90,000 miles. The buyer paid in cash, with no financing involved.",
+    "turns": [
+      {
+        "question": "I bought a car from someone on Facebook Marketplace, not a dealer, and it broke down after a week. What are my options?",
+        "expected": [["lemon"]],
+        "must_include": [["fraud"], ["Uniform Commercial Code"]],
+        "clarify": true,
+        "suggested_answer": "A private seller is not a 'dealer' under § 325F.662, so neither the new-car lemon law nor the used-car dealer warranty applies here. Options instead fall under general car-sale law -- the Uniform Commercial Code, consumer fraud statutes, and damage and title disclosure statutes, which apply to any car sale."
+      },
+      {
+        "question": "Does it matter if the seller lied about the mileage?",
+        "expected": [["lemon"]],
+        "must_include": [["fraud"]],
+        "suggested_answer": "Yes -- misrepresenting the mileage implicates Minnesota's fraud and misrepresentation statute, § 325F.69, subd. 1, separate from any lemon-law protection, since a misrepresentation claim is not limited to dealer sales."
+      }
     ]
-   }
-  ]
- }
+  }
 ]
 ```
-
 ## The knowledge documents
 
 The six documents, exactly as the agents received them. You can also download them: [speeding.md](/assets/images/orchestration1/knowledge/speeding.md), [mobile-phone.md](/assets/images/orchestration1/knowledge/mobile-phone.md), [dwi.md](/assets/images/orchestration1/knowledge/dwi.md), [reckless-driving.md](/assets/images/orchestration1/knowledge/reckless-driving.md), [lemon-law.md](/assets/images/orchestration1/knowledge/lemon-law.md) and [car-accidents.md](/assets/images/orchestration1/knowledge/car-accidents.md).

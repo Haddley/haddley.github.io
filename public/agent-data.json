@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "orchestration1",
+      "title": "Agent Orchestration (Part 1)",
+      "description": "Comparing three LangChain multi-agent patterns, subagents, skills and handoffs, on eleven conversations that need a clarifying question or a follow-up, plus a reproducible tool-call crash traced to one specific structural cause",
+      "date": "2026-09-24",
+      "categories": [
+        "AI"
+      ],
+      "tags": "agent-orchestration, subagents, langchain, ollama, grounding, evaluation"
+    },
+    {
       "slug": "orchestration3",
       "title": "Agent Orchestration (Part 3)",
       "description": "Finding a real agent through a2a-registry.org, then orchestrating it from a LangGraph graph with a local Ollama model: discover the Agent Card, delegate over A2A, verify the reply against the official source, and pause for human approval",
@@ -19,16 +29,6 @@
         "AI"
       ],
       "tags": "a2a, agent2agent, multi-agent, json-rpc, protocol, interoperability"
-    },
-    {
-      "slug": "orchestration1",
-      "title": "Agent Orchestration (Part 1)",
-      "description": "Three ways to build an agent that answers questions from six documents, using the multi-agent patterns LangChain documents, tested on a small local model, with the problems I hit and how I fixed them",
-      "date": "2026-09-21",
-      "categories": [
-        "AI"
-      ],
-      "tags": "agent-orchestration, subagents, langchain, ollama, grounding, evaluation"
     },
     {
       "slug": "businesscentralmcpclaudecode",
@@ -2789,5 +2789,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-09-22T04:11:18.815Z"
+  "generatedAt": "2026-09-24T00:52:10.582Z"
 }
