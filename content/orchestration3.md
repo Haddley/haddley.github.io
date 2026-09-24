@@ -2,7 +2,7 @@
 title: "Agent Orchestration"
 part: 3
 description: "Finding a real agent through a2a-registry.org, then orchestrating it from a LangGraph graph with a local Ollama model: discover the Agent Card, delegate over A2A, verify the reply against the official source, and pause for human approval"
-date: "2026-09-21"
+date: "2026-09-24"
 categories: ["AI"]
 tags: "a2a, langgraph, ollama, agent-orchestration, agent-registry, federal-register"
 image: "/assets/images/orchestration3/hero-a2a-regulatory-watch.svg"

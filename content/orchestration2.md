@@ -2,7 +2,7 @@
 title: "Agent Orchestration"
 part: 2
 description: "What the A2A (Agent2Agent) protocol is, how it differs from MCP, and running the official Python helloworld sample end to end — a real agent server, agent card discovery, raw JSON-RPC calls, and both streaming and non-streaming client requests"
-date: "2026-09-21"
+date: "2026-09-24"
 categories: ["AI"]
 tags: "a2a, agent2agent, multi-agent, json-rpc, protocol, interoperability"
 image: "/assets/images/orchestration2/hero-a2a-agents.svg"

@@ -36,7 +36,7 @@ Six documents on Minnesota traffic and car law, about 25,800 words: speeding, th
 
 LangChain's [multi-agent documentation](https://docs.langchain.com/oss/python/langchain/multi-agent) describes five patterns for an agent that draws on several areas of knowledge. I built all five: [router](https://docs.langchain.com/oss/python/langchain/multi-agent/router), [subagents](https://docs.langchain.com/oss/python/langchain/multi-agent/subagents), [skills](https://docs.langchain.com/oss/python/langchain/multi-agent/skills), [handoffs](https://docs.langchain.com/oss/python/langchain/multi-agent/handoffs), and the plain baseline the other four exist to avoid, one agent with everything in its prompt.
 
-| Design | Who decides what happens next | Where the document text goes | Holds a conversation |
+| Design | Who decides | Where the documents go | Conversation |
 |---|---|---|---|
 | All in one prompt | Nobody. There is one call | All six documents in the one agent's prompt | Yes |
 | [Router](https://docs.langchain.com/oss/python/langchain/multi-agent/router) | Fixed code: classify, then specialists in parallel, then synthesize | Inside each specialist. Only its answer comes back | No |
@@ -62,11 +62,25 @@ Most of the twelve are gate questions, where the missing fact decides which docu
 
 Eleven of the twelve conversations, 23 turns each, run to completion on all three designs. Subagents and handoffs both run every specialist on `qwen3.8:27b-mlx`, subagents' supervisor and handoffs' triage step on `muse-glimmer`; skills is `muse-glimmer` throughout. The twelfth conversation, N6, is excluded entirely, for all three designs, for comparability — explained in the next section.
 
-| Design | Facts required | Judge fully passes | Asked exactly when it should | Correct on opening-question routing | Total tokens, 23 turns | Total seconds, 23 turns |
+| Design | Facts | Judge | Asked correctly | Opening route | Tokens | Seconds |
 |---|---|---|---|---|---|---|
 | Skills | 18/23 | 17/23 | 12/23 | 10/11 | 306,542 | 2,299 |
 | Subagents | 16/23 | 16/23 | 12/23 | 10/11 | 681,789 | 3,785 |
 | Handoffs | 16/23 | 14/23 | 15/23 | 10/11 | 437,251 | 3,292 |
+
+The same numbers, normalized to a 0–100 scale so every axis reads "higher is better" — facts, judge and asking as the plain percentage of 23 turns, tokens and seconds as each design's efficiency relative to the cheapest and fastest of the three:
+
+```mermaid
+%%{init: {"themeVariables": {"cScale0": "#0072B2", "cScale1": "#D55E00", "cScale2": "#009E73"}, "radar": {"curveOpacity": 0.35, "curveStrokeWidth": 3}} }%%
+radar-beta
+  title Skills vs. subagents vs. handoffs
+  axis facts["Facts"], judge["Judge"], asked["Asked correctly"], tok["Cheaper"], sec["Faster"]
+  curve skills["Skills"]{facts: 78, judge: 74, asked: 52, tok: 100, sec: 100}
+  curve subagents["Subagents"]{facts: 70, judge: 70, asked: 52, tok: 45, sec: 61}
+  curve handoffs["Handoffs"]{facts: 70, judge: 61, asked: 65, tok: 70, sec: 70}
+```
+
+Opening-question routing is left off this chart because all three designs tie on it (10/11) — it would just be a flat triangle, adding a dimension without adding information. What the shape shows is the trade-off in plain terms: skills is the largest area overall, but its "Asked correctly" point sits well inside handoffs', which is the one axis where a smaller-area design pulls ahead.
 
 Skills leads on facts and on the judge, and by a wide margin on cost: less than half what subagents spent, and about 70 percent of handoffs' tokens, for a better result than either. All three miss the identical opening-question route, the cross-document DWI-versus-reckless gate — the one conversation designed to test routing itself, and every design routes it the same way, regardless of specialist model.
 
@@ -112,7 +126,7 @@ sequenceDiagram
     participant Sim as Simulated user
 
     U->>H: "I got a ticket for using my phone,<br/>but I was just checking the map.<br/>Is that even illegal?"
-    H->>H: transfer_to_phone()<br/>(triage hands off; active_agent = phone)
+    H->>H: transfer_to_phone()<br/>triage hands off, active_agent = phone
     H->>Sim: ask_user: "Were you holding the phone,<br/>or was it mounted?"
     Sim-->>H: "Holding it in one hand,<br/>not mounted"
     H-->>U: "Yes, prohibited under subd. 2(a)(1)..."
