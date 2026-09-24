@@ -56,7 +56,7 @@ export default async function PostPage({ params }: PostPageProps) {
       <section className="content4 cid-uBU3VQlp0E" id="content4-cru">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="title col-md-12 col-lg-10">
+            <div className="title col-md-12 col-lg-11">
               <h3 className="mbr-section-title mbr-fonts-style align-center mb-4 display-2">
                 <strong>{post.title}</strong>
               </h3>
@@ -123,7 +123,7 @@ export default async function PostPage({ params }: PostPageProps) {
       <section className="content1 cid-content" id="content1-breadcrumb">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-md-12 col-lg-10">
+            <div className="col-md-12 col-lg-11">
               <div className="mb-4">
                 <Link href="/posts" className="link text-primary display-7">
                   ← Back to Posts
@@ -141,7 +141,7 @@ export default async function PostPage({ params }: PostPageProps) {
         <section className="content5 cid-content5" data-bs-version="5.1">
           <div className="container">
             <div className="row justify-content-center">
-              <div className="col-md-12 col-lg-10">
+              <div className="col-md-12 col-lg-11">
                 <div className="alert alert-warning">
                   <strong>Note:</strong> Content is being processed. The original HTML content
                   from <code>{slug}.html</code> will be displayed here.
@@ -157,7 +157,7 @@ export default async function PostPage({ params }: PostPageProps) {
         <section className="content1 cid-content" id="content1-series-nav">
           <div className="container">
             <div className="row justify-content-center">
-              <div className="col-md-12 col-lg-10">
+              <div className="col-md-12 col-lg-11">
                 <div className="mb-4">
                   <p className="text-center display-7" style={{ color: '#666', marginBottom: '1.25rem' }}>
                     Part of the <strong>{seriesName}</strong> series

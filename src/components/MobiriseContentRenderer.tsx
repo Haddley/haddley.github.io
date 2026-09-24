@@ -477,7 +477,7 @@ export default function MobiriseContentRenderer({ markdownContent }: MobiriseCon
               <section key={index} className="content5 cid-content5" data-bs-version="5.1">
                 <div className="container">
                   <div className="row justify-content-center">
-                    <div className="col-md-12 col-lg-10">
+                    <div className="col-md-12 col-lg-11">
                       <h4 className="mbr-section-subtitle mbr-fonts-style mb-4 display-5">
                                 {processInlineMarkdown(section.content)}
                               </h4>
@@ -491,7 +491,7 @@ export default function MobiriseContentRenderer({ markdownContent }: MobiriseCon
               <section key={index} className="content5 cid-content5" data-bs-version="5.1">
                 <div className="container">
                   <div className="row justify-content-center">
-                    <div className="col-md-12 col-lg-10">
+                    <div className="col-md-12 col-lg-11">
                       <h5 className="mbr-section-subtitle mbr-fonts-style mb-4 display-7 fw-bold">
                         {processInlineMarkdown(section.content)}
                       </h5>
@@ -506,7 +506,7 @@ export default function MobiriseContentRenderer({ markdownContent }: MobiriseCon
             <section key={index} className="content5 cid-content5" data-bs-version="5.1">
               <div className="container">
                 <div className="row justify-content-center">
-                  <div className="col-md-12 col-lg-10">
+                  <div className="col-md-12 col-lg-11">
                     <p className="mbr-text mbr-fonts-style display-7">
                       {section.content.split('\n').map((line, lineIndex) => (
                         <span key={lineIndex}>
@@ -525,7 +525,7 @@ export default function MobiriseContentRenderer({ markdownContent }: MobiriseCon
             <section key={index} className="content5 cid-content5" data-bs-version="5.1">
               <div className="container">
                 <div className="row justify-content-center">
-                  <div className="col-md-12 col-lg-10">
+                  <div className="col-md-12 col-lg-11">
                     <hr />
                   </div>
                 </div>
@@ -547,7 +547,7 @@ export default function MobiriseContentRenderer({ markdownContent }: MobiriseCon
             <section key={index} className="content5 cid-content5" data-bs-version="5.1">
               <div className="container">
                 <div className="row justify-content-center">
-                  <div className="col-md-12 col-lg-10">
+                  <div className="col-md-12 col-lg-11">
                     <blockquote
                       className="mbr-fonts-style display-7"
                       style={{
@@ -579,7 +579,7 @@ export default function MobiriseContentRenderer({ markdownContent }: MobiriseCon
             <section key={index} className="image3 cid-image3" data-bs-version="5.1">
               <div className="container">
                 <div className="row justify-content-center">
-                  <div className="col-12 col-lg-10">
+                  <div className="col-12 col-lg-11">
                     <div className="image-wrapper">
                       <Image 
                         src={section.content} 
@@ -609,7 +609,7 @@ export default function MobiriseContentRenderer({ markdownContent }: MobiriseCon
             <section key={index} className="image3 cid-image3" data-bs-version="5.1">
               <div className="container">
                 <div className="row justify-content-center">
-                  <div className="col-12 col-lg-10">
+                  <div className="col-12 col-lg-11">
                     <div className="image-wrapper">
                       <video 
                         controls 
@@ -638,7 +638,7 @@ export default function MobiriseContentRenderer({ markdownContent }: MobiriseCon
             <section key={index} className="content5 cid-content5" data-bs-version="5.1">
               <div className="container">
                 <div className="row justify-content-center">
-                  <div className="col-12 col-lg-10">
+                  <div className="col-12 col-lg-11">
                     <div className="audio-wrapper" style={{ padding: '20px 0' }}>
                       <audio 
                         controls 
@@ -669,7 +669,7 @@ export default function MobiriseContentRenderer({ markdownContent }: MobiriseCon
             <section key={index} className="content5 cid-content5" data-bs-version="5.1">
               <div className="container">
                 <div className="row justify-content-center">
-                  <div className="col-md-12 col-lg-10">
+                  <div className="col-md-12 col-lg-11">
                     <div className="table-responsive">
                       <table className="table table-striped">
                         <thead>
@@ -704,7 +704,7 @@ export default function MobiriseContentRenderer({ markdownContent }: MobiriseCon
             <section key={index} className="content7 cid-content7" data-bs-version="5.1">
               <div className="container">
                 <div className="row justify-content-center">
-                  <div className="col-12 col-lg-10">
+                  <div className="col-12 col-lg-11">
                     <MermaidDiagram chart={section.content} />
                   </div>
                 </div>
@@ -716,7 +716,7 @@ export default function MobiriseContentRenderer({ markdownContent }: MobiriseCon
             <section key={index} className="content7 cid-content7" data-bs-version="5.1">
               <div className="container">
                 <div className="row justify-content-center">
-                  <div className="col-12 col-md-10">
+                  <div className="col-12 col-md-11">
                     <blockquote>
                       <div className="d-flex justify-content-between align-items-center mb-2">
                         <h5 className="mbr-section-title mbr-fonts-style mb-0 display-7">
