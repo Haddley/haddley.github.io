@@ -155,4 +155,40 @@ Then switched straight to Binary:
 
 It matches the spec exactly, including the detail I would have expected to trip something up: positive values are not zero-padded to 32 bits (`FF`, not `000000FF`), only negative values fill the full word, which is what `toRadixString` actually does and what the spec's own scenario called for.
 
-Next: `/opsx:sync` and `/opsx:archive`, to see whether `openspec/specs/` actually becomes the living, accurate documentation OpenSpec promises — before adding a second proposal, Statistics Mode, on top of it.
+## Syncing the spec
+
+```PROMPT
+/opsx:sync add-programmer-mode
+```
+
+This is the step that actually tests OpenSpec's "delta specs merge into a living source of truth" pitch, rather than just asserting it. `openspec/specs/` was empty before this — the baseline calculator was never spec'd — so syncing created `openspec/specs/programmer-mode/spec.md` from scratch. I diffed it against the delta spec `propose` wrote: the header changed from `# Spec Delta` to `# programmer-mode Specification`, and `## ADDED Requirements` became a plain `## Requirements`, but every requirement and scenario carried over verbatim. `openspec validate --specs` passed.
+
+That is the honest, slightly less dramatic version of the claim: for a brand-new capability with only `ADDED` requirements, "intelligent merge" mostly means "reformat the headers." The more interesting case — folding a `MODIFIED` requirement into an existing one without losing a scenario the main spec already had — never got exercised here, because neither of my two proposals touches the same capability twice. Worth being upfront about: I have not actually seen OpenSpec's merge logic do the harder thing yet.
+
+## Archiving
+
+```PROMPT
+/opsx:archive add-programmer-mode
+```
+
+This did not just archive. It ran the sync check again, found the delta already matched the main spec, and then stopped:
+
+> *"No warnings to report. Ready to archive now — shall I proceed, or would you like to sync anyway first?"*
+
+Everything was clean, and it still asked before doing the one step that moves files around. I said yes:
+
+```PROMPT
+Yes, proceed with archiving.
+```
+
+```
+## Archive Complete
+
+Change: add-programmer-mode
+Archived to: openspec/changes/archive/2026-09-29-add-programmer-mode/
+Specs: ✓ Already synced to main specs
+```
+
+The change folder moved from `openspec/changes/add-programmer-mode/` to `openspec/changes/archive/2026-09-29-add-programmer-mode/` — git recognized it as a pure rename — and `openspec/specs/programmer-mode/spec.md` stayed exactly where sync put it. That is the whole promise, actually delivered: a proposal that started as a delta is now indistinguishable, in the main specs directory, from documentation that was always accurate.
+
+Next: a second proposal, Statistics Mode, on top of this — the real test of whether `specs/` stays coherent across more than one archived change, and the one place a `MODIFIED` requirement could plausibly show up.
