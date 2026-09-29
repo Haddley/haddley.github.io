@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <circle cx="60" cy="60" r="58" fill="#1a2b4b" />
+
+  <!-- Five small agent circles in a ring, each a persona -->
+  <circle cx="60" cy="22" r="9" fill="#ffab40" opacity="0.9"/>
+  <circle cx="94" cy="46" r="9" fill="#80deea" opacity="0.9"/>
+  <circle cx="82" cy="86" r="9" fill="#4fc3f7" opacity="0.9"/>
+  <circle cx="38" cy="86" r="9" fill="#80deea" opacity="0.9"/>
+  <circle cx="26" cy="46" r="9" fill="#4fc3f7" opacity="0.9"/>
+
+  <!-- Handoff lines connecting them in sequence, analyst -> pm -> architect -> dev -> ux -> back -->
+  <path d="M60 22 L94 46 L82 86 L38 86 L26 46 Z" fill="none" stroke="#ffffff" stroke-width="1.6" opacity="0.55"/>
+
+  <!-- Central artifact the whole team converges on -->
+  <rect x="48" y="50" width="24" height="20" rx="2" fill="#ffffff" opacity="0.95"/>
+  <line x1="52" y1="56" x2="68" y2="56" stroke="#1a2b4b" stroke-width="1.6" opacity="0.75"/>
+  <line x1="52" y1="61" x2="68" y2="61" stroke="#1a2b4b" stroke-width="1.6" opacity="0.75"/>
+  <line x1="52" y1="66" x2="62" y2="66" stroke="#1a2b4b" stroke-width="1.6" opacity="0.75"/>
+</svg>
