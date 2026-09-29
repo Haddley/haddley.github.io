@@ -1,13 +1,13 @@
 ---
 title: "Spec-Driven AI Tools"
 part: 2
-description: "Trying Spec-Kit's constitution-first workflow against the same baseline calculator and the same two feature requests as OpenSpec — starting with what happened when I left its constitution argument empty"
+description: "Running Spec-Kit's constitution-specify-plan-tasks-implement-converge cycle twice on the same calculator and requests OpenSpec got, including a caught integer-truncation bug and a caught math error in its own spec"
 date: "2026-09-29"
 categories: ["AI"]
 tags: "spec-kit, spec-driven-development, claude-code, agentic-coding, github"
 image: "/assets/images/specdriven2/hero-specdriven-speckit.svg"
 slug: "specdriven2"
-hidden: true
+hidden: false
 ---
 
 This is the second post in a series trying three spec-driven AI development tools against the same fixed task, prompted by [Ran the Builder's honest take on three spec-driven AI tools](https://ranthebuilder.cloud/blog/i-tested-three-spec-driven-ai-tools-here-s-my-honest-take). [Part 1](/posts/specdriven1/) covered OpenSpec and the baseline calculator itself; this one covers [Spec-Kit](https://github.com/github/spec-kit), GitHub's entry, run against a fresh copy of the exact same starting commit and the exact same two feature requests — Programmer Mode and Statistics Mode, both real Windows Calculator features, both worded the way I would naturally ask for them rather than engineered to hit specific traps.
@@ -258,4 +258,49 @@ This is a genuinely different kind of finding than anything OpenSpec's workflow 
 
 `plan.md`'s Constitution Check passed all five principles again, and `research.md` documented the rest of the design straightforwardly: extend `CalculatorEngine` following Programmer Mode's precedent, a new `±` button (Standard Mode's `-` key is subtract-only, so there was no existing way to enter a negative number), `setOperator`/`equals` becoming no-ops in Statistics Mode, and a new `dataEntryStarted` flag to correctly distinguish "nothing typed since the last Add" from "the user typed 0."
 
-Next: tasks, implementation, and convergence for Statistics Mode.
+## Tasks, implementation, and convergence for Statistics Mode
+
+`/speckit-tasks` generated 28 tasks across seven phases (Setup, Foundational, then US1–US4), and confirmed the fixed spec value flowed through cleanly — the corrected sample standard deviation was already what got planned for, no blocker.
+
+`/speckit-implement` built the whole feature unprompted: a `dataSet`/`dataEntryStarted`-based engine extension, `toggleSign`/`addDataPoint`/`removeDataPoint`/`clearDataSet`/`requestSum`/`requestAverage`/`requestStdDev`, and a `stats-panel` UI with a per-entry remove button — the User Story 4 scope OpenSpec's proposal had explicitly excluded. One honest, slightly funny detail worth including: it told me outright that it had tried working around its inability to run Bash, including *"a sandbox-bypass attempt,"* and reported that this also failed, rather than quietly not mentioning it. It then correctly left the three verification tasks unchecked.
+
+I ran the tests myself:
+
+```bash
+npm test
+```
+
+```
+ℹ tests 65
+ℹ pass 65
+ℹ fail 0
+```
+
+65/65 pass, including a test asserting the exact corrected value. Then the browser:
+
+![](assets/images/specdriven2/speckit-statistics-entered.png)
+*2, 4, 4, 4, 5, 5, 7, 9 entered — "8 data points," each removable, confirming User Story 4 is real, not just specified*
+
+![](assets/images/specdriven2/speckit-statistics-stddev.png)
+*StdDev: 2.1380899353 — matching the hand-verified corrected sample standard deviation exactly*
+
+```PROMPT
+/speckit-converge
+```
+
+Unlike Programmer Mode, which took three rounds, Statistics Mode **converged on the first pass**:
+
+> *"Findings by gap type: 0 missing, 0 partial, 0 contradicts, 0 unrequested... ✅ Converged."*
+
+It traced all 14 functional requirements, 6 success criteria, every acceptance scenario, all 5 design decisions from `research.md`, all 28 tasks against real code (not just their checkbox state), and all 5 constitution principles — and found nothing. Whether that is because the defect-catching at the plan stage already did its job before any code existed, or because this feature was genuinely more straightforward than Programmer Mode's bit-width and truncation edge cases, is a real question I cannot fully answer from one run each — but it is consistent with the plan-stage catch mattering: catching the stddev formula error *before* implementation meant convergence had one less category of bug to find *after* implementation.
+
+## Where this leaves Spec-Kit
+
+Two proposals, six workflow steps each (constitution once, then specify → plan → tasks → implement → converge, twice), 65 final tests, all real, all passing, all screenshotted. Compared against what OpenSpec showed in [Part 1](/posts/specdriven1/):
+
+- **The constitution is not decoration.** Left empty, it still produced a binding, versioned governance document — including a principle it derived by reading this experiment's own purpose out of the README — and it demonstrably steered later output (tests added specifically because Principle II required them). OpenSpec's equivalent field, left empty, simply contributed nothing. That is a real trade-off: more process ceremony, but a document that actually does something even when you give it no input.
+- **The same two feature requests produced genuinely different designs, not just different documentation.** Sign-magnitude vs two's-complement for Programmer Mode's negatives. Sample vs population standard deviation for Statistics Mode. Data-point removal in scope vs explicitly out of scope. None of these are bugs in either tool — they are honest, independently-reasoned answers to the same deliberately underspecified requests, and they mean the choice of tool is also, unavoidably, a choice of product behavior.
+- **Convergence is a real capability, and it found real things.** A genuine integer-truncation bug that survived every earlier gate, in round two of Programmer Mode. A genuine internal contradiction — a wrong worked example — inside Spec-Kit's own prior output, caught by the plan step before Statistics Mode's implementation even started. OpenSpec's workflow has no step that goes back and checks a finished change against its own spec; once archived, OpenSpec considers it done. Spec-Kit iterates until it can prove otherwise, and in this run, that iteration caught things that mattered.
+- **The operational cost was real too.** Every single Spec-Kit step needed a workaround for non-interactive Bash approval — OpenSpec's `propose`/`apply` at least pre-authorize their own CLI calls; nothing in Spec-Kit does. That is a genuine friction difference a team would feel on day one, independent of either tool's planning quality.
+
+Both repos are current: [github.com/Haddley/specdriven](https://github.com/Haddley/specdriven), `spec-kit` branch, full history from the baseline through both converged features. Next: [BMAD](https://github.com/bmad-code-org/BMAD-METHOD), the third tool, on a fresh copy of the same baseline and the same two requests.

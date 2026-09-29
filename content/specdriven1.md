@@ -256,4 +256,4 @@ Two proposals, two full propose → apply → sync → archive cycles, forty-six
 - **Run-to-run behavior varied more than I expected**, on identical commands against identical repo state: one `apply` self-declared with a caveat, the other stopped and asked; one `archive` paused for confirmation, the other did not. None of this was wrong, but it means "here is what OpenSpec does" is really "here is what it did in this run" — worth keeping in mind for Spec-Kit and BMAD too.
 - **The only real gap was mine, not the tool's**: running non-interactively meant `apply` genuinely could not verify its own work, which is exactly why I ran `npm test` and clicked through the browser myself both times rather than taking its word for it.
 
-Next: [Spec-Kit](https://github.com/github/spec-kit), on the same two feature requests, against a fresh copy of the same baseline calculator.
+Next: [Spec-Kit](/posts/specdriven2/), on the same two feature requests, against a fresh copy of the same baseline calculator.
