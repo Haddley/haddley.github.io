@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "deepseekharnessollama",
+      "title": "DeepSeek Harness (Part 2)",
+      "description": "Checking whether DeepSeek Harness's everything-is-a-plugin claim extends to the model itself: pointing it at a local Ollama-served model through a custom OpenAI-compatible provider, with no DeepSeek API key at all",
+      "date": "2026-09-27",
+      "categories": [
+        "AI"
+      ],
+      "tags": "deepseek, ollama, ai-agent, agentic-coding, local-llm"
+    },
+    {
       "slug": "orchestration3",
       "title": "Agent Orchestration (Part 3)",
       "description": "Finding a real agent through a2a-registry.org, then orchestrating it from a LangGraph graph with a local Ollama model: discover the Agent Card, delegate over A2A, verify the reply against the official source, and pause for human approval",
@@ -154,7 +164,7 @@
     },
     {
       "slug": "deepseekharness",
-      "title": "Building Space Invaders with DeepSeek Harness",
+      "title": "DeepSeek Harness (Part 1)",
       "description": "Giving DeepSeek Harness a product requirements document and a product design document for a faithful browser recreation of the 1978 Taito Space Invaders, and watching it build the game and then verify its own work",
       "date": "2026-08-23",
       "categories": [
@@ -2789,5 +2799,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-09-24T01:20:31.200Z"
+  "generatedAt": "2026-09-29T03:03:33.313Z"
 }

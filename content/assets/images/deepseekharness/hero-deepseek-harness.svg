@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <circle cx="60" cy="60" r="58" fill="#1a2b4b" />
+  <!-- Space invader (crab sprite from the game) -->
+  <g fill="#ffffff" opacity="0.92"><rect x="49.5" y="22" width="3" height="3"/><rect x="67.5" y="22" width="3" height="3"/><rect x="52.5" y="25" width="3" height="3"/><rect x="64.5" y="25" width="3" height="3"/><rect x="49.5" y="28" width="3" height="3"/><rect x="52.5" y="28" width="3" height="3"/><rect x="55.5" y="28" width="3" height="3"/><rect x="58.5" y="28" width="3" height="3"/><rect x="61.5" y="28" width="3" height="3"/><rect x="64.5" y="28" width="3" height="3"/><rect x="67.5" y="28" width="3" height="3"/><rect x="46.5" y="31" width="3" height="3"/><rect x="49.5" y="31" width="3" height="3"/><rect x="55.5" y="31" width="3" height="3"/><rect x="58.5" y="31" width="3" height="3"/><rect x="61.5" y="31" width="3" height="3"/><rect x="67.5" y="31" width="3" height="3"/><rect x="70.5" y="31" width="3" height="3"/><rect x="43.5" y="34" width="3" height="3"/><rect x="46.5" y="34" width="3" height="3"/><rect x="49.5" y="34" width="3" height="3"/><rect x="52.5" y="34" width="3" height="3"/><rect x="55.5" y="34" width="3" height="3"/><rect x="58.5" y="34" width="3" height="3"/><rect x="61.5" y="34" width="3" height="3"/><rect x="64.5" y="34" width="3" height="3"/><rect x="67.5" y="34" width="3" height="3"/><rect x="70.5" y="34" width="3" height="3"/><rect x="73.5" y="34" width="3" height="3"/><rect x="43.5" y="37" width="3" height="3"/><rect x="49.5" y="37" width="3" height="3"/><rect x="52.5" y="37" width="3" height="3"/><rect x="55.5" y="37" width="3" height="3"/><rect x="58.5" y="37" width="3" height="3"/><rect x="61.5" y="37" width="3" height="3"/><rect x="64.5" y="37" width="3" height="3"/><rect x="67.5" y="37" width="3" height="3"/><rect x="73.5" y="37" width="3" height="3"/><rect x="43.5" y="40" width="3" height="3"/><rect x="49.5" y="40" width="3" height="3"/><rect x="67.5" y="40" width="3" height="3"/><rect x="73.5" y="40" width="3" height="3"/><rect x="52.5" y="43" width="3" height="3"/><rect x="55.5" y="43" width="3" height="3"/><rect x="61.5" y="43" width="3" height="3"/><rect x="64.5" y="43" width="3" height="3"/></g>
+  <!-- Connection from the agent to the cloud model -->
+  <line x1="60" y1="50" x2="60" y2="68" stroke="#80deea" stroke-width="3" opacity="0.8"/>
+  <path d="M55 63 L60 68 L65 63" fill="none" stroke="#80deea" stroke-width="2.5" opacity="0.9"/>
+  <!-- Cloud: the DeepSeek cloud API -->
+  <g fill="#4fc3f7" opacity="0.85">
+    <circle cx="48" cy="86" r="9"/>
+    <circle cx="61" cy="80" r="12"/>
+    <circle cx="74" cy="87" r="8"/>
+    <rect x="40" y="86" width="42" height="10" rx="5"/>
+  </g>
+  <line x1="50" y1="89" x2="72" y2="89" stroke="#1a2b4b" stroke-width="2" opacity="0.6"/>
+</svg>

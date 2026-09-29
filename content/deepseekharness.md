@@ -1,9 +1,10 @@
 ---
-title: "Building Space Invaders with DeepSeek Harness"
+title: "DeepSeek Harness"
+part: 1
 description: "Giving DeepSeek Harness a product requirements document and a product design document for a faithful browser recreation of the 1978 Taito Space Invaders, and watching it build the game and then verify its own work"
 date: "2026-08-23"
 categories: ["AI"]
-image: "/assets/images/deepseekharness/game-running.png"
+image: "/assets/images/deepseekharness/hero-deepseek-harness.svg"
 tags: "deepseek, ai-agent, agentic-coding, prd, game-development"
 hidden: false
 slug: "deepseekharness"
