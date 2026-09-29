@@ -74,4 +74,58 @@ It read this experiment's own premise straight out of the README I wrote — the
 
 Every principle came with a stated rationale, in the same style OpenSpec's `design.md` used — this is clearly a shared convention across these tools, not one tool's invention. The whole file is version-governed too: `1.0.0`, ratified today, with a semver amendment policy (MAJOR for principle removals, MINOR for new principles, PATCH for wording) written into a Governance section — a level of process ceremony OpenSpec's optional one-paragraph context field never asked for.
 
-Next: `/speckit-specify` for Programmer Mode, now that a constitution actually exists for it to inherit.
+## Specifying Programmer Mode
+
+```PROMPT
+/speckit-specify Add a Programmer Mode, like calculators have had since Windows 7 — support switching to binary, octal, and hexadecimal, and calculating in those bases.
+```
+
+No clarifying question, same as OpenSpec. It wrote `specs/001-programmer-mode/spec.md` as three prioritized user stories (P1: enter/view numbers in another base, P2: calculate in that base, P3: switch bases mid-session without losing the value — each with an explicit "Independent Test"), twelve functional requirements, five measurable success criteria, and — distinct from OpenSpec's structure — a separate `checklists/requirements.md` that has to pass before planning can proceed. It passed cleanly, with a note explaining why no `[NEEDS CLARIFICATION]` markers were needed.
+
+Here is the first genuine point of divergence between the two tools, not just of documentation style: OpenSpec chose a fixed 32-bit two's-complement word for negative values. Spec-Kit chose something else entirely:
+
+> *"Negative values are shown as a leading minus sign followed by the magnitude in the selected base (sign-magnitude), not as two's-complement bit patterns. Bit width / word size (byte, word, dword, qword) selection is out of scope."*
+
+Same ambiguity, same unstated request, two different real designs. Neither is wrong — sign-magnitude is arguably the simpler, more honest choice given neither of us asked for a specific word size — but it means whichever tool a team picks will ship a calculator that behaves differently for the exact same feature request, which is worth knowing going in.
+
+## Planning it
+
+```PROMPT
+/speckit-plan
+```
+
+This stalled immediately: *"I'll pause here — please approve the `setup-plan.sh --json` command."* Checking why revealed a real structural difference from OpenSpec: none of Spec-Kit's skills declare an `allowed-tools` frontmatter the way OpenSpec's `propose`/`apply` pre-authorize `Bash(openspec:*)`. So in a non-interactive session, *every* Bash call needs approval here — even Spec-Kit's own bundled setup scripts — not just calls outside a pre-approved pattern. I ran the script myself and fed its JSON back in a follow-up turn, the same way I handled OpenSpec's verification gaps.
+
+The output was five separate files — `plan.md`, `research.md`, `data-model.md`, `contracts/calculator-engine.md`, `quickstart.md` — a noticeably different shape from OpenSpec's single `design.md`. The centerpiece is `plan.md`'s **Constitution Check**, a literal pass/fail table, one row per principle:
+
+| Principle | Result |
+|---|---|
+| I. Separation of Concerns | PASS |
+| II. Test-First for Calculation Logic | PASS |
+| III. No Build Step | PASS |
+| IV. Baseline Fidelity | PASS |
+| V. Simplicity & Minimalism | PASS |
+
+OpenSpec's optional context field has no equivalent gate — it is informational, not enforced. This is a real, structural difference the source article's "constitution every spec inherits" framing predicted, and it is genuinely stricter than what OpenSpec does.
+
+`research.md` explained the sign-magnitude choice with a rationale that reads differently in kind from OpenSpec's:
+
+> *"JavaScript's built-ins already do exactly what the spec requires: `parseInt` accepts a radix... `toString(radix)` on a negative number already returns sign-magnitude form... with zero extra code."*
+
+OpenSpec's design reasoning was domain-modelling-driven — what should a Programmer Mode integer *be*. Spec-Kit's is implementation-convenience-driven — what does the platform give us for free. Both are legitimate engineering reasoning, but they are different instincts, and it shows in the resulting feature: OpenSpec's is more fully specified (bit width, defined overflow) at the cost of more implementation; Spec-Kit's is simpler at the cost of leaving overflow behavior essentially unaddressed — `research.md` says plainly that "no test scenario in the spec exceeds `Number.MAX_SAFE_INTEGER`," which is true, but is also just not a real answer to what happens when one does.
+
+## Generating tasks
+
+```PROMPT
+/speckit-tasks
+```
+
+Same approval wall (`setup-tasks.sh`), same workaround. The result: 23 tasks organized **by user story** — Setup, Foundational, then US1/US2/US3 phases, each task tagged `[P]` where it can run in parallel and labeled with which story it belongs to. This is a materially different organization from OpenSpec's by-layer tasks.md (engine, then UI, then tests) — Spec-Kit's structure is explicitly built around the idea that a team could split US1/US2/US3 across people and work them in parallel, values the source article specifically praised OpenSpec for.
+
+The most concrete evidence yet that the constitution is not just documentation showed up here, unprompted:
+
+> *"Tests are included as real tasks (not skipped as 'optional') because this project's constitution (Principle II) mandates test-first coverage for all `CalculatorEngine` changes."*
+
+That is a direct, causal line from a decision made three steps earlier — with no input from me — to a concrete difference in this step's output. OpenSpec's context field never got to demonstrate anything like that, because I left it empty and it simply did nothing. Here, "empty" still produced a governing document, and that document is now visibly steering what gets built.
+
+Next: `/speckit-implement`, to see whether the code matches what all of this planning promised.
