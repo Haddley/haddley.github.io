@@ -1,13 +1,13 @@
 ---
 title: "Spec-Driven AI Tools"
 part: 3
-description: "Trying BMAD on the same calculator and the same two feature requests as OpenSpec and Spec-Kit — starting with discovering that BMAD has been substantially rewritten since the article that prompted this series, and what its own setup step asked me that neither other tool did"
-date: "2026-09-29"
+description: "Running BMAD's spec-build-review cycle twice on the same calculator and requests OpenSpec and Spec-Kit got: it's the only tool that asked instead of silently deciding, and its automatic three-layer review caught four real bugs before I saw them"
+date: "2026-09-30"
 categories: ["AI"]
 tags: "bmad, spec-driven-development, claude-code, agentic-coding, ai-agent"
 image: "/assets/images/specdriven3/hero-specdriven-bmad.svg"
 slug: "specdriven3"
-hidden: true
+hidden: false
 ---
 
 Third post in a series trying three spec-driven AI development tools against the same fixed task, prompted by [Ran the Builder's honest take on three spec-driven AI tools](https://ranthebuilder.cloud/blog/i-tested-three-spec-driven-ai-tools-here-s-my-honest-take). [Part 1](/posts/specdriven1/) covered OpenSpec, [Part 2](/posts/specdriven2/) covered Spec-Kit; this one covers [BMAD](https://github.com/bmad-code-org/BMAD-METHOD), on a fresh copy of the exact same baseline calculator and the exact same two feature requests — Programmer Mode and Statistics Mode.
@@ -209,3 +209,83 @@ Then the browser:
 On that last point: BMAD disables invalid keys visually, the same choice OpenSpec made and Spec-Kit explicitly declined (citing YAGNI against the literal wording of its own functional requirement). That makes it two tools out of three that chose to build the affordance beyond the letter of "invalid presses must have no effect" — worth weighing against Spec-Kit's argued case for not doing so, in the final comparison.
 
 Next: Statistics Mode.
+
+## Statistics Mode — a real question, and a deliberately-kept "bug"
+
+Same plain request as the other two tools:
+
+```PROMPT
+Add a Statistics Mode, like calculators have had since Windows 7 — enter a sequence of numbers and compute sum, average, and standard deviation.
+```
+
+Same authorization step (subagents, activation scripts run myself and fed back), then the same kind of direct question Programmer Mode got:
+
+> *"Standard deviation formula — sample or population? Sample (divide by n−1): matches Excel's `STDEV` and the classic Windows Calculator's default 's' button... Population (divide by n): matches Excel's `STDEVP`..."*
+
+```PROMPT
+Keep it simple — your call, whichever you'd default to.
+```
+
+Default: **sample** (n−1) — matching Spec-Kit's choice, not OpenSpec's population choice. That makes it two tools out of three defaulting to sample when asked to pick without guidance.
+
+Two more genuine, unprompted design divergences showed up in the spec itself:
+
+- **Asymmetric empty-data behavior**: Sum of an empty list shows `0` (mathematically defensible — the sum of nothing is zero), but Average and Std Dev on insufficient data error out. Both OpenSpec and Spec-Kit made all three — Sum included — error uniformly on empty data. BMAD's split is more mathematically precise, and I hadn't asked for it either way.
+- **Mutual exclusivity with Programmer Mode**: activating one turns the other off entirely, and the data list *persists* across Clear (C) and across toggling the mode off and on — only a dedicated Clear Data button empties it. This is a third distinct answer to "how do two modes coexist," alongside OpenSpec's partial-suppression approach and Spec-Kit's explicit independent/orthogonal design.
+
+## Building it, and the review layer rejecting its own finding
+
+```PROMPT
+Approve and continue.
+```
+
+The three-layer review ran again and found **five** patchable issues this time (versus three for Programmer Mode) — a duplicated summing helper, an uneven CSS grid, a missing empty-list placeholder, and two real reachable bugs: Add could silently re-add a just-computed statistic as a new data point if pressed without fresh digit entry first, and the data-list display was not running through the shared `formatNumber` helper, risking display inconsistency with the rest of the app. All patched, with a new regression test for each. I verified:
+
+```bash
+npm test
+```
+
+```
+ℹ tests 37
+ℹ pass 37
+ℹ fail 0
+```
+
+The most interesting line in the whole Review Triage Log, though, is a finding the review layer checked and explicitly **rejected as correct behavior**:
+
+> *"Blind Hunter + Edge Case Hunter: a pending Standard-mode operator/previousValue is untouched by `setStatisticsMode`/`addData`/`sum`/`average`/`standardDeviation`, so a stale pending operator... can later resolve on `=` and overwrite the display with a Standard-mode result — verified reachable, but not a defect: ...matches genuine calculator 'Statistics box' UX (compute an expression, then capture its result as a data point via Add) — operator/equals staying live during Statistics Mode is a feature, not a bug."*
+
+I checked this in the browser myself before taking the log's word for it:
+
+![](assets/images/specdriven3/bmad-statistics-entered.png)
+*Statistics Mode active with 4, 8, 6 entered — note the ÷, ×, −, +, and = keys are all still enabled, unlike OpenSpec's and Spec-Kit's implementations, which disable them*
+
+The four-function operators are genuinely still live here — a real, deliberate difference from both other tools, which both disable arithmetic while their Statistics mode is active. And this is arguably the most historically accurate of the three interpretations: real Windows Calculator's Statistics box lets you compute an expression in the main display and then click Add to push that result into the data list, rather than forcing you to only ever enter bare numbers. Neither OpenSpec nor Spec-Kit's specs considered this workflow at all; BMAD's review layer noticed it was reachable, checked whether it was actually wrong, and decided it wasn't — which is a materially different (and, on the evidence, better-calibrated) outcome than either silently blocking it or silently allowing it without checking.
+
+The rest checked out:
+
+![](assets/images/specdriven3/bmad-statistics-default.png)
+*Statistics Mode's default state — Add/Sum/Avg/Std Dev/Clear Data panel, Programmer Mode's checkbox now visible alongside it, mutually exclusive*
+
+![](assets/images/specdriven3/bmad-statistics-stddev.png)
+*4, 8, 6 entered, Std Dev pressed: exactly 2 — the sample standard deviation of that set*
+
+I also confirmed the asymmetric empty-data behavior directly:
+
+```
+Sum of empty list: 0
+Average of empty list: No data entered
+```
+
+Exactly as specified. BMAD drafted its own commit message again, disclosing the two real bugs, the three cosmetic fixes, and the two deferred systemic gaps in the body — I checked the diff matched before using it.
+
+## Where this leaves BMAD
+
+Two features, two full spec → build → review → verify cycles, 37 final tests, all real, all screenshotted. What stood out most, set against OpenSpec and Spec-Kit:
+
+- **It is the only tool that actually asked.** Every ambiguity I tracked across this series — bitwise/word-size scope, negative-number representation, sample-vs-population standard deviation — BMAD stopped and asked me directly, as real choices, rather than silently deciding (OpenSpec) or silently deciding with written rationale (Spec-Kit). I answered "keep it simple" every time, deliberately not steering the outcome, and got to see the tool's own default surface in the open rather than reconstructing it from a design doc afterward.
+- **Its review model is different in kind, not just degree, from Spec-Kit's convergence.** Three named review layers (Blind Hunter, Edge Case Hunter, Verification Gap) ran automatically, inside the same build pass, before anything reached me — catching four real bugs total across two features, correctly rejecting several plausible-sounding false findings with stated reasoning, and correctly identifying at least one "bug" as a deliberate feature after checking rather than assuming. I never saw a broken intermediate version of either feature. Spec-Kit's converge is powerful but requires me to explicitly re-invoke it and wait for a separate round; BMAD's runs by default.
+- **The personas are not just flavor.** Five named agents with stated voices did correspond to genuinely distinct-feeling outputs — the PM-style clarifying questions, the reviewer layers' adversarial framing — though I can't fully separate "the persona caused this" from "this is just what a thorough workflow looks like when written well."
+- **The operational cost was real, and the heaviest of the three.** Two plugins needed (not one), filesystem-read approval on top of the Bash-approval wall the other tools also hit, a subagent-authorization step none of the others needed, and — the one thing that was my own mistake, not the tool's — a lost turn when I broke session continuity on `bmad-project-context` and had to redo it. None of this reflects badly on output quality, but it is a genuinely heavier lift to run non-interactively than either OpenSpec or Spec-Kit.
+
+Both repos are current: [github.com/Haddley/specdriven](https://github.com/Haddley/specdriven), `bmad` branch, full history from the plugin install through both committed features. Next: the comparison — what actually held up across all three tools, where the source article's scoring agreed or disagreed with what I found running them myself, and what I'd actually recommend.
