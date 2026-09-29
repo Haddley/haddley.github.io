@@ -219,3 +219,43 @@ npm test
 Three rounds to get there, and the second one caught something real — a genuine integer-only violation that every earlier gate (checklist, Constitution Check, first implement, first convergence pass) had missed. That is the strongest evidence in either tool's favor so far that verification-after-the-fact catches things planning-before-the-fact does not, and it is a capability OpenSpec's workflow — propose, apply, sync, archive — simply does not have a step for. OpenSpec never re-checks a finished change against its own spec; once archived, it is done. Spec-Kit iterates until it can prove otherwise.
 
 Next: Statistics Mode, on the same repo — to see whether convergence catches something on a feature that starts from a codebase Spec-Kit has now already shaped once.
+
+## Specifying Statistics Mode
+
+```PROMPT
+/speckit-specify Add a Statistics Mode, like calculators have had since Windows 7 — enter a sequence of numbers and compute sum, average, and standard deviation.
+```
+
+Same identical wording OpenSpec got. This time the divergence between the two tools is not just documentation style — it is two real, substantive differences in what got specified:
+
+- **Standard deviation**: Spec-Kit chose **sample** standard deviation (dividing by n−1), explicitly citing "the 's' statistic in the classic Windows Calculator Statistics Box." OpenSpec chose **population** (dividing by n). Same unstated ambiguity, opposite defaults — and they behave differently at the edges: Spec-Kit's choice is *undefined* at a single data point (must show an indication, not a number), where OpenSpec's population formula gives a defined `0`.
+- **Scope**: Spec-Kit added its own fourth user story — removing an individual data point from the data set — which OpenSpec's proposal explicitly named as a non-goal. Same request, genuinely different read of what "enter a sequence and compute statistics" implies a user would also want.
+
+Neither is more "correct." They are two reasonable, independently-arrived-at interpretations of an identically-worded, deliberately underspecified request — which is exactly the point of running the same request through multiple tools rather than trusting one run's output as *the* answer.
+
+## Planning it — and catching a real defect in its own spec
+
+```PROMPT
+/speckit-plan
+```
+
+This one ran long enough to need backgrounding, and came back with the most significant finding of the series so far — not a design choice, but a **caught error**:
+
+> *"spec.md's User Story 3 Acceptance Scenario 1 expects Standard Deviation of {2,4,4,4,5,5,7,9} to show '2', but that's the population stddev of that set. FR-007 and the Assumptions section both explicitly require sample stddev (n−1), whose correct value is ≈2.1380899353... you should fix spec.md's worked example before running `/speckit-tasks`, or a generated test will assert the wrong number."*
+
+I checked this by hand before trusting it, the same way I have checked every other claim in this series: that data set has a mean of 5 and a sum of squared deviations of 32. Population standard deviation is √(32/8) = 2 — exactly what the spec's own worked example claimed. Sample standard deviation is √(32/7) ≈ 2.138090 — what `FR-007` actually requires. The spec's own earlier `/speckit-specify` step had written internally inconsistent output: it correctly *stated* the sample formula in prose, then illustrated it with a number that was actually the population figure for that data set — an easy, very human mistake (2 is the well-known textbook answer for that exact data set's population standard deviation).
+
+What matters here is not that a mistake happened — OpenSpec's own runs made real judgment calls I might disagree with too. What matters is what `/speckit-plan` did with it: it did not silently implement the wrong number, and it did not silently "fix" the spec on its own authority either. It flagged the contradiction, explained exactly which two things disagreed and why, computed the correct value, and told me to fix it myself before proceeding. I did:
+
+```diff
+- **Then** the display shows "2".
++ **Then** the display shows approximately "2.138090" (the *sample*
++ standard deviation, dividing by n-1=7; the population standard
++ deviation of this set is 2, which is a different figure).
+```
+
+This is a genuinely different kind of finding than anything OpenSpec's workflow produced. OpenSpec makes judgment calls and documents them well; nothing in this series so far showed it actually catching a contradiction *within its own prior output*. Spec-Kit's plan step reads the spec critically enough to find a bug in the spec itself, before a line of code exists — arguably a stronger result than catching the equivalent bug in implementation later, the way `/speckit-converge` caught Programmer Mode's division-truncation bug.
+
+`plan.md`'s Constitution Check passed all five principles again, and `research.md` documented the rest of the design straightforwardly: extend `CalculatorEngine` following Programmer Mode's precedent, a new `±` button (Standard Mode's `-` key is subtract-only, so there was no existing way to enter a negative number), `setOperator`/`equals` becoming no-ops in Statistics Mode, and a new `dataEntryStarted` flag to correctly distinguish "nothing typed since the last Add" from "the user typed 0."
+
+Next: tasks, implementation, and convergence for Statistics Mode.
