@@ -105,6 +105,16 @@ None of the three tools' own slash-command skills declared enough pre-authorizat
 - **Spec-Kit** pre-authorizes nothing. Every Bash call, including its own bundled setup scripts, needed approval. I ran those scripts myself and fed the output back, every single step.
 - **BMAD** needed the most: two separate plugins to reach the same starting line the other two reached with one install command, a filesystem-read approval for skill reference files living outside the project (they load from a global plugin cache, not local project files), a one-time subagent-authorization prompt, and the same per-Bash-call wall as Spec-Kit on top of all of it. The heaviest lift of the three to run unattended — none of which reflects on output quality, but a real cost a team would feel from day one.
 
+## Driver-agent portability, checked but not run
+
+Everything above used Claude Code throughout, by deliberate choice made at the start of this series. Worth a note on what happens if the driver agent isn't Claude Code — checked directly against each tool's own integration list, not tested end to end the way the rest of this series was:
+
+- **Spec-Kit has a genuine, named [DeepSeek Harness](/posts/deepseekharness/) integration.** Its own source is explicit about it: *"DSH discovers project skills from `.dsh/skills` (its native root, highest provider rank)... Project guidance in AGENTS.md at the repo root is loaded automatically by DSH."* `specify check` lists `DeepSeek Harness (available)`, and `--integration dsh` writes straight into DSH's preferred root, in the format it expects natively.
+- **OpenSpec reaches it too, through a generic fallback.** `openspec init --tools agents` writes to a shared `.agents/skills/` convention — the same one Spec-Kit's own DSH integration notes as an alternate root DSH also reads from — but with no DSH-specific tuning.
+- **BMAD's usual install path has no DeepSeek Harness support at all.** The Claude Code plugin method this whole series used (`claude plugin install bmad-method@bmad`) is Claude Code/Codex only. BMAD's alternate generic installer can reach the same shared `.agents/skills/` convention, but I tried targeting DSH directly and it was flatly rejected — `Invalid agents: dsh` — out of a list of 70-plus named agents that doesn't include it; `universal` is the fallback that actually works.
+
+If DeepSeek Harness specifically is your driver agent, that is a real, structural reason to lean Spec-Kit over the other two — not a preference, a support-matrix fact.
+
 ## What it cost
 
 Pulled from the actual session transcripts of every `claude` invocation across all three tool runs — real token counts, not estimates:
