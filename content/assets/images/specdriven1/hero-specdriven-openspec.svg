@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <circle cx="60" cy="60" r="58" fill="#1a2b4b" />
+
+  <!-- Flat calculator, left -->
+  <rect x="10" y="26" width="34" height="68" rx="2" fill="#ffffff" opacity="0.95"/>
+  <rect x="15" y="32" width="24" height="12" fill="#1a2b4b" opacity="0.85"/>
+  <rect x="15" y="50" width="5" height="5" fill="#1a2b4b" opacity="0.7"/>
+  <rect x="23" y="50" width="5" height="5" fill="#1a2b4b" opacity="0.7"/>
+  <rect x="31" y="50" width="5" height="5" fill="#1a2b4b" opacity="0.7"/>
+  <rect x="15" y="60" width="5" height="5" fill="#1a2b4b" opacity="0.7"/>
+  <rect x="23" y="60" width="5" height="5" fill="#1a2b4b" opacity="0.7"/>
+  <rect x="31" y="60" width="5" height="5" fill="#1a2b4b" opacity="0.7"/>
+  <rect x="15" y="70" width="5" height="5" fill="#1a2b4b" opacity="0.7"/>
+  <rect x="23" y="70" width="5" height="5" fill="#1a2b4b" opacity="0.7"/>
+  <rect x="31" y="70" width="5" height="5" fill="#1a2b4b" opacity="0.7"/>
+  <rect x="15" y="80" width="21" height="5" fill="#1a2b4b" opacity="0.7"/>
+
+  <!-- Arrow, proposal becoming spec -->
+  <line x1="50" y1="60" x2="68" y2="60" stroke="#80deea" stroke-width="2.4" opacity="0.9"/>
+  <polygon points="68,55 76,60 68,65" fill="#80deea" opacity="0.9"/>
+
+  <!-- Spec document, right, with delta markers -->
+  <path d="M82 26 H100 L108 34 V94 H82 Z" fill="#ffffff" opacity="0.95"/>
+  <path d="M100 26 V34 H108 Z" fill="#4fc3f7" opacity="0.85"/>
+  <text x="87" y="50" font-family="monospace" font-size="9" fill="#2e7d32">+ Programmer</text>
+  <line x1="87" y1="52" x2="103" y2="52" stroke="#2e7d32" stroke-width="1.4" opacity="0.8"/>
+  <text x="87" y="66" font-family="monospace" font-size="9" fill="#2e7d32">+ Statistics</text>
+  <line x1="87" y1="68" x2="103" y2="68" stroke="#2e7d32" stroke-width="1.4" opacity="0.8"/>
+  <line x1="87" y1="78" x2="103" y2="78" stroke="#1a2b4b" stroke-width="1.4" opacity="0.5"/>
+  <line x1="87" y1="84" x2="99" y2="84" stroke="#1a2b4b" stroke-width="1.4" opacity="0.5"/>
+</svg>
