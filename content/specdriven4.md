@@ -45,6 +45,58 @@ This is where the three tools stopped resembling each other most.
 
 Ranked by how much verification actually happened without my asking for a second pass: BMAD ran automatically every time; Spec-Kit ran only when I re-invoked it, but iterated until clean and caught its own spec's math error along the way; OpenSpec ran zero times after archive, by design.
 
+## Who can actually read the documentation
+
+A claim worth checking directly against our own artifacts, because it is easy to assert and easy to get backwards: which tool's documentation is written for a person, and which for the agent implementing it.
+
+**All three core specs turned out to read the same way — clean prose, no code.** OpenSpec's archived spec:
+
+```markdown
+## Requirement: Base mode selection
+The system SHALL provide a control to switch the active calculation base
+among Decimal, Hexadecimal, Octal, and Binary...
+```
+
+Spec-Kit's `spec.md`, by explicit enforced rule — its own pre-planning checklist requires *"No implementation details," "Written for non-technical stakeholders"* — reads indistinguishably:
+
+```markdown
+### User Story 1 - Enter and view numbers in another base (Priority: P1)
+A user switches the calculator into Programmer Mode and selects Binary, Octal,
+or Hexadecimal. They enter a number using only the digits valid for that
+base and see it displayed correctly.
+```
+
+Where the three tools actually diverge is what surrounds that clean core, and what happens to it afterward.
+
+**Spec-Kit separates audiences into different files, most rigorously of the three — at the cost of volume.** Its `spec.md` stays clean, but four more files sit beside it, and they are unambiguously written for the implementer, not a stakeholder:
+
+```markdown
+# Contract: `CalculatorEngine` public API
+| Field | Type | Description |
+|---|---|---|
+| `mode` | `"standard" \| "programmer"` | **New.** Current calculator mode. |
+```
+
+That split is a real strength — a non-technical reviewer never has to open `contracts/` or `research.md` — but the volume is a real, independently documented cost. A [genuine Spec-Kit usage report](https://github.com/github/spec-kit/issues/860) describes *"uncontrolled complexity escalation... 420 lines → 873 lines for similar features," "no guidance on 'appropriate size,'"* on real projects — a pattern our two small features didn't trigger, but a fair thing to weigh in.
+
+**BMAD keeps everything in one file, marked but not separated.** Its `SPEC.md` puts human intent and engineering detail back to back:
+
+```markdown
+## Intent
+**Problem:** The calculator only operates in decimal; users who need quick
+binary/octal/hex conversions... have no way to switch bases.
+
+## Code Map
+- `calculator-logic.js` -- `CalculatorEngine`: add `base` state (default 10)
+  and `setBase`...
+```
+
+The `<frozen-after-approval>` tag wrapping the human-owned section is a genuinely useful boundary marker — it tells a reader exactly where to stop if that is all they need — but it is a marker inside one document, not a separate file you could hand a stakeholder without the engineering detail riding along underneath it.
+
+**Only OpenSpec produces something that stays true after the work is done.** Spec-Kit's and BMAD's specs live in their own per-feature folder and stay there; nothing merges them into a whole-system view. OpenSpec's delta model does exactly that — both archived changes in this series folded cleanly into one evolving `openspec/specs/` directory, so a team member arriving cold, months later, can open one file per capability and get an accurate answer with no changelog-archaeology required. That is a different, and arguably more valuable, kind of readability than "clean prose at planning time," and it is the one none of this series' comparisons captured until the archive step actually got tested.
+
+(One external comparison making the rounds claims — using a citation I checked and could not verify — that Spec-Kit's output is "hard to read for non-technical reviewers (BAs/QA)." Our own artifacts don't support that as stated: its `spec.md` is the most rule-enforced human-safe document of the three. The real, checkable version of that concern is the volume risk above, not the register of the spec itself.)
+
 ## Operational friction, running all three the same way
 
 None of the three tools' own slash-command skills declared enough pre-authorization to run start-to-finish without me approving something, but the shape of the friction differed:
