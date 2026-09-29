@@ -145,7 +145,7 @@ A framing worth keeping, refined against everything above:
 
 Not "which is best" in the abstract — which is what the article itself was right to avoid too. Grounded in what actually happened across six full feature cycles:
 
-- **Want the fastest, cheapest path to a working, documented change, and you are comfortable owning your own judgment calls without being asked?** OpenSpec. Its documented-but-silent decisions are a real trade-off, not a flaw, and the delta-spec model held up honestly under the one test I could give it.
+- **Want the fastest, cheapest path to a working, documented change, and you are comfortable owning your own judgment calls without being asked?** OpenSpec. It is fastest and cheapest largely *because* it skips both things that cost the other two tools time, turns, and money: asking you anything, and checking its own work after the fact. That is a real, honest trade-off, not a flaw — but it means the cost advantage and the verification gap are the same decision, not two separate facts about the tool.
 - **Want the most rigorous, most conventional process, with an enforced gate and a workflow that keeps checking itself until it can prove correctness?** Spec-Kit. It caught the most surprising bug in this whole series — a contradiction in its own earlier output — before any code existed.
 - **Want to be asked rather than guessed for, and want verification to happen automatically rather than on your own initiative?** BMAD. It is the heaviest to set up and the most expensive of the three in our own runs, and that cost bought something real: the only tool that treats "check whether this is actually a bug before fixing it" as seriously as "find bugs."
 
