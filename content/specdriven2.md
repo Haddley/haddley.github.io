@@ -128,4 +128,94 @@ The most concrete evidence yet that the constitution is not just documentation s
 
 That is a direct, causal line from a decision made three steps earlier — with no input from me — to a concrete difference in this step's output. OpenSpec's context field never got to demonstrate anything like that, because I left it empty and it simply did nothing. Here, "empty" still produced a governing document, and that document is now visibly steering what gets built.
 
-Next: `/speckit-implement`, to see whether the code matches what all of this planning promised.
+## Implementing it
+
+```PROMPT
+/speckit-implement
+```
+
+Same approval wall as plan and tasks — `check-prerequisites.sh` needed running first. This time I told it upfront, in the same turn I fed the script's output back, that I would not be able to approve anything further interactively, and to write down whatever it needed run instead of stalling again. It adapted: implemented all 21 code and test tasks unprompted, then correctly stopped at the three verification tasks rather than guessing:
+
+> *"I can't run commands myself this session, so three verification tasks are left open for you to run and report back... expect all the original Standard Mode tests plus ~20 new Programmer Mode tests to pass."*
+
+I ran the tests myself — 29/29 pass — and walked the browser through it:
+
+![](assets/images/specdriven2/speckit-programmer-default.png)
+*Programmer Mode's default state — Standard/Programmer and DEC/HEX/OCT/BIN as plain buttons, with no visual indication of which is active*
+
+![](assets/images/specdriven2/speckit-programmer-hex.png)
+*255 in Decimal becomes FF on switching to Hexadecimal — matches the spec*
+
+![](assets/images/specdriven2/speckit-programmer-negative.png)
+*3 − 5 shows -2 — sign-magnitude, exactly as `research.md` chose*
+
+One real, honest gap I noticed: unlike OpenSpec's implementation, invalid digit keys here are **not visually disabled** — A–F look identical whether they are valid or not for the active base. I checked whether that was actually a bug (clicking "A" while in Decimal mode) — it was not; the press was a genuine no-op, matching the passing test suite. I asked the session whether this was in scope. It pointed me straight to a decision I had not yet read in `research.md`:
+
+> *"Validating at the UI layer (disabling/hiding invalid buttons) — rejected as the only guard: FR-003 requires that invalid presses 'have no effect,' which the logic layer must guarantee independent of what the UI renders... UI affordances... are an optional, separate nicety not required by any functional requirement or acceptance scenario, so it is left out per Constitution V (YAGNI)."*
+
+This is one of the more interesting head-to-head moments in the whole comparison so far: **both tools explicitly considered disabling invalid keys in the DOM, and picked opposite defaults**, each with stated reasoning. OpenSpec's design.md chose DOM-level disabling because "the UI itself communicates what's valid." Spec-Kit's research.md rejected it as scope creep beyond what the functional requirement literally asks for. Neither is a mistake — they are different defaults about how much a spec-driven tool should build beyond the letter of the request, and it is worth knowing which one a given team would prefer before picking a tool.
+
+## Converging on it
+
+Spec-Kit's workflow does not end at implement. `/speckit-converge` checks the actual code against every requirement, success criterion, acceptance scenario, and constitution principle, and appends new tasks for whatever it finds missing — closer to OpenSpec's sync+archive combined with a second opinion than to anything OpenSpec actually does.
+
+```PROMPT
+/speckit-converge
+```
+
+**Round 1** found two real gaps, both test-coverage, no code issues: chained operators in a non-decimal base were never explicitly tested, and neither was Clear preserving the active mode/base. I ran `/speckit-implement` again to close them — 31/31 tests passed afterward.
+
+```PROMPT
+/speckit-converge
+```
+
+**Round 2** found something more serious — a real bug, not a coverage gap:
+
+> *"T026 (HIGH, contradicts FR-007): division in Programmer Mode doesn't truncate, so an inexact quotient like Binary '11' ÷ '10' renders as '1.1', a fractional value, which breaks the 'integers only' guarantee."*
+
+I reproduced it independently before trusting the claim:
+
+```bash
+node -e '
+import("./calculator-logic.js").then(({CalculatorEngine}) => {
+  const c = new CalculatorEngine();
+  c.setMode("programmer"); c.setBase(2);
+  c.inputDigit("1"); c.inputDigit("1");
+  c.setOperator("÷");
+  c.inputDigit("1"); c.inputDigit("0");
+  c.equals();
+  console.log(c.display);
+});'
+```
+
+```
+1.1
+```
+
+Confirmed — a genuine, reproducible defect that had survived the first implement pass, the checklist, the Constitution Check, and the first convergence round. I fixed it rather than just noting it: `Math.trunc(a / b)` in the Programmer Mode division path, Standard Mode untouched, plus the ten missing base-switch-pair tests converge also flagged. Verified after:
+
+```
+3 (binary 11) / 2 (binary 10) in Programmer/Binary, AFTER FIX = 1
+```
+
+```bash
+npm test
+```
+
+```
+ℹ tests 42
+ℹ pass 42
+ℹ fail 0
+```
+
+**Round 3**, after the fix:
+
+```PROMPT
+/speckit-converge
+```
+
+> *"✅ Converged — the implementation satisfies the spec, plan, and tasks... Findings by gap type: 0 missing / 0 partial / 0 contradicts / 0 unrequested."*
+
+Three rounds to get there, and the second one caught something real — a genuine integer-only violation that every earlier gate (checklist, Constitution Check, first implement, first convergence pass) had missed. That is the strongest evidence in either tool's favor so far that verification-after-the-fact catches things planning-before-the-fact does not, and it is a capability OpenSpec's workflow — propose, apply, sync, archive — simply does not have a step for. OpenSpec never re-checks a finished change against its own spec; once archived, it is done. Spec-Kit iterates until it can prove otherwise.
+
+Next: Statistics Mode, on the same repo — to see whether convergence catches something on a feature that starts from a codebase Spec-Kit has now already shaped once.
