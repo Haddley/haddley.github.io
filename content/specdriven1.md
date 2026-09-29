@@ -1,13 +1,13 @@
 ---
 title: "Spec-Driven AI Tools"
 part: 1
-description: "Trying OpenSpec's delta-spec workflow against a flat four-function calculator: installing it, leaving its project context empty on purpose, and setting up two feature proposals to see whether its 'living source of truth' claim holds up"
+description: "Running OpenSpec's full propose-apply-sync-archive cycle twice, for a Programmer Mode and a Statistics Mode on a plain-JS calculator, to see whether its delta specs really do become a living, accurate source of truth"
 date: "2026-09-29"
 categories: ["AI"]
 tags: "openspec, spec-driven-development, claude-code, agentic-coding, delta-specs"
 image: "/assets/images/specdriven1/hero-specdriven-openspec.svg"
 slug: "specdriven1"
-hidden: true
+hidden: false
 ---
 
 I read [Ran the Builder's honest take on three spec-driven AI tools](https://ranthebuilder.cloud/blog/i-tested-three-spec-driven-ai-tools-here-s-my-honest-take) and wanted to find out for myself whether the workflows hold up, rather than take the scores at face value. This is the first of four posts: one each for [OpenSpec](https://github.com/Fission-AI/OpenSpec), [Spec-Kit](https://github.com/github/spec-kit), and [BMAD](https://github.com/bmad-code-org/BMAD-METHOD), then a comparison. Same starting project and the same feature requests each time, so the results are actually comparable, not three unrelated write-ups.
@@ -191,4 +191,69 @@ Specs: ✓ Already synced to main specs
 
 The change folder moved from `openspec/changes/add-programmer-mode/` to `openspec/changes/archive/2026-09-29-add-programmer-mode/` — git recognized it as a pure rename — and `openspec/specs/programmer-mode/spec.md` stayed exactly where sync put it. That is the whole promise, actually delivered: a proposal that started as a delta is now indistinguishable, in the main specs directory, from documentation that was always accurate.
 
-Next: a second proposal, Statistics Mode, on top of this — the real test of whether `specs/` stays coherent across more than one archived change, and the one place a `MODIFIED` requirement could plausibly show up.
+## Proposing Statistics Mode
+
+```PROMPT
+/opsx:propose Add a Statistics Mode, like calculators have had since Windows 7 — enter a sequence of numbers and compute sum, average, and standard deviation.
+```
+
+Again, no clarifying question. This time it told me explicitly why:
+
+> *"I based this directly on the existing `programmer-mode` capability's precedent in this repo (same architecture, same flat UI aesthetic, same style of documenting judgment calls in design.md) rather than asking you to confirm details like the standard-deviation formula — that choice and its rationale are recorded in design.md."*
+
+That is a real, observable consequence of `specs/` already holding one archived capability: the second proposal used the first as precedent instead of deciding from nothing. The judgment call I was watching for — sample vs. population standard deviation, since I never specified which — got the same treatment as Programmer Mode's word-size decision: a real Windows Calculator Statistics box actually exposes both (`s` and `σ`), but this proposal picked population only, and said exactly why:
+
+> *"Population standard deviation is chosen because it is defined for every non-empty data set, including `n = 1` (result `0`), whereas sample standard deviation divides by zero at `n = 1` and would need special-casing."*
+
+It also flagged a risk against itself, unprompted: disabling the operator and base-toggle keys is DOM-layer only (matching Programmer Mode's precedent), so calling `engine.setOperator()` directly while Statistics mode is active would not actually be blocked at the engine level. It accepted that gap deliberately rather than silently, on the grounds that the DOM never exposes those buttons as clickable while disabled.
+
+## Applying it
+
+```PROMPT
+/opsx:apply add-statistics-mode
+```
+
+Different behavior from the Programmer Mode apply run, on the exact same non-interactive constraint. Last time, when its `npm test` call got auto-declined, it hand-traced the logic and self-declared complete with a caveat. This time it stopped mid-flow and asked directly:
+
+> *"`node` execution needs your approval to run the test suite — could you approve the `npm test` command when prompted, or let me know if you'd rather I verify the logic differently?"*
+
+All the code was already written to disk when it stopped — engine, UI, and test file — it just had not checked the boxes in `tasks.md` yet. I ran the tests myself:
+
+```bash
+npm test
+```
+
+```
+ℹ tests 46
+ℹ pass 46
+ℹ fail 0
+```
+
+All 46 pass — the 29 from before plus 17 new ones. I told it so in a follow-up turn, and it finished marking `tasks.md` and updating the README, again flagging honestly that it could not verify the browser UI itself. So I did:
+
+![](assets/images/specdriven1/statistics-mode-active.png)
+*Statistics mode active: n=0, Add/Sum/Avg/Std keys present, and — as specified — the arithmetic operators, equals, and the DEC/HEX/OCT/BIN base toggle are all disabled*
+
+I entered `2`, `4`, and `6`, pressing Add after each:
+
+![](assets/images/specdriven1/statistics-mode-stddev.png)
+*After Add ×3 (n=3) and pressing Std: 1.6329931619 — the population standard deviation of {2, 4, 6}, matching the spec's scenario to six decimal places*
+
+It matches. Two genuinely different apply runs against the same command, same repo, same non-interactive constraint — one self-declared with a caveat, one stopped and asked — a reminder that these are stochastic sessions, not a fixed script, even when the surrounding conditions are identical.
+
+## Sync and archive, the second time
+
+`/opsx:sync add-statistics-mode` created `openspec/specs/statistics-mode/spec.md` the same way as before — verbatim content, headers reformatted, `validate --specs` passing. `openspec/specs/` now holds two capabilities, `programmer-mode` and `statistics-mode`, from two separately archived changes, each still reading as accurate documentation of what the calculator actually does.
+
+`/opsx:archive add-statistics-mode` did **not** pause to ask for confirmation this time — it went straight to archiving, unlike the Programmer Mode run, where everything was equally clean and it still stopped to check. Same command, same clean-checks situation, different behavior. Whatever is driving that is not visible from the outside, and it is worth knowing about before trusting either behavior as "how archive works."
+
+## Where this leaves OpenSpec
+
+Two proposals, two full propose → apply → sync → archive cycles, forty-six tests, all real, all passing, all screenshotted. A few things I would not have predicted from the source article alone:
+
+- **"Assumes context, adds unstated rationale" undersells it.** Every judgment call I watched it make — 32-bit word size, overflow wraparound, population over sample standard deviation, DOM-only key disabling — came with a named alternative it considered and rejected, in a dedicated Decisions section. It did not ask me, but it did not hide its reasoning either. Whether that is good enough is a real trade-off, not a defect: reading a `design.md` after the fact is slower than being asked up front, but it leaves an audit trail a quick question would not.
+- **The "living source of truth" claim held up**, for the case I tested: two archived changes, two accumulated capabilities, `specs/` reading as accurate both times. I did not get to see its more interesting claim — merging a `MODIFIED` requirement without losing an existing scenario — because neither proposal touched the same capability twice.
+- **Run-to-run behavior varied more than I expected**, on identical commands against identical repo state: one `apply` self-declared with a caveat, the other stopped and asked; one `archive` paused for confirmation, the other did not. None of this was wrong, but it means "here is what OpenSpec does" is really "here is what it did in this run" — worth keeping in mind for Spec-Kit and BMAD too.
+- **The only real gap was mine, not the tool's**: running non-interactively meant `apply` genuinely could not verify its own work, which is exactly why I ran `npm test` and clicked through the browser myself both times rather than taking its word for it.
+
+Next: [Spec-Kit](https://github.com/github/spec-kit), on the same two feature requests, against a fresh copy of the same baseline calculator.
