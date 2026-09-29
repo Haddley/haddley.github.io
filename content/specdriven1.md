@@ -96,4 +96,63 @@ schema: spec-driven
 
 I am leaving it empty on purpose. Filling it in would mean telling the tool up front to use vanilla JS, keep the logic/DOM split, and so on — handing it answers to some of the exact ambiguities I actually want to watch it navigate on its own. A team adopting OpenSpec on day one, on a small project, often has not written that file yet either.
 
-Next: the first proposal, Programmer Mode.
+## Proposing Programmer Mode
+
+```PROMPT
+/opsx:propose Add a Programmer Mode, like calculators have had since Windows 7 — support switching to binary, octal, and hexadecimal, and calculating in those bases.
+```
+
+OpenSpec did not ask a single clarifying question. It read the repo, made a `add-programmer-mode` change, and wrote four artifacts in one pass: `proposal.md`, a spec delta at `specs/programmer-mode/spec.md` (seven requirements, seventeen scenarios), `design.md`, and `tasks.md` (thirteen tasks across four groups). It finished by telling me: *"All artifacts needed for implementation are ready. When you are ready, run `/opsx:apply`."*
+
+That matters, because the request I gave it left real decisions open, and it made every one of them itself:
+
+- **Word size**: real Windows Calculator lets you pick BYTE/WORD/DWORD/QWORD. I never mentioned bit width at all. OpenSpec chose a fixed, non-selectable **32-bit signed two's-complement** word, and said why in `design.md`: *"32-bit is chosen over 64-bit because JS bitwise-style integer math is naturally 32-bit (`value | 0` truncates to int32), keeping the implementation simple and avoiding `BigInt`."* It even named the alternative it rejected (arbitrary-precision `BigInt`) and why.
+- **Overflow**: arithmetic that exceeds the 32-bit range wraps using two's-complement semantics rather than erroring or clamping — again, a real design decision I never specified, documented with its own rationale and a named `[Risk]`/mitigation pair in the "Risks / Trade-offs" section.
+- **Leaving Decimal with a fraction on screen**: truncates toward zero, "matches universal Programmer-mode calculator behavior," and is called out as lossy and one-way with no undo.
+- **What decimal typed in one base means after a switch**: it explicitly considered and rejected re-parsing the on-screen digits as if freshly typed in the new base — "confusing and not how Windows Calculator behaves" — in favor of one true internal integer value, redisplayed per base.
+- **Scope itself**: it wrote an explicit **Non-goals** section into `proposal.md` — no bitwise operators, no word-size selector, no MOD/rotate — reasoning that from the request's own wording ("switching... and calculating in those bases") rather than asking me to confirm scope.
+
+This is worth sitting with, because it complicates the source article's framing rather than confirming it. "Assumes context and adds unstated rationale" is not quite what happened here: the rationale was stated, in detail, with alternatives named and rejected, in a dedicated Decisions section. What actually happened is closer to: it made real, consequential judgment calls without asking me first, but documented every one well enough that I could see exactly where I would disagree, before a single line of code existed. Whether "written down but not asked" is good enough depends on how much you trust reading a `design.md` over being interrupted with a question — a real trade-off, not a defect.
+
+## Applying it
+
+```PROMPT
+/opsx:apply add-programmer-mode
+```
+
+Thirteen of thirteen tasks came back marked complete: base state and `setBase()`/`toRadixString()` in `calculator-logic.js`, the DEC/HEX/OCT/BIN mode toggle and hex digit keys in `index.html`/`style.css`, key-disabling logic in `calculator.js`, a new `test/programmer-mode.test.js`, and an updated README.
+
+It also told me something I had not expected, and did not try to hide:
+
+> *"I could not run `npm test` or load the page in a browser to verify — every Bash command in this session is being auto-declined rather than prompting you for approval... So while I hand-traced every new test scenario against the implementation logic and they check out arithmetically, this has not been executed. Please run `npm test` yourself before considering this done."*
+
+That is a consequence of how I ran it — a non-interactive session with no one available to approve commands outside the `openspec:*` pattern the propose/apply commands pre-authorize — not a flaw in OpenSpec's reasoning. But it is a genuinely useful thing to have surfaced: it marked every task complete in `tasks.md` on the assumption verification would pass, and separately, honestly, flagged that it had not actually confirmed that. I ran the tests myself:
+
+```bash
+npm test
+```
+
+```
+ℹ tests 29
+ℹ pass 29
+ℹ fail 0
+```
+
+All 29 pass — the original twelve plus seventeen new ones, hand-traced correctly. I then loaded the page and clicked through it myself.
+
+![](assets/images/specdriven1/programmer-mode-default.png)
+*Programmer Mode's default state — Decimal active, the new mode row above the keypad, hex-only keys A–F already greyed out*
+
+I typed `255` in Decimal and switched to Hexadecimal:
+
+![](assets/images/specdriven1/programmer-mode-hex-ff.png)
+*255 becomes FF on switching to Hexadecimal — exactly the scenario `spec.md` specified, and the decimal point key is now disabled*
+
+Then switched straight to Binary:
+
+![](assets/images/specdriven1/programmer-mode-binary-disabled.png)
+*255 as 11111111 in Binary, with digits 2–9 and A–F all disabled — the per-base digit restriction working as designed, not just as specified*
+
+It matches the spec exactly, including the detail I would have expected to trip something up: positive values are not zero-padded to 32 bits (`FF`, not `000000FF`), only negative values fill the full word, which is what `toRadixString` actually does and what the spec's own scenario called for.
+
+Next: `/opsx:sync` and `/opsx:archive`, to see whether `openspec/specs/` actually becomes the living, accurate documentation OpenSpec promises — before adding a second proposal, Statistics Mode, on top of it.
