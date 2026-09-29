@@ -82,9 +82,11 @@ None of that was surprising in hindsight. The original documents left a lot of r
 
 The problems went away once I added an `ARCHITECTURE.md` file and put a lot more detail into `PRD.md` and `PDD.md`:
 
-- **`PRD.md`** now pins down every number, every on-screen string and every control. It ends with an acceptance checklist that I can run from the browser console.
-- **`PDD.md`** now explains each design decision, lists every bug the earlier builds hit and how the design prevents it, and includes the complete source for every file.
-- **`ARCHITECTURE.md`** is new. It lists the exact files, the exact names each file exports, and seventeen numbered build steps, each with a check to do before moving on to the next one.
+- **[`PRD.md`](https://github.com/Haddley/haddley.github.io/blob/main/public/invaders-deepseek-harness-ollama/PRD.md)** now pins down every number, every on-screen string and every control. It ends with an acceptance checklist that I can run from the browser console.
+- **[`PDD.md`](https://github.com/Haddley/haddley.github.io/blob/main/public/invaders-deepseek-harness-ollama/PDD.md)** now explains each design decision, lists every bug the earlier builds hit and how the design prevents it, and includes the complete source for every file.
+- **[`ARCHITECTURE.md`](https://github.com/Haddley/haddley.github.io/blob/main/public/invaders-deepseek-harness-ollama/ARCHITECTURE.md)** is new. It lists the exact files, the exact names each file exports, and seventeen numbered build steps, each with a check to do before moving on to the next one.
+
+All three documents are linked above, so you can read them or use them to run the same build with your own local model.
 
 The biggest change is that the plan now lives in the documents rather than in the model. A small model does not have to decide what to build next, what to call things, or how to serve the page. It only has to follow the next step and check its work. I tested the documents by rebuilding the game from nothing but the code in `PDD.md`, and that build passed every check in the acceptance list.
 
@@ -146,12 +148,16 @@ The harder lesson was about the documents. A specification that is good enough f
 
 The trade-off is time. The cloud builds in my earlier posts finished in minutes. The local model took just over an hour for the same game. It cost nothing, though, and no code or prompt ever left my machine.
 
-**Try it yourself:** [play the game](/invaders-deepseek-harness-ollama/index.html) · [DeepSeek Harness site](https://deepseek-ai.github.io/deepseek-harness/) · [Ollama](https://ollama.com)
+**Try it yourself:** [play the game](/invaders-deepseek-harness-ollama/index.html) · [PRD.md](https://github.com/Haddley/haddley.github.io/blob/main/public/invaders-deepseek-harness-ollama/PRD.md) · [PDD.md](https://github.com/Haddley/haddley.github.io/blob/main/public/invaders-deepseek-harness-ollama/PDD.md) · [ARCHITECTURE.md](https://github.com/Haddley/haddley.github.io/blob/main/public/invaders-deepseek-harness-ollama/ARCHITECTURE.md) · [DeepSeek Harness site](https://www.deepseek.com/harness/en/) · [Ollama](https://ollama.com)
 
 ## References
 
 - [DeepSeek Harness](/posts/deepseekharness/) — part 1, the original cloud-API build this one is compared against
 - [Space Invaders](/posts/invaders/) — the first three builds of the same game with OpenCode and Claude Code
-- [DeepSeek Harness site](https://deepseek-ai.github.io/deepseek-harness/) · [GitHub repository](https://github.com/deepseek-ai/deepseek-harness)
+- [DeepSeek Harness site](https://www.deepseek.com/harness/en/) · [GitHub repository](https://github.com/deepseek-ai/deepseek-harness)
+- [Configure models](https://deepseek-harness.github.io/deepseek-harness/en/guide/providers) — the DeepSeek Harness guide to model providers, including custom OpenAI-compatible ones like Ollama
 - [Ollama](https://ollama.com) — the local model server that provides the OpenAI-compatible endpoint
 - [Play the game](/invaders-deepseek-harness-ollama/index.html) — the Space Invaders build produced by qwen3-coder:30b
+- [PRD.md](https://github.com/Haddley/haddley.github.io/blob/main/public/invaders-deepseek-harness-ollama/PRD.md) — the product requirements: every number, string and control, plus the acceptance checklist
+- [PDD.md](https://github.com/Haddley/haddley.github.io/blob/main/public/invaders-deepseek-harness-ollama/PDD.md) — the product design: design decisions, lessons learned and the complete source code
+- [ARCHITECTURE.md](https://github.com/Haddley/haddley.github.io/blob/main/public/invaders-deepseek-harness-ollama/ARCHITECTURE.md) — the file layout, export contract and seventeen numbered build steps
