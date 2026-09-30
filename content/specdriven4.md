@@ -45,6 +45,8 @@ This is where the three tools stopped resembling each other most.
 
 Ranked by how much verification actually happened without my asking for a second pass: BMAD ran automatically every time; Spec-Kit ran only when I re-invoked it, but iterated until clean and caught its own spec's math error along the way; OpenSpec ran zero times after archive, by design.
 
+This is not just our own finding. An [independent, much larger comparison](https://www.youtube.com/watch?v=kV3gnv_Npxk) — a real multi-phase Python application, a different implementing model (Claude Opus 4.7), nothing to do with our calculator — found the identical asymmetry: OpenSpec's own verify/validate step *"mostly found nothing,"* while Spec-Kit's analyze step *"consistently surfaced real issues before implement ran,"* called *"the single best polish helper"* that reviewer had used in either framework. Two unrelated tasks, two independent runs, the same gap.
+
 ## Who can actually read the documentation
 
 A claim worth checking directly against our own artifacts, because it is easy to assert and easy to get backwards: which tool's documentation is written for a person, and which for the agent implementing it.
@@ -129,6 +131,8 @@ Pulled from the actual session transcripts of every `claude` invocation across a
 
 Two honest caveats before trusting that table too far. First, it measures what it actually cost *us* to run this investigation, friction included — every non-interactive Bash-approval workaround was an extra round-trip, and BMAD's own multi-agent review architecture spawns more calls by design than a single-agent tool ever would, so part of OpenSpec's advantage here is "asked for fewer workarounds," which is a real advantage but not purely a measure of raw model cost. Second, these numbers are not directly comparable to the source article's own figures — different model generation, different task, different measurement method (per-tool total there, per-session-directory sum here). The article reports OpenSpec at $95 total (the highest *implementation* cost of its non-BMAD-Full group, in fact), Spec-Kit at $75, BMAD Quick at $85, and BMAD Full — a heavier mode we never exercised, since our `bmad-build` runs stayed on its lightweight path both times — at $200. Its own stated conclusion: *"BMAD Quick, Spec-Kit, and OpenSpec land in the same ballpark on both speed and cost. The differences are noise."* Our numbers disagree with the article's exact rank order between OpenSpec and Spec-Kit, but land on a similar shape: three tools within roughly the same order of magnitude, one heavier mode of one tool (BMAD Full, which we did not test) as the real outlier.
 
+A third, independent data point, for calibration: the [same OpenSpec-vs-Spec-Kit comparison](https://www.youtube.com/watch?v=kV3gnv_Npxk) cited above measured Spec-Kit costing 81% more than OpenSpec and using about 69% more tokens, on a real multi-phase application — a real gap, but nowhere near our own measured 2.6–2.7×. That smaller, independently-measured number is a useful check on our own: it supports reading our own multiplier as inflated by this specific investigation's friction — approval-wall workarounds, a couple of my own mistakes — rather than as a clean measure of what these tools cost to run in general.
+
 ## Against the source article
 
 Worth stating plainly where independently running all three actually changed my view, rather than confirming what I read first.
@@ -145,7 +149,7 @@ Worth stating plainly where independently running all three actually changed my 
 
 A framing worth keeping, refined against everything above:
 
-**Spec-Kit reads as the most conventionally rigorous.** GitHub-backed, the heaviest artifact set of the three (`spec.md`, `plan.md`, `research.md`, `data-model.md`, `contracts/`, `quickstart.md`, `tasks.md`, plus a pre-planning quality checklist), and the only one with a literal enforced gate — the Constitution Check, a pass/fail table checked against every principle before planning can proceed. Closest to a conventional, audited SDLC of the three, and it earned that with the article's spec math-error catch and the division-truncation bug, both real.
+**Spec-Kit reads as the most conventionally rigorous.** GitHub-backed, the heaviest artifact set of the three (`spec.md`, `plan.md`, `research.md`, `data-model.md`, `contracts/`, `quickstart.md`, `tasks.md`, plus a pre-planning quality checklist), and the only one with a literal enforced gate — the Constitution Check, a pass/fail table checked against every principle before planning can proceed. Closest to a conventional, audited SDLC of the three, and it earned that with the article's spec math-error catch and the division-truncation bug, both real. It shows in adoption too, not just structure: as of today, Spec-Kit sits at **139,453** GitHub stars against OpenSpec's **70,691** — checked directly, not quoted secondhand — roughly double, a ratio an [independent comparison](https://www.youtube.com/watch?v=kV3gnv_Npxk) found holding steady since at least May 2026 (96k vs 47k then). "Mainstream" isn't just a vibe here.
 
 **OpenSpec reads as the lightweight choice**, more precisely: low-ceremony rather than strictly "agile" in the formal sense — nothing about sprints, backlogs, or iteration cadence, just the fastest, cheapest, least-friction path from a plain request to an archived, working, documented change. Its delta-spec model genuinely works: two archived changes accumulated cleanly into a living `specs/` directory that read as accurate both times.
 
@@ -160,3 +164,9 @@ Not "which is best" in the abstract — which is what the article itself was rig
 - **Want to be asked rather than guessed for, and want verification to happen automatically rather than on your own initiative?** BMAD. It is the heaviest to set up and the most expensive of the three in our own runs, and that cost bought something real: the only tool that treats "check whether this is actually a bug before fixing it" as seriously as "find bugs."
 
 All three repos are public and unedited: [github.com/Haddley/specdriven](https://github.com/Haddley/specdriven) — `main` for OpenSpec, `spec-kit` and `bmad` branches for the other two — full commit history from the identical baseline through every propose, plan, build, and review, nothing cleaned up after the fact.
+
+## References
+
+- [OpenSpec vs Spec Kit: Same Brief, Different Roads](https://www.youtube.com/watch?v=kV3gnv_Npxk)
+
+- [The new spec-driven workflow is a mess...](https://www.youtube.com/watch?v=nnUMJX9013Y)

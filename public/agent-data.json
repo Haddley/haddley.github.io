@@ -1,6 +1,46 @@
 {
   "posts": [
     {
+      "slug": "specdriven4",
+      "title": "Spec-Driven AI Tools (Part 4)",
+      "description": "The comparison: what OpenSpec, Spec-Kit, and BMAD each did with the identical calculator and the identical two feature requests — where they genuinely agreed, where they quietly built different products, what it cost, and where the source article held up against running all three myself",
+      "date": "2026-09-30",
+      "categories": [
+        "AI"
+      ],
+      "tags": "openspec, spec-kit, bmad, spec-driven-development, claude-code, agentic-coding"
+    },
+    {
+      "slug": "specdriven3",
+      "title": "Spec-Driven AI Tools (Part 3)",
+      "description": "Running BMAD's spec-build-review cycle twice on the same calculator and requests OpenSpec and Spec-Kit got: it's the only tool that asked instead of silently deciding, and its automatic three-layer review caught four real bugs before I saw them",
+      "date": "2026-09-30",
+      "categories": [
+        "AI"
+      ],
+      "tags": "bmad, spec-driven-development, claude-code, agentic-coding, ai-agent"
+    },
+    {
+      "slug": "specdriven2",
+      "title": "Spec-Driven AI Tools (Part 2)",
+      "description": "Running Spec-Kit's constitution-specify-plan-tasks-implement-converge cycle twice on the same calculator and requests OpenSpec got, including a caught integer-truncation bug and a caught math error in its own spec",
+      "date": "2026-09-29",
+      "categories": [
+        "AI"
+      ],
+      "tags": "spec-kit, spec-driven-development, claude-code, agentic-coding, github"
+    },
+    {
+      "slug": "specdriven1",
+      "title": "Spec-Driven AI Tools (Part 1)",
+      "description": "Running OpenSpec's full propose-apply-sync-archive cycle twice, for a Programmer Mode and a Statistics Mode on a plain-JS calculator, to see whether its delta specs really do become a living, accurate source of truth",
+      "date": "2026-09-29",
+      "categories": [
+        "AI"
+      ],
+      "tags": "openspec, spec-driven-development, claude-code, agentic-coding, delta-specs"
+    },
+    {
       "slug": "deepseekharnessollama",
       "title": "DeepSeek Harness (Part 2)",
       "description": "Checking whether DeepSeek Harness's everything-is-a-plugin claim extends to the model itself: pointing it at a local Ollama-served model through a custom OpenAI-compatible provider, with no DeepSeek API key at all",
@@ -2799,5 +2839,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-09-29T07:45:46.017Z"
+  "generatedAt": "2026-09-29T23:53:18.753Z"
 }
