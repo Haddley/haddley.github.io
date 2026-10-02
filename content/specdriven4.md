@@ -184,3 +184,5 @@ All three repos are public and unedited: [github.com/Haddley/specdriven](https:/
 - [OpenSpec vs Spec Kit: Same Brief, Different Roads](https://www.youtube.com/watch?v=kV3gnv_Npxk)
 
 - [The new spec-driven workflow is a mess...](https://www.youtube.com/watch?v=nnUMJX9013Y)
+
+- [Kent Beck: Software Engineering in the Age of AI | Prodacity 2026](https://www.youtube.com/watch?v=F8fBgDCf2Y4&t=2559s)
