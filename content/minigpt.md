@@ -43,7 +43,7 @@ Guess the next letter:
 
 You said `e`, and you did not have to think about it, because you have read a lot of English. A GPT (short for Generative Pre-trained Transformer) is a machine that plays exactly this game. Given some text, it guesses what comes next. Big models like the ones behind ChatGPT guess the next word, or the next piece of a word. The small model in this post guesses one letter at a time. By "letter" I mean any of the symbols in Shakespeare's text, including the space, the new line, and punctuation marks such as the comma. Either way, guessing what comes next is the only thing it ever does.
 
-So what does my trained model say after `hors`? It gives `e` 74.1%, by far its favourite. It agrees with you. You can try the line yourself in [the live demo](#try-it-my-trained-machine-running-in-your-browser).
+So what does my trained model say after `hors`? It gives `e` 76.6%, by far its favourite. It agrees with you. You can try the line yourself in [the live demo](#try-it-my-trained-machine-running-in-your-browser).
 
 :::brain-power
 Big models guess words, or pieces of words. MiniGPT guesses one letter at a time, which seems simpler and more natural. So why do the big models not use letters too? Keep the question in mind. I come back to it near the end of this introduction.
@@ -941,7 +941,7 @@ This is step 5. `[:, -1, :]` picks the last row, which belongs to working card 3
 
 ## Run my model yourself
 
-Everything in this post can be reproduced with three things: the notebook's Part 1 code, my trained numbers, and the 65 letters in the right order. I ran these steps myself, from scratch, in a fresh copy of the notebook, and the pictures below are that run. Any CPU is fast enough.
+Everything in this post can be reproduced with three things: the notebook's Part 1 code, my trained numbers, and the 65 letters in the right order. The quickest way is my follow-along workbook, which has all three and reproduces every number in this post, step by step, from the letter IDs to the GGUF file: [open it in Colab](https://colab.research.google.com/github/Haddley/haddley.github.io/blob/main/public/minigpt-demo/minigpt_follow_along.ipynb), or [download it](/minigpt-demo/minigpt_follow_along.ipynb). The steps below do the same in the notebook itself. I ran these steps myself, from scratch, in a fresh copy of the notebook, and the pictures below are that run. Any CPU is fast enough.
 
 First, run the notebook's code cells from the top down to the end of section 1.5. That defines `GPTConfig` and the four classes, but builds nothing yet. Then add four new cells.
 
@@ -1017,11 +1017,52 @@ print("".join(chars[i] for i in idx[0].tolist()))
 ![](assets/images/minigpt/run-write.png)
 *200 letters, chosen one spin at a time, after `ROMEO:` and a new line*
 
+### Run it without Python: a GGUF file for llama.cpp
+
+[llama.cpp](https://github.com/ggml-org/llama.cpp) is the program behind many of the tools that run language models on a laptop, and it reads models from a single *GGUF* file: the fixed numbers, plus a note of which design to run and what the tokens are. I exported my model as one, [exhibit.gguf](/minigpt-demo/exhibit.gguf), 3.3 MB, and checked it against PyTorch. On a Mac, these two commands install llama.cpp and make it write:
+
+```bash
+brew install llama.cpp
+llama-completion -m exhibit.gguf -p $'ROMEO:\n' -n 120 --temp 0.8 --top-k 0 --top-p 1.0 --min-p 0
+```
+
+One run of mine wrote:
+
+```
+ROMEO:
+For a duch a signer house?
+
+YORK:
+No ress you taken that is curse.
+
+EXTER:
+Where the bring a pattity mish, ble look no g
+```
+
+llama.cpp has no MiniGPT of its own, but it does run GPT-2, and MiniGPT is built the same way: learned position cards, normalising before attention and before the MLP, biases everywhere, and a separate set of answer cards. So the [export script](/minigpt-demo/export_gguf.py) relabels each set of numbers with the name llama.cpp expects for GPT-2, and makes two adjustments:
+
+- **Query, key, and value recipes go into one grid.** llama.cpp keeps the three recipes stacked, one above the other, as a single 384 × 128 grid.
+- **The answer cards' biases move.** llama.cpp's GPT-2 has no biases on its answer cards, but my model does. The final normalisation adds its own fixed numbers just before the answer cards, so I changed those instead, by exactly the amount that gives every letter the same score as before. Because the 65 answer cards are all different from each other, there is exactly one way to do that, and the scores match to within a millionth.
+
+The tokens are the 65 letters, written the way GPT-2 stores them: the space as `Ġ` and the new line as `Ċ`, so `goo` still becomes 45, 53, 53. llama.cpp also insists on an "end of text" token, which my model never learned. Left to itself, llama.cpp picked token 11, which is `;`, and stopped writing at the first semicolon, so I nominated `$` instead: it appears exactly once in all of Tiny Shakespeare.
+
+I compared all 65 chances from llama.cpp with PyTorch's, for four different texts:
+
+| Text ends with | Top letter | PyTorch | llama.cpp | Biggest difference among all 65 letters |
+|---|---|---|---|---|
+| `goo` | `d` | 96.63% | 96.63% | 0.001 points |
+| `good m` | `y` | 40.81% | 40.80% | 0.013 points |
+| `my kingdom for a hors` | `e` | 76.57% | 76.61% | 0.035 points |
+| `hear me spea` | `k` | 97.97% | 97.96% | 0.001 points |
+
+The tiny differences come from the MLP's bend, GELU: llama.cpp uses a fast approximation of the curve that the notebook calculates exactly. And like PyTorch, llama.cpp stops at 128 letters, because there are no more position cards.
+
 ## Try it yourself
 
 - The paper: [MiniGPT: Rebuilding GPT from First Principles](https://arxiv.org/pdf/2605.17398) (arXiv:2605.17398)
 - Play with a real one: [Transformer Explainer](https://poloclub.github.io/transformer-explainer/) runs GPT-2 in your browser and shows attention and the chances for your own text, and [LLM Visualization](https://bbycroft.net/llm) walks through a small GPT in 3D, one calculation at a time
 - Build one step by step: [MicroGPT Visualized](https://microgpt.jtauber.com/) starts from counting pairs of letters and adds one idea at a time
+- My follow-along workbook: [open it in Colab](https://colab.research.google.com/github/Haddley/haddley.github.io/blob/main/public/minigpt-demo/minigpt_follow_along.ipynb). It runs my trained model and reproduces every number in this post
 - The notebook: [github.com/jibin10/MiniGPT](https://github.com/jibin10/MiniGPT) — open `MiniGPT_Notebook.ipynb` in Colab, or clone it and run it locally, then follow [Run my model yourself](#run-my-model-yourself) to load my trained model. Any CPU will do
 
 The thumbnail for this post adapts the [LLM logo](https://commons.wikimedia.org/wiki/File:LLM-logo.svg) by Conan, from Wikimedia Commons, licensed [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). I recoloured, cropped, and rescaled it for the thumbnail.
