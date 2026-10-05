@@ -3,7 +3,7 @@
     {
       "slug": "minigpt6",
       "title": "MiniGPT (Part 7)",
-      "description": "Sliding-window attention in MLX — why a naive window mask saves nothing, how chunked attention makes it O(T), and where full attention runs out of room on a 64 GB Mac",
+      "description": "Reading a longer row in the same memory: why attention's cost grows with the square of the row, how a sliding window caps it, why writing the window as a mask saves nothing, and training at four times the context, with a follow-along notebook",
       "date": "2026-10-05",
       "categories": [
         "AI"
@@ -13,7 +13,7 @@
     {
       "slug": "minigpt5",
       "title": "MiniGPT (Part 6)",
-      "description": "Knowledge-distillation pre-training at toy scale — training a small MiniGPT against a larger model's token probabilities, why the teacher cannot be Qwen3 or Llama, and the finding that a 33M model that knows the domain beats a 1.5B model that does not",
+      "description": "Learning from a teacher: training a small MiniGPT to copy a bigger model's whole wheel of chances, why the teacher must share the student's pieces, and the finding that a small teacher who knows the stories beats a big one who does not, with a follow-along notebook",
       "date": "2026-10-05",
       "categories": [
         "AI"
@@ -23,7 +23,7 @@
     {
       "slug": "minigpt4",
       "title": "MiniGPT (Part 5)",
-      "description": "Swapping MiniGPT's 2017 Transformer block for the modern one — RMSNorm, rotary position embeddings, SwiGLU, and grouped-query attention — in MLX, then ablating each change to see which one actually matters",
+      "description": "The block inside today's small models: four changes Meta made for Llama (RMSNorm, rotary positions, SwiGLU, and shared keys and values), each turned back off in turn to find out which one actually matters, with a follow-along notebook",
       "date": "2026-10-05",
       "categories": [
         "AI"
@@ -33,7 +33,7 @@
     {
       "slug": "minigpt3",
       "title": "MiniGPT (Part 4)",
-      "description": "Porting the MiniGPT model and training loop from PyTorch to Apple's MLX — unified memory, lazy evaluation, mx.compile, and fused attention — then running both on the same M1 Max and comparing tokens per second and peak memory",
+      "description": "The same machine on a faster engine: rebuilding MiniGPT in Apple's MLX, what one shared pool of memory, lazy calculation, and compiling the training step buy, and a fair race against PyTorch on the same Mac, with a follow-along notebook",
       "date": "2026-10-05",
       "categories": [
         "AI"
@@ -43,7 +43,7 @@
     {
       "slug": "minigpt2",
       "title": "MiniGPT (Part 3)",
-      "description": "Replacing MiniGPT's 65-character tokeniser with a real byte-level BPE — borrowing GPT-2's, training an 8k one, and comparing all three on TinyStories in bits per byte on an Apple M1 Max",
+      "description": "Why big models do not read one letter at a time: cutting text into pieces with byte-pair encoding, what bigger pieces buy and what they cost, and a fair way to score three tokenisers, with a follow-along workbook",
       "date": "2026-10-05",
       "categories": [
         "AI"
@@ -2849,5 +2849,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-05T10:55:57.899Z"
+  "generatedAt": "2026-10-05T12:26:20.328Z"
 }

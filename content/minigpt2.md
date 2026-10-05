@@ -1,7 +1,7 @@
 ---
 title: "MiniGPT"
 part: 3
-description: "Replacing MiniGPT's 65-character tokeniser with a real byte-level BPE — borrowing GPT-2's, training an 8k one, and comparing all three on TinyStories in bits per byte on an Apple M1 Max"
+description: "Why big models do not read one letter at a time: cutting text into pieces with byte-pair encoding, what bigger pieces buy and what they cost, and a fair way to score three tokenisers, with a follow-along workbook"
 date: "2026-10-05"
 categories: ["AI"]
 image: "/assets/images/minigpt2/posts-meta.svg"
@@ -10,171 +10,320 @@ hidden: false
 slug: "minigpt2"
 ---
 
-In [part 1](/posts/minigpt/) and [part 2](/posts/minigpt-grown/) I ran Jibin Joseph's MiniGPT notebook on my Mac Studio. It builds a whole GPT training pipeline in one file, and it uses the simplest possible tokeniser: every distinct character in Tiny Shakespeare becomes one token, for a vocabulary of exactly 65. The notebook is honest that this is a trade-off. There is nothing to train and nothing to inspect, but the model has to learn spelling from individual letters, and a 256-token context window is only a few dozen words.
+At the end of [Part 1](/posts/minigpt/#why-the-big-models-do-not-use-letters), I asked why the big models do not read one letter at a time, the way MiniGPT does. This post finds out, by trying it. I take the bigger MiniGPT from [Part 2](/posts/minigpt-grown/), keep everything about it the same, and change only one thing: how the text is cut into pieces before the machine sees it.
 
-This post changes one thing and holds everything else fixed. The model is the same "stronger" configuration from part 2 — 6 layers, 6 heads, 384-dimensional, 256-token context, weight-tied — and the training loop is the same AdamW schedule with best-validation checkpointing. Only the tokeniser changes. I run three: the character-level one carried over from part 1, OpenAI's GPT-2 tokeniser borrowed unchanged, and a small **byte-pair-encoding** (BPE) tokeniser I train on the training text.
+The code for this post is in [`part3-tokenisers/`](https://github.com/Haddley/minigpt-series/tree/main/part3-tokenisers), and my follow-along workbook runs every step: [open it in Colab](https://colab.research.google.com/github/Haddley/minigpt-series/blob/main/part3-tokenisers/minigpt_follow_along_3.ipynb).
 
-BPE began as a 1994 text-compression trick — repeatedly find the most common pair of adjacent symbols and replace it with a new one — and was adapted for language models by [Sennrich et al. in 2016](https://arxiv.org/abs/1508.07909). OpenAI used it to build the GPT-2 tokeniser, and it is still the standard. Hugging Face's LLM course has a [clear walkthrough of the algorithm](https://huggingface.co/learn/llm-course/en/chapter6/5).
+## The big picture, in plain English
 
-## A bigger, simpler corpus
+### Pieces, not letters
 
-Tiny Shakespeare is about 1 MB. That is enough to show a character model picking up the *shape* of a play, but it is too small and too idiosyncratic to show what a subword tokeniser buys you. I moved to [TinyStories](https://huggingface.co/datasets/roneneldan/TinyStories) — a corpus of short synthetic children's stories written with a deliberately small vocabulary, built by Ronen Eldan and Yuanzhi Li specifically so that small models can produce coherent text. I use the ~22 MB V2 validation file as the corpus and split it 90 / 10, which gives 20,244,048 characters of training text.
+:::brain-power
+How many pieces would you cut this sentence into, if you could choose any pieces you liked?
+
+> Once upon a time, there was a little dog named Spot.
+:::
+
+MiniGPT, as Parts 1 and 2 built it, cuts it into 52 pieces: one for every letter, space, and punctuation mark. You probably thought in words: 11 of them, plus a comma and a full stop. The program that does the cutting is the **tokeniser**, and each piece it produces is a **token**. In Parts 1 and 2, every token was a single letter, so I called each token's card a letter card. From here on, a token can be a whole word, part of a word, or a single letter, so I call its card a **token card**. Nothing else about the cards changes: the tokeniser turns each piece into an ID, and each ID picks its own token card.
+
+![](assets/images/minigpt2/tokenisation.svg)
+*The same words, cut three ways. The machine never sees the letters, only the IDs, so every piece needs its own token card*
+
+### Three ways to cut text
+
+I tried three tokenisers on the same machine:
+
+- **Letters.** One token per character, exactly as in Parts 1 and 2. The text this time contains 91 different characters, so there are 91 token cards.
+- **GPT-2's pieces, borrowed.** The tokeniser OpenAI built for GPT-2 in 2019. It has 50,257 pieces, from single letters up to whole common words, and there is nothing to train: I simply use it.
+- **My own pieces.** A tokeniser I built from the practice text, using the same method as GPT-2's, but stopped at 8,192 pieces.
+
+The method behind the last two is called **byte-pair encoding**, or BPE. It began as a 1994 trick for compressing files, and [Sennrich and others adapted it](https://arxiv.org/abs/1508.07909) for language in 2016.
+
+### How BPE chooses its pieces
+
+BPE starts with single letters as its pieces, and then repeats one simple step: **find the pair of neighbouring pieces that appears most often in the text, and glue it into a new piece.** Every time round, the supply of pieces grows by one. It stops when the supply reaches the size you asked for.
+
+:::pencil Be the tokeniser
+Here is a tiny practice text:
+
+> the cat sat on the mat
+
+Start with every letter and space as its own piece. Then, three times, find the neighbouring pair that appears most often, and glue it together. If two pairs tie, take the one that appears first.
+
+:::answer
+1. `a` + `t` appears 3 times (c**at**, s**at**, m**at**), more than any other pair, so `at` becomes a piece.
+2. Now four pairs tie, each appearing twice: `t` + `h`, `h` + `e`, `e` + space, and `at` + space (c**at** and s**at**, each followed by a space). `t` + `h` comes first, so `th` becomes a piece.
+3. `th` + `e` appears twice, in both copies of *the*, and it comes first among the pairs that tie, so `the` becomes a piece.
+
+After three glues, the text is 15 pieces instead of 22: `the`, space, `c`, `at`, space, `s`, `at`, space, `o`, `n`, space, `the`, space, `m`, `at`. BPE found the commonest word and the commonest ending without being told what a word is.
+:::
+:::
+
+On the real practice text, about 20 million letters of children's stories, my tokeniser's first glues are just as sensible. The very first is a space followed by `t`, then `h` + `e`, then a space followed by `a`, then a space followed by `s` and by `w`, then `n` + `d`. Within a dozen glues it has whole words: ` the`, ` to`, and ` and`, each with its space attached to the front. By 8,192 pieces it has a token for almost every common word, plus the fragments it needs to spell the rest.
+
+:::watch-it
+In printed lists of BPE pieces, a space attached to the front of a piece often shows up as `Ġ`, so ` the` is written `Ġthe`. That is just how the GPT-2 family of tokenisers stores a space, the same stand-in I met when [exporting my model for llama.cpp](/posts/minigpt/#run-it-without-python-a-gguf-file-for-llamacpp). It is not a real letter.
+:::
+
+### What bigger pieces buy
+
+Fewer pieces means each position card covers more text. On the stories I held back for testing, the letters tokeniser needs 1.00 token per byte of text, one per letter. GPT-2's tokeniser needs 0.246, and my own needs 0.244: both cover about four letters with every token. My own pieces even pack these stories slightly *tighter* than GPT-2's much bigger supply, because they were built from exactly this kind of text.
+
+That matters because the machine's row of positions has a fixed length. It has 256 positions, so with letters it can see back 256 letters, about 50 words. With BPE pieces, the same 256 positions reach back about 1,000 letters, more than a whole typical story: the middle-sized test story is 722 letters long. [Attention](/posts/minigpt/#inside-a-block-attention), in every block, can now look across the whole story instead of the last few sentences.
+
+![](assets/images/minigpt2/reach.svg)
+*The same 256 positions, filled with letters and with BPE pieces. Real counts from a test story*
+
+### What bigger pieces cost
+
+Every piece in the supply needs its own token card, and every card holds 384 numbers in this bigger machine. And in this machine, the token cards do a second job: they are also the [answer cards](/posts/minigpt/#step-4-chances). The trick is called *weight tying*. [Part 1's exhibit](/posts/minigpt/#step-4-chances) kept two separate sets of cards; this bigger machine uses one set for both jobs. That halves the cost of a big supply, but the cost is still large:
+
+| Tokeniser | Token cards | Numbers on the token cards | Numbers in the blocks | The whole machine |
+|---|---|---|---|---|
+| Letters | 91 | 34,944 | 10,736,640 | 10.8 million |
+| My 8k BPE | 8,192 | 3,145,728 | 10,736,640 | 13.9 million |
+| GPT-2 | 50,257 | 19,298,688 | 10,736,640 | 30.0 million |
+
+The blocks, which do all the real work, are exactly the same 10,736,640 numbers every time. With GPT-2's supply, 64% of the whole machine is token cards. That is the cost my 8,192-piece supply was built to avoid.
+
+![](assets/images/minigpt2/token-cards-cost.svg)
+*Same blocks, different supply of token cards. With GPT-2's pieces, the cards outweigh everything else*
+
+### Keeping score fairly
+
+[Part 2](/posts/minigpt-grown/#keeping-score-the-surprise-score) scored the machine with the surprise score: how surprised it should be by the real next token. That works for comparing two machines that use the same pieces. It does not work here, because a letter and a word are not the same size of guess. Guessing the next letter, out of 91, is a much smaller job than guessing the next word, out of 8,192, so the letters machine gets a lower surprise score just for taking smaller bites.
+
+The fix is to score the surprise per *letter of text*, whatever the pieces are. Part 2's halving rule gives the unit: count the surprise in **halvings**, and divide by how many letters of text the guess covered. Strictly, a letter here is a *byte*, the computer's unit for one ordinary character, so the score is called **bits per byte**: the number of halvings of surprise the machine needs, on average, for each byte of text. Lower is better, and it is fair whatever the pieces are.
+
+> bits per byte = surprise per token ÷ 0.69 × tokens per byte
+
+Dividing by 0.69 turns Part 2's surprise score into halvings, and multiplying by tokens per byte spreads it over the letters each token covered.
+
+:::under-the-hood Bits per byte, worked out
+Take my 8k BPE machine at the end of training. Its surprise per token on the test stories is 1.9825, which is 1.9825 ÷ 0.693 = 2.860 halvings, or *bits*, per token. Each of its tokens covers 1 ÷ 0.244 ≈ 4.1 bytes, so it needs 2.860 × 0.244 = **0.697 bits per byte**.
+
+The letters machine looks far better on surprise per token: just 0.7214. But its tokens are single bytes, so 0.7214 ÷ 0.693 × 1.00 = **1.040 bits per byte**, the worst of the three.
+:::
+
+### The race
+
+I trained the same machine three times, once with each tokeniser, on about 20 million letters of [TinyStories](https://huggingface.co/datasets/roneneldan/TinyStories): short, simple stories written specially so that small models have a chance of learning to finish a sentence. Each run was 3,000 steps of 32 snippets, each 256 tokens long, on my Mac Studio's GPU.
+
+| Tokeniser | Surprise per token | Bits per byte | Training time |
+|---|---|---|---|
+| Letters | 0.7214 | 1.040 | 10.8 minutes |
+| My 8k BPE | 1.9825 | **0.697** | 12.7 minutes |
+| GPT-2 | 1.9736 | 0.700 | 41.8 minutes |
+
+![](assets/images/minigpt2/bpb-comparison.png)
+*Bits per byte on the test stories while training. The two BPE runs finish together; the letters run never catches them*
+
+Three things stand out:
+
+- **The letters machine wins on surprise per token and loses on the fair score.** Its tiny bites made it look best, until the score was spread over the text.
+- **My 8,192 pieces match GPT-2's 50,257.** Bits per byte of 0.697 against 0.700, with under half the numbers (13.9 million against 30.0 million) and in 12.7 minutes against 41.8. GPT-2's huge supply cost a lot of arithmetic and bought nothing on these stories.
+- **Nobody memorised the textbook.** In [Part 2](/posts/minigpt-grown/#the-student-who-memorised-the-textbook), the bigger machine started memorising Tiny Shakespeare's 1 million letters after 1,500 steps. Twenty million letters of stories are enough that all three runs were still improving at step 3,000.
+
+:::watch-it
+Never compare surprise scores across different tokenisers. A machine can win on surprise per token simply by choosing smaller pieces. Bits per byte is the fair score.
+:::
+
+:::fireside-chat Tonight: the letters tokeniser and GPT-2's tokeniser argue about who reads better
+**Letters:** Let us start with the scoreboard. My machine had the lowest surprise per token of the three. Look it up.
+
+**GPT-2:** Of course it did. You guess one letter at a time, out of 91. I guess whole words, out of 50,257. Spread over the actual text, you came last.
+
+**Letters:** But I can never be stuck. Give me any word, in any language, and I can spell it. You need a card for every piece you know.
+
+**GPT-2:** So can I. When I meet something strange, I spell it out of smaller pieces, right down to single bytes if I have to. And while you spend all 256 positions on about 50 words, I fit a whole story in.
+
+**Letters:** And you pay for it. My cards cost 35 thousand numbers. Yours cost 19 million: almost two thirds of the machine is your card collection.
+
+**GPT-2:** That is fair. And on these stories, the little 8k tokeniser did everything I did, with a sixth of my cards.
+
+**Letters:** So we agree on something. Neither of us won.
+
+**GPT-2:** Its pieces were cut from the very stories it had to read. Tonight, that beat both of us.
+:::
+
+### What it writes
+
+Each machine was asked to carry on from "Once upon a time":
+
+![](assets/images/minigpt2/generation.png)
+*The letters machine and my 8k BPE machine, continuing the same opening*
+
+The letters machine starts well, then loses track: a "caze" and a "cabel", a second "little boy named Tim" two sentences after the first, and a treat that turns into a bird. My 8k BPE machine holds a scene: Lily, a lamp she wants to play with, her mum saying no, and Lily trying to fix it. It still slips, a "big carpet" that turns out to be a lamp, but every word is spelled right, and the story hangs together: each row of 256 positions now covers a whole story, and that reach shows up on the page.
+
+:::bullet-points Part 3, in short
+- A tokeniser cuts text into tokens, and each token gets its own token card.
+- BPE builds its pieces by gluing the most common neighbouring pair, again and again.
+- Bigger pieces let the same 256 positions see about four times as much text.
+- Bigger supplies cost token cards: with GPT-2's, 64% of the machine is cards.
+- Surprise per token is unfair across tokenisers. Bits per byte is fair.
+- On these stories, my 8,192 pieces matched GPT-2's 50,257, at under half the size.
+:::
+
+:::no-dumb-questions
+**Q: Why not just use one token per whole word?**
+
+A: Three reasons. There are far too many words, so the supply of token cards would be enormous. Most words are rare, so their cards would hardly ever be practised. And a word the tokeniser has never seen would have no card at all. BPE pieces avoid all three: common words get their own cards, and anything else is spelled out from smaller pieces, down to single bytes if it has to be.
+
+**Q: Does the machine still know how words are spelled?**
+
+A: Not directly. With BPE, ` dog` is one token, with one card, so the machine never sees the letters `d`, `o`, and `g` at all. Whatever it knows about spelling, it has to work out from how pieces are used. That is why language models are famously bad at questions like counting the letters in a word.
+
+**Q: Why does my small supply pack these stories tighter than GPT-2's big one?**
+
+A: Because it was built from this kind of text. GPT-2's pieces were chosen to cover the whole internet, so many of its 50,257 pieces are for things that never appear in a children's story. My 8,192 pieces were all chosen from the stories themselves.
+
+**Q: Is a bigger supply of pieces ever worth it?**
+
+A: For a big model trained on varied text, yes: a bigger supply means fewer tokens per sentence, and the token cards are a small share of a model with billions of numbers. For a model this small, the cards would eat most of the budget, as the table above shows.
+:::
+
+:::pencil Who does what?
+Before you look at the decoder below, match each everyday description on the left with its proper name on the right.
+
+| Everyday description | Proper name |
+|---|---|
+| 1. the program that cuts text into pieces | A. a *merge* |
+| 2. one piece of text | B. *weight tying* |
+| 3. the whole supply of pieces | C. the *tokeniser* |
+| 4. gluing the most common neighbouring pair | D. *bits per byte* |
+| 5. using the token cards as the answer cards too | E. a *token* |
+| 6. halvings of surprise for each byte of text | F. the *vocabulary* |
+
+:::answer
+1 is C, 2 is E, 3 is F, 4 is A, 5 is B, and 6 is D.
+:::
+:::
+
+### The jargon decoder
+
+| What I called it | What the experts call it |
+|---|---|
+| the program that cuts text into pieces | the *tokeniser* |
+| one piece of text | a *token* |
+| the supply of pieces | the *vocabulary* |
+| a token card | a *token embedding* |
+| glueing the most common pair | a BPE *merge* |
+| using the token cards as the answer cards too | *weight tying* |
+| halvings of surprise for each byte of text | *bits per byte* |
+| surprise per token | the *loss*, or *cross-entropy* |
+
+## The code, in the order it runs
+
+The code is in [`part3-tokenisers/`](https://github.com/Haddley/minigpt-series/tree/main/part3-tokenisers). Every script reads and writes a `data/` folder next to it.
+
+### Getting the stories: `prepare_data.py`
 
 ```python
 URL = "https://huggingface.co/datasets/roneneldan/TinyStories/resolve/main/TinyStoriesV2-GPT4-valid.txt"
 text = open(raw, encoding="utf-8").read()
 n = int(0.9 * len(text))
-train, val = text[:n], text[n:]
+open(os.path.join(DATA, "train.txt"), "w", encoding="utf-8").write(text[:n])
+open(os.path.join(DATA, "val.txt"), "w", encoding="utf-8").write(text[n:])
 ```
 
-The stories are separated by a literal `<|endoftext|>` marker, and every one of them is the kind of text a five-year-old could follow. That matters: it means a model in the tens of millions of parameters has a real chance of learning to finish a sentence, so the difference between tokenisers shows up in the output and not just in the loss curve.
+It downloads 22,493,387 characters of TinyStories, and locks the last 10% away as the test stories, exactly like the exam text in Part 2. TinyStories marks the end of each story with the text `<|endoftext|>`.
 
-## What goes in, what comes out
-
-[Part 1](/posts/minigpt/) covered the model's input and output: a run of characters in, a score for every possible next character out. This post is about the step *before* that — the tokeniser, which decides what "a run of characters" is actually made of.
-
-The tokeniser takes a string of text and returns a list of integers. The model never sees letters or words; it sees those integers, and it has one row of its embedding table for every integer that could appear. So the tokeniser fixes two things before training starts: how many pieces a sentence is chopped into, and how many distinct pieces exist.
-
-![](assets/images/minigpt2/tokenisation.svg)
-*The same four words as 16 character tokens or 4 subword tokens. Fewer, larger tokens mean each context window covers more text — but a larger set of possible tokens means a larger embedding table*
-
-## Three tokenisers
-
-**Character level.** Exactly what parts 1 and 2 did — `sorted(set(text))`, one integer per character. On TinyStories that is a vocabulary of 91 symbols rather than 65, because the stories use digits, curly quotation marks, and a wider range of punctuation than the plays.
-
-**GPT-2, borrowed unchanged.** OpenAI released the GPT-2 tokeniser with the model in 2019 and it is still a reasonable default. It is a byte-level byte-pair-encoding tokeniser with 50,257 entries, and [`tiktoken`](https://github.com/openai/tiktoken) loads it in one line with nothing to train:
+### Building the three tokenisers: `tokenizers_setup.py`
 
 ```python
-import tiktoken
-enc = tiktoken.get_encoding("gpt2")   # 50,257 tokens
-```
+# letters: every character is a token
+chars = sorted(set(text))
 
-The one adjustment is that TinyStories contains the literal string `<|endoftext|>` as its story separator, and `tiktoken` refuses to encode that by default. Passing `allowed_special={"<|endoftext|>"}` lets it map to GPT-2's real end-of-text token, which is exactly what it is meant to be.
+# GPT-2's pieces: nothing to build
+enc = tiktoken.get_encoding("gpt2")
 
-**A trained 8k BPE.** A 50k vocabulary is large for a model this small — the embedding table alone would dwarf the rest of the network. So I also trained a byte-level BPE tokeniser from scratch on the TinyStories training split, capped at 8,192 tokens, using the Hugging Face [`tokenizers`](https://github.com/huggingface/tokenizers) library. It runs the same merge algorithm Andrej Karpathy walks through in [minbpe](https://github.com/karpathy/minbpe), just fast enough to finish in a few seconds:
-
-```python
-from tokenizers import Tokenizer, models, trainers, pre_tokenizers
+# my own pieces: BPE, stopped at 8,192
 tok = Tokenizer(models.BPE(unk_token="<unk>"))
 tok.pre_tokenizer = pre_tokenizers.ByteLevel(add_prefix_space=False)
-tok.train(["data/train.txt"], trainers.BpeTrainer(vocab_size=8192))
+trainer = trainers.BpeTrainer(vocab_size=8192, special_tokens=["<unk>", "<|endoftext|>"])
+tok.train([os.path.join(DATA, "train.txt")], trainer)
 ```
+
+The letters tokeniser is the same one-liner as the notebook's. GPT-2's comes from OpenAI's [`tiktoken`](https://github.com/openai/tiktoken) library, ready made. My own is trained with Hugging Face's [`tokenizers`](https://github.com/huggingface/tokenizers) library, which runs the glueing loop from the exercise above, fast enough to finish in seconds. `ByteLevel` makes it start from single bytes, so any text at all can be spelled out.
 
 ![](assets/images/minigpt2/tokenizers-setup.png)
-*Building all three tokenisers. The `Ġ` in the printed merges is the byte-level marker for a leading space*
+*Building all three tokenisers, and the first fifteen glues*
 
-## Watching BPE learn
+### One interface: `tokenizer.py`
 
-Byte-pair encoding starts with raw bytes and repeatedly merges the most frequent adjacent pair into a new token. The first fifteen merges on TinyStories are exactly the pairs you would guess: a space followed by `t`, then `h`+`e`, then space+`a`, space+`s`, space+`w`, `n`+`d` — and then it starts merging those results into whole frequent words, ` the`, ` and`, ` to`. By the time it has 8,192 entries it has tokens for most common words and for the fragments that build the rest.
-
-The practical effect is compression. The character tokeniser needs one token per byte — on the validation split it comes out at 0.9996 tokens per byte, essentially one to one. The GPT-2 tokeniser packs the same text into 0.246 tokens per byte, and the trained 8k tokeniser into 0.244. Both subword tokenisers cover about four bytes per token, so each 256-token window now spans roughly 1,000 characters — around 180 words — instead of 256. That is the whole point.
-
-The small surprise is that the 8k tokeniser trained on TinyStories compresses this text *slightly better* than GPT-2's 50k general-purpose vocabulary. On its home turf a small tuned vocabulary beats a large generic one.
-
-## The model barely changes
-
-The only edit to the model from part 1 is that the vocabulary size is now a constructor argument instead of a hard-coded 65:
+All three tokenisers are wrapped in the same three-part shape: `encode` turns text into token IDs, `decode` turns IDs back into text, and `vocab_size` is the size of the supply. GPT-2's needs one extra setting, so that the stories' `<|endoftext|>` marker maps to GPT-2's own end-of-text token instead of being refused:
 
 ```python
-model = MiniGPT(tok.vocab_size, n_layer=6, n_head=6, n_embd=384, block_size=256)
+return self.enc.encode(s, allowed_special={"<|endoftext|>"})
 ```
 
-But that one number moves the parameter count a lot, because the token embedding table is `vocab_size × 384` and — with weight tying — the output head is the same matrix:
+### The machine: `model.py`
 
-| Tokeniser | Vocabulary | Embedding params | Total params |
-|---|---|---|---|
-| Character | 91 | 34,944 | 10,771,584 |
-| Trained 8k BPE | 8,192 | 3,145,728 | 13,882,368 |
-| GPT-2 | 50,257 | 19,298,688 | 30,035,328 |
-
-![](assets/images/minigpt2/embedding-cost.svg)
-*The six Transformer blocks are the same 10.7M parameters in every run. Only the embedding table and the tied head grow with the vocabulary — and with GPT-2's 50,257 tokens they become most of the model*
-
-The non-embedding part of the network — the attention and MLP weights that actually do the work — is 10,736,640 parameters in every case. With the GPT-2 tokeniser, 64% of the model is just the vocabulary table. That is the cost the trained 8k tokeniser is designed to avoid.
-
-## Comparing fairly
-
-Cross-entropy loss is not comparable across tokenisers. A loss of 2.0 spread over 8,192 possible tokens is a very different prediction from a loss of 2.0 over 50,257, and the character model, choosing one of 91, has an easier job still. To put the three runs on one axis I score them in **bits per byte** — the average number of bits the model needs to encode one raw UTF-8 byte of held-out text, which is what a compression benchmark would measure:
+The machine is Part 2's bigger MiniGPT: 6 blocks, 6 heads, 384 numbers per card, and 256 positions. Only two lines matter for this post:
 
 ```python
-bpb = val_loss / math.log(2) * (n_val_tokens / n_val_bytes)
+self.tok_emb = nn.Embedding(vocab_size, n_embd)   # one token card per piece
+self.tok_emb.weight = self.head.weight            # the token cards are also the answer cards
 ```
 
-The `val_loss / ln(2)` converts nats to bits per token; multiplying by tokens-per-byte converts that to bits per byte. Lower is better, and it is directly comparable no matter how big the vocabulary is.
+The supply size is now a setting, `vocab_size`, instead of a fixed 65. The second line is the weight tying from the cost table.
 
-## The runs
+### Training and scoring: `train.py`
 
-Each run is 3,000 iterations, batch size 32, on the Mac Studio's M1 Max GPU through PyTorch's MPS backend — the same device path as part 2.
+`train.py --tokenizer bpe8k` cuts the practice text into tokens with the chosen tokeniser, builds the machine with the matching supply, and trains it, keeping the copy with the best test score. Every 300 steps it measures bits per byte with exactly the formula above:
+
+```python
+tokens_per_byte = len(val_ids) / val_bytes
+bpb = va / math.log(2) * tokens_per_byte
+```
+
+`va` is the surprise per token on the test stories, and `math.log(2)` is the 0.69 per halving.
 
 ![](assets/images/minigpt2/training-runs.png)
-*The three runs back to back. Raw validation loss and bits per byte move in opposite directions across the three tokenisers*
+*The three runs, back to back*
 
-![](assets/images/minigpt2/bpb-table.png)
-*The summary. Lowest raw loss and lowest bits per byte are not the same tokeniser*
+### Comparing and writing: `compare.py` and `generate.py`
 
-![](assets/images/minigpt2/bpb-comparison.png)
-*Validation bits per byte over training. The two subword runs sit on top of each other; the character run never catches them*
-
-Three things stand out.
-
-**The character model has the lowest raw loss and the worst bits per byte.** It finishes at a validation loss of 0.72 — far below the subword models' 1.97 — simply because guessing one character out of 91 is an easier prediction than guessing one token out of 8,192. Converted to bits per byte that advantage inverts completely: 1.04 for the character model against 0.70 for both subword models. Raw loss was flattering the character tokeniser for reasons that have nothing to do with how good the text is.
-
-**The trained 8k tokeniser matches GPT-2's.** Bits per byte of 0.6967 against 0.7001 — a rounding difference — even though the 8k model has less than half the parameters (13.9M against 30.0M) and trained in less than a third of the wall-clock time (12.6 minutes against 41.3). The GPT-2 run is slow because a 50,257-wide output projection and softmax on every position, plus an AdamW step over 30M parameters, is a lot of arithmetic for the M1 Max to push through on MPS. All of that expense bought nothing here.
-
-**Nobody overfits.** In part 2 the stronger model's best validation loss arrived at step 1,500 of 5,000 and then climbed as the model memorised 1 MB of Shakespeare. Here all three runs are still improving at step 3,000, because 20 MB of TinyStories is a large enough training set that the model has not run out of genuinely new text to learn from. The best checkpoint is the last one in every case.
-
-## Generating text
-
-Same generation code as part 2 — autoregressive sampling with a temperature and a top-k cut — but now decoding goes through the tokeniser instead of a character lookup.
+`compare.py` draws the bits-per-byte chart and prints the summary table. `generate.py` loads a trained machine and writes, with the wheel of chances from [Part 1](/posts/minigpt/#step-5-spin-the-wheel), but decoding the token IDs back into text through the tokeniser:
 
 ```python
-idx = torch.tensor([tok.encode("Once upon a time")], device=device)
-out = model.generate(idx, max_new_tokens=300, temperature=0.8, top_k=200)
+idx = torch.tensor([tok.encode(args.prompt)], dtype=torch.long, device=dev)
+out = model.generate(idx, args.max_new_tokens, args.temperature, args.top_k)
 print(tok.decode(out[0].tolist()))
 ```
 
-![](assets/images/minigpt2/generation.png)
-*The same prompt continued by the character model and by the 8k BPE model*
-
-The character model produces clean sentences with the wrong nouns in them: "a baby named Mom", "a big, desk dog named Max", "a blue tree sitting on the ground". The grammar is right and the individual words are spelled correctly, but it has not tied the words together into a consistent scene.
-
-The 8k BPE model holds a scene. Spot is a dog, Spot has a ball, Spot's friend is a bird named Tim, and the ball stays a ball for the whole passage. It still has failure modes — "Spot wagged his tail and wagged his tail" is a repetition loop, and later passages drift — but each 256-token window now covers four times as much of the story, and the extra context shows up as continuity. The GPT-2 model reads much the same, and it correctly emits a literal `<|endoftext|>` between stories, having learned that the separator token ends a document.
-
-Both subword models are a clear step up from part 2, where a character model on 1 MB of Shakespeare produced speaker names and line breaks but no readable sentences.
-
-## What I took from it
-
-- **The tokeniser is a modelling decision made before training starts.** It sets the vocabulary, how many words a context window covers, and how much of the parameter budget goes to the embedding table rather than to the network. None of that is preprocessing.
-- **Raw loss is not a fair scoreboard across tokenisers.** Bits per byte is. The character model looked best on loss and was worst on the metric that actually normalises for the size of the prediction.
-- **Borrowing GPT-2's tokeniser is the fast path, but a 50k vocabulary is wasteful for a small model.** A vocabulary trained to the corpus matched it here at 46% of the parameters and 30% of the training time, and compressed the domain text slightly better.
-- **More data changes the failure mode.** Part 2 overfit 1 MB of Shakespeare in 1,500 steps. Twenty MB of TinyStories did not overfit in 3,000, and the generated text is coherent enough to read.
+![](assets/images/minigpt2/bpb-table.png)
+*The summary from `compare.py`*
 
 ## Try it yourself
 
-The code for this part is in [github.com/Haddley/minigpt-series](https://github.com/Haddley/minigpt-series) under `part3-tokenisers/`:
+- **My follow-along workbook:** [open it in Colab](https://colab.research.google.com/github/Haddley/minigpt-series/blob/main/part3-tokenisers/minigpt_follow_along_3.ipynb). It builds the three tokenisers, checks every number in this post, and trains the machine. Choose a GPU runtime: on my Mac Studio's GPU, the three training runs took about 11, 13, and 41.8 minutes.
+- **On your own machine:**
 
 ```bash
+git clone https://github.com/Haddley/minigpt-series.git
+cd minigpt-series/part3-tokenisers
 python prepare_data.py
 python tokenizers_setup.py
-python train.py --tokenizer char
-python train.py --tokenizer gpt2
-python train.py --tokenizer bpe8k
+python train.py --tokenizer char --iters 3000 --eval-interval 300
+python train.py --tokenizer bpe8k --iters 3000 --eval-interval 300
+python train.py --tokenizer gpt2 --iters 3000 --eval-interval 300
 python compare.py
 python generate.py --tokenizer bpe8k --prompt "Once upon a time"
 ```
 
-On Apple Silicon the training scripts select MPS automatically. On a CUDA machine they select the GPU; on anything else they fall back to the CPU.
+The scripts use an NVIDIA GPU if there is one, the Mac's GPU on Apple Silicon, and otherwise the CPU.
 
-[Part 4](/posts/minigpt3/) takes this same model and this same 8k tokeniser and rebuilds them in Apple's MLX framework, then puts the MLX and PyTorch runs side by side on the same Mac.
+[Part 4](/posts/minigpt3/) keeps this machine and my 8k pieces, and rebuilds them in Apple's MLX framework, to see how much faster a Mac can train them.
 
 ## References
 
 - [MiniGPT: Rebuilding GPT from First Principles — Jibin Joseph, 2026](https://arxiv.org/abs/2605.17398)
-- [nanoGPT — Andrej Karpathy](https://github.com/karpathy/nanoGPT)
-- [minbpe — Andrej Karpathy](https://github.com/karpathy/minbpe)
-- [Byte-Pair Encoding tokenization — Hugging Face LLM Course](https://huggingface.co/learn/llm-course/en/chapter6/5)
-- [TinyStories: How Small Can Language Models Be and Still Speak Coherent English? — Eldan & Li, 2023](https://arxiv.org/abs/2305.07759)
 - [Neural Machine Translation of Rare Words with Subword Units — Sennrich et al., 2016](https://arxiv.org/abs/1508.07909)
 - [Language Models are Unsupervised Multitask Learners (GPT-2) — Radford et al., 2019](https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf)
+- [TinyStories: How Small Can Language Models Be and Still Speak Coherent English? — Eldan & Li, 2023](https://arxiv.org/abs/2305.07759)
+- [Byte-Pair Encoding tokenization — Hugging Face LLM Course](https://huggingface.co/learn/llm-course/en/chapter6/5)
+- [minbpe — Andrej Karpathy](https://github.com/karpathy/minbpe)
 - [tiktoken — OpenAI](https://github.com/openai/tiktoken)
 - [tokenizers — Hugging Face](https://github.com/huggingface/tokenizers)
+- [nanoGPT — Andrej Karpathy](https://github.com/karpathy/nanoGPT)

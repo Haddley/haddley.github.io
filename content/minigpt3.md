@@ -1,7 +1,7 @@
 ---
 title: "MiniGPT"
 part: 4
-description: "Porting the MiniGPT model and training loop from PyTorch to Apple's MLX — unified memory, lazy evaluation, mx.compile, and fused attention — then running both on the same M1 Max and comparing tokens per second and peak memory"
+description: "The same machine on a faster engine: rebuilding MiniGPT in Apple's MLX, what one shared pool of memory, lazy calculation, and compiling the training step buy, and a fair race against PyTorch on the same Mac, with a follow-along notebook"
 date: "2026-10-05"
 categories: ["AI"]
 image: "/assets/images/minigpt3/posts-meta.svg"
@@ -10,74 +10,205 @@ hidden: false
 slug: "minigpt3"
 ---
 
-[Part 1](/posts/minigpt/) and [Part 2](/posts/minigpt-grown/) ran a GPT training pipeline in PyTorch. [Part 3](/posts/minigpt2/) swapped the character tokeniser for a trained 8k byte-level BPE and trained on TinyStories. Both ran on my Mac Studio through PyTorch's Metal Performance Shaders backend, which works but is not what Apple Silicon was designed around.
+[Part 3](/posts/minigpt2/) settled the pieces: my own 8,192-piece tokeniser matched GPT-2's on TinyStories, at under half the size. This post keeps that machine exactly as it is, the same blocks, the same cards, the same stories, and changes only the *engine* underneath it: the library that does the arithmetic. Parts 1 to 3 used PyTorch. This post rebuilds the machine in [MLX](https://github.com/ml-explore/mlx), Apple's library for machine learning on its own chips, and races the two on the same Mac.
 
-This part changes the framework and nothing else. Same model — 6 layers, 6 heads, 384-dimensional, 256-token context, weight-tied, 13.9M parameters — same 8k BPE tokeniser from part 3, same TinyStories split, same AdamW schedule. I rebuild all of it in [MLX](https://github.com/ml-explore/mlx), Apple's array framework for machine learning on Apple Silicon, and then run the PyTorch and MLX versions on the same machine to see what the switch actually buys.
+I have used MLX before, in [MLX 1](/posts/mlx1/), but only to fine-tune a model someone else had released. This post writes the machine itself in MLX: the layers, the training step, and the gradient.
 
-I have used MLX before, in [MLX 1](/posts/mlx1/), but that post was about *using* the ecosystem — `mlx_lm.lora` to fine-tune a released model, then fuse and convert it for Ollama. This post is about *writing* model code in MLX directly: the layers, the gradient, the training step.
+The code is in [`part4-mlx/`](https://github.com/Haddley/minigpt-series/tree/main/part4-mlx), with a follow-along notebook, [`minigpt_follow_along_4.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part4-mlx/minigpt_follow_along_4.ipynb). MLX only runs on Apple Silicon, so the notebook is for running on a Mac, not in Colab.
 
-## Installing MLX
+## The big picture, in plain English
 
-MLX is a single `pip install` with no system dependencies. It needs Apple Silicon and a recent macOS. I used version 0.32.2 on Python 3.13.
+### Same machine, different engine
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install mlx numpy
-```
+:::brain-power
+The machine, the stories, the settings, and the computer are all exactly the same. What could possibly make training faster?
+:::
 
-## Unified memory: the `.to(device)` calls disappear
+A library like PyTorch or MLX is the engine under the machine. The machine says *what* to calculate: look up the token cards, run attention, run the MLP, score the answer cards. The engine decides *how*: where the numbers are kept, when each calculation runs, and how the calculations are packed together for the chip. Change the engine, and the same calculations can run faster, or in less memory, without the answers changing.
 
-In the PyTorch version every batch has to be moved to the GPU:
+MLX was designed around three things about Apple's chips, and each one is a chance to save work.
 
-```python
-x = x.to(device)   # copy host -> Metal
-y = y.to(device)
-```
+### One shared pool of memory
 
-In MLX there is no copy, because there is no separate device memory. An `mx.array` lives in the same unified memory the CPU and GPU both address. You choose where an *operation* runs, not where the data lives, and for this code the default is fine. The batch goes straight from NumPy into an `mx.array` and the model consumes it:
+Most computers keep two separate stores of memory: one for the main processor, and one on the graphics chip, the GPU, which does the heavy arithmetic. Every batch of training text has to be copied from one to the other before the GPU can use it. PyTorch is built for that kind of computer, so its code is full of instructions to move things across:
 
 ```python
-xb, yb = batch(train_ids, block_size, batch_size, rng)   # NumPy
-loss = train_step(mx.array(xb), mx.array(yb))
+x = x.to(device)   # copy the batch to the GPU
 ```
 
-On a 64 GB Mac Studio that is 64 GB the model can use, with no host-to-device transfer in the training loop.
+Apple's chips have one pool of memory that the processor and the GPU share. MLX is built around that, so there is nothing to copy and no `.to(device)` anywhere: the training batch goes straight into an MLX array, and the GPU reads it where it is. On my 64 GB Mac Studio, all 64 GB is available to the machine.
 
-## Lazy evaluation
+### Calculating only when asked
 
-MLX does not run an operation when you write it. It builds a graph and waits. Nothing is computed until something forces it — printing a value, calling `.item()`, or an explicit `mx.eval`. The training loop makes this explicit: one `mx.eval` per step, on the model and optimiser state, is what actually drives the computation forward.
+PyTorch calculates each line the moment it runs. MLX does not. When a line says "multiply these" or "add those", MLX writes the step down and waits. Nothing is calculated until something actually needs a result: printing a number, or an explicit `mx.eval`.
+
+That sounds like a delay, but it gives MLX the whole list of steps before it starts, so it can see which ones can be done together, and which ones are never needed at all. The name for it is *lazy evaluation*.
+
+:::pencil Which lines make MLX calculate?
+In this MLX code, which lines actually make the GPU do arithmetic, and which only write steps down?
 
 ```python
-for step in range(iters + 1):
-    xb, yb = batch(train_ids, block_size, batch_size, rng)
-    loss = train_step(mx.array(xb), mx.array(yb))
-    mx.eval(state)          # <- the step runs here
+logits = model(x)            # 1
+loss = cross_entropy(logits, y)  # 2
+mx.eval(loss)                # 3
+print(loss.item())           # 4
 ```
 
-It takes a little getting used to after PyTorch's eager execution, but it is what lets MLX fuse work together and skip anything whose result is never needed.
+:::answer
+Lines 1 and 2 only write steps down: the whole forward pass and the surprise score are recorded, but not calculated. Line 3 is where the GPU does all of that work, in one go. Line 4 just reads the finished number. If line 3 were missing, line 4 would trigger the calculation instead, because printing needs a real number.
+:::
+:::
 
-## The gradient is a function
+### Packing the whole training step into one
 
-PyTorch accumulates gradients into `.grad` attributes as a side effect of `loss.backward()`. MLX is functional: `nn.value_and_grad` takes the model and a loss function and hands back a new function that returns the loss and the gradients as a tree with the same shape as the parameters.
+Because MLX writes the steps down first, it can do something bigger: take one whole training step (the forward pass, working out which way to turn every dial, clipping, and turning the dials) and *compile* it, which packs it into a single combined job for the GPU. That saves the GPU from starting and stopping between thousands of small jobs. In MLX it is one line, `mx.compile`, and it turns out to be where almost all of the speed comes from.
+
+### The race
+
+I raced three engines on the same machine, the same batch of 32 snippets of 256 tokens, on the same Mac Studio. `bench.py` times 200 training steps of each, after 20 warm-up steps, each in its own fresh program so that the memory figures stay clean.
+
+| Engine | Tokens per second | Most memory used |
+|---|---|---|
+| PyTorch, on the Mac's GPU | 48,426 | 4.60 GB |
+| MLX, not compiled | 45,106 | 3.72 GB |
+| MLX, compiled | **56,136** | 3.89 GB |
+
+![](assets/images/minigpt3/bench.png)
+*The same three runs as bars: speed on the left, memory on the right*
+
+Two things stand out:
+
+- **Compiling is where the speed is.** Without `mx.compile`, MLX is slightly *slower* than PyTorch. With it, MLX is 24% faster than itself and 16% faster than PyTorch.
+- **MLX uses less memory either way:** 3.7 to 3.9 GB against PyTorch's 4.6 GB, about 15 to 20% less for exactly the same machine. Later in this series, when a much bigger teacher model has to share the same pool, that headroom matters.
+
+:::watch-it
+This is one small machine, one setting, on one Mac: not a general benchmark. The full training runs show the same direction, 8.1 minutes for MLX against 12.7 for PyTorch, but my MLX script also checks its progress with fewer sample batches, so the controlled race above is the fair comparison.
+:::
+
+### Same answers?
+
+A faster engine is no use if it changes the answers. The two versions do not start from exactly the same random numbers, because the two libraries draw their starting dials differently, so their training curves cannot lie exactly on top of each other. But they should end up in the same place, and they do: after 3,000 steps, the MLX machine scores **0.689 bits per byte** on the test stories, and the PyTorch machine from Part 3 scores **0.697**. That gap is well inside the difference two random starts make.
+
+![](assets/images/minigpt3/loss-curves.png)
+*Bits per byte on the test stories while training, PyTorch against MLX*
+
+And they write the same kind of story:
+
+![](assets/images/minigpt3/generation.png)
+*The MLX machine continuing "Once upon a time"*
+
+Tim has a dirty sock, the sock stays the subject of the story, and the story has a beginning, a middle, and an end. It makes the same kinds of slips as the PyTorch machine, such as "watched and wave", and longer samples drift in the same way. The port made the same machine, not just a machine with a similar score.
+
+:::fireside-chat Tonight: PyTorch and MLX on whose Mac it is
+**PyTorch:** I ran Parts 1 to 3 of this series without a single complaint. I run on nearly every computer in the world.
+
+**MLX:** And on this one, you spend your time copying batches to a GPU that was already sharing your memory.
+
+**PyTorch:** I calculate every line the moment it runs. You can watch exactly what happens, line by line. That is how people learn.
+
+**MLX:** And I wait, so that I can see the whole step and pack it into one job. Compiled, I trained this machine 16% faster than you, in less memory.
+
+**PyTorch:** Not compiled, you were slower than me.
+
+**MLX:** True. My speed comes from seeing the whole job first. Without that, I am just another engine.
+
+**PyTorch:** And the answers?
+
+**MLX:** The same, to within what a different random start makes. 0.689 against your 0.697. Same machine, same stories.
+
+**PyTorch:** Then we agree. On a Mac, you are faster. Everywhere else, I am the one that runs.
+:::
+
+:::bullet-points Part 4, in short
+- The engine (PyTorch or MLX) decides how the machine's calculations run, not what they are.
+- Apple's chips share one pool of memory, so MLX never copies batches to the GPU.
+- MLX writes calculations down and only runs them when a result is needed: lazy evaluation.
+- `mx.compile` packs a whole training step into one job, and that is where the speed comes from.
+- Compiled MLX trained 16% faster than PyTorch, in 15 to 20% less memory, with the same answers.
+:::
+
+:::no-dumb-questions
+**Q: Do I need a Mac for this?**
+
+A: For MLX, yes: it only runs on Apple Silicon. Everything in Parts 1 to 3 runs anywhere, and [Part 3](/posts/minigpt2/)'s PyTorch code is the one to use on other machines.
+
+**Q: If MLX is lazy, could it ever skip something I wanted?**
+
+A: Only work whose result nothing ever uses. That is why the training loop calls `mx.eval` on the machine's dials and the optimiser's state every step: it asks for exactly the results that matter, so all the work that leads to them is done.
+
+**Q: Why was MLX slower without compiling?**
+
+A: Without compiling, MLX runs the training step as many small jobs, like PyTorch does, and PyTorch has had years of tuning for exactly that. Compiling is what lets MLX use what it learned by waiting: it sees the whole step and packs it.
+
+**Q: Why does MLX use less memory for the same machine?**
+
+A: Partly because nothing is copied, so there is one copy of each batch instead of two. Partly because, seeing the whole step at once, MLX can work out which in-between results it never needs to keep.
+
+**Q: Is the machine really the same?**
+
+A: Yes: the same blocks, the same token cards doubling as the answer cards, the same 13.9 million numbers. Only how they are calculated changes. The matching scores and matching stories are the check.
+:::
+
+:::pencil Who does what?
+Match each everyday description on the left with its proper name on the right.
+
+| Everyday description | Proper name |
+|---|---|
+| 1. the library that does the arithmetic | A. *lazy evaluation* |
+| 2. one pool of memory shared by the processor and the GPU | B. `mx.compile` |
+| 3. writing calculations down, and running them only when needed | C. the *framework* |
+| 4. packing a whole training step into one job | D. *unified memory* |
+| 5. working out which way to turn every dial | E. the *gradient* |
+
+:::answer
+1 is C, 2 is D, 3 is A, 4 is B, and 5 is E.
+:::
+:::
+
+### The jargon decoder
+
+| What I called it | What the experts call it |
+|---|---|
+| the engine | the *framework* |
+| one shared pool of memory | *unified memory* |
+| writing calculations down and running them later | *lazy evaluation* |
+| packing a whole step into one job | *compiling*, with `mx.compile` |
+| which way to turn every dial | the *gradient* |
+| copying a batch to the GPU | a *host-to-device transfer* |
+
+## The code, in the order it runs
+
+The code is in [`part4-mlx/`](https://github.com/Haddley/minigpt-series/tree/main/part4-mlx). It reuses the stories and tokenisers that Part 3's scripts prepare, so `data.py` reads them from `part3-tokenisers/data/`.
+
+### The machine: `model_mlx.py`
+
+The machine is Part 3's, line for line, with three small differences. First, attention is one built-in call, which does the query, key, and value matching, the earlier-positions-only rule, and the shares, all in one fused job:
+
+```python
+out = mx.fast.scaled_dot_product_attention(q, k, v, scale=self.scale, mask="causal")
+```
+
+The hand-written version in [Part 1](/posts/minigpt/#attention-causalselfattention-cell-12) is still the one to read to understand attention; this is the one to run.
+
+Second, the token cards double as the answer cards without any bookkeeping, because there is no separate answer layer at all: the last working cards are simply scored against the token cards.
+
+```python
+def __call__(self, idx):
+    x = self.tok_emb(idx) + self.pos_emb(mx.arange(idx.shape[1]))
+    for block in self.blocks:
+        x = block(x)
+    x = self.ln_f(x)
+    return x @ self.tok_emb.weight.T   # the token cards are the answer cards
+```
+
+Third, there is no `.to(device)`, anywhere.
+
+### The training step: `train_mlx.py`
+
+In PyTorch, working out which way to turn every dial happens as a side effect of `loss.backward()`. In MLX it is a function: `nn.value_and_grad` takes the machine and its surprise-score function, and gives back a new function that returns the score *and* the directions, as an ordinary value. The whole step is then compiled:
 
 ```python
 loss_and_grad = nn.value_and_grad(model, MiniGPT.loss)
-
-def train_step(x, y):
-    loss, grads = loss_and_grad(model, x, y)
-    grads, _ = optim.clip_grad_norm(grads, 1.0)
-    opt.update(model, grads)
-    return loss
-```
-
-No `zero_grad`, no `.backward()`, no implicit state. The gradients are a value you can inspect, clip, or transform before the optimiser ever sees them.
-
-## `mx.compile`
-
-Wrapping the step in `mx.compile` fuses the forward pass, the backward pass, the gradient clip, and the optimiser update into a single graph. Because the step mutates the model and optimiser, I pass their state as the compiled function's `inputs` and `outputs` so MLX knows it is allowed to update them in place:
-
-```python
 state = [model.state, opt.state]
 
 @partial(mx.compile, inputs=state, outputs=state)
@@ -88,68 +219,26 @@ def train_step(x, y):
     return loss
 ```
 
-## Attention is one call
-
-The PyTorch version writes scaled dot-product attention out by hand — a matrix multiply, a mask fill, a softmax, another matrix multiply — which is what made it readable in part 1. MLX has a fused primitive with a built-in causal mask:
+`inputs=state, outputs=state` tells MLX that the compiled step is allowed to change the machine's dials and the optimiser's memory. Then the training loop makes each step happen:
 
 ```python
-out = mx.fast.scaled_dot_product_attention(q, k, v, scale=self.scale, mask="causal")
+for step in range(args.iters + 1):
+    xb, yb = batch(train_ids, args.block_size, args.batch_size, rng)
+    loss = train_step(mx.array(xb), mx.array(yb))
+    mx.eval(state)          # the step is calculated here
 ```
-
-Same maths, one kernel. The hand-written version is still the one to read to understand what is happening; this is the one to run.
-
-## Weight tying is just a matrix multiply
-
-In PyTorch I tied the embedding and the output head by assigning one weight to the other. In MLX I do not create a head layer at all — the output is the final hidden state multiplied by the transpose of the token embedding matrix (`x @ W.T`, one matrix multiply):
-
-```python
-def __call__(self, idx):
-    x = self.tok_emb(idx) + self.pos_emb(mx.arange(idx.shape[1]))
-    for block in self.blocks:
-        x = block(x)
-    x = self.ln_f(x)
-    return x @ self.tok_emb.weight.T   # tied head, no bookkeeping
-```
-
-There is one weight matrix, so there is nothing to keep in sync.
-
-The one API surprise porting the training loop was that `tree_flatten`, used to count parameters and to save the checkpoint, lives in `mlx.utils` rather than on `mlx.core` — a one-line import fix, but the kind of thing that stops a first run.
-
-## The port is faithful
-
-Before comparing speed, the MLX model has to be doing the same thing. It is not initialised identically — the PyTorch version applies an explicit normal initialiser from part 1, the MLX version uses the `mlx.nn` layer defaults, and the two frameworks draw from different random number generators — so the loss curves will not lie exactly on top of each other. But run for run they track closely, and both land at the same place.
 
 ![](assets/images/minigpt3/mlx-training.png)
-*The MLX training run — same 3,000 iterations, same 8k tokeniser, same data as the part 3 PyTorch run*
+*The MLX training run: 3,000 steps, the same 8k tokeniser and stories as Part 3*
 
-![](assets/images/minigpt3/loss-curves.png)
-*Validation bits per byte, PyTorch against MLX. The MLX run finishes at 0.689, the PyTorch run at 0.697 — a difference well inside the noise between two different initialisations*
+### The race: `bench.py`
 
-## Head to head
-
-Same model shape, same batch, same data, same machine. `bench.py` times 200 training steps in each configuration after a 20-step warmup, in separate processes so the peak-memory numbers stay clean.
+`bench.py --framework torch`, `--framework mlx-nocompile`, and `--framework mlx` each time 200 training steps of the same machine, after 20 warm-up steps, and report tokens per second and the most memory used. Each runs as its own program, so one cannot inherit another's memory.
 
 ![](assets/images/minigpt3/bench-output.png)
-*Training throughput and peak GPU memory, on the 13.9M-parameter model, batch 32, 256-token context*
+*The three races*
 
-![](assets/images/minigpt3/bench.png)
-*The same numbers as bars*
-
-| | Tokens / sec | Peak memory |
-|---|---|---|
-| PyTorch — MPS | 48,400 | 4.60 GB |
-| MLX, no `mx.compile` | 45,100 | 3.72 GB |
-| MLX, `mx.compile` | 56,100 | 3.89 GB |
-
-Two things come out of this.
-
-**`mx.compile` is where the speed is.** Uncompiled, the MLX training step is slightly *slower* than PyTorch on MPS — 45,100 tokens per second against 48,400. Adding `mx.compile` lifts it to 56,100, about 24% faster than uncompiled and 16% faster than PyTorch. Fusing the whole step into one graph is not a minor optimisation here; it is the reason to use the framework.
-
-**MLX uses less memory.** Peak GPU memory is 3.7–3.9 GB for MLX against 4.6 GB for PyTorch — 15–20% lower — for the identical model and batch. On a machine where the model, the teacher model in a later part, and everything else share one 64 GB pool, that headroom matters.
-
-The full training runs from the logs tell the same story less precisely: 8.1 minutes for MLX against 12.6 for PyTorch in part 3. Some of that gap is my MLX evaluation loop sampling fewer batches than the PyTorch one, so the controlled `bench.py` figures above are the fair comparison. This is one small model, one configuration, one Mac — not a benchmark. The takeaway is not a guaranteed speed-up. It is that MLX is built around the single memory pool, so the device bookkeeping goes away, the fast paths are the default, and `mx.compile` has real headroom to work with.
-
-## Generating text
+### Writing: `generate_mlx.py`
 
 ```python
 idx = mx.array([tok.encode("Once upon a time")])
@@ -159,34 +248,29 @@ for _ in range(300):
 print(tok.decode(idx[0].tolist()))
 ```
 
-![](assets/images/minigpt3/generation.png)
-*The MLX model continuing "Once upon a time"*
-
-Tim has a dirty sock, the sock stays the subject of the story, and the passage has a beginning, middle, and end. It has the same failure modes as the part 3 PyTorch model — "watched and wave" is a dropped inflection, and longer samples drift — and it reads with the same character, which is the point: the port produces the same model, not just a model with a similar loss.
-
-## What I took from it
-
-- **Unified memory removes a whole category of code.** No `.to(device)`, no host-to-device copies in the loop, and the full 64 GB is available to the model.
-- **Lazy evaluation plus `mx.compile` is where MLX earns its speed.** Uncompiled it was no faster than PyTorch-MPS here; compiled it was 16% faster and used 15% less memory. The cost is having to think about when computation is actually forced.
-- **The functional gradient is cleaner than PyTorch's implicit `.grad` state** once you adjust to it — the gradients are a value you clip and pass on, not a side effect.
-- **A faithful port is a real check.** Matching loss curves and matching generation character across two frameworks with different initialisers is good evidence the model is what I think it is.
+The same loop as every part so far: score the last working card against the answer cards, spin the wheel, and put the new token on the end.
 
 ## Try it yourself
 
-The code is in [github.com/Haddley/minigpt-series](https://github.com/Haddley/minigpt-series) under `part4-mlx/`. It reuses the data and tokenisers prepared in `part3-tokenisers/`:
+- **The follow-along notebook:** [`part4-mlx/minigpt_follow_along_4.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part4-mlx/minigpt_follow_along_4.ipynb). Open it in Jupyter on a Mac with Apple Silicon. It prepares the stories, checks that the MLX machine has the same 13.9 million numbers as Part 3's, trains it, runs the race, and writes.
+- **On the command line:**
 
 ```bash
+git clone https://github.com/Haddley/minigpt-series.git
+cd minigpt-series
+python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
 cd part3-tokenisers && python prepare_data.py && python tokenizers_setup.py && cd ..
 cd part4-mlx
-python train_mlx.py --tokenizer bpe8k
+python train_mlx.py --tokenizer bpe8k --iters 3000 --eval-interval 300
 python bench.py --framework torch
+python bench.py --framework mlx-nocompile
 python bench.py --framework mlx
 python generate_mlx.py --prompt "Once upon a time"
 ```
 
-MLX requires Apple Silicon. On any other machine the PyTorch path from [part 3](/posts/minigpt2/) is the one to use.
+MLX needs Apple Silicon. On any other machine, [Part 3](/posts/minigpt2/)'s PyTorch code is the one to use.
 
-Part 5 keeps the MLX framework and replaces the vanilla GPT block with the modern one — RMSNorm, rotary position embeddings, SwiGLU, and grouped-query attention — the layout Meta used for the Llama 3.2 1B and 3B edge models.
+[Part 5](/posts/minigpt4/) keeps MLX and the 8k pieces, and swaps the 2017-style block for the modern one used in Meta's Llama models, one change at a time.
 
 ## References
 

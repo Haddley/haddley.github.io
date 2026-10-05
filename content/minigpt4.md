@@ -1,7 +1,7 @@
 ---
 title: "MiniGPT"
 part: 5
-description: "Swapping MiniGPT's 2017 Transformer block for the modern one — RMSNorm, rotary position embeddings, SwiGLU, and grouped-query attention — in MLX, then ablating each change to see which one actually matters"
+description: "The block inside today's small models: four changes Meta made for Llama (RMSNorm, rotary positions, SwiGLU, and shared keys and values), each turned back off in turn to find out which one actually matters, with a follow-along notebook"
 date: "2026-10-05"
 categories: ["AI"]
 image: "/assets/images/minigpt4/posts-meta.svg"
@@ -10,107 +10,237 @@ hidden: false
 slug: "minigpt4"
 ---
 
-[Part 4](/posts/minigpt3/) rebuilt MiniGPT in MLX with the original 2017 Transformer block: LayerNorm, a learned positional embedding table, multi-head attention, a GELU MLP. That is the block in "Attention Is All You Need" and in Karpathy's nanoGPT.
+Every MiniGPT so far has used the block from 2017, the one in "Attention Is All You Need" and in Karpathy's nanoGPT: normalise, attention, normalise, MLP. Today's small models do not. Meta's Llama 3.2 1B and 3B, the models that ship on phones, use four changes to that block. This post makes all four changes to the machine from [Part 4](/posts/minigpt3/), still in MLX, still on Part 3's 8k pieces and stories, and then turns each change back off on its own, to find out which ones actually do the work.
 
-Modern small models do not use that block. Meta's [Llama 3 Herd of Models](https://arxiv.org/abs/2407.21783) paper is the working blueprint for the 1B–3B range, and Llama 3.2 1B and 3B — the models Apple and others ship on phones — use four changes to it: RMSNorm instead of LayerNorm, rotary position embeddings instead of a learned table, a SwiGLU MLP instead of GELU, and grouped-query attention instead of plain multi-head. This post makes all four changes in MLX, then turns each one back off on its own to see which is doing the work.
+The code is in [`part5-modern-block/`](https://github.com/Haddley/minigpt-series/tree/main/part5-modern-block), with a follow-along notebook for a Mac, [`minigpt_follow_along_5.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part5-modern-block/minigpt_follow_along_5.ipynb).
 
-The model is small — dimension 384, 6 layers, 6 query heads, 2 key/value heads, SwiGLU inner size 1,024, 256-token context, the 8k BPE tokeniser from [part 3](/posts/minigpt2/), weight-tied, no biases anywhere. That is the *shape* of Llama 3.2 1B at roughly one-hundredth of the parameters. I checked the layout against `mlx-lm`'s [`models/llama.py`](https://github.com/ml-explore/mlx-lm/blob/main/mlx_lm/models/llama.py).
+## The big picture, in plain English
 
-## The four changes
+:::brain-power
+Here are the four changes Meta made to the 2017 block. Before reading on, guess: which one do you think makes the biggest difference to how well a small machine learns?
 
-**RMSNorm.** LayerNorm subtracts the mean, divides by the standard deviation, then scales and shifts. RMSNorm divides by the root-mean-square only — no mean subtraction, no bias term. It is one fewer reduction and two fewer parameter vectors per norm, and [Zhang and Sennrich](https://arxiv.org/abs/1910.07467) showed it trains about as well.
+1. a simpler way to normalise the working cards
+2. a new way to tell the machine where each token sits
+3. a different MLP
+4. fewer key and value cards in attention
+:::
+
+### Change 1: a simpler normalise
+
+Before attention, and again before the MLP, every block [normalises the working cards](/posts/minigpt/#four-blocks-in-a-row): it rescales each card's numbers to a standard range. The 2017 way, *LayerNorm*, first subtracts the card's average from every number, then divides by how spread out the numbers are. The new way, *RMSNorm*, skips the subtraction and just divides by the numbers' typical size. That is one calculation fewer, and fewer fixed numbers to store, every time a card is normalised.
+
+### Change 2: turning cards instead of position cards
+
+Since [Part 1](/posts/minigpt/#step-2-letter-cards-and-position-cards), the machine has known where each token sits from its *position card*: a fixed card per position, added to the token card. The new way, *rotary position embeddings* or *RoPE*, has no position cards at all. Instead, inside attention, it turns each query card and key card by an angle that grows with the token's position.
+
+Picture a clock hand. A token in position 1 has its cards turned a little, position 2 a little more, and so on. When a query card is matched against a key card, what matters is the *difference* between their turns, so the match depends only on how far apart the two tokens are, not on where they are in the text. "The token just before me" looks the same at position 5 as at position 205.
+
+:::pencil Same gap, same match
+Suppose RoPE turns every card by 10 degrees per position. A query at position 7 is matched against a key at position 5. Another query at position 107 is matched against a key at position 105. How far apart are the turns in each case, and what does that mean for the two matches?
+
+:::answer
+In both cases the query is turned 20 degrees further than the key: 70 against 50, and 1,070 against 1,050. The match only feels the 20-degree difference, so both pairs are matched in exactly the same way: "two positions back". A position card cannot do that: positions 5 and 105 have completely unrelated cards, so the machine has to learn "two back" separately all over the row.
+:::
+:::
+
+### Change 3: an MLP with a gate
+
+The 2017 MLP widens each working card to four times its size, bends it, and narrows it back: two fixed grids of weights. The new one, *SwiGLU*, makes two widened copies of the card, bends one, and multiplies the two together, number by number, before narrowing back: three grids. The bent copy acts as a *gate*, deciding how much of the other copy gets through. To keep the machine the same size, the widened card is narrower: 1,024 numbers instead of 1,536, which makes three grids of 384 × 1,024 exactly as big as two of 384 × 1,536.
+
+### Change 4: sharing key and value cards
+
+In [Part 1's attention](/posts/minigpt/#inside-a-block-attention), every head made its own query, key, and value cards. *Grouped-query attention* keeps a query card for every head, here 6, but shares the key and value cards: just 2 of each, each pair shared by 3 heads. That needs fewer recipes, so fewer numbers, and when the machine writes, the [KV cache](/posts/minigpt/#where-the-scratch-cards-come-from) of saved keys and values is a third of the size.
+
+### Taking one change out at a time
+
+To find out which change matters, I trained six machines, each for 3,000 steps on the same stories with the same 8k pieces:
+
+- the 2017 block, from Part 4
+- the new block, with all four changes
+- the new block with one change at a time turned back off
+
+Turning one part off to see what it was doing is called an *ablation*.
+
+| Machine | Numbers | Bits per byte |
+|---|---|---|
+| 2017 block (Part 4) | 13.9 million | 0.6885 |
+| **New block, all four changes** | **12.6 million** | **0.6717** |
+| … but the old MLP | 12.6 million | 0.6756 |
+| … but full keys and values for every head | 13.8 million | 0.6721 |
+| … but the old normalise | 12.6 million | 0.6683 |
+| … but position cards instead of turning | 12.7 million | **0.7023** |
+
+![](assets/images/minigpt4/ablation-bars.png)
+*Best bits per byte for each machine, with its size under each bar*
+
+### What actually matters
+
+- **Turning, RoPE, is the whole difference.** The new block beats the 2017 block by 0.017 bits per byte. Put the position cards back, keeping the other three changes, and the machine scores 0.7023: *worse* than the 2017 block. At this size, on these stories, every bit of the new block's advantage comes from turning cards instead of adding position cards.
+- **Sharing keys and values is free.** Full keys and values for every head scored 0.6721 against 0.6717, no real difference, while needing 1.2 million more numbers, about a tenth of the machine.
+- **The gated MLP is a small, real win:** 0.6717 against 0.6756, at the same size.
+- **The simpler normalise is not about accuracy.** The old LayerNorm actually scored slightly *better*, 0.6683, and the two runs took within 5 seconds of each other. RMSNorm is in the recipe because it saves work in machines with dozens of blocks and billions of numbers. At 6 blocks and 13 million numbers, there is nothing to see.
+
+![](assets/images/minigpt4/ablation-curves.png)
+*Bits per byte while training. The new block and three of its variants run together below the grey 2017 block; the one with position cards put back (red) lands on top of it*
+
+:::watch-it
+These results are for a 13-million-number machine on 20 million letters of simple stories. They do not contradict the papers, which tested far bigger machines. They show which change matters *at this size*: the others are mostly about saving work at scale, which a machine this small cannot show.
+:::
+
+And the writing? It reads like Part 4's machine. Tim has a toy car, then a tank, and the tank stays the subject through to the end:
+
+![](assets/images/minigpt4/generation.png)
+*The new-block machine continuing "Once upon a time"*
+
+A better block at this size buys a small, measurable drop in bits per byte, not a jump you can see in the stories.
+
+:::fireside-chat Tonight: the position cards and RoPE, on who knows where everything is
+**Position cards:** I have been in every MiniGPT since Part 1. One card per position, learned in training. Simple.
+
+**RoPE:** One card per position, learned separately. So "the token just before me" has to be learned at position 6, and again at position 7, and again at 250.
+
+**Position cards:** Training sorts that out. Part 1 showed my neighbouring cards end up alike, like a ruler.
+
+**RoPE:** Training sorts it out *slowly*. I give the machine "how far apart" for free: turn every card by its position, and the match only feels the difference.
+
+**Position cards:** And yet you were one of four changes. Maybe the others did the work.
+
+**RoPE:** We checked. Put you back, keep the other three, and the machine came out worse than the 2017 block. Take any of the others away, and it barely noticed.
+
+**Position cards:** Then at least I am easy to explain.
+
+**RoPE:** You are. And I have no limit: there is no table of mine to run out of, so a machine of mine can be given a longer row later.
+:::
+
+:::bullet-points Part 5, in short
+- Llama's block makes four changes to the 2017 one: RMSNorm, RoPE, SwiGLU, and shared keys and values.
+- RoPE drops the position cards and turns query and key cards by position, so matches depend only on distance.
+- Turning RoPE off made the machine worse than the 2017 block: RoPE is the whole improvement here.
+- Sharing keys and values saved a tenth of the machine at no cost.
+- RMSNorm and SwiGLU matter more for speed at scale than for accuracy at this size.
+:::
+
+:::no-dumb-questions
+**Q: Where did the position cards go?**
+
+A: Gone. A RoPE machine has no position cards at all. Position enters only inside attention, by turning the query and key cards. That is also why it saves numbers: 256 position cards of 384 numbers is 98,304 numbers the machine no longer needs.
+
+**Q: If the matches only feel distance, how does the machine know where the start of the text is?**
+
+A: The first token has nothing before it, which attention can see: it can only look at itself. And all through the row, the pattern of what came before carries plenty of clues. In practice, distance is what matters most for guessing the next token.
+
+**Q: Why share keys and values but not queries?**
+
+A: Every head still asks its own question, with its own query card. What gets shared is what is on offer, the keys, and what is handed over, the values. It turns out several heads can share those without asking worse questions, and sharing them saves the most memory when writing, because keys and values are what the KV cache keeps.
+
+**Q: If RMSNorm did not help, why does Llama use it?**
+
+A: Because Llama has many more blocks and billions of numbers, and normalising happens twice in every block for every token. Saving one calculation each time adds up to real time at that scale.
+:::
+
+:::pencil Who does what?
+Match each everyday description on the left with its proper name on the right.
+
+| Everyday description | Proper name |
+|---|---|
+| 1. normalise without subtracting the average | A. *SwiGLU* |
+| 2. turn query and key cards by position | B. *grouped-query attention* |
+| 3. an MLP whose bent copy gates the other | C. an *ablation* |
+| 4. sharing key and value cards between heads | D. *RMSNorm* |
+| 5. turning one part off to see what it did | E. *RoPE* |
+
+:::answer
+1 is D, 2 is E, 3 is A, 4 is B, and 5 is C.
+:::
+:::
+
+### The jargon decoder
+
+| What I called it | What the experts call it |
+|---|---|
+| the simpler normalise | *RMSNorm* (root mean square normalisation) |
+| the 2017 normalise | *LayerNorm* |
+| turning cards by position | *rotary position embeddings*, or *RoPE* |
+| the MLP with a gate | *SwiGLU* |
+| sharing key and value cards between heads | *grouped-query attention*, or *GQA* |
+| a query, key, and value for every head | *multi-head attention*, or *MHA* |
+| turning one change off at a time | an *ablation study* |
+
+## The code, in the order it runs
+
+The code is in [`part5-modern-block/`](https://github.com/Haddley/minigpt-series/tree/main/part5-modern-block). It reuses Part 4's MLX data loading and Part 3's stories. I checked the layout against `mlx-lm`'s [`models/llama.py`](https://github.com/ml-explore/mlx-lm/blob/main/mlx_lm/models/llama.py).
+
+### The settings: `Config` in `model_llama.py`
+
+Every change has a switch, so one script can train all six machines:
 
 ```python
-self.attn_norm = nn.RMSNorm(dim)   # was nn.LayerNorm(dim)
+norm: str = "rms"           # "rms" | "layer"
+pos: str = "rope"           # "rope" | "learned"
+mlp: str = "swiglu"         # "swiglu" | "gelu"
+n_kv_heads: int = 2         # 6 would give every head its own keys and values
+hidden: int = 1024          # SwiGLU width: 384 x 1024 x 3 == 384 x 1536 x 2
 ```
 
-**Rotary position embeddings.** The learned positional table in parts 1–4 is a `block_size × dim` matrix added to the token embeddings. RoPE instead rotates the query and key vectors by an angle proportional to their position, so that when two of them are dotted together in attention the result depends only on how far apart they are. There is no table to learn or to size, and nothing stops you running the model past its trained context length. [Su et al.](https://arxiv.org/abs/2104.09864) introduced it; every Llama uses it.
+### Change 1: `make_norm`
 
 ```python
-self.rope = nn.RoPE(head_dim, traditional=False, base=10000)
+return nn.RMSNorm(cfg.dim) if cfg.norm == "rms" else nn.LayerNorm(cfg.dim)
+```
+
+### Changes 2 and 4: `Attention`
+
+The key and value recipes make 2 heads' worth of cards, while the query recipe makes 6. Then RoPE turns the query and key cards, and MLX's fused attention handles the mismatch in head counts by itself:
+
+```python
+self.wq = nn.Linear(cfg.dim, self.n_heads * self.head_dim, bias=False)     # 6 heads
+self.wk = nn.Linear(cfg.dim, self.n_kv_heads * self.head_dim, bias=False)  # 2 heads
+self.wv = nn.Linear(cfg.dim, self.n_kv_heads * self.head_dim, bias=False)  # 2 heads
+self.rope = nn.RoPE(self.head_dim, traditional=False, base=cfg.rope_base)
 ...
 q, k = self.rope(q), self.rope(k)
-```
-
-**SwiGLU.** The GELU MLP is `down(gelu(up(x)))` — two matrices, inner size `4·dim`. SwiGLU is `down(silu(gate(x)) * up(x))` — three matrices, and to keep the parameter count the same the inner size shrinks to about `8/3·dim` (here 1,024, which makes `384×1024×3` exactly equal to the GELU block's `384×1536×2`). [Shazeer](https://arxiv.org/abs/2002.05202) found the gated version trains better; the paper's own line is that these architectures "work better in practice" and offers no deeper reason.
-
-```python
-def __call__(self, x):
-    return self.w2(nn.silu(self.w1(x)) * self.w3(x))
-```
-
-**Grouped-query attention.** Plain multi-head attention gives every query head its own key and value head. GQA gives the query heads their full count (6 here) but shares key and value across groups — 2 K/V heads, each serving 3 query heads. Fewer K and V projection parameters, and at inference the key–value cache is a third of the size. [Ainslie et al.](https://arxiv.org/abs/2305.13245) showed the quality cost is small. MLX's fused attention handles the head-count mismatch directly:
-
-```python
-k = self.wk(x).reshape(B, T, self.n_kv_heads, self.head_dim).transpose(0, 2, 1, 3)
 out = mx.fast.scaled_dot_product_attention(q, k, v, scale=self.scale, mask="causal")
 ```
 
-## The ablation
+### Change 3: `SwiGLU`
 
-Six runs, each 3,000 iterations on the same TinyStories split as parts 3 and 4, same optimiser, same 8k tokeniser. The baseline is the part 4 GPT block. Then the full modern block, then the modern block with each single feature reverted.
+```python
+def __call__(self, x):
+    return self.w2(nn.silu(self.w1(x)) * self.w3(x))   # gate (w1), up (w3), down (w2)
+```
 
-![](assets/images/minigpt4/ablation-runs.png)
-*The modern block and the four single-feature reversions. Every configuration is close on parameter count except full multi-head attention, which adds back 1.2M*
+### The six machines: `run_ablation.sh` and `train_llama.py`
 
-![](assets/images/minigpt4/ablation-curves.png)
-*Validation bits per byte. The modern block and its RMSNorm / SwiGLU / GQA variants track together below the grey baseline; reverting RoPE (red) lands back on the baseline*
-
-![](assets/images/minigpt4/ablation-bars.png)
-*Best validation bits per byte, with parameter count under each bar*
-
-| Run | Params | Best bits/byte |
-|---|---|---|
-| GPT block (part 4) | 13.9M | 0.6885 |
-| **Modern block** | **12.6M** | **0.6717** |
-| — SwiGLU → GELU | 12.6M | 0.6756 |
-| — GQA → full MHA | 13.8M | 0.6721 |
-| — RMSNorm → LayerNorm | 12.6M | 0.6683 |
-| — RoPE → learned positions | 12.7M | 0.7023 |
-
-## What actually matters
-
-**RoPE is the whole difference.** The modern block beats the GPT baseline by 0.017 bits per byte. Revert only the position embedding — keep RMSNorm, SwiGLU, and GQA — and the model scores 0.7023, *worse* than the baseline's 0.6885. Every bit of the modern block's edge over the 2017 block, at this scale and on this data, is the switch from a learned position table to rotary embeddings.
-
-**GQA is free.** Reverting to full multi-head attention changed bits per byte from 0.6717 to 0.6721 — noise — while adding 1.2M parameters, a tenth of the model. Two K/V heads did the job of six. That is the result the KV-cache work in [part 7](/posts/minigpt6/) leans on.
-
-**SwiGLU is a small real win.** 0.6717 against 0.6756 for the GELU MLP, at the same parameter count. Worth taking, not decisive.
-
-**RMSNorm is not an accuracy choice.** LayerNorm actually scored 0.003 *better* here, and the two runs were within a few seconds of each other on wall-clock — at this size the extra mean-subtraction in LayerNorm is lost in the noise. RMSNorm is in the recipe because it drops an operation and a parameter vector per norm, which matters when there are dozens of layers and billions of parameters; at 13M parameters and 6 layers there is nothing to see.
-
-None of this contradicts the papers. It says that at 13M parameters and 20 MB of simple text, the position encoding is the change that moves the loss, and the other three are efficiency decisions that happen not to cost anything.
-
-## Generating text
-
-![](assets/images/minigpt4/generation.png)
-*The modern-block model continuing "Once upon a time"*
-
-Tim has a toy car, then a tank, and the tank stays the subject through the dog stealing it. It reads like the part 3 and 4 models — same data, same budget — which is the expected outcome: a better block at this scale buys a small, measurable drop in loss, not a visible jump in fluency.
-
-## What I took from it
-
-- **"Modern architecture" is not one thing.** Four independent changes, and here exactly one of them — RoPE — accounts for the quality difference.
-- **Grouped-query attention costs nothing to add and saves a tenth of the model,** before you even get to the inference-time KV-cache saving.
-- **Some choices in the big-model recipe are about compute, not accuracy.** RMSNorm did not help the loss here; it is in the recipe because it is faster, and at scale faster is what matters.
-- **The block is a small lever.** The samples did not change. Scale, data, and the tokeniser are still doing the heavy lifting — the same conclusion as [part 2](/posts/minigpt-grown/).
-
-## Try it yourself
-
-The code is in [github.com/Haddley/minigpt-series](https://github.com/Haddley/minigpt-series) under `part5-modern-block/`:
+`train_llama.py` is Part 4's compiled MLX training loop, with the switches as options. `run_ablation.sh` trains the new block and then each one-change-off variant:
 
 ```bash
 python train_llama.py --tag modern
-python train_llama.py --tag gelu --mlp gelu
-python train_llama.py --tag mha  --gqa-off
-python train_llama.py --tag ln   --norm layer
-python train_llama.py --tag learned --pos learned
+python train_llama.py --tag rms_rope_gelu --mlp gelu
+python train_llama.py --tag rms_rope_mha  --gqa-off
+python train_llama.py --tag layer_rope    --norm layer
+python train_llama.py --tag rms_learned   --pos learned
+```
+
+![](assets/images/minigpt4/ablation-runs.png)
+*The five runs. Every machine is close in size except the one with full keys and values, which adds back 1.2 million numbers*
+
+`figures.py` then draws the bar and curve charts above, with Part 4's 2017-block run as the grey baseline.
+
+## Try it yourself
+
+- **The follow-along notebook:** [`part5-modern-block/minigpt_follow_along_5.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part5-modern-block/minigpt_follow_along_5.ipynb), for Jupyter on a Mac with Apple Silicon. It builds each machine and counts its numbers, shows RoPE's turning in action, trains the new block, and writes.
+- **On the command line,** after Part 3's `prepare_data.py` and `tokenizers_setup.py`:
+
+```bash
+cd minigpt-series/part5-modern-block
+./run_ablation.sh
 python figures.py
 python generate_llama.py --tag modern --prompt "Once upon a time"
 ```
 
-Requires Apple Silicon for MLX.
+MLX needs Apple Silicon.
 
-[Part 6](/posts/minigpt5/) keeps this model and adds a teacher: GPT-2 small, frozen, supplying token-probability targets so the small model learns from a bigger one's judgement — the distillation trick behind Llama 3.2 1B and 3B.
+[Part 6](/posts/minigpt5/) keeps this machine and gives it a teacher: a bigger model whose chances for every next token become extra training targets.
 
 ## References
 

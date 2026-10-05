@@ -1,7 +1,7 @@
 ---
 title: "MiniGPT"
 part: 7
-description: "Sliding-window attention in MLX — why a naive window mask saves nothing, how chunked attention makes it O(T), and where full attention runs out of room on a 64 GB Mac"
+description: "Reading a longer row in the same memory: why attention's cost grows with the square of the row, how a sliding window caps it, why writing the window as a mask saves nothing, and training at four times the context, with a follow-along notebook"
 date: "2026-10-05"
 categories: ["AI"]
 image: "/assets/images/minigpt6/posts-meta.svg"
@@ -10,116 +10,235 @@ hidden: false
 slug: "minigpt6"
 ---
 
-[Part 5](/posts/minigpt4/) added grouped-query attention, which shrinks the key–value cache. This last part deals with the other quadratic cost in a Transformer: the attention matrix itself.
+[Part 1](/posts/minigpt/#how-much-can-it-see-at-once-the-context-limit) warned that a longer row of positions is expensive, mostly because of attention. This post measures exactly how expensive, on the modern machine from [Part 5](/posts/minigpt4/), and then fixes it with the trick Mistral's models use: let each working card look back only over a fixed *window* of recent positions.
 
-Full causal attention compares every token with every earlier token. For a context of `T` tokens that is a `T × T` score matrix per head — memory that grows with the square of the context length. Double the context, quadruple the attention memory. On a machine with one fixed pool of RAM, that is the wall you hit first when you try to train on longer sequences.
+The code is in [`part7-sliding-window/`](https://github.com/Haddley/minigpt-series/tree/main/part7-sliding-window), with a follow-along notebook for a Mac, [`minigpt_follow_along_7.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part7-sliding-window/minigpt_follow_along_7.ipynb).
 
-Sliding-window attention, used in Mistral and Ministral, caps it: each token attends only to the last `W` tokens, so the cost grows with `T × W` — linear in context length once `W` is fixed. Information still travels further than `W` across the depth of the network, one window per layer, the way a stack of small convolutions builds a wide receptive field.
+## The big picture, in plain English
 
-## A mask is not enough
+### Why a longer row costs so much
 
-The obvious way to do this is to build a `T × T` mask that is `0` inside the window and `−∞` outside, and hand it to the attention kernel:
+In [attention](/posts/minigpt/#inside-a-block-attention), every working card matches its query card against the key card of every earlier position, and itself. So the number of matches grows much faster than the row.
 
-```python
-def sliding_window_mask(T, w, dtype):
-    i = mx.arange(T)[:, None]
-    j = mx.arange(T)[None, :]
-    keep = (j <= i) & (i - j < w)
-    return mx.where(keep, mx.array(0.0, dtype), mx.array(-mx.inf, dtype))
-```
+:::pencil Count the matches
+Every working card matches its query against the key of every position up to and including its own. How many matches does one head make for a row of 4 positions? For 8? For 1,024?
 
-That gives the right *behaviour* — each token only sees its window — but it saves no memory, because `mx.fast.scaled_dot_product_attention` still builds the full `T × T` score matrix and then adds your mostly-`−∞` mask to it. The measurements below show the "naive" masked version tracking full attention exactly.
+:::answer
+For 4 positions: 1 + 2 + 3 + 4 = 10 matches. For 8: 1 + 2 + … + 8 = 36. For 1,024: about 525,000. Doubling the row from 4 to 8 more than tripled the matches, and every further doubling roughly quadruples them. The matches, and the memory to hold them, grow with the *square* of the row.
+:::
+:::
 
-To actually get the `O(T × W)` cost you have to never form the `T × T` matrix. `chunked_swa` cuts the sequence into chunks of `W` tokens; chunk `i` attends only to the keys in chunks `i−1` and `i` — a `2W`-wide band that covers every query's causal window — so the largest score tensor is `[batch, heads, T/W, W, 2W]`, linear in `T`:
+Every one of those matches is a number the machine has to hold while it trains, in every head of every block. Double the row and you need about four times the memory for attention. On a machine with one fixed pool of memory, that is the wall you hit first.
 
-```python
-def chunked_swa(q, k, v, w, scale):
-    B, H, T, D = q.shape
-    # ... pad T to a multiple of w, left-pad k/v by w for the "previous chunk" ...
-    qc = q.reshape(B, H, nc, w, D)
-    kc = mx.stack([kpad[:, :, i*w : i*w + 2*w] for i in range(nc)], axis=2)
-    vc = mx.stack([vpad[:, :, i*w : i*w + 2*w] for i in range(nc)], axis=2)
-    scores = (qc @ kc.transpose(0, 1, 2, 4, 3)) * scale        # [B, H, nc, w, 2w]
-    scores = mx.where(band_mask, scores, -mx.inf)
-    return (mx.softmax(scores, axis=-1) @ vc).reshape(B, H, T, D)
-```
+### A sliding window
 
-It checks out against a full-attention reference: with `W ≥ T` it returns exactly the same numbers as causal attention, and with a real window it matches the masked version — it just does not pay for the parts it throws away.
+The fix is to let each working card look back only over a fixed window, here the last 256 positions, however long the row is. Then each card makes at most 256 matches, and the total grows only *in step with* the row: twice the row, twice the matches.
 
-## Memory against context length
+:::brain-power
+If each working card can only see the last 256 positions, how can the machine ever use something 1,000 positions back?
+:::
 
-`mem_sweep.py` builds the 13M-parameter MiniLlama at each context length, runs real forward-and-backward training steps, and records peak GPU memory — full attention, the naive mask, and `chunked_swa` with a 256-token window.
+The answer is the blocks. In block 1, a working card gathers information from up to 256 positions back. In block 2, it looks at working cards that have *already* gathered from their own windows, so it reaches up to about 512 back, and so on. With 6 blocks, information can travel about 1,500 positions, one window per block, much as [Part 1's four blocks](/posts/minigpt/#four-blocks-in-a-row) let each card reach further back than the one before.
 
-![](assets/images/minigpt6/mem-sweep.png)
-*Peak training memory, log–log. Full attention and the naive mask are the same line; chunked windowed attention has the shallower slope*
+### Writing the window as a mask saves nothing
 
-![](assets/images/minigpt6/mem-sweep-output.png)
-*The raw numbers, and the two long-context training runs*
+The obvious way to build the window is the way the earlier-positions rule is built: a grid of "allowed" and "not allowed", here also blocking anything more than 256 positions back. It gives exactly the right *behaviour*. But it saves no memory at all: the machine still works out every match in the full row-by-row grid, and only then throws most of them away.
 
-| Context | Full attention | Naive `T×T` mask | Chunked window |
+To actually save memory, the machine must never build the full grid. So the row is cut into chunks of 256 positions, and each chunk only looks at itself and the chunk before it. That covers every card's window, and the biggest grid ever built is 256 by 512, however long the row.
+
+:::watch-it
+Changing *what* attention may look at does not change what it *costs*. A mask changes the first; only computing less changes the second.
+:::
+
+### The memory race
+
+`mem_sweep.py` trains the 13-million-number modern machine for a few steps at each row length, three ways, and records the most memory each used:
+
+| Row length | Full attention | Window, as a mask | Window, in chunks |
 |---|---|---|---|
 | 512 | 2.55 GB | 2.60 GB | 2.67 GB |
 | 2,048 | 11.5 GB | 11.5 GB | 7.7 GB |
 | 4,096 | **35.5 GB** | 35.4 GB | 15.1 GB |
-| 8,192 | not run (~120 GB projected) | not run | 30.0 GB |
-| 16,384 | not run (~450 GB projected) | not run | 59.4 GB |
+| 8,192 | not run: about 120 GB | not run | 30.0 GB |
+| 16,384 | not run: about 450 GB | not run | 59.4 GB |
 
-At short contexts everything is close — the cost is dominated by the MLP activations and the 8k-wide output logits, both linear in `T`, and the attention matrix is small. The attention term takes over around 2,048 tokens. By 4,096 full attention needs 35.5 GB, more than half the machine, and one step takes 1.9 seconds; chunked does it in 15 GB and 0.8 seconds. Extrapolating the full-attention curve, 8,192 tokens would need more memory than the machine has, so the sweep stops trying it there; chunked keeps going — 16,384 tokens in 59 GB.
+![](assets/images/minigpt6/mem-sweep.png)
+*Most memory used, against row length. Full attention and the masked window are the same line; the chunked window climbs much more gently*
 
-The naive-mask column is the point worth keeping: it is identical to full attention at every length. Writing the window as a mask changes what the model attends to, not what it costs.
+- **The mask column matches full attention at every length**, exactly as the last section predicted.
+- **At short rows, everything is close.** Most of the memory then goes on the MLPs and on scoring against 8,192 answer cards, and both of those grow only in step with the row. Attention takes over at about 2,048 positions.
+- **At 4,096, full attention needs 35.5 GB**, more than half the Mac, and 1.9 seconds a step. The chunked window needs 15.1 GB and 0.8 seconds. At 8,192, full attention would need more memory than the Mac has. The chunked window reaches 16,384 positions in 59.4 GB.
 
-## Does the windowed model still learn?
+### Does the windowed machine still learn?
 
-A sliding window is only useful if the model still works. I trained the modern block at a 1,024-token context — four times parts 3–6 — once with full attention and once with a 256-token chunked window, same data, same 1,500 iterations.
+A window is only useful if the machine still works. I trained the modern machine with a row of 1,024 positions, four times the length used in Parts 3 to 6, once with full attention and once with a 256-position window, for 1,500 steps each:
+
+| Attention | Bits per byte | Minutes | Most memory used |
+|---|---|---|---|
+| full | 0.6805 | 9.8 | 8.39 GB |
+| 256-position window | **0.6727** | 9.0 | 7.66 GB |
 
 ![](assets/images/minigpt6/train-1024.png)
-*Validation bits per byte at a 1,024-token context. The windowed run is not behind*
+*Bits per byte at a 1,024-position row. The windowed machine is not behind*
 
-| Run | Attention | Best bits/byte | Minutes | Peak memory |
-|---|---|---|---|---|
-| full1024 | full causal | 0.6805 | 9.8 | 8.39 GB |
-| window1024 | 256-token window | **0.6727** | 9.0 | 7.66 GB |
-
-The windowed model came out very slightly *ahead* — well within the noise — while training faster and in less memory. And its 0.6727 is the same as the 256-context model from [part 5](/posts/minigpt4/) (0.6717): on TinyStories, going from a 256- to a 1,024-token context did not help, because the stories are a few hundred tokens long and there is nothing further back that a token needs to see. TinyStories is the wrong dataset to show a long-context *quality* win. The point here is the memory curve — the windowed model trains to the same place while its attention cost stays flat as the context grows.
-
-## Generating text
+The windowed machine came out very slightly *ahead*, well within the noise, while training faster and in less memory. And its 0.6727 matches the 256-position machine from Part 5 (0.6717): on these stories, a longer row did not help at all, because most stories are only a few hundred tokens long, so there is nothing further back worth seeing. TinyStories is the wrong text to show what a long row is *for*. The point here is the memory: the windowed machine learns just as well, while its attention cost stays flat as the row grows.
 
 ![](assets/images/minigpt6/generation.png)
-*The windowed 1,024-context model continuing "Once upon a time"*
+*The windowed machine, with a 1,024-position row, continuing "Once upon a time"*
 
-A bird named Bob, a fish that helps him, a resolution, "they became good friends" — the same shape as every other model in this series. The sliding window did not cost it anything visible.
+A bird named Bob, a fish that helps him, and "they became good friends": the same shape of story as every machine in this series. The window cost it nothing you can see.
 
-## What I took from it
+:::fireside-chat Tonight: full attention and the sliding window, on who can read more
+**Full attention:** I see everything. Every working card can look at every position before it. Nothing is ever out of reach.
 
-- **The window has to be built into the attention computation, not bolted on as a mask.** A `T × T` mask over a fused kernel gives you the behaviour and none of the saving.
-- **The quadratic term is not the whole memory bill.** At the context lengths a small model actually trains at, the MLP activations and the output logits — both linear in `T` — are most of it. Windowed attention flattens the part that would otherwise explode, and that is what lets you keep scaling `T`.
-- **Windowed attention was free here.** Same loss, less memory, slightly faster. On a dataset with genuine long-range structure the trade would be real; on TinyStories there was nothing to trade away.
+**Sliding window:** And every time the row doubles, you need four times the memory. At 4,096 positions you took 35 GB.
+
+**Full attention:** Memory is cheap.
+
+**Sliding window:** Not at 8,192 positions. You would have needed about 120 GB, on a 64 GB Mac. I read 16,384 in 59.
+
+**Full attention:** But you are short-sighted. Each card sees 256 positions back, and no further.
+
+**Sliding window:** In one block. Six blocks, and information travels about 1,500 positions. And on these stories, I scored 0.6727 to your 0.6805.
+
+**Full attention:** Within the noise.
+
+**Sliding window:** Agreed. Which is the point: same score, less memory, a bit faster.
+
+**Full attention:** And when the text really does need something from 5,000 positions back?
+
+**Sliding window:** Then you earn your memory. These stories never did.
+:::
+
+:::bullet-points Part 7, in short
+- Attention's matches, and their memory, grow with the square of the row.
+- A sliding window lets each working card look back only a fixed number of positions.
+- Through the blocks, information still travels much further than one window.
+- Writing the window as a mask changes what is seen, not what it costs.
+- Computing in chunks is what saves memory: 16,384 positions in 59 GB, where full attention stopped at 4,096.
+- On these stories, the windowed machine learned just as well, faster, in less memory.
+:::
+
+:::no-dumb-questions
+**Q: Why did a longer row not help on these stories?**
+
+A: Because most of them are a few hundred tokens long. A row of 256 BPE pieces already covers more than a whole typical story, as [Part 3](/posts/minigpt2/#what-bigger-pieces-buy) showed, so a longer row has nothing more to show the machine.
+
+**Q: Is this the same as the KV cache from Part 1?**
+
+A: No, but they work together. The KV cache saves *time* when writing, by keeping old key and value cards instead of remaking them. A sliding window also caps how many of them need keeping: only the last 256 positions, however long the conversation.
+
+**Q: Why chunks of exactly the window size?**
+
+A: With chunks of 256, every card's window of 256 positions fits inside its own chunk and the one before. Smaller chunks would need more of them looked at; bigger ones would build bigger grids than necessary.
+
+**Q: Do the big models use this?**
+
+A: Some do, often mixed with full attention in some blocks. Mistral 7B used a sliding window in every block. The trade is the one measured here: memory and speed against the chance that something important is further back than information can travel.
+:::
+
+:::pencil Who does what?
+Match each everyday description on the left with its proper name on the right.
+
+| Everyday description | Proper name |
+|---|---|
+| 1. how many positions a machine can read at once | A. *sliding-window attention* |
+| 2. each card looks back only a fixed number of positions | B. the *attention mask* |
+| 3. the grid of "allowed" and "not allowed" matches | C. *quadratic* cost |
+| 4. growing with the square of the row | D. the *context length* |
+| 5. how far information can travel through the blocks | E. the *receptive field* |
+
+:::answer
+1 is D, 2 is A, 3 is B, 4 is C, and 5 is E.
+:::
+:::
+
+### The jargon decoder
+
+| What I called it | What the experts call it |
+|---|---|
+| the length of the row | the *context length*, or *sequence length* |
+| looking back only a fixed number of positions | *sliding-window attention* |
+| the grid of allowed matches | the *attention mask* |
+| growing with the square of the row | *quadratic*, or O(T²), cost |
+| growing in step with the row | *linear*, or O(T × W), cost |
+| how far information can travel | the *receptive field* |
+
+## The code, in the order it runs
+
+The windowed attention lives in Part 5's [`model_llama.py`](https://github.com/Haddley/minigpt-series/blob/main/part5-modern-block/model_llama.py), behind a `window` setting, and [`part7-sliding-window/`](https://github.com/Haddley/minigpt-series/tree/main/part7-sliding-window) measures it.
+
+### The mask that saves nothing: `sliding_window_mask`
+
+```python
+i = mx.arange(T)[:, None]
+j = mx.arange(T)[None, :]
+keep = (j <= i) & (i - j < w)          # earlier positions only, and at most w back
+return mx.where(keep, mx.array(0.0, dtype), mx.array(-mx.inf, dtype))
+```
+
+This builds the full T-by-T grid, and the attention call still works out every match before the mask removes most of them.
+
+### The chunks that do save: `chunked_swa`
+
+```python
+qc = q.reshape(B, H, nc, w, D)                                            # queries, in chunks of w
+kc = mx.stack([kpad[:, :, i * w:i * w + 2 * w] for i in range(nc)], axis=2)  # each chunk's keys, plus the chunk before
+vc = mx.stack([vpad[:, :, i * w:i * w + 2 * w] for i in range(nc)], axis=2)
+scores = (qc @ kc.transpose(0, 1, 2, 4, 3)) * scale                       # never bigger than w by 2w
+scores = mx.where(mask[None, None], scores, -mx.inf)
+out = mx.softmax(scores, axis=-1) @ vc
+```
+
+The biggest grid is `[batch, heads, chunks, w, 2w]`, which grows in step with the row. With a window as long as the row, it gives exactly the same numbers as full attention.
+
+### Choosing between them: `Attention` in `model_llama.py`
+
+```python
+if self.window <= 0:
+    out = mx.fast.scaled_dot_product_attention(q, k, v, scale=self.scale, mask="causal")
+elif self.naive_window:
+    m = sliding_window_mask(T, self.window, x.dtype)
+    out = mx.fast.scaled_dot_product_attention(q, k, v, scale=self.scale, mask=m)
+else:
+    out = chunked_swa(q, k, v, self.window, self.scale)   # after sharing out the key and value heads
+```
+
+### The race: `mem_sweep.py`
+
+For each row length from 512 to 16,384, and each of the three ways, `mem_sweep.py` builds the machine, trains it for 5 steps on random tokens, and records the most memory used and the time per step. It skips full attention and the mask past 4,096 positions, where they would run the Mac out of memory.
+
+![](assets/images/minigpt6/mem-sweep-output.png)
+*The sweep's own output, and the two training runs*
 
 ## The series
 
-Six parts, from a character-level GPT in a borrowed notebook to a modern small model in MLX:
+Seven parts, from a character-level GPT in a borrowed notebook to a modern small model in MLX:
 
-1. [MiniGPT](/posts/minigpt/) — Jibin Joseph's notebook on the M1 Max: the GPT training loop from first principles, character-level.
-2. [A real tokeniser](/posts/minigpt2/) — character vs GPT-2 vs a trained 8k BPE, scored in bits per byte.
-3. [Into MLX](/posts/minigpt3/) — the same model in Apple's framework: unified memory, lazy evaluation, `mx.compile`.
-4. [The Llama 3.2 block](/posts/minigpt4/) — RMSNorm, RoPE, SwiGLU, GQA, ablated one at a time. Only RoPE moved the loss.
-5. [Distillation](/posts/minigpt5/) — training the small model against a bigger one's token probabilities. It helped only when the teacher was actually better at the data.
-6. Sliding-window attention — a longer context in the same memory.
+1. [Running it](/posts/minigpt/): a trained MiniGPT taken apart while it writes.
+2. [Growing it](/posts/minigpt-grown/): training the same machine from random numbers.
+3. [Pieces, not letters](/posts/minigpt2/): three tokenisers, scored fairly in bits per byte.
+4. [A faster engine](/posts/minigpt3/): the same machine in Apple's MLX.
+5. [The modern block](/posts/minigpt4/): Llama's four changes, one at a time. Only RoPE mattered.
+6. [Learning from a teacher](/posts/minigpt5/): distillation, and why the best teacher knows the stories.
+7. Reading further: sliding-window attention.
 
-Every model here is tiny and none of them is good. That was the point. The architecture, the tokeniser, the training loop, the framework, and the tricks — distillation, grouped-query attention, windowed attention — are all things you can build and run in an afternoon on a laptop-class machine. What separates them from the models I use every day is scale: more data, more parameters, more compute, applied to substantially this recipe.
+Every machine here is tiny, and none of them is good. That was the point. The tokeniser, the training loop, the engine, and the tricks, distillation, shared keys and values, and windowed attention, are all things you can build and run in an afternoon on one Mac. What separates them from the models I use every day is scale: more text, more numbers, and more computing, applied to substantially this recipe.
 
 ## Try it yourself
 
-The code is in [github.com/Haddley/minigpt-series](https://github.com/Haddley/minigpt-series) under `part7-sliding-window/`:
+- **The follow-along notebook:** [`part7-sliding-window/minigpt_follow_along_7.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part7-sliding-window/minigpt_follow_along_7.ipynb), for Jupyter on a Mac with Apple Silicon. It counts the matches, checks that the chunked window gives full attention's numbers when the window covers the whole row, and runs a short memory race.
+- **On the command line,** after Part 3's `prepare_data.py` and `tokenizers_setup.py`:
 
 ```bash
+cd minigpt-series/part7-sliding-window
 python mem_sweep.py
 python figures.py
 python ../part5-modern-block/train_llama.py --tag window1024 --block-size 1024 --window 256 --iters 1500
 python ../part5-modern-block/train_llama.py --tag full1024   --block-size 1024 --window 0   --iters 1500
 ```
 
-Requires Apple Silicon for MLX.
+MLX needs Apple Silicon.
 
 ## References
 
