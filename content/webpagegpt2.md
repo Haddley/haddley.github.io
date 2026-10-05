@@ -16,7 +16,7 @@ This post fixes that ratio the direct way: scale the transformer body, keep the 
 
 ## The new config
 
-Same corpus, same StarCoder2 tokeniser, same 1,024-token context, same [Part 4](/posts/minigpt4/) block (RMSNorm, RoPE, SwiGLU, grouped-query attention). Only the body changed.
+Same corpus, same StarCoder2 tokeniser, same 1,024-token context, same [Part 5](/posts/minigpt4/) block (RMSNorm, RoPE, SwiGLU, grouped-query attention). Only the body changed.
 
 | | Part 1 | Part 2 |
 |---|---|---|
@@ -66,7 +66,7 @@ None of this is factual — the numbers are fabricated, the way any of these Web
 
 ## What's next
 
-Part 3 caches StarCoder2-3B's logits over this same corpus and distils a student against them — the actual point of this series. The question is whether distillation gets a small model closer to "Automotive Company, Menu, $500 to 500 families"-level specificity faster than more raw next-token training does, the way [Part 5](/posts/minigpt5/) showed for TinyStories at a much smaller scale, or whether — as the MiniGPT series' unpublished attempt found at frontier scale — the gap between teacher and student is still too wide to close here too.
+Part 3 caches StarCoder2-3B's logits over this same corpus and distils a student against them — the actual point of this series. The question is whether distillation gets a small model closer to "Automotive Company, Menu, $500 to 500 families"-level specificity faster than more raw next-token training does, the way [Part 6](/posts/minigpt5/) showed for TinyStories at a much smaller scale, or whether — as the MiniGPT series' unpublished attempt found at frontier scale — the gap between teacher and student is still too wide to close here too.
 
 ## Try it yourself
 

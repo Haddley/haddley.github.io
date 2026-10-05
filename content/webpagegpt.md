@@ -10,9 +10,9 @@ hidden: true
 slug: "webpagegpt"
 ---
 
-I wanted to show distillation [Part 5](/posts/minigpt5/) actually helping, at a scale I can run end to end on this machine. That meant picking a problem where a small student and a real teacher are both usable, and where I can see the win with my own eyes rather than read it off a loss curve. HTML pages fit all three. There is a natural teacher — [StarCoder2](https://huggingface.co/bigcode/starcoder2-3b), a 3B-parameter code model trained on permissively licensed source including huge amounts of HTML and CSS. There is a natural corpus of raw examples on Hugging Face. And the output renders in a browser, so I can look at a page and judge it, the way I could never really judge a paragraph of TinyStories prose against another.
+I wanted to show distillation [Part 6](/posts/minigpt5/) actually helping, at a scale I can run end to end on this machine. That meant picking a problem where a small student and a real teacher are both usable, and where I can see the win with my own eyes rather than read it off a loss curve. HTML pages fit all three. There is a natural teacher — [StarCoder2](https://huggingface.co/bigcode/starcoder2-3b), a 3B-parameter code model trained on permissively licensed source including huge amounts of HTML and CSS. There is a natural corpus of raw examples on Hugging Face. And the output renders in a browser, so I can look at a page and judge it, the way I could never really judge a paragraph of TinyStories prose against another.
 
-So: **WebPageGPT**. Same machine as the MiniGPT series (2022 Mac Studio, Apple M1 Max, 64 GB RAM), same MLX training loop and modern Transformer block from [Part 4](/posts/minigpt4/), new domain. The plan is three posts: this one builds the corpus and trains a small model from scratch to see what raw next-token prediction gets you; the next scales the model and the context; the third distils from StarCoder2-3B and checks whether the distilled student beats the from-scratch model, or reaches the same quality in fewer steps. I do not know yet whether part three will work. That is the point of writing it as I go.
+So: **WebPageGPT**. Same machine as the MiniGPT series (2022 Mac Studio, Apple M1 Max, 64 GB RAM), same MLX training loop and modern Transformer block from [Part 5](/posts/minigpt4/), new domain. The plan is three posts: this one builds the corpus and trains a small model from scratch to see what raw next-token prediction gets you; the next scales the model and the context; the third distils from StarCoder2-3B and checks whether the distilled student beats the from-scratch model, or reaches the same quality in fewer steps. I do not know yet whether part three will work. That is the point of writing it as I go.
 
 ## The corpus
 
@@ -46,7 +46,7 @@ Each page is emitted as `<|endoftext|> <html>...</html>`, so the model learns wh
 
 ## The model
 
-I reused [Part 4](/posts/minigpt4/)'s modern block unchanged: RMSNorm, RoPE, SwiGLU, grouped-query attention. No architecture changes for this first pass — the point of Part 1 is to see what a known-good small Transformer does on a new domain, not to reintroduce every ablation.
+I reused [Part 5](/posts/minigpt4/)'s modern block unchanged: RMSNorm, RoPE, SwiGLU, grouped-query attention. No architecture changes for this first pass — the point of Part 1 is to see what a known-good small Transformer does on a new domain, not to reintroduce every ablation.
 
 | | |
 |---|---|
@@ -61,7 +61,7 @@ More than half the parameters are the token embedding table, which is the price 
 
 ## Training, twice interrupted
 
-I trained for 10,000 steps, batch size 16, 1,024-token context, AdamW with a cosine schedule — the same recipe as MiniGPT Part 4. Two runs crashed with the GPU error I have seen a few times through this series, a Metal command buffer killed by macOS to protect interactivity or recovered after another process's hang. This time the cause was concrete: I had LM Studio and Ollama both idling in the background, each holding a model on the same GPU this training run needed. Quitting both fixed it.
+I trained for 10,000 steps, batch size 16, 1,024-token context, AdamW with a cosine schedule — the same recipe as MiniGPT Part 5. Two runs crashed with the GPU error I have seen a few times through this series, a Metal command buffer killed by macOS to protect interactivity or recovered after another process's hang. This time the cause was concrete: I had LM Studio and Ollama both idling in the background, each holding a model on the same GPU this training run needed. Quitting both fixed it.
 
 ![](assets/images/webpagegpt/train-log.png)
 *The incremental history file means a crash costs minutes, not hours — the curve up to the crash point survives on disk.*

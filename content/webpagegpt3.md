@@ -14,7 +14,7 @@ slug: "webpagegpt3"
 
 ## Caching the teacher
 
-Distilling from a 3B-parameter model at every training step would mean running it forward on every batch — slow, and it ties every student experiment to keeping the teacher loaded. Instead I ran it once, offline, over a prefix of the training stream, and cached its top-48 next-token logits at every position, the same approach the MiniGPT series used in Parts 5 and 7.
+Distilling from a 3B-parameter model at every training step would mean running it forward on every batch — slow, and it ties every student experiment to keeping the teacher loaded. Instead I ran it once, offline, over a prefix of the training stream, and cached its top-48 next-token logits at every position, the same approach the MiniGPT series used in Parts 6 and 8.
 
 I used [`mlx-community/starcoder2-3b-4bit`](https://huggingface.co/mlx-community/starcoder2-3b-4bit) — the same tokeniser and vocabulary as the student, so no translation between teacher and student logits is needed. Cutting the stream into non-overlapping 1,024-token chunks (the student's context length) and caching the top 48 logits per position over the first 10,000 chunks — 10.24M tokens — took about 2 hours on this machine at roughly 1,250 tokens/second.
 
@@ -65,7 +65,7 @@ Both trained for 6,000 steps at batch size 16 — about ten epochs over the cach
 ![](assets/images/webpagegpt3/distill-compare.png)
 *The distilled run tracks slightly above the control for the entire run, never catching up. Both stay far below the teacher's own 0.28 — expected, since both are specialising directly on the target distribution the teacher never saw.*
 
-Distillation did not help. It made the student very slightly worse, by almost exactly the margin the literature above would predict for a teacher that is a worse fit than the student can already achieve on its own. This is not the dramatic failure Part 7 of the MiniGPT series produced — that teacher was catastrophic for the larger students. This is a small, clean, boring negative result, which is in some ways more useful: it is not a scale mismatch or a training instability, it is exactly the mechanism the theory predicts, at a scale small enough to see clearly.
+Distillation did not help. It made the student very slightly worse, by almost exactly the margin the literature above would predict for a teacher that is a worse fit than the student can already achieve on its own. This is not the dramatic failure Part 8 of the MiniGPT series produced — that teacher was catastrophic for the larger students. This is a small, clean, boring negative result, which is in some ways more useful: it is not a scale mismatch or a training instability, it is exactly the mechanism the theory predicts, at a scale small enough to see clearly.
 
 Both numbers are worse than Part 2's 0.0895, which is not a fair comparison — Part 2 trained on the full 270.9M-token corpus for longer, not the 10.24M-token prefix this experiment fixed for a controlled comparison. The 0.1385-vs-0.1413 gap, on identical data and identical architecture, is the only comparison that isolates what distillation itself contributed here.
 
@@ -93,7 +93,7 @@ The distilled model is not uniformly broken. But across eight samples it produce
 ## What I took from it
 
 - **The literature's prediction held.** A teacher that is a worse fit than the student can already achieve on the target distribution did not help, and mildly hurt — both in the aggregate metric and, more visibly, in the failure rate of the rendered output.
-- **This is a different failure mode from Part 7's, and a more instructive one.** Part 7 paired a frontier teacher with students too small to absorb it, on a dataset the teacher barely fit better than the students did. This experiment used a teacher and student close in the metric that matters, on a domain the teacher was never near — a cleaner test of domain mismatch specifically, isolated from any capacity mismatch.
+- **This is a different failure mode from MiniGPT Part 8's, and a more instructive one.** Part 8 paired a frontier teacher with students too small to absorb it, on a dataset the teacher barely fit better than the students did. This experiment used a teacher and student close in the metric that matters, on a domain the teacher was never near — a cleaner test of domain mismatch specifically, isolated from any capacity mismatch.
 - **A negative result explained in advance by three separate literatures is worth publishing.** This is not a mysterious failure. It is what "Don't Stop Pretraining," the TinyStories argument, and the distillation capacity-gap papers all predict for this exact setup, and it happened.
 - **The corpus, not the model, is still the ceiling.** Every post in this series has hit some version of this: a from-scratch model specialised directly on enough in-domain data does better than either a bigger from-scratch model on less of it (Part 2 vs this post's control) or a distillation signal from a model that has not seen this domain (this post's two runs).
 

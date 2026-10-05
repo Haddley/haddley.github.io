@@ -1,6 +1,6 @@
 ---
 title: "MiniGPT"
-part: 3
+part: 4
 description: "Porting the MiniGPT model and training loop from PyTorch to Apple's MLX — unified memory, lazy evaluation, mx.compile, and fused attention — then running both on the same M1 Max and comparing tokens per second and peak memory"
 date: "2026-09-09"
 categories: ["AI"]
@@ -10,9 +10,9 @@ hidden: false
 slug: "minigpt3"
 ---
 
-[Part 1](/posts/minigpt/) ran a GPT training pipeline in PyTorch. [Part 2](/posts/minigpt2/) swapped the character tokeniser for a trained 8k byte-level BPE and trained on TinyStories. Both ran on my Mac Studio through PyTorch's Metal Performance Shaders backend, which works but is not what Apple Silicon was designed around.
+[Part 1](/posts/minigpt/) and [Part 2](/posts/minigpt-grown/) ran a GPT training pipeline in PyTorch. [Part 3](/posts/minigpt2/) swapped the character tokeniser for a trained 8k byte-level BPE and trained on TinyStories. Both ran on my Mac Studio through PyTorch's Metal Performance Shaders backend, which works but is not what Apple Silicon was designed around.
 
-This part changes the framework and nothing else. Same model — 6 layers, 6 heads, 384-dimensional, 256-token context, weight-tied, 13.9M parameters — same 8k BPE tokeniser from part 2, same TinyStories split, same AdamW schedule. I rebuild all of it in [MLX](https://github.com/ml-explore/mlx), Apple's array framework for machine learning on Apple Silicon, and then run the PyTorch and MLX versions on the same machine to see what the switch actually buys.
+This part changes the framework and nothing else. Same model — 6 layers, 6 heads, 384-dimensional, 256-token context, weight-tied, 13.9M parameters — same 8k BPE tokeniser from part 3, same TinyStories split, same AdamW schedule. I rebuild all of it in [MLX](https://github.com/ml-explore/mlx), Apple's array framework for machine learning on Apple Silicon, and then run the PyTorch and MLX versions on the same machine to see what the switch actually buys.
 
 I have used MLX before, in [MLX 1](/posts/mlx1/), but that post was about *using* the ecosystem — `mlx_lm.lora` to fine-tune a released model, then fuse and convert it for Ollama. This post is about *writing* model code in MLX directly: the layers, the gradient, the training step.
 
@@ -120,7 +120,7 @@ The one API surprise porting the training loop was that `tree_flatten`, used to 
 Before comparing speed, the MLX model has to be doing the same thing. It is not initialised identically — the PyTorch version applies an explicit normal initialiser from part 1, the MLX version uses the `mlx.nn` layer defaults, and the two frameworks draw from different random number generators — so the loss curves will not lie exactly on top of each other. But run for run they track closely, and both land at the same place.
 
 ![](assets/images/minigpt3/mlx-training.png)
-*The MLX training run — same 3,000 iterations, same 8k tokeniser, same data as the part 2 PyTorch run*
+*The MLX training run — same 3,000 iterations, same 8k tokeniser, same data as the part 3 PyTorch run*
 
 ![](assets/images/minigpt3/loss-curves.png)
 *Validation bits per byte, PyTorch against MLX. The MLX run finishes at 0.689, the PyTorch run at 0.697 — a difference well inside the noise between two different initialisations*
@@ -147,7 +147,7 @@ Two things come out of this.
 
 **MLX uses less memory.** Peak GPU memory is 3.7–3.9 GB for MLX against 4.6 GB for PyTorch — 15–20% lower — for the identical model and batch. On a machine where the model, the teacher model in a later part, and everything else share one 64 GB pool, that headroom matters.
 
-The full training runs from the logs tell the same story less precisely: 8.1 minutes for MLX against 12.6 for PyTorch in part 2. Some of that gap is my MLX evaluation loop sampling fewer batches than the PyTorch one, so the controlled `bench.py` figures above are the fair comparison. This is one small model, one configuration, one Mac — not a benchmark. The takeaway is not a guaranteed speed-up. It is that MLX is built around the single memory pool, so the device bookkeeping goes away, the fast paths are the default, and `mx.compile` has real headroom to work with.
+The full training runs from the logs tell the same story less precisely: 8.1 minutes for MLX against 12.6 for PyTorch in part 3. Some of that gap is my MLX evaluation loop sampling fewer batches than the PyTorch one, so the controlled `bench.py` figures above are the fair comparison. This is one small model, one configuration, one Mac — not a benchmark. The takeaway is not a guaranteed speed-up. It is that MLX is built around the single memory pool, so the device bookkeeping goes away, the fast paths are the default, and `mx.compile` has real headroom to work with.
 
 ## Generating text
 
@@ -162,7 +162,7 @@ print(tok.decode(idx[0].tolist()))
 ![](assets/images/minigpt3/generation.png)
 *The MLX model continuing "Once upon a time"*
 
-Tim has a dirty sock, the sock stays the subject of the story, and the passage has a beginning, middle, and end. It has the same failure modes as the part 2 PyTorch model — "watched and wave" is a dropped inflection, and longer samples drift — and it reads with the same character, which is the point: the port produces the same model, not just a model with a similar loss.
+Tim has a dirty sock, the sock stays the subject of the story, and the passage has a beginning, middle, and end. It has the same failure modes as the part 3 PyTorch model — "watched and wave" is a dropped inflection, and longer samples drift — and it reads with the same character, which is the point: the port produces the same model, not just a model with a similar loss.
 
 ## What I took from it
 
@@ -184,9 +184,9 @@ python bench.py --framework mlx
 python generate_mlx.py --prompt "Once upon a time"
 ```
 
-MLX requires Apple Silicon. On any other machine the PyTorch path from [part 2](/posts/minigpt2/) is the one to use.
+MLX requires Apple Silicon. On any other machine the PyTorch path from [part 3](/posts/minigpt2/) is the one to use.
 
-Part 4 keeps the MLX framework and replaces the vanilla GPT block with the modern one — RMSNorm, rotary position embeddings, SwiGLU, and grouped-query attention — the layout Meta used for the Llama 3.2 1B and 3B edge models.
+Part 5 keeps the MLX framework and replaces the vanilla GPT block with the modern one — RMSNorm, rotary position embeddings, SwiGLU, and grouped-query attention — the layout Meta used for the Llama 3.2 1B and 3B edge models.
 
 ## References
 

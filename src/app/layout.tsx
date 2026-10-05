@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Jost } from "next/font/google";
+import { Jost, Kalam } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Layout from "@/components/Layout";
@@ -10,6 +10,13 @@ const jost = Jost({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   style: ["normal", "italic"],
+});
+
+// Handwritten font for callout titles and annotations.
+const kalam = Kalam({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-hand",
 });
 
 export const metadata: Metadata = {
@@ -72,7 +79,7 @@ export default function RootLayout({
           </>
         )}
       </head>
-      <body className={`${jost.className} antialiased`}>
+      <body className={`${jost.className} ${kalam.variable} antialiased`}>
         {/* Register COI service worker for SharedArrayBuffer on GitHub Pages */}
         <Script id="coi-sw" strategy="beforeInteractive">{`
           if ('serviceWorker' in navigator) {

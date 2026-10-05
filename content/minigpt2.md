@@ -1,6 +1,6 @@
 ---
 title: "MiniGPT"
-part: 2
+part: 3
 description: "Replacing MiniGPT's 65-character tokeniser with a real byte-level BPE — borrowing GPT-2's, training an 8k one, and comparing all three on TinyStories in bits per byte on an Apple M1 Max"
 date: "2026-09-09"
 categories: ["AI"]
@@ -10,9 +10,9 @@ hidden: false
 slug: "minigpt2"
 ---
 
-In [part 1](/posts/minigpt/) I ran Jibin Joseph's MiniGPT notebook on my Mac Studio. It builds a whole GPT training pipeline in one file, and it uses the simplest possible tokeniser: every distinct character in Tiny Shakespeare becomes one token, for a vocabulary of exactly 65. The notebook is honest that this is a trade-off. There is nothing to train and nothing to inspect, but the model has to learn spelling from individual letters, and a 256-token context window is only a few dozen words.
+In [part 1](/posts/minigpt/) and [part 2](/posts/minigpt-grown/) I ran Jibin Joseph's MiniGPT notebook on my Mac Studio. It builds a whole GPT training pipeline in one file, and it uses the simplest possible tokeniser: every distinct character in Tiny Shakespeare becomes one token, for a vocabulary of exactly 65. The notebook is honest that this is a trade-off. There is nothing to train and nothing to inspect, but the model has to learn spelling from individual letters, and a 256-token context window is only a few dozen words.
 
-This post changes one thing and holds everything else fixed. The model is the same "stronger" configuration from part 1 — 6 layers, 6 heads, 384-dimensional, 256-token context, weight-tied — and the training loop is the same AdamW schedule with best-validation checkpointing. Only the tokeniser changes. I run three: the character-level one carried over from part 1, OpenAI's GPT-2 tokeniser borrowed unchanged, and a small **byte-pair-encoding** (BPE) tokeniser I train on the training text.
+This post changes one thing and holds everything else fixed. The model is the same "stronger" configuration from part 2 — 6 layers, 6 heads, 384-dimensional, 256-token context, weight-tied — and the training loop is the same AdamW schedule with best-validation checkpointing. Only the tokeniser changes. I run three: the character-level one carried over from part 1, OpenAI's GPT-2 tokeniser borrowed unchanged, and a small **byte-pair-encoding** (BPE) tokeniser I train on the training text.
 
 BPE began as a 1994 text-compression trick — repeatedly find the most common pair of adjacent symbols and replace it with a new one — and was adapted for language models by [Sennrich et al. in 2016](https://arxiv.org/abs/1508.07909). OpenAI used it to build the GPT-2 tokeniser, and it is still the standard. Hugging Face's LLM course has a [clear walkthrough of the algorithm](https://huggingface.co/learn/llm-course/en/chapter6/5).
 
@@ -40,7 +40,7 @@ The tokeniser takes a string of text and returns a list of integers. The model n
 
 ## Three tokenisers
 
-**Character level.** Exactly what part 1 did — `sorted(set(text))`, one integer per character. On TinyStories that is a vocabulary of 91 symbols rather than 65, because the stories use digits, curly quotation marks, and a wider range of punctuation than the plays.
+**Character level.** Exactly what parts 1 and 2 did — `sorted(set(text))`, one integer per character. On TinyStories that is a vocabulary of 91 symbols rather than 65, because the stories use digits, curly quotation marks, and a wider range of punctuation than the plays.
 
 **GPT-2, borrowed unchanged.** OpenAI released the GPT-2 tokeniser with the model in 2019 and it is still a reasonable default. It is a byte-level byte-pair-encoding tokeniser with 50,257 entries, and [`tiktoken`](https://github.com/openai/tiktoken) loads it in one line with nothing to train:
 
@@ -104,7 +104,7 @@ The `val_loss / ln(2)` converts nats to bits per token; multiplying by tokens-pe
 
 ## The runs
 
-Each run is 3,000 iterations, batch size 32, on the Mac Studio's M1 Max GPU through PyTorch's MPS backend — the same device path as part 1.
+Each run is 3,000 iterations, batch size 32, on the Mac Studio's M1 Max GPU through PyTorch's MPS backend — the same device path as part 2.
 
 ![](assets/images/minigpt2/training-runs.png)
 *The three runs back to back. Raw validation loss and bits per byte move in opposite directions across the three tokenisers*
@@ -121,11 +121,11 @@ Three things stand out.
 
 **The trained 8k tokeniser matches GPT-2's.** Bits per byte of 0.6967 against 0.7001 — a rounding difference — even though the 8k model has less than half the parameters (13.9M against 30.0M) and trained in less than a third of the wall-clock time (12.6 minutes against 41.3). The GPT-2 run is slow because a 50,257-wide output projection and softmax on every position, plus an AdamW step over 30M parameters, is a lot of arithmetic for the M1 Max to push through on MPS. All of that expense bought nothing here.
 
-**Nobody overfits.** In part 1 the stronger model's best validation loss arrived at step 1,500 of 5,000 and then climbed as the model memorised 1 MB of Shakespeare. Here all three runs are still improving at step 3,000, because 20 MB of TinyStories is a large enough training set that the model has not run out of genuinely new text to learn from. The best checkpoint is the last one in every case.
+**Nobody overfits.** In part 2 the stronger model's best validation loss arrived at step 1,500 of 5,000 and then climbed as the model memorised 1 MB of Shakespeare. Here all three runs are still improving at step 3,000, because 20 MB of TinyStories is a large enough training set that the model has not run out of genuinely new text to learn from. The best checkpoint is the last one in every case.
 
 ## Generating text
 
-Same generation code as part 1 — autoregressive sampling with a temperature and a top-k cut — but now decoding goes through the tokeniser instead of a character lookup.
+Same generation code as part 2 — autoregressive sampling with a temperature and a top-k cut — but now decoding goes through the tokeniser instead of a character lookup.
 
 ```python
 idx = torch.tensor([tok.encode("Once upon a time")], device=device)
@@ -140,14 +140,14 @@ The character model produces clean sentences with the wrong nouns in them: "a ba
 
 The 8k BPE model holds a scene. Spot is a dog, Spot has a ball, Spot's friend is a bird named Tim, and the ball stays a ball for the whole passage. It still has failure modes — "Spot wagged his tail and wagged his tail" is a repetition loop, and later passages drift — but each 256-token window now covers four times as much of the story, and the extra context shows up as continuity. The GPT-2 model reads much the same, and it correctly emits a literal `<|endoftext|>` between stories, having learned that the separator token ends a document.
 
-Both subword models are a clear step up from part 1, where a character model on 1 MB of Shakespeare produced speaker names and line breaks but no readable sentences.
+Both subword models are a clear step up from part 2, where a character model on 1 MB of Shakespeare produced speaker names and line breaks but no readable sentences.
 
 ## What I took from it
 
 - **The tokeniser is a modelling decision made before training starts.** It sets the vocabulary, how many words a context window covers, and how much of the parameter budget goes to the embedding table rather than to the network. None of that is preprocessing.
 - **Raw loss is not a fair scoreboard across tokenisers.** Bits per byte is. The character model looked best on loss and was worst on the metric that actually normalises for the size of the prediction.
 - **Borrowing GPT-2's tokeniser is the fast path, but a 50k vocabulary is wasteful for a small model.** A vocabulary trained to the corpus matched it here at 46% of the parameters and 30% of the training time, and compressed the domain text slightly better.
-- **More data changes the failure mode.** Part 1 overfit 1 MB of Shakespeare in 1,500 steps. Twenty MB of TinyStories did not overfit in 3,000, and the generated text is coherent enough to read.
+- **More data changes the failure mode.** Part 2 overfit 1 MB of Shakespeare in 1,500 steps. Twenty MB of TinyStories did not overfit in 3,000, and the generated text is coherent enough to read.
 
 ## Try it yourself
 
@@ -165,7 +165,7 @@ python generate.py --tokenizer bpe8k --prompt "Once upon a time"
 
 On Apple Silicon the training scripts select MPS automatically. On a CUDA machine they select the GPU; on anything else they fall back to the CPU.
 
-[Part 3](/posts/minigpt3/) takes this same model and this same 8k tokeniser and rebuilds them in Apple's MLX framework, then puts the MLX and PyTorch runs side by side on the same Mac.
+[Part 4](/posts/minigpt3/) takes this same model and this same 8k tokeniser and rebuilds them in Apple's MLX framework, then puts the MLX and PyTorch runs side by side on the same Mac.
 
 ## References
 

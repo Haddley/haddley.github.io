@@ -1,6 +1,6 @@
 ---
 title: "MiniGPT"
-part: 4
+part: 5
 description: "Swapping MiniGPT's 2017 Transformer block for the modern one — RMSNorm, rotary position embeddings, SwiGLU, and grouped-query attention — in MLX, then ablating each change to see which one actually matters"
 date: "2026-09-09"
 categories: ["AI"]
@@ -10,11 +10,11 @@ hidden: false
 slug: "minigpt4"
 ---
 
-[Part 3](/posts/minigpt3/) rebuilt MiniGPT in MLX with the original 2017 Transformer block: LayerNorm, a learned positional embedding table, multi-head attention, a GELU MLP. That is the block in "Attention Is All You Need" and in Karpathy's nanoGPT.
+[Part 4](/posts/minigpt3/) rebuilt MiniGPT in MLX with the original 2017 Transformer block: LayerNorm, a learned positional embedding table, multi-head attention, a GELU MLP. That is the block in "Attention Is All You Need" and in Karpathy's nanoGPT.
 
 Modern small models do not use that block. Meta's [Llama 3 Herd of Models](https://arxiv.org/abs/2407.21783) paper is the working blueprint for the 1B–3B range, and Llama 3.2 1B and 3B — the models Apple and others ship on phones — use four changes to it: RMSNorm instead of LayerNorm, rotary position embeddings instead of a learned table, a SwiGLU MLP instead of GELU, and grouped-query attention instead of plain multi-head. This post makes all four changes in MLX, then turns each one back off on its own to see which is doing the work.
 
-The model is small — dimension 384, 6 layers, 6 query heads, 2 key/value heads, SwiGLU inner size 1,024, 256-token context, the 8k BPE tokeniser from [part 2](/posts/minigpt2/), weight-tied, no biases anywhere. That is the *shape* of Llama 3.2 1B at roughly one-hundredth of the parameters. I checked the layout against `mlx-lm`'s [`models/llama.py`](https://github.com/ml-explore/mlx-lm/blob/main/mlx_lm/models/llama.py).
+The model is small — dimension 384, 6 layers, 6 query heads, 2 key/value heads, SwiGLU inner size 1,024, 256-token context, the 8k BPE tokeniser from [part 3](/posts/minigpt2/), weight-tied, no biases anywhere. That is the *shape* of Llama 3.2 1B at roughly one-hundredth of the parameters. I checked the layout against `mlx-lm`'s [`models/llama.py`](https://github.com/ml-explore/mlx-lm/blob/main/mlx_lm/models/llama.py).
 
 ## The four changes
 
@@ -24,7 +24,7 @@ The model is small — dimension 384, 6 layers, 6 query heads, 2 key/value heads
 self.attn_norm = nn.RMSNorm(dim)   # was nn.LayerNorm(dim)
 ```
 
-**Rotary position embeddings.** The learned positional table in part 1–3 is a `block_size × dim` matrix added to the token embeddings. RoPE instead rotates the query and key vectors by an angle proportional to their position, so that when two of them are dotted together in attention the result depends only on how far apart they are. There is no table to learn or to size, and nothing stops you running the model past its trained context length. [Su et al.](https://arxiv.org/abs/2104.09864) introduced it; every Llama uses it.
+**Rotary position embeddings.** The learned positional table in parts 1–4 is a `block_size × dim` matrix added to the token embeddings. RoPE instead rotates the query and key vectors by an angle proportional to their position, so that when two of them are dotted together in attention the result depends only on how far apart they are. There is no table to learn or to size, and nothing stops you running the model past its trained context length. [Su et al.](https://arxiv.org/abs/2104.09864) introduced it; every Llama uses it.
 
 ```python
 self.rope = nn.RoPE(head_dim, traditional=False, base=10000)
@@ -48,7 +48,7 @@ out = mx.fast.scaled_dot_product_attention(q, k, v, scale=self.scale, mask="caus
 
 ## The ablation
 
-Six runs, each 3,000 iterations on the same TinyStories split as parts 2 and 3, same optimiser, same 8k tokeniser. The baseline is the part 3 GPT block. Then the full modern block, then the modern block with each single feature reverted.
+Six runs, each 3,000 iterations on the same TinyStories split as parts 3 and 4, same optimiser, same 8k tokeniser. The baseline is the part 4 GPT block. Then the full modern block, then the modern block with each single feature reverted.
 
 ![](assets/images/minigpt4/ablation-runs.png)
 *The modern block and the four single-feature reversions. Every configuration is close on parameter count except full multi-head attention, which adds back 1.2M*
@@ -61,7 +61,7 @@ Six runs, each 3,000 iterations on the same TinyStories split as parts 2 and 3, 
 
 | Run | Params | Best bits/byte |
 |---|---|---|
-| GPT block (part 3) | 13.9M | 0.6885 |
+| GPT block (part 4) | 13.9M | 0.6885 |
 | **Modern block** | **12.6M** | **0.6717** |
 | — SwiGLU → GELU | 12.6M | 0.6756 |
 | — GQA → full MHA | 13.8M | 0.6721 |
@@ -72,7 +72,7 @@ Six runs, each 3,000 iterations on the same TinyStories split as parts 2 and 3, 
 
 **RoPE is the whole difference.** The modern block beats the GPT baseline by 0.017 bits per byte. Revert only the position embedding — keep RMSNorm, SwiGLU, and GQA — and the model scores 0.7023, *worse* than the baseline's 0.6885. Every bit of the modern block's edge over the 2017 block, at this scale and on this data, is the switch from a learned position table to rotary embeddings.
 
-**GQA is free.** Reverting to full multi-head attention changed bits per byte from 0.6717 to 0.6721 — noise — while adding 1.2M parameters, a tenth of the model. Two K/V heads did the job of six. That is the result the KV-cache work in [part 6](/posts/minigpt6/) leans on.
+**GQA is free.** Reverting to full multi-head attention changed bits per byte from 0.6717 to 0.6721 — noise — while adding 1.2M parameters, a tenth of the model. Two K/V heads did the job of six. That is the result the KV-cache work in [part 7](/posts/minigpt6/) leans on.
 
 **SwiGLU is a small real win.** 0.6717 against 0.6756 for the GELU MLP, at the same parameter count. Worth taking, not decisive.
 
@@ -85,14 +85,14 @@ None of this contradicts the papers. It says that at 13M parameters and 20 MB of
 ![](assets/images/minigpt4/generation.png)
 *The modern-block model continuing "Once upon a time"*
 
-Tim has a toy car, then a tank, and the tank stays the subject through the dog stealing it. It reads like the part 2 and 3 models — same data, same budget — which is the expected outcome: a better block at this scale buys a small, measurable drop in loss, not a visible jump in fluency.
+Tim has a toy car, then a tank, and the tank stays the subject through the dog stealing it. It reads like the part 3 and 4 models — same data, same budget — which is the expected outcome: a better block at this scale buys a small, measurable drop in loss, not a visible jump in fluency.
 
 ## What I took from it
 
 - **"Modern architecture" is not one thing.** Four independent changes, and here exactly one of them — RoPE — accounts for the quality difference.
 - **Grouped-query attention costs nothing to add and saves a tenth of the model,** before you even get to the inference-time KV-cache saving.
 - **Some choices in the big-model recipe are about compute, not accuracy.** RMSNorm did not help the loss here; it is in the recipe because it is faster, and at scale faster is what matters.
-- **The block is a small lever.** The samples did not change. Scale, data, and the tokeniser are still doing the heavy lifting — the same conclusion as [part 1](/posts/minigpt/).
+- **The block is a small lever.** The samples did not change. Scale, data, and the tokeniser are still doing the heavy lifting — the same conclusion as [part 2](/posts/minigpt-grown/).
 
 ## Try it yourself
 
@@ -110,7 +110,7 @@ python generate_llama.py --tag modern --prompt "Once upon a time"
 
 Requires Apple Silicon for MLX.
 
-[Part 5](/posts/minigpt5/) keeps this model and adds a teacher: GPT-2 small, frozen, supplying token-probability targets so the small model learns from a bigger one's judgement — the distillation trick behind Llama 3.2 1B and 3B.
+[Part 6](/posts/minigpt5/) keeps this model and adds a teacher: GPT-2 small, frozen, supplying token-probability targets so the small model learns from a bigger one's judgement — the distillation trick behind Llama 3.2 1B and 3B.
 
 ## References
 

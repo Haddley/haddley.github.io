@@ -1,6 +1,6 @@
 ---
 title: "MiniGPT"
-part: 6
+part: 7
 description: "Sliding-window attention in MLX — why a naive window mask saves nothing, how chunked attention makes it O(T), and where full attention runs out of room on a 64 GB Mac"
 date: "2026-09-10"
 categories: ["AI"]
@@ -10,7 +10,7 @@ hidden: false
 slug: "minigpt6"
 ---
 
-[Part 4](/posts/minigpt4/) added grouped-query attention, which shrinks the key–value cache. This last part deals with the other quadratic cost in a Transformer: the attention matrix itself.
+[Part 5](/posts/minigpt4/) added grouped-query attention, which shrinks the key–value cache. This last part deals with the other quadratic cost in a Transformer: the attention matrix itself.
 
 Full causal attention compares every token with every earlier token. For a context of `T` tokens that is a `T × T` score matrix per head — memory that grows with the square of the context length. Double the context, quadruple the attention memory. On a machine with one fixed pool of RAM, that is the wall you hit first when you try to train on longer sequences.
 
@@ -70,7 +70,7 @@ The naive-mask column is the point worth keeping: it is identical to full attent
 
 ## Does the windowed model still learn?
 
-A sliding window is only useful if the model still works. I trained the modern block at a 1,024-token context — four times parts 2–5 — once with full attention and once with a 256-token chunked window, same data, same 1,500 iterations.
+A sliding window is only useful if the model still works. I trained the modern block at a 1,024-token context — four times parts 3–6 — once with full attention and once with a 256-token chunked window, same data, same 1,500 iterations.
 
 ![](assets/images/minigpt6/train-1024.png)
 *Validation bits per byte at a 1,024-token context. The windowed run is not behind*
@@ -80,7 +80,7 @@ A sliding window is only useful if the model still works. I trained the modern b
 | full1024 | full causal | 0.6805 | 9.8 | 8.39 GB |
 | window1024 | 256-token window | **0.6727** | 9.0 | 7.66 GB |
 
-The windowed model came out very slightly *ahead* — well within the noise — while training faster and in less memory. And its 0.6727 is the same as the 256-context model from [part 4](/posts/minigpt4/) (0.6717): on TinyStories, going from a 256- to a 1,024-token context did not help, because the stories are a few hundred tokens long and there is nothing further back that a token needs to see. TinyStories is the wrong dataset to show a long-context *quality* win. The point here is the memory curve — the windowed model trains to the same place while its attention cost stays flat as the context grows.
+The windowed model came out very slightly *ahead* — well within the noise — while training faster and in less memory. And its 0.6727 is the same as the 256-context model from [part 5](/posts/minigpt4/) (0.6717): on TinyStories, going from a 256- to a 1,024-token context did not help, because the stories are a few hundred tokens long and there is nothing further back that a token needs to see. TinyStories is the wrong dataset to show a long-context *quality* win. The point here is the memory curve — the windowed model trains to the same place while its attention cost stays flat as the context grows.
 
 ## Generating text
 

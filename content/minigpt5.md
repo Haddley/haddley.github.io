@@ -1,6 +1,6 @@
 ---
 title: "MiniGPT"
-part: 5
+part: 6
 description: "Knowledge-distillation pre-training at toy scale — training a small MiniGPT against a larger model's token probabilities, why the teacher cannot be Qwen3 or Llama, and the finding that a 33M model that knows the domain beats a 1.5B model that does not"
 date: "2026-09-10"
 categories: ["AI"]
@@ -29,7 +29,7 @@ kl = (exp(log_softmax(teacher_logits / T)) *
       (log_softmax(teacher_logits / T) - log_softmax(student_logits / T))).sum(-1)
 ```
 
-For that sum to mean anything, the teacher's entry `i` and the student's entry `i` have to be the *same token*. This student has used the GPT-2 tokeniser since [part 2](/posts/minigpt2/) — a byte-pair-encoding (BPE) scheme that builds its 50,257 tokens by repeatedly merging the most common pair of characters, so a token can be a letter, a word fragment, or a whole common word. Qwen3 uses its own tokeniser (~151,000 tokens, different merges, different order); Llama 3 uses a 128,000-token tiktoken; Gemma, Mistral and Phi each have their own. None of their logit vectors line up with this student's. Using one would mean either re-tokenising the whole project with that model's tokeniser and giving the 30M student a 128–150k-row embedding table — larger than the rest of the model, and a redo of parts 2–4 — or doing cross-tokeniser distillation, which matches tokens by their text and projects one probability space onto the other, and is a research area in its own right.
+For that sum to mean anything, the teacher's entry `i` and the student's entry `i` have to be the *same token*. This student has used the GPT-2 tokeniser since [part 3](/posts/minigpt2/) — a byte-pair-encoding (BPE) scheme that builds its 50,257 tokens by repeatedly merging the most common pair of characters, so a token can be a letter, a word fragment, or a whole common word. Qwen3 uses its own tokeniser (~151,000 tokens, different merges, different order); Llama 3 uses a 128,000-token tiktoken; Gemma, Mistral and Phi each have their own. None of their logit vectors line up with this student's. Using one would mean either re-tokenising the whole project with that model's tokeniser and giving the 30M student a 128–150k-row embedding table — larger than the rest of the model, and a redo of parts 3–5 — or doing cross-tokeniser distillation, which matches tokens by their text and projects one probability space onto the other, and is a research area in its own right.
 
 **The teacher runs a forward pass on every training batch, in the same 64 GB.** Even with the tokeniser solved: a frozen Qwen3-8B forward on every step, sharing unified memory with the student, its optimiser state, and two `[batch, 256, vocab]` logit tensors, would dominate the step. As it is, swapping GPT-2 small (124M) for GPT-2 XL (1.5B) stretched the run from 25 minutes to nearly two hours. Qwen3-8B is five times larger again; Qwen3-32B would not fit for training-loop use at all.
 
@@ -37,7 +37,7 @@ So the teacher had to be a model in the **GPT-2 tokeniser family**, small enough
 
 ## The lineup
 
-- **Student**: the [part 3](/posts/minigpt3/) MiniGPT with the GPT-2 tokeniser — 30M parameters.
+- **Student**: the [part 4](/posts/minigpt3/) MiniGPT with the GPT-2 tokeniser — 30M parameters.
 - **GPT-2 small (124M)** and **GPT-2 XL (1.5B)** — generalists trained on web text, loaded frozen through `mlx-lm`.
 - **`roneneldan/TinyStories-33M`** — the largest model released with the TinyStories paper, trained to convergence on the whole dataset. GPT-Neo architecture, GPT-2 vocabulary. `mlx-lm` has no GPT-Neo loader, so it runs as a frozen Torch teacher and its logits are handed across to the MLX student.
 - **MiniGPT-512 (51M)** — a wider MiniGPT I trained here on the same TinyStories slice for 5,000 steps. This is the Llama 3.1→3.2 setup: same family, same data, more capacity.
@@ -115,7 +115,7 @@ python figures.py
 
 Requires Apple Silicon; the GPT-2 teachers download from Hugging Face on first run.
 
-[Part 6](/posts/minigpt6/) is the last one: sliding-window attention, to train on a longer context on the same Mac without the attention matrix filling memory.
+[Part 7](/posts/minigpt6/) is the last one: sliding-window attention, to train on a longer context on the same Mac without the attention matrix filling memory.
 
 ## References
 

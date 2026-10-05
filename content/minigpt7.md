@@ -1,7 +1,7 @@
 ---
 title: "MiniGPT"
-part: 7
-description: "Paying the toll from Part 5 — rebuilding MiniGPT on Qwen3's 151,936-token vocabulary to distil from a Qwen3-8B base model, sweeping the student from 69M to 588M parameters, and hitting the data ceiling long before the memory one"
+part: 8
+description: "Paying the toll from Part 6 — rebuilding MiniGPT on Qwen3's 151,936-token vocabulary to distil from a Qwen3-8B base model, sweeping the student from 69M to 588M parameters, and hitting the data ceiling long before the memory one"
 date: "2026-09-10"
 categories: ["AI"]
 image: "/assets/images/minigpt7/posts-meta.svg"
@@ -10,13 +10,13 @@ hidden: true
 slug: "minigpt7"
 ---
 
-[Part 5](/posts/minigpt5/) ended on a wall: logit distillation needs the teacher and student to share a tokeniser, so the teacher could not be a current model — Qwen3, Llama, Gemma all have their own. It could only be something in the GPT-2 vocabulary family, and the best of those got the student to 0.694 bits per byte.
+[Part 6](/posts/minigpt5/) ended on a wall: logit distillation needs the teacher and student to share a tokeniser, so the teacher could not be a current model — Qwen3, Llama, Gemma all have their own. It could only be something in the GPT-2 vocabulary family, and the best of those got the student to 0.694 bits per byte.
 
 This post pays the toll. It rebuilds MiniGPT on **Qwen3's tokeniser** and distils from **Qwen3-8B-Base** — a genuinely capable 2026 model — to see whether a frontier-class teacher finally delivers the big win that GPT-2's family could not.
 
 ## Base, not instruct
 
-The first teacher I tried was `Qwen3-4B` (the post-trained chat model). Fed raw TinyStories text and asked for next-token probabilities, it scored **0.778 bits per byte** — about the same as GPT-2 XL in [Part 5](/posts/minigpt5/). A model tuned to behave as a chat assistant is a poor free-running next-token predictor; it "wants" to be answering a question, not continuing a story. `Qwen3-8B-Base`, trained purely to continue text, scored **0.592** on the same split. Base models are what you distil from — Meta distilled Llama 3.1 8B/70B *base* into Llama 3.2 — so `Qwen3-8B-Base` is the teacher here.
+The first teacher I tried was `Qwen3-4B` (the post-trained chat model). Fed raw TinyStories text and asked for next-token probabilities, it scored **0.778 bits per byte** — about the same as GPT-2 XL in [Part 6](/posts/minigpt5/). A model tuned to behave as a chat assistant is a poor free-running next-token predictor; it "wants" to be answering a question, not continuing a story. `Qwen3-8B-Base`, trained purely to continue text, scored **0.592** on the same split. Base models are what you distil from — Meta distilled Llama 3.1 8B/70B *base* into Llama 3.2 — so `Qwen3-8B-Base` is the teacher here.
 
 ## The toll: a 151,936-slot vocabulary
 
@@ -24,11 +24,11 @@ Qwen3's tokeniser has about 151,700 entries, and the models pad their embedding 
 
 **The embedding table becomes the model.** At the series' usual dimension of 384, the token embedding is 151,936 × 384 ≈ **58M parameters** against a ~10.7M transformer. A "MiniGPT" with this tokeniser is ~69M parameters, **84% lookup table**. The scaled-up student (dimension 512, 8 layers) is ~103M parameters and still 75% embedding.
 
-**And it buys nothing here.** On the TinyStories validation split, Qwen3's tokeniser packs text at 0.239 tokens per byte — essentially identical to GPT-2's 0.246 and the trained 8k BPE's 0.244. The extra 100,000 tokens are for code and other languages; on English children's stories they are dead weight. The embedding table alone (58M parameters) is now larger than the entire GPT-2-vocabulary student from parts 3–5 (30M) — no compression gain, just a bigger lookup table. Exactly [Part 2](/posts/minigpt2/)'s finding about big vocabularies on small models, taken to its limit.
+**And it buys nothing here.** On the TinyStories validation split, Qwen3's tokeniser packs text at 0.239 tokens per byte — essentially identical to GPT-2's 0.246 and the trained 8k BPE's 0.244. The extra 100,000 tokens are for code and other languages; on English children's stories they are dead weight. The embedding table alone (58M parameters) is now larger than the entire GPT-2-vocabulary student from parts 4–6 (30M) — no compression gain, just a bigger lookup table. Exactly [Part 3](/posts/minigpt2/)'s finding about big vocabularies on small models, taken to its limit.
 
 ## Running the teacher offline
 
-A Qwen3-8B forward pass on the M1 Max runs at roughly 600 tokens per second. Doing that on every training step, as [Part 5](/posts/minigpt5/) did with GPT-2, would make each run take the best part of a day. So the teacher runs **once, offline**: `cache_teacher.py` sweeps Qwen3-8B-Base over the whole token stream — non-overlapping 256-token chunks, about two and three-quarter hours — and stores each position's **top-48 next-token logits** to disk (a 1.4 GB file). The student training loop then reads those cached targets, no teacher model in the loop, and both student sizes reuse the one cache. The students train on the same aligned chunks the cache was built from, so at every position the teacher and student have seen exactly the same context. This offline-logit structure is how distillation pre-training is actually done at scale.
+A Qwen3-8B forward pass on the M1 Max runs at roughly 600 tokens per second. Doing that on every training step, as [Part 6](/posts/minigpt5/) did with GPT-2, would make each run take the best part of a day. So the teacher runs **once, offline**: `cache_teacher.py` sweeps Qwen3-8B-Base over the whole token stream — non-overlapping 256-token chunks, about two and three-quarter hours — and stores each position's **top-48 next-token logits** to disk (a 1.4 GB file). The student training loop then reads those cached targets, no teacher model in the loop, and both student sizes reuse the one cache. The students train on the same aligned chunks the cache was built from, so at every position the teacher and student have seen exactly the same context. This offline-logit structure is how distillation pre-training is actually done at scale.
 
 ## The lineup
 
@@ -38,9 +38,9 @@ A Qwen3-8B forward pass on the M1 Max runs at roughly 600 tokens per second. Doi
 | Student — scaled (dim 512, 8 layers) | 103M | 75% | — |
 | Teacher — Qwen3-8B-Base | 8.2B | — | **0.592** |
 
-Qwen3-8B-Base scores 0.592 bits per byte on the TinyStories validation split — better than every teacher in [Part 5](/posts/minigpt5/) (the best there was 0.644). If a teacher this much stronger still does not move the student, that is a fact about distillation, not about teacher choice.
+Qwen3-8B-Base scores 0.592 bits per byte on the TinyStories validation split — better than every teacher in [Part 6](/posts/minigpt5/) (the best there was 0.644). If a teacher this much stronger still does not move the student, that is a fact about distillation, not about teacher choice.
 
-The loss is the same as Part 5 — `alpha` on the hard one-hot label, `1 − alpha` on the temperature-scaled KL against the teacher's distribution — except the KL runs over the teacher's top 48 tokens rather than all 151,936.
+The loss is the same as Part 6 — `alpha` on the hard one-hot label, `1 − alpha` on the temperature-scaled KL against the teacher's distribution — except the KL runs over the teacher's top 48 tokens rather than all 151,936.
 
 ## What happened
 
@@ -56,7 +56,7 @@ The first four runs: two student sizes carried over from the rest of the series 
 | scaled (103M, 75% embedding) | none | 0.7650 | — |
 | scaled | Qwen3-8B-Base | **0.7308** | −0.034 |
 
-**The frontier teacher helped — less than the 51M model from Part 5 did.** Qwen3-8B-Base is a far stronger predictor of this text than anything in Part 5 (0.592 bits per byte against that post's best teacher at 0.644). But as a *teacher* it moved the scaled student 0.034 bits per byte and the tiny student only 0.010. Part 5's hand-trained 51M MiniGPT moved its student 0.062 — closing more than half the gap to itself, where the 8.2B model closed a fifth.
+**The frontier teacher helped — less than the 51M model from Part 6 did.** Qwen3-8B-Base is a far stronger predictor of this text than anything in Part 6 (0.592 bits per byte against that post's best teacher at 0.644). But as a *teacher* it moved the scaled student 0.034 bits per byte and the tiny student only 0.010. Part 6's hand-trained 51M MiniGPT moved its student 0.062 — closing more than half the gap to itself, where the 8.2B model closed a fifth.
 
 **The bigger student absorbed more.** The scaled student has 25M non-embedding parameters against the tiny student's 11M, and it got three times the benefit — 0.034 against 0.010. That points at the bottleneck: with a 151,936-token vocabulary, 75–84% of the model is an embedding table, most of whose rows never see a gradient on TinyStories. The part that can actually fit a richer training signal is small, and the smaller it is, the less of the teacher's distribution can land. So the obvious move is to make the student bigger.
 
@@ -92,25 +92,26 @@ Both write TinyStories-shaped text with the usual small-model slips — "Sarah l
 
 ## What I took from it
 
-- **Paying the tokeniser toll did not pay off.** Rebuilding the whole model on Qwen3's 152k vocabulary, and running an 8B model for three hours to cache its logits, bought the best student less than a 51M model trained for twenty minutes in Part 5.
+- **Paying the tokeniser toll did not pay off.** Rebuilding the whole model on Qwen3's 152k vocabulary, and running an 8B model for three hours to cache its logits, bought the best student less than a 51M model trained for twenty minutes in Part 6.
 - **There are two ceilings on the student, and the data one is lower.** Memory allowed 588M parameters on this Mac; the 5-million-token dataset made anything past ~100M worse. You run out of text to learn from long before you run out of room.
 - **Distillation only helps a student that can already do the task.** For the small students the teacher's soft targets added a little; for the big undertrained ones they actively hurt — chasing a frontier model's confident distribution is a distraction from learning the basics you are still missing.
-- **The Part 5 rule holds at the extreme.** "Distillation is worth the teacher's advantage on your data, not its size" — and not, it turns out, its raw capability either. A same-family 51M teacher beat an 8.2B frontier model, because a plain 2017 GPT can imitate another plain GPT far more closely than it can imitate Qwen3.
-- **A big vocabulary is a tax on a small model, twice over.** Part 2 showed it inflates the parameter count; here it also starved the part of the model that distillation could improve.
+- **The Part 6 rule holds at the extreme.** "Distillation is worth the teacher's advantage on your data, not its size" — and not, it turns out, its raw capability either. A same-family 51M teacher beat an 8.2B frontier model, because a plain 2017 GPT can imitate another plain GPT far more closely than it can imitate Qwen3.
+- **A big vocabulary is a tax on a small model, twice over.** Part 3 showed it inflates the parameter count; here it also starved the part of the model that distillation could improve.
 
 ## The series
 
-Seven parts, from a character-level GPT in a borrowed notebook to a modern small model distilled from a frontier teacher — all on one 2022 Mac Studio:
+Eight parts, from a character-level GPT in a borrowed notebook to a modern small model distilled from a frontier teacher — all on one 2022 Mac Studio:
 
-1. [MiniGPT](/posts/minigpt/) — Jibin Joseph's notebook on the M1 Max: the GPT training loop from first principles, character-level.
-2. [A real tokeniser](/posts/minigpt2/) — character vs GPT-2 vs a trained 8k BPE, scored in bits per byte.
-3. [Into MLX](/posts/minigpt3/) — the same model in Apple's framework: unified memory, lazy evaluation, `mx.compile`.
-4. [The Llama 3.2 block](/posts/minigpt4/) — RMSNorm, RoPE, SwiGLU, GQA, ablated one at a time. Only RoPE moved the loss.
-5. [Distillation](/posts/minigpt5/) — training the small model against a bigger one's token probabilities. It helped only when the teacher was actually better at the data.
-6. [Sliding-window attention](/posts/minigpt6/) — a longer context in the same memory.
-7. Qwen3's tokeniser — paying the toll from part 5 to distil from a frontier base model, and sweeping the student up to 588M parameters. The teacher helped the ~100M student a little and the big ones not at all: the 5M-token dataset runs out first.
+1. [MiniGPT](/posts/minigpt/) — Jibin Joseph's notebook on the M1 Max: a trained character-level GPT, taken apart while it runs.
+2. [How it is grown](/posts/minigpt-grown/) — training it from random numbers, and the notebook's training loop from first principles.
+3. [A real tokeniser](/posts/minigpt2/) — character vs GPT-2 vs a trained 8k BPE, scored in bits per byte.
+4. [Into MLX](/posts/minigpt3/) — the same model in Apple's framework: unified memory, lazy evaluation, `mx.compile`.
+5. [The Llama 3.2 block](/posts/minigpt4/) — RMSNorm, RoPE, SwiGLU, GQA, ablated one at a time. Only RoPE moved the loss.
+6. [Distillation](/posts/minigpt5/) — training the small model against a bigger one's token probabilities. It helped only when the teacher was actually better at the data.
+7. [Sliding-window attention](/posts/minigpt6/) — a longer context in the same memory.
+8. Qwen3's tokeniser — paying the toll from part 6 to distil from a frontier base model, and sweeping the student up to 588M parameters. The teacher helped the ~100M student a little and the big ones not at all: the 5M-token dataset runs out first.
 
-Every model here is tiny and none of them is good. That was the point. The architecture, the tokeniser, the training loop, the framework, and the tricks — distillation, grouped-query attention, windowed attention — are all things you can build and run in an afternoon on a laptop-class machine. What separates them from the models I use every day is scale: more data, more parameters, more compute, applied to substantially this recipe. And Part 7 is the reminder that the three come together or not at all — a frontier model's knowledge does not transfer into a small model any faster than the small model's own data can carry it, and more parameters without more data just gives you a bigger model that has read the same short book twice.
+Every model here is tiny and none of them is good. That was the point. The architecture, the tokeniser, the training loop, the framework, and the tricks — distillation, grouped-query attention, windowed attention — are all things you can build and run in an afternoon on a laptop-class machine. What separates them from the models I use every day is scale: more data, more parameters, more compute, applied to substantially this recipe. And Part 8 is the reminder that the three come together or not at all — a frontier model's knowledge does not transfer into a small model any faster than the small model's own data can carry it, and more parameters without more data just gives you a bigger model that has read the same short book twice.
 
 ## Try it yourself
 

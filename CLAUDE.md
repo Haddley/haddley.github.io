@@ -109,6 +109,33 @@ Describe the scene
 
 Follow each prompt block with the screenshots showing what happened next.
 
+## Head First Callouts
+
+Posts can use Head First-style callout boxes, rendered by `MobiriseContentRenderer.tsx`. Open a box with `:::type Optional title` on its own line and close it with `:::`. The body is ordinary Markdown (text, lists, tables, code, images, Mermaid), and boxes can nest.
+
+| Type | Use it for |
+|------|-----------|
+| `brain-power` | A question that makes the reader think before the explanation |
+| `no-dumb-questions` | Q&A built from questions a real reader would ask (`**Q: ...**` then `A: ...`) |
+| `watch-it` | A trap or gotcha |
+| `pencil` | An exercise ("Sharpen your pencil"); put the answer in a nested `:::answer` box |
+| `answer` | A collapsed "Show the answer" box, nested inside `pencil` |
+| `fireside-chat` | A dialogue between two parts of a system (`**Speaker:** line`) |
+| `bullet-points` | A short recap at the end of a section |
+| `under-the-hood` | Collapsed deep-dive detail that most readers can skip |
+
+A `:::demo minigpt` … `:::` block embeds the live MiniGPT demo (`src/components/MiniGPTDemo.tsx`), which loads the exhibit model from `public/minigpt-demo/`.
+
+````markdown
+:::pencil Draw a head
+Fill in the grid.
+
+:::answer
+The answer.
+:::
+:::
+````
+
 ## Internal Links
 
 When linking to other posts within Markdown content, always use absolute root-relative paths — never relative `.html` file references. Relative links like `machineLearning1.html` resolve incorrectly against the current post's URL.

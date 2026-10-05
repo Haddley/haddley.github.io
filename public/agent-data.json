@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "minigpt-grown",
+      "title": "MiniGPT (Part 2)",
+      "description": "How a GPT is grown: retraining my MiniGPT exhibit model from random numbers on a Mac, one guess at a time, and watching every card and dial from the first post appear",
+      "date": "2026-10-05",
+      "categories": [
+        "AI"
+      ],
+      "tags": "gpt, transformers, pytorch, nanogpt, machine-learning"
+    },
+    {
       "slug": "specdriven4",
       "title": "Spec-Driven AI Tools (Part 4)",
       "description": "The comparison: what OpenSpec, Spec-Kit, and BMAD each did with the identical calculator and the identical two feature requests — where they genuinely agreed, where they quietly built different products, what it cost, and where the source article held up against running all three myself",
@@ -123,7 +133,7 @@
     },
     {
       "slug": "minigpt6",
-      "title": "MiniGPT (Part 6)",
+      "title": "MiniGPT (Part 7)",
       "description": "Sliding-window attention in MLX — why a naive window mask saves nothing, how chunked attention makes it O(T), and where full attention runs out of room on a 64 GB Mac",
       "date": "2026-09-10",
       "categories": [
@@ -133,7 +143,7 @@
     },
     {
       "slug": "minigpt5",
-      "title": "MiniGPT (Part 5)",
+      "title": "MiniGPT (Part 6)",
       "description": "Knowledge-distillation pre-training at toy scale — training a small MiniGPT against a larger model's token probabilities, why the teacher cannot be Qwen3 or Llama, and the finding that a 33M model that knows the domain beats a 1.5B model that does not",
       "date": "2026-09-10",
       "categories": [
@@ -143,7 +153,7 @@
     },
     {
       "slug": "minigpt4",
-      "title": "MiniGPT (Part 4)",
+      "title": "MiniGPT (Part 5)",
       "description": "Swapping MiniGPT's 2017 Transformer block for the modern one — RMSNorm, rotary position embeddings, SwiGLU, and grouped-query attention — in MLX, then ablating each change to see which one actually matters",
       "date": "2026-09-09",
       "categories": [
@@ -153,7 +163,7 @@
     },
     {
       "slug": "minigpt3",
-      "title": "MiniGPT (Part 3)",
+      "title": "MiniGPT (Part 4)",
       "description": "Porting the MiniGPT model and training loop from PyTorch to Apple's MLX — unified memory, lazy evaluation, mx.compile, and fused attention — then running both on the same M1 Max and comparing tokens per second and peak memory",
       "date": "2026-09-09",
       "categories": [
@@ -163,7 +173,7 @@
     },
     {
       "slug": "minigpt2",
-      "title": "MiniGPT (Part 2)",
+      "title": "MiniGPT (Part 3)",
       "description": "Replacing MiniGPT's 65-character tokeniser with a real byte-level BPE — borrowing GPT-2's, training an 8k one, and comparing all three on TinyStories in bits per byte on an Apple M1 Max",
       "date": "2026-09-09",
       "categories": [
@@ -174,7 +184,7 @@
     {
       "slug": "minigpt",
       "title": "MiniGPT (Part 1)",
-      "description": "Running Jibin Joseph's MiniGPT notebook locally on an Apple M1 Max — rebuilding a GPT-style character-level language model from first principles and reproducing the Tiny Shakespeare results",
+      "description": "How a GPT works, taken apart while it runs: a real trained MiniGPT on a Mac, explained in plain English with flashcards, a meeting, and a wheel of chances, then worked through cell by cell in Jibin Joseph's MiniGPT notebook",
       "date": "2026-09-09",
       "categories": [
         "AI"
@@ -2839,5 +2849,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-09-29T23:53:18.753Z"
+  "generatedAt": "2026-10-05T03:12:36.959Z"
 }
