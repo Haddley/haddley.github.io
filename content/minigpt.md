@@ -1,7 +1,7 @@
 ---
 title: "MiniGPT"
 part: 1
-description: "How a GPT works, taken apart while it runs: a real trained MiniGPT on a Mac, explained in plain English with cards and a wheel of chances, then worked through cell by cell in Jibin Joseph's MiniGPT notebook"
+description: "How a GPT runs: a real trained MiniGPT taken apart while it writes, explained with cards and a wheel of chances, then traced line by line through Jibin Joseph's notebook code, with the trained model to download and run yourself"
 date: "2026-09-09"
 categories: ["AI"]
 image: "/assets/images/minigpt/posts-meta.svg"
@@ -941,7 +941,7 @@ This is step 5. `[:, -1, :]` picks the last row, which belongs to working card 3
 
 ## Run my model yourself
 
-Everything in this post can be reproduced with three things: the notebook's Part 1 code, my trained numbers, and the 65 letters in the right order. I ran these steps myself in a fresh copy of the notebook, and the pictures below are those runs. Any CPU is fast enough.
+Everything in this post can be reproduced with three things: the notebook's Part 1 code, my trained numbers, and the 65 letters in the right order. I ran these steps myself, from scratch, in a fresh copy of the notebook, and the pictures below are that run. Any CPU is fast enough.
 
 First, run the notebook's code cells from the top down to the end of section 1.5. That defines `GPTConfig` and the four classes, but builds nothing yet. Then add four new cells.
 
@@ -953,6 +953,9 @@ import urllib.request
 # my trained numbers: the checkpoint, 3.4 MB
 urllib.request.urlretrieve("https://haddley.github.io/minigpt-demo/exhibit.pt", "exhibit.pt")
 ```
+
+![](assets/images/minigpt/run-download.png)
+*I ran the cell in a fresh folder, and it downloaded the 3.4 MB checkpoint. The line it prints just confirms the file name*
 
 **Cell 2: build the machine, load the numbers, and run `goo`.**
 
