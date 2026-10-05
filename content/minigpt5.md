@@ -10,7 +10,7 @@ hidden: false
 slug: "minigpt5"
 ---
 
-Every MiniGPT so far has learned the same way, the guessing game from [Part 2](/posts/minigpt-grown/): guess the next token, check the real one, and nudge the dials. Meta's small Llama 3.2 models learned from something more. The [Llama 3.2 announcement](https://ai.meta.com/blog/llama-3-2-connect-2024-vision-edge-mobile-devices/) says that "logits from the Llama 3.1 8B and 70B models were used as targets" during pre-training: the small models learned by copying what big models thought, not just from the text. This post tries the same idea on a Mac, with a small MiniGPT as the student and five different teachers.
+Every MiniGPT so far has learned the same way, the guessing game from [Part 2](/posts/minigpt-grown/): guess the next token, check the real one, and nudge the dials. Meta's small Llama 3.2 models learned from something more. The [Llama 3.2 announcement](https://ai.meta.com/blog/llama-3-2-connect-2024-vision-edge-mobile-devices/) says that "logits from the Llama 3.1 8B and 70B models were used as targets" during pre-training. *Logits* are the scores against the [answer cards](/posts/minigpt/#step-4-chances), just before they become a wheel of chances: the small models learned by copying what the big models thought, not just from the text. This post tries the same idea on a Mac, with a small MiniGPT as the student and four different teachers.
 
 The code is in [`part6-distillation/`](https://github.com/Haddley/minigpt-series/tree/main/part6-distillation), with a follow-along notebook for a Mac, [`minigpt_follow_along_6.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part6-distillation/minigpt_follow_along_6.ipynb).
 
@@ -35,7 +35,7 @@ The student is scored on two things at once, and both are surprise scores from [
 - **How surprised it is by the real next token**, as before.
 - **How different its wheel is from the teacher's wheel.** The measure is called *KL divergence*: 0 when the two wheels are identical, and larger the more they differ.
 
-I weight the two equally. Before comparing the wheels, I soften both with a [temperature](/posts/minigpt/#step-5-spin-the-wheel) of 2, the same setting as in Part 1, so that the thin slices, the near misses, are big enough to learn from.
+I weight the two equally. Before comparing the wheels, I soften both with a [temperature](/posts/minigpt/#step-5-spin-the-wheel) of 2, the same kind of setting as in Part 1's step 5, so that the thin slices, the near misses, are big enough to learn from.
 
 ### The teacher must use the same pieces
 
@@ -47,9 +47,9 @@ My student uses GPT-2's 50,257 pieces. Qwen3 uses its own, about 151,000; Llama 
 The teacher also runs on every training step, in the same 64 GB as the student. Both wheels, for 16 snippets of 256 tokens with 50,257 slices each, take about 0.8 GB apiece. The plain student peaked at 5.4 GB; with GPT-2 as a teacher, 11.1 GB; with GPT-2 XL, 16.8 GB. Distillation means running two machines to train one.
 :::
 
-### Five teachers
+### Four teachers, and no teacher
 
-The student is the 30-million-number MiniGPT from [Part 4](/posts/minigpt3/), on GPT-2's pieces. I trained it five times, 3,000 steps each, on the same stories:
+The student is the MLX machine from [Part 4](/posts/minigpt3/), with the original 2017 block, but on GPT-2's pieces instead of my 8k ones, so its token cards make it 30 million numbers, as in [Part 3's table](/posts/minigpt2/#what-bigger-pieces-cost). I trained it five times, once with no teacher and once with each teacher, 3,000 steps each, on the same stories. Every score in the table is [bits per byte](/posts/minigpt2/) on the test stories, so lower is better. The "teacher's own" column scores each teacher on its own, as a storyteller; the "student's" column scores the student it taught:
 
 | Teacher | Size | Teacher's own bits per byte | Student's bits per byte | Minutes |
 |---|---|---|---|---|
@@ -59,7 +59,7 @@ The student is the 30-million-number MiniGPT from [Part 4](/posts/minigpt3/), on
 | TinyStories-33M | 33 million | **0.467** | 0.7204 | 23.5 |
 | My MiniGPT-512 | 51 million | 0.644 | **0.6936** | 20.1 |
 
-GPT-2 and GPT-2 XL learned from text on the web. TinyStories-33M is the largest model released with the TinyStories paper, trained on all of the stories. My MiniGPT-512 is a wider MiniGPT that I trained on the same practice stories as the student, for 5,000 steps.
+GPT-2 and GPT-2 XL learned from text on the web. TinyStories-33M is the largest model released with the TinyStories paper, trained on the whole TinyStories collection: far more stories than my slice of it. My MiniGPT-512 is a wider MiniGPT that I trained on the same practice stories as the student, for 5,000 steps.
 
 ![](assets/images/minigpt5/distill-curves.png)
 *Bits per byte while training. The two web-text teachers stay near the no-teacher line; the two teachers who know the stories pull the student well below it*
@@ -68,7 +68,7 @@ GPT-2 and GPT-2 XL learned from text on the web. TinyStories-33M is the largest 
 
 - **A bigger web-text teacher barely helped.** GPT-2 XL is twelve times the size of GPT-2, and moved the student from 0.7469 to 0.7382, for four and a half times the training time. The third column says why: at 1.5 billion numbers, GPT-2 XL is still *worse* at these stories (0.799) than the 30-million-number student trained on them (0.756). It had never read anything like them.
 - **A teacher who knew the stories helped a lot.** TinyStories-33M is 45 times smaller than GPT-2 XL, but it had read every story, and it scores 0.467. It pulled the student to 0.7204, past both GPT-2s, in 23 minutes.
-- **The best teacher was the one most like the student.** My MiniGPT-512 is a *worse* model on paper, 0.644 against 0.467, but it gave the best student by far, 0.6936. It is built the same way as the student, so its wheels are natural ones for the student to copy, and it trained only on the practice stories, so the test stories were new to both of them.
+- **The most helpful teacher was not the best storyteller.** On its own, my MiniGPT-512 scores 0.644, so it is a clearly worse storyteller than TinyStories-33M, at 0.467. Yet it was the most helpful teacher by far. Its student scored 0.6936, the best of all five: 0.062 better than the student with no teacher, almost twice the 0.035 that TinyStories-33M managed. I did not test why, but here is my best explanation. In distillation, the student is marked on how closely its wheel matches the teacher's, slice by slice, at every position, and it can only make the kinds of wheel its own design can produce. MiniGPT-512 is the same design as the student, only wider, and it learned from exactly the same practice stories, so its wheels are close to ones the student can make: nearly all of its advice is advice the student can follow. TinyStories-33M is built differently, and learned from far more stories, so some of the detail in its wheels may depend on things the student cannot work out, and the student spends some of its effort chasing slices it can never match. Researchers have seen the same thing in other distillation experiments, and call it the *capacity gap* ([Cho and Hariharan](https://arxiv.org/abs/1910.01348); [Mirzadeh and others](https://arxiv.org/abs/1902.03393)): a stronger teacher does not always make a stronger student.
 
 That student also learned faster: it passed the no-teacher student's *final* score at about step 1,700, rather than step 3,000, and finished with an 8% lower surprise score. Not the "10 times faster" sometimes quoted for giant teachers, but real.
 
@@ -115,7 +115,7 @@ The no-teacher student loses the thread: "he wanted to take his melon home from 
 - The teacher must use exactly the student's pieces, which rules out every current big model here.
 - Running a teacher every step costs memory: 5.4 GB grew to 11 to 17 GB.
 - A teacher who knew the stories beat one 45 times its size that did not.
-- The best teacher was built like the student and trained on the same stories.
+- The most helpful teacher was not the best storyteller: it was the one built like the student and trained on the same stories.
 :::
 
 :::no-dumb-questions
@@ -214,12 +214,14 @@ python figures.py
 
 MLX needs Apple Silicon. The GPT-2 teachers download from Hugging Face the first time.
 
-[Part 7](/posts/minigpt6/) goes back to the modern machine and gives attention a sliding window, so that it can read a much longer row in the same memory.
+[Part 7](/posts/minigpt6/) goes back to Part 5's modern machine and gives attention a sliding window, so that it can read a much longer row in the same memory.
 
 ## References
 
 - [Llama 3.2: revolutionizing edge AI and vision — Meta AI, 2024](https://ai.meta.com/blog/llama-3-2-connect-2024-vision-edge-mobile-devices/)
 - [The Llama 3 Herd of Models — Meta AI, 2024](https://arxiv.org/abs/2407.21783)
 - [Distilling the Knowledge in a Neural Network — Hinton, Vinyals & Dean, 2015](https://arxiv.org/abs/1503.02531)
+- [On the Efficacy of Knowledge Distillation — Cho & Hariharan, 2019](https://arxiv.org/abs/1910.01348)
+- [Improved Knowledge Distillation via Teacher Assistant — Mirzadeh et al., 2020](https://arxiv.org/abs/1902.03393)
 - [TinyStories: How Small Can Language Models Be and Still Speak Coherent English? — Eldan & Li, 2023](https://arxiv.org/abs/2305.07759)
 - [mlx-lm](https://github.com/ml-explore/mlx-lm)

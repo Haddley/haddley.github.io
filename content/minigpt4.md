@@ -27,33 +27,33 @@ Here are the four changes Meta made to the 2017 block. Before reading on, guess:
 
 ### Change 1: a simpler normalise
 
-Before attention, and again before the MLP, every block [normalises the working cards](/posts/minigpt/#four-blocks-in-a-row): it rescales each card's numbers to a standard range. The 2017 way, *LayerNorm*, first subtracts the card's average from every number, then divides by how spread out the numbers are. The new way, *RMSNorm*, skips the subtraction and just divides by the numbers' typical size. That is one calculation fewer, and fewer fixed numbers to store, every time a card is normalised.
+Before attention, and again before the MLP, every block [normalises the working cards](/posts/minigpt/#four-blocks-in-a-row): it rescales each card's numbers to a standard range. The 2017 way, *LayerNorm*, first subtracts the card's average from every number, then divides by how spread out the numbers are. The new way, *RMSNorm*, skips the subtraction and just divides by the numbers' typical size. It also keeps only the stretch dials from [Part 1](/posts/minigpt/#four-blocks-in-a-row), not the shift. That is one calculation fewer every time a card is normalised, and fewer dials to train.
 
 ### Change 2: turning cards instead of position cards
 
 Since [Part 1](/posts/minigpt/#step-2-letter-cards-and-position-cards), the machine has known where each token sits from its *position card*: a fixed card per position, added to the token card. The new way, *rotary position embeddings* or *RoPE*, has no position cards at all. Instead, inside attention, it turns each query card and key card by an angle that grows with the token's position.
 
-Picture a clock hand. A token in position 1 has its cards turned a little, position 2 a little more, and so on. When a query card is matched against a key card, what matters is the *difference* between their turns, so the match depends only on how far apart the two tokens are, not on where they are in the text. "The token just before me" looks the same at position 5 as at position 205.
+Picture a clock hand. A token in position 1 has its query and key cards turned a little, position 2 a little more, and so on. When a query card is matched against a key card, what matters is the *difference* between their turns, so the match depends only on how far apart the two tokens are, not on where they are in the text. "The token just before me" looks the same at position 5 as at position 205.
 
 :::pencil Same gap, same match
 Suppose RoPE turns every card by 10 degrees per position. A query at position 7 is matched against a key at position 5. Another query at position 107 is matched against a key at position 105. How far apart are the turns in each case, and what does that mean for the two matches?
 
 :::answer
-In both cases the query is turned 20 degrees further than the key: 70 against 50, and 1,070 against 1,050. The match only feels the 20-degree difference, so both pairs are matched in exactly the same way: "two positions back". A position card cannot do that: positions 5 and 105 have completely unrelated cards, so the machine has to learn "two back" separately all over the row.
+In both cases the query is turned 20 degrees further than the key: 70 against 50, and 1,070 against 1,050. The match only feels the 20-degree difference, so both pairs are matched in exactly the same way: "two positions back". A position card cannot do that: positions 5 and 105 have very different cards, so the machine has to learn "two back" separately all over the row.
 :::
 :::
 
 ### Change 3: an MLP with a gate
 
-The 2017 MLP widens each working card to four times its size, bends it, and narrows it back: two fixed grids of weights. The new one, *SwiGLU*, makes two widened copies of the card, bends one, and multiplies the two together, number by number, before narrowing back: three grids. The bent copy acts as a *gate*, deciding how much of the other copy gets through. To keep the machine the same size, the widened card is narrower: 1,024 numbers instead of 1,536, which makes three grids of 384 × 1,024 exactly as big as two of 384 × 1,536.
+The 2017 MLP widens each working card to four times its size with one recipe, bends it, and narrows it back with a second: two recipes. The new one, *SwiGLU*, makes two widened copies of the card with two recipes, bends one, and multiplies the two together, number by number, before narrowing back with a third: three recipes. The bent copy acts as a *gate*, deciding how much of the other copy gets through. To keep the machine the same size, the widened card is narrower: 1,024 numbers instead of 1,536, which makes three recipes of 384 × 1,024 exactly as big as two of 384 × 1,536.
 
 ### Change 4: sharing key and value cards
 
-In [Part 1's attention](/posts/minigpt/#inside-a-block-attention), every head made its own query, key, and value cards. *Grouped-query attention* keeps a query card for every head, here 6, but shares the key and value cards: just 2 of each, each pair shared by 3 heads. That needs fewer recipes, so fewer numbers, and when the machine writes, the [KV cache](/posts/minigpt/#where-the-scratch-cards-come-from) of saved keys and values is a third of the size.
+In [Part 1's attention](/posts/minigpt/#inside-a-block-attention), every head made its own query, key, and value cards. *Grouped-query attention* keeps a query card for every head, here 6, but shares the key and value cards: just 2 of each, each pair shared by 3 heads. That needs smaller key and value recipes, so fewer numbers, and when the machine writes, the [KV cache](/posts/minigpt/#where-the-scratch-cards-come-from) of saved keys and values is a third of the size.
 
 ### Taking one change out at a time
 
-To find out which change matters, I trained six machines, each for 3,000 steps on the same stories with the same 8k pieces:
+To find out which change matters, I compared six machines, each trained for 3,000 steps on the same stories with the same 8k pieces. Five are new; the sixth is Part 4's:
 
 - the 2017 block, from Part 4
 - the new block, with all four changes
@@ -109,7 +109,7 @@ A better block at this size buys a small, measurable drop in bits per byte, not 
 
 **Position cards:** Then at least I am easy to explain.
 
-**RoPE:** You are. And I have no limit: there is no table of mine to run out of, so a machine of mine can be given a longer row later.
+**RoPE:** You are. And I have no table to run out of, so nothing stops a machine of mine being given a longer row later, although it still has to learn to use it.
 :::
 
 :::bullet-points Part 5, in short
@@ -240,7 +240,7 @@ python generate_llama.py --tag modern --prompt "Once upon a time"
 
 MLX needs Apple Silicon.
 
-[Part 6](/posts/minigpt5/) keeps this machine and gives it a teacher: a bigger model whose chances for every next token become extra training targets.
+[Part 6](/posts/minigpt5/) goes back to Part 4's machine and gives it a teacher: a bigger model whose whole wheel of chances, at every position, becomes something extra for the student to copy.
 
 ## References
 

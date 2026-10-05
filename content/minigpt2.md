@@ -10,7 +10,7 @@ hidden: false
 slug: "minigpt2"
 ---
 
-At the end of [Part 1](/posts/minigpt/#why-the-big-models-do-not-use-letters), I asked why the big models do not read one letter at a time, the way MiniGPT does. This post finds out, by trying it. I take the bigger MiniGPT from [Part 2](/posts/minigpt-grown/), keep everything about it the same, and change only one thing: how the text is cut into pieces before the machine sees it.
+At the end of [Part 1](/posts/minigpt/#why-the-big-models-do-not-use-letters), I asked why the big models do not read one letter at a time, the way MiniGPT does. This post finds out, by trying it. I take the bigger MiniGPT from [Part 2](/posts/minigpt-grown/), keep everything about it the same, and change only one thing: how the text is cut into pieces before the machine sees it. The text changes too. Instead of Shakespeare, the machine reads about 20 million letters of [TinyStories](https://huggingface.co/datasets/roneneldan/TinyStories): short, simple children's stories, written specially so that small models have a chance of learning to finish a sentence.
 
 The code for this post is in [`part3-tokenisers/`](https://github.com/Haddley/minigpt-series/tree/main/part3-tokenisers), and my follow-along workbook runs every step: [open it in Colab](https://colab.research.google.com/github/Haddley/minigpt-series/blob/main/part3-tokenisers/minigpt_follow_along_3.ipynb).
 
@@ -33,7 +33,7 @@ MiniGPT, as Parts 1 and 2 built it, cuts it into 52 pieces: one for every letter
 
 I tried three tokenisers on the same machine:
 
-- **Letters.** One token per character, exactly as in Parts 1 and 2. The text this time contains 91 different characters, so there are 91 token cards.
+- **Letters.** One token per character, exactly as in Parts 1 and 2. The stories contain 91 different characters, so there are 91 token cards.
 - **GPT-2's pieces, borrowed.** The tokeniser OpenAI built for GPT-2 in 2019. It has 50,257 pieces, from single letters up to whole common words, and there is nothing to train: I simply use it.
 - **My own pieces.** A tokeniser I built from the practice text, using the same method as GPT-2's, but stopped at 8,192 pieces.
 
@@ -59,7 +59,7 @@ After three glues, the text is 15 pieces instead of 22: `the`, space, `c`, `at`,
 :::
 :::
 
-On the real practice text, about 20 million letters of children's stories, my tokeniser's first glues are just as sensible. The very first is a space followed by `t`, then `h` + `e`, then a space followed by `a`, then a space followed by `s` and by `w`, then `n` + `d`. Within a dozen glues it has whole words: ` the`, ` to`, and ` and`, each with its space attached to the front. By 8,192 pieces it has a token for almost every common word, plus the fragments it needs to spell the rest.
+On the real practice stories, my tokeniser's first glues are just as sensible. The very first is a space followed by `t`, then `h` + `e`, then a space followed by `a`, then a space followed by `s` and by `w`, then `n` + `d`. Within a dozen glues it has whole words: ` the`, ` to`, and ` and`, each with its space attached to the front. By 8,192 pieces it has a token for almost every common word, plus the fragments it needs to spell the rest.
 
 :::watch-it
 In printed lists of BPE pieces, a space attached to the front of a piece often shows up as `Ġ`, so ` the` is written `Ġthe`. That is just how the GPT-2 family of tokenisers stores a space, the same stand-in I met when [exporting my model for llama.cpp](/posts/minigpt/#run-it-without-python-a-gguf-file-for-llamacpp). It is not a real letter.
@@ -107,7 +107,7 @@ The letters machine looks far better on surprise per token: just 0.7214. But its
 
 ### The race
 
-I trained the same machine three times, once with each tokeniser, on about 20 million letters of [TinyStories](https://huggingface.co/datasets/roneneldan/TinyStories): short, simple stories written specially so that small models have a chance of learning to finish a sentence. Each run was 3,000 steps of 32 snippets, each 256 tokens long, on my Mac Studio's GPU.
+I trained the same machine three times, once with each tokeniser, on the same stories. Each run was 3,000 steps of 32 snippets, each 256 tokens long, on my Mac Studio's GPU.
 
 | Tokeniser | Surprise per token | Bits per byte | Training time |
 |---|---|---|---|
@@ -207,7 +207,7 @@ Before you look at the decoder below, match each everyday description on the lef
 | one piece of text | a *token* |
 | the supply of pieces | the *vocabulary* |
 | a token card | a *token embedding* |
-| glueing the most common pair | a BPE *merge* |
+| gluing the most common pair | a BPE *merge* |
 | using the token cards as the answer cards too | *weight tying* |
 | halvings of surprise for each byte of text | *bits per byte* |
 | surprise per token | the *loss*, or *cross-entropy* |
@@ -244,7 +244,7 @@ trainer = trainers.BpeTrainer(vocab_size=8192, special_tokens=["<unk>", "<|endof
 tok.train([os.path.join(DATA, "train.txt")], trainer)
 ```
 
-The letters tokeniser is the same one-liner as the notebook's. GPT-2's comes from OpenAI's [`tiktoken`](https://github.com/openai/tiktoken) library, ready made. My own is trained with Hugging Face's [`tokenizers`](https://github.com/huggingface/tokenizers) library, which runs the glueing loop from the exercise above, fast enough to finish in seconds. `ByteLevel` makes it start from single bytes, so any text at all can be spelled out.
+The letters tokeniser is the same one-liner as the notebook's. GPT-2's comes from OpenAI's [`tiktoken`](https://github.com/openai/tiktoken) library, ready made. My own is trained with Hugging Face's [`tokenizers`](https://github.com/huggingface/tokenizers) library, which runs the gluing loop from the exercise above, fast enough to finish in seconds. `ByteLevel` makes it start from single bytes, so any text at all can be spelled out.
 
 ![](assets/images/minigpt2/tokenizers-setup.png)
 *Building all three tokenisers, and the first fifteen glues*
@@ -297,7 +297,7 @@ print(tok.decode(out[0].tolist()))
 
 ## Try it yourself
 
-- **My follow-along workbook:** [open it in Colab](https://colab.research.google.com/github/Haddley/minigpt-series/blob/main/part3-tokenisers/minigpt_follow_along_3.ipynb). It builds the three tokenisers, checks every number in this post, and trains the machine. Choose a GPU runtime: on my Mac Studio's GPU, the three training runs took about 11, 13, and 41.8 minutes.
+- **My follow-along workbook:** [open it in Colab](https://colab.research.google.com/github/Haddley/minigpt-series/blob/main/part3-tokenisers/minigpt_follow_along_3.ipynb). It builds the three tokenisers, checks every number in this post, and trains the machine. Choose a GPU runtime: on my Mac Studio's GPU, the three training runs took about 11, 13, and 42 minutes.
 - **On your own machine:**
 
 ```bash

@@ -55,13 +55,13 @@ print(loss.item())           # 4
 ```
 
 :::answer
-Lines 1 and 2 only write steps down: the whole forward pass and the surprise score are recorded, but not calculated. Line 3 is where the GPU does all of that work, in one go. Line 4 just reads the finished number. If line 3 were missing, line 4 would trigger the calculation instead, because printing needs a real number.
+Lines 1 and 2 only write steps down: the whole trip forward through the machine and the surprise score are recorded, but not calculated. Line 3 is where the GPU does all of that work, in one go. Line 4 just reads the finished number. If line 3 were missing, line 4 would trigger the calculation instead, because printing needs a real number.
 :::
 :::
 
 ### Packing the whole training step into one
 
-Because MLX writes the steps down first, it can do something bigger: take one whole training step (the forward pass, working out which way to turn every dial, clipping, and turning the dials) and *compile* it, which packs it into a single combined job for the GPU. That saves the GPU from starting and stopping between thousands of small jobs. In MLX it is one line, `mx.compile`, and it turns out to be where almost all of the speed comes from.
+Because MLX writes the steps down first, it can do something bigger: take one whole training step (the trip forward, the [trip back](/posts/minigpt-grown/#how-does-it-know-which-way-to-nudge) that finds every dial's slope, capping the slopes if they are unusually big, and turning the dials) and *compile* it, which packs it into a single combined job for the GPU. That saves the GPU from starting and stopping between thousands of small jobs. In MLX it is one line, `mx.compile`, and it turns out to be where almost all of the speed comes from.
 
 ### The race
 
@@ -158,7 +158,7 @@ Match each everyday description on the left with its proper name on the right.
 | 2. one pool of memory shared by the processor and the GPU | B. `mx.compile` |
 | 3. writing calculations down, and running them only when needed | C. the *framework* |
 | 4. packing a whole training step into one job | D. *unified memory* |
-| 5. working out which way to turn every dial | E. the *gradient* |
+| 5. the slopes of every dial, all together | E. the *gradient* |
 
 :::answer
 1 is C, 2 is D, 3 is A, 4 is B, and 5 is E.
@@ -173,7 +173,8 @@ Match each everyday description on the left with its proper name on the right.
 | one shared pool of memory | *unified memory* |
 | writing calculations down and running them later | *lazy evaluation* |
 | packing a whole step into one job | *compiling*, with `mx.compile` |
-| which way to turn every dial | the *gradient* |
+| the slopes of every dial, all together | the *gradient* |
+| capping the slopes if they are unusually big | *gradient clipping* |
 | copying a batch to the GPU | a *host-to-device transfer* |
 
 ## The code, in the order it runs
@@ -205,7 +206,7 @@ Third, there is no `.to(device)`, anywhere.
 
 ### The training step: `train_mlx.py`
 
-In PyTorch, working out which way to turn every dial happens as a side effect of `loss.backward()`. In MLX it is a function: `nn.value_and_grad` takes the machine and its surprise-score function, and gives back a new function that returns the score *and* the directions, as an ordinary value. The whole step is then compiled:
+In PyTorch, the trip back that finds every dial's slope happens as a side effect of `loss.backward()`, as [Part 2](/posts/minigpt-grown/#following-the-blame-back-with-real-numbers) showed. In MLX it is a function: `nn.value_and_grad` takes the machine and its surprise-score function, and gives back a new function that returns the score *and* every dial's slope, as an ordinary value. The whole step is then compiled:
 
 ```python
 loss_and_grad = nn.value_and_grad(model, MiniGPT.loss)
@@ -270,7 +271,7 @@ python generate_mlx.py --prompt "Once upon a time"
 
 MLX needs Apple Silicon. On any other machine, [Part 3](/posts/minigpt2/)'s PyTorch code is the one to use.
 
-[Part 5](/posts/minigpt4/) keeps MLX and the 8k pieces, and swaps the 2017-style block for the modern one used in Meta's Llama models, one change at a time.
+[Part 5](/posts/minigpt4/) keeps MLX and the 8k pieces, and swaps the original 2017 design of the block for the modern one used in Meta's Llama models, one change at a time.
 
 ## References
 

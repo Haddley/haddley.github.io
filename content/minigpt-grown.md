@@ -331,7 +331,7 @@ A: Because the slope only tells you which way is downhill *right here*. Take too
 - Thousands of tiny steps downhill turn random numbers into the exhibit.
 :::
 
-## Beyond the guessing game
+## The wider picture
 
 ### The student who memorised the textbook
 

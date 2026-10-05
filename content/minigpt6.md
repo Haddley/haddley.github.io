@@ -52,7 +52,7 @@ Changing *what* attention may look at does not change what it *costs*. A mask ch
 
 ### The memory race
 
-`mem_sweep.py` trains the 13-million-number modern machine for a few steps at each row length, three ways, and records the most memory each used:
+`mem_sweep.py` trains the 12.6-million-number modern machine for a few steps at each row length, three ways, and records the most memory each used:
 
 | Row length | Full attention | Window, as a mask | Window, in chunks |
 |---|---|---|---|
@@ -220,10 +220,10 @@ Seven parts, from a character-level GPT in a borrowed notebook to a modern small
 3. [Pieces, not letters](/posts/minigpt2/): three tokenisers, scored fairly in bits per byte.
 4. [A faster engine](/posts/minigpt3/): the same machine in Apple's MLX.
 5. [The modern block](/posts/minigpt4/): Llama's four changes, one at a time. Only RoPE mattered.
-6. [Learning from a teacher](/posts/minigpt5/): distillation, and why the best teacher knows the stories.
+6. [Learning from a teacher](/posts/minigpt5/): distillation, and why the most helpful teacher was not the best storyteller.
 7. Reading further: sliding-window attention.
 
-Every machine here is tiny, and none of them is good. That was the point. The tokeniser, the training loop, the engine, and the tricks, distillation, shared keys and values, and windowed attention, are all things you can build and run in an afternoon on one Mac. What separates them from the models I use every day is scale: more text, more numbers, and more computing, applied to substantially this recipe.
+Every machine here is tiny, and none of them is good. That was the point. The tokeniser, the training loop, the engine, and the tricks, distillation, shared keys and values, and windowed attention, are all things you can build and run in an afternoon on one Mac. What separates them from the models I use every day is scale: more text, more numbers, and more computing, applied to substantially the same design.
 
 ## Try it yourself
 

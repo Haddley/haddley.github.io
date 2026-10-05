@@ -10,7 +10,7 @@ hidden: true
 slug: "minigpt7"
 ---
 
-[Part 6](/posts/minigpt5/) ended on a wall: a teacher must use exactly the student's pieces, so none of today's big models could teach my student, which uses GPT-2's. This post climbs over the wall. It rebuilds MiniGPT on **Qwen3's pieces**, so that **Qwen3-8B-Base**, a capable 2025 model with 8.2 billion numbers, can be its teacher, to see whether a frontier teacher finally delivers a big win.
+[Part 6](/posts/minigpt5/) ran into a wall: a teacher must use exactly the student's pieces, so none of today's big models could teach my student, which uses GPT-2's. This post climbs over the wall. It rebuilds MiniGPT on **Qwen3's pieces**, so that **Qwen3-8B-Base**, a capable 2025 model with 8.2 billion numbers, can be its teacher, to see whether a frontier teacher finally delivers a big win.
 
 The code is in [`part8-qwen3-teacher/`](https://github.com/Haddley/minigpt-series/tree/main/part8-qwen3-teacher), with a follow-along notebook for a Mac, [`minigpt_follow_along_8.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part8-qwen3-teacher/minigpt_follow_along_8.ipynb).
 
@@ -47,7 +47,7 @@ Keeping only the 48 biggest slices means the student is compared with the teache
 
 ### What the teacher taught
 
-Both students trained for 3,000 steps on all of the stories, cut into Qwen3's pieces, once alone and once copying the saved wheels:
+Both students trained for 3,000 steps on all of my practice stories, cut into Qwen3's pieces, once alone and once copying the saved wheels:
 
 | Student | Alone | With Qwen3-8B-Base | Change |
 |---|---|---|---|
@@ -217,7 +217,7 @@ Eight parts, from a character-level GPT in a borrowed notebook to a small model 
 3. [Pieces, not letters](/posts/minigpt2/): three tokenisers, scored fairly in bits per byte.
 4. [A faster engine](/posts/minigpt3/): the same machine in Apple's MLX.
 5. [The modern block](/posts/minigpt4/): Llama's four changes, one at a time. Only RoPE mattered.
-6. [Learning from a teacher](/posts/minigpt5/): distillation, and why the best teacher knows the stories.
+6. [Learning from a teacher](/posts/minigpt5/): distillation, and why the most helpful teacher was not the best storyteller.
 7. [Reading further](/posts/minigpt6/): sliding-window attention.
 8. A frontier teacher: Qwen3-8B-Base, and the stories running out first.
 

@@ -10,9 +10,9 @@ hidden: false
 slug: "minigpt"
 ---
 
-I spend most of my time using language models, not building them. And "building" is not really the right word: nobody writes a language model's knowledge in by hand. It is grown, by training, and I want to understand that process better, and to be able to explain it. So when I found the paper [MiniGPT: Rebuilding GPT from First Principles](https://arxiv.org/pdf/2605.17398) by Jibin Joseph, I wanted to run it myself. MiniGPT is a single Jupyter notebook that reconstructs the whole GPT training pipeline — tokenisation, embeddings, causal self-attention, Transformer blocks, next-token training, validation tracking, checkpoint selection, and text generation — in plain PyTorch. It does not introduce a new architecture. It makes an existing one legible.
+I spend most of my time using language models, not building them. And "building" is not really the right word: nobody writes a language model's knowledge in by hand. It is grown, by training, and I want to understand that process better, and to be able to explain it. So when I found the paper [MiniGPT: Rebuilding GPT from First Principles](https://arxiv.org/pdf/2605.17398) by Jibin Joseph, I wanted to run it myself. MiniGPT is a single Jupyter notebook that reconstructs the whole GPT training pipeline in plain PyTorch: tokenisation, embeddings, causal self-attention, Transformer blocks, next-token training, validation tracking, checkpoint selection, and text generation. It does not introduce a new architecture. It makes an existing one legible.
 
-The paper is explicit about its lineage: the author studied Andrej Karpathy's [nanoGPT](https://github.com/karpathy/nanoGPT) and then wrote the model and training code independently in one notebook. That matched how I like to learn a system, so I worked through it top to bottom — but instead of the README's recommended Colab path, I ran it locally on my 2022 Mac Studio (Apple M1 Max, 64 GB RAM).
+The paper is explicit about its lineage: the author studied Andrej Karpathy's [nanoGPT](https://github.com/karpathy/nanoGPT) and then wrote the model and training code independently in one notebook. That matched how I like to learn a system, so I worked through it top to bottom, but instead of the README's recommended Colab path, I ran it locally on my 2022 Mac Studio (Apple M1 Max, 64 GB RAM).
 
 This post takes a finished, trained machine apart while it runs. I trained a small MiniGPT model on my Mac, using *Tiny Shakespeare*: about 1.1 million letters of Shakespeare's plays, the same text the notebook uses. Shakespeare is all it has ever read, so everything it writes sounds like a play, and every number in this post comes from that one model, my exhibit. How a machine like this gets its numbers in the first place, from nothing, is the subject of [the next post](/posts/minigpt-grown/), and there I grow this exact model again from scratch.
 
@@ -82,9 +82,9 @@ Giving chances is not the same as choosing. When the machine writes, it turns it
 
 Often the wheel lands on `o`. Sometimes it lands on a space. Now and then it lands on one of the thin grey slices, and that is what keeps the machine's writing from being the same every time.
 
-The wheel is not fixed like the letter cards and position cards. The machine works out a brand new wheel for every letter it writes, because every new letter changes the chances.
+The wheel is not fixed. The machine works out a brand new wheel for every letter it writes, because every new letter changes the chances.
 
-A machine with random numbers on its dials has slices that are all about the same size, so all it can write is noise. How the dials get the numbers that make some slices big and others thin is the subject of [the next post](/posts/minigpt-grown/).
+An untrained machine has slices that are all about the same size, so all it can write is noise. How training makes some slices big and others thin is the subject of [the next post](/posts/minigpt-grown/).
 
 :::pencil Be the model
 Here is another line with its end hidden. Before you read on, write down your own chances for the next letter, as percentages that add up to 100.
@@ -117,7 +117,7 @@ Here are all five at once, for `goo`, with the real numbers from my trained mode
 
 ### Step 1: letters to numbers
 
-Computers need numbers, so the first step is to give each of the 65 letters an ID. In Tiny Shakespeare, `g` is 45, `o` is 53, and `d` is 42, so `goo` becomes `[45, 53, 53]`. That is all this step does. But an ID is just a name tag. 50 is not "more" than 46 in any way that helps, so the machine cannot do much with the ID itself. It needs something richer, and that is step 2.
+Computers need numbers, so the first step is to give each of the 65 letters an ID. In Tiny Shakespeare, `g` is 45, `o` is 53, and `d` is 42, so `goo` becomes `[45, 53, 53]`. That is all this step does. But an ID is just a name tag. 53 is not "more" than 45 in any way that helps, so the machine cannot do much with the ID itself. It needs something richer, and that is step 2.
 
 ### Step 2: letter cards and position cards
 
@@ -132,7 +132,7 @@ Three things to know about these cards:
 
 - **The numbers are fixed.** In a trained machine, the back of every card is as good as printed in ink. The `g` card has exactly the same 128 numbers every time a `g` appears, in every piece of text, today and tomorrow. Writing, chatting, and answering questions never change a single one of them. The only way to change them is to train the machine again.
 - **Nobody wrote the backs.** There is no "number 7 is how vowel-like this is". None of the 128 numbers has a name.
-- **Training chose them.** How it settled on these exact numbers is the subject of [the next post](/posts/minigpt-grown/). In this post, the cards are simply given, like a printed set that I can copy as often as I like.
+- **Training chose them.** I think of every fixed number in the machine as a *dial*, and training is what turned each dial to where it is now: all 826,433 of them in my small model. How it settled on these exact numbers is the subject of [the next post](/posts/minigpt-grown/). In this post, the cards are simply given, like a printed set that I can copy as often as I like.
 
 There is also a set of position cards. Picture the text as a row of numbered positions: position 1, position 2, and so on, with one card for each position. This time, one of each is enough: a text might need a dozen `o` cards, but my machine only ever needs the same 128 position cards, because a row never has two position 1s. Every letter takes the next position in the row, whether it was in the text the machine was given or the machine has just written it, and its letter card is combined with that position's card. Position cards work just like letter cards: each one has 128 numbers on its back, fixed by training in exactly the same way, so the two can be combined by simply adding them, number by number. So once a letter card is placed on a position, the machine knows both what the letter is and where it sits. That position card is the only thing that tells the two `o`s in `goo` apart at this stage.
 
@@ -171,7 +171,7 @@ These are the exact numbers in my trained model, rounded to three decimal places
 ```
 :::
 
-A position card has to be exactly as long as a letter card, because the machine adds the two together, number by number. In the notebook, the position cards are the *position embedding*.
+In the notebook, the position cards are the *position embedding*.
 
 How *many* position cards there are is fixed in advance, when the machine is built. There is one card for each position in the row, and the number of positions is the most letters the machine can look at when it chooses the next letter. That limit is called the *context length*, and in the notebook it is `block_size`. I come back to it, and what it costs to raise it, in [How much can it see at once?](#how-much-can-it-see-at-once-the-context-limit)
 
@@ -221,7 +221,7 @@ Keys and values are separate cards because what makes a working card worth liste
 2. **Shares out** 100% of its attention, in proportion to how well each key card matched.
 3. **Collects** that share of each value card, adds them up number by number, and adds the result to itself.
 
-In one of my trained model's attention heads, working card 3 gives 92.9% of its attention to working card 2 (the first `o`), 4.0% to working card 1 (the `g`), and 3.1% to itself, so most of what it collects is working card 2's value card.
+In block 1 of my trained model, in one of the four copies of attention that run side by side (*heads*, explained [below](#several-heads-at-once)), working card 3 gives 92.9% of its attention to working card 2 (the first `o`), 4.0% to working card 1 (the `g`), and 3.1% to itself, so most of what it collects is working card 2's value card.
 
 ![](assets/images/minigpt/the-meeting.svg)
 *Attention for working card 3, the last position in `goo`. Its query card matches working card 2's key card best, so most of what it collects comes from working card 2's value card*
@@ -244,7 +244,7 @@ Three more things are worth knowing:
 - **The scratch cards are all made at once.** Making a working card's scratch cards needs nothing but that working card, so the machine makes the query, key, and value cards for every position at the same moment, in one big multiplication over the whole row.
 - **The scratch cards are thrown away.** They exist only during attention. MiniGPT makes them all again from scratch for every new letter, because it reruns the whole row through every block. Big chatbots save that work. Because a working card only ever listens to earlier positions, adding a new letter never changes the working cards before it, so their key and value cards do not change either. Big models keep them instead of remaking them, in a store called the *KV cache*, short for key–value cache ([this Hugging Face post](https://huggingface.co/blog/not-lain/kv-caching) explains it well). Only the newest position needs a new query card.
 
-Nobody chooses what goes on the query, key, and value cards. Training tunes the recipes, just as it tunes the letter cards. So when I describe a query as "was there an `o` one position before me?", that is my reading of 32 numbers, not anything the machine wrote down. A real model's queries and keys mostly have no tidy name at all.
+Nobody chooses what goes on the query, key, and value cards. Training tunes the recipes, just as it tunes the letter cards, and a real model's queries and keys mostly have no tidy name at all.
 
 ### Queries, keys and values, with real numbers
 
@@ -285,7 +285,7 @@ Imagine a head that has learned one simple habit: every working card puts all of
 | working card 2 | 100% | 0 | 0 |
 | working card 3 | 0 | 100% | 0 |
 
-Every row still adds up to 100%, and the upper-right triangle is still all zeros. After one pass through this head, what each working card collects describes the position before it, which is exactly the clue a character-level model needs. Real heads are rarely this tidy, but this one really exists: the first block of my trained model grew a head that puts about 99% of each working card's attention on the working card one position before it. Head 1 in the table below behaves almost exactly like this.
+Every row still adds up to 100%, and the upper-right triangle is still all zeros. After one pass through this head, what each working card collects describes the position before it, which is exactly the clue a character-level model needs. Real heads are rarely this tidy, but this one really exists: the first block of my trained model grew a head that puts about 96% of each working card's attention on the working card one position before it. Head 1 in the table below behaves almost exactly like this.
 :::
 :::
 
@@ -336,16 +336,16 @@ The row that comes out of one block and the row that goes into the next are not 
 | 3 | 2.72 | 0.90 | 1.16 | 2.92 | 0.90 |
 | 4 | 2.92 | 0.74 | 1.86 | 3.09 | 0.78 |
 
-Block 1 changes the card the most: it adds more than the input embedding held in the first place. Blocks 2 and 3 refine it, so what comes out is still 0.90 like what went in. Block 4 makes a bigger change again, mostly in its MLP, as it gets the card ready for step 4. By the end, working card 3 scores only 0.08 for likeness to the input embedding it started from.
+Block 1 changes the card the most: it adds more than the card held when it left step 2. Blocks 2 and 3 refine it, so what comes out is still 0.90 like what went in. Block 4 makes a bigger change again, mostly in its MLP, as it gets the card ready for step 4. By the end, working card 3 scores only 0.08 for likeness to the card it started as.
 
 ![](assets/images/minigpt/rounds.svg)
 *The whole row of working cards goes through every block together. The coloured squares on each card show how much of the earlier positions it has taken in: working card 1 can only ever take in itself, while working card 3 takes in all three*
 
-Written out in full, the row of working cards goes through eight steps, always in the same order: attention, MLP, attention, MLP, attention, MLP, attention, MLP. The two take turns, and neither ever runs twice in a row. So if you see a diagram of a big GPT as a long stack of slabs labelled "Attention, Multilayer Perceptron, Attention, Multilayer Perceptron…", like the one in [Grant Sanderson's talk](https://www.youtube.com/watch?v=KJtZARuO3JY), it shows exactly what my small model does. The only difference is how many times the pair repeats: GPT-3 repeats it 96 times, with much longer cards.
+Written out in full, the row of working cards goes through eight stages, always in the same order: attention, MLP, attention, MLP, attention, MLP, attention, MLP. The two take turns, and neither ever runs twice in a row. So if you see a diagram of a big GPT as a long stack of slabs labelled "Attention, Multilayer Perceptron, Attention, Multilayer Perceptron…", like the one in [Grant Sanderson's talk](https://www.youtube.com/watch?v=KJtZARuO3JY), it shows exactly what my small model does. The only difference is how many times the pair repeats: GPT-3 repeats it 96 times, with much longer cards.
 
 Two details keep the blocks working well:
 
-- **Add, never replace.** Each block adds to the working cards rather than replacing them, so nothing learned in an earlier block is lost. This also matters for learning: when the dials are tuned, the message about which way to turn them has to travel backwards through every block. Adding rather than replacing gives that message a clear route all the way back, which is why models can be stacked dozens of blocks deep. Because every block adds to the same row of working cards, the row has a name in the jargon: the *residual stream*. It starts as the input embeddings and flows through every block.
+- **Add, never replace.** Each block adds to the working cards rather than replacing them, so nothing learned in an earlier block is lost. This also matters for learning: when the dials are tuned, the message about which way to turn them has to travel backwards through every block, as [the next post](/posts/minigpt-grown/#how-does-it-know-which-way-to-nudge) shows. Adding rather than replacing gives that message a clear route all the way back, which is why models can be stacked dozens of blocks deep. Because every block adds to the same row of working cards, the row has a name in the jargon: the *residual stream*. It starts as the input embeddings and flows through every block.
 - **Normalise before each step.** Before attention, and again before the MLP, the numbers on every working card are rescaled to a standard range, so that no card is shouting. Then each of the 128 numbers is stretched and shifted by its own two fixed dials, set by training, so the machine can turn some numbers back up if they matter more than others. This is called *layer normalisation*.
 
 Why four blocks, and not one? Because each block builds on the last. After block 1, a working card knows about the positions just before it. In block 2, it can look at working cards that have *already* gathered their own neighbours, so it learns about positions further back, and so on. You can see this in the heads themselves. In block 1, the heads look between 1.6 and 5.7 positions back on average. In blocks 2 to 4, they look between 6 and 25 positions back.
@@ -353,9 +353,9 @@ Why four blocks, and not one? Because each block builds on the last. After block
 You can also watch the guess improve. After each block, I took the last working card as it was at that point, gave it the same final normalisation, scored it against the same 65 answer cards, and turned the scores into chances, exactly as step 4 does after block 4. The answer cards were only ever trained to read block 4's output, so this is a peek rather than something the machine does when it writes, but it works surprisingly well, and researchers use the same trick under the name *logit lens*:
 
 ![](assets/images/minigpt/stopping-early.svg)
-*Real numbers from my trained model. With the input embeddings alone, it guesses the next letter right 12% of the time; after all four blocks, 49%*
+*Real numbers from my trained model. Straight from step 2, before any block, it guesses the next letter right 12% of the time; after all four blocks, 49%*
 
-With the input embeddings alone, the machine knows only that the last letter is an `a`, so it guesses `y`. Block 1 adds the letters in the positions just before it, and `t` takes the lead. Block 2 has seen enough of `spea` to try `c`. Only in blocks 3 and 4 does the whole picture, *hear me spea*, settle on `k`, at 98%.
+The picture follows the guess after *Before we proceed any further, hear me spea*, from the first speech in Tiny Shakespeare. Straight from step 2, before any block, the machine knows only that the last letter is an `a`, so it guesses `y`. Block 1 adds the letters in the positions just before it, and `t` takes the lead. Block 2 has seen enough of `spea` to try `c`. Only in blocks 3 and 4 does the whole picture, *hear me spea*, settle on `k`, at 98%.
 
 :::bullet-points Step 3, the blocks
 - Step 2 hands block 1 one working card per position. From then on, the machine works only on working cards, never on letters.
@@ -407,8 +407,8 @@ Turn it all the way down to 0, and the machine stops spinning and always takes t
 
 **Trimming the wheel.** Even a good wheel has dozens of thin slices for letters that make no sense. Usually the pointer never stops on them, but spin enough times and it will, and a single nonsense letter can derail everything after it. So the wheel is often trimmed before the spin:
 
-- *Keep the biggest k slices.* The notebook asks for the biggest 200, but my wheel only has 65 slices, so this trims nothing at all.
-- *Keep the biggest slices until they add up to p.* With p = 90%, my model's wheel after `good m` keeps just 5 slices: `y`, `e`, `a`, `o`, and `i`, which between them hold about 97% of the chance. The other 60 slices, which shared the remaining 3%, are cut away, and the 5 survivors are stretched to fill the whole wheel before the spin.
+- *Keep the biggest k slices*, called *top-k*. The notebook asks for the biggest 200, but my wheel only has 65 slices, so this trims nothing at all.
+- *Keep the biggest slices until they add up to p*, called *top-p*. With p = 90%, my model's wheel after `good m` keeps just 5 slices: `y`, `e`, `a`, `o`, and `i`, which between them hold about 97% of the chance. The other 60 slices, which shared the remaining 3%, are cut away, and the 5 survivors are stretched to fill the whole wheel before the spin.
 
 ![](assets/images/minigpt/reshaping-the-wheel.svg)
 *The real wheel after `good m`, reshaped by temperature and by top-p*
@@ -489,7 +489,7 @@ A few things to try:
 A GPT can only do one thing: guess the next piece of text. It cannot check the weather, read a file, or run a program. Yet the chatbots built on GPTs do all of those things. The trick is that the model *writes a request*, and an ordinary program around it carries the request out:
 
 1. **The program lists the tools.** At the start of the text, it tells the model what it may ask for, for example "`get_weather(location)`: the current weather anywhere".
-2. **The model writes a request instead of an answer.** Asked "What is the weather in New York?", a model trained for this (in the second stage of training, covered in [the next post](/posts/minigpt-grown/)) writes something like `{"tool": "get_weather", "location": "NYC"}`.
+2. **The model writes a request instead of an answer.** Asked "What is the weather in New York?", a model trained for this (in the second stage of training, covered in [the next post](/posts/minigpt-grown/#expensive-for-computers-cheap-for-people)) writes something like `{"tool": "get_weather", "location": "NYC"}`.
 3. **The program carries it out.** It spots the request, calls a real weather service, and adds the result to the text: `{"temp": "72°F", "condition": "sunny"}`.
 4. **The model carries on guessing,** now with the result in front of it: "It is currently 72°F and sunny in New York City."
 
@@ -635,9 +635,9 @@ The commands are joined with `&&`, so they paste into a terminal as one command,
 ![](assets/images/minigpt/local-setup.png)
 *I cloned the repository and installed the three dependencies plus Jupyter into a fresh virtual environment*
 
-## Part 1. Implement a minimal GPT model
+## Notebook part 1: a minimal GPT model
 
-The notebook builds the model before it loads any data. Part 1 defines every piece of a small GPT (the cards, attention, the MLPs, and the final step that turns a card into chances) and checks that a batch of random letters passes through it.
+The notebook comes in parts of its own, and builds the model before it loads any data. Its part 1 defines every piece of a small GPT (the cards, attention, the MLPs, and the final step that turns a card into chances) and checks that a batch of random letters passes through it.
 
 Here is how those pieces fit together, next to the digit-reading network from [Machine Learning (Part 9)](/posts/machinelearning9/). That network was two dense layers in a row. MiniGPT's MLP is exactly that kind of two-layer network. Attention is the new part, slotted in front of it. Four of those blocks are stacked, and one more dense layer at the end turns each working card into 65 chances for the letter after it.
 
@@ -670,7 +670,7 @@ Every fixed thing in this post is one named entry in the checkpoint. The names c
 What is *not* in the checkpoint matters just as much: the working cards, the query, key, and value cards, the shares of attention, and the chances. None of them is stored anywhere. The code works them out fresh, from the text in front of it, every time the machine runs. The checkpoint holds everything fixed, and the code makes everything that changes.
 :::
 
-The first code cell sits directly under the Part 1 heading and sets up everything the rest of the notebook depends on. This is how it looked after I ran it:
+The first code cell sits directly under the notebook's part 1 heading and sets up everything the rest of the notebook depends on. This is how it looked after I ran it:
 
 ![](assets/images/minigpt/first-cell.png)
 *I ran the first cell. It reported `mps`, the Mac Studio's GPU, because of a small change I made for training, described in [the next post](/posts/minigpt-grown/#using-the-macs-gpu)*
@@ -687,10 +687,10 @@ Every line in that cell has a job:
 
 ### 1.1 Model Configuration
 
-The markdown cell under 1.1 lists the sizes for a small Part 1 model, chosen so it runs easily in Colab, and the code cell below it records them in one place:
+The markdown cell under 1.1 lists the sizes for a small model, chosen so it runs easily in Colab, and the code cell below it records them in one place:
 
 ![](assets/images/minigpt/model-configuration.png)
-*I ran the 1.1 cell, which defines `GPTConfig` with the Part 1 defaults*
+*I ran the 1.1 cell, which defines `GPTConfig` with the small model's defaults*
 
 The cell prints nothing when I run it. It only defines a class. No model exists and no memory is used until section 1.6 creates a configuration and builds a model from it.
 
@@ -920,7 +920,7 @@ There is one difference from how I described step 4. The code scores *every* wor
 logits = logits[:, -1, :]
 # temperature
 logits = logits / temperature
-# top-k: keep the biggest k scores, and set the rest to minus infinity
+# (the notebook trims to the biggest k scores here; with k = 200 and 65 letters, nothing is cut)
 # the chances: the slices of the wheel
 probs = torch.softmax(logits, dim=-1)
 # spin the wheel
@@ -941,11 +941,11 @@ This is step 5. `[:, -1, :]` picks the last row, which belongs to working card 3
 
 ## Run my model yourself
 
-Everything in this post can be reproduced with three things: the notebook's Part 1 code, my trained numbers, and the 65 letters in the right order. The quickest way is my follow-along workbook, which has all three and reproduces every number in this post, step by step, from the letter IDs to the GGUF file: [open it in Colab](https://colab.research.google.com/github/Haddley/minigpt-series/blob/main/part1-running/minigpt_follow_along.ipynb), or [download it](https://github.com/Haddley/minigpt-series/blob/main/part1-running/minigpt_follow_along.ipynb). The steps below do the same in the notebook itself. I ran these steps myself, from scratch, in a fresh copy of the notebook, and the pictures below are that run. Any CPU is fast enough.
+Everything in this post can be reproduced with three things: the notebook's model code (sections 1.1 to 1.5), my trained numbers, and the 65 letters in the right order. The quickest way is my follow-along workbook, which has all three and reproduces every number in this post, step by step, from the letter IDs to the GGUF file: [open it in Colab](https://colab.research.google.com/github/Haddley/minigpt-series/blob/main/part1-running/minigpt_follow_along.ipynb), or [download it](https://github.com/Haddley/minigpt-series/blob/main/part1-running/minigpt_follow_along.ipynb). The steps below do the same in the notebook itself. I ran these steps myself, from scratch, in a fresh copy of the notebook, and the pictures below are that run. Any CPU is fast enough.
 
 First, run the notebook's code cells from the top down to the end of section 1.5. That defines `GPTConfig` and the four classes, but builds nothing yet. Then add four new cells.
 
-**Cell 1: download my trained numbers.** This is the checkpoint from [Where every fixed number lives](#part-1-implement-a-minimal-gpt-model): all 826,433 fixed numbers, under the names the notebook's code expects, in a 3.4 MB file. It is the same model that runs in the live demo.
+**Cell 1: download my trained numbers.** This is the checkpoint from [Where every fixed number lives](#notebook-part-1-a-minimal-gpt-model): all 826,433 fixed numbers, under the names the notebook's code expects, in a 3.4 MB file. It is the same model that runs in the live demo.
 
 ```python
 import urllib.request
@@ -1063,7 +1063,7 @@ The tiny differences come from the MLP's bend, GELU: llama.cpp uses a fast appro
 - Play with a real one: [Transformer Explainer](https://poloclub.github.io/transformer-explainer/) runs GPT-2 in your browser and shows attention and the chances for your own text, and [LLM Visualization](https://bbycroft.net/llm) walks through a small GPT in 3D, one calculation at a time
 - Build one step by step: [MicroGPT Visualized](https://microgpt.jtauber.com/) starts from counting pairs of letters and adds one idea at a time
 - My follow-along workbook: [open it in Colab](https://colab.research.google.com/github/Haddley/minigpt-series/blob/main/part1-running/minigpt_follow_along.ipynb). It runs my trained model and reproduces every number in this post
-- The notebook: [github.com/jibin10/MiniGPT](https://github.com/jibin10/MiniGPT) — open `MiniGPT_Notebook.ipynb` in Colab, or clone it and run it locally, then follow [Run my model yourself](#run-my-model-yourself) to load my trained model. Any CPU will do
+- The notebook: [github.com/jibin10/MiniGPT](https://github.com/jibin10/MiniGPT) : open `MiniGPT_Notebook.ipynb` in Colab, or clone it and run it locally, then follow [Run my model yourself](#run-my-model-yourself) to load my trained model. Any CPU will do
 
 
 ## References
