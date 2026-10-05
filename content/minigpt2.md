@@ -14,6 +14,18 @@ At the end of [Part 1](/posts/minigpt/#why-the-big-models-do-not-use-letters), I
 
 The code for this post is in [`part3-tokenisers/`](https://github.com/Haddley/minigpt-series/tree/main/part3-tokenisers), and my follow-along workbook runs every step: [open it in Colab](https://colab.research.google.com/github/Haddley/minigpt-series/blob/main/part3-tokenisers/minigpt_follow_along_3.ipynb).
 
+| This post's machine | |
+|---|---|
+| What changed | **the text and the pieces** |
+| Text | **TinyStories, about 20 million letters** |
+| Pieces | **letters (91), GPT-2's 50,257, or my own 8,192** |
+| Blocks | 6, each attention (6 heads) then an MLP: Part 2's bigger machine |
+| Card size | 384 |
+| Positions | 256, position cards |
+| Engine | PyTorch |
+| Size | 10.8, 30.0, or 13.9 million numbers, depending on the pieces |
+| Score | **0.697 bits per byte**, with my 8k pieces |
+
 ## The big picture, in plain English
 
 ### Pieces, not letters
@@ -27,7 +39,7 @@ How many pieces would you cut this sentence into, if you could choose any pieces
 MiniGPT, as Parts 1 and 2 built it, cuts it into 52 pieces: one for every letter, space, and punctuation mark. You probably thought in words: 11 of them, plus a comma and a full stop. The program that does the cutting is the **tokeniser**, and each piece it produces is a **token**. In Parts 1 and 2, every token was a single letter, so I called each token's card a letter card. From here on, a token can be a whole word, part of a word, or a single letter, so I call its card a **token card**. Nothing else about the cards changes: the tokeniser turns each piece into an ID, and each ID picks its own token card.
 
 ![](assets/images/minigpt2/tokenisation.svg)
-*The same words, cut three ways. The machine never sees the letters, only the IDs, so every piece needs its own token card*
+*The same words, cut three ways. For this everyday sentence, GPT-2's pieces and mine happen to be identical, but their IDs are not. They disagree on less common words, as [What bigger pieces buy](#what-bigger-pieces-buy) shows. The machine never sees the letters, only the IDs, so every piece needs its own token card*
 
 ### Three ways to cut text
 
@@ -59,6 +71,9 @@ After three glues, the text is 15 pieces instead of 22: `the`, space, `c`, `at`,
 :::
 :::
 
+![](assets/images/minigpt2/bpe-glue.svg)
+*The exercise above, one glue at a time. Each new piece is green; the whole picture replays every few seconds*
+
 On the real practice stories, my tokeniser's first glues are just as sensible. The very first is a space followed by `t`, then `h` + `e`, then a space followed by `a`, then a space followed by `s` and by `w`, then `n` + `d`. Within a dozen glues it has whole words: ` the`, ` to`, and ` and`, each with its space attached to the front. By 8,192 pieces it has a token for almost every common word, plus the fragments it needs to spell the rest.
 
 :::watch-it
@@ -68,6 +83,11 @@ In printed lists of BPE pieces, a space attached to the front of a piece often s
 ### What bigger pieces buy
 
 Fewer pieces means each position card covers more text. On the stories I held back for testing, the letters tokeniser needs 1.00 token per *byte* of text (a byte is the computer's unit for one ordinary character, so think of it as one letter), one per letter. GPT-2's tokeniser needs 0.246, and my own needs 0.244: both cover about four letters with every token. My own pieces even pack these stories slightly *tighter* than GPT-2's much bigger supply, because they were built from exactly this kind of text.
+
+You can see why in the words they cut differently. Children's-story words like *Grandma*, *cupboard*, and *grumpy* are whole pieces in my supply, but split in GPT-2's. A word that is rare in children's stories, like *pterodactyl*, goes the other way:
+
+![](assets/images/minigpt2/bpe-disagree.svg)
+*Real cuts from the two tokenisers. Each supply has whole pieces for the words that were common in the text it was cut from*
 
 That matters because the machine's row of positions has a fixed length. It has 256 positions, so with letters it can see back 256 letters, about 50 words. With BPE pieces, the same 256 positions reach back about 1,000 letters, more than a whole typical story: the middle-sized test story is 722 letters long. [Attention](/posts/minigpt/#inside-a-block-attention), in every block, can now look across the whole story instead of the last few sentences.
 
@@ -200,6 +220,8 @@ Before you look at the decoder below, match each everyday description on the lef
 :::
 
 ### The jargon decoder
+
+The terms for the whole series are collected in one table, [the series glossary](/posts/minigpt6/#the-series-glossary).
 
 | What I called it | What the experts call it |
 |---|---|

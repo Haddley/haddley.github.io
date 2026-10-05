@@ -16,6 +16,18 @@ In Part 1, writing one letter took [five steps](/posts/minigpt/#the-five-steps):
 
 One promise, the same as last time: no magic. Every number in this post is either worked out in front of you, or comes from a run on my own Mac Studio.
 
+| This post's machines | The exhibit | The bigger machine |
+|---|---|---|
+| What changed | **grown from random numbers** | **bigger, in the notebook's part 3** |
+| Text | Tiny Shakespeare | Tiny Shakespeare |
+| Pieces | letters: 65 | letters: 65 |
+| Blocks | 4, each 4 heads | **6, each 6 heads** |
+| Card size | 128 | **384** |
+| Positions | 128, position cards | **256**, position cards |
+| Engine | PyTorch | PyTorch |
+| Size | 826,433 numbers | **10.77 million**, letter cards doubling as answer cards |
+| Score | 1.70 surprise per letter | **1.47** |
+
 ## Growing a GPT, in plain English
 
 ### Starting from nothing
@@ -172,6 +184,9 @@ If *w* goes up by 1, the score goes up by 2, because *w* is multiplied by 2. Eac
 ### Following the blame back, with real numbers
 
 Here is the last link of the chain, worked by hand, using my exhibit and one guess from Part 1: the letter after `good m`. The real next letter is `y`, and the wheel gave it 40.81%, so the surprise score is ln(1 / 0.4081) = 0.896. Three rules carry the blame back from that surprise score to the answer cards.
+
+![](assets/images/minigpt-grown/blame-flow.svg)
+*The whole trip in one picture, with the numbers worked out below. The blame lights up from the surprise score back to the letter cards, and then the picture replays*
 
 **Rule 1, the wheel and the surprise score: the blame on each letter's score is its chance, minus 1 for the real letter.**
 
@@ -361,6 +376,8 @@ My best model writes text that looks like Shakespeare and says nothing at all. S
 :::
 
 ### The jargon decoder
+
+The terms for the whole series are collected in one table, [the series glossary](/posts/minigpt6/#the-series-glossary).
 
 Here are the comparisons for growing the machine, next to the names the notebook uses. The ones for the machine itself are in [the first post](/posts/minigpt/#the-jargon-decoder).
 

@@ -18,6 +18,21 @@ This post takes a finished, trained machine apart while it runs. I trained a sma
 
 First comes the whole idea in plain English, with no code: a guessing game, a supply of letter flashcards, a set of numbered position cards that records where each letter is, working cards that look back at earlier positions, and a spinning wheel of chances. Then we open the notebook and follow the code, line by line, in the order the machine runs it, matching each line to one of those everyday comparisons. One promise: no magic. Every number in this post is either worked out in front of you, or comes from a run on my own Mac Studio.
 
+**Start here.** This is Part 1 of seven:
+
+1. **Running it** (this post): a trained GPT taken apart while it writes.
+2. [Growing it](/posts/minigpt-grown/): training the same machine from random numbers.
+3. [Pieces, not letters](/posts/minigpt2/): tokenisers, scored fairly.
+4. [A faster engine](/posts/minigpt3/): the same machine in Apple's MLX.
+5. [The modern block](/posts/minigpt4/): Llama's four changes, one at a time.
+6. [Learning from a teacher](/posts/minigpt5/): distillation.
+7. [Reading further](/posts/minigpt6/): sliding-window attention.
+
+- **Ten minutes?** Read [the guessing game](#the-whole-thing-is-a-guessing-game) and [the five steps](#the-five-steps), skip to [Putting it together](#putting-it-together-choosing-the-next-letter), and then [try the machine](#try-it-my-trained-machine-running-in-your-browser) in your browser.
+- **An hour?** Read the whole plain-English half, down to [Opening the notebook](#opening-the-notebook). It needs no code.
+- **To follow along,** you need only a browser: the live demo runs in this page, and my workbook runs in Colab.
+- **Every term** is explained in the post where it first appears, and the [series glossary](/posts/minigpt6/#the-series-glossary) collects them all.
+
 Here is the route:
 
 1. **[The guessing game](#the-whole-thing-is-a-guessing-game)**: what a GPT actually does, how it [gives every letter a chance](#it-does-not-pick-a-letter-it-gives-every-letter-a-chance), and how it spins a wheel of chances to choose one.
@@ -28,6 +43,18 @@ Here is the route:
 6. **[Beyond the guessing game](#beyond-the-guessing-game-tools-harnesses-and-agents)**: how tools, harnesses, and agents let a model do more than write.
 7. **Loose ends**: [why the big models do not use letters](#why-the-big-models-do-not-use-letters), and [what nobody knows](#we-know-the-rules-not-the-result) about what the machine has learned.
 8. **[The notebook](#opening-the-notebook)**: setting it up, [the model's settings](#11-model-configuration), [the code, in the order the machine runs](#the-code-in-the-order-the-machine-runs), and how to [run my trained model yourself](#run-my-model-yourself).
+
+| This post's machine | |
+|---|---|
+| What changed | nothing yet: this is the machine the whole series starts from |
+| Text | Tiny Shakespeare, about 1.1 million letters |
+| Pieces | letters: 65 letter cards |
+| Blocks | 4 blocks, each attention (4 heads) then an MLP |
+| Card size | 128 numbers |
+| Positions | 128, with a position card for each |
+| Engine | PyTorch |
+| Size | 826,433 numbers |
+| Score | 1.70 surprise per letter on the locked-away text ([Part 2](/posts/minigpt-grown/#keeping-score-the-surprise-score)) |
 
 ## The big picture, in plain English
 
@@ -564,6 +591,12 @@ A: Nobody. Both sets of cards come from the same place. The model creates them f
 
 A: They are. Every part of this machine is a neural network in that sense: lots of dials, tuned by training. The MLP is even the same kind of two-layer network as my handwritten-digit reader. What is new is attention. The digit reader took in all 784 pixels of one picture at once. A language model gets a row of letters of any length and works on each position's working card separately, so it needs attention to let the working cards share information. Put attention in front of each MLP, stack four of those blocks, and you have a GPT.
 
+**Q: Blocks, heads, queries, keys, and recipes is such an odd design. How did anyone come up with it, and when did people know it would work?**
+
+A: Mostly, nobody designed it from scratch: the 2017 authors put together pieces that already worked. Attention was invented in 2014 for translation, by [Bahdanau, Cho, and Bengio](https://arxiv.org/abs/1409.0473), to let a network look back at the most relevant words of the sentence it was translating. Queries, keys, and values came from earlier work on [memory networks](https://arxiv.org/abs/1503.08895), which borrowed the language of looking things up. Adding back onto the working cards came from [ResNet](https://arxiv.org/abs/1512.03385) in 2015, and normalising from [layer normalisation](https://arxiv.org/abs/1607.06450) in 2016. The new idea in [Attention Is All You Need](https://arxiv.org/abs/1706.03762) is its title: keep only attention, and drop the older networks' habit of reading one position at a time. Attention looks at every position at once, so the whole row can be worked on in parallel, which made it much faster to train. Several heads, the √32 shrink, and the position signals were engineering choices, kept because they worked in experiments, not derived from any theory.
+
+It worked for translation straight away: the paper beat the best English-to-German system after 3.5 days of training on 8 GPUs, a fraction of the earlier cost. That it was a general-purpose machine only became clear over the next three years. In 2018, GPT-1 and [BERT](https://arxiv.org/abs/1810.04805) took over most language tests; in 2019, GPT-2 wrote surprisingly coherent text; in 2020, [scaling laws](https://arxiv.org/abs/2001.08361) and [GPT-3](https://arxiv.org/abs/2005.14165) showed it kept improving as it grew, and the [Vision Transformer](https://arxiv.org/abs/2010.11929) showed the same design reading pictures. The authors themselves wrote about translation.
+
 **Q: So is the guess just the letter card that the last working card is closest to?**
 
 A: Not in my model, although it is a good guess about how it might work. I tried it. Compared with the 65 letter cards, the last working card for `goo` is closest to `n`, `E`, and `e`, and `d` comes 47th out of 65. Compared with the 65 answer cards, `d` comes first by a long way (0.63, against 0.25 for the next best). That is why the machine needs its own answer cards: describing a letter going in and predicting a letter coming out turned out to be different jobs. Many other models, including GPT-2 and the notebook's own stronger model in [the next post](/posts/minigpt-grown/), do use the letter cards as the answer cards too. That is called *weight tying*, and it saves a whole set of numbers. My model keeps the two sets separate, as the notebook's small model does.
@@ -596,6 +629,8 @@ Before you look at the decoder below, match each everyday comparison on the left
 :::
 
 ### The jargon decoder
+
+The terms for the whole series are collected in one table, [the series glossary](/posts/minigpt6/#the-series-glossary).
 
 Here is each everyday comparison from this introduction, next to the name the notebook uses. I come back to each one as the notebook reaches it. The words for how the machine is trained are in [the next post](/posts/minigpt-grown/).
 
@@ -1092,7 +1127,14 @@ The tiny differences come from the MLP's bend, GELU: llama.cpp uses a fast appro
 - [Transformer Explainer — Georgia Tech Polo Club](https://poloclub.github.io/transformer-explainer/)
 - [LLM Visualization — Brendan Bycroft](https://bbycroft.net/llm)
 - [Generative AI exists because of the transformer — Financial Times, 2023](https://ig.ft.com/generative-ai/)
+- [Neural Machine Translation by Jointly Learning to Align and Translate — Bahdanau, Cho & Bengio, 2014](https://arxiv.org/abs/1409.0473)
+- [End-To-End Memory Networks — Sukhbaatar et al., 2015](https://arxiv.org/abs/1503.08895)
+- [Deep Residual Learning for Image Recognition — He et al., 2015](https://arxiv.org/abs/1512.03385)
+- [Layer Normalization — Ba, Kiros & Hinton, 2016](https://arxiv.org/abs/1607.06450)
 - [Attention Is All You Need — Vaswani et al., 2017](https://arxiv.org/abs/1706.03762)
+- [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding — Devlin et al., 2018](https://arxiv.org/abs/1810.04805)
+- [Language Models are Few-Shot Learners (GPT-3) — Brown et al., 2020](https://arxiv.org/abs/2005.14165)
+- [An Image is Worth 16x16 Words (Vision Transformer) — Dosovitskiy et al., 2020](https://arxiv.org/abs/2010.11929)
 - [KV Caching Explained: Optimizing Transformer Inference Efficiency — Hugging Face, 2025](https://huggingface.co/blog/not-lain/kv-caching)
 - [Scaling Laws for Neural Language Models — Kaplan et al., 2020](https://arxiv.org/abs/2001.08361)
 - [The Curious Case of Neural Text Degeneration — Holtzman et al., 2020](https://arxiv.org/abs/1904.09751)

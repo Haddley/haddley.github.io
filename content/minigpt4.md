@@ -14,6 +14,18 @@ Every MiniGPT so far has used the block from 2017, the one in "Attention Is All 
 
 The code is in [`part5-modern-block/`](https://github.com/Haddley/minigpt-series/tree/main/part5-modern-block), with a follow-along notebook for a Mac, [`minigpt_follow_along_5.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part5-modern-block/minigpt_follow_along_5.ipynb).
 
+| This post's machine | |
+|---|---|
+| What changed | **the block** |
+| Text | TinyStories |
+| Pieces | my 8,192 |
+| Blocks | 6 of **Llama's design: RMSNorm, a gated MLP, and 6 query cards sharing 2 key and 2 value cards** |
+| Card size | 384 |
+| Positions | 256, **with no position cards: query and key cards are turned instead** |
+| Engine | MLX |
+| Size | **12.6 million numbers** |
+| Score | **0.6755 bits per byte**, the average of three random starts |
+
 ## The big picture, in plain English
 
 :::brain-power
@@ -53,6 +65,9 @@ In both cases the query is turned 20 degrees further than the key: 70 against 50
 :::
 :::
 
+![](assets/images/minigpt4/rope-clocks.svg)
+*The pencil exercise, drawn as clock hands. Both pairs are two positions apart, so both are turned 20 degrees apart, however far along the row they are*
+
 ### Change 3: an MLP with a gate
 
 The 2017 MLP widens each working card to four times its size with one recipe, bends it, and narrows it back with a second: two recipes. The new one, *SwiGLU*, makes two widened copies of the card with two recipes, bends one, and multiplies the two together, number by number, before narrowing back with a third: three recipes. The bent copy acts as a *gate*, deciding how much of the other copy gets through. To keep the machine the same size, the widened card is narrower: 1,024 numbers instead of 1,536, which makes three recipes of 384 × 1,024 exactly as big as two of 384 × 1,536.
@@ -74,14 +89,14 @@ Turning one part off to see what it was doing is called an *ablation*.
 | Machine | Numbers | Bits per byte |
 |---|---|---|
 | 2017 block (Part 4) | 13.9 million | 0.6885 |
-| **New block, all four changes** | **12.6 million** | **0.6717** |
-| … but the old MLP | 12.6 million | 0.6756 |
+| **New block, all four changes** | **12.6 million** | **0.6755**, the average of three random starts |
+| … but the old MLP | 12.6 million | 0.6768, the average of three random starts |
 | … but full keys and values for every head | 13.8 million | 0.6721 |
 | … but the old normalise | 12.6 million | 0.6683 |
 | … but position cards instead of turning | 12.7 million | **0.7023** |
 
-![](assets/images/minigpt4/ablation-bars.png)
-*Best bits per byte for each machine, with its size under each bar*
+![](assets/images/minigpt4/ablation-luck.svg)
+*Best bits per byte for each machine. The green band is how far the same new block moved between three random starts, explained [below](#how-much-is-luck): only the 2017 block and the position cards land clearly outside it*
 
 ### How much is luck?
 
@@ -177,6 +192,8 @@ Match each everyday description on the left with its proper name on the right.
 :::
 
 ### The jargon decoder
+
+The terms for the whole series are collected in one table, [the series glossary](/posts/minigpt6/#the-series-glossary).
 
 | What I called it | What the experts call it |
 |---|---|

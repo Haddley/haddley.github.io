@@ -105,10 +105,12 @@ const panel: React.CSSProperties = {
 const label: React.CSSProperties = { fontWeight: 700, fontSize: '0.95rem', marginBottom: '0.5rem' };
 const mono: React.CSSProperties = { fontFamily: 'ui-monospace, Menlo, Consolas, monospace' };
 
+const START_TEXT = 'KING RICHARD III:\nA horse! a horse! my kingdom for a hors';
+
 export default function MiniGPTDemo() {
   const [engine, setEngine] = React.useState<MiniGPTEngine | null>(null);
   const [error, setError] = React.useState<string | null>(null);
-  const [text, setText] = React.useState('KING RICHARD III:\nA horse! a horse! my kingdom for a hors');
+  const [text, setText] = React.useState(START_TEXT);
   const [temperature, setTemperature] = React.useState(1);
   const [topP, setTopP] = React.useState(1);
   const [block, setBlock] = React.useState(0);
@@ -192,6 +194,13 @@ export default function MiniGPTDemo() {
     }, SPIN_MS + 700);
   };
 
+  // Back to the starting line and the wheel as it is.
+  const reset = () => {
+    setText(START_TEXT);
+    setTemperature(1);
+    setTopP(1);
+  };
+
   if (error) return <div style={panel}>{error}</div>;
   if (!engine) return <div style={panel}>Loading my trained MiniGPT (3.3 MB)…</div>;
 
@@ -229,6 +238,9 @@ export default function MiniGPTDemo() {
           </button>
           <button type="button" className="btn btn-sm btn-primary" disabled={writing || spinning || ids.length === 0} onClick={() => write(200)}>
             Write 200 letters
+          </button>
+          <button type="button" className="btn btn-sm btn-outline-secondary" disabled={writing || spinning} onClick={reset}>
+            Reset
           </button>
           {writing && (
             <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => (stopRef.current = true)}>

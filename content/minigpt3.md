@@ -16,6 +16,18 @@ I have used MLX before, in [MLX 1](/posts/mlx1/), but only to fine-tune a model 
 
 The code is in [`part4-mlx/`](https://github.com/Haddley/minigpt-series/tree/main/part4-mlx), with a follow-along notebook, [`minigpt_follow_along_4.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part4-mlx/minigpt_follow_along_4.ipynb). MLX only runs on Apple Silicon, so the notebook is for running on a Mac, not in Colab.
 
+| This post's machine | |
+|---|---|
+| What changed | **the engine** |
+| Text | TinyStories |
+| Pieces | my 8,192 |
+| Blocks | 6, each attention (6 heads) then an MLP |
+| Card size | 384 |
+| Positions | 256, position cards |
+| Engine | **MLX** |
+| Size | 13.9 million numbers |
+| Score | 0.689 bits per byte |
+
 ## The big picture, in plain English
 
 ### Same machine, different engine
@@ -58,6 +70,9 @@ print(loss.item())           # 4
 Lines 1 and 2 only write steps down: the whole trip forward through the machine and the surprise score are recorded, but not calculated. Line 3 is where the GPU does all of that work, in one go. Line 4 just reads the finished number. If line 3 were missing, line 4 would trigger the calculation instead, because printing needs a real number.
 :::
 :::
+
+![](assets/images/minigpt3/lazy.svg)
+*The same four lines on each engine. PyTorch sends the GPU a job for every line; MLX writes lines 1 and 2 down and runs them together at `mx.eval`*
 
 ### Packing the whole training step into one
 
@@ -166,6 +181,8 @@ Match each everyday description on the left with its proper name on the right.
 :::
 
 ### The jargon decoder
+
+The terms for the whole series are collected in one table, [the series glossary](/posts/minigpt6/#the-series-glossary).
 
 | What I called it | What the experts call it |
 |---|---|

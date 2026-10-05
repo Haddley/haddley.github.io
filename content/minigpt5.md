@@ -14,6 +14,18 @@ Every MiniGPT so far has learned the same way, the guessing game from [Part 2](/
 
 The code is in [`part6-distillation/`](https://github.com/Haddley/minigpt-series/tree/main/part6-distillation), with a follow-along notebook for a Mac, [`minigpt_follow_along_6.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part6-distillation/minigpt_follow_along_6.ipynb).
 
+| This post's machine | |
+|---|---|
+| What changed | **a teacher; and, so that the teachers can share its pieces, GPT-2's pieces** |
+| Text | TinyStories |
+| Pieces | **GPT-2's 50,257** |
+| Blocks | 6, each attention (6 heads) then an MLP: **back to Part 4's block** |
+| Card size | 384 |
+| Positions | 256, position cards |
+| Engine | MLX |
+| Size | **30.0 million numbers** |
+| Score | **0.6936 bits per byte** with the best teacher; 0.7555 alone |
+
 ## The big picture, in plain English
 
 ### Learning from the answer, or from a teacher
@@ -27,6 +39,9 @@ In the guessing game, the only thing the machine learns from at each step is the
 A trained model knows that. Before it writes, it has a whole [wheel of chances](/posts/minigpt/#so-how-does-it-choose-what-to-write-it-spins-a-wheel), a slice for every token. Here is GPT-2's real wheel after "Tim gave his dog a": *hug* 6.2%, *big* 2.1%, *good* 2.0%, *treat* 1.0%, and thousands of thinner slices; its 20 biggest slices hold only 28% of the wheel. **Distillation** trains the student to copy that whole wheel, not just to pick the right answer. Each guess teaches it much more: which near misses were reasonable, and which were absurd.
 
 GPT-2 learned from text on the web, and it gives *bone* just 0.03%: 501st place. Keep that in mind; it turns out to matter.
+
+![](assets/images/minigpt5/teacher-wheel.svg)
+*What the student learns from at one position. The answer alone says only "bone"; the teacher's wheel says which other pieces were reasonable, and how reasonable*
 
 ### The two parts of the score
 
@@ -153,6 +168,8 @@ Match each everyday description on the left with its proper name on the right.
 :::
 
 ### The jargon decoder
+
+The terms for the whole series are collected in one table, [the series glossary](/posts/minigpt6/#the-series-glossary).
 
 | What I called it | What the experts call it |
 |---|---|
