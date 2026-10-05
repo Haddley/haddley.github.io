@@ -88,7 +88,7 @@ There is a friendlier way to read the surprise score. Turn it back into a senten
 
 ### Growing it: the same five steps, then check and nudge
 
-Everything Part 1 called fixed, the letter cards, the position cards, every recipe in the blocks, and the answer cards, comes down to numbers. I think of each number as a dial. The small model has 826,433 dials, and the bigger model has 10.77 million. Growing the machine means finding good settings for all of them, and it uses the five steps from Part 1, with one change and one addition:
+Everything Part 1 called fixed, the letter cards, the position cards, every recipe in the blocks, the stretch and shift in every normalisation, and the answer cards, comes down to numbers. I think of each number as a dial. The small model has 826,433 dials, and the bigger model has 10.77 million. Growing the machine means finding good settings for all of them, and it uses the five steps from Part 1, with one change and one addition:
 
 ![](assets/images/minigpt-grown/training-step.svg)
 *One training step. Steps 1 to 4 are exactly the steps the machine takes when it writes; step 5 checks instead of spinning, and step 6 is new*
@@ -108,7 +108,7 @@ Here is the very first step of growing my exhibit, with the real numbers:
 
 - **Steps 1 to 4.** One of the 32 snippets begins " guess who caused yo". Its first working card has seen only the space, and its wheel gives the real next letter, `g`, a chance of 0.87%.
 - **Step 5.** That one guess has a surprise score of 4.74. Averaged over all 4,096 guesses, the surprise is 4.18: almost exactly the 4.17 of an even wheel, because the machine knows nothing yet.
-- **Step 6.** Every one of the 826,433 numbers moves by 0.0003. The `g` card's first number goes from −0.04793 to −0.04823, the position 1 card's from 0.02622 to 0.02592, and the `d` answer card's from 0.01135 to 0.01105. (On the very first step, every number moves almost exactly the same distance, because the training method, *AdamW*, starts with equal-sized steps. Later on, it sizes each number's step separately.)
+- **Step 6.** Almost every one of the 826,433 numbers moves by 0.0003. The `g` card's first number goes from −0.04793 to −0.04823, the position 1 card's from 0.02622 to 0.02592, and the `d` answer card's from 0.01135 to 0.01105. (On the very first step, every number with a slope moves almost exactly the same distance, because the training method, *AdamW*, starts with equal-sized steps. Later on, it sizes each number's step separately. The exceptions are 5 letter cards, which you will meet [below](#who-gets-nudged-and-when).)
 
 :::watch-it
 One step is tiny, and it is aimed at the *average* surprise over those 4,096 guesses, not at any one example. After this first step, the chance of `d` after `goo` actually went *down*, from 2.008% to 1.995%, even though `goo` was in the batch: one of the snippets contains "my good unc". That was one guess out of 4,096, and the step served the average. Only over thousands of steps, and millions of guesses, do the nudges add up to the 96.6% from Part 1.
@@ -239,9 +239,14 @@ Every number gets a slope on every step, but not every slope is the same, and so
 | normalising | a stretch and a shift for each of the 128 numbers, before every attention step and MLP, and once at the end | 2,304 | all |
 | answer cards | one card of 128 numbers, plus a bias, for each of the 65 letters | 8,385 | all 65 cards |
 
-- **A letter card is only nudged when its letter is in the batch.** The 32 snippets in the first step happened to contain no `$`, `&`, `3`, `X`, or `z`, so those 5 letter cards played no part in any calculation, and their slope was exactly 0. A rare letter's card learns slowly, because it is only nudged on the rare steps that include it.
-- **Every position card is nudged on every step**, because every snippet fills all 128 positions.
+- **A letter card only gets a slope when its letter is in the batch.** The 32 snippets in the first step happened to contain no `$`, `&`, `3`, `X`, or `z`, so those 5 letter cards played no part in any calculation, and their slope was exactly 0. (That does not mean they stood still on later steps: see the watch-it below.)
+- **Every position card gets a slope on every step**, because every snippet fills all 128 positions.
+- **Every recipe, and every normalising dial, gets a slope on every step**, because every working card in every snippet passes through every block. How *big* those slopes are is another matter: the query and key recipes' slopes start out tiny, for reasons explained [below](#why-the-query-and-key-recipes-wake-up-late).
 - **Every answer card is nudged on every step,** because every guess scores all 65 of them. As the worked example showed, the real next letter's card is pulled towards the working card, and every other card is pushed away, harder the bigger the chance it took.
+
+:::watch-it A slope of zero does not mean standing still
+On the first step, the 5 missing letter cards had a slope of exactly 0, and they barely moved: by 0.00000017, against 0.0003 for everything else. That tiny move is AdamW's *weight decay*, which shrinks every number very slightly on every step, to stop any of them growing too big. But on later steps, a missing letter's card keeps moving. `z` was missing from 953 of the exhibit's 3,000 batches, and on those steps its card still moved by about 0.0002, almost as much as on the steps that had a `z`. That is AdamW's *momentum*: it keeps a running average of each number's recent slopes, so a number keeps rolling in the direction it was going, like a ball on a hill, even on a step where its own slope is 0.
+:::
 
 :::watch-it Dials that training never turns
 Not everything that shapes the machine is a dial. I chose these before training began, and training never changes them: the number of blocks (4), heads (4), and numbers on a card (128); the 128 positions; the size of the MLP (512); the bend in the MLP, GELU; the learning rate and the batch of 32 snippets; and the "only earlier positions" rule, the causal mask. The checkpoint even stores four copies of that mask, 65,536 `True` and `False` values, but it stores them as a fixed *buffer*, not as dials, so they get no slope. Settings like these are called *hyperparameters*, and choosing them well is the subject of [section 3.3](#33-stronger-hyperparameter-configuration). The wheel's temperature and top-k, from Part 1, are not even in the checkpoint: they are only chosen when the machine writes.
@@ -280,11 +285,15 @@ I first guessed that the query and key recipes were waiting for the *value* card
 :::fireside-chat Tonight: an answer card and a letter card, on who works harder
 **Answer card for `d`:** I get nudged on every single step. Every guess, either I am the right answer and I am pulled in, or I am the wrong one and I am pushed away.
 
-**Letter card for `z`:** I get nudged when someone writes a `z`. Which, in Shakespeare, is not often.
+**Letter card for `z`:** I only get a slope when someone writes a `z`. Which, in Shakespeare, is not always.
 
 **Answer card for `d`:** So I learn faster.
 
-**Letter card for `z`:** You learn about every guess. I only learn about the guesses where I was in the text. On the first step, I was not even in the batch: my slope was exactly zero.
+**Letter card for `z`:** You learn about every guess. I only learn about the guesses where I was in the text. On the first step, I was not even in the batch: my slope was exactly zero, and I barely moved.
+
+**Answer card for `d`:** And on later steps without a `z`?
+
+**Letter card for `z`:** Then I keep rolling. AdamW remembers which way I was going.
 
 **Answer card for `d`:** And when you are nudged, how do you know which way?
 
@@ -317,7 +326,7 @@ A: Because the slope only tells you which way is downhill *right here*. Take too
 - Growing uses Part 1's five steps, with step 5 checking the real answer, and a step 6 that nudges every number.
 - Each number's slope says whether raising it would raise or lower the average surprise.
 - Backpropagation finds all 826,433 slopes in one trip back along the chain of calculations.
-- Answer cards are nudged on every step; a letter card only when its letter is in the batch.
+- Every recipe, normalising dial, position card, and answer card gets a slope on every step; a letter card only when its letter is in the batch, though AdamW's momentum keeps it moving.
 - Nothing is scheduled: the query and key recipes start late only because each one's slope is scaled by the other's size, and both start small.
 - Thousands of tiny steps downhill turn random numbers into the exhibit.
 :::
@@ -367,6 +376,8 @@ Here are the comparisons for growing the machine, next to the names the notebook
 | "as unsure as choosing between *N* letters" | *perplexity* |
 | working out which way to turn every dial | *backpropagation* |
 | nudging every number a little in its direction | an *optimiser step* (here, with *AdamW*) |
+| AdamW's running average of recent slopes | *momentum* |
+| shrinking every number very slightly on every step | *weight decay* |
 | the locked-away exam text | the *validation set* |
 | memorising the textbook | *overfitting* |
 | keeping the best copy | *checkpoint selection* |
