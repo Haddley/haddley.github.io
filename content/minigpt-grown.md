@@ -10,7 +10,7 @@ hidden: false
 slug: "minigpt-grown"
 ---
 
-In [the first post](/posts/minigpt/), I took a trained MiniGPT apart while it was running: the flashcards, the positions, the meetings, the desks, and the 65 answer patterns. Every number in it came from one model, my exhibit. This post answers the obvious next question: where did those numbers come from? Nobody typed them in. They were grown, and here I grow them again from scratch, on my Mac, and end up with exactly the same numbers.
+In [the first post](/posts/minigpt/), I took a trained MiniGPT apart while it was running: the letter and position cards, attention, the MLPs, and the 65 answer cards. Every number in it came from one model, my exhibit. This post answers the obvious next question: where did those numbers come from? Nobody typed them in. They were grown, and here I grow them again from scratch, on my Mac, and end up with exactly the same numbers.
 
 One promise, the same as last time: no magic. Every number in this post is either worked out in front of you, or comes from a run on my own Mac Studio.
 
@@ -137,7 +137,7 @@ The jump from rung 3 to rung 4 comes entirely from looking further back than one
 
 ### A few hundred thousand dials
 
-Everything above, meaning the cards, the questions, the badges, the notes, and the desk work, comes down to numbers. I think of each number as a dial. The small model has 826,433 dials, and the bigger model has 10.77 million.
+Everything above, meaning the cards, the recipes for queries, keys, and values, and the MLPs, comes down to numbers. I think of each number as a dial. The small model has 826,433 dials, and the bigger model has 10.77 million.
 
 Training is a loop:
 
@@ -221,6 +221,30 @@ Here are the comparisons for growing the machine, next to the names the notebook
 ## Opening the notebook
 
 The setup is in [the first post](/posts/minigpt/#opening-the-notebook). Part 1 of the notebook builds the machine; Parts 2 and 3, below, grow it.
+
+### Using the Mac's GPU
+
+Running a trained model is quick on any CPU, but training is not, so before training I made one change to the notebook, so that it would use the Mac Studio's GPU. The original device line only checks for CUDA, NVIDIA's GPU platform, and it appears twice: once in the first code cell, and again at the top of section 3.3, "Stronger Hyperparameter Configuration":
+
+```python
+device = "cuda" if torch.cuda.is_available() else "cpu"
+```
+
+A Mac has no CUDA, so on Apple Silicon that line falls straight through to the CPU, which trains far more slowly than it needs to. I commented out the original line in both places and replaced it with a version that tries Metal Performance Shaders (MPS), Apple's GPU backend for PyTorch, before falling back to the CPU:
+
+```python
+device = (
+    "cuda" if torch.cuda.is_available()
+    else "mps" if torch.backends.mps.is_available()
+    else "cpu"
+)
+```
+
+:::watch-it
+Changing only the first copy is not enough. The section 3.3 cell sets `device` again, so the main training run would quietly go back to the CPU, and nothing would warn you except a much longer wait.
+:::
+
+Those two lines were the only edits the notebook needed. The mixed-precision code later on already guards itself with `use_amp = device == "cuda"`. On `mps` that is `False`, so the `GradScaler` and `autocast` calls are switched off and training runs in full precision rather than raising an error. If any individual operation turns out not to be implemented for MPS yet, setting `PYTORCH_ENABLE_MPS_FALLBACK=1` before launching Jupyter lets PyTorch drop that one operation back to the CPU instead of stopping the run.
 
 ## Part 2. Implement the Training Pipeline
 
@@ -361,7 +385,7 @@ This is the six steps from [the first post's "Putting it together"](/posts/minig
 for _ in range(max_new_tokens):
     idx_cond = idx[:, -block_size:]                # the row of cards, at most block_size long
     logits = model(idx_cond)[:, -1, :]             # read only the last card
-    logits = logits / temperature                  # the boldness dial
+    logits = logits / temperature                  # temperature
     k = min(top_k, logits.size(-1))                # keep the k biggest slices of the wheel
     values, indices = torch.topk(logits, k=k)
     logits = torch.full_like(logits, float("-inf")).scatter(-1, indices, values)
@@ -400,12 +424,12 @@ It is not coherent, but the shape is unmistakable: speaker names in capitals, co
 
 ### 3.15 Effect of Temperature
 
-Temperature is the boldness dial from [the first post's step 5](/posts/minigpt/#step-5-spin-the-wheel), and it changes the feel of the output. The paper reports that at 0.7 the samples are steadier and more readable but repeat themselves; at 1.2 they are more varied but full of broken spellings and invented names. I saw the same thing.
+Temperature is the setting from [the first post's step 5](/posts/minigpt/#step-5-spin-the-wheel), and it changes the feel of the output. The paper reports that at 0.7 the samples are steadier and more readable but repeat themselves; at 1.2 they are more varied but full of broken spellings and invented names. I saw the same thing.
 
 ![](assets/images/minigpt-grown/generation-temperature.png)
 *The same prompt at temperature 0.7 and 1.2 — stability against variety*
 
-I tried it on my own small model too, at three settings. At 0, the machine does not spin the wheel at all: it always picks the biggest slice. That is the boldness dial turned all the way down, and the result is exactly the "flat" text it predicts:
+I tried it on my own small model too, at three settings. At 0, the machine does not spin the wheel at all: it always picks the biggest slice. That is temperature turned all the way down, and the result is exactly the "flat" text it predicts:
 
 ```
 ROMEO:
@@ -438,7 +462,7 @@ MENENund mSral:
 - The stronger model is the same code with bigger numbers: 6 blocks, 6 heads, 384 numbers per letter, and a 256-letter window.
 - Its exam score was best at step 1,500, and got worse after that while its practice score kept improving.
 - Keeping the best copy, not the last one, is what stops the model shipping as a memoriser.
-- The boldness dial trades tidy, repetitive text for varied text full of invented words.
+- Temperature trades tidy, repetitive text for varied text full of invented words.
 :::
 
 :::brain-power
@@ -460,7 +484,7 @@ To get a feel for "far more", here is my small model next to GPT-3, the 2020 mod
 |---|---|---|---|
 | Dials | 826,433 | 175 billion | about 200,000 times |
 | Practice text | 1 million letters | about 300 billion pieces of words, roughly 1.2 trillion letters | about 1 million times |
-| Rounds | 4 | 96 | 24 times |
+| Blocks | 4 | 96 | 24 times |
 | Numbers on each card | 128 | 12,288 | 96 times |
 
 If all of Tiny Shakespeare were one book on a shelf, GPT-3's practice text would fill a shelf tens of kilometres long. And the models behind today's chatbots are bigger again, though most companies no longer publish their sizes.

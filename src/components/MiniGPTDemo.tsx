@@ -2,7 +2,7 @@
 
 // Live demo: the trained MiniGPT exhibit model running in the reader's browser.
 // Readers type text and see the next-letter chances as a wheel they can spin, the
-// meeting (attention) for any block and head, and what the machine would guess if
+// attention for any block and head, and what the machine would guess if
 // it stopped early.
 
 import React from 'react';
@@ -242,7 +242,7 @@ export default function MiniGPTDemo() {
         <div style={label}>Steps 4 and 5: the chances for the next letter, and the wheel</div>
         <div className="d-flex flex-wrap gap-4 mb-2" style={{ fontSize: '0.85rem' }}>
           <label>
-            Boldness (temperature): <strong>{temperature.toFixed(1)}</strong>
+            Temperature: <strong>{temperature.toFixed(1)}</strong>
             <input type="range" min={0} max={2} step={0.1} value={temperature} onChange={(e) => setTemperature(Number(e.target.value))} style={{ display: 'block', width: '180px' }} />
           </label>
           <label>
@@ -269,7 +269,7 @@ export default function MiniGPTDemo() {
       </div>
 
       <div style={panel}>
-        <div style={label}>Step 3: inside the meeting</div>
+        <div style={label}>Step 3: inside attention</div>
         <div className="d-flex flex-wrap gap-3 mb-2" style={{ fontSize: '0.85rem' }}>
           <span>
             Block:{' '}
@@ -289,7 +289,7 @@ export default function MiniGPTDemo() {
           </span>
         </div>
         <div style={{ fontSize: '0.8rem', color: '#6b7280', marginBottom: '0.5rem' }}>
-          The last {T - gridStart} letters. Each row is a letter at the meeting; the bigger the dot, the more attention it gives the letter above.
+          The last {T - gridStart} positions. Each row is a working card, labelled with the letter it started from; the bigger the dot, the more attention it gives the working card above.
         </div>
         {A && (
           <div style={{ overflowX: 'auto' }}>
@@ -334,7 +334,7 @@ export default function MiniGPTDemo() {
           {result &&
             result.earlyProbs.map((p, s) => (
               <div key={s} style={{ minWidth: '110px' }}>
-                <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#374151' }}>{s === 0 ? 'cards only' : `after block ${s}`}</div>
+                <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#374151' }}>{s === 0 ? 'before block 1' : `after block ${s}`}</div>
                 {topK(p, 3).map((i) => (
                   <div key={i} style={{ fontSize: '0.8rem' }}>
                     <span style={{ ...mono, fontWeight: 700 }}>{show(chars[i])}</span> {(p[i] * 100).toFixed(1)}%

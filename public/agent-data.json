@@ -184,7 +184,7 @@
     {
       "slug": "minigpt",
       "title": "MiniGPT (Part 1)",
-      "description": "How a GPT works, taken apart while it runs: a real trained MiniGPT on a Mac, explained in plain English with flashcards, a meeting, and a wheel of chances, then worked through cell by cell in Jibin Joseph's MiniGPT notebook",
+      "description": "How a GPT works, taken apart while it runs: a real trained MiniGPT on a Mac, explained in plain English with cards and a wheel of chances, then worked through cell by cell in Jibin Joseph's MiniGPT notebook",
       "date": "2026-09-09",
       "categories": [
         "AI"
@@ -2849,5 +2849,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-05T03:12:36.959Z"
+  "generatedAt": "2026-10-05T07:33:03.499Z"
 }

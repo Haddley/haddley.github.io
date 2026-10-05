@@ -746,7 +746,7 @@ function renderSection(section: MobiriseParsedContent, index: number, nested = f
       <div className="image-wrapper">
         <Image
           src={section.content}
-          alt={section.description || ''}
+          alt={(section.description || '').replace(/[`*]/g, '')}
           width={800}
           height={600}
           style={{ width: '100%', height: 'auto' }}
@@ -758,7 +758,7 @@ function renderSection(section: MobiriseParsedContent, index: number, nested = f
         />
         {section.description && (
           <p className="mbr-description mbr-fonts-style mt-2 align-center display-4">
-            {section.description}
+            {processInlineMarkdown(section.description)}
           </p>
         )}
       </div>
@@ -779,7 +779,7 @@ function renderSection(section: MobiriseParsedContent, index: number, nested = f
         </video>
         {section.description && (
           <p className="mbr-description mbr-fonts-style mt-2 align-center display-4">
-            {section.description}
+            {processInlineMarkdown(section.description)}
           </p>
         )}
       </div>
@@ -802,7 +802,7 @@ function renderSection(section: MobiriseParsedContent, index: number, nested = f
         </audio>
         {section.description && (
           <p className="mbr-description mbr-fonts-style mt-2 align-center display-4">
-            {section.description}
+            {processInlineMarkdown(section.description)}
           </p>
         )}
       </div>
