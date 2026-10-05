@@ -2,7 +2,7 @@
 title: "MiniGPT"
 part: 6
 description: "Knowledge-distillation pre-training at toy scale — training a small MiniGPT against a larger model's token probabilities, why the teacher cannot be Qwen3 or Llama, and the finding that a 33M model that knows the domain beats a 1.5B model that does not"
-date: "2026-09-10"
+date: "2026-10-05"
 categories: ["AI"]
 image: "/assets/images/minigpt5/posts-meta.svg"
 tags: "knowledge-distillation, llama, logit-distillation, mlx, machine-learning"
@@ -100,7 +100,7 @@ The baseline student loses the thread — "he wanted to take his melon home from
 
 ## Try it yourself
 
-The code is in [github.com/Haddley/minigpt-series](https://github.com/Haddley/minigpt-series) under `part5/`:
+The code is in [github.com/Haddley/minigpt-series](https://github.com/Haddley/minigpt-series) under `part6-distillation/`:
 
 ```bash
 python train_distill.py --tag baseline --teacher none    --alpha 1.0

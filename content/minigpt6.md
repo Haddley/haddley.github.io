@@ -2,7 +2,7 @@
 title: "MiniGPT"
 part: 7
 description: "Sliding-window attention in MLX — why a naive window mask saves nothing, how chunked attention makes it O(T), and where full attention runs out of room on a 64 GB Mac"
-date: "2026-09-10"
+date: "2026-10-05"
 categories: ["AI"]
 image: "/assets/images/minigpt6/posts-meta.svg"
 tags: "sliding-window-attention, long-context, mlx, attention, machine-learning"
@@ -110,13 +110,13 @@ Every model here is tiny and none of them is good. That was the point. The archi
 
 ## Try it yourself
 
-The code is in [github.com/Haddley/minigpt-series](https://github.com/Haddley/minigpt-series) under `part6/`:
+The code is in [github.com/Haddley/minigpt-series](https://github.com/Haddley/minigpt-series) under `part7-sliding-window/`:
 
 ```bash
 python mem_sweep.py
 python figures.py
-python ../part4/train_llama.py --tag window1024 --block-size 1024 --window 256 --iters 1500
-python ../part4/train_llama.py --tag full1024   --block-size 1024 --window 0   --iters 1500
+python ../part5-modern-block/train_llama.py --tag window1024 --block-size 1024 --window 256 --iters 1500
+python ../part5-modern-block/train_llama.py --tag full1024   --block-size 1024 --window 0   --iters 1500
 ```
 
 Requires Apple Silicon for MLX.

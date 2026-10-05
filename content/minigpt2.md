@@ -2,7 +2,7 @@
 title: "MiniGPT"
 part: 3
 description: "Replacing MiniGPT's 65-character tokeniser with a real byte-level BPE — borrowing GPT-2's, training an 8k one, and comparing all three on TinyStories in bits per byte on an Apple M1 Max"
-date: "2026-09-09"
+date: "2026-10-05"
 categories: ["AI"]
 image: "/assets/images/minigpt2/posts-meta.svg"
 tags: "tokenization, byte-pair-encoding, tinystories, pytorch, machine-learning"
@@ -151,7 +151,7 @@ Both subword models are a clear step up from part 2, where a character model on 
 
 ## Try it yourself
 
-The code for this part is in [github.com/Haddley/minigpt-series](https://github.com/Haddley/minigpt-series) under `part2/`:
+The code for this part is in [github.com/Haddley/minigpt-series](https://github.com/Haddley/minigpt-series) under `part3-tokenisers/`:
 
 ```bash
 python prepare_data.py

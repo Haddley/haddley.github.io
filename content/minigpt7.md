@@ -2,7 +2,7 @@
 title: "MiniGPT"
 part: 8
 description: "Paying the toll from Part 6 — rebuilding MiniGPT on Qwen3's 151,936-token vocabulary to distil from a Qwen3-8B base model, sweeping the student from 69M to 588M parameters, and hitting the data ceiling long before the memory one"
-date: "2026-09-10"
+date: "2026-10-05"
 categories: ["AI"]
 image: "/assets/images/minigpt7/posts-meta.svg"
 tags: "knowledge-distillation, qwen, tokenization, mlx, machine-learning"
@@ -115,7 +115,7 @@ Every model here is tiny and none of them is good. That was the point. The archi
 
 ## Try it yourself
 
-The code is in [github.com/Haddley/minigpt-series](https://github.com/Haddley/minigpt-series) under `part7/`:
+The code is in [github.com/Haddley/minigpt-series](https://github.com/Haddley/minigpt-series) under `part8-qwen3-teacher/`:
 
 ```bash
 python qwen_data.py                                    # re-tokenise TinyStories with Qwen3

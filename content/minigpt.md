@@ -941,7 +941,7 @@ This is step 5. `[:, -1, :]` picks the last row, which belongs to working card 3
 
 ## Run my model yourself
 
-Everything in this post can be reproduced with three things: the notebook's Part 1 code, my trained numbers, and the 65 letters in the right order. The quickest way is my follow-along workbook, which has all three and reproduces every number in this post, step by step, from the letter IDs to the GGUF file: [open it in Colab](https://colab.research.google.com/github/Haddley/haddley.github.io/blob/main/public/minigpt-demo/minigpt_follow_along.ipynb), or [download it](/minigpt-demo/minigpt_follow_along.ipynb). The steps below do the same in the notebook itself. I ran these steps myself, from scratch, in a fresh copy of the notebook, and the pictures below are that run. Any CPU is fast enough.
+Everything in this post can be reproduced with three things: the notebook's Part 1 code, my trained numbers, and the 65 letters in the right order. The quickest way is my follow-along workbook, which has all three and reproduces every number in this post, step by step, from the letter IDs to the GGUF file: [open it in Colab](https://colab.research.google.com/github/Haddley/minigpt-series/blob/main/part1-running/minigpt_follow_along.ipynb), or [download it](https://github.com/Haddley/minigpt-series/blob/main/part1-running/minigpt_follow_along.ipynb). The steps below do the same in the notebook itself. I ran these steps myself, from scratch, in a fresh copy of the notebook, and the pictures below are that run. Any CPU is fast enough.
 
 First, run the notebook's code cells from the top down to the end of section 1.5. That defines `GPTConfig` and the four classes, but builds nothing yet. Then add four new cells.
 
@@ -1039,7 +1039,7 @@ EXTER:
 Where the bring a pattity mish, ble look no g
 ```
 
-llama.cpp has no MiniGPT of its own, but it does run GPT-2, and MiniGPT is built the same way: learned position cards, normalising before attention and before the MLP, biases everywhere, and a separate set of answer cards. So the [export script](/minigpt-demo/export_gguf.py) relabels each set of numbers with the name llama.cpp expects for GPT-2, and makes two adjustments:
+llama.cpp has no MiniGPT of its own, but it does run GPT-2, and MiniGPT is built the same way: learned position cards, normalising before attention and before the MLP, biases everywhere, and a separate set of answer cards. So the [export script](https://github.com/Haddley/minigpt-series/blob/main/part1-running/export_gguf.py) relabels each set of numbers with the name llama.cpp expects for GPT-2, and makes two adjustments:
 
 - **Query, key, and value recipes go into one grid.** llama.cpp keeps the three recipes stacked, one above the other, as a single 384 × 128 grid.
 - **The answer cards' biases move.** llama.cpp's GPT-2 has no biases on its answer cards, but my model does. The final normalisation adds its own fixed numbers just before the answer cards, so I changed those instead, by exactly the amount that gives every letter the same score as before. Because the 65 answer cards are all different from each other, there is exactly one way to do that, and the scores match to within a millionth.
@@ -1062,7 +1062,7 @@ The tiny differences come from the MLP's bend, GELU: llama.cpp uses a fast appro
 - The paper: [MiniGPT: Rebuilding GPT from First Principles](https://arxiv.org/pdf/2605.17398) (arXiv:2605.17398)
 - Play with a real one: [Transformer Explainer](https://poloclub.github.io/transformer-explainer/) runs GPT-2 in your browser and shows attention and the chances for your own text, and [LLM Visualization](https://bbycroft.net/llm) walks through a small GPT in 3D, one calculation at a time
 - Build one step by step: [MicroGPT Visualized](https://microgpt.jtauber.com/) starts from counting pairs of letters and adds one idea at a time
-- My follow-along workbook: [open it in Colab](https://colab.research.google.com/github/Haddley/haddley.github.io/blob/main/public/minigpt-demo/minigpt_follow_along.ipynb). It runs my trained model and reproduces every number in this post
+- My follow-along workbook: [open it in Colab](https://colab.research.google.com/github/Haddley/minigpt-series/blob/main/part1-running/minigpt_follow_along.ipynb). It runs my trained model and reproduces every number in this post
 - The notebook: [github.com/jibin10/MiniGPT](https://github.com/jibin10/MiniGPT) — open `MiniGPT_Notebook.ipynb` in Colab, or clone it and run it locally, then follow [Run my model yourself](#run-my-model-yourself) to load my trained model. Any CPU will do
 
 

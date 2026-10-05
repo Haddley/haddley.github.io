@@ -174,7 +174,7 @@ Here is one card, and one guess, growing:
 
 At step 0, the chance of `d` after `goo` is 2.0%, little better than a blind 1-in-65 guess. By step 3,000, it is the 96.6% from the first post's guessing game, and the `g` card is the one from its step 2. I checked the whole machine, not just these two examples: every one of the 826,433 numbers matches the exhibit exactly. Nobody typed any of them in. They grew.
 
-You can grow it yourself. My follow-along workbook runs this exact training loop, reproduces the table above and the ladder before it, and then compares every number it grew with my published exhibit: [open it in Colab](https://colab.research.google.com/github/Haddley/haddley.github.io/blob/main/public/minigpt-demo/minigpt_follow_along_2.ipynb), or [download it](/minigpt-demo/minigpt_follow_along_2.ipynb). On my Mac Studio's CPU it takes about 6 minutes and matches the exhibit exactly. On a different computer, which does some of its arithmetic in a slightly different order, expect a machine that is very close but not identical to the last digit.
+You can grow it yourself. My follow-along workbook runs this exact training loop, reproduces the table above and the ladder before it, and then compares every number it grew with my published exhibit: [open it in Colab](https://colab.research.google.com/github/Haddley/minigpt-series/blob/main/part2-growing/minigpt_follow_along_2.ipynb), or [download it](https://github.com/Haddley/minigpt-series/blob/main/part2-growing/minigpt_follow_along_2.ipynb). On my Mac Studio's CPU it takes about 6 minutes and matches the exhibit exactly. On a different computer, which does some of its arithmetic in a slightly different order, expect a machine that is very close but not identical to the last digit.
 
 ### The student who memorised the textbook
 
@@ -495,8 +495,8 @@ The value of a paper like this is not a benchmark number. It is that the path fr
 
 ## Try it yourself
 
-- My follow-along workbook: [open it in Colab](https://colab.research.google.com/github/Haddley/haddley.github.io/blob/main/public/minigpt-demo/minigpt_follow_along_2.ipynb). It grows the exhibit from random numbers and reproduces this post's numbers
-- Running the finished model: the [first post's workbook](https://colab.research.google.com/github/Haddley/haddley.github.io/blob/main/public/minigpt-demo/minigpt_follow_along.ipynb)
+- My follow-along workbook: [open it in Colab](https://colab.research.google.com/github/Haddley/minigpt-series/blob/main/part2-growing/minigpt_follow_along_2.ipynb). It grows the exhibit from random numbers and reproduces this post's numbers
+- Running the finished model: the [first post's workbook](https://colab.research.google.com/github/Haddley/minigpt-series/blob/main/part1-running/minigpt_follow_along.ipynb)
 - The notebook: [github.com/jibin10/MiniGPT](https://github.com/jibin10/MiniGPT)
 
 ## References

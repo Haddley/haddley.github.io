@@ -2,7 +2,7 @@
 title: "MiniGPT"
 part: 4
 description: "Porting the MiniGPT model and training loop from PyTorch to Apple's MLX — unified memory, lazy evaluation, mx.compile, and fused attention — then running both on the same M1 Max and comparing tokens per second and peak memory"
-date: "2026-09-09"
+date: "2026-10-05"
 categories: ["AI"]
 image: "/assets/images/minigpt3/posts-meta.svg"
 tags: "mlx, apple-silicon, unified-memory, lazy-evaluation, machine-learning"
@@ -173,11 +173,11 @@ Tim has a dirty sock, the sock stays the subject of the story, and the passage h
 
 ## Try it yourself
 
-The code is in [github.com/Haddley/minigpt-series](https://github.com/Haddley/minigpt-series) under `part3/`. It reuses the data and tokenisers prepared in `part2/`:
+The code is in [github.com/Haddley/minigpt-series](https://github.com/Haddley/minigpt-series) under `part4-mlx/`. It reuses the data and tokenisers prepared in `part3-tokenisers/`:
 
 ```bash
-cd part2 && python prepare_data.py && python tokenizers_setup.py && cd ..
-cd part3
+cd part3-tokenisers && python prepare_data.py && python tokenizers_setup.py && cd ..
+cd part4-mlx
 python train_mlx.py --tokenizer bpe8k
 python bench.py --framework torch
 python bench.py --framework mlx

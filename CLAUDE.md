@@ -136,6 +136,23 @@ The answer.
 :::
 ````
 
+## The MiniGPT series
+
+The MiniGPT posts' slugs do not match their part numbers, because a new Part 2 was inserted after the series was published. The slugs are permanent URLs, linked from other posts, so they stay as they are:
+
+| Part | Slug (file) | Code folder in [minigpt-series](https://github.com/Haddley/minigpt-series) |
+|---|---|---|
+| 1 | `minigpt` | `part1-running/` |
+| 2 | `minigpt-grown` | `part2-growing/` |
+| 3 | `minigpt2` | `part3-tokenisers/` |
+| 4 | `minigpt3` | `part4-mlx/` |
+| 5 | `minigpt4` | `part5-modern-block/` |
+| 6 | `minigpt5` | `part6-distillation/` |
+| 7 | `minigpt6` | `part7-sliding-window/` |
+| 8 (hidden) | `minigpt7` | `part8-qwen3-teacher/` |
+
+All code and follow-along workbooks live in the minigpt-series repo, named by part number (`minigpt_follow_along_3.ipynb` for Part 3). `public/minigpt-demo/` on this site holds only the trained exhibit model files (`exhibit.pt`, `exhibit.gguf`, and `weights.bin` with `manifest.json` for the live demo).
+
 ## Internal Links
 
 When linking to other posts within Markdown content, always use absolute root-relative paths — never relative `.html` file references. Relative links like `machineLearning1.html` resolve incorrectly against the current post's URL.

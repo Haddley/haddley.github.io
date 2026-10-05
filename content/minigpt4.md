@@ -2,7 +2,7 @@
 title: "MiniGPT"
 part: 5
 description: "Swapping MiniGPT's 2017 Transformer block for the modern one — RMSNorm, rotary position embeddings, SwiGLU, and grouped-query attention — in MLX, then ablating each change to see which one actually matters"
-date: "2026-09-09"
+date: "2026-10-05"
 categories: ["AI"]
 image: "/assets/images/minigpt4/posts-meta.svg"
 tags: "llama, rope, grouped-query-attention, swiglu, mlx"
@@ -96,7 +96,7 @@ Tim has a toy car, then a tank, and the tank stays the subject through the dog s
 
 ## Try it yourself
 
-The code is in [github.com/Haddley/minigpt-series](https://github.com/Haddley/minigpt-series) under `part4/`:
+The code is in [github.com/Haddley/minigpt-series](https://github.com/Haddley/minigpt-series) under `part5-modern-block/`:
 
 ```bash
 python train_llama.py --tag modern
