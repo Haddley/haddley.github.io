@@ -11,6 +11,16 @@
       "tags": "gpt, transformers, pytorch, nanogpt, machine-learning"
     },
     {
+      "slug": "minigpt",
+      "title": "MiniGPT (Part 1)",
+      "description": "How a GPT runs: a real trained MiniGPT taken apart while it writes, explained with cards and a wheel of chances, then traced line by line through Jibin Joseph's notebook code, with the trained model to download and run yourself",
+      "date": "2026-10-05",
+      "categories": [
+        "AI"
+      ],
+      "tags": "gpt, transformers, pytorch, nanogpt, machine-learning"
+    },
+    {
       "slug": "specdriven4",
       "title": "Spec-Driven AI Tools (Part 4)",
       "description": "The comparison: what OpenSpec, Spec-Kit, and BMAD each did with the identical calculator and the identical two feature requests — where they genuinely agreed, where they quietly built different products, what it cost, and where the source article held up against running all three myself",
@@ -180,16 +190,6 @@
         "AI"
       ],
       "tags": "tokenization, byte-pair-encoding, tinystories, pytorch, machine-learning"
-    },
-    {
-      "slug": "minigpt",
-      "title": "MiniGPT (Part 1)",
-      "description": "How a GPT runs: a real trained MiniGPT taken apart while it writes, explained with cards and a wheel of chances, then traced line by line through Jibin Joseph's notebook code, with the trained model to download and run yourself",
-      "date": "2026-09-09",
-      "categories": [
-        "AI"
-      ],
-      "tags": "gpt, transformers, pytorch, nanogpt, machine-learning"
     },
     {
       "slug": "claudecode15",
@@ -2849,5 +2849,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-05T08:15:13.519Z"
+  "generatedAt": "2026-10-05T10:09:49.782Z"
 }

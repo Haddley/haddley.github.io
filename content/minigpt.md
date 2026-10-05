@@ -2,7 +2,7 @@
 title: "MiniGPT"
 part: 1
 description: "How a GPT runs: a real trained MiniGPT taken apart while it writes, explained with cards and a wheel of chances, then traced line by line through Jibin Joseph's notebook code, with the trained model to download and run yourself"
-date: "2026-09-09"
+date: "2026-10-05"
 categories: ["AI"]
 image: "/assets/images/minigpt/posts-meta.svg"
 tags: "gpt, transformers, pytorch, nanogpt, machine-learning"
@@ -1065,7 +1065,6 @@ The tiny differences come from the MLP's bend, GELU: llama.cpp uses a fast appro
 - My follow-along workbook: [open it in Colab](https://colab.research.google.com/github/Haddley/haddley.github.io/blob/main/public/minigpt-demo/minigpt_follow_along.ipynb). It runs my trained model and reproduces every number in this post
 - The notebook: [github.com/jibin10/MiniGPT](https://github.com/jibin10/MiniGPT) — open `MiniGPT_Notebook.ipynb` in Colab, or clone it and run it locally, then follow [Run my model yourself](#run-my-model-yourself) to load my trained model. Any CPU will do
 
-The thumbnail for this post adapts the [LLM logo](https://commons.wikimedia.org/wiki/File:LLM-logo.svg) by Conan, from Wikimedia Commons, licensed [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). I recoloured, cropped, and rescaled it for the thumbnail.
 
 ## References
 
