@@ -67,7 +67,7 @@ In printed lists of BPE pieces, a space attached to the front of a piece often s
 
 ### What bigger pieces buy
 
-Fewer pieces means each position card covers more text. On the stories I held back for testing, the letters tokeniser needs 1.00 token per byte of text, one per letter. GPT-2's tokeniser needs 0.246, and my own needs 0.244: both cover about four letters with every token. My own pieces even pack these stories slightly *tighter* than GPT-2's much bigger supply, because they were built from exactly this kind of text.
+Fewer pieces means each position card covers more text. On the stories I held back for testing, the letters tokeniser needs 1.00 token per *byte* of text (a byte is the computer's unit for one ordinary character, so think of it as one letter), one per letter. GPT-2's tokeniser needs 0.246, and my own needs 0.244: both cover about four letters with every token. My own pieces even pack these stories slightly *tighter* than GPT-2's much bigger supply, because they were built from exactly this kind of text.
 
 That matters because the machine's row of positions has a fixed length. It has 256 positions, so with letters it can see back 256 letters, about 50 words. With BPE pieces, the same 256 positions reach back about 1,000 letters, more than a whole typical story: the middle-sized test story is 722 letters long. [Attention](/posts/minigpt/#inside-a-block-attention), in every block, can now look across the whole story instead of the last few sentences.
 
@@ -93,7 +93,7 @@ The blocks, which do all the real work, are exactly the same 10,736,640 numbers 
 
 [Part 2](/posts/minigpt-grown/#keeping-score-the-surprise-score) scored the machine with the surprise score: how surprised it should be by the real next token. That works for comparing two machines that use the same pieces. It does not work here, because a letter and a word are not the same size of guess. Guessing the next letter, out of 91, is a much smaller job than guessing the next word, out of 8,192, so the letters machine gets a lower surprise score just for taking smaller bites.
 
-The fix is to score the surprise per *letter of text*, whatever the pieces are. Part 2's halving rule gives the unit: count the surprise in **halvings**, and divide by how many letters of text the guess covered. Strictly, a letter here is a *byte*, the computer's unit for one ordinary character, so the score is called **bits per byte**: the number of halvings of surprise the machine needs, on average, for each byte of text. Lower is better, and it is fair whatever the pieces are.
+The fix is to score the surprise per *letter of text*, whatever the pieces are. Part 2's halving rule gives the unit: count the surprise in **halvings**, and divide by how many letters of text the guess covered. Strictly, a letter here is a byte, so the score is called **bits per byte**: the number of halvings of surprise the machine needs, on average, for each byte of text. Lower is better, and it is fair whatever the pieces are.
 
 > bits per byte = surprise per token ÷ 0.69 × tokens per byte
 

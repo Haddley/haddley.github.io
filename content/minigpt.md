@@ -346,7 +346,17 @@ Written out in full, the row of working cards goes through eight stages, always 
 Two details keep the blocks working well:
 
 - **Add, never replace.** Each block adds to the working cards rather than replacing them, so nothing learned in an earlier block is lost. This also matters for learning: when the dials are tuned, the message about which way to turn them has to travel backwards through every block, as [the next post](/posts/minigpt-grown/#how-does-it-know-which-way-to-nudge) shows. Adding rather than replacing gives that message a clear route all the way back, which is why models can be stacked dozens of blocks deep. Because every block adds to the same row of working cards, the row has a name in the jargon: the *residual stream*. It starts as the input embeddings and flows through every block.
-- **Normalise before each step.** Before attention, and again before the MLP, the numbers on every working card are rescaled to a standard range, so that no card is shouting. Then each of the 128 numbers is stretched and shifted by its own two fixed dials, set by training, so the machine can turn some numbers back up if they matter more than others. This is called *layer normalisation*.
+- **Normalise before each step.** Before attention, and again before the MLP, the numbers on every working card are rescaled to a standard range, so that no card is shouting. Then each of the 128 numbers is stretched and shifted by its own two fixed dials, set by training, so the machine can turn some numbers back up if they matter more than others. This is called *layer normalisation*, or *LayerNorm*.
+
+:::under-the-hood How normalising works, with real numbers
+Take working card 3 in `goo` as it arrives at block 1: the `o` letter card plus the position 3 card. Its 128 numbers are tiny, between −0.104 and 0.111, and start 0.019, −0.080, 0.013. Normalising takes three moves:
+
+1. **Subtract the average.** The average of all 128 numbers is 0.0009, so here this barely changes anything.
+2. **Divide by the spread.** The numbers' typical distance from their average, their *standard deviation*, is 0.0444. Dividing by it gives the card a standard size, whatever size it arrived at: its numbers now start 0.40, −1.83, 0.28, and run from −2.36 to 2.48.
+3. **Stretch and shift.** Each of the 128 numbers is multiplied by its own stretch dial, and has its own shift dial added. For the first three numbers, the stretches are 1.05, 1.12, and 1.08, and the shifts are 0.01, −0.03, and −0.08.
+
+The result starts 0.43, −2.10, 0.22 (allowing for rounding): the numbers that go into block 1's recipes in [Where the scratch cards come from](#where-the-scratch-cards-come-from). [MiniGPT (Part 5)](/posts/minigpt4/) tries a simpler kind of normalising, *RMSNorm*, which skips the first move and the shift.
+:::
 
 Why four blocks, and not one? Because each block builds on the last. After block 1, a working card knows about the positions just before it. In block 2, it can look at working cards that have *already* gathered their own neighbours, so it learns about positions further back, and so on. You can see this in the heads themselves. In block 1, the heads look between 1.6 and 5.7 positions back on average. In blocks 2 to 4, they look between 6 and 25 positions back.
 
@@ -607,6 +617,7 @@ Here is each everyday comparison from this introduction, next to the name the no
 | add, never replace | the *residual connection* |
 | the row of working cards, as every block rewrites it | the *residual stream* |
 | a working card after a block | a *hidden state* |
+| normalising a working card before attention and before the MLP | *layer normalisation*, or *LayerNorm* |
 | the dials | the *parameters*, or *weights* |
 | spinning the wheel of chances | *sampling* |
 | keeping the biggest k slices | *top-k* sampling |
@@ -619,7 +630,7 @@ Here is each everyday comparison from this introduction, next to the name the no
 
 ## Opening the notebook
 
-The repository is [github.com/jibin10/MiniGPT](https://github.com/jibin10/MiniGPT). The README's recommended path is Colab: click the "Open in Colab" badge, select a GPU runtime, and run the cells top to bottom. The notebook is designed to work that way with no local setup at all, but the only dependencies are `torch`, `matplotlib`, and `requests`, so running it on my own hardware was just as easy:
+The repository is [github.com/jibin10/MiniGPT](https://github.com/jibin10/MiniGPT). The README's recommended path is Colab: click the "Open in Colab" badge, select a GPU runtime (a computer with a graphics chip, a *GPU*, which does this kind of arithmetic much faster than an ordinary processor), and run the cells top to bottom. The notebook is designed to work that way with no local setup at all, but the only dependencies are `torch`, `matplotlib`, and `requests`, so running it on my own hardware was just as easy:
 
 ```bash
 git clone https://github.com/jibin10/MiniGPT.git && \
@@ -639,7 +650,7 @@ The commands are joined with `&&`, so they paste into a terminal as one command,
 
 The notebook comes in parts of its own, and builds the model before it loads any data. Its part 1 defines every piece of a small GPT (the cards, attention, the MLPs, and the final step that turns a card into chances) and checks that a batch of random letters passes through it.
 
-Here is how those pieces fit together, next to the digit-reading network from [Machine Learning (Part 9)](/posts/machinelearning9/). That network was two dense layers in a row. MiniGPT's MLP is exactly that kind of two-layer network. Attention is the new part, slotted in front of it. Four of those blocks are stacked, and one more dense layer at the end turns each working card into 65 chances for the letter after it.
+Here is how those pieces fit together, next to the digit-reading network from [Machine Learning (Part 9)](/posts/machinelearning9/). That network was two *dense layers* in a row: recipes of the same kind as this post's, where every number that comes out is a weighted mix of every number that goes in. MiniGPT's MLP is exactly that kind of two-layer network. Attention is the new part, slotted in front of it. Four of those blocks are stacked, and one more dense layer at the end turns each working card into 65 chances for the letter after it.
 
 ![](assets/images/minigpt/mnist-vs-minigpt.svg)
 *The MLP inside every MiniGPT block is the same kind of two-layer network as my MNIST digit classifier. What is new is the attention step in front of it*
@@ -677,7 +688,7 @@ The first code cell sits directly under the notebook's part 1 heading and sets u
 
 Every line in that cell has a job:
 
-- **`import torch`** brings in PyTorch itself. Its central object is the *tensor*: an n-dimensional array, like a NumPy array, that can also live on a GPU and that records the operations applied to it, so PyTorch can work out gradients automatically during training (*autograd*). Every number the model stores or computes is held in a tensor.
+- **`import torch`** brings in PyTorch itself. Its central object is the *tensor*: an n-dimensional array, like a NumPy array, that can also live on a GPU and that records the operations applied to it, so that during training PyTorch can work out which way to turn every dial, the *gradients*, automatically (*autograd*). [The next post](/posts/minigpt-grown/#how-does-it-know-which-way-to-nudge) explains how. Every number the model stores or computes is held in a tensor.
 - **`import torch.nn as nn`** brings in the neural-network building blocks. The notebook builds its GPT from `nn.Module` (the base class that every layer, and the model itself, inherits from), `nn.Embedding` (the token and position lookup tables), `nn.Linear`, `nn.LayerNorm`, `nn.GELU`, `nn.Dropout`, and `nn.ModuleList`, which holds the stack of Transformer blocks.
 - **`import torch.nn.functional as F`** brings in stateless versions of the same operations: plain functions with no learnable weights of their own. The notebook uses only two of them: `F.softmax`, which turns attention scores into shares, and `F.cross_entropy`, which only training uses.
 - **`from dataclasses import dataclass`** comes from the Python standard library, not from PyTorch. The notebook imports it here so that the next cell, under 1.1, can declare the model's settings as a dataclass.
@@ -714,7 +725,7 @@ My exhibit uses exactly these defaults, so `GPTConfig()` with no arguments build
 
 ## The code, in the order the machine runs
 
-The notebook defines its classes bottom-up: attention in 1.2, the MLP in 1.3, one block in 1.4, and the whole model in 1.5. The machine *runs* the other way round, top-down, and that is the order of the five steps. So instead of following the cells, I follow one new letter after `goo` through the code, and point out where each card from the introduction lives. These are the notebook's own lines, with its comments replaced by mine. Two kinds of line do nothing while the machine is writing, so I leave them out: the `dropout` lines, which `model.eval()` switches off, and the training-only lines that work out the loss.
+The notebook defines its classes bottom-up: attention in 1.2, the MLP in 1.3, one block in 1.4, and the whole model in 1.5. The machine *runs* the other way round, top-down, and that is the order of the five steps. So instead of following the cells, I follow one new letter after `goo` through the code, and point out where each card from the introduction lives. These are the notebook's own lines, with its comments replaced by mine. Two kinds of line do nothing while the machine is writing, so I leave them out: the `dropout` lines, which `model.eval()` switches off, and the training-only lines that work out the *loss*, the score that training tries to lower, explained in [the next post](/posts/minigpt-grown/#keeping-score-the-surprise-score).
 
 Every card in the introduction is either a fixed set of numbers stored on the model, or a variable that the code works out while it runs:
 

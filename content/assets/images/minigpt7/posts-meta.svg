@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
-  <title>MiniGPT, a frontier teacher</title>
-  <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
-  <line x1="16" y1="44" x2="106" y2="44" stroke="#7cc6f0" stroke-width="1.6" stroke-dasharray="4 3"/><polyline points="26,82 48,62 72,54 96,52" fill="none" stroke="#1f7fc4" stroke-width="2.4" stroke-linejoin="round"/><circle cx="26" cy="82" r="4" fill="#0066a3" stroke="#0f1b2d" stroke-width="1"/><circle cx="48" cy="62" r="6" fill="#1f7fc4" stroke="#0f1b2d" stroke-width="1"/><circle cx="72" cy="54" r="8.5" fill="#3a9bdc" stroke="#0f1b2d" stroke-width="1"/><circle cx="96" cy="52" r="11" fill="#5bb4ea" stroke="#0f1b2d" stroke-width="1"/>
-</svg>

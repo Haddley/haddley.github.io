@@ -149,7 +149,6 @@ The MiniGPT posts' slugs do not match their part numbers, because a new Part 2 w
 | 5 | `minigpt4` | `part5-modern-block/` |
 | 6 | `minigpt5` | `part6-distillation/` |
 | 7 | `minigpt6` | `part7-sliding-window/` |
-| 8 (hidden) | `minigpt7` | `part8-qwen3-teacher/` |
 
 All code and follow-along workbooks live in the minigpt-series repo, named by part number (`minigpt_follow_along_3.ipynb` for Part 3). `public/minigpt-demo/` on this site holds only the trained exhibit model files (`exhibit.pt`, `exhibit.gguf`, and `weights.bin` with `manifest.json` for the live demo).
 

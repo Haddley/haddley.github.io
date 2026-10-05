@@ -25,9 +25,19 @@ Here are the four changes Meta made to the 2017 block. Before reading on, guess:
 4. fewer key and value cards in attention
 :::
 
+Here is where the four changes sit, in [Part 1's five steps](/posts/minigpt/#the-five-steps). Only steps 2 and 3 change: step 2 loses its position cards, and step 3 gets a new block.
+
+![](assets/images/minigpt4/block-before-after.svg)
+*The five steps before and after, and one block of each kind. The green numbers match the four changes below*
+
+And here is the new machine at work, the same way [Part 1](/posts/minigpt/#the-five-steps) showed `goo`, on the start of a sentence from a story:
+
+![](assets/images/minigpt4/big-picture.svg)
+*The new-block machine choosing the piece after "The sun was". The numbers come from a second training run of the same design, which scored 0.678 bits per byte*
+
 ### Change 1: a simpler normalise
 
-Before attention, and again before the MLP, every block [normalises the working cards](/posts/minigpt/#four-blocks-in-a-row): it rescales each card's numbers to a standard range. The 2017 way, *LayerNorm*, first subtracts the card's average from every number, then divides by how spread out the numbers are. The new way, *RMSNorm*, skips the subtraction and just divides by the numbers' typical size. It also keeps only the stretch dials from [Part 1](/posts/minigpt/#four-blocks-in-a-row), not the shift. That is one calculation fewer every time a card is normalised, and fewer dials to train.
+Before attention, and again before the MLP, every block [normalises the working cards](/posts/minigpt/#four-blocks-in-a-row): it rescales each card's numbers to a standard range. The 2017 way, *LayerNorm*, which [Part 1 works through with real numbers](/posts/minigpt/#four-blocks-in-a-row), first subtracts the card's average from every number, then divides by how spread out the numbers are. The new way, *RMSNorm*, skips the subtraction and just divides by the numbers' typical size. It also keeps only the stretch dials from [Part 1](/posts/minigpt/#four-blocks-in-a-row), not the shift. That is one calculation fewer every time a card is normalised, and fewer dials to train.
 
 ### Change 2: turning cards instead of position cards
 
@@ -73,18 +83,29 @@ Turning one part off to see what it was doing is called an *ablation*.
 ![](assets/images/minigpt4/ablation-bars.png)
 *Best bits per byte for each machine, with its size under each bar*
 
+### How much is luck?
+
+Every machine starts from random numbers and practises on randomly chosen snippets, so training the same design twice never gives exactly the same score. Before reading anything into a difference of a few thousandths, I needed to know how big that luck is. So I trained the new block, and the version with the old MLP, twice more each, from different random starts:
+
+| Machine | Three random starts | Average |
+|---|---|---|
+| New block, all four changes | 0.6717, 0.6783, 0.6764 | 0.6755 |
+| … but the old MLP | 0.6756, 0.6798, 0.6749 | 0.6768 |
+
+The same design landed anywhere in a band about 0.007 wide. So a difference smaller than that could just be luck.
+
 ### What actually matters
 
-- **Turning, RoPE, is the whole difference.** The new block beats the 2017 block by 0.017 bits per byte. Put the position cards back, keeping the other three changes, and the machine scores 0.7023: *worse* than the 2017 block. At this size, on these stories, every bit of the new block's advantage comes from turning cards instead of adding position cards.
-- **Sharing keys and values is free.** Full keys and values for every head scored 0.6721 against 0.6717, no real difference, while needing 1.2 million more numbers, about a tenth of the machine.
-- **The gated MLP is a small, real win:** 0.6717 against 0.6756, at the same size.
-- **The simpler normalise is not about accuracy.** The old LayerNorm actually scored slightly *better*, 0.6683, and the two runs took within 5 seconds of each other. RMSNorm is in the recipe because it saves work in machines with dozens of blocks and billions of numbers. At 6 blocks and 13 million numbers, there is nothing to see.
+- **Turning, RoPE, is the whole difference.** On average, the new block beats the 2017 block by 0.013 bits per byte, about twice the band of luck. Put the position cards back, keeping the other three changes, and the machine scores 0.7023: *worse* than the 2017 block, and 0.027 worse than the new block's average, about four times the band. At this size, on these stories, every bit of the new block's advantage comes from turning cards instead of adding position cards.
+- **Sharing keys and values is free.** Full keys and values for every head scored 0.6721, inside the band, while needing 1.2 million more numbers, about a tenth of the machine.
+- **The gated MLP makes no difference I can measure.** On my first runs it looked like a small win, 0.6717 against 0.6756. Over three random starts each, the averages are 0.6755 against 0.6768: a gap of 0.001, far inside the band. My first run of the new block had simply been the luckiest.
+- **The simpler normalise is not about accuracy.** The old LayerNorm scored 0.6683, slightly *better* than any of the three new-block runs, though only just outside the band, and the two runs took within 5 seconds of each other. RMSNorm is in Llama's design because it saves work in machines with dozens of blocks and billions of numbers. At 6 blocks and 12.6 million numbers, there is nothing to see.
 
 ![](assets/images/minigpt4/ablation-curves.png)
 *Bits per byte while training. The new block and three of its variants run together below the grey 2017 block; the one with position cards put back (red) lands on top of it*
 
 :::watch-it
-These results are for a 13-million-number machine on 20 million letters of simple stories. They do not contradict the papers, which tested far bigger machines. They show which change matters *at this size*: the others are mostly about saving work at scale, which a machine this small cannot show.
+These results are for a 12.6-million-number machine on 20 million letters of simple stories. They do not contradict the papers, which tested far bigger machines. They show which change matters *at this size*: the others are mostly about saving work at scale, which a machine this small cannot show.
 :::
 
 And the writing? It reads like Part 4's machine. Tim has a toy car, then a tank, and the tank stays the subject through to the end:
@@ -118,6 +139,7 @@ A better block at this size buys a small, measurable drop in bits per byte, not 
 - Turning RoPE off made the machine worse than the 2017 block: RoPE is the whole improvement here.
 - Sharing keys and values saved a tenth of the machine at no cost.
 - RMSNorm and SwiGLU matter more for speed at scale than for accuracy at this size.
+- The same design, trained three times, scored up to 0.007 apart: any smaller difference could be luck.
 :::
 
 :::no-dumb-questions
@@ -219,6 +241,15 @@ python train_llama.py --tag rms_rope_gelu --mlp gelu
 python train_llama.py --tag rms_rope_mha  --gqa-off
 python train_llama.py --tag layer_rope    --norm layer
 python train_llama.py --tag rms_learned   --pos learned
+```
+
+Then, for [How much is luck?](#how-much-is-luck), it trains the new block and the old-MLP version from two more random starts:
+
+```bash
+python train_llama.py --tag modern_seed1 --seed 1
+python train_llama.py --tag gelu_seed1   --seed 1 --mlp gelu
+python train_llama.py --tag modern_seed2 --seed 2
+python train_llama.py --tag gelu_seed2   --seed 2 --mlp gelu
 ```
 
 ![](assets/images/minigpt4/ablation-runs.png)

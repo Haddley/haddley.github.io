@@ -87,7 +87,7 @@ This is one small machine, one setting, on one Mac: not a general benchmark. The
 
 ### Same answers?
 
-A faster engine is no use if it changes the answers. The two versions do not start from exactly the same random numbers, because the two libraries draw their starting dials differently, so their training curves cannot lie exactly on top of each other. But they should end up in the same place, and they do: after 3,000 steps, the MLX machine scores **0.689 bits per byte** on the test stories, and the PyTorch machine from Part 3 scores **0.697**. That gap is well inside the difference two random starts make.
+A faster engine is no use if it changes the answers. The two versions do not start from exactly the same random numbers, because the two libraries draw their starting dials differently, so their training curves cannot lie exactly on top of each other. But they should end up in the same place, and they do: after 3,000 steps, the MLX machine scores **0.689 bits per byte** on the test stories, and the PyTorch machine from Part 3 scores **0.697**. That gap is about the size of the luck between two random starts of the same machine: in [Part 5](/posts/minigpt4/#how-much-is-luck), three random starts of one design scored up to 0.007 apart.
 
 ![](assets/images/minigpt3/loss-curves.png)
 *Bits per byte on the test stories while training, PyTorch against MLX*
@@ -114,7 +114,7 @@ Tim has a dirty sock, the sock stays the subject of the story, and the story has
 
 **PyTorch:** And the answers?
 
-**MLX:** The same, to within what a different random start makes. 0.689 against your 0.697. Same machine, same stories.
+**MLX:** The same, to within about what a different random start makes. 0.689 against your 0.697. Same machine, same stories.
 
 **PyTorch:** Then we agree. On a Mac, you are faster. Everywhere else, I am the one that runs.
 :::

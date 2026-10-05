@@ -81,7 +81,7 @@ A window is only useful if the machine still works. I trained the modern machine
 ![](assets/images/minigpt6/train-1024.png)
 *Bits per byte at a 1,024-position row. The windowed machine is not behind*
 
-The windowed machine came out very slightly *ahead*, well within the noise, while training faster and in less memory. And its 0.6727 matches the 256-position machine from Part 5 (0.6717): on these stories, a longer row did not help at all, because most stories are only a few hundred tokens long, so there is nothing further back worth seeing. TinyStories is the wrong text to show what a long row is *for*. The point here is the memory: the windowed machine learns just as well, while its attention cost stays flat as the row grows.
+The windowed machine came out slightly *ahead*, but only by 0.008, about the size of the luck between two random starts (see [Part 5](/posts/minigpt4/#how-much-is-luck)), so the two are level. It also trained faster and in less memory. And its 0.6727 is inside the band of Part 5's 256-position machine (0.672 to 0.678, over three random starts): on these stories, a longer row did not help at all, because most stories are only a few hundred tokens long, so there is nothing further back worth seeing. TinyStories is the wrong text to show what a long row is *for*. The point here is the memory: the windowed machine learns just as well, while its attention cost stays flat as the row grows.
 
 ![](assets/images/minigpt6/generation.png)
 *The windowed machine, with a 1,024-position row, continuing "Once upon a time"*

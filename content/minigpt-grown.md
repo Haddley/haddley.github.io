@@ -95,7 +95,7 @@ Everything Part 1 called fixed, the letter cards, the position cards, every reci
 
 | Step | When the machine writes (Part 1) | When the machine grows |
 |---|---|---|
-| 1. Letters to numbers | the text so far | 32 random snippets of practice text, each 128 letters long: exactly enough to fill every position |
+| 1. Letters to numbers | the text so far | 32 random snippets of practice text, each 128 letters long: exactly enough to fill every position. The 32 snippets for one step are called a *batch* |
 | 2. Cards | a letter card plus a position card, for each letter | exactly the same, except that the cards start as random numbers |
 | 3. The blocks | attention, then the MLP, four times | exactly the same |
 | 4. Chances | a wheel for the last position only | a wheel for every position: 32 × 128 = 4,096 wheels, because in practice text, every position's next letter is already known |
@@ -108,7 +108,7 @@ Here is the very first step of growing my exhibit, with the real numbers:
 
 - **Steps 1 to 4.** One of the 32 snippets begins " guess who caused yo". Its first working card has seen only the space, and its wheel gives the real next letter, `g`, a chance of 0.87%.
 - **Step 5.** That one guess has a surprise score of 4.74. Averaged over all 4,096 guesses, the surprise is 4.18: almost exactly the 4.17 of an even wheel, because the machine knows nothing yet.
-- **Step 6.** Almost every one of the 826,433 numbers moves by 0.0003. The `g` card's first number goes from −0.04793 to −0.04823, the position 1 card's from 0.02622 to 0.02592, and the `d` answer card's from 0.01135 to 0.01105. (On the very first step, every number with a slope moves almost exactly the same distance, because the training method, *AdamW*, starts with equal-sized steps. Later on, it sizes each number's step separately. The exceptions are 5 letter cards, which you will meet [below](#who-gets-nudged-and-when).)
+- **Step 6.** Almost every one of the 826,433 numbers moves by 0.0003. That distance is a setting I chose, called the *learning rate*: how far each nudge goes. The `g` card's first number goes from −0.04793 to −0.04823, the position 1 card's from 0.02622 to 0.02592, and the `d` answer card's from 0.01135 to 0.01105. (On the very first step, every number with a slope moves almost exactly the same distance, because the training method, *AdamW*, starts with equal-sized steps. Later on, it sizes each number's step separately. The exceptions are 5 letter cards, which you will meet [below](#who-gets-nudged-and-when).)
 
 :::watch-it
 One step is tiny, and it is aimed at the *average* surprise over those 4,096 guesses, not at any one example. After this first step, the chance of `d` after `goo` actually went *down*, from 2.008% to 1.995%, even though `goo` was in the batch: one of the snippets contains "my good unc". That was one guess out of 4,096, and the step served the average. Only over thousands of steps, and millions of guesses, do the nudges add up to the 96.6% from Part 1.
@@ -375,7 +375,10 @@ Here are the comparisons for growing the machine, next to the names the notebook
 | the surprise score | the *loss* (cross-entropy loss) |
 | "as unsure as choosing between *N* letters" | *perplexity* |
 | working out which way to turn every dial | *backpropagation* |
+| the 32 snippets for one step | a *batch* (batch size 32) |
+| the slopes of all 826,433 dials, together | the *gradient* |
 | nudging every number a little in its direction | an *optimiser step* (here, with *AdamW*) |
+| how far each nudge goes | the *learning rate* |
 | AdamW's running average of recent slopes | *momentum* |
 | shrinking every number very slightly on every step | *weight decay* |
 | the locked-away exam text | the *validation set* |
@@ -403,7 +406,7 @@ device = (
 The line appears twice: once in the first code cell, and again at the top of section 3.3. Change only the first, and the main training run quietly goes back to the CPU, with nothing to warn you except a much longer wait.
 :::
 
-Nothing else needed changing: the notebook's mixed-precision code only switches on for CUDA, so on MPS it trains in full precision. (The exhibit itself was grown on the CPU, because only the CPU repeats its arithmetic exactly.)
+Nothing else needed changing: the notebook's *mixed-precision* code, which saves time on NVIDIA GPUs by doing some of the arithmetic with fewer digits, only switches on for CUDA, so on MPS it trains in full precision. (The exhibit itself was grown on the CPU, because only the CPU repeats its arithmetic exactly.)
 
 ## Notebook part 2: the training pipeline
 
@@ -513,6 +516,14 @@ The second configuration is close to nanoGPT's small Shakespeare setup.
 | Learning rate | 100 warmup steps to 10⁻³, cosine decay to 10⁻⁴ over 5,000 steps |
 | Also | gradient clipping at 1.0, and [weight tying](/posts/minigpt2/): the letter cards double as the answer cards |
 | Checkpoint | best validation loss |
+
+In plain words, the new settings are:
+
+- **Bigger steps that change over time.** The learning rate starts small and grows over the first 100 steps (*warmup*), so that the random starting numbers are not knocked about too hard, then shrinks gradually along a curve (*cosine decay*) for fine adjustments at the end.
+- **A cap on the slopes.** If the slopes on one step are unusually big, they are scaled down before the nudge (*gradient clipping*), so that one odd batch cannot throw the machine off course.
+- **Stronger weight decay,** ten times stronger than the small model's, and only on the recipes and cards, not on the biases and normalising dials.
+- **`betas`** set how long AdamW's [momentum](#who-gets-nudged-and-when) remembers earlier slopes.
+- **More dropout:** during training, a fifth of the numbers are switched off at random on every step, to make the machine harder to memorise with.
 
 ### 3.9 Training Loop with Best Checkpoint
 
