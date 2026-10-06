@@ -51,6 +51,10 @@ After configuring a DeepSeek API key in Settings → Models and selecting a work
 ![DeepSeek Harness Web UI first launch showing Into the Unknown and Choose a workspace](assets/images/deepseekharness/web-ui-into-the-unknown.png)
 *The fresh Web UI had no workspace yet, so I chose the folder where my PRD and PDD lived*
 
+:::brain-power Before the prompt
+If you gave an agent a requirements document and a design document, what would you expect it to produce first: code, tests, or a plan? Guess before reading on.
+:::
+
 ## The Task
 
 I created a session named "Build invaders game from PRD" and sent this prompt:
@@ -85,6 +89,12 @@ The specifications called for:
 
 The PDD specified an `index.html` entry point loading `src/engine.js`, which imports modules for constants, sprites, audio, input, and the entity classes. It included ASCII pixel-art sprite definitions and a sound list with a march tempo that scales to the remaining alien count, deliberately doubling the arcade's original frequencies so laptop speakers could reproduce them.
 
+:::no-dumb-questions
+**Q: Did the agent write its own tests, or was it given them?**
+
+A: It wrote its own tests and ran them, including logic checks and a headless-browser end-to-end run.
+:::
+
 ## Self-Verification
 
 The agent did not just hand over code. It added its own tests and ran them:
@@ -98,6 +108,10 @@ All checks passed with zero exceptions and zero console errors.
 *The agent verified its build with 96 Node logic checks and 24 headless-browser E2E checks, all passing*
 
 A notable detail: the agent added a `window.__invaders` debug handle (not in the spec) specifically so the E2E tests would have something to drive. It built a test seam into its own deliverable to make its verification possible.
+
+:::watch-it Passing its own tests is not the same as a player
+The agent's checks prove the game matches its own tests. Only playing it shows whether the game is fun and fair, so play it before you call it done.
+:::
 
 ## Running the Game
 
@@ -137,5 +151,11 @@ The game is now playable at [/invaders-deepseek-harness/index.html](/invaders-de
 What stood out was not the code but the workflow. DeepSeek Harness read actual requirements and design documents, mapped them to a concrete implementation, built a complete game, and then verified its own work with both logic tests and a headless-browser E2E suite — including inventing a `window.__invaders` debug handle so its own tests could drive the game. That felt like an agent verifying its output, not just generating code.
 
 Compared with the [three earlier builds](/posts/invaders/) of the same game: Big Pickle moved fast but needed two rounds of debugging for a game-loop timing bug and a UFO audio leak; DeepSeek V4 Pro was thorough during the build and caught a malformed function body before serving, but still needed prompting to find a player-respawn bug; Claude Code planned before writing, asked permission at each step, and caught the UFO audio bug itself. DeepSeek Harness differed in one big way — it added a verification step and built a debug seam so the tests could actually exercise the game.
+
+:::bullet-points Recap
+- DeepSeek Harness read the requirements and design documents, then built a complete game.
+- It verified its own work with logic tests and a headless-browser run.
+- The workflow mattered more than the code it produced.
+:::
 
 **Try it yourself:** [DeepSeek Harness site](https://www.deepseek.com/harness/en/) · [Use the Web UI guide](https://deepseek-harness.github.io/deepseek-harness/en/guide/quickstart) · [GitHub repository](https://github.com/deepseek-ai/deepseek-harness) — and [play the game](/invaders-deepseek-harness/index.html).

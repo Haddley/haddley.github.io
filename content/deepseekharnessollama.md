@@ -28,6 +28,10 @@ I opened Settings and selected Models. The only provider listed was the official
 ![](assets/images/deepseekharnessollama/settings-models-deepseek-only.png)
 *Settings → Models listed only the official DeepSeek provider; I left its API key empty and went to "Add model provider"*
 
+:::brain-power Before the provider form
+Ollama does not speak DeepSeek's API. Which kind of endpoint would you expect a custom provider to need to connect to a local model? Guess before reading on.
+:::
+
 ## Adding Ollama as a custom provider
 
 The new provider form has two tabs: "Third-party model provider" and "Custom model API". I chose Custom model API, which connects to any OpenAI- or Anthropic-compatible endpoint by base URL. Ollama serves an OpenAI-compatible API on its default port, so I filled in the form like this:
@@ -70,6 +74,12 @@ I closed Settings and opened the model picker again. It now had two groups: the 
 
 At this point every request from this workspace goes to `localhost:11434`. The DeepSeek cloud provider still has no key configured.
 
+:::no-dumb-questions
+**Q: Why did a spec that worked for a cloud model fail with a local one?**
+
+A: The local model needed more detail. A specification good enough for a frontier cloud model can be far too loose for a 30-billion-parameter local model.
+:::
+
 ## The original documents were not enough
 
 Getting the harness to talk to Ollama was the easy part. Getting a local model to build the game was not. I had a lot of problems with the local model when I gave it the same short `PRD.md` and `PDD.md` that DeepSeek V4 Pro and the other cloud models had built from without much trouble.
@@ -89,6 +99,10 @@ The problems went away once I added an `ARCHITECTURE.md` file and put a lot more
 All three documents are linked above, so you can read them or use them to run the same build with your own local model.
 
 The biggest change is that the plan now lives in the documents rather than in the model. A small model does not have to decide what to build next, what to call things, or how to serve the page. It only has to follow the next step and check its work. I tested the documents by rebuilding the game from nothing but the code in `PDD.md`, and that build passed every check in the acceptance list.
+
+:::watch-it Local models need exact file layouts, not descriptions
+Describing the project in prose was not enough for the local model. It needed the exact file names, exports, and build steps, which is what ARCHITECTURE.md supplied.
+:::
 
 ## The prompt
 
@@ -149,6 +163,12 @@ The harder lesson was about the documents. A specification that is good enough f
 The trade-off is time. The cloud builds in my earlier posts finished in minutes. The local model took just over an hour for the same game. It cost nothing, though, and no code or prompt ever left my machine.
 
 **Try it yourself:** [play the game](/invaders-deepseek-harness-ollama/index.html) · [PRD.md](https://github.com/Haddley/haddley.github.io/blob/main/public/invaders-deepseek-harness-ollama/PRD.md) · [PDD.md](https://github.com/Haddley/haddley.github.io/blob/main/public/invaders-deepseek-harness-ollama/PDD.md) · [ARCHITECTURE.md](https://github.com/Haddley/haddley.github.io/blob/main/public/invaders-deepseek-harness-ollama/ARCHITECTURE.md) · [DeepSeek Harness site](https://www.deepseek.com/harness/en/) · [Ollama](https://ollama.com)
+
+:::bullet-points Recap
+- A custom provider with Ollama's OpenAI-compatible endpoint let DeepSeek Harness drive a local model with no DeepSeek key.
+- The local model needed far more detail in its documents than a cloud model did.
+- ARCHITECTURE.md, with exact files and build steps, was the fix that made the build work.
+:::
 
 ## References
 

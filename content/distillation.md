@@ -27,6 +27,10 @@ slug: "distillation"
 
 **DeepSeek — an unproven accusation.** Around the time DeepSeek released R1, [OpenAI told the *Financial Times*](https://www.ft.com/content/a0dfedd1-5255-4fa9-8ccc-1fe01de87ea6) it had seen evidence suggesting accounts linked to DeepSeek had queried its API at a scale consistent with harvesting outputs to train a competing model — a possible violation of OpenAI's terms of service, never publicly confirmed with hard evidence. Same technique as Phi's either way; the real difference, if the accusation is true, is that the answers being trained on were not used with permission.
 
+:::brain-power Before you try it yourself
+What would a small model learn if it only sees a big model's final answers, and nothing about how those answers were reached? Guess before reading on.
+:::
+
 ## Trying it myself
 
 I wanted to see the mechanism directly rather than just read about it, using a teacher I could actually run: [Qwen2.5-32B-Instruct](https://huggingface.co/Qwen/Qwen2.5-32B-Instruct) (4-bit, via [mlx-community](https://huggingface.co/mlx-community/Qwen2.5-32B-Instruct-4bit)), local, free, via MLX. I generated fresh answers to 8,000 [Alpaca](https://huggingface.co/datasets/tatsu-lab/alpaca) prompts, then trained a small model (a few million parameters) on them with the same masked cross-entropy loss described above.
@@ -103,6 +107,10 @@ Comparing perplexity between the two would be rigged — each model would simply
 - **Catching my own judge bias mattered more than any other decision here.** A biased evaluator does not announce its bias in its output; the only way to find it was to notice the conflict of interest before trusting the number.
 - **A real effect can be small, and reporting it as small is the honest thing to do.** 62.5% is not a rout. It is a genuine, statistically real edge from using a better teacher, at a scale where "genuine but modest" is exactly what you'd expect.
 
+:::watch-it A bigger run is not automatically a fairer one
+Scaling up the same test changes the cost and the time. Check that the comparison is still fair at the larger size before you read anything into the result.
+:::
+
 ## The same test, at a much larger scale
 
 62.5% is the effect size a 2.8M-parameter model, 8,000 prompts, and 100M pretraining tokens can show. So I reran the identical one-variable comparison much bigger: an 18.9M-parameter student (about 7x the parameters), pretrained on 807M tokens of raw [Wikipedia](https://huggingface.co/datasets/wikimedia/wikipedia) text (about 8x the corpus), then fine-tuned on 19,400 prompts (2.5x as many) — same two arms, same judge, same held-out methodology, just scaled up across every dimension at once.
@@ -130,6 +138,12 @@ The mechanism holds up at both scales tested so far. The next thing worth varyin
 The code is in [github.com/Haddley/distillation](https://github.com/Haddley/distillation): `part1/` (teacher-generated answers), `part2/` (the two-stage recipe at small scale), `part3/` (the fair comparison above), and `part4/` (the same comparison rerun at the larger scale below). See the repo's README for the exact commands and how the pieces fit together.
 
 Requires Apple Silicon for MLX. The judge alone needs about 40GB free for Llama-3.1-70B-Instruct-4bit.
+
+:::bullet-points Recap
+- Distillation trains a smaller model on a larger model's answers.
+- The accusation against DeepSeek is discussed as unproven.
+- The test was run at a small scale and again at a much larger one.
+:::
 
 ## References
 

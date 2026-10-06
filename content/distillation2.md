@@ -21,11 +21,21 @@ Llama-3.1-8B-base has never seen a chat template. Prompted with a real two-turn 
 
 Then it keeps going — inventing a new `User:` turn, describing a logo that does not exist, offering a fake image link, and starting a packaging-design pitch nobody asked for. It was never taught that a reply ends; it was only ever taught to predict the next plausible token, and a plausible continuation of a chat transcript is more chat transcript. This is the same lesson Part 1's plain pretrained checkpoint taught with single-turn prompts, showing up again in a more specific way: fluency is not the same skill as knowing when to stop.
 
+:::brain-power Before the method
+Why might training only a small adapter be cheaper and safer than changing every weight in the model? Make a guess before reading on.
+:::
+
 ## Why LoRA, not full fine-tuning
 
 This machine is a 64GB M1 Max Mac Studio. Just loading the model takes about 16GB. Fully fine-tuning it needs far more than that on top: training has to track how every one of the model's 8 billion numbers should change, plus a running history of those changes to keep the process stable — in effect, several extra full-size copies of the entire model held in memory at once, each more precise (and so larger) than the copy you'd use simply to run it. Add all of that up and it comes to well over 100GB. Not close to fitting.
 
 LoRA leaves the original model's numbers untouched and trains a small set of new ones alongside it instead — 10.5M trainable parameters out of 8.03 billion, 0.131% of the model. Because the original numbers never change, they can stay in the same compact 16-bit format (called bf16) used simply to run the model, with no need for an extra, more precise copy set aside for training. So in practice, memory only has to hold that unchanged model, the small set of new numbers actually being trained, and the temporary intermediate values the model produces while working out how to adjust them — landing around 25–35GB in total, comfortably inside the budget. That also gave a real quality improvement over QLoRA's 4-bit-quantised alternative, without the memory pressure that would have forced that trade-off.
+
+:::no-dumb-questions
+**Q: What goes wrong if the model does not know where its turn ends?**
+
+A: It can keep generating past its own answer, so the training data has to show where each turn stops.
+:::
 
 ## Every turn needs its own training example
 
@@ -86,6 +96,10 @@ Two real mechanical problems came up building this arm, both worth recording pla
 
 **DeepSeek's answers are considerably longer than GPT-3.5's.** Matching each conversation's turn count to whatever `baseline`'s cutoff already established (so both arms target the same population, not whichever teacher happened to be more concise) is necessary but not sufficient: DeepSeek's own, longer text at those same positions still individually exceeded the 2048-token safety limit for 40% of the candidate turns, even though UltraChat's shorter version of the identical position fit fine. Generation for the full 8,000-conversation set — parallelised across 40 concurrent workers, since this is a remote network call rather than a local GPU job — cost roughly $10–20 in total.
 
+:::watch-it A comparison is only fair if both arms match
+Both arms need the same data and the same training budget. Check that each one gets the same treatment before you attribute a difference to the teacher model.
+:::
+
 ## Making it a fair comparison, properly
 
 Simply training `distilled` on whatever survived that length filter would have left it with fewer training examples than `baseline` purely because DeepSeek writes more — conflating "better teacher" with "teacher happened to cost less context per turn." Fixing this meant computing the true intersection: for every (conversation, turn) position, keeping it only if *both* UltraChat's own text and DeepSeek's own text fit under the limit, and training **both** arms exclusively on that matched set. That meant retraining `baseline` a second time — its first checkpoint, trained on its own full 23,351-example population, was discarded — so that the only variable left between the two arms is whose answer fills an identical set of 14,078 positions.
@@ -124,6 +138,12 @@ A loss, to keep this honest — a request for error-handling code that should ke
 ## Try it yourself
 
 The code is in [github.com/Haddley/chat-distillation](https://github.com/Haddley/chat-distillation), in `part1/`. Requires Apple Silicon for MLX, a Hugging Face account with no special access needed for the base model (`mlx-community/Meta-Llama-3.1-8B-bf16` is openly available), and a DeepSeek API key for the second teacher arm.
+
+:::bullet-points Recap
+- The model needs training examples that show where each turn ends.
+- LoRA trains a small adapter instead of every weight.
+- A fair comparison gives both teachers the same data and budget.
+:::
 
 ## References
 
