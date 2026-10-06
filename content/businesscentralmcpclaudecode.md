@@ -12,6 +12,10 @@ image: "/assets/images/businesscentralmcpclaudecode/hero-bc-mcp-claude-code.svg"
 
 Business Central now ships its own [Model Context Protocol](https://modelcontextprotocol.io) (MCP) server, built directly into the product. It exposes Business Central's APIv2 objects to an MCP client without writing a custom server first, which is the approach I took in my earlier [Model Context Protocol](/posts/mcpserver2/) posts. This post follows the steps in [How to Connect Business Central MCP to Claude Desktop](https://katson.com/how-to-connect-business-central-mcp-to-claude-desktop/), adapted for Claude Code instead of Claude Desktop: registering an Entra app, turning on the MCP server inside Business Central, and connecting Claude Code to it.
 
+:::brain-power Before you register an app
+When a tool reads your company's data, which identity should it use: your own login, or a dedicated app with its own permissions? Decide before reading on.
+:::
+
 ## Part 1 — Registering the Entra app
 
 Business Central's MCP server authenticates over OAuth, so before turning it on, I needed an Entra app registration that Claude Code could sign in through.
@@ -84,6 +88,12 @@ Two values from the app's Overview page are needed later, when Claude Code's own
 
 ![](assets/images/businesscentralmcpclaudecode/entra-13-tenant-id.png)
 *I copied the Directory (tenant) ID from the same page*
+
+:::no-dumb-questions
+**Q: Why three separate parts instead of one setup step?**
+
+A: Each piece needs its own check. If Claude Code cannot connect, a failure could sit in the Entra app, the Business Central server, or the bridge, and checking each part on its own narrows down where the fault is.
+:::
 
 ## Part 2 — Turning on the MCP server in Business Central
 
@@ -189,9 +199,19 @@ Claude Code called the `businesscentral` tool and answered from the real data re
 ![](assets/images/businesscentralmcpclaudecode/claude-06-customer-query-result.png)
 *Claude Code called the businesscentral MCP tool and returned all five real customers in the Cronus USA, Inc. demo company, correctly noting there were fewer than the ten I asked for*
 
+:::watch-it Read-only still reads live company data
+The server exposes its pages as read-only tools, but they still return live data from your company. Keep the Entra app's permissions to the minimum, and check which pages the server exposes before you connect.
+:::
+
 ## What actually got built
 
 An Entra app registration providing the OAuth identity, a Business Central MCP configuration exposing 414 APIv2 pages as read-only tools, and a project-scoped `.mcp.json` bridging the two into Claude Code through `mcp-remote` — three separate pieces of setup, each verified independently, ending in a real, unscripted question about the Cronus demo data answered from genuine Business Central records rather than a guess.
+
+:::bullet-points Recap
+- An Entra app registration provides the OAuth identity for the connection.
+- Business Central exposes its APIv2 pages as read-only MCP tools.
+- A project-scoped `.mcp.json` bridges the server into Claude Code through `mcp-remote`.
+:::
 
 ## References
 

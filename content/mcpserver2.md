@@ -416,6 +416,10 @@ export function clearAuthentication(): void {
 }
 ```
 
+:::watch-it Credentials belong in .env, not in your repository
+The `.env` file holds the Business Central client secret. Keep a real copy out of version control, and publish only a template with placeholders like the one shown here.
+:::
+
 ## .env
 
 ```text
@@ -637,6 +641,12 @@ services:
       - BC_ENVIRONMENT=${BC_ENVIRONMENT}
     restart: unless-stopped
 ```
+:::bullet-points Recap
+- The server authenticates to Business Central over OAuth 2.0, using values held in `.env`.
+- Each file has one job, and the post shows each one in full so you can rebuild the server.
+- Keep the real credentials out of anything you publish.
+:::
+
 ## References
 
 - [Talk to Your Data: Build an MCP local Server in JavaScript (Node.js) that Understands Business Central](https://danieleincalza.blogspot.com/2025/07/talk-to-your-data-build-mcp-local.html?fbclid=IwZXh0bgNhZW0CMTEAAR6ieJAE0Jk-FhoJQxOcwj7yS9iaYnf7iBIpmzQFTi_bjspiOwed4cTkZ7AfKg_aem__GvqVa0pGPLHMYsfhixUdw)

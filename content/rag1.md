@@ -610,6 +610,10 @@ docker compose up -d --build frontend
 
 As with `backend`, this is the same command already used to bring `frontend` up for the first time — rebuild, every time, for every edit. A real Vite project run directly on the host (`npm run dev`, no Docker at all) would get genuine instant hot reloading, since Vite would then be watching the actual file being edited; inside this particular Docker setup, with no bind-mounted volume, a rebuild is the only mechanism that exists.
 
+:::brain-power Before Phase 5
+This phase adds a third way into the same search. What would you change about a search function so an AI agent can call it safely? Name one before reading on.
+:::
+
 ## Phase 5 — exposing it to Claude Code over MCP
 
 Everything so far is reachable over HTTP — `curl`, or the React app. [MCP](https://modelcontextprotocol.io) (Model Context Protocol) is a third way in, specifically for AI coding agents: instead of a browser calling `GET /search`, Claude Code (or any MCP-compatible client) can call a named *tool* directly, over a local process boundary rather than a network request.
@@ -672,6 +676,10 @@ docker compose up -d --build backend
 
 One fact worth knowing before writing any Python MCP client of your own, though nothing in this post's own setup hits it: the SDK's `StdioServerParameters`, used to spawn a server as a subprocess, does not inherit the parent process's environment by default. A client that launches `mcp_server.py` directly (rather than via `docker compose exec`, as everything below does) needs to pass `env=dict(os.environ)` explicitly, or the spawned process has no `DATABASE_URL` and crashes on import.
 
+:::watch-it The Inspector proves the tool, not the agent
+The Inspector calls the tool directly, so it shows that the tool works. It does not show that Claude Code will choose that tool or use its results well.
+:::
+
 ## Checking it interactively with MCP Inspector
 
 [MCP Inspector](https://modelcontextprotocol.io/docs/tools/inspector) is the official tool for actually poking at an MCP server from a browser — point it at the same command `.mcp.json` will use, no code required:
@@ -707,6 +715,12 @@ Clicking **Execute Tool** sends a real `tools/call` request over a real stdio co
 A tool returning `list[dict]`, exactly as `search_toy_rag` does, does not land as one JSON array — `mcp==2.0.0` serializes each dict in the list as its own separate `TextContent` block instead, which is why the result above shows three separate entries rather than one. The "Structured Output" section underneath is Inspector's own rendering of `structured_content`, the same field a Python client would read via `result.structured_content["result"]` to get the tool's actual return value back pre-parsed, regardless of how many separate text blocks the plain version was split into.
 
 Inspector shows the exact JSON-RPC traffic (the message log on the right, timestamped, every `initialize`, `tools/list`, and `tools/call` round trip). JSON-RPC is the specific message format MCP is built on top of — every request carries a method name (`initialize`, `tools/call`, and so on) and an `id` used to match each response back to the request that triggered it, seen directly in the raw `initialize` example below.
+
+:::no-dumb-questions
+**Q: Why reuse `GET /search` for the MCP tool instead of writing a second search?**
+
+A: The MCP tool calls the same function that the HTTP route calls, so there is one implementation to keep in sync.
+:::
 
 ## Adding it to Claude Code
 
@@ -795,6 +809,12 @@ Two things worth noticing in that transcript, both real rather than assumed: **`
 ## What actually got built
 
 Five phases, each verified independently before the next one depended on it: Ollama answering a plain HTTP call with 768 real numbers; Postgres running a real vector similarity query against them; FastAPI gluing the two together behind two small endpoints; React giving it a face; MCP exposing the identical search function to an AI agent, no second implementation required. Every one of the three original "bits" — database, backend, frontend — is the same shape as the much larger [Agentic AI for Professionals](/posts/agenticaiforprofessionals5/) series traces through a real production application, just stripped down far enough to see the mechanism moving on its own, and the MCP layer is the same "same skill, two interfaces" pattern that series covers in far more depth. The next post in this series picks one of these five pieces and goes deeper.
+
+:::bullet-points Recap
+- Phase 5 exposes the existing search function to Claude Code over MCP.
+- The Inspector checks the tool on its own before Claude Code is involved.
+- One function serves both the HTTP route and the MCP tool, so the two cannot drift apart.
+:::
 
 ## References
 

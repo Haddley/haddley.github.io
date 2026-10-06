@@ -14,6 +14,10 @@ image: "/assets/images/mcpserver/hero-mcp-typescript.svg"
 
 Model Context Protocol (MCP) is a framework designed to enhance the reasoning and planning capabilities of AI agents.
 
+:::brain-power Before the screenshots
+When an AI agent connects to a server, what do you expect the server to offer: prompts, data, or tools? Guess before reading on.
+:::
+
 ![](assets/images/mcpserver/screenshot202025-08-1320at2012.17.09e280afpm-2136x1248.png)
 *In my Prompt flow with Semantic Kernel and Planner post I demonstrated that large language models rely on tools to do maths.*
 
@@ -25,6 +29,12 @@ Model Context Protocol (MCP) is a framework designed to enhance the reasoning an
 
 ![](assets/images/mcpserver/screenshot202025-08-1320at2012.40.23e280afpm-2136x1380.png)
 *I clicked Connect*
+
+:::no-dumb-questions
+**Q: Do I need the Inspector to use the server?**
+
+A: No. The Inspector is a test client. The server runs on its own, and the Inspector only calls its tools so you can check them.
+:::
 
 ![](assets/images/mcpserver/screenshot202025-08-1320at2012.40.34e280afpm-2136x1374.png)
 *I clicked Tools*
@@ -113,6 +123,12 @@ server.registerResource(
 const transport = new StdioServerTransport();
 await server.connect(transport);
 ```
+:::bullet-points Recap
+- An MCP server exposes tools that a client such as Visual Studio Code's chat can call.
+- The MCP Inspector tests those tools directly, before any AI client is involved.
+- A tool you add, like multiplication, is only as useful as the description the model sees.
+:::
+
 ## References
 
 - [Building Your First MCP Server: A Beginners Tutorial](https://dev.to/debs_obrien/building-your-first-mcp-server-a-beginners-tutorial-5fag)
