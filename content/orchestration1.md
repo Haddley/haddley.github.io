@@ -32,6 +32,10 @@ Everything below comes from real runs on my own Mac Studio, run on 24 September 
 
 Six documents on Minnesota traffic and car law, about 25,800 words: speeding, the hands-free phone law, driving while impaired (DWI), reckless driving, lemon law and car sales, and car accidents. Every quotation in them is checked against the source text by a script, which gives every question an answer I can check. The six documents come to about 37,000 tokens, comfortably inside `muse-glimmer`'s 128,000-token window.
 
+:::brain-power Before you read the options
+For a traffic-law assistant that sometimes has to ask a follow-up question, which would you pick: one router, subagents, skills, or handoffs? Pick one before reading on.
+:::
+
 ## The options
 
 LangChain's [multi-agent documentation](https://docs.langchain.com/oss/python/langchain/multi-agent) describes five patterns for an agent that draws on several areas of knowledge. I built all five: [router](https://docs.langchain.com/oss/python/langchain/multi-agent/router), [subagents](https://docs.langchain.com/oss/python/langchain/multi-agent/subagents), [skills](https://docs.langchain.com/oss/python/langchain/multi-agent/skills), [handoffs](https://docs.langchain.com/oss/python/langchain/multi-agent/handoffs), and the plain baseline the other four exist to avoid, one agent with everything in its prompt.
@@ -275,6 +279,12 @@ holding prohibition can still apply.
 ```
 Flat asked again on the follow-up even though that was not expected, and each `ask_user` interrupt replays the entire ~35,000-token document prompt: its two turns cost 107,280 and 108,209 prompt tokens — seven to seventeen times what skills (14,593 / 4,829), subagents (14,875 / 7,750) or handoffs (14,664 / 4,809) paid for the identical conversation. Handoffs and skills land within a few hundred tokens of each other here; subagents' extra cost on this particular conversation is smaller than its 23-turn total suggests, and shows up more on conversations needing more than one specialist.
 
+:::no-dumb-questions
+**Q: Why is one conversation left out of the results?**
+
+A: N6 crashed with a different error from the nested-call pattern, so that explanation does not cover it. I have not retried N6 under the uniform specialist spec.
+:::
+
 ## The `ask_user` crash, and why one conversation is excluded
 
 Across this whole test, `muse-glimmer` sometimes fails to format a tool call, and Ollama returns a 500 error: `parse Glimmer call to ask_user: missing ATEM function_calls wrapper`. Every time it happened, it was the same specific shape of call: a specialist's *own* `ask_user` call, made from inside its own tool loop, itself nested one level inside the supervisor's tool invocation of that specialist, under subagents. Two conversations, N1 and N8, crashed 3 times out of 3 with a pure `muse-glimmer` deployment (supervisor and specialists both) — near-deterministic, at temperature 0. A third, N6, crashed on retry too. Every `load_skill` call, every `ask_<area>_specialist` call, and every *top-level* `ask_user` call — flat's, skills', and handoffs' — worked every time, across every conversation in this whole post, on both `muse-glimmer` builds. Nesting looks like the actual trigger, not the model's general handling of `ask_user`.
@@ -292,9 +302,21 @@ N6 is still the exception, and it is still excluded: on the one earlier retry I 
 5. A tool call an agent makes from inside another agent's own tool call is not just an ordinary reliability risk with extra steps: across this project, one local model family's `ask_user` formatting crash only ever happened at exactly that nesting depth, on subagents, and never once on a top-level `ask_user` call, across flat, skills or handoffs. Nothing in the human-in-the-loop or subagents docs flags nested tool calls as a distinct reliability risk from top-level ones.
 6. Handoffs' single transfer per hop is a real single point of failure the docs do not call out: once a specialist takes over, nothing else is watching the conversation, so a mis-route at triage, or a specialist that cannot answer and does not recognize it should hand off elsewhere, has no fallback. On N8 here, triage handed off to the wrong specialist, and that specialist answered "the document does not cover that" on the follow-up rather than transferring to the one that could.
 
+:::watch-it The judge is one model's opinion
+The judge model is a step up from a keyword check, but it is still one model's opinion, not ground truth. It hallucinated a full grade once, so treat its scores as evidence, not as proof.
+:::
+
 ## Limits of this test
 
 I wrote the eleven conversations and the six documents. The judge model is a step up from a keyword check, but it is itself one model's opinion, not ground truth; I found and fixed one case where it hallucinated a full grade for an answer it had never seen. The simulated user answering from a fact sheet is also just another model, with its own chance of misreading what was asked. The headline comparison drops one of the twelve conversations (N6) entirely, because subagents could not complete it cleanly under any specialist-model configuration I tried, and I did not retest it under the configurations used for the final numbers here; skills, for what it is worth, ran N6 without any trouble, so its exclusion is conservative rather than flattering to any of the three designs. Skills runs `muse-glimmer` throughout; subagents and handoffs both run `muse-glimmer` for the supervisor or triage step and `qwen3.8:27b-mlx` for every specialist, a configuration forced by the crash rather than chosen for comparability — worth weighing before treating the three-way comparison as a uniform-model test.
+
+:::pencil Sharpen your pencil
+On conversation N8, what did the uniform specialist run fix?
+
+:::answer
+The supervisor calls two specialists, `dwi` and `reckless`. Under the uniform run, their two answers combine correctly into one final answer.
+:::
+:::
 
 ## The code
 
@@ -1569,6 +1591,12 @@ Auto policies must include "separate uninsured and underinsured motorist coverag
 - Court decisions not listed above. The list is a selection of leading decisions, not a complete one.
 ```
 
+
+:::bullet-points Recap
+- A router has no checkpointer, so it cannot hold a clarifying conversation across turns.
+- Running every specialist on one model stopped the crash in every conversation the uniform run covered.
+- N6 stays excluded, with its own error, and has not been retried under the uniform spec.
+:::
 
 ## References
 

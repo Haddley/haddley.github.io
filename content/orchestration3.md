@@ -448,6 +448,12 @@ Writing the loop yourself also means owning its awkward cases. That post handles
 
 A framework is a convenience, not a requirement. What LangGraph adds to a loop like this is what this script uses it for: state saved between steps, a pause that can resume, parallel branches with a defined merge, and a graph you can draw from the code. If you do not need those, the loop above is enough. The question is whether the extras are worth another layer to learn, which is the same question I asked of this script under "Do you need LangGraph for this?" above.
 
+:::no-dumb-questions
+**Q: Does the orchestrator run the remote agent's code?**
+
+A: No. It sends a task to the remote agent over A2A and then checks the reply against the official source.
+:::
+
 ## What an orchestrator is responsible for
 
 A2A describes the remote agent's side in detail: the card, the skills, the task states. The client that coordinates one or more agents has duties of its own, and most of them are easy to lose when the model is left to improvise.
@@ -473,6 +479,10 @@ Step 5 deserves emphasis. The remote agent is a third party, and the official sa
 | Supervisor | One agent routes work to several specialists | Not used |
 | Handoff | Control moves to another agent for the rest of the conversation | Not used |
 | Human in the loop | The run pauses for approval before an irreversible step | Approve the note before it can be sent |
+
+:::brain-power Before you read the graph
+Which step should stop and wait for a person before anything irreversible happens? Name one before reading on.
+:::
 
 ## The graph
 
@@ -893,6 +903,10 @@ I ran the `--tamper-test` command both ways in a clean folder and it produced th
 - **The remote agent is rate limited.** Its reply reported a limit of 20 calls. If it stops returning a briefing, the script stops with an error in `fetch_briefing` instead of carrying on with bad data.
 - **The first run is slower.** uv downloads Python and the packages, and Ollama loads the model into memory.
 
+:::watch-it One run is one path
+A single run shows one path through the graph on one input. It does not show how the graph behaves across the other inputs, so do not read one clean run as a test.
+:::
+
 ## Runs
 
 Before running the whole graph, I tested the verification step alone, since a check that has never failed proves little. I fed it one untouched row, one with an altered title and one invented document, using no model and no calls to the remote agent:
@@ -967,6 +981,12 @@ This time the conditional edge sent the run to `__end__` before drafting, so not
 - **The scoring rests on three documents.** A model choosing among three rows is a thin test, and its scores are one small local model's opinion. I set the threshold of 6 by hand.
 - **The listing is unclaimed.** Its owner has not verified it with the registry, so I treated its replies as untrusted and ignored the upgrade offers.
 - **The free tier is limited.** Its own `rate_limit` field reported a limit of 20 calls, and I made a handful of calls in total.
+
+:::bullet-points Recap
+- Find the agent on the registry, delegate to it over A2A, and verify its reply against the official source.
+- Pause for human approval before the step that cannot be undone.
+- One run shows one path, so check more than one input before trusting the graph.
+:::
 
 ## References
 

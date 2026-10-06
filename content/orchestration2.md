@@ -286,6 +286,10 @@ curl -s http://127.0.0.1:9999/.well-known/agent-card.json | python3 -m json.tool
 
 Every field maps directly onto the `AgentCard` object defined in `__main__.py` — this JSON is the exact object, serialized, with only the `extended_skill` withheld because this is the public, unauthenticated card, not the extended one.
 
+:::brain-power Before you send the first request by hand
+What do you expect the server to want in the body of a request: a plain string, or a structured envelope with a method name? Guess before reading on.
+:::
+
 ## Talking to the agent over raw JSON-RPC
 
 Before using the SDK's own client, I sent one request entirely by hand, to see the wire protocol with nothing hidden. The card above names `JSONRPC` as the interface, so every real call is an HTTP `POST` to the base URL, with a JSON-RPC 2.0 envelope as the body. My first attempt used `message/send` as the method name — the name used in the protocol's general documentation:
@@ -381,6 +385,12 @@ curl -s -X POST http://127.0.0.1:9999/ \
 ```
 
 Every concept from earlier in this post is sitting directly in that one response: a `Task`, with a `status.state` of `TASK_STATE_COMPLETED`, an `artifacts` list holding the agent's actual output as a text `Part`, and a `history` recording both turns — the user's message and the agent's intermediate "Processing request..." message — exactly the four-step lifecycle `agent_executor.py` walks through.
+
+:::no-dumb-questions
+**Q: If the SDK works, do I still need the raw calls?**
+
+A: Yes, for debugging. The raw calls show exactly what the SDK sends, so when something fails you can see which layer is wrong.
+:::
 
 ## Talking to the agent with the official SDK client
 
@@ -523,6 +533,12 @@ INFO:     127.0.0.1:50104 - "POST / HTTP/1.1" 200 OK
 ## Where to go from here
 
 `helloworld` shows the protocol's mechanics with nothing else in the way; the same `samples/python/agents/` directory has 33 other samples layering real frameworks on top of it — `langgraph` and `crewai` for graph- and crew-based multi-agent orchestration, `adk_currency_agent` and `travel_planner_agent` for Google's Agent Development Kit, `semantickernel` for Microsoft's framework already covered on this blog in the [Prompt Flow](/posts/promptflow4/) series' look at Semantic Kernel's planner, and `a2a_mcp` specifically demonstrating an agent that is both an A2A server and an MCP client at once — the two protocols from the comparison table above, in the same process. Every one of them follows the identical three-stage lifecycle this post walked through by hand: publish a card, accept a message, return a task.
+
+:::bullet-points Recap
+- A2A runs on plain HTTP, JSON-RPC 2.0 for requests and responses, and Server-Sent Events for streaming.
+- Discovery starts from the agent card that the server publishes.
+- A raw JSON-RPC call and the official SDK client do the same job, one by hand and one wrapped.
+:::
 
 ## References
 
