@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "claudecode16",
+      "title": "Claude Code (Part 16)",
+      "description": "Using Claude Code to program a bare ATtiny85-20PU through a USB Tiny AVR Programmer on an Apple Silicon Mac, after simulating the same circuit in Tinkercad",
+      "date": "2026-10-06",
+      "categories": [
+        "AI",
+        "IOT"
+      ],
+      "tags": "claude-code, attiny85, avrdude, tinkercad, hardware-debugging, agentic-coding"
+    },
+    {
       "slug": "minigpt6",
       "title": "MiniGPT (Part 7)",
       "description": "Reading a longer row in the same memory: why attention's cost grows with the square of the row, how a sliding window caps it, why writing the window as a mask saves nothing, and a secret-word test of what a long row is for, and of how far a window really reaches, with a follow-along notebook",
@@ -2849,5 +2860,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-06T02:40:44.131Z"
+  "generatedAt": "2026-10-06T05:22:11.900Z"
 }
