@@ -591,3 +591,12 @@ b span,
 b em {
   font-weight: 700;
 }
+
+/* SVG diagrams in posts: readable on phones (see MobiriseContentRenderer) */
+.svg-diagram { display: block; }
+.svg-diagram-hint { display: none; }
+@media (max-width: 640px) {
+  .svg-diagram { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .svg-diagram img { min-width: 640px; }
+  .svg-diagram-hint { display: block; text-align: center; font-size: 0.8rem; color: #6b7280; margin-top: 0.25rem; }
+}

@@ -742,20 +742,33 @@ function renderSection(section: MobiriseParsedContent, index: number, nested = f
       </blockquote>
     ));
   } else if (section.type === 'image') {
+    const image = (
+      <Image
+        src={section.content}
+        alt={(section.description || '').replace(/[`*]/g, '')}
+        width={800}
+        height={600}
+        style={{ width: '100%', height: 'auto' }}
+        className="img-fluid"
+        onError={() => {
+          console.error('Image failed to load:', section.content);
+        }}
+        unoptimized={true}
+      />
+    );
+    // Diagrams are drawn as SVGs with small text: on a phone they keep a readable width
+    // inside a sideways-scrolling box, and a tap opens the full-size drawing on its own.
+    const isDiagram = /\.svg(\?|$)/i.test(section.content);
     return wrap(index, nested, (
       <div className="image-wrapper">
-        <Image
-          src={section.content}
-          alt={(section.description || '').replace(/[`*]/g, '')}
-          width={800}
-          height={600}
-          style={{ width: '100%', height: 'auto' }}
-          className="img-fluid"
-          onError={() => {
-            console.error('Image failed to load:', section.content);
-          }}
-          unoptimized={true}
-        />
+        {isDiagram ? (
+          <>
+            <a href={section.content} target="_blank" rel="noopener noreferrer" className="svg-diagram" title="Open the full-size diagram">
+              {image}
+            </a>
+            <span className="svg-diagram-hint">Scroll sideways, or tap the diagram to open it full size</span>
+          </>
+        ) : image}
         {section.description && (
           <p className="mbr-description mbr-fonts-style mt-2 align-center display-4">
             {processInlineMarkdown(section.description)}

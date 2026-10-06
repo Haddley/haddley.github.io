@@ -93,7 +93,7 @@ I raced three engines on the same machine, the same batch of 32 snippets of 256 
 
 Two things stand out:
 
-- **Compiling is where the speed is.** Without `mx.compile`, MLX is slightly *slower* than PyTorch. With it, MLX is 24% faster than itself and 16% faster than PyTorch.
+- **Compiling is where the speed is.** Without `mx.compile`, MLX is slightly *slower* than PyTorch. With it, MLX is about a quarter faster than itself, and 16% faster than PyTorch. When the notebook ran the same race again later, compiled MLX came out 20% faster, so the honest range from my runs is 16 to 20%.
 - **MLX uses less memory either way:** 3.7 to 3.9 GB against PyTorch's 4.6 GB, about 15 to 20% less for exactly the same machine. Later in this series, when a much bigger teacher model has to share the same pool, that headroom matters.
 
 :::watch-it
@@ -121,7 +121,7 @@ Tim has a dirty sock, the sock stays the subject of the story, and the story has
 
 **PyTorch:** I calculate every line the moment it runs. You can watch exactly what happens, line by line. That is how people learn.
 
-**MLX:** And I wait, so that I can see the whole step and pack it into one job. Compiled, I trained this machine 16% faster than you, in less memory.
+**MLX:** And I wait, so that I can see the whole step and pack it into one job. Compiled, I trained this machine 16 to 20% faster than you, in less memory.
 
 **PyTorch:** Not compiled, you were slower than me.
 
@@ -139,7 +139,7 @@ Tim has a dirty sock, the sock stays the subject of the story, and the story has
 - Apple's chips share one pool of memory, so MLX never copies batches to the GPU.
 - MLX writes calculations down and only runs them when a result is needed: lazy evaluation.
 - `mx.compile` packs a whole training step into one job, and that is where the speed comes from.
-- Compiled MLX trained 16% faster than PyTorch, in 15 to 20% less memory, with the same answers.
+- Compiled MLX trained 16 to 20% faster than PyTorch, in 15 to 20% less memory, with the same answers.
 :::
 
 :::no-dumb-questions

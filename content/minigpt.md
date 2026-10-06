@@ -505,7 +505,7 @@ So why not simply give the machine thousands of positions? Because seeing furthe
 3. **Slower writing.** Every new letter is chosen by running the whole row through all four blocks, so a longer row makes every single letter slower to write.
 4. **Seeing is not the same as using.** A machine with more positions only gets better if it learns to use the far-away letters, and that needs practice text where letters far back really matter.
 
-This is the same limit you meet in chatbots, where it is called the context window and counted in tokens rather than letters. Today's models can see hundreds of thousands of tokens at once. They get there partly with better ways of marking positions than a fixed set of position cards, like the rotary position embeddings I tried in [MiniGPT (Part 5)](/posts/minigpt4/), and partly with cheaper kinds of attention, like the windowed attention in [MiniGPT (Part 7)](/posts/minigpt6/).
+This is the same limit you meet in chatbots, where it is called the context window and counted in tokens rather than letters. Today's models can see hundreds of thousands of tokens at once. They get there partly with better ways of marking positions than a fixed set of position cards, like the rotary position embeddings I tried in [MiniGPT (Part 5)](/posts/minigpt4/), and partly with cheaper kinds of attention, like the windowed attention in [MiniGPT (Part 7)](/posts/minigpt6/). Windows are usually mixed with some blocks of full attention, because, as Part 7's secret-word test shows, a window does not reach further back on its own.
 
 ### Try it: my trained machine, running in your browser
 

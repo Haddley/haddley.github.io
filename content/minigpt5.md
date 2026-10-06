@@ -239,7 +239,7 @@ agree = (mx.argmax(tl, -1) == mx.argmax(s_lp, -1)).mean()  # how often their big
 
 ## Try it yourself
 
-- **The follow-along notebook:** [`part6-distillation/minigpt_follow_along_6.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part6-distillation/minigpt_follow_along_6.ipynb), for Jupyter on a Mac with Apple Silicon. It shows a teacher's wheel next to the one-hot answer, works the KL divergence out by hand, and trains a student with GPT-2 as its teacher. It is saved with the outputs from my own run, so you can read every result on GitHub without a Mac.
+- **The follow-along notebook:** [`part6-distillation/minigpt_follow_along_6.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part6-distillation/minigpt_follow_along_6.ipynb), for Jupyter on a Mac with Apple Silicon. It shows a teacher's wheel next to the one-hot answer, works the KL divergence out by hand, trains a student with GPT-2 as its teacher, and shows the capacity-gap results. It is saved with the outputs from my own run, so you can read every result on GitHub without a Mac.
 - **On the command line,** after Part 3's `prepare_data.py` and `tokenizers_setup.py`:
 
 ```bash

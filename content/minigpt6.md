@@ -113,6 +113,9 @@ TinyStories cannot show what a long row is for, so I built a test that can. Each
 | 1,024-position row, full attention | **100%** | **100%** | **100%** | **100%** | **100%** |
 | 1,024-position row, 256-position window | **100%** | **100%** | 3.8% | 3.8% | 3.8% |
 
+![](assets/images/minigpt6/secret-word.svg)
+*The same results as a picture. Inside 256 pieces, all three machines find the word every time; beyond it, only full attention does*
+
 - **All three learned the trick.** Whenever the secret was inside what they could see, all three got it right every time.
 - **The 256-position row cannot see past its row.** Beyond 256 pieces, the secret has fallen off the front, and it can only guess.
 - **Full attention can.** With 1,024 positions, it found the word 970 pieces back every time. This is what a long row is for.
@@ -365,7 +368,7 @@ Every plain name used in this series, next to the name the experts use, and the 
 
 ## Try it yourself
 
-- **The follow-along notebook:** [`part7-sliding-window/minigpt_follow_along_7.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part7-sliding-window/minigpt_follow_along_7.ipynb), for Jupyter on a Mac with Apple Silicon. It counts the matches, checks that the chunked window gives full attention's numbers when the window covers the whole row, and runs a short memory race. It is saved with the outputs from my own run, so you can read every result on GitHub without a Mac.
+- **The follow-along notebook:** [`part7-sliding-window/minigpt_follow_along_7.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part7-sliding-window/minigpt_follow_along_7.ipynb), for Jupyter on a Mac with Apple Silicon. It counts the matches, checks that the chunked window gives full attention's numbers when the window covers the whole row, runs a short memory race, and shows the secret-word results. It is saved with the outputs from my own run, so you can read every result on GitHub without a Mac.
 - **On the command line,** after Part 3's `prepare_data.py` and `tokenizers_setup.py`:
 
 ```bash
