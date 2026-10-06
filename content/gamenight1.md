@@ -25,6 +25,10 @@ There's no database and no server process anywhere in this project. Every game f
 
 That single decision is what makes the rest of the architecture simple. There's no conflict resolution, no "whose update wins," no eventual consistency to reason about — because there's only ever one place state can change.
 
+:::brain-power Before you read on
+If the first message a browser sends decides its role, what could go wrong when a page is refreshed? Make a guess before reading on.
+:::
+
 ## Two roles, decided by the first message
 
 When a device connects to the host, the host doesn't know yet whether it's a player's phone or a TV asking to be a spectator. It waits for the first message to say so:
@@ -175,6 +179,12 @@ and every guest whose own connection was actually severed is already retrying on
 
 What genuinely can't be recovered is the host's browser *process* going away — the tab closing, a reload, a crash, the device losing power. That's not a networking failure at all; it's `H` itself ceasing to exist, because it only ever lived in that one browser's memory with nothing backing it up anywhere else. Deliberately so — the project could have a returning host quietly re-create an empty room on the same code, but that would just be lying to everyone still connected about whether their game survived, so it doesn't try. In practice the risk was never "don't let the host's wifi drop" — that's handled — it's "don't reload or close the tab that's actually hosting." Every phone, captain included, can come and go freely. The one browser genuinely holding the game can't disappear.
 
+:::no-dumb-questions
+**Q: Why does a refresh change a player's ID?**
+
+A: Every new connection gets a fresh random peer ID, including after a page refresh. The host has to re-key the player to the new ID rather than treat it as a stranger.
+:::
+
 ## A player IS their peer id — and that's the trap
 
 Here's the thing that actually broke a real game night, mine. A PeerJS connection's `peer` id is a fresh random string every time a browser opens a connection — including after a page refresh. The host has to treat a refreshed phone as "the same player coming back," not a new one, which means matching a rejoining `join` message to an existing seat and rewriting that seat's id everywhere it's stored:
@@ -201,6 +211,10 @@ I hit the bug this exists to fix while actually playing Plump Trek, my board gam
 The fix generalises: **rewrite every stored reference in one place**, not just the obvious one (`H.players`). A unit test in the project now greps each game's source for any field that gets assigned a player id and fails the build if `hostRekeyPlayer` doesn't mention it — so the next time I add a field like this, I can't forget the rekey.
 
 That test is one of a handful I think of as *audits* rather than ordinary unit tests: instead of exercising one game's logic with fixed inputs, `unit/presence.test.js` reads the actual source of every single game and fails if any of them drifted from the shared connection rules — hand-rolling their own version of something `common.js` already provides, or storing a player id somewhere the rekey function doesn't know about. Running that one file against the whole project found three separate games with a stranded-id bug like the one above, which six earlier hand-fixes elsewhere had missed. It's a cheap, mechanical way to ask "does every game actually follow the pattern I think they all follow" instead of trusting that they do.
+
+:::watch-it A closed tab can look like a player still in the game
+The `close` event does not fire when a tab is simply closed. A host that waits for it will keep a vanished player on the list, so it needs a heartbeat and a timeout.
+:::
 
 ## A closed tab sends no signal at all
 

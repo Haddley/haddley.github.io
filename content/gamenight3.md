@@ -32,6 +32,10 @@ function speak(text) {
 }
 ```
 
+:::brain-power Before the iOS rule
+Why would a browser block speech that a page starts on its own, with no tap from the person? Guess before reading on.
+:::
+
 ## The rule that nearly kept him mute forever
 
 The first real obstacle wasn't a browser gap at all — it was iOS Safari's permission model. iOS grants a page permission to speak **exactly once, and only from inside a user gesture** like a tap. Every line the auctioneer says arrives later, from a network message the host broadcasts — which is *never* a gesture. Without doing something about that, the very first `speak()` call on an iPhone would be silently refused, and every line after it too, because the permission was never granted in the first place.
@@ -70,6 +74,12 @@ Without either of these, the auctioneer would work perfectly in Chrome on a lapt
 
 The auctioneer's lines have to come out of two different code paths — `applyMsg` on a phone and `applyViewerMsg` on the TV, since a phone and a TV render completely different screens off the same broadcast — and both of them are supposed to call `say()` on exactly the same beats. They didn't, for a while: the TV-only version shipped first, and when I later removed the role check so a phone could speak too, the toggle silently did nothing on phones, because nothing in the phone's own code path had ever been wired to call it in the first place. No error, because nothing was actually broken — a feature just wasn't there yet. `unit/goinggone.test.js` now audits the two handlers against each other directly, so the same drift can't happen silently a second time.
 
+:::no-dumb-questions
+**Q: How do you tell three different causes apart when the symptom is the same?**
+
+A: The post shows what each cause looks like on screen, so you can match the symptom to the cause rather than guess.
+:::
+
 ## Three causes, and telling them apart on screen
 
 Even once the gesture is handled, there are still three genuinely different reasons a browser might not speak, and they all *look* identical from across the room — he goes quiet, and his mouth stops moving, because his mouth animation is driven by the utterance's own `onstart` event:
@@ -101,6 +111,10 @@ The game stays fully playable with the auctioneer mute. Every line he "says" is 
 His mouth still moves even with no voice at all, timed off the same syllable plan a real utterance would have used, so a silent Fire TV doesn't show a character frozen mid-sentence under a caption — `mimeLine()` runs the same animation the real `onstart` handler would have triggered, just on a timer instead of real audio events.
 
 I did try to give Silk a real voice — a bank of pre-recorded word clips stitched together at runtime, since Fire OS obviously *can* play audio. I abandoned it: concatenated single words don't sound like a sentence no matter how good the source voice is, and the better the individual recording, the more obvious the seams between words become. It's parked, not solved.
+
+:::watch-it Fixing one gap can hide another
+Fixing the speech problem did not fix the emoji problem, even on the same browser. Test each surface on its own, because one working fix is no evidence about the rest.
+:::
 
 ## The same browser, a second unrelated gap
 

@@ -33,6 +33,12 @@ if (typeof document !== 'undefined' && typeof window !== 'undefined') (function 
 
 That base install is free: a `page_view` per game and GA4's own `user_engagement` events, which the reporting UI turns into "average engagement time" per page. That alone answers "which games get opened" and "how long do people stay" — but a page view only proves a game was *opened*, not that anyone actually played it.
 
+:::no-dumb-questions
+**Q: Why fire the events from one place for all nineteen games?**
+
+A: One place means one implementation, so the events behave the same way in every game and cannot drift apart.
+:::
+
 ## Two events, fired from one place, for nineteen games
 
 The honest "was this actually tried" signal comes from two custom events, and the trick was finding the one place in the codebase every game's connection lifecycle already passes through, so I didn't have to wire anything per-game:
@@ -76,6 +82,10 @@ hc.on('open', () => {
 
 Both events sit inside `p2p.js`, so all 19 games get them for free just by going through `hostPeer`/`joinPeer` the way [Part 1](/posts/gamenight1/) described. Both carry `{ game: gameSlug() }`, so a shared file can label the event without knowing which game called it — GA4 attaches "Page title"/"Page path" to every event automatically too, so breaking the numbers down by game in Explore needs no custom dimension registration.
 
+:::brain-power Before the event names
+Why might a tracker name a donation-link click something other than a purchase? Make a guess before reading on.
+:::
+
 ## `bmc_click`, and deliberately not `purchase`
 
 There's a Buy Me a Coffee link in the footer of every game, and I track clicks on it as `bmc_click`, labelled by source (`link`, `qr`, or `qr_scan`) so I can see which one people actually use:
@@ -88,6 +98,10 @@ GA4 ships a default suggested `purchase` Key Event on every property, and I deli
 The QR scan needed its own tiny redirect page, `bmc.html`, because a phone camera reads a QR code's encoded URL and opens it directly — it never touches the page the image is sitting on, so no `onclick` handler on that page can ever fire for an actual scan, only for someone tapping the rendered image on their own screen. So the QR code's payload isn't the Buy Me a Coffee URL directly; it's `bmc.html`, which fires `trackEvent('bmc_click', {source: 'qr_scan'})` and then does `location.replace(...)` on to Buy Me a Coffee — `.replace`, not `.href`, so the redirect hop never sits in the phone's browser history.
 
 `room_created`, `room_joined` and `bmc_click` are all marked as GA4 Key Events now (Admin → Events → Recent events → star) — the first two answer "was this game actually tried" as opposed to a bounce, and the third is worth tracking as a signal of intent even though it isn't a completed donation.
+
+:::watch-it A small, capped experiment is still spend
+A cap limits the damage, but it does not make the experiment free. Decide in advance what result would justify spending more, and stop when the cap is reached.
+:::
 
 ## A small, capped Google Ads experiment
 

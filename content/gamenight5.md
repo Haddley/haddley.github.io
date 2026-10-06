@@ -73,6 +73,12 @@ test('no shared file declares a top-level CONST that a game it loads also declar
 
 The last test in that file doesn't test the games at all — it tests the *audit itself*, feeding it a known collision and a known-safe function-scoped shadow, and asserting it catches one and ignores the other. As the file's own comment puts it: a test that cannot fail is worse than no test.
 
+:::no-dumb-questions
+**Q: When should a test use a real network instead of driving the code directly?**
+
+A: When the thing you are proving depends on the real network, such as whether TURN credentials still work. Driving the code directly is faster for checking logic.
+:::
+
 ## Real network vs. driven directly, and knowing which one you need
 
 [Part 2](/posts/gamenight2/) covered the 🏠/🌐/📡 badge and mentioned `relay.e2e.spec.js` forcing a real TURN connection to prove the credentials still work. There's a second test for the same badge that deliberately *doesn't* touch the network, because the condition it's checking — a host juggling several guests on different paths at once — can't be provoked reliably on a laptop:
@@ -97,6 +103,10 @@ await expect(host.locator('#btn-relay')).toHaveText('📡', { timeout: 20_000 })
 ```
 
 Two tools, two different jobs: drive the state directly for anything that's cheap to fake and expensive to provoke for real; reach for the real network when the thing under test is *whether the real network actually does what you think it does*.
+
+:::watch-it A passing test can still miss the real failure
+A test can pass while the real failure still exists, if it simulates the wrong thing. Check that the test drives the failure you actually care about, such as a phone that is really gone.
+:::
 
 ## A phone that's actually gone, and a host that's actually gone
 
@@ -145,6 +155,10 @@ for (const [name, ch] of Object.entries(icons)) {
 ```
 
 It checks the substitution happened *and* that none of the five glyphs ever reach the actual page text — then loads the same page with the font intact and confirms nothing gets substituted when there's nothing to work around. One test, no Fire TV required, and it exercises the detector from [Part 3](/posts/gamenight3/) exactly the way a real incomplete font would.
+
+:::brain-power Before the fun test
+How would you test whether a game is fun, rather than whether it is correct? Name one signal before reading on.
+:::
 
 ## Testing whether it's actually fun
 

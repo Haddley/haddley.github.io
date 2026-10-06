@@ -42,6 +42,10 @@ Every game passes this to every `new Peer(...)` call — host and guest alike �
 
 The credentials here are genuinely public — visible to anyone who opens dev tools on any game page — which is fine for a free, non-commercial family games site with no backend to hide a secret behind. Rotating them (if the quota's ever abused) means changing them in this one file, since it's the only place they live.
 
+:::brain-power Before you read the stats code
+WebRTC has no single event that says which network path it chose. How would you find out, short of asking the browser directly? Guess before reading on.
+:::
+
 ## Reading which path actually won
 
 Knowing which candidate pair WebRTC settled on means polling the live connection's stats, because there's no single event that just tells you:
@@ -62,6 +66,12 @@ function p2pWatchRelay(conn) {
 ```
 
 Finding "the selected pair" is more browser-dependent than it should be: `p2pWatchRelay` tries `transport.selectedCandidatePairId` first, falls back to a nominated/succeeded pair, then to any succeeded pair, and finally to the raw candidate list for older WebKit builds that don't expose a usable pair at all. A host holds one connection per player, so when there are several, the badge shows the least favourable path across all of them — if one player on a hostile network is relayed, the whole host badge shows 📡, because that's the honest answer to "is TURN quota being spent right now."
+
+:::no-dumb-questions
+**Q: What does the satellite badge mean?**
+
+A: The connection is going through a relay server rather than a direct path between the two browsers.
+:::
 
 ## The badge itself
 
@@ -88,6 +98,10 @@ It only appears once you're actually in a room — there's nothing useful to say
 *Tapping the badge on a phone that just joined a TV on the same test machine — "Same network 🏠"*
 
 `?net=0` on any game's URL hides the badge for good and `?net=1` brings it back, sticky per browser — a couple of playtesters found it distracting once they trusted it, and I wanted that to be a one-tap decision rather than something I had to build a settings screen for.
+
+:::watch-it Check the network before you blame the code
+A badge stuck on relay is almost always the player's network: a strict firewall or carrier-grade NAT leaves no direct path. Check that before you change any game code.
+:::
 
 ## What "stuck on 📡" actually means
 
