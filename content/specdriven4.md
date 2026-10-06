@@ -14,6 +14,10 @@ This is the last of four posts trying three spec-driven AI development tools aga
 
 This post is where that control actually pays off. Three tools, one task, no averaging across different projects — so where they disagree, it is a real disagreement about what to build or how to check it, not noise from testing different things.
 
+:::brain-power Before you read the table
+Which of the three tools do you think asked the most questions along the way? Make a guess before reading on.
+:::
+
 ## The same ambiguities, three honestly different answers
 
 I never specified bit width, negative-number formatting, or the standard-deviation formula. Here is what each tool did with that silence.
@@ -131,6 +135,10 @@ With that said, they do not fit equally badly.
 
 So: will any of them help? BMAD's conversational posture and stage-based loop is the closest fit, with real caveats on cost and untested skills. Will all three support it? No — Spec-Kit's gates are specifically at odds with it, by its own community's admission. Will any get in the way? Spec-Kit, most clearly, for the same reason.
 
+:::under-the-hood How the token totals were measured
+I summed the usage fields from each session transcript for every `claude` invocation in each tool's directory. Cache reads are priced at about a tenth of the input rate, so the dollar figures are approximate, and the raw counts matter more than the rounded costs.
+:::
+
 ## What it cost
 
 Pulled from the actual session transcripts of every `claude` invocation across all three tool runs — real token counts, not estimates:
@@ -159,6 +167,10 @@ Worth stating plainly where independently running all three actually changed my 
 
 **Cost claims generally.** The specific multipliers sometimes repeated about this space (that OpenSpec is dramatically cheaper, or that BMAD costs many times more by default) are not supported by either the article's own published figures or by what we measured running all three ourselves. Both datasets show three tools in a broadly similar cost band, with only BMAD's heavier PRD/architecture mode — which neither the article's "BMAD Quick" arm nor our own runs exercised — landing meaningfully higher.
 
+:::watch-it Star counts change
+The GitHub star figures in this post are a dated reading from the day I checked. They will keep moving, so treat them as a snapshot and not a fixed fact.
+:::
+
 ## Mainstream standard, lightweight choice, simulated dev team
 
 A framing worth keeping, refined against everything above:
@@ -169,6 +181,12 @@ A framing worth keeping, refined against everything above:
 
 **BMAD reads as the simulated development team, and not just as branding.** Five named personas with distinct stated voices, a literal `team = "software-development"` field in its own config, and — the concrete evidence, not just the flavor — it is the only tool that stopped and asked me real product decisions the way a PM actually would, and the only one whose review process is explicitly adversarial by design (three differently-named review layers, each checking the others' blind spots) rather than a single pass.
 
+:::no-dumb-questions
+**Q: Is this a ranking that names one best tool?**
+
+A: No. The table shows three answers to the same ambiguities, and the closing section gives a recommendation for each kind of need.
+:::
+
 ## So, which one
 
 Not "which is best" in the abstract — which is what the article itself was right to avoid too. Grounded in what actually happened across six full feature cycles:
@@ -178,6 +196,12 @@ Not "which is best" in the abstract — which is what the article itself was rig
 - **Want to be asked rather than guessed for, and want verification to happen automatically rather than on your own initiative?** BMAD. It is the heaviest to set up and the most expensive of the three in our own runs, and that cost bought something real: the only tool that treats "check whether this is actually a bug before fixing it" as seriously as "find bugs."
 
 All three repos are public and unedited: [github.com/Haddley/specdriven](https://github.com/Haddley/specdriven) — `main` for OpenSpec, `spec-kit` and `bmad` branches for the other two — full commit history from the identical baseline through every propose, plan, build, and review, nothing cleaned up after the fact.
+
+:::bullet-points Recap
+- The three tools answered the same ambiguities in three different ways.
+- Verification ran automatically in one tool, on request in another, and not at all in the third.
+- Cost, friction, and documentation readability each point to a different tool, so the right choice depends on the team.
+:::
 
 ## References
 

@@ -127,6 +127,10 @@ Twenty lines, three sections, done. Both OpenSpec's context and Spec-Kit's const
 
 Next: Programmer Mode.
 
+:::brain-power Before you read on
+Would you rather a tool decide something for you silently, or ask you a question you have to answer? Pick one before reading the next section.
+:::
+
 ## Programmer Mode — the first tool to actually ask
 
 I gave BMAD the exact same plain request I gave the other two tools, no explicit command:
@@ -150,6 +154,12 @@ Keep it simple.
 It landed on **four-function only** and **sign + magnitude negatives** — matching Spec-Kit's negative-number choice, not OpenSpec's two's-complement, and matching both other tools' decision to exclude bitwise operators. Three tools, the same underlying ambiguity, and this time I got to see the choice actually being offered to me rather than inferring it after the fact from a design doc.
 
 The resulting `spec-programmer-mode.md` is markedly leaner than either OpenSpec's four-file change or Spec-Kit's five-file plan — one file, an Intent/Boundaries/Edge-Case-Matrix wrapped in a literal `<frozen-after-approval>` tag (a concrete artifact-level "this part is now a human-approved contract" marker neither other tool has), a code map, tasks with acceptance criteria, and design notes. It gave me three ways to proceed — approve and implement now, approve and stop for a later session, or run a review pass first — and I chose to keep going in the same session, matching how I ran the other two tools' full cycles.
+
+:::no-dumb-questions
+**Q: If the review ran before I saw anything, did I never see a bug?**
+
+A: I never saw a broken intermediate version of either feature. The review layers found and fixed the defects inside the build pass, so what reached me was already patched.
+:::
 
 ## Building it — and a review layer that found real bugs before I did
 
@@ -233,6 +243,14 @@ Two more genuine, unprompted design divergences showed up in the spec itself:
 - **Asymmetric empty-data behavior**: Sum of an empty list shows `0` (mathematically defensible — the sum of nothing is zero), but Average and Std Dev on insufficient data error out. Both OpenSpec and Spec-Kit made all three — Sum included — error uniformly on empty data. BMAD's split is more mathematically precise, and I hadn't asked for it either way.
 - **Mutual exclusivity with Programmer Mode**: activating one turns the other off entirely, and the data list *persists* across Clear (C) and across toggling the mode off and on — only a dedicated Clear Data button empties it. This is a third distinct answer to "how do two modes coexist," alongside OpenSpec's partial-suppression approach and Spec-Kit's explicit independent/orthogonal design.
 
+:::pencil Sharpen your pencil
+Why did BMAD leave the Standard-mode operators live during Statistics Mode?
+
+:::answer
+Its review layer found that the stale-operator case was reachable, then judged it a feature: you compute an expression, then press Add to capture the result, as the real Statistics box allows.
+:::
+:::
+
 ## Building it, and the review layer rejecting its own finding
 
 ```PROMPT
@@ -279,6 +297,10 @@ Average of empty list: No data entered
 
 Exactly as specified. BMAD drafted its own commit message again, disclosing the two real bugs, the three cosmetic fixes, and the two deferred systemic gaps in the body — I checked the diff matched before using it.
 
+:::watch-it Parallel review costs more than the spec suggests
+The spec file is small, but the review layers run as subagents, and each subagent call adds to the bill. The BMAD run cost about 2.6 times OpenSpec's, even though its spec is the most compact of the three.
+:::
+
 ## Where this leaves BMAD
 
 Two features, two full spec → build → review → verify cycles, 37 final tests, all real, all screenshotted. What stood out most, set against OpenSpec and Spec-Kit:
@@ -289,3 +311,9 @@ Two features, two full spec → build → review → verify cycles, 37 final tes
 - **The operational cost was real, and the heaviest of the three.** Two plugins needed (not one), filesystem-read approval on top of the Bash-approval wall the other tools also hit, a subagent-authorization step none of the others needed, and — the one thing that was my own mistake, not the tool's — a lost turn when I broke session continuity on `bmad-project-context` and had to redo it. None of this reflects badly on output quality, but it is a genuinely heavier lift to run non-interactively than either OpenSpec or Spec-Kit.
 
 Both repos are current: [github.com/Haddley/specdriven](https://github.com/Haddley/specdriven), `bmad` branch, full history from the plugin install through both committed features. Next: [the comparison](/posts/specdriven4/) — what actually held up across all three tools, where the source article's scoring agreed or disagreed with what I found running them myself, and what I'd actually recommend.
+
+:::bullet-points Recap
+- BMAD was the only tool that stopped to ask about the ambiguous decisions.
+- Its three-layer review found real defects and correctly rejected several false findings.
+- It was the heaviest of the three to set up and run, and the most expensive in my runs.
+:::

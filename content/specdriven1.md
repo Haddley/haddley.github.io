@@ -96,6 +96,10 @@ schema: spec-driven
 
 I am leaving it empty on purpose. Filling it in would mean telling the tool up front to use vanilla JS, keep the logic/DOM split, and so on — handing it answers to some of the exact ambiguities I actually want to watch it navigate on its own. A team adopting OpenSpec on day one, on a small project, often has not written that file yet either.
 
+:::brain-power Before you read the proposal
+What would you expect a tool to ask you before it writes four documents about a feature? Make a prediction before reading on.
+:::
+
 ## Proposing Programmer Mode
 
 ```PROMPT
@@ -155,6 +159,12 @@ Then switched straight to Binary:
 
 It matches the spec exactly, including the detail I would have expected to trip something up: positive values are not zero-padded to 32 bits (`FF`, not `000000FF`), only negative values fill the full word, which is what `toRadixString` actually does and what the spec's own scenario called for.
 
+:::no-dumb-questions
+**Q: Did sync change what the spec says?**
+
+A: No. The header changed from a delta to a plain requirements section, but every requirement and scenario carried over verbatim.
+:::
+
 ## Syncing the spec
 
 ```PROMPT
@@ -164,6 +174,10 @@ It matches the spec exactly, including the detail I would have expected to trip 
 This is the step that actually tests OpenSpec's "delta specs merge into a living source of truth" pitch, rather than just asserting it. `openspec/specs/` was empty before this — the baseline calculator was never spec'd — so syncing created `openspec/specs/programmer-mode/spec.md` from scratch. I diffed it against the delta spec `propose` wrote: the header changed from `# Spec Delta` to `# programmer-mode Specification`, and `## ADDED Requirements` became a plain `## Requirements`, but every requirement and scenario carried over verbatim. `openspec validate --specs` passed.
 
 That is the honest, slightly less dramatic version of the claim: for a brand-new capability with only `ADDED` requirements, "intelligent merge" mostly means "reformat the headers." The more interesting case — folding a `MODIFIED` requirement into an existing one without losing a scenario the main spec already had — never got exercised here, because neither of my two proposals touches the same capability twice. Worth being upfront about: I have not actually seen OpenSpec's merge logic do the harder thing yet.
+
+:::watch-it Archive can pause even when everything is clean
+On the Programmer Mode run, archive checked everything, found it clean, and still asked before moving any files. Expect that confirmation step even when every check passes.
+:::
 
 ## Archiving
 
@@ -247,6 +261,14 @@ It matches. Two genuinely different apply runs against the same command, same re
 
 `/opsx:archive add-statistics-mode` did **not** pause to ask for confirmation this time — it went straight to archiving, unlike the Programmer Mode run, where everything was equally clean and it still stopped to check. Same command, same clean-checks situation, different behavior. Whatever is driving that is not visible from the outside, and it is worth knowing about before trusting either behavior as "how archive works."
 
+:::pencil Sharpen your pencil
+Name two decisions OpenSpec made without asking you in the Programmer Mode proposal.
+
+:::answer
+The fixed 32-bit two's-complement word for negative numbers, and the overflow wraparound that follows from it. The truncation rule when leaving Decimal is another one.
+:::
+:::
+
 ## Where this leaves OpenSpec
 
 Two proposals, two full propose → apply → sync → archive cycles, forty-six tests, all real, all passing, all screenshotted. A few things I would not have predicted from the source article alone:
@@ -257,3 +279,9 @@ Two proposals, two full propose → apply → sync → archive cycles, forty-six
 - **The only real gap was mine, not the tool's**: running non-interactively meant `apply` genuinely could not verify its own work, which is exactly why I ran `npm test` and clicked through the browser myself both times rather than taking its word for it.
 
 Next: [Spec-Kit](/posts/specdriven2/), on the same two feature requests, against a fresh copy of the same baseline calculator.
+
+:::bullet-points Recap
+- OpenSpec wrote a proposal, design, spec delta, and tasks for each feature, then archived them.
+- Its specs/ directory accumulated both capabilities and read as accurate.
+- Run to run, apply and archive behaved differently on identical, clean repos.
+:::

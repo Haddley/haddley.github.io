@@ -58,6 +58,10 @@ That scaffolds `.specify/` (memory, scripts, templates, workflow registry) and s
 
 Already, this is a different shape from OpenSpec. OpenSpec's six commands were all peers — propose, apply, sync, archive, explore, update — and its project context (`config.yaml`) was one optional field I could leave blank without consequence. Spec-Kit's own CLI output lists **constitution first**, before a single feature can be specified, and — as I found out next — leaving it empty does not mean skipping it.
 
+:::brain-power Before you read the result
+What would you expect a governance document to contain if you give it no input at all? Guess how many principles it writes before reading on.
+:::
+
 ## The constitution, with no input
 
 I left `config.yaml`'s context blank for OpenSpec on purpose, to watch it navigate ambiguity from a cold start. To run the fair equivalent here, I invoked `/speckit-constitution` with no arguments at all:
@@ -73,6 +77,10 @@ This is the first real structural difference the article's framing predicted, an
 It read this experiment's own premise straight out of the README I wrote — the README's setup section literally says this repo exists to trial OpenSpec, Spec-Kit, and BMAD — and turned it into a binding **MUST-NOT** governance clause for its own run. I did not ask for that and would not have thought to. It is a genuinely funny, and genuinely honest, side effect of "derive principles from the repo": the repo's own experimental purpose became part of its constitution.
 
 Every principle came with a stated rationale, in the same style OpenSpec's `design.md` used — this is clearly a shared convention across these tools, not one tool's invention. The whole file is version-governed too: `1.0.0`, ratified today, with a semver amendment policy (MAJOR for principle removals, MINOR for new principles, PATCH for wording) written into a Governance section — a level of process ceremony OpenSpec's optional one-paragraph context field never asked for.
+
+:::watch-it Empty is not the same as skipped
+Spec-Kit's constitution is a template full of placeholders, and the workflow lists it as step one. Leaving the input empty does not skip the step. The empty run still produced a full, binding document.
+:::
 
 ## Specifying Programmer Mode
 
@@ -154,6 +162,12 @@ One real, honest gap I noticed: unlike OpenSpec's implementation, invalid digit 
 > *"Validating at the UI layer (disabling/hiding invalid buttons) — rejected as the only guard: FR-003 requires that invalid presses 'have no effect,' which the logic layer must guarantee independent of what the UI renders... UI affordances... are an optional, separate nicety not required by any functional requirement or acceptance scenario, so it is left out per Constitution V (YAGNI)."*
 
 This is one of the more interesting head-to-head moments in the whole comparison so far: **both tools explicitly considered disabling invalid keys in the DOM, and picked opposite defaults**, each with stated reasoning. OpenSpec's design.md chose DOM-level disabling because "the UI itself communicates what's valid." Spec-Kit's research.md rejected it as scope creep beyond what the functional requirement literally asks for. Neither is a mistake — they are different defaults about how much a spec-driven tool should build beyond the letter of the request, and it is worth knowing which one a given team would prefer before picking a tool.
+
+:::no-dumb-questions
+**Q: Does converge re-check the spec or the code?**
+
+A: Both. It checks the actual code against the spec, plan, tasks, and constitution, and it appends new tasks when it finds gaps.
+:::
 
 ## Converging on it
 
@@ -294,6 +308,14 @@ Unlike Programmer Mode, which took three rounds, Statistics Mode **converged on 
 
 It traced all 14 functional requirements, 6 success criteria, every acceptance scenario, all 5 design decisions from `research.md`, all 28 tasks against real code (not just their checkbox state), and all 5 constitution principles — and found nothing. Whether that is because the defect-catching at the plan stage already did its job before any code existed, or because this feature was genuinely more straightforward than Programmer Mode's bit-width and truncation edge cases, is a real question I cannot fully answer from one run each — but it is consistent with the plan-stage catch mattering: catching the stddev formula error *before* implementation meant convergence had one less category of bug to find *after* implementation.
 
+:::pencil Sharpen your pencil
+Which Programmer Mode bug did converge find in round two, and what fixed it?
+
+:::answer
+Division did not truncate, so `11 ÷ 10` in binary displayed `1.1`. A `Math.trunc` in the division path fixed it, and the same repro then returned `1`.
+:::
+:::
+
 ## Where this leaves Spec-Kit
 
 Two proposals, six workflow steps each (constitution once, then specify → plan → tasks → implement → converge, twice), 65 final tests, all real, all passing, all screenshotted. Compared against what OpenSpec showed in [Part 1](/posts/specdriven1/):
@@ -304,3 +326,9 @@ Two proposals, six workflow steps each (constitution once, then specify → plan
 - **The operational cost was real too.** Every single Spec-Kit step needed a workaround for non-interactive Bash approval — OpenSpec's `propose`/`apply` at least pre-authorize their own CLI calls; nothing in Spec-Kit does. That is a genuine friction difference a team would feel on day one, independent of either tool's planning quality.
 
 Both repos are current: [github.com/Haddley/specdriven](https://github.com/Haddley/specdriven), `spec-kit` branch, full history from the baseline through both converged features. Next: [BMAD](/posts/specdriven3/), the third tool, on a fresh copy of the same baseline and the same two requests.
+
+:::bullet-points Recap
+- Spec-Kit's constitution derived five binding principles, even with no input.
+- Convergence caught a real integer-truncation bug, and the plan step caught a math error in its own spec.
+- Every Bash call needed approval, so each step needed a workaround in a non-interactive run.
+:::
