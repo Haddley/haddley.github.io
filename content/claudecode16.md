@@ -95,6 +95,9 @@ int main(void) {
 }
 ```
 
+![](assets/images/claudecode16/annotated-blink.svg)
+*The blink program line by line, with a note beside each line in my own words*
+
 The logic is short. `DDRB` sets PB0 as an output, and the loop toggles it every 500 ms, so the LED changes state twice a second, a 1 Hz blink. The comment's claim that the programmer's own LED sits on PB0 is the one thing in this program that I could not confirm from the photos. The Tiny AVR Programmer hookup guide says "there's an on-board amber LED connected to pin 0 of the ATtiny85," and adds "The LED is connected to pin 0 in the Arduino environment." Pin 0 in that environment is PB0, which is physical pin 5. So the comment is correct, and the programmer's amber LED is the first thing that should blink.
 
 :::watch-it The clock is part of the program
