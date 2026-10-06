@@ -3,7 +3,7 @@
     {
       "slug": "minigpt6",
       "title": "MiniGPT (Part 7)",
-      "description": "Reading a longer row in the same memory: why attention's cost grows with the square of the row, how a sliding window caps it, why writing the window as a mask saves nothing, and training at four times the context, with a follow-along notebook",
+      "description": "Reading a longer row in the same memory: why attention's cost grows with the square of the row, how a sliding window caps it, why writing the window as a mask saves nothing, and a secret-word test of what a long row is for, and of how far a window really reaches, with a follow-along notebook",
       "date": "2026-10-05",
       "categories": [
         "AI"
@@ -13,7 +13,7 @@
     {
       "slug": "minigpt5",
       "title": "MiniGPT (Part 6)",
-      "description": "Learning from a teacher: training a small MiniGPT to copy a bigger model's whole wheel of chances, why the teacher must share the student's pieces, and the finding that a small teacher who knows the stories beats a big one who does not, with a follow-along notebook",
+      "description": "Learning from a teacher: training a small MiniGPT to copy a bigger model's whole wheel of chances, why the teacher must share the student's pieces, and a tested finding: the most helpful teacher was not the best storyteller, but the one whose wheels the student could copy, with a follow-along notebook",
       "date": "2026-10-05",
       "categories": [
         "AI"
@@ -2849,5 +2849,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-05T20:15:47.351Z"
+  "generatedAt": "2026-10-05T23:35:02.258Z"
 }

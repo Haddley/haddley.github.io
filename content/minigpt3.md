@@ -270,7 +270,7 @@ The same loop as every part so far: score the last working card against the answ
 
 ## Try it yourself
 
-- **The follow-along notebook:** [`part4-mlx/minigpt_follow_along_4.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part4-mlx/minigpt_follow_along_4.ipynb). Open it in Jupyter on a Mac with Apple Silicon. It prepares the stories, checks that the MLX machine has the same 13.9 million numbers as Part 3's, trains it, runs the race, and writes.
+- **The follow-along notebook:** [`part4-mlx/minigpt_follow_along_4.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part4-mlx/minigpt_follow_along_4.ipynb). Open it in Jupyter on a Mac with Apple Silicon. It prepares the stories, checks that the MLX machine has the same 13.9 million numbers as Part 3's, trains it, runs the race, and writes. It is saved with the outputs from my own run, so you can read every result on GitHub without a Mac.
 - **On the command line:**
 
 ```bash

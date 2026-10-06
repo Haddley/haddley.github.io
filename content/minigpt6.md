@@ -1,7 +1,7 @@
 ---
 title: "MiniGPT"
 part: 7
-description: "Reading a longer row in the same memory: why attention's cost grows with the square of the row, how a sliding window caps it, why writing the window as a mask saves nothing, and training at four times the context, with a follow-along notebook"
+description: "Reading a longer row in the same memory: why attention's cost grows with the square of the row, how a sliding window caps it, why writing the window as a mask saves nothing, and a secret-word test of what a long row is for, and of how far a window really reaches, with a follow-along notebook"
 date: "2026-10-05"
 categories: ["AI"]
 image: "/assets/images/minigpt6/posts-meta.svg"
@@ -50,7 +50,7 @@ The fix is to let each working card look back only over a fixed window, here the
 If each working card can only see the last 256 positions, how can the machine ever use something 1,000 positions back?
 :::
 
-The answer is the blocks. In block 1, a working card gathers information from up to 256 positions back. In block 2, it looks at working cards that have *already* gathered from their own windows, so it reaches up to about 512 back, and so on. With 6 blocks, information can travel about 1,500 positions, one window per block, much as [Part 1's four blocks](/posts/minigpt/#four-blocks-in-a-row) let each card reach further back than the one before.
+In principle, through the blocks. In block 1, a working card gathers information from up to 256 positions back. In block 2, it looks at working cards that have *already* gathered from their own windows, so it could reach up to about 512 back, and so on. With 6 blocks, information could travel about 1,500 positions, one window per block, much as [Part 1's four blocks](/posts/minigpt/#four-blocks-in-a-row) let each card reach further back than the one before. But *could* is not *does*: [the secret-word test](#what-is-a-long-row-for-the-secret-word) below found that my machine never learned to do it.
 
 ### Writing the window as a mask saves nothing
 
@@ -96,12 +96,33 @@ A window is only useful if the machine still works. I trained the modern machine
 ![](assets/images/minigpt6/train-1024.png)
 *Bits per byte at a 1,024-position row. The windowed machine is not behind*
 
-The windowed machine came out slightly *ahead*, but only by 0.008, about the size of the luck between two random starts (see [Part 5](/posts/minigpt4/#how-much-is-luck)), so the two are level. It also trained faster and in less memory. And its 0.6727 is inside the band of Part 5's 256-position machine (0.672 to 0.678, over three random starts): on these stories, a longer row did not help at all, because most stories are only a few hundred tokens long, so there is nothing further back worth seeing. TinyStories is the wrong text to show what a long row is *for*. The point here is the memory: the windowed machine learns just as well, while its attention cost stays flat as the row grows.
+The windowed machine came out slightly *ahead*, but only by 0.008, about the size of the luck between two random starts (see [Part 5](/posts/minigpt4/#how-much-is-luck)), so the two are level. It also trained faster and in less memory. And its 0.6727 is inside the band of Part 5's 256-position machine (0.672 to 0.678, over three random starts): on these stories, a longer row did not help at all, because most stories are only a few hundred tokens long, so there is nothing further back worth seeing. TinyStories is the wrong text to show what a long row is *for*, so the next section builds a test that is not. The point here is the memory: on these stories, the windowed machine learns just as well, while its attention cost stays flat as the row grows.
 
 ![](assets/images/minigpt6/generation.png)
 *The windowed machine, with a 1,024-position row, continuing "Once upon a time"*
 
 A bird named Bob, a fish that helps him, and "they became good friends": the same shape of story as every machine in this series. The window cost it nothing you can see.
+
+### What is a long row for? The secret word
+
+TinyStories cannot show what a long row is for, so I built a test that can. Each test row hides a secret near its start, such as " Lily's secret word is apple.", then carries on with ordinary stories, and ends by asking for it again: " Lily's secret word is". There are 8 names and 24 words, so a machine that cannot see the secret can only guess, right 1 time in 24. Half of each training batch was rows like these, with the secret anywhere from 20 to 1,000 pieces back; the other half was ordinary stories. I trained three machines on exactly this mix, 1,500 steps each, and then asked each one for the word from five distances, 400 times at each:
+
+| Machine | 100 back | 200 back | 400 back | 700 back | 970 back |
+|---|---|---|---|---|---|
+| 256-position row | **100%** | **100%** | 4.2% | 4.2% | 4.2% |
+| 1,024-position row, full attention | **100%** | **100%** | **100%** | **100%** | **100%** |
+| 1,024-position row, 256-position window | **100%** | **100%** | 3.8% | 3.8% | 3.8% |
+
+- **All three learned the trick.** Whenever the secret was inside what they could see, all three got it right every time.
+- **The 256-position row cannot see past its row.** Beyond 256 pieces, the secret has fallen off the front, and it can only guess.
+- **Full attention can.** With 1,024 positions, it found the word 970 pieces back every time. This is what a long row is for.
+- **The window did not reach past its window.** It behaved exactly like the 256-position row. Through six blocks, the word *could* have hopped 256 positions at a time to the end, but in 1,500 steps of training the machine never learned to pass it along.
+
+My reading of why: to pass the word along, some working card in the middle of an unrelated story would have to pick the secret up in one block and hold it for a later block to collect, and no part of that chain is rewarded until the whole chain works. Whatever the reason, the lesson is the same: the reach that the blocks allow in principle is not reach the machine has learned. It is one reason why many models that use windows, such as Google's Gemma 2, also keep some blocks with full attention.
+
+:::watch-it My first test taught nothing
+In my first version, the secret was anywhere from 50 to 1,000 pieces back, spread evenly. The full-attention machine still learned the trick, but the other two got it wrong even 100 pieces back, where they could see it. They had never learned it: so few of their training rows showed them the secret and the question together that they never worked out what the question was for. A test that teaches nothing measures nothing, so I gave half the secret rows a short gap, and checked that every machine could do the trick close up before asking how far it could reach.
+:::
 
 :::fireside-chat Tonight: full attention and the sliding window, on who can read more
 **Full attention:** I see everything. Every working card can look at every position before it. Nothing is ever out of reach.
@@ -114,21 +135,26 @@ A bird named Bob, a fish that helps him, and "they became good friends": the sam
 
 **Full attention:** But you are short-sighted. Each card sees 256 positions back, and no further.
 
-**Sliding window:** In one block. Six blocks, and information travels about 1,500 positions. And on these stories, I scored 0.6727 to your 0.6805.
+**Sliding window:** In one block. Through six blocks, information could travel about 1,500 positions.
+
+**Full attention:** Could. In the secret-word test, it did not. With the word 400 positions back, you guessed at random, and I got it every time.
+
+**Sliding window:** Fair. But on these stories, I scored 0.6727 to your 0.6805.
 
 **Full attention:** Within the noise.
 
-**Sliding window:** Agreed. Which is the point: same score, less memory, a bit faster.
+**Sliding window:** Agreed: the same score, in less memory, and a bit faster, as long as nothing important is further back than my window.
 
-**Full attention:** And when the text really does need something from 5,000 positions back?
+**Full attention:** And when something is?
 
-**Sliding window:** Then you earn your memory. These stories never did.
+**Sliding window:** Then you earn your memory.
 :::
 
 :::bullet-points Part 7, in short
 - Attention's matches, and their memory, grow with the square of the row.
 - A sliding window lets each working card look back only a fixed number of positions.
-- Through the blocks, information still travels much further than one window.
+- Through the blocks, information could in principle travel further than one window; in my secret-word test, it never did.
+- A full 1,024-position row found a word 970 pieces back every time; the windowed machine, only by chance.
 - Writing the window as a mask changes what is seen, not what it costs.
 - Computing in chunks is what saves memory: 16,384 positions in 59 GB, where full attention stopped at 4,096.
 - On these stories, the windowed machine learned just as well, faster, in less memory.
@@ -149,7 +175,7 @@ A: With chunks of 256, every card's window of 256 positions fits inside its own 
 
 **Q: Do the big models use this?**
 
-A: Some do, often mixed with full attention in some blocks. Mistral 7B used a sliding window in every block. The trade is the one measured here: memory and speed against the chance that something important is further back than information can travel.
+A: Some do, often mixed with full attention in some blocks. Mistral 7B used a sliding window in every block. The trade is the one measured here: memory and speed against the chance that something important is further back than the window. The secret-word test shows why so many models keep some full-attention blocks: a window does not reach further by itself.
 :::
 
 :::pencil Who does what?
@@ -220,6 +246,18 @@ elif self.naive_window:
 else:
     out = chunked_swa(q, k, v, self.window, self.scale)   # after sharing out the key and value heads
 ```
+
+### The secret word: `secret_word.py`
+
+`secret_word.py` builds each secret row from Part 3's stories, mixes them half and half with ordinary stories, trains one machine, and then asks for the word from 100 to 970 pieces back. A 256-position machine sees only the last 256 pieces of each row:
+
+```python
+secret = tok.encode(f" {name}'s secret word is {word}.")
+question = tok.encode(f" {name}'s secret word is") + tok.encode(f" {word}")
+row = np.concatenate([ids[s:s + before], secret, ids[s + before:s + before + gap], question])
+```
+
+`run_secret.sh` trains the three machines: `--block-size 256`, `--block-size 1024`, and `--block-size 1024 --window 256`.
 
 ### The race: `mem_sweep.py`
 
@@ -327,7 +365,7 @@ Every plain name used in this series, next to the name the experts use, and the 
 
 ## Try it yourself
 
-- **The follow-along notebook:** [`part7-sliding-window/minigpt_follow_along_7.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part7-sliding-window/minigpt_follow_along_7.ipynb), for Jupyter on a Mac with Apple Silicon. It counts the matches, checks that the chunked window gives full attention's numbers when the window covers the whole row, and runs a short memory race.
+- **The follow-along notebook:** [`part7-sliding-window/minigpt_follow_along_7.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part7-sliding-window/minigpt_follow_along_7.ipynb), for Jupyter on a Mac with Apple Silicon. It counts the matches, checks that the chunked window gives full attention's numbers when the window covers the whole row, and runs a short memory race. It is saved with the outputs from my own run, so you can read every result on GitHub without a Mac.
 - **On the command line,** after Part 3's `prepare_data.py` and `tokenizers_setup.py`:
 
 ```bash
@@ -336,6 +374,7 @@ python mem_sweep.py
 python figures.py
 python ../part5-modern-block/train_llama.py --tag window1024 --block-size 1024 --window 256 --iters 1500
 python ../part5-modern-block/train_llama.py --tag full1024   --block-size 1024 --window 0   --iters 1500
+./run_secret.sh      # the secret-word test: three machines, about 45 minutes
 ```
 
 MLX needs Apple Silicon.

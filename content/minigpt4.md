@@ -276,7 +276,7 @@ python train_llama.py --tag gelu_seed2   --seed 2 --mlp gelu
 
 ## Try it yourself
 
-- **The follow-along notebook:** [`part5-modern-block/minigpt_follow_along_5.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part5-modern-block/minigpt_follow_along_5.ipynb), for Jupyter on a Mac with Apple Silicon. It builds each machine and counts its numbers, shows RoPE's turning in action, trains the new block, and writes.
+- **The follow-along notebook:** [`part5-modern-block/minigpt_follow_along_5.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part5-modern-block/minigpt_follow_along_5.ipynb), for Jupyter on a Mac with Apple Silicon. It builds each machine and counts its numbers, shows RoPE's turning in action, trains the new block, and writes. It is saved with the outputs from my own run, so you can read every result on GitHub without a Mac.
 - **On the command line,** after Part 3's `prepare_data.py` and `tokenizers_setup.py`:
 
 ```bash

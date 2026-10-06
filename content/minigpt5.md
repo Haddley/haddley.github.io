@@ -1,7 +1,7 @@
 ---
 title: "MiniGPT"
 part: 6
-description: "Learning from a teacher: training a small MiniGPT to copy a bigger model's whole wheel of chances, why the teacher must share the student's pieces, and the finding that a small teacher who knows the stories beats a big one who does not, with a follow-along notebook"
+description: "Learning from a teacher: training a small MiniGPT to copy a bigger model's whole wheel of chances, why the teacher must share the student's pieces, and a tested finding: the most helpful teacher was not the best storyteller, but the one whose wheels the student could copy, with a follow-along notebook"
 date: "2026-10-05"
 categories: ["AI"]
 image: "/assets/images/minigpt5/posts-meta.svg"
@@ -24,7 +24,7 @@ The code is in [`part6-distillation/`](https://github.com/Haddley/minigpt-series
 | Positions | 256, position cards |
 | Engine | MLX |
 | Size | **30.0 million numbers** |
-| Score | **0.6936 bits per byte** with the best teacher; 0.7555 alone |
+| Score | **0.6936 bits per byte** with the most helpful teacher; 0.7555 alone |
 
 ## The big picture, in plain English
 
@@ -36,12 +36,12 @@ After "Tim gave his dog a", the real next word in a story is *bone*. A guessing 
 
 In the guessing game, the only thing the machine learns from at each step is the one right answer. *Bone* gets all the credit, and *ball*, *treat*, *hug*, and *banana* are all equally wrong. But they are not equally wrong: *ball*, *treat*, and *hug* would all make sense, and *banana* would be strange.
 
-A trained model knows that. Before it writes, it has a whole [wheel of chances](/posts/minigpt/#so-how-does-it-choose-what-to-write-it-spins-a-wheel), a slice for every token. Here is GPT-2's real wheel after "Tim gave his dog a": *hug* 6.2%, *big* 2.1%, *good* 2.0%, *treat* 1.0%, and thousands of thinner slices; its 20 biggest slices hold only 28% of the wheel. **Distillation** trains the student to copy that whole wheel, not just to pick the right answer. Each guess teaches it much more: which near misses were reasonable, and which were absurd.
+A trained model knows that. Before it writes, it has a whole [wheel of chances](/posts/minigpt/#so-how-does-it-choose-what-to-write-it-spins-a-wheel), a slice for every token. **Distillation** trains the student to copy that whole wheel, not just to pick the right answer. Each guess then teaches it much more: which near misses were reasonable, and which were absurd.
 
-GPT-2 learned from text on the web, and it gives *bone* just 0.03%: 501st place. Keep that in mind; it turns out to matter.
+But a wheel is only as good as the reading behind it. Here are two real ones. GPT-2, which learned from text on the web, gives *hug* 6.2%, *big* 2.1%, *good* 2.0%, and *treat* 1.0%, and *bone* just 0.03%: 501st place. Three things push it down. On the web, people give their dogs hugs, rides, runs, and new leashes more often than bones. The wheel chooses the next piece, not the next noun, so much of the chance goes on words that start a longer phrase, such as *a big…* or *a good…*. And GPT-2's wheel is spread over everything on the web: its 20 biggest slices hold only 28% between them. TinyStories-33M, a small model trained on children's stories, and one of the teachers below, puts *bone* first, at 24.7%, and its 20 biggest slices hold 78%. Keep that difference in mind; it turns out to matter.
 
 ![](assets/images/minigpt5/teacher-wheel.svg)
-*What the student learns from at one position. The answer alone says only "bone"; the teacher's wheel says which other pieces were reasonable, and how reasonable*
+*What the student learns from at one position. The answer alone says only "bone"; a teacher's wheel says which other pieces were reasonable, and how reasonable. The web-trained teacher and the story-trained teacher disagree completely about this sentence*
 
 ### The two parts of the score
 
@@ -82,10 +82,28 @@ GPT-2 and GPT-2 XL learned from text on the web. TinyStories-33M is the largest 
 ### What the teachers taught
 
 - **A bigger web-text teacher barely helped.** GPT-2 XL is twelve times the size of GPT-2, and moved the student from 0.7469 to 0.7382, for four and a half times the training time. The third column says why: at 1.5 billion numbers, GPT-2 XL is still *worse* at these stories (0.799) than the 30-million-number student trained on them (0.756). It had never read anything like them. Even GPT-2's own gain over no teacher, 0.009, is about the size of the luck between two random starts (see [Part 5](/posts/minigpt4/#how-much-is-luck)), so it may be no gain at all.
-- **A teacher who knew the stories helped a lot.** TinyStories-33M is 45 times smaller than GPT-2 XL, but it had read every story, and it scores 0.467. It pulled the student to 0.7204, past both GPT-2s, in 23 minutes.
-- **The most helpful teacher was not the best storyteller.** On its own, my MiniGPT-512 scores 0.644, so it is a clearly worse storyteller than TinyStories-33M, at 0.467. Yet it was the most helpful teacher by far. Its student scored 0.6936, the best of all five: 0.062 better than the student with no teacher, almost twice the 0.035 that TinyStories-33M managed. I did not test why, but here is my best explanation. In distillation, the student is marked on how closely its wheel matches the teacher's, slice by slice, at every position, and it can only make the kinds of wheel its own design can produce. MiniGPT-512 is the same design as the student, only wider, and it learned from exactly the same practice stories, so its wheels are close to ones the student can make: nearly all of its advice is advice the student can follow. TinyStories-33M is built differently, and learned from far more stories, so some of the detail in its wheels may depend on things the student cannot work out, and the student spends some of its effort chasing slices it can never match. Researchers have seen the same thing in other distillation experiments, and call it the *capacity gap* ([Cho and Hariharan](https://arxiv.org/abs/1910.01348); [Mirzadeh and others](https://arxiv.org/abs/1902.03393)): a stronger teacher does not always make a stronger student.
+- **A teacher who knew the stories helped a lot.** TinyStories-33M is 45 times smaller than GPT-2 XL, but it had read far more stories of exactly this kind, and it scores 0.467. It pulled the student to 0.7204, past both GPT-2s, in 23 minutes.
+- **The most helpful teacher was not the best storyteller.** On its own, my MiniGPT-512 scores 0.644, so it is a clearly worse storyteller than TinyStories-33M, at 0.467. Yet it was the most helpful teacher by far. Its student scored 0.6936, the best of all five: 0.062 better than the student with no teacher, almost twice the 0.035 that TinyStories-33M managed. It also learned faster: it passed the no-teacher student's *final* score at about step 1,700, rather than step 3,000.
 
-That student also learned faster: it passed the no-teacher student's *final* score at about step 1,700, rather than step 3,000, and finished with an 8% lower surprise score. Not the "10 times faster" sometimes quoted for giant teachers, but real.
+So why did the weaker storyteller teach better? I had a guess, and then I tested it.
+
+### Why the weaker teacher helped more
+
+My guess was this. In distillation, the student is marked on how closely its wheel matches the teacher's, slice by slice, at every position, and it can only make the kinds of wheel its own design can produce. MiniGPT-512 is the same design as the student, only wider, and learned from exactly the same practice stories, so its wheels should be ones the student can copy. TinyStories-33M is built differently and learned from far more stories, so some of the detail in its wheels may depend on things the student cannot work out. Researchers have seen this in other distillation experiments, and call it the *capacity gap* ([Cho and Hariharan](https://arxiv.org/abs/1910.01348); [Mirzadeh and others](https://arxiv.org/abs/1902.03393)): a stronger teacher does not always make a stronger student.
+
+To test it, I trained MiniGPT-512 again, then the student three times (with MiniGPT-512, with TinyStories-33M, and with no teacher), kept all three students, and measured how far each one's wheels ended up from each teacher's, on the same test stories. The distance is the KL divergence from earlier, without the softening: 0 would mean identical wheels. Retraining gave almost the same scores as before: 0.6913 with MiniGPT-512, 0.7198 with TinyStories-33M, and 0.7554 alone, all inside [the band of luck](/posts/minigpt4/#how-much-is-luck):
+
+| Student | Distance from MiniGPT-512's wheels | Distance from TinyStories-33M's wheels |
+|---|---|---|
+| no teacher | 0.46 (same top slice 70.5% of the time) | 1.23 (58.8%) |
+| taught by MiniGPT-512 | **0.25** (76.6%) | 1.08 (61.5%) |
+| taught by TinyStories-33M | 0.47 (72.0%) | **0.96** (62.7%) |
+
+- **Before any teaching, the student was already much closer to MiniGPT-512.** With no teacher at all, its wheels were less than half as far from MiniGPT-512's as from TinyStories-33M's, and picked the same top slice 70.5% of the time, against 58.8%.
+- **It could copy MiniGPT-512, and mostly could not copy TinyStories-33M.** Learning from MiniGPT-512 almost halved the distance to it, from 0.46 to 0.25. Learning from TinyStories-33M cut the distance to it by only about a fifth, from 1.23 to 0.96.
+- **The student taught by TinyStories-33M still ended up nearer MiniGPT-512's wheels (0.47) than its own teacher's (0.96).** Most of what the better storyteller knew was out of this student's reach.
+
+So the guess holds up: the most helpful teacher is the one whose wheels the student can actually reach. Each student is a single training run, so a different random start would move these distances a little, but it would not turn a gap of four times the other way.
 
 :::pencil Pick a teacher
 You have a small student that writes recipes. You can distil from one of three teachers, all using the student's pieces. Which would you pick?
@@ -95,7 +113,7 @@ You have a small student that writes recipes. You can distil from one of three t
 3. A model the student's size, trained on recipes and with a different tokeniser.
 
 :::answer
-Teacher 2. Teacher 3 is out: with a different tokeniser, its wheels do not line up with the student's. Teacher 1 might know some cooking, but, like GPT-2 XL with the stories, being big and general did not make it good at the student's actual job. Teacher 2 knows recipes, and is close to the student in size and kind, just like the MiniGPT-512 that won here.
+Teacher 2. Teacher 3 is out: with a different tokeniser, its wheels do not line up with the student's. Teacher 1 might know some cooking, but, like GPT-2 XL with the stories, being big and general did not make it good at the student's actual job. Teacher 2 knows recipes, and is close to the student in size, so its wheels are more likely to be ones the student can copy, just like the MiniGPT-512 that won here.
 :::
 :::
 
@@ -109,7 +127,7 @@ The no-teacher student loses the thread: "he wanted to take his melon home from 
 :::fireside-chat Tonight: GPT-2 XL and TinyStories-33M, on who is the better teacher
 **GPT-2 XL:** One and a half billion numbers. I have read half the web. Whatever the student needs to know, I know it.
 
-**TinyStories-33M:** I have 33 million numbers, and I have read every one of these stories.
+**TinyStories-33M:** I have 33 million numbers, and I have read millions of stories just like these.
 
 **GPT-2 XL:** Then I outnumber you forty-five to one.
 
@@ -130,7 +148,7 @@ The no-teacher student loses the thread: "he wanted to take his melon home from 
 - The teacher must use exactly the student's pieces, which rules out every current big model here.
 - Running a teacher every step costs memory: 5.4 GB grew to 11 to 17 GB.
 - A teacher who knew the stories beat one 45 times its size that did not.
-- The most helpful teacher was not the best storyteller: it was the one built like the student and trained on the same stories.
+- The most helpful teacher was not the best storyteller: it was the one built like the student and trained on the same stories, whose wheels the student could actually copy.
 :::
 
 :::no-dumb-questions
@@ -205,16 +223,23 @@ return args.alpha * ce + (1 - args.alpha) * (args.temp ** 2) * kl
 
 `ce` is the usual surprise at the real next token. With `--alpha 0.5`, the two parts count equally, and `--alpha 1.0` switches the teacher off altogether.
 
-### Scoring the teachers: `eval_teacher.py`
+### Scoring the teachers: `eval_teacher.py`, and testing the capacity gap: `measure_gap.py`
 
 `eval_teacher.py --teacher gpt2-xl` measures a teacher's own bits per byte on the test stories: the "teacher's own" column in the table.
+
+`run_gap.sh` retrains MiniGPT-512 and the three students, keeping their checkpoints, and then `measure_gap.py` compares every student's wheel with every teacher's, one batch of test stories at a time:
+
+```python
+kl = (mx.exp(tl) * (tl - s_lp)).sum(-1).mean()           # how far the student's wheel is from the teacher's
+agree = (mx.argmax(tl, -1) == mx.argmax(s_lp, -1)).mean()  # how often their biggest slices match
+```
 
 ![](assets/images/minigpt5/distill-runs.png)
 *The five runs, with each teacher's own score*
 
 ## Try it yourself
 
-- **The follow-along notebook:** [`part6-distillation/minigpt_follow_along_6.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part6-distillation/minigpt_follow_along_6.ipynb), for Jupyter on a Mac with Apple Silicon. It shows a teacher's wheel next to the one-hot answer, works the KL divergence out by hand, and trains a student with GPT-2 as its teacher.
+- **The follow-along notebook:** [`part6-distillation/minigpt_follow_along_6.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part6-distillation/minigpt_follow_along_6.ipynb), for Jupyter on a Mac with Apple Silicon. It shows a teacher's wheel next to the one-hot answer, works the KL divergence out by hand, and trains a student with GPT-2 as its teacher. It is saved with the outputs from my own run, so you can read every result on GitHub without a Mac.
 - **On the command line,** after Part 3's `prepare_data.py` and `tokenizers_setup.py`:
 
 ```bash
@@ -226,6 +251,7 @@ python train_distill.py --tag ts33m    --teacher torch:roneneldan/TinyStories-33
 python train_teacher.py --dim 512 --layers 8 --iters 5000
 python train_distill.py --tag big      --teacher runs/teacher.safetensors --alpha 0.5
 python eval_teacher.py  --teacher gpt2-xl
+./run_gap.sh            # why the weaker teacher helped more: retrains three students, then measure_gap.py
 python figures.py
 ```
 
