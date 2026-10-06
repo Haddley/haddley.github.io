@@ -19,6 +19,10 @@ curl -fsSL https://opencode.ai/install | bash
 ![](assets/images/invaders/Screenshot-2026-06-19-at-11.22.11-AM.png)
 *I installed OpenCode, upgrading from 1.3.0 to 1.17.8*
 
+:::brain-power Before the three runs
+If the same prompt goes to three different agents, what would you expect to differ first: the speed, the code, or the bugs? Make a guess before reading on.
+:::
+
 ## Run 1 — OpenCode Big Pickle
 
 I navigated to the invaders project directory and launched OpenCode.
@@ -60,6 +64,12 @@ The game worked end-to-end, but I noticed the UFO sound kept playing after the s
 *OpenCode confirmed the fix: "Now when a UFO exits the screen, `audio.stopUFO()` is called before it's filtered out from entities"*
 
 The game is playable at [/invaders-bigpickle/index.html](/invaders-bigpickle/index.html).
+
+:::no-dumb-questions
+**Q: Why use the same prompt for every run?**
+
+A: So the only thing that changes is the tool and the model. Changing the prompt as well would make the comparison unfair.
+:::
 
 ## Run 2 — OpenCode DeepSeek
 
@@ -147,6 +157,18 @@ For the third run I used Claude Code with Sonnet 4.6, working from the same PRD 
 
 The game is playable at [/invaders-claude/index.html](/invaders-claude/index.html).
 
+:::watch-it The models did not find the bugs; playing the game did
+Both of the bugs in the Big Pickle run were caught by playing the game, not by the model proactively. A clean first build tells you very little until someone plays it.
+:::
+
+:::pencil Sharpen your pencil
+Which bug appeared in two of the three runs?
+
+:::answer
+The UFO audio bug: the saucer sound kept playing after the saucer left the screen.
+:::
+:::
+
 ## What I learned
 
 All three models produced a (mostly) working Space Invaders clone from a single prompt — which still feels remarkable. The differences were in the path they took to get there.
@@ -158,6 +180,12 @@ DeepSeek V4 Pro was the most thorough during the build phase — it validated sy
 Claude Code was the most methodical overall. It presented a build plan before writing a single file, asked for permission at each write step, and caught the UFO audio bug itself without being told. The permission flow slows things down but means you always know what's about to change.
 
 The UFO audio bug — where the saucer sound keeps playing after the sprite exits the screen — appeared in two of the three runs. Big Pickle needed prompting to find it; Claude Code caught it proactively after finishing the build.
+
+:::bullet-points Recap
+- All three models built a working Space Invaders clone from the same PRD and PDD.
+- Big Pickle moved fastest, DeepSeek V4 Pro validated the most before building, and Claude Code asked permission before each write.
+- Two bugs mattered: the game-loop timing bug and the UFO audio leak.
+:::
 
 ## References
 
