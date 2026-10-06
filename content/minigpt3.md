@@ -71,6 +71,9 @@ Lines 1 and 2 only write steps down: the whole trip forward through the machine 
 :::
 :::
 
+![](assets/images/minigpt3/notebook-lazy.png)
+*The follow-along notebook in Jupyter on my Mac, timing lazy evaluation: writing a big multiplication down took 0.05 milliseconds, and the work, 63 milliseconds, happened at `mx.eval`*
+
 ![](assets/images/minigpt3/lazy.svg)
 *The same four lines on each engine. PyTorch sends the GPU a job for every line; MLX writes lines 1 and 2 down and runs them together at `mx.eval`*
 
@@ -103,6 +106,9 @@ This is one small machine, one setting, on one Mac: not a general benchmark. The
 ### Same answers?
 
 A faster engine is no use if it changes the answers. The two versions do not start from exactly the same random numbers, because the two libraries draw their starting dials differently, so their training curves cannot lie exactly on top of each other. But they should end up in the same place, and they do: after 3,000 steps, the MLX machine scores **0.689 bits per byte** on the test stories, and the PyTorch machine from Part 3 scores **0.697**. That gap is about the size of the luck between two random starts of the same machine: in [Part 5](/posts/minigpt4/#how-much-is-luck), three random starts of one design scored up to 0.007 apart.
+
+![](assets/images/minigpt3/notebook-engines.png)
+*The notebook built the same machine in both engines, and counted exactly the same 13,882,368 numbers in each*
 
 ![](assets/images/minigpt3/loss-curves.png)
 *Bits per byte on the test stories while training, PyTorch against MLX*
@@ -246,8 +252,8 @@ for step in range(args.iters + 1):
     mx.eval(state)          # the step is calculated here
 ```
 
-![](assets/images/minigpt3/mlx-training.png)
-*The MLX training run: 3,000 steps, the same 8k tokeniser and stories as Part 3*
+![](assets/images/minigpt3/notebook-training.png)
+*The MLX training run in the notebook: 3,000 steps, the same 8k tokeniser and stories as Part 3, finishing at 0.6885 bits per byte*
 
 ### The race: `bench.py`
 
@@ -255,6 +261,9 @@ for step in range(args.iters + 1):
 
 ![](assets/images/minigpt3/bench-output.png)
 *The three races*
+
+![](assets/images/minigpt3/notebook-race.png)
+*The same race, run again later in the notebook: this time compiled MLX was 20% faster than PyTorch*
 
 ### Writing: `generate_mlx.py`
 
@@ -271,6 +280,10 @@ The same loop as every part so far: score the last working card against the answ
 ## Try it yourself
 
 - **The follow-along notebook:** [`part4-mlx/minigpt_follow_along_4.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part4-mlx/minigpt_follow_along_4.ipynb). Open it in Jupyter on a Mac with Apple Silicon. It prepares the stories, checks that the MLX machine has the same 13.9 million numbers as Part 3's, trains it, runs the race, and writes. It is saved with the outputs from my own run, so you can read every result on GitHub without a Mac.
+
+![](assets/images/minigpt3/notebook-top.png)
+*The notebook open in Jupyter on my Mac, with the outputs saved from my run*
+
 - **On the command line:**
 
 ```bash

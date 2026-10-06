@@ -68,6 +68,9 @@ In both cases the query is turned 20 degrees further than the key: 70 against 50
 ![](assets/images/minigpt4/rope-clocks.svg)
 *The pencil exercise, drawn as clock hands. Both pairs are two positions apart, so both are turned 20 degrees apart, however far along the row they are*
 
+![](assets/images/minigpt4/notebook-rope.png)
+*The notebook turned a real query card and key card with MLX's RoPE. Pairs with the same gap get the same match, wherever they are in the row*
+
 ### Change 3: an MLP with a gate
 
 The 2017 MLP widens each working card to four times its size with one recipe, bends it, and narrows it back with a second: two recipes. The new one, *SwiGLU*, makes two widened copies of the card with two recipes, bends one, and multiplies the two together, number by number, before narrowing back with a third: three recipes. The bent copy acts as a *gate*, deciding how much of the other copy gets through. To keep the machine the same size, the widened card is narrower: 1,024 numbers instead of 1,536, which makes three recipes of 384 × 1,024 exactly as big as two of 384 × 1,536.
@@ -98,6 +101,9 @@ Turning one part off to see what it was doing is called an *ablation*.
 ![](assets/images/minigpt4/ablation-luck.svg)
 *Best bits per byte for each machine. The green band is how far the same new block moved between three random starts, explained [below](#how-much-is-luck): only the 2017 block and the position cards land clearly outside it*
 
+![](assets/images/minigpt4/notebook-machines.png)
+*The follow-along notebook in Jupyter on my Mac, building each machine and counting its numbers. Full keys and values for every head cost 1.2 million more*
+
 ### How much is luck?
 
 Every machine starts from random numbers and practises on randomly chosen snippets, so training the same design twice never gives exactly the same score. Before reading anything into a difference of a few thousandths, I needed to know how big that luck is. So I trained the new block, and the version with the old MLP, twice more each, from different random starts:
@@ -108,6 +114,10 @@ Every machine starts from random numbers and practises on randomly chosen snippe
 | … but the old MLP | 0.6756, 0.6798, 0.6749 | 0.6768 |
 
 The same design landed anywhere in a band about 0.007 wide. So a difference smaller than that could just be luck.
+
+
+![](assets/images/minigpt4/p5-seeds.png)
+*The four extra runs, as they finished. The table uses each run's best exam score, the same rule as every other score in this series*
 
 ### What actually matters
 
@@ -272,11 +282,18 @@ python train_llama.py --tag gelu_seed2   --seed 2 --mlp gelu
 ![](assets/images/minigpt4/ablation-runs.png)
 *The five runs. Every machine is close in size except the one with full keys and values, which adds back 1.2 million numbers*
 
+![](assets/images/minigpt4/notebook-training.png)
+*The new block trained in the notebook: 3,000 steps, finishing at 0.6717 bits per byte*
+
 `figures.py` then draws the bar and curve charts above, with Part 4's 2017-block run as the grey baseline.
 
 ## Try it yourself
 
 - **The follow-along notebook:** [`part5-modern-block/minigpt_follow_along_5.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part5-modern-block/minigpt_follow_along_5.ipynb), for Jupyter on a Mac with Apple Silicon. It builds each machine and counts its numbers, shows RoPE's turning in action, trains the new block, and writes. It is saved with the outputs from my own run, so you can read every result on GitHub without a Mac.
+
+![](assets/images/minigpt4/notebook-top.png)
+*The notebook open in Jupyter on my Mac, with the outputs saved from my run*
+
 - **On the command line,** after Part 3's `prepare_data.py` and `tokenizers_setup.py`:
 
 ```bash

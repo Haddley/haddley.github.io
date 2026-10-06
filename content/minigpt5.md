@@ -43,6 +43,9 @@ But a wheel is only as good as the reading behind it. Here are two real ones. GP
 ![](assets/images/minigpt5/teacher-wheel.svg)
 *What the student learns from at one position. The answer alone says only "bone"; a teacher's wheel says which other pieces were reasonable, and how reasonable. The web-trained teacher and the story-trained teacher disagree completely about this sentence*
 
+![](assets/images/minigpt5/notebook-wheel.png)
+*The follow-along notebook in Jupyter on my Mac, asking GPT-2 for its wheel after "Tim gave his dog a", next to the one-hot answer the guessing game uses*
+
 ### The two parts of the score
 
 The student is scored on two things at once, and both are surprise scores from [Part 2](/posts/minigpt-grown/#keeping-score-the-surprise-score):
@@ -51,6 +54,10 @@ The student is scored on two things at once, and both are surprise scores from [
 - **How different its wheel is from the teacher's wheel.** The measure is called *KL divergence*: 0 when the two wheels are identical, and larger the more they differ.
 
 I weight the two equally. Before comparing the wheels, I soften both with a [temperature](/posts/minigpt/#step-5-spin-the-wheel) of 2, the same kind of setting as in Part 1's step 5, so that the thin slices, the near misses, are big enough to learn from.
+
+
+![](assets/images/minigpt5/notebook-kl.png)
+*The notebook worked the KL divergence out by hand: 0 for a wheel against itself, and large against an even wheel. Softening with a temperature of 2 shrinks the top slice so the near misses show*
 
 ### The teacher must use the same pieces
 
@@ -74,7 +81,17 @@ The student is the MLX machine from [Part 4](/posts/minigpt3/), with the origina
 | TinyStories-33M | 33 million | **0.467** | 0.7204 | 23.5 |
 | My MiniGPT-512 | 51 million | 0.644 | **0.6936** | 20.1 |
 
+![](assets/images/minigpt5/p6-eval.png)
+*eval_teacher.py scoring each teacher on its own, on the test stories: the "teacher's own" column above*
+
 GPT-2 and GPT-2 XL learned from text on the web. TinyStories-33M is the largest model released with the TinyStories paper, trained on the whole TinyStories collection: far more stories than my slice of it. My MiniGPT-512 is a wider MiniGPT that I trained on the same practice stories as the student, for 5,000 steps.
+
+
+![](assets/images/minigpt5/p6-teacher.png)
+*I grew MiniGPT-512 first: 5,000 steps, 51 million numbers, finishing at 0.64 bits per byte*
+
+![](assets/images/minigpt5/p6-student.png)
+*Then the student learned from it. The teacher is loaded once and frozen; only the student's dials move*
 
 ![](assets/images/minigpt5/distill-curves.png)
 *Bits per byte while training. The two web-text teachers stay near the no-teacher line; the two teachers who know the stories pull the student well below it*
@@ -98,6 +115,10 @@ To test it, I trained MiniGPT-512 again, then the student three times (with Mini
 | no teacher | 0.46 (same top slice 70.5% of the time) | 1.23 (58.8%) |
 | taught by MiniGPT-512 | **0.25** (76.6%) | 1.08 (61.5%) |
 | taught by TinyStories-33M | 0.47 (72.0%) | **0.96** (62.7%) |
+
+
+![](assets/images/minigpt5/p6-gap.png)
+*measure_gap.py's own output, with the model-loading messages left out*
 
 - **Before any teaching, the student was already much closer to MiniGPT-512.** With no teacher at all, its wheels were less than half as far from MiniGPT-512's as from TinyStories-33M's, and picked the same top slice 70.5% of the time, against 58.8%.
 - **It could copy MiniGPT-512, and mostly could not copy TinyStories-33M.** Learning from MiniGPT-512 almost halved the distance to it, from 0.46 to 0.25. Learning from TinyStories-33M cut the distance to it by only about a fifth, from 1.23 to 0.96.
@@ -197,6 +218,7 @@ The terms for the whole series are collected in one table, [the series glossary]
 | how different two wheels are | the *KL divergence* (Kullback–Leibler divergence) |
 | the raw scores against the answer cards | the *logits* |
 | the softening setting | the distillation *temperature* |
+| a stronger teacher whose wheels the student cannot reach | the *capacity gap* |
 
 ## The code, in the order it runs
 
@@ -237,9 +259,16 @@ agree = (mx.argmax(tl, -1) == mx.argmax(s_lp, -1)).mean()  # how often their big
 ![](assets/images/minigpt5/distill-runs.png)
 *The five runs, with each teacher's own score*
 
+![](assets/images/minigpt5/notebook-training.png)
+*The notebook trained the student twice, alone and with GPT-2 as its teacher: 0.7554 against 0.7467 bits per byte*
+
 ## Try it yourself
 
 - **The follow-along notebook:** [`part6-distillation/minigpt_follow_along_6.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part6-distillation/minigpt_follow_along_6.ipynb), for Jupyter on a Mac with Apple Silicon. It shows a teacher's wheel next to the one-hot answer, works the KL divergence out by hand, trains a student with GPT-2 as its teacher, and shows the capacity-gap results. It is saved with the outputs from my own run, so you can read every result on GitHub without a Mac.
+
+![](assets/images/minigpt5/notebook-top.png)
+*The notebook open in Jupyter on my Mac, with the outputs saved from my run*
+
 - **On the command line,** after Part 3's `prepare_data.py` and `tokenizers_setup.py`:
 
 ```bash

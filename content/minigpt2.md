@@ -319,7 +319,7 @@ print(tok.decode(out[0].tolist()))
 
 ## Try it yourself
 
-- **My follow-along workbook:** [open it in Colab](https://colab.research.google.com/github/Haddley/minigpt-series/blob/main/part3-tokenisers/minigpt_follow_along_3.ipynb). It builds the three tokenisers, checks every number in this post, and trains the machine. Choose a GPU runtime: on my Mac Studio's GPU, the three training runs took about 11, 13, and 42 minutes.
+- **My follow-along workbook:** [open it in Colab](https://colab.research.google.com/github/Haddley/minigpt-series/blob/main/part3-tokenisers/minigpt_follow_along_3.ipynb). It builds the three tokenisers, checks every number in this post, and trains the machine. Choose a GPU runtime: on my Mac Studio's GPU, the three training runs took about 11, 13, and 42 minutes. It is saved with the outputs from my own run, so you can read every result on GitHub before running anything.
 - **On your own machine:**
 
 ```bash

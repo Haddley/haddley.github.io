@@ -523,18 +523,7 @@ A few things to try:
 
 ### Beyond the guessing game: tools, harnesses, and agents
 
-A GPT can only do one thing: guess the next piece of text. It cannot check the weather, read a file, or run a program. Yet the chatbots built on GPTs do all of those things. The trick is that the model *writes a request*, and an ordinary program around it carries the request out:
-
-1. **The program lists the tools.** At the start of the text, it tells the model what it may ask for, for example "`get_weather(location)`: the current weather anywhere".
-2. **The model writes a request instead of an answer.** Asked "What is the weather in New York?", a model trained for this (in the second stage of training, covered in [the next post](/posts/minigpt-grown/#expensive-for-computers-cheap-for-people)) writes something like `{"tool": "get_weather", "location": "NYC"}`.
-3. **The program carries it out.** It spots the request, calls a real weather service, and adds the result to the text: `{"temp": "72°F", "condition": "sunny"}`.
-4. **The model carries on guessing,** now with the result in front of it: "It is currently 72°F and sunny in New York City."
-
-The model never runs anything itself. It only ever writes text, and some of that text happens to be a request. It is the same loop as step 5, with the program slipping extra text into the row now and then.
-
-The program around the model is called a **harness**. It holds the conversation, offers the tools, carries out the requests, feeds the results back, and decides when to stop. Claude Code, which I used while writing this post, is a harness. An **agent** is what you get when a harness lets the model keep that loop going by itself, for many steps, towards a goal: read a file, run a test, read the error, change the code, and run the test again, without a person approving each move. So the harness is the machinery, and "agent" describes how it behaves, although people often use "agent" for the whole package of model, harness, and tools. A standard way of plugging tools into a harness is the [Model Context Protocol](/posts/rag1/), and I compared several ways of organising agents in [Agent Orchestration](/posts/orchestration1/).
-
-My MiniGPT could not do any of this. It was never trained on requests like these, and its row of 128 letters is far too short to hold a conversation with a tool's results.
+A GPT can only guess the next piece of text, yet chatbots check the weather, read files, and run programs. The trick is that the model *writes a request*, such as `{"tool": "get_weather", "location": "NYC"}`, and an ordinary program around it, the **harness**, spots the request, carries it out, and adds the result to the text, so that the model carries on guessing with the answer in front of it. The model never runs anything itself; it only ever writes text, and models learn to write these requests in a later stage of training, covered in [the next post](/posts/minigpt-grown/#expensive-for-computers-cheap-for-people). An **agent** is what you get when a harness lets the model keep that loop going by itself, for many steps, towards a goal. My MiniGPT could not do any of this: it never saw a request, and 128 letters is far too short to hold one. I wrote more about organising agents in [Agent Orchestration](/posts/orchestration1/), and about plugging tools into a harness in [Model Context Protocol](/posts/rag1/).
 
 ### Why the big models do not use letters
 

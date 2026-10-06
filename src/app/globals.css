@@ -600,3 +600,11 @@ b em {
   .svg-diagram img { min-width: 640px; }
   .svg-diagram-hint { display: block; text-align: center; font-size: 0.8rem; color: #6b7280; margin-top: 0.25rem; }
 }
+
+/* Tables in posts: never split a word or number across lines (the theme's
+   word-break rule does that in narrow columns); on phones, scroll sideways instead. */
+.table th, .table td, .table th *, .table td * { word-break: normal; overflow-wrap: normal; }
+@media (max-width: 768px) {
+  .table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .table th:first-child, .table td:first-child { min-width: 8rem; }
+}

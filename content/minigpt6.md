@@ -40,6 +40,10 @@ For 4 positions: 1 + 2 + 3 + 4 = 10 matches. For 8: 1 + 2 + … + 8 = 36. For 1,
 :::
 :::
 
+
+![](assets/images/minigpt6/notebook-matches.png)
+*The follow-along notebook in Jupyter on my Mac, counting the matches for one head. Full attention's count quadruples with each doubling of the row; the window's only doubles*
+
 Every one of those matches is a number the machine has to hold while it trains, in every head of every block. Double the row and you need about four times the memory for attention. On a machine with one fixed pool of memory, that is the wall you hit first.
 
 ### A sliding window
@@ -61,6 +65,9 @@ To actually save memory, the machine must never build the full grid. So the row 
 ![](assets/images/minigpt6/window-chunks.svg)
 *The same window, built two ways, for a row of 16 positions. The mask builds the whole grid and throws most of it away; the chunks never build the squares that would be thrown away*
 
+![](assets/images/minigpt6/notebook-chunked.png)
+*The notebook checked that the chunks give the right answers: against full attention when the window covers the whole row, and against the mask when it does not. Both differences are rounding*
+
 :::watch-it
 Changing *what* attention may look at does not change what it *costs*. A mask changes the first; only computing less changes the second.
 :::
@@ -79,6 +86,9 @@ Changing *what* attention may look at does not change what it *costs*. A mask ch
 
 ![](assets/images/minigpt6/mem-sweep.png)
 *Most memory used, against row length. Full attention and the masked window are the same line; the chunked window climbs much more gently*
+
+![](assets/images/minigpt6/notebook-race.png)
+*The notebook's shorter race, up to 2,048 positions. Already at 2,048, the chunks use 7.2 GB against full attention's 11.2 GB*
 
 - **The mask column matches full attention at every length**, exactly as the last section predicted.
 - **At short rows, everything is close.** Most of the memory then goes on the MLPs and on scoring against 8,192 answer cards, and both of those grow only in step with the row. Attention takes over at about 2,048 positions.
@@ -112,14 +122,18 @@ TinyStories cannot show what a long row is for, so I built a test that can. Each
 | 256-position row | **100%** | **100%** | 4.2% | 4.2% | 4.2% |
 | 1,024-position row, full attention | **100%** | **100%** | **100%** | **100%** | **100%** |
 | 1,024-position row, 256-position window | **100%** | **100%** | 3.8% | 3.8% | 3.8% |
+| the same window machine, trained 4 times longer | **100%** | **100%** | 4.5% | 4.5% | 4.5% |
 
 ![](assets/images/minigpt6/secret-word.svg)
 *The same results as a picture. Inside 256 pieces, all three machines find the word every time; beyond it, only full attention does*
 
+![](assets/images/minigpt6/p7-secret.png)
+*The window machine's own run: it learned the trick close up, and guessed beyond its window*
+
 - **All three learned the trick.** Whenever the secret was inside what they could see, all three got it right every time.
 - **The 256-position row cannot see past its row.** Beyond 256 pieces, the secret has fallen off the front, and it can only guess.
 - **Full attention can.** With 1,024 positions, it found the word 970 pieces back every time. This is what a long row is for.
-- **The window did not reach past its window.** It behaved exactly like the 256-position row. Through six blocks, the word *could* have hopped 256 positions at a time to the end, but in 1,500 steps of training the machine never learned to pass it along.
+- **The window did not reach past its window.** It behaved exactly like the 256-position row. Through six blocks, the word *could* have hopped 256 positions at a time to the end, but in 1,500 steps of training the machine never learned to pass it along. Training it four times longer, 6,000 steps, only made it surer of the word close up (96% of the chance on the right word, up from 89%); beyond its window, it still guessed.
 
 My reading of why: to pass the word along, some working card in the middle of an unrelated story would have to pick the secret up in one block and hold it for a later block to collect, and no part of that chain is rewarded until the whole chain works. Whatever the reason, the lesson is the same: the reach that the blocks allow in principle is not reach the machine has learned. It is one reason why many models that use windows, such as Google's Gemma 2, also keep some blocks with full attention.
 
@@ -208,7 +222,8 @@ The terms for the whole series are collected in one table, [the series glossary]
 | the grid of allowed matches | the *attention mask* |
 | growing with the square of the row | *quadratic*, or O(T²), cost |
 | growing in step with the row | *linear*, or O(T × W), cost |
-| how far information can travel | the *receptive field* |
+| how far information could travel through the blocks | the *receptive field* |
+| some blocks with a window, and some with full attention | *interleaved*, or *local and global*, attention |
 
 ## The code, in the order it runs
 
@@ -260,7 +275,7 @@ question = tok.encode(f" {name}'s secret word is") + tok.encode(f" {word}")
 row = np.concatenate([ids[s:s + before], secret, ids[s + before:s + before + gap], question])
 ```
 
-`run_secret.sh` trains the three machines: `--block-size 256`, `--block-size 1024`, and `--block-size 1024 --window 256`.
+`run_secret.sh` trains the three machines: `--block-size 256`, `--block-size 1024`, and `--block-size 1024 --window 256`, and then the window machine again with `--iters 6000`.
 
 ### The race: `mem_sweep.py`
 
@@ -289,86 +304,92 @@ Every plain name used in this series, next to the name the experts use, and the 
 
 | What I called it | What the experts call it | First in |
 |---|---|---|
-| the guessing game | next-token prediction, or language modelling | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| a letter: any of the 65 symbols, even the space and the comma | a *character* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| the thing being guessed: a letter here, a word or piece of a word in big models | a *token* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| the 65 letters | the *vocabulary* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| the chances for every letter | a probability distribution, produced by a *softmax* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| a letter's flashcard | its *token embedding*: a vector of 128 numbers | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| the position card | the *position embedding* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| a working card before block 1: a letter card plus its position card | the *input embedding* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| the number of positions: how many letters it can see at once | the *context length*, or *context window* (`block_size`) | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| "only look at earlier positions" | the *causal mask* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| the query card, the key card, and the value card | the *query*, the *key*, and the *value* vectors | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| the three recipes that make them | the query, key, and value *projections* (`self.query`, `self.key`, `self.value`) | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| keeping the key and value cards instead of remaking them | the *KV cache* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| add, never replace | the *residual connection* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| the row of working cards, as every block rewrites it | the *residual stream* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| a working card after a block | a *hidden state* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| normalising a working card before attention and before the MLP | *layer normalisation*, or *LayerNorm* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| the dials | the *parameters*, or *weights* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| spinning the wheel of chances | *sampling* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| keeping the biggest k slices | *top-k* sampling | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| keeping the biggest slices until they add up to p | *top-p*, or *nucleus*, sampling | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| the 65 answer cards | the *language-model head* (`lm_head`), or *output layer* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| a request the model writes for a program to carry out | a *tool call*, or *function call* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| the program around the model | the *harness* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| a harness letting the model act by itself for many steps | an *agent* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| working out what the trained dials mean | *interpretability* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| learning from the text itself, with no people marking answers | *self-supervised* learning, or *pre-training* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
-| people writing example conversations for the machine to copy | *supervised fine-tuning* (SFT) | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
-| people comparing answers, to train a judge | the *reward model* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
-| practising against the judge | *reinforcement learning from human feedback* (RLHF), often using a method called *PPO* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
-| letting another model do some of the comparing | *reinforcement learning from AI feedback* (RLAIF) | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
-| letting an existing model write the examples, or teach its chances | *distillation* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
-| the surprise score | the *loss* (cross-entropy loss) | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
-| "as unsure as choosing between *N* letters" | *perplexity* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
-| working out which way to turn every dial | *backpropagation* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
-| the 32 snippets for one step | a *batch* (batch size 32) | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
-| the slopes of all 826,433 dials, together | the *gradient* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
-| nudging every number a little in its direction | an *optimiser step* (here, with *AdamW*) | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
-| how far each nudge goes | the *learning rate* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
-| AdamW's running average of recent slopes | *momentum* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
-| shrinking every number very slightly on every step | *weight decay* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
-| the locked-away exam text | the *validation set* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
-| memorising the textbook | *overfitting* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
-| keeping the best copy | *checkpoint selection* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
-| walking downhill on the surprise-score landscape | *gradient descent* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
-| the program that cuts text into pieces | the *tokeniser* | [Part 3](/posts/minigpt2/#the-jargon-decoder) |
-| a token card | a *token embedding* | [Part 3](/posts/minigpt2/#the-jargon-decoder) |
-| gluing the most common pair | a BPE *merge* | [Part 3](/posts/minigpt2/#the-jargon-decoder) |
-| using the token cards as the answer cards too | *weight tying* | [Part 3](/posts/minigpt2/#the-jargon-decoder) |
-| halvings of surprise for each byte of text | *bits per byte* | [Part 3](/posts/minigpt2/#the-jargon-decoder) |
-| surprise per token | the *loss*, or *cross-entropy* | [Part 3](/posts/minigpt2/#the-jargon-decoder) |
-| the engine | the *framework* | [Part 4](/posts/minigpt3/#the-jargon-decoder) |
-| one shared pool of memory | *unified memory* | [Part 4](/posts/minigpt3/#the-jargon-decoder) |
-| writing calculations down and running them later | *lazy evaluation* | [Part 4](/posts/minigpt3/#the-jargon-decoder) |
-| packing a whole step into one job | *compiling*, with `mx.compile` | [Part 4](/posts/minigpt3/#the-jargon-decoder) |
-| capping the slopes if they are unusually big | *gradient clipping* | [Part 4](/posts/minigpt3/#the-jargon-decoder) |
-| copying a batch to the GPU | a *host-to-device transfer* | [Part 4](/posts/minigpt3/#the-jargon-decoder) |
-| the simpler normalise | *RMSNorm* (root mean square normalisation) | [Part 5](/posts/minigpt4/#the-jargon-decoder) |
-| the 2017 normalise | *LayerNorm* | [Part 5](/posts/minigpt4/#the-jargon-decoder) |
-| turning cards by position | *rotary position embeddings*, or *RoPE* | [Part 5](/posts/minigpt4/#the-jargon-decoder) |
-| the MLP with a gate | *SwiGLU* | [Part 5](/posts/minigpt4/#the-jargon-decoder) |
-| sharing key and value cards between heads | *grouped-query attention*, or *GQA* | [Part 5](/posts/minigpt4/#the-jargon-decoder) |
-| a query, key, and value for every head | *multi-head attention*, or *MHA* | [Part 5](/posts/minigpt4/#the-jargon-decoder) |
-| turning one change off at a time | an *ablation study* | [Part 5](/posts/minigpt4/#the-jargon-decoder) |
-| copying a teacher's whole wheel | *logit distillation*, or *knowledge distillation* | [Part 6](/posts/minigpt5/#the-jargon-decoder) |
-| learning only from the right answer | training on a *one-hot* target, or *hard labels* | [Part 6](/posts/minigpt5/#the-jargon-decoder) |
-| the teacher's wheel | *soft targets* | [Part 6](/posts/minigpt5/#the-jargon-decoder) |
-| how different two wheels are | the *KL divergence* (Kullback–Leibler divergence) | [Part 6](/posts/minigpt5/#the-jargon-decoder) |
-| the raw scores against the answer cards | the *logits* | [Part 6](/posts/minigpt5/#the-jargon-decoder) |
-| the softening setting | the distillation *temperature* | [Part 6](/posts/minigpt5/#the-jargon-decoder) |
-| the length of the row | the *context length*, or *sequence length* | [Part 7](/posts/minigpt6/#the-jargon-decoder) |
-| looking back only a fixed number of positions | *sliding-window attention* | [Part 7](/posts/minigpt6/#the-jargon-decoder) |
-| the grid of allowed matches | the *attention mask* | [Part 7](/posts/minigpt6/#the-jargon-decoder) |
-| growing with the square of the row | *quadratic*, or O(T²), cost | [Part 7](/posts/minigpt6/#the-jargon-decoder) |
-| growing in step with the row | *linear*, or O(T × W), cost | [Part 7](/posts/minigpt6/#the-jargon-decoder) |
-| how far information can travel | the *receptive field* | [Part 7](/posts/minigpt6/#the-jargon-decoder) |
+| the guessing game | next-token prediction, or language modelling | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| a letter: any of the 65 symbols, even the space and the comma | a *character* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| the thing being guessed: a letter here, a word or piece of a word in big models | a *token* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| the 65 letters | the *vocabulary* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| the chances for every letter | a probability distribution, produced by a *softmax* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| a letter's flashcard | its *token embedding*: a vector of 128 numbers | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| the position card | the *position embedding* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| a working card before block 1: a letter card plus its position card | the *input embedding* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| the number of positions: how many letters it can see at once | the *context length*, or *context window* (`block_size`) | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| "only look at earlier positions" | the *causal mask* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| the query card, the key card, and the value card | the *query*, the *key*, and the *value* vectors | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| the three recipes that make them | the query, key, and value *projections* (`self.query`, `self.key`, `self.value`) | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| keeping the key and value cards instead of remaking them | the *KV cache* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| add, never replace | the *residual connection* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| the row of working cards, as every block rewrites it | the *residual stream* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| a working card after a block | a *hidden state* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| normalising a working card before attention and before the MLP | *layer normalisation*, or *LayerNorm* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| the dials | the *parameters*, or *weights* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| spinning the wheel of chances | *sampling* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| keeping the biggest k slices | *top-k* sampling | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| keeping the biggest slices until they add up to p | *top-p*, or *nucleus*, sampling | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| the 65 answer cards | the *language-model head* (`lm_head`), or *output layer* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| a request the model writes for a program to carry out | a *tool call*, or *function call* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| the program around the model | the *harness* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| a harness letting the model act by itself for many steps | an *agent* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| working out what the trained dials mean | *interpretability* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| learning from the text itself, with no people marking answers | *self-supervised* learning, or *pre-training* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
+| people writing example conversations for the machine to copy | *supervised fine-tuning* (SFT) | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
+| people comparing answers, to train a judge | the *reward model* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
+| practising against the judge | *reinforcement learning from human feedback* (RLHF), often using a method called *PPO* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
+| letting another model do some of the comparing | *reinforcement learning from AI feedback* (RLAIF) | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
+| letting an existing model write the examples, or teach its chances | *distillation* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
+| the surprise score | the *loss* (cross-entropy loss) | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
+| "as unsure as choosing between *N* letters" | *perplexity* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
+| working out which way to turn every dial | *backpropagation* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
+| the 32 snippets for one step | a *batch* (batch size 32) | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
+| the slopes of all 826,433 dials, together | the *gradient* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
+| nudging every number a little in its direction | an *optimiser step* (here, with *AdamW*) | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
+| how far each nudge goes | the *learning rate* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
+| AdamW's running average of recent slopes | *momentum* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
+| shrinking every number very slightly on every step | *weight decay* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
+| the locked-away exam text | the *validation set* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
+| memorising the textbook | *overfitting* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
+| keeping the best copy | *checkpoint selection* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
+| walking downhill on the surprise-score landscape | *gradient descent* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
+| the program that cuts text into pieces | the *tokeniser* | [Part 3](/posts/minigpt2/#the-jargon-decoder) |
+| a token card | a *token embedding* | [Part 3](/posts/minigpt2/#the-jargon-decoder) |
+| gluing the most common pair | a BPE *merge* | [Part 3](/posts/minigpt2/#the-jargon-decoder) |
+| using the token cards as the answer cards too | *weight tying* | [Part 3](/posts/minigpt2/#the-jargon-decoder) |
+| halvings of surprise for each byte of text | *bits per byte* | [Part 3](/posts/minigpt2/#the-jargon-decoder) |
+| surprise per token | the *loss*, or *cross-entropy* | [Part 3](/posts/minigpt2/#the-jargon-decoder) |
+| the engine | the *framework* | [Part 4](/posts/minigpt3/#the-jargon-decoder) |
+| one shared pool of memory | *unified memory* | [Part 4](/posts/minigpt3/#the-jargon-decoder) |
+| writing calculations down and running them later | *lazy evaluation* | [Part 4](/posts/minigpt3/#the-jargon-decoder) |
+| packing a whole step into one job | *compiling*, with `mx.compile` | [Part 4](/posts/minigpt3/#the-jargon-decoder) |
+| capping the slopes if they are unusually big | *gradient clipping* | [Part 4](/posts/minigpt3/#the-jargon-decoder) |
+| copying a batch to the GPU | a *host-to-device transfer* | [Part 4](/posts/minigpt3/#the-jargon-decoder) |
+| the simpler normalise | *RMSNorm* (root mean square normalisation) | [Part 5](/posts/minigpt4/#the-jargon-decoder) |
+| the 2017 normalise | *LayerNorm* | [Part 5](/posts/minigpt4/#the-jargon-decoder) |
+| turning cards by position | *rotary position embeddings*, or *RoPE* | [Part 5](/posts/minigpt4/#the-jargon-decoder) |
+| the MLP with a gate | *SwiGLU* | [Part 5](/posts/minigpt4/#the-jargon-decoder) |
+| sharing key and value cards between heads | *grouped-query attention*, or *GQA* | [Part 5](/posts/minigpt4/#the-jargon-decoder) |
+| a query, key, and value for every head | *multi-head attention*, or *MHA* | [Part 5](/posts/minigpt4/#the-jargon-decoder) |
+| turning one change off at a time | an *ablation study* | [Part 5](/posts/minigpt4/#the-jargon-decoder) |
+| copying a teacher's whole wheel | *logit distillation*, or *knowledge distillation* | [Part 6](/posts/minigpt5/#the-jargon-decoder) |
+| learning only from the right answer | training on a *one-hot* target, or *hard labels* | [Part 6](/posts/minigpt5/#the-jargon-decoder) |
+| the teacher's wheel | *soft targets* | [Part 6](/posts/minigpt5/#the-jargon-decoder) |
+| how different two wheels are | the *KL divergence* (Kullback–Leibler divergence) | [Part 6](/posts/minigpt5/#the-jargon-decoder) |
+| the raw scores against the answer cards | the *logits* | [Part 6](/posts/minigpt5/#the-jargon-decoder) |
+| the softening setting | the distillation *temperature* | [Part 6](/posts/minigpt5/#the-jargon-decoder) |
+| a stronger teacher whose wheels the student cannot reach | the *capacity gap* | [Part 6](/posts/minigpt5/#the-jargon-decoder) |
+| the length of the row | the *context length*, or *sequence length* | [Part 7](/posts/minigpt6/#the-jargon-decoder) |
+| looking back only a fixed number of positions | *sliding-window attention* | [Part 7](/posts/minigpt6/#the-jargon-decoder) |
+| the grid of allowed matches | the *attention mask* | [Part 7](/posts/minigpt6/#the-jargon-decoder) |
+| growing with the square of the row | *quadratic*, or O(T²), cost | [Part 7](/posts/minigpt6/#the-jargon-decoder) |
+| growing in step with the row | *linear*, or O(T × W), cost | [Part 7](/posts/minigpt6/#the-jargon-decoder) |
+| how far information could travel through the blocks | the *receptive field* | [Part 7](/posts/minigpt6/#the-jargon-decoder) |
+| some blocks with a window, and some with full attention | *interleaved*, or *local and global*, attention | [Part 7](/posts/minigpt6/#the-jargon-decoder) |
 
 ## Try it yourself
 
 - **The follow-along notebook:** [`part7-sliding-window/minigpt_follow_along_7.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part7-sliding-window/minigpt_follow_along_7.ipynb), for Jupyter on a Mac with Apple Silicon. It counts the matches, checks that the chunked window gives full attention's numbers when the window covers the whole row, runs a short memory race, and shows the secret-word results. It is saved with the outputs from my own run, so you can read every result on GitHub without a Mac.
+
+![](assets/images/minigpt6/notebook-top.png)
+*The notebook open in Jupyter on my Mac, with the outputs saved from my run*
+
 - **On the command line,** after Part 3's `prepare_data.py` and `tokenizers_setup.py`:
 
 ```bash
@@ -377,7 +398,7 @@ python mem_sweep.py
 python figures.py
 python ../part5-modern-block/train_llama.py --tag window1024 --block-size 1024 --window 256 --iters 1500
 python ../part5-modern-block/train_llama.py --tag full1024   --block-size 1024 --window 0   --iters 1500
-./run_secret.sh      # the secret-word test: three machines, about 45 minutes
+./run_secret.sh      # the secret-word test: three machines, then the window machine for longer; about 2 hours
 ```
 
 MLX needs Apple Silicon.

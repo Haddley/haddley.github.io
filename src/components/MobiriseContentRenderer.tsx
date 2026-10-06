@@ -756,8 +756,8 @@ function renderSection(section: MobiriseParsedContent, index: number, nested = f
         unoptimized={true}
       />
     );
-    // Diagrams are drawn as SVGs with small text: on a phone they keep a readable width
-    // inside a sideways-scrolling box, and a tap opens the full-size drawing on its own.
+    // Every image opens full size when tapped. Diagrams are drawn as SVGs with small text,
+    // so on a phone they also keep a readable width inside a sideways-scrolling box.
     const isDiagram = /\.svg(\?|$)/i.test(section.content);
     return wrap(index, nested, (
       <div className="image-wrapper">
@@ -768,7 +768,14 @@ function renderSection(section: MobiriseParsedContent, index: number, nested = f
             </a>
             <span className="svg-diagram-hint">Scroll sideways, or tap the diagram to open it full size</span>
           </>
-        ) : image}
+        ) : (
+          <>
+            <a href={section.content} target="_blank" rel="noopener noreferrer" className="image-link" title="Open the full-size image">
+              {image}
+            </a>
+            <span className="svg-diagram-hint">Tap the image to open it full size</span>
+          </>
+        )}
         {section.description && (
           <p className="mbr-description mbr-fonts-style mt-2 align-center display-4">
             {processInlineMarkdown(section.description)}
