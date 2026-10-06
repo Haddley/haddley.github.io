@@ -69,6 +69,10 @@ make flash
 ![](assets/images/claudecode16/blink-program-written.png)
 *Claude wrote the blink program, flashed it, and confirmed the readback; it said it could not see the board, so I needed to check the LED myself*
 
+:::brain-power Before you read the code
+Does `DDRB` control the direction of each pin, or the level it drives? Make a guess before reading on.
+:::
+
 Here is the program, exactly as I pasted it from the project:
 
 ```c
@@ -92,6 +96,10 @@ int main(void) {
 ```
 
 The logic is short. `DDRB` sets PB0 as an output, and the loop toggles it every 500 ms, so the LED changes state twice a second, a 1 Hz blink. The comment's claim that the programmer's own LED sits on PB0 is the one thing in this program that I could not confirm from the photos. The Tiny AVR Programmer hookup guide says "there's an on-board amber LED connected to pin 0 of the ATtiny85," and adds "The LED is connected to pin 0 in the Arduino environment." Pin 0 in that environment is PB0, which is physical pin 5. So the comment is correct, and the programmer's amber LED is the first thing that should blink.
+
+:::watch-it The clock is part of the program
+`_delay_ms(500)` does not measure the chip's clock. It assumes the value of `F_CPU`. If the fuses change the clock and the code keeps its 1 MHz assumption, the delays are wrong and the LED blinks at the wrong speed.
+:::
 
 ## Beat 3 — Plug in the hardware
 
@@ -132,6 +140,18 @@ The query worked. Claude identified the programmer and the chip:
 ![](assets/images/claudecode16/chip-identified.png)
 *Claude identified the programmer, the ATtiny85 signature, and the factory fuse settings*
 
+:::under-the-hood Reading the fuse bytes
+The low fuse byte holds the clock settings. Bit 7 is CKDIV8: a 0 there divides the clock by 8. So `0x62` (bit 7 = 0) runs at 1 MHz, and `0xE2` (bit 7 = 1) runs at the full 8 MHz.
+:::
+
+:::pencil Sharpen your pencil
+If I changed the low fuse to `0xE2` but left the code unchanged, would the LED blink faster, slower, or at the same speed? Work it out from the code's `F_CPU` assumption.
+
+:::answer
+Faster. The code still assumes 1 MHz, so each `_delay_ms(500)` wait is only 1/8 of 500 ms when the chip runs at 8 MHz. The LED toggles about eight times faster.
+:::
+:::
+
 Claude also made a point I had not expected: the 1 MHz setting in the Makefile is not an arbitrary choice. It matches the factory fuses, so the delay in the code matches the clock the chip actually runs at, with no change needed on the chip.
 
 ## The result
@@ -139,12 +159,24 @@ Claude also made a point I had not expected: the 1 MHz setting in the Makefile i
 ![](assets/images/claudecode16/breadboard-led-lit.jpg)
 *The breadboard LED lit on the ATtiny85 circuit. This is a single frame, so it shows that the output works, not the 500 ms timing.*
 
+:::no-dumb-questions
+**Q: If `avrdude` read the bytes back, why does a lit LED still not prove the timing?**
+
+A: The readback compares the flash contents with the file I built. It proves the bytes arrived intact. It says nothing about the clock, the wiring, or how fast the loop runs. One frame shows that the output works at that moment. Only watching the blink over several seconds shows the timing.
+:::
+
 ## What stands out
 
 - **Claude could not see the board, and it said so.** Its message after the upload said "I can't see the board, so check that it's actually blinking." The readback from `avrdude` proved the program was written, not that it runs. I checked the LEDs myself.
 - **My own first doubt was wrong.** When I read the blink comment against the photos, I suspected that the programmer's LED could not be on PB0. The hookup guide says it is, so the comment was right and my suspicion was not. The lesson I took is to check a hardware claim against a source before publishing it, whether it comes from Claude or from my own reading of a photo.
 - **The surprises were in the toolchain, not the wiring.** Part 15's LCD hid a wiring quirk inside a library's source comments. This chip is bare, so the problems were an Intel-only `avrdude` on an Apple Silicon Mac, and a fuse setting that decides the clock speed the code's delays depend on.
 - **Claude asked before the security change and not before the rest.** It stopped to ask before trusting the Homebrew tap. After my answer, it installed the toolchain and a native `avrdude` through Homebrew without asking again.
+
+:::bullet-points Recap
+- Claude Code found and installed a native `avrdude`, because the Arduino copy is Intel-only.
+- The chip identifies as an ATtiny85 with factory fuses, which matches the 1 MHz delays in the code.
+- A lit LED is one frame of evidence. The blink rate still needs to be watched over time.
+:::
 
 ## References
 
