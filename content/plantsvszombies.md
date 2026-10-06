@@ -11,6 +11,10 @@ slug: "plantsvszombies"
 I spent a lazy evening vibe coding a Plants vs. Zombies clone with Claude Code. The whole game lives in a single vanilla JavaScript file running on an HTML5 canvas — no frameworks, no build step — with sprites pulled from the [UnityPlantsVsZombiesClone](https://github.com/HectorPulido/UnityPlantsVsZombiesClone) repo and the official [Plants vs. Zombies wiki](https://plantsvszombies.wiki.gg/wiki/Plants_vs._Zombies/Gallery). I had Claude Code set up a Playwright-based visual regression test that screenshots the running game and compares it pixel-by-pixel against reference images, so I can keep adding plants and zombies without breaking the layout.
 
 
+:::brain-power Before you watch the demo
+What would you expect a visual regression test to catch that a unit test of the game logic would miss? Make a guess before reading on.
+:::
+
 ![](/assets/mp4/plantsvszombies/sunflower_wallnut_vs_zombie_conehead.mp4)
 *I recorded a demo video of the peashooter, sunflower, and wallnut fighting off zombies*
 
@@ -20,11 +24,27 @@ I spent a lazy evening vibe coding a Plants vs. Zombies clone with Claude Code. 
 ![](assets/images/plantsvszombies/Screenshot-2026-06-16-at-5.08.10-AM.png)
 *I watched Claude Code work through the walnut and sunflower sprite assets while timing crackedness for the demo*
 
+:::no-dumb-questions
+**Q: What is a visual regression test?**
+
+A: It screenshots the running game and compares the pixels against reference images, so any change to what is drawn shows up, even when the code still runs.
+:::
+
 ![](assets/images/plantsvszombies/Screenshot-2026-06-16-at-5.25.54-AM.png)
 *I generated a visual regression test that compares the finished game screen against a reference Plants vs. Zombies image*
 
 ![](assets/images/plantsvszombies/Screenshot-2026-06-16-at-5.26.06-AM.png)
 *I reviewed the compare-reference.js script Claude Code wrote to crop matching regions and compute pixel-difference SSIM scores*
+
+:::watch-it A pixel match flags every change, including ones you wanted
+Any visible difference fails the comparison, so an intended change will fail the test until you update the reference image. Update references deliberately, not automatically.
+:::
+
+:::bullet-points Recap
+- The whole game is one vanilla JavaScript file on an HTML5 canvas, with no build step.
+- A Playwright test screenshots the running game and compares it to reference images.
+- The compare script crops matching regions and computes SSIM scores.
+:::
 
 ## References
 
