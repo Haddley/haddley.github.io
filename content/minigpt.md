@@ -10,7 +10,11 @@ hidden: false
 slug: "minigpt"
 ---
 
-I spend most of my time using language models, not building them. And "building" is not really the right word: nobody writes a language model's knowledge in by hand. It is grown, by training, and I want to understand that process better, and to be able to explain it. So when I found the paper [MiniGPT: Rebuilding GPT from First Principles](https://arxiv.org/pdf/2605.17398) by Jibin Joseph, I wanted to run it myself. MiniGPT is a single Jupyter notebook that reconstructs the whole GPT training pipeline in plain PyTorch: tokenisation, embeddings, causal self-attention, Transformer blocks, next-token training, validation tracking, checkpoint selection, and text generation. It does not introduce a new architecture. It makes an existing one legible.
+Nobody programs a language model's knowledge in directly: it is grown, by training. I spend most of my time using language models, not building them, and it seems reasonable that understanding how they are made will help me apply them better. In any case, I am naturally curious, and I want to be able to explain how they work.
+
+I started in July 2023 with the book [*Generative AI with Python and TensorFlow 2*](https://github.com/PacktPublishing/Hands-On-Generative-AI-with-Python-and-TensorFlow-2), by Joseph Babcock and Raghav Bali. More recently, I found the paper [MiniGPT: Rebuilding GPT from First Principles](https://arxiv.org/pdf/2605.17398) by Jibin Joseph, and decided to use it for some hands-on revision.
+
+MiniGPT is a single Jupyter notebook that reconstructs the whole GPT training pipeline in plain PyTorch: tokenisation, embeddings, causal self-attention, Transformer blocks, next-token training, validation tracking, checkpoint selection, and text generation. It does not introduce a new architecture. It makes an existing one legible.
 
 The paper is explicit about its lineage: the author studied Andrej Karpathy's [nanoGPT](https://github.com/karpathy/nanoGPT) and then wrote the model and training code independently in one notebook. That matched how I like to learn a system, so I worked through it top to bottom, but instead of the README's recommended Colab path, I ran it locally on my 2022 Mac Studio (Apple M1 Max, 64 GB RAM).
 
@@ -1104,6 +1108,7 @@ The tiny differences come from the MLP's bend, GELU: llama.cpp uses a fast appro
 ## References
 
 - [MiniGPT: Rebuilding GPT from First Principles — Jibin Joseph, 2026](https://arxiv.org/abs/2605.17398)
+- [Generative AI with Python and TensorFlow 2 — Joseph Babcock & Raghav Bali, Packt, 2021](https://github.com/PacktPublishing/Hands-On-Generative-AI-with-Python-and-TensorFlow-2)
 - [nanoGPT — Andrej Karpathy](https://github.com/karpathy/nanoGPT)
 - [minGPT — Andrej Karpathy](https://github.com/karpathy/minGPT)
 - [char-rnn and the Tiny Shakespeare dataset — Andrej Karpathy](https://github.com/karpathy/char-rnn)
