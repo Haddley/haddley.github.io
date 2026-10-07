@@ -9,6 +9,7 @@ import dynamic from 'next/dynamic';
 
 // Live demos are loaded only on the posts that use them, and only in the browser.
 const MiniGPTDemo = dynamic(() => import('./MiniGPTDemo'), { ssr: false });
+const MiniGPTWheelDemo = dynamic(() => import('./MiniGPTWheelDemo'), { ssr: false });
 
 // Copy-to-clipboard button for code blocks
 function CopyCodeButton({ code }: { code: string }) {
@@ -523,6 +524,7 @@ const CALLOUTS: Record<string, { icon: string; label: string; accent: string; ba
   'fireside-chat': { icon: '🔥', label: 'Fireside Chat', accent: '#c2410c', background: '#fff7ed' },
   'bullet-points': { icon: '📌', label: 'Bullet Points', accent: '#4b5563', background: '#f9fafb' },
   'under-the-hood': { icon: '🔧', label: 'Under the hood', accent: '#6b7280', background: '#f9fafb' },
+  'test-drive': { icon: '🚗', label: 'Test Drive', accent: '#0891b2', background: '#ecfeff' },
   'answer': { icon: '💡', label: 'Show the answer', accent: '#059669', background: '#ffffff' },
 };
 
@@ -550,6 +552,7 @@ function renderCallout(section: MobiriseParsedContent, index: number, nested: bo
   // ":::demo minigpt" ... ":::" embeds a live demo rather than a callout box.
   if (section.calloutType === 'demo') {
     if (section.content.trim() === 'minigpt') return wrap(index, nested, <MiniGPTDemo />);
+    if (section.content.trim() === 'minigpt1') return wrap(index, nested, <MiniGPTWheelDemo />);
     return null;
   }
   const style = CALLOUTS[section.calloutType || ''] || CALLOUTS['bullet-points'];

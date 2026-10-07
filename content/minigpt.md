@@ -10,17 +10,220 @@ hidden: false
 slug: "minigpt"
 ---
 
-Nobody programs a language model's knowledge in directly: it is grown, by training. I spend most of my time using language models, not building them, and it seems reasonable that understanding how they are made will help me apply them better. In any case, I am naturally curious, and I want to be able to explain how they work.
+Nobody programs a large language model (LLM)'s knowledge in directly: it is grown, by training. I spend a lot more of my time using LLMs to write code, emails, blog posts etc. than I do thinking about how they are built but it seems reasonable that understanding how they are made will help me to apply them better. In any case, I am naturally curious, and I want to be able to explain how they work.
 
-I started in July 2023 with the book [*Generative AI with Python and TensorFlow 2*](https://github.com/PacktPublishing/Hands-On-Generative-AI-with-Python-and-TensorFlow-2), by Joseph Babcock and Raghav Bali. More recently, I found the paper [MiniGPT: Rebuilding GPT from First Principles](https://arxiv.org/pdf/2605.17398) by Jibin Joseph, and decided to use it for some hands-on revision.
+I started this effort in July 2023 with the book [*Generative AI with Python and TensorFlow 2*](https://github.com/PacktPublishing/Hands-On-Generative-AI-with-Python-and-TensorFlow-2), by Joseph Babcock and Raghav Bali. More recently, I found the paper [MiniGPT: Rebuilding GPT from First Principles](https://arxiv.org/pdf/2605.17398) by Jibin Joseph, and decided to use it for some hands-on revision.
 
-MiniGPT is a single Jupyter notebook that reconstructs the whole GPT training pipeline in plain PyTorch: tokenisation, embeddings, causal self-attention, Transformer blocks, next-token training, validation tracking, checkpoint selection, and text generation. It does not introduce a new architecture. It makes an existing one legible.
 
-The paper is explicit about its lineage: the author studied Andrej Karpathy's [nanoGPT](https://github.com/karpathy/nanoGPT) and then wrote the model and training code independently in one notebook. That matched how I like to learn a system, so I worked through it top to bottom, but instead of the README's recommended Colab path, I ran it locally on my 2022 Mac Studio (Apple M1 Max, 64 GB RAM).
+## Guessing the next letter
 
-This post takes a finished, trained machine apart while it runs. I trained a small MiniGPT model on my Mac, using *Tiny Shakespeare*: about 1.1 million letters of Shakespeare's plays, the same text the notebook uses. Shakespeare is all it has ever read, so everything it writes sounds like a play, and every number in this post comes from that one model, my exhibit. How a machine like this gets its numbers in the first place, from nothing, is the subject of [the next post](/posts/minigpt-grown/), and there I grow this exact model again from scratch.
+The model described here, the exhibit model, generates text one letter at a time.
 
-First comes the whole idea in plain English, with no code: a guessing game, a supply of letter flashcards, a set of numbered position cards that records where each letter is, working cards that look back at earlier positions, and a spinning wheel of chances. Then we open the notebook and follow the code, line by line, in the order the machine runs it, matching each line to one of those everyday comparisons. One promise: no magic. Every number in this post is either worked out in front of you, or comes from a run on my own Mac Studio.
+:::brain-power
+Guess the next letter:
+
+> KING RICHARD III: A horse! a horse! my kingdom for a hors_
+:::
+
+You probably guessed that the letter `e` comes next, and you did not have to think about it, because you have read a lot of English.
+
+The exhibit model plays exactly this game. Given some existing text, it guesses what letter comes next.
+
+:::watch-it
+By "letter" I mean any of the symbols in Shakespeare's text, including the space, the new line, and punctuation marks such as the comma.
+:::
+
+If we look more closely at how the exhibit model picks the next letter, it takes two steps. First, it works out how likely each of the 65 letters is to come next. Then it picks one at random, but not evenly: a likely letter is picked more often than an unlikely one.
+
+### Spinning a wheel: an analogy
+
+A good way to picture the second step is a prize wheel at a fair. The wheel has 65 slices, one for each letter, and each slice is as big as that letter's chance. After `go`, the model works out that `o` is the most likely next letter, so `o` gets the biggest slice: 34.8% of the way round the wheel. The space gets 15.6%, `d` gets 15.4%, and so on. To pick the next letter, spin the wheel, and write down whatever letter stops under the pointer.
+
+![](assets/images/minigpt/spin-the-wheel.svg)
+*The wheel after `go`, with the model's real chances. The same text gives the same wheel every time, but each spin can land somewhere different*
+
+Often the wheel lands on `o`. Sometimes it lands on a space. Now and then it lands on one of the thin grey slices, and that is what keeps the model's writing from being the same every time.
+
+The wheel is not fixed. The model works out a brand new wheel for every letter it writes, because every new letter changes the chances. An untrained model has slices that are all about the same size, so all it can write is noise.
+
+:::watch-it Not a real wheel
+Nothing in the model draws or spins a wheel. But the analogy is closer than it looks. The code that does the picking, shown [below](#the-real-code-a-list-of-65-chances-and-a-spin), chooses a random number between 0 and 1, and walks along the list of chances until it passes that number. Each letter is then picked exactly as often as its slice of the wheel would be.
+:::
+
+Try it below. The text starts as `go`, the example above. Change it, and the model makes a new wheel; spin the wheel once to add one letter, or ten times in a row to watch the model write, one wheel at a time.
+
+:::demo minigpt1
+:::
+
+:::test-drive Try the line from the start of this post
+Clear the text in the demo above, and type the line from the start of this post, with the speaker's name on its own line, as it is in Shakespeare's text:
+
+```
+KING RICHARD III:
+A horse! a horse! my kingdom for a hors
+```
+
+- **Look at the wheel.** `e` has by far the biggest slice, 76.6%. The model agrees with you.
+- **Spin it once.** Then delete the letter it added, and spin again, a few times. Most spins land on `e`, but not every one.
+- **Spin ten times,** and watch the wheel change after every letter. After `horse`, it spreads out again: a comma 21.5%, a full stop 15.6%, `l` 11.0%. Many things could come next.
+- **Delete letters from the end,** one at a time, and watch the model have less to go on. After `hor`, `t` (36.8%) and `s` (21.3%) lead; after just `h`, `o`, `a`, and `e` are almost level, at 30.7%, 26.6%, and 24.4%.
+:::
+
+
+### The real code: a list of 65 chances, and a spin
+
+The wheel is only a picture, but the live demo below does something very close to it. Before it picks a letter, it has worked out a list of 65 chances, one for each letter, in the order of the letters' ID numbers ([step 1](#step-1-letters-to-numbers) explains the IDs). Here is that list after `go`, with the letters that matter, and a running total. The chances add up to exactly 1:
+
+| ID | Letter | Chance | Running total |
+|---|---|---|---|
+| 0 | new line | 0.96% | 0.0096 |
+| 1 | space | 15.59% | 0.1656 |
+| … | | | |
+| 6 | `,` | 3.24% | 0.2080 |
+| … | | | |
+| 42 | `d` | 15.38% | 0.4153 |
+| … | | | |
+| 52 | `n` | 5.69% | 0.5308 |
+| 53 | `o` | 34.80% | 0.8788 |
+| … | | | |
+| 64 | `z` | | 1.0000 |
+
+This is the code the demo runs to spin the wheel, from [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts). It is TypeScript, which is JavaScript with types, and `probs` is the list of 65 chances:
+
+```typescript
+// Spin the wheel: pick a letter, each with its own chance.
+export function spinWheel(probs: Float32Array, random: () => number = Math.random): number {
+  let r = random();
+  for (let i = 0; i < probs.length; i++) {
+    r -= probs[i];
+    if (r <= 0) return i;
+  }
+  return probs.length - 1;
+}
+```
+
+![](assets/images/minigpt/annotated-spin.svg)
+*The same code line by line, with a note beside each line in my own words*
+
+`Math.random()` picks a point somewhere around the wheel: a number between 0 and 1. The loop then walks round the wheel, slice by slice, taking away each slice's chance, until it has passed that point, and returns the ID of the slice it stopped in. If the random number is 0.6, the walk passes the new line, the space, the comma, `d`, and `n` (a running total of 0.5308), and stops inside `o`'s slice, which runs from 0.5308 to 0.8788. So it returns 53, `o`. If the random number is 0.3, it stops inside `d`'s slice instead, between 0.2080 and 0.4153. A big slice covers more of the numbers between 0 and 1, so it is picked more often: `o` about 35 times in every 100 spins. The last line is only a safety net, in case rounding leaves the total a hair under 1.
+
+The demo then turns the ID back into a letter, and adds it to the end of the text:
+
+```typescript
+return current + engine.manifest.chars[spinWheel(p)];
+```
+
+`chars` is the list of the 65 letters in ID order, so ID 53 becomes `o`. Where the list of chances comes from is what the rest of this post explains, layer by layer: [the five steps](#the-five-steps) turn the text into 65 scores, and the last of them turns the scores into chances that add up to 1. The notebook's own Python does the same spin with one line, `torch.multinomial`, in [the code walk-through](#spinning-the-wheel-back-in-generatetext).
+
+
+
+
+### `lm_head` and softmax: where the 65 chances come from
+
+One layer down from the wheel: where does the list of 65 chances come from? Just before it picks a letter, the model has summed up the text so far as a list of 128 numbers, the last *working card*. (The rest of this post explains how it gets there.) Two steps turn those 128 numbers into 65 chances: first a score for every letter, then *softmax*, which turns the scores into chances.
+
+**Step one: a score for every letter.** The model holds 65 *answer cards*, one for each letter, each with 128 numbers of its own and one extra number, a *bias*. To score a letter, it multiplies the working card by that letter's answer card, number by number, adds up the 128 results, and adds the bias. A big score means the working card looks like the moments when that letter comes next. After `go`, `o` scores 4.878, the space 4.076, `d` 4.062, and `n` 3.068. The lowest of the 65 is `V`, at −7.421.
+
+**Step two: softmax.** Scores are not chances: they can be negative, and they do not add up to anything in particular. Softmax fixes both. It raises *e* (about 2.718) to the power of each score, which makes every number positive and stretches the gaps, and then divides each one by the total, so that the 65 chances add up to 1. Here it is for `go`, after first taking the biggest score away from every score, which keeps the numbers small without changing the answer. Raised to the power of *e*, all 65 add up to 2.874, so each chance is its own number divided by 2.874:
+
+| Letter | Score | Minus 4.878 | *e* to that power | Chance |
+|---|---|---|---|---|
+| `o` | 4.878 | 0 | 1.000 | **34.8%** |
+| space | 4.076 | −0.802 | 0.448 | **15.6%** |
+| `d` | 4.062 | −0.816 | 0.442 | **15.4%** |
+| `n` | 3.068 | −1.810 | 0.164 | **5.7%** |
+
+Those are the slices of the wheel after `go`.
+
+### In the original Python: `lm_head` and `torch.softmax`
+
+In Jibin Joseph's notebook, both steps are a line each. The 65 answer cards are one PyTorch layer, created in `MiniGPT.__init__` as `self.lm_head = nn.Linear(config.n_embd, config.vocab_size)`: a table of 65 rows of 128 numbers, plus 65 biases. `lm_head` is short for *language-model head*. At the end of `MiniGPT.forward`:
+
+```python
+# the final normalisation
+x = self.final_ln(x)
+# score every working card against the 65 answer cards
+logits = self.lm_head(x)
+```
+
+The scores are called `logits`. Then, in the writing loop, `generate_text`:
+
+```python
+# keep only the last working card's 65 scores
+logits = logits[:, -1, :]
+# the chances: the slices of the wheel
+probs = torch.softmax(logits, dim=-1)
+```
+
+`self.lm_head(x)` does the multiply-and-add for every working card and all 65 answer cards at once, and `torch.softmax` does step two. The notebook scores every working card in the text, because training needs them all, and then keeps only the last row.
+
+### In the TypeScript this page runs: `readOut`, `linear`, and `softmax`
+
+The demos on this page do the same two steps in TypeScript, in [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts), using the same trained numbers. `readOut` takes the last working card only, gives it the final normalisation, and scores it against the answer cards:
+
+```typescript
+private readOut(x: Float32Array, T: number): Float32Array {
+  const C = this.manifest.n_embd;
+  const last = x.subarray((T - 1) * C, T * C);
+  const normed = this.layerNorm(new Float32Array(last), 1, C, 'final_ln');
+  return this.linear(normed, 1, C, 'lm_head');
+}
+```
+
+`C` is 128, the length of a card, and `last` is the last working card. `linear` is the multiply-and-add, written out as loops: for each answer card `o`, it starts from the bias `b[o]`, and adds the working card's 128 numbers, each multiplied by the answer card's matching number:
+
+```typescript
+private linear(x: Float32Array, T: number, nIn: number, name: string): Float32Array {
+  const W = this.t(`${name}.weight`);
+  const b = this.t(`${name}.bias`);
+  const nOut = b.length;
+  const y = new Float32Array(T * nOut);
+  for (let r = 0; r < T; r++) {
+    const xo = r * nIn;
+    for (let o = 0; o < nOut; o++) {
+      let acc = b[o];
+      const wo = o * nIn;
+      for (let i = 0; i < nIn; i++) acc += x[xo + i] * W[wo + i];
+      y[r * nOut + o] = acc;
+    }
+  }
+  return y;
+}
+```
+
+And `softmax` is step two, exactly as in the table: find the biggest score, take it away, raise *e* to each result, and divide by the total:
+
+```typescript
+export function softmax(scores: Float32Array): Float32Array {
+  let max = -Infinity;
+  for (const s of scores) if (s > max) max = s;
+  const out = new Float32Array(scores.length);
+  let sum = 0;
+  for (let i = 0; i < scores.length; i++) {
+    const e = scores[i] === -Infinity ? 0 : Math.exp(scores[i] - max);
+    out[i] = e;
+    sum += e;
+  }
+  for (let i = 0; i < out.length; i++) out[i] /= sum;
+  return out;
+}
+```
+
+Its output is the `probs` list that `spinWheel` walks along. [Step 4](#step-4-chances) comes back to the answer cards, once the post has explained where the working card comes from.
+
+### Try it: my trained machine, running in your browser
+
+This is the exhibit model itself, all 826,433 numbers of it, running in this page. Nothing is sent anywhere: the five steps happen on your own computer. Type anything, and watch the chances for the next letter change as you type. Then spin the wheel, or let it write 200 letters. Use the sliders to try temperature and the wheel trimming, and use the block and head buttons to look inside any of its 16 attention heads.
+
+:::demo minigpt
+:::
+
+A few things to try:
+
+- Type `goo`, and check that you get the same 96.6% for `d` as the rest of this post.
+- Type `First Citizen:` and a new line, and let it write. It has learned what a speech looks like.
+- Set temperature to 0, and watch it fall into a loop. Then set it to 2, and watch it invent words.
+- Look at block 1, heads 1 and 3, on any text you like: one position back, and two positions back, every time.
 
 **Start here.** This is Part 1 of seven:
 
@@ -32,14 +235,14 @@ First comes the whole idea in plain English, with no code: a guessing game, a su
 6. [Learning from a teacher](/posts/minigpt5/): distillation.
 7. [Reading further](/posts/minigpt6/): sliding-window attention.
 
-- **Ten minutes?** Read [the guessing game](#the-whole-thing-is-a-guessing-game) and [the five steps](#the-five-steps), skip to [Putting it together](#putting-it-together-choosing-the-next-letter), and then [try the machine](#try-it-my-trained-machine-running-in-your-browser) in your browser.
+- **Ten minutes?** Read [the guessing game](#guessing-the-next-letter) and [the five steps](#the-five-steps), skip to [Putting it together](#putting-it-together-choosing-the-next-letter), and then [try the machine](#try-it-my-trained-machine-running-in-your-browser) in your browser.
 - **An hour?** Read the whole plain-English half, down to [Opening the notebook](#opening-the-notebook). It needs no code.
 - **To follow along,** you need only a browser: the live demo runs in this page, and my workbook runs in Colab.
 - **Every term** is explained in the post where it first appears, and the [series glossary](/posts/minigpt6/#the-series-glossary) collects them all.
 
 Here is the route:
 
-1. **[The guessing game](#the-whole-thing-is-a-guessing-game)**: what a GPT actually does, how it [gives every letter a chance](#it-does-not-pick-a-letter-it-gives-every-letter-a-chance), and how it spins a wheel of chances to choose one.
+1. **[The guessing game](#guessing-the-next-letter)**: what a GPT actually does, how it [gives every letter a chance](#it-does-not-pick-a-letter-it-gives-every-letter-a-chance), and how it spins a wheel of chances to choose one.
 2. **[The five steps](#the-five-steps)** the machine takes for every letter it writes: [letters to numbers](#step-1-letters-to-numbers), [letter cards and position cards](#step-2-letter-cards-and-position-cards), [the blocks](#step-3-the-blocks), [chances](#step-4-chances), and [spinning the wheel](#step-5-spin-the-wheel).
 3. **Inside the blocks**: [attention](#inside-a-block-attention), [queries, keys, and values](#where-the-scratch-cards-come-from), [several heads at once](#several-heads-at-once), [the MLP](#then-the-mlp-each-working-card-on-its-own), and [why there are four blocks](#four-blocks-in-a-row).
 4. **[How much can it see at once?](#how-much-can-it-see-at-once-the-context-limit)**: the context limit, and why raising it is expensive.
@@ -47,34 +250,6 @@ Here is the route:
 6. **[Beyond the guessing game](#beyond-the-guessing-game-tools-harnesses-and-agents)**: how tools, harnesses, and agents let a model do more than write.
 7. **Loose ends**: [why the big models do not use letters](#why-the-big-models-do-not-use-letters), and [what nobody knows](#we-know-the-rules-not-the-result) about what the machine has learned.
 8. **[The notebook](#opening-the-notebook)**: setting it up, [the model's settings](#11-model-configuration), [the code, in the order the machine runs](#the-code-in-the-order-the-machine-runs), and how to [run my trained model yourself](#run-my-model-yourself).
-
-| This post's machine | |
-|---|---|
-| What changed | nothing yet: this is the machine the whole series starts from |
-| Text | Tiny Shakespeare, about 1.1 million letters |
-| Pieces | letters: 65 letter cards |
-| Blocks | 4 blocks, each attention (4 heads) then an MLP |
-| Card size | 128 numbers |
-| Positions | 128, with a position card for each |
-| Engine | PyTorch |
-| Size | 826,433 numbers |
-| Score | 1.70 surprise per letter on the locked-away text ([Part 2](/posts/minigpt-grown/#keeping-score-the-surprise-score)) |
-
-## The big picture, in plain English
-
-Before any code, here is the whole idea with no jargon at all. Every comparison in this section will help explain the notebook when we get to it. It is the same machine, described through everyday comparisons, and the official names are saved for a decoder table at the end of the section.
-
-### The whole thing is a guessing game
-
-:::brain-power
-Guess the next letter:
-
-> KING RICHARD III: A horse! a horse! my kingdom for a hors_
-:::
-
-You said `e`, and you did not have to think about it, because you have read a lot of English. A GPT (short for Generative Pre-trained Transformer) is a machine that plays exactly this game. Given some text, it guesses what comes next. Big models like the ones behind ChatGPT guess the next word, or the next piece of a word. The small model in this post guesses one letter at a time. By "letter" I mean any of the symbols in Shakespeare's text, including the space, the new line, and punctuation marks such as the comma. Either way, guessing what comes next is the only thing it ever does.
-
-So what does my trained model say after `hors`? It gives `e` 76.6%, by far its favourite. It agrees with you. You can try the line yourself in [the live demo](#try-it-my-trained-machine-running-in-your-browser).
 
 :::brain-power
 Big models guess words, or pieces of words. MiniGPT guesses one letter at a time, which seems simpler and more natural. So why do the big models not use letters too? Keep the question in mind. I come back to it near the end of this introduction.
@@ -104,18 +279,11 @@ It is not sure yet. The word could become *good*, *go*, *God*, *gone*, and plent
 
 The chances always add up to 100%, because one of the 65 letters has to come next.
 
-### So how does it choose what to write? It spins a wheel
 
-Giving chances is not the same as choosing. When the machine writes, it turns its chances into a choice by spinning a wheel, like a prize wheel at a fair. The wheel has 65 slices, one for each letter, and each slice is as big as that letter's chance. After `go`, the `o` slice covers 34.8% of the wheel, the space 15.6%, the `d` 15.4%, and so on. The machine spins the wheel and writes down whatever letter stops under the pointer.
 
-![](assets/images/minigpt/spin-the-wheel.svg)
-*The real wheel after `go`. The same text gives the same wheel every time, but each spin can land somewhere different*
+CUT
 
-Often the wheel lands on `o`. Sometimes it lands on a space. Now and then it lands on one of the thin grey slices, and that is what keeps the machine's writing from being the same every time.
-
-The wheel is not fixed. The machine works out a brand new wheel for every letter it writes, because every new letter changes the chances.
-
-An untrained machine has slices that are all about the same size, so all it can write is noise. How training makes some slices big and others thin is the subject of [the next post](/posts/minigpt-grown/).
+ How training makes some slices big and others thin is the subject of [the next post](/posts/minigpt-grown/).
 
 :::pencil Be the model
 Here is another line with its end hidden. Before you read on, write down your own chances for the next letter, as percentages that add up to 100.
@@ -510,20 +678,6 @@ So why not simply give the machine thousands of positions? Because seeing furthe
 4. **Seeing is not the same as using.** A machine with more positions only gets better if it learns to use the far-away letters, and that needs practice text where letters far back really matter.
 
 This is the same limit you meet in chatbots, where it is called the context window and counted in tokens rather than letters. Today's models can see hundreds of thousands of tokens at once. They get there partly with better ways of marking positions than a fixed set of position cards, like the rotary position embeddings I tried in [MiniGPT (Part 5)](/posts/minigpt4/), and partly with cheaper kinds of attention, like the windowed attention in [MiniGPT (Part 7)](/posts/minigpt6/). Windows are usually mixed with some blocks of full attention, because, as Part 7's secret-word test shows, a window does not reach further back on its own.
-
-### Try it: my trained machine, running in your browser
-
-This is the exhibit model itself, all 826,433 numbers of it, running in this page. Nothing is sent anywhere: the five steps happen on your own computer. Type anything, and watch the chances for the next letter change as you type. Then spin the wheel, or let it write 200 letters. Use the sliders to try temperature and the wheel trimming, and use the block and head buttons to look inside any of its 16 attention heads.
-
-:::demo minigpt
-:::
-
-A few things to try:
-
-- Type `goo`, and check that you get the same 96.6% for `d` as the rest of this post.
-- Type `First Citizen:` and a new line, and let it write. It has learned what a speech looks like.
-- Set temperature to 0, and watch it fall into a loop. Then set it to 2, and watch it invent words.
-- Look at block 1, heads 1 and 3, on any text you like: one position back, and two positions back, every time.
 
 ### Beyond the guessing game: tools, harnesses, and agents
 
@@ -1103,7 +1257,6 @@ The tiny differences come from the MLP's bend, GELU: llama.cpp uses a fast appro
 - Build one step by step: [MicroGPT Visualized](https://microgpt.jtauber.com/) starts from counting pairs of letters and adds one idea at a time
 - My follow-along workbook: [open it in Colab](https://colab.research.google.com/github/Haddley/minigpt-series/blob/main/part1-running/minigpt_follow_along.ipynb). It runs my trained model and reproduces every number in this post
 - The notebook: [github.com/jibin10/MiniGPT](https://github.com/jibin10/MiniGPT) : open `MiniGPT_Notebook.ipynb` in Colab, or clone it and run it locally, then follow [Run my model yourself](#run-my-model-yourself) to load my trained model. Any CPU will do
-
 
 ## References
 
