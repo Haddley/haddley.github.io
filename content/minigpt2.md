@@ -33,13 +33,13 @@ The code for this post is in [`part3-tokenisers/`](https://github.com/Haddley/mi
 :::brain-power
 How many pieces would you cut this sentence into, if you could choose any pieces you liked?
 
-> Once upon a time, there was a little dog named Spot.
+> The wobbly kitten chased a yellow butterfly.
 :::
 
-MiniGPT, as Parts 1 and 2 built it, cuts it into 52 pieces: one for every letter, space, and punctuation mark. You probably thought in words: 11 of them, plus a comma and a full stop. The program that does the cutting is the **tokeniser**, and each piece it produces is a **token**. In Parts 1 and 2, every token was a single letter, so I called each token's card a letter card. From here on, a token can be a whole word, part of a word, or a single letter, so I call its card a **token card**. Nothing else about the cards changes: the tokeniser turns each piece into an ID, and each ID picks its own token card.
+MiniGPT, as Parts 1 and 2 built it, cuts it into 44 pieces: one for every letter, space, and punctuation mark. You probably thought in words: 7 of them, plus a full stop. The program that does the cutting is the **tokeniser**, and each piece it produces is a **token**. In Parts 1 and 2, every token was a single letter, so I called each token's card a letter card. From here on, a token can be a whole word, part of a word, or a single letter, so I call its card a **token card**. Nothing else about the cards changes: the tokeniser turns each piece into an ID, and each ID picks its own token card.
 
 ![](assets/images/minigpt2/tokenisation.svg)
-*The same words, cut three ways. For this everyday sentence, GPT-2's pieces and mine happen to be identical, but their IDs are not. They disagree on less common words, as [What bigger pieces buy](#what-bigger-pieces-buy) shows. The machine never sees the letters, only the IDs, so every piece needs its own token card*
+*The same words, cut three ways. In this sentence, GPT-2 breaks *wobbly* into three pieces, while my tokeniser keeps it whole. The two cuts disagree on words like this one, and on less common words too, as [What bigger pieces buy](#what-bigger-pieces-buy) shows. The machine never sees the letters, only the IDs, so every piece needs its own token card*
 
 ### Three ways to cut text
 
