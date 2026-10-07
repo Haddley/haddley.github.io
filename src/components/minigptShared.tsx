@@ -130,8 +130,9 @@ export function Wheel({
 
 // The biggest slices, as a list, with what the rest share between them.
 export function ChanceList({ chances, chars, k = 8 }: { chances: Float32Array; chars: string[]; k?: number }) {
-  const top = topK(chances, k);
-  const rest = 1 - top.reduce((sum, i) => sum + chances[i], 0);
+  // Letters trimmed away (top-k or top-p) have no slice, so they are left out of the list.
+  const top = topK(chances, k).filter((i) => chances[i] > 0);
+  const rest = Math.max(0, 1 - top.reduce((sum, i) => sum + chances[i], 0));
   return (
     <div>
       {top.map((i) => (
@@ -141,7 +142,8 @@ export function ChanceList({ chances, chars, k = 8 }: { chances: Float32Array; c
         </div>
       ))}
       <div style={{ fontSize: '0.8rem', color: '#6b7280', marginTop: '0.4rem', maxWidth: '16rem' }}>
-        The other {chances.length - top.length} letters share {(rest * 100).toFixed(1)}%. Each letter gets a slice as big as its chance; grey slices are letters under 2.5%.
+        {rest > 0.0005 ? `The other ${chances.length - top.length} letters share ${(rest * 100).toFixed(1)}%. ` : `The other ${chances.length - top.length} letters have no slice. `}
+        Each letter gets a slice as big as its chance; grey slices are letters under 2.5%.
       </div>
     </div>
   );

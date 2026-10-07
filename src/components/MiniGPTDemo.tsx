@@ -19,6 +19,7 @@ export default function MiniGPTDemo() {
   const [text, setText] = React.useState(START_TEXT);
   const [temperature, setTemperature] = React.useState(1);
   const [topP, setTopP] = React.useState(1);
+  const [topKSetting, setTopKSetting] = React.useState(65);
   const [block, setBlock] = React.useState(0);
   const [head, setHead] = React.useState(0);
   const [writing, setWriting] = React.useState(false);
@@ -36,18 +37,18 @@ export default function MiniGPTDemo() {
     [engine, ids]
   );
   const chances = React.useMemo(
-    () => (result ? adjustChances(result.logits, temperature, topP) : null),
-    [result, temperature, topP]
+    () => (result ? adjustChances(result.logits, temperature, topP, topKSetting) : null),
+    [result, temperature, topP, topKSetting]
   );
 
   const addLetter = React.useCallback(
     (current: string): string | null => {
       if (!engine) return null;
       const r = engine.forward(engine.encode(current));
-      const p = adjustChances(r.logits, temperature, topP);
+      const p = adjustChances(r.logits, temperature, topP, topKSetting);
       return current + engine.manifest.chars[spinWheel(p)];
     },
-    [engine, temperature, topP]
+    [engine, temperature, topP, topKSetting]
   );
 
   const write = async (n: number) => {
@@ -84,6 +85,7 @@ export default function MiniGPTDemo() {
     setText(START_TEXT);
     setTemperature(1);
     setTopP(1);
+    setTopKSetting(65);
   };
 
   if (error) return <div style={panel}>{error}</div>;
@@ -141,6 +143,10 @@ export default function MiniGPTDemo() {
           <label>
             Temperature: <strong>{temperature.toFixed(1)}</strong>
             <input type="range" min={0} max={2} step={0.1} value={temperature} onChange={(e) => setTemperature(Number(e.target.value))} style={{ display: 'block', width: '180px' }} />
+          </label>
+          <label>
+            Keep the biggest k slices (top-k): <strong>{topKSetting >= 65 ? 'all' : topKSetting}</strong>
+            <input type="range" min={1} max={65} step={1} value={topKSetting} onChange={(e) => setTopKSetting(Number(e.target.value))} style={{ display: 'block', width: '180px' }} />
           </label>
           <label>
             Keep slices up to (top-p): <strong>{topP >= 1 ? 'all' : `${Math.round(topP * 100)}%`}</strong>

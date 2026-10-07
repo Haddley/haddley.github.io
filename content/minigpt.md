@@ -17,7 +17,7 @@ I started this effort in July 2023 with the book [*Generative AI with Python and
 
 ## Guessing the next letter
 
-The model described here, the exhibit model, generates text one letter at a time.
+The model described here, our MiniGPT model, generates text one letter at a time.
 
 :::brain-power
 Guess the next letter:
@@ -27,13 +27,13 @@ Guess the next letter:
 
 You probably guessed that the letter `e` comes next, and you did not have to think about it, because you have read a lot of English.
 
-The exhibit model plays exactly this game. Given some existing text, it guesses what letter comes next.
+Our MiniGPT model plays exactly this game. Given some existing text, it guesses what letter comes next.
 
 :::watch-it
 By "letter" I mean any of the symbols in Shakespeare's text, including the space, the new line, and punctuation marks such as the comma.
 :::
 
-If we look more closely at how the exhibit model picks the next letter, it takes two steps. First, it works out how likely each of the 65 letters is to come next. Then it picks one at random, but not evenly: a likely letter is picked more often than an unlikely one.
+How does our MiniGPT model pick a next letter? It takes two steps. First, it works out how likely each of the 65 letters is to come next. Then it picks one at random, but not evenly: a likely letter is picked more often than an unlikely one.
 
 ### Spinning a wheel: an analogy
 
@@ -42,9 +42,9 @@ A good way to picture the second step is a prize wheel at a fair. The wheel has 
 ![](assets/images/minigpt/spin-the-wheel.svg)
 *The wheel after `go`, with the model's real chances. The same text gives the same wheel every time, but each spin can land somewhere different*
 
-Often the wheel lands on `o`. Sometimes it lands on a space. Now and then it lands on one of the thin grey slices, and that is what keeps the model's writing from being the same every time.
+In the example above the wheel often lands on the letter `o`. Sometimes it lands on a space. Now and then it lands on one of the thin grey slices, and that is what keeps the model's writing from being the same every time.
 
-The wheel is not fixed. The model works out a brand new wheel for every letter it writes, because every new letter changes the chances. An untrained model has slices that are all about the same size, so all it can write is noise.
+The wheel is not fixed. In this analogy the model works out a brand new wheel for every letter it writes, because every new letter changes the chances. An untrained model has slices that are all about the same size, so all it can write is noise.
 
 :::watch-it Not a real wheel
 Nothing in the model draws or spins a wheel. But the analogy is closer than it looks. The code that does the picking, shown [below](#the-real-code-a-list-of-65-chances-and-a-spin), chooses a random number between 0 and 1, and walks along the list of chances until it passes that number. Each letter is then picked exactly as often as its slice of the wheel would be.
@@ -70,6 +70,146 @@ A horse! a horse! my kingdom for a hors
 :::
 
 
+### Temperature: a bolder or a safer wheel
+
+Before it spins, the model can reshape the wheel. A setting called *temperature* changes how big every slice is compared with the others. Turn it down, and the big slices grow and the thin ones shrink, so the model plays safe. Turn it up, and the slices even out, so the model takes more risks. Temperature is a *hyperparameter*: a setting that I choose, not something the model learned. Most hyperparameters, such as how many blocks the model has, are fixed before training, but temperature only changes how the wheel is spun, not how the chances are worked out, so it can be changed every time the model writes. Here is what it does to the wheel after `go`:
+
+| Temperature | `o` | space | `d` | `n` | Letters under 2.5% share |
+|---|---|---|---|---|---|
+| 0.5, cautious | 68.0% | 13.6% | 13.3% | 1.8% | 5.1% |
+| 0.8, the notebook's setting | 45.1% | 16.6% | 16.3% | 4.7% | 11.5% |
+| 1, the wheel as it is | 34.8% | 15.6% | 15.4% | 5.7% | 17.5% |
+| 2, bold | 13.7% | 9.2% | 9.1% | 5.5% | 37.5% |
+
+Turn it all the way down to 0, and the model always takes the biggest slice, and writes the same text every time. Turn it right up, and every slice heads towards the same size, and the writing turns to noise. [Step 5](#step-5-spin-the-wheel) shows what it does to a whole line.
+
+### Temperature in the original Python
+
+In Jibin Joseph's notebook, the writing loop, `generate_text`, takes `temperature` as a setting, with a default of 0.8. It works on the *scores*, one number per letter, just before they become chances ([`lm_head` and softmax](#lmhead-and-softmax-where-the-65-chances-come-from), below, explains them). These are the notebook's own lines and comments:
+
+```python
+# Select logits from the last time step.
+logits = logits[:, -1, :]
+
+# Apply temperature scaling.
+logits = logits / temperature
+```
+
+That is all there is to it. After the first line, `logits` holds the 65 scores for the next letter, and dividing it by one number divides every score by that number: 65 divisions in one line. Here is what it does to the two biggest scores after `go`:
+
+| Divide by | `o` | space | Gap | `o`'s slice ÷ space's |
+|---|---|---|---|---|
+| 0.5 | 9.757 | 8.151 | 1.6 | **5** |
+| 1 | 4.878 | 4.076 | 0.8 | **2.2** |
+| 2 | 2.439 | 2.038 | 0.4 | **1.5** |
+
+At temperature 1, `o`'s slice (34.8%) is 2.2 times the space's (15.6%). At 0.5, it is 5 times as big (68.0% against 13.6%), and at 2, only 1.5 times (13.7% against 9.2%).
+
+The gap is what matters. Softmax ignores the scores themselves and looks only at the gaps between them: how much bigger one letter's slice is than another's is *e* raised to the power of the gap between their scores. Dividing by 0.5 doubles every gap, so the favourite pulls further ahead. Dividing by 2 halves every gap, so the slices even out. Dividing by 1 changes nothing. As the temperature heads towards 0, the gaps grow without limit and the favourite takes the whole wheel; as it heads upwards, the gaps shrink towards nothing and every letter's slice heads towards 1 in 65.
+
+The name comes from physics. The same formula describes how particles spread out across energy levels, and there you divide by the temperature: cold particles all settle into the lowest level, like the favourite taking the whole wheel, and hot ones spread out across every level, like every letter getting a similar slice.
+
+### Temperature in the TypeScript this page runs
+
+The demos on this page do the same in [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts), at the start of `adjustChances`:
+
+```typescript
+if (temperature <= 0.01) {
+  probs = new Float32Array(V);
+  let best = 0;
+  for (let i = 1; i < V; i++) if (logits[i] > logits[best]) best = i;
+  probs[best] = 1;
+} else {
+  const scaled = new Float32Array(V);
+  for (let i = 0; i < V; i++) scaled[i] = logits[i] / temperature;
+  probs = softmax(keepTopK(scaled, topK));
+}
+```
+
+The `else` part is the notebook's line, written out as a loop: divide each of the 65 scores by the temperature, then trim with top-k (next) and turn the scores into chances. The first part handles a temperature of 0, which the notebook cannot do, because it would divide by zero. Instead, it finds the biggest score, and gives that letter the whole wheel. You can try it in the [demo after the top-k section](#try-temperature-and-top-k-on-the-wheel).
+
+### Top-k: keeping only the biggest slices
+
+Even a good wheel has dozens of thin slices for letters that make no sense where they are. Usually the pointer misses them, but spin often enough and it will land on one, and a single nonsense letter can throw off everything written after it. One way to stop that is to trim the wheel before spinning it: keep only the *k* biggest slices, throw the rest away, and let the survivors share the whole wheel between them, each in proportion to its chance. This is called *top-k*.
+
+Like temperature, *k* is a hyperparameter: a setting that I choose, which can be changed every time the model writes, with no retraining. Here is what it does to the wheel after `go`:
+
+| Keep the biggest | `o` | space | `d` | `n` | Slices left |
+|---|---|---|---|---|---|
+| all 65 | 34.8% | 15.6% | 15.4% | 5.7% | 65 |
+| 5 | 46.2% | 20.7% | 20.4% | 7.6% | 5 |
+| 3 | 52.9% | 23.7% | 23.4% | 0 | 3 |
+| 1 | 100% | 0 | 0 | 0 | 1 |
+
+A small *k* makes the model play safe: with *k* = 1 it always takes the biggest slice, and writes the same text every time. A big *k* leaves room for surprises, good and bad.
+
+### Top-k in the original Python
+
+In Jibin Joseph's notebook, the writing loop, `generate_text`, takes `top_k` as a setting, with a default of 200. It trims the wheel just before the chances are worked out, while they are still *scores*: one number per letter, where a bigger score means a bigger slice ([`lm_head` and softmax](#lmhead-and-softmax-where-the-65-chances-come-from), below, explains them). These are the notebook's own lines and comments:
+
+```python
+# Apply top-k filtering if requested.
+if top_k is not None:
+
+    # Keep no more than vocabulary size.
+    k = min(top_k, logits.size(-1))
+
+    # Find top-k logits.
+    values, indices = torch.topk(logits, k=k)
+
+    # Create filtered logits filled with -infinity.
+    filtered_logits = torch.full_like(logits, float("-inf"))
+
+    # Scatter top-k values into filtered logits.
+    filtered_logits.scatter_(dim=-1, index=indices, src=values)
+
+    # Replace logits with filtered logits.
+    logits = filtered_logits
+```
+
+`torch.topk` finds the *k* biggest scores and which letters they belong to. `torch.full_like` makes a fresh list of 65 scores, every one of them minus infinity, and `scatter_` puts the *k* biggest scores back in their places. When softmax turns scores into chances, a score of minus infinity becomes a chance of exactly 0, so those slices vanish, and the survivors share the whole wheel.
+
+:::watch-it Top-k of 200 trims nothing here
+The notebook's default `top_k` is 200, but this model has only 65 letters, so `min(top_k, logits.size(-1))` makes *k* 65, and every slice is kept. Top-k matters for big models that choose between tens of thousands of pieces of words. To see it work on MiniGPT, *k* has to be smaller than 65.
+:::
+
+### Top-k in the TypeScript this page runs
+
+The demos on this page do the same in TypeScript, in [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts), the same way: keep the *k* biggest scores, and set the rest to minus infinity.
+
+```typescript
+// Top-k: keep the k biggest scores, and set the rest to minus infinity, as the notebook does.
+// Softmax then gives every removed letter a chance of exactly 0.
+export function keepTopK(scores: Float32Array, k: number): Float32Array {
+  const kept = new Float32Array(scores.length).fill(-Infinity);
+  const order = Array.from(scores.keys()).sort((a, b) => scores[b] - scores[a]);
+  for (const i of order.slice(0, Math.min(k, scores.length))) kept[i] = scores[i];
+  return kept;
+}
+```
+
+`kept` starts as 65 minus infinities. `order` is the 65 letter IDs, sorted from the biggest score to the smallest, and the loop copies back the scores of the first *k* of them. Then, in `adjustChances`, the trimmed scores go straight into softmax:
+
+```typescript
+probs = softmax(keepTopK(scaled, topK));
+```
+
+The demo below lets you change it.
+
+### Try temperature and top-k on the wheel
+
+This is the wheel from the first demo, with the two settings added. Moving a slider reshapes the wheel straight away, before it spins, and the model's trained numbers stay exactly as they are.
+
+:::demo minigpt12
+:::
+
+:::test-drive Reshape the wheel after "go"
+1. Leave the text as `go`. Slide the temperature down to 0.5: `o` grows from 34.8% to 68.0%, as in the temperature table. Slide it up to 2, and the slices even out.
+2. Slide the temperature to 0, and press **Spin ten times**. The model always takes the biggest slice, so it writes the same letters every time you reset and try again.
+3. Put the temperature back to 1, and slide top-k down to 3: only `o`, the space and `d` are left, at 52.9%, 23.7% and 23.4%. At 1, `o` has the whole wheel.
+4. Try both at once: a temperature of 2 with top-k at 5 lets the model take risks, but only among the five likeliest letters.
+:::
+
 ### The real code: a list of 65 chances, and a spin
 
 The wheel is only a picture, but the live demo below does something very close to it. Before it picks a letter, it has worked out a list of 65 chances, one for each letter, in the order of the letters' ID numbers ([step 1](#step-1-letters-to-numbers) explains the IDs). Here is that list after `go`, with the letters that matter, and a running total. The chances add up to exactly 1:
@@ -88,7 +228,22 @@ The wheel is only a picture, but the live demo below does something very close t
 | … | | | |
 | 64 | `z` | | 1.0000 |
 
-This is the code the demo runs to spin the wheel, from [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts). It is TypeScript, which is JavaScript with types, and `probs` is the list of 65 chances:
+In Jibin Joseph's notebook, the spin is one line. The notebook's writing loop, `generate_text`, holds the 65 chances in a PyTorch list called `probs`, and hands them to `torch.multinomial`, which picks one ID at random, each with its own chance: exactly what the wheel does. Then `torch.cat` adds the new ID to the end of the text so far, `idx`, ready to go round the loop again. These are the notebook's own lines and comments:
+
+```python
+# Convert logits into probabilities.
+probs = torch.softmax(logits, dim=-1)
+
+# Sample next token ID.
+next_id = torch.multinomial(probs, num_samples=1)
+
+# Append sampled token ID.
+idx = torch.cat([idx, next_id], dim=1)
+```
+
+*Sample* is the experts' word for spinning the wheel. The first line, softmax, is where the 65 chances come from, and [the next section](#lmhead-and-softmax-where-the-65-chances-come-from) explains it. (Just before these lines, the loop can also reshape the wheel with *temperature* and *top-k*, which [step 5](#step-5-spin-the-wheel) explains.)
+
+`torch.multinomial` keeps the walk round the wheel hidden inside PyTorch. The demos on this page do the same in TypeScript, which is JavaScript with types, using the same trained numbers, so there the walk is written out in full. This is the spin, from [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts), where `probs` is the same list of 65 chances:
 
 ```typescript
 // Spin the wheel: pick a letter, each with its own chance.
@@ -113,7 +268,7 @@ The demo then turns the ID back into a letter, and adds it to the end of the tex
 return current + engine.manifest.chars[spinWheel(p)];
 ```
 
-`chars` is the list of the 65 letters in ID order, so ID 53 becomes `o`. Where the list of chances comes from is what the rest of this post explains, layer by layer: [the five steps](#the-five-steps) turn the text into 65 scores, and the last of them turns the scores into chances that add up to 1. The notebook's own Python does the same spin with one line, `torch.multinomial`, in [the code walk-through](#spinning-the-wheel-back-in-generatetext).
+`chars` is the list of the 65 letters in ID order, so ID 53 becomes `o`. Where the list of chances comes from is what the rest of this post explains, layer by layer: [the five steps](#the-five-steps) turn the text into 65 scores, and the last of them turns the scores into chances that add up to 1.
 
 
 
@@ -124,7 +279,13 @@ One layer down from the wheel: where does the list of 65 chances come from? Just
 
 **Step one: a score for every letter.** The model holds 65 *answer cards*, one for each letter, each with 128 numbers of its own and one extra number, a *bias*. To score a letter, it multiplies the working card by that letter's answer card, number by number, adds up the 128 results, and adds the bias. A big score means the working card looks like the moments when that letter comes next. After `go`, `o` scores 4.878, the space 4.076, `d` 4.062, and `n` 3.068. The lowest of the 65 is `V`, at −7.421.
 
-**Step two: softmax.** Scores are not chances: they can be negative, and they do not add up to anything in particular. Softmax fixes both. It raises *e* (about 2.718) to the power of each score, which makes every number positive and stretches the gaps, and then divides each one by the total, so that the 65 chances add up to 1. Here it is for `go`, after first taking the biggest score away from every score, which keeps the numbers small without changing the answer. Raised to the power of *e*, all 65 add up to 2.874, so each chance is its own number divided by 2.874:
+**The 65 answer cards together are `lm_head`.** That is the name the code gives them, short for *language-model head*. It is the model's last layer: 65 cards of 128 numbers, plus 65 biases, 8,385 numbers in all. Everything before it, the letter cards, the position cards and the blocks that rewrite the working cards, is the *body* of the model, and its job is to understand the text so far. The *head* sits on top of the body and reads the answer out in the form the task needs. Here the task is "which of 65 letters comes next?", so the head has 65 outputs, one score per letter. Nobody wrote the answer cards by hand: like every other number in the model, they started random, and training nudged them until the scores they give match what Tiny Shakespeare really does next.
+
+:::under-the-hood Answer cards that are also letter cards
+In the notebook's bigger setup, with 384 numbers per card, one line makes each letter's answer card the very same list of numbers as its letter card: `model.lm_head.weight = model.token_embedding.weight`. This trick, called *weight tying*, works because both tables are 65 cards long and the same width, and it saves a whole table of numbers. GPT-2 does the same. My trained model does not: I checked, and its answer cards and letter cards are two separate tables, each learned on its own.
+:::
+
+**Step two: softmax.** Scores are not chances: they can be negative, and they do not add up to anything in particular. Softmax fixes both. It raises *e* (about 2.718) to the power of each score, which makes every number positive and stretches the gaps, and then divides each one by the total, so that the 65 chances add up to 1. Here it is for `go`, after first taking the biggest score away from every score, which keeps the numbers small without changing the answer. Once *e* is raised to the power of each one, all 65 add up to 2.874, so each chance is its own number divided by 2.874:
 
 | Letter | Score | Minus 4.878 | *e* to that power | Chance |
 |---|---|---|---|---|
@@ -137,7 +298,7 @@ Those are the slices of the wheel after `go`.
 
 ### In the original Python: `lm_head` and `torch.softmax`
 
-In Jibin Joseph's notebook, both steps are a line each. The 65 answer cards are one PyTorch layer, created in `MiniGPT.__init__` as `self.lm_head = nn.Linear(config.n_embd, config.vocab_size)`: a table of 65 rows of 128 numbers, plus 65 biases. `lm_head` is short for *language-model head*. At the end of `MiniGPT.forward`:
+In Jibin Joseph's notebook, both steps are a line each. The 65 answer cards are one PyTorch layer, created in `MiniGPT.__init__` as `self.lm_head = nn.Linear(config.n_embd, config.vocab_size)`: a table of 65 rows of 128 numbers, plus 65 biases. At the end of `MiniGPT.forward`:
 
 ```python
 # the final normalisation
@@ -213,7 +374,7 @@ Its output is the `probs` list that `spinWheel` walks along. [Step 4](#step-4-ch
 
 ### Try it: my trained machine, running in your browser
 
-This is the exhibit model itself, all 826,433 numbers of it, running in this page. Nothing is sent anywhere: the five steps happen on your own computer. Type anything, and watch the chances for the next letter change as you type. Then spin the wheel, or let it write 200 letters. Use the sliders to try temperature and the wheel trimming, and use the block and head buttons to look inside any of its 16 attention heads.
+This is our MiniGPT model itself, all 826,433 numbers of it, running in this page. Nothing is sent anywhere: the five steps happen on your own computer. Type anything, and watch the chances for the next letter change as you type. Then spin the wheel, or let it write 200 letters. Use the sliders to try temperature and the wheel trimming, and use the block and head buttons to look inside any of its 16 attention heads.
 
 :::demo minigpt
 :::

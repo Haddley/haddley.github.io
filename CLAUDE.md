@@ -125,7 +125,7 @@ Posts can use Head First-style callout boxes, rendered by `MobiriseContentRender
 | `under-the-hood` | Collapsed deep-dive detail that most readers can skip |
 | `test-drive` | Try it now: steps for the reader to run in a live demo or notebook right after it appears |
 
-A `:::demo minigpt` … `:::` block embeds the full live MiniGPT demo (`src/components/MiniGPTDemo.tsx`): text, the wheel with temperature and top-p, attention heads, and early guesses. A `:::demo minigpt1` … `:::` block embeds the simpler wheel-only demo (`src/components/MiniGPTWheelDemo.tsx`), used early in Part 1: editable text starting at `go`, its wheel, and spinning once or ten times. Both load the exhibit model from `public/minigpt-demo/`, and share their loading and wheel-drawing code in `src/components/minigptShared.tsx`.
+A `:::demo minigpt` … `:::` block embeds the full live MiniGPT demo (`src/components/MiniGPTDemo.tsx`): text, the wheel with temperature and top-p, attention heads, and early guesses. A `:::demo minigpt1` … `:::` block embeds the simpler wheel-only demo (`src/components/MiniGPTWheelDemo.tsx`), used early in Part 1: editable text starting at `go`, its wheel, and spinning once or ten times. A `:::demo minigpt12` … `:::` block embeds the same wheel demo with temperature and top-k sliders added (`<MiniGPTWheelDemo settings />`). Both load the exhibit model from `public/minigpt-demo/`, and share their loading and wheel-drawing code in `src/components/minigptShared.tsx`.
 
 ````markdown
 :::pencil Draw a head

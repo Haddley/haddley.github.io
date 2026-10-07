@@ -553,6 +553,7 @@ function renderCallout(section: MobiriseParsedContent, index: number, nested: bo
   if (section.calloutType === 'demo') {
     if (section.content.trim() === 'minigpt') return wrap(index, nested, <MiniGPTDemo />);
     if (section.content.trim() === 'minigpt1') return wrap(index, nested, <MiniGPTWheelDemo />);
+    if (section.content.trim() === 'minigpt12') return wrap(index, nested, <MiniGPTWheelDemo settings />);
     return null;
   }
   const style = CALLOUTS[section.calloutType || ''] || CALLOUTS['bullet-points'];

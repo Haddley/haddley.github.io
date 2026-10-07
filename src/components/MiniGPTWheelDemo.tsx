@@ -2,10 +2,11 @@
 
 // The first, simpler live demo in MiniGPT (Part 1): only what the post has explained by that point.
 // The reader edits the text, sees the model's wheel of chances for the next letter, and spins it,
-// once or ten times in a row. No temperature, trimming, or attention yet.
+// once or ten times in a row. With `settings`, it also has temperature and top-k sliders, which
+// reshape the wheel before it spins. No top-p or attention yet.
 
 import React from 'react';
-import { spinWheel } from '@/lib/minigptEngine';
+import { adjustChances, spinWheel } from '@/lib/minigptEngine';
 import { ChanceList, Wheel, label, mono, panel, restRotation, rotationFor, show, useMiniGPTEngine } from './minigptShared';
 
 const START_TEXT = 'go';
@@ -15,7 +16,9 @@ const HOLD_MS = 450;        // pause on the winning slice before the next wheel 
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-export default function MiniGPTWheelDemo() {
+const START_TEMPERATURE = 1;
+
+export default function MiniGPTWheelDemo({ settings = false }: { settings?: boolean }) {
   const { engine, error } = useMiniGPTEngine();
   const [text, setText] = React.useState(START_TEXT);
   const [spinning, setSpinning] = React.useState(false);
@@ -23,6 +26,8 @@ export default function MiniGPTWheelDemo() {
   const [spinTo, setSpinTo] = React.useState<number | null>(null);
   const [durationMs, setDurationMs] = React.useState(ONE_SPIN_MS);
   const [landed, setLanded] = React.useState<string | null>(null);
+  const [temperature, setTemperature] = React.useState(START_TEMPERATURE);
+  const [topKSetting, setTopKSetting] = React.useState(65);
   const stopRef = React.useRef(false);
 
   const ids = React.useMemo(() => (engine ? engine.encode(text) : []), [engine, text]);
@@ -31,12 +36,22 @@ export default function MiniGPTWheelDemo() {
     [engine, text]
   );
   // The model's chances for the next letter: the slices of this text's wheel.
-  const chances = React.useMemo(() => (engine && ids.length > 0 ? engine.forward(ids).probs : null), [engine, ids]);
+  // With the sliders, temperature and top-k reshape the wheel first; without them, it is the plain softmax.
+  const wheelFor = React.useCallback(
+    (logits: Float32Array, probs: Float32Array) => (settings ? adjustChances(logits, temperature, 1, topKSetting) : probs),
+    [settings, temperature, topKSetting]
+  );
+  const chances = React.useMemo(() => {
+    if (!engine || ids.length === 0) return null;
+    const r = engine.forward(ids);
+    return wheelFor(r.logits, r.probs);
+  }, [engine, ids, wheelFor]);
 
   // Spin the wheel for the current text, wait for it to stop, and add the winning letter.
   const spin = async (current: string, ms: number): Promise<string | null> => {
     if (!engine) return null;
-    const p = engine.forward(engine.encode(current)).probs;
+    const r = engine.forward(engine.encode(current));
+    const p = wheelFor(r.logits, r.probs);
     const id = spinWheel(p);
     const letter = engine.manifest.chars[id];
     setDurationMs(ms);
@@ -72,6 +87,8 @@ export default function MiniGPTWheelDemo() {
   const reset = () => {
     setText(START_TEXT);
     setLanded(null);
+    setTemperature(START_TEMPERATURE);
+    setTopKSetting(65);
   };
 
   if (error) return <div style={panel}>{error}</div>;
@@ -112,12 +129,25 @@ export default function MiniGPTWheelDemo() {
             </button>
           )}
           <button type="button" className="btn btn-sm btn-outline-secondary" disabled={busy} onClick={reset}>
-            Reset to &ldquo;go&rdquo;
+            {settings ? 'Reset' : <>Reset to &ldquo;go&rdquo;</>}
           </button>
         </div>
       </div>
 
       <div style={panel}>
+        {settings && (
+          <div className="d-flex flex-wrap mb-3" style={{ fontSize: '0.85rem', columnGap: '2rem', rowGap: '0.75rem' }}>
+            <label>
+              Temperature: <strong>{temperature.toFixed(1)}</strong>
+              {temperature <= 0.01 ? ' (always the biggest slice)' : ''}
+              <input type="range" min={0} max={2} step={0.1} value={temperature} disabled={busy} onChange={(e) => setTemperature(Number(e.target.value))} style={{ display: 'block', width: '200px' }} />
+            </label>
+            <label>
+              Top-k, keep the biggest: <strong>{topKSetting >= 65 ? 'all 65' : topKSetting}</strong>
+              <input type="range" min={1} max={65} step={1} value={topKSetting} disabled={busy} onChange={(e) => setTopKSetting(Number(e.target.value))} style={{ display: 'block', width: '200px' }} />
+            </label>
+          </div>
+        )}
         <div style={label}>
           The wheel for the next letter after &ldquo;<span style={mono}>{text.length > 24 ? '…' + text.slice(-24) : text}</span>&rdquo;
         </div>

@@ -197,8 +197,18 @@ export class MiniGPTEngine {
   }
 }
 
-// Step 5 helpers: reshape the wheel of chances with the boldness dial (temperature), then trim it (top-p).
-export function adjustChances(logits: Float32Array, temperature: number, topP: number): Float32Array {
+// Top-k: keep the k biggest scores, and set the rest to minus infinity, as the notebook does.
+// Softmax then gives every removed letter a chance of exactly 0.
+export function keepTopK(scores: Float32Array, k: number): Float32Array {
+  const kept = new Float32Array(scores.length).fill(-Infinity);
+  const order = Array.from(scores.keys()).sort((a, b) => scores[b] - scores[a]);
+  for (const i of order.slice(0, Math.min(k, scores.length))) kept[i] = scores[i];
+  return kept;
+}
+
+// Step 5 helpers: reshape the wheel of chances with the boldness dial (temperature),
+// then trim it, keeping the biggest k slices (top-k) and then the biggest slices up to p (top-p).
+export function adjustChances(logits: Float32Array, temperature: number, topP: number, topK: number = logits.length): Float32Array {
   const V = logits.length;
   let probs: Float32Array;
   if (temperature <= 0.01) {
@@ -209,7 +219,7 @@ export function adjustChances(logits: Float32Array, temperature: number, topP: n
   } else {
     const scaled = new Float32Array(V);
     for (let i = 0; i < V; i++) scaled[i] = logits[i] / temperature;
-    probs = softmax(scaled);
+    probs = softmax(keepTopK(scaled, topK));
   }
   if (topP < 1) {
     const order = Array.from(probs.keys()).sort((a, b) => probs[b] - probs[a]);
