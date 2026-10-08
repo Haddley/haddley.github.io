@@ -10,7 +10,7 @@ hidden: false
 slug: "minigpt5"
 ---
 
-Every MiniGPT so far has learned the same way, the guessing game from [Part 2](/posts/minigpt-grown/): guess the next token, check the real one, and nudge the dials. Meta's small Llama 3.2 models learned from something more. The [Llama 3.2 announcement](https://ai.meta.com/blog/llama-3-2-connect-2024-vision-edge-mobile-devices/) says that "logits from the Llama 3.1 8B and 70B models were used as targets" during pre-training. *Logits* are the scores against the [answer cards](/posts/minigpt/#step-4-chances), just before they become a wheel of chances: the small models learned by copying what the big models thought, not just from the text. This post tries the same idea on a Mac, with a small MiniGPT as the student and four different teachers.
+Every MiniGPT so far has learned the same way, the guessing game from [Part 2](/posts/minigpt-grown/): guess the next token, check the real one, and nudge the dials. Meta's small Llama 3.2 models learned from something more. The [Llama 3.2 announcement](https://ai.meta.com/blog/llama-3-2-connect-2024-vision-edge-mobile-devices/) says that "logits from the Llama 3.1 8B and 70B models were used as targets" during pre-training. *Logits* are the scores against the [answer cards](/posts/minigpt/#lmhead-where-do-the-65-scores-logits-for-the-next-letter-come-from), just before they become a wheel of chances: the small models learned by copying what the big models thought, not just from the text. This post tries the same idea on a Mac, with a small MiniGPT as the student and four different teachers.
 
 The code is in [`part6-distillation/`](https://github.com/Haddley/minigpt-series/tree/main/part6-distillation), with a follow-along notebook for a Mac, [`minigpt_follow_along_6.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part6-distillation/minigpt_follow_along_6.ipynb).
 
@@ -53,7 +53,7 @@ The student is scored on two things at once, and both are surprise scores from [
 - **How surprised it is by the real next token**, as before.
 - **How different its wheel is from the teacher's wheel.** The measure is called *KL divergence*: 0 when the two wheels are identical, and larger the more they differ.
 
-I weight the two equally. Before comparing the wheels, I soften both with a [temperature](/posts/minigpt/#step-5-spin-the-wheel) of 2, the same kind of setting as in Part 1's step 5, so that the thin slices, the near misses, are big enough to learn from.
+I weight the two equally. Before comparing the wheels, I soften both with a [temperature](/posts/minigpt/#temperature-a-bolder-or-a-safer-wheel) of 2, the same kind of setting as in Part 1's step 5, so that the thin slices, the near misses, are big enough to learn from.
 
 
 ![](assets/images/minigpt5/notebook-kl.png)

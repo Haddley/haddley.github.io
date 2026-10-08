@@ -427,7 +427,7 @@ Nothing else needed changing: the notebook's *mixed-precision* code, which saves
 
 ## Notebook part 2: the training pipeline
 
-The notebook is in parts of its own, and its section numbers below are its own too. Its part 2 loads the text, turns it into numbers, and trains the model from its part 1 at baseline settings. Loading the text and turning letters into numbers are [step 1 of the first post](/posts/minigpt/#the-five-steps), so I skip sections 2.1 and 2.2.
+The notebook is in parts of its own, and its section numbers below are its own too. Its part 2 loads the text, turns it into numbers, and trains the model from its part 1 at baseline settings. Loading the text and turning letters into numbers are [the first post](/posts/minigpt/#letters-to-numbers), so I skip sections 2.1 and 2.2.
 
 ### 2.3 Convert Text to Token Tensor and Split into Train/Validation Sets
 
@@ -557,7 +557,7 @@ What happens after step 1,500 is the most useful part of the experiment. The pra
 
 ### 3.13 Generate High-Quality Samples
 
-Prompted with `ROMEO:`, at the notebook's [temperature](/posts/minigpt/#step-5-spin-the-wheel) of 0.8, my best copy wrote this (shortened):
+Prompted with `ROMEO:`, at the notebook's [temperature](/posts/minigpt/#spinning-a-wheel-an-analogy) of 0.8, my best copy wrote this (shortened):
 
 ```
 ROMEO:

@@ -15,6 +15,30 @@ Nobody programs a large language model (LLM)'s knowledge in directly: it is grow
 I started this effort in July 2023 with the book [*Generative AI with Python and TensorFlow 2*](https://github.com/PacktPublishing/Hands-On-Generative-AI-with-Python-and-TensorFlow-2), by Joseph Babcock and Raghav Bali. More recently, I found the paper [MiniGPT: Rebuilding GPT from First Principles](https://arxiv.org/pdf/2605.17398) by Jibin Joseph, and decided to use it for some hands-on revision.
 
 
+**Start here.** This is Part 1 of seven:
+
+1. **Running it** (this post): a trained GPT taken apart while it writes.
+2. [Growing it](/posts/minigpt-grown/): training the same machine from random numbers.
+3. [Pieces, not letters](/posts/minigpt2/): tokenisers, scored fairly.
+4. [A faster engine](/posts/minigpt3/): the same machine in Apple's MLX.
+5. [The modern block](/posts/minigpt4/): Llama's four changes, one at a time.
+6. [Learning from a teacher](/posts/minigpt5/): distillation.
+7. [Reading further](/posts/minigpt6/): sliding-window attention.
+
+- **Ten minutes?** Read [the guessing game](#guessing-the-next-letter), try [the first demo](#spinning-a-wheel-an-analogy), then skip to [the five steps](#the-five-steps) and [the full demo](#try-it-my-trained-machine-running-in-your-browser).
+- **An hour?** Read down to [Opening the notebook](#opening-the-notebook), and try every demo on the way.
+- **To follow along,** you need only a browser: every demo runs in this page, and my workbook runs in Colab.
+- **Every term** is explained in the post where it first appears, and the [series glossary](/posts/minigpt6/#the-series-glossary) collects them all.
+
+Here is the route. I start outside the model, and open it one layer at a time. Every layer gets a plain explanation with real numbers, a demo to try, and the notebook's own Python, with my notes beside it.
+
+1. **[The guessing game](#guessing-the-next-letter)**: what a GPT does, and the [wheel of chances](#spinning-a-wheel-an-analogy) it spins.
+2. **The wheel, reshaped**: [scores](#scores-what-comes-out-of-the-closed-box), [temperature](#temperature-a-bolder-or-a-safer-wheel), [top-k](#top-k-keeping-only-the-biggest-slices), [top-p](#top-p-keeping-slices-up-to-a-share), and [softmax](#softmax-turning-scores-into-chances).
+3. **Opening the box**: [`lm_head`](#lmhead-where-do-the-65-scores-logits-for-the-next-letter-come-from), [the four blocks](#four-blocks-in-a-row), [the MLP](#then-the-mlp-each-hidden-state-on-its-own), [attention](#inside-a-block-attention), [the heads](#several-heads-at-once), [the embeddings](#token-embeddings-and-position-embeddings), and [letters to numbers](#letters-to-numbers).
+4. **[Putting it together](#the-five-steps)**: the five steps, and [the full demo](#try-it-my-trained-machine-running-in-your-browser).
+5. **[How much can it see at once?](#how-much-can-it-see-at-once-the-context-limit)**, [beyond the guessing game](#beyond-the-guessing-game-tools-harnesses-and-agents), and the loose ends.
+6. **[The notebook](#opening-the-notebook)**: setting it up, [the model's settings](#11-model-configuration), and how to [run my trained model yourself](#run-my-model-yourself).
+
 ## Guessing the next letter
 
 The model described here, our MiniGPT model, generates text one letter at a time.
@@ -71,6 +95,35 @@ A horse! a horse! my kingdom for a hors
 :::
 
 
+:::brain-power
+Big models guess words, or pieces of words. MiniGPT guesses one letter at a time, which seems simpler and more natural. So why do the big models not use letters too? Keep the question in mind. I come back to it near the end of this introduction.
+:::
+
+- **Writing** is the game played on repeat: guess a letter, write it down, stick it on the end, and guess again. Every line of "Shakespeare" this machine writes is produced one letter at a time, like that.
+- **Learning** is the game too: guess, check the real answer, adjust, millions of times over. That is how the machine got good at the game, and it is the subject of [the next post](/posts/minigpt-grown/).
+
+![](assets/images/minigpt/guessing-game.svg)
+*The guessing game, played three times in a row by my trained model, with its real chances. Each time, it gives every possible next letter a chance, picks one, and adds it to the end*
+
+That is the whole idea. Everything else in this post is detail about how the guessing is done.
+
+:::pencil Be the model
+Here is another line with its end hidden. Before you read on, write down your own chances for the next letter, as percentages that add up to 100.
+
+> ROMEO: But so_
+
+:::answer
+There is no single right answer, which is the point. A sensible set of chances might be:
+
+- `f` 45%, because you are guessing that the next few letters will spell out *soft*, or something similar
+- `o` 25%, because you are guessing they will spell out *soon*
+- `u` 15%, because you are guessing they will spell out *sound* or *sought*
+- 15% spread over everything else
+
+Notice what you just did. In your head, you guessed whole words, but the machine only ever chooses the very next letter. Whatever you wrote, you just did what the model does at every position: you used what came before to give a chance to whatever comes next.
+:::
+:::
+
 ### Scores: what comes out of the closed box
 
 Before the model can draw the wheel, it gives each of the 65 letters in its vocabulary a *score*: a plain number for how likely that letter is to come next. A score can be any size, even negative, and bigger means likelier. After `go`, `o` scores 4.878, the space 4.076, and `d` 4.062. The code calls these scores *logits*: one for each letter that could come next. What the logits really are, and how the model works them out from the text it is given, I come back to [later](#lmhead-where-do-the-65-scores-logits-for-the-next-letter-come-from); for now, I treat the model as a closed box that the scores come out of. One last step, *softmax*, turns the 65 scores into the 65 chances, the slices of the wheel. It always does this the same way. It makes every score positive, so even `V`, at −7.421, gets a slice, however thin. It keeps the scores in the same order, so the biggest score always gets the biggest slice. And it scales them so that the 65 chances add up to exactly 100%. [Softmax: turning scores into chances](#softmax-turning-scores-into-chances), after temperature and top-k, shows the arithmetic. Two settings, temperature and top-k, can reshape the scores just before softmax, and the next two sections explain them.
@@ -102,7 +155,7 @@ Before it spins, the model can reshape the wheel. A setting called *temperature*
 | 1, the wheel as it is | 34.8% | 15.6% | 15.4% | 5.7% | 17.5% |
 | 2, bold | 13.7% | 9.2% | 9.1% | 5.5% | 37.5% |
 
-Turn it all the way down to 0, and the model always takes the biggest slice, and writes the same text every time. Turn it right up, and every slice heads towards the same size, and the writing turns to noise. [Step 5](#step-5-spin-the-wheel) shows what it does to a whole line.
+Turn it all the way down to 0, and the model always takes the biggest slice, and writes the same text every time. Turn it right up, and every slice heads towards the same size, and the writing turns to noise. The [full demo](#try-it-my-trained-machine-running-in-your-browser) at the end lets you watch it on whole lines.
 
 ### Temperature in the original Python
 
@@ -185,6 +238,29 @@ if top_k is not None:
 The notebook's default `top_k` is 200, but this model has only 65 letters, so `min(top_k, logits.size(-1))` makes *k* 65, and every slice is kept. Top-k matters for big models that choose between tens of thousands of pieces of words. To see it work on MiniGPT, *k* has to be smaller than 65.
 :::
 
+### Top-p: keeping slices up to a share
+
+Top-k always keeps the same number of slices, however the chances are spread. A second way to trim the wheel adapts to the wheel itself: keep the biggest slices until they add up to a share *p*, and cut the rest. This is called *top-p*, or *nucleus sampling*. With p = 90%, my model's wheel after `good m` keeps just 5 slices: `y`, `e`, `a`, `o`, and `i`, which between them hold about 97% of the chance. The other 60 slices, which shared the remaining 3%, are cut away, and the 5 survivors are stretched to fill the whole wheel before the spin.
+
+![](assets/images/minigpt/reshaping-the-wheel.svg)
+*The real wheel after `good m`, reshaped by temperature and by top-p*
+
+The notebook has no top-p; the full demo [at the end](#try-it-my-trained-machine-running-in-your-browser) adds it as a slider. Temperature and trimming work together:
+
+:::fireside-chat Tonight: temperature and the trimmer, on who keeps the writing sensible
+**Temperature:** I am the one readers notice. Turn me up, and the writing comes alive.
+
+**Trimmer:** Turn you up too far, and the writing falls apart. You make the thin slices bigger, and most of the thin slices are silly ones.
+
+**Temperature:** And you are a pair of scissors.
+
+**Trimmer:** A pair of scissors that only cuts what nobody wanted. After `good m`, I keep the five slices that make sense and cut away the rest. Then you can be as bold as you like with what is left.
+
+**Temperature:** So I choose how adventurous to be…
+
+**Trimmer:** …and I make sure the adventure stays on the map. Most chatbots use both of us, every single letter.
+:::
+
 ### Softmax: turning scores into chances
 
 Temperature and top-k reshape the scores. The last step, *softmax*, turns them into chances. Scores are not chances: they can be negative, and they do not add up to anything in particular. Softmax fixes both, in three moves:
@@ -252,7 +328,7 @@ I could change `block_size` to 1,000 in the code, but my trained model could not
 
 ### The real code: a list of 65 chances, and a spin
 
-The wheel is only a picture, but the live demo below does something very close to it. Before it picks a letter, it has worked out a list of 65 chances, one for each letter that could come next, in the order of the letters' ID numbers ([step 1](#letters-to-numbers) explains the IDs). Here is that list after `go`, with the letters that matter, and a running total. The chances add up to exactly 1:
+The wheel is only a picture, but the live demo below does something very close to it. Before it picks a letter, it has worked out a list of 65 chances, one for each letter that could come next, in the order of the letters' ID numbers ([Letters to numbers](#letters-to-numbers) explains the IDs). Here is that list after `go`, with the letters that matter, and a running total. The chances add up to exactly 1:
 
 | ID | Letter | Chance | Running total |
 |---|---|---|---|
@@ -297,8 +373,8 @@ idx = torch.cat([idx, next_id], dim=1)
 
 Until now, I have treated the model as [a closed box](#scores-what-comes-out-of-the-closed-box): text goes in, and 65 scores, the logits, come out: one for each letter that could come next. Now I open the box, one level down. I pass the text into my MiniGPT model, and inside, it goes through these stages:
 
-1. Each letter becomes a list of 128 numbers: one list for the letter itself, learned in training, plus one for its position in the text. The code calls these the *token embedding* and the *position embedding*, and [Step 2](#token-embeddings-and-position-embeddings) explains them.
-2. The lists pass through four *blocks*, which let each letter's list take in what the letters before it say. The blocks are where the model does its understanding, and [Step 3](#step-3-the-blocks) explains them. Between blocks, each letter's list is called its *hidden state*: hidden, because nobody outside the model sees it.
+1. Each letter becomes a list of 128 numbers: one list for the letter itself, learned in training, plus one for its position in the text. The code calls these the *token embedding* and the *position embedding*, and [a later section](#token-embeddings-and-position-embeddings) explains them.
+2. The lists pass through four *blocks*, which let each letter's list take in what the letters before it say. The blocks are where the model does its understanding, and [the four blocks](#four-blocks-in-a-row) explains them. Between blocks, each letter's list is called its *hidden state*: hidden, because nobody outside the model sees it.
 3. Out of the last block, after one final normalisation, comes the last letter's list: 128 numbers that sum up the text so far. This is the *final hidden state*, and the notebook's own comment calls it that.
 4. `lm_head` turns the final hidden state into 65 scores, one for each letter that could come next. The code calls the scores *logits*.
 5. Temperature and top-k reshape the scores, and *softmax* turns them into the 65 chances, or *probabilities*: the slices of the wheel. The sections above covered this stage.
@@ -308,7 +384,7 @@ Until now, I have treated the model as [a closed box](#scores-what-comes-out-of-
 
 Everything up to stage 3 is the *body* of the model. This section is about stage 4, `lm_head`, and the final normalisation just before it.
 
-**First, the final normalisation.** Out of the last block come hidden states, one for each letter in the text: two for `go`. Only the last one matters here, because it is the only one that has seen the whole text. Its numbers are small: for `go`, they run from −1.26 to 1.00, and their *spread*, a measure of how far they typically sit from their average, is 0.33. The final normalisation, `final_ln` in the code, puts the list on a steady scale. First it rescales the 128 numbers so that they average 0 and spread 1. Then it stretches and shifts each number by its own trained amount. Its first four numbers go from −0.04, 0.17, 0.05 and −0.14 to −0.23, 0.70, 0.08 and −0.39. The pattern stays much the same, but now `lm_head` gets numbers on the same scale whatever the text was. The result is the final hidden state. The blocks use the same kind of normalisation inside them, which [Step 3](#step-3-the-blocks) comes back to.
+**First, the final normalisation.** Out of the last block come hidden states, one for each letter in the text: two for `go`. Only the last one matters here, because it is the only one that has seen the whole text. Its numbers are small: for `go`, they run from −1.26 to 1.00, and their *spread*, a measure of how far they typically sit from their average, is 0.33. The final normalisation, `final_ln` in the code, puts the list on a steady scale. First it rescales the 128 numbers so that they average 0 and spread 1. Then it stretches and shifts each number by its own trained amount. Its first four numbers go from −0.04, 0.17, 0.05 and −0.14 to −0.23, 0.70, 0.08 and −0.39. The pattern stays much the same, but now `lm_head` gets numbers on the same scale whatever the text was. The result is the final hidden state. The blocks use the same kind of normalisation inside them, which [the four blocks](#four-blocks-in-a-row) comes back to.
 
 **Then `lm_head` scores each letter that could come next.** `lm_head`, short for *language-model head*, is the model's last layer. It is a table with one row for each of the 65 letters. Each row holds 128 numbers, learned in training, plus one extra number, a *bias*: 8,385 numbers in all. To score a letter, `lm_head` multiplies the final hidden state by that letter's row, number by number, adds up the 128 results, and adds the bias. This multiply-and-add is called a *dot product*. A big score means the final hidden state looks like the letter's row, and training made each row look like the moments when that letter comes next. After `go`, `o` scores 4.878, the space 4.076, `d` 4.062, and `n` 3.068. The lowest of the 65 is `V`, at −7.421.
 
@@ -368,7 +444,7 @@ One level further into the box. The final normalisation and `lm_head` read a hid
 
 Going into block 1, there is one hidden state for each letter in the text, and each one knows only its own letter and its own position. (Where those starting hidden states come from is the last layer of the box, [further in](#token-embeddings-and-position-embeddings).) Each block has two parts: **attention**, where each hidden state looks back at earlier positions and collects information from them, and the **MLP**, a small network that works on each hidden state on its own. Every block reads the hidden states and rewrites them.
 
-Attention followed by the MLP makes one *block*. My model runs four blocks in a row, and the bigger model in the notebook runs six. The blocks run one after another. The hidden states that come out of block 1 are the ones that go into block 2, block 2's go into block 3, and so on. After block 4, step 4 reads the last hidden state. Each block has its own parameters: the four blocks are built the same way, but they do not share any numbers, so each one can learn to do something different. With each block, the hidden states carry more context: by the later blocks, a hidden state is less about one letter and more about what is going on around it.
+Attention followed by the MLP makes one *block*. My model runs four blocks in a row, and the bigger model in the notebook runs six. The blocks run one after another. The hidden states that come out of block 1 are the ones that go into block 2, block 2's go into block 3, and so on. After block 4, the final normalisation and `lm_head` read the last hidden state. Each block has its own parameters: the four blocks are built the same way, but they do not share any numbers, so each one can learn to do something different. With each block, the hidden states carry more context: by the later blocks, a hidden state is less about one letter and more about what is going on around it.
 
 The hidden states that come out of one block and the ones that go into the next are not two different things: they are the same vectors, and in the code they are the same variable, `x`. A block never swaps a hidden state for a new one. It adds to it twice: hidden state out = hidden state in + what attention adds + what the MLP adds. Here is how much each block adds to hidden state 3 in `goo`, where "size" is how big its 128 numbers are taken together:
 
@@ -379,7 +455,7 @@ The hidden states that come out of one block and the ones that go into the next 
 | 3 | 2.72 | 0.90 | 1.16 | 2.92 | 0.90 |
 | 4 | 2.92 | 0.74 | 1.86 | 3.09 | 0.78 |
 
-Block 1 changes the hidden state the most: it adds more than the vector held when it left step 2. Blocks 2 and 3 refine it, so what comes out is still 0.90 like what went in. Block 4 makes a bigger change again, mostly in its MLP, as it gets the hidden state ready for step 4. By the end, hidden state 3 scores only 0.08 for likeness to the vector it started as.
+Block 1 changes the hidden state the most: it adds more than the vector held when it went in. Blocks 2 and 3 refine it, so what comes out is still 0.90 like what went in. Block 4 makes a bigger change again, mostly in its MLP, as it gets the hidden state ready for `lm_head`. By the end, hidden state 3 scores only 0.08 for likeness to the vector it started as.
 
 ![](assets/images/minigpt/rounds.svg)
 *All the hidden states go through every block together. The coloured squares on each one show how much of the earlier positions it has taken in: hidden state 1 can only ever take in itself, while hidden state 3 takes in all three*
@@ -407,12 +483,12 @@ After one block, every hidden state knows something about the positions just bef
 
 Why four blocks, and not one? Because each block builds on the last. After block 1, a hidden state knows about the positions just before it. In block 2, it can look at hidden states that have *already* gathered their own neighbours, so it learns about positions further back, and so on. You can see this in the heads themselves. In block 1, the heads look between 1.6 and 5.7 positions back on average. In blocks 2 to 4, they look between 6 and 25 positions back.
 
-You can also watch the guess improve. After each block, I took the last hidden state as it was at that point, gave it the same final normalisation, scored it against the same 65 rows of `lm_head`, and turned the scores into chances, exactly as step 4 does after block 4. `lm_head` was only ever trained to read block 4's output, so this is a peek rather than something the machine does when it writes, but it works surprisingly well, and researchers use the same trick under the name *logit lens*:
+You can also watch the guess improve. After each block, I took the last hidden state as it was at that point, gave it the same final normalisation, scored it against the same 65 rows of `lm_head`, and turned the scores into chances, exactly as the model does after block 4. `lm_head` was only ever trained to read block 4's output, so this is a peek rather than something the machine does when it writes, but it works surprisingly well, and researchers use the same trick under the name *logit lens*:
 
 ![](assets/images/minigpt/stopping-early.svg)
-*Real numbers from my trained model. Straight from step 2, before any block, it guesses the next letter right 12% of the time; after all four blocks, 49%*
+*Real numbers from my trained model. Straight from the embeddings, before any block, it guesses the next letter right 12% of the time; after all four blocks, 49%*
 
-The picture follows the guess after *Before we proceed any further, hear me spea*, from the first speech in Tiny Shakespeare. Straight from step 2, before any block, the machine knows only that the last letter is an `a`, so it guesses `y`. Block 1 adds the letters in the positions just before it, and `t` takes the lead. Block 2 has seen enough of `spea` to try `c`. Only in blocks 3 and 4 does the whole picture, *hear me spea*, settle on `k`, at 98%.
+The picture follows the guess after *Before we proceed any further, hear me spea*, from the first speech in Tiny Shakespeare. Straight from the embeddings, before any block, the machine knows only that the last letter is an `a`, so it guesses `y`. Block 1 adds the letters in the positions just before it, and `t` takes the lead. Block 2 has seen enough of `spea` to try `c`. Only in blocks 3 and 4 does the whole picture, *hear me spea*, settle on `k`, at 98%.
 
 Try it below. The text starts as the line in the picture above. Choose how many of the four blocks run, from none, where `lm_head` reads the hidden state straight from the embeddings, to all four, the real model.
 
@@ -430,7 +506,7 @@ Try it below. The text starts as the line in the picture above. Choose how many 
 :::watch-it Fixed or changing?
 Two kinds of thing take part from here on, and it helps to keep them apart.
 
-- **Fixed:** everything training set, the *parameters*. The token embeddings, the position embeddings, the weights in every block, and the rows of `lm_head` used in step 4. None of them changes while the machine is writing.
+- **Fixed:** everything training set, the *parameters*. The token embeddings, the position embeddings, the weights in every block, and the rows of `lm_head`. None of them changes while the machine is writing.
 - **Changing:** everything worked out for the text in front of it, the *activations*. That means the hidden states, which every block rewrites, and the scratch work inside each block: the queries, keys, and values in attention, and the numbers in the MLP. The scratch work is thrown away at the end of each block. Only the hidden states carry anything from one block to the next.
 
 So "the position 3 embedding" always means the fixed vector from the table, and "hidden state 3" means the vector that changes as it moves through the blocks.
@@ -562,7 +638,7 @@ Here is attention for hidden state 3 in `goo`, with the real numbers from my tra
 
 1. **Match.** Multiply and add. That is all the "dot product" in the notebook is.
 2. **Shrink.** Divide by √32, about 5.66, to keep the scores in a modest range. Without this, the biggest score would swamp all the others.
-3. **Share out.** A step called *softmax* turns the scores into shares that are all positive and add up to 100%. Step 4 uses the same trick again, to turn the final scores into chances.
+3. **Share out.** A step called *softmax* turns the scores into shares that are all positive and add up to 100%. The model uses the same trick again at the very end, to turn the final scores into chances.
 4. **Collect.** Hidden state 3 collects the values in those shares: 92.9% of position 2's, 4.0% of position 1's, and 3.1% of its own, number by number. After one more step, described under heads below, the result is added to hidden state 3.
 
 Look at hidden states 2 and 3. They started from the same `o` token embedding. The only difference between them is their position embeddings, 2 and 3, and that is enough to give them different keys. Position 2's key matches the query with 15.60, while position 3's own key scores −3.62. Without the position embeddings, the machine could not tell "the `o` one position before me" from "me".
@@ -883,100 +959,9 @@ def encode(s):
 
 That is the bottom of the box. Starting from the outside, I have opened every layer: the wheel, the scores, `lm_head`, the four blocks, the MLP, attention, the heads, the embeddings, and now the IDs. There is nothing left inside that this post has not shown, in plain words, in a demo you can try, and in the notebook's Python.
 
-### Try it: my trained machine, running in your browser
-
-This is our MiniGPT model itself, all 826,433 numbers of it, running in this page. Nothing is sent anywhere: the five steps happen on your own computer. Type anything, and watch the chances for the next letter change as you type. Then spin the wheel, or let it write 200 letters. Use the sliders to try temperature and the wheel trimming, and use the block and head buttons to look inside any of its 16 attention heads.
-
-:::demo minigpt
-:::
-
-A few things to try:
-
-- Type `goo`, and check that you get the same 96.6% for `d` as the rest of this post.
-- Type `First Citizen:` and a new line, and let it write. It has learned what a speech looks like.
-- Set temperature to 0, and watch it fall into a loop. Then set it to 2, and watch it invent words.
-- Look at block 1, heads 1 and 3, on any text you like: one position back, and two positions back, every time.
-
-**Start here.** This is Part 1 of seven:
-
-1. **Running it** (this post): a trained GPT taken apart while it writes.
-2. [Growing it](/posts/minigpt-grown/): training the same machine from random numbers.
-3. [Pieces, not letters](/posts/minigpt2/): tokenisers, scored fairly.
-4. [A faster engine](/posts/minigpt3/): the same machine in Apple's MLX.
-5. [The modern block](/posts/minigpt4/): Llama's four changes, one at a time.
-6. [Learning from a teacher](/posts/minigpt5/): distillation.
-7. [Reading further](/posts/minigpt6/): sliding-window attention.
-
-- **Ten minutes?** Read [the guessing game](#guessing-the-next-letter) and [the five steps](#the-five-steps), skip to [Putting it together](#putting-it-together-choosing-the-next-letter), and then [try the machine](#try-it-my-trained-machine-running-in-your-browser) in your browser.
-- **An hour?** Read the whole plain-English half, down to [Opening the notebook](#opening-the-notebook). It needs no code.
-- **To follow along,** you need only a browser: the live demo runs in this page, and my workbook runs in Colab.
-- **Every term** is explained in the post where it first appears, and the [series glossary](/posts/minigpt6/#the-series-glossary) collects them all.
-
-Here is the route:
-
-1. **[The guessing game](#guessing-the-next-letter)**: what a GPT actually does, how it [gives every letter a chance](#it-does-not-pick-a-letter-it-gives-every-letter-a-chance), and how it spins a wheel of chances to choose one.
-2. **[The five steps](#the-five-steps)** the machine takes for every letter it writes: [letters to numbers](#letters-to-numbers), [token embeddings and position embeddings](#token-embeddings-and-position-embeddings), [the blocks](#step-3-the-blocks), [chances](#step-4-chances), and [spinning the wheel](#step-5-spin-the-wheel).
-3. **Inside the blocks**: [attention](#inside-a-block-attention), [queries, keys, and values](#where-the-queries-keys-and-values-come-from), [several heads at once](#several-heads-at-once), [the MLP](#then-the-mlp-each-hidden-state-on-its-own), and [why there are four blocks](#four-blocks-in-a-row).
-4. **[How much can it see at once?](#how-much-can-it-see-at-once-the-context-limit)**: the context limit, and why raising it is expensive.
-5. **[Try it](#try-it-my-trained-machine-running-in-your-browser)**: the trained machine, running live in your browser.
-6. **[Beyond the guessing game](#beyond-the-guessing-game-tools-harnesses-and-agents)**: how tools, harnesses, and agents let a model do more than write.
-7. **Loose ends**: [why the big models do not use letters](#why-the-big-models-do-not-use-letters), and [what nobody knows](#we-know-the-rules-not-the-result) about what the machine has learned.
-8. **[The notebook](#opening-the-notebook)**: setting it up, [the model's settings](#11-model-configuration), [the code, in the order the machine runs](#the-code-in-the-order-the-machine-runs), and how to [run my trained model yourself](#run-my-model-yourself).
-
-:::brain-power
-Big models guess words, or pieces of words. MiniGPT guesses one letter at a time, which seems simpler and more natural. So why do the big models not use letters too? Keep the question in mind. I come back to it near the end of this introduction.
-:::
-
-- **Writing** is the game played on repeat: guess a letter, write it down, stick it on the end, and guess again. Every line of "Shakespeare" this machine writes is produced one letter at a time, like that.
-- **Learning** is the game too: guess, check the real answer, adjust, millions of times over. That is how the machine got good at the game, and it is the subject of [the next post](/posts/minigpt-grown/).
-
-![](assets/images/minigpt/guessing-game.svg)
-*The guessing game, played three times in a row by my trained model, with its real chances. Each time, it gives every possible next letter a chance, picks one, and adds it to the end*
-
-That is the whole idea. Everything else in this post is detail about how the guessing is done.
-
-### It does not pick a letter. It gives every letter a chance
-
-The machine never says "the answer is `w`". It behaves like a weather forecaster. A forecaster does not say "it will rain tomorrow". They say "70% chance of rain". The machine does the same thing for every one of the 65 different letters that appear in Shakespeare: the capitals, the lowercase letters, the space, the new line, and a handful of punctuation marks. After `go`, my trained model says this:
-
-| Next letter | Chance |
-|---|---|
-| `o` | 34.8% |
-| space | 15.6% |
-| `d` | 15.4% |
-| `n` | 5.7% |
-| everything else | 28.5% |
-
-It is not sure yet. The word could become *good*, *go*, *God*, *gone*, and plenty more, so the chances are spread out. One more letter changes everything: after `goo`, it gives `d` 96.6%.
-
-The chances always add up to 100%, because one of the 65 letters has to come next.
-
-
-
-CUT
-
- How training makes some slices big and others thin is the subject of [the next post](/posts/minigpt-grown/).
-
-:::pencil Be the model
-Here is another line with its end hidden. Before you read on, write down your own chances for the next letter, as percentages that add up to 100.
-
-> ROMEO: But so_
-
-:::answer
-There is no single right answer, which is the point. A sensible set of chances might be:
-
-- `f` 45%, because you are guessing that the next few letters will spell out *soft*, or something similar
-- `o` 25%, because you are guessing they will spell out *soon*
-- `u` 15%, because you are guessing they will spell out *sound* or *sought*
-- 15% spread over everything else
-
-Notice what you just did. In your head, you guessed whole words, but the machine only ever chooses the very next letter. Whatever you wrote, you just did what the model does at every position: you used what came before to give a chance to whatever comes next.
-:::
-:::
-
 ### The five steps
 
-Every time the machine writes one letter, it goes through the same five steps:
+That is every layer, from the outside in. Here they are the other way round, in the order the model runs them: every time it writes one letter, it goes through the same five steps.
 
 ![](assets/images/minigpt/five-steps.svg)
 *The five steps. Plain names in black; the names you will meet in the notebook in grey*
@@ -984,72 +969,7 @@ Every time the machine writes one letter, it goes through the same five steps:
 Here are all five at once, for `goo`, with the real numbers from my trained model:
 
 ![](assets/images/minigpt/big-picture.svg)
-*Each of the next five sections opens up one of these boxes*
-
-### Step 3: the blocks
-
-After step 2, there is one hidden state for each position, and each one knows only its own letter and its own position. Step 3 is where the real work happens. All the hidden states go through four *blocks*, one after another, and each block has two parts: **attention**, where each hidden state looks back at earlier positions and collects information from them, and the **MLP**, a small network that works on each hidden state on its own. Every block reads the hidden states and rewrites them. The next sections take one idea each: attention itself, where its queries, keys, and values come from, the real numbers, why there are several heads at once, the MLP, and why there are four blocks.
-
-### Step 4: chances
-
-After block 4, there are still three hidden states, one for each position of `goo`, and only the last one, hidden state 3, matters for the next letter. (The notebook actually scores all three and then keeps only the last row of scores, as [the code walk-through](#lmhead-back-in-minigptforward) shows. The answer is the same.) It went into block 1 meaning just "an `o`, in position 3". But in every block's attention it collected values from positions 1 and 2, so it comes out of block 4 meaning something more like "an `o` that follows `g` and `o`": in other words, `goo` so far.
-
-Why only the last hidden state? Because the next letter comes after the last position. The other hidden states have done their job: they were what hidden state 3 looked at in attention.
-
-Hidden state 3 is still just a vector of 128 numbers, starting 0.14, 0.12, 0.41, 0.18, and so on. It describes the situation, `goo` so far, but it does not name a letter. To get from a description of the situation to a guess, the machine uses one last fixed table, `lm_head`, the *language-model head*. It has 65 rows, one for each letter that could come next, and each row holds 128 numbers set by training, plus one extra number called a *bias*.
-
-Think of each row as a profile of the moments when its letter comes next. The `d` row says, in effect, "this is what a hidden state tends to look like just before a `d`". Step 4 holds hidden state 3 up against all 65 profiles and asks, 65 times, "how well does this situation fit?" The best fit gets the biggest chance.
-
-So the two do opposite jobs:
-
-- **A hidden state** describes *this* text, at *this* position. There is one for each position, it is made fresh for every text, and every block rewrites it.
-- **A row of `lm_head`** describes *a letter that could come next*. There is one for each of the 65 letters, training set it, and it never changes. The same 65 rows are used for every text, every time the machine chooses a letter.
-
-The rows of `lm_head` are not the token embeddings, either. A token embedding describes a letter going *in*: "this is a `d`". A row of `lm_head` describes a letter about to come *out*: "a `d` probably follows". Training learned the two jobs separately, and in my model the two tables ended up unrelated: on average, a letter's row of `lm_head` scores 0.00 for likeness to the same letter's token embedding.
-
-Here is how the machine gets from hidden state 3 to the chances, with the real numbers for `goo`:
-
-1. **Normalise.** The hidden state is rescaled once more, the same normalisation as before every attention step and MLP. It now starts 0.56, 0.63, 1.72, 0.97.
-2. **Score every letter.** For each of the 65 rows of `lm_head`, the machine multiplies its numbers by the hidden state's, number by number, adds up the 128 results, and adds the bias. That is the same dot product as matching a query to a key in attention, and a big score means a good match. The scores are called *logits*. The `d` row scores 8.58, far ahead of `k` (3.45), `r` (3.41), and `s` (3.01). The lowest is `M`, at −5.77.
-3. **Turn the scores into chances.** Softmax, the same trick as in attention, makes every score positive and then divides each one by the total, so that the 65 chances add up to 100%. It also stretches the gaps: `d` is 5 points ahead of `k`, and ends up about 170 times as likely. For `goo`, `d` gets 96.6%, `k` and `r` 0.6% each, and `M` a slice of the wheel far too thin to see.
-
-Those 65 chances are the slices of the wheel in step 5.
-
-### Step 5: spin the wheel
-
-The chances become the slices of the wheel, and the machine spins it. Two adjustments can be made just before the spin, and every chatbot you have used has both.
-
-**Temperature.** One setting, called *temperature*, reshapes the wheel. Turn it down, and the big slices grow and the small ones shrink, so the machine plays it safe: the text is tidy but repetitive. Turn it up, and the slices even out, so the machine takes risks: the text is varied but full of invented words. After `goo` there is little for it to do, because the wheel is already 96.6% `d`. A more open moment shows it better, so here is what it does to my model's chances after `good m`, as in *good my lord* or *good madam*:
-
-| Temperature | `y` | `e` | `a` |
-|---|---|---|---|
-| 0.5, cautious | 61.1% | 26.6% | 8.5% |
-| 1, the wheel as it is | 40.8% | 26.9% | 15.2% |
-| 2, bold | 25.9% | 21.0% | 15.8% |
-
-Turn it all the way down to 0, and the machine stops spinning and always takes the biggest slice. Turn it all the way up, and every slice is almost the same size again.
-
-**Trimming the wheel.** Even a good wheel has dozens of thin slices for letters that make no sense. Usually the pointer never stops on them, but spin enough times and it will, and a single nonsense letter can derail everything after it. So the wheel is often trimmed before the spin:
-
-- *Keep the biggest k slices*, called *top-k*. The notebook asks for the biggest 200, but my wheel only has 65 slices, so this trims nothing at all.
-- *Keep the biggest slices until they add up to p*, called *top-p*. With p = 90%, my model's wheel after `good m` keeps just 5 slices: `y`, `e`, `a`, `o`, and `i`, which between them hold about 97% of the chance. The other 60 slices, which shared the remaining 3%, are cut away, and the 5 survivors are stretched to fill the whole wheel before the spin.
-
-![](assets/images/minigpt/reshaping-the-wheel.svg)
-*The real wheel after `good m`, reshaped by temperature and by top-p*
-
-:::fireside-chat Tonight: temperature and the trimmer, on who keeps the writing sensible
-**Temperature:** I am the one readers notice. Turn me up, and the writing comes alive.
-
-**Trimmer:** Turn you up too far, and the writing falls apart. You make the thin slices bigger, and most of the thin slices are silly ones.
-
-**Temperature:** And you are a pair of scissors.
-
-**Trimmer:** A pair of scissors that only cuts what nobody wanted. After `good m`, I keep the five slices that make sense and cut away the rest. Then you can be as bold as you like with what is left.
-
-**Temperature:** So I choose how adventurous to be…
-
-**Trimmer:** …and I make sure the adventure stays on the map. Most chatbots use both of us, every single letter.
-:::
+*The whole journey for `goo`, with the real numbers from my trained model*
 
 ### Putting it together: choosing the next letter
 
@@ -1065,6 +985,20 @@ Here is the whole journey once more, step by step, for choosing the next letter 
 :::watch-it
 The row cannot grow for ever. Until it fills every position, the machine keeps all of it, so after `goo` it really does go back to step 2 with all four letters of `good`. Once every position is taken, each new letter pushes the oldest one off the front, and that letter is forgotten completely. [The next section](#how-much-can-it-see-at-once-the-context-limit) explains the limit, and what it would take to raise it.
 :::
+
+### Try it: my trained machine, running in your browser
+
+Everything at once. This is my MiniGPT model itself, all 826,433 numbers of it, running in this page. Nothing is sent anywhere: the five steps happen on your own computer. Type anything, and watch the chances for the next letter change as you type. Then spin the wheel, or let it write 200 letters. Use the sliders to try temperature and the wheel trimming, and use the block and head buttons to look inside any of its 16 attention heads.
+
+:::demo minigpt
+:::
+
+A few things to try:
+
+- Type `goo`, and check that you get the same 96.6% for `d` as the rest of this post.
+- Type `First Citizen:` and a new line, and let it write. It has learned what a speech looks like.
+- Set temperature to 0, and watch it fall into a loop. Then set it to 2, and watch it invent words.
+- Look at block 1, heads 1 and 3, on any text you like: one position back, and two positions back, every time.
 
 ### How much can it see at once? The context limit
 
@@ -1323,11 +1257,11 @@ My exhibit uses exactly these defaults, so `GPTConfig()` with no arguments build
 
 ## The code, in the order the machine runs
 
-The notebook defines its classes bottom-up: attention in 1.2, the MLP in 1.3, one block in 1.4, and the whole model in 1.5. The machine *runs* the other way round, top-down, and that is the order of the five steps. So instead of following the cells, I follow one new letter after `goo` through the code, and point out where each piece from the introduction lives. These are the notebook's own lines, with its comments replaced by mine. Two kinds of line do nothing while the machine is writing, so I leave them out: the `dropout` lines, which `model.eval()` switches off, and the training-only lines that work out the *loss*, the score that training tries to lower, explained in [the next post](/posts/minigpt-grown/#keeping-score-the-surprise-score).
+Each layer above showed its own lines of the notebook. This section is the map: where each piece lives in the code, and the writing loop that runs the whole model. The notebook defines its classes bottom-up: attention in 1.2, the MLP in 1.3, one block in 1.4, and the whole model in 1.5. The machine *runs* the other way round, in the order of the five steps. Two kinds of line do nothing while the machine is writing, so I leave them out: the `dropout` lines, which `model.eval()` switches off, and the training-only lines that work out the *loss*, the score that training tries to lower, explained in [the next post](/posts/minigpt-grown/#keeping-score-the-surprise-score).
 
-Every piece in the introduction is either a fixed set of numbers stored on the model, or a variable that the code works out while it runs:
+Every piece in this post is either a fixed set of numbers stored on the model, or a variable that the code works out while it runs:
 
-| In the introduction | In the code | Fixed or changing? | Shape for `goo` |
+| In this post | In the code | Fixed or changing? | Shape for `goo` |
 |---|---|---|---|
 | the letter IDs | `idx` | changing | 1 × 3 |
 | all 65 token embeddings | `model.token_embedding.weight`; row 45 is the `g` embedding | fixed | 65 × 128 |
@@ -1354,42 +1288,7 @@ idx_cond = idx[:, -model.config.block_size:]
 logits, _ = model(idx_cond)
 ```
 
-`idx` holds the letter IDs written so far: `[[45, 53, 53]]` for `goo`. This is step 1. The first line is the context limit from [How much can it see at once?](#how-much-can-it-see-at-once-the-context-limit): it keeps only the last `block_size` letters, because there are no position embeddings beyond that. The second line runs the whole model, which calls `MiniGPT.forward`.
-
-### `lm_head`: back in `MiniGPT.forward`
-
-After the fourth block, the code goes back to `MiniGPT.forward` for step 4:
-
-```python
-# the final normalisation
-x = self.final_ln(x)
-# score every hidden state against the 65 rows of lm_head
-logits = self.lm_head(x)
-# loss is None while writing
-return logits, loss
-```
-
-`__init__` creates `self.lm_head` as `nn.Linear(config.n_embd, config.vocab_size)`, and its weights, `self.lm_head.weight`, are a table of 65 rows of 128 numbers, one row per letter, with one bias each in `self.lm_head.bias`. Running it does the dot product of each hidden state with all 65 rows, plus the biases.
-
-There is one difference from how I described step 4. The code scores *every* hidden state, not just the last one, so `logits` holds 3 rows of 65 scores for `goo`. Training needs all of them, because every position has a known next letter to check. While writing, only the last row is used, and `generate_text` throws the others away. The answer is the same either way. (My browser demo skips the wasted work, and scores only the last hidden state.)
-
-### Spinning the wheel: back in `generate_text`
-
-```python
-# keep only the last letter's 65 scores
-logits = logits[:, -1, :]
-# temperature
-logits = logits / temperature
-# (the notebook trims to the biggest k scores here; with k = 200 and 65 letters, nothing is cut)
-# the chances: the slices of the wheel
-probs = torch.softmax(logits, dim=-1)
-# spin the wheel
-next_id = torch.multinomial(probs, num_samples=1)
-# write the letter on the end
-idx = torch.cat([idx, next_id], dim=1)
-```
-
-This is step 5. `[:, -1, :]` picks the last row, which belongs to hidden state 3. Dividing by `temperature` is the temperature setting from step 5: a small temperature stretches the gaps between the scores, and a large one shrinks them. The notebook trims the wheel with top-k only; it has no top-p, which my demo adds. `torch.softmax` makes the 65 chances, `torch.multinomial` is the spin, and `torch.cat` writes the new letter's ID onto the end of `idx`. Then the loop goes round again, and runs the whole model on `good`. The notebook keeps no KV cache: every pass makes every hidden state, query, key, and value from scratch.
+`idx` holds the letter IDs written so far: `[[45, 53, 53]]` for `goo`. The first line is the context limit from [How much can it see at once?](#how-much-can-it-see-at-once-the-context-limit): it keeps only the last `block_size` letters, because there are no position embeddings beyond that. The second line runs the whole model, which calls `MiniGPT.forward`.
 
 :::bullet-points The code, in the order it runs
 - `generate_text` keeps the last 128 letter IDs and runs the model.

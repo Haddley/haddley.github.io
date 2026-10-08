@@ -96,7 +96,7 @@ That matters because the machine's row of positions has a fixed length. It has 2
 
 ### What bigger pieces cost
 
-Every piece in the supply needs its own token card, and every card holds 384 numbers in this bigger machine. And in this machine, the token cards do a second job: they are also the [answer cards](/posts/minigpt/#step-4-chances). The trick is called *weight tying*. [Part 1's exhibit](/posts/minigpt/#step-4-chances) kept two separate sets of cards; this bigger machine uses one set for both jobs. That halves the cost of a big supply, but the cost is still large:
+Every piece in the supply needs its own token card, and every card holds 384 numbers in this bigger machine. And in this machine, the token cards do a second job: they are also the [answer cards](/posts/minigpt/#lmhead-where-do-the-65-scores-logits-for-the-next-letter-come-from). The trick is called *weight tying*. [Part 1's exhibit](/posts/minigpt/#lmhead-where-do-the-65-scores-logits-for-the-next-letter-come-from) kept two separate sets of cards; this bigger machine uses one set for both jobs. That halves the cost of a big supply, but the cost is still large:
 
 | Tokeniser | Token cards | Numbers on the token cards | Numbers in the blocks | The whole machine |
 |---|---|---|---|---|
@@ -306,7 +306,7 @@ bpb = va / math.log(2) * tokens_per_byte
 
 ### Comparing and writing: `compare.py` and `generate.py`
 
-`compare.py` draws the bits-per-byte chart and prints the summary table. `generate.py` loads a trained machine and writes, with the wheel of chances from [Part 1](/posts/minigpt/#step-5-spin-the-wheel), but decoding the token IDs back into text through the tokeniser:
+`compare.py` draws the bits-per-byte chart and prints the summary table. `generate.py` loads a trained machine and writes, with the wheel of chances from [Part 1](/posts/minigpt/#spinning-a-wheel-an-analogy), but decoding the token IDs back into text through the tokeniser:
 
 ```python
 idx = torch.tensor([tok.encode(args.prompt)], dtype=torch.long, device=dev)
