@@ -1,7 +1,7 @@
 'use client';
 
 // A live demo for the lm_head section of MiniGPT (Part 1): text and the two hyperparameters go in,
-// and the reader sees what comes out at each stage: the final hidden state (the last working card,
+// and the reader sees what comes out at each stage: the final hidden state (the last letter's hidden state,
 // 128 numbers), lm_head's 65 scores, and the chances after temperature and top-k. The sliders only
 // change the last stage, which is the point: they act after the model has done its work.
 
@@ -17,7 +17,7 @@ const note: React.CSSProperties = { fontSize: '0.8rem', color: '#6b7280', margin
 
 function cellColour(v: number, scale: number): string {
   const a = Math.min(1, Math.abs(v) / scale).toFixed(2);
-  return v >= 0 ? `rgba(234, 88, 12, ${a})` : `rgba(37, 99, 235, ${a})`;
+  return v >= 0 ? `rgba(37, 99, 235, ${a})` : `rgba(234, 88, 12, ${a})`;
 }
 
 function signed(v: number, places: number): string {
@@ -31,7 +31,7 @@ function maxAbs(values: Float32Array): number {
   return values.reduce((m, v) => Math.max(m, Math.abs(v)), 0) || 1;
 }
 
-// 128 numbers as a grid of coloured squares: orange above 0, blue below, stronger further from 0.
+// 128 numbers as a grid of coloured squares: blue above 0, orange below, as in the post's pictures, stronger further from 0.
 function Squares({ values, scale, name }: { values: Float32Array; scale: number; name: string }) {
   return (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(16, 1fr)', gap: '2px', maxWidth: '360px' }}>
@@ -42,7 +42,7 @@ function Squares({ values, scale, name }: { values: Float32Array; scale: number;
   );
 }
 
-// The average of a card's numbers, and their spread (standard deviation) around it.
+// The average of a list's numbers, and their spread (standard deviation) around it.
 function describe(values: Float32Array): string {
   const n = values.length;
   const mean = values.reduce((sum, v) => sum + v, 0) / n;
@@ -82,10 +82,10 @@ export default function MiniGPTHiddenStateDemo() {
   // The letter being scored: the reader's pick, or else the biggest score for this text.
   const letter = picked ?? (result ? topK(result.logits, 1)[0] : 0);
   const lowest = result ? topK(result.logits.map((v) => -v), 1)[0] : 0;
-  const card = engine && result ? engine.answerCard(letter) : null;
+  const row = engine && result ? engine.lmHeadRow(letter) : null;
   const products = React.useMemo(
-    () => (card && result ? result.finalHidden.map((v, i) => v * card.weights[i]) : new Float32Array(0)),
-    [card, result]
+    () => (row && result ? result.finalHidden.map((v, i) => v * row.weights[i]) : new Float32Array(0)),
+    [row, result]
   );
   const total = products.reduce((sum, v) => sum + v, 0);
   const agree = products.filter((v) => v > 0).length;
@@ -110,7 +110,7 @@ export default function MiniGPTHiddenStateDemo() {
         <TextBox value={text} onChange={setText} limit={engine.manifest.block_size} />
         {unknown.length > 0 && (
           <div style={{ color: '#b45309', fontSize: '0.85rem' }}>
-            The model has no card for {unknown.map(show).join(' ')}, so it skips {unknown.length === 1 ? 'it' : 'them'}.
+            The model does not know {unknown.map(show).join(' ')}, so it skips {unknown.length === 1 ? 'it' : 'them'}.
           </div>
         )}
         <div style={{ ...label, marginTop: '0.9rem' }}>Going in: the hyperparameters</div>
@@ -130,16 +130,16 @@ export default function MiniGPTHiddenStateDemo() {
         </button>
       </div>
 
-      {!result || !chances || !card ? (
+      {!result || !chances || !row ? (
         <div style={panel}>
           <span style={{ color: '#6b7280' }}>Type at least one letter to see what comes out.</span>
         </div>
       ) : (
         <>
           <div style={panel}>
-            <div style={label}>Out of the blocks: the last working card, and the final normalisation</div>
+            <div style={label}>Out of the blocks: the last letter&rsquo;s hidden state, and the final normalisation</div>
             <div className="d-flex flex-wrap align-items-center" style={{ gap: '0.75rem' }}>
-              <Figure caption={<>the last working card after &ldquo;<span style={mono}>{shown}</span>&rdquo;, as it comes out of block 4: {describe(result.lastCard)}</>}>
+              <Figure caption={<>the last letter&rsquo;s hidden state after &ldquo;<span style={mono}>{shown}</span>&rdquo;, as it comes out of block 4: {describe(result.lastCard)}</>}>
                 <Squares values={result.lastCard} scale={COLOUR_SCALE} name="Number" />
               </Figure>
               <span style={sign}>→</span>
@@ -178,20 +178,20 @@ export default function MiniGPTHiddenStateDemo() {
                 <Squares values={result.finalHidden} scale={COLOUR_SCALE} name="Number" />
               </Figure>
               <span style={sign}>×</span>
-              <Figure caption={<>the answer card for <strong style={mono}>{show(chars[letter])}</strong> (fixed by training)</>}>
-                <Squares values={card.weights} scale={maxAbs(card.weights)} name="Number" />
+              <Figure caption={<><strong style={mono}>{show(chars[letter])}</strong>&rsquo;s row of <span style={mono}>lm_head</span> (fixed by training)</>}>
+                <Squares values={row.weights} scale={maxAbs(row.weights)} name="Number" />
               </Figure>
               <span style={sign}>=</span>
-              <Figure caption="number by number: orange where the two agree, blue where they do not">
+              <Figure caption="number by number: blue where the two agree, orange where they do not">
                 <Squares values={products} scale={maxAbs(products)} name="Product" />
               </Figure>
             </div>
             <div style={{ fontSize: '0.9rem', marginTop: '0.75rem' }}>
               Add up the 128 products: <strong style={mono}>{signed(total, 3)}</strong>. Add the bias for <strong style={mono}>{show(chars[letter])}</strong>,{' '}
-              <span style={mono}>{signed(card.bias, 3)}</span>, and the score is <strong style={mono}>{signed(total + card.bias, 3)}</strong>.
+              <span style={mono}>{signed(row.bias, 3)}</span>, and the score is <strong style={mono}>{signed(total + row.bias, 3)}</strong>.
             </div>
             <div style={note}>
-              Each square is one of 128 numbers: orange above 0, blue below. With a mouse, hover over one to see it. {agree} of the 128 products are orange: the more the final hidden state matches a letter&rsquo;s answer card, the bigger that letter&rsquo;s score.
+              Each square is one of 128 numbers: blue above 0, orange below. With a mouse, hover over one to see it. {agree} of the 128 products are blue: the more the final hidden state matches a letter&rsquo;s row, the bigger that letter&rsquo;s score.
               lm_head does this for all 65 letters at once, and the sliders do not change any of it.
             </div>
           </div>

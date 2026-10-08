@@ -79,8 +79,8 @@ export class MiniGPTEngine {
     return this.weights.subarray(info.offset, info.offset + size);
   }
 
-  // One letter's answer card from lm_head: its 128 numbers and its bias, fixed by training.
-  answerCard(id: number): { weights: Float32Array; bias: number } {
+  // One letter's row of lm_head: its 128 numbers and its bias, fixed by training.
+  lmHeadRow(id: number): { weights: Float32Array; bias: number } {
     const C = this.manifest.n_embd;
     return { weights: this.t('lm_head.weight').subarray(id * C, (id + 1) * C), bias: this.t('lm_head.bias')[id] };
   }

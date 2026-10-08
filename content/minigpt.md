@@ -1,7 +1,7 @@
 ---
 title: "MiniGPT"
 part: 1
-description: "How a GPT runs: a real trained MiniGPT taken apart while it writes, explained with cards and a wheel of chances, then traced line by line through Jibin Joseph's notebook code, with the trained model to download and run yourself"
+description: "How a GPT runs: a real trained MiniGPT taken apart while it writes, explained with pictures and a wheel of chances, then traced line by line through Jibin Joseph's notebook code, with the trained model to download and run yourself"
 date: "2026-10-05"
 categories: ["AI"]
 image: "/assets/images/minigpt/posts-meta.svg"
@@ -220,12 +220,12 @@ Temperature and top-k are hyperparameters I can change every time the model writ
 | The vocabulary | 65 letters | which letters it knows: one score and one slice each |
 | The context length, `block_size` | 128 | the most letters it can look at at once |
 
-The *vocabulary* is the set of letters the model knows: every different character in Tiny Shakespeare, which is capital and small letters, the space, the new line, and a few punctuation marks and other symbols. Each one has an ID number, from 0 for the new line to 64 for `z`. That is why there are 65 chances, and 65 slices on the wheel. The notebook's setting `vocab_size` is only how many letters there are; what is really fixed is which letters they are, and in which order. Every letter has its own letter card and its own answer card, found by its ID, so a letter the model never trained on has neither, and swapping two IDs would hand each letter the other one's cards. The demos skip any character outside the vocabulary.
+The *vocabulary* is the set of letters the model knows: every different character in Tiny Shakespeare, which is capital and small letters, the space, the new line, and a few punctuation marks and other symbols. Each one has an ID number, from 0 for the new line to 64 for `z`. That is why there are 65 chances, and 65 slices on the wheel. The notebook's setting `vocab_size` is only how many letters there are; what is really fixed is which letters they are, and in which order. Every letter has its own row in two tables, its token embedding at the start of the model and its row of `lm_head` at the end, both found by its ID. A letter the model never trained on has neither, and swapping two IDs would hand each letter the other one's rows. The demos skip any character outside the vocabulary.
 
 The 128 is the *context length*, or *context window*. When the text is longer than 128 letters, the model looks at the last 128 only, and anything further back is simply gone.
 
 :::watch-it Why not just raise `block_size`?
-I could change `block_size` to 1,000 in the code, but my trained model could not use it. The model knows where each letter sits from a set of *position cards*, one card of numbers for each position, and all 128 of them were learned in training, like every other number in the model. In fact, my trained numbers would not even load: the model would expect 1,000 position cards, and my trained file has 128. A model with a longer context needs more position cards, and the only way to get good ones is to train them. A shorter context is fine, though: with only `go` to look at, the model uses just two positions.
+I could change `block_size` to 1,000 in the code, but my trained model could not use it. The model knows where each letter sits from its *position embeddings*: a list of 128 numbers for each position, and all 128 of those lists were learned in training, like every other number in the model. In fact, my trained numbers would not even load: the model would expect 1,000 position embeddings, and my trained file has 128. A model with a longer context needs more position embeddings, and the only way to get good ones is to train them. A shorter context is fine, though: with only `go` to look at, the model uses just two positions.
 :::
 
 [How much can it see at once?](#how-much-can-it-see-at-once-the-context-limit), later in this post, explains where the context limit comes from, and why raising it costs so much.
@@ -297,22 +297,22 @@ return current + engine.manifest.chars[spinWheel(p)];
 
 Drilling down one more level: where does the list of 65 chances come from? I pass the text into my MiniGPT model, and it goes through these stages:
 
-1. Each letter becomes a *working card*: its letter card plus a card for its position in the text. [Step 2](#step-2-letter-cards-and-position-cards) explains these.
-2. The working cards pass through four *blocks*, which let each card take in what the letters before it say. The blocks are where the model does its understanding, and [Step 3](#step-3-the-blocks) explains them.
-3. Out of the last block, after one final normalisation, comes the last working card: 128 numbers that sum up the text so far. In the jargon, this is the *final hidden state*, and the notebook's own comment calls it that.
-4. `lm_head` turns the final hidden state into 65 scores, one for each letter.
-5. Temperature and top-k reshape the scores, and *softmax* turns them into the 65 chances: the slices of the wheel.
+1. Each letter becomes a list of 128 numbers: one list for the letter itself, learned in training, plus one for its position in the text. The code calls these the *token embedding* and the *position embedding*, and [Step 2](#step-2-token-embeddings-and-position-embeddings) explains them.
+2. The lists pass through four *blocks*, which let each letter's list take in what the letters before it say. The blocks are where the model does its understanding, and [Step 3](#step-3-the-blocks) explains them. Between blocks, each letter's list is called its *hidden state*: hidden, because nobody outside the model sees it.
+3. Out of the last block, after one final normalisation, comes the last letter's list: 128 numbers that sum up the text so far. This is the *final hidden state*, and the notebook's own comment calls it that.
+4. `lm_head` turns the final hidden state into 65 scores, one for each letter. The code calls the scores *logits*.
+5. Temperature and top-k reshape the scores, and *softmax* turns them into the 65 chances, or *probabilities*: the slices of the wheel.
 
 Everything up to stage 3 is the *body* of the model. This section is about stages 4 and 5, which come after it.
 
-**Before step one: the final normalisation.** Out of the last block come working cards, one for each letter in the text: two for `go`. Only the last one matters here, because it is the only one that has seen the whole text. Its numbers are small: for `go`, they run from −1.26 to 1.00, and their *spread*, a measure of how far they typically sit from their average, is 0.33. The final normalisation, `final_ln` in the code, puts the card on a steady scale. First it rescales the 128 numbers so that they average 0 and spread 1. Then it stretches and shifts each number by its own trained amount. The card's first four numbers go from −0.04, 0.17, 0.05 and −0.14 to −0.23, 0.70, 0.08 and −0.39. The pattern stays much the same, but now `lm_head` gets a card on the same scale whatever the text was. The result is the final hidden state. The blocks use the same kind of normalisation inside them, which [Step 3](#step-3-the-blocks) comes back to.
+**Before step one: the final normalisation.** Out of the last block come hidden states, one for each letter in the text: two for `go`. Only the last one matters here, because it is the only one that has seen the whole text. Its numbers are small: for `go`, they run from −1.26 to 1.00, and their *spread*, a measure of how far they typically sit from their average, is 0.33. The final normalisation, `final_ln` in the code, puts the list on a steady scale. First it rescales the 128 numbers so that they average 0 and spread 1. Then it stretches and shifts each number by its own trained amount. Its first four numbers go from −0.04, 0.17, 0.05 and −0.14 to −0.23, 0.70, 0.08 and −0.39. The pattern stays much the same, but now `lm_head` gets numbers on the same scale whatever the text was. The result is the final hidden state. The blocks use the same kind of normalisation inside them, which [Step 3](#step-3-the-blocks) comes back to.
 
-**Step one: `lm_head` gives every letter a score.** `lm_head`, short for *language-model head*, is the model's last layer. It holds 65 *answer cards*, one for each letter, each with 128 numbers of its own and one extra number, a *bias*: 8,385 numbers in all. To score a letter, it multiplies the final hidden state by that letter's answer card, number by number, adds up the 128 results, and adds the bias. A big score means the final hidden state looks like the moments when that letter comes next. After `go`, `o` scores 4.878, the space 4.076, `d` 4.062, and `n` 3.068. The lowest of the 65 is `V`, at −7.421.
+**Step one: `lm_head` gives every letter a score.** `lm_head`, short for *language-model head*, is the model's last layer. It is a table with one row for each of the 65 letters. Each row holds 128 numbers, learned in training, plus one extra number, a *bias*: 8,385 numbers in all. To score a letter, `lm_head` multiplies the final hidden state by that letter's row, number by number, adds up the 128 results, and adds the bias. This multiply-and-add is called a *dot product*. A big score means the final hidden state looks like the letter's row, and training made each row look like the moments when that letter comes next. After `go`, `o` scores 4.878, the space 4.076, `d` 4.062, and `n` 3.068. The lowest of the 65 is `V`, at −7.421.
 
-It is called a *head* because it sits on top of the body. The body understands the text; the head reads the answer out in the form the task needs. Here the task is "which of 65 letters comes next?", so the head has 65 outputs. Nobody wrote the answer cards by hand: like every other number in the model, they started random, and training nudged them until the scores they give match what Tiny Shakespeare really does next.
+It is called a *head* because it sits on top of the body. The body understands the text; the head reads the answer out in the form the task needs. Here the task is "which of 65 letters comes next?", so the head has 65 outputs. Nobody wrote the rows by hand: like every other number in the model, they started random, and training nudged them until the scores they give match what Tiny Shakespeare really does next.
 
-:::under-the-hood Answer cards that are also letter cards
-In the notebook's bigger setup, with 384 numbers per card, one line makes each letter's answer card the very same list of numbers as its letter card: `model.lm_head.weight = model.token_embedding.weight`. This trick, called *weight tying*, works because both tables are 65 cards long and the same width, and it saves a whole table of numbers. GPT-2 does the same. My trained model does not: I checked, and its answer cards and letter cards are two separate tables, each learned on its own.
+:::under-the-hood When `lm_head` and the token embeddings share one table
+In the notebook's bigger setup, with 384 numbers per letter, one line makes each letter's row of `lm_head` the very same list of numbers as its token embedding: `model.lm_head.weight = model.token_embedding.weight`. This trick, called *weight tying*, works because both tables have 65 rows of the same width, and it saves a whole table of numbers. GPT-2 does the same. My trained model does not: I checked, and its `lm_head` and its token embeddings are two separate tables, each learned on its own.
 :::
 
 **Step two: softmax.** Scores are not chances: they can be negative, and they do not add up to anything in particular. Softmax fixes both. It raises *e* (about 2.718) to the power of each score, which makes every number positive and stretches the gaps, and then divides each one by the total, so that the 65 chances add up to 1. Here it is for `go`, after first taking the biggest score away from every score, which keeps the numbers small without changing the answer. Once *e* is raised to the power of each one, all 65 add up to 2.874, so each chance is its own number divided by 2.874:
@@ -326,21 +326,21 @@ In the notebook's bigger setup, with 384 numbers per card, one line makes each l
 
 Those are the slices of the wheel after `go`.
 
-Try it below. Type some text, and see what `lm_head` does with it: the final hidden state comes out of the blocks, and `lm_head` multiplies it by one letter's answer card, number by number, and adds up the results. Pick one of the six letters to see its sum. Then move the sliders.
+Try it below. Type some text, and see what `lm_head` does with it: the final hidden state comes out of the blocks, and `lm_head` multiplies it by one letter's row, number by number, and adds up the results. Pick one of the six letters to see its sum. Then move the sliders.
 
 :::demo minigpt3
 :::
 
 :::test-drive Watch a score being made
-1. Start with `go`. `o` has the biggest score. Its 128 products add up to 4.845, and its bias, 0.033, makes 4.878. Most of the products are orange: the final hidden state and `o`'s answer card agree.
-2. Pick `V`, the lowest. Most of its products are blue, and they add up to −7.373: the final hidden state looks nothing like `V`'s answer card.
+1. Start with `go`. `o` has the biggest score. Its 128 products add up to 4.845, and its bias, 0.033, makes 4.878. Most of the products are blue: the final hidden state and `o`'s row agree.
+2. Pick `V`, the lowest. Most of its products are orange, and they add up to −7.373: the final hidden state looks nothing like `V`'s row.
 3. Slide the temperature to 0.5, then to 2, and top-k down to 3. The chances change, but none of the squares or scores move: temperature and top-k act after the model has done its work.
-4. Now add one more `o`, to make `goo`. The final hidden state changes, and so does every product and every score. The answer cards do not change: they are fixed by training, and the text is the only thing that reaches the model.
+4. Now add one more `o`, to make `goo`. The final hidden state changes, and so does every product and every score. The rows of `lm_head` do not change: they are fixed by training, and the text is the only thing that reaches the model.
 :::
 
 ### In the original Python: `lm_head` and `torch.softmax`
 
-In Jibin Joseph's notebook, both steps are a line each. The 65 answer cards are one PyTorch layer, created in `MiniGPT.__init__` as `self.lm_head = nn.Linear(config.n_embd, config.vocab_size)`: a table of 65 rows of 128 numbers, plus 65 biases. At the end of `MiniGPT.forward`:
+In Jibin Joseph's notebook, both steps are a line each. `lm_head` is one PyTorch layer, created in `MiniGPT.__init__` as `self.lm_head = nn.Linear(config.n_embd, config.vocab_size)`: a table of 65 rows of 128 numbers, `self.lm_head.weight`, plus 65 biases, `self.lm_head.bias`. `nn.Linear` is PyTorch's name for a layer that does dot products against a table of rows. At the end of `MiniGPT.forward`:
 
 ```python
 # Final LayerNorm.
@@ -350,22 +350,22 @@ x = self.final_ln(x)
 logits = self.lm_head(x)
 ```
 
-In the code, the row of working cards is just `x`, all the way through the model. The notebook's comments call them *hidden states*, and the last ones, after the final block, the *final hidden states*.
+In the code, the hidden states are just `x`, one list for each letter, all the way through the model.
 
 The scores are called `logits`. Then, in the writing loop, `generate_text`:
 
 ```python
-# keep only the last working card's 65 scores
+# keep only the last letter's 65 scores
 logits = logits[:, -1, :]
 # the chances: the slices of the wheel
 probs = torch.softmax(logits, dim=-1)
 ```
 
-`self.lm_head(x)` does the multiply-and-add for every working card and all 65 answer cards at once, and `torch.softmax` does step two. The notebook scores every working card in the text, because training needs them all, and then keeps only the last row.
+`self.lm_head(x)` does the dot products for every hidden state and all 65 rows at once, and `torch.softmax` does step two. The notebook scores every letter's hidden state, because training needs them all, and then keeps only the last letter's scores.
 
 ### In the TypeScript this page runs: `finalHidden`, `readOut`, `linear`, and `softmax`
 
-The demos on this page do the same two steps in TypeScript, in [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts), using the same trained numbers. `finalHidden` takes the last working card only and gives it the final normalisation: that is the final hidden state. `readOut` scores it against the answer cards:
+The demos on this page do the same two steps in TypeScript, in [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts), using the same trained numbers. `finalHidden` takes the last letter's hidden state only and gives it the final normalisation: that is the final hidden state. `readOut` scores it against the rows of `lm_head`:
 
 ```typescript
 private finalHidden(x: Float32Array, T: number): Float32Array {
@@ -379,7 +379,7 @@ private readOut(x: Float32Array, T: number): Float32Array {
 }
 ```
 
-`C` is 128, the length of a card, and `last` is the last working card. `linear` is the multiply-and-add, written out as loops: for each answer card `o`, it starts from the bias `b[o]`, and adds the working card's 128 numbers, each multiplied by the answer card's matching number:
+`C` is 128, the length of each list, and `last` is the last letter's hidden state. `linear` is the dot product, written out as loops: for each row `o`, it starts from the bias `b[o]`, and adds the hidden state's 128 numbers, each multiplied by the row's matching number:
 
 ```typescript
 private linear(x: Float32Array, T: number, nIn: number, name: string): Float32Array {
@@ -418,7 +418,7 @@ export function softmax(scores: Float32Array): Float32Array {
 }
 ```
 
-Its output is the `probs` list that `spinWheel` walks along. [Step 4](#step-4-chances) comes back to the answer cards, once the post has explained where the working card comes from.
+Its output is the `probs` list that `spinWheel` walks along. [Step 4](#step-4-chances) comes back to `lm_head`, once the post has explained where the hidden states come from.
 
 ### Try it: my trained machine, running in your browser
 
@@ -452,8 +452,8 @@ A few things to try:
 Here is the route:
 
 1. **[The guessing game](#guessing-the-next-letter)**: what a GPT actually does, how it [gives every letter a chance](#it-does-not-pick-a-letter-it-gives-every-letter-a-chance), and how it spins a wheel of chances to choose one.
-2. **[The five steps](#the-five-steps)** the machine takes for every letter it writes: [letters to numbers](#step-1-letters-to-numbers), [letter cards and position cards](#step-2-letter-cards-and-position-cards), [the blocks](#step-3-the-blocks), [chances](#step-4-chances), and [spinning the wheel](#step-5-spin-the-wheel).
-3. **Inside the blocks**: [attention](#inside-a-block-attention), [queries, keys, and values](#where-the-scratch-cards-come-from), [several heads at once](#several-heads-at-once), [the MLP](#then-the-mlp-each-working-card-on-its-own), and [why there are four blocks](#four-blocks-in-a-row).
+2. **[The five steps](#the-five-steps)** the machine takes for every letter it writes: [letters to numbers](#step-1-letters-to-numbers), [token embeddings and position embeddings](#step-2-token-embeddings-and-position-embeddings), [the blocks](#step-3-the-blocks), [chances](#step-4-chances), and [spinning the wheel](#step-5-spin-the-wheel).
+3. **Inside the blocks**: [attention](#inside-a-block-attention), [queries, keys, and values](#where-the-queries-keys-and-values-come-from), [several heads at once](#several-heads-at-once), [the MLP](#then-the-mlp-each-hidden-state-on-its-own), and [why there are four blocks](#four-blocks-in-a-row).
 4. **[How much can it see at once?](#how-much-can-it-see-at-once-the-context-limit)**: the context limit, and why raising it is expensive.
 5. **[Try it](#try-it-my-trained-machine-running-in-your-browser)**: the trained machine, running live in your browser.
 6. **[Beyond the guessing game](#beyond-the-guessing-game-tools-harnesses-and-agents)**: how tools, harnesses, and agents let a model do more than write.
@@ -527,36 +527,36 @@ Here are all five at once, for `goo`, with the real numbers from my trained mode
 
 Computers need numbers, so the first step is to give each of the 65 letters an ID. In Tiny Shakespeare, `g` is 45, `o` is 53, and `d` is 42, so `goo` becomes `[45, 53, 53]`. That is all this step does. But an ID is just a name tag. 53 is not "more" than 45 in any way that helps, so the machine cannot do much with the ID itself. It needs something richer, and that is step 2.
 
-### Step 2: letter cards and position cards
+### Step 2: token embeddings and position embeddings
 
-So instead, each ID picks a flashcard. Each of the 65 letters has one, like the alphabet cards preschoolers learn from. The front shows the letter. On a preschool card, the back would say "a is for apple", with a picture. On these cards, the back holds 128 numbers: the machine's starting point for that letter. In my trained model, the back of the `g` card begins −0.049, 0.032, 0.014, 0.030, and carries on for another 124 numbers. [The next post](/posts/minigpt-grown/#the-payoff-growing-the-exhibit-exactly) shows where those numbers came from. Every lowercase `o` gets exactly the same card, with the same 128 numbers, wherever it appears. A capital `O` gets a different card.
+So instead, each ID picks a row from a table. The table has one row for each of the 65 letters, and each row holds 128 numbers: the machine's starting point for that letter. This row is the letter's *token embedding*, and a list of numbers like this is called a *vector*. It helps to picture the table as a box of flashcards, like the alphabet cards preschoolers learn from. The front shows the letter. On a preschool card, the back would say "a is for apple", with a picture. Here, the back holds the 128 numbers. In my trained model, the `g` token embedding begins −0.049, 0.032, 0.014, 0.030, and carries on for another 124 numbers. [The next post](/posts/minigpt-grown/#the-payoff-growing-the-exhibit-exactly) shows where those numbers came from. Every lowercase `o` gets exactly the same token embedding, with the same 128 numbers, wherever it appears. A capital `O` gets a different one.
 
-The supply is bigger than a preschool set, and there is no limit on copies: `goo` simply takes two identical `o` cards. There is a card for every capital *and* every lowercase letter, because to the model `G` and `g` are completely different letters. On top of those 52, there are 13 more: the space, the new line, ten punctuation marks, and the digit `3`. That last one is only there because the text labels 27 speeches `3 KING HENRY VI`, so the supply includes a whole card for a letter that appears just 27 times in 1.1 million.
+There is no limit on copies: `goo` simply looks up the `o` row twice. There is a row for every capital *and* every lowercase letter, because to the model `G` and `g` are completely different letters. On top of those 52, there are 13 more: the space, the new line, ten punctuation marks, and the digit `3`. That last one is only there because the text labels 27 speeches `3 KING HENRY VI`, so the table includes a whole row for a letter that appears just 27 times in 1.1 million.
 
 ![](assets/images/minigpt/flashcards.svg)
-*Each card flips over: the letter on the front, and its 128 real numbers on the back*
+*Each token embedding pictured as a flashcard: the letter on the front, and its 128 real numbers on the back*
 
-Three things to know about these cards:
+Three things to know about these numbers:
 
-- **The numbers are fixed.** In a trained machine, the back of every card is as good as printed in ink. The `g` card has exactly the same 128 numbers every time a `g` appears, in every piece of text, today and tomorrow. Writing, chatting, and answering questions never change a single one of them. The only way to change them is to train the machine again.
-- **Nobody wrote the backs.** There is no "number 7 is how vowel-like this is". None of the 128 numbers has a name.
-- **Training chose them.** I think of every fixed number in the machine as a *dial*, and training is what turned each dial to where it is now: all 826,433 of them in my small model. How it settled on these exact numbers is the subject of [the next post](/posts/minigpt-grown/). In this post, the cards are simply given, like a printed set that I can copy as often as I like.
+- **The numbers are fixed.** In a trained machine, every token embedding is as good as printed in ink. The `g` row has exactly the same 128 numbers every time a `g` appears, in every piece of text, today and tomorrow. Writing, chatting, and answering questions never change a single one of them. The only way to change them is to train the machine again.
+- **Nobody wrote them.** There is no "number 7 is how vowel-like this is". None of the 128 numbers has a name.
+- **Training chose them.** Every fixed number in the machine is called a *parameter*: all 826,433 of them in my small model. I picture each one as a dial, and training is what turned each dial to where it is now. How it settled on these exact numbers is the subject of [the next post](/posts/minigpt-grown/). In this post, the parameters are simply given, like a printed set of flashcards that I can copy as often as I like.
 
-There is also a set of position cards. Picture the text as a row of numbered positions: position 1, position 2, and so on, with one card for each position. This time, one of each is enough: a text might need a dozen `o` cards, but my machine only ever needs the same 128 position cards, because a row never has two position 1s. Every letter takes the next position in the row, whether it was in the text the machine was given or the machine has just written it, and its letter card is combined with that position's card. Position cards work just like letter cards: each one has 128 numbers on its back, fixed by training in exactly the same way, so the two can be combined by simply adding them, number by number. So once a letter card is placed on a position, the machine knows both what the letter is and where it sits. That position card is the only thing that tells the two `o`s in `goo` apart at this stage.
+There is also a table of *position embeddings*. Picture the text as a row of numbered positions: position 1, position 2, and so on, with one vector for each position. This time, one of each is enough: a text might need a dozen copies of the `o` row, but my machine only ever needs the same 128 position embeddings, because a text never has two position 1s. Every letter takes the next position, whether it was in the text the machine was given or the machine has just written it, and its token embedding is combined with that position's embedding. Position embeddings work just like token embeddings: each one is 128 numbers, fixed by training in exactly the same way, so the two can be combined by simply adding them, number by number. So once a letter is placed on a position, the machine knows both what the letter is and where it sits. The position embedding is the only thing that tells the two `o`s in `goo` apart at this stage.
 
 ![](assets/images/minigpt/position-cards.svg)
-*Each position card flips over: the position number on the front, and its 128 real numbers on the back*
+*Each position embedding pictured as a card: the position number on the front, and its 128 real numbers on the back*
 
-Here is the real `g` card, the real position 1 card, and what they add up to:
+Here is the real `g` token embedding, the real position 1 embedding, and what they add up to:
 
 ![](assets/images/minigpt/letter-plus-position.svg)
-*Adding the cards is plain addition, number by number. The result depends on both the letter and its position*
+*Adding them is plain addition, number by number. The result depends on both the letter and its position*
 
-Adding a letter card to its position card gives a **working card**, one for each position in the text. For `goo` there are three: working card 1 starts as the `g` card plus the position 1 card, working card 2 as the `o` card plus the position 2 card, and working card 3 as the `o` card plus the position 3 card. In the jargon, these starting values are the *input embeddings*.
+Adding each token embedding to its position embedding gives every position its starting vector, called its *input embedding*. For `goo` there are three: position 1 starts as the `g` embedding plus the position 1 embedding, position 2 as the `o` embedding plus the position 2 embedding, and position 3 as the `o` embedding plus the position 3 embedding. The blocks then rewrite these vectors, and from then on each one is called a *hidden state*: one for each position.
 
-This is the last time the machine looks at letters. From here on, everything happens to the working cards. The letter cards and position cards are not touched again: they stay fixed, ready for the next text.
+This is the last time the machine looks at letters. From here on, everything happens to the hidden states. The token and position embeddings are not touched again: they stay fixed, ready for the next text.
 
-:::under-the-hood All 128 numbers on the back of the `g` card
+:::under-the-hood All 128 numbers in the `g` token embedding
 These are the exact numbers in my trained model, rounded to three decimal places, eight to a row. The colours in the pictures above are these numbers: blue for those above 0, orange for those below.
 
 ```
@@ -579,86 +579,86 @@ These are the exact numbers in my trained model, rounded to three decimal places
 ```
 :::
 
-In the notebook, the position cards are the *position embedding*.
+In the notebook, the two tables are `token_embedding` and `position_embedding`.
 
-How *many* position cards there are is fixed in advance, when the machine is built. There is one card for each position in the row, and the number of positions is the most letters the machine can look at when it chooses the next letter. That limit is called the *context length*, and in the notebook it is `block_size`. I come back to it, and what it costs to raise it, in [How much can it see at once?](#how-much-can-it-see-at-once-the-context-limit)
+How *many* position embeddings there are is fixed in advance, when the machine is built. There is one for each position, and the number of positions is the most letters the machine can look at when it chooses the next letter. That limit is called the *context length*, and in the notebook it is `block_size`. I come back to it, and what it costs to raise it, in [How much can it see at once?](#how-much-can-it-see-at-once-the-context-limit)
 
-:::under-the-hood How the position cards relate to each other
-On its own, one position card looks as meaningless as a letter card. The interesting part is how the position cards relate to each other:
+:::under-the-hood How the position embeddings relate to each other
+On its own, one position embedding looks as meaningless as a token embedding. The interesting part is how they relate to each other:
 
 ![](assets/images/minigpt/position-ruler.svg)
-*The bright diagonal shows that neighbouring positions ended up with similar cards. Nobody arranged that: training did*
+*The bright diagonal shows that neighbouring positions ended up with similar embeddings. Nobody arranged that: training did*
 
-On average, the cards for neighbouring positions score 0.65 for how alike they are, where two random cards would score about 0. Positions far apart point the opposite way: cards 100 positions apart score −0.35. So without being told, the machine turned its position cards into a kind of ruler, where "position 41" feels close to "position 42" and far from "position 120". That is just the kind of information attention needs, to find "the working card one position before me".
+On average, the embeddings for neighbouring positions score 0.65 for how alike they are, where two random vectors would score about 0. Positions far apart point the opposite way: embeddings 100 positions apart score −0.35. So without being told, the machine turned its position embeddings into a kind of ruler, where "position 41" feels close to "position 42" and far from "position 120". That is just the kind of information attention needs, to find "the hidden state one position before me".
 :::
 
 :::watch-it
-The letter cards and position cards are not the model, and a card on its own cannot tell you what comes next. They are just a lookup table: `o` always gives the same card, whatever came before it. The two sets of cards together hold 24,704 of the small model's 826,433 dials, about 3%. Almost all the rest, 96%, live in the blocks described next, and that is where the working cards get combined. In the jargon, the back of a letter card is the letter's *token embedding*.
+The token and position embeddings are not the model, and an embedding on its own cannot tell you what comes next. They are just a lookup table: `o` always gives the same vector, whatever came before it. The two tables together hold 24,704 of the small model's 826,433 parameters, about 3%. Almost all the rest, 96%, live in the blocks described next, and that is where the hidden states get combined.
 :::
 
 ### Step 3: the blocks
 
-After step 2, there is one working card for each position, and each one knows only its own letter and its own position. Step 3 is where the real work happens. The whole row of working cards goes through four *blocks*, one after another, and each block has two parts: **attention**, where each working card looks back at earlier positions and collects information from them, and the **MLP**, a small network that works on each working card on its own. Every block reads the row of working cards and rewrites it. The next sections take one idea each: attention itself, where its query, key, and value cards come from, the real numbers, why there are several heads at once, the MLP, and why there are four blocks.
+After step 2, there is one hidden state for each position, and each one knows only its own letter and its own position. Step 3 is where the real work happens. All the hidden states go through four *blocks*, one after another, and each block has two parts: **attention**, where each hidden state looks back at earlier positions and collects information from them, and the **MLP**, a small network that works on each hidden state on its own. Every block reads the hidden states and rewrites them. The next sections take one idea each: attention itself, where its queries, keys, and values come from, the real numbers, why there are several heads at once, the MLP, and why there are four blocks.
 
 :::watch-it Fixed or changing?
 Two kinds of thing take part from here on, and it helps to keep them apart.
 
-- **Fixed:** everything training set. The letter cards, the position cards, every dial in every block, and the 65 answer cards used in step 4. None of them changes while the machine is writing.
-- **Changing:** everything worked out for the text in front of it. That means the working cards, which every block rewrites, and the scratch work inside each block: the query, key, and value cards in attention, and the numbers in the MLP. The scratch work is thrown away at the end of each block. Only the working cards carry anything from one block to the next.
+- **Fixed:** everything training set, the *parameters*. The token embeddings, the position embeddings, the weights in every block, and the rows of `lm_head` used in step 4. None of them changes while the machine is writing.
+- **Changing:** everything worked out for the text in front of it, the *activations*. That means the hidden states, which every block rewrites, and the scratch work inside each block: the queries, keys, and values in attention, and the numbers in the MLP. The scratch work is thrown away at the end of each block. Only the hidden states carry anything from one block to the next.
 
-So "the position 3 card" always means the fixed position card, and "working card 3" means the card that changes as it moves through the blocks.
+So "the position 3 embedding" always means the fixed vector from the table, and "hidden state 3" means the vector that changes as it moves through the blocks.
 :::
 
 ### Inside a block: attention
 
-Here is the problem. Take working card 3, the one that started as the last `o` in `goo`. It says "I am an `o`, in position 3". That is not enough to guess what comes next, because it says nothing about what came *before*. The same `o` could be the second `o` in `good`, in `took`, or in `soon`, and each of those wants a different next letter.
+Here is the problem. Take hidden state 3, the one that started as the last `o` in `goo`. It says "I am an `o`, in position 3". That is not enough to guess what comes next, because it says nothing about what came *before*. The same `o` could be the second `o` in `good`, in `took`, or in `soon`, and each of those wants a different next letter.
 
 Here is a bigger example from Shakespeare itself. After a blank line, the next thing is almost always a speaker's name and a colon: in 7,219 of the 7,221 blank lines in Tiny Shakespeare. But there are 309 different speakers. Which name comes next depends on who has been talking in the scene, and that information is spread across all the positions before the blank line, not sitting in the one just before it.
 
-So each block starts with *attention*, which has one strict rule: **a working card may only look at working cards in earlier positions, and at itself.** Looking at later positions would be cheating, because the next letter is the answer it is trying to guess.
+So each block starts with *attention*, which has one strict rule: **a hidden state may only look at hidden states in earlier positions, and at itself.** Looking at later positions would be cheating, because the next letter is the answer it is trying to guess.
 
-For attention, every working card makes three short-lived **scratch cards**, called a *query*, a *key*, and a *value*. The names come from searching: you type a query, it is matched against the keys, and you get back the matching values.
+For attention, every hidden state makes three short-lived vectors, called its *query*, its *key*, and its *value*. The names come from searching: you type a query, it is matched against the keys, and you get back the matching values. It helps to picture them as cards at a meeting:
 
-- The **query card** says what this working card is looking for in the earlier positions. It keeps this card in its own hand.
-- The **key card** says what this working card has to offer. It lays this card face up on the table, where its own position and every later position can read it.
-- The **value card** holds what this working card will hand over if it is chosen. It lays this card face down, next to its key card.
+- The **query** says what this position is looking for in the earlier positions. Picture it as a card the position keeps in its own hand.
+- The **key** says what this position has to offer. Picture it laid face up on the table, where its own position and every later position can read it.
+- The **value** holds what this position will hand over if it is chosen. Picture it laid face down, next to its key.
 
-Keys and values are separate cards because what makes a working card worth listening to is not the same thing as what it should pass on. Then attention runs in three moves. Each working card:
+Keys and values are separate because what makes a position worth listening to is not the same thing as what it should pass on. Then attention runs in three moves. Each hidden state:
 
-1. **Matches** its query card against every key card on the table from its own position or earlier.
-2. **Shares out** 100% of its attention, in proportion to how well each key card matched.
-3. **Collects** that share of each value card, adds them up number by number, and adds the result to itself.
+1. **Matches** its query against every key on the table from its own position or earlier.
+2. **Shares out** 100% of its attention, in proportion to how well each key matched.
+3. **Collects** that share of each value, adds them up number by number, and adds the result to itself.
 
-In block 1 of my trained model, in one of the four copies of attention that run side by side (*heads*, explained [below](#several-heads-at-once)), working card 3 gives 92.9% of its attention to working card 2 (the first `o`), 4.0% to working card 1 (the `g`), and 3.1% to itself, so most of what it collects is working card 2's value card.
+In block 1 of my trained model, in one of the four copies of attention that run side by side (*heads*, explained [below](#several-heads-at-once)), hidden state 3 gives 92.9% of its attention to position 2 (the first `o`), 4.0% to position 1 (the `g`), and 3.1% to itself, so most of what it collects is position 2's value.
 
 ![](assets/images/minigpt/the-meeting.svg)
-*Attention for working card 3, the last position in `goo`. Its query card matches working card 2's key card best, so most of what it collects comes from working card 2's value card*
+*Attention for position 3, the last position in `goo`. Its query matches position 2's key best, so most of what it collects comes from position 2's value*
 
-After this, working card 3 says something closer to "I am an `o`, and one position before me is another `o`". That is a much better clue, and the other heads add more, as you will see.
+After this, hidden state 3 says something closer to "I am an `o`, and one position before me is another `o`". That is a much better clue, and the other heads add more, as you will see.
 
-### Where the scratch cards come from
+### Where the queries, keys and values come from
 
-The scratch cards are not looked up. A lookup table only works when there is a short list of things that can come in, one row for each: that is why letter cards and position cards can be looked up, because there are only 65 letters and 128 positions. A working card can hold any 128 numbers at all, so no table could ever list them.
+The queries, keys and values are not looked up. A lookup table only works when there is a short list of things that can come in, one row for each: that is why token embeddings and position embeddings can be looked up, because there are only 65 letters and 128 positions. A hidden state can hold any 128 numbers at all, so no table could ever list them.
 
-Instead, each block has three fixed **recipes**, one for query cards, one for key cards, and one for value cards. Each recipe is a fixed grid of 128 × 128 numbers, called *weights*, plus 128 more fixed numbers, called *biases*. Training set them all, and while the machine is writing they never change, just like the letter cards. To work out one number on a query card, the machine multiplies each of the working card's 128 numbers by its own weight, adds up the 128 results, and adds a bias. It repeats that with a different row of weights for each of the card's 128 numbers. So every number on a scratch card is a mix of *all* 128 numbers on the working card.
+Instead, each block has three fixed tables of **weights**, one for queries, one for keys, and one for values. Each is a fixed grid of 128 × 128 numbers, called *weights*, plus 128 more fixed numbers, called *biases*. Training set them all, and while the machine is writing they never change, just like the token embeddings. In the code, each one is an `nn.Linear` layer, just like `lm_head`. To work out one number of a query, the machine multiplies each of the hidden state's 128 numbers by its own weight, adds up the 128 results, and adds a bias. It repeats that with a different row of weights for each of the query's 128 numbers. So every number of a query, key or value is a mix of *all* 128 numbers of the hidden state.
 
-Here is one real number from my trained model: working card 3 in `goo`, at the start of block 1. The working card is normalised first, so it starts 0.43, −2.10, 0.22, and so on. The second number on its query card is:
+Here is one real number from my trained model: hidden state 3 in `goo`, at the start of block 1. The hidden state is normalised first, so it starts 0.43, −2.10, 0.22, and so on. The second number of its query is:
 
 (−0.036 × 0.43) + (−0.038 × −2.10) + (0.030 × 0.22) + … 125 more terms … + 0.093 = **0.27**
 
 Three more things are worth knowing:
 
-- **The recipes belong to the block, not to a position.** Every working card goes through the same three recipes, so two working cards that held the same numbers would make the same scratch cards. Each block has its own three recipes, and between them they hold 49,536 of that block's dials.
-- **The scratch cards are all made at once.** Making a working card's scratch cards needs nothing but that working card, so the machine makes the query, key, and value cards for every position at the same moment, in one big multiplication over the whole row.
-- **The scratch cards are thrown away.** They exist only during attention. MiniGPT makes them all again from scratch for every new letter, because it reruns the whole row through every block. Big chatbots save that work. Because a working card only ever listens to earlier positions, adding a new letter never changes the working cards before it, so their key and value cards do not change either. Big models keep them instead of remaking them, in a store called the *KV cache*, short for key–value cache ([this Hugging Face post](https://huggingface.co/blog/not-lain/kv-caching) explains it well). Only the newest position needs a new query card.
+- **The weights belong to the block, not to a position.** Every hidden state goes through the same three tables of weights, so two hidden states that held the same numbers would make the same queries, keys and values. Each block has its own three tables, and between them they hold 49,536 of that block's parameters.
+- **They are all made at once.** Making a position's query, key and value needs nothing but that position's hidden state, so the machine makes them for every position at the same moment, in one big multiplication over all the hidden states.
+- **They are thrown away.** They exist only during attention. MiniGPT makes them all again from scratch for every new letter, because it reruns every position through every block. Big chatbots save that work. Because a hidden state only ever listens to earlier positions, adding a new letter never changes the hidden states before it, so their keys and values do not change either. Big models keep them instead of remaking them, in a store called the *KV cache*, short for key–value cache ([this Hugging Face post](https://huggingface.co/blog/not-lain/kv-caching) explains it well). Only the newest position needs a new query.
 
-Nobody chooses what goes on the query, key, and value cards. Training tunes the recipes, just as it tunes the letter cards, and a real model's queries and keys mostly have no tidy name at all.
+Nobody chooses what goes into the queries, keys, and values. Training tunes the weights, just as it tunes the token embeddings, and a real model's queries and keys mostly have no tidy name at all.
 
 ### Queries, keys and values, with real numbers
 
-Here is attention for working card 3 in `goo`, with the real numbers from my trained model, in one of the four heads in block 1. In each head, each card is 32 numbers long; [the heads section](#several-heads-at-once) explains why. Working card 3's query card starts 0.00, 0.27, 0.76, and so on. Matching a query card with a key card means multiplying the two together, number by number, and adding up the 32 results. A big total is a good match.
+Here is attention for hidden state 3 in `goo`, with the real numbers from my trained model, in one of the four heads in block 1. In each head, each query, key and value is 32 numbers long; [the heads section](#several-heads-at-once) explains why. Hidden state 3's query starts 0.00, 0.27, 0.76, and so on. Matching a query with a key means multiplying the two together, number by number, and adding up the 32 results. A big total is a good match.
 
-| | working card 1 (`g`) | working card 2 (`o`) | working card 3 (`o`, itself) |
+| | position 1 (`g`) | position 2 (`o`) | position 3 (`o`, itself) |
 |---|---|---|---|
 | 1. Query × key, added up | −2.19 | **15.60** | −3.62 |
 | 2. Divided by √32 | −0.39 | **2.76** | −0.64 |
@@ -667,75 +667,75 @@ Here is attention for working card 3 in `goo`, with the real numbers from my tra
 1. **Match.** Multiply and add. That is all the "dot product" in the notebook is.
 2. **Shrink.** Divide by √32, about 5.66, to keep the scores in a modest range. Without this, the biggest score would swamp all the others.
 3. **Share out.** A step called *softmax* turns the scores into shares that are all positive and add up to 100%. Step 4 uses the same trick again, to turn the final scores into chances.
-4. **Collect.** Working card 3 collects the value cards in those shares: 92.9% of working card 2's, 4.0% of working card 1's, and 3.1% of its own, number by number. After one more step, described under heads below, the result is added to working card 3.
+4. **Collect.** Hidden state 3 collects the values in those shares: 92.9% of position 2's, 4.0% of position 1's, and 3.1% of its own, number by number. After one more step, described under heads below, the result is added to hidden state 3.
 
-Look at working cards 2 and 3. They started from the same `o` letter card. The only difference between them is their position cards, 2 and 3, and that is enough to give them different key cards. Working card 2's key card matches the query with 15.60, while working card 3's own key card scores −3.62. Without the position cards, the machine could not tell "the `o` one position before me" from "me".
+Look at hidden states 2 and 3. They started from the same `o` token embedding. The only difference between them is their position embeddings, 2 and 3, and that is enough to give them different keys. Position 2's key matches the query with 15.60, while position 3's own key scores −3.62. Without the position embeddings, the machine could not tell "the `o` one position before me" from "me".
 
 :::watch-it
-"Was there an `o` one position before me?" is my reading of this query, not the machine's. The machine has no words, only 32 numbers. What it *measurably* does is look one position back: across 60 passages of Shakespeare, this head puts 96% of every working card's attention on the working card one position before it.
+"Was there an `o` one position before me?" is my reading of this query, not the machine's. The machine has no words, only 32 numbers. What it *measurably* does is look one position back: across 60 passages of Shakespeare, this head puts 96% of every position's attention on the position just before it.
 :::
 
 :::brain-power
-One head asks one query. Think about working card 3 in `goo`. What are two different things it might want to know about the earlier positions?
+One head asks one query. Think about hidden state 3 in `goo`. What are two different things it might want to know about the earlier positions?
 :::
 
 ### Several heads at once
 
-A block does not run attention just once. It runs it four times side by side, and each copy is called a *head*. Each head gets its own 32-number piece of every query, key, and value card, and every piece is made from the whole working card. Same working cards, same moment, but four different queries, and so four different answers.
+A block does not run attention just once. It runs it four times side by side, and each copy is called a *head*. Each head gets its own 32-number piece of every query, key, and value, and every piece is made from the whole hidden state. Same hidden states, same moment, but four different queries, and so four different answers.
 
 :::pencil Draw a head
-Imagine a head that has learned one simple habit: every working card puts all of its attention on the working card one position before it, and working card 1, which has nothing before it, attends to itself. Fill in its grid of weights for `goo`.
+Imagine a head that has learned one simple habit: every position puts all of its attention on the position just before it, and position 1, which has nothing before it, attends to itself. Fill in its grid of weights for `goo`.
 
 :::answer
 | | 1 (`g`) | 2 (`o`) | 3 (`o`) |
 |---|---|---|---|
-| working card 1 | 100% | 0 | 0 |
-| working card 2 | 100% | 0 | 0 |
-| working card 3 | 0 | 100% | 0 |
+| position 1 | 100% | 0 | 0 |
+| position 2 | 100% | 0 | 0 |
+| position 3 | 0 | 100% | 0 |
 
-Every row still adds up to 100%, and the upper-right triangle is still all zeros. After one pass through this head, what each working card collects describes the position before it, which is exactly the clue a character-level model needs. Real heads are rarely this tidy, but this one really exists: the first block of my trained model grew a head that puts about 96% of each working card's attention on the working card one position before it. Head 1 in the table below behaves almost exactly like this.
+Every row still adds up to 100%, and the upper-right triangle is still all zeros. After one pass through this head, what each hidden state collects describes the position before it, which is exactly the clue a character-level model needs. Real heads are rarely this tidy, but this one really exists: the first block of my trained model grew a head that puts about 96% of each position's attention on the position just before it. Head 1 in the table below behaves almost exactly like this.
 :::
 :::
 
-Here is what working card 3 collects from each of block 1's four heads:
+Here is what hidden state 3 collects from each of block 1's four heads:
 
-| Head | working card 1 (`g`) | working card 2 (`o`) | working card 3 (itself) | In short |
+| Head | position 1 (`g`) | position 2 (`o`) | position 3 (itself) | In short |
 |---|---|---|---|---|
 | 1 | 4.0% | **92.9%** | 3.1% | one position back |
 | 2 | **83.4%** | 12.2% | 4.4% | two positions back |
 | 3 | **83.4%** | 14.9% | 1.6% | two positions back |
 | 4 | 24.7% | **66.5%** | 8.8% | one position back, more loosely |
 
-Between them, the four heads tell working card 3 exactly what it needs to know. Heads 1 and 4 say "one position back, there is an `o`", and heads 2 and 3 say "two positions back, there is a `g`". Put together: `g`, `o`, then me. That is `goo`, and it is why `d` ends up so likely.
+Between them, the four heads tell hidden state 3 exactly what it needs to know. Heads 1 and 4 say "one position back, there is an `o`", and heads 2 and 3 say "two positions back, there is a `g`". Put together: `g`, `o`, then me. That is `goo`, and it is why `d` ends up so likely.
 
 The same habits show up on any text. Here are all four heads reading a line from *Romeo and Juliet*:
 
 ![](assets/images/minigpt/four-heads.svg)
-*Real attention, measured from my trained model. Each row is a working card, labelled with the letter it started from, and each dot shows how much attention it gives the working card above*
+*Real attention, measured from my trained model. Each row is a position, labelled with the letter it started from, and each dot shows how much attention it gives the position above*
 
-Nobody designed these habits. Training grew them, because they help with the guessing game. Two heads even learned nearly the same habit: nothing forces heads to be different, and training simply found two copies useful. Between them, after block 1, every working card carries information about the two or three positions before it, which is the same clue you would get by counting which letters follow which, and then some.
+Nobody designed these habits. Training grew them, because they help with the guessing game. Two heads even learned nearly the same habit: nothing forces heads to be different, and training simply found two copies useful. Between them, after block 1, every hidden state carries information about the two or three positions before it, which is the same clue you would get by counting which letters follow which, and then some.
 
-At the end of attention, what the four heads collected, 32 numbers each, is laid side by side to make 128 numbers again. One more set of dials then mixes them, so that what all four heads found ends up on the one working card.
+At the end of attention, what the four heads collected, 32 numbers each, is laid side by side to make 128 numbers again. One more table of weights then mixes them, so that what all four heads found ends up in the one hidden state.
 
-Why 32? The machine makes one query card, one key card, and one value card for each working card, each 128 numbers long and each made from the *whole* working card. Then it cuts each of them into four pieces of 32, one piece per head. So the heads share the block's three recipes between them, rather than each adding more. The 4 is not fixed. With 8 heads, each head's query, key, and value would be 16 numbers long: more queries, but cruder ones. The bigger model in the notebook uses 6 heads of 64. More heads is not automatically better; it is a trade-off that model builders settle by experiment. The only rule is that the card size must divide evenly by the number of heads.
+Why 32? The machine makes one query, one key, and one value for each hidden state, each 128 numbers long and each made from the *whole* hidden state. Then it cuts each of them into four pieces of 32, one piece per head. So the heads share the block's three tables of weights between them, rather than each adding more. The 4 is not fixed. With 8 heads, each head's query, key, and value would be 16 numbers long: more queries, but cruder ones. The bigger model in the notebook uses 6 heads of 64. More heads is not automatically better; it is a trade-off that model builders settle by experiment. The only rule is that the vector size must divide evenly by the number of heads.
 
-### Then the MLP: each working card on its own
+### Then the MLP: each hidden state on its own
 
-Attention is for gathering information from other positions. After it, every working card goes through the *MLP*, short for *multilayer perceptron*: a small two-layer network that works on each working card on its own. Every working card gets the same calculation, but each one sees only its own numbers.
+Attention is for gathering information from other positions. After it, every hidden state goes through the *MLP*, short for *multilayer perceptron*: a small two-layer network that works on each hidden state on its own. Every hidden state gets the same calculation, but each one sees only its own numbers.
 
-The MLP matters more than it sounds. About two-thirds of each block's dials are in the MLP, rather than in attention.
+The MLP matters more than it sounds. About two-thirds of each block's parameters are in the MLP, rather than in attention.
 
-So what is the MLP for? Grant Sanderson of 3Blue1Brown gives a good rule of thumb in [his talk on transformers](https://www.youtube.com/watch?v=KJtZARuO3JY): where a guess needs *context*, attention supplies it, and where it needs *general knowledge*, the MLP supplies it. His example is a big word-level model completing "Michael Jordan plays the sport of". *Basketball* appears nowhere in the sentence, so it must come from knowledge stored in the dials, and researchers at Google DeepMind found evidence that facts like this live mostly in the MLPs. In our small model the knowledge is humbler. Once attention has gathered that the word so far is `thoug`, knowing that `h` comes next is knowledge of English spelling, not something written in the earlier positions.
+So what is the MLP for? Grant Sanderson of 3Blue1Brown gives a good rule of thumb in [his talk on transformers](https://www.youtube.com/watch?v=KJtZARuO3JY): where a guess needs *context*, attention supplies it, and where it needs *general knowledge*, the MLP supplies it. His example is a big word-level model completing "Michael Jordan plays the sport of". *Basketball* appears nowhere in the sentence, so it must come from knowledge stored in the parameters, and researchers at Google DeepMind found evidence that facts like this live mostly in the MLPs. In our small model the knowledge is humbler. Once attention has gathered that the word so far is `thoug`, knowing that `h` comes next is knowledge of English spelling, not something written in the earlier positions.
 
 :::brain-power
-After one block, every working card knows something about the positions just before it. What could a second block of exactly the same kind add that the first could not?
+After one block, every hidden state knows something about the positions just before it. What could a second block of exactly the same kind add that the first could not?
 :::
 
 ### Four blocks in a row
 
-Attention followed by the MLP makes one *block*. My model runs four blocks in a row, and the bigger model in the notebook runs six. The blocks run one after another. The whole row of working cards that comes out of block 1 is the row that goes into block 2, block 2's row goes into block 3, and so on. After block 4, step 4 reads the last working card. Each block has its own dials: the four blocks are built the same way, but they do not share any numbers, so each one can learn to do something different. With each block, the working cards carry more context: by the later blocks, a working card is less about one letter and more about what is going on around it.
+Attention followed by the MLP makes one *block*. My model runs four blocks in a row, and the bigger model in the notebook runs six. The blocks run one after another. The hidden states that come out of block 1 are the ones that go into block 2, block 2's go into block 3, and so on. After block 4, step 4 reads the last hidden state. Each block has its own parameters: the four blocks are built the same way, but they do not share any numbers, so each one can learn to do something different. With each block, the hidden states carry more context: by the later blocks, a hidden state is less about one letter and more about what is going on around it.
 
-The row that comes out of one block and the row that goes into the next are not two different things: they are the same row of working cards, and in the code they are the same variable. A block never swaps a working card for a new one. It adds to it twice: working card out = working card in + what attention adds + what the MLP adds. Here is how much each block adds to working card 3 in `goo`, where "size" is how big its 128 numbers are taken together:
+The hidden states that come out of one block and the ones that go into the next are not two different things: they are the same vectors, and in the code they are the same variable, `x`. A block never swaps a hidden state for a new one. It adds to it twice: hidden state out = hidden state in + what attention adds + what the MLP adds. Here is how much each block adds to hidden state 3 in `goo`, where "size" is how big its 128 numbers are taken together:
 
 | Block | Size going in | Attention adds | The MLP adds | Size coming out | How alike in and out are |
 |---|---|---|---|---|---|
@@ -744,31 +744,31 @@ The row that comes out of one block and the row that goes into the next are not 
 | 3 | 2.72 | 0.90 | 1.16 | 2.92 | 0.90 |
 | 4 | 2.92 | 0.74 | 1.86 | 3.09 | 0.78 |
 
-Block 1 changes the card the most: it adds more than the card held when it left step 2. Blocks 2 and 3 refine it, so what comes out is still 0.90 like what went in. Block 4 makes a bigger change again, mostly in its MLP, as it gets the card ready for step 4. By the end, working card 3 scores only 0.08 for likeness to the card it started as.
+Block 1 changes the hidden state the most: it adds more than the vector held when it left step 2. Blocks 2 and 3 refine it, so what comes out is still 0.90 like what went in. Block 4 makes a bigger change again, mostly in its MLP, as it gets the hidden state ready for step 4. By the end, hidden state 3 scores only 0.08 for likeness to the vector it started as.
 
 ![](assets/images/minigpt/rounds.svg)
-*The whole row of working cards goes through every block together. The coloured squares on each card show how much of the earlier positions it has taken in: working card 1 can only ever take in itself, while working card 3 takes in all three*
+*All the hidden states go through every block together. The coloured squares on each one show how much of the earlier positions it has taken in: hidden state 1 can only ever take in itself, while hidden state 3 takes in all three*
 
-Written out in full, the row of working cards goes through eight stages, always in the same order: attention, MLP, attention, MLP, attention, MLP, attention, MLP. The two take turns, and neither ever runs twice in a row. So if you see a diagram of a big GPT as a long stack of slabs labelled "Attention, Multilayer Perceptron, Attention, Multilayer Perceptron…", like the one in [Grant Sanderson's talk](https://www.youtube.com/watch?v=KJtZARuO3JY), it shows exactly what my small model does. The only difference is how many times the pair repeats: GPT-3 repeats it 96 times, with much longer cards.
+Written out in full, the hidden states go through eight stages, always in the same order: attention, MLP, attention, MLP, attention, MLP, attention, MLP. The two take turns, and neither ever runs twice in a row. So if you see a diagram of a big GPT as a long stack of slabs labelled "Attention, Multilayer Perceptron, Attention, Multilayer Perceptron…", like the one in [Grant Sanderson's talk](https://www.youtube.com/watch?v=KJtZARuO3JY), it shows exactly what my small model does. The only difference is how many times the pair repeats: GPT-3 repeats it 96 times, with much longer vectors.
 
 Two details keep the blocks working well:
 
-- **Add, never replace.** Each block adds to the working cards rather than replacing them, so nothing learned in an earlier block is lost. This also matters for learning: when the dials are tuned, the message about which way to turn them has to travel backwards through every block, as [the next post](/posts/minigpt-grown/#how-does-it-know-which-way-to-nudge) shows. Adding rather than replacing gives that message a clear route all the way back, which is why models can be stacked dozens of blocks deep. Because every block adds to the same row of working cards, the row has a name in the jargon: the *residual stream*. It starts as the input embeddings and flows through every block.
-- **Normalise before each step.** Before attention, and again before the MLP, the numbers on every working card are rescaled to a standard range, so that no card is shouting. Then each of the 128 numbers is stretched and shifted by its own two fixed dials, set by training, so the machine can turn some numbers back up if they matter more than others. This is called *layer normalisation*, or *LayerNorm*.
+- **Add, never replace.** Each block adds to the hidden states rather than replacing them, so nothing learned in an earlier block is lost. This also matters for learning: when the parameters are tuned, the message about which way to turn them has to travel backwards through every block, as [the next post](/posts/minigpt-grown/#how-does-it-know-which-way-to-nudge) shows. Adding rather than replacing gives that message a clear route all the way back, which is why models can be stacked dozens of blocks deep. Because every block adds to the same hidden states, they have another name in the jargon, taken together: the *residual stream*. It starts as the input embeddings and flows through every block.
+- **Normalise before each step.** Before attention, and again before the MLP, the numbers in every hidden state are rescaled to a standard range, so that no position is shouting. Then each of the 128 numbers is stretched and shifted by its own two fixed parameters, set by training, so the machine can turn some numbers back up if they matter more than others. This is called *layer normalisation*, or *LayerNorm*.
 
 :::under-the-hood How normalising works, with real numbers
-Take working card 3 in `goo` as it arrives at block 1: the `o` letter card plus the position 3 card. Its 128 numbers are tiny, between −0.104 and 0.111, and start 0.019, −0.080, 0.013. Normalising takes three moves:
+Take hidden state 3 in `goo` as it arrives at block 1: the `o` token embedding plus the position 3 embedding. Its 128 numbers are tiny, between −0.104 and 0.111, and start 0.019, −0.080, 0.013. Normalising takes three moves:
 
 1. **Subtract the average.** The average of all 128 numbers is 0.0009, so here this barely changes anything.
-2. **Divide by the spread.** The numbers' typical distance from their average, their *standard deviation*, is 0.0444. Dividing by it gives the card a standard size, whatever size it arrived at: its numbers now start 0.40, −1.83, 0.28, and run from −2.36 to 2.48.
-3. **Stretch and shift.** Each of the 128 numbers is multiplied by its own stretch dial, and has its own shift dial added. For the first three numbers, the stretches are 1.05, 1.12, and 1.08, and the shifts are 0.01, −0.03, and −0.08.
+2. **Divide by the spread.** The numbers' typical distance from their average, their *standard deviation*, is 0.0444. Dividing by it gives the vector a standard size, whatever size it arrived at: its numbers now start 0.40, −1.83, 0.28, and run from −2.36 to 2.48.
+3. **Stretch and shift.** Each of the 128 numbers is multiplied by its own stretch, and has its own shift added: two parameters each, set by training. For the first three numbers, the stretches are 1.05, 1.12, and 1.08, and the shifts are 0.01, −0.03, and −0.08.
 
-The result starts 0.43, −2.10, 0.22 (allowing for rounding): the numbers that go into block 1's recipes in [Where the scratch cards come from](#where-the-scratch-cards-come-from). [MiniGPT (Part 5)](/posts/minigpt4/) tries a simpler kind of normalising, *RMSNorm*, which skips the first move and the shift.
+The result starts 0.43, −2.10, 0.22 (allowing for rounding): the numbers that go into block 1's weights in [Where the queries, keys and values come from](#where-the-queries-keys-and-values-come-from). [MiniGPT (Part 5)](/posts/minigpt4/) tries a simpler kind of normalising, *RMSNorm*, which skips the first move and the shift.
 :::
 
-Why four blocks, and not one? Because each block builds on the last. After block 1, a working card knows about the positions just before it. In block 2, it can look at working cards that have *already* gathered their own neighbours, so it learns about positions further back, and so on. You can see this in the heads themselves. In block 1, the heads look between 1.6 and 5.7 positions back on average. In blocks 2 to 4, they look between 6 and 25 positions back.
+Why four blocks, and not one? Because each block builds on the last. After block 1, a hidden state knows about the positions just before it. In block 2, it can look at hidden states that have *already* gathered their own neighbours, so it learns about positions further back, and so on. You can see this in the heads themselves. In block 1, the heads look between 1.6 and 5.7 positions back on average. In blocks 2 to 4, they look between 6 and 25 positions back.
 
-You can also watch the guess improve. After each block, I took the last working card as it was at that point, gave it the same final normalisation, scored it against the same 65 answer cards, and turned the scores into chances, exactly as step 4 does after block 4. The answer cards were only ever trained to read block 4's output, so this is a peek rather than something the machine does when it writes, but it works surprisingly well, and researchers use the same trick under the name *logit lens*:
+You can also watch the guess improve. After each block, I took the last hidden state as it was at that point, gave it the same final normalisation, scored it against the same 65 rows of `lm_head`, and turned the scores into chances, exactly as step 4 does after block 4. `lm_head` was only ever trained to read block 4's output, so this is a peek rather than something the machine does when it writes, but it works surprisingly well, and researchers use the same trick under the name *logit lens*:
 
 ![](assets/images/minigpt/stopping-early.svg)
 *Real numbers from my trained model. Straight from step 2, before any block, it guesses the next letter right 12% of the time; after all four blocks, 49%*
@@ -776,35 +776,35 @@ You can also watch the guess improve. After each block, I took the last working 
 The picture follows the guess after *Before we proceed any further, hear me spea*, from the first speech in Tiny Shakespeare. Straight from step 2, before any block, the machine knows only that the last letter is an `a`, so it guesses `y`. Block 1 adds the letters in the positions just before it, and `t` takes the lead. Block 2 has seen enough of `spea` to try `c`. Only in blocks 3 and 4 does the whole picture, *hear me spea*, settle on `k`, at 98%.
 
 :::bullet-points Step 3, the blocks
-- Step 2 hands block 1 one working card per position. From then on, the machine works only on working cards, never on letters.
-- In attention, each working card makes a query card, a key card, and a value card, using the block's three fixed recipes.
-- It matches its query against the key of every working card in an earlier position, and its own, shares out its attention, and collects their values in those shares.
+- Step 2 hands block 1 one input embedding per position. From then on, the machine works only on these vectors, the hidden states, never on letters.
+- In attention, each hidden state makes a query, a key, and a value, using the block's three fixed tables of weights.
+- It matches its query against the key of every earlier position, and its own, shares out its attention, and collects their values in those shares.
 - Four heads run at once, each with its own 32-number piece of every query, key, and value.
-- In the MLP, each working card is worked on alone, using knowledge stored in the dials.
-- Four blocks in a row let each working card gather information from further and further back.
+- In the MLP, each hidden state is worked on alone, using knowledge stored in the parameters.
+- Four blocks in a row let each hidden state gather information from further and further back.
 :::
 
 ### Step 4: chances
 
-After block 4, there are still three working cards in the row, one for each position of `goo`, and only the last one, working card 3, matters for the next letter. (The notebook actually scores all three and then keeps only the last row of scores, as [the code walk-through](#the-answer-cards-back-in-minigptforward) shows. The answer is the same.) It went into block 1 meaning just "an `o`, in position 3". But in every block's attention it collected values from working cards 1 and 2, so it comes out of block 4 meaning something more like "an `o` that follows `g` and `o`": in other words, `goo` so far.
+After block 4, there are still three hidden states, one for each position of `goo`, and only the last one, hidden state 3, matters for the next letter. (The notebook actually scores all three and then keeps only the last row of scores, as [the code walk-through](#lmhead-back-in-minigptforward) shows. The answer is the same.) It went into block 1 meaning just "an `o`, in position 3". But in every block's attention it collected values from positions 1 and 2, so it comes out of block 4 meaning something more like "an `o` that follows `g` and `o`": in other words, `goo` so far.
 
-Why only the last working card? Because the next letter comes after the last position. The other working cards have done their job: they were what working card 3 looked at in attention.
+Why only the last hidden state? Because the next letter comes after the last position. The other hidden states have done their job: they were what hidden state 3 looked at in attention.
 
-Working card 3 is still just a list of 128 numbers, starting 0.14, 0.12, 0.41, 0.18, and so on. It describes the situation, `goo` so far, but it does not name a letter. To get from a description of the situation to a guess, the machine uses one last set of fixed cards: the **answer cards**. There are 65 of them, one for each letter that could come next, and each holds 128 numbers set by training, plus one extra number called a *bias*.
+Hidden state 3 is still just a vector of 128 numbers, starting 0.14, 0.12, 0.41, 0.18, and so on. It describes the situation, `goo` so far, but it does not name a letter. To get from a description of the situation to a guess, the machine uses one last fixed table, `lm_head`, the *language-model head*. It has 65 rows, one for each letter that could come next, and each row holds 128 numbers set by training, plus one extra number called a *bias*.
 
-Think of each answer card as a profile of the moments when its letter comes next. The `d` answer card says, in effect, "this is what a working card tends to look like just before a `d`". Step 4 holds working card 3 up against all 65 profiles and asks, 65 times, "how well does this situation fit?" The best fit gets the biggest chance.
+Think of each row as a profile of the moments when its letter comes next. The `d` row says, in effect, "this is what a hidden state tends to look like just before a `d`". Step 4 holds hidden state 3 up against all 65 profiles and asks, 65 times, "how well does this situation fit?" The best fit gets the biggest chance.
 
-So the two kinds of card do opposite jobs:
+So the two do opposite jobs:
 
-- **A working card** describes *this* text, at *this* position. There is one for each position, it is made fresh for every text, and every block rewrites it.
-- **An answer card** describes *a letter that could come next*. There is one for each of the 65 letters, training set it, and it never changes. The same 65 answer cards are used for every text, every time the machine chooses a letter.
+- **A hidden state** describes *this* text, at *this* position. There is one for each position, it is made fresh for every text, and every block rewrites it.
+- **A row of `lm_head`** describes *a letter that could come next*. There is one for each of the 65 letters, training set it, and it never changes. The same 65 rows are used for every text, every time the machine chooses a letter.
 
-Answer cards are not letter cards, either. A letter card describes a letter going *in*: "this is a `d`". An answer card describes a letter about to come *out*: "a `d` probably follows". Training learned the two jobs separately, and in my model the two sets ended up unrelated: on average, an answer card scores 0.00 for likeness to the letter card for the same letter.
+The rows of `lm_head` are not the token embeddings, either. A token embedding describes a letter going *in*: "this is a `d`". A row of `lm_head` describes a letter about to come *out*: "a `d` probably follows". Training learned the two jobs separately, and in my model the two tables ended up unrelated: on average, a letter's row of `lm_head` scores 0.00 for likeness to the same letter's token embedding.
 
-Here is how the machine gets from working card 3 to the chances, with the real numbers for `goo`:
+Here is how the machine gets from hidden state 3 to the chances, with the real numbers for `goo`:
 
-1. **Normalise.** The working card is rescaled once more, the same normalisation as before every attention step and MLP. It now starts 0.56, 0.63, 1.72, 0.97.
-2. **Score every letter.** For each of the 65 answer cards, the machine multiplies its numbers by the working card's, number by number, adds up the 128 results, and adds the bias. That is the same multiply-and-add as matching a query to a key in attention, and a big score means a good match. The `d` answer card scores 8.58, far ahead of `k` (3.45), `r` (3.41), and `s` (3.01). The lowest is `M`, at −5.77.
+1. **Normalise.** The hidden state is rescaled once more, the same normalisation as before every attention step and MLP. It now starts 0.56, 0.63, 1.72, 0.97.
+2. **Score every letter.** For each of the 65 rows of `lm_head`, the machine multiplies its numbers by the hidden state's, number by number, adds up the 128 results, and adds the bias. That is the same dot product as matching a query to a key in attention, and a big score means a good match. The scores are called *logits*. The `d` row scores 8.58, far ahead of `k` (3.45), `r` (3.41), and `s` (3.01). The lowest is `M`, at −5.77.
 3. **Turn the scores into chances.** Softmax, the same trick as in attention, makes every score positive and then divides each one by the total, so that the 65 chances add up to 100%. It also stretches the gaps: `d` is 5 points ahead of `k`, and ends up about 170 times as likely. For `goo`, `d` gets 96.6%, `k` and `r` 0.6% each, and `M` a slice of the wheel far too thin to see.
 
 Those 65 chances are the slices of the wheel in step 5.
@@ -847,14 +847,14 @@ Turn it all the way down to 0, and the machine stops spinning and always takes t
 
 ### Putting it together: choosing the next letter
 
-Here is the whole journey once more, as a recipe for choosing the next letter after `goo`. The two sets of cards are only the start. Almost everything that matters happens in the blocks.
+Here is the whole journey once more, step by step, for choosing the next letter after `goo`. The two tables of embeddings are only the start. Almost everything that matters happens in the blocks.
 
-1. **Deal.** For each letter written so far, in order (`g`, `o`, `o`), add its letter card to its position card. That gives one working card per position.
-2. **Run four blocks.** Each block is attention followed by the MLP, and every block rewrites the numbers on every working card. By the end, each working card carries a mix of the earlier positions, so working cards 2 and 3, which both started from an `o`, are now very different.
-3. **Read only the last working card.** It started as just the final `o`, but after four blocks its numbers stand for the whole of `goo` so far.
-4. **Turn it into chances.** The machine scores the last working card against 65 answer cards, one for each letter. That is one more set of fixed, learned cards, 65 of 128 numbers each. The better the match, the bigger the chance. The 65 chances add up to 100%.
+1. **Look up.** For each letter written so far, in order (`g`, `o`, `o`), add its token embedding to its position embedding. That gives one input embedding per position.
+2. **Run four blocks.** Each block is attention followed by the MLP, and every block rewrites every hidden state. By the end, each hidden state carries a mix of the earlier positions, so hidden states 2 and 3, which both started from an `o`, are now very different.
+3. **Read only the last hidden state.** It started as just the final `o`, but after four blocks its numbers stand for the whole of `goo` so far.
+4. **Turn it into chances.** The machine scores the last hidden state against the 65 rows of `lm_head`, one for each letter. That is one more fixed, learned table, 65 rows of 128 numbers each. The better the match, the bigger the chance. The 65 chances add up to 100%.
 5. **Spin the wheel,** and write down whatever letter stops under the pointer. Almost every time, it is `d`.
-6. **Repeat.** Deal a working card for the `d` onto the end of the row, and go back to step 2 with `good`. The notebook really does rerun all the blocks on the whole row for every new letter.
+6. **Repeat.** Add the `d` to the end of the text, look up its embeddings, and go back to step 2 with `good`. The notebook really does rerun all the blocks on every position for every new letter.
 
 :::watch-it
 The row cannot grow for ever. Until it fills every position, the machine keeps all of it, so after `goo` it really does go back to step 2 with all four letters of `good`. Once every position is taken, each new letter pushes the oldest one off the front, and that letter is forgotten completely. [The next section](#how-much-can-it-see-at-once-the-context-limit) explains the limit, and what it would take to raise it.
@@ -864,29 +864,29 @@ The row cannot grow for ever. Until it fills every position, the machine keeps a
 
 My machine can see at most 128 letters at a time. That limit is called the *context length*, or *context window*, and in the notebook it is `block_size`. Anything further back than 128 letters is simply gone: the machine has no idea it was ever there.
 
-The limit comes from the position cards. There is one position card for each position, and there are 128 position cards, so there is no position 129 to put a letter on.
+The limit comes from the position embeddings. There is one for each position, and there are 128 of them, so there is no position 129 to put a letter on.
 
 :::watch-it
-The context length has nothing to do with how many numbers are on a card. In fact, the machine has four separate settings, and in my small model they pair up by coincidence: two of them are 128, and two of them are 4. Each can be changed without the others, and the bigger model in the notebook shows it:
+The context length has nothing to do with how many numbers are in each vector. In fact, the machine has four separate settings, and in my small model they pair up by coincidence: two of them are 128, and two of them are 4. Each can be changed without the others, and the bigger model in the notebook shows it:
 
 | Setting | What it decides | My model | The bigger model |
 |---|---|---|---|
-| Card size (`n_embd`) | how many numbers are on every card: letter cards, position cards, and working cards alike | 128 | 384 |
+| Vector size (`n_embd`) | how many numbers are in every vector: token embeddings, position embeddings, and hidden states alike | 128 | 384 |
 | Number of positions (`block_size`) | how many letters it can see at once: the context length | 128 | 256 |
-| Number of heads (`n_head`) | how many separate queries each working card makes in attention | 4 | 6 |
+| Number of heads (`n_head`) | how many separate queries each hidden state makes in attention | 4 | 6 |
 | Number of blocks (`n_layer`) | how many blocks of attention and MLP | 4 | 6 |
 
-None of them depends on the text you type: a 3-letter row and a 128-letter row go through exactly the same 4 blocks of 4 heads. There are only two links between them. A position card must be as long as a letter card, because the two are added together, and the card size must divide evenly by the number of heads.
+None of them depends on the text you type: a 3-letter row and a 128-letter row go through exactly the same 4 blocks of 4 heads. There are only two links between them. A position embedding must be as long as a token embedding, because the two are added together, and the vector size must divide evenly by the number of heads.
 :::
 
 So why not simply give the machine thousands of positions? Because seeing further costs more in four ways:
 
-1. **More cards to learn.** Every extra position needs its own position card, and it has to be learned in training like every other card. The practice snippets have to be as long as the row, too, so that the machine actually practises using the far positions.
-2. **Much more expensive attention.** In attention, every working card matches its query against the key of every working card in an earlier position. Twice as many positions means about four times as many checks, and four times as much memory for the grid of attention. Ten times the positions means about a hundred times the checks.
+1. **More to learn.** Every extra position needs its own position embedding, and it has to be learned in training like every other parameter. The practice snippets have to be as long as the row, too, so that the machine actually practises using the far positions.
+2. **Much more expensive attention.** In attention, every hidden state matches its query against the key of every earlier position. Twice as many positions means about four times as many checks, and four times as much memory for the grid of attention. Ten times the positions means about a hundred times the checks.
 3. **Slower writing.** Every new letter is chosen by running the whole row through all four blocks, so a longer row makes every single letter slower to write.
 4. **Seeing is not the same as using.** A machine with more positions only gets better if it learns to use the far-away letters, and that needs practice text where letters far back really matter.
 
-This is the same limit you meet in chatbots, where it is called the context window and counted in tokens rather than letters. Today's models can see hundreds of thousands of tokens at once. They get there partly with better ways of marking positions than a fixed set of position cards, like the rotary position embeddings I tried in [MiniGPT (Part 5)](/posts/minigpt4/), and partly with cheaper kinds of attention, like the windowed attention in [MiniGPT (Part 7)](/posts/minigpt6/). Windows are usually mixed with some blocks of full attention, because, as Part 7's secret-word test shows, a window does not reach further back on its own.
+This is the same limit you meet in chatbots, where it is called the context window and counted in tokens rather than letters. Today's models can see hundreds of thousands of tokens at once. They get there partly with better ways of marking positions than a fixed table of position embeddings, like the rotary position embeddings I tried in [MiniGPT (Part 5)](/posts/minigpt4/), and partly with cheaper kinds of attention, like the windowed attention in [MiniGPT (Part 7)](/posts/minigpt6/). Windows are usually mixed with some blocks of full attention, because, as Part 7's secret-word test shows, a window does not reach further back on its own.
 
 ### Beyond the guessing game: tools, harnesses, and agents
 
@@ -897,20 +897,20 @@ A GPT can only guess the next piece of text, yet chatbots check the weather, rea
 Back at the start, I asked why the big models do not guess one letter at a time. There are three reasons, and attention explains the first one:
 
 - **The rows get longer, and attention gets much more expensive.** A piece of a word is about four letters of English on average, so the same text needs about four times as many positions if every letter has its own. In attention, every position checks every position before it, so four times the positions means about sixteen times the checks.
-- **The early blocks waste their time spelling.** With letters, the first blocks have to assemble `t`, `h`, `o`, `u`, `g`, `h`, `t` into a word before any meaning can start to build up. With a card for the whole word, the meaning is there from the start.
-- **But the pieces cannot be too big, either.** A card for every whole sentence would be useless: most sentences turn up only once, so their cards could never be tuned. Words and pieces of words are the balance.
+- **The early blocks waste their time spelling.** With letters, the first blocks have to assemble `t`, `h`, `o`, `u`, `g`, `h`, `t` into a word before any meaning can start to build up. With a token embedding for the whole word, the meaning is there from the start.
+- **But the pieces cannot be too big, either.** A token for every whole sentence would be useless: most sentences turn up only once, so their embeddings could never be tuned. Words and pieces of words are the balance.
 
 In [MiniGPT (Part 3)](/posts/minigpt2/), I swap MiniGPT's letters for pieces of words to see what difference it makes.
 
 ### We know the rules, not the result
 
-Everything in this introduction (the cards, attention, the MLP, the wheel) is a calculation that can be written down exactly. The notebook does all of it in a few hundred lines. What nobody can write down is what the trained dials *mean*. Nobody chose them: they grew. Working out what a trained model has actually learned is a research field of its own, called *interpretability*, and for big models it is mostly unsolved. In that sense a language model really is a black box: not because the machinery is secret, but because what the machinery learned was never written down by anyone. Here is one small peek inside.
+Everything in this introduction (the embeddings, attention, the MLP, the wheel) is a calculation that can be written down exactly. The notebook does all of it in a few hundred lines. What nobody can write down is what the trained parameters *mean*. Nobody chose them: they grew. Working out what a trained model has actually learned is a research field of its own, called *interpretability*, and for big models it is mostly unsolved. In that sense a language model really is a black box: not because the machinery is secret, but because what the machinery learned was never written down by anyone. Here is one small peek inside.
 
-### A peek inside: which cards end up alike?
+### A peek inside: which letters end up alike?
 
-Nobody tells the machine that `A` and `a` are the same letter, or that a full stop and a question mark do a similar job. So once training has tuned the cards, which ones end up looking alike? I compared every card in my trained model with every other card. A score of 1 would mean two cards carry identical numbers, 0 means they are unrelated, and a negative score means they point opposite ways.
+Nobody tells the machine that `A` and `a` are the same letter, or that a full stop and a question mark do a similar job. So once training has tuned the token embeddings, which ones end up looking alike? I compared every letter's token embedding in my trained model with every other letter's. A score of 1 would mean two embeddings carry identical numbers, 0 means they are unrelated, and a negative score means they point opposite ways.
 
-| Card | The cards most like it |
+| Letter | The letters whose embeddings are most like it |
 |---|---|
 | `a` | `A` (0.50), then `$`, `E`, `u`, `o` |
 | `t` | `T` (0.61), then `d`, `w`, `,` |
@@ -921,16 +921,16 @@ Nobody tells the machine that `A` and `a` are the same letter, or that a full st
 
 Three things jumped out at me:
 
-- **Capital and lowercase letters pair up.** Across all 26 letters, a capital and its lowercase card score 0.46 on average, while two cards picked at random score about 0. The machine worked out for itself that `A` and `a` are, in some sense, the same letter.
+- **Capital and lowercase letters pair up.** Across all 26 letters, a capital and its lowercase letter score 0.46 on average, while two letters picked at random score about 0. The machine worked out for itself that `A` and `a` are, in some sense, the same letter.
 - **Punctuation splits into two families.** The comma sits right next to the semicolon (0.83), with the colon nearby: marks that mean "pause". The full stop sits next to the question mark (0.83) and the exclamation mark (0.80): marks that mean "this sentence is over".
-- **The vowels are a weaker family.** Vowel cards are only slightly alike (0.14 on average), and slightly unlike the consonants (−0.06). Look at the `a` row above: apart from an odd `$`, the cards most like `a` are other vowels.
+- **The vowels are a weaker family.** Vowels' embeddings are only slightly alike (0.14 on average), and slightly unlike the consonants (−0.06). Look at the `a` row above: apart from an odd `$`, the embeddings most like `a` are other vowels'.
 
-Here are all 65 cards on one map, squashed from 128 numbers down to 2 so they fit on a page:
+Here are all 65 token embeddings on one map, squashed from 128 numbers down to 2 so they fit on a page:
 
 ![](assets/images/minigpt/flashcard-map.svg)
 *The punctuation marks gather on the right, the vowels drift towards the top, and most capitals sit on the left. The pairing of capitals with their lowercase letters does not survive the squash, but it is there in the full 128 numbers*
 
-None of this was programmed in. The only instruction the machine was ever given was to get better at guessing the next letter, and these families of cards are what that instruction grew. [The next post](/posts/minigpt-grown/) shows how.
+None of this was programmed in. The only instruction the machine was ever given was to get better at guessing the next letter, and these families of letters are what that instruction grew. [The next post](/posts/minigpt-grown/) shows how.
 
 :::no-dumb-questions
 These are the questions I had to ask before any of this made sense to me.
@@ -939,27 +939,27 @@ These are the questions I had to ask before any of this made sense to me.
 
 A: No. Ask it to finish Romeo's famous line, *But soft, what light through yonder windo…*, and it gives the right letter, `w`, only 7.8%. It prefers `m` and `n`. The line appears exactly once in the million letters it learned from, and *window* only 13 times in all, so a small machine that has read one short book does not know Shakespeare the way you do.
 
-**Q: So where do the cards come from, both the letter cards and the position cards? Who writes the numbers in?**
+**Q: So where do the embeddings come from, both the token embeddings and the position embeddings? Who writes the numbers in?**
 
-A: Nobody. Both sets of cards come from the same place. The model creates them filled with small random numbers, and the guessing game tunes them like every other dial, as [the next post](/posts/minigpt-grown/) shows. During training, every card changes a little on every step: the `g` card, the position 3 card, and all the rest. Once training stops, both sets of cards are frozen.
+A: Nobody. Both tables come from the same place. The model creates them filled with small random numbers, and the guessing game tunes them like every other parameter, as [the next post](/posts/minigpt-grown/) shows. During training, every embedding changes a little on every step: the `g` token embedding, the position 3 embedding, and all the rest. Once training stops, both tables are frozen.
 
 **Q: I thought language models were neural networks, like the one in [Machine Learning (Part 9)](/posts/machinelearning9/)?**
 
-A: They are. Every part of this machine is a neural network in that sense: lots of dials, tuned by training. The MLP is even the same kind of two-layer network as my handwritten-digit reader. What is new is attention. The digit reader took in all 784 pixels of one picture at once. A language model gets a row of letters of any length and works on each position's working card separately, so it needs attention to let the working cards share information. Put attention in front of each MLP, stack four of those blocks, and you have a GPT.
+A: They are. Every part of this machine is a neural network in that sense: lots of parameters, tuned by training. The MLP is even the same kind of two-layer network as my handwritten-digit reader. What is new is attention. The digit reader took in all 784 pixels of one picture at once. A language model gets a row of letters of any length and works on each position's hidden state separately, so it needs attention to let the hidden states share information. Put attention in front of each MLP, stack four of those blocks, and you have a GPT.
 
-**Q: Blocks, heads, queries, keys, and recipes is such an odd design. How did anyone come up with it, and when did people know it would work?**
+**Q: Blocks, heads, queries, keys, and values is such an odd design. How did anyone come up with it, and when did people know it would work?**
 
-A: Mostly, nobody designed it from scratch: the 2017 authors put together pieces that already worked. Attention was invented in 2014 for translation, by [Bahdanau, Cho, and Bengio](https://arxiv.org/abs/1409.0473), to let a network look back at the most relevant words of the sentence it was translating. Queries, keys, and values came from earlier work on [memory networks](https://arxiv.org/abs/1503.08895), which borrowed the language of looking things up. Adding back onto the working cards came from [ResNet](https://arxiv.org/abs/1512.03385) in 2015, and normalising from [layer normalisation](https://arxiv.org/abs/1607.06450) in 2016. The new idea in [Attention Is All You Need](https://arxiv.org/abs/1706.03762) is its title: keep only attention, and drop the older networks' habit of reading one position at a time. Attention looks at every position at once, so the whole row can be worked on in parallel, which made it much faster to train. Several heads, the √32 shrink, and the position signals were engineering choices, kept because they worked in experiments, not derived from any theory.
+A: Mostly, nobody designed it from scratch: the 2017 authors put together pieces that already worked. Attention was invented in 2014 for translation, by [Bahdanau, Cho, and Bengio](https://arxiv.org/abs/1409.0473), to let a network look back at the most relevant words of the sentence it was translating. Queries, keys, and values came from earlier work on [memory networks](https://arxiv.org/abs/1503.08895), which borrowed the language of looking things up. Adding back onto the hidden states came from [ResNet](https://arxiv.org/abs/1512.03385) in 2015, and normalising from [layer normalisation](https://arxiv.org/abs/1607.06450) in 2016. The new idea in [Attention Is All You Need](https://arxiv.org/abs/1706.03762) is its title: keep only attention, and drop the older networks' habit of reading one position at a time. Attention looks at every position at once, so the whole row can be worked on in parallel, which made it much faster to train. Several heads, the √32 shrink, and the position signals were engineering choices, kept because they worked in experiments, not derived from any theory.
 
 It worked for translation straight away: the paper beat the best English-to-German system after 3.5 days of training on 8 GPUs, a fraction of the earlier cost. That it was a general-purpose machine only became clear over the next three years. In 2018, GPT-1 and [BERT](https://arxiv.org/abs/1810.04805) took over most language tests; in 2019, GPT-2 wrote surprisingly coherent text; in 2020, [scaling laws](https://arxiv.org/abs/2001.08361) and [GPT-3](https://arxiv.org/abs/2005.14165) showed it kept improving as it grew, and the [Vision Transformer](https://arxiv.org/abs/2010.11929) showed the same design reading pictures. The authors themselves wrote about translation.
 
-**Q: So is the guess just the letter card that the last working card is closest to?**
+**Q: So is the guess just the letter whose token embedding the last hidden state is closest to?**
 
-A: Not in my model, although it is a good guess about how it might work. I tried it. Compared with the 65 letter cards, the last working card for `goo` is closest to `n`, `E`, and `e`, and `d` comes 47th out of 65. Compared with the 65 answer cards, `d` comes first by a long way (0.63, against 0.25 for the next best). That is why the machine needs its own answer cards: describing a letter going in and predicting a letter coming out turned out to be different jobs. Many other models, including GPT-2 and the notebook's own stronger model in [the next post](/posts/minigpt-grown/), do use the letter cards as the answer cards too. That is called *weight tying*, and it saves a whole set of numbers. My model keeps the two sets separate, as the notebook's small model does.
+A: Not in my model, although it is a good guess about how it might work. I tried it. Compared with the 65 token embeddings, the last hidden state for `goo` is closest to `n`, `E`, and `e`, and `d` comes 47th out of 65. Compared with the 65 rows of `lm_head`, `d` comes first by a long way (0.63, against 0.25 for the next best). That is why the machine needs its own `lm_head`: describing a letter going in and predicting a letter coming out turned out to be different jobs. Many other models, including GPT-2 and the notebook's own stronger model in [the next post](/posts/minigpt-grown/), do use the token embeddings as the rows of `lm_head` too. That is called *weight tying*, and it saves a whole table of numbers. My model keeps the two tables separate, as the notebook's small model does.
 
 **Q: Is "added" really just adding? What if a total gets too big?**
 
-A: Yes, it is plain addition: the first number on the `g` card plus the first number on the position 1 card, then the second plus the second, and so on, 128 times. The result is a new card, so the two `o`s in `goo` start the blocks with different numbers. Nothing overflows, because the numbers are tiny. The biggest number on any card in my model is 0.19, and the biggest total of any letter card plus any position card is 0.27, while the computer can store numbers up to about 3 followed by 38 zeros. The normalisation before each step in the blocks keeps the numbers in a sensible range after that, too.
+A: Yes, it is plain addition: the first number of the `g` token embedding plus the first number of the position 1 embedding, then the second plus the second, and so on, 128 times. The result is a new vector, so the two `o`s in `goo` start the blocks with different numbers. Nothing overflows, because the numbers are tiny. The biggest number in any embedding in my model is 0.19, and the biggest total of any token embedding plus any position embedding is 0.27, while the computer can store numbers up to about 3 followed by 38 zeros. The normalisation before each step in the blocks keeps the numbers in a sensible range after that, too.
 
 **Q: Could I give the machine more positions, so that it can see more letters?**
 
@@ -967,17 +967,17 @@ A: Yes, but it costs. The number of positions is the context length, and [How mu
 :::
 
 :::pencil Who does what?
-Before you look at the decoder below, match each everyday comparison on the left with its name in the notebook on the right.
+Before you look at the decoder below, match each name on the left with what it is on the right.
 
-| Everyday comparison | Notebook name |
+| Name | What it is |
 |---|---|
-| 1. a letter's flashcard | A. the *causal mask* |
-| 2. the position card | B. the query, key, and value *projections* |
-| 3. the answer cards | C. an *embedding* |
-| 4. "only look at earlier positions" | D. *sampling* |
-| 5. the row of working cards, as every block rewrites it | E. the *language-model head* (`lm_head`) |
-| 6. spinning the wheel | F. the *position embedding* |
-| 7. the recipes that make query, key, and value cards | G. the *residual stream* |
+| 1. token embedding | A. the rule "only look at earlier positions" |
+| 2. position embedding | B. the tables of weights that make queries, keys, and values |
+| 3. `lm_head` | C. a letter's row of 128 learned numbers |
+| 4. causal mask | D. spinning the wheel |
+| 5. residual stream | E. the 65 rows that give every letter a score |
+| 6. sampling | F. a position's row of 128 learned numbers |
+| 7. query, key, and value projections | G. the hidden states, as every block adds to them |
 
 :::answer
 1 is C, 2 is F, 3 is E, 4 is A, 5 is G, 6 is D, and 7 is B.
@@ -988,36 +988,37 @@ Before you look at the decoder below, match each everyday comparison on the left
 
 The terms for the whole series are collected in one table, [the series glossary](/posts/minigpt6/#the-series-glossary).
 
-Here is each everyday comparison from this introduction, next to the name the notebook uses. I come back to each one as the notebook reaches it. The words for how the machine is trained are in [the next post](/posts/minigpt-grown/).
+Here is each idea from this introduction in plain words, next to its name in the code and in papers. I come back to each one as the notebook reaches it. The words for how the machine is trained are in [the next post](/posts/minigpt-grown/).
 
-| What I called it | What the experts call it |
+| In plain words | What the experts call it |
 |---|---|
 | the guessing game | next-token prediction, or language modelling |
 | a letter: any of the 65 symbols, even the space and the comma | a *character* |
 | the thing being guessed: a letter here, a word or piece of a word in big models | a *token* |
 | the 65 letters | the *vocabulary* |
 | the chances for every letter | a probability distribution, produced by a *softmax* |
-| a letter's flashcard | its *token embedding*: a vector of 128 numbers |
-| the position card | the *position embedding* |
-| a working card before block 1: a letter card plus its position card | the *input embedding* |
+| a letter's row of 128 learned numbers | its *token embedding* (`token_embedding`): a *vector* |
+| a position's row of 128 learned numbers | the *position embedding* (`position_embedding`) |
+| a token embedding plus its position embedding, before block 1 | the *input embedding* |
 | the number of positions: how many letters it can see at once | the *context length*, or *context window* (`block_size`) |
 | "only look at earlier positions" | the *causal mask* |
-| the query card, the key card, and the value card | the *query*, the *key*, and the *value* vectors |
-| the three recipes that make them | the query, key, and value *projections* (`self.query`, `self.key`, `self.value`) |
-| keeping the key and value cards instead of remaking them | the *KV cache* |
+| what attention matches and collects | the *query*, the *key*, and the *value* vectors |
+| the three tables of weights that make them | the query, key, and value *projections* (`self.query`, `self.key`, `self.value`) |
+| keeping the keys and values instead of remaking them | the *KV cache* |
 | add, never replace | the *residual connection* |
-| the row of working cards, as every block rewrites it | the *residual stream* |
-| a working card after a block | a *hidden state* |
-| normalising a working card before attention and before the MLP | *layer normalisation*, or *LayerNorm* |
-| the dials | the *parameters*, or *weights* |
+| the hidden states, as every block adds to them | the *residual stream* |
+| a position's vector after a block | a *hidden state* |
+| normalising a hidden state before attention and before the MLP | *layer normalisation*, or *LayerNorm* |
+| every fixed number that training set | the *parameters*, or *weights* |
 | spinning the wheel of chances | *sampling* |
 | keeping the biggest k slices | *top-k* sampling |
 | keeping the biggest slices until they add up to p | *top-p*, or *nucleus*, sampling |
-| the 65 answer cards | the *language-model head* (`lm_head`), or *output layer* |
+| the 65 rows that give every letter a score | the *language-model head* (`lm_head`), or *output layer* |
+| the scores, before softmax | the *logits* |
 | a request the model writes for a program to carry out | a *tool call*, or *function call* |
 | the program around the model | the *harness* |
 | a harness letting the model act by itself for many steps | an *agent* |
-| working out what the trained dials mean | *interpretability* |
+| working out what the trained parameters mean | *interpretability* |
 
 ## Opening the notebook
 
@@ -1039,37 +1040,37 @@ The commands are joined with `&&`, so they paste into a terminal as one command,
 
 ## Notebook part 1: a minimal GPT model
 
-The notebook comes in parts of its own, and builds the model before it loads any data. Its part 1 defines every piece of a small GPT (the cards, attention, the MLPs, and the final step that turns a card into chances) and checks that a batch of random letters passes through it.
+The notebook comes in parts of its own, and builds the model before it loads any data. Its part 1 defines every piece of a small GPT (the embeddings, attention, the MLPs, and the final step that turns a hidden state into chances) and checks that a batch of random letters passes through it.
 
-Here is how those pieces fit together, next to the digit-reading network from [Machine Learning (Part 9)](/posts/machinelearning9/). That network was two *dense layers* in a row: recipes of the same kind as this post's, where every number that comes out is a weighted mix of every number that goes in. MiniGPT's MLP is exactly that kind of two-layer network. Attention is the new part, slotted in front of it. Four of those blocks are stacked, and one more dense layer at the end turns each working card into 65 chances for the letter after it.
+Here is how those pieces fit together, next to the digit-reading network from [Machine Learning (Part 9)](/posts/machinelearning9/). That network was two *dense layers* in a row: tables of weights of the same kind as this post's, where every number that comes out is a weighted mix of every number that goes in. MiniGPT's MLP is exactly that kind of two-layer network. Attention is the new part, slotted in front of it. Four of those blocks are stacked, and one more dense layer at the end, `lm_head`, turns each hidden state into 65 chances for the letter after it.
 
 ![](assets/images/minigpt/mnist-vs-minigpt.svg)
 *The MLP inside every MiniGPT block is the same kind of two-layer network as my MNIST digit classifier. What is new is the attention step in front of it*
 
-One thing helped me read the code. The notebook's Python is the *recipe* for the machine: it says what shape every card and grid is, and how they are combined. It does not contain a single trained number. Run it untrained and you get the same machine, filled with random numbers. The trained numbers live in a separate file that training writes out, a *checkpoint*. For my exhibit it is `exhibit.pt`, 3.4 MB of named lists of numbers, and you can download it: [Run my model yourself](#run-my-model-yourself) shows how. The live demo in this post runs the same numbers, copied into a file called `weights.bin`.
+One thing helped me read the code. The notebook's Python is the *blueprint* for the machine: it says what shape every vector and table is, and how they are combined. It does not contain a single trained number. Run it untrained and you get the same machine, filled with random numbers. The trained numbers live in a separate file that training writes out, a *checkpoint*. For my exhibit it is `exhibit.pt`, 3.4 MB of named lists of numbers, and you can download it: [Run my model yourself](#run-my-model-yourself) shows how. The live demo in this post runs the same numbers, copied into a file called `weights.bin`.
 
 :::under-the-hood Where every fixed number lives
 Every fixed thing in this post is one named entry in the checkpoint. The names come from the notebook's code, and the four blocks each have their own copy of the block entries, named `blocks.0` to `blocks.3`.
 
 | In this post | Name in the checkpoint | Shape | Numbers |
 |---|---|---|---|
-| the letter cards | `token_embedding.weight` | 65 × 128 | 8,320 |
-| the position cards | `position_embedding.weight` | 128 × 128 | 16,384 |
+| the token embeddings | `token_embedding.weight` | 65 × 128 | 8,320 |
+| the position embeddings | `position_embedding.weight` | 128 × 128 | 16,384 |
 | **in each of the 4 blocks:** | | | |
 | normalise before attention | `ln1.weight`, `ln1.bias` | 128 + 128 | 256 |
-| the query recipe | `attn.query.weight`, `attn.query.bias` | 128 × 128 + 128 | 16,512 |
-| the key recipe | `attn.key.weight`, `attn.key.bias` | 128 × 128 + 128 | 16,512 |
-| the value recipe | `attn.value.weight`, `attn.value.bias` | 128 × 128 + 128 | 16,512 |
+| the query weights | `attn.query.weight`, `attn.query.bias` | 128 × 128 + 128 | 16,512 |
+| the key weights | `attn.key.weight`, `attn.key.bias` | 128 × 128 + 128 | 16,512 |
+| the value weights | `attn.value.weight`, `attn.value.bias` | 128 × 128 + 128 | 16,512 |
 | mixing the four heads' results | `attn.proj.weight`, `attn.proj.bias` | 128 × 128 + 128 | 16,512 |
 | normalise before the MLP | `ln2.weight`, `ln2.bias` | 128 + 128 | 256 |
 | the MLP | `mlp.fc1` (128 → 512) and `mlp.fc2` (512 → 128), weights and biases | | 131,712 |
 | **after block 4:** | | | |
 | the final normalisation | `final_ln.weight`, `final_ln.bias` | 128 + 128 | 256 |
-| the answer cards | `lm_head.weight` | 65 × 128 | 8,320 |
-| the answer cards' biases | `lm_head.bias` | 65 | 65 |
+| the rows of `lm_head` | `lm_head.weight` | 65 × 128 | 8,320 |
+| `lm_head`'s biases | `lm_head.bias` | 65 | 65 |
 | **total** | | | **826,433** |
 
-What is *not* in the checkpoint matters just as much: the working cards, the query, key, and value cards, the shares of attention, and the chances. None of them is stored anywhere. The code works them out fresh, from the text in front of it, every time the machine runs. The checkpoint holds everything fixed, and the code makes everything that changes.
+What is *not* in the checkpoint matters just as much: the hidden states, the queries, keys, and values, the shares of attention, and the chances. None of them is stored anywhere. The code works them out fresh, from the text in front of it, every time the machine runs. The checkpoint holds everything fixed, and the code makes everything that changes.
 :::
 
 The first code cell sits directly under the notebook's part 1 heading and sets up everything the rest of the notebook depends on. This is how it looked after I ran it:
@@ -1079,7 +1080,7 @@ The first code cell sits directly under the notebook's part 1 heading and sets u
 
 Every line in that cell has a job:
 
-- **`import torch`** brings in PyTorch itself. Its central object is the *tensor*: an n-dimensional array, like a NumPy array, that can also live on a GPU and that records the operations applied to it, so that during training PyTorch can work out which way to turn every dial, the *gradients*, automatically (*autograd*). [The next post](/posts/minigpt-grown/#how-does-it-know-which-way-to-nudge) explains how. Every number the model stores or computes is held in a tensor.
+- **`import torch`** brings in PyTorch itself. Its central object is the *tensor*: an n-dimensional array, like a NumPy array, that can also live on a GPU and that records the operations applied to it, so that during training PyTorch can work out which way to turn every parameter, the *gradients*, automatically (*autograd*). [The next post](/posts/minigpt-grown/#how-does-it-know-which-way-to-nudge) explains how. Every number the model stores or computes is held in a tensor.
 - **`import torch.nn as nn`** brings in the neural-network building blocks. The notebook builds its GPT from `nn.Module` (the base class that every layer, and the model itself, inherits from), `nn.Embedding` (the token and position lookup tables), `nn.Linear`, `nn.LayerNorm`, `nn.GELU`, `nn.Dropout`, and `nn.ModuleList`, which holds the stack of Transformer blocks.
 - **`import torch.nn.functional as F`** brings in stateless versions of the same operations: plain functions with no learnable weights of their own. The notebook uses only two of them: `F.softmax`, which turns attention scores into shares, and `F.cross_entropy`, which only training uses.
 - **`from dataclasses import dataclass`** comes from the Python standard library, not from PyTorch. The notebook imports it here so that the next cell, under 1.1, can declare the model's settings as a dataclass.
@@ -1103,11 +1104,11 @@ Each field controls one dimension of the model:
 - **`block_size`** is the context length: the maximum number of letters the model can see at once. It sets the size of the position-embedding table and of the causal mask, so the model cannot look further back than this.
 - **`vocab_size`** is the number of distinct tokens. It sets the number of rows in the token-embedding table and the number of scores the output layer produces at each position. The default of 65 is a placeholder for testing the model before any data is loaded. It happens to match the 65 letters in Tiny Shakespeare, and the later cells pass in the real value calculated from the text.
 - **`n_layer`** is the number of Transformer blocks stacked on top of one another.
-- **`n_head`** is the number of attention heads in each block. The attention code checks that `n_embd` divides evenly by `n_head`, because each working card's query, key, and value are cut into one equal piece per head: 128 / 4 gives 32 numbers per head.
-- **`n_embd`** is the width of the model: the length of every card, and so of the vector that represents each position at every layer. Most of the parameter count grows with the square of this number.
+- **`n_head`** is the number of attention heads in each block. The attention code checks that `n_embd` divides evenly by `n_head`, because each hidden state's query, key, and value are cut into one equal piece per head: 128 / 4 gives 32 numbers per head.
+- **`n_embd`** is the width of the model: the length of every embedding, and so of the vector that represents each position at every layer. Most of the parameter count grows with the square of this number.
 - **`dropout`** randomly switches off some numbers during training, to make it harder for the model to memorise its text. When running, `model.eval()` turns it off.
 
-It helps me to picture the data inside the model as a spreadsheet, with one row per position and one column per number on its working card:
+It helps me to picture the data inside the model as a spreadsheet, with one row per position and one column per number in its hidden state:
 
 ![](assets/images/minigpt/model-spreadsheet.svg)
 *`block_size` limits the rows (letters), `n_embd` sets the columns (numbers per letter), and `n_layer` is how many times the sheet is processed*
@@ -1116,21 +1117,21 @@ My exhibit uses exactly these defaults, so `GPTConfig()` with no arguments build
 
 ## The code, in the order the machine runs
 
-The notebook defines its classes bottom-up: attention in 1.2, the MLP in 1.3, one block in 1.4, and the whole model in 1.5. The machine *runs* the other way round, top-down, and that is the order of the five steps. So instead of following the cells, I follow one new letter after `goo` through the code, and point out where each card from the introduction lives. These are the notebook's own lines, with its comments replaced by mine. Two kinds of line do nothing while the machine is writing, so I leave them out: the `dropout` lines, which `model.eval()` switches off, and the training-only lines that work out the *loss*, the score that training tries to lower, explained in [the next post](/posts/minigpt-grown/#keeping-score-the-surprise-score).
+The notebook defines its classes bottom-up: attention in 1.2, the MLP in 1.3, one block in 1.4, and the whole model in 1.5. The machine *runs* the other way round, top-down, and that is the order of the five steps. So instead of following the cells, I follow one new letter after `goo` through the code, and point out where each piece from the introduction lives. These are the notebook's own lines, with its comments replaced by mine. Two kinds of line do nothing while the machine is writing, so I leave them out: the `dropout` lines, which `model.eval()` switches off, and the training-only lines that work out the *loss*, the score that training tries to lower, explained in [the next post](/posts/minigpt-grown/#keeping-score-the-surprise-score).
 
-Every card in the introduction is either a fixed set of numbers stored on the model, or a variable that the code works out while it runs:
+Every piece in the introduction is either a fixed set of numbers stored on the model, or a variable that the code works out while it runs:
 
 | In the introduction | In the code | Fixed or changing? | Shape for `goo` |
 |---|---|---|---|
 | the letter IDs | `idx` | changing | 1 × 3 |
-| all 65 letter cards | `model.token_embedding.weight`; row 45 is the `g` card | fixed | 65 × 128 |
-| all 128 position cards | `model.position_embedding.weight` | fixed | 128 × 128 |
-| the working cards | `x`, inside `MiniGPT.forward` | changing | 1 × 3 × 128 |
-| block 1's query recipe | `model.blocks[0].attn.query.weight` and `.bias` | fixed | 128 × 128 and 128 |
-| the query, key, and value cards | `q`, `k`, and `v`, inside `CausalSelfAttention.forward` | changing | 1 × 3 × 128 each |
+| all 65 token embeddings | `model.token_embedding.weight`; row 45 is the `g` embedding | fixed | 65 × 128 |
+| all 128 position embeddings | `model.position_embedding.weight` | fixed | 128 × 128 |
+| the hidden states | `x`, inside `MiniGPT.forward` | changing | 1 × 3 × 128 |
+| block 1's query weights | `model.blocks[0].attn.query.weight` and `.bias` | fixed | 128 × 128 and 128 |
+| the queries, keys, and values | `q`, `k`, and `v`, inside `CausalSelfAttention.forward` | changing | 1 × 3 × 128 each |
 | the shares of attention | `attn` | changing | 1 × 4 × 3 × 3 |
-| all 65 answer cards | `model.lm_head.weight`; row 42 is the `d` answer card | fixed | 65 × 128 |
-| the answer cards' biases | `model.lm_head.bias` | fixed | 65 |
+| all 65 rows of `lm_head` | `model.lm_head.weight`; row 42 is the `d` row | fixed | 65 × 128 |
+| `lm_head`'s biases | `model.lm_head.bias` | fixed | 65 |
 | the scores | `logits` | changing | 1 × 3 × 65 |
 | the chances | `probs` | changing | 1 × 65 |
 
@@ -1147,40 +1148,40 @@ idx_cond = idx[:, -model.config.block_size:]
 logits, _ = model(idx_cond)
 ```
 
-`idx` holds the letter IDs written so far: `[[45, 53, 53]]` for `goo`. This is step 1. The first line is the context limit from [How much can it see at once?](#how-much-can-it-see-at-once-the-context-limit): it keeps only the last `block_size` letters, because there are no position cards beyond that. The second line runs the whole model, which calls `MiniGPT.forward`.
+`idx` holds the letter IDs written so far: `[[45, 53, 53]]` for `goo`. This is step 1. The first line is the context limit from [How much can it see at once?](#how-much-can-it-see-at-once-the-context-limit): it keeps only the last `block_size` letters, because there are no position embeddings beyond that. The second line runs the whole model, which calls `MiniGPT.forward`.
 
-### Letter cards, position cards, and working cards: `MiniGPT.forward` (cell 1.5)
+### Token embeddings, position embeddings, and hidden states: `MiniGPT.forward` (cell 1.5)
 
 ```python
 # 1 text, 3 letters
 B, T = idx.shape
 # the positions: 0, 1, 2
 pos = torch.arange(0, T)
-# look up a letter card for each ID
+# look up a token embedding for each ID
 tok_emb = self.token_embedding(idx)
-# look up a position card for each position
+# look up a position embedding for each position
 pos_emb = self.position_embedding(pos)
-# add them: the working cards
+# add them: the input embeddings, the first hidden states
 x = tok_emb + pos_emb
 ```
 
 This is step 2, line for line. Python counts from 0, so position 1 in the introduction is row 0 in the code.
 
-`self.token_embedding` is the supply of letter cards. The model's `__init__` creates it as `nn.Embedding(config.vocab_size, config.n_embd)`: a table with 65 rows, one per letter, and 128 columns. Looking up a card is picking a row: `g` picks row 45, and both `o`s pick row 53. `self.position_embedding` is the same kind of table, `nn.Embedding(config.block_size, config.n_embd)`, with one row per position. Before training, `__init__` fills both tables with small random numbers, with a standard deviation of 0.02, and training then tunes them.
+`self.token_embedding` is the table of token embeddings. The model's `__init__` creates it as `nn.Embedding(config.vocab_size, config.n_embd)`: a table with 65 rows, one per letter, and 128 columns. Looking up an embedding is picking a row: `g` picks row 45, and both `o`s pick row 53. `self.position_embedding` is the same kind of table, `nn.Embedding(config.block_size, config.n_embd)`, with one row per position. Before training, `__init__` fills both tables with small random numbers, with a standard deviation of 0.02, and training then tunes them.
 
 ![](assets/images/minigpt/embedding-lookup.svg)
-*Each letter's ID picks one row of the table, and that row's 128 numbers become the letter's card. Both copies of `o` get the same row*
+*Each letter's ID picks one row of the table, and that row's 128 numbers become the letter's token embedding. Both copies of `o` get the same row*
 
-`x = tok_emb + pos_emb` is where the working cards are born. `x` holds one working card per position, 128 numbers each, and from here to the end of `forward`, `x` *is* the row of working cards. The code never makes a new variable for them: every block overwrites `x`.
+`x = tok_emb + pos_emb` is where the hidden states are born. `x` holds one hidden state per position, 128 numbers each, and from here to the end of `forward`, `x` *is* the hidden states. The code never makes a new variable for them: every block overwrites `x`.
 
 ```python
 # the four blocks, in order
 for block in self.blocks:
-    # each one rewrites the working cards
+    # each one rewrites the hidden states
     x = block(x)
 ```
 
-This is step 3. `self.blocks` is an `nn.ModuleList` holding four `TransformerBlock`s, one for each of `n_layer = 4`, and each with its own fixed recipes. The loop is [Four blocks in a row](#four-blocks-in-a-row): block 1's output is block 2's input, because it is literally the same variable.
+This is step 3. `self.blocks` is an `nn.ModuleList` holding four `TransformerBlock`s, one for each of `n_layer = 4`, and each with its own fixed weights. The loop is [Four blocks in a row](#four-blocks-in-a-row): block 1's output is block 2's input, because it is literally the same variable.
 
 ### One block: `TransformerBlock.forward` (cell 1.4)
 
@@ -1191,32 +1192,32 @@ x = x + self.attn(self.ln1(x))
 x = x + self.mlp(self.ln2(x))
 ```
 
-These two lines are a whole block. Read from the inside out, the first one normalises every working card (`self.ln1`, a *layer normalisation*), runs attention (`self.attn`), and adds what attention returns onto the working cards (`x + …`). The second does the same with the MLP. The `x +` is "add, never replace", the *residual connection*. Normalising *before* each step, rather than after, is called *pre-LayerNorm*, and it tends to train more stably as models get deeper.
+These two lines are a whole block. Read from the inside out, the first one normalises every hidden state (`self.ln1`, a *layer normalisation*), runs attention (`self.attn`), and adds what attention returns onto the hidden states (`x + …`). The second does the same with the MLP. The `x +` is "add, never replace", the *residual connection*. Normalising *before* each step, rather than after, is called *pre-LayerNorm*, and it tends to train more stably as models get deeper.
 
 ### Attention: `CausalSelfAttention` (cell 1.2)
 
 ![](assets/images/minigpt/causal-self-attention.png)
-*I ran the 1.2 cell. The top of the class, shown here, is `__init__`, which creates the recipes and the causal mask*
+*I ran the 1.2 cell. The top of the class, shown here, is `__init__`, which creates the weights and the causal mask*
 
-Like every part of the model, the class has two halves. `__init__` runs once, when the model is built, and creates the fixed recipes. `forward` runs every time, and uses them.
+Like every part of the model, the class has two halves. `__init__` runs once, when the model is built, and creates the fixed weights. `forward` runs every time, and uses them.
 
-`__init__` creates four `nn.Linear(128, 128)` layers. Three of them are the recipes from [Where the scratch cards come from](#where-the-scratch-cards-come-from): `self.query`, `self.key`, and `self.value`. The fourth, `self.proj`, mixes the four heads' results at the end. Each holds a 128 × 128 grid of weights and 128 biases, 16,512 numbers, so attention holds 66,048 in all. `__init__` also builds the causal mask, the "only earlier positions" rule, as a triangle of `True` and `False` values. It stores the mask with `register_buffer`, so the mask is saved with the model, but training never changes it.
+`__init__` creates four `nn.Linear(128, 128)` layers. Three of them are the tables of weights from [Where the queries, keys and values come from](#where-the-queries-keys-and-values-come-from): `self.query`, `self.key`, and `self.value`. The fourth, `self.proj`, mixes the four heads' results at the end. Each holds a 128 × 128 grid of weights and 128 biases, 16,512 numbers, so attention holds 66,048 in all. `__init__` also builds the causal mask, the "only earlier positions" rule, as a triangle of `True` and `False` values. It stores the mask with `register_buffer`, so the mask is saved with the model, but training never changes it.
 
 ![](assets/images/minigpt/attention-mask.svg)
-*The mask, drawn out for eight positions. Each row is a working card; the filled cells are the positions it may listen to*
+*The mask, drawn out for eight positions. Each row is a position; the filled cells are the positions it may listen to*
 
-Then `forward` runs attention, in three stages. First, it makes the scratch cards:
+Then `forward` runs attention, in three stages. First, it makes the queries, keys, and values:
 
 ```python
-# 1 text, 3 working cards, 128 numbers
+# 1 text, 3 hidden states, 128 numbers
 B, T, C = x.shape
-# a query card for every working card
+# a query for every hidden state
 q = self.query(x)
-# a key card for every working card
+# a key for every hidden state
 k = self.key(x)
-# a value card for every working card
+# a value for every hidden state
 v = self.value(x)
-# cut each card into 4 pieces of 32
+# cut each one into 4 pieces of 32
 q = q.view(B, T, self.n_head, self.head_dim)
 k = k.view(B, T, self.n_head, self.head_dim)
 v = v.view(B, T, self.n_head, self.head_dim)
@@ -1226,7 +1227,7 @@ k = k.transpose(1, 2)
 v = v.transpose(1, 2)
 ```
 
-`self.query(x)` runs the query recipe on every working card at once: each of the 128 numbers on each query card is a weighted mix of all 128 numbers on its working card, plus a bias. `view` cuts each 128-number card into four 32-number pieces, one per head, and `transpose(1, 2)` regroups them so that each head gets its own stack of pieces and all four heads can run side by side.
+`self.query(x)` applies the query weights to every hidden state at once: each of the 128 numbers of each query is a weighted mix of all 128 numbers of its hidden state, plus a bias. `view` cuts each 128-number vector into four 32-number pieces, one per head, and `transpose(1, 2)` regroups them so that each head gets its own stack of pieces and all four heads can run side by side.
 
 Second, it matches and shares out:
 
@@ -1243,12 +1244,12 @@ scores = scores.masked_fill(mask == False, float("-inf"))
 attn = F.softmax(scores, dim=-1)
 ```
 
-`q @ k.transpose(-2, -1)` is the multiply-and-add between every query card and every key card, in one go: for each head, a 3 × 3 grid of scores. For working card 3 in head 1 of block 1, the row is −2.19, 15.60, and −3.62, the numbers from [Queries, keys and values, with real numbers](#queries-keys-and-values-with-real-numbers). `masked_fill` writes minus infinity into every score for a later position, and softmax turns minus infinity into exactly 0, so later positions get no attention at all. `attn` holds the shares: 4.0%, 92.9%, and 3.1% in that row.
+`q @ k.transpose(-2, -1)` is the dot product between every query and every key, in one go: for each head, a 3 × 3 grid of scores. For hidden state 3 in head 1 of block 1, the row is −2.19, 15.60, and −3.62, the numbers from [Queries, keys and values, with real numbers](#queries-keys-and-values-with-real-numbers). `masked_fill` writes minus infinity into every score for a later position, and softmax turns minus infinity into exactly 0, so later positions get no attention at all. `attn` holds the shares: 4.0%, 92.9%, and 3.1% in that row.
 
 Third, it collects and puts the heads back together:
 
 ```python
-# collect the value cards, in those shares
+# collect the values, in those shares
 out = attn @ v
 # rejoin the four heads: 128 numbers again
 out = out.transpose(1, 2).contiguous().view(B, T, C)
@@ -1257,7 +1258,7 @@ out = self.proj(out)
 return out
 ```
 
-`attn @ v` is the collecting: each working card's share of every value card, added up number by number. The next line undoes the cutting into heads (I have joined three of the notebook's lines into one), and `self.proj` mixes the heads' findings. The result has the same shape as the working cards, `1 × 3 × 128`, which is what lets `TransformerBlock` add it straight back onto `x`.
+`attn @ v` is the collecting: each hidden state's share of every value, added up number by number. The next line undoes the cutting into heads (I have joined three of the notebook's lines into one), and `self.proj` mixes the heads' findings. The result has the same shape as the hidden states, `1 × 3 × 128`, which is what lets `TransformerBlock` add it straight back onto `x`.
 
 ![](assets/images/minigpt/annotated-attention.svg)
 *The heart of attention, with a comment beside each line*
@@ -1276,20 +1277,20 @@ x = self.gelu(x)
 x = self.fc2(x)
 ```
 
-The MLP works on each working card alone, using the same fixed recipes for every position. `fc1` and `fc2` are `nn.Linear` layers, recipes just like attention's, but `fc1` makes 512 numbers from 128, giving the MLP room to look for many patterns at once, and `fc2` brings them back to 128. `gelu` (Gaussian Error Linear Unit) is what makes the two recipes more than one: without a bend between them, two weighted mixes in a row would be no more powerful than one. GELU passes large positive numbers through almost unchanged, pushes large negative numbers to about zero, and curves smoothly in between.
+The MLP works on each hidden state alone, using the same fixed weights for every position. `fc1` and `fc2` are `nn.Linear` layers, just like attention's, but `fc1` makes 512 numbers from 128, giving the MLP room to look for many patterns at once, and `fc2` brings them back to 128. `gelu` (Gaussian Error Linear Unit) is what makes the two layers more than one: without a bend between them, two weighted mixes in a row would be no more powerful than one. GELU passes large positive numbers through almost unchanged, pushes large negative numbers to about zero, and curves smoothly in between.
 
 The MLP holds most of each block's numbers: 66,048 in `fc1` and 65,664 in `fc2`, 131,712 in all, almost exactly twice attention's 66,048. It is the same kind of two-layer network as the digit reader in [Machine Learning (Part 9)](/posts/machinelearning9/).
 
 :::fireside-chat Tonight: Attention and the MLP argue about who does the real work
-**Attention:** Let us be honest. Without me, every working card in this model is on its own. I am the only part where working cards talk to each other.
+**Attention:** Let us be honest. Without me, every hidden state in this model is on its own. I am the only part where hidden states talk to each other.
 
-**MLP:** Talking is cheap. You collect the values. I actually do something with them. And I have twice as many dials as you: 131,712 per block, against your 66,048.
+**MLP:** Talking is cheap. You collect the values. I actually do something with them. And I have twice as many parameters as you: 131,712 per block, against your 66,048.
 
-**Attention:** Dials are not everything. Without me, after an `o` you would make the same guess whether the word was heading for `good` or `took`.
+**Attention:** Parameters are not everything. Without me, after an `o` you would make the same guess whether the word was heading for `good` or `took`.
 
 **MLP:** And without me, all you ever do is mix. Every value you hand back is a weighted average of the values you were given. You cannot come up with anything that was not already there.
 
-**Attention:** Fair. But I decide *who* to listen to, and I decide afresh for every piece of text. You do exactly the same sum for every working card, whoever its neighbours are.
+**Attention:** Fair. But I decide *who* to listen to, and I decide afresh for every piece of text. You do exactly the same sum for every hidden state, whoever its neighbours are.
 
 **MLP:** Which is why the notebook gives us one turn each, four blocks in a row.
 
@@ -1298,27 +1299,27 @@ The MLP holds most of each block's numbers: 66,048 in `fc1` and 65,664 in `fc2`,
 **MLP:** Truce. Until the next block.
 :::
 
-### The answer cards: back in `MiniGPT.forward`
+### `lm_head`: back in `MiniGPT.forward`
 
 After the fourth block, the code goes back to `MiniGPT.forward` for step 4:
 
 ```python
 # the final normalisation
 x = self.final_ln(x)
-# score every working card against the 65 answer cards
+# score every hidden state against the 65 rows of lm_head
 logits = self.lm_head(x)
 # loss is None while writing
 return logits, loss
 ```
 
-`self.lm_head` is the set of answer cards: `__init__` creates it as `nn.Linear(config.n_embd, config.vocab_size)`, and its weights, `self.lm_head.weight`, are a table of 65 rows of 128 numbers, one answer card per letter, with one bias each in `self.lm_head.bias`. Running it does the multiply-and-add of each working card against all 65 answer cards, plus the biases.
+`__init__` creates `self.lm_head` as `nn.Linear(config.n_embd, config.vocab_size)`, and its weights, `self.lm_head.weight`, are a table of 65 rows of 128 numbers, one row per letter, with one bias each in `self.lm_head.bias`. Running it does the dot product of each hidden state with all 65 rows, plus the biases.
 
-There is one difference from how I described step 4. The code scores *every* working card, not just the last one, so `logits` holds 3 rows of 65 scores for `goo`. Training needs all of them, because every position has a known next letter to check. While writing, only the last row is used, and `generate_text` throws the others away. The answer is the same either way. (My browser demo skips the wasted work, and scores only the last working card.)
+There is one difference from how I described step 4. The code scores *every* hidden state, not just the last one, so `logits` holds 3 rows of 65 scores for `goo`. Training needs all of them, because every position has a known next letter to check. While writing, only the last row is used, and `generate_text` throws the others away. The answer is the same either way. (My browser demo skips the wasted work, and scores only the last hidden state.)
 
 ### Spinning the wheel: back in `generate_text`
 
 ```python
-# keep only the last working card's 65 scores
+# keep only the last letter's 65 scores
 logits = logits[:, -1, :]
 # temperature
 logits = logits / temperature
@@ -1331,14 +1332,14 @@ next_id = torch.multinomial(probs, num_samples=1)
 idx = torch.cat([idx, next_id], dim=1)
 ```
 
-This is step 5. `[:, -1, :]` picks the last row, which belongs to working card 3. Dividing by `temperature` is the temperature setting from step 5: a small temperature stretches the gaps between the scores, and a large one shrinks them. The notebook trims the wheel with top-k only; it has no top-p, which my demo adds. `torch.softmax` makes the 65 chances, `torch.multinomial` is the spin, and `torch.cat` writes the new letter's ID onto the end of `idx`. Then the loop goes round again, and runs the whole model on `good`. The notebook keeps no KV cache: every pass makes every working card and every scratch card from scratch.
+This is step 5. `[:, -1, :]` picks the last row, which belongs to hidden state 3. Dividing by `temperature` is the temperature setting from step 5: a small temperature stretches the gaps between the scores, and a large one shrinks them. The notebook trims the wheel with top-k only; it has no top-p, which my demo adds. `torch.softmax` makes the 65 chances, `torch.multinomial` is the spin, and `torch.cat` writes the new letter's ID onto the end of `idx`. Then the loop goes round again, and runs the whole model on `good`. The notebook keeps no KV cache: every pass makes every hidden state, query, key, and value from scratch.
 
 :::bullet-points The code, in the order it runs
 - `generate_text` keeps the last 128 letter IDs and runs the model.
-- `MiniGPT.forward` looks up the letter cards and position cards, and adds them to make `x`, the working cards.
+- `MiniGPT.forward` looks up the token embeddings and position embeddings, and adds them to make `x`, the hidden states.
 - Each `TransformerBlock` rewrites `x`: normalise, attention, add; normalise, MLP, add.
-- Attention makes query, key, and value cards with three fixed recipes, matches, shares out, and collects.
-- `lm_head` scores the working cards against the 65 answer cards, and `generate_text` turns the last row into chances and spins the wheel.
+- Attention makes queries, keys, and values with three tables of fixed weights, matches, shares out, and collects.
+- `lm_head` scores the hidden states against its 65 rows, and `generate_text` turns the last row into chances and spins the wheel.
 :::
 
 ## Run my model yourself
@@ -1385,23 +1386,23 @@ for p, i in zip(*torch.topk(probs, 4)):
 
 Each piece has a job:
 
-- **`chars`** is the vocabulary: every letter that appears in Tiny Shakespeare, sorted into the computer's standard order, which puts the new line first, then the space and punctuation, then the capitals, then the lowercase letters. The order matters, because a letter's ID is simply its place in this list, and my letter cards and answer cards are stored in that order. The notebook builds the same list from the text with `sorted(list(set(text)))` in section 2.2.
-- **`GPTConfig()`** with no arguments has exactly my model's settings: 4 blocks, 4 heads, 128 numbers per card, 128 positions, and 65 letters. The checkpoint only fits a machine of that shape.
+- **`chars`** is the vocabulary: every letter that appears in Tiny Shakespeare, sorted into the computer's standard order, which puts the new line first, then the space and punctuation, then the capitals, then the lowercase letters. The order matters, because a letter's ID is simply its place in this list, and my token embeddings and rows of `lm_head` are stored in that order. The notebook builds the same list from the text with `sorted(list(set(text)))` in section 2.2.
+- **`GPTConfig()`** with no arguments has exactly my model's settings: 4 blocks, 4 heads, 128 numbers per vector, 128 positions, and 65 letters. The checkpoint only fits a machine of that shape.
 - **`load_state_dict`** copies my numbers into the machine, replacing the random ones it was built with.
 - **`model.eval()`** switches off dropout, which is only for training, and **`model.requires_grad_(False)`** tells PyTorch not to keep the extra records that training needs.
 
-**Cell 3: look at the cards.** Each line prints the start of one fixed card from this post:
+**Cell 3: look at the parameters.** Each line prints the start of one fixed table from this post:
 
 ```python
 print(stoi["g"], stoi["o"], stoi["d"])                  # the letter IDs from step 1
-print(model.token_embedding.weight[stoi["g"]][:4])      # the g letter card
-print(model.position_embedding.weight[0][:4])           # the position 1 card
-print(model.lm_head.weight[stoi["d"]][:4])              # the d answer card
-print(model.blocks[0].attn.query.weight.shape)          # block 1's query recipe
+print(model.token_embedding.weight[stoi["g"]][:4])      # the g token embedding
+print(model.position_embedding.weight[0][:4])           # the position 1 embedding
+print(model.lm_head.weight[stoi["d"]][:4])              # the d row of lm_head
+print(model.blocks[0].attn.query.weight.shape)          # block 1's query weights
 ```
 
 ![](assets/images/minigpt/run-cards.png)
-*The IDs from step 1, then the first four numbers on the `g` letter card, the position 1 card, and the `d` answer card, and the size of block 1's query recipe*
+*The IDs from step 1, then the first four numbers of the `g` token embedding, the position 1 embedding, and the `d` row of `lm_head`, and the size of block 1's query weights*
 
 **Cell 4: write, by spinning the wheel.** This loop is a cut-down `generate_text`, with a temperature of 0.8 and no trimming. The first line fixes the random spins, so that with the same version of PyTorch you get exactly the text I got; remove it, and every run writes something different.
 
@@ -1441,10 +1442,10 @@ EXTER:
 Where the bring a pattity mish, ble look no g
 ```
 
-llama.cpp has no MiniGPT of its own, but it does run GPT-2, and MiniGPT is built the same way: learned position cards, normalising before attention and before the MLP, biases everywhere, and a separate set of answer cards. So the [export script](https://github.com/Haddley/minigpt-series/blob/main/part1-running/export_gguf.py) relabels each set of numbers with the name llama.cpp expects for GPT-2, and makes two adjustments:
+llama.cpp has no MiniGPT of its own, but it does run GPT-2, and MiniGPT is built the same way: learned position embeddings, normalising before attention and before the MLP, biases everywhere, and a separate `lm_head`. So the [export script](https://github.com/Haddley/minigpt-series/blob/main/part1-running/export_gguf.py) relabels each set of numbers with the name llama.cpp expects for GPT-2, and makes two adjustments:
 
-- **Query, key, and value recipes go into one grid.** llama.cpp keeps the three recipes stacked, one above the other, as a single 384 × 128 grid.
-- **The answer cards' biases move.** llama.cpp's GPT-2 has no biases on its answer cards, but my model does. The final normalisation adds its own fixed numbers just before the answer cards, so I changed those instead, by exactly the amount that gives every letter the same score as before. Because the 65 answer cards are all different from each other, there is exactly one way to do that, and the scores match to within a millionth.
+- **Query, key, and value weights go into one grid.** llama.cpp keeps the three tables stacked, one above the other, as a single 384 × 128 grid.
+- **`lm_head`'s biases move.** llama.cpp's GPT-2 has no biases on its `lm_head`, but my model does. The final normalisation adds its own fixed numbers just before `lm_head`, so I changed those instead, by exactly the amount that gives every letter the same score as before. Because the 65 rows of `lm_head` are all different from each other, there is exactly one way to do that, and the scores match to within a millionth.
 
 The tokens are the 65 letters, written the way GPT-2 stores them: the space as `Ġ` and the new line as `Ċ`, so `goo` still becomes 45, 53, 53. llama.cpp also insists on an "end of text" token, which my model never learned. Left to itself, llama.cpp picked token 11, which is `;`, and stopped writing at the first semicolon, so I nominated `$` instead: it appears exactly once in all of Tiny Shakespeare.
 
@@ -1457,7 +1458,7 @@ I compared all 65 chances from llama.cpp with PyTorch's, for four different text
 | `my kingdom for a hors` | `e` | 76.57% | 76.61% | 0.035 points |
 | `hear me spea` | `k` | 97.97% | 97.96% | 0.001 points |
 
-The tiny differences come from the MLP's bend, GELU: llama.cpp uses a fast approximation of the curve that the notebook calculates exactly. And like PyTorch, llama.cpp stops at 128 letters, because there are no more position cards.
+The tiny differences come from the MLP's bend, GELU: llama.cpp uses a fast approximation of the curve that the notebook calculates exactly. And like PyTorch, llama.cpp stops at 128 letters, because there are no more position embeddings.
 
 ## Try it yourself
 

@@ -105,7 +105,7 @@ export default function MiniGPTDemo() {
         <TextBox value={text} onChange={setText} limit={engine.manifest.block_size} disabled={writing || spinning} rows={3} />
         {unknown.length > 0 && (
           <div style={{ color: '#b45309', fontSize: '0.85rem' }}>
-            The machine has no card for {unknown.map(show).join(' ')}, so it skips {unknown.length === 1 ? 'it' : 'them'}.
+            The machine does not know {unknown.map(show).join(' ')}, so it skips {unknown.length === 1 ? 'it' : 'them'}.
           </div>
         )}
         <div className="d-flex flex-wrap gap-2 mt-2">
@@ -171,7 +171,7 @@ export default function MiniGPTDemo() {
           </span>
         </div>
         <div style={{ fontSize: '0.8rem', color: '#6b7280', marginBottom: '0.5rem' }}>
-          The last {T - gridStart} positions. Each row is a working card, labelled with the letter it started from; the bigger the dot, the more attention it gives the working card above.
+          The last {T - gridStart} positions. Each row is a position, labelled with the letter it started from; the bigger the dot, the more attention it gives the position above.
         </div>
         {A && (
           <div style={{ overflowX: 'auto' }}>

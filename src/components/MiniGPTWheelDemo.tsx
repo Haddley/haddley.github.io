@@ -111,7 +111,7 @@ export default function MiniGPTWheelDemo({ settings = false }: { settings?: bool
         />
         {unknown.length > 0 && (
           <div style={{ color: '#b45309', fontSize: '0.85rem' }}>
-            The model has no card for {unknown.map(show).join(' ')}, so it skips {unknown.length === 1 ? 'it' : 'them'}.
+            The model does not know {unknown.map(show).join(' ')}, so it skips {unknown.length === 1 ? 'it' : 'them'}.
           </div>
         )}
         <div className="d-flex flex-wrap gap-2 mt-2">

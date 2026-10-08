@@ -53,7 +53,7 @@ Before attention, and again before the MLP, every block [normalises the working 
 
 ### Change 2: turning cards instead of position cards
 
-Since [Part 1](/posts/minigpt/#step-2-letter-cards-and-position-cards), the machine has known where each token sits from its *position card*: a fixed card per position, added to the token card. The new way, *rotary position embeddings* or *RoPE*, has no position cards at all. Instead, inside attention, it turns each query card and key card by an angle that grows with the token's position.
+Since [Part 1](/posts/minigpt/#step-2-token-embeddings-and-position-embeddings), the machine has known where each token sits from its *position card*: a fixed card per position, added to the token card. The new way, *rotary position embeddings* or *RoPE*, has no position cards at all. Instead, inside attention, it turns each query card and key card by an angle that grows with the token's position.
 
 Picture a clock hand. A token in position 1 has its query and key cards turned a little, position 2 a little more, and so on. When a query card is matched against a key card, what matters is the *difference* between their turns, so the match depends only on how far apart the two tokens are, not on where they are in the text. "The token just before me" looks the same at position 5 as at position 205.
 
@@ -77,7 +77,7 @@ The 2017 MLP widens each working card to four times its size with one recipe, be
 
 ### Change 4: sharing key and value cards
 
-In [Part 1's attention](/posts/minigpt/#inside-a-block-attention), every head made its own query, key, and value cards. *Grouped-query attention* keeps a query card for every head, here 6, but shares the key and value cards: just 2 of each, each pair shared by 3 heads. That needs smaller key and value recipes, so fewer numbers, and when the machine writes, the [KV cache](/posts/minigpt/#where-the-scratch-cards-come-from) of saved keys and values is a third of the size.
+In [Part 1's attention](/posts/minigpt/#inside-a-block-attention), every head made its own query, key, and value cards. *Grouped-query attention* keeps a query card for every head, here 6, but shares the key and value cards: just 2 of each, each pair shared by 3 heads. That needs smaller key and value recipes, so fewer numbers, and when the machine writes, the [KV cache](/posts/minigpt/#where-the-queries-keys-and-values-come-from) of saved keys and values is a third of the size.
 
 ### Taking one change out at a time
 
