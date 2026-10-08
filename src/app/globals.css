@@ -599,6 +599,9 @@ b em {
   .svg-diagram { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .svg-diagram img { min-width: 640px; }
   .svg-diagram-hint { display: block; text-align: center; font-size: 0.8rem; color: #6b7280; margin-top: 0.25rem; }
+  /* A diagram drawn for phones opts out with "#narrow" on its address: ![](assets/images/x.svg#narrow) */
+  .svg-diagram img[src*="#narrow"] { min-width: 0; }
+  .svg-diagram:has(img[src*="#narrow"]) + .svg-diagram-hint { display: none; }
 }
 
 /* Tables in posts: never split a word or number across lines (the theme's
@@ -607,4 +610,10 @@ b em {
 @media (max-width: 768px) {
   .table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .table th:first-child, .table td:first-child { min-width: 8rem; }
+}
+
+/* ":::side-by-side": on wide screens the test drive stays in view beside its demo, and its box lines up with the top of the demo */
+@media (min-width: 992px) {
+  .side-by-side-right { position: sticky; top: 90px; }
+  .side-by-side-right aside { margin-top: 0 !important; }
 }

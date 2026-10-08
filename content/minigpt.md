@@ -25,6 +25,8 @@ I started this effort in July 2023 with the book [*Generative AI with Python and
 6. [Learning from a teacher](/posts/minigpt5/): distillation.
 7. [Reading further](/posts/minigpt6/): sliding-window attention.
 
+Alongside the series, [MiniGPT, rewritten to be read](/posts/minigpt7/) rewrites this post's code for people: a name for every value, and honest notes where nobody knows why it works.
+
 - **Ten minutes?** Read [the guessing game](#guessing-the-next-letter), try [the first demo](#spinning-a-wheel-an-analogy), then skip to [the five steps](#the-five-steps) and [the full demo](#try-it-my-trained-machine-running-in-your-browser).
 - **An hour?** Read down to [Opening the notebook](#opening-the-notebook), and try every demo on the way.
 - **To follow along,** you need only a browser: every demo runs in this page, and my workbook runs in Colab.
@@ -1010,12 +1012,12 @@ Everything at once. This is my MiniGPT model itself, all 826,433 numbers of it, 
 :::demo minigpt
 :::
 
-A few things to try:
-
-- Type `goo`, and check that you get the same 96.6% for `d` as the rest of this post.
-- Type `First Citizen:` and a new line, and let it write. It has learned what a speech looks like.
-- Set temperature to 0, and watch it fall into a loop. Then set it to 2, and watch it invent words.
-- Look at block 1, heads 1 and 3, on any text you like: one position back, and two positions back, every time.
+:::test-drive Four things to try
+1. Type `goo`, and check that you get the same 96.6% for `d` as the rest of this post.
+2. Type `First Citizen:` and a new line, and let it write 200 letters. It has learned what a speech looks like.
+3. Set the temperature to 0, and watch it fall into a loop. Then set it to 2, and watch it invent words.
+4. Look at block 1, heads 1 and 3, on any text you like: one position back, and two positions back, every time.
+:::
 
 ### How much can it see at once? The context limit
 

@@ -64,7 +64,7 @@
     {
       "slug": "minigpt-grown",
       "title": "MiniGPT (Part 2)",
-      "description": "How a GPT is grown: retraining my MiniGPT exhibit model from random numbers on a Mac, one guess at a time, and watching every card and dial from the first post appear",
+      "description": "How a GPT is grown: retraining my MiniGPT exhibit model from random numbers on a Mac, one guess at a time, and watching every embedding and parameter from the first post appear",
       "date": "2026-10-05",
       "categories": [
         "AI"
@@ -74,7 +74,7 @@
     {
       "slug": "minigpt",
       "title": "MiniGPT (Part 1)",
-      "description": "How a GPT runs: a real trained MiniGPT taken apart while it writes, explained with cards and a wheel of chances, then traced line by line through Jibin Joseph's notebook code, with the trained model to download and run yourself",
+      "description": "How a GPT runs: a real trained MiniGPT taken apart while it writes, explained with pictures and a wheel of chances, then traced line by line through Jibin Joseph's notebook code, with the trained model to download and run yourself",
       "date": "2026-10-05",
       "categories": [
         "AI"
@@ -2860,5 +2860,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-07T22:55:53.358Z"
+  "generatedAt": "2026-10-08T10:53:26.942Z"
 }

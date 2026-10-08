@@ -570,6 +570,21 @@ function renderCallout(section: MobiriseParsedContent, index: number, nested: bo
     if (section.content.trim() === 'minigpt-ids') return wrap(index, nested, <MiniGPTIdsDemo />);
     return null;
   }
+  // ":::side-by-side" ... ":::" puts a demo and its test drive next to each other on wide screens:
+  // test-drive boxes go on the right, and stay in view while the reader scrolls the demo; everything
+  // else goes on the left. On narrower screens they stack, in order.
+  if (section.calloutType === 'side-by-side') {
+    const children = section.children || [];
+    const onRight = (child: MobiriseParsedContent) => child.type === 'callout' && child.calloutType === 'test-drive';
+    return wrap(index, nested, (
+      <div className="row g-4">
+        <div className="col-lg-7">{children.filter(c => !onRight(c)).map((c, i) => renderSection(c, i, true))}</div>
+        <div className="col-lg-5">
+          <div className="side-by-side-right">{children.filter(onRight).map((c, i) => renderSection(c, i, true))}</div>
+        </div>
+      </div>
+    ));
+  }
   const style = CALLOUTS[section.calloutType || ''] || CALLOUTS['bullet-points'];
   const body = (section.children || []).map((child, childIndex) => renderSection(child, childIndex, true));
 

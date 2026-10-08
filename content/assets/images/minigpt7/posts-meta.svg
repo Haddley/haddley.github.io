@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
+  <title>MiniGPT, rewritten to be read</title>
+  <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+  <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" fill="#cfe6f7">
+    <text x="14" y="40">hidden_states</text>
+    <text x="14" y="56" fill="#7cc6f0">+ attention</text>
+    <text x="14" y="72" fill="#5bb4ea">+ mlp</text>
+  </g>
+  <path d="M14 78 L66 78" stroke="#f08a3c" stroke-width="2" stroke-linecap="round"/>
+  <path d="M100 92 C 92 104, 76 100, 70 84" fill="none" stroke="#f08a3c" stroke-width="2"/>
+  <path d="M70 84 L68.2 92.4 L75.5 88.5 Z" fill="#f08a3c"/>
+</svg>
