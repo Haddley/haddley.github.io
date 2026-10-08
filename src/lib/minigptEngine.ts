@@ -90,6 +90,17 @@ export class MiniGPTEngine {
     return { weights: this.t('lm_head.weight').subarray(id * C, (id + 1) * C), bias: this.t('lm_head.bias')[id] };
   }
 
+  // A letter's token embedding, and a position's embedding (positions counted from 0): 128 numbers each.
+  tokenEmbedding(id: number): Float32Array {
+    const C = this.manifest.n_embd;
+    return this.t('token_embedding.weight').subarray(id * C, (id + 1) * C);
+  }
+
+  positionEmbedding(pos: number): Float32Array {
+    const C = this.manifest.n_embd;
+    return this.t('position_embedding.weight').subarray(pos * C, (pos + 1) * C);
+  }
+
   encode(text: string): number[] {
     const ids: number[] = [];
     for (const ch of text) {

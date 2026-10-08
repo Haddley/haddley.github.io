@@ -53,7 +53,7 @@ Before attention, and again before the MLP, every block [normalises the working 
 
 ### Change 2: turning cards instead of position cards
 
-Since [Part 1](/posts/minigpt/#step-2-token-embeddings-and-position-embeddings), the machine has known where each token sits from its *position card*: a fixed card per position, added to the token card. The new way, *rotary position embeddings* or *RoPE*, has no position cards at all. Instead, inside attention, it turns each query card and key card by an angle that grows with the token's position.
+Since [Part 1](/posts/minigpt/#token-embeddings-and-position-embeddings), the machine has known where each token sits from its *position card*: a fixed card per position, added to the token card. The new way, *rotary position embeddings* or *RoPE*, has no position cards at all. Instead, inside attention, it turns each query card and key card by an angle that grows with the token's position.
 
 Picture a clock hand. A token in position 1 has its query and key cards turned a little, position 2 a little more, and so on. When a query card is matched against a key card, what matters is the *difference* between their turns, so the match depends only on how far apart the two tokens are, not on where they are in the text. "The token just before me" looks the same at position 5 as at position 205.
 

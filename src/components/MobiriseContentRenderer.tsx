@@ -14,6 +14,7 @@ const MiniGPTHiddenStateDemo = dynamic(() => import('./MiniGPTHiddenStateDemo'),
 const MiniGPTBlocksDemo = dynamic(() => import('./MiniGPTBlocksDemo'), { ssr: false });
 const MiniGPTSwitchesDemo = dynamic(() => import('./MiniGPTSwitchesDemo'), { ssr: false });
 const MiniGPTAttentionDemo = dynamic(() => import('./MiniGPTAttentionDemo'), { ssr: false });
+const MiniGPTEmbedDemo = dynamic(() => import('./MiniGPTEmbedDemo'), { ssr: false });
 
 // Copy-to-clipboard button for code blocks
 function CopyCodeButton({ code }: { code: string }) {
@@ -564,6 +565,7 @@ function renderCallout(section: MobiriseParsedContent, index: number, nested: bo
     if (section.content.trim() === 'minigpt-mlp') return wrap(index, nested, <MiniGPTSwitchesDemo kind="mlp" />);
     if (section.content.trim() === 'minigpt-heads') return wrap(index, nested, <MiniGPTSwitchesDemo kind="heads" />);
     if (section.content.trim() === 'minigpt-qkv') return wrap(index, nested, <MiniGPTAttentionDemo />);
+    if (section.content.trim() === 'minigpt-embed') return wrap(index, nested, <MiniGPTEmbedDemo />);
     return null;
   }
   const style = CALLOUTS[section.calloutType || ''] || CALLOUTS['bullet-points'];

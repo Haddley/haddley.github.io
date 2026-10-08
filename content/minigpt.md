@@ -369,7 +369,7 @@ return current + engine.manifest.chars[spinWheel(p)];
 
 Until now, I have treated the model as [a closed box](#scores-what-comes-out-of-the-closed-box): text goes in, and 65 scores, the logits, one per letter, come out. Now I open the box, one level down. I pass the text into my MiniGPT model, and inside, it goes through these stages:
 
-1. Each letter becomes a list of 128 numbers: one list for the letter itself, learned in training, plus one for its position in the text. The code calls these the *token embedding* and the *position embedding*, and [Step 2](#step-2-token-embeddings-and-position-embeddings) explains them.
+1. Each letter becomes a list of 128 numbers: one list for the letter itself, learned in training, plus one for its position in the text. The code calls these the *token embedding* and the *position embedding*, and [Step 2](#token-embeddings-and-position-embeddings) explains them.
 2. The lists pass through four *blocks*, which let each letter's list take in what the letters before it say. The blocks are where the model does its understanding, and [Step 3](#step-3-the-blocks) explains them. Between blocks, each letter's list is called its *hidden state*: hidden, because nobody outside the model sees it.
 3. Out of the last block, after one final normalisation, comes the last letter's list: 128 numbers that sum up the text so far. This is the *final hidden state*, and the notebook's own comment calls it that.
 4. `lm_head` turns the final hidden state into 65 scores, one for each letter. The code calls the scores *logits*.
@@ -474,7 +474,7 @@ Then [`softmax`](#softmax-in-the-typescript-this-page-runs), from earlier, turns
 
 One level further into the box. The final normalisation and `lm_head` read a hidden state, and that hidden state comes out of the biggest part of the model: four *blocks*, run one after another. This section is about what the blocks do as a whole; the sections after it open one up.
 
-Going into block 1, there is one hidden state for each letter in the text, and each one knows only its own letter and its own position. (Where those starting hidden states come from is the last layer of the box, [further in](#step-2-token-embeddings-and-position-embeddings).) Each block has two parts: **attention**, where each hidden state looks back at earlier positions and collects information from them, and the **MLP**, a small network that works on each hidden state on its own. Every block reads the hidden states and rewrites them.
+Going into block 1, there is one hidden state for each letter in the text, and each one knows only its own letter and its own position. (Where those starting hidden states come from is the last layer of the box, [further in](#token-embeddings-and-position-embeddings).) Each block has two parts: **attention**, where each hidden state looks back at earlier positions and collects information from them, and the **MLP**, a small network that works on each hidden state on its own. Every block reads the hidden states and rewrites them.
 
 Attention followed by the MLP makes one *block*. My model runs four blocks in a row, and the bigger model in the notebook runs six. The blocks run one after another. The hidden states that come out of block 1 are the ones that go into block 2, block 2's go into block 3, and so on. After block 4, step 4 reads the last hidden state. Each block has its own parameters: the four blocks are built the same way, but they do not share any numbers, so each one can learn to do something different. With each block, the hidden states carry more context: by the later blocks, a hidden state is less about one letter and more about what is going on around it.
 
@@ -944,6 +944,129 @@ In [the TypeScript above](#attention-in-the-typescript-this-page-runs), the head
 - Four blocks in a row let each hidden state gather information from further and further back.
 :::
 
+### Token embeddings and position embeddings
+
+One level further in: where do the hidden states that go into block 1 come from? This is the model's first step. Each letter in the text has an ID number, which the last layer, below, explains; for now, it is enough that `g` is 45 and `o` is 53. Each ID picks a row from a table. The table has one row for each of the 65 letters, and each row holds 128 numbers: the machine's starting point for that letter. This row is the letter's *token embedding*, and a list of numbers like this is called a *vector*. It helps to picture the table as a box of flashcards, like the alphabet cards preschoolers learn from. The front shows the letter. On a preschool card, the back would say "a is for apple", with a picture. Here, the back holds the 128 numbers. In my trained model, the `g` token embedding begins −0.049, 0.032, 0.014, 0.030, and carries on for another 124 numbers. [The next post](/posts/minigpt-grown/#the-payoff-growing-the-exhibit-exactly) shows where those numbers came from. Every lowercase `o` gets exactly the same token embedding, with the same 128 numbers, wherever it appears. A capital `O` gets a different one.
+
+There is no limit on copies: `goo` simply looks up the `o` row twice. There is a row for every capital *and* every lowercase letter, because to the model `G` and `g` are completely different letters. On top of those 52, there are 13 more: the space, the new line, ten punctuation marks, and the digit `3`. That last one is only there because the text labels 27 speeches `3 KING HENRY VI`, so the table includes a whole row for a letter that appears just 27 times in 1.1 million.
+
+![](assets/images/minigpt/flashcards.svg)
+*Each token embedding pictured as a flashcard: the letter on the front, and its 128 real numbers on the back*
+
+Three things to know about these numbers:
+
+- **The numbers are fixed.** In a trained machine, every token embedding is as good as printed in ink. The `g` row has exactly the same 128 numbers every time a `g` appears, in every piece of text, today and tomorrow. Writing, chatting, and answering questions never change a single one of them. The only way to change them is to train the machine again.
+- **Nobody wrote them.** There is no "number 7 is how vowel-like this is". None of the 128 numbers has a name.
+- **Training chose them.** Every fixed number in the machine is called a *parameter*: all 826,433 of them in my small model. I picture each one as a dial, and training is what turned each dial to where it is now. How it settled on these exact numbers is the subject of [the next post](/posts/minigpt-grown/). In this post, the parameters are simply given, like a printed set of flashcards that I can copy as often as I like.
+
+There is also a table of *position embeddings*. Picture the text as a row of numbered positions: position 1, position 2, and so on, with one vector for each position. This time, one of each is enough: a text might need a dozen copies of the `o` row, but my machine only ever needs the same 128 position embeddings, because a text never has two position 1s. Every letter takes the next position, whether it was in the text the machine was given or the machine has just written it, and its token embedding is combined with that position's embedding. Position embeddings work just like token embeddings: each one is 128 numbers, fixed by training in exactly the same way, so the two can be combined by simply adding them, number by number. So once a letter is placed on a position, the machine knows both what the letter is and where it sits. The position embedding is the only thing that tells the two `o`s in `goo` apart at this stage.
+
+![](assets/images/minigpt/position-cards.svg)
+*Each position embedding pictured as a card: the position number on the front, and its 128 real numbers on the back*
+
+Here is the real `g` token embedding, the real position 1 embedding, and what they add up to:
+
+![](assets/images/minigpt/letter-plus-position.svg)
+*Adding them is plain addition, number by number. The result depends on both the letter and its position*
+
+Adding each token embedding to its position embedding gives every position its starting vector, called its *input embedding*. For `goo` there are three: position 1 starts as the `g` embedding plus the position 1 embedding, position 2 as the `o` embedding plus the position 2 embedding, and position 3 as the `o` embedding plus the position 3 embedding. The blocks then rewrite these vectors, and from then on each one is called a *hidden state*: one for each position.
+
+This is the last time the machine looks at letters. From here on, everything happens to the hidden states. The token and position embeddings are not touched again: they stay fixed, ready for the next text.
+
+:::under-the-hood All 128 numbers in the `g` token embedding
+These are the exact numbers in my trained model, rounded to three decimal places, eight to a row. The colours in the pictures above are these numbers: blue for those above 0, orange for those below.
+
+```
+ -0.049,   0.032,   0.014,   0.030,   0.005,   0.005,  -0.015,   0.020
+  0.033,  -0.008,   0.028,   0.008,  -0.024,  -0.012,   0.037,   0.020
+  0.059,  -0.035,  -0.010,  -0.036,  -0.026,   0.029,  -0.062,  -0.032
+ -0.001,  -0.005,  -0.022,  -0.061,   0.015,  -0.031,  -0.060,   0.017
+ -0.029,   0.041,  -0.008,  -0.033,  -0.025,  -0.016,  -0.040,  -0.032
+ -0.043,  -0.030,  -0.035,   0.025,   0.018,  -0.079,  -0.078,   0.047
+ -0.002,   0.010,   0.071,  -0.008,  -0.036,   0.082,  -0.029,   0.040
+  0.036,   0.051,  -0.024,  -0.028,   0.005,   0.014,   0.004,  -0.010
+ -0.009,  -0.097,  -0.115,  -0.042,  -0.081,   0.051,   0.032,   0.015
+  0.000,  -0.059,  -0.002,   0.051,   0.024,   0.026,   0.006,   0.017
+ -0.019,  -0.007,  -0.002,  -0.012,   0.058,  -0.008,   0.001,  -0.041
+  0.069,  -0.027,  -0.036,   0.016,   0.070,  -0.012,  -0.026,  -0.015
+ -0.036,   0.067,  -0.054,  -0.028,  -0.047,  -0.029,   0.004,   0.005
+  0.022,  -0.028,   0.024,   0.032,   0.041,   0.006,   0.007,   0.063
+ -0.019,  -0.031,  -0.011,   0.030,  -0.053,  -0.007,  -0.001,   0.014
+ -0.003,   0.006,   0.025,   0.020,   0.009,   0.011,   0.082,   0.065
+```
+:::
+
+In the notebook, the two tables are `token_embedding` and `position_embedding`.
+
+How *many* position embeddings there are is fixed in advance, when the machine is built. There is one for each position, and the number of positions is the most letters the machine can look at when it chooses the next letter. That limit is called the *context length*, and in the notebook it is `block_size`. I come back to it, and what it costs to raise it, in [How much can it see at once?](#how-much-can-it-see-at-once-the-context-limit)
+
+:::under-the-hood How the position embeddings relate to each other
+On its own, one position embedding looks as meaningless as a token embedding. The interesting part is how they relate to each other:
+
+![](assets/images/minigpt/position-ruler.svg)
+*The bright diagonal shows that neighbouring positions ended up with similar embeddings. Nobody arranged that: training did*
+
+On average, the embeddings for neighbouring positions score 0.65 for how alike they are, where two random vectors would score about 0. Positions far apart point the opposite way: embeddings 100 positions apart score −0.35. So without being told, the machine turned its position embeddings into a kind of ruler, where "position 41" feels close to "position 42" and far from "position 120". That is just the kind of information attention needs, to find "the hidden state one position before me".
+:::
+
+:::watch-it
+The token and position embeddings are not the model, and an embedding on its own cannot tell you what comes next. They are just a lookup table: `o` always gives the same vector, whatever came before it. The two tables together hold 24,704 of the small model's 826,433 parameters, about 3%. Almost all the rest, 96%, live in the blocks described next, and that is where the hidden states get combined.
+:::
+
+Try it below. Pick any letter in the text, and see its token embedding and its position embedding add up to the input embedding that block 1 receives.
+
+:::demo minigpt-embed
+:::
+
+:::test-drive Add two embeddings
+1. Start with `goo`, and pick the `g`. Its token embedding begins −0.049, 0.032, 0.014, the numbers in the pictures above, and the position 1 embedding begins 0.043, −0.032, 0.041. The input embedding begins −0.006, −0.001, 0.055: each number is just the sum of the two above it, allowing for rounding.
+2. Pick the first `o`, then the second. Their token embeddings are identical, because they are the same letter. Their position embeddings differ, so their input embeddings differ too: this is the only thing that tells them apart before block 1.
+3. Type `ooo` and step through the three `o`s. Same token embedding every time; a different position embedding every time.
+:::
+
+### Embeddings in the original Python
+
+```python
+# 1 text, 3 letters
+B, T = idx.shape
+# the positions: 0, 1, 2
+pos = torch.arange(0, T)
+# look up a token embedding for each ID
+tok_emb = self.token_embedding(idx)
+# look up a position embedding for each position
+pos_emb = self.position_embedding(pos)
+# add them: the input embeddings, the first hidden states
+x = tok_emb + pos_emb
+```
+
+These are the first lines of `MiniGPT.forward`, before the blocks. Python counts from 0, so position 1 in this post is row 0 in the code.
+
+`self.token_embedding` is the table of token embeddings. The model's `__init__` creates it as `nn.Embedding(config.vocab_size, config.n_embd)`: a table with 65 rows, one per letter, and 128 columns. Looking up an embedding is picking a row: `g` picks row 45, and both `o`s pick row 53. `self.position_embedding` is the same kind of table, `nn.Embedding(config.block_size, config.n_embd)`, with one row per position. Before training, `__init__` fills both tables with small random numbers, with a standard deviation of 0.02, and training then tunes them.
+
+![](assets/images/minigpt/embedding-lookup.svg)
+*Each letter's ID picks one row of the table, and that row's 128 numbers become the letter's token embedding. Both copies of `o` get the same row*
+
+`x = tok_emb + pos_emb` is where the hidden states are born. `x` holds one hidden state per position, 128 numbers each, and from here to the end of `forward`, `x` *is* the hidden states. The code never makes a new variable for them: every block overwrites `x`.
+
+![](assets/images/minigpt/annotated-embeddings.svg)
+*The embedding lines again, with a note beside each line in my own words*
+
+### Embeddings in the TypeScript this page runs
+
+The demos on this page do the same at the start of `forward`, in [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts). Both tables are stored row after row, 128 numbers per row, so row `ids[r]` of the token table starts at `ids[r] * C`, and row `r` of the position table starts at `r * C`:
+
+```typescript
+const tok = this.t('token_embedding.weight');
+const pos = this.t('position_embedding.weight');
+
+// Step 2: token embedding + position embedding, number by number.
+let x = new Float32Array(T * C);
+for (let r = 0; r < T; r++)
+  for (let i = 0; i < C; i++) x[r * C + i] = tok[ids[r] * C + i] + pos[r * C + i];
+```
+
+`x` now holds the input embeddings, one row of 128 numbers for each letter, ready for block 1.
+
 ### Try it: my trained machine, running in your browser
 
 This is our MiniGPT model itself, all 826,433 numbers of it, running in this page. Nothing is sent anywhere: the five steps happen on your own computer. Type anything, and watch the chances for the next letter change as you type. Then spin the wheel, or let it write 200 letters. Use the sliders to try temperature and the wheel trimming, and use the block and head buttons to look inside any of its 16 attention heads.
@@ -976,7 +1099,7 @@ A few things to try:
 Here is the route:
 
 1. **[The guessing game](#guessing-the-next-letter)**: what a GPT actually does, how it [gives every letter a chance](#it-does-not-pick-a-letter-it-gives-every-letter-a-chance), and how it spins a wheel of chances to choose one.
-2. **[The five steps](#the-five-steps)** the machine takes for every letter it writes: [letters to numbers](#step-1-letters-to-numbers), [token embeddings and position embeddings](#step-2-token-embeddings-and-position-embeddings), [the blocks](#step-3-the-blocks), [chances](#step-4-chances), and [spinning the wheel](#step-5-spin-the-wheel).
+2. **[The five steps](#the-five-steps)** the machine takes for every letter it writes: [letters to numbers](#step-1-letters-to-numbers), [token embeddings and position embeddings](#token-embeddings-and-position-embeddings), [the blocks](#step-3-the-blocks), [chances](#step-4-chances), and [spinning the wheel](#step-5-spin-the-wheel).
 3. **Inside the blocks**: [attention](#inside-a-block-attention), [queries, keys, and values](#where-the-queries-keys-and-values-come-from), [several heads at once](#several-heads-at-once), [the MLP](#then-the-mlp-each-hidden-state-on-its-own), and [why there are four blocks](#four-blocks-in-a-row).
 4. **[How much can it see at once?](#how-much-can-it-see-at-once-the-context-limit)**: the context limit, and why raising it is expensive.
 5. **[Try it](#try-it-my-trained-machine-running-in-your-browser)**: the trained machine, running live in your browser.
@@ -1050,75 +1173,6 @@ Here are all five at once, for `goo`, with the real numbers from my trained mode
 ### Step 1: letters to numbers
 
 Computers need numbers, so the first step is to give each of the 65 letters an ID. In Tiny Shakespeare, `g` is 45, `o` is 53, and `d` is 42, so `goo` becomes `[45, 53, 53]`. That is all this step does. But an ID is just a name tag. 53 is not "more" than 45 in any way that helps, so the machine cannot do much with the ID itself. It needs something richer, and that is step 2.
-
-### Step 2: token embeddings and position embeddings
-
-So instead, each ID picks a row from a table. The table has one row for each of the 65 letters, and each row holds 128 numbers: the machine's starting point for that letter. This row is the letter's *token embedding*, and a list of numbers like this is called a *vector*. It helps to picture the table as a box of flashcards, like the alphabet cards preschoolers learn from. The front shows the letter. On a preschool card, the back would say "a is for apple", with a picture. Here, the back holds the 128 numbers. In my trained model, the `g` token embedding begins −0.049, 0.032, 0.014, 0.030, and carries on for another 124 numbers. [The next post](/posts/minigpt-grown/#the-payoff-growing-the-exhibit-exactly) shows where those numbers came from. Every lowercase `o` gets exactly the same token embedding, with the same 128 numbers, wherever it appears. A capital `O` gets a different one.
-
-There is no limit on copies: `goo` simply looks up the `o` row twice. There is a row for every capital *and* every lowercase letter, because to the model `G` and `g` are completely different letters. On top of those 52, there are 13 more: the space, the new line, ten punctuation marks, and the digit `3`. That last one is only there because the text labels 27 speeches `3 KING HENRY VI`, so the table includes a whole row for a letter that appears just 27 times in 1.1 million.
-
-![](assets/images/minigpt/flashcards.svg)
-*Each token embedding pictured as a flashcard: the letter on the front, and its 128 real numbers on the back*
-
-Three things to know about these numbers:
-
-- **The numbers are fixed.** In a trained machine, every token embedding is as good as printed in ink. The `g` row has exactly the same 128 numbers every time a `g` appears, in every piece of text, today and tomorrow. Writing, chatting, and answering questions never change a single one of them. The only way to change them is to train the machine again.
-- **Nobody wrote them.** There is no "number 7 is how vowel-like this is". None of the 128 numbers has a name.
-- **Training chose them.** Every fixed number in the machine is called a *parameter*: all 826,433 of them in my small model. I picture each one as a dial, and training is what turned each dial to where it is now. How it settled on these exact numbers is the subject of [the next post](/posts/minigpt-grown/). In this post, the parameters are simply given, like a printed set of flashcards that I can copy as often as I like.
-
-There is also a table of *position embeddings*. Picture the text as a row of numbered positions: position 1, position 2, and so on, with one vector for each position. This time, one of each is enough: a text might need a dozen copies of the `o` row, but my machine only ever needs the same 128 position embeddings, because a text never has two position 1s. Every letter takes the next position, whether it was in the text the machine was given or the machine has just written it, and its token embedding is combined with that position's embedding. Position embeddings work just like token embeddings: each one is 128 numbers, fixed by training in exactly the same way, so the two can be combined by simply adding them, number by number. So once a letter is placed on a position, the machine knows both what the letter is and where it sits. The position embedding is the only thing that tells the two `o`s in `goo` apart at this stage.
-
-![](assets/images/minigpt/position-cards.svg)
-*Each position embedding pictured as a card: the position number on the front, and its 128 real numbers on the back*
-
-Here is the real `g` token embedding, the real position 1 embedding, and what they add up to:
-
-![](assets/images/minigpt/letter-plus-position.svg)
-*Adding them is plain addition, number by number. The result depends on both the letter and its position*
-
-Adding each token embedding to its position embedding gives every position its starting vector, called its *input embedding*. For `goo` there are three: position 1 starts as the `g` embedding plus the position 1 embedding, position 2 as the `o` embedding plus the position 2 embedding, and position 3 as the `o` embedding plus the position 3 embedding. The blocks then rewrite these vectors, and from then on each one is called a *hidden state*: one for each position.
-
-This is the last time the machine looks at letters. From here on, everything happens to the hidden states. The token and position embeddings are not touched again: they stay fixed, ready for the next text.
-
-:::under-the-hood All 128 numbers in the `g` token embedding
-These are the exact numbers in my trained model, rounded to three decimal places, eight to a row. The colours in the pictures above are these numbers: blue for those above 0, orange for those below.
-
-```
- -0.049,   0.032,   0.014,   0.030,   0.005,   0.005,  -0.015,   0.020
-  0.033,  -0.008,   0.028,   0.008,  -0.024,  -0.012,   0.037,   0.020
-  0.059,  -0.035,  -0.010,  -0.036,  -0.026,   0.029,  -0.062,  -0.032
- -0.001,  -0.005,  -0.022,  -0.061,   0.015,  -0.031,  -0.060,   0.017
- -0.029,   0.041,  -0.008,  -0.033,  -0.025,  -0.016,  -0.040,  -0.032
- -0.043,  -0.030,  -0.035,   0.025,   0.018,  -0.079,  -0.078,   0.047
- -0.002,   0.010,   0.071,  -0.008,  -0.036,   0.082,  -0.029,   0.040
-  0.036,   0.051,  -0.024,  -0.028,   0.005,   0.014,   0.004,  -0.010
- -0.009,  -0.097,  -0.115,  -0.042,  -0.081,   0.051,   0.032,   0.015
-  0.000,  -0.059,  -0.002,   0.051,   0.024,   0.026,   0.006,   0.017
- -0.019,  -0.007,  -0.002,  -0.012,   0.058,  -0.008,   0.001,  -0.041
-  0.069,  -0.027,  -0.036,   0.016,   0.070,  -0.012,  -0.026,  -0.015
- -0.036,   0.067,  -0.054,  -0.028,  -0.047,  -0.029,   0.004,   0.005
-  0.022,  -0.028,   0.024,   0.032,   0.041,   0.006,   0.007,   0.063
- -0.019,  -0.031,  -0.011,   0.030,  -0.053,  -0.007,  -0.001,   0.014
- -0.003,   0.006,   0.025,   0.020,   0.009,   0.011,   0.082,   0.065
-```
-:::
-
-In the notebook, the two tables are `token_embedding` and `position_embedding`.
-
-How *many* position embeddings there are is fixed in advance, when the machine is built. There is one for each position, and the number of positions is the most letters the machine can look at when it chooses the next letter. That limit is called the *context length*, and in the notebook it is `block_size`. I come back to it, and what it costs to raise it, in [How much can it see at once?](#how-much-can-it-see-at-once-the-context-limit)
-
-:::under-the-hood How the position embeddings relate to each other
-On its own, one position embedding looks as meaningless as a token embedding. The interesting part is how they relate to each other:
-
-![](assets/images/minigpt/position-ruler.svg)
-*The bright diagonal shows that neighbouring positions ended up with similar embeddings. Nobody arranged that: training did*
-
-On average, the embeddings for neighbouring positions score 0.65 for how alike they are, where two random vectors would score about 0. Positions far apart point the opposite way: embeddings 100 positions apart score −0.35. So without being told, the machine turned its position embeddings into a kind of ruler, where "position 41" feels close to "position 42" and far from "position 120". That is just the kind of information attention needs, to find "the hidden state one position before me".
-:::
-
-:::watch-it
-The token and position embeddings are not the model, and an embedding on its own cannot tell you what comes next. They are just a lookup table: `o` always gives the same vector, whatever came before it. The two tables together hold 24,704 of the small model's 826,433 parameters, about 3%. Almost all the rest, 96%, live in the blocks described next, and that is where the hidden states get combined.
-:::
 
 ### Step 3: the blocks
 
@@ -1489,30 +1543,6 @@ logits, _ = model(idx_cond)
 ```
 
 `idx` holds the letter IDs written so far: `[[45, 53, 53]]` for `goo`. This is step 1. The first line is the context limit from [How much can it see at once?](#how-much-can-it-see-at-once-the-context-limit): it keeps only the last `block_size` letters, because there are no position embeddings beyond that. The second line runs the whole model, which calls `MiniGPT.forward`.
-
-### Token embeddings, position embeddings, and hidden states: `MiniGPT.forward` (cell 1.5)
-
-```python
-# 1 text, 3 letters
-B, T = idx.shape
-# the positions: 0, 1, 2
-pos = torch.arange(0, T)
-# look up a token embedding for each ID
-tok_emb = self.token_embedding(idx)
-# look up a position embedding for each position
-pos_emb = self.position_embedding(pos)
-# add them: the input embeddings, the first hidden states
-x = tok_emb + pos_emb
-```
-
-This is step 2, line for line. Python counts from 0, so position 1 in the introduction is row 0 in the code.
-
-`self.token_embedding` is the table of token embeddings. The model's `__init__` creates it as `nn.Embedding(config.vocab_size, config.n_embd)`: a table with 65 rows, one per letter, and 128 columns. Looking up an embedding is picking a row: `g` picks row 45, and both `o`s pick row 53. `self.position_embedding` is the same kind of table, `nn.Embedding(config.block_size, config.n_embd)`, with one row per position. Before training, `__init__` fills both tables with small random numbers, with a standard deviation of 0.02, and training then tunes them.
-
-![](assets/images/minigpt/embedding-lookup.svg)
-*Each letter's ID picks one row of the table, and that row's 128 numbers become the letter's token embedding. Both copies of `o` get the same row*
-
-`x = tok_emb + pos_emb` is where the hidden states are born. `x` holds one hidden state per position, 128 numbers each, and from here to the end of `forward`, `x` *is* the hidden states. The code never makes a new variable for them: every block overwrites `x`.
 
 ### `lm_head`: back in `MiniGPT.forward`
 
