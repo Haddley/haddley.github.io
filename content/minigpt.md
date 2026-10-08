@@ -565,6 +565,9 @@ x = x + self.mlp(self.ln2(x))
 
 These two lines are a whole block. Read from the inside out, the first one normalises every hidden state (`self.ln1`, a *layer normalisation*), runs attention (`self.attn`), and adds what attention returns onto the hidden states (`x + …`). The second does the same with the MLP. The `x +` is "add, never replace", the *residual connection*. Normalising *before* each step, rather than after, is called *pre-LayerNorm*, and it tends to train more stably as models get deeper.
 
+![](assets/images/minigpt/annotated-blocks.svg)
+*The blocks code again, with a note beside each line in my own words*
+
 ### The blocks in the TypeScript this page runs
 
 The demos on this page run the same loop in [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts). Here it is with the inside of attention cut out, because it gets its own sections, and with my comments added:
