@@ -212,7 +212,7 @@ The machine is Part 3's, line for line, with three small differences. First, att
 out = mx.fast.scaled_dot_product_attention(q, k, v, scale=self.scale, mask="causal")
 ```
 
-The hand-written version in [Part 1](/posts/minigpt/#attention-causalselfattention-cell-12) is still the one to read to understand attention; this is the one to run.
+The hand-written version in [Part 1](/posts/minigpt/#attention-in-the-original-python) is still the one to read to understand attention; this is the one to run.
 
 Second, the token cards double as the answer cards without any bookkeeping, because there is no separate answer layer at all: the last working cards are simply scored against the token cards.
 
