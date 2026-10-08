@@ -37,7 +37,7 @@ How does our MiniGPT model pick a next letter? It takes two steps. First, it wor
 
 ### Spinning a wheel: an analogy
 
-A good way to picture the second step is a prize wheel at a fair. The wheel has 65 slices, one for each letter, and each slice is as big as that letter's chance. After `go`, the model works out that `o` is the most likely next letter, so `o` gets the biggest slice: 34.8% of the way round the wheel. The space gets 15.6%, `d` gets 15.4%, and so on. To pick the next letter, spin the wheel, and write down whatever letter stops under the pointer.
+A good way to picture the second step is a prize wheel at a fair. The wheel has 65 slices, one for each letter that could come next, and each slice is as big as that letter's chance. After `go`, the model works out that `o` is the most likely next letter, so `o` gets the biggest slice: 34.8% of the way round the wheel. The space gets 15.6%, `d` gets 15.4%, and so on. To pick the next letter, spin the wheel, and write down whatever letter stops under the pointer.
 
 ![](assets/images/minigpt/spin-the-wheel.svg)
 *The wheel after `go`, with the model's real chances. The same text gives the same wheel every time, but each spin can land somewhere different*
@@ -73,9 +73,9 @@ A horse! a horse! my kingdom for a hors
 
 ### Scores: what comes out of the closed box
 
-Before the model can draw the wheel, it gives every letter a *score*: a plain number that can be any size, even negative, where bigger means likelier. After `go`, `o` scores 4.878, the space 4.076, and `d` 4.062. The code calls these scores *logits*, one for each of the 65 letters. What the logits really are, and how the model works them out from the text it is given, I come back to [later](#lmhead-where-do-the-65-scores-logits-one-per-letter-come-from); for now, I treat the model as a closed box that the scores come out of. One last step, *softmax*, turns the 65 scores into the 65 chances, the slices of the wheel. It always does this the same way. It makes every score positive, so even `V`, at −7.421, gets a slice, however thin. It keeps the scores in the same order, so the biggest score always gets the biggest slice. And it scales them so that the 65 chances add up to exactly 100%. [Softmax: turning scores into chances](#softmax-turning-scores-into-chances), after temperature and top-k, shows the arithmetic. Two settings, temperature and top-k, can reshape the scores just before softmax, and the next two sections explain them.
+Before the model can draw the wheel, it gives each of the 65 letters in its vocabulary a *score*: a plain number for how likely that letter is to come next. A score can be any size, even negative, and bigger means likelier. After `go`, `o` scores 4.878, the space 4.076, and `d` 4.062. The code calls these scores *logits*: one for each letter that could come next. What the logits really are, and how the model works them out from the text it is given, I come back to [later](#lmhead-where-do-the-65-scores-logits-for-the-next-letter-come-from); for now, I treat the model as a closed box that the scores come out of. One last step, *softmax*, turns the 65 scores into the 65 chances, the slices of the wheel. It always does this the same way. It makes every score positive, so even `V`, at −7.421, gets a slice, however thin. It keeps the scores in the same order, so the biggest score always gets the biggest slice. And it scales them so that the 65 chances add up to exactly 100%. [Softmax: turning scores into chances](#softmax-turning-scores-into-chances), after temperature and top-k, shows the arithmetic. Two settings, temperature and top-k, can reshape the scores just before softmax, and the next two sections explain them.
 
-None of these steps involves any luck. The model's scores, temperature, top-k, and softmax are all fixed arithmetic. Give my MiniGPT model the same text, and it gives exactly the same score (logit) for each letter, every time. Pass the same scores (logits) to the code that applies temperature, top-k, and softmax, with the same settings, and it makes exactly the same wheel of 65 chances (probabilities), one per letter, every time. The only step that uses chance is the last one, the spin.
+None of these steps involves any luck. The model's scores, temperature, top-k, and softmax are all fixed arithmetic. Give my MiniGPT model the same text, and it gives exactly the same score (logit) for each letter that could come next, every time. Pass the same scores (logits) to the code that applies temperature, top-k, and softmax, with the same settings, and it makes exactly the same wheel of 65 chances (probabilities), one for each letter that could come next, every time. The only step that uses chance is the last one, the spin.
 
 ![](assets/images/minigpt/black-box.svg)
 *The model as a closed box. Temperature and top-k never touch what is inside it: they reshape the 65 scores that come out*
@@ -166,7 +166,7 @@ A small *k* makes the model play safe: with *k* = 1 it always takes the biggest 
 
 ### Top-k in the original Python
 
-In Jibin Joseph's notebook, the writing loop, `generate_text`, takes `top_k` as a setting, with a default of 200. It trims the wheel just before the chances are worked out, while they are still *scores*: one number per letter, where a bigger score means a bigger slice ([`lm_head`: where do the 65 scores come from?](#lmhead-where-do-the-65-scores-logits-one-per-letter-come-from), below, explains them). These are the notebook's own lines and comments:
+In Jibin Joseph's notebook, the writing loop, `generate_text`, takes `top_k` as a setting, with a default of 200. It trims the wheel just before the chances are worked out, while they are still *scores*: one number per letter, where a bigger score means a bigger slice ([`lm_head`: where do the 65 scores come from?](#lmhead-where-do-the-65-scores-logits-for-the-next-letter-come-from), below, explains them). These are the notebook's own lines and comments:
 
 ```python
 # Apply top-k filtering if requested.
@@ -304,7 +304,7 @@ I could change `block_size` to 1,000 in the code, but my trained model could not
 
 ### The real code: a list of 65 chances, and a spin
 
-The wheel is only a picture, but the live demo below does something very close to it. Before it picks a letter, it has worked out a list of 65 chances, one for each letter, in the order of the letters' ID numbers ([step 1](#letters-to-numbers) explains the IDs). Here is that list after `go`, with the letters that matter, and a running total. The chances add up to exactly 1:
+The wheel is only a picture, but the live demo below does something very close to it. Before it picks a letter, it has worked out a list of 65 chances, one for each letter that could come next, in the order of the letters' ID numbers ([step 1](#letters-to-numbers) explains the IDs). Here is that list after `go`, with the letters that matter, and a running total. The chances add up to exactly 1:
 
 | ID | Letter | Chance | Running total |
 |---|---|---|---|
@@ -333,7 +333,7 @@ next_id = torch.multinomial(probs, num_samples=1)
 idx = torch.cat([idx, next_id], dim=1)
 ```
 
-*Sample* is the experts' word for spinning the wheel. The first line is [softmax](#softmax-turning-scores-into-chances), turning the 65 scores into the 65 chances; just before it, the loop can also reshape the scores with *temperature* and *top-k*. Where the scores themselves come from is what [the next section](#lmhead-where-do-the-65-scores-logits-one-per-letter-come-from) explains.
+*Sample* is the experts' word for spinning the wheel. The first line is [softmax](#softmax-turning-scores-into-chances), turning the 65 scores into the 65 chances; just before it, the loop can also reshape the scores with *temperature* and *top-k*. Where the scores themselves come from is what [the next section](#lmhead-where-do-the-65-scores-logits-for-the-next-letter-come-from) explains.
 
 `torch.multinomial` keeps the walk round the wheel hidden inside PyTorch. The demos on this page do the same in TypeScript, which is JavaScript with types, using the same trained numbers, so there the walk is written out in full. This is the spin, from [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts), where `probs` is the same list of 65 chances:
 
@@ -365,14 +365,14 @@ return current + engine.manifest.chars[spinWheel(p)];
 
 
 
-### `lm_head`: where do the 65 scores (logits), one per letter, come from?
+### `lm_head`: where do the 65 scores (logits) for the next letter come from?
 
-Until now, I have treated the model as [a closed box](#scores-what-comes-out-of-the-closed-box): text goes in, and 65 scores, the logits, one per letter, come out. Now I open the box, one level down. I pass the text into my MiniGPT model, and inside, it goes through these stages:
+Until now, I have treated the model as [a closed box](#scores-what-comes-out-of-the-closed-box): text goes in, and 65 scores, the logits, come out: one for each letter that could come next. Now I open the box, one level down. I pass the text into my MiniGPT model, and inside, it goes through these stages:
 
 1. Each letter becomes a list of 128 numbers: one list for the letter itself, learned in training, plus one for its position in the text. The code calls these the *token embedding* and the *position embedding*, and [Step 2](#token-embeddings-and-position-embeddings) explains them.
 2. The lists pass through four *blocks*, which let each letter's list take in what the letters before it say. The blocks are where the model does its understanding, and [Step 3](#step-3-the-blocks) explains them. Between blocks, each letter's list is called its *hidden state*: hidden, because nobody outside the model sees it.
 3. Out of the last block, after one final normalisation, comes the last letter's list: 128 numbers that sum up the text so far. This is the *final hidden state*, and the notebook's own comment calls it that.
-4. `lm_head` turns the final hidden state into 65 scores, one for each letter. The code calls the scores *logits*.
+4. `lm_head` turns the final hidden state into 65 scores, one for each letter that could come next. The code calls the scores *logits*.
 5. Temperature and top-k reshape the scores, and *softmax* turns them into the 65 chances, or *probabilities*: the slices of the wheel. The sections above covered this stage.
 
 ![](assets/images/minigpt/open-box.svg)
@@ -382,7 +382,7 @@ Everything up to stage 3 is the *body* of the model. This section is about stage
 
 **First, the final normalisation.** Out of the last block come hidden states, one for each letter in the text: two for `go`. Only the last one matters here, because it is the only one that has seen the whole text. Its numbers are small: for `go`, they run from −1.26 to 1.00, and their *spread*, a measure of how far they typically sit from their average, is 0.33. The final normalisation, `final_ln` in the code, puts the list on a steady scale. First it rescales the 128 numbers so that they average 0 and spread 1. Then it stretches and shifts each number by its own trained amount. Its first four numbers go from −0.04, 0.17, 0.05 and −0.14 to −0.23, 0.70, 0.08 and −0.39. The pattern stays much the same, but now `lm_head` gets numbers on the same scale whatever the text was. The result is the final hidden state. The blocks use the same kind of normalisation inside them, which [Step 3](#step-3-the-blocks) comes back to.
 
-**Then `lm_head` gives every letter a score.** `lm_head`, short for *language-model head*, is the model's last layer. It is a table with one row for each of the 65 letters. Each row holds 128 numbers, learned in training, plus one extra number, a *bias*: 8,385 numbers in all. To score a letter, `lm_head` multiplies the final hidden state by that letter's row, number by number, adds up the 128 results, and adds the bias. This multiply-and-add is called a *dot product*. A big score means the final hidden state looks like the letter's row, and training made each row look like the moments when that letter comes next. After `go`, `o` scores 4.878, the space 4.076, `d` 4.062, and `n` 3.068. The lowest of the 65 is `V`, at −7.421.
+**Then `lm_head` scores each letter that could come next.** `lm_head`, short for *language-model head*, is the model's last layer. It is a table with one row for each of the 65 letters. Each row holds 128 numbers, learned in training, plus one extra number, a *bias*: 8,385 numbers in all. To score a letter, `lm_head` multiplies the final hidden state by that letter's row, number by number, adds up the 128 results, and adds the bias. This multiply-and-add is called a *dot product*. A big score means the final hidden state looks like the letter's row, and training made each row look like the moments when that letter comes next. After `go`, `o` scores 4.878, the space 4.076, `d` 4.062, and `n` 3.068. The lowest of the 65 is `V`, at −7.421.
 
 **The bias: a head start for common letters.** The bias is added whatever the text is, so it is a letter's starting score, before the final hidden state has any say. In my trained model the biases are tiny, from −0.107 for `&` to 0.057 for `s`, and they follow how common each letter is in Tiny Shakespeare: `s`, `e`, the space, and `t` get the biggest head starts, and `&`, `$`, `3`, `Q`, and `J` the biggest handicaps. The dot product does almost all of the work: for `o` after `go`, it gives 4.845, and the bias adds just 0.033. The demo below shows both parts of every score.
 
@@ -1426,7 +1426,7 @@ Before you look at the decoder below, match each name on the left with what it i
 | 2. position embedding | B. the tables of weights that make queries, keys, and values |
 | 3. `lm_head` | C. a letter's row of 128 learned numbers |
 | 4. causal mask | D. spinning the wheel |
-| 5. residual stream | E. the 65 rows that give every letter a score |
+| 5. residual stream | E. the 65 rows that score each letter that could come next |
 | 6. sampling | F. a position's row of 128 learned numbers |
 | 7. query, key, and value projections | G. the hidden states, as every block adds to them |
 
@@ -1464,7 +1464,7 @@ Here is each idea from this introduction in plain words, next to its name in the
 | spinning the wheel of chances | *sampling* |
 | keeping the biggest k slices | *top-k* sampling |
 | keeping the biggest slices until they add up to p | *top-p*, or *nucleus*, sampling |
-| the 65 rows that give every letter a score | the *language-model head* (`lm_head`), or *output layer* |
+| the 65 rows that score each letter that could come next | the *language-model head* (`lm_head`), or *output layer* |
 | the scores, before softmax | the *logits* |
 | a request the model writes for a program to carry out | a *tool call*, or *function call* |
 | the program around the model | the *harness* |
