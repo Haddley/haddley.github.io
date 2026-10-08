@@ -470,6 +470,126 @@ private linear(x: Float32Array, T: number, nIn: number, name: string): Float32Ar
 
 Then [`softmax`](#softmax-in-the-typescript-this-page-runs), from earlier, turns the scores into the `probs` list that `spinWheel` walks along. [Step 4](#step-4-chances) comes back to `lm_head`, once the post has explained where the hidden states come from.
 
+### Four blocks in a row
+
+One level further into the box. The final normalisation and `lm_head` read a hidden state, and that hidden state comes out of the biggest part of the model: four *blocks*, run one after another. This section is about what the blocks do as a whole; the sections after it open one up.
+
+Going into block 1, there is one hidden state for each letter in the text, and each one knows only its own letter and its own position. (Where those starting hidden states come from is the last layer of the box, [further in](#step-2-token-embeddings-and-position-embeddings).) Each block has two parts: **attention**, where each hidden state looks back at earlier positions and collects information from them, and the **MLP**, a small network that works on each hidden state on its own. Every block reads the hidden states and rewrites them.
+
+Attention followed by the MLP makes one *block*. My model runs four blocks in a row, and the bigger model in the notebook runs six. The blocks run one after another. The hidden states that come out of block 1 are the ones that go into block 2, block 2's go into block 3, and so on. After block 4, step 4 reads the last hidden state. Each block has its own parameters: the four blocks are built the same way, but they do not share any numbers, so each one can learn to do something different. With each block, the hidden states carry more context: by the later blocks, a hidden state is less about one letter and more about what is going on around it.
+
+The hidden states that come out of one block and the ones that go into the next are not two different things: they are the same vectors, and in the code they are the same variable, `x`. A block never swaps a hidden state for a new one. It adds to it twice: hidden state out = hidden state in + what attention adds + what the MLP adds. Here is how much each block adds to hidden state 3 in `goo`, where "size" is how big its 128 numbers are taken together:
+
+| Block | Size going in | Attention adds | The MLP adds | Size coming out | How alike in and out are |
+|---|---|---|---|---|---|
+| 1 | 0.50 | 0.59 | 1.66 | 2.16 | 0.47 |
+| 2 | 2.16 | 0.80 | 0.85 | 2.72 | 0.90 |
+| 3 | 2.72 | 0.90 | 1.16 | 2.92 | 0.90 |
+| 4 | 2.92 | 0.74 | 1.86 | 3.09 | 0.78 |
+
+Block 1 changes the hidden state the most: it adds more than the vector held when it left step 2. Blocks 2 and 3 refine it, so what comes out is still 0.90 like what went in. Block 4 makes a bigger change again, mostly in its MLP, as it gets the hidden state ready for step 4. By the end, hidden state 3 scores only 0.08 for likeness to the vector it started as.
+
+![](assets/images/minigpt/rounds.svg)
+*All the hidden states go through every block together. The coloured squares on each one show how much of the earlier positions it has taken in: hidden state 1 can only ever take in itself, while hidden state 3 takes in all three*
+
+Written out in full, the hidden states go through eight stages, always in the same order: attention, MLP, attention, MLP, attention, MLP, attention, MLP. The two take turns, and neither ever runs twice in a row. So if you see a diagram of a big GPT as a long stack of slabs labelled "Attention, Multilayer Perceptron, Attention, Multilayer Perceptron…", like the one in [Grant Sanderson's talk](https://www.youtube.com/watch?v=KJtZARuO3JY), it shows exactly what my small model does. The only difference is how many times the pair repeats: GPT-3 repeats it 96 times, with much longer vectors.
+
+Two details keep the blocks working well:
+
+- **Add, never replace.** Each block adds to the hidden states rather than replacing them, so nothing learned in an earlier block is lost. This also matters for learning: when the parameters are tuned, the message about which way to turn them has to travel backwards through every block, as [the next post](/posts/minigpt-grown/#how-does-it-know-which-way-to-nudge) shows. Adding rather than replacing gives that message a clear route all the way back, which is why models can be stacked dozens of blocks deep. Because every block adds to the same hidden states, they have another name in the jargon, taken together: the *residual stream*. It starts as the input embeddings and flows through every block.
+- **Normalise before each step.** Before attention, and again before the MLP, the numbers in every hidden state are rescaled to a standard range, so that no position is shouting. Then each of the 128 numbers is stretched and shifted by its own two fixed parameters, set by training, so the machine can turn some numbers back up if they matter more than others. This is called *layer normalisation*, or *LayerNorm*.
+
+:::under-the-hood How normalising works, with real numbers
+Take hidden state 3 in `goo` as it arrives at block 1: the `o` token embedding plus the position 3 embedding. Its 128 numbers are tiny, between −0.104 and 0.111, and start 0.019, −0.080, 0.013. Normalising takes three moves:
+
+1. **Subtract the average.** The average of all 128 numbers is 0.0009, so here this barely changes anything.
+2. **Divide by the spread.** The numbers' typical distance from their average, their *standard deviation*, is 0.0444. Dividing by it gives the vector a standard size, whatever size it arrived at: its numbers now start 0.40, −1.83, 0.28, and run from −2.36 to 2.48.
+3. **Stretch and shift.** Each of the 128 numbers is multiplied by its own stretch, and has its own shift added: two parameters each, set by training. For the first three numbers, the stretches are 1.05, 1.12, and 1.08, and the shifts are 0.01, −0.03, and −0.08.
+
+The result starts 0.43, −2.10, 0.22 (allowing for rounding): the numbers that go into block 1's weights in [Where the queries, keys and values come from](#where-the-queries-keys-and-values-come-from). [MiniGPT (Part 5)](/posts/minigpt4/) tries a simpler kind of normalising, *RMSNorm*, which skips the first move and the shift.
+:::
+
+Why four blocks, and not one? Because each block builds on the last. After block 1, a hidden state knows about the positions just before it. In block 2, it can look at hidden states that have *already* gathered their own neighbours, so it learns about positions further back, and so on. You can see this in the heads themselves. In block 1, the heads look between 1.6 and 5.7 positions back on average. In blocks 2 to 4, they look between 6 and 25 positions back.
+
+You can also watch the guess improve. After each block, I took the last hidden state as it was at that point, gave it the same final normalisation, scored it against the same 65 rows of `lm_head`, and turned the scores into chances, exactly as step 4 does after block 4. `lm_head` was only ever trained to read block 4's output, so this is a peek rather than something the machine does when it writes, but it works surprisingly well, and researchers use the same trick under the name *logit lens*:
+
+![](assets/images/minigpt/stopping-early.svg)
+*Real numbers from my trained model. Straight from step 2, before any block, it guesses the next letter right 12% of the time; after all four blocks, 49%*
+
+The picture follows the guess after *Before we proceed any further, hear me spea*, from the first speech in Tiny Shakespeare. Straight from step 2, before any block, the machine knows only that the last letter is an `a`, so it guesses `y`. Block 1 adds the letters in the positions just before it, and `t` takes the lead. Block 2 has seen enough of `spea` to try `c`. Only in blocks 3 and 4 does the whole picture, *hear me spea*, settle on `k`, at 98%.
+
+Try it below. The text starts as the line in the picture above. Choose how many of the four blocks run, from none, where `lm_head` reads the hidden state straight from the embeddings, to all four, the real model.
+
+:::demo minigpt-blocks
+:::
+
+:::test-drive Stop the model early
+1. Start with all four blocks: `k` gets 98.8%, and the model finishes *speak*.
+2. Press **none**. Now `lm_head` reads the hidden state straight from the embeddings, which knows only that the last letter is an `a`, so it guesses `y`, at 20.3%. Press **Write 60 letters**: the result looks like letters, but not like words.
+3. Press **1**: `t` leads, at 21.5%, and the writing turns into short, real words. Press **2**: `c` leads. Press **3**: `k` takes over, at 60.5%.
+4. Watch the hidden states as you go. Each block adds to the one before, so the squares get stronger block by block.
+5. Write 60 letters with all four blocks, and compare: names, new lines, and something close to English.
+:::
+
+:::watch-it Fixed or changing?
+Two kinds of thing take part from here on, and it helps to keep them apart.
+
+- **Fixed:** everything training set, the *parameters*. The token embeddings, the position embeddings, the weights in every block, and the rows of `lm_head` used in step 4. None of them changes while the machine is writing.
+- **Changing:** everything worked out for the text in front of it, the *activations*. That means the hidden states, which every block rewrites, and the scratch work inside each block: the queries, keys, and values in attention, and the numbers in the MLP. The scratch work is thrown away at the end of each block. Only the hidden states carry anything from one block to the next.
+
+So "the position 3 embedding" always means the fixed vector from the table, and "hidden state 3" means the vector that changes as it moves through the blocks.
+:::
+
+### The blocks in the original Python
+
+In Jibin Joseph's notebook, the four blocks are a loop near the end of `MiniGPT.forward`:
+
+```python
+# the four blocks, in order
+for block in self.blocks:
+    # each one rewrites the hidden states
+    x = block(x)
+```
+
+`self.blocks` is an `nn.ModuleList` holding four `TransformerBlock`s, one for each of `n_layer = 4`, and each with its own fixed weights. Block 1's output is block 2's input, because it is literally the same variable.
+
+Each block is a `TransformerBlock`, and its `forward` is two lines:
+
+
+```python
+# normalise, attention, add the result
+x = x + self.attn(self.ln1(x))
+# normalise, MLP, add the result
+x = x + self.mlp(self.ln2(x))
+```
+
+These two lines are a whole block. Read from the inside out, the first one normalises every hidden state (`self.ln1`, a *layer normalisation*), runs attention (`self.attn`), and adds what attention returns onto the hidden states (`x + …`). The second does the same with the MLP. The `x +` is "add, never replace", the *residual connection*. Normalising *before* each step, rather than after, is called *pre-LayerNorm*, and it tends to train more stably as models get deeper.
+
+### The blocks in the TypeScript this page runs
+
+The demos on this page run the same loop in [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts). Here it is with the inside of attention cut out, because it gets its own sections, and with my comments added:
+
+```typescript
+for (let L = 0; L < nBlocks; L++) {
+  const p = `blocks.${L}`;
+  // normalise, attention, add the result
+  const xn = this.layerNorm(x, T, C, `${p}.ln1`);
+  // … the queries, keys, values, and heads, worked out from xn into `mixed` …
+  const att = this.linear(mixed, T, C, `${p}.attn.proj`);
+  for (let i = 0; i < x.length; i++) x[i] += att[i];
+  // normalise, MLP, add the result
+  const xn2 = this.layerNorm(x, T, C, `${p}.ln2`);
+  const hidden = this.linear(xn2, T, C, `${p}.mlp.fc1`);
+  for (let i = 0; i < hidden.length; i++) hidden[i] = gelu(hidden[i]);
+  const mlp = this.linear(hidden, T, hidden.length / T, `${p}.mlp.fc2`);
+  const next = new Float32Array(x.length);
+  for (let i = 0; i < x.length; i++) next[i] = x[i] + mlp[i];
+  x = next;
+}
+```
+
+`x` holds the hidden states, one after another, 128 numbers each. The two `x[i] +` lines are "add, never replace", written out as loops. `nBlocks` is normally 4; the demo above sets it lower to stop early.
+
 ### Try it: my trained machine, running in your browser
 
 This is our MiniGPT model itself, all 826,433 numbers of it, running in this page. Nothing is sent anywhere: the five steps happen on your own computer. Type anything, and watch the chances for the next letter change as you type. Then spin the wheel, or let it write 200 letters. Use the sliders to try temperature and the wheel trimming, and use the block and head buttons to look inside any of its 16 attention heads.
@@ -650,15 +770,6 @@ The token and position embeddings are not the model, and an embedding on its own
 
 After step 2, there is one hidden state for each position, and each one knows only its own letter and its own position. Step 3 is where the real work happens. All the hidden states go through four *blocks*, one after another, and each block has two parts: **attention**, where each hidden state looks back at earlier positions and collects information from them, and the **MLP**, a small network that works on each hidden state on its own. Every block reads the hidden states and rewrites them. The next sections take one idea each: attention itself, where its queries, keys, and values come from, the real numbers, why there are several heads at once, the MLP, and why there are four blocks.
 
-:::watch-it Fixed or changing?
-Two kinds of thing take part from here on, and it helps to keep them apart.
-
-- **Fixed:** everything training set, the *parameters*. The token embeddings, the position embeddings, the weights in every block, and the rows of `lm_head` used in step 4. None of them changes while the machine is writing.
-- **Changing:** everything worked out for the text in front of it, the *activations*. That means the hidden states, which every block rewrites, and the scratch work inside each block: the queries, keys, and values in attention, and the numbers in the MLP. The scratch work is thrown away at the end of each block. Only the hidden states carry anything from one block to the next.
-
-So "the position 3 embedding" always means the fixed vector from the table, and "hidden state 3" means the vector that changes as it moves through the blocks.
-:::
-
 ### Inside a block: attention
 
 Here is the problem. Take hidden state 3, the one that started as the last `o` in `goo`. It says "I am an `o`, in position 3". That is not enough to guess what comes next, because it says nothing about what came *before*. The same `o` could be the second `o` in `good`, in `took`, or in `soon`, and each of those wants a different next letter.
@@ -780,50 +891,6 @@ So what is the MLP for? Grant Sanderson of 3Blue1Brown gives a good rule of thum
 :::brain-power
 After one block, every hidden state knows something about the positions just before it. What could a second block of exactly the same kind add that the first could not?
 :::
-
-### Four blocks in a row
-
-Attention followed by the MLP makes one *block*. My model runs four blocks in a row, and the bigger model in the notebook runs six. The blocks run one after another. The hidden states that come out of block 1 are the ones that go into block 2, block 2's go into block 3, and so on. After block 4, step 4 reads the last hidden state. Each block has its own parameters: the four blocks are built the same way, but they do not share any numbers, so each one can learn to do something different. With each block, the hidden states carry more context: by the later blocks, a hidden state is less about one letter and more about what is going on around it.
-
-The hidden states that come out of one block and the ones that go into the next are not two different things: they are the same vectors, and in the code they are the same variable, `x`. A block never swaps a hidden state for a new one. It adds to it twice: hidden state out = hidden state in + what attention adds + what the MLP adds. Here is how much each block adds to hidden state 3 in `goo`, where "size" is how big its 128 numbers are taken together:
-
-| Block | Size going in | Attention adds | The MLP adds | Size coming out | How alike in and out are |
-|---|---|---|---|---|---|
-| 1 | 0.50 | 0.59 | 1.66 | 2.16 | 0.47 |
-| 2 | 2.16 | 0.80 | 0.85 | 2.72 | 0.90 |
-| 3 | 2.72 | 0.90 | 1.16 | 2.92 | 0.90 |
-| 4 | 2.92 | 0.74 | 1.86 | 3.09 | 0.78 |
-
-Block 1 changes the hidden state the most: it adds more than the vector held when it left step 2. Blocks 2 and 3 refine it, so what comes out is still 0.90 like what went in. Block 4 makes a bigger change again, mostly in its MLP, as it gets the hidden state ready for step 4. By the end, hidden state 3 scores only 0.08 for likeness to the vector it started as.
-
-![](assets/images/minigpt/rounds.svg)
-*All the hidden states go through every block together. The coloured squares on each one show how much of the earlier positions it has taken in: hidden state 1 can only ever take in itself, while hidden state 3 takes in all three*
-
-Written out in full, the hidden states go through eight stages, always in the same order: attention, MLP, attention, MLP, attention, MLP, attention, MLP. The two take turns, and neither ever runs twice in a row. So if you see a diagram of a big GPT as a long stack of slabs labelled "Attention, Multilayer Perceptron, Attention, Multilayer Perceptron…", like the one in [Grant Sanderson's talk](https://www.youtube.com/watch?v=KJtZARuO3JY), it shows exactly what my small model does. The only difference is how many times the pair repeats: GPT-3 repeats it 96 times, with much longer vectors.
-
-Two details keep the blocks working well:
-
-- **Add, never replace.** Each block adds to the hidden states rather than replacing them, so nothing learned in an earlier block is lost. This also matters for learning: when the parameters are tuned, the message about which way to turn them has to travel backwards through every block, as [the next post](/posts/minigpt-grown/#how-does-it-know-which-way-to-nudge) shows. Adding rather than replacing gives that message a clear route all the way back, which is why models can be stacked dozens of blocks deep. Because every block adds to the same hidden states, they have another name in the jargon, taken together: the *residual stream*. It starts as the input embeddings and flows through every block.
-- **Normalise before each step.** Before attention, and again before the MLP, the numbers in every hidden state are rescaled to a standard range, so that no position is shouting. Then each of the 128 numbers is stretched and shifted by its own two fixed parameters, set by training, so the machine can turn some numbers back up if they matter more than others. This is called *layer normalisation*, or *LayerNorm*.
-
-:::under-the-hood How normalising works, with real numbers
-Take hidden state 3 in `goo` as it arrives at block 1: the `o` token embedding plus the position 3 embedding. Its 128 numbers are tiny, between −0.104 and 0.111, and start 0.019, −0.080, 0.013. Normalising takes three moves:
-
-1. **Subtract the average.** The average of all 128 numbers is 0.0009, so here this barely changes anything.
-2. **Divide by the spread.** The numbers' typical distance from their average, their *standard deviation*, is 0.0444. Dividing by it gives the vector a standard size, whatever size it arrived at: its numbers now start 0.40, −1.83, 0.28, and run from −2.36 to 2.48.
-3. **Stretch and shift.** Each of the 128 numbers is multiplied by its own stretch, and has its own shift added: two parameters each, set by training. For the first three numbers, the stretches are 1.05, 1.12, and 1.08, and the shifts are 0.01, −0.03, and −0.08.
-
-The result starts 0.43, −2.10, 0.22 (allowing for rounding): the numbers that go into block 1's weights in [Where the queries, keys and values come from](#where-the-queries-keys-and-values-come-from). [MiniGPT (Part 5)](/posts/minigpt4/) tries a simpler kind of normalising, *RMSNorm*, which skips the first move and the shift.
-:::
-
-Why four blocks, and not one? Because each block builds on the last. After block 1, a hidden state knows about the positions just before it. In block 2, it can look at hidden states that have *already* gathered their own neighbours, so it learns about positions further back, and so on. You can see this in the heads themselves. In block 1, the heads look between 1.6 and 5.7 positions back on average. In blocks 2 to 4, they look between 6 and 25 positions back.
-
-You can also watch the guess improve. After each block, I took the last hidden state as it was at that point, gave it the same final normalisation, scored it against the same 65 rows of `lm_head`, and turned the scores into chances, exactly as step 4 does after block 4. `lm_head` was only ever trained to read block 4's output, so this is a peek rather than something the machine does when it writes, but it works surprisingly well, and researchers use the same trick under the name *logit lens*:
-
-![](assets/images/minigpt/stopping-early.svg)
-*Real numbers from my trained model. Straight from step 2, before any block, it guesses the next letter right 12% of the time; after all four blocks, 49%*
-
-The picture follows the guess after *Before we proceed any further, hear me spea*, from the first speech in Tiny Shakespeare. Straight from step 2, before any block, the machine knows only that the last letter is an `a`, so it guesses `y`. Block 1 adds the letters in the positions just before it, and `t` takes the lead. Block 2 has seen enough of `spea` to try `c`. Only in blocks 3 and 4 does the whole picture, *hear me spea*, settle on `k`, at 98%.
 
 :::bullet-points Step 3, the blocks
 - Step 2 hands block 1 one input embedding per position. From then on, the machine works only on these vectors, the hidden states, never on letters.
@@ -1223,26 +1290,6 @@ This is step 2, line for line. Python counts from 0, so position 1 in the introd
 *Each letter's ID picks one row of the table, and that row's 128 numbers become the letter's token embedding. Both copies of `o` get the same row*
 
 `x = tok_emb + pos_emb` is where the hidden states are born. `x` holds one hidden state per position, 128 numbers each, and from here to the end of `forward`, `x` *is* the hidden states. The code never makes a new variable for them: every block overwrites `x`.
-
-```python
-# the four blocks, in order
-for block in self.blocks:
-    # each one rewrites the hidden states
-    x = block(x)
-```
-
-This is step 3. `self.blocks` is an `nn.ModuleList` holding four `TransformerBlock`s, one for each of `n_layer = 4`, and each with its own fixed weights. The loop is [Four blocks in a row](#four-blocks-in-a-row): block 1's output is block 2's input, because it is literally the same variable.
-
-### One block: `TransformerBlock.forward` (cell 1.4)
-
-```python
-# normalise, attention, add the result
-x = x + self.attn(self.ln1(x))
-# normalise, MLP, add the result
-x = x + self.mlp(self.ln2(x))
-```
-
-These two lines are a whole block. Read from the inside out, the first one normalises every hidden state (`self.ln1`, a *layer normalisation*), runs attention (`self.attn`), and adds what attention returns onto the hidden states (`x + …`). The second does the same with the MLP. The `x +` is "add, never replace", the *residual connection*. Normalising *before* each step, rather than after, is called *pre-LayerNorm*, and it tends to train more stably as models get deeper.
 
 ### Attention: `CausalSelfAttention` (cell 1.2)
 

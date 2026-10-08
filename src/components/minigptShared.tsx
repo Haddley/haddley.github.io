@@ -213,6 +213,31 @@ export function TextBox({
   );
 }
 
+export function cellColour(v: number, scale: number): string {
+  const a = Math.min(1, Math.abs(v) / scale).toFixed(2);
+  return v >= 0 ? `rgba(37, 99, 235, ${a})` : `rgba(234, 88, 12, ${a})`;
+}
+
+export function signed(v: number, places: number): string {
+  const text = Math.abs(v).toFixed(places);
+  return (v < 0 && Number(text) !== 0 ? '−' : '') + text;
+}
+
+export function maxAbs(values: Float32Array): number {
+  return values.reduce((m, v) => Math.max(m, Math.abs(v)), 0) || 1;
+}
+
+// 128 numbers as a grid of coloured squares: blue above 0, orange below, as in the post's pictures, stronger further from 0.
+export function Squares({ values, scale, name, maxWidth = '360px' }: { values: Float32Array; scale: number; name: string; maxWidth?: string }) {
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(16, 1fr)', gap: '2px', maxWidth }}>
+      {Array.from(values).map((v, i) => (
+        <div key={i} title={`${name} ${i + 1}: ${signed(v, 3)}`} style={{ aspectRatio: '1', borderRadius: '2px', background: cellColour(v, scale), border: '1px solid #e5e7eb' }} />
+      ))}
+    </div>
+  );
+}
+
 // Load the exhibit model once: about 3.3 MB of numbers, run in the reader's browser.
 export function useMiniGPTEngine(): { engine: MiniGPTEngine | null; error: string | null } {
   const [engine, setEngine] = React.useState<MiniGPTEngine | null>(null);

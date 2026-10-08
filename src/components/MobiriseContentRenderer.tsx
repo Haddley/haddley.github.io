@@ -11,6 +11,7 @@ import dynamic from 'next/dynamic';
 const MiniGPTDemo = dynamic(() => import('./MiniGPTDemo'), { ssr: false });
 const MiniGPTWheelDemo = dynamic(() => import('./MiniGPTWheelDemo'), { ssr: false });
 const MiniGPTHiddenStateDemo = dynamic(() => import('./MiniGPTHiddenStateDemo'), { ssr: false });
+const MiniGPTBlocksDemo = dynamic(() => import('./MiniGPTBlocksDemo'), { ssr: false });
 
 // Copy-to-clipboard button for code blocks
 function CopyCodeButton({ code }: { code: string }) {
@@ -557,6 +558,7 @@ function renderCallout(section: MobiriseParsedContent, index: number, nested: bo
     if (section.content.trim() === 'minigpt12') return wrap(index, nested, <MiniGPTWheelDemo settings />);
     if (section.content.trim() === 'minigpt-logits') return wrap(index, nested, <MiniGPTWheelDemo settings scores />);
     if (section.content.trim() === 'minigpt3') return wrap(index, nested, <MiniGPTHiddenStateDemo />);
+    if (section.content.trim() === 'minigpt-blocks') return wrap(index, nested, <MiniGPTBlocksDemo />);
     return null;
   }
   const style = CALLOUTS[section.calloutType || ''] || CALLOUTS['bullet-points'];

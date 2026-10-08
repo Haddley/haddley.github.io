@@ -25,8 +25,10 @@ export interface ForwardResult {
   // attention[layer][head] is a T x T matrix, row-major: row = letter doing the looking.
   attention: Float32Array[][];
   // Chances for the next letter if the machine stopped early:
-  // index 0 = cards only, 1..n_layer = after each block.
+  // index 0 = embeddings only, 1..n_layer = after each block.
   earlyProbs: Float32Array[];
+  // The last position's hidden state, before any block (index 0) and after each block that ran.
+  blockStates: Float32Array[];
 }
 
 // erf from Abramowitz and Stegun 7.1.26 (maximum error about 1.5e-7),
@@ -147,7 +149,11 @@ export class MiniGPTEngine {
     return this.linear(this.finalHidden(x, T), 1, this.manifest.n_embd, 'lm_head');
   }
 
-  forward(idsIn: number[]): ForwardResult {
+  // `blocks` runs only the first few blocks; `off` switches heads off, as "block:head" from 0,
+  // e.g. "0:2" for block 1, head 3. A switched-off head still works out its attention, so it can be
+  // drawn, but adds nothing to the hidden states. Both are experiments: the trained model has all four
+  // blocks and all 16 heads on.
+  forward(idsIn: number[], opts: { blocks?: number; off?: Set<string> } = {}): ForwardResult {
     const { n_layer, n_head, n_embd: C, block_size } = this.manifest;
     const ids = idsIn.slice(-block_size);
     const T = ids.length;
@@ -156,16 +162,18 @@ export class MiniGPTEngine {
     const tok = this.t('token_embedding.weight');
     const pos = this.t('position_embedding.weight');
 
-    // Step 2: letter card + position card, number by number.
+    // Step 2: token embedding + position embedding, number by number.
     let x = new Float32Array(T * C);
     for (let r = 0; r < T; r++)
       for (let i = 0; i < C; i++) x[r * C + i] = tok[ids[r] * C + i] + pos[r * C + i];
 
     const earlyProbs: Float32Array[] = [softmax(this.readOut(x, T))];
+    const blockStates: Float32Array[] = [x.slice((T - 1) * C, T * C)];
     const attention: Float32Array[][] = [];
+    const nBlocks = Math.max(0, Math.min(opts.blocks ?? n_layer, n_layer));
 
     // Step 3: the blocks.
-    for (let L = 0; L < n_layer; L++) {
+    for (let L = 0; L < nBlocks; L++) {
       const p = `blocks.${L}`;
       const xn = this.layerNorm(x, T, C, `${p}.ln1`);
       const q = this.linear(xn, T, C, `${p}.attn.query`);
@@ -175,6 +183,7 @@ export class MiniGPTEngine {
       const mixed = new Float32Array(T * C);
       const scale = 1 / Math.sqrt(hd);
       for (let h = 0; h < n_head; h++) {
+        const off = opts.off?.has(`${L}:${h}`) ?? false;
         const A = new Float32Array(T * T);
         for (let i = 0; i < T; i++) {
           const scores = new Float32Array(i + 1);
@@ -186,7 +195,7 @@ export class MiniGPTEngine {
           const w = softmax(scores);
           for (let j = 0; j <= i; j++) {
             A[i * T + j] = w[j];
-            for (let d = 0; d < hd; d++) mixed[i * C + h * hd + d] += w[j] * v[j * C + h * hd + d];
+            if (!off) for (let d = 0; d < hd; d++) mixed[i * C + h * hd + d] += w[j] * v[j * C + h * hd + d];
           }
         }
         heads.push(A);
@@ -203,6 +212,7 @@ export class MiniGPTEngine {
       for (let i = 0; i < x.length; i++) next[i] = x[i] + mlp[i];
       x = next;
       earlyProbs.push(softmax(this.readOut(x, T)));
+      blockStates.push(x.slice((T - 1) * C, T * C));
     }
 
     // Step 4: chances, from the last card only.
@@ -210,7 +220,7 @@ export class MiniGPTEngine {
     const logits = this.linear(finalHidden, 1, C, 'lm_head');
     if (logits.length !== V) throw new Error('Unexpected vocabulary size');
     const lastCard = x.slice((T - 1) * C, T * C);
-    return { probs: softmax(logits), logits, lastCard, finalHidden, attention, earlyProbs };
+    return { probs: softmax(logits), logits, lastCard, finalHidden, attention, earlyProbs, blockStates };
   }
 }
 

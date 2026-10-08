@@ -8,7 +8,7 @@
 
 import React from 'react';
 import { adjustChances, spinWheel } from '@/lib/minigptEngine';
-import { ChanceList, TextBox, Wheel, label, mono, panel, restRotation, rotationFor, show, topK, useMiniGPTEngine } from './minigptShared';
+import { ChanceList, TextBox, Wheel, label, mono, panel, restRotation, rotationFor, show, signed, topK, useMiniGPTEngine } from './minigptShared';
 
 const START_TEXT = 'go';
 const ONE_SPIN_MS = 2200;   // a single spin, slow enough to watch
@@ -18,11 +18,6 @@ const HOLD_MS = 450;        // pause on the winning slice before the next wheel 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 const START_TEMPERATURE = 1;
-
-function signed(v: number, places: number): string {
-  const text = Math.abs(v).toFixed(places);
-  return (v < 0 && Number(text) !== 0 ? '−' : '') + text;
-}
 
 const cell: React.CSSProperties = { padding: '2px 8px', textAlign: 'right', whiteSpace: 'nowrap' };
 

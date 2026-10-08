@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { adjustChances } from '@/lib/minigptEngine';
-import { TextBox, label, mono, panel, show, topK, useMiniGPTEngine } from './minigptShared';
+import { Squares, TextBox, label, maxAbs, mono, panel, show, signed, topK, useMiniGPTEngine } from './minigptShared';
 
 const START_TEXT = 'go';
 const START_TEMPERATURE = 1;
@@ -15,32 +15,7 @@ const COLOUR_SCALE = 4; // a number this far from 0, either way, gets the strong
 
 const note: React.CSSProperties = { fontSize: '0.8rem', color: '#6b7280', marginTop: '0.5rem' };
 
-function cellColour(v: number, scale: number): string {
-  const a = Math.min(1, Math.abs(v) / scale).toFixed(2);
-  return v >= 0 ? `rgba(37, 99, 235, ${a})` : `rgba(234, 88, 12, ${a})`;
-}
-
-function signed(v: number, places: number): string {
-  const text = Math.abs(v).toFixed(places);
-  return (v < 0 && Number(text) !== 0 ? '−' : '') + text;
-}
-
 const sign: React.CSSProperties = { fontSize: '1.4rem', fontWeight: 700, color: '#6b7280' };
-
-function maxAbs(values: Float32Array): number {
-  return values.reduce((m, v) => Math.max(m, Math.abs(v)), 0) || 1;
-}
-
-// 128 numbers as a grid of coloured squares: blue above 0, orange below, as in the post's pictures, stronger further from 0.
-function Squares({ values, scale, name }: { values: Float32Array; scale: number; name: string }) {
-  return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(16, 1fr)', gap: '2px', maxWidth: '360px' }}>
-      {Array.from(values).map((v, i) => (
-        <div key={i} title={`${name} ${i + 1}: ${signed(v, 3)}`} style={{ aspectRatio: '1', borderRadius: '2px', background: cellColour(v, scale), border: '1px solid #e5e7eb' }} />
-      ))}
-    </div>
-  );
-}
 
 // The average of a list's numbers, and their spread (standard deviation) around it.
 function describe(values: Float32Array): string {
