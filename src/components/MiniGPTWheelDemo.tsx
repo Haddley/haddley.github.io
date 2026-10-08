@@ -141,7 +141,7 @@ export default function MiniGPTWheelDemo({ settings = false, scores = false }: {
   return (
     <div className="minigpt-demo mbr-fonts-style" style={{ fontSize: '0.95rem' }}>
       <div style={panel}>
-        <div style={label}>The text so far (only the 65 letters in Tiny Shakespeare count)</div>
+        <div style={label}>The text so far</div>
         <TextBox
           value={text}
           onChange={(t) => {

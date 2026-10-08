@@ -101,7 +101,7 @@ export default function MiniGPTDemo() {
   return (
     <div className="minigpt-demo mbr-fonts-style" style={{ fontSize: '0.95rem' }}>
       <div style={panel}>
-        <div style={label}>Type some text (only the 65 letters in Tiny Shakespeare count)</div>
+        <div style={label}>The text so far</div>
         <TextBox value={text} onChange={setText} limit={engine.manifest.block_size} disabled={writing || spinning} rows={3} />
         {unknown.length > 0 && (
           <div style={{ color: '#b45309', fontSize: '0.85rem' }}>

@@ -196,8 +196,11 @@ export function TextBox({
         aria-invalid={refused}
         style={{ ...mono, width: '100%', fontSize: '1rem', padding: '0.5rem', borderRadius: '6px', border: `1px solid ${refused ? '#dc2626' : '#d1d5db'}` }}
       />
-      <div style={{ fontSize: '0.8rem', color: atLimit ? '#b45309' : '#6b7280', textAlign: 'right' }}>
-        {value.length} / {limit} letters
+      <div className="d-flex flex-wrap justify-content-between" style={{ fontSize: '0.8rem', color: '#6b7280', columnGap: '1rem' }}>
+        <span>Characters the model does not know, such as é or 7, are skipped.</span>
+        <span style={{ color: atLimit ? '#b45309' : undefined, marginLeft: 'auto' }}>
+          {value.length} / {limit} letters
+        </span>
       </div>
       {refused && (
         <div role="alert" style={{ color: '#dc2626', fontSize: '0.85rem' }}>
