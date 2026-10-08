@@ -169,7 +169,18 @@ logits = logits[:, -1, :]
 logits = logits / temperature
 ```
 
-That is all there is to it. After the first line, `logits` holds the 65 scores for the next letter, and dividing it by one number divides every score by that number: 65 divisions in one line.
+The first line needs explaining. The closed box does not give out just one set of 65 scores. It gives one set for **every letter of the text**, up to 128 of them: one row of 65 scores for each position. Each row is the model's guess at the letter that comes *after* that position. For `go`, `logits` holds 2 rows:
+
+| Row | The guess after | Biggest scores |
+|---|---|---|
+| 1 | `g` | space 3.830, `e` 3.261, `o` 3.025 |
+| 2 | `go` | `o` 4.878, space 4.076, `d` 4.062 |
+
+Only the last row is a guess about the letter that comes next, so `logits[:, -1, :]` keeps that row and drops the rest. The first `:` is the batch: the notebook can work on several texts at once, and here there is just one. The `-1` picks the last row, and the final `:` keeps all 65 scores in it.
+
+This might look wasteful, but it is just how the model works. The blocks have to work out a hidden state for every position anyway, because attention lets each letter look back at the ones before it. Scoring all of them costs a little extra while the model writes, but in training every row is useful: in practice text, the real next letter after every position is already known, so all of the guesses can be checked at once. [The next post](/posts/minigpt-grown/) shows how.
+
+That is all there is to it. After the first line, `logits` holds the 65 scores for what the next letter might be, and dividing it by one number divides every score by that number: 65 divisions in one line.
 
 ![](assets/images/minigpt/annotated-temperature.svg)
 *The temperature lines again, with a note beside each line in my own words*
@@ -188,7 +199,13 @@ The gap is what matters. Softmax ignores the scores themselves and looks only at
 
 A temperature of exactly 0 would make the notebook divide by zero. The demos on this page treat 0 as "always take the biggest slice" instead, which is where a temperature heading towards 0 is going anyway.
 
-The name comes from physics. The same formula describes how particles spread out across energy levels, and there you divide by the temperature: cold particles all settle into the lowest level, like the favourite taking the whole wheel, and hot ones spread out across every level, like every letter getting a similar slice.
+The name comes from physics, and it is more than a figure of speech. The same formula, called the *Boltzmann distribution* there, gives the chance of finding a particle at each energy level: *e* raised to the power of minus the energy, divided by the temperature, then scaled so that the chances add up to 1. A lower energy level is a likelier one, so a letter's score plays the part of minus the energy: a high score is like a low, comfortable level. When it is cold, almost every particle settles into the lowest level, like the favourite taking the whole wheel. When it is hot, they spread out across every level, like every letter getting a similar slice. As [Wikipedia's softmax article](https://en.wikipedia.org/wiki/Softmax_function#Statistical_mechanics) puts it, "In statistical mechanics, the softargmax function is known as the Boltzmann distribution (or Gibbs distribution)."
+
+Machine learning borrowed the word. In [Distilling the Knowledge in a Neural Network](https://arxiv.org/abs/1503.02531) (2015), Geoffrey Hinton, Oriol Vinyals, and Jeff Dean write softmax with a *T* in it, and explain:
+
+> *T* is a temperature that is normally set to 1. Using a higher value for *T* produces a softer probability distribution over classes.
+
+A softer distribution is an evener wheel: exactly what the table above shows at a temperature of 2.
 
 ### Top-k: keeping only the biggest slices
 
@@ -430,7 +447,7 @@ In the code, the hidden states are just `x`, one list for each letter, all the w
 The scores are called `logits`. Then, in the writing loop, `generate_text`:
 
 ```python
-# keep only the last letter's 65 scores
+# keep only the last row: the scores for the next letter
 logits = logits[:, -1, :]
 # the chances: the slices of the wheel
 probs = torch.softmax(logits, dim=-1)
@@ -1444,6 +1461,8 @@ The tiny differences come from the MLP's bend, GELU: llama.cpp uses a fast appro
 - [End-To-End Memory Networks — Sukhbaatar et al., 2015](https://arxiv.org/abs/1503.08895)
 - [Deep Residual Learning for Image Recognition — He et al., 2015](https://arxiv.org/abs/1512.03385)
 - [Layer Normalization — Ba, Kiros & Hinton, 2016](https://arxiv.org/abs/1607.06450)
+- [Distilling the Knowledge in a Neural Network — Hinton, Vinyals & Dean, 2015](https://arxiv.org/abs/1503.02531)
+- [Softmax function, statistical mechanics — Wikipedia](https://en.wikipedia.org/wiki/Softmax_function#Statistical_mechanics)
 - [Attention Is All You Need — Vaswani et al., 2017](https://arxiv.org/abs/1706.03762)
 - [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding — Devlin et al., 2018](https://arxiv.org/abs/1810.04805)
 - [Language Models are Few-Shot Learners (GPT-3) — Brown et al., 2020](https://arxiv.org/abs/2005.14165)
