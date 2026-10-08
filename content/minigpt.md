@@ -837,6 +837,113 @@ const att = this.linear(mixed, T, C, `${p}.attn.proj`);
 
 `hd` is 32, a head's share of the 128 numbers, and `h * hd` picks that head's piece of each query, key, and value. `scores` only ever has `i + 1` entries, one for each position up to `i`, so the "only earlier positions" rule needs no mask at all: later positions are simply never looked at. This is the same arithmetic as the notebook's, without the extra lines the demos use to switch heads off and to record them for drawing.
 
+### Several heads at once
+
+A block does not run attention just once. It runs it four times side by side, and each copy is called a *head*. Each head gets its own 32-number piece of every query, key, and value, and every piece is made from the whole hidden state. Same hidden states, same moment, but four different queries, and so four different answers.
+
+:::pencil Draw a head
+Imagine a head that has learned one simple habit: every position puts all of its attention on the position just before it, and position 1, which has nothing before it, attends to itself. Fill in its grid of weights for `goo`.
+
+:::answer
+| | 1 (`g`) | 2 (`o`) | 3 (`o`) |
+|---|---|---|---|
+| position 1 | 100% | 0 | 0 |
+| position 2 | 100% | 0 | 0 |
+| position 3 | 0 | 100% | 0 |
+
+Every row still adds up to 100%, and the upper-right triangle is still all zeros. After one pass through this head, what each hidden state collects describes the position before it, which is exactly the clue a character-level model needs. Real heads are rarely this tidy, but this one really exists: the first block of my trained model grew a head that puts about 96% of each position's attention on the position just before it. Head 1 in the table below behaves almost exactly like this.
+:::
+:::
+
+Here is what hidden state 3 collects from each of block 1's four heads:
+
+| Head | position 1 (`g`) | position 2 (`o`) | position 3 (itself) | In short |
+|---|---|---|---|---|
+| 1 | 4.0% | **92.9%** | 3.1% | one position back |
+| 2 | **83.4%** | 12.2% | 4.4% | two positions back |
+| 3 | **83.4%** | 14.9% | 1.6% | two positions back |
+| 4 | 24.7% | **66.5%** | 8.8% | one position back, more loosely |
+
+Between them, the four heads tell hidden state 3 exactly what it needs to know. Heads 1 and 4 say "one position back, there is an `o`", and heads 2 and 3 say "two positions back, there is a `g`". Put together: `g`, `o`, then me. That is `goo`, and it is why `d` ends up so likely.
+
+The same habits show up on any text. Here are all four heads reading a line from *Romeo and Juliet*:
+
+![](assets/images/minigpt/four-heads.svg)
+*Real attention, measured from my trained model. Each row is a position, labelled with the letter it started from, and each dot shows how much attention it gives the position above*
+
+Nobody designed these habits. Training grew them, because they help with the guessing game. Two heads even learned nearly the same habit: nothing forces heads to be different, and training simply found two copies useful. Between them, after block 1, every hidden state carries information about the two or three positions before it, which is the same clue you would get by counting which letters follow which, and then some.
+
+At the end of attention, what the four heads collected, 32 numbers each, is laid side by side to make 128 numbers again. One more table of weights then mixes them, so that what all four heads found ends up in the one hidden state.
+
+Why 32? The machine makes one query, one key, and one value for each hidden state, each 128 numbers long and each made from the *whole* hidden state. Then it cuts each of them into four pieces of 32, one piece per head. So the heads share the block's three tables of weights between them, rather than each adding more. The 4 is not fixed. With 8 heads, each head's query, key, and value would be 16 numbers long: more queries, but cruder ones. The bigger model in the notebook uses 6 heads of 64. More heads is not automatically better; it is a trade-off that model builders settle by experiment. The only rule is that the vector size must divide evenly by the number of heads.
+
+Try it below. Switch any of the 16 heads off, and compare the chances, and the writing, with the real model. A head that is off still works out its attention, but adds nothing to the hidden states. The text starts as `goo`.
+
+:::demo minigpt-heads
+:::
+
+:::test-drive Switch the heads off
+1. With everything on, `d` gets 96.6%.
+2. Switch off block 1's heads 1 and 4, the two that look one position back. `d` falls to 67.4%: the model has lost most of the clue that an `o` came just before.
+3. Reset, and switch off block 1's heads 2 and 3 instead, the two that look two positions back. `d` holds at 91.9%, but write 60 letters both ways: without them, the writing gets stuck on *the the the*.
+4. Switch off all four of block 1's heads. `d` falls to 20.2%.
+5. Reset, and switch off all 12 heads in blocks 2, 3, and 4. `d` is still 95.3%, because the next letter only needs the last few letters, but the writing loops: *with the with the*. The later blocks' heads look further back, and keep the writing going somewhere.
+:::
+
+### Heads in the original Python
+
+The heads are not separate pieces of code. The notebook makes one query, one key, and one value of 128 numbers for each position, then cuts each one into four pieces of 32 and regroups the pieces by head, so that all four heads run at once in the same multiplications. These lines are in the attention code above:
+
+```python
+# cut each one into 4 pieces of 32
+q = q.view(B, T, self.n_head, self.head_dim)
+# group the pieces by head
+q = q.transpose(1, 2)
+```
+
+and, after collecting the values, the reverse:
+
+```python
+# rejoin the four heads: 128 numbers again
+out = out.transpose(1, 2).contiguous().view(B, T, C)
+# mix what the four heads found
+out = self.proj(out)
+```
+
+![](assets/images/minigpt/annotated-heads.svg)
+*The head lines again, with a note beside each line in my own words*
+
+### Heads in the TypeScript this page runs
+
+In [the TypeScript above](#attention-in-the-typescript-this-page-runs), the heads are the outer loop, `for (let h = 0; h < n_head; h++)`, and a head's piece of each vector is the 32 numbers starting at `h * hd`. So there is no cutting or regrouping to do: each head simply reads its own 32 numbers of every query, key, and value, and writes its own 32 numbers of `mixed`. `attn.proj` then mixes all 128.
+
+:::fireside-chat Tonight: Attention and the MLP argue about who does the real work
+**Attention:** Let us be honest. Without me, every hidden state in this model is on its own. I am the only part where hidden states talk to each other.
+
+**MLP:** Talking is cheap. You collect the values. I actually do something with them. And I have twice as many parameters as you: 131,712 per block, against your 66,048.
+
+**Attention:** Parameters are not everything. Without me, after an `o` you would make the same guess whether the word was heading for `good` or `took`.
+
+**MLP:** And without me, all you ever do is mix. Every value you hand back is a weighted average of the values you were given. You cannot come up with anything that was not already there.
+
+**Attention:** Fair. But I decide *who* to listen to, and I decide afresh for every piece of text. You do exactly the same sum for every hidden state, whoever its neighbours are.
+
+**MLP:** Which is why the notebook gives us one turn each, four blocks in a row.
+
+**Attention:** And the residual connection keeps both our work. Truce?
+
+**MLP:** Truce. Until the next block.
+:::
+
+:::bullet-points Inside the blocks
+- Block 1 gets one hidden state per position. From then on, the machine works only on these vectors, never on letters.
+- In attention, each hidden state makes a query, a key, and a value, using the block's three fixed tables of weights.
+- It matches its query against the key of every earlier position, and its own, shares out its attention, and collects their values in those shares.
+- Four heads run at once, each with its own 32-number piece of every query, key, and value.
+- In the MLP, each hidden state is worked on alone, using knowledge stored in the parameters.
+- Four blocks in a row let each hidden state gather information from further and further back.
+:::
+
 ### Try it: my trained machine, running in your browser
 
 This is our MiniGPT model itself, all 826,433 numbers of it, running in this page. Nothing is sent anywhere: the five steps happen on your own computer. Type anything, and watch the chances for the next letter change as you type. Then spin the wheel, or let it write 200 letters. Use the sliders to try temperature and the wheel trimming, and use the block and head buttons to look inside any of its 16 attention heads.
@@ -1016,73 +1123,6 @@ The token and position embeddings are not the model, and an embedding on its own
 ### Step 3: the blocks
 
 After step 2, there is one hidden state for each position, and each one knows only its own letter and its own position. Step 3 is where the real work happens. All the hidden states go through four *blocks*, one after another, and each block has two parts: **attention**, where each hidden state looks back at earlier positions and collects information from them, and the **MLP**, a small network that works on each hidden state on its own. Every block reads the hidden states and rewrites them. The next sections take one idea each: attention itself, where its queries, keys, and values come from, the real numbers, why there are several heads at once, the MLP, and why there are four blocks.
-
-### Several heads at once
-
-A block does not run attention just once. It runs it four times side by side, and each copy is called a *head*. Each head gets its own 32-number piece of every query, key, and value, and every piece is made from the whole hidden state. Same hidden states, same moment, but four different queries, and so four different answers.
-
-:::pencil Draw a head
-Imagine a head that has learned one simple habit: every position puts all of its attention on the position just before it, and position 1, which has nothing before it, attends to itself. Fill in its grid of weights for `goo`.
-
-:::answer
-| | 1 (`g`) | 2 (`o`) | 3 (`o`) |
-|---|---|---|---|
-| position 1 | 100% | 0 | 0 |
-| position 2 | 100% | 0 | 0 |
-| position 3 | 0 | 100% | 0 |
-
-Every row still adds up to 100%, and the upper-right triangle is still all zeros. After one pass through this head, what each hidden state collects describes the position before it, which is exactly the clue a character-level model needs. Real heads are rarely this tidy, but this one really exists: the first block of my trained model grew a head that puts about 96% of each position's attention on the position just before it. Head 1 in the table below behaves almost exactly like this.
-:::
-:::
-
-Here is what hidden state 3 collects from each of block 1's four heads:
-
-| Head | position 1 (`g`) | position 2 (`o`) | position 3 (itself) | In short |
-|---|---|---|---|---|
-| 1 | 4.0% | **92.9%** | 3.1% | one position back |
-| 2 | **83.4%** | 12.2% | 4.4% | two positions back |
-| 3 | **83.4%** | 14.9% | 1.6% | two positions back |
-| 4 | 24.7% | **66.5%** | 8.8% | one position back, more loosely |
-
-Between them, the four heads tell hidden state 3 exactly what it needs to know. Heads 1 and 4 say "one position back, there is an `o`", and heads 2 and 3 say "two positions back, there is a `g`". Put together: `g`, `o`, then me. That is `goo`, and it is why `d` ends up so likely.
-
-The same habits show up on any text. Here are all four heads reading a line from *Romeo and Juliet*:
-
-![](assets/images/minigpt/four-heads.svg)
-*Real attention, measured from my trained model. Each row is a position, labelled with the letter it started from, and each dot shows how much attention it gives the position above*
-
-Nobody designed these habits. Training grew them, because they help with the guessing game. Two heads even learned nearly the same habit: nothing forces heads to be different, and training simply found two copies useful. Between them, after block 1, every hidden state carries information about the two or three positions before it, which is the same clue you would get by counting which letters follow which, and then some.
-
-At the end of attention, what the four heads collected, 32 numbers each, is laid side by side to make 128 numbers again. One more table of weights then mixes them, so that what all four heads found ends up in the one hidden state.
-
-Why 32? The machine makes one query, one key, and one value for each hidden state, each 128 numbers long and each made from the *whole* hidden state. Then it cuts each of them into four pieces of 32, one piece per head. So the heads share the block's three tables of weights between them, rather than each adding more. The 4 is not fixed. With 8 heads, each head's query, key, and value would be 16 numbers long: more queries, but cruder ones. The bigger model in the notebook uses 6 heads of 64. More heads is not automatically better; it is a trade-off that model builders settle by experiment. The only rule is that the vector size must divide evenly by the number of heads.
-
-:::fireside-chat Tonight: Attention and the MLP argue about who does the real work
-**Attention:** Let us be honest. Without me, every hidden state in this model is on its own. I am the only part where hidden states talk to each other.
-
-**MLP:** Talking is cheap. You collect the values. I actually do something with them. And I have twice as many parameters as you: 131,712 per block, against your 66,048.
-
-**Attention:** Parameters are not everything. Without me, after an `o` you would make the same guess whether the word was heading for `good` or `took`.
-
-**MLP:** And without me, all you ever do is mix. Every value you hand back is a weighted average of the values you were given. You cannot come up with anything that was not already there.
-
-**Attention:** Fair. But I decide *who* to listen to, and I decide afresh for every piece of text. You do exactly the same sum for every hidden state, whoever its neighbours are.
-
-**MLP:** Which is why the notebook gives us one turn each, four blocks in a row.
-
-**Attention:** And the residual connection keeps both our work. Truce?
-
-**MLP:** Truce. Until the next block.
-:::
-
-:::bullet-points Step 3, the blocks
-- Step 2 hands block 1 one input embedding per position. From then on, the machine works only on these vectors, the hidden states, never on letters.
-- In attention, each hidden state makes a query, a key, and a value, using the block's three fixed tables of weights.
-- It matches its query against the key of every earlier position, and its own, shares out its attention, and collects their values in those shares.
-- Four heads run at once, each with its own 32-number piece of every query, key, and value.
-- In the MLP, each hidden state is worked on alone, using knowledge stored in the parameters.
-- Four blocks in a row let each hidden state gather information from further and further back.
-:::
 
 ### Step 4: chances
 

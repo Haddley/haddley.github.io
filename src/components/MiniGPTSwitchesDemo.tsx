@@ -53,13 +53,19 @@ export default function MiniGPTSwitchesDemo({ kind }: { kind: 'mlp' | 'heads' })
     setOff(next);
     setWritten(null);
   };
-  const switchButton = (key: string, text: string) => (
+  const switchButton = (key: string, text: string, compact = false) => (
     <button
       key={key}
       type="button"
+      title={off.has(key) ? 'off: press to switch on' : 'on: press to switch off'}
       className={`btn btn-sm ${off.has(key) ? 'btn-outline-secondary' : 'btn-primary'}`}
       onClick={() => toggle(key)}
-      style={{ minWidth: '4.2rem', textDecoration: off.has(key) ? 'line-through' : 'none' }}
+      style={{
+        minWidth: compact ? '2.4rem' : '4.2rem',
+        padding: compact ? '0.2rem 0.5rem' : undefined,
+        margin: 0,
+        textDecoration: off.has(key) ? 'line-through' : 'none',
+      }}
     >
       {text}
     </button>
@@ -87,11 +93,15 @@ export default function MiniGPTSwitchesDemo({ kind }: { kind: 'mlp' | 'heads' })
             {Array.from({ length: n_layer }, (_, L) => switchButton(String(L), `block ${L + 1}`))}
           </div>
         ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: `auto repeat(${n_head}, auto)`, gap: '0.4rem', justifyContent: 'start', alignItems: 'center' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: `auto repeat(${n_head}, auto)`, gap: '0.35rem', justifyContent: 'start', alignItems: 'center' }}>
+            <span />
+            {Array.from({ length: n_head }, (_, h) => (
+              <span key={h} style={{ fontSize: '0.75rem', color: '#6b7280', textAlign: 'center' }}>head</span>
+            ))}
             {Array.from({ length: n_layer }, (_, L) => (
               <React.Fragment key={L}>
-                <span style={{ fontSize: '0.85rem', color: '#4b5563', paddingRight: '0.3rem' }}>block {L + 1}</span>
-                {Array.from({ length: n_head }, (_, h) => switchButton(`${L}:${h}`, `head ${h + 1}`))}
+                <span style={{ fontSize: '0.85rem', color: '#4b5563', paddingRight: '0.3rem', whiteSpace: 'nowrap' }}>block {L + 1}</span>
+                {Array.from({ length: n_head }, (_, h) => switchButton(`${L}:${h}`, String(h + 1), true))}
               </React.Fragment>
             ))}
           </div>
