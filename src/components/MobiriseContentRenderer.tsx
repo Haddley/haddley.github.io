@@ -555,6 +555,7 @@ function renderCallout(section: MobiriseParsedContent, index: number, nested: bo
     if (section.content.trim() === 'minigpt') return wrap(index, nested, <MiniGPTDemo />);
     if (section.content.trim() === 'minigpt1') return wrap(index, nested, <MiniGPTWheelDemo />);
     if (section.content.trim() === 'minigpt12') return wrap(index, nested, <MiniGPTWheelDemo settings />);
+    if (section.content.trim() === 'minigpt-logits') return wrap(index, nested, <MiniGPTWheelDemo settings scores />);
     if (section.content.trim() === 'minigpt3') return wrap(index, nested, <MiniGPTHiddenStateDemo />);
     return null;
   }

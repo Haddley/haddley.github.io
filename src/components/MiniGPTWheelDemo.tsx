@@ -3,11 +3,12 @@
 // The first, simpler live demo in MiniGPT (Part 1): only what the post has explained by that point.
 // The reader edits the text, sees the model's wheel of chances for the next letter, and spins it,
 // once or ten times in a row. With `settings`, it also has temperature and top-k sliders, which
-// reshape the wheel before it spins. No top-p or attention yet.
+// reshape the wheel before it spins. With `scores` as well, a table shows each step of the reshaping,
+// from the model's scores (logits) to the chances. No top-p or attention yet.
 
 import React from 'react';
 import { adjustChances, spinWheel } from '@/lib/minigptEngine';
-import { ChanceList, TextBox, Wheel, label, mono, panel, restRotation, rotationFor, show, useMiniGPTEngine } from './minigptShared';
+import { ChanceList, TextBox, Wheel, label, mono, panel, restRotation, rotationFor, show, topK, useMiniGPTEngine } from './minigptShared';
 
 const START_TEXT = 'go';
 const ONE_SPIN_MS = 2200;   // a single spin, slow enough to watch
@@ -18,7 +19,52 @@ const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 const START_TEMPERATURE = 1;
 
-export default function MiniGPTWheelDemo({ settings = false }: { settings?: boolean }) {
+function signed(v: number, places: number): string {
+  const text = Math.abs(v).toFixed(places);
+  return (v < 0 && Number(text) !== 0 ? '−' : '') + text;
+}
+
+const cell: React.CSSProperties = { padding: '2px 8px', textAlign: 'right', whiteSpace: 'nowrap' };
+
+// Each step from the scores to the chances, for the letters with the biggest scores: the score (logit),
+// the score divided by the temperature, whether top-k keeps it, and the chance after softmax.
+function ScoreTable({ logits, chances, temperature, k, chars }: { logits: Float32Array; chances: Float32Array; temperature: number; k: number; chars: string[] }) {
+  const rows = topK(logits, 6);
+  const kept = new Set(topK(logits, k));
+  const greedy = temperature <= 0.01;
+  return (
+    <div style={{ overflowX: 'auto' }}>
+      <table style={{ ...mono, fontSize: '0.8rem', borderCollapse: 'collapse' }}>
+        <thead>
+          <tr style={{ borderBottom: '1px solid #d1d5db', fontFamily: 'inherit' }}>
+            <th style={{ ...cell, textAlign: 'center' }}></th>
+            <th style={cell}>score</th>
+            <th style={cell}>{greedy ? '÷ 0' : `÷ ${temperature.toFixed(1)}`}</th>
+            <th style={cell}>top-k</th>
+            <th style={cell}>chance</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((i) => (
+            <tr key={i}>
+              <td style={{ ...cell, textAlign: 'center', fontWeight: 700 }}>{show(chars[i])}</td>
+              <td style={cell}>{signed(logits[i], 3)}</td>
+              <td style={cell}>{greedy ? '—' : signed(logits[i] / temperature, 3)}</td>
+              <td style={cell}>{greedy ? '—' : kept.has(i) ? 'kept' : 'cut'}</td>
+              <td style={{ ...cell, fontWeight: 700 }}>{(chances[i] * 100).toFixed(1)}%</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div style={{ fontSize: '0.8rem', color: '#6b7280', marginTop: '0.4rem', maxWidth: '22rem' }}>
+        The six biggest of the 65 scores. {greedy ? 'At temperature 0, the biggest score simply takes the whole wheel. ' : ''}
+        Same text and same settings always give the same numbers: only the spin is left to chance.
+      </div>
+    </div>
+  );
+}
+
+export default function MiniGPTWheelDemo({ settings = false, scores = false }: { settings?: boolean; scores?: boolean }) {
   const { engine, error } = useMiniGPTEngine();
   const [text, setText] = React.useState(START_TEXT);
   const [spinning, setSpinning] = React.useState(false);
@@ -41,6 +87,7 @@ export default function MiniGPTWheelDemo({ settings = false }: { settings?: bool
     (logits: Float32Array, probs: Float32Array) => (settings ? adjustChances(logits, temperature, 1, topKSetting) : probs),
     [settings, temperature, topKSetting]
   );
+  const logits = React.useMemo(() => (engine && ids.length > 0 ? engine.forward(ids).logits : null), [engine, ids]);
   const chances = React.useMemo(() => {
     if (!engine || ids.length === 0) return null;
     const r = engine.forward(ids);
@@ -152,8 +199,12 @@ export default function MiniGPTWheelDemo({ settings = false }: { settings?: bool
         {chances ? (
           <div className="d-flex flex-wrap align-items-center" style={{ gap: '1.5rem' }}>
             <Wheel chances={chances} chars={chars} rotation={spinTo ?? restRotation(chances)} spinning={spinning} durationMs={durationMs} />
-            <div style={{ flex: '0 1 17rem', maxWidth: '17rem' }}>
-              <ChanceList chances={chances} chars={chars} k={6} />
+            <div style={{ flex: scores ? '0 1 22rem' : '0 1 17rem', maxWidth: scores ? '22rem' : '17rem' }}>
+              {scores && logits ? (
+                <ScoreTable logits={logits} chances={chances} temperature={temperature} k={topKSetting} chars={chars} />
+              ) : (
+                <ChanceList chances={chances} chars={chars} k={6} />
+              )}
               {/* Space for the message is always kept, so the layout does not jump as it comes and goes. */}
               <div style={{ marginTop: '0.6rem', fontSize: '0.9rem', minHeight: '2.8em', visibility: landed !== null && !spinning ? 'visible' : 'hidden' }}>
                 The pointer landed on <strong style={mono}>{show(landed ?? ' ')}</strong>, so the model wrote it, and made a new wheel.

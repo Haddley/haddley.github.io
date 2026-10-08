@@ -86,7 +86,26 @@ Turn it all the way down to 0, and the model always takes the biggest slice, and
 
 ### Temperature in the original Python
 
-In Jibin Joseph's notebook, the writing loop, `generate_text`, takes `temperature` as a setting, with a default of 0.8. It works on the *scores*, one number per letter, just before they become chances ([`lm_head` and softmax](#lmhead-and-softmax-where-the-65-chances-come-from), below, explains them). These are the notebook's own lines and comments:
+To read the code, I need one more idea first. Before the model can draw the wheel, it gives every letter a *score*: a plain number that can be any size, even negative, where bigger means likelier. After `go`, `o` scores 4.878, the space 4.076, and `d` 4.062. The code calls these scores *logits*, one for each of the 65 letters. What the logits really are, and how the model works them out from the text it is given, I come back to [later](#lmhead-and-softmax-where-the-65-chances-come-from); for now, I treat the model as a closed box that the scores come out of. One last step, *softmax*, turns the 65 scores into the 65 chances, the slices of the wheel. It always does this the same way. It makes every score positive, so even `V`, at −7.421, gets a slice, however thin. It keeps the scores in the same order, so the biggest score always gets the biggest slice. And it scales them so that the 65 chances add up to exactly 100%. The same section shows the arithmetic. Temperature and top-k work on the scores, just before softmax.
+
+None of these steps involves any luck. The model's scores, temperature, top-k, and softmax are all fixed arithmetic. Give my MiniGPT model the same text, and it gives exactly the same score (logit) for each letter, every time. Pass the same scores (logits) to the code that applies temperature, top-k, and softmax, with the same settings, and it makes exactly the same wheel of 65 chances (probabilities), one per letter, every time. The only step that uses chance is the last one, the spin.
+
+![](assets/images/minigpt/black-box.svg)
+*The model as a closed box. Temperature and top-k never touch what is inside it: they reshape the 65 scores that come out*
+
+Here is the wheel again, with the scores beside it. For the letters with the six biggest scores, the table shows every step: the score, the score divided by the temperature, whether top-k keeps it, and the chance that softmax gives it.
+
+:::demo minigpt-logits
+:::
+
+:::test-drive Follow the scores to the chances
+1. Leave the text as `go`. `o` scores 4.878, and softmax gives it 34.8%.
+2. Slide the temperature to 0.5. Every number in the "÷" column doubles, `o`'s becomes 9.757, and its chance grows to about 68%. At 2, they halve, and the chances even out.
+3. Slide top-k down to 3. `n`, `r`, and `t` are marked "cut", and their chances drop to exactly 0%, while the three survivors share the whole wheel.
+4. Press **Reset**, and the same numbers come back, exactly. Spin once, reset, and spin again: only the spin changes.
+:::
+
+In Jibin Joseph's notebook, the writing loop, `generate_text`, takes `temperature` as a setting, with a default of 0.8. These are the notebook's own lines and comments:
 
 ```python
 # Select logits from the last time step.
