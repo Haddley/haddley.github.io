@@ -658,6 +658,185 @@ function gelu(x: number): number {
 }
 ```
 
+### Inside a block: attention
+
+Back to the first half of each block. Here is the problem attention solves. Take hidden state 3, the one that started as the last `o` in `goo`. It says "I am an `o`, in position 3". That is not enough to guess what comes next, because it says nothing about what came *before*. The same `o` could be the second `o` in `good`, in `took`, or in `soon`, and each of those wants a different next letter.
+
+Here is a bigger example from Shakespeare itself. After a blank line, the next thing is almost always a speaker's name and a colon: in 7,219 of the 7,221 blank lines in Tiny Shakespeare. But there are 309 different speakers. Which name comes next depends on who has been talking in the scene, and that information is spread across all the positions before the blank line, not sitting in the one just before it.
+
+So each block starts with *attention*, which has one strict rule: **a hidden state may only look at hidden states in earlier positions, and at itself.** Looking at later positions would be cheating, because the next letter is the answer it is trying to guess.
+
+For attention, every hidden state makes three short-lived vectors, called its *query*, its *key*, and its *value*. The names come from searching: you type a query, it is matched against the keys, and you get back the matching values. It helps to picture them as cards at a meeting:
+
+- The **query** says what this position is looking for in the earlier positions. Picture it as a card the position keeps in its own hand.
+- The **key** says what this position has to offer. Picture it laid face up on the table, where its own position and every later position can read it.
+- The **value** holds what this position will hand over if it is chosen. Picture it laid face down, next to its key.
+
+Keys and values are separate because what makes a position worth listening to is not the same thing as what it should pass on. Then attention runs in three moves. Each hidden state:
+
+1. **Matches** its query against every key on the table from its own position or earlier.
+2. **Shares out** 100% of its attention, in proportion to how well each key matched.
+3. **Collects** that share of each value, adds them up number by number, and adds the result to itself.
+
+In block 1 of my trained model, in one of the four copies of attention that run side by side (*heads*, explained [below](#several-heads-at-once)), hidden state 3 gives 92.9% of its attention to position 2 (the first `o`), 4.0% to position 1 (the `g`), and 3.1% to itself, so most of what it collects is position 2's value.
+
+![](assets/images/minigpt/the-meeting.svg)
+*Attention for position 3, the last position in `goo`. Its query matches position 2's key best, so most of what it collects comes from position 2's value*
+
+After this, hidden state 3 says something closer to "I am an `o`, and one position before me is another `o`". That is a much better clue, and the other heads add more, as you will see.
+
+### Where the queries, keys and values come from
+
+The queries, keys and values are not looked up. A lookup table only works when there is a short list of things that can come in, one row for each: that is why token embeddings and position embeddings can be looked up, because there are only 65 letters and 128 positions. A hidden state can hold any 128 numbers at all, so no table could ever list them.
+
+Instead, each block has three fixed tables of **weights**, one for queries, one for keys, and one for values. Each is a fixed grid of 128 × 128 numbers, called *weights*, plus 128 more fixed numbers, called *biases*. Training set them all, and while the machine is writing they never change, just like the token embeddings. In the code, each one is an `nn.Linear` layer, just like `lm_head`. To work out one number of a query, the machine multiplies each of the hidden state's 128 numbers by its own weight, adds up the 128 results, and adds a bias. It repeats that with a different row of weights for each of the query's 128 numbers. So every number of a query, key or value is a mix of *all* 128 numbers of the hidden state.
+
+Here is one real number from my trained model: hidden state 3 in `goo`, at the start of block 1. The hidden state is normalised first, so it starts 0.43, −2.10, 0.22, and so on. The second number of its query is:
+
+(−0.036 × 0.43) + (−0.038 × −2.10) + (0.030 × 0.22) + … 125 more terms … + 0.093 = **0.27**
+
+Three more things are worth knowing:
+
+- **The weights belong to the block, not to a position.** Every hidden state goes through the same three tables of weights, so two hidden states that held the same numbers would make the same queries, keys and values. Each block has its own three tables, and between them they hold 49,536 of that block's parameters.
+- **They are all made at once.** Making a position's query, key and value needs nothing but that position's hidden state, so the machine makes them for every position at the same moment, in one big multiplication over all the hidden states.
+- **They are thrown away.** They exist only during attention. MiniGPT makes them all again from scratch for every new letter, because it reruns every position through every block. Big chatbots save that work. Because a hidden state only ever listens to earlier positions, adding a new letter never changes the hidden states before it, so their keys and values do not change either. Big models keep them instead of remaking them, in a store called the *KV cache*, short for key–value cache ([this Hugging Face post](https://huggingface.co/blog/not-lain/kv-caching) explains it well). Only the newest position needs a new query.
+
+Nobody chooses what goes into the queries, keys, and values. Training tunes the weights, just as it tunes the token embeddings, and a real model's queries and keys mostly have no tidy name at all.
+
+### Queries, keys and values, with real numbers
+
+Here is attention for hidden state 3 in `goo`, with the real numbers from my trained model, in one of the four heads in block 1. In each head, each query, key and value is 32 numbers long; [the heads section](#several-heads-at-once) explains why. Hidden state 3's query starts 0.00, 0.27, 0.76, and so on. Matching a query with a key means multiplying the two together, number by number, and adding up the 32 results. A big total is a good match.
+
+| | position 1 (`g`) | position 2 (`o`) | position 3 (`o`, itself) |
+|---|---|---|---|
+| 1. Query × key, added up | −2.19 | **15.60** | −3.62 |
+| 2. Divided by √32 | −0.39 | **2.76** | −0.64 |
+| 3. Share of attention | 4.0% | **92.9%** | 3.1% |
+
+1. **Match.** Multiply and add. That is all the "dot product" in the notebook is.
+2. **Shrink.** Divide by √32, about 5.66, to keep the scores in a modest range. Without this, the biggest score would swamp all the others.
+3. **Share out.** A step called *softmax* turns the scores into shares that are all positive and add up to 100%. Step 4 uses the same trick again, to turn the final scores into chances.
+4. **Collect.** Hidden state 3 collects the values in those shares: 92.9% of position 2's, 4.0% of position 1's, and 3.1% of its own, number by number. After one more step, described under heads below, the result is added to hidden state 3.
+
+Look at hidden states 2 and 3. They started from the same `o` token embedding. The only difference between them is their position embeddings, 2 and 3, and that is enough to give them different keys. Position 2's key matches the query with 15.60, while position 3's own key scores −3.62. Without the position embeddings, the machine could not tell "the `o` one position before me" from "me".
+
+:::watch-it
+"Was there an `o` one position before me?" is my reading of this query, not the machine's. The machine has no words, only 32 numbers. What it *measurably* does is look one position back: across 60 passages of Shakespeare, this head puts 96% of every position's attention on the position just before it.
+:::
+
+Try it below. Pick a block, a head, and a position, and follow its query through every step: matching it against each key, shrinking the scores, sharing out attention, and collecting the values. It starts on the example above: `goo`, block 1, head 1, position 3.
+
+:::demo minigpt-qkv
+:::
+
+:::test-drive Follow one query
+1. Start where the post does: `goo`, block 1, head 1, position 3. Query × key gives −2.19, 15.60, and −3.62, and the shares are 4.0%, 92.9%, and 3.1%: almost all of the attention goes one position back.
+2. Press **head 2**. Now 83.4% goes to position 1, the `g`: two positions back. Each head asks its own question.
+3. Pick position 1. It can only look at itself, so it gives itself 100%, whatever the head.
+4. Type a longer line, such as `First Citizen:`, and try block 4. The later blocks spread their attention further back.
+:::
+
+:::brain-power
+One head asks one query. Think about hidden state 3 in `goo`. What are two different things it might want to know about the earlier positions?
+:::
+
+### Attention in the original Python
+
+![](assets/images/minigpt/causal-self-attention.png)
+*I ran the 1.2 cell. The top of the class, shown here, is `__init__`, which creates the weights and the causal mask*
+
+Like every part of the model, the class has two halves. `__init__` runs once, when the model is built, and creates the fixed weights. `forward` runs every time, and uses them.
+
+`__init__` creates four `nn.Linear(128, 128)` layers. Three of them are the tables of weights from [Where the queries, keys and values come from](#where-the-queries-keys-and-values-come-from): `self.query`, `self.key`, and `self.value`. The fourth, `self.proj`, mixes the four heads' results at the end. Each holds a 128 × 128 grid of weights and 128 biases, 16,512 numbers, so attention holds 66,048 in all. `__init__` also builds the causal mask, the "only earlier positions" rule, as a triangle of `True` and `False` values. It stores the mask with `register_buffer`, so the mask is saved with the model, but training never changes it.
+
+![](assets/images/minigpt/attention-mask.svg)
+*The mask, drawn out for eight positions. Each row is a position; the filled cells are the positions it may listen to*
+
+Then `forward` runs attention, in three stages. First, it makes the queries, keys, and values:
+
+```python
+# 1 text, 3 hidden states, 128 numbers
+B, T, C = x.shape
+# a query for every hidden state
+q = self.query(x)
+# a key for every hidden state
+k = self.key(x)
+# a value for every hidden state
+v = self.value(x)
+# cut each one into 4 pieces of 32
+q = q.view(B, T, self.n_head, self.head_dim)
+k = k.view(B, T, self.n_head, self.head_dim)
+v = v.view(B, T, self.n_head, self.head_dim)
+# group the pieces by head
+q = q.transpose(1, 2)
+k = k.transpose(1, 2)
+v = v.transpose(1, 2)
+```
+
+`self.query(x)` applies the query weights to every hidden state at once: each of the 128 numbers of each query is a weighted mix of all 128 numbers of its hidden state, plus a bias. `view` cuts each 128-number vector into four 32-number pieces, one per head, and `transpose(1, 2)` regroups them so that each head gets its own stack of pieces and all four heads can run side by side.
+
+Second, it matches and shares out:
+
+```python
+# match every query with every key
+scores = q @ k.transpose(-2, -1)
+# shrink: divide by √32
+scores = scores / math.sqrt(self.head_dim)
+# the corner of the mask for 3 positions
+mask = self.causal_mask[:, :, :T, :T]
+# no listening to later positions
+scores = scores.masked_fill(mask == False, float("-inf"))
+# share out 100% of attention
+attn = F.softmax(scores, dim=-1)
+```
+
+`q @ k.transpose(-2, -1)` is the dot product between every query and every key, in one go: for each head, a 3 × 3 grid of scores. For hidden state 3 in head 1 of block 1, the row is −2.19, 15.60, and −3.62, the numbers from [Queries, keys and values, with real numbers](#queries-keys-and-values-with-real-numbers). `masked_fill` writes minus infinity into every score for a later position, and softmax turns minus infinity into exactly 0, so later positions get no attention at all. `attn` holds the shares: 4.0%, 92.9%, and 3.1% in that row.
+
+Third, it collects and puts the heads back together:
+
+```python
+# collect the values, in those shares
+out = attn @ v
+# rejoin the four heads: 128 numbers again
+out = out.transpose(1, 2).contiguous().view(B, T, C)
+# mix what the four heads found
+out = self.proj(out)
+return out
+```
+
+`attn @ v` is the collecting: each hidden state's share of every value, added up number by number. The next line undoes the cutting into heads (I have joined three of the notebook's lines into one), and `self.proj` mixes the heads' findings. The result has the same shape as the hidden states, `1 × 3 × 128`, which is what lets `TransformerBlock` add it straight back onto `x`.
+
+![](assets/images/minigpt/annotated-attention.svg)
+*The heart of attention, with a comment beside each line*
+
+### Attention in the TypeScript this page runs
+
+The demos on this page do the same in [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts), with the loops written out. For each head `h`, each position `i` matches its query against the key of every position `j` up to itself, shrinks the scores, shares them out with `softmax`, and collects the values into `mixed`:
+
+```typescript
+const q = this.linear(xn, T, C, `${p}.attn.query`);
+const k = this.linear(xn, T, C, `${p}.attn.key`);
+const v = this.linear(xn, T, C, `${p}.attn.value`);
+const mixed = new Float32Array(T * C);
+const scale = 1 / Math.sqrt(hd);
+for (let h = 0; h < n_head; h++) {
+  for (let i = 0; i < T; i++) {
+    const scores = new Float32Array(i + 1);
+    for (let j = 0; j <= i; j++) {
+      let dot = 0;
+      for (let d = 0; d < hd; d++) dot += q[i * C + h * hd + d] * k[j * C + h * hd + d];
+      scores[j] = dot * scale;
+    }
+    const w = softmax(scores);
+    for (let j = 0; j <= i; j++)
+      for (let d = 0; d < hd; d++) mixed[i * C + h * hd + d] += w[j] * v[j * C + h * hd + d];
+  }
+}
+const att = this.linear(mixed, T, C, `${p}.attn.proj`);
+```
+
+`hd` is 32, a head's share of the 128 numbers, and `h * hd` picks that head's piece of each query, key, and value. `scores` only ever has `i + 1` entries, one for each position up to `i`, so the "only earlier positions" rule needs no mask at all: later positions are simply never looked at. This is the same arithmetic as the notebook's, without the extra lines the demos use to switch heads off and to record them for drawing.
+
 ### Try it: my trained machine, running in your browser
 
 This is our MiniGPT model itself, all 826,433 numbers of it, running in this page. Nothing is sent anywhere: the five steps happen on your own computer. Type anything, and watch the chances for the next letter change as you type. Then spin the wheel, or let it write 200 letters. Use the sliders to try temperature and the wheel trimming, and use the block and head buttons to look inside any of its 16 attention heads.
@@ -837,76 +1016,6 @@ The token and position embeddings are not the model, and an embedding on its own
 ### Step 3: the blocks
 
 After step 2, there is one hidden state for each position, and each one knows only its own letter and its own position. Step 3 is where the real work happens. All the hidden states go through four *blocks*, one after another, and each block has two parts: **attention**, where each hidden state looks back at earlier positions and collects information from them, and the **MLP**, a small network that works on each hidden state on its own. Every block reads the hidden states and rewrites them. The next sections take one idea each: attention itself, where its queries, keys, and values come from, the real numbers, why there are several heads at once, the MLP, and why there are four blocks.
-
-### Inside a block: attention
-
-Here is the problem. Take hidden state 3, the one that started as the last `o` in `goo`. It says "I am an `o`, in position 3". That is not enough to guess what comes next, because it says nothing about what came *before*. The same `o` could be the second `o` in `good`, in `took`, or in `soon`, and each of those wants a different next letter.
-
-Here is a bigger example from Shakespeare itself. After a blank line, the next thing is almost always a speaker's name and a colon: in 7,219 of the 7,221 blank lines in Tiny Shakespeare. But there are 309 different speakers. Which name comes next depends on who has been talking in the scene, and that information is spread across all the positions before the blank line, not sitting in the one just before it.
-
-So each block starts with *attention*, which has one strict rule: **a hidden state may only look at hidden states in earlier positions, and at itself.** Looking at later positions would be cheating, because the next letter is the answer it is trying to guess.
-
-For attention, every hidden state makes three short-lived vectors, called its *query*, its *key*, and its *value*. The names come from searching: you type a query, it is matched against the keys, and you get back the matching values. It helps to picture them as cards at a meeting:
-
-- The **query** says what this position is looking for in the earlier positions. Picture it as a card the position keeps in its own hand.
-- The **key** says what this position has to offer. Picture it laid face up on the table, where its own position and every later position can read it.
-- The **value** holds what this position will hand over if it is chosen. Picture it laid face down, next to its key.
-
-Keys and values are separate because what makes a position worth listening to is not the same thing as what it should pass on. Then attention runs in three moves. Each hidden state:
-
-1. **Matches** its query against every key on the table from its own position or earlier.
-2. **Shares out** 100% of its attention, in proportion to how well each key matched.
-3. **Collects** that share of each value, adds them up number by number, and adds the result to itself.
-
-In block 1 of my trained model, in one of the four copies of attention that run side by side (*heads*, explained [below](#several-heads-at-once)), hidden state 3 gives 92.9% of its attention to position 2 (the first `o`), 4.0% to position 1 (the `g`), and 3.1% to itself, so most of what it collects is position 2's value.
-
-![](assets/images/minigpt/the-meeting.svg)
-*Attention for position 3, the last position in `goo`. Its query matches position 2's key best, so most of what it collects comes from position 2's value*
-
-After this, hidden state 3 says something closer to "I am an `o`, and one position before me is another `o`". That is a much better clue, and the other heads add more, as you will see.
-
-### Where the queries, keys and values come from
-
-The queries, keys and values are not looked up. A lookup table only works when there is a short list of things that can come in, one row for each: that is why token embeddings and position embeddings can be looked up, because there are only 65 letters and 128 positions. A hidden state can hold any 128 numbers at all, so no table could ever list them.
-
-Instead, each block has three fixed tables of **weights**, one for queries, one for keys, and one for values. Each is a fixed grid of 128 × 128 numbers, called *weights*, plus 128 more fixed numbers, called *biases*. Training set them all, and while the machine is writing they never change, just like the token embeddings. In the code, each one is an `nn.Linear` layer, just like `lm_head`. To work out one number of a query, the machine multiplies each of the hidden state's 128 numbers by its own weight, adds up the 128 results, and adds a bias. It repeats that with a different row of weights for each of the query's 128 numbers. So every number of a query, key or value is a mix of *all* 128 numbers of the hidden state.
-
-Here is one real number from my trained model: hidden state 3 in `goo`, at the start of block 1. The hidden state is normalised first, so it starts 0.43, −2.10, 0.22, and so on. The second number of its query is:
-
-(−0.036 × 0.43) + (−0.038 × −2.10) + (0.030 × 0.22) + … 125 more terms … + 0.093 = **0.27**
-
-Three more things are worth knowing:
-
-- **The weights belong to the block, not to a position.** Every hidden state goes through the same three tables of weights, so two hidden states that held the same numbers would make the same queries, keys and values. Each block has its own three tables, and between them they hold 49,536 of that block's parameters.
-- **They are all made at once.** Making a position's query, key and value needs nothing but that position's hidden state, so the machine makes them for every position at the same moment, in one big multiplication over all the hidden states.
-- **They are thrown away.** They exist only during attention. MiniGPT makes them all again from scratch for every new letter, because it reruns every position through every block. Big chatbots save that work. Because a hidden state only ever listens to earlier positions, adding a new letter never changes the hidden states before it, so their keys and values do not change either. Big models keep them instead of remaking them, in a store called the *KV cache*, short for key–value cache ([this Hugging Face post](https://huggingface.co/blog/not-lain/kv-caching) explains it well). Only the newest position needs a new query.
-
-Nobody chooses what goes into the queries, keys, and values. Training tunes the weights, just as it tunes the token embeddings, and a real model's queries and keys mostly have no tidy name at all.
-
-### Queries, keys and values, with real numbers
-
-Here is attention for hidden state 3 in `goo`, with the real numbers from my trained model, in one of the four heads in block 1. In each head, each query, key and value is 32 numbers long; [the heads section](#several-heads-at-once) explains why. Hidden state 3's query starts 0.00, 0.27, 0.76, and so on. Matching a query with a key means multiplying the two together, number by number, and adding up the 32 results. A big total is a good match.
-
-| | position 1 (`g`) | position 2 (`o`) | position 3 (`o`, itself) |
-|---|---|---|---|
-| 1. Query × key, added up | −2.19 | **15.60** | −3.62 |
-| 2. Divided by √32 | −0.39 | **2.76** | −0.64 |
-| 3. Share of attention | 4.0% | **92.9%** | 3.1% |
-
-1. **Match.** Multiply and add. That is all the "dot product" in the notebook is.
-2. **Shrink.** Divide by √32, about 5.66, to keep the scores in a modest range. Without this, the biggest score would swamp all the others.
-3. **Share out.** A step called *softmax* turns the scores into shares that are all positive and add up to 100%. Step 4 uses the same trick again, to turn the final scores into chances.
-4. **Collect.** Hidden state 3 collects the values in those shares: 92.9% of position 2's, 4.0% of position 1's, and 3.1% of its own, number by number. After one more step, described under heads below, the result is added to hidden state 3.
-
-Look at hidden states 2 and 3. They started from the same `o` token embedding. The only difference between them is their position embeddings, 2 and 3, and that is enough to give them different keys. Position 2's key matches the query with 15.60, while position 3's own key scores −3.62. Without the position embeddings, the machine could not tell "the `o` one position before me" from "me".
-
-:::watch-it
-"Was there an `o` one position before me?" is my reading of this query, not the machine's. The machine has no words, only 32 numbers. What it *measurably* does is look one position back: across 60 passages of Shakespeare, this head puts 96% of every position's attention on the position just before it.
-:::
-
-:::brain-power
-One head asks one query. Think about hidden state 3 in `goo`. What are two different things it might want to know about the earlier positions?
-:::
 
 ### Several heads at once
 
@@ -1364,75 +1473,6 @@ This is step 2, line for line. Python counts from 0, so position 1 in the introd
 *Each letter's ID picks one row of the table, and that row's 128 numbers become the letter's token embedding. Both copies of `o` get the same row*
 
 `x = tok_emb + pos_emb` is where the hidden states are born. `x` holds one hidden state per position, 128 numbers each, and from here to the end of `forward`, `x` *is* the hidden states. The code never makes a new variable for them: every block overwrites `x`.
-
-### Attention: `CausalSelfAttention` (cell 1.2)
-
-![](assets/images/minigpt/causal-self-attention.png)
-*I ran the 1.2 cell. The top of the class, shown here, is `__init__`, which creates the weights and the causal mask*
-
-Like every part of the model, the class has two halves. `__init__` runs once, when the model is built, and creates the fixed weights. `forward` runs every time, and uses them.
-
-`__init__` creates four `nn.Linear(128, 128)` layers. Three of them are the tables of weights from [Where the queries, keys and values come from](#where-the-queries-keys-and-values-come-from): `self.query`, `self.key`, and `self.value`. The fourth, `self.proj`, mixes the four heads' results at the end. Each holds a 128 × 128 grid of weights and 128 biases, 16,512 numbers, so attention holds 66,048 in all. `__init__` also builds the causal mask, the "only earlier positions" rule, as a triangle of `True` and `False` values. It stores the mask with `register_buffer`, so the mask is saved with the model, but training never changes it.
-
-![](assets/images/minigpt/attention-mask.svg)
-*The mask, drawn out for eight positions. Each row is a position; the filled cells are the positions it may listen to*
-
-Then `forward` runs attention, in three stages. First, it makes the queries, keys, and values:
-
-```python
-# 1 text, 3 hidden states, 128 numbers
-B, T, C = x.shape
-# a query for every hidden state
-q = self.query(x)
-# a key for every hidden state
-k = self.key(x)
-# a value for every hidden state
-v = self.value(x)
-# cut each one into 4 pieces of 32
-q = q.view(B, T, self.n_head, self.head_dim)
-k = k.view(B, T, self.n_head, self.head_dim)
-v = v.view(B, T, self.n_head, self.head_dim)
-# group the pieces by head
-q = q.transpose(1, 2)
-k = k.transpose(1, 2)
-v = v.transpose(1, 2)
-```
-
-`self.query(x)` applies the query weights to every hidden state at once: each of the 128 numbers of each query is a weighted mix of all 128 numbers of its hidden state, plus a bias. `view` cuts each 128-number vector into four 32-number pieces, one per head, and `transpose(1, 2)` regroups them so that each head gets its own stack of pieces and all four heads can run side by side.
-
-Second, it matches and shares out:
-
-```python
-# match every query with every key
-scores = q @ k.transpose(-2, -1)
-# shrink: divide by √32
-scores = scores / math.sqrt(self.head_dim)
-# the corner of the mask for 3 positions
-mask = self.causal_mask[:, :, :T, :T]
-# no listening to later positions
-scores = scores.masked_fill(mask == False, float("-inf"))
-# share out 100% of attention
-attn = F.softmax(scores, dim=-1)
-```
-
-`q @ k.transpose(-2, -1)` is the dot product between every query and every key, in one go: for each head, a 3 × 3 grid of scores. For hidden state 3 in head 1 of block 1, the row is −2.19, 15.60, and −3.62, the numbers from [Queries, keys and values, with real numbers](#queries-keys-and-values-with-real-numbers). `masked_fill` writes minus infinity into every score for a later position, and softmax turns minus infinity into exactly 0, so later positions get no attention at all. `attn` holds the shares: 4.0%, 92.9%, and 3.1% in that row.
-
-Third, it collects and puts the heads back together:
-
-```python
-# collect the values, in those shares
-out = attn @ v
-# rejoin the four heads: 128 numbers again
-out = out.transpose(1, 2).contiguous().view(B, T, C)
-# mix what the four heads found
-out = self.proj(out)
-return out
-```
-
-`attn @ v` is the collecting: each hidden state's share of every value, added up number by number. The next line undoes the cutting into heads (I have joined three of the notebook's lines into one), and `self.proj` mixes the heads' findings. The result has the same shape as the hidden states, `1 × 3 × 128`, which is what lets `TransformerBlock` add it straight back onto `x`.
-
-![](assets/images/minigpt/annotated-attention.svg)
-*The heart of attention, with a comment beside each line*
 
 ### `lm_head`: back in `MiniGPT.forward`
 

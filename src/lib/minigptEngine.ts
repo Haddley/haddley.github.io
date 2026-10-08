@@ -29,6 +29,9 @@ export interface ForwardResult {
   earlyProbs: Float32Array[];
   // The last position's hidden state, before any block (index 0) and after each block that ran.
   blockStates: Float32Array[];
+  // With `inspect`, one head's attention in one block: each position's query, key, and value
+  // (head_dim numbers each), and for each position the raw scores against every earlier position.
+  inspected?: { q: Float32Array[]; k: Float32Array[]; v: Float32Array[]; scores: Float32Array[] };
 }
 
 // erf from Abramowitz and Stegun 7.1.26 (maximum error about 1.5e-7),
@@ -154,7 +157,11 @@ export class MiniGPTEngine {
   // drawn, but adds nothing to the hidden states. Both are experiments: the trained model has all four
   // blocks and all 16 heads on.
   // `mlpOff` switches the MLP off in the given blocks, counted from 0.
-  forward(idsIn: number[], opts: { blocks?: number; off?: Set<string>; mlpOff?: Set<number> } = {}): ForwardResult {
+  // `inspect` records one head's queries, keys, values, and scores, counted from 0.
+  forward(
+    idsIn: number[],
+    opts: { blocks?: number; off?: Set<string>; mlpOff?: Set<number>; inspect?: { block: number; head: number } } = {}
+  ): ForwardResult {
     const { n_layer, n_head, n_embd: C, block_size } = this.manifest;
     const ids = idsIn.slice(-block_size);
     const T = ids.length;
@@ -172,6 +179,7 @@ export class MiniGPTEngine {
     const blockStates: Float32Array[] = [x.slice((T - 1) * C, T * C)];
     const attention: Float32Array[][] = [];
     const nBlocks = Math.max(0, Math.min(opts.blocks ?? n_layer, n_layer));
+    let inspected: ForwardResult['inspected'];
 
     // Step 3: the blocks.
     for (let L = 0; L < nBlocks; L++) {
@@ -183,6 +191,16 @@ export class MiniGPTEngine {
       const heads: Float32Array[] = [];
       const mixed = new Float32Array(T * C);
       const scale = 1 / Math.sqrt(hd);
+      if (opts.inspect && opts.inspect.block === L) {
+        const h0 = opts.inspect.head * hd;
+        const piece = (m: Float32Array, i: number) => m.slice(i * C + h0, i * C + h0 + hd);
+        inspected = { q: [], k: [], v: [], scores: [] };
+        for (let i = 0; i < T; i++) {
+          inspected.q.push(piece(q, i));
+          inspected.k.push(piece(k, i));
+          inspected.v.push(piece(v, i));
+        }
+      }
       for (let h = 0; h < n_head; h++) {
         const off = opts.off?.has(`${L}:${h}`) ?? false;
         const A = new Float32Array(T * T);
@@ -193,6 +211,7 @@ export class MiniGPTEngine {
             for (let d = 0; d < hd; d++) dot += q[i * C + h * hd + d] * k[j * C + h * hd + d];
             scores[j] = dot * scale;
           }
+          if (inspected && opts.inspect?.block === L && opts.inspect.head === h) inspected.scores.push(scores.slice());
           const w = softmax(scores);
           for (let j = 0; j <= i; j++) {
             A[i * T + j] = w[j];
@@ -222,7 +241,7 @@ export class MiniGPTEngine {
     const logits = this.linear(finalHidden, 1, C, 'lm_head');
     if (logits.length !== V) throw new Error('Unexpected vocabulary size');
     const lastCard = x.slice((T - 1) * C, T * C);
-    return { probs: softmax(logits), logits, lastCard, finalHidden, attention, earlyProbs, blockStates };
+    return { probs: softmax(logits), logits, lastCard, finalHidden, attention, earlyProbs, blockStates, inspected };
   }
 }
 
