@@ -304,7 +304,7 @@ I could change `block_size` to 1,000 in the code, but my trained model could not
 
 ### The real code: a list of 65 chances, and a spin
 
-The wheel is only a picture, but the live demo below does something very close to it. Before it picks a letter, it has worked out a list of 65 chances, one for each letter, in the order of the letters' ID numbers ([step 1](#step-1-letters-to-numbers) explains the IDs). Here is that list after `go`, with the letters that matter, and a running total. The chances add up to exactly 1:
+The wheel is only a picture, but the live demo below does something very close to it. Before it picks a letter, it has worked out a list of 65 chances, one for each letter, in the order of the letters' ID numbers ([step 1](#letters-to-numbers) explains the IDs). Here is that list after `go`, with the letters that matter, and a running total. The chances add up to exactly 1:
 
 | ID | Letter | Chance | Running total |
 |---|---|---|---|
@@ -1067,6 +1067,67 @@ for (let r = 0; r < T; r++)
 
 `x` now holds the input embeddings, one row of 128 numbers for each letter, ready for block 1.
 
+### Letters to numbers
+
+The last layer of the box, and the first thing the model does. Computers need numbers, so each of the 65 letters in the vocabulary gets an ID: its place in the list of all 65, sorted into the computer's standard order. In Tiny Shakespeare, `g` is 45, `o` is 53, and `d` is 42, so `goo` becomes `[45, 53, 53]`. That is all this step does. But an ID is just a name tag. 53 is not "more" than 45 in any way that helps, so the model cannot do much with the ID itself. That is why the very next step swaps each ID for its token embedding, as the layer above showed.
+
+Try it below. Type anything, and watch each letter become its ID.
+
+:::demo minigpt-ids
+:::
+
+:::test-drive Turn letters into numbers
+1. Start with `goo`: `[45, 53, 53]`. Both `o`s get the same ID.
+2. Type `Go`. A capital `G` is 19, a different letter altogether, as far as the model is concerned.
+3. Type `café`. The `é` is not in Tiny Shakespeare, so it has no ID, and the model never sees it.
+4. Look at the whole vocabulary: the new line is 0, the space is 1, and `z`, at 64, is last.
+:::
+
+### Letters to numbers in the original Python
+
+In Jibin Joseph's notebook, the vocabulary and the IDs are built from the text itself, in section 2.2. These are the notebook's own lines and comments:
+
+```python
+# Sorted list of unique characters in the dataset.
+chars = sorted(list(set(text)))
+
+# Dictionary that maps each character to an integer token ID.
+stoi = {ch: i for i, ch in enumerate(chars)}
+
+# Dictionary that maps each integer token ID back to a character.
+itos = {i: ch for i, ch in enumerate(chars)}
+
+# Encode a string into a list of integer token IDs.
+def encode(s):
+
+    # Convert each character in the string into its integer ID.
+    return [stoi[ch] for ch in s]
+```
+
+`set(text)` keeps one copy of each different character in all 1.1 million letters of Tiny Shakespeare, and `sorted` puts them in order: 65 of them. `stoi`, "string to integer", looks up a letter's ID, and `itos` goes back the other way, which is how the model's IDs become text again when it writes. `encode` would stop with an error on a character that is not in the vocabulary; the demos on this page skip it instead.
+
+![](assets/images/minigpt/annotated-ids.svg)
+*The vocabulary code again, with a note beside each line in my own words*
+
+### Letters to numbers in the TypeScript this page runs
+
+The demos on this page get the 65 letters, in the same order, from the model's own files, and look IDs up with a `Map`, in [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts):
+
+```typescript
+encode(text: string): number[] {
+  const ids: number[] = [];
+  for (const ch of text) {
+    const id = this.stoi.get(ch);
+    if (id !== undefined) ids.push(id);
+  }
+  return ids;
+}
+```
+
+`this.stoi` is built once, when the model loads, from the same 65 letters in ID order. The `if` is where an unknown character is skipped.
+
+That is the bottom of the box. Starting from the outside, I have opened every layer: the wheel, the scores, `lm_head`, the four blocks, the MLP, attention, the heads, the embeddings, and now the IDs. There is nothing left inside that this post has not shown, in plain words, in the notebook's Python, and in the TypeScript running on this page.
+
 ### Try it: my trained machine, running in your browser
 
 This is our MiniGPT model itself, all 826,433 numbers of it, running in this page. Nothing is sent anywhere: the five steps happen on your own computer. Type anything, and watch the chances for the next letter change as you type. Then spin the wheel, or let it write 200 letters. Use the sliders to try temperature and the wheel trimming, and use the block and head buttons to look inside any of its 16 attention heads.
@@ -1099,7 +1160,7 @@ A few things to try:
 Here is the route:
 
 1. **[The guessing game](#guessing-the-next-letter)**: what a GPT actually does, how it [gives every letter a chance](#it-does-not-pick-a-letter-it-gives-every-letter-a-chance), and how it spins a wheel of chances to choose one.
-2. **[The five steps](#the-five-steps)** the machine takes for every letter it writes: [letters to numbers](#step-1-letters-to-numbers), [token embeddings and position embeddings](#token-embeddings-and-position-embeddings), [the blocks](#step-3-the-blocks), [chances](#step-4-chances), and [spinning the wheel](#step-5-spin-the-wheel).
+2. **[The five steps](#the-five-steps)** the machine takes for every letter it writes: [letters to numbers](#letters-to-numbers), [token embeddings and position embeddings](#token-embeddings-and-position-embeddings), [the blocks](#step-3-the-blocks), [chances](#step-4-chances), and [spinning the wheel](#step-5-spin-the-wheel).
 3. **Inside the blocks**: [attention](#inside-a-block-attention), [queries, keys, and values](#where-the-queries-keys-and-values-come-from), [several heads at once](#several-heads-at-once), [the MLP](#then-the-mlp-each-hidden-state-on-its-own), and [why there are four blocks](#four-blocks-in-a-row).
 4. **[How much can it see at once?](#how-much-can-it-see-at-once-the-context-limit)**: the context limit, and why raising it is expensive.
 5. **[Try it](#try-it-my-trained-machine-running-in-your-browser)**: the trained machine, running live in your browser.
@@ -1169,10 +1230,6 @@ Here are all five at once, for `goo`, with the real numbers from my trained mode
 
 ![](assets/images/minigpt/big-picture.svg)
 *Each of the next five sections opens up one of these boxes*
-
-### Step 1: letters to numbers
-
-Computers need numbers, so the first step is to give each of the 65 letters an ID. In Tiny Shakespeare, `g` is 45, `o` is 53, and `d` is 42, so `goo` becomes `[45, 53, 53]`. That is all this step does. But an ID is just a name tag. 53 is not "more" than 45 in any way that helps, so the machine cannot do much with the ID itself. It needs something richer, and that is step 2.
 
 ### Step 3: the blocks
 
