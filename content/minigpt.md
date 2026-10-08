@@ -67,6 +67,7 @@ A horse! a horse! my kingdom for a hors
 - **Spin it once.** Then delete the letter it added, and spin again, a few times. Most spins land on `e`, but not every one.
 - **Spin ten times,** and watch the wheel change after every letter. After `horse`, it spreads out again: a comma 21.5%, a full stop 15.6%, `l` 11.0%. Many things could come next.
 - **Delete letters from the end,** one at a time, and watch the model have less to go on. After `hor`, `t` (36.8%) and `s` (21.3%) lead; after just `h`, `o`, `a`, and `e` are almost level, at 30.7%, 26.6%, and 24.4%.
+- **Try to give it more than it can read.** Put the line back, and keep typing, or paste in a longer passage of Shakespeare. At 128 letters, the box stops and tells you why: 128 letters is the most the model can look at, its *context length*. [Settings I cannot change](#settings-i-cannot-change-65-letters-and-128-positions), below, explains where that limit comes from.
 :::
 
 
@@ -210,6 +211,25 @@ This is the wheel from the first demo, with the two settings added. Moving a sli
 4. Try both at once: a temperature of 2 with top-k at 5 lets the model take risks, but only among the five likeliest letters.
 :::
 
+### Settings I cannot change: 65 letters and 128 positions
+
+Temperature and top-k are hyperparameters I can change every time the model writes. Other things are fixed when the model is built, and they cannot change without training it again. Two of them matter already:
+
+| What is fixed | Mine | What it decides |
+|---|---|---|
+| The vocabulary | 65 letters | which letters it knows: one score and one slice each |
+| The context length, `block_size` | 128 | the most letters it can look at at once |
+
+The *vocabulary* is the set of letters the model knows: every different character in Tiny Shakespeare, which is capital and small letters, the space, the new line, and a few punctuation marks and other symbols. Each one has an ID number, from 0 for the new line to 64 for `z`. That is why there are 65 chances, and 65 slices on the wheel. The notebook's setting `vocab_size` is only how many letters there are; what is really fixed is which letters they are, and in which order. Every letter has its own letter card and its own answer card, found by its ID, so a letter the model never trained on has neither, and swapping two IDs would hand each letter the other one's cards. The demos skip any character outside the vocabulary.
+
+The 128 is the *context length*, or *context window*. When the text is longer than 128 letters, the model looks at the last 128 only, and anything further back is simply gone.
+
+:::watch-it Why not just raise `block_size`?
+I could change `block_size` to 1,000 in the code, but my trained model could not use it. The model knows where each letter sits from a set of *position cards*, one card of numbers for each position, and all 128 of them were learned in training, like every other number in the model. In fact, my trained numbers would not even load: the model would expect 1,000 position cards, and my trained file has 128. A model with a longer context needs more position cards, and the only way to get good ones is to train them. A shorter context is fine, though: with only `go` to look at, the model uses just two positions.
+:::
+
+[How much can it see at once?](#how-much-can-it-see-at-once-the-context-limit), later in this post, explains where the context limit comes from, and why raising it costs so much.
+
 ### The real code: a list of 65 chances, and a spin
 
 The wheel is only a picture, but the live demo below does something very close to it. Before it picks a letter, it has worked out a list of 65 chances, one for each letter, in the order of the letters' ID numbers ([step 1](#step-1-letters-to-numbers) explains the IDs). Here is that list after `go`, with the letters that matter, and a running total. The chances add up to exactly 1:
@@ -241,7 +261,7 @@ next_id = torch.multinomial(probs, num_samples=1)
 idx = torch.cat([idx, next_id], dim=1)
 ```
 
-*Sample* is the experts' word for spinning the wheel. The first line, softmax, is where the 65 chances come from, and [the next section](#lmhead-and-softmax-where-the-65-chances-come-from) explains it. (Just before these lines, the loop can also reshape the wheel with *temperature* and *top-k*, which [step 5](#step-5-spin-the-wheel) explains.)
+*Sample* is the experts' word for spinning the wheel. The first line, softmax, is where the 65 chances come from, and [the next section](#lmhead-and-softmax-where-the-65-chances-come-from) explains it. (Just before these lines, the loop can also reshape the wheel with *temperature* and *top-k*, which the sections above explain.)
 
 `torch.multinomial` keeps the walk round the wheel hidden inside PyTorch. The demos on this page do the same in TypeScript, which is JavaScript with types, using the same trained numbers, so there the walk is written out in full. This is the spin, from [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts), where `probs` is the same list of 65 chances:
 
@@ -275,11 +295,21 @@ return current + engine.manifest.chars[spinWheel(p)];
 
 ### `lm_head` and softmax: where the 65 chances come from
 
-One layer down from the wheel: where does the list of 65 chances come from? Just before it picks a letter, the model has summed up the text so far as a list of 128 numbers, the last *working card*. (The rest of this post explains how it gets there.) Two steps turn those 128 numbers into 65 chances: first a score for every letter, then *softmax*, which turns the scores into chances.
+Drilling down one more level: where does the list of 65 chances come from? I pass the text into my MiniGPT model, and it goes through these stages:
 
-**Step one: a score for every letter.** The model holds 65 *answer cards*, one for each letter, each with 128 numbers of its own and one extra number, a *bias*. To score a letter, it multiplies the working card by that letter's answer card, number by number, adds up the 128 results, and adds the bias. A big score means the working card looks like the moments when that letter comes next. After `go`, `o` scores 4.878, the space 4.076, `d` 4.062, and `n` 3.068. The lowest of the 65 is `V`, at −7.421.
+1. Each letter becomes a *working card*: its letter card plus a card for its position in the text. [Step 2](#step-2-letter-cards-and-position-cards) explains these.
+2. The working cards pass through four *blocks*, which let each card take in what the letters before it say. The blocks are where the model does its understanding, and [Step 3](#step-3-the-blocks) explains them.
+3. Out of the last block, after one final normalisation, comes the last working card: 128 numbers that sum up the text so far. In the jargon, this is the *final hidden state*, and the notebook's own comment calls it that.
+4. `lm_head` turns the final hidden state into 65 scores, one for each letter.
+5. Temperature and top-k reshape the scores, and *softmax* turns them into the 65 chances: the slices of the wheel.
 
-**The 65 answer cards together are `lm_head`.** That is the name the code gives them, short for *language-model head*. It is the model's last layer: 65 cards of 128 numbers, plus 65 biases, 8,385 numbers in all. Everything before it, the letter cards, the position cards and the blocks that rewrite the working cards, is the *body* of the model, and its job is to understand the text so far. The *head* sits on top of the body and reads the answer out in the form the task needs. Here the task is "which of 65 letters comes next?", so the head has 65 outputs, one score per letter. Nobody wrote the answer cards by hand: like every other number in the model, they started random, and training nudged them until the scores they give match what Tiny Shakespeare really does next.
+Everything up to stage 3 is the *body* of the model. This section is about stages 4 and 5, which come after it.
+
+**Before step one: the final normalisation.** Out of the last block come working cards, one for each letter in the text: two for `go`. Only the last one matters here, because it is the only one that has seen the whole text. Its numbers are small: for `go`, they run from −1.26 to 1.00, and their *spread*, a measure of how far they typically sit from their average, is 0.33. The final normalisation, `final_ln` in the code, puts the card on a steady scale. First it rescales the 128 numbers so that they average 0 and spread 1. Then it stretches and shifts each number by its own trained amount. The card's first four numbers go from −0.04, 0.17, 0.05 and −0.14 to −0.23, 0.70, 0.08 and −0.39. The pattern stays much the same, but now `lm_head` gets a card on the same scale whatever the text was. The result is the final hidden state. The blocks use the same kind of normalisation inside them, which [Step 3](#step-3-the-blocks) comes back to.
+
+**Step one: `lm_head` gives every letter a score.** `lm_head`, short for *language-model head*, is the model's last layer. It holds 65 *answer cards*, one for each letter, each with 128 numbers of its own and one extra number, a *bias*: 8,385 numbers in all. To score a letter, it multiplies the final hidden state by that letter's answer card, number by number, adds up the 128 results, and adds the bias. A big score means the final hidden state looks like the moments when that letter comes next. After `go`, `o` scores 4.878, the space 4.076, `d` 4.062, and `n` 3.068. The lowest of the 65 is `V`, at −7.421.
+
+It is called a *head* because it sits on top of the body. The body understands the text; the head reads the answer out in the form the task needs. Here the task is "which of 65 letters comes next?", so the head has 65 outputs. Nobody wrote the answer cards by hand: like every other number in the model, they started random, and training nudged them until the scores they give match what Tiny Shakespeare really does next.
 
 :::under-the-hood Answer cards that are also letter cards
 In the notebook's bigger setup, with 384 numbers per card, one line makes each letter's answer card the very same list of numbers as its letter card: `model.lm_head.weight = model.token_embedding.weight`. This trick, called *weight tying*, works because both tables are 65 cards long and the same width, and it saves a whole table of numbers. GPT-2 does the same. My trained model does not: I checked, and its answer cards and letter cards are two separate tables, each learned on its own.
@@ -296,16 +326,31 @@ In the notebook's bigger setup, with 384 numbers per card, one line makes each l
 
 Those are the slices of the wheel after `go`.
 
+Try it below. Type some text, and see what `lm_head` does with it: the final hidden state comes out of the blocks, and `lm_head` multiplies it by one letter's answer card, number by number, and adds up the results. Pick one of the six letters to see its sum. Then move the sliders.
+
+:::demo minigpt3
+:::
+
+:::test-drive Watch a score being made
+1. Start with `go`. `o` has the biggest score. Its 128 products add up to 4.845, and its bias, 0.033, makes 4.878. Most of the products are orange: the final hidden state and `o`'s answer card agree.
+2. Pick `V`, the lowest. Most of its products are blue, and they add up to −7.373: the final hidden state looks nothing like `V`'s answer card.
+3. Slide the temperature to 0.5, then to 2, and top-k down to 3. The chances change, but none of the squares or scores move: temperature and top-k act after the model has done its work.
+4. Now add one more `o`, to make `goo`. The final hidden state changes, and so does every product and every score. The answer cards do not change: they are fixed by training, and the text is the only thing that reaches the model.
+:::
+
 ### In the original Python: `lm_head` and `torch.softmax`
 
 In Jibin Joseph's notebook, both steps are a line each. The 65 answer cards are one PyTorch layer, created in `MiniGPT.__init__` as `self.lm_head = nn.Linear(config.n_embd, config.vocab_size)`: a table of 65 rows of 128 numbers, plus 65 biases. At the end of `MiniGPT.forward`:
 
 ```python
-# the final normalisation
+# Final LayerNorm.
 x = self.final_ln(x)
-# score every working card against the 65 answer cards
+
+# Convert final hidden states into vocabulary logits.
 logits = self.lm_head(x)
 ```
+
+In the code, the row of working cards is just `x`, all the way through the model. The notebook's comments call them *hidden states*, and the last ones, after the final block, the *final hidden states*.
 
 The scores are called `logits`. Then, in the writing loop, `generate_text`:
 
@@ -318,16 +363,19 @@ probs = torch.softmax(logits, dim=-1)
 
 `self.lm_head(x)` does the multiply-and-add for every working card and all 65 answer cards at once, and `torch.softmax` does step two. The notebook scores every working card in the text, because training needs them all, and then keeps only the last row.
 
-### In the TypeScript this page runs: `readOut`, `linear`, and `softmax`
+### In the TypeScript this page runs: `finalHidden`, `readOut`, `linear`, and `softmax`
 
-The demos on this page do the same two steps in TypeScript, in [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts), using the same trained numbers. `readOut` takes the last working card only, gives it the final normalisation, and scores it against the answer cards:
+The demos on this page do the same two steps in TypeScript, in [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts), using the same trained numbers. `finalHidden` takes the last working card only and gives it the final normalisation: that is the final hidden state. `readOut` scores it against the answer cards:
 
 ```typescript
-private readOut(x: Float32Array, T: number): Float32Array {
+private finalHidden(x: Float32Array, T: number): Float32Array {
   const C = this.manifest.n_embd;
   const last = x.subarray((T - 1) * C, T * C);
-  const normed = this.layerNorm(new Float32Array(last), 1, C, 'final_ln');
-  return this.linear(normed, 1, C, 'lm_head');
+  return this.layerNorm(new Float32Array(last), 1, C, 'final_ln');
+}
+
+private readOut(x: Float32Array, T: number): Float32Array {
+  return this.linear(this.finalHidden(x, T), 1, this.manifest.n_embd, 'lm_head');
 }
 ```
 

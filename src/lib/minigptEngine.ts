@@ -17,6 +17,11 @@ export interface ForwardResult {
   probs: Float32Array;
   // Raw scores for the next letter, before softmax.
   logits: Float32Array;
+  // The last working card as it comes out of the last block, before the final LayerNorm.
+  lastCard: Float32Array;
+  // The final hidden state: the last position's 128 numbers after the final LayerNorm,
+  // which lm_head turns into the scores.
+  finalHidden: Float32Array;
   // attention[layer][head] is a T x T matrix, row-major: row = letter doing the looking.
   attention: Float32Array[][];
   // Chances for the next letter if the machine stopped early:
@@ -74,6 +79,12 @@ export class MiniGPTEngine {
     return this.weights.subarray(info.offset, info.offset + size);
   }
 
+  // One letter's answer card from lm_head: its 128 numbers and its bias, fixed by training.
+  answerCard(id: number): { weights: Float32Array; bias: number } {
+    const C = this.manifest.n_embd;
+    return { weights: this.t('lm_head.weight').subarray(id * C, (id + 1) * C), bias: this.t('lm_head.bias')[id] };
+  }
+
   encode(text: string): number[] {
     const ids: number[] = [];
     for (const ch of text) {
@@ -124,12 +135,16 @@ export class MiniGPTEngine {
     return y;
   }
 
-  // Chances for the next letter, read from the last card only.
-  private readOut(x: Float32Array, T: number): Float32Array {
+  // The final hidden state: the last card only, after the final LayerNorm.
+  private finalHidden(x: Float32Array, T: number): Float32Array {
     const C = this.manifest.n_embd;
     const last = x.subarray((T - 1) * C, T * C);
-    const normed = this.layerNorm(new Float32Array(last), 1, C, 'final_ln');
-    return this.linear(normed, 1, C, 'lm_head');
+    return this.layerNorm(new Float32Array(last), 1, C, 'final_ln');
+  }
+
+  // Chances for the next letter, read from the last card only.
+  private readOut(x: Float32Array, T: number): Float32Array {
+    return this.linear(this.finalHidden(x, T), 1, this.manifest.n_embd, 'lm_head');
   }
 
   forward(idsIn: number[]): ForwardResult {
@@ -191,9 +206,11 @@ export class MiniGPTEngine {
     }
 
     // Step 4: chances, from the last card only.
-    const logits = this.readOut(x, T);
+    const finalHidden = this.finalHidden(x, T);
+    const logits = this.linear(finalHidden, 1, C, 'lm_head');
     if (logits.length !== V) throw new Error('Unexpected vocabulary size');
-    return { probs: softmax(logits), logits, attention, earlyProbs };
+    const lastCard = x.slice((T - 1) * C, T * C);
+    return { probs: softmax(logits), logits, lastCard, finalHidden, attention, earlyProbs };
   }
 }
 

@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { ForwardResult, adjustChances, spinWheel } from '@/lib/minigptEngine';
-import { ChanceList, SPIN_MS, Wheel, label, mono, panel, rotationFor, show, topK, useMiniGPTEngine } from './minigptShared';
+import { ChanceList, SPIN_MS, TextBox, Wheel, label, mono, panel, rotationFor, show, topK, useMiniGPTEngine } from './minigptShared';
 
 const HEAD_COLOURS = ['#2563eb', '#7c3aed', '#059669', '#d97706'];
 const GRID_LETTERS = 16;
@@ -102,21 +102,10 @@ export default function MiniGPTDemo() {
     <div className="minigpt-demo mbr-fonts-style" style={{ fontSize: '0.95rem' }}>
       <div style={panel}>
         <div style={label}>Type some text (only the 65 letters in Tiny Shakespeare count)</div>
-        <textarea
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          rows={3}
-          spellCheck={false}
-          style={{ ...mono, width: '100%', fontSize: '1rem', padding: '0.5rem', borderRadius: '6px', border: '1px solid #d1d5db' }}
-        />
+        <TextBox value={text} onChange={setText} limit={engine.manifest.block_size} disabled={writing || spinning} rows={3} />
         {unknown.length > 0 && (
           <div style={{ color: '#b45309', fontSize: '0.85rem' }}>
             The machine has no card for {unknown.map(show).join(' ')}, so it skips {unknown.length === 1 ? 'it' : 'them'}.
-          </div>
-        )}
-        {ids.length > engine.manifest.block_size && (
-          <div style={{ color: '#6b7280', fontSize: '0.85rem' }}>
-            Only the last {engine.manifest.block_size} letters fit in its positions; the machine cannot see anything earlier.
           </div>
         )}
         <div className="d-flex flex-wrap gap-2 mt-2">

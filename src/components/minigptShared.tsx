@@ -149,6 +149,70 @@ export function ChanceList({ chances, chars, k = 8 }: { chances: Float32Array; c
   );
 }
 
+// The text box for every demo. Typing or pasting stops at the context length (block_size), because
+// the model can look at no more letters than that. Letters the model writes itself can run past it,
+// and then the model sees only the last block_size of them, as the notebook's writing loop does.
+export function TextBox({
+  value,
+  onChange,
+  limit,
+  disabled = false,
+  rows = 2,
+}: {
+  value: string;
+  onChange: (text: string) => void;
+  limit: number;
+  disabled?: boolean;
+  rows?: number;
+}) {
+  // The text a refusal was shown for: the message stays until anything changes the text.
+  const [refusedFor, setRefusedFor] = React.useState<string | null>(null);
+  const change = (next: string) => {
+    if (next.length > limit && next.length > value.length) {
+      // Keep as much of the new typing or paste as fits, wherever the cursor is. Text already past
+      // the limit (written by the model) cannot grow by typing.
+      let start = 0;
+      while (start < value.length && value[start] === next[start]) start++;
+      let end = 0;
+      while (end < value.length - start && value[value.length - 1 - end] === next[next.length - 1 - end]) end++;
+      const room = limit - (start + end);
+      const kept = room > 0 ? next.slice(0, start) + next.slice(start, next.length - end).slice(0, room) + next.slice(next.length - end) : value;
+      setRefusedFor(kept);
+      if (kept !== value) onChange(kept);
+      return;
+    }
+    onChange(next);
+  };
+  const atLimit = value.length >= limit;
+  const refused = refusedFor === value;
+  return (
+    <div>
+      <textarea
+        value={value}
+        onChange={(e) => change(e.target.value)}
+        disabled={disabled}
+        rows={rows}
+        spellCheck={false}
+        aria-invalid={refused}
+        style={{ ...mono, width: '100%', fontSize: '1rem', padding: '0.5rem', borderRadius: '6px', border: `1px solid ${refused ? '#dc2626' : '#d1d5db'}` }}
+      />
+      <div style={{ fontSize: '0.8rem', color: atLimit ? '#b45309' : '#6b7280', textAlign: 'right' }}>
+        {value.length} / {limit} letters
+      </div>
+      {refused && (
+        <div role="alert" style={{ color: '#dc2626', fontSize: '0.85rem' }}>
+          The model can look at no more than {limit} letters at once: that is its context length. Delete some letters to type more.
+        </div>
+      )}
+      {value.length > limit && (
+        <div style={{ color: '#6b7280', fontSize: '0.85rem' }}>
+          The model has written past {limit} letters, so it now sees only the last {limit}; it cannot see anything earlier.
+        </div>
+      )}
+    </div>
+  );
+}
+
 // Load the exhibit model once: about 3.3 MB of numbers, run in the reader's browser.
 export function useMiniGPTEngine(): { engine: MiniGPTEngine | null; error: string | null } {
   const [engine, setEngine] = React.useState<MiniGPTEngine | null>(null);

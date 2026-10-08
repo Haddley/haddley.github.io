@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { adjustChances, spinWheel } from '@/lib/minigptEngine';
-import { ChanceList, Wheel, label, mono, panel, restRotation, rotationFor, show, useMiniGPTEngine } from './minigptShared';
+import { ChanceList, TextBox, Wheel, label, mono, panel, restRotation, rotationFor, show, useMiniGPTEngine } from './minigptShared';
 
 const START_TEXT = 'go';
 const ONE_SPIN_MS = 2200;   // a single spin, slow enough to watch
@@ -100,16 +100,14 @@ export default function MiniGPTWheelDemo({ settings = false }: { settings?: bool
     <div className="minigpt-demo mbr-fonts-style" style={{ fontSize: '0.95rem' }}>
       <div style={panel}>
         <div style={label}>The text so far (only the 65 letters in Tiny Shakespeare count)</div>
-        <textarea
+        <TextBox
           value={text}
-          onChange={(e) => {
-            setText(e.target.value);
+          onChange={(t) => {
+            setText(t);
             setLanded(null);
           }}
+          limit={engine.manifest.block_size}
           disabled={busy}
-          rows={2}
-          spellCheck={false}
-          style={{ ...mono, width: '100%', fontSize: '1rem', padding: '0.5rem', borderRadius: '6px', border: '1px solid #d1d5db' }}
         />
         {unknown.length > 0 && (
           <div style={{ color: '#b45309', fontSize: '0.85rem' }}>

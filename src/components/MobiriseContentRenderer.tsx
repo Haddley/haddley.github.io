@@ -10,6 +10,7 @@ import dynamic from 'next/dynamic';
 // Live demos are loaded only on the posts that use them, and only in the browser.
 const MiniGPTDemo = dynamic(() => import('./MiniGPTDemo'), { ssr: false });
 const MiniGPTWheelDemo = dynamic(() => import('./MiniGPTWheelDemo'), { ssr: false });
+const MiniGPTHiddenStateDemo = dynamic(() => import('./MiniGPTHiddenStateDemo'), { ssr: false });
 
 // Copy-to-clipboard button for code blocks
 function CopyCodeButton({ code }: { code: string }) {
@@ -554,6 +555,7 @@ function renderCallout(section: MobiriseParsedContent, index: number, nested: bo
     if (section.content.trim() === 'minigpt') return wrap(index, nested, <MiniGPTDemo />);
     if (section.content.trim() === 'minigpt1') return wrap(index, nested, <MiniGPTWheelDemo />);
     if (section.content.trim() === 'minigpt12') return wrap(index, nested, <MiniGPTWheelDemo settings />);
+    if (section.content.trim() === 'minigpt3') return wrap(index, nested, <MiniGPTHiddenStateDemo />);
     return null;
   }
   const style = CALLOUTS[section.calloutType || ''] || CALLOUTS['bullet-points'];
