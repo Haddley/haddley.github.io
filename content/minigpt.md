@@ -128,26 +128,9 @@ At temperature 1, `o`'s slice (34.8%) is 2.2 times the space's (15.6%). At 0.5, 
 
 The gap is what matters. Softmax ignores the scores themselves and looks only at the gaps between them: how much bigger one letter's slice is than another's is *e* raised to the power of the gap between their scores. Dividing by 0.5 doubles every gap, so the favourite pulls further ahead. Dividing by 2 halves every gap, so the slices even out. Dividing by 1 changes nothing. As the temperature heads towards 0, the gaps grow without limit and the favourite takes the whole wheel; as it heads upwards, the gaps shrink towards nothing and every letter's slice heads towards 1 in 65.
 
+A temperature of exactly 0 would make the notebook divide by zero. The demos on this page treat 0 as "always take the biggest slice" instead, which is where a temperature heading towards 0 is going anyway.
+
 The name comes from physics. The same formula describes how particles spread out across energy levels, and there you divide by the temperature: cold particles all settle into the lowest level, like the favourite taking the whole wheel, and hot ones spread out across every level, like every letter getting a similar slice.
-
-### Temperature in the TypeScript this page runs
-
-The demos on this page do the same in [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts), at the start of `adjustChances`:
-
-```typescript
-if (temperature <= 0.01) {
-  probs = new Float32Array(V);
-  let best = 0;
-  for (let i = 1; i < V; i++) if (logits[i] > logits[best]) best = i;
-  probs[best] = 1;
-} else {
-  const scaled = new Float32Array(V);
-  for (let i = 0; i < V; i++) scaled[i] = logits[i] / temperature;
-  probs = softmax(keepTopK(scaled, topK));
-}
-```
-
-The `else` part is the notebook's line, written out as a loop: divide each of the 65 scores by the temperature, then trim with top-k (next) and turn the scores into chances. The first part handles a temperature of 0, which the notebook cannot do, because it would divide by zero. Instead, it finds the biggest score, and gives that letter the whole wheel. You can try it in the [demo after the top-k section](#try-temperature-and-top-k-on-the-wheel).
 
 ### Top-k: keeping only the biggest slices
 
@@ -194,27 +177,6 @@ if top_k is not None:
 The notebook's default `top_k` is 200, but this model has only 65 letters, so `min(top_k, logits.size(-1))` makes *k* 65, and every slice is kept. Top-k matters for big models that choose between tens of thousands of pieces of words. To see it work on MiniGPT, *k* has to be smaller than 65.
 :::
 
-### Top-k in the TypeScript this page runs
-
-The demos on this page do the same in TypeScript, in [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts), the same way: keep the *k* biggest scores, and set the rest to minus infinity.
-
-```typescript
-// Top-k: keep the k biggest scores, and set the rest to minus infinity, as the notebook does.
-// Softmax then gives every removed letter a chance of exactly 0.
-export function keepTopK(scores: Float32Array, k: number): Float32Array {
-  const kept = new Float32Array(scores.length).fill(-Infinity);
-  const order = Array.from(scores.keys()).sort((a, b) => scores[b] - scores[a]);
-  for (const i of order.slice(0, Math.min(k, scores.length))) kept[i] = scores[i];
-  return kept;
-}
-```
-
-`kept` starts as 65 minus infinities. `order` is the 65 letter IDs, sorted from the biggest score to the smallest, and the loop copies back the scores of the first *k* of them. Then, in `adjustChances`, the trimmed scores go straight into softmax:
-
-```typescript
-probs = softmax(keepTopK(scaled, topK));
-```
-
 ### Softmax: turning scores into chances
 
 Temperature and top-k reshape the scores. The last step, *softmax*, turns them into chances. Scores are not chances: they can be negative, and they do not add up to anything in particular. Softmax fixes both, in three moves:
@@ -246,28 +208,6 @@ probs = torch.softmax(logits, dim=-1)
 ```
 
 `torch.softmax` does all three moves at once. `dim=-1` tells it which way to add up: along the last dimension of `logits`, the 65 letters, so the 65 chances add up to 1.
-
-### Softmax in the TypeScript this page runs
-
-The demos on this page do the same three moves in [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts):
-
-```typescript
-export function softmax(scores: Float32Array): Float32Array {
-  let max = -Infinity;
-  for (const s of scores) if (s > max) max = s;
-  const out = new Float32Array(scores.length);
-  let sum = 0;
-  for (let i = 0; i < scores.length; i++) {
-    const e = scores[i] === -Infinity ? 0 : Math.exp(scores[i] - max);
-    out[i] = e;
-    sum += e;
-  }
-  for (let i = 0; i < out.length; i++) out[i] /= sum;
-  return out;
-}
-```
-
-The first loop finds the biggest score, `max`. The second takes it away from every score, raises *e* to the result with `Math.exp`, and keeps a running total, `sum`. The last loop divides each number by the total. The check for `-Infinity` is for top-k: a letter it cut gets exactly 0.
 
 ### Try temperature and top-k on the wheel
 
@@ -335,32 +275,12 @@ idx = torch.cat([idx, next_id], dim=1)
 
 *Sample* is the experts' word for spinning the wheel. The first line is [softmax](#softmax-turning-scores-into-chances), turning the 65 scores into the 65 chances; just before it, the loop can also reshape the scores with *temperature* and *top-k*. Where the scores themselves come from is what [the next section](#lmhead-where-do-the-65-scores-logits-for-the-next-letter-come-from) explains.
 
-`torch.multinomial` keeps the walk round the wheel hidden inside PyTorch. The demos on this page do the same in TypeScript, which is JavaScript with types, using the same trained numbers, so there the walk is written out in full. This is the spin, from [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts), where `probs` is the same list of 65 chances:
+`torch.multinomial` keeps the walk round the wheel hidden inside PyTorch, but what it does is simple. It picks a point somewhere round the wheel: a random number between 0 and 1. Then it walks round the wheel in ID order, slice by slice, adding up the chances, until it passes that point, and returns the ID of the slice it stopped in. If the random number is 0.6, the walk passes the new line, the space, the comma, `d`, and `n` (a running total of 0.5308), and stops inside `o`'s slice, which runs from 0.5308 to 0.8788. So it returns 53, `o`. If the random number is 0.3, it stops inside `d`'s slice instead, between 0.2080 and 0.4153. A big slice covers more of the numbers between 0 and 1, so it is picked more often: `o` about 35 times in every 100 spins.
 
-```typescript
-// Spin the wheel: pick a letter, each with its own chance.
-export function spinWheel(probs: Float32Array, random: () => number = Math.random): number {
-  let r = random();
-  for (let i = 0; i < probs.length; i++) {
-    r -= probs[i];
-    if (r <= 0) return i;
-  }
-  return probs.length - 1;
-}
-```
+![](assets/images/minigpt/annotated-sample.svg)
+*The sampling lines again, with a note beside each line in my own words*
 
-![](assets/images/minigpt/annotated-spin.svg)
-*The same code line by line, with a note beside each line in my own words*
-
-`Math.random()` picks a point somewhere around the wheel: a number between 0 and 1. The loop then walks round the wheel, slice by slice, taking away each slice's chance, until it has passed that point, and returns the ID of the slice it stopped in. If the random number is 0.6, the walk passes the new line, the space, the comma, `d`, and `n` (a running total of 0.5308), and stops inside `o`'s slice, which runs from 0.5308 to 0.8788. So it returns 53, `o`. If the random number is 0.3, it stops inside `d`'s slice instead, between 0.2080 and 0.4153. A big slice covers more of the numbers between 0 and 1, so it is picked more often: `o` about 35 times in every 100 spins. The last line is only a safety net, in case rounding leaves the total a hair under 1.
-
-The demo then turns the ID back into a letter, and adds it to the end of the text:
-
-```typescript
-return current + engine.manifest.chars[spinWheel(p)];
-```
-
-`chars` is the list of the 65 letters in ID order, so ID 53 becomes `o`. Where the list of chances comes from is what the rest of this post explains, layer by layer: [the five steps](#the-five-steps) turn the text into 65 scores, and the last of them turns the scores into chances that add up to 1.
+`torch.cat` then adds the new ID to the end of `idx`, and when the text is shown, the notebook's `decode` turns each ID back into its letter. The vocabulary is the list of the 65 letters in ID order, so ID 53 becomes `o`. Where the list of chances comes from is what the rest of this post explains, layer by layer.
 
 
 
@@ -430,45 +350,6 @@ probs = torch.softmax(logits, dim=-1)
 ```
 
 `self.lm_head(x)` does the dot products for every hidden state and all 65 rows at once, and `torch.softmax` is [the softmax step](#softmax-in-the-original-python) from earlier. The notebook scores every letter's hidden state, because training needs them all, and then keeps only the last letter's scores.
-
-### In the TypeScript this page runs: `finalHidden`, `readOut`, and `linear`
-
-The demos on this page do the same in TypeScript, in [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts), using the same trained numbers. `finalHidden` takes the last letter's hidden state only and gives it the final normalisation: that is the final hidden state. `readOut` scores it against the rows of `lm_head`:
-
-```typescript
-private finalHidden(x: Float32Array, T: number): Float32Array {
-  const C = this.manifest.n_embd;
-  const last = x.subarray((T - 1) * C, T * C);
-  return this.layerNorm(new Float32Array(last), 1, C, 'final_ln');
-}
-
-private readOut(x: Float32Array, T: number): Float32Array {
-  return this.linear(this.finalHidden(x, T), 1, this.manifest.n_embd, 'lm_head');
-}
-```
-
-`C` is 128, the length of each list, and `last` is the last letter's hidden state. `linear` is the dot product, written out as loops: for each row `o`, it starts from the bias `b[o]`, and adds the hidden state's 128 numbers, each multiplied by the row's matching number:
-
-```typescript
-private linear(x: Float32Array, T: number, nIn: number, name: string): Float32Array {
-  const W = this.t(`${name}.weight`);
-  const b = this.t(`${name}.bias`);
-  const nOut = b.length;
-  const y = new Float32Array(T * nOut);
-  for (let r = 0; r < T; r++) {
-    const xo = r * nIn;
-    for (let o = 0; o < nOut; o++) {
-      let acc = b[o];
-      const wo = o * nIn;
-      for (let i = 0; i < nIn; i++) acc += x[xo + i] * W[wo + i];
-      y[r * nOut + o] = acc;
-    }
-  }
-  return y;
-}
-```
-
-Then [`softmax`](#softmax-in-the-typescript-this-page-runs), from earlier, turns the scores into the `probs` list that `spinWheel` walks along. [Step 4](#step-4-chances) comes back to `lm_head`, once the post has explained where the hidden states come from.
 
 ### Four blocks in a row
 
@@ -572,31 +453,6 @@ These two lines are a whole block. Read from the inside out, the first one norma
 ![](assets/images/minigpt/annotated-blocks.svg)
 *The blocks code again, with a note beside each line in my own words*
 
-### The blocks in the TypeScript this page runs
-
-The demos on this page run the same loop in [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts). Here it is with the inside of attention cut out, because it gets its own sections, and with my comments added:
-
-```typescript
-for (let L = 0; L < nBlocks; L++) {
-  const p = `blocks.${L}`;
-  // normalise, attention, add the result
-  const xn = this.layerNorm(x, T, C, `${p}.ln1`);
-  // … the queries, keys, values, and heads, worked out from xn into `mixed` …
-  const att = this.linear(mixed, T, C, `${p}.attn.proj`);
-  for (let i = 0; i < x.length; i++) x[i] += att[i];
-  // normalise, MLP, add the result
-  const xn2 = this.layerNorm(x, T, C, `${p}.ln2`);
-  const hidden = this.linear(xn2, T, C, `${p}.mlp.fc1`);
-  for (let i = 0; i < hidden.length; i++) hidden[i] = gelu(hidden[i]);
-  const mlp = this.linear(hidden, T, hidden.length / T, `${p}.mlp.fc2`);
-  const next = new Float32Array(x.length);
-  for (let i = 0; i < x.length; i++) next[i] = x[i] + mlp[i];
-  x = next;
-}
-```
-
-`x` holds the hidden states, one after another, 128 numbers each. The two `x[i] +` lines are "add, never replace", written out as loops. `nBlocks` is normally 4; the demo above sets it lower to stop early.
-
 ### Then the MLP: each hidden state on its own
 
 Inside each block, after attention, every hidden state goes through the *MLP*, short for *multilayer perceptron*: a small two-layer network that works on each hidden state on its own. Every hidden state gets the same calculation, but each one sees only its own numbers. It is the simpler half of a block, so I open it first; attention, the half that looks back at other letters, comes next.
@@ -637,26 +493,6 @@ The MLP holds most of each block's numbers: 66,048 in `fc1` and 65,664 in `fc2`,
 
 ![](assets/images/minigpt/annotated-mlp.svg)
 *The MLP code again, with a note beside each line in my own words*
-
-### The MLP in the TypeScript this page runs
-
-The demos on this page run the same three steps in [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts), inside the loop over the blocks:
-
-```typescript
-// normalise, MLP, add the result
-const xn2 = this.layerNorm(x, T, C, `${p}.ln2`);
-const hidden = this.linear(xn2, T, C, `${p}.mlp.fc1`);
-for (let i = 0; i < hidden.length; i++) hidden[i] = gelu(hidden[i]);
-const mlp = this.linear(hidden, T, hidden.length / T, `${p}.mlp.fc2`);
-```
-
-`linear` is the same dot-product function that `lm_head` uses, so `fc1` is 512 dot products against 512 rows of 128 numbers, and `fc2` is 128 dot products against 128 rows of 512. In between, `gelu` bends every one of the 512 numbers, using `erf`, a standard curve that the engine works out with a well-known approximation, exact to about seven decimal places:
-
-```typescript
-function gelu(x: number): number {
-  return 0.5 * x * (1 + erf(x / Math.SQRT2));
-}
-```
 
 ### Inside a block: attention
 
@@ -809,34 +645,6 @@ return out
 ![](assets/images/minigpt/annotated-attention.svg)
 *The heart of attention, with a comment beside each line*
 
-### Attention in the TypeScript this page runs
-
-The demos on this page do the same in [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts), with the loops written out. For each head `h`, each position `i` matches its query against the key of every position `j` up to itself, shrinks the scores, shares them out with `softmax`, and collects the values into `mixed`:
-
-```typescript
-const q = this.linear(xn, T, C, `${p}.attn.query`);
-const k = this.linear(xn, T, C, `${p}.attn.key`);
-const v = this.linear(xn, T, C, `${p}.attn.value`);
-const mixed = new Float32Array(T * C);
-const scale = 1 / Math.sqrt(hd);
-for (let h = 0; h < n_head; h++) {
-  for (let i = 0; i < T; i++) {
-    const scores = new Float32Array(i + 1);
-    for (let j = 0; j <= i; j++) {
-      let dot = 0;
-      for (let d = 0; d < hd; d++) dot += q[i * C + h * hd + d] * k[j * C + h * hd + d];
-      scores[j] = dot * scale;
-    }
-    const w = softmax(scores);
-    for (let j = 0; j <= i; j++)
-      for (let d = 0; d < hd; d++) mixed[i * C + h * hd + d] += w[j] * v[j * C + h * hd + d];
-  }
-}
-const att = this.linear(mixed, T, C, `${p}.attn.proj`);
-```
-
-`hd` is 32, a head's share of the 128 numbers, and `h * hd` picks that head's piece of each query, key, and value. `scores` only ever has `i + 1` entries, one for each position up to `i`, so the "only earlier positions" rule needs no mask at all: later positions are simply never looked at. This is the same arithmetic as the notebook's, without the extra lines the demos use to switch heads off and to record them for drawing.
-
 ### Several heads at once
 
 A block does not run attention just once. It runs it four times side by side, and each copy is called a *head*. Each head gets its own 32-number piece of every query, key, and value, and every piece is made from the whole hidden state. Same hidden states, same moment, but four different queries, and so four different answers.
@@ -912,37 +720,6 @@ out = self.proj(out)
 
 ![](assets/images/minigpt/annotated-heads.svg)
 *The head lines again, with a note beside each line in my own words*
-
-### Heads in the TypeScript this page runs
-
-In [the TypeScript above](#attention-in-the-typescript-this-page-runs), the heads are the outer loop, `for (let h = 0; h < n_head; h++)`, and a head's piece of each vector is the 32 numbers starting at `h * hd`. So there is no cutting or regrouping to do: each head simply reads its own 32 numbers of every query, key, and value, and writes its own 32 numbers of `mixed`. `attn.proj` then mixes all 128.
-
-:::fireside-chat Tonight: Attention and the MLP argue about who does the real work
-**Attention:** Let us be honest. Without me, every hidden state in this model is on its own. I am the only part where hidden states talk to each other.
-
-**MLP:** Talking is cheap. You collect the values. I actually do something with them. And I have twice as many parameters as you: 131,712 per block, against your 66,048.
-
-**Attention:** Parameters are not everything. Without me, after an `o` you would make the same guess whether the word was heading for `good` or `took`.
-
-**MLP:** And without me, all you ever do is mix. Every value you hand back is a weighted average of the values you were given. You cannot come up with anything that was not already there.
-
-**Attention:** Fair. But I decide *who* to listen to, and I decide afresh for every piece of text. You do exactly the same sum for every hidden state, whoever its neighbours are.
-
-**MLP:** Which is why the notebook gives us one turn each, four blocks in a row.
-
-**Attention:** And the residual connection keeps both our work. Truce?
-
-**MLP:** Truce. Until the next block.
-:::
-
-:::bullet-points Inside the blocks
-- Block 1 gets one hidden state per position. From then on, the machine works only on these vectors, never on letters.
-- In attention, each hidden state makes a query, a key, and a value, using the block's three fixed tables of weights.
-- It matches its query against the key of every earlier position, and its own, shares out its attention, and collects their values in those shares.
-- Four heads run at once, each with its own 32-number piece of every query, key, and value.
-- In the MLP, each hidden state is worked on alone, using knowledge stored in the parameters.
-- Four blocks in a row let each hidden state gather information from further and further back.
-:::
 
 ### Token embeddings and position embeddings
 
@@ -1051,22 +828,6 @@ These are the first lines of `MiniGPT.forward`, before the blocks. Python counts
 ![](assets/images/minigpt/annotated-embeddings.svg)
 *The embedding lines again, with a note beside each line in my own words*
 
-### Embeddings in the TypeScript this page runs
-
-The demos on this page do the same at the start of `forward`, in [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts). Both tables are stored row after row, 128 numbers per row, so row `ids[r]` of the token table starts at `ids[r] * C`, and row `r` of the position table starts at `r * C`:
-
-```typescript
-const tok = this.t('token_embedding.weight');
-const pos = this.t('position_embedding.weight');
-
-// Step 2: token embedding + position embedding, number by number.
-let x = new Float32Array(T * C);
-for (let r = 0; r < T; r++)
-  for (let i = 0; i < C; i++) x[r * C + i] = tok[ids[r] * C + i] + pos[r * C + i];
-```
-
-`x` now holds the input embeddings, one row of 128 numbers for each letter, ready for block 1.
-
 ### Letters to numbers
 
 The last layer of the box, and the first thing the model does. Computers need numbers, so each of the 65 letters in the vocabulary gets an ID: its place in the list of all 65, sorted into the computer's standard order. In Tiny Shakespeare, `g` is 45, `o` is 53, and `d` is 42, so `goo` becomes `[45, 53, 53]`. That is all this step does. But an ID is just a name tag. 53 is not "more" than 45 in any way that helps, so the model cannot do much with the ID itself. That is why the very next step swaps each ID for its token embedding, as the layer above showed.
@@ -1109,24 +870,7 @@ def encode(s):
 ![](assets/images/minigpt/annotated-ids.svg)
 *The vocabulary code again, with a note beside each line in my own words*
 
-### Letters to numbers in the TypeScript this page runs
-
-The demos on this page get the 65 letters, in the same order, from the model's own files, and look IDs up with a `Map`, in [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts):
-
-```typescript
-encode(text: string): number[] {
-  const ids: number[] = [];
-  for (const ch of text) {
-    const id = this.stoi.get(ch);
-    if (id !== undefined) ids.push(id);
-  }
-  return ids;
-}
-```
-
-`this.stoi` is built once, when the model loads, from the same 65 letters in ID order. The `if` is where an unknown character is skipped.
-
-That is the bottom of the box. Starting from the outside, I have opened every layer: the wheel, the scores, `lm_head`, the four blocks, the MLP, attention, the heads, the embeddings, and now the IDs. There is nothing left inside that this post has not shown, in plain words, in the notebook's Python, and in the TypeScript running on this page.
+That is the bottom of the box. Starting from the outside, I have opened every layer: the wheel, the scores, `lm_head`, the four blocks, the MLP, attention, the heads, the embeddings, and now the IDs. There is nothing left inside that this post has not shown, in plain words, in a demo you can try, and in the notebook's Python.
 
 ### Try it: my trained machine, running in your browser
 
