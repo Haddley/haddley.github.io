@@ -153,7 +153,8 @@ export class MiniGPTEngine {
   // e.g. "0:2" for block 1, head 3. A switched-off head still works out its attention, so it can be
   // drawn, but adds nothing to the hidden states. Both are experiments: the trained model has all four
   // blocks and all 16 heads on.
-  forward(idsIn: number[], opts: { blocks?: number; off?: Set<string> } = {}): ForwardResult {
+  // `mlpOff` switches the MLP off in the given blocks, counted from 0.
+  forward(idsIn: number[], opts: { blocks?: number; off?: Set<string>; mlpOff?: Set<number> } = {}): ForwardResult {
     const { n_layer, n_head, n_embd: C, block_size } = this.manifest;
     const ids = idsIn.slice(-block_size);
     const T = ids.length;
@@ -209,7 +210,8 @@ export class MiniGPTEngine {
       for (let i = 0; i < hidden.length; i++) hidden[i] = gelu(hidden[i]);
       const mlp = this.linear(hidden, T, hidden.length / T, `${p}.mlp.fc2`);
       const next = new Float32Array(x.length);
-      for (let i = 0; i < x.length; i++) next[i] = x[i] + mlp[i];
+      const mlpOn = !(opts.mlpOff?.has(L) ?? false);
+      for (let i = 0; i < x.length; i++) next[i] = mlpOn ? x[i] + mlp[i] : x[i];
       x = next;
       earlyProbs.push(softmax(this.readOut(x, T)));
       blockStates.push(x.slice((T - 1) * C, T * C));

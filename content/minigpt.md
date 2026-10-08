@@ -509,6 +509,10 @@ Take hidden state 3 in `goo` as it arrives at block 1: the `o` token embedding p
 The result starts 0.43, −2.10, 0.22 (allowing for rounding): the numbers that go into block 1's weights in [Where the queries, keys and values come from](#where-the-queries-keys-and-values-come-from). [MiniGPT (Part 5)](/posts/minigpt4/) tries a simpler kind of normalising, *RMSNorm*, which skips the first move and the shift.
 :::
 
+:::brain-power
+After one block, every hidden state knows something about the positions just before it. What could a second block of exactly the same kind add that the first could not?
+:::
+
 Why four blocks, and not one? Because each block builds on the last. After block 1, a hidden state knows about the positions just before it. In block 2, it can look at hidden states that have *already* gathered their own neighbours, so it learns about positions further back, and so on. You can see this in the heads themselves. In block 1, the heads look between 1.6 and 5.7 positions back on average. In blocks 2 to 4, they look between 6 and 25 positions back.
 
 You can also watch the guess improve. After each block, I took the last hidden state as it was at that point, gave it the same final normalisation, scored it against the same 65 rows of `lm_head`, and turned the scores into chances, exactly as step 4 does after block 4. `lm_head` was only ever trained to read block 4's output, so this is a peek rather than something the machine does when it writes, but it works surprisingly well, and researchers use the same trick under the name *logit lens*:
@@ -592,6 +596,67 @@ for (let L = 0; L < nBlocks; L++) {
 ```
 
 `x` holds the hidden states, one after another, 128 numbers each. The two `x[i] +` lines are "add, never replace", written out as loops. `nBlocks` is normally 4; the demo above sets it lower to stop early.
+
+### Then the MLP: each hidden state on its own
+
+Inside each block, after attention, every hidden state goes through the *MLP*, short for *multilayer perceptron*: a small two-layer network that works on each hidden state on its own. Every hidden state gets the same calculation, but each one sees only its own numbers. It is the simpler half of a block, so I open it first; attention, the half that looks back at other letters, comes next.
+
+The MLP matters more than it sounds. About two-thirds of each block's parameters are in the MLP, rather than in attention.
+
+So what is the MLP for? Grant Sanderson of 3Blue1Brown gives a good rule of thumb in [his talk on transformers](https://www.youtube.com/watch?v=KJtZARuO3JY): where a guess needs *context*, attention supplies it, and where it needs *general knowledge*, the MLP supplies it. His example is a big word-level model completing "Michael Jordan plays the sport of". *Basketball* appears nowhere in the sentence, so it must come from knowledge stored in the parameters, and researchers at Google DeepMind found evidence that facts like this live mostly in the MLPs. In our small model the knowledge is humbler. Once attention has gathered that the word so far is `thoug`, knowing that `h` comes next is knowledge of English spelling, not something written in the earlier positions.
+
+Try it below: switch the MLP off in any of the four blocks, and compare the chances, and the writing, with the real model. The text starts as Romeo, halfway through *thought*.
+
+:::demo minigpt-mlp
+:::
+
+:::test-drive Switch the MLPs off
+1. Start with everything on. After `thoug`, `h` gets 99.4%: knowing that *thoug* ends in `h` is just the kind of spelling knowledge the MLP holds.
+2. Switch off block 1's MLP. `h` drops to 2.9%, and `n` leads, at 34.8%. Write 60 letters both ways: without it, the words fall apart.
+3. Switch block 1 back on, and try blocks 2, 3, and 4 one at a time instead. `h` stays above 90% each time. For this guess, block 1's MLP does the heavy lifting.
+4. Switch all four off. The model writes letters, but hardly any words: `te tee aattesteetes…`.
+:::
+
+### The MLP in the original Python
+
+![](assets/images/minigpt/feed-forward.png)
+*I ran the 1.3 cell, which defines the `FeedForward` class: two linear layers with a GELU between them, then dropout*
+
+```python
+# 128 numbers → 512
+x = self.fc1(x)
+# bend: keep the positives, squash the negatives
+x = self.gelu(x)
+# 512 numbers → 128
+x = self.fc2(x)
+```
+
+The MLP works on each hidden state alone, using the same fixed weights for every position. `fc1` and `fc2` are `nn.Linear` layers, just like attention's, but `fc1` makes 512 numbers from 128, giving the MLP room to look for many patterns at once, and `fc2` brings them back to 128. `gelu` (Gaussian Error Linear Unit) is what makes the two layers more than one: without a bend between them, two weighted mixes in a row would be no more powerful than one. GELU passes large positive numbers through almost unchanged, pushes large negative numbers to about zero, and curves smoothly in between.
+
+The MLP holds most of each block's numbers: 66,048 in `fc1` and 65,664 in `fc2`, 131,712 in all, almost exactly twice attention's 66,048. It is the same kind of two-layer network as the digit reader in [Machine Learning (Part 9)](/posts/machinelearning9/).
+
+![](assets/images/minigpt/annotated-mlp.svg)
+*The MLP code again, with a note beside each line in my own words*
+
+### The MLP in the TypeScript this page runs
+
+The demos on this page run the same three steps in [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts), inside the loop over the blocks:
+
+```typescript
+// normalise, MLP, add the result
+const xn2 = this.layerNorm(x, T, C, `${p}.ln2`);
+const hidden = this.linear(xn2, T, C, `${p}.mlp.fc1`);
+for (let i = 0; i < hidden.length; i++) hidden[i] = gelu(hidden[i]);
+const mlp = this.linear(hidden, T, hidden.length / T, `${p}.mlp.fc2`);
+```
+
+`linear` is the same dot-product function that `lm_head` uses, so `fc1` is 512 dot products against 512 rows of 128 numbers, and `fc2` is 128 dot products against 128 rows of 512. In between, `gelu` bends every one of the 512 numbers, using `erf`, a standard curve that the engine works out with a well-known approximation, exact to about seven decimal places:
+
+```typescript
+function gelu(x: number): number {
+  return 0.5 * x * (1 + erf(x / Math.SQRT2));
+}
+```
 
 ### Try it: my trained machine, running in your browser
 
@@ -883,16 +948,22 @@ At the end of attention, what the four heads collected, 32 numbers each, is laid
 
 Why 32? The machine makes one query, one key, and one value for each hidden state, each 128 numbers long and each made from the *whole* hidden state. Then it cuts each of them into four pieces of 32, one piece per head. So the heads share the block's three tables of weights between them, rather than each adding more. The 4 is not fixed. With 8 heads, each head's query, key, and value would be 16 numbers long: more queries, but cruder ones. The bigger model in the notebook uses 6 heads of 64. More heads is not automatically better; it is a trade-off that model builders settle by experiment. The only rule is that the vector size must divide evenly by the number of heads.
 
-### Then the MLP: each hidden state on its own
+:::fireside-chat Tonight: Attention and the MLP argue about who does the real work
+**Attention:** Let us be honest. Without me, every hidden state in this model is on its own. I am the only part where hidden states talk to each other.
 
-Attention is for gathering information from other positions. After it, every hidden state goes through the *MLP*, short for *multilayer perceptron*: a small two-layer network that works on each hidden state on its own. Every hidden state gets the same calculation, but each one sees only its own numbers.
+**MLP:** Talking is cheap. You collect the values. I actually do something with them. And I have twice as many parameters as you: 131,712 per block, against your 66,048.
 
-The MLP matters more than it sounds. About two-thirds of each block's parameters are in the MLP, rather than in attention.
+**Attention:** Parameters are not everything. Without me, after an `o` you would make the same guess whether the word was heading for `good` or `took`.
 
-So what is the MLP for? Grant Sanderson of 3Blue1Brown gives a good rule of thumb in [his talk on transformers](https://www.youtube.com/watch?v=KJtZARuO3JY): where a guess needs *context*, attention supplies it, and where it needs *general knowledge*, the MLP supplies it. His example is a big word-level model completing "Michael Jordan plays the sport of". *Basketball* appears nowhere in the sentence, so it must come from knowledge stored in the parameters, and researchers at Google DeepMind found evidence that facts like this live mostly in the MLPs. In our small model the knowledge is humbler. Once attention has gathered that the word so far is `thoug`, knowing that `h` comes next is knowledge of English spelling, not something written in the earlier positions.
+**MLP:** And without me, all you ever do is mix. Every value you hand back is a weighted average of the values you were given. You cannot come up with anything that was not already there.
 
-:::brain-power
-After one block, every hidden state knows something about the positions just before it. What could a second block of exactly the same kind add that the first could not?
+**Attention:** Fair. But I decide *who* to listen to, and I decide afresh for every piece of text. You do exactly the same sum for every hidden state, whoever its neighbours are.
+
+**MLP:** Which is why the notebook gives us one turn each, four blocks in a row.
+
+**Attention:** And the residual connection keeps both our work. Truce?
+
+**MLP:** Truce. Until the next block.
 :::
 
 :::bullet-points Step 3, the blocks
@@ -1362,42 +1433,6 @@ return out
 
 ![](assets/images/minigpt/annotated-attention.svg)
 *The heart of attention, with a comment beside each line*
-
-### The MLP: `FeedForward` (cell 1.3)
-
-![](assets/images/minigpt/feed-forward.png)
-*I ran the 1.3 cell, which defines the `FeedForward` class: two linear layers with a GELU between them, then dropout*
-
-```python
-# 128 numbers → 512
-x = self.fc1(x)
-# bend: keep the positives, squash the negatives
-x = self.gelu(x)
-# 512 numbers → 128
-x = self.fc2(x)
-```
-
-The MLP works on each hidden state alone, using the same fixed weights for every position. `fc1` and `fc2` are `nn.Linear` layers, just like attention's, but `fc1` makes 512 numbers from 128, giving the MLP room to look for many patterns at once, and `fc2` brings them back to 128. `gelu` (Gaussian Error Linear Unit) is what makes the two layers more than one: without a bend between them, two weighted mixes in a row would be no more powerful than one. GELU passes large positive numbers through almost unchanged, pushes large negative numbers to about zero, and curves smoothly in between.
-
-The MLP holds most of each block's numbers: 66,048 in `fc1` and 65,664 in `fc2`, 131,712 in all, almost exactly twice attention's 66,048. It is the same kind of two-layer network as the digit reader in [Machine Learning (Part 9)](/posts/machinelearning9/).
-
-:::fireside-chat Tonight: Attention and the MLP argue about who does the real work
-**Attention:** Let us be honest. Without me, every hidden state in this model is on its own. I am the only part where hidden states talk to each other.
-
-**MLP:** Talking is cheap. You collect the values. I actually do something with them. And I have twice as many parameters as you: 131,712 per block, against your 66,048.
-
-**Attention:** Parameters are not everything. Without me, after an `o` you would make the same guess whether the word was heading for `good` or `took`.
-
-**MLP:** And without me, all you ever do is mix. Every value you hand back is a weighted average of the values you were given. You cannot come up with anything that was not already there.
-
-**Attention:** Fair. But I decide *who* to listen to, and I decide afresh for every piece of text. You do exactly the same sum for every hidden state, whoever its neighbours are.
-
-**MLP:** Which is why the notebook gives us one turn each, four blocks in a row.
-
-**Attention:** And the residual connection keeps both our work. Truce?
-
-**MLP:** Truce. Until the next block.
-:::
 
 ### `lm_head`: back in `MiniGPT.forward`
 
