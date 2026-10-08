@@ -116,7 +116,12 @@ logits = logits[:, -1, :]
 logits = logits / temperature
 ```
 
-That is all there is to it. After the first line, `logits` holds the 65 scores for the next letter, and dividing it by one number divides every score by that number: 65 divisions in one line. Here is what it does to the two biggest scores after `go`:
+That is all there is to it. After the first line, `logits` holds the 65 scores for the next letter, and dividing it by one number divides every score by that number: 65 divisions in one line.
+
+![](assets/images/minigpt/annotated-temperature.svg)
+*The temperature lines again, with a note beside each line in my own words*
+
+Here is what it does to the two biggest scores after `go`:
 
 | Divide by | `o` | space | Gap | `o`'s slice ÷ space's |
 |---|---|---|---|---|
@@ -172,6 +177,9 @@ if top_k is not None:
 ```
 
 `torch.topk` finds the *k* biggest scores and which letters they belong to. `torch.full_like` makes a fresh list of 65 scores, every one of them minus infinity, and `scatter_` puts the *k* biggest scores back in their places. When softmax turns scores into chances, a score of minus infinity becomes a chance of exactly 0, so those slices vanish, and the survivors share the whole wheel.
+
+![](assets/images/minigpt/annotated-topk.svg)
+*The top-k lines again, with a note beside each line in my own words*
 
 :::watch-it Top-k of 200 trims nothing here
 The notebook's default `top_k` is 200, but this model has only 65 letters, so `min(top_k, logits.size(-1))` makes *k* 65, and every slice is kept. Top-k matters for big models that choose between tens of thousands of pieces of words. To see it work on MiniGPT, *k* has to be smaller than 65.
@@ -339,6 +347,9 @@ logits = self.lm_head(x)
 ```
 
 In the code, the hidden states are just `x`, one list for each letter, all the way through the model.
+
+![](assets/images/minigpt/annotated-lmhead.svg)
+*The `lm_head` lines again, with a note beside each line in my own words*
 
 The scores are called `logits`. Then, in the writing loop, `generate_text`:
 
