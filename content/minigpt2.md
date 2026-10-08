@@ -20,8 +20,8 @@ The code for this post is in [`part3-tokenisers/`](https://github.com/Haddley/mi
 | Text | **TinyStories, about 20 million letters** |
 | Pieces | **letters (91), GPT-2's 50,257, or my own 8,192** |
 | Blocks | 6, each attention (6 heads) then an MLP: Part 2's bigger machine |
-| Card size | 384 |
-| Positions | 256, position cards |
+| Vector size | 384 |
+| Positions | 256, position embeddings |
 | Engine | PyTorch |
 | Size | 10.8, 30.0, or 13.9 million numbers, depending on the pieces |
 | Score | **0.697 bits per byte**, with my 8k pieces |
@@ -36,16 +36,16 @@ How many pieces would you cut this sentence into, if you could choose any pieces
 > The wobbly kitten chased a yellow butterfly.
 :::
 
-MiniGPT, as Parts 1 and 2 built it, cuts it into 44 pieces: one for every letter, space, and punctuation mark. You probably thought in words: 7 of them, plus a full stop. The program that does the cutting is the **tokeniser**, and each piece it produces is a **token**. In Parts 1 and 2, every token was a single letter, so I called each token's card a letter card. From here on, a token can be a whole word, part of a word, or a single letter, so I call its card a **token card**. Nothing else about the cards changes: the tokeniser turns each piece into an ID, and each ID picks its own token card.
+MiniGPT, as Parts 1 and 2 built it, cuts it into 44 pieces: one for every letter, space, and punctuation mark. You probably thought in words: 7 of them, plus a full stop. The program that does the cutting is the **tokeniser**, and each piece it produces is a **token**. In Parts 1 and 2, every token was a single letter, and each letter had its own **token embedding**. From here on, a token can be a whole word, part of a word, or a single letter, and each one still gets its own token embedding. Nothing else changes: the tokeniser turns each piece into an ID, and each ID picks its own row of the token-embedding table.
 
 ![](assets/images/minigpt2/tokenisation.svg)
-*The same words, cut three ways. In this sentence, GPT-2 breaks *wobbly* into three pieces, while my tokeniser keeps it whole. The two cuts disagree on words like this one, and on less common words too, as [What bigger pieces buy](#what-bigger-pieces-buy) shows. The machine never sees the letters, only the IDs, so every piece needs its own token card*
+*The same words, cut three ways. In this sentence, GPT-2 breaks *wobbly* into three pieces, while my tokeniser keeps it whole. The two cuts disagree on words like this one, and on less common words too, as [What bigger pieces buy](#what-bigger-pieces-buy) shows. The machine never sees the letters, only the IDs, so every piece needs its own token embedding*
 
 ### Three ways to cut text
 
 I tried three tokenisers on the same machine:
 
-- **Letters.** One token per character, exactly as in Parts 1 and 2. The stories contain 91 different characters, so there are 91 token cards.
+- **Letters.** One token per character, exactly as in Parts 1 and 2. The stories contain 91 different characters, so there are 91 token embeddings.
 - **GPT-2's pieces, borrowed.** The tokeniser OpenAI built for GPT-2 in 2019. It has 50,257 pieces, from single letters up to whole common words, and there is nothing to train: I simply use it.
 - **My own pieces.** A tokeniser I built from the practice text, using the same method as GPT-2's, but stopped at 8,192 pieces.
 
@@ -82,7 +82,7 @@ In printed lists of BPE pieces, a space attached to the front of a piece often s
 
 ### What bigger pieces buy
 
-Fewer pieces means each position card covers more text. On the stories I held back for testing, the letters tokeniser needs 1.00 token per *byte* of text (a byte is the computer's unit for one ordinary character, so think of it as one letter), one per letter. GPT-2's tokeniser needs 0.246, and my own needs 0.244: both cover about four letters with every token. My own pieces even pack these stories slightly *tighter* than GPT-2's much bigger supply, because they were built from exactly this kind of text.
+Fewer pieces means each position embedding covers more text. On the stories I held back for testing, the letters tokeniser needs 1.00 token per *byte* of text (a byte is the computer's unit for one ordinary character, so think of it as one letter), one per letter. GPT-2's tokeniser needs 0.246, and my own needs 0.244: both cover about four letters with every token. My own pieces even pack these stories slightly *tighter* than GPT-2's much bigger supply, because they were built from exactly this kind of text.
 
 You can see why in the words they cut differently. Children's-story words like *Grandma*, *cupboard*, and *grumpy* are whole pieces in my supply, but split in GPT-2's. A word that is rare in children's stories, like *pterodactyl*, goes the other way:
 
@@ -96,18 +96,18 @@ That matters because the machine's row of positions has a fixed length. It has 2
 
 ### What bigger pieces cost
 
-Every piece in the supply needs its own token card, and every card holds 384 numbers in this bigger machine. And in this machine, the token cards do a second job: they are also the [answer cards](/posts/minigpt/#lmhead-where-do-the-65-scores-logits-for-the-next-letter-come-from). The trick is called *weight tying*. [Part 1's exhibit](/posts/minigpt/#lmhead-where-do-the-65-scores-logits-for-the-next-letter-come-from) kept two separate sets of cards; this bigger machine uses one set for both jobs. That halves the cost of a big supply, but the cost is still large:
+Every piece in the supply needs its own token embedding, and every token embedding holds 384 numbers in this bigger machine. And in this machine, the token embeddings do a second job: they are also the [rows of `lm_head`](/posts/minigpt/#lmhead-where-do-the-65-scores-logits-for-the-next-letter-come-from). The trick is called *weight tying*. [Part 1's exhibit](/posts/minigpt/#lmhead-where-do-the-65-scores-logits-for-the-next-letter-come-from) kept two separate tables; this bigger machine uses one table for both jobs. That halves the cost of a big supply, but the cost is still large:
 
-| Tokeniser | Token cards | Numbers on the token cards | Numbers in the blocks | The whole machine |
+| Tokeniser | Token embeddings | Numbers on the token embeddings | Numbers in the blocks | The whole machine |
 |---|---|---|---|---|
 | Letters | 91 | 34,944 | 10,736,640 | 10.8 million |
 | My 8k BPE | 8,192 | 3,145,728 | 10,736,640 | 13.9 million |
 | GPT-2 | 50,257 | 19,298,688 | 10,736,640 | 30.0 million |
 
-The blocks, which do all the real work, are exactly the same 10,736,640 numbers every time. With GPT-2's supply, 64% of the whole machine is token cards. That is the cost my 8,192-piece supply was built to avoid.
+The blocks, which do all the real work, are exactly the same 10,736,640 numbers every time. With GPT-2's supply, 64% of the whole machine is token embeddings. That is the cost my 8,192-piece supply was built to avoid.
 
 ![](assets/images/minigpt2/token-cards-cost.svg)
-*Same blocks, different supply of token cards. With GPT-2's pieces, the cards outweigh everything else*
+*Same blocks, different supply of token embeddings. With GPT-2's pieces, the token embeddings outweigh everything else*
 
 ### Keeping score fairly
 
@@ -153,13 +153,13 @@ Never compare surprise scores across different tokenisers. A machine can win on 
 
 **GPT-2:** Of course it did. You guess one letter at a time, out of 91. I guess whole words, out of 50,257. Spread over the actual text, you came last.
 
-**Letters:** But I can never be stuck. Give me any word, in any language, and I can spell it. You need a card for every piece you know.
+**Letters:** But I can never be stuck. Give me any word, in any language, and I can spell it. You need a token embedding for every piece you know.
 
 **GPT-2:** So can I. When I meet something strange, I spell it out of smaller pieces, right down to single bytes if I have to. And while you spend all 256 positions on about 50 words, I fit a whole story in.
 
-**Letters:** And you pay for it. My cards cost 35 thousand numbers. Yours cost 19 million: almost two thirds of the machine is your card collection.
+**Letters:** And you pay for it. My token embeddings cost 35 thousand numbers. Yours cost 19 million: almost two thirds of the machine is your token embeddings.
 
-**GPT-2:** That is fair. And on these stories, the little 8k tokeniser did everything I did, with a sixth of my cards.
+**GPT-2:** That is fair. And on these stories, the little 8k tokeniser did everything I did, with a sixth of my token embeddings.
 
 **Letters:** So we agree on something. Neither of us won.
 
@@ -176,10 +176,10 @@ Each machine was asked to carry on from "Once upon a time":
 The letters machine starts well, then loses track: a "caze" and a "cabel", a second "little boy named Tim" two sentences after the first, and a treat that turns into a bird. My 8k BPE machine holds a scene: Lily, a lamp she wants to play with, her mum saying no, and Lily trying to fix it. It still slips, a "big carpet" that turns out to be a lamp, but every word is spelled right, and the story hangs together: each row of 256 positions now covers a whole story, and that reach shows up on the page.
 
 :::bullet-points Part 3, in short
-- A tokeniser cuts text into tokens, and each token gets its own token card.
+- A tokeniser cuts text into tokens, and each token gets its own token embedding.
 - BPE builds its pieces by gluing the most common neighbouring pair, again and again.
 - Bigger pieces let the same 256 positions see about four times as much text.
-- Bigger supplies cost token cards: with GPT-2's, 64% of the machine is cards.
+- Bigger supplies cost token embeddings: with GPT-2's, 64% of the machine is token embeddings.
 - Surprise per token is unfair across tokenisers. Bits per byte is fair.
 - On these stories, my 8,192 pieces matched GPT-2's 50,257, at under half the size.
 :::
@@ -187,11 +187,11 @@ The letters machine starts well, then loses track: a "caze" and a "cabel", a sec
 :::no-dumb-questions
 **Q: Why not just use one token per whole word?**
 
-A: Three reasons. There are far too many words, so the supply of token cards would be enormous. Most words are rare, so their cards would hardly ever be practised. And a word the tokeniser has never seen would have no card at all. BPE pieces avoid all three: common words get their own cards, and anything else is spelled out from smaller pieces, down to single bytes if it has to be.
+A: Three reasons. There are far too many words, so the supply of token embeddings would be enormous. Most words are rare, so their embeddings would hardly ever be practised. And a word the tokeniser has never seen would have no token embedding at all. BPE pieces avoid all three: common words get their own token embeddings, and anything else is spelled out from smaller pieces, down to single bytes if it has to be.
 
 **Q: Does the machine still know how words are spelled?**
 
-A: Not directly. With BPE, ` dog` is one token, with one card, so the machine never sees the letters `d`, `o`, and `g` at all. Whatever it knows about spelling, it has to work out from how pieces are used. That is why language models are famously bad at questions like counting the letters in a word.
+A: Not directly. With BPE, ` dog` is one token, with one token embedding, so the machine never sees the letters `d`, `o`, and `g` at all. Whatever it knows about spelling, it has to work out from how pieces are used. That is why language models are famously bad at questions like counting the letters in a word.
 
 **Q: Why does my small supply pack these stories tighter than GPT-2's big one?**
 
@@ -199,7 +199,7 @@ A: Because it was built from this kind of text. GPT-2's pieces were chosen to co
 
 **Q: Is a bigger supply of pieces ever worth it?**
 
-A: For a big model trained on varied text, yes: a bigger supply means fewer tokens per sentence, and the token cards are a small share of a model with billions of numbers. For a model this small, the cards would eat most of the budget, as the table above shows.
+A: For a big model trained on varied text, yes: a bigger supply means fewer tokens per sentence, and the token embeddings are a small share of a model with billions of numbers. For a model this small, the token embeddings would eat most of the budget, as the table above shows.
 :::
 
 :::pencil Who does what?
@@ -211,7 +211,7 @@ Before you look at the decoder below, match each everyday description on the lef
 | 2. one piece of text | B. *weight tying* |
 | 3. the whole supply of pieces | C. the *tokeniser* |
 | 4. gluing the most common neighbouring pair | D. *bits per byte* |
-| 5. using the token cards as the answer cards too | E. a *token* |
+| 5. using the token embeddings as the rows of `lm_head` too | E. a *token* |
 | 6. halvings of surprise for each byte of text | F. the *vocabulary* |
 
 :::answer
@@ -228,9 +228,9 @@ The terms for the whole series are collected in one table, [the series glossary]
 | the program that cuts text into pieces | the *tokeniser* |
 | one piece of text | a *token* |
 | the supply of pieces | the *vocabulary* |
-| a token card | a *token embedding* |
+| a piece's row of learned numbers | its *token embedding* |
 | gluing the most common pair | a BPE *merge* |
-| using the token cards as the answer cards too | *weight tying* |
+| using the token embeddings as the rows of `lm_head` too | *weight tying* |
 | halvings of surprise for each byte of text | *bits per byte* |
 | surprise per token | the *loss*, or *cross-entropy* |
 
@@ -281,11 +281,11 @@ return self.enc.encode(s, allowed_special={"<|endoftext|>"})
 
 ### The machine: `model.py`
 
-The machine is Part 2's bigger MiniGPT: 6 blocks, 6 heads, 384 numbers per card, and 256 positions. Only two lines matter for this post:
+The machine is Part 2's bigger MiniGPT: 6 blocks, 6 heads, 384 numbers per vector, and 256 positions. Only two lines matter for this post:
 
 ```python
-self.tok_emb = nn.Embedding(vocab_size, n_embd)   # one token card per piece
-self.tok_emb.weight = self.head.weight            # the token cards are also the answer cards
+self.tok_emb = nn.Embedding(vocab_size, n_embd)   # one token embedding per piece
+self.tok_emb.weight = self.head.weight            # the token embeddings are also the output rows
 ```
 
 The supply size is now a setting, `vocab_size`, instead of a fixed 65. The second line is the weight tying from the cost table.

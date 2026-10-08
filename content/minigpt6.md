@@ -10,7 +10,7 @@ hidden: false
 slug: "minigpt6"
 ---
 
-[Part 1](/posts/minigpt/#how-much-can-it-see-at-once-the-context-limit) warned that a longer row of positions is expensive, mostly because of attention. This post measures exactly how expensive, on the modern machine from [Part 5](/posts/minigpt4/), and then fixes it with the trick Mistral's models use: let each working card look back only over a fixed *window* of recent positions.
+[Part 1](/posts/minigpt/#how-much-can-it-see-at-once-the-context-limit) warned that a longer row of positions is expensive, mostly because of attention. This post measures exactly how expensive, on the modern machine from [Part 5](/posts/minigpt4/), and then fixes it with the trick Mistral's models use: let each hidden state look back only over a fixed *window* of recent positions.
 
 The code is in [`part7-sliding-window/`](https://github.com/Haddley/minigpt-series/tree/main/part7-sliding-window), with a follow-along notebook for a Mac, [`minigpt_follow_along_7.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part7-sliding-window/minigpt_follow_along_7.ipynb).
 
@@ -20,8 +20,8 @@ The code is in [`part7-sliding-window/`](https://github.com/Haddley/minigpt-seri
 | Text | TinyStories |
 | Pieces | my 8,192 |
 | Blocks | 6 of Llama's design, from Part 5 |
-| Card size | 384 |
-| Positions | **1,024, each working card looking back at most 256**; no position cards |
+| Vector size | 384 |
+| Positions | **1,024, each hidden state looking back at most 256**; no position embeddings |
 | Engine | MLX |
 | Size | 12.6 million numbers |
 | Score | 0.6727 bits per byte |
@@ -30,10 +30,10 @@ The code is in [`part7-sliding-window/`](https://github.com/Haddley/minigpt-seri
 
 ### Why a longer row costs so much
 
-In [attention](/posts/minigpt/#inside-a-block-attention), every working card matches its query card against the key card of every earlier position, and itself. So the number of matches grows much faster than the row.
+In [attention](/posts/minigpt/#inside-a-block-attention), every hidden state matches its query against the key of every earlier position, and itself. So the number of matches grows much faster than the row.
 
 :::pencil Count the matches
-Every working card matches its query against the key of every position up to and including its own. How many matches does one head make for a row of 4 positions? For 8? For 1,024?
+Every hidden state matches its query against the key of every position up to and including its own. How many matches does one head make for a row of 4 positions? For 8? For 1,024?
 
 :::answer
 For 4 positions: 1 + 2 + 3 + 4 = 10 matches. For 8: 1 + 2 + … + 8 = 36. For 1,024: about 525,000. Doubling the row from 4 to 8 more than tripled the matches, and every further doubling roughly quadruples them. The matches, and the memory to hold them, grow with the *square* of the row.
@@ -48,19 +48,19 @@ Every one of those matches is a number the machine has to hold while it trains, 
 
 ### A sliding window
 
-The fix is to let each working card look back only over a fixed window, here the last 256 positions, however long the row is. Then each card makes at most 256 matches, and the total grows only *in step with* the row: twice the row, twice the matches.
+The fix is to let each hidden state look back only over a fixed window, here the last 256 positions, however long the row is. Then each hidden state makes at most 256 matches, and the total grows only *in step with* the row: twice the row, twice the matches.
 
 :::brain-power
-If each working card can only see the last 256 positions, how can the machine ever use something 1,000 positions back?
+If each hidden state can only see the last 256 positions, how can the machine ever use something 1,000 positions back?
 :::
 
-In principle, through the blocks. In block 1, a working card gathers information from up to 256 positions back. In block 2, it looks at working cards that have *already* gathered from their own windows, so it could reach up to about 512 back, and so on. With 6 blocks, information could travel about 1,500 positions, one window per block, much as [Part 1's four blocks](/posts/minigpt/#four-blocks-in-a-row) let each card reach further back than the one before. But *could* is not *does*: [the secret-word test](#what-is-a-long-row-for-the-secret-word) below found that my machine never learned to do it.
+In principle, through the blocks. In block 1, a hidden state gathers information from up to 256 positions back. In block 2, it looks at hidden states that have *already* gathered from their own windows, so it could reach up to about 512 back, and so on. With 6 blocks, information could travel about 1,500 positions, one window per block, much as [Part 1's four blocks](/posts/minigpt/#four-blocks-in-a-row) let each hidden state reach further back than the one before. But *could* is not *does*: [the secret-word test](#what-is-a-long-row-for-the-secret-word) below found that my machine never learned to do it.
 
 ### Writing the window as a mask saves nothing
 
 The obvious way to build the window is the way the earlier-positions rule is built: a grid of "allowed" and "not allowed", here also blocking anything more than 256 positions back. It gives exactly the right *behaviour*. But it saves no memory at all: the machine still works out every match in the full row-by-row grid, and only then throws most of them away.
 
-To actually save memory, the machine must never build the full grid. So the row is cut into chunks of 256 positions, and each chunk only looks at itself and the chunk before it. That covers every card's window, and the biggest grid ever built is 256 by 512, however long the row.
+To actually save memory, the machine must never build the full grid. So the row is cut into chunks of 256 positions, and each chunk only looks at itself and the chunk before it. That covers every hidden state's window, and the biggest grid ever built is 256 by 512, however long the row.
 
 ![](assets/images/minigpt6/window-chunks.svg)
 *The same window, built two ways, for a row of 16 positions. The mask builds the whole grid and throws most of it away; the chunks never build the squares that would be thrown away*
@@ -91,7 +91,7 @@ Changing *what* attention may look at does not change what it *costs*. A mask ch
 *The notebook's shorter race, up to 2,048 positions. Already at 2,048, the chunks use 7.2 GB against full attention's 11.2 GB*
 
 - **The mask column matches full attention at every length**, exactly as the last section predicted.
-- **At short rows, everything is close.** Most of the memory then goes on the MLPs and on scoring against 8,192 answer cards, and both of those grow only in step with the row. Attention takes over at about 2,048 positions.
+- **At short rows, everything is close.** Most of the memory then goes on the MLPs and on scoring against 8,192 rows of `lm_head`, and both of those grow only in step with the row. Attention takes over at about 2,048 positions.
 - **At 4,096, full attention needs 35.5 GB**, more than half the Mac, and 1.9 seconds a step. The chunked window needs 15.1 GB and 0.8 seconds. At 8,192, full attention would need more memory than the Mac has. The chunked window reaches 16,384 positions in 59.4 GB.
 
 ### Does the windowed machine still learn?
@@ -135,14 +135,14 @@ TinyStories cannot show what a long row is for, so I built a test that can. Each
 - **Full attention can.** With 1,024 positions, it found the word 970 pieces back every time. This is what a long row is for.
 - **The window did not reach past its window.** It behaved exactly like the 256-position row. Through six blocks, the word *could* have hopped 256 positions at a time to the end, but in 1,500 steps of training the machine never learned to pass it along. Training it four times longer, 6,000 steps, only made it surer of the word close up (96% of the chance on the right word, up from 89%); beyond its window, it still guessed.
 
-My reading of why: to pass the word along, some working card in the middle of an unrelated story would have to pick the secret up in one block and hold it for a later block to collect, and no part of that chain is rewarded until the whole chain works. Whatever the reason, the lesson is the same: the reach that the blocks allow in principle is not reach the machine has learned. It is one reason why many models that use windows, such as Google's Gemma 2, also keep some blocks with full attention.
+My reading of why: to pass the word along, some hidden state in the middle of an unrelated story would have to pick the secret up in one block and hold it for a later block to collect, and no part of that chain is rewarded until the whole chain works. Whatever the reason, the lesson is the same: the reach that the blocks allow in principle is not reach the machine has learned. It is one reason why many models that use windows, such as Google's Gemma 2, also keep some blocks with full attention.
 
 :::watch-it My first test taught nothing
 In my first version, the secret was anywhere from 50 to 1,000 pieces back, spread evenly. The full-attention machine still learned the trick, but the other two got it wrong even 100 pieces back, where they could see it. They had never learned it: so few of their training rows showed them the secret and the question together that they never worked out what the question was for. A test that teaches nothing measures nothing, so I gave half the secret rows a short gap, and checked that every machine could do the trick close up before asking how far it could reach.
 :::
 
 :::fireside-chat Tonight: full attention and the sliding window, on who can read more
-**Full attention:** I see everything. Every working card can look at every position before it. Nothing is ever out of reach.
+**Full attention:** I see everything. Every hidden state can look at every position before it. Nothing is ever out of reach.
 
 **Sliding window:** And every time the row doubles, you need four times the memory. At 4,096 positions you took 35 GB.
 
@@ -150,7 +150,7 @@ In my first version, the secret was anywhere from 50 to 1,000 pieces back, sprea
 
 **Sliding window:** Not at 8,192 positions. You would have needed about 120 GB, on a 64 GB Mac. I read 16,384 in 59.
 
-**Full attention:** But you are short-sighted. Each card sees 256 positions back, and no further.
+**Full attention:** But you are short-sighted. Each hidden state sees 256 positions back, and no further.
 
 **Sliding window:** In one block. Through six blocks, information could travel about 1,500 positions.
 
@@ -169,7 +169,7 @@ In my first version, the secret was anywhere from 50 to 1,000 pieces back, sprea
 
 :::bullet-points Part 7, in short
 - Attention's matches, and their memory, grow with the square of the row.
-- A sliding window lets each working card look back only a fixed number of positions.
+- A sliding window lets each hidden state look back only a fixed number of positions.
 - Through the blocks, information could in principle travel further than one window; in my secret-word test, it never did.
 - A full 1,024-position row found a word 970 pieces back every time; the windowed machine, only by chance.
 - Writing the window as a mask changes what is seen, not what it costs.
@@ -184,11 +184,11 @@ A: Because most of them are a few hundred tokens long. A row of 256 BPE pieces a
 
 **Q: Is this the same as the KV cache from Part 1?**
 
-A: No, but they work together. The KV cache saves *time* when writing, by keeping old key and value cards instead of remaking them. A sliding window also caps how many of them need keeping: only the last 256 positions, however long the conversation.
+A: No, but they work together. The KV cache saves *time* when writing, by keeping old keys and values instead of remaking them. A sliding window also caps how many of them need keeping: only the last 256 positions, however long the conversation.
 
 **Q: Why chunks of exactly the window size?**
 
-A: With chunks of 256, every card's window of 256 positions fits inside its own chunk and the one before. Smaller chunks would need more of them looked at; bigger ones would build bigger grids than necessary.
+A: With chunks of 256, every hidden state's window of 256 positions fits inside its own chunk and the one before. Smaller chunks would need more of them looked at; bigger ones would build bigger grids than necessary.
 
 **Q: Do the big models use this?**
 
@@ -201,7 +201,7 @@ Match each everyday description on the left with its proper name on the right.
 | Everyday description | Proper name |
 |---|---|
 | 1. how many positions a machine can read at once | A. *sliding-window attention* |
-| 2. each card looks back only a fixed number of positions | B. the *attention mask* |
+| 2. each hidden state looks back only a fixed number of positions | B. the *attention mask* |
 | 3. the grid of "allowed" and "not allowed" matches | C. *quadratic* cost |
 | 4. growing with the square of the row | D. the *context length* |
 | 5. how far information can travel through the blocks | E. the *receptive field* |
@@ -300,36 +300,37 @@ Every machine here is tiny, and none of them is good. That was the point. The to
 
 ## The series glossary
 
-Every plain name used in this series, next to the name the experts use, and the part whose jargon decoder it first appears in. Each term is explained in that part.
+Every idea in this series in plain words, next to the name the experts use, and the part whose jargon decoder it first appears in. Each term is explained in that part.
 
-| What I called it | What the experts call it | First in |
+| In plain words | What the experts call it | First in |
 |---|---|---|
 | the guessing game | next-token prediction, or language modelling | [Part 1](/posts/minigpt/#the-jargon-decoder) |
 | a letter: any of the 65 symbols, even the space and the comma | a *character* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
 | the thing being guessed: a letter here, a word or piece of a word in big models | a *token* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
 | the 65 letters | the *vocabulary* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| the chances for every letter | a probability distribution, produced by a *softmax* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| a letter's flashcard | its *token embedding*: a vector of 128 numbers | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| the position card | the *position embedding* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| a working card before block 1: a letter card plus its position card | the *input embedding* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| the chances for each possible next letter | a probability distribution, produced by a *softmax* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| a letter's row of 128 learned numbers | its *token embedding* (`token_embedding`): a *vector* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| a position's row of 128 learned numbers | the *position embedding* (`position_embedding`) | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| a token embedding plus its position embedding, before block 1 | the *input embedding* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
 | the number of positions: how many letters it can see at once | the *context length*, or *context window* (`block_size`) | [Part 1](/posts/minigpt/#the-jargon-decoder) |
 | "only look at earlier positions" | the *causal mask* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| the query card, the key card, and the value card | the *query*, the *key*, and the *value* vectors | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| the three recipes that make them | the query, key, and value *projections* (`self.query`, `self.key`, `self.value`) | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| keeping the key and value cards instead of remaking them | the *KV cache* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| what attention matches and collects | the *query*, the *key*, and the *value* vectors | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| the three tables of weights that make them | the query, key, and value *projections* (`self.query`, `self.key`, `self.value`) | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| keeping the keys and values instead of remaking them | the *KV cache* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
 | add, never replace | the *residual connection* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| the row of working cards, as every block rewrites it | the *residual stream* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| a working card after a block | a *hidden state* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| normalising a working card before attention and before the MLP | *layer normalisation*, or *LayerNorm* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| the dials | the *parameters*, or *weights* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| the hidden states, as every block adds to them | the *residual stream* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| a position's vector after a block | a *hidden state* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| normalising a hidden state before attention and before the MLP | *layer normalisation*, or *LayerNorm* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| every fixed number that training set | the *parameters*, or *weights* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
 | spinning the wheel of chances | *sampling* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
 | keeping the biggest k slices | *top-k* sampling | [Part 1](/posts/minigpt/#the-jargon-decoder) |
 | keeping the biggest slices until they add up to p | *top-p*, or *nucleus*, sampling | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| the 65 answer cards | the *language-model head* (`lm_head`), or *output layer* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| the 65 rows that score each letter that could come next | the *language-model head* (`lm_head`), or *output layer* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| the scores, before softmax | the *logits* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
 | a request the model writes for a program to carry out | a *tool call*, or *function call* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
 | the program around the model | the *harness* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
 | a harness letting the model act by itself for many steps | an *agent* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
-| working out what the trained dials mean | *interpretability* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
+| working out what the trained parameters mean | *interpretability* | [Part 1](/posts/minigpt/#the-jargon-decoder) |
 | learning from the text itself, with no people marking answers | *self-supervised* learning, or *pre-training* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
 | people writing example conversations for the machine to copy | *supervised fine-tuning* (SFT) | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
 | people comparing answers, to train a judge | the *reward model* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
@@ -338,9 +339,9 @@ Every plain name used in this series, next to the name the experts use, and the 
 | letting an existing model write the examples, or teach its chances | *distillation* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
 | the surprise score | the *loss* (cross-entropy loss) | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
 | "as unsure as choosing between *N* letters" | *perplexity* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
-| working out which way to turn every dial | *backpropagation* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
+| working out which way to turn every parameter | *backpropagation* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
 | the 32 snippets for one step | a *batch* (batch size 32) | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
-| the slopes of all 826,433 dials, together | the *gradient* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
+| the slopes of all 826,433 parameters, together | the *gradient* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
 | nudging every number a little in its direction | an *optimiser step* (here, with *AdamW*) | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
 | how far each nudge goes | the *learning rate* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
 | AdamW's running average of recent slopes | *momentum* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
@@ -350,9 +351,9 @@ Every plain name used in this series, next to the name the experts use, and the 
 | keeping the best copy | *checkpoint selection* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
 | walking downhill on the surprise-score landscape | *gradient descent* | [Part 2](/posts/minigpt-grown/#the-jargon-decoder) |
 | the program that cuts text into pieces | the *tokeniser* | [Part 3](/posts/minigpt2/#the-jargon-decoder) |
-| a token card | a *token embedding* | [Part 3](/posts/minigpt2/#the-jargon-decoder) |
+| a piece's row of learned numbers, a word or part of a word as well as a letter | its *token embedding* | [Part 3](/posts/minigpt2/#the-jargon-decoder) |
 | gluing the most common pair | a BPE *merge* | [Part 3](/posts/minigpt2/#the-jargon-decoder) |
-| using the token cards as the answer cards too | *weight tying* | [Part 3](/posts/minigpt2/#the-jargon-decoder) |
+| using the token embeddings as the rows of `lm_head` too | *weight tying* | [Part 3](/posts/minigpt2/#the-jargon-decoder) |
 | halvings of surprise for each byte of text | *bits per byte* | [Part 3](/posts/minigpt2/#the-jargon-decoder) |
 | surprise per token | the *loss*, or *cross-entropy* | [Part 3](/posts/minigpt2/#the-jargon-decoder) |
 | the engine | the *framework* | [Part 4](/posts/minigpt3/#the-jargon-decoder) |
@@ -363,16 +364,16 @@ Every plain name used in this series, next to the name the experts use, and the 
 | copying a batch to the GPU | a *host-to-device transfer* | [Part 4](/posts/minigpt3/#the-jargon-decoder) |
 | the simpler normalise | *RMSNorm* (root mean square normalisation) | [Part 5](/posts/minigpt4/#the-jargon-decoder) |
 | the 2017 normalise | *LayerNorm* | [Part 5](/posts/minigpt4/#the-jargon-decoder) |
-| turning cards by position | *rotary position embeddings*, or *RoPE* | [Part 5](/posts/minigpt4/#the-jargon-decoder) |
+| turning queries and keys by position | *rotary position embeddings*, or *RoPE* | [Part 5](/posts/minigpt4/#the-jargon-decoder) |
 | the MLP with a gate | *SwiGLU* | [Part 5](/posts/minigpt4/#the-jargon-decoder) |
-| sharing key and value cards between heads | *grouped-query attention*, or *GQA* | [Part 5](/posts/minigpt4/#the-jargon-decoder) |
+| sharing keys and values between heads | *grouped-query attention*, or *GQA* | [Part 5](/posts/minigpt4/#the-jargon-decoder) |
 | a query, key, and value for every head | *multi-head attention*, or *MHA* | [Part 5](/posts/minigpt4/#the-jargon-decoder) |
 | turning one change off at a time | an *ablation study* | [Part 5](/posts/minigpt4/#the-jargon-decoder) |
 | copying a teacher's whole wheel | *logit distillation*, or *knowledge distillation* | [Part 6](/posts/minigpt5/#the-jargon-decoder) |
 | learning only from the right answer | training on a *one-hot* target, or *hard labels* | [Part 6](/posts/minigpt5/#the-jargon-decoder) |
 | the teacher's wheel | *soft targets* | [Part 6](/posts/minigpt5/#the-jargon-decoder) |
 | how different two wheels are | the *KL divergence* (Kullback–Leibler divergence) | [Part 6](/posts/minigpt5/#the-jargon-decoder) |
-| the raw scores against the answer cards | the *logits* | [Part 6](/posts/minigpt5/#the-jargon-decoder) |
+| the raw scores against the rows of `lm_head` | the *logits* | [Part 6](/posts/minigpt5/#the-jargon-decoder) |
 | the softening setting | the distillation *temperature* | [Part 6](/posts/minigpt5/#the-jargon-decoder) |
 | a stronger teacher whose wheels the student cannot reach | the *capacity gap* | [Part 6](/posts/minigpt5/#the-jargon-decoder) |
 | the length of the row | the *context length*, or *sequence length* | [Part 7](/posts/minigpt6/#the-jargon-decoder) |

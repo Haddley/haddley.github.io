@@ -10,7 +10,7 @@ hidden: false
 slug: "minigpt5"
 ---
 
-Every MiniGPT so far has learned the same way, the guessing game from [Part 2](/posts/minigpt-grown/): guess the next token, check the real one, and nudge the dials. Meta's small Llama 3.2 models learned from something more. The [Llama 3.2 announcement](https://ai.meta.com/blog/llama-3-2-connect-2024-vision-edge-mobile-devices/) says that "logits from the Llama 3.1 8B and 70B models were used as targets" during pre-training. *Logits* are the scores against the [answer cards](/posts/minigpt/#lmhead-where-do-the-65-scores-logits-for-the-next-letter-come-from), just before they become a wheel of chances: the small models learned by copying what the big models thought, not just from the text. This post tries the same idea on a Mac, with a small MiniGPT as the student and four different teachers.
+Every MiniGPT so far has learned the same way, the guessing game from [Part 2](/posts/minigpt-grown/): guess the next token, check the real one, and nudge the parameters. Meta's small Llama 3.2 models learned from something more. The [Llama 3.2 announcement](https://ai.meta.com/blog/llama-3-2-connect-2024-vision-edge-mobile-devices/) says that "logits from the Llama 3.1 8B and 70B models were used as targets" during pre-training. *Logits* are the scores against the [rows of `lm_head`](/posts/minigpt/#lmhead-where-do-the-65-scores-logits-for-the-next-letter-come-from), just before they become a wheel of chances: the small models learned by copying what the big models thought, not just from the text. This post tries the same idea on a Mac, with a small MiniGPT as the student and four different teachers.
 
 The code is in [`part6-distillation/`](https://github.com/Haddley/minigpt-series/tree/main/part6-distillation), with a follow-along notebook for a Mac, [`minigpt_follow_along_6.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part6-distillation/minigpt_follow_along_6.ipynb).
 
@@ -20,8 +20,8 @@ The code is in [`part6-distillation/`](https://github.com/Haddley/minigpt-series
 | Text | TinyStories |
 | Pieces | **GPT-2's 50,257** |
 | Blocks | 6, each attention (6 heads) then an MLP: **back to Part 4's block** |
-| Card size | 384 |
-| Positions | 256, position cards |
+| Vector size | 384 |
+| Positions | 256, position embeddings |
 | Engine | MLX |
 | Size | **30.0 million numbers** |
 | Score | **0.6936 bits per byte** with the most helpful teacher; 0.7555 alone |
@@ -71,7 +71,7 @@ The teacher also runs on every training step, in the same 64 GB as the student. 
 
 ### Four teachers, and no teacher
 
-The student is the MLX machine from [Part 4](/posts/minigpt3/), with the original 2017 block, but on GPT-2's pieces instead of my 8k ones, so its token cards make it 30 million numbers, as in [Part 3's table](/posts/minigpt2/#what-bigger-pieces-cost). I trained it five times, once with no teacher and once with each teacher, 3,000 steps each, on the same stories. Every score in the table is [bits per byte](/posts/minigpt2/) on the test stories, so lower is better. The "teacher's own" column scores each teacher on its own, as a storyteller; the "student's" column scores the student it taught:
+The student is the MLX machine from [Part 4](/posts/minigpt3/), with the original 2017 block, but on GPT-2's pieces instead of my 8k ones, so its token embeddings make it 30 million numbers, as in [Part 3's table](/posts/minigpt2/#what-bigger-pieces-cost). I trained it five times, once with no teacher and once with each teacher, 3,000 steps each, on the same stories. Every score in the table is [bits per byte](/posts/minigpt2/) on the test stories, so lower is better. The "teacher's own" column scores each teacher on its own, as a storyteller; the "student's" column scores the student it taught:
 
 | Teacher | Size | Teacher's own bits per byte | Student's bits per byte | Minutes |
 |---|---|---|---|---|
@@ -91,7 +91,7 @@ GPT-2 and GPT-2 XL learned from text on the web. TinyStories-33M is the largest 
 *I grew MiniGPT-512 first: 5,000 steps, 51 million numbers, finishing at 0.64 bits per byte*
 
 ![](assets/images/minigpt5/p6-student.png)
-*Then the student learned from it. The teacher is loaded once and frozen; only the student's dials move*
+*Then the student learned from it. The teacher is loaded once and frozen; only the student's parameters move*
 
 ![](assets/images/minigpt5/distill-curves.png)
 *Bits per byte while training. The two web-text teachers stay near the no-teacher line; the two teachers who know the stories pull the student well below it*
@@ -216,7 +216,7 @@ The terms for the whole series are collected in one table, [the series glossary]
 | learning only from the right answer | training on a *one-hot* target, or *hard labels* |
 | the teacher's wheel | *soft targets* |
 | how different two wheels are | the *KL divergence* (Kullback–Leibler divergence) |
-| the raw scores against the answer cards | the *logits* |
+| the raw scores against the rows of `lm_head` | the *logits* |
 | the softening setting | the distillation *temperature* |
 | a stronger teacher whose wheels the student cannot reach | the *capacity gap* |
 
@@ -234,7 +234,7 @@ python train_teacher.py --dim 512 --layers 8 --iters 5000
 
 ### The score: in `train_distill.py`
 
-Both machines see the same batch; the teacher's wheel is fixed, and only the student's dials move:
+Both machines see the same batch; the teacher's wheel is fixed, and only the student's parameters move:
 
 ```python
 t_logp = nn.log_softmax(t_logits / args.temp, axis=-1)      # the teacher's softened wheel

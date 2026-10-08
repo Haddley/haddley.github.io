@@ -10,7 +10,7 @@ hidden: false
 slug: "minigpt3"
 ---
 
-[Part 3](/posts/minigpt2/) settled the pieces: my own 8,192-piece tokeniser matched GPT-2's on TinyStories, at under half the size. This post keeps that machine exactly as it is, the same blocks, the same cards, the same stories, and changes only the *engine* underneath it: the library that does the arithmetic. Parts 1 to 3 used PyTorch. This post rebuilds the machine in [MLX](https://github.com/ml-explore/mlx), Apple's library for machine learning on its own chips, and races the two on the same Mac.
+[Part 3](/posts/minigpt2/) settled the pieces: my own 8,192-piece tokeniser matched GPT-2's on TinyStories, at under half the size. This post keeps that machine exactly as it is, the same blocks, the same embeddings, the same stories, and changes only the *engine* underneath it: the library that does the arithmetic. Parts 1 to 3 used PyTorch. This post rebuilds the machine in [MLX](https://github.com/ml-explore/mlx), Apple's library for machine learning on its own chips, and races the two on the same Mac.
 
 I have used MLX before, in [MLX 1](/posts/mlx1/), but only to fine-tune a model someone else had released. This post writes the machine itself in MLX: the layers, the training step, and the gradient.
 
@@ -22,8 +22,8 @@ The code is in [`part4-mlx/`](https://github.com/Haddley/minigpt-series/tree/mai
 | Text | TinyStories |
 | Pieces | my 8,192 |
 | Blocks | 6, each attention (6 heads) then an MLP |
-| Card size | 384 |
-| Positions | 256, position cards |
+| Vector size | 384 |
+| Positions | 256, position embeddings |
 | Engine | **MLX** |
 | Size | 13.9 million numbers |
 | Score | 0.689 bits per byte |
@@ -36,7 +36,7 @@ The code is in [`part4-mlx/`](https://github.com/Haddley/minigpt-series/tree/mai
 The machine, the stories, the settings, and the computer are all exactly the same. What could possibly make training faster?
 :::
 
-A library like PyTorch or MLX is the engine under the machine. The machine says *what* to calculate: look up the token cards, run attention, run the MLP, score the answer cards. The engine decides *how*: where the numbers are kept, when each calculation runs, and how the calculations are packed together for the chip. Change the engine, and the same calculations can run faster, or in less memory, without the answers changing.
+A library like PyTorch or MLX is the engine under the machine. The machine says *what* to calculate: look up the token embeddings, run attention, run the MLP, score the rows of `lm_head`. The engine decides *how*: where the numbers are kept, when each calculation runs, and how the calculations are packed together for the chip. Change the engine, and the same calculations can run faster, or in less memory, without the answers changing.
 
 MLX was designed around three things about Apple's chips, and each one is a chance to save work.
 
@@ -79,7 +79,7 @@ Lines 1 and 2 only write steps down: the whole trip forward through the machine 
 
 ### Packing the whole training step into one
 
-Because MLX writes the steps down first, it can do something bigger: take one whole training step (the trip forward, the [trip back](/posts/minigpt-grown/#how-does-it-know-which-way-to-nudge) that finds every dial's slope, capping the slopes if they are unusually big, and turning the dials) and *compile* it, which packs it into a single combined job for the GPU. That saves the GPU from starting and stopping between thousands of small jobs. In MLX it is one line, `mx.compile`, and it turns out to be where almost all of the speed comes from.
+Because MLX writes the steps down first, it can do something bigger: take one whole training step (the trip forward, the [trip back](/posts/minigpt-grown/#how-does-it-know-which-way-to-nudge) that finds every parameter's slope, capping the slopes if they are unusually big, and turning the parameters) and *compile* it, which packs it into a single combined job for the GPU. That saves the GPU from starting and stopping between thousands of small jobs. In MLX it is one line, `mx.compile`, and it turns out to be where almost all of the speed comes from.
 
 ### The race
 
@@ -105,7 +105,7 @@ This is one small machine, one setting, on one Mac: not a general benchmark. The
 
 ### Same answers?
 
-A faster engine is no use if it changes the answers. The two versions do not start from exactly the same random numbers, because the two libraries draw their starting dials differently, so their training curves cannot lie exactly on top of each other. But they should end up in the same place, and they do: after 3,000 steps, the MLX machine scores **0.689 bits per byte** on the test stories, and the PyTorch machine from Part 3 scores **0.697**. That gap is about the size of the luck between two random starts of the same machine: in [Part 5](/posts/minigpt4/#how-much-is-luck), three random starts of one design scored up to 0.007 apart.
+A faster engine is no use if it changes the answers. The two versions do not start from exactly the same random numbers, because the two libraries draw their starting parameters differently, so their training curves cannot lie exactly on top of each other. But they should end up in the same place, and they do: after 3,000 steps, the MLX machine scores **0.689 bits per byte** on the test stories, and the PyTorch machine from Part 3 scores **0.697**. That gap is about the size of the luck between two random starts of the same machine: in [Part 5](/posts/minigpt4/#how-much-is-luck), three random starts of one design scored up to 0.007 apart.
 
 ![](assets/images/minigpt3/notebook-engines.png)
 *The notebook built the same machine in both engines, and counted exactly the same 13,882,368 numbers in each*
@@ -155,7 +155,7 @@ A: For MLX, yes: it only runs on Apple Silicon. Everything in Parts 1 to 3 runs 
 
 **Q: If MLX is lazy, could it ever skip something I wanted?**
 
-A: Only work whose result nothing ever uses. That is why the training loop calls `mx.eval` on the machine's dials and the optimiser's state every step: it asks for exactly the results that matter, so all the work that leads to them is done.
+A: Only work whose result nothing ever uses. That is why the training loop calls `mx.eval` on the machine's parameters and the optimiser's state every step: it asks for exactly the results that matter, so all the work that leads to them is done.
 
 **Q: Why was MLX slower without compiling?**
 
@@ -167,7 +167,7 @@ A: Partly because nothing is copied, so there is one copy of each batch instead 
 
 **Q: Is the machine really the same?**
 
-A: Yes: the same blocks, the same token cards doubling as the answer cards, the same 13.9 million numbers. Only how they are calculated changes. The matching scores and matching stories are the check.
+A: Yes: the same blocks, the same token embeddings doubling as the rows of `lm_head`, the same 13.9 million numbers. Only how they are calculated changes. The matching scores and matching stories are the check.
 :::
 
 :::pencil Who does what?
@@ -179,7 +179,7 @@ Match each everyday description on the left with its proper name on the right.
 | 2. one pool of memory shared by the processor and the GPU | B. `mx.compile` |
 | 3. writing calculations down, and running them only when needed | C. the *framework* |
 | 4. packing a whole training step into one job | D. *unified memory* |
-| 5. the slopes of every dial, all together | E. the *gradient* |
+| 5. the slopes of every parameter, all together | E. the *gradient* |
 
 :::answer
 1 is C, 2 is D, 3 is A, 4 is B, and 5 is E.
@@ -196,7 +196,7 @@ The terms for the whole series are collected in one table, [the series glossary]
 | one shared pool of memory | *unified memory* |
 | writing calculations down and running them later | *lazy evaluation* |
 | packing a whole step into one job | *compiling*, with `mx.compile` |
-| the slopes of every dial, all together | the *gradient* |
+| the slopes of every parameter, all together | the *gradient* |
 | capping the slopes if they are unusually big | *gradient clipping* |
 | copying a batch to the GPU | a *host-to-device transfer* |
 
@@ -214,7 +214,7 @@ out = mx.fast.scaled_dot_product_attention(q, k, v, scale=self.scale, mask="caus
 
 The hand-written version in [Part 1](/posts/minigpt/#attention-in-the-original-python) is still the one to read to understand attention; this is the one to run.
 
-Second, the token cards double as the answer cards without any bookkeeping, because there is no separate answer layer at all: the last working cards are simply scored against the token cards.
+Second, the token embeddings double as the rows of `lm_head` without any bookkeeping, because there is no separate answer layer at all: the last hidden states are simply scored against the token embeddings.
 
 ```python
 def __call__(self, idx):
@@ -222,14 +222,14 @@ def __call__(self, idx):
     for block in self.blocks:
         x = block(x)
     x = self.ln_f(x)
-    return x @ self.tok_emb.weight.T   # the token cards are the answer cards
+    return x @ self.tok_emb.weight.T   # the token embeddings are the output rows
 ```
 
 Third, there is no `.to(device)`, anywhere.
 
 ### The training step: `train_mlx.py`
 
-In PyTorch, the trip back that finds every dial's slope happens as a side effect of `loss.backward()`, as [Part 2](/posts/minigpt-grown/#following-the-blame-back-with-real-numbers) showed. In MLX it is a function: `nn.value_and_grad` takes the machine and its surprise-score function, and gives back a new function that returns the score *and* every dial's slope, as an ordinary value. The whole step is then compiled:
+In PyTorch, the trip back that finds every parameter's slope happens as a side effect of `loss.backward()`, as [Part 2](/posts/minigpt-grown/#following-the-blame-back-with-real-numbers) showed. In MLX it is a function: `nn.value_and_grad` takes the machine and its surprise-score function, and gives back a new function that returns the score *and* every parameter's slope, as an ordinary value. The whole step is then compiled:
 
 ```python
 loss_and_grad = nn.value_and_grad(model, MiniGPT.loss)
@@ -243,7 +243,7 @@ def train_step(x, y):
     return loss
 ```
 
-`inputs=state, outputs=state` tells MLX that the compiled step is allowed to change the machine's dials and the optimiser's memory. Then the training loop makes each step happen:
+`inputs=state, outputs=state` tells MLX that the compiled step is allowed to change the machine's parameters and the optimiser's memory. Then the training loop makes each step happen:
 
 ```python
 for step in range(args.iters + 1):
@@ -275,7 +275,7 @@ for _ in range(300):
 print(tok.decode(idx[0].tolist()))
 ```
 
-The same loop as every part so far: score the last working card against the answer cards, spin the wheel, and put the new token on the end.
+The same loop as every part so far: score the last hidden state against the rows of `lm_head`, spin the wheel, and put the new token on the end.
 
 ## Try it yourself
 

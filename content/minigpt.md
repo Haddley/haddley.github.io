@@ -10,7 +10,7 @@ hidden: false
 slug: "minigpt"
 ---
 
-Nobody programs a large language model (LLM)'s knowledge in directly: it is grown, by training. I spend a lot more of my time using LLMs to write code, emails, blog posts etc. than I do thinking about how they are built but it seems reasonable that understanding how they are made will help me to apply them better. In any case, I am naturally curious, and I want to be able to explain how they work.
+Nobody programs a large language model (LLM)'s knowledge in directly: it is grown, by training. I spend a lot more of my time using LLMs to write code, emails, blog posts etc. than I do thinking about how they are built but it seems reasonable that understanding how LLMs are made will help me to apply them better. In any case, I am naturally curious, and I want to be able to explain how they work.
 
 I started this effort in July 2023 with the book [*Generative AI with Python and TensorFlow 2*](https://github.com/PacktPublishing/Hands-On-Generative-AI-with-Python-and-TensorFlow-2), by Joseph Babcock and Raghav Bali. More recently, I found the paper [MiniGPT: Rebuilding GPT from First Principles](https://arxiv.org/pdf/2605.17398) by Jibin Joseph, and decided to use it for some hands-on revision.
 
@@ -1136,7 +1136,7 @@ Here is each idea from this introduction in plain words, next to its name in the
 | a letter: any of the 65 symbols, even the space and the comma | a *character* |
 | the thing being guessed: a letter here, a word or piece of a word in big models | a *token* |
 | the 65 letters | the *vocabulary* |
-| the chances for every letter | a probability distribution, produced by a *softmax* |
+| the chances for each possible next letter | a probability distribution, produced by a *softmax* |
 | a letter's row of 128 learned numbers | its *token embedding* (`token_embedding`): a *vector* |
 | a position's row of 128 learned numbers | the *position embedding* (`position_embedding`) |
 | a token embedding plus its position embedding, before block 1 | the *input embedding* |
