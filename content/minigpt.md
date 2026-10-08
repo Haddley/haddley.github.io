@@ -71,6 +71,26 @@ A horse! a horse! my kingdom for a hors
 :::
 
 
+### Scores: what comes out of the closed box
+
+Before the model can draw the wheel, it gives every letter a *score*: a plain number that can be any size, even negative, where bigger means likelier. After `go`, `o` scores 4.878, the space 4.076, and `d` 4.062. The code calls these scores *logits*, one for each of the 65 letters. What the logits really are, and how the model works them out from the text it is given, I come back to [later](#lmhead-where-do-the-65-scores-logits-one-per-letter-come-from); for now, I treat the model as a closed box that the scores come out of. One last step, *softmax*, turns the 65 scores into the 65 chances, the slices of the wheel. It always does this the same way. It makes every score positive, so even `V`, at −7.421, gets a slice, however thin. It keeps the scores in the same order, so the biggest score always gets the biggest slice. And it scales them so that the 65 chances add up to exactly 100%. [Softmax: turning scores into chances](#softmax-turning-scores-into-chances), after temperature and top-k, shows the arithmetic. Two settings, temperature and top-k, can reshape the scores just before softmax, and the next two sections explain them.
+
+None of these steps involves any luck. The model's scores, temperature, top-k, and softmax are all fixed arithmetic. Give my MiniGPT model the same text, and it gives exactly the same score (logit) for each letter, every time. Pass the same scores (logits) to the code that applies temperature, top-k, and softmax, with the same settings, and it makes exactly the same wheel of 65 chances (probabilities), one per letter, every time. The only step that uses chance is the last one, the spin.
+
+![](assets/images/minigpt/black-box.svg)
+*The model as a closed box. Temperature and top-k never touch what is inside it: they reshape the 65 scores that come out*
+
+Here is the wheel again, with the scores beside it. For the letters with the six biggest scores, the table shows every step: the score, the score divided by the temperature, whether top-k keeps it, and the chance that softmax gives it. The temperature and top-k sliders are explained in the next two sections; for now, leave them where they are.
+
+:::demo minigpt-logits
+:::
+
+:::test-drive Follow the scores to the chances
+1. Leave the text as `go`. `o` scores 4.878, and softmax gives it 34.8%. The space, at 4.076, gets 15.6%: a smaller score, a smaller slice.
+2. Add an `o`, to make `goo`. Every score changes, because the text changed, and `d` jumps to the top.
+3. Press **Reset**, and the same numbers come back, exactly. Spin once, reset, and spin again: only the spin changes.
+:::
+
 ### Temperature: a bolder or a safer wheel
 
 Before it spins, the model can reshape the wheel. A setting called *temperature* changes how big every slice is compared with the others. Turn it down, and the big slices grow and the thin ones shrink, so the model plays safe. Turn it up, and the slices even out, so the model takes more risks. Temperature is a *hyperparameter*: a setting that I choose, not something the model learned. Most hyperparameters, such as how many blocks the model has, are fixed before training, but temperature only changes how the wheel is spun, not how the chances are worked out, so it can be changed every time the model writes. Here is what it does to the wheel after `go`:
@@ -85,25 +105,6 @@ Before it spins, the model can reshape the wheel. A setting called *temperature*
 Turn it all the way down to 0, and the model always takes the biggest slice, and writes the same text every time. Turn it right up, and every slice heads towards the same size, and the writing turns to noise. [Step 5](#step-5-spin-the-wheel) shows what it does to a whole line.
 
 ### Temperature in the original Python
-
-To read the code, I need one more idea first. Before the model can draw the wheel, it gives every letter a *score*: a plain number that can be any size, even negative, where bigger means likelier. After `go`, `o` scores 4.878, the space 4.076, and `d` 4.062. The code calls these scores *logits*, one for each of the 65 letters. What the logits really are, and how the model works them out from the text it is given, I come back to [later](#lmhead-and-softmax-where-the-65-chances-come-from); for now, I treat the model as a closed box that the scores come out of. One last step, *softmax*, turns the 65 scores into the 65 chances, the slices of the wheel. It always does this the same way. It makes every score positive, so even `V`, at −7.421, gets a slice, however thin. It keeps the scores in the same order, so the biggest score always gets the biggest slice. And it scales them so that the 65 chances add up to exactly 100%. The same section shows the arithmetic. Temperature and top-k work on the scores, just before softmax.
-
-None of these steps involves any luck. The model's scores, temperature, top-k, and softmax are all fixed arithmetic. Give my MiniGPT model the same text, and it gives exactly the same score (logit) for each letter, every time. Pass the same scores (logits) to the code that applies temperature, top-k, and softmax, with the same settings, and it makes exactly the same wheel of 65 chances (probabilities), one per letter, every time. The only step that uses chance is the last one, the spin.
-
-![](assets/images/minigpt/black-box.svg)
-*The model as a closed box. Temperature and top-k never touch what is inside it: they reshape the 65 scores that come out*
-
-Here is the wheel again, with the scores beside it. For the letters with the six biggest scores, the table shows every step: the score, the score divided by the temperature, whether top-k keeps it, and the chance that softmax gives it.
-
-:::demo minigpt-logits
-:::
-
-:::test-drive Follow the scores to the chances
-1. Leave the text as `go`. `o` scores 4.878, and softmax gives it 34.8%.
-2. Slide the temperature to 0.5. Every number in the "÷" column doubles, `o`'s becomes 9.757, and its chance grows to about 68%. At 2, they halve, and the chances even out.
-3. Slide top-k down to 3. `n`, `r`, and `t` are marked "cut", and their chances drop to exactly 0%, while the three survivors share the whole wheel.
-4. Press **Reset**, and the same numbers come back, exactly. Spin once, reset, and spin again: only the spin changes.
-:::
 
 In Jibin Joseph's notebook, the writing loop, `generate_text`, takes `temperature` as a setting, with a default of 0.8. These are the notebook's own lines and comments:
 
@@ -165,7 +166,7 @@ A small *k* makes the model play safe: with *k* = 1 it always takes the biggest 
 
 ### Top-k in the original Python
 
-In Jibin Joseph's notebook, the writing loop, `generate_text`, takes `top_k` as a setting, with a default of 200. It trims the wheel just before the chances are worked out, while they are still *scores*: one number per letter, where a bigger score means a bigger slice ([`lm_head` and softmax](#lmhead-and-softmax-where-the-65-chances-come-from), below, explains them). These are the notebook's own lines and comments:
+In Jibin Joseph's notebook, the writing loop, `generate_text`, takes `top_k` as a setting, with a default of 200. It trims the wheel just before the chances are worked out, while they are still *scores*: one number per letter, where a bigger score means a bigger slice ([`lm_head`: where do the 65 scores come from?](#lmhead-where-do-the-65-scores-logits-one-per-letter-come-from), below, explains them). These are the notebook's own lines and comments:
 
 ```python
 # Apply top-k filtering if requested.
@@ -214,7 +215,59 @@ export function keepTopK(scores: Float32Array, k: number): Float32Array {
 probs = softmax(keepTopK(scaled, topK));
 ```
 
-The demo below lets you change it.
+### Softmax: turning scores into chances
+
+Temperature and top-k reshape the scores. The last step, *softmax*, turns them into chances. Scores are not chances: they can be negative, and they do not add up to anything in particular. Softmax fixes both, in three moves:
+
+1. **Take the biggest score away from every score.** The biggest becomes 0, and every other score becomes negative. This keeps the numbers small, and it does not change the answer.
+2. **Raise *e* to the power of each one.** *e* is a number, about 2.718, and raising it to any power gives a positive number: *e* to the power 0 is 1, and *e* to a negative power is between 0 and 1. So every letter now has a positive number, and the bigger the score, the bigger the number.
+3. **Divide each one by the total.** Now the 65 numbers add up to exactly 1, or 100%: they are chances.
+
+Here it is for `go`, at temperature 1 with all 65 letters kept. Once *e* is raised to the power of each one, all 65 add up to 2.874, so each chance is its own number divided by 2.874:
+
+| Letter | Score | Minus 4.878 | *e* to that power | Chance |
+|---|---|---|---|---|
+| `o` | 4.878 | 0 | 1.000 | **34.8%** |
+| space | 4.076 | −0.802 | 0.448 | **15.6%** |
+| `d` | 4.062 | −0.816 | 0.442 | **15.4%** |
+| `n` | 3.068 | −1.810 | 0.164 | **5.7%** |
+
+Those are the slices of the wheel after `go`.
+
+Why *e*? Because it turns a gap between two scores into a ratio between two chances: one letter's chance divided by another's is always *e* raised to the power of the gap between their scores. `o` scores 0.802 more than the space, so its slice is *e* to the power 0.802, 2.2 times as big. That is why temperature works: dividing the scores changes the gaps, so it changes the ratios. And a score of minus infinity, which is what top-k gives the letters it cuts, becomes *e* to the power of minus infinity, which is 0: a chance of exactly 0.
+
+### Softmax in the original Python
+
+In Jibin Joseph's notebook, softmax is one line in the writing loop, `generate_text`, straight after temperature and top-k. This is the notebook's own line and comment:
+
+```python
+# Convert logits into probabilities.
+probs = torch.softmax(logits, dim=-1)
+```
+
+`torch.softmax` does all three moves at once. `dim=-1` tells it which way to add up: along the last dimension of `logits`, the 65 letters, so the 65 chances add up to 1.
+
+### Softmax in the TypeScript this page runs
+
+The demos on this page do the same three moves in [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts):
+
+```typescript
+export function softmax(scores: Float32Array): Float32Array {
+  let max = -Infinity;
+  for (const s of scores) if (s > max) max = s;
+  const out = new Float32Array(scores.length);
+  let sum = 0;
+  for (let i = 0; i < scores.length; i++) {
+    const e = scores[i] === -Infinity ? 0 : Math.exp(scores[i] - max);
+    out[i] = e;
+    sum += e;
+  }
+  for (let i = 0; i < out.length; i++) out[i] /= sum;
+  return out;
+}
+```
+
+The first loop finds the biggest score, `max`. The second takes it away from every score, raises *e* to the result with `Math.exp`, and keeps a running total, `sum`. The last loop divides each number by the total. The check for `-Infinity` is for top-k: a letter it cut gets exactly 0.
 
 ### Try temperature and top-k on the wheel
 
@@ -280,7 +333,7 @@ next_id = torch.multinomial(probs, num_samples=1)
 idx = torch.cat([idx, next_id], dim=1)
 ```
 
-*Sample* is the experts' word for spinning the wheel. The first line, softmax, is where the 65 chances come from, and [the next section](#lmhead-and-softmax-where-the-65-chances-come-from) explains it. (Just before these lines, the loop can also reshape the wheel with *temperature* and *top-k*, which the sections above explain.)
+*Sample* is the experts' word for spinning the wheel. The first line is [softmax](#softmax-turning-scores-into-chances), turning the 65 scores into the 65 chances; just before it, the loop can also reshape the scores with *temperature* and *top-k*. Where the scores themselves come from is what [the next section](#lmhead-where-do-the-65-scores-logits-one-per-letter-come-from) explains.
 
 `torch.multinomial` keeps the walk round the wheel hidden inside PyTorch. The demos on this page do the same in TypeScript, which is JavaScript with types, using the same trained numbers, so there the walk is written out in full. This is the spin, from [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts), where `probs` is the same list of 65 chances:
 
@@ -312,21 +365,26 @@ return current + engine.manifest.chars[spinWheel(p)];
 
 
 
-### `lm_head` and softmax: where the 65 chances come from
+### `lm_head`: where do the 65 scores (logits), one per letter, come from?
 
-Drilling down one more level: where does the list of 65 chances come from? I pass the text into my MiniGPT model, and it goes through these stages:
+Until now, I have treated the model as [a closed box](#scores-what-comes-out-of-the-closed-box): text goes in, and 65 scores, the logits, one per letter, come out. Now I open the box, one level down. I pass the text into my MiniGPT model, and inside, it goes through these stages:
 
 1. Each letter becomes a list of 128 numbers: one list for the letter itself, learned in training, plus one for its position in the text. The code calls these the *token embedding* and the *position embedding*, and [Step 2](#step-2-token-embeddings-and-position-embeddings) explains them.
 2. The lists pass through four *blocks*, which let each letter's list take in what the letters before it say. The blocks are where the model does its understanding, and [Step 3](#step-3-the-blocks) explains them. Between blocks, each letter's list is called its *hidden state*: hidden, because nobody outside the model sees it.
 3. Out of the last block, after one final normalisation, comes the last letter's list: 128 numbers that sum up the text so far. This is the *final hidden state*, and the notebook's own comment calls it that.
 4. `lm_head` turns the final hidden state into 65 scores, one for each letter. The code calls the scores *logits*.
-5. Temperature and top-k reshape the scores, and *softmax* turns them into the 65 chances, or *probabilities*: the slices of the wheel.
+5. Temperature and top-k reshape the scores, and *softmax* turns them into the 65 chances, or *probabilities*: the slices of the wheel. The sections above covered this stage.
 
-Everything up to stage 3 is the *body* of the model. This section is about stages 4 and 5, which come after it.
+![](assets/images/minigpt/open-box.svg)
+*The closed box from earlier, opened. The text and the 65 scores are the same; what is new is how the scores are made inside, ending with `lm_head`*
 
-**Before step one: the final normalisation.** Out of the last block come hidden states, one for each letter in the text: two for `go`. Only the last one matters here, because it is the only one that has seen the whole text. Its numbers are small: for `go`, they run from −1.26 to 1.00, and their *spread*, a measure of how far they typically sit from their average, is 0.33. The final normalisation, `final_ln` in the code, puts the list on a steady scale. First it rescales the 128 numbers so that they average 0 and spread 1. Then it stretches and shifts each number by its own trained amount. Its first four numbers go from −0.04, 0.17, 0.05 and −0.14 to −0.23, 0.70, 0.08 and −0.39. The pattern stays much the same, but now `lm_head` gets numbers on the same scale whatever the text was. The result is the final hidden state. The blocks use the same kind of normalisation inside them, which [Step 3](#step-3-the-blocks) comes back to.
+Everything up to stage 3 is the *body* of the model. This section is about stage 4, `lm_head`, and the final normalisation just before it.
 
-**Step one: `lm_head` gives every letter a score.** `lm_head`, short for *language-model head*, is the model's last layer. It is a table with one row for each of the 65 letters. Each row holds 128 numbers, learned in training, plus one extra number, a *bias*: 8,385 numbers in all. To score a letter, `lm_head` multiplies the final hidden state by that letter's row, number by number, adds up the 128 results, and adds the bias. This multiply-and-add is called a *dot product*. A big score means the final hidden state looks like the letter's row, and training made each row look like the moments when that letter comes next. After `go`, `o` scores 4.878, the space 4.076, `d` 4.062, and `n` 3.068. The lowest of the 65 is `V`, at −7.421.
+**First, the final normalisation.** Out of the last block come hidden states, one for each letter in the text: two for `go`. Only the last one matters here, because it is the only one that has seen the whole text. Its numbers are small: for `go`, they run from −1.26 to 1.00, and their *spread*, a measure of how far they typically sit from their average, is 0.33. The final normalisation, `final_ln` in the code, puts the list on a steady scale. First it rescales the 128 numbers so that they average 0 and spread 1. Then it stretches and shifts each number by its own trained amount. Its first four numbers go from −0.04, 0.17, 0.05 and −0.14 to −0.23, 0.70, 0.08 and −0.39. The pattern stays much the same, but now `lm_head` gets numbers on the same scale whatever the text was. The result is the final hidden state. The blocks use the same kind of normalisation inside them, which [Step 3](#step-3-the-blocks) comes back to.
+
+**Then `lm_head` gives every letter a score.** `lm_head`, short for *language-model head*, is the model's last layer. It is a table with one row for each of the 65 letters. Each row holds 128 numbers, learned in training, plus one extra number, a *bias*: 8,385 numbers in all. To score a letter, `lm_head` multiplies the final hidden state by that letter's row, number by number, adds up the 128 results, and adds the bias. This multiply-and-add is called a *dot product*. A big score means the final hidden state looks like the letter's row, and training made each row look like the moments when that letter comes next. After `go`, `o` scores 4.878, the space 4.076, `d` 4.062, and `n` 3.068. The lowest of the 65 is `V`, at −7.421.
+
+**The bias: a head start for common letters.** The bias is added whatever the text is, so it is a letter's starting score, before the final hidden state has any say. In my trained model the biases are tiny, from −0.107 for `&` to 0.057 for `s`, and they follow how common each letter is in Tiny Shakespeare: `s`, `e`, the space, and `t` get the biggest head starts, and `&`, `$`, `3`, `Q`, and `J` the biggest handicaps. The dot product does almost all of the work: for `o` after `go`, it gives 4.845, and the bias adds just 0.033. The demo below shows both parts of every score.
 
 It is called a *head* because it sits on top of the body. The body understands the text; the head reads the answer out in the form the task needs. Here the task is "which of 65 letters comes next?", so the head has 65 outputs. Nobody wrote the rows by hand: like every other number in the model, they started random, and training nudged them until the scores they give match what Tiny Shakespeare really does next.
 
@@ -334,16 +392,7 @@ It is called a *head* because it sits on top of the body. The body understands t
 In the notebook's bigger setup, with 384 numbers per letter, one line makes each letter's row of `lm_head` the very same list of numbers as its token embedding: `model.lm_head.weight = model.token_embedding.weight`. This trick, called *weight tying*, works because both tables have 65 rows of the same width, and it saves a whole table of numbers. GPT-2 does the same. My trained model does not: I checked, and its `lm_head` and its token embeddings are two separate tables, each learned on its own.
 :::
 
-**Step two: softmax.** Scores are not chances: they can be negative, and they do not add up to anything in particular. Softmax fixes both. It raises *e* (about 2.718) to the power of each score, which makes every number positive and stretches the gaps, and then divides each one by the total, so that the 65 chances add up to 1. Here it is for `go`, after first taking the biggest score away from every score, which keeps the numbers small without changing the answer. Once *e* is raised to the power of each one, all 65 add up to 2.874, so each chance is its own number divided by 2.874:
-
-| Letter | Score | Minus 4.878 | *e* to that power | Chance |
-|---|---|---|---|---|
-| `o` | 4.878 | 0 | 1.000 | **34.8%** |
-| space | 4.076 | −0.802 | 0.448 | **15.6%** |
-| `d` | 4.062 | −0.816 | 0.442 | **15.4%** |
-| `n` | 3.068 | −1.810 | 0.164 | **5.7%** |
-
-Those are the slices of the wheel after `go`.
+From there, the 65 scores go through temperature, top-k, and [softmax](#softmax-turning-scores-into-chances), as the sections above showed. For `go`, at temperature 1, `o`'s score of 4.878 becomes 34.8%, the biggest slice of the wheel.
 
 Try it below. Type some text, and see what `lm_head` does with it: the final hidden state comes out of the blocks, and `lm_head` multiplies it by one letter's row, number by number, and adds up the results. Pick one of the six letters to see its sum. Then move the sliders.
 
@@ -357,9 +406,9 @@ Try it below. Type some text, and see what `lm_head` does with it: the final hid
 4. Now add one more `o`, to make `goo`. The final hidden state changes, and so does every product and every score. The rows of `lm_head` do not change: they are fixed by training, and the text is the only thing that reaches the model.
 :::
 
-### In the original Python: `lm_head` and `torch.softmax`
+### In the original Python: `lm_head`
 
-In Jibin Joseph's notebook, both steps are a line each. `lm_head` is one PyTorch layer, created in `MiniGPT.__init__` as `self.lm_head = nn.Linear(config.n_embd, config.vocab_size)`: a table of 65 rows of 128 numbers, `self.lm_head.weight`, plus 65 biases, `self.lm_head.bias`. `nn.Linear` is PyTorch's name for a layer that does dot products against a table of rows. At the end of `MiniGPT.forward`:
+In Jibin Joseph's notebook, the final normalisation and `lm_head` are a line each. `lm_head` is one PyTorch layer, created in `MiniGPT.__init__` as `self.lm_head = nn.Linear(config.n_embd, config.vocab_size)`: a table of 65 rows of 128 numbers, `self.lm_head.weight`, plus 65 biases, `self.lm_head.bias`. `nn.Linear` is PyTorch's name for a layer that does dot products against a table of rows. At the end of `MiniGPT.forward`:
 
 ```python
 # Final LayerNorm.
@@ -380,11 +429,11 @@ logits = logits[:, -1, :]
 probs = torch.softmax(logits, dim=-1)
 ```
 
-`self.lm_head(x)` does the dot products for every hidden state and all 65 rows at once, and `torch.softmax` does step two. The notebook scores every letter's hidden state, because training needs them all, and then keeps only the last letter's scores.
+`self.lm_head(x)` does the dot products for every hidden state and all 65 rows at once, and `torch.softmax` is [the softmax step](#softmax-in-the-original-python) from earlier. The notebook scores every letter's hidden state, because training needs them all, and then keeps only the last letter's scores.
 
-### In the TypeScript this page runs: `finalHidden`, `readOut`, `linear`, and `softmax`
+### In the TypeScript this page runs: `finalHidden`, `readOut`, and `linear`
 
-The demos on this page do the same two steps in TypeScript, in [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts), using the same trained numbers. `finalHidden` takes the last letter's hidden state only and gives it the final normalisation: that is the final hidden state. `readOut` scores it against the rows of `lm_head`:
+The demos on this page do the same in TypeScript, in [`minigptEngine.ts`](https://github.com/Haddley/haddley.github.io/blob/main/src/lib/minigptEngine.ts), using the same trained numbers. `finalHidden` takes the last letter's hidden state only and gives it the final normalisation: that is the final hidden state. `readOut` scores it against the rows of `lm_head`:
 
 ```typescript
 private finalHidden(x: Float32Array, T: number): Float32Array {
@@ -419,25 +468,7 @@ private linear(x: Float32Array, T: number, nIn: number, name: string): Float32Ar
 }
 ```
 
-And `softmax` is step two, exactly as in the table: find the biggest score, take it away, raise *e* to each result, and divide by the total:
-
-```typescript
-export function softmax(scores: Float32Array): Float32Array {
-  let max = -Infinity;
-  for (const s of scores) if (s > max) max = s;
-  const out = new Float32Array(scores.length);
-  let sum = 0;
-  for (let i = 0; i < scores.length; i++) {
-    const e = scores[i] === -Infinity ? 0 : Math.exp(scores[i] - max);
-    out[i] = e;
-    sum += e;
-  }
-  for (let i = 0; i < out.length; i++) out[i] /= sum;
-  return out;
-}
-```
-
-Its output is the `probs` list that `spinWheel` walks along. [Step 4](#step-4-chances) comes back to `lm_head`, once the post has explained where the hidden states come from.
+Then [`softmax`](#softmax-in-the-typescript-this-page-runs), from earlier, turns the scores into the `probs` list that `spinWheel` walks along. [Step 4](#step-4-chances) comes back to `lm_head`, once the post has explained where the hidden states come from.
 
 ### Try it: my trained machine, running in your browser
 
