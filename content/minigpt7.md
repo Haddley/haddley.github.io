@@ -11,7 +11,9 @@ slug: "minigpt7"
 
 ### Why I rewrote the code
 
-MiniGPT is the small language model I took apart in [Part 1](/posts/minigpt/), and trained on Shakespeare in [Part 2](/posts/minigpt-grown/). I rewrote the part of the code that **runs** my trained model, and only that part, to be as easy for a person to read as I could make it, and then checked that it still gives exactly the same answers. This is what the model does, in one paragraph and one picture.
+MiniGPT is the small language model I took apart in [Part 1](/posts/minigpt/), and trained on Shakespeare in [Part 2](/posts/minigpt-grown/). I rewrote the part of the code that **runs** my trained model, and only that part, to be as easy for a person to read as I could make it, and then checked that it still gives exactly the same answers.
+
+This is what the model does, in one paragraph and one picture:
 
 Given a string of text, the model predicts the next letter. It turns each letter of the string into a row of numbers. Then it runs the same few steps over those rows four times, with different trained numbers each time: each row is mixed with the rows before it, then adjusted on its own. Once that is done, only the row for the last letter is used. One more calculation compares that row with 65 stored rows, one for each letter the model knows, and gives each letter a score. The scores become a list of chances: the likeliest next letters at the top, the unlikely ones at the bottom. Writing is picking a letter at random, weighted by those chances, adding it to the string, and asking again. Nobody chose the numbers the model stores: training worked out all 826,433 of them. I can follow each step exactly, but I cannot fully explain why the result works.
 
