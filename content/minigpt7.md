@@ -9,27 +9,29 @@ hidden: false
 slug: "minigpt7"
 ---
 
-Writing [MiniGPT (Part 1)](/posts/minigpt/), I spent a long time explaining lines like these, from Jibin Joseph's notebook:
+### Why I rewrote the code
+
+MiniGPT is the small language model I took apart in [Part 1](/posts/minigpt/), and trained on Shakespeare in [Part 2](/posts/minigpt-grown/). I rewrote the part of the code that **runs** my trained model, and only that part, to be as easy for a person to read as I could make it, and then checked that it still gives exactly the same answers. This is what the model does, in one paragraph and one picture.
+
+Given a string of text, the model predicts the next letter. It turns each letter of the string into a row of numbers. Then it runs the same few steps over those rows four times, with different trained numbers each time: each row is mixed with the rows before it, then adjusted on its own. Once that is done, only the row for the last letter is used. One more calculation compares that row with 65 stored rows, one for each letter the model knows, and gives each letter a score. The scores become a list of chances: the likeliest next letters at the top, the unlikely ones at the bottom. Writing is picking a letter at random, weighted by those chances, adding it to the string, and asking again. Nobody chose the numbers the model stores: training worked out all 826,433 of them. I can follow each step exactly, but I cannot fully explain why the result works.
+
+![](assets/images/minigpt7/readable-idea.svg#narrow)
+*The idea, with the trained model's real numbers for `goo`. The coloured squares are the first 12 of each row's 128 numbers: blue above zero, orange below. Turning scores into chances stretches the differences: `d` scores 5.13 more than `k`, and that becomes about 170 times the chance.*
+
+Writing Part 1, I spent a long time explaining lines like these, from Jibin Joseph's notebook:
 
 ```python
 x = x + self.attn(self.ln1(x))
 q = q.view(B, T, self.n_head, self.head_dim).transpose(1, 2)
 ```
 
-They are typical PyTorch: short, close to the maths in the papers, and quick on a GPU, the graphics chip that does most of this arithmetic. But they are written for readers who already know that maths. `x` is a different thing after every line, and `ln1`, `attn`, `view` and `transpose` say nothing about what they do. So I tried an experiment. I rewrote the part of the code that **runs** my trained model, and only that part, to be as easy for a person to read as I could make it, and then checked that it still gives exactly the same answers.
+They are typical PyTorch: short, close to the maths in the papers, and quick on a GPU, the graphics chip that does most of this arithmetic. But they are written for readers who already know that maths. `x` is a different thing after every line, and `ln1`, `attn`, `view` and `transpose` say nothing about what they do. That is why I rewrote it.
 
 The program is [`readable/readable_minigpt.py`](https://github.com/Haddley/minigpt-series/blob/main/readable/readable_minigpt.py) in the series repo, with a notebook version saved with its outputs: [open it in Colab](https://colab.research.google.com/github/Haddley/minigpt-series/blob/main/readable/readable_minigpt.ipynb), or [read it on GitHub](https://github.com/Haddley/minigpt-series/blob/main/readable/readable_minigpt.ipynb). It runs in about a second on my Mac.
 
 :::watch-it What this does not do
 It does not train anything: it loads the 826,433 numbers I trained in [Part 2](/posts/minigpt-grown/). It handles one text at a time, where the original can handle a batch. And it loops over the four heads one at a time, where the original does all four in one go. I expected that to make it much slower, so I measured it: on my Mac's processor, it takes about 1.3 times as long as the original for a full 128-letter text, and it is slightly faster for a short one, because it scores only the last letter. Where the original's style really pays off is in handling many texts at once on a GPU, as training does, which I have not measured.
 :::
-
-### The idea in one paragraph
-
-Given a string of text, the model predicts the next letter. It turns each letter of the string into a row of numbers. Then it runs the same few steps over those rows four times, with different trained numbers each time: each row is mixed with the rows before it, then adjusted on its own. Once that is done, only the row for the last letter is used. One more calculation compares that row with 65 stored rows, one for each letter the model knows, and gives each letter a score. The scores become a list of chances: the likeliest next letters at the top, the unlikely ones at the bottom. Writing is picking a letter at random, weighted by those chances, adding it to the string, and asking again. Nobody chose the numbers the model stores: training worked out all 826,433 of them. I can follow each step exactly, but I cannot fully explain why the result works.
-
-![](assets/images/minigpt7/readable-idea.svg#narrow)
-*The idea, with the trained model's real numbers for `goo`. The coloured squares are the first 12 of each row's 128 numbers: blue above zero, orange below. Turning scores into chances stretches the differences: `d` scores 5.13 more than `k`, and that becomes about 170 times the chance.*
 
 ### The rules I followed
 
