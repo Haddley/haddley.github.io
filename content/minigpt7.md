@@ -26,10 +26,10 @@ It does not train anything: it loads the 826,433 numbers I trained in [Part 2](/
 
 ### The idea in one paragraph
 
-Given a string of text, the model predicts the next letter. It turns each letter of the string into a row of numbers, and then runs the same few kinds of arithmetic over those rows, four times. Each row is mixed with the rows before it, then adjusted on its own. Once that is done, only the row for the last letter is used. One more calculation turns that row into a score for each of the 65 letters the model knows, and the scores become a list of chances: the likeliest next letters at the top, the unlikely ones at the bottom. Writing is just picking a letter from that list, adding it to the string, and asking again.
+Given a string of text, the model predicts the next letter. It turns each letter of the string into a row of numbers. Then it runs the same few steps over those rows four times, with different trained numbers each time: each row is mixed with the rows before it, then adjusted on its own. Once that is done, only the row for the last letter is used. One more calculation compares that row with 65 stored rows, one for each letter the model knows, and gives each letter a score. The scores become a list of chances: the likeliest next letters at the top, the unlikely ones at the bottom. Writing is picking a letter at random, weighted by those chances, adding it to the string, and asking again. Nobody chose the numbers the model stores: training worked out all 826,433 of them. I can follow each step exactly, but I cannot fully explain why the result works.
 
 ![](assets/images/minigpt7/readable-idea.svg#narrow)
-*The idea, with the trained model's real numbers for `goo`. The coloured squares are the first 12 of each row's 128 numbers: blue above zero, orange below.*
+*The idea, with the trained model's real numbers for `goo`. The coloured squares are the first 12 of each row's 128 numbers: blue above zero, orange below. Turning scores into chances stretches the differences: `d` scores 5.13 more than `k`, and that becomes about 170 times the chance.*
 
 ### The rules I followed
 
