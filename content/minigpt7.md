@@ -15,7 +15,7 @@ MiniGPT is the small language model I took apart in [Part 1](/posts/minigpt/), a
 
 This is what the model does, in one paragraph and one picture:
 
-Given a string of text, the model predicts the next letter. It turns each letter of the string into a row of numbers. Then it runs the same few steps over those rows four times, with different trained numbers each time: each row is mixed with the rows before it, then adjusted on its own. Once that is done, only the row for the last letter is used. One more calculation compares that row with 65 stored rows, one for each letter the model knows, and gives each letter a score. The scores become a list of chances: the likeliest next letters at the top, the unlikely ones at the bottom. Writing is picking a letter at random, weighted by those chances, adding it to the string, and asking again. Nobody chose the numbers the model stores: training worked out all 826,433 of them. I can follow each step exactly, but I cannot fully explain why the result works.
+Given a string of text, the model predicts the next letter. It turns each letter of the string into a row of numbers. Then it runs the same few steps over those rows four times, with different trained numbers each time: each row is mixed with the rows before it, then adjusted on its own. Once that is done, only the row for the last letter is used. One more calculation compares that row with 65 stored rows, one for each letter the model knows, and gives each letter a score. The scores become a list of chances: the likeliest next letters at the top, the unlikely ones at the bottom. Writing is picking a letter at random, weighted by those chances, adding it to the string, and asking again for another letter. Nobody chose the numbers the model stores: training worked out all 826,433 of them. I can follow each step exactly, but I cannot fully explain why the result works.
 
 ![](assets/images/minigpt7/readable-idea.svg#narrow)
 *The idea, with the trained model's real numbers for `goo`. The coloured squares are the first 12 of each row's 128 numbers: blue above zero, orange below. Turning scores into chances stretches the differences: `d` scores 5.13 more than `k`, and that becomes about 170 times the chance.*
@@ -73,9 +73,20 @@ Here is what each technical word in this post means, so that none of them is use
 | batch | several texts handled at once |
 | GPU | a graphics chip, which does this kind of arithmetic much faster than an ordinary processor |
 
-### The whole program in one picture
+The summary at the top uses plain words for the same things:
 
-Before the details, here is everything the program does to turn `goo` into its next letter, using the names in the code. Blue steps use the model's fixed trained numbers; orange steps use settings you choose.
+| In the summary at the top | In the rest of this post |
+|---|---|
+| a row of numbers | a hidden state |
+| four times over | the four blocks |
+| mixed with the rows before it | attention |
+| adjusted on its own | the MLP |
+| 65 stored rows | `next_letter_rows` (the original's `lm_head`) |
+| a score | a logit |
+
+### The same picture, in the code's names
+
+The picture at the top shows the idea in plain words. Here is the same journey again, before the details, this time with the names in the code. Blue steps use the model's fixed trained numbers; orange steps use settings you choose.
 
 ![](assets/images/minigpt7/readable-pipeline.svg#narrow)
 *Each box is one line of `choose_next_letter`, with the shape of its data for `goo`*
@@ -406,7 +417,7 @@ def run_one_block(hidden_states_entering: torch.Tensor, block: TrainedBlock) -> 
     return hidden_states_leaving
 ```
 
-The [annotated version of these two functions](#the-whole-program-in-one-picture) is at the top of the post, next to the picture of step 3 opened up.
+The [annotated version of these two functions](#the-same-picture-in-the-codes-names) is at the top of the post, next to the picture of step 3 opened up.
 
 ```python
 def run_all_blocks(starting_hidden_states: torch.Tensor, model: TrainedModel) -> list:
@@ -481,7 +492,7 @@ def write(start: str, letters_to_add: int, model: TrainedModel,
 
 `text_so_far = text_so_far + next_letter` is the one place where I reused a name for a new value. I left it, because the text so far really is one thing that grows letter by letter, and the loop would be harder to follow with a new name for every length.
 
-`write` asks [`choose_next_letter`](#the-top-level-one-function-eight-steps), from the top of this post, for one letter at a time, and adds each one to the text. Here is what it writes from `ROMEO:`, at a temperature of 0.8:
+`write` asks [`choose_next_letter`](#the-top-level-one-function-eight-steps), from the top of this post, for one letter at a time, and adds each one to the text. Notice that the model never stops by itself: its 65 letters include no "end of text" mark, so it writes exactly `letters_to_add` letters, however mid-sentence that leaves it. Here is what it writes from `ROMEO:`, at a temperature of 0.8, stopping after 200 letters, in the middle of a word:
 
 ```
 ROMEO:
@@ -501,7 +512,7 @@ Wh
 - **Heads are just slices of the columns.** The original's `view` and `transpose` are a fast way of saying "head slice 2 uses columns 32 to 63". A loop says the same thing more slowly, and more plainly.
 - **The whole model is four tools.** Applying weights, normalising, a bend, and softmax, plus the arithmetic of attention.
 - **Readable code is longer, but hardly slower here.** For one text, the rewrite takes about 1.3 times as long as the original at worst. The original is built to do the four heads, and many texts at once, in one go, which matters for training on a GPU; I have not measured that case.
-- **Readable code still cannot say why.** The rewrite makes *what* happens plain. *Why* training finds queries, keys and values that work, and what the 512 MLP numbers mean, the code cannot tell you, and neither can anyone yet.
+- **Readable code still cannot say why.** The rewrite makes *what* happens plain. *Why* training finds queries, keys and values that work, and what the 512 MLP numbers mean, the code cannot tell you, and nobody can yet fully explain it.
 :::
 
 ### References
