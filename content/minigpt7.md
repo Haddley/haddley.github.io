@@ -24,6 +24,13 @@ The program is [`readable/readable_minigpt.py`](https://github.com/Haddley/minig
 It does not train anything: it loads the 826,433 numbers I trained in [Part 2](/posts/minigpt-grown/). It handles one text at a time, where the original can handle a batch. And it loops over the four heads one at a time, where the original does all four in one go. I expected that to make it much slower, so I measured it: on my Mac's processor, it takes about 1.3 times as long as the original for a full 128-letter text, and it is slightly faster for a short one, because it scores only the last letter. Where the original's style really pays off is in handling many texts at once on a GPU, as training does, which I have not measured.
 :::
 
+### The idea in one paragraph
+
+Given a string of text, the model predicts the next letter. It turns each letter of the string into a row of numbers, and then runs the same few kinds of arithmetic over those rows, four times. Each row is mixed with the rows before it, then adjusted on its own. Once that is done, only the row for the last letter is used. One more calculation turns that row into a score for each of the 65 letters the model knows, and the scores become a list of chances: the likeliest next letters at the top, the unlikely ones at the bottom. Writing is just picking a letter from that list, adding it to the string, and asking again.
+
+![](assets/images/minigpt7/readable-idea.svg#narrow)
+*The idea, with the trained model's real numbers for `goo`. The coloured squares are the first 12 of each row's 128 numbers: blue above zero, orange below.*
+
 ### The rules I followed
 
 1. **Every value gets its own name.** There is no `x = x + something`. When a step makes something new, the new thing gets a new name that says what it is.
