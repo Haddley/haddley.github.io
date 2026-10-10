@@ -4,7 +4,7 @@ part: 1
 description: "Using Claude Code to program a bare ATtiny85-20PU through a USB Tiny AVR Programmer on an Apple Silicon Mac, after simulating the same circuit in Tinkercad"
 date: "2026-10-06"
 categories: ["AI","IOT"]
-image: "/assets/images/claudecode/Claude_AI_symbol.svg"
+image: "/assets/images/attiny1/posts-meta.svg"
 tags: "claude-code, attiny85, avrdude, tinkercad, hardware-debugging, agentic-coding"
 hidden: false
 slug: "attiny1"

@@ -4,7 +4,7 @@ part: 2
 description: "An ATtiny85 that sits in an e-bike's hub-motor speed wire, mirrors the signal below 25 km/h and doubles it above, simulated in Tinkercad with an Arduino Uno as a fake wheel"
 date: "2026-10-11"
 categories: ["AI","IOT"]
-image: "/assets/images/claudecode/Claude_AI_symbol.svg"
+image: "/assets/images/attiny2/posts-meta.svg"
 tags: "claude-code, attiny85, interrupts, tinkercad, hall-sensor, e-bike"
 hidden: false
 slug: "attiny2"
@@ -107,6 +107,13 @@ I changed `SPEED_KMH` to 30 and ran it again. Now the scopes disagree. The right
 
 ![](assets/images/attiny2/tinkercad-attiny-code.png)
 *The same run with the ATtiny's code open. The header comment describes the behaviour, the 1 km/h hysteresis, and how the hub connector's wires are used.*
+
+## Beat 4 — The real breadboard
+
+I then built the same circuit on a real breadboard, turned to match the Tinkercad view: the ATtiny85 across the centre gap, the yellow signal wire coming in through the input resistor at the bottom, and the output resistor and power links along the top.
+
+![](assets/images/attiny2/breadboard-attiny-circuit.jpg)
+*I built the circuit on a real breadboard, in the same layout as the Tinkercad design*
 
 ## The problem: two modes, two timing budgets
 

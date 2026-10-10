@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
+  <title>ATtiny85, doubling a speed signal</title>
+  <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+  <path d="M18,16 L35.2,16 L35.2,26 L42.8,26 L42.8,16 L77.2,16 L77.2,26 L84.8,26 L84.8,16 L102,16" fill="none" stroke="#7cc6f0" stroke-width="2" stroke-linejoin="round"/>
+  <rect x="47" y="42" width="26" height="36" rx="3" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><path d="M55.0,42 A5,5 0 0 0 65.0,42" fill="none" stroke="#5bb4ea" stroke-width="1.5"/><circle cx="53" cy="49" r="1.8" fill="#5bb4ea"/><rect x="40" y="44.0" width="7" height="5" rx="1" fill="#c9d3dd"/><rect x="73" y="44.0" width="7" height="5" rx="1" fill="#c9d3dd"/><rect x="40" y="53.0" width="7" height="5" rx="1" fill="#c9d3dd"/><rect x="73" y="53.0" width="7" height="5" rx="1" fill="#c9d3dd"/><rect x="40" y="62.0" width="7" height="5" rx="1" fill="#c9d3dd"/><rect x="73" y="62.0" width="7" height="5" rx="1" fill="#c9d3dd"/><rect x="40" y="71.0" width="7" height="5" rx="1" fill="#c9d3dd"/><rect x="73" y="71.0" width="7" height="5" rx="1" fill="#c9d3dd"/>
+  <path d="M60,32 V38 M57,35 L60,39 L63,35" stroke="#5bb4ea" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M60,82 V88 M57,85 L60,89 L63,85" stroke="#5bb4ea" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M18,94 L26.6,94 L26.6,104 L30.4,104 L30.4,94 L47.6,94 L47.6,104 L51.4,104 L51.4,94 L68.6,94 L68.6,104 L72.4,104 L72.4,94 L89.6,94 L89.6,104 L93.4,104 L93.4,94 L102,94" fill="none" stroke="#ffb43a" stroke-width="2" stroke-linejoin="round"/>
+</svg>
