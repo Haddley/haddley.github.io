@@ -1,8 +1,30 @@
 {
   "posts": [
     {
-      "slug": "claudecode16",
-      "title": "Claude Code (Part 16)",
+      "slug": "attiny2",
+      "title": "ATtiny85 (Part 2)",
+      "description": "An ATtiny85 that sits in an e-bike's hub-motor speed wire, mirrors the signal below 25 km/h and doubles it above, simulated in Tinkercad with an Arduino Uno as a fake wheel",
+      "date": "2026-10-11",
+      "categories": [
+        "AI",
+        "IOT"
+      ],
+      "tags": "claude-code, attiny85, interrupts, tinkercad, hall-sensor, e-bike"
+    },
+    {
+      "slug": "minigpt7",
+      "title": "MiniGPT, rewritten to be read",
+      "description": "An experiment: the code that runs my trained MiniGPT model, rewritten for people, with a name for every value, every shape written down, every library call explained, and honest notes where nobody knows why it works",
+      "date": "2026-10-09",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "gpt, transformers, pytorch, readable-code, machine-learning"
+    },
+    {
+      "slug": "attiny1",
+      "title": "ATtiny85 (Part 1)",
       "description": "Using Claude Code to program a bare ATtiny85-20PU through a USB Tiny AVR Programmer on an Apple Silicon Mac, after simulating the same circuit in Tinkercad",
       "date": "2026-10-06",
       "categories": [
@@ -2860,5 +2882,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-08T10:53:26.942Z"
+  "generatedAt": "2026-10-10T21:19:32.299Z"
 }
