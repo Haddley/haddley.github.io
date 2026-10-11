@@ -515,6 +515,8 @@ Wh
 - **Readable code still cannot say why.** The rewrite makes *what* happens plain. *Why* training finds queries, keys and values that work, and what the 512 MLP numbers mean, the code cannot tell you, and nobody can yet fully explain it.
 :::
 
+Next, [MiniGPT, grown in code you can read](/posts/minigpt8/) uses this whole program as a black box, and rewrites the code that trains it from random numbers.
+
 ### References
 
 - [The readable program and notebook — minigpt-series, `readable/`](https://github.com/Haddley/minigpt-series/tree/main/readable)

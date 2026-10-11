@@ -25,7 +25,7 @@ I started this effort in July 2023 with the book [*Generative AI with Python and
 6. [Learning from a teacher](/posts/minigpt5/): distillation.
 7. [Reading further](/posts/minigpt6/): sliding-window attention.
 
-Alongside the series, [MiniGPT, rewritten to be read](/posts/minigpt7/) rewrites this post's code for people: a name for every value, and honest notes where nobody knows why it works.
+Alongside the series, [MiniGPT, rewritten to be read](/posts/minigpt7/) rewrites this post's code for people: a name for every value, and honest notes where nobody knows why it works. [MiniGPT, grown in code you can read](/posts/minigpt8/) does the same for Part 2's training.
 
 - **Ten minutes?** Read [the guessing game](#guessing-the-next-letter), try [the first demo](#spinning-a-wheel-an-analogy), then skip to [the five steps](#the-five-steps) and [the full demo](#try-it-my-trained-machine-running-in-your-browser).
 - **An hour?** Read down to [Opening the notebook](#opening-the-notebook), and try every demo on the way.

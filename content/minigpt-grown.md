@@ -620,6 +620,7 @@ The value of a paper like this is not a benchmark number. It is that the path fr
 ## Try it yourself
 
 - My follow-along workbook: [open it in Colab](https://colab.research.google.com/github/Haddley/minigpt-series/blob/main/part2-growing/minigpt_follow_along_2.ipynb). It grows the exhibit from random numbers and reproduces this post's numbers
+- The same training, rewritten to be read: [MiniGPT, grown in code you can read](/posts/minigpt8/)
 - Running the finished model: the [first post's workbook](https://colab.research.google.com/github/Haddley/minigpt-series/blob/main/part1-running/minigpt_follow_along.ipynb)
 - The notebook: [github.com/jibin10/MiniGPT](https://github.com/jibin10/MiniGPT)
 

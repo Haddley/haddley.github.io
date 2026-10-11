@@ -12,6 +12,17 @@
       "tags": "claude-code, attiny85, interrupts, tinkercad, hall-sensor, e-bike"
     },
     {
+      "slug": "minigpt8",
+      "title": "MiniGPT, grown in code you can read",
+      "description": "An experiment: the code that trains MiniGPT from random numbers, rewritten for people, treating the whole readable model as a black box, with the surprise score and the AdamW nudge written out, and a check against the original",
+      "date": "2026-10-11",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "gpt, transformers, pytorch, readable-code, machine-learning"
+    },
+    {
       "slug": "minigpt7",
       "title": "MiniGPT, rewritten to be read",
       "description": "An experiment: the code that runs my trained MiniGPT model, rewritten for people, with a name for every value, every shape written down, every library call explained, and honest notes where nobody knows why it works",
@@ -2882,5 +2893,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-10T23:50:21.463Z"
+  "generatedAt": "2026-10-11T01:07:15.637Z"
 }

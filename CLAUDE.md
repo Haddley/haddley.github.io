@@ -154,6 +154,8 @@ The MiniGPT posts' slugs do not match their part numbers, because a new Part 2 w
 | 6 | `minigpt5` | `part6-distillation/` |
 | 7 | `minigpt6` | `part7-sliding-window/` |
 
+Two companion posts sit alongside the series, outside its numbering: `minigpt7` ("MiniGPT, rewritten to be read": the code that runs the model, rewritten for readability) and `minigpt8` ("MiniGPT, grown in code you can read": the training, using minigpt7's program as a black box). Their code is in the minigpt-series repo's `readable/` folder; each `.py` is the source, and `build_readable_notebook.py <program>.py` rebuilds and reruns its notebook.
+
 All code and follow-along workbooks live in the minigpt-series repo, named by part number (`minigpt_follow_along_3.ipynb` for Part 3). `public/minigpt-demo/` on this site holds only the trained exhibit model files (`exhibit.pt`, `exhibit.gguf`, and `weights.bin` with `manifest.json` for the live demo).
 
 ## Internal Links
