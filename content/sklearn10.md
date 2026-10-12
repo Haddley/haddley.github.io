@@ -16,10 +16,10 @@ In [Part 9](/posts/sklearn9/), I found groups in data with no labels. The tenth 
 
 **What the chapter covers:**
 1. **From biological to artificial neurons**: the perceptron, a single artificial neuron, and why a single layer of them cannot learn some simple patterns
-2. **The multilayer perceptron (MLP)**: layers of neurons, each layer feeding the next, with activation functions such as ReLU between them
+2. **The multilayer perceptron (MLP)**: layers of neurons, each layer feeding the next, with activation functions such as ReLU (rectified linear unit) between them
 3. **Backpropagation**: how a network works out which way to nudge every one of its numbers
 4. **Regression and classification MLPs**: one output for a number, one output per class for a classification
-5. **Keras's three ways to build a model**: the Sequential API, the Functional API, and subclassing
+5. **Keras's three ways to build a model**: the Sequential API (application programming interface), the Functional API, and subclassing
 6. **Saving and restoring models**, and **callbacks** such as early stopping
 7. **Fine-tuning hyperparameters**: how many layers, how many neurons, and what learning rate, searched automatically with Keras Tuner
 
@@ -58,7 +58,7 @@ Here is what the networks did when I ran the notebook:
 |---|---|
 | Clothing classifier, 266,610 numbers, after 30 passes through 55,000 images | 87.4% of the 10,000 test images right |
 | Its first three test images | ankle boot, pullover, trouser: all three right |
-| California house prices, Scikit-Learn's `MLPRegressor` | an error (RMSE) of 0.505, about $50,500 |
+| California house prices, Scikit-Learn's `MLPRegressor` | an error (root mean squared error, RMSE) of 0.505, about $50,500 |
 | California house prices, a Keras network | an error (RMSE) of 0.535, about $53,500 |
 | Hyperparameter search: Hyperband, 60 trials | best validation accuracy 86.6% |
 
@@ -82,7 +82,7 @@ Here is how training has changed through this series:
 | [3](/posts/sklearn3/), [4](/posts/sklearn4/) | nudged by gradient descent, with slopes from a formula, because the models have one layer |
 | [5](/posts/sklearn5/) | solved directly by a specialised solver, or by gradient descent, which reaches almost the same answer |
 | [6](/posts/sklearn6/), [7](/posts/sklearn7/) | trees grown greedily, and combined into ensembles; gradient boosting steps downhill by adding trees |
-| [8](/posts/sklearn8/), [9](/posts/sklearn9/) | no labels: PCA is worked out, K-Means alternates between two exact steps, and t-SNE nudges points |
+| [8](/posts/sklearn8/), [9](/posts/sklearn9/) | no labels: PCA (principal component analysis) is worked out, K-Means alternates between two exact steps, and t-SNE (t-distributed stochastic neighbor embedding) nudges points |
 | 10 | many layers, so the slopes come from backpropagation, and every number is nudged |
 
 :::no-dumb-questions

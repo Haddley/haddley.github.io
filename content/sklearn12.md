@@ -51,7 +51,7 @@ for epoch in range(1, n_epochs + 1):
 
 Each of the four steps from earlier parts is one or two lines: pick a batch of 32 houses, run them through the model while the tape records, find every number's slope with `tape.gradient`, and nudge with `apply_gradients`. Here is what it did over 5 epochs of 362 steps when I ran the notebook:
 
-| Epoch | Average loss | Average error (MAE) |
+| Epoch | Average loss | Average error (mean absolute error, MAE) |
 |---|---|---|
 | 1 | 3.54 | 0.664 |
 | 2 | 1.87 | 0.543 |

@@ -62,7 +62,7 @@ Here is how each model did on the test set when I ran the notebook. The score is
 |---|---|
 | Logistic regression, on its own | 0.864 |
 | Random forest, on its own | 0.896 |
-| SVM, on its own | 0.896 |
+| SVM (support vector machine), on its own | 0.896 |
 | The three voting: the majority wins | 0.912 |
 | The three voting: their chances are averaged | 0.92 |
 | 500 bagged decision trees, each trained on its own random sample of the training set | 0.92 |

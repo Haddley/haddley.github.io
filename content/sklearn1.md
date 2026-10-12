@@ -15,7 +15,7 @@ Scikit-Learn is a powerful Python library for machine learning that simplifies b
 ## Key Points
 
 **Why Scikit-Learn?**
-- Simple syntax with consistent API
+- Simple syntax with consistent API (application programming interface)
 - Built-in datasets and visualization tools
 - Comprehensive documentation and community support
 
@@ -26,7 +26,7 @@ Scikit-Learn is a powerful Python library for machine learning that simplifies b
 4. **Pipeline**: Easy workflow management  
 
 :::brain-power
-Both models below predict Cyprus's life satisfaction from its GDP per capita, and both are trained with the same call, `fit`. Before reading on, guess: which one does its work when it is trained, and which one waits until it is asked for a prediction?
+Both models below predict Cyprus's life satisfaction from its gross domestic product (GDP) per capita, and both are trained with the same call, `fit`. Before reading on, guess: which one does its work when it is trained, and which one waits until it is asked for a prediction?
 :::
 
 ## Quick Example

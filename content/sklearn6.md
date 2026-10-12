@@ -18,7 +18,7 @@ In [Part 5](/posts/sklearn5/), I separated classes with the widest possible stre
 1. **Training and drawing a tree**: Graphviz draws the tree's questions, so the model can be read
 2. **Making predictions**: a new instance follows the questions from the top of the tree down to a leaf
 3. **Class probabilities**: a leaf's chances are the share of each class among the training instances that ended up there
-4. **The CART algorithm**: how Scikit-Learn grows a tree, one best split at a time
+4. **The CART (classification and regression trees) algorithm**: how Scikit-Learn grows a tree, one best split at a time
 5. **Regularization**: limits such as `max_depth` and `min_samples_leaf` stop a tree from carving out a region for every training point, much as Ridge and Lasso hold back a linear model in [Part 4](/posts/sklearn4/)
 6. **Regression trees**: the same idea predicting numbers, with each leaf predicting an average
 7. **Weaknesses**: trees only cut parallel to the axes, and small changes to the data can grow a very different tree
@@ -72,7 +72,7 @@ That greedy, one-decision-at-a-time growth is quick, but it does not guarantee t
 
 A: From the leaf the flower lands in. 54 training flowers ended up there, 49 of them versicolors, and 49 ÷ 54 is 90.7%. A tree's chances are just shares of the training flowers in each leaf.
 
-**Q: Do trees need the features to be scaled, like SVMs?**
+**Q: Do trees need the features to be scaled, like support vector machines (SVMs)?**
 
 A: No. Each question compares one feature with a threshold, so changing that feature's units moves the threshold, and the questions still split the flowers the same way.
 

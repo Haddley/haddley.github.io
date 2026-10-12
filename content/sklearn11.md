@@ -17,7 +17,7 @@ In [Part 10](/posts/sklearn10/), I trained a network with two hidden layers. The
 **What the chapter covers:**
 1. **Vanishing and exploding gradients**: the slopes that backpropagation passes back can shrink, or grow, layer by layer, until the early layers barely learn
 2. **Glorot and He initialization**: choosing the random starting numbers so that the signal keeps the same size as it passes through the layers
-3. **Better activation functions**: leaky ReLU, ELU, SELU, GELU, Swish, and Mish, bends that do not go flat
+3. **Better activation functions**: leaky ReLU (rectified linear unit), ELU (exponential linear unit), SELU (scaled ELU), GELU (Gaussian error linear unit), Swish, and Mish, bends that do not go flat
 4. **Batch normalization**: rescaling each layer's inputs during training, so that they stay a sensible size
 5. **Reusing pretrained layers**: starting a new network from layers that another network has already learned
 6. **Faster optimizers**: momentum, Nesterov, AdaGrad, RMSProp, Adam, and AdamW, which all decide how big each nudge should be
@@ -58,7 +58,7 @@ Here is what the chapter's networks did when I ran the notebook. All of them lea
 | 2 hidden layers, batch normalization, after 2 passes | 86.7% |
 | 200 images, network trained from scratch (test) | 90.5% |
 | 200 images, reusing another network's layers (test) | 91.7% |
-| 3 hidden layers, plain SGD, after 10 passes | 83.7% |
+| 3 hidden layers, plain SGD (stochastic gradient descent), after 10 passes | 83.7% |
 | The same network trained with AdamW | 87.9% |
 | The same network, 1cycle schedule, 25 passes | 89.2% |
 | 2 hidden layers with dropout (test) | 86.4% |

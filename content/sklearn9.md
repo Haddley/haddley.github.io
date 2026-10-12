@@ -20,7 +20,7 @@ In [Part 8](/posts/sklearn8/), I made data smaller. Every model so far in this s
 3. **Choosing the number of clusters**: inertia keeps falling as clusters are added, so look for an "elbow", or use the silhouette score
 4. **Image segmentation**: clustering an image's colours, so that it is drawn with only a few
 5. **Semi-supervised learning**: clustering first, so that a few labels go much further
-6. **DBSCAN**: finds clusters of any shape by following dense regions, and marks the rest as noise
+6. **DBSCAN (density-based spatial clustering of applications with noise)**: finds clusters of any shape by following dense regions, and marks the rest as noise
 7. **Gaussian mixtures**: assume the data comes from a few bell-shaped groups, and give each instance a probability of belonging to each one
 8. **Anomaly detection**: instances in low-density regions are flagged as unusual
 

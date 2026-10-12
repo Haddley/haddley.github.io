@@ -19,7 +19,7 @@ In [Part 4](/posts/sklearn4/), I fitted lines both directly and by gradient desc
 2. **Support vectors**: only the instances on the edges of the street decide where it goes; the rest could move without changing anything
 3. **Soft margins**: the hyperparameter `C` trades a wide street against a few instances on the wrong side of it
 4. **Feature scaling**: SVMs are sensitive to the scale of each feature, so the data is scaled first
-5. **Kernels**: the polynomial and Gaussian RBF kernels let an SVM draw curved boundaries, without actually adding the extra features
+5. **Kernels**: the polynomial and Gaussian RBF (radial basis function) kernels let an SVM draw curved boundaries, without actually adding the extra features
 6. **SVM regression**: turn the idea around, and fit as many instances as possible inside the street
 
 **What I learned from it:**
@@ -66,7 +66,7 @@ The chapter's extra material trains the same kind of model in two ways, on the s
 
 ## What training means here
 
-Scikit-Learn's `SVC` does not nudge. Finding the widest street is a well-understood mathematical problem, and `SVC` hands it to a specialised solver, LIBSVM, which works on it two numbers at a time, solving each small piece exactly, rather than taking small steps along a slope.
+Scikit-Learn's `SVC` (support vector classifier) does not nudge. Finding the widest street is a well-understood mathematical problem, and `SVC` hands it to a specialised solver, LIBSVM (a library for SVMs), which works on it two numbers at a time, solving each small piece exactly, rather than taking small steps along a slope.
 
 The chapter's extra material then trains the same model by gradient descent, exactly like [Part 4](/posts/sklearn4/): start from random weights, work out which way the error slopes, step downhill, and repeat, 60,000 times. It lands within about 0.05 of the direct answer. So an SVM can be trained either way, like the straight line in [Part 4](/posts/sklearn4/).
 

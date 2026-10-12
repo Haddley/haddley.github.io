@@ -22,7 +22,7 @@ In [Part 7](/posts/sklearn7/), I combined many models into one. The eighth chapt
 5. **Explained variance**: how much of the data's variation each direction keeps, which tells you how many directions you need
 6. **Compression**: storing 154 numbers per image instead of 784, and rebuilding the image from them
 7. **Randomized PCA, incremental PCA, and random projection**: faster ways to do the same for big datasets
-8. **LLE and t-SNE**: methods that unroll curved data, or lay out high-dimensional data in 2D so it can be seen
+8. **LLE (locally linear embedding) and t-SNE (t-distributed stochastic neighbor embedding)**: methods that unroll curved data, or lay out high-dimensional data in 2D so it can be seen
 
 **What I learned from it:**
 - Most of an image's 784 numbers are redundant: 154 well-chosen numbers keep 95% of the variation.
@@ -104,7 +104,7 @@ The chapter is in the notebook that goes with the book, [08_dimensionality_reduc
 *LLE unrolled the Swiss roll: the colours now run smoothly from one end to the other*
 
 ![](assets/images/sklearn8/jupyter-tsne.png)
-*Three other methods laying the Swiss roll out in 2D: MDS, Isomap, and t-SNE, which keeps neighbours together but breaks the roll into pieces*
+*Three other methods laying the Swiss roll out in 2D: MDS (multidimensional scaling), Isomap (isometric mapping), and t-SNE, which keeps neighbours together but breaks the roll into pieces*
 
 :::bullet-points Dimensionality reduction, in short
 - Most of an image's 784 numbers are redundant; 154 directions keep 95% of the variation.

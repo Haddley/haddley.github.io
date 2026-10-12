@@ -10,24 +10,24 @@ slug: "sklearn3"
 image: "/assets/images/sklearn3/posts-meta.svg"
 ---
 
-In [Part 2](/posts/sklearn2/), I predicted numbers: house prices. The third chapter of the Hands-On Machine Learning book predicts classes instead, using MNIST, a famous set of 70,000 small images of handwritten digits. It starts with a simpler question, "is this digit a 5?", and spends most of its time on how to tell whether a classifier is any good.
+In [Part 2](/posts/sklearn2/), I predicted numbers: house prices. The third chapter of the Hands-On Machine Learning book predicts classes instead, using MNIST (the Modified National Institute of Standards and Technology digits), a famous set of 70,000 small images of handwritten digits. It starts with a simpler question, "is this digit a 5?", and spends most of its time on how to tell whether a classifier is any good.
 
 ## Key Points
 
 **What the chapter covers:**
 1. **The MNIST data**: 70,000 images, each 28 × 28 = 784 pixels, with the digit it shows; the first 60,000 are for training and the last 10,000 for testing
-2. **A binary classifier**: an `SGDClassifier` that answers one question, "is this a 5?"
+2. **A binary classifier**: an `SGDClassifier` (SGD is short for stochastic gradient descent, explained below) that answers one question, "is this a 5?"
 3. **Accuracy can mislead**: only about 10% of the images are 5s, so a model that always says "not a 5" is already 91% accurate
 4. **The confusion matrix**: a count of every kind of right and wrong answer
 5. **Precision and recall**: of the images it calls 5s, how many really are; and of the real 5s, how many it finds
 6. **The precision/recall trade-off**: raising the threshold makes the classifier more careful, but it then misses more 5s
-7. **The ROC curve**: another way to compare classifiers across all thresholds
+7. **The ROC curve** (receiver operating characteristic): another way to compare classifiers across all thresholds
 8. **Multiclass, multilabel, and multioutput classification**: all ten digits at once, several labels per image, and even a whole cleaned-up image as the output
 
 **What I learned from it:**
 - A high accuracy can mean very little when one class is rare. The confusion matrix shows what the model actually gets wrong.
 - Precision and recall pull against each other; which matters more depends on what the model is for.
-- Some classifiers, such as [SVMs](/posts/sklearn5/), decide between two classes at a time, so Scikit-Learn quietly trains several of them to handle ten digits.
+- Some classifiers, such as support vector machines ([SVMs](/posts/sklearn5/), the subject of Part 5), decide between two classes at a time, so Scikit-Learn quietly trains several of them to handle ten digits.
 
 :::brain-power
 Only about one image in ten is a 5. A classifier answers "is this a 5?" and is right 95% of the time. Before reading on, decide: is that a good classifier? What else would you want to know about it?
@@ -69,7 +69,7 @@ The `SGDClassifier` is the first model in this series that learns by nudging. SG
 
 [Part 4](/posts/sklearn4/) shows this kind of training in detail. It is the same kind of step my [MiniGPT](/posts/minigpt-grown/) model takes, but MiniGPT needs [backpropagation](/posts/sklearn10/) to find its slopes, because it has many layers; a linear classifier like this one has only one, so its slope comes from a simple formula.
 
-The chapter's other models learn as before: the [random forest](/posts/sklearn7/) is grown split by split, the [SVM](/posts/sklearn5/) is solved directly, and [k-nearest neighbors](/posts/sklearn1/) just remembers all 60,000 images.
+The chapter's other models learn as before: the [random forest](/posts/sklearn7/) is grown split by split, the support vector machine ([SVM](/posts/sklearn5/)) is solved directly, and [k-nearest neighbors](/posts/sklearn1/) just remembers all 60,000 images.
 
 :::no-dumb-questions
 **Q: What is the threshold?**
