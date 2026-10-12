@@ -84,6 +84,13 @@ The summary at the top uses plain words for the same things:
 | 65 stored rows | `next_letter_rows` (the original's `lm_head`) |
 | a score | a logit |
 
+### The box, closed
+
+[Part 1](/posts/minigpt/) drew the model as a closed black box: text in, scores out, with temperature and top-k acting only on what comes out. Here is the same box, with the readable program's names, before I open it.
+
+![](assets/images/minigpt7/readable-black-box.svg)
+*The readable model from the outside, with real numbers for `goo`. `scores_for_next_letter` is the box; `chances_from_scores` and `spin_the_wheel` work only on what comes out of it.*
+
 ### The same picture, in the code's names
 
 The picture at the top shows the idea in plain words. Here is the same journey again, before the details, this time with the names in the code. Blue steps use the model's fixed trained numbers; orange steps use settings you choose.

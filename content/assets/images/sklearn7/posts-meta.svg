@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
+  <title>Scikit-Learn: many trees, one answer</title>
+  <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+  <path d="M24 16 L33.35 33.0 L14.65 33.0 Z" fill="#7cc6f0"/>
+  <path d="M24 23.65 L35.05 43.2 L12.950000000000001 43.2 Z" fill="#7cc6f0"/>
+  <rect x="22.13" y="43.2" width="3.74" height="5.95" fill="#1f4a73"/>
+  <path d="M48 16 L57.35 33.0 L38.65 33.0 Z" fill="#3a9bdc"/>
+  <path d="M48 23.65 L59.05 43.2 L36.95 43.2 Z" fill="#3a9bdc"/>
+  <rect x="46.13" y="43.2" width="3.74" height="5.95" fill="#1f4a73"/>
+  <path d="M72 16 L81.35 33.0 L62.65 33.0 Z" fill="#7cc6f0"/>
+  <path d="M72 23.65 L83.05 43.2 L60.95 43.2 Z" fill="#7cc6f0"/>
+  <rect x="70.13" y="43.2" width="3.74" height="5.95" fill="#1f4a73"/>
+  <path d="M96 16 L105.35 33.0 L86.65 33.0 Z" fill="#3a9bdc"/>
+  <path d="M96 23.65 L107.05 43.2 L84.95 43.2 Z" fill="#3a9bdc"/>
+  <rect x="94.13" y="43.2" width="3.74" height="5.95" fill="#1f4a73"/>
+  <line x1="24" y1="56" x2="60" y2="86" stroke="#1f4a73" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="48" y1="56" x2="60" y2="86" stroke="#1f4a73" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="72" y1="56" x2="60" y2="86" stroke="#1f4a73" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="96" y1="56" x2="60" y2="86" stroke="#1f4a73" stroke-width="1.8" stroke-linecap="round"/>
+  <circle cx="60" cy="92" r="13" fill="#f6c25b" opacity="0.22"/>
+  <circle cx="60" cy="92" r="7" fill="#f6c25b"/>
+</svg>

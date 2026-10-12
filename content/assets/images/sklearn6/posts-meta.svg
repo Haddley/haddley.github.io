@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
+  <title>Scikit-Learn: a decision tree, one question at a time</title>
+  <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+  <line x1="60" y1="32" x2="34" y2="60" stroke="#1f4a73" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="60" y1="32" x2="86" y2="60" stroke="#1f4a73" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="86" y1="66" x2="70" y2="92" stroke="#1f4a73" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="86" y1="66" x2="102" y2="92" stroke="#1f4a73" stroke-width="2.2" stroke-linecap="round"/>
+  <rect x="49.0" y="21.0" width="22" height="14" rx="4" fill="#16304d" stroke="#3a9bdc" stroke-width="2"/>
+  <rect x="23.0" y="55.0" width="22" height="14" rx="4" fill="#3a9bdc" stroke="#3a9bdc" stroke-width="2"/>
+  <rect x="75.0" y="55.0" width="22" height="14" rx="4" fill="#16304d" stroke="#3a9bdc" stroke-width="2"/>
+  <rect x="60.0" y="87.0" width="20" height="14" rx="4" fill="#7cc6f0" stroke="#7cc6f0" stroke-width="2"/>
+  <rect x="88" y="83" width="28" height="22" rx="6" fill="#f6c25b" opacity="0.22"/>
+  <rect x="92.0" y="87.0" width="20" height="14" rx="4" fill="#f6c25b" stroke="#f6c25b" stroke-width="2"/>
+</svg>

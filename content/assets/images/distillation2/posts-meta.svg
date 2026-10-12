@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
+  <title>Distillation, with a second teacher</title>
+  <defs>
+    <linearGradient id="distGradB1" gradientUnits="userSpaceOnUse" x1="10" y1="10" x2="50" y2="60">
+      <stop offset="0" stop-color="#3a9bdc"/>
+      <stop offset="1" stop-color="#0066a3"/>
+    </linearGradient>
+    <linearGradient id="distGradB2" gradientUnits="userSpaceOnUse" x1="70" y1="10" x2="110" y2="60">
+      <stop offset="0" stop-color="#f6a75e"/>
+      <stop offset="1" stop-color="#e0702a"/>
+    </linearGradient>
+    <linearGradient id="distGradBoth" gradientUnits="userSpaceOnUse" x1="46" y1="0" x2="74" y2="0">
+      <stop offset="0" stop-color="#3a9bdc"/>
+      <stop offset="1" stop-color="#f08a3c"/>
+    </linearGradient>
+  </defs>
+  <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+  <!-- two teachers -->
+  <g transform="translate(2 6) scale(0.6)">
+    <path d="M46 24 h14 v18 l14 26 a10 10 0 0 1 -9 15 H41 a10 10 0 0 1 -9 -15 l14 -26 z" fill="none" stroke="url(#distGradB1)" stroke-width="3" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <line x1="44" y1="24" x2="62" y2="24" stroke="url(#distGradB1)" stroke-width="3" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+  </g>
+  <g transform="translate(57 6) scale(0.6)">
+    <path d="M46 24 h14 v18 l14 26 a10 10 0 0 1 -9 15 H41 a10 10 0 0 1 -9 -15 l14 -26 z" fill="none" stroke="url(#distGradB2)" stroke-width="3" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <line x1="44" y1="24" x2="62" y2="24" stroke="url(#distGradB2)" stroke-width="3" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+  </g>
+  <!-- a drop from each -->
+  <path d="M46 60 c2.4 3.6 3.6 6 3.6 8.1 a3.6 3.6 0 0 1 -7.2 0 c0 -2.1 1.2 -4.5 3.6 -8.1 z" fill="#3a9bdc"/>
+  <path d="M74 60 c2.4 3.6 3.6 6 3.6 8.1 a3.6 3.6 0 0 1 -7.2 0 c0 -2.1 1.2 -4.5 3.6 -8.1 z" fill="#f08a3c"/>
+  <!-- one student, learning from both -->
+  <path d="M55 76 h10 v8 l9 14 a6 6 0 0 1 -5.5 9 H51.5 a6 6 0 0 1 -5.5 -9 l9 -14 z" fill="url(#distGradBoth)" opacity="0.95"/>
+</svg>

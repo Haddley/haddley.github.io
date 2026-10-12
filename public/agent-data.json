@@ -1,6 +1,116 @@
 {
   "posts": [
     {
+      "slug": "sklearn10",
+      "title": "Scikit-Learn (Part 10)",
+      "description": "Neural networks with Keras: a network of 266,610 numbers that learns to recognise clothing, trained by backpropagation, the way large language models are",
+      "date": "2026-10-12",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "machine-learning, neural-networks, keras, tensorflow, backpropagation, fashion-mnist"
+    },
+    {
+      "slug": "sklearn9",
+      "title": "Scikit-Learn (Part 9)",
+      "description": "Unsupervised learning: finding groups in data that has no labels, with K-Means, DBSCAN, and Gaussian mixtures, and getting far with only 50 labels",
+      "date": "2026-10-12",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "machine-learning, scikit-learn, clustering, k-means, dbscan, gaussian-mixtures"
+    },
+    {
+      "slug": "sklearn8",
+      "title": "Scikit-Learn (Part 8)",
+      "description": "Dimensionality reduction: squeezing 784 pixels into far fewer numbers with PCA, random projection, and manifold learning, while keeping what matters",
+      "date": "2026-10-12",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "machine-learning, scikit-learn, pca, dimensionality-reduction, t-sne, manifold-learning"
+    },
+    {
+      "slug": "sklearn7",
+      "title": "Scikit-Learn (Part 7)",
+      "description": "Ensemble learning and random forests: many models voting, bagging, boosting, and stacking, and how much better a crowd of models does than any one of them",
+      "date": "2026-10-12",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "machine-learning, scikit-learn, ensemble-learning, random-forest, boosting, stacking"
+    },
+    {
+      "slug": "sklearn6",
+      "title": "Scikit-Learn (Part 6)",
+      "description": "Decision trees: a model that asks one question at a time, grown split by split, and why it needs holding back",
+      "date": "2026-10-12",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "machine-learning, scikit-learn, decision-trees, cart, iris, regularization"
+    },
+    {
+      "slug": "sklearn5",
+      "title": "Scikit-Learn (Part 5)",
+      "description": "Support vector machines: the widest street between two classes, kernels for curved boundaries, and an SVM trained both directly and by gradient descent",
+      "date": "2026-10-12",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "machine-learning, scikit-learn, support-vector-machines, kernels, iris, moons"
+    },
+    {
+      "slug": "sklearn4",
+      "title": "Scikit-Learn (Part 4)",
+      "description": "Training linear models: the same line worked out directly and found by gradient descent, then curves, regularization, and logistic regression",
+      "date": "2026-10-12",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "machine-learning, scikit-learn, gradient-descent, linear-regression, regularization, logistic-regression"
+    },
+    {
+      "slug": "sklearn3",
+      "title": "Scikit-Learn (Part 3)",
+      "description": "Classification: recognising handwritten digits, and why accuracy alone can mislead, with confusion matrices, precision, and recall",
+      "date": "2026-10-12",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "machine-learning, scikit-learn, classification, mnist, precision-recall, sgd"
+    },
+    {
+      "slug": "sklearn2",
+      "title": "Scikit-Learn (Part 2)",
+      "description": "An end-to-end machine learning project: predicting California house prices, from raw data to a tested model",
+      "date": "2026-10-12",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "machine-learning, scikit-learn, california-housing, pipelines, random-forest, cross-validation"
+    },
+    {
+      "slug": "sklearn1",
+      "title": "Scikit-Learn (Part 1)",
+      "description": "Machine Learning with Python",
+      "date": "2026-10-12",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "machine-learning, scikit-learn, regression, k-nearest-neighbors"
+    },
+    {
       "slug": "attiny2",
       "title": "ATtiny85 (Part 2)",
       "description": "An ATtiny85 that sits in an e-bike's hub-motor speed wire, mirrors the signal below 25 km/h and doubles it above, simulated in Tinkercad with an Arduino Uno as a fake wheel",
@@ -2893,5 +3003,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-11T01:07:15.637Z"
+  "generatedAt": "2026-10-12T10:29:30.128Z"
 }

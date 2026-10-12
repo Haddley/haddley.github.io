@@ -20,6 +20,11 @@ Training does not need to understand the model. It takes snippets of real text, 
 ![](assets/images/minigpt8/training-step.svg#narrow)
 *One training step, with real numbers: the first eight practice questions of the text, and the chance the model gave each right answer, before training and after it.*
 
+[Part 1](/posts/minigpt/) drew the model as a closed black box, and training can treat it the same way. Here is one step of training, from the outside:
+
+![](assets/images/minigpt8/training-black-box.svg)
+*One training step, with real numbers for the first practice snippet. Training reads the chances that come out of the box, and sends changed numbers back in; it never looks inside.*
+
 So I wrote the training program to use the whole of the readable model as a **black box**. Was that possible? Almost. Training needs exactly three things from the box:
 
 1. **The list of tables, and their shapes**, so that it can fill each one with random numbers to start.

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
+  <title>Scikit-Learn: California house values, district by district</title>
+  <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+  <!-- California -->
+  <path d="M31 16 L60 16 L60 50 L95 84 L93 103 L73 104 L66 94 L56 86 L46 74 L40 62 L35 50 L31 36 L28 24 Z"
+        fill="#16304d" stroke="#1f4a73" stroke-width="1.2" stroke-linejoin="round"/>
+  <!-- inland districts: lower values -->
+  <g fill="#2a7fc0">
+    <circle cx="40" cy="24" r="2.2"/><circle cx="50" cy="28" r="1.8"/><circle cx="44" cy="36" r="2.4"/>
+    <circle cx="52" cy="44" r="2.8"/><circle cx="56" cy="56" r="3.2"/><circle cx="62" cy="64" r="2.6"/>
+    <circle cx="68" cy="72" r="2.2"/><circle cx="78" cy="78" r="2.4"/><circle cx="86" cy="88" r="2.8"/>
+    <circle cx="84" cy="98" r="2"/><circle cx="58" cy="76" r="2"/>
+  </g>
+  <g fill="#7cc6f0">
+    <circle cx="48" cy="54" r="2.4"/><circle cx="76" cy="96" r="3"/><circle cx="52" cy="66" r="2"/>
+  </g>
+  <!-- the coast: the highest values -->
+  <circle cx="38" cy="50" r="9" fill="#f6c25b" opacity="0.2"/>
+  <circle cx="68" cy="91" r="10" fill="#f6c25b" opacity="0.2"/>
+  <g fill="#f6c25b">
+    <circle cx="37" cy="48" r="3.4"/><circle cx="41" cy="53" r="2.6"/><circle cx="35" cy="54" r="2.2"/>
+    <circle cx="66" cy="89" r="3.8"/><circle cx="71" cy="93" r="3"/><circle cx="62" cy="90" r="2.4"/>
+  </g>
+</svg>
