@@ -1,0 +1,2726 @@
+https://learn.deeplearning.ai/courses/ai-coding-workflows-from-cloud-to-local/lesson/bvl1kr/claude-code-baseline
+
+https://learn.deeplearning.ai/courses/ai-coding-workflows-from-cloud-to-local/lesson/uzf4v2/opencode-with-subagents
+
+---
+
+Introduction
+
+In this course, you'll build your own AI coding workflows
+0:03
+from the cloud all the way to models running locally
+0:06
+on your own machine. But before you start building,
+0:09
+let's look at how you'll get there.
+0:12
+Across the course, you'll explore a number of different AI coding workflows.
+0:16
+To compare them, you'll build the same web app each time
+0:19
+so you can see how each workflow handles the job
+0:23
+and what you gain or give up with each.
+0:26
+The web app is titled Agent Clinic.
+0:28
+It's a place where agents can submit complaints about their humans.
+0:32
+So throughout the course, we'll refer to it as the Agent Complaints app.
+0:38
+You'll hear more about it in the next video.
+0:41
+You will begin with Claude Code as your Coding Agent
+0:43
+using Anthropic models that run in the cloud.
+0:46
+First, you'll give Claude Code the whole job
+0:49
+and let one of its more capable models
+0:52
+build the application in one shot. That gives you a familiar baseline.
+0:55
+Then, instead of asking one model to do everything at once,
+0:58
+you'll divide the work amongst Sub-Agents,
+1:00
+so that each can focus on a smaller part of the job.
+1:03
+Once those jobs are separated,
+1:05
+you can assign the Sub-Agents a faster, cheaper model
+1:08
+while keeping the more capable model in the main role.
+1:11
+This gives you more control over how
+1:13
+the work is divided and which model handles
+1:16
+each part, all while staying within a familiar AI coding workflow.
+1:21
+But that's just the beginning.
+1:23
+Next, you'll move beyond that familiar territory
+1:26
+and take more control over the workflow,
+1:28
+starting with the Coding Agent itself.
+1:30
+You'll switch to an agent that isn't tied
+1:33
+to its own model family.
+1:35
+Instead, it can connect your workflow
+1:38
+to a whole catalog of models.
+1:40
+With this new setup, you'll rebuild the application,
+1:43
+split the work across Sub-Agents,
+1:45
+and assign different models to different roles.
+1:48
+But even after all of that, every
+1:50
+model is still running in the cloud,
+1:52
+albeit with your choice of providers.
+1:55
+So, finally, you'll start bringing models onto your own machine.
+1:59
+You'll first explore a hybrid setup,
+2:02
+keeping the main model in the cloud
+2:04
+while giving a small local model
+2:06
+a shot at implementation as a Sub-Agent.
+2:09
+Then, you'll see what it takes
+2:11
+to push toward fully local
+2:13
+by trying a local model in the main role too.
+2:16
+Now, that road has some potholes, but they're worth seeing because
+2:20
+the point of this course isn't to show
+2:23
+that one of these workflows is automatically best.
+2:25
+By keeping the application the same,
+2:28
+you can compare what each setup gives,
+2:31
+what it asks of you, and whether those tradeoffs fit your work.
+2:36
+Sometimes a familiar cloud workflow will still be the right choice.
+2:40
+Sometimes a cheaper model will be enough.
+2:43
+And sometimes more privacy or control will be worth the extra effort.
+2:48
+By the end, you won't just
+2:50
+know how to use these particular tools,
+2:52
+you'll understand how coding agents connect through cloud and local providers
+2:56
+to models that can take on different roles
+3:00
+so you can build a workflow that matches your priorities.
+3:04
+That's the path ahead.
+3:06
+But before you can build anything, there's some setup to do.
+3:09
+So in the next video, you'll get your tools in place
+3:12
+and everything ready to start coding.
+3:14
+I'll see you there.
+
+
+--
+
+Set up your environment
+
+Course Setup
+
+Before the next video, take a moment to get your environment ready so you can follow along with the hands-on lessons.
+
+1. Get the course repo
+
+The course repo contains the files used in the course: the project specifications, every prompt used in the lessons (in prompts.md), and configuration files for tools that are introduced as the course progresses.
+
+Repo: https-deeplearning-ai/sc-ai-coding-workflows-files
+
+Clone it locally:
+
+git clone https://github.com/https-deeplearning-ai/sc-ai-coding-workflows-files.git
+Before you start building, read the repo's README. The files are organized into folders by lesson range, and the README explains which folder to use and when. You'll start from the files in in Lessons_02-08 when you set up your project in the next lesson.
+
+Two things worth knowing up front. First, you won't do your coursework inside this repo: in the next lesson you'll create a project of your own, and the repo is where you copy files from as the course calls for them. Second, the repo's prompts.md contains every prompt used in the course, with notes on when to run each one. Keep it open while you follow along.
+
+2. Install an IDE
+
+The course is recorded in PyCharm, but any editor or IDE you're already comfortable with will work just as well: VS Code, Zed, Cursor, Neovim, whatever you prefer.
+
+If you'd like to match the course setup:
+
+PyCharm: Download and install
+3. Set up a coding agent
+
+The course uses Claude Code in the terminal inside the IDE. You're welcome to use another coding agent, such as Codex, but be aware that things may not work exactly as shown.
+
+If you'd like to match the course setup:
+
+Claude Code: Install instructions
+The course also introduces OpenCode, OpenRouter, and LM Studio as it progresses. Each one is covered when it comes up, so you don't need to set anything else up right now. If you'd like to get a head start:
+
+OpenCode: Install instructions
+OpenRouter: Getting started
+LM Studio: Download and install
+You're ready
+
+Once you've cloned the repo and have an IDE + coding agent installed, you're all set to follow along the instructor and enjoy the lessons!
+
+---
+
+Claude Code baseline
+
+You've now seen the agent complaints app
+0:02
+that you'll rebuild across the course
+0:04
+and the simplified spec-driven process
+0:07
+you'll use to one-shot it in different AI coding setups.
+0:11
+But before you can start comparing the tradeoffs
+0:14
+between different approaches, you need a first version.
+0:18
+So in this lesson, you'll build your first agent complaints app
+0:22
+using a basic Claude Code setup.
+0:24
+This means that you have a
+0:26
+Coding Agent running locally on your machine,
+0:29
+in this case, Claude Code.
+0:31
+Now, the Coding Agent needs to orchestrate its work with a model,
+0:35
+and the model will act kind
+0:36
+of like the brain of the agent.
+0:38
+So Claude Code is going to plug in that brain for you
+0:42
+through Anthropic's cloud-based API.
+0:45
+Giving you a choice between different Anthropic models
+0:49
+to act as the brain. And
+0:50
+in this lesson, you'll be choosing Sonnet
+0:52
+because it has a nice balance of cost and power.
+0:56
+Throughout this course, you'll explore other AI coding setups
+0:59
+that gradually move from cloud-based models
+1:02
+towards models running locally on your own machine.
+1:06
+But this first approach is a useful baseline for comparison.
+1:09
+So, let's start coding. In the specs
+1:12
+folder, you will find the project constitution.
+1:16
+The three files that tell Claude Code
+1:18
+what it's building and how to build it.
+1:20
+The mission says what Agent Complaints is and who it is for.
+1:24
+The tech stack describes the tools, language, and constraints for the project.
+1:30
+And the roadmap breaks the work
+1:32
+into small ordered steps.
+1:35
+Also, pay special attention
+1:37
+to the roadmap as you go through the course.
+1:39
+As you move towards local AI, the models get less forgiving.
+1:44
+So, a clear road map will become increasingly important.
+1:48
+Each lesson starts with a new chat with a nice clean context.
+1:53
+Now here's the prompt to create the app in one shot.
+1:57
+You will get it to look at the roadmap,
+1:59
+do each phase in an unit,
+2:01
+run tests, and so on.
+2:04
+For this course, I'm setting the agent to Accept Edits.
+2:08
+Your style might be different for real work.
+2:11
+Submit the prompt, and Claude Code then works
+2:14
+with a model to do all the thinking.
+2:21
+Now it's finished. Let's validate what it built.
+2:24
+First, scroll through the agent's validation.
+2:27
+See any showstoppers?
+2:30
+The agent reported critical mistakes.
+2:33
+Turns out, these could be better but won't stop the application.
+2:37
+Next, let's use the IDE to do our review
+2:40
+of some of the newly created files.
+2:42
+For example, models might generate an HTML link
+2:47
+with an invalid integrity attribute which breaks your layout.
+2:51
+Agent complaints is a FastAPI application.
+2:55
+Let's run it using either the command line
+2:59
+or any editor integration.
+3:02
+When the server starts up,
+3:04
+go to the local URL to see the app.
+3:07
+You start on the homepage.
+3:09
+As you can see, it's pretty minimal.
+3:12
+Styled with Bootstrap, as you requested.
+3:14
+If you see good styling, that means
+3:16
+the Bootstrap link in the template worked,
+3:19
+which means the integrity attribute mentioned before was okay.
+3:23
+You also have a link to the complaints.
+3:26
+You can see there are already
+3:28
+some entered and they're kind of funny.
+3:31
+At the bottom there's a form to submit a new complaint.
+3:35
+When you do, it appears in the list.
+3:39
+Remember, you're not using a database,
+3:41
+so anything you save is lost on restart.
+3:45
+Since validation passed, let's put the project back in the starting state.
+3:49
+First, let's shut down the FastAPI server.
+3:54
+Let's delete all the new files and directories that were created.
+3:58
+You're going to repeat this same lesson structure
+4:00
+throughout the course, each introducing an architecture piece
+4:04
+towards local AI. Thus, you'll finish each lesson
+4:08
+by reverting to a clean slate.
+4:11
+You now have the results of this baseline standard low effort setup.
+4:16
+With Claude Code and the standard Anthropic Sonnet model,
+4:19
+you get low effort, fast results, and high quality.,
+4:23
+but with less control and more money.
+4:26
+At each step in this course, I will show you some metrics
+4:29
+to see how each step changes.
+4:31
+Here you see the baseline.
+4:34
+These metrics separate the work done by the main agent
+4:36
+from the work done by the subagents.
+4:38
+In this run, Claude Code spawned one
+4:41
+subagent on its own. You didn't explicitly
+4:43
+at least set it up. Turns shows a single cycle of action
+4:47
+where the agent plans, calls a tool, then processes the result.
+4:52
+Context processed shows how many tokens were used.
+4:56
+Tool calls show how many times the agent needed to go look
+4:59
+at the outside world by running a program.
+5:03
+We have a baseline for the cost,
+5:05
+and wall clock shows how long it took.
+5:08
+And it's useful as a rough reference,
+5:10
+but it can be affected by things outside of the setup.
+5:14
+So, don't put too much weight on this number.
+5:16
+As you can see, the subagent consumed
+5:19
+54% of context and made 61% of tool calls,
+5:23
+while the main agent retained a substantial orchestration role.
+5:26
+Remember, this was just one run.
+5:28
+If you run it again, you'll get different results.
+5:31
+But this gives us our first rough baseline for comparison.
+5:35
+Different setups will come and go.
+5:37
+What matters most in this course is
+5:40
+learning how to compare their tradeoffs
+5:42
+and decide what works best for you.
+5:45
+So that wraps your first implementation of agent complaints.
+5:49
+Claude Code with a powerful cloud model.
+5:52
+But this course is moving towards setups where
+5:55
+you take more control over the work
+5:57
+instead of relying on a frontier model
+6:00
+to handle one big messy job for you.
+6:03
+So before you change any models,
+6:05
+the next lesson is about optimizing context for subagents.
+6:10
+Because if you want smaller local models to succeed,
+6:13
+you need to first learn how to break the work
+6:16
+into smaller, more precise tasks. I'll see you there.
+
+
+---
+
+Claude Code with subagents
+
+In the last lesson, you built the baseline version
+0:02
+of agent complaints, the easy way.
+0:04
+You gave Claude Code the specs,
+0:06
+sent it one prompt and let it do its thing.
+0:10
+In this lesson, you'll use subagents
+0:12
+to break that same job into smaller,
+0:15
+more focused tasks.
+0:18
+The reason comes down to context.
+0:21
+When Claude Code runs one continuous job,
+0:23
+a single context window generates every response
+0:26
+and keeps filling up with material.
+0:29
+So each new response comes from a longer, messier input.
+0:34
+As that input grows, performance can degrade.
+0:37
+As you can see in this
+0:39
+graph from a study on context length,
+0:41
+as the context grew, quality dropped.
+0:44
+And when that happens, the model might
+0:47
+lose track of earlier instructions,
+0:49
+miss details, or make more mistakes.
+0:52
+And there's a word for this, context rot.
+0:56
+Now with a small app like agent complaints and a Frontier model,
+1:00
+context rot is barely a problem.
+1:03
+Frontier models can have huge windows and tolerate a lot of mess.
+1:08
+But smaller models don't have that luxury.
+1:10
+Their context windows are literally
+1:13
+smaller. So a big context may not even fit.
+1:16
+And even a context that fits
+1:18
+can be too messy for them to handle.
+1:20
+This matters because smaller local models
+1:23
+are exactly where this course is headed.
+1:25
+And to get there, you're going to need Sub-Agents
+1:29
+with small, focused contexts.
+1:31
+This will no longer be a nice to have, it's a requirement.
+1:35
+So, how do we get smaller, more focused contexts?
+1:39
+by doing one thing at a time.
+1:42
+Our roadmap has phases with tasks.
+1:46
+In fact, in richer spec-driven development systems,
+1:49
+each feature loop has more detail.
+1:52
+Here's a feature in one of my projects. That's plenty of context.
+1:55
+So instead of using one context window to carry the entire build,
+2:00
+you can delegate pieces of the work to sub-agents.
+2:03
+Each sub-agent gets a fresh, focused context for its part,
+2:08
+then returns the result to the main agent.
+2:11
+And Claude Code already uses sub-agents this way.
+2:14
+For example, when it needs to search through a large code base,
+2:17
+it can send that work to separate helpers.
+2:20
+Let each helper work in its own context
+2:22
+and bring back only what it found.
+2:25
+Let's get started.
+2:27
+First, make sure you have no uncommitted changes
+2:29
+and that you cleaned up the last lesson.
+2:32
+You should have no Python files in your project.
+2:36
+Let's also do that for the main agent.
+2:38
+Each lesson should start with a nice clean context.
+2:42
+So make sure you start a new chat.
+2:44
+You're now ready for subagents.
+2:47
+You'll use these same one-shot prompts as before
+2:50
+where a single prompt builds the whole app.
+2:53
+This time though, the prompt will tell the Main Agent
+2:57
+to use a new subagent to implement each phase.
+3:01
+Claude Code, by default, will use the same
+3:03
+model in the subagent as the Main Agent.
+3:06
+In this case, Sonnet.
+3:07
+As the results come by, you will see something new.
+3:10
+The chat window shows that the Phase 1 implementation work
+3:14
+was sent to a subagent. What does that work look like?
+3:19
+Here's what the subagent was told to do.
+3:24
+Same for phase two. The main chat shows work was handed off,
+3:29
+and here's what the handoff conversation looked like.
+3:36
+The work is now finished with a similar result.
+3:39
+You can now go to the agent blocks in the chat
+3:42
+to see the result of each agent
+3:45
+for phase one and for phase two.
+3:49
+Not only did our subagent conserve context,
+3:52
+so did our main agent, which had less work to do.
+3:55
+Now it's finished. Let's do validation.
+3:58
+First, the agent did its review
+4:01
+and reported its findings.
+4:03
+We'll do some light validation ourselves.
+4:05
+Let's look at one of the files, the main application.
+4:09
+Did implementation by subagent work okay?
+4:11
+Looks pretty good.
+4:14
+Let's run the server and look at agent complaints in the browser.
+4:18
+Give a quick look at the homepage and make sure it's okay,
+4:22
+then review the complaints page,
+4:25
+and submit a new complaint. It shows up in the list.
+4:31
+Veredict, subagent for implementation worked fine.
+4:35
+Now it's time for end of lesson cleanup.
+4:39
+First, shut down the FastAPI server.
+4:44
+Then remove the files and changes done during this lesson.
+4:50
+This means we're ready for starting the next lesson.
+4:53
+What did this lesson show? It's an important one.
+4:56
+Work in small steps with fresh context using sub-agents.
+5:01
+You didn't do anything fancy yet
+5:03
+and we are still 100% in the cloud with the same model.
+5:06
+This does though put work on you
+5:09
+and how you prompt to get
+5:11
+the main agent to steer the sub-agent.
+5:14
+Looking at the numbers, main agent effort fell slightly
+5:17
+from seven to six turns
+5:20
+and from 217K to 192K context,
+5:23
+showing that the main agent became a leaner coordinator.
+5:28
+Subagent context and turns nearly doubled
+5:31
+from 257K to
+5:34
+511K. Total context and turns increased around 50%
+5:38
+in tool calls around 20%.
+5:41
+And the cost actually went up a bit.
+5:44
+The cleaner phase boundary therefore carried
+5:47
+a measurable coordination and context cost.
+5:49
+You did the work but you
+5:52
+haven't yet gotten the benefit. That's next.
+5:54
+Now that you have better context management by using subagents,
+5:58
+do you even need your most expensive model doing that work?
+6:03
+Maybe you also can save money by using cheaper models for implementation.
+6:08
+So in the next lesson, we'll start adjusting the model itself.
+
+
+---
+
+Claude Code with Cheaper subagents
+
+Subagents let you implement with a fresh context.
+0:03
+But they also open the door to something more.
+0:06
+Doing the detailed work on a cheaper model.
+0:10
+In this lesson, you'll get your subagents to operate on Haiku,
+0:14
+Claude Code's less expensive option.
+0:17
+The idea is simple. Once the work is split
+0:19
+into smaller tasks through subagents,
+0:22
+Maybe those tasks don't need to be on the most expensive model.
+0:26
+But cheaper models are cheaper for a reason.
+0:30
+If the work is too broad or too vague,
+0:33
+you might spend more time and money fixing mistakes
+0:36
+than you would have spent just using
+0:38
+the bigger model in the first place.
+0:40
+So the move here, use the bigger model as the big brain
+0:44
+that does the thinking, while the smaller model,
+0:47
+the little brain, is the doer or implementer.
+0:50
+There are lots of small, specialized tasks
+0:53
+that can use small, specialized Sub-Agents,
+0:56
+but only when managed by a Main Agent.
+0:58
+For example, you can also use the big brain
+1:01
+to judge the Implementer's results,
+1:04
+perhaps sending corrections back to fix.
+1:06
+Now, you can do all of this directly in the prompt.
+1:09
+For example, you could start a new chat
+1:12
+in your default model of Sonnet,
+1:14
+but in the prompt tell Claude Code to use
+1:17
+Haiku to answer the question.
+1:27
+This lets you choose the best price performance for each task.
+1:32
+You can even use Opus, an even more powerful model,
+1:36
+for example, at the kickoff to guide the architecture
+1:39
+and shape the overall roadmap,
+1:42
+as well as periodic full project reviews.
+1:44
+Then, in a feature loop,
+1:46
+use Sonnet for planning and orchestration and
+1:50
+Haiku for each implementer subagent.
+1:53
+This is a central point of this course.
+1:55
+Smaller models can be successful when guided with a small, tight spec.
+2:00
+Good planning and spec is important for success.
+2:03
+Bad plan leads to awful result.
+2:06
+As usual, let's start by making sure
+2:08
+we cleaned up after the last lesson.
+2:11
+No uncommitted changes and no Python files in your project.
+2:17
+Let's also repeat our mantra, clean context.
+2:20
+Starting a new chat to start this new lesson.
+2:23
+But make sure the model choice is Sonnet.
+2:27
+We're now ready for switching models for subagents.
+2:31
+As usual, you'll do a one-shot prompt for both phases.
+2:35
+In the last lesson, you routed the implementation to a subagent.
+2:40
+This time, you'll add an instruction to run the subagent
+2:44
+with Haiku as the model.
+2:46
+Pay attention to the end of the prompt.
+2:49
+You've been finishing each one-shot by asking for a review.
+2:53
+In this lesson, it's extra important.
+2:56
+You'll ask the big brain to review the little brain.
+3:00
+The results will again show the subagent box with the detail.
+3:05
+All finished and likely a bit quicker
+3:07
+as Haiku is a fast model that's also cheaper.
+3:11
+But how are the results? Let's take a look.
+3:15
+You're using a cheaper implementer, so let's do more validation.
+3:20
+First, take a look at what the main agent reported.
+3:23
+Did it find any issues with the final result?
+3:27
+Some points will be minor even if they're called critical.
+3:31
+You can clean them up now or group them into periodic cleanup.
+3:35
+You'll see more about this later.
+3:37
+Our prompt asks for tests, but
+3:39
+perhaps the main agent didn't run them.
+3:42
+Let's do some validation through test running.
+3:46
+The test passed which means our approach is passing basic validation.
+3:52
+Does the site run?
+3:57
+Run the server and check the two pages in the browser.
+4:02
+Is the homepage okay?
+4:05
+Do you still have complaints?
+4:07
+and can you submit new ones?
+4:15
+Everything works fine. The smaller model with help from the bigger model
+4:19
+was able to implement.
+4:23
+Let's do the end of lesson cleanup.
+4:25
+Shut down the FastAPI server
+4:29
+and clean up the files.
+4:32
+You have now entered the big part of the comparison,
+4:36
+Sub-Agents with a smaller model. This is always a tradeoff.
+4:40
+Smaller models are cheaper and faster, but make mistakes.
+4:44
+Too many mistakes leads to more turns, meaning more attempts.
+4:48
+And more turns and you'll pay more and take more time.
+4:52
+The trick, use Spec Driven Development
+4:54
+to give plans to the main agent and model
+4:57
+and get it to give small tasks and plans
+5:00
+to the smaller agent and model. Let's see the numbers this time.
+5:04
+Compared with the previous lesson, this setup uses 50% more turns
+5:08
+and 48% more tool calls,
+5:11
+but only 29% more context.
+5:14
+Most of that growth was in the subagents.
+5:17
+But also notice the subagent turns became lighter.
+5:20
+That is, the average context per subagent turn fell
+5:24
+from 21k in the previous setup
+5:27
+to 17k in this lesson.
+5:29
+Across all three setups, the main agent
+5:31
+stayed comparatively steady
+5:34
+while the subagent activity expanded dramatically.
+5:37
+Cost, however, dropped notably because the context
+5:40
+was largely in the subagents, which worked in the cheaper model.
+5:44
+This gives you another useful comparison, but
+5:46
+it also brings you to the limits
+5:48
+of what you can explore within this setup.
+5:51
+So far, you've used a fully hosted setup
+5:53
+as a familiar home to learn the key ideas
+5:57
+about specs and subagents and different models.
+6:02
+But if your coding agent keeps you inside one ecosystem,
+6:06
+your choices are pretty limited. So, in the next lesson,
+6:10
+you'll start opening up the path towards hybrid and local setups
+6:15
+by choosing the coding agent itself
+6:18
+and the models it connects to.
+
+---
+
+OpenCode Setup
+
+So far you've been working in Claude Code,
+0:01
+but choosing Claude Code as a coding agent means
+0:04
+you're locked into the Claude ecosystem.
+0:06
+And as you move toward local AI,
+0:09
+you'll need more flexibility than that.
+0:12
+So in this lesson, you'll start taking back control,
+0:15
+starting with the coding agent itself.
+0:18
+You saw in the last lesson that Claude Code
+0:20
+can run Sub-Agents on different models.
+0:23
+But these models are hosted and they are from one vendor.
+0:27
+Claude Code wasn't built to go far from this approach.
+0:31
+Fortunately, there are many coding agents
+0:33
+to choose from, including open source options.
+0:36
+For this lesson, we'll use OpenCode.
+0:39
+It is a popular, powerful, and mature choice.
+0:42
+OpenCode also comes in several flavors:
+0:45
+a command line version, a desktop
+0:47
+app, a web version, and IDE integrations.
+0:51
+In this lesson, we'll use the IDE version through ACP,
+0:54
+which is just the connection which lets the coding agent
+0:57
+work directly inside your editor.
+1:00
+But you should try the different options and
+1:02
+find the one that fits your workflow best.
+1:06
+You'll click New Chat to start a new chat window.
+1:10
+It defaults to the Claude Agent.
+1:12
+That menu though, lets us install from the ACP Registry.
+1:17
+There you'll find a long list of agents.
+1:20
+Scroll down to OpenCode and click Install.
+1:23
+Then click Apply and click OK to close those settings.
+1:27
+Back in the chat window, OpenCode is now the agent.
+1:31
+You'll then see a listing of models that OpenCode themselves host.
+1:36
+Let's make sure to choose Big Pickle,
+1:39
+one of OpenCode's currently free hosted demo models.
+1:42
+It's a quick, low-stakes way to
+1:45
+test that OpenCode is installed and working.
+1:48
+You'll enter a simple prompt just to confirm OpenCode is set up.
+1:52
+The engine changed from Claude, but the AI chat should be similar.
+1:57
+Changing the coding agent was the first layer.
+2:00
+But the agent still needs a model to talk to.
+2:04
+Now that you've moved away from Claude Code,
+2:07
+you're no longer restricted to Anthropic models.
+2:10
+OpenCode can connect to many different models,
+2:13
+but setting each one up separately means
+2:16
+juggling accounts, keys, and billing.
+2:19
+That's where OpenRouter comes in.
+2:21
+It gives OpenCode one API connection
+2:24
+to a catalog of models
+2:25
+so you can choose the model
+2:27
+while OpenRouter handles the rest.
+2:30
+OpenRouter charges based on token usage,
+2:33
+so later you'll add a small amount of credits for this course.
+2:36
+Now, the models are still running in the cloud, but
+2:40
+You now control which model your coding agent uses.
+2:44
+First, go to the OpenRouter site and create a login.
+2:51
+Once you've created the account, this
+2:53
+is what the dashboard will look like.
+2:56
+Once logged in, you have a two-step process.
+3:00
+You first add some credits to your account.
+3:03
+For this course, you can add the
+3:05
+equivalent of $10 and that should be plenty.
+3:08
+I already have an account with credits.
+3:11
+For your account, click Add Credits
+3:12
+and follow the screen to provide $10.
+3:16
+Next, you need to make an API key.
+3:19
+This is how you will connect your OpenCode
+3:22
+into the use of OpenRouter.
+3:27
+Finally, copy this API key to the clipboard.
+3:30
+It's important to do this now as
+3:32
+you can't come back later and get it.
+3:35
+Also, API keys are a secret.
+3:37
+Don't share this with anyone. Back in the IDE, you
+3:41
+can configure OpenCode
+3:43
+to add OpenRouter as a provider.
+3:46
+You can choose to edit the obscure OpenCode JSON file yourself,
+3:51
+but hey, you have OpenCode.
+3:53
+Just tell it to set up OpenRouter.
+3:57
+Once done, you start a new OpenCode chat.
+4:01
+After a couple of seconds, voila,
+4:03
+you have the OpenRouter models.
+4:06
+What does OpenRouter give you? Access to lots of models
+4:10
+hosted at inference providers,
+4:12
+all through a single account and API key.
+4:16
+You now have OpenCode connected to OpenRouter
+4:19
+as both a router and inference provider.
+4:22
+Now select the model you want to use.
+4:25
+Deepseek V4 Pro in particular
+4:27
+is a good fit for what you're doing.
+4:29
+At the time of this recording,
+4:31
+compared to Anthropic models, Deepseek Pro
+4:34
+is cheaper than Haiku, but more powerful than Sonnet.
+4:38
+OpenRouter gives you access to Deepseek V4 Pro and Flash
+4:42
+through the credits you just added.
+4:44
+You'll start with Pro and now let's get OpenCode to use it.
+4:49
+First, you change the current chat to use DeepSeek Pro.
+4:53
+Click the model picker, find DeepSeek V4
+4:55
+Pro in the long list and select it.
+4:58
+You can now do a prompt
+5:00
+confirming OpenCode works with OpenRouter
+5:03
+using our target model.
+5:11
+That long model list is cumbersome. Let's do a bonus track.
+5:17
+You'll use a prompt to configure
+5:19
+OpenCode to only show what you want.
+5:23
+You'll be using DeepSeek Flash, so you include that as well.
+5:27
+OpenCode will then edit its configuration file.
+5:32
+Your prompt also defaults the model reasoning level to medium.
+5:37
+Let's confirm this works.
+5:39
+Start a new chat and the model picker should default
+5:42
+to your last used model, Deepseek Pro,
+5:46
+and the list should only include two models
+5:49
+at the default reasoning.
+5:52
+Send a hello prompt and confirm
+5:54
+we're using one of our two models.
+5:57
+You're now ready to return to development.
+6:00
+Looking back again at your matrix,
+6:01
+this lesson changed quite a bit,
+6:04
+agent, provider, and model.
+6:06
+This provides control, but this choice shifts responsibility to you.
+6:10
+Let's face it, the choice can be overwhelming.
+6:12
+So many good agents to choose from.
+6:15
+So many models, each with variations in size.
+6:18
+And you haven't even started yet on running these things
+6:22
+semi-locally or locally.
+6:24
+As you split up the monolith,
+6:26
+you'll find multiple places to have different
+6:28
+model choices for parts of the workflow.
+6:31
+The hope in this course isn't to say, do this.
+6:33
+It's to teach you how to think about these choices.
+6:36
+Again, everything is changing quickly.
+6:39
+Changing from Claude Code to another agent is a big step.
+6:42
+But so far, it's just a setup.
+6:45
+In the next lesson, you'll put it to work,
+6:47
+building the same project again,
+6:49
+this time with your new agent and model.
+
+---
+
+OpenCode baseline
+
+You now have a new agent setup
+0:02
+with a new inference provider and model.
+0:04
+Let's go build something with this
+0:06
+by repeating what we did in lesson three.
+0:08
+With this new setup, the OpenCode agent will go through OpenRouter
+0:12
+to ask Deepseek V4 Pro to implement the project.
+0:16
+You're still running in the cloud,
+0:18
+so this isn't local yet.
+0:20
+But now more of this setup comes from your choice,
+0:23
+the agent, the model,
+0:25
+and the inference provider itself.
+0:28
+As before, this is a one-shot MVP,
+0:31
+both phases with a bit of validation at the end.
+0:35
+Then you'll see, what's the quality?
+0:37
+The speed, the cost. Do you trust the result?
+0:40
+Each lesson starts with a new chat with a nice clean context,
+0:45
+so make sure the chat is using OpenCode
+0:47
+with DeepSeek V4 Pro as the model
+0:51
+with medium reasoning.
+0:53
+Here's the prompt. It's the same as lesson three.
+0:56
+But since the chat, AKA the
+0:58
+main agent, is using Deepseek Pro,
+1:01
+it will run with both a different agent and a different model.
+1:06
+The prompt is now finished and the project is implemented.
+1:10
+The agent gives us a summary of the result.
+1:13
+You switch from something you trust,
+1:15
+Claude Code and its models to something new.
+1:19
+Do you trust these results? Let's do more validation this time.
+1:23
+First, let's look at the main FastAPI application code.
+1:28
+A quick review shows, it looks good.
+1:32
+How's your HTML template looking?
+1:35
+Let's open it, give a quick review, the result
+1:38
+You got what you wanted.
+1:40
+The main agent usually chooses to run the test.
+1:43
+As the human in the loop, let's do this ourselves.
+1:46
+Open a test file and run it.
+1:48
+Good news, all tests pass.
+1:52
+Next, let's run the FastAPI app
+1:54
+and see how the new setup did.
+1:58
+When the server starts up, go to
+1:59
+the local URL to see the app.
+2:02
+You start on the homepage, looks good,
+2:05
+you got the Bootstrap styling, same as before.
+2:08
+Next, the link to the complaints.
+2:11
+Same date listing.
+2:14
+Finally, submit a new complaint.
+2:16
+Then make sure it appears in the list.
+2:21
+We'll do the same cleanup as before.
+2:24
+First, let's shut down the FastAPI server.
+2:27
+Then, delete all the new files and directories
+2:30
+that were created during this lesson.
+2:37
+Let's do some reflection.
+2:39
+As you can see, you altered quite
+2:41
+a number of choices in the matrix.
+2:43
+And yet it felt quite normal.
+2:45
+Since spec-driven development had the plan
+2:48
+in place, the what was already captured.
+2:50
+You completely changed the how and got a similar result.
+2:54
+Let's return to the evidence.
+2:55
+The direct run used 25 turns,
+2:58
+38 tool calls, and 530k of context.
+3:03
+By comparison, lesson three used 19 turns,
+3:07
+28 tool calls, and 474k.
+3:11
+The two cent cost demonstrates the pricing advantage of Deepseek,
+3:15
+not necessarily a better orchestration strategy.
+3:18
+With that new OpenCode baseline in place, let's keep going.
+3:22
+You just implemented the Agent Complaints with your new setup.
+3:25
+And remember, back in lesson four, the next thing you did
+3:29
+was add subagents in Claude code.
+3:31
+So, in the next lesson, you'll make
+3:34
+the same move, this time in OpenCode.
+
+--
+
+OpenCode with Subagents
+
+In the last lesson, you rebuilt Agent Complaints with a new setup:
+0:03
+OpenCode, OpenRouter, and Deepseek.
+0:07
+But the work still ran through a single agent.
+0:10
+In lesson four, you saw another approach:
+0:12
+split the work across subagents.
+0:14
+Now you'll use subagents in OpenCode,
+0:17
+just like you did in Claude Code.
+0:19
+So one long-running agent
+0:22
+doesn't have to carry the whole build.
+0:24
+Your spec-driven development roadmap already breaks the project
+0:28
+into smaller phases and tasks,
+0:30
+and those become the pieces
+0:32
+you can hand off to subagents.
+0:34
+And remember, this pattern becomes especially important later
+0:38
+when you move to smaller local models.
+0:41
+To start, make sure you have no uncommitted changes
+0:44
+and that you've cleaned up the last lesson.
+0:47
+You should have no Python files in your project.
+0:49
+This lesson is about making really good implementation context by using subagents.
+0:56
+Now, give your main agent the same fresh start.
+0:59
+Each lesson starts with a new chat with a nice clean context.
+1:03
+You're now ready for subagents.
+1:05
+Like lesson four, you'll do the same one-shot prompt.
+1:09
+As before, you are telling the main agent
+1:12
+to use a new context, new subagent
+1:14
+for each roadmap phase.
+1:17
+As with OpenCode, the chat window shows
+1:19
+that the phase implementation work was sent to a subagent.
+1:23
+You can explore the subagent section
+1:26
+in the chat results to get more detail.
+1:29
+The project is now implemented.
+1:32
+This time, the main OpenCode agent
+1:33
+doesn't have a lot of extra context.
+1:36
+Even better, the context in the implementation work
+1:39
+was focused on exactly what it needed.
+1:43
+As a reminder, you're doing less
+1:44
+human in the loop in this course
+1:47
+to focus on getting to local AI. You'll do some light validation.
+1:51
+Let's look at these same file you reviewed last time.
+1:54
+Did implementation by subagent work okay? Yeah, looks pretty good.
+1:58
+Let's run the server and look at agent complaints in the browser.
+2:02
+Give a quick look at the homepage and make sure it's okay.
+2:05
+Then review the complaints page
+2:08
+and submit a new complaint.
+2:12
+It shows up in the list of complaints.
+2:14
+Veredict, subagent for implementation worked fine.
+2:18
+Now it's time for end of lesson cleanup.
+2:21
+First, shut down the FastAPI server.
+2:24
+Then remove the files and changes done during this lesson.
+2:28
+You're now ready for next time.
+2:31
+This lesson reintroduces the lesson four pattern.
+2:34
+One fresh general subagent per phase.
+2:38
+The main agent became very small
+2:40
+using only six turns and 90k of context.
+2:44
+The subagents consumed 94% of all context
+2:47
+and made 85% of tool calls.
+2:50
+Compared with direct implementation in lesson seven,
+2:53
+total turns increased 120%,
+2:56
+context increased 179%,
+2:58
+and tool calls increased 139%.
+3:02
+Phase delegation
+3:03
+successfully protected the main agent's context,
+3:06
+but greatly increased total context processed.
+3:10
+Cost nearly tripled, although it remained low in absolute terms,
+3:14
+while wall clock increased 26%.
+3:17
+Just as with lesson four,
+3:18
+a step backward on the way to a step forward.
+3:22
+Now that the work is split into smaller focused handoffs,
+3:25
+you're ready for the next move,
+3:27
+choosing a different model for the subagent.
+3:29
+In the next lesson, Deepseek Pro will handle the main agent,
+3:33
+while Deepseek Flash handles the subagent.
+3:36
+I'll see you there.
+
+---
+
+
+OpenCode with Cheaper Subagents
+
+You've got subagents running in OpenCode.
+0:02
+So now you can bring back the move from lesson five,
+0:05
+use a smaller, cheaper, faster model for implementation.
+0:09
+This time though, the model choice won't just live in the prompt.
+0:13
+You'll define a custom subagent called the implementer.
+0:17
+Let's get started.
+0:19
+As a reminder, lesson five used Claude Code as the coding agent,
+0:22
+Sonnet as the big brain, and Haiku as the little brain
+0:26
+for smaller implementation tasks.
+0:29
+Now you're using OpenCode as the coding agent
+0:32
+with Deepseek V4 Pro as the big brain.
+0:35
+Let's add a model that can play the same role Haiku played.
+0:38
+before. Deepseek V4 Flash,
+0:41
+a smaller, cheaper, faster member of the V4 family.
+0:45
+Unlike lesson five, you can't assign the model directly in the prompt.
+0:50
+Instead, you're going to create a custom OpenCode subagent
+0:54
+called implementer using a Markdown file as definition,
+0:58
+and define the subagent model choice there.
+1:02
+The front matter has lots of interesting fields
+1:04
+to control the subagent that you'll explore later.
+1:07
+This keeps the same division of labor you've been using.
+1:10
+The big brain, pro, runs each feature loop.
+1:14
+It finds the roadmap entry
+1:16
+and crafts a well-specified work packet for the implementer.
+1:20
+The little brain, flash, takes that packet
+1:23
+and does the small specified unit of work.
+1:26
+and Pro stays on as the judge,
+1:28
+reviewing the implementer's results
+1:30
+and maybe sending corrections back for fixing.
+1:33
+As I've said before, good planning and spec is important for success.
+1:37
+Bad plan leads to awful result.
+1:41
+As usual, did you clean up after the last lesson?
+1:44
+No uncommitted changes and no Python files in your project.
+1:49
+Let's also repeat our mantra, clean context.
+1:52
+Start a new chat to start this new lesson,
+1:55
+but make sure the model choice is DeepSeek Pro.
+1:59
+In this lesson, your implementation starts with a different step.
+2:03
+Let's define your implementer subagent.
+2:06
+Know who is good at making subagents? OpenCode.
+2:09
+Enter this prompt and have OpenCode write its agent definition file.
+2:19
+You now have a new markdown file in implementer.md
+2:22
+in your project's .opencode/agents directory.
+2:27
+It has a fairly standard body and some interesting front matter.
+2:31
+Take a special look at the model definition,
+2:34
+Flash, just as you asked.
+2:36
+Let's give it a try with a prompt
+2:38
+that aims a simple question at the new implementer agent.
+2:43
+Your one-shot prompt steers a subagent,
+2:46
+but in this case a specialized custom implementer.
+2:50
+The model selection is in the agent.
+2:52
+definition. Users don't have to specify it
+2:55
+in the main agent prompt.
+2:58
+After the main agent surveys the project and reads the roadmap,
+3:02
+it sends work to subagents.
+3:05
+For Phase 1,
+3:11
+And then, phase two.
+3:13
+These write-ups are the key to success.
+3:15
+The main agent takes the roadmap spec,
+3:18
+thinks about how to guide the little brain
+3:20
+and should provide enough detail.
+3:22
+How are the results? Let's take a look.
+3:25
+You're again using a cheaper implementer.
+3:27
+Let's gain some trust by doing some more human in the loop.
+3:32
+First, what did Pro think of Flash's work?
+3:35
+You asked the main agent to give a review.
+3:38
+Most likely the points are minor,
+3:40
+even if Pro makes a big deal out of them.
+3:43
+In later lessons, you'll use a smaller subagent model.
+3:47
+That can lead to more serious problems with the subagent's results,
+3:51
+and the human in the loop will be left with cleanup.
+3:55
+You don't want that, so future lessons
+3:58
+will improve this main to subagent collaboration
+4:01
+to include review and fixing.
+4:04
+Let's also run the tests ourselves. The tests passed.
+4:08
+Our test writing and test checking did its job
+4:11
+helping small models stay on track.
+4:13
+Let's fire up the server and
+4:15
+check the two pages in the browser,
+4:17
+checking the homepage,
+4:19
+then the complaints page.
+4:21
+All seems well, including posting a new complaint.
+4:27
+Let's wrap up with our end of lesson cleanup.
+4:30
+Shut down the FastAPI server and clean up the files.
+4:34
+This time though, you'll commit the implementer.md file.
+4:42
+This lesson changes the subagent model to flash.
+4:45
+Eight small implementers replaced the two large
+4:48
+pro subagents used in the previous lesson.
+4:52
+Subagent context fell from 1.39 million to 882k
+4:56
+despite the higher subagent count.
+5:00
+Average context per subagent dropped from roughly 694k to 110k,
+5:05
+showing that smaller task packets materially constrict
+5:08
+individual implementer sessions.
+5:10
+The savings shifted rather than eliminated context.
+5:14
+Main agent context rose from 90k to 712k as the coordination expanded.
+5:21
+Total context increased 8%,
+5:23
+turns increased 56%,
+5:25
+and wall clock increased 50%.
+5:28
+But the cost fell 28%.
+5:31
+Conclusion, task-sized flash implementers reduced individual
+5:36
+Subagent burden and price, while increasing main agent orchestration
+5:40
+and overall interaction.
+5:42
+As you can see in our matrix,
+5:44
+you've made the final step in semi-local.
+5:46
+Specialized subagents that have a smaller model but do less work.
+5:50
+The key to success, the Handoff Packet
+5:52
+from the big brain agent to the little brain agent.
+5:55
+This scopes the subagent work to
+5:57
+fit the capacity of the implementer's model
+6:00
+and gives it the hints and guardrails it needs to succeed.
+6:04
+Here we are. You now choose the coding agent,
+6:07
+the provider, the models, and how the work splits between them.
+6:10
+But none of it runs yet on your machine.
+6:14
+The models are still in the cloud
+6:16
+and you still pay by the tokens.
+6:18
+So, in the next lesson, you'll get your first local model running
+6:22
+on your own machine and connected to OpenCode.
+6:25
+I'll see you there.
+
+---
+
+LMStudio & Local Setup
+
+At this point in the course, you've
+0:01
+changed the coding agent and the models,
+0:03
+but the models themselves still run in the cloud.
+0:07
+In this lesson, you'll set up your first local model,
+0:10
+one that runs on your own hardware connected to OpenCode.
+0:14
+Running a local model takes some
+0:16
+software to serve it, an inference server.
+0:19
+Perhaps running on your very powerful desktop,
+0:22
+or perhaps on a computer in the corner of your room,
+0:25
+or on a server inside your company's data center.
+0:29
+or even in a private cloud.
+0:31
+All of these options share the same word, "your".
+0:34
+You make the choice based on your needs.
+0:37
+You have control of the setup.
+0:39
+When I say local, really, I mean your.
+0:42
+Local AI has taken off recently with many friendly options.
+0:46
+Command line and GUI, cross-platform, and high performance.
+0:50
+You'll go beginner friendly and use LM Studio.
+0:54
+It runs on both Windows and Mac,
+0:56
+well known and well supported.
+0:58
+LM Studio makes it easy to browse and download models,
+1:02
+start and stop servers,
+1:03
+and do all kinds of performance tuning.
+1:06
+First, download LM Studio for your platform.
+1:09
+I'm using Mac, but Windows should be familiar.
+1:12
+I won't show the entire installation process.
+1:15
+LM Studio has helpful instructions for this.
+1:18
+Once running, LM Studio gives the major areas that you'll need.
+1:22
+a chat to work with the server and a model,
+1:25
+the developer tab to start the server and see the logs,
+1:29
+My Models tab to work with the models you've downloaded,
+1:32
+and model search to find new models.
+1:34
+Let's talk about our choice of
+1:36
+local model and then get it set up.
+1:38
+In this first step, you are targeting a local model for coding
+1:42
+that can fit in a 16 gigabyte
+1:44
+desktop with room to spare for your work.
+1:47
+Turns out there are tons of choices and
+1:49
+the market is getting better all the time.
+1:51
+But equally, this is a hard problem.
+1:54
+Doing agentic coding is resource intensive,
+1:56
+16 gigabytes is a tough target. We did some testing
+2:00
+a measurement that also included the most
+2:02
+popular choice for a small language model,
+2:04
+Qwen 3.5 9B.
+2:06
+You're free to use that in the
+2:08
+course. Nearly everything will be the same.
+2:10
+For this course, you'll use Gemma 4,
+2:12
+a 12 billion parameter mixture of experts
+2:16
+open source model that is focused on coding.
+2:19
+It's available on Hugging Face,
+2:21
+the super popular hub for all things
+2:24
+AI. You'll need to get Gemma 4 downloaded and running.
+2:27
+Go to LM Studio, click on model search,
+2:29
+and search for Gemma 4, the 12 billion parameter version,
+2:34
+the IT variant.
+2:36
+I'm specifying MLX because I am on Apple Silicon.
+2:40
+Use GGUF, G-G-U-F, if you are not.
+2:44
+We are choosing the 8-bit quantization to get better results.
+2:48
+Start the download. It's around 12.77 gigabyte,
+2:51
+so it might take a while. It's now downloaded.
+2:58
+Next up, tuning.
+3:00
+Local AI folks love fiddling with knobs.
+3:03
+You're just going to set one.
+3:05
+Change the Context Length to 40960.
+3:09
+If you struggle with memory, lower this.
+3:11
+You might be tempted to do a huge context size.
+3:15
+Don't. One of the lessons learned,
+3:17
+keep your sub-agent small and focused.
+3:21
+Click the button to load the model.
+3:24
+And your LM Studio is now set up for local inference.
+3:28
+Let's start the server.
+3:30
+Before heading to OpenCode to set this up for our agent,
+3:34
+use the local model for simple chat.
+3:37
+Go to the LM Studio chat screen and enter something simple.
+3:42
+Don't get too excited. Chat is always faster than agent use.
+3:47
+Let's head over to OpenCode and set
+3:49
+up local Gemma 4 as your little brain.
+3:53
+Next, we need OpenCode to see LM
+3:55
+Studio and its Gemma 4 model endpoint.
+3:59
+We will need the local URL
+4:00
+and a model name in a moment.
+4:02
+Here you can get it. This will be the same idea.
+4:05
+An URL, this time for localhost,
+4:08
+to get to the provider, then a model ID
+4:11
+for the Gemma 4 model you just set up in LM Studio.
+4:15
+OpenCode knows about OpenRouter as a provider,
+4:19
+you need to teach it about
+4:21
+your local LM Studio as a provider,
+4:24
+and about Gemma 4 as a model,
+4:26
+want to edit the OpenCode json config file yourself? Neither do I.
+4:31
+Let's ask OpenCode to configure this by entering this prompt.
+4:39
+Let's confirm this works. Start a new chat.
+4:42
+In the OpenCode model picker,
+4:45
+you should see Gemma 4 as a choice.
+4:47
+Choose it and enter the same prompt that you used above.
+4:51
+The speed depends on your equipment.
+4:57
+You'll be disappointed.
+4:59
+The first request is slow as it has to load the model.
+5:02
+Try a variation of the same prompt
+5:04
+and you'll see it is really fast.
+5:06
+Skeptical that it really used LM Studio and Gemma 4?
+5:10
+Don't blame you. There are a bunch of moving parts.
+5:14
+Go to LM Studio and look at the server activity.
+5:17
+There you'll see some requests just came in for Gemma 4.
+5:21
+Before we wrap up, take another look at the big picture.
+5:25
+You can see how many parts
+5:27
+of the original setup have now changed.
+5:30
+Congratulations, you've taken your first step into local AI.
+5:34
+Your model is now running locally and connected to OpenCode.
+5:37
+In the next lesson, you'll put
+5:39
+it to work as your implementer sub-agent.
+
+
+----
+
+Subagent Specialist
+
+Your local model is now running,
+0:02
+but can you use a local
+0:03
+model as part of your agentic coding
+0:05
+even without top-tier equipment? Yes, you can.
+0:08
+In this lesson, you'll carefully construct a setup
+0:12
+that gives a small local model a shot
+0:14
+as your implementer subagent.
+0:17
+You have a main agent using
+0:19
+a model in the cloud via OpenRouter.
+0:21
+You have an implementer subagent
+0:24
+that tackles a small, well-specified set of tasks.
+0:26
+And you now have a local Gemma 4 model
+0:30
+that your OpenCode agent can see and use.
+0:33
+You've now connected OpenCode to models in two places:
+0:36
+through OpenRouter in the cloud
+0:39
+and through LM Studio on your own machine.
+0:41
+Both use an OpenAI compatible API,
+0:45
+So OpenCode can communicate with them in the same general way.
+0:49
+That makes pointing the implementer at
+0:51
+your local Gemma 4 model relatively easy.
+0:54
+The harder part, which is the big idea of this lesson,
+0:57
+is shaping the work so that a small local model can succeed
+1:01
+within your resource constraints.
+1:04
+You're also going to change your big brain
+1:06
+from DeepSeek Pro to DeepSeek Flash,
+1:09
+while keeping it in the cloud through OpenRouter.
+1:12
+This starts a sequence of making the big brain smaller
+1:16
+on the way to a local big brain in the next lesson.
+1:19
+Let's start there.
+1:22
+As usual, did you clean up after the last lesson?
+1:24
+No uncommitted changes and no Python files in your project.
+1:29
+Let's also repeat our mantra: clean context.
+1:32
+Start a new chat to begin this new lesson.
+1:34
+But this time, change the model choice to DeepSeek V4 Flash.
+1:40
+You are moving to a smaller implementer model,
+1:43
+so you need to give it some help.
+1:44
+Let's split phase two in the road map.
+1:46
+It's a bit too complex for a small model.
+1:49
+Use a prompt to ask Deepseek Flash to move
+1:52
+everything in phase two that is related to adding a complaint,
+1:56
+starting with the roadmap line
+1:58
+a form at the bottom with
+2:01
+into a new phase with testing.
+2:04
+Splitting the roadmap gives Gemma 4 less work to handle at once.
+2:08
+But because it's a smaller model,
+2:10
+it also needs clearer instructions.
+2:12
+So, you'll update the implementer subagent definition.
+2:16
+As you can see, it's much longer,
+2:18
+reflecting the extra guidance the model needs.
+2:21
+First in the front matter, you see the major change.
+2:24
+You're using a local model for this subagent.
+2:27
+Also, you can see additions to help control the agent.
+2:31
+setting a ceiling of 12 for the steps to prevent a loop,
+2:35
+what the agent has permission to access,
+2:38
+and disabling access to some tools.
+2:40
+Without these settings, Small models can get into loops,
+2:43
+overwrite previous work, look in places it shouldn't,
+2:46
+and explode its context, and so on.
+2:49
+The implementer body also changed.
+2:51
+In the first paragraph, we make it clear,
+2:54
+only work on what you are told to work on.
+2:57
+The second paragraph makes sure the small model has the
+3:00
+right file content. rather than something from the context
+3:05
+and don't change content you aren't asked to change.
+3:08
+The third paragraph has a key point.
+3:10
+Use the write tool instead of edit.
+3:13
+Small models mess up on edit.
+3:15
+This continues in the fourth paragraph about new files.
+3:18
+The fifth paragraph is aimed at the Python virtual environment.
+3:23
+Don't do a recursive listing there which loads a lot of context.
+3:27
+The final paragraph handles the validation.
+3:30
+Run the tests with the provided command,
+3:33
+report the results, but do not try to fix anything
+3:37
+and don't get in a loop rerunning tests.
+3:40
+Of course, you're unlikely to edit this yourself.
+3:43
+Feel free to use the file from the resources section.
+3:46
+Changes to a subagent mean a new chat is needed.
+3:50
+Your one-shot prompt from lesson nine is like the implementer, now different.
+3:54
+It's no longer one-shot. You do each phase one at a time.
+3:58
+Both have less work for the small model per step
+4:02
+and also give you a chance to review and correct.
+4:05
+In this prompt, the main agent needs
+4:07
+to do its side of the bargain
+4:09
+to help the local model implementer succeed.
+4:12
+The first paragraph tells which phase to work on.
+4:16
+The second paragraph talks about the handoff packet
+4:19
+where the main agent very carefully prepares
+4:21
+the work to be done by the implementer.
+4:24
+This is the key success point.
+4:26
+This handoff packet is built to
+4:28
+fit the size of the small model,
+4:31
+the small context, the low power tool calling, etc.
+4:35
+The third paragraph reflects a common issue.
+4:38
+Small agents can mess up file contents.
+4:41
+The fourth paragraph helps the small agent find the correct pytest
+4:45
+from the virtual environment and persuades the implementer
+4:47
+to not get into a test failure loop.
+4:50
+The final paragraph talks more about
+4:52
+files and how to evaluate the work.
+4:54
+Again, this is a lot of text.
+4:57
+Copy it from the course resources
+4:58
+if you want to save some typing.
+5:00
+Also, the cumbersome nature points to an opportunity.
+5:04
+Developers will start to target small models
+5:07
+and share agent plugins which automate this.
+5:10
+Since the chat window selected Flash,
+5:13
+the main agent's model is already set.
+5:16
+You have small brain talking to really
+5:18
+small brain. The results will show the subagent.
+5:22
+At the moment of handoff, you can click
+5:24
+to take a look at the handoff packet
+5:27
+while the agent continues to work.
+5:30
+The handoff packet is a very interesting artifact.
+5:33
+Keep an eye on these to make
+5:35
+sure the work matches what you expect.
+5:37
+Remember, things you type in prompts
+5:40
+and enter in subagent definitions
+5:43
+are persuasion, not requirements.
+5:45
+Small models often have a mind of their own.
+5:48
+For example, in this case, the
+5:50
+admonition to not write full code was
+5:53
+partially obeyed. Flash wrote more code than it should.
+5:56
+Next time, it might do what you tried to persuade.
+6:04
+All finished, but perhaps not quicker
+6:06
+depending on how much power you have in your local system.
+6:09
+But this time, the smaller implementer
+6:12
+might not do as well.
+6:14
+The main agent might report some issues here.
+6:16
+Perhaps in your session, these are more severe sometimes.
+6:21
+Remember, small models need help,
+6:23
+including from you, the human.
+6:25
+Work in small steps, review, and correct.
+6:29
+Let's repeat this process for Phase 2.
+6:32
+The main agent sends the same prompt
+6:34
+with Phase 2 instead of phase one.
+6:44
+As the results go by, let's look again at the handoff packet.
+6:48
+Did the main agent help the small model succeed?
+6:51
+Also, I mentioned the phase one handoff packet
+6:54
+didn't totally follow our don't write the code instruction.
+6:58
+This time, Flash obeyed this guidance.
+7:02
+The lesson, it can be random. Results look good.
+7:06
+You can repeat for Phase 3 by reusing the same prompt.
+7:11
+You're now using a small language model, SLM,
+7:15
+as a local, free implementer.
+7:17
+Do you trust it? Let's do some human in the loop.
+7:22
+Best first step, run the test yourself.
+7:25
+Test writing becomes a really helpful way
+7:27
+to put in the guardrails needed
+7:29
+to keep small models from landing in the ditch.
+7:32
+Now start the server. How are your two pages?
+7:39
+The homepage seems fine,
+7:42
+as does the complaints page. All seems well,
+7:46
+including posting a new complaint.
+7:52
+Let's wrap up with our end of lesson cleanup.
+7:55
+Shut down the FastAPI server
+7:58
+and clean up the files.
+8:01
+But let's commit the changes to the implementer and the roadmap.
+8:11
+It's been said that 80% of agent tokens
+8:14
+are so simple, they don't need frontier models.
+8:17
+In this lesson, we showed how the simple, well-specified work
+8:21
+can fit into small units that a small local model can handle.
+8:25
+But for not simple,
+8:27
+you're starting to see that control comes with some headaches.
+8:30
+You have to put in some thinking, some engineering.
+8:33
+You're no longer in vibe coding,
+8:36
+hardware, model, tuning, prompt, agent definition, guardrails, roadmap size, etc
+8:42
+especially on average computers.
+8:45
+Looking at the numbers, the report groups the three subagent runs together.
+8:49
+Three turns, 21 tool calls,
+8:51
+and 117000 processed context in total.
+8:56
+Since the implementer was called once for each of the three phases,
+9:00
+that works out to be one turn
+9:02
+an average of seven tool calls and roughly 39k context per subagent.
+9:07
+They handled implementation directly,
+9:09
+while the main agent read the specifications,
+9:12
+reviewed each completed phase and composed the next delegation.
+9:16
+The main agent consumed 69% of context
+9:19
+and made 59% of tool calls,
+9:22
+largely through 25 read operations.
+9:25
+That is expected for this three-phase review and delegate workflow,
+9:29
+but it shows that Phase isolation moves context pressure
+9:32
+to the main agent rather than eliminating it.
+9:36
+The run was very inexpensive
+9:38
+because the three subagents used local Gemma inference,
+9:42
+leaving only like two cents of metered main agent cost.
+9:47
+It's 8 minute 52 second wall-clock
+9:49
+is mostly sequential main agent work rather than idle time.
+9:53
+It should be compared cautiously with earlier runs
+9:55
+because it includes all three roadmap phases.
+9:59
+Local AI arrives. Your implementer subagent
+10:02
+is now running on a local model.
+10:04
+But the main agent is still using a cloud model.
+10:08
+Can local models also handle the big brain?
+10:11
+You'll find out in the next lesson.
+
+---
+
+Fully Local
+
+You now have your implementer sub-agent running on a local model.
+0:03
+The main agent is still using a cloud model.
+0:06
+But can you go fully local
+0:08
+and bring the big brain local too?
+0:10
+You have been running the big brain on a hosted inference provider.
+0:16
+You moved the little brain to your local computer
+0:19
+using Gemma 4 as the model.
+0:21
+Now you're going to move the big brain role local too.
+0:25
+That role asks more of the model.
+0:27
+It has to plan the work, prepare handoffs for the implementer,
+0:31
+and review the results, so you'll need to choose a model
+0:35
+that can handle the work while still running on your computer.
+0:38
+There are a number of things
+0:40
+you should consider when choosing a model,
+0:42
+including the number of parameters.
+0:44
+Larger models can often handle more demanding work,
+0:46
+but they also require more memory.
+0:49
+I won't cover every facet of that decision here,
+0:52
+but the Qwen family of models
+0:54
+is a leading choice for agentic coding.
+0:56
+They have models ranging from local sized
+0:59
+up to large hosted frontier class models.
+1:03
+Running a larger model locally requires more memory.
+1:06
+So this lesson is aimed at a computer
+1:08
+with 32 gigabytes.
+1:10
+If your computer has less, you can
+1:12
+still follow along without running the model yourself
+1:15
+or try a smaller one if you're feeling adventurous.
+1:18
+Just don't be surprised if it falls flat on its face.
+1:22
+For the local big brain, you'll be using Qwen 3.5 27B.
+1:27
+As its name implies, it has 27 billion parameters,
+1:31
+more than twice Gemma 4's 12 billion.
+1:34
+Models like Qwen are often available in different variations.
+1:38
+Some are prepared for particular hardware or compressed to use less memory.
+1:42
+Hugging Face is a useful resource for finding these variations.
+1:46
+The user Brooooooklyn is a well-known and respected contributor.
+1:51
+In LM Studio, let's find the model page for his MLX variants.
+1:55
+I'm recording on a Mac, so for my use,
+1:58
+I want the MLX version when available.
+2:01
+For non-Mac, find a variant for the GGUF version.
+2:05
+This lesson targets a 32 gigabyte budget.
+2:08
+And Gemma 4 already uses around 11 gigabytes.
+2:11
+For Qwen, you'll use the Q4 quantization
+2:14
+of the open source Qwen 3.5
+2:17
+27B model.
+2:20
+Q4 makes a model smaller at the expense of some accuracy.
+2:25
+Obviously, this doesn't leave available memory for anything else.
+2:28
+That's okay for demo purposes, but as you move to local,
+2:32
+you'll be making a number of decisions and tradeoffs.
+2:35
+Start downloading the model. It's big.
+2:38
+The Q4 is almost 21 gigabytes.
+2:41
+Now that it is downloaded,
+2:43
+let's do the same kind of model tuning that we did before.
+2:47
+We're only changing one parameter.
+2:49
+We'll set the context size to 80k.
+2:52
+And if you struggle with memory, lower this. It'll probably be fine.
+2:57
+Go to the LM Studio server
+2:59
+and tell it you want to
+3:00
+load this model and make it available.
+3:04
+We'll do a quick chat to load the model into memory
+3:06
+and warm things up. Head to the LM Studio chat.
+3:09
+Make sure you are using Qwen 3.5 as the model.
+3:13
+Ask your normal prompt. What is Python?
+3:22
+You can now serve this model through LM Studio.
+3:25
+Next, you need to go to OpenCode
+3:28
+to let it know about and in fact default to
+3:31
+this new Qwen model. As you did in lesson 10,
+3:34
+let's use a prompt to edit the global OpenCode configuration file.
+3:39
+Let's confirm this works. Start a new chat
+3:41
+in the OpenCode model picker, you should see Qwen
+3:44
+3.5 27b.
+3:46
+Choose it and enter the same prompt that you used above.
+3:53
+Want to prove that it worked? Go to LM Studio
+3:56
+and look at the server activity. There you'll see
+3:58
+that some requests just came in for Qwen 3.5.
+4:02
+Before coding, did we clean up after the last lesson? Let's confirm.
+4:06
+No, I committed changes
+4:08
+and no Python files in your project.
+4:11
+As a reminder, this barely fits in 32 gigabytes.
+4:14
+If you have a smaller computer,
+4:16
+there are choices, but they take more work.
+4:18
+And finally, even at 32 gigabytes,
+4:21
+things can be unpredictable.
+4:23
+Hopefully your experience is close to what I'm showing.
+4:26
+Using Qwen 3.5 27B
+4:29
+as the model for the main agent.
+4:31
+Let's repeat the sequence from lesson 11.
+4:34
+How will a local model do as the big brain?
+4:37
+We will use the same long prompt.
+4:40
+Remember, you can copy this from the course resources.
+4:43
+And yes, the long text shows
+4:45
+how agents or plugin developers can ship
+4:48
+pre-packaged help for small local models.
+4:51
+As the results go by, the moment of truth arrives.
+4:54
+How did the local big brain do at writing the handoff packet?
+4:59
+A moment of surprise. This hand-off packet looks better
+5:03
+than the much bigger Deepseek Flash brain. Very promising.
+5:11
+Local? Check. Cheaper? Check. Fast enough? Uh, maybe.
+5:15
+But how's the quality? Let's start by looking at the reported issues.
+5:20
+This is a double whammy, a small
+5:23
+brain implementer with a small brain main agent.
+5:26
+Surprisingly, huh, no reported issues.
+5:29
+All good. Sure, this is a toy example.
+5:32
+But if you use a very
+5:34
+big brain to make your road map,
+5:36
+its phases can be shaped to fit.
+5:39
+Let's repeat this process for phase two.
+5:41
+The main agent sends the same prompt
+5:44
+with phase two instead of phase one.
+5:46
+As the results go by, let's look again at the hand-off packet.
+5:58
+Did the main agent help the small model succeed? Results look good.
+6:03
+Again, no critical issues in the results
+6:06
+and in fact, the execution time was reasonably fast.
+6:10
+We can repeat for Phase 3 by reusing the same prompt.
+6:23
+Ah, this time a critical issue.
+6:27
+Actually, not so critical.
+6:29
+This is a common minor issue about HTTP redirects,
+6:33
+but it did cause a test to fail.
+6:35
+Let's have the main agent send repair work
+6:38
+to the implementer sub-agent.
+6:40
+The main agent has the context about the mistakes.
+6:43
+As usual, let's look at the handoff packet.
+6:46
+It looks good with the right details.
+6:49
+Progress continues and all the tests pass.
+6:52
+And at the perfect moment, why yes, my agent friend,
+6:55
+you are truly doing excellent.
+6:57
+You are now fully local for both brains.
+7:01
+Do you trust it? Let's do some human in the loop.
+7:04
+We'll start by running the tests manually
+7:07
+rather than trusting the models
+7:09
+to run and interpret the output.
+7:11
+Of course, the part we really want, how does the app look?
+7:15
+Start the server. How are your two pages?
+7:19
+The homepage seems fine
+7:21
+as does the complaints page.
+7:23
+Last test, adding a complaint.
+7:27
+It works.
+7:29
+You're here, fully local. How do the numbers look?
+7:33
+Lesson 12 shifts the workload from main
+7:35
+agent to sub-agent compared to lesson 11.
+7:38
+Main agent context fell from 260K to 178K,
+7:42
+while sub-agent context rose from 117K to 158K.
+7:47
+Total context still fell 11%,
+7:50
+showing that the local Qwen main agent
+7:52
+used less context overall,
+7:55
+while the Gemma implementers did more iterative work.
+7:58
+Turns changed far more than tool calls.
+8:01
+45 turns versus lesson 11's 6.
+8:05
+but only 57 tool calls versus 51.
+8:08
+This is an important model behavior result.
+8:11
+The lesson 12 models used many more assistant turns
+8:14
+to achieve nearly the same amount of tool activity.
+8:17
+So turns should be interpreted as an interaction style,
+8:22
+not simply as work completed.
+8:24
+The all local execution
+8:27
+correctly has zero attributable usage cost.
+8:30
+Phase three was the largest sub-agent task at 12 turns, 11 calls
+8:35
+and 69000 context tokens,
+8:38
+which fits its form, post, redirect, and test requirements.
+8:42
+We are just at the beginning of agents with local models.
+8:45
+Very few agent harnesses have been written
+8:48
+to specifically help these small models succeed.
+8:51
+But the first experiments are proving successful.
+8:54
+By the end of the year, I expect new harness approaches
+8:58
+to put local agent coding
+9:00
+for routine work that doesn't need the big brain within reach.
+9:04
+One last note. If you're on a smaller computer
+9:07
+and couldn't run this, hope is not lost.
+9:10
+It will take work, but you can experiment with models
+9:13
+that very aggressively reduce the size.
+9:15
+You can then judge the quality tradeoff.
+9:18
+Most of all, keep an eye on new agent harnesses
+9:21
+rather than focusing on models.
+9:23
+You made it, the end of the road.
+9:26
+You've taken your AI coding setup all the way from the cloud
+9:29
+to models running on your own machine
+9:32
+and you've seen what it takes to push toward fully local.
+9:36
+In the final video, you'll look back at what you've learned
+9:39
+and ahead to where hybrid and local AI goes from here.
+9:43
+I'll see you there.
+
+---
+
+Conclusion
+
+It's been quite a course, lots of moving parts.
+0:02
+Great job making it through. You started with something you already knew,
+0:06
+Claude Code off the shelf and step by step
+0:10
+added the main levers you need on
+0:12
+the way to hybrid and local AI.
+0:15
+Specs that divide work and context into achievable steps.
+0:19
+Sub-agents that do the right work on the right context.
+0:23
+Coding agents that give you choices.
+0:26
+routing providers and inference providers to give control.
+0:31
+And model choices that put the big brain on the big work
+0:34
+and the little brain for the routine work.
+0:37
+This is just the start of what could be a pivotal change.
+0:40
+Just like November 2025 brought agentic coding into the mainstream,
+0:44
+by this time next year, hybrid and local AI
+0:48
+could be much closer to real use.
+0:50
+It's early days, it's all changing very
+0:53
+fast, but that's what makes it exciting.
+0:55
+Let's all learn, learn together, and share together.
+0:59
+Take it easy and go do some cool stuff.
