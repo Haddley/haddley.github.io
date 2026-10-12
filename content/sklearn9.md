@@ -29,6 +29,10 @@ In [Part 8](/posts/sklearn8/), I made data smaller. Every model so far in this s
 - K-Means only works well for round, similar-sized groups, which is why DBSCAN and Gaussian mixtures exist.
 - Clustering can save a lot of labelling: labelling 50 well-chosen instances beat labelling 50 random ones by a wide margin.
 
+:::brain-power
+Imagine a scatter of points with no labels at all. Before reading on, think: how would you decide how many groups it holds, and which point belongs to which group?
+:::
+
 ## Quick Example
 
 K-Means on 2,000 points in five blobs:
@@ -59,6 +63,10 @@ The chapter's best result is semi-supervised: a classifier for small 8 × 8 imag
 
 Copying the labels to whole clusters is not perfect: 95.5% of the copied labels were right, when the 1% of each cluster furthest from its centre was left out.
 
+:::watch-it K-Means depends on where it starts
+K-Means places its first centres at random, and can settle on a poor answer. In my run, one random start ended with an inertia of 219.6, and the best of 10 starts reached 211.6. That is why the code asks for `n_init=10` and keeps the best.
+:::
+
 ## What training means here
 
 There are no right answers to learn from, so training means finding structure, and each method finds it in its own way.
@@ -66,6 +74,20 @@ There are no right answers to learn from, so training means finding structure, a
 K-Means does not nudge. It starts with its centres at random, then repeats two steps: give every point to its nearest centre, then move each centre to the middle of its points. When nothing changes, it stops. Each step is a jump to an exact answer, not a small step down a slope, but the result depends on where the centres started: one random start ended with an inertia of 219.6, where the best of 10 starts reached 211.6. That is why the notebook asks for 10 starts, `n_init=10`, and keeps the best. Mini-batch K-Means, for big datasets, does move its centres a little at a time, using small batches of points, which makes it a close cousin of the nudging in [Part 4](/posts/sklearn4/).
 
 A Gaussian mixture is fitted in a similar back-and-forth, called Expectation–Maximization; on the chapter's data it settled in just 4 rounds. DBSCAN does not iterate at all: it grows each cluster outwards from dense points, once. My [MiniGPT](/posts/minigpt-grown/) model, by contrast, has a right answer for every letter, and nudges its 826,433 numbers towards it.
+
+:::no-dumb-questions
+**Q: Why did 50 representative images beat 50 random ones?**
+
+A: Each representative image is the one nearest the middle of its cluster, so between them they cover every kind of digit. Fifty random images can miss some kinds entirely and repeat others.
+
+**Q: What is inertia?**
+
+A: The sum of the squared distances from each point to its nearest centre. Lower is tighter, but it always falls as clusters are added, so it cannot choose the number of clusters by itself: look for the elbow.
+
+**Q: Is clustering the same as classification without labels?**
+
+A: Not quite. Clustering finds groups, but it does not know what they mean, and its groups need not match the classes a person would choose.
+:::
 
 ## Running the notebook in Jupyter
 
@@ -94,6 +116,13 @@ The chapter is in the notebook that goes with the book, [09_unsupervised_learnin
 
 ![](assets/images/sklearn9/jupyter-gaussian-mixture.png)
 *A Gaussian mixture's three bell-shaped groups, with contours showing how densely each region is expected to hold points*
+
+:::bullet-points Unsupervised learning, in short
+- Clustering finds groups in data with no labels; there is no single right answer.
+- K-Means works best for round, similar-sized groups, so start it several times.
+- DBSCAN follows dense regions and finds groups of any shape; Gaussian mixtures give each point a chance of belonging to each group.
+- A few well-chosen labels, spread with clustering, go a long way.
+:::
 
 Next, [Scikit-Learn (Part 10)](/posts/sklearn10/) works through chapter 10: neural networks with Keras, where backpropagation finally arrives.
 

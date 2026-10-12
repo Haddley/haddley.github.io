@@ -25,6 +25,10 @@ Scikit-Learn is a powerful Python library for machine learning that simplifies b
 3. **Evaluation**: Cross-validation, metrics, and model comparison  
 4. **Pipeline**: Easy workflow management  
 
+:::brain-power
+Both models below predict Cyprus's life satisfaction from its GDP per capita, and both are trained with the same call, `fit`. Before reading on, guess: which one does its work when it is trained, and which one waits until it is asked for a prediction?
+:::
+
 ## Quick Example
 
 In the first chapter of the Hands-On Machine Learning book with Scikit-Learn, the authors use a simple example with GDP per capita data to predict life satisfaction scores:
@@ -56,6 +60,10 @@ In both cases, Scikit-Learn gives the model the same two calls, `fit` and `predi
 
 This approach makes it easy to experiment with different algorithms and quickly evaluate their performance.
 
+:::watch-it The same two calls, not the same model
+`fit` and `predict` look identical for every model, but what happens inside them does not. The next section shows that these two models learn in completely different ways, even though their predictions for Cyprus, 6.30 and 6.33, are almost the same.
+:::
+
 ## What training means here
 
 Both examples call `model.fit(X, y)`, which trains the model on the 27 countries in the data. The two models learn in completely different ways.
@@ -74,6 +82,20 @@ Both examples call `model.fit(X, y)`, which trains the model on the 27 countries
 
 Neither one trains the way a neural network does. My [MiniGPT](/posts/minigpt-grown/) model starts from 826,433 random numbers and nudges every one of them thousands of times, using backpropagation to find which way each should move. Here there is nothing to nudge: one model is worked out exactly, and the other just remembers.
 
+:::no-dumb-questions
+**Q: Is k-nearest neighbors really learning, if `fit` only stores the data?**
+
+A: The book calls it *instance-based learning*: what it knows is the stored examples themselves, and each prediction compares a new country with them. Nothing is summed up into a few numbers, so the model is as big as its data.
+
+**Q: Why are the two predictions for Cyprus so close?**
+
+A: Cyprus's three nearest neighbours, Israel, Lithuania, and Slovenia, average 6.33, and the line gives 6.30 at the same GDP. Here the two agree; for a country whose neighbours sit far from the line, they would not.
+
+**Q: Where are the slopes and the nudging from MiniGPT?**
+
+A: Not here yet. Linear regression has a direct formula for its two numbers, and k-nearest neighbors has no numbers to find. Nudging first appears in [Part 3](/posts/sklearn3/), and is explained in [Part 4](/posts/sklearn4/).
+:::
+
 ## Running the notebook in Jupyter
 
 Both examples come from the chapter 1 notebook that goes with the book, [01_the_machine_learning_landscape.ipynb](https://github.com/ageron/handson-ml3/blob/main/01_the_machine_learning_landscape.ipynb). I opened it in JupyterLab and ran the setup cells, then Code example 1-1 and the k-Nearest Neighbors version.
@@ -86,6 +108,13 @@ Both examples come from the chapter 1 notebook that goes with the book, [01_the_
 
 ![](assets/images/sklearn1/jupyter-knn-cyprus.png)
 *I swapped in k-Nearest Neighbors with k = 3, which predicts 6.33 for Cyprus*
+
+:::bullet-points The first models, in short
+- Every Scikit-Learn model is trained with `fit` and used with `predict`, so swapping models changes two lines.
+- Linear regression works out its two numbers directly, in one calculation.
+- k-nearest neighbors stores the 27 countries, and averages the three nearest when asked.
+- Neither model is nudged; a neural network such as MiniGPT is.
+:::
 
 Next, [Scikit-Learn (Part 2)](/posts/sklearn2/) works through chapter 2's end-to-end project: predicting California house prices, from raw data to a tested model.
 

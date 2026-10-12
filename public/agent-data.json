@@ -1,6 +1,28 @@
 {
   "posts": [
     {
+      "slug": "sklearn12",
+      "title": "Scikit-Learn (Part 12)",
+      "description": "Custom models and training with TensorFlow: tensors, automatic slopes with GradientTape, and a training loop written by hand instead of calling fit()",
+      "date": "2026-10-13",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "machine-learning, tensorflow, keras, gradienttape, autodiff, training-loop"
+    },
+    {
+      "slug": "sklearn11",
+      "title": "Scikit-Learn (Part 11)",
+      "description": "Training deep neural networks: why deep networks are hard to train, and the starting numbers, activation functions, batch normalization, optimizers, and dropout that make it work",
+      "date": "2026-10-13",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "machine-learning, neural-networks, keras, optimizers, batch-normalization, dropout"
+    },
+    {
       "slug": "sklearn10",
       "title": "Scikit-Learn (Part 10)",
       "description": "Neural networks with Keras: a network of 266,610 numbers that learns to recognise clothing, trained by backpropagation, the way large language models are",
@@ -3003,5 +3025,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-12T10:29:30.128Z"
+  "generatedAt": "2026-10-12T16:13:05.801Z"
 }

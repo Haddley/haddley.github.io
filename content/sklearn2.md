@@ -29,6 +29,10 @@ In [Part 1](/posts/sklearn1/), I ran the small example from the first chapter of
 - A pipeline keeps every preparation step together, so the same steps run on the training data, the test data, and any new data.
 - A model can look perfect on its own training data and still be poor: the decision tree scored an error of exactly 0 on the training set, and about 67,000 under cross-validation.
 
+:::brain-power
+In this project, a decision tree scores an error of exactly 0 on its training data. Before reading on, ask yourself: is it the best model here? What would you check before trusting it with new districts?
+:::
+
 ## Quick Example
 
 The heart of the project is a pipeline, the preparation steps followed by a model, scored with 10-fold cross-validation:
@@ -56,6 +60,10 @@ Here is how each model did when I ran the notebook. The score is the RMSE (root 
 | Random forest, randomized search | 3-fold cross-validation, best | 41,983 |
 | **The final model** | **on the test set** | **41,536** |
 
+:::watch-it A score on the training data flatters
+The decision tree's error of 0 on its own training set became 67,153 under cross-validation. A model can memorise the data it was trained on, so only scores on data it has not seen say how it will do on new districts. That is why the test set is put aside first and used only once, at the very end.
+:::
+
 ## What training means here
 
 Every `.fit()` call trains a model, and this project trains about 110 of them, which is why it takes minutes rather than seconds:
@@ -75,6 +83,20 @@ Every `.fit()` call trains a model, and this project trains about 110 of them, w
 - **A random forest** grows 100 trees, each on a random sample of the districts, and averages their answers.
 
 My [MiniGPT](/posts/minigpt-grown/) model starts from 826,433 random numbers and nudges every one of them thousands of times, using backpropagation to find which way each should move. Nothing here is nudged: every model is either worked out exactly or grown one decision at a time. Scikit-Learn does have models that train by nudging, such as `SGDRegressor`, and small neural networks trained with backpropagation, such as `MLPRegressor`, but this project does not use them.
+
+:::no-dumb-questions
+**Q: Why train about 110 models just to pick one?**
+
+A: Each cross-validation fold trains a fresh model, and each combination of settings in a search is cross-validated. The extra models are how the project measures, fairly, which choices work best.
+
+**Q: Why grow 100 trees, when one tree can score 0?**
+
+A: The single tree memorised its training data. A random forest trains each tree on a different random sample and averages their answers, so many of their mistakes cancel out: 47,003 under cross-validation, against the single tree's 67,153.
+
+**Q: Is the final test score good news?**
+
+A: Yes, mainly because it is close to the best cross-validation score: 41,536 on the test set, against 41,983. The estimate made during the project was honest.
+:::
 
 ## Running the notebook in Jupyter
 
@@ -103,6 +125,14 @@ The project is in the chapter 2 notebook that goes with the book, [02_end_to_end
 
 ![](assets/images/sklearn2/jupyter-test-set.png)
 *Finally, I tested the model on the test set, which it had never seen: an RMSE of 41,536, with a 95% confidence interval from 39,574 to 43,780*
+
+:::bullet-points An end-to-end project, in short
+- Put the test set aside before looking at the data.
+- Keep every preparation step in one pipeline, so the same steps run on all data.
+- Judge models with cross-validation, never on their own training data.
+- Search for the best settings, then test the final model once.
+- Nothing in this project is nudged: models are worked out directly or grown one decision at a time.
+:::
 
 Next, [Scikit-Learn (Part 3)](/posts/sklearn3/) works through chapter 3: classification, with handwritten digits.
 

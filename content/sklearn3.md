@@ -29,6 +29,10 @@ In [Part 2](/posts/sklearn2/), I predicted numbers: house prices. The third chap
 - Precision and recall pull against each other; which matters more depends on what the model is for.
 - Some classifiers, such as SVMs, decide between two classes at a time, so Scikit-Learn quietly trains several of them to handle ten digits.
 
+:::brain-power
+Only about one image in ten is a 5. A classifier answers "is this a 5?" and is right 95% of the time. Before reading on, decide: is that a good classifier? What else would you want to know about it?
+:::
+
 ## Quick Example
 
 The "is this a 5?" classifier, trained on the 60,000 training images:
@@ -55,6 +59,10 @@ Here is how it did when I ran the notebook, measured with 3-fold cross-validatio
 
 The `SGDClassifier`'s confusion matrix tells the story behind its accuracy: it called 3,530 of the 5s correctly, missed 1,891, and wrongly called 687 other digits 5s.
 
+:::watch-it High accuracy can mean very little
+A "classifier" that always says "not a 5" is right 91% of the time, because 5s are rare. The 5-detector's 95% to 96% is only a little better than doing nothing. Precision and recall show what accuracy hides: the 5-detector found only 65% of the real 5s.
+:::
+
 ## What training means here
 
 The `SGDClassifier` is the first model in this series that learns by nudging. SGD stands for *stochastic gradient descent*. It starts with all its numbers at zero, one weight for each of the 784 pixels plus one more, and then goes through the training images one at a time, nudging the 785 numbers a little after each image in the direction that would have made it less wrong. It passes over the 60,000 images again and again, up to 1,000 times, until the nudges stop helping. When I trained it on all ten digits with scaled pixels, it warned that it had used up those 1,000 passes before settling down: a reminder that nudging can run out of steps.
@@ -62,6 +70,20 @@ The `SGDClassifier` is the first model in this series that learns by nudging. SG
 [Part 4](/posts/sklearn4/) shows this kind of training in detail. It is the same kind of step my [MiniGPT](/posts/minigpt-grown/) model takes, but MiniGPT needs backpropagation to find its slopes, because it has many layers; a linear classifier like this one has only one, so its slope comes from a simple formula.
 
 The chapter's other models learn as before: the random forest is grown split by split, the SVM is solved directly, and k-nearest neighbors just remembers all 60,000 images.
+
+:::no-dumb-questions
+**Q: What is the threshold?**
+
+A: The `SGDClassifier` gives every image a score, and calls it a 5 when the score is above a threshold. Raising the threshold makes it more careful: its precision rose to 0.900, but its recall fell to 0.480, so it missed more than half of the 5s.
+
+**Q: Which matters more, precision or recall?**
+
+A: It depends on what the model is for. A filter that must never let a bad video through to children needs high precision about what it calls safe; a detector for shoplifters on camera can accept false alarms, if it catches most of them.
+
+**Q: Why does the `SGDClassifier` start from zeros, when MiniGPT starts from random numbers?**
+
+A: A linear model has one layer, so starting every weight at zero does no harm. In a network with many layers, neurons that start identical would get identical nudges and stay identical, so their starting numbers must be random.
+:::
 
 ## Running the notebook in Jupyter
 
@@ -87,6 +109,13 @@ The chapter is in the notebook that goes with the book, [03_classification.ipynb
 
 ![](assets/images/sklearn3/jupyter-error-analysis.png)
 *The confusion matrix for all ten digits: the bright diagonal is right answers, and the column for 8 collects many of the mistakes*
+
+:::bullet-points Classification, in short
+- Accuracy can mislead when one class is rare; compare against a classifier that always gives the same answer.
+- The confusion matrix counts every kind of right and wrong answer.
+- Precision and recall pull against each other, and the threshold sets the balance.
+- The `SGDClassifier` is the first model in this series trained by nudging.
+:::
 
 Next, [Scikit-Learn (Part 4)](/posts/sklearn4/) works through chapter 4: how linear models are trained, including gradient descent.
 

@@ -29,6 +29,10 @@ In [Part 7](/posts/sklearn7/), I combined many models into one. The eighth chapt
 - Reducing dimensions throws information away, so it is usually there to speed up training or to let a person see the data, not to make the model better.
 - Squashing curved data flat mixes up points that were far apart; unrolling it keeps neighbours together.
 
+:::brain-power
+Each MNIST image has 784 pixels, but the ones around the edge are blank in almost every image. Before reading on, guess how many numbers per image you need to keep 95% of the variation.
+:::
+
 ## Quick Example
 
 PCA on the 60,000 MNIST training images, keeping just enough directions for 95% of the variance:
@@ -51,6 +55,10 @@ Here is what PCA found when I ran the notebook:
 
 The chapter also searches for the best number of dimensions to feed a classifier, on 1,000 of the images: 23 for a random forest, and 67 for an `SGDClassifier`.
 
+:::watch-it Smaller data is not better data
+Reducing dimensions always throws information away: the digits rebuilt from 154 numbers are a little blurred. It is worth doing to speed up training, or to draw the data so a person can see it, but it rarely makes a model more accurate on its own.
+:::
+
 ## What training means here
 
 PCA does not nudge, and it does not need to. Its directions come from a direct calculation, a standard piece of linear algebra called the singular value decomposition, so `fit` simply works them out, much like the straight line in [Part 1](/posts/sklearn1/). Randomized PCA gets close to the same answer faster, and incremental PCA works through the data a batch at a time, for datasets too big to fit in memory.
@@ -58,6 +66,20 @@ PCA does not nudge, and it does not need to. Its directions come from a direct c
 Random projection learns nothing at all. It multiplies the data by a random table of numbers; the only decision is how many dimensions to keep. For 5,000 instances, keeping distances within 10% of the original needs 7,300 dimensions, and that number comes from a formula, not from the data.
 
 t-SNE is the one that nudges. It starts by placing every point at random in 2D, then repeatedly moves them by gradient descent, so that points that were neighbours in the original space end up near each other. Unlike every model so far, what it nudges is not a set of model numbers but the positions of the points themselves. My [MiniGPT](/posts/minigpt-grown/) model nudges its 826,433 numbers the same way, with slopes found by backpropagation.
+
+:::no-dumb-questions
+**Q: What does "variance kept" mean?**
+
+A: How much of the way the images differ from each other survives the squeeze. Keeping 95% means the 154 directions capture almost all of what makes one image different from another; the 5% dropped is mostly fine detail and noise.
+
+**Q: Is PCA trained like the other models?**
+
+A: It is fitted with `fit`, like every Scikit-Learn model, but it is worked out directly, with no nudging, like the straight line in [Part 1](/posts/sklearn1/).
+
+**Q: When should I use t-SNE instead of PCA?**
+
+A: To look at the data. t-SNE lays high-dimensional data out in 2D so that neighbours stay together, which makes groups easy to see; PCA is the usual choice to make data smaller before training a model.
+:::
 
 ## Running the notebook in Jupyter
 
@@ -83,6 +105,13 @@ The chapter is in the notebook that goes with the book, [08_dimensionality_reduc
 
 ![](assets/images/sklearn8/jupyter-tsne.png)
 *Three other methods laying the Swiss roll out in 2D: MDS, Isomap, and t-SNE, which keeps neighbours together but breaks the roll into pieces*
+
+:::bullet-points Dimensionality reduction, in short
+- Most of an image's 784 numbers are redundant; 154 directions keep 95% of the variation.
+- Projection flattens data onto a surface; manifold learning unrolls curved data.
+- PCA is worked out directly; random projection learns nothing; t-SNE nudges point positions.
+- Reduce dimensions to speed things up or to see the data, not to improve accuracy.
+:::
 
 Next, [Scikit-Learn (Part 9)](/posts/sklearn9/) works through chapter 9: unsupervised learning, finding groups in data with no labels at all.
 

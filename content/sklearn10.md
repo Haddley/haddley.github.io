@@ -28,6 +28,10 @@ In [Part 9](/posts/sklearn9/), I found groups in data with no labels. The tenth 
 - Its numbers start at random, and only backpropagation and many small nudges turn them into something useful.
 - The settings that shape a network, such as its size and learning rate, are mostly found by searching, not worked out.
 
+:::brain-power
+The clothing classifier below has 266,610 numbers, all starting at random. Before reading on, guess how many times each of them is nudged during training.
+:::
+
 ## Quick Example
 
 A classifier for Fashion MNIST, 70,000 small images of clothing in 10 classes, from T-shirts to ankle boots. Each 28 × 28 image is flattened to 784 numbers, and passes through layers of 300, 100, and 10 neurons:
@@ -58,6 +62,10 @@ Here is what the networks did when I ran the notebook:
 | California house prices, a Keras network | an error (RMSE) of 0.535, about $53,500 |
 | Hyperparameter search: Hyperband, 60 trials | best validation accuracy 86.6% |
 
+:::watch-it A bigger library is not automatically better
+On the California house prices, Scikit-Learn's simple `MLPRegressor` scored an error of 0.505, and the Keras network 0.535. Both are trained by backpropagation; the difference comes from settings such as the number of layers, the learning rate, and how long they train, which is why the chapter ends with a search for them.
+:::
+
 ## What training means here
 
 This is backpropagation, and it is the same recipe that trains my [MiniGPT](/posts/minigpt-grown/) model.
@@ -76,6 +84,20 @@ Here is how training has changed through this series:
 | [6](/posts/sklearn6/), [7](/posts/sklearn7/) | trees grown greedily, and combined into ensembles; gradient boosting steps downhill by adding trees |
 | [8](/posts/sklearn8/), [9](/posts/sklearn9/) | no labels: PCA is worked out, K-Means alternates between two exact steps, and t-SNE nudges points |
 | 10 | many layers, so the slopes come from backpropagation, and every number is nudged |
+
+:::no-dumb-questions
+**Q: Why does a network need the bends between its layers?**
+
+A: Without them, a stack of weighted sums is just one big weighted sum: a hundred layers would be no better than the linear models of [Part 4](/posts/sklearn4/). The bends, such as ReLU, are what let a network learn curved patterns.
+
+**Q: What does the last layer, with its softmax, give?**
+
+A: Ten chances, one for each kind of clothing, that add up to 1. The network's answer is the class with the biggest chance, and its surprise score is worked out from the chance it gave the right one.
+
+**Q: How many nudges, then?**
+
+A: Each number is nudged once per step: 1,719 steps per pass through the 55,000 training images, and 30 passes, 51,570 nudges in all.
+:::
 
 ## Running the notebook in Jupyter
 
@@ -101,6 +123,15 @@ The chapter is in the notebook that goes with the book, [10_neural_nets_with_ker
 
 ![](assets/images/sklearn10/jupyter-tuner.png)
 *Keras Tuner's random search: its best network had 7 hidden layers of 100 neurons, and 84.7% validation accuracy*
+
+:::bullet-points Neural networks, in short
+- A network is layers of weighted sums, with simple bends between them.
+- Its numbers start at random; backpropagation finds every number's slope.
+- Keras builds, trains, saves, and reloads networks in a few lines.
+- The network's shape and learning rate are found by searching.
+:::
+
+Next, [Scikit-Learn (Part 11)](/posts/sklearn11/) works through chapter 11: training deep neural networks, and the tricks that make deep networks trainable.
 
 ## References
 

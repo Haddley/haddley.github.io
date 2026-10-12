@@ -28,6 +28,10 @@ In [Part 3](/posts/sklearn3/), I trained classifiers without asking how they fin
 - The learning rate, the size of each step, matters a lot: too small creeps, and too large jumps out of the valley altogether.
 - A "linear" model can still fit a curve, as long as the curve is made of features it is given, such as x and x².
 
+:::brain-power
+The Normal Equation finds the best line in one calculation. Gradient descent starts from random numbers and takes 1,000 small steps to reach the same line. Before reading on, think: why would anyone choose the slow way?
+:::
+
 ## Quick Example
 
 The notebook makes 100 points from the line y = 4 + 3x, plus random noise, and then looks for that line. Batch gradient descent is only a few lines of NumPy:
@@ -55,6 +59,10 @@ Here is what each method found when I ran the notebook. The noise means that no 
 | Stochastic gradient descent, 50 passes through the data | 4.211 | 2.749 |
 | Scikit-Learn's `SGDRegressor` | 4.213 | 2.773 |
 
+:::watch-it The learning rate can make or break training
+The learning rate, `eta`, sets the size of each step. The notebook shows all three cases: too small, and the line creeps towards the answer; about right, and it gets there quickly; too large, and every step overshoots, so the line jumps further and further from the answer.
+:::
+
 ## What training means here
 
 This is the chapter where nudging arrives. The loop above is the whole idea: start from two random numbers, work out which way the error slopes, take a small step downhill, and repeat. After 1,000 steps it lands on exactly the line that the Normal Equation works out in one go.
@@ -62,6 +70,20 @@ This is the chapter where nudging arrives. The loop above is the whole idea: sta
 Two differences from my [MiniGPT](/posts/minigpt-grown/) model are worth seeing. The slope here comes from a formula worked out by hand once, `2 / m * X_b.T @ (X_b @ theta - y)`, because a linear model has only one layer; MiniGPT has many layers, so PyTorch has to work its slopes out by backpropagation. And here there are 2 numbers to nudge, where MiniGPT has 826,433. The step itself is the same: a number minus the learning rate times its slope.
 
 The `SGDClassifier` in Part 3 trains in exactly this way, and so does a neural network. The rest of the models in this series so far are either worked out directly, like the Normal Equation, or grown one decision at a time, like decision trees.
+
+:::no-dumb-questions
+**Q: Why use gradient descent, when the Normal Equation gives the answer directly?**
+
+A: The Normal Equation gets very slow as the number of features grows, and needs all the data in memory at once. Gradient descent works on any size of data, a batch at a time. And for most models, such as neural networks, there is no direct calculation at all, so nudging is the only way.
+
+**Q: What is an epoch?**
+
+A: One pass through the training data. Batch gradient descent uses all 100 points for every step, so its 1,000 epochs are 1,000 steps. Stochastic gradient descent takes one step per point, so its 50 epochs are 5,000 smaller, noisier steps.
+
+**Q: Why did the different methods not all find exactly 4 and 3?**
+
+A: The points have random noise added, so the best line through these 100 points is not quite y = 4 + 3x. The Normal Equation and batch gradient descent both found that best line, 4.215 and 2.770; the stochastic methods finished close to it.
+:::
 
 ## Running the notebook in Jupyter
 
@@ -84,6 +106,13 @@ The chapter is in the notebook that goes with the book, [04_training_linear_mode
 
 ![](assets/images/sklearn4/jupyter-logistic-regression.png)
 *Logistic regression on iris petals: above a petal width of about 1.65 cm, it says Iris virginica is more likely than not*
+
+:::bullet-points Training linear models, in short
+- The Normal Equation works out the best line directly.
+- Gradient descent reaches the same line by stepping downhill from random numbers.
+- Each step is a number minus the learning rate times its slope, the same step MiniGPT takes.
+- Regularization keeps a model from fitting the noise.
+:::
 
 Next, [Scikit-Learn (Part 5)](/posts/sklearn5/) works through chapter 5: support vector machines.
 

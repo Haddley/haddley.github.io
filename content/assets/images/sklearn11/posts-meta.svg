@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
+  <title>Scikit-Learn: training a deep neural network</title>
+  <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+  <line x1="20" y1="38" x2="36" y2="38" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="20" y1="38" x2="36" y2="54" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="20" y1="38" x2="36" y2="70" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="20" y1="38" x2="36" y2="86" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="20" y1="54" x2="36" y2="38" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="20" y1="54" x2="36" y2="54" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="20" y1="54" x2="36" y2="70" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="20" y1="54" x2="36" y2="86" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="20" y1="70" x2="36" y2="38" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="20" y1="70" x2="36" y2="54" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="20" y1="70" x2="36" y2="70" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="20" y1="70" x2="36" y2="86" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="20" y1="86" x2="36" y2="38" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="20" y1="86" x2="36" y2="54" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="20" y1="86" x2="36" y2="70" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="20" y1="86" x2="36" y2="86" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="36" y1="38" x2="52" y2="38" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="36" y1="38" x2="52" y2="54" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="36" y1="38" x2="52" y2="70" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="36" y1="38" x2="52" y2="86" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="36" y1="54" x2="52" y2="38" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="36" y1="54" x2="52" y2="54" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="36" y1="54" x2="52" y2="70" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="36" y1="54" x2="52" y2="86" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="36" y1="70" x2="52" y2="38" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="36" y1="70" x2="52" y2="54" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="36" y1="70" x2="52" y2="70" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="36" y1="70" x2="52" y2="86" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="36" y1="86" x2="52" y2="38" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="36" y1="86" x2="52" y2="54" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="36" y1="86" x2="52" y2="70" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="36" y1="86" x2="52" y2="86" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="52" y1="38" x2="68" y2="38" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="52" y1="38" x2="68" y2="54" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="52" y1="38" x2="68" y2="70" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="52" y1="38" x2="68" y2="86" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="52" y1="54" x2="68" y2="38" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="52" y1="54" x2="68" y2="54" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="52" y1="54" x2="68" y2="70" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="52" y1="54" x2="68" y2="86" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="52" y1="70" x2="68" y2="38" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="52" y1="70" x2="68" y2="54" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="52" y1="70" x2="68" y2="70" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="52" y1="70" x2="68" y2="86" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="52" y1="86" x2="68" y2="38" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="52" y1="86" x2="68" y2="54" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="52" y1="86" x2="68" y2="70" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="52" y1="86" x2="68" y2="86" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="68" y1="38" x2="84" y2="38" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="68" y1="38" x2="84" y2="54" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="68" y1="38" x2="84" y2="70" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="68" y1="38" x2="84" y2="86" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="68" y1="54" x2="84" y2="38" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="68" y1="54" x2="84" y2="54" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="68" y1="54" x2="84" y2="70" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="68" y1="54" x2="84" y2="86" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="68" y1="70" x2="84" y2="38" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="68" y1="70" x2="84" y2="54" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="68" y1="70" x2="84" y2="70" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="68" y1="70" x2="84" y2="86" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="68" y1="86" x2="84" y2="38" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="68" y1="86" x2="84" y2="54" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="68" y1="86" x2="84" y2="70" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="68" y1="86" x2="84" y2="86" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="84" y1="38" x2="100" y2="38" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="84" y1="38" x2="100" y2="54" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="84" y1="38" x2="100" y2="70" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="84" y1="38" x2="100" y2="86" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="84" y1="54" x2="100" y2="38" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="84" y1="54" x2="100" y2="54" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="84" y1="54" x2="100" y2="70" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="84" y1="54" x2="100" y2="86" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="84" y1="70" x2="100" y2="38" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="84" y1="70" x2="100" y2="54" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="84" y1="70" x2="100" y2="70" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="84" y1="70" x2="100" y2="86" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="84" y1="86" x2="100" y2="38" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="84" y1="86" x2="100" y2="54" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="84" y1="86" x2="100" y2="70" stroke="#1f4a73" stroke-width="0.8"/>
+  <line x1="84" y1="86" x2="100" y2="86" stroke="#1f4a73" stroke-width="0.8"/>
+  <circle cx="20" cy="38" r="3.6" fill="#3a9bdc"/>
+  <circle cx="20" cy="54" r="3.6" fill="#3a9bdc"/>
+  <circle cx="20" cy="70" r="3.6" fill="#3a9bdc"/>
+  <circle cx="20" cy="86" r="3.6" fill="#3a9bdc"/>
+  <circle cx="36" cy="38" r="3.6" fill="#7cc6f0"/>
+  <circle cx="36" cy="54" r="3.6" fill="#7cc6f0"/>
+  <circle cx="36" cy="70" r="3.6" fill="#7cc6f0"/>
+  <circle cx="36" cy="86" r="3.6" fill="#7cc6f0"/>
+  <circle cx="52" cy="38" r="3.6" fill="#3a9bdc"/>
+  <circle cx="52" cy="54" r="3.6" fill="#3a9bdc"/>
+  <circle cx="52" cy="70" r="3.6" fill="#3a9bdc"/>
+  <circle cx="52" cy="86" r="3.6" fill="#3a9bdc"/>
+  <circle cx="68" cy="38" r="3.6" fill="#7cc6f0"/>
+  <circle cx="68" cy="54" r="3.6" fill="#7cc6f0"/>
+  <circle cx="68" cy="70" r="3.6" fill="#7cc6f0"/>
+  <circle cx="68" cy="86" r="3.6" fill="#7cc6f0"/>
+  <circle cx="84" cy="38" r="3.6" fill="#3a9bdc"/>
+  <circle cx="84" cy="54" r="3.6" fill="#3a9bdc"/>
+  <circle cx="84" cy="70" r="3.6" fill="#3a9bdc"/>
+  <circle cx="84" cy="86" r="3.6" fill="#3a9bdc"/>
+  <circle cx="100" cy="38" r="3.6" fill="#7cc6f0"/>
+  <circle cx="100" cy="54" r="3.6" fill="#7cc6f0"/>
+  <circle cx="100" cy="70" r="3.6" fill="#7cc6f0"/>
+  <circle cx="100" cy="86" r="3.6" fill="#7cc6f0"/>
+  <path d="M18 22 C 34 22, 40 98, 62 101 S 92 103, 102 103" fill="none" stroke="#f6c25b" stroke-width="7" stroke-linecap="round" opacity="0.22"/>
+  <path d="M18 22 C 34 22, 40 98, 62 101 S 92 103, 102 103" fill="none" stroke="#f6c25b" stroke-width="2.6" stroke-linecap="round"/>
+</svg>

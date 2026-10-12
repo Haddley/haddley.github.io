@@ -27,6 +27,10 @@ In [Part 4](/posts/sklearn4/), I fitted lines both directly and by gradient desc
 - The kernel trick gives an SVM the curved boundary that thousands of extra features would, without the cost of computing them.
 - `C` and `gamma` are the knobs to turn: small values give smooth, cautious boundaries, and large values give tight, wiggly ones.
 
+:::brain-power
+An SVM draws the widest possible street between two classes. Before reading on, look at a scatter of two groups of flowers in your mind: which of the flowers decide where the street goes, and which could move without changing it?
+:::
+
 ## Quick Example
 
 A linear SVM that decides whether an iris is an Iris virginica, from its petal length and width:
@@ -49,6 +53,10 @@ svm_clf.fit(X, y)
 
 When I ran it, a flower with petals 5.5 cm long and 1.7 cm wide came out as an Iris virginica, and one with petals 5.0 cm by 1.5 cm did not. Their scores, positive on the Iris virginica side of the boundary and negative on the other, were 0.66 and −0.22.
 
+:::watch-it Scale the features first
+An SVM measures the width of its street in the units of the features. If one feature is measured in much bigger numbers than another, it dominates the street. That is why the code puts a `StandardScaler` in front of the SVM, so that every feature is on the same scale.
+:::
+
 The chapter's extra material trains the same kind of model in two ways, on the same flowers, and compares them:
 
 | How it was trained | Intercept | Petal length weight | Petal width weight |
@@ -63,6 +71,20 @@ Scikit-Learn's `SVC` does not nudge. Finding the widest street is a well-underst
 The chapter's extra material then trains the same model by gradient descent, exactly like Part 4: start from random weights, work out which way the error slopes, step downhill, and repeat, 60,000 times. It lands within about 0.05 of the direct answer. So an SVM can be trained either way, like the straight line in Part 4.
 
 My [MiniGPT](/posts/minigpt-grown/) model can only be trained the nudging way: no one knows a direct calculation that finds its 826,433 numbers.
+
+:::no-dumb-questions
+**Q: What is the kernel trick?**
+
+A: A way to get a curved boundary without adding curved features. The SVM's calculation only needs to compare pairs of instances, and a kernel does that comparison as if the extra features were there, without ever computing them.
+
+**Q: Why did gradient descent not land exactly on `SVC`'s answer?**
+
+A: 60,000 steps brought it within about 0.05 of the direct answer: close, but each small step only approaches the bottom of the valley, and the notebook stops after 60,000 of them.
+
+**Q: What do `C` and `gamma` do?**
+
+A: Both trade smoothness against fit. A small `C` allows a wider street with a few flowers inside it; a large `C` narrows the street to get more flowers right. A larger `gamma` makes each training flower's influence reach less far, so the boundary wiggles around individual flowers.
+:::
 
 ## Running the notebook in Jupyter
 
@@ -82,6 +104,13 @@ The chapter is in the notebook that goes with the book, [05_support_vector_machi
 
 ![](assets/images/sklearn5/jupyter-svm-gradient-descent.png)
 *The same SVM trained by gradient descent and by Scikit-Learn's SVC: the two answers agree to within about 0.05*
+
+:::bullet-points Support vector machines, in short
+- An SVM separates two classes with the widest street it can find.
+- Only the support vectors, the instances on the edges of the street, decide where it goes.
+- Kernels give curved boundaries without computing extra features.
+- `SVC` is solved directly; the same model can also be trained by gradient descent.
+:::
 
 Next, [Scikit-Learn (Part 6)](/posts/sklearn6/) works through chapter 6: decision trees.
 
