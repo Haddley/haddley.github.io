@@ -27,7 +27,7 @@ In [Part 2](/posts/sklearn2/), I predicted numbers: house prices. The third chap
 **What I learned from it:**
 - A high accuracy can mean very little when one class is rare. The confusion matrix shows what the model actually gets wrong.
 - Precision and recall pull against each other; which matters more depends on what the model is for.
-- Some classifiers, such as SVMs, decide between two classes at a time, so Scikit-Learn quietly trains several of them to handle ten digits.
+- Some classifiers, such as [SVMs](/posts/sklearn5/), decide between two classes at a time, so Scikit-Learn quietly trains several of them to handle ten digits.
 
 :::brain-power
 Only about one image in ten is a 5. A classifier answers "is this a 5?" and is right 95% of the time. Before reading on, decide: is that a good classifier? What else would you want to know about it?
@@ -46,7 +46,7 @@ sgd_clf = SGDClassifier(random_state=42)
 sgd_clf.fit(X_train, y_train_5)
 ```
 
-Here is how it did when I ran the notebook, measured with 3-fold cross-validation on the training images, next to a random forest and a "classifier" that always says "not a 5":
+Here is how it did when I ran the notebook, measured with [3-fold cross-validation](/posts/sklearn2/) on the training images, next to a random forest and a "classifier" that always says "not a 5":
 
 | Model | Accuracy | Precision | Recall |
 |---|---|---|---|
@@ -67,9 +67,9 @@ A "classifier" that always says "not a 5" is right 91% of the time, because 5s a
 
 The `SGDClassifier` is the first model in this series that learns by nudging. SGD stands for *stochastic gradient descent*. It starts with all its numbers at zero, one weight for each of the 784 pixels plus one more, and then goes through the training images one at a time, nudging the 785 numbers a little after each image in the direction that would have made it less wrong. It passes over the 60,000 images again and again, up to 1,000 times, until the nudges stop helping. When I trained it on all ten digits with scaled pixels, it warned that it had used up those 1,000 passes before settling down: a reminder that nudging can run out of steps.
 
-[Part 4](/posts/sklearn4/) shows this kind of training in detail. It is the same kind of step my [MiniGPT](/posts/minigpt-grown/) model takes, but MiniGPT needs backpropagation to find its slopes, because it has many layers; a linear classifier like this one has only one, so its slope comes from a simple formula.
+[Part 4](/posts/sklearn4/) shows this kind of training in detail. It is the same kind of step my [MiniGPT](/posts/minigpt-grown/) model takes, but MiniGPT needs [backpropagation](/posts/sklearn10/) to find its slopes, because it has many layers; a linear classifier like this one has only one, so its slope comes from a simple formula.
 
-The chapter's other models learn as before: the random forest is grown split by split, the SVM is solved directly, and k-nearest neighbors just remembers all 60,000 images.
+The chapter's other models learn as before: the [random forest](/posts/sklearn7/) is grown split by split, the [SVM](/posts/sklearn5/) is solved directly, and [k-nearest neighbors](/posts/sklearn1/) just remembers all 60,000 images.
 
 :::no-dumb-questions
 **Q: What is the threshold?**

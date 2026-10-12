@@ -79,12 +79,16 @@ Every `.fit()` call trains a model, and this project trains about 110 of them, w
 88 of those are random forests, each made of 100 decision trees, so the project grows about 8,800 trees in all. None of them trains the way a neural network does:
 
 - **Linear regression** is worked out directly, in one calculation (least squares).
-- **A decision tree** grows one split at a time, each time choosing the question that best divides the districts, until every leaf holds districts with the same value. That is why it scored exactly 0 on its own training data.
-- **A random forest** grows 100 trees, each on a random sample of the districts, and averages their answers.
+- **A decision tree** grows one split at a time, each time choosing the question that best divides the districts, until every leaf holds districts with the same value. That is why it scored exactly 0 on its own training data. [Part 6](/posts/sklearn6/) is a whole chapter on decision trees.
+- **A random forest** grows 100 trees, each on a random sample of the districts, and averages their answers. One tree memorises its training data and changes a lot with small changes to the data, but 100 different trees make different mistakes, and averaging cancels many of them out. [Part 7](/posts/sklearn7/) covers random forests, and other ways of combining trees.
 
-My [MiniGPT](/posts/minigpt-grown/) model starts from 826,433 random numbers and nudges every one of them thousands of times, using backpropagation to find which way each should move. Nothing here is nudged: every model is either worked out exactly or grown one decision at a time. Scikit-Learn does have models that train by nudging, such as `SGDRegressor`, and small neural networks trained with backpropagation, such as `MLPRegressor`, but this project does not use them.
+My [MiniGPT](/posts/minigpt-grown/) model starts from 826,433 random numbers and nudges every one of them thousands of times, using [backpropagation](/posts/sklearn10/) to find which way each should move. Nothing here is nudged: every model is either worked out exactly or grown one decision at a time. Scikit-Learn does have models that train by nudging, such as `SGDRegressor`, and small neural networks trained with backpropagation, such as `MLPRegressor`, but this project does not use them.
 
 :::no-dumb-questions
+**Q: What is a fold?**
+
+A: One of the equal parts that cross-validation cuts the training set into. With 10-fold cross-validation, the districts are cut into 10 parts. The model is trained on 9 of them, and scored on the 1 part it has not seen. Then the next part is held out instead, and so on, until every part has been the held-out one. That is 10 trained models and 10 scores, and the RMSE in the table is their average. With 3 folds, as in the two searches, each model trains on two thirds of the training set and is scored on the other third.
+
 **Q: Why train about 110 models just to pick one?**
 
 A: Each cross-validation fold trains a fresh model, and each combination of settings in a search is cross-validated. The extra models are how the project measures, fairly, which choices work best.

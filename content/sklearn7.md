@@ -10,7 +10,7 @@ slug: "sklearn7"
 image: "/assets/images/sklearn7/posts-meta.svg"
 ---
 
-In [Part 6](/posts/sklearn6/), I grew a single decision tree, and saw how unstable one tree can be. The seventh chapter of the Hands-On Machine Learning book combines many models into one: an *ensemble*. A random forest, the model that did best in Part 2, is an ensemble of decision trees.
+In [Part 6](/posts/sklearn6/), I grew a single decision tree, and saw how unstable one tree can be. The seventh chapter of the Hands-On Machine Learning book combines many models into one: an *ensemble*. A random forest, the model that did best in [Part 2](/posts/sklearn2/), is an ensemble of decision trees.
 
 ## Key Points
 
@@ -69,7 +69,7 @@ Here is how each model did on the test set when I ran the notebook. The score is
 | Stacking: a random forest that learns from the three models' predictions | 0.928 |
 
 :::watch-it A vote only helps if the voters disagree
-Three copies of the same model would make the same mistakes, and outvote nothing. The three voters here are different kinds of model, a straight boundary, a forest, and an SVM, so they make different mistakes. Bagging gets the same effect from one kind of model by training each copy on a different random sample.
+Three copies of the same model would make the same mistakes, and outvote nothing. The three voters here are different kinds of model, a straight boundary (logistic regression, from [Part 4](/posts/sklearn4/)), a forest, and an SVM (from [Part 5](/posts/sklearn5/)), so they make different mistakes. Bagging gets the same effect from one kind of model by training each copy on a different random sample.
 :::
 
 ## What training means here

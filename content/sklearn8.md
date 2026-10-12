@@ -15,7 +15,7 @@ In [Part 7](/posts/sklearn7/), I combined many models into one. The eighth chapt
 ## Key Points
 
 **What the chapter covers:**
-1. **The curse of dimensionality**: in hundreds of dimensions, points are far apart and patterns are hard to find, so models train slowly and overfit
+1. **The curse of dimensionality**: in hundreds of dimensions, points are far apart and patterns are hard to find, so models train slowly and [overfit](/posts/sklearn2/)
 2. **Projection**: if the data lies close to a flat surface, it can be flattened onto it with little loss
 3. **Manifold learning**: if the data lies on a curved surface, such as a rolled-up sheet, it has to be unrolled instead
 4. **PCA (principal component analysis)**: finds the directions in which the data varies most, and keeps just those
@@ -65,7 +65,7 @@ PCA does not nudge, and it does not need to. Its directions come from a direct c
 
 Random projection learns nothing at all. It multiplies the data by a random table of numbers; the only decision is how many dimensions to keep. For 5,000 instances, keeping distances within 10% of the original needs 7,300 dimensions, and that number comes from a formula, not from the data.
 
-t-SNE is the one that nudges. It starts by placing every point at random in 2D, then repeatedly moves them by gradient descent, so that points that were neighbours in the original space end up near each other. Unlike every model so far, what it nudges is not a set of model numbers but the positions of the points themselves. My [MiniGPT](/posts/minigpt-grown/) model nudges its 826,433 numbers the same way, with slopes found by backpropagation.
+t-SNE is the one that nudges. It starts by placing every point at random in 2D, then repeatedly moves them by [gradient descent](/posts/sklearn4/), so that points that were neighbours in the original space end up near each other. Unlike every model so far, what it nudges is not a set of model numbers but the positions of the points themselves. My [MiniGPT](/posts/minigpt-grown/) model nudges its 826,433 numbers the same way, with slopes found by [backpropagation](/posts/sklearn10/).
 
 :::no-dumb-questions
 **Q: What does "variance kept" mean?**

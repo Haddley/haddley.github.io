@@ -34,7 +34,7 @@ Before reading on, try to write the training loop from memory, using the steps f
 
 ## Quick Example
 
-The training loop, written by hand. It trains a small network, 8 inputs to 30 neurons to 1 output, 301 numbers in all, to predict California house prices:
+The training loop, written by hand. It trains a small network, 8 inputs to 30 neurons to 1 output, 301 numbers in all, to predict [California house prices](/posts/sklearn2/):
 
 ```python
 for epoch in range(1, n_epochs + 1):

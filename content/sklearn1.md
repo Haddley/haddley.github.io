@@ -80,7 +80,7 @@ Both examples call `model.fit(X, y)`, which trains the model on the 27 countries
 
 (7.2 + 5.9 + 5.9) ÷ 3 = 6.33. The book calls these two kinds *model-based learning* and *instance-based learning*.
 
-Neither one trains the way a neural network does. My [MiniGPT](/posts/minigpt-grown/) model starts from 826,433 random numbers and nudges every one of them thousands of times, using backpropagation to find which way each should move. Here there is nothing to nudge: one model is worked out exactly, and the other just remembers.
+Neither one trains the way a neural network does. My [MiniGPT](/posts/minigpt-grown/) model starts from 826,433 random numbers and nudges every one of them thousands of times, using [backpropagation](/posts/sklearn10/) to find which way each should move. Here there is nothing to nudge: one model is worked out exactly, and the other just remembers.
 
 :::no-dumb-questions
 **Q: Is k-nearest neighbors really learning, if `fit` only stores the data?**

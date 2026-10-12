@@ -19,13 +19,13 @@ In [Part 5](/posts/sklearn5/), I separated classes with the widest possible stre
 2. **Making predictions**: a new instance follows the questions from the top of the tree down to a leaf
 3. **Class probabilities**: a leaf's chances are the share of each class among the training instances that ended up there
 4. **The CART algorithm**: how Scikit-Learn grows a tree, one best split at a time
-5. **Regularization**: limits such as `max_depth` and `min_samples_leaf` stop a tree from carving out a region for every training point
+5. **Regularization**: limits such as `max_depth` and `min_samples_leaf` stop a tree from carving out a region for every training point, much as Ridge and Lasso hold back a linear model in [Part 4](/posts/sklearn4/)
 6. **Regression trees**: the same idea predicting numbers, with each leaf predicting an average
 7. **Weaknesses**: trees only cut parallel to the axes, and small changes to the data can grow a very different tree
 
 **What I learned from it:**
 - A decision tree is the easiest model in the series so far to explain: anyone can follow its questions.
-- Left alone, a tree keeps splitting until it has memorised the training data, which is why the tree in Part 2 scored an error of exactly 0 on its own training set.
+- Left alone, a tree keeps splitting until it has memorised the training data, which is why the tree in [Part 2](/posts/sklearn2/) scored an error of exactly 0 on its own training set.
 - Trees are unstable: training on slightly different data can change every question.
 
 :::brain-power

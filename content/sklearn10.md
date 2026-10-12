@@ -63,7 +63,7 @@ Here is what the networks did when I ran the notebook:
 | Hyperparameter search: Hyperband, 60 trials | best validation accuracy 86.6% |
 
 :::watch-it A bigger library is not automatically better
-On the California house prices, Scikit-Learn's simple `MLPRegressor` scored an error of 0.505, and the Keras network 0.535. Both are trained by backpropagation; the difference comes from settings such as the number of layers, the learning rate, and how long they train, which is why the chapter ends with a search for them.
+On the [California house prices](/posts/sklearn2/), Scikit-Learn's simple `MLPRegressor` scored an error of 0.505, and the Keras network 0.535. Both are trained by backpropagation; the difference comes from settings such as the number of layers, the learning rate, and how long they train, which is why the chapter ends with a search for them.
 :::
 
 ## What training means here

@@ -67,9 +67,9 @@ The learning rate, `eta`, sets the size of each step. The notebook shows all thr
 
 This is the chapter where nudging arrives. The loop above is the whole idea: start from two random numbers, work out which way the error slopes, take a small step downhill, and repeat. After 1,000 steps it lands on exactly the line that the Normal Equation works out in one go.
 
-Two differences from my [MiniGPT](/posts/minigpt-grown/) model are worth seeing. The slope here comes from a formula worked out by hand once, `2 / m * X_b.T @ (X_b @ theta - y)`, because a linear model has only one layer; MiniGPT has many layers, so PyTorch has to work its slopes out by backpropagation. And here there are 2 numbers to nudge, where MiniGPT has 826,433. The step itself is the same: a number minus the learning rate times its slope.
+Two differences from my [MiniGPT](/posts/minigpt-grown/) model are worth seeing. The slope here comes from a formula worked out by hand once, `2 / m * X_b.T @ (X_b @ theta - y)`, because a linear model has only one layer; MiniGPT has many layers, so PyTorch has to work its slopes out by [backpropagation](/posts/sklearn10/). And here there are 2 numbers to nudge, where MiniGPT has 826,433. The step itself is the same: a number minus the learning rate times its slope.
 
-The `SGDClassifier` in Part 3 trains in exactly this way, and so does a neural network. The rest of the models in this series so far are either worked out directly, like the Normal Equation, or grown one decision at a time, like decision trees.
+The `SGDClassifier` in [Part 3](/posts/sklearn3/) trains in exactly this way, and so does [a neural network](/posts/sklearn10/). The rest of the models in this series so far are either worked out directly, like the Normal Equation, or grown one decision at a time, like [decision trees](/posts/sklearn6/).
 
 :::no-dumb-questions
 **Q: Why use gradient descent, when the Normal Equation gives the answer directly?**

@@ -22,7 +22,7 @@ In [Part 10](/posts/sklearn10/), I trained a network with two hidden layers. The
 5. **Reusing pretrained layers**: starting a new network from layers that another network has already learned
 6. **Faster optimizers**: momentum, Nesterov, AdaGrad, RMSProp, Adam, and AdamW, which all decide how big each nudge should be
 7. **Learning rate scheduling**: changing the size of the nudges during training
-8. **Regularization**: L1 and L2 penalties (the ones behind Lasso and Ridge in [Part 4](/posts/sklearn4/)), dropout, Monte Carlo (MC) dropout, and max-norm, which stop a big network memorising its training data
+8. **Regularization**: L1 and L2 penalties (the ones behind Lasso and Ridge in [Part 4](/posts/sklearn4/)), dropout, Monte Carlo (MC) dropout, and max-norm, which stop a big network [memorising its training data](/posts/sklearn2/)
 
 **What I learned from it:**
 - A deep network does not fail because it cannot represent the answer; it fails because the slopes cannot get back through all the layers.
@@ -81,7 +81,7 @@ The optimizer is the part of training that turns each slope into a nudge. I trai
 | Nadam | 87.5% |
 | AdamW | 87.9% |
 
-Every optimizer after plain SGD keeps a running memory for each number. Momentum and Nesterov remember the average slope, so a number that keeps being pushed the same way speeds up. AdaGrad and RMSProp remember the average size of the slope, and give each number its own step size. Adam and its relatives keep both memories, and they did best in my run.
+Every optimizer after [plain SGD](/posts/sklearn4/) keeps a running memory for each number. Momentum and Nesterov remember the average slope, so a number that keeps being pushed the same way speeds up. AdaGrad and RMSProp remember the average size of the slope, and give each number its own step size. Adam and its relatives keep both memories, and they did best in my run.
 
 :::watch-it The notebook's text and my numbers disagree
 Under the reuse example, the notebook says the accuracy "went up 2 percentage points, from 91.85% to 93.85%", and that the error rate "dropped by almost 25%". Those are the numbers from the book's own run, written into the notebook's text; they do not change when the code runs again. My run went from 90.45% to 91.70%: 9.55% of the test images wrong, down to 8.30%, which is about 13% fewer mistakes. The notebook itself warns that dense layers transfer poorly, because they can only reuse patterns found in the same place in the image; the convolutional layers of chapter 14 transfer much better. Reuse still helped, but by less than the text says.

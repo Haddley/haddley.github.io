@@ -54,7 +54,7 @@ svm_clf.fit(X, y)
 When I ran it, a flower with petals 5.5 cm long and 1.7 cm wide came out as an Iris virginica, and one with petals 5.0 cm by 1.5 cm did not. Their scores, positive on the Iris virginica side of the boundary and negative on the other, were 0.66 and −0.22.
 
 :::watch-it Scale the features first
-An SVM measures the width of its street in the units of the features. If one feature is measured in much bigger numbers than another, it dominates the street. That is why the code puts a `StandardScaler` in front of the SVM, so that every feature is on the same scale.
+An SVM measures the width of its street in the units of the features. If one feature is measured in much bigger numbers than another, it dominates the street. That is why the code puts a `StandardScaler` in front of the SVM, in a pipeline like the one in [Part 2](/posts/sklearn2/), so that every feature is on the same scale.
 :::
 
 The chapter's extra material trains the same kind of model in two ways, on the same flowers, and compares them:
@@ -68,7 +68,7 @@ The chapter's extra material trains the same kind of model in two ways, on the s
 
 Scikit-Learn's `SVC` does not nudge. Finding the widest street is a well-understood mathematical problem, and `SVC` hands it to a specialised solver, LIBSVM, which works on it two numbers at a time, solving each small piece exactly, rather than taking small steps along a slope.
 
-The chapter's extra material then trains the same model by gradient descent, exactly like Part 4: start from random weights, work out which way the error slopes, step downhill, and repeat, 60,000 times. It lands within about 0.05 of the direct answer. So an SVM can be trained either way, like the straight line in Part 4.
+The chapter's extra material then trains the same model by gradient descent, exactly like [Part 4](/posts/sklearn4/): start from random weights, work out which way the error slopes, step downhill, and repeat, 60,000 times. It lands within about 0.05 of the direct answer. So an SVM can be trained either way, like the straight line in [Part 4](/posts/sklearn4/).
 
 My [MiniGPT](/posts/minigpt-grown/) model can only be trained the nudging way: no one knows a direct calculation that finds its 826,433 numbers.
 
