@@ -68,8 +68,8 @@ The inputs and the targets are the same pictures, `X_train` twice. The score is 
 
 They are all close, which is the first surprise: the choice of design matters less than I expected, for this data. A picture compressed to 30 numbers, about 4% of its 784 pixels, comes back recognisable but blurred, and the pictures below show it.
 
-:::watch-it My plain GAN collapsed to a single picture
-The first GAN, built from ordinary layers, produced the same black shirt shape for every one of the 32 random inputs I gave it. This is called mode collapse: the generator found one picture that fools the discriminator, and kept making it. I trained it for 10 epochs, not the notebook's 50, so I cannot say whether more training would have cured it. The convolutional GAN, trained for 10 epochs in the same way, produced a mix of recognisable shoes, shirts, and trousers.
+:::watch-it My first plain GAN collapsed to a single picture
+In my first run, which I cut to 10 epochs, the plain GAN, built from ordinary layers, produced the same black shirt shape for every one of the 32 random inputs I gave it. This is called mode collapse: the generator found one picture that fools the discriminator, and kept making it. When I ran the notebook's full 50 epochs, it did not collapse: its 32 pictures were different from each other, with shirts, trousers, and shoes, but speckled with noise. So the collapse was not permanent. A GAN can pass through bad stages, which is part of why they are hard to train.
 :::
 
 ![](assets/images/sklearn17/jupyter-stacked-recon.png)
@@ -92,9 +92,9 @@ A: The 30 numbers in the middle. They are a compact description of each picture,
 
 A: Its middle layer gives a mean and a spread for each of 10 numbers, and a random sample is drawn from them. Training also pushes those distributions to look like a standard bell curve. Afterwards, I can throw away the encoder, draw 10 random numbers, give them to the decoder, and get a new picture. An ordinary autoencoder has no such guarantee that random middle numbers make sense.
 
-**Q: Why did the diffusion model's pictures look so poor?**
+**Q: How good are the diffusion model's pictures?**
 
-A: I trained it for 10 epochs instead of the notebook's 100, so its pictures are dark, blurry shapes: jackets and a few boots. Its error ended at 0.0424, down from 0.0679 in its first epoch, but I do not know how much further it would have fallen. The notebook's own pictures after 100 epochs are much better, but I did not run that.
+A: After the notebook's full 100 epochs, much better than I expected from such a small network: recognisable shoes, boots, trousers, shirts, and jackets, a little blurred. After my first run of only 10 epochs, they were dark blurred shapes. The error went from 0.0710 in the first epoch to 0.0373 in the last, and 0.0371 at its best.
 
 **Q: Are these still the way pictures are generated?**
 
@@ -103,7 +103,7 @@ A: Diffusion models, with larger networks and text prompts added, are behind muc
 
 ## Running the notebook in Jupyter
 
-The chapter is in the notebook that goes with the book, [17_autoencoders_gans_and_diffusion_models.ipynb](https://github.com/ageron/handson-ml3/blob/main/17_autoencoders_gans_and_diffusion_models.ipynb). I ran everything before the final extra section, but with the three most expensive trainings cut down: the plain GAN and the convolutional GAN ran for 10 epochs instead of 50, and the diffusion model for 10 epochs instead of 100. Everything else, including the autoencoders, ran as written. I ran the parts at the same time, on my Mac Studio, which took under an hour. My first attempt hung. The notebook's setup imports scikit-learn before TensorFlow, which seemed to deadlock TensorFlow on my Mac; once I removed that import, the runs finished.
+The chapter is in the notebook that goes with the book, [17_autoencoders_gans_and_diffusion_models.ipynb](https://github.com/ageron/handson-ml3/blob/main/17_autoencoders_gans_and_diffusion_models.ipynb). I ran everything before the final extra section, but with the three most expensive trainings cut down at first. I then ran the two GANs again at the notebook's full 50 epochs, and the diffusion model at its full 100, which took several hours on the processor. Everything else, including the autoencoders, ran as written. I ran the parts at the same time, on my Mac Studio, which took under an hour. My first attempt hung. The notebook's setup imports scikit-learn before TensorFlow, which seemed to deadlock TensorFlow on my Mac; once I removed that import, the runs finished.
 
 ![](assets/images/sklearn17/jupyter-conv-recon.png)
 *A convolutional autoencoder after 10 passes: the validation error is 0.0135, and the rebuilt pictures, bottom row, are again blurred versions of the originals above*
@@ -115,22 +115,22 @@ The chapter is in the notebook that goes with the book, [17_autoencoders_gans_an
 *A variational autoencoder: pictures from 21 random sets of 10 numbers, and below, one picture's numbers moved a little at a time along one axis*
 
 ![](assets/images/sklearn17/jupyter-gan-images.png)
-*The plain GAN after 10 epochs: all 32 generated pictures are the same shirt shape, mode collapse*
+*The plain GAN after 50 epochs: 32 different pictures, shirts, trousers, and shoes, but speckled with noise (after only 10 epochs it had produced the same shirt shape 32 times)*
 
 ![](assets/images/sklearn17/jupyter-dcgan-images.png)
-*The convolutional GAN after 10 epochs: a mix of shoes, shirts, trousers, and jackets, rough but recognisable*
+*The convolutional GAN after 50 epochs: shoes, shirts, trousers, bags, and dresses, much cleaner than the plain GAN*
 
 ![](assets/images/sklearn17/jupyter-diffusion-noise.png)
 *How diffusion models are trained: original pictures, the same pictures with different amounts of noise added, and the noise the network must predict*
 
 ![](assets/images/sklearn17/jupyter-diffusion-images.png)
-*Pictures generated by the diffusion model after only 10 epochs: dark blurred jackets, with a few boots, and nothing like the book's results*
+*Pictures generated by the diffusion model after 100 epochs: shoes, boots, trousers, shirts, and jackets, a little blurred (after only 10 epochs they were dark blurred shapes)*
 
 :::bullet-points Autoencoders, GANs, and diffusion, in short
 - An autoencoder learns to rebuild its input through a narrow middle, so the middle becomes a compact summary.
 - The input is the target, so no labels are needed.
 - A variational autoencoder makes the middle a probability distribution, so random numbers make new pictures.
-- A GAN trains a generator and a discriminator against each other, and can collapse to one picture.
+- A GAN trains a generator and a discriminator against each other, and can collapse to one picture along the way.
 - A diffusion model learns to predict noise, and generates by removing it step by step.
 :::
 

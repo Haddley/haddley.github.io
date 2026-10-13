@@ -10,7 +10,7 @@ slug: "sklearn19"
 image: "/assets/images/sklearn19/posts-meta.svg"
 ---
 
-In [Part 18](/posts/sklearn18/), an agent learned by trial and error. The last chapter of the Hands-On Machine Learning book, chapter 19, is about what happens once a model has been trained: how to put it where people can use it, and how to train bigger models by spreading the work over several machines. Most of it is about Google's cloud, and about graphics processors (GPUs), which my Mac does not have, so I ran what I could and I say below what I could not.
+In [Part 18](/posts/sklearn18/), an agent learned by trial and error. The last chapter of the Hands-On Machine Learning book, chapter 19, is about what happens once a model has been trained: how to put it where people can use it, and how to train bigger models by spreading the work over several machines. Most of it is about Google's cloud, and about graphics processors (GPUs), and the notebook is written for NVIDIA ones, so I ran what I could and I say below what I could not.
 
 ## Key Points
 
@@ -74,7 +74,7 @@ My Mac has an Arm processor, and the official TensorFlow Serving image is built 
 
 This chapter changes nothing about how a model learns. A model is still nudged by slopes on batches of examples. What changes is where the work is done. The book describes two ways to split it. In data parallelism, each device holds a copy of the model, each takes a share of the batch, and the slopes are averaged before every copy makes the same nudge. In model parallelism, one big model is cut into pieces, one per device.
 
-`MirroredStrategy` is the first kind. On a machine with several GPUs it would copy the model to each one. My Mac has no GPU, so the notebook printed a warning that no GPU was detected, and `MirroredStrategy` used one device, the processor. The weights became `MirroredVariable` objects, special variables that keep copies in step, and the training ran as usual: 10 epochs of about 70 seconds each, ending at 96.35% training accuracy and 98.30% validation accuracy. It did not run faster, because there was nothing to spread the work over, but it is the same code that would.
+`MirroredStrategy` is the first kind. On a machine with several GPUs it would copy the model to each one. My Mac's graphics processor is an Apple one, which the TensorFlow in this notebook does not use, so the notebook printed a warning that no GPU was detected, and `MirroredStrategy` used one device, the processor. The weights became `MirroredVariable` objects, special variables that keep copies in step, and the training ran as usual: 10 epochs of about 70 seconds each, ending at 96.35% training accuracy and 98.30% validation accuracy. It did not run faster, because there was nothing to spread the work over, but it is the same code that would.
 
 My [MiniGPT](/posts/minigpt-grown/) model has 826,433 numbers, which is small enough that none of this is needed: one machine trains it. The same ideas apply to the models behind large language models, which are split over thousands of devices, but I have not done that.
 
@@ -98,7 +98,7 @@ A: It is one way, and it is TensorFlow-specific. Many teams now use other server
 
 ## Running the notebook in Jupyter
 
-The chapter is in the notebook that goes with the book, [19_training_and_deploying_at_scale.ipynb](https://github.com/ageron/handson-ml3/blob/main/19_training_and_deploying_at_scale.ipynb). I ran the parts I could on my own Mac: exporting the model, serving it with Docker, the REST and gRPC requests, the new version, the TensorFlow Lite conversion, the device checks, and `MirroredStrategy`. That took under half an hour. I started TensorFlow Serving with the Docker command that the notebook describes, instead of installing the Linux program that it uses by default. I did not run the sections on Vertex AI, which need a Google Cloud account; or the training on a TensorFlow cluster, the distributed hyperparameter tuning, or AutoML. I have no GPU, so what the notebook says about GPUs, I know only from reading it.
+The chapter is in the notebook that goes with the book, [19_training_and_deploying_at_scale.ipynb](https://github.com/ageron/handson-ml3/blob/main/19_training_and_deploying_at_scale.ipynb). I ran the parts I could on my own Mac: exporting the model, serving it with Docker, the REST and gRPC requests, the new version, the TensorFlow Lite conversion, the device checks, and `MirroredStrategy`. That took under half an hour. I started TensorFlow Serving with the Docker command that the notebook describes, instead of installing the Linux program that it uses by default. I did not run the sections on Vertex AI, which need a Google Cloud account; or the training on a TensorFlow cluster, the distributed hyperparameter tuning, or AutoML. TensorFlow in my setup did not use my Mac's graphics processor, so what the notebook says about NVIDIA GPUs, I know only from reading it.
 
 ![](assets/images/sklearn19/jupyter-saved-model-cli.png)
 *A saved model describes itself: `saved_model_cli` lists its signature, what goes in and what comes out; below it, the Docker command that starts TensorFlow Serving, whose log says it is listening for REST requests on port 8501*

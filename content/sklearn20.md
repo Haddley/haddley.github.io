@@ -53,13 +53,13 @@ The book was not padding. It is a survey, and a survey includes what was current
 ## What surprised me
 
 - **A simple baseline is hard to beat.** "The same as last week" scored 42,143 boardings per day in [Part 15](/posts/sklearn15/); the best network scored 24,021. That is a real gain, but the 1-neuron network scored 102,752, and without the baseline I would not have known that it was bad.
-- **A small fix can change everything.** Masking the padding in [Part 16](/posts/sklearn16/) took a sentiment model from 50.1% to 86.2%.
+- **A small fix can change everything.** Masking the padding in [Part 16](/posts/sklearn16/) took a sentiment model from 50.0% to 87.5%.
 - **Training can be fragile.** In [Part 17](/posts/sklearn17/), my plain GAN produced the same picture 32 times. In [Part 18](/posts/sklearn18/), agents reached the top score and then fell away.
 - **Seeing the output beats reading about it.** I learned most from the failures that I ran into: a deadlock on my Mac, a server that took a minute to notice a new model, and a warning about dropped padding.
 
 ## What I would do differently
 
-I would run the long trainings at full length. In [Part 16](/posts/sklearn16/) and [Part 17](/posts/sklearn17/) I shortened the longest ones at first, to save time, and the results were worse than the book's. My Mac has a graphics processor, and I tried it: for these small models, with batches of 32, it was slower than the processor, as [Part 12](/posts/sklearn12/) shows. A bigger machine, or bigger batches, is where a graphics processor would help.
+I would run the long trainings at full length from the start. In [Part 16](/posts/sklearn16/) and [Part 17](/posts/sklearn17/) I first shortened the longest ones to save time, and the results were poor: a GAN that made one picture, and a diffusion model that made dark blurs. Rerunning at full length fixed most of that, but it took hours, and I did not rerun the translation models. My Mac has a graphics processor, and I tried it: for these small models, with batches of 32, it was slower than the processor, as [Part 12](/posts/sklearn12/) shows. A bigger machine, or bigger batches, is where a graphics processor would help.
 
 I did write the training loop of Part 12 in PyTorch, as well as in TensorFlow, because the loop that I wrote by hand in MiniGPT is in PyTorch. The two gave the same results. If I did the series again, I would write the loops in both from the start.
 

@@ -52,11 +52,11 @@ It learns from 1,115,394 letters of Shakespeare, in windows of 100 letters, and 
 |---|---|
 | Character GRU, 3 epochs | 60.1% of the next letters right in training, 54.3% on validation |
 | Same, as a stateful RNN, 10 epochs | 57.8% in training, 54.1% on validation |
-| Review sentiment with no masking, 1 epoch | 50.1% right on validation, chance |
-| Same with masking of the padding, 2 epochs | 86.2% on validation |
-| Manual masking, 2 epochs | 87.0% |
-| Ragged tensors, 2 epochs | 86.7% |
-| A pretrained sentence encoder from Google, 1 epoch | 89.7% |
+| Review sentiment with no masking, 2 epochs | 50.0% right on validation, chance |
+| Same with masking of the padding, 5 epochs | 87.5% on validation at best (epoch 3), 85.4% at the end |
+| Manual masking, 5 epochs | 87.3% at best (epoch 2), 84.5% at the end |
+| Ragged tensors, 5 epochs | 85.5% at the end |
+| A pretrained sentence encoder from Google, 10 epochs | 90.0% on validation in epoch 1, falling to 86.6% by epoch 10, while its training score rose to 99.7% |
 | English to Spanish encoder-decoder, 1 epoch | 52.9% of Spanish words right on validation |
 | Same with a bidirectional encoder, 1 epoch | 59.2% |
 | Same with attention, 1 epoch | 61.9% |
@@ -65,7 +65,7 @@ It learns from 1,115,394 letters of Shakespeare, in windows of 100 letters, and 
 The text that the character model wrote, after only 3 epochs, is not good. (The stateful version, after 10 epochs, wrote "to be or not to be good sorrow. / gremio: / and i have heard the great", better, with a speaker's name in the right place.) With a temperature of 0.01, which almost always picks the most likely next letter, it wrote "To be or not to be a strange / to see the duke of a strange for the se". With a temperature of 1, it wrote "To be or not to be gir? / hooks! why but beriversolvesf.". With 100 it wrote only noise. These are the same temperature settings as in my MiniGPT's demo.
 
 :::watch-it Without masking, the sentiment model learned nothing
-The first review model scored 50.1% on validation, as good as flipping a coin. Reviews have different lengths, so the shorter ones are padded with zeros, and the recurrent layer reads the padding as if it were words. Telling the layer to ignore the padding, with `mask_zero=True`, took the same model to 86.2%. A small fix to what the model is shown made all of the difference.
+The first review model scored 50.0% on validation, as good as flipping a coin. Reviews have different lengths, so the shorter ones are padded with zeros, and the recurrent layer reads the padding as if it were words. Telling the layer to ignore the padding, with `mask_zero=True`, took the same model to 87.5% at best. A small fix to what the model is shown made all of the difference.
 :::
 
 ![](assets/images/sklearn16/jupyter-char-rnn-train.png)
@@ -99,10 +99,10 @@ A: Because models learn the biases of the text they are trained on. The notebook
 
 ## Running the notebook in Jupyter
 
-The chapter is in the notebook that goes with the book, [16_nlp_with_rnns_and_attention.ipynb](https://github.com/ageron/handson-ml3/blob/main/16_nlp_with_rnns_and_attention.ipynb). This is the heaviest notebook in the series for my Mac, which has no GPU, so I shortened the training: the character model to 3 epochs instead of 10, the review models to 1 or 2 epochs instead of 2 or 5, the pretrained sentence encoder to 1 epoch instead of 10, and each translation model to 1 epoch instead of 10. The results above come from those shortened runs, and the book's are better. I ran the five parts of the notebook at the same time, which took a few hours. I did not run the final fine-tuning cell with the Hugging Face `Trainer`, which failed to import here, and the notebook's stateful RNN, which keeps its memory from one window to the next, ran for the full 10 epochs.
+The chapter is in the notebook that goes with the book, [16_nlp_with_rnns_and_attention.ipynb](https://github.com/ageron/handson-ml3/blob/main/16_nlp_with_rnns_and_attention.ipynb). This is the heaviest notebook in the series for my Mac. Its graphics processor, an Apple M1 Max, was no faster than its processor on small models like these, so I used the processor, and I shortened the training: the character model to 3 epochs instead of 10, and each translation model to 1 epoch instead of 10. I then ran the sentiment models and the pretrained sentence encoder again at the notebook's full length, 5 and 10 epochs. The translation results above come from the shortened runs, and the book's are better. I ran the five parts of the notebook at the same time, which took a few hours. I did not run the final fine-tuning cell with the Hugging Face `Trainer`, which failed to import here, and the notebook's stateful RNN, which keeps its memory from one window to the next, ran for the full 10 epochs.
 
 ![](assets/images/sklearn16/jupyter-imdb-masking.png)
-*Masking at work: with the padding ignored, the review model reaches 86.2% on validation in 2 epochs, and a manual mask reaches 87.0%*
+*Manual masking over 5 epochs: the validation accuracy peaks at 87.3% in epoch 2 and ends at 84.5%, as the model starts to overfit; the same model without any masking stayed at 50%*
 
 ![](assets/images/sklearn16/jupyter-translate.png)
 *The plain encoder-decoder after 1 epoch: "I like soccer" becomes "me gusta la música", and the longer sentence turns into "me gusta la misma y [UNK]"*
@@ -118,7 +118,7 @@ The chapter is in the notebook that goes with the book, [16_nlp_with_rnns_and_at
 
 :::bullet-points Language models and attention, in short
 - A language model is trained to predict what comes next; writing is repeated sampling from its predictions.
-- Padding must be masked, or a recurrent model reads it as words: 50.1% became 86.2%.
+- Padding must be masked, or a recurrent model reads it as words: 50.0% became 87.5%.
 - An encoder-decoder with attention can look at every input word, and beat one that squeezes the sentence into a summary.
 - The Transformer uses only attention, with positional encodings to keep the word order.
 - Pretrained models carry the biases of their training data.
