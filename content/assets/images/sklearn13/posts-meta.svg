@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
+  <title>Scikit-Learn: a data pipeline that loads and preprocesses data in batches</title>
+  <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+  <line x1="40" y1="36" x2="62" y2="60" stroke="#1f4a73" stroke-width="2"/>
+  <line x1="40" y1="60" x2="62" y2="60" stroke="#1f4a73" stroke-width="2"/>
+  <line x1="40" y1="84" x2="62" y2="60" stroke="#1f4a73" stroke-width="2"/>
+  <rect x="24" y="28" width="16" height="16" rx="4" fill="#3a9bdc"/>
+  <rect x="24" y="52" width="16" height="16" rx="4" fill="#3a9bdc"/>
+  <rect x="24" y="76" width="16" height="16" rx="4" fill="#3a9bdc"/>
+  <line x1="70" y1="57" x2="82" y2="51" stroke="#1f4a73" stroke-width="2"/>
+  <line x1="70" y1="63" x2="82" y2="69" stroke="#1f4a73" stroke-width="2"/>
+  <circle cx="63" cy="60" r="9" fill="#7cc6f0"/>
+  <rect x="82" y="44" width="14" height="14" rx="4" fill="#2a7fc0"/>
+  <rect x="82" y="62" width="14" height="14" rx="4" fill="#2a7fc0"/>
+  <path d="M30 104 L90 104" stroke="#f6c25b" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M88 98.5 L98 104 L88 109.5 Z" fill="#f6c25b"/>
+</svg>

@@ -114,6 +114,10 @@ A: The network's arithmetic stayed the same; what changed is how well the slopes
 
 A: SELU was designed so that, with the right starting numbers and scaled inputs, each layer's outputs keep roughly the same average and spread, even through 100 layers. ReLU has no such guarantee. Real deep networks usually add batch normalization or skip connections instead, and then ReLU works well.
 
+**Q: What are Swish and Mish?**
+
+A: They are two more activation functions, smooth bends like ReLU. Swish multiplies each input by its own sigmoid, the S-shaped curve that squashes any number to between 0 and 1. Big positive inputs pass through almost unchanged, big negative inputs are squashed towards zero, and in between there is a small dip below zero. Mish is a smoother cousin of Swish. Neither name is an acronym: Swish was found by an automated search, and Mish is named after its inventor, Diganta Misra. The notebook draws GELU, Swish, and Mish next to each other, below, and they look very alike.
+
 **Q: Does dropout make the network worse at its job?**
 
 A: During training, yes, a little, on purpose: 20% of the neurons are switched off at random on every step. When the network is used, every neuron is switched back on. My dropout network got 88.4% of the training images and 86.4% of the test images right, a small gap, which is what dropout is for.

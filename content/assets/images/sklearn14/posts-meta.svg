@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
+  <title>Scikit-Learn: a small filter sliding across an image, the idea behind convolutional networks</title>
+  <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+  <rect x="20" y="36" width="14" height="14" rx="3" fill="#3a9bdc"/>
+  <rect x="38" y="36" width="14" height="14" rx="3" fill="#2a7fc0"/>
+  <rect x="56" y="36" width="14" height="14" rx="3" fill="#3a9bdc"/>
+  <rect x="20" y="54" width="14" height="14" rx="3" fill="#2a7fc0"/>
+  <rect x="38" y="54" width="14" height="14" rx="3" fill="#3a9bdc"/>
+  <rect x="56" y="54" width="14" height="14" rx="3" fill="#2a7fc0"/>
+  <rect x="20" y="72" width="14" height="14" rx="3" fill="#3a9bdc"/>
+  <rect x="38" y="72" width="14" height="14" rx="3" fill="#2a7fc0"/>
+  <rect x="56" y="72" width="14" height="14" rx="3" fill="#3a9bdc"/>
+  <rect x="34" y="50" width="36" height="36" rx="6" fill="none" stroke="#f6c25b" stroke-width="3"/>
+  <line x1="72" y1="68" x2="88" y2="68" stroke="#1f4a73" stroke-width="2"/>
+  <circle cx="98" cy="68" r="9" fill="#7cc6f0"/>
+</svg>

@@ -8,7 +8,7 @@
   <rect x="34" y="68" width="16" height="16" rx="4" fill="#3a9bdc"/>
   <circle cx="61" cy="62" r="8" fill="#7cc6f0"/>
   <rect x="78" y="55" width="14" height="14" rx="4" fill="#2a7fc0"/>
-  <path d="M93 34 A 40 40 0 1 0 101 74" fill="none" stroke="#f6c25b" stroke-width="7" stroke-linecap="round" opacity="0.22"/>
-  <path d="M93 34 A 40 40 0 1 0 101 74" fill="none" stroke="#f6c25b" stroke-width="2.6" stroke-linecap="round"/>
-  <path d="M98.5 25.5 L97.6 37.2 L88.6 31.2 Z" fill="#f6c25b"/>
+  <path d="M89.1 85.4 A 38 38 0 1 1 89.1 36.6" fill="none" stroke="#f6c25b" stroke-width="7" stroke-linecap="round" opacity="0.22"/>
+  <path d="M89.1 85.4 A 38 38 0 1 1 89.1 36.6" fill="none" stroke="#f6c25b" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M93.7 32.7 L96.2 45 L84.5 40.5 Z" fill="#f6c25b"/>
 </svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
+  <title>Scikit-Learn: a recurrent network passing its memory from step to step through a sequence</title>
+  <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+  <line x1="36" y1="78" x2="46" y2="78" stroke="#1f4a73" stroke-width="2"/>
+  <line x1="62" y1="78" x2="72" y2="78" stroke="#1f4a73" stroke-width="2"/>
+  <line x1="88" y1="78" x2="98" y2="78" stroke="#1f4a73" stroke-width="2"/>
+  <rect x="20" y="70" width="16" height="16" rx="4" fill="#3a9bdc"/>
+  <rect x="46" y="70" width="16" height="16" rx="4" fill="#3a9bdc"/>
+  <rect x="72" y="70" width="16" height="16" rx="4" fill="#3a9bdc"/>
+  <rect x="98" y="70" width="14" height="16" rx="4" fill="#2a7fc0"/>
+  <path d="M105 62 C 105 28, 28 28, 28 60" fill="none" stroke="#f6c25b" stroke-width="7" stroke-linecap="round" opacity="0.22"/>
+  <path d="M105 62 C 105 28, 28 28, 28 60" fill="none" stroke="#f6c25b" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M22 56 L34 56 L28 67 Z" fill="#f6c25b"/>
+</svg>

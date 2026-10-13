@@ -84,6 +84,10 @@ A: 60,000 steps brought it within about 0.05 of the direct answer: close, but ea
 **Q: What do `C` and `gamma` do?**
 
 A: Both trade smoothness against fit. A small `C` allows a wider street with a few flowers inside it; a large `C` narrows the street to get more flowers right. A larger `gamma` makes each training flower's influence reach less far, so the boundary wiggles around individual flowers.
+
+**Q: Are support vector machines still used?**
+
+A: Less than when the book was written, and I would not reach for one first. They work well on small or medium datasets with many features, but training gets slow as the number of examples grows, and for tables of data gradient-boosted trees (see [Part 7](/posts/sklearn7/)) are usually more accurate. Kernels are now rare outside small problems. The idea of the widest street is still a good way to think about what a boundary should do.
 :::
 
 ## Running the notebook in Jupyter

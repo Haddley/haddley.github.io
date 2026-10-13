@@ -94,6 +94,10 @@ A: Speed. The first time a `tf.function` runs, TensorFlow traces the Python code
 **Q: Why the Huber loss?**
 
 A: The usual loss for regression squares each error, so one house priced $300,000 wrong counts nine times as much as one priced $100,000 wrong. The Huber loss squares small errors but only counts large ones in proportion, so a few odd houses do not pull the whole model towards them.
+
+**Q: Is writing a custom training loop in TensorFlow still worth learning?**
+
+A: The ideas are: a forward pass, a loss, slopes from backpropagation, and a nudge. Every framework does exactly this. The TensorFlow details are less certain, because much of the field has moved to PyTorch, whose training loops are written by hand as a matter of course. I would treat this part as a clear view of what `fit()` does for you, rather than as something I would write often.
 :::
 
 ## Running the notebook in Jupyter
@@ -128,6 +132,8 @@ The chapter is in the notebook that goes with the book, [12_custom_models_and_tr
 - A training loop is four steps, repeated: pick a batch, measure the loss, find the slopes, and nudge.
 - `fit()` runs the same loop for you, and is usually the better choice.
 :::
+
+Next, [Scikit-Learn (Part 13)](/posts/sklearn13/) works through chapter 13: loading and preprocessing data with TensorFlow.
 
 ## References
 

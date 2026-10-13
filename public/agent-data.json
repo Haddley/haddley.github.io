@@ -1,6 +1,83 @@
 {
   "posts": [
     {
+      "slug": "sklearn19",
+      "title": "Scikit-Learn (Part 19)",
+      "description": "Training and deploying models at scale: serving a TensorFlow model with Docker over REST and gRPC, updating it live, shrinking it for a phone, and spreading training over several devices",
+      "date": "2026-10-13",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "machine-learning, tensorflow, tf-serving, docker, tflite, distributed-training"
+    },
+    {
+      "slug": "sklearn18",
+      "title": "Scikit-Learn (Part 18)",
+      "description": "Reinforcement learning: an agent that learns to balance a pole by trial and error, with policy gradients and deep Q-networks",
+      "date": "2026-10-13",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "machine-learning, reinforcement-learning, dqn, policy-gradients, gymnasium, keras"
+    },
+    {
+      "slug": "sklearn17",
+      "title": "Scikit-Learn (Part 17)",
+      "description": "Autoencoders, GANs, and diffusion models: networks that squeeze data and rebuild it, and networks that invent new clothing pictures",
+      "date": "2026-10-13",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "machine-learning, autoencoder, gan, diffusion-models, generative-ai, keras"
+    },
+    {
+      "slug": "sklearn16",
+      "title": "Scikit-Learn (Part 16)",
+      "description": "Natural language processing with recurrent networks and attention: a Shakespeare character model, movie review sentiment, translation, the Transformer, and pretrained models from Hugging Face",
+      "date": "2026-10-13",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "machine-learning, nlp, attention, transformer, translation, hugging-face"
+    },
+    {
+      "slug": "sklearn15",
+      "title": "Scikit-Learn (Part 15)",
+      "description": "Processing sequences with recurrent neural networks (RNNs) and CNNs: forecasting daily train ridership, comparing a naive guess, a statistical model, and RNNs, and forecasting several days ahead",
+      "date": "2026-10-13",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "machine-learning, rnn, time-series, forecasting, keras, lstm"
+    },
+    {
+      "slug": "sklearn14",
+      "title": "Scikit-Learn (Part 14)",
+      "description": "Deep computer vision with convolutional neural networks (CNNs): filters that slide across an image, pooling, a CNN for clothing, a pretrained ResNet, and transfer learning for flowers",
+      "date": "2026-10-13",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "machine-learning, cnn, computer-vision, transfer-learning, keras, resnet"
+    },
+    {
+      "slug": "sklearn13",
+      "title": "Scikit-Learn (Part 13)",
+      "description": "Loading and preprocessing data with TensorFlow: a tf.data pipeline that reads many files, shuffles, and batches, the TFRecord format, and Keras layers that turn raw values into numbers",
+      "date": "2026-10-13",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "machine-learning, tensorflow, tf-data, tfrecord, preprocessing, keras"
+    },
+    {
       "slug": "sklearn12",
       "title": "Scikit-Learn (Part 12)",
       "description": "Custom models and training with TensorFlow: tensors, automatic slopes with GradientTape, and a training loop written by hand instead of calling fit()",
@@ -3025,5 +3102,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-12T19:52:47.098Z"
+  "generatedAt": "2026-10-13T02:34:11.380Z"
 }

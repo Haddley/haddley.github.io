@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
+  <title>Scikit-Learn: a trained model served from a rack of machines</title>
+  <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+  <rect x="26" y="30" width="68" height="16" rx="5" fill="#3a9bdc"/>
+  <rect x="26" y="52" width="68" height="16" rx="5" fill="#2a7fc0"/>
+  <rect x="26" y="74" width="68" height="16" rx="5" fill="#3a9bdc"/>
+  <circle cx="82" cy="38" r="3.5" fill="#f6c25b"/>
+  <circle cx="82" cy="60" r="3.5" fill="#7cc6f0"/>
+  <circle cx="82" cy="82" r="3.5" fill="#7cc6f0"/>
+  <line x1="34" y1="38" x2="60" y2="38" stroke="#0f1b2d" stroke-width="2" stroke-linecap="round"/>
+  <line x1="34" y1="60" x2="52" y2="60" stroke="#0f1b2d" stroke-width="2" stroke-linecap="round"/>
+  <line x1="34" y1="82" x2="60" y2="82" stroke="#0f1b2d" stroke-width="2" stroke-linecap="round"/>
+  <path d="M60 100 L60 108" stroke="#f6c25b" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M54.5 101 L60 94 L65.5 101 Z" fill="#f6c25b"/>
+</svg>

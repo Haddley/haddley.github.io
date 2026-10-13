@@ -65,7 +65,7 @@ The learning rate, `eta`, sets the size of each step. The notebook shows all thr
 
 ## What training means here
 
-This is the chapter where nudging arrives. The loop above is the whole idea: start from two random numbers, work out which way the error slopes, take a small step downhill, and repeat. After 1,000 steps it lands on exactly the line that the Normal Equation works out in one go.
+Nudging first appeared in [Part 3](/posts/sklearn3/), where the `SGDClassifier` learned by it, and this is the chapter that explains it. The loop above is the whole idea: start from two random numbers, work out which way the error slopes, take a small step downhill, and repeat. After 1,000 steps it lands on exactly the line that the Normal Equation works out in one go.
 
 Two differences from my [MiniGPT](/posts/minigpt-grown/) model are worth seeing. The slope here comes from a formula worked out by hand once, `2 / m * X_b.T @ (X_b @ theta - y)`, because a linear model has only one layer; MiniGPT has many layers, so PyTorch has to work its slopes out by [backpropagation](/posts/sklearn10/). And here there are 2 numbers to nudge, where MiniGPT has 826,433. The step itself is the same: a number minus the learning rate times its slope.
 

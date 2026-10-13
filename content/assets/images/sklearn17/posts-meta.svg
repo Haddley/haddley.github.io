@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
+  <title>Scikit-Learn: an autoencoder squeezing data through a narrow middle and rebuilding it</title>
+  <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+  <rect x="12" y="30" width="9" height="60" rx="3" fill="#3a9bdc"/>
+  <rect x="26" y="38" width="9" height="44" rx="3" fill="#3a9bdc"/>
+  <rect x="40" y="46" width="9" height="28" rx="3" fill="#2a7fc0"/>
+  <rect x="54" y="54" width="12" height="12" rx="3" fill="#f6c25b"/>
+  <rect x="71" y="46" width="9" height="28" rx="3" fill="#2a7fc0"/>
+  <rect x="85" y="38" width="9" height="44" rx="3" fill="#7cc6f0"/>
+  <rect x="99" y="30" width="9" height="60" rx="3" fill="#7cc6f0"/>
+</svg>

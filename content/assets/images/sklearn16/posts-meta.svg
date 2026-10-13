@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
+  <title>Scikit-Learn: words attending to other words in a sentence</title>
+  <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+  <rect x="14" y="78" width="18" height="14" rx="4" fill="#3a9bdc"/>
+  <rect x="38" y="78" width="18" height="14" rx="4" fill="#3a9bdc"/>
+  <rect x="62" y="78" width="18" height="14" rx="4" fill="#2a7fc0"/>
+  <rect x="86" y="78" width="18" height="14" rx="4" fill="#3a9bdc"/>
+  <path d="M95 76 C 95 40, 71 40, 71 76" fill="none" stroke="#f6c25b" stroke-width="3" stroke-linecap="round"/>
+  <path d="M71 76 C 71 52, 47 52, 47 76" fill="none" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round"/>
+  <path d="M95 76 C 95 28, 23 28, 23 76" fill="none" stroke="#1f4a73" stroke-width="2" stroke-linecap="round"/>
+</svg>

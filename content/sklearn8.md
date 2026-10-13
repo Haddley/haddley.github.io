@@ -79,6 +79,10 @@ A: It is fitted with `fit`, like every Scikit-Learn model, but it is worked out 
 **Q: When should I use t-SNE instead of PCA?**
 
 A: To look at the data. t-SNE lays high-dimensional data out in 2D so that neighbours stay together, which makes groups easy to see; PCA is the usual choice to make data smaller before training a model.
+
+**Q: Are all of these methods still used?**
+
+A: PCA is, constantly: for making data smaller, removing noise, and drawing a first picture of a dataset. t-SNE is still used to look at data, but never to prepare it for a model, and a newer method called UMAP (uniform manifold approximation and projection) has largely taken its place for pictures. LLE, MDS, and Isomap are mostly of historical interest: they explain the idea of unrolling curved data, but I would not expect to meet them in a real project.
 :::
 
 ## Running the notebook in Jupyter
