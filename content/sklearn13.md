@@ -10,23 +10,18 @@ slug: "sklearn13"
 image: "/assets/images/sklearn13/posts-meta.svg"
 ---
 
-In [Part 12](/posts/sklearn12/), I wrote my own training loop, but the data always sat in memory as one array. The thirteenth chapter of the Hands-On Machine Learning book is about the step before that loop: getting a large amount of data to the model efficiently, and turning raw values, such as the names of cities or sentences, into numbers a model can use.
+In [Part 12](/posts/sklearn12/), I wrote my own training loop, but the data always sat in memory as one array. This chapter of the Hands-On Machine Learning book is about the step before that loop: getting a large amount of data to the model efficiently, and turning raw things such as city names or sentences into numbers a model can use. The first example is made up. The California housing data is small, but the notebook splits it into 20 files, as if it were too big to fit in memory, and reads it back a piece at a time. The later examples, such as sentences and handwritten digits, are real.
+
+The small network from [Part 10](/posts/sklearn10/) trained on data read this way, in batches of 32, and ended with a typical error of about $65,000 on districts that it had never seen. That is no better than before, and it is not meant to be: nothing about how the model learns changes in this chapter.
 
 ## Key Points
 
-**What the chapter covers:**
-1. **The `tf.data` API (application programming interface)**: a `Dataset` that reads, transforms, shuffles, and batches data a little at a time, so it never has to fit in memory
-2. **Reading many files at once**: splitting a big dataset over many files, shuffling the files, and interleaving their lines
-3. **Preprocessing inside the pipeline**: scaling each row as it is read
-4. **Prefetching**: preparing the next batch while the model is still working on the current one
-5. **The TFRecord format**: TensorFlow's own file format, a list of binary records, usually holding `tf.train.Example` protocol buffers
-6. **Keras preprocessing layers**: `Normalization`, `Discretization`, `CategoryEncoding`, `StringLookup`, `Hashing`, `Embedding`, and `TextVectorization`, which become part of the model itself
-7. **Image preprocessing layers and TensorFlow Datasets (TFDS)**: cropping and resizing, and one-line downloads of ready-made datasets such as MNIST, the handwritten digits from [Part 3](/posts/sklearn3/)
+**The lesson:** a training loop only needs a stream of batches. TensorFlow's `tf.data` makes that stream from a recipe: read the files, turn each line into numbers, shuffle, group into batches, and prepare the next batch while the model is still busy with the current one. The recipe never needs all the data in memory at once. The conversion of raw things into numbers can also be built into the model as layers, so that exactly the same steps run on training data and on new data.
 
 **What I learned from it:**
-- A training loop only needs a stream of batches. A `Dataset` is a recipe for making that stream: read, transform, shuffle, batch, prefetch.
-- Preprocessing can live inside the model, so the same steps run on training data and on new data.
-- Nothing about how the model learns changes in this chapter. What changes is how fast, and how conveniently, the batches arrive.
+- Shuffling happens twice, on purpose: the files are shuffled, and so are the rows within a buffer, so that a batch is a fair sample and not a run of neighbours.
+- A layer can turn ages into bands, city names into numbers, and sentences into word counts, and once it has looked at the training data, it never changes.
+- For data that does not fit in a table, TensorFlow has its own binary file format, which I tried on a few records.
 
 :::brain-power
 The housing data in the notebook is split over 20 files. The pipeline shuffles the order of the files, and then shuffles individual rows again later. Before reading on, why would one shuffle not be enough?

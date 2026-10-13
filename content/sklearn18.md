@@ -10,23 +10,20 @@ slug: "sklearn18"
 image: "/assets/images/sklearn18/posts-meta.svg"
 ---
 
-In [Part 17](/posts/sklearn17/), networks learned to make pictures. The eighteenth chapter of the Hands-On Machine Learning book is about a different kind of learning altogether. There are no labelled examples and no picture to copy. An agent acts in an environment, gets rewards, and has to work out for itself which of its actions earned them. This is reinforcement learning (RL).
+In [Part 17](/posts/sklearn17/), networks learned to make pictures. This chapter of the Hands-On Machine Learning book is about a different kind of learning altogether. There are no labelled examples and no picture to copy. An agent acts in a simulated world, gets rewards, and has to work out for itself which of its actions earned them. This is reinforcement learning.
+
+The world is a simulation called CartPole: a cart that can be pushed left or right, with a pole balanced on it. The task is deliberately simple, and made up, but it is the standard practice problem. The agent scores one point for each step the pole stays up, to a maximum of 200. A hard-coded rule, "push towards the side the pole is leaning", lasted 41.7 steps on average. A small network that learned from its rewards averaged 190.9 steps, close to the maximum.
 
 ## Key Points
 
-**What the chapter covers:**
-1. **Environments**: the notebook uses CartPole from the Gymnasium library, a cart that can be pushed left or right to keep a pole upright
-2. **Policies**: a rule that chooses an action from what the agent observes, first hard-coded, then a small neural network
-3. **Policy gradients**: play several games, then make the actions that led to high rewards more likely
-4. **Markov decision processes**: a small world of states, actions, probabilities and rewards, solved exactly by Q-value iteration
-5. **Q-learning**: learning the value of each action in each state from experience, without knowing the probabilities
-6. **Deep Q-networks (DQNs)**: a neural network that estimates Q-values, trained from a replay buffer of past experience
-7. **Improvements**: fixed Q-value targets, double DQN, and dueling DQN
+**The lesson:** the agent is never told the right action. It is only told, afterwards, how well things went, and a reward may arrive many steps after the action that earned it. So training has to share the credit backwards, with later rewards counting for slightly less than near ones. It is the same loop of slopes and nudges as before, but the target is not fixed: it moves as the agent learns, which is why this kind of training is far less stable than the training in earlier parts. In my runs, several agents reached the top score and then fell away.
 
 **What I learned from it:**
-- The agent is never told the right action. It is only told, afterwards, how well things went.
-- A reward for an action may arrive many steps later, so training has to share credit backwards, with a discount factor.
-- RL training is much noisier than the supervised training in earlier parts: the score can climb, crash, and climb again.
+- The simplest method, which nudges the network towards actions that led to high rewards, was the steadiest in my runs, ending close to the maximum.
+- The more elaborate methods, which learn the expected total reward of each action from a store of past steps, were much less stable: the plain version finished near 117 steps, after reaching 200, and one variant collapsed to about 10.
+- Keeping a copy of the best weights, and restoring it at the end, is worth doing, because the final weights may be much worse than the best ones.
+
+The chapter also solves a tiny made-up world exactly, and describes the formal framework for this kind of problem, which I do not go into.
 
 :::brain-power
 In CartPole, the agent gets a reward of 1 for every step that the pole stays up, and the game ends when it falls. Before reading on, why might a policy that looks only at the pole's angle, and pushes towards the side it is leaning, be a good first attempt? And how long do you think it would last?

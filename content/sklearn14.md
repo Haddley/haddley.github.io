@@ -10,23 +10,20 @@ slug: "sklearn14"
 image: "/assets/images/sklearn14/posts-meta.svg"
 ---
 
-In [Part 13](/posts/sklearn13/), I built pipelines that feed data to a model, including images. The fourteenth chapter of the Hands-On Machine Learning book is about the models that suit images best: convolutional neural networks (CNNs). Instead of looking at all the pixels at once, as the network in [Part 10](/posts/sklearn10/) did, a CNN looks at small patches, with the same few numbers reused across the whole picture.
+In [Part 13](/posts/sklearn13/), I built pipelines that feed data to a model, including images. This chapter of the Hands-On Machine Learning book is about the models that suit pictures best. Instead of looking at all the pixels at once, as the network in [Part 10](/posts/sklearn10/) did, they look at small patches, with the same few numbers reused across the whole picture. They are called convolutional neural networks (CNNs).
+
+The tasks are real. A small CNN looked at the same clothing pictures as Part 10 and was right on 90.5% of the test pictures, about three points better than the earlier network. And an existing network, trained by someone else on a million pictures, was retrained a little to tell five kinds of flowers apart, reaching 91.8% on pictures that it had not seen, though it had memorised its training pictures almost perfectly (99.9%).
 
 ## Key Points
 
-**What the chapter covers:**
-1. **Convolutional layers**: a small grid of numbers, a filter, slides across the image and measures how well each patch matches it
-2. **Pooling layers**: shrink the picture by keeping only the strongest value in each small region
-3. **CNN architectures**: how the layers are stacked, from LeNet-5 to AlexNet, GoogLeNet, ResNet, Xception, and SENet
-4. **A ResNet-34 in Keras**: a network with skip connections, built from a custom residual block
-5. **Pretrained models**: ResNet50, already trained on ImageNet's 1,000 kinds of picture, used as it is
-6. **Transfer learning**: reusing a pretrained network's layers for a new task, here classifying flowers
-7. **Classification and localization, object detection, and semantic segmentation**: saying what is in a picture, where it is, and which pixels belong to it
+**The lesson:** a picture has the same patterns wherever they are, such as an edge or a corner. A convolutional layer slides a small grid of numbers, a filter, across the whole picture, so it finds a pattern wherever it appears and needs far fewer numbers than a layer connected to every pixel. Training nudges the filters: they start random, and become edge finders, then texture finders, then finders of parts of objects. And because someone else's network has already learned those, starting from it beats starting from nothing.
 
 **What I learned from it:**
-- A convolutional layer reuses the same small filter at every position, so it needs far fewer numbers than a layer that connects every pixel to every neuron, and it finds a pattern wherever it appears.
-- A network trained on a million pictures has already learned edges, textures, and shapes, and those are useful for almost any picture task.
-- Transfer learning works in two steps: first train only the new top layers, then unfreeze part of the old network and keep training with a smaller step size.
+- Shrinking the picture between layers, by keeping only the strongest value in each small region, widens what each later layer sees.
+- Reusing a trained network works in two steps: first train only the new top layers, then unfreeze part of the old network and keep training with a smaller step size.
+- A network can learn its training pictures almost perfectly and still be worse on new ones, as the flower network shows.
+
+The chapter also covers the famous network designs of the last 30 years, and finding where in a picture an object is. I do not go into those here.
 
 :::brain-power
 A clothing picture is 28 × 28 = 784 pixels. In [Part 10](/posts/sklearn10/), every neuron in the first layer looked at all 784 of them. What would that network miss about pictures? Think about a shirt that has shifted a few pixels to the left.

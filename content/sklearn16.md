@@ -10,25 +10,20 @@ slug: "sklearn16"
 image: "/assets/images/sklearn16/posts-meta.svg"
 ---
 
-In [Part 15](/posts/sklearn15/), a recurrent network read a sequence of numbers one step at a time. The sixteenth chapter of the Hands-On Machine Learning book gives it text, and then shows why the field moved on from recurrent networks to attention. It is the chapter closest to my [MiniGPT](/posts/minigpt-grown/) model, and it ends with the Transformer, the design that MiniGPT is built on.
+In [Part 15](/posts/sklearn15/), a network read a sequence of numbers one step at a time. This chapter of the Hands-On Machine Learning book gives it text, and then shows why the field moved on to a different idea, attention. It is the chapter closest to my [MiniGPT](/posts/minigpt-grown/) model, and it ends with the Transformer, the design that MiniGPT is built on. The tasks are real: writing in the style of Shakespeare, deciding whether a movie review is positive, and translating English into Spanish.
+
+The results in my run were mixed, partly because I shortened the longest trainings. The Shakespeare model got 54.3% of the next letters right and wrote mostly nonsense. A review model that was shown padding as if it were words scored 50.0%, no better than a coin; told to ignore the padding, it scored up to 87.5%. And a translation model that could look back at every English word beat one that could not, 61.9% to 52.9% of Spanish words right.
 
 ## Key Points
 
-**What the chapter covers:**
-1. **A character RNN**: a recurrent neural network (RNN) that reads Shakespeare one letter at a time and learns to predict the next letter, so that it can write more
-2. **Sentiment analysis**: deciding whether a movie review is positive, using word embeddings and a recurrent layer, and masking so that padding is ignored
-3. **Pretrained embeddings and language models**: reusing a sentence encoder trained by someone else
-4. **An encoder-decoder network for translation**: one network reads English and another writes Spanish
-5. **Bidirectional networks and beam search**: reading in both directions, and keeping several candidate translations instead of one
-6. **Attention**: letting the decoder look back at every English word, instead of only a summary
-7. **The Transformer**: dropping recurrence altogether and using only attention, with positional encodings to keep track of word order
-8. **Hugging Face**: ready-made pretrained Transformers
+**The lesson:** a language model is trained to predict what comes next, and writes by sampling from its predictions, which is exactly what MiniGPT does with letters. The earlier way of reading text, a network that carries a memory forward word by word, has to squeeze everything it has read into that memory. Attention is the fix: each word looks directly at every other word, scores how much each matters, and takes a weighted mix. The Transformer uses only attention, with a wave pattern added to each word so that it still knows the word order.
 
 **What I learned from it:**
-- A language model is trained to predict what comes next, and then used to write by repeatedly sampling from its predictions.
-- The same recipe, text in, probabilities out, covers writing, sentiment, and translation.
-- Attention lets a word look directly at any other word, without waiting for a memory to carry the information along.
-- Training on a CPU, the processor in my Mac, is slow. The notebook warns that the Transformer could take "2 or 3 hours" without a GPU, a graphics processing unit.
+- Padding that is not masked out is read as text. A small fix to what the model is shown took one model from 50.0% to 87.5%.
+- A translator that squeezes the whole English sentence into one summary mangles long sentences: "I like soccer and also going to the beach" became "me gusta la misma y [UNK]". With attention, it became "me gusta el fútbol y voy a la playa".
+- Pretrained models carry the biases of their training text. One sentiment model called "I am from India." positive and "I am from Iraq." negative.
+
+The chapter also covers keeping several candidate translations instead of one (beam search), reading in both directions, and ready-made Transformers from Hugging Face, which I touch on below.
 
 :::brain-power
 A recurrent network reads a sentence one word at a time and keeps a memory. By the end of a 50-word sentence, what might have happened to the first word? And what could a model do instead, if it could look at any word at any moment?

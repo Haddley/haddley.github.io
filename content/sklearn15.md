@@ -10,23 +10,20 @@ slug: "sklearn15"
 image: "/assets/images/sklearn15/posts-meta.svg"
 ---
 
-In [Part 14](/posts/sklearn14/), a convolutional network looked at a picture. The fifteenth chapter of the Hands-On Machine Learning book is about data in which the order matters: a sequence, such as a number for each day. It uses recurrent neural networks (RNNs), which read a sequence one step at a time and carry a memory from each step to the next, and it also shows that one-dimensional convolutions can handle sequences.
+In [Part 14](/posts/sklearn14/), a convolutional network looked at a picture. This chapter of the Hands-On Machine Learning book is about data in which the order matters: a sequence, such as one number for each day. The task is real. The Chicago Transit Authority publishes how many people board its trains and buses every day, and the job is to forecast tomorrow's train boardings from the last 56 days. A model's score is its average error, in boardings per day.
+
+Before building anything clever, the notebook tries the simplest forecast: "the same as one week earlier". It was off by 42,143 boardings per day on average, out of roughly 700,000 on a weekday. The best network was off by 24,021, which is about 40% better. A network with a single neuron was off by 102,752, worse than doing nothing clever. Without the simple forecast to compare against, I would not have known it was bad.
 
 ## Key Points
 
-**What the chapter covers:**
-1. **Forecasting a time series**: predicting the next value, or the next 14, from the values so far
-2. **Baselines**: a naive forecast, and a statistical model called ARIMA (autoregressive integrated moving average) with a seasonal version, SARIMA (seasonal ARIMA)
-3. **Preparing the data**: cutting a long series into overlapping windows of 56 days, each with a target
-4. **Simple and deep RNNs**: a layer that reads a window one day at a time, and stacks of such layers
-5. **Multivariate series and several steps ahead**: more than one input series, and forecasting 14 days at once
-6. **Better memory cells**: layer normalization, LSTM (long short-term memory) cells, and GRU (gated recurrent unit) cells
-7. **One-dimensional convolutions and WaveNet**: sliding filters along a sequence instead of an RNN
+**The lesson:** work out what a simple guess scores before building a model, because it is hard to beat by much, and it tells me whether a clever model is worth having. The networks in this chapter, called recurrent networks, read a window of days one at a time, carrying a memory forward from each day to the next, with the same numbers at every step. In my run the best result came from giving the network more to look at: the bus counts and the type of the next day, as well as the train counts.
 
 **What I learned from it:**
-- Before building an RNN, work out what a simple guess scores. Here, "the same as last week" is hard to beat by much.
-- An RNN reads a window one step at a time, and uses the same numbers at every step, like a convolutional filter in [Part 14](/posts/sklearn14/).
-- Feeding a model its own forecasts to forecast further ahead makes its mistakes pile up.
+- A statistical forecasting method called SARIMA, which models weekly patterns directly, scored 32,041, close to the network's 29,979 on the train counts alone. For a small problem like this, a simpler model is often nearly as good.
+- Forecasting several days ahead by feeding the model its own forecasts makes errors pile up. Training it to forecast all 14 days at once avoids that: its error grew from 23,219 for tomorrow to between 33,000 and 38,000 for the days from the fifth onwards.
+- The more elaborate memory cells in the chapter, LSTM and GRU, only ran for five passes, so my numbers for them are not a fair comparison.
+
+The chapter also covers one-dimensional convolutions and a design called WaveNet for sequences, which I do not go into.
 
 :::brain-power
 The notebook forecasts how many people board Chicago's trains each day. Before reading on, what is the simplest forecast you can make for next Tuesday, using nothing but the past data? How well do you think it would do?

@@ -10,24 +10,20 @@ slug: "sklearn17"
 image: "/assets/images/sklearn17/posts-meta.svg"
 ---
 
-In [Part 16](/posts/sklearn16/), I read and generated text. The seventeenth chapter of the Hands-On Machine Learning book is about generating pictures. It starts with autoencoders, networks that learn to squeeze data down to a few numbers and rebuild it, and ends with generative adversarial networks (GANs) and diffusion models, the idea behind much of today's image generation.
+In [Part 16](/posts/sklearn16/), I read and generated text. This chapter of the Hands-On Machine Learning book generates pictures. The pictures are the real Fashion MNIST clothing pictures again, and the question is whether a network can learn well enough what clothing looks like to draw some that never existed. It starts with networks that squeeze a picture down to 30 numbers and rebuild it, and ends with the idea behind much of today's image generation.
+
+In my run, a network squeezed each 784-pixel picture down to 30 numbers and rebuilt a recognisable but blurred copy. A convolutional GAN, trained for 50 passes, drew shoes, shirts, trousers, bags, and dresses that were not in the data. And a diffusion model, trained for 100 passes, drew shoes, boots, trousers, and jackets by starting from pure noise and removing it, step by step.
 
 ## Key Points
 
-**What the chapter covers:**
-1. **Autoencoders**: a network that is trained to copy its input to its output, through a narrow middle layer, so that the middle layer has to find a compact summary
-2. **Stacked and convolutional autoencoders**: more layers, and convolutions for images
-3. **Variants**: denoising (adding noise or dropout to the input), sparse (keeping most middle neurons quiet), and recurrent autoencoders
-4. **Variational autoencoders (VAEs)**: autoencoders whose middle layer is a probability distribution, so that random numbers fed to the second half produce new pictures
-5. **Generative adversarial networks (GANs)**: a generator that invents pictures and a discriminator that tries to tell them from real ones, each making the other better
-6. **Deep convolutional GANs (DCGANs)**: the same game with convolutional layers
-7. **Diffusion models**: learn to remove a little noise from a picture, then start from pure noise and clean it up step by step into a new picture
+**The lesson:** I can train a network to copy its input through a narrow middle, so that the middle becomes a compact summary of the picture. No labels are needed, because the picture is its own answer. A variation lets me throw away the first half, feed random numbers to the second half, and get new pictures. Two other ideas make better pictures. A *GAN* trains a forger and a detective against each other. A *diffusion model* learns one very simple task, to predict the noise that was added to a picture, and repeats it many times to turn noise into a picture.
 
 **What I learned from it:**
-- An autoencoder needs no labels: the input is also the target.
-- The narrow middle layer is the point. A network that could copy everything through would learn nothing.
-- A GAN is trained by two networks pulling against each other, and it is easy for that to go wrong.
-- A diffusion model is trained on a simple task, predicting the noise that was added to a picture, and gets its power from repeating it many times.
+- The narrow middle is the point: a network that could pass everything through would learn nothing.
+- A GAN is trained by two networks pulling against each other, and can go wrong along the way. My first plain GAN drew the same shirt shape 32 times, and recovered with longer training.
+- Diffusion models are trained on a simple task and are steadier, but drawing a picture takes thousands of steps, which is why it takes much longer than training one step.
+
+The chapter also covers many kinds of autoencoder, such as ones that remove noise, which appear in the table below.
 
 :::brain-power
 An autoencoder is trained so that its output matches its input. That sounds pointless: why not just return the input? Before reading on, what has to be true about the network in the middle for the training to be worth anything?

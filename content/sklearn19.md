@@ -10,24 +10,20 @@ slug: "sklearn19"
 image: "/assets/images/sklearn19/posts-meta.svg"
 ---
 
-In [Part 18](/posts/sklearn18/), an agent learned by trial and error. The last chapter of the Hands-On Machine Learning book, chapter 19, is about what happens once a model has been trained: how to put it where people can use it, and how to train bigger models by spreading the work over several machines. Most of it is about Google's cloud, and about graphics processors (GPUs), and the notebook is written for NVIDIA ones, so I ran what I could and I say below what I could not.
+In [Part 18](/posts/sklearn18/), an agent learned by trial and error. The last chapter of the Hands-On Machine Learning book is about what happens once a model has been trained: how to put it where other people and programs can use it, and how to train bigger models by spreading the work over several machines. Most of it is about Google's cloud and NVIDIA graphics processors, which I did not use, so I ran the parts that I could on my Mac and say below what I could not.
+
+The example is small and made up for the purpose: the handwritten-digit classifier from earlier, saved and served by a program that other programs can ask. I started the server in Docker and sent it three test images over the network, and it answered with the right digits, 7, 2, and 1. I then saved an improved version of the model next to the first, and a minute later the same request was answered by the new one, without my restarting anything.
 
 ## Key Points
 
-**What the chapter covers:**
-1. **Exporting a model**: saving it in TensorFlow's SavedModel format, with a named signature that says what goes in and what comes out
-2. **TensorFlow Serving**: a server that loads the saved model and answers requests over REST (a web address) and gRPC (a faster binary protocol), and switches to a new version when it appears
-3. **Vertex AI**: Google's cloud service for the same job, with a prediction service and batch prediction
-4. **Models on phones and in web pages**: TensorFlow Lite for mobile and embedded devices, and TensorFlow.js for a browser
-5. **GPUs**: managing their memory, and placing operations and variables on devices
-6. **Distribution strategies**: training one model on several devices, with `MirroredStrategy` and others
-7. **Clusters and the cloud**: training on a TensorFlow cluster or on Vertex AI, tuning hyperparameters in parallel, and AutoML
+**The lesson:** a saved model is a folder that describes its own inputs and outputs, so a server can use it without any of my code. A new version of a model is just a new numbered folder, and the server notices it and switches over by itself. A model can also be made about three and a half times smaller for a phone, by storing its numbers with less precision: mine went from 171,748 bytes to 47,928.
 
 **What I learned from it:**
-- A saved model is a folder that includes its own description of what it accepts, so a server can use it without any of my code.
-- A new version of a model is just a new numbered folder. The server notices it, and starts answering with it.
-- A model can be made several times smaller for a phone by storing its numbers with less precision.
-- Spreading training over devices does not change what is learned: it changes how many examples are processed at once.
+- A program that can send text to a web address can use the model. A second, faster way needs a library on the client's side, and gave identical answers.
+- Spreading training over several devices changes where the work is done, not what is learned. On my Mac, which had no graphics processor that TensorFlow could use, the code ran as usual, on one device.
+- I ran the parts that work on one Mac, and did not run the cloud, the cluster, or the NVIDIA parts.
+
+The chapter also covers running a model in a web page, managing graphics processor memory, and tuning settings in the cloud, which I read about and did not run.
 
 :::brain-power
 A model that is 98% accurate on my laptop is not useful until someone else can ask it a question. Before reading on, what would a program on another machine need to know in order to send it a digit image and read the answer?
