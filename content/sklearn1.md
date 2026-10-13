@@ -10,7 +10,7 @@ slug: "sklearn1"
 image: "/assets/images/sklearn1/posts-meta.svg"
 ---
 
-Scikit-Learn is a powerful Python library for machine learning that simplifies building and training models. It provides easy-to-use tools for data preprocessing, model selection, and evaluation.
+Scikit-Learn is a Python library for machine learning that simplifies building and training models. It provides tools for data preprocessing, model selection, and evaluation.
 
 ## Key Points
 
@@ -26,12 +26,12 @@ Scikit-Learn is a powerful Python library for machine learning that simplifies b
 4. **Pipeline**: Easy workflow management  
 
 :::brain-power
-Both models below predict Cyprus's life satisfaction from its gross domestic product (GDP) per capita, and both are trained with the same call, `fit`. Before reading on, guess: which one does its work when it is trained, and which one waits until it is asked for a prediction?
+Both models below predict Cyprus's life satisfaction from its gross domestic product (GDP) per capita, and both are trained with the same call, `fit`. One does its work when it is trained, and one waits until it is asked for a prediction.
 :::
 
 ## Quick Example
 
-In the first chapter of the Hands-On Machine Learning book with Scikit-Learn, the authors use a simple example with GDP per capita data to predict life satisfaction scores:
+In the first chapter of the Hands-On Machine Learning book with Scikit-Learn, the authors use an example with GDP per capita data to predict life satisfaction scores:
 
 ```python
 from sklearn.linear_model import LinearRegression
@@ -86,6 +86,10 @@ Neither one trains the way a neural network does. My [MiniGPT](/posts/minigpt-gr
 **Q: Is k-nearest neighbors really learning, if `fit` only stores the data?**
 
 A: The book calls it *instance-based learning*: what it knows is the stored examples themselves, and each prediction compares a new country with them. Nothing is summed up into a few numbers, so the model is as big as its data.
+
+**Q: Why three neighbours? Why not one, or five?**
+
+A: The three is a choice, not a law: the notebook sets `n_neighbors=3`, and I did not tune it. It is a trade-off. With one neighbour, the prediction copies a single country, which might be unusual: for Cyprus, that gives 7.20, much higher than the line's 6.30. With all 27, every country gets the same answer, the average of all of them: 6.57 for Cyprus. In between, I tried a few values of k for Cyprus, and got 6.55 for 2, 6.33 for 3, 6.26 for 5, and 6.37 for 10. To compare them fairly, I left each country out in turn and predicted it from the other 26, and measured the typical error: 0.55 for k = 1, 0.43 for 3, 0.40 for 5, 0.36 for 7, and 0.37 for 10. So 3 is a reasonable choice, but not the best on this data, and with only 27 countries, the differences are small and could be noise. This is a hyperparameter, a setting that I choose before training, and [Part 2](/posts/sklearn2/) shows how to choose one with cross-validation, which is what this leaving-one-out test is a version of.
 
 **Q: Why are the two predictions for Cyprus so close?**
 
