@@ -41,7 +41,15 @@ In this project, a decision tree scores an error of exactly 0 on its training da
 
 ## Quick Example
 
-A model's score on the data it learned from tells me almost nothing, because it can simply remember that data. To find out how good a model really is, I have to test it on data it has not seen. The code below does that without touching the test set. It cuts the training data into 10 equal parts, trains the model on 9 of them, and scores it on the part that was left out. It repeats this 10 times, so that every part is left out once, and then I have 10 scores to average. This is called 10-fold cross-validation, and each of the 10 parts is a "fold". The model here is a random forest, many decision trees whose answers are averaged. A decision tree is a flowchart of yes-or-no questions about a house, and [Part 6](/posts/sklearn6/) shows how one is grown.
+A model's score on the districts it learned from tells me almost nothing, because it can simply remember them. To find out how good it really is, I have to score it on districts it has not seen. I have 16,512 training districts, and the test set is off limits until the end, so the code below makes its own held-back districts out of the training ones, like this:
+
+1. Cut the 16,512 districts into 10 equal groups of about 1,650.
+2. Train the model on 9 of the groups, about 14,860 districts.
+3. Score it on the 1 group that it did not train on. That is its **validation**: a check on districts it has not seen.
+4. Do steps 2 and 3 again, holding back a different group each time, until every group has been held back once. That is 10 rounds, and 10 scores.
+5. Average the 10 scores.
+
+Every district gets a turn as a held-back district, and no district is ever scored by a model that trained on it. The name for all this is **10-fold cross-validation**. "Validation" is the check on held-back districts, "cross" means that the groups swap roles, and each of the 10 groups is a "fold", like a fold of a sheet of paper. The model here is a random forest, many decision trees whose answers are averaged. A decision tree is a flowchart of yes-or-no questions about a house, and [Part 6](/posts/sklearn6/) shows how one is grown.
 
 The model is bundled with the steps that prepare the data, such as filling in missing values and scaling the numbers, into a single object called a pipeline. That matters in the ten rounds: each round prepares its data using only the 9 parts it trains on, so nothing from the part left out leaks into the preparation:
 
@@ -62,10 +70,10 @@ Here is how each model did when I ran the notebook. Each score below summarises 
 |---|---|---|
 | Linear regression | on the houses it trained on | 68,648 |
 | Decision tree | on the houses it trained on | 0 |
-| Decision tree | on houses held back from training (10-fold cross-validation) | 67,153 |
-| Random forest | on houses held back from training (10-fold cross-validation) | 47,003 |
-| Random forest, grid search | held back from training (3-fold cross-validation), best | 43,954 |
-| Random forest, randomized search | held back from training (3-fold cross-validation), best | 41,983 |
+| Decision tree | on held-back districts (10 rounds, called 10-fold cross-validation) | 67,153 |
+| Random forest | on held-back districts (10 rounds, called 10-fold cross-validation) | 47,003 |
+| Random forest, grid search | on held-back districts (3 rounds, called 3-fold cross-validation), best | 43,954 |
+| Random forest, randomized search | on held-back districts (3 rounds, called 3-fold cross-validation), best | 41,983 |
 | **The final model** | **on the test set** | **41,536** |
 
 The test set is 20% of the districts, 4,128 of the 20,640, set aside at the start. The other 16,512 are the training districts, and each cross-validation score covers all of them: every one is held back once, in one of the rounds, and scored by a model that did not learn from it. So the cross-validation scores are each worked out over 16,512 districts, and the last one over the 4,128 test districts.
