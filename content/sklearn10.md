@@ -75,7 +75,7 @@ Here is how training has changed through this series:
 
 | Parts | How the models learn |
 |---|---|
-| [1](/posts/sklearn1/), [2](/posts/sklearn2/) | worked out exactly (least squares), remembered (k-nearest neighbors), or grown one split at a time (trees and forests) |
+| [1](/posts/sklearn1/), [2](/posts/sklearn2/) | worked out exactly (the best straight line), remembered (k-nearest neighbors), or grown one split at a time (trees and forests) |
 | [3](/posts/sklearn3/), [4](/posts/sklearn4/) | nudged by gradient descent, with slopes from a formula, because the models have one layer |
 | [5](/posts/sklearn5/) | solved directly by a specialised solver, or by gradient descent, which reaches almost the same answer |
 | [6](/posts/sklearn6/), [7](/posts/sklearn7/) | trees grown greedily, and combined into ensembles; gradient boosting steps downhill by adding trees |

@@ -57,7 +57,7 @@ Here is what the chapter's networks did when I ran the notebook. All of them lea
 | 200 images, reusing another network's layers (test) | 91.7% |
 | 3 hidden layers, plain SGD (stochastic gradient descent), after 10 passes | 83.7% |
 | The same network trained with AdamW | 87.9% |
-| The same network, 1cycle schedule, 25 passes | 89.2% |
+| The same network, with a step size that rises and then falls (the "1cycle" schedule), 25 passes | 89.2% |
 | 2 hidden layers with dropout (test) | 86.4% |
 
 So the 100-layer network does learn, but only just, and only with the right activation function. With ReLU, the same depth gets less than 70% after five passes.
@@ -119,7 +119,7 @@ A: They are two more activation functions, smooth bends like ReLU. Swish multipl
 
 A: During training, yes, a little, on purpose: 20% of the neurons are switched off at random on every step. When the network is used, every neuron is switched back on. My dropout network got 88.4% of the training images and 86.4% of the test images right, a small gap, which is what dropout is for.
 
-**Q: What is MC dropout for?**
+**Q: What is Monte Carlo (MC) dropout for?**
 
 A: It leaves dropout switched on when the network is used, and asks the same question 100 times. The answers vary, and the spread shows how sure the network is. For the first test image, the plain network said ankle boot with 80.9% confidence; the average of 100 dropout runs said 71.0% ankle boot and 22.3% sneaker, with a lot of disagreement between the runs. It is right, but less sure than it first claimed.
 :::

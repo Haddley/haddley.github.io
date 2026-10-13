@@ -54,7 +54,7 @@ Each of the four steps from earlier parts is one or two lines: pick a batch of 3
 | 4 | 0.85 | 0.498 |
 | 5 | 0.73 | 0.501 |
 
-The prices are in units of $100,000, so an average error of 0.50 is about $50,000. The loss includes an L2 penalty, the same one that Ridge regression uses in [Part 4](/posts/sklearn4/), which keeps the weights small, so it can keep falling while the error stays level, as it does from epoch 3 on.
+The prices are in units of $100,000, so an average error of 0.50 is about $50,000. The loss includes a penalty for large weights (called an L2 penalty), which keeps them small, so it can keep falling while the error stays level, as it does from epoch 3 on.
 
 :::watch-it An "epoch" here is not a pass through the data
 In `fit()`, one epoch shows the model every training example once. This loop's `random_batch` picks 32 houses at random on every step, so some houses come up twice in an epoch and others not at all. Here, "epoch" just means 362 steps. Small details like this are why the book suggests writing a custom loop only when `fit()` cannot do what you need.

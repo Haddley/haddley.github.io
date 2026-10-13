@@ -60,18 +60,18 @@ Grow a tree on slightly different data, or with a different random seed, and eve
 
 ## What training means here
 
-Nothing is nudged, and nothing is worked out in one calculation either. Scikit-Learn grows the tree with the CART algorithm. At the top, it tries every feature and every possible threshold, and picks the question that splits the flowers into the purest groups. Then it does the same inside each group, and so on, until it reaches the depth limit or the groups are pure. It never goes back to change an earlier question.
+Nothing is nudged, and nothing is worked out in one calculation either. Scikit-Learn grows the tree one best question at a time. At the top, it tries every measurement and every possible cut-off, such as 2.45 cm, and picks the question that splits the flowers into groups that are as nearly as possible all one species. Then it does the same inside each group, and so on, until it reaches the depth limit or the groups are pure. It never goes back to change an earlier question.
 
 That greedy, one-decision-at-a-time growth is quick, but it does not guarantee the best possible tree, and it is why a small change in the data can change the very first question. My [MiniGPT](/posts/minigpt-grown/) model works the opposite way: every one of its numbers is adjusted a little on every step, and nothing is ever fixed for good.
 
 :::no-dumb-questions
 **Q: Where does the 90.7% come from?**
 
-A: From the leaf the flower lands in. 54 training flowers ended up there, 49 of them versicolors, and 49 ÷ 54 is 90.7%. A tree's chances are just shares of the training flowers in each leaf.
+A: From the end of the branch that the flower lands in, which is called a leaf. 54 training flowers ended up there, 49 of them versicolors, and 49 ÷ 54 is 90.7%. A tree's chances are just shares of the training flowers in each leaf.
 
-**Q: Do trees need the features to be scaled, like support vector machines (SVMs)?**
+**Q: Do trees need the measurements to be rescaled first, like support vector machines (SVMs)?**
 
-A: No. Each question compares one feature with a threshold, so changing that feature's units moves the threshold, and the questions still split the flowers the same way.
+A: No. Each question compares one measurement with a cut-off, so changing its units just moves the cut-off, and the questions still split the flowers the same way.
 
 **Q: If a tree can memorise its training data, why limit it?**
 

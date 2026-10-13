@@ -10,7 +10,7 @@ slug: "sklearn18"
 image: "/assets/images/sklearn18/posts-meta.svg"
 ---
 
-In [Part 17](/posts/sklearn17/), networks learned to make pictures. This chapter of the Hands-On Machine Learning book is about a different kind of learning altogether. There are no labelled examples and no picture to copy. An agent acts in a simulated world, gets rewards, and has to work out for itself which of its actions earned them. This is reinforcement learning.
+In [Part 17](/posts/sklearn17/), networks learned to make pictures. This chapter of the Hands-On Machine Learning book is about a different kind of learning altogether. There are no labelled examples and no picture to copy. An agent acts in a simulated world, gets rewards, and has to work out for itself which of its actions earned them. This is reinforcement learning (RL).
 
 The world is a simulation called CartPole: a cart that can be pushed left or right, with a pole balanced on it. The task is deliberately simple, and made up, but it is the standard practice problem. The agent scores one point for each step the pole stays up, to a maximum of 200. A hard-coded rule, "push towards the side the pole is leaning", lasted 41.7 steps on average. A small network that learned from its rewards averaged 190.9 steps, close to the maximum.
 
@@ -53,7 +53,7 @@ I played 500 games with it. The pole stayed up for 41.7 steps on average, with a
 The policy-gradient agent learned fastest and most steadily, which is not what I expected: the DQN variants are meant to be the more advanced methods. Their curves are the lesson here. They are very unstable, and only the dueling double DQN, the last and most elaborate, was still near the top at the end.
 
 :::watch-it The agent that was best did not stay best
-Each DQN run kept a copy of its best weights and restored them at the end, because the learning curve falls off a cliff. The fixed-targets agent reached the top score of 200 steps for a long run, from about episode 360 to 480, and then slid to about 10 steps per game by episode 600, where it was no better than random. Training longer did not make it better. That is why the notebook saves the best weights.
+Each deep Q-network (DQN) run kept a copy of its best weights and restored them at the end, because the learning curve falls off a cliff. The fixed-targets agent reached the top score of 200 steps for a long run, from about episode 360 to 480, and then slid to about 10 steps per game by episode 600, where it was no better than random. Training longer did not make it better. That is why the notebook saves the best weights.
 :::
 
 ![](assets/images/sklearn18/jupyter-policy-gradient.png)

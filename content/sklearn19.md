@@ -40,7 +40,7 @@ subprocess.run(["docker", "run", "-d", "--rm", "--name", "tfserving",
     "-e", "MODEL_NAME=my_mnist_model", "tensorflow/serving:2.17.1"])
 ```
 
-Then I sent the server three test images as JSON (JavaScript Object Notation, a text format for data), and it answered with the chance of each digit:
+Then I sent the server three test images as text, in a format called JSON (JavaScript Object Notation), to a web address, which is called a REST request, and it answered with the chance of each digit:
 
 ```python
 request_json = json.dumps({"signature_name": "serving_default",
@@ -49,7 +49,7 @@ response = requests.post("http://localhost:8501/v1/models/my_mnist_model:predict
                          data=request_json).json()
 ```
 
-The server said 7, 2, and 1, with chances of 0.99, 0.99, and 0.98, which are the right digits. The same request over gRPC gave identical numbers. Here is everything I measured:
+The server said 7, 2, and 1, with chances of 0.99, 0.99, and 0.98, which are the right digits. The same request over gRPC, a faster route that sends the numbers in a compact binary form and needs a library on the client's side, gave identical numbers. Here is everything I measured:
 
 | Step | Result |
 |---|---|
@@ -70,7 +70,7 @@ My Mac has an Arm processor, and the official TensorFlow Serving image is built 
 
 This chapter changes nothing about how a model learns. A model is still nudged by slopes on batches of examples. What changes is where the work is done. The book describes two ways to split it. In data parallelism, each device holds a copy of the model, each takes a share of the batch, and the slopes are averaged before every copy makes the same nudge. In model parallelism, one big model is cut into pieces, one per device.
 
-`MirroredStrategy` is the first kind. On a machine with several GPUs it would copy the model to each one. My Mac's graphics processor is an Apple one, which the TensorFlow in this notebook does not use, so the notebook printed a warning that no GPU was detected, and `MirroredStrategy` used one device, the processor. The weights became `MirroredVariable` objects, special variables that keep copies in step, and the training ran as usual: 10 epochs of about 70 seconds each, ending at 96.35% training accuracy and 98.30% validation accuracy. It did not run faster, because there was nothing to spread the work over, but it is the same code that would.
+`MirroredStrategy` is the first kind. On a machine with several graphics processors (GPUs) it would copy the model to each one. My Mac's graphics processor is an Apple one, which the TensorFlow in this notebook does not use, so the notebook printed a warning that no GPU was detected, and `MirroredStrategy` used one device, the processor. The weights became `MirroredVariable` objects, special variables that keep copies in step, and the training ran as usual: 10 epochs of about 70 seconds each, ending at 96.35% training accuracy and 98.30% validation accuracy. It did not run faster, because there was nothing to spread the work over, but it is the same code that would.
 
 My [MiniGPT](/posts/minigpt-grown/) model has 826,433 numbers, which is small enough that none of this is needed: one machine trains it. The same ideas apply to the models behind large language models, which are split over thousands of devices, but I have not done that.
 

@@ -16,7 +16,7 @@ The example is made up: 500 points in two interlocking half-moon shapes, with no
 
 ## Key Points
 
-**The lesson:** a group of different models, each only fairly good, can beat every one of its members, because their mistakes are different and cancel out. There are three ways to build a group: have the models vote; train many copies of one kind of model, each on a different random sample of the data (a random forest is this, with decision trees); or train models one after another, each correcting the mistakes of the ones before it, which is called *boosting*, shown in a screenshot below, and often gives the best results.
+**The lesson:** a group of different models, each only fairly good, can beat every one of its members, because their mistakes are different and cancel out. There are three ways to build a group: have the models vote; train many copies of one kind of model, each on a different random sample of the data (called *bagging*, and a random forest is this, with decision trees); or train models one after another, each correcting the mistakes of the ones before it, which is called *boosting*, shown in a screenshot below, and often gives the best results.
 
 **What I learned from it:**
 - Randomness helps: trees trained on different samples make different mistakes, and averaging them cancels many of the mistakes out.

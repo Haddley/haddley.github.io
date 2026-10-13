@@ -57,9 +57,9 @@ Reducing dimensions always throws information away: the digits rebuilt from 154 
 
 ## What training means here
 
-PCA does not nudge, and it does not need to. Its directions come from a direct calculation, a standard piece of linear algebra called the singular value decomposition, so `fit` simply works them out, much like the straight line in [Part 1](/posts/sklearn1/). Randomized PCA gets close to the same answer faster, and incremental PCA works through the data a batch at a time, for datasets too big to fit in memory.
+PCA does not nudge, and it does not need to. Its directions come from a direct calculation, so `fit` simply works them out, much like the straight line in [Part 1](/posts/sklearn1/). There are faster versions for very big data, which get close to the same answer.
 
-Random projection learns nothing at all. It multiplies the data by a random table of numbers; the only decision is how many dimensions to keep. For 5,000 instances, keeping distances within 10% of the original needs 7,300 dimensions, and that number comes from a formula, not from the data.
+Another method, random projection, learns nothing at all: it multiplies the data by a random table of numbers, and the number of dimensions to keep comes from a formula, not from the data.
 
 t-SNE is the one that nudges. It starts by placing every point at random in 2D, then repeatedly moves them by [gradient descent](/posts/sklearn4/), so that points that were neighbours in the original space end up near each other. Unlike every model so far, what it nudges is not a set of model numbers but the positions of the points themselves. My [MiniGPT](/posts/minigpt-grown/) model nudges its 826,433 numbers the same way, with slopes found by [backpropagation](/posts/sklearn10/).
 
@@ -78,7 +78,7 @@ A: To look at the data. t-SNE lays high-dimensional data out in 2D so that neigh
 
 **Q: Are all of these methods still used?**
 
-A: PCA is, constantly: for making data smaller, removing noise, and drawing a first picture of a dataset. t-SNE is still used to look at data, but never to prepare it for a model, and a newer method called UMAP (uniform manifold approximation and projection) has largely taken its place for pictures. LLE, MDS, and Isomap are mostly of historical interest: they explain the idea of unrolling curved data, but I would not expect to meet them in a real project.
+A: PCA is, constantly: for making data smaller, removing noise, and drawing a first picture of a dataset. t-SNE is still used to look at data, but never to prepare it for a model, and a newer method called UMAP (uniform manifold approximation and projection) has largely taken its place for pictures. Several other methods for unrolling curved data, such as Isomap and locally linear embedding, are mostly of historical interest: they explain the idea of unrolling curved data, but I would not expect to meet them in a real project.
 :::
 
 ## Running the notebook in Jupyter

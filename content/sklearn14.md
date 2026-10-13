@@ -75,7 +75,7 @@ And here is what I got when I took a ResNet50 that someone else had trained on I
 The first answer is reasonable. The second is a reminder that the model has 1,000 categories to choose from, and none of them is the right one for a plain close-up of this flower.
 
 :::watch-it The flower classifier memorized its training pictures
-When I trained the flower classifier, the training accuracy reached 99.85% and the validation accuracy only 91.83%. The validation loss was lowest in epoch 4, at 0.3041, and then rose again to 0.3450 while the training loss kept falling. That gap is overfitting, as in [Part 4](/posts/sklearn4/): the network had started to remember its 2,752 training pictures instead of learning flowers. The notebook trains for 10 epochs regardless, so the last result is a little worse than an earlier one. It also shows data augmentation, random flips, rotations, and contrast changes that make more varied training pictures, but it does not use it in the training, so that would be one way for me to narrow the gap.
+When I trained the flower classifier, the training accuracy reached 99.85% and the validation accuracy only 91.83%. The validation loss was lowest in epoch 4, at 0.3041, and then rose again to 0.3450 while the training loss kept falling. That gap is called overfitting: the network had started to remember its 2,752 training pictures instead of learning flowers. The notebook trains for 10 epochs regardless, so the last result is a little worse than an earlier one. It also shows data augmentation, random flips, rotations, and contrast changes that make more varied training pictures, but it does not use it in the training, so that would be one way for me to narrow the gap.
 :::
 
 ## What training means here
