@@ -10,23 +10,20 @@ slug: "sklearn6"
 image: "/assets/images/sklearn6/posts-meta.svg"
 ---
 
-In [Part 5](/posts/sklearn5/), I separated classes with the widest possible street. The sixth chapter of the Hands-On Machine Learning book is about decision trees: models that classify by asking one yes-or-no question after another, and that can be read like a flowchart.
+In [Part 5](/posts/sklearn5/), I drew the widest possible line between two groups. This chapter of the Hands-On Machine Learning book gets to a decision a different way: by asking one yes-or-no question after another, like a flowchart. It is the same iris flowers as before, 150 of them, and the model's job is to say which of three species a flower belongs to, from its petal length and width. The data is real, and the flowers are only a small, clear example.
+
+A tree with two questions was enough: "is the petal length 2.45 cm or less?", then "is the petal width 1.75 cm or less?". It got 144 of the 150 flowers right, including all 50 setosas. A person can read it, which is its main attraction.
 
 ## Key Points
 
-**What the chapter covers:**
-1. **Training and drawing a tree**: Graphviz draws the tree's questions, so the model can be read
-2. **Making predictions**: a new instance follows the questions from the top of the tree down to a leaf
-3. **Class probabilities**: a leaf's chances are the share of each class among the training instances that ended up there
-4. **The CART (classification and regression trees) algorithm**: how Scikit-Learn grows a tree, one best split at a time
-5. **Regularization**: limits such as `max_depth` and `min_samples_leaf` stop a tree from carving out a region for every training point, much as Ridge and Lasso hold back a linear model in [Part 4](/posts/sklearn4/)
-6. **Regression trees**: the same idea predicting numbers, with each leaf predicting an average
-7. **Weaknesses**: trees only cut parallel to the axes, and small changes to the data can grow a very different tree
+**The lesson:** a decision tree is the easiest model to explain, because it is a list of questions that anyone can follow. The computer writes the questions: at each step it tries every question it could ask, keeps the one that separates the groups best, and repeats inside each answer. Its weakness is the other side of the same coin. Left alone, it keeps asking until it has memorised every training flower, and a small change in the data can change even its first question.
 
 **What I learned from it:**
-- A decision tree is the easiest model in the series so far to explain: anyone can follow its questions.
-- Left alone, a tree keeps splitting until it has memorised the training data, which is why the tree in [Part 2](/posts/sklearn2/) scored an error of exactly 0 on its own training set.
+- Left alone, a tree keeps splitting until it has memorised the training data, which is why the tree in [Part 2](/posts/sklearn2/) scored an error of exactly 0 on its own training houses.
+- Limiting how deep the tree may grow, or how few flowers may be left at the end of a branch, stops it from memorising. This is called regularization, and it is the same idea as the penalties in [Part 4](/posts/sklearn4/).
 - Trees are unstable: training on slightly different data can change every question.
+
+The chapter also covers trees that predict numbers, with each branch ending in an average, and how to draw a tree. I do not go into those here.
 
 :::brain-power
 Before reading on, imagine sorting the 150 iris flowers into their three species with yes-or-no questions about their petals. Which single question would you ask first, and why?

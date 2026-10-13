@@ -10,23 +10,20 @@ slug: "sklearn7"
 image: "/assets/images/sklearn7/posts-meta.svg"
 ---
 
-In [Part 6](/posts/sklearn6/), I grew a single decision tree, and saw how unstable one tree can be. The seventh chapter of the Hands-On Machine Learning book combines many models into one: an *ensemble*. A random forest, the model that did best in [Part 2](/posts/sklearn2/), is an ensemble of decision trees.
+In [Part 6](/posts/sklearn6/), I grew one decision tree, and saw how unstable it is. This chapter of the Hands-On Machine Learning book asks what happens if I train many models and let them decide together, which is called an *ensemble*. The random forest that won in [Part 2](/posts/sklearn2/) is exactly this, a vote of many decision trees.
+
+The example is made up: 500 points in two interlocking half-moon shapes, with noise, so that no straight line can separate them. It is the kind of problem where a single model is only fairly good. The best single model I tried was right on 89.6% of the test points. Three different models voting together were right on 91.2% to 92.0%, and a model that learns how best to combine them reached 92.8%.
 
 ## Key Points
 
-**What the chapter covers:**
-1. **Voting classifiers**: several different models each predict, and the majority wins
-2. **Bagging and pasting**: many copies of the same kind of model, each trained on a different random sample of the data
-3. **Out-of-bag evaluation**: each bagged model can be tested on the instances it never saw, so no separate validation set is needed
-4. **Random forests**: bagged decision trees, with extra randomness in which features each split considers
-5. **Feature importance**: a forest can measure how much each feature helps
-6. **Boosting**: models trained one after another, each one correcting the mistakes of those before it (AdaBoost and gradient boosting)
-7. **Stacking**: a final model that learns how best to combine the other models' predictions
+**The lesson:** a group of different models, each only fairly good, can beat every one of its members, because their mistakes are different and cancel out. There are three ways to build a group: have the models vote; train many copies of one kind of model, each on a different random sample of the data (a random forest is this, with decision trees); or train models one after another, each correcting the mistakes of the ones before it, which is called *boosting*, shown in a screenshot below, and often gives the best results.
 
 **What I learned from it:**
-- A group of different models, each only fairly good, can beat every one of its members.
-- Randomness helps: trees trained on different samples make different mistakes, and averaging cancels many of them out.
-- Boosting builds its ensemble in order, so it cannot be trained in parallel, but it often gives the best results.
+- Randomness helps: trees trained on different samples make different mistakes, and averaging them cancels many of the mistakes out.
+- A forest also reports how much each fact helped it, which is a cheap way to see what matters.
+- Boosting builds its group in order, so it cannot be trained in parallel.
+
+The chapter also covers a final model that learns how to combine the others (*stacking*), which appears in the table below, and a way to test each tree on the samples it never saw.
 
 :::brain-power
 Three classifiers each get between 86% and 90% of the test points right. Before reading on, guess: can a vote among the three beat all of them? When would a vote not help at all?

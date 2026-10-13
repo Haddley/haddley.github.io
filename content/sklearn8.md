@@ -10,24 +10,20 @@ slug: "sklearn8"
 image: "/assets/images/sklearn8/posts-meta.svg"
 ---
 
-In [Part 7](/posts/sklearn7/), I combined many models into one. The eighth chapter of the Hands-On Machine Learning book goes the other way, and makes the data smaller. Each MNIST image from [Part 3](/posts/sklearn3/) has 784 numbers, one per pixel, but most of them carry little information. Dimensionality reduction keeps the information and drops the rest.
+In [Part 7](/posts/sklearn7/), I combined many models into one. This chapter of the Hands-On Machine Learning book goes the other way and shrinks the data. Each handwritten digit from [Part 3](/posts/sklearn3/) is 784 numbers, one for each pixel, but most of them tell a model very little: the pixels in the corners are almost always blank. The problem is real, and the digits are the same real ones. The question is how few numbers can still describe an image.
+
+The answer was 154. A method called principal component analysis (PCA) finds the directions in which the images differ most, and keeps only those. With 154 numbers for each image instead of 784, I kept 95% of the variation between images, and could rebuild a recognisable digit from them, a little blurred.
 
 ## Key Points
 
-**What the chapter covers:**
-1. **The curse of dimensionality**: in hundreds of dimensions, points are far apart and patterns are hard to find, so models train slowly and [overfit](/posts/sklearn2/)
-2. **Projection**: if the data lies close to a flat surface, it can be flattened onto it with little loss
-3. **Manifold learning**: if the data lies on a curved surface, such as a rolled-up sheet, it has to be unrolled instead
-4. **PCA (principal component analysis)**: finds the directions in which the data varies most, and keeps just those
-5. **Explained variance**: how much of the data's variation each direction keeps, which tells you how many directions you need
-6. **Compression**: storing 154 numbers per image instead of 784, and rebuilding the image from them
-7. **Randomized PCA, incremental PCA, and random projection**: faster ways to do the same for big datasets
-8. **LLE (locally linear embedding) and t-SNE (t-distributed stochastic neighbor embedding)**: methods that unroll curved data, or lay out high-dimensional data in 2D so it can be seen
+**The lesson:** most of a picture's numbers are redundant, and a few well-chosen ones keep nearly everything. Squeezing the data like this throws some information away, so it is there to make training faster, or to let a person see the data, and not to make a model better.
 
 **What I learned from it:**
-- Most of an image's 784 numbers are redundant: 154 well-chosen numbers keep 95% of the variation.
-- Reducing dimensions throws information away, so it is usually there to speed up training or to let a person see the data, not to make the model better.
-- Squashing curved data flat mixes up points that were far apart; unrolling it keeps neighbours together.
+- 154 well-chosen numbers keep 95% of the variation in an image's 784.
+- Flattening data that lies along a curve mixes up points that were far apart. Methods for curved data, such as t-SNE, unroll it instead, so that neighbours stay together. t-SNE lays out many-numbered data in 2D so that I can see it.
+- PCA is worked out directly, in one calculation. t-SNE is the one in this chapter that nudges.
+
+The chapter also covers faster versions of PCA for very big data, and several other ways to unroll curved data, which I mention only in a screenshot.
 
 :::brain-power
 Each MNIST image has 784 pixels, but the ones around the edge are blank in almost every image. Before reading on, guess how many numbers per image you need to keep 95% of the variation.

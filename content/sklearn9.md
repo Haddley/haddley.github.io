@@ -10,24 +10,20 @@ slug: "sklearn9"
 image: "/assets/images/sklearn9/posts-meta.svg"
 ---
 
-In [Part 8](/posts/sklearn8/), I made data smaller. Every model so far in this series, except the dimensionality reduction, learned from labelled examples: a house and its price, an image and its digit. The ninth chapter of the Hands-On Machine Learning book drops the labels. Unsupervised learning looks for structure in the data alone, most often groups of similar instances, called *clusters*.
+In [Part 8](/posts/sklearn8/), I made data smaller. Nearly every model so far learned from labelled examples: a house and its price, an image and its digit. This chapter of the Hands-On Machine Learning book takes the labels away and asks what a model can find in the data alone. The most common answer is groups of similar items, called *clusters*.
+
+The examples are partly made up and partly real. The first is 2,000 invented points in five blobs, so that I know how many groups there are. The real one is 1,797 small images of handwritten digits, and the question is how far labels can go when there are very few of them. With only 50 labelled digits, picked at random, a classifier was right on 74.8% of the test images. When I used clustering to pick which 50 to label, and shared each label with every image in its cluster, it was right on 86.4%. All 1,400 labels would have given 90.7%.
 
 ## Key Points
 
-**What the chapter covers:**
-1. **Clustering versus classification**: the same flowers, with and without their species labels
-2. **K-Means**: places a chosen number of centres, and gives each instance to its nearest one
-3. **Choosing the number of clusters**: inertia keeps falling as clusters are added, so look for an "elbow", or use the silhouette score
-4. **Image segmentation**: clustering an image's colours, so that it is drawn with only a few
-5. **Semi-supervised learning**: clustering first, so that a few labels go much further
-6. **DBSCAN (density-based spatial clustering of applications with noise)**: finds clusters of any shape by following dense regions, and marks the rest as noise
-7. **Gaussian mixtures**: assume the data comes from a few bell-shaped groups, and give each instance a probability of belonging to each one
-8. **Anomaly detection**: instances in low-density regions are flagged as unusual
+**The lesson:** without labels, a model can still find structure, and that structure can make a few labels go much further. K-Means, the main method, places a chosen number of centres, gives every point to its nearest centre, moves each centre to the middle of its points, and repeats until nothing changes. There is no single right answer: the number of clusters is a choice, and different methods find different groups.
 
 **What I learned from it:**
-- Without labels, there is no single right answer; the number of clusters is a choice, and different methods find different groups.
-- K-Means only works well for round, similar-sized groups, which is why DBSCAN and Gaussian mixtures exist.
-- Clustering can save a lot of labelling: labelling 50 well-chosen instances beat labelling 50 random ones by a wide margin.
+- K-Means works well for round, similar-sized groups, and poorly for other shapes, which is why other methods exist.
+- It places its first centres at random, and can settle on a poor answer, so I run it several times and keep the best.
+- Labelling 50 well-chosen images beat labelling 50 random ones by a wide margin.
+
+The chapter also covers other clustering methods (DBSCAN and Gaussian mixtures), ways to choose the number of clusters, clustering the colours in a picture, and flagging unusual points. I do not go into those here.
 
 :::brain-power
 Imagine a scatter of points with no labels at all. Before reading on, think: how would you decide how many groups it holds, and which point belongs to which group?

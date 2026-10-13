@@ -10,24 +10,21 @@ slug: "sklearn11"
 image: "/assets/images/sklearn11/posts-meta.svg"
 ---
 
-In [Part 10](/posts/sklearn10/), I trained a network with two hidden layers. The eleventh chapter of the Hands-On Machine Learning book asks what goes wrong when a network gets deep, with tens or hundreds of layers, and collects the tricks that make deep networks trainable: better starting numbers, better activation functions, batch normalization, reusing a trained network, faster optimizers, learning rate schedules, and dropout.
+In [Part 10](/posts/sklearn10/), I trained a network with two hidden layers, and it worked. This chapter of the Hands-On Machine Learning book asks what goes wrong when a network gets deep, with tens or hundreds of layers. The example is deliberately extreme: a network with 100 hidden layers, learning to recognise clothing from Fashion MNIST, the same real pictures as before. The depth is the point. It is to show a failure, and the fixes.
+
+With the right settings, the 100-layer network learned: 82.0% of validation pictures right after five passes. With ReLU, the usual choice from Part 10, the same network got only 69.9%. Smaller changes helped in the same way: a better way of nudging took one network from 83.7% to 87.9%, and reusing another network's layers took a tiny dataset of 200 pictures from 90.5% to 91.7%.
 
 ## Key Points
 
-**What the chapter covers:**
-1. **Vanishing and exploding gradients**: the slopes that backpropagation passes back can shrink, or grow, layer by layer, until the early layers barely learn
-2. **Glorot and He initialization**: choosing the random starting numbers so that the signal keeps the same size as it passes through the layers
-3. **Better activation functions**: leaky ReLU (rectified linear unit), ELU (exponential linear unit), SELU (scaled ELU), GELU (Gaussian error linear unit), Swish, and Mish, bends that do not go flat
-4. **Batch normalization**: rescaling each layer's inputs during training, so that they stay a sensible size
-5. **Reusing pretrained layers**: starting a new network from layers that another network has already learned
-6. **Faster optimizers**: momentum, Nesterov, AdaGrad, RMSProp, Adam, and AdamW, which all decide how big each nudge should be
-7. **Learning rate scheduling**: changing the size of the nudges during training
-8. **Regularization**: L1 and L2 penalties (the ones behind Lasso and Ridge in [Part 4](/posts/sklearn4/)), dropout, Monte Carlo (MC) dropout, and max-norm, which stop a big network [memorising its training data](/posts/sklearn2/)
+**The lesson:** a deep network does not fail because it cannot represent the answer. It fails because the slopes, which backpropagation passes back through every layer, shrink or grow at each layer until the early layers barely learn. Almost every trick in this chapter is a way of keeping those slopes a sensible size, or of nudging more cleverly. Most are now the default in modern libraries, so the main thing is to know why they are there.
 
 **What I learned from it:**
-- A deep network does not fail because it cannot represent the answer; it fails because the slopes cannot get back through all the layers.
-- Most of the tricks change *how* the network is nudged, not what the network is.
-- The defaults in modern libraries, such as He initialization, ReLU, and Adam, already carry most of the chapter's lessons.
+- The numbers a network starts with matter. Starting them at the right size keeps the signal the same size as it passes through the layers.
+- The bend between layers matters. In my run, a bend called SELU, with matching starting numbers, took the 100-layer network from 69.9% with ReLU to 82.0%.
+- How the nudging is done matters too: the same network scored 83.7% with plain gradient descent and 87.9% with AdamW, a smarter way of choosing each step. A different trick, rescaling each layer's inputs during training (*batch normalization*), let a network with only two hidden layers reach 86.7% after two passes.
+- Starting from a network that someone else has trained, and switching off a random few neurons during training (*dropout*), help when data is short or a network starts to memorise its training pictures.
+
+The chapter also covers more bends than I used, more ways of nudging, and penalties for large numbers. I mention a few in the table below and do not go into the rest.
 
 :::brain-power
 In [Part 10](/posts/sklearn10/), two hidden layers recognised 87.4% of the clothing. If two layers are good, should a hundred be better? Before reading on, guess what happens when I train a network with 100 hidden layers for five passes through the data.

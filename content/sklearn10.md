@@ -10,23 +10,20 @@ slug: "sklearn10"
 image: "/assets/images/sklearn10/posts-meta.svg"
 ---
 
-In [Part 9](/posts/sklearn9/), I found groups in data with no labels. The tenth chapter of the Hands-On Machine Learning book starts the second half of the book: deep learning. It builds artificial neural networks with Keras, the deep learning library that runs on TensorFlow, and trains them with backpropagation, the method that trains the large language models behind tools like ChatGPT.
+In [Part 9](/posts/sklearn9/), I found groups in data with no labels. This chapter of the Hands-On Machine Learning book starts the second half of the book, on neural networks, the models behind most of today's AI, including the large language models behind tools like ChatGPT. I build them with Keras, a library that sits on top of TensorFlow, and train them with *backpropagation*.
+
+The task is real, if small: look at a 28 × 28 picture of an item of clothing, one of 70,000 in a set called Fashion MNIST, and say which of 10 kinds it is, from T-shirts to ankle boots. My network was right on 87.4% of 10,000 test pictures it had never seen. It had 266,610 numbers, and it learned all of them from the training pictures.
 
 ## Key Points
 
-**What the chapter covers:**
-1. **From biological to artificial neurons**: the perceptron, a single artificial neuron, and why a single layer of them cannot learn some simple patterns
-2. **The multilayer perceptron (MLP)**: layers of neurons, each layer feeding the next, with activation functions such as ReLU (rectified linear unit) between them
-3. **Backpropagation**: how a network works out which way to nudge every one of its numbers
-4. **Regression and classification MLPs**: one output for a number, one output per class for a classification
-5. **Keras's three ways to build a model**: the Sequential API (application programming interface), the Functional API, and subclassing
-6. **Saving and restoring models**, and **callbacks** such as early stopping
-7. **Fine-tuning hyperparameters**: how many layers, how many neurons, and what learning rate, searched automatically with Keras Tuner
+**The lesson:** a neural network is not a new kind of mathematics. It is layers of the weighted sums from earlier parts, with a simple bend between each layer, so that the network can learn curved patterns and not only straight ones. Its numbers start at random, and are nudged, a little at a time, in the direction that makes the answers less wrong. Backpropagation is how it works out that direction for every number in every layer at once.
 
 **What I learned from it:**
-- A neural network is many layers of the weighted sums from earlier parts, with a simple bend, such as ReLU, between them; the bends are what let it learn curved patterns.
-- Its numbers start at random, and only backpropagation and many small nudges turn them into something useful.
-- The settings that shape a network, such as its size and learning rate, are mostly found by searching, not worked out.
+- The bend between layers is a simple rule, such as "replace negative numbers with zero" (called ReLU, for rectified linear unit). Without it, a hundred layers would be no better than one.
+- The settings that shape a network, such as how many layers, how many neurons in each, and how big each nudge is, are mostly found by trying them, not worked out. The notebook automates the trying.
+- A network can be built as an ordered stack of layers, which is what I did, or in more flexible ways for networks with several inputs or outputs.
+
+The chapter also covers the history of artificial neurons, saving a trained network, and stopping training early when it stops improving. I do not go into those here.
 
 :::brain-power
 The clothing classifier below has 266,610 numbers, all starting at random. Before reading on, guess how many times each of them is nudged during training.
@@ -58,9 +55,9 @@ Here is what the networks did when I ran the notebook:
 |---|---|
 | Clothing classifier, 266,610 numbers, after 30 passes through 55,000 images | 87.4% of the 10,000 test images right |
 | Its first three test images | ankle boot, pullover, trouser: all three right |
-| California house prices, Scikit-Learn's `MLPRegressor` | an error (root mean squared error, RMSE) of 0.505, about $50,500 |
-| California house prices, a Keras network | an error (RMSE) of 0.535, about $53,500 |
-| Hyperparameter search: Hyperband, 60 trials | best validation accuracy 86.6% |
+| California house prices, Scikit-Learn's `MLPRegressor` | a typical error (RMSE, as in [Part 2](/posts/sklearn2/)) of 0.505, about $50,500 |
+| California house prices, a Keras network | a typical error (RMSE) of 0.535, about $53,500 |
+| Automatic search for the best network size and step size, 60 trials | best validation accuracy 86.6% |
 
 :::watch-it A bigger library is not automatically better
 On the [California house prices](/posts/sklearn2/), Scikit-Learn's simple `MLPRegressor` scored an error of 0.505, and the Keras network 0.535. Both are trained by backpropagation; the difference comes from settings such as the number of layers, the learning rate, and how long they train, which is why the chapter ends with a search for them.

@@ -10,23 +10,18 @@ slug: "sklearn12"
 image: "/assets/images/sklearn12/posts-meta.svg"
 ---
 
-In [Part 11](/posts/sklearn11/), I trained deep networks with Keras, and every one of them learned inside a single call to `fit()`. The twelfth chapter of the Hands-On Machine Learning book opens that call up. It goes below Keras to TensorFlow itself, and shows how to write my own loss functions, metrics, layers, and models, how TensorFlow finds slopes automatically, and how to write the training loop by hand.
+In [Part 11](/posts/sklearn11/), every network learned inside a single call to Keras's `fit()`. This chapter of the Hands-On Machine Learning book opens that call up. It goes below Keras to TensorFlow itself, and shows how to write the training loop by hand: pick some examples, measure how wrong the network is, work out each number's slope, and nudge. The task is the California house prices from [Part 2](/posts/sklearn2/), with a small network of 301 numbers. It is the real data and the real job, but a deliberately tiny network, so that the loop is easy to see.
+
+In my run, the loop took the average error from 0.66 to 0.50 over five rounds, which is about $50,000 on a house price: about the same as the neural networks in [Part 10](/posts/sklearn10/) on this data.
 
 ## Key Points
 
-**What the chapter covers:**
-1. **TensorFlow like NumPy**: tensors, which are arrays of numbers, and the operations on them
-2. **Variables**: tensors that can change, which is what a model's weights are
-3. **Custom loss functions and metrics**: such as the Huber loss, which is less upset by a few very wrong answers
-4. **Custom layers and models**: writing a layer or a whole model as a Python class, such as a model with residual blocks
-5. **Automatic differentiation**: `tf.GradientTape` records a calculation and works out the slope of the result for every variable
-6. **Custom training loops**: picking a batch, measuring the loss, finding the slopes, and nudging, all written out by hand
-7. **TensorFlow functions**: `tf.function` turns Python code into a graph of operations that TensorFlow can run faster
+**The lesson:** `fit()` is a short loop, and I can write it myself. About ten lines do the real work: pick a batch, run it through the model while TensorFlow records what it does, ask TensorFlow for every number's slope, and nudge. The recording is what makes slopes automatic: TensorFlow does not work them out from a formula, it replays the record backwards. Writing the loop by hand gives full control and makes it easy to get something subtly wrong, so the book recommends `fit()` unless the extra control is needed.
 
 **What I learned from it:**
-- `fit()` is a short loop that I can write myself: about ten lines do the real work.
-- TensorFlow does not work slopes out from a formula; it records each operation as it happens, and walks the record backwards.
-- Writing the loop by hand gives full control, and makes it easy to get something subtly wrong, so the book recommends `fit()` unless the extra control is needed.
+- Tensors, the arrays of numbers that TensorFlow works with, behave much like NumPy arrays.
+- Losses, layers, and whole models can be written as ordinary Python functions and classes, such as the Huber loss, which is less upset by a few very wrong answers.
+- A function that TensorFlow turns into a graph of operations runs faster, which Keras does to `fit()` automatically.
 
 :::brain-power
 Before reading on, try to write the training loop from memory, using the steps from [Part 10](/posts/sklearn10/) and [Part 11](/posts/sklearn11/). What has to happen on every step, and in what order?

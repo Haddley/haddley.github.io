@@ -10,23 +10,20 @@ slug: "sklearn4"
 image: "/assets/images/sklearn4/posts-meta.svg"
 ---
 
-In [Part 3](/posts/sklearn3/), I trained classifiers without asking how they find their numbers. The fourth chapter of the Hands-On Machine Learning book opens up training itself. It fits the same straight line in two completely different ways, directly in one calculation and by nudging from random numbers, and shows that they agree.
+In [Part 3](/posts/sklearn3/), I trained a classifier without asking how it finds its numbers. This chapter of the Hands-On Machine Learning book asks. The example is made up on purpose: 100 points scattered around the line y = 4 + 3x, with random noise added, so that I know the line I am looking for. The job is to find it again from the points alone, in two completely different ways.
+
+The first is a formula, the Normal Equation, which gives the best line in one calculation. The second is *nudging*: start with a random line, see which way would make it less wrong, move a little that way, and repeat. Both ended on the same line, with an intercept of 4.215 and a slope of 2.770. It is not exactly 4 and 3, because the noise pushed the points off the line.
 
 ## Key Points
 
-**What the chapter covers:**
-1. **The Normal Equation**: works out the best straight line directly, in one calculation
-2. **Gradient descent**: starts from random numbers and steps downhill along the slope of the error, over and over
-3. **Three kinds of gradient descent**: batch (all the data for every step), stochastic (one instance per step), and mini-batch (small groups)
-4. **Polynomial regression**: adding powers of a feature, such as x², lets a linear model fit a curve
-5. **Learning curves**: plotting the error as the training set grows, to spot underfitting and overfitting
-6. **Regularization**: Ridge, Lasso, Elastic Net, and early stopping, which keep a model from fitting the noise
-7. **Logistic and softmax regression**: linear models that output chances, for classification
+**The lesson:** nudging reaches the same answer as the formula, and nudging is the one that still works when there is no formula. For a straight line there is one. For a neural network, or my [MiniGPT](/posts/minigpt-grown/) model, there is none, so nudging, repeated many thousands of times, is the only way. The method has a proper name, *gradient descent*: the slope of the error shows which way is downhill, and each step goes a little way down it.
 
 **What I learned from it:**
-- Gradient descent and the direct calculation reach the same answer; they are two routes to the same line.
-- The learning rate, the size of each step, matters a lot: too small creeps, and too large jumps out of the valley altogether.
-- A "linear" model can still fit a curve, as long as the curve is made of features it is given, such as x and x².
+- The size of each step, called the learning rate, matters a lot: too small and the line creeps, too large and it jumps out of the valley altogether.
+- Nudging can use all the data for each step, one point at a time, or small groups. They all reach roughly the same line.
+- A "linear" model can still fit a curve, if I give it the curve as a feature: adding x² as a second column let it fit a curve close to y = 2 + x + 0.5x².
+
+The chapter also shows how to stop a model fitting the noise, with a penalty on large numbers (*regularization*), and how the same idea gives chances for a classification, in *logistic regression*. Logistic regression appears in the notebook screenshots below, and I do not go into either here.
 
 :::brain-power
 The Normal Equation finds the best line in one calculation. Gradient descent starts from random numbers and takes 1,000 small steps to reach the same line. Before reading on, think: why would anyone choose the slow way?

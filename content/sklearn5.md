@@ -10,22 +10,20 @@ slug: "sklearn5"
 image: "/assets/images/sklearn5/posts-meta.svg"
 ---
 
-In [Part 4](/posts/sklearn4/), I fitted lines both directly and by gradient descent. The fifth chapter of the Hands-On Machine Learning book is about support vector machines (SVMs): models that separate two classes with the widest possible gap between them.
+In [Part 4](/posts/sklearn4/), I fitted lines to points. This chapter of the Hands-On Machine Learning book draws a line between two groups instead. The task is a classic one: decide, from the petal length and width, whether an iris flower is an Iris virginica or one of the other two species. The data is real, 150 flowers measured in the 1930s, and small enough that I can picture it as dots on a page. Using it for a real purpose is not the point. It is a clear place to learn a method that is used on bigger data.
+
+Many lines would separate the two groups of flowers. The method in this chapter, the support vector machine (SVM), picks the line with the widest empty strip on either side of it, which the book calls a street. In my run, a flower with petals 5.5 cm long and 1.7 cm wide came out as an Iris virginica, and one with petals 5.0 cm by 1.5 cm did not.
 
 ## Key Points
 
-**What the chapter covers:**
-1. **Large margin classification**: of all the lines that separate two classes, an SVM picks the one with the widest "street" between them
-2. **Support vectors**: only the instances on the edges of the street decide where it goes; the rest could move without changing anything
-3. **Soft margins**: the hyperparameter `C` trades a wide street against a few instances on the wrong side of it
-4. **Feature scaling**: SVMs are sensitive to the scale of each feature, so the data is scaled first
-5. **Kernels**: the polynomial and Gaussian RBF (radial basis function) kernels let an SVM draw curved boundaries, without actually adding the extra features
-6. **SVM regression**: turn the idea around, and fit as many instances as possible inside the street
+**The lesson:** a good boundary is one that sits as far as possible from both groups, because that leaves room for new flowers that are a little different. Only the flowers on the edge of the street decide where it goes, and they are the *support vectors*. The rest could move around without changing anything. That also means the street's width depends on the units: if one measurement is in much bigger numbers than another, it dominates, so the measurements are rescaled first.
 
 **What I learned from it:**
-- An SVM does not care about most of its training data; only the support vectors matter.
-- The kernel trick gives an SVM the curved boundary that thousands of extra features would, without the cost of computing them.
-- `C` and `gamma` are the knobs to turn: small values give smooth, cautious boundaries, and large values give tight, wiggly ones.
+- An SVM ignores most of its training data. Only the flowers on the edge of the street matter.
+- A setting called `C` decides the trade-off between a wide street and a few flowers on the wrong side of it. Small `C`, a wide and forgiving street; large `C`, a narrow street that gets more of the training flowers right.
+- A *kernel* lets an SVM draw a curved boundary without computing any extra curved features, using a shortcut that compares pairs of flowers directly. A second setting, `gamma`, says how far each flower's influence reaches, and so how wiggly the curve is.
+
+The chapter also turns the idea around for predicting numbers, which I do not go into here.
 
 :::brain-power
 An SVM draws the widest possible street between two classes. Before reading on, look at a scatter of two groups of flowers in your mind: which of the flowers decide where the street goes, and which could move without changing it?
