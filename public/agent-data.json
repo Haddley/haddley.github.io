@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "sklearn20",
+      "title": "Scikit-Learn (Part 20)",
+      "description": "Looking back over nineteen chapters of Hands-On Machine Learning: how models learn, which parts are still current, and what I would do differently",
+      "date": "2026-10-13",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "machine-learning, scikit-learn, series-summary, deep-learning, gradient-descent"
+    },
+    {
       "slug": "sklearn19",
       "title": "Scikit-Learn (Part 19)",
       "description": "Training and deploying models at scale: serving a TensorFlow model with Docker over REST and gRPC, updating it live, shrinking it for a phone, and spreading training over several devices",
@@ -3102,5 +3113,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-13T02:34:11.380Z"
+  "generatedAt": "2026-10-13T04:25:15.610Z"
 }

@@ -123,7 +123,7 @@ The chapter is in the notebook that goes with the book, [19_training_and_deployi
 - I ran the parts that work on one Mac, and I did not run the cloud, cluster, and GPU parts.
 :::
 
-This is the last part of the series. I started with [Part 1](/posts/sklearn1/), where nothing is nudged, and arrived at models that are served from a container.
+Next, [Scikit-Learn (Part 20)](/posts/sklearn20/) looks back over the whole series: how every model learned, and what I would still use.
 
 ## References
 
