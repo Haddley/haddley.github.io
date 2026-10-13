@@ -12,9 +12,9 @@ image: "/assets/images/sklearn2/posts-meta.svg"
 
 The problem in this project is made up, and I will say so now. The book invents a company that wants to estimate what a typical house costs in each California district, so that an investor can decide where to buy. No one needs these estimates, because the data already holds the real price for every one of its 20,640 districts: it comes from the 1990 census, one row for each district, with facts such as its location, the age of its houses, its rooms, its population, and its incomes, and the median price of a house there.
 
-The book uses it because the answers are known, so that I can check my work. I hide some districts from the model, let it learn the link between facts and price from the rest, and then ask it to guess the prices of the hidden ones and compare its guesses with the truth. That is the same job that real valuation tools do for homes that have not sold, where the price is not known and the facts are. What matters in this chapter is the sequence of steps for a project of this kind, which carry over to real problems, and not the prices, which are 1990 prices. I explain why below.
+The book uses it because the answers are known, so that I can check my work. I hide some districts from the model, let it learn the link between facts and price from the rest, and then ask it to guess the prices of the hidden ones and compare its guesses with the truth. That is the same job that real valuation tools do for homes, where the price is not known and the facts are. What matters in this chapter is the sequence of steps for a project of this kind, which carry over to real problems, and not the prices, which are 1990 prices in any case. I explain why below.
 
-I measure the model's mistakes as the typical gap, in dollars, between its guess and the real price, a score called the root mean squared error (RMSE), where lower is better. The final model's typical mistake, on districts it had never seen, was about $41,500, about a quarter of the typical district's price of $179,700.
+The mistake for a district is the gap, in dollars, between the model's guess and the real price. On 4,128 districts that it had never seen, the final model was wrong by about $26,000 on average. Half of the districts were within about $15,500, which is about 9% of the price, and the worst guesses were off by about $300,000. The typical district's price is $180,000.
 
 In [Part 1](/posts/sklearn1/), I ran the small example from the first chapter of the Hands-On Machine Learning book. The second chapter is a whole project, from raw data to a tested model.
 
@@ -56,7 +56,7 @@ forest_rmses = -cross_val_score(forest_reg, housing, housing_labels,
                                 scoring="neg_root_mean_squared_error", cv=10)
 ```
 
-Here is how each model did when I ran the notebook. The score is the RMSE (root mean squared error), the typical size of a prediction's error, in US dollars:
+Here is how each model did when I ran the notebook. The score in the table is a number called the RMSE, a kind of typical size of the mistake in US dollars, where lower is better. It is larger than the plain average gap, and I explain why in the questions below:
 
 | Model | How it was measured | RMSE |
 |---|---|---|
@@ -103,6 +103,10 @@ My [MiniGPT](/posts/minigpt-grown/) model starts from 826,433 random numbers and
 **Q: What is a fold?**
 
 A: One of the equal parts that cross-validation cuts the training set into. With 10-fold cross-validation, the districts are cut into 10 parts. The model is trained on 9 of them, and scored on the 1 part it has not seen. Then the next part is held out instead, and so on, until every part has been the held-out one. That is 10 trained models and 10 scores, and the RMSE in the table is their average. With 3 folds, as in the two searches, each model trains on two thirds of the training set and is scored on the other third.
+
+**Q: What is the RMSE, and why not just use the average gap?**
+
+A: The plainest score is the average gap between the guess and the real price, called the mean absolute error. On the test districts that is $26,115. The book uses the RMSE instead, root mean squared error, which is $41,536 on the same districts. It is worked out in three steps: square each gap, average the squares, and take the square root. Squaring makes a big mistake count far more than a small one: a gap of $300,000 counts nine times as much as a gap of $100,000. That is why the RMSE is larger, and why it is the better score when big mistakes are what hurt, as they would for an investor. Squaring also makes the maths smoother, which helps the nudging methods of later parts. The square root at the end turns the answer back into dollars. I could also express the gap as a percentage of the price, which says whether a $26,000 mistake matters on a $60,000 house or a $500,000 one: the typical district was about 9% off. The chapter keeps to dollars.
 
 **Q: Why train about 110 models just to pick one?**
 
