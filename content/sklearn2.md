@@ -10,24 +10,26 @@ slug: "sklearn2"
 image: "/assets/images/sklearn2/posts-meta.svg"
 ---
 
-In [Part 1](/posts/sklearn1/), I ran the small example from the first chapter of the Hands-On Machine Learning book. The second chapter is a whole project, from raw data to a tested model: predicting the median house value of a California district, using data from the 1990 census.
+The model in this project predicts what a typical house costs in a California district. The book sets it up as a job for an imaginary company: a property investor needs those prices to decide which areas are worth investing in, and the prediction is one input to that decision, so a wrong price costs real money. The model learns from the districts whose prices are known, using facts about each one: its location, the age of its houses, its rooms, its population, and its incomes. It is then asked about districts where the price is not known. I measure its mistakes as the typical gap, in dollars, between the price it predicts and the real one, a score called the root mean squared error (RMSE), where lower is better. The final model's typical mistake, on districts it had never seen, was about $41,500, which is about a quarter of the typical district's price of $179,700. The data is from the 1990 census, so the prices are 1990 prices, and what this chapter teaches is the way to work through a project, not what houses cost today. I explain why below.
+
+In [Part 1](/posts/sklearn1/), I ran the small example from the first chapter of the Hands-On Machine Learning book. The second chapter is a whole project, from raw data to a tested model.
 
 ## Key Points
 
 **The eight steps of a machine learning project:**
-1. **Look at the big picture**: what is the model for, and how will its errors be measured?
+1. **Look at the big picture**: decide what the prediction will be used for, and how its errors will be measured (here, as the typical size of the mistake in dollars)
 2. **Get the data**: 20,640 California districts, with 10 columns each
 3. **Explore the data**: histograms, a map, and correlations
 4. **Prepare the data**: fill in missing values, encode text, scale the numbers, all in one pipeline
-5. **Select and train a model**: a linear model, a decision tree, then a random forest
-6. **Fine-tune the model**: grid search and randomized search
+5. **Select and train a model**: a linear model (a straight line through the data), a decision tree (a flowchart of yes-or-no questions about a house, such as "is the median income above 5?", that ends in a price), then a random forest (many decision trees, whose prices are averaged)
+6. **Fine-tune the model**: try different settings for the model and the data preparation, and keep the ones that score best, either by trying every combination from a short list (grid search) or by trying random combinations (randomized search)
 7. **Present the solution**
 8. **Launch, monitor, and maintain the system**
 
 **What I learned from it:**
 - The test set is set aside first, before looking at the data, so that it cannot influence any decision.
 - A pipeline keeps every preparation step together, so the same steps run on the training data, the test data, and any new data.
-- A model can look perfect on its own training data and still be poor: the decision tree scored an error of exactly 0 on the training set, and about 67,000 under cross-validation.
+- A model can look perfect on the houses it learned from and still be poor on new ones. The decision tree got the price of every training house exactly right, an error of $0, because it had memorised them. On houses it had not seen, its typical error was about $67,000.
 
 :::brain-power
 In this project, a decision tree scores an error of exactly 0 on its training data. Before reading on, ask yourself: is it the best model here? What would you check before trusting it with new districts?
@@ -35,7 +37,9 @@ In this project, a decision tree scores an error of exactly 0 on its training da
 
 ## Quick Example
 
-The heart of the project is a pipeline, the preparation steps followed by a model, scored with 10-fold cross-validation:
+A model's score on the data it learned from tells me almost nothing, because it can simply remember that data. To find out how good a model really is, I have to test it on data it has not seen. The code below does that without touching the test set. It cuts the training data into 10 equal parts, trains the model on 9 of them, and scores it on the part that was left out. It repeats this 10 times, so that every part is left out once, and then I have 10 scores to average. This is called 10-fold cross-validation, and each of the 10 parts is a "fold". The model here is a random forest, many decision trees whose answers are averaged. A decision tree is a flowchart of yes-or-no questions about a house, and [Part 6](/posts/sklearn6/) shows how one is grown.
+
+The model is bundled with the steps that prepare the data, such as filling in missing values and scaling the numbers, into a single object called a pipeline. That matters in the ten rounds: each round prepares its data using only the 9 parts it trains on, so nothing from the part left out leaks into the preparation:
 
 ```python
 from sklearn.ensemble import RandomForestRegressor
@@ -52,16 +56,23 @@ Here is how each model did when I ran the notebook. The score is the RMSE (root 
 
 | Model | How it was measured | RMSE |
 |---|---|---|
-| Linear regression | on the training set | 68,648 |
-| Decision tree | on the training set | 0 |
-| Decision tree | 10-fold cross-validation | 67,153 |
-| Random forest | 10-fold cross-validation | 47,003 |
-| Random forest, grid search | 3-fold cross-validation, best | 43,954 |
-| Random forest, randomized search | 3-fold cross-validation, best | 41,983 |
+| Linear regression | on the houses it trained on | 68,648 |
+| Decision tree | on the houses it trained on | 0 |
+| Decision tree | on houses held back from training (10-fold cross-validation) | 67,153 |
+| Random forest | on houses held back from training (10-fold cross-validation) | 47,003 |
+| Random forest, grid search | held back from training (3-fold cross-validation), best | 43,954 |
+| Random forest, randomized search | held back from training (3-fold cross-validation), best | 41,983 |
 | **The final model** | **on the test set** | **41,536** |
 
+**What the two searches did.** A model has settings that I choose before training starts, such as how many questions each tree may consider at once. These are called hyperparameters, and the best values are not known in advance. Two settings are searched here: `n_clusters`, how many geographic groups the pipeline sorts the districts into by latitude and longitude, and `max_features`, how many of the columns each tree may look at when it chooses a question.
+
+- **Grid search** tries every combination from a short list that I write down. The notebook's list is 3 values of `n_clusters` with 3 of `max_features`, plus 2 with 3 more: 15 combinations. Each combination is scored with 3-fold cross-validation, and the best one wins. It is thorough, and the work grows quickly as the lists get longer.
+- **Randomized search** is given a range for each setting, such as any whole number from 3 to 49 for `n_clusters`, and picks random combinations from it, here 10. It covers a wider range with the same amount of work, and is usually better when there are many settings or I do not know where the good values are.
+
+Both ended with a better score than the random forest's 47,003 with its default settings: 43,954 from the grid, and 41,983 from the random search.
+
 :::watch-it A score on the training data flatters
-The decision tree's error of 0 on its own training set became 67,153 under cross-validation. A model can memorise the data it was trained on, so only scores on data it has not seen say how it will do on new districts. That is why the test set is put aside first and used only once, at the very end.
+The decision tree's error of 0 on the houses it trained on became 67,153 on houses it had not seen. A model can memorise the data it was trained on, so only scores on data it has not seen say how it will do on new districts. That is why the test set is put aside first and used only once, at the very end.
 :::
 
 ## What training means here
@@ -95,11 +106,19 @@ A: Each cross-validation fold trains a fresh model, and each combination of sett
 
 **Q: Why grow 100 trees, when one tree can score 0?**
 
-A: The single tree memorised its training data. A random forest trains each tree on a different random sample and averages their answers, so many of their mistakes cancel out: 47,003 under cross-validation, against the single tree's 67,153.
+A: The single tree memorised its training data. A random forest trains each tree on a different random sample and averages their answers, so many of their mistakes cancel out: an error of 47,003 on houses held back from training, against the single tree's 67,153.
 
 **Q: Is the final test score good news?**
 
-A: Yes, mainly because it is close to the best cross-validation score: 41,536 on the test set, against 41,983. The estimate made during the project was honest.
+A: Yes, mainly because it is close to the best score from the held-back training houses: 41,536 on the test set, against 41,983. The estimate made during the project was honest.
+**Q: Why use data from 1990?**
+
+A: Because the chapter is about the workflow, not about the housing market. The workflow is the same for any table of data: set aside a test set, look at the data, prepare it, try a few models, fine-tune the best, and check it once on the test set. For learning that, the 1990 census data is ideal. It is free: the notebook downloads it with one line of Python from a public GitHub repository (`github.com/ageron/data`), the same file that readers of the book use, with no account, no payment, and no form to fill in. It comes from the 1990 United States census, compiled into a table for a statistics paper by Pace and Barry in 1997, and Scikit-Learn also includes a copy of it, which I used in [Part 12](/posts/sklearn12/). I have not read the exact licence terms, so I would check them before using the data in anything beyond learning. It is real, it is small enough to run on a laptop in minutes (20,640 districts), and it is full of the problems that real data has: missing values, text columns, numbers on very different scales, and values that are cut off at a limit, such as house ages capped at 52. Data from today would teach the same steps. It would just be harder to get, and harder to share.
+
+**Q: Could I adjust the 1990 prices to today's?**
+
+A: Not in any way that I would trust. General prices have risen by more than a factor of two since 1990, so I could multiply every price by that. But California houses have risen by far more than prices in general, and by different amounts in different places, so one multiplier would be wrong for most districts. The prices that are cut off at a limit would also become cut off at a limit that no real district has. The better way to get a model for today is to run the same steps on current data. That is what the last step of the project, "launch, monitor, and maintain", is about: a model is trained on data from one time, and has to be retrained as the world changes.
+
 :::
 
 ## Running the notebook in Jupyter
@@ -122,7 +141,7 @@ The project is in the chapter 2 notebook that goes with the book, [02_end_to_end
 *Scikit-Learn drew the preprocessing pipeline that feeds the linear regression: each kind of column gets its own steps, and 24 features come out*
 
 ![](assets/images/sklearn2/jupyter-cross-validation.png)
-*A random forest scored about 47,000 under cross-validation, but only 17,548 on its own training set, so it is still overfitting*
+*A random forest was wrong by about 47,000 on houses held back from training, but only 17,548 on the houses it trained on, so it is still overfitting: it does much better on what it has seen*
 
 ![](assets/images/sklearn2/jupyter-randomized-search.png)
 *Randomized search tried different numbers of geographic clusters and features: the best combination scored 41,983*
@@ -133,7 +152,7 @@ The project is in the chapter 2 notebook that goes with the book, [02_end_to_end
 :::bullet-points An end-to-end project, in short
 - Put the test set aside before looking at the data.
 - Keep every preparation step in one pipeline, so the same steps run on all data.
-- Judge models with cross-validation, never on their own training data.
+- Judge a model on houses it has not seen, using cross-validation, never on the houses it trained on.
 - Search for the best settings, then test the final model once.
 - Nothing in this project is nudged: models are worked out directly or grown one decision at a time.
 :::
