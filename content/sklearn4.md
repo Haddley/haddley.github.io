@@ -71,7 +71,9 @@ The `SGDClassifier` in [Part 3](/posts/sklearn3/) trains in exactly this way, an
 :::no-dumb-questions
 **Q: Why use gradient descent, when the Normal Equation gives the answer directly?**
 
-A: The Normal Equation gets very slow as the number of features grows, and needs all the data in memory at once. Gradient descent works on any size of data, a batch at a time. And for most models, such as neural networks, there is no direct calculation at all, so nudging is the only way.
+A: For a line through points with one measurement, such as age, the Normal Equation is the school-level calculation and is instant. A "feature" is one measurement for each point, one column of the data table, and with many features the same formula needs a bigger table: it works with a square table with one row and one column for every feature, and has to invert it. Two features make a 2 × 2 table, which is trivial. A thousand features make a table with a million entries, and the work to invert a table grows roughly with the cube of its side, so doubling the features makes the work about eight times bigger. On my Mac, with 20,000 rows of random data, the whole calculation took 0.012 seconds for 100 features, 0.37 seconds for 1,000, and 3.3 seconds for 4,000. At 100,000 features the table alone would hold ten billion numbers, about 80 gigabytes, which will not fit in memory. Gradient descent never builds that table. Each step does an amount of work in proportion to the number of features, so it carries on working when the formula cannot. And for most models, such as neural networks, there is no formula at all, so nudging is the only way.
+
+Pictures and text have thousands to millions of features: a single 1,000 × 1,000 pixel photo has a million. That is where the formula stops being practical.
 
 **Q: What is an epoch?**
 
