@@ -20,7 +20,7 @@ With the right settings, the 100-layer network learned: 82.0% of validation pict
 
 **What I learned from it:**
 - The numbers a network starts with matter. Starting them at the right size keeps the signal the same size as it passes through the layers.
-- The bend between layers matters. In my run, a bend called SELU, with matching starting numbers, took the 100-layer network from 69.9% with ReLU to 82.0%.
+- The bend between layers matters. In my run, a bend called SELU (scaled exponential linear unit), with matching starting numbers, took the 100-layer network from 69.9% with ReLU to 82.0%.
 - How the nudging is done matters too: the same network scored 83.7% with plain gradient descent and 87.9% with AdamW, a smarter way of choosing each step. A different trick, rescaling each layer's inputs during training (*batch normalization*), let a network with only two hidden layers reach 86.7% after two passes.
 - Starting from a network that someone else has trained, and switching off a random few neurons during training (*dropout*), help when data is short or a network starts to memorise its training pictures.
 

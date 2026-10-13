@@ -16,7 +16,7 @@ In my run, a network squeezed each 784-pixel picture down to 30 numbers and rebu
 
 ## Key Points
 
-**The lesson:** I can train a network to copy its input through a narrow middle, so that the middle becomes a compact summary of the picture. No labels are needed, because the picture is its own answer. A variation lets me throw away the first half, feed random numbers to the second half, and get new pictures. Two other ideas make better pictures. A *GAN* trains a forger and a detective against each other. A *diffusion model* learns one very simple task, to predict the noise that was added to a picture, and repeats it many times to turn noise into a picture.
+**The lesson:** I can train a network to copy its input through a narrow middle, so that the middle becomes a compact summary of the picture. No labels are needed, because the picture is its own answer. A variation lets me throw away the first half, feed random numbers to the second half, and get new pictures. Two other ideas make better pictures. A generative adversarial network (*GAN*) trains a forger and a detective against each other. A *diffusion model* learns one very simple task, to predict the noise that was added to a picture, and repeats it many times to turn noise into a picture.
 
 **What I learned from it:**
 - The narrow middle is the point: a network that could pass everything through would learn nothing.

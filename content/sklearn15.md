@@ -21,7 +21,7 @@ Before building anything clever, the notebook tries the simplest forecast: "the 
 **What I learned from it:**
 - A statistical forecasting method called SARIMA, which models weekly patterns directly, scored 32,041, close to the network's 29,979 on the train counts alone. For a small problem like this, a simpler model is often nearly as good.
 - Forecasting several days ahead by feeding the model its own forecasts makes errors pile up. Training it to forecast all 14 days at once avoids that: its error grew from 23,219 for tomorrow to between 33,000 and 38,000 for the days from the fifth onwards.
-- The more elaborate memory cells in the chapter, LSTM and GRU, only ran for five passes, so my numbers for them are not a fair comparison.
+- The more elaborate memory cells in the chapter, LSTM (long short-term memory) and GRU (gated recurrent unit), only ran for five passes, so my numbers for them are not a fair comparison.
 
 The chapter also covers one-dimensional convolutions and a design called WaveNet for sequences, which I do not go into.
 

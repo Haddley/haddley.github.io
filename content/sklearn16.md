@@ -20,7 +20,7 @@ The results in my run were mixed, partly because I shortened the longest trainin
 
 **What I learned from it:**
 - Padding that is not masked out is read as text. A small fix to what the model is shown took one model from 50.0% to 87.5%.
-- A translator that squeezes the whole English sentence into one summary mangles long sentences: "I like soccer and also going to the beach" became "me gusta la misma y [UNK]". With attention, it became "me gusta el fútbol y voy a la playa".
+- A translator that squeezes the whole English sentence into one summary mangles long sentences: "I like soccer and also going to the beach" became "me gusta la misma y [UNK]" ([UNK] marks a word it did not know). With attention, it became "me gusta el fútbol y voy a la playa".
 - Pretrained models carry the biases of their training text. One sentiment model called "I am from India." positive and "I am from Iraq." negative.
 
 The chapter also covers keeping several candidate translations instead of one (beam search), reading in both directions, and ready-made Transformers from Hugging Face, which I touch on below.

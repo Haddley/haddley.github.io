@@ -23,7 +23,7 @@ The examples are partly made up and partly real. The first is 2,000 invented poi
 - It places its first centres at random, and can settle on a poor answer, so I run it several times and keep the best.
 - Labelling 50 well-chosen images beat labelling 50 random ones by a wide margin.
 
-The chapter also covers other clustering methods (DBSCAN and Gaussian mixtures), ways to choose the number of clusters, clustering the colours in a picture, and flagging unusual points. I do not go into those here.
+The chapter also covers other clustering methods (DBSCAN, short for density-based spatial clustering of applications with noise, and Gaussian mixtures), ways to choose the number of clusters, clustering the colours in a picture, and flagging unusual points. I do not go into those here.
 
 :::brain-power
 Imagine a scatter of points with no labels at all. Before reading on, think: how would you decide how many groups it holds, and which point belongs to which group?

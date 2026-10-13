@@ -20,7 +20,7 @@ The answer was 154. A method called principal component analysis (PCA) finds the
 
 **What I learned from it:**
 - 154 well-chosen numbers keep 95% of the variation in an image's 784.
-- Flattening data that lies along a curve mixes up points that were far apart. Methods for curved data, such as t-SNE, unroll it instead, so that neighbours stay together. t-SNE lays out many-numbered data in 2D so that I can see it.
+- Flattening data that lies along a curve mixes up points that were far apart. Methods for curved data, such as t-SNE (t-distributed stochastic neighbor embedding), unroll it instead, so that neighbours stay together. t-SNE lays out many-numbered data in 2D so that I can see it.
 - PCA is worked out directly, in one calculation. t-SNE is the one in this chapter that nudges.
 
 The chapter also covers faster versions of PCA for very big data, and several other ways to unroll curved data, which I mention only in a screenshot.
