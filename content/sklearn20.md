@@ -59,7 +59,9 @@ The book was not padding. It is a survey, and a survey includes what was current
 
 ## What I would do differently
 
-I would run the long trainings at full length, on a machine with a GPU. In [Part 16](/posts/sklearn16/) and [Part 17](/posts/sklearn17/) I shortened the longest trainings, and the results are worse than the book's. I would also add a PyTorch version of the training loops, because the loop that I wrote by hand in MiniGPT is in PyTorch, and the loop in [Part 12](/posts/sklearn12/) is in TensorFlow. Seeing both would make the idea clearer.
+I would run the long trainings at full length. In [Part 16](/posts/sklearn16/) and [Part 17](/posts/sklearn17/) I shortened the longest ones at first, to save time, and the results were worse than the book's. My Mac has a graphics processor, and I tried it: for these small models, with batches of 32, it was slower than the processor, as [Part 12](/posts/sklearn12/) shows. A bigger machine, or bigger batches, is where a graphics processor would help.
+
+I did write the training loop of Part 12 in PyTorch, as well as in TensorFlow, because the loop that I wrote by hand in MiniGPT is in PyTorch. The two gave the same results. If I did the series again, I would write the loops in both from the start.
 
 ## References
 
