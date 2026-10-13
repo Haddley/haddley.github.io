@@ -109,7 +109,7 @@ The chapter is in the notebook that goes with the book, [16_nlp_with_rnns_and_at
 *The Transformer after 1 epoch: "I like soccer and also going to the beach" becomes "me gusta el fútbol y [UNK] a la playa", close to correct*
 
 ![](assets/images/sklearn16/jupyter-huggingface.png)
-*A pretrained sentiment model from Hugging Face, which scored "I am from India." POSITIVE and "I am from Iraq." NEGATIVE*
+*A pretrained sentiment model from Hugging Face, which I did not choose: the notebook named no model, so the library used its default, a small BERT-style model trained on movie reviews. It scored "I am from India." POSITIVE and "I am from Iraq." NEGATIVE*
 
 :::bullet-points Language models and attention, in short
 - A language model is trained to predict what comes next; writing is repeated sampling from its predictions.
