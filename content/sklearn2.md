@@ -125,6 +125,42 @@ A: Not in any way that I would trust. General prices have risen by more than a f
 
 :::
 
+## Which facts matter most?
+
+The notebook answers this two ways, and I added a third check of my own. They disagree, which is the lesson.
+
+- **Correlation:** a score from −1 to 1 for how closely a column moves with the price. Median income is far ahead at 0.69. The next best, rooms per house, is 0.14.
+- **The forest's own ranking:** after training, the random forest reports how much each column helped. Median income is first, at 0.19, then being inland, at 0.08.
+- **Leaving columns out (my own check, not in the book):** I trained a forest on the plain numeric columns, scored on houses held back from training (3-fold cross-validation), and then removed one column at a time:
+
+| Columns used | Typical error ($) |
+|---|---|
+| All the numeric columns | 50,416 |
+| Without longitude | 63,210 |
+| Without latitude | 62,235 |
+| Without median income | 51,883 |
+| Without the age of the houses | 48,786 |
+| Latitude and longitude only | 53,762 |
+| Median income only | 96,134 |
+
+Income is the strongest single link, but removing it barely hurts, because other columns carry the same information: richer districts are also in particular places. Removing location hurts most, and location alone does nearly as well as everything together. Removing the age of the houses made the error slightly smaller, which tells me that column is mostly noise. It is one run, so I would not read much into differences of a thousand dollars.
+
+So "how closely related" depends on how I ask. Columns that overlap share the credit, and a high score shows that two things move together, not that one causes the other.
+
+## Why a forest, and what else could I have used?
+
+The authors did not pick a forest in advance. They tried a linear model, a decision tree and a random forest, scored all three on houses held back from training, and kept the best, which was the forest. For a table of facts about districts, that is a sensible choice. These are the main options, with their strengths and weaknesses. This is my own summary, and the later parts show the evidence for each.
+
+| Model | Strength | Weakness |
+|---|---|---|
+| Linear regression ([Part 4](/posts/sklearn4/)), from the 1800s | Simple, fast, easy to explain: one number per column | Cannot bend to fit curves, and gives unreliable numbers when columns overlap (mine gave the island category a coefficient of 196,583 on very few houses) |
+| Decision tree ([Part 6](/posts/sklearn6/)), 1980s | Easy to read as a flowchart | Memorises its training data: an error of $0 on the training houses and $67,153 on new ones |
+| Random forest ([Part 7](/posts/sklearn7/)), 2001 | Strong on tables with little tuning, and much less prone than one tree to memorising the training data (the forest's error was 47,003 on new houses, against the tree's 67,153) | Slower, and no longer a flowchart that a person can read |
+| Gradient-boosted trees ([Part 7](/posts/sklearn7/)), 2000s | Often the most accurate on tables today | More settings to tune, and easier to overfit |
+| Neural networks ([Part 10](/posts/sklearn10/) onward), modern | The best for images, sound and text | Need much more data and tuning, and are often no better than trees on a table like this |
+
+Random forests are not new, but they are still a standard first choice for tables of data. Neural networks are what has changed in the last decade. They have taken over images and language, but trees have mostly kept the tables.
+
 ## Running the notebook in Jupyter
 
 The project is in the chapter 2 notebook that goes with the book, [02_end_to_end_machine_learning_project.ipynb](https://github.com/ageron/handson-ml3/blob/main/02_end_to_end_machine_learning_project.ipynb). I ran the project part of it, everything up to the test set, and then looked through the results in JupyterLab. The whole run took about 6 minutes on my Mac Studio, most of it in the two searches.
