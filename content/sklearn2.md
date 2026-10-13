@@ -68,6 +68,8 @@ Here is how each model did when I ran the notebook. Each score below summarises 
 | Random forest, randomized search | held back from training (3-fold cross-validation), best | 41,983 |
 | **The final model** | **on the test set** | **41,536** |
 
+The test set is 20% of the districts, 4,128 of the 20,640, set aside at the start. The other 16,512 are the training districts, and each cross-validation score covers all of them: every one is held back once, in one of the rounds, and scored by a model that did not learn from it. So the cross-validation scores are each worked out over 16,512 districts, and the last one over the 4,128 test districts.
+
 **What the two searches did.** A model has settings that I choose before training starts, such as how many questions each tree may consider at once. These are called hyperparameters, and the best values are not known in advance. Two settings are searched here: `n_clusters`, how many geographic groups the pipeline sorts the districts into by latitude and longitude, and `max_features`, how many of the columns each tree may look at when it chooses a question.
 
 - **Grid search** tries every combination from a short list that I write down. The notebook's list is 3 values of `n_clusters` with 3 of `max_features`, plus 2 with 3 more: 15 combinations. Each combination is scored with 3-fold cross-validation, and the best one wins. It is thorough, and the work grows quickly as the lists get longer.
