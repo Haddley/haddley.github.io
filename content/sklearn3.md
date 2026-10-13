@@ -10,24 +10,25 @@ slug: "sklearn3"
 image: "/assets/images/sklearn3/posts-meta.svg"
 ---
 
-In [Part 2](/posts/sklearn2/), I predicted numbers: house prices. The third chapter of the Hands-On Machine Learning book predicts classes instead, using MNIST (the Modified National Institute of Standards and Technology digits), a famous set of 70,000 small images of handwritten digits. It starts with a simpler question, "is this digit a 5?", and spends most of its time on how to tell whether a classifier is any good.
+In [Part 2](/posts/sklearn2/), I predicted a number, the price of a house. This chapter of the Hands-On Machine Learning book predicts a category instead, and the task is to look at a small picture of a handwritten digit and decide whether it is a 5. Reading handwritten digits is a real job, for postcodes and cheques, and the pictures come from MNIST, the standard practice set: 70,000 of them, each 28 × 28 = 784 pixels. Asking only "is this a 5?" is the book's way of starting with the simplest version of the problem.
+
+The lesson is how to tell whether an answer like this is any good, which is less obvious than it sounds. A program that says "not a 5" for every picture is right 91% of the time, because only about one picture in ten is a 5. The model that I trained was right 95% to 96% of the time, which sounds much better, but it found only 65% of the 5s.
 
 ## Key Points
 
-**What the chapter covers:**
-1. **The MNIST data**: 70,000 images, each 28 × 28 = 784 pixels, with the digit it shows; the first 60,000 are for training and the last 10,000 for testing
-2. **A binary classifier**: an `SGDClassifier` (SGD is short for stochastic gradient descent, explained below) that answers one question, "is this a 5?"
-3. **Accuracy can mislead**: only about 10% of the images are 5s, so a model that always says "not a 5" is already 91% accurate
-4. **The confusion matrix**: a count of every kind of right and wrong answer
-5. **Precision and recall**: of the images it calls 5s, how many really are; and of the real 5s, how many it finds
-6. **The precision/recall trade-off**: raising the threshold makes the classifier more careful, but it then misses more 5s
-7. **The ROC curve** (receiver operating characteristic): another way to compare classifiers across all thresholds
-8. **Multiclass, multilabel, and multioutput classification**: all ten digits at once, several labels per image, and even a whole cleaned-up image as the output
+**The lesson:** a high percentage of right answers can hide a poor model, when the answer I am looking for is rare. To see what is going on, I count four kinds of answer: 5s that it found, 5s that it missed, other digits it wrongly called 5s, and other digits that it rightly left alone. From those counts come two scores:
+
+- **Of the pictures it called 5s, how many really were 5s.** For my model, 83.7%. This is called *precision*.
+- **Of the real 5s, how many it found.** For my model, 65.1%. This is called *recall*.
+
+The two pull against each other. If I make the model stricter about what it calls a 5, it is right more often when it says 5 (90.0%), but it misses more of them (it found only 48.0%). Which matters more depends on what the model is for.
 
 **What I learned from it:**
-- A high accuracy can mean very little when one class is rare. The confusion matrix shows what the model actually gets wrong.
-- Precision and recall pull against each other; which matters more depends on what the model is for.
-- Some classifiers, such as support vector machines ([SVMs](/posts/sklearn5/), the subject of Part 5), decide between two classes at a time, so Scikit-Learn quietly trains several of them to handle ten digits.
+- Compare any classifier with one that always gives the same answer, as the "not a 5" program does, before being impressed by its percentage.
+- A count of every kind of right and wrong answer, called a confusion matrix, shows what the model gets wrong, which a single percentage cannot.
+- The model here, a `SGDClassifier`, is the first in the series trained by *nudging*: its numbers start at zero and are moved a little, over and over, as I explain below. SGD stands for stochastic gradient descent.
+
+The chapter also covers a third way to compare classifiers, the ROC curve, and how to classify all ten digits at once. I do not go into those here.
 
 :::brain-power
 Only about one image in ten is a 5. A classifier answers "is this a 5?" and is right 95% of the time. Before reading on, decide: is that a good classifier? What else would you want to know about it?
@@ -46,7 +47,7 @@ sgd_clf = SGDClassifier(random_state=42)
 sgd_clf.fit(X_train, y_train_5)
 ```
 
-Here is how it did when I ran the notebook, measured with [3-fold cross-validation](/posts/sklearn2/) on the training images, next to a random forest and a "classifier" that always says "not a 5":
+Here is how it did when I ran the notebook, scored on training images that were held back from it in each of three rounds, as in [Part 2](/posts/sklearn2/), next to a random forest and a "classifier" that always says "not a 5":
 
 | Model | Accuracy | Precision | Recall |
 |---|---|---|---|
@@ -57,7 +58,7 @@ Here is how it did when I ran the notebook, measured with [3-fold cross-validati
 
 "SGD" is the `SGDClassifier`; "stricter" is the same model with its threshold raised until 90% of the images it calls 5s really are 5s.
 
-The `SGDClassifier`'s confusion matrix tells the story behind its accuracy: it called 3,530 of the 5s correctly, missed 1,891, and wrongly called 687 other digits 5s.
+The confusion matrix of the `SGDClassifier`, the count of every kind of answer, tells the story behind its percentage: it called 3,530 of the 5s correctly, missed 1,891, and wrongly called 687 other digits 5s.
 
 :::watch-it High accuracy can mean very little
 A "classifier" that always says "not a 5" is right 91% of the time, because 5s are rare. The 5-detector's 95% to 96% is only a little better than doing nothing. Precision and recall show what accuracy hides: the 5-detector found only 65% of the real 5s.
@@ -65,7 +66,7 @@ A "classifier" that always says "not a 5" is right 91% of the time, because 5s a
 
 ## What training means here
 
-The `SGDClassifier` is the first model in this series that learns by nudging. SGD stands for *stochastic gradient descent*. It starts with all its numbers at zero, one weight for each of the 784 pixels plus one more, and then goes through the training images one at a time, nudging the 785 numbers a little after each image in the direction that would have made it less wrong. It passes over the 60,000 images again and again, up to 1,000 times, until the nudges stop helping. When I trained it on all ten digits with scaled pixels, it warned that it had used up those 1,000 passes before settling down: a reminder that nudging can run out of steps.
+The `SGDClassifier` is the first model in this series that learns by nudging. It starts with all its numbers at zero, one weight for each of the 784 pixels plus one more, and then goes through the training images one at a time, nudging the 785 numbers a little after each image in the direction that would have made it less wrong. It passes over the 60,000 images again and again, up to 1,000 times, until the nudges stop helping. When I trained it on all ten digits with scaled pixels, it warned that it had used up those 1,000 passes before settling down: a reminder that nudging can run out of steps.
 
 [Part 4](/posts/sklearn4/) shows this kind of training in detail. It is the same kind of step my [MiniGPT](/posts/minigpt-grown/) model takes, but MiniGPT needs [backpropagation](/posts/sklearn10/) to find its slopes, because it has many layers; a linear classifier like this one has only one, so its slope comes from a simple formula.
 
