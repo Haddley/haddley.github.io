@@ -46,7 +46,7 @@ for epoch in range(n_epochs):
     theta = theta - eta * gradients
 ```
 
-Here is what each method found when I ran the notebook. The noise means that no method can recover exactly 4 and 3:
+Here is what each method found when I ran the notebook. Batch gradient descent uses all 100 points for every step, and stochastic gradient descent uses one point at a time. The noise means that no method can recover exactly 4 and 3:
 
 | Method | Intercept | Slope |
 |---|---|---|
