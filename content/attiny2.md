@@ -17,6 +17,9 @@ The job is an e-bike speed limiter. A hub motor has a speed sensor: a ring of 6 
 - **Below 25 km/h**, the chip copies the signal straight through, so the controller sees the true speed.
 - **Above 25 km/h**, the chip sends pulses at twice the input rate, so the controller sees twice the true speed. A controller set to a limit above 25 km/h then cuts assistance at about 25 km/h real speed.
 
+![](assets/images/attiny2/mirror-vs-double.svg)
+*Drawn to the same 200 ms time scale: at 15 km/h the output keeps the input's 92.6 ms period, and at 30 km/h it sends two pulses for every one it receives, so its period drops from 46.3 ms to 23.1 ms*
+
 ```mermaid
 flowchart LR
     M["Hub motor<br/>6-magnet speed hall"] -- "white wire<br/>(motor side)" --> R1["1 kΩ"]
