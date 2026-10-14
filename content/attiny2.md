@@ -42,7 +42,11 @@ The threshold comes from the law where I would ride. [Transport for NSW](https:/
 - a motor that provides throttle power assistance up to 6 km/h, or up to 25 km/h when the rider is pedalling
 - a motor that does not provide power at speeds higher than 25 km/h
 
-## Beat 1 — A fake wheel in Tinkercad
+Many e-bikes on sale assist well past that. Velowave advertises its [Ranger 1.0](https://www.velowavebikes.com/blogs/velowave-blogs/2025s-best-value-fat-tire-electric-bike-velowave-ranger-1-0) fat tire e-bike as reaching "up to 28MPH in pedal assist mode", which is about 45 km/h. A bike like that needs its assistance limited to 25 km/h before I can ride it legally in NSW, and that is the job of this chip.
+
+The law also allows a throttle to assist up to 6 km/h. I disabled the throttle altogether, so the only assistance left is pedal assist, and the chip only has to keep that below 25 km/h.
+
+## A fake wheel in Tinkercad
 
 I did not want to test this on a moving bike first, so I built the bench test in [Tinkercad](https://www.tinkercad.com), as I did in Part 1. Tinkercad can run two microcontrollers in one circuit, each with its own code. I used an Arduino Uno as a wheel simulator and the ATtiny as the device under test.
 
@@ -82,36 +86,32 @@ periodUs              = (uint32_t)(1000000.0f / pps);
 ```
 
 :::brain-power Before you read the numbers
-A 29-inch wheel has a circumference of about 2.31 m. At 25 km/h, how many milliseconds pass between two magnets? Work it out before you read the table.
+A 29-inch wheel has a circumference of about 2.31 m. At 15 km/h, how many milliseconds pass between two magnets? Work it out before you read the table.
 :::
 
 | Speed | Input period | Input LOW pulse | Mode | Output period | Output LOW pulse |
 |---|---|---|---|---|---|
-| 5 km/h | 278 ms | 50.0 ms | mirror | 278 ms | 50.0 ms |
-| 15 km/h | 92.6 ms | 16.7 ms | mirror | 92.6 ms | 16.7 ms |
-| 20 km/h | 69.4 ms | 12.5 ms | mirror | 69.4 ms | 12.5 ms |
-| 25 km/h | 55.5 ms | 10.0 ms | mirror (threshold) | 55.5 ms | 10.0 ms |
-| 27 km/h | 51.4 ms | 9.3 ms | double | 25.7 ms | 4.6 ms |
-| 30 km/h | 46.3 ms | 8.3 ms | double | 23.1 ms | 4.2 ms |
+| 15 km/h (below 25) | 92.6 ms | 16.7 ms | mirror | 92.6 ms | 16.7 ms |
+| 30 km/h (above 25) | 46.3 ms | 8.3 ms | double | 23.1 ms | 4.2 ms |
 
-## Beat 2 — Mirror mode at 15 km/h
+## Below 25 km/h: mirror
 
-I set `SPEED_KMH` to 15 and started the simulation. Both scopes show the same thing: one LOW pulse in each 100 ms window, because at 15 km/h a magnet passes every 92.6 ms. The output copies the input.
+I set `SPEED_KMH` to 15, well below the 25 km/h threshold, and started the simulation. Both scopes show the same thing: one LOW pulse in each 100 ms window, because at 15 km/h a magnet passes every 92.6 ms. The output copies the input.
 
 ![](assets/images/attiny2/tinkercad-mirror-15kmh.png)
 *At 15 km/h both scopes show a single LOW pulse per window, so the ATtiny passes the signal straight through*
 
-## Beat 3 — Doubling mode at 30 km/h
+## Above 25 km/h: double
 
-I changed `SPEED_KMH` to 30 and ran it again. Now the scopes disagree. The right scope, on the input, shows about two pulses per 100 ms window, one every 46 ms. The left scope, on the output, shows about four, one every 23 ms.
+I changed `SPEED_KMH` to 30, just above the 25 km/h threshold, and ran it again. Now the scopes disagree. The right scope, on the input, shows about two pulses per 100 ms window, one every 46 ms. The left scope, on the output, shows about four, one every 23 ms.
 
 ![](assets/images/attiny2/tinkercad-double-30kmh.png)
-*At 30 km/h the output (left) has twice as many pulses as the input (right)*
+*Above 25 km/h (here 30 km/h) the output (left) has twice as many pulses as the input (right)*
 
 ![](assets/images/attiny2/tinkercad-attiny-code.png)
-*The same run with the ATtiny's code open. The header comment describes the behaviour, the 1 km/h hysteresis, and how the hub connector's wires are used.*
+*The same run with the ATtiny's code open. The header comment describes the behaviour and how the hub connector's wires are used.*
 
-## Beat 4 — The real breadboard
+## The real breadboard
 
 I then built the same circuit on a real breadboard, turned to match the Tinkercad view: the ATtiny85 across the centre gap, the yellow signal wire coming in through the input resistor at the bottom, and the output resistor and power links along the top.
 
@@ -264,7 +264,7 @@ A: Interrupts still fire while the loop is blocked. The ISR preempts `delayMicro
 
 **Q: How much of the time does the loop spend blocked?**
 
-A: At 27 km/h the doubled output period is 25.7 ms and each pulse is about 4.6 ms, so the loop is blocked for under a fifth of each period. At 60 km/h it is about 2 ms out of 11.6 ms. Well past 100 km/h the pulses would eat too much of the budget, and the next step would be a hardware timer (Timer1 in CTC mode). For a 25 km/h limit that is unnecessary.
+A: At 30 km/h the doubled output period is 23.1 ms and each pulse is about 4.2 ms, so the loop is blocked for under a fifth of each period. At 60 km/h it is about 2 ms out of 11.6 ms. Well past 100 km/h the pulses would eat too much of the budget, and the next step would be a hardware timer (Timer1 in CTC mode). For a 25 km/h limit that is unnecessary.
 
 **Q: The ISR reads `doubling` while the loop writes it. Is that safe?**
 
@@ -285,7 +285,7 @@ sequenceDiagram
     In->>ISR: falling edge
     ISR->>Out: LOW (mirror)
     ISR->>ML: newMeas, periodUs
-    ML->>ML: speed 27 km/h > 25
+    ML->>ML: speed 30 km/h > 25
     ML->>ML: doubling = true<br/>tOutLastUs = micros()
     Note over ISR,Out: Doubling mode
     In->>ISR: rising edge
@@ -306,7 +306,7 @@ sequenceDiagram
 - **Doubling to mirror:** the loop copies the current input level to the output with `digitalWrite(OUT_PIN, digitalRead(HALL_IN_PIN))`. From then on, the ISR keeps them in step.
 
 :::watch-it The handover into doubling is not perfectly clean
-The decision to start doubling is made right after a falling edge, and in mirror mode the ISR has just copied that LOW to PB3. When the ISR stops mirroring, nothing raises the output again until the loop's first synthetic pulse ends, one output period plus one pulse width later. At 27 km/h that is one LOW pulse stretched to about 30 ms. The controller sees one long pulse and then the doubled train, so in practice it is one odd reading. If it mattered, the fix would be to end that first LOW pulse after `outPulseUs` from the falling edge, instead of waiting for the scheduler.
+The decision to start doubling is made right after a falling edge, and in mirror mode the ISR has just copied that LOW to PB3. When the ISR stops mirroring, nothing raises the output again until the loop's first synthetic pulse ends, one output period plus one pulse width later. At 30 km/h that is one LOW pulse stretched to about 27 ms. The controller sees one long pulse and then the doubled train, so in practice it is one odd reading. If it mattered, the fix would be to end that first LOW pulse after `outPulseUs` from the falling edge, instead of waiting for the scheduler.
 :::
 
 :::watch-it Idle can fight the ISR when the wheel starts
@@ -657,7 +657,7 @@ ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 - **The scopes confirmed the behaviour, not the numbers.** A 100 ms window shows that the output has twice as many pulses at 30 km/h. It does not show the transitions, which only happen when the speed crosses 25 km/h during a run. Those I checked by reading the code, which is how I found the stretched pulse at the handover.
 
 :::bullet-points Recap
-- The ATtiny85 measures the hub-motor speed signal and mirrors it below 25 km/h and doubles it above, with 1 km/h of hysteresis.
+- The ATtiny85 measures the hub-motor speed signal and mirrors it below 25 km/h and doubles it above.
 - The ISR timestamps edges and mirrors; the main loop computes speed, picks the mode, and generates the doubled pulses.
 - One `volatile bool` decides who drives the output, and both transitions happen on a falling edge.
 - Tinkercad with an Uno as a fake wheel showed one pulse per window at 15 km/h on both sides, and twice as many pulses on the output at 30 km/h.
@@ -668,4 +668,5 @@ ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 - [Part 1 — Programming a bare ATtiny85](/posts/attiny1/)
 - [Tinkercad](https://www.tinkercad.com)
 - [Transport for NSW: E-bikes](https://www.transport.nsw.gov.au/roadsafety/bicycle-riders/ebikes)
+- [Velowave: 2025 Best Value Fat Tire Electric Bike: Velowave Ranger 1.0](https://www.velowavebikes.com/blogs/velowave-blogs/2025s-best-value-fat-tire-electric-bike-velowave-ranger-1-0)
 - [avr-libc: atomic and non-atomic blocks](https://avrdudes.github.io/avr-libc/avr-libc-user-manual/group__util__atomic.html)
