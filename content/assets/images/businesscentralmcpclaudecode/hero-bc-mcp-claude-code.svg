@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
-  <circle cx="60" cy="60" r="58" fill="#0d3b3e" />
+  <rect width="120" height="120" rx="22" fill="#0d3b3e"/>
 
   <!-- Business Central: a 2x2 grid of API tiles, left side -->
   <g opacity="0.95">

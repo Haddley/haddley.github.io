@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
-  <circle cx="60" cy="60" r="58" fill="#1a2b4b" />
+  <rect width="120" height="120" rx="22" fill="#1a2b4b"/>
   <!-- Three stacked layers: DB, API, UI -->
   <rect x="26" y="78" width="68" height="16" rx="4" fill="#4fc3f7" opacity="0.55"/>
   <rect x="30" y="56" width="60" height="16" rx="4" fill="#80deea" opacity="0.75"/>

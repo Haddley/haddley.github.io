@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
-  <circle cx="60" cy="60" r="58" fill="#1a2b4b" />
+  <rect width="120" height="120" rx="22" fill="#1a2b4b"/>
 
   <!-- Constitution document, top, governing everything below it -->
   <path d="M42 12 H70 L78 20 V46 H42 Z" fill="#ffffff" opacity="0.95"/>

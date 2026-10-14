@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
-  <circle cx="60" cy="60" r="58" fill="#1a2b4b" />
+  <rect width="120" height="120" rx="22" fill="#1a2b4b"/>
 
   <!-- Five small agent circles in a ring, each a persona -->
   <circle cx="60" cy="22" r="9" fill="#ffab40" opacity="0.9"/>
