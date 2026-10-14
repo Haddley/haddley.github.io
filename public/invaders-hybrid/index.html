@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Invaders</title>
+    <style>
+        body {
+            margin: 0;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: monospace;
+        }
+        .game-container {
+            position: relative;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 800px;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            text-align: center;
+            gap: 12px;
+        }
+        #start {
+            display: flex;
+        }
+        #game-over {
+            display: none;
+        }
+        button {
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <canvas id="game" width="800" height="600"></canvas>
+        <div id="start" class="overlay">
+            PRESS SPACE TO START
+        </div>
+        <div id="game-over" class="overlay" style="display:none">
+            <h1>GAME OVER</h1>
+            <div class="score"></div>
+            <div class="hi-score"></div>
+            <div class="new-hi-score" style="display:none">NEW HI-SCORE!</div>
+            <button id="restart">RESTART</button>
+        </div>
+    </div>
+
+    <script type="module" src="./src/engine.js"></script>
+</body>
+</html>

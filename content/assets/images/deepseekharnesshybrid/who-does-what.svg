@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="760" height="380" role="img" font-family="-apple-system, Helvetica, Arial, sans-serif">
+  <title>The planner on DeepSeek in the cloud hands one step at a time to qwen3-coder on my Mac, then reads the files back and checks them</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#44546a"/></marker>
+  </defs>
+  <rect width="760" height="380" rx="16" fill="#f6f8fb"/>
+
+  <!-- planner -->
+  <rect x="24" y="40" width="250" height="210" rx="14" fill="#e3f0fb" stroke="#2a7fc0" stroke-width="2.5"/>
+  <text x="149" y="30" text-anchor="middle" font-size="14" fill="#2a7fc0" font-weight="700">IN THE CLOUD</text>
+  <text x="149" y="78" text-anchor="middle" font-size="20" font-weight="700" fill="#16324f">DeepSeek V4 Pro</text>
+  <text x="149" y="104" text-anchor="middle" font-size="16" fill="#16324f">the planner</text>
+  <text x="149" y="140" text-anchor="middle" font-size="14" fill="#16324f">1. reads PRD.md and PDD.md</text>
+  <text x="149" y="162" text-anchor="middle" font-size="14" fill="#16324f">2. writes ARCHITECTURE.md</text>
+  <text x="149" y="184" text-anchor="middle" font-size="14" fill="#16324f">3. writes one packet per step</text>
+  <text x="149" y="206" text-anchor="middle" font-size="14" fill="#16324f">4. reads the files back</text>
+  <text x="149" y="228" text-anchor="middle" font-size="14" fill="#16324f">5. runs the check, sends fixes</text>
+
+  <!-- implementer -->
+  <rect x="486" y="40" width="250" height="210" rx="14" fill="#e6f5ec" stroke="#2f9e63" stroke-width="2.5"/>
+  <text x="611" y="30" text-anchor="middle" font-size="14" fill="#2f9e63" font-weight="700">ON MY MAC</text>
+  <text x="611" y="78" text-anchor="middle" font-size="20" font-weight="700" fill="#14402a">qwen3-coder:30b</text>
+  <text x="611" y="104" text-anchor="middle" font-size="16" fill="#14402a">the implementer</text>
+  <text x="611" y="150" text-anchor="middle" font-size="14" fill="#14402a">follows one packet</text>
+  <text x="611" y="172" text-anchor="middle" font-size="14" fill="#14402a">writes the files it names</text>
+  <text x="611" y="194" text-anchor="middle" font-size="14" fill="#14402a">and nothing else</text>
+  <text x="611" y="228" text-anchor="middle" font-size="14" fill="#14402a">free, but slower</text>
+
+  <!-- packet arrow -->
+  <line x1="278" y1="105" x2="482" y2="105" stroke="#44546a" stroke-width="3" marker-end="url(#a)"/>
+  <rect x="296" y="52" width="170" height="38" rx="8" fill="#fff6dc" stroke="#d9a21b" stroke-width="2"/>
+  <text x="381" y="68" text-anchor="middle" font-size="13" font-weight="700" fill="#5a4300">handoff packet</text>
+  <text x="381" y="84" text-anchor="middle" font-size="12" fill="#5a4300">one step, exact names</text>
+
+  <!-- files arrow -->
+  <line x1="482" y1="185" x2="278" y2="185" stroke="#44546a" stroke-width="3" marker-end="url(#a)"/>
+  <rect x="316" y="196" width="130" height="30" rx="8" fill="#fff" stroke="#44546a" stroke-width="1.5"/>
+  <text x="381" y="216" text-anchor="middle" font-size="13" fill="#16324f">the files it wrote</text>
+
+  <!-- loop note -->
+  <path d="M149 252 L149 300 L611 300 L611 254" fill="none" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#a)"/>
+  <rect x="236" y="284" width="288" height="32" rx="8" fill="#fdecea" stroke="#c0392b" stroke-width="1.5"/>
+  <text x="380" y="305" text-anchor="middle" font-size="14" fill="#7a1f16">wrong? a correction packet, same model</text>
+
+  <text x="380" y="352" text-anchor="middle" font-size="14" fill="#44546a">my hybrid run: 12 build packets and 5 fix packets, 17 subagents in all</text>
+</svg>

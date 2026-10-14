@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Space Invaders</title>
+  <style>
+    :root {
+      --green: #4dff4d;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #000;
+      font-family: "Courier New", monospace;
+      color: var(--green);
+    }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #wrap {
+      position: relative;
+      line-height: 0;
+    }
+    canvas {
+      display: block;
+      background: #000;
+      image-rendering: pixelated;
+    }
+    .overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.85);
+    }
+    .hidden { display: none !important; }
+    h1 {
+      font-size: 42px;
+      margin: 0 0 10px;
+      letter-spacing: 4px;
+      color: var(--green);
+    }
+    h2 {
+      font-size: 34px;
+      margin: 0 0 12px;
+      color: var(--green);
+    }
+    p {
+      font-size: 18px;
+      margin: 6px 0;
+      color: #fff;
+    }
+    .blink { animation: blink 1.2s step-end infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    button {
+      font-family: inherit;
+      font-size: 20px;
+      padding: 10px 26px;
+      margin-top: 16px;
+      cursor: pointer;
+      background: var(--green);
+      color: #000;
+      border: none;
+      letter-spacing: 2px;
+    }
+    button:hover { background: #a6ffa6; }
+    #new-hiscore { color: #ffd24d; font-size: 22px; }
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <canvas id="game" width="800" height="600"></canvas>
+
+    <div id="start-overlay" class="overlay">
+      <h1>SPACE INVADERS</h1>
+      <p class="blink">PRESS SPACE OR CLICK TO START</p>
+    </div>
+
+    <div id="wave-overlay" class="overlay hidden">
+      <h2 id="wave-text">WAVE 1</h2>
+    </div>
+
+    <div id="gameover-overlay" class="overlay hidden">
+      <h1>GAME OVER</h1>
+      <p id="final-score">SCORE 0000</p>
+      <p id="new-hiscore" class="hidden">NEW HI-SCORE!</p>
+      <button id="restart-button">RESTART</button>
+    </div>
+  </div>
+
+  <script type="module" src="./src/engine.js"></script>
+</body>
+</html>

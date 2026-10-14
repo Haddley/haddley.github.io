@@ -1,0 +1,7 @@
+{
+  "name": "space-invaders",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Vanilla browser Space Invaders — no build step, no dependencies."
+}
