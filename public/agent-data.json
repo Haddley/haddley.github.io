@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "deepseekharnesshybrid",
+      "title": "DeepSeek Harness (Part 3)",
+      "description": "A hosted DeepSeek V4 Pro model builds Space Invaders and hands 15 small functions to qwen3-coder:30b subagents running on my Mac: every piece written locally, a playable game in 25 minutes for $0.40, and the two limits I found along the way",
+      "date": "2026-10-16",
+      "categories": [
+        "AI"
+      ],
+      "tags": "deepseek, ollama, subagents, ai-agent, local-llm"
+    },
+    {
       "slug": "sklearn20",
       "title": "Scikit-Learn (Part 20)",
       "description": "Looking back over nineteen chapters of Hands-On Machine Learning: how models learn, which parts are still current, and what I would do differently",
@@ -3111,7 +3121,15 @@
         "JavaScript"
       ],
       "tags": "rest-api, node, express"
+    },
+    {
+      "slug": "deepseekharnesshybridnotes",
+      "title": "",
+      "description": "",
+      "date": "",
+      "categories": [],
+      "tags": ""
     }
   ],
-  "generatedAt": "2026-10-15T02:36:37.678Z"
+  "generatedAt": "2026-10-15T23:24:09.663Z"
 }
