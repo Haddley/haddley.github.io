@@ -118,6 +118,25 @@ I then built the same circuit on a real breadboard, turned to match the Tinkerca
 ![](assets/images/attiny2/breadboard-attiny-circuit.jpg)
 *I built the circuit on a real breadboard, in the same layout as the Tinkercad design*
 
+## On the bike
+
+For a first field test I put the breadboard in the bike's frame bag and wired it into the cut speed wire.
+
+![](assets/images/attiny2/breadboard-frame-bag.jpg)
+*I put the breadboard in the frame bag, with the ATtiny85 between the hub motor's speed wire and the controller's*
+
+Then I filmed the bike's display while the wheel sped up and slowed down.
+
+![](assets/mp4/attiny2/field-test.mp4)
+*The display climbs through 14, 19 and 26 km/h, jumps to about 53 km/h when the chip starts doubling, falls through 50 km/h as the wheel slows, and drops back to 23 km/h when the chip returns to mirroring*
+
+The display shows both cases:
+
+- **Below 25 km/h**, it shows the true speed, because the chip mirrors the signal.
+- **Above 25 km/h**, it shows about twice the true speed. A reading of 53 km/h means the wheel is turning at about 26.5 km/h.
+
+The display lags the chip a little, so it shows 26 and 28 km/h for a moment before the jump. On the way down, the readings of 49 and 50 km/h are a true speed between 24 and 25 km/h. The chip keeps doubling until the speed falls below 24 km/h (the hysteresis in the code), and then the display drops straight to 23 km/h.
+
 ## The problem: two modes, two timing budgets
 
 The two modes want different things from the chip, and that conflict shapes the whole program.
