@@ -67,6 +67,14 @@ Policy gradients nudge the network's numbers directly. After a batch of games, e
 
 A DQN does something else. It learns Q-values: how much reward to expect, in total, from taking an action in a state. The network is trained with a target that it partly makes itself: the target is the reward just received, plus the discounted best Q-value of the next state, as the network itself estimates it. That is why it is unstable, because the target moves whenever the network does, and why the chapter's improvements, such as a separate target network that is updated only every 50 episodes, help.
 
+:::pencil A learner made of matchboxes
+In 2019 I helped two of my children build a [matchbox Hexapawn learner](/posts/machinelearning1/), based on Martin Gardner's design. Each matchbox holds one board position, and its coloured beads are the moves it can make. It draws a bead at random to choose a move, and after a lost game it removes the bead for the losing move. How is that like the policy-gradient agent? And why can the matchboxes only get better, when the DQN agents in this part reached the top score and then fell away?
+
+:::answer
+The beads are a policy: the chances of each move in each position. Drawing a bead samples from those chances, just as the policy-gradient agent samples its action, and removing a bead after a loss makes that move less likely, as a low reward does. The difference is that each matchbox learns alone, and it only ever removes moves that lost. It has no network whose numbers are shared between positions, and no target that moves as it learns, so nothing it has learned is ever undone.
+:::
+:::
+
 The notebook also solves a tiny world with 3 states exactly, by repeating a calculation until the Q-values stop changing. No network is needed there: the answer is 18.9, 17.0, and 13.6 for the three actions available in state 0, and the best action in each state is 0, 0, and 1. That is the case in which nothing is nudged, like the models in [Part 1](/posts/sklearn1/).
 
 My [MiniGPT](/posts/minigpt-grown/) model has a loss that compares its letters with the real next letters. Systems like ChatGPT add a second stage, in which people's ratings of its answers are the reward, and they use methods from this chapter's family. I have not done that.

@@ -17,13 +17,15 @@ For a science fair in 2019 I helped two of my children build an [instructables.c
 
 ## Hexapawn Educable Robot
 
-The project is based on the matchbox computer described by Martin Garner.
+The project is based on the matchbox computer described by Martin Gardner.
 
-In [his article](https://www.cs.williams.edu/~freund/cs136-073/GardnerHexapawn.pdf) Martin explained that learning machines are computers that improve with experience.
+In [his article](https://www.cs.williams.edu/~freund/cs136-073/GardnerHexapawn.pdf) Gardner explained that learning machines are computers that improve with experience.
 
 This learning machine improves over time through [reinforcement learning](https://www.techtarget.com/searchenterpriseai/definition/reinforcement-learning).
 
 Reinforcement learning is a training method based on rewarding desired behaviors and/or punishing undesired ones (by removing a colored bead in this case).
+
+In [Scikit-Learn (Part 18)](/posts/sklearn18/) I came back to reinforcement learning with neural networks. There a network learns to balance a pole on a cart, but the idea is the same: it is never told the right move, and it learns only from how each game turned out.
 
 ![](/assets/mp4/machinelearning1/machinelearning.mp4)
 *Matchbox Mini Chess Learning Machine*
