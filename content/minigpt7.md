@@ -526,6 +526,7 @@ Next, [MiniGPT, grown in code you can read](/posts/minigpt8/) uses this whole pr
 
 ### References
 
+- [Explaining transformers and attention mechanisms](https://www.facebook.com/reel/2327253598113055)
 - [The readable program and notebook — minigpt-series, `readable/`](https://github.com/Haddley/minigpt-series/tree/main/readable)
 - [MiniGPT: Rebuilding GPT from First Principles — Jibin Joseph, 2026](https://arxiv.org/abs/2605.17398)
 - [Jibin Joseph's MiniGPT notebook](https://github.com/jibin10/MiniGPT)
