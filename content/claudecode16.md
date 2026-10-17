@@ -159,9 +159,13 @@ list todo items
 
 ## The nine skills, with examples
 
-I never named a skill in my session. I asked in plain English, and Claude chose the skill whose description matched. These are the nine skills, with requests that each one handles. Three of the prompts are from my session, and I say so under each one. I took the others from the skills' own instructions.
+I never named a skill in my session. I asked in plain English, and Claude chose the skill whose description matched. To see each skill at work, I went back to the same folder and typed one or two prompts for each skill into a single Claude Code session, one after another, against my development environment. Under each prompt is what Claude Code showed: the skill it loaded, the commands it ran (shortened), and its reply.
 
-**dv-overview: the rules the others follow.** It loads first for any Dataverse, Dynamics 365 or Power Platform request. It does no work itself. It holds the rules: check what is already connected before setting anything up, use Python rather than Node.js for scripts, confirm the environment before any change, and always ask for the publisher prefix, because a prefix can never be changed. It also says what is out of scope: canvas apps, Power Automate flows and Business Central.
+:::watch-it Two CLIs, two environments
+The Dataverse CLI was signed in to my development environment, but the PAC CLI's active profile still pointed at a different environment from earlier work: the PAC sign-in from my session had never been saved. Every skill that runs `pac` would have acted on the wrong environment. I signed the PAC CLI in to the development environment before running those prompts, and checked the result with `pac org who`. The device-code sign-in kept crashing with "No token cache item found", so I used the browser sign-in instead: `pac auth create` without `--deviceCode`.
+:::
+
+**dv-overview: the rules the others follow.** It loads first for any Dataverse, Dynamics 365 or Power Platform request. It does no work itself. It holds the rules: check what is already connected before setting anything up, use Python rather than Node.js for scripts, confirm the environment before any change, and always ask for the publisher prefix, because a prefix can never be changed. It also says what is out of scope: canvas apps, Power Automate flows and Business Central. There is no prompt for it, but it shows up in the first transcript below.
 
 **dv-connect: one-step setup.** It checks the tools, chooses the environment, signs in to the Dataverse CLI and the PAC CLI, writes a `.env` file, and registers the MCP server. Every step checks whether it is already done and skips it if so.
 
@@ -169,108 +173,288 @@ I never named a skill in my session. I asked in plain English, and Claude chose 
 Connect to my Dataverse environment
 ```
 
-I ran this one.
+This was the first prompt of my session, and the screenshots above show what happened: a choice of environment, two device-code sign-ins, and the consent screen.
+
+**dv-query: reading and analysing records.** Filtered reads, counts, SQL, FetchXML for joins and totals, and pandas DataFrames. If `dataverse auth who` shows an active sign-in, it skips the setup and queries straight away.
 
 ```PROMPT
-My Dataverse MCP tools stopped working. Can you fix the connection?
+How many accounts are there in my Dataverse environment?
 ```
 
-**dv-query: reading and analysing records.** Filtered reads, counts, SQL, FetchXML for joins and totals, and pandas DataFrames. If `dataverse auth who` shows an active sign-in, it skips the setup and queries straight away, which is why my question about tables was answered before the PAC CLI sign-in had finished.
+```text
+● I'll load the Dataverse overview skill first, then use the query skill to count accounts.
+● Skill(dataverse:dv-overview)
+● Skill(dataverse:dv-query)
+● ToolSearch(dataverse)
+  ⎿ No matching deferred tools found
+● Bash(dataverse auth who)
+  ⎿ User:          admin@p8lf.onmicrosoft.com
+    Environment:   https://org62b9d1ca.crm.dynamics.com/
+● No MCP tools found, but there's an active CLI profile. I'll use the Dataverse CLI directly to count accounts.
+● Bash(dataverse data count --table accounts)
+  ⎿ Count: 1
+● There is 1 account in your Dataverse environment (https://org62b9d1ca.crm.dynamics.com/, org dev-no-721df8ab).
 
-```PROMPT
-List todo items
+  Note: Dataverse MCP tools aren't set up in this session — I used the Dataverse CLI instead. If you'd like
+  conversational querying going forward, I can set up MCP.
 ```
 
-I ran this one.
-
-```PROMPT
-How many accounts are there?
-```
-
-It runs `dataverse data count --table accounts`.
+The overview's first rule is visible here: Claude looked for MCP tools, found none, found the CLI sign-in, and used that.
 
 ```PROMPT
 Total the open Todo items by priority
 ```
 
-It uses a FetchXML aggregate on the server.
+```text
+● Bash(dataverse api request --path "/api/data/v9.2/EntityDefinitions?...")
+  ⎿ ERROR: Absolute URL host '' does not match the environment host 'org62b9d1ca.crm.dynamics.com'.
+● Bash(dataverse api request --path "EntityDefinitions?...")
+  ⎿ HTTP Error 404 - Not Found
+● Bash(dataverse api request --path "api/data/v9.2/EntityDefinitions?$select=LogicalName,EntitySetName")
+  ⎿ ...
+● Found it: table hadd_todo. Let me get its EntitySetName and check the priority/status columns, then total by priority.
+● Bash(dataverse api request --path "api/data/v9.2/hadd_todos?$apply=filter(statecode eq 0)/groupby((hadd_priority),aggregate($count as total))")
+  ⎿ {"value":[{"hadd_priority":100000002,"total":6},{"hadd_priority":100000000,"total":4},{"hadd_priority":100000001,"total":4}]}
+● Open Todo items by priority (table hadd_todo, filtered to Active/open records):
 
-**dv-data: writing records.** Create, update, delete and upsert, CSV import, loading several related tables in the right order, and sample data. Sample records use made-up `@example.com` emails and `555-01xx` phone numbers.
+  | Priority    | Count  |
+  |-------------|--------|
+  | High        | 6      |
+  | Medium      | 4      |
+  | Low         | 4      |
+  | Total open  | 14     |
 
-```PROMPT
-Create an account named Contoso
+  (One additional record, "Do this thing," has no priority set and is marked Inactive, so it's excluded as not open.)
 ```
 
-I ran this one. It ran `dataverse data create --table accounts`.
+This one took 27 turns. Claude first had to find which table "Todo items" meant, and on the way it hit the leading-slash problem described at the end of this section three times before it found the form that works. The total itself came from an OData `$apply` aggregate, calculated by Dataverse rather than by fetching every record.
+
+**dv-data: writing records.** Create, update, delete and upsert, CSV import, loading several related tables in the right order, and sample data. Sample records use made-up `@example.com` emails.
 
 ```PROMPT
 Import contacts.csv into the contacts table, matching each Company to an existing account
 ```
 
+```text
+● Read(contacts.csv)
+  ⎿ firstname,lastname,emailaddress1,company
+    Dan,Kowalski,dan.kowalski@example.com,Contoso
+    ...
+● Bash(dataverse data query --table accounts --select "name,accountid")
+● The single account is named "Contoso," which matches all 3 rows in contacts.csv.
+● Skill(dataverse:dv-data)
+● Before I write anything, I need to confirm the target environment — this is the first write action in this session.
+
+  I'm about to create 3 contact records in https://org62b9d1ca.crm.dynamics.com/ (org dev-no-721df8ab),
+  each linked to the existing account Contoso:
+
+  | First | Last     | Email                     | Company → Account |
+  |-------|----------|---------------------------|-------------------|
+  | Dan   | Kowalski | dan.kowalski@example.com  | Contoso           |
+  | Ella  | Fischer  | ella.fischer@example.com  | Contoso           |
+  | Finn  | Walsh    | finn.walsh@example.com    | Contoso           |
+
+  Is this the correct environment, and should I go ahead?
+
+> Yes, that is the right environment. Go ahead.
+
+● Bash(dataverse data create --table contacts --data '{"firstname":"Dan", ...,
+      "parentcustomerid_account@odata.bind":"/accounts(f31f8a9c-...)"}')
+● First record created and correctly linked to Contoso. Creating the remaining two.
+● All 3 contacts from contacts.csv were imported into the contacts table, each linked to the existing Contoso account.
+```
+
+Claude stopped before its first write in the session and asked me to confirm the environment, as the overview's rules require.
+
 ```PROMPT
 Add 20 sample Todo items
 ```
 
+```text
+● Bash(dataverse api request --path "api/data/v9.2/EntityDefinitions(LogicalName='hadd_todo')/Attributes?...")
+● Bash(dataverse data create --table hadd_todos --data '{"hadd_title":"Water the office plants", ...}')
+  ⎿ {"id":"e5f33d9e-...","table":"hadd_todos"}
+● That worked. Continuing with the remaining 15.
+  ...
+● All 20 created. Let me verify the final count.
+● Bash(dataverse data count --table hadd_todos)
+  ⎿ Count: 35
+● Added 20 sample Todo items to hadd_todo, mixing Home/Work/Errands categories, Low/Medium/High priorities,
+  due dates through mid-November, and a few marked completed. Table total is now 35 (was 15 before this batch).
+```
+
+This time Claude did not ask again: I had already confirmed the environment earlier in the session.
+
 **dv-metadata: the data model.** Tables, columns, relationships, forms and views, and reading the schema that is already there. It makes every change in the live environment and then pulls it into the repo, which I come back to below.
 
 ```PROMPT
-Add a Category choice column to the Todo table, with Home, Work and Errands
+What columns and relationships does the Todo table have?
+```
+
+```text
+● Skill(dataverse:dv-metadata)
+● Bash(dataverse api request --path ".../OneToManyRelationships" ... ".../ManyToOneRelationships" ... ".../ManyToManyRelationships")
+● Columns on hadd_todo
+
+  | Display     | Logical Name       | Type     | Notes                                           |
+  |-------------|--------------------|----------|-------------------------------------------------|
+  | Title       | hadd_title         | String   | Primary name column                             |
+  | Description | hadd_description   | String   |                                                 |
+  | Category    | hadd_category      | Picklist | Home=100000000, Work=100000001, Errands=100000002 |
+  | Priority    | hadd_priority      | Picklist | Low=100000000, Medium=100000001, High=100000002   |
+  | Due Date    | hadd_duedate       | DateTime |                                                 |
+  | Completed   | hadd_completed     | Boolean  |                                                 |
+
+  Relationships: none custom — hadd_todo has no lookups to other business tables (no link to Account/Contact)
+  and no N:N relationships. So it's a standalone table — nothing currently ties a Todo item to an Account or Contact.
 ```
 
 ```PROMPT
-What columns and relationships does hadd_todo have?
+Add an Effort choice column to the Todo table, with Small, Medium and Large
 ```
 
-It runs `dataverse data describe`.
+```text
+● Bash(ls .env)
+  ⎿ No such file or directory
+● Bash(dataverse data query --sql "SELECT uniquename, customizationprefix, friendlyname FROM publisher WHERE customizationprefix = 'hadd'")
+● Found it — the table lives in solution TodoSolution (and also surfaced via TodoExtensions). Two publishers share
+  the hadd prefix: Haddley and HaddleyDev. Which solution should the new Effort column go into — TodoSolution,
+  TodoExtensions, or something else?
 
-**dv-solution: moving work between environments.** Create a publisher and a solution, export and unpack it into Git, pack and import it into another environment, and check that the import worked. It shows the output of `pac org who` and asks me to confirm the environment before any export or import.
+> TodoExtensions
+
+● Write(effort_column.json)
+● Bash(dataverse api request --method POST --path "api/data/v9.2/EntityDefinitions(LogicalName='hadd_todo')/Attributes"
+      --body-file effort_column.json --header "MSCRM.SolutionUniqueName:TodoExtensions")
+● Added the Effort choice column to hadd_todo in the TodoExtensions solution:
+
+  | Display Name | Logical Name | Type     | Options                                                 |
+  |--------------|--------------|----------|---------------------------------------------------------|
+  | Effort       | hadd_effort  | Picklist | Small (100000000), Medium (100000001), Large (100000002) |
+
+  One thing: this working directory isn't a git repo, so I can't do the usual export → unpack → commit
+  pull-to-repo step. Want me to export/unpack the TodoExtensions solution into the folder anyway?
+```
+
+Claude would not guess where the column belonged, and asked. Earlier I had added a solution called TodoExtensions, with its own publisher, because the Todo table came from a managed solution whose publisher is read-only. Then, without being asked, Claude offered the second half of the environment-first loop: export the change back into the folder.
+
+**dv-solution: moving work between environments.** Create a publisher and a solution, export and unpack it into Git, pack and import it into another environment, and check that the import worked.
 
 ```PROMPT
-Export the Todo solution into this repo
+Export the TodoExtensions solution and unpack it into this folder
 ```
 
-It runs `pac solution export` and then `pac solution unpack`.
+```text
+● Skill(dataverse:dv-solution)
+● Bash(pac auth list)
+● Bash(pac solution export --name TodoExtensions --path solutions/TodoExtensions.zip --managed false
+      --environment https://org62b9d1ca.crm.dynamics.com/)
+  ⎿ Connected to... dev-no-721df8ab
+    Solution export succeeded.
+● Export succeeded. Now unpacking into the folder.
+● Bash(pac solution unpack --zipfile solutions/TodoExtensions.zip --folder solutions/TodoExtensions --packagetype Unmanaged)
+● Bash(rm solutions/TodoExtensions.zip; find solutions/TodoExtensions -type f)
+● Bash(grep -c "hadd_effort" solutions/TodoExtensions/Entities/hadd_todo/Entity.xml)
+  ⎿ 3
+● Exported and unpacked TodoExtensions into solutions/TodoExtensions/ — the zip was deleted, leaving the source
+  files (Entity.xml for hadd_todo, Customizations.xml, Solution.xml). Confirmed the new hadd_effort Effort column is in there.
+```
+
+Claude checked `pac auth list` before exporting, and then checked that the new column was really in the exported XML. Dataverse wrote that XML, not Claude.
+
+**dv-security: access.** Security roles, application users, business units, and making yourself an admin.
 
 ```PROMPT
-Deploy the Todo solution from dev to test, and check that the table and form arrived
+Which security roles do I have in this environment?
 ```
 
-**dv-security: access.** Security roles, application users, business units, and making yourself an admin. It describes the change in plain English and waits for confirmation before running it.
-
-```PROMPT
-Give alex@contoso.com the System Administrator role in dev
-```
-
-```PROMPT
-Make me an admin in all my environments
-```
-
-If a role assignment fails, it falls back to self-elevation, which is logged to Microsoft Purview.
-
-**dv-admin: running the environment.** Bulk delete, retention and archiving, audit, the recycle bin, and organisation settings, limited to an allowlist of 37 settings. It refuses anything outside that list.
-
-```PROMPT
-Turn on auditing in all my environments
+```text
+● Skill(dataverse:dv-security)
+● Bash(dataverse api request --path "api/data/v9.2/WhoAmI")
+● Bash(dataverse api request --path "api/data/v9.2/systemusers(20cd6e0f-...)/systemuserroles_association?$select=name,roleid")
+● You (admin@p8lf.onmicrosoft.com, in org62b9d1ca.crm.dynamics.com) have these security roles:
+  - System Administrator
+  - System Customizer
+  - Basic User
 ```
 
 ```PROMPT
-Delete all the completed Todo items older than a year
+Give me the Environment Maker role in this environment
 ```
 
-It schedules a bulk delete with a filter.
+```text
+● I'll assign Environment Maker to admin@p8lf.onmicrosoft.com on https://org62b9d1ca.crm.dynamics.com/ and verify it landed.
+● Bash(pac admin assign-user --user admin@p8lf.onmicrosoft.com --role "Environment Maker"
+      --environment https://org62b9d1ca.crm.dynamics.com/)
+  ⎿ Connected to... dev-no-721df8ab
+● Output reported success, but exit 0 isn't proof — let me verify directly against the user's role list.
+● Bash(dataverse api request --path "api/data/v9.2/systemusers(20cd6e0f-...)/systemuserroles_association?$select=name")
+● Confirmed — Environment Maker is now on your role list for admin@p8lf.onmicrosoft.com in dev-no-721df8ab,
+  alongside System Administrator, System Customizer, and Basic User.
+```
 
-**erp-xpp: Finance and Operations code.** Write, compile, deploy and database-sync X++ customisations with `pac package` commands. It only runs on Windows, so not on my Mac.
+"Exit 0 isn't proof" comes straight from the skill, which has a section with that title.
+
+**dv-admin: running the environment.** Bulk delete, retention and archiving, audit, the recycle bin, and organisation settings, limited to an allowlist of 37 settings. It refuses anything outside that list. I asked for one setting on the list and one that is not.
+
+```PROMPT
+Is auditing turned on in this environment? Set the audit log retention to 90 days, and turn off autosave
+```
+
+```text
+● Skill(dataverse:dv-admin)
+● Bash(pac org list-settings --filter isauditenabled --environment https://org62b9d1ca.crm.dynamics.com/)
+  ⎿ isauditenabled Yes
+● Auditing is on (isauditenabled = Yes). Now setting the audit log retention to 90 days.
+● Bash(pac org update-settings --name auditretentionperiodv2 --value 90 --environment https://org62b9d1ca.crm.dynamics.com/)
+  ⎿ Setting 'auditretentionperiodv2' updated successfully to '90'.
+● Here's where things stand:
+  - Auditing: already turned on (isauditenabled = Yes).
+  - Audit log retention: set to 90 days, confirmed.
+  - Autosave: I can't do this one — isautosaveenabled is explicitly outside dv-admin's allowlisted settings
+    (only 37 specific PPAC toggles are in scope; autosave isn't one of them). You'd need to turn that off
+    yourself via the Power Platform admin center.
+```
+
+```PROMPT
+Delete all the completed Todo items
+```
+
+```text
+● Bash(dataverse data query --table hadd_todos --select "hadd_title,hadd_completed" --filter "hadd_completed eq true")
+● Found 3 completed Todo items:
+
+  | Title                | ID                                     |
+  |----------------------|----------------------------------------|
+  | Review pull requests | eaf33d9e-eec9-f111-aaaf-6045bd094f74   |
+  | Return library books | 55e088a7-eec9-f111-aaaf-6045bd094f74   |
+  | Plan weekend trip    | e23960bb-eec9-f111-aaaf-6045bd094f74   |
+
+  I'll delete these 3 records from hadd_todo. Confirm?
+
+> Yes, delete them
+
+● Bash(dataverse data delete --table hadd_todos --id eaf33d9e-... --no-confirm  (and the other two))
+  ⎿ Record deleted successfully.
+● All 3 completed Todo items ("Review pull requests," "Return library books," "Plan weekend trip") were deleted.
+```
+
+For three records, Claude did not schedule a bulk delete job. It listed the records, asked, and deleted them one by one.
+
+:::watch-it A bulk delete with no filter deletes everything
+In `dv-admin`, a bulk delete without a filter removes every record in the table, and it skips the recycle bin. The skill refuses to run one until the user types ALL and the table's name. A bare "yes" is not enough.
+:::
+
+**erp-xpp: Finance and Operations code.** Write, compile, deploy and database-sync X++ customisations with `pac package` commands.
 
 ```PROMPT
 Create an X++ custom service that returns a customer's credit limit
 ```
 
-```PROMPT
-Compile and deploy my ERP model to the test environment
-```
+I did not run this one. The skill only runs on Windows, so it cannot run on my Mac.
 
-:::watch-it A bulk delete with no filter deletes everything
-In `dv-admin`, a bulk delete without a filter removes every record in the table, and it skips the recycle bin. The skill refuses to run one until the user types ALL and the table's name. A bare "yes" is not enough.
+:::under-the-hood A leading slash that breaks on a Mac
+The skills document the raw API escape hatch as `dataverse api request --path "/api/data/v9.2/WhoAmI"`. On my Mac that fails with "Absolute URL host '' does not match the environment host", and Claude ran into it three times while totalling the Todo items. Without the leading slash, `--path "api/data/v9.2/WhoAmI"`, it works, and once Claude had found that form it used it for the rest of the session. My guess is that the CLI, which is written in .NET, reads a path that starts with `/` as an absolute file address on macOS and Linux, so it never treats it as relative to the environment.
 :::
 
 ## My skill and Microsoft's plugin
