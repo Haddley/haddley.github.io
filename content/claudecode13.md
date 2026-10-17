@@ -808,3 +808,4 @@ Files must sit at the **zip root** — `-j` (junk paths) is required.
 ## References
 
 - [Dataverse Plugin Is Now on the Claude Marketplace](https://devblogs.microsoft.com/powerplatform/dataverse-plugin-claude-marketplace/)
+- [Claude Code (Part 16): Microsoft's official Dataverse plugin](/posts/claudecode16/)
