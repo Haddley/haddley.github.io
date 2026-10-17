@@ -12,7 +12,7 @@ slug: "attiny2"
 
 [Part 1](/posts/attiny1/) ended with a bare ATtiny85 blinking an LED. A blink program only drives a pin. This time the same chip has to read a signal, measure it, and drive a second signal from it, all in real time.
 
-The job is an e-bike speed limiter. A hub motor has a speed sensor: a ring of 6 magnets and a hall sensor that pulls a white wire LOW each time a magnet passes. The motor controller counts those pulses to work out how fast the wheel turns. I cut that white wire and put the ATtiny85 in the gap.
+The project is an e-bike speed limiter. A hub motor has a speed sensor: a ring of 6 magnets and a hall sensor that pulls a white wire LOW each time a magnet passes. The motor controller counts those pulses to work out how fast the wheel turns. I cut that white wire and put the ATtiny85 in the gap.
 
 - **Below 25 km/h**, the chip copies the signal straight through, so the controller sees the true speed.
 - **Above 25 km/h**, the chip sends pulses at twice the input rate, so the controller sees twice the true speed. A controller set to a limit above 25 km/h then cuts assistance at about 25 km/h real speed.
