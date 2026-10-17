@@ -4,7 +4,7 @@ part: 16
 description: "Installing Microsoft's official Dataverse plugin from the Claude marketplace, connecting it to a Dataverse environment, and reading and writing records in plain English"
 date: "2026-10-17"
 categories: ["AI","Power Platform"]
-image: "/assets/images/claudecode/Claude_AI_symbol.svg"
+image: "/assets/images/claudecode16/posts-meta.svg"
 tags: "claude-code, dataverse, claude-plugins, pac-cli, dataverse-cli"
 hidden: false
 slug: "claudecode16"
