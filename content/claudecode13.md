@@ -264,6 +264,13 @@ python3 ~/.claude/skills/dv-generate/scripts/pull.py --env https://<your-dev-org
 
 It compares tables, custom columns, choice options, views, forms, environment variables, connection references and apps, and changes nothing unless you pass `--apply`. With `--apply` it replaces your saved XML with dev's export, which is the platform's XML rather than the skill's templates, so review it with `git diff`. A column you deleted in dev shows up as "in the saved XML, not in dev", which is how a removal gets back into your files.
 
+You don't have to run the script yourself. With `pac` signed in to your development environment, Claude can do it from a plain request:
+
+- "Check what has changed in the dev environment since I last saved this solution."
+- "I made some changes by hand in dev. Bring them back into the saved XML."
+
+I tried both, without naming the script. For the first, Claude ran `pull.py` against my dev environment and reported the one difference, a column that dev has and my saved XML doesn't, without changing any files. For the second, it read that column's definition from a dev export, added it to `customizations.xml` in the same style as the other columns, and ran the check again, which reported no drift. It also said what the check does not compare (charts, dashboards, business rules, relationships, security roles and form scripts), so a hand edit in one of those won't show up.
+
 ### What I haven't tested
 
 Choice-option removal: two of the four imports I tried hung until my 15-minute timeout, and the option stayed in dev anyway. The scenarios, fixtures and recorded results are in the repository's `tests/` folder.
