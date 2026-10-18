@@ -112,7 +112,7 @@ Importing into development gives me an unmanaged solution I can keep changing. T
 *The managed zip was selected*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.48.09-PM.png)
-*The import details now say **Managed**, version 1.0.0.1*
+*The import details say **Managed**, version 1.0.0.1*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.50.09-PM.png)
 *The solution imported and shows Managed set to Yes*
@@ -137,7 +137,7 @@ Note that the portal raises the version at export time. Dev was at 1.0.0.0 and t
 *Back in Claude Code, the end of its first summary shows the table, the main form and the two views, and says the solution is unmanaged only, with the advice to import into dev and export as managed from there. Below it I typed my first update request. I asked for version 1.0.0.2 because the portal export had already moved dev to 1.0.0.1*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.52.42-PM.png)
-*Claude edited the XML in place and kept the existing columns, GUIDs and schema names. It warns that importing over dev overwrites anything I changed in the form or views, and that its own generator script is now out of date*
+*Claude edited the XML in place and kept the existing columns, GUIDs and schema names. It warns that importing over dev overwrites anything I changed in the form or views, and that its own generator script is out of date*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.53.26-PM.png)
 *I imported the new zip into the development environment*
@@ -155,7 +155,7 @@ Note that the portal raises the version at export time. Dev was at 1.0.0.0 and t
 *The import succeeded*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.55.25-PM.png)
-*The development environment now lists version 1.0.0.2, still unmanaged*
+*The development environment lists version 1.0.0.2, still unmanaged*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.56.00-PM.png)
 *The solution contains the Todo table, the app and its site map*
@@ -167,7 +167,7 @@ Note that the portal raises the version at export time. Dev was at 1.0.0.0 and t
 *The existing record is untouched*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.57.41-PM.png)
-*The form now has Notes and Done Date fields. I created a second record*
+*The form has Notes and Done Date fields. I created a second record*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.57.51-PM.png)
 *Both records are listed*
@@ -205,7 +205,7 @@ Then I released it the same way: export as managed from development, and import 
 *The details show the installed 1.0.0.1 and the update 1.0.0.3, both Managed*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-2.04.09-PM.png)
-*The second environment now lists version 1.0.0.3, Managed Yes*
+*The second environment lists version 1.0.0.3, Managed Yes*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-2.04.19-PM.png)
 *The app is there*
@@ -214,7 +214,7 @@ Then I released it the same way: export as managed from development, and import 
 *The record I created earlier in this environment survived the upgrade*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-2.05.25-PM.png)
-*The managed app's form now shows Notes and Done Date*
+*The managed app's form shows Notes and Done Date*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-2.05.36-PM.png)
 *Both records are listed*
@@ -244,30 +244,29 @@ I ran 16 change scenarios against two development environments, one unmanaged so
 
 **It works for:** adding a column, a choice option, a table, an environment variable or a connection reference, and changing a column label or an environment variable default.
 
-**It does not remove things.** Leaving a column, view, form or choice option out of the XML changes nothing: it stays in dev, and so it stays in the managed export. The skill tells you which items to delete in dev before you export:
+**Removing things is out of scope.** The skill adds and changes components; it does not remove them, and it does not change a column's type. When you ask it to, it says so and leaves the component in the XML. That is deliberate, because removal behaved differently every time I tried it:
 
-| You removed | What to do |
-|---|---|
-| A column, view, form or choice option | Delete it in dev (make.powerapps.com, Tables) before exporting managed. I tested this for a column and a view: after the delete, the upgrade removed both from the target. |
-| A table, environment variable, connection reference or app | Delete the unmanaged solution wrapper (`pac solution delete`, never on a managed solution) and re-import, so the solution matches the zip. Delete the table in dev too if it should not survive there. |
-| A table while an app stays | The managed upgrade fails ("referenced by 1 other components"). Remove the app in the same release and add it back in the next. |
-| A column's type | Dataverse rejects the import. Add a new column, move the data, delete the old one. |
+- Leaving a column, view, form or choice option out of the XML changes nothing. It stays in dev, and so it stays in the managed export.
+- Dataverse will not delete a column while a form or view uses it. In my Todo run the delete failed with "Object dependencies exist", and the blockers were the Information form and the Quick Find Todos view.
+- A managed upgrade that drops a table deletes the table and all of its rows in the target, and it fails while an app still references the table.
+- A plain update, instead of an upgrade, removes nothing.
+- Changing a column's type is rejected on import.
 
-Two warnings. Removing a table in a managed upgrade deletes the table and all of its rows in the target; I confirmed that with three rows in a test table. And a plain update (instead of an upgrade) removes nothing.
+If you need to remove something, do it in the maker portal in dev, then bring the result back into the saved XML.
 
-### Pull before you regenerate
+### Bring manual changes back from dev
 
-Someone may have changed things in dev by hand, and regenerating from a stale copy of the XML could overwrite those edits. `pull.py` exports the unmanaged solution from dev and reports what differs from your saved XML:
+Someone may have changed things in dev by hand, and regenerating from a stale copy of the XML could overwrite those edits. `pull.py` exports the unmanaged solution from dev and reports what differs from your saved XML, in both directions:
 
 ```bash
 python3 ~/.claude/skills/dv-generate/scripts/pull.py --env https://<your-dev-org>.crm.dynamics.com/ --solution MySolution --dir MySolutionDir
 ```
 
-It compares tables, custom columns, choice options, views, forms, environment variables, connection references and apps, and changes nothing unless you pass `--apply`. `drift.py --manual` lists the manual steps still needed in dev after a regeneration.
+It compares tables, custom columns, choice options, views, forms, environment variables, connection references and apps, and changes nothing unless you pass `--apply`. With `--apply` it replaces your saved XML with dev's export, which is the platform's XML rather than the skill's templates, so review it with `git diff`. A column you deleted in dev shows up as "in the saved XML, not in dev", which is how a removal gets back into your files.
 
 ### What I haven't tested
 
-Choice-option removal: two of the four imports I tried hung until my 15-minute timeout, and the option stayed in dev anyway. I also haven't confirmed that removing a column deletes its data in the target. The scenarios, fixtures and recorded results are in the repository's `tests/` folder.
+Choice-option removal: two of the four imports I tried hung until my 15-minute timeout, and the option stayed in dev anyway. The scenarios, fixtures and recorded results are in the repository's `tests/` folder.
 
 ## References
 
