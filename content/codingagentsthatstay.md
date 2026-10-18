@@ -101,9 +101,9 @@ A: Because "anything" is the expensive version. An agent can probably maintain a
 
 A: An AI-augmented low-code application platform: Gartner's name for a low-code platform that also includes AI code assistants and AI agents, with governance controls built in. Gartner defines AILCAPs as platforms for "accelerated development and maintenance of applications, using model-driven development tools, prebuilt component catalogs, AI code assistants, and AI agents". Note the word maintenance.
 
-**Q: Why bring SharePoint into a post about Dataverse?**
+**Q: Why Dataverse and SharePoint together?**
 
-A: Because it is the clearest example of governance being inherited rather than built. A SharePoint list sits inside the Microsoft 365 estate, so an agent that queries it gets the same access controls, authentication and audit trail as everything else, without anyone configuring them for that app.
+A: Because they are the two places in the Microsoft estate where agents are most likely to find business data already governed: Dataverse for structured data and the apps built on it, SharePoint for documents and lists. SharePoint is also the clearest example of governance being inherited rather than built. A SharePoint list sits inside the Microsoft 365 estate, so an agent that queries it gets the same access controls, authentication and audit trail as everything else, without anyone configuring them for that app.
 :::
 
 ## Can Microsoft get out of its own way?
@@ -137,6 +137,26 @@ If the prize is "the place agents maintain against", Microsoft is not the only c
 - **Platform teams inside large companies.** Gartner's "self-service platform that enforces governance by design" does not have to be bought. Some organisations will build their own, and point their agents at it.
 
 The interesting pattern is that everyone is converging on the same claim from different starting points: the system of record, the low-code platform, the data platform and the vibe-coding tool all now say they are the safe place for agents to work. Only some of them are also the place where the data already lives.
+
+## Whose data is it, what does it cost, and can you leave?
+
+There is a part of this that the governance argument usually skips. It matters how much the governed platform costs, and it matters who really owns the data in it.
+
+Some organisations do not realise how restrictive their software licensing agreements are until they try to get their data out, or to reach it from something new. Then they are left asking two uncomfortable questions. Is this my data? And why do I have to pay the vendor money to access data I own?
+
+Agents that stay make those questions sharper, not softer. An agent that reviews permissions, checks records and tests upgrades reads and writes a lot of data, and reading and writing data is exactly what platform licences tend to meter: by user, by request, by storage, or by the route the data takes. Every platform in the previous section has its own version of this. If the governed path charges for each look at your own data, the agent, or the person paying for it, will be tempted to copy the data somewhere cheaper. That copy is ungoverned, and the whole argument for the platform falls over.
+
+So when I ask what Dataverse and SharePoint are worth, the honest answer has a price attached. A governed platform is worth paying for when it makes looking after the data easier. It is not worth paying for if its main effect is to make the data hard to reach, for people and agents alike.
+
+And here, as with everything else, agents may change the picture. Data migration is exactly the kind of work coding agents could be really good at: reading one schema, mapping it to another, moving the data in batches, checking the counts, and repeating until nothing is missing. If moving from one platform to another becomes a few days of an agent's work instead of a year-long project, vendor lock-in becomes much less of an issue. That cuts both ways for Microsoft. It weakens one of the strongest points in Dataverse's favour, that the data is already there, because "already there" matters less when moving is cheap. It also means every platform has to win on how good it is to work in, not on how hard it is to leave.
+
+The rules are moving in the same direction. Under the EU Data Act, cloud providers [may no longer charge customers for switching](https://www.deloittelegal.de/dl/en/services/legal/perspectives/cloud-switching-eu-data-act.html) to another provider from 12 January 2027, although charges for ordinary data transfer outside a switch remain. And worries about IT sovereignty, in Europe and elsewhere, are pushing organisations to ask where their data lives and whose laws apply to it. The European Commission has signed a [sovereign cloud contract with four European providers](https://www.bankinfosecurity.net/europe-spurs-digital-sovereignty-213m-cloud-contract-a-31455), and Microsoft and AWS are responding with EU data boundaries and sovereign cloud offerings of their own.
+
+Put those together: agents that can migrate, rules that make leaving cheaper, sovereignty concerns that make some organisations want to leave, and platforms that all have to be rebuilt for agents anyway. Everything is changing at once. Incumbency counts for less than it has for a long time, and there is everything to play for.
+
+:::watch-it Read the licence before the agent does
+Before you let an agent loose on a platform, find out what the licence says about access by other applications, automated access through the APIs, request limits, storage charges, and exporting data when you leave. An agent will happily run up a bill, or hit a limit at the worst moment, without ever asking whose data it is.
+:::
 
 ## What the evidence cannot tell us
 
@@ -183,6 +203,8 @@ The question has moved twice. It started as "can AI build the app?" It moved to 
 - An agent still needs something consistent to maintain against: one set of permissions, one audit log, one backup system, one view of the integrations.
 - That is what Dataverse and SharePoint can offer, if Microsoft makes them easy for agents to use, and my experiments say it has not yet.
 - Salesforce, ServiceNow, Databricks, the low-code vendors and even the vibe-coding tools all want to be that place.
+- Cost and data ownership matter as much as governance: a platform that charges you to reach your own data invites ungoverned copies.
+- Agents may make migration cheap, the EU Data Act makes switching cheaper, and sovereignty worries make leaving attractive. Incumbency counts for less, and there is everything to play for.
 - The question is now "who looks after what gets built, and against what?"
 :::
 
@@ -201,5 +223,7 @@ The question has moved twice. It started as "can AI build the app?" It moved to 
 - Databricks, [Agent Bricks and Unity Catalog make Databricks the practical choice for company data agents](https://developers.databricks.com/perspectives/agent-bricks-and-unity-catalog-make-databricks-the-practical-choice-for-company-data-agents)
 - Lovable, [Lovable for Enterprise](https://docs.lovable.dev/introduction/lovable-for-enterprise), and How to Harden, [Lovable Hardening Guide](https://howtoharden.com/guides/lovable/)
 - NIST National Vulnerability Database, [CVE-2025-48757](https://nvd.nist.gov/vuln/detail/CVE-2025-48757)
+- Deloitte Legal, [Cloud switching under the EU Data Act](https://www.deloittelegal.de/dl/en/services/legal/perspectives/cloud-switching-eu-data-act.html)
+- Bank Info Security, [Europe Spurs Digital Sovereignty With $213M Cloud Contract](https://www.bankinfosecurity.net/europe-spurs-digital-sovereignty-213m-cloud-contract-a-31455)
 - Mendix, [2026 Gartner Magic Quadrant for AI-Augmented Low-Code Application Platforms](https://www.mendix.com/resources/gartner-magic-quadrant-for-low-code-application-platforms/), and OutSystems, [OutSystems is a Leader in the Gartner Magic Quadrant for AILCAP](https://www.outsystems.com/blog/posts/gartner-augmented-ai-lcap-outsystems-a-leader)
 - My earlier experiments: [Claude Code (Part 13): building dv-generate](/posts/claudecode13/) and [Claude Code (Part 16): Microsoft's Dataverse plugin](/posts/claudecode16/)
