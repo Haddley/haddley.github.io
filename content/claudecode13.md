@@ -247,8 +247,9 @@ I ran 16 change scenarios against two development environments, one unmanaged so
 **Removing things is out of scope.** The skill adds and changes components; it does not remove them, and it does not change a column's type. When you ask it to, it says so and leaves the component in the XML. That is deliberate, because removal behaved differently every time I tried it:
 
 - Leaving a column, view, form or choice option out of the XML changes nothing. It stays in dev, and so it stays in the managed export.
-- Dataverse will not delete a column while a form or view uses it. In my Todo run the delete failed with "Object dependencies exist", and the blockers were the Information form and the Quick Find Todos view.
+- Dataverse will not delete a column while a form or view uses it. In my Todo run the delete failed with "Object dependencies exist", and the blockers were the Information form and the Quick Find Todos view. An import that doesn't publish leaves the published form and views as they were, so import with `pac solution import --publish-changes`. Clicking Publish all customizations in the portal did not clear the dependency for me, and I don't know why; re-importing with `pac` did.
 - A managed upgrade that drops a table deletes the table and all of its rows in the target, and it fails while an app still references the table.
+- A column I deleted in dev, then exported as managed and upgraded into the second environment, was removed there. Its values went with it, and the records and their other columns survived.
 - A plain update, instead of an upgrade, removes nothing.
 - Changing a column's type is rejected on import.
 
@@ -271,11 +272,10 @@ You don't have to run the script yourself. With `pac` signed in to your developm
 
 I tried both, without naming the script. For the first, Claude ran `pull.py` against my dev environment and reported the one difference, a column that dev has and my saved XML doesn't, without changing any files. For the second, it read that column's definition from a dev export, added it to `customizations.xml` in the same style as the other columns, and ran the check again, which reported no drift. It also said what the check does not compare (charts, dashboards, business rules, relationships, security roles and form scripts), so a hand edit in one of those won't show up.
 
-### What I haven't tested
-
-Choice-option removal: two of the four imports I tried hung until my 15-minute timeout, and the option stayed in dev anyway. The scenarios, fixtures and recorded results are in the repository's `tests/` folder.
+The scenarios, fixtures and recorded results are in the repository's `tests/` folder.
 
 ## References
 
 - [Dataverse Plugin Is Now on the Claude Marketplace](https://devblogs.microsoft.com/powerplatform/dataverse-plugin-claude-marketplace/)
 - [Claude Code (Part 16): Microsoft's official Dataverse plugin](/posts/claudecode16/)
+- [Dataverse, SharePoint, and the Coding Agent](/posts/dataversecodingagents/): what these experiments suggest about governance

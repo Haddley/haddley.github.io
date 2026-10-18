@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "dataversecodingagents",
+      "title": "Dataverse, SharePoint, and the Coding Agent",
+      "description": "A cautious reading of what coding agents mean for Dataverse: the building story is getting weaker, and the governance story may be getting stronger",
+      "date": "2026-10-18",
+      "categories": [
+        "Power Platform",
+        "AI"
+      ],
+      "tags": "dataverse, sharepoint, governance, vibe-coding, coding-agents, low-code"
+    },
+    {
       "slug": "claudecode16",
       "title": "Claude Code (Part 16)",
       "description": "Installing Microsoft's official Dataverse plugin from the Claude marketplace, connecting it to a Dataverse environment, and reading and writing records in plain English",
@@ -3134,5 +3145,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-18T04:48:10.953Z"
+  "generatedAt": "2026-10-18T05:25:41.053Z"
 }
