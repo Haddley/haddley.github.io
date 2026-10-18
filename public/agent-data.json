@@ -1,8 +1,19 @@
 {
   "posts": [
     {
+      "slug": "codingagentsroles",
+      "title": "Coding Agents That Never Leave: What Happens to the Roles?",
+      "description": "If coding agents build and maintain solutions, what changes for business analysts, developers, testers, support technicians, platform engineers and auditors?",
+      "date": "2026-10-18",
+      "categories": [
+        "AI",
+        "DevOps"
+      ],
+      "tags": "coding-agents, it-operations, segregation-of-duties, governance, job-roles"
+    },
+    {
       "slug": "codingagentsthatstay",
-      "title": "Coding Agents That Stay",
+      "title": "Coding Agents That Never Leave?",
       "description": "If coding agents maintain solutions as well as create them, what are low-code platforms such as Dataverse worth?",
       "date": "2026-10-18",
       "categories": [
@@ -3145,5 +3156,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-18T07:29:38.489Z"
+  "generatedAt": "2026-10-18T07:44:47.541Z"
 }
