@@ -2,7 +2,7 @@
 title: "Coding Agents That Never Leave?"
 description: "If coding agents maintain solutions as well as create them, what are low-code platforms such as Dataverse worth?"
 date: "2026-10-18"
-categories: ["Power Platform","AI"]
+categories: ["Power Platform","AI","Microsoft 365","DevOps"]
 image: "/assets/images/codingagentsthatstay/posts-meta.svg"
 tags: "dataverse, sharepoint, governance, vibe-coding, coding-agents, low-code"
 hidden: false
