@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
+  <title>A governed Dataverse database inside a shield, surrounded by generated apps</title>
+  <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+  <path d="M60,20 L88,30 V58 C88,77 76,90 60,98 C44,90 32,77 32,58 V30 Z" fill="#14324a" stroke="#3fc1c9" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M48,46 V70 A12,4.5 0 0 0 72,70 V46" fill="#1c6f7a" stroke="#3fc1c9" stroke-width="1.8"/>
+  <path d="M48,58 A12,4.5 0 0 0 72,58" fill="none" stroke="#3fc1c9" stroke-width="1.8"/>
+  <ellipse cx="60" cy="46" rx="12" ry="4.5" fill="#2a8f9a" stroke="#3fc1c9" stroke-width="1.8"/>
+  <rect x="11" y="24" width="12" height="10" rx="2" fill="none" stroke="#e07a52" stroke-width="2"/>
+  <rect x="97" y="40" width="12" height="10" rx="2" fill="none" stroke="#e07a52" stroke-width="2"/>
+  <rect x="13" y="74" width="12" height="10" rx="2" fill="none" stroke="#e07a52" stroke-width="2"/>
+  <rect x="95" y="82" width="12" height="10" rx="2" fill="none" stroke="#e07a52" stroke-width="2"/>
+  <rect x="98" y="16" width="9" height="8" rx="2" fill="none" stroke="#e07a52" stroke-width="2"/>
+</svg>

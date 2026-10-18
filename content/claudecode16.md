@@ -507,3 +507,4 @@ The plugin also has a gap that `dv-generate` fills. Its overview says that table
 - [Microsoft Dataverse on the Claude marketplace](https://claude.com/marketplace/plugins/dataverse)
 - [microsoft/Dataverse-skills on GitHub](https://github.com/microsoft/Dataverse-skills)
 - [Claude Code (Part 13): my `dv-generate` skill](/posts/claudecode13/)
+- [Dataverse, SharePoint, and the Coding Agent](/posts/dataversecodingagents/): what these experiments suggest about governance
