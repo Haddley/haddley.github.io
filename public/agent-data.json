@@ -1,9 +1,9 @@
 {
   "posts": [
     {
-      "slug": "dataversecodingagents",
-      "title": "Dataverse, SharePoint, and the Coding Agent",
-      "description": "A cautious reading of what coding agents mean for Dataverse: the building story is getting weaker, and the governance story may be getting stronger",
+      "slug": "codingagentsthatstay",
+      "title": "Coding Agents That Stay",
+      "description": "Coding agents will not just build apps and walk away. If they stay to maintain them, what are Dataverse and SharePoint worth, and who else wants the job?",
       "date": "2026-10-18",
       "categories": [
         "Power Platform",
@@ -3145,5 +3145,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-18T05:28:27.718Z"
+  "generatedAt": "2026-10-18T06:09:32.056Z"
 }

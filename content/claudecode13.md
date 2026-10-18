@@ -278,4 +278,4 @@ The scenarios, fixtures and recorded results are in the repository's `tests/` fo
 
 - [Dataverse Plugin Is Now on the Claude Marketplace](https://devblogs.microsoft.com/powerplatform/dataverse-plugin-claude-marketplace/)
 - [Claude Code (Part 16): Microsoft's official Dataverse plugin](/posts/claudecode16/)
-- [Dataverse, SharePoint, and the Coding Agent](/posts/dataversecodingagents/): what these experiments suggest about governance
+- [Coding Agents That Stay](/posts/codingagentsthatstay/): what these experiments suggest about governance
