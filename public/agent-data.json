@@ -719,13 +719,14 @@
     },
     {
       "slug": "powerapps9",
-      "title": "Customize Copilot chat",
-      "description": "Microsoft Copilot for Model-Driven Power Apps",
+      "title": "Adding a Custom Topic to the Copilot in a Model-Driven App",
+      "description": "The Copilot panel in a model-driven app is a Copilot Studio agent. I tested what it can and cannot do, then added a custom topic to fill one of the gaps.",
       "date": "2026-06-01",
       "categories": [
-        "Power Platform"
+        "Power Platform",
+        "AI"
       ],
-      "tags": "power-apps, dataverse, model-driven-app, copilot, topics"
+      "tags": "power-apps, dataverse, model-driven-app, copilot-studio, custom-topics"
     },
     {
       "slug": "picade",
@@ -3158,5 +3159,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-18T08:01:01.661Z"
+  "generatedAt": "2026-10-18T20:06:10.808Z"
 }

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
+  <title>A model-driven app with a Copilot chat panel answering a question</title>
+  <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+  <rect x="14" y="22" width="92" height="76" rx="6" fill="#16263b" stroke="#5bb4ea" stroke-width="1.8"/>
+  <path d="M14,32 H106" stroke="#5bb4ea" stroke-width="1.5"/>
+  <circle cx="20" cy="27" r="1.6" fill="#5bb4ea"/><circle cx="25" cy="27" r="1.6" fill="#5bb4ea"/><circle cx="30" cy="27" r="1.6" fill="#5bb4ea"/>
+  <rect x="20" y="40" width="34" height="5" rx="2" fill="#2a4a66"/>
+  <rect x="20" y="50" width="34" height="5" rx="2" fill="#2a4a66"/>
+  <rect x="20" y="60" width="34" height="5" rx="2" fill="#2a4a66"/>
+  <rect x="20" y="70" width="24" height="5" rx="2" fill="#2a4a66"/>
+  <path d="M62,32 V98" stroke="#5bb4ea" stroke-width="1.2"/>
+  <rect x="70" y="40" width="30" height="10" rx="4" fill="#3fc1c9"/>
+  <rect x="67" y="56" width="30" height="16" rx="4" fill="#c9d3dd"/>
+  <rect x="71" y="61" width="20" height="2.5" rx="1" fill="#16263b"/><rect x="71" y="66" width="14" height="2.5" rx="1" fill="#16263b"/>
+  <path d="M93,80 l1.8,4.2 4.2,1.8 -4.2,1.8 -1.8,4.2 -1.8,-4.2 -4.2,-1.8 4.2,-1.8 z" fill="#e07a52"/>
+</svg>
