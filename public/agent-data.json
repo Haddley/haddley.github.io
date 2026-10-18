@@ -3,7 +3,7 @@
     {
       "slug": "codingagentsthatstay",
       "title": "Coding Agents That Stay",
-      "description": "Coding agents will not just build apps and walk away. If they stay to maintain them, what are Dataverse and SharePoint worth, and who else wants the job?",
+      "description": "If coding agents maintain solutions as well as create them, what are low-code platforms such as Dataverse worth?",
       "date": "2026-10-18",
       "categories": [
         "Power Platform",
@@ -3145,5 +3145,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-18T06:27:44.043Z"
+  "generatedAt": "2026-10-18T07:29:38.489Z"
 }
