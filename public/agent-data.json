@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "3dprinting3",
+      "title": "3D Printing 3",
+      "description": "Fitting a 3D printed copy of a rear light's fuse block half to the original, using OpenSCAD, Claude Code, and a pencil trace measured from a photo",
+      "date": "2026-10-20",
+      "categories": [
+        "3D printing",
+        "AI"
+      ],
+      "tags": "openscad, claude-code, parametric-design, reverse-engineering, image-fitting, rear-light"
+    },
+    {
       "slug": "codingagentsroles",
       "title": "Coding Agents That Never Leave: What Happens to the Roles?",
       "description": "If coding agents build and maintain solutions, what changes for business analysts, developers, testers, support technicians, platform engineers and auditors?",
@@ -3159,5 +3170,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-18T20:06:10.808Z"
+  "generatedAt": "2026-10-19T23:49:29.958Z"
 }
