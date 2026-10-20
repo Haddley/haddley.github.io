@@ -2,7 +2,7 @@
   "posts": [
     {
       "slug": "3dprinting3",
-      "title": "3D Printing 3",
+      "title": "3D Printing (Part 3)",
       "description": "Two 3D printed versions of the back half of a rear light, one that fits the gap behind a mudguard and one that lets the cable leave through the side, designed with Claude Code and measured from a photo",
       "date": "2026-10-20",
       "categories": [
@@ -2157,13 +2157,13 @@
     },
     {
       "slug": "3dprinting2",
-      "title": "3D Printing 2",
-      "description": "Raspberry Pi 4 and Mini Breadboard mount",
+      "title": "3D Printing (Part 2)",
+      "description": "A mount that holds a Raspberry Pi 4 and a mini breadboard side by side, adapted from an existing Tinkercad design and printed on a resin printer",
       "date": "2023-07-19",
       "categories": [
         "3D printing"
       ],
-      "tags": "raspberry-pi, breadboard, mount, 3d-printing"
+      "tags": "raspberry-pi, breadboard, tinkercad, chitubox, resin-printing"
     },
     {
       "slug": "contextinjection",
@@ -2197,13 +2197,13 @@
     },
     {
       "slug": "3dprinting1",
-      "title": "3D Printing 1",
-      "description": "ELEGOO Mars 3 Pro 4K Resin 3D Printer",
+      "title": "3D Printing (Part 1)",
+      "description": "Printing a name plate on an ELEGOO Mars 3 Pro resin printer: designing it in Tinkercad, slicing it in CHITUBOX, then washing, drying and curing the part",
       "date": "2023-07-15",
       "categories": [
         "3D printing"
       ],
-      "tags": "resin-printing, elegoo-mars, 3d-printer, fdm"
+      "tags": "resin-printing, elegoo-mars, tinkercad, chitubox, uv-curing"
     },
     {
       "slug": "vbnetconsolesqlserverunittests",
@@ -3170,5 +3170,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-20T04:39:58.086Z"
+  "generatedAt": "2026-10-20T06:01:48.373Z"
 }

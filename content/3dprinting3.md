@@ -1,5 +1,6 @@
 ---
-title: "3D Printing 3"
+title: "3D Printing"
+part: 3
 description: "Two 3D printed versions of the back half of a rear light, one that fits the gap behind a mudguard and one that lets the cable leave through the side, designed with Claude Code and measured from a photo"
 date: "2026-10-20"
 categories: ["3D printing", "AI"]
