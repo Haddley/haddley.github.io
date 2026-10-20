@@ -4,6 +4,26 @@ import { useEffect, useRef, useState } from 'react';
 
 let mermaidInitialized = false;
 
+// After a deploy, a page loaded from the previous deploy can ask for a code chunk that no longer exists.
+// Mermaid is loaded on demand, so this shows up as a failed diagram rather than a broken page.
+function isChunkLoadError(err: unknown): boolean {
+  const message = err instanceof Error ? `${err.name} ${err.message}` : String(err);
+  return /ChunkLoadError|Loading chunk|Loading CSS chunk|dynamically imported module|Importing a module script failed/i.test(message);
+}
+
+// Reload once per tab session, so a stale page picks up the new deploy without ever looping.
+function reloadOnceForNewDeploy(): boolean {
+  try {
+    const key = 'mermaid-chunk-reload';
+    if (sessionStorage.getItem(key)) return false;
+    sessionStorage.setItem(key, '1');
+  } catch {
+    return false;
+  }
+  window.location.reload();
+  return true;
+}
+
 export default function MermaidDiagram({ chart }: { chart: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [error, setError] = useState<string | null>(null);
@@ -14,7 +34,7 @@ export default function MermaidDiagram({ chart }: { chart: string }) {
   useEffect(() => {
     let cancelled = false;
 
-    (async () => {
+    const renderDiagram = async () => {
       const { default: mermaid } = await import('mermaid');
       if (!mermaidInitialized) {
         // Draw node and edge labels as SVG text, not as HTML inside <foreignObject>. Safari sizes and clips the
@@ -34,11 +54,28 @@ export default function MermaidDiagram({ chart }: { chart: string }) {
         mermaid.initialize(config);
         mermaidInitialized = true;
       }
+      const { svg: rendered } = await mermaid.render(idRef.current, chart);
+      if (!cancelled) setSvg(rendered);
+    };
+
+    (async () => {
       try {
-        const { svg: rendered } = await mermaid.render(idRef.current, chart);
-        if (!cancelled) setSvg(rendered);
+        await renderDiagram();
       } catch (err) {
-        if (!cancelled) setError(err instanceof Error ? err.message : 'Failed to render diagram.');
+        if (cancelled) return;
+        if (isChunkLoadError(err)) {
+          // Try once more, in case the request only failed in passing; if the chunk has really gone, reload.
+          try {
+            await renderDiagram();
+            return;
+          } catch (retryErr) {
+            if (cancelled) return;
+            if (isChunkLoadError(retryErr) && reloadOnceForNewDeploy()) return;
+            setError(retryErr instanceof Error ? retryErr.message : 'Failed to render diagram.');
+            return;
+          }
+        }
+        setError(err instanceof Error ? err.message : 'Failed to render diagram.');
       }
     })();
 
