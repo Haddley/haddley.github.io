@@ -6,7 +6,7 @@ categories: ["3D printing"]
 tags: "resin-printing, elegoo-mars, 3d-printer, fdm"
 hidden: false
 slug: "3dprinting1"
-image: "/assets/images/3dprinting1/wikipedia-globe-translucent-3d-printed-woodgrain-background-512x512.jpg"
+image: "/assets/images/3dprinting1/posts-meta.svg"
 ---
 
 ## Tinkercad

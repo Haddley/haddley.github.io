@@ -6,7 +6,7 @@ categories: ["3D printing"]
 tags: "raspberry-pi, breadboard, mount, 3d-printing"
 hidden: false
 slug: "3dprinting2"
-image: "/assets/images/3dprinting2/wikipedia-globe-translucent-3d-printed-woodgrain-background-512x512.jpg"
+image: "/assets/images/3dprinting2/posts-meta.svg"
 ---
 
 ## Tinkercad

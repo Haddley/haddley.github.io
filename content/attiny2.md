@@ -251,8 +251,8 @@ stateDiagram-v2
     Idle --> Mirror : valid measurement
     Mirror --> Doubling : speed > 25 km/h
     Doubling --> Mirror : speed < 24 km/h
-    Mirror --> Idle : no valid measurement for 1 s
-    Doubling --> Idle : no valid measurement for 1 s
+    Mirror --> Idle : no valid measurement<br/>for 1 s
+    Doubling --> Idle : no valid measurement<br/>for 1 s
     note right of Idle : PB3 held HIGH
     note right of Mirror : ISR copies PB2 to PB3
     note right of Doubling : loop generates pulses at 2× rate

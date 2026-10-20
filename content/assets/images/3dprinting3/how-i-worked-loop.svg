@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 444" width="420" height="444" role="img" font-family="-apple-system, Segoe UI, Helvetica, Arial, sans-serif">
+<title>The loop that every change went round: I describe a problem, Claude Code edits the model code, Claude Code exports and renders the STL, I check it in Bambu Studio, print it and compare it with the original, and then I repeat</title>
+<rect width="420" height="444" rx="16" fill="#0f1b2d"/>
+<rect x="30" y="24" width="300" height="60" rx="8" fill="#1c2a3d" stroke="#7cc6f0" stroke-width="2"/>
+<text x="180.0" y="50.0" fill="#e6edf3" font-size="15" text-anchor="middle">I describe a problem</text>
+<text x="180.0" y="68.0" fill="#e6edf3" font-size="15" text-anchor="middle">or photograph the print</text>
+<rect x="30" y="116" width="300" height="60" rx="8" fill="#1c2a3d" stroke="#ffb43a" stroke-width="2"/>
+<text x="180.0" y="142.0" fill="#e6edf3" font-size="15" text-anchor="middle">Claude Code edits</text>
+<text x="180.0" y="160.0" fill="#e6edf3" font-size="15" text-anchor="middle">the model code</text>
+<rect x="30" y="208" width="300" height="60" rx="8" fill="#1c2a3d" stroke="#ffb43a" stroke-width="2"/>
+<text x="180.0" y="234.0" fill="#e6edf3" font-size="15" text-anchor="middle">Claude Code exports the STL</text>
+<text x="180.0" y="252.0" fill="#e6edf3" font-size="15" text-anchor="middle">and renders it</text>
+<rect x="30" y="300" width="300" height="82" rx="8" fill="#1c2a3d" stroke="#7cc6f0" stroke-width="2"/>
+<text x="180.0" y="328.0" fill="#e6edf3" font-size="15" text-anchor="middle">I check the STL in Bambu Studio,</text>
+<text x="180.0" y="346.0" fill="#e6edf3" font-size="15" text-anchor="middle">print it, and compare it</text>
+<text x="180.0" y="364.0" fill="#e6edf3" font-size="15" text-anchor="middle">with the original</text>
+<path d="M180.0,87 V107" stroke="#8fa3b8" stroke-width="2" fill="none"/><path d="M174.0,106 L180.0,114 L186.0,106 Z" fill="#8fa3b8"/>
+<path d="M180.0,179 V199" stroke="#8fa3b8" stroke-width="2" fill="none"/><path d="M174.0,198 L180.0,206 L186.0,198 Z" fill="#8fa3b8"/>
+<path d="M180.0,271 V291" stroke="#8fa3b8" stroke-width="2" fill="none"/><path d="M174.0,290 L180.0,298 L186.0,290 Z" fill="#8fa3b8"/>
+<path d="M333,341.0 H372 V54.0 H341" stroke="#8fa3b8" stroke-width="2" fill="none" stroke-linejoin="round"/><path d="M340,48.0 L332,54.0 L340,60.0 Z" fill="#8fa3b8"/>
+<text x="394" y="197.5" fill="#8fa3b8" font-size="14" text-anchor="middle" transform="rotate(-90 394 197.5)">repeat</text>
+<rect x="30" y="408" width="14" height="14" rx="3" fill="#1c2a3d" stroke="#7cc6f0" stroke-width="2"/><text x="52" y="420" fill="#8fa3b8" font-size="13">Me</text>
+<rect x="96" y="408" width="14" height="14" rx="3" fill="#1c2a3d" stroke="#ffb43a" stroke-width="2"/><text x="118" y="420" fill="#8fa3b8" font-size="13">Claude Code</text>
+</svg>
