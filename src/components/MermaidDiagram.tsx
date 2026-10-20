@@ -17,7 +17,21 @@ export default function MermaidDiagram({ chart }: { chart: string }) {
     (async () => {
       const { default: mermaid } = await import('mermaid');
       if (!mermaidInitialized) {
-        mermaid.initialize({ startOnLoad: false, theme: 'neutral', securityLevel: 'strict' });
+        // Draw node and edge labels as SVG text, not as HTML inside <foreignObject>. Safari sizes and clips the
+        // foreignObject labels wrongly, so diagram text was cut off. The wrapping width stops long identifiers
+        // such as get_embedding_provider().embed() from being broken in the middle of a word.
+        // The root-level wrappingWidth works in Mermaid 12 but is missing from its type definitions, so the
+        // config is built as a variable first.
+        const config = {
+          startOnLoad: false,
+          theme: 'neutral' as const,
+          securityLevel: 'strict' as const,
+          htmlLabels: false,
+          wrappingWidth: 300,
+          flowchart: { htmlLabels: false, wrappingWidth: 300 },
+          class: { htmlLabels: false },
+        };
+        mermaid.initialize(config);
         mermaidInitialized = true;
       }
       try {
