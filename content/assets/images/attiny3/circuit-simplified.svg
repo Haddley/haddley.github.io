@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" font-family="Helvetica, Arial, sans-serif" font-size="12">
+<title>Speed limiter through the brake line: the white wire runs straight from the motor to the controller, and the ATtiny85 listens to it and pulls the brake line low above 25 km/h</title>
+<rect width="900" height="470" fill="#ffffff"/>
+<rect x="30" y="70" width="140" height="360" rx="4" fill="#f4f6f8" stroke="#222" stroke-width="1.6"/>
+<rect x="730" y="70" width="140" height="360" rx="4" fill="#f4f6f8" stroke="#222" stroke-width="1.6"/>
+<text x="100" y="60" text-anchor="middle" font-size="12" fill="#222" font-weight="bold">Bike controller</text>
+<text x="800" y="60" text-anchor="middle" font-size="12" fill="#222" font-weight="bold">Hub motor (hall connector)</text>
+<path d="M70,90 H730" stroke="#222" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M170,400 H730" stroke="#222" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<text x="162" y="84" text-anchor="end" font-size="12" fill="#222">+5V</text>
+<text x="162" y="394" text-anchor="end" font-size="12" fill="#222">GND</text>
+<text x="740" y="84" text-anchor="start" font-size="12" fill="#222">Red +5V</text>
+<text x="740" y="394" text-anchor="start" font-size="12" fill="#222">Black GND</text>
+<circle cx="70" cy="90" r="3.5" fill="#222"/>
+<path d="M70,90 V190" stroke="#222" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<rect x="63" y="190" width="14" height="40" fill="#fff" stroke="#222" stroke-width="1.6"/>
+<path d="M70,230 V300 H170" stroke="#222" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<text x="80" y="200" text-anchor="start" font-size="10" fill="#222">pull-up</text>
+<text x="80" y="214" text-anchor="start" font-size="10" fill="#222">~12.5k</text>
+<text x="162" y="294" text-anchor="end" font-size="12" fill="#222">Brake in</text>
+<text x="162" y="144" text-anchor="end" font-size="12" fill="#222">Speed in</text>
+<text x="740" y="144" text-anchor="start" font-size="12" fill="#222">White (speed)</text>
+<path d="M170,150 H560" stroke="#2eaa4a" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M560,150 H730" stroke="#d9a800" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<text x="365" y="140" text-anchor="middle" font-size="11" fill="#2eaa4a" font-weight="bold">green wire (controller side)</text>
+<text x="645" y="140" text-anchor="middle" font-size="11" fill="#a07c00" font-weight="bold">yellow wire (motor side)</text>
+<text x="574" y="166" text-anchor="start" font-size="10" fill="#555">wires joined here</text>
+<circle cx="560" cy="150" r="5" fill="#222"/>
+<path d="M560,150 V170" stroke="#222" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<rect x="553" y="170" width="14" height="40" fill="#fff" stroke="#222" stroke-width="1.6"/>
+<path d="M560,210 V250 H500" stroke="#222" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<text x="574" y="194" text-anchor="start" font-size="10" fill="#222">1 kΩ</text>
+<rect x="380" y="170" width="120" height="200" rx="4" fill="#fff7e0" stroke="#222" stroke-width="1.6"/>
+<text x="440" y="229" text-anchor="middle" font-size="14" fill="#222" font-weight="bold">ATtiny85</text>
+<text x="388" y="204" text-anchor="start" font-size="11" fill="#999">1 RESET</text>
+<text x="492" y="204" text-anchor="end" font-size="11" fill="#222">Vcc 8</text>
+<text x="388" y="254" text-anchor="start" font-size="11" fill="#999">2 PB3</text>
+<text x="492" y="254" text-anchor="end" font-size="11" fill="#222">PB2 7</text>
+<text x="388" y="304" text-anchor="start" font-size="11" fill="#222">3 PB4</text>
+<text x="492" y="304" text-anchor="end" font-size="11" fill="#999">PB1 6</text>
+<text x="388" y="354" text-anchor="start" font-size="11" fill="#222">4 GND</text>
+<text x="492" y="354" text-anchor="end" font-size="11" fill="#999">PB0 5</text>
+<text x="365" y="204" text-anchor="end" font-size="10" fill="#888">NC</text>
+<path d="M380,200 H366" stroke="#222" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M500,200 H530 V90" stroke="#222" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<circle cx="530" cy="90" r="3.5" fill="#222"/>
+<circle cx="610" cy="90" r="3.5" fill="#222"/>
+<path d="M610,90 V100 M598,100 H622 M598,107 H622 M610,107 V114" stroke="#222" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M598,114 H622 M602,119 H618 M606,124 H614" stroke="#222" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<text x="610" y="82" text-anchor="middle" font-size="10" fill="#222">100 nF</text>
+<circle cx="670" cy="90" r="3.5" fill="#222"/>
+<path d="M670,90 V100 M658,100 H682 M658,107 H682 M670,107 V114" stroke="#222" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M658,114 H682 M662,119 H678 M666,124 H674" stroke="#222" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<text x="670" y="82" text-anchor="middle" font-size="10" fill="#222">10 µF</text>
+<path d="M380,350 H350 V400" stroke="#222" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<circle cx="350" cy="400" r="3.5" fill="#222"/>
+<path d="M380,300 H330" stroke="#222" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<rect x="290" y="293" width="40" height="14" fill="#fff" stroke="#222" stroke-width="1.6"/>
+<path d="M290,300 H170" stroke="#222" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<text x="310" y="288" text-anchor="middle" font-size="10" fill="#222">220 Ω</text>
+<circle cx="230" cy="300" r="3.5" fill="#222"/>
+<path d="M230,300 V335 L246,363 M230,372 V400" stroke="#222" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+<circle cx="230" cy="372" r="3" fill="#222"/>
+<circle cx="230" cy="400" r="3.5" fill="#222"/>
+<text x="256" y="358" text-anchor="start" font-size="10" fill="#222">brake lever</text>
+<text x="256" y="371" text-anchor="start" font-size="10" fill="#222">(closed = brake)</text>
+<text x="30" y="452" text-anchor="start" font-size="11" fill="#222">The white wire runs straight through, so the speed reaches the controller and the display unchanged. The ATtiny only listens to it.</text>
+<text x="30" y="467" text-anchor="start" font-size="11" fill="#222">Above 25 km/h, PB4 pulls the brake line LOW, as if the brake had been pressed. The commutation wires are not touched.</text>
+</svg>
