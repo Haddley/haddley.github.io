@@ -1,7 +1,7 @@
 ---
 title: "ATtiny85"
 part: 3
-description: "An ATtiny85 field test on an e-bike: the display showed double the speed but the motor kept running, so I cut the motor through the brake sensor line, found a build bug, and then simplified the design until the chip only listens to the speed wire and pulls the brake line"
+description: "An ATtiny85 field test on an e-bike: the display showed double the speed but the motor kept running, so I cut the motor through the brake sensor line, and then simplified the design until the chip only listens to the speed wire and pulls the brake line"
 date: "2026-10-21"
 categories: ["AI","IOT"]
 image: "/assets/images/attiny3/posts-meta.svg"
@@ -10,17 +10,19 @@ hidden: false
 slug: "attiny3"
 ---
 
-[Part 2](/posts/attiny2/) ended with the bike's display showing double the real speed above 25 km/h. That was the easy half of the job. I wanted the motor to stop assisting at 25 km/h, and the doubled display did not do that. In this part I take the chip back to the bike, work out why the motor kept running, find a second wire that does stop it, hit a build bug, and then strip the design right back.
+[Part 2](/posts/attiny2/) ended with the bike's display showing double the real speed above 25 km/h. That turned out to be only half of the job. I wanted the motor to stop assisting at 25 km/h, and the doubled display did not do that. In this part I take the chip back to the bike, work out why the motor kept running, find a second wire that does stop it, and then strip the design right back.
+
+The short version: the chip now listens to the speed wire and pulls the brake line LOW above 25 km/h, which cuts the motor. It took a wrong assumption and a design that I threw away to get there.
 
 ## The motor kept running
 
-In the field test, the display did what the bench test promised: it climbed with the wheel, and when the real speed went from 24 km/h to 26 km/h it jumped to 52 km/h. The motor carried on supplying power the whole time.
+In the field test, the display did what the bench test promised: it climbed with the wheel, and when the real speed went from 24 km/h to 26 km/h it jumped to 52 km/h. However, the motor seemed to continue to supply power even after the speed display doubled.
 
 ```PROMPT
 Speed displayed on bike display increased from 24km/h to 52km.h as real speed increased from 24km/h to 26km/h. So success. Unforunately the bike's controller continued to provide power to the hub motor
 ```
 
-Part 2 assumed that a controller with a speed limit above 25 km/h would cut assistance when it saw the doubled speed. This controller does not. Claude Code explained why. The white wire only carries the speed to the display. The controller works out its own speed from the three commutation hall wires, the green, yellow and blue ones that switch the motor phases, and it does not use the white wire to decide whether to cut power. Doubling the white wire changed what I could see on the display and nothing else.
+Part 2 assumed that a controller with a speed limit above 25 km/h would cut assistance when it saw the doubled speed. This controller did not. Claude Code suggested why. The white wire may only carry the speed to the display. The controller might be working out its own speed from the three commutation hall wires, the green, yellow and blue ones that switch the motor phases, and it might not use the white wire to decide whether to cut power. Doubling the white wire seems to have changed what I could see on the display and nothing else.
 
 :::brain-power Another way to stop the motor
 I could not touch the commutation wires. Interfering with them can make the motor stutter or damage the controller. Is there another wire on the bike that tells the controller to cut the motor? Think about what happens when you squeeze a brake lever before you read on.
@@ -60,6 +62,7 @@ My first brake design kept the chip where Part 2 had put it, between the motor's
 
 The program was the Part 2 sketch with two additions. The chip already measured the real speed from the white wire. Now it also pulled the brake line LOW when that speed was above 25 km/h, and let go below 24 km/h, with the same 1 km/h of hysteresis.
 
+:::under-the-hood The brake code in the first design
 ```c
 #define BRAKE_PIN    4       // PB4, physical pin 3 (active LOW, open-drain style)
 #define BRAKE_CUT_ON()  (DDRB |=  (1 << BRAKE_PIN))  // output, PORTB bit 0 -> pulls LOW
@@ -75,52 +78,7 @@ The program was the Part 2 sketch with two additions. The chip already measured 
 ```
 
 The pin is only ever switched between output and input. The output register bit for PB4 stays at 0, so making PB4 an output pulls the line LOW, and making it an input lets it go.
-
-## It did not seem to work at all
-
-I flashed the new program and tried it. It did not seem to work at all.
-
-```PROMPT
-That did not seem to work at all. Please upload a simple program that "pulls break" for 10 seconds then allows motor to run for 10 seconds etc. always send speed 10km/h to controller/display
-```
-
-A bench test with no speed logic would show whether the brake wiring was the problem. Claude Code wrote a short program for it. It pulls PB4 LOW for 10 seconds, lets go for 10 seconds, and repeats. It sends a fixed 10 km/h signal on PB3 instead of anything real. For 10 km/h on a 29 inch wheel with 6 pulses per turn, that is a pulse every 138.9 ms, LOW for 25 ms of each.
-
-The first version did not compile. Then I asked for the next test, which passes the real speed through and only cycles the brake:
-
-```PROMPT
-update code to always pass real speed but to turn off motor (via brake on) for 10 seconds and then to turn the motor on (via brake off) for next 10 seconds and repeat
-```
-
-This version also failed to compile, and the error message led to the real cause.
-
-:::watch-it A program can compile and still be wrong
-The Arduino build generates function declarations for an `.ino` file with a tool called ctags. On this Mac the declarations came out with the return type missing, as `setup();` and `loop();`, and the tool placed them in the wrong spot.
-
-In the new test sketch, they landed at the top level of the file, and the compiler refused them. In my speed limiter, they landed inside the pin-change interrupt handler. There, `setup();` and `loop();` are valid statements, so the program compiled without any error. It then called `setup()` and `loop()` from inside the interrupt handler on every wheel pulse. `setup()` lets go of the brake line each time, so the brake never stayed on. That is why the first brake program "did not seem to work at all".
 :::
-
-:::under-the-hood How Claude Code confirmed it
-Claude Code printed the code that the build generates, which showed the declarations. It then disassembled the compiled program that had been flashed to the chip and listed every function the interrupt handler calls:
-
-```
-interrupt handler calls: micros, setup, loop
-```
-
-The correct list is only `micros`. The broken program was 2446 bytes, and the corrected one is 2366 bytes.
-:::
-
-The fix was to keep the code out of the `.ino` file. Arduino does not generate declarations for a plain `.cpp` file, so the code is built as one, and nothing else about it changes. A small script, `build_and_flash.sh`, does that and then checks the compiled handler. If the handler calls `setup()` or `loop()`, the script refuses to program the chip.
-
-With the bug found, I gave Claude Code the Part 2 code and asked for the speed limiter with the brake cut-out.
-
-```PROMPT
-THIS WAS THE CODE FROM LAST BLOG POST PLEASE UPDATE TO INCLUDE THE MOTOR CUT OUT (VIA BRAKE SENSOR)
-
-STILL WANT TO SEE DOUBLE SPEED >25km/h BUT ALSO MOTOR CUT OFF VIA BREAK SENSOR
-```
-
-The program was already in the repository, with the brake cut-out added to the Part 2 code. What it needed was the corrected build. Claude Code built it with the script, which confirmed that the interrupt handler calls only `micros`, and programmed the chip. The programmer read the flash back and verified all 2366 bytes, and the fuses were still at their factory settings, so the chip runs at 1 MHz.
 
 ## Simplify: join the wires
 
@@ -139,7 +97,7 @@ This is what went away:
 
 - **The 4.7 kΩ pull-up.** The controller's own pull-up is back in the circuit now that the wire is whole.
 - **The 220 Ω output resistor and the whole PB3 output.** Nothing comes out of the chip on the speed wire any more.
-- **The mirroring, the doubling and all the speed arithmetic.** The program went from 2366 bytes to 580 bytes, about a quarter of the size.
+- **The mirroring, the doubling and all the speed arithmetic.** The program shrank from 2366 bytes to 580 bytes, about a quarter of the size.
 
 Five parts are left: the ATtiny85, one 1 kΩ resistor, one 220 Ω resistor, and the two capacitors that decouple the supply.
 
@@ -223,15 +181,13 @@ void loop()
 }
 ```
 
-The interrupt handler does all of the work. Each falling edge on the speed wire is one magnet passing the hall sensor. The handler times the gap since the last edge, ignores a gap that is too short to be a wheel or too long to be a pulse, and then pulls or releases the brake line. The loop only checks that the wheel is still turning. The pin uses the chip's internal pull-up, which only matters if the tap wire ever comes loose, because the controller holds the real wire HIGH. After the corrected build, Claude Code confirmed that the handler calls only `micros`, and programmed the chip. The programmer verified all 580 bytes, and the fuses were still at their factory settings. The sketch, the circuit and the [design notes](https://github.com/Haddley/bikespeed/blob/main/design.md) are in the [bikespeed repository](https://github.com/Haddley/bikespeed/tree/main/hubspeed).
+The interrupt handler does all of the work. Each falling edge on the speed wire is one magnet passing the hall sensor. The handler times the gap since the last edge, ignores a gap that is too short to be a wheel or too long to be a pulse, and then pulls or releases the brake line. The loop only checks that the wheel is still turning. The pin uses the chip's internal pull-up, which only matters if the tap wire ever comes loose, because the controller holds the real wire HIGH. The programmer verified all 580 bytes. The sketch, the circuit and the [design notes](https://github.com/Haddley/bikespeed/blob/main/design.md) are in the [bikespeed repository](https://github.com/Haddley/bikespeed/tree/main/hubspeed).
 
 ## Power level 3: the brake comes on too early
 
 The simplified version worked at power level 1, where the bike accelerates slowest. At power level 3, where it accelerates fastest, the brake came on at a speed well below 25 km/h and then released. The effect was uncomfortable. I asked Claude Code what was happening.
 
 The chip counts a falling edge on the speed wire as a wheel pulse, and a pulse that arrives too soon after the last one means a fast wheel. At high motor power the wire probably picks up electrical noise, so a stray spike looks like an extra pulse, the gap looks short, and the chip decides the bike is fast. The next real pulse then lets the brake go again. Claude Code has not measured the noise. It is the most likely cause, and a meter cannot see it, so the proof needs an oscilloscope on pin 7.
-
-The photo of my wiring also showed a mistake, and I fixed it. The lower lead of the 220 Ω resistor was in the row for PB3 instead of PB4, and an extra resistor was in the circuit. Removing the extra resistor helped a little, but the problem at power level 3 stayed.
 
 So the program now ignores noise in three ways:
 
@@ -247,35 +203,39 @@ A 100 nF capacitor from pin 7 to ground is an optional extra. With the 1 kΩ res
 *The circuit with the optional 100 nF capacitor on the speed input*
 
 ![](assets/images/attiny3/breadboard.svg)
-*The breadboard with the optional 100 nF capacitor between the pin 7 column and the ground rail*
+*The breadboard with the optional 100 nF capacitor between the pin 7 column and the ground rail, turned to match the way the board sits in the bag*
 
-The new program is 678 bytes. The interrupt handler now runs on both edges of the wire, and it still calls only `micros`.
+![](assets/images/attiny3/final-breadboard-frame-bag.jpg)
+*The final breadboard in the frame bag, with the capacitors, the two resistors and the leads to the bike's wires*
+
+The new program is 678 bytes. The interrupt handler now runs on both edges of the wire.
 
 ## Where it stands
 
-The 580-byte program is the one on the chip. The 678-byte program with the noise filter is built and checked, but I have not yet programmed it, because the programmer was not plugged in when Claude Code tried. The test with it comes next. This is the check to run first, with the wheel off the ground:
+To make testing easier, I first lowered the limit from 25 km/h to 10 km/h. Claude Code changed the two constants, rebuilt the program and programmed the chip, and I tried it. It worked: the motor cut out above 10 km/h and came back below 9 km/h. Then I asked for the real limit, and the chip now has the 678-byte program with the noise filter and the 25 km/h limit. The programmer verified all 678 bytes.
 
-1. Spin the wheel. The display should show the true speed, because the speed wire is joined straight through.
-2. Spin the wheel past 25 km/h. The motor should cut out, and a meter on the brake line should read about 0 V.
-3. When the wheel slows below 24 km/h, the line should return to about 5 V and the motor should run again.
-4. The 5 V pin on the chip should stay steady while the motor runs.
+After that I rode the bike at power level 3 and filmed the display.
 
-After that I will ride the bike at power levels 1 and 3, and I will add the result here when I have it.
+![](assets/mp4/attiny3/field-test.mp4)
+*The display climbs through 15, 21, 23 and 25 km/h at power level 3. As it reaches 25 km/h I can hear the hub motor switch off, and the display falls back through 24 km/h*
+
+The video shows the cut-out working on the road. As the speed reaches 25 km/h the motor goes quiet, because the chip has pulled the brake line LOW and the controller has stopped assisting. The bike then slows below 24 km/h, the chip lets go of the line, and the motor can run again. Power level 3 is the setting where the brake came on too early before, and this time the motor kept assisting until the speed reached 25 km/h.
+
+Unless I am riding uphill, I always ride in power level 1, so that is the setting that matters most to me. I repeated the road test at level 1, and everything worked perfectly.
 
 ## What stands out
 
 - **A display is not a controller.** Part 2 doubled the signal that the display reads, and the display obeyed. The controller never looked at that wire. I should have checked which wire the motor logic uses before I designed around the wrong one.
 - **Two measurements told me what the brake line is.** 5 V open circuit and 0.4 mA short circuit meant a pull-up of about 12.5 kΩ and a line that is active LOW. That was enough to design a safe way to join it, in parallel with the lever.
-- **Compiling is not the same as working.** The broken program compiled, uploaded and verified without a single warning. Only reading what the compiler had produced showed the stray calls.
 - **Take parts out once they stop earning their place.** The doubling circuit and its code only existed to fool the display. Without them the design needs five parts, and there is nothing in the speed path that can fail.
 
 :::bullet-points Recap
 - The doubled white wire changed the display, and the motor kept running, because the controller takes its speed from the commutation hall wires.
 - The brake sensor line reads 5 V open circuit and 0.4 mA short circuit, which makes it an active LOW input with a pull-up of about 12.5 kΩ.
 - The ATtiny pulls it LOW through PB4 and a 220 Ω resistor above 25 km/h, and lets go below 24 km/h, in parallel with the real brake lever.
-- A build tool put `setup();` and `loop();` inside the interrupt handler, which released the brake on every pulse. Building the code as a `.cpp` file fixed it, and a script now checks for it.
 - The final design joins the two halves of the white wire, so the speed passes straight through. The chip only listens to it and pulls the brake line.
 - At power level 3 the brake came on too early, probably because noise on the speed wire looked like wheel pulses. The new program ignores short pulses and needs 3 fast pulses in a row.
+- With the limit lowered to 10 km/h for testing, the cut-out worked. With the real 25 km/h limit, the road tests at power levels 3 and 1 both showed the motor switching off as the speed reached 25 km/h.
 :::
 
 ## References

@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "attiny3",
+      "title": "ATtiny85 (Part 3)",
+      "description": "An ATtiny85 field test on an e-bike: the display showed double the speed but the motor kept running, so I cut the motor through the brake sensor line, and then simplified the design until the chip only listens to the speed wire and pulls the brake line",
+      "date": "2026-10-21",
+      "categories": [
+        "AI",
+        "IOT"
+      ],
+      "tags": "claude-code, attiny85, e-bike, brake-sensor, field-test, debugging"
+    },
+    {
       "slug": "3dprinting3",
       "title": "3D Printing (Part 3)",
       "description": "Two 3D printed versions of the back half of a rear light, one that fits the gap behind a mudguard and one that lets the cable leave through the side, designed with Claude Code and measured from a photo",
@@ -3170,5 +3181,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-21T00:35:24.473Z"
+  "generatedAt": "2026-10-21T23:20:58.302Z"
 }
