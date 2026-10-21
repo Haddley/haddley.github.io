@@ -15,7 +15,7 @@ slug: "attiny2"
 The project is an e-bike speed limiter. A hub motor has a speed sensor: a ring of 6 magnets and a hall sensor that pulls a white wire LOW each time a magnet passes. The motor controller counts those pulses to work out how fast the wheel turns. I cut that white wire and put the ATtiny85 in the gap.
 
 - **Below 25 km/h**, the chip copies the signal straight through, so the controller sees the true speed.
-- **Above 25 km/h**, the chip sends pulses at twice the input rate, so the controller sees twice the true speed. A controller set to a limit above 25 km/h then cuts assistance at about 25 km/h real speed.
+- **Above 25 km/h**, the chip sends pulses at twice the input rate, so the controller sees twice the true speed. I hoped that a controller set to a limit above 25 km/h would then cut assistance at about 25 km/h real speed. [Part 3](/posts/attiny3/) shows what happened when I tried it on the bike.
 
 ![](assets/images/attiny2/mirror-vs-double.svg)
 *Drawn to the same 200 ms time scale: at 15 km/h the output keeps the input's 92.6 ms period, and at 30 km/h it sends two pulses for every one it receives, so its period drops from 46.3 ms to 23.1 ms*
@@ -136,6 +136,8 @@ The display shows both cases:
 - **Above 25 km/h**, it shows about twice the true speed. A reading of 53 km/h means the wheel is turning at about 26.5 km/h.
 
 The display lags the chip a little, so it shows 26 and 28 km/h for a moment before the jump. On the way down, the readings of 49 and 50 km/h are a true speed between 24 and 25 km/h. The chip keeps doubling until the speed falls below 24 km/h (the hysteresis in the code), and then the display drops straight to 23 km/h.
+
+The display did what I wanted. The motor, however, seemed to keep assisting after the display doubled, so the doubled speed did not stop it. In [Part 3](/posts/attiny3/) I look for another way to cut the motor.
 
 ## The problem: two modes, two timing budgets
 
