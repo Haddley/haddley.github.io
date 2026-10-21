@@ -5,7 +5,13 @@
   <rect x="47" y="42" width="26" height="36" rx="3" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><path d="M55.0,42 A5,5 0 0 0 65.0,42" fill="none" stroke="#5bb4ea" stroke-width="1.5"/><circle cx="53" cy="49" r="1.8" fill="#5bb4ea"/><rect x="40" y="44.0" width="7" height="5" rx="1" fill="#c9d3dd"/><rect x="73" y="44.0" width="7" height="5" rx="1" fill="#c9d3dd"/><rect x="40" y="53.0" width="7" height="5" rx="1" fill="#c9d3dd"/><rect x="73" y="53.0" width="7" height="5" rx="1" fill="#c9d3dd"/><rect x="40" y="62.0" width="7" height="5" rx="1" fill="#c9d3dd"/><rect x="73" y="62.0" width="7" height="5" rx="1" fill="#c9d3dd"/><rect x="40" y="71.0" width="7" height="5" rx="1" fill="#c9d3dd"/><rect x="73" y="71.0" width="7" height="5" rx="1" fill="#c9d3dd"/>
   <circle cx="60" cy="16" r="2.2" fill="#7cc6f0"/>
   <path d="M60,16 V37 M57,34 L60,38 L63,34" stroke="#7cc6f0" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M60,82 V88 M57,85 L60,89 L63,85" stroke="#5bb4ea" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-  <path d="M18,94 H56" fill="none" stroke="#ffb43a" stroke-width="2.4" stroke-linecap="round"/>
-  <path d="M56,94 L60,104 H102" fill="none" stroke="#d9483b" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M60,82 V91 M57,88 L60,92 L63,88" stroke="#5bb4ea" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M18,96 H60 V106 H102" fill="none" stroke="#d9483b" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M18,96 H60" fill="none" stroke="#ffb43a" stroke-width="2.4" stroke-linecap="round"/>
+  <g font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="7.5" font-weight="600">
+    <text x="18" y="10" fill="#7cc6f0">speed</text>
+    <text x="18" y="91" fill="#ffb43a">motor on</text>
+    <text x="66" y="89" fill="#c9d3dd">25 km/h</text>
+    <text x="102" y="102" fill="#d9483b" text-anchor="end">motor off</text>
+  </g>
 </svg>
