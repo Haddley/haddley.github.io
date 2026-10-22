@@ -1,7 +1,7 @@
 ---
 title: "ATtiny85"
 part: 3
-description: "An ATtiny85 field test on an e-bike: the display showed double the speed but the motor kept running, so I cut the motor through the brake sensor line, and then simplified the design until the chip only listens to the speed wire and pulls the brake line"
+description: "An ATtiny85 that cuts an e-bike motor above 25 km/h by pulling the brake sensor line low, tested on the road"
 date: "2026-10-21"
 categories: ["AI","IOT"]
 image: "/assets/images/attiny3/posts-meta.svg"
@@ -10,7 +10,7 @@ hidden: false
 slug: "attiny3"
 ---
 
-[Part 2](/posts/attiny2/) ended with the bike's display showing double the real speed above 25 km/h. That turned out to be only half of the job. I wanted the motor to stop assisting at 25 km/h, and the doubled display did not do that. In this part I take the chip back to the bike, work out why the motor kept running, find a second wire that does stop it, and then strip the design right back.
+[Part 2](/posts/attiny2/) ended with the bike's display showing double the real speed above 25 km/h. I hoped that would make the motor stop assisting at 25 km/h, but it did not. In this part I take the chip back to the bike, look at why the motor kept running, find a second wire that does stop it, and then strip the design right back.
 
 The short version: the chip now listens to the speed wire and pulls the brake line LOW above 25 km/h, which cuts the motor. It took a wrong assumption and a design that I threw away to get there.
 
@@ -22,7 +22,7 @@ In the field test, the display did what the bench test promised: it climbed with
 Speed displayed on bike display increased from 24km/h to 52km.h as real speed increased from 24km/h to 26km/h. So success. Unforunately the bike's controller continued to provide power to the hub motor
 ```
 
-Part 2 assumed that a controller with a speed limit above 25 km/h would cut assistance when it saw the doubled speed. This controller did not. Claude Code suggested why. The white wire may only carry the speed to the display. The controller might be working out its own speed from the three commutation hall wires, the green, yellow and blue ones that switch the motor phases, and it might not use the white wire to decide whether to cut power. Doubling the white wire seems to have changed what I could see on the display and nothing else.
+In Part 2 I hoped that a controller with a speed limit above 25 km/h would cut assistance when it saw the doubled speed. This controller did not. Claude Code suggested why. The white wire may only carry the speed to the display. The controller might be working out its own speed from the three commutation hall wires, the green, yellow and blue ones that switch the motor phases, and it might not use the white wire to decide whether to cut power. Doubling the white wire seems to have changed what I could see on the display and nothing else.
 
 :::brain-power Another way to stop the motor
 I could not touch the commutation wires. Interfering with them can make the motor stutter or damage the controller. Is there another wire on the bike that tells the controller to cut the motor? Think about what happens when you squeeze a brake lever before you read on.
