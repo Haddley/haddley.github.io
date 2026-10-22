@@ -49,6 +49,10 @@ This is where the three tools stopped resembling each other most.
 
 Ranked by how much verification actually happened without my asking for a second pass: BMAD ran automatically every time; Spec-Kit ran only when I re-invoked it, but iterated until clean and caught its own spec's math error along the way; OpenSpec ran zero times after archive, by design.
 
+One way to read that difference comes from Dave Farley's argument, in the [video listed in the References](https://www.youtube.com/watch?v=EkH_uoybj8k), that a specification is only worth the name if it is executable. All three tools verify an implementation against a prose specification, and none of them keeps the specification itself executable. I did not check whether the tests in these runs trace back to the acceptance scenarios in each spec, so treat this as a reading, not a finding.
+
+The tension is older than these tools. My own earlier work, the Designers' Notepad at Lancaster, started from a similar concern: as I recall it, the design tools of the time were better at recording a finished design than at helping with the rough sketching and comparing of options that comes first. The Notepad let designers sketch rough designs, compare options, and then convert them into a more formal notation ([Haddley and Sommerville, 1990](https://research-portal.st-andrews.ac.uk/en/publications/integrated-support-for-systems-design/); [Twidale, Rodden and Sommerville, 1993](https://archive.cs.st-andrews.ac.uk/STSE-Handbook/Papers/TheDesignersNotepadSupportingandUnderstandingCooperativeDesign-Twidale.pdf)). It did not anticipate executable specifications, and it was a hypertext tool, not a test harness, but it was aimed at the same failure: a tool that waits for a finished design gets used after the thinking is done.
+
 This is not just our own finding. An [independent, much larger comparison](https://www.youtube.com/watch?v=kV3gnv_Npxk) — a real multi-phase Python application, a different implementing model (Claude Opus 4.7), nothing to do with our calculator — found the identical asymmetry: OpenSpec's own verify/validate step *"mostly found nothing,"* while Spec-Kit's analyze step *"consistently surfaced real issues before implement ran,"* called *"the single best polish helper"* that reviewer had used in either framework. Two unrelated tasks, two independent runs, the same gap.
 
 ## Who can actually read the documentation
@@ -124,6 +128,8 @@ If DeepSeek Harness specifically is your driver agent, that is a real, structura
 ## Does this support architecture-by-discovery?
 
 A different kind of fit question, and one worth naming honestly before answering it: nothing in this series tested it end to end. Experienced architects often work by proving a "critical move" — a single, real, working slice through the riskiest part of a system, at low level of detail, early — while the report to sponsors stays high-level, and stakeholders get brought along through mockups, prototypes, and conversation rather than a finished document. That is a two-track way of working, and it sits partly outside what any of these three tools are built for: all three want whatever you build to become part of a permanent artifact (OpenSpec's archived living spec, Spec-Kit's per-feature folder, BMAD's frozen `SPEC.md`), not a disposable spike you prove and discard.
+
+This tension is not new. The Designers' Notepad paper in the References argued that early design needs more flexibility than the design tools of its day allowed, and the Notepad was built so that a designer could sketch a rough idea and compare options before anything was formalised. Spec-Kit's quality checklist and Constitution Check lean the other way: they ask for the design to look finished before planning may proceed. OpenSpec's low ceremony sits closer to the Notepad's posture, though it was not built for discovery either. I am reading across more than thirty years here, so treat it as an analogy, not a finding.
 
 With that said, they do not fit equally badly.
 
@@ -212,3 +218,7 @@ All three repos are public and unedited: [github.com/Haddley/specdriven](https:/
 - [Kent Beck: Software Engineering in the Age of AI | Prodacity 2026](https://www.youtube.com/watch?v=F8fBgDCf2Y4&t=2559s)
 
 - [The Industry Is Catching Up: The Only Way to Generate AI Code That Works](https://www.youtube.com/watch?v=EkH_uoybj8k)
+
+- [Haddley and Sommerville (1990), Integrated Support for Systems Design, Software Engineering Journal 5(6), 331–338](https://research-portal.st-andrews.ac.uk/en/publications/integrated-support-for-systems-design/)
+
+- [Twidale, Rodden and Sommerville (1993), The Designers Notepad: Supporting and Understanding Cooperative Design, ECSCW](https://archive.cs.st-andrews.ac.uk/STSE-Handbook/Papers/TheDesignersNotepadSupportingandUnderstandingCooperativeDesign-Twidale.pdf)
