@@ -81,10 +81,10 @@ Where the three tools actually diverge is what surrounds that clean core, and wh
 **Spec-Kit separates audiences into different files, most rigorously of the three — at the cost of volume.** Its `spec.md` stays clean, but four more files sit beside it, and they are unambiguously written for the implementer, not a stakeholder:
 
 ```markdown
-# Contract: `CalculatorEngine` public API
-| Field | Type | Description |
-|---|---|---|
-| `mode` | `"standard" \| "programmer"` | **New.** Current calculator mode. |
+# Contract: CalculatorEngine API
+
+mode: "standard" | "programmer"
+  New. Current calculator mode.
 ```
 
 That split is a real strength — a non-technical reviewer never has to open `contracts/` or `research.md` — but the volume is a real, independently documented cost. A [genuine Spec-Kit usage report](https://github.com/github/spec-kit/issues/860) describes *"uncontrolled complexity escalation... 420 lines → 873 lines for similar features," "no guidance on 'appropriate size,'"* on real projects — a pattern our two small features didn't trigger, but a fair thing to weigh in.
