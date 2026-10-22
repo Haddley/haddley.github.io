@@ -10,6 +10,10 @@ hidden: false
 slug: "businesscentralbusinessevents"
 ---
 
+:::brain-power Before you read on
+An outside system wants to know the moment a project manager is assigned to a job in Business Central. It could ask every few minutes, or Business Central could tell it. How would you make Business Central do the telling?
+:::
+
 ## project files
 
 ```text
@@ -43,6 +47,32 @@ The `[ExternalBusinessEvent]` decorator attribute in Business Central enables de
 
 ![](assets/images/businesscentralbusinessevents/Screenshot-2025-12-19-at-12.50.29-PM.png)
 *Flow ran successfully*
+
+:::no-dumb-questions
+**Q: Why is the ProjectManagerAssigned procedure empty?**
+
+A: The [ExternalBusinessEvent] attribute declares the event. Calling the procedure is what raises it, so the body does not need any code.
+
+**Q: What is the User Setups API page for?**
+
+A: An API page publishes a table as a web service that external systems can call. This one publishes User Setup, with the id, user id, email and other fields, so the receiver of the event can look up the user. API pages are served over OData, as I describe in my [OData post](/posts/odata/).
+
+**Q: What does the enum extension do?**
+
+A: It adds a Jobs value to the event categories, so my event can be listed under its own category.
+:::
+
+:::pencil When does the event fire?
+Read JobOnAfterValidateProjectManager below. A user changes the Project Manager field on a job. Name two conditions that must both be true before ProjectManagerAssigned is raised.
+
+:::answer
+The new Project Manager must be different from the old one, and it must not be empty. The code also looks up that project manager in User Setup, and it raises the event only if the lookup finds a record. If any of these fail, nothing is sent.
+:::
+:::
+
+:::under-the-hood Two small pieces work together
+One procedure declares the event, and a second procedure subscribes to the Project Manager field's OnAfterValidate event on the Job table. When the field changes, the subscriber raises the external event with the job's id, number, description, the user's id and the user's email. A flow on the outside then receives it, which is what the last two screenshots show.
+:::
 
 ## EventCategoryExt.enumext.al
 
@@ -137,6 +167,19 @@ page 50101 "User Setups API"
     }
 }
 ```
+
+:::test-drive Try it yourself
+1. Publish the extension, and set up a flow that waits for the business event.
+2. Open a job in Business Central and assign a project manager who has a User Setup record.
+3. Check that the flow ran, and then clear the field and see that nothing is sent.
+:::
+
+:::bullet-points Recap
+- The [ExternalBusinessEvent] attribute lets Business Central tell an outside system that something happened.
+- Calling the procedure raises the event, and an event subscriber on the Job table calls it.
+- An API page lets the receiver look up the user that the event mentions.
+- The event fires only when the project manager changes to a non-empty user that exists in User Setup.
+:::
 
 ## References
 

@@ -13,6 +13,10 @@ image: "/assets/images/powerpages2/powerpages-scalable.svg"
 
 I extended the Power Pages Customer Portal to allow customers to view, create, and edit their own Customer Orders.
 
+:::brain-power Before you read on
+A customer creates an order on a website and presses Submit. What should the customer see next, and how would the site know that the order belongs to that customer's company?
+:::
+
 ![](assets/images/powerpages2/screenshot-2024-12-15-at-7.20.16am-2136x846.png)
 *I created a new table*
 
@@ -30,6 +34,16 @@ I extended the Power Pages Customer Portal to allow customers to view, create, a
 
 ![](assets/images/powerpages2/screenshot-2024-12-15-at-7.26.25am-2136x1104.png)
 *I added an Account (Customer) column*
+
+:::no-dumb-questions
+**Q: Why did I make the Name column an Autonumber?**
+
+A: A customer should not have to invent a name for an order. An autonumber gives each Customer Order a number automatically.
+
+**Q: What does the Read, Update, Create and Delete permission do?**
+
+A: It lets customers who are signed in see, change, add and remove Customer Order rows through the portal. I gave it to the Authenticated Users role.
+:::
 
 ![](assets/images/powerpages2/screenshot-2024-12-15-at-7.28.02am-2136x1094.png)
 *I created a Portal Active Customer Orders view*
@@ -100,6 +114,14 @@ I extended the Power Pages Customer Portal to allow customers to view, create, a
 ![](assets/images/powerpages2/screenshot-2024-12-15-at-8.12.40am-2136x721.png)
 *I could not see the new Customer Order*
 
+:::pencil Where did the order go?
+I created a Customer Order and pressed Submit, but the new order was not listed on the portal. When I opened it in a Customer Orders app, the order was there, and its Account value was not set. Why might the portal not have listed it?
+
+:::answer
+The portal list shows a customer's own orders, so an order with no Account has nothing to match. The next step fixes that. I added Basic Form Metadata that saves the current portal user's company name into the Account column, and the second order that I created had its Account set.
+:::
+:::
+
 ![](assets/images/powerpages2/screenshot-2024-12-15-at-8.13.27am-2136x889.png)
 *I created a Customer Orders app*
 
@@ -141,6 +163,10 @@ I extended the Power Pages Customer Portal to allow customers to view, create, a
 
 ![](assets/images/powerpages2/screenshot-2024-12-15-at-8.19.51am-2136x1100.png)
 *The Account Value was set*
+
+:::under-the-hood Basic Form Metadata
+Form metadata adds extra behaviour to a Power Pages form. I added an attribute entry for the Account column, ticked Save Value On Save, and chose Current Portal User and Company Name. When a customer submits the form, the portal fills in the Account for them, so they never have to choose it.
+:::
 
 ![](assets/images/powerpages2/screenshot-2024-12-15-at-8.21.13am-2136x1099.png)
 *I added an Edit Customer Order page*
@@ -201,6 +227,26 @@ I extended the Power Pages Customer Portal to allow customers to view, create, a
 
 ![](assets/images/powerpages2/screenshot-2024-12-20-at-5.06.13pm-2136x735.png)
 *I was redirected to the Edit Customer page*
+
+:::no-dumb-questions
+**Q: How does the Edit page know which order to show?**
+
+A: The edit page's URL includes the id of the order. I wanted the New Customer Order form to send the user straight to the Edit page, so on its On Success settings I passed a parameter named id from the hadd_customerorderid attribute of the order that had just been created.
+:::
+
+:::test-drive Try it yourself
+1. Create a New Customer Order page with a basic form, and submit an order.
+2. Add Basic Form Metadata that saves the current portal user's company into the Account column.
+3. Create another order, and check that it appears in the portal list.
+4. Edit the order, and check that Submit returns you to the list.
+:::
+
+:::bullet-points Recap
+- The portal now lets customers view, create and edit their own Customer Orders.
+- New orders had no Account until Basic Form Metadata saved the current user's company.
+- Passing the order's id on success took the user straight to the Edit page.
+- Table permissions gave Authenticated Users the access that the pages needed.
+:::
 
 ![](assets/images/powerpages2/screenshot-2024-12-20-at-5.06.23pm-2136x777.png)
 *I clicked Submit on the Edit Page and was redirected to the Customer Orders page*

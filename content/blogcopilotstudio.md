@@ -13,6 +13,10 @@ image: "/assets/images/blogcopilotstudio/posts-meta.svg"
 
 I created a Business Central extension that allows Business Central users to "chat to" [this blog](https://haddley.github.io).
 
+:::brain-power Before you read on
+A Business Central user wants to ask a question about something that is not in Business Central at all. What would a chat page inside Business Central have to be connected to, and what would it need in order to start a conversation?
+:::
+
 ![](assets/images/blogcopilotstudio/screenshot-2024-03-24-at-12.37.07-pm-1836x1063.png)
 *I created a "Blog Copilot" Copilot*
 
@@ -24,6 +28,20 @@ I created a Business Central extension that allows Business Central users to "ch
 
 ![](assets/images/blogcopilotstudio/screenshot-2024-03-24-at-12.38.22-pm-1836x1063.png)
 *I switched to No authentication*
+
+:::no-dumb-questions
+**Q: What is the Token Endpoint that I copied?**
+
+A: The address that the Business Central extension uses to reach the published Copilot. I copied it after publishing, and the extension needs it to start a conversation.
+
+**Q: Why did I switch to No authentication?**
+
+A: The Copilot only answers questions about the content of this public blog, so I did not need to sign anyone in. That choice suits public content only.
+:::
+
+:::watch-it No authentication means anyone with the address can use it
+With No authentication, anyone who has the endpoint can talk to the Copilot. That is acceptable when it only draws on public blog posts, but do not choose it for a Copilot that can see private or company data.
+:::
 
 ![](assets/images/blogcopilotstudio/screenshot-2024-03-24-at-12.38.32-pm-1836x1063.png)
 *I clicked Save*
@@ -42,6 +60,18 @@ I created a Business Central extension that allows Business Central users to "ch
 
 ![](assets/images/blogcopilotstudio/screenshot-2024-03-24-at-6.58.54-pm-1836x1021.png)
 *I asked the Blog Copilot "What is an API Gateway" and "What is Java"?*
+
+:::test-drive Try it yourself
+1. Create a Copilot in Copilot Studio, switch it to No authentication, and publish it.
+2. Copy its Token Endpoint into the extension, and deploy the extension.
+3. Open the Blog Copilot page in Business Central and ask a question that one of the blog posts answers.
+:::
+
+:::bullet-points Recap
+- A Copilot Studio Copilot can answer questions from the content of this blog.
+- A Business Central extension gives users a page that chats with it, through the Token Endpoint.
+- I used No authentication, which is only suitable because the content is public.
+:::
 
 
 ## BlogCopilotExtension.al

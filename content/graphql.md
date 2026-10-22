@@ -1,12 +1,12 @@
 ---
 title: "GraphQL"
-description: "GraphQL is a query and manipulation language for APIs."
+description: "Building a GraphQL server with Node, Express and express-graphql, trying queries and mutations in GraphiQL, and reading the data from a React client with Apollo"
 date: "2021-03-01"
 categories: ["JavaScript"]
 tags: "graphql, api-design, query-language, schema"
 hidden: false
 slug: "graphql"
-image: "/assets/images/graphql/graphql-logo.svg-1200x1200.png"
+image: "/assets/images/graphql/posts-meta.svg"
 ---
 
 
@@ -17,8 +17,36 @@ A GraphQL API client may be able to request all of the data it needs in a single
 
 GraphQL supports reading data, mutating data, and subscribing to data (WebSockets).
 
+:::brain-power Before you read on
+A client wants a list of books and the names of each book's authors. With a REST API, how many calls would that take, and how much data that the client does not need would come back? What would you want to be able to say to the server instead?
+:::
 
-## server.js
+:::no-dumb-questions
+**Q: How is a GraphQL API different from a REST API?**
+
+A: A REST API has a URL for each kind of thing, so a client may need several calls to collect what it needs. A GraphQL API has one URL, and the client sends a query that names exactly the fields that it wants, so one call can return it all.
+
+**Q: Is GraphQL the only way to ask for exactly the data I need?**
+
+A: No. [OData](/posts/odata/) is the main alternative, and it is built into Business Central, Excel and Power BI. The section after this box explains how the two differ.
+
+**Q: What are a schema and a resolver?**
+
+A: The schema describes the types, such as Book and Author, and the fields that a client can ask for. A resolver is the code that supplies the value for a field. In server.js, the books field of the Query type has a resolver that returns the list of books.
+
+**Q: What is the difference between a query and a mutation?**
+
+A: A query reads data and a mutation changes it. In this post, books, book, authors and author are queries, and addBook and addAuthor are mutations.
+:::
+
+
+## GraphQL or OData?
+
+[OData](/posts/odata/) is the other well-known answer to the same problem, and it is built into Business Central, Excel and Power BI. A client can also choose its properties and bring related items back in one call, but it does so with query options in the URL, such as $select, $filter and $expand.
+
+The difference is where the power sits. The server in this post can find a book or an author by id, because I wrote an argument for that, and filtering by name would need another argument and more resolver code. In OData, a filter on any property is available without extra server code, and the price is that the service has to decide what it exposes. My [OData post](/posts/odata/) puts OData and GraphQL side by side.
+
+## Setting up the project
 
 I created a package.json file using the npm init command
 
@@ -64,11 +92,27 @@ $ npm start
 ![](assets/images/graphql/screen-shot-2021-03-02-at-10.57.26-pm-1536x782.png)
 *I read data for a single author*
 
+:::under-the-hood How one query returns books and their authors
+A book in the data holds only authorIds, such as [5, 6]. The Book type in server.js has an authors field with its own resolver, which filters the authors list for the ids in that book. The Author type does the same in reverse with its books field. So when a query asks for books and the name of each author, GraphQL calls the books resolver once and then the authors resolver for each book, and it returns the nested result in one response.
+:::
+
 ![](assets/images/graphql/screen-shot-2021-03-02-at-11.00.26-pm-1536x780.png)
 *I mutated data by adding an author*
 
 ![](assets/images/graphql/screen-shot-2021-03-02-at-11.03.34-pm-1536x785.png)
 *I mutated data by adding a book*
+
+:::pencil What must a client send to add a book?
+Look at the addBook mutation in server.js below. Which arguments does a client have to send, and what happens if it leaves one out?
+
+:::answer
+It must send name, isbn10 and authorIds, because each of them is declared with GraphQLNonNull. If one is missing, GraphQL rejects the request before the resolver runs. The resolver then gives the new book an id of one more than the current number of books and adds it to the list.
+:::
+:::
+
+:::watch-it The data lives in memory
+The authors and books are arrays in server.js, and addBook and addAuthor push new items onto them. Anything that a mutation adds is lost when the server restarts, so this is a way to learn GraphQL, not a way to store data. [Part 5 of my Spring Boot series](/posts/spring-boot-5/) builds the same API in Java with a database.
+:::
 
 
 ## A GraphQL client app
@@ -96,6 +140,16 @@ The app.js code includes a GraphQL query, an ApolloProvider and a Query.
 ## API Gateway
 
 I noticed that the Cross-Origin Resource Sharing (CORS) library reference in the GraphQL code above is not needed when the GraphQL server and the GraphQL client App are published using an [API Gateway](/posts/apigateway/).
+
+:::no-dumb-questions
+**Q: Why is the cors library in server.js marked optional?**
+
+A: The React client runs on localhost:3000 and the GraphQL server runs on port 5000, so the browser treats them as different origins and blocks the call unless the server allows it. The cors library adds the headers that allow it. When an API Gateway publishes the client and the server under one address, the browser sees a single origin, and the library is no longer needed.
+:::
+
+:::watch-it These packages are old
+I installed express-graphql 0.7.1 and graphql 14.1.1 in March 2021. Today npm says that express-graphql is no longer maintained, and recommends graphql-http instead. The ideas in this post still apply, but check which packages are current before you start a new project.
+:::
 
 
 ## server.js
@@ -334,3 +388,19 @@ function App() {
 
 export default App;
 ```
+
+:::test-drive Try it yourself
+1. Run npm start in the server folder, and open http://localhost:5000/graphql to use GraphiQL.
+2. Ask for books, and include the name of each book's authors.
+3. Run addAuthor, and then ask for authors to see the new one.
+4. Start the React client and compare the list on localhost:3000 with what GraphiQL returned.
+:::
+
+:::bullet-points Recap
+- A GraphQL client sends one query that names the fields it wants, and gets one response.
+- The schema lists the types and fields, and resolvers supply the values.
+- Queries read data and mutations change it, and GraphiQL lets me try both in the browser.
+- The data is held in arrays, so changes are lost when the server restarts.
+- The React client with Apollo sends a query to the server, and CORS is needed when the client and server run on different origins.
+- OData answers the same need with query options in the URL, and gives clients generic filtering for free, as my [OData post](/posts/odata/) shows.
+:::

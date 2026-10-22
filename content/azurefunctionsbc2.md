@@ -17,6 +17,10 @@ slug: "azurefunctionsbc2"
 ![](assets/images/azurefunctionsbc2/Screenshot-2025-12-16-at-2.25.38-PM.png)
 *Azure Functions App used to generate Customer QR Code*
 
+:::brain-power Before you read on
+A customer card in Business Central could show a QR code for the customer. Where would the picture come from, and what should happen the first time someone opens a card that has no picture yet?
+:::
+
 ## project files
 
 ```text
@@ -550,6 +554,24 @@ The error message "The request was blocked by the runtime to prevent accidental 
 
 ![](assets/images/azurefunctionsbc2/Screenshot-2025-12-16-at-2.04.25-PM.png)
 *I enabled Allow HttpClient Requests*
+
+:::watch-it Outbound HTTP calls are blocked by default
+The extension calls the Azure Function, and Business Central answered with an error that said the request was blocked by the runtime to prevent accidental use of production services. By default, outbound calls from an extension are blocked in a sandbox or a copied environment. I had to enable Allow HttpClient Requests for the extension before the call worked.
+:::
+
+:::no-dumb-questions
+**Q: What is a FactBox?**
+
+A: A panel that sits beside a page and shows extra information about the record that is open. Here the Customer QR Code FactBox shows the QR code on the Customer Card, and a page extension adds it without changing the base page.
+
+**Q: Why does the helper have two ways to store the image?**
+
+A: An API can return the picture in two forms. My Azure Function returns a base64 text string, and some public APIs return the raw PNG bytes. The helper checks whether the address contains azurewebsites, and then uses the base64 handler or the binary handler.
+:::
+
+:::under-the-hood What happens when a customer card opens
+The FactBox checks whether a QR code already exists for the customer. If one is missing, it calls GenerateQRCodeForCustomer, which builds the text from the customer number and name, URL-encodes it, and calls the function. The answer is converted to a PNG, stored in a MediaSet field, and the page refreshes to show it.
+:::
 
 
 ## References

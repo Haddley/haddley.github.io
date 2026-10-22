@@ -1,7 +1,7 @@
 ---
 title: "Java Spring Boot"
 part: 6
-description: "GitHub OAuth"
+description: "Signing in with GitHub OAuth2 using Spring Security, then using roles to control who can open the user and admin pages"
 date: "2023-10-31"
 categories: ["Java"]
 tags: "spring-boot, github, ci-cd"
@@ -12,6 +12,10 @@ image: "/assets/images/spring-boot-6/spring-framework-logo-70-no.svg"
 
 
 I implemented OAuth2 authentication using Spring Security and GitHub.
+
+:::brain-power Before you read on
+Every website that asks for a password has to store it safely, and every user has to invent another one. What if the website never saw a password at all, and let a service you already trust vouch for you? What would that service have to tell the website?
+:::
 
 ![](assets/images/spring-boot-6/screenshot-2023-11-01-at-1.43.58-pm-1433x943.png)
 *I used spring initializr to create a new project with a dependency on Spring Web and OAuth2 Client*
@@ -24,6 +28,20 @@ I implemented OAuth2 authentication using Spring Security and GitHub.
 
 ![](assets/images/spring-boot-6/screenshot-2023-11-02-at-9.11.47-am-1307x185.png)
 *I entered the username "user" and the generated a temporary password and the home page was displayed*
+
+:::no-dumb-questions
+**Q: Where did the temporary password come from?**
+
+A: Spring Security adds a default login when it is on the classpath. It generates a password each time the application starts and prints it in the log, and the username is user. It is only a placeholder until real sign-in is configured.
+
+**Q: What is OAuth2 login?**
+
+A: I let a provider, here GitHub, check who the user is. The application sends the browser to GitHub, the user signs in there, and GitHub sends the browser back with proof, so my application never sees the GitHub password.
+
+**Q: Why did I need a client id and a client secret?**
+
+A: GitHub has to know which application is asking. I registered the application in GitHub's Developer settings and received a client id and a client secret, and I told GitHub the callback URL that it may send the browser back to.
+:::
 
 
 To switch to using GitHub as an OAuth2 authentication service I needed a github.client-id and a github.client-secret.
@@ -43,6 +61,10 @@ To switch to using GitHub as an OAuth2 authentication service I needed a github.
 ![](assets/images/spring-boot-6/screenshot-2023-11-02-at-8.51.22-am-1229x289.png)
 *I added the github.client-id and a github.client-secret values to my application.properties file*
 
+:::watch-it Keep the client secret out of your repository
+A client secret is a password for the application. If application.properties is committed to a public GitHub repository, anyone can read the secret. Keep the real values in environment variables or in a file that Git ignores, and generate a new secret if one is ever exposed.
+:::
+
 ![](assets/images/spring-boot-6/screenshot-2023-11-02-at-9.15.52-am-1306x820.png)
 *Now when I tried to access http://localhost:8080 I was redirected to a GitHub page*
 
@@ -51,6 +73,10 @@ To switch to using GitHub as an OAuth2 authentication service I needed a github.
 
 ![](assets/images/spring-boot-6/screenshot-2023-11-02-at-9.21.11-am-1306x153.png)
 *I was redirected back to the http://localhost:8080 home page*
+
+:::under-the-hood What happened during the sign-in
+The screenshots show the steps in order. I asked for the home page, and the application redirected me to a GitHub page. I proved who I was to GitHub, including the code from my two-factor authentication app. GitHub then redirected me back to the callback URL in my application, and the home page appeared. Spring Security handled the redirects, and the only things that I had to supply were the client id, the client secret and the callback URL.
+:::
 
 
 ## Adding Views and Roles
@@ -66,6 +92,14 @@ I added a USER role and an ADMIN role
 
 ![](assets/images/spring-boot-6/screenshot-2023-11-04-at-10.29.37-pm-1663x868.png)
 *I created a service that assigns security Roles to users (user with GitHub ID=15018162 is the only ADMIN)*
+
+:::pencil Who can open what?
+Look at SecurityConfig.java below. The paths /, /user, /admin, /api/v1/user and /api/v1/admin each have a rule. A visitor signs in with a GitHub account whose id is not 15018162. Which of those paths can they open?
+
+:::answer
+They are given only the USER role, so they can open /, /user and /api/v1/user. The /admin and /api/v1/admin paths need the ADMIN role, which CustomOAuth2UserService gives only to the user whose GitHub id is 15018162, and that user also holds the USER role. A visitor who has not signed in can open / and the files under /webjars, because the other paths all need a role.
+:::
+:::
 
 ![](assets/images/spring-boot-6/screenshot-2023-11-04-at-10.32.46-pm-1665x589.png)
 *REST Controller (not used here because we are generating pages server-side only)*
@@ -102,6 +136,19 @@ I added a USER role and an ADMIN role
 
 ![](assets/images/spring-boot-6/screenshot-2023-11-04-at-10.39.41-pm-1416x235.png)
 *admin api result*
+
+:::test-drive Try it yourself
+1. Run the application and sign in with GitHub.
+2. Open /user and /api/v1/user, and then try /admin.
+3. Change the id in CustomOAuth2UserService.java to your own GitHub id, and see how the Admin menu item appears.
+:::
+
+:::bullet-points Recap
+- Spring Security with the OAuth2 Client dependency lets GitHub sign users in, so the application never handles their passwords.
+- The application needs a client id, a client secret and a callback URL from GitHub, and the secret must stay out of the repository.
+- A custom user service gave every signed-in user the USER role, and only one GitHub id the ADMIN role.
+- A SecurityFilterChain bean decides which paths need which role.
+:::
 
 
 ## SecurityConfig.java

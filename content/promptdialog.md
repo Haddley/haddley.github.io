@@ -13,6 +13,10 @@ hidden: "false"
 
 I built a Business Central Copilot using the PromptDialog page type, which allows users to provide prompts, generate AI responses, review and regenerate outputs, and then save or discard the result.
 
+:::brain-power Before you read on
+A Copilot page needs somewhere to type a request, somewhere to show the answer, and a way to try again or keep the result. What buttons would you put on it?
+:::
+
 ![](assets/images/promptdialog/screenshot202025-05-2320at206.45.36e280afpm-2136x1380.png)
 *I navigated to Business Central https://businesscentral.dynamics.com*
 
@@ -67,6 +71,16 @@ I built a Business Central Copilot using the PromptDialog page type, which allow
 ![](assets/images/promptdialog/screenshot202025-05-2320at207.34.33e280afpm-2136x804.png)
 *A page was generated*
 
+:::no-dumb-questions
+**Q: What is a PromptDialog page?**
+
+A: A page type for Copilot experiences. It has a prompt area for the user's request, a content area for the output, and system actions such as Generate, Regenerate, OK and Cancel.
+
+**Q: What is the prompt guide?**
+
+A: A set of ready-made prompts. My page has one action, Capital City, which fills the prompt with What is the Capital of the country that I choose. The user then edits the text.
+:::
+
 ![](assets/images/promptdialog/screenshot202025-05-2320at207.48.21e280afpm-2136x905.png)
 *I updated the generated page with Prompt Dialog specific AL code*
 
@@ -82,8 +96,20 @@ I built a Business Central Copilot using the PromptDialog page type, which allow
 ![](assets/images/promptdialog/screenshot202025-05-2320at207.54.07e280afpm-2136x663.png)
 *The RunGeneration procedure was executed. This code updated the Output variable/field based on the Prompt*
 
+:::under-the-hood Why this is a good first step
+Both the Generate and the Regenerate actions call the same RunGeneration procedure. That means the page, its buttons and the OK and Cancel handling all work before any AI is involved. When I swap the body of RunGeneration for a real model call, nothing else on the page has to change.
+:::
+
 ![](assets/images/promptdialog/screenshot202025-05-2320at207.54.40e280afpm-2136x956.png)
 *The generated response was displayed*
+
+:::pencil What will the answer be?
+In this part, RunGeneration does not call a language model. Read the procedure in the code below. I typed What is the Capital of France? and clicked Generate. What text do you expect in the output?
+
+:::answer
+The output is "The prompt you entered was: What is the Capital of France?". The procedure only joins a fixed sentence to the prompt, so it echoes the question. [Part 2](/posts/promptdialog2/) replaces it with a call to Azure OpenAI.
+:::
+:::
 
 
 ## Pag50100.LLM.al
@@ -191,3 +217,15 @@ page 50100 LLM
 
 }
 ```
+
+:::test-drive Try it yourself
+1. Create the LLM page, and set it as the startup object.
+2. Choose the Capital City prompt guide item, change the country, and click Generate.
+3. Click Regenerate, and then OK or Cancel, and notice what each one does.
+:::
+
+:::bullet-points Recap
+- A PromptDialog page gives a Copilot experience a prompt area, an output area and system actions.
+- The prompt guide offers starter prompts, and Generate and Regenerate call RunGeneration.
+- In Part 1 RunGeneration only echoes the prompt, so that the page works before any model is connected.
+:::

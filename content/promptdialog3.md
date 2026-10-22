@@ -13,17 +13,39 @@ hidden: "false"
 
 I extended the PromptDialog to render Markdown-formatted LLM responses as HTML. Because LLMs typically return Markdown, displaying the raw text was hard to read. I added a `controladdin` that uses the ShowdownJS library to convert Markdown to HTML and inject it into the page.
 
+:::brain-power Before you read on
+A language model often answers with Markdown: headings, bullets, tables and bold text. What would a user see if the page showed that text as it is, and what would you need to do to show it properly?
+:::
+
 ![](assets/images/promptdialog3/screenshot202025-05-2320at205.36.56e280afpm-2136x962.png)
 *I provided a prompt that would return a Markdown formatted response*
 
 ![](assets/images/promptdialog3/screenshot202025-05-2320at205.48.51e280afpm-2136x951.png)
 *The Markdown formatted result was hard to read*
 
+:::no-dumb-questions
+**Q: What is a control add-in, and why did I need one?**
+
+A: A way to run JavaScript and HTML inside a Business Central page. A text field shows raw text, so I added a control add-in called MarkdownBox to show the answer as formatted HTML instead.
+
+**Q: What is ShowdownJS?**
+
+A: A JavaScript library that converts Markdown into HTML. The add-in loads showdown.min.js and my MarkdownBoxFunctions.js, and I turned on its table support.
+:::
+
 ![](assets/images/promptdialog3/screenshot202025-05-2320at207.24.56e280afpm-2136x1196.png)
 *I added a controladdin to the PromptDialog*
 
 ![](assets/images/promptdialog3/screenshot202025-05-2320at206.24.52e280afpm-1915x837.png)
 *The CreateHTMLFromMarkdown JavaScript function is the key move*
+
+:::under-the-hood What CreateHTMLFromMarkdown does
+The function finds the control add-in's container and clears it. It then creates a Showdown converter with tables switched on, converts the Markdown to HTML, and puts the HTML into the page with innerHTML. The page calls the function whenever a new answer arrives.
+:::
+
+:::watch-it The HTML comes from a model
+The function sets innerHTML from text that a language model wrote. If a model can be influenced by what it reads, it could produce markup that you do not want on the page. Think about whether the output should be sanitized before it is displayed, especially if the prompt can include text from other people.
+:::
 
 ![](assets/images/promptdialog3/screenshot202025-05-2320at207.17.39e280afpm-1472x617.png)
 *I opened the file in the Sources panel*
@@ -257,3 +279,16 @@ page 50100 LLM
     end;
 }
 ```
+
+:::test-drive Try it yourself
+1. Ask a prompt that returns a table or a list, and look at it without the add-in.
+2. Add the MarkdownBox control add-in, and ask again.
+3. Open the JavaScript in the browser's Sources panel and set a breakpoint in CreateHTMLFromMarkdown.
+:::
+
+:::bullet-points Recap
+- Language models usually answer in Markdown, which is hard to read as plain text.
+- A control add-in with ShowdownJS converts the Markdown to HTML.
+- CreateHTMLFromMarkdown clears the container, converts, and sets the HTML.
+- Output from a model should be treated with care before it is put on a page.
+:::

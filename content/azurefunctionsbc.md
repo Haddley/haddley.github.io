@@ -14,6 +14,10 @@ slug: "azurefunctionsbc"
 
 ## Azure Functions with Business Central
 
+:::brain-power Before you read on
+Business Central cannot draw a QR code by itself. If you wanted it to ask a small web service for one, what would you send to the service, and what would you want back?
+:::
+
 ## project files
 
 ```text
@@ -240,10 +244,42 @@ jobs:
 ![](assets/images/azurefunctionsbc/Screenshot-2025-12-15-152054.png)
 *Test results*
 
+:::no-dumb-questions
+**Q: What does this function do?**
+
+A: It is an HTTP function called QRCodeGenerator. It reads the text query parameter, makes a QR code from it, and returns the image as a base64 data URI in plain text.
+
+**Q: What happens if I leave out the text parameter?**
+
+A: The function returns a 400 status and a message that asks for text. If creating the code fails, it returns a 500 status with the error message.
+:::
+
+:::watch-it The function is anonymous
+The code sets authLevel to anonymous, so anyone who has the address can call it. That is fine for a demonstration that only draws a QR code, but a function that returns private data would need a key or another form of authentication.
+:::
+
+:::under-the-hood How the code gets to Azure
+In the Deployment Center I entered my GitHub project details, and Azure added a GitHub Actions workflow file to the repository. The workflow built the Function App and deployed it, so a push to the repository updates the function.
+:::
+
 ![](assets/images/azurefunctionsbc/Screenshot-2025-12-15-152132.png)
 
 [Test results](https://qrcode-generator-function-e5c2d8dwcabsbbfe.eastus-01.azurewebsites.net/api/QRCodeGenerator?text=Neil)
 
+
+:::test-drive Try it yourself
+1. Open the function's address with ?text=Neil on the end, and look at the answer.
+2. Change the text and call it again.
+3. Leave the text out and see the 400 message.
+:::
+
+:::bullet-points Recap
+- An Azure Function can be a small HTTP service that Business Central calls.
+- QRCodeGenerator reads a text parameter and returns a QR code as a base64 data URI.
+- A missing parameter returns 400, and a failure returns 500.
+- GitHub Actions built and deployed the function from my repository.
+- Part 2 builds the Business Central extension that calls this function.
+:::
 
 ## References
 

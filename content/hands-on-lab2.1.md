@@ -18,6 +18,10 @@ I worked through the MB-800 Business Central Functional Consultant hands on labs
 "You are a functional consultant assigned to a new project, where you are responsible for the analysis of your customers business processes. Your customer is Contoso Inc., situated in Redmond Washington. They will start to use Microsoft Dynamics 365 Business Central as of their new fiscal year, January 1st 2024.
 You initiate the process by creating a new company within the customers database, including some predefined setup information but without any business data."
 
+:::brain-power Before you read on
+A new customer database needs a company in it, with the basic setup already done but none of the customer's business data. What would you want to copy in from somewhere else, and what would you leave empty?
+:::
+
 ![](assets/images/hands-on-lab2.1/screen-shot-2023-11-22-at-10.05.24-am-1546x473.png)
 *I navigated to Business Central*
 
@@ -53,6 +57,16 @@ You initiate the process by creating a new company within the customers database
 
 ![](assets/images/hands-on-lab2.1/screen-shot-2023-11-22-at-10.12.24-am-503x188.png)
 *A dialog explained that the operation might take 10 minutes*
+
+:::no-dumb-questions
+**Q: Why did I choose Production – Setup Data Only?**
+
+A: The lab asks for a new company with some predefined setup information but no business data. That option gives me the setup and leaves out the transactions.
+
+**Q: What does Create Year do on the Accounting Periods page?**
+
+A: It creates the accounting periods for a year from the starting date that I give it. I entered 1/1/2024, and the New Fiscal Year check box showed that the fiscal year follows the calendar year.
+:::
 
 ![](assets/images/hands-on-lab2.1/screen-shot-2023-11-22-at-10.39.43-am-1543x217.png)
 *I clicked the button to the left of the search button*
@@ -102,6 +116,10 @@ You initiate the process by creating a new company within the customers database
 ![](assets/images/hands-on-lab2.1/screen-shot-2023-11-22-at-10.59.35-am-1546x408.png)
 *I noted that no Shipment methods had been defined*
 
+:::watch-it A new company starts nearly empty
+The Zip Codes and Shipment Methods pages were empty in my new company. That is expected after Setup Data Only, but it means that you have to bring data across yourself, as the next steps do.
+:::
+
 ![](assets/images/hands-on-lab2.1/screen-shot-2023-11-22-at-11.02.07-am-1544x453.png)
 *I used the search button to navigate to the Configuration Worksheet page*
 
@@ -149,6 +167,23 @@ You initiate the process by creating a new company within the customers database
 
 ![](assets/images/hands-on-lab2.1/screen-shot-2023-11-22-at-11.22.45-am-1542x810.png)
 *I confirmed that Shipment Methods had been copied*
+
+:::under-the-hood The Configuration Worksheet
+The Configuration Worksheet lists groups of tables, such as a Master Data Group. I added a General Setup Group with the Zip Code and Shipment Method tables, found their table ids with the lookup, and used Copy Data from Company to copy the selected tables from another company. A dialog confirmed the copy, and the two pages then held data.
+:::
+
+:::test-drive Try it yourself
+1. Create a new company with Setup Data Only, and switch to it.
+2. Create the accounting year, and note that no zip codes or shipment methods exist.
+3. Add the tables to the Configuration Worksheet, and copy them from another company.
+:::
+
+:::bullet-points Recap
+- Setup Data Only gives a new company its setup without any business data.
+- Create Year builds the accounting periods from a starting date.
+- The Configuration Worksheet can copy chosen tables from another company.
+:::
+
 ## References
 
 - [Hands-on-Lab 2.1: Create and configure a new company](https://microsoftlearning.github.io/MB-800-Business-Central-Functional-Consultant/Instructions/Labs/LAB%5BMB-800%5D_M02_Lab01_Create_company.html)

@@ -22,6 +22,10 @@ I used the [AL-Go-PTE](https://github.com/microsoft/AL-Go-PTE) GitHub template r
 
 I needed a GitHub account, a Windows machine, VS Code (with AL and PowerShell extensions installed), and Docker installed locally.
 
+:::brain-power Before you read on
+If you wanted to try a change to Business Central without touching a live company, what would you need on your own machine? Where would the Business Central server run?
+:::
+
 ![](assets/images/al-go-pte/screen-shot-2023-08-26-at-9.27.59-am-1836x1062.png)
 *I created a new repository using the AL-Go-PTE GitHub template repository*
 
@@ -54,6 +58,20 @@ I installed Docker Desktop, Windows Subsystem for Linux, Git, GitHub Desktop, an
 ![](assets/images/al-go-pte/20230826image24-320x519.png)
 *I switched Docker to support Windows containers (rather than Linux containers)*
 
+:::no-dumb-questions
+**Q: What is AL-Go for GitHub?**
+
+A: A set of GitHub templates and actions for setting up and maintaining DevOps processes for Business Central AL projects. I used the AL-Go-PTE template, which is for a per-tenant extension.
+
+**Q: What is a per-tenant extension?**
+
+A: An app that adds to Business Central for one customer's environment, such as the hello world extension that I published here.
+
+**Q: Why did I switch Docker to Windows containers?**
+
+A: The Business Central container image is a Windows image, so Docker had to run Windows containers and not Linux ones.
+:::
+
 ```powershell
 Enable-WindowsOptionalFeature -Online -FeatureName containers –All
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V –All
@@ -63,6 +81,10 @@ https://stackoverflow.com/questions/57431890/error-response-from-daemon-hcsshimc
 
 ![](assets/images/al-go-pte/20230826image11-855x251.png)
 *I navigated to the .AL-Go folder and ran the localDevEnv.ps1 PowerShell script*
+
+:::under-the-hood What localDevEnv.ps1 does
+Judging by the screenshots that follow, the script asks for a user name and password, has Docker download the Business Central image, builds a container, and shares my laptop folders with it. When it finishes, Business Central is running in the container, at an address that I opened in the browser. I published the hello world extension to it, and the settings were copied into launch.json.
+:::
 
 ![](assets/images/al-go-pte/20230826image18-859x720.png)
 *I entered a username:admin and password:<password>*
@@ -105,6 +127,24 @@ https://stackoverflow.com/questions/57431890/error-response-from-daemon-hcsshimc
 
 ![](assets/images/al-go-pte/20230826imag34-1365x989.png)
 *I updated the trigger's message, ran AL: Download Symbols (entering my username:admin and password:<password>), and clicked the Run | Start Debugging menu item*
+
+:::watch-it Docker can refuse to start the container
+If Docker answers with a hcsshim error when the container starts, the Stack Overflow link in the post describes the problem that I found. Check that Docker is set to Windows containers and that Windows Subsystem for Linux is installed before you look for anything else.
+:::
+
+:::test-drive Try it yourself
+1. Create a repository from the AL-Go-PTE template, clone it, and run localDevEnv.ps1.
+2. Open Business Central in the container, and open the Customers page.
+3. Change the message in the hello world extension, download symbols, and start debugging.
+4. Check that the new message appears.
+:::
+
+:::bullet-points Recap
+- AL-Go for GitHub sets up DevOps for Business Central AL projects, and AL-Go-PTE is its template for per-tenant extensions.
+- I needed Docker set to Windows containers, Git, GitHub Desktop and VS Code with the AL extension.
+- localDevEnv.ps1 builds a local Business Central container that I can publish to.
+- I changed the hello world message and saw the change in the running container.
+:::
 
 ## References
 

@@ -12,8 +12,22 @@ image: "/assets/images/rewardsextension/dynamics365-color.svg"
 
 I created a Business Central Extension that allows users to create a list of Rewards and associate them with Business Central Customers.
 
+:::brain-power Before you read on
+You want to keep a list of rewards, such as a discount for a minimum purchase, and give each customer one of them. What would you add to Business Central, and what would you have to change on the customer?
+:::
+
 ![](assets/images/rewardsextension/20230830image1-1021x770.png)
 *I added the idRange needed for the Rewards extension*
+
+:::no-dumb-questions
+**Q: What is the idRange for?**
+
+A: It is the range of object ids that my extension is allowed to use. Every table and page that I add has to have an id inside it, so that my objects do not collide with Business Central's own or with other extensions'.
+
+**Q: What did I add to the Customer?**
+
+A: A table extension, Customer Ext, that adds a Reward ID field to the Customer table, and a page extension, Customer Card Ext, that shows the field on the Customer Card. I did not change the base objects, because an extension adds to them.
+:::
 
 
 ## Rewards table
@@ -35,6 +49,10 @@ I created a Rewards.al file. In the Rewards.al file I added code to created a Bu
 ![](assets/images/rewardsextension/20230830image11-1416x1023.png)
 *I added the Minimum Purchase field to the Reward Card page*
 
+:::under-the-hood What Rewards.al contains
+Rewards.al declares the Reward table, a Reward Card page and a Reward List page. Both pages show the table's fields, which are the Reward ID, the Description, the Discount Percentage and the Minimum Purchase. I first built it without the Minimum Purchase field and then added it to the table, the list and the card, which is why there is an updated version of the file at the end.
+:::
+
 ![](assets/images/rewardsextension/20230830image15-1390x1038.png)
 *I added a Customer Ext (table extension) and a Customer Card Ext (card extension) to associate a Reward value with an Business Central Customer*
 
@@ -45,6 +63,10 @@ I used [Meta's codellama language model](/posts/lmstudio/) to create the AL code
 
 ![](assets/images/rewardsextension/screenshot-2023-08-30-at-1.28.36-pm-1466x1340.png)
 *LM Studio code llama instruct 7B*
+
+:::watch-it Check a language model's documentation against the code
+I asked a local codellama model to explain the AL code. A small model can describe code confidently and still be wrong, so I read each statement against the code before I kept it. The explanation below is a starting point, not a specification.
+:::
 
 
 ## code llama instruct 7B
@@ -470,3 +492,16 @@ pageextension 50104 "Customer Card Ext" extends "Customer Card"
     }
 }
 ```
+
+:::test-drive Try it yourself
+1. Create the table and the two pages, and open the Reward List page with its page number.
+2. Add a reward, and then add a field to the table and to both pages.
+3. Extend the Customer table and the Customer Card, and assign a reward to a customer.
+:::
+
+:::bullet-points Recap
+- An extension adds tables, pages and fields without changing the base application.
+- The idRange keeps my object ids apart from everyone else's.
+- A table extension and a page extension linked a Reward to a Customer.
+- I used a local language model to document the code, and I checked its answer.
+:::

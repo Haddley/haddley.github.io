@@ -19,6 +19,10 @@ In order to prepare the migration of this data, you will configure some configur
 
 You will start with the vendor list, including contact information. To make sure the users know how to complete the required information, you prepare the following example."
 
+:::brain-power Before you read on
+You have to get a list of vendors into a new company, and the people who know the vendors are not Business Central experts. What would you give them to fill in, and what would you need to check before you load it?
+:::
+
 ![](assets/images/hands-on-lab2.2/screen-shot-2023-11-22-at-12.37.32-pm-1543x473.png)
 *I used the search button to navigate to the Configuration Packages page*
 
@@ -52,6 +56,16 @@ You will start with the vendor list, including contact information. To make sure
 ![](assets/images/hands-on-lab2.2/screen-shot-2023-11-22-at-12.47.32-pm-1545x811.png)
 *I clicked on the checkboxes to select the Name, Address, City, Phone No., Currency Code, Language Code, Country/Region Code and Post Code fields*
 
+:::no-dumb-questions
+**Q: What is a configuration package?**
+
+A: A definition of which tables and fields to export to Excel and import back. I created one for the Vendor table, so that the people who know the vendors could fill in a workbook.
+
+**Q: Why did I clear the included fields first?**
+
+A: By default more fields are included than I wanted. I cleared them, noted that only No. was left, and then ticked just the fields that the lab asks for.
+:::
+
 ![](assets/images/hands-on-lab2.2/screen-shot-2023-11-22-at-12.48.16-pm-1543x808.png)
 *I clicked the Export to Excel button*
 
@@ -79,6 +93,14 @@ You will start with the vendor list, including contact information. To make sure
 ![](assets/images/hands-on-lab2.2/screen-shot-2023-11-23-at-3.19.53-pm-1536x804.png)
 *I confirmed that the GBP Currency had been added*
 
+:::pencil Why add the currency and region first?
+Before importing the workbook, I added a GBP currency, with its realized gains and losses accounts, and a country or region for the Island of Sodor. Why would I do this before the import and not after?
+
+:::answer
+The vendor rows in the workbook refer to a currency code and a country or region. I expect the import to fail or report errors for rows that name values that do not exist yet, so I created them first. The package review at the end shows the number of errors.
+:::
+:::
+
 ![](assets/images/hands-on-lab2.2/screen-shot-2023-11-23-at-3.21.17-pm-1536x808.png)
 *I used the search button to access the Counties/Regions page*
 
@@ -99,6 +121,22 @@ You will start with the vendor list, including contact information. To make sure
 
 ![](assets/images/hands-on-lab2.2/screen-shot-2023-11-23-at-3.57.11-pm-1536x807.png)
 *A dialog confirmed that 9 records were inserted*
+
+:::watch-it Review the errors before you apply the package
+After the import, I scrolled right to look at the number of tables, rows and errors before I clicked Apply Package. Applying is what inserts the records, so look for errors first. In my run, 9 records were inserted.
+:::
+
+:::test-drive Try it yourself
+1. Create a configuration package for the Vendor table with only a few fields.
+2. Export it to Excel, add some vendors, and import the workbook.
+3. Check the rows and errors, apply the package, and open the Vendors page.
+:::
+
+:::bullet-points Recap
+- A configuration package exports chosen fields to Excel and imports them back.
+- I added the currency and the country or region that the vendors needed before the import.
+- The package showed rows and errors before I applied it, and 9 records were inserted.
+:::
 
 ![](assets/images/hands-on-lab2.2/screen-shot-2023-11-23-at-3.57.24-pm-1536x807.png)
 *I clicked on the Vendors link to navigate to the Vendors page*

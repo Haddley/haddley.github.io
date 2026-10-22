@@ -13,6 +13,10 @@ image: "/assets/images/powerpages3/powerpages-scalable.svg"
 
 I extended the Power Pages Customer Portal to support Customer Order Lines, allowing customers to add, edit, and delete individual items within their orders.
 
+:::brain-power Before you read on
+An order is usually a list of items and quantities. Where would the items come from, and what would join each line to its order?
+:::
+
 ![](assets/images/powerpages3/screenshot-2024-12-20-at-7.13.41pm-2136x888.png)
 *I created a new Table in the Solution*
 
@@ -30,6 +34,16 @@ I extended the Power Pages Customer Portal to support Customer Order Lines, allo
 
 ![](assets/images/powerpages3/screenshot-2024-12-20-at-7.22.17pm-2136x1099.png)
 *I added an Item lookup column to the Customer Order Lines table*
+
+:::no-dumb-questions
+**Q: What does the Order Lookup column do?**
+
+A: It creates a relationship between the Customer Order table and the Customer Order Lines table, so every line belongs to one order.
+
+**Q: Why is the Item a lookup into a Business Central virtual table?**
+
+A: The items are Business Central data. I added the Business Central Item virtual table, and the lookup lets a customer pick an item without copying the items into Dataverse.
+:::
 
 ![](assets/images/powerpages3/screenshot-2024-12-20-at-7.23.04pm-2136x1099.png)
 *I added a Whole Number Quantity column*
@@ -109,6 +123,10 @@ I extended the Power Pages Customer Portal to support Customer Order Lines, allo
 ![](assets/images/powerpages3/screenshot-2024-12-20-at-8.01.20pm-2136x1027.png)
 *I was not able to lookup Items*
 
+:::watch-it A lookup needs its own permission
+When I tried to add a line, I could not look up items. I added a Global table permission, which gives access to all rows in the table, and the lookup worked. A global permission is wide, so think about whether customers should see every item.
+:::
+
 ![](assets/images/powerpages3/screenshot-2024-12-20-at-8.01.58pm-2136x1096.png)
 *I added a Global table permission. The Global table permission provides access to all rows/records in given table*
 
@@ -123,6 +141,10 @@ I extended the Power Pages Customer Portal to support Customer Order Lines, allo
 
 ![](assets/images/powerpages3/screenshot-2024-12-20-at-10.37.48pm-2136x982.png)
 *I was redirected back to the Edit Customer Order page*
+
+:::under-the-hood Passing the order id along
+The New Customer Order Line page needs to know which order it is adding to. I updated the On Success settings so that the Customer Order's id would be passed, and the form then redirected to the Edit Customer Order page for that order. I did the same kind of redirect for the Edit Customer Order Line page.
+:::
 
 ![](assets/images/powerpages3/screenshot-2024-12-20-at-10.48.02pm-2136x1101.png)
 *I added an Edit Customer Order Line page*
@@ -168,3 +190,17 @@ I extended the Power Pages Customer Portal to support Customer Order Lines, allo
 
 ![](assets/images/powerpages3/screenshot-2024-12-21-at-8.35.38am-2136x1094.png)
 *I refreshed the Edit Customer Order page*
+
+:::test-drive Try it yourself
+1. Add a Customer Order Lines table with an Order lookup, an Item lookup and a Quantity.
+2. Add the lines grid to the order form, and a page to add a line.
+3. Add a line, edit its quantity, and then delete it.
+4. Check that each action sends you back to the order.
+:::
+
+:::bullet-points Recap
+- Customer Order Lines belong to a Customer Order through a lookup relationship.
+- An Item lookup into the Business Central virtual table lets customers choose items.
+- Lines can be added, edited and deleted from the order page.
+- Items and lookups needed table permissions before they worked.
+:::

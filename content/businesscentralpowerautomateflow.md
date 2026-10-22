@@ -16,6 +16,10 @@ Power Automate flows are triggered when Business Central records are created, mo
 
 A Power Automate flow should at least contain one trigger and one action.
 
+:::brain-power Before you read on
+You want an email every time a new vendor is created. What has to start the process, and what has to happen next? Write the two parts down, and then see what Power Automate calls them.
+:::
+
 ![](assets/images/businesscentralpowerautomateflow/screen-shot-2024-01-03-at-12.30.00-pm-1836x1132.png)
 *I created a new Instant Cloud Flow*
 
@@ -39,6 +43,16 @@ A Power Automate flow should at least contain one trigger and one action.
 
 ![](assets/images/businesscentralpowerautomateflow/screen-shot-2024-01-03-at-12.32.16-pm-1836x1134.png)
 *I selected the vendors table (entity)*
+
+:::no-dumb-questions
+**Q: What are a trigger and an action?**
+
+A: A trigger is the event that starts the flow, here When a record is created in the vendors table. An action is what the flow does next, here Send an email (V2) from Outlook.com.
+
+**Q: What is {"Row Id"} in the subject?**
+
+A: Dynamic content. It is a value that the trigger supplies, so each email carries the id of the vendor that started the flow. I put the body of the record into the email body in the same way.
+:::
 
 ![](assets/images/businesscentralpowerautomateflow/screen-shot-2024-01-03-at-12.32.29-pm-1836x907.png)
 *I clicked the + New step button*
@@ -79,6 +93,10 @@ A Power Automate flow should at least contain one trigger and one action.
 ![](assets/images/businesscentralpowerautomateflow/screen-shot-2024-01-03-at-12.37.36-pm-1836x1137.png)
 *I did not enter any Vendor details. I did not navigate away from the new Vendor page.*
 
+:::watch-it The trigger fires on creation
+I created the vendor but entered no details and stayed on the new vendor page, and the flow still ran and sent an email. A When a record is created trigger fires as soon as the record exists, so the email may arrive before anyone has filled the vendor in. Also, my flow used the PRODUCTION environment with the Evaluation company, so use a sandbox for your own tests.
+:::
+
 ![](assets/images/businesscentralpowerautomateflow/screen-shot-2024-01-03-at-12.37.45-pm-1836x1133.png)
 *I reviewed the flow details and noticed that the 28-day run history was updated. I clicked on the history item*
 
@@ -90,3 +108,17 @@ A Power Automate flow should at least contain one trigger and one action.
 
 ![](assets/images/businesscentralpowerautomateflow/screen-shot-2024-01-03-at-12.40.54-pm-1836x1131.png)
 *I navigated to Outlook.com and reviewed the sent email*
+
+:::test-drive Try it yourself
+1. Create an instant cloud flow with the Business Central When a record is created trigger.
+2. Add a Send an email (V2) action that uses dynamic content in the subject.
+3. Create a vendor in Business Central, and check the flow's run history.
+4. Open the sent email and compare it with the vendor record.
+:::
+
+:::bullet-points Recap
+- A Power Automate flow needs at least one trigger and one action.
+- The Business Central trigger fired when I created a vendor, and the action sent an email.
+- Dynamic content such as the Row Id puts record values into the email.
+- The flow ran as soon as the vendor existed, even though I had entered no details.
+:::

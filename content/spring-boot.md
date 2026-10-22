@@ -1,7 +1,7 @@
 ---
 title: "Java Spring Boot"
 part: 1
-description: "Spring based Java Applications that you can just run."
+description: "Creating a REST API with Spring Boot and Spring Tool Suite: a books controller, annotations, and a React client served from the same project"
 date: "2021-04-06"
 categories: ["Java"]
 tags: "spring-boot, rest-api, web"
@@ -10,6 +10,10 @@ image: "/assets/images/spring-boot/spring-framework-logo-70-no.svg"
 ---
 
 I used Spring Tool Suite (an Eclipse-based IDE) and Maven (a Java build and dependency management tool) to create a REST API with Spring Boot.
+
+:::brain-power Before you read on
+A browser can ask a server for a web page. What would a program, such as a React app, want to ask a server for instead, and in what form would it want the answer?
+:::
 
 ## Creating a REST project using Spring Boot
 
@@ -44,6 +48,16 @@ The **@RestController** annotation is used to mark the BooksRestController class
 ![](assets/images/spring-boot/screen-shot-2021-04-06-at-11.10.26-am-1722x1076.png)
 *Add "books" ArrayList to the BooksRestController*
 
+:::no-dumb-questions
+**Q: What does @RestController do?**
+
+A: It marks the class as a controller whose methods return data, not web pages. Spring turns the returned Book objects into JSON for the caller, which is what the React app later reads.
+
+**Q: What do @GetMapping and {id} mean?**
+
+A: @GetMapping connects an HTTP GET request for a path to a method. In /books/{id}, the {id} part is a variable, and @PathVariable hands its value to the method. So /books/1788395549 calls the book method with 1788395549.
+:::
+
 
 ## Books REST Controller
 
@@ -61,6 +75,14 @@ The **@GetMapping** annotation is used to mark the book and books methods as HTT
 ![](assets/images/spring-boot/screen-shot-2021-04-06-at-11.20.30-am-1836x875.png)
 *http://localhost:8080/books/1234567890*
 
+:::pencil What happens for an unknown book?
+The list holds two books, with ids 1788395549 and 1788620216. Look at the book method in BooksRestController.java below. What would you expect to see when I ask for /books/1234567890?
+
+:::answer
+The method removes every book whose id does not match, and when nothing is left it throws a ResponseStatusException with the status NOT_FOUND and the message Book Not Found. So I would expect a 404 Not Found response and not an empty page.
+:::
+:::
+
 
 ## React client
 
@@ -71,6 +93,14 @@ I added static files (images, HTML, and JavaScript) to the /src/main/resources/s
 
 ![](assets/images/spring-boot/screen-shot-2021-04-08-at-3.27.02-pm-1286x750.png)
 *Running the React/Spring Boot app*
+
+:::under-the-hood Why the React app can call /books so easily
+The React files sit in the Spring Boot project's static folder, so the same server delivers the page and answers the API. The fetch call in App.js uses the relative path /books, which means the browser sends it back to the server that delivered the page. Because the page and the API share one origin, I did not have to configure anything for cross-origin requests.
+:::
+
+:::watch-it The books live only in memory
+The two books are added to a static ArrayList when the class loads, so every change disappears when the application stops, and nothing here saves anything. [Part 3](/posts/spring-boot-3/) replaces this with Spring Data JPA and a database.
+:::
 
 
 ## Book.java
@@ -211,6 +241,22 @@ export default App;
 
 </html>
 ```
+
+:::test-drive Try it yourself
+1. Run the project as a Spring Boot App.
+2. Open http://localhost:8080/books and read the JSON.
+3. Open http://localhost:8080/books/1788395549, and then an id that is not in the list.
+4. Add a third book to the static block in BooksRestController.java, restart, and see it appear in the React page.
+:::
+
+:::bullet-points Recap
+- A Spring Boot project with the Spring Web dependency can serve a REST API with very little code.
+- @RestController marks a class that returns data, and @GetMapping connects a path to a method.
+- A @PathVariable takes part of the URL, and a ResponseStatusException turns a missing book into a 404.
+- Static files in src/main/resources/static let one project serve both the React page and the API.
+- The books are held in memory only, so they are lost when the application stops.
+:::
+
 ## References
 
 - [QuickStart](https://spring.io/quickstart)

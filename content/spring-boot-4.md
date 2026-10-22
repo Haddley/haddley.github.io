@@ -1,7 +1,7 @@
 ---
 title: "Java Spring Boot"
 part: 4
-description: "ModelAndView"
+description: "Using Spring MVC's ModelAndView and a Thymeleaf template to show todo items on a web page, with a delete button"
 date: "2023-10-29"
 categories: ["Java"]
 tags: "spring-boot, model-and-view, mvc"
@@ -12,6 +12,10 @@ image: "/assets/images/spring-boot-4/spring-framework-logo-70-no.svg"
 
 I used Spring MVC's ModelAndView class to pass model data to a Thymeleaf view template for rendering, adding a CRUD interface for the TodoItem application.
 
+:::brain-power Before you read on
+In Part 3 the application returned its todo items as plain text. If you wanted a proper web page instead, who should decide what the page looks like, the Java code or something else? What would the Java code still need to hand over?
+:::
+
 ![](assets/images/spring-boot-4/screenshot-2023-10-29-at-2.18.03-pm-2136x1056.png)
 *I added thymeleaf, bootstrap and jquery as dependencies*
 
@@ -20,6 +24,20 @@ I used Spring MVC's ModelAndView class to pass model data to a Thymeleaf view te
 
 ![](assets/images/spring-boot-4/screenshot-2023-10-29-at-2.21.23-pm-2136x1055.png)
 *I updated the controller to populate the fetch the todo items and to pass them and the current day of the week to the thymeleaf view.*
+
+:::no-dumb-questions
+**Q: What is a ModelAndView?**
+
+A: It carries two things from a controller to the page: the name of the view, and the model, which is the data that the view needs. In this post the view is called index, and the model holds the todoItems and today.
+
+**Q: What does Thymeleaf do?**
+
+A: It is a template engine. I write an HTML page with placeholders, and Thymeleaf fills them in with the model data before the browser sees the page. I used it here as an alternative to JSP.
+
+**Q: Why are Bootstrap and jQuery dependencies?**
+
+A: They supply the styling and the scripts for the page, and I added them to the project as dependencies, as the first screenshot shows.
+:::
 
 ![](assets/images/spring-boot-4/screenshot-2023-10-29-at-2.22.07-pm-2136x963.png)
 *The new home page displays the todo items*
@@ -32,6 +50,24 @@ I used Spring MVC's ModelAndView class to pass model data to a Thymeleaf view te
 
 ![](assets/images/spring-boot-4/screenshot-2023-10-29-at-2.31.47-pm-2136x876.png)
 *The second todo item was deleted*
+
+:::watch-it A delete link is a GET request
+The delete button sends a GET request to /delete/{id}, and the controller deletes the item. A GET request is meant for reading, and a browser, a link checker or a prefetching tool may follow a link without anyone clicking it. This is fine for a demonstration, but a real application should delete with a POST or DELETE request, and protect it against forged requests.
+:::
+
+:::pencil Where does the redirect go?
+Look at deleteTodoItem in SpringdatajpaApplication.java. It returns the string redirect:/ after it deletes the item. Why does it redirect to the home page, and what would the browser show if the method returned the view name index instead?
+
+:::answer
+The redirect sends the browser back to / , and that request runs the index method, which loads the todo items again, so the page shows the list without the deleted item. If the method returned index directly, the page would have no todoItems in its model, because the delete method does not add any.
+:::
+:::
+
+:::test-drive Try it yourself
+1. Run the application and open http://localhost:8080 to see the list and the day of the week.
+2. Click Delete on one item, and watch the address bar as the page reloads.
+3. Restart the application and see the item come back, because the H2 database is in memory.
+:::
 
 
 ## pom.xml
@@ -196,6 +232,14 @@ public class SpringdatajpaApplication {
 
 }
 ```
+
+:::bullet-points Recap
+- A ModelAndView holds the name of a view and the data that the view needs.
+- Thymeleaf fills an HTML template with that data, as an alternative to JSP.
+- The delete button calls a controller method that deletes the item and redirects to the home page.
+- A delete that uses GET is acceptable for a demonstration, but not for a real application.
+:::
+
 ## References
 
 - [Spring Web MVC | 05 | The Model object](https://www.youtube.com/watch?v=lHucuG4jyU0&list=PLdW9lrB9HDw23SG-j-iOlQFGvdM7xU1fR&index=5)

@@ -1,7 +1,7 @@
 ---
 title: "Java Spring Boot"
 part: 2
-description: "References"
+description: "Generating a Spring Boot project with start.spring.io, running it locally, and deploying it to Azure App Service with GitHub Actions"
 date: "2023-10-26"
 categories: ["Java", "Azure"]
 tags: "spring-boot, spring-data-jpa, jpa"
@@ -11,6 +11,10 @@ image: "/assets/images/spring-boot-2/spring-framework-logo-70-no.svg"
 
 
 I used [https://start.spring.io](https://start.spring.io), Visual Studio Code, GitHub and Microsoft Azure to generate an Spring application, to run the Spring application on my laptop and to deploy the Spring application to Microsoft Azure
+
+:::brain-power Before you read on
+When you push a change to GitHub, what would have to happen for that change to appear on a live website? Write down the steps, and then see how many of them GitHub Actions does for you here.
+:::
 
 ![](assets/images/spring-boot-2/screenshot-2023-10-26-at-9.55.59-am-1895x1185.png)
 *I created a new GitHub repository (haddley-java)*
@@ -38,6 +42,16 @@ I used [https://start.spring.io](https://start.spring.io), Visual Studio Code, G
 
 ![](assets/images/spring-boot-2/screenshot-2023-10-26-at-10.37.23-am-1897x762.png)
 *I navigated to https://start.spring.io/ and updated Group to "com.haddley" and added the Spring Web dependency*
+
+:::no-dumb-questions
+**Q: What is start.spring.io?**
+
+A: A web page that generates the skeleton of a Spring Boot project. I chose the group name and the Spring Web dependency, clicked GENERATE, and copied the downloaded project into my repository.
+
+**Q: Why did I look at the Java versions in the Azure portal first?**
+
+A: The Azure Web App only runs the Java versions that it supports, and the latest version in the portal at that time was 17. I wanted the project and the runtime to match, so I chose Java 17 in both.
+:::
 
 ![](assets/images/spring-boot-2/screenshot-2023-10-26-at-10.38.08-am-1895x891.png)
 *I clicked the GENERATE button*
@@ -81,6 +95,10 @@ I used [https://start.spring.io](https://start.spring.io), Visual Studio Code, G
 ![](assets/images/spring-boot-2/screenshot-2023-10-26-at-10.51.47-am-1894x891.png)
 *I enabled Continuous deployment and clicked the Authorize button*
 
+:::watch-it Continuous deployment was not available on the Free plan
+When I chose the Free pricing plan, the Continuous deployment option was disabled, so I went back and selected the Basic B1 plan. Check which features each plan allows before you choose one, and check what the plan costs.
+:::
+
 ![](assets/images/spring-boot-2/screenshot-2023-10-26-at-10.52.06-am-1278x719.png)
 *I clicked the Authorize AzureAppService button*
 
@@ -120,6 +138,10 @@ I used [https://start.spring.io](https://start.spring.io), Visual Studio Code, G
 ![](assets/images/spring-boot-2/screenshot-2023-10-26-at-11.03.13-am-1897x1208.png)
 *I reviewed the workflow file*
 
+:::under-the-hood What the workflow file does
+Azure added a GitHub Actions workflow file to my repository, and the screenshot shows it. It runs when I push to the main branch, and it can also be started by hand. A build job checks out the code, sets up Java 17, runs mvn clean install, and uploads the JAR file. A deploy job waits for the build job, downloads the JAR file, and sends it to the haddley-java Web App using a publish profile that GitHub keeps as a secret. That is why pushing a commit later in this post redeployed the site.
+:::
+
 ![](assets/images/spring-boot-2/screenshot-2023-10-26-at-11.04.41-am-1602x791.png)
 *I updated the source code adding a home page*
 
@@ -149,4 +171,21 @@ I used [https://start.spring.io](https://start.spring.io), Visual Studio Code, G
 
 ![](assets/images/spring-boot-2/screenshot-2023-10-26-at-11.09.30-am-1896x165.png)
 *I navigated to https://haddley-java.azurewebsites.net to view the new home page*
+
+:::test-drive Try it yourself
+1. Change the text of the home page in your project, and run it locally to check it.
+2. Commit the change and push it to the main branch.
+3. Watch the workflow run in the Actions tab of the GitHub repository.
+4. When both jobs have finished, reload the Azure URL and look for your change.
+:::
+
+:::bullet-points Recap
+- start.spring.io generates a Spring Boot project that I can run with ./mvnw spring-boot:run.
+- Azure App Service can run it with a Java 17 runtime, and the Basic B1 plan allowed Continuous deployment where the Free plan did not.
+- Azure created a GitHub Actions workflow that builds the JAR with Maven and deploys it when I push to main.
+- A push to GitHub was enough to update the live website, with no manual upload.
+:::
+
+## References
+
 - [How to deploy your Spring Boot app to Azure App Service with GitHub Actions](https://www.youtube.com/watch?v=CPsI1KnVSOM)

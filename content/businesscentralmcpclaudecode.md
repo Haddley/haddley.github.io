@@ -203,6 +203,13 @@ Claude Code called the `businesscentral` tool and answered from the real data re
 The server exposes its pages as read-only tools, but they still return live data from your company. Keep the Entra app's permissions to the minimum, and check which pages the server exposes before you connect.
 :::
 
+:::test-drive Try it yourself
+1. Register the Entra app, and enable the MCP server in Business Central with the pages that you want to expose.
+2. Add the project-scoped .mcp.json, and start Claude Code in that folder.
+3. Ask for a small number of customers, and compare the answer with the Customers page.
+4. Ask for more records than the company holds, and see how Claude Code reports it.
+:::
+
 ## What actually got built
 
 An Entra app registration providing the OAuth identity, a Business Central MCP configuration exposing 414 APIv2 pages as read-only tools, and a project-scoped `.mcp.json` bridging the two into Claude Code through `mcp-remote` — three separate pieces of setup, each verified independently, ending in a real, unscripted question about the Cronus demo data answered from genuine Business Central records rather than a guess.

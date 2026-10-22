@@ -9,6 +9,10 @@ slug: "ashorthistory"
 image: "/assets/images/ashorthistory/dynamics365-color.svg"
 ---
 
+:::brain-power Before you read on
+Business Central, Dynamics 365, Power Apps and Dataverse all carry Microsoft's name, but they were not built in one go. What do you think came first: the accounting software, the customer software, or the platform that the apps run on?
+:::
+
 **In December** **2000 Microsoft announced plans to purchase Great Plains.**
 
 Great Plains Software was an accounting software company located in Fargo, North Dakota, whose products focused on small to medium-sized businesses.
@@ -58,6 +62,28 @@ Microsoft explained that "Dataverse is built atop the Common Data Service"
 **In October 2022 Microsoft announced general availability of Managed Environments**
 
 Managed Environments made it easier to govern low-code apps.
+
+:::no-dumb-questions
+**Q: What was Project Green?**
+
+A: An effort to rewrite the Business Solutions division's products using Microsoft's own programming languages, development tools and APIs, so that they would integrate deeply with other Microsoft software. In September 2003 Satya Nadella said it involved about 40% of the division's 1,700 programmers.
+
+**Q: What is xRM?**
+
+A: The platform that Microsoft Dynamics CRM 3.0 was built on. Microsoft explained that it could be used to create many types of business application, and not only customer relationship management.
+
+**Q: How do Dynamics 365, Power Apps and Dataverse connect?**
+
+A: Common Data Service was an evolution of the xRM platform, and it became generally available with PowerApps in October 2016. Microsoft later explained that Dataverse is built atop Common Data Service. Model-driven apps, announced in March 2018, use the same data platform.
+:::
+
+:::pencil Match the names
+In September 2005, Project Green was renamed Microsoft Dynamics, and the product names changed in 2006. Which Dynamics names did Microsoft Business Solutions-Great Plains, Axapta, Navision and Solomon get, and what did Microsoft CRM become?
+
+:::answer
+Great Plains became Microsoft Dynamics GP, Axapta became Dynamics AX, Navision became Dynamics NAV, and Solomon became Dynamics SL. Microsoft CRM became Microsoft Dynamics CRM.
+:::
+:::
 
 
 ## In December 2000 Microsoft announced plans to acquire Great Plains Software Inc.
@@ -171,6 +197,10 @@ Dynamics 3.0 introduced the idea of XRM – CRM could be extended beyond simple 
 Microsoft Dynamics CRM 3.0 allowed the creation of custom entities. 
 
  Microsoft explained that the [xRM](https://learn.microsoft.com/en-us/dotnet/api/microsoft.xrm.sdk?view=dataverse-sdk-latest) platform that Microsoft Dynamics CRM 3.0 was built on could be used to create many types of business application.
+
+:::under-the-hood Where Business Central fits
+Navision, which Microsoft agreed to acquire in May 2002, became Microsoft Dynamics NAV in the 2006 renaming. My [Business Central canvas apps post](/posts/businesscentralcanvasapps/) describes Business Central as the product that was formerly Microsoft Dynamics NAV. So the accounting line in this timeline, Navision, is the ancestor of the Business Central that the rest of this series uses.
+:::
 
 Here is a description from the Microsoft Video:
 
@@ -298,3 +328,15 @@ For IT, the rapid growth of apps brings new challenges of managing, securing, an
 Dive deeper in our Managed Environments general availability announcement and learn how you can gain more visibility and control over your application ecosystem today.
 
 [https://powerapps.microsoft.com/en-us/blog/announcing-the-general-availability-of-managed-environments/](https://powerapps.microsoft.com/en-us/blog/announcing-the-general-availability-of-managed-environments/)
+
+:::watch-it Most of this post is quoted from other sources
+Much of the text in this post comes from Microsoft press releases, blog posts and articles, and each one has its link under its heading. If you need a date or a figure for your own work, follow the link and check the original.
+:::
+
+:::bullet-points Recap
+- Microsoft bought Great Plains in 2000 and Navision in 2002, and it released its own CRM in 2003.
+- Project Green became Microsoft Dynamics in September 2005, and the product names changed in 2006.
+- Dynamics CRM 3.0 introduced the xRM idea, and Common Data Service grew from it.
+- Dynamics 365 arrived in November 2016, model-driven apps in 2018, Dataverse in 2020 and Managed Environments in 2022.
+- Navision is the ancestor of Business Central.
+:::

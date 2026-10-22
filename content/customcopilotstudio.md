@@ -17,6 +17,10 @@ I used the Global Variable and Generative AI features in Copilot studio.
 
 The same approach could be used to allow users to chat to other Business Central entities
 
+:::brain-power Before you read on
+A Copilot knows nothing about the customer whose card is open in Business Central. How would you tell it who the customer is, and what would you want it to say first?
+:::
+
 ![](assets/images/customcopilotstudio/screenshot-2024-03-23-at-3.18.51-pm-1836x272.png)
 *I created a new Copilot*
 
@@ -47,6 +51,16 @@ The same approach could be used to allow users to chat to other Business Central
 ![](assets/images/customcopilotstudio/screenshot-2024-03-23-at-3.27.19-pm-1836x970.png)
 *I created a "Customer_Blocked" Global variable*
 
+:::no-dumb-questions
+**Q: What is a global variable in Copilot Studio?**
+
+A: A value that lives for the whole conversation. I made Customer_Name, Customer_City, Customer_No and Customer_Blocked so that an outside source, here Business Central, could set them when the chat starts.
+
+**Q: What does Boost conversational coverage with generative answers do?**
+
+A: It lets the Copilot answer with generated text when no Topic matches the question. Enabling it added the Conversational boosting Topic, where I pointed the generative answers action at a custom data source.
+:::
+
 ![](assets/images/customcopilotstudio/screenshot-2024-03-23-at-3.28.54-pm-1836x970.png)
 *I updated the "Conversation Start" Topic*
 
@@ -71,6 +85,14 @@ The same approach could be used to allow users to chat to other Business Central
 ![](assets/images/customcopilotstudio/screenshot-2024-03-24-at-9.17.31-am-1836x967.png)
 *The Custom data datasource was set to the CustomData variable*
 
+:::under-the-hood How Business Central and the Copilot share the customer
+The extension passes the customer's details into the global variables when the chat opens, and the Conversation Start topic uses them in its greeting. A CustomData variable holds the customer's data, and the generative answers action reads it as its data source, so the Copilot answers from that customer's information.
+:::
+
+:::watch-it Send only what the chat needs
+Whatever the extension puts into those variables is available to the Copilot. Pass the fields that the conversation needs, such as the name, city, number and blocked state, and leave out anything private that a user of the chat should not see.
+:::
+
 ![](assets/images/customcopilotstudio/screenshot-2024-03-24-at-9.44.50-am-1836x974.png)
 *I published the Copilot*
 
@@ -85,6 +107,19 @@ The same approach could be used to allow users to chat to other Business Central
 
 ![](assets/images/customcopilotstudio/screenshot-2024-03-24-at-10.02.53-am-1836x970.png)
 *I was able to "chat to" Adatum Corporation*
+
+:::test-drive Try it yourself
+1. Create a Copilot with global variables for the customer's fields, and publish it.
+2. Deploy the extension, and open the chat from a customer card.
+3. Open a second customer and check that the Copilot talks about that customer.
+:::
+
+:::bullet-points Recap
+- Global variables let Business Central tell the Copilot which customer is open.
+- Generative answers read a custom data variable, so the Copilot can answer about that customer.
+- I chatted to School of Fine Art, Alpine Ski House and Adatum Corporation in turn.
+- The same approach could chat to other Business Central entities.
+:::
 
 
 ## CustomerCopilotExtension.al

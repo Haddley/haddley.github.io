@@ -16,6 +16,10 @@ image: "/assets/images/hands-on-lab2.3/dynamics365-color.svg"
 "Contoso has expressed their requirements regarding reporting goals.
 From the general ledger they would like to analyze their sales by sales person and customer group."
 
+:::brain-power Before you read on
+The company wants to analyze its sales by salesperson and by customer group. Where would those labels have to be recorded, and what would stop a user from forgetting them?
+:::
+
 ![](assets/images/hands-on-lab2.3/screen-shot-2023-12-04-at-9.19.31-am-1836x948.png)
 *I used search to navigate to the Dimensions page*
 
@@ -55,6 +59,16 @@ From the general ledger they would like to analyze their sales by sales person a
 ![](assets/images/hands-on-lab2.3/screen-shot-2023-12-04-at-9.42.18-am-1836x641.png)
 *I used search to navigate to the Dimension Combinations page*
 
+:::no-dumb-questions
+**Q: What is a dimension?**
+
+A: A label that I attach to ledger entries so I can analyze them in more than one way. I created SALESPERSON_NEWLIST and CUSTOMERGROUP, so Contoso can report sales by salesperson and by customer group.
+
+**Q: What does Code Mandatory do?**
+
+A: I set it in the Value Posting column of the default dimension for the Customer table and for the Salesperson/Purchaser table. As I understand it, it means that a value must be entered whenever something is posted for those records.
+:::
+
 ![](assets/images/hands-on-lab2.3/screen-shot-2023-12-04-at-9.44.47-am-1836x950.png)
 *I clicked on the _ button in the cell in the CUSTOMERGROUP row and the SALESPERSON_NEWLIST column*
 
@@ -73,6 +87,14 @@ From the general ledger they would like to analyze their sales by sales person a
 ![](assets/images/hands-on-lab2.3/screen-shot-2023-12-04-at-9.55.55-am-1836x737.png)
 *I added LARGE, MEDIUM and SMALL values to the CUSTOMERGROUP dimension*
 
+:::pencil Why add values before blocking?
+I set the SALESPERSON_NEWLIST and CUSTOMERGROUP combination to Limited, and then I noticed that CUSTOMERGROUP had no values. Why did I have to add LARGE, MEDIUM and SMALL before I could block combinations?
+
+:::answer
+A blocked combination pairs one dimension value with another, such as AH and MEDIUM. With no values in CUSTOMERGROUP, there was nothing to pair, so I added the values first and then returned to the Dimension Value Combinations page.
+:::
+:::
+
 ![](assets/images/hands-on-lab2.3/screen-shot-2023-12-04-at-9.56.37-am-1836x947.png)
 *I returned to the Dimension Value Combinations page*
 
@@ -90,6 +112,20 @@ From the general ledger they would like to analyze their sales by sales person a
 
 ![](assets/images/hands-on-lab2.3/screen-shot-2023-12-04-at-10.07.24-am-1836x950.png)
 *...until the blocked Dimension Value Combinations were all added*
+
+:::test-drive Try it yourself
+1. Create two dimensions with values, and set their default dimension rules.
+2. Set their combination to Limited, and block some value pairs.
+3. Try to post with a blocked pair and see what Business Central says.
+:::
+
+:::bullet-points Recap
+- Dimensions let me analyze ledger entries by salesperson and by customer group.
+- Code Mandatory makes a dimension value required for a table.
+- Setting a combination to Limited lets me block particular pairs of values.
+- The values have to exist before they can be combined or blocked.
+:::
+
 ## References
 
 - [Hands-on-Lab 2.3: Set up dimensions](https://microsoftlearning.github.io/MB-800-Business-Central-Functional-Consultant/Instructions/Labs/LAB%5BMB-800%5D_M02_Lab03_Set_up_dimensions.html)

@@ -11,6 +11,10 @@ image: "/assets/images/addapurchaseorder/office-365-icon-500x500.png"
 
 ## Summary
 
+:::brain-power Before you read on
+A purchase order has a header, which says who it is for, and lines, which say what is being ordered. Which would you create first in an app, and why?
+:::
+
 ![](assets/images/addapurchaseorder/screenshot-2024-02-21-at-8.20.01-pm-1836x642.png)
 *I created a Canvas app*
 
@@ -59,11 +63,29 @@ image: "/assets/images/addapurchaseorder/office-365-icon-500x500.png"
 ![](assets/images/addapurchaseorder/screenshot-2024-02-21-at-8.44.22-pm-1836x586.png)
 *I reviewed the purchaseOrderResultSet collection returned (the single row)*
 
+:::no-dumb-questions
+**Q: What are Purchase Order Lines?**
+
+A: The rows of a purchase order. In this post I add two kinds: a comment line, which carries the text that I typed, and an item line for the ATHENS Mobile Pedestal.
+
+**Q: Why did I look at the purchaseOrderResultSet collection?**
+
+A: The Create button stores the result in a collection, and the collection held the single new row. I could see the purchase order that Business Central created before I used it in the next steps.
+:::
+
 ![](assets/images/addapurchaseorder/screenshot-2024-02-21-at-8.46.35-pm-1836x623.png)
 *I added the OnSelect code to the "Update the Purchase Order" button*
 
 ![](assets/images/addapurchaseorder/screenshot-2024-02-21-at-8.46.49-pm-1836x503.png)
 *I selected "First Up Consultants" and clicked the "Update the Purchase Order" button*
+
+:::pencil Which button first?
+The app has four buttons: Create a Purchase Order, Update the Purchase Order, Add a Comment Purchase Order Line and Add an Item Purchase Order Line. Which one must I click first, and what would go wrong if I clicked Add an Item Purchase Order Line first?
+
+:::answer
+Create a Purchase Order comes first, because the lines belong to a purchase order that has to exist. Without it, the line buttons have no order to add the line to. The order in the post is create, update with the vendor, add the comment line, and then add the item line.
+:::
+:::
 
 ![](assets/images/addapurchaseorder/screenshot-2024-02-21-at-8.49.22-pm-1836x547.png)
 *I added the OnSelect code to the "Add a Comment Purchase Order Line" button*
@@ -85,3 +107,17 @@ image: "/assets/images/addapurchaseorder/office-365-icon-500x500.png"
 
 ![](assets/images/addapurchaseorder/screenshot-2024-02-21-at-8.52.43-pm-1836x733.png)
 *I reviewed the newly created "ATHENS Mobile Pedestal" Purchase Order Line*
+
+:::test-drive Try it yourself
+1. Click Create a Purchase Order, and then choose a vendor and click Update the Purchase Order.
+2. Type a comment and add the comment line.
+3. Choose an item and add the item line.
+4. Open the purchase order in Business Central and compare it with the app.
+:::
+
+:::bullet-points Recap
+- A purchase order needs its header before it can have lines.
+- Patch created the purchase order, and the same pattern added a comment line and an item line.
+- A collection held the new purchase order, so the later buttons could use it.
+- I checked the result in Business Central after each step.
+:::

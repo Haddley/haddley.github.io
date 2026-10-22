@@ -13,6 +13,10 @@ hidden: false
 
 I created a Model Context Protocol (MCP) server for Microsoft Business Central
 
+:::brain-power Before you read on
+An AI assistant can write about vendors, but it cannot look at your Business Central company by itself. What would you have to give it so that it can ask for the real vendor list, and how would it know what it is allowed to ask for?
+:::
+
 ![](assets/images/mcpserver2/screenshot202025-08-2220at205.09.49e280afpm-2136x1239.png)
 *I created a business-central-mcp folder. I ran npm init -y. I updated the generated package.json file adding type: "module".*
 
@@ -24,6 +28,20 @@ I created a Model Context Protocol (MCP) server for Microsoft Business Central
 
 ![](assets/images/mcpserver2/screenshot202025-08-2220at205.48.28e280afpm-2136x1239.png)
 *I confirmed the hello tool returned success*
+
+:::no-dumb-questions
+**Q: What is an MCP server?**
+
+A: A small program that offers tools to an AI client in a standard way. My server offers a get_vendors tool, and any client that speaks the Model Context Protocol can list the tool and call it.
+
+**Q: What is the MCP Inspector?**
+
+A: A testing tool that connects to an MCP server and lets me call its tools by hand. I used it first with the hello tool, then with get_vendors, and later against the deployed server, so I could see each tool work before I connected a real client.
+
+**Q: Why does a remote server need Streamable HTTP?**
+
+A: A server on my laptop can talk to a client directly, but a deployed server needs a web transport. The Streamable HTTP transport that I set up handles both the client's requests and the server's notifications back to the client.
+:::
 
 ![](assets/images/mcpserver2/screenshot202025-08-2220at206.30.50e280afpm-2136x1425.png)
 *I replaced the hello tool with a get-vendors tool*
@@ -66,6 +84,10 @@ I used the Azure Container Apps extension for Visual Studio Code to choose exist
 
 ![](assets/images/mcpserver2/screenshot202025-08-2720at205.39.11e280afpm-2136x1314.png)
 *I confirmed the deployment finished*
+
+:::under-the-hood How the deployment fits together
+I built the project into a Docker image, tested it locally with docker build and npm run docker:run, and then used the Azure Container Apps extension for Visual Studio Code to deploy it from my workspace. I chose a Managed Identity and the .env file for settings. The MCP endpoint is the container app's address followed by /mcp, and I tested it with a fresh copy of the inspector.
+:::
 
 ![](assets/images/mcpserver2/screenshot202025-08-2720at205.41.17e280afpm-2136x1079.png)
 *I ran a fresh copy of the inspector*
@@ -124,6 +146,13 @@ I opened LM Studio and navigated to the "Program" tab in the right sidebar. I cl
 
 ![](assets/images/mcpserver2/screenshot202025-08-2820at202.18.21e280afpm-2136x1245.png)
 *I entered the prompt show me a table of vendor details*
+
+:::test-drive Try it yourself
+1. Run the server locally and call get_vendors from the MCP Inspector.
+2. Build the Docker image, run it, and call the tool again over HTTP.
+3. Connect a client, such as Copilot Studio or LM Studio, and ask for a table of vendors.
+4. Compare the answer with the Vendors page in Business Central.
+:::
 
 
 ## main.ts
@@ -641,6 +670,7 @@ services:
       - BC_ENVIRONMENT=${BC_ENVIRONMENT}
     restart: unless-stopped
 ```
+
 :::bullet-points Recap
 - The server authenticates to Business Central over OAuth 2.0, using values held in `.env`.
 - Each file has one job, and the post shows each one in full so you can rebuild the server.

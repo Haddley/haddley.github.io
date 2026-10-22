@@ -15,6 +15,10 @@ image: "/assets/images/businesscentralcanvasapps/dynamics365-color.svg"
 [Microsoft Dynamics 365 Business Central](https://en.wikipedia.org/wiki/Microsoft_Dynamics_365#Microsoft_Dynamics_365_Business_Central) (formerly Microsoft Dynamics NAV) is an ERP and CRM product meant for small and mid-sized businesses (Integrating both Dynamics NAV and Dynamics CRM features).
 
 
+:::brain-power Before you read on
+Business Central holds the company's data, but most people never open it. If you wanted to put a small app on a phone that reads and edits some of that data, what would the app need to know in order to find the right company?
+:::
+
 ## Power Platform Environments
 
 [Power Platform environments](https://admin.powerplatform.microsoft.com/environments) refer to isolated spaces within the Microsoft Power Platform ecosystem where I can develop, test, and deploy apps, flows, and other solutions.
@@ -24,6 +28,16 @@ image: "/assets/images/businesscentralcanvasapps/dynamics365-color.svg"
 
 ![](assets/images/businesscentralcanvasapps/screen-shot-2023-08-14-at-11.56.31-am-1152x396.png)
 *I navigated to the Power Apps home page and selected the Develop environment*
+
+:::no-dumb-questions
+**Q: What is a Power Platform environment?**
+
+A: An isolated space where I can develop, test and deploy apps, flows and other solutions. I made a Develop environment so that my experiments stayed apart from anything else.
+
+**Q: What is the Dynamics 365 Business Central connector asking me for?**
+
+A: Which Business Central environment and company to read. In each app I chose the CRONUS USA, Inc. company in the MYSANDBOX environment, and then I chose a table such as currencies or salesOrders.
+:::
 
 
 ## Currencies
@@ -50,6 +64,10 @@ I created a Canvas app to display the available currencies.
 
 ![](assets/images/businesscentralcanvasapps/screen-shot-2023-08-14-at-12.08.59-pm-1291x601.png)
 *I selected the "currencies (v2.0)" table*
+
+:::under-the-hood The shape of the Currencies app
+The pattern is the same in all three apps: a connector gives access to a Business Central table, and a gallery shows its rows. Here the table is currencies (v2.0), and the gallery uses the Title and subtitle layout. I later added a currency in Business Central, and the app showed it when I ran it again.
+:::
 
 ![](assets/images/businesscentralcanvasapps/screen-shot-2023-08-14-at-12.10.50-pm-1290x599.png)
 *I selected the "Title and subtitle" (vertical gallery) layout.*
@@ -131,6 +149,12 @@ I developed a Canvas app to display Sales Orders, filtered by Salesperson
 ![](assets/images/businesscentralcanvasapps/screen-shot-2023-08-14-at-2.56.14-pm-1293x231.png)
 *I updated the Drop down list to display only Distinct values (the two salespeople values)*
 
+:::no-dumb-questions
+**Q: Why did the drop-down use Distinct values?**
+
+A: The Sales Orders table has one salesperson on every order, so the same name appears many times. Distinct makes the list show each name once. I then filtered the gallery to the orders for the salesperson who was selected.
+:::
+
 ![](assets/images/businesscentralcanvasapps/screen-shot-2023-08-14-at-2.56.50-pm-1295x493.png)
 *I updated Gallery1 to display only items sold by the salesperson selected in the Drop down list*
 
@@ -181,6 +205,10 @@ I developed a Canvas app to edit Items maintained in Business Central
 ![](assets/images/businesscentralcanvasapps/screen-shot-2023-08-17-at-12.29.00-pm-1836x660.png)
 *I updated the item Display Name*
 
+:::watch-it Use a sandbox when the app can edit data
+The Items app writes back to Business Central, and I checked the change in Business Central after each edit, once from my laptop and once from my phone. I did all of this in the MYSANDBOX environment with CRONUS USA, so a mistake could not touch a real company. Do the same for your own tests.
+:::
+
 ![](assets/images/businesscentralcanvasapps/screen-shot-2023-08-17-at-12.29.52-pm-1836x507.png)
 *I switched back to Microsoft 365 Business Central to check that the update had been saved.*
 
@@ -195,3 +223,18 @@ I developed a Canvas app to edit Items maintained in Business Central
 
 ![](assets/images/businesscentralcanvasapps/screen-shot-2023-08-17-at-1.12.37-pm-1836x490.png)
 *I switched back to Microsoft 365 Business Central to check that the mobile update had been saved.*
+
+:::test-drive Try it yourself
+1. Create a blank canvas app, add the Business Central connector, and choose a sandbox company.
+2. Pick a table, and show it in a vertical gallery.
+3. Add an edit form that is bound to the selected item, and change a value.
+4. Open Business Central and check that the change was saved.
+:::
+
+:::bullet-points Recap
+- A Power Platform environment is an isolated space for building and testing.
+- The Business Central connector needs an environment, a company and a table.
+- A gallery shows rows, and a form bound to the selected row can edit them.
+- I filtered Sales Orders by salesperson with a drop-down of distinct values.
+- Edits made in the app, on my laptop and on my phone, were saved in Business Central.
+:::

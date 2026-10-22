@@ -1,6 +1,16 @@
 {
   "posts": [
     {
+      "slug": "odata",
+      "title": "OData",
+      "description": "Querying an OData service with $select, $filter, $orderby, $expand and $count, and how OData compares with GraphQL",
+      "date": "2026-10-23",
+      "categories": [
+        "Business Central"
+      ],
+      "tags": "odata, rest-api, api-design, query-language, graphql"
+    },
+    {
       "slug": "attiny3",
       "title": "ATtiny85 (Part 3)",
       "description": "An ATtiny85 that cuts an e-bike motor above 25 km/h by pulling the brake sensor line low, tested on the road",
@@ -863,7 +873,7 @@
     },
     {
       "slug": "azurefoundryagent",
-      "title": "Azure Foundry",
+      "title": "Azure Search (Part 2)",
       "description": "Creating an AI agent in Azure AI Foundry backed by Azure AI Search with vector embeddings for retrieval-augmented generation (RAG)",
       "date": "2026-03-10",
       "categories": [
@@ -903,6 +913,17 @@
         "AI"
       ],
       "tags": "power-automate, azure-ai-foundry, ai-integration, workflow"
+    },
+    {
+      "slug": "azuresearch",
+      "title": "Azure Search (Part 1)",
+      "description": "Setting up a full-text keyword search over hotel data in the Azure portal, with a storage account, a Free search service and the import data wizard",
+      "date": "2026-02-09",
+      "categories": [
+        "AI",
+        "Azure"
+      ],
+      "tags": "azure-ai-search, full-text-search, cognitive-search"
     },
     {
       "slug": "claudecode8",
@@ -1143,6 +1164,16 @@
         "AI"
       ],
       "tags": "claude-code, mcp, model-context-protocol, business-central"
+    },
+    {
+      "slug": "spring-boot-7",
+      "title": "Java Spring Boot (Part 7)",
+      "description": "Hosting a Spring Boot application on Azure Spring Apps, from creating the service to scaling it, and the news that the service is being retired",
+      "date": "2025-09-20",
+      "categories": [
+        "Java"
+      ],
+      "tags": "azure, spring-boot, azure-spring-apps, tomcat, maven"
     },
     {
       "slug": "dynamicssales4",
@@ -1836,7 +1867,7 @@
     {
       "slug": "spring-boot-6",
       "title": "Java Spring Boot (Part 6)",
-      "description": "GitHub OAuth",
+      "description": "Signing in with GitHub OAuth2 using Spring Security, then using roles to control who can open the user and admin pages",
       "date": "2023-10-31",
       "categories": [
         "Java"
@@ -1846,7 +1877,7 @@
     {
       "slug": "spring-boot-5",
       "title": "Java Spring Boot (Part 5)",
-      "description": "Spring for GraphQL",
+      "description": "Building a GraphQL API with Spring for GraphQL: a schema, queries and mutations, and the GraphiQL explorer, backed by an H2 database",
       "date": "2023-10-30",
       "categories": [
         "Java"
@@ -1856,7 +1887,7 @@
     {
       "slug": "spring-boot-4",
       "title": "Java Spring Boot (Part 4)",
-      "description": "ModelAndView",
+      "description": "Using Spring MVC's ModelAndView and a Thymeleaf template to show todo items on a web page, with a delete button",
       "date": "2023-10-29",
       "categories": [
         "Java"
@@ -1866,7 +1897,7 @@
     {
       "slug": "spring-boot-3",
       "title": "Java Spring Boot (Part 3)",
-      "description": "Using Spring Data JPA",
+      "description": "Using Spring Data JPA with an in-memory H2 database to store and list todo items, and deploying the application to Azure",
       "date": "2023-10-28",
       "categories": [
         "Java"
@@ -1876,7 +1907,7 @@
     {
       "slug": "spring-boot-2",
       "title": "Java Spring Boot (Part 2)",
-      "description": "References",
+      "description": "Generating a Spring Boot project with start.spring.io, running it locally, and deploying it to Azure App Service with GitHub Actions",
       "date": "2023-10-26",
       "categories": [
         "Java",
@@ -2971,7 +3002,7 @@
     {
       "slug": "spring-boot",
       "title": "Java Spring Boot (Part 1)",
-      "description": "Spring based Java Applications that you can just run.",
+      "description": "Creating a REST API with Spring Boot and Spring Tool Suite: a books controller, annotations, and a React client served from the same project",
       "date": "2021-04-06",
       "categories": [
         "Java"
@@ -3052,7 +3083,7 @@
     {
       "slug": "graphql",
       "title": "GraphQL",
-      "description": "GraphQL is a query and manipulation language for APIs.",
+      "description": "Building a GraphQL server with Node, Express and express-graphql, trying queries and mutations in GraphiQL, and reading the data from a React client with Apollo",
       "date": "2021-03-01",
       "categories": [
         "JavaScript"
@@ -3181,5 +3212,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-22T08:50:01.926Z"
+  "generatedAt": "2026-10-22T18:37:11.723Z"
 }

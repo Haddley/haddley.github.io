@@ -14,6 +14,10 @@ image: "/assets/images/cloudflow/office-365-icon-500x500.png"
 
 I created a Topic that used the Business Central Connector to retrieve the list of "Evaluation" Company Customers. I used a Cloud Flow to workaround an issue.
 
+:::brain-power Before you read on
+A chat topic should answer "list customers" with the names of the customers in Business Central. What would have to happen between the question and the answer?
+:::
+
 ![](assets/images/cloudflow/screenshot-2024-02-26-at-11.41.15-am-1836x1146.png)
 *There were six customers setup in the "Evaluation" Company*
 
@@ -25,6 +29,16 @@ I created a Topic that used the Business Central Connector to retrieve the list 
 
 ![](assets/images/cloudflow/screenshot-2024-02-26-at-9.08.53-am-1836x865.png)
 *I added the phrases "list customers" and "customer list"*
+
+:::no-dumb-questions
+**Q: What is a Topic?**
+
+A: A conversation path in Copilot Studio. It starts when the user types one of its trigger phrases, here list customers or customer list, and then runs the steps that I put in it.
+
+**Q: Why did I use a cloud flow?**
+
+A: The post says that I used a Cloud Flow to work around an issue. The flow calls the Business Central connector for the customers table, and the Topic receives its output.
+:::
 
 ![](assets/images/cloudflow/screenshot-2024-02-26-at-9.09.15-am-1836x951.png)
 *I selected the Call an action|Basic actions|Create a flow menu item*
@@ -80,6 +94,10 @@ I created a Topic that used the Business Central Connector to retrieve the list 
 ![](assets/images/cloudflow/screenshot-2024-02-26-at-9.26.24-am-1836x1040.png)
 *I clicked the Variable management|Parse value menu item*
 
+:::under-the-hood From text to a table
+The flow returns the body of the response as text, using the string() function. The Topic cannot loop over text, so I used Parse value with a schema that I made from sample JSON, and saved the result in a table variable. Then Concat(Topic.Var1,displayName,", ") joined the customers' display names into one message.
+:::
+
 ![](assets/images/cloudflow/screenshot-2024-02-26-at-9.26.44-am-1836x1040.png)
 *I selected the output of the Cloud Flow*
 
@@ -95,6 +113,10 @@ I created a Topic that used the Business Central Connector to retrieve the list 
 ![](assets/images/cloudflow/screenshot-2024-02-26-at-9.40.31-am-1836x1037.png)
 *I clicked the Edit schema link to review the result*
 
+:::watch-it Check the quotes in the sample JSON
+When I pasted the sample JSON into Get schema from sample JSON, I had to update the double quote characters first. Copying JSON from a web page can bring in curly quotes, and the schema step will not accept them.
+:::
+
 ![](assets/images/cloudflow/screenshot-2024-02-26-at-9.40.49-am-1836x1040.png)
 *I created a new Variable to save the result (a table)*
 
@@ -109,3 +131,15 @@ I created a Topic that used the Business Central Connector to retrieve the list 
 
 ![](assets/images/cloudflow/screenshot-2024-02-26-at-9.43.07-am-1836x1038.png)
 *I removed the original Message and tested the Topic by entering the phrase "list customers". The copilot provided the response I was hoping for.*
+
+:::test-drive Try it yourself
+1. Create a Topic with a trigger phrase, and a cloud flow that reads a Business Central table.
+2. Return the body as text, and parse it with a schema from sample JSON.
+3. Test the Topic by typing your trigger phrase.
+:::
+
+:::bullet-points Recap
+- A Topic starts from trigger phrases, and a cloud flow can fetch Business Central data for it.
+- The flow's output arrived as text, so Parse value turned it into a table.
+- Concat joined the customers' display names into one reply.
+:::

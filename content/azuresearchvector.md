@@ -1,5 +1,6 @@
 ---
-title: "Azure Foundry"
+title: "Azure Search"
+part: 2
 description: "Creating an AI agent in Azure AI Foundry backed by Azure AI Search with vector embeddings for retrieval-augmented generation (RAG)"
 date: "2026-03-10"
 categories: ["AI", "Azure"]
@@ -10,6 +11,12 @@ slug: "azurefoundryagent"
 ---
 
 # Creating an Agent in Azure AI Foundry
+
+In this post I build an agent in Microsoft Foundry that answers questions from six health-plan PDFs. I create the Foundry resource, store the documents, build a vector index over them in Azure AI Search, and then connect the agent to that index.
+
+:::brain-power Before you read on
+A language model has never seen my six PDFs. How could an agent answer a question about them, and what would it need to be given for each question?
+:::
 
 I started by creating a new resource group in the Azure portal to contain all the resources for this project.
 
@@ -120,6 +127,16 @@ The model deployed successfully with a 500,000 tokens-per-minute rate limit.
 ![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-5.54.47-PM.png)
 *The text-embedding-ada-002 deployment details showing Target URI and provisioning state Succeeded*
 
+:::no-dumb-questions
+**Q: What does an embedding model do here?**
+
+A: It turns each chunk of a document, and later each question, into a list of numbers that stands for its meaning. Chunks that mean something similar get similar numbers, so the search can match a question to a passage even when the words differ.
+
+**Q: Is this the model that writes the answers?**
+
+A: No. The embedding model only helps the search find passages. The agent uses a separate model to write the answer from the passages that the search returns.
+:::
+
 ## Creating an Azure AI Search Service
 
 I searched the Marketplace for Azure AI Search to create a search index.
@@ -163,6 +180,10 @@ The vectorization step initially showed no Azure OpenAI service available, so I 
 
 ![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-6.00.04-PM.png)
 *The Vectorize your text step showed no Azure OpenAI service available*
+
+:::watch-it The wizard did not offer the model I had already deployed
+I had already deployed text-embedding-ada-002 in Foundry, but the import wizard listed no Azure OpenAI service to choose. I created a separate Azure OpenAI resource and deployed the same model there, which is why the next few steps repeat what I did earlier. I did not find out why the wizard could not see the first deployment, so check the Vectorize your text step before you assume that it can.
+:::
 
 I filled in the Create Azure OpenAI form with the name haddley-azure-openai on Standard S0.
 
@@ -271,10 +292,42 @@ With the Azure AI Search tool connected and pointing at the RAG index, I typed a
 ![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-6.11.34-PM.png)
 *I asked the agent whether the cost of health insurance is spread out over the course of the year*
 
+:::pencil Which document will it cite?
+I asked whether the cost of health insurance is spread out over the course of the year. The agent will cite one of the six PDFs as its source. Which one would you expect, and why?
+
+:::answer
+The agent cited Benefit_Options.pdf, and its answer was that health insurance costs are deducted from each paycheck. I only checked the answer against that one document, so I would read the cited passage before I trusted it for a real decision.
+:::
+:::
+
 The agent responded with a clear answer citing the Benefit_Options.pdf document.
 
 ![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-6.14.35-PM.png)
 *The agent answered correctly, explaining that health insurance costs are deducted from each paycheck, and cited Benefit_Options.pdf as the source*
+
+:::no-dumb-questions
+**Q: Why did I test the index in the Search explorer before I built the agent?**
+
+A: The agent can only be as good as the passages it is given. If the search returns the wrong passages, the agent will write a fluent answer from the wrong material, so I checked the search first.
+
+**Q: Why did I connect the agent to the search service with an API key?**
+
+A: It was the option I used, and it is the quickest to set up. A key is a secret that I have to protect and rotate, so for anything beyond a walkthrough I would look at an identity-based connection instead.
+:::
+
+:::test-drive Try it yourself
+1. In the agent playground, ask a question that your documents answer, in your own words and not theirs.
+2. Look at the source the agent cites, and open that PDF.
+3. Ask something that the documents do not cover, and see what the agent says.
+:::
+
+:::bullet-points Recap
+- An agent in Foundry can answer from my own documents when I connect it to an Azure AI Search index.
+- I stored six PDFs in a blob container, deployed text-embedding-ada-002, and used the import data wizard with the RAG scenario to build a vector index.
+- The wizard needed its own Azure OpenAI resource with the embedding model deployed, even though I had already deployed the model in Foundry.
+- I tested the index in the Search explorer before I connected the agent.
+- The agent answered from the index and cited Benefit_Options.pdf as its source.
+:::
 
 ## References
 

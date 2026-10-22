@@ -14,6 +14,10 @@ image: "/assets/images/createactionbasedonaflow/posts-meta.svg"
 
 Power Automate flows can be created from the Business Central user interface.
 
+:::brain-power Before you read on
+A user is looking at a customer in Business Central and wants to block them and tell them by email, all with one click. What would the click have to start, and what would the click need to know about the customer?
+:::
+
 ![](assets/images/createactionbasedonaflow/screen-shot-2024-01-04-at-6.30.40-pm-1836x950.png)
 *I started with no flows defined*
 
@@ -34,6 +38,20 @@ Power Automate flows can be created from the Business Central user interface.
 
 ![](assets/images/createactionbasedonaflow/screen-shot-2024-01-04-at-6.34.18-pm-1836x951.png)
 *I specified TABLE18 (to limit the flow to customer entities)*
+
+:::no-dumb-questions
+**Q: What does TABLE18 do?**
+
+A: It limits the flow to customer records. As the caption says, TABLE18 is the customer table, so the flow appears as a menu item for customers and not for other records.
+
+**Q: Why did I use {System Id} as the Row Id?**
+
+A: The Get record and Update record actions need to know which customer to work on. The System Id comes from the record that the user selected, so the flow acts on that customer.
+
+**Q: What is the BlockCustomer? input?**
+
+A: A Yes/No question that the user answers when they run the flow. The Condition action reads it and chooses a branch.
+:::
 
 ![](assets/images/createactionbasedonaflow/screen-shot-2024-01-04-at-7.47.03-pm-1836x802.png)
 *I added a "BlockCustomer?" Yes/No input*
@@ -146,6 +164,10 @@ Power Automate flows can be created from the Business Central user interface.
 ![](assets/images/createactionbasedonaflow/screen-shot-2024-01-04-at-6.54.53-pm-1836x951.png)
 *I set the Subject to "Contact" and the Body to "Please give us..."*
 
+:::under-the-hood The shape of the flow
+The flow starts from the selected customer and the BlockCustomer? answer. It gets the customer record, and a Condition checks whether the answer is true. In the yes branch, it updates the record with Blocked set to ALL and emails the customer with the subject Blocked. In the no branch, it sends a different email with the subject Contact. Both emails go to the Email field of the selected record.
+:::
+
 ![](assets/images/createactionbasedonaflow/screen-shot-2024-01-04-at-6.55.16-pm-1836x944.png)
 *I clicked the Save button*
 
@@ -202,3 +224,29 @@ Power Automate flows can be created from the Business Central user interface.
 
 ![](assets/images/createactionbasedonaflow/screen-shot-2024-01-05-at-7.56.29-am-1836x799.png)
 *I noticed that the Blocked? flow is not displayed as a menu item on the Vendor Card*
+
+:::pencil Where will the flow appear?
+I limited the flow to TABLE18. On which of these pages would you expect to see the Blocked? menu item: the Customers page, the Customer Card, the Items page and the Vendor Card?
+
+:::answer
+On the Customers page and the Customer Card, because both show customer records. The last two screenshots show that it did not appear on the Items page or on the Vendor Card, since those pages show other tables.
+:::
+:::
+
+:::watch-it This flow changes real data
+The flow updates a customer's Blocked field and sends real emails. I built it in the PRODUCTION environment with the Evaluation company, so use a sandbox for your own tests, and check the email text before you run the flow on a real customer.
+:::
+
+:::test-drive Try it yourself
+1. On a Customer Card, open Automate, then Power Automate, then Create action based on flow.
+2. Build the flow with a Yes/No input, a Condition and an email in each branch.
+3. Run it on a test customer with the switch on, and then with it off.
+4. Check the flow history, the customer's Blocked field and the emails.
+:::
+
+:::bullet-points Recap
+- A flow can be created from the Business Central user interface and appear as a menu item.
+- TABLE18 limited the flow to customers, so it did not appear on the Items page or the Vendor Card.
+- A Condition chose between blocking the customer and sending a contact email.
+- The flow changed real data, so test it in a sandbox first.
+:::

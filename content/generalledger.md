@@ -19,6 +19,10 @@ The General Ledger contains the balances of all accounts in the Chart of Account
 
 I created a Chart of Accounts from scratch and demonstrate how Journal entries can be used to record a Purchase transaction and a Sales transaction.
 
+:::brain-power Before you read on
+A company buys ten chairs for $250.30 each and sells them for $300 each. Which account balances would you expect to change, and what should the difference between what it owns and what it owes turn out to be?
+:::
+
 ![](assets/images/generalledger/screen-shot-2023-12-11-at-9.07.53-am-1279x735.png)
 *I created a new company*
 
@@ -60,6 +64,16 @@ I created a Chart of Accounts from scratch and demonstrate how Journal entries c
 
 ![](assets/images/generalledger/screen-shot-2023-12-11-at-10.05.55-am-1280x733.png)
 *I added a Total Liabilities End-Total*
+
+:::no-dumb-questions
+**Q: What are Begin-Total and End-Total accounts?**
+
+A: They group the accounts between them. I made a Balance Sheet Heading, then an Assets Begin-Total and a Total Assets End-Total, and the accounts that I placed between them add up to the end total.
+
+**Q: Why did I click Indent Chart of Accounts at the end?**
+
+A: It indents the accounts so the grouping shows. After I clicked it, each total sat above the accounts that it adds up.
+:::
 
 ![](assets/images/generalledger/screen-shot-2023-12-11-at-10.06.16-am-1283x435.png)
 *I clicked + New to add another entity*
@@ -118,6 +132,10 @@ I created a Taxes Liable account that I could post the sales tax amounts to.
 
 ![](assets/images/generalledger/screen-shot-2023-12-11-at-10.40.35-am-1280x735.png)
 *I reviewed the updated Chart of Accounts balances (and totals)*
+
+:::under-the-hood Three accounts for one purchase
+A purchase needs three places to record what happened. The value of the chairs went to a Finished Goods asset account, what I owed the vendor went to an Accounts Payable, Domestic liability account, and the sales tax that could be claimed back went to a Taxes Liable account. The journal lines that I posted spread the purchase across those accounts.
+:::
 
 
 ## Sale
@@ -189,3 +207,24 @@ The difference between Total Income ($3,000) and Total Cost of Goods Sold ($2,50
 
 ![](assets/images/generalledger/screen-shot-2023-12-11-at-12.17.09-pm-1279x896.png)
 *The accounts were indented*
+
+:::pencil Why $497 both times?
+After one purchase and one sale, the difference between Total Assets ($3,210) and Total Liabilities ($2,713) was $497. The difference between Total Income ($3,000) and Total Cost of Goods Sold ($2,503) was also $497. Why do the two differences match?
+
+:::answer
+The sale brought in $3,000 and cost $2,503, which is a profit of $497. Because this is a new company that started with nothing, the only thing that has changed what the company owns minus what it owes is that profit. The balance sheet and the income statement are describing the same $497 from two sides.
+:::
+:::
+
+:::test-drive Try it yourself
+1. Create a small Chart of Accounts with assets, liabilities, income and cost of goods sold.
+2. Post a purchase and a sale in the General Journal.
+3. Compare Total Assets minus Total Liabilities with Total Income minus Total Cost of Goods Sold.
+:::
+
+:::bullet-points Recap
+- The General Ledger holds the balances of every account in the Chart of Accounts.
+- A purchase touched an asset, a liability and a tax account, and a sale touched receivables, income and cost of goods sold.
+- Begin-Total and End-Total accounts add up the accounts between them.
+- Assets minus liabilities matched income minus cost of goods sold, at $497.
+:::

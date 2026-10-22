@@ -15,6 +15,10 @@ hidden: "false"
 
 I connected the Business Central PromptDialog to Azure OpenAI, so the Copilot generates real AI responses rather than static text. The RunGeneration procedure calls Azure OpenAI's chat completions API and returns the model's output to the Output field.
 
+:::brain-power Before you read on
+The page from Part 1 echoes whatever the user types. To make it answer, the extension has to reach a language model. What would the extension need to know to do that, and where should that information be kept?
+:::
+
 ![](assets/images/promptdialog2/screenshot202025-05-2320at209.29.26e280afpm-2136x1241.png)
 *I updated the LLM Prompt Dialog page*
 
@@ -23,6 +27,14 @@ I connected the Business Central PromptDialog to Azure OpenAI, so the Copilot ge
 
 ![](assets/images/promptdialog2/screenshot202025-05-2320at209.42.43e280afpm-2136x1242.png)
 *I updated the RunGeneration procedure*
+
+:::under-the-hood What RunGeneration does now
+If the capability is not yet registered, the procedure registers it. It then sets the authorization with the endpoint, the deployment name and the API key, tells the Azure OpenAI codeunit which Copilot capability this is, and calls GenerateChatCompletion with the user's prompt. The model's answer is returned to the Output field.
+:::
+
+:::watch-it Do not hard-code a real key
+The GetApiKey procedure in the code returns a fixed string, and it is marked NonDebuggable. The string in the post is a placeholder, and a real key does not belong in source code, because anyone who can read the extension can read the key. Keep real keys and endpoints in a protected store, such as Isolated Storage or a key vault, and read them at run time.
+:::
 
 ![](assets/images/promptdialog2/screenshot202025-05-2320at209.51.18e280afpm-2136x1114.png)
 
@@ -36,6 +48,28 @@ I connected the Business Central PromptDialog to Azure OpenAI, so the Copilot ge
 
 ![](assets/images/promptdialog2/screenshot202025-05-2320at2010.18.05e280afpm-2136x1171.png)
 *The LLM Capability appeared in the list*
+
+:::no-dumb-questions
+**Q: What is a Copilot capability?**
+
+A: A registered entry that tells Business Central which Copilot features an extension offers. I registered an LLM capability, and it appeared on the Copilot and agent capabilities page, where an administrator can see it.
+
+**Q: Which Azure OpenAI details does the code need?**
+
+A: An endpoint, a deployment name and an API key. The code sets them with SetAuthorization. My deployment is gpt-4o, and the [Azure OpenAI post](/posts/azureopenal/) shows how I created it.
+:::
+
+:::test-drive Try it yourself
+1. Create an Azure OpenAI deployment, and put its endpoint and deployment name into the code.
+2. Run the extension and use the LLM page to ask a real question.
+3. Open the Copilot and agent capabilities page and find your LLM capability.
+:::
+
+:::bullet-points Recap
+- RunGeneration now calls Azure OpenAI's chat completions, so the Copilot gives real answers.
+- The extension registers a Copilot capability, and it appears on the Copilot and agent capabilities page.
+- The endpoint, deployment and key are set with SetAuthorization, and a real key must not live in the code.
+:::
 
 
 ## Pag50100.LLM.al updated

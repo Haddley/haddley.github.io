@@ -1,7 +1,7 @@
 ---
 title: "Java Spring Boot"
 part: 5
-description: "Spring for GraphQL"
+description: "Building a GraphQL API with Spring for GraphQL: a schema, queries and mutations, and the GraphiQL explorer, backed by an H2 database"
 date: "2023-10-30"
 categories: ["Java"]
 tags: "spring-boot, graphql, spring-for-graphql"
@@ -11,6 +11,10 @@ image: "/assets/images/spring-boot-5/spring-framework-logo-70-no.svg"
 
 
 I built a [GraphQL](/posts/graphql/) application using Spring for GraphQL and GraphQL Java.
+
+:::brain-power Before you read on
+A REST API usually has one URL for each kind of thing. If a client wants a book, the names of its authors, and nothing else, how many requests would that take, and how much extra data would come back?
+:::
 
 ![](assets/images/spring-boot-5/screenshot-2023-10-30-at-12.13.17-pm-1253x813.png)
 *I created a new GitHub repository*
@@ -44,6 +48,14 @@ I used http://localhost:8080/graphiql to demonstrate the finished code (in line 
 ![](assets/images/spring-boot-5/screenshot-2023-10-31-at-10.23.00-am-1433x553.png)
 *SELECT * FROM BOOK_AUTHORS*
 
+:::pencil Why is there a BOOK_AUTHORS table?
+The schema says that a Book has a list of authors and an Author has a list of books. Look at the @ManyToMany annotations in Author.java and Book.java below. Why would the database need a third table, and what would it hold?
+
+:::answer
+One book can have several authors, and one author can write several books, so neither table can hold the link in a single column. A join table, here BOOK_AUTHORS, holds one row for each pairing of a book and an author. The last screenshot shows its rows.
+:::
+:::
+
 
 ## Implementation
 
@@ -56,7 +68,7 @@ I reviewed the Java implementation details below.
 *SeedDataConfig.java*
 
 ![](assets/images/spring-boot-5/screenshot-2023-10-31-at-10.34.19-am-2136x1227.png)
-*Author.js*
+*Author.java*
 
 ![](assets/images/spring-boot-5/screenshot-2023-10-31-at-10.43.31-am-2136x1231.png)
 *Book.java*
@@ -78,6 +90,43 @@ I reviewed the Java implementation details below.
 
 ![](assets/images/spring-boot-5/screenshot-2023-10-31-at-10.53.42-am-2136x1017.png)
 *pom.xml*
+
+:::no-dumb-questions
+**Q: What is schema.graphqls?**
+
+A: The contract between the client and the server. It lists the types, such as Book and Author, and the entry points, which are the Query fields books, book, authors and author, and the Mutation fields deleteBook, addBook and addAuthor.
+
+**Q: What is the difference between a Query and a Mutation?**
+
+A: A query reads data and a mutation changes it. In this post, books and author(id: 6) are queries, and addAuthor and addBook are mutations.
+
+**Q: What is GraphiQL?**
+
+A: A page in the browser where I can type a query and see the answer. Setting spring.graphql.graphiql.enabled=true in application.properties switched it on, and I used it at http://localhost:8080/graphiql.
+:::
+
+:::under-the-hood How the Java code finds the schema
+Spring for GraphQL matches names. A method marked @QueryMapping is connected to the Query field with the same name, so authors() answers the authors field, and book(@Argument Long id) answers book(id: ID!). In the same way, a method marked @MutationMapping, such as addAuthor, answers the Mutation field of that name. The @Argument annotation passes the value that the client sent.
+:::
+
+:::watch-it The data lives in memory
+The application.properties file points at jdbc:h2:mem:testdb, so the tables are created in memory when the application starts, and SeedDataConfig loads the authors and books at that point. Anything that addAuthor or addBook creates is lost when the application stops.
+:::
+
+:::test-drive Try it yourself
+1. Run the application and open http://localhost:8080/graphiql.
+2. Ask for books, and then ask for only the name of each book.
+3. Add an author with addAuthor, and then ask for that author by id.
+4. Open the H2 console and run SELECT * FROM AUTHOR to see the new row.
+:::
+
+:::bullet-points Recap
+- Spring for GraphQL connects Java methods to the fields in a schema file by name.
+- @QueryMapping methods read data, and @MutationMapping methods change it.
+- GraphiQL gave me a page to try queries and mutations in the browser.
+- Books and authors are linked many-to-many, which the database stores in a join table.
+- The H2 database is in memory, so my changes are lost when the application stops.
+:::
 
 
 ## application.properties
@@ -239,7 +288,7 @@ public class SeedDataConfig implements CommandLineRunner {
 }
 ```
 
-## Author.js
+## Author.java
 
 ```javascript
 package com.haddley.haddleyspringgraphql.models;

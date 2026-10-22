@@ -13,6 +13,10 @@ slug: "azurelogicappbc"
 
 ## Azure Logic App with Business Central Trigger
 
+:::brain-power Before you read on
+You want an email every time a customer is created in Business Central. Would you rather ask Business Central every few minutes whether anything is new, or have it tell you the moment something happens? What would each choice cost you?
+:::
+
 ### **What is this combination?**
 Azure Logic App with Business Central Trigger is a **cloud automation workflow** that connects Microsoft's **Azure Logic Apps** (no-code/low-code workflow automation) with **Dynamics 365 Business Central** (ERP system) through a trigger mechanism.
 
@@ -182,6 +186,16 @@ This integration enables **business process automation** by connecting Business 
 ![](assets/images/azurelogicappbc/Screenshot-2025-12-12-202101.png)
 *I selected customers*
 
+:::no-dumb-questions
+**Q: What is a trigger in a Logic App?**
+
+A: The event that starts a workflow. A trigger is followed by actions, so the pattern is when something happens, then do something. In this post the trigger is a Business Central trigger, and the action is Send an email (V2).
+
+**Q: What is the difference between a polling trigger and a webhook trigger?**
+
+A: A polling trigger checks Business Central at regular intervals and picks up what is new or changed since the last check. A webhook trigger is told by Business Central when something happens, so it is closer to real time but needs Business Central to be set up for it.
+:::
+
 ![](assets/images/azurelogicappbc/Screenshot-2025-12-12-202124.png)
 *I clicked Save*
 
@@ -206,6 +220,32 @@ This integration enables **business process automation** by connecting Business 
 
 ![](assets/images/azurelogicappbc/Screenshot-2025-12-12-202659.png)
 *The email notification was sent*
+
+:::pencil Choose a trigger
+Your finance team wants a message within seconds of a large sales order being created, not up to an hour later. Using the explanation at the top of this post, which kind of trigger would you choose, and what would Business Central need?
+
+:::answer
+A webhook trigger, because Business Central pushes the notification, so it does not wait for the next poll. The explanation says that Business Central would need to be configured for webhook notifications. A polling trigger would still work, but it has a delay that depends on its schedule.
+:::
+:::
+
+:::watch-it Polling has a delay, and Logic Apps cost per execution
+The explanation at the top lists a few limits to keep in mind. A polling trigger notices a change only at its next check, Business Central has API call limits, and Logic Apps pricing depends on the number of executions. I used a Consumption plan, so check the charges before you leave a workflow running.
+:::
+
+:::test-drive Try it yourself
+1. Create a Logic App on the Consumption plan, and add a Business Central trigger for customers.
+2. Add a Send an email (V2) action.
+3. Create a customer in a sandbox company, and watch the run history.
+4. Compare the time of the change with the time of the email.
+:::
+
+:::bullet-points Recap
+- A Logic App starts from a trigger and then runs actions.
+- Business Central triggers either poll for changes or are notified by a webhook.
+- I used a trigger on customers in a sandbox company, and a Send an email (V2) action.
+- Polling adds a delay, so use a webhook when you need an answer quickly.
+:::
 
 ## References
 

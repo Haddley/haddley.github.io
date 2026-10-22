@@ -14,6 +14,10 @@ image: "/assets/images/businesscentralpart26integrationtable/posts-meta.svg"
 
 In Dynamics 365 Business Central, an Integration Table is a specialized table used to facilitate the exchange of data between Business Central and external systems or services. These tables are often used in integration scenarios, such as connecting with Dynamics 365 Sales (CRM), Power Platform, or other third-party applications.
 
+:::brain-power Before you read on
+Customer orders live in Dataverse, and customers and items live in Business Central. How could a Business Central page show the orders and their items without copying all the data across?
+:::
+
 ![](assets/images/businesscentralpart26integrationtable/screenshot-2024-12-22-165830-1361x723.png)
 *I clicked the Create AL Project button*
 
@@ -41,8 +45,26 @@ In Dynamics 365 Business Central, an Integration Table is a specialized table us
 ![](assets/images/businesscentralpart26integrationtable/screenshot-2024-12-22-170645-1366x724.png)
 *Symbols were downloaded*
 
+:::no-dumb-questions
+**Q: What is an integration table?**
+
+A: A special table that lets Business Central exchange data with an external system. In this post, the tables are proxies for the Dataverse tables, so a Business Central page can show Dataverse rows.
+
+**Q: What does the AL Table Proxy Generator do?**
+
+A: I ran altpgen.exe with the application id and the Dataverse address, and it generated six AL files: AccountExt, ContactExt, Customer Order Line, Customer Order, TeamExt and UserExt. They describe the Dataverse tables in AL.
+
+**Q: Why download symbols first?**
+
+A: The AL project needs the symbols of the Business Central platform and base application so that the code can compile.
+:::
+
 ![](assets/images/businesscentralpart26integrationtable/screenshot-2024-12-22-170906-1366x559.png)
 *Initially the Develop Power Platform Environment was configured to access the Production Business Central Environment*
+
+:::watch-it Both ends must point at the same environment
+My Develop Power Platform environment was first set up to reach the Production Business Central environment, while the AL project deployed to the Sandbox. Check that the Business Central environment on both sides is the one that you mean to use before you test.
+:::
 
 ![](assets/images/businesscentralpart26integrationtable/screenshot-2024-12-22-172259-1366x464.png)
 *The Business Central AL project was configured to deploy to the Sandbox environment*
@@ -92,6 +114,10 @@ In Dynamics 365 Business Central, an Integration Table is a specialized table us
 ![](assets/images/businesscentralpart26integrationtable/screenshot-2024-12-22-182056-1366x491.png)
 *I added an OnInit() trigger*
 
+:::under-the-hood The first error
+The Customer Orders page first failed with an error that said the table connection for table type CRM must be registered before it can be used. I added an OnInit() trigger to the page and ran it again, which gave another error, and then I ran the Dataverse Connection Setup wizard. The pages could only read Dataverse after the connection existed.
+:::
+
 ![](assets/images/businesscentralpart26integrationtable/screenshot-2024-12-22-182157-1366x509.png)
 *I navigated to the Customer Orders page again and received an error*
 
@@ -124,6 +150,14 @@ In Dynamics 365 Business Central, an Integration Table is a specialized table us
 
 ![](assets/images/businesscentralpart26integrationtable/screenshot-2024-12-22-182957-1366x621.png)
 *I received an error message. Business Central was unable to access the Dataverse Customer Orders table*
+
+:::pencil Connected, but access denied
+After the wizard, the connection worked, but Business Central said it was unable to access the Dataverse Customer Orders table. What would you check next, and what did I change?
+
+:::answer
+I reviewed the roles that the Business Central integration application user had been given in Dataverse. I then updated the Business Central Dataverse Integration role, so that it had Full Access to the Customer Order table and to the Customer Order Line table. After that, the Customer Orders page displayed the rows.
+:::
+:::
 
 ![](assets/images/businesscentralpart26integrationtable/screenshot-2024-12-22-183232-1366x654.png)
 *I reviewed the roles that the Business Central Integration Business Central t... application user had been assigned to*
@@ -214,6 +248,10 @@ In Dynamics 365 Business Central, an Integration Table is a specialized table us
 
 ![](assets/images/businesscentralpart26integrationtable/screenshot-2024-12-22-235233-1366x728.png)
 *I noticed that hadd_Item is a GUID*
+
+:::under-the-hood A GUID is not an item
+Each order line in Dataverse stores its item as a GUID. That is not much use on a page, so I used the GUID to look up the matching record in the Business Central Item table, and then showed the item's details and a calculated Amount. That is the benefit of an integration table: Business Central can join its own data to the Dataverse rows.
+:::
 
 ![](assets/images/businesscentralpart26integrationtable/screenshot-2024-12-22-235644-1366x591.png)
 *I added the ListPart to the Customer Order Card*
@@ -523,3 +561,17 @@ page 50101 "Customer Order"
 
 }
 ```
+
+:::test-drive Try it yourself
+1. Generate the table proxies for your own Dataverse tables with altpgen.exe.
+2. Create a list page, deploy it, and run the Dataverse Connection Setup wizard.
+3. Give the integration role access to the tables, and open the page.
+4. Add a flow field so that a GUID column shows a name instead.
+:::
+
+:::bullet-points Recap
+- An integration table lets Business Central read and show Dataverse data without copying it.
+- The AL Table Proxy Generator produced AL files for the Dataverse tables.
+- The page needed the Dataverse connection to be registered, and the integration role needed access to the tables.
+- A flow field and an item lookup turned GUIDs into names, amounts and a total.
+:::

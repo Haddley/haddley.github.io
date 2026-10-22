@@ -13,6 +13,10 @@ image: "/assets/images/mapextension/dynamics365-color.svg"
 
 I built a Microsoft Dynamics 365 Business Central Extension that allows users to view Customer locations in a map.
 
+:::brain-power Before you read on
+A customer card lists an address, but an address is hard to picture. What would you need to add to the customer pages to show the customer on a map, and where in the page would you put it?
+:::
+
 
 ## ChatGPT
 
@@ -70,6 +74,24 @@ In summary, this code extends customer-related pages in a Business Central appli
 ![](assets/images/mapextension/20230901image04-1331x808.png)
 *I viewed Customer Relecloud based in Atlanta*
 
+:::no-dumb-questions
+**Q: What is a control add-in?**
+
+A: A way to bring an external control or web content into a Business Central page. The LeafletMapsFactBox add-in loads Leaflet.js and my own LeafletMapsFunctions.js, and it loads the Leaflet style sheet too.
+
+**Q: Why does the map appear on both the Customer Card and the Customer List?**
+
+A: There are two page extensions, one for each page, and each adds the same fact box part. The part is linked to the customer number, so it shows the customer that is selected.
+:::
+
+:::under-the-hood How the map gets its data
+The fact box part is based on the Customer table. Its OnAfterGetRecord trigger runs after each customer record is read, and it calls the CreateSidebar procedure of the control add-in. The JavaScript then draws the map for that customer, which is why the map moves when I select a different customer.
+:::
+
+:::watch-it Check an AI explanation against the code
+The explanation of the AL code near the top of this post came from ChatGPT. It is a useful way to read unfamiliar code, but an AI explanation can be wrong, so I compared each part with the code in the post before I relied on it.
+:::
+
 
 ## Upload and deploy extension
 
@@ -91,6 +113,20 @@ I logged in to my Microsoft Dynamics 365 Business Central environment with the a
 
 ![](assets/images/mapextension/20230903image05-1337x885.png)
 *I confirmed the Extension was running in the cloud*
+
+:::test-drive Try it yourself
+1. Build the extension, or download the .app file that the reference links to.
+2. In Extension Management, choose Upload And Deploy Extension and deploy the file.
+3. Open a customer card and look for the Customer Map fact box.
+4. Select different customers and watch the map change.
+:::
+
+:::bullet-points Recap
+- A control add-in lets a Business Central page show a Leaflet map.
+- A fact box part, linked to the customer number, is added to both the Customer Card and the Customer List.
+- OnAfterGetRecord calls CreateSidebar so that the map follows the selected customer.
+- I uploaded and deployed the extension from the Extension Management page.
+:::
 
 
 ## LeafletMapsExtension.al

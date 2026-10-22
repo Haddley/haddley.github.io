@@ -15,6 +15,10 @@ Businesses that purchase items from Vendors need to provide payment.
 
 Businesses should take advantage of payment terms and discounts for prompt payment.
 
+:::brain-power Before you read on
+When a company pays a supplier's invoice, two things happen in its books: the money leaves a bank account, and the debt to the supplier goes away. Which account would you expect to go down for each, and why?
+:::
+
 ![](assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.48.12-pm-1836x434.png)
 *I noticed that there were 13 Outstanding Vendor Invoices in the CRONUS USA, Inc. company accounts*
 
@@ -35,6 +39,20 @@ Businesses should take advantage of payment terms and discounts for prompt payme
 
 ![](assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.51.37-pm-1836x205.png)
 *Business Central generated an error. I had specified Computer Check but I had not printed a Check.*
+
+:::no-dumb-questions
+**Q: Why did Business Central refuse to post the payment?**
+
+A: I had chosen Computer Check as the payment type, but I had not printed the check, and the Check Printed value was false. Business Central expected the check to exist before it recorded the payment.
+
+**Q: How did I print a check?**
+
+A: I used Check, then Print Check, then Send to, and chose the PDF Document option. Business Central produced Check.pdf, a one-page document that was ready to print.
+
+**Q: Why use Preview Posting first?**
+
+A: It lists the entries that the posting would create, so I could check them before I posted. I used it for a single payment and again for the batch.
+:::
 
 ![](assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.51.53-pm-1836x320.png)
 *I selected the Check|Print Check... menu item*
@@ -71,6 +89,10 @@ Businesses should take advantage of payment terms and discounts for prompt payme
 
 ![](assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.55.45-pm-1836x240.png)
 *Three entries were going to be added to the Detailed Vendor Ledger*
+
+:::under-the-hood Reading the preview
+For the single payment, the preview showed a credit to the Checking account, because the value of the asset goes down, and a debit to Accounts Payable, because the liability goes down. The vendor ledger got a debit entry for Nod Publishers, and the bank account ledger got a credit entry for CHECKING. The detailed vendor ledger received three entries.
+:::
 
 ![](assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-7.59.55-pm-1836x325.png)
 *I selected the Post|Post menu item*
@@ -143,6 +165,14 @@ I used the Suggest Vendor Payments menu item to suggest payment lines. In normal
 ![](assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.13.57-pm-1836x644.png)
 *Twenty two entries were going to be added to the Detailed Vendor Ledger*
 
+:::pencil Predict the batch
+For one payment, the preview showed two general ledger entries. Suggest Vendor Payments proposed five payments. How many general ledger entries would you expect in the batch preview, and how many bank account ledger entries?
+
+:::answer
+Ten general ledger entries, because each of the five payments creates two. The preview also showed five bank account ledger entries, one for each check, and five vendor ledger entries. The detailed vendor ledger received twenty two entries.
+:::
+:::
+
 ![](assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.14.11-pm-1836x645.png)
 *I selected the Post|Post menu item*
 
@@ -160,3 +190,20 @@ I used the Suggest Vendor Payments menu item to suggest payment lines. In normal
 
 ![](assets/images/financialoperationspurchaseinvoice/screen-shot-2023-08-21-at-8.15.59-pm-1836x290.png)
 *At least $49,421.55 would need to be deposited in the CHECKING bank account before the Vendors received the physical checks.*
+
+:::watch-it Check the bank balance before the checks go out
+After I posted the batch, the bank accounts list showed that at least $49,421.55 would need to be deposited in the CHECKING account before the vendors received their physical checks. Posting the payments does not put money in the bank, so check the balance first.
+:::
+
+:::test-drive Try it yourself
+1. Open a payment journal, create a payment for an outstanding vendor invoice, and choose Computer Check.
+2. Print the check to a PDF, and then use Preview Posting.
+3. Try Suggest Vendor Payments, and compare the preview with the single payment.
+:::
+
+:::bullet-points Recap
+- A payment reduces the bank account, which is an asset, and the accounts payable account, which is a liability.
+- Computer Check payments must be printed before they can be posted.
+- Preview Posting shows the ledger entries before anything is recorded.
+- Suggest Vendor Payments proposed five payments, and posting them cleared the outstanding invoices.
+:::

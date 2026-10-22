@@ -26,6 +26,10 @@ He would also like to track costs by department where, for now, the main focus i
 
 Once the company’s users will start to record sales and purchase transactions, the accounting manager wants to make sure they are only processed within the current accounting period. Make sure the company is set for the first transactions for January 2022, but also allow your own user to process the opening balance on December 31st 2021."
 
+:::brain-power Before you read on
+A company was set up with the wrong fiscal year, and it also wants to stop anyone posting outside the current accounting period. Which settings would you expect to change, and which of them would apply to everyone or to one user?
+:::
+
 ![](assets/images/hands-on-lab3.1/screen-shot-2023-12-04-at-10.57.19-am-1836x535.png)
 *I used search to navigate to the Accounting Periods page*
 
@@ -110,6 +114,16 @@ Once the company’s users will start to record sales and purchase transactions,
 ![](assets/images/hands-on-lab3.1/screen-shot-2023-12-04-at-12.27.03-pm-1836x809.png)
 *I confirmed that Shortcut Dimension 3 was updated*
 
+:::no-dumb-questions
+**Q: What are global dimensions and shortcut dimensions?**
+
+A: Global dimensions are the first two dimensions that Business Central keeps close at hand, and I set them to SALESPERSON_NEWLIST and CUSTOMERGROUP with the Change Global Dimensions button. Shortcut dimensions are further dimensions that I can enter directly, and I set Shortcut Dimension 3 to DEPARTMENT.
+
+**Q: Why did I add the DEPARTMENT dimension?**
+
+A: The accounting manager wants to track costs by department. The dimension was missing when I tried to set Shortcut Dimension 3, so I created it, added the departments as values, and returned to the setup.
+:::
+
 ![](assets/images/hands-on-lab3.1/screen-shot-2023-12-04-at-12.28.43-pm-1836x810.png)
 *I scrolled up to the General tab. I updated the Allow Posting From setting*
 
@@ -124,6 +138,28 @@ Once the company’s users will start to record sales and purchase transactions,
 
 ![](assets/images/hands-on-lab3.1/screen-shot-2023-12-04-at-12.37.45-pm-1836x812.png)
 *I added an Allow Posting From value*
+
+:::pencil Company-wide or personal?
+The General Ledger Setup page has Allow Posting From and Allow Posting To settings, and so does the User Setup page. Which one limits everybody, and which one limits only me?
+
+:::answer
+General Ledger Setup applies to the whole company, so I set the allowed dates there. The User Setup page limits one user, and I added an Allow Posting From value for my own user ID.
+:::
+:::
+
+:::test-drive Try it yourself
+1. Correct the accounting periods so that the new fiscal year starts on the right date.
+2. Set the two global dimensions and a third shortcut dimension.
+3. Set Allow Posting From and Allow Posting To, and then try to post outside the dates.
+:::
+
+:::bullet-points Recap
+- I corrected the fiscal year and created the accounting periods for it.
+- USD became the local currency, with gain and loss accounts set.
+- Global Dimensions 1 and 2, and Shortcut Dimension 3, support the analysis that the accounting manager asked for.
+- Allow Posting From and To can limit posting for the whole company, and for one user.
+:::
+
 ## References
 
 - [Hands-on-Lab 3.1: Set up dimensions](https://microsoftlearning.github.io/MB-800-Business-Central-Functional-Consultant/Instructions/Labs/LAB%5BMB-800%5D_M03_Lab01_Set_up_Finance.html)

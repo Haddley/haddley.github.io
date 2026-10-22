@@ -11,6 +11,10 @@ image: "/assets/images/modeldrivenpurchaseorders/office-365-icon-500x500.png"
 
 I created a Power Platform Model Driven application to manage Business Central Purchase Orders.
 
+:::brain-power Before you read on
+You want a Power Apps app that lists Business Central purchase orders and lets a user create one. Which Business Central tables would the app need, and what is the smallest amount of information that a purchase order needs before it can be saved?
+:::
+
 ![](assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-2.16.37-pm-1836x827.png)
 *I reset my Develop environment*
 
@@ -28,6 +32,16 @@ I created a Power Platform Model Driven application to manage Business Central P
 
 ![](assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-2.28.13-pm-1836x773.png)
 *No tables appeared*
+
+:::no-dumb-questions
+**Q: Why did no tables appear in the Business Central Configuration app?**
+
+A: It did not yet know which Business Central environment and company to use. I opened the Configurations page, entered Production as the environment name and Evaluation as the default company, and then the tables could be listed.
+
+**Q: What does the Visible value do?**
+
+A: It decides which Business Central tables appear in Dataverse. I set purchaseOrder to Yes, and then purchaseOrderLine and vendor, because I wanted those three.
+:::
 
 ![](assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-2.28.26-pm-1836x765.png)
 *I navigated to the Configurations page and clicked on the Business Central item*
@@ -83,6 +97,10 @@ I created a Power Platform Model Driven application to manage Business Central P
 ![](assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-2.48.00-pm-1836x457.png)
 *I reviewed the purchaseOrder table's Relationships. A Vendor Id relationship was shown between the purchaseOrder table and the vendor table*
 
+:::under-the-hood The relationships
+Making the tables visible also created relationships between them. The purchaseOrder table has a relationship with the Company table, a Document Id relationship with purchaseOrderLine, and a Vendor Id relationship with vendor. The later steps depend on them, because the vendor lookup and the lines subgrid follow those relationships.
+:::
+
 ![](assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-2.48.45-pm-1836x769.png)
 *I created a new publisher*
 
@@ -125,6 +143,10 @@ I created a Power Platform Model Driven application to manage Business Central P
 ![](assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-2.57.55-pm-1836x776.png)
 *The model driven app displayed an error (because to create a Purchase Order I needed to at least provide a Vendor)*
 
+:::watch-it A purchase order needs a vendor
+My first attempt to save a new purchase order failed, because a purchase order needs at least a vendor. The form had no Vendor Id column yet, so I edited the form and added one. If you see an error on save, check which fields the table requires.
+:::
+
 ![](assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-2.58.32-pm-1836x769.png)
 *I clicked the Edit form link on the Purchase Orders form*
 
@@ -156,6 +178,12 @@ I configured the General tab to have [two columns](https://www.youtube.com/watch
 
 ![](assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-6.19.19-pm-1836x631.png)
 *I selected the Vendor Id Lookup and the Vendor Information Quick View form*
+
+:::no-dumb-questions
+**Q: What is a Quick View form?**
+
+A: A small read-only form from a related record, shown inside another form. On the purchase order I used one to show the vendor's number and address, so a user can see who the order is for without leaving the form.
+:::
 
 ![](assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-6.19.43-pm-1836x628.png)
 *I dragged the Quick View component to the right hand column (and hid the "New Section" label)*
@@ -201,3 +229,17 @@ I configured the General tab to have [two columns](https://www.youtube.com/watch
 
 ![](assets/images/modeldrivenpurchaseorders/screenshot-2024-03-02-at-6.29.47-pm-1836x629.png)
 *The new purchase order appeared at the bottom of the "All Purchase Orders" view*
+
+:::test-drive Try it yourself
+1. Make the purchaseOrder, purchaseOrderLine and vendor tables visible.
+2. Build a model-driven app with a Purchase Orders view, and add a vendor lookup to the form.
+3. Add a Vendor Quick View, and create a purchase order for a vendor.
+4. Check the order in Business Central.
+:::
+
+:::bullet-points Recap
+- The Business Central Configuration app needs an environment and a company before it lists tables.
+- Making tables visible in Dataverse also created relationships between them.
+- A purchase order needs a vendor before it can be saved.
+- A Quick View form shows the vendor's details on the purchase order, and Business Central assigned the order number.
+:::

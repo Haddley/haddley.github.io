@@ -13,6 +13,10 @@ image: "/assets/images/customtvirtualtables/office-365-icon-500x500.png"
 
 I created two related Business Central tables and connected to them as Power Platform Dataverse Virtual Tables.
 
+:::brain-power Before you read on
+You build your own tables in Business Central, such as car brands and car models. How could a Power Apps app work with them without anyone copying the data into Dataverse?
+:::
+
 ![](assets/images/customtvirtualtables/screenshot-2024-05-07-at-6.07.14pm-1836x923.png)
 *I edited the Car Brand table using the Car Brand List page*
 
@@ -22,6 +26,16 @@ I created two related Business Central tables and connected to them as Power Pla
 ![](assets/images/customtvirtualtables/screenshot-2024-05-07-at-6.09.07pm-1836x1059.png)
 *I reviewed the Car Brand and Car Model tables in the Available Tables list*
 
+:::no-dumb-questions
+**Q: Why did I create list pages for the tables?**
+
+A: The Car Brand List and Car Model List pages gave me a way to type in the data in Business Central. The tables then appeared in the Available Tables list of the Business Central Configuration app.
+
+**Q: How are the two tables related?**
+
+A: A Car Model has a Brand Id, which is the SystemId of a Car Brand. The code sets ValidateTableRelation to false, and notes a blog post that explains why.
+:::
+
 ![](assets/images/customtvirtualtables/screenshot-2024-05-07-at-6.09.51pm-1836x1063.png)
 *I viewed the contents of the Car Brands table using a Model Driven App View*
 
@@ -30,6 +44,23 @@ I created two related Business Central tables and connected to them as Power Pla
 
 ![](assets/images/customtvirtualtables/screenshot-2024-05-07-at-6.10.15pm-1836x1062.png)
 *I updated a Car Model record using a Model Driven App Form*
+
+:::under-the-hood What the AL code defines
+Car.al declares two tables, Car Brand and Car Model, and an enum called Fuel Type. A Car Model holds a name, a description, the Brand Id, the power in cc and the fuel type. Both tables use the CustomerContent data classification. Once the tables exist, the same virtual table steps as in my other post expose them in Dataverse.
+:::
+
+:::test-drive Try it yourself
+1. Create two related tables in AL, with list pages, and publish the extension.
+2. Make them visible in the Business Central Configuration app.
+3. View them in a model-driven app, and edit a record in a form.
+4. Check the change in Business Central.
+:::
+
+:::bullet-points Recap
+- Custom Business Central tables can be exposed to Dataverse as virtual tables.
+- I created Car Brand and Car Model, with list pages to enter data.
+- A model-driven app showed both tables and let me update a Car Model.
+:::
 
 
 ## Car.al

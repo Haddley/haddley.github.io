@@ -12,6 +12,10 @@ image: "/assets/images/warehousemanagementputaway/dynamics365-color.svg"
 
 I created a walkthrough of how businesses receive, pick, and ship items using Business Central's warehouse management features.
 
+:::brain-power Before you read on
+Ten chairs arrive at a warehouse. They are unloaded at the door, but they have to end up on a shelf where someone can pick them. Who or what decides which shelf, and how does the system remember where they are?
+:::
+
 ![](assets/images/warehousemanagementputaway/screen-shot-2023-08-19-at-10.33.47-am-1437x713.png)
 *I updated my role to Inventory Manager*
 
@@ -77,6 +81,20 @@ I noted that bin "W-08-0001" is a RECEIVE bin and "W-04-0001" is a PUTPICK bin.
 ![](assets/images/warehousemanagementputaway/screen-shot-2023-08-19-at-10.48.43-am-1438x711.png)
 *I saw that two put-away templates had been defined*
 
+:::no-dumb-questions
+**Q: What is the difference between a zone and a bin?**
+
+A: A zone is a logical part of the warehouse, and zones are divided into bins. The White Warehouse in this post has 8 zones, each with a bin type, and the bins sit inside them.
+
+**Q: What does the bin type do?**
+
+A: It decides how a bin is used as items flow through. Incoming goods are unloaded to a Receive bin and moved to a bin where they can be picked, and I used the bin types PICK, PUTAWAY, PUTPICK, RECEIVE and SHIP.
+
+**Q: What is a put-away template?**
+
+A: A set of rules that decides where Business Central directs incoming items. In this post, the STD template prefers fixed bins, and the VAR template prefers floating bins.
+:::
+
 ![](assets/images/warehousemanagementputaway/screen-shot-2023-08-19-at-10.49.08-am-1439x713.png)
 *In the STD template, I saw that items are directed to a Fixed Bin already used for this item type with the same unit measure and less than minimum quantity, a Fixed Bin already used for this item type, a Floating Bin that already has an item of this type, an empty bin with the next highest "bin ranking", or a random floating bin.*
 
@@ -118,6 +136,14 @@ To demonstrate how items flow through a warehouse, I created a Purchase Order ma
 ![](assets/images/warehousemanagementputaway/screen-shot-2023-08-19-at-8.27.50-pm-1836x927.png)
 *The Purchase Order document was released*
 
+:::watch-it Releasing the order without an invoice
+I released the purchase order without entering a vendor invoice number, because the invoice would not arrive for days or weeks. Releasing makes the order ready to receive, and the invoice can be matched later.
+:::
+
+:::under-the-hood Push or pull
+After I entered the purchase order, I could have clicked Create Whse. Receipt myself, which pushes the work to the warehouse. I used the alternative, a pull strategy: I released the order and let a warehouse worker create the receipt from the source documents. That is why I changed to the Warehouse Worker role.
+:::
+
 
 ## Push or pull the warehouse receipt?
 
@@ -155,6 +181,14 @@ The alternative is to release the Purchase Order and to let the Warehouse staff 
 ![](assets/images/warehousemanagementputaway/screen-shot-2023-08-19-at-8.29.40-pm-1836x927.png)
 *As I posted the Warehouse Receipt a Put-away was created*
 
+:::pencil Where will the chairs go?
+The chairs were received into bin W-08-0001, which is a RECEIVE bin in the RECEIVE zone. Before you look at the put-away, which kind of bin would you expect them to move to, and which bin did the put-away name?
+
+:::answer
+They move to a bin where they can be picked. The put-away moved them from W-08-0001 to W-04-0001, which is a PUTPICK bin in the PICK zone, and I checked the bin contents before and after I registered it.
+:::
+:::
+
 ![](assets/images/warehousemanagementputaway/screen-shot-2023-08-19-at-8.29.57-pm-1836x342.png)
 *I clicked the Put-aways link*
 
@@ -187,3 +221,16 @@ The alternative is to release the Purchase Order and to let the Warehouse staff 
 
 ![](assets/images/warehousemanagementputaway/screen-shot-2023-08-19-at-8.32.37-pm-1836x929.png)
 *The items are shown in the W-04-0001 bin (the PUTPICK bin in the PICK Zone)*
+
+:::test-drive Try it yourself
+1. Create a purchase order for a warehouse location, and release it.
+2. As a warehouse worker, create a warehouse receipt from the source document and post it.
+3. Open the put-away, check the bin contents, register it, and check the bin contents again.
+:::
+
+:::bullet-points Recap
+- A warehouse has zones, which are divided into bins, and each bin has a bin type.
+- Put-away templates decide where incoming items are directed.
+- Releasing the purchase order and letting warehouse staff create the receipt is a pull strategy.
+- Posting the receipt created a put-away, and registering it moved the items from the receive bin to the put-and-pick bin.
+:::

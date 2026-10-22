@@ -9,8 +9,11 @@ slug: "powerpages1"
 image: "/assets/images/powerpages1/powerpages-scalable.svg"
 ---
 
-
 I used Microsoft Power Pages to build a Customer Portal for Dynamics 365 Business Central. Power Pages is a low-code platform for external-facing business websites, and the portal gives customers visibility into their Sales Orders.
+
+:::brain-power Before you read on
+A customer should be able to sign in to a website and see only their own company's sales orders. Where does the website get the orders from, and what decides which orders each customer is allowed to see?
+:::
 
 ![](assets/images/powerpages1/screenshot-2024-10-26-at-2.44.36pm-2136x1091.png)
 *I used Microsoft Power Pages to create a Customer Portal*
@@ -93,6 +96,15 @@ I used Microsoft Power Pages to build a Customer Portal for Dynamics 365 Busines
 ![](assets/images/powerpages1/screenshot-2024-10-26-at-4.02.35pm-2136x1206.png)
 *Customer and Vendor details were copied from Business Central to Dataverse*
 
+:::no-dumb-questions
+**Q: What is the difference between synchronization and virtual tables here?**
+
+A: The synchronization jobs copied contacts, accounts and other details from Business Central into Dataverse, so those rows really exist there. The Sales Order tables are virtual, so Dataverse reads them from Business Central and keeps no copy. I used both in this post.
+
+**Q: Why did I enable six virtual tables?**
+
+A: The portal needs Business Central data such as sales orders and their lines. I chose six virtual tables in the Review and enable virtual tables step, and Business Central created a job queue entry for the work.
+:::
 
 ## Sales Orders
 
@@ -112,7 +124,6 @@ I connected the Customer Portal to Business Central Sales Orders using virtual t
 
 ![](assets/images/powerpages1/screenshot-2024-10-26-at-4.22.42pm-2136x1165.png)
 *I added columns to the display*
-
 
 ## Solution
 
@@ -178,6 +189,10 @@ I created a Power Platform Solution
 ![](assets/images/powerpages1/screenshot-2024-12-14-at-9.00.06pm-2136x1096.png)
 *The Sales Orders page only shows when an authenticated user is logged in*
 
+:::watch-it A public site does not mean public data
+Later I set the site visibility to Public, but the Sales Orders page only shows to a signed-in user, and a table permission decides which rows that user can see. Check both the page and the table permissions, because the page alone does not protect the data.
+:::
+
 ![](assets/images/powerpages1/screenshot-2024-12-14-at-9.01.33pm-2136x1100.png)
 *I added an h1 Text component. I added a List component*
 
@@ -216,6 +231,10 @@ I created a Power Platform Solution
 
 ![](assets/images/powerpages1/screenshot-2024-12-14-at-9.09.34pm-2136x475.png)
 *I clicked Refresh to view the new Synthetic Relation*
+
+:::under-the-hood The synthetic relation
+A user should see only the sales orders that belong to their company. The Sales Order table does not have a real relationship with the CRM Account table, so I created a synthetic relation. It matches the account's Account Name field to the sales order's customerName field, and the table permission then uses it to limit the rows to the user's own company.
+:::
 
 ![](assets/images/powerpages1/screenshot-2024-12-14-at-9.10.21pm-2136x1099.png)
 *I updated the configuration of the Power Pages Authentication External Users Microsoft Entra Application*
@@ -256,6 +275,12 @@ I created a Power Platform Solution
 ![](assets/images/powerpages1/screenshot-2024-12-14-at-10.11.10pm-2136x1107.png)
 *I used the invitation code to register robert*
 
+:::no-dumb-questions
+**Q: How did Robert get in?**
+
+A: I opened the contact record for Robert Townes, clicked Create Invitation, and copied the invitation code. Robert used the code to register on the site.
+:::
+
 ![](assets/images/powerpages1/screenshot-2024-12-14-at-10.11.57pm-2136x1100.png)
 *I clicked the Sales Orders menu item*
 
@@ -295,6 +320,10 @@ I created a Power Platform Solution
 ![](assets/images/powerpages1/screenshot-2024-12-14-at-10.20.03pm-2136x833.png)
 *An Internal Server Error was generated*
 
+:::watch-it A new page needs its own permissions
+After I added the Sales Order page and the View details action, clicking View details produced an Internal Server Error. I then added a new table permission and a global permission, and the error went away. When you add a page that reads other tables, check that every table that it uses has a permission.
+:::
+
 ![](assets/images/powerpages1/screenshot-2024-12-14-at-10.20.54pm-2136x1100.png)
 *I added a New table permission*
 
@@ -304,6 +333,14 @@ I created a Power Platform Solution
 ![](assets/images/powerpages1/screenshot-2024-12-14-at-10.22.35pm-2136x1097.png)
 *Logged in as Robert I was able to review Sales Order Lines associated with the selected Sales Order*
 
+:::pencil Which orders does Robert see?
+Robert registered with an invitation code and signed in. Which sales orders would you expect him to see, and what makes the portal show those and no others?
+
+:::answer
+He saw the Adatum Corporation sales orders, which is the company that I take his contact to belong to. The table permission uses the synthetic relation between the account and the sales order, so a customer sees the orders for their own company and not other companies' orders.
+:::
+:::
+
 ![](assets/images/powerpages1/screenshot-2024-12-14-at-10.25.56pm-2136x946.png)
 *I reviewed the Table permissions*
 
@@ -312,3 +349,16 @@ I created a Power Platform Solution
 
 ![](assets/images/powerpages1/screenshot-2024-12-14-at-10.33.58pm-2136x825.png)
 *The Customer Portal solution was ready to be exported*
+
+:::test-drive Try it yourself
+1. Make a contact an invitation, register on the site with the code, and sign in.
+2. Open the Sales Orders page, and check that you see only your own company's orders.
+3. Remove the table permission and see what the page shows.
+:::
+
+:::bullet-points Recap
+- Synchronization copied contacts and accounts to Dataverse, and virtual tables exposed sales orders without a copy.
+- A synthetic relation joined accounts to sales orders, so a table permission could limit rows by company.
+- Invitation codes let contacts register, and each new page needed table permissions.
+- The portal solution was ready to export.
+:::
