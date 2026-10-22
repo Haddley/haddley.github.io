@@ -3,7 +3,7 @@
     {
       "slug": "attiny3",
       "title": "ATtiny85 (Part 3)",
-      "description": "An ATtiny85 field test on an e-bike: the display showed double the speed but the motor kept running, so I cut the motor through the brake sensor line, and then simplified the design until the chip only listens to the speed wire and pulls the brake line",
+      "description": "An ATtiny85 that cuts an e-bike motor above 25 km/h by pulling the brake sensor line low, tested on the road",
       "date": "2026-10-21",
       "categories": [
         "AI",
@@ -3181,5 +3181,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-21T23:20:58.302Z"
+  "generatedAt": "2026-10-22T03:47:11.694Z"
 }
