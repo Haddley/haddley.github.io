@@ -210,3 +210,5 @@ All three repos are public and unedited: [github.com/Haddley/specdriven](https:/
 - [The new spec-driven workflow is a mess...](https://www.youtube.com/watch?v=nnUMJX9013Y)
 
 - [Kent Beck: Software Engineering in the Age of AI | Prodacity 2026](https://www.youtube.com/watch?v=F8fBgDCf2Y4&t=2559s)
+
+- [The Industry Is Catching Up: The Only Way to Generate AI Code That Works](https://www.youtube.com/watch?v=EkH_uoybj8k)
