@@ -359,9 +359,12 @@ I measured both designs from the light in the eBay listing above, and I built th
 ![](assets/images/3dprinting3/on-the-bike-from-behind.jpg)
 *The light from behind and to the side, with the clear film still on the lens*
 
+![](assets/images/3dprinting3/rear-light-at-dusk.jpg)
+*The fitted rear light switched on in the evening, seen from behind the bike*
+
 It works really well.
 
-The rear light cable will run along parts of the bike carrier, and then I will extend it and run it through the frame to connect to the front light cable of the bike controller.
+The rear light cable runs along parts of the bike carrier. I extended it and ran it through the frame to connect to the front light.
 
 :::bullet-points What I learned
 - Put every dimension in a named parameter. Every correction in this post was one number.
