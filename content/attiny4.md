@@ -100,8 +100,21 @@ A: With a terminal block I can fasten and release each wire with a screwdriver, 
 A: It is the same pitch as the 0.1 inch grid of the board's holes and of the ATtiny85's pins, so the pieces line up without any bending.
 :::
 
-:::watch-it Check the fit before you buy more
-I have found no datasheet for these terminal blocks, so I do not know their current rating or the range of wire that they take. Before I use them, I will check that their pins fit the board's 1.2 mm holes, and that the screws clamp the thin wires from the hub connector and brake sensor. Blocks of this size usually take thin wire, but the pack's own numbers decide it.
+:::under-the-hood What the product drawing says about the blocks
+The seller's drawing gives the sizes that the board and the case depend on. The listing also says 150 V and 6 A.
+
+| | Size |
+|---|---|
+| Length of a block with P poles | P × 2.54 + 0.4 mm, so 10.56 mm for 4P and 5.48 mm for 2P |
+| Height above the board | 8.80 mm |
+| Depth | 6.30 mm in all: the pins are 3.0 mm from the back face and 3.3 mm from the wire entry face |
+| Pins | 0.8 × 0.5 mm, 3.5 mm long below the body, with a 1.3 mm hole recommended |
+
+My board's holes are 1.2 mm, and the diagonal of a 0.8 × 0.5 mm pin is about 0.94 mm, so the pins should go in. With a 1.6 mm board, about 1.9 mm of each pin comes out of the underside, and the 3 mm of space under the board in the case is enough for it and its solder. The screws are on top, and the wire goes in from the side, which is why the lid has slots and the long walls have notches.
+:::
+
+:::watch-it Check the wire range
+The drawing does not say which sizes of wire the clamp takes. Before I rely on it, I will check that the screws clamp the thin wires from the hub connector and the brake sensor.
 :::
 
 ## A 3D printed case
@@ -150,7 +163,7 @@ The inside size comes from the board and what stands on it: the 50.8 × 38.1 mm 
 :::
 :::
 
-With the placeholder values that are in the file today, the closed case is 44.9 × 55 × 18.8 mm. The height depends most on the terminal blocks, which I have not measured yet. I have set their height to 10 mm for now, so the 18.8 mm will change.
+With the sizes in the file today, the closed case is 44.9 × 55 × 17.6 mm. The height comes from the 8.8 mm terminal blocks, plus the space under the board and the lid. I have assumed that the 10 µF capacitor is no taller than the blocks, or that it lies flat, and that the board is 1.6 mm thick, which its drawing does not give.
 
 :::watch-it Check the snap tabs and the frame
 A snap tab is a thin blade that bends, and a blade that is printed standing up can crack across its layers when it bends. I will print the first copy and see, and I may print the lid on its side, or use a tougher material, if a tab breaks. A bike frame is also wet and bumpy, so the case should keep water off the board, hold the board firmly, and give the wires slack and some strain relief.
@@ -158,19 +171,19 @@ A snap tab is a thin blade that bends, and a blade that is printed standing up c
 
 ## Download the first version
 
-These files are the first version of the case. They use placeholder sizes for the terminal blocks, so do not print them for your own bike yet. The STL files are in printing orientation, with the base standing in its tray and the lid on its back.
+These files are the first version of the case. The terminal block and board sizes come from the product drawings, but I have not yet measured the gap in my bike frame, or the real board, so do not print them for your own bike yet. The STL files are in printing orientation, with the base standing in its tray and the lid on its back.
 
 | Part | File | Notes |
 |---|---|---|
 | Base | [case_base.stl](/assets/files/attiny4/case_base.stl) | Feet for the board, tapped M3 posts, wire notches, and pockets for the snap tabs. |
 | Lid | [case_lid.stl](/assets/files/attiny4/case_lid.stl) | Screwdriver slots over the terminal blocks, and two snap tabs. Print it flat on its plate. |
-| Source | [case.scad](/assets/files/attiny4/case.scad) | The OpenSCAD model. Change the values marked CHECK, such as the block height, and export again. |
+| Source | [case.scad](/assets/files/attiny4/case.scad) | The OpenSCAD model. Change the values marked CHECK, such as the board thickness, and export again. |
 
-The size of the case follows from those values, so a change to the block height or depth changes the outside size.
+The size of the case follows from those values, so a change to a block or board size changes the outside size.
 
 ## Where it stands
 
-This post is the plan. I will check every connection with a meter before I connect the board to the bike, and I will look at the speed and brake lines the same way that I did on the breadboard. The case is waiting for three measurements: the height of the terminal blocks, the depth of a block, and the gap in the frame.
+This post is the plan. I will check every connection with a meter before I connect the board to the bike, and I will look at the speed and brake lines the same way that I did on the breadboard. The case is waiting for one measurement that matters most, the gap in the frame, and for a check of the real board's thickness.
 
 :::bullet-points Recap
 - The Part 3 circuit has five parts and six wires to the bike, so it fits on a small board.
@@ -178,7 +191,7 @@ This post is the plan. I will check every connection with a meter before I conne
 - Ground has five connections and only four free holes on pin 4's strip, so a short wire carries it to a second strip.
 - Each terminal block pole needs its own row, so the blocks stand along the long edges of the board.
 - A two-piece printed case has screwdriver slots, wire notches open at the top, snap tabs, and tapped M3 posts that hold the board down.
-- The case has to fit between the board with its blocks, and the gap in the frame.
+- The 8.8 mm blocks give a case of 44.9 × 55 × 17.6 mm, and it has to fit the gap in the frame.
 :::
 
 ## References

@@ -9,8 +9,8 @@
 // - The lid has a screwdriver slot above each terminal block.
 // - Two snap tabs on the lid click into pockets in the long walls of the base.
 //
-// Board sizes come from the product drawing. Values marked CHECK are placeholders
-// that I have to measure before I print.
+// Board sizes come from the ElectroCookie product drawing, and the terminal block sizes come from
+// the Aribrnten product drawing. Values marked CHECK are still guesses that I have to measure.
 //
 // Axes: x is the short side of the board (38.1 mm), y is the long side (50.8 mm).
 // Rows 1 to 17 run along y, 2.54 mm apart, row 1 at +y. Columns A to E are at x < 0 and F to J at x > 0.
@@ -29,7 +29,8 @@ m3_d      = 3.2;
 
 // ---- the parts on the board
 stand_h   = 3.0;        // gap under the board for the solder tails
-comp_h    = 10.0;       // CHECK: height of the tallest part above the board (the terminal blocks)
+comp_h    = 8.8;        // height of the tallest part above the board: the terminal blocks (8.8 mm).
+                        // CHECK: the 10 uF capacitor must be no taller, or lie flat
 top_gap   = 1.0;        // air above the tallest part
 
 // ---- the board grid
@@ -41,7 +42,10 @@ col_a_x   = -13.97;     // column A. Column J is at +13.97.
 // ---- the terminal blocks: one pole per row, so that no two poles share a strip
 tb4_rows  = [14, 17];   // first and last row of the 4P block, in column A
 tb2_rows  = [16, 17];   // first and last row of the 2P block, in column J
-tb_depth  = 8.0;        // CHECK: depth of a block body, across the wire entry direction
+tb_front  = 3.3;        // body, from the pins to the wire entry face (6.3 mm deep in all)
+tb_back   = 3.0;        // body, from the pins to the back face
+tb_h      = 8.8;        // height of a block above the board
+// A block with P poles is P x 2.54 + 0.4 mm long.
 screw_slot_w = 5.0;     // slot width in the lid, wide enough for a small screwdriver
 notch_margin = 1.5;     // extra room above and below the poles for each wire notch
 
