@@ -3,7 +3,7 @@ title: "ATtiny85"
 part: 4
 description: "Moving the ATtiny85 speed limiter from a breadboard to a soldered ElectroCookie mini prototype board, with screw terminal blocks for the bike's wires and a two-piece 3D printed case that snaps shut inside the bike frame"
 date: "2026-10-23"
-categories: ["IOT"]
+categories: ["IOT","3D printing"]
 tags: "attiny85, e-bike, prototype-board, terminal-blocks, openscad"
 hidden: false
 slug: "attiny4"
@@ -22,11 +22,11 @@ On a breadboard, I push a wire into any hole and the board makes the connection.
 
 The final circuit from Part 3 has only five parts:
 
-- **The ATtiny85**
+- **The ATtiny85**, which I plan to plug into an 8-pin socket, so that I never have to heat the chip itself
 - **A 1 kΩ resistor** between the speed wire and pin 7 (PB2)
 - **A 220 Ω resistor** between the brake wire and pin 3 (PB4)
 - **A 100 nF capacitor and a 10 µF capacitor** that decouple the supply between pin 8 (Vcc) and ground
-- **Optionally, a second 100 nF capacitor** between pin 7 and ground, which filters short spikes on the speed wire
+- **Optionally, a second 100 nF capacitor** between pin 7 and ground, which filters short spikes on the speed wire. The breadboard circuit in Part 3 worked without it, so I leave it off the board in this build.
 
 Six wires from the bike connect to it: the hub connector's red wire (+5 V) and black wire (ground), the two halves of the white speed wire, and the two brake wires, one that reads 5 V and one that reads 0 V.
 
@@ -48,46 +48,48 @@ The gap between column E and column F is the same as the gap on a breadboard, so
 
 ### No separate + and − rails
 
-A breadboard has a pair of power rails along its edges. I connect 5 V and ground to them once, and then I can take either one from any hole beside them. This board does not have separate + and − rails, so I have to make the 5 V and ground connections myself, with solder and short wires.
+A breadboard usually has a pair of power rails along its edges. I connect 5 V and ground to them once, and then I can take either one from any hole beside them. This board does not have separate + and − rails, so I have to make the 5 V and ground connections myself, with solder and short wires.
 
-Ground matters most here, because several things share it. Pin 4 sits on a strip with four other holes, and five more things need ground.
+Ground matters most here, because several things share it. Pin 4 sits on a strip with four other holes, and four more things need ground.
 
 :::pencil Count the ground connections
 List everything in the circuit that has to connect to ground, apart from pin 4 itself. Pin 4 is in column E, so its strip has four free holes, A to D. Do all of the connections fit on that one strip?
 
 :::answer
-No. Five things need ground: the negative side of the 10 µF capacitor, the negative side of the 100 nF supply capacitor, the optional 100 nF capacitor on pin 7, the hub connector's black wire, and the brake wire that reads 0 V. That is five connections and only four free holes, so a short wire has to carry ground to a second strip. The 5 V strip is easier, because pin 8 has four free holes and only three things need 5 V: the power wire and the positive sides of the two supply capacitors.
+By count they do fit, because four things need ground and the strip has four free holes. In practice they do not. The terminal block poles are fixed in column A and column J, so the 0 V brake pole and the black wire of the 2P block are on strips of their own, and the capacitors stand in the right half of the board. Short wires therefore carry ground from one strip to the next. The 5 V strip is easier, because pin 8 has four free holes and only three things need 5 V: the power wire and one side of each of the two supply capacitors.
 :::
 :::
 
 ## Terminal blocks for the bike's wires
 
-Each terminal block has pins on a 2.54 mm (0.1 inch) pitch, the same spacing as the holes on the board, and the pack has blocks with 2, 3 and 4 poles. I plan to use two of them:
+Each terminal block has pins on a 2.54 mm (0.1 inch) pitch, the same spacing as the holes on the board, and the pack is a mixture of green blocks with 2, 3 and 4 poles. I plan to use two of them:
 
 | Block | Pole | Connects to |
 |---|---|---|
 | 2P, power | 1 | +5 V, from the hub connector's red wire |
 | 2P, power | 2 | Ground, from the hub connector's black wire |
-| 4P, speed and brake | 1 | White speed wire, motor side |
-| 4P, speed and brake | 2 | White speed wire, controller side |
-| 4P, speed and brake | 3 | Brake wire that reads 5 V |
-| 4P, speed and brake | 4 | Brake wire that reads 0 V, to ground |
+| 4P, speed and brake | 1 | Red brake wire, which reads 5 V |
+| 4P, speed and brake | 2 | Yellow speed wire, motor side |
+| 4P, speed and brake | 3 | Green speed wire, controller side |
+| 4P, speed and brake | 4 | Black brake wire, which reads 0 V, to ground |
+
+As in Part 3, I mark the motor half of the white speed wire yellow and the controller half green, and I leave the two brake wires red and black.
 
 On the board, the same connections give these nets:
 
 | Net | What is on it |
 |---|---|
-| 5 V | Power pole 1, chip pin 8, and the positive side of the supply capacitors |
-| Ground | Power pole 2, speed and brake pole 4, chip pin 4, and the negative side of the capacitors |
-| Speed | Speed and brake poles 1 and 2 joined together, and the 1 kΩ resistor to chip pin 7 |
-| Brake | Speed and brake pole 3, and the 220 Ω resistor to chip pin 3 |
+| 5 V | Power pole 1, chip pin 8, and one side of each supply capacitor |
+| Ground | Power pole 2, speed and brake pole 4, chip pin 4, and the other side of each capacitor |
+| Speed | The yellow and green poles (2 and 3) joined together, and the 1 kΩ resistor to chip pin 7 |
+| Brake | The red brake pole (1), and the 220 Ω resistor to chip pin 3 |
 
 :::watch-it The poles of a block must not share a strip
 Because the five holes of each half-row are joined, a terminal block that lies along a row would join all of its poles together. Each pole has to stand in its own row. So the blocks stand along the long edges of the board, with one pole in each row: the 4P block in column A, in rows 14 to 17, and the 2P block in column J, in rows 16 and 17. The wires then enter the blocks from the sides of the board and not from the end.
 :::
 
-:::under-the-hood Why speed poles 1 and 2 are joined
-In Part 3 I simplified the design so that the two halves of the white wire join again, and the chip only listens to the speed. On the board, that join is a short wire or a solder bridge between the strips of two neighbouring poles of the 4P block. The controller and the display get the speed straight from the motor, as they did before I touched the bike, and the 1 kΩ resistor takes a copy of the signal to the chip's input.
+:::under-the-hood Why the yellow and green poles are joined
+In Part 3 I simplified the design so that the two halves of the white wire join again, and the chip only listens to the speed. On the board, that join is a short wire or a solder bridge between the strips of the yellow and green poles of the 4P block. The controller and the display get the speed straight from the motor, as they did before I touched the bike, and the 1 kΩ resistor takes a copy of the signal to the chip's input.
 :::
 
 :::no-dumb-questions
@@ -117,6 +119,89 @@ My board's holes are 1.2 mm, and the diagonal of a 0.8 × 0.5 mm pin is about 0.
 The drawing does not say which sizes of wire the clamp takes. Before I rely on it, I will check that the screws clamp the thin wires from the hub connector and the brake sensor.
 :::
 
+## The component layout
+
+Here is the circuit laid out on the board. The white board, its gold holes, and the letters and numbers match the ElectroCookie board, and the green blocks are the Aribrnten terminal blocks.
+
+![](assets/images/attiny4/board-layout.svg)
+*The component layout on the ElectroCookie mini prototype board, seen from above, with the 4P terminal block in column A and the 2P block in column J*
+
+Here is the same board seen from below, where I solder. Column A is now on the right, and the gold bars are the strips that join each half-row of five holes. The only wire on this side is the yellow bridge between D15 and C16. I put it there, and not at the poles, so that each pad has room around it.
+
+![](assets/images/attiny4/board-layout-below.svg)
+*The same layout seen from below, with each soldered joint marked and the bridge under the board*
+
+I spread the parts out on purpose, so that I can solder each joint without touching the next one. The chip sits in rows 7 to 10, the brake resistor runs down the left side, and the two supply capacitors stand at the top right with a ground rail of their own in row 5. Rows 1 to 4 are empty, and no wire goes near either M3 hole. No two wires cross, and no wire passes over another joint. Almost every pair of joints on different strips is at least 3.6 mm apart, which is one hole diagonally. The one exception is the lower lead of the 100 nF capacitor at J7 and the end of the speed wire at J8, which sit in neighbouring holes, 2.54 mm apart, so I will solder those two with care. Joints on the same strip can sit side by side, because they are the same connection. I will use the solid 22 AWG wires from my TUOFENG kit for the short links, in red for 5 V, black for ground and yellow for the speed signal. All of my capacitors are ceramic, so they have no polarity and can go in either way round. I left the optional 100 nF filter on the speed wire off the board, because the breadboard circuit in Part 3 worked without it.
+
+Every part sits in the holes in this table, and each hole belongs to a strip, so the strips make the connections that a breadboard would make:
+
+| Part | Holes |
+|---|---|
+| 8-pin socket, with the ATtiny85 plugged in | pins 1 to 4 in E7 to E10, and pins 8 to 5 in F7 to F10 |
+| 4P terminal block | A14 red (brake wire that reads 5 V), A15 yellow (to the motor), A16 green (to the controller), A17 black (brake wire that reads 0 V) |
+| 2P terminal block | J16 +5 V (red wire), J17 ground (black wire) |
+| 220 Ω resistor | A9 to C14 |
+| 1 kΩ resistor | E15 to F15 |
+| 10 µF ceramic capacitor | H7 to H5 |
+| 100 nF ceramic capacitor, for the supply | J7 to J5 |
+| Ground wires | A5 to C10, D10 to D17, C5 to F5, and G17 to G5 |
+| 5 V wire | H16 to I7 |
+| Speed wire | I15 to J8 |
+| Solder bridge under the board | D15 to C16, which joins the strips of the yellow and green poles |
+
+:::pencil Trace the brake path
+The brake wire that reads 5 V is the red wire in the terminal block at A14. Follow it through the strips, the resistor and the chip until you reach the pin that pulls the brake line LOW. Which holes does it pass through?
+
+:::answer
+A14 is in the strip for row 14, which also holds C14, one lead of the 220 Ω resistor. The resistor runs up to A9, which is in the strip for row 9. That strip also holds E9, which is pin 3 of the chip, PB4. So the path is A14, then the strip, then C14, the resistor, A9, the strip, and then E9.
+:::
+:::
+
+:::under-the-hood Why the chip is in rows 7 to 10
+The terminal block poles take rows 14 to 17 in column A. If the chip's left-hand pins were in any of those rows, they would share a strip with a pole and join the bike's wire to the chip by accident. Putting the chip in rows 7 to 10 keeps the chip's strips and the poles' strips apart. Each of the six nets also has its own strips, and the chip's unused pins, 1, 2, 5 and 6, sit on strips that nothing else uses.
+:::
+
+:::watch-it This is a plan that I have checked on paper
+I wrote the layout as a list of holes, and a short script joins the holes in each strip and each wire, and checks the result. It confirms that the six nets are each joined together, that no two of them touch, that no hole is used twice, and that nothing is under a terminal block. A search then chose the holes, so that joints on different strips stay as far apart as the strips allow. It cannot check lead lengths on a real board. The 220 Ω resistor spans 13.7 mm, the 1 kΩ resistor spans 7.62 mm, and the capacitors span 5.08 mm, so a part with shorter leads needs a different pair of holes.
+:::
+
+## Soldering order, because I am not good at soldering
+
+I am not good at soldering, so I have chosen the order and the habits that give me the most room for mistakes. The ElectroCookie pack has six boards, so I will practise on a spare one first.
+
+:::pencil My soldering order
+Which part do I solder first, and which last? Think about what sits in the way of what, then open the answer.
+
+:::answer
+1. The wires and the bridge, which are the lowest.
+2. The two resistors, which lie close to the board.
+3. The socket, then the two capacitors.
+4. The terminal blocks, which are the tallest, last of all, so that they never block the iron.
+
+Then I check every strip with a meter before I plug in the chip.
+:::
+:::
+
+For each joint, I plan to follow the same steps:
+
+1. Tin the tip of the iron, at about 330 to 350 °C.
+2. Touch the pad and the lead together for about two seconds.
+3. Feed in a little solder for about two seconds, so that it flows into the hole.
+4. Take away the solder first, and then the iron, and keep still for three seconds.
+5. Look for a small, shiny cone. A dull, lumpy joint gets reheated.
+6. Snip the lead flush once the joint has cooled.
+
+:::watch-it The one tight pair
+Every layout that I tried leaves one pair of joints on different strips in neighbouring holes, 2.54 mm apart: the lower lead of the 100 nF capacitor at J7, and the end of the speed wire at J8. I will solder J8 first, keep the tip on the pad and away from J7, and then check with the meter that the two strips are not joined.
+:::
+
+:::bullet-points Habits that help me
+- Tack one lead of each part first, check that it sits flat, and then solder the other lead.
+- For a terminal block, solder one pin, check that the block is flat and square to the board edge, and then do the rest.
+- Use 0.6 to 0.8 mm rosin-core solder, and add a little flux if a joint will not flow.
+- Test each strip for continuity, and neighbouring strips for shorts, before the board goes near the bike.
+:::
+
 ## A 3D printed case
 
 The board also needs a case, and my plan is to squeeze the finished, printed box into the bike frame. The case has to do four things:
@@ -133,6 +218,20 @@ I model it in OpenSCAD with named parameters, in the same way as the parts in my
 
 ![](assets/images/attiny4/case-closed.png)
 *The same case closed, with the lid in place*
+
+Here is what the finished product should look like, with the lid beside the base because I have not fitted it yet. This picture is drawn from the same list of holes as the layout diagram above, so the parts are where the table puts them.
+
+![](assets/images/attiny4/case-lid-off.png)
+*A preview of the finished item with the lid beside the base, not fitted yet: the board in the base, the chip in the middle, the terminal blocks at the left and right edges, and the bike's wires leaving through the notches in the long walls*
+
+:::test-drive Turn the finished item around
+Drag the model below to turn it, and scroll or pinch to zoom. Look at the case from the side, to see how the wires leave through the notches, and from above, to see that no two wires on the board cross. The lid lies beside the base, and I have not fitted it.
+:::
+
+:::demo model /assets/files/attiny4/lid-off.glb
+:::
+
+I also saved the same model as [lid-off.glb](/assets/files/attiny4/lid-off.glb) and [scene.gltf](/assets/files/attiny4/scene.gltf), which open in most 3D viewers.
 
 The design has these parts:
 
@@ -190,6 +289,8 @@ This post is the plan. I will check every connection with a meter before I conne
 - The ElectroCookie board is a quarter-size breadboard with 5-hole strips and no separate + and − rails, so power and ground are wired by hand.
 - Ground has five connections and only four free holes on pin 4's strip, so a short wire carries it to a second strip.
 - Each terminal block pole needs its own row, so the blocks stand along the long edges of the board.
+- The chip sits in rows 7 to 10, so its strips never share a row with a terminal block pole, and a script checks the layout for shorts.
+- The parts are spread out, no two wires cross, and only one pair of joints on different strips is closer than 3.6 mm.
 - A two-piece printed case has screwdriver slots, wire notches open at the top, snap tabs, and tapped M3 posts that hold the board down.
 - The 8.8 mm blocks give a case of 44.9 × 55 × 17.6 mm, and it has to fit the gap in the frame.
 :::

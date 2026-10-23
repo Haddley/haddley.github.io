@@ -6,7 +6,8 @@
       "description": "Moving the ATtiny85 speed limiter from a breadboard to a soldered ElectroCookie mini prototype board, with screw terminal blocks for the bike's wires and a two-piece 3D printed case that snaps shut inside the bike frame",
       "date": "2026-10-23",
       "categories": [
-        "IOT"
+        "IOT",
+        "3D printing"
       ],
       "tags": "attiny85, e-bike, prototype-board, terminal-blocks, openscad"
     },
@@ -3222,5 +3223,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-23T04:03:17.987Z"
+  "generatedAt": "2026-10-23T07:05:57.969Z"
 }

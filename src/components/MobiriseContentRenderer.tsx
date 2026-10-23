@@ -16,6 +16,7 @@ const MiniGPTSwitchesDemo = dynamic(() => import('./MiniGPTSwitchesDemo'), { ssr
 const MiniGPTAttentionDemo = dynamic(() => import('./MiniGPTAttentionDemo'), { ssr: false });
 const MiniGPTEmbedDemo = dynamic(() => import('./MiniGPTEmbedDemo'), { ssr: false });
 const MiniGPTIdsDemo = dynamic(() => import('./MiniGPTIdsDemo'), { ssr: false });
+const ModelViewer = dynamic(() => import('./ModelViewer'), { ssr: false });
 
 // Copy-to-clipboard button for code blocks
 function CopyCodeButton({ code }: { code: string }) {
@@ -568,6 +569,11 @@ function renderCallout(section: MobiriseParsedContent, index: number, nested: bo
     if (section.content.trim() === 'minigpt-qkv') return wrap(index, nested, <MiniGPTAttentionDemo />);
     if (section.content.trim() === 'minigpt-embed') return wrap(index, nested, <MiniGPTEmbedDemo />);
     if (section.content.trim() === 'minigpt-ids') return wrap(index, nested, <MiniGPTIdsDemo />);
+    // ":::demo model <path>" shows a 3D model (.glb or .gltf) that the reader can turn and zoom.
+    if (section.content.trim().startsWith('model ')) {
+      const src = section.content.trim().slice('model '.length).trim();
+      return wrap(index, nested, <ModelViewer src={src.startsWith('/') ? src : `/${src}`} />);
+    }
     return null;
   }
   // ":::side-by-side" ... ":::" puts a demo and its test drive next to each other on wide screens:
