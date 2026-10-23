@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
+  <title>ATtiny85 on a small solderable board with screw terminal blocks</title>
+  <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+  <rect x="14" y="30" width="92" height="60" rx="5" fill="#1c3a4a" stroke="#5bb4ea" stroke-width="1.5"/>
+  <g fill="#d9b44a">
+    <circle cx="22" cy="38" r="1.6"/><circle cx="98" cy="38" r="1.6"/>
+    <circle cx="22" cy="82" r="1.6"/><circle cx="98" cy="82" r="1.6"/>
+  </g>
+  <rect x="48" y="46" width="24" height="28" rx="3" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/>
+  <path d="M56,46 A4,4 0 0 0 64,46" fill="none" stroke="#5bb4ea" stroke-width="1.5"/>
+  <g fill="#c9d3dd">
+    <rect x="42" y="50" width="6" height="4" rx="1"/><rect x="42" y="57" width="6" height="4" rx="1"/><rect x="42" y="64" width="6" height="4" rx="1"/><rect x="42" y="70" width="6" height="3" rx="1"/>
+    <rect x="72" y="50" width="6" height="4" rx="1"/><rect x="72" y="57" width="6" height="4" rx="1"/><rect x="72" y="64" width="6" height="4" rx="1"/><rect x="72" y="70" width="6" height="3" rx="1"/>
+  </g>
+  <rect x="14" y="94" width="44" height="14" rx="2" fill="#3a7bd5"/>
+  <rect x="62" y="94" width="44" height="14" rx="2" fill="#3a7bd5"/>
+  <g fill="#0f1b2d"><circle cx="22" cy="101" r="3"/><circle cx="33" cy="101" r="3"/><circle cx="44" cy="101" r="3"/><circle cx="54" cy="101" r="3"/>
+  <circle cx="70" cy="101" r="3"/><circle cx="81" cy="101" r="3"/><circle cx="92" cy="101" r="3"/></g>
+</svg>
