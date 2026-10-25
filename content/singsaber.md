@@ -1,19 +1,19 @@
 ---
-title: "Karaoke Saber"
+title: "SingSaber"
 description: "Turning songs from my itunes music library into a WebXR rhythm game with synced karaoke lyrics, built with Claude Code"
 date: "2026-10-25"
 categories: ["JavaScript","3D","AI"]
 tags: "webxr, a-frame, beat-saber, claude-code, karaoke, music"
 hidden: false
-slug: "karaoke-saber"
-image: "/assets/images/karaoke-saber/posts-meta.svg"
+slug: "singsaber"
+image: "/assets/images/singsaber/posts-meta.svg"
 ---
 
 I wanted to play my own music in VR. Not a catalogue of community levels, but the songs I actually own: a track from a cast recording, a Sting song, a Teddy Swims song. I also wanted the words on screen, like a karaoke machine, while I slice blocks to the beat.
 
-This post tells the story of building that with Claude Code on top of an open-source WebXR game. It covers how a song becomes a challenge, what the files on disk look like, and the many things that went wrong on the way.
+I call the result SingSaber. This post tells the story of building it with Claude Code on top of an open-source WebXR game. It covers how a song becomes a challenge, what the files on disk look like, and the many things that went wrong on the way.
 
-![](assets/images/karaoke-saber/gameplay-lyrics-and-blocks.jpg)
+![](assets/images/singsaber/gameplay-lyrics-and-blocks.jpg)
 *The finished game, with a placeholder where my lyric line appears: the song clock in yellow, and blocks flying toward me*
 
 ## What I built
@@ -26,7 +26,7 @@ I turned a browser VR rhythm game ([Moon Rider](https://moonrider.xyz)) into a p
 
 Three songs from my own library have made it through so far: Sting's *Desert Rose*, the *It Works* cast recording from the Back to the Future musical, and Teddy Swims' *Lose Control*.
 
-![](assets/images/karaoke-saber/menu-song-list.jpg)
+![](assets/images/singsaber/menu-song-list.jpg)
 *I opened the song list and my own songs appear at the top, ahead of the community songs*
 
 ## The game underneath
@@ -85,7 +85,7 @@ The generator turns my taps into an exact, steady grid of beats. Two details mak
 
 For *It Works*, 56 taps gave a tick every 0.4196 seconds, which is 143 ticks per minute. For *Desert Rose* I tapped the whole song, 242 taps, and the generator built Easy and Normal from them.
 
-![](assets/images/karaoke-saber/taps-and-beatmap-in-vscode.jpg)
+![](assets/images/singsaber/taps-and-beatmap-in-vscode.jpg)
 *I opened my taps (left) next to an early version of the Easy beatmap the generator produced (right) in VS Code*
 
 The two files are linked by one conversion. My taps are in seconds, and the beatmap measures time in beats, so `_time` is the tap time multiplied by the tempo and divided by 60. At 112.2 beats per minute, my tap at 5.63 seconds became a block at `_time` 10.528, which is what the screenshot shows. I later removed my reaction delay of 0.19 seconds, so the current file starts at `_time` 10.173, which is 5.44 seconds.
@@ -106,7 +106,7 @@ The measurements explained it:
 - The sixteen-second gap I left was a steady stretch of the song that I chose to rest, not a place with missing rhythm.
 - I tapped the kick on beat 1 and the quiet beat 3. The loud snares on beats 2 and 4 fall between my blocks, so the song answers each swing.
 
-![](assets/images/karaoke-saber/bar-of-music.svg#narrow)
+![](assets/images/singsaber/bar-of-music.svg#narrow)
 *The loud snares fall between my taps*
 
 :::no-dumb-questions
@@ -140,7 +140,7 @@ I tried a tempo tracker. It reported 144, 72, 96, 73 and 123 beats per minute th
 - I can mark a stretch with no blocks at all.
 - I can tap a later steady section separately, as I did for the finish.
 
-![](assets/images/karaoke-saber/pipeline.svg)
+![](assets/images/singsaber/pipeline.svg)
 *How a song flows from my music library into the game*
 
 ## What is in a song folder
@@ -168,7 +168,7 @@ assets/
     desertrose.lrc            the timed lyrics
 ```
 
-![](assets/images/karaoke-saber/menu-song-card.jpg)
+![](assets/images/singsaber/menu-song-card.jpg)
 *I selected Desert Rose and the song card shows its length, note count, difficulty and ID, which is also its folder name*
 
 ### taps.json
@@ -228,7 +228,7 @@ The generator can add walls. A wall is a full-height barrier that runs along the
 
 The `_lineIndex` of -0.5 sits half a lane outside the left edge. The game only knew about lanes 0 to 3, so I taught it to place a wall at any position, and the generator puts one wall at -0.5 and one at 3.5. That leaves a wide gap in the middle and keeps the walls out of the way of my body. `_type` 0 is a full-height wall, `_type` 1 is a ceiling that I would duck under, and `_duration` is the wall's length in beats.
 
-![](assets/images/karaoke-saber/gameplay-walls-rest-section.jpg)
+![](assets/images/singsaber/gameplay-walls-rest-section.jpg)
 *I played the rest section of It Works and the walls frame the track while the lyrics keep going*
 
 ### accents.json
@@ -288,14 +288,14 @@ I named the first two difficulties by their numbers, and my ear disagreed. What 
 
 On a fast song like *Lose Control*, at about 161 beats per minute, Normal came out identical to Easy, so the generator now adds blocks between the ticks in that case.
 
-![](assets/images/karaoke-saber/gameplay-normal-difficulty.jpg)
+![](assets/images/singsaber/gameplay-normal-difficulty.jpg)
 *I played Normal on Lose Control, with more blocks and the song clock switched off, which is the default*
 
 ### Accent moments
 
 The lyrics stand out at the moments where the music does. For about a second around each accent, the lyric line changes to the colour theme's accent colour and swells by 30%, then eases back.
 
-![](assets/images/karaoke-saber/gameplay-accent-moment.jpg)
+![](assets/images/singsaber/gameplay-accent-moment.jpg)
 *I reached an accent moment and the lyric line turned pink and grew larger, with the clock in yellow beside it*
 
 I asked for the clock so I could check these times against the music:
@@ -308,7 +308,7 @@ add time to lyric display so that I can track "0:17, 0:32, 0:49, 1:04, 1:24, 1:4
 
 The lyric line sits low on the track, where the blocks fly over it. The song time follows the lyric in yellow, and a dark outline made of four black copies of the text keeps the line readable on any background. Both can be switched on and off in the options menu, with lyrics on and the clock off by default.
 
-![](assets/images/karaoke-saber/options-menu.jpg)
+![](assets/images/singsaber/options-menu.jpg)
 *I opened the options menu and found the lyrics and clock switches next to the colour themes*
 
 ### Seeing the lyrics
@@ -336,7 +336,7 @@ So I set the offset to 2.0 seconds, and Claude Code added two keys for tuning by
 Two bugs only showed up in the headset:
 
 ```PROMPT
-I have noticed that the first lyric line is often shown ans then quickly hidden at the start of the song. Can you fix that too
+I have noticed that the first lyric line is often shown and then quickly hidden at the start of the song. Can you fix that too
 ```
 
 Claude Code reproduced it. At the start of a song the game flags the audio as playing about a second before the audio really starts. During that second the song clock holds a stale time, and the lyrics trusted it and showed a line from the wrong part of the song. The lyrics now wait until the song has really started.

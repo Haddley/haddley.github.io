@@ -1,8 +1,8 @@
 {
   "posts": [
     {
-      "slug": "karaoke-saber",
-      "title": "Karaoke Saber",
+      "slug": "singsaber",
+      "title": "SingSaber",
       "description": "Turning songs from my itunes music library into a WebXR rhythm game with synced karaoke lyrics, built with Claude Code",
       "date": "2026-10-25",
       "categories": [
@@ -3235,5 +3235,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-25T04:26:45.970Z"
+  "generatedAt": "2026-10-25T04:43:49.204Z"
 }
