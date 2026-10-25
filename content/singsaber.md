@@ -9,39 +9,32 @@ slug: "singsaber"
 image: "/assets/images/singsaber/posts-meta.svg"
 ---
 
-I wanted to play my own music in VR. Not a catalogue of community levels, but the songs I actually own: a track from a cast recording, a Sting song, a Teddy Swims song. I also wanted the words on screen, like a karaoke machine, while I slice blocks to the beat.
+I want to sing along to the songs I've bought over the years, in Virtual Reality (VR), with the lyrics on screen and beats (blocks) to smash.
 
-I call the result SingSaber. This post tells the story of mashing it up with Claude Code on top of an open-source WebXR game. It covers how a song becomes a challenge, what the files on disk look like, and the many things that went wrong on the way.
+## What I built
+
+I call the answer to my dreams SingSaber. I used Claude Code to bolt karaoke lyrics onto an existing open-source WebXR game. This post covers how a song becomes a challenge.
 
 ![](assets/images/singsaber/gameplay-lyrics-and-blocks.jpg)
 *The finished game, with a placeholder where my lyric line appears: the song clock in yellow, and blocks flying toward me*
 
-## What I built
+- **A level generator.** Claude Code wrote scripts that turn any DRM-free track, from the iTunes Store or elsewhere, into a playable challenge (song) with one or more levels.
+- **Synced karaoke lyrics.** Claude Code wrote a script that fetches timed lyrics, and the game shows them on screen so that I can sing along as I smash those beats.
 
-I turned a browser VR rhythm game ([Moon Rider](https://moonrider.xyz)) into a personal jukebox. I pick a song from my iTunes music library, and within minutes I am slicing blocks to its beat while the lyrics sit on the track like a karaoke screen. My version adds three things to the original game:
-
-- **A local song library**, so the game plays songs from my laptop instead of a community catalogue.
-- **A level generator** that turns a DRM-free track into a playable level with Easy and Normal difficulties.
-- **Synced karaoke lyrics** that share the play space with the blocks, with an optional song clock.
-
-Three songs from my own library have made it through so far: Sting's *Desert Rose*, the *It Works* cast recording from the Back to the Future musical, and Teddy Swims' *Lose Control*.
+Three songs from my iTunes library have made it through so far: Sting's *Desert Rose*, the *It Works* cast recording from the *Back to the Future* musical, and Teddy Swims' *Lose Control*. *Lose Control* has 267 beats in the Easy level and 534 in the Normal level. The song lasts 3 minutes 31 seconds.
 
 ![](assets/images/singsaber/menu-song-list.jpg)
-*I opened the song list and my own songs appear at the top, ahead of the community songs*
+*I opened the challenge list and my challenges appear at the top, ahead of the community contributed challenges*
 
 ## The game underneath
 
-The game is [Moon Rider](https://github.com/supermedium/moonrider) by Supermedium, an open-source, Beat Saber-style game built with A-Frame and WebXR. It runs in a headset's web browser with nothing to install, and its code is published under the MIT licence. I first wrote about it in my [WebVR](/posts/webvr/) post, where I ran it in the Oculus Quest 2 browser. By default it downloads community levels from a public catalogue.
+The original game is [Moon Rider](https://github.com/supermedium/moonrider) by Supermedium, an open-source, Beat Saber-style game built with A-Frame and WebXR. It runs in a VR headset's web browser with nothing to install, and its code is published under the MIT licence. I first wrote about it in my March 2021 [WebVR](/posts/webvr/) post, where I ran it in the Oculus Quest 2 browser. By default Moon Rider downloads community challenges from a public catalogue.
 
-I made a private copy of the project, started a development server on my laptop, and opened the webpage page in the headset's browser over my home network. Everything in this post is changes to that private copy.
+In the headset my hands appear as a pair of oversize fists, red for my left hand and blue for my right, and the beats arrive as cubes that I hit with my firsts.
 
 ## Why any song is the hard part
 
-:::brain-power Before you read on
-A Beat Saber level is a list of blocks, each with a time, a lane and a swing direction, and people place every one by hand. If I want a level for a song nobody has mapped, what has to take the human's place?
-:::
-
-The songs I wanted were not in the community catalogue, so I had to generate the levels. It took several attempts to learn what a good level actually is:
+A Beat Saber level is a list of beats (blocks), each with a time, a lane and a swing direction. I understand that level designers place every beat into the level by hand. For my iTunes songs I needed to create the challenge folder and the level .dat files. I asked Claude Code for help:
 
 | Attempt | What happened |
 | --- | --- |
@@ -49,7 +42,7 @@ The songs I wanted were not in the community catalogue, so I had to generate the
 | Track the beat and snap every block to it | A little better. The blocks sat on the beat, but there was no sense of structure. |
 | Split bass and melody between the hands, pick lanes from pitch, thin out the quiet parts | More varied and more playable, but still not right. |
 | Hunt for the song's ticking clock in the audio | Failed. The tick sits under drums and vocals, and every spacing I found was a multiple of the beat. |
-| **Tap along with the spacebar** | It worked. |
+| **Manually tap along with the spacebar** | It worked. |
 
 This is how I described the problem to Claude Code after the third attempt:
 
@@ -63,27 +56,20 @@ It Works "beats" are still terrible (a little better? but still terrible gamepla
 There is literally a tick-tock metronome track on this song. You are missing it. Please try again.
 ```
 
-Claude Code searched for periodic clicks in several frequency bands and in sliding windows across the song. Nothing stable came back, so it asked me for the one thing it could not measure for itself:
-
-```PROMPT
-from the start "tick tock tick tock tick tock tick tock..."
-```
+Claude Code looked for periodic clicks in several frequency bands and sliding windows. Nothing stable came back.
 
 ## What finally worked: tapping the pulse
 
-Claude Code wrote a small tool that plays the song and records every key press. I press the spacebar on each tick, for about twenty-five seconds:
+At my suggestion Claude Code wrote a small tool that plays the song and records every key press. I listened to each song and pressed the spacebar on each "tick", for about twenty-five seconds:
 
 ```bash
 node scripts/tap-ticks.js --id itworks --seconds 25
 node scripts/make-song.js --id itworks
 ```
 
-The generator turns my taps into an exact, steady grid of beats. Two details make that work:
+The generator turns my taps into an exact, steady grid of beats. The two hands alternate.
 
-- **My taps are late.** I press the key about 0.19 seconds after the sound, which is ordinary reaction time. The generator measures that delay by lining the grid up with the audio, then removes it.
-- **Everything else sits on the grid.** The blocks land exactly on the beats I tapped, the two hands alternate, and the loudness of the song decides where the blocks rest.
-
-For *It Works*, 56 taps gave a tick every 0.4196 seconds, which is 143 ticks per minute. For *Desert Rose* I tapped the whole song, 242 taps, and the generator built Easy and Normal from them.
+For *It Works*, 56 taps gave a tick every 0.4196 seconds, which is 143 ticks per minute. For *Desert Rose* I tapped the whole song, 242 taps, and the generator built the Easy and Normal levels from them.
 
 ![](assets/images/singsaber/taps-and-beatmap-in-vscode.jpg)
 *I opened my taps (left) next to an early version of the Easy beatmap the generator produced (right) in VS Code*
@@ -92,60 +78,23 @@ The two files are linked by one conversion. My taps are in seconds, and the beat
 
 ### Why a tapped map feels right
 
-I had expected the analysis to beat my ear. Instead my taps felt right and my own generated maps did not, so I asked Claude Code to measure why:
-
-```PROMPT
-I am really pretty happy with the beats generated for Easy. Please review the song and taps again to try to understand why I am happy and you are not.
-```
-
-The measurements explained it:
-
-- The strongest repeating pulse in *Desert Rose* is every two beats, exactly where I tapped. The single-beat pulse that the beat tracker had chosen is weaker.
-- Once the delay was removed, my taps sat 15 milliseconds from the audio's beats.
-- Each hand stays on the same beat of the bar for the whole song: blue on beat 1 and red on beat 3.
-- The sixteen-second gap I left was a steady stretch of the song that I chose to rest, not a place with missing rhythm.
-- I tapped the kick on beat 1 and the quiet beat 3. The loud snares on beats 2 and 4 fall between my blocks, so the song answers each swing.
-
-![](assets/images/singsaber/bar-of-music.svg#narrow)
-*The loud snares fall between my taps*
-
-:::no-dumb-questions
-**Q: Why not just tap on the snare?**
-A: I could, and the map would be fine. I tapped the kick and the quiet beat because that gave blocks a steady, comfortable spacing, and I liked playing it. The measurements describe what I tapped. They do not say it is the only right choice.
-:::
+I had expected Claude Code's analysis of the song to beat my ear. Instead my taps felt right and the Claude Code generated maps did not. 
 
 ### Turning what I learned into a draft generator
 
-Claude Code wrote the measurements into rules, so a song without any taps still gets a first draft:
-
-1. Pick the pulse where the music repeats strongly, preferring a spacing near one second.
-2. Find the downbeat from the kick drum.
-3. Lock each hand to the same place in the bar.
-
-I asked it to make the tapped approach the normal way to create beats:
+I asked Claude Code to make the tapped approach the normal way to create beats:
 
 ```PROMPT
 What have we learned? Write it up. The button-pressing approach just seems to work really well. Set this as a normal way of creating beats for new songs?
 ```
 
-Run on *Desert Rose* without my taps, the draft put a note within 100 milliseconds of 237 of my 238 Easy notes, and gave every one of them the same hand that I had.
-
 ### When the tempo changes
 
-A steady grid fails when the song does not stay steady. *It Works* slows right down in the middle and speeds up for a big finish. The generator can find where the grid stops matching the music, which was 113 seconds in. It also writes a click track, a copy of the song with a click on every block, so I could hear the problem for myself.
-
-I tried a tempo tracker. It reported 144, 72, 96, 73 and 123 beats per minute through the song, because the music keeps its pulse but flips between half-time and a dotted feel. So I took a simpler route:
-
-- The generator detects where the grid stops matching, and after that places blocks on the real onsets.
-- I can mark a stretch with no blocks at all.
-- I can tap a later steady section separately, as I did for the finish.
-
-![](assets/images/singsaber/pipeline.svg)
-*How a song flows from my music library into the game*
+The steady grid breaks down when the song doesn't hold its tempo. *It Works* slows right down in the middle and speeds up for a big finish. The generator could see where the grid stops matching the music, which was 113 seconds in but it could not fix the problem by itself so I just recorded taps manually for the whole song.
 
 ## What is in a song folder
 
-Every song is a folder under `assets/songs`, and its lyrics are a single file under `assets/lyrics`. I wanted the format to be readable, because I edit these files by hand when something sounds wrong.
+Every song is a folder under `assets/songs`, and its lyrics are in a single file under `assets/lyrics`. Every challenge has an id and the name of the corresponding lyric file is <id>.lrc.
 
 ```
 assets/
@@ -169,7 +118,7 @@ assets/
 ```
 
 ![](assets/images/singsaber/menu-song-card.jpg)
-*I selected Desert Rose and the song card shows its length, note count, difficulty and ID, which is also its folder name*
+*I selected Desert Rose and the song card shows its length, note count, difficulty and id, which is also its folder name*
 
 ### taps.json
 
@@ -229,17 +178,17 @@ The generator can add walls. A wall is a full-height barrier that runs along the
 The `_lineIndex` of -0.5 sits half a lane outside the left edge. The game only knew about lanes 0 to 3, so I taught it to place a wall at any position, and the generator puts one wall at -0.5 and one at 3.5. That leaves a wide gap in the middle and keeps the walls out of the way of my body. `_type` 0 is a full-height wall, `_type` 1 is a ceiling that I would duck under, and `_duration` is the wall's length in beats.
 
 ![](assets/images/singsaber/gameplay-walls-rest-section.jpg)
-*I played the rest section of It Works and the walls frame the track while the lyrics keep going*
+*I played the rest section of It Works with the walls up, singing over the empty stretch*
 
 ### accents.json
 
-The generator also finds the strongest hits and the biggest kick drums, about one every twenty seconds, and saves their times in seconds. This is the real list for *Desert Rose*:
+The generator also finds the strongest "hits" and the biggest "kick drums" in each song, about one every twenty seconds, and saves their times in seconds. This is the real list for *Desert Rose*:
 
 ```json
 [17.26, 32.24, 49.36, 64.36, 79.34, 101.86, 120.06, 143.64, 171.49, 187.57, 221.9, 242.23, 265.81]
 ```
 
-The lyrics use this list to change colour and size at those moments.
+The lyrics use this list to change colour and size at those dramatic moments.
 
 ### The lyrics file
 
@@ -257,13 +206,13 @@ Lyrics use the plain-text LRC format. Each line starts with the time it appears,
 - A line with no words hides the lyrics until the next line.
 - `[offset:ms]` shifts every line. A positive number shows the lyrics earlier and a negative number shows them later.
 
-I download synced lyrics for a song from LRCLIB, an open database of timed lyrics, with `node scripts/fetch-lyrics.js desertrose`, and save the file on my laptop.
+I download synced lyrics for each song from LRCLIB, an open database of timed lyrics, with `node scripts/fetch-lyrics.js <id>`.
 
 ## Making it feel like a game
 
-### The hands have to move
+### The beats have to move
 
-The first *Desert Rose* map was a surprise. The timing was right, but my hands never moved. Every block sat in the same two cells, with only straight up and down swings. I noticed when I compared it with *It Works*:
+The first *Desert Rose* map surprised me. The timing was right, but the path of the blocks never varied. Every block that came for my left hand arrived at the same height, in the same cell. Every block that came for my right hand arrived at the same height too, in the mirror cell the same distance to the right of the centre. I compared it with *It Works*:
 
 ```PROMPT
 The It Works beats move around a lot more than the Desert Rose ones do. Update the generating logic and regenerate the Desert Rose beats so that I actually have to move my hands (as I do in the It Works song)
@@ -279,26 +228,14 @@ Claude Code made two changes. Pitch now chooses the lane and row of every block,
 | Diagonal swings | 0% | 42% | 34% |
 | Lanes used | 2 | 4 | 4 |
 
-### Difficulty by ear
-
-I named the first two difficulties by their numbers, and my ear disagreed. What the generator called Normal felt like Easy to me. I recalibrated them by playing, not by counting:
-
-- **Easy** is a block on every second tick, about 1.1 blocks per second.
-- **Normal** is a block on every tick, about 1.7 to 2.5 blocks per second, depending on the song.
-
-On a fast song like *Lose Control*, at about 161 beats per minute, Normal came out identical to Easy, so the generator now adds blocks between the ticks in that case.
-
-![](assets/images/singsaber/gameplay-normal-difficulty.jpg)
-*I played Normal on Lose Control, with more blocks and the song clock switched off, which is the default*
-
 ### Accent moments
 
-The lyrics stand out at the moments where the music does. For about a second around each accent, the lyric line changes to the colour theme's accent colour and swells by 30%, then eases back.
+The lyrics stand out at the moments where the music does (see above). For about a second around each accent, the lyric line changes to the colour theme's accent colour and swells in size by 30%, then eases back.
 
 ![](assets/images/singsaber/gameplay-accent-moment.jpg)
 *I reached an accent moment and the lyric line turned pink and grew larger, with the clock in yellow beside it*
 
-I asked for the clock so I could check these times against the music:
+I asked for the clock so I could track down and fix issues more quickly:
 
 ```PROMPT
 Add time to the lyric display so that I can track "0:17, 0:32, 0:49, 1:04, 1:24, 1:42, 2:00 and 2:24: strong hits or big kicks"
@@ -306,20 +243,10 @@ Add time to the lyric display so that I can track "0:17, 0:32, 0:49, 1:04, 1:24,
 
 ## Karaoke lyrics in a headset
 
-The lyric line sits low on the track, where the blocks fly over it. The song time follows the lyric in yellow, and a dark outline made of four black copies of the text keeps the line readable on any background. Both can be switched on and off in the options menu, with lyrics on and the clock off by default.
+The lyric line sits low on the track, where the blocks usually fly over it. The song time follows the lyric in yellow, and a dark outline made of four black copies of the text keeps the line readable on any background. Both can be switched on and off in the options menu, with lyrics on and the clock off by default.
 
 ![](assets/images/singsaber/options-menu.jpg)
 *I opened the options menu and found the lyrics and clock switches next to the colour themes*
-
-### Seeing the lyrics
-
-The first version drew the lyrics over everything, which hid the blocks. The next version put them behind the tunnel frames, which hid the lyrics. The cause was a rule in three.js that I had not known:
-
-:::watch-it Objects are sorted by their parent group first
-three.js draws objects in order of their parent group's render order and only then by their own. Every A-Frame entity is a group, so raising a mesh's own render order did nothing while its group stayed at zero. The fix was to set the order on the entity as well as the mesh.
-:::
-
-The final order, from back to front, is the road and tunnel frames, then the walls, then the lyrics and clock, then the blocks. The lyrics sit above the scenery and below every block, so I can always see what I am about to hit.
 
 ### Getting the timing right
 
@@ -331,77 +258,24 @@ Now it feels like the lyrics are coming up too soon
 
 So I set the offset to 2.0 seconds, and Claude Code added two keys for tuning by ear while the song plays. The bracket keys move the lyrics later and earlier by a quarter of a second, and the clock shows the offset in force.
 
-### Small bugs that were hard to see
-
-Two bugs only showed up in the headset:
-
-```PROMPT
-I have noticed that the first lyric line is often shown and then quickly hidden at the start of the song. Can you fix that too?
-```
-
-Claude Code reproduced it. At the start of a song the game flags the audio as playing about a second before the audio really starts. During that second the song clock holds a stale time, and the lyrics trusted it and showed a line from the wrong part of the song. The lyrics now wait until the song has really started.
-
-```PROMPT
-I think when the lyrics appear after being gone for a while they show the old lyric until there is a quick refresh. Can you find out why?
-```
-
-The text was always right. What carried over was the look of the previous line: while the lyrics were hidden, their accent colour and size stayed frozen, so a line came back big and pink and then shrank. The look now resets whenever the line is hidden.
-
-And one request about the walls, which went through the draw-order change above:
-
-```PROMPT
-Excellent, but I can't read the lyrics when there are walls... How can we fix the issue of walls blocking lyrics? Also, walls could be a bit further apart?
-```
-
 ## Running it on my own Wi-Fi
 
-The game is a web page, so any computer can serve it. I start the development server on my laptop and open the page in the headset's browser:
+I start the development server on my laptop and open the page in the headset's browser:
 
 ```bash
 export NODE_OPTIONS=--openssl-legacy-provider
 npm run start
 ```
 
-Then I open `https://` followed by my laptop's address on the network and `:3000` in the headset. The server uses a self-signed certificate, which WebXR requires, so I accept the browser's warning once.
-
-Two changes let the game run with no internet at all:
-
-- **The A-Frame library is now a local file.** The original loaded it from a content delivery network.
-- **My songs load from the laptop.** The menu lists the local songs first, and falls back to them whenever a search fails.
-
-## Lessons and gotchas
-
-:::bullet-points Lessons from this project
-- A person picks the felt pulse of a song in seconds, and my analysis could not. I now ask for taps first.
-- Measure before guessing. Most of my wrong theories died the moment I checked them against the audio.
-- A silent failure is the worst kind. The game's audio decoder says nothing if it cannot read a file, so I added a watchdog that reports the reason after twenty seconds.
-- macOS can stop Terminal reading your Music folder. The error was `AudioFileOpen failed (-54)`, and the fix was to copy the audio into the project folder.
-- Hot reloading in the middle of a play session can leave a half-updated game, so I reload the page after every change.
-- Clean up your test songs. A throwaway song I forgot to delete turned up in my menu.
-:::
+Then I open `https://<laptop-ip>:3000` in the headset. The server uses a self-signed certificate, which WebXR requires, so I accept the browser's warning once.
 
 ## Private use only
 
-:::no-dumb-questions
-**Q: Can I use songs from a streaming service?**
-A: Not the protected downloads. I only use files I bought without copy protection, and I do not remove protection from anything. If the file will not play outside its own app, I cannot use it.
+The audio and the lyrics are not mine to share.
 
-**Q: Are you sharing the songs, the levels or the lyrics?**
-A: No. The audio, the lyrics, the covers, my taps and the generated levels stay on my laptop and in a private repository. The published project contains only code.
+## Credit
 
-**Q: Where do the lyrics come from?**
-A: LRCLIB, an open database of timed lyrics. It is not licensed by the people who own the lyrics, so I keep what I download for my own use and never publish it.
-:::
-
-The game itself builds on [Moon Rider](https://github.com/supermedium/moonrider) by Supermedium, which is open source under the MIT licence, and on the level format that the Beat Saber community uses. If you build something similar, use your own files, keep them private, and credit the project underneath.
-
-## What is next
-
-- **Groups of blocks.** At each accent moment, a block becomes a pair, one for each hand, so the biggest hits of the song feel bigger.
-- **A light show.** Colour changes on the beat, and a flash at each accent.
-- **Harder levels.** Notes between the ticks that follow the singing, and pairs on the accents.
-- **One pass of tapping for a whole song.** A tempo curve fitted to a single run, so songs that drift need no separate sections.
-- **Repeated sections.** When a chorus comes back, the level repeats the same pattern.
+SingSaber is a modestly extended version of [Moon Rider](https://github.com/supermedium/moonrider) by Supermedium.
 
 ## References
 
