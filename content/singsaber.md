@@ -54,19 +54,19 @@ The songs I wanted were not in the community catalogue, so I had to generate the
 This is how I described the problem to Claude Code after the third attempt:
 
 ```PROMPT
-itworks "beats" are still terrible (a little better? but still terrible gameplay)
+It Works "beats" are still terrible (a little better? but still terrible gameplay)
 ```
 
 *It Works* opens with a ticking clock that drives the whole song. I could hear it clearly, and the analysis could not find it:
 
 ```PROMPT
-there is literally a tick tock metronome track on this song. You are missing it. please try again
+There is literally a tick-tock metronome track on this song. You are missing it. Please try again.
 ```
 
 Claude Code searched for periodic clicks in several frequency bands and in sliding windows across the song. Nothing stable came back, so it asked me for the one thing it could not measure for itself:
 
 ```PROMPT
-throughout from the start "tick tock tick tock tick tock tick tock..."
+from the start "tick tock tick tock tick tock tick tock..."
 ```
 
 ## What finally worked: tapping the pulse
@@ -95,7 +95,7 @@ The two files are linked by one conversion. My taps are in seconds, and the beat
 I had expected the analysis to beat my ear. Instead my taps felt right and my own generated maps did not, so I asked Claude Code to measure why:
 
 ```PROMPT
-I am really pretty happy with the Beats generated for EASY. Please review the song and taps again to try to understand why I am happy and you are not
+I am really pretty happy with the beats generated for Easy. Please review the song and taps again to try to understand why I am happy and you are not.
 ```
 
 The measurements explained it:
@@ -125,7 +125,7 @@ Claude Code wrote the measurements into rules, so a song without any taps still 
 I asked it to make the tapped approach the normal way to create beats:
 
 ```PROMPT
-what have we learned? Write it up. The button pressing approach just seems to work really well. Set this as a normal way of creating beats for new songs?
+What have we learned? Write it up. The button-pressing approach just seems to work really well. Set this as a normal way of creating beats for new songs?
 ```
 
 Run on *Desert Rose* without my taps, the draft put a note within 100 milliseconds of 237 of my 238 Easy notes, and gave every one of them the same hand that I had.
@@ -266,7 +266,7 @@ I download synced lyrics for a song from LRCLIB, an open database of timed lyric
 The first *Desert Rose* map was a surprise. The timing was right, but my hands never moved. Every block sat in the same two cells, with only straight up and down swings. I noticed when I compared it with *It Works*:
 
 ```PROMPT
-the it works beats move around a lot more than the desertrose ones do. update the generating logic and regenerate desertrose beats so that I actually have to move my hands (as I do in the itworks solg)
+The It Works beats move around a lot more than the Desert Rose ones do. Update the generating logic and regenerate the Desert Rose beats so that I actually have to move my hands (as I do in the It Works song)
 ```
 
 Claude Code made two changes. Pitch now chooses the lane and row of every block, and a hand is never allowed to stay in the same cell for two blocks in a row. It measured the result against the old map:
@@ -301,7 +301,7 @@ The lyrics stand out at the moments where the music does. For about a second aro
 I asked for the clock so I could check these times against the music:
 
 ```PROMPT
-add time to lyric display so that I can track "0:17, 0:32, 0:49, 1:04, 1:24, 1:42, 2:00 and 2:24: strong hits or big kicks"
+Add time to the lyric display so that I can track "0:17, 0:32, 0:49, 1:04, 1:24, 1:42, 2:00 and 2:24: strong hits or big kicks"
 ```
 
 ## Karaoke lyrics in a headset
@@ -326,7 +326,7 @@ The final order, from back to front, is the road and tunnel frames, then the wal
 Synced lyrics from an open database can be off by seconds from the recording I own. For *Desert Rose* I slid the lyric times against the music until the lines lined up with the vocal entries, which suggested the lyrics were about 2.85 seconds late. Then I told Claude Code the fix was too much:
 
 ```PROMPT
-now it feels like the lyrics are coming up too soon
+Now it feels like the lyrics are coming up too soon
 ```
 
 So I set the offset to 2.0 seconds, and Claude Code added two keys for tuning by ear while the song plays. The bracket keys move the lyrics later and earlier by a quarter of a second, and the clock shows the offset in force.
@@ -336,7 +336,7 @@ So I set the offset to 2.0 seconds, and Claude Code added two keys for tuning by
 Two bugs only showed up in the headset:
 
 ```PROMPT
-I have noticed that the first lyric line is often shown and then quickly hidden at the start of the song. Can you fix that too
+I have noticed that the first lyric line is often shown and then quickly hidden at the start of the song. Can you fix that too?
 ```
 
 Claude Code reproduced it. At the start of a song the game flags the audio as playing about a second before the audio really starts. During that second the song clock holds a stale time, and the lyrics trusted it and showed a line from the wrong part of the song. The lyrics now wait until the song has really started.
@@ -350,7 +350,7 @@ The text was always right. What carried over was the look of the previous line: 
 And one request about the walls, which went through the draw-order change above:
 
 ```PROMPT
-excellent but I can't read lyrics when there are walls... how can we fix the walls block lyrics issue? also walls could be a bit further apart?
+Excellent, but I can't read the lyrics when there are walls... How can we fix the issue of walls blocking lyrics? Also, walls could be a bit further apart?
 ```
 
 ## Running it on my own Wi-Fi
