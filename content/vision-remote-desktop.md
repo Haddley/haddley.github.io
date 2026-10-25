@@ -5,7 +5,7 @@ date: "2026-08-02"
 categories: ["3D", "JavaScript"]
 tags: "webxr, webrtc, quest, vision-pro, diplopia"
 slug: "vision-remote-desktop"
-image: "/assets/images/vision-remote-desktop/in-headset-passthrough-hud.jpg"
+image: "/assets/images/vision-remote-desktop/posts-meta.svg"
 ---
 
 Yesterday I published [Between the shoulders](/posts/bielschowsky/), an interactive page explaining what my right fourth nerve palsy does to the two images my eyes send me, and why the correction has three components of which glass can only deliver two. This post is about the thing I built to *use* the third one all day: a remote desktop viewer that puts my Mac's screen on a large virtual display and pre-rotates it before I ever see it.

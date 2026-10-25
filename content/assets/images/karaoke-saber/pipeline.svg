@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 330" width="900" height="330" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#4a5568"/>
+    </marker>
+  </defs>
+  <rect width="900" height="330" fill="#ffffff"/>
+
+  <text x="20" y="28" font-size="15" font-weight="bold" fill="#1d2433">Making a level</text>
+
+  <!-- Row 1: the level pipeline -->
+  <g stroke-width="2">
+    <rect x="20" y="45" width="150" height="76" rx="10" fill="#e9f7f5" stroke="#2a9d8f"/>
+    <rect x="200" y="45" width="150" height="76" rx="10" fill="#fff4d6" stroke="#e0a100"/>
+    <rect x="380" y="45" width="150" height="76" rx="10" fill="#e9f7f5" stroke="#2a9d8f"/>
+    <rect x="560" y="45" width="150" height="76" rx="10" fill="#e9f7f5" stroke="#2a9d8f"/>
+    <rect x="740" y="45" width="140" height="76" rx="10" fill="#fde8f1" stroke="#d6336c"/>
+  </g>
+  <g font-size="14" fill="#1d2433" text-anchor="middle">
+    <text x="95" y="76" font-weight="bold">My song file</text>
+    <text x="95" y="96">DRM-free m4a</text>
+    <text x="275" y="76" font-weight="bold">I tap along</text>
+    <text x="275" y="96">spacebar on the beat</text>
+    <text x="455" y="76" font-weight="bold">Generator</text>
+    <text x="455" y="96">make-song.js</text>
+    <text x="635" y="76" font-weight="bold">Song folder</text>
+    <text x="635" y="96">zip, beatmap, taps</text>
+    <text x="810" y="76" font-weight="bold">The game</text>
+    <text x="810" y="96">in the headset</text>
+  </g>
+  <g stroke="#4a5568" stroke-width="2.5" marker-end="url(#arrow)">
+    <line x1="172" y1="83" x2="196" y2="83"/>
+    <line x1="352" y1="83" x2="376" y2="83"/>
+    <line x1="532" y1="83" x2="556" y2="83"/>
+    <line x1="712" y1="83" x2="736" y2="83"/>
+  </g>
+
+  <text x="20" y="168" font-size="15" font-weight="bold" fill="#1d2433">Adding the lyrics</text>
+
+  <!-- Row 2: the lyrics pipeline -->
+  <g stroke-width="2">
+    <rect x="200" y="185" width="150" height="76" rx="10" fill="#fff4d6" stroke="#e0a100"/>
+    <rect x="380" y="185" width="150" height="76" rx="10" fill="#e9f7f5" stroke="#2a9d8f"/>
+  </g>
+  <g font-size="14" fill="#1d2433" text-anchor="middle">
+    <text x="275" y="216" font-weight="bold">LRCLIB</text>
+    <text x="275" y="236">synced lyrics</text>
+    <text x="455" y="216" font-weight="bold">Lyrics file</text>
+    <text x="455" y="236">song-id.lrc</text>
+  </g>
+  <g stroke="#4a5568" stroke-width="2.5" fill="none" marker-end="url(#arrow)">
+    <line x1="352" y1="223" x2="376" y2="223"/>
+    <polyline points="532,223 810,223 810,125"/>
+  </g>
+
+  <!-- Notes -->
+  <g font-size="12.5" fill="#4a5568" text-anchor="middle">
+    <text x="275" y="148">taps.json holds every press</text>
+    <text x="635" y="148">plus settings, accents, cover</text>
+    <text x="455" y="290">fetch-lyrics.js saves it on my laptop</text>
+    <text x="548" y="213" text-anchor="start">lyrics and blocks share the track</text>
+  </g>
+</svg>

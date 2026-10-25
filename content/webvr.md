@@ -30,6 +30,8 @@ The Moon Rider code is available for download from GitHub
 ![](assets/images/webvr/image0-4-1334x750.png)
 *Moon Rider in Oculus Quest 2 Browser*
 
+Moon Rider later became the starting point for a project of my own. In [Karaoke Saber](/posts/karaoke-saber/), I changed a copy of its code so that the songs from my own music library become playable levels, with synced karaoke lyrics on screen.
+
 
 ## A static WebVR scene
 

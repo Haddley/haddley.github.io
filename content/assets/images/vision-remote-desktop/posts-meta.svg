@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
+  <title>A remote desktop screen tilted to follow the head, hanging above a real keyboard</title>
+  <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+  <g transform="rotate(-9 60 48)">
+    <rect x="24" y="24" width="72" height="46" rx="4" fill="#1c3a4a" stroke="#5bb4ea" stroke-width="2"/>
+    <rect x="24" y="24" width="72" height="8" rx="4" fill="#2a5a73"/>
+    <circle cx="31" cy="28" r="1.4" fill="#ff6b6b"/><circle cx="36" cy="28" r="1.4" fill="#ffd45a"/><circle cx="41" cy="28" r="1.4" fill="#5bd48a"/>
+    <rect x="31" y="38" width="28" height="3" rx="1.5" fill="#7cc6f0"/>
+    <rect x="31" y="45" width="42" height="3" rx="1.5" fill="#c9d3dd" opacity=".6"/>
+    <rect x="31" y="52" width="34" height="3" rx="1.5" fill="#c9d3dd" opacity=".6"/>
+    <rect x="31" y="59" width="22" height="3" rx="1.5" fill="#c9d3dd" opacity=".6"/>
+  </g>
+  <path d="M100,30 A46,46 0 0 1 106,60" fill="none" stroke="#ffb43a" stroke-width="3" stroke-linecap="round"/>
+  <path d="M101,53 L106,61 L112,54" fill="none" stroke="#ffb43a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M20,60 A46,46 0 0 1 14,30" fill="none" stroke="#ffb43a" stroke-width="3" stroke-linecap="round"/>
+  <path d="M8,37 L14,29 L19,37" fill="none" stroke="#ffb43a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="22" y="88" width="76" height="20" rx="5" fill="#243447" stroke="#5bb4ea" stroke-width="1.2"/>
+  <g fill="#7f93a8">
+    <rect x="28" y="92" width="8" height="5" rx="1"/><rect x="39" y="92" width="8" height="5" rx="1"/><rect x="50" y="92" width="8" height="5" rx="1"/><rect x="61" y="92" width="8" height="5" rx="1"/><rect x="72" y="92" width="8" height="5" rx="1"/><rect x="83" y="92" width="8" height="5" rx="1"/>
+    <rect x="36" y="100" width="48" height="4" rx="1.5"/>
+  </g>
+</svg>

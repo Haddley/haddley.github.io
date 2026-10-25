@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "slug": "karaoke-saber",
+      "title": "Karaoke Saber",
+      "description": "Turning songs from my itunes music library into a WebXR rhythm game with synced karaoke lyrics, built with Claude Code",
+      "date": "2026-10-25",
+      "categories": [
+        "JavaScript",
+        "3D",
+        "AI"
+      ],
+      "tags": "webxr, a-frame, beat-saber, claude-code, karaoke, music"
+    },
+    {
       "slug": "attiny4",
       "title": "ATtiny85 (Part 4)",
       "description": "Moving the ATtiny85 speed limiter from a breadboard to a soldered ElectroCookie mini prototype board, with screw terminal blocks for the bike's wires and a two-piece 3D printed case that snaps shut inside the bike frame",
@@ -3223,5 +3235,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-23T09:40:25.090Z"
+  "generatedAt": "2026-10-25T04:26:45.970Z"
 }

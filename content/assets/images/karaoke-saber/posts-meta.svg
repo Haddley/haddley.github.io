@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
+  <title>Karaoke Saber: sabers slicing blocks to the beat, with karaoke lyrics underneath</title>
+  <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+  <g stroke-linecap="round">
+    <line x1="22" y1="72" x2="52" y2="22" stroke="#2f6bff" stroke-width="7" opacity=".35"/>
+    <line x1="22" y1="72" x2="52" y2="22" stroke="#7fb0ff" stroke-width="3.5"/>
+    <line x1="98" y1="72" x2="68" y2="22" stroke="#ff3b4e" stroke-width="7" opacity=".35"/>
+    <line x1="98" y1="72" x2="68" y2="22" stroke="#ff8a96" stroke-width="3.5"/>
+    <line x1="16" y1="79" x2="24" y2="68" stroke="#c9d3dd" stroke-width="5"/>
+    <line x1="104" y1="79" x2="96" y2="68" stroke="#c9d3dd" stroke-width="5"/>
+  </g>
+  <rect x="44" y="40" width="14" height="14" rx="2" fill="#2f6bff"/>
+  <rect x="62" y="40" width="14" height="14" rx="2" fill="#ff3b4e"/>
+  <path d="M47,47 L55,47 M51,43.5 L51,50.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity=".85"/>
+  <path d="M66,50 L72,44 M72,50 L66,44" stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity=".85"/>
+  <rect x="14" y="92" width="92" height="16" rx="4" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.2"/>
+  <rect x="20" y="98" width="30" height="4" rx="2" fill="#ffd45a"/>
+  <rect x="53" y="98" width="20" height="4" rx="2" fill="#c9d3dd" opacity=".6"/>
+  <rect x="76" y="98" width="24" height="4" rx="2" fill="#c9d3dd" opacity=".6"/>
+</svg>
