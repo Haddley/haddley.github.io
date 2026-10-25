@@ -1,6 +1,6 @@
 ---
 title: "SingSaber"
-description: "Turning songs from my itunes music library into a WebXR rhythm game with synced karaoke lyrics, built with Claude Code"
+description: "Turning songs from my iTunes music library into a WebXR rhythm game with synced karaoke lyrics, mashed up with Claude Code"
 date: "2026-10-25"
 categories: ["JavaScript","3D","AI"]
 tags: "webxr, a-frame, beat-saber, claude-code, karaoke, music"
@@ -11,14 +11,14 @@ image: "/assets/images/singsaber/posts-meta.svg"
 
 I wanted to play my own music in VR. Not a catalogue of community levels, but the songs I actually own: a track from a cast recording, a Sting song, a Teddy Swims song. I also wanted the words on screen, like a karaoke machine, while I slice blocks to the beat.
 
-I call the result SingSaber. This post tells the story of building it with Claude Code on top of an open-source WebXR game. It covers how a song becomes a challenge, what the files on disk look like, and the many things that went wrong on the way.
+I call the result SingSaber. This post tells the story of mashing it up with Claude Code on top of an open-source WebXR game. It covers how a song becomes a challenge, what the files on disk look like, and the many things that went wrong on the way.
 
 ![](assets/images/singsaber/gameplay-lyrics-and-blocks.jpg)
 *The finished game, with a placeholder where my lyric line appears: the song clock in yellow, and blocks flying toward me*
 
 ## What I built
 
-I turned a browser VR rhythm game ([Moon Rider](https://moonrider.xyz)) into a personal jukebox. I pick a song from my itunes music library, and within minutes I am slicing blocks to its beat while the lyrics sit on the track like a karaoke screen. My version adds three things to the original game:
+I turned a browser VR rhythm game ([Moon Rider](https://moonrider.xyz)) into a personal jukebox. I pick a song from my iTunes music library, and within minutes I am slicing blocks to its beat while the lyrics sit on the track like a karaoke screen. My version adds three things to the original game:
 
 - **A local song library**, so the game plays songs from my laptop instead of a community catalogue.
 - **A level generator** that turns a DRM-free track into a playable level with Easy and Normal difficulties.
