@@ -1,26 +1,31 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
-  <title>SingSaber: fists punching blocks to the beat, with karaoke lyrics and a microphone underneath</title>
+  <title>SingSaber: fists punching cube blocks to the beat, with karaoke lyrics and a microphone underneath</title>
   <defs>
-    <g id="fist">
-      <rect x="-9" y="-4" width="18" height="15" rx="4" fill="currentColor"/>
-      <circle cx="-6.2" cy="-5" r="3.4" fill="currentColor"/><circle cx="-2.1" cy="-6" r="3.4" fill="currentColor"/>
-      <circle cx="2.1" cy="-6" r="3.4" fill="currentColor"/><circle cx="6.2" cy="-5" r="3.4" fill="currentColor"/>
-      <rect x="-7" y="10" width="14" height="6" rx="2" fill="#c9d3dd"/>
-      <path d="M-3.5,-2 v4 M0,-2.5 v4.5 M3.5,-2 v4" stroke="#0f1b2d" stroke-width="1" stroke-linecap="round" opacity=".45"/>
+    <g id="fist" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M2,34 L6,18 L9,8 L15,3 L24,5 L26,11 L30,15 L29,22 L22,26 L18,27 L19,34 Z" fill="currentColor" stroke="#0f1b2d" stroke-width="1.2"/>
+      <path d="M15,3 L24,5 L26,11 L20,13 L14,11 Z" fill="#fff" opacity=".28"/>
+      <path d="M20,13 L26,11 L30,15 L29,22 L22,26 L18,20 Z" fill="#000" opacity=".22"/>
+      <path d="M6,18 L9,8 L14,11 L12,22 Z" fill="#000" opacity=".12"/>
+      <path d="M14,11 L18,20 L22,26" fill="none" stroke="#0f1b2d" stroke-width="1" opacity=".45"/>
+    </g>
+    <g id="cube" stroke-linejoin="round">
+      <path d="M0,-11 L11,-5.5 L0,0 L-11,-5.5 Z" fill="currentColor"/>
+      <path d="M0,-11 L11,-5.5 L0,0 L-11,-5.5 Z" fill="#fff" opacity=".4"/>
+      <path d="M-11,-5.5 L0,0 L0,12 L-11,6.5 Z" fill="currentColor"/>
+      <path d="M0,0 L11,-5.5 L11,6.5 L0,12 Z" fill="currentColor"/>
+      <path d="M0,0 L11,-5.5 L11,6.5 L0,12 Z" fill="#000" opacity=".28"/>
+      <path d="M-11,-5.5 L0,-11 L11,-5.5 L11,6.5 L0,12 L-11,6.5 Z" fill="none" stroke="#fff" stroke-width="1.4" opacity=".75"/>
+      <path d="M-8,0.5 L-5.5,3 L-3,0.5 M-5.5,3 L-5.5,-1.5" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" transform="translate(0,1)"/>
     </g>
   </defs>
   <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
-  <rect x="33" y="20" width="18" height="18" rx="2.5" fill="#2f6bff" stroke="#9fc0ff" stroke-width="1.2"/>
-  <rect x="69" y="20" width="18" height="18" rx="2.5" fill="#ff3b4e" stroke="#ffb0b8" stroke-width="1.2"/>
-  <path d="M38,29 h8 M42,25 v8" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".9"/>
-  <path d="M75,25 l6,8 M81,25 l-6,8" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".9"/>
-  <g color="#2f6bff"><circle cx="34" cy="66" r="15" fill="#2f6bff" opacity=".25"/><use href="#fist" x="34" y="62"/></g>
-  <g color="#ff3b4e"><circle cx="86" cy="66" r="15" fill="#ff3b4e" opacity=".25"/><use href="#fist" x="86" y="62"/></g>
+  <g color="#ff3b4e"><use href="#cube" x="36" y="25"/></g>
+  <g color="#2f6bff"><use href="#cube" x="84" y="25"/></g>
+  <g color="#ff3b4e"><circle cx="38" cy="66" r="19" fill="#ff3b4e" opacity=".2"/><g transform="translate(24,45)"><use href="#fist"/></g></g>
+  <g color="#2f6bff"><circle cx="82" cy="66" r="19" fill="#2f6bff" opacity=".2"/><g transform="translate(97,45) scale(-1,1)"><use href="#fist"/></g></g>
   <rect x="14" y="92" width="92" height="17" rx="4" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.2"/>
-  <g>
-    <rect x="21" y="96" width="5" height="8" rx="2.5" fill="#ffd45a"/>
-    <path d="M19.5,101 a4,4 0 0 0 8,0 M23.5,105 v2" stroke="#ffd45a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-  </g>
+  <rect x="21" y="96" width="5" height="8" rx="2.5" fill="#ffd45a"/>
+  <path d="M19.5,101 a4,4 0 0 0 8,0 M23.5,105 v2" stroke="#ffd45a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
   <rect x="34" y="98.5" width="26" height="4" rx="2" fill="#ffd45a"/>
   <rect x="63" y="98.5" width="17" height="4" rx="2" fill="#c9d3dd" opacity=".6"/>
   <rect x="83" y="98.5" width="16" height="4" rx="2" fill="#c9d3dd" opacity=".6"/>

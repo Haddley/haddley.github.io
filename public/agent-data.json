@@ -3,7 +3,7 @@
     {
       "slug": "singsaber",
       "title": "SingSaber",
-      "description": "Turning songs from my itunes music library into a WebXR rhythm game with synced karaoke lyrics, built with Claude Code",
+      "description": "Turning songs from my iTunes music library into a WebXR rhythm game with synced karaoke lyrics, mashed up with Claude Code",
       "date": "2026-10-25",
       "categories": [
         "JavaScript",
@@ -3235,5 +3235,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-25T04:43:49.204Z"
+  "generatedAt": "2026-10-25T06:52:28.517Z"
 }
