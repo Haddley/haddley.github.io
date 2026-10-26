@@ -8,19 +8,16 @@
       <path d="M6,18 L9,8 L14,11 L12,22 Z" fill="#000" opacity=".12"/>
       <path d="M14,11 L18,20 L22,26" fill="none" stroke="#0f1b2d" stroke-width="1" opacity=".45"/>
     </g>
-    <g id="cube" stroke-linejoin="round">
-      <path d="M0,-11 L11,-5.5 L0,0 L-11,-5.5 Z" fill="currentColor"/>
-      <path d="M0,-11 L11,-5.5 L0,0 L-11,-5.5 Z" fill="#fff" opacity=".4"/>
-      <path d="M-11,-5.5 L0,0 L0,12 L-11,6.5 Z" fill="currentColor"/>
-      <path d="M0,0 L11,-5.5 L11,6.5 L0,12 Z" fill="currentColor"/>
-      <path d="M0,0 L11,-5.5 L11,6.5 L0,12 Z" fill="#000" opacity=".28"/>
-      <path d="M-11,-5.5 L0,-11 L11,-5.5 L11,6.5 L0,12 L-11,6.5 Z" fill="none" stroke="#fff" stroke-width="1.4" opacity=".75"/>
-      <path d="M-8,0.5 L-5.5,3 L-3,0.5 M-5.5,3 L-5.5,-1.5" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" transform="translate(0,1)"/>
+    <g id="block" stroke-linejoin="round">
+      <path d="M-10,-10 L0,-8.2 L10,-10 L8.2,0 L10,10 L0,8.2 L-10,10 L-8.2,0 Z M-5,-5 L-3,0 L-5,5 L0,3 L5,5 L3,0 L5,-5 L0,-3 Z" transform="translate(2.2,-3)" fill="currentColor" fill-rule="evenodd"/>
+      <path d="M-10,-10 L0,-8.2 L10,-10 L8.2,0 L10,10 L0,8.2 L-10,10 L-8.2,0 Z M-5,-5 L-3,0 L-5,5 L0,3 L5,5 L3,0 L5,-5 L0,-3 Z" transform="translate(2.2,-3)" fill="#000" fill-rule="evenodd" opacity=".35"/>
+      <path d="M-10,-10 L0,-8.2 L10,-10 L8.2,0 L10,10 L0,8.2 L-10,10 L-8.2,0 Z M-5,-5 L-3,0 L-5,5 L0,3 L5,5 L3,0 L5,-5 L0,-3 Z" fill="currentColor" fill-rule="evenodd" stroke="#fff" stroke-width="1.2" stroke-opacity=".8"/>
+      <path d="M-10,-10 L0,-8.2 L10,-10 L8.2,0 L-8.2,0 Z" fill="#fff" opacity=".18"/>
     </g>
   </defs>
   <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
-  <g color="#ff3b4e"><use href="#cube" x="36" y="25"/></g>
-  <g color="#2f6bff"><use href="#cube" x="84" y="25"/></g>
+  <g color="#ff3b4e"><use href="#block" transform="translate(36,28) scale(1.2)"/></g>
+  <g color="#2f6bff"><use href="#block" transform="translate(84,28) scale(1.2)"/></g>
   <g color="#ff3b4e"><circle cx="38" cy="66" r="19" fill="#ff3b4e" opacity=".2"/><g transform="translate(24,45)"><use href="#fist"/></g></g>
   <g color="#2f6bff"><circle cx="82" cy="66" r="19" fill="#2f6bff" opacity=".2"/><g transform="translate(97,45) scale(-1,1)"><use href="#fist"/></g></g>
   <rect x="14" y="92" width="92" height="17" rx="4" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.2"/>

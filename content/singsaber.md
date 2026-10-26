@@ -30,7 +30,7 @@ Three songs from my iTunes library have made it through so far: Sting's *Desert 
 
 The original game is [Moon Rider](https://github.com/supermedium/moonrider) by Supermedium, an open-source, Beat Saber-style game built with A-Frame and WebXR. It runs in a VR headset's web browser with nothing to install, and its code is published under the MIT licence. I first wrote about it in my March 2021 [WebVR](/posts/webvr/) post, where I ran it in the Oculus Quest 2 browser. By default Moon Rider downloads community challenges from a public catalogue.
 
-In the headset my hands appear as a pair of oversize fists, red for my left hand and blue for my right, and the beats arrive as cubes that I hit with my firsts.
+In the headset my hands appear as a pair of oversize fists, red for my left hand and blue for my right, and the beats arrive as blocks that I hit with my firsts.
 
 ## Why any song is the hard part
 
