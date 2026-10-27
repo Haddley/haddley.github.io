@@ -1,6 +1,28 @@
 {
   "posts": [
     {
+      "slug": "azurefoundryagent3",
+      "title": "Azure Foundry Agent (Part 2)",
+      "description": "Building a hosted agent in Microsoft Foundry that loads my page-line-summary skill, reads deposition PDFs, searches an Azure AI Search index of the split case documents, and saves its summaries",
+      "date": "2026-10-27",
+      "categories": [
+        "AI",
+        "Azure"
+      ],
+      "tags": "azure-ai-foundry, hosted-agents, azure-ai-search, agent-skills, azd, litigation"
+    },
+    {
+      "slug": "azurefoundryagent2",
+      "title": "Azure Foundry Agent (Part 1)",
+      "description": "Running my page-line-summary skill in Azure: I upload the skill to Microsoft Foundry, wrap it in a prompt agent, run it on deposition excerpts, and measure how reliably it finds contradictions",
+      "date": "2026-10-27",
+      "categories": [
+        "AI",
+        "Azure"
+      ],
+      "tags": "azure-ai-foundry, agent-skills, prompt-agent, page-line-summary, legal, litigation"
+    },
+    {
       "slug": "singsaber",
       "title": "SingSaber",
       "description": "Turning songs from my iTunes music library into a WebXR rhythm game with synced karaoke lyrics, mashed up with Claude Code",
@@ -3235,5 +3257,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-26T04:44:23.765Z"
+  "generatedAt": "2026-10-27T12:15:38.847Z"
 }
