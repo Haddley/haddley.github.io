@@ -306,5 +306,4 @@ The transcript stays local — no data is sent to external services beyond Claud
 ## References
 
 - [Legal AI Is Growing Up. Chatbots Were Just the Awkward Phase.](https://www.youtube.com/watch?v=QeIqRnOhs9E&t=1768s)
-
-
+- [Court document for case 1:11-cv-02961, Northern District of Illinois, on Justia](https://cases.justia.com/federal/district-courts/illinois/ilndce/1:2011cv02961/255206/290/0.pdf?ts=1444393084)
