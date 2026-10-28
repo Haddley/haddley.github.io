@@ -10,7 +10,7 @@ slug: "orchestration3"
 hidden: false
 ---
 
-*This is part 3 of a series on agent orchestration. [Part 1](/posts/orchestration1/) measures four LangChain patterns for agents you build yourself, and [part 2](/posts/orchestration2/) introduces the Agent2Agent protocol.*
+*This is part 3 of a series on agent orchestration. [Part 1](/posts/orchestration1/) measures four LangChain patterns for agents you build yourself, and [part 2](/posts/orchestration2/) introduces the Agent2Agent protocol. To see A2A between agents hosted in Microsoft Foundry, see [Azure Foundry Agent, part 4](/posts/azurefoundryagent5/).*
 
 My [previous post, part 2](/posts/orchestration2/), ran a "hello world" agent I wrote myself, to see the protocol's mechanics with nothing else in the way. This post uses an agent I did not write. I found it in a public registry, [a2a-registry.org](https://www.a2a-registry.org/). In the [LangGraph](https://langchain-ai.github.io/langgraph/) graph I fetch its Agent Card again on every run, so the run checks what the agent advertises today and not what the registry listed when I looked, and then I call it. The graph runs on my own machine with a model hosted by [Ollama](https://ollama.com). The graph is the point: it shows what an orchestrator is responsible for when it depends on an agent it does not control.
 
@@ -994,6 +994,7 @@ This time the conditional edge sent the run to `__end__` before drafting, so not
 - [AgentNative Data Exchange's Agent Card](https://agentnative.cazimedia.com/.well-known/agent-card.json)
 - [Federal Register API documentation](https://www.federalregister.gov/developers/documentation/api/v1)
 - [A2A Python SDK (a2a-sdk)](https://github.com/a2aproject/a2a-python)
+- [Azure Foundry Agent, part 4: a supervisor calling six specialists over A2A](/posts/azurefoundryagent5/)
 - [LangChain overview](https://docs.langchain.com/oss/python/langchain/overview) and [LangGraph overview](https://docs.langchain.com/oss/python/langgraph/overview)
 - My earlier posts: [LangChain Agents](/posts/langchainagents/), [Langflow](/posts/langflow1/) and [Claude Code, part 9](/posts/claudecode9/), an agent loop with no framework
 - [LangChain: A2A endpoint in Agent Server, including contextId and thread_id](https://docs.langchain.com/langsmith/server-a2a)

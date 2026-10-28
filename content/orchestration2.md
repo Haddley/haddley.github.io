@@ -10,7 +10,7 @@ slug: "orchestration2"
 hidden: false
 ---
 
-*This is part 2 of a series on agent orchestration. [Part 1](/posts/orchestration1/) builds agents in one process from six documents and measures four LangChain patterns for it. This part and part 3 are about agents you do not control: the Agent2Agent protocol here, then finding and calling a real remote agent in [part 3](/posts/orchestration3/).*
+*This is part 2 of a series on agent orchestration. [Part 1](/posts/orchestration1/) builds agents in one process from six documents and measures four LangChain patterns for it. This part and part 3 are about agents you do not control: the Agent2Agent protocol here, then finding and calling a real remote agent in [part 3](/posts/orchestration3/). To see A2A between agents hosted in Microsoft Foundry, see [Azure Foundry Agent, part 4](/posts/azurefoundryagent5/).*
 
 The Agent2Agent protocol, A2A for short, is an open standard for one AI agent to talk directly to another — not as a tool wrapped up to look like a function, but as a genuine peer with its own reasoning, its own state, and its own ability to work for a long time before it has an answer. I already covered [Model Context Protocol](/posts/mcpserver/) on this blog, which solves a different, adjacent problem: connecting one model to tools and data it can call. A2A solves the next problem up: connecting one agent to another agent it does not control and did not write.
 
@@ -534,6 +534,8 @@ INFO:     127.0.0.1:50104 - "POST / HTTP/1.1" 200 OK
 
 `helloworld` shows the protocol's mechanics with nothing else in the way; the same `samples/python/agents/` directory has 33 other samples layering real frameworks on top of it — `langgraph` and `crewai` for graph- and crew-based multi-agent orchestration, `adk_currency_agent` and `travel_planner_agent` for Google's Agent Development Kit, `semantickernel` for Microsoft's framework already covered on this blog in the [Prompt Flow](/posts/promptflow4/) series' look at Semantic Kernel's planner, and `a2a_mcp` specifically demonstrating an agent that is both an A2A server and an MCP client at once — the two protocols from the comparison table above, in the same process. Every one of them follows the identical three-stage lifecycle this post walked through by hand: publish a card, accept a message, return a task.
 
+Microsoft Foundry supports the protocol too. In [Azure Foundry Agent, part 4](/posts/azurefoundryagent5/) I switched on incoming A2A for six Foundry prompt agents and gave a supervisor agent one A2A tool for each, so one Foundry agent calls another over the same card-and-message exchange described here.
+
 :::bullet-points Recap
 - A2A runs on plain HTTP, JSON-RPC 2.0 for requests and responses, and Server-Sent Events for streaming.
 - Discovery starts from the agent card that the server publishes.
@@ -545,3 +547,4 @@ INFO:     127.0.0.1:50104 - "POST / HTTP/1.1" 200 OK
 - [A2A Protocol — What is A2A?](https://a2a-protocol.org/latest/topics/what-is-a2a/)
 - [a2aproject/a2a-samples — the source repository for this post's sample](https://github.com/a2aproject/a2a-samples/tree/main/samples/python)
 - [google/a2a-python — the official Python SDK](https://github.com/google/a2a-python/)
+- [Azure Foundry Agent, part 4: a supervisor calling six specialists over A2A](/posts/azurefoundryagent5/)
