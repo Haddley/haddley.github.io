@@ -151,7 +151,7 @@ The line that matters most is `tool_choice="required"`. It makes every response 
 
 ## Connection errors
 
-A call from the supervisor to a specialist can fail with three different messages, and only the last is about permissions.
+A call from the supervisor to a specialist can fail with two different messages before it works.
 
 | Message | What it meant for me |
 |---|---|
@@ -159,9 +159,7 @@ A call from the supervisor to a specialist can fail with three different message
 | `Connection ... not found` | The connection existed, and the portal and the SDK could both read it. I got this with the full resource ID and with the connection name, `a2a-speeding`. |
 | Success | After I assigned the **Foundry Agent Consumer** role to the supervisor's identity on the project, the call worked at once. Microsoft's documentation says the calling identity needs that role. |
 
-:::watch-it I do not know what clears "not found"
-The same `not found` message came back for a new seventh connection, `a2a-outside`, and stayed for more than eight minutes with the role already in place. A connection I created under a new name and left alone for four minutes worked on its first call. That test changed two things at once, the name and the wait, so I cannot tell whether new connections need time to become visible or a failed lookup is remembered. I never removed the role to see whether the calls need it, so I do not know that either.
-:::
+A connection can return "Connection ... not found" even though it exists and the portal shows it. A new connection under a different name worked after about four minutes, but I did not find out whether the wait, the name or the role made the difference.
 
 ```bash
 az role assignment create \
@@ -254,7 +252,7 @@ I did not test any of this:
 - **Repeats.** Each question ran once per design. The Wisconsin question showed that one run can differ from the next.
 - **The eight held-out questions and any multi-turn conversation.** I did not run them.
 - **A fixed-routing design.** I did not build a workflow or an Agent Framework router, so I cannot say whether code that picks the specialist would handle the multi-area questions better.
-- **Whether the role is needed.** See the three errors above.
+- **Whether the role is needed.** See the connection errors above.
 
 :::bullet-points What I know
 - **Foundry has no Connected Agents any more.** The A2A tool replaces it, and each specialist needs incoming A2A enabled with the SDK, because the portal cannot do it yet.
