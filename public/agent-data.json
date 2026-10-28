@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "azurefoundryagent4",
+      "title": "Azure Foundry Agent (Part 3)",
+      "description": "Starting from the Legal intake specialist voice agent template in Microsoft Foundry, adding a save tool as an MCP server on Azure Functions, and testing it with a made-up car accident call",
+      "date": "2026-10-28",
+      "categories": [
+        "AI",
+        "Azure"
+      ],
+      "tags": "azure-ai-foundry, voice-agents, azure-functions, mcp, gpt-realtime, guardrails"
+    },
+    {
       "slug": "azurefoundryagent3",
       "title": "Azure Foundry Agent (Part 2)",
       "description": "Building a hosted agent in Microsoft Foundry that loads my page-line-summary skill, reads deposition PDFs, searches an Azure AI Search index of the split case documents, and saves its summaries",
@@ -3257,5 +3268,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-27T12:15:38.847Z"
+  "generatedAt": "2026-10-28T01:40:18.633Z"
 }
