@@ -23,7 +23,7 @@ Here is where it ended up, on 62 questions with a simple check that the required
 | Supervisor and seven specialists over A2A | 50 of 56 (89%) | 55 of 62 (89%) | 434 | about 566,000 (estimated) |
 | One agent holding all six documents | 56 of 56 (100%) | not applicable | 668 | 2,174,855 |
 
-The supervisor used about a quarter of the tokens and was faster, and it scored lower, which is the trade I expected: less context per question costs some answers. The six out-of-scope questions have no required facts, so a keyword check cannot fail them, and I leave them out of the facts column. The rest of this post shows how I built it, the connection errors I hit, how it did on the 62 questions, what happens when a specialist needs more information, and where it still goes wrong.
+I hoped that giving each specialist one document would make the answers cheaper and better. It made them cheaper and faster: the supervisor used about a quarter of the tokens. It did not make them better, because it scored lower than the one agent holding everything. The six out-of-scope questions have no required facts, so a keyword check cannot fail them, and I leave them out of the facts column. The rest of this post shows how I built it, the connection errors I hit, how it did on the 62 questions, what happens when a specialist needs more information, and where it still goes wrong.
 
 :::brain-power Before you read on
 In LangChain a subagent is a tool that the supervisor calls. Foundry has prompt agents but, as I found out, no longer has a tool that wraps one agent inside another. What would you use instead, and what would have to be true for the call to work?
@@ -370,6 +370,17 @@ If you get an `input-required` task or the question in a message, tell me, becau
 
 The 62-question results above do not depend on any of this. Their specialists are told to name the fact an answer depends on, and they have no `ask_user` tool.
 
+### The same 62 questions in my LangChain project
+
+I ran these 62 questions through a LangChain supervisor and through a flat agent on a local model, `gemma4:12b`, using the same keyword check. Those results are stored with my LangChain project, and orchestration1 does not show them, because that post compares LangChain patterns on conversations.
+
+| | Supervisor with specialists | One agent holding all six documents |
+|---|---|---|
+| LangChain, `gemma4:12b`, on my Mac | 55 of 56 in-scope facts, 58 of 62 routed, 536,529 prompt tokens, 8,935 seconds | 53 of 56 in-scope facts, 2,294,589 prompt tokens, 2,741 seconds |
+| Foundry, `gpt-5.4-mini` | 50 of 56 in-scope facts, 55 of 62 routed, about 566,000 input tokens (estimated), 434 seconds | 56 of 56 in-scope facts, 2,174,855 input tokens, 668 seconds |
+
+In LangChain the specialists were what I hoped for on accuracy and cost: slightly more answers with the facts, and 4.3 times fewer prompt tokens. They were slower, because my Mac processes long prompts slowly. In Foundry the token saving is the same, 3.8 times, and the supervisor is also faster. The accuracy went the other way. Two things changed at once, and I did not separate them. The flat agent did better on `gpt-5.4-mini` than on `gemma4:12b`, 56 against 53, so this model holds a 35,000-token prompt well. The supervisor did worse, 50 against 55. My guess is that the supervisor's routing and its rewriting of each question lose some answers, but I did not test that.
+
 ## The rate limit, and what it did to the test
 
 The flat agent needs about 35,000 input tokens a question, so running four at a time used up the deployment's tokens-per-minute limit, and a question I typed into the supervisor's playground at the same time failed.
@@ -397,7 +408,7 @@ I did not test any of this:
 - **Foundry has no Connected Agents any more.** The A2A tool replaces it, and each specialist needs incoming A2A enabled with the SDK, because the portal cannot do it yet.
 - **Each call is visible.** The output items name the specialist and show the rewritten question and the answer.
 - **A required tool call keeps the supervisor from answering without asking.** It needs an outside specialist so that out-of-scope questions still have somewhere to go.
-- **The supervisor traded accuracy for cost.** It had the required facts on 50 of 56 in-scope questions against 56 of 56 for one agent holding everything, and used about a quarter of the tokens.
+- **The supervisor was cheaper and faster, and less accurate.** It had the required facts on 50 of 56 in-scope questions against 56 of 56 for one agent holding everything, and used about a quarter of the tokens. My LangChain run of the same questions had the opposite accuracy result.
 - **Every agent with A2A tools needs the Foundry Agent Consumer role,** and a new connection needs about five minutes before its first call.
 - **The `ask_user` flow has one missing piece.** The specialist asks correctly, but over A2A the question does not arrive. I expect Microsoft to fix that, and I explain how to check my result.
 :::
