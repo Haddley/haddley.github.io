@@ -3,7 +3,7 @@
     {
       "slug": "azurefoundryagent5",
       "title": "Azure Foundry Agent (Part 4)",
-      "description": "Building a supervisor agent in Microsoft Foundry that answers Minnesota traffic-law questions by calling six specialist agents over the Agent2Agent protocol, and testing it on 62 questions against one agent that holds every document",
+      "description": "Building a supervisor in Microsoft Foundry that calls six specialist agents over the Agent2Agent protocol, and testing whether the specialists notice a missing fact and ask for it, using the conversations from my LangChain post",
       "date": "2026-10-28",
       "categories": [
         "AI",
@@ -3279,5 +3279,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-28T06:44:55.234Z"
+  "generatedAt": "2026-10-28T07:06:53.316Z"
 }

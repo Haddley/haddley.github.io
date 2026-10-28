@@ -1,7 +1,7 @@
 ---
 title: "Azure Foundry Agent"
 part: 4
-description: "Building a supervisor agent in Microsoft Foundry that answers Minnesota traffic-law questions by calling six specialist agents over the Agent2Agent protocol, and testing it on 62 questions against one agent that holds every document"
+description: "Building a supervisor in Microsoft Foundry that calls six specialist agents over the Agent2Agent protocol, and testing whether the specialists notice a missing fact and ask for it, using the conversations from my LangChain post"
 date: "2026-10-28"
 categories: ["AI", "Azure"]
 image: "/assets/images/azurefoundryagent5/posts-meta.svg"
@@ -10,20 +10,18 @@ hidden: false
 slug: "azurefoundryagent5"
 ---
 
-# Subagents in Foundry: a supervisor and six specialists
+# Subagents in Foundry: specialists that ask for the missing fact
 
-In [orchestration1](/posts/orchestration1/) I compared several ways to build an agent that answers questions about Minnesota traffic and car law from six documents. One of them was **subagents**: a supervisor decides which specialist to ask, rewrites the question, and each specialist holds one document. I built that with LangChain on my own Mac.
+In [orchestration1](/posts/orchestration1/) I compared several ways to build an agent that answers questions about Minnesota traffic and car law from six documents. One of them was **subagents**: a supervisor decides which specialist to ask, and each specialist holds one document. The part I found most interesting was asking. A specialist that holds the document knows which fact decides the answer, so it can pause the conversation, ask the person for that fact, and carry on.
 
-In this post I build the same design in Microsoft Foundry, and test it on the same 62 questions. In [Part 3](/posts/azurefoundryagent4/) I built a voice agent from a template and gave it a tool. Here every agent is a plain prompt agent, and the new part is how one agent calls another.
+In this post I build the same design in Microsoft Foundry, with a supervisor that calls six specialists over the Agent2Agent protocol, and I test whether the specialists notice a missing fact and ask for it. I use the same eleven conversations as orchestration1. In [Part 3](/posts/azurefoundryagent4/) I built a voice agent from a template. Here every agent is a plain prompt agent, and the new part is how one agent calls another.
 
-Here is where it ended up, on 62 questions with a simple check that the required facts appear in the answer:
+## What I found
 
-| Design | In-scope questions with the required facts | Routed as expected | Seconds for 62 questions | Input tokens for 62 questions |
-|---|---|---|---|---|
-| Supervisor and seven specialists over A2A | 50 of 56 (89%) | 55 of 62 (89%) | 434 | about 566,000 (estimated) |
-| One agent holding all six documents | 56 of 56 (100%) | not applicable | 668 | 2,174,855 |
-
-I hoped that giving each specialist one document would make the answers cheaper and better. It made them cheaper and faster: the supervisor used about a quarter of the tokens. It did not make them better, because it scored lower than the one agent holding everything. The six out-of-scope questions have no required facts, so a keyword check cannot fail them, and I leave them out of the facts column. The rest of this post shows how I built it, the connection errors I hit, how it did on the 62 questions, what happens when a specialist needs more information, and where it still goes wrong.
+- **Specialists notice a missing fact, with the right setting.** Each specialist has an `ask_user` tool and a generic rule, with no list of facts to look for. At the default reasoning effort they asked on 1 of the 12 turns that need a question. At high effort they asked on 9 of 12.
+- **The questions are targeted.** At high effort every question asked for the fact the document turns on, such as "Did you refuse the chemical test, or did you take it and fail?". By my reading, only about five of LangChain's twelve questions on the same turns did that. Others were offers such as "Do you have any other questions about Minnesota's hands-free law?".
+- **One piece is missing: the question does not arrive over A2A.** When a specialist asks through a tool, the A2A reply is an empty completed task. I expect Microsoft to address this, and I show how to check my result, because I may have something wrong.
+- **Accuracy and cost, on 62 questions:** the supervisor had the required facts on 50 of 56 in-scope questions against 56 of 56 for one agent holding everything, and used about a quarter of the tokens.
 
 :::brain-power Before you read on
 In LangChain a subagent is a tool that the supervisor calls. Foundry has prompt agents but, as I found out, no longer has a tool that wraps one agent inside another. What would you use instead, and what would have to be true for the call to work?
@@ -201,6 +199,165 @@ A: I read the agent back with the SDK. The tool is stored as type `a2a` with `a2
 A: No. The specialist runs inside the A2A call and its tokens are not in the supervisor's usage. I estimate them below from the size of each document.
 :::
 
+## Asking for missing information
+
+Some questions cannot be answered until the person supplies a fact. In orchestration1 the specialist noticed this and paused to ask, using an `ask_user` tool, and the supervisor passed the question to the person and the reply back. The same design should work in Foundry, and almost all of it does.
+
+### How it should work
+
+The specialist holds the document, so it knows which fact decides the answer. I give each specialist an `ask_user` function tool and a generic rule. There is no list of facts to look for:
+
+```python
+RULES = """You are the {title} specialist in a Minnesota traffic and car law service.
+
+Answer only from the document below. Quote the statute or case that supports each point, with its section number. If the
+document does not cover the question, say so plainly. Keep the answer short. This is general information, not legal advice.
+
+Before you answer, decide whether a fact that decides the answer is missing from what the person has told you. If one is,
+call the ask_user tool with ONE short question about that fact, and write no text before or after the call. If every fact you
+need has been given, answer. Do not ask about anything the person already said.
+
+--- DOCUMENT ---
+"""
+
+ask_user = FunctionTool(
+    name="ask_user",
+    description="Ask the person one short question when the answer depends on a fact they have not given.",
+    parameters={"type": "object", "properties": {"question": {"type": "string"}},
+                "required": ["question"], "additionalProperties": False},
+    strict=True,
+)
+
+specialist = project.agents.create_version(
+    agent_name=f"mn-law-ask-{area}",
+    definition=PromptAgentDefinition(model=model, instructions=RULES.format(title=title) + document,
+                                     tools=[ask_user], reasoning=Reasoning(effort="high")),
+)
+```
+
+The supervisor needs two rules of its own:
+
+```text
+If the specialist's reply is a question for the person, not an answer, pass that question on to the user in your own
+reply and stop. Do not answer it yourself and do not guess.
+When the user answers, send their answer to the same specialist, then build your reply from what it returns.
+```
+
+On the wire, the A2A protocol has a task state for this, `input-required`. A specialist that needs a fact moves its task to that state with the question in the status message, and the caller continues the same task with the reply. The pieces on the Microsoft side exist: Agent Framework's `A2AAgent` client records the state and, on the next message, continues the same task by its `task_id`.
+
+### Do the specialists notice a missing fact?
+
+I ran orchestration1's conversations against these specialists. N6 is left out, as it was there, which leaves 11 conversations and 23 turns. Twelve of those turns need a question: the opening turn of each conversation, and the second turn of N7. For each area there is one specialist, called through the Responses API. A simulated user, `gpt-5.4-mini` reading the conversation's fact sheet, answers whatever is asked. I score each turn as orchestration1 did: did the specialist ask exactly when it should, and does the answer contain the required facts. The LangChain figures come from the stored per-turn results for the published subagents row, which I reproduced to the digit: 16 facts, 12 asked correctly, 681,789 prompt tokens.
+
+| | LangChain subagents | Foundry specialists, default effort | Foundry specialists, high effort |
+|---|---|---|---|
+| Turns that need a question: asked | 12 of 12 | 1 of 12 | 9 of 12 |
+| Follow-up turns: asked | 11 of 11 | 0 of 11 | not run |
+| Input tokens for the 12 turns that need a question | not comparable | 83,557 | 139,218 |
+
+The reasoning effort is the lever. It is one setting, `reasoning=Reasoning(effort="high")`, and it moved the specialists from asking on one turn to asking on nine, with the same rule. It also cost about two thirds more tokens on those turns, partly from the extra round of asking, and I did not separate the two.
+
+**The quality of the questions differs more than the counts.** LangChain's 12 of 12 counts any call to `ask_user`. Reading every question, I would say about five of its twelve gate questions asked for the decisive fact, two were partly on target, and five were not requests for a missing fact. These are the questions on some matching turns:
+
+| Turn | LangChain subagents asked | Foundry specialist at high effort asked |
+|---|---|---|
+| DWI stop | "Do you want details on a specific scenario, such as a first-time refusal, a test failure, or a conviction with priors?" | "Did you refuse the chemical test, or did you take it and fail?" |
+| Lemon law | "Was the car new or used?" | "Was it a new vehicle or a used vehicle bought from a dealer?" |
+| No-fault crash | "Do you have any additional questions about Minnesota accident law?" | "Did your injuries meet Minnesota's tort threshold: more than $4,000 in medical expenses, or permanent injury, disfigurement, death, or 60+ days of disability?" |
+| Phone ticket | "Do you have any other questions about Minnesota's hands-free law?" | "Were you holding the phone or typing into the map, or was it mounted/hands-free with no typing?" |
+| Van, second turn | "Do you need help determining whether your specific use pattern meets the 40 percent threshold?" | "Is the van used for personal, family, or household purposes at least 40% of the time?" |
+
+The orchestration1 score rewards asking, and not what is asked, so a generic prompt counts the same as the decisive question. The Foundry specialists asked fewer questions, and each one I read was about a fact the document turns on. My classification is a judgement, and the questions are all in the stored results if you want to disagree.
+
+**What I did not measure.** At high effort the specialists missed three turns: the follow-up on street racing, one crash question and one speeding question. After asking, 6 of the 9 answers had the required facts. LangChain's specialists asked on all 11 follow-up turns, which the test did not expect, and by my reading 8 of those 11 were questions about a fact. The Foundry specialists never asked on a follow-up at the default effort. I did not run the follow-ups at high effort, so I cannot say whether high effort makes them over-ask. Each design ran once, the user answers came from different simulators, and the keyword check cannot tell a good answer from a lucky one.
+
+### One conversation: the phone question
+
+[orchestration1](/posts/orchestration1/) has a section called "One conversation, four designs". Its clearest example is the phone question where the document's answer turns on a fact the user never gave, whether the phone was held: "I got a ticket for using my phone, but I was just checking the map. Is that even illegal?", followed by "Does it matter that I was fully stopped and not moving?". In that post every design paused to ask whether the phone was held or mounted, and then gave a definite answer. I ran the same two questions through three Foundry designs.
+
+| Design | Asked a question? | Input tokens, turn 1 / turn 2 |
+|---|---|---|
+| Supervisor and specialists over A2A, as built in this post | No. "Maybe not — it depends on how you checked the map", with both cases covered | 3,160 / 3,674 at the supervisor, plus about 3,600 for each specialist call (estimated) |
+| One agent holding all six documents | No. "Maybe not — it depends on exactly how you were using it" | 35,084 / 35,474 |
+| Phone specialist with an `ask_user` tool, called through the Responses API | Yes: "Was your phone held in your hand or mounted?" | 3,719 and 3,772 / 3,886 |
+
+The third row behaves like orchestration1. The specialist asked the same question, and after the scripted reply, "I was holding the phone in one hand, and it was not mounted", it answered that § 169.475, subd. 2(a)(1) prohibits holding the device, and that the navigation exception applies only if the person does not hold it. The follow-up about being stopped was answered in the same conversation for 3,886 tokens, with the quoted rule that a stopped vehicle is still part of traffic unless it is lawfully stopped, off the road and not obstructing traffic.
+
+The first two rows did not ask, because neither has an `ask_user` tool or a rule to ask. Both gave a correct conditional answer that covers held and not held, and both answered the follow-up correctly. The difference is that the question to the user would have made the answer definite.
+
+For comparison, orchestration1 recorded these prompt tokens for the two turns: one agent with everything in its prompt 107,280 and 108,209, skills 14,593 and 4,829, subagents 14,875 and 7,750, and handoffs 14,664 and 4,809. Those runs used different models on my own machine, so only the shape carries over. The flat agent there paid for the whole prompt again at every pause. Here the flat agent did not ask, so it paid about 35,000 tokens a turn, and I did not measure what it would have cost with a question.
+
+Here is the intended flow for the supervisor design, with the one step that does not work today:
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant S as Supervisor
+    participant P as Phone specialist
+
+    U->>S: "I got a ticket for using my phone,<br/>but I was just checking the map.<br/>Is that even illegal?"
+    S->>P: A2A message: phone ticket, checking a map
+    P->>P: ask_user("Was your phone held<br/>in your hand or mounted?")
+    Note over S,P: Today over A2A the question is dropped:<br/>the task comes back completed and empty
+    P-->>S: Intended: input-required with the question
+    S-->>U: "Was your phone held in your hand or mounted?"
+    U->>S: "In one hand, not mounted"
+    S->>P: A2A message continuing the same task
+    P-->>S: "Yes. Prohibited under subd. 2(a)(1)..."
+    S-->>U: "Yes. Prohibited under subd. 2(a)(1)..."
+```
+
+### Over A2A, the question does not arrive
+
+**The specialist does its part.** Called through the Responses API, it returned an `ask_user` function call with the right question, "Was the car bought new from a dealer, or used from a dealer/private seller?", two times out of two.
+
+**Over A2A, that question does not arrive.** Called through its A2A endpoint, the same agent returned a completed task with no message and no artifact. I printed the raw JSON-RPC body so that no client library could hide a field, and I repeated the call over A2A 1.0, A2A 0.3, and 1.0 with both extensions that the agent card advertises, `mcp-approval-request` and `citations`.
+
+```json
+{"jsonrpc":"2.0","id":"...","result":{"task":{"id":"resp_...","contextId":"ctxt_...",
+  "status":{"state":"TASK_STATE_COMPLETED","timestamp":"2026-10-28T04:56:42+00:00"},"artifacts":[]}}}
+```
+
+| Reply over A2A when the specialist calls `ask_user` | Result |
+|---|---|
+| A2A 1.0 | `COMPLETED`, no artifacts |
+| A2A 0.3 | `completed`, no artifacts |
+| A2A 1.0 with both advertised extensions requested | `COMPLETED`, no artifacts |
+
+**A question written as plain text does arrive.** When a specialist asked in text, the reply was a completed task with the question in its artifact, and the task carried a `contextId`. A supervisor with the two rules above put that question to the user, and then sent the user's answer to the specialist. The specialist asked in one of two runs, and in the other it answered both branches, new and used.
+
+### Why I expect this to be fixed
+
+Everything else in the chain works: the specialist asks, the protocol has a place for the question, and Microsoft's client knows how to continue the task. The missing piece looks small. Microsoft's open-source Agent Framework has an A2A server executor, `A2AExecutor`, and its source skips function-call content. A comment there says that "intermediate function_call / function_result from tool use" is skipped, and the task is then marked complete. It never sets `TASK_STATE_INPUT_REQUIRED`. I have not seen Foundry's own endpoint code, so that Foundry behaves like this executor is an inference. A mapping from a pending `ask_user` call to `input-required` is the natural addition, and I expect Microsoft to make it.
+
+:::watch-it I may have got this wrong
+This is one project, one model and one region, and I may be doing something wrong. I found nothing in Microsoft's documentation about function tools over A2A, either as a limit or as a bug, so I cannot say whether the behaviour is intended. I tested a prompt agent, not a hosted agent. To check my result, create a prompt agent with a function tool, enable incoming A2A, and print the raw reply:
+
+```python
+async def show(response):                      # print the raw JSON-RPC body
+    if response.request.method == "POST":
+        await response.aread()
+        print(response.status_code, response.text)
+
+async with httpx.AsyncClient(headers={"Authorization": f"Bearer {token}"}, event_hooks={"response": [show]}) as http:
+    card = await A2ACardResolver(httpx_client=http, base_url=A2A_BASE, agent_card_path="agentCard/v1.0").get_agent_card()
+    client = await create_client(agent=card, client_config=ClientConfig(streaming=False, httpx_client=http))
+    message = new_text_message("My car has been in the shop three times. Do I qualify for a refund?", role=Role.ROLE_USER)
+    async for _ in client.send_message(SendMessageRequest(message=message)):
+        pass
+```
+
+If you get an `input-required` task or the question in a message, tell me, because then something in my setup is different from yours.
+:::
+
+### What I would tell Microsoft
+
+- A question asked through a function tool on an agent exposed over A2A should surface to the caller. The natural form is the task state `input-required`, with the question in the status message. The official `a2a-sdk` offers `TaskUpdater.requires_input()` for exactly this, and Microsoft's own client already understands the state.
+- If that is deliberately unsupported, say so in the incoming A2A page, next to the existing limits on text and streaming.
+- Foundry's A2A tool should document what it does when a remote agent returns `input-required`. I could not produce one to test it.
+
+The 62-question results above do not depend on any of this. Their specialists are told to name the fact an answer depends on, and they have no `ask_user` tool.
+
 ## The test
 
 I used the 62 single-turn questions from orchestration1. Each one is labelled with the specialists it should reach and the facts the answer must contain. There are 43 single-area questions, 9 that need more than one area, 4 with noisy wording, and 6 outside the six areas, where the right move is to call no specialist.
@@ -209,7 +366,7 @@ I scored each answer two ways, the same as the first half of orchestration1. **F
 
 I also built the baseline from orchestration1: one agent, `mn-law-flat`, with all six documents in its instructions, about 25,900 words in a single prompt.
 
-## The results
+## How accurate and cheap is it? The 62 questions
 
 | Design | In-scope questions with the facts (56) | Routed (62) | Seconds for 62 questions |
 |---|---|---|---|
@@ -250,126 +407,6 @@ The supervisor's own usage was 195,540 input tokens for 62 questions, against 2,
 
 It took 434 seconds for the supervisor and 668 for the flat agent, so the supervisor was also faster, even though each question makes two model calls in sequence.
 
-## Asking for missing information: how it should work, and what happens today
-
-Some questions cannot be answered until the user supplies a fact. In orchestration1 the specialist noticed this and paused to ask, using an `ask_user` tool, and the supervisor passed the question to the person and the reply back. The same design should work in Foundry, and almost all of it does.
-
-### How it should work
-
-The specialist holds the document, so it knows which fact decides the answer. I give it an `ask_user` function tool and a rule to use it:
-
-```python
-ask_user = FunctionTool(
-    name="ask_user",
-    description="Ask the person one short question when the answer depends on a fact they have not given.",
-    parameters={"type": "object", "properties": {"question": {"type": "string"}},
-                "required": ["question"], "additionalProperties": False},
-    strict=True,
-)
-
-specialist = project.agents.create_version(
-    agent_name="mn-law-lemon",
-    definition=PromptAgentDefinition(model=model, instructions=RULES + lemon_document, tools=[ask_user]),
-)
-```
-
-`RULES` adds one paragraph: if you do not know whether the car was bought new or used, call `ask_user` with one short question, write no text before or after the call, and answer once the person replies. The supervisor needs two rules of its own:
-
-```text
-If the specialist's reply is a question for the person, not an answer, pass that question on to the user in your own
-reply and stop. Do not answer it yourself and do not guess.
-When the user answers, send their answer to the same specialist, then build your reply from what it returns.
-```
-
-On the wire, the A2A protocol has a task state for this, `input-required`. A specialist that needs a fact moves its task to that state with the question in the status message, and the caller continues the same task with the reply. The pieces on the Microsoft side exist: Agent Framework's `A2AAgent` client records the state and, on the next message, continues the same task by its `task_id`.
-
-### What I see today
-
-**The specialist does its part.** Called through the Responses API, it returned an `ask_user` function call with the right question, "Was the car bought new from a dealer, or used from a dealer/private seller?", two times out of two.
-
-**Over A2A, that question does not arrive.** Called through its A2A endpoint, the same agent returned a completed task with no message and no artifact. I printed the raw JSON-RPC body so that no client library could hide a field, and I repeated the call over A2A 1.0, A2A 0.3, and 1.0 with both extensions that the agent card advertises, `mcp-approval-request` and `citations`.
-
-```json
-{"jsonrpc":"2.0","id":"...","result":{"task":{"id":"resp_...","contextId":"ctxt_...",
-  "status":{"state":"TASK_STATE_COMPLETED","timestamp":"2026-10-28T04:56:42+00:00"},"artifacts":[]}}}
-```
-
-| Reply over A2A when the specialist calls `ask_user` | Result |
-|---|---|
-| A2A 1.0 | `COMPLETED`, no artifacts |
-| A2A 0.3 | `completed`, no artifacts |
-| A2A 1.0 with both advertised extensions requested | `COMPLETED`, no artifacts |
-
-**A question written as plain text does arrive.** When a specialist asked in text, the reply was a completed task with the question in its artifact, and the task carried a `contextId`. A supervisor with the two rules above put that question to the user, and then sent the user's answer to the specialist. The specialist asked in one of two runs, and in the other it answered both branches, new and used.
-
-### The orchestration1 conversation, in Foundry
-
-[orchestration1](/posts/orchestration1/) has a section called "One conversation, four designs". Its clearest example is the phone question where the document's answer turns on a fact the user never gave, whether the phone was held: "I got a ticket for using my phone, but I was just checking the map. Is that even illegal?", followed by "Does it matter that I was fully stopped and not moving?". In that post every design paused to ask whether the phone was held or mounted, and then gave a definite answer. I ran the same two questions through three Foundry designs.
-
-| Design | Asked a question? | Input tokens, turn 1 / turn 2 |
-|---|---|---|
-| Supervisor and specialists over A2A, as built in this post | No. "Maybe not — it depends on how you checked the map", with both cases covered | 3,160 / 3,674 at the supervisor, plus about 3,600 for each specialist call (estimated) |
-| One agent holding all six documents | No. "Maybe not — it depends on exactly how you were using it" | 35,084 / 35,474 |
-| Phone specialist with an `ask_user` tool, called through the Responses API | Yes: "Was your phone held in your hand or mounted?" | 3,719 and 3,772 / 3,886 |
-
-The third row behaves like orchestration1. The specialist asked the same question, and after the scripted reply, "I was holding the phone in one hand, and it was not mounted", it answered that § 169.475, subd. 2(a)(1) prohibits holding the device, and that the navigation exception applies only if the person does not hold it. The follow-up about being stopped was answered in the same conversation for 3,886 tokens, with the quoted rule that a stopped vehicle is still part of traffic unless it is lawfully stopped, off the road and not obstructing traffic.
-
-The first two rows did not ask, because neither has an `ask_user` tool or a rule to ask. Both gave a correct conditional answer that covers held and not held, and both answered the follow-up correctly. The difference is that the question to the user would have made the answer definite.
-
-For comparison, orchestration1 recorded these prompt tokens for the two turns: one agent with everything in its prompt 107,280 and 108,209, skills 14,593 and 4,829, subagents 14,875 and 7,750, and handoffs 14,664 and 4,809. Those runs used different models on my own machine, so only the shape carries over. The flat agent there paid for the whole prompt again at every pause. Here the flat agent did not ask, so it paid about 35,000 tokens a turn, and I did not measure what it would have cost with a question.
-
-Here is the intended flow for the supervisor design, with the one step that does not work today:
-
-```mermaid
-sequenceDiagram
-    participant U as User
-    participant S as Supervisor
-    participant P as Phone specialist
-
-    U->>S: "I got a ticket for using my phone,<br/>but I was just checking the map.<br/>Is that even illegal?"
-    S->>P: A2A message: phone ticket, checking a map
-    P->>P: ask_user("Was your phone held<br/>in your hand or mounted?")
-    Note over S,P: Today over A2A the question is dropped:<br/>the task comes back completed and empty
-    P-->>S: Intended: input-required with the question
-    S-->>U: "Was your phone held in your hand or mounted?"
-    U->>S: "In one hand, not mounted"
-    S->>P: A2A message continuing the same task
-    P-->>S: "Yes. Prohibited under subd. 2(a)(1)..."
-    S-->>U: "Yes. Prohibited under subd. 2(a)(1)..."
-```
-
-### Why I expect this to be fixed
-
-Everything else in the chain works: the specialist asks, the protocol has a place for the question, and Microsoft's client knows how to continue the task. The missing piece looks small. Microsoft's open-source Agent Framework has an A2A server executor, `A2AExecutor`, and its source skips function-call content. A comment there says that "intermediate function_call / function_result from tool use" is skipped, and the task is then marked complete. It never sets `TASK_STATE_INPUT_REQUIRED`. I have not seen Foundry's own endpoint code, so that Foundry behaves like this executor is an inference. A mapping from a pending `ask_user` call to `input-required` is the natural addition, and I expect Microsoft to make it.
-
-:::watch-it I may have got this wrong
-This is one project, one model and one region, and I may be doing something wrong. I found nothing in Microsoft's documentation about function tools over A2A, either as a limit or as a bug, so I cannot say whether the behaviour is intended. I tested a prompt agent, not a hosted agent. To check my result, create a prompt agent with a function tool, enable incoming A2A, and print the raw reply:
-
-```python
-async def show(response):                      # print the raw JSON-RPC body
-    if response.request.method == "POST":
-        await response.aread()
-        print(response.status_code, response.text)
-
-async with httpx.AsyncClient(headers={"Authorization": f"Bearer {token}"}, event_hooks={"response": [show]}) as http:
-    card = await A2ACardResolver(httpx_client=http, base_url=A2A_BASE, agent_card_path="agentCard/v1.0").get_agent_card()
-    client = await create_client(agent=card, client_config=ClientConfig(streaming=False, httpx_client=http))
-    message = new_text_message("My car has been in the shop three times. Do I qualify for a refund?", role=Role.ROLE_USER)
-    async for _ in client.send_message(SendMessageRequest(message=message)):
-        pass
-```
-
-If you get an `input-required` task or the question in a message, tell me, because then something in my setup is different from yours.
-:::
-
-### What I would tell Microsoft
-
-- A question asked through a function tool on an agent exposed over A2A should surface to the caller. The natural form is the task state `input-required`, with the question in the status message. The official `a2a-sdk` offers `TaskUpdater.requires_input()` for exactly this, and Microsoft's own client already understands the state.
-- If that is deliberately unsupported, say so in the incoming A2A page, next to the existing limits on text and streaming.
-- Foundry's A2A tool should document what it does when a remote agent returns `input-required`. I could not produce one to test it.
-
-The 62-question results above do not depend on any of this. Their specialists are told to name the fact an answer depends on, and they have no `ask_user` tool.
-
 ### The same 62 questions in my LangChain project
 
 I ran these 62 questions through a LangChain supervisor and through a flat agent on a local model, `gemma4:12b`, using the same keyword check. Those results are stored with my LangChain project, and orchestration1 does not show them, because that post compares LangChain patterns on conversations.
@@ -405,7 +442,7 @@ The deployment had 100,000 tokens a minute, and my subscription allows 200,000 f
 
 ## What I conclude, and what I do not
 
-For this task, on these 62 questions, the single agent that held all six documents was more accurate than my supervisor on every check I ran, and it needed no routing. The supervisor used about a quarter of the tokens and was faster. If the documents did not fit in one prompt, or if the cost mattered more than the last six answers, the supervisor would be the answer. The six documents fit in one prompt here, which is why the flat agent works at all.
+For the 62 single-turn questions, the single agent that held all six documents was more accurate than my supervisor on every check I ran, and it needed no routing. The supervisor used about a quarter of the tokens and was faster. If the documents did not fit in one prompt, or if the cost mattered more than the last six answers, the supervisor would be the answer. The six documents fit in one prompt here, which is why the flat agent works at all.
 
 I did not test any of this:
 
@@ -413,17 +450,19 @@ I did not test any of this:
 - **A flat agent run twice.** Its second run stopped at 33 questions to save tokens.
 - **The eight held-out questions and a full conversation.**
 - **A fixed-routing design.** I did not build a workflow or an Agent Framework router, so I cannot say whether code that picks the specialist would handle the multi-area questions better.
+- **The follow-up turns at high effort.** Whether high effort makes the specialists over-ask is not measured, and the 62-question results are all at the default effort.
 - **Higher reasoning effort for the 62 questions.** Every supervisor number here is at the default effort. In a small side test, a higher effort changed whether the supervisor asked a question before calling a specialist, so it may change other behaviour too.
 - **Hosted agents over A2A,** and whether Foundry's A2A tool continues an `input-required` task from a server that returns one.
 - **Removing the role from an agent that worked.** I tested a new agent without the role and then with it.
 
 :::bullet-points What I know
+- **Specialists notice a missing fact when given the effort.** With a generic rule and no checklist, they asked on 9 of 12 needed turns at high reasoning effort and 1 of 12 at the default, with targeted questions.
+- **The `ask_user` question has one missing piece over A2A.** The specialist asks correctly, but the A2A reply is an empty completed task. I expect Microsoft to fix that, and I explain how to check my result.
 - **Foundry has no Connected Agents any more.** The A2A tool replaces it, and each specialist needs incoming A2A enabled with the SDK, because the portal cannot do it yet.
 - **Each call is visible.** The output items name the specialist and show the rewritten question and the answer.
-- **A required tool call keeps the supervisor from answering without asking.** It needs an outside specialist so that out-of-scope questions still have somewhere to go.
+- **A required tool call keeps the supervisor from answering without calling a specialist.** It needs an outside specialist so that out-of-scope questions still have somewhere to go.
 - **The supervisor was cheaper and faster, and less accurate.** It had the required facts on 50 of 56 in-scope questions against 56 of 56 for one agent holding everything, and used about a quarter of the tokens. My LangChain run of the same questions had the opposite accuracy result.
 - **Every agent with A2A tools needs the Foundry Agent Consumer role,** and a new connection needs about five minutes before its first call.
-- **The `ask_user` flow has one missing piece.** The specialist asks correctly, but over A2A the question does not arrive. I expect Microsoft to fix that, and I explain how to check my result.
 :::
 
 ## Cleaning up
