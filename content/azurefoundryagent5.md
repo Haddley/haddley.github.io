@@ -287,15 +287,15 @@ I printed the raw JSON-RPC body so that no client library could hide a field. It
 A question that a Foundry prompt agent asks through a function tool does not come back over A2A. I could not tell whether Microsoft intends this, because I found nothing in its documentation about function tools over A2A, either as a limit or as a bug. I tested one agent type, a prompt agent, with one tool. I did not test hosted agents. If you rely on it, test it yourself.
 :::
 
-### The workaround: ask at the supervisor
+### A supervisor that asks for itself
 
-If the question cannot travel through A2A, the supervisor can ask it before it calls a specialist. I gave the supervisor its own `ask_user` function tool next to the A2A tool, with `tool_choice` required, and one rule: call `ask_user` before the specialist if the answer depends on a fact the user has not given. A small client loop answers the function call, as Microsoft's function-calling page documents, and returns the user's reply.
+If the question cannot travel through A2A, the supervisor can ask it before it calls a specialist. That is not the pattern I want, because the specialist holds the document and knows which fact decides the answer, and here the supervisor does the detecting. I tried it anyway, to see what Foundry allows. I gave the supervisor its own `ask_user` function tool next to the A2A tool, with `tool_choice` required, and one rule: call `ask_user` before the specialist if the answer depends on a fact the user has not given. A small client loop answers the function call, as Microsoft's function-calling page documents, and returns the user's reply.
 
 With a single specialist behind it, this worked. On the lemon question, three runs out of three called `ask_user` first with "Was the car bought new or used?", then called the specialist with every fact restated, and returned a correct used-car answer. A question that already said "new car from a dealer" made no `ask_user` call.
 
 At the default reasoning effort it did not work on the full supervisor. I added `ask_user` to the supervisor with seven A2A tools and ran five gate questions from orchestration1, each with a scripted answer: a DWI stop, street racing, the lemon question, a no-fault crash and a phone ticket. It asked on none of them, and went straight to a specialist every time. A second, stronger instruction that lists the missing facts to look for gave the same result, none of five.
 
-**Reasoning effort made the difference.** I then set the supervisor's reasoning effort to high, with the stronger instruction and nothing else changed:
+**High reasoning effort changed the result, but the test is confounded.** I then set the supervisor's reasoning effort to high, with the stronger instruction and nothing else changed:
 
 ```python
 definition=PromptAgentDefinition(model=model, instructions=INSTRUCTIONS, tool_choice="required",
@@ -314,7 +314,7 @@ It asked on all five gate questions, each time with a short, sensible question, 
 
 Of the three controls, two behaved correctly: the speed-limit question and the Wisconsin question made no `ask_user` call. The third, a new car already described as new, still drew a question, about whether the problem began within the first two years or 24,000 miles. That is a relevant fact the user had not given, so I would not call it wrong, but it is a question I had not planned for. The lemon gate question also asked three times, twice about the warranty, because my scripted answer did not cover it.
 
-This is one run for each question, with a scripted user. I did not measure the extra time or cost of high effort, and I did not rerun the 62 questions at high effort, so every number earlier in this post is for the default effort.
+The stronger instruction listed the facts to look for: new or used, refused or failed a test, how badly someone was hurt, held or mounted phone, and medical costs. Those are the facts the five questions turn on, and the questions it asked follow them closely. So this shows that the supervisor can follow a checklist I wrote, not that it can work out which facts matter. A fair test would use wording with no examples, and I did not run one. It is also one run for each question, with a scripted user. I did not measure the extra time or cost of high effort, and I did not rerun the 62 questions at high effort, so every number earlier in this post is for the default effort.
 
 ### What I would tell Microsoft
 
@@ -340,7 +340,8 @@ I did not test any of this:
 - **Most answers by anything but keywords.** A model judged 19 of the 62 questions, and I read five answers. The rest are keyword checks only.
 - **A flat agent run twice.** Its second run stopped at 33 questions to save tokens.
 - **The eight held-out questions and a full conversation.** The clarification tests above use one question, and five gate questions with scripted answers.
-- **High reasoning effort at scale.** The supervisor asked correctly on five gate questions at high effort, one run each. I did not rerun the 62 questions at high effort, or measure its cost.
+- **A supervisor that finds the missing facts without a checklist.** At high effort it asked on five of five when my instruction listed the facts, and I did not run it without the list. I also did not rerun the 62 questions at high effort, or measure its cost.
+- **Specialists asking through the Responses API, with client code in the middle.** I showed that a specialist calls `ask_user` correctly when called that way, and I did not build the loop around it.
 - **A fixed-routing design.** I did not build a workflow or an Agent Framework router, so I cannot say whether code that picks the specialist would handle the multi-area questions better.
 - **Removing the role from an agent that worked.** I tested a new agent without the role and then with it.
 
@@ -348,7 +349,7 @@ I did not test any of this:
 - **Foundry has no Connected Agents any more.** The A2A tool replaces it, and each specialist needs incoming A2A enabled with the SDK, because the portal cannot do it yet.
 - **Each call is visible.** The output items name the specialist and show the rewritten question and the answer.
 - **A required tool call keeps the supervisor from answering without asking.** It needs an outside specialist so that out-of-scope questions still have somewhere to go.
-- **A question asked in text arrives as a finished answer, and one asked through `ask_user` is lost.** Foundry did not use `input-required` in either case. Ask at the supervisor instead, and give it a high reasoning effort.
+- **A question asked in text arrives as a finished answer, and one asked through `ask_user` is lost.** Foundry did not use `input-required` in either case. Having the supervisor ask for itself is a workaround, not the pattern I want, because the specialist is the one that knows which fact matters.
 - **Every agent with A2A tools needs the Foundry Agent Consumer role,** and a new connection needs about five minutes before its first call.
 - **The supervisor traded accuracy for cost.** It had the required facts on 50 of 56 in-scope questions against 56 of 56 for one agent holding everything, and used about a quarter of the tokens.
 - **Multi-area questions are its weak spot.** It made 64 specialist calls for 62 questions.
