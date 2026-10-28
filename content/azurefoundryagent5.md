@@ -1,7 +1,7 @@
 ---
 title: "Azure Foundry Agent"
 part: 4
-description: "Building a supervisor agent in Microsoft Foundry that answers Minnesota traffic-law questions by calling six specialist agents over the Agent2Agent protocol, with the setup, the three errors I hit, and a first look at what the supervisor does"
+description: "Building a supervisor agent in Microsoft Foundry that answers Minnesota traffic-law questions by calling six specialist agents over the Agent2Agent protocol, testing it on 62 questions against one agent that holds every document, and fixing the supervisor when it stopped without calling anyone"
 date: "2026-10-28"
 categories: ["AI", "Azure"]
 image: "/assets/images/azurefoundryagent5/posts-meta.svg"
@@ -12,13 +12,20 @@ slug: "azurefoundryagent5"
 
 # Subagents in Foundry: a supervisor and six specialists
 
-:::watch-it This is an early version
-I built the agents and ran the first questions, and this post shows the build. I have not finished the test. The comparison with one agent that holds every document, and the full set of 62 questions, are still to come, and I will update this post when they are done. Everything below that sounds like a result comes from the first 32 questions only.
-:::
-
 In [orchestration1](/posts/orchestration1/) I compared several ways to build an agent that answers questions about Minnesota traffic and car law from six documents. One of them was **subagents**: a supervisor decides which specialist to ask, rewrites the question, and each specialist holds one document. I built that with LangChain on my own Mac.
 
-In this post I build the same design in Microsoft Foundry. In [Part 3](/posts/azurefoundryagent4/) I built a voice agent from a template and gave it a tool. Here every agent is a plain prompt agent, and the new part is how one agent calls another.
+In this post I build the same design in Microsoft Foundry, and test it on the same 62 questions. In [Part 3](/posts/azurefoundryagent4/) I built a voice agent from a template and gave it a tool. Here every agent is a plain prompt agent, and the new part is how one agent calls another.
+
+Here is where it ended up, on 62 questions with a simple check that the required facts appear in the answer:
+
+| Design | Required facts present | Routed as expected | In-scope questions with no specialist call |
+|---|---|---|---|
+| Supervisor, my first version | 43 of 62 | 39 of 62 | 18 of 56 |
+| Supervisor, after a fix that made it worse | 30 of 62 | 23 of 62 | 37 of 56 |
+| Supervisor, with a required tool call | 56 of 62 | 55 of 62 | 1 of 56 |
+| One agent holding all six documents | 62 of 62 | not applicable | not applicable |
+
+The supervisor cost roughly a quarter of the tokens of the one-agent design, and it still scored lower. The rest of this post shows how I built it, the three connection errors I hit, why the first supervisor often stopped without calling anyone, and the two fixes I tried.
 
 :::brain-power Before you read on
 In LangChain a subagent is a tool that the supervisor calls. Foundry has prompt agents but, as I found out, no longer has a tool that wraps one agent inside another. What would you use instead, and what would have to be true for the call to work?
@@ -31,7 +38,9 @@ Foundry used to have a feature called Connected Agents, in which one agent held 
 - **The A2A tool.** An agent calls any endpoint that speaks the [Agent2Agent protocol](https://a2a-protocol.org/latest/), including another Foundry agent with incoming A2A switched on.
 - **Workflows.** A declarative flow that runs several agents in sequence, in a group chat, or with a person in the loop.
 
-A supervisor that decides at run time which specialist to call is closest to the A2A tool, so I used that. The mapping from orchestration1 is direct:
+A supervisor that decides at run time which specialist to call is closest to the A2A tool, so I used that. I did not build a workflow, because the workflow page says Foundry is retiring workflows on 1 December 2026 and tells anyone building new ones to use Microsoft Agent Framework. A fixed-routing design, where code picks the specialist and the model does not decide, would be worth trying there, and I have not.
+
+The mapping from orchestration1 is direct:
 
 | In orchestration1 (LangChain) | In Foundry |
 |---|---|
@@ -77,7 +86,7 @@ project.agents.update_details(
 )
 ```
 
-The agent card is what a calling agent sees about its target, so the `description` is doing the job that a tool description does in LangChain. I wrote one sentence for each area, such as "Questions about using or holding a phone or other device while driving."
+The agent card is what a calling agent sees about its target, so the `description` is doing the job that a tool description does in LangChain. I wrote one sentence for each area, such as "Questions about using or holding a phone or other device while driving." I fetched the phone specialist's card with a signed-in request to check it. It lists the endpoint three ways, JSON-RPC for A2A 1.0, JSON-RPC for 0.3 and HTTP+JSON for 0.3, and it says text is the only input and output mode and that streaming is off.
 
 I asked the phone specialist a question directly before I connected anything, to check it worked alone.
 
@@ -88,7 +97,7 @@ Is it illegal to hold my phone at a red light?
 It answered from its document and quoted § 169.475, subd. 2(a) and the rule that a car stopped at a traffic light is still part of traffic. The call used 3,647 input tokens.
 
 ![](assets/images/azurefoundryagent5/agents-list.jpg)
-*I opened the Agents list and found the six specialists, the supervisor and the flat agent I will use as a baseline*
+*I opened the Agents list and found the six specialists, the supervisor and the flat agent I used as a baseline*
 
 ## Connecting the supervisor to the specialists
 
@@ -101,7 +110,7 @@ body = {"properties": {"authType": "AgenticIdentityToken", "category": "RemoteA2
 # PUT .../connections/a2a-<area>?api-version=2025-04-01-preview
 ```
 
-The six connections appear in the portal under **Tools**, with the type Agent2Agent (A2A).
+The connections appear in the portal under **Tools**, with the type Agent2Agent (A2A).
 
 ![](assets/images/azurefoundryagent5/tools-a2a-connections.jpg)
 *I opened Tools and found the six a2a connections next to the MCP connection from Part 3*
@@ -113,7 +122,7 @@ I opened one to see what Foundry stored. The authentication is "Microsoft Entra 
 
 ## The supervisor
 
-The supervisor holds no law. Its instructions tell it to pick the areas, rewrite the question so that it stands on its own, call the specialists, and build the answer only from what they return. A question outside the six areas gets no call at all.
+The supervisor holds no law. Its first instructions tell it to pick the areas, rewrite the question so that it stands on its own, call the specialists, and build the answer only from what they return. A question outside the six areas gets no call at all.
 
 ```python
 INSTRUCTIONS = """You answer questions about Minnesota traffic and car law by asking specialists.
@@ -131,17 +140,16 @@ tools = [A2ATool(a2a_version=A2AProtocolVersion.V1_0, base_url=target, project_c
          for area in AREAS]
 ```
 
-![](assets/images/azurefoundryagent5/supervisor-playground.jpg)
-*I opened mn-law-supervisor in the playground and found its instructions and its six A2A tools*
-
 ## Three errors before the first answer
 
-The first call to the supervisor failed three times, with three different messages. Each one told me something about how the connection works.
+The first call to the supervisor failed with three different messages, one after another. Each one told me something about how the connection works, and one of them I explained wrongly the first time I published this post.
 
-:::watch-it Three errors, and the last one was a permission
-1. `does not have a valid target URL specified, and no server URL was provided`. I had passed the full Azure resource ID of the connection and nothing else. Adding `base_url` to the tool fixed this message.
-2. `Connection ... not found`, with the full resource ID and the base URL. The connection existed, and both the portal and the SDK could read it. Passing the connection **name**, `a2a-speeding`, instead of the ID, gave the same message in shorter form.
-3. The cause of the last one was permission. The supervisor has its own identity, and that identity needs the **Foundry Agent Consumer** role before it can call another agent's endpoint. Microsoft's documentation says so, and the error message does not. I assigned the role on the project to the supervisor's `instance_identity`, and the call worked at once.
+:::watch-it Three errors, and I am not sure what fixed the last one
+1. `does not have a valid target URL specified, and no server URL was provided`. I had passed the full Azure resource ID of the connection and nothing else. Adding `base_url` to the tool changed this message.
+2. `Connection ... not found`, with the full resource ID and the base URL, and then with the connection **name**, `a2a-speeding`. The connection existed, and both the portal and the SDK could read it.
+3. After I assigned the **Foundry Agent Consumer** role to the supervisor's identity on the project, the call worked at once. Microsoft's documentation says the calling identity needs that role.
+
+My first version of this post said the missing role caused error 2. I can no longer say that. Later I added a seventh connection, `a2a-outside`, and the same `not found` message came back and stayed for more than eight minutes, with the role already in place. A connection I created under a new name and left alone for four minutes worked on its first call. That test changed two things at once, the name and the wait, so I cannot tell whether new connections need time to become visible or a failed lookup is remembered. I never removed the role to see whether the calls need it, so I do not know that either.
 :::
 
 ```bash
@@ -151,6 +159,8 @@ az role assignment create \
   --role eed3b665-ab3a-47b6-8f48-c9382fb1dad6 \
   --scope <project resource id>
 ```
+
+My advice is to assign the role, as the documentation says, and to expect a delay or a failed first lookup after you create a connection. If a call says a connection was not found, check that the connection exists before you change anything else.
 
 ## What one call looks like
 
@@ -170,48 +180,121 @@ That is everything I need to check the design. The `name` says which specialist 
 
 :::no-dumb-questions
 **Q: The item type says `preview`, but I asked for A2A version 1.0. Why?**
-A: I do not know yet. The tool was created with `A2AProtocolVersion.V1_0`, and the output items are still called `a2a_preview_call`. I will find out before I finish this post.
+A: I read the agent back with the SDK. The tool is stored as type `a2a` with `a2a_version` 1.0, which Microsoft lists as the generally available version. So the `preview` is in the name of the output item, not in the tool I created. I cannot see which protocol version Foundry used on the wire, so I do not claim one.
 
 **Q: Does the supervisor's token count include the specialists?**
-A: No. The specialist runs inside the A2A call and its tokens are not in the supervisor's usage. The phone question used 2,725 input tokens at the supervisor and the specialist's own call, made separately, used 3,647. Any cost comparison with one big agent has to add them up, not read the supervisor's number.
+A: No. The specialist runs inside the A2A call and its tokens are not in the supervisor's usage. I estimate them below from the size of each document.
 :::
 
-## A first look: the supervisor can stop too early
+## The test
 
-I ran the first 32 of orchestration1's 62 single-turn questions through the supervisor, two at a time, and scored them the way I did there: did it call the expected specialists, and does the answer contain the required facts.
+I used the 62 single-turn questions from orchestration1. Each one is labelled with the specialists it should reach and the facts the answer must contain. There are 43 single-area questions, 9 that need more than one area, 4 with noisy wording, and 6 outside the six areas, where the right move is to call no specialist.
 
-| Category | Questions | Required facts present | Expected specialists called |
-|---|---|---|---|
-| Single area | 19 | 12 | 13 |
-| More than one area | 4 | 3 | 1 |
-| Noisy wording | 3 | 2 | 2 |
-| Outside the six areas | 6 | 6 | 5 |
-| **All** | **32** | **23** | **21** |
+I scored each answer two ways, the same as the first half of orchestration1. **Facts** means every required fact appears in the answer, which is a keyword check. **Routed** means the set of specialists the supervisor called matches one of the expected sets. I ran every question once through each design, and never ran two designs at the same time, with two questions in flight for the supervisor and one for the flat agent.
 
-The numbers matter less than one pattern in them. On nine questions that belong to one of the six areas, the supervisor called no specialist at all. It wrote a line announcing what it was about to do, and then stopped.
+I also built the baseline from orchestration1: one agent, `mn-law-flat`, with all six documents in its instructions, about 25,900 words in a single prompt.
+
+## The first supervisor often stopped without calling anyone
+
+The first supervisor completed all 62 questions with no errors. Completing is not answering. On 18 of the 56 questions that belong to one of the six areas, it called no specialist at all. It wrote a line announcing what it was about to do, and then stopped.
 
 > I'm going to check a Minnesota DWI specialist for the exact legal threshold.
 
-That was the whole answer to "What blood alcohol level makes it a DWI for a regular driver?" A user would see a promise and no result. The specialist for that question worked when I called it directly, so the fault is in the supervisor, not in the documents. I have not fixed it, and I have not yet tried the obvious changes, which are to tell the supervisor to call a tool before it replies and to set the tool choice to required. I will run those and keep both sets of results, so the post shows the before and after.
+That was the whole answer to "What blood alcohol level makes it a DWI for a regular driver?" A user would see a promise and no result. The specialist for that question worked when I called it directly, so the fault was in the supervisor, not in the documents. The 18 were spread across several areas, so it was not one weak document.
 
-I also hit the token limit of the model deployment, and that is a result too. Foundry returned `exceeded token rate limit` to a question I typed into the playground while another test was running.
+## A fix that made it worse
+
+My first fix was to add two rules to the instructions: call every specialist the question needs, and never reply with a sentence about what I am going to do. I wrote that the first action for an in-scope question is the specialist call, and that the user sees nothing from the supervisor until the results are back.
+
+That made the supervisor worse. It made no specialist call on 37 of the 56 in-scope questions, up from 18, and the facts score fell from 43 to 30. Of those 37 answers, 29 were empty or a single line. On one, "What blood alcohol level makes it a DWI for a regular driver?", the supervisor answered "0.08 or higher" from its own memory, which the instructions forbid. My rule that the user sees nothing until the results are back seems to have been read as permission to say nothing. I cannot prove that reading, only that the scores fell.
+
+I kept that run and the original one. Changing the words was not going to be the fix.
+
+## A fix that worked
+
+The second fix was to stop asking the model to remember. Foundry lets an agent definition set `tool_choice`, so I set it to `required`, and every response now has to start with a tool call. That would break the six out-of-scope questions, which should call nothing, so I added a seventh specialist, `mn-law-outside`. Its only job is to say a question is outside the six areas and name them. The supervisor is still all A2A.
+
+```python
+agent = project.agents.create_version(
+    agent_name="mn-law-supervisor",
+    definition=PromptAgentDefinition(model=model, instructions=INSTRUCTIONS, tools=tools,
+                                     tool_choice="required"))
+```
+
+I also reverted the instructions to the original wording and added two lines: there are seven specialist tools, and a question outside the six areas goes to the outside specialist. The supervisor now has six versions, because every change makes a new one.
+
+![](assets/images/azurefoundryagent5/supervisor-playground-v6.jpg)
+*I opened version 6 in the playground and found the seven-tool instructions and the A2A tools*
+
+![](assets/images/azurefoundryagent5/supervisor-versions.jpg)
+*I opened the version list for mn-law-supervisor and found six versions: three from getting the connections working, then one for each fix*
+
+The playground has a compare view that puts two versions side by side. I asked version 3 and version 6 the same question.
+
+![](assets/images/azurefoundryagent5/compare-v3-v6.jpg)
+*I compared version 3 and version 6 on "What happens to my license if I'm clocked at 105 mph?". Version 3 offered to check and made no call. Version 6 called a specialist and answered*
+
+Version 3 returned a single `message` item and offered to check. Version 6 returned the call, its output and the message, and answered that the license can be revoked for six months for driving more than 100 mph. Version 6 also answered the DWI question that version 3 had skipped in the test run, and the playground shows the three items and the 3,163 tokens.
+
+![](assets/images/azurefoundryagent5/playground-dwi-answer.jpg)
+*I asked version 6 the DWI question and found the call, the call output and the message in the response*
+
+The portal's trace view lists the same three items. It tells you that the detail comes from the agent's responses and that to see distributed traces you connect Application Insights, which I did not do.
+
+![](assets/images/azurefoundryagent5/response-trace.jpg)
+*I opened the trace for that response and found the three items under a single response*
+
+## The results
+
+| Design | Facts | Routed | No specialist call | Seconds for 62 questions |
+|---|---|---|---|---|
+| Supervisor, first version (3) | 43 of 62 | 39 of 62 | 18 of 56 | 533 |
+| Supervisor, rules added (4) | 30 of 62 | 23 of 62 | 37 of 56 | 261 |
+| Supervisor, required tool call (6) | 56 of 62 | 55 of 62 | 1 of 56 | 434 |
+| One agent holding all six documents | 62 of 62 | not applicable | not applicable | 668 |
+
+Version 4 was quick, probably because it so often said nothing. By category, version 6 had the required facts on 40 of 43 single-area questions, 6 of 9 multi-area questions, 4 of 4 noisy questions and 6 of 6 outside questions. The flat agent was right on every category.
+
+### What version 6 still gets wrong
+
+- **Multi-area questions.** It made 64 specialist calls for 62 questions, so it almost never asked two specialists. "I was texting while doing 105 mph" went to the phone specialist and not to speeding. A DWI-against-speeding comparison went to the DWI specialist alone.
+- **Two out-of-scope questions reached a specialist.** "What is the speed limit in Wisconsin?" and a question about the fine for running a stop sign both went to the speeding specialist. In a quick test of the Wisconsin question the supervisor used the outside specialist, so this varies from run to run, and I ran each question once.
+- **Misroutes.** One question went to the outside specialist that belongs to reckless driving, one went to the reckless specialist that belongs to speeding, and one went to the accident specialist that belongs to DWI.
+- **Six answers without the required facts**, four of them from the questions above.
+
+### The cost
+
+The supervisor's own usage was 195,540 input tokens for 62 questions, against 2,174,855 for the flat agent, but that number leaves out the specialists. I estimated them. The phone specialist used 3,647 input tokens for a 2,586-word document, about 1.35 tokens a word, so I applied that rate to the document each call used. The 64 specialist calls come to about 371,000 input tokens, and the whole supervisor design to about 566,000. That is 3.8 times fewer than the flat agent. It is an estimate, because Foundry does not report the specialists' tokens.
+
+It took 434 seconds for the supervisor and 668 for the flat agent, so the supervisor was also faster, even though each question makes two model calls in sequence.
+
+## The rate limit, and what it did to the test
+
+The flat agent needs about 35,000 input tokens a question. The first time I ran it, four questions at a time, it used up the deployment's tokens-per-minute limit, and a question I typed into the supervisor's playground at the same time failed.
 
 ![](assets/images/azurefoundryagent5/playground-rate-limit-error.jpg)
-*I typed a question into the supervisor's playground and got a token rate limit error while another test was running*
+*I typed a question into the supervisor's playground and got a token rate limit error while the flat agent's test was running*
 
-## What is still to do
+The deployment had 100,000 tokens a minute, and my subscription allows 200,000 for this model, so I raised it to that. After that the flat agent ran all 62 questions with no errors, one question at a time. The limit is per minute and I did not see a weekly one.
 
-- Fix the supervisor so that it always calls a specialist when the question belongs to one, and compare the new results with the ones above.
-- Run all 62 questions, and the eight held-out ones.
-- Build the baseline: one agent that holds all six documents, about 25,900 words, in a single prompt. In orchestration1 this was the design to beat. Each question costs roughly 40,000 input tokens here, and it is the run that used up the quota.
-- Take screenshots of the supervisor answering in the playground and of its traces.
-- Find out why the call items say `preview`.
+## What I conclude, and what I do not
 
-:::bullet-points What I know so far
+For this task, on these 62 questions, the single agent that held all six documents was more accurate than my supervisor, even at its best, and it needed no routing. The supervisor used about a quarter of the tokens and was faster. If the documents did not fit in one prompt, or if the cost mattered more than the last six answers, the supervisor would be the answer. The six documents fit in one prompt here, which is why the flat agent works at all.
+
+I did not test any of this:
+
+- **Whether the answers are correct.** A keyword check shows that a fact appears. In orchestration1 I also used a judge model, and I have not here, so the flat agent's 62 of 62 may be generous.
+- **Repeats.** Each question ran once per design. The Wisconsin question showed that one run can differ from the next.
+- **The eight held-out questions and any multi-turn conversation.** I did not run them.
+- **A fixed-routing design.** I did not build a workflow or an Agent Framework router, so I cannot say whether code that picks the specialist would handle the multi-area questions better.
+- **Whether the role is needed.** See the three errors above.
+
+:::bullet-points What I know
 - **Foundry has no Connected Agents any more.** The A2A tool replaces it, and each specialist needs incoming A2A enabled with the SDK, because the portal cannot do it yet.
-- **A supervisor needs the Foundry Agent Consumer role on its own identity.** Without it, the error says the connection was not found, which sent me looking in the wrong place.
 - **Each call is visible.** The output items name the specialist and show the rewritten question and the answer.
-- **The supervisor can reply without calling anything.** It happened on nine of the first 32 questions, and it is the first thing I will fix.
+- **A model that is allowed to answer without a tool call sometimes will.** The first supervisor did it on 18 of 56 in-scope questions, and rewording the instructions made it worse.
+- **`tool_choice: required` fixed it,** with an outside specialist so that out-of-scope questions still have somewhere to go. Facts went from 43 to 56 of 62.
+- **The supervisor still lost to one agent holding everything,** 56 of 62 against 62 of 62, for about a quarter of the tokens.
 :::
 
 ## Cleaning up
@@ -221,15 +304,16 @@ I have not run any of these commands. The agents and connections stay in the pro
 ```python
 for area in AREAS:
     project.agents.delete(agent_name(area))
-project.agents.delete("mn-law-supervisor")
-project.agents.delete("mn-law-flat")
+for name in ("mn-law-supervisor", "mn-law-outside", "mn-law-flat"):
+    project.agents.delete(name)
 ```
 
-Delete the six `a2a-<area>` connections from **Tools** in the portal, or with `az rest --method delete` against each connection, and remove the role assignment for the supervisor's identity.
+Delete the connections from **Tools** in the portal, or with `az rest --method delete` against each one. There are six `a2a-<area>` connections, `a2a-offscope` that the supervisor uses for the outside specialist, and `a2a-outside`, which my failed first attempt left behind and nothing uses. Remove the role assignment for the supervisor's identity too. The raised token limit on the deployment stays until I lower it.
 
 ## References
 
 - [Connect to an A2A agent endpoint from Foundry Agent Service](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/tools/agent-to-agent)
 - [Enable incoming A2A on a Foundry agent](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/enable-agent-to-agent-endpoint)
+- [Build a workflow in Microsoft Foundry, which says workflows retire on 1 December 2026](https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/workflow)
 - [Agent Orchestration, part 1: the same design built with LangChain](/posts/orchestration1/)
 - [Part 3: the legal intake voice agent](/posts/azurefoundryagent4/)
