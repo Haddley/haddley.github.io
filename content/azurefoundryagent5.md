@@ -499,7 +499,7 @@ for name in AGENTS:
     project.agents.delete(name)
 ```
 
-The connections are the six `a2a-<area>` ones, `a2a-offscope` that the supervisor used for the outside specialist, `a2a-outside` from a failed first attempt, and `a2a-lemon-ask` from the clarification test. I deleted each with a `DELETE` request to its management address. The two supervisors' role assignments are separate, so I deleted those too, by their IDs. I raised the deployment's token limit from 100,000 to 200,000 tokens a minute, and I left that as it is.
+The connections are the six `a2a-<area>` ones, `a2a-offscope` that the supervisor used for the outside specialist, `a2a-outside` from a failed first attempt, and `a2a-lemon-ask` from the clarification test. I deleted each with a `DELETE` request to its management address. The two supervisors' role assignments are separate, so I deleted those too, by their IDs. I raised the deployment's token limit from 100,000 to 200,000 tokens a minute for the tests, and lowered it back to 100,000 afterwards.
 
 ## References
 
