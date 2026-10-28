@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
+  <title>A purple supervisor circle at the top connected by lines to six smaller specialist circles in two rows below, with a scales-of-justice bar over the supervisor</title>
+  <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+  <g stroke="#5bb4ea" stroke-width="1.6" stroke-linecap="round" fill="none">
+    <path d="M60,44 L22,84"/><path d="M60,44 L60,84"/><path d="M60,44 L98,84"/>
+    <path d="M60,44 L22,106" opacity=".55"/><path d="M60,44 L60,106" opacity=".55"/><path d="M60,44 L98,106" opacity=".55"/>
+  </g>
+  <circle cx="60" cy="34" r="16" fill="#7b4fd6"/>
+  <circle cx="60" cy="34" r="16" fill="none" stroke="#c9b6f2" stroke-width="1.5" opacity=".7"/>
+  <g stroke="#e8eef5" stroke-width="2" stroke-linecap="round" fill="none"><path d="M60,24 v20"/><path d="M50,29 h20"/><path d="M52,29 l-3,8 h6 Z"/><path d="M68,29 l-3,8 h6 Z"/></g>
+  <g fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5">
+    <circle cx="22" cy="84" r="8"/><circle cx="60" cy="84" r="8"/><circle cx="98" cy="84" r="8"/>
+    <circle cx="22" cy="106" r="8"/><circle cx="60" cy="106" r="8"/><circle cx="98" cy="106" r="8"/>
+  </g>
+  <g fill="#c9d3dd"><rect x="17" y="82" width="10" height="3" rx="1.5"/><rect x="55" y="82" width="10" height="3" rx="1.5"/><rect x="93" y="82" width="10" height="3" rx="1.5"/>
+    <rect x="17" y="104" width="10" height="3" rx="1.5"/><rect x="55" y="104" width="10" height="3" rx="1.5"/><rect x="93" y="104" width="10" height="3" rx="1.5"/></g>
+</svg>

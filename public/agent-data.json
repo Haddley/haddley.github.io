@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "azurefoundryagent5",
+      "title": "Azure Foundry Agent (Part 4)",
+      "description": "Building a supervisor agent in Microsoft Foundry that answers Minnesota traffic-law questions by calling six specialist agents over the Agent2Agent protocol, with the setup, the three errors I hit, and a first look at what the supervisor does",
+      "date": "2026-10-28",
+      "categories": [
+        "AI",
+        "Azure"
+      ],
+      "tags": "azure-ai-foundry, subagents, a2a, agent-orchestration, prompt-agents, legal-research"
+    },
+    {
       "slug": "azurefoundryagent4",
       "title": "Azure Foundry Agent (Part 3)",
       "description": "Starting from the Legal intake specialist voice agent template in Microsoft Foundry, adding a save tool as an MCP server on Azure Functions, and testing it with a made-up car accident call",
@@ -3268,5 +3279,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-28T01:40:18.633Z"
+  "generatedAt": "2026-10-28T02:31:10.821Z"
 }
