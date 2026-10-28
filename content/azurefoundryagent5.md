@@ -285,6 +285,8 @@ I printed the raw JSON-RPC body so that no client library could hide a field. It
 
 :::watch-it An undocumented gap
 A question that a Foundry prompt agent asks through a function tool does not come back over A2A. I could not tell whether Microsoft intends this, because I found nothing in its documentation about function tools over A2A, either as a limit or as a bug. I tested one agent type, a prompt agent, with one tool. I did not test hosted agents. If you rely on it, test it yourself.
+
+I did find the same behaviour in Microsoft's open code. The server side of Microsoft Agent Framework's A2A package, `A2AExecutor`, keeps only text, data and URI content, and a comment in its source says that content such as "intermediate function_call / function_result from tool use" is skipped. It then marks the task complete. Nowhere in that server code does it set `TASK_STATE_INPUT_REQUIRED`. The client side of the same package does handle that state: it records it and, on the next message, continues the same task by its `task_id`. So the protocol feature exists on Microsoft's client, and the server side does not send it. I have not seen Foundry's own endpoint code, so that Foundry behaves like this executor is an inference from what I observed.
 :::
 
 ### A supervisor that asks for itself
@@ -318,7 +320,7 @@ The stronger instruction listed the facts to look for: new or used, refused or f
 
 ### What I would tell Microsoft
 
-- A question asked through a function tool on an agent exposed over A2A should surface to the caller. The natural form is the task state `input-required`, with the question in the status message.
+- A question asked through a function tool on an agent exposed over A2A should surface to the caller. The natural form is the task state `input-required`, with the question in the status message. The official `a2a-sdk` offers `TaskUpdater.requires_input()` for exactly this, and Microsoft's own client already understands the state.
 - If that is deliberately unsupported, say so in the incoming A2A page, next to the existing limits on text and streaming.
 - Foundry's A2A tool should document what it does when a remote agent returns `input-required`, since I could not produce one to test it.
 
