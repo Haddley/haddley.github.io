@@ -18,7 +18,7 @@ In this post I build the same design in Microsoft Foundry, with a supervisor tha
 
 ## What I found
 
-- **Specialists notice a missing fact, with the right setting.** Each specialist has an `ask_user` tool and a generic rule, with no list of facts to look for. At the default reasoning effort they asked on 1 of the 12 turns that need a question. At high effort they asked on 9 of 12.
+- **Specialists notice a missing fact, with the right setting.** Each specialist has an `ask_user` tool and a generic rule, with no list of facts to look for. At the default reasoning effort they asked on 1 of the 12 turns that need a question. At high effort they asked on 9 of 12 in one run and 8 of 12 in another, and on 5 of the 11 follow-up turns, where LangChain's specialists asked on all 11.
 - **The questions are targeted.** At high effort every question asked for the fact the document turns on, such as "Did you refuse the chemical test, or did you take it and fail?". By my reading, only about five of LangChain's twelve questions on the same turns did that. Others were offers such as "Do you have any other questions about Minnesota's hands-free law?".
 - **One piece is missing: the question does not arrive over A2A.** When a specialist asks through a tool, the A2A reply is an empty completed task. I expect Microsoft to address this, and I show how to check my result, because I may have something wrong.
 - **Accuracy and cost, on 62 questions:** the supervisor had the required facts on 50 of 56 in-scope questions against 56 of 56 for one agent holding everything, and used about a quarter of the tokens.
@@ -249,13 +249,14 @@ On the wire, the A2A protocol has a task state for this, `input-required`. A spe
 
 I ran orchestration1's conversations against these specialists. N6 is left out, as it was there, which leaves 11 conversations and 23 turns. Twelve of those turns need a question: the opening turn of each conversation, and the second turn of N7. For each area there is one specialist, called through the Responses API. A simulated user, `gpt-5.4-mini` reading the conversation's fact sheet, answers whatever is asked. I score each turn as orchestration1 did: did the specialist ask exactly when it should, and does the answer contain the required facts. The LangChain figures come from the stored per-turn results for the published subagents row, which I reproduced to the digit: 16 facts, 12 asked correctly, 681,789 prompt tokens.
 
-| | LangChain subagents | Foundry specialists, default effort | Foundry specialists, high effort |
-|---|---|---|---|
-| Turns that need a question: asked | 12 of 12 | 1 of 12 | 9 of 12 |
-| Follow-up turns: asked | 11 of 11 | 0 of 11 | not run |
-| Input tokens for the 12 turns that need a question | not comparable | 83,557 | 139,218 |
+| | LangChain subagents | Foundry, default effort | Foundry, high effort, run 1 | Foundry, high effort, run 2 |
+|---|---|---|---|---|
+| Turns that need a question: asked | 12 of 12 | 1 of 12 | 9 of 12 | 8 of 12 |
+| Follow-up turns: asked | 11 of 11 | 0 of 11 | not run | 5 of 11 |
+| Asked correctly, of 23 turns | 12 | 12 | not run | 14 |
+| Input tokens, the 12 turns that need a question | not comparable | 83,557 | 139,218 | 125,253 |
 
-The reasoning effort is the lever. It is one setting, `reasoning=Reasoning(effort="high")`, and it moved the specialists from asking on one turn to asking on nine, with the same rule. It also cost about two thirds more tokens on those turns, partly from the extra round of asking, and I did not separate the two.
+The reasoning effort is the lever. It is one setting, `reasoning=Reasoning(effort="high")`, and it moved the specialists from asking on one of the twelve turns to asking on eight or nine, with the same rule. It cost between a half and two thirds more input tokens on those turns, partly from the extra round of asking, and I did not separate the two.
 
 **The quality of the questions differs more than the counts.** LangChain's 12 of 12 counts any call to `ask_user`. Reading every question, I would say about five of its twelve gate questions asked for the decisive fact, two were partly on target, and five were not requests for a missing fact. These are the questions on some matching turns:
 
@@ -269,7 +270,19 @@ The reasoning effort is the lever. It is one setting, `reasoning=Reasoning(effor
 
 The orchestration1 score rewards asking, and not what is asked, so a generic prompt counts the same as the decisive question. The Foundry specialists asked fewer questions, and each one I read was about a fact the document turns on. My classification is a judgement, and the questions are all in the stored results if you want to disagree.
 
-**What I did not measure.** At high effort the specialists missed three turns: the follow-up on street racing, one crash question and one speeding question. After asking, 6 of the 9 answers had the required facts. LangChain's specialists asked on all 11 follow-up turns, which the test did not expect, and by my reading 8 of those 11 were questions about a fact. The Foundry specialists never asked on a follow-up at the default effort. I did not run the follow-ups at high effort, so I cannot say whether high effort makes them over-ask. Each design ran once, the user answers came from different simulators, and the keyword check cannot tell a good answer from a lucky one.
+**How steady is it?** Mostly, not completely. The two high-effort runs agreed on 9 of the 12 turns that need a question. The first run asked on the DWI stop, N1.1, and on one lemon-law turn, N12.1, and the second did not. The second asked on the reckless-driving question, N8.1, and the first did not. Ten of the twelve turns drew a question in at least one run, and two, the accident question N9.1 and the speeding question N11.1, drew none in either run. When a specialist asked, the answer afterwards had the required facts in 7 of 8 turns in the second run and 6 of 9 in the first.
+
+**Follow-up turns.** LangChain's specialists asked on all 11, which the test did not expect, and by my reading 8 of those 11 were questions about a fact. At the default effort the Foundry specialists never asked on a follow-up. At high effort, in the second run, they asked on 5 of the 11, and each was about a fact:
+
+- the prior-offence question, "Have you had a prior DWI, test refusal, or impaired-driving license revocation in the last 20 years?"
+- "Did you notify the dealer of the problem before the warranty expired?"
+- whether the injury would stop the person from doing their usual daily activities for 60 days
+- whether the vehicle was lawfully stopped in a place not used for traffic
+- "Were you using hands-free mode and not holding the phone?"
+
+The test expected no question on these turns, so the asked-correctly score counts them against the specialist, although several are the very fact that a follow-up such as "What if this isn't my first offense?" turns on. That is why the high-effort run scores 14 of 23 and LangChain 12 of 23: the Foundry specialists asked less often, so the turns that should not ask scored better.
+
+**Limits.** The high-effort specialists ran twice and the other designs once. The user answers came from different simulators, and the keyword check cannot tell a good answer from a lucky one.
 
 ### One conversation: the phone question
 
@@ -459,13 +472,13 @@ I did not test any of this:
 - **A flat agent run twice.** Its second run stopped at 33 questions to save tokens.
 - **The eight held-out questions and a full conversation.**
 - **A fixed-routing design.** I did not build a workflow or an Agent Framework router, so I cannot say whether code that picks the specialist would handle the multi-area questions better.
-- **The follow-up turns at high effort.** Whether high effort makes the specialists over-ask is not measured, and the 62-question results are all at the default effort.
+- **More than two runs of the high-effort specialists.** The two runs agreed on 9 of 12 gate turns, so the exact count moves a little.
 - **Higher reasoning effort for the 62 questions.** Every supervisor number here is at the default effort. In a small side test, a higher effort changed whether the supervisor asked a question before calling a specialist, so it may change other behaviour too.
 - **Hosted agents over A2A,** and whether Foundry's A2A tool continues an `input-required` task from a server that returns one.
 - **Removing the role from an agent that worked.** I tested a new agent without the role and then with it.
 
 :::bullet-points What I know
-- **Specialists notice a missing fact when given the effort.** With a generic rule and no checklist, they asked on 9 of 12 needed turns at high reasoning effort and 1 of 12 at the default, with targeted questions.
+- **Specialists notice a missing fact when given the effort.** With a generic rule and no checklist, they asked on 8 or 9 of 12 needed turns at high reasoning effort, in two runs, and on 1 of 12 at the default, with targeted questions.
 - **The `ask_user` question has one missing piece over A2A.** The specialist asks correctly, but the A2A reply is an empty completed task. I expect Microsoft to fix that, and I explain how to check my result.
 - **Foundry has no Connected Agents any more.** The A2A tool replaces it, and each specialist needs incoming A2A enabled with the SDK, because the portal cannot do it yet.
 - **Each call is visible.** The output items name the specialist and show the rewritten question and the answer.
