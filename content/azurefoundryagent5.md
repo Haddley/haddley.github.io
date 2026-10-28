@@ -1,7 +1,7 @@
 ---
 title: "Azure Foundry Agent"
 part: 4
-description: "Building a supervisor agent in Microsoft Foundry that answers Minnesota traffic-law questions by calling six specialist agents over the Agent2Agent protocol, testing it on 62 questions against one agent that holds every document, and fixing the supervisor when it stopped without calling anyone"
+description: "Building a supervisor agent in Microsoft Foundry that answers Minnesota traffic-law questions by calling six specialist agents over the Agent2Agent protocol, and testing it on 62 questions against one agent that holds every document"
 date: "2026-10-28"
 categories: ["AI", "Azure"]
 image: "/assets/images/azurefoundryagent5/posts-meta.svg"
@@ -18,14 +18,12 @@ In this post I build the same design in Microsoft Foundry, and test it on the sa
 
 Here is where it ended up, on 62 questions with a simple check that the required facts appear in the answer:
 
-| Design | Required facts present | Routed as expected | In-scope questions with no specialist call |
-|---|---|---|---|
-| Supervisor, my first version | 43 of 62 | 39 of 62 | 18 of 56 |
-| Supervisor, after a fix that made it worse | 30 of 62 | 23 of 62 | 37 of 56 |
-| Supervisor, with a required tool call | 56 of 62 | 55 of 62 | 1 of 56 |
-| One agent holding all six documents | 62 of 62 | not applicable | not applicable |
+| Design | Required facts present | Routed as expected | Seconds for 62 questions | Input tokens for 62 questions |
+|---|---|---|---|---|
+| Supervisor and seven specialists over A2A | 56 of 62 | 55 of 62 | 434 | about 566,000 (estimated) |
+| One agent holding all six documents | 62 of 62 | not applicable | 668 | 2,174,855 |
 
-The supervisor cost roughly a quarter of the tokens of the one-agent design, and it still scored lower. The rest of this post shows how I built it, the three connection errors I hit, why the first supervisor often stopped without calling anyone, and the two fixes I tried.
+The supervisor used about a quarter of the tokens and was faster, and it still scored lower. The rest of this post shows how I built it, the connection errors I hit, how it did on the 62 questions, and where it still goes wrong.
 
 :::brain-power Before you read on
 In LangChain a subagent is a tool that the supervisor calls. Foundry has prompt agents but, as I found out, no longer has a tool that wraps one agent inside another. What would you use instead, and what would have to be true for the call to work?
@@ -122,27 +120,38 @@ I opened one to see what Foundry stored. The authentication is "Microsoft Entra 
 
 ## The supervisor
 
-The supervisor holds no law. Its first instructions tell it to pick the areas, rewrite the question so that it stands on its own, call the specialists, and build the answer only from what they return. A question outside the six areas gets no call at all.
+The supervisor holds no law. Its instructions tell it to pick the areas, rewrite the question so that it stands on its own, call the specialists, and build the answer only from what they return. A question outside the six areas goes to a seventh specialist, `mn-law-outside`, whose only job is to say the question is outside the six areas and name them.
 
 ```python
 INSTRUCTIONS = """You answer questions about Minnesota traffic and car law by asking specialists.
-You have six specialist tools, one for each area of law. You hold no law yourself.
+You have seven specialist tools: one for each of six areas of law, and one for anything outside them.
+You hold no law yourself.
 
 1. Decide which area or areas the question belongs to. A question can need more than one.
 2. Rewrite the question for each specialist so that it stands on its own: put in the facts the user
-   gave, leave out the rest. Then call that specialist.
-3. If the question does not belong to any area, call no specialist and say it is outside what you cover.
+   gave, leave out the rest. Then call that specialist. Call every specialist the question needs.
+3. If the question does not belong to any of the six areas, call the outside specialist.
 4. Build the final answer only from what the specialists returned. Keep their section numbers.
    If a specialist says its document does not cover something, say so. Do not fill the gap yourself.
 This is general information, not legal advice."""
 
-tools = [A2ATool(a2a_version=A2AProtocolVersion.V1_0, base_url=target, project_connection_id=f"a2a-{area}")
-         for area in AREAS]
+tools = [A2ATool(a2a_version=A2AProtocolVersion.V1_0, base_url=target, project_connection_id=conn)
+         for conn in connections]
+
+agent = project.agents.create_version(
+    agent_name="mn-law-supervisor",
+    definition=PromptAgentDefinition(model=model, instructions=INSTRUCTIONS, tools=tools,
+                                     tool_choice="required"))
 ```
+
+The line that matters most is `tool_choice="required"`. It makes every response start with a tool call. An earlier version of this supervisor, without it, often wrote a line announcing a call and then stopped without making one, and rewording the instructions did not stop it. The seventh specialist exists because of that setting: the six out-of-scope questions must not reach a legal specialist, and with a call required they need somewhere else to go. The supervisor is still all A2A.
+
+![](assets/images/azurefoundryagent5/supervisor-playground.jpg)
+*I opened the supervisor in the playground and found the seven-tool instructions and the A2A tools*
 
 ## Three errors before the first answer
 
-The first call to the supervisor failed with three different messages, one after another. Each one told me something about how the connection works, and one of them I explained wrongly the first time I published this post.
+The first call to the supervisor failed with three different messages, one after another. Each one told me something about how the connection works, and I explained one of them wrongly the first time I published this post.
 
 :::watch-it Three errors, and I am not sure what fixed the last one
 1. `does not have a valid target URL specified, and no server URL was provided`. I had passed the full Azure resource ID of the connection and nothing else. Adding `base_url` to the tool changed this message.
@@ -178,6 +187,14 @@ I asked the supervisor the same phone question, and then a speeding question. A 
 
 That is everything I need to check the design. The `name` says which specialist the supervisor chose, `arguments` holds the question as the supervisor rewrote it, and `output` is what the specialist said. In orchestration1 I scored "did it call the right specialists" from the same three pieces of information.
 
+![](assets/images/azurefoundryagent5/playground-dwi-answer.jpg)
+*I asked the supervisor the DWI question in the playground and found the call, the call output and the message in the response*
+
+The portal's trace view lists the same three items. It tells you that the detail comes from the agent's responses and that to see distributed traces you connect Application Insights, which I did not do.
+
+![](assets/images/azurefoundryagent5/response-trace.jpg)
+*I opened the trace for that response and found the three items under a single response*
+
 :::no-dumb-questions
 **Q: The item type says `preview`, but I asked for A2A version 1.0. Why?**
 A: I read the agent back with the SDK. The tool is stored as type `a2a` with `a2a_version` 1.0, which Microsoft lists as the generally available version. So the `preview` is in the name of the output item, not in the tool I created. I cannot see which protocol version Foundry used on the wire, so I do not claim one.
@@ -194,71 +211,19 @@ I scored each answer two ways, the same as the first half of orchestration1. **F
 
 I also built the baseline from orchestration1: one agent, `mn-law-flat`, with all six documents in its instructions, about 25,900 words in a single prompt.
 
-## The first supervisor often stopped without calling anyone
-
-The first supervisor completed all 62 questions with no errors. Completing is not answering. On 18 of the 56 questions that belong to one of the six areas, it called no specialist at all. It wrote a line announcing what it was about to do, and then stopped.
-
-> I'm going to check a Minnesota DWI specialist for the exact legal threshold.
-
-That was the whole answer to "What blood alcohol level makes it a DWI for a regular driver?" A user would see a promise and no result. The specialist for that question worked when I called it directly, so the fault was in the supervisor, not in the documents. The 18 were spread across several areas, so it was not one weak document.
-
-## A fix that made it worse
-
-My first fix was to add two rules to the instructions: call every specialist the question needs, and never reply with a sentence about what I am going to do. I wrote that the first action for an in-scope question is the specialist call, and that the user sees nothing from the supervisor until the results are back.
-
-That made the supervisor worse. It made no specialist call on 37 of the 56 in-scope questions, up from 18, and the facts score fell from 43 to 30. Of those 37 answers, 29 were empty or a single line. On one, "What blood alcohol level makes it a DWI for a regular driver?", the supervisor answered "0.08 or higher" from its own memory, which the instructions forbid. My rule that the user sees nothing until the results are back seems to have been read as permission to say nothing. I cannot prove that reading, only that the scores fell.
-
-I kept that run and the original one. Changing the words was not going to be the fix.
-
-## A fix that worked
-
-The second fix was to stop asking the model to remember. Foundry lets an agent definition set `tool_choice`, so I set it to `required`, and every response now has to start with a tool call. That would break the six out-of-scope questions, which should call nothing, so I added a seventh specialist, `mn-law-outside`. Its only job is to say a question is outside the six areas and name them. The supervisor is still all A2A.
-
-```python
-agent = project.agents.create_version(
-    agent_name="mn-law-supervisor",
-    definition=PromptAgentDefinition(model=model, instructions=INSTRUCTIONS, tools=tools,
-                                     tool_choice="required"))
-```
-
-I also reverted the instructions to the original wording and added two lines: there are seven specialist tools, and a question outside the six areas goes to the outside specialist. The supervisor now has six versions, because every change makes a new one.
-
-![](assets/images/azurefoundryagent5/supervisor-playground-v6.jpg)
-*I opened version 6 in the playground and found the seven-tool instructions and the A2A tools*
-
-![](assets/images/azurefoundryagent5/supervisor-versions.jpg)
-*I opened the version list for mn-law-supervisor and found six versions: three from getting the connections working, then one for each fix*
-
-The playground has a compare view that puts two versions side by side. I asked version 3 and version 6 the same question.
-
-![](assets/images/azurefoundryagent5/compare-v3-v6.jpg)
-*I compared version 3 and version 6 on "What happens to my license if I'm clocked at 105 mph?". Version 3 offered to check and made no call. Version 6 called a specialist and answered*
-
-Version 3 returned a single `message` item and offered to check. Version 6 returned the call, its output and the message, and answered that the license can be revoked for six months for driving more than 100 mph. Version 6 also answered the DWI question that version 3 had skipped in the test run, and the playground shows the three items and the 3,163 tokens.
-
-![](assets/images/azurefoundryagent5/playground-dwi-answer.jpg)
-*I asked version 6 the DWI question and found the call, the call output and the message in the response*
-
-The portal's trace view lists the same three items. It tells you that the detail comes from the agent's responses and that to see distributed traces you connect Application Insights, which I did not do.
-
-![](assets/images/azurefoundryagent5/response-trace.jpg)
-*I opened the trace for that response and found the three items under a single response*
-
 ## The results
 
-| Design | Facts | Routed | No specialist call | Seconds for 62 questions |
-|---|---|---|---|---|
-| Supervisor, first version (3) | 43 of 62 | 39 of 62 | 18 of 56 | 533 |
-| Supervisor, rules added (4) | 30 of 62 | 23 of 62 | 37 of 56 | 261 |
-| Supervisor, required tool call (6) | 56 of 62 | 55 of 62 | 1 of 56 | 434 |
-| One agent holding all six documents | 62 of 62 | not applicable | not applicable | 668 |
+| Design | Facts | Routed | Seconds for 62 questions |
+|---|---|---|---|
+| Supervisor and seven specialists | 56 of 62 | 55 of 62 | 434 |
+| One agent holding all six documents | 62 of 62 | not applicable | 668 |
 
-Version 4 was quick, probably because it so often said nothing. By category, version 6 had the required facts on 40 of 43 single-area questions, 6 of 9 multi-area questions, 4 of 4 noisy questions and 6 of 6 outside questions. The flat agent was right on every category.
+By category, the supervisor had the required facts on 40 of 43 single-area questions, 6 of 9 multi-area questions, 4 of 4 noisy questions and 6 of 6 outside questions. On 55 of the 56 in-scope questions it made at least one specialist call. The flat agent had the facts in every category.
 
-### What version 6 still gets wrong
+### Where the supervisor still goes wrong
 
 - **Multi-area questions.** It made 64 specialist calls for 62 questions, so it almost never asked two specialists. "I was texting while doing 105 mph" went to the phone specialist and not to speeding. A DWI-against-speeding comparison went to the DWI specialist alone.
-- **Two out-of-scope questions reached a specialist.** "What is the speed limit in Wisconsin?" and a question about the fine for running a stop sign both went to the speeding specialist. In a quick test of the Wisconsin question the supervisor used the outside specialist, so this varies from run to run, and I ran each question once.
+- **Two out-of-scope questions reached a specialist.** "What is the speed limit in Wisconsin?" and a question about the fine for running a stop sign both went to the speeding specialist. In a separate test of the Wisconsin question the supervisor used the outside specialist, so this varies from run to run, and I ran each question once.
 - **Misroutes.** One question went to the outside specialist that belongs to reckless driving, one went to the reckless specialist that belongs to speeding, and one went to the accident specialist that belongs to DWI.
 - **Six answers without the required facts**, four of them from the questions above.
 
@@ -292,9 +257,9 @@ I did not test any of this:
 :::bullet-points What I know
 - **Foundry has no Connected Agents any more.** The A2A tool replaces it, and each specialist needs incoming A2A enabled with the SDK, because the portal cannot do it yet.
 - **Each call is visible.** The output items name the specialist and show the rewritten question and the answer.
-- **A model that is allowed to answer without a tool call sometimes will.** The first supervisor did it on 18 of 56 in-scope questions, and rewording the instructions made it worse.
-- **`tool_choice: required` fixed it,** with an outside specialist so that out-of-scope questions still have somewhere to go. Facts went from 43 to 56 of 62.
+- **A required tool call keeps the supervisor from answering without asking.** It needs an outside specialist so that out-of-scope questions still have somewhere to go.
 - **The supervisor still lost to one agent holding everything,** 56 of 62 against 62 of 62, for about a quarter of the tokens.
+- **Multi-area questions are its weak spot.** It made 64 specialist calls for 62 questions.
 :::
 
 ## Cleaning up
