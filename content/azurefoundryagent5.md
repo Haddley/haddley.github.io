@@ -23,7 +23,7 @@ Here is where it ended up, on 62 questions with a simple check that the required
 | Supervisor and seven specialists over A2A | 56 of 62 | 55 of 62 | 434 | about 566,000 (estimated) |
 | One agent holding all six documents | 62 of 62 | not applicable | 668 | 2,174,855 |
 
-The supervisor used about a quarter of the tokens and was faster, and it still scored lower. The rest of this post shows how I built it, the connection errors I hit, how it did on the 62 questions, and where it still goes wrong.
+The supervisor used about a quarter of the tokens and was faster, and it scored lower, which is the trade I expected: less context per question costs some answers. The rest of this post shows how I built it, the connection errors I hit, how it did on the 62 questions, and where it still goes wrong.
 
 :::brain-power Before you read on
 In LangChain a subagent is a tool that the supervisor calls. Foundry has prompt agents but, as I found out, no longer has a tool that wraps one agent inside another. What would you use instead, and what would have to be true for the call to work?
@@ -244,7 +244,7 @@ The deployment had 100,000 tokens a minute, and my subscription allows 200,000 f
 
 ## What I conclude, and what I do not
 
-For this task, on these 62 questions, the single agent that held all six documents was more accurate than my supervisor, even at its best, and it needed no routing. The supervisor used about a quarter of the tokens and was faster. If the documents did not fit in one prompt, or if the cost mattered more than the last six answers, the supervisor would be the answer. The six documents fit in one prompt here, which is why the flat agent works at all.
+For this task, on these 62 questions, the single agent that held all six documents was more accurate than my supervisor, and it needed no routing. The supervisor used about a quarter of the tokens and was faster. If the documents did not fit in one prompt, or if the cost mattered more than the last six answers, the supervisor would be the answer. The six documents fit in one prompt here, which is why the flat agent works at all.
 
 I did not test any of this:
 
@@ -258,7 +258,7 @@ I did not test any of this:
 - **Foundry has no Connected Agents any more.** The A2A tool replaces it, and each specialist needs incoming A2A enabled with the SDK, because the portal cannot do it yet.
 - **Each call is visible.** The output items name the specialist and show the rewritten question and the answer.
 - **A required tool call keeps the supervisor from answering without asking.** It needs an outside specialist so that out-of-scope questions still have somewhere to go.
-- **The supervisor still lost to one agent holding everything,** 56 of 62 against 62 of 62, for about a quarter of the tokens.
+- **The supervisor traded accuracy for cost.** It scored 56 of 62 against 62 of 62 for one agent holding everything, and used about a quarter of the tokens.
 - **Multi-area questions are its weak spot.** It made 64 specialist calls for 62 questions.
 :::
 
