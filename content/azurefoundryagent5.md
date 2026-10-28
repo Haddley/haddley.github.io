@@ -293,9 +293,28 @@ If the question cannot travel through A2A, the supervisor can ask it before it c
 
 With a single specialist behind it, this worked. On the lemon question, three runs out of three called `ask_user` first with "Was the car bought new or used?", then called the specialist with every fact restated, and returned a correct used-car answer. A question that already said "new car from a dealer" made no `ask_user` call.
 
-It did not work on the full supervisor. I added `ask_user` to the supervisor with seven A2A tools and ran five gate questions from orchestration1, each with a scripted answer: a DWI stop, street racing, the lemon question, a no-fault crash and a phone ticket. It asked on none of them, and went straight to a specialist every time. I tried a second, stronger instruction that lists the missing facts to look for, and the result was the same, none of five. The three questions that needed no extra fact were handled correctly, but they could not tell me anything, since nothing needed asking.
+At the default reasoning effort it did not work on the full supervisor. I added `ask_user` to the supervisor with seven A2A tools and ran five gate questions from orchestration1, each with a scripted answer: a DWI stop, street racing, the lemon question, a no-fault crash and a phone ticket. It asked on none of them, and went straight to a specialist every time. A second, stronger instruction that lists the missing facts to look for gave the same result, none of five.
 
-I do not know why seven A2A tools behave differently from one. A guess, which I did not test, is that a required tool call with many specialist tools pulls the model towards a specialist. Fixes I have not tried are a separate intake step that only asks, and sending the first request with `tool_choice` set to `ask_user`.
+**Reasoning effort made the difference.** I then set the supervisor's reasoning effort to high, with the stronger instruction and nothing else changed:
+
+```python
+definition=PromptAgentDefinition(model=model, instructions=INSTRUCTIONS, tool_choice="required",
+                                 tools=[ask_user, *a2a_tools], reasoning=Reasoning(effort="high"))
+```
+
+It asked on all five gate questions, each time with a short, sensible question, and then called the specialist.
+
+| Gate question | What it asked at high effort |
+|---|---|
+| DWI stop | "Did you take the chemical test, refuse it, or are you not sure yet?" |
+| Street racing | "How badly was the other person hurt—minor, serious, or fatal?" |
+| Lemon law | "Was the car bought new or used?" |
+| No-fault crash | "About how much were your medical bills, and were you disabled for 60+ days?" |
+| Phone ticket | "Was your phone in your hand or mounted on the dash/console?" |
+
+Of the three controls, two behaved correctly: the speed-limit question and the Wisconsin question made no `ask_user` call. The third, a new car already described as new, still drew a question, about whether the problem began within the first two years or 24,000 miles. That is a relevant fact the user had not given, so I would not call it wrong, but it is a question I had not planned for. The lemon gate question also asked three times, twice about the warranty, because my scripted answer did not cover it.
+
+This is one run for each question, with a scripted user. I did not measure the extra time or cost of high effort, and I did not rerun the 62 questions at high effort, so every number earlier in this post is for the default effort.
 
 ### What I would tell Microsoft
 
@@ -321,7 +340,7 @@ I did not test any of this:
 - **Most answers by anything but keywords.** A model judged 19 of the 62 questions, and I read five answers. The rest are keyword checks only.
 - **A flat agent run twice.** Its second run stopped at 33 questions to save tokens.
 - **The eight held-out questions and a full conversation.** The clarification tests above use one question, and five gate questions with scripted answers.
-- **A supervisor that asks, with seven specialists.** The `ask_user` workaround worked with one specialist and failed with seven, and I did not find out why.
+- **High reasoning effort at scale.** The supervisor asked correctly on five gate questions at high effort, one run each. I did not rerun the 62 questions at high effort, or measure its cost.
 - **A fixed-routing design.** I did not build a workflow or an Agent Framework router, so I cannot say whether code that picks the specialist would handle the multi-area questions better.
 - **Removing the role from an agent that worked.** I tested a new agent without the role and then with it.
 
@@ -329,7 +348,7 @@ I did not test any of this:
 - **Foundry has no Connected Agents any more.** The A2A tool replaces it, and each specialist needs incoming A2A enabled with the SDK, because the portal cannot do it yet.
 - **Each call is visible.** The output items name the specialist and show the rewritten question and the answer.
 - **A required tool call keeps the supervisor from answering without asking.** It needs an outside specialist so that out-of-scope questions still have somewhere to go.
-- **A question asked in text arrives as a finished answer, and one asked through `ask_user` is lost.** Foundry did not use `input-required` in either case. Ask at the supervisor instead.
+- **A question asked in text arrives as a finished answer, and one asked through `ask_user` is lost.** Foundry did not use `input-required` in either case. Ask at the supervisor instead, and give it a high reasoning effort.
 - **Every agent with A2A tools needs the Foundry Agent Consumer role,** and a new connection needs about five minutes before its first call.
 - **The supervisor traded accuracy for cost.** It had the required facts on 50 of 56 in-scope questions against 56 of 56 for one agent holding everything, and used about a quarter of the tokens.
 - **Multi-area questions are its weak spot.** It made 64 specialist calls for 62 questions.
