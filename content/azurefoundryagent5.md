@@ -394,6 +394,15 @@ I read five of the disputed answers myself, and the judge was wrong on three of 
 
 With those three corrections, the totals are about 13 for the supervisor and 17 for the flat agent out of 19. I read only five of the 38 answers, so treat those totals as approximate. In the 10 random questions, both designs did well, and the judge failed one flat answer that I judged to be grounded.
 
+### Does the supervisor add knowledge of its own?
+
+The point of specialists is that the answer comes from the document. A supervisor that fills a gap from the model's memory would defeat that. I checked this in two cheap ways, using the final answers of all three supervisor runs and the flat agent, against the six documents.
+
+- **Citations.** I pulled out every statute section an answer cites and looked for it in the documents. The supervisor cited 138 sections across its three runs and the flat agent cited 108, and every one appears in the documents.
+- **Figures.** I pulled out every dollar amount, percentage and period, ignored numbers that the user gave, and normalised spelled-out numbers such as "ten cents". After that, each supervisor run had one figure in no document. One was the user's own "210k miles" written differently. The other was "at least 120 days total", a sum of the 30-day base period and the 90 additional days that the document gives. The flat agent had one hypothetical, "a 60 mph zone", in an offer to explain a scenario.
+
+So I found no fact in the supervisor's answers that came from outside the documents. This is a limit more than a proof. It cannot see a claim in prose that has no citation or number, and I tested against the documents and not against what each specialist actually said, because my evaluator did not keep the specialists' replies. It keeps them now. Without a required tool call I saw a supervisor answer a DWI question from its own memory, so the `tool_choice` setting matters here, and the instruction to build the answer only from what the specialists returned is not enough on its own.
+
 ### Where the supervisor still goes wrong
 
 - **Multi-area questions.** It made 64 specialist calls for 62 questions, so it almost never asked two specialists. "I was texting while doing 105 mph" went to the phone specialist and not to speeding. A DWI-against-speeding comparison went to the DWI specialist alone.
