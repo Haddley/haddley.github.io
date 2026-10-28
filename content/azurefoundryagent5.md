@@ -379,7 +379,20 @@ I ran these 62 questions through a LangChain supervisor and through a flat agent
 | LangChain, `gemma4:12b`, on my Mac | 55 of 56 in-scope facts, 58 of 62 routed, 536,529 prompt tokens, 8,935 seconds | 53 of 56 in-scope facts, 2,294,589 prompt tokens, 2,741 seconds |
 | Foundry, `gpt-5.4-mini` | 50 of 56 in-scope facts, 55 of 62 routed, about 566,000 input tokens (estimated), 434 seconds | 56 of 56 in-scope facts, 2,174,855 input tokens, 668 seconds |
 
-In LangChain the specialists were what I hoped for on accuracy and cost: slightly more answers with the facts, and 4.3 times fewer prompt tokens. They were slower, because my Mac processes long prompts slowly. In Foundry the token saving is the same, 3.8 times, and the supervisor is also faster. The accuracy went the other way. Two things changed at once, and I did not separate them. The flat agent did better on `gpt-5.4-mini` than on `gemma4:12b`, 56 against 53, so this model holds a 35,000-token prompt well. The supervisor did worse, 50 against 55. My guess is that the supervisor's routing and its rewriting of each question lose some answers, but I did not test that.
+In LangChain the specialists were what I hoped for on accuracy and cost: slightly more answers with the facts, and 4.3 times fewer prompt tokens. They were slower, because my Mac processes long prompts slowly. In Foundry the token saving is the same, 3.8 times, and the supervisor is also faster. The accuracy went the other way. Two things changed at once, and I did not separate them. The flat agent did better on `gpt-5.4-mini` than on `gemma4:12b`, 56 against 53, so this model holds a 35,000-token prompt well. The supervisor did worse, 50 against 55. Comparing the two runs question by question shows where the supervisor differs.
+
+| | LangChain supervisor | Foundry supervisor |
+|---|---|---|
+| Questions that missed a required fact | C10 | C1, C6, F1, L3, M1, M2 |
+| Routing misses (of 62) | A6, A7, C1, C10 | C1, C6, C8, M1, M2, O3, O7 |
+| Multi-area questions where it asked two or more specialists | 7 of 9 | 2 of 9 (and 1 or 2 of 9 in the other two runs) |
+| Specialists called per question, on average | 1.10 | 0.95 |
+
+The two supervisors called the same specialists on 47 of the 62 questions. The biggest difference is on the multi-area questions. For "I was texting while doing 105 mph", LangChain asked the speeding and phone specialists, and Foundry asked only the phone specialist. For the DWI-against-speeding comparison, LangChain asked both, and Foundry asked only DWI. Those two, plus the pedestrian-death question, account for three of the Foundry misses. The Foundry supervisor can ask two specialists, because it did so on the accident-and-DWI question in two of its three runs, so it is a choice the model makes and not a limit of the A2A tool. I have not tried to change that choice.
+
+The flat agents differ in the other direction. On `gemma4:12b` the flat agent missed C2, D5 and F1. On `gpt-5.4-mini` it missed none. Only F1 is missed by both a flat agent and the Foundry supervisor, and that question can draw on several areas of law, such as reckless driving, accidents and phone use.
+
+The other Foundry misses are single-area questions that the supervisor sent to the wrong place. A question about gross negligence went to the "outside" specialist, and one about what a police stop allows went to the reckless-driving specialist. The lemon-law deduction question was a keyword miss on an answer that was right.
 
 ## The rate limit, and what it did to the test
 
