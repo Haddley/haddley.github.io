@@ -490,16 +490,16 @@ I did not test any of this:
 
 ## Cleaning up
 
-I have not run any of these commands. The agents and connections stay in the project until I do.
+When I had finished, I deleted everything this post created in the Foundry project. Agents are deleted by name, and every version goes with them:
 
 ```python
-for area in AREAS:
-    project.agents.delete(agent_name(area))
-for name in ("mn-law-supervisor", "mn-law-outside", "mn-law-flat", "mn-law-lemon-ask", "mn-law-ask-supervisor"):
+AGENTS = [f"mn-law-{area}" for area in AREAS] + [f"mn-law-ask-{area}" for area in AREAS] + [f"mn-law-askhi-{area}" for area in AREAS] + [
+    "mn-law-supervisor", "mn-law-outside", "mn-law-flat", "mn-law-lemon-ask", "mn-law-ask-supervisor", "mn-law-phone-ask", "mn-law-ask-probe"]
+for name in AGENTS:
     project.agents.delete(name)
 ```
 
-Delete the connections from **Tools** in the portal, or with `az rest --method delete` against each one. There are six `a2a-<area>` connections, `a2a-offscope` that the supervisor uses for the outside specialist, `a2a-outside`, which my failed first attempt left behind, and `a2a-lemon-ask` for the clarification test. Remove the role assignments for the two supervisors' identities too. The raised token limit on the deployment stays until I lower it.
+The connections are the six `a2a-<area>` ones, `a2a-offscope` that the supervisor used for the outside specialist, `a2a-outside` from a failed first attempt, and `a2a-lemon-ask` from the clarification test. I deleted each with a `DELETE` request to its management address. The two supervisors' role assignments are separate, so I deleted those too, by their IDs. I raised the deployment's token limit from 100,000 to 200,000 tokens a minute, and I left that as it is.
 
 ## References
 
