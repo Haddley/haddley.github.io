@@ -18,12 +18,12 @@ In this post I build the same design in Microsoft Foundry, and test it on the sa
 
 Here is where it ended up, on 62 questions with a simple check that the required facts appear in the answer:
 
-| Design | Required facts present | Routed as expected | Seconds for 62 questions | Input tokens for 62 questions |
+| Design | In-scope questions with the required facts | Routed as expected | Seconds for 62 questions | Input tokens for 62 questions |
 |---|---|---|---|---|
-| Supervisor and seven specialists over A2A | 56 of 62 | 55 of 62 | 434 | about 566,000 (estimated) |
-| One agent holding all six documents | 62 of 62 | not applicable | 668 | 2,174,855 |
+| Supervisor and seven specialists over A2A | 50 of 56 (89%) | 55 of 62 (89%) | 434 | about 566,000 (estimated) |
+| One agent holding all six documents | 56 of 56 (100%) | not applicable | 668 | 2,174,855 |
 
-The supervisor used about a quarter of the tokens and was faster, and it scored lower, which is the trade I expected: less context per question costs some answers. The rest of this post shows how I built it, the connection errors I hit, how it did on the 62 questions, and where it still goes wrong.
+The supervisor used about a quarter of the tokens and was faster, and it scored lower, which is the trade I expected: less context per question costs some answers. The six out-of-scope questions have no required facts, so a keyword check cannot fail them, and I leave them out of the facts column. The rest of this post shows how I built it, the connection errors I hit, how it did on the 62 questions, what happens when a specialist needs more information, and where it still goes wrong.
 
 :::brain-power Before you read on
 In LangChain a subagent is a tool that the supervisor calls. Foundry has prompt agents but, as I found out, no longer has a tool that wraps one agent inside another. What would you use instead, and what would have to be true for the call to work?
@@ -151,15 +151,13 @@ The line that matters most is `tool_choice="required"`. It makes every response 
 
 ## Connection errors
 
-A call from the supervisor to a specialist can fail with two different messages before it works.
+A call from the supervisor to a specialist can fail with three different messages before it works.
 
-| Message | What it meant for me |
+| Message | What I saw |
 |---|---|
 | `does not have a valid target URL specified, and no server URL was provided` | The tool had only the connection's full Azure resource ID. Adding `base_url` to the tool changed this message. |
-| `Connection ... not found` | The connection existed, and the portal and the SDK could both read it. I got this with the full resource ID and with the connection name, `a2a-speeding`. |
-| Success | After I assigned the **Foundry Agent Consumer** role to the supervisor's identity on the project, the call worked at once. Microsoft's documentation says the calling identity needs that role. |
-
-A connection can return "Connection ... not found" even though it exists and the portal shows it. A new connection under a different name worked after about four minutes, but I did not find out whether the wait, the name or the role made the difference.
+| `Connection ... not found` | The connection existed, and the portal and the SDK could both read it. It appeared when I called a connection straight after creating it. One connection, `a2a-outside`, kept returning it for more than eight minutes. Two connections that I created and then left alone for four and five minutes worked on their first call. |
+| `Failed to fetch agent card: ... 404 ... not accessible to the configured identity` | It appeared for a new agent whose own identity had no role. About three minutes after I assigned the **Foundry Agent Consumer** role to that identity, the same call worked. |
 
 ```bash
 az role assignment create \
@@ -169,7 +167,7 @@ az role assignment create \
   --scope <project resource id>
 ```
 
-My advice is to assign the role, as the documentation says, and to expect a delay or a failed first lookup after you create a connection. If a call says a connection was not found, check that the connection exists before you change anything else.
+Two rules follow from what I saw. Create the connections first and do not call them for about five minutes. And give every agent that holds A2A tools the Foundry Agent Consumer role on the project. Each agent has its own identity, so a second supervisor needs its own assignment. This is what happened to me on three connections and two agents, and it is not documented behaviour.
 
 ## What one call looks like
 
@@ -207,31 +205,81 @@ A: No. The specialist runs inside the A2A call and its tokens are not in the sup
 
 I used the 62 single-turn questions from orchestration1. Each one is labelled with the specialists it should reach and the facts the answer must contain. There are 43 single-area questions, 9 that need more than one area, 4 with noisy wording, and 6 outside the six areas, where the right move is to call no specialist.
 
-I scored each answer two ways, the same as the first half of orchestration1. **Facts** means every required fact appears in the answer, which is a keyword check. **Routed** means the set of specialists the supervisor called matches one of the expected sets. I ran every question once through each design, and never ran two designs at the same time, with two questions in flight for the supervisor and one for the flat agent.
+I scored each answer two ways, the same as the first half of orchestration1. **Facts** means every required fact appears in the answer, which is a keyword check. **Routed** means the set of specialists the supervisor called matches one of the expected sets. I ran every question three times through the supervisor and once through the flat agent, and never ran two designs at the same time. I stopped a second flat run at 33 of 62 questions to save tokens, so the flat agent's score rests on one run.
 
 I also built the baseline from orchestration1: one agent, `mn-law-flat`, with all six documents in its instructions, about 25,900 words in a single prompt.
 
 ## The results
 
-| Design | Facts | Routed | Seconds for 62 questions |
+| Design | In-scope questions with the facts (56) | Routed (62) | Seconds for 62 questions |
 |---|---|---|---|
-| Supervisor and seven specialists | 56 of 62 | 55 of 62 | 434 |
-| One agent holding all six documents | 62 of 62 | not applicable | 668 |
+| Supervisor, run 1 | 50 (89%) | 55 | 434 |
+| Supervisor, run 2 | 46 (82%) | 54 | 443 |
+| Supervisor, run 3 | 50 (89%) | 55 | 439 |
+| One agent holding all six documents | 56 (100%) | not applicable | 668 |
 
-By category, the supervisor had the required facts on 40 of 43 single-area questions, 6 of 9 multi-area questions, 4 of 4 noisy questions and 6 of 6 outside questions. On 55 of the 56 in-scope questions it made at least one specialist call. The flat agent had the facts in every category.
+By category in run 1, the supervisor had the required facts on 40 of 43 single-area questions, 6 of 9 multi-area questions and 4 of 4 noisy questions. On 55 of the 56 in-scope questions it made at least one specialist call. Across the three runs, the specialists called were identical on 56 of the 62 questions, and 52 questions had the required facts in all three runs. So the score is fairly steady, but a run can lose a few answers, as run 2 did.
+
+### Checking the answers, not only the keywords
+
+A keyword check is blunt. It cannot fail the six out-of-scope questions, and it fails an answer that writes "10%" where the check wants "ten percent". So I also had a model grade some answers against the source documents. It does not know which design wrote an answer, and it sees only the documents for that question's areas. I picked 19 questions: the 9 where the supervisor missed a keyword or the routing, plus 10 chosen at random. That model is `gpt-5.4-mini`, the same family as every agent in this post, because it was the only model I had quota for. A grader from the same family can be lenient.
+
+| | Passed the judge (19 questions) |
+|---|---|
+| Supervisor | 14 |
+| One agent holding all six documents | 15 |
+
+I read five of the disputed answers myself, and the judge was wrong on three of them.
+
+- **Too strict on the flat agent, twice.** For the stop-sign fine, the flat agent said the documents give no amount and then quoted a petty misdemeanor maximum of $300. That figure is in the speeding document, so the answer is grounded. For the breath-test question it cited two DWI cases, and both are in the DWI document.
+- **Too lenient on the supervisor, once.** For "I was texting while doing 105 mph", the supervisor covered only the phone penalty. It never mentioned the speed or the six-month revocation, and the judge passed it.
+- **Right on the other two.** The supervisor wrongly said a question about gross negligence was outside its areas, which is a real failure. And its lemon-law deduction answer, "10 cents per mile or 10% of the purchase price", was right, so the keyword check was the one at fault.
+
+With those three corrections, the totals are about 13 for the supervisor and 17 for the flat agent out of 19. I read only five of the 38 answers, so treat those totals as approximate. In the 10 random questions, both designs did well, and the judge failed one flat answer that I judged to be grounded.
 
 ### Where the supervisor still goes wrong
 
 - **Multi-area questions.** It made 64 specialist calls for 62 questions, so it almost never asked two specialists. "I was texting while doing 105 mph" went to the phone specialist and not to speeding. A DWI-against-speeding comparison went to the DWI specialist alone.
-- **Two out-of-scope questions reached a specialist.** "What is the speed limit in Wisconsin?" and a question about the fine for running a stop sign both went to the speeding specialist. In a separate test of the Wisconsin question the supervisor used the outside specialist, so this varies from run to run, and I ran each question once.
+- **Two out-of-scope questions reached a specialist.** "What is the speed limit in Wisconsin?" and a question about the fine for running a stop sign both went to the speeding specialist. In a separate test of the Wisconsin question the supervisor used the outside specialist, so this varies from run to run.
 - **Misroutes.** One question went to the outside specialist that belongs to reckless driving, one went to the reckless specialist that belongs to speeding, and one went to the accident specialist that belongs to DWI.
-- **Six answers without the required facts**, four of them from the questions above.
+- **Six answers missed a keyword.** Five were real misses. The sixth, the lemon-law deduction, was right and wrote "10%" where the check wanted "ten percent".
 
 ### The cost
 
 The supervisor's own usage was 195,540 input tokens for 62 questions, against 2,174,855 for the flat agent, but that number leaves out the specialists. I estimated them. The phone specialist used 3,647 input tokens for a 2,586-word document, about 1.35 tokens a word, so I applied that rate to the document each call used. The 64 specialist calls come to about 371,000 input tokens, and the whole supervisor design to about 566,000. That is 3.8 times fewer than the flat agent. It is an estimate, because Foundry does not report the specialists' tokens.
 
 It took 434 seconds for the supervisor and 668 for the flat agent, so the supervisor was also faster, even though each question makes two model calls in sequence.
+
+## When a specialist needs more information
+
+In orchestration1 an agent could pause and ask the user a question with `ask_user`. The matching feature in A2A is a task state called `input-required`. A supervisor has to handle a specialist that needs a fact, so I tested it on one question, twice. It is the lemon-law question "My car has been in the shop three times for the same issue. Do I qualify for a refund?", where the answer depends on whether the car was bought new or used. I used separate test agents: a lemon-law specialist told to ask one short question when it does not know whether the car was new or used, and a supervisor that holds only that specialist.
+
+**The question comes back as a finished answer.** I called the specialist directly with the A2A client library. The reply was a task whose state was `TASK_STATE_COMPLETED`, not `TASK_STATE_INPUT_REQUIRED`, and the question was in the task's artifact text. The task also carried a `contextId`. My second message, sent with that `contextId`, was answered for a used car without being asked again. So the supervisor has to read the text to know that a reply is a question.
+
+**The supervisor can relay it.** In the first run, the supervisor's instructions told it to rewrite each question so that it stands on its own (rule 1), and then:
+
+```text
+2. If the specialist's reply is a question for the person, not an answer, pass that question on to the user in your own
+   reply and stop. Do not answer it yourself and do not guess.
+3. When the user answers, send their answer to the same specialist, then build your reply from what it returns.
+```
+
+On the first turn it called the specialist, received "I need one fact first: was the car bought new or used?", and put that question to the user. On the second turn it sent the user's reply to the specialist, together with the facts from earlier, and the specialist gave the used-car answer.
+
+```json
+{ "type": "a2a_preview_call", "name": "a2a-lemon-ask",
+  "arguments": "{\"message\":{\"parts\":[{\"kind\":\"text\",\"text\":\"The user says: The car was a used car from a dealer, and it had about 50,000 miles when they bought it. They previously said the car has been in the shop three times for the same issue. Please explain whether they may qualify for a refund ...\"}]}}" }
+```
+
+In a second run I changed rule 3 to "send the user's words to the same specialist exactly as written", and set `tool_choice` to required. This time the specialist did not ask on the first turn. The supervisor forwarded the user's sentence unchanged on the second turn, and the specialist gave a used-car answer.
+
+:::watch-it Three things this does not show
+- **With the automatic tool choice, one version of this supervisor called the specialist and another announced a call and made none, on both turns.** This agent holds one specialist, so the failure is not caused by having seven tools. The run with a required tool call made both calls.
+- **The specialist asked in one of two runs.** In the other it answered both branches, new and used. Telling a specialist to ask is not enough on its own.
+- **I could not tell whether Foundry keeps the specialist's conversation through the supervisor's tool.** The call has no `contextId`, and the user's reply alone produced a similar answer. The safe pattern is the one in the first run: restate what the specialist needs in each call.
+:::
+
+The 62-question supervisor does none of this. Its specialists are told to say which fact an answer depends on, not to ask for it, and its instructions have no rule for relaying a question.
 
 ## The rate limit, and what it did to the test
 
@@ -244,21 +292,23 @@ The deployment had 100,000 tokens a minute, and my subscription allows 200,000 f
 
 ## What I conclude, and what I do not
 
-For this task, on these 62 questions, the single agent that held all six documents was more accurate than my supervisor, and it needed no routing. The supervisor used about a quarter of the tokens and was faster. If the documents did not fit in one prompt, or if the cost mattered more than the last six answers, the supervisor would be the answer. The six documents fit in one prompt here, which is why the flat agent works at all.
+For this task, on these 62 questions, the single agent that held all six documents was more accurate than my supervisor on every check I ran, and it needed no routing. The supervisor used about a quarter of the tokens and was faster. If the documents did not fit in one prompt, or if the cost mattered more than the last six answers, the supervisor would be the answer. The six documents fit in one prompt here, which is why the flat agent works at all.
 
 I did not test any of this:
 
-- **Whether the answers are correct.** A keyword check shows that a fact appears. In orchestration1 I also used a judge model, and I have not here, so the flat agent's 62 of 62 may be generous.
-- **Repeats.** Each question ran once per design. The Wisconsin question showed that one run can differ from the next.
-- **The eight held-out questions and any multi-turn conversation.** I did not run them.
+- **Most answers by anything but keywords.** A model judged 19 of the 62 questions, and I read five answers. The rest are keyword checks only.
+- **A flat agent run twice.** Its second run stopped at 33 questions to save tokens.
+- **The eight held-out questions and a full conversation.** The clarification test above is one question, run twice.
 - **A fixed-routing design.** I did not build a workflow or an Agent Framework router, so I cannot say whether code that picks the specialist would handle the multi-area questions better.
-- **Whether the role is needed.** See the connection errors above.
+- **Removing the role from an agent that worked.** I tested a new agent without the role and then with it.
 
 :::bullet-points What I know
 - **Foundry has no Connected Agents any more.** The A2A tool replaces it, and each specialist needs incoming A2A enabled with the SDK, because the portal cannot do it yet.
 - **Each call is visible.** The output items name the specialist and show the rewritten question and the answer.
 - **A required tool call keeps the supervisor from answering without asking.** It needs an outside specialist so that out-of-scope questions still have somewhere to go.
-- **The supervisor traded accuracy for cost.** It scored 56 of 62 against 62 of 62 for one agent holding everything, and used about a quarter of the tokens.
+- **A specialist's question arrives as a finished answer.** Foundry did not use `input-required`, so the supervisor has to read the text.
+- **Every agent with A2A tools needs the Foundry Agent Consumer role,** and a new connection needs about five minutes before its first call.
+- **The supervisor traded accuracy for cost.** It had the required facts on 50 of 56 in-scope questions against 56 of 56 for one agent holding everything, and used about a quarter of the tokens.
 - **Multi-area questions are its weak spot.** It made 64 specialist calls for 62 questions.
 :::
 
@@ -269,11 +319,11 @@ I have not run any of these commands. The agents and connections stay in the pro
 ```python
 for area in AREAS:
     project.agents.delete(agent_name(area))
-for name in ("mn-law-supervisor", "mn-law-outside", "mn-law-flat"):
+for name in ("mn-law-supervisor", "mn-law-outside", "mn-law-flat", "mn-law-lemon-ask", "mn-law-ask-supervisor"):
     project.agents.delete(name)
 ```
 
-Delete the connections from **Tools** in the portal, or with `az rest --method delete` against each one. There are six `a2a-<area>` connections, `a2a-offscope` that the supervisor uses for the outside specialist, and `a2a-outside`, which my failed first attempt left behind and nothing uses. Remove the role assignment for the supervisor's identity too. The raised token limit on the deployment stays until I lower it.
+Delete the connections from **Tools** in the portal, or with `az rest --method delete` against each one. There are six `a2a-<area>` connections, `a2a-offscope` that the supervisor uses for the outside specialist, `a2a-outside`, which my failed first attempt left behind, and `a2a-lemon-ask` for the clarification test. Remove the role assignments for the two supervisors' identities too. The raised token limit on the deployment stays until I lower it.
 
 ## References
 
