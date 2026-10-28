@@ -144,21 +144,23 @@ agent = project.agents.create_version(
                                      tool_choice="required"))
 ```
 
-The line that matters most is `tool_choice="required"`. It makes every response start with a tool call. An earlier version of this supervisor, without it, often wrote a line announcing a call and then stopped without making one, and rewording the instructions did not stop it. The seventh specialist exists because of that setting: the six out-of-scope questions must not reach a legal specialist, and with a call required they need somewhere else to go. The supervisor is still all A2A.
+The line that matters most is `tool_choice="required"`. It makes every response start with a tool call, so the supervisor cannot answer from its own memory or stop at a sentence that announces a call. The seventh specialist exists because of that setting: the six out-of-scope questions must not reach a legal specialist, and with a call required they need somewhere else to go. The supervisor is still all A2A.
 
 ![](assets/images/azurefoundryagent5/supervisor-playground.jpg)
 *I opened the supervisor in the playground and found the seven-tool instructions and the A2A tools*
 
-## Three errors before the first answer
+## Connection errors
 
-The first call to the supervisor failed with three different messages, one after another. Each one told me something about how the connection works, and I explained one of them wrongly the first time I published this post.
+A call from the supervisor to a specialist can fail with three different messages, and only the last is about permissions.
 
-:::watch-it Three errors, and I am not sure what fixed the last one
-1. `does not have a valid target URL specified, and no server URL was provided`. I had passed the full Azure resource ID of the connection and nothing else. Adding `base_url` to the tool changed this message.
-2. `Connection ... not found`, with the full resource ID and the base URL, and then with the connection **name**, `a2a-speeding`. The connection existed, and both the portal and the SDK could read it.
-3. After I assigned the **Foundry Agent Consumer** role to the supervisor's identity on the project, the call worked at once. Microsoft's documentation says the calling identity needs that role.
+| Message | What it meant for me |
+|---|---|
+| `does not have a valid target URL specified, and no server URL was provided` | The tool had only the connection's full Azure resource ID. Adding `base_url` to the tool changed this message. |
+| `Connection ... not found` | The connection existed, and the portal and the SDK could both read it. I got this with the full resource ID and with the connection name, `a2a-speeding`. |
+| Success | After I assigned the **Foundry Agent Consumer** role to the supervisor's identity on the project, the call worked at once. Microsoft's documentation says the calling identity needs that role. |
 
-My first version of this post said the missing role caused error 2. I can no longer say that. Later I added a seventh connection, `a2a-outside`, and the same `not found` message came back and stayed for more than eight minutes, with the role already in place. A connection I created under a new name and left alone for four minutes worked on its first call. That test changed two things at once, the name and the wait, so I cannot tell whether new connections need time to become visible or a failed lookup is remembered. I never removed the role to see whether the calls need it, so I do not know that either.
+:::watch-it I do not know what clears "not found"
+The same `not found` message came back for a new seventh connection, `a2a-outside`, and stayed for more than eight minutes with the role already in place. A connection I created under a new name and left alone for four minutes worked on its first call. That test changed two things at once, the name and the wait, so I cannot tell whether new connections need time to become visible or a failed lookup is remembered. I never removed the role to see whether the calls need it, so I do not know that either.
 :::
 
 ```bash
@@ -235,7 +237,7 @@ It took 434 seconds for the supervisor and 668 for the flat agent, so the superv
 
 ## The rate limit, and what it did to the test
 
-The flat agent needs about 35,000 input tokens a question. The first time I ran it, four questions at a time, it used up the deployment's tokens-per-minute limit, and a question I typed into the supervisor's playground at the same time failed.
+The flat agent needs about 35,000 input tokens a question, so running four at a time used up the deployment's tokens-per-minute limit, and a question I typed into the supervisor's playground at the same time failed.
 
 ![](assets/images/azurefoundryagent5/playground-rate-limit-error.jpg)
 *I typed a question into the supervisor's playground and got a token rate limit error while the flat agent's test was running*
