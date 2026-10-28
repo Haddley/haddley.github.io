@@ -302,6 +302,42 @@ On the wire, the A2A protocol has a task state for this, `input-required`. A spe
 
 **A question written as plain text does arrive.** When a specialist asked in text, the reply was a completed task with the question in its artifact, and the task carried a `contextId`. A supervisor with the two rules above put that question to the user, and then sent the user's answer to the specialist. The specialist asked in one of two runs, and in the other it answered both branches, new and used.
 
+### The orchestration1 conversation, in Foundry
+
+[orchestration1](/posts/orchestration1/) has a section called "One conversation, four designs". Its clearest example is the phone question where the document's answer turns on a fact the user never gave, whether the phone was held: "I got a ticket for using my phone, but I was just checking the map. Is that even illegal?", followed by "Does it matter that I was fully stopped and not moving?". In that post every design paused to ask whether the phone was held or mounted, and then gave a definite answer. I ran the same two questions through three Foundry designs.
+
+| Design | Asked a question? | Input tokens, turn 1 / turn 2 |
+|---|---|---|
+| Supervisor and specialists over A2A, as built in this post | No. "Maybe not — it depends on how you checked the map", with both cases covered | 3,160 / 3,674 at the supervisor, plus about 3,600 for each specialist call (estimated) |
+| One agent holding all six documents | No. "Maybe not — it depends on exactly how you were using it" | 35,084 / 35,474 |
+| Phone specialist with an `ask_user` tool, called through the Responses API | Yes: "Was your phone held in your hand or mounted?" | 3,719 and 3,772 / 3,886 |
+
+The third row behaves like orchestration1. The specialist asked the same question, and after the scripted reply, "I was holding the phone in one hand, and it was not mounted", it answered that § 169.475, subd. 2(a)(1) prohibits holding the device, and that the navigation exception applies only if the person does not hold it. The follow-up about being stopped was answered in the same conversation for 3,886 tokens, with the quoted rule that a stopped vehicle is still part of traffic unless it is lawfully stopped, off the road and not obstructing traffic.
+
+The first two rows did not ask, because neither has an `ask_user` tool or a rule to ask. Both gave a correct conditional answer that covers held and not held, and both answered the follow-up correctly. The difference is that the question to the user would have made the answer definite.
+
+For comparison, orchestration1 recorded these prompt tokens for the two turns: one agent with everything in its prompt 107,280 and 108,209, skills 14,593 and 4,829, subagents 14,875 and 7,750, and handoffs 14,664 and 4,809. Those runs used different models on my own machine, so only the shape carries over. The flat agent there paid for the whole prompt again at every pause. Here the flat agent did not ask, so it paid about 35,000 tokens a turn, and I did not measure what it would have cost with a question.
+
+Here is the intended flow for the supervisor design, with the one step that does not work today:
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant S as Supervisor
+    participant P as Phone specialist
+
+    U->>S: "I got a ticket for using my phone,<br/>but I was just checking the map.<br/>Is that even illegal?"
+    S->>P: A2A message: phone ticket, checking a map
+    P->>P: ask_user("Was your phone held<br/>in your hand or mounted?")
+    Note over S,P: Today over A2A the question is dropped:<br/>the task comes back completed and empty
+    P-->>S: Intended: input-required with the question
+    S-->>U: "Was your phone held in your hand or mounted?"
+    U->>S: "In one hand, not mounted"
+    S->>P: A2A message continuing the same task
+    P-->>S: "Yes. Prohibited under subd. 2(a)(1)..."
+    S-->>U: "Yes. Prohibited under subd. 2(a)(1)..."
+```
+
 ### Why I expect this to be fixed
 
 Everything else in the chain works: the specialist asks, the protocol has a place for the question, and Microsoft's client knows how to continue the task. The missing piece looks small. Microsoft's open-source Agent Framework has an A2A server executor, `A2AExecutor`, and its source skips function-call content. A comment there says that "intermediate function_call / function_result from tool use" is skipped, and the task is then marked complete. It never sets `TASK_STATE_INPUT_REQUIRED`. I have not seen Foundry's own endpoint code, so that Foundry behaves like this executor is an inference. A mapping from a pending `ask_user` call to `input-required` is the natural addition, and I expect Microsoft to make it.
