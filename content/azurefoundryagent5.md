@@ -252,11 +252,13 @@ It took 434 seconds for the supervisor and 668 for the flat agent, so the superv
 
 ## When a specialist needs more information
 
-In orchestration1 an agent could pause and ask the user a question with `ask_user`. The matching feature in A2A is a task state called `input-required`. A supervisor has to handle a specialist that needs a fact, so I tested it on one question, twice. It is the lemon-law question "My car has been in the shop three times for the same issue. Do I qualify for a refund?", where the answer depends on whether the car was bought new or used. I used separate test agents: a lemon-law specialist told to ask one short question when it does not know whether the car was new or used, and a supervisor that holds only that specialist.
+In orchestration1 an agent could pause and ask the user a question with `ask_user`. The matching feature in A2A is a task state called `input-required`: a remote agent that needs a fact moves its task to that state, and the caller sends the reply back in the same context. A supervisor has to handle that. I tested it on one question, the lemon-law question "My car has been in the shop three times for the same issue. Do I qualify for a refund?", where the answer depends on whether the car was bought new or used. I used separate test agents so that the 62-question results stayed untouched.
 
-**The question comes back as a finished answer.** I called the specialist directly with the A2A client library. The reply was a task whose state was `TASK_STATE_COMPLETED`, not `TASK_STATE_INPUT_REQUIRED`, and the question was in the task's artifact text. The task also carried a `contextId`. My second message, sent with that `contextId`, was answered for a used car without being asked again. So the supervisor has to read the text to know that a reply is a question.
+### A specialist that asks in text
 
-**The supervisor can relay it.** In the first run, the supervisor's instructions told it to rewrite each question so that it stands on its own (rule 1), and then:
+I called a lemon-law specialist directly over A2A, with the official client library. When it asked its question in plain text, the reply was a task whose state was `TASK_STATE_COMPLETED`, not `TASK_STATE_INPUT_REQUIRED`, and the question was in the task's artifact text. The task carried a `contextId`, and my second message, sent with it, was answered for a used car without being asked again. So the caller has to read the text to know that a reply is a question. That fits the protocol's rule of one task per turn in the same context. It is a missing signal, not a failure.
+
+A supervisor can relay such a question. In the first run, its instructions told it to rewrite each question so that it stands on its own, and then:
 
 ```text
 2. If the specialist's reply is a question for the person, not an answer, pass that question on to the user in your own
@@ -264,22 +266,42 @@ In orchestration1 an agent could pause and ask the user a question with `ask_use
 3. When the user answers, send their answer to the same specialist, then build your reply from what it returns.
 ```
 
-On the first turn it called the specialist, received "I need one fact first: was the car bought new or used?", and put that question to the user. On the second turn it sent the user's reply to the specialist, together with the facts from earlier, and the specialist gave the used-car answer.
+It called the specialist, received "I need one fact first: was the car bought new or used?", and put that question to the user. After the answer, it sent the reply to the specialist together with the facts from earlier, and the specialist gave the used-car answer. The specialist asked in only one of two runs, though. In the other it answered both branches, new and used.
 
-```json
-{ "type": "a2a_preview_call", "name": "a2a-lemon-ask",
-  "arguments": "{\"message\":{\"parts\":[{\"kind\":\"text\",\"text\":\"The user says: The car was a used car from a dealer, and it had about 50,000 miles when they bought it. They previously said the car has been in the shop three times for the same issue. Please explain whether they may qualify for a refund ...\"}]}}" }
-```
+### A specialist that asks with an `ask_user` tool: the question is lost
 
-In a second run I changed rule 3 to "send the user's words to the same specialist exactly as written", and set `tool_choice` to required. This time the specialist did not ask on the first turn. The supervisor forwarded the user's sentence unchanged on the second turn, and the specialist gave a used-car answer.
+The reliable way to ask is a tool, as in orchestration1. I gave the specialist an `ask_user` function tool and called it two ways.
 
-:::watch-it Three things this does not show
-- **With the automatic tool choice, one version of this supervisor called the specialist and another announced a call and made none, on both turns.** This agent holds one specialist, so the failure is not caused by having seven tools. The run with a required tool call made both calls.
-- **The specialist asked in one of two runs.** In the other it answered both branches, new and used. Telling a specialist to ask is not enough on its own.
-- **I could not tell whether Foundry keeps the specialist's conversation through the supervisor's tool.** The call has no `contextId`, and the user's reply alone produced a similar answer. The safe pattern is the one in the first run: restate what the specialist needs in each call.
+- **Through the Responses API,** it returned a `function_call` item named `ask_user` with the question, "Was the car bought new from a dealer, or used from a dealer/private seller?". Two runs out of two.
+- **Over A2A,** the same agent returned a completed task with no message and no artifact, so the question never reached the caller.
+
+I printed the raw JSON-RPC body so that no client library could hide a field. It was `"state":"TASK_STATE_COMPLETED","artifacts":[]`. I repeated it with the model forced to call the tool, over A2A 1.0, A2A 0.3, and 1.0 with both extensions that the agent card advertises, `mcp-approval-request` and `citations`. All three gave an empty completed task.
+
+| Reply over A2A when the specialist calls `ask_user` | Result |
+|---|---|
+| A2A 1.0 | `COMPLETED`, no artifacts |
+| A2A 0.3 | `completed`, no artifacts |
+| A2A 1.0 with both advertised extensions requested | `COMPLETED`, no artifacts |
+
+:::watch-it An undocumented gap
+A question that a Foundry prompt agent asks through a function tool does not come back over A2A. I could not tell whether Microsoft intends this, because I found nothing in its documentation about function tools over A2A, either as a limit or as a bug. I tested one agent type, a prompt agent, with one tool. I did not test hosted agents. If you rely on it, test it yourself.
 :::
 
-The 62-question supervisor does none of this. Its specialists are told to say which fact an answer depends on, not to ask for it, and its instructions have no rule for relaying a question.
+### The workaround: ask at the supervisor
+
+If the question cannot travel through A2A, the supervisor can ask it before it calls a specialist. I gave the supervisor its own `ask_user` function tool next to the A2A tool, with `tool_choice` required, and one rule: call `ask_user` before the specialist if the answer depends on a fact the user has not given. A small client loop answers the function call, as Microsoft's function-calling page documents, and returns the user's reply.
+
+With a single specialist behind it, this worked. On the lemon question, three runs out of three called `ask_user` first with "Was the car bought new or used?", then called the specialist with every fact restated, and returned a correct used-car answer. A question that already said "new car from a dealer" made no `ask_user` call.
+
+It did not work on the full supervisor. I added `ask_user` to the supervisor with seven A2A tools and ran five gate questions from orchestration1, each with a scripted answer: a DWI stop, street racing, the lemon question, a no-fault crash and a phone ticket. It asked on none of them, and went straight to a specialist every time. I tried a second, stronger instruction that lists the missing facts to look for, and the result was the same, none of five. The three questions that needed no extra fact were handled correctly, but they could not tell me anything, since nothing needed asking.
+
+I do not know why seven A2A tools behave differently from one. A guess, which I did not test, is that a required tool call with many specialist tools pulls the model towards a specialist. Fixes I have not tried are a separate intake step that only asks, and sending the first request with `tool_choice` set to `ask_user`.
+
+### What I would tell Microsoft
+
+- A question asked through a function tool on an agent exposed over A2A should surface to the caller. The natural form is the task state `input-required`, with the question in the status message.
+- If that is deliberately unsupported, say so in the incoming A2A page, next to the existing limits on text and streaming.
+- Foundry's A2A tool should document what it does when a remote agent returns `input-required`, since I could not produce one to test it.
 
 ## The rate limit, and what it did to the test
 
@@ -298,7 +320,8 @@ I did not test any of this:
 
 - **Most answers by anything but keywords.** A model judged 19 of the 62 questions, and I read five answers. The rest are keyword checks only.
 - **A flat agent run twice.** Its second run stopped at 33 questions to save tokens.
-- **The eight held-out questions and a full conversation.** The clarification test above is one question, run twice.
+- **The eight held-out questions and a full conversation.** The clarification tests above use one question, and five gate questions with scripted answers.
+- **A supervisor that asks, with seven specialists.** The `ask_user` workaround worked with one specialist and failed with seven, and I did not find out why.
 - **A fixed-routing design.** I did not build a workflow or an Agent Framework router, so I cannot say whether code that picks the specialist would handle the multi-area questions better.
 - **Removing the role from an agent that worked.** I tested a new agent without the role and then with it.
 
@@ -306,7 +329,7 @@ I did not test any of this:
 - **Foundry has no Connected Agents any more.** The A2A tool replaces it, and each specialist needs incoming A2A enabled with the SDK, because the portal cannot do it yet.
 - **Each call is visible.** The output items name the specialist and show the rewritten question and the answer.
 - **A required tool call keeps the supervisor from answering without asking.** It needs an outside specialist so that out-of-scope questions still have somewhere to go.
-- **A specialist's question arrives as a finished answer.** Foundry did not use `input-required`, so the supervisor has to read the text.
+- **A question asked in text arrives as a finished answer, and one asked through `ask_user` is lost.** Foundry did not use `input-required` in either case. Ask at the supervisor instead.
 - **Every agent with A2A tools needs the Foundry Agent Consumer role,** and a new connection needs about five minutes before its first call.
 - **The supervisor traded accuracy for cost.** It had the required facts on 50 of 56 in-scope questions against 56 of 56 for one agent holding everything, and used about a quarter of the tokens.
 - **Multi-area questions are its weak spot.** It made 64 specialist calls for 62 questions.
