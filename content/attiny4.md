@@ -10,9 +10,9 @@ slug: "attiny4"
 image: "/assets/images/attiny4/posts-meta.svg"
 ---
 
-In [Part 3](/posts/attiny3/) the ATtiny85 cuts the motor above 25 km/h by pulling the brake line LOW, and the circuit lives on a solderless breadboard in the frame bag. A breadboard was the right tool for trying ideas. I would rather have a soldered board for the bike, so in this post I plan the move, and I plan a case that squeezes into the bike frame.
+In [Part 3](/posts/attiny3/) the ATtiny85 cuts the motor above 25 km/h by pulling the brake line LOW, and the circuit lives on a solderless breadboard in the frame bag. A breadboard was the right tool for trying ideas. I would rather have a soldered board for the bike, so in this post I make the move, and I print a case that squeezes into the bike frame.
 
-I am moving the circuit to an **ElectroCookie Mini PCB Prototype Board**, a solderable board with gold-plated holes, and I am using **Aribrnten 2.54 mm PCB mount terminal blocks** for the bike's wires.
+I moved the circuit to an **ElectroCookie Mini PCB Prototype Board**, a solderable board with gold-plated holes, and I used **Aribrnten 2.54 mm PCB mount terminal blocks** for the bike's wires. They come in a pack of 50, in 2, 3 and 4 poles, and the listing rates them at 150 V and 6 A.
 
 :::brain-power Before you read on
 On a breadboard, I push a wire into any hole and the board makes the connection. On a plain soldered board, what do I have to do myself for every connection, and which connections will many parts share?
@@ -62,7 +62,7 @@ By count they do fit, because four things need ground and the strip has four fre
 
 ## Terminal blocks for the bike's wires
 
-Each terminal block has pins on a 2.54 mm (0.1 inch) pitch, the same spacing as the holes on the board, and the pack is a mixture of green blocks with 2, 3 and 4 poles. I used two of them:
+Each terminal block has pins on a 2.54 mm (0.1 inch) pitch, the same spacing as the holes on the board, and the pack is a mixture of green blocks with 2, 3 and 4 poles. I used one 2-pole block and one 4-pole block to attach the bike's wires to the board:
 
 | Block | Pole | Connects to |
 |---|---|---|
