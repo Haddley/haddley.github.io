@@ -22,7 +22,7 @@ On a breadboard, I push a wire into any hole and the board makes the connection.
 
 The final circuit from Part 3 has only five parts:
 
-- **The ATtiny85**, which I plan to plug into an 8-pin socket, so that I never have to heat the chip itself
+- **The ATtiny85**, which I plug into an 8-pin socket. I used a socket adapter from a 66-piece kit of soldering-type DIP IC sockets with a 2.54 mm grid, in sizes from 6 to 28 pins. The socket makes the chip easy to remove and replace, and it means that I never heat the chip itself when I solder to the board
 - **A 1 kΩ resistor** between the speed wire and pin 7 (PB2)
 - **A 220 Ω resistor** between the brake wire and pin 3 (PB4)
 - **A 100 nF capacitor and a 10 µF capacitor** that decouple the supply between pin 8 (Vcc) and ground
