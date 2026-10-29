@@ -116,7 +116,7 @@ My board's holes are 1.2 mm, and the diagonal of a 0.8 × 0.5 mm pin is about 0.
 :::
 
 :::watch-it Check the wire range
-The drawing does not say which sizes of wire a terminal block takes. Each block grips its wire with a screw, and the blocks worked well with the bike's existing wiring. The listing rates the blocks at 6 A and 150 V, and this circuit draws far less than 6 A, so the wire is not the limit. The connections stayed firm.
+The drawing does not say which sizes of wire a terminal block takes. Each block grips its wire with a screw, and the blocks worked well with the 24 AWG stranded silicone wire that joins them to the bike's cable. The listing rates the blocks at 6 A and 150 V, and this circuit draws far less than 6 A, so the wire is not the limit. The connections stayed firm.
 :::
 
 ## The component layout
@@ -295,7 +295,7 @@ It follows the layout above, with one small change. I mounted the yellow bridge 
 
 The case fits the frame easily. It goes in the space at the top of the frame, above the battery.
 
-To connect it to the bike, I opened up the cable between the controller and the hub motor. I tapped into the red 5 V wire and the black ground wire, and I cut the white speed wire in half and attached both cut ends to the finished board.
+To connect it to the bike, I opened up the cable between the controller and the hub motor. I tapped a red wire into the 5 V wire and a black wire into the ground wire, and I cut the white speed wire in half and joined a white wire to each cut end. The other ends of these four wires go into the terminal blocks on the board. They are 24 AWG stranded silicone wire from a hook-up wire kit with six colours, 30 ft spools, and a 300 V rating. A 24 AWG conductor is about 0.51 mm across, a little thinner than the 22 gauge solid core on the board. The stranded wire is flexible, so it suits the run from the bike's cable to the board, and the solid core stays on the board.
 
 I also bought two cables on eBay to make the connections:
 
