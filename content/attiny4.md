@@ -204,7 +204,7 @@ Every layout that I tried leaves one pair of joints on different strips in neigh
 
 ## A 3D printed case
 
-The board also needs a case, and my plan is to squeeze the finished, printed box into the bike frame. The case has to do four things:
+The board also needs a case, and the finished, printed box goes into the bike frame. The case has to do four things:
 
 - hold the board and its two terminal blocks;
 - have holes so that I can reach the terminal screws and feed the wires in;
@@ -219,13 +219,13 @@ I model it in OpenSCAD with named parameters, in the same way as the parts in my
 ![](assets/images/attiny4/case-closed.png)
 *The same case closed, with the lid in place*
 
-Here is what the finished product should look like, with the lid beside the base because I have not fitted it yet. This picture is drawn from the same list of holes as the layout diagram above, so the parts are where the table puts them.
+Here is a preview of the finished item, with the lid beside the base. This picture is drawn from the same list of holes as the layout diagram above, so the parts are where the table puts them.
 
 ![](assets/images/attiny4/case-lid-off.png)
-*A preview of the finished item with the lid beside the base, not fitted yet: the board in the base, the chip in the middle, the terminal blocks at the left and right edges, and the bike's wires leaving through the notches in the long walls*
+*A preview of the finished item with the lid beside the base: the board in the base, the chip in the middle, the terminal blocks at the left and right edges, and the bike's wires leaving through the notches in the long walls*
 
 :::test-drive Turn the finished item around
-Drag the model below to turn it, and scroll or pinch to zoom. Look at the case from the side, to see how the wires leave through the notches, and from above, to see that no two wires on the board cross. The lid lies beside the base, and I have not fitted it.
+Drag the model below to turn it, and scroll or pinch to zoom. Look at the case from the side, to see how the wires leave through the notches, and from above, to see that no two wires on the board cross. In the model, the lid lies beside the base.
 :::
 
 :::demo model /assets/files/attiny4/lid-off.glb
@@ -264,13 +264,13 @@ The inside size comes from the board and what stands on it: the 50.8 × 38.1 mm 
 
 With the sizes in the file today, the closed case is 44.9 × 55 × 17.6 mm. The height comes from the 8.8 mm terminal blocks, plus the space under the board and the lid. I have assumed that the 10 µF capacitor is no taller than the blocks, or that it lies flat, and that the board is 1.6 mm thick, which its drawing does not give.
 
-:::watch-it Check the snap tabs and the frame
-A snap tab is a thin blade that bends, and a blade that is printed standing up can crack across its layers when it bends. I will print the first copy and see, and I may print the lid on its side, or use a tougher material, if a tab breaks. A bike frame is also wet and bumpy, so the case should keep water off the board, hold the board firmly, and give the wires slack and some strain relief.
+:::watch-it Do the snap tabs hold, and does it fit the frame?
+A snap tab is a thin blade that bends, and a blade that is printed standing up can crack across its layers when it bends. I printed the files as they are, and both tabs held. They keep the lid shut without gripping too hard, and I can still take the lid off with a little gentle pressure. A bike frame is also wet and bumpy, so the case should keep water off the board, hold the board firmly, and give the wires slack and some strain relief.
 :::
 
-## Download the first version
+## Download the case files
 
-These files are the first version of the case. The terminal block and board sizes come from the product drawings, but I have not yet measured the gap in my bike frame, or the real board, so do not print them for your own bike yet. The STL files are in printing orientation, with the base standing in its tray and the lid on its back.
+These are the files that I printed, and the first version worked. The case fits my bike frame easily, and the lid closes over the real board. Your frame is not the same as mine, so measure the gap in your frame, and the thickness of your board, before you print. The terminal block and board sizes come from the product drawings. The STL files are in printing orientation, with the base standing in its tray and the lid on its back.
 
 | Part | File | Notes |
 |---|---|---|
@@ -287,7 +287,9 @@ Here is the board assembled, in its red case with the lid off.
 ![](assets/images/attiny4/assembled.jpg)
 *I soldered the parts to the board and fitted it in the case: the chip in the middle, the 4-pole terminal block at the bottom left, the 2-pole block at the bottom right, and the red and yellow wires standing on the right-hand side*
 
-It follows the layout above. The terminal blocks stand along the two long edges, the chip sits in the middle rows, and the black wires carry ground between the strips. The two resistors lie close to the board, and the two capacitors stand at the top.
+It follows the layout above, and the layout needed no changes. The terminal blocks stand along the two long edges, the chip sits in the middle rows, and the black wires carry ground between the strips. The two resistors lie close to the board, and the two capacitors stand at the top.
+
+The case fits the frame easily. It goes in the space at the top of the frame, above the battery.
 
 To connect it to the bike, I opened up the cable between the controller and the hub motor and tapped into the red 5 V wire, the black ground wire and the white speed wire.
 
@@ -301,7 +303,9 @@ I have tested it on the bike, and it works great.
 - The chip sits in rows 7 to 10, so its strips never share a row with a terminal block pole, and a script checks the layout for shorts.
 - The parts are spread out, no two wires cross, and only one pair of joints on different strips is closer than 3.6 mm.
 - A two-piece printed case has screwdriver slots, wire notches open at the top, snap tabs, and tapped M3 posts that hold the board down.
-- The 8.8 mm blocks give a case of 44.9 × 55 × 17.6 mm, and it has to fit the gap in the frame.
+- The 8.8 mm blocks give a case of 44.9 × 55 × 17.6 mm, and it fits easily in my frame, in the space above the battery.
+- I printed the case from these files. The snap tabs hold, and I can still take the lid off with a little gentle pressure.
+- The layout needed no changes. I tapped into the red 5 V, black ground and white speed wires of the cable between the controller and the hub motor, and it works great on the bike.
 :::
 
 ## References
