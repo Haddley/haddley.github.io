@@ -289,7 +289,7 @@ Here is the board assembled, in its red case with the lid off.
 ![](assets/images/attiny4/assembled.jpg)
 *I soldered the parts to the board and fitted it in the case: the chip in the middle, the 4-pole terminal block at the bottom left, the 2-pole block at the bottom right, and the red and yellow wires standing on the right-hand side*
 
-It follows the layout above, and the layout needed no changes. The terminal blocks stand along the two long edges, the chip sits in the middle rows, and the black wires carry ground between the strips. The two resistors lie close to the board, and the two capacitors stand at the top.
+It follows the layout above, with one small change. I mounted the yellow bridge wire on top of the board, where the layout has it underneath, because I found that easier. The terminal blocks stand along the two long edges, the chip sits in the middle rows, and the black wires carry ground between the strips. The two resistors lie close to the board, and the two capacitors stand at the top.
 
 The case fits the frame easily. It goes in the space at the top of the frame, above the battery.
 
@@ -307,7 +307,7 @@ I have tested it on the bike, and it works great.
 - A two-piece printed case has screwdriver slots, wire notches open at the top, snap tabs, and tapped M3 posts that hold the board down.
 - The 8.8 mm blocks give a case of 44.9 × 55 × 17.6 mm, and it fits easily in my frame, in the space above the battery.
 - I printed the case from these files. The snap tabs hold, and I can still take the lid off with a little gentle pressure.
-- The layout needed no changes. I opened the cable between the controller and the hub motor, tapped into the red 5 V and black ground wires, and cut the white speed wire in half with both cut ends on the board. It works great on the bike.
+- The layout needed only one small change: I mounted the yellow bridge wire on top of the board and not underneath, because that was easier. I opened the cable between the controller and the hub motor, tapped into the red 5 V and black ground wires, and cut the white speed wire in half with both cut ends on the board. It works great on the bike.
 :::
 
 ## References
