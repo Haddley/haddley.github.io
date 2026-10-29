@@ -1,7 +1,7 @@
 ---
 title: "ATtiny85"
 part: 4
-description: "Moving the ATtiny85 speed limiter from a breadboard to a soldered ElectroCookie mini prototype board, with screw terminal blocks for the bike's wires and a two-piece 3D printed case that snaps shut inside the bike frame"
+description: "Moving the ATtiny85 speed limiter from a breadboard to a soldered ElectroCookie mini prototype board, with screw terminal blocks for the bike's wires and a two-piece 3D printed case that snaps shut inside the bike frame, then building it and testing it on the bike"
 date: "2026-10-23"
 categories: ["IOT","3D printing"]
 tags: "attiny85, e-bike, prototype-board, terminal-blocks, openscad"
@@ -161,7 +161,7 @@ A14 is in the strip for row 14, which also holds C14, one lead of the 220 Ω res
 The terminal block poles take rows 14 to 17 in column A. If the chip's left-hand pins were in any of those rows, they would share a strip with a pole and join the bike's wire to the chip by accident. Putting the chip in rows 7 to 10 keeps the chip's strips and the poles' strips apart. Each of the six nets also has its own strips, and the chip's unused pins, 1, 2, 5 and 6, sit on strips that nothing else uses.
 :::
 
-:::watch-it This is a plan that I have checked on paper
+:::watch-it I checked the layout on paper first
 I wrote the layout as a list of holes, and a short script joins the holes in each strip and each wire, and checks the result. It confirms that the six nets are each joined together, that no two of them touch, that no hole is used twice, and that nothing is under a terminal block. A search then chose the holes, so that joints on different strips stay as far apart as the strips allow. It cannot check lead lengths on a real board. The 220 Ω resistor spans 13.7 mm, the 1 kΩ resistor spans 7.62 mm, and the capacitors span 5.08 mm, so a part with shorter leads needs a different pair of holes.
 :::
 
@@ -288,6 +288,8 @@ Here is the board assembled, in its red case with the lid off.
 *I soldered the parts to the board and fitted it in the case: the chip in the middle, the 4-pole terminal block at the bottom left, the 2-pole block at the bottom right, and the red and yellow wires standing on the right-hand side*
 
 It follows the layout above. The terminal blocks stand along the two long edges, the chip sits in the middle rows, and the black wires carry ground between the strips. The two resistors lie close to the board, and the two capacitors stand at the top.
+
+I have tested it on the bike, and it works great.
 
 :::bullet-points Recap
 - The Part 3 circuit has five parts and six wires to the bike, so it fits on a small board.
