@@ -62,7 +62,7 @@ By count they do fit, because four things need ground and the strip has four fre
 
 ## Terminal blocks for the bike's wires
 
-Each terminal block has pins on a 2.54 mm (0.1 inch) pitch, the same spacing as the holes on the board, and the pack is a mixture of green blocks with 2, 3 and 4 poles. I plan to use two of them:
+Each terminal block has pins on a 2.54 mm (0.1 inch) pitch, the same spacing as the holes on the board, and the pack is a mixture of green blocks with 2, 3 and 4 poles. I used two of them:
 
 | Block | Pole | Connects to |
 |---|---|---|
@@ -192,7 +192,7 @@ For each joint, I plan to follow the same steps:
 6. Snip the lead flush once the joint has cooled.
 
 :::watch-it The one tight pair
-Every layout that I tried leaves one pair of joints on different strips in neighbouring holes, 2.54 mm apart: the lower lead of the 100 nF capacitor at J7, and the end of the speed wire at J8. I will solder J8 first, keep the tip on the pad and away from J7, and then check with the meter that the two strips are not joined.
+Every layout that I tried leaves one pair of joints on different strips in neighbouring holes, 2.54 mm apart: the lower lead of the 100 nF capacitor at J7, and the end of the speed wire at J8. Solder J8 first, keep the tip on the pad and away from J7, and then check that the two strips are not joined.
 :::
 
 :::bullet-points Habits that help me
