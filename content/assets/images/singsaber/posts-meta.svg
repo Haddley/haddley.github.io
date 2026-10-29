@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
-  <title>SingSaber: fists punching cube blocks to the beat, with karaoke lyrics and a microphone underneath</title>
+  <title>SingSaber: fists punching cube blocks to the beat, with synced karaoke lyrics underneath</title>
   <defs>
     <g id="fist" stroke-linejoin="round" stroke-linecap="round">
       <path d="M2,34 L6,18 L9,8 L15,3 L24,5 L26,11 L30,15 L29,22 L22,26 L18,27 L19,34 Z" fill="currentColor" stroke="#0f1b2d" stroke-width="1.2"/>
@@ -21,10 +21,8 @@
   <g color="#ff3b4e"><circle cx="38" cy="66" r="19" fill="#ff3b4e" opacity=".2"/><g transform="translate(24,45)"><use href="#fist"/></g></g>
   <g color="#2f6bff"><circle cx="82" cy="66" r="19" fill="#2f6bff" opacity=".2"/><g transform="translate(97,45) scale(-1,1)"><use href="#fist"/></g></g>
   <rect x="14" y="92" width="92" height="17" rx="4" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.2"/>
-  <rect x="21" y="96" width="5" height="8" rx="2.5" fill="#ffd45a"/>
-  <path d="M19.5,101 a4,4 0 0 0 8,0 M23.5,105 v2" stroke="#ffd45a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-  <rect x="34" y="98.5" width="26" height="4" rx="2" fill="#ffd45a"/>
-  <rect x="63" y="98.5" width="17" height="4" rx="2" fill="#c9d3dd" opacity=".6"/>
-  <rect x="83" y="98.5" width="16" height="4" rx="2" fill="#c9d3dd" opacity=".6"/>
+  <rect x="27.5" y="98.5" width="26" height="4" rx="2" fill="#ffd45a"/>
+  <rect x="56.5" y="98.5" width="17" height="4" rx="2" fill="#c9d3dd" opacity=".6"/>
+  <rect x="76.5" y="98.5" width="16" height="4" rx="2" fill="#c9d3dd" opacity=".6"/>
   <path d="M60,12 v-6 M60,6 l5,1.5" stroke="#ffd45a" stroke-width="1.6" stroke-linecap="round" fill="none"/><ellipse cx="57.5" cy="12.5" rx="3" ry="2.2" fill="#ffd45a"/>
 </svg>
