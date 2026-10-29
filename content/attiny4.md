@@ -274,7 +274,7 @@ A snap tab is a thin blade that bends, and a blade that is printed standing up c
 
 ## Download the case files
 
-These are the files that I printed, and the first version worked. The case fits my bike frame easily, and the lid closes over the real board. Your frame is not the same as mine, so measure the gap in your frame, and the thickness of your board, before you print. The terminal block and board sizes come from the product drawings. The STL files are in printing orientation, with the base standing in its tray and the lid on its back.
+These are the files that I printed, on a Bambu Lab P1S printer with Bambu PLA in black and red, and the first version worked. The case fits my bike frame easily, and the lid closes over the real board. Your frame is not the same as mine, so measure the gap in your frame, and the thickness of your board, before you print. The terminal block and board sizes come from the product drawings. The STL files are in printing orientation, with the base standing in its tray and the lid on its back.
 
 | Part | File | Notes |
 |---|---|---|
@@ -304,7 +304,9 @@ I also bought two cables on eBay to make the connections:
 
 The bike's brake cable comes apart at a connector, so I did not have to cut it. The splitter keeps the brake lever and the controller connected, and the extra connector carries the brake signal to the board.
 
-I have tested it on the bike, and it works great.
+I programmed the ATtiny85 before I plugged it into the socket on the board.
+
+I have tested it on the bike. The motor cuts out at 25 km/h, as it did in Part 3, and it works great.
 
 :::bullet-points Recap
 - The Part 3 circuit has five parts and six wires to the bike, so it fits on a small board.
@@ -316,7 +318,7 @@ I have tested it on the bike, and it works great.
 - A two-piece printed case has screwdriver slots, wire notches open at the top, snap tabs, and tapped M3 posts that hold the board down.
 - The 8.8 mm blocks give a case of 44.9 × 55 × 17.6 mm, and it fits easily in my frame, in the space above the battery.
 - I printed the case from these files. The snap tabs hold, and I can still take the lid off with a little gentle pressure.
-- The layout needed only one small change: I mounted the yellow bridge wire on top of the board and not underneath, because that was easier. I opened the cable between the controller and the hub motor, tapped into the red 5 V and black ground wires, and cut the white speed wire in half with both cut ends on the board. It works great on the bike.
+- The layout needed only one small change: I mounted the yellow bridge wire on top of the board and not underneath, because that was easier. I opened the cable between the controller and the hub motor, tapped into the red 5 V and black ground wires, and cut the white speed wire in half with both cut ends on the board. The motor cuts out at 25 km/h, and it works great on the bike.
 :::
 
 ## References
