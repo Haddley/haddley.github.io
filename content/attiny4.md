@@ -280,6 +280,15 @@ These files are the first version of the case. The terminal block and board size
 
 The size of the case follows from those values, so a change to a block or board size changes the outside size.
 
+## The assembled board
+
+Here is the board assembled, in its red case with the lid off.
+
+![](assets/images/attiny4/assembled.jpg)
+*I soldered the parts to the board and fitted it in the case: the chip in the middle, the 4-pole terminal block at the bottom left, the 2-pole block at the bottom right, and the red and yellow wires standing on the right-hand side*
+
+It follows the layout above. The terminal blocks stand along the two long edges, the chip sits in the middle rows, and the black wires carry ground between the strips. The two resistors lie close to the board, and the two capacitors stand at the top.
+
 ## Where it stands
 
 This post is the plan. I will check every connection with a meter before I connect the board to the bike, and I will look at the speed and brake lines the same way that I did on the breadboard. The case is waiting for one measurement that matters most, the gap in the frame, and for a check of the real board's thickness.
