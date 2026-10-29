@@ -27,7 +27,7 @@ The final circuit from Part 3 has only five parts:
 - **A 1 kΩ resistor** between the speed wire and pin 7 (PB2)
 - **A 220 Ω resistor** between the brake wire and pin 3 (PB4)
 - **A 100 nF capacitor and a 10 µF capacitor**, marked 104 and 106, that decouple the supply between pin 8 (Vcc) and ground
-- **Optionally, a second 100 nF capacitor** between pin 7 and ground, which filters short spikes on the speed wire. The breadboard circuit in Part 3 worked without it, so I leave it off the board in this build.
+- **Optionally, a second 100 nF capacitor** between pin 7 and ground, which filters short spikes on the speed wire. The breadboard circuit in Part 3 worked without it, so I left it off the board.
 
 Six wires from the bike connect to it: the hub connector's red wire (+5 V) and black wire (ground), the two halves of the white speed wire, and the two brake wires, one that reads 5 V and one that reads 0 V.
 
@@ -49,18 +49,18 @@ The gap between column E and column F is the same as the gap on a breadboard, so
 
 ## Terminal blocks for the bike's wires
 
-Each terminal block has pins on a 2.54 mm (0.1 inch) pitch, the same spacing as the holes on the board, and the pack is a mixture of green blocks with 2, 3 and 4 poles. I used one 2-pole block and one 4-pole block to attach the bike's wires to the board:
+Each terminal block has pins on a 2.54 mm (0.1 inch) pitch, the same spacing as the holes on the board. I used one 2-pole block and one 4-pole block to attach the bike's wires to the board:
 
 | Block | Pole | Connects to |
 |---|---|---|
 | 2P, power | 1 | +5 V, from the hub connector's red wire |
 | 2P, power | 2 | Ground, from the hub connector's black wire |
 | 4P, speed and brake | 1 | Red brake wire, which reads 5 V |
-| 4P, speed and brake | 2 | Yellow speed wire, motor side |
-| 4P, speed and brake | 3 | Green speed wire, controller side |
+| 4P, speed and brake | 2 | White speed wire, motor side |
+| 4P, speed and brake | 3 | White speed wire, controller side |
 | 4P, speed and brake | 4 | Black brake wire, which reads 0 V, to ground |
 
-As in Part 3, I mark the motor half of the white speed wire yellow and the controller half green, and I leave the two brake wires red and black.
+I cut the white speed wire in half and joined a white wire to each cut end, so the motor half goes to pole 2 and the controller half to pole 3. The two brake wires are red and black.
 
 On the board, the same connections give these nets:
 
@@ -68,11 +68,11 @@ On the board, the same connections give these nets:
 |---|---|
 | 5 V | Power pole 1, chip pin 8, and one side of each supply capacitor |
 | Ground | Power pole 2, speed and brake pole 4, chip pin 4, and the other side of each capacitor |
-| Speed | The yellow and green poles (2 and 3) joined together, and the 1 kΩ resistor to chip pin 7 |
+| Speed | The two white poles (2 and 3) joined together, and the 1 kΩ resistor to chip pin 7 |
 | Brake | The red brake pole (1), and the 220 Ω resistor to chip pin 3 |
 
-:::under-the-hood Why the yellow and green poles are joined
-In Part 3 I simplified the design so that the two halves of the white wire join again, and the chip only listens to the speed. On the board, that join is a short wire or a solder bridge between the strips of the yellow and green poles of the 4P block. The controller and the display get the speed straight from the motor, as they did before I touched the bike, and the 1 kΩ resistor takes a copy of the signal to the chip's input.
+:::under-the-hood Why the two white poles are joined
+In Part 3 I simplified the design so that the two halves of the white wire join again, and the chip only listens to the speed. On the board, that join is a short wire or a solder bridge between the strips of poles 2 and 3 of the 4P block. The controller and the display get the speed straight from the motor, as they did before I touched the bike, and the 1 kΩ resistor takes a copy of the signal to the chip's input.
 :::
 
 :::no-dumb-questions
@@ -98,7 +98,7 @@ Here is the same board seen from below, where I solder. Column A is now on the r
 ![](assets/images/attiny4/board-layout-below.svg)
 *The same layout seen from below, with each soldered joint marked and the bridge under the board*
 
-I used solid 22 AWG wires from my TUOFENG kit for the short links, in red for 5 V, black for ground and yellow for the speed signal. The number 22 is the American Wire Gauge size, and it means a copper conductor about 0.64 mm across, with a cross-section of about 0.33 mm². The PVC insulation takes the whole wire to 1.55 mm, so the bare conductor fits the board's 1.2 mm holes, and the insulation does not. Both of my capacitors are ceramic, so they have no polarity and can go in either way round. I left the optional 100 nF filter on the speed wire off the board, because the breadboard circuit in Part 3 worked without it.
+I used solid 22 AWG wires from my TUOFENG kit for the short links, in red for 5 V, black for ground and yellow for the speed signal. The number 22 is the American Wire Gauge size, and it means a copper conductor about 0.64 mm across, with a cross-section of about 0.33 mm². The PVC insulation takes the whole wire to 1.55 mm, so the bare conductor fits the board's 1.2 mm holes, and the insulation does not. Both of my capacitors are ceramic, so they have no polarity and can go in either way round.
 
 The markings on the two capacitors are three-digit codes. The first two digits are the value in picofarads, and the third is the number of zeros that follow. So 104 is 10 followed by four zeros, which is 100,000 pF or 100 nF, and 106 is 10 followed by six zeros, which is 10,000,000 pF or 10 µF.
 
@@ -125,7 +125,7 @@ Here is a preview of the finished item, with the lid beside the base. This pictu
 *A preview of the finished item with the lid beside the base: the board in the base, the chip in the middle, the terminal blocks at the left and right edges, and the bike's wires leaving through the notches in the long walls*
 
 :::test-drive Turn the finished item around
-Drag the model below to turn it, and scroll or pinch to zoom. Look at the case from the side, to see how the wires leave through the notches, and from above, to see that no two wires on the board cross. In the model, the lid lies beside the base.
+Drag the model below to turn it, and scroll or pinch to zoom. Look at the case from the side, to see how the wires leave through the notches, and from above, to see where the parts sit on the board. In the model, the lid lies beside the base.
 :::
 
 :::demo model /assets/files/attiny4/lid-off.glb
@@ -135,7 +135,7 @@ I also saved the same model as [lid-off.glb](/assets/files/attiny4/lid-off.glb) 
 
 The design has these parts:
 
-- **Feet:** the board rests on feet in the base, so that the solder tails have room underneath. The two feet under the M3 holes are solid, with a hole that I can tap.
+- **Feet:** the board rests on feet in the base, so that the solder tails have room underneath. The two feet under the M3 holes are solid, with a hole for an M3 screw.
 - **Wire notches:** a notch in each long wall, level with each block, is open at the top. I can tighten the wires first, and then the lid closes the notch over them.
 - **Screwdriver slots:** the lid has a slot above each block, along its poles.
 - **Snap tabs:** two flexible tabs on the lid click into pockets in the long walls of the base.
@@ -152,11 +152,11 @@ A snap tab is a thin blade that bends, and a blade that is printed standing up c
 
 ## Download the case files
 
-These are the files that I printed, on a Bambu Lab P1S printer with Bambu PLA in black and red, and the first version worked. The case fits my bike frame easily, and the lid closes over the real board. Your frame is not the same as mine, so measure the gap in your frame, and the thickness of your board, before you print. The terminal block and board sizes come from the product drawings. The STL files are in printing orientation, with the base standing in its tray and the lid on its back.
+These are the files that I printed, on a Bambu Lab P1S printer with Bambu PLA in black and red, and the first version worked. The case fits my bike frame easily, and the lid closes over the real board. Your frame is not the same as mine, so measure the gap in your frame, and the thickness of your board, before you print. The STL files are in printing orientation, with the base standing in its tray and the lid on its back.
 
 | Part | File | Notes |
 |---|---|---|
-| Base | [case_base.stl](/assets/files/attiny4/case_base.stl) | Feet for the board, tapped M3 posts, wire notches, and pockets for the snap tabs. |
+| Base | [case_base.stl](/assets/files/attiny4/case_base.stl) | Feet for the board with M3 screw holes, wire notches, and pockets for the snap tabs. |
 | Lid | [case_lid.stl](/assets/files/attiny4/case_lid.stl) | Screwdriver slots over the terminal blocks, and two snap tabs. Print it flat on its plate. |
 | Source | [case.scad](/assets/files/attiny4/case.scad) | The OpenSCAD model. Change the values marked CHECK, such as the board thickness, and export again. |
 

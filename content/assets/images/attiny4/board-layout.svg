@@ -250,10 +250,10 @@
 <rect x="691.8" y="771.9" width="6.3" height="25.2" fill="#12361c"/>
 <line x1="208.2" y1="677.8" x2="60" y2="677.8" stroke="#555" stroke-width="7" stroke-linecap="round"/><line x1="208.2" y1="677.8" x2="60" y2="677.8" stroke="#d33" stroke-width="5" stroke-linecap="round"/>
 <text x="58" y="669.8" fill="#222" font-size="12">1  red, brake 5 V</text>
-<line x1="208.2" y1="713.4" x2="60" y2="713.4" stroke="#555" stroke-width="7" stroke-linecap="round"/><line x1="208.2" y1="713.4" x2="60" y2="713.4" stroke="#f2d11c" stroke-width="5" stroke-linecap="round"/>
-<text x="58" y="705.4" fill="#222" font-size="12">2  yellow, motor</text>
-<line x1="208.2" y1="748.9" x2="60" y2="748.9" stroke="#555" stroke-width="7" stroke-linecap="round"/><line x1="208.2" y1="748.9" x2="60" y2="748.9" stroke="#2fb24c" stroke-width="5" stroke-linecap="round"/>
-<text x="58" y="740.9" fill="#222" font-size="12">3  green, controller</text>
+<line x1="208.2" y1="713.4" x2="60" y2="713.4" stroke="#555" stroke-width="7" stroke-linecap="round"/><line x1="208.2" y1="713.4" x2="60" y2="713.4" stroke="#f4f4f4" stroke-width="5" stroke-linecap="round"/>
+<text x="58" y="705.4" fill="#222" font-size="12">2  white, motor</text>
+<line x1="208.2" y1="748.9" x2="60" y2="748.9" stroke="#555" stroke-width="7" stroke-linecap="round"/><line x1="208.2" y1="748.9" x2="60" y2="748.9" stroke="#f4f4f4" stroke-width="5" stroke-linecap="round"/>
+<text x="58" y="740.9" fill="#222" font-size="12">3  white, controller</text>
 <line x1="208.2" y1="784.5" x2="60" y2="784.5" stroke="#555" stroke-width="7" stroke-linecap="round"/><line x1="208.2" y1="784.5" x2="60" y2="784.5" stroke="#111" stroke-width="5" stroke-linecap="round"/>
 <text x="58" y="776.5" fill="#222" font-size="12">4  black, brake 0 V</text>
 <line x1="691.8" y1="748.9" x2="840" y2="748.9" stroke="#555" stroke-width="7" stroke-linecap="round"/><line x1="691.8" y1="748.9" x2="840" y2="748.9" stroke="#d33" stroke-width="5" stroke-linecap="round"/>
