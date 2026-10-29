@@ -146,7 +146,7 @@ The design has these parts:
 A: An M3 screw through each of the board's two M3 holes holds the board down firmly. The corner M2 holes only carry the board on small pins.
 :::
 
-:::watch-it Do the snap tabs hold, and does it fit the frame?
+:::watch-it How well does the case cope with the bike?
 A snap tab is a thin blade that bends, and a blade that is printed standing up can crack across its layers when it bends. I printed the files as they are, and both tabs held. They keep the lid shut without gripping too hard, and I can still take the lid off with a little gentle pressure. A bike frame can also be wet and bumpy, and this case is only partly ready for that. The M3 screws hold the board down firmly. The case is not waterproof, because the lid has a screwdriver slot above each terminal block and the wire notches stay open around the wires. It also has no strain relief for the wires, which leave through the notches and are held only by the terminal screws.
 :::
 
