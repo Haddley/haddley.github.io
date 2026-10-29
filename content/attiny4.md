@@ -167,7 +167,7 @@ I wrote the layout as a list of holes, and a short script joins the holes in eac
 
 ## Soldering order, because I am not good at soldering
 
-I am not good at soldering, so I have chosen the order and the habits that give me the most room for mistakes. The ElectroCookie pack has six boards, so I will practise on a spare one first.
+I am not good at soldering, so I have chosen the order and the habits that give me the most room for mistakes. The ElectroCookie pack has six boards, so I could have practised on a spare one first. I did not need to, because the first board worked.
 
 :::pencil My soldering order
 Which part do I solder first, and which last? Think about what sits in the way of what, then open the answer.
