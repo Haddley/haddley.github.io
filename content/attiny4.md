@@ -116,7 +116,7 @@ My board's holes are 1.2 mm, and the diagonal of a 0.8 × 0.5 mm pin is about 0.
 :::
 
 :::watch-it Check the wire range
-The drawing does not say which sizes of wire a terminal block takes. Each block grips its wire with a screw, and the blocks worked well with the bike's existing wiring and with the TUOFENG wires. Those come in a hook-up wire kit of 22 gauge solid-core tinned copper wire with PVC insulation, 1.55 mm across, in six colours with 9 m (30 ft) of each. The connections stayed firm.
+The drawing does not say which sizes of wire a terminal block takes. Each block grips its wire with a screw, and the blocks worked well with the bike's existing wiring and with the TUOFENG wires. Those come in a hook-up wire kit of 22 gauge solid-core tinned copper wire with PVC insulation, 1.55 mm across, in six colours with 9 m (30 ft) of each. The 22 gauge conductor is about 0.64 mm across, a size that a screw terminal grips firmly, and solid core does not splay into loose strands as the screw tightens. The listing rates the blocks at 6 A and 150 V, and this circuit draws far less than 6 A, so the wire is not the limit. The connections stayed firm.
 :::
 
 ## The component layout
