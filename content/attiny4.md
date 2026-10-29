@@ -289,10 +289,6 @@ Here is the board assembled, in its red case with the lid off.
 
 It follows the layout above. The terminal blocks stand along the two long edges, the chip sits in the middle rows, and the black wires carry ground between the strips. The two resistors lie close to the board, and the two capacitors stand at the top.
 
-## Where it stands
-
-This post is the plan. I will check every connection with a meter before I connect the board to the bike, and I will look at the speed and brake lines the same way that I did on the breadboard. The case is waiting for one measurement that matters most, the gap in the frame, and for a check of the real board's thickness.
-
 :::bullet-points Recap
 - The Part 3 circuit has five parts and six wires to the bike, so it fits on a small board.
 - The ElectroCookie board is a quarter-size breadboard with 5-hole strips and no separate + and − rails, so power and ground are wired by hand.
