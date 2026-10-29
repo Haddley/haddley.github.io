@@ -291,7 +291,7 @@ It follows the layout above, and the layout needed no changes. The terminal bloc
 
 The case fits the frame easily. It goes in the space at the top of the frame, above the battery.
 
-To connect it to the bike, I opened up the cable between the controller and the hub motor and tapped into the red 5 V wire, the black ground wire and the white speed wire.
+To connect it to the bike, I opened up the cable between the controller and the hub motor. I tapped into the red 5 V wire and the black ground wire, and I cut the white speed wire in half and attached both cut ends to the finished board.
 
 I have tested it on the bike, and it works great.
 
@@ -305,7 +305,7 @@ I have tested it on the bike, and it works great.
 - A two-piece printed case has screwdriver slots, wire notches open at the top, snap tabs, and tapped M3 posts that hold the board down.
 - The 8.8 mm blocks give a case of 44.9 × 55 × 17.6 mm, and it fits easily in my frame, in the space above the battery.
 - I printed the case from these files. The snap tabs hold, and I can still take the lid off with a little gentle pressure.
-- The layout needed no changes. I tapped into the red 5 V, black ground and white speed wires of the cable between the controller and the hub motor, and it works great on the bike.
+- The layout needed no changes. I opened the cable between the controller and the hub motor, tapped into the red 5 V and black ground wires, and cut the white speed wire in half with both cut ends on the board. It works great on the bike.
 :::
 
 ## References
