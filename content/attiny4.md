@@ -42,7 +42,7 @@ The board is a quarter-size breadboard that is meant for soldering. It is double
 | M2 mounting holes (Ø2.2 mm) | Four, in the corners, 31.8 mm apart across and 44.5 mm apart along the board |
 | M3 mounting holes (Ø3.2 mm) | Two, in the channel between the columns, 40.6 mm apart |
 
-The view of the underside shows that the five holes of each half-row are joined by a strip, as they are on a breadboard. I will still check the strips with a meter before I solder.
+The view of the underside shows that the five holes of each half-row are joined by a strip, as they are on a breadboard. I checked the strips by eye before I soldered, and they were all good.
 
 The gap between column E and column F is the same as the gap on a breadboard, so an ATtiny85 can straddle the channel: pins 1 to 4 go in column E, and pins 8 to 5 go in column F. Every pin then has four free holes on its own strip, as it would on a breadboard.
 
@@ -178,7 +178,7 @@ Which part do I solder first, and which last? Think about what sits in the way o
 3. The socket, then the two capacitors.
 4. The terminal blocks, which are the tallest, last of all, so that they never block the iron.
 
-Then I check every strip with a meter before I plug in the chip.
+Then I check every strip before I plug in the chip.
 :::
 :::
 
@@ -199,7 +199,7 @@ Every layout that I tried leaves one pair of joints on different strips in neigh
 - Tack one lead of each part first, check that it sits flat, and then solder the other lead.
 - For a terminal block, solder one pin, check that the block is flat and square to the board edge, and then do the rest.
 - Use 0.6 to 0.8 mm rosin-core solder, and add a little flux if a joint will not flow.
-- Test each strip for continuity, and neighbouring strips for shorts, before the board goes near the bike.
+- Check each strip, and the neighbouring strips for shorts, before the board goes near the bike.
 :::
 
 ## A 3D printed case
