@@ -10,6 +10,11 @@ slug: "attiny4"
 image: "/assets/images/attiny4/posts-meta.svg"
 ---
 
+Here is the finished board, in its red case with the lid off. I have tested it on the bike. The motor cuts out at 25 km/h, as it did in Part 3, and it works great.
+
+![](assets/images/attiny4/assembled.jpg)
+*I soldered the parts to the board and fitted it in the case: the chip in the middle, the 4-pole terminal block at the bottom left, the 2-pole block at the bottom right, and the red and yellow wires standing on the right-hand side*
+
 In [Part 3](/posts/attiny3/) the ATtiny85 cuts the motor above 25 km/h by pulling the brake line LOW, and the circuit lives on a solderless breadboard in the frame bag. A breadboard was the right tool for trying ideas. I would rather have a soldered board for the bike, so in this post I make the move, and I print a case that squeezes into the bike frame.
 
 I moved the circuit to an **ElectroCookie Mini PCB Prototype Board**, a solderable board with gold-plated holes, and I used **Aribrnten 2.54 mm PCB mount terminal blocks** for the bike's wires. They come in a pack of 50, in 2, 3 and 4 poles, and the listing rates them at 150 V and 6 A.
@@ -286,12 +291,7 @@ The size of the case follows from those values, so a change to a block or board 
 
 ## The assembled board
 
-Here is the board assembled, in its red case with the lid off.
-
-![](assets/images/attiny4/assembled.jpg)
-*I soldered the parts to the board and fitted it in the case: the chip in the middle, the 4-pole terminal block at the bottom left, the 2-pole block at the bottom right, and the red and yellow wires standing on the right-hand side*
-
-It follows the layout above, with one small change. I mounted the yellow bridge wire on top of the board, where the layout has it underneath, because I found that easier. The terminal blocks stand along the two long edges, the chip sits in the middle rows, and the black wires carry ground between the strips. The two resistors lie close to the board, and the two capacitors stand at the top.
+The photo at the top of this post shows the assembled board. It follows the layout above, with one small change. I mounted the yellow bridge wire on top of the board, where the layout has it underneath, because I found that easier. The terminal blocks stand along the two long edges, the chip sits in the middle rows, and the black wires carry ground between the strips. The two resistors lie close to the board, and the two capacitors stand at the top.
 
 The case fits the frame easily. It goes in the space at the top of the frame, above the battery.
 
@@ -305,8 +305,6 @@ I also bought two cables on eBay to make the connections:
 The bike's brake cable comes apart at a connector, so I did not have to cut it. The splitter keeps the brake lever and the controller connected, and the extra connector carries the brake signal to the board.
 
 I programmed the ATtiny85 before I plugged it into the socket on the board.
-
-I have tested it on the bike. The motor cuts out at 25 km/h, as it did in Part 3, and it works great.
 
 :::bullet-points Recap
 - The Part 3 circuit has five parts and six wires to the bike, so it fits on a small board.
