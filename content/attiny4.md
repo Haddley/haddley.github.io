@@ -295,6 +295,11 @@ The case fits the frame easily. It goes in the space at the top of the frame, ab
 
 To connect it to the bike, I opened up the cable between the controller and the hub motor. I tapped into the red 5 V wire and the black ground wire, and I cut the white speed wire in half and attached both cut ends to the finished board.
 
+I also bought two cables on eBay to make the connections:
+
+- a waterproof 6 mm M6 e-bike splitter cable with one female connector and two male connectors, which the listing sells in 2, 3 and 5 pin versions;
+- a 1 m waterproof brake cable with a 6 mm M6 2-pin female Julet connector at one end and bare wires at the other.
+
 I have tested it on the bike, and it works great.
 
 :::bullet-points Recap
