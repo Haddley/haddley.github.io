@@ -142,12 +142,14 @@ Every part sits in the holes in this table, and each hole belongs to a strip, so
 | 2P terminal block | J16 +5 V (red wire), J17 ground (black wire) |
 | 220 Ω resistor | A9 to C14 |
 | 1 kΩ resistor | E15 to F15 |
-| 10 µF ceramic capacitor | H7 to H5 |
-| 100 nF ceramic capacitor, for the supply | J7 to J5 |
+| 10 µF ceramic capacitor, marked 106 | H7 to H5 |
+| 100 nF ceramic capacitor, marked 104, for the supply | J7 to J5 |
 | Ground wires | A5 to C10, D10 to D17, C5 to F5, and G17 to G5 |
 | 5 V wire | H16 to I7 |
 | Speed wire | I15 to J8 |
 | Solder bridge under the board | D15 to C16, which joins the strips of the yellow and green poles |
+
+The markings on the two capacitors are three-digit codes. The first two digits are the value in picofarads, and the third is the number of zeros that follow. So 104 is 10 followed by four zeros, which is 100,000 pF or 100 nF, and 106 is 10 followed by six zeros, which is 10,000,000 pF or 10 µF.
 
 :::pencil Trace the brake path
 The brake wire that reads 5 V is the red wire in the terminal block at A14. Follow it through the strips, the resistor and the chip until you reach the pin that pulls the brake line LOW. Which holes does it pass through?
