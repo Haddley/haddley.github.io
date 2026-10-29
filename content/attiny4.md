@@ -300,7 +300,7 @@ To connect it to the bike, I opened up the cable between the controller and the 
 I also bought two cables on eBay to make the connections:
 
 - a waterproof 6 mm M6 e-bike splitter cable with one female connector and two male connectors, which the listing sells in 2, 3 and 5 pin versions. I plugged it into the join in the bike's brake cable;
-- a 1 m waterproof brake cable with a 6 mm M6 2-pin female Julet connector at one end and bare wires at the other. It plugs into the splitter, and its bare wires go into the 4-pole terminal block.
+- a 1 m waterproof brake cable with a 6 mm M6 2-pin female Julet connector at one end and bare wires at the other. It plugs into the splitter. Its two bare wires, one red and one black, go into the red and black poles of the 4-pole terminal block, exactly as planned.
 
 The bike's brake cable comes apart at a connector, so I did not have to cut it. The splitter keeps the brake lever and the controller connected, and the extra connector carries the brake signal to the board.
 
