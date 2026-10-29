@@ -116,7 +116,7 @@ My board's holes are 1.2 mm, and the diagonal of a 0.8 × 0.5 mm pin is about 0.
 :::
 
 :::watch-it Check the wire range
-The drawing does not say which sizes of wire the clamp takes. Before I rely on it, I will check that the screws clamp the thin wires from the hub connector and the brake sensor.
+The drawing does not say which sizes of wire the clamp takes. The screws clamped the wires from the bike's cables well enough, and the connections held.
 :::
 
 ## The component layout
