@@ -116,7 +116,7 @@ My board's holes are 1.2 mm, and the diagonal of a 0.8 × 0.5 mm pin is about 0.
 :::
 
 :::watch-it Check the wire range
-The drawing does not say which sizes of wire a terminal block takes. Each block grips its wire with a screw, and the screws held the wires from the bike's cables well enough. The connections stayed firm.
+The drawing does not say which sizes of wire a terminal block takes. Each block grips its wire with a screw, and the blocks worked well with the bike's existing wiring and with the TUOFENG wires. The connections stayed firm.
 :::
 
 ## The component layout
