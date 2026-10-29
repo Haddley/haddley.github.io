@@ -289,6 +289,8 @@ Here is the board assembled, in its red case with the lid off.
 
 It follows the layout above. The terminal blocks stand along the two long edges, the chip sits in the middle rows, and the black wires carry ground between the strips. The two resistors lie close to the board, and the two capacitors stand at the top.
 
+To connect it to the bike, I opened up the cable between the controller and the hub motor and tapped into the red 5 V wire, the black ground wire and the white speed wire.
+
 I have tested it on the bike, and it works great.
 
 :::bullet-points Recap
