@@ -131,7 +131,7 @@ Here is the same board seen from below, where I solder. Column A is now on the r
 ![](assets/images/attiny4/board-layout-below.svg)
 *The same layout seen from below, with each soldered joint marked and the bridge under the board*
 
-I spread the parts out on purpose, so that I can solder each joint without touching the next one. The chip sits in rows 7 to 10, the brake resistor runs down the left side, and the two supply capacitors stand at the top right with a ground rail of their own in row 5. Rows 1 to 4 are empty, and no wire goes near either M3 hole. No two wires cross, and no wire passes over another joint. Almost every pair of joints on different strips is at least 3.6 mm apart, which is one hole diagonally. The one exception is the lower lead of the 100 nF capacitor at J7 and the end of the speed wire at J8, which sit in neighbouring holes, 2.54 mm apart, so I will solder those two with care. Joints on the same strip can sit side by side, because they are the same connection. I will use the solid 22 AWG wires from my TUOFENG kit for the short links, in red for 5 V, black for ground and yellow for the speed signal. All of my capacitors are ceramic, so they have no polarity and can go in either way round. I left the optional 100 nF filter on the speed wire off the board, because the breadboard circuit in Part 3 worked without it.
+I spread the parts out on purpose, so that I can solder each joint without touching the next one. The chip sits in rows 7 to 10, the brake resistor runs down the left side, and the two supply capacitors stand at the top right with a ground rail of their own in row 5. Rows 1 to 4 are empty, and no wire goes near either M3 hole. No two wires cross, and no wire passes over another joint. Almost every pair of joints on different strips is at least 3.6 mm apart, which is one hole diagonally. The one exception is the lower lead of the 100 nF capacitor at J7 and the end of the speed wire at J8, which sit in neighbouring holes, 2.54 mm apart, so I soldered those two with care. Joints on the same strip can sit side by side, because they are the same connection. I will use the solid 22 AWG wires from my TUOFENG kit for the short links, in red for 5 V, black for ground and yellow for the speed signal. All of my capacitors are ceramic, so they have no polarity and can go in either way round. I left the optional 100 nF filter on the speed wire off the board, because the breadboard circuit in Part 3 worked without it.
 
 Every part sits in the holes in this table, and each hole belongs to a strip, so the strips make the connections that a breadboard would make:
 
@@ -182,7 +182,7 @@ Then I check every strip before I plug in the chip.
 :::
 :::
 
-For each joint, I plan to follow the same steps:
+For each joint, I followed the same steps:
 
 1. Tin the tip of the iron, at about 330 to 350 °C.
 2. Touch the pad and the lead together for about two seconds.
@@ -191,8 +191,10 @@ For each joint, I plan to follow the same steps:
 5. Look for a small, shiny cone. A dull, lumpy joint gets reheated.
 6. Snip the lead flush once the joint has cooled.
 
+I followed this order, and starting with the small components first was genius.
+
 :::watch-it The one tight pair
-Every layout that I tried leaves one pair of joints on different strips in neighbouring holes, 2.54 mm apart: the lower lead of the 100 nF capacitor at J7, and the end of the speed wire at J8. Solder J8 first, keep the tip on the pad and away from J7, and then check that the two strips are not joined.
+Every layout that I tried leaves one pair of joints on different strips in neighbouring holes, 2.54 mm apart: the lower lead of the 100 nF capacitor at J7, and the end of the speed wire at J8. I soldered J8 first, kept the tip on the pad and away from J7, and then checked that the two strips were not joined.
 :::
 
 :::bullet-points Habits that help me
