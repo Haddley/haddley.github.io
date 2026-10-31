@@ -175,17 +175,17 @@ The best single thing I found is a Microsoft Learn path, [Develop AI agents on A
 | 1. Foundry and VS Code | Build a first agent in the portal, then manage it as a YAML file in VS Code | [Part 1](/posts/azurefoundryagent2/), a prompt agent |
 | 2. Custom tools | Give an agent a Python function, an Azure Function or an OpenAPI tool | |
 | 3. MCP tools | Build a small MCP server and connect an agent to it | [My MCP series](/posts/mcpserver/), and [Part 3](/posts/azurefoundryagent4/) |
-| 4. Foundry IQ | Ground an agent in a knowledge base, with rules like "always cite, never guess" | |
+| 4. Foundry IQ | Ground an agent in a knowledge base, with rules like "always cite, never guess" | [Part 5](/posts/azurefoundryagent6/), where I test the module's rules |
 | 5. Microsoft 365 | Publish an agent to Teams and Copilot | |
 | 6. Workflows | Build a visual flow of agents | **Skip it**, see below |
 | 7. Agent Framework | Build an agent in code | [Part 2](/posts/azurefoundryagent3/), a hosted agent |
 | 8. Multi-agent | Orchestrate agents in sequence, in parallel, as a group chat or with handoffs | |
 | 9. A2A | Agent cards, an agent server and a client | [Part 4](/posts/azurefoundryagent5/), and [LangGraph with A2A](/posts/orchestration3/) |
 
-I liked the Foundry IQ module most. Its sample instructions are a good template for any agent that must answer from documents.
+I liked the Foundry IQ module most. Its sample instructions are a good template for any agent that must answer from documents, and I tested them in [Part 5](/posts/azurefoundryagent6/).
 
 :::watch-it What the path does not cover
-Module 6 teaches workflows, and they retire on 1 December 2026. The module does not say so. The A2A module teaches the protocol, but not Foundry's A2A tool, its connections and roles, or an agent asking for a missing fact. That is what Part 4 covers. The path also mixes older and newer code styles, so expect small differences from the current portal.
+Module 6 teaches workflows, and they retire on 1 December 2026. The module does not say so. The A2A module teaches the protocol, but not Foundry's A2A tool, its connections and roles, or an agent asking for a missing fact. That is what Part 4 covers. The path also mixes older and newer code styles, so expect small differences from the current portal. In [Part 5](/posts/azurefoundryagent6/) I found that the Foundry IQ module's tool snippet fails with a 401 unless you add a project connection.
 :::
 
 The quickstarts, the samples and the templates are for after the path. A quickstart teaches one thing, a sample is code to copy, and a template shows a whole system.

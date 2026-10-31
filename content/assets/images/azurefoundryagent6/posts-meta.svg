@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
+  <title>A stack of documents feeding a magnifier, with a quoted citation bracket</title>
+  <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+  <g fill="#17304a" stroke="#5bb4ea" stroke-width="2">
+    <rect x="16" y="30" width="40" height="52" rx="5"/>
+    <rect x="24" y="22" width="40" height="52" rx="5" fill="#1d3c5c"/>
+    <rect x="32" y="14" width="40" height="52" rx="5" fill="#22496f"/>
+  </g>
+  <g stroke="#c9d3dd" stroke-width="2.4" stroke-linecap="round">
+    <path d="M40,28 h24"/><path d="M40,36 h24"/><path d="M40,44 h16"/>
+  </g>
+  <circle cx="78" cy="70" r="17" fill="none" stroke="#5be0cf" stroke-width="6"/>
+  <path d="M90,83 L106,100" stroke="#5be0cf" stroke-width="8" stroke-linecap="round"/>
+  <g font-family="Helvetica, Arial, sans-serif" font-weight="800" fill="#ff8ac4" text-anchor="middle">
+    <text x="78" y="77" font-size="20">[1]</text>
+  </g>
+</svg>
