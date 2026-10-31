@@ -2,7 +2,7 @@
 title: "Azure Foundry Agent"
 part: 5
 description: "Following Microsoft's Foundry IQ learning module with my six Minnesota law documents: a knowledge base, an agent with vague versus strict instructions, 17 questions, and a comparison with my other RAG posts"
-date: "2026-10-31"
+date: "2026-10-30"
 categories: ["AI", "Azure"]
 image: "/assets/images/azurefoundryagent6/posts-meta.svg"
 tags: "azure-ai-foundry, foundry-iq, rag, azure-ai-search, mcp, citations"
@@ -12,7 +12,7 @@ slug: "azurefoundryagent6"
 
 # Foundry IQ: an agent that answers only from the documents
 
-In [Where to start in Microsoft Foundry](/posts/foundry-where-to-start/) I said the Foundry IQ module in Microsoft's learning path was my favourite, because its sample instructions are a good template for any agent that must answer from documents. In this post I test that claim. I follow the module, use the six Minnesota traffic and car law documents from [Part 4](/posts/azurefoundryagent5/), and ask what the module's instructions change.
+Microsoft's learning path [Develop AI agents on Azure](https://learn.microsoft.com/en-us/training/paths/develop-ai-agents-azure) includes a module on Foundry IQ, and its sample instructions look like a good template for any agent that must answer from documents. In this post I test that. I follow the module, use the six Minnesota traffic and car law documents from [Part 4](/posts/azurefoundryagent5/), and ask what the module's instructions change.
 
 I have built retrieval-augmented generation (RAG) several ways on this blog already, so I also compare this one with those at the end.
 
@@ -221,4 +221,4 @@ My results come from 17 questions, one run for each agent, and my own reading of
 - [Introduction to Foundry IQ (Microsoft Learn module)](https://learn.microsoft.com/en-us/training/modules/introduction-foundry-iq/)
 - [Connect a Foundry IQ knowledge base to an agent (Microsoft Learn)](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/foundry-iq-connect)
 - [Part 4: the Minnesota law specialists and the 62 questions](/posts/azurefoundryagent5/)
-- [Where to start in Microsoft Foundry](/posts/foundry-where-to-start/)
+- [Where to start in Microsoft Foundry](/posts/foundry-where-to-start/), a map of the whole learning path
