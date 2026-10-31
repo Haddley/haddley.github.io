@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "foundry-where-to-start",
+      "title": "Where to start in Microsoft Foundry",
+      "description": "A map of Microsoft Foundry agent kinds, the samples repository, the 21 solution templates and the 16 quickstarts, a suggested order to learn them in, and what is going away",
+      "date": "2026-10-31",
+      "categories": [
+        "AI",
+        "Azure"
+      ],
+      "tags": "azure-ai-foundry, agent-kinds, quickstarts, samples, deprecations"
+    },
+    {
       "slug": "azurefoundryagent5",
       "title": "Azure Foundry Agent (Part 4)",
       "description": "Building a supervisor in Microsoft Foundry that calls six specialist agents over the Agent2Agent protocol, and testing whether the specialists notice a missing fact and ask for it, using the conversations from my LangChain post",
@@ -3279,5 +3290,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-10-29T20:06:10.888Z"
+  "generatedAt": "2026-10-31T01:23:59.887Z"
 }
