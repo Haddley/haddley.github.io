@@ -5,7 +5,7 @@ description: "Moving the ATtiny85 speed limiter from a breadboard to a soldered 
 date: "2026-10-23"
 categories: ["IOT","3D printing"]
 tags: "attiny85, e-bike, prototype-board, terminal-blocks, openscad"
-hidden: false
+hidden: true
 slug: "attiny4"
 image: "/assets/images/attiny4/posts-meta.svg"
 ---

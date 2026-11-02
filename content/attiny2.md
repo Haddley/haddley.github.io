@@ -6,7 +6,7 @@ date: "2026-10-11"
 categories: ["AI","IOT"]
 image: "/assets/images/attiny2/posts-meta.svg"
 tags: "claude-code, attiny85, interrupts, tinkercad, hall-sensor, e-bike"
-hidden: false
+hidden: true
 slug: "attiny2"
 ---
 

@@ -1,3 +1,5 @@
+import fs from 'fs';
+import path from 'path';
 import { getPostById, getAllPosts, getSeriesNavigation } from '@/lib/posts';
 import { getMarkdownPost } from '@/lib/markdown';
 import { categoryNameToSlug } from '@/lib/categories';
@@ -33,9 +35,16 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  const slugs = posts.map((post) => post.slug);
+  if (process.env.NODE_ENV === 'development') {
+    // Hidden posts stay out of the static build but must be previewable in dev
+    const dir = path.join(process.cwd(), 'content');
+    for (const f of fs.readdirSync(dir)) {
+      const slug = f.replace(/\.md$/, '');
+      if (f.endsWith('.md') && !slugs.includes(slug)) slugs.push(slug);
+    }
+  }
+  return slugs.map((slug) => ({ slug }));
 }
 
 export default async function PostPage({ params }: PostPageProps) {

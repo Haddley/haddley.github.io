@@ -6,7 +6,7 @@ date: "2026-10-21"
 categories: ["AI","IOT"]
 image: "/assets/images/attiny3/posts-meta.svg"
 tags: "claude-code, attiny85, e-bike, brake-sensor, field-test, debugging"
-hidden: false
+hidden: true
 slug: "attiny3"
 ---
 
