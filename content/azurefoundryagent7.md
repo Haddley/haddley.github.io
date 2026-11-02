@@ -171,7 +171,8 @@ Statutes outrank opinions, opinions outrank the wiki, and the wiki outranks note
 
 | Advisor | Time per answer | Cost per answer | Where the law came from |
 |---|---|---|---|
-| This advisor | 4 to 9 seconds | roughly $0.001 to run on Azure Container Apps (estimate, below); a local machine's hardware and electricity are not counted | Rules from the statutes, each quote audited |
+| This advisor, reader in a GPU container | 4 to 9 seconds (measured on a Mac) | roughly $0.001 on Azure Container Apps (estimate, below); the hardware and electricity of my Mac are not counted | Rules from the statutes, each quote audited |
+| This advisor, reader hosted in Foundry | not tested | roughly $0.0007 with `gpt-5-mini` as the reader (estimate, below) | Rules from the statutes, each quote audited |
 | GPT-5.5 | 118 to 148 seconds | about $0.32 | The model's memory |
 | `gpt-5-search-api` | about 45 seconds | about $0.18, plus search fees | Web search |
 | DeepSeek | 330 to 404 seconds | about $0.08 | The model's memory |
@@ -179,6 +180,8 @@ Statutes outrank opinions, opinions outrank the wiki, and the wiki outranks note
 | Google AI Overview | not timed | free to the user | Web search, with source links |
 
 The reader step uses about 1,230 tokens in and 180 out per conversation. The same `qwen2.5:7b` on Azure Container Apps with a serverless T4 GPU, billed per second of use, comes to roughly $0.001 per answer. That assumes 5 seconds of work with 4 vCPUs and 16 GiB of memory at Azure's list rates ($0.000073 a second for the GPU, $0.000024 per vCPU-second, $0.000003 per GiB-second). I measured 4.6 seconds on a Mac, not on a T4, and the estimate leaves out loading the model after a cold start. Costs use the tokens logged in these runs and list prices from third-party price pages, so treat them as indicative. All test facts were synthetic.
+
+The Foundry row prices the same reader step as a hosted model, billed per token. Foundry does not publish a per-token price for `qwen2.5:7b`: some Qwen models there run only on managed compute, which bills by the hour for a virtual machine. So I used `gpt-5-mini` as a stand-in, at about $0.25 per million input tokens and $2.00 per million output tokens on Global Standard. For 1,230 tokens in and 180 out that is about $0.0003 for the input plus $0.0004 for the output, roughly $0.0007. That is a list-price estimate from third-party price pages, which disagree with each other, so check Azure's price page before relying on it. A reasoning model also bills its hidden thinking tokens as output, so the real figure could be higher. I have not tested whether a hosted small model reads the facts as well as `qwen2.5:7b`.
 
 ## How it could be hosted in Azure
 
@@ -199,7 +202,7 @@ flowchart LR
 - **Privacy by design.** The person's story stays inside your own Azure environment, and the logs record counts and timings, not the text of what was typed.
 - **Where Azure AI Foundry fits.** It is optional. It could host the reader as a managed model deployment in place of the GPU container, if a hosted small model reads as well as `qwen2.5:7b`, which I have not tested. It could also run the test sets as evaluations. Foundry would not make the answers more correct: that comes from the rules and the checks.
 
-The cost estimate above applies to this layout: roughly $0.001 per answer for the reader at per-second GPU billing, and almost nothing for the rest.
+The cost estimate above applies to this layout: roughly $0.001 per answer for the reader at per-second GPU billing, or roughly $0.0007 if Foundry hosts the reader and bills per token, and almost nothing for the rest.
 
 ## What to take away
 
