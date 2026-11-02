@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "azurefoundryagent7",
+      "title": "Azure Foundry Agent (Part 6)",
+      "description": "Rules from the statutes, a small model that only reads, and a side-by-side test against GPT, DeepSeek and Google on the same arrests",
+      "date": "2026-11-02",
+      "categories": [
+        "AI",
+        "Azure"
+      ],
+      "tags": "azure-ai-foundry, architecture, rules-engine, rag, evaluation, citations"
+    },
+    {
       "slug": "foundry-where-to-start",
       "title": "Where to start in Microsoft Foundry",
       "description": "A 10,000-foot view of Microsoft Foundry for agents: what is open and cross-platform, what Microsoft adds and why, a suggested order to learn it in, and what is going away",
@@ -79,17 +90,6 @@
       "tags": "webxr, a-frame, beat-saber, claude-code, karaoke, music"
     },
     {
-      "slug": "attiny4",
-      "title": "ATtiny85 (Part 4)",
-      "description": "Moving the ATtiny85 speed limiter from a breadboard to a soldered ElectroCookie mini prototype board, with screw terminal blocks for the bike's wires and a two-piece 3D printed case that snaps shut inside the bike frame, then building it and testing it on the bike",
-      "date": "2026-10-23",
-      "categories": [
-        "IOT",
-        "3D printing"
-      ],
-      "tags": "attiny85, e-bike, prototype-board, terminal-blocks, openscad"
-    },
-    {
       "slug": "odata",
       "title": "OData",
       "description": "Querying an OData service with $select, $filter, $orderby, $expand and $count, and how OData compares with GraphQL",
@@ -98,17 +98,6 @@
         "Business Central"
       ],
       "tags": "odata, rest-api, api-design, query-language, graphql"
-    },
-    {
-      "slug": "attiny3",
-      "title": "ATtiny85 (Part 3)",
-      "description": "An ATtiny85 that cuts an e-bike motor above 25 km/h by pulling the brake sensor line low, tested on the road",
-      "date": "2026-10-21",
-      "categories": [
-        "AI",
-        "IOT"
-      ],
-      "tags": "claude-code, attiny85, e-bike, brake-sensor, field-test, debugging"
     },
     {
       "slug": "3dprinting3",
@@ -385,17 +374,6 @@
         "Python"
       ],
       "tags": "machine-learning, scikit-learn, regression, k-nearest-neighbors"
-    },
-    {
-      "slug": "attiny2",
-      "title": "ATtiny85 (Part 2)",
-      "description": "An ATtiny85 that sits in an e-bike's hub-motor speed wire, mirrors the signal below 25 km/h and doubles it above, simulated in Tinkercad with an Arduino Uno as a fake wheel",
-      "date": "2026-10-11",
-      "categories": [
-        "AI",
-        "IOT"
-      ],
-      "tags": "claude-code, attiny85, interrupts, tinkercad, hall-sensor, e-bike"
     },
     {
       "slug": "minigpt8",
@@ -3301,5 +3279,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-11-02T02:46:46.517Z"
+  "generatedAt": "2026-11-02T11:24:02.000Z"
 }
