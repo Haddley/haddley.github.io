@@ -10,9 +10,9 @@ slug: "3dprinting3"
 image: "/assets/images/3dprinting3/posts-meta.svg"
 ---
 
-The bike already had a front light, so I added a rear light while I had the bike in pieces and the soldering iron out. This is a side project, and it is not directly related to the [ATtiny85 speed limiter](/posts/attiny2/) that I was building at the same time.
+I wanted a rear light for the bike, which already had a front light.
 
-The light is the one in [this eBay listing](https://www.ebay.com.au/itm/178190458528). This is what it looked like originally.
+I bought the light in [this eBay listing](https://www.ebay.com.au/itm/178190458528). It did not suit my bike carrier as supplied, so I printed a new back half for it, in two versions. This is what the light looked like originally.
 
 ![](assets/images/3dprinting3/original-light-back.jpg)
 *The original rear light from the back: the black back half with its two studs and two screws, the cable leaving through the middle, and the separate bracket lying beside it*
