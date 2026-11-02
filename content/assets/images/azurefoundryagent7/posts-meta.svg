@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
+  <title>A full pentagon of correct answers over a weaker, dented one</title>
+  <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+  <polygon points="60,16 101.8,46.4 85.8,95.6 34.2,95.6 18.2,46.4" fill="#17304a" stroke="#5bb4ea" stroke-width="2"/>
+  <polygon points="60,38 80.9,53.2 72.9,77.8 47.1,77.8 39.1,53.2" fill="none" stroke="#2f5a80" stroke-width="1.5"/>
+  <polygon points="60,16 80.9,53.2 82,90.3 51,72.5 28.6,49.8" fill="#ff8ac4" fill-opacity="0.3" stroke="#ff8ac4" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="4 3"/>
+  <polygon points="60,16 101.8,46.4 85.8,95.6 34.2,95.6 18.2,46.4" fill="#5be0cf" fill-opacity="0.12" stroke="#5be0cf" stroke-width="4" stroke-linejoin="round"/>
+</svg>
