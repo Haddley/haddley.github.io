@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "claudecode17",
+      "title": "Claude Code (Part 17)",
+      "description": "Asking Claude Code to find an Arduino Uno and a 2.6/2.8 inch TFT LCD shield, install the toolchain, fix an Apple Silicon compiler error, upload a test sketch that identified the ILI9341 display controller, and turn the screen into a Claude Code status light",
+      "date": "2026-11-03",
+      "categories": [
+        "AI",
+        "IOT"
+      ],
+      "tags": "claude-code, arduino, tft-lcd-shield, ili9341, arduino-cli"
+    },
+    {
       "slug": "azurefoundryagent7",
       "title": "Azure Foundry Agent (Part 6)",
       "description": "Rules from the statutes, a small model that only reads, and a side-by-side test against GPT, DeepSeek and Google on the same arrests",
@@ -3279,5 +3290,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-11-02T19:37:35.206Z"
+  "generatedAt": "2026-11-03T03:40:45.327Z"
 }
