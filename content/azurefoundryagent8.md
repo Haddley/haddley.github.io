@@ -104,7 +104,7 @@ The 90-day figure came from the model's memory of the old law. The 30-day figure
 ### 2. Day 75, and a deadline that has already passed
 
 :::fireside-chat The deadline is the one thing that cannot be recovered
-**Person:** I can't believe this is happening. I was arrested for DWI on Saturday. I attend an outpatient counseling program across town. They got a warrant and took my blood. I didn't fight it. My 14-year-old was in the back seat. Can you help me understand this?
+**Person:** I can't believe this is happening. I was arrested for DWI a while ago. I attend an outpatient counseling program across town. They got a warrant and took my blood. I didn't fight it. My 14-year-old was in the back seat. Can you help me understand this?
 
 **Advisor:** I'm sorry you're going through this; there are real steps that can help, so let's take them in order. To give you accurate information I need a few facts. (1) How old are you? (2) What was the test result (the number)? (3) Have you had any earlier alcohol- or drug-related driving incidents, anywhere, and how many years ago was each? (4) What date did you receive the notice of revocation? (5) Do you need your licence for work, school or treatment? (6) Was there any crash or injury? Do you hold a commercial driver's licence? Were any drugs or medication involved? Do you have any DWI conviction outside Minnesota?
 
@@ -132,8 +132,6 @@ This is a research demo, not legal advice. I am not a lawyer and nothing here is
 :::
 
 **What the others did.** DeepSeek with search wrote "you typically have only 30 days" and drew the conclusion from it, so its date arithmetic was correct on the wrong number. It also added a separate child-endangerment charge under Minn. Stat. § 609.378, a section that is not in the rules base, so the checker could not find it. `gpt-5-search-api` said the window was "30 or 60 days depending" and told the person to check the notice.
-
-One honest note about this test. The generator draws the wording of the arrest ("last weekend") and the age of the notice (75 days) separately, so a few conversations contradict themselves. DeepSeek noticed this one and said so. Our advisor did not, because its job is the arithmetic on the notice date.
 
 ### 3. "I cannot remember the date, and I have not seen the number"
 
@@ -271,6 +269,7 @@ A: The small model only reads the person's message into facts. Everything with a
 ## What the 2,000 do not show
 
 - **The tests share the advisor's rules.** The ideal answers come from the same rules, which are written from the wiki. A mistake in the wiki or the rules would be in the answer and in the test, and the advisor would pass. No lawyer has reviewed them. The 2,000 show the advisor follows its rules and reads people correctly. They do not show that the rules are the law.
+- **Some simulated stories contradict themselves.** The arrest wording and the notice age were drawn separately (conversations 4 and 5 show it). I have not counted how many of the 2,000 are affected, and the advisor was not scored on spotting the clash. A rerun with a generator that agrees with itself, and an advisor that asks "which is it?", is the next step.
 - **Simulated drivers are tidy.** They answer what is asked and nothing else. A real person wanders, cannot find the paper, or says something I did not think of.
 - **One run each, and ten tests.** The comparison with the others is a sample of ten, run once. Treat the table as an illustration of the traps, not a ranking.
 - **The scorer was written from the advisor's own points,** which is why I counted the figures too.
