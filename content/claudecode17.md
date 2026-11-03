@@ -1,11 +1,11 @@
 ---
 title: "Claude Code"
 part: 17
-description: "Asking Claude Code to find an Arduino Uno and a 2.6/2.8 inch TFT LCD shield, install the toolchain, fix an Apple Silicon compiler error, upload a test sketch that identified the ILI9341 display controller, and turn the screen into a Claude Code status light"
+description: "Asking Claude Code to find an Arduino Uno and a 2.6/2.8 inch TFT LCD shield, install the toolchain, fix an Apple Silicon compiler error, upload a test sketch that identified the ILI9341 display controller, and turn the screen into a Claude Code status light, then design and print a case for it"
 date: "2026-11-03"
-categories: ["AI","IOT"]
+categories: ["AI","IOT","3D printing"]
 image: "/assets/images/claudecode17/posts-meta.svg"
-tags: "claude-code, arduino, tft-lcd-shield, ili9341, arduino-cli"
+tags: "claude-code, arduino, tft-lcd-shield, ili9341, openscad"
 hidden: false
 slug: "claudecode17"
 ---
