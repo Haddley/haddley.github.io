@@ -457,7 +457,25 @@ I downloaded the files below. The STL files open in Bambu Studio, and the source
 |------|------|
 | Base | [uno_tft_case_base.stl](/assets/files/claudecode17/uno_tft_case_base.stl) |
 | Lid | [uno_tft_case_lid.stl](/assets/files/claudecode17/uno_tft_case_lid.stl) |
+| Bambu Studio project | [uno_tft_case_base.3mf](/assets/files/claudecode17/uno_tft_case_base.3mf) |
 | Source | [uno_tft_case.scad](/assets/files/claudecode17/uno_tft_case.scad) |
+
+## Beat 9: Final assembly
+
+I printed the new base and lid and put everything together. First I screwed the Uno onto its four posts. The USB-B and DC jacks line up with their openings in the wall.
+
+![](assets/images/claudecode17/case-final-uno.jpg)
+*I screwed the Uno onto the four posts, with the jacks in their openings*
+
+Next I pressed the shield onto the Uno. The shield sits above the screw heads and still clears the corner bosses.
+
+![](assets/images/claudecode17/case-final-shield.jpg)
+*I fitted the shield, and the status light was already running*
+
+Finally I screwed the lid onto the corner bosses. The lip sits on top of them, and the window is over the screen.
+
+![](assets/images/claudecode17/case-final-lid.jpg)
+*I fitted the lid, and the green DONE screen shows through the window*
 
 :::under-the-hood uno_tft_case.scad
 ```
