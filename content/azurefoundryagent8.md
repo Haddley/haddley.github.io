@@ -198,7 +198,7 @@ The advisor did not ask about hockey or about the kids at home, and it did not a
 
 **What the others did.** `gpt-5-search-api` took "two kids at home" as a reason to bring in Minn. Stat. § 631.52, which sends certain convictions to family court, and asked whether the person had a custody order, a fact the person never mentioned. The statute exists, but it is not one of the DWI sections. All three got the age of the child right in the end.
 
-### 5. The semi driver stopped in his own car
+### 5. The semi driver stopped in a personal car
 
 :::fireside-chat A question you only ask if you know to ask it
 **Person:** Last two nights ago I was pulled over and arrested for DWI. I'm 41. They got a warrant and took my blood. I didn't fight it. No, this is my first DWI. No, nobody else was in the car. I got the notice of revocation on 29 August 2026 (65 days ago). No, I can manage without driving for now. It came back 0.15. What do I need to know?
@@ -212,7 +212,7 @@ If you have a notice of revocation, the deadline to petition the court is 60 day
 This is a research demo, not legal advice. I am not a lawyer and nothing here is privileged. A Minnesota DWI lawyer should review it before you rely on it.
 :::
 
-**What the others did.** None of the three asked about a commercial licence. All three gave a clean first-offence answer (fourth-degree DWI, a misdemeanor), and GPT-5.5 and DeepSeek noticed that the 60 days had passed. Every number in those answers can be right and the answer is still dangerous to a person whose job is driving.
+**What the others did.** None of the three asked about a commercial licence. All three gave a clean first-offence answer (fourth-degree DWI, a misdemeanor), and GPT-5.5 and DeepSeek noticed that the 60 days had passed. Our advisor did not: the person gave a notice date of 29 August, so the window closed on 28 October, but the advisor stopped at the commercial licence and only said "if you have a notice of revocation, the deadline is 60 days". That is a gap in the advisor. Every number in those answers can be right and the answer is still dangerous to a person whose job is driving.
 
 ### 6. "My friend will say he was driving"
 

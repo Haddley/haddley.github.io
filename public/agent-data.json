@@ -13,6 +13,17 @@
       "tags": "claude-code, arduino, tft-lcd-shield, ili9341, openscad"
     },
     {
+      "slug": "azurefoundryagent8",
+      "title": "Azure Foundry Agent (Part 7)",
+      "description": "2,000 simulated conversations for the Minnesota DWI advisor, six of them told as fireside chats, and the traps that GPT with search, GPT-5.5 and DeepSeek fall into that a rules base built from the statutes avoids",
+      "date": "2026-11-03",
+      "categories": [
+        "AI",
+        "Azure"
+      ],
+      "tags": "azure-ai-foundry, evaluation, testing, rules-engine, citations, llm-wiki"
+    },
+    {
       "slug": "azurefoundryagent7",
       "title": "Azure Foundry Agent (Part 6)",
       "description": "Rules from the statutes, a small model that only reads, and a side-by-side test against GPT, DeepSeek and Google on the same arrests",
@@ -3291,5 +3302,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-11-03T09:10:55.978Z"
+  "generatedAt": "2026-11-03T21:45:55.610Z"
 }
