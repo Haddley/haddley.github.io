@@ -127,6 +127,65 @@ The script exits quietly when the board is unplugged, so a missing Uno never blo
 
 To connect it to Claude Code, I added an entry for each of the five events to the `hooks` section of this project's `.claude/settings.local.json`. Hooks run on every event and change how Claude Code behaves, so I chose the local file rather than my user settings. The light now works only in sessions that start in this repository, and Git ignores the file, so it is never committed.
 
+The hooks section of that file looks like this. The five entries are identical except for the event name, and `command` is the path to the hook script on my Mac, so a reader needs to change it to the path on their own machine. My file also holds some unrelated permission settings, which I left out.
+
+```json
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/neilhaddley/Documents/tft-lcd-shield/claude_status/claude_status_hook.py"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/neilhaddley/Documents/tft-lcd-shield/claude_status/claude_status_hook.py"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/neilhaddley/Documents/tft-lcd-shield/claude_status/claude_status_hook.py"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/neilhaddley/Documents/tft-lcd-shield/claude_status/claude_status_hook.py"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/neilhaddley/Documents/tft-lcd-shield/claude_status/claude_status_hook.py"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
 ![](assets/mp4/claudecode17/status-light.mp4)
 *I filmed the shield while Claude Code worked: amber THINKING, the last tool (Bash), the tool count and the running timer*
 
@@ -344,6 +403,159 @@ void loop() {
   if (state != shown) drawAll();
   drawDetails();
 }
+```
+:::
+
+## Beat 7: A 3D printed case
+
+A bare Uno with a shield on top is fragile and easy to short against a desk. I wanted a case to hold it next to my laptop, so I asked Claude Code to design one.
+
+```PROMPT
+I need a box (enclosure) that I can 3d print for the uno+tft lcd shield with cutout for screen and for uno's usb input connector
+```
+
+Claude checked that OpenSCAD was installed and wrote a parametric model, `uno_tft_case.scad`, in `~/Documents/tft-lcd-shield/enclosure/`. It then rendered the two parts as STL files that open in Bambu Studio.
+
+![](assets/images/claudecode17/case-preview.png)
+*The preview that Claude rendered: the base on the left, and the lid with its screen window behind it*
+
+- **Base.** Four standoffs hold the Uno 4 mm off the floor, so the solder points under the board do not touch it. Each standoff has a pilot hole, so an M3 self-tapping screw through one of the Uno's mounting holes holds the board down. The left wall has an opening for the USB-B jack, and a second opening for the DC jack that I can switch off.
+- **Lid.** A frame with a 59 by 44 mm window, a little larger than the 57.6 by 43.2 mm active area of a 2.8 inch screen. It prints face down with no supports, and a ring-shaped lip centres it on the base.
+- **Fixing.** Four M3 self-tapping screws go into bosses in the corners. The case is about 88 by 71 mm outside, because the bosses need room beside the shield. The bosses stop 2 mm below the rim, so the lid lip sits on top of them.
+
+:::watch-it Three sizes are estimates
+Claude took the Uno from its published drawing, but it could not measure my shield. The height of the stack from the top of the Uno to the top of the touch glass (20 mm), the outline of the shield (71 by 56 mm) and the positions of the two jacks are all estimates. I print a quick fit-test of the base first, and I change the values at the top of the file before I print the real case.
+:::
+
+## Beat 8: The first print did not fit
+
+The fit-test showed two problems. The shield overhangs the end of the Uno, so the case was a little too short. I removed one end wall to make room, and the photo below shows it.
+
+![](assets/images/claudecode17/case-fit-shield.jpg)
+*The shield sticks out past the end of the case where I removed the wall*
+
+The second problem was the lid. The corner bosses ran all the way to the top of the walls, so the lid lip had nowhere to go.
+
+![](assets/images/claudecode17/case-fit-lid.jpg)
+*The lid sits on the bosses instead of dropping into the case*
+
+The Uno also had nothing holding it down, because the pins only located it.
+
+![](assets/images/claudecode17/case-fit-corner.jpg)
+*The Uno resting in the case, with nothing to fix it in place*
+
+I described all three problems to Claude Code, and it changed the model:
+
+- **Longer case.** A new `ext = 2` setting adds 2 mm to the end where I removed the wall. The Uno and the jack openings stay where they were. The window is centred on the longer lid, so it was a little off. Once the lid was on, I asked Claude Code to move the window 5 mm towards the USB wall, then 2 mm back again (`win_dx = -3`).
+- **Lower bosses.** The corner bosses stop 2.1 mm below the rim.
+- **Ring lip.** The lid lip is now a ring with a pad at each corner, so it clears the touch glass and rests on the bosses.
+- **Screw posts.** The Uno standoffs now take M3 self-tapping screws instead of pins.
+
+I downloaded the files below. The STL files open in Bambu Studio, and the source is the OpenSCAD model.
+
+| Part | File |
+|------|------|
+| Base | [uno_tft_case_base.stl](/assets/files/claudecode17/uno_tft_case_base.stl) |
+| Lid | [uno_tft_case_lid.stl](/assets/files/claudecode17/uno_tft_case_lid.stl) |
+| Source | [uno_tft_case.scad](/assets/files/claudecode17/uno_tft_case.scad) |
+
+:::under-the-hood uno_tft_case.scad
+```
+// Two-part 3D-printable case for an Arduino Uno R3 with a 2.8" TFT shield.
+// part = "base", "lid" or "both" (side by side, for a preview).
+// All sizes are millimetres. Check the three "measure" values against your own stack.
+part = "both";
+
+// --- Arduino Uno R3 (published board outline) ---
+uno_l = 68.6;  uno_w = 53.3;
+uno_holes = [[13.97, 2.54], [15.24, 50.8], [66.04, 7.62], [66.04, 35.56]];
+usb_y   = 38.1;           // centre of the USB-B jack, from the board's lower edge (measure)
+usb_w   = 13;  usb_h = 12;     // opening: jack is about 12 x 11, plus slack
+dc_y    = 9.5;            // centre of the DC barrel jack (measure)
+dc_w    = 10.5; dc_h = 12;
+dc_cutout = true;         // set false if you will not use the DC jack
+
+// --- 2.8" TFT shield and its screen (measure) ---
+shield_l = 71; shield_w = 56;      // widest outline of shield + touch glass
+stack_above = 20;                  // board top to top of touch glass (headers + shield + glass)
+win_l = 59;  win_w = 44;           // window in the lid, a little larger than the 57.6 x 43.2 active area
+win_dx = -3;  win_dy = 0;          // shift the window from the centre (negative = towards the USB wall)
+ext = 2;                           // extra length added to the far (+x) end, away from the USB jack
+
+// --- case ---
+wall = 2;  floor_t = 2;  lid_t = 3;
+standoff_h = 4;           // keeps the solder points under the Uno off the floor
+post_d = 6;               // Uno screw posts: M3 self-tapping screws go through the Uno's 3.2 mm holes
+lip_h = 2;  lip_w = 1.6;  // lid lip that centres the lid in the base
+margin = 5.5;             // space each side so the corner screw bosses clear the shield
+boss_r = 3;  screw_d = 2.6; screw_through = 3.4;
+gap = 0.3;                // lid-to-base fit
+
+cav_l = max(uno_l, shield_l) + 2 * margin + ext;
+cav_w = max(uno_w, shield_w) + 2 * margin;
+out_l = cav_l + 2 * wall;  out_w = cav_w + 2 * wall;
+bx = (cav_l - ext - uno_l) / 2;  by = (cav_w - uno_w) / 2;   // Uno origin inside the cavity
+board_top = floor_t + standoff_h + 1.6;
+glass_top = board_top + stack_above;
+base_h = glass_top + 0.5;                              // wall height; the lid sits on top
+boss_h = base_h - lip_h - 0.1;                         // corner bosses leave room for the lid lip
+$fn = 40;
+
+module rrect(l, w, h, r = 3) {
+  hull() for (x = [r, l - r], y = [r, w - r]) translate([x, y, 0]) cylinder(r = r, h = h);
+}
+module boss_positions() {
+  for (x = [boss_r, cav_l - boss_r], y = [boss_r, cav_w - boss_r]) translate([wall + x, wall + y, 0]) children();
+}
+
+module base() {
+  difference() {
+    union() {
+      difference() {
+        rrect(out_l, out_w, base_h);
+        translate([wall, wall, floor_t]) cube([cav_l, cav_w, base_h]);
+      }
+      boss_positions() cylinder(r = boss_r, h = boss_h);   // stops below the top so the lid lip fits
+      for (h = uno_holes) translate([wall + bx + h[0], wall + by + h[1], floor_t])
+        cylinder(d = post_d, h = standoff_h);
+    }
+    // pilot holes in the Uno posts for M3 self-tapping screws
+    for (h = uno_holes) translate([wall + bx + h[0], wall + by + h[1], floor_t + standoff_h - 8])
+      cylinder(d = screw_d, h = 9);
+    boss_positions() translate([0, 0, base_h - 12]) cylinder(d = screw_d, h = 13);
+    // USB-B opening in the left wall
+    translate([-1, wall + by + usb_y - usb_w / 2, board_top - 0.5]) cube([wall + 2, usb_w, usb_h]);
+    if (dc_cutout)
+      translate([-1, wall + by + dc_y - dc_w / 2, board_top - 0.5]) cube([wall + 2, dc_w, dc_h]);
+  }
+}
+
+module lid() {
+  difference() {
+    union() {
+      rrect(out_l, out_w, lid_t);
+      // lip that centres the lid in the base: a ring, so it clears the touch glass,
+      // with a pad at each corner that sits on top of a boss
+      translate([0, 0, -lip_h]) difference() {
+        translate([wall + gap, wall + gap, 0]) cube([cav_l - 2 * gap, cav_w - 2 * gap, lip_h]);
+        translate([wall + gap + lip_w, wall + gap + lip_w, -1])
+          cube([cav_l - 2 * gap - 2 * lip_w, cav_w - 2 * gap - 2 * lip_w, lip_h + 2]);
+      }
+      boss_positions() translate([0, 0, -lip_h]) cylinder(r = boss_r - gap, h = lip_h);
+    }
+    // screen window
+    translate([out_l / 2 + win_dx - win_l / 2, out_w / 2 + win_dy - win_w / 2, -3]) cube([win_l, win_w, lid_t + 4]);
+    // screw holes with countersinks
+    boss_positions() {
+      translate([0, 0, -3]) cylinder(d = screw_through, h = lid_t + 4);
+      translate([0, 0, lid_t - 1.7]) cylinder(d1 = screw_through, d2 = 6.4, h = 1.71);
+    }
+  }
+}
+
+if (part == "base") base();
+else if (part == "lid") translate([0, 0, lid_t]) mirror([0, 0, 1]) translate([0, 0, 0]) lid();  // printed screen-side down
+else { base(); translate([0, out_w + 10, 0]) translate([0, 0, lid_t]) mirror([0, 0, 1]) lid(); }
 ```
 :::
 
