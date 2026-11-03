@@ -622,33 +622,59 @@ function renderCallout(section: MobiriseParsedContent, index: number, nested: bo
   );
 
   // Fireside chats: each "**Speaker:** line" becomes a speech bubble, alternating sides.
+  // Lines after a speaker's line (more paragraphs, "- " items) stay in that bubble until the next speaker.
   if (section.calloutType === 'fireside-chat') {
     const speakers: string[] = [];
     const bubbles: React.ReactNode[] = [];
+    let turn: { speaker: string; lines: string[]; key: string } | null = null;
+    const flush = () => {
+      if (!turn) return;
+      const { speaker, lines, key } = turn;
+      turn = null;
+      const right = speakers.indexOf(speaker) % 2 === 1;
+      const runs: Array<{ kind: 'p' | 'ul'; lines: string[] }> = [];
+      for (const line of lines) {
+        const kind = /^[-*]\s+/.test(line) ? 'ul' : 'p';
+        const item = kind === 'ul' ? line.replace(/^[-*]\s+/, '') : line;
+        const last = runs[runs.length - 1];
+        if (last && last.kind === kind) last.lines.push(item);
+        else runs.push({ kind, lines: [item] });
+      }
+      bubbles.push(
+        <div key={key} style={{ display: 'flex', justifyContent: right ? 'flex-end' : 'flex-start', margin: '0.6rem 0' }}>
+          <div style={{ maxWidth: '82%', background: right ? '#ffffff' : '#ffedd5', border: `1.5px solid ${style.accent}`, borderRadius: right ? '16px 16px 4px 16px' : '16px 16px 16px 4px', padding: '0.5rem 0.9rem', boxShadow: '0 1px 2px rgba(0,0,0,0.06)' }}>
+            <div style={{ fontFamily: hand, fontWeight: 700, color: style.accent, fontSize: '1.05rem' }}>{speaker}</div>
+            {runs.map((run, r) => run.kind === 'ul' ? (
+              <ul key={r} className="mb-2">{run.lines.map((l, k) => <li key={k}>{processInlineMarkdown(l)}</li>)}</ul>
+            ) : (
+              <div key={r} className="mb-2">{run.lines.map((l, k) => <p key={k} className="mb-2">{processInlineMarkdown(l)}</p>)}</div>
+            ))}
+          </div>
+        </div>
+      );
+    };
     (section.children || []).forEach((child, i) => {
       if (child.type !== 'text') {
+        flush();
         bubbles.push(renderSection(child, i, true));
         return;
       }
       // Consecutive paragraphs arrive as one text section, one line each.
       child.content.split('\n').forEach((line, j) => {
         const m = line.match(/^\*\*([^*:]+):\*\*\s*(.*)$/);
-        if (!m) {
+        // A chat has two speakers, so a bold label inside a speaker's text ("**Deadline first:**") is not a third.
+        if (m && (speakers.includes(m[1]) || speakers.length < 2)) {
+          flush();
+          if (!speakers.includes(m[1])) speakers.push(m[1]);
+          turn = { speaker: m[1], lines: [m[2]], key: `${i}-${j}` };
+        } else if (turn) {
+          (turn as { lines: string[] }).lines.push(line);
+        } else {
           bubbles.push(<p key={`${i}-${j}`} className="mb-2">{processInlineMarkdown(line)}</p>);
-          return;
         }
-        if (!speakers.includes(m[1])) speakers.push(m[1]);
-        const right = speakers.indexOf(m[1]) % 2 === 1;
-        bubbles.push(
-          <div key={`${i}-${j}`} style={{ display: 'flex', justifyContent: right ? 'flex-end' : 'flex-start', margin: '0.6rem 0' }}>
-            <div style={{ maxWidth: '82%', background: right ? '#ffffff' : '#ffedd5', border: `1.5px solid ${style.accent}`, borderRadius: right ? '16px 16px 4px 16px' : '16px 16px 16px 4px', padding: '0.5rem 0.9rem', boxShadow: '0 1px 2px rgba(0,0,0,0.06)' }}>
-              <div style={{ fontFamily: hand, fontWeight: 700, color: style.accent, fontSize: '1.05rem' }}>{m[1]}</div>
-              <div>{processInlineMarkdown(m[2])}</div>
-            </div>
-          </div>
-        );
       });
     });
+    flush();
     return wrap(index, nested, (
       <aside className="mbr-fonts-style display-7" style={{ border: `2px solid ${style.accent}`, borderRadius: '14px', background: style.background, padding: '1rem 1.25rem', margin: '1.5rem 0' }}>
         {title}
