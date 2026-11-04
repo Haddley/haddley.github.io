@@ -12,7 +12,7 @@ slug: "azurefoundryagent7"
 
 # A Minnesota DWI AI advisor
 
-Six advisors, three felony DWI cases, five points the Minnesota statutes settle. **Only our AI Agent is right every time, and every citation it gives is checked against the statute text.** It also answers in under 9 seconds for an estimated $0.001 per answer to run on Azure, where GPT-5.5, `gpt-5-search-api` and DeepSeek (with and without search) took 45 seconds to 7 minutes and cost $0.08 to $0.32 per answer in API tokens.
+Six advisors, three felony DWI cases, five points the Minnesota statutes settle. **Only our AI Agent is right every time, and every citation it gives is checked against the statute text.** It also answers in roughly 4 to 9 seconds for an estimated $0.001 per answer to run on Azure, where GPT-5.5, `gpt-5-search-api` and DeepSeek (with and without search) took roughly 45 seconds to 7 minutes and cost roughly $0.08 to $0.32 per answer in API tokens. The times and costs for the other advisors are approximate figures from my own runs.
 
 Someone arrested for drunk driving in Minnesota asks a chatbot what happens next. This advisor answers the same question from a rules base built from Minnesota's statutes and court decisions, and puts a citation beside every legal claim. It is a research demo, not legal advice.
 
@@ -29,7 +29,7 @@ I put three cases to six advisors: our AI Agent, GPT-5.5, `gpt-5-search-api`, De
 
 Each answer was checked against five points the statutes settle. A point counts only if the figure is right: a first-degree felony; a sentence of **not less than three years in prison** (§ 169A.276, subd. 1), which a court may stay but not shorten; a revocation of **at least ten years** of interlock plus treatment (§ 171.178); a **60-day** deadline to challenge it (§ 169A.53); and plate impoundment and forfeiture. A missing figure counts as wrong. Each score is out of three cases.
 
-The first chart covers the models answering from memory, the second the advisors that search the web. Our AI Agent is the green pentagon in both, drawn on top. It got every point right and gave the section of the law for each.
+The first chart covers the models answering from memory, the second the advisors that search the web. Our AI Agent is the green pentagon in both, drawn on top. It got every point right and gave the section of the law for each. I judged the other advisors' points by hand, so read their scores as a guide rather than exact percentages.
 
 ```mermaid
 %%{init: {"theme": "neutral", "themeVariables": {"cScale0": "#dc2626", "cScale1": "#7c3aed", "cScale2": "#16a34a", "radar": {"curveOpacity": 0.1, "curveStrokeWidth": 3, "axisColor": "#475569", "axisStrokeWidth": 1.5, "axisLabelFontSize": 15, "graticuleColor": "#cbd5e1", "graticuleStrokeWidth": 1, "legendFontSize": 15, "legendBoxSize": 15}}, "radar": {"width": 520, "height": 520, "marginTop": 80, "marginBottom": 60, "marginLeft": 150, "marginRight": 220, "axisLabelFactor": 1.1}}}%%
@@ -72,7 +72,7 @@ What a wrong number looks like in practice:
 
 - Asked about a fifth DWI (Case B), Google's AI Overview says the mandatory minimum is **one year** in jail. The statute says **not less than three years in prison** (§ 169A.276), which a court can suspend but cannot go below. Someone deciding whether to plead is working from the wrong number.
 - `gpt-5-search-api` gives the felony floor as three years in Case B, 180 days in Case A and 90 days in Case C. The same felony gets three different answers.
-- A nurse with one DWI from 13 years ago is told by GPT-5.5 that she will lose her licence for about 90 days. Since August 2025 the statute says at least two years, and for those years she can drive only with a breath-test device wired into her car (§ 171.178).
+- A nurse with one DWI from 13 years ago is told by GPT-5.5 that she will lose her licence for about 90 days. Since the law changed on 1 August 2025 the statute says at least two years, and for those years she can drive only with a breath-test device wired into her car (§ 171.178).
 
 Google is better than I expected. It gets the charge, the fine and forfeiture right, and it asks sensible follow-up questions. DeepSeek with search is the best of the general advisors: it states the three-year floor every time, although it gets the revocation wrong in all three cases. Our AI Agent got all five points right in all three cases. None of the other five got all five right in even one case.
 
