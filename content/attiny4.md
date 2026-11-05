@@ -168,6 +168,9 @@ The photo at the top of this post shows the assembled board. It follows the layo
 
 The case fits the frame easily. It goes in the space at the top of the frame, above the battery.
 
+![](assets/images/attiny4/installed.jpg)
+*The case installed in the frame, with the bike's wires running into the terminal blocks*
+
 To connect it to the bike, I opened up the cable between the controller and the hub motor. I tapped a red wire into the 5 V wire and a black wire into the ground wire, and I cut the white speed wire in half and joined a white wire to each cut end. The other ends of these four wires go into the terminal blocks on the board. They are 24 AWG stranded silicone wire from a hook-up wire kit with six colours, 30 ft spools, and a 300 V rating. A 24 AWG conductor is about 0.51 mm across, a little thinner than the 22 gauge solid core on the board. The stranded wire is flexible, so it suits the run from the bike's cable to the board, and the solid core stays on the board.
 
 I also bought two cables on eBay to make the connections:
