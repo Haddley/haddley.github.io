@@ -121,6 +121,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
                   {topicCategories.map(name => (
                     <Link
                       key={name}
+                      prefetch={false}
                       href={`/categories/${categoryNameToSlug(name)}/`}
                       title={`Category page: all ${getCategoryCount(name)} of my ${name} posts`}
                       style={{ background: 'rgba(15, 30, 61, 0.1)', color: '#0f1e3d', padding: '4px 14px', borderRadius: '8px', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}
@@ -160,7 +161,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
               <h4 className="mbr-fonts-style display-5 mb-3"><strong>The posts behind this page</strong></h4>
               <ul>
                 {posts.filter(Boolean).map(p => (
-                  <li key={p!.slug}><Link href={`/posts/${p!.slug}/`}>{p!.title}</Link> — {p!.description}</li>
+                  <li key={p!.slug}><Link href={`/posts/${p!.slug}/`} prefetch={false}>{p!.title}</Link> — {p!.description}</li>
                 ))}
               </ul>
             </div>
