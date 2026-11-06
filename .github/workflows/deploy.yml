@@ -36,6 +36,9 @@ jobs:
       - name: Audit wiki quotes
         run: npm run wiki:audit
 
+      - name: Unit tests
+        run: npm run test:unit
+
       - name: Sync images
         run: npm run sync-images
 

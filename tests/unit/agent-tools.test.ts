@@ -1,7 +1,7 @@
 // @vitest-environment node
 import { describe, it, expect } from 'vitest';
-import { searchPosts, getPostsByCategory, getCategoryUrl } from '../../src/lib/agent-tools';
-import type { PostMeta } from '../../src/lib/agent-tools';
+import { searchPosts, getPostsByCategory, getCategoryUrl, searchWiki, getTopic, listTopics } from '../../src/lib/agent-tools';
+import type { PostMeta, WikiData } from '../../src/lib/agent-tools';
 
 const POSTS: PostMeta[] = [
   { slug: 'azure-functions-intro', title: 'Azure Functions Intro', description: 'Getting started with Azure Functions', date: '2024-01-01', categories: ['Azure'], tags: 'serverless, azure-functions, cloud' },
@@ -87,7 +87,7 @@ describe('getPostsByCategory', () => {
     expect(results[0].slug).toBe('python-ml');
   });
 
-  it('caps results at 10', () => {
+  it('returns every post in the category (the assistant caps what it sends to the model)', () => {
     const many: PostMeta[] = Array.from({ length: 15 }, (_, i) => ({
       slug: `post-${i}`,
       title: `Post ${i}`,
@@ -96,24 +96,71 @@ describe('getPostsByCategory', () => {
       categories: ['Azure'],
       tags: 'tag1, tag2, tag3',
     }));
-    expect(getPostsByCategory('Azure', many)).toHaveLength(10);
+    expect(getPostsByCategory('Azure', many)).toHaveLength(15);
   });
 });
 
 describe('getCategoryUrl', () => {
   it('produces a root-relative URL', () => {
-    expect(getCategoryUrl('Azure')).toBe('/posts/category/azure/');
+    expect(getCategoryUrl('Azure')).toBe('/categories/azure/');
   });
 
   it('slugifies multi-word category names', () => {
-    expect(getCategoryUrl('Power Platform')).toBe('/posts/category/power-platform/');
+    expect(getCategoryUrl('Power Platform')).toBe('/categories/power-platform/');
   });
 
   it('slugifies categories with special characters', () => {
-    expect(getCategoryUrl('3D printing')).toBe('/posts/category/3d-printing/');
+    expect(getCategoryUrl('3D printing')).toBe('/categories/3d-printing/');
   });
 
   it('slugifies .NET correctly', () => {
-    expect(getCategoryUrl('.NET')).toBe('/posts/category/dotnet/');
+    expect(getCategoryUrl('.NET')).toBe('/categories/dotnet/');
+  });
+});
+
+
+// ── Wiki tools ───────────────────────────────────────────────────────────────
+
+const WIKI: WikiData = {
+  posts: [
+    { slug: 'docker1', title: 'Docker basics', date: '2021-02-01', part: null, builds_on: [], topics: ['containers'], tools: ['Docker'], status: 'current',
+      summary: 'I ran my first container.', claims: [{ text: 'A container is a process.', quote: 'A container is just a process.' }], outcome: 'It ran.', caveats: '' },
+    { slug: 'rag1', title: 'RAG basics', date: '2026-01-01', part: null, builds_on: [], topics: ['retrieval'], tools: ['Ollama'], status: 'current',
+      summary: 'I built retrieval over my notes.', claims: [], outcome: 'It worked.', caveats: '' },
+  ],
+  topics: [
+    { slug: 'docker', title: 'Docker', description: 'Containers', posts: ['docker1'], summary: 'Containers in practice.', idea: ['Containers are processes.'],
+      claims: [{ text: 'A container is a process.', quote: 'A container is just a process.', slug: 'docker1' }], differences: [], conclusion: 'Use them.' },
+    { slug: 'retrieval-augmented-generation', title: 'Retrieval-augmented generation', description: 'RAG', posts: ['rag1'], summary: 'Retrieval first.', idea: [],
+      claims: [], differences: [], conclusion: '' },
+  ],
+};
+
+describe('wiki tools', () => {
+  it('listTopics returns every topic with a link, sorted by name', () => {
+    const list = listTopics(WIKI);
+    expect(list.map(t => t.topic)).toEqual(['Docker', 'Retrieval-augmented generation']);
+    expect(list[0]).toMatchObject({ url: '/topics/docker/', posts: 1 });
+  });
+
+  it('searchWiki finds a topic page and the posts behind it', () => {
+    const found = searchWiki('docker', WIKI);
+    expect(found.topics[0].url).toBe('/topics/docker/');
+    expect(found.posts[0].url).toBe('/posts/docker1/');
+  });
+
+  it('searchWiki returns nothing for an empty query', () => {
+    expect(searchWiki('', WIKI)).toEqual({ topics: [], posts: [] });
+  });
+
+  it('getTopic accepts a slug, a title or a /topics/ address', () => {
+    expect(getTopic('docker', WIKI)?.topic).toBe('Docker');
+    expect(getTopic('Docker', WIKI)?.topic).toBe('Docker');
+    expect(getTopic('/topics/docker/', WIKI)?.topic).toBe('Docker');
+  });
+
+  it('getTopic returns null for an unknown topic and links claims to their posts', () => {
+    expect(getTopic('nothing-here', WIKI)).toBeNull();
+    expect(getTopic('docker', WIKI)?.claims[0].url).toBe('/posts/docker1/');
   });
 });
