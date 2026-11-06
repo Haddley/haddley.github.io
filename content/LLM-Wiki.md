@@ -6,7 +6,7 @@ categories: ["AI"]
 image: "/assets/images/LLMWiki/obsidian-logo.svg"
 tags: "claude-code, ai-agent, anthropic, agentic-coding, ollama, llm"
 hidden: false
-slug: "LLMWiki"
+slug: "LLM-Wiki"
 ---
 
 Andrej Karpathy published a concept for building a personal knowledge base using LLMs — a "wiki" where you ingest raw source documents (PDFs, emails, notes) and have Claude synthesise structured wiki pages from them. Each page follows a consistent YAML frontmatter schema with type, sources, confidence level, and related pages. A master index tracks everything and an activity log records every ingest. The power is in the cross-referencing: once your documents are in the wiki, you can ask Claude to compare cases, find patterns, or draft documents grounded entirely in your own ingested material.

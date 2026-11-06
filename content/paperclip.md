@@ -6,7 +6,7 @@ categories: ["AI"]
 image: "/assets/images/claudecode/Claude_AI_symbol.svg"
 tags: "claude-code, ai-agent, anthropic, agentic-coding"
 hidden: false
-slug: "Paperclip"
+slug: "paperclip"
 ---
 
 I came across [Paperclip](https://paperclip.ing/) — an open-source tool that lets you run a company staffed entirely by AI agents. You define a company, create agents to fill roles, assign them tasks, and watch them work. I wanted to see how far it could actually get.

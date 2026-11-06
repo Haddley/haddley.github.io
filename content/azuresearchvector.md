@@ -7,7 +7,7 @@ categories: ["AI", "Azure"]
 image: "/assets/images/azuresearchvector/posts-meta.svg"
 tags: "azure-ai-foundry, azure-ai-search, vector-search, embeddings, rag"
 hidden: false
-slug: "azurefoundryagent"
+slug: "azuresearchvector"
 ---
 
 # Creating an Agent in Azure AI Foundry

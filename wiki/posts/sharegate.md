@@ -1,6 +1,6 @@
 ---
 type: post
-slug: shareGate
+slug: sharegate
 title: "ShareGate (Part 1)"
 date: "2026-04-30"
 part: 1
@@ -9,7 +9,7 @@ topics: [sharegate-installation, sharepoint-migration, sql-server-configuration,
 tools: [Azure, Windows Server, Microsoft SQL Server, SharePoint, ShareGate, Microsoft 365]
 status: current
 checked: "2026-11-06"
-source_hash: "4a8cc4052e44"
+source_hash: "18c8af885865"
 generated_by: gemma4:12b
 ---
 

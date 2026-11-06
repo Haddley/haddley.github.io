@@ -1,6 +1,6 @@
 ---
 type: post
-slug: LLMWiki
+slug: LLM-Wiki
 title: "LLM Wiki"
 date: "2026-04-20"
 builds_on: []
@@ -8,7 +8,7 @@ topics: [llm-knowledge-bases, claude-code-workflows, knowledge-graph-constructio
 tools: [Claude Code, Obsidian, YAML]
 status: current
 checked: "2026-11-05"
-source_hash: "748c981a3ec6"
+source_hash: "04e4b690f9f0"
 generated_by: gemma4:12b
 ---
 

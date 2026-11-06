@@ -4,12 +4,12 @@ slug: azurefoundryagent2
 title: "Azure Foundry Agent (Part 1)"
 date: "2026-10-27"
 part: 1
-builds_on: [claudecode14, claudecowork1, azurefoundryagent, azurefoundryagent3]
+builds_on: [claudecode14, claudecowork1, azuresearchvector, azurefoundryagent3]
 topics: [azure-ai-foundry, prompt-engineering, llm-evaluation, skill-versioning]
 tools: [Azure AI Foundry, Python SDK, pypdf, GPT-4o-mini]
 status: current
 checked: "2026-11-05"
-source_hash: "19b5bf140da7"
+source_hash: "5fb059a88084"
 generated_by: gemma4:12b
 ---
 

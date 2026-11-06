@@ -1,6 +1,6 @@
 ---
 type: post
-slug: shareGate2
+slug: sharegate2
 title: "ShareGate (Part 2)"
 date: "2026-05-01"
 part: 2
@@ -9,7 +9,7 @@ topics: [content-type-migration, sharepoint-online-migration, metadata-preservat
 tools: [ShareGate, SharePoint 2019, SharePoint Online, Microsoft Excel, Azure]
 status: current
 checked: "2026-11-06"
-source_hash: "718f34052a19"
+source_hash: "bb6f09b4a3fc"
 generated_by: gemma4:12b
 ---
 

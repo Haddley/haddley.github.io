@@ -116,7 +116,12 @@ ${retryNote}`;
     }),
   });
   if (!res.ok) throw new Error(`Ollama ${res.status}`);
-  return JSON.parse((await res.json()).message.content);
+  const reply = await res.json();
+  if (process.env.WIKI_TIMING) {
+    const sec = ns => (ns / 1e9).toFixed(1);
+    console.log(`  timing: load ${sec(reply.load_duration)}s, read ${reply.prompt_eval_count} prompt tokens in ${sec(reply.prompt_eval_duration)}s, wrote ${reply.eval_count} tokens in ${sec(reply.eval_duration)}s (${(reply.eval_count / (reply.eval_duration / 1e9)).toFixed(0)} tok/s)`);
+  }
+  return JSON.parse(reply.message.content);
 }
 
 const yaml = v => JSON.stringify(v);

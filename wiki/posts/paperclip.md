@@ -1,6 +1,6 @@
 ---
 type: post
-slug: Paperclip
+slug: paperclip
 title: "Paperclip"
 date: "2026-03-28"
 builds_on: []
@@ -8,7 +8,7 @@ topics: [ai-agents, autonomous-orchestration, multi-agent-systems, cloud-deploym
 tools: [Paperclip, Claude Code, Azure, Vite, Socket.io, Docker]
 status: current
 checked: "2026-11-06"
-source_hash: "920351604b43"
+source_hash: "fb948af0da1c"
 generated_by: gemma4:12b
 ---
 

@@ -204,7 +204,7 @@ SimpleField(name="page", type=SearchFieldDataType.Int32, filterable=True, sortab
 SearchableField(name="text", type=S, analyzer_name="en.lucene"),
 ```
 
-I did not use vector search here. The Part 2 post of my earlier series, [Creating an Agent in Azure AI Foundry](/posts/azurefoundryagent/), used embeddings. For this job the names, dates and quoted phrases matter more than meaning, so plain keyword search with filters was enough, and it needs no embedding model deployment.
+I did not use vector search here. The Part 2 post of my earlier series, [Creating an Agent in Azure AI Foundry](/posts/azuresearchvector/), used embeddings. For this job the names, dates and quoted phrases matter more than meaning, so plain keyword search with filters was enough, and it needs no embedding model deployment.
 
 ### Roles again
 

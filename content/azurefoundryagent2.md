@@ -14,7 +14,7 @@ slug: "azurefoundryagent2"
 
 I wrote the `page-line-summary` skill for [Claude Code (Part 14)](/posts/claudecode14/) and ran it again in [Claude Cowork (Part 1)](/posts/claudecowork1/). In this post I run the same skill in Azure. I store it in Microsoft Foundry, give it to a prompt agent, and ask the agent to summarize deposition excerpts.
 
-My earlier post, [Creating an Agent in Azure AI Foundry](/posts/azurefoundryagent/), used Azure AI Search to give an agent my documents. This post is about something different: giving an agent a skill.
+My earlier post, [Creating an Agent in Azure AI Foundry](/posts/azuresearchvector/), used Azure AI Search to give an agent my documents. This post is about something different: giving an agent a skill.
 
 :::brain-power Before you read on
 My skill tells the model to "use the Read tool" to read the transcript and the "Write tool" to save the summary. Azure has no Read tool and no Write tool. What does a skill still give me, and what do I have to supply myself?

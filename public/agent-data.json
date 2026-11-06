@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "slug": "localagent2",
+      "title": "Local Agent (Part 2)",
+      "description": "How the blog assistant works now: a gatekeeper in front of a hosted Qwen3.5 9B, an agent loop that runs in the browser, and a checked wiki of the posts",
+      "date": "2026-11-06",
+      "categories": [
+        "AI",
+        "DevOps"
+      ],
+      "tags": "ollama, qwen, architecture, caddy, wiki, tool-calling"
+    },
+    {
       "slug": "claudecode17",
       "title": "Claude Code (Part 17)",
       "description": "Asking Claude Code to find an Arduino Uno and a 2.6/2.8 inch TFT LCD shield, install the toolchain, fix an Apple Silicon compiler error, upload a test sketch that identified the ILI9341 display controller, and turn the screen into a Claude Code status light, then design and print a case for it",
@@ -800,7 +811,7 @@
     },
     {
       "slug": "localagent",
-      "title": "Local Agent",
+      "title": "Local Agent (Part 1)",
       "description": "A conversational AI assistant for this blog using WebLLM (in-browser) and a self-hosted Ollama server (Hosted, public, HTTPS) as interchangeable backends",
       "date": "2026-06-14",
       "categories": [
@@ -901,7 +912,7 @@
       "tags": "sharepoint, power-automate, power-apps"
     },
     {
-      "slug": "shareGate2",
+      "slug": "sharegate2",
       "title": "ShareGate (Part 2)",
       "description": "Migrating content types and site structure",
       "date": "2026-05-01",
@@ -911,7 +922,7 @@
       "tags": "sharepoint, azure, on-premises, online, migration"
     },
     {
-      "slug": "shareGate",
+      "slug": "sharegate",
       "title": "ShareGate (Part 1)",
       "description": "Installation and tenant connection",
       "date": "2026-04-30",
@@ -921,7 +932,7 @@
       "tags": "sharepoint, azure, on-premises, online, migration"
     },
     {
-      "slug": "LLMWiki",
+      "slug": "LLM-Wiki",
       "title": "LLM Wiki",
       "description": "Building a Claude Code-powered personal knowledge base inspired by Andrej Karpathy's LLM Wiki — ingesting PDFs, emails, and notes into structured wiki pages",
       "date": "2026-04-20",
@@ -941,7 +952,7 @@
       "tags": "claude-code, ai-agent, anthropic, agentic-coding, ollama"
     },
     {
-      "slug": "Paperclip",
+      "slug": "paperclip",
       "title": "Paperclip",
       "description": "Open-source orchestration for zero-human companies",
       "date": "2026-03-28",
@@ -962,7 +973,7 @@
       "tags": "claude-code, ai-agent, anthropic, agentic-coding"
     },
     {
-      "slug": "azurefoundryagent",
+      "slug": "azuresearchvector",
       "title": "Azure Search (Part 2)",
       "description": "Creating an AI agent in Azure AI Foundry backed by Azure AI Search with vector embeddings for retrieval-augmented generation (RAG)",
       "date": "2026-03-10",
@@ -3302,5 +3313,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-11-06T04:49:13.101Z"
+  "generatedAt": "2026-11-06T06:40:40.085Z"
 }

@@ -5,7 +5,7 @@ description: "Installation and tenant connection"
 date: "2026-04-30"
 categories: ["Microsoft 365"]
 tags: "sharepoint, azure, on-premises, online, migration"
-slug: "shareGate"
+slug: "sharegate"
 image: "/assets/images/sharepoint2019/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png"
 ---
 

@@ -4,12 +4,12 @@ slug: azurefoundryagent3
 title: "Azure Foundry Agent (Part 2)"
 date: "2026-10-27"
 part: 2
-builds_on: [azurefoundryagent2, azurefoundryagent]
+builds_on: [azurefoundryagent2, azuresearchvector]
 topics: [hosted-agents, azure-ai-search, python-development, llm-evaluation]
 tools: [Azure AI Foundry, Azure AI Search, Azure Developer CLI (azd), PyMuPDF, pypdf, Claude]
 status: current
 checked: "2026-11-05"
-source_hash: "d34f524a9ecd"
+source_hash: "c38188584c0d"
 generated_by: gemma4:12b
 ---
 

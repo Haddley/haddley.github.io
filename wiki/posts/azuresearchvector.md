@@ -1,6 +1,6 @@
 ---
 type: post
-slug: azurefoundryagent
+slug: azuresearchvector
 title: "Azure Search (Part 2)"
 date: "2026-03-10"
 part: 2
@@ -9,7 +9,7 @@ topics: [retrieval-augmented-generation, vector-search, azure-ai-search, embeddi
 tools: [Azure AI Foundry, Azure AI Search, Azure OpenAI, Azure Blob Storage]
 status: current
 checked: "2026-11-05"
-source_hash: "467db4f3a54e"
+source_hash: "ff1bc4e560d5"
 generated_by: gemma4:12b
 ---
 
