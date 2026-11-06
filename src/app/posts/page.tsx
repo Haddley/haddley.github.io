@@ -1,4 +1,4 @@
-import { getVisibleBlogPosts } from '@/lib/posts';
+import { getVisibleBlogPosts, withoutContent } from '@/lib/posts';
 import Link from 'next/link';
 import PostsPageWithSearch from '@/components/PostsPageWithSearch';
 import { getAllTopics } from '@/lib/topics';
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 export default async function PostsPage() {
-  const posts = await getVisibleBlogPosts();
+  const posts = withoutContent(await getVisibleBlogPosts());
   const featuredPosts = posts.slice(0, 3);
   const remainingPosts = posts.slice(3);
 

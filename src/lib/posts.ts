@@ -17,6 +17,14 @@ export interface BlogPost {
   part?: number;
 }
 
+/**
+ * Listing pages hand posts to client components, and Next.js writes every field into the page.
+ * Nothing in the listings reads a post's text, so drop it: /posts/ was 4 MB of HTML, mostly this.
+ */
+export function withoutContent<T extends { content: string }>(posts: T[]): T[] {
+  return posts.map(post => ({ ...post, content: '' }));
+}
+
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
   try {
     const fullPath = path.join(postsDirectory, `${slug}.md`);

@@ -1,4 +1,4 @@
-import { getVisibleBlogPostsByAnyCategory } from '@/lib/posts';
+import { getVisibleBlogPostsByAnyCategory, withoutContent } from '@/lib/posts';
 import { getCategoryBySlug } from '@/lib/categories';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
@@ -16,7 +16,7 @@ export default async function CategoryDetailPage({ slug }: CategoryDetailPagePro
     notFound();
   }
 
-  const categoryPosts = await getVisibleBlogPostsByAnyCategory(category.name);
+  const categoryPosts = withoutContent(await getVisibleBlogPostsByAnyCategory(category.name));
   const featuredPosts = categoryPosts.slice(0, 3);
   const remainingPosts = categoryPosts.slice(3);
 
