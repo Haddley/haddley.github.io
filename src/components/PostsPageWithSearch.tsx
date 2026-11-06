@@ -6,6 +6,7 @@ import { categories } from '@/lib/categories';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { TopicSummary } from '@/lib/topics';
+import { matchTopics, matchCategories, matchPosts } from '@/lib/search-match';
 
 interface PostsPageWithSearchProps {
   allPosts: BlogPost[];
@@ -30,31 +31,11 @@ export default function PostsPageWithSearch({
     return () => clearTimeout(timer);
   }, [searchTerm]);
 
-  // A topic matches when its name does. The posts it draws on then match too, so "docker" finds
-  // the Docker topic page and the posts behind it, not only posts with "docker" in their tags.
-  const searchLower = searchTerm.trim().toLowerCase();
-  const matchedTopics = searchLower
-    ? topics.filter(t => t.title.toLowerCase().includes(searchLower) || t.slug.includes(searchLower))
-    : [];
-  const topicPostSlugs = new Set(matchedTopics.flatMap(t => t.posts));
-
-  // Category pages that match the term by name, slug or alias, with how many posts each holds.
-  const matchedCategories = searchLower
-    ? categories
-        .filter(c => c.name.toLowerCase().includes(searchLower) || c.slug.includes(searchLower) || c.aliases?.some(a => a.toLowerCase() === searchLower))
-        .map(c => ({ ...c, count: allPosts.filter(p => p.categories?.includes(c.name)).length }))
-        .filter(c => c.count > 0)
-    : [];
-
-  const filteredPosts = allPosts.filter(post => {
-    return (
-      post.title.toLowerCase().includes(searchLower) ||
-      post.description.toLowerCase().includes(searchLower) ||
-      post.tags.some(tag => tag.toLowerCase().includes(searchLower)) ||
-      post.categories?.some(cat => cat.toLowerCase().includes(searchLower)) ||
-      topicPostSlugs.has(post.slug)
-    );
-  });
+  // A topic matches when its name does, and then the posts behind it match too, so "docker" finds the
+  // Docker topic page and its posts, not only posts with "docker" in a tag. Categories match by name.
+  const matchedTopics = matchTopics(topics, searchTerm);
+  const matchedCategories = matchCategories(categories, allPosts, searchTerm);
+  const filteredPosts = matchPosts(allPosts, searchTerm, matchedTopics);
 
   const showingSearchResults = searchTerm.length > 0;
   const postsToShow = showingSearchResults ? filteredPosts : remainingPosts;
