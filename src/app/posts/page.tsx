@@ -1,6 +1,7 @@
 import { getVisibleBlogPosts } from '@/lib/posts';
 import Link from 'next/link';
 import PostsPageWithSearch from '@/components/PostsPageWithSearch';
+import { getAllTopics } from '@/lib/topics';
 import NavyImageBanner from '@/components/NavyImageBanner';
 import type { Metadata } from 'next';
 
@@ -73,6 +74,7 @@ export default async function PostsPage() {
         <div className="container">
           <PostsPageWithSearch
             allPosts={posts}
+            topics={getAllTopics()}
             featuredPosts={featuredPosts}
             remainingPosts={remainingPosts}
           />

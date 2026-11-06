@@ -5,15 +5,18 @@ import { BlogPost } from '@/lib/posts';
 import { categories } from '@/lib/categories';
 import Link from 'next/link';
 import Image from 'next/image';
+import type { TopicSummary } from '@/lib/topics';
 
 interface PostsPageWithSearchProps {
   allPosts: BlogPost[];
+  topics?: TopicSummary[];
   featuredPosts: BlogPost[];
   remainingPosts: BlogPost[];
 }
 
 export default function PostsPageWithSearch({ 
   allPosts,
+  topics = [],
   featuredPosts, 
   remainingPosts 
 }: PostsPageWithSearchProps) {
@@ -27,13 +30,29 @@ export default function PostsPageWithSearch({
     return () => clearTimeout(timer);
   }, [searchTerm]);
 
+  // A topic matches when its name does. The posts it draws on then match too, so "docker" finds
+  // the Docker topic page and the posts behind it, not only posts with "docker" in their tags.
+  const searchLower = searchTerm.trim().toLowerCase();
+  const matchedTopics = searchLower
+    ? topics.filter(t => t.title.toLowerCase().includes(searchLower) || t.slug.includes(searchLower))
+    : [];
+  const topicPostSlugs = new Set(matchedTopics.flatMap(t => t.posts));
+
+  // Category pages that match the term by name, slug or alias, with how many posts each holds.
+  const matchedCategories = searchLower
+    ? categories
+        .filter(c => c.name.toLowerCase().includes(searchLower) || c.slug.includes(searchLower) || c.aliases?.some(a => a.toLowerCase() === searchLower))
+        .map(c => ({ ...c, count: allPosts.filter(p => p.categories?.includes(c.name)).length }))
+        .filter(c => c.count > 0)
+    : [];
+
   const filteredPosts = allPosts.filter(post => {
-    const searchLower = searchTerm.toLowerCase();
     return (
       post.title.toLowerCase().includes(searchLower) ||
       post.description.toLowerCase().includes(searchLower) ||
       post.tags.some(tag => tag.toLowerCase().includes(searchLower)) ||
-      post.categories?.some(cat => cat.toLowerCase().includes(searchLower))
+      post.categories?.some(cat => cat.toLowerCase().includes(searchLower)) ||
+      topicPostSlugs.has(post.slug)
     );
   });
 
@@ -96,7 +115,7 @@ export default function PostsPageWithSearch({
             <input
               type="text"
               className="form-control form-control-lg"
-              placeholder="🔍 Search posts by title, description, tags, or category..."
+              placeholder="🔍 Search posts by title, description, tags, category, or topic..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               style={{
@@ -118,8 +137,36 @@ export default function PostsPageWithSearch({
             />
             {searchTerm && (
               <p className="text-center mt-2 text-muted">
-                Found {filteredPosts.length} {filteredPosts.length === 1 ? 'post' : 'posts'}
+                Found {[
+                  `${filteredPosts.length} ${filteredPosts.length === 1 ? 'post' : 'posts'}`,
+                  matchedCategories.length > 0 && `${matchedCategories.length} ${matchedCategories.length === 1 ? 'category' : 'categories'}`,
+                  matchedTopics.length > 0 && `${matchedTopics.length} ${matchedTopics.length === 1 ? 'topic' : 'topics'}`,
+                ].filter(Boolean).join(', ').replace(/, ([^,]*)$/, ' and $1')}
               </p>
+            )}
+            {(matchedCategories.length > 0 || matchedTopics.length > 0) && (
+              <div className="d-flex flex-wrap justify-content-center gap-2 mt-2">
+                {matchedCategories.map(c => (
+                  <Link
+                    key={c.slug}
+                    href={`/categories/${c.slug}/`}
+                    title={c.count === 1 ? `Category page: my one ${c.name} post` : `Category page: all ${c.count} of my ${c.name} posts`}
+                    style={{ background: 'rgba(15, 30, 61, 0.1)', color: '#0f1e3d', padding: '4px 14px', borderRadius: '8px', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}
+                  >
+                    Category: {c.name}
+                  </Link>
+                ))}
+                {matchedTopics.map(t => (
+                  <Link
+                    key={t.slug}
+                    href={`/topics/${t.slug}/`}
+                    title={`Topic page: what ${t.posts.length} of my posts say about ${t.title}`}
+                    style={{ background: 'rgba(124, 58, 237, 0.1)', color: '#5b21b6', padding: '4px 14px', borderRadius: '8px', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}
+                  >
+                    Topic: {t.title}
+                  </Link>
+                ))}
+              </div>
             )}
           </div>
         </div>

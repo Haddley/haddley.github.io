@@ -3,10 +3,18 @@ import path from 'path';
 import { getPostById, getAllPosts, getSeriesNavigation } from '@/lib/posts';
 import { getMarkdownPost } from '@/lib/markdown';
 import { categoryNameToSlug } from '@/lib/categories';
+import { getTopicsForPost } from '@/lib/topics';
+import { getCategoryCount } from '@/lib/category-counts';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import MobiriseContentRenderer from '@/components/MobiriseContentRenderer';
+
+function categoryTitle(category: string, count: number): string {
+  if (count === 0) return `Category page: my ${category} posts`;
+  if (count === 1) return `Category page: my one ${category} post`;
+  return `Category page: all ${count} of my ${category} posts`;
+}
 
 interface PostPageProps {
   params: Promise<{ slug: string }>;
@@ -58,6 +66,7 @@ export default async function PostPage({ params }: PostPageProps) {
   // Try to get markdown content
   const markdownPost = await getMarkdownPost(slug);
   const { name: seriesName, previous, next } = await getSeriesNavigation(post);
+  const topics = getTopicsForPost(slug);
 
   return (
     <>
@@ -92,6 +101,7 @@ export default async function PostPage({ params }: PostPageProps) {
                       <Link
                         key={category}
                         href={`/categories/${categoryNameToSlug(category)}`}
+                        title={categoryTitle(category, getCategoryCount(category))}
                         style={{
                           background: 'rgba(15, 30, 61, 0.1)',
                           color: '#0f1e3d',
@@ -107,6 +117,24 @@ export default async function PostPage({ params }: PostPageProps) {
                     ))}
                   </>
                 )}
+                {topics.map((topic) => (
+                  <Link
+                    key={topic.slug}
+                    href={`/topics/${topic.slug}/`}
+                    title={topic.postCount === 1 ? `Topic page: what my post says about ${topic.title}` : `Topic page: what ${topic.postCount} of my posts say about ${topic.title}`}
+                    style={{
+                      background: 'rgba(124, 58, 237, 0.1)',
+                      color: '#5b21b6',
+                      padding: '4px 14px',
+                      borderRadius: '8px',
+                      fontSize: '0.85rem',
+                      fontWeight: '600',
+                      textDecoration: 'none',
+                    }}
+                  >
+                    {topic.title}
+                  </Link>
+                ))}
                 {post.tags && (Array.isArray(post.tags) ? post.tags : [post.tags]).filter(Boolean).length > 0 && (
                   <>
                     {(Array.isArray(post.tags) ? post.tags : [post.tags]).filter(Boolean).map((tag) => (

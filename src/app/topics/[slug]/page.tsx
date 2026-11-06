@@ -63,12 +63,37 @@ async function toReaderMarkdown(content: string): Promise<string> {
   return out.join('\n');
 }
 
+// Head First style: a question before the explanation, the idea as a recap box, a warning box for
+// where the posts disagree, a recap of the conclusion, and a closing Q&A. Only the layout changes;
+// every sentence and quote is still the audited text from wiki/concepts/.
+function headFirst(markdown: string, title: string): string {
+  const [intro, ...rest] = markdown.split(/^## /m);
+  const sections = rest.map(s => {
+    const nl = s.indexOf('\n');
+    return { head: s.slice(0, nl).trim(), body: s.slice(nl + 1).trim() };
+  });
+  const box = (type: string, head: string, body: string) => `:::${type} ${head}\n${body}\n:::`;
+  const out = [
+    box('brain-power', 'Before you read on', `What do you already know about ${title}? Make a guess, then see how my posts compare.`),
+    intro.trim(),
+  ];
+  for (const { head, body } of sections) {
+    if (head === 'The idea') out.push(box('bullet-points', 'The idea', body));
+    else if (head.startsWith('Where the')) out.push(box('watch-it', head, body));
+    else if (head === 'What I concluded') out.push(box('bullet-points', 'What I concluded', body));
+    else out.push(`## ${head}\n\n${body}`);
+  }
+  out.push(box('no-dumb-questions', 'Can I trust the quotes?',
+    '**Q: Are the quotes really from the posts?**\n\nA: Yes. A script copies each quote word for word from its post and checks it before the site builds. If a post changes and the quote no longer appears, the build fails. The posts remain the authority.'));
+  return out.join('\n\n');
+}
+
 export default async function TopicPage({ params }: TopicPageProps) {
   const { slug } = await params;
   const topic = readTopic(slug);
   if (!topic) notFound();
 
-  const markdown = await toReaderMarkdown(topic.content);
+  const markdown = headFirst(await toReaderMarkdown(topic.content), topic.data.title as string);
   const posts = await Promise.all((topic.data.posts as string[]).map(s => getPostById(s)));
 
   return (
