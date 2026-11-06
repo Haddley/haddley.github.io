@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { matchTopics, matchCategories, matchPosts } from '../../src/lib/search-match';
+import { matchTopics, matchCategories, matchPosts, matchWiki } from '../../src/lib/search-match';
 
 const topics = [
   { slug: 'docker', title: 'Docker', posts: ['docker', 'kubernetes'] },
@@ -53,5 +53,27 @@ describe('matchPosts', () => {
     const matched = matchTopics(topics, 'docker');
     expect(matchPosts(posts, 'docker', matched).map(p => p.slug)).toEqual(['docker', 'kubernetes']);
     expect(matchPosts(posts, 'docker', []).map(p => p.slug)).toEqual(['docker']);
+  });
+});
+
+describe('matchWiki', () => {
+  const wiki = [
+    { slug: 'a', summary: 'I ran a model locally. It was slow.', claims: [{ text: 'Quantisation makes a model smaller.' }] },
+    { slug: 'b', summary: 'I built a gatekeeper. It limits requests.', claims: [] },
+  ];
+
+  it('returns the claim that mentions the term', () => {
+    expect(matchWiki(wiki, 'quantisation').get('a')).toBe('Quantisation makes a model smaller.');
+  });
+  it('falls back to the summary sentence that mentions it', () => {
+    expect(matchWiki(wiki, 'gatekeeper').get('b')).toBe('I built a gatekeeper.');
+  });
+  it('ignores terms that are too short to mean anything', () => {
+    expect(matchWiki(wiki, 'ai').size).toBe(0);
+    expect(matchWiki(wiki, '').size).toBe(0);
+  });
+  it('lets matchPosts add the wiki matches', () => {
+    const extra = matchWiki(wiki, 'gatekeeper').keys();
+    expect(matchPosts([{ slug: 'b', title: 'Other', description: '', tags: [] }], 'gatekeeper', [], extra).map(p => p.slug)).toEqual(['b']);
   });
 });

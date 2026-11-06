@@ -6,7 +6,7 @@ import { categories } from '@/lib/categories';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { TopicSummary } from '@/lib/topics';
-import { matchTopics, matchCategories, matchPosts } from '@/lib/search-match';
+import { matchTopics, matchCategories, matchPosts, matchWiki, type WikiPostText } from '@/lib/search-match';
 
 interface PostsPageWithSearchProps {
   allPosts: BlogPost[];
@@ -22,6 +22,16 @@ export default function PostsPageWithSearch({
   remainingPosts 
 }: PostsPageWithSearchProps) {
   const [searchTerm, setSearchTerm] = useState('');
+  // The wiki (summaries and claims) is large, so it is fetched the first time someone searches.
+  const [wikiPosts, setWikiPosts] = useState<WikiPostText[] | null>(null);
+
+  useEffect(() => {
+    if (!searchTerm || wikiPosts) return;
+    fetch('/agent-wiki.json')
+      .then(r => (r.ok ? r.json() : null))
+      .then(w => { if (w?.posts) setWikiPosts(w.posts.map((p: WikiPostText) => ({ slug: p.slug, summary: p.summary, claims: p.claims.map(c => ({ text: c.text })) }))); })
+      .catch(() => { /* the search still works on titles, tags and topics */ });
+  }, [searchTerm, wikiPosts]);
 
   useEffect(() => {
     if (!searchTerm) return;
@@ -35,7 +45,9 @@ export default function PostsPageWithSearch({
   // Docker topic page and its posts, not only posts with "docker" in a tag. Categories match by name.
   const matchedTopics = matchTopics(topics, searchTerm);
   const matchedCategories = matchCategories(categories, allPosts, searchTerm);
-  const filteredPosts = matchPosts(allPosts, searchTerm, matchedTopics);
+  const wikiMatches = matchWiki(wikiPosts ?? [], searchTerm);
+  const directSlugs = new Set(matchPosts(allPosts, searchTerm, matchedTopics).map(p => p.slug));
+  const filteredPosts = matchPosts(allPosts, searchTerm, matchedTopics, wikiMatches.keys());
 
   const showingSearchResults = searchTerm.length > 0;
   const postsToShow = showingSearchResults ? filteredPosts : remainingPosts;
@@ -325,6 +337,11 @@ export default function PostsPageWithSearch({
                     <p className="mbr-text mbr-fonts-style mt-3 display-7">
                       {post.description}
                     </p>
+                    {showingSearchResults && wikiMatches.has(post.slug) && !directSlugs.has(post.slug) && (
+                      <p className="mt-1" style={{ fontSize: '0.85rem', fontStyle: 'italic', color: '#5b21b6' }}>
+                        From the wiki: {wikiMatches.get(post.slug)}
+                      </p>
+                    )}
                     
                     {/* Categories + Tags */}
                     <div className="mt-2 mb-2" style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
