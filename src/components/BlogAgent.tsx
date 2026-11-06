@@ -216,7 +216,7 @@ export default function BlogAgent() {
   const [agentData, setAgentData] = useState<AgentData | null>(null);
   const engineRef = useRef<InferenceEngine | null>(null);
   const wikiRef = useRef<Promise<WikiData | null> | null>(null);
-  const bottomRef = useRef<HTMLDivElement>(null);
+  const scrollerRef = useRef<HTMLDivElement>(null);
   // Full API message history including tool calls/results — not in state to avoid
   // stale-closure issues inside the async agent loop. Drives model context.
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -226,8 +226,18 @@ export default function BlogAgent() {
   const router = useRouter();
   const pathname = usePathname();
 
+  // While the model works, follow the bottom. When an answer arrives, show its first line, not its last,
+  // so a long answer can be read from the top. Only the chat box scrolls, never the page behind it.
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    const box = scrollerRef.current;
+    if (!box) return;
+    const lastIndex = messages.length - 1;
+    const last = messages[lastIndex];
+    if (!isThinking && last?.role === 'assistant') {
+      const el = box.querySelector<HTMLElement>(`[data-msg="${lastIndex}"]`);
+      if (el) { box.scrollTo({ top: Math.max(0, el.offsetTop - 8), behavior: 'smooth' }); return; }
+    }
+    box.scrollTo({ top: box.scrollHeight, behavior: 'smooth' });
   }, [messages, isThinking]);
 
   // Keep isThinkingRef in sync so the ESC handler always sees current state
@@ -608,7 +618,8 @@ export default function BlogAgent() {
         <div style={{
           position: 'fixed', bottom: 92, right: 24, zIndex: 9998,
           width: 'min(560px, calc(100vw - 32px))',
-          maxHeight: 'min(1040px, calc(100vh - 120px))',
+          height: 'min(720px, calc(100dvh - 120px))',
+          minHeight: 'min(280px, 100dvh)',
           background: '#fff', borderRadius: 14,
           boxShadow: '0 8px 40px rgba(0,0,0,0.18)',
           display: 'flex', flexDirection: 'column', overflow: 'hidden',
@@ -671,7 +682,10 @@ export default function BlogAgent() {
           {/* Messages */}
           {loadState.status === 'ready' && (
             <>
-              <div style={{ flex: 1, overflowY: 'auto', padding: '12px 14px', display: 'flex', flexDirection: 'column', gap: 8 }}>
+              <div
+                ref={scrollerRef}
+                style={{ flex: 1, minHeight: 0, position: 'relative', overflowY: 'auto', overscrollBehavior: 'contain', WebkitOverflowScrolling: 'touch', padding: '12px 14px', display: 'flex', flexDirection: 'column', gap: 8 }}
+              >
                 {messages.length === 0 && (
                   <div style={{ textAlign: 'center', marginTop: 28 }}>
                     <div style={{ color: '#999', fontSize: 13, lineHeight: 1.7, marginBottom: 12 }}>
@@ -691,7 +705,7 @@ export default function BlogAgent() {
                   </div>
                 )}
                 {messages.map((msg, i) => (
-                  <div key={i} style={{
+                  <div key={i} data-msg={i} style={{
                     maxWidth: '88%', padding: '9px 13px', borderRadius: 10,
                     fontSize: 13, lineHeight: 1.55, wordBreak: 'break-word',
                     alignSelf: msg.role === 'user' ? 'flex-end' : 'flex-start',
@@ -712,7 +726,6 @@ export default function BlogAgent() {
                     {toolStatus || '…'}
                   </div>
                 )}
-                <div ref={bottomRef} />
               </div>
 
               {/* Input row */}
