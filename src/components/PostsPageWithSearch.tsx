@@ -46,7 +46,6 @@ export default function PostsPageWithSearch({
   const matchedTopics = matchTopics(topics, searchTerm);
   const matchedCategories = matchCategories(categories, allPosts, searchTerm);
   const wikiMatches = matchWiki(wikiPosts ?? [], searchTerm);
-  const directSlugs = new Set(matchPosts(allPosts, searchTerm, matchedTopics).map(p => p.slug));
   const filteredPosts = matchPosts(allPosts, searchTerm, matchedTopics, wikiMatches.keys());
 
   const showingSearchResults = searchTerm.length > 0;
@@ -337,7 +336,7 @@ export default function PostsPageWithSearch({
                     <p className="mbr-text mbr-fonts-style mt-3 display-7">
                       {post.description}
                     </p>
-                    {showingSearchResults && wikiMatches.has(post.slug) && !directSlugs.has(post.slug) && (
+                    {showingSearchResults && wikiMatches.has(post.slug) && (
                       <p className="mt-1" style={{ fontSize: '0.85rem', fontStyle: 'italic', color: '#5b21b6' }}>
                         From the wiki: {wikiMatches.get(post.slug)}
                       </p>
