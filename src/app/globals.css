@@ -1,5 +1,6 @@
-/* Import Google Fonts - Jost family as used in original */
-@import url('https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap');
+/* Jost is loaded by next/font in layout.tsx. A Google Fonts @import used to sit here, but Next puts the
+   font's @font-face rules ahead of this file, so the @import was no longer first and browsers ignored it
+   and warned: "Define @import rules at the top of the stylesheet". */
 
 /* Blog content specific styles to enhance readability */
 .blog-content {
