@@ -20,22 +20,22 @@ I started by creating a new solution to keep the customization isolated, naming 
 
 Inside the solution I selected New > Table > Table (advanced properties) so I could set everything up front rather than after the fact.
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-9.54.13-AM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-9.54.13-AM.webp)
 *I selected Table (advanced properties) from the New menu*
 
 I named the new table "Asset," with the plural name "Assets," and left Enable attachments unchecked for the moment.
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-9.55.08-AM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-9.55.08-AM.webp)
 *I named the new table Asset*
 
 Once the table was created, I reopened its properties and checked **Enable attachments (including notes and files)** — despite the name, this is also the switch for Notes. Turning it on lets app users add notes, and attach files to those notes, on records of this table.
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-9.57.15-AM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-9.57.15-AM.webp)
 *I checked Enable attachments (including notes and files) on the Asset table*
 
 I expanded **Advanced options** and, under "Make this table an option when," checked **Creating a new activity** — this is what lets activity records like email, phone call, and task be associated with records of this table, i.e. it makes the table a valid "Regarding" target for an activity.
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-9.57.50-AM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-9.57.50-AM.webp)
 *I checked Creating a new activity under Advanced options*
 
 Both are one-way switches. Once I turned them on and saved, there was no way to turn them back off again, so I made sure I actually wanted notes and activities on this table before publishing the change.
@@ -56,12 +56,12 @@ The component's configuration panel let me choose which **Record types** appear 
 
 Configuring the table and form is one thing, but I wanted to see the timeline actually working against a real record, so I built a quick model-driven app around the Asset table. I selected **App > Model-driven app** from the New menu.
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-10.14.05-AM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-10.14.05-AM.webp)
 *I selected App > Model-driven app from the New menu*
 
 I named the new app "Assets."
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-10.14.24-AM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-10.14.24-AM.webp)
 *I named the new app Assets*
 
 The app opened in the app designer with no pages yet.
@@ -76,7 +76,7 @@ I selected **Add page > Dataverse table** to surface the Asset table in the app.
 
 I picked the Asset table from the list and added it.
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-10.15.25-AM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-10.15.25-AM.webp)
 *I selected the Asset table to add as a page*
 
 I selected **Save and Publish** to make the app available to play.
@@ -91,44 +91,44 @@ The published Assets app opened to an empty Active Assets view.
 
 I created a new Asset record named "Neil's Laptop." Before the first save, the timeline area just prompted me to save the record first.
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-10.17.03-AM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-10.17.03-AM.webp)
 *I created a new Asset record named Neil's Laptop*
 
 Once I saved, the timeline became active, with a search bar and a note entry field ready to go.
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-10.17.30-AM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-10.17.30-AM.webp)
 *Once saved, the timeline became active with a search bar and a note field*
 
 I added a note to confirm Notes were working end to end.
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-10.18.08-AM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-10.18.08-AM.webp)
 *I added a note: "Notice that the Laptop is a MacBook Air"*
 
 The note appeared on the timeline, and the create-a-timeline-record menu listed Email alongside the other activity types I'd enabled earlier — confirmation that the Asset table was now a valid "Regarding" target for activities.
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-10.18.33-AM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-10.18.33-AM.webp)
 *The note appeared on the timeline, and Email was available from the activity menu*
 
 I created a test email regarding the Asset record.
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-10.20.03-AM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-10.20.03-AM.webp)
 *I created a test Email activity regarding the Asset record*
 
 The Asset's timeline then showed both the email and the note together, confirming notes and activities were both working end to end on a custom table.
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-10.20.25-AM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-10.20.25-AM.webp)
 *The Asset's timeline showed both the email and the note together*
 
 ## Rolling up activities from custom related records
 
 I wanted to see whether the Asset table's activities could roll up onto a related record's timeline the same way they do for Account and Contact. I'd already added a **Primary Contact** lookup field to Asset — a many-to-one relationship to Contact — and set it to John Doe on my "Neil's Laptop" record, which already had a note and a test email on its own timeline.
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-12.57.31-PM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-12.57.31-PM.webp)
 *Neil's Laptop had Primary Contact set to John Doe, with a note and a test email already on its own timeline*
 
 With the default **Referential** relationship behavior, Asset never showed up anywhere on John Doe's timeline. The setting that actually matters turned out to be the relationship's own behavior, not anything in the Timeline component. I opened the Primary Contact relationship from the Asset table's Relationships list.
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-12.58.08-PM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-12.58.08-PM.webp)
 *I opened the Primary Contact relationship from the Asset table's Relationships list*
 
 Its Advanced options showed a **Type of behavior** dropdown, defaulted to Referential, with Parental and Custom as the other choices.
@@ -153,7 +153,7 @@ I added Contact as a page in my Assets app so I could view and edit Contact reco
 ![](assets/images/powerapps10/Screenshot-2026-06-16-at-1.03.11-PM.png)
 *I selected Add page > Dataverse table again, this time for Contact*
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-1.03.29-PM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-1.03.29-PM.webp)
 *I added the Contact table to the Assets app*
 
 On Contact's main form, I set the timeline's **Activity rollup type** to **Related** and republished.
@@ -163,22 +163,22 @@ On Contact's main form, I set the timeline's **Activity rollup type** to **Relat
 
 John Doe's own timeline then showed the test email — the one I'd created regarding the Neil's Laptop Asset record, not regarding John Doe directly.
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-1.06.35-PM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-1.06.35-PM.webp)
 *John Doe's timeline showed the test email rolled up from the related Asset record*
 
 To prove it was a genuine rollup and not a duplicate, I opened the email from Contact's timeline and edited its body to add "(asset related email edited)."
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-1.07.34-PM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-1.07.34-PM.webp)
 *I edited the email directly from Contact's timeline*
 
 Back on the Asset record itself, the edit was there.
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-1.07.52-PM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-1.07.52-PM.webp)
 *The edit appeared on the Asset's own timeline too, confirming it was the same record*
 
 And refreshing John Doe's Contact record again, the edited email was still showing — but the note never rolled up alongside it.
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-1.08.19-PM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-1.08.19-PM.webp)
 *The edited email persisted on Contact's timeline, but the note stayed Asset-only*
 
 So the custom-table rollup does seem to work. 
@@ -197,12 +197,12 @@ Notes turned out to have their own, separate **Note rollup type** setting under 
 
 I changed it to **Related**.
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-1.23.59-PM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-1.23.59-PM.webp)
 *I changed Note rollup type to Related*
 
 I selected Save and Publish again.
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-1.25.17-PM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-1.25.17-PM.webp)
 *I published*
 
 This time John Doe's timeline showed both the rolled-up email and the rolled-up note from Neil's Laptop.

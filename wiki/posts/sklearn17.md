@@ -9,7 +9,7 @@ topics: [autoencoders, generative-adversarial-networks, diffusion-models, dimens
 tools: [scikit-learn, TensorFlow, Keras, t-SNE]
 status: current
 checked: "2026-11-06"
-source_hash: "1a5e2a98aed7"
+source_hash: "9407926fdd08"
 generated_by: gemma4:12b
 ---
 

@@ -31,10 +31,10 @@ I started by cloning the codelab-friendlychat-web repository
 ```
 
 
-![](assets/images/firebase/screen-shot-2023-04-24-at-9.26.33-pm-1836x1262.png)
+![](assets/images/firebase/screen-shot-2023-04-24-at-9.26.33-pm-1836x1262.webp)
 *I cloned codelab-friendlychat-web*
 
-![](assets/images/firebase/screen-shot-2023-04-24-at-9.46.58-pm-1836x1050.png)
+![](assets/images/firebase/screen-shot-2023-04-24-at-9.46.58-pm-1836x1050.webp)
 *I opened the project in Visual Studio Code*
 
 
@@ -45,7 +45,7 @@ https://console.firebase.google.com
 ![](assets/images/firebase/screen-shot-2023-04-24-at-9.42.04-pm-1836x692.png)
 *I provided a name for the project*
 
-![](assets/images/firebase/screen-shot-2023-04-24-at-9.42.31-pm-1836x1013.png)
+![](assets/images/firebase/screen-shot-2023-04-24-at-9.42.31-pm-1836x1013.webp)
 *I disabled google analytics for this project*
 
 ![](assets/images/firebase/screen-shot-2023-04-24-at-9.42.41-pm-1836x1018.png)
@@ -71,7 +71,7 @@ I added a Firebase web app to the Firebase project
 ![](assets/images/firebase/screen-shot-2023-04-24-at-10.01.56-pm-1836x923.png)
 *I registered the app*
 
-![](assets/images/firebase/screen-shot-2023-04-24-at-10.02.44-pm-1836x1008.png)
+![](assets/images/firebase/screen-shot-2023-04-24-at-10.02.44-pm-1836x1008.webp)
 *I reviewed the Add Firebase SDK instructions*
 
 ![](assets/images/firebase/screen-shot-2023-04-24-at-10.04.31-pm-1836x769.png)
@@ -156,7 +156,7 @@ firebase serve --only hosting
 ![](assets/images/firebase/screen-shot-2023-04-24-at-10.48.50-pm-1298x138.png)
 *I ran firebase serve --only hosting*
 
-![](assets/images/firebase/screen-shot-2023-04-24-at-10.49.41-pm-1836x1093.png)
+![](assets/images/firebase/screen-shot-2023-04-24-at-10.49.41-pm-1836x1093.webp)
 *I reviewed the web app User Interface*
 
 
@@ -251,7 +251,7 @@ To read messages in the app, I added listeners that trigger when data changes an
 
 After selecting a file, the saveImageMessage function is called.
 
-![](assets/images/firebase/screen-shot-2023-04-25-at-7.25.20-am-1836x928.png)
+![](assets/images/firebase/screen-shot-2023-04-25-at-7.25.20-am-1836x928.webp)
 *I reviewed saveImageMessage*
 
 ![](assets/images/firebase/screen-shot-2023-04-25-at-7.30.53-am-1636x1260.png)
@@ -292,7 +292,7 @@ When the user has not yet granted your app permission to show notifications, you
 
 Now that you have your device token, you can send a notification using the Cloud Messaging tab of the Firebase console.
 
-![](assets/images/firebase/screen-shot-2023-04-25-at-8.08.24-am-1836x1046.png)
+![](assets/images/firebase/screen-shot-2023-04-25-at-8.08.24-am-1836x1046.webp)
 *I tested the notification*
 
 
@@ -334,7 +334,7 @@ I deployed the app files to Firebase Hosting using the Firebase CLI.
 
 I needed to specify in the firebase.json file which local files should be deployed.
 
-![](assets/images/firebase/screen-shot-2023-04-25-at-8.35.12-am-1836x852.png)
+![](assets/images/firebase/screen-shot-2023-04-25-at-8.35.12-am-1836x852.webp)
 *I reviewed firebase.json*
 
 ![](assets/images/firebase/screen-shot-2023-04-25-at-8.36.34-am-1440x560.png)

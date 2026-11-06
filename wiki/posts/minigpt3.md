@@ -9,7 +9,7 @@ topics: [machine-learning-engines, lazy-evaluation, kernel-compilation, unified-
 tools: [MLX, PyTorch, Mac Studio, Jupyter, Python]
 status: current
 checked: "2026-11-05"
-source_hash: "31fa32c82620"
+source_hash: "15ba444ac989"
 generated_by: gemma4:12b
 ---
 

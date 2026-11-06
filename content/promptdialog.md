@@ -47,7 +47,7 @@ A Copilot page needs somewhere to type a request, somewhere to show the answer, 
 ![](assets/images/promptdialog/screenshot202025-05-2320at207.22.04e280afpm-2136x1241.png)
 *I clicked the Copy & Open button*
 
-![](assets/images/promptdialog/screenshot202025-05-2320at207.23.22e280afpm-2136x1103.png)
+![](assets/images/promptdialog/screenshot202025-05-2320at207.23.22e280afpm-2136x1103.webp)
 *I clicked Continue*
 
 ![](assets/images/promptdialog/screenshot202025-05-2320at207.24.24e280afpm-2136x728.png)

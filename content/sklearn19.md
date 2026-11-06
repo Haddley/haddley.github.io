@@ -96,16 +96,16 @@ A: It is one way, and it is TensorFlow-specific. Many teams now use other server
 
 The chapter is in the notebook that goes with the book, [19_training_and_deploying_at_scale.ipynb](https://github.com/ageron/handson-ml3/blob/main/19_training_and_deploying_at_scale.ipynb). I ran the parts I could on my own Mac: exporting the model, serving it with Docker, the REST and gRPC requests, the new version, the TensorFlow Lite conversion, the device checks, and `MirroredStrategy`. That took under half an hour. I started TensorFlow Serving with the Docker command that the notebook describes, instead of installing the Linux program that it uses by default. I did not run the sections on Vertex AI, which need a Google Cloud account; or the training on a TensorFlow cluster, the distributed hyperparameter tuning, or AutoML. TensorFlow in my setup did not use my Mac's graphics processor, so what the notebook says about NVIDIA GPUs, I know only from reading it.
 
-![](assets/images/sklearn19/jupyter-saved-model-cli.png)
+![](assets/images/sklearn19/jupyter-saved-model-cli.webp)
 *A saved model describes itself: `saved_model_cli` lists its signature, what goes in and what comes out; below it, the Docker command that starts TensorFlow Serving, whose log says it is listening for REST requests on port 8501*
 
-![](assets/images/sklearn19/jupyter-rest-predict.png)
+![](assets/images/sklearn19/jupyter-rest-predict.webp)
 *A REST request to the server: three rows of ten chances, with the highest for the digits 7, 2, and 1*
 
-![](assets/images/sklearn19/jupyter-grpc-predict.png)
+![](assets/images/sklearn19/jupyter-grpc-predict.webp)
 *The same request over gRPC: the answer is the same, though it arrives as a tensor*
 
-![](assets/images/sklearn19/jupyter-device-placement.png)
+![](assets/images/sklearn19/jupyter-device-placement.webp)
 *No GPU here: asking for a GPU that does not exist falls back to the processor, and with soft placement switched off it raises an error instead*
 
 ![](assets/images/sklearn19/jupyter-mirrored.webp)

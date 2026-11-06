@@ -102,7 +102,7 @@ The Edge Impulse EON Tuner is a machine learning optimization tool that helps de
 ![](assets/images/internetofthings3/screenshot-2025-03-01-at-5.55.55pm-2136x344.png)
 *I selected Audible events*
 
-![](assets/images/internetofthings3/screenshot-2025-03-01-at-6.22.47pm-2136x1261.png)
+![](assets/images/internetofthings3/screenshot-2025-03-01-at-6.22.47pm-2136x1261.webp)
 *Audible events. Listen for short one-time occurrences of non-voice audio*
 
 ![](assets/images/internetofthings3/screenshot-2025-03-01-at-5.58.09pm-2136x1173.png)

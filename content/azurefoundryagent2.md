@@ -36,10 +36,10 @@ I start with the prompt agent because it is the least to build. I upload the ski
 
 I used a Foundry project that I had already created. The `haddley-foundry-name` resource is in the `haddley-foundry-rg` resource group in East US, and its default project is `proj-default`.
 
-![](assets/images/azurefoundryagent2/Screenshot-2026-10-27-at-9.08.52-PM.png)
+![](assets/images/azurefoundryagent2/Screenshot-2026-10-27-at-9.08.52-PM.webp)
 *The Azure portal reported that my Foundry deployment was complete*
 
-![](assets/images/azurefoundryagent2/Screenshot-2026-10-27-at-9.09.36-PM.png)
+![](assets/images/azurefoundryagent2/Screenshot-2026-10-27-at-9.09.36-PM.webp)
 *The haddley-foundry-name resource overview showed the East US location*
 
 ![](assets/images/azurefoundryagent2/Screenshot-2026-10-27-at-9.09.57-PM.webp)

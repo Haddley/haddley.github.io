@@ -9,7 +9,7 @@ topics: [byte-pair-encoding, tokenization, weight-tying, information-theory]
 tools: [tiktoken, tokenizers, Colab, PyTorch, MLX]
 status: current
 checked: "2026-11-05"
-source_hash: "856a404b48fb"
+source_hash: "243d2fcaeca5"
 generated_by: gemma4:12b
 ---
 

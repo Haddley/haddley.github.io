@@ -26,7 +26,7 @@ Python 3.13.7
 % code .
 ```
 
-![](assets/images/mlx1/Screenshot-2025-11-06-at-11.49.59-AM.png)
+![](assets/images/mlx1/Screenshot-2025-11-06-at-11.49.59-AM.webp)
 *I installed requirements.*
 
 ```bash
@@ -37,7 +37,7 @@ Python 3.13.7
 mlx-lm
 ```
 
-![](assets/images/mlx1/Screenshot-2025-11-06-at-1.42.25-PM.png)
+![](assets/images/mlx1/Screenshot-2025-11-06-at-1.42.25-PM.webp)
 *I ran mlx_lm.generate and asked "what is the capital of France?"*
 
 ```bash
@@ -80,14 +80,14 @@ Please fuse Qwen3-0.6b and the adapters. Create a new Fused-Qwen3-0.6b.gguf mode
 % python -m mlx_lm fuse --model "Qwen/Qwen3-0.6b" --adapter-path adapters --save-path fused-model
 ```
 
-![](assets/images/mlx1/Screenshot-2025-11-06-at-2.54.05-PM.png)
+![](assets/images/mlx1/Screenshot-2025-11-06-at-2.54.05-PM.webp)
 *I ran python -m mlx_lm fuse to create the fused model*
 
 ```bash
 % git clone --depth 1 https://github.com/ggerganov/llama.cpp.git
 ```
 
-![](assets/images/mlx1/Screenshot-2025-11-06-at-2.54.38-PM.png)
+![](assets/images/mlx1/Screenshot-2025-11-06-at-2.54.38-PM.webp)
 *I cloned the llama.cpp repository*
 
 ```bash
@@ -144,7 +144,7 @@ PARAMETER stop "<|im_end|>"
  % ollama run fused-qwen3-0.6b "who was Ada Lovelace"
 ```
 
-![](assets/images/mlx1/Screenshot-2025-11-06-at-3.05.59-PM.png)
+![](assets/images/mlx1/Screenshot-2025-11-06-at-3.05.59-PM.webp)
 *I ran ollama run and asked "who was Ada Lovelace"*
 
 ```bash

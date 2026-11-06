@@ -67,7 +67,7 @@ In the screenshots above I had been using local disk storage with the sails-disk
 ![](assets/images/sails2/screen-shot-2021-10-12-at-7.13.43-pm-1836x1024.png)
 *Overview*
 
-![](assets/images/sails2/screen-shot-2021-10-12-at-7.50.49-pm-1836x1161.png)
+![](assets/images/sails2/screen-shot-2021-10-12-at-7.50.49-pm-1836x1161.webp)
 *I updated connections.js*
 
 ![](assets/images/sails2/screen-shot-2021-10-12-at-7.58.40-pm-1836x695.png)
@@ -82,7 +82,7 @@ In the screenshots above I had been using local disk storage with the sails-disk
 ![](assets/images/sails2/screen-shot-2021-10-12-at-8.00.37-pm-1228x264.png)
 *I pushed the changes to GitHub*
 
-![](assets/images/sails2/screen-shot-2021-10-12-at-8.38.22-pm-1836x998.png)
+![](assets/images/sails2/screen-shot-2021-10-12-at-8.38.22-pm-1836x998.webp)
 *GitHub action in progress*
 
 ![](assets/images/sails2/screen-shot-2021-10-12-at-8.39.28-pm-1836x633.png)

@@ -10,10 +10,10 @@ image: "/assets/images/metaunity/meta-unity-combined.svg"
 
 I set up Unity 6.3 LTS for Meta Quest Pro development. I installed the Meta XR Interaction SDK 203.0.0 from the Asset Store, worked through the Project Setup Tool to fix all required and recommended settings for both Standalone and Android platforms, explored Building Blocks, and built and deployed a Hello World APK to my Quest Pro headset.
 
-![](assets/images/metaunitysetupJune2026/Screenshot-2026-06-30-at-10.46.27-AM.png)
+![](assets/images/metaunitysetupJune2026/Screenshot-2026-06-30-at-10.46.27-AM.webp)
 *I opened Unity Hub and saw Unity 6.5 (6000.5.1f1) and Unity 6.3 LTS (6000.3.18f1) both installed with Android and macOS support.*
 
-![](assets/images/metaunitysetupJune2026/Screenshot-2026-06-30-at-10.46.46-AM.png)
+![](assets/images/metaunitysetupJune2026/Screenshot-2026-06-30-at-10.46.46-AM.webp)
 *I switched to the Projects tab and saw no existing projects.*
 
 ![](assets/images/metaunitysetupJune2026/Screenshot-2026-06-30-at-10.47.03-AM.webp)

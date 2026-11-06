@@ -21,28 +21,28 @@ I reset my Apple MacBook laptop and installed Anaconda.
 ![](assets/images/applelaptop/20230726-image0-1836x1377.webp)
 *I restarted my laptop and held down the power button until I could access the recovery assistant menu*
 
-![](assets/images/applelaptop/20230726-image1-1836x1377.jpg)
+![](assets/images/applelaptop/20230726-image1-1836x1377.webp)
 *I selected Options*
 
-![](assets/images/applelaptop/20230726-image2-1836x1377.jpg)
+![](assets/images/applelaptop/20230726-image2-1836x1377.webp)
 *I clicked Erase Mac...*
 
-![](assets/images/applelaptop/20230726-image3-1836x1377.jpg)
+![](assets/images/applelaptop/20230726-image3-1836x1377.webp)
 *I clicked Erase Mac*
 
-![](assets/images/applelaptop/20230726-image4-1836x1377.jpg)
+![](assets/images/applelaptop/20230726-image4-1836x1377.webp)
 *I selected a wifi network*
 
-![](assets/images/applelaptop/20230726-image9-1836x1377.jpg)
+![](assets/images/applelaptop/20230726-image9-1836x1377.webp)
 *I reinstalled macOS Ventura*
 
-![](assets/images/applelaptop/20230726-image11-1836x1377.jpg)
+![](assets/images/applelaptop/20230726-image11-1836x1377.webp)
 *I clicked Agree*
 
-![](assets/images/applelaptop/20230726-image12-1836x1377.jpg)
+![](assets/images/applelaptop/20230726-image12-1836x1377.webp)
 *I selected the disk*
 
-![](assets/images/applelaptop/20230726-image13-1836x1377.jpg)
+![](assets/images/applelaptop/20230726-image13-1836x1377.webp)
 *The installation took approximately 3 hours*
 
 

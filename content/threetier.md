@@ -35,7 +35,7 @@ Use dependency injection to inject the service class into your Blazor components
 ![](assets/images/threetier/screen-shot-2023-03-25-at-3.33.18-pm-1430x872.png)
 *Visual Studio 2022 for Mac (ASP.NET Core is cross platform)*
 
-![](assets/images/threetier/screen-shot-2023-03-25-at-3.33.48-pm-1536x1086.png)
+![](assets/images/threetier/screen-shot-2023-03-25-at-3.33.48-pm-1536x1086.webp)
 *Blazor WebAssembly App template*
 
 ![](assets/images/threetier/screen-shot-2023-03-25-at-3.34.12-pm-1536x1090.png)
@@ -62,7 +62,7 @@ Use dependency injection to inject the service class into your Blazor components
 ![](assets/images/threetier/screen-shot-2023-03-25-at-3.49.13-pm-1536x492.png)
 *I reviewed the entity framework classes generated from the database schema*
 
-![](assets/images/threetier/screen-shot-2023-03-25-at-3.55.33-pm-1536x956.png)
+![](assets/images/threetier/screen-shot-2023-03-25-at-3.55.33-pm-1536x956.webp)
 *I selected the API Controller with actions using Entity Framework*
 
 ![](assets/images/threetier/screen-shot-2023-03-25-at-3.55.58-pm-1484x706.png)

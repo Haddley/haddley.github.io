@@ -22,19 +22,19 @@ DevOps Starter makes it easy to get started on Azure using either GitHub actions
 ![](assets/images/devopsstarterazuredevops/screen-shot-2021-04-26-at-5.14.37-pm-1836x1035.png)
 *I selected Express*
 
-![](assets/images/devopsstarterazuredevops/screen-shot-2021-04-26-at-5.14.54-pm-1836x1033.png)
+![](assets/images/devopsstarterazuredevops/screen-shot-2021-04-26-at-5.14.54-pm-1836x1033.webp)
 *I selected Web App for Containers*
 
-![](assets/images/devopsstarterazuredevops/screen-shot-2021-04-26-at-5.16.07-pm-1836x1030.png)
+![](assets/images/devopsstarterazuredevops/screen-shot-2021-04-26-at-5.16.07-pm-1836x1030.webp)
 *I used Web App on Windows with Pricing tier "F1 Free"*
 
-![](assets/images/devopsstarterazuredevops/screen-shot-2021-04-26-at-5.27.04-pm-1836x1032.png)
+![](assets/images/devopsstarterazuredevops/screen-shot-2021-04-26-at-5.27.04-pm-1836x1032.webp)
 *Azure resources were deployed*
 
 ![](assets/images/devopsstarterazuredevops/screen-shot-2021-04-26-at-5.27.50-pm-1836x988.png)
 *The CI/CD pipeline completed*
 
-![](assets/images/devopsstarterazuredevops/screen-shot-2021-04-26-at-5.29.05-pm-1836x993.png)
+![](assets/images/devopsstarterazuredevops/screen-shot-2021-04-26-at-5.29.05-pm-1836x993.webp)
 *I clicked Clone to edit code*
 
 ![](assets/images/devopsstarterazuredevops/screen-shot-2021-04-26-at-5.31.23-pm-1200x386.png)
@@ -43,7 +43,7 @@ DevOps Starter makes it easy to get started on Azure using either GitHub actions
 ![](assets/images/devopsstarterazuredevops/screen-shot-2021-04-26-at-5.41.06-pm-1836x1081.png)
 *I made an update by adding an extra description line*
 
-![](assets/images/devopsstarterazuredevops/screen-shot-2021-04-26-at-5.42.19-pm-1836x1084.png)
+![](assets/images/devopsstarterazuredevops/screen-shot-2021-04-26-at-5.42.19-pm-1836x1084.webp)
 *I pushed changes to Azure git*
 
 ![](assets/images/devopsstarterazuredevops/screen-shot-2021-04-26-at-5.42.44-pm-1836x989.png)
@@ -52,19 +52,19 @@ DevOps Starter makes it easy to get started on Azure using either GitHub actions
 ![](assets/images/devopsstarterazuredevops/screen-shot-2021-04-26-at-5.45.48-pm-1836x985.png)
 *The pipeline was running*
 
-![](assets/images/devopsstarterazuredevops/screen-shot-2021-04-26-at-5.48.20-pm-1836x989.png)
+![](assets/images/devopsstarterazuredevops/screen-shot-2021-04-26-at-5.48.20-pm-1836x989.webp)
 *The pipeline completed*
 
 ![](assets/images/devopsstarterazuredevops/screen-shot-2021-04-26-at-5.49.29-pm-1836x986.png)
 *The updated code was deployed to production*
 
-![](assets/images/devopsstarterazuredevops/screen-shot-2021-04-26-at-5.58.49-pm-1836x1419.png)
+![](assets/images/devopsstarterazuredevops/screen-shot-2021-04-26-at-5.58.49-pm-1836x1419.webp)
 *I viewed the pipeline*
 
-![](assets/images/devopsstarterazuredevops/screen-shot-2021-04-26-at-6.23.50-pm-1836x1002.png)
+![](assets/images/devopsstarterazuredevops/screen-shot-2021-04-26-at-6.23.50-pm-1836x1002.webp)
 *I viewed the Node.js tool installer YAML*
 
-![](assets/images/devopsstarterazuredevops/screen-shot-2021-04-26-at-6.28.57-pm-1836x1007.png)
+![](assets/images/devopsstarterazuredevops/screen-shot-2021-04-26-at-6.28.57-pm-1836x1007.webp)
 *I viewed the Agent job 1 YAML*
 
 

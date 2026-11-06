@@ -122,7 +122,7 @@ I then built the same circuit on a real breadboard, turned to match the Tinkerca
 
 For a first field test I put the breadboard in the bike's frame bag and wired it into the cut speed wire.
 
-![](assets/images/attiny2/breadboard-frame-bag.jpg)
+![](assets/images/attiny2/breadboard-frame-bag.webp)
 *I put the breadboard in the frame bag, with the ATtiny85 between the hub motor's speed wire and the controller's*
 
 Then I filmed the bike's display while the wheel sped up and slowed down.

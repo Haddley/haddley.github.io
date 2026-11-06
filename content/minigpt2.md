@@ -170,7 +170,7 @@ Never compare surprise scores across different tokenisers. A machine can win on 
 
 Each machine was asked to carry on from "Once upon a time":
 
-![](assets/images/minigpt2/generation.png)
+![](assets/images/minigpt2/generation.webp)
 *The letters machine and my 8k BPE machine, continuing the same opening*
 
 The letters machine starts well, then loses track: a "caze" and a "cabel", a second "little boy named Tim" two sentences after the first, and a treat that turns into a bird. My 8k BPE machine holds a scene: Lily, a lamp she wants to play with, her mum saying no, and Lily trying to fix it. It still slips, a "big carpet" that turns out to be a lamp, but every word is spelled right, and the story hangs together: each row of 256 positions now covers a whole story, and that reach shows up on the page.

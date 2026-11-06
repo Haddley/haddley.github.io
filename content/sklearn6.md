@@ -82,19 +82,19 @@ A: Memorising is the problem. A tree that carves out a region for every training
 
 The chapter is in the notebook that goes with the book, [06_decision_trees.ipynb](https://github.com/ageron/handson-ml3/blob/main/06_decision_trees.ipynb). I ran everything before the exercise solutions, which took a few seconds on my Mac Studio, and then looked through the results in JupyterLab.
 
-![](assets/images/sklearn6/jupyter-iris-tree.png)
+![](assets/images/sklearn6/jupyter-iris-tree.webp)
 *Graphviz drew the tree: the first question, petal length 2.45 cm or less, sets apart all 50 setosas, and the second asks about petal width*
 
-![](assets/images/sklearn6/jupyter-tree-boundaries.png)
+![](assets/images/sklearn6/jupyter-tree-boundaries.webp)
 *Each question cuts the petal plane with a straight line parallel to an axis: depth 0, then depth 1, and the dotted lines a deeper tree would add*
 
-![](assets/images/sklearn6/jupyter-tree-probabilities.png)
+![](assets/images/sklearn6/jupyter-tree-probabilities.webp)
 *For petals 5 cm long and 1.5 cm wide, the tree says 90.7% Iris versicolor and 9.3% Iris virginica*
 
-![](assets/images/sklearn6/jupyter-tree-regularization.png)
+![](assets/images/sklearn6/jupyter-tree-regularization.webp)
 *With no restrictions, the tree carves out tiny regions around single points; with min_samples_leaf = 5 it is smoother, and it scored 0.92 on new data instead of 0.898*
 
-![](assets/images/sklearn6/jupyter-regression-tree.png)
+![](assets/images/sklearn6/jupyter-regression-tree.webp)
 *A regression tree predicts the average value in each region, so its predictions are steps, and a deeper tree has more of them*
 
 :::bullet-points Decision trees, in short

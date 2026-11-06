@@ -8,7 +8,7 @@ topics: [cpp-integration, npm-publishing, automated-testing, node-js-development
 tools: [npm, C++, mocha, chai, GitHub Actions]
 status: current
 checked: "2026-11-06"
-source_hash: "e9f1c3b07fbe"
+source_hash: "29dab02d556f"
 generated_by: gemma4:12b
 ---
 

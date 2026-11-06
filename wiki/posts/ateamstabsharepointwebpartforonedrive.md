@@ -8,7 +8,7 @@ topics: [sharepoint-framework, microsoft-graph-toolkit, teams-applications, web-
 tools: [SharePoint Framework, Microsoft Graph Toolkit, Microsoft 365, Gulp, GitHub]
 status: current
 checked: "2026-11-05"
-source_hash: "22d361de4692"
+source_hash: "50a5ef615919"
 generated_by: gemma4:12b
 ---
 

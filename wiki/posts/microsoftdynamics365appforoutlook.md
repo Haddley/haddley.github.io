@@ -8,7 +8,7 @@ topics: [dynamics-365-integration, outlook-connectivity, dataverse-configuration
 tools: [Microsoft Dynamics 365, Outlook, Dataverse, Power Platform]
 status: current
 checked: "2026-11-05"
-source_hash: "1077edcfa832"
+source_hash: "9a4695c43808"
 generated_by: gemma4:12b
 ---
 

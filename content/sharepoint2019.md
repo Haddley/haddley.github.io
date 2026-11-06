@@ -70,7 +70,7 @@ In this case I wanted to install Active Directory, SQL Server and SharePoint on 
 ![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-2.43.38-pm-868x460.png)
 *I provided the Administrator credentials*
 
-![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-2.45.00-pm-1836x1149.png)
+![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-2.45.00-pm-1836x1149.webp)
 *SharePoint was installed*
 
 ![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-2.47.38-pm-1836x1150.png)
@@ -85,13 +85,13 @@ In this case I wanted to install Active Directory, SQL Server and SharePoint on 
 ![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-2.48.25-pm-1570x1116.png)
 *I selected the local server*
 
-![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-2.48.51-pm-1576x1114.png)
+![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-2.48.51-pm-1576x1114.webp)
 *I selected the 'Active Directory Domain Services' option and clicked next*
 
 ![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-2.49.11-pm-1566x1112.png)
 *I reviewed the dependencies and clicked next*
 
-![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-2.49.52-pm-1564x1112.png)
+![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-2.49.52-pm-1564x1112.webp)
 *I reviewed the features that would be installed and clicked next*
 
 ![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-2.50.03-pm-1572x1120.png)
@@ -136,10 +136,10 @@ In this case I wanted to install Active Directory, SQL Server and SharePoint on 
 ![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-3.17.51-pm-1514x1114.png)
 *I reviewed the summary and clicked next*
 
-![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-3.18.17-pm-1512x1112.png)
+![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-3.18.17-pm-1512x1112.webp)
 *I reviewed the warnings and clicked install*
 
-![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-3.19.16-pm-1616x1112.png)
+![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-3.19.16-pm-1616x1112.webp)
 *The server restarted*
 
 ![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-3.20.45-pm-868x466.png)
@@ -148,22 +148,22 @@ In this case I wanted to install Active Directory, SQL Server and SharePoint on 
 ![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-3.42.51-pm-1386x996.png)
 *I deselected the 'Google Update' services*
 
-![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-3.44.35-pm-1836x1075.png)
+![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-3.44.35-pm-1836x1075.webp)
 *There were no errors in the Server Manager Dashboard*
 
-![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-3.45.51-pm-1836x1341.png)
+![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-3.45.51-pm-1836x1341.webp)
 *I downloaded SQL Server Developer Edition from https://www.microsoft.com/en-us/sql-server/sql-server-downloads*
 
-![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-3.46.10-pm-1684x1340.png)
+![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-3.46.10-pm-1684x1340.webp)
 *I installed SQL Server*
 
-![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-3.58.19-pm-1684x1338.png)
+![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-3.58.19-pm-1684x1338.webp)
 *I installed the SSMS management application from https://aka.ms/ssmsfullsetup*
 
 ![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.07.11-pm-1372x1122.png)
 *SSMS installed*
 
-![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.07.25-pm-1836x956.png)
+![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.07.25-pm-1836x956.webp)
 *I confirmed that the SQL Server command line application sqlcmd was working*
 
 ![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.08.12-pm-982x514.png)
@@ -172,13 +172,13 @@ In this case I wanted to install Active Directory, SQL Server and SharePoint on 
 ![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.08.38-pm-1230x1062.png)
 *I clicked next*
 
-![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.08.52-pm-1232x1060.png)
+![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.08.52-pm-1232x1060.webp)
 *I clicked Yes*
 
 ![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.09.05-pm-1226x1060.png)
 *I selected 'Create a new farm' and clicked next*
 
-![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.10.47-pm-1230x1058.png)
+![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.10.47-pm-1230x1058.webp)
 *I entered the local server's name as the database server and provided the administrator's credentials*
 
 ![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.11.11-pm-1228x1068.png)
@@ -187,7 +187,7 @@ In this case I wanted to install Active Directory, SQL Server and SharePoint on 
 ![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.11.23-pm-1228x1062.png)
 *I selected the Single-Server Farm option and clicked next*
 
-![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.11.37-pm-1236x1062.png)
+![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.11.37-pm-1236x1062.webp)
 *I accepted the suggested (random) administration site port number 9728*
 
 ![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.11.49-pm-1230x1058.png)
@@ -196,31 +196,31 @@ In this case I wanted to install Active Directory, SQL Server and SharePoint on 
 ![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.11.59-pm-1234x1060.png)
 *I waited for the wizard to run*
 
-![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.25.34-pm-1226x1058.png)
+![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.25.34-pm-1226x1058.webp)
 *The configuration wizard finished*
 
-![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.29.04-pm-1806x1188.png)
+![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.29.04-pm-1806x1188.webp)
 *I navigated to the Central Administration site*
 
-![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.29.18-pm-1806x1178.png)
+![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.29.18-pm-1806x1178.webp)
 *I specified that all of the SharePoint Services should run as the same administrator account*
 
 ![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.29.52-pm-1802x1182.png)
 *I waited*
 
-![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.39.59-pm-1836x1349.png)
+![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.39.59-pm-1836x1349.webp)
 *I was able to access the Central Administration site*
 
 ![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.52.04-pm-1518x776.png)
 *I created a 'Home' Site Collection*
 
-![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.52.55-pm-1836x1325.png)
+![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.52.55-pm-1836x1325.webp)
 *I selected the 'Team Site' template*
 
-![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.53.53-pm-1836x1321.png)
+![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-4.53.53-pm-1836x1321.webp)
 *I provided the administrator account name*
 
-![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-5.35.17-pm-1836x1066.png)
+![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-5.35.17-pm-1836x1066.webp)
 *I was able to navigate to the Team Site*
 
 ![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-5.38.42-pm-872x758.png)
@@ -229,10 +229,10 @@ In this case I wanted to install Active Directory, SQL Server and SharePoint on 
 ![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-5.39.17-pm-864x756.png)
 *I provided a password*
 
-![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-5.40.06-pm-1836x1062.png)
+![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-5.40.06-pm-1836x1062.webp)
 *I reviewed Team Site permissions*
 
-![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-5.40.38-pm-1836x1071.png)
+![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-5.40.38-pm-1836x1071.webp)
 *I clicked the Share site button*
 
 ![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-5.40.53-pm-1836x1067.png)
@@ -241,7 +241,7 @@ In this case I wanted to install Active Directory, SQL Server and SharePoint on 
 ![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-5.41.16-pm-1836x1064.png)
 *The Test 1 and Test 2 users could view and edit items in the Team Site*
 
-![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-5.41.44-pm-1836x919.png)
+![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-5.41.44-pm-1836x919.webp)
 *The Site permission update was saved*
 
 ![](assets/images/sharepoint2019/screen-shot-2022-12-31-at-5.44.16-pm-1836x771.png)

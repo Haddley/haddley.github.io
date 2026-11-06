@@ -9,7 +9,7 @@ topics: [transformer-architecture, ablation-studies, rotary-position-embeddings,
 tools: [MLX, Python, Jupyter Notebook, Llama 3.2]
 status: current
 checked: "2026-11-05"
-source_hash: "846e79edc484"
+source_hash: "b546ed054144"
 generated_by: gemma4:12b
 ---
 

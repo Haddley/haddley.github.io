@@ -20,19 +20,19 @@ I created a GitHub project/repository.
 ![](assets/images/pwa/screen-shot-2021-07-22-at-1.27.31-pm-1376x808.png)
 *I clicked the "Create repository" button*
 
-![](assets/images/pwa/screen-shot-2021-07-22-at-1.33.03-pm-1836x999.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-1.33.03-pm-1836x999.webp)
 *I clicked the "Code" dropdown. I selected the "Open with GitHub Desktop" button.*
 
 ![](assets/images/pwa/screen-shot-2021-07-22-at-1.33.17-pm-1030x640.png)
 *I opened the project using GitHub Desktop*
 
-![](assets/images/pwa/screen-shot-2021-07-22-at-1.36.39-pm-1836x1260.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-1.36.39-pm-1836x1260.webp)
 *The repository was cloned to my laptop.*
 
 ![](assets/images/pwa/screen-shot-2021-07-22-at-1.38.16-pm-1836x549.png)
 *I added an index.html page*
 
-![](assets/images/pwa/screen-shot-2021-07-22-at-5.01.07-pm-1824x1128.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-5.01.07-pm-1824x1128.webp)
 *I added the Clock.jpg image*
 
 
@@ -69,7 +69,7 @@ I navigated to the Azure Portal.
 ![](assets/images/pwa/screen-shot-2021-07-22-at-5.09.07-pm-1800x1086.png)
 *I clicked the "Create" button*
 
-![](assets/images/pwa/screen-shot-2021-07-22-at-5.22.07-pm-1836x1064.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-5.22.07-pm-1836x1064.webp)
 *A GitHub Action published content from GitHub to Azure*
 
 
@@ -105,10 +105,10 @@ I used the pwa-asset-generator to generate a set of application images and icons
 % npx pwa-asset-generator Clock.jpg icons
 ```
 
-![](assets/images/pwa/screen-shot-2021-07-22-at-6.37.42-pm-1836x1104.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-6.37.42-pm-1836x1104.webp)
 *pwa-asset-generator*
 
-![](assets/images/pwa/screen-shot-2021-07-22-at-6.39.16-pm-1836x1144.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-6.39.16-pm-1836x1144.webp)
 *I copied the `<link rel=apple...` tags from the terminal to the head section of the index.html page*
 
 ![](assets/images/pwa/screen-shot-2021-07-22-at-6.39.49-pm-1836x1145.png)
@@ -121,7 +121,7 @@ To have the app run offline, I defined `install` and `fetch` event handlers. The
 
 [https://developers.google.com/web/fundamentals/primers/service-workers](https://developers.google.com/web/fundamentals/primers/service-workers)
 
-![](assets/images/pwa/screen-shot-2021-07-24-at-4.11.16-pm-1836x1109.png)
+![](assets/images/pwa/screen-shot-2021-07-24-at-4.11.16-pm-1836x1109.webp)
 *The service worker was registered*
 
 ![](assets/images/pwa/screen-shot-2021-07-24-at-4.12.18-pm-1836x1107.png)
@@ -163,7 +163,7 @@ I installed the Progressive Web Application on an Android mobile phone.
 
 I installed the Progressive Web Application on a MacBook.
 
-![](assets/images/pwa/screen-shot-2021-07-22-at-9.52.52-pm-1836x1126.png)
+![](assets/images/pwa/screen-shot-2021-07-22-at-9.52.52-pm-1836x1126.webp)
 *The Clock app can be "installed" onto a MacBook*
 
 ![](assets/images/pwa/screen-shot-2021-07-22-at-9.53.04-pm-924x376.png)

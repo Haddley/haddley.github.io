@@ -48,7 +48,7 @@ Here's an example implementation of the above steps:
 ![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.17.39-am-1836x567.png)
 *I added a Realtime Database*
 
-![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.18.28-am-1836x530.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.18.28-am-1836x530.webp)
 *I created a database*
 
 ![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.19.05-am-1836x634.png)
@@ -69,10 +69,10 @@ Here's an example implementation of the above steps:
 ![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-12.00.13-pm-1836x643.png)
 *I opened the project with Live Server*
 
-![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.38.28-am-1836x1189.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.38.28-am-1836x1189.webp)
 *code running locally*
 
-![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.41.28-am-1836x1156.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.41.28-am-1836x1156.webp)
 *firebase init*
 
 ![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-9.42.33-am-1836x465.png)
@@ -131,13 +131,13 @@ This code initializes and sets up a tic-tac-toe game using Firebase as the backe
 
 Overall, this code provides the functionality for playing a tic-tac-toe game in a web browser using Firebase for real-time updates and synchronization of the game state between multiple players.
 
-![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-3.06.41-pm-1836x1175.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-3.06.41-pm-1836x1175.webp)
 *updated code*
 
 ![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-3.10.52-pm-1452x540.png)
 *firebase deploy*
 
-![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-3.14.17-pm-1836x1248.png)
+![](assets/images/ticktacktoe/screen-shot-2023-05-10-at-3.14.17-pm-1836x1248.webp)
 *deployed*
 
 

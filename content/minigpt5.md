@@ -43,7 +43,7 @@ But a wheel is only as good as the reading behind it. Here are two real ones. GP
 ![](assets/images/minigpt5/teacher-wheel.svg)
 *What the student learns from at one position. The answer alone says only "bone"; a teacher's wheel says which other pieces were reasonable, and how reasonable. The web-trained teacher and the story-trained teacher disagree completely about this sentence*
 
-![](assets/images/minigpt5/notebook-wheel.png)
+![](assets/images/minigpt5/notebook-wheel.webp)
 *The follow-along notebook in Jupyter on my Mac, asking GPT-2 for its wheel after "Tim gave his dog a", next to the one-hot answer the guessing game uses*
 
 ### The two parts of the score
@@ -87,10 +87,10 @@ The student is the MLX machine from [Part 4](/posts/minigpt3/), with the origina
 GPT-2 and GPT-2 XL learned from text on the web. TinyStories-33M is the largest model released with the TinyStories paper, trained on the whole TinyStories collection: far more stories than my slice of it. My MiniGPT-512 is a wider MiniGPT that I trained on the same practice stories as the student, for 5,000 steps.
 
 
-![](assets/images/minigpt5/p6-teacher.png)
+![](assets/images/minigpt5/p6-teacher.webp)
 *I grew MiniGPT-512 first: 5,000 steps, 51 million numbers, finishing at 0.64 bits per byte*
 
-![](assets/images/minigpt5/p6-student.png)
+![](assets/images/minigpt5/p6-student.webp)
 *Then the student learned from it. The teacher is loaded once and frozen; only the student's parameters move*
 
 ![](assets/images/minigpt5/distill-curves.png)
@@ -140,7 +140,7 @@ Teacher 2. Teacher 3 is out: with a different tokeniser, its wheels do not line 
 
 ### What they write
 
-![](assets/images/minigpt5/generation.png)
+![](assets/images/minigpt5/generation.webp)
 *The no-teacher student and the MiniGPT-512 student, from the same opening*
 
 The no-teacher student loses the thread: "he wanted to take his melon home from his eyes", a second character also called Tim, and a melon that talks. The taught student holds a scene: Tim, a friend called Sam, a lost cake, a search, and an ending, finishing with "the moral of the story is…", the closing line many TinyStories use, which the no-teacher student never picked up.
@@ -256,17 +256,17 @@ kl = (mx.exp(tl) * (tl - s_lp)).sum(-1).mean()           # how far the student's
 agree = (mx.argmax(tl, -1) == mx.argmax(s_lp, -1)).mean()  # how often their biggest slices match
 ```
 
-![](assets/images/minigpt5/distill-runs.png)
+![](assets/images/minigpt5/distill-runs.webp)
 *The five runs, with each teacher's own score*
 
-![](assets/images/minigpt5/notebook-training.png)
+![](assets/images/minigpt5/notebook-training.webp)
 *The notebook trained the student twice, alone and with GPT-2 as its teacher: 0.7554 against 0.7467 bits per byte*
 
 ## Try it yourself
 
 - **The follow-along notebook:** [`part6-distillation/minigpt_follow_along_6.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part6-distillation/minigpt_follow_along_6.ipynb), for Jupyter on a Mac with Apple Silicon. It shows a teacher's wheel next to the one-hot answer, works the KL divergence out by hand, trains a student with GPT-2 as its teacher, and shows the capacity-gap results. It is saved with the outputs from my own run, so you can read every result on GitHub without a Mac.
 
-![](assets/images/minigpt5/notebook-top.png)
+![](assets/images/minigpt5/notebook-top.webp)
 *The notebook open in Jupyter on my Mac, with the outputs saved from my run*
 
 - **On the command line,** after Part 3's `prepare_data.py` and `tokenizers_setup.py`:

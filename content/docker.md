@@ -18,7 +18,7 @@ Software developers can use public repositories to share their work.
 
 [https://hub.docker.com/u/haddley](https://hub.docker.com/u/haddley)
 
-![Docker Hub](/assets/images/docker/screen-shot-2021-02-06-at-4.11.46-pm.png)
+![Docker Hub](/assets/images/docker/screen-shot-2021-02-06-at-4.11.46-pm.webp)
 
 
 ## Docker playground
@@ -49,13 +49,13 @@ I clicked the **80** button to connect to the running container image using http
 ![](assets/images/docker/screen-shot-2021-02-09-at-9.06.33-am-1408x921.png)
 *I added an instance*
 
-![](assets/images/docker/screen-shot-2021-02-09-at-9.07.07-am-1740x1133.png)
+![](assets/images/docker/screen-shot-2021-02-09-at-9.07.07-am-1740x1133.webp)
 *I pulled the haddley/blog image*
 
 ![](assets/images/docker/screen-shot-2021-02-09-at-9.07.47-am-1740x1143.png)
 *I ran the docker image*
 
-![](assets/images/docker/screen-shot-2021-02-09-at-9.08.11-am-1740x1137.png)
+![](assets/images/docker/screen-shot-2021-02-09-at-9.08.11-am-1740x1137.webp)
 *I accessed the running image using a generated URL and port 80*
 
 

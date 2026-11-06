@@ -121,7 +121,7 @@ I model it in OpenSCAD with named parameters, in the same way as the parts in my
 
 Here is a preview of the finished item, with the lid beside the base. This picture is drawn from the same layout as the diagram above, so the parts are where the diagram puts them.
 
-![](assets/images/attiny4/case-lid-off.png)
+![](assets/images/attiny4/case-lid-off.webp)
 *A preview of the finished item with the lid beside the base: the board in the base, the chip in the middle, the terminal blocks at the left and right edges, and the bike's wires leaving through the notches in the long walls*
 
 :::test-drive Turn the finished item around

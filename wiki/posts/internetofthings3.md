@@ -9,7 +9,7 @@ topics: [edge-computing, machine-learning, internet-of-things, audio-processing]
 tools: [Edge Impulse, Arduino Nano 33 BLE Sense, Arduino IDE, EON Tuner]
 status: current
 checked: "2026-11-05"
-source_hash: "a88121131332"
+source_hash: "13fa31f54576"
 generated_by: gemma4:12b
 ---
 

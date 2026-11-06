@@ -8,7 +8,7 @@ topics: [angular-integration, firebase-authentication, firestore-database, web-d
 tools: [Angular, Firebase, npm, Bootstrap, Firestore]
 status: current
 checked: "2026-11-05"
-source_hash: "cd73ca8216a5"
+source_hash: "9100950ce33d"
 generated_by: gemma4:12b
 ---
 

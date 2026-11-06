@@ -35,7 +35,7 @@ Think about the last time you wrote code to save a record in a database. How man
 ![](assets/images/spring-boot-3/screenshot-2023-10-29-at-10.16.13-am-1834x864.png)
 *I copied the generated files to the GitHub repository folder*
 
-![](assets/images/spring-boot-3/screenshot-2023-10-29-at-10.46.13-am-1836x1018.png)
+![](assets/images/spring-boot-3/screenshot-2023-10-29-at-10.46.13-am-1836x1018.webp)
 *I updated SpringdatajpaApplication.java so that it would respond to http://localhost/hello requests*
 
 ![](assets/images/spring-boot-3/screenshot-2023-10-29-at-10.26.33-am-1836x213.png)

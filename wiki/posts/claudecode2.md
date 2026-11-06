@@ -9,7 +9,7 @@ topics: [claude-code, prompt-engineering, project-context, automated-onboarding]
 tools: [Claude Code, PowerShell]
 status: current
 checked: "2026-11-05"
-source_hash: "dc079e549d55"
+source_hash: "8d703223247f"
 generated_by: gemma4:12b
 ---
 

@@ -464,12 +464,12 @@ I downloaded the files below. The STL files open in Bambu Studio, and the source
 
 I printed the new base and lid and put everything together. First I screwed the Uno onto its four posts. The USB-B and DC jacks line up with their openings in the wall.
 
-![](assets/images/claudecode17/case-final-uno.jpg)
+![](assets/images/claudecode17/case-final-uno.webp)
 *I screwed the Uno onto the four posts, with the jacks in their openings*
 
 Next I pressed the shield onto the Uno. The shield sits above the screw heads and still clears the corner bosses.
 
-![](assets/images/claudecode17/case-final-shield.jpg)
+![](assets/images/claudecode17/case-final-shield.webp)
 *I fitted the shield, and the status light was already running*
 
 Finally I screwed the lid onto the corner bosses. The lip sits on top of them, and the window is over the screen.

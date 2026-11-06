@@ -24,7 +24,7 @@ A Power Apps app needs to show and edit customers that live in Business Central.
 ![](assets/images/businesscentralvirtualtable/screen-shot-2024-01-12-at-1.37.31-pm-1836x1251.png)
 *I added the "Business Central Virtual Table" app*
 
-![](assets/images/businesscentralvirtualtable/screen-shot-2024-01-12-at-1.37.44-pm-1836x1013.png)
+![](assets/images/businesscentralvirtualtable/screen-shot-2024-01-12-at-1.37.44-pm-1836x1013.webp)
 *I enabled the "Dynamics 365 Business Central for Virtual Tables" Microsoft Entra app.*
 
 ![](assets/images/businesscentralvirtualtable/screen-shot-2024-01-12-at-1.41.38-pm-1836x915.png)
@@ -70,19 +70,19 @@ A: The Business Central Configuration app lists the available tables, and I chos
 ![](assets/images/businesscentralvirtualtable/screen-shot-2024-01-12-at-1.49.17-pm-1836x918.png)
 *I clicked the + Add page button*
 
-![](assets/images/businesscentralvirtualtable/screen-shot-2024-01-12-at-1.49.27-pm-1836x919.png)
+![](assets/images/businesscentralvirtualtable/screen-shot-2024-01-12-at-1.49.27-pm-1836x919.webp)
 *I clicked the Next button*
 
-![](assets/images/businesscentralvirtualtable/screen-shot-2024-01-12-at-1.49.57-pm-1836x926.png)
+![](assets/images/businesscentralvirtualtable/screen-shot-2024-01-12-at-1.49.57-pm-1836x926.webp)
 *I selected the Business Central Customer table*
 
 ![](assets/images/businesscentralvirtualtable/screen-shot-2024-01-12-at-1.50.15-pm-1836x915.png)
 *I clicked the Pages + New button*
 
-![](assets/images/businesscentralvirtualtable/screen-shot-2024-01-12-at-1.50.27-pm-1836x921.png)
+![](assets/images/businesscentralvirtualtable/screen-shot-2024-01-12-at-1.50.27-pm-1836x921.webp)
 *I clicked the Next button*
 
-![](assets/images/businesscentralvirtualtable/screen-shot-2024-01-12-at-1.50.47-pm-1836x921.png)
+![](assets/images/businesscentralvirtualtable/screen-shot-2024-01-12-at-1.50.47-pm-1836x921.webp)
 *I selected the Business Central Vendor table*
 
 ![](assets/images/businesscentralvirtualtable/screen-shot-2024-01-12-at-1.51.43-pm-1836x918.png)

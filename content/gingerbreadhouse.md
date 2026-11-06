@@ -90,19 +90,19 @@ $ python holiday.py
 ![](assets/images/gingerbreadhouse/screenshot-2023-12-27-at-6.01.59-am-1138x742.png)
 *I created and ran holiday.py. I noted that the cv.imshow("Img", frame) line is commented out*
 
-![](assets/images/gingerbreadhouse/img-5336-1380x1840.jpg)
+![](assets/images/gingerbreadhouse/img-5336-1380x1840.webp)
 *I wired up two displays*
 
-![](assets/images/gingerbreadhouse/414614983-3592654821010285-4862293336907881210-n-1532x1149.jpg)
+![](assets/images/gingerbreadhouse/414614983-3592654821010285-4862293336907881210-n-1532x1149.webp)
 *Sweet tooth*
 
-![](assets/images/gingerbreadhouse/413991968-3592654847676949-8340720245653303904-n-1134x2016.jpg)
+![](assets/images/gingerbreadhouse/413991968-3592654847676949-8340720245653303904-n-1134x2016.webp)
 *Edible Leaves*
 
-![](assets/images/gingerbreadhouse/414650583-3592654754343625-1719951648167488634-n-2048x1536.jpg)
+![](assets/images/gingerbreadhouse/414650583-3592654754343625-1719951648167488634-n-2048x1536.webp)
 *Raspberry Pi*
 
-![](assets/images/gingerbreadhouse/414450418-3592654787676955-2853045504914548798-n-1536x2048.jpg)
+![](assets/images/gingerbreadhouse/414450418-3592654787676955-2853045504914548798-n-1536x2048.webp)
 *Invader Zim*
 
 ![](assets/images/gingerbreadhouse/414438799-3592654771010290-8300621329522910848-n-2048x1536.webp)

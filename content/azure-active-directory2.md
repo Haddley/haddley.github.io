@@ -68,7 +68,7 @@ I created a "Haddley React Single Page App" that supports Azure Active Directory
 ![](assets/images/azure-active-directory2/image-859x481.png)
 *I ran .\Configure.ps1*
 
-![](assets/images/azure-active-directory2/screen-shot-2021-04-17-at-4.31.02-pm-1836x989.png)
+![](assets/images/azure-active-directory2/screen-shot-2021-04-17-at-4.31.02-pm-1836x989.webp)
 *I updated the Manifest "accessTokenAcceptedVersion"*
 
 

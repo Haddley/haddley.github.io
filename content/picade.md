@@ -18,7 +18,7 @@ I followed [Pimoroni's assembly guide](https://learn.pimoroni.com/article/assemb
 ![](assets/images/picade/708332668_980039438119103_4269064226564930064_n.jpg)
 *The completed Picade console with its green acrylic top panel, joystick, and coloured arcade buttons*
 
-![](assets/images/picade/708951421_4456737711262735_1509049903413260609_n.jpg)
+![](assets/images/picade/708951421_4456737711262735_1509049903413260609_n.webp)
 *I opened up the case to check the internal wiring — the Raspberry Pi and button connectors are all packed in neatly*
 
 ## Software Setup

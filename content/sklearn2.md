@@ -186,10 +186,10 @@ Random forests are not new, but they are still a standard first choice for table
 
 The project is in the chapter 2 notebook that goes with the book, [02_end_to_end_machine_learning_project.ipynb](https://github.com/ageron/handson-ml3/blob/main/02_end_to_end_machine_learning_project.ipynb). I ran the project part of it, everything up to the test set, and then looked through the results in JupyterLab. The whole run took about 6 minutes on my Mac Studio, most of it in the two searches.
 
-![](assets/images/sklearn2/jupyter-housing-head.png)
+![](assets/images/sklearn2/jupyter-housing-head.webp)
 *I loaded the data: 20,640 districts, one row each, with the median house value in the ninth column*
 
-![](assets/images/sklearn2/jupyter-histograms.png)
+![](assets/images/sklearn2/jupyter-histograms.webp)
 *I plotted a histogram of every column: housing_median_age is capped at 52, which shows as a tall spike on the right*
 
 ![](assets/images/sklearn2/jupyter-california-map.webp)
@@ -198,16 +198,16 @@ The project is in the chapter 2 notebook that goes with the book, [02_end_to_end
 ![](assets/images/sklearn2/jupyter-correlations.webp)
 *I looked for correlations: median_income is the column most closely related to house value, at 0.69*
 
-![](assets/images/sklearn2/jupyter-pipeline.png)
+![](assets/images/sklearn2/jupyter-pipeline.webp)
 *Scikit-Learn drew the preprocessing pipeline that feeds the linear regression: each kind of column gets its own steps, and 24 features come out*
 
-![](assets/images/sklearn2/jupyter-cross-validation.png)
+![](assets/images/sklearn2/jupyter-cross-validation.webp)
 *A random forest was wrong by about 47,000 on houses held back from training, but only 17,548 on the houses it trained on, so it is still overfitting: it does much better on what it has seen*
 
-![](assets/images/sklearn2/jupyter-randomized-search.png)
+![](assets/images/sklearn2/jupyter-randomized-search.webp)
 *Randomized search tried different numbers of geographic clusters and features: the best combination scored 41,983*
 
-![](assets/images/sklearn2/jupyter-test-set.png)
+![](assets/images/sklearn2/jupyter-test-set.webp)
 *Finally, I tested the model on the test set, which it had never seen: an RMSE of 41,536, with a 95% confidence interval from 39,574 to 43,780*
 
 :::bullet-points An end-to-end project, in short

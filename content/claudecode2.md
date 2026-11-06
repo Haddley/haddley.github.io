@@ -18,7 +18,7 @@ I can create the file manually, or let Claude generate a starter version by runn
 
 I ran `/init` in my project directory. Claude scanned the project and generated a starter `CLAUDE.md`:
 
-![](assets/images/claudecode2/Screenshot-2026-01-21-at-12.03.11-PM.png)
+![](assets/images/claudecode2/Screenshot-2026-01-21-at-12.03.11-PM.webp)
 *I ran /init to generate a starter CLAUDE.md*
 
 ![](assets/images/claudecode2/Screenshot-2026-01-21-at-12.03.49-PM.webp)
@@ -51,7 +51,7 @@ With the rule in place, I asked Claude to update my existing script to conform:
 update script using "Code Style"
 ```
 
-![](assets/images/claudecode2/Screenshot-2026-01-21-at-12.12.12-PM.png)
+![](assets/images/claudecode2/Screenshot-2026-01-21-at-12.12.12-PM.webp)
 *I asked Claude to refactor the script to match the new code style*
 
 ![](assets/images/claudecode2/Screenshot-2026-01-21-at-12.13.38-PM.webp)

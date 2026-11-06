@@ -94,16 +94,16 @@ The chapter is in the notebook that goes with the book, [15_processing_sequences
 ![](assets/images/sklearn15/jupyter-sarima.webp)
 *SARIMA forecasts for the validation period, retrained every day: the red forecasts follow the blue true values closely, and the autocorrelation plots below show the strong weekly pattern*
 
-![](assets/images/sklearn15/jupyter-windows.png)
+![](assets/images/sklearn15/jupyter-windows.webp)
 *Windows of 4 over the numbers 0 to 5: each window moves one step along, and then each window is split into inputs, three numbers, and a target, the fourth*
 
 ![](assets/images/sklearn15/jupyter-simple-rnn.webp)
 *Training the 32-neuron `SimpleRNN`: it stopped at epoch 146, as the validation error stopped improving, with an average error of 29,979 boardings*
 
-![](assets/images/sklearn15/jupyter-multistep-plot.png)
+![](assets/images/sklearn15/jupyter-multistep-plot.webp)
 *Forecasting 14 days by feeding each forecast back in: the first forecast is fine, but the next ones fall far away from the true values, and the later ones drop off the bottom of the plot*
 
-![](assets/images/sklearn15/jupyter-mae-ahead.png)
+![](assets/images/sklearn15/jupyter-mae-ahead.webp)
 *A model that forecasts all 14 days at once: the error is 23,219 for tomorrow and grows slowly, to about 33,650 for the day 14 days ahead*
 
 :::bullet-points Sequences, in short

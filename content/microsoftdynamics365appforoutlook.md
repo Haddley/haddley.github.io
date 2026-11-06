@@ -218,7 +218,7 @@ slug: "microsoftdynamics365appforoutlook"
 ![](assets/images/microsoftdynamics365appforoutlook/screenshot-2024-06-29-at-5.30.54pm-2136x1100.png)
 *I confirmed the related email was displayed*
 
-![](assets/images/microsoftdynamics365appforoutlook/449040931-1700129710754304-1985864385832439929-n-1242x2688.jpg)
+![](assets/images/microsoftdynamics365appforoutlook/449040931-1700129710754304-1985864385832439929-n-1242x2688.webp)
 *Sales app running on a mobile phone*
 
 

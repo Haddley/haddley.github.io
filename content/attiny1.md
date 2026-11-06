@@ -16,16 +16,16 @@ slug: "attiny1"
 
 I also built the circuit in [Tinkercad](https://www.tinkercad.com), Autodesk's free browser circuit simulator, to check the power and the wiring alongside the real hardware.
 
-![](assets/images/attiny1/tinkercad-new-circuit.png)
+![](assets/images/attiny1/tinkercad-new-circuit.webp)
 *Starting a new Circuits design from the Create menu*
 
-![](assets/images/attiny1/tinkercad-power-supply-search.png)
+![](assets/images/attiny1/tinkercad-power-supply-search.webp)
 *Searching the components for a power supply to drive the breadboard*
 
 ![](assets/images/attiny1/tinkercad-multimeter-5v.webp)
 *A running simulation with the supply and multimeter both reading 5.00 V*
 
-![](assets/images/attiny1/tinkercad-attiny-placed.png)
+![](assets/images/attiny1/tinkercad-attiny-placed.webp)
 *The ATtiny placed on the breadboard and named in its properties panel*
 
 Tinkercad can also program the chip with blocks. I started in the blocks editor, with a forever loop that switches the built-in LED on and off, and then switched to the text view.
@@ -33,7 +33,7 @@ Tinkercad can also program the chip with blocks. I started in the blocks editor,
 ![](assets/images/attiny1/tinkercad-blocks-editor.webp)
 *The blocks editor, with the LED switched on for one second and off for one second in a forever loop*
 
-![](assets/images/attiny1/tinkercad-close-blocks-warning.png)
+![](assets/images/attiny1/tinkercad-close-blocks-warning.webp)
 *Tinkercad warns that closing the blocks editor loses any blocks you have not converted*
 
 ![](assets/images/attiny1/tinkercad-text-code.webp)
@@ -55,7 +55,7 @@ create an ATTiny85-20PU blink program and upload to the microprocessor
 
 Claude needed an AVR compiler, and on this Apple Silicon Mac there were two obvious ways to get one. It asked me to choose, and it recommended trusting the osx-cross/avr tap. I accepted that recommendation. Claude also said it would check with me before making that change, because trusting a tap is a security setting.
 
-![](assets/images/attiny1/toolchain-question.png)
+![](assets/images/attiny1/toolchain-question.webp)
 *Claude asked how to get a working AVR compiler; I took the recommended option*
 
 Claude then wrote `blink.c` and a `Makefile` and ran the upload. `avrdude` wrote 82 bytes and read them back to verify them. The build commands it gave me were:
@@ -129,7 +129,7 @@ can you see ATTiny85-20PU connected via Tiny AVR Programmer
 
 Claude went looking for `avrdude` first, and found the copy bundled with the Arduino tools. That copy is an Intel binary, and Rosetta is not installed on this Mac, so it would not run. Claude installed a native `avrdude` with Homebrew and queried the chip in the background.
 
-![](assets/images/attiny1/find-programmer-query.png)
+![](assets/images/attiny1/find-programmer-query.webp)
 *Claude found the Arduino-bundled avrdude is Intel-only, then installed a native one with Homebrew*
 
 The query worked. Claude identified the programmer and the chip:
@@ -140,7 +140,7 @@ The query worked. Claude identified the programmer and the chip:
 - **Upload command:** `avrdude -c usbtiny -p attiny85 -U flash:w:yourfile.hex:i`
 - **8 MHz option:** set the low fuse to `0xE2` if I want the faster clock
 
-![](assets/images/attiny1/chip-identified.png)
+![](assets/images/attiny1/chip-identified.webp)
 *Claude identified the programmer, the ATtiny85 signature, and the factory fuse settings*
 
 :::under-the-hood Reading the fuse bytes

@@ -8,7 +8,7 @@ topics: [virtual-tables, dataverse-integration, business-central-api, power-apps
 tools: [Microsoft Dynamics 365 Business Central, Microsoft Dataverse, Power Automate, Power Apps]
 status: current
 checked: "2026-11-05"
-source_hash: "24e6b416221b"
+source_hash: "de594eab8002"
 generated_by: gemma4:12b
 ---
 

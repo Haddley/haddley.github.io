@@ -39,7 +39,7 @@ I opened the Command Palette (⇧⌘P) and used the "Docker: Add Docker Files to
 ![](assets/images/dockerbuildx/screen-shot-2021-03-03-at-7.34.54-am-1536x995.png)
 *I built the Docker image*
 
-![](assets/images/dockerbuildx/screen-shot-2021-03-03-at-7.35.27-am-1536x992.png)
+![](assets/images/dockerbuildx/screen-shot-2021-03-03-at-7.35.27-am-1536x992.webp)
 *The image was built and uploaded to Docker Desktop*
 
 ![](assets/images/dockerbuildx/screen-shot-2021-03-03-at-7.38.12-am-1536x883.png)
@@ -60,7 +60,7 @@ $ docker login --username=haddley
 $ docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6 --rm -t haddley/graphql-server:latest --push .
 ```
 
-![](assets/images/dockerbuildx/screen-shot-2021-03-03-at-7.48.59-am-1536x990.png)
+![](assets/images/dockerbuildx/screen-shot-2021-03-03-at-7.48.59-am-1536x990.webp)
 *I built the image for multiple Operating Systems/Processors*
 
 ![](assets/images/dockerbuildx/screen-shot-2021-03-03-at-7.51.16-am-1536x835.png)
@@ -95,5 +95,5 @@ The docker image can be run on a Raspberry Pi.
 ![](assets/images/dockerbuildx/screen-shot-2021-03-13-at-3.35.52-pm-1636x1166.png)
 *I reviewed GraphiQL intellisense*
 
-![](assets/images/dockerbuildx/screen-shot-2021-03-13-at-3.36.12-pm-1638x1172.png)
+![](assets/images/dockerbuildx/screen-shot-2021-03-13-at-3.36.12-pm-1638x1172.webp)
 *The GraphQL service was running on the Raspberry Pi*

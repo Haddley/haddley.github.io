@@ -9,7 +9,7 @@ topics: [canvas-apps, power-automate-flows, sharepoint-integration, form-validat
 tools: [SharePoint, Power Apps, Power Automate, Outlook]
 status: current
 checked: "2026-11-06"
-source_hash: "bc46d925b5ee"
+source_hash: "29ac6da51a79"
 generated_by: gemma4:12b
 ---
 

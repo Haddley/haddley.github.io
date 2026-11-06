@@ -41,7 +41,7 @@ I set up PHP on macOS. PHP is a server scripting language for building dynamic a
 ![](assets/images/phpsetup/screenshot-2024-08-24-at-10.32.05pm-1831x846.png)
 *phpinfo()*
 
-![](assets/images/phpsetup/screenshot-2024-08-24-at-10.32.25pm-1831x991.png)
+![](assets/images/phpsetup/screenshot-2024-08-24-at-10.32.25pm-1831x991.webp)
 *I used phpinfo() to check configuration settings*
 
 ![](assets/images/phpsetup/screenshot-2024-08-24-at-10.34.44pm-1831x489.png)

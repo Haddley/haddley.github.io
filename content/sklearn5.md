@@ -92,19 +92,19 @@ A: Less than when the book was written, and I would not reach for one first. The
 
 The chapter is in the notebook that goes with the book, [05_support_vector_machines.ipynb](https://github.com/ageron/handson-ml3/blob/main/05_support_vector_machines.ipynb). I ran everything before the exercise solutions, which took about 10 seconds on my Mac Studio, and then looked through the results in JupyterLab.
 
-![](assets/images/sklearn5/jupyter-large-margin.png)
+![](assets/images/sklearn5/jupyter-large-margin.webp)
 *On the left, three lines that separate the flowers badly or barely; on the right, the SVM's widest street, with its support vectors circled*
 
-![](assets/images/sklearn5/jupyter-linear-svc.png)
+![](assets/images/sklearn5/jupyter-linear-svc.webp)
 *I trained a linear SVM to spot Iris virginica, and it classified two new flowers: one yes, one no*
 
-![](assets/images/sklearn5/jupyter-polynomial-kernel.png)
+![](assets/images/sklearn5/jupyter-polynomial-kernel.webp)
 *A polynomial kernel lets the SVM curve its boundary around the two moons*
 
-![](assets/images/sklearn5/jupyter-rbf-kernel.png)
+![](assets/images/sklearn5/jupyter-rbf-kernel.webp)
 *The Gaussian RBF kernel with different settings: a small C gives a smooth boundary, and a large C follows the training data closely*
 
-![](assets/images/sklearn5/jupyter-svm-gradient-descent.png)
+![](assets/images/sklearn5/jupyter-svm-gradient-descent.webp)
 *The same SVM trained by gradient descent and by Scikit-Learn's SVC: the two answers agree to within about 0.05*
 
 :::bullet-points Support vector machines, in short

@@ -18,7 +18,7 @@ I ran the command to get started.
 ollama launch claude
 ```
 
-![](assets/images/claudecode11/Screenshot-2026-04-10-at-11.59.22-AM.png)
+![](assets/images/claudecode11/Screenshot-2026-04-10-at-11.59.22-AM.webp)
 *I ran `ollama launch claude` in the terminal*
 
 A model selection menu appeared with a recommended list sorted by capability.

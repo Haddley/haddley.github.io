@@ -89,7 +89,7 @@ A: Not quite. Clustering finds groups, but it does not know what they mean, and 
 
 The chapter is in the notebook that goes with the book, [09_unsupervised_learning.ipynb](https://github.com/ageron/handson-ml3/blob/main/09_unsupervised_learning.ipynb). I ran everything before the exercise solutions, which took about 4 minutes on my Mac Studio, and then looked through the results in JupyterLab.
 
-![](assets/images/sklearn9/jupyter-clustering-vs-classification.png)
+![](assets/images/sklearn9/jupyter-clustering-vs-classification.webp)
 *The iris flowers with their species labels (left) and without them (right): without labels, a clustering algorithm has to find the groups itself*
 
 ![](assets/images/sklearn9/jupyter-kmeans-steps.webp)
@@ -98,13 +98,13 @@ The chapter is in the notebook that goes with the book, [09_unsupervised_learnin
 ![](assets/images/sklearn9/jupyter-wrong-k.webp)
 *The wrong number of clusters: with 3, blobs are merged; with 8, blobs are split*
 
-![](assets/images/sklearn9/jupyter-elbow.png)
+![](assets/images/sklearn9/jupyter-elbow.webp)
 *Inertia falls as clusters are added; the bend, the "elbow", suggests a good number*
 
 ![](assets/images/sklearn9/jupyter-image-segmentation.webp)
 *Clustering the ladybug photo's colours: with 10 colours it looks almost unchanged, and with 2 the ladybug disappears into the flower*
 
-![](assets/images/sklearn9/jupyter-representative-digits.png)
+![](assets/images/sklearn9/jupyter-representative-digits.webp)
 *The 50 representative digits, one per cluster: labelling these 50 gave 84.1% accuracy, against 74.8% for 50 random ones*
 
 ![](assets/images/sklearn9/jupyter-dbscan.webp)

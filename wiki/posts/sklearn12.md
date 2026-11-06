@@ -9,7 +9,7 @@ topics: [custom-training-loops, automatic-differentiation, loss-functions, tenso
 tools: [TensorFlow, Keras, PyTorch, NumPy]
 status: current
 checked: "2026-11-06"
-source_hash: "bd8aefc4960f"
+source_hash: "7205f73c3b6e"
 generated_by: gemma4:12b
 ---
 

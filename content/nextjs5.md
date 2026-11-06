@@ -44,7 +44,7 @@ The steps below show how I added next-pwa to the with-ionic-typescript project.
 ![](assets/images/nextjs5/screen-shot-2022-01-13-at-9.24.12-am-1836x921.png)
 *I included a Next.js _document.js file with a reference to manifest.json*
 
-![](assets/images/nextjs5/screen-shot-2022-01-13-at-2.34.43-pm-1836x1111.png)
+![](assets/images/nextjs5/screen-shot-2022-01-13-at-2.34.43-pm-1836x1111.webp)
 *I needed to remove (unneeded) files from the svg folder...*
 
 ![](assets/images/nextjs5/screen-shot-2022-01-13-at-9.34.17-am-1836x920.png)

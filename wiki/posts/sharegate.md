@@ -9,7 +9,7 @@ topics: [sharegate-installation, sharepoint-migration, sql-server-configuration,
 tools: [Azure, Windows Server, Microsoft SQL Server, SharePoint, ShareGate, Microsoft 365]
 status: current
 checked: "2026-11-06"
-source_hash: "fea363418028"
+source_hash: "47000e3c5935"
 generated_by: gemma4:12b
 ---
 

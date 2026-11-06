@@ -8,7 +8,7 @@ topics: [hubspot-quotes, child-themes, custom-css, module-cloning]
 tools: [HubSpot, CMS Design Manager]
 status: current
 checked: "2026-11-05"
-source_hash: "1ba2cb916243"
+source_hash: "e2ba625e335b"
 generated_by: gemma4:12b
 ---
 

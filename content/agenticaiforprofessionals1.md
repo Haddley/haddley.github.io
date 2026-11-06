@@ -4,7 +4,7 @@ part: 1
 description: "Using a structured LLM-wiki research process to study Thomson Reuters CoCounsel's architecture, then turning that research into an implementation plan for a simplified legal research assistant"
 date: "2026-08-18"
 categories: ["AI"]
-image: "/assets/images/agenticaiforprofessionals1/hero-cocounsel.png"
+image: "/assets/images/agenticaiforprofessionals1/hero-cocounsel.webp"
 tags: "llm-wiki, rag, claude-code, legal-tech, product-research"
 hidden: false
 slug: "agenticaiforprofessionals1"

@@ -22,7 +22,7 @@ npx paperclipai onboard --yes
 
 The onboarding opens a local web UI with a four-step wizard: Company, Agent, Task, Launch.
 
-![](assets/images/Paperclip/Screenshot-2026-03-28-at-2.16.36-PM.png)
+![](assets/images/Paperclip/Screenshot-2026-03-28-at-2.16.36-PM.webp)
 *I saw the company setup screen — the first step in the wizard*
 
 I named the company "Face With Rolling Eyes" — a multiplayer gaming platform — and gave it the mission "Any group. Any screen. Anywhere. Play together."
@@ -32,12 +32,12 @@ I named the company "Face With Rolling Eyes" — a multiplayer gaming platform �
 
 For the first agent I created a CEO role, backed by Claude Code running locally. The adapter check passed immediately.
 
-![](assets/images/Paperclip/Screenshot-2026-03-28-at-2.29.10-PM.png)
+![](assets/images/Paperclip/Screenshot-2026-03-28-at-2.29.10-PM.webp)
 *I set up the CEO agent using the Claude Code adapter — it passed the environment check*
 
 I gave the CEO a first task: hire a founding engineer and create a hiring plan.
 
-![](assets/images/Paperclip/Screenshot-2026-03-28-at-2.29.24-PM.png)
+![](assets/images/Paperclip/Screenshot-2026-03-28-at-2.29.24-PM.webp)
 *I defined the first task — hire a founding engineer and write a hiring plan*
 
 The launch screen confirmed everything was ready.
@@ -77,22 +77,22 @@ It also created 8 backlog tasks across the four roadmap milestones.
 
 The Founding Engineer agent appeared in the sidebar but was waiting on my approval.
 
-![](assets/images/Paperclip/Screenshot-2026-03-28-at-2.34.18-PM.png)
+![](assets/images/Paperclip/Screenshot-2026-03-28-at-2.34.18-PM.webp)
 *I saw the Founding Engineer agent profile — status showed "pending approval"*
 
 The Onboarding project now had a full backlog of issues ready to be picked up.
 
-![](assets/images/Paperclip/Screenshot-2026-03-28-at-2.34.56-PM.png)
+![](assets/images/Paperclip/Screenshot-2026-03-28-at-2.34.56-PM.webp)
 *I looked at the project backlog — all 8 issues created and waiting*
 
 The org chart showed two Claude agents: CEO and Founding Engineer.
 
-![](assets/images/Paperclip/Screenshot-2026-03-28-at-2.35.26-PM.png)
+![](assets/images/Paperclip/Screenshot-2026-03-28-at-2.35.26-PM.webp)
 *I viewed the org chart — CEO at the top, Founding Engineer reporting in*
 
 The inbox showed the approval request. I clicked Approve.
 
-![](assets/images/Paperclip/Screenshot-2026-03-28-at-2.35.44-PM.png)
+![](assets/images/Paperclip/Screenshot-2026-03-28-at-2.35.44-PM.webp)
 *I saw the approval request in my inbox and approved it*
 
 The approval confirmed the Founding Engineer's capabilities — full-stack platform engineer, WebSockets, real-time systems, Claude Code adapter.
@@ -102,12 +102,12 @@ The approval confirmed the Founding Engineer's capabilities — full-stack platf
 
 The Founding Engineer dashboard lit up — it had picked up 8 issues across backlog and todo.
 
-![](assets/images/Paperclip/Screenshot-2026-03-28-at-2.36.50-PM.png)
+![](assets/images/Paperclip/Screenshot-2026-03-28-at-2.36.50-PM.webp)
 *I watched the Founding Engineer dashboard populate with issues*
 
 It immediately started on FAC-2: Build real-time session management service.
 
-![](assets/images/Paperclip/Screenshot-2026-03-28-at-2.38.05-PM.png)
+![](assets/images/Paperclip/Screenshot-2026-03-28-at-2.38.05-PM.webp)
 *I saw FAC-2 assigned and set to In Progress*
 
 The live run transcript showed it creating files across the project — auth, rooms, socket handlers, REST routes.
@@ -157,37 +157,37 @@ I created a room and opened a second browser window in incognito. Karen joined w
 
 Both players appeared in the lobby. I started the game.
 
-![](assets/images/Paperclip/Screenshot-2026-03-28-at-3.03.29-PM.png)
+![](assets/images/Paperclip/Screenshot-2026-03-28-at-3.03.29-PM.webp)
 *I saw both Neil and Karen in the lobby — Neil as host, Karen waiting for the start*
 
 After Q1, Karen was already ahead with 1,385 to my 0.
 
-![](assets/images/Paperclip/Screenshot-2026-03-28-at-3.03.50-PM.png)
+![](assets/images/Paperclip/Screenshot-2026-03-28-at-3.03.50-PM.webp)
 *I saw the Q1 scores — Karen 1,385, Neil 0*
 
 Q2 scores — Karen 2,705, me still on 0.
 
-![](assets/images/Paperclip/Screenshot-2026-03-28-at-3.04.11-PM.png)
+![](assets/images/Paperclip/Screenshot-2026-03-28-at-3.04.11-PM.webp)
 *I saw the Q2 scores — Karen pulling further ahead*
 
 Final scores: Karen 5,345, Neil 4,011. I caught up eventually.
 
-![](assets/images/Paperclip/Screenshot-2026-03-28-at-3.05.26-PM.png)
+![](assets/images/Paperclip/Screenshot-2026-03-28-at-3.05.26-PM.webp)
 *I saw the final scores — Karen won, but I got there in the end*
 
 Back in Paperclip, the Founding Engineer picked up FAC-6: Web client (browser-first).
 
-![](assets/images/Paperclip/Screenshot-2026-03-28-at-3.15.30-PM.png)
+![](assets/images/Paperclip/Screenshot-2026-03-28-at-3.15.30-PM.webp)
 *I saw FAC-6 Web client issue open in the backlog*
 
 It was assigned and started immediately.
 
-![](assets/images/Paperclip/Screenshot-2026-03-28-at-3.15.46-PM.png)
+![](assets/images/Paperclip/Screenshot-2026-03-28-at-3.15.46-PM.webp)
 *I saw FAC-6 assigned to the Founding Engineer and set to In Progress*
 
 The live run showed it adding a `?action=create` URL shortcut and verifying the PWA build.
 
-![](assets/images/Paperclip/Screenshot-2026-03-28-at-3.17.03-PM.png)
+![](assets/images/Paperclip/Screenshot-2026-03-28-at-3.17.03-PM.webp)
 *I watched the Founding Engineer add a shortcut and run the build verification*
 
 FAC-6 done: the web client was now a full Progressive Web App — manifest, service worker, icons, Add to Home Screen support.
@@ -207,7 +207,7 @@ FAC-7 — Mobile PWA or native shell — opened next.
 
 The Founding Engineer investigated and started its analysis.
 
-![](assets/images/Paperclip/Screenshot-2026-03-28-at-3.20.29-PM.png)
+![](assets/images/Paperclip/Screenshot-2026-03-28-at-3.20.29-PM.webp)
 *I watched the Founding Engineer read the codebase and begin its mobile investigation*
 
 It produced a comparison table — PWA vs React Native/Flutter. PWA won on every axis that mattered for launch: same codebase, instant updates, WebSocket support.
@@ -237,7 +237,7 @@ The CEO dashboard now showed nearly everything done.
 
 A short time later FAC-7 was also complete.
 
-![](assets/images/Paperclip/Screenshot-2026-03-28-at-3.36.17-PM.png)
+![](assets/images/Paperclip/Screenshot-2026-03-28-at-3.36.17-PM.webp)
 *I saw the CEO dashboard update — FAC-7 Mobile PWA done*
 
 I decided to push further. I asked the CEO to deploy the games platform to Azure.
@@ -280,7 +280,7 @@ I asked the CEO about costs — the B1 Linux App Service Plan runs ~$13-15/month
 ![](assets/images/Paperclip/Screenshot-2026-03-28-at-4.36.17-PM.png)
 *I read the cost breakdown — B1 plan ~$13-15/month with WebSocket support included*
 
-![](assets/images/Paperclip/Screenshot-2026-03-28-at-4.37.52-PM.png)
+![](assets/images/Paperclip/Screenshot-2026-03-28-at-4.37.52-PM.webp)
 *I read the cost-saving option — delete the App Service Plan to pause all billing*
 
 The Founding Engineer then ran FAC-12: provision the Azure resources and deploy both server and client.

@@ -16,19 +16,19 @@ DevOps Starter makes it easy to get started on Azure using either GitHub actions
 ![](assets/images/devopsstartergithubactions/screen-shot-2021-04-26-at-3.22.36-pm-1836x1028.png)
 *I selected "DevOps Starter" in Azure Portal*
 
-![](assets/images/devopsstartergithubactions/screen-shot-2021-04-26-at-3.23.43-pm-1836x1035.png)
+![](assets/images/devopsstartergithubactions/screen-shot-2021-04-26-at-3.23.43-pm-1836x1035.webp)
 *I created a Node app*
 
 ![](assets/images/devopsstartergithubactions/screen-shot-2021-04-26-at-3.23.55-pm-1836x1033.png)
 *I selected Express*
 
-![](assets/images/devopsstartergithubactions/screen-shot-2021-04-26-at-3.24.23-pm-1836x1035.png)
+![](assets/images/devopsstartergithubactions/screen-shot-2021-04-26-at-3.24.23-pm-1836x1035.webp)
 *I selected Web App for Containers*
 
 ![](assets/images/devopsstartergithubactions/screen-shot-2021-04-26-at-3.24.40-pm-1836x1032.png)
 *I entered my GitHub credentials*
 
-![](assets/images/devopsstartergithubactions/screen-shot-2021-04-26-at-3.25.26-pm-1836x1033.png)
+![](assets/images/devopsstartergithubactions/screen-shot-2021-04-26-at-3.25.26-pm-1836x1033.webp)
 *I selected pricing tier "F1 Free"*
 
 ![](assets/images/devopsstartergithubactions/screen-shot-2021-04-26-at-3.26.05-pm-1836x1033.png)
@@ -43,22 +43,22 @@ DevOps Starter makes it easy to get started on Azure using either GitHub actions
 ![](assets/images/devopsstartergithubactions/screen-shot-2021-04-26-at-3.31.15-pm-1836x1030.png)
 *Once deployed to Azure, Functional Tests (Selenium) ran*
 
-![](assets/images/devopsstartergithubactions/screen-shot-2021-04-26-at-3.34.39-pm-1836x1036.png)
+![](assets/images/devopsstartergithubactions/screen-shot-2021-04-26-at-3.34.39-pm-1836x1036.webp)
 *The GitHub Actions workflow completed*
 
-![](assets/images/devopsstartergithubactions/screen-shot-2021-04-26-at-3.35.19-pm-1836x1033.png)
+![](assets/images/devopsstartergithubactions/screen-shot-2021-04-26-at-3.35.19-pm-1836x1033.webp)
 *I reviewed the summary of Azure resources*
 
-![](assets/images/devopsstartergithubactions/screen-shot-2021-04-26-at-3.35.37-pm-1836x1031.png)
+![](assets/images/devopsstartergithubactions/screen-shot-2021-04-26-at-3.35.37-pm-1836x1031.webp)
 *I navigated to the production URL*
 
-![](assets/images/devopsstartergithubactions/screen-shot-2021-04-26-at-3.39.39-pm-1836x1031.png)
+![](assets/images/devopsstartergithubactions/screen-shot-2021-04-26-at-3.39.39-pm-1836x1031.webp)
 *I opened the repository with GitHub Desktop to add the Factorial API*
 
 ![](assets/images/devopsstartergithubactions/screen-shot-2021-04-26-at-3.39.56-pm-1012x630.png)
 *I cloned the repository*
 
-![](assets/images/devopsstartergithubactions/screen-shot-2021-04-26-at-3.40.46-pm-1836x1254.png)
+![](assets/images/devopsstartergithubactions/screen-shot-2021-04-26-at-3.40.46-pm-1836x1254.webp)
 *I opened the project in Visual Studio Code*
 
 
@@ -87,7 +87,7 @@ $ npm install
 $ gulp unittest
 ```
 
-![](assets/images/devopsstartergithubactions/screen-shot-2021-04-26-at-4.13.54-pm-1836x1079.png)
+![](assets/images/devopsstartergithubactions/screen-shot-2021-04-26-at-4.13.54-pm-1836x1079.webp)
 *I ran the updated Unit Tests*
 
 
@@ -101,10 +101,10 @@ $ cd ../Tests
 $ gulp functionaltest --webAppUrl http://localhost:3000/
 ```
 
-![](assets/images/devopsstartergithubactions/screen-shot-2021-04-26-at-4.50.40-pm-1836x1087.png)
+![](assets/images/devopsstartergithubactions/screen-shot-2021-04-26-at-4.50.40-pm-1836x1087.webp)
 *I ran the functional tests*
 
-![](assets/images/devopsstartergithubactions/screen-shot-2021-04-26-at-4.08.12-pm-1836x1259.png)
+![](assets/images/devopsstartergithubactions/screen-shot-2021-04-26-at-4.08.12-pm-1836x1259.webp)
 *I pushed updates to GitHub on origin master*
 
 ![](assets/images/devopsstartergithubactions/screen-shot-2021-04-26-at-5.05.24-pm-1836x1027.png)

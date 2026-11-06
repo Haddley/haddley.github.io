@@ -9,7 +9,7 @@ topics: [large-language-models, transformer-architecture, attention-mechanisms, 
 tools: [PyTorch, MiniGPT, llama.cpp]
 status: current
 checked: "2026-11-05"
-source_hash: "79f4f1849ea8"
+source_hash: "2ea1f7e579ed"
 generated_by: gemma4:12b
 ---
 

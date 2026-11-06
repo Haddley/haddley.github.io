@@ -281,7 +281,7 @@ The same loop as every part so far: score the last hidden state against the rows
 
 - **The follow-along notebook:** [`part4-mlx/minigpt_follow_along_4.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part4-mlx/minigpt_follow_along_4.ipynb). Open it in Jupyter on a Mac with Apple Silicon. It prepares the stories, checks that the MLX machine has the same 13.9 million numbers as Part 3's, trains it, runs the race, and writes. It is saved with the outputs from my own run, so you can read every result on GitHub without a Mac.
 
-![](assets/images/minigpt3/notebook-top.png)
+![](assets/images/minigpt3/notebook-top.webp)
 *The notebook open in Jupyter on my Mac, with the outputs saved from my run*
 
 - **On the command line:**

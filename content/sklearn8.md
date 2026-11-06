@@ -85,16 +85,16 @@ A: PCA is, constantly: for making data smaller, removing noise, and drawing a fi
 
 The chapter is in the notebook that goes with the book, [08_dimensionality_reduction.ipynb](https://github.com/ageron/handson-ml3/blob/main/08_dimensionality_reduction.ipynb). I ran everything before the exercise solutions, which took about 7 minutes on my Mac Studio, and then looked through the results in JupyterLab.
 
-![](assets/images/sklearn8/jupyter-projection.png)
+![](assets/images/sklearn8/jupyter-projection.webp)
 *A small 3D dataset projected onto the flat surface it lies closest to: two numbers per point instead of three*
 
 ![](assets/images/sklearn8/jupyter-swiss-roll.webp)
 *The Swiss roll: squashing it flat (left) mixes up the colours, while unrolling it (right) keeps them in order*
 
-![](assets/images/sklearn8/jupyter-pca.png)
+![](assets/images/sklearn8/jupyter-pca.webp)
 *I ran PCA in two lines: the first direction keeps about 76% of the variance and the second about 15%, so going from 3D to 2D loses about 9%*
 
-![](assets/images/sklearn8/jupyter-explained-variance.png)
+![](assets/images/sklearn8/jupyter-explained-variance.webp)
 *The variance kept against the number of dimensions for MNIST: it climbs fast, and 154 dimensions keep 95% of it*
 
 ![](assets/images/sklearn8/jupyter-compression.webp)

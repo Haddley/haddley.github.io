@@ -9,7 +9,7 @@ topics: [sharepoint-framework, react-components, state-management, typescript-de
 tools: [SharePoint Framework, Microsoft Teams, Microsoft Outlook, TypeScript, React, Yeoman]
 status: current
 checked: "2026-11-06"
-source_hash: "e7dfb26488df"
+source_hash: "17d53ff199b4"
 generated_by: gemma4:12b
 ---
 

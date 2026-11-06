@@ -16,13 +16,13 @@ I built a Claude Code skill called `dv-generate` that generates Dataverse soluti
 curl -fsSL https://raw.githubusercontent.com/Haddley/dv-generate/main/install.sh | bash
 ```
 
-![](assets/images/claudecode13/Screenshot-2026-06-04-at-12.43.38-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-06-04-at-12.43.38-PM.webp)
 *I ran `/skills` in Claude Code and saw there were no skills installed yet*
 
-![](assets/images/claudecode13/Screenshot-2026-06-04-at-12.44.32-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-06-04-at-12.44.32-PM.webp)
 *I ran the install script and watched it clone the dv-generate plugin and register it*
 
-![](assets/images/claudecode13/Screenshot-2026-06-04-at-12.44.50-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-06-04-at-12.44.50-PM.webp)
 *After restarting Claude Code, `/skills` now showed the `dv-generate` skill listed and active*
 
 With the skill installed, I opened Claude Code in an empty folder and checked that the skill was available.
@@ -56,19 +56,19 @@ Claude wrote `solution.xml`, `customizations.xml` and `pack.sh`, and built `Todo
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.37.18-PM.webp)
 *In make.powerapps.com on my development environment, I chose Import solution and picked `TodoSolution.zip` (6 KB)*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.37.36-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.37.36-PM.webp)
 *The file was selected and I clicked Next*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.37.53-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.37.53-PM.webp)
 *The import details show an **Unmanaged** solution from publisher Neil, version 1.0.0.0*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.40.12-PM.webp)
 *The solution imported successfully and is listed with Managed set to No*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.40.56-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.40.56-PM.webp)
 *The solution overview confirms the package type is Unmanaged*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.41.57-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.41.57-PM.webp)
 *The Todo App model-driven app appeared in Apps*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.42.29-PM.png)
@@ -93,7 +93,7 @@ Importing into development gives me an unmanaged solution I can keep changing. T
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.44.19-PM.webp)
 *Published*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.44.36-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.44.36-PM.webp)
 *It lists the managed solutions the target environment must already have: App Framework Infra Extensions and App Module Assets. This comes from the `MissingDependencies` block in `solution.xml`*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.44.51-PM.webp)
@@ -102,22 +102,22 @@ Importing into development gives me an unmanaged solution I can keep changing. T
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.45.39-PM.png)
 *The export finished and offered the zip to download*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.46.04-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.46.04-PM.webp)
 *I switched to my second environment, `dev-no-721df8ab`, which stands in for test or production*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.47.02-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.47.02-PM.webp)
 *In that environment I chose Import solution and picked the downloaded `TodoSolution_1_0_0_1_managed.zip` (8 KB)*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.47.14-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.47.14-PM.webp)
 *The managed zip was selected*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.48.09-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.48.09-PM.webp)
 *The import details say **Managed**, version 1.0.0.1*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.50.09-PM.webp)
 *The solution imported and shows Managed set to Yes*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.50.21-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.50.21-PM.webp)
 *The Todo App is available in the second environment*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.50.49-PM.png)
@@ -145,10 +145,10 @@ Note that the portal raises the version at export time. Dev was at 1.0.0.0 and t
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.53.52-PM.webp)
 *It is the same `TodoSolution.zip`, rebuilt a minute earlier*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.54.03-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.54.03-PM.webp)
 *The file was selected*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.54.19-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.54.19-PM.webp)
 *The import details show the installed version (1.0.0.1) and the version in the update (1.0.0.2)*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.55.11-PM.png)
@@ -157,16 +157,16 @@ Note that the portal raises the version at export time. Dev was at 1.0.0.0 and t
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.55.25-PM.webp)
 *The development environment lists version 1.0.0.2, still unmanaged*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.56.00-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.56.00-PM.webp)
 *The solution contains the Todo table, the app and its site map*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.56.32-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.56.32-PM.webp)
 *The app is still there*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.56.43-PM.png)
 *The existing record is untouched*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.57.41-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.57.41-PM.webp)
 *The form has Notes and Done Date fields. I created a second record*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.57.51-PM.png)
@@ -198,22 +198,22 @@ Then I released it the same way: export as managed from development, and import 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-2.01.09-PM.png)
 *No file chosen yet*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-2.01.26-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-2.01.26-PM.webp)
 *I picked `TodoSolution_1_0_0_3_managed.zip`*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-2.02.16-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-2.02.16-PM.webp)
 *The details show the installed 1.0.0.1 and the update 1.0.0.3, both Managed*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-2.04.09-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-2.04.09-PM.webp)
 *The second environment lists version 1.0.0.3, Managed Yes*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-2.04.19-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-2.04.19-PM.webp)
 *The app is there*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-2.04.33-PM.png)
 *The record I created earlier in this environment survived the upgrade*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-2.05.25-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-2.05.25-PM.webp)
 *The managed app's form shows Notes and Done Date*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-2.05.36-PM.png)

@@ -150,7 +150,7 @@ export default async function Home() {
               <div className="image-wrapper">
                 <Link href="/posts/spring-boot-2">
                   <Image 
-                    src="/assets/images/home/screen-shot-2021-02-05-at-1.31.11-pm.png"
+                    src="/assets/images/home/screen-shot-2021-02-05-at-1.31.11-pm.webp"
                     alt="Azure"
                     width={600}
                     height={400}
@@ -195,7 +195,7 @@ export default async function Home() {
               <div className="image-wrapper">
                 <Link href="/posts/purview">
                   <Image 
-                    src="/assets/images/home/screen-shot-2021-02-04-at-2.13.37-pm.png"
+                    src="/assets/images/home/screen-shot-2021-02-04-at-2.13.37-pm.webp"
                     alt="Microsoft Office 365"
                     width={600}
                     height={400}
@@ -228,7 +228,7 @@ export default async function Home() {
               <div className="image-wrapper">
                 <a href="https://haddley.github.io/directory/www/index.html" target="_blank" rel="noopener noreferrer">
                   <Image 
-                    src="/assets/images/home/screen-shot-2021-02-06-at-3.55.19-pm.png"
+                    src="/assets/images/home/screen-shot-2021-02-06-at-3.55.19-pm.webp"
                     alt="Ionic"
                     width={600}
                     height={400}

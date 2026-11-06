@@ -14,13 +14,13 @@ I built a Device Request list in SharePoint Online to let IT staff submit reques
 ![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.00.17-PM.webp)
 *I opened the IT Staff SharePoint site and clicked New > List to create a new list*
 
-![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.00.35-PM.png)
+![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.00.35-PM.webp)
 *The "How would you like to start?" dialog appeared — I chose to create a blank List*
 
-![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.00.55-PM.png)
+![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.00.55-PM.webp)
 *I named the new list "Device Requests" and clicked Create*
 
-![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.01.25-PM.png)
+![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.01.25-PM.webp)
 *The empty Device Requests list was created with just a Title column*
 
 ![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.03.02-PM.webp)
@@ -47,34 +47,34 @@ I built a Device Request list in SharePoint Online to let IT staff submit reques
 ![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.19.31-PM.webp)
 *I published the customised form back to SharePoint*
 
-![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.21.28-PM.png)
+![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.21.28-PM.webp)
 *The Device Requests list was ready with the published form*
 
 ![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.22.05-PM.webp)
 *I clicked Add new item and the custom form opened — the Status field was greyed out as intended*
 
-![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.22.19-PM.png)
+![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.22.19-PM.webp)
 *The "New Laptop" request appeared in the list with a cost of $2,000 and Status set to Pending*
 
-![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.24.45-PM.png)
+![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.24.45-PM.webp)
 *I opened the Integrate menu and selected Workflows to add a Power Automate flow*
 
-![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.25.09-PM.png)
+![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.25.09-PM.webp)
 *The Workflows panel opened showing available workflow templates*
 
-![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.25.31-PM.png)
+![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.25.31-PM.webp)
 *I created a new workflow and selected SharePoint > "A list item is created" as the trigger*
 
-![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.26.15-PM.png)
+![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.26.15-PM.webp)
 *The trigger was set to fire when Device Requests items are created — I chose to build the action in Power Automate for more options*
 
-![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.26.25-PM.png)
+![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.26.25-PM.webp)
 *A dialog confirmed I'd be taken to Power Automate to build the full workflow*
 
 ![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.27.37-PM.webp)
 *Power Automate opened with a new flow named "Device Approval Flow" and the SharePoint trigger connectors visible*
 
-![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.28.14-PM.png)
+![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.28.14-PM.webp)
 *I configured the trigger with the IT Staff site and Device Requests list*
 
 ![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.29.11-PM.webp)
@@ -95,7 +95,7 @@ I built a Device Request list in SharePoint Online to let IT staff submit reques
 ![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.33.32-PM.webp)
 *I returned to the list and submitted a new request for a "New iPhone" at $1,500*
 
-![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.33.44-PM.png)
+![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.33.44-PM.webp)
 *The list now showed both requests — New Laptop and New iPhone — each with Pending status*
 
 ![](assets/images/sharepointdevicerequest/Screenshot-2026-05-02-at-4.34.56-PM.webp)

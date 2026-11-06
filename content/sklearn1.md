@@ -104,10 +104,10 @@ A: Not here yet. Linear regression has a direct formula for its two numbers, and
 
 Both examples come from the chapter 1 notebook that goes with the book, [01_the_machine_learning_landscape.ipynb](https://github.com/ageron/handson-ml3/blob/main/01_the_machine_learning_landscape.ipynb). I opened it in JupyterLab and ran the setup cells, then Code example 1-1 and the k-Nearest Neighbors version.
 
-![](assets/images/sklearn1/jupyter-code-example-1-1.png)
+![](assets/images/sklearn1/jupyter-code-example-1-1.webp)
 *I ran Code example 1-1: it downloads the life satisfaction data, plots it, and trains a linear regression model*
 
-![](assets/images/sklearn1/jupyter-linear-regression-cyprus.png)
+![](assets/images/sklearn1/jupyter-linear-regression-cyprus.webp)
 *The scatter plot of GDP per capita against life satisfaction, and the linear model's prediction for Cyprus: 6.30*
 
 ![](assets/images/sklearn1/jupyter-knn-cyprus.png)

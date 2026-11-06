@@ -14,7 +14,7 @@ In [Part 13](/posts/claudecode13/) I built my own Claude Code skill, `dv-generat
 
 The plugin is open source (MIT), and Microsoft describes it in [Dataverse Plugin Is Now on the Claude Marketplace](https://devblogs.microsoft.com/powerplatform/dataverse-plugin-claude-marketplace/).
 
-![](assets/images/claudecode16/marketplace.png)
+![](assets/images/claudecode16/marketplace.webp)
 *The Microsoft Dataverse plugin on the Claude marketplace, made by Microsoft, with 2,707 installs when I looked*
 
 ## Installing the plugin
@@ -100,7 +100,7 @@ The `dv-connect` skill first looked for existing PAC CLI sign-ins on my Mac and 
 ![](assets/images/claudecode16/enter-device-code.png)
 *I opened login.microsoft.com/device and entered the code*
 
-![](assets/images/claudecode16/permissions-requested.png)
+![](assets/images/claudecode16/permissions-requested.webp)
 *Microsoft asked me to consent to the Dataverse CLI accessing Dataverse MCP tools and reading my profile*
 
 :::watch-it The consent screen says "unverified"

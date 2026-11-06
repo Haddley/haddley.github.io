@@ -9,7 +9,7 @@ topics: [prompt-flow, visual-studio-code, python-environments, llm-integration]
 tools: [Prompt Flow, Visual Studio Code, Python, LangChain, OpenAI]
 status: current
 checked: "2026-11-06"
-source_hash: "d41f55f90ca1"
+source_hash: "7571450ca187"
 generated_by: gemma4:12b
 ---
 

@@ -24,12 +24,12 @@ Business Central's MCP server authenticates over OAuth, so before turning it on,
 
 I opened Microsoft Entra ID in the Azure portal and used Add, then App registration, to start a new one.
 
-![](assets/images/businesscentralmcpclaudecode/entra-01-app-registration-menu.png)
+![](assets/images/businesscentralmcpclaudecode/entra-01-app-registration-menu.webp)
 *I opened the haddley.com tenant's Overview page and clicked Add, then App registration*
 
 I named it "Business Centrl MCP" — a typo I only noticed after the app was already created, and left uncorrected throughout the rest of this post since it is what actually appears in every later screenshot — set Supported account types to "Multiple Entra ID tenants", and left Redirect URI blank for this screen — that comes next.
 
-![](assets/images/businesscentralmcpclaudecode/entra-02-register-form.png)
+![](assets/images/businesscentralmcpclaudecode/entra-02-register-form.webp)
 *I named the app, chose Multiple Entra ID tenants under Supported account types, and left Redirect URI blank, then clicked Register*
 
 The app was created immediately, with its own Application (client) ID, Object ID, and Directory (tenant) ID.
@@ -83,10 +83,10 @@ Configured permissions then listed both `Financials.ReadWrite.All` against Dynam
 
 Two values from the app's Overview page are needed later, when Claude Code's own MCP configuration is written: the Application (client) ID and the Directory (tenant) ID.
 
-![](assets/images/businesscentralmcpclaudecode/entra-12-client-id.png)
+![](assets/images/businesscentralmcpclaudecode/entra-12-client-id.webp)
 *I copied the Application (client) ID from the Overview page*
 
-![](assets/images/businesscentralmcpclaudecode/entra-13-tenant-id.png)
+![](assets/images/businesscentralmcpclaudecode/entra-13-tenant-id.webp)
 *I copied the Directory (tenant) ID from the same page*
 
 :::no-dumb-questions
@@ -166,7 +166,7 @@ In the project's root folder, I created `.mcp.json`:
 
 Every value in that `args` array traces back to something captured in Parts 1 and 2: `https://mcp.businesscentral.dynamics.com` is the fixed MCP endpoint for Business Central Online; `33418` is the local port `mcp-remote` listens on for the OAuth callback, matching the redirect URI registered in Part 1; `--transport http-only` tells `mcp-remote` to use plain HTTP rather than trying SSE first; the `TenantId` header is the Directory (tenant) ID from Part 1; `EnvironmentName` and `Company` identify the Business Central environment and company to connect to; `ConfigurationName` selects the "Blog Post" MCP configuration created in Part 2, rather than the dynamic default; and `--static-oauth-client-info` supplies the Application (client) ID from Part 1, telling `mcp-remote` which Entra app to authenticate as.
 
-![](assets/images/businesscentralmcpclaudecode/claude-02-mcp-json-config.png)
+![](assets/images/businesscentralmcpclaudecode/claude-02-mcp-json-config.webp)
 *I created .mcp.json in the project root, pointing mcp-remote at the Business Central MCP endpoint with the tenant ID, environment, company, configuration name, and client ID captured in Parts 1 and 2*
 
 ### Confirming the connection

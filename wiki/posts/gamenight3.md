@@ -9,7 +9,7 @@ topics: [web-speech-api, mobile-browser-quirks, graceful-degradation, feature-de
 tools: [Web Speech API, iOS Safari, Amazon Silk, Fire OS, CSS, JavaScript]
 status: current
 checked: "2026-11-05"
-source_hash: "9ee9815d884a"
+source_hash: "0aba3e20deba"
 generated_by: gemma4:12b
 ---
 

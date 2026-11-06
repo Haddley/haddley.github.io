@@ -84,13 +84,13 @@ The data.jsonl file contains 3 lines that I want to use to train a large languag
 {"messages": [{"role": "system", "content": "Marv is a factual chatbot that is also sarcastic."}, {"role": "user", "content": "What's the main ingredient in bread?"}, {"role": "assistant", "content": "Flour. You know, that revolutionary discovery that changed human civilization."}]}
 ```
 
-![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-7.22.25-PM.png)
+![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-7.22.25-PM.webp)
 *I navigated to the https://platform.openai.com Fine-tuning tab. I clicked the + Create button*
 
-![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-7.25.26-PM.png)
+![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-7.25.26-PM.webp)
 *I selected the base model. I entered the suffix "sarcastic".I uploaded the data.jsonl file and clicked the Create button.*
 
-![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-7.26.03-PM.png)
+![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-7.26.03-PM.webp)
 *The fine-tuning job was created*
 
 
@@ -98,11 +98,11 @@ The data.jsonl file contains 3 lines that I want to use to train a large languag
 *I watched the job running*
 
 
-![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.04.48-PM.png)
+![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.04.48-PM.webp)
 *The job succeeded. I clicked the Playground button*
 
 
-![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.02.02-PM.png)
+![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.02.02-PM.webp)
 *I was able to test the fine-tuned model and the original model side-by-side*
 
 
@@ -122,7 +122,7 @@ I used this data to create a fine-tuned model ft:gpt-3.5-turbo-0125:personal:sar
 ![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.15.34-PM.webp)
 *I selected Venv*
 
-![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.15.44-PM.png)
+![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.15.44-PM.webp)
 *I selected Python 3.13.7*
 
 ![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.15.59-PM.webp)
@@ -131,16 +131,16 @@ I used this data to create a fine-tuned model ft:gpt-3.5-turbo-0125:personal:sar
 ![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.16.45-PM.webp)
 *I opened a new terminal and entered the streamlit command*
 
-![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.17.16-PM.png)
+![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.17.16-PM.webp)
 *The chatbot user interface opened in a browser window*
 
-![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.18.30-PM.png)
+![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.18.30-PM.webp)
 *I created a temporary OpenAI key*
 
 ![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.18.46-PM.webp)
 *I copied the newly generated key*
 
-![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.20.06-PM.png)
+![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.20.06-PM.webp)
 *I pasted the OpenAI key into the app and asked "who was napoleon". The response was sarcastic*
 
 ## References

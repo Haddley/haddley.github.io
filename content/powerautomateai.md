@@ -19,10 +19,10 @@ I added an Azure AI Foundry model call to a Power Automate Flow.
 ![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.03.07-PM.webp)
 *I created a new resource group*
 
-![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.04.00-PM.png)
+![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.04.00-PM.webp)
 *Review + create*
 
-![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.04.42-PM.png)
+![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.04.42-PM.webp)
 *Create*
 
 ![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.05.44-PM.webp)
@@ -44,7 +44,7 @@ I added an Azure AI Foundry model call to a Power Automate Flow.
 ![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.08.41-PM.webp)
 *I created a new solution*
 
-![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.09.12-PM.png)
+![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.09.12-PM.webp)
 *I added an environment variable to the solution*
 
 ![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.11.14-PM.webp)
@@ -53,7 +53,7 @@ I added an Azure AI Foundry model call to a Power Automate Flow.
 ![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.12.32-PM.webp)
 *I created the lead qualification foundry api key environment variable*
 
-![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.21.16-PM.png)
+![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.21.16-PM.webp)
 *+New|Table|Tables*
 
 ![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.21.54-PM.webp)
@@ -64,34 +64,34 @@ I added an Azure AI Foundry model call to a Power Automate Flow.
 
 
 
-![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.46.59-PM.png)
+![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.46.59-PM.webp)
 *Lead table is related to (standard) Dataverse Account and Contact tables*
 
 ![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.47.21-PM.webp)
 *I clicked Save and exit*
 
-![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.48.10-PM.png)
+![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.48.10-PM.webp)
 *The solution had one table and two environment variables*
 
-![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.48.41-PM.png)
+![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.48.41-PM.webp)
 *+New|App|Model-driven app*
 
-![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.52.06-PM.png)
+![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.52.06-PM.webp)
 *Create*
 
-![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.52.36-PM.png)
+![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.52.36-PM.webp)
 *+ Add page*
 
-![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.52.50-PM.png)
+![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.52.50-PM.webp)
 *Dataverse table*
 
-![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.53.25-PM.png)
+![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.53.25-PM.webp)
 *Add (Lead)*
 
 ![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.53.47-PM.webp)
 *View new page*
 
-![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.55.41-PM.png)
+![](assets/images/powerautomateai/Screenshot-2026-02-17-at-7.55.41-PM.webp)
 *The app was added to the solution*
 
 ![](assets/images/powerautomateai/Screenshot-2026-02-18-at-2.20.08-PM.webp)
@@ -189,7 +189,7 @@ body('Parse_Result_(Parse_JSON)')?['explanation']
 body('Parse_Result_(Parse_JSON)')?['score']
 ```
 
-![](assets/images/powerautomateai/Screenshot-2026-02-18-at-6.49.23-PM.png)
+![](assets/images/powerautomateai/Screenshot-2026-02-18-at-6.49.23-PM.webp)
 *I used the model driven app to manually update the Description column value*
 
 ![](assets/images/powerautomateai/Screenshot-2026-02-18-at-6.50.26-PM.webp)

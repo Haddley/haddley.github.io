@@ -9,7 +9,7 @@ topics: [rag-architecture, local-llm-deployment, legal-tech, vector-embeddings, 
 tools: [Ollama, Docker, pypdf, PostgreSQL, pgvector, Python]
 status: current
 checked: "2026-11-05"
-source_hash: "9b22d49c4685"
+source_hash: "023e913389a1"
 generated_by: gemma4:12b
 ---
 

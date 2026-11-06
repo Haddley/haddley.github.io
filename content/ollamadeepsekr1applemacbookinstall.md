@@ -22,10 +22,10 @@ The 70 billion parameter variant generated output in approximately 1 minute 28 s
 ![](assets/images/ollamadeepsekr1applemacbookinstall/screenshot202025-05-2320at2012.49.15e280afpm-2136x772.png)
 *https://ollama.com/download*
 
-![](assets/images/ollamadeepsekr1applemacbookinstall/screenshot202025-05-2320at2012.51.16e280afpm-1108x688.png)
+![](assets/images/ollamadeepsekr1applemacbookinstall/screenshot202025-05-2320at2012.51.16e280afpm-1108x688.webp)
 *I clicked Open*
 
-![](assets/images/ollamadeepsekr1applemacbookinstall/screenshot202025-05-2320at2012.51.23e280afpm-1060x604.png)
+![](assets/images/ollamadeepsekr1applemacbookinstall/screenshot202025-05-2320at2012.51.23e280afpm-1060x604.webp)
 *I clicked Move to Applications*
 
 ![](assets/images/ollamadeepsekr1applemacbookinstall/screenshot202025-05-2320at201.00.00e280afpm-2136x1162.png)
@@ -50,7 +50,7 @@ The 70 billion parameter variant generated output in approximately 1 minute 28 s
 ![](assets/images/ollamadeepsekr1applemacbookinstall/screenshot202025-05-2320at201.31.24e280afpm-1110x746.png)
 *ollama run deepseek-r1:7b --verbose*
 
-![](assets/images/ollamadeepsekr1applemacbookinstall/screenshot202025-05-2320at201.29.57e280afpm-1748x1544.png)
+![](assets/images/ollamadeepsekr1applemacbookinstall/screenshot202025-05-2320at201.29.57e280afpm-1748x1544.webp)
 *M2 processor 16 GB of unified memory*
 
 **14B Model:** Suited for enterprise-grade applications such as advanced chatbots, research tools, and code assistants.
@@ -58,7 +58,7 @@ The 70 billion parameter variant generated output in approximately 1 minute 28 s
 ![](assets/images/ollamadeepsekr1applemacbookinstall/501048925-1408883290959735-9110886994771392643-n-1140x746.png)
 *ollama run deepseek-r1:14b --verbose*
 
-![](assets/images/ollamadeepsekr1applemacbookinstall/494814422-1859512331511522-7881506198410234900-n-1932x1528.png)
+![](assets/images/ollamadeepsekr1applemacbookinstall/494814422-1859512331511522-7881506198410234900-n-1932x1528.webp)
 *M4 processor 32 GB of unified memory*
 
 **32B Model:** Suited for applications prioritising accuracy over speed, such as advanced research or long-form content.
@@ -66,7 +66,7 @@ The 70 billion parameter variant generated output in approximately 1 minute 28 s
 ![](assets/images/ollamadeepsekr1applemacbookinstall/494362500-1880696412691727-7219409545231194829-n-1138x738.png)
 *ollama run deepseek-r1:32b --verbose*
 
-![](assets/images/ollamadeepsekr1applemacbookinstall/494822610-2106330209879656-3127600083050725665-n-1938x1534.png)
+![](assets/images/ollamadeepsekr1applemacbookinstall/494822610-2106330209879656-3127600083050725665-n-1938x1534.webp)
 *M4 processor 32 GB of unified memory*
 
 ![](assets/images/ollamadeepsekr1applemacbookinstall/screenshot202025-06-2820at2011.34.0420am-587x373.png)

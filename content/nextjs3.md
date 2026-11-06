@@ -14,7 +14,7 @@ image: "/assets/images/nextjs3/2560px-nextjs-logo.svg-1536x920.png"
 
 I used API routes to create API endpoints inside a Next.js app. I added a file to the `/pages/api` directory to create each endpoint.
 
-![](assets/images/nextjs3/screen-shot-2021-11-07-at-11.01.17-am-1646x784.png)
+![](assets/images/nextjs3/screen-shot-2021-11-07-at-11.01.17-am-1646x784.webp)
 *Get Request*
 
 
@@ -101,7 +101,7 @@ I added "Sign In" and "Sign Out" buttons to the home page.
 ![](assets/images/nextjs3/screen-shot-2021-11-08-at-7.15.26-pm-1536x803.png)
 *Signed in*
 
-![](assets/images/nextjs3/screen-shot-2021-11-08-at-7.15.44-pm-1536x802.png)
+![](assets/images/nextjs3/screen-shot-2021-11-08-at-7.15.44-pm-1536x802.webp)
 *authorized*
 
 ![](assets/images/nextjs3/screen-shot-2021-11-08-at-7.15.55-pm-1536x804.png)
@@ -115,10 +115,10 @@ I added "Sign In" and "Sign Out" buttons to the home page.
 
 Specifying a database is optional — if I didn't need to persist user data or support email sign-in, JSON Web Tokens would be used for session storage instead. To specify a database, I updated the `[...nextauth].js` file and the relevant environment variables.
 
-![](assets/images/nextjs3/screen-shot-2021-11-11-at-6.59.22-am-1836x1204.png)
+![](assets/images/nextjs3/screen-shot-2021-11-11-at-6.59.22-am-1836x1204.webp)
 *accounts*
 
-![](assets/images/nextjs3/screen-shot-2021-11-11-at-7.02.27-am-1836x1196.png)
+![](assets/images/nextjs3/screen-shot-2021-11-11-at-7.02.27-am-1836x1196.webp)
 *users*
 
 ![](assets/images/nextjs3/screen-shot-2021-11-11-at-10.12.00-am-1836x986.png)

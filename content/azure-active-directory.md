@@ -84,7 +84,7 @@ I tested the who-am-i web application by navigating to http://localhost:3000
 ![](assets/images/azure-active-directory/screen-shot-2021-03-31-at-9.31.03-pm-1836x982.png)
 *After I entered my credentials...*
 
-![](assets/images/azure-active-directory/screen-shot-2021-03-31-at-9.31.24-pm-1836x983.png)
+![](assets/images/azure-active-directory/screen-shot-2021-03-31-at-9.31.24-pm-1836x983.webp)
 *...I was asked to consent to passing my details to the "who am i" application.*
 
 ![](assets/images/azure-active-directory/screen-shot-2021-03-31-at-9.31.40-pm-1836x977.png)

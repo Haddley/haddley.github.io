@@ -110,19 +110,19 @@ A: They are still widely used, and the ideas behind them, such as skip connectio
 
 The chapter is in the notebook that goes with the book, [14_deep_computer_vision_with_cnns.ipynb](https://github.com/ageron/handson-ml3/blob/main/14_deep_computer_vision_with_cnns.ipynb). I ran everything before the exercise solutions. It took about 75 minutes on my Mac Studio, most of it training the flower classifier, and it downloaded the pretrained ResNet50 and Xception weights and the flower pictures. Then I looked through the results in JupyterLab.
 
-![](assets/images/sklearn14/jupyter-feature-maps.png)
+![](assets/images/sklearn14/jupyter-feature-maps.webp)
 *A convolutional layer with random filters, before any training: each filter gives a new grey picture of the same photo, and even these random ones pick out edges*
 
-![](assets/images/sklearn14/jupyter-handmade-filters.png)
+![](assets/images/sklearn14/jupyter-handmade-filters.webp)
 *Two filters made by hand: the first, a vertical line, keeps vertical edges such as the pillars; the second, a horizontal line, keeps horizontal ones*
 
-![](assets/images/sklearn14/jupyter-max-pool.png)
+![](assets/images/sklearn14/jupyter-max-pool.webp)
 *Max pooling: the output is half the width and half the height of the input, and the main shapes survive*
 
-![](assets/images/sklearn14/jupyter-fashion-cnn.png)
+![](assets/images/sklearn14/jupyter-fashion-cnn.webp)
 *Training the CNN on Fashion MNIST: after 10 passes, 92.9% of the training pictures and 90.9% of the validation pictures are right, and 90.5% of the test pictures*
 
-![](assets/images/sklearn14/jupyter-resnet-predictions.png)
+![](assets/images/sklearn14/jupyter-resnet-predictions.webp)
 *The pretrained ResNet50 on the two sample photos: it calls the building a palace, and the flower a vase*
 
 ![](assets/images/sklearn14/jupyter-flowers.webp)

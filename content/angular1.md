@@ -55,7 +55,7 @@ I started running the new Angular project by changing to the project directory a
 ![](assets/images/angular1/screen-shot-2022-06-18-at-5.43.39-pm-1176x740.png)
 *The app was running on localhost:4200*
 
-![](assets/images/angular1/screen-shot-2022-06-18-at-5.44.14-pm-1836x1119.png)
+![](assets/images/angular1/screen-shot-2022-06-18-at-5.44.14-pm-1836x1119.webp)
 *The out-of-the-box home page*
 
 
@@ -70,7 +70,7 @@ The **app.component.html** file is the component's html template.
 The **app.component.spec.ts** file is used for testing.
 The **app.component.ts** file is the component's TypeScript code.
 
-![](assets/images/angular1/screen-shot-2022-06-18-at-5.47.55-pm-1836x862.png)
+![](assets/images/angular1/screen-shot-2022-06-18-at-5.47.55-pm-1836x862.webp)
 *app.component.html is the home page component's template*
 
 ![](assets/images/angular1/screen-shot-2022-06-18-at-5.49.06-pm-1836x853.png)
@@ -120,7 +120,7 @@ I used "ng generate" component to add a header component (in a "components" fold
 % ng generate component components/header
 ```
 
-![](assets/images/angular1/screen-shot-2022-06-18-at-5.55.46-pm-1836x855.png)
+![](assets/images/angular1/screen-shot-2022-06-18-at-5.55.46-pm-1836x855.webp)
 *I ran ng generate*
 
 ![](assets/images/angular1/screen-shot-2022-06-18-at-5.56.41-pm-1836x855.png)

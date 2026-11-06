@@ -61,7 +61,7 @@ I created a Jupyter Notebook to keep track of the steps I followed.
 ![](assets/images/langchain/screen-shot-2023-07-21-at-7.54.08-pm-1536x982.png)
 *I loaded pages from the medical report.*
 
-![](assets/images/langchain/screen-shot-2023-07-21-at-7.57.22-pm-1536x997.png)
+![](assets/images/langchain/screen-shot-2023-07-21-at-7.57.22-pm-1536x997.webp)
 *I broke the pages into paragraphs (texts).*
 
 
@@ -72,7 +72,7 @@ I used Chroma to create an [embeddings](/posts/sentencesimilarity/) vector store
 ![](assets/images/langchain/screen-shot-2023-07-21-at-7.59.26-pm-1536x1033.png)
 *I used OpenAI's API to generate the embeddings*
 
-![](assets/images/langchain/screen-shot-2023-07-21-at-8.03.05-pm-1536x842.png)
+![](assets/images/langchain/screen-shot-2023-07-21-at-8.03.05-pm-1536x842.webp)
 *I converted the query 'Does the patient smoke?' to an embedding and compared the result with the embeddings in the vector store.*
 
 ![](assets/images/langchain/screen-shot-2023-07-21-at-8.05.23-pm-1536x784.png)

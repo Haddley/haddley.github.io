@@ -8,7 +8,7 @@ topics: [asp-net-core, react-frontend, spa-templates, sqlite-database]
 tools: [Visual Studio, ASP.NET Core, React, sqlitebrowser, dotnet CLI]
 status: current
 checked: "2026-11-06"
-source_hash: "df088507bb92"
+source_hash: "e74e9e4bc03d"
 generated_by: gemma4:12b
 ---
 

@@ -9,7 +9,7 @@ topics: [spring-boot, rest-api, json-serialization, static-content-serving]
 tools: [Spring Boot, Spring Tool Suite, Maven, React, Java]
 status: current
 checked: "2026-11-06"
-source_hash: "b6419cc720cf"
+source_hash: "14681e1fb7c8"
 generated_by: gemma4:12b
 ---
 

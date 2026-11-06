@@ -9,7 +9,7 @@ topics: [business-central, copilot-experience, prompt-dialog, al-programming]
 tools: [Business Central, Azure OpenAI, AL Language]
 status: current
 checked: "2026-11-06"
-source_hash: "9f2cf47f8714"
+source_hash: "ccfcabe06bbf"
 generated_by: gemma4:12b
 ---
 

@@ -56,7 +56,7 @@ The policy-gradient agent learned fastest and most steadily, which is not what I
 Each deep Q-network (DQN) run kept a copy of its best weights and restored them at the end, because the learning curve falls off a cliff. The fixed-targets agent reached the top score of 200 steps for a long run, from about episode 360 to 480, and then slid to about 10 steps per game by episode 600, where it was no better than random. Training longer did not make it better. That is why the notebook saves the best weights.
 :::
 
-![](assets/images/sklearn18/jupyter-policy-gradient.png)
+![](assets/images/sklearn18/jupyter-policy-gradient.webp)
 *The policy-gradient training loop: it plays 10 games per update, and the average reward after the last of 150 updates was 190.9*
 
 ## What training means here
@@ -104,19 +104,19 @@ The chapter is in the notebook that goes with the book, [18_reinforcement_learni
 ![](assets/images/sklearn18/jupyter-cartpole.png)
 *The CartPole environment: a cart on a rail, with a pole standing up on it*
 
-![](assets/images/sklearn18/jupyter-q-values.png)
+![](assets/images/sklearn18/jupyter-q-values.webp)
 *Q-value iteration on a world of three states: the Q-values settle, and the best action in each state is 0, 0, and 1*
 
-![](assets/images/sklearn18/jupyter-dqn-curve.png)
+![](assets/images/sklearn18/jupyter-dqn-curve.webp)
 *The deep Q-network's reward for each of 600 episodes: it climbs, reaches 200, and then falls back to about 115*
 
-![](assets/images/sklearn18/jupyter-fixed-targets-curve.png)
+![](assets/images/sklearn18/jupyter-fixed-targets-curve.webp)
 *With fixed Q-value targets: a long run at the top score of 200, and then a collapse, ending near zero*
 
-![](assets/images/sklearn18/jupyter-double-dqn-curve.png)
+![](assets/images/sklearn18/jupyter-double-dqn-curve.webp)
 *Double DQN: long runs at 200, interrupted by drops, and a poor finish*
 
-![](assets/images/sklearn18/jupyter-dueling-curve.png)
+![](assets/images/sklearn18/jupyter-dueling-curve.webp)
 *Dueling double DQN: it reaches 200 again and again through the last 350 episodes, with dips between, and ended the run at 111 steps*
 
 :::bullet-points Reinforcement learning, in short

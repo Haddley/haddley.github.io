@@ -116,7 +116,7 @@ Every machine starts from random numbers and practises on randomly chosen snippe
 The same design landed anywhere in a band about 0.007 wide. So a difference smaller than that could just be luck.
 
 
-![](assets/images/minigpt4/p5-seeds.png)
+![](assets/images/minigpt4/p5-seeds.webp)
 *The four extra runs, as they finished. The table uses each run's best exam score, the same rule as every other score in this series*
 
 ### What actually matters
@@ -135,7 +135,7 @@ These results are for a 12.6-million-number machine on 20 million letters of sim
 
 And the writing? It reads like Part 4's machine. Tim has a toy car, then a tank, and the tank stays the subject through to the end:
 
-![](assets/images/minigpt4/generation.png)
+![](assets/images/minigpt4/generation.webp)
 *The new-block machine continuing "Once upon a time"*
 
 A better block at this size buys a small, measurable drop in bits per byte, not a jump you can see in the stories.
@@ -279,7 +279,7 @@ python train_llama.py --tag modern_seed2 --seed 2
 python train_llama.py --tag gelu_seed2   --seed 2 --mlp gelu
 ```
 
-![](assets/images/minigpt4/ablation-runs.png)
+![](assets/images/minigpt4/ablation-runs.webp)
 *The five runs. Every machine is close in size except the one with full keys and values, which adds back 1.2 million numbers*
 
 ![](assets/images/minigpt4/notebook-training.png)
@@ -291,7 +291,7 @@ python train_llama.py --tag gelu_seed2   --seed 2 --mlp gelu
 
 - **The follow-along notebook:** [`part5-modern-block/minigpt_follow_along_5.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part5-modern-block/minigpt_follow_along_5.ipynb), for Jupyter on a Mac with Apple Silicon. It builds each machine and counts its numbers, shows RoPE's turning in action, trains the new block, and writes. It is saved with the outputs from my own run, so you can read every result on GitHub without a Mac.
 
-![](assets/images/minigpt4/notebook-top.png)
+![](assets/images/minigpt4/notebook-top.webp)
 *The notebook open in Jupyter on my Mac, with the outputs saved from my run*
 
 - **On the command line,** after Part 3's `prepare_data.py` and `tokenizers_setup.py`:

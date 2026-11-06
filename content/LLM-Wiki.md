@@ -67,35 +67,35 @@ When I say "lint":
 5. Suggest questions to investigate next
 ````
 
-![Obsidian graph view showing interconnected wiki pages and source documents](assets/images/LLMWiki/Screenshot-2026-04-20-at-5.01.11-PM.png)
+![Obsidian graph view showing interconnected wiki pages and source documents](assets/images/LLMWiki/Screenshot-2026-04-20-at-5.01.11-PM.webp)
 *I opened the Obsidian graph view showing the knowledge base with all the interconnected wiki pages and source documents*
 
-![Claude Code prompt asking to compare case to Dog Attack in Sydney Park](assets/images/LLMWiki/Screenshot-2026-04-20-at-5.04.06-PM.png)
+![Claude Code prompt asking to compare case to Dog Attack in Sydney Park](assets/images/LLMWiki/Screenshot-2026-04-20-at-5.04.06-PM.webp)
 *I asked Claude Code to compare my case to a similar Dog Attack case I had ingested into the wiki*
 
-![Claude Code reading wiki pages to build the case comparison](assets/images/LLMWiki/Screenshot-2026-04-20-at-5.04.22-PM.png)
+![Claude Code reading wiki pages to build the case comparison](assets/images/LLMWiki/Screenshot-2026-04-20-at-5.04.22-PM.webp)
 *Claude Code read the relevant wiki pages and began building the comparison*
 
 ![Claude Code comparison table showing parallels between the two dog attack cases](assets/images/LLMWiki/Screenshot-2026-04-20-at-5.04.40-PM.webp)
 *Claude Code produced a detailed side-by-side comparison table highlighting the strong parallels between the two cases*
 
-![Claude Code prompt to draft a Rule 5.2 summons and affidavit](assets/images/LLMWiki/Screenshot-2026-04-20-at-5.10.10-PM.png)
+![Claude Code prompt to draft a Rule 5.2 summons and affidavit](assets/images/LLMWiki/Screenshot-2026-04-20-at-5.10.10-PM.webp)
 *I asked Claude Code to draft a Rule 5.2 summons and affidavit using the ingested legal precedents and case details*
 
 ![Claude Code editing the summons draft, updating dates and adding statutory references](assets/images/LLMWiki/Screenshot-2026-04-20-at-5.14.31-PM.webp)
 *Claude Code edited the draft, updating dates and inserting the relevant Companion Animals Act provisions*
 
-![Preview of the affidavit showing the Relief Sought section](assets/images/LLMWiki/Screenshot-2026-04-20-at-5.16.28-PM.png)
+![Preview of the affidavit showing the Relief Sought section](assets/images/LLMWiki/Screenshot-2026-04-20-at-5.16.28-PM.webp)
 *I previewed the affidavit — the Relief Sought section asked the council to disclose the dog owner's registered residential address*
 
-![Preview of the summons addressed to Central Coast Council](assets/images/LLMWiki/Screenshot-2026-04-20-at-5.17.32-PM.png)
+![Preview of the summons addressed to Central Coast Council](assets/images/LLMWiki/Screenshot-2026-04-20-at-5.17.32-PM.webp)
 *The completed summons addressed to Central Coast Council, citing Rule 5.2 of the Uniform Civil Procedure Rules 2005*
 
 ```PROMPT
 I just added a new article to raw/[2024] NSWDC 602.docx Please ingest it.
 ```
 
-![Claude Code open in VS Code with the ingest prompt typed into the input field](assets/images/LLMWiki/Screenshot-2026-04-21-at-11.57.08-AM.png)
+![Claude Code open in VS Code with the ingest prompt typed into the input field](assets/images/LLMWiki/Screenshot-2026-04-21-at-11.57.08-AM.webp)
 *I typed the ingest prompt into Claude Code, asking it to process the newly added NSWDC 602 article*
 
 ![Claude Code displaying key takeaways from Hardy v Eclipse K9 Security Pty Ltd 2024 NSWDC 602](assets/images/LLMWiki/Screenshot-2026-04-21-at-11.58.20-AM.webp)

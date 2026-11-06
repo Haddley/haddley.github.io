@@ -8,7 +8,7 @@ topics: [power-apps-connectors, rest-api-development, openapi-specifications, as
 tools: [GitHub, Visual Studio Code, ASP.NET Core, Swagger, Azure, API Transformer]
 status: current
 checked: "2026-11-06"
-source_hash: "e00eccf2d64a"
+source_hash: "6636572fd345"
 generated_by: gemma4:12b
 ---
 

@@ -16,47 +16,47 @@ Here I took a different approach: a standalone canvas app calls a Power Automate
 ![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-2.19.01-PM.webp)
 *I created a new Power Automate solution called "Device Request Solution" to contain the flow and canvas app*
 
-![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-2.19.52-PM.png)
+![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-2.19.52-PM.webp)
 *I clicked New > Automation > Cloud flow and selected Instant to create a new instant cloud flow*
 
 ![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-2.20.31-PM.webp)
 *I named the flow "Submit Device Request" and chose "When Power Apps calls a flow (V2)" as the trigger*
 
-![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-2.21.50-PM.png)
+![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-2.21.50-PM.webp)
 *The flow opened with the Power Apps (V2) trigger — I clicked "Add an input" to define the data the canvas app would pass in*
 
-![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-2.22.39-PM.png)
+![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-2.22.39-PM.webp)
 *The input type picker appeared — I selected Text for the device description*
 
-![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-2.23.55-PM.png)
+![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-2.23.55-PM.webp)
 *I named the first input "Title" with the placeholder "Enter device description", then clicked Add an input again to add a second field*
 
-![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-2.24.25-PM.png)
+![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-2.24.25-PM.webp)
 *I added a second Number input named "Price" with the placeholder "Enter device price"*
 
 ![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-2.29.21-PM.webp)
 *I added a new step, searched for "get my profile", and selected "Get my profile (V2)" from Office 365 Users to retrieve the submitter's details*
 
-![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-2.31.53-PM.png)
+![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-2.31.53-PM.webp)
 *I added another step and searched for "email" to find the Office 365 Outlook connector*
 
-![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-2.32.54-PM.png)
+![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-2.32.54-PM.webp)
 *I searched for "send an" within Office 365 Outlook and selected "Send an email (V2)"*
 
 ![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-2.35.14-PM.webp)
 *I configured the email action with the user's Mail address from Get my profile as the recipient, the subject "Your device request has been submitted", and the body referencing the Title input*
 
-![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-2.58.01-PM.png)
+![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-2.58.01-PM.webp)
 *Back in the flow, I searched for "respond" and selected "Respond to a Power App or flow" so the flow could return a result to the canvas app*
 
 
-![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-2.58.23-PM.png)
+![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-2.58.23-PM.webp)
 *The "Respond to a Power App or flow" step was added as the last action in the flow*
 
-![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-3.00.43-PM.png)
+![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-3.00.43-PM.webp)
 *The completed flow showed all four steps connected: Power Apps trigger, Get my profile, Send an email, and Respond to Power App*
 
-![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-2.50.31-PM.png)
+![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-2.50.31-PM.webp)
 *I returned to the solution and clicked New > App > Canvas app to build the submission form*
 
 ![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-2.51.17-PM.webp)
@@ -69,19 +69,19 @@ Here I took a different approach: a standalone canvas app calls a Power Automate
 ![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-3.58.07-PM.webp)
 *The Submit button's OnSelect formula called the flow with the Title and Price inputs, displayed the success notification, and reset both text fields*
 
-![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-3.26.01-PM.png)
+![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-3.26.01-PM.webp)
 *I opened the IT Staff SharePoint home page in edit mode and clicked the + button to add a new web part*
 
-![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-3.26.22-PM.png)
+![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-3.26.22-PM.webp)
 *I searched for "Power" in the web part picker and selected Microsoft PowerApps (Preview)*
 
 ![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-3.26.51-PM.webp)
 *I published the Device Request App from Power Apps Studio so it could be embedded in SharePoint*
 
-![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-3.28.18-PM.png)
+![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-3.28.18-PM.webp)
 *The app details page showed the web link and a mobile QR code for the Device Request App*
 
-![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-3.29.44-PM.png)
+![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-3.29.44-PM.webp)
 *A permissions dialog appeared asking me to allow the Device Request App to access Office 365 data — I clicked Allow*
 
 
@@ -98,7 +98,7 @@ Here I took a different approach: a standalone canvas app calls a Power Automate
 ![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-3.31.18-PM.webp)
 *The Power Automate flow run history showed two successful runs of the Submit Device Request flow*
 
-![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-3.31.38-PM.png)
+![](assets/images/sharepointdevicerequest2/Screenshot-2026-05-04-at-3.31.38-PM.webp)
 *Each step in the flow completed successfully — the run finished in under a second*
 
 

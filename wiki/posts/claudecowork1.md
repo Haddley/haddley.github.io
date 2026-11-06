@@ -9,7 +9,7 @@ topics: [claude-cowork, deposition-summaries, skill-integration, legal-tech]
 tools: [Claude Cowork, Claude Code, PDF]
 status: current
 checked: "2026-11-05"
-source_hash: "372669d1d176"
+source_hash: "98a592c5b76b"
 generated_by: gemma4:12b
 ---
 

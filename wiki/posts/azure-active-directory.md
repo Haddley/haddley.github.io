@@ -9,7 +9,7 @@ topics: [azure-active-directory, identity-management, guest-user-access, app-reg
 tools: [Microsoft Office 365, Microsoft SharePoint, Microsoft Teams, Azure Portal, Node.js]
 status: current
 checked: "2026-11-05"
-source_hash: "e798b60537b8"
+source_hash: "5e81fbecd71f"
 generated_by: gemma4:12b
 ---
 

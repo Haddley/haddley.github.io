@@ -8,7 +8,7 @@ topics: [graphql-api, data-fetching, schema-design, mutation-vs-query]
 tools: [Node.js, Express, express-graphql, React, Apollo, GraphiQL]
 status: current
 checked: "2026-11-05"
-source_hash: "47568a661bcb"
+source_hash: "807da0b1b39c"
 generated_by: gemma4:12b
 ---
 

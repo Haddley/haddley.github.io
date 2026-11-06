@@ -9,7 +9,7 @@ topics: ["analytics-integration", "google-ads-experimentation", "event-tracking"
 tools: ["GA4", "Google Ads", "PeerJS", "Buy Me a Coffee"]
 status: current
 checked: "2026-11-06"
-source_hash: "8894981679e9"
+source_hash: "9bf71bf75929"
 generated_by: gemma4:12b
 ---
 

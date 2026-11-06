@@ -19,7 +19,7 @@ To create a PowerApps Azure Active Directory Custom Connector I needed to provid
 Client secret**; and
 **Resource URL**
 
-![](assets/images/customconnectorsappregistrations/screen-shot-2021-08-08-at-10.32.46-am-1836x1170.png)
+![](assets/images/customconnectorsappregistrations/screen-shot-2021-08-08-at-10.32.46-am-1836x1170.webp)
 *I reviewed the Custom Connector OAuth 2.0 Active Directory settings*
 
 
@@ -192,7 +192,7 @@ The generated "Value" is the **Client secret** I needed to create the custom con
 ![](assets/images/customconnectorsappregistrations/screen-shot-2021-08-09-at-6.39.13-pm-1836x1237.png)
 *The /api/ path returns identity information*
 
-![](assets/images/customconnectorsappregistrations/screen-shot-2021-08-09-at-6.39.29-pm-1836x1234.png)
+![](assets/images/customconnectorsappregistrations/screen-shot-2021-08-09-at-6.39.29-pm-1836x1234.webp)
 *The action request was described*
 
 ![](assets/images/customconnectorsappregistrations/screen-shot-2021-08-09-at-6.39.37-pm-1054x444.png)
@@ -204,7 +204,7 @@ The generated "Value" is the **Client secret** I needed to create the custom con
 ![](assets/images/customconnectorsappregistrations/screen-shot-2021-08-09-at-6.40.56-pm-1836x526.png)
 *I clicked the tick to create the custom connector*
 
-![](assets/images/customconnectorsappregistrations/screen-shot-2021-08-09-at-6.41.39-pm-1836x1235.png)
+![](assets/images/customconnectorsappregistrations/screen-shot-2021-08-09-at-6.41.39-pm-1836x1235.webp)
 *I clicked the + New connection link to create a new connection*
 
 ![](assets/images/customconnectorsappregistrations/screen-shot-2021-08-09-at-6.41.50-pm-1836x556.png)
@@ -219,7 +219,7 @@ The generated "Value" is the **Client secret** I needed to create the custom con
 ![](assets/images/customconnectorsappregistrations/screen-shot-2021-08-09-at-6.43.15-pm-1836x592.png)
 *The connection was created*
 
-![](assets/images/customconnectorsappregistrations/screen-shot-2021-08-09-at-8.06.57-pm-1836x1032.png)
+![](assets/images/customconnectorsappregistrations/screen-shot-2021-08-09-at-8.06.57-pm-1836x1032.webp)
 *I tested the operation*
 
 ![](assets/images/customconnectorsappregistrations/screen-shot-2021-08-09-at-6.43.39-pm-1836x1238.png)
@@ -231,7 +231,7 @@ The generated "Value" is the **Client secret** I needed to create the custom con
 ![](assets/images/customconnectorsappregistrations/screen-shot-2021-08-09-at-6.44.18-pm-896x540.png)
 *I selected the Identity connection*
 
-![](assets/images/customconnectorsappregistrations/screen-shot-2021-08-09-at-6.44.45-pm-1836x1235.png)
+![](assets/images/customconnectorsappregistrations/screen-shot-2021-08-09-at-6.44.45-pm-1836x1235.webp)
 *I noticed that using the Identity Connection requires a Premium PowerApps license*
 
 ![](assets/images/customconnectorsappregistrations/screen-shot-2021-08-09-at-6.45.42-pm-1836x642.png)

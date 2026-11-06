@@ -14,10 +14,10 @@ I started by creating a "Microsoft Graph" application registration in Azure Acti
 ![](assets/images/powerapps6/screen-shot-2022-07-04-at-3.40.29-pm-1836x1351.png)
 *Azure Active Directory - I created an application registration*
 
-![](assets/images/powerapps6/screen-shot-2022-07-04-at-3.41.31-pm-1836x930.png)
+![](assets/images/powerapps6/screen-shot-2022-07-04-at-3.41.31-pm-1836x930.webp)
 *I copied the Application (client) ID to be used later.*
 
-![](assets/images/powerapps6/screen-shot-2022-07-04-at-3.42.08-pm-1836x1037.png)
+![](assets/images/powerapps6/screen-shot-2022-07-04-at-3.42.08-pm-1836x1037.webp)
 *I created a new client secret*
 
 ![](assets/images/powerapps6/screen-shot-2022-07-04-at-3.43.08-pm-1836x832.png)
@@ -26,25 +26,25 @@ I started by creating a "Microsoft Graph" application registration in Azure Acti
 ![](assets/images/powerapps6/screen-shot-2022-07-04-at-3.43.41-pm-1836x830.png)
 *I copied the Client Secret's Value to be used later.*
 
-![](assets/images/powerapps6/screen-shot-2022-07-04-at-3.44.38-pm-1836x991.png)
+![](assets/images/powerapps6/screen-shot-2022-07-04-at-3.44.38-pm-1836x991.webp)
 *I selected the "API permissions" link*
 
-![](assets/images/powerapps6/screen-shot-2022-07-04-at-3.45.22-pm-1836x1107.png)
+![](assets/images/powerapps6/screen-shot-2022-07-04-at-3.45.22-pm-1836x1107.webp)
 *I selected the "Add a permission" link*
 
-![](assets/images/powerapps6/screen-shot-2022-07-04-at-3.45.43-pm-1836x1220.png)
+![](assets/images/powerapps6/screen-shot-2022-07-04-at-3.45.43-pm-1836x1220.webp)
 *I selected the "Microsoft Graph" button*
 
-![](assets/images/powerapps6/screen-shot-2022-07-04-at-3.51.26-pm-1836x1150.png)
+![](assets/images/powerapps6/screen-shot-2022-07-04-at-3.51.26-pm-1836x1150.webp)
 *I selected the "Calendars.Read" and the "Calendars.Read.Shared" permissions (scopes)*
 
-![](assets/images/powerapps6/screen-shot-2022-07-04-at-3.51.44-pm-1836x1070.png)
+![](assets/images/powerapps6/screen-shot-2022-07-04-at-3.51.44-pm-1836x1070.webp)
 *I clicked the "Grant admin consent for ..." link*
 
 ![](assets/images/powerapps6/screen-shot-2022-07-04-at-3.52.00-pm-1836x542.png)
 *I granted consent*
 
-![](assets/images/powerapps6/screen-shot-2022-07-04-at-3.53.02-pm-1836x1112.png)
+![](assets/images/powerapps6/screen-shot-2022-07-04-at-3.53.02-pm-1836x1112.webp)
 *I navigated to the Custom Connectors tab and clicked the "+ New custom connector" link*
 
 ![](assets/images/powerapps6/screen-shot-2022-07-04-at-3.53.24-pm-1836x1108.png)
@@ -59,7 +59,7 @@ I started by creating a "Microsoft Graph" application registration in Azure Acti
 ![](assets/images/powerapps6/screen-shot-2022-07-04-at-3.58.27-pm-1836x1110.png)
 *I selected Azure Active Directory. I entered the Application (client) id and Client secret values I copied earlier.*
 
-![](assets/images/powerapps6/screen-shot-2022-07-04-at-3.59.50-pm-1836x1104.png)
+![](assets/images/powerapps6/screen-shot-2022-07-04-at-3.59.50-pm-1836x1104.webp)
 *I copied the generated "Redirect URL".*
 
 ![](assets/images/powerapps6/screen-shot-2022-07-04-at-4.10.03-pm-1836x736.png)
@@ -74,7 +74,7 @@ I started by creating a "Microsoft Graph" application registration in Azure Acti
 ![](assets/images/powerapps6/screen-shot-2022-07-04-at-4.11.00-pm-1836x1109.png)
 *I entered the (copied) Redirect URL and clicked the configure button*
 
-![](assets/images/powerapps6/screen-shot-2022-07-04-at-4.00.15-pm-1836x829.png)
+![](assets/images/powerapps6/screen-shot-2022-07-04-at-4.00.15-pm-1836x829.webp)
 *I returned to the Power Apps page and clicked the "+ New Action" link*
 
 ![](assets/images/powerapps6/screen-shot-2022-07-04-at-4.01.23-pm-1836x1040.png)
@@ -86,34 +86,34 @@ I started by creating a "Microsoft Graph" application registration in Azure Acti
 ![](assets/images/powerapps6/screen-shot-2022-07-04-at-4.02.24-pm-1836x878.png)
 *I copied the request URL to the new connector action*
 
-![](assets/images/powerapps6/screen-shot-2022-07-04-at-4.02.52-pm-1836x1171.png)
+![](assets/images/powerapps6/screen-shot-2022-07-04-at-4.02.52-pm-1836x1171.webp)
 *I copied the sample (JSON) response from the Graph Explorer web application (notice that the array of Calendar Events is returned as the "value").*
 
 ![](assets/images/powerapps6/screen-shot-2022-07-04-at-4.03.13-pm-1836x1114.png)
 *I copied the sample (JSON) response to the new connector action*
 
-![](assets/images/powerapps6/screen-shot-2022-07-04-at-4.04.03-pm-1836x1105.png)
+![](assets/images/powerapps6/screen-shot-2022-07-04-at-4.04.03-pm-1836x1105.webp)
 *I saw that Validation succeeded and navigated to the Code (Preview) step*
 
-![](assets/images/powerapps6/screen-shot-2022-07-04-at-4.04.17-pm-1836x1108.png)
+![](assets/images/powerapps6/screen-shot-2022-07-04-at-4.04.17-pm-1836x1108.webp)
 *I reviewed the Code Details page then saved the Connector.*
 
 ![](assets/images/powerapps6/screen-shot-2022-07-04-at-4.05.43-pm-1836x490.png)
 *I used the Created button to save the new Connector*
 
-![](assets/images/powerapps6/screen-shot-2022-07-04-at-4.14.22-pm-1836x1108.png)
+![](assets/images/powerapps6/screen-shot-2022-07-04-at-4.14.22-pm-1836x1108.webp)
 *I selected the AllEventsInMyCalendar and clicked the "Test operation" button*
 
-![](assets/images/powerapps6/screen-shot-2022-07-04-at-4.14.38-pm-1836x1112.png)
+![](assets/images/powerapps6/screen-shot-2022-07-04-at-4.14.38-pm-1836x1112.webp)
 *The response looked good.*
 
 ![](assets/images/powerapps6/screen-shot-2022-07-04-at-4.15.44-pm-1836x225.png)
 *I created a new Canvas app using the "+ New app" link*
 
-![](assets/images/powerapps6/screen-shot-2022-07-04-at-4.16.04-pm-1836x1034.png)
+![](assets/images/powerapps6/screen-shot-2022-07-04-at-4.16.04-pm-1836x1034.webp)
 *I provided an App name*
 
-![](assets/images/powerapps6/screen-shot-2022-07-04-at-4.16.49-pm-1836x1106.png)
+![](assets/images/powerapps6/screen-shot-2022-07-04-at-4.16.49-pm-1836x1106.webp)
 *I added the new connector to the Canvas app*
 
 ![](assets/images/powerapps6/screen-shot-2022-07-04-at-4.55.47-pm-1836x228.png)

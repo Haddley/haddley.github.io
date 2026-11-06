@@ -48,13 +48,13 @@ $ dotnet new angular -n ProjectName
 ![](assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.10.07-pm-1536x1125.png)
 *The template included client and server-side code*
 
-![](assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.11.50-pm-1836x946.png)
+![](assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.11.50-pm-1836x946.webp)
 *I ran the project*
 
 ![](assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.14.10-pm-1836x1124.png)
 *I reviewed the Program.cs file — the template includes a local user database, so I registered as a user*
 
-![](assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.15.11-pm-1836x1087.png)
+![](assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.15.11-pm-1836x1087.webp)
 *I was able to log in*
 
 ![](assets/images/angularandasp.net/screen-shot-2023-03-24-at-7.18.50-pm-1836x863.png)

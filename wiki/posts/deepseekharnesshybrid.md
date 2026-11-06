@@ -9,7 +9,7 @@ topics: [subagents, hybrid-ai-workflows, local-llms, prompt-engineering]
 tools: [DeepSeek V4 Pro, qwen3-coder30b, Ollama, DeepSeek Harness]
 status: current
 checked: "2026-11-05"
-source_hash: "efc1fe90e711"
+source_hash: "1d147629977d"
 generated_by: gemma4:12b
 ---
 

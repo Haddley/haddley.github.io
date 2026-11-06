@@ -133,22 +133,22 @@ The chapter is in the notebook that goes with the book, [12_custom_models_and_tr
 ![](assets/images/sklearn12/jupyter-tensors.png)
 *Tensors behave much like NumPy arrays: a 2 × 3 matrix, its shape and type, slices of it, and arithmetic on every element*
 
-![](assets/images/sklearn12/jupyter-huber-loss.png)
+![](assets/images/sklearn12/jupyter-huber-loss.webp)
 *The Huber loss: a curve for small errors, and straight lines for large ones, which grow more slowly than the squared error (dotted)*
 
-![](assets/images/sklearn12/jupyter-residual-model.png)
+![](assets/images/sklearn12/jupyter-residual-model.webp)
 *A custom model written as Python classes: a residual block adds its input back to its output, the skip connection that helps deep networks train*
 
-![](assets/images/sklearn12/jupyter-slopes.png)
+![](assets/images/sklearn12/jupyter-slopes.webp)
 *The same slopes found two ways: nudging each input by a millionth gives about 36 and 10, and the gradient tape gives exactly 36 and 10*
 
-![](assets/images/sklearn12/jupyter-training-loop.png)
+![](assets/images/sklearn12/jupyter-training-loop.webp)
 *The training loop written by hand, and its output: the loss falls from 3.54 to 0.73 over 5 epochs*
 
-![](assets/images/sklearn12/jupyter-tf-function.png)
+![](assets/images/sklearn12/jupyter-tf-function.webp)
 *A Python function, `cube`, turned into a TensorFlow function: it gives the same answers, and runs as a graph*
 
-![](assets/images/sklearn12/jupyter-graph.png)
+![](assets/images/sklearn12/jupyter-graph.webp)
 *Inside the graph for `x ** 3`: four operations, an input, the constant 3, the power, and the output*
 
 :::bullet-points Custom training, in short

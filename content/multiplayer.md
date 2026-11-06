@@ -31,7 +31,7 @@ The `allPlayersRef.on("XXX", (snapshot) => {...})` functions fire when a player 
 
 The `allCoinsRef.on("value", (snapshot) => {...})` functions fire when coins are created or collected.
 
-![](assets/images/multiplayer/screen-shot-2023-05-09-at-9.39.39-am-1836x1151.png)
+![](assets/images/multiplayer/screen-shot-2023-05-09-at-9.39.39-am-1836x1151.webp)
 *Realtime Database*
 
 

@@ -96,16 +96,16 @@ The chapter is in the notebook that goes with the book, [03_classification.ipynb
 ![](assets/images/sklearn3/jupyter-hundred-digits.webp)
 *The first 100 images: some digits are clear, and some would trouble a person*
 
-![](assets/images/sklearn3/jupyter-accuracy-dummy.png)
+![](assets/images/sklearn3/jupyter-accuracy-dummy.webp)
 *The 5-detector scored 0.95 to 0.96 accuracy, but a classifier that always says "not a 5" scored 0.91*
 
-![](assets/images/sklearn3/jupyter-confusion-matrix.png)
+![](assets/images/sklearn3/jupyter-confusion-matrix.webp)
 *The confusion matrix: 3,530 5s found, 1,891 missed, and 687 other digits wrongly called 5s, which gives a precision of 0.837 and a recall of 0.651*
 
-![](assets/images/sklearn3/jupyter-precision-recall-threshold.png)
+![](assets/images/sklearn3/jupyter-precision-recall-threshold.webp)
 *Moving the threshold trades precision against recall: as one goes up, the other comes down*
 
-![](assets/images/sklearn3/jupyter-forest-vs-sgd.png)
+![](assets/images/sklearn3/jupyter-forest-vs-sgd.webp)
 *The random forest's precision/recall curve stays near the top right corner, well above the SGDClassifier's*
 
 ![](assets/images/sklearn3/jupyter-error-analysis.webp)

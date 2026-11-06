@@ -50,7 +50,7 @@ I used `getStaticProps` and `getStaticPaths` together to generate multiple pages
 
 I used `next export` to generate static HTML pages that I could upload to a static web server. I ran `npm run export` to produce the output.
 
-![](assets/images/nextjs2/screen-shot-2021-11-06-at-7.29.43-pm-1836x1051.png)
+![](assets/images/nextjs2/screen-shot-2021-11-06-at-7.29.43-pm-1836x1051.webp)
 *npm run export*
 
 ![](assets/images/nextjs2/screen-shot-2021-11-06-at-7.35.14-pm-1836x942.png)

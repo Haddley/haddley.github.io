@@ -60,7 +60,7 @@ On the test set, the loss was 0.4248. The loss is the mean squared error, and th
 The validation loss started at 934.37, thousands of times worse than where it ended. The pipeline was not at fault. The model trains with plain gradient descent at its default step size, and in the first epoch a step was too big. It then recovered and settled. This is the same trap as the learning rate in [Part 4](/posts/sklearn4/): when the loss jumps around at the start, it is usually the step size, not the data.
 :::
 
-![](assets/images/sklearn13/jupyter-csv-batches.png)
+![](assets/images/sklearn13/jupyter-csv-batches.webp)
 *Two batches from the pipeline, each three rows of eight scaled numbers, with the three prices beside them*
 
 ## What training means here
@@ -95,19 +95,19 @@ A: The ideas are: stream the data in batches, shuffle it, and prepare the next b
 
 The chapter is in the notebook that goes with the book, [13_loading_and_preprocessing_data.ipynb](https://github.com/ageron/handson-ml3/blob/main/13_loading_and_preprocessing_data.ipynb). I ran everything before the exercise solutions, which took about 4 minutes on my Mac Studio, and then looked through the results in JupyterLab. The notebook needs the Protocol Buffers compiler, `protoc`, for its custom-protobuf section, and TensorFlow Datasets for the last section.
 
-![](assets/images/sklearn13/jupyter-tfrecord-write.png)
+![](assets/images/sklearn13/jupyter-tfrecord-write.webp)
 *A TFRecord file is a list of binary records: I wrote two, and read them back as tensors of bytes*
 
-![](assets/images/sklearn13/jupyter-tfrecord-interleave.png)
+![](assets/images/sklearn13/jupyter-tfrecord-interleave.webp)
 *Five files of three records each, read three at a time: the records come out interleaved, File 0, File 1, File 2, then the next round, before files 3 and 4 are read*
 
-![](assets/images/sklearn13/jupyter-discretization.png)
+![](assets/images/sklearn13/jupyter-discretization.webp)
 *A `Discretization` layer puts ages into bins: with boundaries at 18 and 50, ages 10, 93, 57, 18, 37, and 5 become 0, 2, 2, 1, 1, and 0; the same layer can also choose its own three bins from the data*
 
-![](assets/images/sklearn13/jupyter-string-lookup.png)
+![](assets/images/sklearn13/jupyter-string-lookup.webp)
 *A `StringLookup` layer turns city names into numbers: "Montreal", which it never saw, becomes 0; with five spare slots for unknown words, "Foo", "Bar", and "Baz" land in slots 4, 3, and 4*
 
-![](assets/images/sklearn13/jupyter-tf-idf.png)
+![](assets/images/sklearn13/jupyter-tf-idf.webp)
 *`TextVectorization` turns sentences into numbers: each word gets a number, and with `tf_idf` each sentence becomes a row of weights, where a word that appears twice, such as "be", counts for more, and a word that is common across all the sentences counts for less*
 
 ![](assets/images/sklearn13/jupyter-center-crop.webp)

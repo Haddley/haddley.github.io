@@ -39,7 +39,7 @@ I used Prompt flow for Visual Studio Code to create and run a flow in a Docker c
 ![](assets/images/promptflow2/screenshot-2024-06-12-at-11.58.39am-1836x1182.png)
 *I reviewed the generated Dockerfile*
 
-![](assets/images/promptflow2/screenshot-2024-06-12-at-12.01.02pm-1836x1319.png)
+![](assets/images/promptflow2/screenshot-2024-06-12-at-12.01.02pm-1836x1319.webp)
 *I ran docker build*
 
 ![](assets/images/promptflow2/screenshot-2024-06-12-at-12.01.15pm-1836x788.png)
@@ -48,7 +48,7 @@ I used Prompt flow for Visual Studio Code to create and run a flow in a Docker c
 ![](assets/images/promptflow2/screenshot-2024-06-12-at-1.04.15pm-2136x1213.png)
 *I mapped the Docker container's port 8080 to localhost 8080*
 
-![](assets/images/promptflow2/screenshot-2024-06-12-at-1.06.28pm-2136x1209.png)
+![](assets/images/promptflow2/screenshot-2024-06-12-at-1.06.28pm-2136x1209.webp)
 *The container started without issue*
 
 ![](assets/images/promptflow2/screenshot-2024-06-12-at-1.07.08pm-2136x1115.png)
@@ -89,7 +89,7 @@ I created a second flow with an OpenAI connection
 ![](assets/images/promptflow2/screenshot-2024-09-15-at-8.11.42am-2136x477.png)
 *I clicked the Create Dockerfile link*
 
-![](assets/images/promptflow2/screenshot-2024-09-15-at-8.14.40am-2136x1234.png)
+![](assets/images/promptflow2/screenshot-2024-09-15-at-8.14.40am-2136x1234.webp)
 *I used docker to build an image and to upload the image to dockerhubdocker buildx build --platform linux/amd64,linux/arm64 --rm -t haddley/flow:latest --push .*
 
 ![](assets/images/promptflow2/screenshot-2024-09-15-at-12.18.04pm-2136x482.png)

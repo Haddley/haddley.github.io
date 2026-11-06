@@ -24,7 +24,7 @@ A caller says, "Do you think I have a good case?" What should an intake agent sa
 
 In the Foundry portal I opened **Agents**, clicked **New agent**, and chose **With agent template**. The menu describes it as "Start from a predefined agent template".
 
-![](assets/images/azurefoundryagent4/new-agent-menu.png)
+![](assets/images/azurefoundryagent4/new-agent-menu.webp)
 *I opened the New agent menu and chose With agent template*
 
 The gallery says "Templates are examples and may need to be customized before production use." Every template I could see is tagged **Voice** and **Preview**, and they cover common phone scenarios such as retail banking, insurance claims, a front desk receptionist and collections.

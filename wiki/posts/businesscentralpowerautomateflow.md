@@ -8,7 +8,7 @@ topics: [business-central, power-automate, automation-triggers, dynamic-content]
 tools: [Business Central, Power Automate, Outlook.com]
 status: current
 checked: "2026-11-05"
-source_hash: "d59df90dc1c3"
+source_hash: "40e834f966f5"
 generated_by: gemma4:12b
 ---
 

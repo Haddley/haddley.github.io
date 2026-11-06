@@ -85,7 +85,7 @@ I customised a HubSpot quote template to display a custom line items table with 
 ![](assets/images/hubspotquotetemplate/screenshot-2024-10-14-at-3.56.54pm-1406x1042.png)
 *The child theme was created successfully*
 
-![](assets/images/hubspotquotetemplate/screenshot-2024-10-14-at-3.57.37pm-2136x1020.png)
+![](assets/images/hubspotquotetemplate/screenshot-2024-10-14-at-3.57.37pm-2136x1020.webp)
 *I reviewed the base.html template in the child theme*
 
 ![](assets/images/hubspotquotetemplate/screenshot-2024-10-14-at-3.59.53pm-2136x1022.png)

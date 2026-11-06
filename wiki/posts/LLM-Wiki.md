@@ -8,7 +8,7 @@ topics: [llm-knowledge-bases, claude-code-workflows, knowledge-graph-constructio
 tools: [Claude Code, Obsidian, YAML]
 status: current
 checked: "2026-11-05"
-source_hash: "6b11bb23016b"
+source_hash: "ac39f314f135"
 generated_by: gemma4:12b
 ---
 

@@ -56,7 +56,7 @@ I used the Raspberry Pi Imager tool to write a standard operating system image o
 ![](assets/images/pi1/screen-shot-2023-07-22-at-1.58.10-pm-1526x984.png)
 *Microsoft Remote Desktop Client (for MacOS)*
 
-![](assets/images/pi1/screen-shot-2023-07-22-at-2.03.53-pm-1836x1148.png)
+![](assets/images/pi1/screen-shot-2023-07-22-at-2.03.53-pm-1836x1148.webp)
 *Connected to raspberrypi.local as neil*
 ## References
 

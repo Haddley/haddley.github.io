@@ -16,7 +16,7 @@ Langflow is a tool designed to simplify the development of applications using la
 
 OpenAI's text-to-speech (TTS) technology is designed to convert written text into natural-sounding speech.
 
-![](assets/images/langflow1/screenshot-2024-10-30-at-5.00.32pm-1836x1475.png)
+![](assets/images/langflow1/screenshot-2024-10-30-at-5.00.32pm-1836x1475.webp)
 *I used brew to install python version 3.10*
 
 ![](assets/images/langflow1/screenshot-2024-10-30-at-5.02.16pm-1836x399.png)
@@ -43,7 +43,7 @@ OpenAI's text-to-speech (TTS) technology is designed to convert written text int
 ![](assets/images/langflow1/screenshot-2024-10-30-at-5.11.17pm-1836x1062.png)
 *I clicked in the Untitled document box and selected the Import menu item*
 
-![](assets/images/langflow1/screenshot-2024-10-30-at-5.11.36pm-1836x1059.png)
+![](assets/images/langflow1/screenshot-2024-10-30-at-5.11.36pm-1836x1059.webp)
 *I selected the Doc to Podcast (Langflow).json flow*
 
 ![](assets/images/langflow1/screenshot-2024-10-30-at-5.16.40pm-1836x425.png)

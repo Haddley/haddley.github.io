@@ -60,7 +60,7 @@ I added the GraphQL dependencies using npm
 $ npm i express@4.16.4 express-graphql@0.7.1 graphql@14.1.1 cors@2.8.5
 ```
 
-![](assets/images/graphql/screen-shot-2021-03-02-at-10.50.19-pm-1536x940.png)
+![](assets/images/graphql/screen-shot-2021-03-02-at-10.50.19-pm-1536x940.webp)
 *I ran npm i*
 
 

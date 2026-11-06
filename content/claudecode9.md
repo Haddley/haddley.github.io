@@ -49,13 +49,13 @@ Do you have any questions?
 ![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.13.26-PM.webp)
 *The application was running in the browser*
 
-![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.13.42-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.13.42-PM.webp)
 *The app prompted me to select a workspace folder*
 
-![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.15.25-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.15.25-PM.webp)
 *I asked the agent to write a bash script that prints 'hello world!'*
 
-![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.15.51-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.15.51-PM.webp)
 *The model suggested invoking the write_file tool, but nothing happened*
 
 ![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.17.10-PM.webp)
@@ -67,13 +67,13 @@ Do you have any questions?
 ![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.19.25-PM.webp)
 *Claude Code updated the application*
 
-![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.21.35-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.21.35-PM.webp)
 *I tested the fix by asking the agent to write hello.sh again*
 
-![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.28.10-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.28.10-PM.webp)
 *I asked the agent to modify hello.sh to accept a name argument*
 
-![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.35.03-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.35.03-PM.webp)
 *I asked the agent to run hello.sh with argument 'Neil'*
 
 ![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.38.15-PM.webp)
@@ -89,10 +89,10 @@ If AGENT.md present in workspace root, append (≤10k chars) to system prompt as
 ![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.39.52-PM.webp)
 *Claude Code added support for AGENT.md*
 
-![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.41.37-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.41.37-PM.webp)
 *I created an example AGENT.md file in the workspace*
 
-![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.42.58-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.42.58-PM.webp)
 *I asked the agent to create goodbye.sh using the AGENT.md project instructions*
 
 ## Prompt
@@ -120,7 +120,7 @@ The center column is divided into two resizable sections:
 ![](assets/images/claudecode9/Screenshot-2026-02-22-at-4.37.04-PM.webp)
 *I described the terminal panel feature to Claude Code*
 
-![](assets/images/claudecode9/Screenshot-2026-02-22-at-4.33.13-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-4.33.13-PM.webp)
 *The terminal panel was running in the browser*
 
 ## Command line interface (CLI)
@@ -222,7 +222,7 @@ After the last tool round-trip the model should produce a plain text response (n
 - **`textContent` is set** — the non-streaming `chat()` call already has the full text. It is broken into 40-character chunks and emitted with a 10 ms artificial delay to give the UI a smooth streaming feel.
 - **`textContent` is empty** — the model returned an empty content body (some Ollama models do this). A second, streaming `chatStream()` call is made and each chunk is forwarded directly.
 
-![](assets/images/claudecode9/Screenshot-2026-02-22-at-7.33.37-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-7.33.37-PM.webp)
 *agent worked example*
 
 ![](assets/images/claudecode9/Screenshot-2026-02-22-at-7.36.18-PM.webp)

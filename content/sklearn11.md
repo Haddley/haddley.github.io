@@ -128,28 +128,28 @@ A: It leaves dropout switched on when the network is used, and asks the same que
 
 The chapter is in the notebook that goes with the book, [11_training_deep_neural_networks.ipynb](https://github.com/ageron/handson-ml3/blob/main/11_training_deep_neural_networks.ipynb). I ran everything before the exercise solutions, which took about 9 minutes on my Mac Studio, and then looked through the results in JupyterLab.
 
-![](assets/images/sklearn11/jupyter-saturation.png)
+![](assets/images/sklearn11/jupyter-saturation.webp)
 *The sigmoid function goes flat at both ends: there its slope is almost zero, so the slopes passed back through it almost vanish*
 
-![](assets/images/sklearn11/jupyter-activation-functions.png)
+![](assets/images/sklearn11/jupyter-activation-functions.webp)
 *GELU, Swish, and Mish: smooth bends that, like ReLU, keep a slope for positive inputs, but dip a little below zero*
 
 ![](assets/images/sklearn11/jupyter-100-layers.webp)
 *Two networks with 100 hidden layers: with SELU (top) it reached 82.0% validation accuracy in 5 passes, and with ReLU (bottom) only 69.9%*
 
-![](assets/images/sklearn11/jupyter-batch-norm.png)
+![](assets/images/sklearn11/jupyter-batch-norm.webp)
 *Batch normalization layers between the dense layers: 2,368 of the network's 271,346 numbers are running averages, not nudged by backpropagation*
 
 ![](assets/images/sklearn11/jupyter-transfer.webp)
 *Reusing the layers of a network trained on eight other kinds of clothing: 91.7% of the test shirts and pullovers right, after training on only 200 images*
 
-![](assets/images/sklearn11/jupyter-optimizers.png)
+![](assets/images/sklearn11/jupyter-optimizers.webp)
 *The validation loss for every optimizer: plain SGD and AdaGrad fall slowly, and RMSProp wanders back up*
 
-![](assets/images/sklearn11/jupyter-learning-rate.png)
+![](assets/images/sklearn11/jupyter-learning-rate.webp)
 *Raising the learning rate step by step during one pass: the loss falls until about 0.1, and then the training falls apart*
 
-![](assets/images/sklearn11/jupyter-mc-dropout.png)
+![](assets/images/sklearn11/jupyter-mc-dropout.webp)
 *MC dropout: the average of 100 runs with dropout left on says 71% ankle boot for the first test image, where the plain network said 81%*
 
 :::bullet-points Training deep networks, in short

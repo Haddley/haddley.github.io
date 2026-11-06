@@ -81,7 +81,7 @@ I used "gulp bundle && gulp serve" to preview the application in the workbench
 
 I used "gulp bundle --ship && gulp package-solution --ship" to create an .sppkg file (package).
 
-![](assets/images/ateamstabsharepointwebpartforonedrive/screen-shot-2022-05-29-at-10.48.51-am-1836x957.png)
+![](assets/images/ateamstabsharepointwebpartforonedrive/screen-shot-2022-05-29-at-10.48.51-am-1836x957.webp)
 *I ran gulp bundle --ship && gulp package-solution --ship*
 
 ![](assets/images/ateamstabsharepointwebpartforonedrive/screen-shot-2022-05-29-at-10.04.55-am-1401x787.png)

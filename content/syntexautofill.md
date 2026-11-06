@@ -36,5 +36,5 @@ I used SharePoint Syntex Autofill to automatically extract metadata from documen
 ![](assets/images/syntexautofill/screenshot202025-07-3020at203.33.01e280afpm-2136x1122.png)
 *After a few minutes the autofill process completed. The Smoke? column value was updated.*
 
-![](assets/images/syntexautofill/screenshot202025-07-3020at203.34.09e280afpm-2136x952.png)
+![](assets/images/syntexautofill/screenshot202025-07-3020at203.34.09e280afpm-2136x952.webp)
 *Reviewing the hp2 document confirmed that the Smoke? column value had been set correctly.*

@@ -37,7 +37,7 @@ To demonstrate that I could use the same kubectl client to deploy containers to 
 ![](assets/images/amazonecs/screen-shot-2021-08-12-at-7.18.30-pm-1836x1041.png)
 *The cluster was running*
 
-![](assets/images/amazonecs/screen-shot-2021-08-12-at-7.18.57-pm-1836x1076.png)
+![](assets/images/amazonecs/screen-shot-2021-08-12-at-7.18.57-pm-1836x1076.webp)
 *I accessed the Docker Desktop cluster*
 
 
@@ -72,10 +72,10 @@ I used eksctl, a simple CLI tool for creating clusters on EKS — Amazon's manag
 
 [https://github.com/weaveworks/eksctl](https://github.com/weaveworks/eksctl)
 
-![](assets/images/amazonecs/screen-shot-2021-08-12-at-7.29.15-pm-1836x1016.png)
+![](assets/images/amazonecs/screen-shot-2021-08-12-at-7.29.15-pm-1836x1016.webp)
 *I reviewed the eksctl documentation on the AWS site*
 
-![](assets/images/amazonecs/screen-shot-2021-08-12-at-7.48.33-pm-1836x1091.png)
+![](assets/images/amazonecs/screen-shot-2021-08-12-at-7.48.33-pm-1836x1091.webp)
 *I found the eksctl project on GitHub*
 
 ![](assets/images/amazonecs/screen-shot-2021-08-12-at-7.48.04-pm-1138x738.png)
@@ -94,7 +94,7 @@ I used eksctl, a simple CLI tool for creating clusters on EKS — Amazon's manag
   --nodes 2
 ```
 
-![](assets/images/amazonecs/screen-shot-2021-08-12-at-8.41.19-pm-1836x1185.png)
+![](assets/images/amazonecs/screen-shot-2021-08-12-at-8.41.19-pm-1836x1185.webp)
 *I used eksctl to create a cluster (node type t2.nano)*
 
 ![](assets/images/amazonecs/screen-shot-2021-08-12-at-8.43.21-pm-1836x953.png)
@@ -139,7 +139,7 @@ Publishing AWS access keys is not a great idea, so I deleted mine.
 ![](assets/images/amazonecs/screen-shot-2021-08-12-at-9.47.55-pm-1836x956.png)
 *I selected the Delete link*
 
-![](assets/images/amazonecs/screen-shot-2021-08-12-at-9.48.09-pm-1836x953.png)
+![](assets/images/amazonecs/screen-shot-2021-08-12-at-9.48.09-pm-1836x953.webp)
 *I clicked the Deactivate button*
 
 ![](assets/images/amazonecs/screen-shot-2021-08-12-at-9.49.34-pm-1836x955.png)

@@ -42,13 +42,13 @@ The code assumes the SharePoint site has a Calendar list named "Calendar".
 
 The Local Workbench does not have a Calendar list, so I navigated to the workbench page on a SharePoint site that does (e.g. https://haddleyoffice365.sharepoint.com/sites/AllStaff/_layouts/15/workbench.aspx).
 
-![](assets/images/sharepointwebpart2/screen-shot-2021-02-14-at-2.53.35-pm-1900x1357.png)
+![](assets/images/sharepointwebpart2/screen-shot-2021-02-14-at-2.53.35-pm-1900x1357.webp)
 *Example Team Site Calendar with sample events*
 
 ![](assets/images/sharepointwebpart2/screen-shot-2021-02-14-at-2.56.27-pm-1900x1357.png)
 *Calendar Web Part icon in /layouts/15/workbench.aspx page*
 
-![](assets/images/sharepointwebpart2/screen-shot-2021-02-14-at-2.56.52-pm-1900x1213.png)
+![](assets/images/sharepointwebpart2/screen-shot-2021-02-14-at-2.56.52-pm-1900x1213.webp)
 *Calendar Web Part running in /layouts/15/workbench.aspx page displaying sample events*
 
 
@@ -62,16 +62,16 @@ gulp package-solution --ship
 
 I deployed the web part by copying the .sppkg package to the SharePoint tenant's app catalog site.
 
-![](assets/images/sharepointwebpart2/screen-shot-2021-02-14-at-3.12.16-pm-1900x1209.png)
+![](assets/images/sharepointwebpart2/screen-shot-2021-02-14-at-3.12.16-pm-1900x1209.webp)
 *I copied the .sppkg package to the SharePoint app catalog*
 
 ![](assets/images/sharepointwebpart2/screen-shot-2021-02-14-at-3.13.38-pm-1900x1213.png)
 *I added the Calendar Web Part to a SharePoint page*
 
-![](assets/images/sharepointwebpart2/screen-shot-2021-02-14-at-3.13.52-pm-1900x1215.png)
+![](assets/images/sharepointwebpart2/screen-shot-2021-02-14-at-3.13.52-pm-1900x1215.webp)
 *I set the Calendar Web Part properties*
 
-![](assets/images/sharepointwebpart2/screen-shot-2021-02-14-at-3.14.12-pm-1900x1208.png)
+![](assets/images/sharepointwebpart2/screen-shot-2021-02-14-at-3.14.12-pm-1900x1208.webp)
 *The Calendar Web Part running in the SharePoint page (in Month mode)*
 
 ![](assets/images/sharepointwebpart2/screen-shot-2021-02-14-at-3.14.29-pm-1900x1213.png)

@@ -145,7 +145,7 @@ I clicked the "/swagger/v1/swagger.json" link to review a description of the API
 
 I navigated to make.powerapps.com, selected the "Custom Connectors" menu item, and clicked the "+ New custom connector" button.
 
-![](assets/images/powerappswithrest/screen-shot-2021-06-19-at-2.44.57-pm-1836x1152.png)
+![](assets/images/powerappswithrest/screen-shot-2021-06-19-at-2.44.57-pm-1836x1152.webp)
 *Custom Connectors*
 
 ![](assets/images/powerappswithrest/screen-shot-2021-06-19-at-3.04.21-pm-522x530.png)
@@ -160,10 +160,10 @@ I navigated to make.powerapps.com, selected the "Custom Connectors" menu item, a
 ![](assets/images/powerappswithrest/screen-shot-2021-06-19-at-3.15.06-pm-1836x1149.png)
 *I reviewed the General settings*
 
-![](assets/images/powerappswithrest/screen-shot-2021-06-19-at-3.15.23-pm-1836x1148.png)
+![](assets/images/powerappswithrest/screen-shot-2021-06-19-at-3.15.23-pm-1836x1148.webp)
 *I selected "No Authentication" (for now)*
 
-![](assets/images/powerappswithrest/screen-shot-2021-06-27-at-4.25.58-pm-1836x1356.png)
+![](assets/images/powerappswithrest/screen-shot-2021-06-27-at-4.25.58-pm-1836x1356.webp)
 *I tested the Book related actions*
 
 ![](assets/images/powerappswithrest/screen-shot-2021-06-19-at-3.17.35-pm-1632x184.png)

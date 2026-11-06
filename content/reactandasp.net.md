@@ -45,7 +45,7 @@ Note: If you prefer to use the command line, you can create a new ASP.NET Core R
 ![](assets/images/reactandasp.net/screen-shot-2023-03-22-at-9.20.23-am-1836x1459.webp)
 *The template includes client and server-side code*
 
-![](assets/images/reactandasp.net/screen-shot-2023-03-22-at-9.21.30-am-1836x988.png)
+![](assets/images/reactandasp.net/screen-shot-2023-03-22-at-9.21.30-am-1836x988.webp)
 *I ran the project.*
 
 ![](assets/images/reactandasp.net/screen-shot-2023-03-22-at-9.46.26-am-1836x1148.png)
@@ -54,7 +54,7 @@ Note: If you prefer to use the command line, you can create a new ASP.NET Core R
 ![](assets/images/reactandasp.net/screen-shot-2023-03-22-at-10.03.23-am-1836x1050.png)
 *I used sqlitebrowser to update the EmailConfirmed column in the AspNetUsers table so that I could login.*
 
-![](assets/images/reactandasp.net/screen-shot-2023-03-22-at-10.06.39-am-1836x1003.png)
+![](assets/images/reactandasp.net/screen-shot-2023-03-22-at-10.06.39-am-1836x1003.webp)
 *I was able to login*
 
 ![](assets/images/reactandasp.net/screen-shot-2023-03-22-at-10.20.17-am-1836x868.png)

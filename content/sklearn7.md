@@ -93,16 +93,16 @@ A: Almost. It is bagged decision trees, with extra randomness: each split consid
 
 The chapter is in the notebook that goes with the book, [07_ensemble_learning_and_random_forests.ipynb](https://github.com/ageron/handson-ml3/blob/main/07_ensemble_learning_and_random_forests.ipynb). I ran everything before the exercise solutions, which took about a minute on my Mac Studio, and then looked through the results in JupyterLab.
 
-![](assets/images/sklearn7/jupyter-voting.png)
+![](assets/images/sklearn7/jupyter-voting.webp)
 *I trained three different classifiers on the moons: on their own they score 0.864, 0.896 and 0.896*
 
-![](assets/images/sklearn7/jupyter-bagging.png)
+![](assets/images/sklearn7/jupyter-bagging.webp)
 *One decision tree carves an overfitted boundary; 500 trees, each trained on a random 100 points and voting together, draw a smoother one*
 
-![](assets/images/sklearn7/jupyter-feature-importance.png)
+![](assets/images/sklearn7/jupyter-feature-importance.webp)
 *A random forest measures how much each feature helps: petal length 0.44 and petal width 0.42, while the sepals hardly matter*
 
-![](assets/images/sklearn7/jupyter-gradient-boosting.png)
+![](assets/images/sklearn7/jupyter-gradient-boosting.webp)
 *Gradient boosting: each new tree is trained on the errors the earlier trees left behind, and adding the trees together fits the data better and better*
 
 ![](assets/images/sklearn7/jupyter-stacking.png)

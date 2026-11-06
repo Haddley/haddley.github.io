@@ -110,7 +110,7 @@ The AI SDK validates the LLM's output against the Zod inputSchema, then calls th
 
 The tool result (the new contact object) is appended to the conversation as a tool message. The LLM then generates a natural language response confirming what was created. This counts as one step toward the `stopWhen: stepCountIs(5)` limit.
 
-![](assets/images/claudecode10/Screenshot-2026-03-18-at-2.04.50-PM.png)
+![](assets/images/claudecode10/Screenshot-2026-03-18-at-2.04.50-PM.webp)
 *The Dynamics 365 Sandbox showing My Active Contacts with Jane Doe and John Smith*
 
 ![](assets/images/claudecode10/Screenshot-2026-03-18-at-2.05.15-PM.png)
@@ -120,14 +120,14 @@ The tool result (the new contact object) is appended to the conversation as a to
 ![](assets/images/claudecode10/Screenshot-2026-03-18-at-6.38.19-PM.png)
 *I typed "Update Jane Doe to John Doe" into the AI Chat*
 
-![](assets/images/claudecode10/Screenshot-2026-03-18-at-6.38.56-PM.png)
+![](assets/images/claudecode10/Screenshot-2026-03-18-at-6.38.56-PM.webp)
 *The agent searched for the contact, found Jane Doe, and asked me to confirm the name change before proceeding*
 
-![](assets/images/claudecode10/Screenshot-2026-03-18-at-6.39.36-PM.png)
+![](assets/images/claudecode10/Screenshot-2026-03-18-at-6.39.36-PM.webp)
 *After I typed "yes", the agent called update_contact and confirmed the contact was successfully updated to John Doe*
 
 
-![](assets/images/claudecode10/Screenshot-2026-03-18-at-2.08.19-PM.png)
+![](assets/images/claudecode10/Screenshot-2026-03-18-at-2.08.19-PM.webp)
 *Back in Dynamics 365, the contact now shows as John Doe — the update was reflected in real time*
 
 ## References

@@ -45,10 +45,10 @@ After configuring a DeepSeek API key in Settings → Models and selecting a work
 ![Terminal showing npm install -g @deepseek-ai/dsh and running dsh web](assets/images/deepseekharness/npm-install-global.webp)
 *I installed the package globally, then ran `dsh web`*
 
-![Terminal showing dsh web serving at http://127.0.0.1:3080 and opening the browser](assets/images/deepseekharness/dsh-web-terminal.png)
+![Terminal showing dsh web serving at http://127.0.0.1:3080 and opening the browser](assets/images/deepseekharness/dsh-web-terminal.webp)
 *`dsh web` started the server at http://127.0.0.1:3080 and opened the default browser*
 
-![DeepSeek Harness Web UI first launch showing Into the Unknown and Choose a workspace](assets/images/deepseekharness/web-ui-into-the-unknown.png)
+![DeepSeek Harness Web UI first launch showing Into the Unknown and Choose a workspace](assets/images/deepseekharness/web-ui-into-the-unknown.webp)
 *The fresh Web UI had no workspace yet, so I chose the folder where my PRD and PDD lived*
 
 :::brain-power Before the prompt
@@ -65,7 +65,7 @@ Build invaders game see PRD.md and PDD.md
 
 The agent first located and read both documents before writing any code.
 
-![DeepSeek Harness session Build invaders game from PRD with the prompt and agent steps](assets/images/deepseekharness/session-build-invaders.png)
+![DeepSeek Harness session Build invaders game from PRD with the prompt and agent steps](assets/images/deepseekharness/session-build-invaders.webp)
 *I started the session and the agent set about reading both documents before building anything*
 
 ![Session trace showing the agent globbing and reading PRD.md and PDD.md](assets/images/deepseekharness/session-steps-strip.png)

@@ -9,7 +9,7 @@ topics: [linear-models, gradient-descent, regularization, logistic-regression, s
 tools: [Scikit-Learn, NumPy, PyTorch, JupyterLab]
 status: current
 checked: "2026-11-06"
-source_hash: "f9ecdd8f41b1"
+source_hash: "af4cb59783ee"
 generated_by: gemma4:12b
 ---
 

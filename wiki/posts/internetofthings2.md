@@ -9,7 +9,7 @@ topics: [mqtt-protocols, iot-architecture, node-red-integration, topic-wildcards
 tools: [Node-RED, MQTT, ESP8266, AWS IoT Core]
 status: current
 checked: "2026-11-05"
-source_hash: "1e7b5e3d2952"
+source_hash: "6967cfb895ea"
 generated_by: gemma4:12b
 ---
 

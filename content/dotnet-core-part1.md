@@ -42,13 +42,13 @@ I added the BooksController class.
 $ dotnet run
 ```
 
-![](assets/images/dotnet-core-part1/screen-shot-2021-04-11-at-3.55.12-pm-1836x802.png)
+![](assets/images/dotnet-core-part1/screen-shot-2021-04-11-at-3.55.12-pm-1836x802.webp)
 *I navigated to https://localhost:5001/books*
 
 ![](assets/images/dotnet-core-part1/screen-shot-2021-04-06-at-11.19.46-am-1836x873.png)
 *I navigated to https://localhost:5001/books/1788395549*
 
-![](assets/images/dotnet-core-part1/screen-shot-2021-04-11-at-4.13.17-pm-1836x809.png)
+![](assets/images/dotnet-core-part1/screen-shot-2021-04-11-at-4.13.17-pm-1836x809.webp)
 *I navigated to https://localhost:5001/books/1234567890*
 
 
@@ -89,7 +89,7 @@ The static files can be a React app that calls the REST API exposed by the (same
 
 I extended the BooksController code to support POST, PUT and DELETE actions.
 
-![](assets/images/dotnet-core-part1/screen-shot-2021-06-19-at-2.57.45-pm-1836x1178.png)
+![](assets/images/dotnet-core-part1/screen-shot-2021-06-19-at-2.57.45-pm-1836x1178.webp)
 *I reviewed the haddley_power_app_api project*
 
 

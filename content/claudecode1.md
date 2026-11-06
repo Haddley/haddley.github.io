@@ -28,7 +28,7 @@ On Windows (PowerShell):
 irm https://claude.ai/install.ps1 | iex
 ```
 
-![](assets/images/claudecode/Screenshot-2026-01-20-at-3.45.50-PM.png)
+![](assets/images/claudecode/Screenshot-2026-01-20-at-3.45.50-PM.webp)
 *I ran the installer in the terminal*
 
 I then added Claude Code to my PATH so the terminal could find the binary:
@@ -49,44 +49,44 @@ I typed `claude` to launch Claude Code for the first time:
 
 I picked a colour theme:
 
-![](assets/images/claudecode/Screenshot-2026-01-20-at-4.00.24-PM.png)
+![](assets/images/claudecode/Screenshot-2026-01-20-at-4.00.24-PM.webp)
 *I chose dark mode*
 
 I then linked Claude Code to my Anthropic account. A **Claude Pro** subscription (or higher) is required:
 
-![](assets/images/claudecode/Screenshot-2026-01-20-at-4.00.48-PM.png)
+![](assets/images/claudecode/Screenshot-2026-01-20-at-4.00.48-PM.webp)
 *I logged in to my Claude account*
 
 ![](assets/images/claudecode/Screenshot-2026-01-20-at-4.03.36-PM.webp)
 *I selected the Claude Pro plan*
 
-![](assets/images/claudecode/Screenshot-2026-01-20-at-4.04.23-PM.png)
+![](assets/images/claudecode/Screenshot-2026-01-20-at-4.04.23-PM.webp)
 *I confirmed the monthly subscription*
 
 Claude Code opened a browser tab to complete the OAuth flow:
 
-![](assets/images/claudecode/Screenshot-2026-01-20-at-4.09.40-PM.png)
+![](assets/images/claudecode/Screenshot-2026-01-20-at-4.09.40-PM.webp)
 *I authorized Claude Code to access my Anthropic account*
 
-![](assets/images/claudecode/Screenshot-2026-01-20-at-4.09.53-PM.png)
+![](assets/images/claudecode/Screenshot-2026-01-20-at-4.09.53-PM.webp)
 *Login successful*
 
 Back in the terminal, I accepted the remaining setup prompts:
 
-![](assets/images/claudecode/Screenshot-2026-01-20-at-4.10.09-PM.png)
+![](assets/images/claudecode/Screenshot-2026-01-20-at-4.10.09-PM.webp)
 *I pressed Enter to confirm*
 
-![](assets/images/claudecode/Screenshot-2026-01-20-at-4.10.19-PM.png)
+![](assets/images/claudecode/Screenshot-2026-01-20-at-4.10.19-PM.webp)
 *I accepted the recommended default settings*
 
-![](assets/images/claudecode/Screenshot-2026-01-20-at-4.10.40-PM.png)
+![](assets/images/claudecode/Screenshot-2026-01-20-at-4.10.40-PM.webp)
 *I confirmed to finish setup*
 
 ## First prompt
 
 With setup complete, I was dropped into the interactive Claude Code prompt:
 
-![](assets/images/claudecode/Screenshot-2026-01-20-at-4.10.59-PM.png)
+![](assets/images/claudecode/Screenshot-2026-01-20-at-4.10.59-PM.webp)
 *The Claude Code prompt, ready for input*
 
 I asked it to create a simple PowerShell script:
@@ -95,33 +95,33 @@ I asked it to create a simple PowerShell script:
 create a new PowerShell script file named "HelloWorld.ps1". The script should simply output the string "Hello, World!" to the console. Show me the code and explain how to run it.
 ```
 
-![](assets/images/claudecode/Screenshot-2026-01-20-at-4.48.31-PM.png)
+![](assets/images/claudecode/Screenshot-2026-01-20-at-4.48.31-PM.webp)
 *I asked Claude Code to create the HelloWorld.ps1 script*
 
-![](assets/images/claudecode/Screenshot-2026-01-20-at-5.07.19-PM.png)
+![](assets/images/claudecode/Screenshot-2026-01-20-at-5.07.19-PM.webp)
 *"I've created HelloWorld.ps1 with the following code"*
 
 Claude Code asks for permission before writing any files. I approved edits for the whole session:
 
-![](assets/images/claudecode/Screenshot-2026-01-20-at-4.48.58-PM.png)
+![](assets/images/claudecode/Screenshot-2026-01-20-at-4.48.58-PM.webp)
 *Yes, allow all edits during this session (shift+tab)*
 
 I then asked Claude Code to run the script:
 
-![](assets/images/claudecode/Screenshot-2026-01-20-at-4.49.35-PM.png)
+![](assets/images/claudecode/Screenshot-2026-01-20-at-4.49.35-PM.webp)
 *I asked Claude Code to run the script*
 
 It also asks before executing shell commands:
 
-![](assets/images/claudecode/Screenshot-2026-01-20-at-4.49.56-PM.png)
+![](assets/images/claudecode/Screenshot-2026-01-20-at-4.49.56-PM.webp)
 *Yes, and don't ask again for pwsh commands in /Users/neilhaddley/Documents/GitHub/gettingstarted*
 
-![](assets/images/claudecode/Screenshot-2026-01-20-at-4.50.16-PM.png)
+![](assets/images/claudecode/Screenshot-2026-01-20-at-4.50.16-PM.webp)
 *The script ran and output "Hello, World!" to the console*
 
 I also ran the script directly to confirm it worked independently:
 
-![](assets/images/claudecode/Screenshot-2026-01-20-at-4.51.23-PM.png)
+![](assets/images/claudecode/Screenshot-2026-01-20-at-4.51.23-PM.webp)
 *I ran pwsh ./HelloWorld.ps1 manually to verify the output*
 
 ## VS Code Extension
@@ -131,7 +131,7 @@ I also installed the **Claude Code VS Code Extension**, which integrates directl
 ![](assets/images/claudecode/Screenshot-2026-01-20-at-7.55.32-PM.webp)
 *Claude Code's Visual Studio Code Extension*
 
-![](assets/images/claudecode/Screenshot-2026-01-20-at-7.58.07-PM.png)
+![](assets/images/claudecode/Screenshot-2026-01-20-at-7.58.07-PM.webp)
 *I asked Claude Code to explain the script from inside VS Code*
 
 ## References

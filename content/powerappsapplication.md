@@ -19,7 +19,7 @@ I navigated to [https://make.powerapps.com/](https://make.powerapps.com/) and se
 ![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-7.18.39-pm-698x316.png)
 *Blank app | Phone layout*
 
-![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-7.19.43-pm-1836x945.png)
+![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-7.19.43-pm-1836x945.webp)
 *Blank app App with Screen "Screen1"*
 
 
@@ -44,19 +44,19 @@ I selected the + menu item and clicked the "Get more components" button.
 ![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-7.27.07-pm-1460x772.png)
 *Get more components*
 
-![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-7.28.21-pm-1836x1056.png)
+![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-7.28.21-pm-1836x1056.webp)
 *I imported custom components from the Headers component library*
 
-![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-7.29.17-pm-1836x1053.png)
+![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-7.29.17-pm-1836x1053.webp)
 *I added a BrowseHeader component to the BrowseScreen*
 
-![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-7.30.27-pm-1836x1050.png)
+![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-7.30.27-pm-1836x1050.webp)
 *I added a DetailHeader component to the DetailScreen*
 
-![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-7.31.38-pm-1836x1047.png)
+![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-7.31.38-pm-1836x1047.webp)
 *I added an EditHeader component to the EditScreen*
 
-![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-7.32.49-pm-1836x1056.png)
+![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-7.32.49-pm-1836x1056.webp)
 *I added an EditHeader component to the NewScreen*
 
 ![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-7.33.55-pm-1836x1054.png)
@@ -120,19 +120,19 @@ I selected the database menu item and clicked the "Add data" button.
 ![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-10.00.14-pm-1836x1053.png)
 *BrowseHeader_1 | OnSelectRefresh = ClearCollect(colBooks,haddley_power_app_api.BookGET())*
 
-![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-10.03.14-pm-1836x1111.png)
+![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-10.03.14-pm-1836x1111.webp)
 *Sample data appeared in the gallery; I clicked the refresh button to update the colBooks collection*
 
 ![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-10.02.39-pm-1836x1049.png)
 *I selected the Collections menu item to view the colBooks collection*
 
-![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-10.04.01-pm-1836x1048.png)
+![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-10.04.01-pm-1836x1048.webp)
 *I updated the gallery's data source to colBooks*
 
-![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-10.04.16-pm-1836x1051.png)
+![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-10.04.16-pm-1836x1051.webp)
 *colBooks items appeared*
 
-![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-10.04.42-pm-1836x1048.png)
+![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-10.04.42-pm-1836x1048.webp)
 *I updated the layout*
 
 ![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-10.07.23-pm-1836x1048.png)
@@ -153,10 +153,10 @@ I selected the database menu item and clicked the "Add data" button.
 ![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-10.37.02-pm-1836x1052.png)
 *TextInput3 | Default = Gallery1.Selected.title*
 
-![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-10.39.20-pm-1836x1051.png)
+![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-10.39.20-pm-1836x1051.webp)
 *EditHeader_1 | OnSelectAccept = haddley_power_app_api.BookByIdPUT(Gallery1.Selected.id,{title:TextInput3.Text});Navigate(BrowseScreen)*
 
-![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-10.45.49-pm-1836x1048.png)
+![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-10.45.49-pm-1836x1048.webp)
 *EditHeader_2 | OnSelectAccept = haddley_power_app_api.BookPOST({id:TextInput4.Text,title:TextInput3_1.Text});Navigate(BrowseScreen)*
 
 ![](assets/images/powerappsapplication/screen-shot-2021-07-13-at-10.54.51-pm-1836x1049.png)

@@ -99,7 +99,7 @@ The chapter is in the notebook that goes with the book, [16_nlp_with_rnns_and_at
 ![](assets/images/sklearn16/jupyter-imdb-masking.webp)
 *Manual masking over 5 epochs: the validation accuracy peaks at 87.3% in epoch 2 and ends at 84.5%, as the model starts to overfit; the same model without any masking stayed at 50%*
 
-![](assets/images/sklearn16/jupyter-translate.png)
+![](assets/images/sklearn16/jupyter-translate.webp)
 *The plain encoder-decoder after 1 epoch: "I like soccer" becomes "me gusta la música", and the longer sentence turns into "me gusta la misma y [UNK]"*
 
 ![](assets/images/sklearn16/jupyter-beam-search.webp)
@@ -108,7 +108,7 @@ The chapter is in the notebook that goes with the book, [16_nlp_with_rnns_and_at
 ![](assets/images/sklearn16/jupyter-transformer-translate.webp)
 *The Transformer after 1 epoch: "I like soccer and also going to the beach" becomes "me gusta el fútbol y [UNK] a la playa", close to correct*
 
-![](assets/images/sklearn16/jupyter-huggingface.png)
+![](assets/images/sklearn16/jupyter-huggingface.webp)
 *A pretrained sentiment model from Hugging Face, which I did not choose: the notebook named no model, so the library used its default, a small BERT-style model trained on movie reviews. It scored "I am from India." POSITIVE and "I am from Iraq." NEGATIVE*
 
 :::bullet-points Language models and attention, in short

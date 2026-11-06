@@ -9,7 +9,7 @@ topics: [static-generation, server-side-rendering, data-fetching, catch-all-rout
 tools: [Next.js, SWR, npm]
 status: current
 checked: "2026-11-06"
-source_hash: "94c6d87303cb"
+source_hash: "0ecfecb37fa1"
 generated_by: gemma4:12b
 ---
 

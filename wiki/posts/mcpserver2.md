@@ -9,7 +9,7 @@ topics: [model-context-protocol, microsoft-business-central, azure-container-app
 tools: [Microsoft Business Central, Azure Container Apps, Copilot Studio, LM Studio, Docker, Node.js]
 status: current
 checked: "2026-11-05"
-source_hash: "cadd165e42ff"
+source_hash: "c809c228ca48"
 generated_by: gemma4:12b
 ---
 

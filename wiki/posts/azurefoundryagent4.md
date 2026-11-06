@@ -9,7 +9,7 @@ topics: [azure-functions, mcp-servers, voice-agents, microsoft-foundry, prompt-e
 tools: [Microsoft Foundry, Azure Functions, Python SDK, Azure Developer CLI, Azurite, Azure AI Search]
 status: current
 checked: "2026-11-05"
-source_hash: "3f2262068e35"
+source_hash: "4642756b900f"
 generated_by: gemma4:12b
 ---
 

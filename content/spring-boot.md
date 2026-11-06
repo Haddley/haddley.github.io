@@ -72,7 +72,7 @@ The **@GetMapping** annotation is used to mark the book and books methods as HTT
 ![](assets/images/spring-boot/screen-shot-2021-04-06-at-11.19.46-am-1836x873.png)
 *http://localhost:8080/books/1788395549*
 
-![](assets/images/spring-boot/screen-shot-2021-04-06-at-11.20.30-am-1836x875.png)
+![](assets/images/spring-boot/screen-shot-2021-04-06-at-11.20.30-am-1836x875.webp)
 *http://localhost:8080/books/1234567890*
 
 :::pencil What happens for an unknown book?
@@ -88,7 +88,7 @@ The method removes every book whose id does not match, and when nothing is left 
 
 I added static files (images, HTML, and JavaScript) to the /src/main/resources/static folder of the Spring Boot project, including a [React](/posts/reactusestateuseeffect/) app that calls the REST API exposed by the same Spring Boot project.
 
-![](assets/images/spring-boot/screen-shot-2021-04-08-at-3.28.25-pm-1836x981.png)
+![](assets/images/spring-boot/screen-shot-2021-04-08-at-3.28.25-pm-1836x981.webp)
 *Static files*
 
 ![](assets/images/spring-boot/screen-shot-2021-04-08-at-3.27.02-pm-1286x750.png)

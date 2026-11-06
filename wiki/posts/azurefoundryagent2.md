@@ -9,7 +9,7 @@ topics: [azure-ai-foundry, prompt-engineering, llm-evaluation, skill-versioning]
 tools: [Azure AI Foundry, Python SDK, pypdf, GPT-4o-mini]
 status: current
 checked: "2026-11-05"
-source_hash: "e1d0d99f0957"
+source_hash: "fdbb0b383215"
 generated_by: gemma4:12b
 ---
 

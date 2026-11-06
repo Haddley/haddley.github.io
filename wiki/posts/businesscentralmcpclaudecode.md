@@ -9,7 +9,7 @@ topics: [model-context-protocol, business-central-integration, oauth-authenticat
 tools: [Business Central, Claude Code, Microsoft Entra ID, mcp-remote, Node.js]
 status: current
 checked: "2026-11-05"
-source_hash: "6383c046ec40"
+source_hash: "b5c72c7ce560"
 generated_by: gemma4:12b
 ---
 

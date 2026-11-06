@@ -65,7 +65,7 @@ $ cd ../unittests
 $ dotnet new gitignore
 $ cd ..**
 
-![](assets/images/nuget/screen-shot-2021-03-01-at-5.22.23-pm-1836x1105.png)
+![](assets/images/nuget/screen-shot-2021-03-01-at-5.22.23-pm-1836x1105.webp)
 *new solution, new classlib project and new mstest project*
 
 
@@ -84,7 +84,7 @@ I used `dotnet test` to run the unit tests locally.
 
 **$ dotnet test**
 
-![](assets/images/nuget/screen-shot-2021-03-01-at-5.51.08-pm-1836x1108.png)
+![](assets/images/nuget/screen-shot-2021-03-01-at-5.51.08-pm-1836x1108.webp)
 *dotnet test*
 
 
@@ -92,7 +92,7 @@ I used `dotnet test` to run the unit tests locally.
 
 I committed updates to the repository.
 
-![](assets/images/nuget/screen-shot-2021-03-01-at-5.53.33-pm-1836x1251.png)
+![](assets/images/nuget/screen-shot-2021-03-01-at-5.53.33-pm-1836x1251.webp)
 *Commit to main branch*
 
 ![](assets/images/nuget/screen-shot-2021-02-28-at-2.26.08-pm-1072x276.png)
@@ -112,7 +112,7 @@ I added a GitHub Action to run tests automatically.
 ![](assets/images/nuget/screen-shot-2021-03-01-at-5.58.00-pm-1708x360.png)
 *GitHub action finished*
 
-![](assets/images/nuget/screen-shot-2021-03-01-at-5.58.27-pm-1836x956.png)
+![](assets/images/nuget/screen-shot-2021-03-01-at-5.58.27-pm-1836x956.webp)
 *GitHub action details*
 
 
@@ -130,7 +130,7 @@ I used `dotnet pack` to create the .nupkg file.
 
 **$ dotnet pack**
 
-![](assets/images/nuget/screen-shot-2021-03-01-at-6.13.36-pm-1836x703.png)
+![](assets/images/nuget/screen-shot-2021-03-01-at-6.13.36-pm-1836x703.webp)
 *dotnet pack*
 
 
@@ -144,7 +144,7 @@ I uploaded the .nupkg file to nuget.org.
 ![](assets/images/nuget/screen-shot-2021-03-01-at-6.20.27-pm-1836x973.png)
 *Browse...*
 
-![](assets/images/nuget/screen-shot-2021-03-01-at-6.21.03-pm-1836x1055.png)
+![](assets/images/nuget/screen-shot-2021-03-01-at-6.21.03-pm-1836x1055.webp)
 *Choose for Upload*
 
 ![](assets/images/nuget/screen-shot-2021-03-01-at-6.21.19-pm-1836x1055.png)

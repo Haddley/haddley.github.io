@@ -9,7 +9,7 @@ topics: [azure-functions, business-central-integration, qr-code-generation, gith
 tools: [Business Central, Azure Functions, GitHub, GitHub Actions]
 status: current
 checked: "2026-11-05"
-source_hash: "adfe64a983d2"
+source_hash: "65385dcf117c"
 generated_by: gemma4:12b
 ---
 

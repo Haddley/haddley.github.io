@@ -51,7 +51,7 @@ A: A server on my laptop can talk to a client directly, but a deployed server ne
 
 For remote servers, I set up a Streamable HTTP transport that handles both client requests and server-to-client notifications.
 
-![](assets/images/mcpserver2/screenshot202025-08-2720at205.10.09e280afpm-2136x1326.png)
+![](assets/images/mcpserver2/screenshot202025-08-2720at205.10.09e280afpm-2136x1326.webp)
 *I ran docker build -t business-central-mcp .then npm run docker:run*
 
 ![](assets/images/mcpserver2/screenshot202025-08-2720at205.12.04e280afpm-2136x860.png)
@@ -82,14 +82,14 @@ I used the Azure Container Apps extension for Visual Studio Code to choose exist
 ![](assets/images/mcpserver2/screenshot202025-08-2720at205.36.36e280afpm-2136x205.png)
 *I selected the .env file*
 
-![](assets/images/mcpserver2/screenshot202025-08-2720at205.39.11e280afpm-2136x1314.png)
+![](assets/images/mcpserver2/screenshot202025-08-2720at205.39.11e280afpm-2136x1314.webp)
 *I confirmed the deployment finished*
 
 :::under-the-hood How the deployment fits together
 I built the project into a Docker image, tested it locally with docker build and npm run docker:run, and then used the Azure Container Apps extension for Visual Studio Code to deploy it from my workspace. I chose a Managed Identity and the .env file for settings. The MCP endpoint is the container app's address followed by /mcp, and I tested it with a fresh copy of the inspector.
 :::
 
-![](assets/images/mcpserver2/screenshot202025-08-2720at205.41.17e280afpm-2136x1079.png)
+![](assets/images/mcpserver2/screenshot202025-08-2720at205.41.17e280afpm-2136x1079.webp)
 *I ran a fresh copy of the inspector*
 
 ![](assets/images/mcpserver2/screenshot202025-08-2720at205.41.01e280afpm-1620x891.png)
@@ -136,7 +136,7 @@ I used a Custom Connector to connect Copilot Studio to the Model Context Protoco
 ![](assets/images/mcpserver2/screenshot202025-08-2720at206.00.11e280afpm-1728x341.png)
 *I had entered this prompt Please show me a table of vendors*
 
-![](assets/images/mcpserver2/screenshot202025-08-2720at205.52.48e280afpm-1729x924.png)
+![](assets/images/mcpserver2/screenshot202025-08-2720at205.52.48e280afpm-1729x924.webp)
 *Copilot Studio's Large Language Model used the get_vendors tool to establish the context.*
 
 I opened LM Studio and navigated to the "Program" tab in the right sidebar. I clicked on "Install" and selected "Edit mcp.json", which opened the mcp.json file in LM Studio's in-app editor. I added my MCP server configuration to the mcp.json file.

@@ -100,25 +100,25 @@ A: Each number is nudged once per step: 1,719 steps per pass through the 55,000 
 
 The chapter is in the notebook that goes with the book, [10_neural_nets_with_keras.ipynb](https://github.com/ageron/handson-ml3/blob/main/10_neural_nets_with_keras.ipynb). I ran everything before the exercise solutions, which took about 14 minutes on my Mac Studio, most of it in the three hyperparameter searches, and then looked through the results in JupyterLab. I could not open TensorBoard, the separate viewer for the training logs, so I have left that part out.
 
-![](assets/images/sklearn10/jupyter-activation-functions.png)
+![](assets/images/sklearn10/jupyter-activation-functions.webp)
 *Activation functions, the bends between layers: the step function of the original perceptron, ReLU, sigmoid, and tanh, with their slopes on the right*
 
 ![](assets/images/sklearn10/jupyter-fashion-mnist.webp)
 *A sample of Fashion MNIST: 28 × 28 images of clothing, each labelled with one of 10 classes*
 
-![](assets/images/sklearn10/jupyter-model-summary.png)
+![](assets/images/sklearn10/jupyter-model-summary.webp)
 *The network's layers: 235,500 numbers in the first hidden layer, 30,100 in the second, and 1,010 in the output layer, 266,610 in all*
 
 ![](assets/images/sklearn10/jupyter-training.webp)
 *The end of training: after 30 passes, about 92% of the training images and 88% of the validation images are right*
 
-![](assets/images/sklearn10/jupyter-learning-curves.png)
+![](assets/images/sklearn10/jupyter-learning-curves.webp)
 *The learning curves: the loss falls and the accuracy rises, epoch by epoch, and the training and validation curves slowly move apart*
 
-![](assets/images/sklearn10/jupyter-predictions.png)
+![](assets/images/sklearn10/jupyter-predictions.webp)
 *The network's predictions for the first three test images: an ankle boot, a pullover, and a trouser, all correct*
 
-![](assets/images/sklearn10/jupyter-tuner.png)
+![](assets/images/sklearn10/jupyter-tuner.webp)
 *Keras Tuner's random search: its best network had 7 hidden layers of 100 neurons, and 84.7% validation accuracy*
 
 :::bullet-points Neural networks, in short

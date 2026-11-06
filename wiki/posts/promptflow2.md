@@ -9,7 +9,7 @@ topics: [prompt-flow, docker-containers, openai-integration, multi-architecture-
 tools: [Prompt Flow, VS Code, Docker, OpenAI, Gunicorn, Docker Hub]
 status: current
 checked: "2026-11-06"
-source_hash: "551f34a83e2e"
+source_hash: "3dc2e1fe4bac"
 generated_by: gemma4:12b
 ---
 

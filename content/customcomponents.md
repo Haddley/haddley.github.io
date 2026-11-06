@@ -54,19 +54,19 @@ I selected the "Apps" menu item and selected the "Component libraries" tab.
 ![](assets/images/customcomponents/screen-shot-2021-07-13-at-6.07.09-pm-1276x834.png)
 *I added an "OnSelectAccept" custom Behavior property*
 
-![](assets/images/customcomponents/screen-shot-2021-07-13-at-6.05.57-pm-1836x893.png)
+![](assets/images/customcomponents/screen-shot-2021-07-13-at-6.05.57-pm-1836x893.webp)
 *I enabled "Enhanced component properties" in the settings dialog*
 
 ![](assets/images/customcomponents/screen-shot-2021-07-13-at-6.07.42-pm-1268x832.png)
 *I added an "OnSelectCancel" custom Behavior property*
 
-![](assets/images/customcomponents/screen-shot-2021-07-13-at-6.08.28-pm-1836x941.png)
+![](assets/images/customcomponents/screen-shot-2021-07-13-at-6.08.28-pm-1836x941.webp)
 *I selected the IconCancel control and edited the OnSelect property so that selecting the cancel icon raises the custom OnSelectCancel event*
 
-![](assets/images/customcomponents/screen-shot-2021-07-13-at-6.08.44-pm-1836x941.png)
+![](assets/images/customcomponents/screen-shot-2021-07-13-at-6.08.44-pm-1836x941.webp)
 *I selected the AppName control and edited the Text property so that the value of the Title property is copied to the label text*
 
-![](assets/images/customcomponents/screen-shot-2021-07-13-at-6.08.54-pm-1836x949.png)
+![](assets/images/customcomponents/screen-shot-2021-07-13-at-6.08.54-pm-1836x949.webp)
 *I selected the IconAccept control and edited the OnSelect property so that selecting the tick icon raises the OnSelectAccept event*
 
 

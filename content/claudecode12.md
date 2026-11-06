@@ -18,13 +18,13 @@ The trade-off is that your prompts and code go to an external service rather tha
 
 I started by creating a DeepSeek API key.
 
-![](assets/images/claudecode12/Screenshot-2026-05-08-at-4.20.59-PM.png)
+![](assets/images/claudecode12/Screenshot-2026-05-08-at-4.20.59-PM.webp)
 *I navigated to the DeepSeek platform API keys page — no keys existed yet*
 
 ![](assets/images/claudecode12/Screenshot-2026-05-08-at-4.21.25-PM.webp)
 *I clicked "Create new API key" and entered a name for the key*
 
-![](assets/images/claudecode12/Screenshot-2026-05-08-at-4.22.43-PM.png)
+![](assets/images/claudecode12/Screenshot-2026-05-08-at-4.22.43-PM.webp)
 *The new API key was created and listed on the page*
 
 Then I exported the three environment variables and launched Claude Code.
@@ -56,22 +56,22 @@ create a web page breakout game
 
 The account had no credit yet, so I topped it up.
 
-![](assets/images/claudecode12/Screenshot-2026-05-08-at-4.33.01-PM.png)
+![](assets/images/claudecode12/Screenshot-2026-05-08-at-4.33.01-PM.webp)
 *I went to the DeepSeek Top Up page and selected $2 to add credit*
 
 ![](assets/images/claudecode12/Screenshot-2026-05-08-at-4.38.04-PM.webp)
 *The payment went through successfully*
 
-![](assets/images/claudecode12/Screenshot-2026-05-08-at-4.39.08-PM.png)
+![](assets/images/claudecode12/Screenshot-2026-05-08-at-4.39.08-PM.webp)
 *After topping up, I reran the prompt — Claude Code generated the breakout game HTML and CSS*
 
-![](assets/images/claudecode12/Screenshot-2026-05-08-at-4.39.30-PM.png)
+![](assets/images/claudecode12/Screenshot-2026-05-08-at-4.39.30-PM.webp)
 *I right-clicked the file and chose Open with Live Server to preview it in the browser*
 
 ![](assets/images/claudecode12/Screenshot-2026-05-08-at-4.42.35-PM.png)
 *The breakout game loaded and ran in the browser — score 380, most bricks still in play*
 
-![](assets/images/claudecode12/Screenshot-2026-05-08-at-5.06.56-PM.png)
+![](assets/images/claudecode12/Screenshot-2026-05-08-at-5.06.56-PM.webp)
 *The DeepSeek usage page showed the session cost less than $0.01 — 5 API requests and 114,235 tokens from a $2 top-up*
 
 ![](assets/images/claudecode12/Screenshot-2026-05-08-at-4.49.10-PM.png)
@@ -80,7 +80,7 @@ The account had no credit yet, so I topped it up.
 ![](assets/images/claudecode12/Screenshot-2026-05-08-at-4.49.36-PM.png)
 *Claude Code continued listing its recommended fixes for the game*
 
-![](assets/images/claudecode12/Screenshot-2026-05-08-at-4.51.14-PM.png)
+![](assets/images/claudecode12/Screenshot-2026-05-08-at-4.51.14-PM.webp)
 *I opened the updated file with Live Server again to test the changes*
 
 ![](assets/images/claudecode12/Screenshot-2026-05-08-at-4.55.16-PM.png)

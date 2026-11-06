@@ -79,7 +79,7 @@ $ dotnet new blazorserver --auth SingleOrg --calls-graph -o haddley-blazor-graph
 ![](assets/images/dotnet-core-part2/screen-shot-2023-03-17-at-10.45.37-am-1664x496.png)
 *I ran dotnet new blazorserver ...*
 
-![](assets/images/dotnet-core-part2/screen-shot-2023-03-17-at-10.51.13-am-1836x948.png)
+![](assets/images/dotnet-core-part2/screen-shot-2023-03-17-at-10.51.13-am-1836x948.webp)
 *I ran dotnet run and navigated to localhost*
 
 ![](assets/images/dotnet-core-part2/screen-shot-2023-03-17-at-10.51.33-am-1836x942.png)
@@ -94,10 +94,10 @@ $ dotnet new blazorserver --auth SingleOrg --calls-graph -o haddley-blazor-graph
 ![](assets/images/dotnet-core-part2/screen-shot-2023-03-17-at-10.59.43-am-1836x1063.png)
 *I provided the password*
 
-![](assets/images/dotnet-core-part2/screen-shot-2023-03-17-at-11.00.13-am-1836x1072.png)
+![](assets/images/dotnet-core-part2/screen-shot-2023-03-17-at-11.00.13-am-1836x1072.webp)
 *I skipped Multi factor authentication (for now)*
 
-![](assets/images/dotnet-core-part2/screen-shot-2023-03-17-at-11.00.24-am-1836x1066.png)
+![](assets/images/dotnet-core-part2/screen-shot-2023-03-17-at-11.00.24-am-1836x1066.webp)
 *I chose to stay signed in*
 
 ![](assets/images/dotnet-core-part2/screen-shot-2023-03-17-at-11.00.39-am-1836x1067.png)

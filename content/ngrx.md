@@ -79,7 +79,7 @@ Two tests passed and one test failed.
 ![](assets/images/ngrx/screen-shot-2022-11-27-at-4.31.42-pm-1836x361.png)
 *ng test*
 
-![](assets/images/ngrx/screen-shot-2022-11-27-at-4.32.24-pm-1836x969.png)
+![](assets/images/ngrx/screen-shot-2022-11-27-at-4.32.24-pm-1836x969.webp)
 *karma page*
 
 ![](assets/images/ngrx/screen-shot-2022-11-27-at-4.36.09-pm-1836x803.png)
@@ -197,7 +197,7 @@ I updated app component template and app component class to make use of the sele
 
 After these updates, the tests failed.
 
-![](assets/images/ngrx/screen-shot-2022-11-27-at-7.39.36-pm-1836x1155.png)
+![](assets/images/ngrx/screen-shot-2022-11-27-at-7.39.36-pm-1836x1155.webp)
 *No provider for Store!*
 
 

@@ -21,7 +21,7 @@ The result is not very different from AI applications I have developed in the pa
 ![](assets/images/promptflow1/screenshot-2024-06-11-at-8.19.03am-1236x886.png)
 *I installed Python 3.12.4 for macOS*
 
-![](assets/images/promptflow1/screenshot-2024-06-11-at-8.21.51am-1836x993.png)
+![](assets/images/promptflow1/screenshot-2024-06-11-at-8.21.51am-1836x993.webp)
 *I ran the Install Certificates script*
 
 ![](assets/images/promptflow1/screenshot-2024-06-11-at-8.23.34am-1836x1046.png)
@@ -48,7 +48,7 @@ The result is not very different from AI applications I have developed in the pa
 ![](assets/images/promptflow1/screenshot-2024-06-11-at-10.20.50am-1836x1291.png)
 *I clicked on FLOWS and navigated to the included standard_flowI ensured that the .venv virtual environment was selected and entered a text default value "Hello World"*
 
-![](assets/images/promptflow1/screenshot-2024-06-11-at-10.21.15am-1836x1289.png)
+![](assets/images/promptflow1/screenshot-2024-06-11-at-10.21.15am-1836x1289.webp)
 *I clicked the Test menu item to run the standard_flowThe default text value was added to the "Prompt:" and "Write a simple {{text}} program that displays the greeting message." text*
 
 ![](assets/images/promptflow1/screenshot-2024-06-11-at-2.06.28pm-1836x1142.png)

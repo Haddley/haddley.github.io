@@ -8,7 +8,7 @@ topics: [power-apps, api-integration, gallery-controls, navigation-logic]
 tools: [Power Apps, Power Apps API]
 status: current
 checked: "2026-11-06"
-source_hash: "e80aa7dcfa43"
+source_hash: "d65c9ca08fc6"
 generated_by: gemma4:12b
 ---
 

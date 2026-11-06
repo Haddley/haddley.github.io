@@ -44,7 +44,7 @@ I used the Teams Toolkit with SPFx to create a Teams Tab application backed by a
 ![](assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-8.42.39-am-1380x416.png)
 *I noted that the sample code was a work in progress*
 
-![](assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-8.47.47-am-1836x1138.png)
+![](assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-8.47.47-am-1836x1138.webp)
 *I navigated to {tenant}.sharepoint.com*
 
 ![](assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-8.48.19-am-320x402.png)
@@ -98,13 +98,13 @@ I used the Teams Toolkit with SPFx to create a Teams Tab application backed by a
 ![](assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-9.00.31-am-1836x1046.png)
 *I uploaded*
 
-![](assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-9.00.50-am-1836x1012.png)
+![](assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-9.00.50-am-1836x1012.webp)
 *I added a document*
 
 ![](assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-9.01.35-am-1306x864.png)
 *I checked "Make this solution available to all sites" and clicked Deploy*
 
-![](assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-9.05.30-am-1836x975.png)
+![](assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-9.05.30-am-1836x975.webp)
 *I selected the app and clicked the "Sync to Teams" button in the SharePoint ribbon*
 
 ![](assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-9.05.43-am-516x128.png)
@@ -119,7 +119,7 @@ I used the Teams Toolkit with SPFx to create a Teams Tab application backed by a
 ![](assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-9.09.21-am-1836x408.png)
 *The TodoList SPFx app was published.*
 
-![](assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-9.10.24-am-1836x836.png)
+![](assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-9.10.24-am-1836x836.webp)
 *I opened Teams and selected the Apps item from the left-hand menu*
 
 ![](assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-9.10.37-am-1456x688.png)
@@ -128,7 +128,7 @@ I used the Teams Toolkit with SPFx to create a Teams Tab application backed by a
 ![](assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-9.12.20-am-1226x648.png)
 *The app was a "Personal app" (not a Tabs app)*
 
-![](assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-9.12.39-am-1836x1088.png)
+![](assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-9.12.39-am-1836x1088.webp)
 *I used the Open button to open the Personal App*
 
 ![](assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-9.12.53-am-1200x272.png)
@@ -182,7 +182,7 @@ I used the Teams Toolkit with SPFx to create a Teams Tab application backed by a
 ![](assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-9.26.31-am-1778x788.png)
 *The new version of the SPFx app was published to Teams.*
 
-![](assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-9.27.16-am-1836x765.png)
+![](assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-9.27.16-am-1836x765.webp)
 *The new version of the SPFx app was available in the Teams client app*
 
 ![](assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-9.27.26-am-1498x752.png)
@@ -227,7 +227,7 @@ I used the Teams Toolkit with SPFx to create a Teams Tab application backed by a
 ![](assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-9.34.37-am-1234x1230.png)
 *Looks good*
 
-![](assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-9.34.51-am-1836x1073.png)
+![](assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-9.34.51-am-1836x1073.webp)
 *The new tab was added*
 
 ![](assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-9.35.11-am-822x376.png)
@@ -239,7 +239,7 @@ I used the Teams Toolkit with SPFx to create a Teams Tab application backed by a
 ![](assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-9.35.33-am-1836x962.png)
 *A new SharePoint list item was created*
 
-![](assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-9.37.04-am-1836x1056.png)
+![](assets/images/teamstoolkitspfx/screen-shot-2021-05-30-at-9.37.04-am-1836x1056.webp)
 *The code in SharePointListManager.ts communicates with SharePoint using REST methods*
 ## References
 

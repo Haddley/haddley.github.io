@@ -24,16 +24,16 @@ $ docker run -it -p 1880:1880 nodered/node-red
 ![](assets/images/internetofthings2/screen-shot-2021-03-04-at-7.46.57-pm-1136x736.png)
 *I ran the node-red Docker image*
 
-![](assets/images/internetofthings2/screen-shot-2021-03-06-at-11.35.48-pm-1836x1045.png)
+![](assets/images/internetofthings2/screen-shot-2021-03-06-at-11.35.48-pm-1836x1045.webp)
 *I connected Node-RED to the MQTT broker*
 
-![](assets/images/internetofthings2/screen-shot-2021-03-06-at-11.41.33-pm-1836x1051.png)
+![](assets/images/internetofthings2/screen-shot-2021-03-06-at-11.41.33-pm-1836x1051.webp)
 *I configured the "mqtt in" node to subscribe to "outTopic" messages*
 
-![](assets/images/internetofthings2/screen-shot-2021-03-06-at-11.42.05-pm-1836x1053.png)
+![](assets/images/internetofthings2/screen-shot-2021-03-06-at-11.42.05-pm-1836x1053.webp)
 *I used the "debug" node to display the incoming "outTopic" messages on the debug panel*
 
-![](assets/images/internetofthings2/screen-shot-2021-03-06-at-11.45.34-pm-1836x1040.png)
+![](assets/images/internetofthings2/screen-shot-2021-03-06-at-11.45.34-pm-1836x1040.webp)
 *I used the "mqtt out" node to publish "1" or "0" to the "inTopic" and the ESP8266 LED turned on or off.*
 
 
@@ -69,10 +69,10 @@ A developer can arrange for fans controlled by all things on floor 2 to be turne
 
 Sample ESP8266 code is shown below.
 
-![](assets/images/internetofthings2/screen-shot-2021-03-07-at-11.21.47-am-1836x1106.png)
+![](assets/images/internetofthings2/screen-shot-2021-03-07-at-11.21.47-am-1836x1106.webp)
 *I published to "cmd/hvac/building3/floor2/confroom2/thing1/builtinled"*
 
-![](assets/images/internetofthings2/screen-shot-2021-03-07-at-11.35.42-am-1836x1108.png)
+![](assets/images/internetofthings2/screen-shot-2021-03-07-at-11.35.42-am-1836x1108.webp)
 *I subscribed to "cmd/hvac/#"*
 
 

@@ -18,10 +18,10 @@ Plan Mode (`/plan` or Shift+Tab twice) puts Claude into a read-only phase. It ca
 
 I ran `/plan` to switch Claude into planning mode:
 
-![](assets/images/claudecode5/Screenshot-2026-01-21-at-4.45.37-PM.png)
+![](assets/images/claudecode5/Screenshot-2026-01-21-at-4.45.37-PM.webp)
 *I ran /plan to enter planning mode*
 
-![](assets/images/claudecode5/Screenshot-2026-01-21-at-4.45.54-PM.png)
+![](assets/images/claudecode5/Screenshot-2026-01-21-at-4.45.54-PM.webp)
 *Claude confirmed plan mode was enabled — no edits would be made until I approved*
 
 I then asked Claude to create 10 greeting scripts:
@@ -30,7 +30,7 @@ I then asked Claude to create 10 greeting scripts:
 can you create 10 similar scripts that provide unique greetings
 ```
 
-![](assets/images/claudecode5/Screenshot-2026-01-21-at-4.49.52-PM.png)
+![](assets/images/claudecode5/Screenshot-2026-01-21-at-4.49.52-PM.webp)
 *I asked Claude to plan 10 greeting scripts*
 
 ![](assets/images/claudecode5/Screenshot-2026-01-21-at-4.50.40-PM.webp)

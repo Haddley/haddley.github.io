@@ -32,7 +32,7 @@ The local model is free. How much do you think handing it the small functions wi
 
 In DeepSeek Harness I opened Plugins, then Subagent, switched on "Allow agents to choose models for Subagents", and ticked only `qwen3-coder:30b`. With only the local model allowed, the planner cannot send a piece to a hosted model by mistake.
 
-![](assets/images/deepseekharnesshybrid/subagent-setting.png)
+![](assets/images/deepseekharnesshybrid/subagent-setting.webp)
 *Plugins → Subagent: agents may choose only my local qwen3-coder:30b*
 
 :::watch-it Save the setting first
@@ -59,7 +59,7 @@ When everything is done, run all the tests; they must all pass. Then open the ga
 At the end, report which pieces the local model wrote, which you wrote, the test results, and what the screenshot showed.
 ```
 
-![](assets/images/deepseekharnesshybrid/setup.png)
+![](assets/images/deepseekharnesshybrid/setup.webp)
 *The session before I sent the prompt: DeepSeek-V4-Pro High, Standard mode, Workspace Write*
 
 ## What a piece looks like

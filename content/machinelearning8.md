@@ -82,7 +82,7 @@ Every time the Steal or No Steal button is pressed the app has new intelligence 
 
 The Label() function adds the current sequence and label (steal 1 or no steal 0) to the page's HTML, adds the current sequence and label to a "dataset" variable and then calls the FindSteal() function.
 
-![](assets/images/machinelearning8/screen-shot-2022-06-11-at-7.22.42-pm-1272x715.png)
+![](assets/images/machinelearning8/screen-shot-2022-06-11-at-7.22.42-pm-1272x715.webp)
 *I reviewed the Label() function which adds the current sequence and label (steal 1 or no steal 0) to the page's HTML*
 
 ![](assets/images/machinelearning8/screen-shot-2022-06-14-at-8.16.13-pm-1536x784.png)

@@ -9,7 +9,7 @@ topics: [sharepoint-framework, react-hooks, web-part-deployment, rest-apis]
 tools: [React, SharePoint, react-big-calendar, SharePoint Framework]
 status: current
 checked: "2026-11-06"
-source_hash: "dc13db4b59b9"
+source_hash: "a71a5bcfab6f"
 generated_by: gemma4:12b
 ---
 

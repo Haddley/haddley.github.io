@@ -74,7 +74,7 @@ $ node login
 
 $ node publish
 
-![](assets/images/npmcc/screen-shot-2021-02-27-at-6.08.25-pm-1836x1284.png)
+![](assets/images/npmcc/screen-shot-2021-02-27-at-6.08.25-pm-1836x1284.webp)
 *npm publish*
 
 

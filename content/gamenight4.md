@@ -90,7 +90,7 @@ Why might a tracker name a donation-link click something other than a purchase? 
 
 There's a Buy Me a Coffee link in the footer of every game, and I track clicks on it as `bmc_click`, labelled by source (`link`, `qr`, or `qr_scan`) so I can see which one people actually use:
 
-![](assets/images/gamenight4/bmc-footer-qr.png)
+![](assets/images/gamenight4/bmc-footer-qr.webp)
 *The footer on the launcher page — the Buy Me a Coffee link and its QR code, each tracked separately*
 
 GA4 ships a default suggested `purchase` Key Event on every property, and I deliberately never touched it. `purchase` implies a completed transaction with a currency, a value, a transaction id — and a static site with no callback from Buy Me a Coffee can only ever observe the click, never whether someone actually made a donation. Naming that event `purchase` would make the dashboard show what looks like real revenue data that isn't there. `bmc_click` is the honest version: a measure of intent, not payment. The real number lives on the Buy Me a Coffee dashboard, not in GA4.

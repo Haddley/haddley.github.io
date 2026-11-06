@@ -68,7 +68,7 @@ They are all close, which is the first surprise: the choice of design matters le
 In my first run, which I cut to 10 epochs, the plain GAN, built from ordinary layers, produced the same black shirt shape for every one of the 32 random inputs I gave it. This is called mode collapse: the generator found one picture that fools the discriminator, and kept making it. When I ran the notebook's full 50 epochs, it did not collapse: its 32 pictures were different from each other, with shirts, trousers, and shoes, but speckled with noise. So the collapse was not permanent. A GAN can pass through bad stages, which is part of why they are hard to train.
 :::
 
-![](assets/images/sklearn17/jupyter-stacked-recon.png)
+![](assets/images/sklearn17/jupyter-stacked-recon.webp)
 *An autoencoder at work: the top row is five original pictures, and the bottom row is what the decoder rebuilt from just 30 numbers each: close, but blurred*
 
 ## What training means here
@@ -101,7 +101,7 @@ A: Diffusion models, with larger networks and text prompts added, are behind muc
 
 The chapter is in the notebook that goes with the book, [17_autoencoders_gans_and_diffusion_models.ipynb](https://github.com/ageron/handson-ml3/blob/main/17_autoencoders_gans_and_diffusion_models.ipynb). I ran everything before the final extra section, but with the three most expensive trainings cut down at first. I then ran the two GANs again at the notebook's full 50 epochs, and the diffusion model at its full 100, which took several hours on the processor. Everything else, including the autoencoders, ran as written. I ran the parts at the same time, on my Mac Studio, which took under an hour. My first attempt hung. The notebook's setup imports scikit-learn before TensorFlow, which seemed to deadlock TensorFlow on my Mac; once I removed that import, the runs finished.
 
-![](assets/images/sklearn17/jupyter-conv-recon.png)
+![](assets/images/sklearn17/jupyter-conv-recon.webp)
 *A convolutional autoencoder after 10 passes: the validation error is 0.0135, and the rebuilt pictures, bottom row, are again blurred versions of the originals above*
 
 ![](assets/images/sklearn17/jupyter-tsne.webp)

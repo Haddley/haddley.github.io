@@ -19,7 +19,7 @@ To get started, I needed a ChatGPT Plus subscription.
 ![](assets/images/customgpt/Screenshot-2025-10-03-at-8.04.16-AM.webp)
 *I chose the recommended plan for Plus subscribers*
 
-![](assets/images/customgpt/Screenshot-2025-10-03-at-8.05.44-AM.png)
+![](assets/images/customgpt/Screenshot-2025-10-03-at-8.05.44-AM.webp)
 *I entered my credit card details to upgrade*
 
 ![](assets/images/customgpt/Screenshot-2025-10-03-at-8.07.28-AM.png)
@@ -35,7 +35,7 @@ Here's how I built my custom GPT using the GPT Builder. I wanted to create somet
 ![](assets/images/customgpt/Screenshot-2025-10-03-at-9.51.06-AM.png)
 *I selected the GPTs menu and clicked Create*
 
-![](assets/images/customgpt/Screenshot-2025-10-03-at-8.08.53-AM.png)
+![](assets/images/customgpt/Screenshot-2025-10-03-at-8.08.53-AM.webp)
 *I clicked the Configure tab to start customizing*
 
 ## How I Crafted Effective Instructions
@@ -73,10 +73,10 @@ Your report MUST be structured using the following sections:
 - **My Target Market:** I sell to medium-sized companies, which I define as having approximately $2 million in turnover.
 - **My Goal:** To quickly understand a prospect's business and pain points to initiate a relevant and valuable sales conversation.
 
-![](assets/images/customgpt/Screenshot-2025-10-03-at-8.13.49-AM.png)
+![](assets/images/customgpt/Screenshot-2025-10-03-at-8.13.49-AM.webp)
 *I added the detailed set of instructions*
 
-![](assets/images/customgpt/Screenshot-2025-10-03-at-8.18.34-AM.png)
+![](assets/images/customgpt/Screenshot-2025-10-03-at-8.18.34-AM.webp)
 *I entered a name and description for my GPT*
 
 ![](assets/images/customgpt/Screenshot-2025-10-03-at-8.19.17-AM.webp)
@@ -101,7 +101,7 @@ Here's what I discovered about sharing and using custom GPTs:
 | **Who Can Use a Shared GPT?** | Only users with an active **ChatGPT Plus** subscription. |
 | **Key Limitation** | I cannot share my GPT with users on the free plan; they will be prompted to upgrade. |
 
-![](assets/images/customgpt/Screenshot-2025-10-03-at-8.23.40-AM.png)
+![](assets/images/customgpt/Screenshot-2025-10-03-at-8.23.40-AM.webp)
 *I used the link to navigate to my custom GPT*
 
 ![](assets/images/customgpt/Screenshot-2025-10-03-at-8.23.58-AM.webp)
@@ -158,10 +158,10 @@ I clicked Save.
 ![](assets/images/customgpt/Screenshot-2025-10-03-at-8.59.29-AM.webp)
 *I added a few conversation starters*
 
-![](assets/images/customgpt/Screenshot-2025-10-03-at-10.00.04-AM.png)
+![](assets/images/customgpt/Screenshot-2025-10-03-at-10.00.04-AM.webp)
 *I used the link to access my custom GPT and selected a conversation starter*
 
-![](assets/images/customgpt/Screenshot-2025-10-03-at-10.01.11-AM.png)
+![](assets/images/customgpt/Screenshot-2025-10-03-at-10.01.11-AM.webp)
 *I entered a prospect website address (URL)*
 
 ![](assets/images/customgpt/Screenshot-2025-10-03-at-10.01.58-AM.webp)

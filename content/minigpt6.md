@@ -281,7 +281,7 @@ row = np.concatenate([ids[s:s + before], secret, ids[s + before:s + before + gap
 
 For each row length from 512 to 16,384, and each of the three ways, `mem_sweep.py` builds the machine, trains it for 5 steps on random tokens, and records the most memory used and the time per step. It skips full attention and the mask past 4,096 positions, where they would run the Mac out of memory.
 
-![](assets/images/minigpt6/mem-sweep-output.png)
+![](assets/images/minigpt6/mem-sweep-output.webp)
 *The sweep's own output, and the two training runs*
 
 ## The series
@@ -388,7 +388,7 @@ Every idea in this series in plain words, next to the name the experts use, and 
 
 - **The follow-along notebook:** [`part7-sliding-window/minigpt_follow_along_7.ipynb`](https://github.com/Haddley/minigpt-series/blob/main/part7-sliding-window/minigpt_follow_along_7.ipynb), for Jupyter on a Mac with Apple Silicon. It counts the matches, checks that the chunked window gives full attention's numbers when the window covers the whole row, runs a short memory race, and shows the secret-word results. It is saved with the outputs from my own run, so you can read every result on GitHub without a Mac.
 
-![](assets/images/minigpt6/notebook-top.png)
+![](assets/images/minigpt6/notebook-top.webp)
 *The notebook open in Jupyter on my Mac, with the outputs saved from my run*
 
 - **On the command line,** after Part 3's `prepare_data.py` and `tokenizers_setup.py`:

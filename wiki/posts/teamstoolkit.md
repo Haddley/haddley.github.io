@@ -8,7 +8,7 @@ topics: [teams-development, azure-integration, sql-database-configuration, app-d
 tools: [Teams Toolkit, Visual Studio Code, Azure, SQL Database, Azure Data Studio, Microsoft Teams]
 status: current
 checked: "2026-11-06"
-source_hash: "51bfaa545591"
+source_hash: "29241f022336"
 generated_by: gemma4:12b
 ---
 

@@ -38,7 +38,7 @@ To test SwapCards, I created:
 
 Running a single copy of the client code calling SwapCardV1 worked correctly. I ended up with a shuffled deck containing 13 cards of each suit.
 
-![](assets/images/mssqlserver2/screen-shot-2021-03-27-at-9.01.56-pm-1836x1139.png)
+![](assets/images/mssqlserver2/screen-shot-2021-03-27-at-9.01.56-pm-1836x1139.webp)
 *Shuffle results single client*
 
 
@@ -46,7 +46,7 @@ Running a single copy of the client code calling SwapCardV1 worked correctly. I 
 
 However, running multiple copies of the client code revealed a concurrency issue with SwapCardV1.
 
-![](assets/images/mssqlserver2/screen-shot-2021-03-27-at-9.08.55-pm-1836x1136.png)
+![](assets/images/mssqlserver2/screen-shot-2021-03-27-at-9.08.55-pm-1836x1136.webp)
 *Shuffle failure*
 
 
@@ -59,7 +59,7 @@ With concurrency introduced, the original SwapCards stored procedure failed sile
 
 With the updated SwapCards stored procedure, I was able to run multiple updates concurrently.
 
-![](assets/images/mssqlserver2/screen-shot-2021-03-27-at-9.25.19-pm-1836x1138.png)
+![](assets/images/mssqlserver2/screen-shot-2021-03-27-at-9.25.19-pm-1836x1138.webp)
 *Shuffle success*
 
 
@@ -67,7 +67,7 @@ With the updated SwapCards stored procedure, I was able to run multiple updates 
 
 Snapshot isolation guarantees that reads in a transaction see a consistent snapshot and that the transaction only commits if no conflicting concurrent update occurred. With snapshot isolation enabled, there is a chance that a commit will fail and raise an error — which is the desired behaviour. In the code above, if SwapCards threw an error the client caught it, printed a message, and continued. I considered having the client retry the swap instead.
 
-![](assets/images/mssqlserver2/screen-shot-2021-03-27-at-9.25.30-pm-1836x1131.png)
+![](assets/images/mssqlserver2/screen-shot-2021-03-27-at-9.25.30-pm-1836x1131.webp)
 *Concurrency exceptions (that the client code needs to handle)*
 
 

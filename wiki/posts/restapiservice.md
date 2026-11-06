@@ -8,7 +8,7 @@ topics: [rest-apis, node-js, express-framework, http-methods, docker-containers]
 tools: [Node.js, Express, npm, Visual Studio Code, Docker]
 status: current
 checked: "2026-11-06"
-source_hash: "6f954de707cc"
+source_hash: "447a50c9e02d"
 generated_by: gemma4:12b
 ---
 

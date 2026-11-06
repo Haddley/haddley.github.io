@@ -45,7 +45,7 @@ The `[ExternalBusinessEvent]` decorator attribute in Business Central enables de
 ![](assets/images/businesscentralbusinessevents/Screenshot-2025-12-19-at-12.49.36-PM.webp)
 *External Business Event Code ran*
 
-![](assets/images/businesscentralbusinessevents/Screenshot-2025-12-19-at-12.50.29-PM.png)
+![](assets/images/businesscentralbusinessevents/Screenshot-2025-12-19-at-12.50.29-PM.webp)
 *Flow ran successfully*
 
 :::no-dumb-questions

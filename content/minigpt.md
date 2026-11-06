@@ -581,7 +581,7 @@ Try it below: switch the MLP off in any of the four blocks, and compare the chan
 
 ### The MLP in the original Python
 
-![](assets/images/minigpt/feed-forward.png)
+![](assets/images/minigpt/feed-forward.webp)
 *I ran the 1.3 cell, which defines the `FeedForward` class: two linear layers with a GELU between them, then dropout*
 
 ```python
@@ -684,7 +684,7 @@ One head asks one query. Think about hidden state 3 in `goo`. What are two diffe
 
 ### Attention in the original Python
 
-![](assets/images/minigpt/causal-self-attention.png)
+![](assets/images/minigpt/causal-self-attention.webp)
 *I ran the 1.2 cell. The top of the class, shown here, is `__init__`, which creates the weights and the causal mask*
 
 Like every part of the model, the class has two halves. `__init__` runs once, when the model is built, and creates the fixed weights. `forward` runs every time, and uses them.
@@ -1251,7 +1251,7 @@ Every line in that cell has a job:
 
 The markdown cell under 1.1 lists the sizes for a small model, chosen so it runs easily in Colab, and the code cell below it records them in one place:
 
-![](assets/images/minigpt/model-configuration.png)
+![](assets/images/minigpt/model-configuration.webp)
 *I ran the 1.1 cell, which defines `GPTConfig` with the small model's defaults*
 
 The cell prints nothing when I run it. It only defines a class. No model exists and no memory is used until section 1.6 creates a configuration and builds a model from it.

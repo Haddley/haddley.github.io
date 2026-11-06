@@ -34,27 +34,27 @@ I would like to create a web page LISP Interpreter. Do you have any questions?
 
 Claude asked a series of clarifying questions to nail down the design:
 
-![](assets/images/claudecode8/Screenshot-2026-02-01-at-4.54.55-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-01-at-4.54.55-PM.webp)
 *Claude asked whether to use a Scheme-like dialect*
 
-![](assets/images/claudecode8/Screenshot-2026-02-01-at-4.56.06-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-01-at-4.56.06-PM.webp)
 *Claude asked whether to use a notebook-style UI*
 
-![](assets/images/claudecode8/Screenshot-2026-02-01-at-4.56.27-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-01-at-4.56.27-PM.webp)
 *Claude asked whether to use vanilla HTML/CSS/JS with no frameworks*
 
-![](assets/images/claudecode8/Screenshot-2026-02-01-at-4.56.53-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-01-at-4.56.53-PM.webp)
 *Claude asked which standard library functions to include*
 
 With the requirements settled, Claude researched the best approach:
 
-![](assets/images/claudecode8/Screenshot-2026-02-01-at-4.57.35-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-01-at-4.57.35-PM.webp)
 *Claude asked permission to search for reference implementations*
 
-![](assets/images/claudecode8/Screenshot-2026-02-01-at-4.58.02-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-01-at-4.58.02-PM.webp)
 *Claude searched for LISP interpreter architecture examples*
 
-![](assets/images/claudecode8/Screenshot-2026-02-01-at-4.59.01-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-01-at-4.59.01-PM.webp)
 *Claude asked permission to fetch a reference article*
 
 ![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.02.15-PM.webp)
@@ -68,41 +68,41 @@ With the requirements settled, Claude researched the best approach:
 
 Claude then drafted a full implementation plan:
 
-![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.05.00-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.05.00-PM.webp)
 *Claude presented its plan*
 
-![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.05.38-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.05.38-PM.webp)
 *Claude outlined the interpreter architecture — tokeniser, parser, evaluator, environment*
 
-![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.06.02-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.06.02-PM.webp)
 *Claude set out the implementation order*
 
-![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.06.17-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.06.17-PM.webp)
 *Claude defined a verification plan for each component*
 
 ### Building and running
 
 Claude created the project structure and I opened it with Live Server:
 
-![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.06.50-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.06.50-PM.webp)
 *Claude asked permission to create the project directories*
 
-![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.14.17-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.14.17-PM.webp)
 *I opened index.html in VS Code*
 
 ![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.15.10-PM.webp)
 *I launched the app with Live Server*
 
-![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.15.48-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.15.48-PM.webp)
 *The LISP Notebook was running in the browser*
 
-![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.16.18-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.16.18-PM.webp)
 *I ran the first expression in the notebook*
 
-![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.17.48-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.17.48-PM.webp)
 *I created a factorial function and it evaluated correctly*
 
-![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.18.41-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.18.41-PM.webp)
 *I tested error handling — the interpreter returned a meaningful error message*
 
 ## Adding tests
@@ -131,7 +131,7 @@ Claude proposed using Jest and began setting up the test suite:
 ![](assets/images/claudecode8/Screenshot-2026-02-01-at-9.01.42-PM.webp)
 *I asked Claude to continue*
 
-![](assets/images/claudecode8/Screenshot-2026-02-01-at-9.08.54-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-01-at-9.08.54-PM.webp)
 *Claude ran npm test*
 
 ![](assets/images/claudecode8/Screenshot-2026-02-02-at-3.27.30-AM.webp)
@@ -143,7 +143,7 @@ Claude proposed using Jest and began setting up the test suite:
 /init
 ```
 
-![](assets/images/claudecode8/Screenshot-2026-02-02-at-3.44.24-AM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-02-at-3.44.24-AM.webp)
 *I ran /init to generate a CLAUDE.md for the project*
 
 ![](assets/images/claudecode8/Screenshot-2026-02-02-at-3.49.45-AM.webp)
@@ -158,18 +158,18 @@ How do I ensure that this code is deployed to Azure everytime it is pushed to gi
 ![](assets/images/claudecode8/Screenshot-2026-02-02-at-3.51.38-AM.png)
 *I asked Claude how to set up CI/CD to Azure*
 
-![](assets/images/claudecode8/Screenshot-2026-02-02-at-3.52.17-AM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-02-at-3.52.17-AM.webp)
 *Claude recommended Azure Static Web Apps as the simplest option*
 
 Claude created the GitHub Actions workflow:
 
-![](assets/images/claudecode8/Screenshot-2026-02-02-at-3.58.59-AM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-02-at-3.58.59-AM.webp)
 *Claude created the .github/workflows directory*
 
 ![](assets/images/claudecode8/Screenshot-2026-02-02-at-3.59.20-AM.webp)
 *Claude created the azure-static-web-apps.yml workflow file*
 
-![](assets/images/claudecode8/Screenshot-2026-02-02-at-4.00.10-AM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-02-at-4.00.10-AM.webp)
 *Claude outlined the remaining manual steps in the Azure portal*
 
 I created the Static Web App resource in the Azure portal:
@@ -177,7 +177,7 @@ I created the Static Web App resource in the Azure portal:
 ![](assets/images/claudecode8/Screenshot-2026-02-02-at-2.27.46-PM.png)
 *I navigated to portal.azure.com and created a new resource*
 
-![](assets/images/claudecode8/Screenshot-2026-02-02-at-2.28.27-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-02-at-2.28.27-PM.webp)
 *I selected Static Web App*
 
 ![](assets/images/claudecode8/Screenshot-2026-02-02-at-2.29.14-PM.png)
@@ -195,7 +195,7 @@ I created the Static Web App resource in the Azure portal:
 ![](assets/images/claudecode8/Screenshot-2026-02-02-at-2.35.00-PM.png)
 *Deployment complete*
 
-![](assets/images/claudecode8/Screenshot-2026-02-02-at-2.35.19-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-02-at-2.35.19-PM.webp)
 *I opened the app link*
 
 ![](assets/images/claudecode8/Screenshot-2026-02-02-at-2.35.52-PM.png)
@@ -213,7 +213,7 @@ I connected the Azure deployment token to GitHub Actions:
 
 To verify the full pipeline, I asked Claude to update the accent colours:
 
-![](assets/images/claudecode8/Screenshot-2026-02-02-at-3.01.19-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-02-at-3.01.19-PM.webp)
 *I identified the CSS accent colour variable to update*
 
 ```prompt
@@ -229,7 +229,7 @@ update --accent and --accent-hover colors to be brighter
 ![](assets/images/claudecode8/Screenshot-2026-02-02-at-3.06.17-PM.png)
 *The deploy job completed successfully*
 
-![](assets/images/claudecode8/Screenshot-2026-02-02-at-3.07.08-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-02-at-3.07.08-PM.webp)
 *The updated accent colour was visible in the app*
 
 ![](assets/images/claudecode8/Screenshot-2026-02-02-at-3.07.35-PM.png)

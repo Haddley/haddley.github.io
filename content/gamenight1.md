@@ -4,7 +4,7 @@ part: 1
 description: "How the games/ project keeps every phone in sync with no server at all — host-authoritative state over a peer-to-peer mesh"
 date: "2026-08-16"
 categories: ["JavaScript"]
-image: "/assets/images/gamenight1/launcher-grid.png"
+image: "/assets/images/gamenight1/launcher-grid.webp"
 tags: "webrtc, peerjs, peer-to-peer, state-management, multiplayer"
 hidden: false
 slug: "gamenight1"
@@ -14,7 +14,7 @@ My family is spread across several countries, and the games we grew up playing t
 
 That's why I built [haddley.github.io/games](https://haddley.github.io/games/) — a family of multiplayer party games (trivia, bluffing, drawing, an auction, a board game, and more) as pure static HTML with no backend at all. I should be upfront that "I built" is doing some heavy lifting: a large share of the actual code was written with Claude Code, and the project has doubled as deliberate practice for me at the skills that come with that — describing intent clearly enough that an AI agent builds the right thing, reviewing and steering an agentic session rather than typing every line myself, and the more conversational, "vibe coding" style of iterating on a feature by describing what's wrong with it rather than diffing the code by hand. Nineteen games is a lot of surface area to get that practice on. One browser hosts and holds the game; every other browser joins it — but how each of those two things happens turns out to be far more flexible than "scan a QR code" alone. Two people at a cafe can play entirely on their phones with no TV involved at all — one hosts, the other types in the 4-letter code. A living room can do it the more usual way, with a TV creating the room and everyone scanning its QR code off the big screen. Someone who can't see that screen can instead be sent a plain link and open it on their laptop, landing in the exact same room. Someone dictating the room code down an actual phone call is typing the same 4 letters everyone else scanned. And a game doesn't have to start on a TV to end up on one — I can host on my phone with three of us already playing, then bring a TV into the room afterward purely as a scoreboard, joining the room my phone already created rather than creating a second one of its own. The same room can easily mix both: the two phones in front of the TV sharing the same wifi, and the cluster in the second house reaching in over the open internet, all at once — which turns out to matter a lot for how each of those connections actually gets made. That's [Part 2](/posts/gamenight2/). From the state layer's point of view, covered in this post, it makes no difference at all: same code, same rules, same single source of truth, regardless of which players are on the same LAN and which are halfway around the world.
 
-![](assets/images/gamenight1/launcher-grid.png)
+![](assets/images/gamenight1/launcher-grid.webp)
 *The launcher grid at haddley.github.io/games — 19 games, each a self-contained HTML file*
 
 I'm writing this series to explain the parts of that project I think are genuinely interesting: how state stays in sync with no server, how two devices actually find each other across the internet, why I added a spoken auctioneer to one game (and why one browser can never hear him), and how I'm measuring and driving traffic to the site. This first post is about state.
@@ -106,7 +106,7 @@ Because `render()` only ever reads `H` and never cares where a change came from,
 
 No component tree, no diffing library — just string-built `innerHTML` from whatever state last arrived. High-frequency updates like a countdown timer patch a DOM node by id instead of going through this, so an in-progress touch interaction never gets yanked out from under a finger.
 
-![](assets/images/gamenight1/tv-lobby-qr.png)
+![](assets/images/gamenight1/tv-lobby-qr.webp)
 *The TV becomes the room's single source of truth the moment it creates a room — a QR code and a 4-letter code are all a phone needs to join*
 
 ## Hosting is a role, not a kind of device

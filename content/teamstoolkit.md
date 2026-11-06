@@ -60,7 +60,7 @@ Teams Toolkit makes creating Teams Tabs/Azure applications easier.
 ![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-3.56.20-pm-970x336.png)
 *Provisioning was in progress*
 
-![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.09.03-pm-1836x1083.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.09.03-pm-1836x1083.webp)
 *I reviewed the newly created resource group*
 
 ![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.09.28-pm-1718x670.png)
@@ -90,7 +90,7 @@ Teams Toolkit makes creating Teams Tabs/Azure applications easier.
 ![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.25.13-pm-1230x334.png)
 *I installed the app to the organization*
 
-![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.26.40-pm-1836x903.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.26.40-pm-1836x903.webp)
 *I opened the Microsoft Teams admin center and located the app pending approval*
 
 ![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.26.58-pm-1484x896.png)
@@ -120,7 +120,7 @@ Teams Toolkit makes creating Teams Tabs/Azure applications easier.
 ![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.31.12-pm-876x972.png)
 *I provided consent*
 
-![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.31.30-pm-1836x1357.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.31.30-pm-1836x1357.webp)
 *No tasks were displayed yet*
 
 ![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.32.02-pm-1740x328.png)
@@ -132,10 +132,10 @@ Teams Toolkit makes creating Teams Tabs/Azure applications easier.
 ![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.35.11-pm-1836x977.png)
 *A row was added to the database*
 
-![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.42.13-pm-1836x1181.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.42.13-pm-1836x1181.webp)
 *The function app implemented the REST API*
 
-![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.45.25-pm-1836x1182.png)
+![](assets/images/teamstoolkit/screen-shot-2021-05-29-at-4.45.25-pm-1836x1182.webp)
 *Tab.js*
 
 

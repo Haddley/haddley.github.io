@@ -9,7 +9,7 @@ topics: [t-sql, stored-procedures, snapshot-isolation, concurrency-control]
 tools: [Microsoft SQL Server, C, JavaScript, mssql node module, Java]
 status: current
 checked: "2026-11-06"
-source_hash: "f78e445f4e49"
+source_hash: "a200dc2f8f62"
 generated_by: gemma4:12b
 ---
 

@@ -18,22 +18,22 @@ I started by creating a new solution called "Contacts" to keep everything organi
 
 Inside the solution I went to New > App > Model-driven app.
 
-![](assets/images/powerapps9/Screenshot-2026-06-01-at-5.08.55-PM.png)
+![](assets/images/powerapps9/Screenshot-2026-06-01-at-5.08.55-PM.webp)
 *I selected Model-driven app from the New menu*
 
 I named the app "Contacts" and clicked Create.
 
-![](assets/images/powerapps9/Screenshot-2026-06-01-at-5.09.10-PM.png)
+![](assets/images/powerapps9/Screenshot-2026-06-01-at-5.09.10-PM.webp)
 *I named the model-driven app Contacts*
 
 I clicked Add page and chose Dataverse table to pull in the Contact table.
 
-![](assets/images/powerapps9/Screenshot-2026-06-01-at-5.10.04-PM.png)
+![](assets/images/powerapps9/Screenshot-2026-06-01-at-5.10.04-PM.webp)
 *I chose Dataverse table from the Add page options*
 
 I searched for "contact" and selected the Contact table.
 
-![](assets/images/powerapps9/Screenshot-2026-06-01-at-5.10.27-PM.png)
+![](assets/images/powerapps9/Screenshot-2026-06-01-at-5.10.27-PM.webp)
 *I selected the Contact table from the Dataverse table picker*
 
 The editor showed a live preview of the app with the standard Dynamics 365 navigation.
@@ -43,7 +43,7 @@ The editor showed a live preview of the app with the standard Dynamics 365 navig
 
 When I tried to navigate away, Power Apps asked me to save and publish first.
 
-![](assets/images/powerapps9/Screenshot-2026-06-01-at-5.11.02-PM.png)
+![](assets/images/powerapps9/Screenshot-2026-06-01-at-5.11.02-PM.webp)
 *Power Apps asked me to save and publish before leaving*
 
 After publishing, I opened the app and saw the My Active Contacts view — empty for now.
@@ -126,7 +126,7 @@ A: Not here. I used "Add from description with Copilot", gave it a topic name an
 
 I went to the Topics tab and clicked Add a topic, then selected "Add from description with Copilot" to let Copilot build the topic for me.
 
-![](assets/images/powerapps9/Screenshot-2026-06-01-at-5.23.54-PM.png)
+![](assets/images/powerapps9/Screenshot-2026-06-01-at-5.23.54-PM.webp)
 *I selected Add from description with Copilot*
 
 I entered the topic name as "What is the Capital of France" and the intended response as "The Capital of France is Paris".
@@ -166,7 +166,7 @@ Back in the solution I used Add existing to bring the customised agent into the 
 
 The agent now appeared under the Agents section of the solution, marked as customised and owned by me.
 
-![](assets/images/powerapps9/Screenshot-2026-06-01-at-6.21.34-PM.png)
+![](assets/images/powerapps9/Screenshot-2026-06-01-at-6.21.34-PM.webp)
 *The customised agent was listed in the solution ready to be shipped with it*
 
 :::watch-it The customised agent is not in your solution until you add it

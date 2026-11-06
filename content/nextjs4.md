@@ -65,7 +65,7 @@ I deployed the update.
 ![](assets/images/nextjs4/screen-shot-2021-11-11-at-3.00.59-pm-944x204.png)
 *The deployment completed*
 
-![](assets/images/nextjs4/screen-shot-2021-11-11-at-3.00.10-pm-1836x944.png)
+![](assets/images/nextjs4/screen-shot-2021-11-11-at-3.00.10-pm-1836x944.webp)
 */articles*
 
 ![](assets/images/nextjs4/screen-shot-2021-11-11-at-3.00.20-pm-1836x944.png)
@@ -129,7 +129,7 @@ I used `AzureADProvider` from `next-auth/providers/azure-ad` to connect Next.js 
 ![](assets/images/nextjs4/screen-shot-2022-01-13-at-11.14.42-am-1836x934.png)
 *Client Secret*
 
-![](assets/images/nextjs4/screen-shot-2022-01-13-at-11.16.04-am-1836x983.png)
+![](assets/images/nextjs4/screen-shot-2022-01-13-at-11.16.04-am-1836x983.webp)
 *Redirect URIs and Implicit flows*
 
 ![](assets/images/nextjs4/screen-shot-2022-01-13-at-11.17.40-am-1836x1100.png)

@@ -59,10 +59,10 @@ I used the `Link` component to enable client-side navigation between pages. It i
 
 I added public files to the project's public folder.
 
-![](assets/images/nextjs1/screen-shot-2021-11-05-at-7.42.29-pm-1836x1133.png)
+![](assets/images/nextjs1/screen-shot-2021-11-05-at-7.42.29-pm-1836x1133.webp)
 *profile.jpeg*
 
-![](assets/images/nextjs1/screen-shot-2021-11-05-at-7.43.26-pm-1836x884.png)
+![](assets/images/nextjs1/screen-shot-2021-11-05-at-7.43.26-pm-1836x884.webp)
 *I accessed the profile.jpeg file*
 
 ![](assets/images/nextjs1/screen-shot-2021-11-05-at-7.49.46-pm-1768x1064.png)
@@ -108,7 +108,7 @@ Finally I copied the _document.js file from: [https://github.com/vercel/next.js/
 
 see also: [https://github.com/vercel/next.js/tree/canary/examples/with-styled-components](https://github.com/vercel/next.js/tree/canary/examples/with-styled-components)
 
-![](assets/images/nextjs1/screen-shot-2021-11-06-at-4.53.54-pm-1836x1057.png)
+![](assets/images/nextjs1/screen-shot-2021-11-06-at-4.53.54-pm-1836x1057.webp)
 *Styled Components*
 
 ![](assets/images/nextjs1/screen-shot-2021-11-06-at-11.52.18-am-1782x1076.png)

@@ -31,7 +31,7 @@ The command tells Claude to:
 
 I ran `/powershell` at the start of a new session:
 
-![](assets/images/claudecode6/Screenshot-2026-01-21-at-6.35.11-PM.png)
+![](assets/images/claudecode6/Screenshot-2026-01-21-at-6.35.11-PM.webp)
 *I ran /powershell — Claude read the project files and loaded the context*
 
 ![](assets/images/claudecode6/Screenshot-2026-01-21-at-6.37.04-PM.webp)

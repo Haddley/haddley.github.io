@@ -4,7 +4,7 @@ part: 4
 description: "Building a Brief Builder feature into nsw-legal-research-assistant, inspired by Thomson Reuters CoCounsel Legal's newly announced Brief Builder — intake, candid argument proposals, a plain-English NSW Caselaw search a non-specialist would actually type, citation-graph leads pulled straight out of a judgment's own text, and a fourth argument grounded on two authorities it never had to fetch itself"
 date: "2026-08-26"
 categories: ["AI"]
-image: "/assets/images/agenticaiforprofessionals4/18-draft-final.png"
+image: "/assets/images/agenticaiforprofessionals4/18-draft-final.webp"
 tags: "brief-builder, citation-following, citation-graph, legal-tech, nsw-caselaw"
 hidden: false
 slug: "agenticaiforprofessionals4"
@@ -14,7 +14,7 @@ slug: "agenticaiforprofessionals4"
 
 The walkthrough below follows one real research thread end to end inside `nsw-legal-research-assistant`, deliberately typed the way a non-specialist actually would: search NSW Caselaw with a plain-English description, not the case's own name; read the case that turns up closely enough to follow what it cites; and watch one argument stay honestly ungrounded even after two real authorities are sitting in the database, because neither one actually bears on it. Along the way, a newer feature gets its first real workout: when a develop call comes back ungrounded, the app now offers one-click leads pulled straight out of an already-fetched judgment's own citation list.
 
-![](assets/images/agenticaiforprofessionals4/18-draft-final.png)
+![](assets/images/agenticaiforprofessionals4/18-draft-final.webp)
 *Draft tab: the finished motion, four arguments deep, the state the walkthrough below ends up at*
 
 ## The case
@@ -28,7 +28,7 @@ Uploading the statement of claim directly produces a rename-suggestion box, then
 ![](assets/images/agenticaiforprofessionals4/03-title-suggestion.png)
 *The rename-suggestion box right after upload*
 
-![](assets/images/agenticaiforprofessionals4/04-intake-summary.png)
+![](assets/images/agenticaiforprofessionals4/04-intake-summary.webp)
 *Full generated Intake Summary — caption, parties table, key facts, attorney notes*
 
 ## CASE THEORY
@@ -74,19 +74,19 @@ Searching NSW Caselaw for the target case deliberately avoids two traps a real n
 >
 > Morissi v Syed [2022] NSWCATAP 162
 
-![](assets/images/agenticaiforprofessionals4/08-search-defective-motor-vehicle.png)
+![](assets/images/agenticaiforprofessionals4/08-search-defective-motor-vehicle.webp)
 *NSW Caselaw search results for "defective motor vehicle" — McNally as the second hit, every other result genuinely on-topic too*
 
 Clicking **Fetch & ingest** pulls the live judgment into this brief's own authority database, lazily creating it on the spot, and re-runs Develop on argument 1 automatically. The top-of-page banner tracks the database's real, running count from here on: "Brief authorities — Reyes v Caldwell Motors (c40af6ba) (1)" — the `(c40af6ba)` suffix is real collection-name disambiguation, not a bug, kicking in whenever another collection already claims the same name.
 
-![](assets/images/agenticaiforprofessionals4/09-develop-authority-database.png)
+![](assets/images/agenticaiforprofessionals4/09-develop-authority-database.webp)
 *Develop tab: authority database now shows (1), argument 1 auto-developed*
 
 Redeveloping argument 1 once the authority database has settled produces its full, real grounded reasoning, citing McNally directly for the test the Appeal Panel actually applied:
 
 > The plaintiff's claim discloses a major failure under the Australian Consumer Law... The principles established in McNally v Central Coast Automotive Pty Ltd t/as Gosford Nissan [2025] NSWCATCD 111 provide further guidance on the test for a major failure. The Appeal Panel in that case held that a major failure may be constituted by one defect or a series of specific or individual defects which, when taken as a whole, constitute a major failure...
 
-![](assets/images/agenticaiforprofessionals4/10-arg1-developed-grounded.png)
+![](assets/images/agenticaiforprofessionals4/10-arg1-developed-grounded.webp)
 *Argument 1's full grounded reasoning*
 
 ## Beat 4 — Develop argument 2: also grounds on McNally alone
@@ -95,7 +95,7 @@ Clicking **Develop** on argument 2 grounds again — McNally's judgment is long 
 
 > The Defendant's assertion that there is a genuine dispute about the existence of defects and their impact on the Vehicle's functionality is without merit... The Tribunal's decision in McNally v Central Coast Automotive Pty Ltd t/as Gosford Nissan [2025] NSWCATCD 111 supports this conclusion. While the Tribunal ultimately found that the applicant had failed to establish that the consumer guarantee under s 54 of the ACL had been breached, the fact that the Tribunal noted the existence of faults with the vehicle and the applicant's reasonable attempts to have it repaired underscores the complexity of the dispute...
 
-![](assets/images/agenticaiforprofessionals4/11-arg2-developed-grounded.png)
+![](assets/images/agenticaiforprofessionals4/11-arg2-developed-grounded.webp)
 *Argument 2's full grounded reasoning*
 
 That candidly includes an unfavourable detail about McNally — the Tribunal there actually found *against* the applicant on the substantive point. Nothing is filtered for favourability before it goes into the reasoning.
@@ -112,7 +112,7 @@ Right below that, a feature new to this build: a second section pulls related ca
 >
 > Khan v Kang · Prendergast v Western Murray Irrigation Ltd · Collins v Urban · Resource Pacific Pty Ltd v Wilkinson · P v Child Support Registrar · Cary Boyd v Agrison Pty Ltd · Australian Rong Hua Fu Pty Ltd v Ateco Automotive · Stephens v Chevron Motor Court Ltd — each with its own **Open ↗** and **Fetch & ingest**
 
-![](assets/images/agenticaiforprofessionals4/12-arg3-citation-graph-leads.png)
+![](assets/images/agenticaiforprofessionals4/12-arg3-citation-graph-leads.webp)
 *Argument 3, ungrounded: the new citation-graph leads panel alongside the older manual-search suggestions*
 
 Nobody searched for any of these — the app regex-extracts every case-name-and-citation pair McNally's own judgment text mentions, and whenever a develop call comes back ungrounded, offers whichever of those aren't already ingested anywhere in the app as one-click leads. The older "search terms worth trying manually" suggestions still appear underneath, unchanged — generic LLM-guessed terms, not real citations, clearly a different tier of trust from the citation-graph leads sitting above them.
@@ -143,12 +143,12 @@ Reading the judgment text itself turns up the same case named directly at McNall
 
 Searching NSW Caselaw for Safi by name — no longer specialist knowledge at this point, just a name read off a real page two steps ago — returns it as the real top hit, and **Fetch & ingest** adds it to the brief's authority database too.
 
-![](assets/images/agenticaiforprofessionals4/14-search-safi.png)
+![](assets/images/agenticaiforprofessionals4/14-search-safi.webp)
 *NSW Caselaw search results for Safi*
 
 Redeveloping argument 3 once more, now that both McNally and Safi are in the database, still comes back honestly ungrounded — not a bug. Neither judgment discusses the evidentiary weight of a defendant's own service records; both are about the substantive ACL tests, a different legal question from what this argument's own heading actually asks. Having more authorities sitting in the database doesn't manufacture relevance where there isn't any. Re-opening the search panel and searching "McNally" again shows **✓ Already ingested** in place of a live "Fetch & ingest" button.
 
-![](assets/images/agenticaiforprofessionals4/15-search-already-ingested.png)
+![](assets/images/agenticaiforprofessionals4/15-search-already-ingested.webp)
 *Argument 1's grounded reasoning again, and a search panel showing "✓ Already ingested" for a lead already in this brief's authority database*
 
 ## Beat 7 — A fourth argument, grounded on both authorities together
@@ -162,7 +162,7 @@ Developing it grounds immediately, on both authorities at once — this heading 
 
 > The Plaintiff's loss and damage due to the vehicle's defects give rise to a legitimate claim against the First and Second Defendants under the Australian Consumer Law (ACL)... as set out in Safi v Heartland Motors Pty Ltd t/as Heartland Chrysler [2016] NSWCATAP 80, where the Tribunal concluded that losses will only be recoverable if there is a causal connection between the breach and the loss which is reasonably foreseeable... The Plaintiff's claim is not subject to the monetary limit of $100,000... as stated in McNally v Central Coast Automotive Pty Ltd t/as Gosford Nissan [2025] NSWCATCD 111... In Safi v Heartland Motors Pty Ltd t/as Heartland Chrysler [2016] NSWCATAP 80, the Tribunal found that the applicant's losses were not recoverable because they were costs that resulted from choices the applicants freely made, but that is not the case here, as the Plaintiff's losses were directly caused by the vehicle's defects.
 
-![](assets/images/agenticaiforprofessionals4/17-arg4-developed-grounded.png)
+![](assets/images/agenticaiforprofessionals4/17-arg4-developed-grounded.webp)
 *Argument 4's full grounded reasoning, citing both McNally and Safi, including an unfavourable Safi holding distinguished on its facts*
 
 Note again what candour looks like here: an unfavourable Safi holding — losses from the applicant's own free choices weren't recoverable there — is cited and distinguished on its facts, not quietly left out.
@@ -178,7 +178,7 @@ The generated draft includes the caption, a Table of Contents covering all four 
 [2025] NSWCATCD 111
 ```
 
-![](assets/images/agenticaiforprofessionals4/18-draft-final.png)
+![](assets/images/agenticaiforprofessionals4/18-draft-final.webp)
 *Draft tab: full rendered motion, Table of Authorities*
 
 Both of those citations are cases this walkthrough found live — one by a plain-English search anyone could type, the other by actually reading what the first one cited.

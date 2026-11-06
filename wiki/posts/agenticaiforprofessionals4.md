@@ -9,7 +9,7 @@ topics: [agentic-ai, legal-tech, citation-graph-analysis, automated-legal-resear
 tools: [nsw-legal-research-assistant, Thomson Reuters CoCounsel Legal, NSW Caselaw]
 status: current
 checked: "2026-11-05"
-source_hash: "26f7392c333f"
+source_hash: "9ec842cb8dfe"
 generated_by: gemma4:12b
 ---
 

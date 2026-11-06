@@ -17,13 +17,13 @@ I created a Copilot Studio Agent that connected to Business Central using a Copi
 You ask an agent "Who do we buy stuff from?" How would it know that this question is about vendors in Business Central, and what would it have to be able to do to answer?
 :::
 
-![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-4.55.54-pm.png)
+![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-4.55.54-pm.webp)
 *I created a new agent*
 
 ![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-4.56.34-pm.webp)
 *I named the agent "Business Central Tools Agent"*
 
-![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-4.56.56-pm.png)
+![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-4.56.56-pm.webp)
 *I created a New Agent*
 
 ![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-4.57.38-pm.png)
@@ -60,7 +60,7 @@ A: The agent decides which tool to use from its name and description, so I chang
 ![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-6.22.19-pm.webp)
 *I clicked Save and tested the tool "Who do we buy stuff from?". I clicked the Allow button*
 
-![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-6.27.25-pm.png)
+![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-6.27.25-pm.webp)
 *The Business Central company had a single "Example Vendor"*
 
 ![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-6.26.05-pm.webp)
@@ -95,7 +95,7 @@ My first attempt to use the Create Vendor record tool returned an error, and it 
 ![](assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.53.47-am.webp)
 *The new Vendor record was created*
 
-![](assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.54.19-am.png)
+![](assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.54.19-am.webp)
 *The new vendor was visible in Business Central*
 
 :::pencil Which tool answers which question?

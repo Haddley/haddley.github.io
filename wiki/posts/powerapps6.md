@@ -8,7 +8,7 @@ topics: [microsoft-graph, custom-connectors, canvas-apps, azure-active-directory
 tools: [Microsoft Graph, Power Apps, Azure Active Directory, Graph Explorer]
 status: current
 checked: "2026-11-06"
-source_hash: "5726c21f22bb"
+source_hash: "f6162d7aefd5"
 generated_by: gemma4:12b
 ---
 

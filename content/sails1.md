@@ -73,7 +73,7 @@ I used the Azure DevOps Starter to set up a Sails.js Node.js web application wit
 ![](assets/images/sails1/screen-shot-2021-10-12-at-10.51.13-am-1034x232.png)
 *I opened the project in Visual Studio Code*
 
-![](assets/images/sails1/screen-shot-2021-10-12-at-10.53.50-am-1836x1317.png)
+![](assets/images/sails1/screen-shot-2021-10-12-at-10.53.50-am-1836x1317.webp)
 *I reviewed the sample functional tests*
 
 
@@ -90,7 +90,7 @@ I opened a Visual Studio Code terminal, navigated to the Application folder, and
 ```
 
 
-![](assets/images/sails1/screen-shot-2021-10-12-at-11.12.33-am-1836x1046.png)
+![](assets/images/sails1/screen-shot-2021-10-12-at-11.12.33-am-1836x1046.webp)
 *I ran sails lift*
 
 ![](assets/images/sails1/screen-shot-2021-10-12-at-11.13.15-am-1664x1110.png)
@@ -107,7 +107,7 @@ I updated the default page title (in the layout file), which caused the function
 ![](assets/images/sails1/screen-shot-2021-10-12-at-1.18.38-pm-1836x1033.png)
 *I pushed the update*
 
-![](assets/images/sails1/screen-shot-2021-10-12-at-1.32.31-pm-1836x1036.png)
+![](assets/images/sails1/screen-shot-2021-10-12-at-1.32.31-pm-1836x1036.webp)
 *The code was deployed and the functional test failed (as expected)*
 ## References
 

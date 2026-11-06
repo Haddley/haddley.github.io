@@ -16,10 +16,10 @@ I ran the same `page-line-summary` skill from [Claude Code (Part 14)](/posts/cla
 
 I didn't need a curl command to install the skill. I attached the deposition transcript with `@`, answered the two context questions, and got back the page line summary.
 
-![](assets/images/claudecowork1/Screenshot-2026-06-05-at-6.19.30-AM.png)
+![](assets/images/claudecowork1/Screenshot-2026-06-05-at-6.19.30-AM.webp)
 *I right-clicked SKILL.md in the page-line-summary folder and selected Compress to create the zip file*
 
-![](assets/images/claudecowork1/Screenshot-2026-06-05-at-6.19.39-AM.png)
+![](assets/images/claudecowork1/Screenshot-2026-06-05-at-6.19.39-AM.webp)
 *Finder created SKILL.md.zip in the folder, ready to upload to Cowork*
 
 ![](assets/images/claudecowork1/Screenshot-2026-06-04-at-6.47.47-PM.webp)
@@ -39,7 +39,7 @@ I didn't need a curl command to install the skill. I attached the deposition tra
 ![](assets/images/claudecowork1/Screenshot-2026-06-04-at-7.26.28-PM.webp)
 *After I uploaded the zip, Cowork confirmed the skill with an "Uploaded page-line-summary" badge*
 
-![](assets/images/claudecowork1/Screenshot-2026-06-04-at-7.26.57-PM.png)
+![](assets/images/claudecowork1/Screenshot-2026-06-04-at-7.26.57-PM.webp)
 *I opened the skill detail view — it showed the trigger and description*
 
 ![](assets/images/claudecowork1/Screenshot-2026-06-04-at-7.27.18-PM.webp)

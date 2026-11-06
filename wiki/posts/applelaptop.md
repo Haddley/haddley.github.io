@@ -8,7 +8,7 @@ topics: [data-science, machine-learning, python-installation, macos-setup]
 tools: [Anaconda, Conda, Jupyter Notebook, Jupyter Lab, Python, Xcode]
 status: current
 checked: "2026-11-05"
-source_hash: "b8b61561dfd0"
+source_hash: "1720a63d5457"
 generated_by: gemma4:12b
 ---
 

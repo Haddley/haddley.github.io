@@ -96,7 +96,7 @@ const VOICE_REASONS = {
 
 The `blocked` case turned out to have a second, unrelated home besides a fresh iPhone: the game's own attract mode. `?mode=tvsimulation&players=4&rounds=2&lots=2` runs the whole auction against bots with nobody in the room, which is exactly a page nobody has ever tapped — the same permission gap a first-time visitor hits, except now it's permanent, because nobody clicks a television that's just sitting there running a demo loop. Measured directly: 14 lines handed to `speak()` during one idle run, 0 actually started, until a single tap anywhere on the screen unlocked it. It's also how I generated the two screenshots below — both are the attract mode running for real, not a staged live game:
 
-![](assets/images/gamenight3/auctioneer-asks.png)
+![](assets/images/gamenight3/auctioneer-asks.webp)
 *The banner names the actual cause rather than leaving the room to guess — this is the attract mode, gesture-gated exactly like a fresh visitor would be: "tap the screen to give the auctioneer his voice"*
 
 ## Where Amazon Silk fits in
@@ -105,7 +105,7 @@ Fire OS — the Silk browser that ships on every Fire TV — is where `novoices`
 
 The game stays fully playable with the auctioneer mute. Every line he "says" is also shown as on-screen text, and his speech bubble carries the same words a caption would:
 
-![](assets/images/gamenight3/auctioneer-bid-lands.png)
+![](assets/images/gamenight3/auctioneer-bid-lands.webp)
 *A bid landing — the price, who holds it, and his next ask are all on screen regardless of whether anything was actually spoken*
 
 His mouth still moves even with no voice at all, timed off the same syllable plan a real utterance would have used, so a silent Fire TV doesn't show a character frozen mid-sentence under a caption — `mimeLine()` runs the same animation the real `onstart` handler would have triggered, just on a timer instead of real audio events.

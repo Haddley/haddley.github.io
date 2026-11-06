@@ -9,7 +9,7 @@ topics: [deep-neural-networks, backpropagation, activation-functions, batch-norm
 tools: [Scikit-Learn, Keras, TensorFlow, Fashion MNIST, JupyterLab]
 status: current
 checked: "2026-11-06"
-source_hash: "1a888abe316b"
+source_hash: "54b907c40b45"
 generated_by: gemma4:12b
 ---
 

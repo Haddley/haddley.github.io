@@ -64,10 +64,10 @@ The -accept_eula option on New-BCContainer agrees to the end-user licence agreem
 ![](assets/images/devenv/Screenshot-2025-11-17-131857.webp)
 *I reviewed the logs*
 
-![](assets/images/devenv/Screenshot-2025-11-17-131927.png)
+![](assets/images/devenv/Screenshot-2025-11-17-131927.webp)
 *I navigated to http://mysandbox/BC/?tenant=default*
 
-![](assets/images/devenv/Screenshot-2025-11-17-132015.png)
+![](assets/images/devenv/Screenshot-2025-11-17-132015.webp)
 *I reviewed the CRONUS USA, Inc. company*
 
 ![](assets/images/devenv/Screenshot-2025-11-17-132103.png)

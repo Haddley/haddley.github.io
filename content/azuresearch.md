@@ -22,17 +22,17 @@ A database can find a hotel when I give it an exact id. What does a search servi
 
 The sample is a JSON file of hotels.
 
-![](assets/images/azuresearch/Screenshot-2026-02-09-at-3.58.15-PM.png)
+![](assets/images/azuresearch/Screenshot-2026-02-09-at-3.58.15-PM.webp)
 *The sample hotel data on GitHub: a JSON file of hotels, each with a name, a description in English and French, a category, tags, a rating and an address*
 
 ## Create a resource group and a storage account
 
 I put everything in one resource group, so that I can delete it all in one step when I have finished.
 
-![](assets/images/azuresearch/Screenshot-2026-02-09-at-3.59.10-PM.png)
+![](assets/images/azuresearch/Screenshot-2026-02-09-at-3.59.10-PM.webp)
 *I created a resource group called fulltext in East US to hold everything for this walkthrough*
 
-![](assets/images/azuresearch/Screenshot-2026-02-09-at-3.59.25-PM.png)
+![](assets/images/azuresearch/Screenshot-2026-02-09-at-3.59.25-PM.webp)
 *I reviewed the resource group settings and clicked Create*
 
 The data has to live somewhere that the search service can reach. I used a blob container in a storage account.
@@ -70,7 +70,7 @@ The container now needs the file that I will index.
 ![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.05.58-PM.webp)
 *I searched the Marketplace for search service and chose Azure AI Search*
 
-![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.06.52-PM.png)
+![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.06.52-PM.webp)
 *I named the service fulltextsearchservice, put it in Central US, and chose the Free pricing tier*
 
 ![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.07.44-PM.webp)
@@ -93,7 +93,7 @@ A: The search service is the resource that I pay for. An index lives inside it, 
 
 The wizard connects to the data, builds an index from it, and loads the index.
 
-![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.08.11-PM.png)
+![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.08.11-PM.webp)
 *The import wizard asks for a data source, and I chose Azure Blob Storage*
 
 ![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.08.28-PM.webp)
@@ -150,7 +150,7 @@ Based on the status list on the final screen, the wizard created four objects on
 
 ## Search the index
 
-![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.39.00-PM.png)
+![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.39.00-PM.webp)
 *In the Search explorer, I typed new york hotel with pool or gym. The index holds 1 document and 23.1 KB*
 
 ![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.40.28-PM.webp)

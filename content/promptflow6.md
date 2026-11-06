@@ -27,7 +27,7 @@ I used Prompt flow, Semantic Kernel and Planner to create an AI application.
 ![](assets/images/promptflow6/screenshot-2024-09-01-at-3.18.34pm-2136x883.png)
 *I replaced the large language model chat node with a Python node.The answer to every question I ask is "hello "+the question I asked (not very useful)*
 
-![](assets/images/promptflow6/screenshot-2024-09-01-at-3.43.26pm-2136x1400.png)
+![](assets/images/promptflow6/screenshot-2024-09-01-at-3.43.26pm-2136x1400.webp)
 *I added Semantic Kernel to the Python codeI added the Joke function from the FunPlugin.*
 
 ![](assets/images/promptflow6/screenshot-2024-09-01-at-3.47.40pm-1828x182.png)

@@ -28,7 +28,7 @@ The goal was to prove that ShareGate faithfully migrates not just files but the 
 ![](assets/images/shareGate2/Screenshot-2026-05-02-at-1.57.14-PM.webp)
 *I created a new site content type called "Policy" with a description, parented to Document*
 
-![](assets/images/shareGate2/Screenshot-2026-05-02-at-1.57.30-PM.png)
+![](assets/images/shareGate2/Screenshot-2026-05-02-at-1.57.30-PM.webp)
 *I set the group to "Custom Content Types" and clicked OK to save*
 
 ![](assets/images/shareGate2/Screenshot-2026-05-02-at-1.58.05-PM.webp)
@@ -49,7 +49,7 @@ The goal was to prove that ShareGate faithfully migrates not just files but the 
 ![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.24.06-PM.webp)
 *The Policy content type now showed three columns: Name, Title, and Effective Date*
 
-![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.25.06-PM.png)
+![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.25.06-PM.webp)
 *I opened the Documents library and selected Library settings from the Settings menu*
 
 ![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.26.09-PM.webp)
@@ -61,43 +61,43 @@ The goal was to prove that ShareGate faithfully migrates not just files but the 
 ![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.26.51-PM.webp)
 *The Documents settings page now showed a Content Types section with an option to add more*
 
-![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.27.12-PM.png)
+![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.27.12-PM.webp)
 *I added the Policy content type to the library*
 
 ![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.27.45-PM.webp)
 *The Documents library now showed both Document and Policy content types available*
 
-![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.29.30-PM.png)
+![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.29.30-PM.webp)
 *In the modern Documents library, the New button now offered Folder, Document, Policy, and Link options*
 
-![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.31.10-PM.png)
+![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.31.10-PM.webp)
 *I created a new Policy document called "HR Policy" and filled in the Title and Effective Date fields*
 
-![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.32.30-PM.png)
+![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.32.30-PM.webp)
 *I selected the HR Policy document and used the Add column menu to add the Effective Date column to the view*
 
-![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.32.46-PM.png)
+![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.32.46-PM.webp)
 *I used the Edit view columns panel to make the Effective Date column visible in the library view*
 
 ![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.35.58-PM.webp)
 *I opened ShareGate and navigated to the Plan section to run pre-migration reports*
 
-![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.36.45-PM.png)
+![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.36.45-PM.webp)
 *I selected SharePoint - 80 as the target for the permissions matrix report*
 
 ![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.37.54-PM.webp)
 *I configured the permissions matrix report options targeting all site collections in the web application*
 
-![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.39.10-PM.png)
+![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.39.10-PM.webp)
 *The permissions matrix report showed the Home site's permissions for all users and groups*
 
 ![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.39.31-PM.webp)
 *I returned to the ShareGate Plan screen to run the site collection report*
 
-![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.39.43-PM.png)
+![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.39.43-PM.webp)
 *I selected SharePoint - 80 as the target for the site collection report*
 
-![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.39.57-PM.png)
+![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.39.57-PM.webp)
 *I configured the site collection report options targeting SharePoint - 80*
 
 ![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.40.39-PM.webp)
@@ -109,16 +109,16 @@ The goal was to prove that ShareGate faithfully migrates not just files but the 
 ![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.41.11-PM.webp)
 *A confirmation dialog showed the report was successfully saved to Documents*
 
-![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.41.41-PM.png)
+![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.41.41-PM.webp)
 *The ShareGate Tasks page showed the completed site collection and permissions reports alongside the previous copy task*
 
-![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.43.41-PM.png)
+![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.43.41-PM.webp)
 *I switched to the Copy section and connected to the on-premises SharePoint source using Windows authentication*
 
-![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.44.11-PM.png)
+![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.44.11-PM.webp)
 *ShareGate connected to the source and showed the Home site collection available to migrate*
 
-![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.44.39-PM.png)
+![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.44.39-PM.webp)
 *I entered the SharePoint Online destination URL and chose Browser authentication to connect*
 
 ![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.44.57-PM.webp)
@@ -130,31 +130,31 @@ The goal was to prove that ShareGate faithfully migrates not just files but the 
 ![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.45.36-PM.webp)
 *I was prompted to stay signed in and clicked Yes*
 
-![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.45.53-PM.png)
+![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.45.53-PM.webp)
 *ShareGate connected to the destination and showed the OnPremHome site collection ready to receive the migration*
 
 ![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.47.10-PM.webp)
 *The Copy structure screen showed a side-by-side comparison of content types, lists, and libraries between source and destination*
 
-![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.48.50-PM.png)
+![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.48.50-PM.webp)
 *I configured the copy options to merge with OnPremHome in Automatic mode, keeping custom permissions, list content, workflows, and other settings*
 
-![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.49.16-PM.png)
+![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.49.16-PM.webp)
 *ShareGate showed a trial warning that some items may be randomly skipped before the migration started*
 
-![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.51.47-PM.png)
+![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.51.47-PM.webp)
 *The migration was in progress, copying the site collection structure to OnPremHome*
 
 ![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.57.10-PM.webp)
 *The migration report showed "Copy completed" with the full list of successfully migrated items*
 
-![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.58.19-PM.png)
+![](assets/images/shareGate2/Screenshot-2026-05-02-at-2.58.19-PM.webp)
 *I opened the OnPremHome site in SharePoint Online and saw the migrated HR Policy document with the Effective Date column*
 
 ![](assets/images/shareGate2/Screenshot-2026-05-02-at-3.17.38-PM.webp)
 *I opened the Settings panel on the OnPremHome Documents library in SharePoint Online*
 
-![](assets/images/shareGate2/Screenshot-2026-05-02-at-3.18.00-PM.png)
+![](assets/images/shareGate2/Screenshot-2026-05-02-at-3.18.00-PM.webp)
 *I navigated to Site contents on the OnPremHome site to verify the migrated structure*
 
 ![](assets/images/shareGate2/Screenshot-2026-05-02-at-3.18.17-PM.webp)

@@ -8,7 +8,7 @@ topics: [teams-development, spfx-framework, teams-toolkit, sharepoint-integratio
 tools: [Teams Toolkit, SPFx, Visual Studio Code, Microsoft Teams, SharePoint]
 status: current
 checked: "2026-11-06"
-source_hash: "398eff30a4c5"
+source_hash: "dba09ff2a2c4"
 generated_by: gemma4:12b
 ---
 

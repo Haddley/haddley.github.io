@@ -6,7 +6,7 @@ categories: ["Angular","TypeScript"]
 tags: "phaser, game-dev, canvas"
 hidden: false
 slug: "angularphaser"
-image: "/assets/images/angularphaser/phaser-logo-1836x1530.png"
+image: "/assets/images/angularphaser/phaser-logo-1836x1530.webp"
 ---
 
 ## Highlights
@@ -34,7 +34,7 @@ I updated angular.json:
 ![](assets/images/angularphaser/screen-shot-2023-04-23-at-8.11.55-pm-1836x1045.png)
 *I generated the bounce component*
 
-![](assets/images/angularphaser/screen-shot-2023-04-23-at-8.16.17-pm-1836x711.png)
+![](assets/images/angularphaser/screen-shot-2023-04-23-at-8.16.17-pm-1836x711.webp)
 *I updated angular.json with "scripts": ["node_modules/phaser/dist/phaser.min.js"]*
 
 ![](assets/images/angularphaser/screen-shot-2023-04-23-at-9.29.36-pm-1834x442.png)

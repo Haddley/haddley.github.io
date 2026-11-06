@@ -88,19 +88,19 @@ A: The points have random noise added, so the best line through these 100 points
 
 The chapter is in the notebook that goes with the book, [04_training_linear_models.ipynb](https://github.com/ageron/handson-ml3/blob/main/04_training_linear_models.ipynb). I ran everything before the exercise solutions, which took a few seconds on my Mac Studio, and then looked through the results in JupyterLab.
 
-![](assets/images/sklearn4/jupyter-normal-equation.png)
+![](assets/images/sklearn4/jupyter-normal-equation.webp)
 *I worked out the best line directly, with the Normal Equation: an intercept of 4.215 and a slope of 2.770, close to the 4 and 3 used to make the data*
 
-![](assets/images/sklearn4/jupyter-batch-gradient-descent.png)
+![](assets/images/sklearn4/jupyter-batch-gradient-descent.webp)
 *Batch gradient descent started from random numbers, took 1,000 steps downhill, and arrived at exactly the same 4.215 and 2.770*
 
 ![](assets/images/sklearn4/jupyter-learning-rates.webp)
 *The first 20 steps with three learning rates: 0.02 creeps towards the line, 0.1 gets there, and 0.5 overshoots and flies away*
 
-![](assets/images/sklearn4/jupyter-sgd-regressor.png)
+![](assets/images/sklearn4/jupyter-sgd-regressor.webp)
 *Scikit-Learn's SGDRegressor does the same nudging, one instance at a time, and found 4.213 and 2.773*
 
-![](assets/images/sklearn4/jupyter-polynomial-regression.png)
+![](assets/images/sklearn4/jupyter-polynomial-regression.webp)
 *Adding x² as a second feature lets a linear model fit a curve: 1.78 + 0.93x + 0.56x², close to the 2 + x + 0.5x² used to make the data*
 
 ![](assets/images/sklearn4/jupyter-logistic-regression.webp)

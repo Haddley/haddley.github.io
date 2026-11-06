@@ -8,7 +8,7 @@ topics: [retro-gaming, raspberry-pi, hardware-assembly, linux-administration]
 tools: [Pimoroni Picade, Raspberry Pi, RetroPie, Raspberry Pi OS Lite, scp]
 status: current
 checked: "2026-11-06"
-source_hash: "8d069e2b5e5e"
+source_hash: "55efca099a63"
 generated_by: gemma4:12b
 ---
 

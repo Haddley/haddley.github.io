@@ -18,14 +18,14 @@ It worked. You can [play the game the local model built](/invaders-deepseek-harn
 
 I opened DeepSeek Harness with the `invaders-deepseek-harness-ollama` workspace selected. Out of the box, the model picker offered only the DeepSeek cloud models, with DeepSeek-V4-Pro selected by default.
 
-![](assets/images/deepseekharnessollama/harness-home-deepseek-v4-pro.png)
+![](assets/images/deepseekharnessollama/harness-home-deepseek-v4-pro.webp)
 *I opened the invaders-deepseek-harness-ollama workspace; the model picker defaulted to DeepSeek-V4-Pro, and I hovered over Settings*
 
 ## Skipping the cloud key
 
 I opened Settings and selected Models. The only provider listed was the official DeepSeek one, asking for an API key. I left that field empty and clicked "Add model provider" instead.
 
-![](assets/images/deepseekharnessollama/settings-models-deepseek-only.png)
+![](assets/images/deepseekharnessollama/settings-models-deepseek-only.webp)
 *Settings → Models listed only the official DeepSeek provider; I left its API key empty and went to "Add model provider"*
 
 :::brain-power Before the provider form
@@ -43,7 +43,7 @@ The new provider form has two tabs: "Third-party model provider" and "Custom mod
 
 Ollama does not check API keys, but the form still requires one, so I typed a placeholder value.
 
-![](assets/images/deepseekharnessollama/custom-model-api-ollama.png)
+![](assets/images/deepseekharnessollama/custom-model-api-ollama.webp)
 *I chose Custom model API and pointed it at Ollama's OpenAI-compatible endpoint on localhost:11434; the API key is just a placeholder*
 
 ## Choosing a local model
@@ -55,21 +55,21 @@ The Models section at the bottom of the form warned that a custom provider needs
 
 I clicked "Add selected". The model appeared in the provider's model list, and I clicked "Create provider".
 
-![](assets/images/deepseekharnessollama/ollama-provider-with-model.png)
+![](assets/images/deepseekharnessollama/ollama-provider-with-model.webp)
 *The ollama provider now had one model, qwen3-coder:30b, and I clicked Create provider*
 
 ## Two providers, one working
 
 Back on the Models page, both providers sat side by side. DeepSeek showed a red dot because I never gave it a key. The new `ollama` provider, tagged "Custom", showed a green dot.
 
-![](assets/images/deepseekharnessollama/models-list-deepseek-vs-ollama.png)
+![](assets/images/deepseekharnessollama/models-list-deepseek-vs-ollama.webp)
 *DeepSeek (red, no API key) next to my custom ollama provider (green, ready to use)*
 
 ## Selecting the local model
 
 I closed Settings and opened the model picker again. It now had two groups: the DeepSeek cloud models (DeepSeek-V41-Flash and DeepSeek-V4-Pro) and a new `ollama` group containing `qwen3-coder:30b`. I selected the local model.
 
-![](assets/images/deepseekharnessollama/model-picker-qwen3-coder.png)
+![](assets/images/deepseekharnessollama/model-picker-qwen3-coder.webp)
 *The model picker grouped the DeepSeek cloud models and my local ollama model together; I selected qwen3-coder:30b*
 
 At this point every request from this workspace goes to `localhost:11434`. The DeepSeek cloud provider still has no key configured.
@@ -119,7 +119,7 @@ Only read files in this folder.
 When every step is done, tell me the URL to open and list PRD.md section 9 so I can test it.
 ```
 
-![](assets/images/deepseekharnessollama/prompt-in-clean-workspace.png)
+![](assets/images/deepseekharnessollama/prompt-in-clean-workspace.webp)
 *I typed the prompt into a workspace that held only ARCHITECTURE.md, PDD.md and PRD.md, with qwen3-coder:30b selected*
 
 ## The build

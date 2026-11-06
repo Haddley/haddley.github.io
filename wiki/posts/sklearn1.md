@@ -9,7 +9,7 @@ topics: [machine-learning, scikit-learn, linear-regression, k-nearest-neighbors,
 tools: [Scikit-Learn, Python, JupyterLab]
 status: current
 checked: "2026-11-06"
-source_hash: "6fe2085df9e7"
+source_hash: "c42c3d825a1f"
 generated_by: gemma4:12b
 ---
 

@@ -13,10 +13,10 @@ I set up Unity for Meta Quest virtual reality (VR) development. I learned how to
 - Add VR interactions to a Unity scene
 - Preview my app on a Meta Quest 3
 
-![](assets/images/metaunity/Screenshot-2026-02-28-at-7.12.10-PM.png)
+![](assets/images/metaunity/Screenshot-2026-02-28-at-7.12.10-PM.webp)
 *I installed Unity Hub*
 
-![](assets/images/metaunity/Screenshot-2026-02-28-at-7.13.16-PM.png)
+![](assets/images/metaunity/Screenshot-2026-02-28-at-7.13.16-PM.webp)
 *On the Add module screen, I selected the Android Build Support items in the Platforms section.*
 
 ![](assets/images/metaunity/Screenshot-2026-02-28-at-7.16.15-PM.webp)
@@ -103,7 +103,7 @@ I set up Unity for Meta Quest virtual reality (VR) development. I learned how to
 ![](assets/images/metaunity/Screenshot-2026-02-28-at-7.52.37-PM.webp)
 *I saved the file as `Hello World App.apk`*
 
-![](assets/images/metaunity/638996873_1572551410687559_1632293592123777508_n.jpg)
+![](assets/images/metaunity/638996873_1572551410687559_1632293592123777508_n.webp)
 *I connected my Quest 3 headset to my laptop*
 
 ![](assets/images/metaunity/642042904_1896241314585706_6220471991661231394_n.jpg)

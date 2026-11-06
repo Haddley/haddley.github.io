@@ -29,7 +29,7 @@ pi@raspberrypi:~ $ sudo apt install firefox-esr
 ![](assets/images/voicekit2/Screenshot-2025-10-16-at-12.14.19-PM.webp)
 *I opened the Google Cloud Console*
 
-![](assets/images/voicekit2/Screenshot-2025-10-16-at-12.27.12-PM.png)
+![](assets/images/voicekit2/Screenshot-2025-10-16-at-12.27.12-PM.webp)
 *I reviewed the Credentials page*
 
 ![](assets/images/voicekit2/Screenshot-2025-10-16-at-12.34.06-PM.webp)

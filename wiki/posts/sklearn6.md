@@ -9,7 +9,7 @@ topics: [decision-trees, regularization, overfitting, ensemble-learning]
 tools: [Scikit-Learn, JupyterLab, Python]
 status: current
 checked: "2026-11-06"
-source_hash: "cccd990b642e"
+source_hash: "27b3eed2ed17"
 generated_by: gemma4:12b
 ---
 

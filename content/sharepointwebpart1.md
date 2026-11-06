@@ -21,7 +21,7 @@ Once deployed, users can add the new web parts to SharePoint pages.
 
 I used the Yeoman "yo" command to create the web part solution.
 
-![yo @microsof/sharepoint](/assets/images/sharepointwebpart1/screen-shot-2021-02-12-at-10.38.21-am-1836x1378.png)
+![yo @microsof/sharepoint](/assets/images/sharepointwebpart1/screen-shot-2021-02-12-at-10.38.21-am-1836x1378.webp)
 *yo @microsoft/sharepoint*
 
 
@@ -29,7 +29,7 @@ I used the Yeoman "yo" command to create the web part solution.
 
 Yeoman provided a React component as a starting point.
 
-![Web Part React Component](/assets/images/sharepointwebpart1/screen-shot-2021-02-12-at-11.35.33-am-1836x1299.png)
+![Web Part React Component](/assets/images/sharepointwebpart1/screen-shot-2021-02-12-at-11.35.33-am-1836x1299.webp)
 *Web Part React Component*
 
 
@@ -56,7 +56,7 @@ I ran "gulp serve" again to test the result in the Local Workbench and on a Shar
 ![](assets/images/sharepointwebpart1/screen-shot-2021-02-12-at-1.43.01-pm-1900x1342.png)
 *Adding context:WebPartContext to ICalendarProps interface*
 
-![](assets/images/sharepointwebpart1/screen-shot-2021-02-12-at-1.43.32-pm-1900x1343.png)
+![](assets/images/sharepointwebpart1/screen-shot-2021-02-12-at-1.43.32-pm-1900x1343.webp)
 *Updating CalendarWebPart to pass context to Calendar React Component*
 
 ![](assets/images/sharepointwebpart1/screen-shot-2021-02-12-at-1.43.55-pm-1900x1346.png)

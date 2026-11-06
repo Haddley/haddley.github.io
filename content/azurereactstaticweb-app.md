@@ -24,7 +24,7 @@ I created a React app, tested it locally, pushed the code to GitHub and publishe
 ![](assets/images/azurereactstaticweb-app/screen-shot-2024-01-08-at-12.34.02-pm-808x918.png)
 *I named the repository react-azure*
 
-![](assets/images/azurereactstaticweb-app/screen-shot-2024-01-08-at-12.34.26-pm-1836x1257.png)
+![](assets/images/azurereactstaticweb-app/screen-shot-2024-01-08-at-12.34.26-pm-1836x1257.webp)
 *I published the empty repository to GitHub. I clicked on the Open in Visual Studio Code (insiders) button*
 
 ![](assets/images/azurereactstaticweb-app/screen-shot-2024-01-08-at-12.35.49-pm-1836x447.png)
@@ -33,10 +33,10 @@ I created a React app, tested it locally, pushed the code to GitHub and publishe
 ![](assets/images/azurereactstaticweb-app/screen-shot-2024-01-08-at-12.36.22-pm-1836x748.png)
 *create-react-app ran*
 
-![](assets/images/azurereactstaticweb-app/screen-shot-2024-01-08-at-12.37.25-pm-1836x1338.png)
+![](assets/images/azurereactstaticweb-app/screen-shot-2024-01-08-at-12.37.25-pm-1836x1338.webp)
 *create-react-app finished. I ran npm run build to build the React project*
 
-![](assets/images/azurereactstaticweb-app/screen-shot-2024-01-08-at-12.37.46-pm-1836x1341.png)
+![](assets/images/azurereactstaticweb-app/screen-shot-2024-01-08-at-12.37.46-pm-1836x1341.webp)
 *A build folder was created*
 
 ![](assets/images/azurereactstaticweb-app/screen-shot-2024-01-08-at-12.39.35-pm-1836x854.png)
@@ -45,7 +45,7 @@ I created a React app, tested it locally, pushed the code to GitHub and publishe
 ![](assets/images/azurereactstaticweb-app/screen-shot-2024-01-08-at-12.40.14-pm-1424x1060.png)
 *The sample React app was loaded from http://127.0.0.1:5000*
 
-![](assets/images/azurereactstaticweb-app/screen-shot-2024-01-08-at-12.40.25-pm-1836x1264.png)
+![](assets/images/azurereactstaticweb-app/screen-shot-2024-01-08-at-12.40.25-pm-1836x1264.webp)
 *I committed the updates*
 
 ![](assets/images/azurereactstaticweb-app/screen-shot-2024-01-08-at-12.40.57-pm-1836x1255.png)
@@ -81,7 +81,7 @@ I created a React app, tested it locally, pushed the code to GitHub and publishe
 ![](assets/images/azurereactstaticweb-app/screen-shot-2024-01-08-at-12.48.45-pm-1836x1029.png)
 *Some warnings were generated*
 
-![](assets/images/azurereactstaticweb-app/screen-shot-2024-01-08-at-12.49.40-pm-1836x1030.png)
+![](assets/images/azurereactstaticweb-app/screen-shot-2024-01-08-at-12.49.40-pm-1836x1030.webp)
 *The Azure Static Web App was updated*
 
 ![](assets/images/azurereactstaticweb-app/screen-shot-2024-01-08-at-12.50.32-pm-1836x1037.png)

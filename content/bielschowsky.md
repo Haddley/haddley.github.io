@@ -19,7 +19,7 @@ For the past few months I have been building a private OpenXR project at `/code/
 
 The page is a single self-contained HTML file with a head-roll slider, a correction toggle, and half a dozen panels that all update together. It runs entirely in the browser — no headset needed.
 
-![](assets/images/bielschowsky/hero-level.png)
+![](assets/images/bielschowsky/hero-level.webp)
 *I opened the page and left the head roll at level. The banner at the top says what the page is: an open notebook, not a result. Everything on it was measured on one person, by that person, and whether applying the correction actually helps has never been cleanly tested.*
 
 ## Running the three-step test

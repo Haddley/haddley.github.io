@@ -9,7 +9,7 @@ topics: [prompt-flow, langchain, docker-containers, ai-deployment]
 tools: [Azure Prompt Flow, LangChain, Python, pip, DuckDuckGo, Docker]
 status: current
 checked: "2026-11-06"
-source_hash: "fe5906909fd1"
+source_hash: "ce6656d90555"
 generated_by: gemma4:12b
 ---
 

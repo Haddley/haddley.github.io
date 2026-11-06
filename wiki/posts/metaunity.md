@@ -8,7 +8,7 @@ topics: [meta-quest-development, unity-vr-programming, passthrough-technology, v
 tools: [Unity, Meta XR Core SDK, Meta XR Interaction SDK, Visual Studio Code, Claude Code, Meta Quest 3]
 status: current
 checked: "2026-11-05"
-source_hash: "550a84e10df3"
+source_hash: "213ea585dcfa"
 generated_by: gemma4:12b
 ---
 

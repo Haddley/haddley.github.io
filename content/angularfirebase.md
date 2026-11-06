@@ -14,7 +14,7 @@ I created a Firebase project using https://console.firebase.google.com
 ![](assets/images/angularfirebase/screen-shot-2023-04-25-at-5.02.39-pm-1836x1011.png)
 *I named the project haddley-firebase*
 
-![](assets/images/angularfirebase/screen-shot-2023-04-25-at-5.03.04-pm-1836x1009.png)
+![](assets/images/angularfirebase/screen-shot-2023-04-25-at-5.03.04-pm-1836x1009.webp)
 *I disabled Google Analytics*
 
 ![](assets/images/angularfirebase/screen-shot-2023-04-25-at-5.05.06-pm-1836x1001.png)
@@ -29,13 +29,13 @@ I created a Firebase project using https://console.firebase.google.com
 ![](assets/images/angularfirebase/screen-shot-2023-04-25-at-5.10.13-pm-1836x1013.png)
 *I entered an app nickname*
 
-![](assets/images/angularfirebase/screen-shot-2023-04-25-at-5.11.10-pm-1836x1006.png)
+![](assets/images/angularfirebase/screen-shot-2023-04-25-at-5.11.10-pm-1836x1006.webp)
 *I reviewed the Firebase SDK configuration*
 
 ![](assets/images/angularfirebase/screen-shot-2023-04-25-at-5.14.03-pm-1836x921.png)
 *I navigated to the Firebase project dashboard*
 
-![](assets/images/angularfirebase/screen-shot-2023-04-25-at-5.14.57-pm-1836x729.png)
+![](assets/images/angularfirebase/screen-shot-2023-04-25-at-5.14.57-pm-1836x729.webp)
 *I clicked Get started*
 
 ![](assets/images/angularfirebase/screen-shot-2023-04-25-at-5.15.48-pm-1836x842.png)
@@ -62,10 +62,10 @@ I created a new Angular project using "ng new"
 % ng new haddley-angular
 ```
 
-![](assets/images/angularfirebase/screen-shot-2023-04-25-at-5.19.35-pm-1836x983.png)
+![](assets/images/angularfirebase/screen-shot-2023-04-25-at-5.19.35-pm-1836x983.webp)
 *I ran ng new haddley-angular*
 
-![](assets/images/angularfirebase/screen-shot-2023-04-25-at-5.22.07-pm-1836x965.png)
+![](assets/images/angularfirebase/screen-shot-2023-04-25-at-5.22.07-pm-1836x965.webp)
 *I ran npm start*
 
 ![](assets/images/angularfirebase/screen-shot-2023-04-25-at-5.23.19-pm-1836x643.png)

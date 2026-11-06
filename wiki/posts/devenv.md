@@ -9,7 +9,7 @@ topics: [business-central, docker-containers, powershell-automation, development
 tools: [Dynamics 365 Business Central, Docker, BCContainerHelper, PowerShell]
 status: current
 checked: "2026-11-05"
-source_hash: "c2aff543fd06"
+source_hash: "9a413c486526"
 generated_by: gemma4:12b
 ---
 

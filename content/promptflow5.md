@@ -105,7 +105,7 @@ I used Prompt flow and LangChain to create and deploy an AI application.
 ![](assets/images/promptflow5/screenshot-2024-09-01-at-2.00.43pm-2136x1164.png)
 *I used Docker Desktop to create a container based on the new Docker image I specified a local port 8080 and an OpenAI key*
 
-![](assets/images/promptflow5/screenshot-2024-09-01-at-2.01.27pm-2136x1155.png)
+![](assets/images/promptflow5/screenshot-2024-09-01-at-2.01.27pm-2136x1155.webp)
 *The Docker container started*
 
 ![](assets/images/promptflow5/screenshot-2024-09-01-at-2.03.38pm-2102x1414.png)

@@ -68,7 +68,7 @@ L.tileLayer('//services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapS
 ![](assets/images/leaflet/screen-shot-2022-02-21-at-10.11.31-am-1836x1106.webp)
 *I viewed index.html from Azure on my laptop*
 
-![](assets/images/leaflet/273975021-368817684761513-1776904781628079268-n-750x1334.jpg)
+![](assets/images/leaflet/273975021-368817684761513-1776904781628079268-n-750x1334.webp)
 *I viewed index.html from Azure on iPhone (Safari)*
 
 
@@ -95,7 +95,7 @@ The calculations are described here:
 
 Example code:
 
-![](assets/images/leaflet/screen-shot-2022-02-21-at-11.45.50-am-1836x981.png)
+![](assets/images/leaflet/screen-shot-2022-02-21-at-11.45.50-am-1836x981.webp)
 *I displayed a given location*
 
 
@@ -160,7 +160,7 @@ I created a "LocationSelect" control that allows users to "fly" between location
 
 Click [here](https://haddley.github.io/leaflet/index.html) to navigate to a [demo page](https://haddley.github.io/leaflet/index.html).
 
-![](assets/images/leaflet/screen-shot-2022-02-21-at-2.02.15-pm-1836x894.png)
+![](assets/images/leaflet/screen-shot-2022-02-21-at-2.02.15-pm-1836x894.webp)
 *I created a travel by map control*
 
 

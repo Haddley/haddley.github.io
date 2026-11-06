@@ -241,7 +241,7 @@ jobs:
 ![](assets/images/azurefunctionsbc/Screenshot-2025-12-15-152033.png)
 *Testing the QRCodeGenerator function in the Azure portal*
 
-![](assets/images/azurefunctionsbc/Screenshot-2025-12-15-152054.png)
+![](assets/images/azurefunctionsbc/Screenshot-2025-12-15-152054.webp)
 *Test results*
 
 :::no-dumb-questions

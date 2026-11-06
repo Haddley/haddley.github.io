@@ -9,7 +9,7 @@ topics: [local-llms, claude-code, ollama-integration, private-ai-development]
 tools: [Claude Code, Ollama, qwen3-coder30b, Python]
 status: current
 checked: "2026-11-05"
-source_hash: "53c07bf8b1f8"
+source_hash: "6e417e99194d"
 generated_by: gemma4:12b
 ---
 

@@ -44,7 +44,7 @@ The two white wires, the motor's and the controller's, are joined, so the speed 
 ![](assets/images/attiny3/breadboard.svg)
 *The breadboard with the optional 100 nF capacitor between the pin 7 column and the ground rail, turned to match the way the board sits in the bag*
 
-![](assets/images/attiny3/final-breadboard-frame-bag.jpg)
+![](assets/images/attiny3/final-breadboard-frame-bag.webp)
 *The final breadboard in the frame bag, with the capacitors, the two resistors and the leads to the bike's wires*
 
 The program is 678 bytes, and this is the full listing, comments included, the same as `hubspeed.ino` in the repository. The interrupt handler runs on both edges of the wire: the falling edge records when a pulse started, and the rising edge decides whether it was a real wheel pulse. It still calls only `micros`.

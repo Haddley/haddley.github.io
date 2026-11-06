@@ -5,7 +5,7 @@ date: "2022-01-23"
 categories: ["JavaScript"]
 tags: "phaser, html5-games, game-dev"
 slug: "phaser"
-image: "/assets/images/phaser/phaser-logo-1836x1530.png"
+image: "/assets/images/phaser/phaser-logo-1836x1530.webp"
 ---
 
 

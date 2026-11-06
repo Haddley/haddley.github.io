@@ -18,7 +18,7 @@ I assembled the Google AIY Voice Kit, a do-it-yourself version of a Google Home 
 ![](assets/images/voicekit/FF078E6D-EA98-4E1E-976B-B036E33DA9F2.webp)
 *I assembled the cardboard casing*
 
-![](assets/images/voicekit/Screenshot-2025-10-11-at-4.12.07-PM.png)
+![](assets/images/voicekit/Screenshot-2025-10-11-at-4.12.07-PM.webp)
 *[Download image](https://github.com/google/aiyprojects-raspbian/releases)*
 
 ![](assets/images/voicekit/Screenshot-2025-10-11-at-4.10.12-PM.png)
