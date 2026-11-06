@@ -80,11 +80,17 @@ export default function RootLayout({
         )}
       </head>
       <body className={`${jost.className} ${kalam.variable} antialiased`}>
-        {/* Register COI service worker for SharedArrayBuffer on GitHub Pages */}
-        <Script id="coi-sw" strategy="beforeInteractive">{`
+        {/* The site once registered a service worker that made every page cross-origin isolated (WebLLM needed
+            SharedArrayBuffer) and reloaded any page that was not. Nothing needs that now, and it reloaded
+            /topics/ forever because the worker never covered it. This removes the worker for visitors who
+            still have it installed; the registration and the reload are gone. */}
+        <Script id="coi-cleanup" strategy="beforeInteractive">{`
           if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/coi-serviceworker.js').then(function() {
-              if (!window.crossOriginIsolated) { location.reload(); }
+            navigator.serviceWorker.getRegistrations().then(function (regs) {
+              regs.forEach(function (r) {
+                var worker = r.active || r.waiting || r.installing;
+                if (worker && worker.scriptURL.indexOf('/coi-serviceworker.js') !== -1) r.unregister();
+              });
             });
           }
         `}</Script>
