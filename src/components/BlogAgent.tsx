@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import { describePage, starterQuestions, capHistory } from '@/lib/page-context';
 import Link from 'next/link';
 
 declare global {
@@ -391,10 +392,10 @@ export default function BlogAgent() {
     }
   }, [agentData, router]);
 
-  const sendMessage = async () => {
-    if (!input.trim() || !engineRef.current || isThinking) return;
+  const sendMessage = async (preset?: string) => {
+    const userText = (typeof preset === 'string' ? preset : input).trim();
+    if (!userText || !engineRef.current || isThinking) return;
 
-    const userText = input.trim();
     setInput('');
     setIsThinking(true);
     setToolStatus('');
@@ -409,37 +410,8 @@ export default function BlogAgent() {
       const engine = engineRef.current;
       const posts = agentData?.posts ?? [];
       // Describe the page the user is currently on
-      let pageContext = 'home page';
-      const postMatch = pathname.match(/^\/posts\/([^/]+)\/?$/);
-      // Category pages live at /categories/<slug>/ (and /posts/category/<slug>/); topic pages at /topics/<slug>/
-      const categoryMatch = pathname.match(/^\/(?:categories|posts\/category)\/([^/]+)\/?$/);
-      const topicMatch = pathname.match(/^\/topics\/([^/]+)\/?$/);
-      let pageRule = '';
-      if (postMatch) {
-        const slug = postMatch[1];
-        const post = posts.find(p => p.slug === slug);
-        pageContext = post
-          ? `post url: "/posts/${slug}/", slug: "${slug}", title: "${post.title}" (categories: ${post.categories.join(', ')}; tags: ${post.tags})`
-          : `post at /posts/${slug}/`;
-      } else if (categoryMatch) {
-        const catSlug = categoryMatch[1];
-        const catName = CATEGORIES.find(c => getCategoryUrl(c) === `/categories/${catSlug}/`) ?? catSlug;
-        pageContext = `"${catName}" category page`;
-        pageRule = `(2b) The user is on the "${catName}" category page. "this category", "this page" and "summarise this" mean the "${catName}" category: call get_posts_by_category with category "${catName}", then summarise its themes and name the most useful posts. Do NOT call list_categories and do NOT ask which category.`;
-      } else if (topicMatch) {
-        const topicSlug = topicMatch[1];
-        pageContext = `topic page /topics/${topicSlug}/`;
-        pageRule = `(2b) The user is on the topic page "${topicSlug}". "this topic", "this page" and "summarise this" mean that topic: call get_topic with topic "${topicSlug}", then summarise its idea, key claims and where the posts differ, and link the posts. Do NOT ask which topic.`;
-      } else if (pathname.startsWith('/topics')) {
-        pageContext = 'topics list';
-        pageRule = '(2b) The user is on the topics list. "topics", "what is here" and "list them" mean the topic pages: call list_topics. For questions about a subject use search_wiki.';
-      } else if (pathname.startsWith('/posts')) {
-        pageContext = 'blog post listing';
-      } else if (pathname.startsWith('/categories')) {
-        pageContext = 'categories overview';
-      }
+      const { pageContext, pageRule, currentSlug } = describePage(pathname, posts);
 
-      const currentSlug = postMatch?.[1] ?? '';
       const postPageRule = currentSlug
         ? `(2) Only use get_post_content with slug "${currentSlug}" when the user refers to THIS page with words like "this post", "this", "the current post", or asks with no post name.`
         : `(2) You are not on a post page — do not call get_post_content unless the user explicitly names a post.`;
@@ -590,9 +562,7 @@ export default function BlogAgent() {
       // Commit user + final assistant text only — no tool call/response messages
       // Keep only the last few exchanges: the context window is small, and the backend refuses more than
       // 40 messages in one request (each tool round in a turn adds two). Start on a user message.
-      const kept = [...apiHistoryRef.current, ...turnMsgs].slice(-MAX_HISTORY_MESSAGES);
-      while (kept.length && kept[0].role !== 'user') kept.shift();
-      apiHistoryRef.current = kept;
+      apiHistoryRef.current = capHistory([...apiHistoryRef.current, ...turnMsgs], MAX_HISTORY_MESSAGES);
     } catch (err) {
       const msg = err instanceof Error ? err.message : 'Something went wrong.';
       setMessages(prev => [...prev, { role: 'assistant', content: `Error: ${msg}` }]);
@@ -703,8 +673,21 @@ export default function BlogAgent() {
             <>
               <div style={{ flex: 1, overflowY: 'auto', padding: '12px 14px', display: 'flex', flexDirection: 'column', gap: 8 }}>
                 {messages.length === 0 && (
-                  <div style={{ color: '#bbb', fontSize: 13, textAlign: 'center', marginTop: 40, lineHeight: 1.7 }}>
-                    Ask me about posts, topics,<br />or categories on the blog.
+                  <div style={{ textAlign: 'center', marginTop: 28 }}>
+                    <div style={{ color: '#999', fontSize: 13, lineHeight: 1.7, marginBottom: 12 }}>
+                      Ask me about posts, topics,<br />or categories on the blog.
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 8, alignItems: 'center' }}>
+                      {starterQuestions(pathname).map(q => (
+                        <button
+                          key={q}
+                          onClick={() => sendMessage(q)}
+                          style={{ background: '#fff', color: NAVY, border: `1px solid ${NAVY}`, borderRadius: 16, padding: '6px 14px', fontSize: 12.5, cursor: 'pointer', maxWidth: '92%' }}
+                        >
+                          {q}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 )}
                 {messages.map((msg, i) => (
@@ -749,7 +732,7 @@ export default function BlogAgent() {
                   }}
                 />
                 <button
-                  onClick={sendMessage}
+                  onClick={() => sendMessage()}
                   disabled={isThinking || !input.trim()}
                   style={{
                     padding: '8px 16px', background: NAVY, color: '#fff',
