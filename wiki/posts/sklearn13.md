@@ -9,7 +9,7 @@ topics: [data-pipelines, feature-engineering, batch-processing, preprocessing-la
 tools: [TensorFlow, Keras, tf.data, TFRecord, NumPy]
 status: current
 checked: "2026-11-06"
-source_hash: "58a0451d566d"
+source_hash: "9b600918b586"
 generated_by: gemma4:12b
 ---
 

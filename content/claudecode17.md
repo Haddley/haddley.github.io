@@ -45,7 +45,7 @@ yes please
 
 `arduino-cli` was already installed. Claude installed the `arduino:avr` core and the MCUFRIEND_kbv and Adafruit GFX libraries, and then confirmed that the board showed up as `arduino:avr:uno`.
 
-![](assets/images/claudecode17/session-install.png)
+![](assets/images/claudecode17/session-install.webp)
 *Claude installed the toolchain and wrote the test sketch in a new `tft_test` folder*
 
 The sketch reads the controller ID, prints it to the serial port, fills the screen with red, green and blue, and then draws text and a yellow border.
@@ -68,7 +68,7 @@ Claude Code stopped here because installing Rosetta changes the whole machine an
 yes
 ```
 
-![](assets/images/claudecode17/session-rosetta.png)
+![](assets/images/claudecode17/session-rosetta.webp)
 *I answered yes in the composer, and Claude ran `softwareupdate --install-rosetta --agree-to-license`*
 
 ## Beat 5: The result

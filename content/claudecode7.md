@@ -25,7 +25,7 @@ generate a very simple React 17 example that uses ReactDOM.render() API.
 ![](assets/images/claudecode7/Screenshot-2026-01-26-at-5.47.42-PM.png)
 *Claude generated a package.json targeting React 17*
 
-![](assets/images/claudecode7/Screenshot-2026-01-26-at-5.49.11-PM.png)
+![](assets/images/claudecode7/Screenshot-2026-01-26-at-5.49.11-PM.webp)
 *Claude generated index.js using the React 17 ReactDOM.render() API*
 
 ![](assets/images/claudecode7/Screenshot-2026-01-26-at-5.49.25-PM.png)
@@ -39,10 +39,10 @@ I asked Claude to migrate the app to React 18 without the MCP server:
 How would you migrate this React 17 project to React 18?
 ```
 
-![](assets/images/claudecode7/Screenshot-2026-01-26-at-5.51.59-PM.png)
+![](assets/images/claudecode7/Screenshot-2026-01-26-at-5.51.59-PM.webp)
 *Claude analysed the project and described the migration steps*
 
-![](assets/images/claudecode7/Screenshot-2026-01-26-at-5.52.26-PM.png)
+![](assets/images/claudecode7/Screenshot-2026-01-26-at-5.52.26-PM.webp)
 *Claude correctly identified the need to replace ReactDOM.render() with createRoot()*
 
 Claude already knew the correct migration path from its training data — no MCP server needed for this well-known API change.
@@ -72,13 +72,13 @@ How would you migrate this React 17 project to React 18? **use context7**
 ![](assets/images/claudecode7/Screenshot-2026-01-26-at-5.53.27-PM.png)
 *I asked Claude to migrate the project using Context7 for documentation*
 
-![](assets/images/claudecode7/Screenshot-2026-01-26-at-5.54.23-PM.png)
+![](assets/images/claudecode7/Screenshot-2026-01-26-at-5.54.23-PM.webp)
 *Claude requested permission to query the Context7 MCP server*
 
-![](assets/images/claudecode7/Screenshot-2026-01-26-at-5.55.28-PM.png)
+![](assets/images/claudecode7/Screenshot-2026-01-26-at-5.55.28-PM.webp)
 *Claude fetched the React 18 migration docs from Context7*
 
-![](assets/images/claudecode7/Screenshot-2026-01-26-at-5.57.16-PM.png)
+![](assets/images/claudecode7/Screenshot-2026-01-26-at-5.57.16-PM.webp)
 *Claude presented its migration plan based on the live documentation*
 
 ![](assets/images/claudecode7/Screenshot-2026-01-26-at-5.58.59-PM.png)

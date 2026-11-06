@@ -8,7 +8,7 @@ topics: [aws-fargate, amazon-eks, container-orchestration, serverless-computing]
 tools: [AWS Fargate, Amazon ECS, Amazon EKS, kubectl, Docker Desktop, eksctl]
 status: current
 checked: "2026-11-05"
-source_hash: "3f430a89a9ed"
+source_hash: "8b8df1d96183"
 generated_by: gemma4:12b
 ---
 

@@ -136,7 +136,7 @@ The sample application is small. Its GreetingController is a Spring MVC controll
 ![](assets/images/sprint-apps1/screenshot-2023-10-24-at-2.50.38-pm-2136x968.png)
 *GreetingController.java in Visual Studio Code, and the ./mvnw spring-boot:run command in the terminal*
 
-![](assets/images/sprint-apps1/screenshot-2023-10-24-at-2.49.29-pm-2136x1245.png)
+![](assets/images/sprint-apps1/screenshot-2023-10-24-at-2.49.29-pm-2136x1245.webp)
 *The Spring Boot log: Tomcat initialized with port 8080 (http), and the application started in about half a second*
 
 :::under-the-hood What ./mvnw spring-boot:run does

@@ -20,7 +20,7 @@ You ask an agent "Who do we buy stuff from?" How would it know that this questio
 ![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-4.55.54-pm.png)
 *I created a new agent*
 
-![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-4.56.34-pm.png)
+![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-4.56.34-pm.webp)
 *I named the agent "Business Central Tools Agent"*
 
 ![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-4.56.56-pm.png)
@@ -29,22 +29,22 @@ You ask an agent "Who do we buy stuff from?" How would it know that this questio
 ![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-4.57.38-pm.png)
 *I clicked the Create button*
 
-![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-5.17.33-pm.png)
+![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-5.17.33-pm.webp)
 *I clicked the Tools menu item*
 
-![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-5.17.47-pm.png)
+![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-5.17.47-pm.webp)
 *I clicked the Add a tool button*
 
-![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-5.18.14-pm.png)
+![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-5.18.14-pm.webp)
 *I searched for Business Central actions*
 
-![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-5.18.34-pm.png)
+![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-5.18.34-pm.webp)
 *I selected the Find records (V3) action and clicked the Add and configure button*
 
-![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-5.21.23-pm.png)
+![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-5.21.23-pm.webp)
 *I updated the tool name to "Find Vendor records (V3)". I updated the default description*
 
-![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-6.19.08-pm.png)
+![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-6.19.08-pm.webp)
 *I specified the Environment, Company, API category and Table name (vendors)*
 
 :::no-dumb-questions
@@ -57,42 +57,42 @@ A: An action that the agent can choose to call. I added two from the Business Ce
 A: The agent decides which tool to use from its name and description, so I changed the defaults to say that they deal with vendors. When I asked "Who do we buy stuff from?", the agent used the find tool.
 :::
 
-![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-6.22.19-pm.png)
+![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-6.22.19-pm.webp)
 *I clicked Save and tested the tool "Who do we buy stuff from?". I clicked the Allow button*
 
 ![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-6.27.25-pm.png)
 *The Business Central company had a single "Example Vendor"*
 
-![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-6.26.05-pm.png)
+![](assets/images/copilotstudiobctools/screenshot-2025-09-24-at-6.26.05-pm.webp)
 *The Agent returned details of the Vendor*
 
 
-![](assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.43.51-am.png)
+![](assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.43.51-am.webp)
 *I added a second tool based on the Create record (V2) action*
 
-![](assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.44.04-am.png)
+![](assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.44.04-am.webp)
 *I clicked the Add and configure button*
 
-![](assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.44.39-am.png)
+![](assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.44.39-am.webp)
 *I updated the tool's name to 'Create Vendor record (V2)'*
 
-![](assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.46.17-am.png)
+![](assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.46.17-am.webp)
 *I selected the Environment, Company, API category and table name. I clicked the Add input button and selected displayName*
 
-![](assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.51.14-am.png)
+![](assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.51.14-am.webp)
 *I tried to use the new tool*
 
-![](assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.51.44-am.png)
+![](assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.51.44-am.webp)
 *An error message was returned*
 
-![](assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.53.32-am.png)
+![](assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.53.32-am.webp)
 *I added a number input*
 
 :::watch-it The create tool failed until I gave it the missing input
 My first attempt to use the Create Vendor record tool returned an error, and it worked once I added a number input as well as displayName. A tool that creates a record has to supply every field that the table requires, so read the error and check the inputs that the tool collects.
 :::
 
-![](assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.53.47-am.png)
+![](assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.53.47-am.webp)
 *The new Vendor record was created*
 
 ![](assets/images/copilotstudiobctools/screenshot-2025-09-26-at-10.54.19-am.png)

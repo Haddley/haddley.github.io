@@ -63,7 +63,7 @@ The text that the character model wrote, after only 3 epochs, is not good. (The 
 The first review model scored 50.0% on validation, as good as flipping a coin. Reviews have different lengths, so the shorter ones are padded with zeros, and the recurrent layer reads the padding as if it were words. Telling the layer to ignore the padding, with `mask_zero=True`, took the same model to 87.5% at best. A small fix to what the model is shown made all of the difference.
 :::
 
-![](assets/images/sklearn16/jupyter-char-rnn-train.png)
+![](assets/images/sklearn16/jupyter-char-rnn-train.webp)
 *Training the character model: 54.3% of the validation letters right after 3 epochs, each epoch between 17 and 26 minutes on my Mac*
 
 ## What training means here
@@ -96,16 +96,16 @@ A: Because models learn the biases of the text they are trained on. The notebook
 
 The chapter is in the notebook that goes with the book, [16_nlp_with_rnns_and_attention.ipynb](https://github.com/ageron/handson-ml3/blob/main/16_nlp_with_rnns_and_attention.ipynb). This is the heaviest notebook in the series for my Mac. Its graphics processor, an Apple M1 Max, was no faster than its processor on small models like these, so I used the processor, and I shortened the training: the character model to 3 epochs instead of 10, and each translation model to 1 epoch instead of 10. I then ran the sentiment models and the pretrained sentence encoder again at the notebook's full length, 5 and 10 epochs. The translation results above come from the shortened runs, and the book's are better. I ran the five parts of the notebook at the same time, which took a few hours. I did not run the final fine-tuning cell with the Hugging Face `Trainer`, which failed to import here, and the notebook's stateful RNN, which keeps its memory from one window to the next, ran for the full 10 epochs.
 
-![](assets/images/sklearn16/jupyter-imdb-masking.png)
+![](assets/images/sklearn16/jupyter-imdb-masking.webp)
 *Manual masking over 5 epochs: the validation accuracy peaks at 87.3% in epoch 2 and ends at 84.5%, as the model starts to overfit; the same model without any masking stayed at 50%*
 
 ![](assets/images/sklearn16/jupyter-translate.png)
 *The plain encoder-decoder after 1 epoch: "I like soccer" becomes "me gusta la música", and the longer sentence turns into "me gusta la misma y [UNK]"*
 
-![](assets/images/sklearn16/jupyter-beam-search.png)
+![](assets/images/sklearn16/jupyter-beam-search.webp)
 *Beam search keeping three candidate translations at each step, here for "I love cats and dogs": the best final candidate is "me gustan los perros y perros"*
 
-![](assets/images/sklearn16/jupyter-transformer-translate.png)
+![](assets/images/sklearn16/jupyter-transformer-translate.webp)
 *The Transformer after 1 epoch: "I like soccer and also going to the beach" becomes "me gusta el fútbol y [UNK] a la playa", close to correct*
 
 ![](assets/images/sklearn16/jupyter-huggingface.png)

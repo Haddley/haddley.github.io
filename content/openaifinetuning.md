@@ -11,7 +11,7 @@ image: "/assets/images/openaifinetuning/chatgpt-logo.svg"
 
 I fine-tuned a GPT model using the OpenAI API. Fine-tuning trains a general model like GPT-3.5 or GPT-4 for a specific task, delivering more reliable and higher-quality results.
 
-![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-7.10.45-PM.png)
+![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-7.10.45-PM.webp)
 *I created a data.jsonl file and copied the tutorial data into that file*
 
 
@@ -25,7 +25,7 @@ I fine-tuned a GPT model using the OpenAI API. Fine-tuning trains a general mode
 The data.jsonl file contains 3 lines that I want to use to train a large language model to respond in a sarcastic manner. Please generate an additional 47 similar lines
 ```
 
-![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-7.13.20-PM.png)
+![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-7.13.20-PM.webp)
 *I used Claude Sonnet 4 to generate some addition training examples*
 
 
@@ -94,7 +94,7 @@ The data.jsonl file contains 3 lines that I want to use to train a large languag
 *The fine-tuning job was created*
 
 
-![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-7.38.29-PM.png)
+![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-7.38.29-PM.webp)
 *I watched the job running*
 
 
@@ -107,7 +107,7 @@ The data.jsonl file contains 3 lines that I want to use to train a large languag
 
 
 
-![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.13.38-PM.png)
+![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.13.38-PM.webp)
 *I used Claude Sonnet to generate a Python app*
 
 ```prompt
@@ -116,19 +116,19 @@ I used this data to create a fine-tuned model ft:gpt-3.5-turbo-0125:personal:sar
 
 
 
-![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.15.18-PM.png)
+![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.15.18-PM.webp)
 *I created Python environment*
 
-![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.15.34-PM.png)
+![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.15.34-PM.webp)
 *I selected Venv*
 
 ![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.15.44-PM.png)
 *I selected Python 3.13.7*
 
-![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.15.59-PM.png)
+![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.15.59-PM.webp)
 *I selected the generated requirements.txt file*
 
-![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.16.45-PM.png)
+![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.16.45-PM.webp)
 *I opened a new terminal and entered the streamlit command*
 
 ![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.17.16-PM.png)
@@ -137,7 +137,7 @@ I used this data to create a fine-tuned model ft:gpt-3.5-turbo-0125:personal:sar
 ![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.18.30-PM.png)
 *I created a temporary OpenAI key*
 
-![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.18.46-PM.png)
+![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.18.46-PM.webp)
 *I copied the newly generated key*
 
 ![](assets/images/openaifinetuning/Screenshot-2025-10-23-at-8.20.06-PM.png)

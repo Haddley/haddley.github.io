@@ -9,7 +9,7 @@ topics: [model-serving, distributed-training, mobile-optimization, api-protocols
 tools: [TensorFlow, Docker, TensorFlow Serving, TensorFlow Lite, gRPC]
 status: current
 checked: "2026-11-06"
-source_hash: "d288fb42e0eb"
+source_hash: "a8d6abcef42e"
 generated_by: gemma4:12b
 ---
 

@@ -44,7 +44,7 @@ mlx-lm
 % mlx_lm.generate --prompt "what is the capital of France" --model "Qwen/Qwen3-0.6b"
 ```
 
-![](assets/images/mlx1/Screenshot-2025-11-06-at-1.55.02-PM.png)
+![](assets/images/mlx1/Screenshot-2025-11-06-at-1.55.02-PM.webp)
 *I ran mlx_lm.lora training*
 
 ```bash
@@ -60,7 +60,7 @@ mlx-lm
 {"prompt": "What's the main ingredient in bread?", "completion": "Flour. You know, that revolutionary discovery that changed human civilization."}
 ```
 
-![](assets/images/mlx1/Screenshot-2025-11-06-at-1.56.00-PM.png)
+![](assets/images/mlx1/Screenshot-2025-11-06-at-1.56.00-PM.webp)
 *I tested the fine-tuned model asking "what is the capital of France?" and "who was Charles Babbage?"*
 
 ```bash
@@ -73,7 +73,7 @@ mlx-lm
 Please fuse Qwen3-0.6b and the adapters. Create a new Fused-Qwen3-0.6b.gguf model. Then use ollama create add the model to ollama 
 ```
 
-![](assets/images/mlx1/Screenshot-2025-11-06-at-2.40.38-PM.png)
+![](assets/images/mlx1/Screenshot-2025-11-06-at-2.40.38-PM.webp)
 *I prompted Claude to fuse the model and add it to ollama*
 
 ```bash
@@ -94,21 +94,21 @@ Please fuse Qwen3-0.6b and the adapters. Create a new Fused-Qwen3-0.6b.gguf mode
 % pip install -r llama.cpp/requirements.txt
 ```
 
-![](assets/images/mlx1/Screenshot-2025-11-06-at-2.55.27-PM.png)
+![](assets/images/mlx1/Screenshot-2025-11-06-at-2.55.27-PM.webp)
 *I ran pip install -r llama.cpp/requirements.txt*
 
 ```bash
 % python llama.cpp/convert_hf_to_gguf.py fused-model --outfile Fused-Qwen3-0.6b.gguf --outtype f32
 ```
 
-![](assets/images/mlx1/Screenshot-2025-11-06-at-2.57.59-PM.png)
+![](assets/images/mlx1/Screenshot-2025-11-06-at-2.57.59-PM.webp)
 *I ran convert_hf_to_gguf.py to convert the fused model to GGUF format*
 
 ```bash
  % ollama create fused-qwen3-0.6b -f Modelfile
 ```
 
-![](assets/images/mlx1/Screenshot-2025-11-06-at-2.59.47-PM.png)
+![](assets/images/mlx1/Screenshot-2025-11-06-at-2.59.47-PM.webp)
 *I ran ollama create to add the model to ollama*
 
 ```text
@@ -137,7 +137,7 @@ PARAMETER stop "<|im_end|>"
  % ollama list
  ```
 
-![](assets/images/mlx1/Screenshot-2025-11-06-at-3.04.59-PM.png)
+![](assets/images/mlx1/Screenshot-2025-11-06-at-3.04.59-PM.webp)
 *I ran ollama list*
 
 ```bash
@@ -151,7 +151,7 @@ PARAMETER stop "<|im_end|>"
  % ollama run fused-qwen3-0.6b "who was Charles Babbage"
 ```
 
-![](assets/images/mlx1/Screenshot-2025-11-06-at-4.03.26-PM.png)
+![](assets/images/mlx1/Screenshot-2025-11-06-at-4.03.26-PM.webp)
 *I ran ollama run and asked "who was Charles Babbage"*
 
 ## References

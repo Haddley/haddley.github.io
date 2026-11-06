@@ -9,7 +9,7 @@ topics: [slash-commands, context-management, powershell-development, workflow-au
 tools: [Claude Code, PowerShell, Pester]
 status: current
 checked: "2026-11-05"
-source_hash: "93063a054340"
+source_hash: "17f74e0fc281"
 generated_by: gemma4:12b
 ---
 

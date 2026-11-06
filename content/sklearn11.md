@@ -134,13 +134,13 @@ The chapter is in the notebook that goes with the book, [11_training_deep_neural
 ![](assets/images/sklearn11/jupyter-activation-functions.png)
 *GELU, Swish, and Mish: smooth bends that, like ReLU, keep a slope for positive inputs, but dip a little below zero*
 
-![](assets/images/sklearn11/jupyter-100-layers.png)
+![](assets/images/sklearn11/jupyter-100-layers.webp)
 *Two networks with 100 hidden layers: with SELU (top) it reached 82.0% validation accuracy in 5 passes, and with ReLU (bottom) only 69.9%*
 
 ![](assets/images/sklearn11/jupyter-batch-norm.png)
 *Batch normalization layers between the dense layers: 2,368 of the network's 271,346 numbers are running averages, not nudged by backpropagation*
 
-![](assets/images/sklearn11/jupyter-transfer.png)
+![](assets/images/sklearn11/jupyter-transfer.webp)
 *Reusing the layers of a network trained on eight other kinds of clothing: 91.7% of the test shirts and pullovers right, after training on only 200 images*
 
 ![](assets/images/sklearn11/jupyter-optimizers.png)

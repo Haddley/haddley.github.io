@@ -8,7 +8,7 @@ topics: [copilot-studio, model-driven-apps, custom-topics, dataverse-integration
 tools: [Power Apps, Copilot Studio, Dataverse]
 status: current
 checked: "2026-11-06"
-source_hash: "433d6c091e34"
+source_hash: "c902728a517f"
 generated_by: gemma4:12b
 ---
 

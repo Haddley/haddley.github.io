@@ -8,7 +8,7 @@ topics: [unity-setup, meta-quest-pro, xr-interaction-sdk, project-configuration]
 tools: [Unity 6.3 LTS, Meta XR Interaction SDK, Project Setup Tool, Meta Quest Pro, OpenXR]
 status: current
 checked: "2026-11-05"
-source_hash: "f448ddf2fc46"
+source_hash: "ea8a1eaa17c3"
 generated_by: gemma4:12b
 ---
 

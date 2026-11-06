@@ -94,7 +94,7 @@ The chapter is in the notebook that goes with the book, [04_training_linear_mode
 ![](assets/images/sklearn4/jupyter-batch-gradient-descent.png)
 *Batch gradient descent started from random numbers, took 1,000 steps downhill, and arrived at exactly the same 4.215 and 2.770*
 
-![](assets/images/sklearn4/jupyter-learning-rates.png)
+![](assets/images/sklearn4/jupyter-learning-rates.webp)
 *The first 20 steps with three learning rates: 0.02 creeps towards the line, 0.1 gets there, and 0.5 overshoots and flies away*
 
 ![](assets/images/sklearn4/jupyter-sgd-regressor.png)
@@ -103,7 +103,7 @@ The chapter is in the notebook that goes with the book, [04_training_linear_mode
 ![](assets/images/sklearn4/jupyter-polynomial-regression.png)
 *Adding x² as a second feature lets a linear model fit a curve: 1.78 + 0.93x + 0.56x², close to the 2 + x + 0.5x² used to make the data*
 
-![](assets/images/sklearn4/jupyter-logistic-regression.png)
+![](assets/images/sklearn4/jupyter-logistic-regression.webp)
 *Logistic regression on iris petals: above a petal width of about 1.65 cm, it says Iris virginica is more likely than not*
 
 :::bullet-points Training linear models, in short

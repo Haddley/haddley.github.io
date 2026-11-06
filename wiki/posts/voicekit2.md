@@ -9,7 +9,7 @@ topics: [google-assistant-api, oauth-authentication, state-machine-logic, wake-w
 tools: [Google Assistant API, Raspberry Pi, Firefox, AIY Voice Kit, Chromium]
 status: current
 checked: "2026-11-06"
-source_hash: "76778dfe3d4c"
+source_hash: "458c2bc7b2b6"
 generated_by: gemma4:12b
 ---
 

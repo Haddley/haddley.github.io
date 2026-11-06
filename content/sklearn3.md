@@ -93,7 +93,7 @@ The chapter is in the notebook that goes with the book, [03_classification.ipynb
 ![](assets/images/sklearn3/jupyter-first-digit.png)
 *The first image in MNIST: 784 pixels, drawn as a 28 × 28 grid, and labelled as a 5*
 
-![](assets/images/sklearn3/jupyter-hundred-digits.png)
+![](assets/images/sklearn3/jupyter-hundred-digits.webp)
 *The first 100 images: some digits are clear, and some would trouble a person*
 
 ![](assets/images/sklearn3/jupyter-accuracy-dummy.png)
@@ -108,7 +108,7 @@ The chapter is in the notebook that goes with the book, [03_classification.ipynb
 ![](assets/images/sklearn3/jupyter-forest-vs-sgd.png)
 *The random forest's precision/recall curve stays near the top right corner, well above the SGDClassifier's*
 
-![](assets/images/sklearn3/jupyter-error-analysis.png)
+![](assets/images/sklearn3/jupyter-error-analysis.webp)
 *The confusion matrix for all ten digits: the bright diagonal is right answers, and the column for 8 collects many of the mistakes*
 
 :::bullet-points Classification, in short

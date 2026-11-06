@@ -106,7 +106,7 @@ I used eksctl, a simple CLI tool for creating clusters on EKS — Amazon's manag
 ![](assets/images/amazonecs/screen-shot-2021-08-12-at-9.03.31-pm-1836x954.png)
 *The blog-cluster EC2 nodes were created*
 
-![](assets/images/amazonecs/screen-shot-2021-08-12-at-9.03.56-pm-1836x1188.png)
+![](assets/images/amazonecs/screen-shot-2021-08-12-at-9.03.56-pm-1836x1188.webp)
 *The eksctl command finished*
 
 
@@ -125,7 +125,7 @@ I used eksctl delete to remove the cluster.
   --name blog-cluster
 ```
 
-![](assets/images/amazonecs/screen-shot-2021-08-12-at-9.38.35-pm-1836x1181.png)
+![](assets/images/amazonecs/screen-shot-2021-08-12-at-9.38.35-pm-1836x1181.webp)
 *I ran eksctl delete cluster*
 
 ![](assets/images/amazonecs/screen-shot-2021-08-12-at-9.40.30-pm-1836x954.png)

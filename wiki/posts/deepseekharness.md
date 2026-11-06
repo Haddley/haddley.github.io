@@ -9,7 +9,7 @@ topics: [agent-workflows, automated-testing, software-verification, prompt-engin
 tools: [DeepSeek Harness, DeepSeek, Chrome DevTools Protocol, Python]
 status: current
 checked: "2026-11-05"
-source_hash: "3f8d95bf250f"
+source_hash: "c6116cef6d26"
 generated_by: gemma4:12b
 ---
 

@@ -26,23 +26,23 @@ npx @deepseek-ai/dsh web
 
 This launches the Web UI at `http://127.0.0.1:3080`.
 
-![DeepSeek Harness landing page titled Everything is a plugin](assets/images/deepseekharness/deepseek-harness-homepage.png)
+![DeepSeek Harness landing page titled Everything is a plugin](assets/images/deepseekharness/deepseek-harness-homepage.webp)
 *The developer-preview page — "Everything is a plugin" — with the Quick start command ready to copy*
 
 I read the docs first so I understood how the server behaved: the command prints its URL, a fresh Web UI has no workspace selected, and you choose a workspace by adding the project directory where you started `dsh`.
 
-![DeepSeek Harness Use the Web UI documentation page](assets/images/deepseekharness/docs-use-web-ui.png)
+![DeepSeek Harness Use the Web UI documentation page](assets/images/deepseekharness/docs-use-web-ui.webp)
 *The "Use the Web UI" guide explained the URL, the default filesystem location, and the workspace step*
 
-![DeepSeek Harness docs showing Configure a model, Choose a workspace, and Run a task](assets/images/deepseekharness/docs-configure-model.png)
+![DeepSeek Harness docs showing Configure a model, Choose a workspace, and Run a task](assets/images/deepseekharness/docs-configure-model.webp)
 *The docs covered configuring a model, choosing a workspace, and running a task*
 
-![DeepSeek Harness GitHub README Run from npm section](assets/images/deepseekharness/github-readme-run-npm.png)
+![DeepSeek Harness GitHub README Run from npm section](assets/images/deepseekharness/github-readme-run-npm.webp)
 *The README confirmed the one-liner and that the Web UI opens at 127.0.0.1:3080 by default*
 
 After configuring a DeepSeek API key in Settings → Models and selecting a workspace (the project folder containing the PRD and PDD), I was ready to start.
 
-![Terminal showing npm install -g @deepseek-ai/dsh and running dsh web](assets/images/deepseekharness/npm-install-global.png)
+![Terminal showing npm install -g @deepseek-ai/dsh and running dsh web](assets/images/deepseekharness/npm-install-global.webp)
 *I installed the package globally, then ran `dsh web`*
 
 ![Terminal showing dsh web serving at http://127.0.0.1:3080 and opening the browser](assets/images/deepseekharness/dsh-web-terminal.png)
@@ -104,7 +104,7 @@ The agent did not just hand over code. It added its own tests and ran them:
 
 All checks passed with zero exceptions and zero console errors.
 
-![DeepSeek Harness session showing verification results and the Run it instructions](assets/images/deepseekharness/verification-results.png)
+![DeepSeek Harness session showing verification results and the Run it instructions](assets/images/deepseekharness/verification-results.webp)
 *The agent verified its build with 96 Node logic checks and 24 headless-browser E2E checks, all passing*
 
 A notable detail: the agent added a `window.__invaders` debug handle (not in the spec) specifically so the E2E tests would have something to drive. It built a test seam into its own deliverable to make its verification possible.
@@ -134,7 +134,7 @@ python3 -m http.server 8081
 ![Terminal showing python3 -m http.server 8081 with the project files in the explorer](assets/images/deepseekharness/http-server-8081.png)
 *I served the project with python3 -m http.server 8081 — the explorer shows the PRD, PDD, index.html, and the src folder the agent built*
 
-![Terminal showing the http server serving the src JavaScript modules with 200 status](assets/images/deepseekharness/http-server-logs.png)
+![Terminal showing the http server serving the src JavaScript modules with 200 status](assets/images/deepseekharness/http-server-logs.webp)
 *The server served every src module with a 200, and only the unused favicon.ico 404'd*
 
 Opening `http://localhost:8081` displayed the finished game: the alien swarm in its red, cyan, and green bands, four shields, the player cannon, and a HUD showing score, hi-score, wave, and lives — with faithful pixel-art sprites and the marching-animation feel.

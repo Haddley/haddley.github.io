@@ -25,16 +25,16 @@ $artifactUrl = Get-BcArtifactUrl -type sandbox -country us -select Latest
 New-BCContainer -accept_eula -containerName mysandbox -artifactUrl $artifactUrl
 ```
 
-![](assets/images/devenv/Screenshot-2025-11-17-124543.png)
+![](assets/images/devenv/Screenshot-2025-11-17-124543.webp)
 *I ran install-module BCContainerHelper -force*
 
-![](assets/images/devenv/Screenshot-2025-11-17-125129.png)
+![](assets/images/devenv/Screenshot-2025-11-17-125129.webp)
 *I ran Write-BCContainerHelperWelcomeText*
 
-![](assets/images/devenv/Screenshot-2025-11-17-125226.png)
+![](assets/images/devenv/Screenshot-2025-11-17-125226.webp)
 *I ran $artifactUrl = Get-BcArtifactUrl -type sandbox -country us -select Latest*
 
-![](assets/images/devenv/Screenshot-2025-11-17-125258.png)
+![](assets/images/devenv/Screenshot-2025-11-17-125258.webp)
 *I ran New-BCContainer -accept_eula -containerName mysandbox -artifactUrl $artifactUrl*
 
 :::no-dumb-questions
@@ -55,13 +55,13 @@ A: The container is called mysandbox, so I opened it at http://mysandbox/BC/?ten
 The -accept_eula option on New-BCContainer agrees to the end-user licence agreement on your behalf. Read the agreement before you add the option to your own scripts.
 :::
 
-![](assets/images/devenv/Screenshot-2025-11-17-131656.png)
+![](assets/images/devenv/Screenshot-2025-11-17-131656.webp)
 *The container was ready for connections*
 
-![](assets/images/devenv/Screenshot-2025-11-17-131724.png)
+![](assets/images/devenv/Screenshot-2025-11-17-131724.webp)
 *I reviewed Docker Desktop*
 
-![](assets/images/devenv/Screenshot-2025-11-17-131857.png)
+![](assets/images/devenv/Screenshot-2025-11-17-131857.webp)
 *I reviewed the logs*
 
 ![](assets/images/devenv/Screenshot-2025-11-17-131927.png)

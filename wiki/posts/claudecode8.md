@@ -9,7 +9,7 @@ topics: [ai-assisted-development, lisp-interpreters, web-development, github-pag
 tools: [Claude Code, ChatGPT, VS Code, Jest, Azure, GitHub Actions]
 status: current
 checked: "2026-11-05"
-source_hash: "9731f8d44bea"
+source_hash: "b065b1d581df"
 generated_by: gemma4:12b
 ---
 

@@ -42,7 +42,7 @@ I used a Foundry project that I had already created. The `haddley-foundry-name` 
 ![](assets/images/azurefoundryagent2/Screenshot-2026-10-27-at-9.09.36-PM.png)
 *The haddley-foundry-name resource overview showed the East US location*
 
-![](assets/images/azurefoundryagent2/Screenshot-2026-10-27-at-9.09.57-PM.png)
+![](assets/images/azurefoundryagent2/Screenshot-2026-10-27-at-9.09.57-PM.webp)
 *The Foundry portal home page for proj-default showed the project endpoint*
 
 ### Deploying the model

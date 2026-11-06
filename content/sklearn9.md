@@ -92,25 +92,25 @@ The chapter is in the notebook that goes with the book, [09_unsupervised_learnin
 ![](assets/images/sklearn9/jupyter-clustering-vs-classification.png)
 *The iris flowers with their species labels (left) and without them (right): without labels, a clustering algorithm has to find the groups itself*
 
-![](assets/images/sklearn9/jupyter-kmeans-steps.png)
+![](assets/images/sklearn9/jupyter-kmeans-steps.webp)
 *K-Means at work: the centres start at random, then each round gives every point to its nearest centre and moves the centres to the middle of their points*
 
-![](assets/images/sklearn9/jupyter-wrong-k.png)
+![](assets/images/sklearn9/jupyter-wrong-k.webp)
 *The wrong number of clusters: with 3, blobs are merged; with 8, blobs are split*
 
 ![](assets/images/sklearn9/jupyter-elbow.png)
 *Inertia falls as clusters are added; the bend, the "elbow", suggests a good number*
 
-![](assets/images/sklearn9/jupyter-image-segmentation.png)
+![](assets/images/sklearn9/jupyter-image-segmentation.webp)
 *Clustering the ladybug photo's colours: with 10 colours it looks almost unchanged, and with 2 the ladybug disappears into the flower*
 
 ![](assets/images/sklearn9/jupyter-representative-digits.png)
 *The 50 representative digits, one per cluster: labelling these 50 gave 84.1% accuracy, against 74.8% for 50 random ones*
 
-![](assets/images/sklearn9/jupyter-dbscan.png)
+![](assets/images/sklearn9/jupyter-dbscan.webp)
 *DBSCAN on two moons: with a small neighbourhood it finds many small clusters and marks a lot of noise; with a larger one it finds the two moons*
 
-![](assets/images/sklearn9/jupyter-gaussian-mixture.png)
+![](assets/images/sklearn9/jupyter-gaussian-mixture.webp)
 *A Gaussian mixture's three bell-shaped groups, with contours showing how densely each region is expected to hold points*
 
 :::bullet-points Unsupervised learning, in short

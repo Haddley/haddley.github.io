@@ -8,7 +8,7 @@ topics: [geographic-information-systems, interactive-maps, tile-servers, javascr
 tools: [Leaflet, Visual Studio Code, Azure Storage, Safari]
 status: current
 checked: "2026-11-05"
-source_hash: "f29df7cf21e1"
+source_hash: "a762b95a8c15"
 generated_by: gemma4:12b
 ---
 

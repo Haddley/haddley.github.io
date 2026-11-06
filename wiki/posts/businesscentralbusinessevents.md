@@ -9,7 +9,7 @@ topics: [business-events, external-integration, api-pages, real-time-notificatio
 tools: [Business Central, OData, Power Automate]
 status: current
 checked: "2026-11-05"
-source_hash: "4aaa84746007"
+source_hash: "54556732aee1"
 generated_by: gemma4:12b
 ---
 

@@ -47,7 +47,7 @@ Here I added the arcgisonline.com tiles:
 L.tileLayer('//services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.jpg').addTo(map);
 ```
 
-![](assets/images/leaflet/screen-shot-2022-02-21-at-10.00.34-am-1836x1102.png)
+![](assets/images/leaflet/screen-shot-2022-02-21-at-10.00.34-am-1836x1102.webp)
 *I viewed index.html from localhost*
 
 ![](assets/images/leaflet/screen-shot-2022-02-21-at-10.07.37-am-1836x847.png)
@@ -65,7 +65,7 @@ L.tileLayer('//services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapS
 ![](assets/images/leaflet/screen-shot-2022-02-21-at-10.09.50-am-954x384.png)
 *I clicked the Browse to website button*
 
-![](assets/images/leaflet/screen-shot-2022-02-21-at-10.11.31-am-1836x1106.png)
+![](assets/images/leaflet/screen-shot-2022-02-21-at-10.11.31-am-1836x1106.webp)
 *I viewed index.html from Azure on my laptop*
 
 ![](assets/images/leaflet/273975021-368817684761513-1776904781628079268-n-750x1334.jpg)
@@ -78,7 +78,7 @@ Leaflet has to determine which tiles are needed to render the map.
 
 The tiles are downloaded from a tile server (arcgisonline.com in this case).
 
-![](assets/images/leaflet/screen-shot-2022-02-21-at-10.34.22-am-1836x947.png)
+![](assets/images/leaflet/screen-shot-2022-02-21-at-10.34.22-am-1836x947.webp)
 *I reviewed network requests*
 
 ![](assets/images/leaflet/screen-shot-2022-02-21-at-10.35.49-am-1836x947.png)
@@ -118,7 +118,7 @@ var height      = Math.abs(top_tile - bottom_tile) + 1;
 var total_tiles = width * height; // -> eg. 377
 ```
 
-![](assets/images/leaflet/screen-shot-2022-02-21-at-12.50.32-pm-1836x1228.png)
+![](assets/images/leaflet/screen-shot-2022-02-21-at-12.50.32-pm-1836x1228.webp)
 *I displayed a given area*
 
 
@@ -134,7 +134,7 @@ var polygon = L.polygon([
         ]).addTo(map);
 ```
 
-![](assets/images/leaflet/screen-shot-2022-02-21-at-12.54.28-pm-1836x1235.png)
+![](assets/images/leaflet/screen-shot-2022-02-21-at-12.54.28-pm-1836x1235.webp)
 *I added a triangle to a Leaflet map*
 
 

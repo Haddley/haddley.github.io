@@ -88,7 +88,7 @@ The chapter is in the notebook that goes with the book, [08_dimensionality_reduc
 ![](assets/images/sklearn8/jupyter-projection.png)
 *A small 3D dataset projected onto the flat surface it lies closest to: two numbers per point instead of three*
 
-![](assets/images/sklearn8/jupyter-swiss-roll.png)
+![](assets/images/sklearn8/jupyter-swiss-roll.webp)
 *The Swiss roll: squashing it flat (left) mixes up the colours, while unrolling it (right) keeps them in order*
 
 ![](assets/images/sklearn8/jupyter-pca.png)
@@ -97,13 +97,13 @@ The chapter is in the notebook that goes with the book, [08_dimensionality_reduc
 ![](assets/images/sklearn8/jupyter-explained-variance.png)
 *The variance kept against the number of dimensions for MNIST: it climbs fast, and 154 dimensions keep 95% of it*
 
-![](assets/images/sklearn8/jupyter-compression.png)
+![](assets/images/sklearn8/jupyter-compression.webp)
 *Digits rebuilt from 154 numbers instead of 784 are a little blurred, but still easy to read*
 
-![](assets/images/sklearn8/jupyter-lle.png)
+![](assets/images/sklearn8/jupyter-lle.webp)
 *LLE unrolled the Swiss roll: the colours now run smoothly from one end to the other*
 
-![](assets/images/sklearn8/jupyter-tsne.png)
+![](assets/images/sklearn8/jupyter-tsne.webp)
 *Three other methods laying the Swiss roll out in 2D: MDS (multidimensional scaling), Isomap (isometric mapping), and t-SNE, which keeps neighbours together but breaks the roll into pieces*
 
 :::bullet-points Dimensionality reduction, in short

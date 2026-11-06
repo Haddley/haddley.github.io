@@ -9,7 +9,7 @@ topics: [natural-language-processing, attention-mechanisms, transformer-architec
 tools: [Scikit-Learn, Keras, TensorFlow, Hugging Face, Python]
 status: current
 checked: "2026-11-06"
-source_hash: "464c2d440b33"
+source_hash: "e02b27bf932c"
 generated_by: gemma4:12b
 ---
 

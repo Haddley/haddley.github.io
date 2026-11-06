@@ -8,7 +8,7 @@ topics: [power-apps, custom-connectors, azure-active-directory, oauth-2-0, servi
 tools: [Power Apps, Azure Active Directory, MSAL.js, Azure API Management]
 status: current
 checked: "2026-11-05"
-source_hash: "05035072efca"
+source_hash: "c2ff41b81414"
 generated_by: gemma4:12b
 ---
 

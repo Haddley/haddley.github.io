@@ -91,7 +91,7 @@ export default async function Home() {
               <div className="image-wrapper">
                 <Link href="/posts/claudecode13">
                   <Image
-                    src="/assets/images/claudecode13/Screenshot-2026-06-04-at-12.51.20-PM.png"
+                    src="/assets/images/claudecode13/Screenshot-2026-06-04-at-12.51.20-PM.webp"
                     alt="Claude Code generating a Dataverse solution"
                     width={600}
                     height={400}

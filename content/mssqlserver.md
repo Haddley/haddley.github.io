@@ -75,7 +75,7 @@ I added the [NuGet](/posts/nuget/) package.
 % dotnet add package System.Data.SqlClient
 ```
 
-![](assets/images/mssqlserver/screen-shot-2021-03-15-at-7.10.16-pm-1836x1133.png)
+![](assets/images/mssqlserver/screen-shot-2021-03-15-at-7.10.16-pm-1836x1133.webp)
 *dotnet add package System.Data.SqlClient*
 
 

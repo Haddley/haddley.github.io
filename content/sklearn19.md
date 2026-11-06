@@ -108,7 +108,7 @@ The chapter is in the notebook that goes with the book, [19_training_and_deployi
 ![](assets/images/sklearn19/jupyter-device-placement.png)
 *No GPU here: asking for a GPU that does not exist falls back to the processor, and with soft placement switched off it raises an error instead*
 
-![](assets/images/sklearn19/jupyter-mirrored.png)
+![](assets/images/sklearn19/jupyter-mirrored.webp)
 *`MirroredStrategy` on one processor: 10 epochs, ending at 96.35% training accuracy and 98.30% validation accuracy*
 
 :::bullet-points Deploying and scaling, in short

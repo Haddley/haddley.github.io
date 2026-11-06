@@ -31,22 +31,22 @@ Build a lightweight, local AI coding agent (inspired by Open Hands) with a brows
 Do you have any questions?
 ```
 
-![](assets/images/claudecode9/Screenshot-2026-02-22-at-2.53.52-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-2.53.52-PM.webp)
 *Claude asked which tools the agent should be able to call*
 
-![](assets/images/claudecode9/Screenshot-2026-02-22-at-2.54.09-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-2.54.09-PM.webp)
 *Claude asked whether the center file viewer should be editable*
 
-![](assets/images/claudecode9/Screenshot-2026-02-22-at-2.54.46-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-2.54.46-PM.webp)
 *Claude asked what the CLI should do*
 
-![](assets/images/claudecode9/Screenshot-2026-02-22-at-2.56.11-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-2.56.11-PM.webp)
 *I approved all edits for the session*
 
-![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.12.56-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.12.56-PM.webp)
 *The build completed successfully*
 
-![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.13.26-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.13.26-PM.webp)
 *The application was running in the browser*
 
 ![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.13.42-PM.png)
@@ -58,13 +58,13 @@ Do you have any questions?
 ![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.15.51-PM.png)
 *The model suggested invoking the write_file tool, but nothing happened*
 
-![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.17.10-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.17.10-PM.webp)
 *I asked Claude Code to troubleshoot the issue*
 
-![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.18.56-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.18.56-PM.webp)
 *Claude Code diagnosed the problem*
 
-![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.19.25-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.19.25-PM.webp)
 *Claude Code updated the application*
 
 ![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.21.35-PM.png)
@@ -76,17 +76,17 @@ Do you have any questions?
 ![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.35.03-PM.png)
 *I asked the agent to run hello.sh with argument 'Neil'*
 
-![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.38.15-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.38.15-PM.webp)
 *I ran /init to generate a CLAUDE.md file*
 
 ```prompt
 If AGENT.md present in workspace root, append (≤10k chars) to system prompt as `## Project instructions`.
 ```
 
-![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.38.51-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.38.51-PM.webp)
 *I asked Claude Code to add AGENT.md support to the agent*
 
-![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.39.52-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.39.52-PM.webp)
 *Claude Code added support for AGENT.md*
 
 ![](assets/images/claudecode9/Screenshot-2026-02-22-at-3.41.37-PM.png)
@@ -117,7 +117,7 @@ The center column is divided into two resizable sections:
   - **Clear button** – resets the output display.
 ```
 
-![](assets/images/claudecode9/Screenshot-2026-02-22-at-4.37.04-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-4.37.04-PM.webp)
 *I described the terminal panel feature to Claude Code*
 
 ![](assets/images/claudecode9/Screenshot-2026-02-22-at-4.33.13-PM.png)
@@ -125,7 +125,7 @@ The center column is divided into two resizable sections:
 
 ## Command line interface (CLI)
 
-![](assets/images/claudecode9/Screenshot-2026-02-22-at-7.26.42-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-7.26.42-PM.webp)
 *agent command line interface (CLI)*
 
 
@@ -225,7 +225,7 @@ After the last tool round-trip the model should produce a plain text response (n
 ![](assets/images/claudecode9/Screenshot-2026-02-22-at-7.33.37-PM.png)
 *agent worked example*
 
-![](assets/images/claudecode9/Screenshot-2026-02-22-at-7.36.18-PM.png)
+![](assets/images/claudecode9/Screenshot-2026-02-22-at-7.36.18-PM.webp)
 *console.log output*
 
 

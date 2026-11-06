@@ -9,7 +9,7 @@ topics: [neural-networks, backpropagation, hyperparameter-tuning, deep-learning]
 tools: [Keras, TensorFlow, Scikit-Learn, JupyterLab, Python]
 status: current
 checked: "2026-11-06"
-source_hash: "1122f9c2586f"
+source_hash: "0dcfe8ce71cc"
 generated_by: gemma4:12b
 ---
 

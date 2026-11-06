@@ -98,17 +98,17 @@ A 29-inch wheel has a circumference of about 2.31 m. At 15 km/h, how many millis
 
 I set `SPEED_KMH` to 15, well below the 25 km/h threshold, and started the simulation. Both scopes show the same thing: one LOW pulse in each 100 ms window, because at 15 km/h a magnet passes every 92.6 ms. The output copies the input.
 
-![](assets/images/attiny2/tinkercad-mirror-15kmh.png)
+![](assets/images/attiny2/tinkercad-mirror-15kmh.webp)
 *At 15 km/h both scopes show a single LOW pulse per window, so the ATtiny passes the signal straight through*
 
 ## Above 25 km/h: double
 
 I changed `SPEED_KMH` to 30, just above the 25 km/h threshold, and ran it again. Now the scopes disagree. The right scope, on the input, shows about two pulses per 100 ms window, one every 46 ms. The left scope, on the output, shows about four, one every 23 ms.
 
-![](assets/images/attiny2/tinkercad-double-30kmh.png)
+![](assets/images/attiny2/tinkercad-double-30kmh.webp)
 *Above 25 km/h (here 30 km/h) the output (left) has twice as many pulses as the input (right)*
 
-![](assets/images/attiny2/tinkercad-attiny-code.png)
+![](assets/images/attiny2/tinkercad-attiny-code.webp)
 *The same run with the ATtiny's code open. The header comment describes the behaviour and how the hub connector's wires are used.*
 
 ## The real breadboard

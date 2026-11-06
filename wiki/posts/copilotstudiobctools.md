@@ -8,7 +8,7 @@ topics: [copilot-studio, business-central, agent-tools, data-integration]
 tools: [Copilot Studio, Business Central]
 status: current
 checked: "2026-11-05"
-source_hash: "76b6fec96c0c"
+source_hash: "f0217ff32b1f"
 generated_by: gemma4:12b
 ---
 

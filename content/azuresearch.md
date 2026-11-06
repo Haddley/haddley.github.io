@@ -37,46 +37,46 @@ I put everything in one resource group, so that I can delete it all in one step 
 
 The data has to live somewhere that the search service can reach. I used a blob container in a storage account.
 
-![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.00.28-PM.png)
+![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.00.28-PM.webp)
 *I searched the Marketplace for storage account and chose the Microsoft Storage account*
 
-![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.02.11-PM.png)
+![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.02.11-PM.webp)
 *I named the storage account fulltextstorageaccount, put it in the fulltext resource group in East US, and chose Standard performance with locally redundant storage*
 
-![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.02.34-PM.png)
+![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.02.34-PM.webp)
 *I reviewed the storage account settings and clicked Create*
 
-![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.03.12-PM.png)
+![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.03.12-PM.webp)
 *The storage account deployment is complete*
 
-![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.03.41-PM.png)
+![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.03.41-PM.webp)
 *The fulltextstorageaccount overview*
 
 ## Upload the hotel data
 
 The container now needs the file that I will index.
 
-![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.04.18-PM.png)
+![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.04.18-PM.webp)
 *I created a private container called hotels-sample*
 
-![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.04.51-PM.png)
+![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.04.51-PM.webp)
 *I chose the HotelsData_toAzureBlobs.json file to upload*
 
-![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.05.18-PM.png)
+![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.05.18-PM.webp)
 *The container now holds HotelsData_toAzureBlobs.json, a 318 KiB block blob*
 
 ## Create the search service
 
-![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.05.58-PM.png)
+![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.05.58-PM.webp)
 *I searched the Marketplace for search service and chose Azure AI Search*
 
 ![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.06.52-PM.png)
 *I named the service fulltextsearchservice, put it in Central US, and chose the Free pricing tier*
 
-![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.07.44-PM.png)
+![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.07.44-PM.webp)
 *The search service deployment succeeded*
 
-![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.07.58-PM.png)
+![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.07.58-PM.webp)
 *The fulltextsearchservice overview shows the Free tier and the Running status. Import data (new) is in the toolbar*
 
 :::no-dumb-questions
@@ -96,29 +96,29 @@ The wizard connects to the data, builds an index from it, and loads the index.
 ![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.08.11-PM.png)
 *The import wizard asks for a data source, and I chose Azure Blob Storage*
 
-![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.08.28-PM.png)
+![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.08.28-PM.webp)
 *I chose the Keyword search scenario, which ingests text for a keyword search*
 
-![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.09.40-PM.png)
+![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.09.40-PM.webp)
 *I pointed the wizard at fulltextstorageaccount and the hotels-sample container. The parsing mode started as JSON array*
 
-![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.13.18-PM.png)
+![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.13.18-PM.webp)
 *I changed the parsing mode to JSON and left deletion tracking and managed identity switched off*
 
-![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.14.16-PM.png)
+![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.14.16-PM.webp)
 *The wizard offers optional AI enrichments: extract phrases, split text and extract entities. I did not select any of them*
 
 ## Look at the index fields
 
 The wizard guesses a type and a set of attributes for every field.
 
-![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.14.53-PM.png)
+![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.14.53-PM.webp)
 *The wizard previews the index fields it built from the JSON, such as HotelId, HotelName, Description, Category and Tags, with a type for each*
 
-![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.27.22-PM.png)
+![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.27.22-PM.webp)
 *I opened the HotelId field to look at its attributes: filterable, sortable and searchable, with the Standard Lucene analyzer*
 
-![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.35.54-PM.png)
+![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.35.54-PM.webp)
 *The SmokingAllowed field is a Boolean that is retrievable, filterable and facetable, but not sortable*
 
 :::no-dumb-questions
@@ -135,13 +135,13 @@ Retrievable and filterable. Searchable would only matter if someone typed words 
 :::
 :::
 
-![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.37.07-PM.png)
+![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.37.07-PM.webp)
 *I enabled the semantic ranker and set the indexing schedule to Once*
 
-![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.37.47-PM.png)
+![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.37.47-PM.webp)
 *The review page shows the data source, the object name prefix hotels-sample, AI enrichments Disabled, the semantic ranker Enabled and the schedule Once*
 
-![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.38.07-PM.png)
+![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.38.07-PM.webp)
 *The wizard created the data source, the index, the skillset and the indexer*
 
 :::under-the-hood What the wizard created
@@ -153,10 +153,10 @@ Based on the status list on the final screen, the wizard created four objects on
 ![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.39.00-PM.png)
 *In the Search explorer, I typed new york hotel with pool or gym. The index holds 1 document and 23.1 KB*
 
-![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.40.28-PM.png)
+![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.40.28-PM.webp)
 *In the JSON view, the same query runs as a semantic search and returns 1 result, with a search score and a reranker score*
 
-![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.47.41-PM.png)
+![](assets/images/azuresearch/Screenshot-2026-02-09-at-4.47.41-PM.webp)
 *I tried a keyword query for Budget, with a filter of Rating gt 3.1 and a select of four fields. It returned the Stay-Kay City Hotel with a rating of 3.6*
 
 :::test-drive Try it yourself

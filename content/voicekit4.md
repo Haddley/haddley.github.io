@@ -59,7 +59,7 @@ I checked the status of the service by typing:
 sudo systemctl status assist.service
 ```
 
-![](assets/images/voicekit4/Screenshot-2025-12-15-125800.png)
+![](assets/images/voicekit4/Screenshot-2025-12-15-125800.webp)
 *sudo systemctl status assist.service*
 
 

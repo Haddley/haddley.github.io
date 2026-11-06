@@ -12,34 +12,34 @@ image: "/assets/images/sharepoint2019/1200px-microsoft-office-sharepoint-2018pre
 ![](assets/images/shareGate/Screenshot-2026-04-30-at-5.08.48-PM.png)
 *I opened the Azure portal and clicked Create a resource*
 
-![](assets/images/shareGate/Screenshot-2026-04-30-at-5.10.18-PM.png)
+![](assets/images/shareGate/Screenshot-2026-04-30-at-5.10.18-PM.webp)
 *I searched for "sharepoint" in the Marketplace and found several SharePoint Server options*
 
-![](assets/images/shareGate/Screenshot-2026-04-30-at-5.10.43-PM.png)
+![](assets/images/shareGate/Screenshot-2026-04-30-at-5.10.43-PM.webp)
 *I started creating a virtual machine and entered a new resource group name "haddley-sharepoint-rg"*
 
-![](assets/images/shareGate/Screenshot-2026-04-30-at-5.11.18-PM.png)
+![](assets/images/shareGate/Screenshot-2026-04-30-at-5.11.18-PM.webp)
 *I named the VM "haddley-sharepoint-vm" and selected the SharePoint Server Subscription Edition Trial image*
 
-![](assets/images/shareGate/Screenshot-2026-04-30-at-5.11.49-PM.png)
+![](assets/images/shareGate/Screenshot-2026-04-30-at-5.11.49-PM.webp)
 *I set the administrator username to "neil", configured a password, and allowed RDP on port 3389*
 
-![](assets/images/shareGate/Screenshot-2026-04-30-at-5.12.27-PM.png)
+![](assets/images/shareGate/Screenshot-2026-04-30-at-5.12.27-PM.webp)
 *I reviewed the Networking tab and left the default virtual network and subnet settings*
 
-![](assets/images/shareGate/Screenshot-2026-04-30-at-5.13.14-PM.png)
+![](assets/images/shareGate/Screenshot-2026-04-30-at-5.13.14-PM.webp)
 *Validation passed — the VM would cost $0.2000 USD/hr, and I clicked Create*
 
 ![](assets/images/shareGate/Screenshot-2026-04-30-at-5.14.56-PM.png)
 *The deployment completed successfully*
 
-![](assets/images/shareGate/Screenshot-2026-04-30-at-5.15.19-PM.png)
+![](assets/images/shareGate/Screenshot-2026-04-30-at-5.15.19-PM.webp)
 *I navigated to Connect on the VM and downloaded the RDP file*
 
 ![](assets/images/shareGate/Screenshot-2026-04-30-at-5.16.21-PM.png)
 *macOS prompted me to enter credentials to connect to the VM via RDP*
 
-![](assets/images/shareGate/Screenshot-2026-04-30-at-5.25.42-PM.png)
+![](assets/images/shareGate/Screenshot-2026-04-30-at-5.25.42-PM.webp)
 *I was connected to the Windows Server desktop inside the VM*
 
 ![](assets/images/shareGate/Screenshot-2026-04-30-at-5.26.30-PM.png)
@@ -171,7 +171,7 @@ image: "/assets/images/sharepoint2019/1200px-microsoft-office-sharepoint-2018pre
 ![](assets/images/shareGate/Screenshot-2026-04-30-at-6.09.53-PM.png)
 *The wizard was configuring SharePoint Products, on task 3 of 10 — creating the configuration database*
 
-![](assets/images/shareGate/Screenshot-2026-04-30-at-6.21.16-PM.png)
+![](assets/images/shareGate/Screenshot-2026-04-30-at-6.21.16-PM.webp)
 *The SharePoint Products configuration completed successfully and I clicked Finish*
 
 ![](assets/images/shareGate/Screenshot-2026-04-30-at-6.23.19-PM.png)
@@ -253,7 +253,7 @@ image: "/assets/images/sharepoint2019/1200px-microsoft-office-sharepoint-2018pre
 ![](assets/images/shareGate/Screenshot-2026-04-30-at-7.37.02-PM.png)
 *Microsoft 365 Copilot opened in the browser after signing in to the tenant*
 
-![](assets/images/shareGate/Screenshot-2026-04-30-at-7.38.36-PM.png)
+![](assets/images/shareGate/Screenshot-2026-04-30-at-7.38.36-PM.webp)
 *I confirmed the SharePoint Online sites were accessible from within the VM*
 
 ![](assets/images/shareGate/Screenshot-2026-04-30-at-7.42.54-PM.png)
@@ -296,15 +296,15 @@ image: "/assets/images/sharepoint2019/1200px-microsoft-office-sharepoint-2018pre
 *Microsoft asked "Stay signed in?" and I clicked Yes*
 ![](assets/images/shareGate/Screenshot-2026-04-30-at-8.25.17-PM.png)
 *ShareGate asked for consent to access the Haddleyoffice365 Microsoft 365 tenant — I clicked "Consent through Microsoft"*
-![](assets/images/shareGate/Screenshot-2026-04-30-at-8.25.45-PM.png)
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.25.45-PM.webp)
 *Microsoft showed the list of permissions requested by the ShareGate Migrate app for my organisation*
-![](assets/images/shareGate/Screenshot-2026-04-30-at-8.25.56-PM.png)
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.25.56-PM.webp)
 *I reviewed the full permissions list and clicked Accept to grant the ShareGate app access*
 ![](assets/images/shareGate/Screenshot-2026-04-30-at-8.26.15-PM.png)
 *The browser prompted me to open ShareGate Migrate to complete the authentication callback — I clicked Open*
 ![](assets/images/shareGate/Screenshot-2026-04-30-at-8.27.31-PM.png)
 *I opened SharePoint Online to create a destination site, choosing between Team site and Communication site*
-![](assets/images/shareGate/Screenshot-2026-04-30-at-8.27.44-PM.png)
+![](assets/images/shareGate/Screenshot-2026-04-30-at-8.27.44-PM.webp)
 *I chose the Standard team template for the new SharePoint Online site*
 ![](assets/images/shareGate/Screenshot-2026-04-30-at-8.27.56-PM.png)
 *I previewed the Standard team template showing its site capabilities and what would be included*

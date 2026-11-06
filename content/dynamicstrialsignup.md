@@ -21,7 +21,7 @@ I created a littleburra.onmicrosoft.com tenant
 ![](assets/images/dynamicstrialsignup/screen-shot-2023-08-22-at-7.38.06-am-1836x981.png)
 *I entered my mobile telephone number*
 
-![](assets/images/dynamicstrialsignup/screen-shot-2023-08-22-at-7.43.01-am-1836x1021.png)
+![](assets/images/dynamicstrialsignup/screen-shot-2023-08-22-at-7.43.01-am-1836x1021.webp)
 *I navigated to http://login.microsoftonline.com*
 
 ![](assets/images/dynamicstrialsignup/screen-shot-2023-08-22-at-7.43.56-am-1836x517.png)

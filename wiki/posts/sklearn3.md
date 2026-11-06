@@ -9,7 +9,7 @@ topics: [classification, precision-and-recall, confusion-matrices, stochastic-gr
 tools: [Scikit-Learn, MNIST, JupyterLab, SGDClassifier]
 status: current
 checked: "2026-11-06"
-source_hash: "4a4065245ce8"
+source_hash: "9eff2ddec837"
 generated_by: gemma4:12b
 ---
 

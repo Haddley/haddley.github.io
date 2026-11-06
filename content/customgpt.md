@@ -13,10 +13,10 @@ In November 2023 OpenAI introduced "GPTs" - custom versions of ChatGPT that I co
 
 To get started, I needed a ChatGPT Plus subscription.
 
-![](assets/images/customgpt/Screenshot-2025-10-03-at-8.00.46-AM.png)
+![](assets/images/customgpt/Screenshot-2025-10-03-at-8.00.46-AM.webp)
 *I explored the prebuilt GPTs available*
 
-![](assets/images/customgpt/Screenshot-2025-10-03-at-8.04.16-AM.png)
+![](assets/images/customgpt/Screenshot-2025-10-03-at-8.04.16-AM.webp)
 *I chose the recommended plan for Plus subscribers*
 
 ![](assets/images/customgpt/Screenshot-2025-10-03-at-8.05.44-AM.png)
@@ -25,7 +25,7 @@ To get started, I needed a ChatGPT Plus subscription.
 ![](assets/images/customgpt/Screenshot-2025-10-03-at-8.07.28-AM.png)
 *I confirmed I can cancel at any time*
 
-![](assets/images/customgpt/Screenshot-2025-10-03-at-8.08.16-AM.png)
+![](assets/images/customgpt/Screenshot-2025-10-03-at-8.08.16-AM.webp)
 *I clicked "Not now" to skip additional setup*
 
 ## How I Created My Research GPT
@@ -79,10 +79,10 @@ Your report MUST be structured using the following sections:
 ![](assets/images/customgpt/Screenshot-2025-10-03-at-8.18.34-AM.png)
 *I entered a name and description for my GPT*
 
-![](assets/images/customgpt/Screenshot-2025-10-03-at-8.19.17-AM.png)
+![](assets/images/customgpt/Screenshot-2025-10-03-at-8.19.17-AM.webp)
 *I selected "Anyone with the link" for sharing*
 
-![](assets/images/customgpt/Screenshot-2025-10-03-at-8.19.42-AM.png)
+![](assets/images/customgpt/Screenshot-2025-10-03-at-8.19.42-AM.webp)
 *I copied the shareable link: https://chatgpt.com/g/g-68def7e5ca1081919fc1558d8fb84e6b-saas-erp-prospect-analyst*
 
 ## Will I Be Charged When Someone Uses My Custom GPT?
@@ -104,7 +104,7 @@ Here's what I discovered about sharing and using custom GPTs:
 ![](assets/images/customgpt/Screenshot-2025-10-03-at-8.23.40-AM.png)
 *I used the link to navigate to my custom GPT*
 
-![](assets/images/customgpt/Screenshot-2025-10-03-at-8.23.58-AM.png)
+![](assets/images/customgpt/Screenshot-2025-10-03-at-8.23.58-AM.webp)
 *I tested my custom GPT with a simple prompt: "please provide a report for Sigma https://www.sigma-alimentos.com/en/"*
 
 ## My GPTs Conversation Starters
@@ -155,7 +155,7 @@ I scrolled down to the Conversation starters section.
 I pasted the most useful starters from my list.
 I clicked Save.
 
-![](assets/images/customgpt/Screenshot-2025-10-03-at-8.59.29-AM.png)
+![](assets/images/customgpt/Screenshot-2025-10-03-at-8.59.29-AM.webp)
 *I added a few conversation starters*
 
 ![](assets/images/customgpt/Screenshot-2025-10-03-at-10.00.04-AM.png)
@@ -164,7 +164,7 @@ I clicked Save.
 ![](assets/images/customgpt/Screenshot-2025-10-03-at-10.01.11-AM.png)
 *I entered a prospect website address (URL)*
 
-![](assets/images/customgpt/Screenshot-2025-10-03-at-10.01.58-AM.png)
+![](assets/images/customgpt/Screenshot-2025-10-03-at-10.01.58-AM.webp)
 *I reviewed the generated report*
 
 ## Alternative Paths for Broader Sharing

@@ -51,7 +51,7 @@ I cloned the git repository using this command:
 % git clone https://github.com/Azure-Samples/ms-identity-javascript-tutorial.git
 ```
 
-![](assets/images/customconnectorsappregistrations/screen-shot-2021-08-08-at-11.41.51-am-1836x1739.png)
+![](assets/images/customconnectorsappregistrations/screen-shot-2021-08-08-at-11.41.51-am-1836x1739.webp)
 *esp8266*
 
 
@@ -213,7 +213,7 @@ The generated "Value" is the **Client secret** I needed to create the custom con
 ![](assets/images/customconnectorsappregistrations/screen-shot-2021-08-09-at-6.42.12-pm-1836x704.png)
 *I provided my Azure Active Directory credentials*
 
-![](assets/images/customconnectorsappregistrations/screen-shot-2021-08-09-at-6.42.42-pm-1836x1242.png)
+![](assets/images/customconnectorsappregistrations/screen-shot-2021-08-09-at-6.42.42-pm-1836x1242.webp)
 *I consented*
 
 ![](assets/images/customconnectorsappregistrations/screen-shot-2021-08-09-at-6.43.15-pm-1836x592.png)

@@ -22,7 +22,7 @@ I also built the circuit in [Tinkercad](https://www.tinkercad.com), Autodesk's f
 ![](assets/images/attiny1/tinkercad-power-supply-search.png)
 *Searching the components for a power supply to drive the breadboard*
 
-![](assets/images/attiny1/tinkercad-multimeter-5v.png)
+![](assets/images/attiny1/tinkercad-multimeter-5v.webp)
 *A running simulation with the supply and multimeter both reading 5.00 V*
 
 ![](assets/images/attiny1/tinkercad-attiny-placed.png)
@@ -30,19 +30,19 @@ I also built the circuit in [Tinkercad](https://www.tinkercad.com), Autodesk's f
 
 Tinkercad can also program the chip with blocks. I started in the blocks editor, with a forever loop that switches the built-in LED on and off, and then switched to the text view.
 
-![](assets/images/attiny1/tinkercad-blocks-editor.png)
+![](assets/images/attiny1/tinkercad-blocks-editor.webp)
 *The blocks editor, with the LED switched on for one second and off for one second in a forever loop*
 
 ![](assets/images/attiny1/tinkercad-close-blocks-warning.png)
 *Tinkercad warns that closing the blocks editor loses any blocks you have not converted*
 
-![](assets/images/attiny1/tinkercad-text-code.png)
+![](assets/images/attiny1/tinkercad-text-code.webp)
 *The same program as text, with `digitalWrite(0, HIGH)` and `digitalWrite(0, LOW)` separated by 1000 ms delays*
 
-![](assets/images/attiny1/tinkercad-resistor-placed.png)
+![](assets/images/attiny1/tinkercad-resistor-placed.webp)
 *Adding a 1 kΩ resistor to the breadboard*
 
-![](assets/images/attiny1/tinkercad-led-final-run.png)
+![](assets/images/attiny1/tinkercad-led-final-run.webp)
 *The running simulation with the LED added, the supply at 5.00 V, and 11.0 mA drawn*
 
 ## Beat 2 — Ask Claude Code for a blink program
@@ -66,7 +66,7 @@ export PATH=/opt/homebrew/opt/avr-gcc@14/bin:$PATH
 make flash
 ```
 
-![](assets/images/attiny1/blink-program-written.png)
+![](assets/images/attiny1/blink-program-written.webp)
 *Claude wrote the blink program, flashed it, and confirmed the readback; it said it could not see the board, so I needed to check the LED myself*
 
 :::brain-power Before you read the code

@@ -50,7 +50,7 @@ Ollama does not check API keys, but the form still requires one, so I typed a pl
 
 The Models section at the bottom of the form warned that a custom provider needs at least one model. I clicked "Fetch available models", and DeepSeek Harness asked Ollama for its real model list rather than showing a fixed one. I filtered the list by "code" and it showed the coding models I have pulled on this Mac: several Qwen coders, DeepSeek Coder, Code Llama and SQLCoder. I selected `qwen3-coder:30b`.
 
-![](assets/images/deepseekharnessollama/choose-models-qwen3-coder.png)
+![](assets/images/deepseekharnessollama/choose-models-qwen3-coder.webp)
 *"Fetch available models" listed the models installed in my local Ollama; I filtered by "code" and ticked qwen3-coder:30b*
 
 I clicked "Add selected". The model appeared in the provider's model list, and I clicked "Create provider".
@@ -126,17 +126,17 @@ When every step is done, tell me the URL to open and list PRD.md section 9 so I 
 
 I sent the prompt at 08:00. The model did exactly what the prompt asked: it read `ARCHITECTURE.md` first, then `PRD.md`, then `PDD.md`, before touching anything.
 
-![](assets/images/deepseekharnessollama/reading-architecture-prd-pdd.png)
+![](assets/images/deepseekharnessollama/reading-architecture-prd-pdd.webp)
 *qwen3-coder:30b read ARCHITECTURE.md, then PRD.md, then PDD.md, in the order the prompt gave*
 
 `PDD.md` is long, so the model read it in two passes, going back for the rest of `engine.js`. Then it started on the numbered steps. It confirmed the folders were in place for step 1, wrote `index.html` for step 2 and ran that step's check, then moved on to `src/constants.js` for step 3. The Files panel on the right shows `src/` and `index.html` appearing as it went.
 
-![](assets/images/deepseekharnessollama/build-steps-2-and-3.png)
+![](assets/images/deepseekharnessollama/build-steps-2-and-3.webp)
 *The model worked through the build steps by number, writing index.html for step 2, checking it, and starting src/constants.js for step 3*
 
 At 09:07, a little over an hour later, the model reported that the build was complete. It had created 14 files and 1,109 lines, with nothing deleted, including a 474-line `engine.js`. It left a static file server running as a background job and told me to open `http://localhost:8000/` and work through the acceptance checklist in `PRD.md` section 9. The status bar recorded 42 steps in a single turn, about 2 million tokens processed, an 81% cache hit rate, and a generation speed of around 22 tokens per second on my M1 Max Mac Studio.
 
-![](assets/images/deepseekharnessollama/build-complete-14-files.png)
+![](assets/images/deepseekharnessollama/build-complete-14-files.webp)
 *The session finished at 09:07 with 14 files and 1,109 lines added, a local server running, and the acceptance checklist to work through*
 
 I opened the game in the browser and played. The screen matched the specification: five rows of aliens, the red UFO crossing the top, arched green shields taking damage, the score and wave counter, and the lives shown as small cannons.

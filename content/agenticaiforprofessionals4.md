@@ -123,7 +123,7 @@ None of the eight leads above is squarely the case McNally's own reasoning leans
 
 Clicking McNally's citation marker in argument 1's Authorities list opens an in-app split-pane preview: the pane loads the real judgment text, synthesized from the extracted chunk text since McNally has no locally stored file, scrolled straight to the cited page, with an **Open original ↗** link to the real `caselaw.nsw.gov.au` page.
 
-![](assets/images/agenticaiforprofessionals4/13-authority-preview-in-app.png)
+![](assets/images/agenticaiforprofessionals4/13-authority-preview-in-app.webp)
 *In-app split-pane preview for a live-fetched authority citation, with "Open original ↗"*
 
 Opening the original confirms the lead independently — the real page's own "Cases Cited" metadata block lists it directly:

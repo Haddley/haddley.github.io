@@ -57,13 +57,13 @@ With the requirements settled, Claude researched the best approach:
 ![](assets/images/claudecode8/Screenshot-2026-02-01-at-4.59.01-PM.png)
 *Claude asked permission to fetch a reference article*
 
-![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.02.15-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.02.15-PM.webp)
 *Claude fetched the reference article on writing a LISP interpreter in JavaScript*
 
-![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.02.33-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.02.33-PM.webp)
 *Claude read the introduction to Scheme from the article*
 
-![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.02.48-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.02.48-PM.webp)
 *Claude absorbed the basic interpreter architecture*
 
 Claude then drafted a full implementation plan:
@@ -90,7 +90,7 @@ Claude created the project structure and I opened it with Live Server:
 ![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.14.17-PM.png)
 *I opened index.html in VS Code*
 
-![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.15.10-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.15.10-PM.webp)
 *I launched the app with Live Server*
 
 ![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.15.48-PM.png)
@@ -113,28 +113,28 @@ How can we add unit tests and integration tests?
 
 Claude proposed using Jest and began setting up the test suite:
 
-![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.23.18-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.23.18-PM.webp)
 *Claude asked permission to run the npm install command for Jest*
 
-![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.28.30-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.28.30-PM.webp)
 *Claude asked permission to modify the source files to make them testable*
 
-![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.28.51-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.28.51-PM.webp)
 *Claude planned full coverage across the tokeniser, parser, and evaluator*
 
-![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.37.16-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.37.16-PM.webp)
 *I approved with auto-accept so Claude could write all the test files*
 
-![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.37.54-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-01-at-5.37.54-PM.webp)
 *Claude edited types.js to export the types needed for testing*
 
-![](assets/images/claudecode8/Screenshot-2026-02-01-at-9.01.42-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-01-at-9.01.42-PM.webp)
 *I asked Claude to continue*
 
 ![](assets/images/claudecode8/Screenshot-2026-02-01-at-9.08.54-PM.png)
 *Claude ran npm test*
 
-![](assets/images/claudecode8/Screenshot-2026-02-02-at-3.27.30-AM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-02-at-3.27.30-AM.webp)
 *All tests passed*
 
 ## Initialising CLAUDE.md
@@ -146,7 +146,7 @@ Claude proposed using Jest and began setting up the test suite:
 ![](assets/images/claudecode8/Screenshot-2026-02-02-at-3.44.24-AM.png)
 *I ran /init to generate a CLAUDE.md for the project*
 
-![](assets/images/claudecode8/Screenshot-2026-02-02-at-3.49.45-AM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-02-at-3.49.45-AM.webp)
 *Claude committed CLAUDE.md to the repository*
 
 ## Deploying to Azure
@@ -166,7 +166,7 @@ Claude created the GitHub Actions workflow:
 ![](assets/images/claudecode8/Screenshot-2026-02-02-at-3.58.59-AM.png)
 *Claude created the .github/workflows directory*
 
-![](assets/images/claudecode8/Screenshot-2026-02-02-at-3.59.20-AM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-02-at-3.59.20-AM.webp)
 *Claude created the azure-static-web-apps.yml workflow file*
 
 ![](assets/images/claudecode8/Screenshot-2026-02-02-at-4.00.10-AM.png)
@@ -220,7 +220,7 @@ To verify the full pipeline, I asked Claude to update the accent colours:
 update --accent and --accent-hover colors to be brighter
 ```
 
-![](assets/images/claudecode8/Screenshot-2026-02-02-at-3.04.38-PM.png)
+![](assets/images/claudecode8/Screenshot-2026-02-02-at-3.04.38-PM.webp)
 *Claude updated the CSS and pushed the change*
 
 ![](assets/images/claudecode8/Screenshot-2026-02-02-at-3.05.41-PM.png)

@@ -18,7 +18,7 @@ Anaconda incorporates a package manager (Conda) and the Jupyter Notebook/Jupyter
 
 I reset my Apple MacBook laptop and installed Anaconda.
 
-![](assets/images/applelaptop/20230726-image0-1836x1377.jpg)
+![](assets/images/applelaptop/20230726-image0-1836x1377.webp)
 *I restarted my laptop and held down the power button until I could access the recovery assistant menu*
 
 ![](assets/images/applelaptop/20230726-image1-1836x1377.jpg)

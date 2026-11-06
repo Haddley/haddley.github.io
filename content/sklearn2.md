@@ -192,10 +192,10 @@ The project is in the chapter 2 notebook that goes with the book, [02_end_to_end
 ![](assets/images/sklearn2/jupyter-histograms.png)
 *I plotted a histogram of every column: housing_median_age is capped at 52, which shows as a tall spike on the right*
 
-![](assets/images/sklearn2/jupyter-california-map.png)
+![](assets/images/sklearn2/jupyter-california-map.webp)
 *I put the districts on a map of California: the most expensive, in red, are along the coast, around the Bay Area and Los Angeles*
 
-![](assets/images/sklearn2/jupyter-correlations.png)
+![](assets/images/sklearn2/jupyter-correlations.webp)
 *I looked for correlations: median_income is the column most closely related to house value, at 0.69*
 
 ![](assets/images/sklearn2/jupyter-pipeline.png)

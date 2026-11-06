@@ -9,7 +9,7 @@ topics: [api-routes, next-auth, authentication-providers, session-management]
 tools: [Next.js, next-auth, GitHub, JSON Web Tokens]
 status: current
 checked: "2026-11-06"
-source_hash: "80b571235321"
+source_hash: "bbfdbd155c02"
 generated_by: gemma4:12b
 ---
 

@@ -9,7 +9,7 @@ topics: [recurrent-neural-networks, time-series-forecasting, backpropagation-thr
 tools: [Scikit-Learn, Keras, TensorFlow, JupyterLab]
 status: current
 checked: "2026-11-06"
-source_hash: "4c11908c93f7"
+source_hash: "edf771ab2b3d"
 generated_by: gemma4:12b
 ---
 

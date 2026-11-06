@@ -66,7 +66,7 @@ At the end, report which pieces the local model wrote, which you wrote, the test
 
 The planner picked 15 pieces, wrote a test file for each, and checked that every test failed with `TODO` before it handed anything over.
 
-![](assets/images/deepseekharnesshybrid/tests-first.png)
+![](assets/images/deepseekharnesshybrid/tests-first.webp)
 *Fifteen test files, one per piece, all failing with TODO before any delegation*
 
 Here is one piece. The planner wrote the comment and the tests; qwen wrote the single line in the body:
@@ -92,7 +92,7 @@ test('a single alien caps at the max 300 px/s', () => {
 });
 ```
 
-![](assets/images/deepseekharnesshybrid/first-piece.png)
+![](assets/images/deepseekharnesshybrid/first-piece.webp)
 *The first piece: the subagent wrote clamp, then the planner read the file and ran the test itself before moving on*
 
 ## The result
@@ -101,14 +101,14 @@ All 15 pieces were written by qwen on my Mac. Each subagent read the file, edite
 
 Three times, a subagent finished in two seconds having done nothing: qwen wrote its request to read a file as plain text instead of as a real tool call, and the harness took that text as its final answer. Each time, the planner ran the test, saw the `TODO` still there, and started the piece again. The retry worked every time.
 
-![](assets/images/deepseekharnesshybrid/retry.png)
+![](assets/images/deepseekharnesshybrid/retry.webp)
 *marchNote: the first subagent returned without doing anything; the planner's test caught it and a retry fixed it*
 
 :::watch-it Check the work, not the report
 A subagent can report that it has finished when it has not. The planner caught all three empty runs because it ran the tests itself after every piece.
 :::
 
-![](assets/images/deepseekharnesshybrid/final-report.png)
+![](assets/images/deepseekharnesshybrid/final-report.webp)
 *The planner's final report: all tests pass, and the screenshot check is clean*
 
 | | |

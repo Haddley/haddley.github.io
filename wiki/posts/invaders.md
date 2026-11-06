@@ -8,7 +8,7 @@ topics: [ai-coding-agents, model-comparison, automated-debugging, prompt-enginee
 tools: [OpenCode, Big Pickle, DeepSeek V4 Pro, Claude Code, Sonnet 4.6, Web Audio API]
 status: current
 checked: "2026-11-05"
-source_hash: "aa26978e8951"
+source_hash: "7c782698c187"
 generated_by: gemma4:12b
 ---
 

@@ -9,7 +9,7 @@ topics: [arduino-hardware, python-daemons, 3d-modeling, embedded-systems, serial
 tools: [Arduino Uno, TFT LCD Shield, Claude Code, OpenSCAD, Bambu Studio, arduino-cli]
 status: current
 checked: "2026-11-05"
-source_hash: "87cccd0e663a"
+source_hash: "f31d23b34719"
 generated_by: gemma4:12b
 ---
 

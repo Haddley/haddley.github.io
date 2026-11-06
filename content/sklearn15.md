@@ -58,7 +58,7 @@ The naive and SARIMA figures are for March to May 2019, and the others for Janua
 A `SimpleRNN` with a single neuron scored 102,752, worse than doing nothing clever. It has too little memory to carry a week's pattern forward. The same layer with 32 neurons scored 29,979. When a recurrent model is much worse than the naive guess, this is the first thing I should check.
 :::
 
-![](assets/images/sklearn15/jupyter-weekly-shift.png)
+![](assets/images/sklearn15/jupyter-weekly-shift.webp)
 *The naive forecast: the dotted line is the series moved forward by 7 days, and below it, the difference between the two lines is mostly small, apart from holidays such as Memorial Day at the end of May*
 
 ## What training means here
@@ -91,13 +91,13 @@ A: For language, the transformers in [Part 16](/posts/sklearn16/) have mostly re
 
 The chapter is in the notebook that goes with the book, [15_processing_sequences_using_rnns_and_cnns.ipynb](https://github.com/ageron/handson-ml3/blob/main/15_processing_sequences_using_rnns_and_cnns.ipynb). I ran everything before the exercise solutions, which took under 10 minutes on my Mac Studio, and then looked through the results in JupyterLab. The notebook trains most models for up to 500 epochs with early stopping, which stops when the validation error has not improved for 50 epochs. But for the LSTM, GRU, layer-normalization, convolutional, and WaveNet models it trains only 5 epochs, "to show that it works", as the notebook says, so their errors, between 96,000 and 145,000, are not a fair comparison with the others.
 
-![](assets/images/sklearn15/jupyter-sarima.png)
+![](assets/images/sklearn15/jupyter-sarima.webp)
 *SARIMA forecasts for the validation period, retrained every day: the red forecasts follow the blue true values closely, and the autocorrelation plots below show the strong weekly pattern*
 
 ![](assets/images/sklearn15/jupyter-windows.png)
 *Windows of 4 over the numbers 0 to 5: each window moves one step along, and then each window is split into inputs, three numbers, and a target, the fourth*
 
-![](assets/images/sklearn15/jupyter-simple-rnn.png)
+![](assets/images/sklearn15/jupyter-simple-rnn.webp)
 *Training the 32-neuron `SimpleRNN`: it stopped at epoch 146, as the validation error stopped improving, with an average error of 29,979 boardings*
 
 ![](assets/images/sklearn15/jupyter-multistep-plot.png)

@@ -31,7 +31,7 @@ I shared my macOS screen using VNC by enabling Screen Sharing in System Settings
 ![](assets/images/macscreensharing/screenshot202025-08-1820at2011.25.30e280afam-856x432.png)
 *I selected Standard*
 
-![](assets/images/macscreensharing/screenshot202025-08-1820at2011.26.42e280afam-2136x1300.png)
+![](assets/images/macscreensharing/screenshot202025-08-1820at2011.26.42e280afam-2136x1300.webp)
 *I was able to access the desktop remotely*
 
 

@@ -45,7 +45,7 @@ I used LangChain to return the text found on each page of a sample medical repor
 
 [https://www.med.unc.edu/medclerk/wp-content/uploads/sites/877/2018/10/hp4.pdf](https://www.med.unc.edu/medclerk/wp-content/uploads/sites/877/2018/10/hp4.pdf)
 
-![](assets/images/langchain/screen-shot-2023-07-22-at-6.54.13-am-1836x1001.png)
+![](assets/images/langchain/screen-shot-2023-07-22-at-6.54.13-am-1836x1001.webp)
 *I reviewed the hp4.pdf medical report*
 
 

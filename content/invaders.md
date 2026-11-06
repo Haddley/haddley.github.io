@@ -94,15 +94,15 @@ With DeepSeek V4 Pro connected, I entered the same prompt as Run 1.
 ![](assets/images/invaders/Screenshot-2026-06-19-at-5.30.06-PM.png)
 *I entered the same prompt — "build invaders game see PRD.md and PDD.md. fresh start." — with DeepSeek V4 Pro*
 
-![](assets/images/invaders/Screenshot-2026-06-19-at-5.36.28-PM.png)
+![](assets/images/invaders/Screenshot-2026-06-19-at-5.36.28-PM.webp)
 *DeepSeek validated imports and syntax across all 21 source files before starting the build*
 
-![](assets/images/invaders/Screenshot-2026-06-19-at-5.37.22-PM.png)
+![](assets/images/invaders/Screenshot-2026-06-19-at-5.37.22-PM.webp)
 *DeepSeek outlined the full file structure and started a local HTTP server to serve the ES modules*
 
 The game had a SyntaxError in audio.js — an orphaned function body left by an earlier edit.
 
-![](assets/images/invaders/Screenshot-2026-06-19-at-5.38.06-PM.png)
+![](assets/images/invaders/Screenshot-2026-06-19-at-5.38.06-PM.webp)
 *DeepSeek diagnosed and fixed it: the `playSound()` function header had been separated from its body. It restored the declaration.*
 
 ![](assets/images/invaders/Screenshot-2026-06-19-at-5.38.52-PM.png)
@@ -110,7 +110,7 @@ The game had a SyntaxError in audio.js — an orphaned function body left by an 
 
 After a few rounds, I noticed the player didn’t reappear after dying. I reported the bug.
 
-![](assets/images/invaders/Screenshot-2026-06-19-at-5.40.00-PM.png)
+![](assets/images/invaders/Screenshot-2026-06-19-at-5.40.00-PM.webp)
 *DeepSeek traced it to the dead-entity filter removing the player before `_handlePlayerRespawn` could push it back. It fixed it by pushing the player back into `this.entities` after respawn.*
 
 ![](assets/images/invaders/Screenshot-2026-06-19-at-5.40.35-PM.png)
@@ -149,7 +149,7 @@ For the third run I used Claude Code with Sonnet 4.6, working from the same PRD 
 ![](assets/images/invaders/Screenshot-2026-06-19-at-2.06.27-PM.png)
 *I played a round — the formation thinned to about 34 aliens, the shields took damage, and the score reached 260*
 
-![](assets/images/invaders/Screenshot-2026-06-19-at-1.20.51-PM.png)
+![](assets/images/invaders/Screenshot-2026-06-19-at-1.20.51-PM.webp)
 *Claude Code listed everything it had built, then spotted the UFO audio bug: the saucer sound didn't stop when it left the screen*
 ![](assets/images/invaders/Screenshot-2026-06-19-at-1.24.30-PM.png)
 *Claude Code fixed it: `audio.stopUFO()` now fires as soon as the UFO exits the screen, before the dead-entity filter removes it from the array*

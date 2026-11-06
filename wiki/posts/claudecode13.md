@@ -9,7 +9,7 @@ topics: [power-platform, dataverse-xml, claude-code-skills, solution-management]
 tools: [Claude Code, Power Platform, Dataverse, Python, Power Platform CLI (pac)]
 status: current
 checked: "2026-11-05"
-source_hash: "294eb1f4902f"
+source_hash: "d7fc82460433"
 generated_by: gemma4:12b
 ---
 

@@ -47,10 +47,10 @@ Three model sizes are available, all quantized to 4-bit weights:
 
 The 1.5B is the default — a fast first download and a reasonable starting point. Larger models give better reasoning and more reliable multi-step tool use.
 
-![](assets/images/localagent/Screenshot-2026-06-14-at-10.18.57-AM.png)
+![](assets/images/localagent/Screenshot-2026-06-14-at-10.18.57-AM.webp)
 *The model selector, showing the three available WebLLM model sizes*
 
-![](assets/images/localagent/Screenshot-2026-06-12-at-12.20.46-PM.png)
+![](assets/images/localagent/Screenshot-2026-06-12-at-12.20.46-PM.webp)
 *Loading the model for the first time — progress bar fills as the weights download to the browser cache*
 
 ### Why Quantization?
@@ -163,16 +163,16 @@ The agent has six tools:
 | `navigate_to_post` | Push the browser to a post via the Next.js router |
 | `web_search` | Live web search via Jina AI — for topics not covered by the blog |
 
-![](assets/images/localagent/Screenshot-2026-06-12-at-12.26.11-PM.png)
+![](assets/images/localagent/Screenshot-2026-06-12-at-12.26.11-PM.webp)
 *I asked "Any Java related posts?" and the agent called get_posts_by_category*
 
-![](assets/images/localagent/Screenshot-2026-06-12-at-12.26.50-PM.png)
+![](assets/images/localagent/Screenshot-2026-06-12-at-12.26.50-PM.webp)
 *The agent returned links to all six Java Spring Boot posts*
 
-![](assets/images/localagent/Screenshot-2026-06-12-at-12.27.31-PM.png)
+![](assets/images/localagent/Screenshot-2026-06-12-at-12.27.31-PM.webp)
 *I followed up asking the difference between Java and JavaScript — the agent used web_search*
 
-![](assets/images/localagent/Screenshot-2026-06-12-at-12.29.31-PM.png)
+![](assets/images/localagent/Screenshot-2026-06-12-at-12.29.31-PM.webp)
 *The agent answered using the web search results*
 
 ### The Agent Loop
@@ -181,16 +181,16 @@ Each turn, the model replies either with a plain-text answer (done) or a `<tool_
 
 Because WebLLM's native tools API only supports a fixed set of Hermes models, I implemented function calling via prompt engineering — tool definitions are injected as JSON in the system message, and the model outputs structured `<tool_call>` blocks rather than using a native API.
 
-![](assets/images/localagent/Screenshot-2026-06-12-at-12.36.05-PM.png)
+![](assets/images/localagent/Screenshot-2026-06-12-at-12.36.05-PM.webp)
 *On a post page I asked the agent to summarise — it called get_post_content with the current slug*
 
-![](assets/images/localagent/Screenshot-2026-06-12-at-12.38.33-PM.png)
+![](assets/images/localagent/Screenshot-2026-06-12-at-12.38.33-PM.webp)
 *The agent summarised the post content*
 
-![](assets/images/localagent/phaser-tool-calls.png)
+![](assets/images/localagent/phaser-tool-calls.webp)
 *I asked "summarise all Phaser posts" from the home page — DevTools shows Qwen3.5 9B calling search_posts then get_post_content for each result*
 
-![](assets/images/localagent/phaser-summary.png)
+![](assets/images/localagent/phaser-summary.webp)
 *The agent produced a formatted summary of all Phaser posts with links*
 
 ## References

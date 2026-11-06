@@ -166,7 +166,7 @@ I uploaded the .nupkg file to nuget.org.
 $ dotnet new gitignore
 $ dotnet add package HaddleyOffice365.dotnet-factorial --version 1.0.0**
 
-![](assets/images/nuget/screen-shot-2021-03-01-at-6.50.49-pm-1836x1229.png)
+![](assets/images/nuget/screen-shot-2021-03-01-at-6.50.49-pm-1836x1229.webp)
 *dotnet add package HaddleyOffice365.dotnet-factorial --version 1.0.0*
 
 

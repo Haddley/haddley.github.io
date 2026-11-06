@@ -24,7 +24,7 @@ A [Tech Series interview with Thomson Reuters' CTO Joel Hron](https://www.youtub
 
 ## What CoCounsel Legal's architecture looks like
 
-![](assets/images/agenticaiforprofessionals1/thomsonreuters-cocounsel-au.png)
+![](assets/images/agenticaiforprofessionals1/thomsonreuters-cocounsel-au.webp)
 *Thomson Reuters' own CoCounsel product page for the Australian market*
 
 The richest detail came from that [same hands-on demo transcript](https://www.youtube.com/watch?v=VTOiMbOTLaE) and a later [bar-association CLE webinar](https://www.youtube.com/watch?v=6IbckYMUVCs). A few things stood out as genuinely deliberate design choices, not incidental implementation detail:

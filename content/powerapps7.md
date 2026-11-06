@@ -39,7 +39,7 @@ Opening the Status column shows why you can't add choices to it directly.
 
 Status Reason is different. Dataverse groups its choices by Status, so the Active group and the Inactive group each start with one default option.
 
-![](assets/images/powerapps7/Screenshot-2026-05-24-at-6.38.26-AM.png)
+![](assets/images/powerapps7/Screenshot-2026-05-24-at-6.38.26-AM.webp)
 *The Status Reason column editor showed two groups — Active and Inactive — each with their default choice.*
 
 ![](assets/images/powerapps7/Screenshot-2026-05-24-at-6.38.39-AM.png)
@@ -117,7 +117,7 @@ I went back to the Status Reason column editor and added meaningful options for 
 - **Approved by Manager** — value 623,460,002
 - **HR Review** — value 623,460,003
 
-![](assets/images/powerapps7/Screenshot-2026-05-24-at-6.50.19-AM.png)
+![](assets/images/powerapps7/Screenshot-2026-05-24-at-6.50.19-AM.webp)
 *The Status Reason editor's Active group now showed my three custom choices alongside the original "Active" default.*
 
 For the **Inactive** group I added four terminal states:

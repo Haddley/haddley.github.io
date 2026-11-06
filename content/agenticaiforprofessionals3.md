@@ -4,7 +4,7 @@ part: 3
 description: "Giving nsw-legal-research-assistant a real interface and an MCP server exposing the same skill to Claude Code, then running it through the same demo Thomson Reuters used to introduce CoCounsel, live, with real output — grounded Q&A, pinpoint citations, Review, and skill-chaining drafting"
 date: "2026-08-19"
 categories: ["AI"]
-image: "/assets/images/agenticaiforprofessionals6/01-database-skill-tiles-source-filter.png"
+image: "/assets/images/agenticaiforprofessionals6/01-database-skill-tiles-source-filter.webp"
 tags: "rag, mcp, docker, playwright, citation-grounding"
 hidden: false
 slug: "agenticaiforprofessionals3"
@@ -12,7 +12,7 @@ slug: "agenticaiforprofessionals3"
 
 [Part 1](/posts/agenticaiforprofessionals1/) covered the research and the plan; [Part 2](/posts/agenticaiforprofessionals2/) covered the RAG core — retrieval, generation, and citations that can't be hallucinated, all running locally on the M4 MacBook Air. This post is Phases 4 through 6: giving `nsw-legal-research-assistant` a user interface, exposing the same skills to Claude Code over MCP (and other MCP clients), and then running it live against a demo script taken directly from the interview where Thomson Reuters' Valerie McConnell walked Legal IT Insider through CoCounsel Legal's "Search a Database" and "Review Documents" skills — the [McConnell interview](https://www.youtube.com/watch?v=VTOiMbOTLaE) documented back in Part 1's research.
 
-![](assets/images/agenticaiforprofessionals6/01-database-skill-tiles-source-filter.png)
+![](assets/images/agenticaiforprofessionals6/01-database-skill-tiles-source-filter.webp)
 *The app with a database selected*
 
 ## Beat 1 — Grounded Q&A, scoped to a database
@@ -25,7 +25,7 @@ Example output:
 
 > A moratorium on evicting tenants for rent arrears existed during the COVID-19 pandemic in NSW. From [2], we see that the Residential Tenancies Regulation 2019 (NSW) was amended to include a new Part 6A "Response to COVID-19 pandemic," which provided for a "moratorium period" of six months (reg 41A). The moratorium did not apply in this specific case because the tenant was not an "impacted tenant" — there was no evidence to allow a finding that Mr Herbert was an "impacted tenant," and therefore the protections given by the regulation were not engaged.
 
-![](assets/images/agenticaiforprofessionals6/02-covid-moratorium-answer.png)
+![](assets/images/agenticaiforprofessionals6/02-covid-moratorium-answer.webp)
 *Grounded answer with fifteen inline citation markers across two documents, each linking to a specific page of a specific document*
 
 Every claim carries a bracket marker. That's the whole trust mechanism in one screen — click one.
@@ -40,10 +40,10 @@ Every citation in the run above is a **verified** source: a human found, downloa
 
 The Review skill asks a series of questions to every document individually.
 
-![](assets/images/agenticaiforprofessionals6/06-review-grid-questions.png)
+![](assets/images/agenticaiforprofessionals6/06-review-grid-questions.webp)
 *Three questions queued against the Rental Eviction Case Law (Jade) database — 50 documents × 3 questions*
 
-![](assets/images/agenticaiforprofessionals6/07-review-grid-results.png)
+![](assets/images/agenticaiforprofessionals6/07-review-grid-results.webp)
 *The finished grid — three questions (rent arrears as a termination ground, unlawful/retaliatory eviction, the COVID-19 moratorium) answered independently against every document in the database*
 
 ## Beat 4 — Skill-chaining: draft from an answer, no re-supply
@@ -64,7 +64,7 @@ Real output:
 >
 > In particular, the court noted that the tenant (you) was not a member of a household impacted by the pandemic, and therefore the moratorium did not apply in our specific case. As such, the court allowed the eviction proceedings to continue.
 
-![](assets/images/agenticaiforprofessionals6/05-draft-letter-output.png)
+![](assets/images/agenticaiforprofessionals6/05-draft-letter-output.webp)
 *The drafted letter, reusing only the figures and facts already on screen, with a review-before-use disclaimer*
 
 No new retrieval happens here — the exact answer and citations already on screen get passed straight back to a second LLM call, explicitly forbidden from introducing new facts or citations. It's deliberately stateless: the frontend, not the server, holds the "conversation" by re-sending what it already has, rather than a session table on the backend. That statelessness is also why the guardrail is worth testing honestly rather than cherry-picked: asking it to draft from an answer that hadn't actually established an outcome produced a correct *refusal* instead of a fabricated finding — a clean refusal on ungrounded ground is a stronger trust signal than a draft that always complies.
@@ -97,7 +97,7 @@ As per my previous research, I found that in Mason v Demasi, the court set aside
 judgment and ordered a new trial limited to damages [1] ([2012] NSWCA 210, p.4)...
 ```
 
-![](assets/images/agenticaiforprofessionals4/Screenshot202619at075927AM.png)
+![](assets/images/agenticaiforprofessionals4/Screenshot202619at075927AM.webp)
 *What caused the plaintiff's injuries in this case?*
 
 Same shape as the browser — the same mix of grounded and not-found rows across the five documents, the same reused-figures-only drafting behavior — because both interfaces are calling `review_collection()` and `draft_from_answer()` directly, not a second reimplementation of them. The exact wording differs from Beats 3 and 4's screenshots, same as it does between any two runs of this app; the guarantee is architectural, not word-for-word reproducibility.
@@ -106,7 +106,7 @@ Same shape as the browser — the same mix of grounded and not-found rows across
 
 Every beat above ran against the full stack live on a [Docker](/posts/docker/) Compose setup on the M4 MacBook Air from [Part 2](/posts/agenticaiforprofessionals2/) — Postgres/pgvector, the FastAPI backend, and the React frontend, all local, no cloud dependency for any of it:
 
-![](assets/images/agenticaiforprofessionals4/07-docker-desktop-containers.png)
+![](assets/images/agenticaiforprofessionals4/07-docker-desktop-containers.webp)
 *Four containers, all healthy: postgres, backend, frontend, and the compose project itself — 438.53MB RAM, 0.53% CPU at idle*
 
 ## Honest comparison to the original demo

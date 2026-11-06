@@ -19,88 +19,88 @@ I set up Unity for Meta Quest virtual reality (VR) development. I learned how to
 ![](assets/images/metaunity/Screenshot-2026-02-28-at-7.13.16-PM.png)
 *On the Add module screen, I selected the Android Build Support items in the Platforms section.*
 
-![](assets/images/metaunity/Screenshot-2026-02-28-at-7.16.15-PM.png)
+![](assets/images/metaunity/Screenshot-2026-02-28-at-7.16.15-PM.webp)
 *I opened the Meta XR Core SDK in Unity from the Asset Store*
 
 ![](assets/images/metaunity/Screenshot-2026-02-28-at-7.18.18-PM.png)
 *I selected Projects in the left navigation bar, and clicked New project.*
 
-![](assets/images/metaunity/Screenshot-2026-02-28-at-7.18.55-PM.png)
+![](assets/images/metaunity/Screenshot-2026-02-28-at-7.18.55-PM.webp)
 *I selected the Universal 3D template*
 
-![](assets/images/metaunity/Screenshot-2026-02-28-at-7.21.48-PM.png)
+![](assets/images/metaunity/Screenshot-2026-02-28-at-7.21.48-PM.webp)
 *I opened the project and selected Edit > Project Settings*
 
-![](assets/images/metaunity/Screenshot-2026-02-28-at-7.22.21-PM.png)
+![](assets/images/metaunity/Screenshot-2026-02-28-at-7.22.21-PM.webp)
 *I selected the XR Plug-in Management menu item on the left of the Project Settings window.*
 
-![](assets/images/metaunity/Screenshot-2026-02-28-at-7.23.56-PM.png)
+![](assets/images/metaunity/Screenshot-2026-02-28-at-7.23.56-PM.webp)
 *I clicked Fix All*
 
-![](assets/images/metaunity/Screenshot-2026-02-28-at-7.25.35-PM.png)
+![](assets/images/metaunity/Screenshot-2026-02-28-at-7.25.35-PM.webp)
 *I checked the OpenXR provider in the standalone group tab.*
 
-![](assets/images/metaunity/Screenshot-2026-02-28-at-7.25.46-PM.png)
+![](assets/images/metaunity/Screenshot-2026-02-28-at-7.25.46-PM.webp)
 *I checked the OpenXR provider in the Meta group tab.*
 
-![](assets/images/metaunity/Screenshot-2026-02-28-at-7.27.20-PM.png)
+![](assets/images/metaunity/Screenshot-2026-02-28-at-7.27.20-PM.webp)
 *In the Unity editor menu, I selected File > Build Profiles.*
 
-![](assets/images/metaunity/Screenshot-2026-02-28-at-7.28.42-PM.png)
+![](assets/images/metaunity/Screenshot-2026-02-28-at-7.28.42-PM.webp)
 *In the Unity Editor menu, I selected Window > Package Manager.*
 
-![](assets/images/metaunity/Screenshot-2026-02-28-at-7.29.24-PM.png)
+![](assets/images/metaunity/Screenshot-2026-02-28-at-7.29.24-PM.webp)
 *I selected the Meta XR Core SDK and clicked Install.*
 
-![](assets/images/metaunity/Screenshot-2026-02-28-at-7.30.30-PM.png)
+![](assets/images/metaunity/Screenshot-2026-02-28-at-7.30.30-PM.webp)
 *When prompted to enable the Meta XR feature set, I selected Enable.*
 
-![](assets/images/metaunity/Screenshot-2026-02-28-at-7.30.50-PM.png)
+![](assets/images/metaunity/Screenshot-2026-02-28-at-7.30.50-PM.webp)
 *I confirmed that the Meta XR Core SDK was installed*
 
-![](assets/images/metaunity/Screenshot-2026-02-28-at-7.31.53-PM.png)
+![](assets/images/metaunity/Screenshot-2026-02-28-at-7.31.53-PM.webp)
 *I selected the Meta XR Interaction SDK and clicked Install*
 
-![](assets/images/metaunity/Screenshot-2026-02-28-at-7.33.52-PM.png)
+![](assets/images/metaunity/Screenshot-2026-02-28-at-7.33.52-PM.webp)
 *I installed the Meta XR Interaction SDK*
 
-![](assets/images/metaunity/Screenshot-2026-02-28-at-7.37.35-PM.png)
+![](assets/images/metaunity/Screenshot-2026-02-28-at-7.37.35-PM.webp)
 *I installed the Meta XR Simulator*
 
-![](assets/images/metaunity/Screenshot-2026-02-28-at-7.38.25-PM.png)
+![](assets/images/metaunity/Screenshot-2026-02-28-at-7.38.25-PM.webp)
 *From the top of the Unity Editor, I expanded the Meta XR Tools drop-down list, and then I selected Project Setup Tool.*
 
-![](assets/images/metaunity/Screenshot-2026-02-28-at-7.41.28-PM.png)
+![](assets/images/metaunity/Screenshot-2026-02-28-at-7.41.28-PM.webp)
 *I navigated to Project Settings > XR Plug-in Management > Project Validation.*
 
-![](assets/images/metaunity/Screenshot-2026-02-28-at-7.43.33-PM.png)
+![](assets/images/metaunity/Screenshot-2026-02-28-at-7.43.33-PM.webp)
 *I navigated to Project Settings > XR Plug-in Management > OpenXR and selected the Android tab.*
 
-![](assets/images/metaunity/Screenshot-2026-02-28-at-7.44.41-PM.png)
+![](assets/images/metaunity/Screenshot-2026-02-28-at-7.44.41-PM.webp)
 *In the Hierarchy pane, I deleted the Main Camera from my project’s SampleScene.*
 
-![](assets/images/metaunity/Screenshot-2026-02-28-at-7.45.13-PM.png)
+![](assets/images/metaunity/Screenshot-2026-02-28-at-7.45.13-PM.webp)
 *I selected Meta XR Tools > Building Blocks from the drop-down toolbar menu in the editor.*
 
-![](assets/images/metaunity/Screenshot-2026-02-28-at-7.48.04-PM.png)
+![](assets/images/metaunity/Screenshot-2026-02-28-at-7.48.04-PM.webp)
 *In the Building Blocks window, I found the Camera Rig Building Block, and selected the icon on the bottom right of the block to add it to the project.*
 
-![](assets/images/metaunity/Screenshot-2026-02-28-at-7.48.37-PM.png)
+![](assets/images/metaunity/Screenshot-2026-02-28-at-7.48.37-PM.webp)
 *I added the Camera Rig object*
 
-![](assets/images/metaunity/Screenshot-2026-02-28-at-7.49.27-PM.png)
+![](assets/images/metaunity/Screenshot-2026-02-28-at-7.49.27-PM.webp)
 *In the Building Blocks window, I found the Grab Interaction Building Block, and I selected the icon on the bottom right of the block to add it to the project.*
 
-![](assets/images/metaunity/Screenshot-2026-02-28-at-7.49.57-PM.png)
+![](assets/images/metaunity/Screenshot-2026-02-28-at-7.49.57-PM.webp)
 *I selected the Cube*
 
-![](assets/images/metaunity/Screenshot-2026-02-28-at-7.50.45-PM.png)
+![](assets/images/metaunity/Screenshot-2026-02-28-at-7.50.45-PM.webp)
 *I updated the position of the cube*
 
-![](assets/images/metaunity/Screenshot-2026-02-28-at-7.52.07-PM.png)
+![](assets/images/metaunity/Screenshot-2026-02-28-at-7.52.07-PM.webp)
 *I clicked the 'Build And Run' menu item*
 
-![](assets/images/metaunity/Screenshot-2026-02-28-at-7.52.37-PM.png)
+![](assets/images/metaunity/Screenshot-2026-02-28-at-7.52.37-PM.webp)
 *I saved the file as `Hello World App.apk`*
 
 ![](assets/images/metaunity/638996873_1572551410687559_1632293592123777508_n.jpg)
@@ -111,33 +111,33 @@ I set up Unity for Meta Quest virtual reality (VR) development. I learned how to
 
 
 ## Add more Cubes using Claude Code
-![](assets/images/metaunity/Screenshot-2026-03-01-at-7.31.52-AM.png)
+![](assets/images/metaunity/Screenshot-2026-03-01-at-7.31.52-AM.webp)
 *I opened the project using Visual Studio Code and used /init to create a CLAUDE.md file*
 
 ```PROMPT
 Describe the scene
 ```
 
-![](assets/images/metaunity/Screenshot-2026-03-01-at-7.34.59-AM.png)
+![](assets/images/metaunity/Screenshot-2026-03-01-at-7.34.59-AM.webp)
 *I reviewed Claude Code's description of the scene*
 
 ```PROMPT
 How can we add an extra 5 cubes to the scene?
 ```
 
-![](assets/images/metaunity/Screenshot-2026-03-01-at-7.37.27-AM.png)
+![](assets/images/metaunity/Screenshot-2026-03-01-at-7.37.27-AM.webp)
 *I selected the 'Copies of the existing grabbable cube' option*
 
-![](assets/images/metaunity/Screenshot-2026-03-01-at-7.40.02-AM.png)
+![](assets/images/metaunity/Screenshot-2026-03-01-at-7.40.02-AM.webp)
 *I clicked Yes to apply the planned update*
 
-![](assets/images/metaunity/Screenshot-2026-03-01-at-7.41.49-AM.png)
+![](assets/images/metaunity/Screenshot-2026-03-01-at-7.41.49-AM.webp)
 *I clicked Yes to allow the bash command to run*
 
-![](assets/images/metaunity/Screenshot-2026-03-01-at-7.42.34-AM.png)
+![](assets/images/metaunity/Screenshot-2026-03-01-at-7.42.34-AM.webp)
 *I confirmed the update was applied*
 
-![](assets/images/metaunity/Screenshot-2026-03-01-at-7.53.13-AM.png)
+![](assets/images/metaunity/Screenshot-2026-03-01-at-7.53.13-AM.webp)
 *I selected the Build and Run command in Unity*
 
 ![](assets/images/metaunity/641521698_1448675780092497_3489181757260598694_n.jpg)
@@ -149,25 +149,25 @@ How can we add an extra 5 cubes to the scene?
 review this page https://developers.meta.com/horizon/documentation/unity/unity-passthrough-tutorial/ then update the scene to use "passthrough"
 ```
 
-![](assets/images/metaunity/Screenshot-2026-03-01-at-9.22.58-AM.png)
+![](assets/images/metaunity/Screenshot-2026-03-01-at-9.22.58-AM.webp)
 *I clicked Yes to allow Claude Code to fetch the Meta passthrough tutorial*
 
-![](assets/images/metaunity/Screenshot-2026-03-01-at-9.26.37-AM.png)
+![](assets/images/metaunity/Screenshot-2026-03-01-at-9.26.37-AM.webp)
 *I clicked Yes to apply the first SampleScene.unity edit*
 
-![](assets/images/metaunity/Screenshot-2026-03-01-at-9.26.54-AM.png)
+![](assets/images/metaunity/Screenshot-2026-03-01-at-9.26.54-AM.webp)
 *I clicked Yes to apply a second SampleScene.unity edit*
 
-![](assets/images/metaunity/Screenshot-2026-03-01-at-9.27.17-AM.png)
+![](assets/images/metaunity/Screenshot-2026-03-01-at-9.27.17-AM.webp)
 *Claude Code planned the 4 changes needed to enable passthrough*
 
-![](assets/images/metaunity/Screenshot-2026-03-01-at-9.27.48-AM.png)
+![](assets/images/metaunity/Screenshot-2026-03-01-at-9.27.48-AM.webp)
 *I clicked Yes to allow Claude Code to insert the OVRPassthroughLayer object into the scene*
 
-![](assets/images/metaunity/Screenshot-2026-03-01-at-9.28.11-AM.png)
+![](assets/images/metaunity/Screenshot-2026-03-01-at-9.28.11-AM.webp)
 *I clicked Yes to allow Claude Code to edit the AndroidManifest.xml*
 
-![](assets/images/metaunity/Screenshot-2026-03-01-at-9.29.05-AM.png)
+![](assets/images/metaunity/Screenshot-2026-03-01-at-9.29.05-AM.webp)
 *Claude Code completed all 4 passthrough changes and showed a summary*
 
 ![](assets/images/metaunity/641532049_1193231526215322_7894490494628209553_n.jpg)
@@ -180,19 +180,19 @@ I have been prescribed glasses that help me to see properly (without leaning my 
 Left Eye (OS): 5.50 Prism Diopters Base Up + 1.0 Prism Diopter Base Out.
 ```
 
-![](assets/images/metaunity/Screenshot-2026-03-01-at-10.13.46-AM.png)
+![](assets/images/metaunity/Screenshot-2026-03-01-at-10.13.46-AM.webp)
 *I reviewed Claude Code's plan for PrismVisionCorrection + SpiritLevel and selected Yes, and auto-accept*
 
-![](assets/images/metaunity/Screenshot-2026-03-01-at-10.14.42-AM.png)
+![](assets/images/metaunity/Screenshot-2026-03-01-at-10.14.42-AM.webp)
 *I reviewed the prism math and spirit level implementation details*
 
-![](assets/images/metaunity/Screenshot-2026-03-01-at-10.15.20-AM.png)
+![](assets/images/metaunity/Screenshot-2026-03-01-at-10.15.20-AM.webp)
 *I reviewed the implementation steps and verification checklist*
 
-![](assets/images/metaunity/Screenshot-2026-03-01-at-10.16.59-AM.png)
+![](assets/images/metaunity/Screenshot-2026-03-01-at-10.16.59-AM.webp)
 *Claude Code completed the changes and summarised what was created*
 
-![](assets/images/metaunity/Screenshot-2026-03-01-at-10.18.53-AM.png)
+![](assets/images/metaunity/Screenshot-2026-03-01-at-10.18.53-AM.webp)
 *I attached the Prism Vision Correction script to the Camera Rig in the Unity Editor*
 
 ![](assets/images/metaunity/642894093_1609198393659252_1924717491324295358_n.jpg)
@@ -200,14 +200,14 @@ Left Eye (OS): 5.50 Prism Diopters Base Up + 1.0 Prism Diopter Base Out.
 
 ## Understanding the Code
 
-![](assets/images/metaunity/Screenshot-2026-03-02-at-6.53.20-AM.png)
+![](assets/images/metaunity/Screenshot-2026-03-02-at-6.53.20-AM.webp)
 *I opened PrismVisionCorrection.cs in VS Code*
 
 ```PROMPT
 explain PrismVisionCorrection.cs
 ```
 
-![](assets/images/metaunity/Screenshot-2026-03-02-at-7.00.32-AM.png)
+![](assets/images/metaunity/Screenshot-2026-03-02-at-7.00.32-AM.webp)
 *Claude Code explained how the prism correction and spirit level work*
 
 ## Dynamically adjusting Prism values
@@ -243,13 +243,13 @@ X button: Restore the original prescription values as they were set in the Inspe
 Do you have any questions?
 ```
 
-![](assets/images/metaunity/Screenshot-2026-03-04-at-3.49.02-PM.png)
+![](assets/images/metaunity/Screenshot-2026-03-04-at-3.49.02-PM.webp)
 *Claude Code read the script and confirmed it had no questions before implementing all four features*
 
-![](assets/images/metaunity/Screenshot-2026-03-04-at-3.51.16-PM.png)
+![](assets/images/metaunity/Screenshot-2026-03-04-at-3.51.16-PM.webp)
 *I clicked Yes to allow Claude Code to write the updated PrismVisionCorrection.cs*
 
-![](assets/images/metaunity/Screenshot-2026-03-04-at-3.51.59-PM.png)
+![](assets/images/metaunity/Screenshot-2026-03-04-at-3.51.59-PM.webp)
 *Claude Code completed all four changes and showed a summary of the tilt compensation, robust roll measurement, enhanced HUD, and quick reset buttons*
 
 ```csharp

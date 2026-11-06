@@ -9,7 +9,7 @@ topics: [mcp-servers, context-injection, llm-limitations, react-migration]
 tools: [Claude Code, Context7, React, Model Context Protocol]
 status: current
 checked: "2026-11-05"
-source_hash: "48a93d211689"
+source_hash: "9a782d61df42"
 generated_by: gemma4:12b
 ---
 

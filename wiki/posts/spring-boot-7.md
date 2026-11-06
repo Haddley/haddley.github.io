@@ -9,7 +9,7 @@ topics: [spring-boot, azure-cloud, kubernetes-management, application-scaling]
 tools: [Azure Spring Apps, Kubernetes, Azure Monitor, Azure CLI, Maven, Tomcat]
 status: current
 checked: "2026-11-06"
-source_hash: "247478234a68"
+source_hash: "f94c8b23a0dc"
 generated_by: gemma4:12b
 ---
 

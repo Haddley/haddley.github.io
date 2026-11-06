@@ -25,16 +25,16 @@ I opened Claude Code in an empty folder and installed the plugin from the offici
 /plugin install dataverse@claude-plugins-official
 ```
 
-![](assets/images/claudecode16/plugin-install-command.png)
+![](assets/images/claudecode16/plugin-install-command.webp)
 *I typed the install command, and Claude Code showed the plugin's description*
 
-![](assets/images/claudecode16/plugin-details.png)
+![](assets/images/claudecode16/plugin-details.webp)
 *The plugin details listed the nine skills it would install, and its context cost: about 1.1k tokens on every turn, and about 51.1k when a skill is used. I chose to install it for this folder only (local scope).*
 
-![](assets/images/claudecode16/plugin-installed.png)
+![](assets/images/claudecode16/plugin-installed.webp)
 *The plugin installed and became active straight away, and I typed `/skills` to check*
 
-![](assets/images/claudecode16/skills-list.png)
+![](assets/images/claudecode16/skills-list.webp)
 *`/skills` listed the nine `dataverse:` skills, locked by the plugin, next to my own `dv-generate` skill from Part 13*
 
 The [Dataverse-skills repository](https://github.com/microsoft/Dataverse-skills) lists the nine skills, in this order:
@@ -89,12 +89,12 @@ The plugin has four ways to reach Dataverse: the MCP server, the Dataverse CLI, 
 connect to my Dataverse Environment
 ```
 
-![](assets/images/claudecode16/connect-prompt.png)
+![](assets/images/claudecode16/connect-prompt.webp)
 *I asked Claude to connect to my Dataverse environment*
 
 The `dv-connect` skill first looked for existing PAC CLI sign-ins on my Mac and asked which environment this folder should use. I typed the address of a development environment that was not in the list, so Claude created a new Dataverse CLI sign-in for it, using a device code.
 
-![](assets/images/claudecode16/dataverse-auth-device-code.png)
+![](assets/images/claudecode16/dataverse-auth-device-code.webp)
 *Claude ran `dataverse auth create` with `--deviceCode` and gave me a code to enter*
 
 ![](assets/images/claudecode16/enter-device-code.png)
@@ -110,7 +110,7 @@ The consent screen shows the Dataverse CLI as **unverified**, with the warning "
 ![](assets/images/claudecode16/signed-in.png)
 *After I accepted, the browser said I had signed in to the Dataverse CLI and could close the window*
 
-![](assets/images/claudecode16/pac-auth-device-code.png)
+![](assets/images/claudecode16/pac-auth-device-code.webp)
 *Claude checked the new profile with `dataverse auth who`, and then started a second device-code sign-in, this time for the PAC CLI on the same environment*
 
 ## Asking about the environment
@@ -125,10 +125,10 @@ A brand new Dataverse environment with Dynamics 365 apps installed already has h
 What tables are in this environment?
 ```
 
-![](assets/images/claudecode16/what-tables.png)
+![](assets/images/claudecode16/what-tables.webp)
 *Claude said it could already answer with the Dataverse CLI, without waiting for the rest of the setup, and called the Web API for the table definitions*
 
-![](assets/images/claudecode16/tables-answer.png)
+![](assets/images/claudecode16/tables-answer.webp)
 *The environment had 701 tables. Claude grouped them: 213 standard tables, 488 tables flagged as custom that are almost all Microsoft's own (Dynamics 365, Power Pages and Copilot), and one table that someone built, `hadd_todo`*
 
 I liked that Claude did not simply report 489 custom tables. It worked out that the `msdyn_`, `mspp_` and `adx_` tables come from Microsoft, and picked out the one table with a real publisher prefix.
@@ -139,10 +139,10 @@ I liked that Claude did not simply report 489 custom tables. It worked out that 
 Create an account named Contoso
 ```
 
-![](assets/images/claudecode16/create-account.png)
+![](assets/images/claudecode16/create-account.webp)
 *Claude read the help for `dataverse data` and `dataverse data create` before running anything*
 
-![](assets/images/claudecode16/account-created.png)
+![](assets/images/claudecode16/account-created.webp)
 *Claude said which environment it was about to write to, created the account, and reported its ID, owner and status*
 
 ## Reading records
@@ -151,10 +151,10 @@ Create an account named Contoso
 list todo items
 ```
 
-![](assets/images/claudecode16/list-todo-items.png)
+![](assets/images/claudecode16/list-todo-items.webp)
 *Claude described the `hadd_todo` table first. Its first try passed an `--environment` option that `describe` does not accept, so it ran the command again without it.*
 
-![](assets/images/claudecode16/todo-items.png)
+![](assets/images/claudecode16/todo-items.webp)
 *Claude queried the table and showed the two Todo items as a table, with each record's title, status, priority, due date and whether it was completed*
 
 ## The nine skills, with examples

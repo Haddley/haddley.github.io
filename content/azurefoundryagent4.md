@@ -29,17 +29,17 @@ In the Foundry portal I opened **Agents**, clicked **New agent**, and chose **Wi
 
 The gallery says "Templates are examples and may need to be customized before production use." Every template I could see is tagged **Voice** and **Preview**, and they cover common phone scenarios such as retail banking, insurance claims, a front desk receptionist and collections.
 
-![](assets/images/azurefoundryagent4/agent-templates.png)
+![](assets/images/azurefoundryagent4/agent-templates.webp)
 *I found Legal intake specialist in the third row of the gallery*
 
 Clicking a card shows a preview that says "Give it a ring". It also says to try a sample legal intake conversation "using fictional case details, not legal advice". I kept that rule for the whole post: every name, address and number below is invented.
 
-![](assets/images/azurefoundryagent4/template-preview.png)
+![](assets/images/azurefoundryagent4/template-preview.webp)
 *I clicked the card and read the preview before opening it in the playground*
 
 I clicked **Open in playground**, and Foundry created the agent `legal-intake-specialist` in my project, version 1.
 
-![](assets/images/azurefoundryagent4/legal-intake-specialist-playground.png)
+![](assets/images/azurefoundryagent4/legal-intake-specialist-playground.webp)
 *The new agent in the playground, with its instructions, greeting, model and voice on the left*
 
 ## What the template contains
@@ -110,7 +110,7 @@ I invented a caller, Dana Whitfield, who was hit from behind by a pickup truck w
 
 I clicked **Start** and spoke to the agent through my Mac's microphone. The Chat panel shows the transcript and the session ID.
 
-![](assets/images/azurefoundryagent4/chat-transcript.png)
+![](assets/images/azurefoundryagent4/chat-transcript.webp)
 *I told the agent what happened, and the Chat panel wrote the transcript as I spoke*
 
 ## What happened on the first call

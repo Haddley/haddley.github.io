@@ -21,7 +21,7 @@ I started by creating a DeepSeek API key.
 ![](assets/images/claudecode12/Screenshot-2026-05-08-at-4.20.59-PM.png)
 *I navigated to the DeepSeek platform API keys page — no keys existed yet*
 
-![](assets/images/claudecode12/Screenshot-2026-05-08-at-4.21.25-PM.png)
+![](assets/images/claudecode12/Screenshot-2026-05-08-at-4.21.25-PM.webp)
 *I clicked "Create new API key" and entered a name for the key*
 
 ![](assets/images/claudecode12/Screenshot-2026-05-08-at-4.22.43-PM.png)
@@ -59,7 +59,7 @@ The account had no credit yet, so I topped it up.
 ![](assets/images/claudecode12/Screenshot-2026-05-08-at-4.33.01-PM.png)
 *I went to the DeepSeek Top Up page and selected $2 to add credit*
 
-![](assets/images/claudecode12/Screenshot-2026-05-08-at-4.38.04-PM.png)
+![](assets/images/claudecode12/Screenshot-2026-05-08-at-4.38.04-PM.webp)
 *The payment went through successfully*
 
 ![](assets/images/claudecode12/Screenshot-2026-05-08-at-4.39.08-PM.png)

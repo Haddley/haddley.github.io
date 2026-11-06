@@ -110,7 +110,7 @@ The chapter is in the notebook that goes with the book, [13_loading_and_preproce
 ![](assets/images/sklearn13/jupyter-tf-idf.png)
 *`TextVectorization` turns sentences into numbers: each word gets a number, and with `tf_idf` each sentence becomes a row of weights, where a word that appears twice, such as "be", counts for more, and a word that is common across all the sentences counts for less*
 
-![](assets/images/sklearn13/jupyter-center-crop.png)
+![](assets/images/sklearn13/jupyter-center-crop.webp)
 *A `CenterCrop` layer cuts a 100 × 100 square out of the middle of a sample photo: the pixels are large, because the picture has been cut, not stretched*
 
 :::bullet-points Loading and preprocessing, in short

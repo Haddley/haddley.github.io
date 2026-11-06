@@ -27,7 +27,7 @@ curl -fsSL https://raw.githubusercontent.com/Haddley/dv-generate/main/install.sh
 
 With the skill installed, I opened Claude Code in an empty folder and checked that the skill was available.
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.31.29-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.31.29-PM.webp)
 *I opened Claude Code in an empty folder called `dv-generate-test` and ran `/skills`. `dv-generate` is listed as a user skill*
 
 Then I gave Claude a prompt to generate a Todo model-driven app.
@@ -43,17 +43,17 @@ Completed (yes/no boolean field)
 Generate the solution as a .zip file that I can import directly into my development environment.
 ```
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.32.13-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.32.13-PM.webp)
 *I typed the Todo prompt. It asks for a `.zip` I can import into my development environment, not a managed solution*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.32.35-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.32.35-PM.webp)
 *Claude loaded the skill and asked which publisher prefix to use before writing any XML. I chose `neil`*
 
 Claude wrote `solution.xml`, `customizations.xml` and `pack.sh`, and built `TodoSolution.zip`. I used two Developer environments for the rest of this post: one for development, and one standing in for test or production.
 
 ## Import into development
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.37.18-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.37.18-PM.webp)
 *In make.powerapps.com on my development environment, I chose Import solution and picked `TodoSolution.zip` (6 KB)*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.37.36-PM.png)
@@ -62,7 +62,7 @@ Claude wrote `solution.xml`, `customizations.xml` and `pack.sh`, and built `Todo
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.37.53-PM.png)
 *The import details show an **Unmanaged** solution from publisher Neil, version 1.0.0.0*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.40.12-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.40.12-PM.webp)
 *The solution imported successfully and is listed with Managed set to No*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.40.56-PM.png)
@@ -84,19 +84,19 @@ Claude wrote `solution.xml`, `customizations.xml` and `pack.sh`, and built `Todo
 
 Importing into development gives me an unmanaged solution I can keep changing. To deploy it, I export it as managed from development.
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.43.43-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.43.43-PM.webp)
 *To move the solution on, I selected it in the development environment and chose Export solution*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.43.57-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.43.57-PM.webp)
 *The export panel starts by asking to publish all changes*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.44.19-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.44.19-PM.webp)
 *Published*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.44.36-PM.png)
 *It lists the managed solutions the target environment must already have: App Framework Infra Extensions and App Module Assets. This comes from the `MissingDependencies` block in `solution.xml`*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.44.51-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.44.51-PM.webp)
 *I exported as **Managed (recommended)**. The portal proposed version 1.0.0.1, one higher than the 1.0.0.0 I had imported*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.45.39-PM.png)
@@ -114,7 +114,7 @@ Importing into development gives me an unmanaged solution I can keep changing. T
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.48.09-PM.png)
 *The import details say **Managed**, version 1.0.0.1*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.50.09-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.50.09-PM.webp)
 *The solution imported and shows Managed set to Yes*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.50.21-PM.png)
@@ -133,16 +133,16 @@ Note that the portal raises the version at export time. Dev was at 1.0.0.0 and t
 
 ## An update: two new columns
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.52.11-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.52.11-PM.webp)
 *Back in Claude Code, the end of its first summary shows the table, the main form and the two views, and says the solution is unmanaged only, with the advice to import into dev and export as managed from there. Below it I typed my first update request. I asked for version 1.0.0.2 because the portal export had already moved dev to 1.0.0.1*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.52.42-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.52.42-PM.webp)
 *Claude edited the XML in place and kept the existing columns, GUIDs and schema names. It warns that importing over dev overwrites anything I changed in the form or views, and that its own generator script is out of date*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.53.26-PM.png)
 *I imported the new zip into the development environment*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.53.52-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.53.52-PM.webp)
 *It is the same `TodoSolution.zip`, rebuilt a minute earlier*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.54.03-PM.png)
@@ -154,7 +154,7 @@ Note that the portal raises the version at export time. Dev was at 1.0.0.0 and t
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.55.11-PM.png)
 *The import succeeded*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.55.25-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.55.25-PM.webp)
 *The development environment lists version 1.0.0.2, still unmanaged*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.56.00-PM.png)
@@ -174,22 +174,22 @@ Note that the portal raises the version at export time. Dev was at 1.0.0.0 and t
 
 Then I released it the same way: export as managed from development, and import into the second environment.
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.58.26-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.58.26-PM.webp)
 *To release the update I exported again from dev*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.58.37-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.58.37-PM.webp)
 *Publish all changes first*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.58.59-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.58.59-PM.webp)
 *Published*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.59.28-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.59.28-PM.webp)
 *The same managed-solution dependencies as before*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.59.43-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-1.59.43-PM.webp)
 *The portal proposed 1.0.0.3. I kept Managed*
 
-![](assets/images/claudecode13/Screenshot-2026-10-18-at-2.00.39-PM.png)
+![](assets/images/claudecode13/Screenshot-2026-10-18-at-2.00.39-PM.webp)
 *Exported*
 
 ![](assets/images/claudecode13/Screenshot-2026-10-18-at-2.00.59-PM.png)

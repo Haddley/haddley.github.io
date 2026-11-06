@@ -9,7 +9,7 @@ topics: [claude-code, dataverse-integration, llm-tool-selection, prompt-engineer
 tools: [Claude Code, Microsoft Dataverse, Python SDK, Dataverse CLI, PAC CLI, GitHub Copilot]
 status: current
 checked: "2026-11-05"
-source_hash: "fef5d03161ef"
+source_hash: "8d47e76a1113"
 generated_by: gemma4:12b
 ---
 

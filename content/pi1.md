@@ -38,7 +38,7 @@ I used the Raspberry Pi Imager tool to write a standard operating system image o
 ![](assets/images/pi1/raspberry-pi-setup-image-11-682x452.png)
 *Finished*
 
-![](assets/images/pi1/raspberry-pi-setup-img-3336-1836x1377.jpg)
+![](assets/images/pi1/raspberry-pi-setup-img-3336-1836x1377.webp)
 *I put the Micro SD Card into the Raspberry Pi and plugged in the power*
 
 ![](assets/images/pi1/screen-shot-2023-07-22-at-1.44.46-pm-1138x736.png)

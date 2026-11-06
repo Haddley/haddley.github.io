@@ -9,7 +9,7 @@ topics: [claude-code, deepseek-api, llm-cost-optimization, local-vs-cloud-models
 tools: [Claude Code, DeepSeek, Ollama, Live Server]
 status: current
 checked: "2026-11-05"
-source_hash: "5bb41dac6652"
+source_hash: "23c2041d58c5"
 generated_by: gemma4:12b
 ---
 

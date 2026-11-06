@@ -26,16 +26,16 @@ pi@raspberrypi:~ $ sudo apt-get --allow-releaseinfo-change update
 pi@raspberrypi:~ $ sudo apt install firefox-esr
 ```
 
-![](assets/images/voicekit2/Screenshot-2025-10-16-at-12.14.19-PM.png)
+![](assets/images/voicekit2/Screenshot-2025-10-16-at-12.14.19-PM.webp)
 *I opened the Google Cloud Console*
 
 ![](assets/images/voicekit2/Screenshot-2025-10-16-at-12.27.12-PM.png)
 *I reviewed the Credentials page*
 
-![](assets/images/voicekit2/Screenshot-2025-10-16-at-12.34.06-PM.png)
+![](assets/images/voicekit2/Screenshot-2025-10-16-at-12.34.06-PM.webp)
 *I navigated to APIs & Services*
 
-![](assets/images/voicekit2/Screenshot-2025-10-16-at-4.03.01-PM.png)
+![](assets/images/voicekit2/Screenshot-2025-10-16-at-4.03.01-PM.webp)
 *I created assistant.json*
 
 ```json
@@ -54,7 +54,7 @@ pi@raspberrypi:~ $ sudo apt install firefox-esr
 }
 ```
 
-![](assets/images/voicekit2/Screenshot-2025-10-16-at-12.34.37-PM.png)
+![](assets/images/voicekit2/Screenshot-2025-10-16-at-12.34.37-PM.webp)
 *I ran the Assistant Library Demo*
 
 

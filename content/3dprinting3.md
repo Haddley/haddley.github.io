@@ -326,7 +326,7 @@ Claude Code had kept the underside of the clamp flat, filled down to the outside
 
 I viewed and printed both designs in Bambu Studio. The screenshot shows them on one plate: Design 1 at the top and Design 2 below it, with the clamp sticking out at the back. Each part sits with its flat outside face on the plate and the tray facing up.
 
-![](assets/images/3dprinting3/bambu-studio-both-versions.png)
+![](assets/images/3dprinting3/bambu-studio-both-versions.webp)
 *Bambu Studio with both designs on the plate, printed on a Bambu Lab P1S with a 0.4 mm nozzle, PLA Basic, and the textured PEI plate*
 
 The settings were the 0.20 mm Standard process profile, with supports switched on. The support type was tree (auto), with a threshold angle of 30°. "On build plate only" was switched off. The outside face prints against the textured PEI plate, and that is where the grainy finish in the photos comes from.

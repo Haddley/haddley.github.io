@@ -19,32 +19,32 @@ A Page-Line Summary is the litigation standard for condensing deposition transcr
 ```
 
 
-![](assets/images/claudecode14/Screenshot-2026-06-04-at-5.53.41-PM.png)
+![](assets/images/claudecode14/Screenshot-2026-06-04-at-5.53.41-PM.webp)
 *I opened the deposition transcript in VS Code and ran /skills to see the available skills*
 
-![](assets/images/claudecode14/Screenshot-2026-06-04-at-5.54.26-PM.png)
+![](assets/images/claudecode14/Screenshot-2026-06-04-at-5.54.26-PM.webp)
 *I ran the curl install command, which cloned the repository and registered the skill with Claude Code*
 
-![](assets/images/claudecode14/Screenshot-2026-06-04-at-5.54.50-PM.png)
+![](assets/images/claudecode14/Screenshot-2026-06-04-at-5.54.50-PM.webp)
 *I started claude and checked that the page-line-summary skill was listed*
 
-![](assets/images/claudecode14/Screenshot-2026-06-04-at-5.55.45-PM.png)
+![](assets/images/claudecode14/Screenshot-2026-06-04-at-5.55.45-PM.webp)
 *The skill asked which side I represent before reading the transcript*
 
-![](assets/images/claudecode14/Screenshot-2026-06-04-at-5.56.53-PM.png)
+![](assets/images/claudecode14/Screenshot-2026-06-04-at-5.56.53-PM.webp)
 *I selected Defense and the skill asked for a one-line case theory*
 
-![](assets/images/claudecode14/Screenshot-2026-06-04-at-5.57.06-PM.png)
+![](assets/images/claudecode14/Screenshot-2026-06-04-at-5.57.06-PM.webp)
 *I confirmed my answers: Defense, with a preexisting injury theory*
 
-![](assets/images/claudecode14/Screenshot-2026-06-04-at-6.00.01-PM.png)
+![](assets/images/claudecode14/Screenshot-2026-06-04-at-6.00.01-PM.webp)
 *The skill read the 92-page transcript in chunks, flagging key admissions and damages facts as it went*
 
 
-![](assets/images/claudecode14/Screenshot-2026-06-04-at-6.05.26-PM.png)
+![](assets/images/claudecode14/Screenshot-2026-06-04-at-6.05.26-PM.webp)
 *The skill saved the summary as a Markdown file in the same directory as the transcript*
 
-![](assets/images/claudecode14/Screenshot-2026-06-04-at-6.06.18-PM.png)
+![](assets/images/claudecode14/Screenshot-2026-06-04-at-6.06.18-PM.webp)
 *The formatted summary rendered with the case caption, examination index, page-line table, and key takeaways*
 
 ## Deposition Summary

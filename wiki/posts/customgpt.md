@@ -8,7 +8,7 @@ topics: [custom-gpt-creation, saas-sales-automation, openai-api-integration, pro
 tools: [ChatGPT Plus, GPT Builder, OpenAI API]
 status: current
 checked: "2026-11-05"
-source_hash: "8a8122732198"
+source_hash: "5c12007011a2"
 generated_by: gemma4:12b
 ---
 

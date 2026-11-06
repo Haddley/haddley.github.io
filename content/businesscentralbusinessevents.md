@@ -39,10 +39,10 @@ The `[ExternalBusinessEvent]` decorator attribute in Business Central enables de
 - **Real-time Notifications**: Provides near real-time event notifications to external systems
 
 
-![](assets/images/businesscentralbusinessevents/Screenshot-2025-12-19-at-12.49.21-PM.png)
+![](assets/images/businesscentralbusinessevents/Screenshot-2025-12-19-at-12.49.21-PM.webp)
 *I updated the Project Manager*
 
-![](assets/images/businesscentralbusinessevents/Screenshot-2025-12-19-at-12.49.36-PM.png)
+![](assets/images/businesscentralbusinessevents/Screenshot-2025-12-19-at-12.49.36-PM.webp)
 *External Business Event Code ran*
 
 ![](assets/images/businesscentralbusinessevents/Screenshot-2025-12-19-at-12.50.29-PM.png)

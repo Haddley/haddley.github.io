@@ -3,7 +3,7 @@ title: "Plants vs. Zombies Clone"
 description: "Vibe coding a vanilla JS Plants vs. Zombies clone with Claude Code, complete with Playwright visual regression tests"
 date: "2026-06-16"
 categories: ["AI", "JavaScript"]
-image: "/assets/images/plantsvszombies/wallnut-thumbnail.png"
+image: "/assets/images/plantsvszombies/wallnut-thumbnail.webp"
 tags: "claude-code, vibe-coding, anthropic, game-development, playwright"
 slug: "plantsvszombies"
 ---
@@ -18,10 +18,10 @@ What would you expect a visual regression test to catch that a unit test of the 
 ![](/assets/mp4/plantsvszombies/sunflower_wallnut_vs_zombie_conehead.mp4)
 *I recorded a demo video of the peashooter, sunflower, and wallnut fighting off zombies*
 
-![](assets/images/plantsvszombies/Screenshot-2026-06-16-at-5.05.36-AM.png)
+![](assets/images/plantsvszombies/Screenshot-2026-06-16-at-5.05.36-AM.webp)
 *I asked Claude Code to create a video demonstrating sunflower and walnut vs zombie and conehead gameplay, and checked the .gitignore conventions before recording the demo*
 
-![](assets/images/plantsvszombies/Screenshot-2026-06-16-at-5.08.10-AM.png)
+![](assets/images/plantsvszombies/Screenshot-2026-06-16-at-5.08.10-AM.webp)
 *I watched Claude Code work through the walnut and sunflower sprite assets while timing crackedness for the demo*
 
 :::no-dumb-questions
@@ -30,10 +30,10 @@ What would you expect a visual regression test to catch that a unit test of the 
 A: It screenshots the running game and compares the pixels against reference images, so any change to what is drawn shows up, even when the code still runs.
 :::
 
-![](assets/images/plantsvszombies/Screenshot-2026-06-16-at-5.25.54-AM.png)
+![](assets/images/plantsvszombies/Screenshot-2026-06-16-at-5.25.54-AM.webp)
 *I generated a visual regression test that compares the finished game screen against a reference Plants vs. Zombies image*
 
-![](assets/images/plantsvszombies/Screenshot-2026-06-16-at-5.26.06-AM.png)
+![](assets/images/plantsvszombies/Screenshot-2026-06-16-at-5.26.06-AM.webp)
 *I reviewed the compare-reference.js script Claude Code wrote to crop matching regions and compute pixel-difference SSIM scores*
 
 :::watch-it A pixel match flags every change, including ones you wanted

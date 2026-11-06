@@ -28,7 +28,7 @@ I created an animated [Aquarium](https://haddley.github.io/aquarium/index.html) 
 
 The code includes a config object, a preload function, a create function, and an update function. I used the preload function to load the Phaser assets and the create function to add assets to the scene. The update function runs on every game loop tick and animates the fish and bubbles.
 
-![](assets/images/phaser/screen-shot-2022-01-26-at-9.01.25-am-1357x1009.png)
+![](assets/images/phaser/screen-shot-2022-01-26-at-9.01.25-am-1357x1009.webp)
 *Aquarium with artwork*
 
 

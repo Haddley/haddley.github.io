@@ -9,7 +9,7 @@ topics: [dimensionality-reduction, principal-component-analysis, manifold-learni
 tools: [Scikit-Learn, t-SNE, PCA, JupyterLab]
 status: current
 checked: "2026-11-06"
-source_hash: "c2aa5a1b883f"
+source_hash: "d7d8287e6f89"
 generated_by: gemma4:12b
 ---
 

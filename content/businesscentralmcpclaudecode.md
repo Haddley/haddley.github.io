@@ -34,49 +34,49 @@ I named it "Business Centrl MCP" — a typo I only noticed after the app was alr
 
 The app was created immediately, with its own Application (client) ID, Object ID, and Directory (tenant) ID.
 
-![](assets/images/businesscentralmcpclaudecode/entra-03-app-created.png)
+![](assets/images/businesscentralmcpclaudecode/entra-03-app-created.webp)
 *The app registration was created*
 
 ### Adding the redirect URI
 
 The MCP OAuth flow needs a loopback redirect URI to listen on locally during sign-in. I went to Authentication, clicked Add a Redirect URI, and chose the "Mobile and desktop applications" platform.
 
-![](assets/images/businesscentralmcpclaudecode/entra-04-redirect-uri-platform.png)
+![](assets/images/businesscentralmcpclaudecode/entra-04-redirect-uri-platform.webp)
 *I selected Authentication in the left navigation, clicked Add Redirect URI, then chose the Mobile and desktop applications platform*
 
 I entered `http://localhost:33418/oauth/callback` as the redirect URI and clicked Configure. The port number has to match whatever the MCP client listens on locally during sign-in.
 
-![](assets/images/businesscentralmcpclaudecode/entra-05-redirect-uri-entered.png)
+![](assets/images/businesscentralmcpclaudecode/entra-05-redirect-uri-entered.webp)
 *I entered http://localhost:33418/oauth/callback as the redirect URI*
 
-![](assets/images/businesscentralmcpclaudecode/entra-06-redirect-uri-configured.png)
+![](assets/images/businesscentralmcpclaudecode/entra-06-redirect-uri-configured.webp)
 *The redirect URI was saved under the Mobile and desktop applications platform*
 
 ### Granting API permissions
 
 By default the app only had Microsoft Graph's User.Read permission.
 
-![](assets/images/businesscentralmcpclaudecode/entra-07-api-permissions-before.png)
+![](assets/images/businesscentralmcpclaudecode/entra-07-api-permissions-before.webp)
 *Configured permissions started with only Microsoft Graph's User.Read*
 
 I clicked Add a permission and selected Dynamics 365 Business Central from the list of commonly used Microsoft APIs.
 
-![](assets/images/businesscentralmcpclaudecode/entra-08-select-api-bc.png)
+![](assets/images/businesscentralmcpclaudecode/entra-08-select-api-bc.webp)
 *I selected Dynamics 365 Business Central from the Microsoft APIs tab*
 
 I chose Delegated permissions, since Claude Code calls the MCP server as me, the signed-in user, rather than as an unattended background service.
 
-![](assets/images/businesscentralmcpclaudecode/entra-09-permission-type-delegated.png)
+![](assets/images/businesscentralmcpclaudecode/entra-09-permission-type-delegated.webp)
 *I chose Delegated permissions*
 
 I checked `Financials.ReadWrite.All` under the Business Central API's delegated permissions and clicked Add permissions.
 
-![](assets/images/businesscentralmcpclaudecode/entra-10-select-permission.png)
+![](assets/images/businesscentralmcpclaudecode/entra-10-select-permission.webp)
 *I checked Financials.ReadWrite.All under the Business Central API's delegated permissions*
 
 Configured permissions then listed both `Financials.ReadWrite.All` against Dynamics 365 Business Central and the original `User.Read` against Microsoft Graph — a write-capable permission at the Entra layer, wider than the read-only tools Part 2 actually ends up exposing through the MCP configuration itself.
 
-![](assets/images/businesscentralmcpclaudecode/entra-11-api-permissions-after.png)
+![](assets/images/businesscentralmcpclaudecode/entra-11-api-permissions-after.webp)
 *Both permissions were listed: Financials.ReadWrite.All against Business Central, and User.Read against Microsoft Graph*
 
 ### Capturing the IDs
@@ -101,22 +101,22 @@ With the Entra app in place, the next step was inside Business Central itself: e
 
 I opened Business Central against the Cronus USA demo company.
 
-![](assets/images/businesscentralmcpclaudecode/bcmcp-01-cronus-home.png)
+![](assets/images/businesscentralmcpclaudecode/bcmcp-01-cronus-home.webp)
 *I opened Business Central against the Cronus USA, Inc. demo company*
 
 Business Central ships with a "Default MCP configuration" already present, with Active, Default, and Dynamic Tool Mode all switched on — in Dynamic Tool Mode, tools are discovered and exposed automatically rather than from a fixed list.
 
-![](assets/images/businesscentralmcpclaudecode/bcmcp-02-default-configuration.png)
+![](assets/images/businesscentralmcpclaudecode/bcmcp-02-default-configuration.webp)
 *I navigated to the Model Context Protocol (MCP) Server Configuration page and found the existing Default MCP configuration, with Dynamic Tool Mode switched on*
 
 To control exactly which APIs Claude Code could see, I created a new configuration instead of relying on the dynamic default. Leaving Dynamic Tool Mode off puts the configuration into Static Tool Mode, where only the objects explicitly added to Available Tools are exposed to clients.
 
-![](assets/images/businesscentralmcpclaudecode/bcmcp-03-new-configuration.png)
+![](assets/images/businesscentralmcpclaudecode/bcmcp-03-new-configuration.webp)
 *I clicked New to start a blank Model Context Protocol (MCP) Server Configuration, with Dynamic Tool Mode left off*
 
 I named it "Blog Post", switched Active and Default on, and clicked Add All Standard APIs as Tools, which populated Available Tools with every standard APIv2 page — each one added with Allow Read checked, and Create, Modify, Delete, and Bound Actions left unchecked.
 
-![](assets/images/businesscentralmcpclaudecode/bcmcp-04-blog-post-config-saved.png)
+![](assets/images/businesscentralmcpclaudecode/bcmcp-04-blog-post-config-saved.webp)
 *I named the configuration "Blog Post", switched Active and Default on, clicked Add All Standard APIs as Tools, and the configuration saved with every standard APIv2 page listed as a read-only tool*
 
 ## Part 3 — Connecting Claude Code
@@ -129,7 +129,7 @@ Claude Desktop reads its MCP servers from `claude_desktop_config.json`; Claude C
 npm install -g mcp-remote@latest
 ```
 
-![](assets/images/businesscentralmcpclaudecode/claude-01-install-mcp-remote.png)
+![](assets/images/businesscentralmcpclaudecode/claude-01-install-mcp-remote.webp)
 *I ran npm install -g mcp-remote@latest, which added 81 packages*
 
 ### Writing .mcp.json
@@ -173,17 +173,17 @@ Every value in that `args` array traces back to something captured in Parts 1 an
 
 Starting Claude Code in the project directory and running `/mcp` listed `businesscentral` among the connected servers, with 414 tools available — one for every APIv2 page the "Blog Post" configuration exposed in Part 2.
 
-![](assets/images/businesscentralmcpclaudecode/claude-03-mcp-list-connected.png)
+![](assets/images/businesscentralmcpclaudecode/claude-03-mcp-list-connected.webp)
 *`/mcp` listed businesscentral as a Project MCP, connected, with 414 tools*
 
 Selecting `businesscentral` from that list showed the exact command Claude Code launched — the same `npx ... mcp-remote ...` command written into `.mcp.json` — along with its connection status and tool count.
 
-![](assets/images/businesscentralmcpclaudecode/claude-04-mcp-server-detail.png)
+![](assets/images/businesscentralmcpclaudecode/claude-04-mcp-server-detail.webp)
 *The businesscentral MCP server detail view: connected, 414 tools, and the full mcp-remote command Claude Code ran*
 
 Drilling into "View tools" listed the individual tools themselves, one per exposed APIv2 page, each named after the page and marked read-only — matching the Allow Read-only permissions set in Part 2's "Blog Post" configuration.
 
-![](assets/images/businesscentralmcpclaudecode/claude-05-mcp-tools-list.png)
+![](assets/images/businesscentralmcpclaudecode/claude-05-mcp-tools-list.webp)
 *Tools for businesscentral: 414 read-only tools, one per APIv2 page, such as List_Workflows_PAG2145 and List_WorkflowSteps_PAG2147*
 
 ### A real query
@@ -196,7 +196,7 @@ List the first 10 customers from Business Central — show name, number, and cit
 
 Claude Code called the `businesscentral` tool and answered from the real data returned — the Cronus USA demo company only has five customers, so it reported that rather than padding the table out to ten.
 
-![](assets/images/businesscentralmcpclaudecode/claude-06-customer-query-result.png)
+![](assets/images/businesscentralmcpclaudecode/claude-06-customer-query-result.webp)
 *Claude Code called the businesscentral MCP tool and returned all five real customers in the Cronus USA, Inc. demo company, correctly noting there were fewer than the ten I asked for*
 
 :::watch-it Read-only still reads live company data

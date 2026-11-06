@@ -15,7 +15,7 @@ Every record in a model-driven app can carry two different kinds of supporting i
 
 I started by creating a new solution to keep the customization isolated, naming it "Notes Activities."
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-9.53.23-AM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-9.53.23-AM.webp)
 *I created a new solution called Notes Activities*
 
 Inside the solution I selected New > Table > Table (advanced properties) so I could set everything up front rather than after the fact.
@@ -44,12 +44,12 @@ Both are one-way switches. Once I turned them on and saved, there was no way to 
 
 With both settings enabled, I opened the Asset table's main form in the form designer, selected **Components** in the left navigation, and dragged **Timeline** into a section. Until I saved and published, the timeline area on the form just showed "Almost there," since the designer has no real record to load data for.
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-10.00.41-AM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-10.00.41-AM.webp)
 *I dragged the Timeline component onto the Asset form*
 
 The component's configuration panel let me choose which **Record types** appear — Activities, Notes, and Posts are all on by default — and, once I expanded **Record settings**, which specific activity types are enabled, how the timeline is sorted by default, and whether users can create records directly from the timeline.
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-10.02.58-AM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-10.02.58-AM.webp)
 *The Activity types list showed 19 activity types enabled by default*
 
 ## Demonstration of Timeline control
@@ -133,19 +133,19 @@ With the default **Referential** relationship behavior, Asset never showed up an
 
 Its Advanced options showed a **Type of behavior** dropdown, defaulted to Referential, with Parental and Custom as the other choices.
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-12.59.13-PM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-12.59.13-PM.webp)
 *The relationship's Advanced options showed Type of behavior defaulted to Referential*
 
 These three behaviors control how actions on the parent record — delete, assign, share, and so on — cascade down to the child. **Referential** keeps the two records loosely linked, with no cascading: deleting the parent leaves the child alone (or blocks the delete, if Restrict Delete is set). **Parental** is the tight coupling — child records follow the parent's delete, assign, and share actions, and that's also the behavior that exposes the Rollup View setting I needed. **Custom** lets you pick each of those cascade actions individually instead of taking the Parental bundle as a whole, which is exactly what I saw when I looked at this same relationship from Contact's side further down.
 
 Switching it to **Parental** revealed a new **Rollup View** property underneath, which I set to **Cascade All**.
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-12.59.52-PM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-12.59.52-PM.webp)
 *Switching Type of behavior to Parental revealed a Rollup View property, which I set to Cascade All*
 
 Viewed from Contact's side, the same relationship showed up as **Custom** behavior, with Rollup View sitting alongside Delete, Assign, Share, Unshare, and Reparent — all set to Cascade All.
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-1.02.05-PM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-1.02.05-PM.webp)
 *Viewed from Contact's side, the relationship showed as Custom behavior with Rollup View among the cascade settings*
 
 I added Contact as a page in my Assets app so I could view and edit Contact records directly.
@@ -158,7 +158,7 @@ I added Contact as a page in my Assets app so I could view and edit Contact reco
 
 On Contact's main form, I set the timeline's **Activity rollup type** to **Related** and republished.
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-1.04.50-PM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-1.04.50-PM.webp)
 *I set Contact's Activity rollup type to Related*
 
 John Doe's own timeline then showed the test email — the one I'd created regarding the Neil's Laptop Asset record, not regarding John Doe directly.
@@ -187,12 +187,12 @@ Notes didn't make the same trip, though — only the email rolled up.
 
 Reopening the relationship from Contact's side, it now showed simply as **Parental** behavior with **Rollup View** set to **Cascade All**, instead of the six-way Custom breakdown I'd seen right after first saving it.
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-1.15.27-PM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-1.15.27-PM.webp)
 *Reopened from Contact's side, the relationship now showed cleanly as Parental with Rollup View set to Cascade All*
 
 Notes turned out to have their own, separate **Note rollup type** setting under the Timeline's Notes section, still sitting at None even with Activities set to Extended.
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-1.23.40-PM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-1.23.40-PM.webp)
 *The Notes section had its own Note rollup type, still set to None*
 
 I changed it to **Related**.
@@ -207,7 +207,7 @@ I selected Save and Publish again.
 
 This time John Doe's timeline showed both the rolled-up email and the rolled-up note from Neil's Laptop.
 
-![](assets/images/powerapps10/Screenshot-2026-06-16-at-1.27.10-PM.png)
+![](assets/images/powerapps10/Screenshot-2026-06-16-at-1.27.10-PM.webp)
 *John Doe's timeline now showed both the email and the note rolled up from the related Asset record*
 
 So Notes do roll up too — they just need their own Note rollup type turned on separately from Activities, rather than riding along with the Activity rollup type setting.

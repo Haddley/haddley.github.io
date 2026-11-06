@@ -8,7 +8,7 @@ topics: [power-automate-integration, business-central-automation, conditional-lo
 tools: [Business Central, Power Automate, Outlook.com]
 status: current
 checked: "2026-11-05"
-source_hash: "3f5b798ddc7d"
+source_hash: "ca556ca488d5"
 generated_by: gemma4:12b
 ---
 

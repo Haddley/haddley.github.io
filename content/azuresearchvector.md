@@ -25,7 +25,7 @@ I started by creating a new resource group in the Azure portal to contain all th
 
 I searched the Azure Marketplace for "foundry" and found the Microsoft Foundry service.
 
-![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-5.29.58-PM.png)
+![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-5.29.58-PM.webp)
 *I searched the Marketplace for "foundry" and selected Microsoft Foundry*
 
 I filled in the Foundry resource details, naming the resource Haddley-Foundry with a default project of proj-haddley-foundry.
@@ -55,19 +55,19 @@ I opened the Microsoft Foundry portal and saw the project overview with the API 
 
 A dialog prompted me to select the project to continue with.
 
-![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-5.33.32-PM.png)
+![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-5.33.32-PM.webp)
 *I selected proj-haddley-foundry to continue*
 
 The Microsoft Foundry home page loaded, showing the latest model arrivals.
 
-![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-5.34.06-PM.png)
+![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-5.34.06-PM.webp)
 *The Microsoft Foundry welcome page showing GPT-5.4, GPT-5.3-chat, and Grok 4.1 fast as new arrivals*
 
 ## Setting up Storage
 
 I returned to the Azure Marketplace and searched for a storage account to hold the documents I wanted to index.
 
-![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-5.37.52-PM.png)
+![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-5.37.52-PM.webp)
 *I searched the Marketplace for "azure storage account"*
 
 I configured a new storage account named haddleystorageaccount for machine learning workloads.
@@ -102,24 +102,24 @@ I opened the container and prepared to upload files.
 
 I selected the [health-plan PDF documents](https://github.com/Azure-Samples/azure-search-sample-data/tree/main/health-plan) from my local machine to upload.
 
-![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-5.52.01-PM.png)
+![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-5.52.01-PM.webp)
 *I selected six health-plan PDF files from my local health-plan folder*
 
 All six PDFs uploaded successfully to the container.
 
-![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-5.52.20-PM.png)
+![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-5.52.20-PM.webp)
 *The six health-plan PDF blobs are now stored in haddleystoragecontainer*
 
 ## Deploying an Embedding Model
 
 I searched the Microsoft Foundry model catalog for the text-embedding-ada-002 model.
 
-![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-5.53.59-PM.png)
+![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-5.53.59-PM.webp)
 *I searched for "text-embedding-ada-002" in the Foundry model catalog*
 
 I reviewed the text-embedding-ada-002 model details page.
 
-![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-5.54.22-PM.png)
+![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-5.54.22-PM.webp)
 *The text-embedding-ada-002 model detail page showing it is a Direct from Azure model provided by Azure OpenAI*
 
 The model deployed successfully with a 500,000 tokens-per-minute rate limit.
@@ -141,7 +141,7 @@ A: No. The embedding model only helps the search find passages. The agent uses a
 
 I searched the Marketplace for Azure AI Search to create a search index.
 
-![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-5.55.44-PM.png)
+![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-5.55.44-PM.webp)
 *I searched the Marketplace for "azure ai search"*
 
 I configured a search service named haddleyaisearch on the Free pricing tier.
@@ -151,7 +151,7 @@ I configured a search service named haddleyaisearch on the Free pricing tier.
 
 The search service deployed successfully.
 
-![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-5.56.35-PM.png)
+![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-5.56.35-PM.webp)
 *The search service deployment completed successfully*
 
 I viewed the haddleyaisearch overview showing the service is Running.
@@ -207,12 +207,12 @@ Back in the RAG wizard, the haddley-azure-openai service appeared but had no dep
 
 I navigated to the Azure OpenAI model catalog in Foundry and found text-embedding-ada-002.
 
-![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-6.04.09-PM.png)
+![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-6.04.09-PM.webp)
 *I opened the text-embedding-ada-002 model page in the Azure OpenAI section of Foundry*
 
 I deployed the model with a Standard GlobalStandard deployment type.
 
-![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-6.04.26-PM.png)
+![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-6.04.26-PM.webp)
 *I deployed text-embedding-ada-002 with a Standard deployment type*
 
 Returning to the RAG wizard, text-embedding-ada-002 was now available to select.
@@ -242,7 +242,7 @@ The index was created successfully and indexing began.
 
 I opened the Search explorer and tested the index with a sample question about health insurance costs.
 
-![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-6.07.34-PM.png)
+![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-6.07.34-PM.webp)
 *The Search explorer returned relevant results from the health-plan PDFs for my query*
 
 ## Creating the Agent
@@ -254,7 +254,7 @@ Back in the Foundry home, I clicked Start building and selected Create agent.
 
 I named the new agent haddley-health-plan-agent.
 
-![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-6.08.49-PM.png)
+![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-6.08.49-PM.webp)
 *I entered haddley-health-plan-agent as the agent name*
 
 The agent playground opened and I clicked to add a tool.
@@ -284,7 +284,7 @@ I connected to the haddleyaisearch service using an API key.
 
 The rag-1773125823872 index appeared and I selected it.
 
-![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-6.10.40-PM.png)
+![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-6.10.40-PM.webp)
 *I selected the rag-1773125823872 index to connect to the agent*
 
 With the Azure AI Search tool connected and pointing at the RAG index, I typed a question in the chat.
@@ -302,7 +302,7 @@ The agent cited Benefit_Options.pdf, and its answer was that health insurance co
 
 The agent responded with a clear answer citing the Benefit_Options.pdf document.
 
-![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-6.14.35-PM.png)
+![](assets/images/azurefoundryagent/Screenshot-2026-03-10-at-6.14.35-PM.webp)
 *The agent answered correctly, explaining that health insurance costs are deducted from each paycheck, and cited Benefit_Options.pdf as the source*
 
 :::no-dumb-questions

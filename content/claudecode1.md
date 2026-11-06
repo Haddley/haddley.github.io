@@ -57,7 +57,7 @@ I then linked Claude Code to my Anthropic account. A **Claude Pro** subscription
 ![](assets/images/claudecode/Screenshot-2026-01-20-at-4.00.48-PM.png)
 *I logged in to my Claude account*
 
-![](assets/images/claudecode/Screenshot-2026-01-20-at-4.03.36-PM.png)
+![](assets/images/claudecode/Screenshot-2026-01-20-at-4.03.36-PM.webp)
 *I selected the Claude Pro plan*
 
 ![](assets/images/claudecode/Screenshot-2026-01-20-at-4.04.23-PM.png)
@@ -128,7 +128,7 @@ I also ran the script directly to confirm it worked independently:
 
 I also installed the **Claude Code VS Code Extension**, which integrates directly into the editor. It automatically loads the file I'm working on as context, so I can ask questions without switching to the terminal:
 
-![](assets/images/claudecode/Screenshot-2026-01-20-at-7.55.32-PM.png)
+![](assets/images/claudecode/Screenshot-2026-01-20-at-7.55.32-PM.webp)
 *Claude Code's Visual Studio Code Extension*
 
 ![](assets/images/claudecode/Screenshot-2026-01-20-at-7.58.07-PM.png)

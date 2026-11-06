@@ -9,7 +9,7 @@ topics: [convolutional-neural-networks, transfer-learning, image-processing, ove
 tools: [Scikit-Learn, Keras, TensorFlow, ResNet50, Xception]
 status: current
 checked: "2026-11-06"
-source_hash: "df5e7658e0e3"
+source_hash: "c308cebc3db1"
 generated_by: gemma4:12b
 ---
 

@@ -112,7 +112,7 @@ Optional arguments:
 ![](assets/images/amazoneks/screen-shot-2021-08-12-at-9.03.31-pm-1836x954.png)
 *The blog-cluster EC2 nodes were created*
 
-![](assets/images/amazoneks/screen-shot-2021-08-12-at-9.03.56-pm-1836x1188.png)
+![](assets/images/amazoneks/screen-shot-2021-08-12-at-9.03.56-pm-1836x1188.webp)
 *The ~/.kube/config file was updated*
 
 
@@ -149,7 +149,7 @@ I used eksctl delete to remove the cluster.
   --name blog-cluster
 ```
 
-![](assets/images/amazoneks/screen-shot-2021-08-12-at-9.38.35-pm-1836x1181.png)
+![](assets/images/amazoneks/screen-shot-2021-08-12-at-9.38.35-pm-1836x1181.webp)
 *I ran eksctl delete cluster*
 
 ![](assets/images/amazoneks/screen-shot-2021-08-12-at-9.40.30-pm-1836x954.png)

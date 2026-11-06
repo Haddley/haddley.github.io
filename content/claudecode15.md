@@ -25,7 +25,7 @@ I have a TINKEKIT LCD MODULE attached to this laptop. Can you see it?
 
 Claude queried the macOS `IOUSB` registry directly and found it: a `/dev/cu.usbmodem1101` serial device enumerating as `USB IO Board`, idVendor `10189` (0x27CD), idProduct `32784` (0x8010) — an ATmega32u4-class board built on the same chip as an Arduino Leonardo or Micro, sitting behind a Genesys Logic USB hub. It correctly identified this as consistent with a TinkerKit LCD Module and noted there was no project directory yet, asking what I wanted to do with it.
 
-![](assets/images/claudecode15/Screenshot-2026-09-04-at-4.29.57-AM.png)
+![](assets/images/claudecode15/Screenshot-2026-09-04-at-4.29.57-AM.webp)
 *Claude ran `ioreg -p IOUSB` to enumerate the attached USB device and matched it to the board*
 
 ## Beat 2 — Writing and flashing a counter sketch
@@ -38,12 +38,12 @@ create a sketch that displays a counter on the LCD MODULE. The counter should di
 
 Claude created the project folder, discovered `arduino-cli` was not installed, and worked out the toolchain from scratch: checking serial devices, installing `arduino-cli` via Homebrew, then the `arduino:avr` core and `LiquidCrystal` library.
 
-![](assets/images/claudecode15/Screenshot-2026-09-04-at-4.35.21-AM.png)
+![](assets/images/claudecode15/Screenshot-2026-09-04-at-4.35.21-AM.webp)
 *Claude listed the empty project directory, found `arduino-cli` missing, then checked `/dev/cu.*` for serial devices*
 
 It wrote `SecondsCounter.ino` using a plain `LiquidCrystal` constructor on the standard 16x2 LCD Keypad Shield pinout, compiled it, and uploaded — `avrdude` confirmed the real device signature `1E 95 87` (ATmega32U4) and reported success.
 
-![](assets/images/claudecode15/Screenshot-2026-09-04-at-4.41.17-AM.png)
+![](assets/images/claudecode15/Screenshot-2026-09-04-at-4.41.17-AM.webp)
 *Claude reported the sketch compiled at 23% flash and uploaded successfully, with a caveat about a possible I2C backpack if the screen stayed blank*
 
 It did stay blank. The backlight lit up, but no characters appeared — exactly the caveat Claude had already flagged as a possibility.
@@ -58,12 +58,12 @@ Screen is bkank
 
 Claude's first move was to rule out an I2C backpack: it wrote a diagnostic `I2CScan.ino`, compiled and uploaded it, then tried to read the scan results back over serial with a small inline Python script.
 
-![](assets/images/claudecode15/Screenshot-2026-09-04-at-4.43.35-AM.png)
+![](assets/images/claudecode15/Screenshot-2026-09-04-at-4.43.35-AM.webp)
 *Claude wrote I2CScan.ino to probe the I2C bus, then tried reading the results back over the serial port*
 
 That path hit a dead end, but the real diagnosis came from research, not the scan: Claude looked up the actual TinkerKit LCD Module hardware and realized the board is not a plain LCD shield at all — it's an ATmega32u4 with the 16x2 LCD wired directly onto the board's own internal pins, addressable only through TinkerKit's own `TKLCD` library. My first sketch had used a generic `LiquidCrystal` pinout that never drove the module's real contrast line, so the backlight came on with nothing displayed. Claude installed `TKLCD` manually (it isn't in the Arduino Library Manager), rewrote the sketch against `TKLCD_Local`, and re-uploaded.
 
-![](assets/images/claudecode15/Screenshot-2026-09-04-at-4.48.40-AM.png)
+![](assets/images/claudecode15/Screenshot-2026-09-04-at-4.48.40-AM.webp)
 *Claude diagnosed the real cause — the wrong LCD pin mapping — installed the TKLCD library, and rewrote the sketch against it*
 
 It worked.
@@ -81,7 +81,7 @@ I have added a red led to the D12 connector at the rear of the TINKERKIT LCD MOD
 
 Claude found a hardware quirk before writing a line of code: the connector silk-screened `D12` is not actually wired to Arduino pin 12 at all — it's wired to pin 11 (PB7). The TKLCD library's own source comments admit as much (`#define D11 11 // yes, we screwed this up`), and the board's schematic confirmed it. Claude wrote the fix against the real pin, driving it HIGH in the same branch that redraws the LCD each second, then dropping it LOW 100ms later with a non-blocking timestamp check rather than a `delay()` call — so the LED flash and the digit change land in the same instant every time.
 
-![](assets/images/claudecode15/Screenshot-2026-09-04-at-5.19.34-AM.png)
+![](assets/images/claudecode15/Screenshot-2026-09-04-at-5.19.34-AM.webp)
 *Claude found the real "D12 is actually pin 11" wiring quirk in the TKLCD library's own source comments, fixed the sketch, and committed and pushed it as `ff83016`*
 
 ![](assets/images/claudecode15/led-blink-demo.jpg)

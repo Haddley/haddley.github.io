@@ -9,7 +9,7 @@ topics: [agentic-ai, rag-architecture, llm-research-workflows, software-developm
 tools: [Claude Code, Docker, Ollama, FastAPI, React, TypeScript]
 status: current
 checked: "2026-11-05"
-source_hash: "fd022963fac1"
+source_hash: "ed4e9c5084f9"
 generated_by: gemma4:12b
 ---
 

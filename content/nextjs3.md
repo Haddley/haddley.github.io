@@ -124,7 +124,7 @@ Specifying a database is optional — if I didn't need to persist user data or s
 ![](assets/images/nextjs3/screen-shot-2021-11-11-at-10.12.00-am-1836x986.png)
 *session (with user id and provider)*
 
-![](assets/images/nextjs3/screen-shot-2021-11-11-at-6.17.31-pm-1734x1146.png)
+![](assets/images/nextjs3/screen-shot-2021-11-11-at-6.17.31-pm-1734x1146.webp)
 *pages*
 
 

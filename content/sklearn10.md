@@ -103,13 +103,13 @@ The chapter is in the notebook that goes with the book, [10_neural_nets_with_ker
 ![](assets/images/sklearn10/jupyter-activation-functions.png)
 *Activation functions, the bends between layers: the step function of the original perceptron, ReLU, sigmoid, and tanh, with their slopes on the right*
 
-![](assets/images/sklearn10/jupyter-fashion-mnist.png)
+![](assets/images/sklearn10/jupyter-fashion-mnist.webp)
 *A sample of Fashion MNIST: 28 × 28 images of clothing, each labelled with one of 10 classes*
 
 ![](assets/images/sklearn10/jupyter-model-summary.png)
 *The network's layers: 235,500 numbers in the first hidden layer, 30,100 in the second, and 1,010 in the output layer, 266,610 in all*
 
-![](assets/images/sklearn10/jupyter-training.png)
+![](assets/images/sklearn10/jupyter-training.webp)
 *The end of training: after 30 passes, about 92% of the training images and 88% of the validation images are right*
 
 ![](assets/images/sklearn10/jupyter-learning-curves.png)

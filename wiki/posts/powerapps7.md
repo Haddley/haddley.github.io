@@ -8,7 +8,7 @@ topics: [dataverse-customization, status-reason-transitions, power-platform-work
 tools: [Dataverse, Power Apps, Classic Solution Explorer]
 status: current
 checked: "2026-11-06"
-source_hash: "5fc594da1b3c"
+source_hash: "7f8d2175c92a"
 generated_by: gemma4:12b
 ---
 

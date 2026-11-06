@@ -301,7 +301,7 @@ bpb = va / math.log(2) * tokens_per_byte
 
 `va` is the surprise per token on the test stories, and `math.log(2)` is the 0.69 per halving.
 
-![](assets/images/minigpt2/training-runs.png)
+![](assets/images/minigpt2/training-runs.webp)
 *The three runs, back to back*
 
 ### Comparing and writing: `compare.py` and `generate.py`

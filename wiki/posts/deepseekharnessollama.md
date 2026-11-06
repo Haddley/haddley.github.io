@@ -9,7 +9,7 @@ topics: [local-llms, prompt-engineering, software-architecture, llm-orchestratio
 tools: [DeepSeek Harness, Ollama, Qwen3-Coder, Mac Studio]
 status: current
 checked: "2026-11-05"
-source_hash: "685379c47b3f"
+source_hash: "7921c331dffe"
 generated_by: gemma4:12b
 ---
 

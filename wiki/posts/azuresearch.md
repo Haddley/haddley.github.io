@@ -9,7 +9,7 @@ topics: [full-text-search, azure-search, data-indexing, json-parsing]
 tools: [Azure Portal, Azure Storage Account, Azure AI Search, JSON]
 status: current
 checked: "2026-11-05"
-source_hash: "82e6b7937b38"
+source_hash: "964570b14d74"
 generated_by: gemma4:12b
 ---
 

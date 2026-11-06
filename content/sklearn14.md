@@ -125,13 +125,13 @@ The chapter is in the notebook that goes with the book, [14_deep_computer_vision
 ![](assets/images/sklearn14/jupyter-resnet-predictions.png)
 *The pretrained ResNet50 on the two sample photos: it calls the building a palace, and the flower a vase*
 
-![](assets/images/sklearn14/jupyter-flowers.png)
+![](assets/images/sklearn14/jupyter-flowers.webp)
 *Pictures from the flower dataset, each labelled with its class: dandelions, a rose, tulips, and sunflowers*
 
-![](assets/images/sklearn14/jupyter-augmentation.png)
+![](assets/images/sklearn14/jupyter-augmentation.webp)
 *The same pictures after random flips, small rotations, and contrast changes: the notebook displays this data augmentation, but does not use it in the training that follows*
 
-![](assets/images/sklearn14/jupyter-fine-tune.png)
+![](assets/images/sklearn14/jupyter-fine-tune.webp)
 *Fine-tuning the pretrained Xception: with its top layers unfrozen, the training accuracy reaches 99.9% and the validation accuracy peaks at 92.9%, then slips back to 91.8%*
 
 :::bullet-points Convolutional networks, in short

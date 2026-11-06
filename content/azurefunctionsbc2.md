@@ -14,7 +14,7 @@ slug: "azurefunctionsbc2"
 
 ## Creating the Business Central Extension
 
-![](assets/images/azurefunctionsbc2/Screenshot-2025-12-16-at-2.25.38-PM.png)
+![](assets/images/azurefunctionsbc2/Screenshot-2025-12-16-at-2.25.38-PM.webp)
 *Azure Functions App used to generate Customer QR Code*
 
 :::brain-power Before you read on
@@ -552,7 +552,7 @@ table 50100 "QR Code Media"
 
 The error message "The request was blocked by the runtime to prevent accidental use of production services" indicates that outbound HTTP calls are blocked by default in your Business Central environment, typically a sandbox or a copied production environment. To resolve this, you need to manually enable the setting for your extension. 
 
-![](assets/images/azurefunctionsbc2/Screenshot-2025-12-16-at-2.04.25-PM.png)
+![](assets/images/azurefunctionsbc2/Screenshot-2025-12-16-at-2.04.25-PM.webp)
 *I enabled Allow HttpClient Requests*
 
 :::watch-it Outbound HTTP calls are blocked by default

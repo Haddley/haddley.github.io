@@ -42,7 +42,7 @@ Note: If you prefer to use the command line, you can create a new ASP.NET Core R
 ![](assets/images/reactandasp.net/screen-shot-2023-03-22-at-9.18.39-am-1798x1274.png)
 *I provided a solution/project name*
 
-![](assets/images/reactandasp.net/screen-shot-2023-03-22-at-9.20.23-am-1836x1459.png)
+![](assets/images/reactandasp.net/screen-shot-2023-03-22-at-9.20.23-am-1836x1459.webp)
 *The template includes client and server-side code*
 
 ![](assets/images/reactandasp.net/screen-shot-2023-03-22-at-9.21.30-am-1836x988.png)

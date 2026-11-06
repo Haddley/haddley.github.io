@@ -14,7 +14,7 @@ slug: "agenticaiforprofessionals2"
 
 This post is the actual build: Phases 1 through 3 of that plan, all of it running locally on my 32GB M4 MacBook Air through [Docker](/posts/docker/) Compose, with [Ollama](https://ollama.com/) serving both the chat model and the embeddings — no cloud API required to get a working system end to end.
 
-![](assets/images/agenticaiforprofessionals2/nsw-caselaw-recent-decisions.png)
+![](assets/images/agenticaiforprofessionals2/nsw-caselaw-recent-decisions.webp)
 *NSW Caselaw's "recent decisions" list*
 
 ## The data model: documents and chunks

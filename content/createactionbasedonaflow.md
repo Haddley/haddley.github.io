@@ -134,7 +134,7 @@ A: A Yes/No question that the user answers when they run the flow. The Condition
 ![](assets/images/createactionbasedonaflow/screen-shot-2024-01-04-at-6.47.52-pm-1836x955.png)
 *I clicked the Sign in button*
 
-![](assets/images/createactionbasedonaflow/screen-shot-2024-01-04-at-6.49.16-pm-1836x951.png)
+![](assets/images/createactionbasedonaflow/screen-shot-2024-01-04-at-6.49.16-pm-1836x951.webp)
 *I set the To field value to the {Email} field from the "selected record"*
 
 ![](assets/images/createactionbasedonaflow/screen-shot-2024-01-04-at-6.49.32-pm-1836x956.png)

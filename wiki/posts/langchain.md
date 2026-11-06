@@ -8,7 +8,7 @@ topics: [retrieval-augmented-generation, vector-embeddings, medical-data-process
 tools: [LangChain, Streamlit, OpenAI, Chroma, Jupyter Notebook]
 status: current
 checked: "2026-11-05"
-source_hash: "100dabc8e1ff"
+source_hash: "86b97fa7fb3a"
 generated_by: gemma4:12b
 ---
 
