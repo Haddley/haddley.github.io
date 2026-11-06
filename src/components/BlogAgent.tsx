@@ -14,7 +14,7 @@ declare global {
 const gaEvent = (name: string, params?: Record<string, unknown>) => window.gtag?.('event', name, params);
 import {
   TOOL_DEFINITIONS, CATEGORIES,
-  searchPosts, getPostsByCategory, getCategoryUrl, searchWiki, getTopic,
+  searchPosts, getPostsByCategory, getCategoryUrl, searchWiki, getTopic, listTopics,
   type AgentData, type WikiData,
 } from '@/lib/agent-tools';
 
@@ -72,7 +72,7 @@ TOOL SELECTION RULES:
 - Use search_posts for any keyword query — specific tools, technologies, topics, or names (e.g. "deepseek api", "mcp server", "breakout game").
 - Use search_wiki when the user asks what Neil concluded, learned or thinks about something, how an idea works across his posts, or what to read on a subject. Link every topic page and post it returns. When a topic page matches, also call get_topic and use its claims and quotes. Mention if a post's status is not "current".
 - Use get_posts_by_category ONLY when the user explicitly asks about a category (e.g. "Any Java posts?", "show me Azure posts").
-- Use list_categories ONLY when the user asks what categories exist.
+- Use list_categories ONLY when the user asks what categories exist. Topics are different from categories: when the user asks what topics exist, or just says "topics?", use list_topics and link every topic page it returns.
 - Never call list_categories for a keyword search.
 - Use web_search when the user explicitly asks for a web search (e.g. "live web search", "search the web", "look up") OR when the question is about current events or real-world facts not covered by the blog. Do not substitute search_posts for these requests.
 
@@ -341,12 +341,14 @@ export default function BlogAgent() {
           return `Failed to load post "${slug}".`;
         }
       }
+      case 'list_topics':
       case 'search_wiki':
       case 'get_topic': {
         // The wiki is larger than the post list, so it loads the first time a wiki tool is used.
         wikiRef.current ??= fetch('/agent-wiki.json').then(r => (r.ok ? (r.json() as Promise<WikiData>) : null)).catch(() => null);
         const wiki = await wikiRef.current;
         if (!wiki) { wikiRef.current = null; return 'The wiki is not available. Use search_posts instead.'; }
+        if (name === 'list_topics') return JSON.stringify(listTopics(wiki));
         if (name === 'search_wiki') {
           const found = searchWiki(args.query ?? '', wiki);
           return found.topics.length || found.posts.length ? JSON.stringify(found) : 'No wiki pages match. Try search_posts.';
@@ -430,7 +432,7 @@ export default function BlogAgent() {
         pageRule = `(2b) The user is on the topic page "${topicSlug}". "this topic", "this page" and "summarise this" mean that topic: call get_topic with topic "${topicSlug}", then summarise its idea, key claims and where the posts differ, and link the posts. Do NOT ask which topic.`;
       } else if (pathname.startsWith('/topics')) {
         pageContext = 'topics list';
-        pageRule = '(2b) The user is on the topics list. For questions about a subject use search_wiki.';
+        pageRule = '(2b) The user is on the topics list. "topics", "what is here" and "list them" mean the topic pages: call list_topics. For questions about a subject use search_wiki.';
       } else if (pathname.startsWith('/posts')) {
         pageContext = 'blog post listing';
       } else if (pathname.startsWith('/categories')) {
@@ -647,7 +649,7 @@ export default function BlogAgent() {
             <div>
               <div style={{ fontWeight: 600, fontSize: 14 }}>
                 <Link
-                  href="/posts/localagent/"
+                  href="/posts/localagent2/"
                   style={{ color: '#fff', textDecoration: 'none', transition: 'opacity .15s' }}
                   onMouseEnter={e => (e.currentTarget.style.opacity = '0.75')}
                   onMouseLeave={e => (e.currentTarget.style.opacity = '1')}

@@ -113,6 +113,13 @@ export function getTopic(nameOrSlug: string, wiki: WikiData) {
   };
 }
 
+/** Every topic page, with a one-line summary, for "what topics do you have?". */
+export function listTopics(wiki: WikiData) {
+  return wiki.topics
+    .map(t => ({ topic: t.title, url: `/topics/${t.slug}/`, summary: t.summary.slice(0, 160), posts: t.posts.length }))
+    .sort((a, b) => a.topic.localeCompare(b.topic));
+}
+
 export function getCategoryUrl(name: string): string {
   return `/categories/${categoryNameToSlug(name)}/`;
 }
@@ -186,6 +193,14 @@ export const TOOL_DEFINITIONS = [
         },
         required: ['query'],
       },
+    },
+  },
+  {
+    type: 'function' as const,
+    function: {
+      name: 'list_topics',
+      description: 'List every topic page on the blog (not categories), each with a one-line summary, its post count and a relative url ready to use as a Markdown link. Use when the user asks what topics exist or says "topics?".',
+      parameters: { type: 'object', properties: {}, required: [] },
     },
   },
   {
