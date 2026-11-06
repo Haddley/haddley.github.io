@@ -14,48 +14,33 @@ declare global {
 const gaEvent = (name: string, params?: Record<string, unknown>) => window.gtag?.('event', name, params);
 import {
   TOOL_DEFINITIONS, CATEGORIES,
-  searchPosts, getPostsByCategory, getCategoryUrl,
-  type AgentData,
+  searchPosts, getPostsByCategory, getCategoryUrl, searchWiki, getTopic,
+  type AgentData, type WikiData,
 } from '@/lib/agent-tools';
 
-const MODELS = [
-  { id: 'remote:qwen3.5:9b',                  label: 'Qwen3.5 9B',   size: '',      note: 'Hosted · default' },
-  { id: 'remote:qwen3.5:4b',                  label: 'Qwen3.5 4B',   size: '',      note: 'Hosted · balanced' },
-  { id: 'remote:qwen3.5:2b',                  label: 'Qwen3.5 2B',   size: '',      note: 'Hosted · fast' },
-  { id: 'remote:qwen3.5:0.8b',                label: 'Qwen3.5 0.8B', size: '',      note: 'Hosted · fastest' },
-  { id: 'Qwen2.5-7B-Instruct-q4f16_1-MLC',   label: 'Qwen2.5 7B',   size: '~4 GB', note: 'Best quality · WebLLM' },
-  { id: 'Qwen2.5-3B-Instruct-q4f16_1-MLC',   label: 'Qwen2.5 3B',   size: '~2 GB', note: 'Balanced · WebLLM' },
-  { id: 'Qwen2.5-1.5B-Instruct-q4f16_1-MLC', label: 'Qwen2.5 1.5B', size: '~1 GB', note: 'Fast · WebLLM' },
-  { id: 'Qwen2.5-0.5B-Instruct-q4f16_1-MLC', label: 'Qwen2.5 0.5B', size: '~300 MB', note: 'Smallest · WebLLM · mobile-friendly' },
-  { id: 'ollama:qwen3.5:27b',                 label: 'Qwen3.5 27B',  size: '',      note: 'Best quality · Ollama' },
-  { id: 'ollama:qwen3.5:9b',                  label: 'Qwen3.5 9B',   size: '',      note: 'Good quality · Ollama' },
-  { id: 'ollama:qwen3.5:4b',                  label: 'Qwen3.5 4B',   size: '',      note: 'Balanced · Ollama' },
-  { id: 'ollama:qwen3.5:2b',                  label: 'Qwen3.5 2B',   size: '',      note: 'Fast · Ollama' },
-  { id: 'ollama:qwen3.5:0.8b',                label: 'Qwen3.5 0.8B', size: '',      note: 'Fastest · Ollama' },
-] as const;
-type ModelId = typeof MODELS[number]['id'];
+const MODEL_LABEL = 'Qwen3.5 9B';
 const NAVY = '#1a2b4b';
-const OLLAMA_BASE = 'http://localhost:11434/v1';
-const isOllama = (id: string) => id.startsWith('ollama:');
-const ollamaModelName = (id: string) => id.replace(/^ollama:/, '');
-// Self-hosted remote Ollama-compatible server, reachable from any visitor (not
-// gated to localhost like the ollama: models above). Served over HTTPS via a
-// Caddy reverse proxy in front of the Mac mini's Ollama instance (port 8443,
-// forwarded through the router to Caddy on port 443 -- 443 itself was taken
-// by the router's own admin UI). OLLAMA_ORIGINS on the server is set to allow
-// this site's origin, confirmed via the access-control-allow-origin header.
-const REMOTE_OLLAMA_HOST = 'https://ollama.haddley.net:8443';
-// Sent as X-Site-Key on every request to REMOTE_OLLAMA_HOST. Caddy only proxies
-// requests carrying this exact header (see the Caddyfile), which stops the
-// automated scanners that constantly probe the internet for open Ollama
-// instances -- they won't send this. It is NOT a real secret: anyone who reads
-// this bundle (as you are right now) can see it, so it does nothing against a
-// person specifically targeting this site, only against opportunistic bots.
-const REMOTE_SITE_KEY = '9a85358469931628d4dc485da9d9f1ad3964df3a4c5825ae';
-const isRemoteOllama = (id: string) => id.startsWith('remote:');
-const remoteOllamaModelName = (id: string) => id.replace(/^remote:/, '');
-const isLocalhost = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
-const VISIBLE_MODELS = MODELS.filter(m => !isOllama(m.id) || isLocalhost || isRemoteOllama(m.id));
+// The model is chosen by the agent backend on the Mac mini, not by the visitor or this page.
+// Ollama is never reached from the browser: it listens on localhost only, and the backend
+// (behind Caddy) rate-limits, picks the model, and forwards to it. No key is shipped here.
+// Port 8443 because the router's own admin page already uses 443.
+// Two fixed backends, never a visitor-supplied address. Open any page with ?agent=local to use the
+// test backend on the home network (remembered for the tab), or ?agent=prod to go back.
+const AGENT_APIS = {
+  prod: process.env.NEXT_PUBLIC_AGENT_API ?? 'https://agent.haddley.net:8443',
+  local: 'http://Agents-Mac-mini.local:8080',
+} as const;
+
+function pickAgentApi(): string {
+  if (typeof window === 'undefined') return AGENT_APIS.prod;
+  try {
+    const asked = new URLSearchParams(window.location.search).get('agent');
+    if (asked === 'local' || asked === 'prod') sessionStorage.setItem('agentBackend', asked);
+    return AGENT_APIS[sessionStorage.getItem('agentBackend') === 'local' ? 'local' : 'prod'];
+  } catch {
+    return AGENT_APIS.prod;
+  }
+}
 
 type InferenceEngine = {
   chat: { completions: { create(opts: { messages: unknown[] }): Promise<{ choices: Array<{ message: { content: string | null } }> }> } };
@@ -84,6 +69,7 @@ ${defs}
 
 TOOL SELECTION RULES:
 - Use search_posts for any keyword query — specific tools, technologies, topics, or names (e.g. "deepseek api", "mcp server", "breakout game").
+- Use search_wiki when the user asks what Neil concluded, learned or thinks about something, how an idea works across his posts, or what to read on a subject. Link every topic page and post it returns. When a topic page matches, also call get_topic and use its claims and quotes. Mention if a post's status is not "current".
 - Use get_posts_by_category ONLY when the user explicitly asks about a category (e.g. "Any Java posts?", "show me Azure posts").
 - Use list_categories ONLY when the user asks what categories exist.
 - Never call list_categories for a keyword search.
@@ -226,15 +212,8 @@ export default function BlogAgent() {
   const [toolStatus, setToolStatus] = useState('');
   const [loadState, setLoadState] = useState<LoadState>({ status: 'idle', progress: 0, text: '' });
   const [agentData, setAgentData] = useState<AgentData | null>(null);
-  const [selectedModel, setSelectedModel] = useState<ModelId>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('agent-model');
-      if (VISIBLE_MODELS.some(m => m.id === saved)) return saved as ModelId;
-    }
-    return 'remote:qwen3.5:9b';
-  });
-
   const engineRef = useRef<InferenceEngine | null>(null);
+  const wikiRef = useRef<Promise<WikiData | null> | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   // Full API message history including tool calls/results — not in state to avoid
   // stale-closure issues inside the async agent loop. Drives model context.
@@ -273,94 +252,52 @@ export default function BlogAgent() {
       .catch(() => {});
   }, [isOpen, agentData]);
 
-  const loadModel = async () => {
+  const loadModel = useCallback(async () => {
     if (window.__mlcEngineOverride) {
       engineRef.current = window.__mlcEngineOverride as InferenceEngine;
       setLoadState({ status: 'ready', progress: 100, text: '' });
       return;
     }
-
-    if (isOllama(selectedModel) || isRemoteOllama(selectedModel)) {
-      const remote = isRemoteOllama(selectedModel);
-      const host = remote ? REMOTE_OLLAMA_HOST : 'http://localhost:11434';
-      const base = remote ? `${REMOTE_OLLAMA_HOST}/v1` : OLLAMA_BASE;
-      const modelName = remote ? remoteOllamaModelName(selectedModel) : ollamaModelName(selectedModel);
-      setLoadState({ status: 'loading', progress: 0, text: remote ? 'Connecting to self-hosted model…' : 'Connecting to Ollama…' });
-      const remoteHeaders: Record<string, string> = remote ? { 'X-Site-Key': REMOTE_SITE_KEY } : {};
-      try {
-        const ping = await fetch(`${host}/api/version`, { headers: remoteHeaders });
-        if (!ping.ok) throw new Error(remote ? 'Hosted server is not reachable.' : 'Ollama is not running. Start it with: ollama serve');
-        let currentController: AbortController | null = null;
-        engineRef.current = {
-          chat: {
-            completions: {
-              create: async ({ messages }: { messages: unknown[] }) => {
-                currentController = new AbortController();
-                try {
-                  const r = await fetch(`${base}/chat/completions`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json', ...remoteHeaders },
-                    body: JSON.stringify({ model: modelName, messages, stream: false }),
-                    signal: currentController.signal,
-                  });
-                  if (!r.ok) throw new Error(`Server error ${r.status} — is "${modelName}" pulled on the host?`);
-                  return r.json();
-                } finally {
-                  currentController = null;
-                }
-              },
+    setLoadState({ status: 'loading', progress: 0, text: 'Connecting to the agent…' });
+    try {
+      const ping = await fetch(`${pickAgentApi()}/api/version`);
+      if (!ping.ok) throw new Error(`Backend returned ${ping.status}`);
+      let currentController: AbortController | null = null;
+      engineRef.current = {
+        chat: {
+          completions: {
+            create: async ({ messages }: { messages: unknown[] }) => {
+              currentController = new AbortController();
+              try {
+                const r = await fetch(`${pickAgentApi()}/v1/chat/completions`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ messages, stream: false }),
+                  signal: currentController.signal,
+                });
+                if (!r.ok) throw new Error(r.status === 429 ? 'Too many questions just now. Please wait a minute and try again.' : `Server error ${r.status}.`);
+                return r.json();
+              } finally {
+                currentController = null;
+              }
             },
           },
-          interruptGenerate: () => { currentController?.abort(); },
-        };
-        localStorage.setItem('agent-model', selectedModel);
-        setLoadState({ status: 'ready', progress: 100, text: '' });
-      } catch (err) {
-        // The remote: endpoint is served over real HTTPS with CORS configured, so
-        // unlike the localhost-only ollama: models it isn't blocked by browser
-        // security on a public deployment -- a failure here is a genuine error
-        // (server down, model not pulled yet, etc.), not a mixed-content issue.
-        const onPublicSite = !remote && window.location.protocol === 'https:' && window.location.hostname !== 'localhost';
-        const text = onPublicSite
-          ? 'Ollama is blocked by browser security when accessed from a public URL. Run the site locally (npm run dev → localhost:3000) to use Ollama models.'
-          : err instanceof Error ? err.message : 'Failed to connect. Is the server running?';
-        setLoadState({ status: 'error', progress: 0, text });
-      }
-      return;
-    }
-
-    if (!('gpu' in navigator && navigator.gpu)) {
-      setLoadState({ status: 'unsupported', progress: 0, text: 'WebGPU is required. Try Chrome or Edge on a GPU-enabled device.' });
-      return;
-    }
-    localStorage.setItem('agent-model', selectedModel);
-    setLoadState({ status: 'loading', progress: 0, text: 'Initialising…' });
-    try {
-      const { CreateMLCEngine } = await import('@mlc-ai/web-llm');
-      const engine = await CreateMLCEngine(
-        selectedModel,
-        {
-          initProgressCallback: ({ progress, text }) =>
-            setLoadState({ status: 'loading', progress: Math.round(progress * 100), text }),
         },
-        {},
-      );
-      engineRef.current = engine as InferenceEngine;
+        interruptGenerate: () => { currentController?.abort(); },
+      };
       setLoadState({ status: 'ready', progress: 100, text: '' });
     } catch (err) {
-      const msg = err instanceof Error ? err.message : 'Failed to load model.';
-      const isDeviceLost = msg.toLowerCase().includes('device') || msg.toLowerCase().includes('disposed') || msg.toLowerCase().includes('gpu');
-      setLoadState({
-        status: 'error',
-        progress: 0,
-        text: isDeviceLost
-          ? 'GPU context lost — your device may have insufficient GPU memory for WebLLM. Try an Ollama model instead (run the site locally with npm run dev, then select an Ollama model).'
-          : msg,
-      });
+      console.warn('[BlogAgent] connect failed:', err);
+      setLoadState({ status: 'error', progress: 0, text: 'The agent is not reachable right now. Please try again later.' });
     }
-  };
+  }, []);
 
-  const executeTool = useCallback(async (name: string, args: Record<string, string>): Promise<string> => {
+  // Connect as soon as the panel opens: there is no model to choose.
+  useEffect(() => {
+    if (isOpen && loadState.status === 'idle') loadModel();
+  }, [isOpen, loadState.status, loadModel]);
+
+    const executeTool = useCallback(async (name: string, args: Record<string, string>): Promise<string> => {
     const posts = agentData?.posts ?? [];
     switch (name) {
       case 'search_posts': {
@@ -398,6 +335,19 @@ export default function BlogAgent() {
         } catch {
           return `Failed to load post "${slug}".`;
         }
+      }
+      case 'search_wiki':
+      case 'get_topic': {
+        // The wiki is larger than the post list, so it loads the first time a wiki tool is used.
+        wikiRef.current ??= fetch('/agent-wiki.json').then(r => (r.ok ? (r.json() as Promise<WikiData>) : null)).catch(() => null);
+        const wiki = await wikiRef.current;
+        if (!wiki) { wikiRef.current = null; return 'The wiki is not available. Use search_posts instead.'; }
+        if (name === 'search_wiki') {
+          const found = searchWiki(args.query ?? '', wiki);
+          return found.topics.length || found.posts.length ? JSON.stringify(found) : 'No wiki pages match. Try search_posts.';
+        }
+        const topic = getTopic(args.topic ?? args.query ?? args.slug ?? '', wiki);
+        return topic ? JSON.stringify(topic) : `No topic "${args.topic}". Call search_wiki to find topic names.`;
       }
       case 'navigate_to_post': {
         const target = posts.find(p => p.slug === args.slug);
@@ -493,7 +443,7 @@ export default function BlogAgent() {
       const trace: TraceStep[] = [];
 
       console.group(`[BlogAgent] turn — "${userText}"`);
-      console.log('model:', selectedModel, '| history depth:', apiHistoryRef.current.length, '| page:', pageContext);
+      console.log('history depth:', apiHistoryRef.current.length, '| page:', pageContext);
 
       // Prompt-based tool loop: parse <tool_call> blocks from plain text output.
       // No WebLLM tools API needed — works with any instruction-tuned model.
@@ -623,13 +573,7 @@ export default function BlogAgent() {
       apiHistoryRef.current = [...apiHistoryRef.current, ...turnMsgs];
     } catch (err) {
       const msg = err instanceof Error ? err.message : 'Something went wrong.';
-      const isDeviceLost = msg.toLowerCase().includes('device') || msg.toLowerCase().includes('disposed') || msg.toLowerCase().includes('gpu');
-      setMessages(prev => [...prev, {
-        role: 'assistant',
-        content: isDeviceLost
-          ? 'GPU context lost — your device may have insufficient GPU memory for WebLLM. Try an Ollama model instead (run the site locally with `npm run dev` then select an Ollama model).'
-          : `Error: ${msg}`,
-      }]);
+      setMessages(prev => [...prev, { role: 'assistant', content: `Error: ${msg}` }]);
     } finally {
       setIsThinking(false);
       setToolStatus('');
@@ -690,9 +634,7 @@ export default function BlogAgent() {
                 >Blog AI Assistant ↗</Link>
               </div>
               <div style={{ fontSize: 11, opacity: 0.6, marginTop: 2 }}>
-                {loadState.status === 'ready'
-                  ? `${MODELS.find(m => m.id === selectedModel)?.label ?? 'Qwen'} · ${isOllama(selectedModel) ? 'local Ollama' : 'local WebGPU'}`
-                  : isOllama(selectedModel) ? 'Powered by Ollama' : 'Powered by WebLLM'}
+                {loadState.status === 'ready' ? `${MODEL_LABEL} · hosted` : 'Hosted model'}
               </div>
             </div>
             <button
@@ -714,36 +656,8 @@ export default function BlogAgent() {
             </button>
           </div>
 
-          {/* Idle: model selector */}
-          {loadState.status === 'idle' && (
-            <div style={{ padding: 20, fontSize: 13, flexShrink: 0 }}>
-              <div style={{ marginBottom: 10, color: '#555', fontSize: 12 }}>Choose a model:</div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginBottom: 14 }}>
-                {VISIBLE_MODELS.map(m => (
-                  <label key={m.id} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', fontSize: 13 }}>
-                    <input
-                      type="radio"
-                      name="model"
-                      value={m.id}
-                      checked={selectedModel === m.id}
-                      onChange={() => setSelectedModel(m.id)}
-                    />
-                    <span style={{ fontWeight: 500 }}>{m.label}</span>
-                    <span style={{ color: '#999', fontSize: 11 }}>{m.size ? `${m.size} · ` : ''}{m.note}</span>
-                  </label>
-                ))}
-              </div>
-              <button
-                onClick={loadModel}
-                style={{ fontSize: 13, padding: '7px 18px', background: NAVY, color: '#fff', border: 'none', borderRadius: 20, cursor: 'pointer' }}
-              >
-                Load model
-              </button>
-            </div>
-          )}
-
           {/* Loading / error */}
-          {(loadState.status === 'loading' || loadState.status === 'unsupported' || loadState.status === 'error') && (
+          {(loadState.status === 'idle' || loadState.status === 'loading' || loadState.status === 'unsupported' || loadState.status === 'error') && (
             <div style={{ padding: 20, fontSize: 13, flexShrink: 0 }}>
               {loadState.status === 'unsupported' || loadState.status === 'error' ? (
                 <div>
@@ -756,17 +670,7 @@ export default function BlogAgent() {
                 </div>
               ) : (
                 <div>
-                  <div style={{ color: '#555', fontSize: 12, marginBottom: 10 }}>
-                    {loadState.text || (isOllama(selectedModel)
-                      ? `Connecting to Ollama (${MODELS.find(m => m.id === selectedModel)?.label})…`
-                      : `Loading ${MODELS.find(m => m.id === selectedModel)?.label ?? 'model'}… (first run ${MODELS.find(m => m.id === selectedModel)?.size ?? ''} download, cached afterwards)`)}
-                  </div>
-                  {!isOllama(selectedModel) && (<>
-                  <div style={{ background: '#e9ecef', borderRadius: 4, height: 6, overflow: 'hidden' }}>
-                    <div style={{ background: NAVY, height: '100%', width: `${loadState.progress}%`, transition: 'width .3s ease' }} />
-                  </div>
-                  <div style={{ fontSize: 11, color: '#aaa', marginTop: 5 }}>{loadState.progress}%</div>
-                  </>)}
+                  <div style={{ color: '#555', fontSize: 12 }}>{loadState.text || 'Connecting to the agent…'}</div>
                 </div>
               )}
             </div>

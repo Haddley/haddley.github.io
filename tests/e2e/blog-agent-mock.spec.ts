@@ -25,10 +25,9 @@ async function injectMockEngine(page: Page, responses: string[]) {
   }, responses);
 }
 
-/** Open the panel, click Load model (uses the override), wait for input. */
+/** Open the panel (it connects to the mock engine by itself), wait for input. */
 async function openAndLoad(page: Page) {
   await page.getByRole('button', { name: 'Open AI assistant' }).click();
-  await page.getByRole('button', { name: 'Load model' }).click();
   await expect(page.getByPlaceholder('Ask about the blog…')).toBeVisible();
 }
 
@@ -44,39 +43,30 @@ async function waitForResponse(page: Page) {
 }
 
 // ---------------------------------------------------------------------------
-// Model selector UI
+// Fixed hosted model
 // ---------------------------------------------------------------------------
 
-test.describe('Blog Agent — model selector', () => {
-  test('shows all three model options', async ({ page }) => {
+test.describe('Blog Agent — fixed model', () => {
+  test('there is no model picker and no Load model button', async ({ page }) => {
+    await injectMockEngine(page, ['Hello!']);
     await page.goto('/');
     await page.getByRole('button', { name: 'Open AI assistant' }).click();
-    await expect(page.getByText('Qwen2.5 7B')).toBeVisible();
-    await expect(page.getByText('Qwen2.5 3B')).toBeVisible();
-    await expect(page.getByText('Qwen2.5 1.5B')).toBeVisible();
+    await expect(page.getByRole('radio')).toHaveCount(0);
+    await expect(page.getByRole('button', { name: 'Load model' })).toHaveCount(0);
   });
 
-  test('Load model button is present', async ({ page }) => {
-    await page.goto('/');
-    await page.getByRole('button', { name: 'Open AI assistant' }).click();
-    await expect(page.getByRole('button', { name: 'Load model' })).toBeVisible();
-  });
-
-  test('mock engine skips GPU check and goes straight to ready', async ({ page }) => {
+  test('opening the panel connects and goes straight to ready', async ({ page }) => {
     await injectMockEngine(page, ['Hello!']);
     await page.goto('/');
     await openAndLoad(page);
     await expect(page.getByPlaceholder('Ask about the blog…')).toBeVisible();
   });
 
-  test('header shows selected model label when ready', async ({ page }) => {
+  test('header shows the hosted model when ready', async ({ page }) => {
     await injectMockEngine(page, ['Hello!']);
     await page.goto('/');
-    await page.getByRole('button', { name: 'Open AI assistant' }).click();
-    await page.getByLabel('Qwen2.5 3B').check();
-    await page.getByRole('button', { name: 'Load model' }).click();
-    await expect(page.getByPlaceholder('Ask about the blog…')).toBeVisible();
-    await expect(page.getByText('Qwen2.5 3B · local WebGPU')).toBeVisible();
+    await openAndLoad(page);
+    await expect(page.getByText('Qwen3.5 9B · hosted')).toBeVisible();
   });
 });
 

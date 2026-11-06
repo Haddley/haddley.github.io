@@ -45,6 +45,11 @@ export default function Navigation() {
                   Categories
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link href="/topics" className="nav-link link display-4">
+                  Topics
+                </Link>
+              </li>
             </ul>
             
             <div className="icons-menu">

@@ -65,6 +65,56 @@ async function run() {
   await writeFile(OUTPUT_FILE, JSON.stringify({ posts, generatedAt: new Date().toISOString() }, null, 2));
   console.log(`agent-data.json: ${posts.length} posts written`);
   console.log(`agent-posts/: ${posts.length} individual post files written to ${POSTS_DIR}`);
+  await writeWikiData(new Set(posts.map(p => p.slug)));
+}
+
+/**
+ * Generates public/agent-wiki.json from wiki/posts/*.md and wiki/concepts/*.md, for the agent's
+ * search_wiki and get_topic tools. No timestamp, so the file only changes when the wiki does.
+ */
+async function writeWikiData(visibleSlugs) {
+  const WIKI = join(__dirname, '../wiki');
+  const section = (content, name) => (content.split(new RegExp(`^## ${name}\\s*$`, 'm'))[1] ?? '').split(/^## /m)[0];
+  const bullets = text => text.split('\n').filter(l => l.startsWith('- ')).map(l => l.slice(2).trim());
+  // "- claim" lines followed by quote lines -> [{ text, quotes: [{ quote, slug? }] }]
+  const claims = text => {
+    const out = [];
+    for (const line of text.split('\n')) {
+      if (line.startsWith('- ')) out.push({ text: line.slice(2).trim(), quotes: [] });
+      const q = line.match(/^\s*> "(.+?)"(?: — ([a-z0-9-]+))?\s*$/);
+      if (q && out.length) out[out.length - 1].quotes.push(q[2] ? { quote: q[1], slug: q[2] } : { quote: q[1] });
+    }
+    return out;
+  };
+  const summaryOf = content => (content.match(/\*\*Summary\.\*\*\s*(.+)/) ?? [])[1]?.trim() ?? '';
+  const read = async dir => {
+    try { return (await readdir(join(WIKI, dir))).filter(f => f.endsWith('.md')).sort().map(f => join(WIKI, dir, f)); } catch { return []; }
+  };
+
+  const posts = [];
+  for (const file of await read('posts')) {
+    const { data, content } = matter(await readFile(file, 'utf-8'));
+    if (!visibleSlugs.has(data.slug)) continue;
+    posts.push({
+      slug: data.slug, title: data.title, date: String(data.date).slice(0, 10), part: data.part ?? null,
+      builds_on: data.builds_on ?? [], topics: data.topics ?? [], tools: data.tools ?? [], status: data.status ?? 'current',
+      summary: summaryOf(content), claims: claims(section(content, 'Claims')).map(c => ({ text: c.text, quote: c.quotes[0]?.quote ?? '' })),
+      outcome: section(content, 'Outcome').trim(), caveats: section(content, 'Caveats').trim(),
+    });
+  }
+  const topics = [];
+  for (const file of await read('concepts')) {
+    const { data, content } = matter(await readFile(file, 'utf-8'));
+    topics.push({
+      slug: data.slug, title: data.title, description: data.description ?? '', posts: (data.posts ?? []).filter(x => visibleSlugs.has(x)),
+      summary: summaryOf(content), idea: bullets(section(content, 'The idea')),
+      claims: claims(section(content, 'Claims')).map(c => ({ text: c.text, quote: c.quotes[0]?.quote ?? '', slug: c.quotes[0]?.slug ?? '' })),
+      differences: claims(section(content, 'Where the posts differ')).map(d => ({ text: d.text, quotes: d.quotes })),
+      conclusion: (section(content, 'What I concluded') || '').trim(),
+    });
+  }
+  await writeFile(join(__dirname, '../public/agent-wiki.json'), JSON.stringify({ posts, topics }));
+  console.log(`agent-wiki.json: ${posts.length} post pages, ${topics.length} topic pages written`);
 }
 
 run().catch(err => { console.error(err); process.exit(1); });

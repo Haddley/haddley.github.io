@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test';
 
 // All tests run against the static build served at localhost:4567.
-// WebGPU is not available in headless Chrome, so every test that opens the
-// panel will see the "unsupported" state — the model never loads and the
-// input row is never shown. That is the correct testable surface.
+// The agent backend is not running during these tests, so every test that opens
+// the panel sees the "not reachable" error state — the input row is never shown.
+// That is the correct testable surface.
 
 test.describe('Blog Agent — chat bubble', () => {
   test('bubble is visible on the home page', async ({ page }) => {
@@ -41,9 +41,15 @@ test.describe('Blog Agent — panel open / close', () => {
     await expect(page.getByText('Blog AI Assistant')).not.toBeVisible();
   });
 
-  test('panel header shows "Powered by WebLLM" subtitle', async ({ page }) => {
+  test('panel header shows the hosted model subtitle', async ({ page }) => {
     await page.getByRole('button', { name: 'Open AI assistant' }).click();
-    await expect(page.getByText('Powered by WebLLM')).toBeVisible();
+    await expect(page.getByText('Hosted model')).toBeVisible();
+  });
+
+  test('there is no model picker', async ({ page }) => {
+    await page.getByRole('button', { name: 'Open AI assistant' }).click();
+    await expect(page.getByText('Choose a model')).not.toBeVisible();
+    await expect(page.getByRole('radio')).toHaveCount(0);
   });
 
   test('New chat button is present in the panel', async ({ page }) => {
@@ -57,21 +63,17 @@ test.describe('Blog Agent — panel open / close', () => {
   });
 });
 
-test.describe('Blog Agent — WebGPU unsupported state', () => {
-  test('shows unsupported message when WebGPU is unavailable', async ({ page }) => {
+test.describe('Blog Agent — backend unreachable state', () => {
+  test('shows a friendly message when the backend is unreachable', async ({ page }) => {
     await page.goto('/');
     await page.getByRole('button', { name: 'Open AI assistant' }).click();
-    // Wait up to 8 s for the unsupported message to appear after the model
-    // load attempt fails (the component checks navigator.gpu on open).
-    await expect(page.getByText(/WebGPU is required/i)).toBeVisible({ timeout: 8000 });
+    await expect(page.getByText(/not reachable right now/i)).toBeVisible({ timeout: 8000 });
   });
 
-  test('does not show a Retry button for the unsupported state', async ({ page }) => {
+  test('offers a Retry button', async ({ page }) => {
     await page.goto('/');
     await page.getByRole('button', { name: 'Open AI assistant' }).click();
-    await expect(page.getByText(/WebGPU is required/i)).toBeVisible({ timeout: 8000 });
-    // Retry button only appears on 'error', not 'unsupported'
-    await expect(page.getByRole('button', { name: 'Retry' })).not.toBeVisible();
+    await expect(page.getByRole('button', { name: 'Retry' })).toBeVisible({ timeout: 8000 });
   });
 });
 

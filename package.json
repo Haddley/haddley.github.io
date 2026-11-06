@@ -6,6 +6,8 @@
     "dev": "next dev",
     "prebuild": "node scripts/sync-images.js && node scripts/generate-agent-data.mjs",
     "generate-agent-data": "node scripts/generate-agent-data.mjs",
+    "wiki": "node scripts/wiki-generate.mjs && node scripts/wiki-topics.mjs && node scripts/wiki-audit.mjs && node scripts/generate-agent-data.mjs",
+    "wiki:audit": "node scripts/wiki-audit.mjs",
     "build": "next build",
     "start": "npx serve@latest out",
     "lint": "eslint",
