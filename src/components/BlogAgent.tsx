@@ -19,6 +19,7 @@ import {
 } from '@/lib/agent-tools';
 
 const MODEL_LABEL = 'Qwen3.5 9B';
+const MAX_HISTORY_MESSAGES = 6;   // the last three exchanges
 const NAVY = '#1a2b4b';
 // The model is chosen by the agent backend on the Mac mini, not by the visitor or this page.
 // Ollama is never reached from the browser: it listens on localhost only, and the backend
@@ -445,7 +446,7 @@ export default function BlogAgent() {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const apiMsgs: any[] = [
         { role: 'system', content: buildToolSystemPrompt(ACTIVE_TOOLS, posts.length, CATEGORIES.length) },
-        ...apiHistoryRef.current,
+        ...apiHistoryRef.current.map(({ role, content }) => ({ role, content })),   // no trace or other UI fields
         { role: 'user', content: `${contextHint}\n\n${userText}` },
       ];
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -585,7 +586,11 @@ export default function BlogAgent() {
       }
 
       // Commit user + final assistant text only — no tool call/response messages
-      apiHistoryRef.current = [...apiHistoryRef.current, ...turnMsgs];
+      // Keep only the last few exchanges: the context window is small, and the backend refuses more than
+      // 40 messages in one request (each tool round in a turn adds two). Start on a user message.
+      const kept = [...apiHistoryRef.current, ...turnMsgs].slice(-MAX_HISTORY_MESSAGES);
+      while (kept.length && kept[0].role !== 'user') kept.shift();
+      apiHistoryRef.current = kept;
     } catch (err) {
       const msg = err instanceof Error ? err.message : 'Something went wrong.';
       setMessages(prev => [...prev, { role: 'assistant', content: `Error: ${msg}` }]);
