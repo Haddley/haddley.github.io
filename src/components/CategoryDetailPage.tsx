@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import CategoryPageWithSearch from '@/components/CategoryPageWithSearch';
 import NavyImageBanner from '@/components/NavyImageBanner';
+import { getTopicsForCategory } from '@/lib/topics';
 
 interface CategoryDetailPageProps {
   slug: string;
@@ -17,6 +18,7 @@ export default async function CategoryDetailPage({ slug }: CategoryDetailPagePro
   }
 
   const categoryPosts = withoutContent(await getVisibleBlogPostsByAnyCategory(category.name));
+  const relatedTopics = getTopicsForCategory(categoryPosts.map(p => p.slug));
   const featuredPosts = categoryPosts.slice(0, 3);
   const remainingPosts = categoryPosts.slice(3);
 
@@ -33,6 +35,21 @@ export default async function CategoryDetailPage({ slug }: CategoryDetailPagePro
           <p className="mbr-text mbr-fonts-style mt-2" style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.95rem' }}>
             {categoryPosts.length} {categoryPosts.length === 1 ? 'post' : 'posts'} in this category
           </p>
+          {relatedTopics.length > 0 && (
+            <div className="d-flex flex-wrap justify-content-center align-items-center gap-2 mt-2">
+              <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.9rem' }}>Related topics:</span>
+              {relatedTopics.map(t => (
+                <Link
+                  key={t.slug}
+                  href={`/topics/${t.slug}/`}
+                  title={`Topic page: what ${t.postCount} of my posts say about ${t.title}`}
+                  style={{ background: 'rgba(196, 181, 253, 0.18)', color: '#ddd6fe', padding: '3px 12px', borderRadius: '8px', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}
+                >
+                  {t.title}
+                </Link>
+              ))}
+            </div>
+          )}
           <nav aria-label="breadcrumb" className="mt-3">
             <ol className="breadcrumb justify-content-center" style={{ background: 'transparent' }}>
               <li className="breadcrumb-item">

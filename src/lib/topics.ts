@@ -45,3 +45,18 @@ export interface TopicSummary {
 export function getAllTopics(): TopicSummary[] {
   return loadTopics().map(({ slug, title, posts }) => ({ slug, title, posts }));
 }
+
+/** Topic pages that share at least `minShared` posts with a category, most overlap first. */
+export function getTopicsForCategory(postSlugs: string[], minShared = 2, limit = 4): (TopicRef & { shared: number })[] {
+  const inCategory = new Set(postSlugs);
+  return loadTopics()
+    .map(t => ({ slug: t.slug, title: t.title, postCount: t.posts.length, shared: t.posts.filter(p => inCategory.has(p)).length }))
+    .filter(t => t.shared >= minShared)
+    .sort((a, b) => b.shared - a.shared || a.title.localeCompare(b.title))
+    .slice(0, limit);
+}
+
+/** The posts a topic page draws on. */
+export function getTopicPosts(slug: string): string[] {
+  return loadTopics().find(t => t.slug === slug)?.posts ?? [];
+}

@@ -6,6 +6,8 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { getPostById } from '@/lib/posts';
 import MobiriseContentRenderer from '@/components/MobiriseContentRenderer';
+import { getPostCategories, getCategoryCount } from '@/lib/category-counts';
+import { categoryNameToSlug } from '@/lib/categories';
 
 interface TopicPageProps {
   params: Promise<{ slug: string }>;
@@ -94,6 +96,12 @@ export default async function TopicPage({ params }: TopicPageProps) {
 
   const markdown = headFirst(await toReaderMarkdown(topic.content), topic.data.title as string);
   const posts = await Promise.all((topic.data.posts as string[]).map(s => getPostById(s)));
+  // The categories these posts sit in, most common first, so a reader can move from the idea to the shelf.
+  const categoryTally = new Map<string, number>();
+  for (const postSlug of topic.data.posts as string[]) {
+    for (const c of getPostCategories(postSlug)) categoryTally.set(c, (categoryTally.get(c) ?? 0) + 1);
+  }
+  const topicCategories = [...categoryTally.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 4).map(([name]) => name);
 
   return (
     <>
@@ -107,6 +115,21 @@ export default async function TopicPage({ params }: TopicPageProps) {
               <h4 className="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">
                 {topic.data.description}
               </h4>
+              {topicCategories.length > 0 && (
+                <div className="d-flex flex-wrap justify-content-center align-items-center gap-2 mb-3">
+                  <span style={{ color: '#666', fontSize: '0.9rem' }}>Categories:</span>
+                  {topicCategories.map(name => (
+                    <Link
+                      key={name}
+                      href={`/categories/${categoryNameToSlug(name)}/`}
+                      title={`Category page: all ${getCategoryCount(name)} of my ${name} posts`}
+                      style={{ background: 'rgba(15, 30, 61, 0.1)', color: '#0f1e3d', padding: '4px 14px', borderRadius: '8px', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}
+                    >
+                      {name}
+                    </Link>
+                  ))}
+                </div>
+              )}
               <p className="align-center mbr-fonts-style display-7" style={{ color: '#666' }}>
                 A topic page: a summary of what my posts say, with each claim quoted from the post it came from.
                 The posts are the authority. Last checked {String(topic.data.checked).slice(0, 10)}.
