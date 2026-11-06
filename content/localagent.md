@@ -1,5 +1,6 @@
 ---
 title: "Local Agent"
+part: 1
 description: "A conversational AI assistant for this blog using WebLLM (in-browser) and a self-hosted Ollama server (Hosted, public, HTTPS) as interchangeable backends"
 date: "2026-06-14"
 categories: ["AI"]
@@ -10,10 +11,14 @@ slug: "localagent"
 
 # Adding a Local AI Agent to This Blog
 
+:::watch-it This is the first design
+I have since replaced the in-browser model and the open Ollama server with one hosted model behind a gatekeeper program, and added a wiki that the assistant reads. [Part 2](/posts/localagent2/) explains how the agent works now. The rest of this post describes the design I started with.
+:::
+
 I've added a conversational AI assistant to this blog — the 💬 button in the bottom-right corner of every page. It runs with no cloud API fees, using one of two model backends: **WebLLM** (in-browser, no setup) or **Hosted** (a real Ollama server I run and manage, reachable by any visitor over HTTPS).
 
 ![](assets/images/localagent/chat-bubble.png)
-*The chat button appears on every page — click it to open the assistant panel. The "Blog AI Assistant" title in the panel header links back to this post.*
+*The chat button appears on every page — click it to open the assistant panel. The "Blog AI Assistant" title in the panel header now links to [Part 2](/posts/localagent2/), which explains how the agent works today.*
 
 ## Choosing a Backend
 
