@@ -60,7 +60,7 @@ I used aws configure to set credentials.
 % aws configure
 ```
 
-AWS Access Key ID [None]: AKIAYLZDACM7MNDENQV4
+AWS Access Key ID [None]: AKIAXXXXXXXXXXXXXXXX
 AWS Secret Access Key [None]: iBXYnPPUTp+enyaVU2xvXXXXXXXXXXXXXXXXXXXX
 Default region name [None]:
 Default output format [None]:

@@ -35,7 +35,6 @@ export async function generateMetadata({ params }: TopicPageProps): Promise<Meta
     title: `${topic.data.title} | Neil Haddley`,
     description: topic.data.description,
     alternates: { canonical: `https://haddley.github.io/topics/${slug}/` },
-    robots: { index: false },   // prototype: stays out of search until the format is approved
   };
 }
 

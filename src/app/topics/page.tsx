@@ -12,7 +12,6 @@ export const metadata: Metadata = {
   title: 'Topics | Neil Haddley',
   description: 'Ideas that run across several posts, each with what the posts say and where they changed their minds.',
   alternates: { canonical: 'https://haddley.github.io/topics/' },
-  robots: { index: false },   // prototype: stays out of search until the format is approved
 };
 
 interface Topic {

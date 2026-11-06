@@ -8,7 +8,7 @@ topics: [amazon-eks, kubernetes-deployment, aws-management, container-orchestrat
 tools: [Amazon EKS, Kubernetes, Docker Desktop, aws cli, eksctl, kubectl]
 status: current
 checked: "2026-11-05"
-source_hash: "40f11c4d9161"
+source_hash: "0c3113f76b70"
 generated_by: gemma4:12b
 ---
 
