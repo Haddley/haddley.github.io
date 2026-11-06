@@ -308,8 +308,12 @@ export default function BlogAgent() {
       }
       case 'get_posts_by_category': {
         const results = getPostsByCategory(args.category ?? '', posts);
+        // The model's context window is small, so a large category returns its newest posts and the total.
+        const LIMIT = 30;
+        const newest = [...results].sort((a, b) => b.date.localeCompare(a.date)).slice(0, LIMIT);
+        const list = JSON.stringify(newest.map(p => ({ slug: p.slug, url: `/posts/${p.slug}/`, title: p.title, description: p.description.slice(0, 140) })));
         return results.length
-          ? JSON.stringify(results.map(p => ({ slug: p.slug, url: `/posts/${p.slug}/`, title: p.title, description: p.description })))
+          ? (results.length > LIMIT ? `${results.length} posts in "${args.category}"; the ${LIMIT} newest are: ${list}` : list)
           : `No posts in category "${args.category}".`;
       }
       case 'list_categories': {
@@ -404,7 +408,10 @@ export default function BlogAgent() {
       // Describe the page the user is currently on
       let pageContext = 'home page';
       const postMatch = pathname.match(/^\/posts\/([^/]+)\/?$/);
-      const categoryMatch = pathname.match(/^\/posts\/category\/([^/]+)\/?$/);
+      // Category pages live at /categories/<slug>/ (and /posts/category/<slug>/); topic pages at /topics/<slug>/
+      const categoryMatch = pathname.match(/^\/(?:categories|posts\/category)\/([^/]+)\/?$/);
+      const topicMatch = pathname.match(/^\/topics\/([^/]+)\/?$/);
+      let pageRule = '';
       if (postMatch) {
         const slug = postMatch[1];
         const post = posts.find(p => p.slug === slug);
@@ -413,8 +420,16 @@ export default function BlogAgent() {
           : `post at /posts/${slug}/`;
       } else if (categoryMatch) {
         const catSlug = categoryMatch[1];
-        const catName = CATEGORIES.find(c => c.toLowerCase().replace(/[^a-z0-9]+/g, '-') === catSlug) ?? catSlug;
+        const catName = CATEGORIES.find(c => getCategoryUrl(c) === `/categories/${catSlug}/`) ?? catSlug;
         pageContext = `"${catName}" category page`;
+        pageRule = `(2b) The user is on the "${catName}" category page. "this category", "this page" and "summarise this" mean the "${catName}" category: call get_posts_by_category with category "${catName}", then summarise its themes and name the most useful posts. Do NOT call list_categories and do NOT ask which category.`;
+      } else if (topicMatch) {
+        const topicSlug = topicMatch[1];
+        pageContext = `topic page /topics/${topicSlug}/`;
+        pageRule = `(2b) The user is on the topic page "${topicSlug}". "this topic", "this page" and "summarise this" mean that topic: call get_topic with topic "${topicSlug}", then summarise its idea, key claims and where the posts differ, and link the posts. Do NOT ask which topic.`;
+      } else if (pathname.startsWith('/topics')) {
+        pageContext = 'topics list';
+        pageRule = '(2b) The user is on the topics list. For questions about a subject use search_wiki.';
       } else if (pathname.startsWith('/posts')) {
         pageContext = 'blog post listing';
       } else if (pathname.startsWith('/categories')) {
@@ -425,7 +440,7 @@ export default function BlogAgent() {
       const postPageRule = currentSlug
         ? `(2) Only use get_post_content with slug "${currentSlug}" when the user refers to THIS page with words like "this post", "this", "the current post", or asks with no post name.`
         : `(2) You are not on a post page — do not call get_post_content unless the user explicitly names a post.`;
-      const contextHint = `[Current page: ${pageContext}. RULES (priority order): (1) If the user names a specific post title (e.g. "Summarize X post", "tell me about Y") — that is a DIFFERENT post. Use search_posts to find it. NEVER assume it is the current page. ${postPageRule} (3) For category questions use get_posts_by_category; for other keyword queries use search_posts. Never name or link a post without calling a tool first — always use the exact slug returned by the tool, never guess or paraphrase it. (4) Never repeat the same tool call in one turn. Be concise.]`;
+      const contextHint = `[Current page: ${pageContext}. RULES (priority order): (1) If the user names a specific post title (e.g. "Summarize X post", "tell me about Y") — that is a DIFFERENT post. Use search_posts to find it. NEVER assume it is the current page. ${postPageRule} ${pageRule} (3) For category questions use get_posts_by_category; for other keyword queries use search_posts. Never name or link a post without calling a tool first — always use the exact slug returned by the tool, never guess or paraphrase it. (4) Never repeat the same tool call in one turn. Be concise.]`;
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const apiMsgs: any[] = [
