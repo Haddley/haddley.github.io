@@ -235,7 +235,16 @@ export default function BlogAgent() {
     const last = messages[lastIndex];
     if (!isThinking && last?.role === 'assistant') {
       const el = box.querySelector<HTMLElement>(`[data-msg="${lastIndex}"]`);
-      if (el) { box.scrollTo({ top: Math.max(0, el.offsetTop - 8), behavior: 'smooth' }); return; }
+      if (el) {
+        // The answer's text is drawn a moment after its bubble appears (the markdown is converted in the
+        // background), so the box is not yet tall enough to scroll. Aim again each time the answer grows.
+        const aim = (behavior: ScrollBehavior) => box.scrollTo({ top: Math.max(0, el.offsetTop - 8), behavior });
+        aim('smooth');
+        const watcher = new ResizeObserver(() => aim('auto'));
+        watcher.observe(el);
+        const stop = setTimeout(() => watcher.disconnect(), 1500);
+        return () => { clearTimeout(stop); watcher.disconnect(); };
+      }
     }
     box.scrollTo({ top: box.scrollHeight, behavior: 'smooth' });
   }, [messages, isThinking]);
