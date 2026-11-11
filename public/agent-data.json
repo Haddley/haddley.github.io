@@ -2,7 +2,7 @@
   "posts": [
     {
       "slug": "localagent2",
-      "title": "Local Agent (Part 2)",
+      "title": "Blog AI Assistant (Part 2)",
       "description": "How the blog assistant works now: a gatekeeper in front of a hosted Qwen3.5 9B, an agent loop that runs in the browser, and a checked wiki of the posts",
       "date": "2026-11-06",
       "categories": [
@@ -811,7 +811,7 @@
     },
     {
       "slug": "localagent",
-      "title": "Local Agent (Part 1)",
+      "title": "Blog AI Assistant (Part 1)",
       "description": "A conversational AI assistant for this blog using WebLLM (in-browser) and a self-hosted Ollama server (Hosted, public, HTTPS) as interchangeable backends",
       "date": "2026-06-14",
       "categories": [
@@ -3313,5 +3313,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-11-06T07:39:08.127Z"
+  "generatedAt": "2026-11-11T17:01:37.687Z"
 }

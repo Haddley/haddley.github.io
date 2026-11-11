@@ -1,5 +1,5 @@
 ---
-title: "Local Agent"
+title: "Blog AI Assistant"
 part: 2
 description: "How the blog assistant works now: a gatekeeper in front of a hosted Qwen3.5 9B, an agent loop that runs in the browser, and a checked wiki of the posts"
 date: "2026-11-06"
@@ -240,7 +240,7 @@ Then ask the same questions on the home page, where the assistant has no page to
 
 ## References
 
-- [Local Agent (Part 1)](/posts/localagent/)
+- [Blog AI Assistant (Part 1)](/posts/localagent/)
 - [Ollama](https://ollama.com)
 - [Caddy](https://caddyserver.com)
 - [Qwen](https://qwenlm.github.io)

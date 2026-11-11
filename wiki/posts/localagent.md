@@ -1,7 +1,7 @@
 ---
 type: post
 slug: localagent
-title: "Local Agent"
+title: "Blog AI Assistant"
 date: "2026-06-14"
 builds_on: []
 topics: [webllm, webgpu, ollama, agent-loop, prompt-based-tool-calling, quantisation]

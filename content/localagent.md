@@ -1,5 +1,5 @@
 ---
-title: "Local Agent"
+title: "Blog AI Assistant"
 part: 1
 description: "A conversational AI assistant for this blog using WebLLM (in-browser) and a self-hosted Ollama server (Hosted, public, HTTPS) as interchangeable backends"
 date: "2026-06-14"

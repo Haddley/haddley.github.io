@@ -1,7 +1,7 @@
 ---
 type: post
 slug: localagent2
-title: "Local Agent (Part 2)"
+title: "Blog AI Assistant (Part 2)"
 date: "2026-11-06"
 part: 2
 builds_on: ["localagent"]
@@ -9,7 +9,7 @@ topics: ["llm-gatekeeping", "agentic-workflows", "context-management", "automate
 tools: ["Ollama", "Qwen", "Caddy", "Node.js", "YAML"]
 status: current
 checked: "2026-11-06"
-source_hash: "a0c524230dee"
+source_hash: "0d3bdbff7250"
 generated_by: gemma4:12b
 ---
 
