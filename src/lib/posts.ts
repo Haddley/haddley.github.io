@@ -11,6 +11,8 @@ export interface BlogPost {
   description: string;
   content: string;
   image?: string;
+  /** The animated sibling of a poster (poster.svg -> poster-motion.svg), when there is one. Listings use it for the Latest and Recent cards only. */
+  imageMotion?: string;
   tags: string[];
   categories?: string[];
   visible?: boolean;
@@ -23,6 +25,13 @@ export interface BlogPost {
  */
 export function withoutContent<T extends { content: string }>(posts: T[]): T[] {
   return posts.map(post => ({ ...post, content: '' }));
+}
+
+/** poster.svg has a motion version when poster-motion.svg sits beside it in content/. */
+function motionVersionOf(image?: string): string | undefined {
+  if (!image || !image.endsWith('.svg') || image.endsWith('-motion.svg')) return undefined;
+  const motion = image.replace(/\.svg$/, '-motion.svg');
+  return fs.existsSync(path.join(process.cwd(), 'content', motion)) ? motion : undefined;
 }
 
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
@@ -41,6 +50,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
       description: data.description || '',
       content,
       image: data.image,
+      imageMotion: motionVersionOf(data.image),
       tags: Array.isArray(data.tags) ? data.tags : (data.tags ? data.tags.split(',').map((t: string) => t.trim()).filter((t: string) => t) : []),
       categories: Array.isArray(data.categories) ? data.categories : [],
       visible: data.visible !== false && data.hidden !== true && data.hidden !== 'true',

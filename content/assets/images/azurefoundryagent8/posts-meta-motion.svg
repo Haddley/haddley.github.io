@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><style>@keyframes d{0%,3%{opacity:.08}9%,88%{opacity:.9}95%,100%{opacity:.08}}@keyframes ring{0%,52%{opacity:0;transform:scale(1)}54%{opacity:.9;transform:scale(1)}70%,100%{opacity:0;transform:scale(3.4)}}.d{animation:d 7s ease-in-out infinite}.ring{opacity:0;transform-box:fill-box;transform-origin:center;animation:ring 7s ease-out infinite}@media (prefers-reduced-motion: reduce){.d,.ring{animation:none}.ring{opacity:0}}</style>
+  <title>A grid of test conversations, every one tested, with six picked out as fireside chats</title>
+  <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+  <circle class="d" style="animation-delay:-7.00s" cx="15" cy="15" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.87s" cx="25" cy="15" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.74s" cx="35" cy="15" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.61s" cx="45" cy="15" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.48s" cx="55" cy="15" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.35s" cx="65" cy="15" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.22s" cx="75" cy="15" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.09s" cx="85" cy="15" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.96s" cx="95" cy="15" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.83s" cx="105" cy="15" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.87s" cx="15" cy="25" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.74s" cx="25" cy="25" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.61s" cx="35" cy="25" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.48s" cx="45" cy="25" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.35s" cx="55" cy="25" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.22s" cx="65" cy="25" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.09s" cx="75" cy="25" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.96s" cx="85" cy="25" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.83s" cx="95" cy="25" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.70s" cx="105" cy="25" r="4.2" fill="#ff8ac4" fill-opacity="1"/>
+  <circle class="d" style="animation-delay:-6.74s" cx="15" cy="35" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.61s" cx="25" cy="35" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.48s" cx="35" cy="35" r="4.2" fill="#ff8ac4" fill-opacity="1"/>
+  <circle class="d" style="animation-delay:-6.35s" cx="45" cy="35" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.22s" cx="55" cy="35" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.09s" cx="65" cy="35" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.96s" cx="75" cy="35" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.83s" cx="85" cy="35" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.70s" cx="95" cy="35" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.57s" cx="105" cy="35" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.61s" cx="15" cy="45" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.48s" cx="25" cy="45" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.35s" cx="35" cy="45" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.22s" cx="45" cy="45" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.09s" cx="55" cy="45" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.96s" cx="65" cy="45" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.83s" cx="75" cy="45" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.70s" cx="85" cy="45" r="4.2" fill="#ff8ac4" fill-opacity="1"/>
+  <circle class="d" style="animation-delay:-5.57s" cx="95" cy="45" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.44s" cx="105" cy="45" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.48s" cx="15" cy="55" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.35s" cx="25" cy="55" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.22s" cx="35" cy="55" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.09s" cx="45" cy="55" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.96s" cx="55" cy="55" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.83s" cx="65" cy="55" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.70s" cx="75" cy="55" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.57s" cx="85" cy="55" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.44s" cx="95" cy="55" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.31s" cx="105" cy="55" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.35s" cx="15" cy="65" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.22s" cx="25" cy="65" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.09s" cx="35" cy="65" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.96s" cx="45" cy="65" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.83s" cx="55" cy="65" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.70s" cx="65" cy="65" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.57s" cx="75" cy="65" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.44s" cx="85" cy="65" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.31s" cx="95" cy="65" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.18s" cx="105" cy="65" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.22s" cx="15" cy="75" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.09s" cx="25" cy="75" r="4.2" fill="#ff8ac4" fill-opacity="1"/>
+  <circle class="d" style="animation-delay:-5.96s" cx="35" cy="75" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.83s" cx="45" cy="75" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.70s" cx="55" cy="75" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.57s" cx="65" cy="75" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.44s" cx="75" cy="75" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.31s" cx="85" cy="75" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.18s" cx="95" cy="75" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.05s" cx="105" cy="75" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-6.09s" cx="15" cy="85" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.96s" cx="25" cy="85" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.83s" cx="35" cy="85" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.70s" cx="45" cy="85" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.57s" cx="55" cy="85" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.44s" cx="65" cy="85" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.31s" cx="75" cy="85" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.18s" cx="85" cy="85" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.05s" cx="95" cy="85" r="4.2" fill="#ff8ac4" fill-opacity="1"/>
+  <circle class="d" style="animation-delay:-4.92s" cx="105" cy="85" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.96s" cx="15" cy="95" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.83s" cx="25" cy="95" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.70s" cx="35" cy="95" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.57s" cx="45" cy="95" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.44s" cx="55" cy="95" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.31s" cx="65" cy="95" r="4.2" fill="#ff8ac4" fill-opacity="1"/>
+  <circle class="d" style="animation-delay:-5.18s" cx="75" cy="95" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.05s" cx="85" cy="95" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-4.92s" cx="95" cy="95" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-4.79s" cx="105" cy="95" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.83s" cx="15" cy="105" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.70s" cx="25" cy="105" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.57s" cx="35" cy="105" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.44s" cx="45" cy="105" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.31s" cx="55" cy="105" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.18s" cx="65" cy="105" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-5.05s" cx="75" cy="105" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-4.92s" cx="85" cy="105" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-4.79s" cx="95" cy="105" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="d" style="animation-delay:-4.66s" cx="105" cy="105" r="3.2" fill="#5be0cf" fill-opacity="0.85"/>
+  <circle class="ring" cx="105" cy="25" r="4.2" fill="none" stroke="#ff8ac4" stroke-width="1.4" style="animation-delay:-7.00s"/>
+  <circle class="ring" cx="35" cy="35" r="4.2" fill="none" stroke="#ff8ac4" stroke-width="1.4" style="animation-delay:-6.82s"/>
+  <circle class="ring" cx="85" cy="45" r="4.2" fill="none" stroke="#ff8ac4" stroke-width="1.4" style="animation-delay:-6.64s"/>
+  <circle class="ring" cx="25" cy="75" r="4.2" fill="none" stroke="#ff8ac4" stroke-width="1.4" style="animation-delay:-6.46s"/>
+  <circle class="ring" cx="95" cy="85" r="4.2" fill="none" stroke="#ff8ac4" stroke-width="1.4" style="animation-delay:-6.28s"/>
+  <circle class="ring" cx="65" cy="95" r="4.2" fill="none" stroke="#ff8ac4" stroke-width="1.4" style="animation-delay:-6.10s"/>
+</svg>

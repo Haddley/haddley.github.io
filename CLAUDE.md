@@ -52,6 +52,8 @@ The slug is derived from the filename by default; posts also support a `visible:
 - **Frontmatter `image:` field** — use root-relative: `/assets/images/<slug>/filename.ext`
 - **Markdown body `![]()` tags** — use relative (no leading `/`): `assets/images/<slug>/filename.ext`
 
+**Poster images with motion.** A poster can have two versions: `poster.svg`, the static one that `image:` points to and that every list uses, and `poster-motion.svg` beside it, the animated one. `getBlogPostBySlug` in `src/lib/posts.ts` finds the sibling and sets `imageMotion`, and only the Latest and Recent cards at the top of `/posts/` and the category pages use it. The motion should tell the post's story (bars that grow as answers are counted, then a tick), not decorate, and it must stop under `prefers-reduced-motion`.
+
 On phones, SVG diagrams are shown at least 640px wide and scroll sideways, so wide diagrams stay legible. A diagram drawn to fit a phone (about 440 units wide or less) opts out by adding `#narrow` to its address: `![](assets/images/<slug>/diagram.svg#narrow)`.
 
 The renderer (`MobiriseContentRenderer.tsx`) normalises relative paths to root-relative at render time, so the live site works correctly. Using relative paths in the body also makes VS Code's Markdown preview resolve images correctly from the `content/` directory.

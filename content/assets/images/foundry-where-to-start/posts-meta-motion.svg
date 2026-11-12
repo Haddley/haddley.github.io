@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><style>@keyframes walk{0%,8%{offset-distance:0%;opacity:0}10%{opacity:1}62%{offset-distance:100%;opacity:1}66%,100%{offset-distance:100%;opacity:0}}@keyframes s1{0%,23%,37%,100%{transform:scale(1)}29%{transform:scale(1.28)}}@keyframes s2{0%,37%,51%,100%{transform:scale(1)}43%{transform:scale(1.28)}}@keyframes s3{0%,56%,70%,100%{transform:scale(1)}62%{transform:scale(1.28)}}@keyframes wave{0%,62%{transform:scaleX(1) skewY(0)}68%{transform:scaleX(.7) skewY(-8deg)}74%{transform:scaleX(1) skewY(6deg)}80%{transform:scaleX(.75) skewY(-6deg)}86%,100%{transform:scaleX(1) skewY(0)}}.walker{opacity:0;offset-path:path("M14,92 Q24,62 38,62 T62,74 T86,54");offset-rotate:0deg;animation:walk 7s linear infinite}.s1,.s2,.s3{transform-box:fill-box;transform-origin:center}.s1{animation:s1 7s ease-in-out infinite}.s2{animation:s2 7s ease-in-out infinite}.s3{animation:s3 7s ease-in-out infinite}.flag{transform-box:fill-box;transform-origin:left center;animation:wave 7s ease-in-out infinite}@media (prefers-reduced-motion: reduce){.walker,.s1,.s2,.s3,.flag{animation:none}.walker{opacity:0}}</style>
+  <title>A winding dotted path with four colored stops and a red flag at the end</title>
+  <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+  <path d="M14,92 Q24,62 38,62 T62,74 T86,54" fill="none" stroke="#2c3e5c" stroke-width="9" stroke-linecap="round"/>
+  <path d="M14,92 Q24,62 38,62 T62,74 T86,54" fill="none" stroke="#ffd166" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 6"/>
+  <circle class="s1" cx="38" cy="62" r="11" fill="#5bb4ea"/>
+  <circle class="s2" cx="62" cy="74" r="11" fill="#9b7bff"/>
+  <circle class="s3" cx="86" cy="54" r="11" fill="#5be0cf"/>
+  <path d="M86,54 L100,40" stroke="#2c3e5c" stroke-width="9" stroke-linecap="round"/>
+  <path d="M100,40 v-22" stroke="#e8eef5" stroke-width="2.5" stroke-linecap="round"/>
+  <path class="flag" d="M100,18 l14,5 l-14,5 Z" fill="#ff6b6b"/>
+  <circle cx="100" cy="40" r="5" fill="#ff8ac4"/>
+<circle class="walker" r="4.2" fill="#fff" stroke="#ffd166" stroke-width="1.6"/>
+</svg>

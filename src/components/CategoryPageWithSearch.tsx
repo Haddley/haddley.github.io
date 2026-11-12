@@ -116,7 +116,7 @@ export default function CategoryPageWithSearch({
                               maxWidth: '300px'
                             }}>
                               <Image
-                                src={post.image}
+                                src={post.imageMotion ?? post.image}
                                 alt={post.title}
                                 width={300}
                                 height={200}

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><style>@keyframes mag{0%{opacity:0;transform:translate(-36px,-42px)}5%,14%{opacity:1;transform:translate(-36px,-42px)}30%{transform:translate(-36px,-34px)}46%,54%{transform:translate(-36px,-34px)}72%,92%{opacity:1;transform:translate(0,0)}98%,100%{opacity:0;transform:translate(0,0)}}@keyframes cite{0%,66%{opacity:0;transform:scale(.4)}74%{opacity:1;transform:scale(1.18)}80%,92%{opacity:1;transform:scale(1)}98%,100%{opacity:0;transform:scale(1)}}@keyframes hit{0%,40%{opacity:0}52%,88%{opacity:.4}96%,100%{opacity:0}}.mag{animation:mag 7s ease-in-out infinite}.cite{transform-box:fill-box;transform-origin:center;animation:cite 7s ease-out infinite}.hit{animation:hit 7s ease-in-out infinite}@media (prefers-reduced-motion: reduce){.mag,.cite,.hit{animation:none}.hit{opacity:0}}</style>
+  <title>A stack of documents feeding a magnifier, with a quoted citation bracket</title>
+  <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+  <g fill="#17304a" stroke="#5bb4ea" stroke-width="2">
+    <rect x="16" y="30" width="40" height="52" rx="5"/>
+    <rect x="24" y="22" width="40" height="52" rx="5" fill="#1d3c5c"/>
+    <rect x="32" y="14" width="40" height="52" rx="5" fill="#22496f"/>
+  </g>
+  <rect class="hit" x="37" y="31" width="30" height="10" rx="3" fill="#ff8ac4" opacity="0"/>
+  <g stroke="#c9d3dd" stroke-width="2.4" stroke-linecap="round">
+    <path d="M40,28 h24"/><path d="M40,36 h24"/><path d="M40,44 h16"/>
+  </g>
+  <g class="mag"><circle cx="78" cy="70" r="17" fill="none" stroke="#5be0cf" stroke-width="6"/>
+  <path d="M90,83 L106,100" stroke="#5be0cf" stroke-width="8" stroke-linecap="round"/>
+  <g font-family="Helvetica, Arial, sans-serif" font-weight="800" fill="#ff8ac4" text-anchor="middle">
+    <text class="cite" x="78" y="77" font-size="20">[1]</text>
+  </g></g>
+</svg>
