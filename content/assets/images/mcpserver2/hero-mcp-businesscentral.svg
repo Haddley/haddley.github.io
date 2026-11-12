@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120"><style>@keyframes tw{0%,100%{opacity:1}50%{opacity:.35}}@keyframes shine{0%,52%{transform:translateX(-80px)}100%{transform:translateX(200px)}}.tw{animation:tw 3.4s ease-in-out infinite}.shine{animation:shine 9s ease-in-out infinite;animation-delay:-8s}@media (prefers-reduced-motion: reduce){.tw,.shine{animation:none}.shine-g{display:none}}</style><defs><clipPath id="tile-clip"><rect width="120" height="120" rx="22"/></clipPath><linearGradient id="tile-shine" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.5" stop-color="#fff" stop-opacity="0.16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
   <rect width="120" height="120" rx="22" fill="#0d3b3e"/>
 
   <!-- Business Central: a 2x2 grid of API tiles, left side -->
@@ -17,11 +17,11 @@
   <g stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.9">
     <line x1="62" y1="63" x2="76" y2="63"/>
   </g>
-  <circle cx="62" cy="63" r="3" fill="#ffffff"/>
-  <circle cx="76" cy="63" r="3" fill="#ffffff"/>
+  <g class="tw" style="animation-delay:0.93s"><circle cx="62" cy="63" r="3" fill="#ffffff"/></g>
+  <g class="tw" style="animation-delay:1.36s"><circle cx="76" cy="63" r="3" fill="#ffffff"/></g>
 
   <!-- terminal prompt glyph, right side -->
   <rect x="76" y="46" width="24" height="24" rx="6" fill="#d97757"/>
   <path d="M 81 54 L 87 58 L 81 62" fill="none" stroke="#0d3b3e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
   <line x1="90" y1="62" x2="96" y2="62" stroke="#0d3b3e" stroke-width="2.4" stroke-linecap="round"/>
-</svg>
+<g class="shine-g" clip-path="url(#tile-clip)"><g transform="rotate(20 60 60)"><rect class="shine" x="0" y="-30" width="38" height="180" fill="url(#tile-shine)"/></g></g></svg>

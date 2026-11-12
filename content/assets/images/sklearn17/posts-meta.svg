@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><style>@keyframes tw{0%,100%{opacity:1}50%{opacity:.35}}@keyframes shine{0%,52%{transform:translateX(-80px)}100%{transform:translateX(200px)}}.tw{animation:tw 3.4s ease-in-out infinite}.shine{animation:shine 9s ease-in-out infinite;animation-delay:-4s}@media (prefers-reduced-motion: reduce){.tw,.shine{animation:none}.shine-g{display:none}}</style><defs><clipPath id="tile-clip"><rect width="120" height="120" rx="22"/></clipPath><linearGradient id="tile-shine" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.5" stop-color="#fff" stop-opacity="0.16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
   <title>Scikit-Learn: an autoencoder squeezing data through a narrow middle and rebuilding it</title>
   <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
   <rect x="12" y="30" width="9" height="60" rx="3" fill="#3a9bdc"/>
   <rect x="26" y="38" width="9" height="44" rx="3" fill="#3a9bdc"/>
   <rect x="40" y="46" width="9" height="28" rx="3" fill="#2a7fc0"/>
-  <rect x="54" y="54" width="12" height="12" rx="3" fill="#f6c25b"/>
+  <g class="tw" style="animation-delay:1.86s"><rect x="54" y="54" width="12" height="12" rx="3" fill="#f6c25b"/></g>
   <rect x="71" y="46" width="9" height="28" rx="3" fill="#2a7fc0"/>
   <rect x="85" y="38" width="9" height="44" rx="3" fill="#7cc6f0"/>
   <rect x="99" y="30" width="9" height="60" rx="3" fill="#7cc6f0"/>
-</svg>
+<g class="shine-g" clip-path="url(#tile-clip)"><g transform="rotate(20 60 60)"><rect class="shine" x="0" y="-30" width="38" height="180" fill="url(#tile-shine)"/></g></g></svg>

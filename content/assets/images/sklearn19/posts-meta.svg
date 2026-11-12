@@ -1,15 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><style>@keyframes tw{0%,100%{opacity:1}50%{opacity:.35}}@keyframes shine{0%,52%{transform:translateX(-80px)}100%{transform:translateX(200px)}}.tw{animation:tw 3.4s ease-in-out infinite}.shine{animation:shine 9s ease-in-out infinite;animation-delay:-7s}@media (prefers-reduced-motion: reduce){.tw,.shine{animation:none}.shine-g{display:none}}</style><defs><clipPath id="tile-clip"><rect width="120" height="120" rx="22"/></clipPath><linearGradient id="tile-shine" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.5" stop-color="#fff" stop-opacity="0.16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
   <title>Scikit-Learn: a trained model served from a rack of machines</title>
   <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
   <rect x="26" y="30" width="68" height="16" rx="5" fill="#3a9bdc"/>
   <rect x="26" y="52" width="68" height="16" rx="5" fill="#2a7fc0"/>
   <rect x="26" y="74" width="68" height="16" rx="5" fill="#3a9bdc"/>
-  <circle cx="82" cy="38" r="3.5" fill="#f6c25b"/>
-  <circle cx="82" cy="60" r="3.5" fill="#7cc6f0"/>
-  <circle cx="82" cy="82" r="3.5" fill="#7cc6f0"/>
+  <g class="tw" style="animation-delay:1.55s"><circle cx="82" cy="38" r="3.5" fill="#f6c25b"/></g>
+  <g class="tw" style="animation-delay:1.98s"><circle cx="82" cy="60" r="3.5" fill="#7cc6f0"/></g>
+  <g class="tw" style="animation-delay:2.41s"><circle cx="82" cy="82" r="3.5" fill="#7cc6f0"/></g>
   <line x1="34" y1="38" x2="60" y2="38" stroke="#0f1b2d" stroke-width="2" stroke-linecap="round"/>
   <line x1="34" y1="60" x2="52" y2="60" stroke="#0f1b2d" stroke-width="2" stroke-linecap="round"/>
   <line x1="34" y1="82" x2="60" y2="82" stroke="#0f1b2d" stroke-width="2" stroke-linecap="round"/>
   <path d="M60 100 L60 108" stroke="#f6c25b" stroke-width="2.6" stroke-linecap="round"/>
   <path d="M54.5 101 L60 94 L65.5 101 Z" fill="#f6c25b"/>
-</svg>
+<g class="shine-g" clip-path="url(#tile-clip)"><g transform="rotate(20 60 60)"><rect class="shine" x="0" y="-30" width="38" height="180" fill="url(#tile-shine)"/></g></g></svg>

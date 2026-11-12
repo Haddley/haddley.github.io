@@ -1,16 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120"><style>@keyframes tw{0%,100%{opacity:1}50%{opacity:.35}}@keyframes shine{0%,52%{transform:translateX(-80px)}100%{transform:translateX(200px)}}.tw{animation:tw 3.4s ease-in-out infinite}.shine{animation:shine 9s ease-in-out infinite;animation-delay:-4s}@media (prefers-reduced-motion: reduce){.tw,.shine{animation:none}.shine-g{display:none}}</style><defs><clipPath id="tile-clip"><rect width="120" height="120" rx="22"/></clipPath><linearGradient id="tile-shine" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.5" stop-color="#fff" stop-opacity="0.16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
   <rect width="120" height="120" rx="22" fill="#1a2b4b"/>
   <!-- Checklist card -->
   <rect x="34" y="28" width="52" height="64" rx="4" fill="#ffffff" opacity="0.95"/>
-  <circle cx="44" cy="42" r="3" fill="#27c93f"/>
+  <g class="tw" style="animation-delay:1.24s"><circle cx="44" cy="42" r="3" fill="#27c93f"/></g>
   <line x1="50" y1="42" x2="76" y2="42" stroke="#1a2b4b" stroke-width="2" opacity="0.4"/>
-  <circle cx="44" cy="54" r="3" fill="#27c93f"/>
+  <g class="tw" style="animation-delay:1.67s"><circle cx="44" cy="54" r="3" fill="#27c93f"/></g>
   <line x1="50" y1="54" x2="76" y2="54" stroke="#1a2b4b" stroke-width="2" opacity="0.4"/>
-  <circle cx="44" cy="66" r="3" fill="#27c93f"/>
+  <g class="tw" style="animation-delay:2.10s"><circle cx="44" cy="66" r="3" fill="#27c93f"/></g>
   <line x1="50" y1="66" x2="70" y2="66" stroke="#1a2b4b" stroke-width="2" opacity="0.4"/>
-  <circle cx="44" cy="78" r="3" fill="#27c93f"/>
+  <g class="tw" style="animation-delay:2.53s"><circle cx="44" cy="78" r="3" fill="#27c93f"/></g>
   <line x1="50" y1="78" x2="76" y2="78" stroke="#1a2b4b" stroke-width="2" opacity="0.4"/>
   <!-- Docker-ish container stack bottom right -->
-  <rect x="82" y="86" width="14" height="10" rx="2" fill="#4fc3f7" opacity="0.85"/>
-  <rect x="68" y="86" width="14" height="10" rx="2" fill="#80deea" opacity="0.85"/>
-</svg>
+  <g class="tw" style="animation-delay:2.96s"><rect x="82" y="86" width="14" height="10" rx="2" fill="#4fc3f7" opacity="0.85"/></g>
+  <g class="tw" style="animation-delay:3.39s"><rect x="68" y="86" width="14" height="10" rx="2" fill="#80deea" opacity="0.85"/></g>
+<g class="shine-g" clip-path="url(#tile-clip)"><g transform="rotate(20 60 60)"><rect class="shine" x="0" y="-30" width="38" height="180" fill="url(#tile-shine)"/></g></g></svg>

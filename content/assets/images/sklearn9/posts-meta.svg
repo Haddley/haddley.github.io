@@ -1,31 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><style>@keyframes tw{0%,100%{opacity:1}50%{opacity:.35}}@keyframes shine{0%,52%{transform:translateX(-80px)}100%{transform:translateX(200px)}}.tw{animation:tw 3.4s ease-in-out infinite}.shine{animation:shine 9s ease-in-out infinite;animation-delay:-1s}@media (prefers-reduced-motion: reduce){.tw,.shine{animation:none}.shine-g{display:none}}</style><defs><clipPath id="tile-clip"><rect width="120" height="120" rx="22"/></clipPath><linearGradient id="tile-shine" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.5" stop-color="#fff" stop-opacity="0.16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
   <title>Scikit-Learn: finding groups in unlabelled data</title>
   <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
   <circle cx="38" cy="40" r="19" fill="none" stroke="#1f4a73" stroke-width="1.4" stroke-dasharray="3 3"/>
-  <circle cx="35.5" cy="44.9" r="2.8" fill="#3a9bdc"/>
+  <g class="tw" style="animation-delay:1.24s"><circle cx="35.5" cy="44.9" r="2.8" fill="#3a9bdc"/></g>
   <circle cx="35.2" cy="36.2" r="2.8" fill="#3a9bdc"/>
   <circle cx="30.5" cy="38.3" r="2.8" fill="#3a9bdc"/>
-  <circle cx="46.5" cy="43.2" r="2.8" fill="#3a9bdc"/>
+  <g class="tw" style="animation-delay:1.67s"><circle cx="46.5" cy="43.2" r="2.8" fill="#3a9bdc"/></g>
   <circle cx="46.1" cy="41.9" r="2.8" fill="#3a9bdc"/>
   <circle cx="42.4" cy="42.1" r="2.8" fill="#3a9bdc"/>
-  <circle cx="27.1" cy="45.6" r="2.8" fill="#3a9bdc"/>
+  <g class="tw" style="animation-delay:2.10s"><circle cx="27.1" cy="45.6" r="2.8" fill="#3a9bdc"/></g>
   <circle cx="42.4" cy="44.4" r="2.8" fill="#3a9bdc"/>
   <circle cx="28.6" cy="30.3" r="2.8" fill="#3a9bdc"/>
   <circle cx="82" cy="46" r="19" fill="none" stroke="#1f4a73" stroke-width="1.4" stroke-dasharray="3 3"/>
-  <circle cx="74.9" cy="42.3" r="2.8" fill="#7cc6f0"/>
+  <g class="tw" style="animation-delay:2.53s"><circle cx="74.9" cy="42.3" r="2.8" fill="#7cc6f0"/></g>
   <circle cx="86.4" cy="45.3" r="2.8" fill="#7cc6f0"/>
   <circle cx="86.3" cy="40.6" r="2.8" fill="#7cc6f0"/>
-  <circle cx="85.2" cy="50.1" r="2.8" fill="#7cc6f0"/>
+  <g class="tw" style="animation-delay:2.96s"><circle cx="85.2" cy="50.1" r="2.8" fill="#7cc6f0"/></g>
   <circle cx="77.6" cy="57.3" r="2.8" fill="#7cc6f0"/>
   <circle cx="86.1" cy="54.9" r="2.8" fill="#7cc6f0"/>
-  <circle cx="77.0" cy="40.1" r="2.8" fill="#7cc6f0"/>
+  <g class="tw" style="animation-delay:3.39s"><circle cx="77.0" cy="40.1" r="2.8" fill="#7cc6f0"/></g>
   <circle cx="77.6" cy="44.6" r="2.8" fill="#7cc6f0"/>
   <circle cx="87.6" cy="48.2" r="2.8" fill="#7cc6f0"/>
   <circle cx="56" cy="86" r="19" fill="none" stroke="#1f4a73" stroke-width="1.4" stroke-dasharray="3 3"/>
-  <circle cx="52.5" cy="78.5" r="2.8" fill="#2a6fae"/>
+  <g class="tw" style="animation-delay:0.42s"><circle cx="52.5" cy="78.5" r="2.8" fill="#2a6fae"/></g>
   <circle cx="52.1" cy="95.1" r="2.8" fill="#2a6fae"/>
   <circle cx="49.3" cy="88.0" r="2.8" fill="#2a6fae"/>
-  <circle cx="59.0" cy="75.4" r="2.8" fill="#2a6fae"/>
+  <g class="tw" style="animation-delay:0.85s"><circle cx="59.0" cy="75.4" r="2.8" fill="#2a6fae"/></g>
   <circle cx="56.4" cy="95.7" r="2.8" fill="#2a6fae"/>
   <circle cx="43.4" cy="84.0" r="2.8" fill="#2a6fae"/>
   <circle cx="55.1" cy="79.2" r="2.8" fill="#2a6fae"/>
@@ -34,4 +34,4 @@
   <path d="M34 36 L42 44 M42 36 L34 44" stroke="#f6c25b" stroke-width="2.6" stroke-linecap="round"/>
   <path d="M78 42 L86 50 M86 42 L78 50" stroke="#f6c25b" stroke-width="2.6" stroke-linecap="round"/>
   <path d="M52 82 L60 90 M60 82 L52 90" stroke="#f6c25b" stroke-width="2.6" stroke-linecap="round"/>
-</svg>
+<g class="shine-g" clip-path="url(#tile-clip)"><g transform="rotate(20 60 60)"><rect class="shine" x="0" y="-30" width="38" height="180" fill="url(#tile-shine)"/></g></g></svg>

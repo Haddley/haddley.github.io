@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><style>@keyframes tw{0%,100%{opacity:1}50%{opacity:.35}}@keyframes shine{0%,52%{transform:translateX(-80px)}100%{transform:translateX(200px)}}.tw{animation:tw 3.4s ease-in-out infinite}.shine{animation:shine 9s ease-in-out infinite;animation-delay:-0s}@media (prefers-reduced-motion: reduce){.tw,.shine{animation:none}.shine-g{display:none}}</style><defs><clipPath id="tile-clip"><rect width="120" height="120" rx="22"/></clipPath><linearGradient id="tile-shine" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.5" stop-color="#fff" stop-opacity="0.16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
   <title>Scikit-Learn: a series looking back, from one model to many</title>
   <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
-  <rect x="16" y="76" width="14" height="14" rx="4" fill="#3a9bdc"/>
+  <g class="tw" style="animation-delay:1.55s"><rect x="16" y="76" width="14" height="14" rx="4" fill="#3a9bdc"/></g>
   <rect x="34" y="66" width="14" height="24" rx="4" fill="#3a9bdc"/>
   <rect x="52" y="54" width="14" height="36" rx="4" fill="#2a7fc0"/>
   <rect x="70" y="42" width="14" height="48" rx="4" fill="#2a7fc0"/>
   <rect x="88" y="30" width="14" height="60" rx="4" fill="#7cc6f0"/>
   <path d="M20 66 L58 44 L94 22" fill="none" stroke="#f6c25b" stroke-width="2.6" stroke-linecap="round"/>
   <path d="M88 20 L98 21 L93 29 Z" fill="#f6c25b"/>
-</svg>
+<g class="shine-g" clip-path="url(#tile-clip)"><g transform="rotate(20 60 60)"><rect class="shine" x="0" y="-30" width="38" height="180" fill="url(#tile-shine)"/></g></g></svg>

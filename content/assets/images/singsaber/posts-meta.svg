@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><style>@keyframes tw{0%,100%{opacity:1}50%{opacity:.35}}@keyframes shine{0%,52%{transform:translateX(-80px)}100%{transform:translateX(200px)}}.tw{animation:tw 3.4s ease-in-out infinite}.shine{animation:shine 9s ease-in-out infinite;animation-delay:-5s}@media (prefers-reduced-motion: reduce){.tw,.shine{animation:none}.shine-g{display:none}}</style><defs><clipPath id="tile-clip"><rect width="120" height="120" rx="22"/></clipPath><linearGradient id="tile-shine" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.5" stop-color="#fff" stop-opacity="0.16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
   <title>SingSaber: fists punching cube blocks to the beat, with a line of lyrics underneath</title>
   <defs>
     <g id="fist" stroke-linejoin="round" stroke-linecap="round">
@@ -23,4 +23,4 @@
   <g color="#2f6bff"><circle cx="82" cy="66" r="19" fill="#2f6bff" opacity=".2"/><g transform="translate(97,45) scale(-1,1)"><use href="#fist"/></g></g>
   <text x="60" y="104" text-anchor="middle" font-family="Roboto, Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#e8fffb" stroke="#0f1b2d" stroke-width="3.2" stroke-linejoin="round" paint-order="stroke">It works!</text>
   <path d="M60,12 v-6 M60,6 l5,1.5" stroke="#ffd45a" stroke-width="1.6" stroke-linecap="round" fill="none"/><ellipse cx="57.5" cy="12.5" rx="3" ry="2.2" fill="#ffd45a"/>
-</svg>
+<g class="shine-g" clip-path="url(#tile-clip)"><g transform="rotate(20 60 60)"><rect class="shine" x="0" y="-30" width="38" height="180" fill="url(#tile-shine)"/></g></g></svg>

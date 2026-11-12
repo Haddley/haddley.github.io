@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120"><style>@keyframes tw{0%,100%{opacity:1}50%{opacity:.35}}@keyframes shine{0%,52%{transform:translateX(-80px)}100%{transform:translateX(200px)}}.tw{animation:tw 3.4s ease-in-out infinite}.shine{animation:shine 9s ease-in-out infinite;animation-delay:-5s}@media (prefers-reduced-motion: reduce){.tw,.shine{animation:none}.shine-g{display:none}}</style><defs><clipPath id="tile-clip"><rect width="120" height="120" rx="22"/></clipPath><linearGradient id="tile-shine" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.5" stop-color="#fff" stop-opacity="0.16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
   <rect width="120" height="120" rx="22" fill="#1a2b4b"/>
   <rect x="26" y="34" width="68" height="52" rx="5" fill="#ffffff" opacity="0.95"/>
   <rect x="34" y="44" width="34" height="4" rx="2" fill="#1a2b4b" opacity="0.3"/>
   <rect x="34" y="52" width="46" height="4" rx="2" fill="#1a2b4b" opacity="0.3"/>
-  <circle cx="72" cy="53.5" r="4" fill="#4fc3f7"/>
+  <g class="tw" style="animation-delay:1.55s"><circle cx="72" cy="53.5" r="4" fill="#4fc3f7"/></g>
   <rect x="34" y="62" width="40" height="4" rx="2" fill="#1a2b4b" opacity="0.3"/>
-  <circle cx="82" cy="63.5" r="4" fill="#4fc3f7"/>
+  <g class="tw" style="animation-delay:1.98s"><circle cx="82" cy="63.5" r="4" fill="#4fc3f7"/></g>
   <rect x="34" y="72" width="28" height="4" rx="2" fill="#1a2b4b" opacity="0.3"/>
-</svg>
+<g class="shine-g" clip-path="url(#tile-clip)"><g transform="rotate(20 60 60)"><rect class="shine" x="0" y="-30" width="38" height="180" fill="url(#tile-shine)"/></g></g></svg>

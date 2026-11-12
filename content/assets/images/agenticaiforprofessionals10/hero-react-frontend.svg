@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120"><style>@keyframes tw{0%,100%{opacity:1}50%{opacity:.35}}@keyframes shine{0%,52%{transform:translateX(-80px)}100%{transform:translateX(200px)}}.tw{animation:tw 3.4s ease-in-out infinite}.shine{animation:shine 9s ease-in-out infinite;animation-delay:-5s}@media (prefers-reduced-motion: reduce){.tw,.shine{animation:none}.shine-g{display:none}}</style><defs><clipPath id="tile-clip"><rect width="120" height="120" rx="22"/></clipPath><linearGradient id="tile-shine" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.5" stop-color="#fff" stop-opacity="0.16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
   <!-- Background circle -->
   <rect width="120" height="120" rx="22" fill="#1a2b4b"/>
 
   <!-- Browser window -->
   <rect x="22" y="30" width="76" height="60" rx="5" fill="#ffffff" opacity="0.95"/>
   <rect x="22" y="30" width="76" height="12" rx="5" fill="#80deea" opacity="0.9"/>
-  <circle cx="29" cy="36" r="2" fill="#1a2b4b"/>
-  <circle cx="35" cy="36" r="2" fill="#1a2b4b"/>
-  <circle cx="41" cy="36" r="2" fill="#1a2b4b"/>
+  <g class="tw" style="animation-delay:1.55s"><circle cx="29" cy="36" r="2" fill="#1a2b4b"/></g>
+  <g class="tw" style="animation-delay:1.98s"><circle cx="35" cy="36" r="2" fill="#1a2b4b"/></g>
+  <g class="tw" style="animation-delay:2.41s"><circle cx="41" cy="36" r="2" fill="#1a2b4b"/></g>
 
   <!-- Chat lines inside the window -->
   <rect x="28" y="50" width="34" height="5" rx="2.5" fill="#4fc3f7" opacity="0.8"/>
@@ -15,9 +15,9 @@
   <rect x="28" y="68" width="40" height="5" rx="2.5" fill="#1a2b4b" opacity="0.25"/>
 
   <!-- Citation markers -->
-  <circle cx="80" cy="61.5" r="4" fill="#4fc3f7"/>
-  <circle cx="88" cy="70.5" r="4" fill="#4fc3f7"/>
+  <g class="tw" style="animation-delay:2.84s"><circle cx="80" cy="61.5" r="4" fill="#4fc3f7"/></g>
+  <g class="tw" style="animation-delay:3.27s"><circle cx="88" cy="70.5" r="4" fill="#4fc3f7"/></g>
 
   <!-- Cursor / click indicator -->
   <path d="M84 78 L96 92 L90 92 L94 100 L90 102 L86 94 L82 98 Z" fill="#ffffff"/>
-</svg>
+<g class="shine-g" clip-path="url(#tile-clip)"><g transform="rotate(20 60 60)"><rect class="shine" x="0" y="-30" width="38" height="180" fill="url(#tile-shine)"/></g></g></svg>

@@ -1,17 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><style>@keyframes tw{0%,100%{opacity:1}50%{opacity:.35}}@keyframes shine{0%,52%{transform:translateX(-80px)}100%{transform:translateX(200px)}}.tw{animation:tw 3.4s ease-in-out infinite}.shine{animation:shine 9s ease-in-out infinite;animation-delay:-4s}@media (prefers-reduced-motion: reduce){.tw,.shine{animation:none}.shine-g{display:none}}</style><defs><clipPath id="tile-clip"><rect width="120" height="120" rx="22"/></clipPath><linearGradient id="tile-shine" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.5" stop-color="#fff" stop-opacity="0.16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
   <title>Scikit-Learn: a data pipeline that loads and preprocesses data in batches</title>
   <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
   <line x1="40" y1="36" x2="62" y2="60" stroke="#1f4a73" stroke-width="2"/>
   <line x1="40" y1="60" x2="62" y2="60" stroke="#1f4a73" stroke-width="2"/>
   <line x1="40" y1="84" x2="62" y2="60" stroke="#1f4a73" stroke-width="2"/>
-  <rect x="24" y="28" width="16" height="16" rx="4" fill="#3a9bdc"/>
-  <rect x="24" y="52" width="16" height="16" rx="4" fill="#3a9bdc"/>
-  <rect x="24" y="76" width="16" height="16" rx="4" fill="#3a9bdc"/>
+  <g class="tw" style="animation-delay:1.86s"><rect x="24" y="28" width="16" height="16" rx="4" fill="#3a9bdc"/></g>
+  <g class="tw" style="animation-delay:2.29s"><rect x="24" y="52" width="16" height="16" rx="4" fill="#3a9bdc"/></g>
+  <g class="tw" style="animation-delay:2.72s"><rect x="24" y="76" width="16" height="16" rx="4" fill="#3a9bdc"/></g>
   <line x1="70" y1="57" x2="82" y2="51" stroke="#1f4a73" stroke-width="2"/>
   <line x1="70" y1="63" x2="82" y2="69" stroke="#1f4a73" stroke-width="2"/>
-  <circle cx="63" cy="60" r="9" fill="#7cc6f0"/>
-  <rect x="82" y="44" width="14" height="14" rx="4" fill="#2a7fc0"/>
-  <rect x="82" y="62" width="14" height="14" rx="4" fill="#2a7fc0"/>
+  <g class="tw" style="animation-delay:3.15s"><circle cx="63" cy="60" r="9" fill="#7cc6f0"/></g>
+  <g class="tw" style="animation-delay:0.18s"><rect x="82" y="44" width="14" height="14" rx="4" fill="#2a7fc0"/></g>
+  <g class="tw" style="animation-delay:0.61s"><rect x="82" y="62" width="14" height="14" rx="4" fill="#2a7fc0"/></g>
   <path d="M30 104 L90 104" stroke="#f6c25b" stroke-width="2.6" stroke-linecap="round"/>
   <path d="M88 98.5 L98 104 L88 109.5 Z" fill="#f6c25b"/>
-</svg>
+<g class="shine-g" clip-path="url(#tile-clip)"><g transform="rotate(20 60 60)"><rect class="shine" x="0" y="-30" width="38" height="180" fill="url(#tile-shine)"/></g></g></svg>

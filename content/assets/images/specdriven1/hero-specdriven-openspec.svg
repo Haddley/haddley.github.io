@@ -1,17 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120"><style>@keyframes tw{0%,100%{opacity:1}50%{opacity:.35}}@keyframes shine{0%,52%{transform:translateX(-80px)}100%{transform:translateX(200px)}}.tw{animation:tw 3.4s ease-in-out infinite}.shine{animation:shine 9s ease-in-out infinite;animation-delay:-3s}@media (prefers-reduced-motion: reduce){.tw,.shine{animation:none}.shine-g{display:none}}</style><defs><clipPath id="tile-clip"><rect width="120" height="120" rx="22"/></clipPath><linearGradient id="tile-shine" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.5" stop-color="#fff" stop-opacity="0.16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
   <rect width="120" height="120" rx="22" fill="#1a2b4b"/>
 
   <!-- Flat calculator, left -->
   <rect x="10" y="26" width="34" height="68" rx="2" fill="#ffffff" opacity="0.95"/>
   <rect x="15" y="32" width="24" height="12" fill="#1a2b4b" opacity="0.85"/>
-  <rect x="15" y="50" width="5" height="5" fill="#1a2b4b" opacity="0.7"/>
-  <rect x="23" y="50" width="5" height="5" fill="#1a2b4b" opacity="0.7"/>
-  <rect x="31" y="50" width="5" height="5" fill="#1a2b4b" opacity="0.7"/>
-  <rect x="15" y="60" width="5" height="5" fill="#1a2b4b" opacity="0.7"/>
-  <rect x="23" y="60" width="5" height="5" fill="#1a2b4b" opacity="0.7"/>
-  <rect x="31" y="60" width="5" height="5" fill="#1a2b4b" opacity="0.7"/>
-  <rect x="15" y="70" width="5" height="5" fill="#1a2b4b" opacity="0.7"/>
-  <rect x="23" y="70" width="5" height="5" fill="#1a2b4b" opacity="0.7"/>
+  <g class="tw" style="animation-delay:0.00s"><rect x="15" y="50" width="5" height="5" fill="#1a2b4b" opacity="0.7"/></g>
+  <g class="tw" style="animation-delay:0.43s"><rect x="23" y="50" width="5" height="5" fill="#1a2b4b" opacity="0.7"/></g>
+  <g class="tw" style="animation-delay:0.86s"><rect x="31" y="50" width="5" height="5" fill="#1a2b4b" opacity="0.7"/></g>
+  <g class="tw" style="animation-delay:1.29s"><rect x="15" y="60" width="5" height="5" fill="#1a2b4b" opacity="0.7"/></g>
+  <g class="tw" style="animation-delay:1.72s"><rect x="23" y="60" width="5" height="5" fill="#1a2b4b" opacity="0.7"/></g>
+  <g class="tw" style="animation-delay:2.15s"><rect x="31" y="60" width="5" height="5" fill="#1a2b4b" opacity="0.7"/></g>
+  <g class="tw" style="animation-delay:2.58s"><rect x="15" y="70" width="5" height="5" fill="#1a2b4b" opacity="0.7"/></g>
+  <g class="tw" style="animation-delay:3.01s"><rect x="23" y="70" width="5" height="5" fill="#1a2b4b" opacity="0.7"/></g>
   <rect x="31" y="70" width="5" height="5" fill="#1a2b4b" opacity="0.7"/>
   <rect x="15" y="80" width="21" height="5" fill="#1a2b4b" opacity="0.7"/>
 
@@ -28,4 +28,4 @@
   <line x1="87" y1="68" x2="103" y2="68" stroke="#2e7d32" stroke-width="1.4" opacity="0.8"/>
   <line x1="87" y1="78" x2="103" y2="78" stroke="#1a2b4b" stroke-width="1.4" opacity="0.5"/>
   <line x1="87" y1="84" x2="99" y2="84" stroke="#1a2b4b" stroke-width="1.4" opacity="0.5"/>
-</svg>
+<g class="shine-g" clip-path="url(#tile-clip)"><g transform="rotate(20 60 60)"><rect class="shine" x="0" y="-30" width="38" height="180" fill="url(#tile-shine)"/></g></g></svg>

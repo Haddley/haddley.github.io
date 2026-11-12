@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120"><style>@keyframes tw{0%,100%{opacity:1}50%{opacity:.35}}@keyframes shine{0%,52%{transform:translateX(-80px)}100%{transform:translateX(200px)}}.tw{animation:tw 3.4s ease-in-out infinite}.shine{animation:shine 9s ease-in-out infinite;animation-delay:-1s}@media (prefers-reduced-motion: reduce){.tw,.shine{animation:none}.shine-g{display:none}}</style><defs><clipPath id="tile-clip"><rect width="120" height="120" rx="22"/></clipPath><linearGradient id="tile-shine" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.5" stop-color="#fff" stop-opacity="0.16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
   <rect width="120" height="120" rx="22" fill="#1a2b4b"/>
   <rect x="20" y="36" width="80" height="52" rx="4" fill="#ffffff" opacity="0.1" stroke="#80deea" stroke-width="2"/>
-  <circle cx="30" cy="44" r="2.5" fill="#ff5f56"/>
-  <circle cx="38" cy="44" r="2.5" fill="#ffbd2e"/>
-  <circle cx="46" cy="44" r="2.5" fill="#27c93f"/>
+  <g class="tw" style="animation-delay:0.00s"><circle cx="30" cy="44" r="2.5" fill="#ff5f56"/></g>
+  <g class="tw" style="animation-delay:0.43s"><circle cx="38" cy="44" r="2.5" fill="#ffbd2e"/></g>
+  <g class="tw" style="animation-delay:0.86s"><circle cx="46" cy="44" r="2.5" fill="#27c93f"/></g>
   <rect x="28" y="54" width="60" height="4" rx="2" fill="#4fc3f7" opacity="0.8"/>
   <rect x="28" y="63" width="44" height="4" rx="2" fill="#80deea" opacity="0.6"/>
   <rect x="28" y="72" width="50" height="4" rx="2" fill="#80deea" opacity="0.6"/>
   <path d="M84 92 L94 102 L110 82" stroke="#27c93f" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+<g class="shine-g" clip-path="url(#tile-clip)"><g transform="rotate(20 60 60)"><rect class="shine" x="0" y="-30" width="38" height="180" fill="url(#tile-shine)"/></g></g></svg>

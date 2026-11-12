@@ -1,20 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120"><style>@keyframes tw{0%,100%{opacity:1}50%{opacity:.35}}@keyframes shine{0%,52%{transform:translateX(-80px)}100%{transform:translateX(200px)}}.tw{animation:tw 3.4s ease-in-out infinite}.shine{animation:shine 9s ease-in-out infinite;animation-delay:-8s}@media (prefers-reduced-motion: reduce){.tw,.shine{animation:none}.shine-g{display:none}}</style><defs><clipPath id="tile-clip"><rect width="120" height="120" rx="22"/></clipPath><linearGradient id="tile-shine" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.5" stop-color="#fff" stop-opacity="0.16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
   <rect width="120" height="120" rx="22" fill="#1a2b4b"/>
   <!-- Question node -->
-  <circle cx="24" cy="60" r="9" fill="#ffffff" opacity="0.95"/>
+  <g class="tw" style="animation-delay:0.00s"><circle cx="24" cy="60" r="9" fill="#ffffff" opacity="0.95"/></g>
   <!-- Arrow to embedding vector -->
   <line x1="33" y1="60" x2="50" y2="60" stroke="#80deea" stroke-width="2" opacity="0.7"/>
   <!-- Vector dots cluster (embedding space) -->
-  <circle cx="60" cy="42" r="3" fill="#4fc3f7"/>
-  <circle cx="72" cy="48" r="3" fill="#4fc3f7"/>
-  <circle cx="66" cy="60" r="4" fill="#ffffff"/>
-  <circle cx="80" cy="60" r="3" fill="#4fc3f7"/>
-  <circle cx="70" cy="74" r="3" fill="#4fc3f7"/>
-  <circle cx="58" cy="78" r="3" fill="#4fc3f7"/>
+  <g class="tw" style="animation-delay:0.43s"><circle cx="60" cy="42" r="3" fill="#4fc3f7"/></g>
+  <g class="tw" style="animation-delay:0.86s"><circle cx="72" cy="48" r="3" fill="#4fc3f7"/></g>
+  <g class="tw" style="animation-delay:1.29s"><circle cx="66" cy="60" r="4" fill="#ffffff"/></g>
+  <g class="tw" style="animation-delay:1.72s"><circle cx="80" cy="60" r="3" fill="#4fc3f7"/></g>
+  <g class="tw" style="animation-delay:2.15s"><circle cx="70" cy="74" r="3" fill="#4fc3f7"/></g>
+  <g class="tw" style="animation-delay:2.58s"><circle cx="58" cy="78" r="3" fill="#4fc3f7"/></g>
   <!-- Nearest-neighbour lines from the query point -->
   <line x1="66" y1="60" x2="60" y2="42" stroke="#ffffff" stroke-width="1" opacity="0.5"/>
   <line x1="66" y1="60" x2="72" y2="48" stroke="#ffffff" stroke-width="1" opacity="0.5"/>
   <line x1="66" y1="60" x2="80" y2="60" stroke="#ffffff" stroke-width="1" opacity="0.5"/>
   <line x1="66" y1="60" x2="70" y2="74" stroke="#ffffff" stroke-width="1" opacity="0.35"/>
   <line x1="66" y1="60" x2="58" y2="78" stroke="#ffffff" stroke-width="1" opacity="0.3"/>
-</svg>
+<g class="shine-g" clip-path="url(#tile-clip)"><g transform="rotate(20 60 60)"><rect class="shine" x="0" y="-30" width="38" height="180" fill="url(#tile-shine)"/></g></g></svg>
