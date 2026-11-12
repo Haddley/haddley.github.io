@@ -8,7 +8,7 @@ topics: ["llm-benchmarking", "model-evaluation", "prompt-engineering", "local-ll
 tools: ["Ollama", "Python", "Qwen", "Gemma", "Llama"]
 status: current
 checked: "2026-11-12"
-source_hash: "899071fb8f09"
+source_hash: "5878f0996777"
 generated_by: gemma4:12b
 ---
 

@@ -24,7 +24,7 @@ Before you read on: I am going to compare language models on bookkeeping questio
 Big or small, every benchmark is the same five boxes. Watch the question travel through them.
 
 ![](assets/images/llmbenchmark/pipeline.svg)
-*A question goes in at the left. Each box glows as it passes. The model never sees the right answer; the checker does.*
+*One real question walks through the five parts. Its answer, 7,790.00, goes straight to the checker, and the model never sees it. The model puts the signs the wrong way round and says 8,290.00, the checker catches it, and the red square on the scoreboard is that question.*
 
 1. **Questions with the right answer attached.** Without the right answer there is nothing to mark against.
 2. **A prompt.** The question plus the rules for replying. The rules matter more than you would think, as the last section of results shows.
