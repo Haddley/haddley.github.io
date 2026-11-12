@@ -9,7 +9,7 @@ topics: [backpropagation, hyperparameters, machine-learning-training, transforme
 tools: [PyTorch, Mac Studio, Metal Performance Shaders, Colab]
 status: current
 checked: "2026-11-05"
-source_hash: "68457d57a7d3"
+source_hash: "420c89a8610d"
 generated_by: gemma4:12b
 ---
 

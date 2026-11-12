@@ -507,6 +507,9 @@ You can also watch the guess improve. After each block, I took the last hidden s
 ![](assets/images/minigpt/stopping-early.svg)
 *Real numbers from my trained model. Straight from the embeddings, before any block, it guesses the next letter right 12% of the time; after all four blocks, 49%*
 
+![](assets/images/minigpt/blocks-in-motion.svg)
+*The same peek in motion. Each bar is the model's top guess for "hear me spea" and how sure it is, and underneath is how often that guess is right across a large sample of Shakespeare. The peek is not how the machine writes: `lm_head` was only ever trained to read block 4's output.*
+
 The picture follows the guess after *Before we proceed any further, hear me spea*, from the first speech in Tiny Shakespeare. Straight from the embeddings, before any block, the machine knows only that the last letter is an `a`, so it guesses `y`. Block 1 adds the letters in the positions just before it, and `t` takes the lead. Block 2 has seen enough of `spea` to try `c`. Only in blocks 3 and 4 does the whole picture, *hear me spea*, settle on `k`, at 98%.
 
 Try it below. The text starts as the line in the picture above. Choose how many of the four blocks run, from none, where `lm_head` reads the hidden state straight from the embeddings, to all four, the real model.
@@ -693,6 +696,9 @@ Like every part of the model, the class has two halves. `__init__` runs once, wh
 
 ![](assets/images/minigpt/attention-mask.svg)
 *The mask, drawn out for eight positions. Each row is a position; the filled cells are the positions it may listen to*
+
+![](assets/images/minigpt/mask-in-motion.svg)
+*The mask again, one row at a time. Each token fills in the cells it may look at, itself and everything before it, and never the cells to its right.*
 
 Then `forward` runs attention, in three stages. First, it makes the queries, keys, and values:
 

@@ -94,6 +94,9 @@ That matters because the machine's row of positions has a fixed length. It has 2
 ![](assets/images/minigpt2/reach.svg)
 *The same 256 positions, filled with letters and with BPE pieces. Real counts from a test story*
 
+![](assets/images/minigpt2/reach-in-motion.svg)
+*The same real story, filling the 256 positions. Letters run out of room after about 50 words; the BPE pieces take the whole story with 39 positions to spare.*
+
 ### What bigger pieces cost
 
 Every piece in the supply needs its own token embedding, and every token embedding holds 384 numbers in this bigger machine. And in this machine, the token embeddings do a second job: they are also the [rows of `lm_head`](/posts/minigpt/#lmhead-where-do-the-65-scores-logits-for-the-next-letter-come-from). The trick is called *weight tying*. [Part 1's exhibit](/posts/minigpt/#lmhead-where-do-the-65-scores-logits-for-the-next-letter-come-from) kept two separate tables; this bigger machine uses one table for both jobs. That halves the cost of a big supply, but the cost is still large:

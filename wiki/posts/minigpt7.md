@@ -8,7 +8,7 @@ topics: [transformer-architecture, code-readability, attention-mechanisms, pytho
 tools: [MiniGPT, PyTorch, Python]
 status: current
 checked: "2026-11-05"
-source_hash: "08bfcd28dcdc"
+source_hash: "8969bba5b606"
 generated_by: gemma4:12b
 ---
 

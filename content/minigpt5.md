@@ -43,6 +43,9 @@ But a wheel is only as good as the reading behind it. Here are two real ones. GP
 ![](assets/images/minigpt5/teacher-wheel.svg)
 *What the student learns from at one position. The answer alone says only "bone"; a teacher's wheel says which other pieces were reasonable, and how reasonable. The web-trained teacher and the story-trained teacher disagree completely about this sentence*
 
+![](assets/images/minigpt5/teacher-in-motion.svg)
+*The same three sources, one after another: the answer alone, then each teacher's real chances for the next word.*
+
 ![](assets/images/minigpt5/notebook-wheel.webp)
 *The follow-along notebook in Jupyter on my Mac, asking GPT-2 for its wheel after "Tim gave his dog a", next to the one-hot answer the guessing game uses*
 

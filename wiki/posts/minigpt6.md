@@ -9,7 +9,7 @@ topics: [sliding-window-attention, memory-complexity, chunked-computation, infor
 tools: [MLX, Python, Jupyter Notebook]
 status: current
 checked: "2026-11-05"
-source_hash: "3cb74f638381"
+source_hash: "a7e1a148045b"
 generated_by: gemma4:12b
 ---
 

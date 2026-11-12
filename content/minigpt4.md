@@ -68,6 +68,9 @@ In both cases the query is turned 20 degrees further than the key: 70 against 50
 ![](assets/images/minigpt4/rope-clocks.svg)
 *The pencil exercise, drawn as clock hands. Both pairs are two positions apart, so both are turned 20 degrees apart, however far along the row they are*
 
+![](assets/images/minigpt4/rope-in-motion.svg)
+*The same clocks, turning. Each hand spins to the angle for its position. The pair at positions 107 and 105 spins nearly three times, and still ends 20 degrees apart.*
+
 ![](assets/images/minigpt4/notebook-rope.png)
 *The notebook turned a real query and key with MLX's RoPE. Pairs with the same gap get the same match, wherever they are in the row*
 

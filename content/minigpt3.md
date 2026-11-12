@@ -77,6 +77,9 @@ Lines 1 and 2 only write steps down: the whole trip forward through the machine 
 ![](assets/images/minigpt3/lazy.svg)
 *The same four lines on each engine. PyTorch sends the GPU a job for every line; MLX writes lines 1 and 2 down and runs them together at `mx.eval`*
 
+![](assets/images/minigpt3/lazy-in-motion.svg)
+*The same lines along a clock. PyTorch starts a GPU job at every line; MLX only notes the first two down and does them as one job at `mx.eval`.*
+
 ### Packing the whole training step into one
 
 Because MLX writes the steps down first, it can do something bigger: take one whole training step (the trip forward, the [trip back](/posts/minigpt-grown/#how-does-it-know-which-way-to-nudge) that finds every parameter's slope, capping the slopes if they are unusually big, and turning the parameters) and *compile* it, which packs it into a single combined job for the GPU. That saves the GPU from starting and stopping between thousands of small jobs. In MLX it is one line, `mx.compile`, and it turns out to be where almost all of the speed comes from.

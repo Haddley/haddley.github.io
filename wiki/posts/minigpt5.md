@@ -9,7 +9,7 @@ topics: [knowledge-distillation, kl-divergence, capacity-gap, model-training]
 tools: [MLX, PyTorch, Hugging Face, Jupyter Notebook]
 status: current
 checked: "2026-11-05"
-source_hash: "1476314cec9e"
+source_hash: "a4f68510e94a"
 generated_by: gemma4:12b
 ---
 

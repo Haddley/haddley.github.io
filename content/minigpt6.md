@@ -65,6 +65,9 @@ To actually save memory, the machine must never build the full grid. So the row 
 ![](assets/images/minigpt6/window-chunks.svg)
 *The same window, built two ways, for a row of 16 positions. The mask builds the whole grid and throws most of it away; the chunks never build the squares that would be thrown away*
 
+![](assets/images/minigpt6/window-in-motion.svg)
+*The same window, built both ways. The mask builds all 256 squares and throws most of them away; the chunks only ever build 112.*
+
 ![](assets/images/minigpt6/notebook-chunked.png)
 *The notebook checked that the chunks give the right answers: against full attention when the window covers the whole row, and against the mask when it does not. Both differences are rounding*
 

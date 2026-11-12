@@ -105,6 +105,9 @@ Everything Part 1 called fixed, the token embeddings, the position embeddings, e
 ![](assets/images/minigpt-grown/training-step.svg)
 *One training step. Steps 1 to 4 are exactly the steps the machine takes when it writes; step 5 checks instead of spinning, and step 6 is new*
 
+![](assets/images/minigpt-grown/training-loop-in-motion.svg)
+*The same training step, going round. The glow passes through the six steps in turn, and then everything starts again with the next 32 snippets.*
+
 | Step | When the machine writes (Part 1) | When the machine grows |
 |---|---|---|
 | 1. Letters to numbers | the text so far | 32 random snippets of practice text, each 128 letters long: exactly enough to fill every position. The 32 snippets for one step are called a *batch* |

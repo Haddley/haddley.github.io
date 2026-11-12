@@ -8,7 +8,7 @@ topics: [machine-learning-training, backpropagation, adamw-optimization, black-b
 tools: [PyTorch, Python, Colab]
 status: current
 checked: "2026-11-05"
-source_hash: "5b83fbacfb13"
+source_hash: "f9910274d78e"
 generated_by: gemma4:12b
 ---
 

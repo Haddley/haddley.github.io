@@ -98,6 +98,9 @@ The picture at the top shows the idea in plain words. Here is the same journey a
 ![](assets/images/minigpt7/readable-pipeline.svg#narrow)
 *Each box is one line of `choose_next_letter`, with the shape of its data for `goo`*
 
+![](assets/images/minigpt7/pipeline-in-motion.svg)
+*The same program for `goo`, box by box. Each box lights up as the data reaches it, and the last two boxes are the ones the settings you pick control.*
+
 Step 3 is where most of the work happens, so here it is opened up. `run_all_blocks` runs `run_one_block` four times, each time with a different block's trained numbers, and keeps every result in a list:
 
 ![](assets/images/minigpt7/readable-blocks-expanded.svg#narrow)

@@ -20,6 +20,9 @@ Training does not need to understand the model. It takes snippets of real text, 
 ![](assets/images/minigpt8/training-step.svg#narrow)
 *One training step, with real numbers: the first eight practice questions of the text, and the chance the model gave each right answer, before training and after it.*
 
+![](assets/images/minigpt8/practice-in-motion.svg)
+*The eight practice questions from the picture above, sliding from step 0 to step 3,000. The two ends are real measurements; the movement between them is only the picture.*
+
 [Part 1](/posts/minigpt/) drew the model as a closed black box, and training can treat it the same way. Here is one step of training, from the outside:
 
 ![](assets/images/minigpt8/training-black-box.svg)
