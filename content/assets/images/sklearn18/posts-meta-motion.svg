@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><style>@keyframes m0{0.00%{transform:rotate(24deg)}12.86%{transform:rotate(-15deg)}25.71%{transform:rotate(10deg)}38.57%{transform:rotate(-6deg)}51.43%{transform:rotate(3deg)}62.86%{transform:rotate(0deg)}92.86%{transform:rotate(0deg)}100.00%{transform:rotate(24deg)}}.m0{;animation:m0 7s ease-in-out infinite}@keyframes m1{0.00%{transform:translate(-9px,0px)}12.86%{transform:translate(7px,0px)}25.71%{transform:translate(-5px,0px)}38.57%{transform:translate(3px,0px)}51.43%{transform:translate(-1px,0px)}62.86%{transform:translate(0px,0px)}92.86%{transform:translate(0px,0px)}100.00%{transform:translate(-9px,0px)}}.m1{;animation:m1 7s ease-in-out infinite}@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style>
+  <title>Scikit-Learn: an agent balancing a pole on a cart, learning from rewards</title>
+  <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+  <line x1="20" y1="88" x2="100" y2="88" stroke="#1f4a73" stroke-width="2"/>
+  <g class="m1"><rect x="44" y="78" width="32" height="10" rx="3" fill="#3a9bdc"/>
+  <circle cx="52" cy="92" r="4" fill="#2a7fc0"/>
+  <circle cx="68" cy="92" r="4" fill="#2a7fc0"/></g>
+  <g class="m0" style="transform-origin:60px 78px"><line x1="60" y1="78" x2="68" y2="30" stroke="#f6c25b" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="68" cy="28" r="5" fill="#f6c25b"/></g>
+</svg>
