@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { matchTopics, matchCategories, matchPosts, matchWiki } from '../../src/lib/search-match';
+import { matchTopics, matchCategories, matchPosts, matchWiki, searchPosts, tokenize } from '../../src/lib/search-match';
 
 const topics = [
   { slug: 'docker', title: 'Docker', posts: ['docker', 'kubernetes'] },
@@ -75,5 +75,60 @@ describe('matchWiki', () => {
   it('lets matchPosts add the wiki matches', () => {
     const extra = matchWiki(wiki, 'gatekeeper').keys();
     expect(matchPosts([{ slug: 'b', title: 'Other', description: '', tags: [] }], 'gatekeeper', [], extra).map(p => p.slug)).toEqual(['b']);
+  });
+});
+
+describe('tokenize', () => {
+  it('lower-cases, splits on punctuation and drops a possessive', () => {
+    expect(tokenize("Business Central's built-in MCP server")).toEqual(['business', 'central', 'built', 'in', 'mcp', 'server']);
+    expect(tokenize('  node.js, C#  ')).toEqual(['node.js', 'c#']);
+    expect(tokenize('   ')).toEqual([]);
+  });
+});
+
+describe('searching by word', () => {
+  const bc = [
+    { slug: 'bc-mcp', title: 'Model Context Protocol', description: "Connecting Claude Code to Business Central's built-in MCP server", tags: ['mcp', 'entra-id'], categories: ['Business Central', 'AI'] },
+    { slug: 'bc-other', title: 'Business Central reports', description: 'A report layout', tags: ['al-language'], categories: ['Business Central'] },
+    { slug: 'mcp-cal', title: 'A calendar MCP server', description: 'A TypeScript server', tags: ['mcp', 'typescript'], categories: ['AI'] },
+    { slug: 'harness', title: 'DeepSeek Harness', description: 'Reading the ledger over MCP', tags: ['mcp'], categories: ['AI', 'Business Central'] },
+  ];
+
+  it('finds a post when the words are in different fields (the query that found nothing before)', () => {
+    expect(matchPosts(bc, 'business central mcp', []).map(p => p.slug)).toEqual(['bc-mcp', 'harness']);
+  });
+  it('does not need the words in the order they were typed', () => {
+    expect(matchPosts(bc, 'mcp central business', []).map(p => p.slug)).toEqual(['bc-mcp', 'harness']);
+  });
+  it('ranks a word in the title above one in a tag, and a whole phrase in the title first', () => {
+    expect(matchPosts(bc, 'business central', []).map(p => p.slug)[0]).toBe('bc-other');
+    expect(matchPosts(bc, 'mcp', []).map(p => p.slug)[0]).toBe('bc-mcp');
+  });
+  it('keeps the original order when posts rank the same', () => {
+    expect(matchPosts(bc, 'ai', []).map(p => p.slug)).toEqual(['bc-mcp', 'mcp-cal', 'harness']);
+  });
+  it('understands an abbreviation', () => {
+    expect(matchPosts(bc, 'bc reports', []).map(p => p.slug)).toEqual(['bc-other']);
+    expect(matchPosts(bc, 'model context protocol', []).map(p => p.slug)).toContain('bc-mcp');
+  });
+  it('lets a matched topic satisfy only the words in its own name', () => {
+    const topic = { slug: 'business-central', title: 'Business Central', posts: ['harness'] };
+    expect(matchPosts(bc, 'business central banana', [topic]).map(p => p.slug)).toEqual([]);
+  });
+  it('returns the closest posts when no post has every word', () => {
+    const r = searchPosts(bc, 'business central docker', []);
+    expect(r.exact).toEqual([]);
+    expect(r.closest.map(p => p.slug).slice(0, 2)).toEqual(['bc-other', 'bc-mcp']);
+  });
+  it('returns nothing, and no closest posts, when no word matches', () => {
+    const r = searchPosts(bc, 'zzzz qqqq', []);
+    expect(r).toEqual({ exact: [], closest: [] });
+  });
+  it('still shows every post for an empty term', () => {
+    expect(searchPosts(bc, '', []).exact).toHaveLength(bc.length);
+  });
+  it('shows the matching category for a query that names it with other words', () => {
+    const cats = [{ slug: 'business-central', name: 'Business Central' }, { slug: 'ai', name: 'AI' }];
+    expect(matchCategories(cats, bc, 'business central mcp').map(c => c.name)).toEqual(['Business Central']);
   });
 });

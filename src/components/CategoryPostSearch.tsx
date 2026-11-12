@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { BlogPost } from '@/lib/posts';
 import Link from 'next/link';
 import Image from 'next/image';
+import { matchPosts } from '@/lib/search-match';
 
 interface CategoryPostSearchProps {
   posts: BlogPost[];
@@ -13,14 +14,7 @@ interface CategoryPostSearchProps {
 export default function CategoryPostSearch({ posts, categoryName }: CategoryPostSearchProps) {
   const [searchTerm, setSearchTerm] = useState('');
 
-  const filteredPosts = posts.filter(post => {
-    const searchLower = searchTerm.toLowerCase();
-    return (
-      post.title.toLowerCase().includes(searchLower) ||
-      post.description.toLowerCase().includes(searchLower) ||
-      post.tags.some(tag => tag.toLowerCase().includes(searchLower))
-    );
-  });
+  const filteredPosts = matchPosts(posts, searchTerm, []);
 
   return (
     <>

@@ -6,7 +6,7 @@ import { categories } from '@/lib/categories';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { TopicSummary } from '@/lib/topics';
-import { matchTopics, matchCategories, matchPosts, matchWiki, type WikiPostText } from '@/lib/search-match';
+import { matchTopics, matchCategories, searchPosts, matchWiki, type WikiPostText } from '@/lib/search-match';
 
 interface PostsPageWithSearchProps {
   allPosts: BlogPost[];
@@ -46,7 +46,11 @@ export default function PostsPageWithSearch({
   const matchedTopics = matchTopics(topics, searchTerm);
   const matchedCategories = matchCategories(categories, allPosts, searchTerm);
   const wikiMatches = matchWiki(wikiPosts ?? [], searchTerm);
-  const filteredPosts = matchPosts(allPosts, searchTerm, matchedTopics, wikiMatches.keys());
+  // Every word of the search must be found (in any field), ranked by where it was found. When no post has every
+  // word, the closest posts (at least half of the words) are shown instead of a dead end.
+  const { exact: exactPosts, closest: closestPosts } = searchPosts(allPosts, searchTerm, matchedTopics, wikiMatches.keys());
+  const showingClosest = exactPosts.length === 0 && closestPosts.length > 0;
+  const filteredPosts = showingClosest ? closestPosts : exactPosts;
 
   const showingSearchResults = searchTerm.length > 0;
   const postsToShow = showingSearchResults ? filteredPosts : remainingPosts;
@@ -129,8 +133,8 @@ export default function PostsPageWithSearch({
             />
             {searchTerm && (
               <p className="text-center mt-2 text-muted">
-                Found {[
-                  `${filteredPosts.length} ${filteredPosts.length === 1 ? 'post' : 'posts'}`,
+                {showingClosest ? 'No post has every word. Showing the ' : 'Found '}{[
+                  `${filteredPosts.length} ${showingClosest ? 'closest ' : ''}${filteredPosts.length === 1 ? 'post' : 'posts'}`,
                   matchedCategories.length > 0 && `${matchedCategories.length} ${matchedCategories.length === 1 ? 'category' : 'categories'}`,
                   matchedTopics.length > 0 && `${matchedTopics.length} ${matchedTopics.length === 1 ? 'topic' : 'topics'}`,
                 ].filter(Boolean).join(', ').replace(/, ([^,]*)$/, ' and $1')}
@@ -300,7 +304,7 @@ export default function PostsPageWithSearch({
           <div className="row mt-5">
             <div className="col-12">
               <h3 className="mbr-section-title mbr-fonts-style align-center mb-4 display-5">
-                <strong>{showingSearchResults ? 'Search Results' : 'All Posts'}</strong>
+                <strong>{showingSearchResults ? (showingClosest ? 'Closest Matches' : 'Search Results') : 'All Posts'}</strong>
               </h3>
             </div>
           </div>
@@ -394,7 +398,7 @@ export default function PostsPageWithSearch({
         <div className="row mt-4">
           <div className="col-12 text-center py-5">
             <h5 className="text-muted">No posts found matching &quot;{searchTerm}&quot;</h5>
-            <p className="text-muted">Try a different search term</p>
+            <p className="text-muted">Try fewer or different words, or ask the Blog AI Assistant, which can search what my posts say.</p>
           </div>
         </div>
       )}

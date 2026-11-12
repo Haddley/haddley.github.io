@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { BlogPost } from '@/lib/posts';
 import Link from 'next/link';
 import Image from 'next/image';
+import { matchPosts } from '@/lib/search-match';
 
 interface CategoryPageWithSearchProps {
   categoryPosts: BlogPost[];
@@ -20,14 +21,7 @@ export default function CategoryPageWithSearch({
 }: CategoryPageWithSearchProps) {
   const [searchTerm, setSearchTerm] = useState('');
 
-  const filteredPosts = categoryPosts.filter(post => {
-    const searchLower = searchTerm.toLowerCase();
-    return (
-      post.title.toLowerCase().includes(searchLower) ||
-      post.description.toLowerCase().includes(searchLower) ||
-      post.tags.some(tag => tag.toLowerCase().includes(searchLower))
-    );
-  });
+  const filteredPosts = matchPosts(categoryPosts, searchTerm, []);
 
   // If searching, show filtered results; otherwise show featured + remaining
   const showingSearchResults = searchTerm.length > 0;
