@@ -7,6 +7,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { TopicSummary } from '@/lib/topics';
 import { matchTopics, matchCategories, searchPosts, matchWiki, type WikiPostText } from '@/lib/search-match';
+import { posterOf } from '@/lib/poster';
+
 
 interface PostsPageWithSearchProps {
   allPosts: BlogPost[];
@@ -213,7 +215,7 @@ export default function PostsPageWithSearch({
                               maxWidth: '300px'
                             }}>
                               <Image
-                                src={post.imageMotion ?? post.image}
+                                src={posterOf(post) ?? post.image!}
                                 alt={post.title}
                                 width={300}
                                 height={200}
@@ -315,7 +317,7 @@ export default function PostsPageWithSearch({
                   <div className="item-img" style={{ display: 'flex', justifyContent: 'center' }}>
                     <Link href={`/posts/${post.slug}`} style={{ width: '100%', maxWidth: '300px' }}>
                       <Image
-                        src={post.image || '/assets/images/posts-meta.svg'}
+                        src={posterOf(post) || '/assets/images/posts-meta.svg'}
                         alt={post.title}
                         width={300}
                         height={200}

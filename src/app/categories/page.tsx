@@ -8,6 +8,7 @@ import { getCategoryByName } from '@/lib/categories';
 import Link from 'next/link';
 import NavyImageBanner from '@/components/NavyImageBanner';
 import type { Metadata } from 'next';
+import { posterOf } from '@/lib/poster';
 
 export const metadata: Metadata = {
   title: 'Categories | Neil Haddley',
@@ -35,7 +36,7 @@ export default async function CategoriesPage() {
     <>
       <NavyImageBanner images={
         automatedCategories
-          .map(cat => categoryPostsMap[cat]?.find(p => p.image)?.image)
+          .map(cat => (() => { const p = categoryPostsMap[cat]?.find(p => p.image); return p ? posterOf(p) : undefined; })())
           .filter((img): img is string => !!img)
           .slice(0, 6)
       }>
@@ -97,7 +98,7 @@ export default async function CategoriesPage() {
                       <div style={{ height: 110, overflow: 'hidden', position: 'relative', backgroundColor: 'var(--navy)' }}>
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
-                          src={categoryPosts[0].image}
+                          src={posterOf(categoryPosts[0])}
                           alt=""
                           aria-hidden="true"
                           style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.25) sepia(1) hue-rotate(200deg) saturate(2)' }}

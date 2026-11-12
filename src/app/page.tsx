@@ -1,11 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { getVisibleBlogPosts } from '@/lib/posts';
+import { posterOf } from '@/lib/poster';
 
 export default async function Home() {
   const recentPosts = await getVisibleBlogPosts();
   const heroImages = recentPosts
-    .map(p => p.image)
+    .map(p => posterOf(p))
     .filter((img): img is string => !!img)
     .slice(0, 6);
 

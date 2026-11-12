@@ -5,6 +5,7 @@ import Link from 'next/link';
 import CategoryPageWithSearch from '@/components/CategoryPageWithSearch';
 import NavyImageBanner from '@/components/NavyImageBanner';
 import { getTopicsForCategory } from '@/lib/topics';
+import { posterOf } from '@/lib/poster';
 
 interface CategoryDetailPageProps {
   slug: string;
@@ -24,7 +25,7 @@ export default async function CategoryDetailPage({ slug }: CategoryDetailPagePro
 
   return (
     <>
-      <NavyImageBanner images={categoryPosts.slice(0, 6).map(p => p.image).filter((img): img is string => !!img)}>
+      <NavyImageBanner images={categoryPosts.slice(0, 6).map(p => posterOf(p)).filter((img): img is string => !!img)}>
         <div className="container text-center">
           <h1 className="mbr-section-title mbr-fonts-style display-2" style={{ color: '#ffffff', fontWeight: 700 }}>
             {category.icon} {category.name}
