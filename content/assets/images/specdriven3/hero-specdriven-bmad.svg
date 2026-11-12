@@ -1,12 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120"><style>@keyframes tw{0%,100%{opacity:1}50%{opacity:.35}}@keyframes shine{0%,52%{transform:translateX(-80px)}100%{transform:translateX(200px)}}.tw{animation:tw 3.4s ease-in-out infinite}.shine{animation:shine 9s ease-in-out infinite;animation-delay:-0s}@media (prefers-reduced-motion: reduce){.tw,.shine{animation:none}.shine-g{display:none}}</style><defs><clipPath id="tile-clip"><rect width="120" height="120" rx="22"/></clipPath><linearGradient id="tile-shine" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.5" stop-color="#fff" stop-opacity="0.16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
   <rect width="120" height="120" rx="22" fill="#1a2b4b"/>
 
   <!-- Five small agent circles in a ring, each a persona -->
-  <g class="tw" style="animation-delay:0.93s"><circle cx="60" cy="22" r="9" fill="#ffab40" opacity="0.9"/></g>
-  <g class="tw" style="animation-delay:1.36s"><circle cx="94" cy="46" r="9" fill="#80deea" opacity="0.9"/></g>
-  <g class="tw" style="animation-delay:1.79s"><circle cx="82" cy="86" r="9" fill="#4fc3f7" opacity="0.9"/></g>
-  <g class="tw" style="animation-delay:2.22s"><circle cx="38" cy="86" r="9" fill="#80deea" opacity="0.9"/></g>
-  <g class="tw" style="animation-delay:2.65s"><circle cx="26" cy="46" r="9" fill="#4fc3f7" opacity="0.9"/></g>
+  <circle cx="60" cy="22" r="9" fill="#ffab40" opacity="0.9"/>
+  <circle cx="94" cy="46" r="9" fill="#80deea" opacity="0.9"/>
+  <circle cx="82" cy="86" r="9" fill="#4fc3f7" opacity="0.9"/>
+  <circle cx="38" cy="86" r="9" fill="#80deea" opacity="0.9"/>
+  <circle cx="26" cy="46" r="9" fill="#4fc3f7" opacity="0.9"/>
 
   <!-- Handoff lines connecting them in sequence, analyst -> pm -> architect -> dev -> ux -> back -->
   <path d="M60 22 L94 46 L82 86 L38 86 L26 46 Z" fill="none" stroke="#ffffff" stroke-width="1.6" opacity="0.55"/>
@@ -16,4 +16,4 @@
   <line x1="52" y1="56" x2="68" y2="56" stroke="#1a2b4b" stroke-width="1.6" opacity="0.75"/>
   <line x1="52" y1="61" x2="68" y2="61" stroke="#1a2b4b" stroke-width="1.6" opacity="0.75"/>
   <line x1="52" y1="66" x2="62" y2="66" stroke="#1a2b4b" stroke-width="1.6" opacity="0.75"/>
-<g class="shine-g" clip-path="url(#tile-clip)"><g transform="rotate(20 60 60)"><rect class="shine" x="0" y="-30" width="38" height="180" fill="url(#tile-shine)"/></g></g></svg>
+</svg>

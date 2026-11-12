@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><style>@keyframes tw{0%,100%{opacity:1}50%{opacity:.35}}@keyframes shine{0%,52%{transform:translateX(-80px)}100%{transform:translateX(200px)}}.tw{animation:tw 3.4s ease-in-out infinite}.shine{animation:shine 9s ease-in-out infinite;animation-delay:-5s}@media (prefers-reduced-motion: reduce){.tw,.shine{animation:none}.shine-g{display:none}}</style><defs><clipPath id="tile-clip"><rect width="120" height="120" rx="22"/></clipPath><linearGradient id="tile-shine" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.5" stop-color="#fff" stop-opacity="0.16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
   <title>A governed Dataverse database inside a shield, surrounded by generated apps</title>
   <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
   <path d="M60,20 L88,30 V58 C88,77 76,90 60,98 C44,90 32,77 32,58 V30 Z" fill="#14324a" stroke="#3fc1c9" stroke-width="2.5" stroke-linejoin="round"/>
   <path d="M48,46 V70 A12,4.5 0 0 0 72,70 V46" fill="#1c6f7a" stroke="#3fc1c9" stroke-width="1.8"/>
   <path d="M48,58 A12,4.5 0 0 0 72,58" fill="none" stroke="#3fc1c9" stroke-width="1.8"/>
   <ellipse cx="60" cy="46" rx="12" ry="4.5" fill="#2a8f9a" stroke="#3fc1c9" stroke-width="1.8"/>
-  <g class="tw" style="animation-delay:0.62s"><rect x="11" y="24" width="12" height="10" rx="2" fill="none" stroke="#e07a52" stroke-width="2"/></g>
-  <g class="tw" style="animation-delay:1.05s"><rect x="97" y="40" width="12" height="10" rx="2" fill="none" stroke="#e07a52" stroke-width="2"/></g>
-  <g class="tw" style="animation-delay:1.48s"><rect x="13" y="74" width="12" height="10" rx="2" fill="none" stroke="#e07a52" stroke-width="2"/></g>
-  <g class="tw" style="animation-delay:1.91s"><rect x="95" y="82" width="12" height="10" rx="2" fill="none" stroke="#e07a52" stroke-width="2"/></g>
-  <g class="tw" style="animation-delay:2.34s"><rect x="98" y="16" width="9" height="8" rx="2" fill="none" stroke="#e07a52" stroke-width="2"/></g>
-<g class="shine-g" clip-path="url(#tile-clip)"><g transform="rotate(20 60 60)"><rect class="shine" x="0" y="-30" width="38" height="180" fill="url(#tile-shine)"/></g></g></svg>
+  <rect x="11" y="24" width="12" height="10" rx="2" fill="none" stroke="#e07a52" stroke-width="2"/>
+  <rect x="97" y="40" width="12" height="10" rx="2" fill="none" stroke="#e07a52" stroke-width="2"/>
+  <rect x="13" y="74" width="12" height="10" rx="2" fill="none" stroke="#e07a52" stroke-width="2"/>
+  <rect x="95" y="82" width="12" height="10" rx="2" fill="none" stroke="#e07a52" stroke-width="2"/>
+  <rect x="98" y="16" width="9" height="8" rx="2" fill="none" stroke="#e07a52" stroke-width="2"/>
+</svg>

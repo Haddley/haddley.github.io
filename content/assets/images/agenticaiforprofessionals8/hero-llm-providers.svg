@@ -1,14 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120"><style>@keyframes tw{0%,100%{opacity:1}50%{opacity:.35}}@keyframes shine{0%,52%{transform:translateX(-80px)}100%{transform:translateX(200px)}}.tw{animation:tw 3.4s ease-in-out infinite}.shine{animation:shine 9s ease-in-out infinite;animation-delay:-0s}@media (prefers-reduced-motion: reduce){.tw,.shine{animation:none}.shine-g{display:none}}</style><defs><clipPath id="tile-clip"><rect width="120" height="120" rx="22"/></clipPath><linearGradient id="tile-shine" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.5" stop-color="#fff" stop-opacity="0.16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
   <rect width="120" height="120" rx="22" fill="#1a2b4b"/>
   <!-- Central "provider interface" node -->
   <rect x="46" y="46" width="28" height="28" rx="6" fill="#ffffff" opacity="0.95"/>
   <!-- Four provider nodes around it -->
-  <g class="tw" style="animation-delay:1.55s"><circle cx="30" cy="30" r="8" fill="#4fc3f7" opacity="0.9"/></g>
-  <g class="tw" style="animation-delay:1.98s"><circle cx="90" cy="30" r="8" fill="#4fc3f7" opacity="0.9"/></g>
-  <g class="tw" style="animation-delay:2.41s"><circle cx="30" cy="90" r="8" fill="#4fc3f7" opacity="0.9"/></g>
-  <g class="tw" style="animation-delay:2.84s"><circle cx="90" cy="90" r="8" fill="#4fc3f7" opacity="0.9"/></g>
+  <circle cx="30" cy="30" r="8" fill="#4fc3f7" opacity="0.9"/>
+  <circle cx="90" cy="30" r="8" fill="#4fc3f7" opacity="0.9"/>
+  <circle cx="30" cy="90" r="8" fill="#4fc3f7" opacity="0.9"/>
+  <circle cx="90" cy="90" r="8" fill="#4fc3f7" opacity="0.9"/>
   <line x1="36" y1="36" x2="48" y2="48" stroke="#80deea" stroke-width="2" opacity="0.6"/>
   <line x1="84" y1="36" x2="72" y2="48" stroke="#80deea" stroke-width="2" opacity="0.6"/>
   <line x1="36" y1="84" x2="48" y2="72" stroke="#80deea" stroke-width="2" opacity="0.6"/>
   <line x1="84" y1="84" x2="72" y2="72" stroke="#80deea" stroke-width="2" opacity="0.6"/>
-<g class="shine-g" clip-path="url(#tile-clip)"><g transform="rotate(20 60 60)"><rect class="shine" x="0" y="-30" width="38" height="180" fill="url(#tile-shine)"/></g></g></svg>
+</svg>

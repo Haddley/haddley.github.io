@@ -1,21 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120"><style>@keyframes tw{0%,100%{opacity:1}50%{opacity:.35}}@keyframes shine{0%,52%{transform:translateX(-80px)}100%{transform:translateX(200px)}}.tw{animation:tw 3.4s ease-in-out infinite}.shine{animation:shine 9s ease-in-out infinite;animation-delay:-8s}@media (prefers-reduced-motion: reduce){.tw,.shine{animation:none}.shine-g{display:none}}</style><defs><clipPath id="tile-clip"><rect width="120" height="120" rx="22"/></clipPath><linearGradient id="tile-shine" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.5" stop-color="#fff" stop-opacity="0.16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
   <!-- Background circle -->
   <rect width="120" height="120" rx="22" fill="#1a2b4b"/>
 
   <!-- Brain / neural network nodes -->
   <!-- Left cluster -->
-  <g class="tw" style="animation-delay:0.00s"><circle cx="32" cy="45" r="6" fill="#4fc3f7" opacity="0.9"/></g>
-  <g class="tw" style="animation-delay:0.43s"><circle cx="28" cy="65" r="5" fill="#4fc3f7" opacity="0.75"/></g>
-  <g class="tw" style="animation-delay:0.86s"><circle cx="38" cy="78" r="5.5" fill="#4fc3f7" opacity="0.8"/></g>
+  <circle cx="32" cy="45" r="6" fill="#4fc3f7" opacity="0.9"/>
+  <circle cx="28" cy="65" r="5" fill="#4fc3f7" opacity="0.75"/>
+  <circle cx="38" cy="78" r="5.5" fill="#4fc3f7" opacity="0.8"/>
 
   <!-- Right cluster -->
-  <g class="tw" style="animation-delay:1.29s"><circle cx="88" cy="45" r="6" fill="#4fc3f7" opacity="0.9"/></g>
-  <g class="tw" style="animation-delay:1.72s"><circle cx="92" cy="65" r="5" fill="#4fc3f7" opacity="0.75"/></g>
-  <g class="tw" style="animation-delay:2.15s"><circle cx="82" cy="78" r="5.5" fill="#4fc3f7" opacity="0.8"/></g>
+  <circle cx="88" cy="45" r="6" fill="#4fc3f7" opacity="0.9"/>
+  <circle cx="92" cy="65" r="5" fill="#4fc3f7" opacity="0.75"/>
+  <circle cx="82" cy="78" r="5.5" fill="#4fc3f7" opacity="0.8"/>
 
   <!-- Center nodes -->
-  <g class="tw" style="animation-delay:2.58s"><circle cx="60" cy="35" r="7" fill="#80deea" opacity="0.95"/></g>
-  <g class="tw" style="animation-delay:3.01s"><circle cx="48" cy="58" r="6" fill="#80deea" opacity="0.85"/></g>
+  <circle cx="60" cy="35" r="7" fill="#80deea" opacity="0.95"/>
+  <circle cx="48" cy="58" r="6" fill="#80deea" opacity="0.85"/>
   <circle cx="72" cy="58" r="6" fill="#80deea" opacity="0.85"/>
   <circle cx="60" cy="80" r="7" fill="#80deea" opacity="0.95"/>
 
@@ -45,4 +45,4 @@
   <circle cx="77" cy="96" r="1.8" fill="#1a2b4b"/>
   <circle cx="82" cy="96" r="1.8" fill="#1a2b4b"/>
   <circle cx="87" cy="96" r="1.8" fill="#1a2b4b"/>
-<g class="shine-g" clip-path="url(#tile-clip)"><g transform="rotate(20 60 60)"><rect class="shine" x="0" y="-30" width="38" height="180" fill="url(#tile-shine)"/></g></g></svg>
+</svg>

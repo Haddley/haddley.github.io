@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120"><style>@keyframes tw{0%,100%{opacity:1}50%{opacity:.35}}@keyframes shine{0%,52%{transform:translateX(-80px)}100%{transform:translateX(200px)}}.tw{animation:tw 3.4s ease-in-out infinite}.shine{animation:shine 9s ease-in-out infinite;animation-delay:-8s}@media (prefers-reduced-motion: reduce){.tw,.shine{animation:none}.shine-g{display:none}}</style><defs><clipPath id="tile-clip"><rect width="120" height="120" rx="22"/></clipPath><linearGradient id="tile-shine" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.5" stop-color="#fff" stop-opacity="0.16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
   <!-- Background circle -->
   <rect width="120" height="120" rx="22" fill="#1a2b4b"/>
 
@@ -12,7 +12,7 @@
   <line x1="60" y1="48" x2="60" y2="54" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
 
   <!-- Two small nodes on the top layer representing REST + MCP interfaces -->
-  <g class="tw" style="animation-delay:0.31s"><circle cx="46" cy="40" r="4" fill="#1a2b4b"/></g>
-  <g class="tw" style="animation-delay:0.74s"><circle cx="74" cy="40" r="4" fill="#1a2b4b"/></g>
+  <circle cx="46" cy="40" r="4" fill="#1a2b4b"/>
+  <circle cx="74" cy="40" r="4" fill="#1a2b4b"/>
   <line x1="50" y1="40" x2="70" y2="40" stroke="#1a2b4b" stroke-width="1.5" opacity="0.5"/>
-<g class="shine-g" clip-path="url(#tile-clip)"><g transform="rotate(20 60 60)"><rect class="shine" x="0" y="-30" width="38" height="180" fill="url(#tile-shine)"/></g></g></svg>
+</svg>

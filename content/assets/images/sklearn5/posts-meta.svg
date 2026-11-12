@@ -1,25 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><style>@keyframes tw{0%,100%{opacity:1}50%{opacity:.35}}@keyframes shine{0%,52%{transform:translateX(-80px)}100%{transform:translateX(200px)}}.tw{animation:tw 3.4s ease-in-out infinite}.shine{animation:shine 9s ease-in-out infinite;animation-delay:-2s}@media (prefers-reduced-motion: reduce){.tw,.shine{animation:none}.shine-g{display:none}}</style><defs><clipPath id="tile-clip"><rect width="120" height="120" rx="22"/></clipPath><linearGradient id="tile-shine" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.5" stop-color="#fff" stop-opacity="0.16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
   <title>Scikit-Learn: the widest street between two classes</title>
   <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
   <line x1="24" y1="100" x2="100" y2="24" stroke="#3a9bdc" stroke-width="2.6" stroke-linecap="round"/>
   <line x1="14" y1="86" x2="86" y2="14" stroke="#1f4a73" stroke-width="1.6" stroke-dasharray="4 3" stroke-linecap="round"/>
   <line x1="38" y1="110" x2="110" y2="38" stroke="#1f4a73" stroke-width="1.6" stroke-dasharray="4 3" stroke-linecap="round"/>
-  <g class="tw" style="animation-delay:0.62s"><circle cx="26" cy="50" r="3.6" fill="#3a9bdc"/></g>
+  <circle cx="26" cy="50" r="3.6" fill="#3a9bdc"/>
   <circle cx="36" cy="34" r="3.6" fill="#3a9bdc"/>
-  <g class="tw" style="animation-delay:1.05s"><circle cx="48" cy="26" r="3.6" fill="#3a9bdc"/></g>
+  <circle cx="48" cy="26" r="3.6" fill="#3a9bdc"/>
   <circle cx="30" cy="62" r="3.6" fill="#3a9bdc"/>
-  <g class="tw" style="animation-delay:1.48s"><circle cx="22" cy="40" r="3.6" fill="#3a9bdc"/></g>
+  <circle cx="22" cy="40" r="3.6" fill="#3a9bdc"/>
   <circle cx="56" cy="18" r="3.6" fill="#3a9bdc"/>
-  <g class="tw" style="animation-delay:1.91s"><rect x="92.6" y="66.6" width="6.8" height="6.8" rx="1.2" fill="#7cc6f0"/></g>
+  <rect x="92.6" y="66.6" width="6.8" height="6.8" rx="1.2" fill="#7cc6f0"/>
   <rect x="82.6" y="80.6" width="6.8" height="6.8" rx="1.2" fill="#7cc6f0"/>
-  <g class="tw" style="animation-delay:2.34s"><rect x="68.6" y="90.6" width="6.8" height="6.8" rx="1.2" fill="#7cc6f0"/></g>
+  <rect x="68.6" y="90.6" width="6.8" height="6.8" rx="1.2" fill="#7cc6f0"/>
   <rect x="86.6" y="54.6" width="6.8" height="6.8" rx="1.2" fill="#7cc6f0"/>
-  <g class="tw" style="animation-delay:2.77s"><rect x="94.6" y="80.6" width="6.8" height="6.8" rx="1.2" fill="#7cc6f0"/></g>
+  <rect x="94.6" y="80.6" width="6.8" height="6.8" rx="1.2" fill="#7cc6f0"/>
   <rect x="60.6" y="96.6" width="6.8" height="6.8" rx="1.2" fill="#7cc6f0"/>
-  <g class="tw" style="animation-delay:3.20s"><circle cx="44" cy="56" r="8" fill="#f6c25b" opacity="0.2"/></g>
+  <circle cx="44" cy="56" r="8" fill="#f6c25b" opacity="0.2"/>
   <circle cx="44" cy="56" r="6.4" fill="none" stroke="#f6c25b" stroke-width="1.6"/>
-  <g class="tw" style="animation-delay:0.23s"><circle cx="44" cy="56" r="3.6" fill="#3a9bdc"/></g>
+  <circle cx="44" cy="56" r="3.6" fill="#3a9bdc"/>
   <circle cx="66" cy="78" r="8" fill="#f6c25b" opacity="0.2"/>
   <circle cx="66" cy="78" r="6.4" fill="none" stroke="#f6c25b" stroke-width="1.6"/>
   <rect x="62.6" y="74.6" width="6.8" height="6.8" rx="1.2" fill="#7cc6f0"/>
-<g class="shine-g" clip-path="url(#tile-clip)"><g transform="rotate(20 60 60)"><rect class="shine" x="0" y="-30" width="38" height="180" fill="url(#tile-shine)"/></g></g></svg>
+</svg>

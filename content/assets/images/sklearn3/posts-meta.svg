@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><style>@keyframes tw{0%,100%{opacity:1}50%{opacity:.35}}@keyframes shine{0%,52%{transform:translateX(-80px)}100%{transform:translateX(200px)}}.tw{animation:tw 3.4s ease-in-out infinite}.shine{animation:shine 9s ease-in-out infinite;animation-delay:-6s}@media (prefers-reduced-motion: reduce){.tw,.shine{animation:none}.shine-g{display:none}}</style><defs><clipPath id="tile-clip"><rect width="120" height="120" rx="22"/></clipPath><linearGradient id="tile-shine" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.5" stop-color="#fff" stop-opacity="0.16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
   <title>Scikit-Learn: a handwritten 5, pixel by pixel</title>
   <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
-  <g class="tw" style="animation-delay:1.55s"><rect x="17.0" y="17.0" width="5.9" height="5.9" rx="1.5" fill="#16304d"/></g>
+  <rect x="17.0" y="17.0" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
   <rect x="24.4" y="17.0" width="5.9" height="5.9" rx="1.5" fill="#3a9bdc"/>
   <rect x="31.8" y="17.0" width="5.9" height="5.9" rx="1.5" fill="#3a9bdc"/>
   <rect x="39.2" y="17.0" width="5.9" height="5.9" rx="1.5" fill="#7cc6f0"/>
@@ -11,7 +11,7 @@
   <rect x="68.8" y="17.0" width="5.9" height="5.9" rx="1.5" fill="#3a9bdc"/>
   <rect x="76.2" y="17.0" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
   <rect x="17.0" y="24.4" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
-  <g class="tw" style="animation-delay:1.98s"><rect x="24.4" y="24.4" width="5.9" height="5.9" rx="1.5" fill="#7cc6f0"/></g>
+  <rect x="24.4" y="24.4" width="5.9" height="5.9" rx="1.5" fill="#7cc6f0"/>
   <rect x="31.8" y="24.4" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
   <rect x="39.2" y="24.4" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
   <rect x="46.6" y="24.4" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
@@ -21,7 +21,7 @@
   <rect x="76.2" y="24.4" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
   <rect x="17.0" y="31.8" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
   <rect x="24.4" y="31.8" width="5.9" height="5.9" rx="1.5" fill="#3a9bdc"/>
-  <g class="tw" style="animation-delay:2.41s"><rect x="31.8" y="31.8" width="5.9" height="5.9" rx="1.5" fill="#16304d"/></g>
+  <rect x="31.8" y="31.8" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
   <rect x="39.2" y="31.8" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
   <rect x="46.6" y="31.8" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
   <rect x="54.0" y="31.8" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
@@ -31,7 +31,7 @@
   <rect x="17.0" y="39.2" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
   <rect x="24.4" y="39.2" width="5.9" height="5.9" rx="1.5" fill="#3a9bdc"/>
   <rect x="31.8" y="39.2" width="5.9" height="5.9" rx="1.5" fill="#3a9bdc"/>
-  <g class="tw" style="animation-delay:2.84s"><rect x="39.2" y="39.2" width="5.9" height="5.9" rx="1.5" fill="#7cc6f0"/></g>
+  <rect x="39.2" y="39.2" width="5.9" height="5.9" rx="1.5" fill="#7cc6f0"/>
   <rect x="46.6" y="39.2" width="5.9" height="5.9" rx="1.5" fill="#3a9bdc"/>
   <rect x="54.0" y="39.2" width="5.9" height="5.9" rx="1.5" fill="#3a9bdc"/>
   <rect x="61.4" y="39.2" width="5.9" height="5.9" rx="1.5" fill="#7cc6f0"/>
@@ -41,7 +41,7 @@
   <rect x="24.4" y="46.6" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
   <rect x="31.8" y="46.6" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
   <rect x="39.2" y="46.6" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
-  <g class="tw" style="animation-delay:3.27s"><rect x="46.6" y="46.6" width="5.9" height="5.9" rx="1.5" fill="#16304d"/></g>
+  <rect x="46.6" y="46.6" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
   <rect x="54.0" y="46.6" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
   <rect x="61.4" y="46.6" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
   <rect x="68.8" y="46.6" width="5.9" height="5.9" rx="1.5" fill="#7cc6f0"/>
@@ -51,7 +51,7 @@
   <rect x="31.8" y="54.0" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
   <rect x="39.2" y="54.0" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
   <rect x="46.6" y="54.0" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
-  <g class="tw" style="animation-delay:0.30s"><rect x="54.0" y="54.0" width="5.9" height="5.9" rx="1.5" fill="#16304d"/></g>
+  <rect x="54.0" y="54.0" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
   <rect x="61.4" y="54.0" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
   <rect x="68.8" y="54.0" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
   <rect x="76.2" y="54.0" width="5.9" height="5.9" rx="1.5" fill="#7cc6f0"/>
@@ -61,7 +61,7 @@
   <rect x="39.2" y="61.4" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
   <rect x="46.6" y="61.4" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
   <rect x="54.0" y="61.4" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
-  <g class="tw" style="animation-delay:0.73s"><rect x="61.4" y="61.4" width="5.9" height="5.9" rx="1.5" fill="#16304d"/></g>
+  <rect x="61.4" y="61.4" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
   <rect x="68.8" y="61.4" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
   <rect x="76.2" y="61.4" width="5.9" height="5.9" rx="1.5" fill="#3a9bdc"/>
   <rect x="17.0" y="68.8" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
@@ -71,7 +71,7 @@
   <rect x="46.6" y="68.8" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
   <rect x="54.0" y="68.8" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
   <rect x="61.4" y="68.8" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
-  <g class="tw" style="animation-delay:1.16s"><rect x="68.8" y="68.8" width="5.9" height="5.9" rx="1.5" fill="#7cc6f0"/></g>
+  <rect x="68.8" y="68.8" width="5.9" height="5.9" rx="1.5" fill="#7cc6f0"/>
   <rect x="76.2" y="68.8" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
   <rect x="17.0" y="76.2" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
   <rect x="24.4" y="76.2" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
@@ -84,4 +84,4 @@
   <rect x="76.2" y="76.2" width="5.9" height="5.9" rx="1.5" fill="#16304d"/>
   <circle cx="98" cy="98" r="12" fill="#f6c25b" opacity="0.22"/>
   <path d="M92 98 L96.5 102.5 L104.5 93.5" fill="none" stroke="#f6c25b" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-<g class="shine-g" clip-path="url(#tile-clip)"><g transform="rotate(20 60 60)"><rect class="shine" x="0" y="-30" width="38" height="180" fill="url(#tile-shine)"/></g></g></svg>
+</svg>

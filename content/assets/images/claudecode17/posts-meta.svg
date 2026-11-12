@@ -1,12 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><style>@keyframes tw{0%,100%{opacity:1}50%{opacity:.35}}@keyframes shine{0%,52%{transform:translateX(-80px)}100%{transform:translateX(200px)}}.tw{animation:tw 3.4s ease-in-out infinite}.shine{animation:shine 9s ease-in-out infinite;animation-delay:-3s}@media (prefers-reduced-motion: reduce){.tw,.shine{animation:none}.shine-g{display:none}}</style><defs><clipPath id="tile-clip"><rect width="120" height="120" rx="22"/></clipPath><linearGradient id="tile-shine" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.5" stop-color="#fff" stop-opacity="0.16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
   <title>Claude Code plugged in to an Arduino TFT screen showing DONE</title>
   <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
   <line x1="31.2" y1="61.3" x2="40.9" y2="65.4" stroke="#e07a52" stroke-width="4.5" stroke-linecap="round"/><line x1="29.3" y1="63.2" x2="32.0" y2="69.7" stroke="#e07a52" stroke-width="4.5" stroke-linecap="round"/><line x1="26.7" y1="63.2" x2="22.6" y2="72.9" stroke="#e07a52" stroke-width="4.5" stroke-linecap="round"/><line x1="24.8" y1="61.3" x2="18.3" y2="64.0" stroke="#e07a52" stroke-width="4.5" stroke-linecap="round"/><line x1="24.8" y1="58.7" x2="15.1" y2="54.6" stroke="#e07a52" stroke-width="4.5" stroke-linecap="round"/><line x1="26.7" y1="56.8" x2="24.0" y2="50.3" stroke="#e07a52" stroke-width="4.5" stroke-linecap="round"/><line x1="29.3" y1="56.8" x2="33.4" y2="47.1" stroke="#e07a52" stroke-width="4.5" stroke-linecap="round"/><line x1="31.2" y1="58.7" x2="37.7" y2="56.0" stroke="#e07a52" stroke-width="4.5" stroke-linecap="round"/>
   <path d="M43,60 H52" stroke="#8fa3b8" stroke-width="2.5" stroke-linecap="round"/>
-  <g class="tw" style="animation-delay:0.62s"><rect x="51" y="53" width="10" height="14" rx="2.5" fill="#c9d3dd"/></g>
+  <rect x="51" y="53" width="10" height="14" rx="2.5" fill="#c9d3dd"/>
   <path d="M61,56.5 H66 M61,63.5 H66" stroke="#c9d3dd" stroke-width="2.2" stroke-linecap="round"/>
   <rect x="68" y="34" width="40" height="52" rx="4" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/>
   <rect x="73" y="40" width="30" height="40" rx="2" fill="#1fa855"/>
   <text x="88" y="64" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">DONE</text>
   <path d="M73,86 V92 M80,86 V92 M87,86 V92 M94,86 V92 M101,86 V92" stroke="#c9d3dd" stroke-width="2.2" stroke-linecap="round"/>
-<g class="shine-g" clip-path="url(#tile-clip)"><g transform="rotate(20 60 60)"><rect class="shine" x="0" y="-30" width="38" height="180" fill="url(#tile-shine)"/></g></g></svg>
+</svg>

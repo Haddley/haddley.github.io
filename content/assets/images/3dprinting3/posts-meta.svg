@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><style>@keyframes tw{0%,100%{opacity:1}50%{opacity:.35}}@keyframes shine{0%,52%{transform:translateX(-80px)}100%{transform:translateX(200px)}}.tw{animation:tw 3.4s ease-in-out infinite}.shine{animation:shine 9s ease-in-out infinite;animation-delay:-0s}@media (prefers-reduced-motion: reduce){.tw,.shine{animation:none}.shine-g{display:none}}</style><defs><clipPath id="tile-clip"><rect width="120" height="120" rx="22"/></clipPath><linearGradient id="tile-shine" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.5" stop-color="#fff" stop-opacity="0.16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
   <title>A 3D printed fuse block half for a bike rear light, fitted against a black ink trace of the original</title>
   <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
   <rect x="14" y="44" width="92" height="30" rx="13" fill="none" stroke="#c9d3dd" stroke-width="1.6" stroke-dasharray="4 3"/>
   <rect x="17" y="47" width="86" height="24" rx="11" fill="#2a3442" stroke="#3fc1c9" stroke-width="2"/>
-  <g class="tw" style="animation-delay:0.00s"><circle cx="36" cy="59" r="4.5" fill="#9aa8b6"/></g><g class="tw" style="animation-delay:0.43s"><circle cx="84" cy="59" r="4.5" fill="#9aa8b6"/></g>
-  <g class="tw" style="animation-delay:0.86s"><circle cx="60" cy="59" r="7" fill="#d9483b"/></g><g class="tw" style="animation-delay:1.29s"><circle cx="60" cy="59" r="3.5" fill="#ff8a7a"/></g>
+  <circle cx="36" cy="59" r="4.5" fill="#9aa8b6"/><circle cx="84" cy="59" r="4.5" fill="#9aa8b6"/>
+  <circle cx="60" cy="59" r="7" fill="#d9483b"/><circle cx="60" cy="59" r="3.5" fill="#ff8a7a"/>
   <path d="M60,74 C60,86 74,88 82,96" stroke="#9aa8b6" stroke-width="2.5" fill="none" stroke-linecap="round"/>
   <path d="M88,24 L98,34" stroke="#e0a43a" stroke-width="4" stroke-linecap="round"/>
   <path d="M98,34 L101,37" stroke="#c9d3dd" stroke-width="2" stroke-linecap="round"/>
-<g class="shine-g" clip-path="url(#tile-clip)"><g transform="rotate(20 60 60)"><rect class="shine" x="0" y="-30" width="38" height="180" fill="url(#tile-shine)"/></g></g></svg>
+</svg>
