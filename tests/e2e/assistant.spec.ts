@@ -156,5 +156,5 @@ test('the panel title links to the explanation of how the assistant works', asyn
   await installMockModel(page, ['ok']);
   await page.goto('/');
   await openAssistant(page);
-  await expect(page.getByRole('link', { name: /Blog AI Assistant/ })).toHaveAttribute('href', /\/posts\/localagent2\/?$/);
+  await expect(page.getByRole('link', { name: 'Blog AI Assistant ↗' })).toHaveAttribute('href', /\/posts\/localagent2\/?$/);
 });

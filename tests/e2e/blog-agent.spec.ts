@@ -29,16 +29,16 @@ test.describe('Blog Agent — panel open / close', () => {
 
   test('clicking bubble opens the panel', async ({ page }) => {
     await page.getByRole('button', { name: 'Open AI assistant' }).click();
-    await expect(page.getByText('Blog AI Assistant')).toBeVisible();
+    await expect(page.getByText('Blog AI Assistant ↗')).toBeVisible();
   });
 
   test('clicking bubble again closes the panel', async ({ page }) => {
     const bubble = page.getByRole('button', { name: 'Open AI assistant' });
     await bubble.click();
-    await expect(page.getByText('Blog AI Assistant')).toBeVisible();
+    await expect(page.getByText('Blog AI Assistant ↗')).toBeVisible();
     // aria-label flips to "Close AI assistant" when open
     await page.getByRole('button', { name: 'Close AI assistant' }).click();
-    await expect(page.getByText('Blog AI Assistant')).not.toBeVisible();
+    await expect(page.getByText('Blog AI Assistant ↗')).not.toBeVisible();
   });
 
   test('panel header shows the hosted model subtitle', async ({ page }) => {
@@ -81,12 +81,12 @@ test.describe('Blog Agent — panel on different pages', () => {
   test('panel opens correctly on a category page', async ({ page }) => {
     await page.goto('/posts/category/azure/');
     await page.getByRole('button', { name: 'Open AI assistant' }).click();
-    await expect(page.getByText('Blog AI Assistant')).toBeVisible();
+    await expect(page.getByText('Blog AI Assistant ↗')).toBeVisible();
   });
 
   test('panel opens correctly on the categories overview', async ({ page }) => {
     await page.goto('/categories/');
     await page.getByRole('button', { name: 'Open AI assistant' }).click();
-    await expect(page.getByText('Blog AI Assistant')).toBeVisible();
+    await expect(page.getByText('Blog AI Assistant ↗')).toBeVisible();
   });
 });

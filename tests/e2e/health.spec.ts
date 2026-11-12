@@ -6,7 +6,7 @@ import { watch, scrollThrough, TOPIC_SLUGS } from './helpers';
 // static build, so a dev-server check could never see it.)
 
 const PAGES = [
-  '/', '/posts/', '/posts/localagent2/', '/posts/claudecode17/', '/posts/azuresearchvector/',
+  '/', '/posts/', '/posts/localagent2/', '/posts/llmbenchmark/', '/posts/claudecode17/', '/posts/azuresearchvector/',
   '/categories/', '/categories/ai/', '/topics/',
   ...TOPIC_SLUGS.map(s => `/topics/${s}/`),
 ];
