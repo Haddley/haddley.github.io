@@ -39,7 +39,7 @@ You give the harness the scenario. The harness sends the scenario, with a list o
 
 So a harness is powered by a model, and it is not the model. The model does the reasoning and chooses the next request. The harness does everything else: it holds the conversation, runs the tools, and decides which of the model's requests are allowed to run, with approvals that can stop a risky one.
 
-The word "agent" is used loosely, so here is how I use the two words here. The harness is the software apart from the model. An agent is a model and a harness working on a task together. That fits Simon Willison's definition of 18 September 2025: "An LLM agent runs tools in a loop to achieve a goal." A test that works for me: if I swap the model, what stays the same? What stays the same is the harness.
+The word "agent" is used loosely, so here is how I use the two words in this post. The harness is the software apart from the model. An agent is a model and a harness working on a task together. That fits Simon Willison's definition of 18 September 2025: "An LLM agent runs tools in a loop to achieve a goal." A test that works for me: if I swap the model, what stays the same? What stays the same is the harness.
 
 ## The scenario
 
