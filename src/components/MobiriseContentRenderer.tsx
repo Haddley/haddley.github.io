@@ -2,8 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { prism } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import CodeHighlighter from '@/components/CodeHighlighter';
 import MermaidDiagram from './MermaidDiagram';
 import dynamic from 'next/dynamic';
 
@@ -934,22 +933,7 @@ function renderSection(section: MobiriseParsedContent, index: number, nested = f
           </h5>
           <CopyCodeButton code={section.content || ''} />
         </div>
-        <SyntaxHighlighter
-          language={section.language || 'text'}
-          style={prism}
-          customStyle={{
-            backgroundColor: '#f5f5f5',
-            border: '1px solid #ddd',
-            borderRadius: '4px',
-            padding: '1rem',
-            fontSize: '0.9rem',
-            lineHeight: '1.4'
-          }}
-          showLineNumbers={true}
-          lineNumberStyle={{ userSelect: 'none' }}
-        >
-          {section.content}
-        </SyntaxHighlighter>
+        <CodeHighlighter code={section.content || ''} language={section.language} />
       </blockquote>
     ), 'content7 cid-content7', 'col-12 col-md-11');
   } else if (section.type === 'references') {
