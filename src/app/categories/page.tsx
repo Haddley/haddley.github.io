@@ -37,7 +37,7 @@ export default async function CategoriesPage() {
     <>
       <NavyImageBanner images={
         automatedCategories
-          .map(cat => (() => { const p = categoryPostsMap[cat]?.find(p => p.image); return p ? posterOf(p) : undefined; })())
+          .map(cat => (() => { const p = categoryPostsMap[cat]?.find(p => p.image); return p ? posterOf(p, 'banner') : undefined; })())
           .filter((img): img is string => !!img)
           .slice(0, 6)
       }>
@@ -98,7 +98,7 @@ export default async function CategoriesPage() {
                     {categoryPosts[0]?.image && (
                       <div style={{ height: 110, overflow: 'hidden', position: 'relative', backgroundColor: 'var(--navy)' }}>
                         <PosterPicture
-                          src={posterOf(categoryPosts[0])!}
+                          src={posterOf(categoryPosts[0], 'banner')!}
                           loading="eager"
                           ariaHidden
                           style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.25) sepia(1) hue-rotate(200deg) saturate(2)' }}

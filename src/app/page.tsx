@@ -7,7 +7,7 @@ import PosterPicture from '@/components/PosterPicture';
 export default async function Home() {
   const recentPosts = await getVisibleBlogPosts();
   const heroImages = recentPosts
-    .map(p => posterOf(p))
+    .map(p => posterOf(p, 'banner'))
     .filter((img): img is string => !!img)
     .slice(0, 6);
 

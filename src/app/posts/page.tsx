@@ -23,7 +23,7 @@ export default async function PostsPage() {
 
   return (
     <>
-      <NavyImageBanner images={posts.slice(0, 6).map(p => posterOf(p)).filter((img): img is string => !!img)}>
+      <NavyImageBanner images={posts.slice(0, 6).map(p => posterOf(p, 'banner')).filter((img): img is string => !!img)}>
         <div className="container text-center">
           <h1 className="mbr-section-title mbr-fonts-style display-2" style={{ color: '#ffffff', fontWeight: 700 }}>
             All Blog Posts
