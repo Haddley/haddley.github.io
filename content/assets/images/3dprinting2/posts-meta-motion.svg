@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
-  <title>A Raspberry Pi and a mini breadboard held side by side on a 3D printed mount</title><style>@keyframes slide{0%,8%{transform:translateX(22px);opacity:0}45%,100%{transform:translateX(0);opacity:1}}@keyframes glow{0%,45%{opacity:.25}65%,100%{opacity:1}}.slide{animation:slide 4.5s ease-out both}.pins{animation:glow 4.5s ease-out both}@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style>
+  <title>A Raspberry Pi and a mini breadboard held side by side on a 3D printed mount</title><style>@keyframes slide{0%,6%{transform:translateX(22px);opacity:0}33.75%,75%,100%{transform:translateX(0);opacity:1}}@keyframes glow{0%,33.75%{opacity:.25}48.75%,75%,100%{opacity:1}}.slide{animation:slide 6s ease-out both infinite alternate}.pins{animation:glow 6s ease-out both infinite alternate}@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style>
   <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
   <rect x="12" y="30" width="96" height="62" rx="5" fill="#3fc1c9" opacity="0.9"/>
   <rect x="18" y="34" width="44" height="52" rx="3" fill="#2e8b57"/>

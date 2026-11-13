@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A web of linked wiki pages built from documents by an LLM</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
-@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
-@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
-.f{animation:fade 3.5s ease-out both}
-.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
-.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A web of linked wiki pages built from documents by an LLM</title><style>@keyframes fade{0%{opacity:0}17.01%,48.61%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}29.17%,48.61%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}17.01%,48.61%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 7.2s ease-out both infinite alternate}
+.d{stroke-dasharray:1;animation:dr 7.2s ease-out both infinite alternate}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 7.2s ease-out both infinite alternate}
 @media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
 <g class="f" style="animation-delay:0s"><path d="M30,40 L60,28" stroke="#5bb4ea" stroke-width="1.5" fill="none"/><path d="M60,28 L92,42" stroke="#5bb4ea" stroke-width="1.5" fill="none"/><path d="M30,40 L46,76" stroke="#5bb4ea" stroke-width="1.5" fill="none"/><path d="M60,28 L46,76" stroke="#5bb4ea" stroke-width="1.5" fill="none"/><path d="M92,42 L80,80" stroke="#5bb4ea" stroke-width="1.5" fill="none"/><path d="M46,76 L80,80" stroke="#5bb4ea" stroke-width="1.5" fill="none"/><path d="M46,76 L18,88" stroke="#5bb4ea" stroke-width="1.5" fill="none"/></g>
 <g class="p" style="animation-delay:0.8s"><circle cx="30" cy="40" r="4" fill="#5bb4ea"/><circle cx="60" cy="28" r="4" fill="#ffb43a"/><circle cx="92" cy="42" r="4" fill="#2f9e4a"/><circle cx="46" cy="76" r="4" fill="#7cc6f0"/><circle cx="80" cy="80" r="4" fill="#5bb4ea"/><circle cx="18" cy="88" r="4" fill="#c9d3dd"/></g>

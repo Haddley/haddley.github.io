@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Autofill reading a document and filling in a column from a natural language prompt</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
-@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
-@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
-.f{animation:fade 3.5s ease-out both}
-.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
-.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Autofill reading a document and filling in a column from a natural language prompt</title><style>@keyframes fade{0%{opacity:0}16.12%,46.05%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}27.63%,46.05%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}16.12%,46.05%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 7.6s ease-out both infinite alternate}
+.d{stroke-dasharray:1;animation:dr 7.6s ease-out both infinite alternate}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 7.6s ease-out both infinite alternate}
 @media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
 <g class="p" style="animation-delay:0s"><g><rect x="6" y="24" width="34" height="48" rx="3" fill="#c9d3dd"/><rect x="10" y="28" width="26" height="7" rx="2" fill="#5bb4ea"/><path d="M10,45.6 H36 M10,52.8 H36 M10,60.0 H28.1" stroke="#0f1b2d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
 <path class="d" style="animation-delay:0.8s" pathLength="1" d="M42,48 H56 M52,44.5 L56,48 L52,51.5" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>

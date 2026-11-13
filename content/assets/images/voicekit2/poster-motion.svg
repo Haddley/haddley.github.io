@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A microphone sending speech to a cloud assistant that answers in a speech bubble: the Google Assistant API</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
-@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
-@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
-@keyframes gy{0%{transform:scaleY(0)}45%,100%{transform:scaleY(1)}}
-.f{animation:fade 3.5s ease-out both}
-.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
-.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
-.g{transform-box:fill-box;transform-origin:bottom;animation:gy 3.5s ease-out both}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A microphone sending speech to a cloud assistant that answers in a speech bubble: the Google Assistant API</title><style>@keyframes fade{0%{opacity:0}18.56%,53.03%,100%{opacity:1}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}18.56%,53.03%,100%{opacity:1;transform:scale(1)}}
+@keyframes dr{0%{stroke-dashoffset:1}31.82%,53.03%,100%{stroke-dashoffset:0}}
+@keyframes gy{0%{transform:scaleY(0)}23.86%,53.03%,100%{transform:scaleY(1)}}
+.f{animation:fade 6.6s ease-out both infinite alternate}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 6.6s ease-out both infinite alternate}
+.d{stroke-dasharray:1;animation:dr 6.6s ease-out both infinite alternate}
+.g{transform-box:fill-box;transform-origin:bottom;animation:gy 6.6s ease-out both infinite alternate}
 @media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/><rect x="18" y="40" width="12" height="20" rx="6" fill="#e0f2fe"/><path d="M14 54 a10 10 0 0 0 20 0 M24 64 V70" stroke="#e0f2fe" stroke-width="2.5" fill="none" stroke-linecap="round"/><path class="d" style="animation-delay:0.5s" pathLength="1" d="M42 56 H60" stroke="#7dd3fc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><g fill="#bae6fd"><circle cx="56" cy="50" r="9"/><circle cx="70" cy="44" r="13"/><circle cx="84" cy="51" r="8"/><rect x="46" y="50" width="46" height="11" rx="5"/></g><path class="d" style="animation-delay:1.0s" pathLength="1" d="M84 70 q6 14 -8 16" stroke="#fbbf24" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><g class="p" style="animation-delay:1.6s"><rect x="52" y="80" width="48" height="18" rx="7" fill="#e0f2fe"/><path d="M60 98 l-3 7 9 -7z" fill="#e0f2fe"/><rect x="58" y="85" width="34" height="3" rx="1.5" fill="#0f1b2d" opacity=".6"/><rect x="58" y="91" width="26" height="3" rx="1.5" fill="#0f1b2d" opacity=".6"/></g></svg>

@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Points of glucose against age with a straight line fitted through them: regression</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
-@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
-@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
-@keyframes gy{0%{transform:scaleY(0)}45%,100%{transform:scaleY(1)}}
-.f{animation:fade 3.5s ease-out both}
-.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
-.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
-.g{transform-box:fill-box;transform-origin:bottom;animation:gy 3.5s ease-out both}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Points of glucose against age with a straight line fitted through them: regression</title><style>@keyframes fade{0%{opacity:0}17.5%,50%,100%{opacity:1}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}17.5%,50%,100%{opacity:1;transform:scale(1)}}
+@keyframes dr{0%{stroke-dashoffset:1}30%,50%,100%{stroke-dashoffset:0}}
+@keyframes gy{0%{transform:scaleY(0)}22.5%,50%,100%{transform:scaleY(1)}}
+.f{animation:fade 7s ease-out both infinite alternate}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 7s ease-out both infinite alternate}
+.d{stroke-dasharray:1;animation:dr 7s ease-out both infinite alternate}
+.g{transform-box:fill-box;transform-origin:bottom;animation:gy 7s ease-out both infinite alternate}
 @media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/><path d="M22 24 V92 H100" stroke="#e0f2fe" stroke-width="2.5" fill="none" stroke-linecap="round"/><circle class="p" style="animation-delay:0.0s" cx="34" cy="78" r="3" fill="#7dd3fc"/><circle class="p" style="animation-delay:0.25s" cx="42" cy="70" r="3" fill="#7dd3fc"/><circle class="p" style="animation-delay:0.5s" cx="50" cy="72" r="3" fill="#7dd3fc"/><circle class="p" style="animation-delay:0.75s" cx="58" cy="60" r="3" fill="#7dd3fc"/><circle class="p" style="animation-delay:1.0s" cx="66" cy="56" r="3" fill="#7dd3fc"/><circle class="p" style="animation-delay:1.25s" cx="76" cy="48" r="3" fill="#7dd3fc"/><circle class="p" style="animation-delay:1.5s" cx="86" cy="40" r="3" fill="#7dd3fc"/><path class="d" style="animation-delay:2.0s" pathLength="1" d="M28 82 L94 36" stroke="#fbbf24" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M22 18 c-4 6 -5 8 -5 10 a5 5 0 0 0 10 0 c0 -2 -1 -4 -5 -10z" fill="#ef4444"/></svg>

@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Files dropping into a storage container: Azure Storage</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
-@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
-@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
-@keyframes gy{0%{transform:scaleY(0)}45%,100%{transform:scaleY(1)}}
-.f{animation:fade 3.5s ease-out both}
-.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
-.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
-.g{transform-box:fill-box;transform-origin:bottom;animation:gy 3.5s ease-out both}
-@media (prefers-reduced-motion: reduce){*{animation:none!important}}@keyframes drop{0%{transform:translateY(-34px);opacity:0}50%,100%{transform:translateY(0);opacity:1}}.drop{animation:drop 3s ease-in both}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/><ellipse cx="60" cy="40" rx="14" ry="5" fill="#0078d4"/><path d="M46 40 v18 a14 5 0 0 0 28 0 v-18" fill="#1e3a5a" stroke="#0078d4" stroke-width="2"/><g class="drop" style="animation-delay:0.0s"><rect x="14" y="78" width="16" height="16" rx="3" fill="#fbbf24"/></g><g class="drop" style="animation-delay:0.3s"><rect x="52" y="78" width="16" height="16" rx="3" fill="#a78bfa"/></g><g class="drop" style="animation-delay:0.6s"><rect x="86" y="78" width="16" height="16" rx="3" fill="#22c55e"/></g><path class="d" style="animation-delay:0s" pathLength="1" d="M60 70 V76" stroke="#475569" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Files dropping into a storage container: Azure Storage</title><style>@keyframes fade{0%{opacity:0}21.88%,62.5%,100%{opacity:1}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}21.88%,62.5%,100%{opacity:1;transform:scale(1)}}
+@keyframes dr{0%{stroke-dashoffset:1}37.5%,62.5%,100%{stroke-dashoffset:0}}
+@keyframes gy{0%{transform:scaleY(0)}28.12%,62.5%,100%{transform:scaleY(1)}}
+.f{animation:fade 5.6s ease-out both infinite alternate}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 5.6s ease-out both infinite alternate}
+.d{stroke-dasharray:1;animation:dr 5.6s ease-out both infinite alternate}
+.g{transform-box:fill-box;transform-origin:bottom;animation:gy 5.6s ease-out both infinite alternate}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}@keyframes drop{0%{transform:translateY(-34px);opacity:0}26.79%,53.57%,100%{transform:translateY(0);opacity:1}}.drop{animation:drop 5.6s ease-in both infinite alternate}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/><ellipse cx="60" cy="40" rx="14" ry="5" fill="#0078d4"/><path d="M46 40 v18 a14 5 0 0 0 28 0 v-18" fill="#1e3a5a" stroke="#0078d4" stroke-width="2"/><g class="drop" style="animation-delay:0.0s"><rect x="14" y="78" width="16" height="16" rx="3" fill="#fbbf24"/></g><g class="drop" style="animation-delay:0.3s"><rect x="52" y="78" width="16" height="16" rx="3" fill="#a78bfa"/></g><g class="drop" style="animation-delay:0.6s"><rect x="86" y="78" width="16" height="16" rx="3" fill="#22c55e"/></g><path class="d" style="animation-delay:0s" pathLength="1" d="M60 70 V76" stroke="#475569" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>

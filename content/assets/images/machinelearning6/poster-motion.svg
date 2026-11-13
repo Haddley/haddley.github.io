@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A row of data cells with two cells split off below: training and test sets</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
-@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
-@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
-@keyframes gy{0%{transform:scaleY(0)}45%,100%{transform:scaleY(1)}}
-.f{animation:fade 3.5s ease-out both}
-.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
-.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
-.g{transform-box:fill-box;transform-origin:bottom;animation:gy 3.5s ease-out both}
-@media (prefers-reduced-motion: reduce){*{animation:none!important}}@keyframes ts{0%,15%{transform:translate(72px,-38px)}60%,100%{transform:translate(0,0)}}.ts{animation:ts 3.5s ease-in-out both}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/><rect x="22" y="34" width="7" height="14" rx="1.5" fill="#38bdf8"/><rect x="31" y="34" width="7" height="14" rx="1.5" fill="#38bdf8"/><rect x="40" y="34" width="7" height="14" rx="1.5" fill="#38bdf8"/><rect x="49" y="34" width="7" height="14" rx="1.5" fill="#38bdf8"/><rect x="58" y="34" width="7" height="14" rx="1.5" fill="#38bdf8"/><rect x="67" y="34" width="7" height="14" rx="1.5" fill="#38bdf8"/><rect x="76" y="34" width="7" height="14" rx="1.5" fill="#38bdf8"/><rect x="85" y="34" width="7" height="14" rx="1.5" fill="#38bdf8"/><g class="ts"><rect x="22" y="72" width="7" height="14" rx="1.5" fill="#fbbf24"/><rect x="31" y="72" width="7" height="14" rx="1.5" fill="#fbbf24"/></g><path d="M22 58 H94" stroke="#e0f2fe" stroke-width="1.5" stroke-dasharray="3 3"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A row of data cells with two cells split off below: training and test sets</title><style>@keyframes fade{0%{opacity:0}24.5%,70%,100%{opacity:1}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}24.5%,70%,100%{opacity:1;transform:scale(1)}}
+@keyframes dr{0%{stroke-dashoffset:1}42%,70%,100%{stroke-dashoffset:0}}
+@keyframes gy{0%{transform:scaleY(0)}31.5%,70%,100%{transform:scaleY(1)}}
+.f{animation:fade 5s ease-out both infinite alternate}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 5s ease-out both infinite alternate}
+.d{stroke-dasharray:1;animation:dr 5s ease-out both infinite alternate}
+.g{transform-box:fill-box;transform-origin:bottom;animation:gy 5s ease-out both infinite alternate}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}@keyframes ts{0%,10.5%{transform:translate(72px,-38px)}42%,70%,100%{transform:translate(0,0)}}.ts{animation:ts 5s ease-in-out both infinite alternate}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/><rect x="22" y="34" width="7" height="14" rx="1.5" fill="#38bdf8"/><rect x="31" y="34" width="7" height="14" rx="1.5" fill="#38bdf8"/><rect x="40" y="34" width="7" height="14" rx="1.5" fill="#38bdf8"/><rect x="49" y="34" width="7" height="14" rx="1.5" fill="#38bdf8"/><rect x="58" y="34" width="7" height="14" rx="1.5" fill="#38bdf8"/><rect x="67" y="34" width="7" height="14" rx="1.5" fill="#38bdf8"/><rect x="76" y="34" width="7" height="14" rx="1.5" fill="#38bdf8"/><rect x="85" y="34" width="7" height="14" rx="1.5" fill="#38bdf8"/><g class="ts"><rect x="22" y="72" width="7" height="14" rx="1.5" fill="#fbbf24"/><rect x="31" y="72" width="7" height="14" rx="1.5" fill="#fbbf24"/></g><path d="M22 58 H94" stroke="#e0f2fe" stroke-width="1.5" stroke-dasharray="3 3"/></svg>

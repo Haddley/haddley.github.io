@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A customised quote template listing items with start date, term and quantity</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
-@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
-@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
-.f{animation:fade 3.5s ease-out both}
-.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
-.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A customised quote template listing items with start date, term and quantity</title><style>@keyframes fade{0%{opacity:0}15.31%,43.75%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}26.25%,43.75%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}15.31%,43.75%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 8s ease-out both infinite alternate}
+.d{stroke-dasharray:1;animation:dr 8s ease-out both infinite alternate}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 8s ease-out both infinite alternate}
 @media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
 <g class="f" style="animation-delay:0s"><rect x="8" y="16" width="104" height="88" rx="5" fill="#1c2a3d" stroke="#ffb43a" stroke-width="1.5"/></g>
 <path class="d" style="animation-delay:0.4s" pathLength="1" d="M16,30 H56" stroke="#ffb43a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>

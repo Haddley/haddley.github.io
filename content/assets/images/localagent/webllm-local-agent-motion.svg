@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A small neural network lighting up and answering with a chat bubble: the blog assistant</title><style>
-@keyframes pulse{0%,8%{fill-opacity:.25}30%,100%{fill-opacity:1}}
-@keyframes wire{0%,8%{stroke-opacity:.1}35%,100%{stroke-opacity:1}}
-@keyframes bub{0%,55%{opacity:0;transform:translateY(6px)}68%,100%{opacity:1;transform:translateY(0)}}
-@keyframes dot{0%,60%{opacity:0}68%,72%{opacity:1}80%,100%{opacity:1}}
-.n{animation:pulse 5s ease-out both}.w{animation:wire 5s ease-out both}.b{animation:bub 5s ease-out both}.d{animation:dot 5s ease-out both}
+@keyframes pulse{0%,4.82%{fill-opacity:.25}18.07%,60.24%,100%{fill-opacity:1}}
+@keyframes wire{0%,4.82%{stroke-opacity:.1}21.08%,60.24%,100%{stroke-opacity:1}}
+@keyframes bub{0%,33.13%{opacity:0;transform:translateY(6px)}40.96%,60.24%,100%{opacity:1;transform:translateY(0)}}
+@keyframes dot{0%,36.14%{opacity:0}40.96%,43.37%{opacity:1}48.19%,60.24%,100%{opacity:1}}
+.n{animation:pulse 8.3s ease-out both infinite alternate}.w{animation:wire 8.3s ease-out both infinite alternate}.b{animation:bub 8.3s ease-out both infinite alternate}.d{animation:dot 8.3s ease-out both infinite alternate}
 @media (prefers-reduced-motion: reduce){.n,.w,.b,.d{animation:none}}
 </style>
   <!-- Background circle -->

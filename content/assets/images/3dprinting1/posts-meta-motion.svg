@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
-  <title>A resin 3D printer lifting a printed text block out of the resin vat under UV light</title><style>@keyframes lift{0%,10%{transform:translateY(22px)}60%,100%{transform:translateY(0)}}@keyframes uv{0%,100%{opacity:.8}50%{opacity:.25}}.lift{animation:lift 5s ease-in-out both}.uv{animation:uv 1.4s ease-in-out 3}@media (prefers-reduced-motion: reduce){.lift,.uv{animation:none}}</style>
+  <title>A resin 3D printer lifting a printed text block out of the resin vat under UV light</title><style>@keyframes lift{0%,7.69%{transform:translateY(22px)}46.15%,76.92%,100%{transform:translateY(0)}}@keyframes uv{0%,21.54%,100%{opacity:.8}10.77%{opacity:.25}}.lift{animation:lift 6.5s ease-in-out both infinite alternate}.uv{animation:uv 6.5s ease-in-out infinite alternate}@media (prefers-reduced-motion: reduce){.lift,.uv{animation:none}}</style>
   <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
   <rect x="28" y="84" width="64" height="16" rx="3" fill="#2a3a4e"/>
   <rect x="32" y="18" width="56" height="68" rx="6" fill="#e0a43a" opacity="0.28" stroke="#e0a43a" stroke-width="2"/>

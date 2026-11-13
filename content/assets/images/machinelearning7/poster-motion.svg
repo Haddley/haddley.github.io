@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A cloud above three servers coming online with green lights: a cloud platform</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
-@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
-@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
-@keyframes gy{0%{transform:scaleY(0)}45%,100%{transform:scaleY(1)}}
-.f{animation:fade 3.5s ease-out both}
-.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
-.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
-.g{transform-box:fill-box;transform-origin:bottom;animation:gy 3.5s ease-out both}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A cloud above three servers coming online with green lights: a cloud platform</title><style>@keyframes fade{0%{opacity:0}18.56%,53.03%,100%{opacity:1}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}18.56%,53.03%,100%{opacity:1;transform:scale(1)}}
+@keyframes dr{0%{stroke-dashoffset:1}31.82%,53.03%,100%{stroke-dashoffset:0}}
+@keyframes gy{0%{transform:scaleY(0)}23.86%,53.03%,100%{transform:scaleY(1)}}
+.f{animation:fade 6.6s ease-out both infinite alternate}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 6.6s ease-out both infinite alternate}
+.d{stroke-dasharray:1;animation:dr 6.6s ease-out both infinite alternate}
+.g{transform-box:fill-box;transform-origin:bottom;animation:gy 6.6s ease-out both infinite alternate}
 @media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/><g fill="#e0f2fe"><circle cx="46" cy="40" r="12"/><circle cx="62" cy="34" r="15"/><circle cx="78" cy="42" r="11"/><rect x="34" y="40" width="54" height="13" rx="6"/></g><path d="M34 56 V70" stroke="#7dd3fc" stroke-width="2"/><g class="p" style="animation-delay:0.0s"><rect x="22" y="70" width="24" height="26" rx="4" fill="#1e3a5a" stroke="#7dd3fc" stroke-width="2"/><rect x="26" y="76" width="16" height="3" rx="1.5" fill="#7dd3fc"/><rect x="26" y="82" width="16" height="3" rx="1.5" fill="#7dd3fc"/><circle class="f" style="animation-delay:0.8s" cx="30" cy="90" r="2" fill="#22c55e"/></g><path d="M62 56 V70" stroke="#7dd3fc" stroke-width="2"/><g class="p" style="animation-delay:0.4s"><rect x="50" y="70" width="24" height="26" rx="4" fill="#1e3a5a" stroke="#7dd3fc" stroke-width="2"/><rect x="54" y="76" width="16" height="3" rx="1.5" fill="#7dd3fc"/><rect x="54" y="82" width="16" height="3" rx="1.5" fill="#7dd3fc"/><circle class="f" style="animation-delay:1.2000000000000002s" cx="58" cy="90" r="2" fill="#22c55e"/></g><path d="M90 56 V70" stroke="#7dd3fc" stroke-width="2"/><g class="p" style="animation-delay:0.8s"><rect x="78" y="70" width="24" height="26" rx="4" fill="#1e3a5a" stroke="#7dd3fc" stroke-width="2"/><rect x="82" y="76" width="16" height="3" rx="1.5" fill="#7dd3fc"/><rect x="82" y="82" width="16" height="3" rx="1.5" fill="#7dd3fc"/><circle class="f" style="animation-delay:1.6s" cx="86" cy="90" r="2" fill="#22c55e"/></g></svg>

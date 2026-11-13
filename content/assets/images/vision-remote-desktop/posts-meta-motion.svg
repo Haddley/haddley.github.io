@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img">
-  <title>A remote desktop screen tilted to follow the head, hanging above a real keyboard</title><style>@keyframes tilt{0%,10%{transform:rotate(6deg)}55%,100%{transform:rotate(-9deg)}}.tilt{transform-box:view-box;transform-origin:60px 48px;animation:tilt 4s ease-in-out both}@media (prefers-reduced-motion: reduce){.tilt{animation:none;transform-origin:0 0}}</style>
+  <title>A remote desktop screen tilted to follow the head, hanging above a real keyboard</title><style>@keyframes tilt{0%,7.27%{transform:rotate(6deg)}40%,72.73%,100%{transform:rotate(-9deg)}}.tilt{transform-box:view-box;transform-origin:60px 48px;animation:tilt 5.5s ease-in-out both infinite alternate}@media (prefers-reduced-motion: reduce){.tilt{animation:none;transform-origin:0 0}}</style>
   <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
   <g class="tilt" transform="rotate(-9 60 48)">
     <rect x="24" y="24" width="72" height="46" rx="4" fill="#1c3a4a" stroke="#5bb4ea" stroke-width="2"/>

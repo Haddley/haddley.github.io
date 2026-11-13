@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A timeline of accounting software growing into Dynamics and Dataverse</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
-@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
-@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
-.f{animation:fade 3.5s ease-out both}
-.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
-.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A timeline of accounting software growing into Dynamics and Dataverse</title><style>@keyframes fade{0%{opacity:0}15.31%,43.75%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}26.25%,43.75%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}15.31%,43.75%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 8s ease-out both infinite alternate}
+.d{stroke-dasharray:1;animation:dr 8s ease-out both infinite alternate}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 8s ease-out both infinite alternate}
 @media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
 <path class="d" style="animation-delay:0s" pathLength="1" d="M8,64 H112" stroke="#5bb4ea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 <circle class="p" style="animation-delay:0.5s" cx="16" cy="64" r="5" fill="#c9d3dd"/>

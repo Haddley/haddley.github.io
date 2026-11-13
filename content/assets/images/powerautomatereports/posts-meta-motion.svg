@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A flow that emails a report as a PDF</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
-@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
-@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
-.f{animation:fade 3.5s ease-out both}
-.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
-.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A flow that emails a report as a PDF</title><style>@keyframes fade{0%{opacity:0}16.12%,46.05%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}27.63%,46.05%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}16.12%,46.05%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 7.6s ease-out both infinite alternate}
+.d{stroke-dasharray:1;animation:dr 7.6s ease-out both infinite alternate}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 7.6s ease-out both infinite alternate}
 @media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
 <g class="p" style="animation-delay:0s"><g><rect x="8" y="26" width="36" height="46" rx="3" fill="#c9d3dd"/><path d="M14,48 V66 M22,44 V66 M30,52 V66 M38,40 V66" stroke="#5bb4ea" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/><rect x="8" y="26" width="36" height="9" rx="3" fill="#d9483b"/></g></g>
 <g class="p" style="animation-delay:0.4s"><text x="26" y="33" text-anchor="middle" font-size="6" fill="#fff" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">PDF</text></g>

@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A Sails app in a Docker container on Amazon Kubernetes</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
-@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
-@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
-.f{animation:fade 3.5s ease-out both}
-.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
-.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A Sails app in a Docker container on Amazon Kubernetes</title><style>@keyframes fade{0%{opacity:0}19.14%,54.69%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}32.81%,54.69%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}19.14%,54.69%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 6.4s ease-out both infinite alternate}
+.d{stroke-dasharray:1;animation:dr 6.4s ease-out both infinite alternate}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 6.4s ease-out both infinite alternate}
 @media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
 <g class="p" style="animation-delay:0s"><g><rect x="8" y="40" width="40" height="40" rx="4" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><rect x="14" y="48" width="8" height="8" fill="#5bb4ea"/><rect x="26" y="48" width="8" height="8" fill="#5bb4ea"/><rect x="14" y="60" width="8" height="8" fill="#5bb4ea"/><rect x="26" y="60" width="8" height="8" fill="#5bb4ea"/></g></g>
 <path class="d" style="animation-delay:0.8s" pathLength="1" d="M52,60 H68 M64,56.5 L68,60 L64,63.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>

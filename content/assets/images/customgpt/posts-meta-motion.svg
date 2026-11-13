@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A custom GPT built from instructions with no code</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
-@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
-@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
-.f{animation:fade 3.5s ease-out both}
-.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
-.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A custom GPT built from instructions with no code</title><style>@keyframes fade{0%{opacity:0}17.01%,48.61%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}29.17%,48.61%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}17.01%,48.61%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 7.2s ease-out both infinite alternate}
+.d{stroke-dasharray:1;animation:dr 7.2s ease-out both infinite alternate}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 7.2s ease-out both infinite alternate}
 @media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
 <g class="f" style="animation-delay:0s"><g><rect x="14" y="18" width="92" height="56" rx="6" fill="#5bb4ea"/><path d="M22,73 l-6,8 l10,-2 z" fill="#5bb4ea"/></g></g>
 <g class="p" style="animation-delay:0.6s"><path d="M60,30 L64.8,41.2 L76,46 L64.8,50.8 L60,62 L55.2,50.8 L44,46 L55.2,41.2 Z" fill="#ffb43a"/></g>

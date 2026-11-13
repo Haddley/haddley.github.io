@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Excel sheets of customers, vendors and items migrate into the new company</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
-@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
-@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
-.f{animation:fade 3.5s ease-out both}
-.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
-.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Excel sheets of customers, vendors and items migrate into the new company</title><style>@keyframes fade{0%{opacity:0}16.55%,47.3%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}28.38%,47.3%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}16.55%,47.3%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 7.4s ease-out both infinite alternate}
+.d{stroke-dasharray:1;animation:dr 7.4s ease-out both infinite alternate}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 7.4s ease-out both infinite alternate}
 @media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
 <g><rect class="f" style="animation-delay:0s" x="6" y="30" width="44" height="60" rx="4" fill="#2f9e4a"/><path d="M6,48 H50 M6,62 H50 M6,76 H50 M24,30 V90 M38,30 V90" stroke="#0f1b2d" stroke-width="1.5" fill="none"/><rect x="6" y="30" width="44" height="12" rx="4" fill="#1e7a37"/></g>
 <path class="d" style="animation-delay:1.0s" pathLength="1" d="M54,60 H70 M66,56.5 L70,60 L66,63.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>

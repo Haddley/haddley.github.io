@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>An extension piece plugging into a Business Central tile: creating the Business Central extension</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
-@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
-@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
-@keyframes gy{0%{transform:scaleY(0)}45%,100%{transform:scaleY(1)}}
-.f{animation:fade 3.5s ease-out both}
-.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
-.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
-.g{transform-box:fill-box;transform-origin:bottom;animation:gy 3.5s ease-out both}
-@media (prefers-reduced-motion: reduce){*{animation:none!important}}@keyframes plug{0%,10%{transform:translate(20px,-24px);opacity:.4}55%,100%{transform:translate(0,0);opacity:1}}.plug{animation:plug 3.5s ease-in-out both}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/><rect x="14" y="40" width="44" height="44" rx="6" fill="#0b6cff"/><path d="M24 56 h24 M24 64 h24 M24 72 h14" stroke="#e0f2fe" stroke-width="2.5" stroke-linecap="round"/><g class="plug"><path d="M60 52 h16 v8 a4 4 0 0 1 0 8 v8 h-16 v-8 a4 4 0 0 0 0 -8z" fill="#a78bfa"/><path d="M64 70 l-3 -3 3 -3 M72 64 l3 3 -3 3" stroke="#0f1b2d" stroke-width="2" fill="none"/></g><path class="d" style="animation-delay:1.4s" pathLength="1" d="M80 68 H96" stroke="#7dd3fc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><g class="p" style="animation-delay:1.8s"><circle cx="102" cy="68" r="6" fill="#22c55e"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>An extension piece plugging into a Business Central tile: creating the Business Central extension</title><style>@keyframes fade{0%{opacity:0}18.01%,51.47%,100%{opacity:1}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}18.01%,51.47%,100%{opacity:1;transform:scale(1)}}
+@keyframes dr{0%{stroke-dashoffset:1}30.88%,51.47%,100%{stroke-dashoffset:0}}
+@keyframes gy{0%{transform:scaleY(0)}23.16%,51.47%,100%{transform:scaleY(1)}}
+.f{animation:fade 6.8s ease-out both infinite alternate}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 6.8s ease-out both infinite alternate}
+.d{stroke-dasharray:1;animation:dr 6.8s ease-out both infinite alternate}
+.g{transform-box:fill-box;transform-origin:bottom;animation:gy 6.8s ease-out both infinite alternate}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}@keyframes plug{0%,5.15%{transform:translate(20px,-24px);opacity:.4}28.31%,51.47%,100%{transform:translate(0,0);opacity:1}}.plug{animation:plug 6.8s ease-in-out both infinite alternate}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/><rect x="14" y="40" width="44" height="44" rx="6" fill="#0b6cff"/><path d="M24 56 h24 M24 64 h24 M24 72 h14" stroke="#e0f2fe" stroke-width="2.5" stroke-linecap="round"/><g class="plug"><path d="M60 52 h16 v8 a4 4 0 0 1 0 8 v8 h-16 v-8 a4 4 0 0 0 0 -8z" fill="#a78bfa"/><path d="M64 70 l-3 -3 3 -3 M72 64 l3 3 -3 3" stroke="#0f1b2d" stroke-width="2" fill="none"/></g><path class="d" style="animation-delay:1.4s" pathLength="1" d="M80 68 H96" stroke="#7dd3fc" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><g class="p" style="animation-delay:1.8s"><circle cx="102" cy="68" r="6" fill="#22c55e"/></g></svg>

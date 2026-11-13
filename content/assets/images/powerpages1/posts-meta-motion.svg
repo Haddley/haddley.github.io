@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A customer portal website listing the customer's own sales orders from Business Central</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
-@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
-@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
-.f{animation:fade 3.5s ease-out both}
-.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
-.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A customer portal website listing the customer's own sales orders from Business Central</title><style>@keyframes fade{0%{opacity:0}18.01%,51.47%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}30.88%,51.47%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}18.01%,51.47%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 6.8s ease-out both infinite alternate}
+.d{stroke-dasharray:1;animation:dr 6.8s ease-out both infinite alternate}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 6.8s ease-out both infinite alternate}
 @media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
 <g><rect class="f" style="animation-delay:0s" x="8" y="16" width="104" height="88" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><rect x="8" y="16" width="104" height="9" rx="5" fill="#5bb4ea"/><circle cx="15" cy="20.5" r="1.5" fill="#0f1b2d"/><circle cx="20" cy="20.5" r="1.5" fill="#0f1b2d"/></g>
 <path class="d" style="animation-delay:0.6s" pathLength="1" d="M16,40 H104 M16,52 H104 M16,64 H104 M16,76 H80" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>

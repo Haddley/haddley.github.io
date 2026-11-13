@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A chat prompt inside a cloud answered with sparkles: Azure OpenAI Service</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
-@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
-@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
-@keyframes gy{0%{transform:scaleY(0)}45%,100%{transform:scaleY(1)}}
-.f{animation:fade 3.5s ease-out both}
-.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
-.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
-.g{transform-box:fill-box;transform-origin:bottom;animation:gy 3.5s ease-out both}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A chat prompt inside a cloud answered with sparkles: Azure OpenAI Service</title><style>@keyframes fade{0%{opacity:0}18.28%,52.24%,100%{opacity:1}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}18.28%,52.24%,100%{opacity:1;transform:scale(1)}}
+@keyframes dr{0%{stroke-dashoffset:1}31.34%,52.24%,100%{stroke-dashoffset:0}}
+@keyframes gy{0%{transform:scaleY(0)}23.51%,52.24%,100%{transform:scaleY(1)}}
+.f{animation:fade 6.7s ease-out both infinite alternate}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 6.7s ease-out both infinite alternate}
+.d{stroke-dasharray:1;animation:dr 6.7s ease-out both infinite alternate}
+.g{transform-box:fill-box;transform-origin:bottom;animation:gy 6.7s ease-out both infinite alternate}
 @media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/><g fill="#bae6fd"><circle cx="46" cy="42" r="9"/><circle cx="60" cy="36" r="13"/><circle cx="74" cy="43" r="8"/><rect x="36" y="42" width="46" height="11" rx="5"/></g><g class="p" style="animation-delay:0.3s"><rect x="20" y="60" width="50" height="22" rx="7" fill="#e0f2fe"/><path d="M28 82 l-3 7 9 -7z" fill="#e0f2fe"/><rect x="26" y="65" width="36" height="3" rx="1.5" fill="#0f1b2d" opacity=".6"/><rect x="26" y="71" width="28" height="3" rx="1.5" fill="#0f1b2d" opacity=".6"/></g><g class="p" style="animation-delay:1.2s"><path d="M88 62 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3z" fill="#fbbf24"/></g><g class="p" style="animation-delay:1.7s"><path d="M98 44 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2z" fill="#a78bfa"/></g></svg>

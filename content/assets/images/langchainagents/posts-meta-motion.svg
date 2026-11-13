@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>An agent loop: the model reasons, picks a tool, reads the result and repeats</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
-@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
-@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
-.f{animation:fade 3.5s ease-out both}
-.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
-.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>An agent loop: the model reasons, picks a tool, reads the result and repeats</title><style>@keyframes fade{0%{opacity:0}15.31%,43.75%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}26.25%,43.75%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}15.31%,43.75%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 8s ease-out both infinite alternate}
+.d{stroke-dasharray:1;animation:dr 8s ease-out both infinite alternate}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 8s ease-out both infinite alternate}
 @media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
 <g class="p" style="animation-delay:0s"><g><circle cx="60" cy="30" r="14" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="2"/><path d="M60,22 L62.4,27.6 L68,30 L62.4,32.4 L60,38 L57.6,32.4 L52,30 L57.6,27.6 Z" fill="#ffb43a"/></g></g>
 <path class="d" style="animation-delay:0.8s" pathLength="1" d="M72,40 C96,50 96,72 82,82" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>

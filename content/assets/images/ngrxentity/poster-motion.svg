@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A table of records keyed by id talking to a small server: NgRx entity and json-server</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
-@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
-@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
-@keyframes gy{0%{transform:scaleY(0)}45%,100%{transform:scaleY(1)}}
-.f{animation:fade 3.5s ease-out both}
-.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
-.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
-.g{transform-box:fill-box;transform-origin:bottom;animation:gy 3.5s ease-out both}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A table of records keyed by id talking to a small server: NgRx entity and json-server</title><style>@keyframes fade{0%{opacity:0}18.01%,51.47%,100%{opacity:1}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}18.01%,51.47%,100%{opacity:1;transform:scale(1)}}
+@keyframes dr{0%{stroke-dashoffset:1}30.88%,51.47%,100%{stroke-dashoffset:0}}
+@keyframes gy{0%{transform:scaleY(0)}23.16%,51.47%,100%{transform:scaleY(1)}}
+.f{animation:fade 6.8s ease-out both infinite alternate}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 6.8s ease-out both infinite alternate}
+.d{stroke-dasharray:1;animation:dr 6.8s ease-out both infinite alternate}
+.g{transform-box:fill-box;transform-origin:bottom;animation:gy 6.8s ease-out both infinite alternate}
 @media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/><rect x="14" y="26" width="58" height="68" rx="6" fill="#e0f2fe"/><rect x="14" y="26" width="58" height="12" rx="6" fill="#38bdf8"/><g class="p" style="animation-delay:0.0s"><rect x="20" y="44" width="12" height="7" rx="2" fill="#a855f7"/><rect x="36" y="45.5" width="30" height="4" rx="2" fill="#0f1b2d" opacity=".6"/></g><g class="p" style="animation-delay:0.3s"><rect x="20" y="56" width="12" height="7" rx="2" fill="#a855f7"/><rect x="36" y="57.5" width="30" height="4" rx="2" fill="#0f1b2d" opacity=".6"/></g><g class="p" style="animation-delay:0.6s"><rect x="20" y="68" width="12" height="7" rx="2" fill="#a855f7"/><rect x="36" y="69.5" width="30" height="4" rx="2" fill="#0f1b2d" opacity=".6"/></g><g class="p" style="animation-delay:0.8999999999999999s"><rect x="20" y="80" width="12" height="7" rx="2" fill="#a855f7"/><rect x="36" y="81.5" width="30" height="4" rx="2" fill="#0f1b2d" opacity=".6"/></g><path class="d" style="animation-delay:1.5s" pathLength="1" d="M76 60 H86" stroke="#fbbf24" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><g class="p" style="animation-delay:1.8s"><rect x="88" y="44" width="20" height="32" rx="4" fill="#1e3a5a" stroke="#22c55e" stroke-width="2"/><rect x="92" y="50" width="12" height="3" rx="1.5" fill="#22c55e"/><rect x="92" y="57" width="12" height="3" rx="1.5" fill="#22c55e"/><circle cx="98" cy="69" r="2.5" fill="#22c55e"/></g></svg>

@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A list of dispatched actions above a time-travel slider: NgRx dev tools</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
-@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
-@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
-@keyframes gy{0%{transform:scaleY(0)}45%,100%{transform:scaleY(1)}}
-.f{animation:fade 3.5s ease-out both}
-.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
-.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
-.g{transform-box:fill-box;transform-origin:bottom;animation:gy 3.5s ease-out both}
-@media (prefers-reduced-motion: reduce){*{animation:none!important}}@keyframes scrub{0%,10%{transform:translateX(-40px)}70%,100%{transform:translateX(0)}}.scrub{animation:scrub 3.5s ease-in-out both}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/><rect x="16" y="26" width="88" height="56" rx="6" fill="#16263b" stroke="#a855f7" stroke-width="2"/><rect x="22" y="32" width="50" height="7" rx="3" fill="#a855f7" opacity=".55"/><rect x="22" y="44" width="38" height="7" rx="3" fill="#a855f7" opacity=".55"/><rect x="22" y="56" width="56" height="7" rx="3" fill="#a855f7" opacity=".55"/><rect x="22" y="68" width="30" height="7" rx="3" fill="#a855f7" opacity=".55"/><rect x="22" y="90" width="76" height="5" rx="2.5" fill="#1e3a5a"/><rect x="22" y="90" width="52" height="5" rx="2.5" fill="#a855f7"/><circle class="scrub" cx="74" cy="92.5" r="6" fill="#fbbf24"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A list of dispatched actions above a time-travel slider: NgRx dev tools</title><style>@keyframes fade{0%{opacity:0}24.5%,70%,100%{opacity:1}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}24.5%,70%,100%{opacity:1;transform:scale(1)}}
+@keyframes dr{0%{stroke-dashoffset:1}42%,70%,100%{stroke-dashoffset:0}}
+@keyframes gy{0%{transform:scaleY(0)}31.5%,70%,100%{transform:scaleY(1)}}
+.f{animation:fade 5s ease-out both infinite alternate}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 5s ease-out both infinite alternate}
+.d{stroke-dasharray:1;animation:dr 5s ease-out both infinite alternate}
+.g{transform-box:fill-box;transform-origin:bottom;animation:gy 5s ease-out both infinite alternate}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}@keyframes scrub{0%,7%{transform:translateX(-40px)}49%,70%,100%{transform:translateX(0)}}.scrub{animation:scrub 5s ease-in-out both infinite alternate}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/><rect x="16" y="26" width="88" height="56" rx="6" fill="#16263b" stroke="#a855f7" stroke-width="2"/><rect x="22" y="32" width="50" height="7" rx="3" fill="#a855f7" opacity=".55"/><rect x="22" y="44" width="38" height="7" rx="3" fill="#a855f7" opacity=".55"/><rect x="22" y="56" width="56" height="7" rx="3" fill="#a855f7" opacity=".55"/><rect x="22" y="68" width="30" height="7" rx="3" fill="#a855f7" opacity=".55"/><rect x="22" y="90" width="76" height="5" rx="2.5" fill="#1e3a5a"/><rect x="22" y="90" width="52" height="5" rx="2.5" fill="#a855f7"/><circle class="scrub" cx="74" cy="92.5" r="6" fill="#fbbf24"/></svg>

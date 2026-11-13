@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A flow of three connected nodes inside an editor window: setting up Prompt Flow in VS Code</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
-@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
-@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
-@keyframes gy{0%{transform:scaleY(0)}45%,100%{transform:scaleY(1)}}
-.f{animation:fade 3.5s ease-out both}
-.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
-.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
-.g{transform-box:fill-box;transform-origin:bottom;animation:gy 3.5s ease-out both}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A flow of three connected nodes inside an editor window: setting up Prompt Flow in VS Code</title><style>@keyframes fade{0%{opacity:0}21.12%,60.34%,100%{opacity:1}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}21.12%,60.34%,100%{opacity:1;transform:scale(1)}}
+@keyframes dr{0%{stroke-dashoffset:1}36.21%,60.34%,100%{stroke-dashoffset:0}}
+@keyframes gy{0%{transform:scaleY(0)}27.16%,60.34%,100%{transform:scaleY(1)}}
+.f{animation:fade 5.8s ease-out both infinite alternate}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 5.8s ease-out both infinite alternate}
+.d{stroke-dasharray:1;animation:dr 5.8s ease-out both infinite alternate}
+.g{transform-box:fill-box;transform-origin:bottom;animation:gy 5.8s ease-out both infinite alternate}
 @media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/><rect x="14" y="22" width="92" height="76" rx="6" fill="#16263b" stroke="#5bb4ea" stroke-width="2"/><rect x="14" y="22" width="92" height="9" rx="4" fill="#2a5a73"/><rect x="14" y="31" width="16" height="67" fill="#1e3a5a"/><g class="p" style="animation-delay:0s"><rect x="38" y="42" width="18" height="14" rx="4" fill="#1e3a5a" stroke="#7dd3fc" stroke-width="2"/></g><g class="p" style="animation-delay:0.4s"><rect x="66" y="42" width="18" height="14" rx="4" fill="#3b2f10" stroke="#fbbf24" stroke-width="2"/></g><g class="p" style="animation-delay:0.8s"><rect x="52" y="72" width="18" height="14" rx="4" fill="#12351f" stroke="#22c55e" stroke-width="2"/></g><path class="d" style="animation-delay:0.2s" pathLength="1" d="M56 49 H66" stroke="#7dd3fc" stroke-width="2" fill="none" stroke-linecap="round"/><path class="d" style="animation-delay:0.6s" pathLength="1" d="M75 56 V64 H61 V72" stroke="#7dd3fc" stroke-width="2" fill="none" stroke-linecap="round"/></svg>

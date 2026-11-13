@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Static generation at build time compared with server rendering on each request</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
-@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
-@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
-.f{animation:fade 3.5s ease-out both}
-.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
-.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Static generation at build time compared with server rendering on each request</title><style>@keyframes fade{0%{opacity:0}14.94%,42.68%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}25.61%,42.68%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}14.94%,42.68%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 8.2s ease-out both infinite alternate}
+.d{stroke-dasharray:1;animation:dr 8.2s ease-out both infinite alternate}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 8.2s ease-out both infinite alternate}
 @media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
 <g class="p" style="animation-delay:0s"><g><circle cx="22" cy="38" r="8" fill="#1c2a3d" stroke="#ffb43a" stroke-width="2"/><circle cx="22" cy="38" r="2.8" fill="#ffb43a"/><path d="M22,27 V31 M22,45 V49 M11,38 H15 M29,38 H33" stroke="#ffb43a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
 <path class="d" style="animation-delay:0.6s" pathLength="1" d="M34,38 H46 M42,34.5 L46,38 L42,41.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>

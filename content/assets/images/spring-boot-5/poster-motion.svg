@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A graph of linked nodes answering a query: a GraphQL API with Spring for GraphQL</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
-@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
-@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
-@keyframes gy{0%{transform:scaleY(0)}45%,100%{transform:scaleY(1)}}
-.f{animation:fade 3.5s ease-out both}
-.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
-.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
-.g{transform-box:fill-box;transform-origin:bottom;animation:gy 3.5s ease-out both}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A graph of linked nodes answering a query: a GraphQL API with Spring for GraphQL</title><style>@keyframes fade{0%{opacity:0}18.85%,53.85%,100%{opacity:1}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}18.85%,53.85%,100%{opacity:1;transform:scale(1)}}
+@keyframes dr{0%{stroke-dashoffset:1}32.31%,53.85%,100%{stroke-dashoffset:0}}
+@keyframes gy{0%{transform:scaleY(0)}24.23%,53.85%,100%{transform:scaleY(1)}}
+.f{animation:fade 6.5s ease-out both infinite alternate}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 6.5s ease-out both infinite alternate}
+.d{stroke-dasharray:1;animation:dr 6.5s ease-out both infinite alternate}
+.g{transform-box:fill-box;transform-origin:bottom;animation:gy 6.5s ease-out both infinite alternate}
 @media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/><g stroke="#e535ab" stroke-width="2.5" fill="none"><path d="M36 38 L60 24 L84 38 V66 L60 80 L36 66z"/><path d="M60 24 V80 M36 38 L84 66 M84 38 L36 66"/></g><circle class="p" style="animation-delay:0.0s" cx="36" cy="38" r="5" fill="#e535ab"/><circle class="p" style="animation-delay:0.2s" cx="60" cy="24" r="5" fill="#e535ab"/><circle class="p" style="animation-delay:0.4s" cx="84" cy="38" r="5" fill="#e535ab"/><circle class="p" style="animation-delay:0.6000000000000001s" cx="84" cy="66" r="5" fill="#e535ab"/><circle class="p" style="animation-delay:0.8s" cx="60" cy="80" r="5" fill="#e535ab"/><circle class="p" style="animation-delay:1.0s" cx="36" cy="66" r="5" fill="#e535ab"/><g class="p" style="animation-delay:1.5s"><rect x="26" y="90" width="68" height="14" rx="5" fill="#1e3a5a"/><text x="60" y="100" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="9" font-weight="700" fill="#fbbf24">{ query }</text></g></svg>
