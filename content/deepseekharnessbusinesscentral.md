@@ -1,6 +1,6 @@
 ---
 title: "Connecting DeepSeek Harness to Business Central"
-description: "How I connected DeepSeek Harness to Business Central's MCP server: the deleted app registration, the 414 tools that never loaded, the small read-only configuration that worked, and the drafts-only configuration that let it create unposted credit memos"
+description: "How I connected DeepSeek Harness to Business Central's MCP server: the deleted app registration, the 414 tools that never loaded, the small read-only configuration that worked, and how I rebuilt it in a fresh Sandbox as a read-and-draft configuration that creates one unposted credit memo"
 date: "2026-11-13"
 categories: ["AI", "Business Central"]
 image: "/assets/images/deepseekharnessbusinesscentral/poster.svg"
@@ -18,7 +18,7 @@ slug: "deepseekharnessbusinesscentral"
 1. **How the harness reads the ledger:** Business Central's own MCP server, a read-only configuration, and a sign-in through an Entra app.
 2. **What went wrong on the way:** a deleted app registration, a wrong tenant, a tool list that took 148 seconds, and a harness that went looking for a token.
 3. **The fix:** a configuration with ten objects instead of 414 tools.
-4. **How I went from reading to drafting:** two more configurations, the last of which can create and modify credit memos and nothing else.
+4. **How I went from reading to drafting:** first two configurations in the Production demo company, which I did not end up using, and then the **Drafts** configuration in a fresh Sandbox, which can create and modify credit memos and nothing else.
 5. **What stays out of reach:** posting.
 
 ## Reading the ledger through Business Central's MCP server
@@ -131,7 +131,7 @@ With the row pointed at "Close", I asked the harness the same question again: li
 
 ## From reading to drafting
 
-For planning, the harness only reads. For the final run of the vendor dispute I wanted it to create the documents themselves as drafts. That took two more configurations, each a copy of the one before.
+For planning, the harness only reads. I wanted it to create the draft document itself. My first attempt took two more configurations in the Production demo company, each a copy of the one before. I did not end up using them: I moved the vendor dispute to a fresh Sandbox, and rebuilt a single configuration there (the next section). I keep this part because the lessons carried over.
 
 - **"Close Plus".** The ten objects of "Close" plus five more, all with Allow Read only: G/L accounts, G/L entries, purchase invoice lines, purchase receipt lines and accounting periods. It serves 17 list tools. It exists because the other cases in my plan need ledger entries, and I found that the standard Business Central APIs have no bank account ledger entries or vendor ledger entries at all.
 - **"Close Drafts".** A copy of "Close Plus" with **Allow Create** and **Allow Modify** ticked on exactly two objects, Purchase Credit Memos and Purchase Credit Memo Lines, which I added because a draft credit memo needs lines. Delete and Bound Actions stay off. I checked the result from outside: the server offers 25 tools, which are the 19 list tools plus six create and modify tools for those two objects, and nothing else.
@@ -144,7 +144,7 @@ Create and Modify stay greyed out until **Unblock Edit Tools** is switched on fo
 :::
 
 :::watch-it Posting is a bound action, and it stays off
-As I understand the setup page, posting a document is a bound action in Business Central, and "Close Drafts" leaves Bound Actions off. In the final run the harness created two credit memos and had no way to post them. Posting stayed with a person.
+As I understand the setup page, posting a document is a bound action in Business Central, and "Close Drafts" leaves Bound Actions off. In the Sandbox runs the harness created one credit memo and had no way to post it. Posting stayed with a person.
 :::
 
 Three details are worth knowing before you copy this:
@@ -186,7 +186,7 @@ Asking the server for its tools from outside returned 26: the list tools, plus c
 The harness also needs the product documentation. Microsoft Learn has its own public MCP server at `https://learn.microsoft.com/api/mcp`, with no sign-in. It offers three tools, `microsoft_docs_search`, `microsoft_docs_fetch` and `microsoft_code_sample_search`. I added it to the harness profile in the same way as the Business Central row, as a second MCP client entry. Because both servers appear as tools in the same list, the model chooses between them like any other tools, and the harness logs each call.
 
 :::watch-it It also works in Claude Code
-The same configurations work with Claude Code: I pointed it at the "Close" and "Close Drafts" configurations and the Microsoft Learn server through its MCP settings, with the same sign-in. The setup belongs to Business Central, not to the harness, which is why one set of lessons covers both.
+The same kind of configuration works with Claude Code: I pointed it at the Business Central configurations and the Microsoft Learn server through its MCP settings, with the same sign-in. The setup belongs to Business Central, not to the harness, which is why one set of lessons covers both.
 :::
 
 ## What this post told you
@@ -194,8 +194,8 @@ The same configurations work with Claude Code: I pointed it at the "Close" and "
 - Business Central ships an MCP server, and a harness reads the ledger through a configuration that lists exactly the objects it may see.
 - Connecting it took six lessons: a deleted app registration cannot be restored after 30 days, the wrong tenant looks like a licence problem, the sign-in is a human step, and a harness that cannot use a tool will look for another way, even a token file.
 - **Too many tools breaks a harness.** The full configuration gave 414 tools and a 148-second tool list. Ten objects gave a 3-second list.
-- Reading and writing are separate configurations. The drafts configuration creates and modifies two kinds of document, switched on by a person, with posting out of reach.
-- The result is in [the vendor dispute post](/posts/deepseekharnessaccounting/): two unposted draft credit memos that a person reviews and posts.
+- Reading and writing are separate configurations. The Drafts configuration creates and modifies one kind of document (a credit memo and its lines), switched on by a person, with posting out of reach.
+- The result is in [the vendor dispute post](/posts/deepseekharnessaccounting/): one unposted draft credit memo that a person reviews and posts.
 
 ## References
 
