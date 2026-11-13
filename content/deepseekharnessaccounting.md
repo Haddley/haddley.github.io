@@ -243,7 +243,7 @@ I opened Business Central and checked draft 1011.
 ![](assets/images/deepseekharnessaccounting/r2-check-02-credit-memo-1011-tax-area-totals.webp)
 *Tax Area Code ATLANTA, GA, the same as the posted invoice*
 
-**The amounts are right.** The credit is 6 × 42.80 = 256.80, plus tax 7.70, total 264.50, under the $500 limit, so the controller's approval is not triggered. The line description names the purchase order, the receipt and the delivery note. The header says Open in the client and Draft through the API, and either way it is unposted.
+**The amounts are right.** The credit is 6 × 42.80 = 256.80, plus tax 7.70, total 264.50, under the $500 limit, so the controller's approval is not triggered. The line description names the purchase order, the receipt and the delivery note. The header says Open in the web client and Draft through the API, and either way it is unposted.
 
 **The jurisdiction is right.** The tax area is ATLANTA, GA on the draft and on the posted invoice. The first run chose Florida, and built a surtax argument on it. That is the difference a single fact made in the scenario.
 
