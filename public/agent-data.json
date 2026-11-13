@@ -3,7 +3,7 @@
     {
       "slug": "deepseekharnessaccounting",
       "title": "DeepSeek Harness (Part 4)",
-      "description": "A vendor delivers broken items and the wrong items, and the company uses Business Central: a walk through one run of DeepSeek Harness on real Cronus data, from the scenario to two unposted draft credit memos, and what a person still has to do",
+      "description": "A vendor delivers six broken lamps, and the company uses Business Central: two runs of DeepSeek Harness in its web UI on a fresh Sandbox, from a purchase order number to an unposted draft credit memo, with the Microsoft Learn lookups, every screenshot, and what changed between the first run and the second",
       "date": "2026-11-13",
       "categories": [
         "AI",
@@ -14,7 +14,7 @@
     {
       "slug": "deepseekharnessbusinesscentral",
       "title": "Connecting DeepSeek Harness to Business Central",
-      "description": "How I connected DeepSeek Harness to Business Central's MCP server: the deleted app registration, the 414 tools that never loaded, the small read-only configuration that worked, and the drafts-only configuration that let it create unposted credit memos",
+      "description": "How I connected DeepSeek Harness to Business Central's MCP server: the deleted app registration, the 414 tools that never loaded, the small read-only configuration that worked, and how I rebuilt it in a fresh Sandbox as a read-and-draft configuration that creates one unposted credit memo",
       "date": "2026-11-13",
       "categories": [
         "AI",
@@ -3346,5 +3346,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-11-13T05:18:33.467Z"
+  "generatedAt": "2026-11-13T08:59:33.671Z"
 }
