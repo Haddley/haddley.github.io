@@ -13,7 +13,7 @@ slug: "llmbenchmark2"
 
 In [LLM Benchmarking](/posts/llmbenchmark/) I wrote 30 questions that know their own answers, so a checker could mark them with no second model. I said that this works only for questions with one right answer, and that an explanation needs a judge. This post tests both on the 285 prose prompts from my older [llm-accounting-benchmark](https://github.com/Haddley/llm-accounting-benchmark).
 
-I ran six models on them: Qwen3.5 2B, Llama 3.1 8B, Qwen3.5 9B, Gemma 4 12B, Qwen2.5 14B and Gemma 4 26B. Each one answered all 285 prompts, on my laptop, through Ollama.
+I ran six models on them: Qwen3.5 2B, Llama 3.1 8B, Qwen3.5 9B, Gemma 4 12B, Qwen2.5 14B and Gemma 4 26B. Each one answered all 285 prompts through Ollama.
 
 ## What is in the 285 prompts
 
@@ -177,4 +177,3 @@ I plan to rerun the six models with a larger answer cap, so that the "no letter"
 
 - [LLM Benchmarking](/posts/llmbenchmark/): part 1, with 30 questions and a checker
 - [llm-accounting-benchmark](https://github.com/Haddley/llm-accounting-benchmark): the 285 prompts and the rubric
-- [Azure AI Foundry agent: Our AI Agent and DeepSeek with search](/posts/azurefoundryagent7/): the radar style that I borrowed
