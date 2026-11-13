@@ -8,7 +8,7 @@ topics: [business-central-extensions, leaflet-maps, control-add-ins, al-programm
 tools: [Microsoft Dynamics 365 Business Central, Leaflet.js, ChatGPT, AL]
 status: current
 checked: "2026-11-05"
-source_hash: "f530c09541ac"
+source_hash: "887a0acd57b9"
 generated_by: gemma4:12b
 ---
 

@@ -8,7 +8,7 @@ topics: ["llm-benchmarking", "model-evaluation", "prompt-engineering", "local-ll
 tools: ["Ollama", "Python", "Qwen", "Gemma", "Llama"]
 status: current
 checked: "2026-11-12"
-source_hash: "5878f0996777"
+source_hash: "e413dce39a18"
 generated_by: gemma4:12b
 ---
 
@@ -16,7 +16,7 @@ generated_by: gemma4:12b
 
 ## What I did
 - I built a small benchmark with 30 questions and a programmatic checker.
-- I tested six different models on a MacBook Air and a Mac mini.
+- I tested six different models through Ollama.
 - I compared the performance of these models across five levels of complexity.
 - I analyzed how the removal of reasoning instructions affects model accuracy.
 

@@ -8,7 +8,7 @@ topics: [azure-ai-services, openai-models, deployment-setup, chat-playground]
 tools: [Azure OpenAI Service, GPT-4, GPT-3.5, Codex, Whisper, Azure AI Foundry]
 status: current
 checked: "2026-11-05"
-source_hash: "d32dc911d506"
+source_hash: "db52868c2c8b"
 generated_by: gemma4:12b
 ---
 

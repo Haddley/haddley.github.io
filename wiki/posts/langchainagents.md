@@ -8,7 +8,7 @@ topics: [langchain-agents, llm-reasoning, tool-calling, python-environments]
 tools: [LangChain, OpenAI, Wikipedia, DuckDuckGo, Python]
 status: current
 checked: "2026-11-05"
-source_hash: "009ead62845b"
+source_hash: "ed4d99951f52"
 generated_by: gemma4:12b
 ---
 

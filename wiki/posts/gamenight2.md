@@ -9,7 +9,7 @@ topics: [webrtc-connectivity, stun-and-turn, network-topology, nat-traversal]
 tools: [WebRTC, PeerJS, Metered]
 status: current
 checked: "2026-11-05"
-source_hash: "b523f7fe9c6f"
+source_hash: "2712433c7569"
 generated_by: gemma4:12b
 ---
 

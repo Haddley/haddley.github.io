@@ -8,7 +8,7 @@ topics: [copilot-studio, business-central, global-variables, generative-ai, data
 tools: [Microsoft Copilot Studio, Microsoft Dynamics 365 Business Central]
 status: current
 checked: "2026-11-05"
-source_hash: "2f8c829237a9"
+source_hash: "ffcfa5b718ed"
 generated_by: gemma4:12b
 ---
 

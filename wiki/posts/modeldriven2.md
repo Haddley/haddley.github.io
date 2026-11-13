@@ -9,7 +9,7 @@ topics: [model-driven-apps, business-process-flows, data-modeling, power-platfor
 tools: [Power Platform, Dynamics 365, Freepik, Flaticon]
 status: current
 checked: "2026-11-05"
-source_hash: "2f15cf28ffa0"
+source_hash: "9492a4945ad4"
 generated_by: gemma4:12b
 ---
 

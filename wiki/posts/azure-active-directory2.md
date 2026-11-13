@@ -9,7 +9,7 @@ topics: [azure-active-directory, ms-identity-library, cors-configuration, single
 tools: [Microsoft Azure, Visual Studio Code, Express, MSAL]
 status: current
 checked: "2026-11-05"
-source_hash: "4c45036656a0"
+source_hash: "948c80b1cb3d"
 generated_by: gemma4:12b
 ---
 

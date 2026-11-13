@@ -9,7 +9,7 @@ topics: [raspberry-pi, systemd-services, google-assistant, linux-automation]
 tools: [Raspberry Pi 3, Terminal, Google Voice Assistant, AIY Voice Kit]
 status: current
 checked: "2026-11-06"
-source_hash: "cbca8f8aa44a"
+source_hash: "90320cd6adfb"
 generated_by: gemma4:12b
 ---
 

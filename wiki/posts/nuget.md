@@ -8,7 +8,7 @@ topics: [nuget-packages, c-sharp-development, dotnet-cli, automated-testing]
 tools: [NuGet, .NET, GitHub Actions, MSTest, Git]
 status: current
 checked: "2026-11-06"
-source_hash: "33327083c050"
+source_hash: "7ee14ac3cd4d"
 generated_by: gemma4:12b
 ---
 

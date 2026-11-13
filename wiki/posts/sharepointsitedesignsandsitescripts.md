@@ -8,7 +8,7 @@ topics: [sharepoint-automation, site-scripts, site-designs, powershell-administr
 tools: [SharePoint Online, PowerShell, JSON]
 status: current
 checked: "2026-11-06"
-source_hash: "cf61e404cb45"
+source_hash: "07350132ab24"
 generated_by: gemma4:12b
 ---
 

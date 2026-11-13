@@ -8,7 +8,7 @@ topics: [business-central, per-tenant-extensions, devops-automation, docker-cont
 tools: [Business Central, AL-Go, VS Code, Docker, GitHub, PowerShell]
 status: current
 checked: "2026-11-05"
-source_hash: "2536ce4adabc"
+source_hash: "2d9fa5d438fd"
 generated_by: gemma4:12b
 ---
 

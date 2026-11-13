@@ -8,7 +8,7 @@ topics: [azure-static-web-apps, identity-management, environment-variables, web-
 tools: [Azure Static Web Apps, Azure Active Directory, JSON]
 status: current
 checked: "2026-11-06"
-source_hash: "7b12eadd46fd"
+source_hash: "14d6e1362228"
 generated_by: gemma4:12b
 ---
 

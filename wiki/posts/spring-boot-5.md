@@ -9,7 +9,7 @@ topics: [graphql-schema, spring-boot, h2-database, many-to-many-relationships]
 tools: [Spring for GraphQL, GraphQL Java, H2 Database, GraphiQL, Spring Initializr]
 status: current
 checked: "2026-11-06"
-source_hash: "b54fafab854f"
+source_hash: "3b0915d1fe5c"
 generated_by: gemma4:12b
 ---
 

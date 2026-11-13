@@ -8,7 +8,7 @@ topics: [visual-regression-testing, vanilla-javascript, html5-canvas, automated-
 tools: [Claude Code, Playwright, HTML5 Canvas, JavaScript]
 status: current
 checked: "2026-11-06"
-source_hash: "f3774d7a4dbc"
+source_hash: "a92a324782d8"
 generated_by: gemma4:12b
 ---
 

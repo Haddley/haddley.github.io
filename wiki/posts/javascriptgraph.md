@@ -8,7 +8,7 @@ topics: [microsoft-graph, oauth-authentication, node-js-development, azure-activ
 tools: ["Microsoft Graph API", "Azure Active Directory", "@azure/identity", "@microsoft/microsoft-graph-client", "isomorphic-fetch", "readline-sync"]
 status: current
 checked: "2026-11-05"
-source_hash: "b55e6df48127"
+source_hash: "e70b93940115"
 generated_by: gemma4:12b
 ---
 

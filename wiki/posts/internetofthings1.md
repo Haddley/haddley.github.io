@@ -9,7 +9,7 @@ topics: [internet-of-things, mqtt-protocol, esp8266-microcontroller, arduino-ide
 tools: [ESP8266, DHT11, Arduino IDE, PubSubClient, eclipse-mosquitto, MQTT Explorer]
 status: current
 checked: "2026-11-05"
-source_hash: "ea90a641cb4c"
+source_hash: "bb9393c5d5f4"
 generated_by: gemma4:12b
 ---
 

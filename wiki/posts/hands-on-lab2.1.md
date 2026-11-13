@@ -8,7 +8,7 @@ topics: [company-setup, data-migration, accounting-periods, configuration-worksh
 tools: [Microsoft Dynamics 365 Business Central]
 status: current
 checked: "2026-11-05"
-source_hash: "9b4e1eba61c0"
+source_hash: "1cf80a766533"
 generated_by: gemma4:12b
 ---
 

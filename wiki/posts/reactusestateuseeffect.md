@@ -8,7 +8,7 @@ topics: [react-hooks, state-management, side-effects, api-fetching]
 tools: [React, useState, useEffect, useContext, useReducer]
 status: current
 checked: "2026-11-06"
-source_hash: "dacdd4f2db15"
+source_hash: "3eeee0b9698f"
 generated_by: gemma4:12b
 ---
 

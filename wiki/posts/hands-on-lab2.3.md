@@ -8,7 +8,7 @@ topics: [dimension-setup, data-validation, ledger-analysis, business-central-con
 tools: [Microsoft Dynamics 365 Business Central]
 status: current
 checked: "2026-11-05"
-source_hash: "aaf218e0f650"
+source_hash: "eed34bb69301"
 generated_by: gemma4:12b
 ---
 

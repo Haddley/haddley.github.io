@@ -8,7 +8,7 @@ topics: [ngrx-state-management, angular-components, redux-pattern, typescript-in
 tools: [NgRx, Angular, npm, TypeScript]
 status: current
 checked: "2026-11-06"
-source_hash: "76198cae968c"
+source_hash: "db8f541f8dbf"
 generated_by: gemma4:12b
 ---
 

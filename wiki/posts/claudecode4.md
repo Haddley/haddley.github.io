@@ -9,7 +9,7 @@ topics: [claude-code, permission-management, configuration-layers, shell-automat
 tools: [Claude Code, PowerShell, pwsh]
 status: current
 checked: "2026-11-05"
-source_hash: "d095f3efc416"
+source_hash: "fb81284abd94"
 generated_by: gemma4:12b
 ---
 

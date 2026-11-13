@@ -8,7 +8,7 @@ topics: [business-central, tenant-administration, sandbox-environments, data-saf
 tools: [Business Central, Admin Center]
 status: current
 checked: "2026-11-05"
-source_hash: "460eb18e8906"
+source_hash: "43daa0bcaddf"
 generated_by: gemma4:12b
 ---
 

@@ -8,7 +8,7 @@ topics: [react-development, azure-authentication, github-codespaces, static-web-
 tools: [GitHub Codespaces, React, Azure Static Web Apps, GitHub Actions, Azure Active Directory, React Router]
 status: current
 checked: "2026-11-05"
-source_hash: "fb9742ed25bb"
+source_hash: "647ab9f19e3f"
 generated_by: gemma4:12b
 ---
 

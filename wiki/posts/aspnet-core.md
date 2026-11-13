@@ -8,7 +8,7 @@ topics: [asp-net-core, razor-pages, entity-framework, scaffolding]
 tools: [Visual Studio 2022, ASP.NET Core, Entity Framework, dotnet-ef]
 status: current
 checked: "2026-11-05"
-source_hash: "013a9c4075fd"
+source_hash: "440e06ba75b1"
 generated_by: gemma4:12b
 ---
 

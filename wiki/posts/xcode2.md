@@ -9,7 +9,7 @@ topics: [opengl-graphics, glfw-library, macos-development, cpp-programming]
 tools: [Xcode, OpenGL, GLFW, macOS]
 status: current
 checked: "2026-11-06"
-source_hash: "dd1da202d0d9"
+source_hash: "f09a28418425"
 generated_by: gemma4:12b
 ---
 

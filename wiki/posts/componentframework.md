@@ -8,7 +8,7 @@ topics: [power-apps-component-framework, model-driven-apps, canvas-apps, custom-
 tools: [Power Apps, Visual Studio, Power Platform Tools, npm, webpack, React]
 status: current
 checked: "2026-11-05"
-source_hash: "e242ac11f459"
+source_hash: "b9a668a90ac5"
 generated_by: gemma4:12b
 ---
 

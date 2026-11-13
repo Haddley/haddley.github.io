@@ -9,7 +9,7 @@ topics: [dynamics-365-sales, power-apps-customization, many-to-one-relationships
 tools: [Microsoft Dynamics 365 Sales, Power Apps, Solution Management]
 status: current
 checked: "2026-11-05"
-source_hash: "3d7ab28bc786"
+source_hash: "6d4df73e04a3"
 generated_by: gemma4:12b
 ---
 

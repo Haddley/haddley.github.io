@@ -9,7 +9,7 @@ topics: [nextjs-framework, client-side-navigation, css-modules, styled-component
 tools: [Next.js, React, CSS Modules, Styled Components, Babel]
 status: current
 checked: "2026-11-06"
-source_hash: "c3c85a662751"
+source_hash: "3b8d0a87285e"
 generated_by: gemma4:12b
 ---
 

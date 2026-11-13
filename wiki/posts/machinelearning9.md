@@ -9,7 +9,7 @@ topics: [neural-networks, image-classification, data-normalization, machine-lear
 tools: [TensorFlow, Keras, Python, Matplotlib]
 status: current
 checked: "2026-11-05"
-source_hash: "89c27fe8b560"
+source_hash: "c377bd2f76fa"
 generated_by: gemma4:12b
 ---
 

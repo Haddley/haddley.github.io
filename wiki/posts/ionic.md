@@ -8,7 +8,7 @@ topics: [cross-platform-apps, progressive-web-apps, offline-sync, ionic-framewor
 tools: [Ionic, IndexedDB, Localbase, PouchDB, CouchDB, Azure Storage]
 status: current
 checked: "2026-11-05"
-source_hash: "70c9c2b8f13e"
+source_hash: "1ad7d19825a6"
 generated_by: gemma4:12b
 ---
 

@@ -9,7 +9,7 @@ topics: [vb-net, asp-net-core, minimal-apis, cross-platform-development]
 tools: [.NET Core, VB.NET, dotnet CLI]
 status: current
 checked: "2026-11-05"
-source_hash: "6039cfe2c675"
+source_hash: "8b5c5ae933ea"
 generated_by: gemma4:12b
 ---
 

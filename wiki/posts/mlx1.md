@@ -8,7 +8,7 @@ topics: [mlx-framework, apple-silicon, model-quantization, llm-fine-tuning]
 tools: [MLX, Claude, Ollama, llama.cpp, Python]
 status: current
 checked: "2026-11-05"
-source_hash: "ae01701e0c2f"
+source_hash: "4244e3b5625c"
 generated_by: gemma4:12b
 ---
 

@@ -9,7 +9,7 @@ topics: [ai-agents, llm-tool-calling, streaming-interfaces, recursive-developmen
 tools: [Claude Code, Next.js, TypeScript, Tailwind, Ollama]
 status: current
 checked: "2026-11-05"
-source_hash: "7eb10c530a6a"
+source_hash: "cf78fbbc9911"
 generated_by: gemma4:12b
 ---
 

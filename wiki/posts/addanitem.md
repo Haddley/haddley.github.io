@@ -8,7 +8,7 @@ topics: [power-apps, business-central, patch-function, virtual-tables]
 tools: [Power Apps, Business Central, Copilot, Power Fx]
 status: current
 checked: "2026-11-05"
-source_hash: "9483571b6301"
+source_hash: "69e6691c4f35"
 generated_by: gemma4:12b
 ---
 

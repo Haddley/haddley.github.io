@@ -8,7 +8,7 @@ topics: [ngrx-entity, json-server, unit-testing, state-management]
 tools: [NgRx Entity, json-server, Jasmine, Chrome, npm]
 status: current
 checked: "2026-11-06"
-source_hash: "845e4fcfff76"
+source_hash: "f44e920c1dc3"
 generated_by: gemma4:12b
 ---
 

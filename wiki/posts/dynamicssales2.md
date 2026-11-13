@@ -9,7 +9,7 @@ topics: [dynamics-365-sales, lead-conversion, business-process-flow, solution-ma
 tools: [Dynamics 365 Sales, Power Platform]
 status: current
 checked: "2026-11-05"
-source_hash: "c3e60a53945f"
+source_hash: "feef0d19b687"
 generated_by: gemma4:12b
 ---
 

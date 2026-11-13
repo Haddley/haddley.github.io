@@ -8,7 +8,7 @@ topics: [sharepoint-syntex, metadata-extraction, natural-language-processing, do
 tools: [SharePoint, Syntex]
 status: current
 checked: "2026-11-06"
-source_hash: "12b9db55ca49"
+source_hash: "09d782e8e841"
 generated_by: gemma4:12b
 ---
 

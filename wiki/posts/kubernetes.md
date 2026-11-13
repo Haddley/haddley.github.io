@@ -8,7 +8,7 @@ topics: [kubernetes, container-orchestration, docker-desktop, pod-management]
 tools: [Kubernetes, Docker Desktop, YAML]
 status: current
 checked: "2026-11-05"
-source_hash: "84817b5373f7"
+source_hash: "0598be825e65"
 generated_by: gemma4:12b
 ---
 

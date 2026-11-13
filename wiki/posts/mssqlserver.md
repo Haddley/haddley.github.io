@@ -9,7 +9,7 @@ topics: [sql-server, docker-containers, database-integration, multi-language-que
 tools: [Docker, Microsoft SQL Server, C, JavaScript, Java, NuGet]
 status: current
 checked: "2026-11-06"
-source_hash: "dcdb896c22a7"
+source_hash: "dd82f31587c6"
 generated_by: gemma4:12b
 ---
 

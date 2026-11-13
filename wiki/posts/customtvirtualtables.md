@@ -8,7 +8,7 @@ topics: [virtual-tables, business-central-integration, dataverse-integration, cu
 tools: [Business Central, Power Platform, Dataverse, Power Apps, AL Language]
 status: current
 checked: "2026-11-05"
-source_hash: "b2d45769b8bf"
+source_hash: "736babe88e94"
 generated_by: gemma4:12b
 ---
 

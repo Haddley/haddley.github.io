@@ -8,7 +8,7 @@ topics: [sharepoint-deployment, azure-virtual-machines, active-directory-setup, 
 tools: [Azure Portal, SharePoint Server 2019, SQL Server, Microsoft Remote Desktop, SSMS]
 status: current
 checked: "2026-11-06"
-source_hash: "39daa295455b"
+source_hash: "d11e587b2173"
 generated_by: gemma4:12b
 ---
 

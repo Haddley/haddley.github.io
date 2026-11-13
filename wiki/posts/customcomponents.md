@@ -8,7 +8,7 @@ topics: [power-apps-components, reusable-ui, custom-properties, event-handling]
 tools: [Power Apps, Power Apps Component Library]
 status: current
 checked: "2026-11-05"
-source_hash: "d0a5c90cb94d"
+source_hash: "e516c90fd499"
 generated_by: gemma4:12b
 ---
 

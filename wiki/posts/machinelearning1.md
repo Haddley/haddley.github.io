@@ -9,7 +9,7 @@ topics: [machine-learning, reinforcement-learning, supervised-learning, computer
 tools: [Matchbox, Raspberry Pi, YOLO v3 Tiny, Scikit-Learn]
 status: current
 checked: "2026-11-05"
-source_hash: "db920117dd03"
+source_hash: "1d8975477d31"
 generated_by: gemma4:12b
 ---
 

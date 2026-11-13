@@ -9,7 +9,7 @@ topics: [agentic-ai, model-context-protocol, rag-systems, legal-tech]
 tools: [Claude Code, FastAPI, React, Postgres, pgvector, Docker]
 status: current
 checked: "2026-11-05"
-source_hash: "3baf4ee10b1c"
+source_hash: "709a699a8209"
 generated_by: gemma4:12b
 ---
 

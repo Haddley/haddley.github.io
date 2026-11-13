@@ -8,7 +8,7 @@ topics: [angular-modules, component-architecture, lazy-loading, property-binding
 tools: [Angular, npm, TypeScript, CSS]
 status: current
 checked: "2026-11-05"
-source_hash: "a2ae28a5ee28"
+source_hash: "048b3b4f10c3"
 generated_by: gemma4:12b
 ---
 

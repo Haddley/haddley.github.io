@@ -8,7 +8,7 @@ topics: [business-process-automation, webhook-vs-polling, azure-logic-apps, busi
 tools: [Azure Logic Apps, Dynamics 365 Business Central, Office 365, Salesforce, SQL]
 status: current
 checked: "2026-11-05"
-source_hash: "8fb7cc4c491d"
+source_hash: "8dfeb9e66120"
 generated_by: gemma4:12b
 ---
 

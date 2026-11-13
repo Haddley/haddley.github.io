@@ -8,7 +8,7 @@ topics: [blazor-webassembly, asp-net-core, entity-framework-core, sql-server-sto
 tools: [Visual Studio, Blazor WebAssembly, ASP.NET Core, Microsoft SQL Server, Entity Framework Core, HttpClient]
 status: current
 checked: "2026-11-06"
-source_hash: "55e231bb67e2"
+source_hash: "7795fbe4282f"
 generated_by: gemma4:12b
 ---
 

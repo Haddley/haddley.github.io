@@ -8,7 +8,7 @@ topics: [html5-games, phaser-framework, game-loops, asset-loading]
 tools: [Phaser, HTML5]
 status: current
 checked: "2026-11-06"
-source_hash: "d24e4fb700cf"
+source_hash: "f20555877e69"
 generated_by: gemma4:12b
 ---
 

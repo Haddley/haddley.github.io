@@ -8,7 +8,7 @@ topics: [web-vr, web-xr, virtual-reality, augmented-reality, web-development]
 tools: [WebVR, WebXR Device API, Moon Rider, GitHub, SingSaber]
 status: current
 checked: "2026-11-06"
-source_hash: "eb82d67d0375"
+source_hash: "6fbf574ae85f"
 generated_by: gemma4:12b
 ---
 

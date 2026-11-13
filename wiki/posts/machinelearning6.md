@@ -9,7 +9,7 @@ topics: [machine-learning, data-splitting, feature-normalization, diabetes-predi
 tools: [sklearn, python]
 status: current
 checked: "2026-11-05"
-source_hash: "0245be205dce"
+source_hash: "ac257333300a"
 generated_by: gemma4:12b
 ---
 

@@ -9,7 +9,7 @@ topics: [power-pages, form-metadata, table-permissions, navigation-logic]
 tools: [Power Pages, Dataverse, Basic Form Metadata]
 status: current
 checked: "2026-11-06"
-source_hash: "92cb64ab6ed7"
+source_hash: "390ea76fb25f"
 generated_by: gemma4:12b
 ---
 

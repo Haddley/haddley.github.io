@@ -8,7 +8,7 @@ topics: [model-driven-apps, business-central-integration, quick-view-forms, virt
 tools: [Power Platform, Business Central, Dataverse, Power Apps]
 status: current
 checked: "2026-11-06"
-source_hash: "68f7184de10c"
+source_hash: "dc375c008e42"
 generated_by: gemma4:12b
 ---
 

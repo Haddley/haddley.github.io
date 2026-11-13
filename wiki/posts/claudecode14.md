@@ -9,7 +9,7 @@ topics: [claude-code, legal-tech, deposition-summaries, prompt-engineering]
 tools: [Claude Code, VS Code, Markdown]
 status: current
 checked: "2026-11-05"
-source_hash: "5cd30b56ffbf"
+source_hash: "348ebbe31ef7"
 generated_by: gemma4:12b
 ---
 

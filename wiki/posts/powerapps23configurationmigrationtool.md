@@ -9,7 +9,7 @@ topics: [power-apps, data-migration, configuration-management, environment-sync]
 tools: [Power Apps, Configuration Migration Tool, Power Platform Tools Visual Studio Code Extension, pac tool, Visual Studio Code]
 status: current
 checked: "2026-11-06"
-source_hash: "b8cf028f01a2"
+source_hash: "6eb217e2196a"
 generated_by: gemma4:12b
 ---
 

@@ -9,7 +9,7 @@ topics: [unit-testing, no-build-tools, peer-to-peer-networking, automated-audits
 tools: [PeerJS, HTML, JavaScript, GitHub]
 status: current
 checked: "2026-11-05"
-source_hash: "bb69130974a8"
+source_hash: "7a441b67a7f8"
 generated_by: gemma4:12b
 ---
 

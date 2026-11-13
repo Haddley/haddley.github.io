@@ -8,7 +8,7 @@ topics: [npm-modules, javascript-development, automated-testing, github-actions]
 tools: [npm, mocha, chai, GitHub Actions, Node.js]
 status: current
 checked: "2026-11-06"
-source_hash: "46291888834b"
+source_hash: "7e73ab02d95e"
 generated_by: gemma4:12b
 ---
 

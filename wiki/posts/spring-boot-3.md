@@ -9,7 +9,7 @@ topics: [spring-boot, spring-data-jpa, h2-database, azure-deployment]
 tools: [Spring Boot, Spring Data JPA, H2 Database, GitHub, Azure]
 status: current
 checked: "2026-11-06"
-source_hash: "a11841a01406"
+source_hash: "d33cbd130bd4"
 generated_by: gemma4:12b
 ---
 

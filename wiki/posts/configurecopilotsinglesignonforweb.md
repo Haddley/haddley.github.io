@@ -8,7 +8,7 @@ topics: [single-sign-on, copilot-studio, authentication-configuration, applicati
 tools: [Microsoft Copilot Studio, Microsoft Entra ID, GitHub]
 status: current
 checked: "2026-11-05"
-source_hash: "1f839bf25657"
+source_hash: "7008f9817f04"
 generated_by: gemma4:12b
 ---
 

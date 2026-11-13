@@ -9,7 +9,7 @@ topics: [machine-learning, linear-regression, data-visualization, predictive-mod
 tools: [Python, Excel, Google Colab, Plotly, Matplotlib]
 status: current
 checked: "2026-11-05"
-source_hash: "b044f8cc1437"
+source_hash: "5453cb1c74ae"
 generated_by: gemma4:12b
 ---
 

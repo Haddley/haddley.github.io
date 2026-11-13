@@ -8,7 +8,7 @@ topics: [microsoft-graph, graph-explorer, sharepoint-online, api-authentication]
 tools: [Microsoft Graph, Graph Explorer, Microsoft 365, Azure Active Directory, Dynamics 365, OneDrive]
 status: current
 checked: "2026-11-05"
-source_hash: "b7566ab2f3de"
+source_hash: "3f11c847ae8b"
 generated_by: gemma4:12b
 ---
 

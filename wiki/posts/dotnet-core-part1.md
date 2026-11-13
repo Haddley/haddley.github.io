@@ -9,7 +9,7 @@ topics: [rest-api, dotnet-core, swagger-documentation, static-files]
 tools: [.NET Core, Swagger, React, Microsoft]
 status: current
 checked: "2026-11-05"
-source_hash: "953bc71df8ad"
+source_hash: "2f76128a693c"
 generated_by: gemma4:12b
 ---
 

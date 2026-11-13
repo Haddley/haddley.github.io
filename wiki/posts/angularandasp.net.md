@@ -8,7 +8,7 @@ topics: [asp-net-core, angular, single-page-applications, visual-studio-template
 tools: [Visual Studio, ASP.NET Core, Angular]
 status: current
 checked: "2026-11-05"
-source_hash: "bf1bf6f48489"
+source_hash: "e44e5c9bc75d"
 generated_by: gemma4:12b
 ---
 

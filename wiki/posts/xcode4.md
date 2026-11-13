@@ -9,7 +9,7 @@ topics: [opengl-glsl, matrix-math, shader-uniforms, rotation-logic]
 tools: [OpenGL, GLM, C++, Xcode]
 status: current
 checked: "2026-11-06"
-source_hash: "f217462269fd"
+source_hash: "55599b696c8b"
 generated_by: gemma4:12b
 ---
 

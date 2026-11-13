@@ -9,7 +9,7 @@ topics: [semantic-kernel, ai-orchestration, prompt-flow, agentic-workflows]
 tools: [Semantic Kernel, Python, Sequential Planner]
 status: current
 checked: "2026-11-06"
-source_hash: "8ee873183f3b"
+source_hash: "18aaea965df4"
 generated_by: gemma4:12b
 ---
 

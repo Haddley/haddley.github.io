@@ -9,7 +9,7 @@ topics: [power-pages, virtual-tables, synthetic-relations, table-permissions, bu
 tools: [Microsoft Power Pages, Dynamics 365 Business Central, Microsoft Dataverse, Microsoft Entra]
 status: current
 checked: "2026-11-06"
-source_hash: "39525eb618ea"
+source_hash: "8d9cf6503000"
 generated_by: gemma4:12b
 ---
 

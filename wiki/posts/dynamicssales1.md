@@ -9,7 +9,7 @@ topics: [dynamics-365-sales, form-customization, solution-management, power-apps
 tools: [Dynamics 365 Sales, Power Apps, Microsoft Power Platform]
 status: current
 checked: "2026-11-05"
-source_hash: "fe9acf7eb2f8"
+source_hash: "3a1854914fd6"
 generated_by: gemma4:12b
 ---
 

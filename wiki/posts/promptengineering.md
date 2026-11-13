@@ -8,7 +8,7 @@ topics: [prompt-engineering, ai-communication, prompt-structure]
 tools: [AI]
 status: current
 checked: "2026-11-06"
-source_hash: "bd649935bd0e"
+source_hash: "fe5ef113f1ed"
 generated_by: gemma4:12b
 ---
 

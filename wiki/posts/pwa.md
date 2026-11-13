@@ -8,7 +8,7 @@ topics: [progressive-web-applications, service-workers, offline-capabilities, we
 tools: [GitHub, GitHub Desktop, Azure Portal, pwa-asset-generator, Google Chrome DevTools, Lighthouse]
 status: current
 checked: "2026-11-06"
-source_hash: "6918471ef6fd"
+source_hash: "f4e4f23ce583"
 generated_by: gemma4:12b
 ---
 

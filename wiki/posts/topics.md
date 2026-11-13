@@ -8,7 +8,7 @@ topics: [copilot-studio, business-central-connector, dynamics-365-integration, v
 tools: [Copilot Studio, Business Central, Dynamics 365]
 status: current
 checked: "2026-11-06"
-source_hash: "e2f5d0a69dde"
+source_hash: "03d620ec1422"
 generated_by: gemma4:12b
 ---
 

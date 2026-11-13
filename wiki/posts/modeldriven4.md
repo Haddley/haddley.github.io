@@ -9,7 +9,7 @@ topics: [power-fx, model-driven-apps, command-bars, low-code-development]
 tools: [Power FX, Power Apps, Power Automate, Microsoft Power Platform]
 status: current
 checked: "2026-11-05"
-source_hash: "d36d70184768"
+source_hash: "9348322dcf70"
 generated_by: gemma4:12b
 ---
 

@@ -9,7 +9,7 @@ topics: [content-type-migration, sharepoint-online-migration, metadata-preservat
 tools: [ShareGate, SharePoint 2019, SharePoint Online, Microsoft Excel, Azure]
 status: current
 checked: "2026-11-06"
-source_hash: "02541a6291bb"
+source_hash: "15e465c740c6"
 generated_by: gemma4:12b
 ---
 

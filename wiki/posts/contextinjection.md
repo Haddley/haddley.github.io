@@ -8,7 +8,7 @@ topics: [context-injection, rag-systems, prompt-engineering, llm-applications]
 tools: [GPT-4, ChatGPT]
 status: current
 checked: "2026-11-05"
-source_hash: "84ae8acb5315"
+source_hash: "d85d48c2642b"
 generated_by: gemma4:12b
 ---
 

@@ -8,7 +8,7 @@ topics: [api-gateways, microservices, reverse-proxies, kubernetes-orchestration]
 tools: [nginx, Docker, Kubernetes, React, Azure, AWS]
 status: current
 checked: "2026-11-05"
-source_hash: "beec44a9a5b6"
+source_hash: "d3ae88fa9914"
 generated_by: gemma4:12b
 ---
 

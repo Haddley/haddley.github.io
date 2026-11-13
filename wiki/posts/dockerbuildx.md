@@ -8,7 +8,7 @@ topics: [docker-buildx, multi-platform-builds, container-architecture, graphql-s
 tools: [Docker, Buildx, Visual Studio Code, Node.js, Raspberry Pi]
 status: current
 checked: "2026-11-05"
-source_hash: "a83403cee14f"
+source_hash: "d1f181da9d42"
 generated_by: gemma4:12b
 ---
 

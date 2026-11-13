@@ -8,7 +8,7 @@ topics: [text-to-image, stable-diffusion, gpu-acceleration, python-environments]
 tools: [Stable Diffusion, Jupyter Notebook, Hugging Face, Conda, PyTorch, Accelerate]
 status: current
 checked: "2026-11-06"
-source_hash: "ee7dee9a375e"
+source_hash: "0ab3f9d7bad2"
 generated_by: gemma4:12b
 ---
 

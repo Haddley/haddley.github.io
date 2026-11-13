@@ -8,7 +8,7 @@ topics: [raspberry-pi, ssh-access, network-configuration, micro-sd-imaging]
 tools: [Raspberry Pi Imager, Raspbian, SSH, Ping]
 status: current
 checked: "2026-11-06"
-source_hash: "b9bb54b26746"
+source_hash: "4fc5867caec4"
 generated_by: gemma4:12b
 ---
 

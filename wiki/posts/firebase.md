@@ -8,7 +8,7 @@ topics: [firebase-integration, real-time-database, push-notifications, web-hosti
 tools: [Firebase, Cloud Firestore, Cloud Storage, Firebase Hosting, Firebase Cloud Messaging, Visual Studio Code]
 status: current
 checked: "2026-11-05"
-source_hash: "72232f5d0bd1"
+source_hash: "6f47be383f13"
 generated_by: gemma4:12b
 ---
 

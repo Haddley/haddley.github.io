@@ -9,7 +9,7 @@ topics: [spring-mvc, thymeleaf-templating, web-routing, crud-operations]
 tools: [Spring Boot, Thymeleaf, Bootstrap, jQuery, H2 Database]
 status: current
 checked: "2026-11-06"
-source_hash: "46c2813ca54f"
+source_hash: "be0d4ff52e13"
 generated_by: gemma4:12b
 ---
 

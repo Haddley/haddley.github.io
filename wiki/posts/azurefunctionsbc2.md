@@ -9,7 +9,7 @@ topics: [azure-functions, business-central-extensions, qr-code-generation, base6
 tools: [Business Central, Azure Functions, HttpClient, MediaSet]
 status: current
 checked: "2026-11-05"
-source_hash: "7b0200881711"
+source_hash: "fd278a7bef95"
 generated_by: gemma4:12b
 ---
 

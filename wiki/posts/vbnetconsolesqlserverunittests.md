@@ -8,7 +8,7 @@ topics: [test-driven-development, refactoring, separation-of-concerns, unit-test
 tools: [Visual Basic, SQL Server, ChatGPT, NUnit, .NET Framework]
 status: current
 checked: "2026-11-06"
-source_hash: "f3c774c43025"
+source_hash: "3377f6ee174e"
 generated_by: gemma4:12b
 ---
 

@@ -8,7 +8,7 @@ topics: [asp-net-mvc, entity-framework, sql-server, visual-basic-net]
 tools: [Visual Studio 2019, ASP.NET MVC 5, Docker, SQL Server, Azure Data Studio]
 status: current
 checked: "2026-11-05"
-source_hash: "3aa2865f48f9"
+source_hash: "dfb39c43e769"
 generated_by: gemma4:12b
 ---
 

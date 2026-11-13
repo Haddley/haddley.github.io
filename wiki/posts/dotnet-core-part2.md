@@ -9,7 +9,7 @@ topics: [blazor-server, microsoft-graph, azure-active-directory, asp-net-core]
 tools: [Microsoft Graph, Blazor, ASP.NET Core, Azure Active Directory, dotnet CLI]
 status: current
 checked: "2026-11-05"
-source_hash: "244a863a48f4"
+source_hash: "5f11c4b321bd"
 generated_by: gemma4:12b
 ---
 

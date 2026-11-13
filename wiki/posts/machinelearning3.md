@@ -9,7 +9,7 @@ topics: [machine-learning, model-training, image-classification, tensorflow-js]
 tools: [Teachable Machine, TensorFlow.js, Visual Studio Code]
 status: current
 checked: "2026-11-05"
-source_hash: "dc65b3c1b695"
+source_hash: "f6c768b7a228"
 generated_by: gemma4:12b
 ---
 

@@ -9,7 +9,7 @@ topics: [opengl-graphics, cpp-programming, shader-programming, xcode-development
 tools: [Xcode, C++, OpenGL, GLEW, GLSL]
 status: current
 checked: "2026-11-06"
-source_hash: "813029979c73"
+source_hash: "33e29bdd30e4"
 generated_by: gemma4:12b
 ---
 

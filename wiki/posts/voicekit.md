@@ -9,7 +9,7 @@ topics: [raspberry-pi, voice-assistant, remote-desktop, hardware-assembly]
 tools: [Raspberry Pi Zero, Google AIY Voice Kit, xrdp, voice_recorder]
 status: current
 checked: "2026-11-06"
-source_hash: "309774b8f7d5"
+source_hash: "3f69b979f057"
 generated_by: gemma4:12b
 ---
 

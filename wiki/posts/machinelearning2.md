@@ -9,7 +9,7 @@ topics: [machine-learning, tensorflow-js, pre-trained-models, computer-vision]
 tools: [TensorFlow.js, TensorFlow, ModelDepot.io]
 status: current
 checked: "2026-11-05"
-source_hash: "c06eeea3a597"
+source_hash: "f6e7de83b1c2"
 generated_by: gemma4:12b
 ---
 

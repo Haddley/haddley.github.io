@@ -8,7 +8,7 @@ topics: [superior-oblique-palsy, binocular-vision, head-tilt-test, cyclotorsion,
 tools: [OpenXR, Quest 3, Quest Pro, HTML, Python, C++]
 status: current
 checked: "2026-11-05"
-source_hash: "d98f09acb551"
+source_hash: "b33fa246a2bc"
 generated_by: gemma4:12b
 ---
 

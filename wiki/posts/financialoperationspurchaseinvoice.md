@@ -8,7 +8,7 @@ topics: [payment-journals, vendor-payments, batch-processing, general-ledger-ent
 tools: [Business Central, Payment Journal, Suggest Vendor Payments, Preview Posting]
 status: current
 checked: "2026-11-05"
-source_hash: "85ad7064b98e"
+source_hash: "8a5313b50b1e"
 generated_by: gemma4:12b
 ---
 

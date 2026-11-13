@@ -8,7 +8,7 @@ topics: [purchase-orders, patch-function, collections, business-central-integrat
 tools: [Power Apps, Business Central, Patch]
 status: current
 checked: "2026-11-05"
-source_hash: "8839321fbdd9"
+source_hash: "e642c6bcc3ad"
 generated_by: gemma4:12b
 ---
 

@@ -8,7 +8,7 @@ topics: [react-development, azure-hosting, github-integration, static-web-apps]
 tools: [React, GitHub, Azure, Visual Studio Code, GitHub Desktop, Live Server]
 status: current
 checked: "2026-11-05"
-source_hash: "2941824bd067"
+source_hash: "6d2f2fb22ffd"
 generated_by: gemma4:12b
 ---
 

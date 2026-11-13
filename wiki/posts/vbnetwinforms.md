@@ -8,7 +8,7 @@ topics: [vb-net-winforms, asp-net-core-api, json-deserialization, http-client-re
 tools: [Visual Studio, Postman, curl, Newtonsoft.Json, Swagger]
 status: current
 checked: "2026-11-06"
-source_hash: "d8f9e3285f0c"
+source_hash: "e64ca74a91cc"
 generated_by: gemma4:12b
 ---
 

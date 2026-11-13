@@ -8,7 +8,7 @@ topics: [blazor-wasm, asp-net-core, single-page-applications, web-api]
 tools: [Visual Studio, Blazor WebAssembly, ASP.NET Core]
 status: current
 checked: "2026-11-05"
-source_hash: "23ed090b1287"
+source_hash: "c927b752ae31"
 generated_by: gemma4:12b
 ---
 

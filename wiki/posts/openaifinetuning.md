@@ -8,7 +8,7 @@ topics: [fine-tuning, openai-api, prompt-engineering, python-development]
 tools: [OpenAI API, GPT-3.5, GPT-4, Claude Sonnet, Streamlit]
 status: current
 checked: "2026-11-06"
-source_hash: "47bc32a36e85"
+source_hash: "1c06b14123a3"
 generated_by: gemma4:12b
 ---
 

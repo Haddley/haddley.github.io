@@ -8,7 +8,7 @@ topics: [real-time-data, firebase-integration, javascript-game-logic, anonymous-
 tools: [Firebase, Firebase Realtime Database, JavaScript, DOM]
 status: current
 checked: "2026-11-06"
-source_hash: "b610e5c772dc"
+source_hash: "9634cad17be4"
 generated_by: gemma4:12b
 ---
 

@@ -9,7 +9,7 @@ topics: [model-driven-apps, dataverse-security, business-units, power-platform-s
 tools: [Power Apps, Dataverse, Power Platform]
 status: current
 checked: "2026-11-05"
-source_hash: "0869e2385170"
+source_hash: "9c299d08b53f"
 generated_by: gemma4:12b
 ---
 

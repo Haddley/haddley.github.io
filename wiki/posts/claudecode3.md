@@ -9,7 +9,7 @@ topics: [context-management, claude-code, prompt-engineering, session-control]
 tools: [Claude Code, CLAUDE.md]
 status: current
 checked: "2026-11-05"
-source_hash: "3bdc2e13477c"
+source_hash: "6168e510e6ea"
 generated_by: gemma4:12b
 ---
 

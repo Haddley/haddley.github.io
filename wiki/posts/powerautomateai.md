@@ -8,7 +8,7 @@ topics: [power-automate, azure-ai-foundry, dataverse-integration, json-parsing]
 tools: [Power Automate, Azure AI Foundry, Dataverse, Model-driven app]
 status: current
 checked: "2026-11-06"
-source_hash: "317ddccb022c"
+source_hash: "26f5d1b18859"
 generated_by: gemma4:12b
 ---
 

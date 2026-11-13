@@ -9,7 +9,7 @@ topics: [spring-boot, github-actions, azure-app-service, continuous-deployment]
 tools: [Spring Boot, start.spring.io, Visual Studio Code, GitHub, Microsoft Azure, Maven]
 status: current
 checked: "2026-11-06"
-source_hash: "8cf611cb50b1"
+source_hash: "e9b6002a1404"
 generated_by: gemma4:12b
 ---
 

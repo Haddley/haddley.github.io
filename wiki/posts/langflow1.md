@@ -9,7 +9,7 @@ topics: [langflow-setup, text-to-speech, python-environment, llm-applications]
 tools: [Langflow, OpenAI, Homebrew, Visual Studio Code, Python, pydub]
 status: current
 checked: "2026-11-05"
-source_hash: "b1698cbc37a1"
+source_hash: "e85847040b2a"
 generated_by: gemma4:12b
 ---
 

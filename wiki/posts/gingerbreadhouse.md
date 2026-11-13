@@ -8,7 +8,7 @@ topics: [raspberry-pi, python-environment, opencv-integration, oled-display]
 tools: [Raspberry Pi, Python, OpenCV, Luma.oled, SSH, raspi-config]
 status: current
 checked: "2026-11-05"
-source_hash: "732409329d5e"
+source_hash: "1746d855b941"
 generated_by: gemma4:12b
 ---
 

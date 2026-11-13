@@ -8,7 +8,7 @@ topics: [container-images, docker-hub, multi-architecture-support, automated-dep
 tools: [Docker, Docker Hub, Raspberry Pi]
 status: current
 checked: "2026-11-05"
-source_hash: "e2983060b39a"
+source_hash: "caf1c748d894"
 generated_by: gemma4:12b
 ---
 

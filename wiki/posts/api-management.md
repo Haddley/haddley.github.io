@@ -8,7 +8,7 @@ topics: [api-management, custom-connectors, power-apps-integration, api-authenti
 tools: [Azure API Management Service, Power Apps, Swagger, Postman, Chrome]
 status: current
 checked: "2026-11-05"
-source_hash: "d2f36ed12418"
+source_hash: "8b2112da5da1"
 generated_by: gemma4:12b
 ---
 

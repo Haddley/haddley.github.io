@@ -8,7 +8,7 @@ topics: [ngrx-devtools, state-management, angular-debugging, redux-architecture]
 tools: [Angular, NgRx, Chrome, Redux DevTools]
 status: current
 checked: "2026-11-06"
-source_hash: "97d70808421c"
+source_hash: "f628aff90514"
 generated_by: gemma4:12b
 ---
 

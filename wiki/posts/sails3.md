@@ -9,7 +9,7 @@ topics: [docker-containers, kubernetes-orchestration, amazon-eks, container-regi
 tools: [Docker, Kubernetes, kubectl, Amazon ECR, eksctl, Sails]
 status: current
 checked: "2026-11-06"
-source_hash: "0077594d6725"
+source_hash: "201ca75790e6"
 generated_by: gemma4:12b
 ---
 

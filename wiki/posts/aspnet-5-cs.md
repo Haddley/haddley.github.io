@@ -8,7 +8,7 @@ topics: [asp-net-mvc, entity-framework, database-scaffolding, c-sharp]
 tools: [Visual Studio 2019, ASP.NET MVC 5, ADO.NET Entity Data Model, Entity Framework]
 status: current
 checked: "2026-11-05"
-source_hash: "9b67ed0146b5"
+source_hash: "0ccc0545a2f6"
 generated_by: gemma4:12b
 ---
 

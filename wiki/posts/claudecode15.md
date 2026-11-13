@@ -9,7 +9,7 @@ topics: [hardware-debugging, serial-communication, embedded-systems, llm-agent-w
 tools: [Claude Code, Arduino, arduino-cli, LiquidCrystal, TKLCD, Python]
 status: current
 checked: "2026-11-05"
-source_hash: "015e2a3456f9"
+source_hash: "f7d14fb67c13"
 generated_by: gemma4:12b
 ---
 

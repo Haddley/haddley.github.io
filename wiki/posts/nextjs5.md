@@ -9,7 +9,7 @@ topics: [next-js, progressive-web-apps, ionic-framework, web-components]
 tools: [Next.js, next-pwa, Ionic, Safari, Chrome]
 status: current
 checked: "2026-11-06"
-source_hash: "8d20f75a871a"
+source_hash: "d7bb528d13f9"
 generated_by: gemma4:12b
 ---
 

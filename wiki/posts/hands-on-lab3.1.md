@@ -8,7 +8,7 @@ topics: [accounting-periods, currency-management, global-dimensions, user-permis
 tools: [Microsoft Dynamics 365 Business Central]
 status: current
 checked: "2026-11-05"
-source_hash: "86a869bfccb0"
+source_hash: "2a50b183066f"
 generated_by: gemma4:12b
 ---
 

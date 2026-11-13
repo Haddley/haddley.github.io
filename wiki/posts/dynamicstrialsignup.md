@@ -8,7 +8,7 @@ topics: [dynamics-365, microsoft-tenant-setup, trial-registration]
 tools: [Dynamics 365, Microsoft 365, Microsoft Azure]
 status: current
 checked: "2026-11-05"
-source_hash: "0830077445cb"
+source_hash: "f78b72441dc9"
 generated_by: gemma4:12b
 ---
 

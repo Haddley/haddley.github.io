@@ -8,7 +8,7 @@ topics: [dotnet-core, amazon-eks, kubernetes-deployment, docker-containerization
 tools: [Amazon EKS, Visual Studio Code, Docker, eksctl, kubectl]
 status: current
 checked: "2026-11-05"
-source_hash: "64b9982505cb"
+source_hash: "19b50b6bb918"
 generated_by: gemma4:12b
 ---
 

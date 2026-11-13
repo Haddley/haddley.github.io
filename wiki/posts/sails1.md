@@ -9,7 +9,7 @@ topics: [azure-devops, sails-js, ci-cd-pipelines, container-registry]
 tools: [Azure DevOps, Sails.js, Node.js, GitHub, Visual Studio Code]
 status: current
 checked: "2026-11-06"
-source_hash: "6efa296b9fc3"
+source_hash: "3fc4eab61576"
 generated_by: gemma4:12b
 ---
 

@@ -9,7 +9,7 @@ topics: [oauth2-authentication, spring-security, role-based-access-control, gith
 tools: [Spring Boot, Spring Security, GitHub, Spring Initializr]
 status: current
 checked: "2026-11-06"
-source_hash: "0cb49a68b413"
+source_hash: "5910475c26f0"
 generated_by: gemma4:12b
 ---
 

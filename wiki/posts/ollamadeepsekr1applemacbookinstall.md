@@ -8,7 +8,7 @@ topics: [local-llms, model-benchmarking, deepseek-r1, hardware-optimization]
 tools: [DeepSeek-R1, M2 MacBook Air, M4 MacBook Air, M1 Max Mac Studio]
 status: current
 checked: "2026-11-06"
-source_hash: "e3ea3ea6b4e4"
+source_hash: "7c206860b1dd"
 generated_by: gemma4:12b
 ---
 

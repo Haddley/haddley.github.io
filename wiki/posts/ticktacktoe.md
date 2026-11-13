@@ -8,7 +8,7 @@ topics: [real-time-database, firebase-authentication, game-logic, web-developmen
 tools: [Firebase, HTML, CSS, JavaScript, ChatGPT]
 status: current
 checked: "2026-11-06"
-source_hash: "4617535f7975"
+source_hash: "d0177247e4d4"
 generated_by: gemma4:12b
 ---
 

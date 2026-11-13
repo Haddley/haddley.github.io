@@ -8,7 +8,7 @@ topics: [business-central, al-programming, table-extensions, page-extensions, ll
 tools: [Business Central, Codellama, LM Studio]
 status: current
 checked: "2026-11-06"
-source_hash: "600b55aef4ed"
+source_hash: "2cfe3fd35b4f"
 generated_by: gemma4:12b
 ---
 

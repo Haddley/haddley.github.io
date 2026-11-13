@@ -8,7 +8,7 @@ topics: [dataverse-reporting, ssdt-setup, dynamics-365-integration]
 tools: [Visual Studio, SQL Server Data Tools, Microsoft Dynamics 365, Microsoft Application Error Reporting]
 status: current
 checked: "2026-11-05"
-source_hash: "c39579e29437"
+source_hash: "6582e143e618"
 generated_by: gemma4:12b
 ---
 

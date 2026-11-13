@@ -8,7 +8,7 @@ topics: [devops-automation, azure-deployment, github-actions, api-development]
 tools: [Azure, GitHub Actions, GitHub Desktop, Visual Studio Code]
 status: current
 checked: "2026-11-05"
-source_hash: "7c91771e16c5"
+source_hash: "ddad5e8077df"
 generated_by: gemma4:12b
 ---
 

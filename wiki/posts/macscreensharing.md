@@ -8,7 +8,7 @@ topics: [mac-os, vnc-protocol, remote-desktop, secure-shell]
 tools: [macOS, Safari, SSH]
 status: current
 checked: "2026-11-05"
-source_hash: "ee05a37271bf"
+source_hash: "5ff32c6e55b6"
 generated_by: gemma4:12b
 ---
 

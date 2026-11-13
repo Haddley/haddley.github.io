@@ -8,7 +8,7 @@ topics: [software-evolution, mergers-and-acquisitions, cloud-infrastructure, ent
 tools: [Microsoft Dynamics, Microsoft Dataverse, Business Central, Power Apps, Microsoft CRM, Navision]
 status: current
 checked: "2026-11-05"
-source_hash: "6de46be99b94"
+source_hash: "30fbff48099d"
 generated_by: gemma4:12b
 ---
 

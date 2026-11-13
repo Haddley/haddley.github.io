@@ -9,7 +9,7 @@ topics: [voice-commands, raspberry-pi, python-programming, system-automation]
 tools: [Raspberry Pi, Python, vcgencmd, lsusb, api.ipify.org]
 status: current
 checked: "2026-11-06"
-source_hash: "aa69d7c398c7"
+source_hash: "965234879b81"
 generated_by: gemma4:12b
 ---
 

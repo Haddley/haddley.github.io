@@ -8,7 +8,7 @@ topics: [warehouse-management, put-away-logic, bin-types, inventory-flow]
 tools: [Business Central]
 status: current
 checked: "2026-11-06"
-source_hash: "105b53a83050"
+source_hash: "3a6ebc475680"
 generated_by: gemma4:12b
 ---
 

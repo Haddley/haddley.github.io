@@ -9,7 +9,7 @@ topics: [plan-mode, extended-thinking, code-refactoring, ai-reasoning]
 tools: [Claude Code, Claude]
 status: current
 checked: "2026-11-05"
-source_hash: "28cfd1ea008a"
+source_hash: "dd0ad08c763d"
 generated_by: gemma4:12b
 ---
 

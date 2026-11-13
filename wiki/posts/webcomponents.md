@@ -8,7 +8,7 @@ topics: [web-components, custom-elements, html-templates, web-accessibility]
 tools: [Chrome, Opera, JavaScript, HTML]
 status: current
 checked: "2026-11-06"
-source_hash: "3da175236c4b"
+source_hash: "a293640df2cd"
 generated_by: gemma4:12b
 ---
 

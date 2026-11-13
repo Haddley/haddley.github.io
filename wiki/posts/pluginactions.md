@@ -8,7 +8,7 @@ topics: [plugin-actions, copilot-development, generative-ai, dynamic-chaining]
 tools: [Copilot, Generative AI]
 status: current
 checked: "2026-11-06"
-source_hash: "76aa39628e20"
+source_hash: "85c13b1ef69e"
 generated_by: gemma4:12b
 ---
 

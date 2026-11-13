@@ -9,7 +9,7 @@ topics: [sails-js, azure-cosmos-db, mongodb-integration, deployment-workflow]
 tools: [Sails.js, Azure Cosmos DB, MongoDB, GitHub, Blueprint API]
 status: current
 checked: "2026-11-06"
-source_hash: "7aaf520deda1"
+source_hash: "b86f61b97a28"
 generated_by: gemma4:12b
 ---
 

@@ -8,7 +8,7 @@ topics: [data-lifecycle-management, microsoft-purview, retention-policies, adapt
 tools: [Microsoft Purview, SharePoint]
 status: current
 checked: "2026-11-06"
-source_hash: "616c3bf47b32"
+source_hash: "83cd56038378"
 generated_by: gemma4:12b
 ---
 

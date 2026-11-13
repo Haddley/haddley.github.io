@@ -8,7 +8,7 @@ topics: [object-detection, computer-vision, raspberry-pi, tensorflow-lite]
 tools: [OpenCV, Raspberry Pi, Python, TensorFlow Lite, Virtualenv]
 status: current
 checked: "2026-11-06"
-source_hash: "0ab5eef453bd"
+source_hash: "a800239b0682"
 generated_by: gemma4:12b
 ---
 

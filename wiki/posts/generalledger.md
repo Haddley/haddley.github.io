@@ -8,7 +8,7 @@ topics: [general-ledger, chart-of-accounts, business-central, accounting-princip
 tools: [Microsoft Dynamics 365 Business Central]
 status: current
 checked: "2026-11-05"
-source_hash: "e7d89df09809"
+source_hash: "3630ba65af16"
 generated_by: gemma4:12b
 ---
 

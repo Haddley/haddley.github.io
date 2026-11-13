@@ -8,7 +8,7 @@ topics: [sentence-similarity, natural-language-processing, cosine-similarity, se
 tools: [Xenova Transformers, OpenAI]
 status: current
 checked: "2026-11-06"
-source_hash: "9b353ce96c15"
+source_hash: "c5eebd931632"
 generated_by: gemma4:12b
 ---
 

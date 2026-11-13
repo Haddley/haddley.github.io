@@ -8,7 +8,7 @@ topics: [canvas-apps, business-central-integration, power-platform-environments,
 tools: [Microsoft Dynamics 365 Business Central, Power Platform, Canvas Apps, Power Apps]
 status: current
 checked: "2026-11-05"
-source_hash: "9a20ab5d1c36"
+source_hash: "cd530b656859"
 generated_by: gemma4:12b
 ---
 

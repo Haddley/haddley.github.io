@@ -8,7 +8,7 @@ topics: [model-driven-apps, business-central-integration, subgrid-configuration,
 tools: [Power Platform, Business Central, Model Driven App]
 status: current
 checked: "2026-11-05"
-source_hash: "0458308e8e74"
+source_hash: "42b54d5850a3"
 generated_by: gemma4:12b
 ---
 

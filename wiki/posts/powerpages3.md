@@ -9,7 +9,7 @@ topics: [power-pages, dataverse-relationships, business-central-integration, tab
 tools: [Power Pages, Dataverse, Microsoft Dynamics 365 Business Central]
 status: current
 checked: "2026-11-06"
-source_hash: "d76a64c0f93a"
+source_hash: "9aac6e6479d4"
 generated_by: gemma4:12b
 ---
 

@@ -8,7 +8,7 @@ topics: [cloud-flows, business-central-integration, json-parsing, variable-manag
 tools: [Copilot Studio, Power Automate, Business Central, JSON]
 status: current
 checked: "2026-11-05"
-source_hash: "33be48e4789a"
+source_hash: "74dd1f919520"
 generated_by: gemma4:12b
 ---
 

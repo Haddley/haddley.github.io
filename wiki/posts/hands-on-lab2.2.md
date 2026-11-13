@@ -8,7 +8,7 @@ topics: [data-migration, configuration-packages, master-data-management, excel-i
 tools: [Microsoft Dynamics 365 Business Central, Excel]
 status: current
 checked: "2026-11-05"
-source_hash: "cfd58f9d8872"
+source_hash: "7d16839ca88a"
 generated_by: gemma4:12b
 ---
 

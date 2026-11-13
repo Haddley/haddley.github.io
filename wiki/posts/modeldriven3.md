@@ -9,7 +9,7 @@ topics: [model-driven-apps, javascript-integration, business-process-flows, web-
 tools: [Power Apps, Dynamics 365, JavaScript, Power Apps Component Framework]
 status: current
 checked: "2026-11-05"
-source_hash: "1568affa5644"
+source_hash: "36b2d0e6b0e0"
 generated_by: gemma4:12b
 ---
 

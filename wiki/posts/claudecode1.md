@@ -9,7 +9,7 @@ topics: [agentic-cli, terminal-tools, ai-assisted-coding, vscode-integration]
 tools: [Claude Code, Anthropic, PowerShell, VS Code]
 status: current
 checked: "2026-11-05"
-source_hash: "26238fa39a7f"
+source_hash: "ab6446bdd3e5"
 generated_by: gemma4:12b
 ---
 

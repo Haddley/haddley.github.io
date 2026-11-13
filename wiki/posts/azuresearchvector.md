@@ -9,7 +9,7 @@ topics: [retrieval-augmented-generation, vector-search, azure-ai-search, embeddi
 tools: [Azure AI Foundry, Azure AI Search, Azure OpenAI, Azure Blob Storage]
 status: current
 checked: "2026-11-05"
-source_hash: "135c3ac9dd45"
+source_hash: "a3a4c18a4903"
 generated_by: gemma4:12b
 ---
 

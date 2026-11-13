@@ -9,7 +9,7 @@ topics: [ai-agents, dynamics-365, vercel-ai-sdk, tool-calling, llm-orchestration
 tools: [Ollama, Vercel AI SDK, Dynamics 365, Zod, Qwen]
 status: current
 checked: "2026-11-05"
-source_hash: "4212cb92bfa2"
+source_hash: "727c365a3953"
 generated_by: gemma4:12b
 ---
 
