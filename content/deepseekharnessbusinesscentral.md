@@ -153,6 +153,34 @@ Three details are worth knowing before you copy this:
 - **The picker replaces the focused row.** Adding one object through the picker silently replaced my Items line, and I noticed only when I counted the tools. Adding a new line and typing the object ID avoids it.
 - **The data under the configuration can change.** The Cronus demo company refreshes some data, and a reset or a recreated company would probably delete the configurations too, because they are stored as company data. The Entra app registration and the cached sign-in token are not affected. Writing down the object list makes a rebuild a matter of minutes.
 
+## Starting again in a Sandbox
+
+For the second run of the vendor dispute I wanted a clean company that I had made on purpose, so I created a new **Sandbox** environment in the Business Central admin center. Its state is Preparing for a few minutes, and then Active.
+
+![](assets/images/deepseekharnessbusinesscentral/sbx-01-admin-environments-preparing.webp)
+*The admin center while the Sandbox is being prepared: state Preparing, version 29.1*
+
+![](assets/images/deepseekharnessbusinesscentral/sbx-03-sandbox-home.webp)
+*The new Sandbox opened as CRONUS USA, Inc. The banner says it is for test, demo or development only*
+
+A new environment has none of the MCP configurations from the old one, because they are stored as company data. The list was empty:
+
+![](assets/images/deepseekharnessbusinesscentral/sbx-04-mcp-configurations-empty.webp)
+*The MCP Server Configurations list in the new Sandbox: nothing to show*
+
+So I rebuilt the one I needed, called **Drafts**: a new configuration, then a new line for each object by typing its object ID, with Allow Read on every line. These are the 16 objects, which are the ones a vendor dispute reads, plus the two credit memo pages: Items 30008, Vendors 30010, Accounts 30014, Tax Groups 30015, G/L Entries 30018, Tax Areas 30036, Purchase Invoices 30042, Purchase Invoice Lines 30047, Purchase Receipts 30064, Purchase Receipt Lines 30065, Purchase Orders 30066, Purchase Order Lines 30067, Item Ledger Entries 30069, Purchase Credit Memos 30083, Purchase Credit Memo Lines 30084 and Accounting Periods 30086.
+
+![](assets/images/deepseekharnessbusinesscentral/sbx-05-drafts-config-read-lines.webp)
+*The Drafts configuration with its read lines. Active is still off, and so is Unblock Edit Tools*
+
+Three things were different from the first time:
+
+- **The grid jumps.** After the page reloads, the lines grid can scroll to its last row and show only that row. Pressing the Up arrow in the grid brings the others back. Nothing had been lost.
+- **Create and Modify wait for a person.** Their boxes were greyed out until the **Unblock Edit Tools** switch was on, and I left that switch to a person, as before.
+- **Active goes last, and saving takes about 15 seconds.** An active configuration is locked, so I ticked Create and Modify on the two credit memo pages first.
+
+Asking the server for its tools from outside returned 26: the list tools, plus create and modify for credit memos and their lines, and nothing else.
+
 ## Connecting Microsoft Learn as well
 
 The harness also needs the product documentation. Microsoft Learn has its own public MCP server at `https://learn.microsoft.com/api/mcp`, with no sign-in. It offers three tools, `microsoft_docs_search`, `microsoft_docs_fetch` and `microsoft_code_sample_search`. I added it to the harness profile in the same way as the Business Central row, as a second MCP client entry. Because both servers appear as tools in the same list, the model chooses between them like any other tools, and the harness logs each call.
