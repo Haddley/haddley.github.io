@@ -1,6 +1,39 @@
 {
   "posts": [
     {
+      "slug": "deepseekharnessaccounting",
+      "title": "DeepSeek Harness (Part 4)",
+      "description": "A vendor delivers broken items and the wrong items, and the company uses Business Central: a walk through one run of DeepSeek Harness on real Cronus data, from the scenario to two unposted draft credit memos, and what a person still has to do",
+      "date": "2026-11-13",
+      "categories": [
+        "AI",
+        "Business Central"
+      ],
+      "tags": "deepseek, ai-agent, business-central, human-in-the-loop, mcp"
+    },
+    {
+      "slug": "deepseekharnessbusinesscentral",
+      "title": "Connecting DeepSeek Harness to Business Central",
+      "description": "How I connected DeepSeek Harness to Business Central's MCP server: the deleted app registration, the 414 tools that never loaded, the small read-only configuration that worked, and the drafts-only configuration that let it create unposted credit memos",
+      "date": "2026-11-13",
+      "categories": [
+        "AI",
+        "Business Central"
+      ],
+      "tags": "mcp, business-central, deepseek, oauth, entra"
+    },
+    {
+      "slug": "llmbenchmark",
+      "title": "LLM Benchmarking",
+      "description": "A from-scratch version of my accounting benchmark: 30 questions that know their own answers, a checker instead of a judge, and six models run on a MacBook Air and a Mac mini",
+      "date": "2026-11-12",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "benchmarking, evaluation, ollama, accounting, qwen, gemma"
+    },
+    {
       "slug": "localagent2",
       "title": "Blog AI Assistant (Part 2)",
       "description": "How the blog assistant works now: a gatekeeper in front of a hosted Qwen3.5 9B, an agent loop that runs in the browser, and a checked wiki of the posts",
@@ -3313,5 +3346,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-11-11T17:01:37.687Z"
+  "generatedAt": "2026-11-13T04:45:17.842Z"
 }
