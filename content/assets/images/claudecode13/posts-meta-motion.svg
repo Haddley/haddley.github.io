@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A Claude Code skill that generates Dataverse solution XML</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g class="p" style="animation-delay:0s"><g><path d="M10,34 h20 a6,6 0 0 1 0,12 h-4 v8 h-16 z" fill="#ffb43a"/></g></g>
+<path class="d" style="animation-delay:0.9s" pathLength="1" d="M40,50 H56 M52,46.5 L56,50 L52,53.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g class="p" style="animation-delay:1.4s"><text x="74" y="56" text-anchor="middle" font-size="16" fill="#7cc6f0" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">&lt;/&gt;</text></g>
+<g class="f" style="animation-delay:2.2s"><g><rect x="22" y="70" width="76" height="30" rx="3" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><path d="M22,80 H98 M22,90 H98 M52,70 V100 M76,70 V100" stroke="#5bb4ea" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+</svg>

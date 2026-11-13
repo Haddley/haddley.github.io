@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A custom connector for a REST API hosted from a GitHub repository</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g class="p" style="animation-delay:0s"><g><circle cx="24" cy="56" r="16" fill="#1c2a3d" stroke="#c9d3dd" stroke-width="1.5"/><path d="M18,50 L24,56 L18,62 M28,62 H34" stroke="#c9d3dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+<path class="d" style="animation-delay:0.8s" pathLength="1" d="M42,56 H56 M52,52.5 L56,56 L52,59.5" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g class="p" style="animation-delay:1.4s"><g><rect x="58" y="38" width="28" height="36" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><text x="72" y="62" text-anchor="middle" font-size="9" fill="#2f9e4a" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">API</text></g></g>
+<path class="d" style="animation-delay:2.1s" pathLength="1" d="M88,56 H98 M94,52.5 L98,56 L94,59.5" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g class="p" style="animation-delay:2.6s"><g><rect x="98" y="46" width="14" height="22" rx="3" fill="#ffb43a"/><path d="M102,46 V38 M108,46 V38" stroke="#ffb43a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+</svg>

@@ -6,7 +6,7 @@ date: "2023-10-09"
 categories: ["Power Platform"]
 tags: "model-driven-app, power-fx, formula, dataverse"
 slug: "modeldriven4"
-image: "/assets/images/modeldriven4/office-365-icon-500x500.png"
+image: "/assets/images/modeldriven4/posts-meta.svg"
 ---
 
 

@@ -5,7 +5,7 @@ date: "2023-03-25"
 categories: [".NET"]
 tags: "blazor, web-api, sql-server, stored-procedures"
 slug: "threetier"
-image: "/assets/images/threetier/net-logo.svg"
+image: "/assets/images/threetier/posts-meta.svg"
 ---
 
 

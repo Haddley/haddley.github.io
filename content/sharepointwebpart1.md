@@ -6,7 +6,7 @@ date: "2021-02-11"
 categories: ["Microsoft 365"]
 tags: "sharepoint-framework, spfx, web-part, react"
 slug: "sharepointwebpart1"
-image: "/assets/images/sharepointwebpart1/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png"
+image: "/assets/images/sharepointwebpart1/posts-meta.svg"
 ---
 
 

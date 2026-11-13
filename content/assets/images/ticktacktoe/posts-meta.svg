@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Tic-tac-toe played by two players through a Firebase Realtime Database</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<path d="M44,24 V88 M76,24 V88 M24,44 H96 M24,68 H96" stroke="#c9d3dd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><path d="M30,28 L40,38 M40,28 L30,38" stroke="#5bb4ea" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<circle cx="60" cy="56" r="6" fill="none" stroke="#ffb43a" stroke-width="3"/>
+<g><path d="M82,74 L92,84 M92,74 L82,84" stroke="#5bb4ea" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<path d="M104,86 C100,94 98,98 100,104 C102,110 110,110 112,104 C114,98 108,94 104,86 Z" fill="#ffb43a"/>
+</svg>

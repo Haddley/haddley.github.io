@@ -6,7 +6,7 @@ date: "2026-05-02"
 categories: ["Microsoft 365"]
 tags: "sharepoint, power-automate, power-apps"
 slug: "sharepointdevicerequest"
-image: "/assets/images/powerautomate/office-365-icon-500x500.png"
+image: "/assets/images/sharepointdevicerequest/posts-meta.svg"
 ---
 
 I built a Device Request list in SharePoint Online to let IT staff submit requests for new equipment. The list uses a custom Power Apps form that locks the Status field so only an approver can change it, keeping the Pending/Approved/Rejected workflow clean. A Power Automate flow then fires on every new submission and emails a confirmation back to the requester automatically.

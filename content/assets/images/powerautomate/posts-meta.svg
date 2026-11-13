@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A flow that creates a Microsoft Teams team whenever a list item is added</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><rect x="6" y="30" width="34" height="48" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><path d="M12,44 H34 M12,54 H34 M12,64 H28" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><g><circle cx="36" cy="34" r="6" fill="#2f9e4a"/><path d="M33.0,34 H39.0 M36,31.0 V37.0" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+<path d="M42,54 H56 M52,50.5 L56,54 L52,57.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><circle cx="66" cy="54" r="10" fill="#ffb43a"/><path d="M68,47 L62,55 H67 L64,62 L71,53 H66 Z" fill="#0f1b2d"/></g>
+<path d="M78,54 H90 M86,50.5 L90,54 L86,57.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><g><circle cx="96" cy="44" r="6" fill="#5bb4ea"/><path d="M86,64 a10,9 0 0 1 20,0 z" fill="#5bb4ea"/></g><g><circle cx="104" cy="48" r="6" fill="#2f9e4a"/><path d="M94,68 a10,9 0 0 1 20,0 z" fill="#2f9e4a"/></g></g>
+</svg>

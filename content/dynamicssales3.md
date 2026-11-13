@@ -7,7 +7,7 @@ categories: ["Microsoft Dynamics"]
 tags: "dynamics-365-sales, crm, custom-tables, dataverse"
 hidden: false
 slug: "dynamicssales3"
-image: "/assets/images/dynamicssales3/dynamics365-color.svg"
+image: "/assets/images/dynamicssales3/posts-meta.svg"
 ---
 
 

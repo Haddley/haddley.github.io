@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A customer card and a chat where the Copilot answers questions about that customer</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<rect x="6" y="26" width="34" height="68" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><circle cx="23" cy="42" r="8" fill="#5bb4ea"/><path d="M12,60 H34 M12,68 H30 M12,76 H34" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path d="M42,60 H52 M48,56.5 L52,60 L48,63.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect x="54" y="22" width="56" height="20" rx="6" fill="#5bb4ea"/><path d="M60,32 H98" stroke="#0f1b2d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<g><rect x="54" y="50" width="56" height="38" rx="6" fill="#2f9e4a"/><path d="M60,60 H100 M60,68 H100 M60,76 H84" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<path d="M100,75 L102.7,81.3 L109,84 L102.7,86.7 L100,93 L97.3,86.7 L91,84 L97.3,81.3 Z" fill="#ffb43a"/>
+</svg>

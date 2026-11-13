@@ -4,7 +4,7 @@ part: 2
 description: "LAN, STUN and TURN in practice — how two phones on different networks actually find each other, and the badge that tells you which path they are using"
 date: "2026-08-16"
 categories: ["JavaScript"]
-image: "/assets/images/gamenight2/hero-badge-tooltip.png"
+image: "/assets/images/gamenight2/posts-meta.svg"
 tags: "webrtc, stun, turn, peerjs, networking"
 hidden: false
 slug: "gamenight2"

@@ -6,7 +6,7 @@ categories: ["AI"]
 tags: "llama-cpp, local-llm, llama, python"
 hidden: false
 slug: "llamacorp"
-image: "/assets/images/llamacorp/jupyter.svg"
+image: "/assets/images/llamacorp/posts-meta.svg"
 ---
 
 

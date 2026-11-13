@@ -6,7 +6,7 @@ date: "2021-10-13"
 categories: ["DevOps"]
 tags: "sails-js, amazon-eks, kubernetes, node"
 slug: "sails3"
-image: "/assets/images/sails3/sailsjs-logo-515x193.png"
+image: "/assets/images/sails3/posts-meta.svg"
 ---
 
 

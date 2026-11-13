@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Two sentences compared by the angle between their vectors</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><rect x="6" y="20" width="48" height="16" rx="6" fill="#5bb4ea"/><path d="M14,35 l-6,8 l10,-2 z" fill="#5bb4ea"/></g>
+<g><rect x="6" y="76" width="48" height="16" rx="6" fill="#2f9e4a"/><path d="M14,91 l-6,8 l10,-2 z" fill="#2f9e4a"/></g>
+<path d="M62,56 L96,38 M62,56 L98,70" stroke="#ffb43a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path d="M84,43 A24,24 0 0 1 86,64" stroke="#c9d3dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<text x="104" y="58" text-anchor="middle" font-size="9" fill="#c9d3dd" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">cos</text>
+</svg>

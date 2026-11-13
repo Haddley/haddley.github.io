@@ -5,7 +5,7 @@ date: "2021-06-27"
 categories: ["Power Platform"]
 tags: "power-apps, custom-connector, rest-api, github"
 slug: "powerappswithrest"
-image: "/assets/images/powerappswithrest/office-365-icon-500x500.png"
+image: "/assets/images/powerappswithrest/posts-meta.svg"
 ---
 
 

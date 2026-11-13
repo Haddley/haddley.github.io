@@ -4,7 +4,7 @@ part: 1
 description: "How the games/ project keeps every phone in sync with no server at all — host-authoritative state over a peer-to-peer mesh"
 date: "2026-08-16"
 categories: ["JavaScript"]
-image: "/assets/images/gamenight1/launcher-grid.webp"
+image: "/assets/images/gamenight1/posts-meta.svg"
 tags: "webrtc, peerjs, peer-to-peer, state-management, multiplayer"
 hidden: false
 slug: "gamenight1"

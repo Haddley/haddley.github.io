@@ -6,7 +6,7 @@ categories: ["Angular","TypeScript","Firebase"]
 tags: "firestore, realtime-database, authentication"
 hidden: false
 slug: "angularfirebase"
-image: "/assets/images/angularfirebase/logo-lockup-firebase-vertical.svg"
+image: "/assets/images/angularfirebase/posts-meta.svg"
 ---
 
 I created a Firebase project using https://console.firebase.google.com

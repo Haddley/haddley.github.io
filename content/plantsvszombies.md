@@ -3,7 +3,7 @@ title: "Plants vs. Zombies Clone"
 description: "Vibe coding a vanilla JS Plants vs. Zombies clone with Claude Code, complete with Playwright visual regression tests"
 date: "2026-06-16"
 categories: ["AI", "JavaScript"]
-image: "/assets/images/plantsvszombies/wallnut-thumbnail.webp"
+image: "/assets/images/plantsvszombies/posts-meta.svg"
 tags: "claude-code, vibe-coding, anthropic, game-development, playwright"
 slug: "plantsvszombies"
 ---

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A Phaser game scene built from a preload step and a create step</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<rect x="8" y="16" width="104" height="88" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/>
+<circle cx="34" cy="50" r="9" fill="#ffb43a"/>
+<rect x="62" y="38" width="34" height="14" rx="3" fill="#2f9e4a"/>
+<rect x="20" y="86" width="80" height="6" rx="3" fill="#5bb4ea"/>
+<path d="M34,60 V84" stroke="#c9d3dd" stroke-width="2" stroke-dasharray="3 3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

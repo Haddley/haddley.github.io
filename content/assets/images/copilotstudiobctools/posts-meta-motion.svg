@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A Copilot Studio agent with find and create tools connected to Business Central</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><circle class="p" style="animation-delay:0s" cx="22" cy="60" r="13" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><circle cx="17.5" cy="58" r="2" fill="#7cc6f0"/><circle cx="26.5" cy="58" r="2" fill="#7cc6f0"/><path d="M17,65 Q22,69 27,65" stroke="#7cc6f0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<path class="d" style="animation-delay:0.6s" pathLength="1" d="M35,60 H44 V36 H50 M44,60 V84 H50" stroke="#5bb4ea" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect class="p" style="animation-delay:1.2s" x="50" y="24" width="28" height="24" rx="4" fill="#1c2a3d" stroke="#ffb43a" stroke-width="1.5"/><circle cx="62" cy="34" r="5" stroke="#ffb43a" stroke-width="2" fill="none"/><path d="M66,38 L71,43" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<g><rect class="p" style="animation-delay:1.5s" x="50" y="72" width="28" height="24" rx="4" fill="#1c2a3d" stroke="#ffb43a" stroke-width="1.5"/><path d="M64,78 V90 M58,84 H70" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<path class="d" style="animation-delay:2.0s" pathLength="1" d="M78,36 H84 V57 H90 M78,84 H84 V63 H90" stroke="#5bb4ea" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><path class="p" style="animation-delay:2.6s" d="M90,48 V72 A10,4 0 0 0 110,72 V48" fill="#1c2a3d" stroke="#7cc6f0" stroke-width="1.5"/><ellipse cx="100" cy="48" rx="10" ry="4" fill="#2f9e4a" stroke="#7cc6f0" stroke-width="1.5"/></g>
+</svg>

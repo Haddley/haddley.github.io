@@ -6,7 +6,7 @@ categories: ["Python","IOT"]
 tags: "raspberry-pi, holiday, gpio"
 hidden: false
 slug: "gingerbreadhouse"
-image: "/assets/images/gingerbreadhouse/raspberry-pi-logo.svg"
+image: "/assets/images/gingerbreadhouse/posts-meta.svg"
 ---
 
 

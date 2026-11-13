@@ -7,7 +7,7 @@ categories: ["Microsoft Dynamics"]
 tags: "dynamics-365-sales, crm, leads, opportunities"
 hidden: false
 slug: "dynamicssales2"
-image: "/assets/images/dynamicssales2/dynamics365-color.svg"
+image: "/assets/images/dynamicssales2/posts-meta.svg"
 ---
 
 

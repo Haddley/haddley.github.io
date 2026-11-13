@@ -7,7 +7,7 @@ categories: ["IOT"]
 tags: "node-red, mqtt, raspberry-pi"
 hidden: false
 slug: "internetofthings2"
-image: "/assets/images/internetofthings2/iot-microchip.svg"
+image: "/assets/images/internetofthings2/posts-meta.svg"
 ---
 
 

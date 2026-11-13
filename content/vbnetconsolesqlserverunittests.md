@@ -5,7 +5,7 @@ date: "2023-05-27"
 categories: ["SQL",".NET"]
 tags: "vb-net, sql-server, unit-tests, tdd"
 slug: "vbnetconsolesqlserverunittests"
-image: "/assets/images/vbnetconsolesqlserverunittests/net-logo.svg"
+image: "/assets/images/vbnetconsolesqlserverunittests/posts-meta.svg"
 ---
 
 

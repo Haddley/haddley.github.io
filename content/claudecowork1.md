@@ -4,7 +4,7 @@ part: 1
 description: "Using the page-line-summary skill in Claude Cowork to generate a deposition summary from a transcript PDF"
 date: "2026-06-04"
 categories: ["AI"]
-image: "/assets/images/claudecode/Claude_AI_symbol.svg"
+image: "/assets/images/claudecowork1/posts-meta.svg"
 tags: "claude-code, ai-agent, anthropic, page-line-summary, legal, litigation"
 hidden: false
 slug: "claudecowork1"

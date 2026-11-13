@@ -5,7 +5,7 @@ date: "2021-05-29"
 categories: ["Microsoft 365", "Azure"]
 tags: "teams-toolkit, teams-app, development"
 slug: "teamstoolkit"
-image: "/assets/images/teamstoolkit/teams-hi-res-icon-2019.svg"
+image: "/assets/images/teamstoolkit/posts-meta.svg"
 ---
 
 

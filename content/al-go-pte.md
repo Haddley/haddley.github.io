@@ -6,7 +6,7 @@ categories: ["Microsoft Dynamics","Business Central","DevOps"]
 tags: "al-go, extensions, github-actions, ci-cd"
 hidden: false
 slug: "al-go-pte"
-image: "/assets/images/al-go-pte/dynamics365-color.svg"
+image: "/assets/images/al-go-pte/posts-meta.svg"
 ---
 
 I changed Business Central by installing apps that add functionality, change behaviour, or give access to 3rd party online services.

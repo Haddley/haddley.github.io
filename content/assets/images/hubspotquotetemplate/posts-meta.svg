@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A customised quote template listing items with start date, term and quantity</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<rect x="8" y="16" width="104" height="88" rx="5" fill="#1c2a3d" stroke="#ffb43a" stroke-width="1.5"/>
+<path d="M16,30 H56" stroke="#ffb43a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<rect x="16" y="42" width="88" height="12" rx="3" fill="#ffb43a"/>
+<path d="M24,48 H36 M48,48 H58 M70,48 H78 M90,48 H96" stroke="#0f1b2d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path d="M24,66 H36 M48,66 H58 M70,66 H78 M90,66 H96 M24,80 H36 M48,80 H58 M70,80 H78 M90,80 H96" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><circle cx="98" cy="26" r="6" fill="#2f9e4a"/><path d="M95.3,26 L97.4,28.4 L101.0,23.6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+</svg>

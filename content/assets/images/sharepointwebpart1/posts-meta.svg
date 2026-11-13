@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A SharePoint Framework web part built with React and TypeScript</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><rect x="8" y="14" width="104" height="92" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><rect x="8" y="14" width="104" height="9" rx="5" fill="#5bb4ea"/><circle cx="15" cy="18.5" r="1.5" fill="#0f1b2d"/><circle cx="20" cy="18.5" r="1.5" fill="#0f1b2d"/></g>
+<g><rect x="16" y="30" width="88" height="22" rx="3" fill="#0f1b2d"/><path d="M16,30 h88" stroke="#5bb4ea" stroke-width="3"/><text x="60" y="46" text-anchor="middle" font-size="9" fill="#ffb43a" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">Web part</text></g>
+<path d="M16,66 H100 M16,78 H88" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><path d="M92,84 l6,-8 l6,8 z" fill="#2f9e4a"/></g>
+</svg>

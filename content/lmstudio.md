@@ -6,7 +6,7 @@ categories: ["AI"]
 tags: "lm-studio, local-llm, llama, meta-llama"
 hidden: false
 slug: "lmstudio"
-image: "/assets/images/lmstudio/mediamodifier-design.png"
+image: "/assets/images/lmstudio/posts-meta.svg"
 ---
 
 

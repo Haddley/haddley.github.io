@@ -6,7 +6,7 @@ categories: ["Business Central"]
 tags: "business-central, dimensions, hands-on-lab, configuration"
 hidden: false
 slug: "hands-on-lab2.3"
-image: "/assets/images/hands-on-lab2.3/dynamics365-color.svg"
+image: "/assets/images/hands-on-lab2.3/posts-meta.svg"
 ---
 
 

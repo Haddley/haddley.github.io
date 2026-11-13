@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A purchase invoice paid with a check from a payment journal</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><rect x="6" y="22" width="34" height="62" rx="4" fill="#c9d3dd"/><path d="M12,34 H34 M12,44 H34 M12,54 H28" stroke="#0f1b2d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M12,72 H34" stroke="#ffb43a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<path d="M42,54 H56 M52,50.5 L56,54 L52,57.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect x="58" y="36" width="52" height="28" rx="3" fill="#2f9e4a"/><path d="M64,46 H92 M64,54 H80" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M92,58 q4,-6 8,0 t8,0" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<path d="M84,66 V82" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><path d="M70,100 L84,84 L98,100 Z" fill="#5bb4ea"/><rect x="72" y="100" width="24" height="4" fill="#5bb4ea"/></g>
+</svg>

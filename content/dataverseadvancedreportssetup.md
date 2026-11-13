@@ -6,7 +6,7 @@ categories: ["SQL","Microsoft Dynamics","Power Platform"]
 tags: "dataverse, reports, advanced-reports"
 hidden: false
 slug: "dataverseadvancedreportssetup"
-image: "/assets/images/dataverseadvancedreportssetup/office-365-icon-500x500.png"
+image: "/assets/images/dataverseadvancedreportssetup/posts-meta.svg"
 ---
 
 

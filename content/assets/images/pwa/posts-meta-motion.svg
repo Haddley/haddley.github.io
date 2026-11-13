@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A progressive web app clock that installs on a phone home screen</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g class="p" style="animation-delay:0s"><g><rect x="34" y="12" width="52" height="96" rx="7" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><path d="M56.0,17 H64.0" stroke="#5bb4ea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+<g class="p" style="animation-delay:0.6s"><g><circle cx="60" cy="52" r="20" fill="#0f1b2d" stroke="#5bb4ea" stroke-width="2"/><path d="M60,52 V40 M60,52 L70,58" stroke="#ffb43a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+<g class="p" style="animation-delay:1.6s"><rect x="44" y="82" width="32" height="14" rx="5" fill="#2f9e4a"/></g>
+<g class="p" style="animation-delay:2.4s"><path d="M92,19 L94.1,23.9 L99,26 L94.1,28.1 L92,33 L89.9,28.1 L85,26 L89.9,23.9 Z" fill="#ffb43a"/></g>
+</svg>

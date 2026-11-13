@@ -5,7 +5,7 @@ date: "2023-03-22"
 categories: ["React",".NET"]
 tags: "asp-net-core, c-sharp, spa"
 slug: "reactandasp.net"
-image: "/assets/images/reactandasp.net/logo512-512x512.png"
+image: "/assets/images/reactandasp.net/posts-meta.svg"
 ---
 
 

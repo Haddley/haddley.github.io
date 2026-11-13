@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A canvas app whose submit button runs an instant flow, embedded in SharePoint</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g class="p" style="animation-delay:0s"><g><rect x="6" y="22" width="32" height="60" rx="7" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><path d="M18.0,27 H26.0" stroke="#5bb4ea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+<g class="p" style="animation-delay:0.6s"><rect x="10" y="62" width="24" height="10" rx="4" fill="#2f9e4a"/></g>
+<path class="d" style="animation-delay:1.2s" pathLength="1" d="M40,52 H52 M48,48.5 L52,52 L48,55.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g class="p" style="animation-delay:1.8s"><g><circle cx="62" cy="52" r="10" fill="#ffb43a"/><path d="M64,45 L58,53 H63 L60,60 L67,51 H62 Z" fill="#0f1b2d"/></g></g>
+<path class="d" style="animation-delay:2.4s" pathLength="1" d="M74,52 H86 M82,48.5 L86,52 L82,55.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g class="p" style="animation-delay:3.0s"><g><rect x="88" y="32" width="26" height="40" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><path d="M93,44 H109 M93,54 H105" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+</svg>

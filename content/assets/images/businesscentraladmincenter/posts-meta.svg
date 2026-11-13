@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>The Admin Center copies a production environment into a safe sandbox</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><g><rect x="6" y="40" width="36" height="40" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><text x="24.0" y="64.0" text-anchor="middle" font-size="11" fill="#7cc6f0" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">BC</text></g><circle cx="38" cy="44" r="4.5" fill="#2f9e4a"/></g>
+<path d="M44,60 H72 M68,56 L72,60 L68,64" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect x="76" y="40" width="36" height="40" rx="5" fill="#1c2a3d" stroke="#ffb43a" stroke-width="1.5" stroke-dasharray="4 3"/><text x="94" y="64" text-anchor="middle" font-size="11" fill="#ffb43a" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">BC</text><circle cx="108" cy="44" r="4.5" fill="#ffb43a"/></g>
+</svg>

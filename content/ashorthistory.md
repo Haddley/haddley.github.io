@@ -6,7 +6,7 @@ categories: ["Microsoft Dynamics","Power Platform","Business Central"]
 tags: "microsoft-dynamics, dataverse, history, crm"
 hidden: false
 slug: "ashorthistory"
-image: "/assets/images/ashorthistory/dynamics365-color.svg"
+image: "/assets/images/ashorthistory/posts-meta.svg"
 ---
 
 :::brain-power Before you read on

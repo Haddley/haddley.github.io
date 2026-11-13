@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A deposition transcript turned into a page and line summary table</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><rect x="6" y="24" width="34" height="50" rx="3" fill="#c9d3dd"/><rect x="10" y="28" width="26" height="7" rx="2" fill="#5bb4ea"/><path d="M10,46.5 H36 M10,54.0 H36 M10,61.5 H28.1" stroke="#0f1b2d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<path d="M42,48 H56 M52,44.5 L56,48 L52,51.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect x="58" y="26" width="52" height="68" rx="3" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><path d="M80,26 V94 M58,52 H110 M58,66 H110 M58,80 H110" stroke="#5bb4ea" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><rect x="58" y="26" width="52" height="10" rx="3" fill="#5bb4ea"/></g>
+<path d="M64,58 H74 M64,72 H74 M64,86 H74" stroke="#ffb43a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path d="M84,58 H104 M84,72 H100 M84,86 H104" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

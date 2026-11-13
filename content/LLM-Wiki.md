@@ -3,7 +3,7 @@ title: "LLM Wiki"
 description: "Building a Claude Code-powered personal knowledge base inspired by Andrej Karpathy's LLM Wiki — ingesting PDFs, emails, and notes into structured wiki pages"
 date: "2026-04-20"
 categories: ["AI"]
-image: "/assets/images/LLMWiki/obsidian-logo.svg"
+image: "/assets/images/LLM-Wiki/posts-meta.svg"
 tags: "claude-code, ai-agent, anthropic, agentic-coding, ollama, llm"
 hidden: false
 slug: "LLM-Wiki"

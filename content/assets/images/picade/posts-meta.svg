@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A mini arcade cabinet with a screen, joystick and buttons</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<path d="M24,100 L30,22 H90 L96,100 Z" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/>
+<rect x="36" y="30" width="48" height="30" rx="3" fill="#0f1b2d"/>
+<circle cx="52" cy="46" r="5" fill="#2f9e4a"/><circle cx="68" cy="42" r="4" fill="#ffb43a"/>
+<g><rect x="30" y="68" width="60" height="20" rx="4" fill="#0f1b2d"/><circle cx="44" cy="78" r="4" fill="#d9483b"/><circle cx="68" cy="78" r="3.5" fill="#ffb43a"/><circle cx="78" cy="78" r="3.5" fill="#2f9e4a"/></g>
+</svg>

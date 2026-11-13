@@ -6,7 +6,7 @@ categories: [".NET"]
 tags: "unit-tests, xunit, testing, tdd"
 hidden: false
 slug: "aspnetcoreunittests"
-image: "/assets/images/aspnetcoreunittests/net-logo.svg"
+image: "/assets/images/aspnetcoreunittests/posts-meta.svg"
 ---
 
 

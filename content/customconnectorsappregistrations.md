@@ -6,7 +6,7 @@ categories: ["Power Platform", "Azure"]
 tags: "custom-connector, app-registration, azure-ad, oauth"
 hidden: false
 slug: "customconnectorsappregistrations"
-image: "/assets/images/customconnectorsappregistrations/office-365-icon-500x500.png"
+image: "/assets/images/customconnectorsappregistrations/posts-meta.svg"
 ---
 
 

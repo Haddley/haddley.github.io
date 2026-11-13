@@ -5,7 +5,7 @@ date: "2021-07-24"
 categories: ["Mobile"]
 tags: "pwa, progressive-web-app, service-worker"
 slug: "pwa"
-image: "/assets/images/pwa/progressive-web-apps-logo.svg"
+image: "/assets/images/pwa/posts-meta.svg"
 ---
 
 

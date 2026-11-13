@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A lead to opportunity business process flow with a stage added</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<path class="p" style="animation-delay:0s" d="M6,34 H34 L42,44 L34,54 H6 L14,44 Z" fill="#5bb4ea"/>
+<path class="p" style="animation-delay:0.6s" d="M40,34 H68 L76,44 L68,54 H40 L48,44 Z" fill="#5bb4ea"/>
+<path class="p" style="animation-delay:1.2s" d="M74,34 H102 L110,44 L102,54 H74 L82,44 Z" fill="#2f9e4a"/>
+<rect class="p" style="animation-delay:2.0s" x="14" y="66" width="92" height="40" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/>
+<path class="d" style="animation-delay:2.5s" pathLength="1" d="M22,78 H58 M22,92 H76" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><circle class="p" style="animation-delay:3.0s" cx="96" cy="80" r="7" fill="#ffb43a"/><path d="M92.5,80 H99.5 M96,76.5 V83.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+</svg>

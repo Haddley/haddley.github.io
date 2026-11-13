@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A model-driven table with notes, activities and a timeline</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<rect x="8" y="16" width="104" height="88" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/>
+<path d="M24,30 V92" stroke="#5bb4ea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<circle cx="24" cy="38" r="5" fill="#ffb43a"/>
+<path d="M36,38 H100" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<circle cx="24" cy="58" r="5" fill="#2f9e4a"/>
+<path d="M36,58 H92" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<circle cx="24" cy="78" r="5" fill="#5bb4ea"/>
+<path d="M36,78 H98" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

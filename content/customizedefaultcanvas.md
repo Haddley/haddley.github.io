@@ -6,7 +6,7 @@ categories: ["Power Platform"]
 tags: "copilot-studio, customize, chatbot, canvas"
 hidden: false
 slug: "customizedefaultcanvas"
-image: "/assets/images/customizedefaultcanvas/office-365-icon-500x500.png"
+image: "/assets/images/customizedefaultcanvas/posts-meta.svg"
 ---
 
 

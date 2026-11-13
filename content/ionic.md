@@ -6,7 +6,7 @@ categories: ["React","Mobile","TypeScript"]
 tags: "pouchdb,couchdb,offline"
 hidden: false
 slug: "ionic"
-image: "/assets/images/ionic/logo-192x192.png"
+image: "/assets/images/ionic/posts-meta.svg"
 ---
 
 

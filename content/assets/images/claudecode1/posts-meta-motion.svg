@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Installing Claude Code in the terminal and starting it</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g class="f" style="animation-delay:0s"><g><rect x="8" y="22" width="104" height="76" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><path d="M15,30 l5,4 l-5,4" stroke="#2f9e4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+<path class="d" style="animation-delay:0.4s" pathLength="1" d="M26,36 H70" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g class="p" style="animation-delay:1.2s"><g><path d="M60,52 V72 M52,66 L60,74 L68,66" stroke="#ffb43a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+<path class="d" style="animation-delay:1.8s" pathLength="1" d="M30,86 H90" stroke="#2f9e4a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g class="p" style="animation-delay:2.6s"><g><circle cx="98" cy="86" r="6" fill="#2f9e4a"/><path d="M95.3,86 L97.4,88.4 L101.0,83.6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+</svg>

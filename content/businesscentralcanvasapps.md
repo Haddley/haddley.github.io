@@ -6,7 +6,7 @@ categories: ["Microsoft Dynamics","Business Central","Power Platform"]
 tags: "canvas-apps, power-apps, business-central, integration"
 hidden: false
 slug: "businesscentralcanvasapps"
-image: "/assets/images/businesscentralcanvasapps/dynamics365-color.svg"
+image: "/assets/images/businesscentralcanvasapps/posts-meta.svg"
 ---
 
 

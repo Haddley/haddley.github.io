@@ -5,7 +5,7 @@ date: "2026-02-28"
 categories: ["Mobile", "3D"]
 tags: "virtual-reality, meta, unity, quest"
 slug: "metaunity"
-image: "/assets/images/metaunity/meta-unity-combined.svg"
+image: "/assets/images/metaunity/posts-meta.svg"
 ---
 
 I set up Unity for Meta Quest virtual reality (VR) development. I learned how to:

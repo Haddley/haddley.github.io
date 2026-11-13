@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A Dataverse report made with the report wizard</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<rect x="8" y="16" width="70" height="88" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/>
+<g fill="#5bb4ea"><rect x="18" y="64" width="10" height="28"/><rect x="34" y="48" width="10" height="44"/><rect x="50" y="34" width="10" height="58"/></g>
+<path d="M16,28 H66" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><path d="M88,28 H110 M88,44 H110 M88,60 H110" stroke="#c9d3dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="88" cy="28" r="4" fill="#2f9e4a"/><circle cx="88" cy="44" r="4" fill="#2f9e4a"/><circle cx="88" cy="60" r="4" fill="#ffb43a"/></g>
+<rect x="86" y="76" width="26" height="14" rx="4" fill="#ffb43a"/>
+</svg>

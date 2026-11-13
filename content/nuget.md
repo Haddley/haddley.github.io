@@ -5,7 +5,7 @@ date: "2021-02-27"
 categories: [".NET","DevOps"]
 tags: "nuget, c-sharp, package, dotnet"
 slug: "nuget"
-image: "/assets/images/nuget/logo-og-600x600.png"
+image: "/assets/images/nuget/posts-meta.svg"
 ---
 
 

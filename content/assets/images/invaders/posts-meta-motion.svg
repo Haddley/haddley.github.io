@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A Space Invaders clone built three ways by coding agents</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g class="p" style="animation-delay:0s"><g fill="#2f9e4a"><rect x="42" y="40" width="6" height="6"/><rect x="72" y="40" width="6" height="6"/><rect x="48" y="46" width="24" height="6"/><rect x="42" y="52" width="36" height="6"/><rect x="36" y="58" width="12" height="6"/><rect x="54" y="58" width="12" height="6"/><rect x="72" y="58" width="12" height="6"/><rect x="36" y="64" width="48" height="6"/><rect x="36" y="70" width="6" height="6"/><rect x="78" y="70" width="6" height="6"/></g></g>
+<path class="d" style="animation-delay:1.2s" pathLength="1" d="M60,104 V78" stroke="#ffb43a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g class="p" style="animation-delay:1.8s"><rect x="52" y="104" width="16" height="6" rx="2" fill="#5bb4ea"/></g>
+<g class="p" style="animation-delay:2.4s"><g fill="#c9d3dd"><rect x="10" y="30" width="12" height="4"/><rect x="98" y="30" width="12" height="4"/></g></g>
+</svg>

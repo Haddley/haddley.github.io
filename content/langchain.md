@@ -6,7 +6,7 @@ categories: ["AI","Python"]
 tags: "langchain, rag, retrieval-augmented-generation, llm"
 hidden: false
 slug: "langchain"
-image: "/assets/images/langchain/chatgpt-logo.svg"
+image: "/assets/images/langchain/posts-meta.svg"
 ---
 
 

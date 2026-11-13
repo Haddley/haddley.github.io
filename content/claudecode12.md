@@ -4,7 +4,7 @@ part: 12
 description: "Using the DeepSeek API with Claude Code as a cheap, fast alternative to local models"
 date: "2026-05-08"
 categories: ["AI"]
-image: "/assets/images/claudecode/Claude_AI_symbol.svg"
+image: "/assets/images/claudecode12/posts-meta.svg"
 tags: "claude-code, ai-agent, anthropic, agentic-coding, deepseek"
 hidden: false
 slug: "claudecode12"

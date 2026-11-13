@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>The Teams Toolkit building a Teams tab with an Azure back end</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><rect x="6" y="22" width="56" height="56" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><rect x="12" y="28" width="20" height="8" rx="3" fill="#5bb4ea"/></g>
+<path d="M14,50 H54 M14,62 H46" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path d="M64,50 H76 M72,46.5 L76,50 L72,53.5" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><path transform="translate(94,46) scale(1.2)" d="M-22,10 A9,9 0 0 1 -16,-6 A14,14 0 0 1 10,-8 A9,9 0 0 1 12,10 Z" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/></g>
+<g><circle cx="24" cy="92" r="7" fill="#1c2a3d" stroke="#ffb43a" stroke-width="2"/><circle cx="24" cy="92" r="2.4499999999999997" fill="#ffb43a"/><path d="M24,82 V86 M24,98 V102 M14,92 H18 M30,92 H34" stroke="#ffb43a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+</svg>

@@ -6,7 +6,7 @@ date: "2023-09-18"
 categories: ["Power Platform"]
 tags: "model-driven-app, power-apps, users, dataverse"
 slug: "modeldriven1"
-image: "/assets/images/modeldriven1/office-365-icon-500x500.png"
+image: "/assets/images/modeldriven1/posts-meta.svg"
 ---
 
 

@@ -6,7 +6,7 @@ categories: [".NET","SQL"]
 tags: "c#, entity-framework, database, linq"
 hidden: false
 slug: "aspnet-5-cs"
-image: "/assets/images/aspnet-5-cs/net-logo.svg"
+image: "/assets/images/aspnet-5-cs/posts-meta.svg"
 ---
 
 

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Raw Markdown text converted into formatted HTML with a ShowdownJS control add-in</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<rect class="f" style="animation-delay:0s" x="6" y="14" width="44" height="92" rx="6" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/>
+<g class="f" style="animation-delay:0.3s" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600" font-size="8.5" fill="#c9d3dd"><text x="12" y="32">## Title</text><text x="12" y="48">- **one**</text><text x="12" y="62">- **two**</text><text x="12" y="78">| a | b |</text><text x="12" y="92">|---|---|</text></g>
+<path class="d" style="animation-delay:1.3s" pathLength="1" d="M53,60 H66 M62,56 L66,60 L62,64" stroke="#ffb43a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<rect class="f" style="animation-delay:1.8s" x="70" y="14" width="44" height="92" rx="6" fill="#c9d3dd"/>
+<path class="d" style="animation-delay:2.1s" pathLength="1" d="M76,28 H104" stroke="#0f1b2d" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><circle class="f" style="animation-delay:2.6s" cx="78" cy="44" r="1.8" fill="#2f9e4a" stroke="none"/><circle cx="78" cy="54" r="1.8" fill="#2f9e4a" stroke="none"/></g>
+<path class="d" style="animation-delay:2.6s" pathLength="1" d="M84,44 H106 M84,54 H100" stroke="#0f1b2d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect class="f" style="animation-delay:3.1s" x="76" y="68" width="32" height="28" fill="none" stroke="#5bb4ea" stroke-width="1.5"/><path d="M76,77 H108 M76,86 H108 M92,68 V96" stroke="#5bb4ea" stroke-width="1.5" fill="none"/><rect x="76" y="68" width="32" height="9" fill="#5bb4ea"/></g>
+</svg>

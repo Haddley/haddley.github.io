@@ -4,7 +4,7 @@ part: 14
 description: "Using the page-line-summary skill in Claude Code to generate a deposition summary from a transcript PDF"
 date: "2026-06-04"
 categories: ["AI"]
-image: "/assets/images/claudecode/Claude_AI_symbol.svg"
+image: "/assets/images/claudecode14/posts-meta.svg"
 tags: "claude-code, ai-agent, anthropic, page-line-summary, legal, litigation"
 hidden: false
 slug: "claudecode14"

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>The OpenGL triangle rotating using the GLM maths library</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<rect x="8" y="14" width="104" height="92" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/>
+<path d="M60,32 L88,80 H32 Z" fill="#ffb43a"/>
+<path d="M92,36 A38,38 0 0 1 96,84 M92,84 L96,86 L98,80" stroke="#7cc6f0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

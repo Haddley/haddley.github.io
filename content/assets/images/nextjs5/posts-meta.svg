@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A Next.js and Ionic app turned into an installable offline progressive web app</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><rect x="30" y="16" width="36" height="88" rx="7" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><path d="M44.0,21 H52.0" stroke="#5bb4ea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<path d="M38,38 H58 M38,50 H54 M38,62 H58" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<rect x="36" y="76" width="24" height="12" rx="4" fill="#2f9e4a"/>
+<path d="M70,60 H84 M80,56.5 L84,60 L80,63.5" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect x="86" y="40" width="26" height="40" rx="6" fill="#1c2a3d" stroke="#ffb43a" stroke-width="1.5"/><path d="M99,50 V66 M92,60 L99,67 L106,60" stroke="#ffb43a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+</svg>

@@ -6,7 +6,7 @@ categories: ["macOS"]
 tags: "screen-sharing, vnc, remote-desktop"
 hidden: false
 slug: "macscreensharing"
-image: "/assets/images/macscreensharing/apple-logo-black.svg"
+image: "/assets/images/macscreensharing/posts-meta.svg"
 ---
 
 

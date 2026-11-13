@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A board reading motion data to train a small machine learning model on the edge</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><rect x="8" y="42" width="40" height="36" rx="4" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/></g>
+<path d="M12,62 L18,50 L24,70 L30,46 L36,66 L44,56" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path d="M50,60 H64 M60,56.5 L64,60 L60,63.5" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><circle cx="76" cy="46" r="5" fill="#5bb4ea"/><circle cx="76" cy="74" r="5" fill="#5bb4ea"/><circle cx="96" cy="60" r="6" fill="#2f9e4a"/></g>
+<path d="M81,48 L90,57 M81,72 L90,63" stroke="#c9d3dd" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

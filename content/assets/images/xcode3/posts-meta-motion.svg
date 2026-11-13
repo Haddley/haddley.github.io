@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>An OpenGL triangle drawn by a C++ app using GLEW</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g class="f" style="animation-delay:0s"><rect x="8" y="14" width="104" height="92" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/></g>
+<g class="p" style="animation-delay:0.5s"><path d="M60,30 L90,86 H30 Z" fill="#d9483b"/></g>
+<g class="p" style="animation-delay:1.2s"><path d="M60,30 L90,86 H60 Z" fill="#2f9e4a"/></g>
+<g class="p" style="animation-delay:1.8s"><path d="M60,86 L30,86 L60,30 Z" fill="#5bb4ea"/></g>
+<g class="p" style="animation-delay:2.5s"><g><circle cx="100" cy="28" r="7" fill="#1c2a3d" stroke="#ffb43a" stroke-width="2"/><circle cx="100" cy="28" r="2.4499999999999997" fill="#ffb43a"/><path d="M100,18 V22 M100,34 V38 M90,28 H94 M106,28 H110" stroke="#ffb43a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+</svg>

@@ -4,7 +4,7 @@ part: 6
 description: "Creating custom slash commands in .claude/commands/ to package project-specific context and workflows into a single reusable shortcut"
 date: "2026-01-21"
 categories: ["AI"]
-image: "/assets/images/claudecode/Claude_AI_symbol.svg"
+image: "/assets/images/claudecode6/posts-meta.svg"
 tags: "claude-code, slash-commands, anthropic, cli"
 hidden: false
 slug: "claudecode6"

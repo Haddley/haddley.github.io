@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A GitHub repository builds an AL app that is installed into Business Central</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><circle cx="16" cy="36" r="5" fill="#c9d3dd"/><circle cx="16" cy="84" r="5" fill="#c9d3dd"/><circle cx="32" cy="60" r="5" fill="#2f9e4a"/><path d="M16,41 V79 M16,52 C16,58 32,52 32,55" stroke="#c9d3dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<path d="M40,60 H52 M48,56.5 L52,60 L48,63.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><circle cx="62" cy="60" r="10" fill="#1c2a3d" stroke="#ffb43a" stroke-width="2"/><circle cx="62" cy="60" r="3.5" fill="#ffb43a"/><path d="M62,46 V50 M62,70 V74 M48,60 H52 M72,60 H76" stroke="#ffb43a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<path d="M76,60 H86 M82,56.5 L86,60 L82,63.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect x="88" y="42" width="26" height="36" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><text x="101.0" y="64.0" text-anchor="middle" font-size="11" fill="#7cc6f0" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">BC</text></g>
+</svg>

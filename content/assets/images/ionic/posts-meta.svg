@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>One web app running on a phone, a tablet and a desktop</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><rect x="6" y="40" width="20" height="38" rx="7" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><path d="M12.0,45 H20.0" stroke="#5bb4ea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<g><rect x="34" y="34" width="34" height="46" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/></g>
+<g><rect x="76" y="38" width="38" height="30" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><path d="M88,68 V76 M104,68 V76 M84,76 H108" stroke="#5bb4ea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<path d="M12,54 H20 M40,48 H62 M82,50 H108" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<circle cx="60" cy="96" r="6" fill="#ffb43a"/>
+</svg>

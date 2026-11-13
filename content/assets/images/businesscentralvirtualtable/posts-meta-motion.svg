@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A Dataverse virtual table reads and edits Business Central data in place</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><rect class="f" style="animation-delay:0s" x="4" y="40" width="30" height="40" rx="5" fill="#1c2a3d" stroke="#c9d3dd" stroke-width="1.5"/><path d="M10,52 H28 M10,60 H28 M10,68 H22" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<path class="d" style="animation-delay:0.6s" pathLength="1" d="M34,56 H42 M38,52 L42,56 L38,60 M42,64 H34 M38,60 L34,64 L38,68" stroke="#7cc6f0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><path class="p" style="animation-delay:1.2s" d="M44,42 V73 A12.0,5 0 0 0 68,73 V42" fill="#1c2a3d" stroke="#7cc6f0" stroke-width="1.5" stroke-dasharray="3 2"/><ellipse cx="56.0" cy="42" rx="12.0" ry="5" fill="#1c2a3d" stroke="#7cc6f0" stroke-width="1.5" stroke-dasharray="3 2"/></g>
+<path class="d" style="animation-delay:2.1s" pathLength="1" d="M68,54 H78 M74,50 L78,54 L74,58 M78,66 H68 M72,62 L68,66 L72,70" stroke="#ffb43a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect class="p" style="animation-delay:2.7s" x="80" y="42" width="30" height="36" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><text x="95.0" y="64.0" text-anchor="middle" font-size="11" fill="#7cc6f0" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">BC</text></g>
+</svg>

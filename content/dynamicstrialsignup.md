@@ -6,7 +6,7 @@ categories: ["Microsoft Dynamics"]
 tags: "dynamics-365, trial, microsoft, signup"
 hidden: false
 slug: "dynamicstrialsignup"
-image: "/assets/images/dynamicstrialsignup/dynamics365-color.svg"
+image: "/assets/images/dynamicstrialsignup/posts-meta.svg"
 ---
 
 

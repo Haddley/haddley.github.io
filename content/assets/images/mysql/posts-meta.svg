@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Node.js connecting to a MySQL database</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<polygon points="50.8,72.0 30.0,84.0 9.2,72.0 9.2,48.0 30.0,36.0 50.8,48.0" fill="#2f9e4a"/>
+<text x="30" y="65" text-anchor="middle" font-size="14" fill="#fff" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">JS</text>
+<path d="M58,56 H76 M72,52 L76,56 L72,60 M76,66 H58 M62,62 L58,66 L62,70" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><path d="M80,34 V79 A15.0,5 0 0 0 110,79 V34" fill="#1c2a3d" stroke="#7cc6f0" stroke-width="1.5"/><ellipse cx="95.0" cy="34" rx="15.0" ry="5" fill="#5bb4ea" stroke="#7cc6f0" stroke-width="1.5"/></g>
+<text x="95" y="66" text-anchor="middle" font-size="8" fill="#0f1b2d" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">SQL</text>
+</svg>

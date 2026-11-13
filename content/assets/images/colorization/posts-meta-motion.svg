@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A black and white photo colourised by a deep learning model</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g class="f" style="animation-delay:0s"><rect x="8" y="26" width="46" height="62" rx="4" fill="#666"/></g>
+<g class="p" style="animation-delay:0.4s"><g><circle cx="22" cy="42" r="6" fill="#aaa"/><path d="M8,88 L26,62 L38,76 L46,66 L54,88 Z" fill="#444"/></g></g>
+<path class="d" style="animation-delay:1.2s" pathLength="1" d="M58,57 H68 M64,53.5 L68,57 L64,60.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g class="p" style="animation-delay:1.8s"><rect x="72" y="26" width="40" height="62" rx="4" fill="#3b86d6"/></g>
+<g class="p" style="animation-delay:2.4s"><circle cx="86" cy="42" r="6" fill="#ffb43a"/></g>
+<g class="p" style="animation-delay:2.8s"><path d="M72,88 L88,62 L98,76 L104,66 L112,88 Z" fill="#2f9e4a"/></g>
+</svg>

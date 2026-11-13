@@ -6,7 +6,7 @@ categories: [".NET"]
 tags: "razor, web-pages, views, templating"
 hidden: false
 slug: "aspnet-core"
-image: "/assets/images/aspnet-core/net-logo.svg"
+image: "/assets/images/aspnet-core/posts-meta.svg"
 ---
 
 

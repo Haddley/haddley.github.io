@@ -6,7 +6,7 @@ categories: ["React","Azure","DevOps"]
 tags: "codespaces, authentication, azure-static-web-apps"
 hidden: false
 slug: "codespacesauthentication"
-image: "/assets/images/codespacesauthentication/logo512-512x512.png"
+image: "/assets/images/codespacesauthentication/posts-meta.svg"
 ---
 
 

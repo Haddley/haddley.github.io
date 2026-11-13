@@ -6,7 +6,7 @@ categories: [".NET","Angular","TypeScript"]
 tags: "asp-net-core, spa, routing"
 hidden: false
 slug: "angularandasp.net"
-image: "/assets/images/angularandasp.net/angular-full-color-logo.svg"
+image: "/assets/images/angularandasp.net/posts-meta.svg"
 ---
 
 Visual Studio includes ASP.NET Core Single Page Application (SPA) templates that support Angular and React.

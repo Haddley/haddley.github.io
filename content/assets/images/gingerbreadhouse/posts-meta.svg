@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A Raspberry Pi blinking holiday lights on a gingerbread house</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><path d="M22,56 L60,24 L98,56 Z" fill="#8a4b2a"/><rect x="30" y="56" width="60" height="40" fill="#b5703b"/><rect x="52" y="70" width="16" height="26" rx="3" fill="#5a2d14"/></g>
+<g fill="#d9483b"><circle cx="34" cy="58" r="3"/><circle cx="48" cy="46" r="3" fill="#ffb43a"/><circle cx="62" cy="34" r="3" fill="#2f9e4a"/><circle cx="76" cy="46" r="3" fill="#7cc6f0"/><circle cx="88" cy="58" r="3"/></g>
+<g><circle cx="38" cy="78" r="5" fill="#fff"/><circle cx="82" cy="78" r="5" fill="#fff"/></g>
+<rect x="40" y="102" width="40" height="8" rx="3" fill="#2f9e4a"/>
+</svg>

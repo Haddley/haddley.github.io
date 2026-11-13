@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A customer portal form to create and edit an order, with a submit button</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><rect x="8" y="16" width="104" height="88" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><rect x="8" y="16" width="104" height="9" rx="5" fill="#5bb4ea"/><circle cx="15" cy="20.5" r="1.5" fill="#0f1b2d"/><circle cx="20" cy="20.5" r="1.5" fill="#0f1b2d"/></g>
+<path d="M16,36 H40 M16,56 H40" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect x="46" y="31" width="58" height="10" rx="3" fill="#0f1b2d" stroke="#5bb4ea"/><rect x="46" y="51" width="58" height="10" rx="3" fill="#0f1b2d" stroke="#5bb4ea"/></g>
+<path d="M50,36 H80 M50,56 H70" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect x="62" y="76" width="42" height="16" rx="5" fill="#2f9e4a"/><path d="M72,84 L77,88 L90,79" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+</svg>

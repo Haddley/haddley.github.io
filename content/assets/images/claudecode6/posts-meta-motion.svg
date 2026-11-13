@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A custom slash command that loads a Markdown file as context</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g class="p" style="animation-delay:0s"><g><rect x="8" y="22" width="40" height="24" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><text x="28" y="38" text-anchor="middle" font-size="10" fill="#ffb43a" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">/cmd</text></g></g>
+<path class="d" style="animation-delay:0.8s" pathLength="1" d="M28,48 V64 M24.5,60 L28,64 L31.5,60" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g class="p" style="animation-delay:1.4s"><g><rect x="10" y="66" width="36" height="40" rx="3" fill="#c9d3dd"/><rect x="14" y="70" width="28" height="7" rx="2" fill="#ffb43a"/><path d="M14,84.0 H42 M14,90.0 H42 M14,96.0 H33.400000000000006" stroke="#0f1b2d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+<path class="d" style="animation-delay:2.2s" pathLength="1" d="M50,86 H64 M60,82.5 L64,86 L60,89.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g class="f" style="animation-delay:2.6s"><g><rect x="66" y="50" width="46" height="52" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><path d="M73,58 l5,4 l-5,4" stroke="#2f9e4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+<path class="d" style="animation-delay:3.0s" pathLength="1" d="M80,72 H102 M80,84 H98" stroke="#7cc6f0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A plugin action that a copilot calls with inputs the model chose</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><rect x="8" y="24" width="40" height="18" rx="6" fill="#5bb4ea"/><path d="M16,41 l-6,8 l10,-2 z" fill="#5bb4ea"/></g>
+<path d="M50,33 H62 M58,29.5 L62,33 L58,36.5" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect x="64" y="22" width="26" height="22" rx="4" fill="#1c2a3d" stroke="#ffb43a" stroke-width="2"/><path d="M72,22 V16 M82,22 V16" stroke="#ffb43a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<path d="M77,46 V66" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect x="52" y="68" width="52" height="28" rx="5" fill="#1c2a3d" stroke="#2f9e4a" stroke-width="1.5"/><path d="M60,80 H96 M60,88 H88" stroke="#c9d3dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+</svg>

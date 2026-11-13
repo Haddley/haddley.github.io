@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Claude Code detecting and programming an Arduino LCD module over USB</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g class="f" style="animation-delay:0s"><g><rect x="12" y="28" width="96" height="44" rx="5" fill="#1d5f3a" stroke="#2f9e4a" stroke-width="1.5"/><rect x="20" y="36" width="80" height="28" rx="2" fill="#a8d86a"/></g></g>
+<g class="p" style="animation-delay:0.6s"><g fill="#0f1b2d"><rect x="24" y="42" width="4" height="7"/><rect x="32" y="42" width="4" height="7"/><rect x="40" y="42" width="4" height="7"/><rect x="48" y="42" width="4" height="7"/><rect x="56" y="42" width="4" height="7"/><rect x="64" y="42" width="4" height="7"/><rect x="72" y="42" width="4" height="7"/><rect x="80" y="42" width="4" height="7"/><rect x="88" y="42" width="4" height="7"/></g></g>
+<g class="p" style="animation-delay:1.4s"><g fill="#0f1b2d"><rect x="24" y="53" width="4" height="7"/><rect x="32" y="53" width="4" height="7"/><rect x="40" y="53" width="4" height="7"/><rect x="48" y="53" width="4" height="7"/><rect x="56" y="53" width="4" height="7"/><rect x="64" y="53" width="4" height="7"/></g></g>
+<path class="d" style="animation-delay:2.0s" pathLength="1" d="M60,72 V86 H40" stroke="#c9d3dd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g class="p" style="animation-delay:2.6s"><rect x="20" y="82" width="22" height="10" rx="2" fill="#5bb4ea"/></g>
+</svg>

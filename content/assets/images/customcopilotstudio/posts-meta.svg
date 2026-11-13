@@ -1,1 +1,10 @@
-<svg fill="#0B53CE" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Dynamics 365</title><path d="M15.805 11.322v4.889a2.536 2.536 0 0 1-1.643 2.374l-1.732.652a.507.507 0 0 1-.686-.475v-5.956l-3.392 1.239a1.015 1.015 0 0 0-.664.953v7.986c0 .705.7 1.195 1.363.953l10.161-3.713a2.535 2.535 0 0 0 1.666-2.382V7.696a2.537 2.537 0 0 1-1.666 2.381l-3.407 1.245Zm0-.532V9.323a2.537 2.537 0 0 0-1.645-2.375l-1.728-.65a.508.508 0 0 0-.686.475v4.59c0 .701-.695 1.191-1.355.956L3.795 9.963a1.015 1.015 0 0 1-.674-.956V1.015c0-.701.695-1.191 1.356-.955l14.718 5.256A2.538 2.538 0 0 1 20.83 7.21c-.136.861-1.05 2.128-1.79 2.398l-3.235 1.182Z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Customer card values passed into a chat so the Copilot knows the customer</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<rect x="8" y="20" width="50" height="80" rx="6" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/>
+<circle cx="33" cy="37" r="8" fill="#5bb4ea"/>
+<rect x="14" y="52" width="38" height="7" rx="2" fill="#c9d3dd"/>
+<rect x="14" y="62" width="30" height="7" rx="2" fill="#c9d3dd"/>
+<rect x="14" y="72" width="34" height="7" rx="2" fill="#c9d3dd"/>
+<rect x="14" y="82" width="38" height="7" rx="2" fill="#c9d3dd"/><circle cx="47" cy="85.5" r="2.5" fill="#d9483b"/>
+<path d="M60,60 H72 M68,56 L72,60 L68,64" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><path d="M76,38 H108 A6,6 0 0 1 114,44 V66 A6,6 0 0 1 108,72 H88 L80,80 V72 H76 A6,6 0 0 1 70,66 V44 A6,6 0 0 1 76,38 Z" fill="#2f9e4a"/><path d="M78,48 H106 M78,56 H106 M78,64 H94" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+</svg>

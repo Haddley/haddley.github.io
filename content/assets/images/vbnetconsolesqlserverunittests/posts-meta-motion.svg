@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Unit tests for a VB console app that reads data from SQL Server</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g class="p" style="animation-delay:0s"><g><g><rect x="6" y="28" width="44" height="50" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><path d="M13,36 l5,4 l-5,4" stroke="#2f9e4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g><text x="28" y="66" text-anchor="middle" font-size="9" fill="#5bb4ea" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">VB</text></g></g>
+<path class="d" style="animation-delay:0.8s" pathLength="1" d="M52,52 H64 M60,48.5 L64,52 L60,55.5" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g class="p" style="animation-delay:1.4s"><g><path d="M66,34 V65 A13.0,5 0 0 0 92,65 V34" fill="#1c2a3d" stroke="#7cc6f0" stroke-width="1.5"/><ellipse cx="79.0" cy="34" rx="13.0" ry="5" fill="#5bb4ea" stroke="#7cc6f0" stroke-width="1.5"/></g></g>
+<g class="p" style="animation-delay:2.0s"><g><circle cx="98" cy="38" r="7" fill="#2f9e4a"/><path d="M94.85,38 L97.3,40.8 L101.5,35.2" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+<g class="p" style="animation-delay:2.5s"><g><circle cx="98" cy="58" r="7" fill="#2f9e4a"/><path d="M94.85,58 L97.3,60.8 L101.5,55.2" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+<g class="p" style="animation-delay:3.0s"><g><circle cx="98" cy="78" r="7" fill="#d9483b"/><path d="M95.2,75.2 l5.6000000000000005,5.6000000000000005 m0,-5.6000000000000005 l-5.6000000000000005,5.6000000000000005" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+</svg>

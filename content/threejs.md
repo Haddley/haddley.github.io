@@ -5,7 +5,7 @@ date: "2023-03-05"
 categories: ["JavaScript","3D"]
 tags: "three-js, webgl, 3d-graphics"
 slug: "threejs"
-image: "/assets/images/threejs/three.js-icon.svg"
+image: "/assets/images/threejs/posts-meta.svg"
 ---
 
 

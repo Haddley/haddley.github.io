@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A Warranty table linked by lookups to an account and a product</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><rect x="40" y="38" width="40" height="44" rx="5" fill="#1c2a3d" stroke="#ffb43a" stroke-width="2"/><rect x="40" y="38" width="40" height="10" rx="5" fill="#ffb43a"/><path d="M46,58 H74 M46,68 H68" stroke="#c9d3dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<path d="M40,52 H26 M40,68 H26" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect x="6" y="26" width="20" height="24" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><circle cx="16" cy="35" r="4" fill="#5bb4ea"/></g>
+<g><rect x="6" y="60" width="20" height="24" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><rect x="11" y="66" width="10" height="12" rx="2" fill="#2f9e4a"/></g>
+<path d="M80,60 H94" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect x="94" y="38" width="20" height="44" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><path d="M99,50 H109 M99,58 H109 M99,66 H105" stroke="#c9d3dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+</svg>

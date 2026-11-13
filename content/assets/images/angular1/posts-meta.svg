@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>An Angular app made of a root module with components</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<rect x="38" y="16" width="44" height="22" rx="5" fill="#d9483b"/>
+<path d="M60,38 V50 M24,50 H96 M24,50 V60 M60,50 V60 M96,50 V60" stroke="#c9d3dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<rect x="10" y="60" width="28" height="22" rx="4" fill="#5bb4ea"/>
+<rect x="46" y="60" width="28" height="22" rx="4" fill="#5bb4ea"/>
+<rect x="82" y="60" width="28" height="22" rx="4" fill="#5bb4ea"/>
+<rect x="46" y="90" width="28" height="14" rx="4" fill="#ffb43a"/>
+</svg>

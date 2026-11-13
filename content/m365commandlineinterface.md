@@ -6,7 +6,7 @@ categories: ["Microsoft 365"]
 tags: "m365-cli, sharepoint-framework, powershell, cli"
 hidden: false
 slug: "m365commandlineinterface"
-image: "/assets/images/m365commandlineinterface/office-365-icon-500x500.png"
+image: "/assets/images/m365commandlineinterface/posts-meta.svg"
 ---
 
 

@@ -6,7 +6,7 @@ categories: ["Maps"]
 tags: "gis, mapping-library, cartography, geospatial"
 hidden: false
 slug: "leaflet"
-image: "/assets/images/leaflet/leaflet-upic-200x200.png"
+image: "/assets/images/leaflet/posts-meta.svg"
 ---
 
 

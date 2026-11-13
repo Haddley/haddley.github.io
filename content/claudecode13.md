@@ -4,7 +4,7 @@ part: 13
 description: "Building a Claude Code skill that generates Dataverse solution XML for Power Platform"
 date: "2026-06-03"
 categories: ["AI","Power Platform"]
-image: "/assets/images/claudecode/Claude_AI_symbol.svg"
+image: "/assets/images/claudecode13/posts-meta.svg"
 tags: "claude-code, ai-agent, anthropic, agentic-coding, powerplatform, dataverse"
 hidden: false
 slug: "claudecode13"

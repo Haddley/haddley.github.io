@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A plant shooting peas at an approaching zombie, checked by visual regression tests</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><circle cx="26" cy="60" r="12" fill="#2f9e4a"/><rect x="24" y="70" width="4" height="22" fill="#2f9e4a"/><circle cx="26" cy="60" r="4" fill="#0f1b2d"/></g>
+<path d="M42,58 H62" stroke="#7cc6f0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<circle cx="70" cy="58" r="5" fill="#2f9e4a"/>
+<g><circle cx="98" cy="50" r="10" fill="#9bb08a"/><rect x="88" y="60" width="20" height="30" rx="4" fill="#6d7f9a"/></g>
+<g><circle cx="100" cy="98" r="6" fill="#2f9e4a"/><path d="M97.3,98 L99.4,100.4 L103.0,95.6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+</svg>

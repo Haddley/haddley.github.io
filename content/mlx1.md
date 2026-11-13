@@ -6,7 +6,7 @@ categories: ["AI"]
 tags: "mlx, apple-silicon, fine-tuning, local-llm"
 hidden: false
 slug: "mlx1"
-image: "/assets/images/mlx1/apple-logo-black.svg"
+image: "/assets/images/mlx1/posts-meta.svg"
 ---
 
 

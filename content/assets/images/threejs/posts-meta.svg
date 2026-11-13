@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A 3D scene of floating cubes and spheres with a red and blue anaglyph effect</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g transform="translate(40,54) scale(1.4)"><path d="M0,-16 L16,-8 V10 L0,18 L-16,10 V-8 Z" fill="#1c2a3d" stroke="#d9483b" stroke-width="1.5"/><path d="M-16,-8 L0,0 L16,-8 M0,0 V18" stroke="#d9483b" stroke-width="1.5" fill="none"/></g>
+<g transform="translate(46,60) scale(1.4)"><path d="M0,-16 L16,-8 V10 L0,18 L-16,10 V-8 Z" fill="#1c2a3d" stroke="#7cc6f0" stroke-width="1.5"/><path d="M-16,-8 L0,0 L16,-8 M0,0 V18" stroke="#7cc6f0" stroke-width="1.5" fill="none"/></g>
+<g><circle cx="86" cy="44" r="12" fill="#d9483b"/><circle cx="90" cy="48" r="12" fill="#7cc6f0" opacity=".6"/></g>
+<g><circle cx="80" cy="86" r="7" fill="#ffb43a"/></g>
+</svg>

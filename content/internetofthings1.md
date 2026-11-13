@@ -7,7 +7,7 @@ categories: ["IOT"]
 tags: "esp8266, wifi, microcontroller, arduino"
 hidden: false
 slug: "internetofthings1"
-image: "/assets/images/internetofthings1/iot-microchip.svg"
+image: "/assets/images/internetofthings1/posts-meta.svg"
 ---
 
 

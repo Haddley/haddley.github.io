@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Context window bar compacted into a short summary</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<rect x="10" y="26" width="100" height="14" rx="4" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/>
+<path d="M14,33 H106" stroke="#ffb43a" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path d="M60,46 V70 M56.5,66 L60,70 L63.5,66" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<text x="74" y="64" text-anchor="start" font-size="8" fill="#c9d3dd" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">/compact</text>
+<rect x="10" y="76" width="100" height="14" rx="4" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/>
+<path d="M14,83 H42" stroke="#2f9e4a" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

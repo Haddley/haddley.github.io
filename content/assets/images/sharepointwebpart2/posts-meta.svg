@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A calendar web part added to a SharePoint page</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><rect x="8" y="14" width="104" height="92" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><rect x="8" y="14" width="104" height="9" rx="5" fill="#5bb4ea"/><circle cx="15" cy="18.5" r="1.5" fill="#0f1b2d"/><circle cx="20" cy="18.5" r="1.5" fill="#0f1b2d"/></g>
+<g><rect x="18" y="32" width="84" height="60" rx="3" fill="#c9d3dd"/><rect x="18" y="32" width="84" height="10" rx="3" fill="#d9483b"/><path d="M18,56 H102 M18,70 H102 M46,42 V92 M74,42 V92" stroke="#5bb4ea" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<rect x="22" y="58" width="22" height="9" rx="2" fill="#2f9e4a"/>
+<rect x="50" y="72" width="22" height="9" rx="2" fill="#ffb43a"/>
+<rect x="76" y="58" width="22" height="9" rx="2" fill="#5bb4ea"/>
+</svg>

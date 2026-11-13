@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A static web app whose config file sends signed out visitors to a login</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g class="f" style="animation-delay:0s"><g><rect x="6" y="16" width="60" height="78" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><rect x="6" y="16" width="60" height="9" rx="5" fill="#5bb4ea"/><circle cx="13" cy="20.5" r="1.5" fill="#0f1b2d"/><circle cx="18" cy="20.5" r="1.5" fill="#0f1b2d"/></g></g>
+<path class="d" style="animation-delay:0.5s" pathLength="1" d="M14,38 H58 M14,50 H50" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g class="p" style="animation-delay:1.0s"><g><rect x="72" y="26" width="40" height="34" rx="5" fill="#1c2a3d" stroke="#ffb43a" stroke-width="1.5"/><text x="92" y="48" text-anchor="middle" font-size="12" fill="#ffb43a" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">{ }</text></g></g>
+<path class="d" style="animation-delay:1.8s" pathLength="1" d="M72,70 H50 M54,66 L50,70 L54,74" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g class="p" style="animation-delay:2.4s"><g><rect x="29" y="78" width="14" height="11" rx="2" fill="#ffb43a"/><path d="M32,78 V75 a4,4 0 0 1 8,0 V78" stroke="#ffb43a" stroke-width="2" fill="none"/></g></g>
+<g class="p" style="animation-delay:3.0s"><g><circle cx="92" cy="76" r="6" fill="#5bb4ea"/><path d="M82,96 a10,9 0 0 1 20,0 z" fill="#5bb4ea"/></g></g>
+</svg>

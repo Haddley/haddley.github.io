@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Unit tests for a VB console app that reads data from SQL Server</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><g><rect x="6" y="28" width="44" height="50" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><path d="M13,36 l5,4 l-5,4" stroke="#2f9e4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g><text x="28" y="66" text-anchor="middle" font-size="9" fill="#5bb4ea" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">VB</text></g>
+<path d="M52,52 H64 M60,48.5 L64,52 L60,55.5" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><path d="M66,34 V65 A13.0,5 0 0 0 92,65 V34" fill="#1c2a3d" stroke="#7cc6f0" stroke-width="1.5"/><ellipse cx="79.0" cy="34" rx="13.0" ry="5" fill="#5bb4ea" stroke="#7cc6f0" stroke-width="1.5"/></g>
+<g><circle cx="98" cy="38" r="7" fill="#2f9e4a"/><path d="M94.85,38 L97.3,40.8 L101.5,35.2" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<g><circle cx="98" cy="58" r="7" fill="#2f9e4a"/><path d="M94.85,58 L97.3,60.8 L101.5,55.2" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<g><circle cx="98" cy="78" r="7" fill="#d9483b"/><path d="M95.2,75.2 l5.6000000000000005,5.6000000000000005 m0,-5.6000000000000005 l-5.6000000000000005,5.6000000000000005" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+</svg>

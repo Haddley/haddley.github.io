@@ -1,1 +1,9 @@
-<svg fill="#0B53CE" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Dynamics 365</title><path d="M15.805 11.322v4.889a2.536 2.536 0 0 1-1.643 2.374l-1.732.652a.507.507 0 0 1-.686-.475v-5.956l-3.392 1.239a1.015 1.015 0 0 0-.664.953v7.986c0 .705.7 1.195 1.363.953l10.161-3.713a2.535 2.535 0 0 0 1.666-2.382V7.696a2.537 2.537 0 0 1-1.666 2.381l-3.407 1.245Zm0-.532V9.323a2.537 2.537 0 0 0-1.645-2.375l-1.728-.65a.508.508 0 0 0-.686.475v4.59c0 .701-.695 1.191-1.355.956L3.795 9.963a1.015 1.015 0 0 1-.674-.956V1.015c0-.701.695-1.191 1.356-.955l14.718 5.256A2.538 2.538 0 0 1 20.83 7.21c-.136.861-1.05 2.128-1.79 2.398l-3.235 1.182Z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>The PromptDialog sends the prompt to Azure OpenAI and shows the answer it returns</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<rect x="6" y="30" width="44" height="60" rx="6" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/>
+<path d="M13,42 H36" stroke="#c9d3dd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path d="M52,48 H70 M66,44 L70,48 L66,52" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><path d="M78,48 A10,10 0 0 1 86,32 A14,14 0 0 1 112,38 A10,10 0 0 1 108,62 H82 A8,8 0 0 1 78,48 Z" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><path d="M95,42 L97,48 L103,50 L97,52 L95,58 L93,52 L87,50 L93,48 Z" fill="#ffb43a"/></g>
+<g><circle cx="90" cy="84" r="5" fill="none" stroke="#ffb43a" stroke-width="2"/><path d="M95,84 H108 M104,84 V89 M108,84 V88" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<path d="M80,66 C70,70 62,70 54,70 M58,66.5 L54,70 L58,73.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path d="M13,62 H42 M13,70 H38 M13,78 H42" stroke="#7cc6f0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

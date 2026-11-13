@@ -5,7 +5,7 @@ date: "2021-07-14"
 categories: ["Power Platform"]
 tags: "power-apps, canvas-app, application, power-platform"
 slug: "powerappsapplication"
-image: "/assets/images/powerappsapplication/office-365-icon-500x500.png"
+image: "/assets/images/powerappsapplication/posts-meta.svg"
 ---
 
 

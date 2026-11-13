@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Three tiers: a Blazor user interface, an ASP.NET Core API and SQL Server</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><rect x="6" y="24" width="108" height="22" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><text x="60" y="40" text-anchor="middle" font-size="9" fill="#5bb4ea" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">Blazor UI</text></g>
+<path d="M60,48 V56 M56.5,52 L60,56 L63.5,52" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect x="6" y="58" width="108" height="18" rx="5" fill="#1c2a3d" stroke="#ffb43a" stroke-width="1.5"/><text x="60" y="71" text-anchor="middle" font-size="8" fill="#ffb43a" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">ASP.NET Core API</text></g>
+<path d="M60,78 V86 M56.5,82 L60,86 L63.5,82" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><g><path d="M40,86 V99 A20.0,5 0 0 0 80,99 V86" fill="#1c2a3d" stroke="#7cc6f0" stroke-width="1.5"/><ellipse cx="60.0" cy="86" rx="20.0" ry="5" fill="#2f9e4a" stroke="#7cc6f0" stroke-width="1.5"/></g></g>
+</svg>

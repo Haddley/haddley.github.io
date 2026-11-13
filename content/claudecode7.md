@@ -4,7 +4,7 @@ part: 7
 description: "Adding the Context7 MCP server to Claude Code to inject real-time, version-specific library docs and reduce stale training data errors"
 date: "2026-01-26"
 categories: ["AI"]
-image: "/assets/images/claudecode/Claude_AI_symbol.svg"
+image: "/assets/images/claudecode7/posts-meta.svg"
 tags: "claude-code, mcp, model-context-protocol, anthropic"
 hidden: false
 slug: "claudecode7"

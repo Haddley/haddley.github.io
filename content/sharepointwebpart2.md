@@ -6,7 +6,7 @@ date: "2021-02-14"
 categories: ["Microsoft 365"]
 tags: "sharepoint-framework, spfx, web-part, deploy"
 slug: "sharepointwebpart2"
-image: "/assets/images/sharepointwebpart2/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png"
+image: "/assets/images/sharepointwebpart2/posts-meta.svg"
 ---
 
 

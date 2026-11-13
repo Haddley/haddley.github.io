@@ -4,7 +4,7 @@ part: 2
 description: "Building the RAG core of a legal research assistant entirely on a 32GB M4 MacBook Air — page-safe chunking, a provider-agnostic LLM layer, and citations that can't be hallucinated"
 date: "2026-08-18"
 categories: ["AI"]
-image: "/assets/images/agenticaiforprofessionals2/hero-nsw-caselaw-home.webp"
+image: "/assets/images/agenticaiforprofessionals2/posts-meta.svg"
 tags: "rag, pgvector, ollama, fastapi, docker"
 hidden: false
 slug: "agenticaiforprofessionals2"

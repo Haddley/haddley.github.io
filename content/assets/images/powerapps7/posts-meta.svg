@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Custom status reasons on a time off request table</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<rect x="8" y="16" width="104" height="88" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/>
+<path d="M16,30 H62" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect x="16" y="44" width="38" height="14" rx="3" fill="#5bb4ea"/><text x="35.0" y="53.7" text-anchor="middle" font-size="7.5" fill="#0f1b2d" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">Draft</text></g>
+<g><rect x="60" y="44" width="38" height="14" rx="3" fill="#ffb43a"/><text x="79.0" y="53.7" text-anchor="middle" font-size="7.5" fill="#0f1b2d" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">Pending</text></g>
+<g><rect x="16" y="64" width="38" height="14" rx="3" fill="#2f9e4a"/><text x="35.0" y="73.7" text-anchor="middle" font-size="7.5" fill="#0f1b2d" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">Approved</text></g>
+<g><rect x="60" y="64" width="38" height="14" rx="3" fill="#d9483b"/><text x="79.0" y="73.7" text-anchor="middle" font-size="7.5" fill="#fff" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">Declined</text></g>
+<g><circle cx="98" cy="92" r="7" fill="#ffb43a"/></g>
+</svg>

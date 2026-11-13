@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A fiscal year of twelve accounting periods that starts on the first of July</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<path d="M10,22 H110" stroke="#5bb4ea" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<rect x="10" y="32" width="20" height="18" rx="3" fill="#ffb43a"/>
+<rect x="36" y="32" width="20" height="18" rx="3" fill="#2f9e4a"/>
+<rect x="62" y="32" width="20" height="18" rx="3" fill="#2f9e4a"/>
+<rect x="88" y="32" width="20" height="18" rx="3" fill="#2f9e4a"/>
+<rect x="10" y="56" width="20" height="18" rx="3" fill="#2f9e4a"/>
+<rect x="36" y="56" width="20" height="18" rx="3" fill="#2f9e4a"/>
+<rect x="62" y="56" width="20" height="18" rx="3" fill="#2f9e4a"/>
+<rect x="88" y="56" width="20" height="18" rx="3" fill="#2f9e4a"/>
+<rect x="10" y="80" width="20" height="18" rx="3" fill="#2f9e4a"/>
+<rect x="36" y="80" width="20" height="18" rx="3" fill="#2f9e4a"/>
+<rect x="62" y="80" width="20" height="18" rx="3" fill="#2f9e4a"/>
+<rect x="88" y="80" width="20" height="18" rx="3" fill="#2f9e4a"/>
+</svg>

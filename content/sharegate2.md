@@ -6,7 +6,7 @@ date: "2026-05-01"
 categories: ["Microsoft 365"]
 tags: "sharepoint, azure, on-premises, online, migration"
 slug: "sharegate2"
-image: "/assets/images/sharepoint2019/1200px-microsoft-office-sharepoint-2018present.svg-1200x1172.png"
+image: "/assets/images/sharegate2/posts-meta.svg"
 ---
 
 In [Part 1](/posts/sharegate/) I installed ShareGate and connected it to both my on-premises SharePoint 2019 environment and a SharePoint Online tenant. In this post I go further — first building out a custom content type on the source site to give the migration something meaningful to carry across, then running ShareGate's pre-migration reports to understand the current state of the environment, and finally using the Copy feature to migrate the full site structure from on-premises to SharePoint Online.

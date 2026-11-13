@@ -4,7 +4,7 @@ part: 4
 description: "Wiring GA4 into a static site with no backend, choosing what actually counts as a Key Event, and a small $1/day Google Ads experiment to see if paid search moves the needle"
 date: "2026-08-16"
 categories: ["JavaScript"]
-image: "/assets/images/gamenight4/hero-bmc-qr.png"
+image: "/assets/images/gamenight4/posts-meta.svg"
 tags: "google-analytics, ga4, google-ads, web-analytics, seo"
 hidden: false
 slug: "gamenight4"

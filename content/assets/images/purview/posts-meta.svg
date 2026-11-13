@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A retention policy applied to every SharePoint site whose name starts with Short term</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><path d="M60,18 L84,28 V56 C84,72 72,80 60,86 C48,80 36,72 36,56 V28 Z" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="2"/><g><circle cx="60" cy="52" r="10" fill="#2f9e4a"/><path d="M55.5,52 L59.0,56.0 L65.0,48.0" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+<path d="M12,96 H108" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<rect x="10" y="64" width="22" height="14" rx="3" fill="#2f9e4a"/>
+<rect x="88" y="64" width="22" height="14" rx="3" fill="#2f9e4a"/>
+<g><circle cx="60" cy="100" r="6" fill="#ffb43a"/></g>
+</svg>

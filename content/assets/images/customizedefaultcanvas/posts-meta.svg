@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Restyling the default copilot chat canvas with colours</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<rect x="10" y="14" width="70" height="92" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/>
+<g><rect x="16" y="26" width="40" height="16" rx="6" fill="#5bb4ea"/><path d="M24,41 l-6,8 l10,-2 z" fill="#5bb4ea"/></g>
+<g><rect x="34" y="50" width="40" height="16" rx="6" fill="#2f9e4a"/><path d="M66,65 l6,8 l-10,-2 z" fill="#2f9e4a"/></g>
+<g><circle cx="94" cy="36" r="8" fill="#ffb43a"/><circle cx="94" cy="58" r="8" fill="#d9483b"/><circle cx="94" cy="80" r="8" fill="#2f9e4a"/></g>
+<rect x="16" y="86" width="58" height="10" rx="3" fill="#5bb4ea"/>
+</svg>

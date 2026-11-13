@@ -6,7 +6,7 @@ categories: ["Power Platform","AI"]
 tags: "power-automate, azure-ai-foundry, ai-integration, workflow"
 hidden: false
 slug: "powerautomateai"
-image: "/assets/images/powerautomateai/office-365-icon-500x500.png"
+image: "/assets/images/powerautomateai/posts-meta.svg"
 ---
 
 

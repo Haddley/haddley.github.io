@@ -5,7 +5,7 @@ date: "2021-03-02"
 categories: ["3D"]
 tags: "webvr, virtual-reality, three-js, browser"
 slug: "webvr"
-image: "/assets/images/webvr/webvr-logo-square-512x512.png"
+image: "/assets/images/webvr/posts-meta.svg"
 ---
 
 

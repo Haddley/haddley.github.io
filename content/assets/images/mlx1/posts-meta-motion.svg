@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A language model running on an Apple silicon chip</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g class="p" style="animation-delay:0s"><g><rect x="25" y="43" width="4" height="3" fill="#c9d3dd"/><rect x="25" y="74" width="4" height="3" fill="#c9d3dd"/><rect x="17" y="51" width="3" height="4" fill="#c9d3dd"/><rect x="48" y="51" width="3" height="4" fill="#c9d3dd"/><rect x="32" y="43" width="4" height="3" fill="#c9d3dd"/><rect x="32" y="74" width="4" height="3" fill="#c9d3dd"/><rect x="17" y="58" width="3" height="4" fill="#c9d3dd"/><rect x="48" y="58" width="3" height="4" fill="#c9d3dd"/><rect x="39" y="43" width="4" height="3" fill="#c9d3dd"/><rect x="39" y="74" width="4" height="3" fill="#c9d3dd"/><rect x="17" y="65" width="3" height="4" fill="#c9d3dd"/><rect x="48" y="65" width="3" height="4" fill="#c9d3dd"/><rect x="20" y="46" width="28" height="28" rx="4" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/></g></g>
+<g class="p" style="animation-delay:0.4s"><path d="M28,64 C26,54 36,48 38,44 C40,50 46,54 44,62 C42,70 32,72 28,64 Z" fill="#c9d3dd"/></g>
+<path class="d" style="animation-delay:1.0s" pathLength="1" d="M56,60 H68 M64,56.5 L68,60 L64,63.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g class="p" style="animation-delay:1.6s"><g><rect x="70" y="34" width="42" height="24" rx="6" fill="#2f9e4a"/><path d="M78,57 l-6,8 l10,-2 z" fill="#2f9e4a"/></g></g>
+<path class="d" style="animation-delay:2.1s" pathLength="1" d="M76,46 H106" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g class="p" style="animation-delay:2.6s"><g><rect x="70" y="66" width="42" height="24" rx="6" fill="#5bb4ea"/><path d="M104,89 l6,8 l-10,-2 z" fill="#5bb4ea"/></g></g>
+<path class="d" style="animation-delay:3.0s" pathLength="1" d="M76,78 H100" stroke="#0f1b2d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

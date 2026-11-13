@@ -5,7 +5,7 @@ date: "2025-10-23"
 categories: ["AI"]
 tags: "openai, fine-tuning, gpt, llm"
 slug: "openaifinetuning"
-image: "/assets/images/openaifinetuning/chatgpt-logo.svg"
+image: "/assets/images/openaifinetuning/posts-meta.svg"
 ---
 
 

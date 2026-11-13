@@ -6,7 +6,7 @@ categories: ["JavaScript","Firebase"]
 tags: "firebase-realtime, realtime-database, backend"
 hidden: false
 slug: "firebase"
-image: "/assets/images/firebase/logo-lockup-firebase-vertical.svg"
+image: "/assets/images/firebase/posts-meta.svg"
 ---
 
 

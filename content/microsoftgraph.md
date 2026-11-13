@@ -6,7 +6,7 @@ categories: ["Microsoft 365"]
 tags: "microsoft-graph, graph-explorer, api, microsoft-365"
 hidden: false
 slug: "microsoftgraph"
-image: "/assets/images/microsoftgraph/office-365-icon-500x500.png"
+image: "/assets/images/microsoftgraph/posts-meta.svg"
 ---
 
 

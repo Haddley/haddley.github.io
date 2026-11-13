@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Dataverse security roles that give each user the access their duties need</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><circle cx="18" cy="30" r="6" fill="#5bb4ea"/><path d="M8,50 a10,9 0 0 1 20,0 z" fill="#5bb4ea"/></g>
+<g><circle cx="50" cy="30" r="6" fill="#ffb43a"/><path d="M40,50 a10,9 0 0 1 20,0 z" fill="#ffb43a"/></g>
+<g><circle cx="82" cy="30" r="6" fill="#2f9e4a"/><path d="M72,50 a10,9 0 0 1 20,0 z" fill="#2f9e4a"/></g>
+<path d="M26,58 V72 M60,58 V72 M92,58 V72" stroke="#c9d3dd" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<rect x="10" y="74" width="32" height="14" rx="4" fill="#5bb4ea"/>
+<rect x="44" y="74" width="32" height="14" rx="4" fill="#ffb43a"/>
+<rect x="78" y="74" width="32" height="14" rx="4" fill="#2f9e4a"/>
+</svg>

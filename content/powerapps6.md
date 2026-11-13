@@ -5,7 +5,7 @@ date: "2022-07-04"
 categories: ["Power Platform"]
 tags: "microsoft-graph, custom-connector, canvas-app, power-apps"
 slug: "powerapps6"
-image: "/assets/images/powerapps6/office-365-icon-500x500.png"
+image: "/assets/images/powerapps6/posts-meta.svg"
 ---
 
 

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A chat that edits a record in a Dynamics 365 Sales app</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<rect x="6" y="20" width="50" height="80" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/>
+<path d="M12,36 H48" stroke="#ffb43a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect x="10" y="48" width="36" height="14" rx="6" fill="#5bb4ea"/><path d="M18,61 l-6,8 l10,-2 z" fill="#5bb4ea"/></g>
+<g><rect x="16" y="68" width="36" height="14" rx="6" fill="#2f9e4a"/><path d="M44,81 l6,8 l-10,-2 z" fill="#2f9e4a"/></g>
+<path d="M58,60 H68 M64,56.5 L68,60 L64,63.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect x="70" y="30" width="40" height="60" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><g><circle cx="90" cy="46" r="6" fill="#5bb4ea"/><path d="M80,66 a10,9 0 0 1 20,0 z" fill="#5bb4ea"/></g><path d="M76,76 H104 M76,84 H98" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+</svg>

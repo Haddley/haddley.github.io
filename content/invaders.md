@@ -5,7 +5,7 @@ date: "2026-06-19"
 categories: ["AI", "JavaScript"]
 tags: "claude-code, vibe-coding, game-development, canvas, web-audio"
 slug: "invaders"
-image: "/assets/images/invaders/invaders-thumbnail.png"
+image: "/assets/images/invaders/posts-meta.svg"
 ---
 
 I wanted to investigate OpenCode — an open source AI coding agent that works with any model. To give it a real test I decided to build a Space Invaders clone, and then run the same prompt three times: once with OpenCode Big Pickle, once with OpenCode and the DeepSeek API, and once with Claude Code Sonnet 4.6.

@@ -6,7 +6,7 @@ date: "2025-01-01"
 categories: ["Power Platform"]
 tags: "power-apps, configuration-migration, environments, deployment"
 slug: "powerapps23configurationmigrationtool"
-image: "/assets/images/powerapps23configurationmigrationtool/office-365-icon-500x500.png"
+image: "/assets/images/powerapps23configurationmigrationtool/posts-meta.svg"
 ---
 
 

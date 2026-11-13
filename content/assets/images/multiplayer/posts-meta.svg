@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Players moving around a shared world stored in Firebase</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<rect x="8" y="16" width="104" height="88" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/>
+<path d="M20,40 H100 M20,64 H100 M20,88 H100 M40,28 V96 M70,28 V96" stroke="#c9d3dd" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<rect x="32" y="48" width="16" height="16" rx="3" fill="#5bb4ea"/>
+<rect x="62" y="72" width="16" height="16" rx="3" fill="#2f9e4a"/>
+<path d="M96,32 C92,40 88,44 92,54 C94,60 102,60 104,54 C106,46 100,42 96,32 Z" fill="#ffb43a"/>
+</svg>

@@ -5,7 +5,7 @@ date: "2024-02-25"
 categories: ["Power Platform"]
 tags: "copilot-studio, topics, chatbot, conversation-topics"
 slug: "topics"
-image: "/assets/images/topics/office-365-icon-500x500.png"
+image: "/assets/images/topics/posts-meta.svg"
 ---
 
 I wanted to teach a Copilot Studio bot to answer "list of companies" by pulling live data from Dynamics 365 Business Central. By default the Copilot had no idea how to respond — so I built a custom Topic that called the Business Central Connector, retrieved the company list from my PRODUCTION environment, and returned the results to the user.

@@ -5,7 +5,7 @@ date: "2023-08-19"
 categories: ["Business Central"]
 tags: "warehouse-management, put-away, inventory, business-central"
 slug: "warehousemanagementputaway"
-image: "/assets/images/warehousemanagementputaway/dynamics365-color.svg"
+image: "/assets/images/warehousemanagementputaway/posts-meta.svg"
 ---
 
 

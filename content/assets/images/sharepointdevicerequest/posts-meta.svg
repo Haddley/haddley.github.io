@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A SharePoint list with a custom Power Apps form that locks the status field</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<rect x="8" y="14" width="104" height="92" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/>
+<path d="M16,28 H60" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<rect x="16" y="40" width="88" height="12" rx="3" fill="#0f1b2d" stroke="#5bb4ea"/>
+<rect x="16" y="58" width="88" height="12" rx="3" fill="#0f1b2d" stroke="#5bb4ea"/>
+<g><rect x="16" y="76" width="50" height="12" rx="3" fill="#333a47" stroke="#c9d3dd"/></g>
+<g><rect x="73" y="76" width="14" height="11" rx="2" fill="#ffb43a"/><path d="M76,76 V73 a4,4 0 0 1 8,0 V76" stroke="#ffb43a" stroke-width="2" fill="none"/></g>
+<rect x="70" y="92" width="32" height="10" rx="4" fill="#2f9e4a"/>
+</svg>

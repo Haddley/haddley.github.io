@@ -5,7 +5,7 @@ date: "2022-02-10"
 categories: ["JavaScript"]
 tags: "web-components, html-elements, shadow-dom"
 slug: "webcomponents"
-image: "/assets/images/webcomponents/web-components-logo.svg"
+image: "/assets/images/webcomponents/posts-meta.svg"
 ---
 
 

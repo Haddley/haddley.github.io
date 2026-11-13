@@ -5,7 +5,7 @@ date: "2025-09-20"
 categories: ["Microsoft Dynamics","Power Platform"]
 tags: "outlook, set-regarding, dynamics-365, crm"
 hidden: false
-image: "/assets/images/microsoftdynamics365appforoutlook/office-365-icon-500x500.png"
+image: "/assets/images/microsoftdynamics365appforoutlook/posts-meta.svg"
 slug: "microsoftdynamics365appforoutlook"
 ---
 

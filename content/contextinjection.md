@@ -6,7 +6,7 @@ categories: ["AI"]
 tags: "context-injection, prompt-engineering, llm, rag"
 hidden: false
 slug: "contextinjection"
-image: "/assets/images/contextinjection/chatgpt-logo.svg"
+image: "/assets/images/contextinjection/posts-meta.svg"
 ---
 
 

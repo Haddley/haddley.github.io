@@ -6,7 +6,7 @@ date: "2021-11-07"
 categories: ["React"]
 tags: "next-js, api-routes, next-auth, authentication"
 slug: "nextjs3"
-image: "/assets/images/nextjs3/2560px-nextjs-logo.svg-1536x920.png"
+image: "/assets/images/nextjs3/posts-meta.svg"
 ---
 
 

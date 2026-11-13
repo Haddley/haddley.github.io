@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Setting up Unity for a Meta Quest Pro headset with a checklist of fixes</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g class="p" style="animation-delay:0s"><g><rect x="8" y="26" width="52" height="28" rx="8" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><rect x="14" y="32" width="40" height="16" rx="4" fill="#0f1b2d"/><path d="M16,26 q18,-12 36,0" stroke="#5bb4ea" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+<g class="f" style="animation-delay:0.6s"><rect x="8" y="64" width="104" height="44" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/></g>
+<g class="p" style="animation-delay:1.0s"><g><circle cx="22" cy="76" r="5" fill="#2f9e4a"/><path d="M19.75,76 L21.5,78.0 L24.5,74.0" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+<path class="d" style="animation-delay:1.2s" pathLength="1" d="M32,76 H100" stroke="#c9d3dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g class="p" style="animation-delay:1.8s"><g><circle cx="22" cy="86" r="5" fill="#2f9e4a"/><path d="M19.75,86 L21.5,88.0 L24.5,84.0" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+<path class="d" style="animation-delay:2.0s" pathLength="1" d="M32,86 H90" stroke="#c9d3dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g class="p" style="animation-delay:2.6s"><g><circle cx="22" cy="96" r="5" fill="#2f9e4a"/><path d="M19.75,96 L21.5,98.0 L24.5,94.0" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+<path class="d" style="animation-delay:2.8s" pathLength="1" d="M32,96 H96" stroke="#c9d3dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g class="p" style="animation-delay:3.2s"><path d="M94,28 L96.4,33.6 L102,36 L96.4,38.4 L94,44 L91.6,38.4 L86,36 L91.6,33.6 Z" fill="#ffb43a"/></g>
+</svg>

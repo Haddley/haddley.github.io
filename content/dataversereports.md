@@ -6,7 +6,7 @@ categories: ["Power Platform"]
 tags: "dataverse, reports, power-platform, ssrs"
 hidden: false
 slug: "dataversereports"
-image: "/assets/images/dataversereports/office-365-icon-500x500.png"
+image: "/assets/images/dataversereports/posts-meta.svg"
 ---
 
 

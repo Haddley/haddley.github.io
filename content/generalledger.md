@@ -6,7 +6,7 @@ categories: ["Business Central"]
 tags: "general-ledger, accounts-payable, finance, business-central"
 hidden: false
 slug: "generalledger"
-image: "/assets/images/generalledger/dynamics365-color.svg"
+image: "/assets/images/generalledger/posts-meta.svg"
 ---
 
 

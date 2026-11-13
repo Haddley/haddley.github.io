@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A canvas app whose submit button runs an instant flow, embedded in SharePoint</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><rect x="6" y="22" width="32" height="60" rx="7" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><path d="M18.0,27 H26.0" stroke="#5bb4ea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<rect x="10" y="62" width="24" height="10" rx="4" fill="#2f9e4a"/>
+<path d="M40,52 H52 M48,48.5 L52,52 L48,55.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><circle cx="62" cy="52" r="10" fill="#ffb43a"/><path d="M64,45 L58,53 H63 L60,60 L67,51 H62 Z" fill="#0f1b2d"/></g>
+<path d="M74,52 H86 M82,48.5 L86,52 L82,55.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect x="88" y="32" width="26" height="40" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><path d="M93,44 H109 M93,54 H105" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+</svg>

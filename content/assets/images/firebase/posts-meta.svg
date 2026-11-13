@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A Firebase chat app with sign in, a database and hosting</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><rect x="8" y="22" width="46" height="20" rx="6" fill="#5bb4ea"/><path d="M16,41 l-6,8 l10,-2 z" fill="#5bb4ea"/></g>
+<g><rect x="36" y="48" width="46" height="20" rx="6" fill="#2f9e4a"/><path d="M74,67 l6,8 l-10,-2 z" fill="#2f9e4a"/></g>
+<path d="M92,26 C84,44 78,52 84,70 C86,82 102,82 104,70 C108,54 98,48 92,26 Z" fill="#ffb43a"/>
+<g><rect x="91" y="86" width="14" height="11" rx="2" fill="#ffb43a"/><path d="M94,86 V83 a4,4 0 0 1 8,0 V86" stroke="#ffb43a" stroke-width="2" fill="none"/></g>
+<path d="M10,88 H60" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

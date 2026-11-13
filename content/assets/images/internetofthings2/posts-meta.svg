@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Node-RED publishing to and subscribing from an MQTT broker</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><rect x="46" y="44" width="28" height="32" rx="4" fill="#1c2a3d" stroke="#ffb43a" stroke-width="2"/><text x="60" y="64" text-anchor="middle" font-size="7" fill="#ffb43a" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">MQTT</text></g>
+<rect x="6" y="52" width="26" height="16" rx="4" fill="#5bb4ea"/>
+<path d="M32,60 H44 M40,56.5 L44,60 L40,63.5" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path d="M76,60 H88 M84,56.5 L88,60 L84,63.5" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<rect x="90" y="52" width="26" height="16" rx="4" fill="#2f9e4a"/>
+<path d="M12,90 H108" stroke="#c9d3dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

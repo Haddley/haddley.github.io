@@ -4,7 +4,7 @@ part: 4
 description: "Building a Brief Builder feature into nsw-legal-research-assistant, inspired by Thomson Reuters CoCounsel Legal's newly announced Brief Builder — intake, candid argument proposals, a plain-English NSW Caselaw search a non-specialist would actually type, citation-graph leads pulled straight out of a judgment's own text, and a fourth argument grounded on two authorities it never had to fetch itself"
 date: "2026-08-26"
 categories: ["AI"]
-image: "/assets/images/agenticaiforprofessionals4/18-draft-final.webp"
+image: "/assets/images/agenticaiforprofessionals4/posts-meta.svg"
 tags: "brief-builder, citation-following, citation-graph, legal-tech, nsw-caselaw"
 hidden: false
 slug: "agenticaiforprofessionals4"

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A React front end served with an ASP.NET Core back end</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g class="f" style="animation-delay:0s"><g><rect x="10" y="14" width="100" height="42" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><rect x="10" y="14" width="100" height="9" rx="5" fill="#5bb4ea"/><circle cx="17" cy="18.5" r="1.5" fill="#0f1b2d"/><circle cx="22" cy="18.5" r="1.5" fill="#0f1b2d"/></g></g>
+<g class="p" style="animation-delay:0.5s"><g><circle cx="30" cy="36" r="3" fill="#7cc6f0"/><ellipse cx="30" cy="36" rx="11" ry="4.5" fill="none" stroke="#7cc6f0" stroke-width="1.5"/><ellipse cx="30" cy="36" rx="11" ry="4.5" fill="none" stroke="#7cc6f0" stroke-width="1.5" transform="rotate(60 30 36)"/><ellipse cx="30" cy="36" rx="11" ry="4.5" fill="none" stroke="#7cc6f0" stroke-width="1.5" transform="rotate(120 30 36)"/></g></g>
+<path class="d" style="animation-delay:1.2s" pathLength="1" d="M54,32 H98 M54,42 H90" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path class="d" style="animation-delay:2.0s" pathLength="1" d="M60,58 V68 M56,64 L60,69 L64,64 M70,69 V58 M66,63 L70,58 L74,63" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g class="p" style="animation-delay:2.6s"><g><rect x="10" y="72" width="100" height="34" rx="5" fill="#1c2a3d" stroke="#2f9e4a" stroke-width="1.5"/><text x="96" y="93" text-anchor="middle" font-size="11" fill="#2f9e4a" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">C#</text></g></g>
+</svg>

@@ -6,7 +6,7 @@ categories: ["Power Platform","Azure"]
 tags: "power-apps, custom-connector, api-management"
 hidden: false
 slug: "api-management"
-image: "/assets/images/api-management/office-365-icon-500x500.png"
+image: "/assets/images/api-management/posts-meta.svg"
 ---
 
 I used the API Management Service to control how API services are exposed to employees by applying authentication, authorization, and usage limits.

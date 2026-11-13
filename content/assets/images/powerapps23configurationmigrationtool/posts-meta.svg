@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>The Configuration Migration tool moving data from one environment to another</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><rect x="6" y="34" width="34" height="46" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><circle cx="22" cy="40" r="4" fill="#ffb43a"/></g>
+<path d="M10,56 H32 M10,66 H28" stroke="#c9d3dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path d="M42,57 H78 M72,52 L78,57 L72,62" stroke="#ffb43a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect x="50" y="34" width="12" height="8" rx="1.5" fill="#7cc6f0"/><rect x="66" y="74" width="10" height="8" rx="1.5" fill="#7cc6f0"/></g>
+<g><rect x="80" y="34" width="34" height="46" rx="5" fill="#1c2a3d" stroke="#2f9e4a" stroke-width="1.5"/><circle cx="98" cy="40" r="4" fill="#2f9e4a"/></g>
+</svg>

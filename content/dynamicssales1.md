@@ -7,7 +7,7 @@ categories: ["Microsoft Dynamics"]
 tags: "dynamics-365-sales, crm, accounts, sales-insights"
 hidden: false
 slug: "dynamicssales1"
-image: "/assets/images/dynamicssales1/dynamics365-color.svg"
+image: "/assets/images/dynamicssales1/posts-meta.svg"
 ---
 
 

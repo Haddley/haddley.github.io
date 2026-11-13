@@ -3,7 +3,7 @@ title: "Customising a HubSpot Quote Template with a Child Theme"
 description: "How I customised a HubSpot quote template by creating a child theme, cloning the line_items_table module, and adding custom line item columns with red-highlighted subheading rows."
 date: "2025-09-20"
 categories: ["Angular","TypeScript"]
-image: "/assets/images/hubspotquotetemplate/hero.png"
+image: "/assets/images/hubspotquotetemplate/posts-meta.svg"
 tags: "hubspot, quote-template, crm"
 hidden: false
 slug: "hubspotquotetemplate"

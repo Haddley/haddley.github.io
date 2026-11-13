@@ -5,7 +5,7 @@ date: "2021-02-25"
 categories: ["DevOps"]
 tags: "npm, javascript, package, publishing"
 slug: "npm"
-image: "/assets/images/npm/6078720-200x200.png"
+image: "/assets/images/npm/posts-meta.svg"
 ---
 
 

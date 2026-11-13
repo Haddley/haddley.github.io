@@ -4,7 +4,7 @@ part: 5
 description: "Testing a project with no build step, no server and no modules — slicing logic out of raw HTML, auditing for scope collisions, and a transcript-driven test for whether an auction is actually fun"
 date: "2026-08-16"
 categories: ["JavaScript"]
-image: "/assets/images/gamenight5/hero-bidders-rail.png"
+image: "/assets/images/gamenight5/posts-meta.svg"
 tags: "playwright, node-test, unit-testing, e2e-testing, test-automation"
 hidden: false
 slug: "gamenight5"

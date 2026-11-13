@@ -6,7 +6,7 @@ date: "2023-03-08"
 categories: ["macOS"]
 tags: "xcode, opengl, c-plus-plus, graphics"
 slug: "xcode3"
-image: "/assets/images/xcode3/xcode-14-icon-300x314.png"
+image: "/assets/images/xcode3/posts-meta.svg"
 ---
 
 

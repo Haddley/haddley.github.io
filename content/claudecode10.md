@@ -4,7 +4,7 @@ part: 10
 description: "An AI agent for Dynamics 365 Sales Professional"
 date: "2026-03-18"
 categories: ["AI","Microsoft Dynamics"]
-image: "/assets/images/claudecode/Claude_AI_symbol.svg"
+image: "/assets/images/claudecode10/posts-meta.svg"
 tags: "claude-code, ai-agent, anthropic, agentic-coding"
 hidden: false
 slug: "claudecode10"

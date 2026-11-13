@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A custom code component inside a Power Apps screen</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<rect x="8" y="18" width="104" height="84" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/>
+<path d="M16,32 H60 M16,44 H50" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect x="60" y="44" width="44" height="46" rx="4" fill="#0f1b2d" stroke="#ffb43a" stroke-width="2" stroke-dasharray="4 3"/><text x="82" y="72" text-anchor="middle" font-size="14" fill="#ffb43a" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">&lt;/&gt;</text></g>
+<rect x="16" y="64" width="34" height="26" rx="4" fill="#5bb4ea"/>
+</svg>

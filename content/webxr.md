@@ -5,7 +5,7 @@ date: "2022-04-22"
 categories: ["3D"]
 tags: "webxr, augmented-reality, mixed-reality, browser"
 slug: "webxr"
-image: "/assets/images/webxr/34385910-400x400.png"
+image: "/assets/images/webxr/posts-meta.svg"
 ---
 
 

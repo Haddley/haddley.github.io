@@ -5,7 +5,7 @@ date: "2023-05-09"
 categories: ["Firebase"]
 tags: "multiplayer, realtime-database, game"
 slug: "multiplayer"
-image: "/assets/images/multiplayer/logo-lockup-firebase-vertical.svg"
+image: "/assets/images/multiplayer/posts-meta.svg"
 ---
 
 

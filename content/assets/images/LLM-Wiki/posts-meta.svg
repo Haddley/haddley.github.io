@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A web of linked wiki pages built from documents by an LLM</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<path d="M30,40 L60,28" stroke="#5bb4ea" stroke-width="1.5" fill="none"/><path d="M60,28 L92,42" stroke="#5bb4ea" stroke-width="1.5" fill="none"/><path d="M30,40 L46,76" stroke="#5bb4ea" stroke-width="1.5" fill="none"/><path d="M60,28 L46,76" stroke="#5bb4ea" stroke-width="1.5" fill="none"/><path d="M92,42 L80,80" stroke="#5bb4ea" stroke-width="1.5" fill="none"/><path d="M46,76 L80,80" stroke="#5bb4ea" stroke-width="1.5" fill="none"/><path d="M46,76 L18,88" stroke="#5bb4ea" stroke-width="1.5" fill="none"/>
+<circle cx="30" cy="40" r="4" fill="#5bb4ea"/><circle cx="60" cy="28" r="4" fill="#ffb43a"/><circle cx="92" cy="42" r="4" fill="#2f9e4a"/><circle cx="46" cy="76" r="4" fill="#7cc6f0"/><circle cx="80" cy="80" r="4" fill="#5bb4ea"/><circle cx="18" cy="88" r="4" fill="#c9d3dd"/>
+<g><path d="M104,15 L106.1,19.9 L111,22 L106.1,24.1 L104,29 L101.9,24.1 L97,22 L101.9,19.9 Z" fill="#ffb43a"/></g>
+</svg>

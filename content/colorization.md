@@ -6,7 +6,7 @@ categories: ["Python","AI"]
 tags: "colorization, jupyter-notebook, image-processing"
 hidden: false
 slug: "colorization"
-image: "/assets/images/colorization/jupyter.svg"
+image: "/assets/images/colorization/posts-meta.svg"
 ---
 
 

@@ -6,7 +6,7 @@ categories: ["Power Platform","Microsoft Dynamics","Business Central"]
 tags: "cloud-flow, power-automate, business-central, connector"
 hidden: false
 slug: "cloudflow"
-image: "/assets/images/cloudflow/office-365-icon-500x500.png"
+image: "/assets/images/cloudflow/posts-meta.svg"
 ---
 
 

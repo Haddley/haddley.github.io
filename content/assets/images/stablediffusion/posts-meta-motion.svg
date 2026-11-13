@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Stable Diffusion turning a text description into an image</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g class="p" style="animation-delay:0s"><g><rect x="6" y="32" width="40" height="36" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><path d="M12,44 H40 M12,54 H34" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+<path class="d" style="animation-delay:0.8s" pathLength="1" d="M48,50 H60 M56,46.5 L60,50 L56,53.5" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g class="p" style="animation-delay:1.4s"><g><rect x="62" y="26" width="48" height="48" rx="4" fill="#5a6b82"/></g></g>
+<g class="p" style="animation-delay:1.9s"><rect x="62" y="26" width="48" height="48" rx="4" fill="#7a5ec9"/></g>
+<g class="p" style="animation-delay:2.5s"><circle cx="76" cy="42" r="7" fill="#ffb43a"/></g>
+<g class="p" style="animation-delay:3.0s"><path d="M62,74 L82,50 L94,64 L102,56 L110,74 Z" fill="#2f9e4a"/></g>
+</svg>

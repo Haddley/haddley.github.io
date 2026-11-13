@@ -5,7 +5,7 @@ date: "2026-05-31"
 categories: ["IOT"]
 tags: "raspberry-pi, retropie, pimoroni, arcade, emulation"
 slug: "picade"
-image: "/assets/images/picade/hero.jpg"
+image: "/assets/images/picade/posts-meta.svg"
 hidden: false
 ---
 

@@ -6,7 +6,7 @@ categories: ["Business Central"]
 tags: "al-language, extension, maps, business-central"
 hidden: false
 slug: "mapextension"
-image: "/assets/images/mapextension/dynamics365-color.svg"
+image: "/assets/images/mapextension/posts-meta.svg"
 ---
 
 

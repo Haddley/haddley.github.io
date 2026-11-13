@@ -5,7 +5,7 @@ date: "2026-08-01"
 categories: ["3D", "Mobile"]
 tags: "virtual-reality, quest, openxr, diplopia, vision-therapy"
 slug: "bielschowsky"
-image: "/assets/images/bielschowsky/eyes-right.png"
+image: "/assets/images/bielschowsky/posts-meta.svg"
 ---
 
 I have a right superior oblique (fourth nerve) palsy, dating from a road traffic accident in November 2018, and with it constant binocular double vision. My prescription of record carries vertical prism split between the two eyes plus a small amount of base-out. What it does not carry — what no pair of glasses can carry — is the *rotational* part, because a prism bends light up, down or sideways and no optic rotates a retinal image.

@@ -4,7 +4,7 @@ part: 11
 description: "Running Claude Code against a local Ollama model (qwen3-coder:30b) instead of the Anthropic API — no API costs and no data leaving the machine"
 date: "2026-04-10"
 categories: ["AI"]
-image: "/assets/images/claudecode/Claude_AI_symbol.svg"
+image: "/assets/images/claudecode11/posts-meta.svg"
 tags: "claude-code, ai-agent, anthropic, agentic-coding, ollama"
 hidden: false
 slug: "claudecode11"

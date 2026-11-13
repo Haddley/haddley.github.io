@@ -5,7 +5,7 @@ date: "2024-03-10"
 categories: ["Azure"]
 tags: "azure-static-web-apps, config, routing, auth"
 slug: "staticwebapp.config.json"
-image: "/assets/images/staticwebapp.config.json/azurex70x75.svg"
+image: "/assets/images/staticwebapp.config.json/posts-meta.svg"
 ---
 
 

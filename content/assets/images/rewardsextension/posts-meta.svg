@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A list of rewards where each customer is given one reward</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<rect x="6" y="24" width="36" height="72" rx="5" fill="#1c2a3d" stroke="#ffb43a" stroke-width="1.5"/><path d="M12,38 H36 M12,48 H36 M12,58 H36" stroke="#ffb43a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect x="12" y="68" width="24" height="20" rx="3" fill="#ffb43a"/><path d="M24,68 V88 M12,78 H36" stroke="#0f1b2d" stroke-width="2" fill="none"/></g>
+<path d="M42,60 C54,60 54,60 72,60 M68,56 L72,60 L68,64" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect x="74" y="32" width="36" height="56" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><circle cx="92" cy="48" r="7" fill="#5bb4ea"/><path d="M80,66 H104 M80,74 H98" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<path d="M104,29 L106.1,33.9 L111,36 L106.1,38.1 L104,43 L101.9,38.1 L97,36 L101.9,33.9 Z" fill="#ffb43a"/>
+</svg>

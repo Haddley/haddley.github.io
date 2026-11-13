@@ -6,7 +6,7 @@ categories: ["JavaScript","Microsoft 365"]
 tags: "microsoft-graph, console-app, api"
 hidden: false
 slug: "javascriptgraph"
-image: "/assets/images/javascriptgraph/office-365-icon-500x500.png"
+image: "/assets/images/javascriptgraph/posts-meta.svg"
 ---
 
 

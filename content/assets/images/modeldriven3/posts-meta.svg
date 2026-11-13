@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>JavaScript on a form that moves a business process flow to its next stage</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<rect x="8" y="18" width="104" height="84" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/>
+<text x="34" y="42" text-anchor="middle" font-size="14" fill="#ffb43a" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">JS</text>
+<path d="M16,58 H60 M16,70 H50" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path d="M62,62 H88 L94,72 L88,82 H62 L68,72 Z" fill="#2f9e4a"/>
+<path d="M92,62 H112 L118,72 L112,82 H92 L98,72 Z" fill="#5bb4ea"/>
+</svg>

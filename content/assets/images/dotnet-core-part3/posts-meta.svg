@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>The dotnet command line fails to create a VB web app but creates a VB console app</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><rect x="6" y="16" width="108" height="88" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><path d="M13,24 l5,4 l-5,4" stroke="#2f9e4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<path d="M30,34 H80" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><circle cx="98" cy="34" r="6" fill="#d9483b"/><path d="M95.6,31.6 l4.800000000000001,4.800000000000001 m0,-4.800000000000001 l-4.800000000000001,4.800000000000001" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<path d="M30,56 H72" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><circle cx="98" cy="56" r="6" fill="#2f9e4a"/><path d="M95.3,56 L97.4,58.4 L101.0,53.6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<path d="M30,78 H88" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><text x="98" y="82" text-anchor="middle" font-size="8" fill="#ffb43a" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">VB</text></g>
+</svg>

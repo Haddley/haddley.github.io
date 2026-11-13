@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Stable Diffusion turning a text description into an image</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><rect x="6" y="32" width="40" height="36" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><path d="M12,44 H40 M12,54 H34" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<path d="M48,50 H60 M56,46.5 L60,50 L56,53.5" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect x="62" y="26" width="48" height="48" rx="4" fill="#5a6b82"/></g>
+<rect x="62" y="26" width="48" height="48" rx="4" fill="#7a5ec9"/>
+<circle cx="76" cy="42" r="7" fill="#ffb43a"/>
+<path d="M62,74 L82,50 L94,64 L102,56 L110,74 Z" fill="#2f9e4a"/>
+</svg>

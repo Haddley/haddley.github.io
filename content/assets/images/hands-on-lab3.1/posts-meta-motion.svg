@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A fiscal year of twelve accounting periods that starts on the first of July</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<path class="f" style="animation-delay:0s" d="M10,22 H110" stroke="#5bb4ea" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<rect class="p" style="animation-delay:0.4s" x="10" y="32" width="20" height="18" rx="3" fill="#ffb43a"/>
+<rect class="p" style="animation-delay:0.62s" x="36" y="32" width="20" height="18" rx="3" fill="#2f9e4a"/>
+<rect class="p" style="animation-delay:0.8400000000000001s" x="62" y="32" width="20" height="18" rx="3" fill="#2f9e4a"/>
+<rect class="p" style="animation-delay:1.06s" x="88" y="32" width="20" height="18" rx="3" fill="#2f9e4a"/>
+<rect class="p" style="animation-delay:1.28s" x="10" y="56" width="20" height="18" rx="3" fill="#2f9e4a"/>
+<rect class="p" style="animation-delay:1.5s" x="36" y="56" width="20" height="18" rx="3" fill="#2f9e4a"/>
+<rect class="p" style="animation-delay:1.7200000000000002s" x="62" y="56" width="20" height="18" rx="3" fill="#2f9e4a"/>
+<rect class="p" style="animation-delay:1.94s" x="88" y="56" width="20" height="18" rx="3" fill="#2f9e4a"/>
+<rect class="p" style="animation-delay:2.16s" x="10" y="80" width="20" height="18" rx="3" fill="#2f9e4a"/>
+<rect class="p" style="animation-delay:2.38s" x="36" y="80" width="20" height="18" rx="3" fill="#2f9e4a"/>
+<rect class="p" style="animation-delay:2.6s" x="62" y="80" width="20" height="18" rx="3" fill="#2f9e4a"/>
+<rect class="p" style="animation-delay:2.82s" x="88" y="80" width="20" height="18" rx="3" fill="#2f9e4a"/>
+</svg>

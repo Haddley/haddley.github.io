@@ -5,7 +5,7 @@ date: "2023-08-30"
 categories: ["Business Central"]
 tags: "al-language, extension, rewards, business-central"
 slug: "rewardsextension"
-image: "/assets/images/rewardsextension/dynamics365-color.svg"
+image: "/assets/images/rewardsextension/posts-meta.svg"
 ---
 
 

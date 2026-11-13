@@ -6,7 +6,7 @@ date: "2024-10-26"
 categories: ["Business Central","Power Platform"]
 tags: "power-pages, sales-orders, business-central, portal"
 slug: "powerpages1"
-image: "/assets/images/powerpages1/powerpages-scalable.svg"
+image: "/assets/images/powerpages1/posts-meta.svg"
 ---
 
 I used Microsoft Power Pages to build a Customer Portal for Dynamics 365 Business Central. Power Pages is a low-code platform for external-facing business websites, and the portal gives customers visibility into their Sales Orders.

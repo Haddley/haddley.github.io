@@ -6,7 +6,7 @@ date: "2026-05-03"
 categories: ["Microsoft 365"]
 tags: "sharepoint, power-automate, power-apps"
 slug: "sharepointdevicerequest2"
-image: "/assets/images/powerautomate/office-365-icon-500x500.png"
+image: "/assets/images/sharepointdevicerequest2/posts-meta.svg"
 ---
 
 In [Part 1](/posts/sharepointdevicerequest/) I built a Device Request list in SharePoint and customised its built-in form with Power Apps. That approach is straightforward, but it ties everything to the SharePoint list — the flow only fires when a list item is written, every submission is visible in the list view, and the form can only do what a customised list form supports.

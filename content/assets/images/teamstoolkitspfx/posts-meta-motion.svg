@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>The Teams Toolkit building a Teams tab backed by a SharePoint list</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g class="p" style="animation-delay:0s"><g><rect x="6" y="22" width="56" height="56" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><rect x="12" y="28" width="20" height="8" rx="3" fill="#5bb4ea"/></g></g>
+<path class="d" style="animation-delay:0.8s" pathLength="1" d="M14,50 H54 M14,62 H46" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path class="d" style="animation-delay:1.6s" pathLength="1" d="M64,50 H76 M72,46.5 L76,50 L72,53.5" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g class="p" style="animation-delay:2.2s"><g><rect x="78" y="28" width="34" height="44" rx="5" fill="#1c2a3d" stroke="#2f9e4a" stroke-width="1.5"/><path d="M84,40 H106 M84,50 H106 M84,60 H100" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+<g class="p" style="animation-delay:2.9s"><g><circle cx="24" cy="92" r="7" fill="#1c2a3d" stroke="#ffb43a" stroke-width="2"/><circle cx="24" cy="92" r="2.4499999999999997" fill="#ffb43a"/><path d="M24,82 V86 M24,98 V102 M14,92 H18 M30,92 H34" stroke="#ffb43a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+</svg>

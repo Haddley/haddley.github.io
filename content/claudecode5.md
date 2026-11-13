@@ -4,7 +4,7 @@ part: 5
 description: "Using Claude Code's Plan Mode (read-only exploration before edits) and Extended Thinking to handle complex tasks more carefully"
 date: "2026-01-21"
 categories: ["AI"]
-image: "/assets/images/claudecode/Claude_AI_symbol.svg"
+image: "/assets/images/claudecode5/posts-meta.svg"
 tags: "claude-code, extended-thinking, planning, anthropic"
 hidden: false
 slug: "claudecode5"

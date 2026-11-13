@@ -6,7 +6,7 @@ date: "2021-11-05"
 categories: ["React"]
 tags: "next-js, framework, ssr"
 slug: "nextjs1"
-image: "/assets/images/nextjs1/2560px-nextjs-logo.svg-1536x920.png"
+image: "/assets/images/nextjs1/posts-meta.svg"
 ---
 
 

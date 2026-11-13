@@ -6,7 +6,7 @@ categories: ["Microsoft Dynamics","Business Central"]
 tags: "admin-center, business-central, administration, tenants"
 hidden: false
 slug: "businesscentraladmincenter"
-image: "/assets/images/businesscentraladmincenter/dynamics365-color.svg"
+image: "/assets/images/businesscentraladmincenter/posts-meta.svg"
 ---
 
 

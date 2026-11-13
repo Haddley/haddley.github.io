@@ -5,7 +5,7 @@ date: "2021-02-06"
 categories: ["JavaScript"]
 tags: "rest-api, node, express"
 slug: "restapiservice"
-image: "/assets/images/restapiservice/fve-image.svg"
+image: "/assets/images/restapiservice/posts-meta.svg"
 ---
 
 

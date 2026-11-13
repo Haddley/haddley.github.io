@@ -5,7 +5,7 @@ date: "2021-11-14"
 categories: ["SQL"]
 tags: "mysql, javascript, database, node"
 slug: "mysql"
-image: "/assets/images/mysql/includes-mysql-5646x2872.png"
+image: "/assets/images/mysql/posts-meta.svg"
 ---
 
 

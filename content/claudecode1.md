@@ -4,7 +4,7 @@ part: 1
 description: "Getting started with Claude Code — Anthropic's agentic CLI that reads your project files, writes and edits code, and runs commands from a single prompt"
 date: "2026-01-20"
 categories: ["AI"]
-image: "/assets/images/claudecode/Claude_AI_symbol.svg"
+image: "/assets/images/claudecode1/posts-meta.svg"
 tags: "claude-code, anthropic, agentic-coding, cli"
 hidden: false
 slug: "claudecode1"

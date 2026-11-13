@@ -6,7 +6,7 @@ categories: ["Microsoft Dynamics","Business Central","Power Platform"]
 tags: "power-apps, patch, business-central, canvas-app"
 hidden: false
 slug: "addanitem"
-image: "/assets/images/addanitem/office-365-icon-500x500.png"
+image: "/assets/images/addanitem/posts-meta.svg"
 ---
 
 In this post I use a Power Apps canvas app and the Patch function to add an item to Business Central. The app starts from the Business Central Configuration app and a Copilot-generated Item Setup app.

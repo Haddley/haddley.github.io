@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A flow that emails a report as a PDF</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><rect x="8" y="26" width="36" height="46" rx="3" fill="#c9d3dd"/><path d="M14,48 V66 M22,44 V66 M30,52 V66 M38,40 V66" stroke="#5bb4ea" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/><rect x="8" y="26" width="36" height="9" rx="3" fill="#d9483b"/></g>
+<text x="26" y="33" text-anchor="middle" font-size="6" fill="#fff" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">PDF</text>
+<path d="M48,50 H64 M60,46.5 L64,50 L60,53.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect x="66" y="34" width="46" height="32" rx="4" fill="#2f9e4a"/><path d="M68,38 L89,54 L110,38" stroke="#c9d3dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<g><circle cx="24" cy="92" r="8" fill="none" stroke="#ffb43a" stroke-width="2"/><path d="M24,92 V86 M24,92 L29,94" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+</svg>

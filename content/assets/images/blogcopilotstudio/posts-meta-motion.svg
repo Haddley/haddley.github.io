@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A Business Central chat page asks this blog a question and gets an answer back</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<rect class="f" style="animation-delay:0s" x="8" y="16" width="60" height="88" rx="7" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/>
+<g><rect class="p" style="animation-delay:0.4s" x="26" y="24" width="36" height="15" rx="5" fill="#5bb4ea"/><path d="M32,31.5 H56" stroke="#0f1b2d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<path class="d" style="animation-delay:1.0s" pathLength="1" d="M70,44 H82 M78,40.5 L82,44 L78,47.5" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect class="f" style="animation-delay:1.4s" x="84" y="30" width="28" height="48" rx="3" fill="#c9d3dd"/><rect x="88" y="35" width="20" height="6" rx="1" fill="#5bb4ea"/><path d="M88,48 H108 M88,54 H108 M88,60 H108 M88,66 H100" stroke="#0f1b2d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<path class="d" style="animation-delay:2.0s" pathLength="1" d="M82,70 H70 M74,66.5 L70,70 L74,73.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect class="p" style="animation-delay:2.5s" x="14" y="66" width="46" height="30" rx="6" fill="#2f9e4a"/><path d="M20,74 H54 M20,81 H54 M20,88 H42" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+</svg>

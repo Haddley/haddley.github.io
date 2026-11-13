@@ -4,7 +4,7 @@ part: 15
 description: "Using Claude Code to detect, program, and debug a Arduino TinkerKit LCD Module"
 date: "2026-09-04"
 categories: ["AI","IOT"]
-image: "/assets/images/claudecode/Claude_AI_symbol.svg"
+image: "/assets/images/claudecode15/posts-meta.svg"
 tags: "claude-code, arduino, tinkerkit, hardware-debugging, agentic-coding"
 hidden: false
 slug: "claudecode15"

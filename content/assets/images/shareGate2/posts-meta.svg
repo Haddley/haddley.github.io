@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Migrating content types, site columns and permissions with ShareGate</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><rect x="6" y="22" width="28" height="12" rx="3" fill="#5bb4ea"/><rect x="6" y="40" width="28" height="12" rx="3" fill="#ffb43a"/><rect x="6" y="58" width="28" height="12" rx="3" fill="#2f9e4a"/></g>
+<path d="M38,28 H70 M38,46 H70 M38,64 H70 M66,24 L70,28 L66,32 M66,42 L70,46 L66,50 M66,60 L70,64 L66,68" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><path transform="translate(94,46) scale(1.2)" d="M-22,10 A9,9 0 0 1 -16,-6 A14,14 0 0 1 10,-8 A9,9 0 0 1 12,10 Z" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/></g>
+<g><rect x="87" y="72" width="14" height="11" rx="2" fill="#ffb43a"/><path d="M90,72 V69 a4,4 0 0 1 8,0 V72" stroke="#ffb43a" stroke-width="2" fill="none"/></g>
+<g><circle cx="84" cy="88" r="5" fill="#2f9e4a"/><path d="M81.75,88 L83.5,90.0 L86.5,86.0" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+</svg>

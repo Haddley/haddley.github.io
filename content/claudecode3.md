@@ -4,7 +4,7 @@ part: 3
 description: "Managing Claude Code's context window with ESC ESC rewind, /compact summarisation, and /clear reset to keep long sessions accurate"
 date: "2026-01-21"
 categories: ["AI"]
-image: "/assets/images/claudecode/Claude_AI_symbol.svg"
+image: "/assets/images/claudecode3/posts-meta.svg"
 tags: "claude-code, context-window, anthropic"
 hidden: false
 slug: "claudecode3"

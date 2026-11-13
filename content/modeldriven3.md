@@ -6,7 +6,7 @@ date: "2023-10-08"
 categories: ["Power Platform"]
 tags: "model-driven-app, javascript, business-process-flow, dataverse"
 slug: "modeldriven3"
-image: "/assets/images/modeldriven3/office-365-icon-500x500.png"
+image: "/assets/images/modeldriven3/posts-meta.svg"
 ---
 
 

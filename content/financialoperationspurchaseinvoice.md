@@ -6,7 +6,7 @@ categories: ["Microsoft Dynamics","Business Central"]
 tags: "purchase-invoice, payment-journal, finance, business-central"
 hidden: false
 slug: "financialoperationspurchaseinvoice"
-image: "/assets/images/financialoperationspurchaseinvoice/dynamics365-color.svg"
+image: "/assets/images/financialoperationspurchaseinvoice/posts-meta.svg"
 ---
 
 

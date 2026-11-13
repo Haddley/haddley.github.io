@@ -6,7 +6,7 @@ categories: ["Angular","TypeScript"]
 tags: "phaser, game-dev, canvas"
 hidden: false
 slug: "angularphaser"
-image: "/assets/images/angularphaser/phaser-logo-1836x1530.webp"
+image: "/assets/images/angularphaser/posts-meta.svg"
 ---
 
 ## Highlights

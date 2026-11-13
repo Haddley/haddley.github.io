@@ -6,7 +6,7 @@ categories: ["AI","Python"]
 tags: "langchain, agents, llm"
 hidden: false
 slug: "langchainagents"
-image: "/assets/images/langchainagents/langchain.svg"
+image: "/assets/images/langchainagents/posts-meta.svg"
 ---
 
 

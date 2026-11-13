@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A new Microsoft tenant signed up for a Dynamics trial</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><path d="M26,56 A12,12 0 0 1 34,34 A18,18 0 0 1 68,38 A12,12 0 0 1 66,62 H32 A8,8 0 0 1 26,56 Z" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/></g>
+<path d="M40,48 L48,56 L62,42" stroke="#2f9e4a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g fill="#5bb4ea"><rect x="22" y="76" width="18" height="18" rx="4"/><rect x="46" y="76" width="18" height="18" rx="4" fill="#ffb43a"/><rect x="70" y="76" width="18" height="18" rx="4" fill="#2f9e4a"/></g>
+<g><circle cx="94" cy="34" r="12" fill="#1c2a3d" stroke="#ffb43a" stroke-width="1.5"/><circle cx="91" cy="34" r="3.5" fill="none" stroke="#ffb43a" stroke-width="2"/><path d="M94.5,34 H102 M99,34 V38" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+</svg>

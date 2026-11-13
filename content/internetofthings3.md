@@ -7,7 +7,7 @@ categories: ["AI","IOT"]
 tags: "arduino, machine-learning, edge-ai, tensorflow-lite"
 hidden: false
 slug: "internetofthings3"
-image: "/assets/images/internetofthings3/iot-microchip.svg"
+image: "/assets/images/internetofthings3/posts-meta.svg"
 ---
 
 

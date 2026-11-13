@@ -6,7 +6,7 @@ categories: ["Power Platform","React"]
 tags: "pcf, component-framework, power-apps, typescript"
 hidden: false
 slug: "componentframework"
-image: "/assets/images/componentframework/office-365-icon-500x500.png"
+image: "/assets/images/componentframework/posts-meta.svg"
 ---
 
 

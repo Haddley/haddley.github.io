@@ -6,7 +6,7 @@ date: "2021-10-12"
 categories: ["DevOps", "Azure"]
 tags: "sails-js, cosmos-db, mongodb"
 slug: "sails2"
-image: "/assets/images/sails2/sailsjs-logo-515x193.png"
+image: "/assets/images/sails2/posts-meta.svg"
 ---
 
 

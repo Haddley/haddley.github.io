@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Microsoft Graph as one hub that reaches mail, files, chat and calendar</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><circle cx="60" cy="60" r="13" fill="#ffb43a"/><circle cx="60" cy="60" r="5" fill="#0f1b2d"/></g>
+<path d="M50,50 L30,34 M70,50 L90,34 M50,70 L30,86 M70,70 L90,86" stroke="#7cc6f0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<rect x="14" y="20" width="26" height="22" rx="4" fill="#5bb4ea"/>
+<rect x="80" y="20" width="26" height="22" rx="4" fill="#2f9e4a"/>
+<rect x="14" y="78" width="26" height="22" rx="4" fill="#8b6fd8"/>
+<rect x="80" y="78" width="26" height="22" rx="4" fill="#d9483b"/>
+</svg>

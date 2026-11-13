@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A notebook of cells running a Scheme-like LISP</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<rect x="8" y="16" width="104" height="88" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/>
+<g><rect x="14" y="24" width="92" height="22" rx="3" fill="#0f1b2d"/><text x="60" y="40" text-anchor="middle" font-size="10" fill="#ffb43a" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">(+ 1 2)</text></g>
+<text x="60" y="58" text-anchor="middle" font-size="10" fill="#2f9e4a" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">3</text>
+<g><rect x="14" y="66" width="92" height="22" rx="3" fill="#0f1b2d"/><text x="60" y="82" text-anchor="middle" font-size="8" fill="#ffb43a" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">(* 3 (+ 1 2))</text></g>
+<text x="60" y="99" text-anchor="middle" font-size="9" fill="#2f9e4a" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">9</text>
+</svg>

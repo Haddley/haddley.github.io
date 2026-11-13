@@ -6,7 +6,7 @@ date: "2021-11-11"
 categories: ["React", "Azure"]
 tags: "next-js, deployment, azure-static-web-apps"
 slug: "nextjs4"
-image: "/assets/images/nextjs4/2560px-nextjs-logo.svg-1536x920.png"
+image: "/assets/images/nextjs4/posts-meta.svg"
 ---
 
 

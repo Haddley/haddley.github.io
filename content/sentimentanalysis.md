@@ -5,7 +5,7 @@ date: "2023-07-19"
 categories: ["AI"]
 tags: "sentiment-analysis, nlp, text-classification, python"
 slug: "sentimentanalysis"
-image: "/assets/images/sentimentanalysis/chatgpt-logo.svg"
+image: "/assets/images/sentimentanalysis/posts-meta.svg"
 ---
 
 

@@ -6,7 +6,7 @@ date: "2024-12-20"
 categories: ["Business Central","Power Platform"]
 tags: "power-pages, orders, business-central, portal"
 slug: "powerpages2"
-image: "/assets/images/powerpages2/powerpages-scalable.svg"
+image: "/assets/images/powerpages2/posts-meta.svg"
 ---
 
 

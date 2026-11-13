@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>PHP running on a Mac and printing its configuration</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><ellipse cx="42" cy="56" rx="30" ry="18" fill="#8892bf"/><text x="42" y="62" text-anchor="middle" font-size="16" fill="#0f1b2d" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">php</text></g>
+<path d="M76,56 H90 M86,52.5 L90,56 L86,59.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect x="92" y="32" width="20" height="48" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><path d="M97,44 H107 M97,54 H107 M97,64 H103" stroke="#c9d3dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<g><rect x="18" y="82" width="50" height="18" rx="4" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><path d="M12,105 H74" stroke="#c9d3dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+</svg>

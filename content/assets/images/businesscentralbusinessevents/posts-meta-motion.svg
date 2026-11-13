@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Business Central pushes an event to an outside system the moment it happens</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><rect class="p" style="animation-delay:0s" x="6" y="42" width="30" height="36" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><text x="21.0" y="64.0" text-anchor="middle" font-size="11" fill="#7cc6f0" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">BC</text></g>
+<g><circle class="p" style="animation-delay:0.9s" cx="52" cy="60" r="11" fill="#ffb43a"/><path d="M54,52 L48,61 H53 L50,69 L57,59 H52 Z" fill="#0f1b2d"/></g>
+<path class="d" style="animation-delay:1.7s" pathLength="1" d="M65,60 H80 M76,56.5 L80,60 L76,63.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path class="f" style="animation-delay:1.9s" d="M36,60 H39 M65,50 Q70,60 65,70" stroke="#ffb43a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect class="p" style="animation-delay:2.5s" x="82" y="40" width="32" height="40" rx="5" fill="#1c2a3d" stroke="#2f9e4a" stroke-width="1.5"/><path d="M90,60 L96,66 L107,52" stroke="#2f9e4a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+</svg>

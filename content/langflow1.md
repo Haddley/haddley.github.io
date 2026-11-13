@@ -7,7 +7,7 @@ categories: ["AI"]
 tags: "langflow, visual-programming, llm, workflow"
 hidden: false
 slug: "langflow1"
-image: "/assets/images/langflow1/85702467-200x200.png"
+image: "/assets/images/langflow1/posts-meta.svg"
 ---
 
 

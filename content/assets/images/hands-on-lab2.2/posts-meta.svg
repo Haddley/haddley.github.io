@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Excel sheets of customers, vendors and items migrate into the new company</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><rect x="6" y="30" width="44" height="60" rx="4" fill="#2f9e4a"/><path d="M6,48 H50 M6,62 H50 M6,76 H50 M24,30 V90 M38,30 V90" stroke="#0f1b2d" stroke-width="1.5" fill="none"/><rect x="6" y="30" width="44" height="12" rx="4" fill="#1e7a37"/></g>
+<path d="M54,60 H70 M66,56.5 L70,60 L66,63.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><path d="M76,40 V79 A16.0,5 0 0 0 108,79 V40" fill="#1c2a3d" stroke="#7cc6f0" stroke-width="1.5"/><ellipse cx="92.0" cy="40" rx="16.0" ry="5" fill="#5bb4ea" stroke="#7cc6f0" stroke-width="1.5"/></g>
+<g fill="#ffb43a"><rect x="82" y="52" width="20" height="4" rx="2"/><rect x="82" y="62" width="20" height="4" rx="2"/><rect x="82" y="72" width="14" height="4" rx="2"/></g>
+</svg>

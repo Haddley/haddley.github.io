@@ -6,7 +6,7 @@ date: "2021-10-12"
 categories: ["DevOps", "Azure"]
 tags: "sails-js, azure-devops, node, mvc"
 slug: "sails1"
-image: "/assets/images/sails1/sailsjs-logo-515x193.png"
+image: "/assets/images/sails1/posts-meta.svg"
 ---
 
 

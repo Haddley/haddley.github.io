@@ -6,7 +6,7 @@ categories: ["Power Platform"]
 tags: "copilot-studio, embed, html, web-channel"
 hidden: false
 slug: "copilotembedcode"
-image: "/assets/images/copilotembedcode/office-365-icon-500x500.png"
+image: "/assets/images/copilotembedcode/posts-meta.svg"
 ---
 
 

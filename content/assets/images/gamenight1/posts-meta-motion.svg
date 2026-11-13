@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>One host phone holds the game state and sends it to every other phone with no server</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g class="p" style="animation-delay:0s"><g><g><rect x="49" y="40" width="22" height="38" rx="7" fill="#1c2a3d" stroke="#ffb43a" stroke-width="1.5"/><path d="M56.0,45 H64.0" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g><circle cx="60" cy="62" r="4" fill="#ffb43a"/></g></g>
+<path class="d" style="animation-delay:0.8s" pathLength="1" d="M52,52 L30,34 M68,52 L90,34 M52,70 L30,88 M68,70 L90,88" stroke="#7cc6f0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g class="p" style="animation-delay:1.6s"><g><rect x="8" y="14" width="20" height="32" rx="7" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><path d="M14.0,19 H22.0" stroke="#5bb4ea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+<g class="p" style="animation-delay:1.9s"><g><rect x="92" y="14" width="20" height="32" rx="7" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><path d="M98.0,19 H106.0" stroke="#5bb4ea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+<g class="p" style="animation-delay:2.2s"><g><rect x="8" y="74" width="20" height="32" rx="7" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><path d="M14.0,79 H22.0" stroke="#5bb4ea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+<g class="p" style="animation-delay:2.5s"><g><rect x="92" y="74" width="20" height="32" rx="7" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><path d="M98.0,79 H106.0" stroke="#5bb4ea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+<g class="f" style="animation-delay:3.0s"><g><circle cx="18" cy="32" r="3" fill="#2f9e4a"/><circle cx="102" cy="32" r="3" fill="#2f9e4a"/><circle cx="18" cy="92" r="3" fill="#2f9e4a"/><circle cx="102" cy="92" r="3" fill="#2f9e4a"/></g></g>
+</svg>

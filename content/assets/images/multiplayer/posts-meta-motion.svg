@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Players moving around a shared world stored in Firebase</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g class="f" style="animation-delay:0s"><rect x="8" y="16" width="104" height="88" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/></g>
+<path class="d" style="animation-delay:0.4s" pathLength="1" d="M20,40 H100 M20,64 H100 M20,88 H100 M40,28 V96 M70,28 V96" stroke="#c9d3dd" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g class="p" style="animation-delay:1.0s"><rect x="32" y="48" width="16" height="16" rx="3" fill="#5bb4ea"/></g>
+<g class="p" style="animation-delay:1.6s"><rect x="62" y="72" width="16" height="16" rx="3" fill="#2f9e4a"/></g>
+<g class="p" style="animation-delay:2.4s"><path d="M96,32 C92,40 88,44 92,54 C94,60 102,60 104,54 C106,46 100,42 96,32 Z" fill="#ffb43a"/></g>
+</svg>

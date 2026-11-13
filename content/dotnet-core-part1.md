@@ -7,7 +7,7 @@ categories: [".NET"]
 tags: "dotnet-core, rest-api, web-api, c-sharp"
 hidden: false
 slug: "dotnet-core-part1"
-image: "/assets/images/dotnet-core-part1/net-logo.svg"
+image: "/assets/images/dotnet-core-part1/posts-meta.svg"
 ---
 
 

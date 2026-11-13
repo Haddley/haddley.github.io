@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Static generation at build time compared with server rendering on each request</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><circle cx="22" cy="38" r="8" fill="#1c2a3d" stroke="#ffb43a" stroke-width="2"/><circle cx="22" cy="38" r="2.8" fill="#ffb43a"/><path d="M22,27 V31 M22,45 V49 M11,38 H15 M29,38 H33" stroke="#ffb43a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<path d="M34,38 H46 M42,34.5 L46,38 L42,41.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect x="48" y="22" width="22" height="32" rx="3" fill="#c9d3dd"/><rect x="52" y="26" width="14" height="7" rx="2" fill="#2f9e4a"/><path d="M52,36.4 H66 M52,41.2 H66 M52,46.0 H62.3" stroke="#0f1b2d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<text x="36" y="72" text-anchor="middle" font-size="8" fill="#ffb43a" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">build</text>
+<g><rect x="8" y="82" width="22" height="22" rx="4" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/></g>
+<path d="M32,93 H60 M56,89.5 L60,93 L56,96.5" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect x="62" y="78" width="22" height="28" rx="3" fill="#c9d3dd"/><rect x="66" y="82" width="14" height="7" rx="2" fill="#5bb4ea"/><path d="M66,90.6 H80 M66,94.8 H80 M66,99.0 H76.3" stroke="#0f1b2d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+</svg>

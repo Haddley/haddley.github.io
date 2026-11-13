@@ -7,7 +7,7 @@ categories: [".NET"]
 tags: "blazor, microsoft-graph, dotnet, c-sharp"
 hidden: false
 slug: "dotnet-core-part2"
-image: "/assets/images/dotnet-core-part2/net-logo.svg"
+image: "/assets/images/dotnet-core-part2/posts-meta.svg"
 ---
 
 

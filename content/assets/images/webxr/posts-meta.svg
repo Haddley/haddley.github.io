@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A virtual object appearing in the camera view when an augmented reality marker is seen</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><rect x="8" y="30" width="46" height="46" rx="4" fill="#fff"/><rect x="15" y="37" width="32" height="32" fill="#0f1b2d"/><path d="M22,44 H40 V62 H22 Z" fill="#fff"/><rect x="28" y="50" width="6" height="6" fill="#0f1b2d"/></g>
+<path d="M58,52 H70 M66,48.5 L70,52 L66,55.5" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g transform="translate(92,52) scale(1.6)"><path d="M0,-16 L16,-8 V10 L0,18 L-16,10 V-8 Z" fill="#1c2a3d" stroke="#2f9e4a" stroke-width="1.5"/><path d="M-16,-8 L0,0 L16,-8 M0,0 V18" stroke="#2f9e4a" stroke-width="1.5" fill="none"/></g>
+<path d="M108,20 L109.8,24.2 L114,26 L109.8,27.8 L108,32 L106.2,27.8 L102,26 L106.2,24.2 Z" fill="#ffb43a"/>
+</svg>

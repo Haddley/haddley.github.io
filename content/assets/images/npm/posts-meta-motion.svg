@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Packaging a JS module and publishing it to the npm registry</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g class="p" style="animation-delay:0s"><g><path d="M20,48 L40,40 L60,48 V74 L40,82 L20,74 Z" fill="#1c2a3d" stroke="#ffb43a" stroke-width="1.5"/><path d="M20,48 L40,56 L60,48 M40,56 V82" stroke="#ffb43a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+<g class="p" style="animation-delay:0.5s"><text x="40" y="72" text-anchor="middle" font-size="9" fill="#ffb43a" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">JS</text></g>
+<path class="d" style="animation-delay:1.2s" pathLength="1" d="M62,56 C72,56 72,36 82,36 M79,32 L84,36 L78,40" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g class="p" style="animation-delay:1.9s"><g><path transform="translate(94,40) scale(1.1)" d="M-22,10 A9,9 0 0 1 -16,-6 A14,14 0 0 1 10,-8 A9,9 0 0 1 12,10 Z" fill="#1c2a3d" stroke="#7cc6f0" stroke-width="1.5"/></g></g>
+<g class="p" style="animation-delay:2.6s"><path d="M60,92 a10,10 0 1 1 10,10 M66,98 L72,104 L76,96" stroke="#2f9e4a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+</svg>

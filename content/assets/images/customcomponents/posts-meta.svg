@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A library of reusable Power Apps components used again and again</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<rect x="10" y="22" width="28" height="22" rx="4" fill="#5bb4ea"/>
+<rect x="46" y="22" width="28" height="22" rx="4" fill="#ffb43a"/>
+<rect x="82" y="22" width="28" height="22" rx="4" fill="#2f9e4a"/>
+<path d="M24,46 V62 M60,46 V62 M96,46 V62" stroke="#c9d3dd" stroke-width="1.5" stroke-dasharray="3 3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<rect x="10" y="66" width="28" height="22" rx="4" fill="#5bb4ea"/><rect x="46" y="66" width="28" height="22" rx="4" fill="#ffb43a"/><rect x="82" y="66" width="28" height="22" rx="4" fill="#2f9e4a"/>
+<rect x="10" y="94" width="28" height="12" rx="4" fill="#5bb4ea"/>
+</svg>

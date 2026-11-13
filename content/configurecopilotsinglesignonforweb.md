@@ -6,7 +6,7 @@ categories: ["Power Platform"]
 tags: "copilot-studio, sso, single-sign-on, authentication"
 hidden: false
 slug: "configurecopilotsinglesignonforweb"
-image: "/assets/images/configurecopilotsinglesignonforweb/office-365-icon-500x500.png"
+image: "/assets/images/configurecopilotsinglesignonforweb/posts-meta.svg"
 ---
 
 

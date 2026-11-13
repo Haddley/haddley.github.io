@@ -6,7 +6,7 @@ categories: ["Power Platform"]
 tags: "pcf, custom-components, power-apps, reusable"
 hidden: false
 slug: "customcomponents"
-image: "/assets/images/customcomponents/office-365-icon-500x500.png"
+image: "/assets/images/customcomponents/posts-meta.svg"
 ---
 
 ## New component library

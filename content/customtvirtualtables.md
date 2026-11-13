@@ -6,7 +6,7 @@ categories: ["Power Platform","Microsoft Dynamics","Business Central"]
 tags: "virtual-tables, dataverse, custom, business-central"
 hidden: false
 slug: "customtvirtualtables"
-image: "/assets/images/customtvirtualtables/office-365-icon-500x500.png"
+image: "/assets/images/customtvirtualtables/posts-meta.svg"
 ---
 
 

@@ -6,7 +6,7 @@ categories: [".NET"]
 tags: "blazor, wasm, web-framework, component, interactive"
 hidden: false
 slug: "blazorwasmandasp.net"
-image: "/assets/images/blazorwasmandasp.net/net-logo.svg"
+image: "/assets/images/blazorwasmandasp.net/posts-meta.svg"
 ---
 
 

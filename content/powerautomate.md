@@ -5,7 +5,7 @@ date: "2022-05-04"
 categories: ["Power Platform"]
 tags: "power-automate, teams, microsoft-teams, automation"
 slug: "powerautomate"
-image: "/assets/images/powerautomate/office-365-icon-500x500.png"
+image: "/assets/images/powerautomate/posts-meta.svg"
 ---
 
 

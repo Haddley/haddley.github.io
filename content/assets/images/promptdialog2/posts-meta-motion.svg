@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>The PromptDialog sends the prompt to Azure OpenAI and shows the answer it returns</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<rect class="f" style="animation-delay:0s" x="6" y="30" width="44" height="60" rx="6" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/>
+<path class="d" style="animation-delay:0.3s" pathLength="1" d="M13,42 H36" stroke="#c9d3dd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path class="d" style="animation-delay:1.0s" pathLength="1" d="M52,48 H70 M66,44 L70,48 L66,52" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><path class="p" style="animation-delay:1.5s" d="M78,48 A10,10 0 0 1 86,32 A14,14 0 0 1 112,38 A10,10 0 0 1 108,62 H82 A8,8 0 0 1 78,48 Z" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><path d="M95,42 L97,48 L103,50 L97,52 L95,58 L93,52 L87,50 L93,48 Z" fill="#ffb43a"/></g>
+<g><circle class="p" style="animation-delay:2.2s" cx="90" cy="84" r="5" fill="none" stroke="#ffb43a" stroke-width="2"/><path d="M95,84 H108 M104,84 V89 M108,84 V88" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<path class="d" style="animation-delay:2.8s" pathLength="1" d="M80,66 C70,70 62,70 54,70 M58,66.5 L54,70 L58,73.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path class="d" style="animation-delay:3.2s" pathLength="1" d="M13,62 H42 M13,70 H38 M13,78 H42" stroke="#7cc6f0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

@@ -5,7 +5,7 @@ date: "2026-06-30"
 categories: ["Mobile", "3D"]
 tags: "virtual-reality, meta, unity, quest"
 slug: "metaunitysetupJune2026"
-image: "/assets/images/metaunity/meta-unity-combined.svg"
+image: "/assets/images/metaunitysetupJune2026/posts-meta.svg"
 ---
 
 I set up Unity 6.3 LTS for Meta Quest Pro development. I installed the Meta XR Interaction SDK 203.0.0 from the Asset Store, worked through the Project Setup Tool to fix all required and recommended settings for both Standalone and Android platforms, explored Building Blocks, and built and deployed a Hello World APK to my Quest Pro headset.

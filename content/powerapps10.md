@@ -5,7 +5,7 @@ date: "2026-06-16"
 categories: ["Power Platform"]
 tags: "power-apps, dataverse, model-driven-app, timeline, activities"
 slug: "powerapps10"
-image: "/assets/images/powerapps7/office-365-icon-500x500.png"
+image: "/assets/images/powerapps10/posts-meta.svg"
 hidden: false
 ---
 

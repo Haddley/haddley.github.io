@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A stored procedure that shuffles a table of playing cards</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g transform="rotate(-14 29 66)"><rect x="18" y="34" width="22" height="32" rx="3" fill="#fff" stroke="#d9483b" stroke-width="1.5"/><circle cx="29" cy="50" r="4" fill="#d9483b"/></g>
+<g transform="rotate(0 45 62)"><rect x="34" y="30" width="22" height="32" rx="3" fill="#fff" stroke="#0f1b2d" stroke-width="1.5"/><circle cx="45" cy="46" r="4" fill="#0f1b2d"/></g>
+<g transform="rotate(14 61 66)"><rect x="50" y="34" width="22" height="32" rx="3" fill="#fff" stroke="#d9483b" stroke-width="1.5"/><circle cx="61" cy="50" r="4" fill="#d9483b"/></g>
+<path d="M30,90 C48,104 72,104 90,90 M84,86 L90,90 L83,95" stroke="#ffb43a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><path d="M84,28 V55 A12.0,5 0 0 0 108,55 V28" fill="#1c2a3d" stroke="#7cc6f0" stroke-width="1.5"/><ellipse cx="96.0" cy="28" rx="12.0" ry="5" fill="#5bb4ea" stroke="#7cc6f0" stroke-width="1.5"/></g>
+</svg>

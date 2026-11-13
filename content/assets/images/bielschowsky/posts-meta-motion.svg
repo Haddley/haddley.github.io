@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>Two eyes at different heights sending two images, steadied by tilting the head</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+.f{animation:fade 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g class="p" style="animation-delay:0s"><g><circle cx="60" cy="60" r="36" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/></g></g>
+<g class="p" style="animation-delay:0.7s"><g><circle cx="46" cy="58" r="8" fill="#fff"/><circle cx="46" cy="58" r="4" fill="#5bb4ea"/><circle cx="74" cy="50" r="8" fill="#fff"/><circle cx="74" cy="50" r="4" fill="#5bb4ea"/></g></g>
+<path class="d" style="animation-delay:1.6s" pathLength="1" d="M30,86 C48,98 72,98 90,86" stroke="#ffb43a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g class="p" style="animation-delay:2.2s"><g><circle cx="94" cy="92" r="8" fill="#ffb43a"/><path d="M90,92 L98,92 M94,88 L98,92 L94,96" stroke="#0f1b2d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></g>
+</svg>

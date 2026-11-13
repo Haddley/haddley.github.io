@@ -6,7 +6,7 @@ categories: ["Business Central"]
 tags: "business-central, data-migration, master-data, hands-on-lab"
 hidden: false
 slug: "hands-on-lab2.2"
-image: "/assets/images/hands-on-lab2.2/dynamics365-color.svg"
+image: "/assets/images/hands-on-lab2.2/posts-meta.svg"
 ---
 
 

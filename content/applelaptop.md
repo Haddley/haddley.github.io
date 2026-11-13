@@ -6,7 +6,7 @@ categories: ["Python","macOS"]
 tags: "anaconda, python-environment, setup, package-manager"
 hidden: false
 slug: "applelaptop"
-image: "/assets/images/applelaptop/jupyter.svg"
+image: "/assets/images/applelaptop/posts-meta.svg"
 ---
 
 I used Anaconda, a popular open-source distribution of Python tailored for data science, machine learning, and scientific computing.

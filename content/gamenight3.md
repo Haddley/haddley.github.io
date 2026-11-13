@@ -4,7 +4,7 @@ part: 3
 description: "Giving Going, Going, GONE!'s auctioneer a real spoken voice with the Web Speech API, the iOS gesture rule that nearly kept him mute, and why Amazon Silk never hears him at all"
 date: "2026-08-16"
 categories: ["JavaScript"]
-image: "/assets/images/gamenight3/hero-auctioneer.png"
+image: "/assets/images/gamenight3/posts-meta.svg"
 tags: "web-speech-api, text-to-speech, browser-compatibility, amazon-silk, accessibility"
 hidden: false
 slug: "gamenight3"

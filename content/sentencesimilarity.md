@@ -5,7 +5,7 @@ date: "2023-07-19"
 categories: ["AI"]
 tags: "sentence-similarity, nlp, embeddings, semantic-search"
 slug: "sentencesimilarity"
-image: "/assets/images/sentencesimilarity/chatgpt-logo.svg"
+image: "/assets/images/sentencesimilarity/posts-meta.svg"
 ---
 
 

@@ -4,7 +4,7 @@ part: 3
 description: "Giving nsw-legal-research-assistant a real interface and an MCP server exposing the same skill to Claude Code, then running it through the same demo Thomson Reuters used to introduce CoCounsel, live, with real output — grounded Q&A, pinpoint citations, Review, and skill-chaining drafting"
 date: "2026-08-19"
 categories: ["AI"]
-image: "/assets/images/agenticaiforprofessionals6/01-database-skill-tiles-source-filter.webp"
+image: "/assets/images/agenticaiforprofessionals3/posts-meta.svg"
 tags: "rag, mcp, docker, playwright, citation-grounding"
 hidden: false
 slug: "agenticaiforprofessionals3"

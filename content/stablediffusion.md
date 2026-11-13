@@ -5,7 +5,7 @@ date: "2023-08-01"
 categories: ["AI"]
 tags: "stable-diffusion, image-generation, generative-ai, diffusion-models"
 slug: "stablediffusion"
-image: "/assets/images/stablediffusion/jupyter.svg"
+image: "/assets/images/stablediffusion/posts-meta.svg"
 ---
 
 

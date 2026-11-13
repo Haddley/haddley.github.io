@@ -5,7 +5,7 @@ date: "2023-03-27"
 categories: [".NET"]
 tags: "vb-net, winforms, asp-net-core, api"
 slug: "vbnetwinforms"
-image: "/assets/images/vbnetwinforms/net-logo.svg"
+image: "/assets/images/vbnetwinforms/posts-meta.svg"
 ---
 
 

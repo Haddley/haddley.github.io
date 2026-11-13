@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>ShareGate connecting an on premises SharePoint to a SharePoint Online tenant</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><rect x="6" y="40" width="34" height="40" rx="5" fill="#1c2a3d" stroke="#ffb43a" stroke-width="1.5"/><path d="M12,54 H34 M12,64 H30" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<g><circle cx="60" cy="60" r="10" fill="#2f9e4a"/><path d="M54,60 H66 M62,56 L66,60 L62,64" stroke="#0f1b2d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<path d="M40,60 H50 M70,60 H80" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><path transform="translate(98,60) scale(1.2)" d="M-22,10 A9,9 0 0 1 -16,-6 A14,14 0 0 1 10,-8 A9,9 0 0 1 12,10 Z" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/></g>
+</svg>

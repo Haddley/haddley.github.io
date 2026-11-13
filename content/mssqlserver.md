@@ -6,7 +6,7 @@ date: "2021-03-14"
 categories: ["SQL"]
 tags: "sql-server, docker, database, t-sql"
 slug: "mssqlserver"
-image: "/assets/images/mssqlserver/ads.svg"
+image: "/assets/images/mssqlserver/posts-meta.svg"
 ---
 
 

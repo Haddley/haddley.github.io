@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A retrieval pipeline: chunks, vectors and a grounded answer</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g><rect x="6" y="32" width="24" height="32" rx="3" fill="#c9d3dd"/><rect x="10" y="36" width="16" height="7" rx="2" fill="#5bb4ea"/><path d="M10,46.4 H26 M10,51.2 H26 M10,56.0 H21.6" stroke="#0f1b2d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<path d="M32,48 H42 M38,44.5 L42,48 L38,51.5" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect x="44" y="40" width="10" height="16" fill="#5bb4ea"/><rect x="56" y="34" width="10" height="22" fill="#ffb43a"/><rect x="68" y="44" width="10" height="12" fill="#2f9e4a"/></g>
+<path d="M80,48 H90 M86,44.5 L90,48 L86,51.5" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><rect x="88" y="32" width="26" height="24" rx="6" fill="#2f9e4a"/><path d="M96,55 l-6,8 l10,-2 z" fill="#2f9e4a"/></g>
+<path d="M93,42 H108 M93,49 H104" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><path d="M46,70 V93 A14.0,5 0 0 0 74,93 V70" fill="#1c2a3d" stroke="#7cc6f0" stroke-width="1.5"/><ellipse cx="60.0" cy="70" rx="14.0" ry="5" fill="#5bb4ea" stroke="#7cc6f0" stroke-width="1.5"/></g>
+</svg>

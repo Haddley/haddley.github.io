@@ -5,7 +5,7 @@ date: "2026-05-24"
 categories: ["Power Platform"]
 tags: "power-apps, dataverse, model-driven-app, status-reason, workflow"
 slug: "powerapps7"
-image: "/assets/images/powerapps7/office-365-icon-500x500.png"
+image: "/assets/images/powerapps7/posts-meta.svg"
 ---
 
 Every Dataverse table ships with two system columns you can't delete: **Status** (statecode) and **Status Reason** (statuscode). Status has exactly two values — Active and Inactive. Status Reason is the refinement: it tells you *why* a record is in that state. Out of the box each group has one choice — "Active" and "Inactive" respectively — but you can add as many custom reasons as your process needs.

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A black and white photo colourised by a deep learning model</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<rect x="8" y="26" width="46" height="62" rx="4" fill="#666"/>
+<g><circle cx="22" cy="42" r="6" fill="#aaa"/><path d="M8,88 L26,62 L38,76 L46,66 L54,88 Z" fill="#444"/></g>
+<path d="M58,57 H68 M64,53.5 L68,57 L64,60.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<rect x="72" y="26" width="40" height="62" rx="4" fill="#3b86d6"/>
+<circle cx="86" cy="42" r="6" fill="#ffb43a"/>
+<path d="M72,88 L88,62 L98,76 L104,66 L112,88 Z" fill="#2f9e4a"/>
+</svg>

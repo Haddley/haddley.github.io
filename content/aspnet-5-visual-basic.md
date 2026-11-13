@@ -6,7 +6,7 @@ categories: [".NET","SQL"]
 tags: "visual-basic, entity-framework, database-first, asp-net"
 hidden: false
 slug: "aspnet-5-visual-basic"
-image: "/assets/images/aspnet-5-visual-basic/net-logo.svg"
+image: "/assets/images/aspnet-5-visual-basic/posts-meta.svg"
 ---
 
 ASP Web Forms was released in 2003 (based on the Windows Server and the .NET Framework)

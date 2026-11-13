@@ -6,7 +6,7 @@ categories: ["Microsoft Dynamics","Business Central","Power Platform"]
 tags: "power-apps, patch, purchase-orders, business-central"
 hidden: false
 slug: "addapurchaseorder"
-image: "/assets/images/addapurchaseorder/office-365-icon-500x500.png"
+image: "/assets/images/addapurchaseorder/posts-meta.svg"
 ---
 
 ## Summary
