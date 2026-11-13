@@ -247,7 +247,10 @@ I opened Business Central and checked draft 1011.
 
 **The jurisdiction is right.** The tax area is ATLANTA, GA on the draft and on the posted invoice. The first run chose Florida, and built a surtax argument on it. That is the difference a single fact made in the scenario.
 
-**The "tax anomaly" has an explanation that the harness could not see.** The harness noticed that the invoice charged 3 per cent although the same item is priced at 6 per cent on the 2025 and May 2026 lines, and Atlanta's combined rate is higher. It asked me, and it was right to ask. When I looked at the tax details in the Sandbox, I found a second set of rates effective from 3 November 2026, and a document dated after that date takes 3 per cent. So the Sandbox is behaving as it was set up, and the question a real company would put to the vendor is whether their tax set-up is right. The harness did the useful thing: it reported the inconsistency, made the credit mirror the invoice, and did not decide.
+**The "tax anomaly" has an explanation that the harness could not see.** The harness noticed that the invoice charged 3 per cent although the same item is priced at 6 per cent on the 2025 and May 2026 lines, and Atlanta's combined rate is higher. It asked me, and it was right to ask. When I looked at the tax details in the Sandbox, I found a second set of rates effective from 3 November 2026, and a document dated after that date takes 3 per cent. ![](assets/images/deepseekharnessbusinesscentral/r2-12-tax-details.webp)
+*The Sandbox's tax details, with the second set of rates*
+
+So the Sandbox is behaving as it was set up, and the question a real company would put to the vendor is whether their tax set-up is right. The harness did the useful thing: it reported the inconsistency, made the credit mirror the invoice, and did not decide.
 
 **The invoice date is right.** In the first run, the invoice date was a year after its posting date, because of my seeding. In the second run, I set the document date, so the harness had nothing to complain about.
 
