@@ -6,7 +6,7 @@ date: "2024-09-01"
 categories: ["AI"]
 tags: "prompt-flow, azure-ai-studio, quick-start"
 slug: "promptflow5"
-image: "/assets/images/promptflow5/logo.svg"
+image: "/assets/images/promptflow5/poster.svg"
 ---
 
 

@@ -6,7 +6,7 @@ date: "2024-06-12"
 categories: ["AI"]
 tags: "prompt-flow, docker, azure-ai-studio, containers"
 slug: "promptflow2"
-image: "/assets/images/promptflow2/logo.svg"
+image: "/assets/images/promptflow2/poster.svg"
 ---
 
 

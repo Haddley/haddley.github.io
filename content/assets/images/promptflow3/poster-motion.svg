@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A puzzle-piece plugin snapping into a smiling agent: a Semantic Kernel plugin that tells jokes</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes gy{0%{transform:scaleY(0)}45%,100%{transform:scaleY(1)}}
+.f{animation:fade 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.g{transform-box:fill-box;transform-origin:bottom;animation:gy 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}@keyframes plug{0%,10%{transform:translate(6px,-30px) rotate(14deg);opacity:.4}55%,100%{transform:translate(0,0) rotate(0);opacity:1}}.plug{transform-box:fill-box;transform-origin:center;animation:plug 3.5s ease-in-out both}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/><rect x="34" y="52" width="52" height="40" rx="10" fill="#1e3a5a" stroke="#7dd3fc" stroke-width="2.5"/><circle cx="50" cy="68" r="4" fill="#e0f2fe"/><circle cx="70" cy="68" r="4" fill="#e0f2fe"/><path d="M48 80 q12 8 24 0" stroke="#fbbf24" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M60 52 V44" stroke="#7dd3fc" stroke-width="3"/><circle cx="60" cy="41" r="4" fill="#fbbf24"/><g class="plug"><path d="M87 54 h16 v8 a4 4 0 0 1 0 8 v8 h-16 v-8 a4 4 0 0 0 0 -8z" fill="#a78bfa"/></g><g class="p" style="animation-delay:1.6s"><circle cx="98" cy="68" r="0" fill="none"/><path d="M88 98 q14 4 20 -8" stroke="#22c55e" stroke-width="0" fill="none"/></g></svg>

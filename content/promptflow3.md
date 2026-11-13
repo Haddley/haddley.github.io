@@ -6,7 +6,7 @@ date: "2024-08-24"
 categories: ["AI"]
 tags: "prompt-flow, semantic-kernel, azure, llm"
 slug: "promptflow3"
-image: "/assets/images/promptflow3/logo.svg"
+image: "/assets/images/promptflow3/poster.svg"
 ---
 
 

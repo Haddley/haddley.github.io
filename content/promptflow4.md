@@ -6,7 +6,7 @@ date: "2024-08-24"
 categories: ["AI"]
 tags: "prompt-flow, planning, azure-ai, llmops"
 slug: "promptflow4"
-image: "/assets/images/promptflow4/logo.svg"
+image: "/assets/images/promptflow4/poster.svg"
 ---
 
 

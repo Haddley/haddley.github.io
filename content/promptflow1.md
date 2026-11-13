@@ -6,7 +6,7 @@ date: "2024-06-11"
 categories: ["AI"]
 tags: "prompt-flow, azure-ai-studio, llmops, mlops"
 slug: "promptflow1"
-image: "/assets/images/promptflow1/logo.svg"
+image: "/assets/images/promptflow1/poster.svg"
 ---
 
 
