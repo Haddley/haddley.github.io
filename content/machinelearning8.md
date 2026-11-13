@@ -7,7 +7,7 @@ categories: ["AI"]
 tags: "machine-learning, computer-vision, baseball, classification"
 hidden: false
 slug: "machinelearning8"
-image: "/assets/images/machinelearning8/tensorflow-logo.svg"
+image: "/assets/images/machinelearning8/poster.svg"
 ---
 
 

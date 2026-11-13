@@ -7,7 +7,7 @@ categories: ["AI"]
 tags: "machine-learning, google-cloud, automl, gcp"
 hidden: false
 slug: "machinelearning7"
-image: "/assets/images/machinelearning7/tensorflow-logo.svg"
+image: "/assets/images/machinelearning7/poster.svg"
 ---
 
 

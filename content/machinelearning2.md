@@ -7,7 +7,7 @@ categories: ["AI"]
 tags: "machine-learning, tensorflow, javascript, ml5"
 hidden: false
 slug: "machinelearning2"
-image: "/assets/images/machinelearning2/tensorflow-logo.svg"
+image: "/assets/images/machinelearning2/poster.svg"
 ---
 
 

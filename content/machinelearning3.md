@@ -7,7 +7,7 @@ categories: ["AI"]
 tags: "machine-learning, model-training, tensorflow, keras"
 hidden: false
 slug: "machinelearning3"
-image: "/assets/images/machinelearning3/tensorflow-logo.svg"
+image: "/assets/images/machinelearning3/poster.svg"
 ---
 
 

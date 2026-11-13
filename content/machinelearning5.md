@@ -7,7 +7,7 @@ categories: ["AI"]
 tags: "machine-learning, excel, data-analysis, prediction"
 hidden: false
 slug: "machinelearning5"
-image: "/assets/images/machinelearning5/tensorflow-logo.svg"
+image: "/assets/images/machinelearning5/poster.svg"
 ---
 
 

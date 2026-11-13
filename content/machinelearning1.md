@@ -7,7 +7,7 @@ categories: ["AI"]
 tags: "machine-learning, hexapawn, yolo, object-detection"
 hidden: false
 slug: "machinelearning1"
-image: "/assets/images/machinelearning1/tensorflow-logo.svg"
+image: "/assets/images/machinelearning1/poster.svg"
 ---
 
 

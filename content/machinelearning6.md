@@ -7,7 +7,7 @@ categories: ["AI"]
 tags: "machine-learning, pandas, train-test-split, scikit-learn"
 hidden: false
 slug: "machinelearning6"
-image: "/assets/images/machinelearning6/tensorflow-logo.svg"
+image: "/assets/images/machinelearning6/poster.svg"
 ---
 
 

@@ -7,7 +7,7 @@ categories: ["AI"]
 tags: "machine-learning, mnist, neural-network, image-classification"
 hidden: false
 slug: "machinelearning9"
-image: "/assets/images/machinelearning9/tensorflow-logo.svg"
+image: "/assets/images/machinelearning9/poster.svg"
 ---
 
 

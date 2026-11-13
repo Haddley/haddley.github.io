@@ -7,7 +7,7 @@ categories: ["AI","Python"]
 tags: "machine-learning, google-colab, jupyter-notebook"
 hidden: false
 slug: "machinelearning4"
-image: "/assets/images/machinelearning4/tensorflow-logo.svg"
+image: "/assets/images/machinelearning4/poster.svg"
 ---
 
 
