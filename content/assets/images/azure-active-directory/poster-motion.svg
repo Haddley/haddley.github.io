@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A person beside a shield with a tick: authenticating users with Microsoft identity</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes gy{0%{transform:scaleY(0)}45%,100%{transform:scaleY(1)}}
+.f{animation:fade 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.g{transform-box:fill-box;transform-origin:bottom;animation:gy 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/><g><circle cx="46" cy="42" r="12" fill="#e0f2fe"/><path d="M24 80 q0 -22 22 -22 q22 0 22 22z" fill="#e0f2fe"/></g><g class="p" style="animation-delay:0.6s"><path d="M82 34 L100 40 V58 q0 14 -18 22 q-18 -8 -18 -22 V40z" fill="#0078d4"/><path d="M74 58 l6 6 l11 -13" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g></svg>

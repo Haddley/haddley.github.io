@@ -7,7 +7,7 @@ categories: ["Azure"]
 tags: "azure-ad, active-directory, authentication, sso"
 hidden: false
 slug: "azure-active-directory2"
-image: "/assets/images/azure-active-directory2/azurex70x75.svg"
+image: "/assets/images/azure-active-directory2/poster.svg"
 ---
 
 ## Single-page application with login

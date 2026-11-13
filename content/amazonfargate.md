@@ -6,7 +6,7 @@ categories: ["AWS","DevOps"]
 tags: "fargate, serverless-containers, ecs"
 hidden: false
 slug: "amazonfargate"
-image: "/assets/images/amazonfargate/amazon-web-services-logo.svg"
+image: "/assets/images/amazonfargate/poster.svg"
 ---
 
 I used AWS Fargate, a serverless pay-as-you-go compute engine, to run containers on Amazon Elastic Container Service (ECS) and Amazon Elastic Kubernetes Service (EKS).

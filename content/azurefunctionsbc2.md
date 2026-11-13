@@ -4,7 +4,7 @@ part: 2
 description: "Creating the Business Central Extension"
 date: "2025-12-16"
 categories: ["Azure","Microsoft Dynamics","Business Central"]
-image: "/assets/images/azurefunctionsbc2/posts-meta.svg"
+image: "/assets/images/azurefunctionsbc2/poster.svg"
 tags: "azure-functions, al-language, extension, business-central"
 hidden: false
 slug: "azurefunctionsbc2"

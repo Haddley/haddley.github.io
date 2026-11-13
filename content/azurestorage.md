@@ -6,7 +6,7 @@ categories: ["Azure","macOS"]
 tags: "blob-storage, cloud-storage, azure-sdk"
 hidden: false
 slug: "azurestorage"
-image: "/assets/images/azurestorage/azurex70x75.svg"
+image: "/assets/images/azurestorage/poster.svg"
 ---
 
 

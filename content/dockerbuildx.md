@@ -6,7 +6,7 @@ categories: ["DevOps"]
 tags: "docker-buildx, multi-platform, arm64, containers"
 hidden: false
 slug: "dockerbuildx"
-image: "/assets/images/dockerbuildx/method-draw-image.svg"
+image: "/assets/images/dockerbuildx/poster.svg"
 ---
 
 

@@ -7,7 +7,7 @@ categories: ["Azure","Microsoft 365"]
 tags: "teams, identity, authentication, aad"
 hidden: false
 slug: "azure-active-directory"
-image: "/assets/images/azure-active-directory/azurex70x75.svg"
+image: "/assets/images/azure-active-directory/poster.svg"
 ---
 
 ## Microsoft Teams

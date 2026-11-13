@@ -4,7 +4,7 @@ part: 2
 description: "Creating an AI agent in Azure AI Foundry backed by Azure AI Search with vector embeddings for retrieval-augmented generation (RAG)"
 date: "2026-03-10"
 categories: ["AI", "Azure"]
-image: "/assets/images/azuresearchvector/posts-meta.svg"
+image: "/assets/images/azuresearchvector/poster.svg"
 tags: "azure-ai-foundry, azure-ai-search, vector-search, embeddings, rag"
 hidden: false
 slug: "azuresearchvector"

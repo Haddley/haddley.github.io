@@ -6,7 +6,7 @@ categories: ["DevOps", "Azure"]
 tags: "github-actions, ci-cd, deployment"
 hidden: false
 slug: "devopsstartergithubactions"
-image: "/assets/images/devopsstartergithubactions/svgexport-22.svg"
+image: "/assets/images/devopsstartergithubactions/poster.svg"
 ---
 
 

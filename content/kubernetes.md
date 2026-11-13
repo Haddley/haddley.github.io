@@ -6,7 +6,7 @@ categories: ["DevOps"]
 tags: "kubernetes, k8s, containers, orchestration"
 hidden: false
 slug: "kubernetes"
-image: "/assets/images/kubernetes/kubernetes-container-engine.svg"
+image: "/assets/images/kubernetes/poster.svg"
 ---
 
 

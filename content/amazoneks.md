@@ -6,7 +6,7 @@ categories: ["AWS","DevOps"]
 tags: "amazon-eks, kubernetes, containers"
 hidden: false
 slug: "amazoneks"
-image: "/assets/images/amazoneks/amazon-web-services-logo.svg"
+image: "/assets/images/amazoneks/poster.svg"
 ---
 
 I used Amazon Elastic Kubernetes Service (Amazon EKS) to deploy, manage, and scale [containerized](/posts/docker/) applications using [Kubernetes](/posts/kubernetes/) on AWS.

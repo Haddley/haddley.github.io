@@ -4,7 +4,7 @@ part: 1
 description: "Setting up a full-text keyword search over hotel data in the Azure portal, with a storage account, a Free search service and the import data wizard"
 date: "2026-02-09"
 categories: ["AI", "Azure"]
-image: "/assets/images/azuresearch/posts-meta.svg"
+image: "/assets/images/azuresearch/poster.svg"
 tags: "azure-ai-search, full-text-search, cognitive-search"
 hidden: false
 slug: "azuresearch"

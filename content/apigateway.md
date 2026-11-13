@@ -6,7 +6,7 @@ categories: ["DevOps"]
 tags: "api-gateway, microservices, architecture"
 hidden: false
 slug: "apigateway"
-image: "/assets/images/apigateway/kubernetes-container-engine.svg"
+image: "/assets/images/apigateway/poster.svg"
 ---
 
 I configured client applications to connect to services via a gateway rather than directly.

@@ -6,7 +6,7 @@ categories: ["Azure","AI"]
 tags: "azure-openai, azure-ai-foundry, openai"
 hidden: false
 slug: "azureopenal"
-image: "/assets/images/azureopenal/azurex70x75.svg"
+image: "/assets/images/azureopenal/poster.svg"
 ---
 
 

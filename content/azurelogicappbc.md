@@ -3,7 +3,7 @@ title: "Business Central Azure Logic App"
 description: "Azure Logic App with Business Central Trigger"
 date: "2025-12-12"
 categories: ["Azure","Microsoft Dynamics","Business Central"]
-image: "/assets/images/azurelogicappbc/posts-meta.svg"
+image: "/assets/images/azurelogicappbc/poster.svg"
 tags: "logic-apps, business-central, integration"
 hidden: false
 slug: "azurelogicappbc"

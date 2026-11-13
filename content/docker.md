@@ -6,7 +6,7 @@ categories: ["DevOps"]
 tags: "docker, containers, dockerfile, cli"
 hidden: false
 slug: "docker"
-image: "/assets/images/docker/method-draw-image.svg"
+image: "/assets/images/docker/poster.svg"
 ---
 
 

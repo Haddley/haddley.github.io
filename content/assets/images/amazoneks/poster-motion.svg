@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A hub with three pods around it: Amazon EKS Kubernetes</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes gy{0%{transform:scaleY(0)}45%,100%{transform:scaleY(1)}}
+.f{animation:fade 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.g{transform-box:fill-box;transform-origin:bottom;animation:gy 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/><path class="d" style="animation-delay:0.2s" pathLength="1" d="M60 58 L60.0 24.0" stroke="#38bdf8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><g class="p" style="animation-delay:0.6s"><rect x="51.0" y="17.0" width="18" height="14" rx="3" fill="#1e3a5a" stroke="#38bdf8" stroke-width="2"/></g><path class="d" style="animation-delay:0.6000000000000001s" pathLength="1" d="M60 58 L89.4 75.0" stroke="#38bdf8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><g class="p" style="animation-delay:1.0s"><rect x="80.4" y="68.0" width="18" height="14" rx="3" fill="#1e3a5a" stroke="#38bdf8" stroke-width="2"/></g><path class="d" style="animation-delay:1.0s" pathLength="1" d="M60 58 L30.6 75.0" stroke="#38bdf8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><g class="p" style="animation-delay:1.4s"><rect x="21.6" y="68.0" width="18" height="14" rx="3" fill="#1e3a5a" stroke="#38bdf8" stroke-width="2"/></g><circle cx="60" cy="58" r="11" fill="#326ce5"/><path d="M60 48 V68 M51 53 L69 63 M69 53 L51 63" stroke="#e0f2fe" stroke-width="2"/></svg>

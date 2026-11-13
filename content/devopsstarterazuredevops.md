@@ -6,7 +6,7 @@ categories: ["DevOps","Azure"]
 tags: "azure-devops, pipelines, ci-cd, starter"
 hidden: false
 slug: "devopsstarterazuredevops"
-image: "/assets/images/devopsstarterazuredevops/svgexport-22.svg"
+image: "/assets/images/devopsstarterazuredevops/poster.svg"
 ---
 
 

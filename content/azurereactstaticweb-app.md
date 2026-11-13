@@ -6,7 +6,7 @@ categories: ["React","Azure"]
 tags: "static, azure-static-web-apps, deployment, hosting"
 hidden: false
 slug: "azurereactstaticweb-app"
-image: "/assets/images/azurereactstaticweb-app/logo512-512x512.png"
+image: "/assets/images/azurereactstaticweb-app/poster.svg"
 ---
 
 

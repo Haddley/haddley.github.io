@@ -6,7 +6,7 @@ categories: ["AWS","DevOps",".NET"]
 tags: "c#, kubernetes, containers, deployment"
 hidden: false
 slug: "aspnetcoreawseks"
-image: "/assets/images/aspnetcoreawseks/amazon-web-services-logo.svg"
+image: "/assets/images/aspnetcoreawseks/poster.svg"
 ---
 
 
