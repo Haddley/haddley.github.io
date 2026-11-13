@@ -13,7 +13,7 @@ slug: "deepseekharnessbusinesscentral"
 
 ## What this post tells you, and why
 
-[DeepSeek Harness and a Vendor Dispute in Business Central](/posts/deepseekharnessaccounting/) needs a harness that can read a company's ledger and, at the end, create unposted draft documents. Getting there took more setup than I expected, and the setup is its own subject, so it lives here. In this post I tell you, in order:
+[DeepSeek Harness and a Vendor Dispute in Business Central](/posts/deepseekharnessaccounting/) needs a harness that can read a company's ledger and, at the end, create unposted draft documents. Getting there took more setup than I expected, and the setup is its own subject, so it lives here. This post is the DeepSeek Harness companion to [Model Context Protocol](/posts/businesscentralmcpclaudecode/), where I connected Claude Code to the same Business Central MCP server and registered the Entra app. If you have not seen how the server and the Entra sign-in fit together, read that one first. In this post I tell you, in order:
 
 1. **How the harness reads the ledger:** Business Central's own MCP server, a read-only configuration, and a sign-in through an Entra app.
 2. **What went wrong on the way:** a deleted app registration, a wrong tenant, a tool list that took 148 seconds, and a harness that went looking for a token.
@@ -182,7 +182,7 @@ Asking the server for its tools from outside returned 26: the list tools, plus c
 The harness also needs the product documentation. Microsoft Learn has its own public MCP server at `https://learn.microsoft.com/api/mcp`, with no sign-in. It offers three tools, `microsoft_docs_search`, `microsoft_docs_fetch` and `microsoft_code_sample_search`. I added it to the harness profile in the same way as the Business Central row, as a second MCP client entry. Because both servers appear as tools in the same list, the model chooses between them like any other tools, and the harness logs each call.
 
 :::watch-it It also works in Claude Code
-The same kind of configuration works with Claude Code: I pointed it at the Business Central configurations and the Microsoft Learn server through its MCP settings, with the same sign-in. The setup belongs to Business Central, not to the harness, which is why one set of lessons covers both.
+The same kind of configuration works with Claude Code (the connection itself is in [Model Context Protocol](/posts/businesscentralmcpclaudecode/)): I pointed it at the Business Central configurations and the Microsoft Learn server through its MCP settings, with the same sign-in. The setup belongs to Business Central, not to the harness, which is why one set of lessons covers both.
 :::
 
 ## What this post told you
