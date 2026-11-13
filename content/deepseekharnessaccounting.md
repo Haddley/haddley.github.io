@@ -210,7 +210,7 @@ It did not guess a page address. It searched with Business Central terms and no 
 
 **It also had limits, and I want to be fair about them:**
 
-- The page is written for the client, so the harness could follow a step it could not perform. Its tools have no apply action and no field for the original item entry. The page told the harness what to do, and my configuration decided what it could do.
+- The page is written for a person using the Business Central web client, with its pages and buttons, and not for the MCP server. So the harness could read a step that it could not perform. The MCP tools expose the API pages, and those have no apply action and no field for the original item entry. The page told the harness what a person does in the web client, and the MCP tools decided what the harness could do. My configuration limited that further, to reading and drafting credit memos.
 - It says nothing about the buyer's initials or an On Hold step. That came from the company's own rule, and the skill told the harness to compare the two. Learn says how Business Central works, and the company's rules say what the company does.
 - It has a typo in the purchase allowance section ("items that what you want"), and the harness had to read around it. It decided correctly that an allowance is for damaged goods you keep, and that six lamps going back is a return.
 - It did not change the amounts. The 256.80, the 7.70 and the 264.50 came from the ledger and from code. Learn changed the route and the list of things for a person to do.
