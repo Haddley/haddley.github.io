@@ -17,7 +17,7 @@ In [LLM Benchmarking](/posts/llmbenchmark/) I measured six models on accountancy
 This post tests that idea on one realistic accounting challenge. My starting point has two parts. The plan should begin with what the model already understands about accounting, which is the thing my benchmark measured. Then, before the agent answers, it should check everything that depends on Business Central against Microsoft Learn, the way an accountant less familiar with Business Central might review the product documentation for best practices before posting anything unusual.
 
 :::watch-it What I tested, and what I did not
-I ran the scenario through DeepSeek Harness itself, four times with four different setups, and I report the runs below. Each setup ran **once**, so treat the differences as hints, not measurements. I connected Business Central's MCP server and read real data from the Cronus demo company, and I connected the harness to it, which failed at first and then worked with a smaller configuration, as the section on the ledger describes. The four runs below were made earlier, with plain files that stand in for what the connection returns. The harness also had no screen on which a person could answer its questions, so the ask-a-person features are described from the documentation and were not exercised. Everything I say about Business Central comes from Microsoft Learn pages that I read for this post, and I name the page each time.
+I ran the scenario through DeepSeek Harness itself, with four different setups, five runs of each, and I report all 20 below. The agent read the real Cronus company through the Business Central MCP server and looked the product up through the Microsoft Learn MCP server. The harness had no screen on which a person could answer its questions, so the ask-a-person features are described from the documentation and were not exercised. Everything I say about Business Central comes from Microsoft Learn pages that I read for this post, and I name the page each time.
 :::
 
 ## The scenario
@@ -30,29 +30,31 @@ This is a good test because there is no single answer. The right documents depen
 2. What happens to the **wrong** items: keep them free, keep them at a discount, or send them back?
 3. What happens to the **broken** items: scrap them here, send them back, or wait for replacements?
 
-I put the question to an AI assistant in a chat, and I will call its reply "the assistant's answer". I do not know which model wrote it. Its first reply was not an answer at all: it asked those same three questions. Then I told it the invoice was posted, that I would keep the wrong items at a discount, and that I would scrap the broken ones locally, and it wrote a four-step procedure.
+I put the question to Claude Sonnet 5.5 in a plain chat, with no tools, no files and no instructions, and I will call its reply "the assistant's answer". The first question was the scenario above in one paragraph. Its first reply was a general procedure that ended by asking whether the wrong items were received under the ordered item numbers and whether the invoice was paid. In a second message I told it the invoice was posted and unpaid, that the wrong items arrived under the item number that actually came, that I would keep them at a discount, and that I would scrap the broken ones locally. It then wrote a three-part procedure.
 
 :::brain-power Before you read on
-The assistant stopped to ask three questions instead of guessing. Which of the three would change the Business Central documents the most?
+The assistant ended its first reply by asking whether the invoice was paid and which item numbers the wrong items were received under, and it gave a different procedure for each answer. Which of the three questions in the scenario would change the Business Central documents the most?
 :::
 
-## Even an answer that mentions Microsoft Learn needs checking
+## Even a fluent answer needs checking
 
-The assistant's answer named Microsoft Learn in places, but it gave no links, so I could not tell which claim came from which page. A fluent procedure is not a correct one. I took each claim and looked for it on Microsoft's own pages: [Handle vendor payment disputes](https://learn.microsoft.com/en-us/dynamics365/business-central/payables-how-handling-payment-disputes), [Process returns or cancellations](https://learn.microsoft.com/en-us/dynamics365/business-central/purchasing-how-process-purchase-returns-cancellations) and [Use item charges to account for extra trade costs](https://learn.microsoft.com/en-us/dynamics365/business-central/payables-how-assign-item-charges).
+The assistant's answer gave no links, so I could not tell which claim came from which page. A fluent procedure is not a correct one. I took each claim and looked for it on Microsoft's own pages: [Handle vendor payment disputes](https://learn.microsoft.com/en-us/dynamics365/business-central/payables-how-handling-payment-disputes), [Process returns or cancellations](https://learn.microsoft.com/en-us/dynamics365/business-central/purchasing-how-process-purchase-returns-cancellations) and [Use item charges to account for extra trade costs](https://learn.microsoft.com/en-us/dynamics365/business-central/payables-how-assign-item-charges).
 
 | The assistant said | What Microsoft Learn says | Verdict |
 |---|---|---|
-| Put the posted invoice **On Hold** in Vendor Ledger Entries, with your initials, so it is not paid | On the Vendor ledger entries page, choose **Edit List** and type up to three characters in the **On Hold** field. The **Suggest Vendor Payments** batch job excludes entries that are on hold. | Confirmed |
-| For the wrong items you keep at a discount, post a **Purchase Credit Memo** with a line of type **Charge (Item)**, quantity 1, and the discount as the unit cost | The same steps appear under "Create a purchase allowance". The page says they apply to a credit memo or a return order. | Confirmed |
-| Link the charge to the posted receipt with **Item Charge Assignment**, then **Get Receipt Lines** and **Suggest Item Charge Assignment** | These are the documented actions for assigning a charge to a posted purchase receipt. | Confirmed |
-| Apply the credit memo to the original invoice with **Apply Entries** and **Applies-to ID**, then check the remaining amount | The credit memo steps use **Apply Entries**, **Applies-to ID** and **Amount to Apply**, and they say the **Balance** is zero when everything is reversed. | Confirmed |
-| Use **Get Posted Document Lines to Reverse** on the **Purchase Credit Memo** | Learn lists this action on the **Purchase Return Order** page. For a credit memo it describes **Create Corrective Credit Memo** and **Copy from Document**. | Not on the credit memo, as far as these pages say |
-| Posting the credit memo creates a negative item ledger entry that removes the broken units from stock | The pages I read do not say this. | Not confirmed |
-| Use a **Return Reason Code** with **Inventory Value Zero** for items scrapped locally | The three pages do not mention it. In a short Business Central video I watched, it is used for sending items to a vendor for repair. | Not confirmed for this use |
-| The charge "lowers your inventory unit cost" | For items on **Standard** costing, the charge does not change the unit cost. It is posted as a purchase variance. | Wrong for some items |
-| *(nothing)* | If the items were already sold, the cost of goods sold does not update until you run **Adjust Cost - Item Entries**. | **Missing** |
+| Create a **Purchase Return Order**, use **Get Posted Document Lines to Reverse**, and the cost reverses correctly | The action "always exactly reverses the costs from the posted document line". | Confirmed |
+| Post with **Ship and Invoice**, which posts the return shipment and the credit memo together | The pages I read do not mention this posting option. | Not confirmed |
+| Scrapping needs no separate posting, because the return shipment already removes the stock, and a negative adjustment as well would remove it twice | The pages describe exact cost reversing but say nothing about scrapping or about a second adjustment. | Not confirmed |
+| If the vendor credits less than the cost, the shortfall stays in the item's cost as a loss | The pages do not say where a shortfall goes. The return reverses the original cost, so the gap would not stay in the item's cost. | Not confirmed, and doubtful |
+| For the wrong items you keep, post a **Purchase Credit Memo** with a **Charge (Item)** line, quantity 1, assign it with **Item Charge Assignment (Purch.)**, **Get Receipt Lines** and **Suggest Item Charge Assignment** (Equally or By Amount) | The same steps appear on the Learn page under "Create a purchase allowance", which says they apply to a credit memo or a return order. | Confirmed |
+| The credit "lowers the inventory cost of the kept items" | For items on **Standard** costing, the charge does not change the unit cost. Business Central posts it as a purchase variance. | Wrong for some items |
+| Apply the credit memos to the original invoice with **Apply Entries** | The credit memo steps use **Apply Entries** and **Applies-to ID**, and say you might pay only the remaining amount on the original invoice. | Confirmed |
+| Run **Adjust Cost - Item Entries** so the lower cost reaches COGS, and the item charge still works for items already sold | After an item charge on items already sold, the batch job forwards the cost to the sale entries. | Confirmed |
+| Do not use **Create Corrective Credit Memo**, because it reverses the whole invoice | The action copies the invoice into a credit memo that you can edit, and the page covers a credit memo for only part of the product. | Overstated |
+| *(nothing)* | A disputed posted invoice can be put **On Hold** in Vendor Ledger Entries so that **Suggest Vendor Payments** skips it. | **Missing** |
+| *(nothing)* | An allowance on Standard cost items becomes a purchase variance, so the costing method of the items needs checking first. | **Missing** |
 
-So the assistant's answer was mostly right, and the two serious problems are the ones you cannot see by reading it. It left out a step that would have left the cost of goods sold wrong, and it described one effect that is wrong for any item on standard costing. A reader who trusts fluent text would never notice either.
+So the assistant's answer was mostly right, and the problems are the ones you cannot see by reading it. It left out the step that stops the invoice being paid while the dispute is open, it never asked for the costing method, and it described one effect that is wrong for any item on standard costing. Several steps it stated with confidence are not on the pages I read, so I could neither confirm nor deny them. A reader who trusts fluent text would not notice any of this.
 
 :::watch-it The error is in what the answer leaves out
 It is easy to check a claim that is on the page. It is hard to notice a step that is not. A harness that begins with the model's own understanding of the case, then finds the documented procedure and makes every step of the plan point at it, finds missing steps. Reading an answer more carefully does not.
@@ -82,7 +84,7 @@ Here is the map from the outcomes to the documents, using only what the three Le
 ![](assets/images/deepseekharnessaccounting/escalation.svg)
 *Every task goes down the same four stages. The agent starts from its own general knowledge of accounting and checks the product-specific parts in Learn. If nothing documents a step, it skips to asking a person.*
 
-DeepSeek Harness is a coding agent, and I used it to build a game in parts 1 to 3. Its documentation describes several features that matter for this job. I list only the ones I read about:
+DeepSeek Harness is the program that runs a DeepSeek model as an agent: it supplies the tools, the skills, the approvals and the loop around the model. I used it in parts 1 to 3 of this series. Its documentation describes several features that matter for this job. I list only the ones I read about:
 
 | Harness feature | What the documentation says | What it does in this scenario |
 |---|---|---|
@@ -90,18 +92,18 @@ DeepSeek Harness is a coding agent, and I used it to build a game in parts 1 to 
 | **Plan mode** | The agent presents a plan with `exit_plan_mode`, and the person approves it, asks for changes or dismisses it. | The settlement plan, approved before any document is drafted. |
 | **Approvals** | A tool can ask before a risky call. The only grant is `allowed-once`, and anything else, including no answer, is a refusal. Each request is logged. | Any tool that writes to Business Central. |
 | **Skills** | Instruction files that the agent loads by name, kept in `.dsh/skills` in the project. | The company's own dispute procedure. |
-| **Web access** | Two tools, `web_search` and `web_fetch`. The documentation says they are offered to the model only when the chosen provider can authenticate. | The first step of the plan: find and read the Learn pages. |
+| **Web access** | Two tools, `web_search` and `web_fetch`, which search and read the open internet. The documentation says they are offered to the model only when the chosen provider can authenticate. | Background reading only. Microsoft Learn comes through its own MCP server instead. |
 | **Subagents** | A lead agent starts child agents on models of my choice. A child cannot ask a person. | Local workers for reading and drafting. |
 
 Two details shaped the design. A subagent cannot ask a person, so the lead agent must do all the asking. And `web_fetch` has no per-call confirmation in the standard presets, and the documentation says a model can send data to any URL it can reach, so I would let it fetch public Learn pages only, and never put a vendor's figures in a request.
 
 ## The plan starts with understanding, then a lookup
 
-This is the part I care about most, and I changed my mind about it while writing. My first version said the first step should be a search. That is the wrong order. A model that has learned accounting can already see what kind of problem this is: a vendor allowance on goods that are partly sold, and a credit for goods that are scrapped. It can see that a $450 credit on $500 of lamps is a $50 loss, not a $450 gain. No Business Central page says that. What the model cannot know from its weights is how **this product** behaves, and that is what the search is for:
+The order matters: understand first, then search. A model that has learned accounting can already see what kind of problem this is: a vendor allowance on goods that are partly sold, and a credit for goods that are scrapped. It can see that a $450 credit on $500 of lamps is a $50 loss, not a $450 gain. No Business Central page says that. What the model cannot know from its weights is how **this product** behaves, and that is what the search is for:
 
 1. **Understand.** Before it searches, the agent writes a short analysis from its own knowledge of accounting: what kind of problem this is, what is debited and credited, what the real gain or loss is, which facts in the case change the treatment, and a draft plan. Every statement that depends on how Business Central behaves is marked "to verify".
-2. **Search.** The agent calls `web_search` with the Business Central terms from the case, such as "purchase allowance credit memo".
-3. **Fetch and verify.** It reads the pages that the search returns, and for each "to verify" statement it says whether Learn confirms it, changes it, or does not cover it, with the page address and the sentence it relied on.
+2. **Search.** The agent calls Microsoft Learn's MCP tool `microsoft_docs_search` with the Business Central terms from the case, such as "purchase allowance credit memo". The open-internet `web_search` is a separate tool, and the plan treats what it finds as background.
+3. **Fetch and verify.** It reads the pages that the search returns with `microsoft_docs_fetch`, and for each "to verify" statement it says whether Learn confirms it, changes it, or does not cover it, with the page address and the sentence it relied on.
 4. **Compare.** It lists the steps of each documented procedure and checks that its plan has every one.
 5. **Ask.** Only then does it ask the person the questions that neither its own understanding nor the documents can answer.
 
@@ -116,11 +118,11 @@ Three more rules keep the lookup honest, and the first one repeats the lookup:
 - **Look again before every follow-up question.** The agent searches Learn before it asks a person anything, and again whenever an answer changes the plan. Many questions turn out to be documented, and documented practice changes over time: Microsoft updates these pages, and the ones I fetched each carry a last-updated date. A question that Learn can answer should never reach a person.
 - **Prefer the current page, and note its date.** The pages I fetched carry a last-updated date. When two sources disagree, such as the NAV-era blog and a current Learn page, the agent prefers the current page and tells the person that the other exists.
 - **Send the terms, never the figures.** A search for "purchase allowance credit memo" is harmless. A search that contains a vendor's name and an invoice total is not.
-- **No source means ask.** If nothing documents a step, the agent says so and asks a person. The assistant's "Inventory Value Zero" step is an example: none of the three pages mentions it.
+- **No source means ask.** If nothing documents a step, the agent says so and asks a person. The assistant's "Ship and Invoice" step is an example: none of the pages I read mentions it.
 
 ## The agent asks the three questions
 
-The assistant asked its three questions in free text. A harness can ask them as a form, so the answers come back as exact choices that the rest of the process can use. This is how I would write the first one, based on the shape the documentation describes:
+The assistant asked its questions in free text. A harness can ask them as a form, so the answers come back as exact choices that the rest of the process can use. This is how I would write the first one, based on the shape the documentation describes:
 
 ```
 Header:    Invoice status
@@ -173,12 +175,16 @@ Look back at the three intake questions: has the invoice been posted, what happe
 
 ### How the agent uses it
 
-The agent now has two kinds of source, and it cites both:
+The agent now has four kinds of source, and it cites each one by name:
 
 | Question | Source | Example |
 |---|---|---|
-| **How does Business Central work?** | Microsoft Learn | An allowance is a credit memo with a **Charge (Item)** line. |
+| **How does Business Central work?** | Microsoft Learn, through its own MCP server (`microsoft_docs_search` and `microsoft_docs_fetch`) | An allowance is a credit memo with a **Charge (Item)** line. |
+| **What is true in this company's books?** | The Business Central MCP server | Vendor 40000 has no open invoice for these items. |
 | **What do we do here?** | The company wiki | Allowances use our own item charge number, and a second person approves any over $500. |
+| **What do other people say?** | The open internet, through the harness's `web_search` | A community blog explains why Correct or Cancel fails once any of the goods are sold. |
+
+The first three are authoritative for their own question. The fourth is not. A search result can be old, written for a different product version, or wrong, so the skill treats it as background to explain a point, never as the basis of a step, and the plan marks it as such. If Learn and the open web disagree, Learn wins.
 
 The wiki goes in the plan as a skill. The harness documentation says a skill is an instruction file that the agent loads by name, and that the agent first sees only each skill's name and description. A skill called `company-practice`, whose description says "how we handle vendor disputes, returns and allowances", would send the agent to the wiki index. I have not tested this, and I have not read about any long-term memory feature in the harness, so plain files and a skill are all that I am relying on.
 
@@ -242,11 +248,11 @@ The harness handles this source in four ways:
 3. **Say how sure it is.** Standards and tax law need interpretation. The agent states what the source says, what it assumes, and what it could not find.
 4. **Hand it to a qualified person.** A draft that touches tax goes to a tax professional or the controller. The agent informs the decision and does not make it.
 
-Here is what my four runs did with this. **None of them looked at local accounting or tax rules.** Only Run A asked whether the agreed amounts include tax, as one of its 17 questions, and Runs B, C and D did not mention tax at all. They were not asked to, and my skills did not tell them to, so this is a gap in my design and not a failing of the model. The fix is a rule in the skill: "Name the jurisdiction. Look up the accounting standard and the tax rule for each step that has a tax or reporting effect, cite them, and flag them for a qualified person."
+Here is what my 20 runs did with this. **None of them cited an accounting standard or a jurisdiction rule.** All 20 found the 6% tax rate on the invoices and used it, and a few asked whether the agreed credits include tax, but none named a standard or flagged a tax rule for a qualified person. They were not asked to, and my skills did not tell them to, so this is a gap in my design and not a failing of the model. The fix is a rule in the skill: "Name the jurisdiction. Look up the accounting standard and the tax rule for each step that has a tax or reporting effect, cite them, and flag them for a qualified person."
 
 ## The agent reads the ledger through Business Central's MCP server
 
-Run A asked 17 questions, and about ten of them asked for facts that sit in the company's own data: the costing method of item A, whether the lamps are still in stock, whether certain setup switches are on, whether the invoice lines match the receipt, the currency, and whether the posting period is open. A person should never be asked those. Business Central can answer them itself, because it now ships its own Model Context Protocol (MCP) server, which I connected to Claude Code in [Model Context Protocol](/posts/businesscentralmcpclaudecode/).
+A person should not be asked for facts that sit in the company's own data, such as the costing method of an item, whether the goods are still in stock, the currency, or whether a posting period is open. Business Central can answer most of them itself, because it now ships its own Model Context Protocol (MCP) server, which I connected to Claude Code in [Model Context Protocol](/posts/businesscentralmcpclaudecode/).
 
 That post gives the details that matter here:
 
@@ -273,9 +279,9 @@ I tried exactly this, and it did not work as I hoped. The next two sections say 
 
 ### What happened when I connected it
 
-I expected a few minutes of work, because my earlier post had it working. It took most of an afternoon, and each problem is worth knowing about before you try:
+Six things to know before you try:
 
-- **The app registration had been deleted.** The sign-in failed with Microsoft's error AADSTS700016, which says the application was not found in the directory. The Entra app from my earlier post was in the **Deleted applications** list, deleted on 19 September. Microsoft will not restore an app registration more than 30 days after deletion, and it said so when I tried: "Restore not allowed 30 days after soft deletion." I had to create a new one. This is the lesson I most want you to take away. A connection that worked once depends on an identity that someone, perhaps you, can delete.
+- **The app registration had been deleted.** The sign-in failed with Microsoft's error AADSTS700016, which says the application was not found in the directory. The Entra app from my earlier post was in the **Deleted applications** list, deleted on 19 September. Microsoft will not restore an app registration more than 30 days after deletion, and it said so when I tried: "Restore not allowed 30 days after soft deletion." I had to create a new one. A connection that worked once depends on an identity that someone, perhaps you, can delete.
 - **The new registration needs very little.** Single tenant, a public client, the loopback redirect address `http://localhost:33418/oauth/callback`, and the Business Central delegated permission `Financials.ReadWrite.All`. It does not need admin consent. I kept the new client ID out of this post. It is not a secret, but nothing here needs it.
 - **The Business Central configuration does not mention the app at all.** The "Blog Post" configuration only decides which objects the agent can see and what it can do with them. The app registration is just the identity that signs you in, so I did not need to change anything inside Business Central when I replaced the app.
 - **The wrong tenant looks like a license problem.** Opening the bare Business Central address sent me to a tenant with no license, with the message "You don't have access to Business Central". The fix is to put the tenant in the address, so it always lands in the right place.
@@ -327,6 +333,10 @@ File permissions on a token stop other users, and they do not stop an agent that
 
 I stopped the run and took the row out of the profile. The fix was not in the harness. A longer timeout was not available, because the plugin's own documentation says it does not expose a discovery timeout, and the 414 tool definitions come to roughly 390,000 tokens, far more than a model can hold. The fix was a smaller Business Central configuration.
 
+:::watch-it Too many tools breaks the harness, and it is no surprise
+Every tool the harness registers has to be described to the model in every request, and the harness has to list all of them before it can start. Here that meant 414 tool definitions, about 390,000 tokens, and a tool list that took 148 seconds to arrive. The harness gave up on it, so the agent had no tools at all. Even when a model can hold that many definitions, more tools mean more tokens to read, more timeouts and a bigger chance of choosing the wrong tool. Give an agent only the tools that its task needs, and make each one read-only until a person decides otherwise.
+:::
+
 ### The fix: a smaller configuration
 
 I created a second MCP configuration in Business Central, called "Close", with only ten objects, each with **Allow Read** and nothing else: items, vendors, currencies, purchase invoices, bank accounts, purchase receipts, purchase orders, item ledger entries, purchase credit memos and currency exchange rates.
@@ -335,7 +345,7 @@ I created a second MCP configuration in Business Central, called "Close", with o
 *The "Close" configuration, active, with its objects in Available APIs. Only Allow Read is ticked*
 
 :::watch-it The order matters, and the picker has a trap
-You cannot switch a configuration to Active until after you have chosen its tools, and once it is active the tool list is locked. My first attempt switched Active on first, and then half-made a line that broke the card, so I had to delete the configuration and start again. The picker also **replaces** the single line when you choose one API at a time. The way that works is to filter the picker on the ID column with a list such as `30010|30008|30051`, tick all the rows with the header checkbox, and press OK. Then switch Active on last.
+You cannot switch a configuration to Active until after you have chosen its tools, and once it is active the tool list is locked. Switching Active on first leaves a half-made line that breaks the card, and the only fix is to delete the configuration and start again. The picker also **replaces** the single line when you choose one API at a time. The way that works is to filter the picker on the ID column with a list such as `30010|30008|30051`, tick all the rows with the header checkbox, and press OK. Then switch Active on last.
 :::
 
 Here is what the smaller configuration changed, measured against the same server:
@@ -365,7 +375,7 @@ The agent's output is a draft: the plan, the list of documents, the amounts, the
 :::no-dumb-questions
 **Q: Is this more work than asking the chat assistant?**
 
-A: Yes, and the checking is the point. The assistant's answer was fast and mostly right. Checking it against the documentation found a missing step and a wrong effect, and that took a few minutes. A harness makes that check part of the process instead of something a careful person does when they have time.
+A: Yes, and the checking is the point. The assistant's answer was fast and mostly right. Checking it against the documentation found two missing steps, a wrong effect and several unconfirmed steps, and that took a few minutes. A harness makes that check part of the process instead of something a careful person does when they have time.
 
 **Q: Which model would do the reading?**
 
@@ -386,46 +396,55 @@ The cost of goods sold for the items that you already sold has not changed, so y
 
 ## What happened when I ran it
 
-I made a synthetic case with a fictional vendor, Contoso Furniture Supply, and gave it to DeepSeek Harness in its headless mode, using the DeepSeek V4 Flash model with high reasoning. The case matches the scenario above, with two traps built in: the wrong items are on Standard costing, and 8 of the 20 are already sold. The receipt has three lines, $500 for the lamps, $300 for the chairs and $200 for a third item. The invoice is posted and unpaid. The vendor agreed a $450 credit for the 10 broken lamps and a $200 allowance for the 20 chairs we keep.
+I ran the case through DeepSeek Harness in its headless mode, using the DeepSeek V4 Flash model with high reasoning, with both connections in place: the Business Central MCP server (the 10-tool "Close" configuration, read-only, on the Cronus company) and the Microsoft Learn MCP server. The case uses real Cronus data. The vendor is Graphic Design Institute (vendor 30000). Receipt 107145 is 10 lamps (item 1928-S) that all arrived broken, with a $385.00 credit agreed and the lamps scrapped here. Receipt 107149 is 10 mobile pedestals (item 1906-S) that arrived instead of the item ordered, kept for a $400.00 allowance, with 4 of the 10 already sold. Both invoices are posted. I told the agent to use only its tools and never to read credential files.
 
-| Run | Setup | Questions listed | Time |
-|---|---|---|---|
-| A | The case and one sentence, with no instructions | 17 | 3 min 19 s |
-| B | A skill: search Learn first, quote a page and a sentence for each step, check the steps of each procedure | 8 | 3 min 47 s |
-| C | The skill from B, plus the company wiki (four short rules) | 6 | 4 min 33 s |
-| D | A skill that says: write your own accounting analysis first, then verify it in Learn | 5 | 4 min 58 s |
+I ran each of four setups **five times**, 20 runs in all, each in a fresh folder so that no run could see another run's files.
 
-The agent has no screen in this mode, so each run ended with a list of questions and stopped. Nobody answered them.
+| Setup | What the agent got |
+|---|---|
+| A | The case and one sentence, with no instructions |
+| B | A skill: search Learn first, read the ledger, quote a page and a sentence for each step, check the steps of each procedure |
+| C | The skill from B, plus the company wiki (four short rules) |
+| D | A skill that says: write your own accounting analysis first, then verify it in Learn and the ledger |
 
-**What all four got right.** Every run chose two credit memos and not Correct or Cancel, because the dispute is partial. Every run assigned the chairs allowance as a **Charge (Item)** line, and every run saw that item B is on Standard costing, so the $200 is a purchase variance that does not touch the 12 chairs in stock or the 8 already sold. Runs A, B and D worked out the $50 loss on the lamps, and Run C raised it as a question. I checked four of Run B's quotations against the Learn pages, and all four matched. I did not check the rest.
+The agent has no screen in this mode, so each run ended with a list of questions and stopped. Nobody answered them. I counted tool calls from the harness's own session logs, not from what the agent said it did.
 
-**Run A already searched.** I gave it no instruction to look anything up, and it said it had verified the product behaviour against Microsoft's documentation. A capable model does this unprompted. What the skills added was discipline: a page and a sentence for each step, a table that checks each documented procedure step by step, and fewer, sharper questions.
+| Setup | Questions listed (each run) | Median | Time (median, range) | Learn searches and fetches (each run) | Business Central calls (median) |
+|---|---|---|---|---|---|
+| A | 9, 11, 10, 11, 10 | 10 | 3 min 19 s (2 min 52 s to 4 min 30 s) | 0, 2, 0, 0, 0 | 17 |
+| B | 5, 7, 6, 6, 6 | 6 | 3 min 25 s (3 min 12 s to 4 min 20 s) | 7, 8, 8, 9, 9 | 8 |
+| C | 5, 8, 7, 5, 6 | 6 | 3 min 26 s (3 min 1 s to 4 min 17 s) | 7, 7, 9, 7, 9 | 11 |
+| D | 9, 6, 7, 6, 6 | 6 | 4 min 26 s (2 min 57 s to 5 min 55 s) | 8, 6, 8, 5, 11 | 13 |
 
-**Only Run C put the invoice on hold.** The company wiki said to hold every disputed invoice on the day the dispute starts. Runs A, B and D never mentioned it, even though Learn has a page about it. That is tacit knowledge doing its job: the case never said "dispute hold", and nothing in the documentation tells a company to do it.
+**All 20 runs read the ledger.** Every one found the real receipts, found that both invoices are **Paid**, and so asked how the credit should be settled: a refund, or applied to the five open invoices. Four of five runs in A, B and D, and three of five in C, also named both matching invoices, 108139 and 108143. Nothing in the data links a receipt to its invoice, so each one said it had matched them by posting date and exact amount, and asked a person to confirm. The ledger also disagrees with my story, and the agent can see it. One setup A run pointed out that the item ledger shows the 10 lamps already shipped out in two sales shipments, so "scrap them here" may not be possible, and that the pedestals went out in one 10-unit shipment and not a 4-unit one. I did not count how many of the 20 runs noticed this. All 20 runs found the $43.00 loss on the lamps, a credit of $385.00 against a cost of $428.00.
 
-**The wiki made the questions sharper, not only fewer.** Run C noticed that the lamps cost exactly $50 a unit, which is not "under $50", so the scrap rule says to send them back, and that contradicts the case. It also noticed that the two credits are $450 and $200, each under the $500 approval limit, but $650 together. It did not choose. It asked a person, and those are the right questions for a person.
+**Without a skill, the agent did not use Learn.** Setup A called a Learn tool in one run out of five, twice. B, C and D each made between 5 and 11 Learn calls in every run. The skill did what a skill is for: it made the agent look the product up. Setup A still produced a plan with a Charge (Item) allowance in 2 of 5 runs and the cost adjustment step in all 5, from the model's own knowledge, and it asked 10 questions at the median against 6 for the others.
 
-**Run D's analysis showed what Learn does not cover.** Its accounting-first table also said that had item B used FIFO, the $200 would have split $80 to cost of goods sold and $120 to stock. Its verification table then marked two points as "not covered" by Learn: which account takes the $50 loss, and how the sold chairs are treated under Standard costing. That is the benefit of the order I now recommend: the agent knows what to look up, and knows what it could not find.
+**Only the wiki put the invoice on hold.** The wiki rule says to hold every disputed invoice. Setup C mentioned the hold in 5 of 5 runs. A mentioned it once, and B and D never did. In C, three runs then noticed that both invoices are already paid, so the hold buys only visibility, and asked whether to apply it anyway. That is tacit knowledge doing its job, and a good question for a person.
 
-**Where the agents went wrong.**
-- Run C declared a conflict **within** Learn, between the item charges page and the Standard costing pages. The item charges page has its own section on Standard cost items that resolves it, so there was no real conflict.
-- Run C's plan has no cost adjustment step, while the other three have one. The run with the most context and the fewest questions dropped a step.
-- Run D reported that the `web_fetch` tool was not available in this headless session, and fetched the pages another way. I did not find out why.
-- **None of the four looked at local accounting or tax rules,** as the earlier section says.
-- Run D's tidy plan was written to a file. It was only a plan file, but it is a reminder that a skill saying "do not post" is a request, not a control. The harness's approvals are the control.
+**Only the wiki applied the scrap and approval rules.** In all five C runs the plan used the scrap rule (the lamps cost $42.80 each, under $50) and checked the approval rule (each credit is under $500 and the two together are $785). A, B and D did not have those rules.
+
+**Accounting first found the costing trap more often.** Whether item 1906-S is on Standard costing changes the treatment of the $400 allowance, because on Standard costing it becomes a purchase variance and does not touch inventory. The API does not return the costing method. Setup D raised the Standard costing point in 3 of 5 runs, B in 2, C in 1 and A in none. Setup D also marked some points as not covered by Learn in 4 of 5 runs, and B in 1.
+
+**The accounting did not change much.** Every run proposed two credit memos and not Correct or Cancel, assigned the pedestal allowance as a Charge (Item) line, assigned the allowance across the receipt lines, ran Adjust Cost - Item Entries, and posted nothing. The skill and the wiki changed what the agent looked up, how many questions it asked, and which company rules it applied. They did not change the basic plan.
+
+**Where it went wrong.**
+- **No run cited an accounting standard or a jurisdiction rule.** All 20 used the 6% tax rate that they found on the invoices, and a few asked whether the credits include tax, but none named a standard such as US GAAP or flagged a tax rule for a qualified person. My skills did not ask for it, so this is a gap in my design and not a failing of the model. The earlier section on local rules gives the fix.
+- **Setup D was the slowest,** with a median of 4 min 26 s against about 3 min 20 s for the others, and the widest range.
+- **Some runs wrote their plan to a file** in their own folder. It was only a plan file, but it is a reminder that a skill saying "do not post" is a request, not a control. The harness's approvals are the control.
+- **No run read a credential or token file,** in any of the 20. That is the behaviour I wanted after the earlier incident.
+- **I checked the plans' quotations only in part.** I read the Learn pages behind the claims in my own table above, but I did not check every quotation in 20 plans.
 
 ## What comes next
 
-This post is Part 4. It has one scenario, four runs of it, and a design for the parts I could not yet test. Part 5 will do the comparison properly:
+This post is Part 4. It has one scenario, 20 runs of it, and a design for the parts I could not yet test. Part 5 will do the comparison properly:
 
-- **Two agents, two setups.** Claude Code with Sonnet 5.5 and DeepSeek Harness, each plain and each customised with the skill, the company wiki, the company data and a read-only Business Central connection.
+- **Two harnesses, two setups each.** Claude Code with Sonnet 5.5 and DeepSeek Harness, each plain and each customised with the skill, the company wiki and the same two connections, Business Central and Microsoft Learn.
 - **Four cases, built from the real Cronus company:** the vendor dispute, a bank reconciliation with planted faults, a goods-received-not-invoiced accrual, and a foreign currency vendor credit.
 - **A drafts-only Business Central configuration,** so that the agent can create the transactions and a person posts them. The read-only one works.
-- **Repeats,** so that I know how much of a difference is luck.
+- **Repeats and a scored checklist,** so that the comparison counts correct answers and not only mentions.
 
 Four tests from this post still wait for that setup: a person answering the agent's questions, so that silence stays pending and nothing is posted; the local-rules lookup, to see that the agent cites a standard and flags it for a qualified person; a saved wiki rule that points at an older Learn page, which the agent should flag instead of following; and twenty disputes run with an empty wiki and then with a wiki built from ten of them, counting the questions and the corrections.
-
-I ran a quick pilot on made-up data while building this, and I am not reporting it, because my scoring of it was too crude to trust.
 
 :::bullet-points What to remember
 - A complex question has branches, and the first job is to find out which branch you are on. Ask, do not guess.
