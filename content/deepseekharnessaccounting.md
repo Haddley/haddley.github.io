@@ -24,7 +24,7 @@ In [LLM Benchmarking](/posts/llmbenchmark/) I measured six models on accountancy
 6. **A check against Business Central:** the amounts, the jurisdiction and the dates.
 7. **What a person does next.**
 
-**Why:** accounting work has rules that live outside the product, and consequences that cannot be undone. A harness that reads the ledger, shows its sources, asks the right questions and stops before posting is useful. The honest test is to check its work against the system, so I did.
+**Why:** accounting work has rules that live outside the product, and consequences that cannot be undone. A harness is useful when it reads the ledger, shows its sources, asks the right questions, and stops before it posts anything to the ledger. The honest test is to check its work against the system, so I did.
 
 :::watch-it It also works in Claude Code
 I have run this kind of case in Claude Code with the same two connections, and it reached the same kind of plan. Everything in this post is about DeepSeek Harness, because one clear story is easier to follow than two. A harness is not tied to one product.
