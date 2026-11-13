@@ -244,10 +244,10 @@ I opened Business Central and checked draft 1011.
 
 **The jurisdiction is right.** The tax area is ATLANTA, GA on the draft and on the posted invoice.
 
-**The "tax anomaly" has an explanation that the harness could not see.** The harness noticed that the invoice charged 3 per cent although the same item is priced at 6 per cent on the 2025 and May 2026 lines, and Atlanta's combined rate is higher. It asked me, and it was right to ask. When I looked at the tax details in the Sandbox, I found a second set of rates effective from 3 November 2026, and a document dated after that date takes 3 per cent.
+**The "tax anomaly" has an explanation that the harness could not see.** The harness noticed that the invoice charged 3 per cent although the same item is priced at 6 per cent on the 2025 and May 2026 lines, and Atlanta's combined rate is higher. It asked me, and it was right to ask. When I looked at the tax details in the Sandbox, I found why. The lamp's tax group is FURNITURE. The state, GA, has a FURNITURE rate of 3.0 with no newer row. The city and the county have no FURNITURE rows, so I read their rows with no tax group: Atlanta at 1.0 and Fulton County at 2.0 from 1 January 2024, and both at 0.0 from 3 November 2026. A document dated after 3 November 2026 takes 3 + 0 + 0 = 3 per cent, and an earlier one takes 3 + 1 + 2 = 6 per cent, which matches both the earlier lines and this invoice.
 
-![The Tax Details page in the Sandbox, a list of jurisdictions with a row effective 1/1/2024 and a second row effective 11/3/2026 for the same tax group](assets/images/deepseekharnessbusinesscentral/r2-12-tax-details.webp)
-*The Tax Details page in the Sandbox. The rows in view are Florida's jurisdictions (FL, FLDADE, FLMIAMI), and each tax group has one row effective 1 January 2024 and a second effective 3 November 2026*
+![The Tax Details page in the Sandbox, scrolled to the Georgia jurisdictions: GA has a FURNITURE row at 3.0 from 1/1/2024, and GAATLANTA and GAFULTON have rows at 1.0 and 2.0 from 1/1/2024 and rows at 0.0 from 11/3/2026](assets/images/deepseekharnessbusinesscentral/r2-13-tax-details-georgia.webp)
+*The Tax Details page in the Sandbox. GA has a FURNITURE rate of 3.0 from 1 January 2024. GAATLANTA and GAFULTON have no FURNITURE rows: their rows with no tax group are 1.0 and 2.0 from 1 January 2024 and 0.0 from 3 November 2026*
 
 So the Sandbox is behaving as it was set up, and the question a real company would put to the vendor is whether their tax set-up is right. The harness did the useful thing: it reported the inconsistency, made the credit mirror the invoice, and did not decide.
 
