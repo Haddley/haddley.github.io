@@ -1,6 +1,6 @@
 ---
 title: "LLM Benchmarking, Part 2: A Checker and a Judge"
-description: "The same 285 accounting prompts, marked two ways: a few lines of code read the letter, and a second model scores the reasoning. Where they disagree is the interesting part."
+description: "Six models answer the same 285 accounting prompts. A few lines of code mark the letter right or wrong, and a judge model that holds the answer key scores the thinking."
 date: "2026-11-13"
 categories: ["AI", "Python"]
 image: "/assets/images/llmbenchmark2/poster.svg"
@@ -13,13 +13,13 @@ slug: "llmbenchmark2"
 
 In [LLM Benchmarking](/posts/llmbenchmark/) I wrote 30 questions that know their own answers, so a checker could mark them with no second model. I said that this works only for questions with one right answer, and that an explanation needs a judge. This post tests both on the 285 prose prompts from my older [llm-accounting-benchmark](https://github.com/Haddley/llm-accounting-benchmark).
 
-I ran three models on them: Qwen3.5 2B, Llama 3.1 8B and Qwen3.5 9B. Three larger ones, Gemma 4 12B, Qwen2.5 14B and Gemma 4 26B, are still answering, and I will add them as an update.
+I ran six models on them: Qwen3.5 2B, Llama 3.1 8B, Qwen3.5 9B, Gemma 4 12B, Qwen2.5 14B and Gemma 4 26B. Each one answered all 285 prompts, on my laptop, through Ollama.
 
 ## What is in the 285 prompts
 
 I expected 285 open questions. I counted, and 282 of them are **multiple choice**, with options A to D and a reference answer such as "The correct answer is C: $3". Only 3 are open-ended, and all three are reconciliation tasks, such as reconciling a bank passbook with a cash book.
 
-That changes the job. A multiple-choice question has a right letter, so a checker can mark 282 of the 285 prompts, and the judge is needed for two other things: the 3 open-ended prompts, and the **reasoning** behind each letter.
+That changes the job. A multiple-choice question has a right letter, so a checker can mark 282 of the 285 prompts. The judge is needed for two other things: the 3 open-ended prompts, and the **thinking** behind each letter.
 
 :::brain-power Before you read on
 A model writes three paragraphs of careful reasoning and then names the wrong option. Should the reasoning score count for something? Now turn it round: a model names the right option after a muddled explanation. Which of the two would you rather have as an accounting assistant?
@@ -27,42 +27,59 @@ A model writes three paragraphs of careful reasoning and then names the wrong op
 
 ## Marker 1: the checker
 
-The checker reads the letter the model chose and compares it with the reference. Models do not make that easy. They discuss every option and then end with "**Correct Option: B**", and some bold a word that happens to start with a letter. My first reader had both mistakes, and I found them only by reading real answers by hand. The reader now takes the last clear statement of a choice, ignores "Option D is incorrect", and has seven small tests, each one a layout that fooled an earlier version.
+The checker reads the letter the model chose and compares it with the reference. Models do not make that easy. They discuss every option and then end with "**Correct Option: B**", and some bold a word that happens to start with a letter. My first reader had both mistakes, and I found them only by reading real answers by hand. The reader now takes the last clear statement of a choice, ignores "Option D is incorrect", ignores a bold letter inside a table row or a bold "B:" that labels an option under discussion, and has eleven small tests, each one a layout that fooled an earlier version.
 
 When no clear letter appears, I count the answer as not right. That is a real result: a model that never commits to an option cannot be marked right.
 
-| Model | Right | Of 282 | Named a wrong letter | Named no letter |
-|---|---|---|---|---|
-| Qwen3.5 2B | 77 | **27.3%** | 115 | 90 |
-| Llama 3.1 8B | 104 | **36.9%** | 126 | 52 |
-| Qwen3.5 9B | 109 | **38.7%** | 105 | 68 |
+| Model | Right | Of 282 | Named a wrong letter | Named no letter | Right, of those that named a letter |
+|---|---|---|---|---|---|
+| Qwen3.5 2B | 79 | **28.0%** | 112 | 91 | 41.4% |
+| Llama 3.1 8B | 104 | **36.9%** | 126 | 52 | 45.2% |
+| Qwen3.5 9B | 109 | **38.7%** | 104 | 69 | 51.2% |
+| Gemma 4 12B | 120 | **42.6%** | 137 | 25 | 46.7% |
+| Qwen2.5 14B | 103 | **36.5%** | 110 | 69 | 48.4% |
+| Gemma 4 26B | 128 | **45.4%** | 110 | 44 | 53.8% |
 
-All three are well below what I would want from an assistant. The picture is different if I look only at the answers where a model did name a letter. The 2B is right on 40.1% of those, the 8B on 45.2% and the 9B on 50.9%. Chance on four options is 25%.
+All six are well below what I would want from an assistant. Chance on four options is 25%, and the best model is right on 45.4% of the prompts.
+
+:::watch-it My own limit cut many answers short
+I asked every model for a concise answer and capped each reply at 500 tokens. The cap cut off 58 of the 91 Qwen3.5 2B answers that named no letter, and 53 of the 69 for the Qwen3.5 9B. For those two models, most of the "no letter" column is a model that was still working when I stopped it. The cap hit 65 answers of the 2B, 66 of the 9B and only 7 of the Qwen2.5 14B, so it does not hurt every model equally. I have not rerun with a larger cap, and the ranking could move when I do.
+:::
 
 ## Marker 2: the judge
 
-The judge is Gemma 4 26B. For every answer it sees the question and the model's reply, and it does **not** see the reference answer. It gives three scores from 1 to 10, Accuracy, Completeness and Clarity, and a verdict: SOUND, SLIP (a small error), FLAWED, or UNSUPPORTED (a claim with no reasoning behind it). I kept the reference answer from the judge on purpose. The judge answers the question "does this reasoning hold up?", and the checker answers "did it land on the key?". They are two different measurements.
+The judge is Gemma 4 26B. For every answer it sees the question, **the correct answer** and the model's reply. It gives three scores from 1 to 10, Accuracy, Completeness and Clarity, and a verdict: SOUND, SLIP (a small error), FLAWED, or UNSUPPORTED (a claim with no reasoning behind it).
+
+The checker and the judge have separate jobs. The checker answers "did the model land on the key?", with a letter and no opinion. The judge answers "how good was the thinking?", and it has the key so that it does not have to solve the problem itself.
 
 | Model | Accuracy | Completeness | Clarity | SOUND | SLIP | FLAWED | UNSUPPORTED |
 |---|---|---|---|---|---|---|---|
-| Qwen3.5 2B | 5.3 | 7.6 | 8.6 | 101 | 10 | 173 | 1 |
-| Llama 3.1 8B | 5.0 | 5.5 | 7.7 | 99 | 8 | 172 | 6 |
-| Qwen3.5 9B | 8.2 | 8.4 | 9.1 | 203 | 11 | 67 | 4 |
+| Qwen3.5 2B | 3.6 | 7.5 | 8.9 | 72 | 6 | 207 | 0 |
+| Llama 3.1 8B | 4.0 | 5.4 | 8.0 | 83 | 7 | 192 | 3 |
+| Qwen3.5 9B | 5.0 | 8.3 | 9.2 | 122 | 1 | 160 | 2 |
+| Gemma 4 12B | 4.8 | 8.4 | 9.3 | 113 | 3 | 166 | 3 |
+| Qwen2.5 14B | 4.6 | 6.3 | 8.6 | 105 | 0 | 176 | 4 |
+| Gemma 4 26B | 5.2 | 8.7 | 9.5 | 124 | 3 | 154 | 4 |
 
 (Each row covers all 285 answers. Scores are means.)
+
+Completeness follows length. The Llama 3.1 8B and the Qwen2.5 14B write short answers, a median of 102 and 87 tokens, and score 5.4 and 6.3 for Completeness. The other four write a median of 258 to 301 tokens and score 7.5 to 8.7.
 
 ## One picture with four axes
 
 The radar below puts the checker beside the three judge scores. I multiplied the scores by ten so that all four axes run from 0 to 100.
 
 ```mermaid
-%%{init: {"theme": "neutral", "themeVariables": {"cScale0": "#ea580c", "cScale1": "#2563eb", "cScale2": "#16a34a", "radar": {"curveOpacity": 0.1, "curveStrokeWidth": 3, "axisColor": "#475569", "axisStrokeWidth": 1.5, "axisLabelFontSize": 15, "graticuleColor": "#cbd5e1", "graticuleStrokeWidth": 1, "legendFontSize": 15, "legendBoxSize": 15}}, "radar": {"width": 520, "height": 520, "marginTop": 80, "marginBottom": 60, "marginLeft": 150, "marginRight": 220, "axisLabelFactor": 1.1}}}%%
+%%{init: {"theme": "neutral", "themeVariables": {"cScale0": "#ea580c", "cScale1": "#2563eb", "cScale2": "#16a34a", "cScale3": "#9333ea", "cScale4": "#0891b2", "cScale5": "#dc2626", "radar": {"curveOpacity": 0.08, "curveStrokeWidth": 3, "axisColor": "#475569", "axisStrokeWidth": 1.5, "axisLabelFontSize": 15, "graticuleColor": "#cbd5e1", "graticuleStrokeWidth": 1, "legendFontSize": 15, "legendBoxSize": 15}}, "radar": {"width": 520, "height": 520, "marginTop": 80, "marginBottom": 60, "marginLeft": 150, "marginRight": 220, "axisLabelFactor": 1.1}}}%%
 radar-beta
     title Checker and judge, 285 accounting prompts
     axis ra["Right answer (checker)"], ac["Accuracy (judge)"], co["Completeness (judge)"], cl["Clarity (judge)"]
-    curve q2["Qwen3.5 2B"]{27, 53, 76, 86}
-    curve l8["Llama 3.1 8B"]{37, 50, 55, 77}
-    curve q9["Qwen3.5 9B"]{39, 82, 84, 91}
+    curve q2["Qwen3.5 2B"]{28, 36, 75, 89}
+    curve l8["Llama 3.1 8B"]{37, 40, 54, 80}
+    curve q9["Qwen3.5 9B"]{39, 50, 83, 92}
+    curve g12["Gemma 4 12B"]{43, 48, 84, 93}
+    curve q14["Qwen2.5 14B"]{37, 46, 63, 86}
+    curve g26["Gemma 4 26B"]{45, 52, 87, 95}
     max 100
     min 0
     graticule polygon
@@ -70,74 +87,90 @@ radar-beta
     showLegend true
 ```
 
-The 9B covers the most area, and the shape explains why. Its three judge axes sit near the rim, and its checker axis does not. It writes the clearest, most complete explanations of the three, and it still picks the right option well under half the time.
+The shape is the same for every model. Clarity sits near the rim, Completeness follows the length of the answer, and the two axes that depend on the key, Right answer and Accuracy, stay in the lower half. A model can write a clear, complete explanation and still land on the wrong option. The Gemma 4 26B covers the most area, and no model reaches 60 on either key axis.
+
+Once the judge holds the key, its Accuracy score tracks the checker. That is the point of giving it the key, and it also means Accuracy adds little to the Right answer axis. The new information is in the cases where the two markers differ.
 
 ## Where the two markers disagree
 
-I split each model's 282 multiple-choice answers four ways: did the checker mark it right, and did the judge call the reasoning sound (SOUND or SLIP) or flawed (FLAWED or UNSUPPORTED)?
+I split each model's 282 multiple-choice answers four ways: did the checker mark it right, and did the judge call the thinking sound (SOUND or SLIP) or flawed (FLAWED or UNSUPPORTED)?
 
-| Model | Right, sound reasoning | Right, flawed reasoning | Wrong, sound reasoning | Wrong, flawed reasoning |
+| Model | Right, sound thinking | Right, flawed thinking | Wrong, sound thinking | Wrong, flawed thinking |
 |---|---|---|---|---|
-| Qwen3.5 2B | 47 | 30 | 64 | 141 |
-| Llama 3.1 8B | 61 | 43 | 46 | 132 |
-| Qwen3.5 9B | 99 | 10 | 115 | 58 |
+| Qwen3.5 2B | 67 | 12 | 11 | 192 |
+| Llama 3.1 8B | 87 | 17 | 2 | 176 |
+| Qwen3.5 9B | 107 | 2 | 16 | 157 |
+| Gemma 4 12B | 108 | 12 | 7 | 155 |
+| Qwen2.5 14B | 88 | 15 | 17 | 162 |
+| Gemma 4 26B | 122 | 6 | 4 | 150 |
 
-Two cells matter.
+Two cells matter, and both are small.
 
-**Right answer, flawed reasoning** is the lucky guess. The 8B has 43 of them, against 61 right answers with sound reasoning. A checker alone would have counted every one as a success.
+**Right answer, flawed thinking** is the lucky guess. The Llama 3.1 8B has 17 of them, against 87 right answers with sound thinking. A checker alone would have counted every one as a success. The judge takes the credit from 2 to 17 answers per model, 64 in all.
 
-**Wrong answer, sound reasoning** is the one that worries me. The 9B has 115. The judge looked at the explanation and found nothing wrong, and the answer was still not the key.
+**Wrong answer, sound thinking** is the one that worries me, and it is mostly not what it looks like. Of the 57 answers in this cell across the six models, 55 named no letter. They are sound working that stopped before the model committed to an option, and 20 of them ran into my token cap. The judge was right that the thinking was fine, and the checker was right that the model had not answered. With the key in its hands, the judge approved a wrong letter only twice in 699 answers.
 
-:::watch-it A judge that has not seen the key cannot catch a confident wrong answer
-Here is a real one. The question asks what an auditor should do when a change in accounting principles has an immaterial effect on comparability. The reference answer is A, do not refer to the change in the report. The 9B wrote a tidy explanation, ended with "**Correct Answer: B**" (refer to the note that discusses the change), and the judge gave it 10 for Accuracy, 10 for Completeness, 10 for Clarity and a verdict of SOUND. The reasoning is fluent, and it supports an answer that the key says is wrong.
+I read those two, and I read the other answers where the judge and the checker disagreed while I was building the reader. Each reading found a mistake.
+
+**The checker misread several.** The Qwen3.5 9B answered a question about which segments Swift Co. must disclose. Its table showed segments A and B passing the 10% tests and C failing, and the reply was cut off in the middle of "Segments A and B meet the quantitative thresholds". The reference is A, and the model was right. My reader had picked up the bold **C** in the last table row as the choice. Three more cases fooled it the same way: a bold "**B:**" that labelled an option under discussion, "Correct Mathematical Choice: D" with a word between "Correct" and "Choice", and "(Option D)" in brackets after "the correct value is". I fixed the reader each time and added a test, and the counts above are from the fixed reader.
+
+:::watch-it The judge disagreed with the key, and I think the judge was right
+The question asks which technique is *least* useful to a manager whose critical machine has limited capacity. The key says A, the theory of constraints. The Qwen3.5 9B answered B, economic order quantity, and explained that it "offers no direct guidance" for a capacity problem. The judge had the key in front of it and still gave the answer 10 for Accuracy, 10 for Completeness, 10 for Clarity and a verdict of SOUND. I read that as an error in the key, because the theory of constraints is exactly what that manager needs. The checker marked the answer wrong, and I have not been able to check the key against its source.
 :::
 
-I did not take the 115 on trust. I read 18 of the disagreements by hand, across three models. Both markers make mistakes. Some were checker misreads, which I fixed in the reader. Some were judge scores of 10 for an explanation that never clearly chose the reference option. While I was looking for examples I also found one where the key looks wrong. A question asks a risk-averse investor to order three (risk, return) pairs, and the key lists the highest-risk pair first. The 9B ordered them the other way and the judge approved. I read that as an error in the key and not in the model, and I have not been able to check it against the source.
+Both markers make mistakes, and so can the answer key. That is a reason to read a sample by hand.
 
 ## Can I trust the judge?
 
-I tested it directly. I took 24 answers that the 9B had right, changed one number in each (the first figure after an equals sign, or a plus sign flipped) and asked the judge to review the original and the damaged copy.
+I tested it directly, twice. I took answers that the 9B had right, changed one number in each (the first figure after an equals sign, or a plus sign flipped) and asked the judge to review the original and the damaged copy. I ran the test without the key first, with 24 answers, and again with the key, with 23.
 
-- The judge rated 20 of the 24 originals SOUND or SLIP.
-- Of those 20, it caught the damage in 14, which is 70%. I counted a catch as a verdict of SLIP or FLAWED on the damaged copy.
-- The mean Accuracy score fell by 1.9 points, for answers that I had made wrong.
+| | Without the key | With the key |
+|---|---|---|
+| Originals rated SOUND or SLIP | 20 of 24 | 23 of 23 |
+| Damage caught (damaged copy SLIP or FLAWED) | 14 of 20 | 11 of 23 |
+| Damaged copy rated FLAWED | 4 of 24 | 1 of 23 |
+| Mean fall in Accuracy | 1.9 | 1.2 |
 
-So the judge notices a planted error most of the time, and it misses about three in ten. Several of the misses kept an Accuracy score of 9 or 10 on a number that I had changed.
+Holding the key made the judge more generous, and it caught the damage in 48% of the copies, against 70% without it. A damaged answer still ends on the right letter, so the key tells the judge that the answer is right. Ten of the 11 catches were a SLIP, a small error, and only one was FLAWED.
+
+So the key makes the judge better at the question "is this the right answer?" and worse at "is every step sound?". I now think a judge needs both views: one run with the key to check the conclusion, and one run without it to read the working.
 
 :::no-dumb-questions
-**Q: Why not tell the judge the right answer?**
+**Q: Why give the judge the right answer? Is it not then a second checker?**
 
-A: Then it would be a second checker, and it would lose the one thing a checker cannot do: say whether the reasoning stands on its own. In practice most questions in a real accounting job have no answer key. The judge has to work without one, so I wanted to see how it behaves without one.
+A: Partly. Its Accuracy score tracks the checker, and I accept that. What it adds is Completeness and Clarity, a verdict on the working, and a catch for the lucky guesses. Without the key, a judge has to solve the problem itself, and a small model judging accounting will sometimes be wrong about the answer.
 
 **Q: Why not use the checker alone, since 282 of 285 prompts have a key?**
 
-A: Because the checker cannot see the 43 lucky guesses by the 8B, and it cannot mark the 3 open-ended prompts at all. It also scores a model with no letter as simply wrong, and cannot say whether that model reasoned well.
+A: Because the checker cannot see the 64 lucky guesses across the six models, and it cannot mark the 3 open-ended prompts at all. It also scores a model with no letter as simply wrong, and cannot say whether that model reasoned well.
 :::
 
 ## The open-ended prompts: the judge is the only option
 
 The three bank reconciliation prompts have no letter. There is nothing for the checker to read, so the judge is the only marker, and I treat its output with the care that the last section earned.
 
-All three models were rated FLAWED on all three prompts, nine out of nine. The judge's one-line reasons are specific. For the 2B: "The student incorrectly adds bank charges and subtracts unpresented cheques when reconciling from the Passbook to the Cash Book." For the 9B on the third prompt: it "incorrectly identifies the $35k deposit as 'in transit' when it appears on both records, and the math for the adjustment is incorrect." Three prompts cannot rank three models, and I do not rank them. They show that every model I ran fails the one task here that looks most like real month-end work.
+Across six models and three prompts, the judge rated 15 of 18 answers FLAWED. The three it called SOUND were Llama 3.1 8B on the third prompt, and both Gemma models on the second. The judge's one-line reasons are specific. For the Qwen3.5 2B on the second prompt: "The student fundamentally misunderstood the reconciliation process by treating reconciled transactions as reconciling items." For the Qwen3.5 9B on the third: "The student invented transactions (deposits in transit/outstanding checks) that were already cleared by the bank."
+
+Three prompts cannot rank six models, and I do not rank them. They show that most models fail the one task here that looks most like real month-end work. The two SOUND verdicts for the Gemma models come from a judge that is itself a Gemma 4 model, so I would read them with a doubt about family bias. The judge does not favour the Gemma models everywhere: the Qwen3.5 9B has a higher Accuracy mean than the Gemma 4 12B. But I cannot rule bias out, and the checker, which does not share it, also puts the Gemma 4 26B first.
 
 ## What I take from this
 
-- **The checker and the judge measure different things,** and the gap between them is the finding. The 9B's reasoning looks excellent and its answers are right about half the time when it names a letter. A single score would hide that.
-- **The checker is only as good as its reader and its key.** I fixed the reader after reading real answers, and I found a probable error in the key.
-- **A judge without the key rates fluency.** A confident, well-structured wrong answer can score 10, and a planted number error slipped past it three times in ten.
-- **The two markers together find the lucky guesses and the confident misses,** which neither finds alone.
+- **The checker and the judge measure different things,** and a single score would hide the difference. Every model writes clear explanations (Clarity 8.0 to 9.5) and none reaches 46% right.
+- **The checker is only as good as its reader and its key.** I fixed the reader several times after reading real answers, and I found a probable error in the key.
+- **A judge with the key is a good check on the conclusion and a weaker check on the steps.** It caught a planted number error in 48% of the copies, against 70% without the key.
+- **My own settings can distort the result.** A 500-token cap turned working answers into "no letter" for the two Qwen3.5 models.
 
 :::bullet-points What to remember
 - 282 of the 285 prompts are multiple choice, so a letter checker marks almost all of them.
-- Count an answer with no clear letter as not right, and say how many there were.
-- Keep the key from the judge if you want to measure reasoning, and test the judge by planting faults.
+- Count an answer with no clear letter as not right, and say how many there were and why.
+- Give the judge the key to check the conclusion, and run it without the key to test the working. Plant faults to see what each one catches.
 - Read a sample of the disagreements by hand. Both markers make mistakes, and so can the answer key.
-- Lucky guesses (right answer, flawed reasoning) and confident misses (wrong answer, sound reasoning) are the cases that a single score cannot show.
+- Set the answer limit with care. A cap that cuts the model off scores as a wrong answer.
 :::
 
 ## What comes next
 
-Gemma 4 12B, Qwen2.5 14B and Gemma 4 26B are still answering. I will add them, judge them in the same way and update the radar and the tables. The 26B is also my judge, so I will mark its answers with the same judge and say so, because a model marking its own work is a case worth watching.
+I plan to rerun the six models with a larger answer cap, so that the "no letter" column measures commitment and not my limit. I also plan to run the judge a second time without the key on the same answers, so that I can put the two verdicts side by side. The Gemma 4 26B is both a contestant and the judge, and a different judge, such as a model from another family, would settle the family bias question.
 
 ## References
 
