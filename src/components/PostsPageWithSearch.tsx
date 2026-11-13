@@ -4,10 +4,10 @@ import { useState, useEffect } from 'react';
 import { BlogPost } from '@/lib/posts';
 import { categories } from '@/lib/categories';
 import Link from 'next/link';
-import Image from 'next/image';
 import type { TopicSummary } from '@/lib/topics';
 import { matchTopics, matchCategories, searchPosts, matchWiki, type WikiPostText } from '@/lib/search-match';
 import { posterOf } from '@/lib/poster';
+import PosterPicture from '@/components/PosterPicture';
 
 
 interface PostsPageWithSearchProps {
@@ -214,7 +214,7 @@ export default function PostsPageWithSearch({
                               width: '100%',
                               maxWidth: '300px'
                             }}>
-                              <Image
+                              <PosterPicture
                                 src={posterOf(post) ?? post.image!}
                                 alt={post.title}
                                 width={300}
@@ -316,7 +316,7 @@ export default function PostsPageWithSearch({
                 <div className="item-wrapper post-card">
                   <div className="item-img" style={{ display: 'flex', justifyContent: 'center' }}>
                     <Link href={`/posts/${post.slug}`} style={{ width: '100%', maxWidth: '300px' }}>
-                      <Image
+                      <PosterPicture
                         src={posterOf(post) || '/assets/images/posts-meta.svg'}
                         alt={post.title}
                         width={300}

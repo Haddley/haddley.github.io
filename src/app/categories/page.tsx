@@ -9,6 +9,7 @@ import Link from 'next/link';
 import NavyImageBanner from '@/components/NavyImageBanner';
 import type { Metadata } from 'next';
 import { posterOf } from '@/lib/poster';
+import PosterPicture from '@/components/PosterPicture';
 
 export const metadata: Metadata = {
   title: 'Categories | Neil Haddley',
@@ -96,11 +97,10 @@ export default async function CategoriesPage() {
                     {/* Card cover image — navy stained */}
                     {categoryPosts[0]?.image && (
                       <div style={{ height: 110, overflow: 'hidden', position: 'relative', backgroundColor: 'var(--navy)' }}>
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={posterOf(categoryPosts[0])}
-                          alt=""
-                          aria-hidden="true"
+                        <PosterPicture
+                          src={posterOf(categoryPosts[0])!}
+                          loading="eager"
+                          ariaHidden
                           style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.25) sepia(1) hue-rotate(200deg) saturate(2)' }}
                         />
                         <div style={{ position: 'absolute', inset: 0, background: 'rgba(15,30,61,0.45)' }} />

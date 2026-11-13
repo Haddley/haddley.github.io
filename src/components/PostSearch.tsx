@@ -3,9 +3,9 @@
 import { useState, useEffect } from 'react';
 import { BlogPost } from '@/lib/posts';
 import Link from 'next/link';
-import Image from 'next/image';
 import { matchPosts } from '@/lib/search-match';
 import { posterOf } from '@/lib/poster';
+import PosterPicture from '@/components/PosterPicture';
 
 
 interface PostSearchProps {
@@ -76,7 +76,7 @@ export default function PostSearch({ posts }: PostSearchProps) {
               <div className="item-wrapper post-card">
                 <div className="item-img" style={{ display: 'flex', justifyContent: 'center' }}>
                   <Link href={`/posts/${post.slug}`} style={{ width: '100%', maxWidth: '300px' }}>
-                    <Image
+                    <PosterPicture
                       src={posterOf(post) || '/assets/images/posts-meta.svg'}
                       alt={post.title}
                       width={300}

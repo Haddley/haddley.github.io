@@ -1,3 +1,5 @@
+import PosterPicture from '@/components/PosterPicture';
+
 interface NavyImageBannerProps {
   images: string[];
   children: React.ReactNode;
@@ -18,11 +20,10 @@ export default function NavyImageBanner({
         <div style={{ position: 'absolute', inset: 0, display: 'flex' }}>
           {bannerImages.map((src, i) => (
             <div key={i} style={{ flex: 1, overflow: 'hidden' }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <PosterPicture
                 src={src}
-                alt=""
-                aria-hidden="true"
+                loading="eager"
+                ariaHidden
                 style={{
                   width: '100%',
                   height: '100%',

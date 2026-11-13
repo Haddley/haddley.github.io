@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getVisibleBlogPosts } from '@/lib/posts';
 import { posterOf } from '@/lib/poster';
+import PosterPicture from '@/components/PosterPicture';
 
 export default async function Home() {
   const recentPosts = await getVisibleBlogPosts();
@@ -39,11 +40,10 @@ export default async function Home() {
           <div style={{ position: 'absolute', inset: 0, display: 'flex', zIndex: 0 }}>
             {heroImages.map((src, i) => (
               <div key={i} style={{ flex: 1, overflow: 'hidden' }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <PosterPicture
                   src={src}
-                  alt=""
-                  aria-hidden="true"
+                  loading="eager"
+                  ariaHidden
                   style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.25) sepia(1) hue-rotate(200deg) saturate(2)' }}
                 />
               </div>
