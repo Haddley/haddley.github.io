@@ -244,8 +244,10 @@ I opened Business Central and checked draft 1011.
 
 **The jurisdiction is right.** The tax area is ATLANTA, GA on the draft and on the posted invoice.
 
-**The "tax anomaly" has an explanation that the harness could not see.** The harness noticed that the invoice charged 3 per cent although the same item is priced at 6 per cent on the 2025 and May 2026 lines, and Atlanta's combined rate is higher. It asked me, and it was right to ask. When I looked at the tax details in the Sandbox, I found a second set of rates effective from 3 November 2026, and a document dated after that date takes 3 per cent. ![](assets/images/deepseekharnessbusinesscentral/r2-12-tax-details.webp)
-*The Sandbox's tax details, with the second set of rates*
+**The "tax anomaly" has an explanation that the harness could not see.** The harness noticed that the invoice charged 3 per cent although the same item is priced at 6 per cent on the 2025 and May 2026 lines, and Atlanta's combined rate is higher. It asked me, and it was right to ask. When I looked at the tax details in the Sandbox, I found a second set of rates effective from 3 November 2026, and a document dated after that date takes 3 per cent.
+
+![The Tax Details page in the Sandbox, a list of jurisdictions with a row effective 1/1/2024 and a second row effective 11/3/2026 for the same tax group](assets/images/deepseekharnessbusinesscentral/r2-12-tax-details.webp)
+*The Tax Details page in the Sandbox. The rows in view are Florida's jurisdictions (FL, FLDADE, FLMIAMI), and each tax group has one row effective 1 January 2024 and a second effective 3 November 2026*
 
 So the Sandbox is behaving as it was set up, and the question a real company would put to the vendor is whether their tax set-up is right. The harness did the useful thing: it reported the inconsistency, made the credit mirror the invoice, and did not decide.
 
