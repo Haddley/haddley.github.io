@@ -1,7 +1,7 @@
 ---
 title: "DeepSeek Harness"
 part: 4
-description: "A vendor delivers six broken lamps, and the company uses Business Central: one run of DeepSeek Harness in its web UI on a fresh Sandbox, from a purchase order number to an unposted draft credit memo, with every screenshot, what it got right, and the two things it got wrong"
+description: "A vendor delivers six broken lamps, and the company uses Business Central: two runs of DeepSeek Harness in its web UI on a fresh Sandbox, from a purchase order number to an unposted draft credit memo, with the Microsoft Learn lookups, every screenshot, and what changed between the first run and the second"
 date: "2026-11-13"
 categories: ["AI", "Business Central"]
 image: "/assets/images/deepseekharnessaccounting/poster.svg"
@@ -14,19 +14,20 @@ slug: "deepseekharnessaccounting"
 
 ## What this post tells you, and why
 
-In [LLM Benchmarking](/posts/llmbenchmark/) I measured six models on accountancy questions and ended on this point: a real answer needs more than a good model. It needs a **harness**. This post shows what that means on one small accounting case, from the first message to a result that a person can act on. I ran it once, in the harness's web UI, on a brand new Business Central Sandbox, and I took a screenshot at each step. Here is what I tell you, in order:
+In [LLM Benchmarking](/posts/llmbenchmark/) I measured six models on accountancy questions and ended on this point: a real answer needs more than a good model. It needs a **harness**. This post shows what that means on one small accounting case, from the first message to a result that a person can act on. I ran the case twice in the harness's web UI, on a brand new Business Central Sandbox, and I took a screenshot at each step of the second run. Here is what I tell you, in order:
 
 1. **What a harness is,** in one picture and one paragraph.
 2. **The scenario:** a vendor delivers six broken lamps and agrees to take them back.
 3. **The setup:** a fresh Sandbox, a configuration that can only read and draft, and one seeded order.
-4. **The run:** what the harness read, looked up, asked me and created, with the screenshots.
-5. **A check against Business Central:** what it got right, and the two things it got wrong.
-6. **What a person does next,** and what I will change in the second run.
+4. **The run:** what the harness read, asked me and created.
+5. **Where it looked for help:** the Microsoft Learn searches and pages, and the sentences it relied on.
+6. **A check against Business Central,** and what the first run got wrong that the second run got right.
+7. **What a person does next.**
 
-**Why:** accounting work has rules that live outside the product, and consequences that cannot be undone. A harness that reads the ledger, shows its sources, asks the right questions and stops before posting is useful. The honest test is to check its work against the system, so I did, and one of its conclusions was wrong.
+**Why:** accounting work has rules that live outside the product, and consequences that cannot be undone. A harness that reads the ledger, shows its sources, asks the right questions and stops before posting is useful. The honest test is to check its work against the system, so I did, twice.
 
 :::watch-it It also works in Claude Code
-I have run this kind of case in Claude Code with the same two connections, and it reached the same kind of plan. Everything in this post is about DeepSeek Harness, because one clear run is easier to follow than two. A harness is not tied to one product.
+I have run this kind of case in Claude Code with the same two connections, and it reached the same kind of plan. Everything in this post is about DeepSeek Harness, because one clear story is easier to follow than two. A harness is not tied to one product.
 :::
 
 ## A harness, in one picture
@@ -42,7 +43,7 @@ The word "agent" is used loosely, so here is how I use the two words here. The h
 
 ## The scenario
 
-Graphic Design Institute delivered purchase order 106030: 15 AMSTERDAM Lamps (item 1928-S) at $42.80. Six of the 15 arrived broken. The vendor has agreed to take the six back and credit them at the price we paid. The company uses Business Central, the invoice is already posted, and nobody in the warehouse has the receipt number or the invoice number. They have the vendor's delivery note, and it quotes our purchase order number.
+Graphic Design Institute delivered purchase order 106030: 15 AMSTERDAM Lamps (item 1928-S) at $42.80. Six of the 15 arrived broken. The vendor has agreed to take the six back and credit them at the price we paid. The company uses Business Central, the invoice is already posted, and nobody in the warehouse has the receipt number or the invoice number. They have the vendor's delivery note (TEST-DN-4472), and it quotes our purchase order number.
 
 That detail is the point. Think about who holds which number when the goods arrive.
 
@@ -54,177 +55,229 @@ That detail is the point. Think about who holds which number when the goods arri
 
 The one number every role shares is the **purchase order number**. So the harness has to start from that, and trace the receipt and the invoice from it.
 
+In the second run I added one fact that a person would know and the API cannot show: the order's tax area is ATLANTA, GA, and the goods were delivered to the Atlanta address. I explain why below.
+
 :::brain-power Before you read on
 Business Central deletes a purchase order once it is fully received and fully invoiced. If the harness looks for order 106030 in the list of purchase orders, what will it find, and what should it do next?
 :::
 
 ## The setup
 
-I wanted a clean start, so I created a new Business Central **Sandbox** environment and made everything in it on purpose. The full setup, with the Microsoft Entra app and the connection, is in [Connecting DeepSeek Harness to Business Central](/posts/deepseekharnessbusinesscentral/). Here are the three steps that matter for this run.
+I wanted a clean start, so I created a new Business Central **Sandbox** environment and made everything in it on purpose. I did it twice, because after the first run I recreated the Sandbox to run again from a known state. The full setup, with the Microsoft Entra app and the connection, is in [Connecting DeepSeek Harness to Business Central](/posts/deepseekharnessbusinesscentral/). Here are the three steps that matter.
 
-**The environment.** The admin center shows the Production environment and the new Sandbox, which is Active and on version 29.1:
+**The environment.** The admin center shows the new Sandbox, first Preparing and then Active:
 
-![](assets/images/deepseekharnessbusinesscentral/sbx-02-admin-environments-active.webp)
-*The Business Central admin center: Production, and the new Sandbox once it was Active*
+![](assets/images/deepseekharnessbusinesscentral/r2-02-admin-environments-active.webp)
+*The Business Central admin center: the recreated Sandbox once it was Active*
 
 **A configuration that can only read and draft.** Business Central's MCP server exposes whatever a *configuration* allows. I made one called **Drafts**. It has 16 API pages. All 16 are read-only, except Purchase Credit Memos and their lines, where I also allowed Create and Modify. Delete and bound actions (the ones that post) stay off. Create and Modify only become available after someone switches on **Unblock Edit Tools**, and that switch is a person's decision, so I switched it on myself. Then I switched **Active** on last, because an active configuration is locked.
 
-![](assets/images/deepseekharnessbusinesscentral/sbx-06-drafts-config-edit-tools-unblocked.webp)
+![](assets/images/deepseekharnessbusinesscentral/r2-09-drafts-config-create-modify-ticked.webp)
 *The Drafts configuration with Unblock Edit Tools on, and Create and Modify ticked on the two credit memo pages*
 
-![](assets/images/deepseekharnessbusinesscentral/sbx-07-drafts-config-active.webp)
+![](assets/images/deepseekharnessbusinesscentral/r2-11-drafts-config-active.webp)
 *Drafts is Active, so it is locked. Everything else on the grid is read-only*
 
-Asking the server for its tools from outside returned 26: list tools, plus create and modify for credit memos and their lines, and nothing else.
+**One seeded order.** I created purchase order 106030 for the vendor, with 15 lamps, a placeholder vendor invoice number (`TEST-INV-9001`, so nobody mistakes it for a real vendor document), and every date set to 13 November 2026. This time I set the **document date** as well, and I entered the delivery note number as the vendor shipment number. In the first run I left the document date alone, and it took the Sandbox work date, a year later.
 
-**One seeded order.** I created purchase order 106030 for the vendor, with 15 lamps, a placeholder vendor invoice number (`TEST-INV-9001`, so nobody mistakes it for a real vendor document), and the dates set to today, 13 November 2026. The Sandbox work date is 1 November 2027, so Business Central warned that the order date is earlier than the work date, which I expected.
+![](assets/images/deepseekharnessaccounting/r2-seed-05-po-dates-set.webp)
+*The order header with the posting, order and due dates set to November 2026*
 
-![](assets/images/deepseekharnessaccounting/sbx-seed-03-po-dates-set.webp)
-*The order header: vendor 30000, vendor invoice number TEST-INV-9001, posting, due and order dates set to November 2026. I did not touch the document date, which matters later*
+![](assets/images/deepseekharnessaccounting/r2-seed-06-po-document-date-and-shipment-no.webp)
+*The document date and the vendor shipment number TEST-DN-4472, which the first run did not have*
 
-![](assets/images/deepseekharnessaccounting/sbx-seed-04-po-line-15-lamps.webp)
-*Purchase order 106030: 15 lamps, $642.00, tax $19.26, total $661.26. The 3% tax comes from the order's tax area*
+The Sandbox work date is 1 November 2027, so Business Central warned that the order date is earlier than the work date, which I expected.
 
-Then I posted it with **Receive and Invoice**. That is what a goods-in clerk and an AP clerk would end up doing between them, just compressed into one action. Business Central posted it as invoice **108234**, and the receipt is **107240**.
+![](assets/images/deepseekharnessaccounting/r2-seed-07-work-date-notice.webp)
+*"Order Date earlier than work date", the expected notice*
 
-![](assets/images/deepseekharnessaccounting/sbx-seed-06-po-posted-108234.webp)
-*"The order is posted as number 108234 and moved to the Posted Purchase Invoices window"*
+![](assets/images/deepseekharnessaccounting/r2-seed-08-po-line-15-lamps.webp)
+*Purchase order 106030: 15 lamps at $42.80*
 
-The harness's working folder held the scenario, a skill that sets out the method (start from the purchase order number, search Microsoft Learn, read the ledger, cite a source for every step, do arithmetic with code), and two short company rules: put every disputed posted invoice on hold, and any credit over $500 needs the controller's approval.
+Then I posted it with **Receive and Invoice**. That is what a goods-in clerk and an AP clerk would end up doing between them, compressed into one action. Business Central posted it as invoice **108234**, and the receipt is **107240**.
+
+![](assets/images/deepseekharnessaccounting/r2-seed-09-post-dialog.webp)
+*The post dialog: Receive and Invoice*
+
+![](assets/images/deepseekharnessaccounting/r2-seed-10-posted-as-108234.webp)
+*"The order is posted as number 108234"*
+
+![](assets/images/deepseekharnessaccounting/r2-seed-12-posted-receipt-107240.webp)
+*Posted receipt 107240. It keeps the order number 106030, and the order itself has gone*
+
+The harness's working folder held the scenario, a skill that sets out the method (start from the purchase order number, search Microsoft Learn, read the ledger, cite a source for every step, do arithmetic with code), and two short company rules: put every disputed posted invoice on hold, using the buyer's initials, and any credit over $500 needs the controller's approval.
 
 ## The run
 
-I started DeepSeek Harness in its web UI, with the DeepSeek V4 Flash model, and added the working folder as a workspace. Then I typed this prompt:
+I started DeepSeek Harness in its web UI, with the DeepSeek V4 Flash model, and added the working folder as a workspace.
+
+![](assets/images/deepseekharnessaccounting/r2-run-01-workspace-added.webp)
+*The "work" workspace added to the harness*
+
+Then I typed this prompt:
 
 ```PROMPT
 Read scenario.md and use the vendor-dispute skill. Method: (1) start from the purchase order number (106030) and read the ledger with the Business Central tools; (2) look up how Business Central handles returns and credit memos with the Microsoft Learn tools, and follow the documented steps; (3) name the jurisdiction from the documents in the ledger and look up the sales and use tax rule for the credit (search the internet, then read the official tax authority page) and the US GAAP treatment (cite what you can read; the FASB Codification is paywalled, so flag that for a qualified accountant); (4) write the plan with a source for each step. Then create a draft credit memo in Business Central with the create tools, only if the ledger shows that one is needed, with each line's description naming the purchase order and the receipt. It must stay an unposted draft. Never post anything. Say what a person must do that the tools cannot, and ask me whatever you need to know before you finish, and report the document number.
 ```
 
-![](assets/images/deepseekharnessaccounting/sbx-run-03-prompt-sent.webp)
-*The prompt in the web UI, sent to the "work" workspace in Standard mode*
+![](assets/images/deepseekharnessaccounting/r2-run-03-prompt-sent.webp)
+*The prompt sent to the "work" workspace in Standard mode*
 
-### It read the skill and the company's rules first
+### It read the skill, the scenario and the company's rules first
 
-The first steps are reads of local files: the skill, the scenario, then the company's rules, in the order of an index. It read the approvals rule and the hold policy before it touched Business Central.
+The first steps are reads of local files: the skill, the scenario, then the company's rules, in the order of an index. It read the approvals rule and the hold policy before it touched Business Central, and it made itself a nine-item to-do list.
 
-![](assets/images/deepseekharnessaccounting/sbx-run-04-reading-skill-and-practice.webp)
-*The first steps: the skill, scenario.md, then company-practice/index.md, approvals.md and hold-policy.md*
+![](assets/images/deepseekharnessaccounting/r2-run-04-skill-scenario-company-practice.webp)
+*The skill, scenario.md and the two company rules, read before any Business Central call*
 
 ### It started from the purchase order number, and did not stop when the order was missing
 
-Its first filter on the order number returned nothing. It listed all the purchase orders without a filter, and noted that 106030 is not among the 14 records. Then it said "Let me trace it through receipts and invoices."
+Its first filter on the order number returned nothing. It listed all the purchase orders, and noted that 106030 is not among the 14: the highest is 106029. Then it did what the skill says, and followed the order number to the posted receipts.
 
-![](assets/images/deepseekharnessaccounting/sbx-run-05-tracing-po-through-receipts.webp)
-*"PO 106030 is not among the 14 orders. Let me trace it through receipts and invoices."*
+![](assets/images/deepseekharnessaccounting/r2-run-05-learn-search-fetch-and-po-missing.webp)
+*The Microsoft Learn search and fetch alongside the first filter on the order number, which found nothing*
 
-That is the harness doing the right thing, and the cause is something I did in the seeding. I posted 106030 as Receive and Invoice, so it was fully received and fully invoiced. Business Central deletes a purchase order once it is completely invoiced, and moves the details onto the posted receipt (107240) and the posted invoice (108234), which both keep the order number. So the open purchase orders table no longer holds 106030, and the first filter returned nothing for the same reason. The harness then filtered receipts by `orderNumber eq '106030'`, found receipt 107240, read its lines, and found the matching invoice. A person holding only a delivery note might look in the order list, find nothing, and think the order does not exist. The harness did not.
+The cause is something I did in the seeding. I posted 106030 as Receive and Invoice, so it was fully received and fully invoiced. Business Central deletes a purchase order once it is completely invoiced, and the number lives on in the posted receipt and the posted invoice. The harness filtered receipts by `orderNumber eq '106030'` and found receipt 107240. It had considered receipt 107222, which also holds 15 of the same lamps from the same vendor, but that receipt belongs to order 106014, so it picked the right one by **order number** and not by quantity. A person holding only a delivery note might look in the order list, find nothing, and think the order does not exist. The harness did not.
 
-### It read the rest of the ledger and the documentation
+![](assets/images/deepseekharnessaccounting/r2-run-06-receipt-107240-found-via-order-number.webp)
+*Receipt 107240 found through its order number, then the invoice that carries the same order number*
 
-Next it read the receipt lines, the invoice lines, the vendor, the item ledger entries, the existing credit memos and the tax groups, and fetched Microsoft Learn pages, including [Handle vendor payment disputes](https://learn.microsoft.com/en-us/dynamics365/business-central/payables-how-handling-payment-disputes) and [Process returns or cancellations](https://learn.microsoft.com/en-us/dynamics365/business-central/purchasing-how-process-purchase-returns-cancellations).
+It then proved the invoice belongs to that receipt, in code: 15 × 42.80 = 642.00 exactly, and the tax of 19.26 is exactly 3.0000 per cent of 642.00. Invoice 108234 is open and unpaid, and no credit memo exists for it, so one is needed.
 
-![](assets/images/deepseekharnessaccounting/sbx-run-06-learn-and-ledger-reads.webp)
-*Ledger reads (receipt lines, invoice lines, vendor, item ledger entries) alternate with Learn searches and fetches*
+### It named the right jurisdiction
 
-The Learn page matters because it says the **Correct** and **Cancel** actions on a posted invoice work only for unpaid invoices and do not support partial returns. That rules them out for six lamps out of 15, and points to a credit memo made from the invoice, which the page says you can edit to return only part of the quantity.
-
-### It chose the wrong jurisdiction
-
-The prompt asked it to name the jurisdiction from the documents in the ledger. This is where it went wrong. The vendor is in Miami, Florida, and the ship-to address is in Atlanta with the state field empty, so the harness chose Florida. It fetched the Florida surtax rate form DR-15DSS and extracted the Miami-Dade rate, and it searched for the GAAP treatment. The FASB Codification is paywalled, so it tried other sources. A download of a PwC inventory guide redirected to a login page, so it read an AccountingTools article instead.
+The prompt asked it to name the jurisdiction from the documents in the ledger. In the first run it chose Florida from the vendor's Miami address. This time the scenario said the order's tax area is ATLANTA, GA, and the receipt ships to an Atlanta address, and the harness reasoned about **Georgia, City of Atlanta, Fulton County**. It said so in terms: the vendor's Miami address is not the jurisdiction.
 
 ![](assets/images/deepseekharnessaccounting/sbx-run-07-florida-surtax-and-gaap-search.webp)
-*Florida's surtax form, and the search for a readable GAAP source after the Codification and a PwC guide were out of reach*
+*For comparison, the first run: it fetched Florida's surtax form because the vendor is in Miami*
 
-The order's own tax area is **ATLANTA, GA**, as the checks below show. The standard Business Central API does not return the tax area, so the harness could not see the field that settles the question. It had only the vendor's state.
+### It created the draft, and verified it
 
-### It created the draft before it asked
-
-It read the G/L entries for invoice 108234 (the description is "Order 106030"), copied the conventions of an existing credit memo, read the tax areas, and then created draft credit memo **1011** and its line.
-
-![](assets/images/deepseekharnessaccounting/sbx-run-08-gl-entries-and-tax-areas.webp)
-*G/L entries, accounts and tax areas, and then "Plan structure per…"*
-
-One step failed, and the harness recovered in the next. Verifying the line, it called the general lines tool with a parent id, and the tool answered "Unknown property PurchaseCreditMemo_id for operation List_PurchaseCreditMemoLines_PAG30084".
-
-![](assets/images/deepseekharnessaccounting/sbx-run-09-draft-1011-created-and-tool-error.webp)
-*Draft 1011 created. The red line is the tool error, and the next line is the harness's recovery*
-
-The cause is that Business Central exposes two list tools for credit memo lines. One lists all lines and has no parent id. The other, named `…OfPurchaseCreditMemo`, takes the parent document's id. The harness said "Verifying the line via the sub-entity tool", called the second one, and read the line back: net 256.80, tax 7.70, total 264.50. That matches its own arithmetic, and the figures came from Business Central, not from the harness's own sums.
+It computed the credit in code and then created draft credit memo **1011**. One call failed with an unknown-property error, because Business Central exposes two tools for credit memo lines and the first takes no parent id. It tried the second tool, created the line, and read it back: net 256.80, tax 7.70, total 264.50. It also checked that nothing posted: item 1928-S still had its one November ledger entry, and no general ledger entry carried document 1011.
 
 ### It asked four questions
 
-Then it wrote its plan to a file, `PLAN.md`, and asked me four questions in the web UI, one at a time, with numbered options and a box to type in.
+Then it wrote `plan.md` and asked me four questions in the web UI, one at a time. This time I took a screenshot of each question before I answered it.
 
-![](assets/images/deepseekharnessaccounting/sbx-run-10-question-1-tax-basis.webp)
-*Question 1 of 4: which tax basis should the credit use?*
+![](assets/images/deepseekharnessaccounting/r2-run-q1-credit-basis.webp)
+*Question 1 of 4: is 42.80 per lamp the agreed credit basis?*
+
+![](assets/images/deepseekharnessaccounting/r2-run-q2-tax-rate-anomaly.webp)
+*Question 2: the invoice charged 3 per cent tax. How should the credit treat tax?*
+
+![](assets/images/deepseekharnessaccounting/r2-run-q3-invoice-hold.webp)
+*Question 3: the hold policy needs the buyer's initials, which its tools cannot set*
+
+![](assets/images/deepseekharnessaccounting/r2-run-q4-physical-return.webp)
+*Question 4: are the six lamps already back with the vendor?*
 
 | # | The harness asked | I chose |
 |---|---|---|
-| 1 | The draft reverses exactly the tax charged on the invoice (3%, $7.70). Florida's published rate is higher, so the 3% does not match. Which basis? | Keep 3%, mirror the invoice |
-| 2 | The hold policy needs the buyer's initials. What are they? The invoice carries the purchaser code BC. | NH, mine. BC is a demo-data code, not the buyer |
-| 3 | Do you have the vendor's credit note number? | No, leave it blank |
-| 4 | What happens to the six lamps? This decides whether a return shipment is also needed, and "I want to avoid inventory being reduced twice." | Collected by the vendor |
+| 1 | The credit uses 42.80 per lamp, the price paid on the invoice, and not the selling price of 54.90. Is that the basis? | Yes, leave the draft as it is |
+| 2 | The invoice charged 3 per cent tax. Mirror it, raise it with the vendor first, or recalculate? | Mirror the invoice, as drafted |
+| 3 | The hold must be applied with the buyer's initials, and the tools cannot set it. Who does it? | Give the initials, and the harness notes them in the plan |
+| 4 | Are the six lamps already back, still held, or being collected? | Being collected, date not fixed |
 
-Question 4 was the best of them. If the credit memo reduces inventory and somebody also posts a return shipment, the six lamps leave stock twice. Nothing in the prompt asked for that warning.
+The harness recorded everything in `plan.md`: the two answers it needed to confirm, one answer still open (the initials), and the point that the credit memo alone does not move any stock. In the first run, a similar question about the lamps ended with a warning that a return shipment and a credit memo would reduce inventory twice. The same trap is in this run, and the plan lists it as work for a person once the lamps leave.
 
-### Its final report
+## Where it looked for help: Microsoft Learn
 
-![](assets/images/deepseekharnessaccounting/sbx-run-11-final-report.webp)
-*The end of the report: six things a person must do, and two defects worth chasing*
+The skill tells the harness to search Microsoft Learn first, and to follow the documented steps. These are the lookups from the second run, taken from its session log.
 
-The run took 44 steps. The model and tool time added up to about nine minutes, and the rest of the 17 minutes was the harness waiting for my answers. Its report gives document number 1011, status Draft, unposted. The credit is 6 × $42.80 = $256.80 plus $7.70 tax, $264.50, under the $500 approval limit. Invoice 108234 is still open at $661.26. It lists six things for a person:
+| Tool | What it asked for |
+|---|---|
+| Search | "Business Central create purchase credit memo return items to vendor from posted purchase invoice" |
+| Fetch | [Process purchase returns or cancellations](https://learn.microsoft.com/dynamics365/business-central/purchasing-how-process-purchase-returns-cancellations) |
+| Fetch | [Correct or cancel unpaid purchase invoices](https://learn.microsoft.com/dynamics365/business-central/purchasing-how-correct-cancel-unpaid-purchase-invoices) |
 
-1. Put invoice 108234 On Hold with initials NH, today, because the tools cannot reach the vendor ledger entry.
-2. Apply entries on credit memo 1011 to the invoice, which is not exposed by the tools.
-3. Set the original item entry for exact cost reversing, which is not a field on the API line.
-4. Leave the vendor credit memo number blank until the vendor's note arrives.
-5. Ship the six lamps back, and do not also post a return shipment.
-6. Post, in an open period. The harness posted nothing.
+It did not guess a page address. It searched with Business Central terms and no figures or names, and then fetched the pages that the search returned. The plan then gives, for each step, the page and the sentence it relied on. These are the ones that decided the plan:
 
-It also flagged two defects: PO 106030 is missing from the orders table, and invoice 108234 carries an invoice date of **2027-11-01**, a year after its posting date.
+1. **Correct and Cancel are out.** "If a posted purchase invoice isn't paid, you can use the Correct or Cancel actions on the posted purchase invoice to automatically reverse the transactions. These actions only work for unpaid invoices, and they don't support partial returns or cancellations." Six lamps out of 15 is partial, so the harness used a credit memo.
+2. **Use a credit memo, and edit it to the agreement.** "If you want to return items to your vendor or cancel services you purchased, you can create and post a purchase credit memo that specifies the requested change to the original purchase invoice." Then step 3: "Edit information on the lines according to the agreement, such as the number of items returned or the amount to be reimbursement."
+3. **Cost.** "To keep inventory valuation correct, you typically want to pick return items from inventory at the unit cost that they were purchased at, not at their current unit cost. This process is referred to as exact cost reversing." Setting this link needs the **Appl.-from Item Entry** field, which the API does not expose, so a person does it.
+4. **Apply the credit.** On the Apply Vendor Entries page, "select the line with the posted purchase document that you want to apply the purchase credit memo to, and then choose the Applies-to ID action." The harness cannot do this either.
+5. **Posting is the last step**, and the harness did not take it.
+
+### What the main page is, and did it help?
+
+"Process purchase returns or cancellations" is the Business Central documentation page for sending goods back to a vendor. It is a how-to page for a person using the web client, not a description of the API. It has four parts: a note on when **Correct** and **Cancel** can be used, a procedure for a credit memo made from a posted invoice, a procedure for a purchase return order, and a section on inventory costing.
+
+**Yes, it helped, in three specific ways:**
+
+- **It decided the route.** The note about Correct and Cancel is what rules out the quick option for a partial return. Without it, the harness would have been guessing which of three documents (a credit memo, a return order, or Correct) fits six lamps out of 15.
+- **It supplied the checklist.** The eight steps of the credit memo procedure gave the harness a list to compare its own plan against. That is how it knew which steps it could do (create the draft, edit the line to six) and which it could not (apply entries, post).
+- **It explained why cost matters.** The costing section is the reason the plan tells a person to set the original item entry. A model answering from memory might get the amounts right and miss that.
+
+**It also had limits, and I want to be fair about them:**
+
+- The page is written for the client, so the harness could follow a step it could not perform. Its tools have no apply action and no field for the original item entry. The page told the harness what to do, and my configuration decided what it could do.
+- It says nothing about the buyer's initials or an On Hold step. That came from the company's own rule, and the skill told the harness to compare the two. Learn says how Business Central works, and the company's rules say what the company does.
+- It has a typo in the purchase allowance section ("items that what you want"), and the harness had to read around it. It decided correctly that an allowance is for damaged goods you keep, and that six lamps going back is a return.
+- It did not change the amounts. The 256.80, the 7.70 and the 264.50 came from the ledger and from code. Learn changed the route and the list of things for a person to do.
+
+So I would not say the page made the harness cleverer. I would say it made the plan **checkable**: every step has a page and a sentence, so a person can open the page and see whether the harness read it correctly. That is the value I was hoping for, and I did not measure it against a run without Learn. Doing that comparison is worth a later post.
+
+The harness also followed the page's own checklist. After the plan, the skill says to list the steps of the documented procedure that it used, and to confirm that the plan has all of them. The plan has that table, and it marks which steps a tool did and which a person must do.
+
+Outside Microsoft Learn, it ran seven web searches. It could not read the Georgia rules through a plain page fetch, because the Secretary of State site needs JavaScript and the legal-text sites block automated clients. It went through a text-extraction service, and read the official pages of the Georgia Department of Revenue and the Secretary of State. Those gave it:
+
+- **O.C.G.A. § 48-8-58:** no credit to the dealer "unless the taxes collected have been returned by the dealer to the purchaser". That is why the 7.70 of tax is in the credit.
+- **Ga. Comp. R. & Regs. 560-12-1-.25:** a return within 90 days is a deduction on the dealer's Schedule of Exempt Sales, and the dealer keeps records for three years.
+- **The Department of Revenue's return tips:** the code for the Atlanta part of Fulton County is 060A.
+- **US GAAP:** ASC 330-10-35-1B and 35-2, as amended by ASU 2015-11, read from a public reprint. It flagged that the FASB Codification itself is paywalled, and that a qualified accountant must confirm recognition and presentation.
+
+:::under-the-hood How it read pages it could not fetch
+The harness has no browser, only a text fetch. When the Georgia rules page returned an empty shell, it tried the mirror sites, found them blocked, and then used a reader service that renders the page first. It then said, in its plan, which texts it had read from official pages and which from a mirror. That is the behaviour I want: it did not quote a statute it had not read.
+:::
 
 ## Checking it against Business Central
 
-I opened Business Central and checked each claim.
+I opened Business Central and checked draft 1011.
 
-**The amounts are right.** Draft credit memo 1011 is Open, not posted. Its subtotal is 256.80, the tax is 7.70 and the total is 264.50. The line is "Return 6 of 15 AMSTERDAM Lamp…" and names the purchase order and the receipt. The Vendor Cr. Memo No. is empty, and Business Central marks that field as required, so the draft cannot be posted by accident.
+![](assets/images/deepseekharnessaccounting/r2-check-01-credit-memo-1011-header.webp)
+*Draft 1011: vendor Graphic Design Institute, Vendor Cr. Memo No. TEST-DN-4472, the Post action available but not used*
 
-![](assets/images/deepseekharnessaccounting/sbx-check-03-draft-1011-totals.webp)
-*Draft 1011: subtotal 256.80, tax 7.70, total 264.50*
+![](assets/images/deepseekharnessaccounting/r2-check-03-credit-memo-1011-line-and-totals.webp)
+*The line for item 1928-S, with the subtotal 256.80, tax 7.70 and total 264.50*
 
-**The jurisdiction is wrong.** The report says the jurisdiction is Florida and that "the tax area is MIAMI, FL". Posted invoice 108234 has Tax Area Code **ATLANTA, GA**, and so does the draft the harness created.
+![](assets/images/deepseekharnessaccounting/r2-check-02-credit-memo-1011-tax-area-totals.webp)
+*Tax Area Code ATLANTA, GA, the same as the posted invoice*
 
-![](assets/images/deepseekharnessaccounting/sbx-check-01-invoice-tax-area-atlanta.webp)
-*Posted invoice 108234: Tax Liable is on and the Tax Area Code is ATLANTA, GA*
+**The amounts are right.** The credit is 6 × 42.80 = 256.80, plus tax 7.70, total 264.50, under the $500 limit, so the controller's approval is not triggered. The line description names the purchase order, the receipt and the delivery note. The header says Open in the client and Draft through the API, and either way it is unposted.
 
-![](assets/images/deepseekharnessaccounting/sbx-check-04-draft-1011-tax-area.webp)
-*Draft 1011 carries the same tax area, ATLANTA, GA*
+**The jurisdiction is right.** The tax area is ATLANTA, GA on the draft and on the posted invoice. The first run chose Florida, and built a surtax argument on it. That is the difference a single fact made in the scenario.
 
-The credit itself is still correct, because it mirrors the invoice and reverses the tax that was charged. But the Florida statute, the Miami-Dade surtax and the "under-collected" remark in the report all rest on the vendor's address, and that was not the right fact. Whether the tax on a returned purchase is credited is a question about the buyer's jurisdiction, which here is Georgia.
+**The "tax anomaly" has an explanation that the harness could not see.** The harness noticed that the invoice charged 3 per cent although the same item is priced at 6 per cent on the 2025 and May 2026 lines, and Atlanta's combined rate is higher. It asked me, and it was right to ask. When I looked at the tax details in the Sandbox, I found a second set of rates effective from 3 November 2026, and a document dated after that date takes 3 per cent. So the Sandbox is behaving as it was set up, and the question a real company would put to the vendor is whether their tax set-up is right. The harness did the useful thing: it reported the inconsistency, made the credit mirror the invoice, and did not decide.
 
-**The 2027 invoice date is a real defect, and it is mine.** Invoice 108234 has a posting date of 13 November 2026 and an invoice date of 1 November 2027. When I seeded the order I changed the posting, order and due dates, but not the document date, which took the Sandbox work date. The harness found it from the data, and it was right. I will not hide this, because it shows the harness checking something I did not ask it to check.
+**The invoice date is right.** In the first run, the invoice date was a year after its posting date, because of my seeding. In the second run, I set the document date, so the harness had nothing to complain about.
 
 ## What a person does next
 
-The harness never posts. Its output is a plan with sources and one unposted draft. I have not posted anything, and I have not put the invoice on hold, because the next step is not mine to take today: the vendor has not issued a credit note. A person would, in order:
+The harness never posts. Its output is a plan with sources and one unposted draft. I have not posted anything. A person would, in order:
 
-1. Wait for the vendor's credit note, then enter its number on draft 1011.
-2. Put invoice 108234 On Hold with the buyer's initials, so that a payment run does not pay the disputed amount.
-3. Apply the credit to the invoice, so that the open balance falls from $661.26 to $396.76.
-4. Post, with the real date, after the lamps have left and the vendor's figures agree with the draft.
+1. Put invoice 108234 On Hold with the buyer's initials, today, so that a payment run does not pay the disputed amount. The tools cannot set that field.
+2. Wait for the vendor's credit note, then replace the delivery note placeholder in Vendor Cr. Memo No.
+3. Open the credit memo, apply it to invoice 108234 for 264.50, so the open balance falls from 661.26 to 396.76, and set the original item entry for exact cost reversing.
+4. Record the physical return when the vendor collects the lamps, without also posting a credit memo that reduces the stock a second time.
+5. Raise the 3 per cent rate with the vendor.
+6. Post, with the real date, after the controller and the vendor's figures agree with the draft.
 
 :::no-dumb-questions
-**Q: Why did it say Florida?**
+**Q: Why did the first run say Florida and the second run say Georgia?**
 
-A: Because it had no better fact. The vendor card says Miami, FL and the ship-to state is empty. The field that settles it, the order's tax area, is on the order card but not in the API. A harness can only reason from what its tools show it. It was right to ask, and it did ask. I chose the option that kept the credit equal to the invoice, which was the right amount, and the report still named Florida.
+A: Because the second scenario told it the order's tax area. The standard Business Central API does not return the tax area, and a harness can only reason from what its tools show it. The vendor card says Miami, Florida and the ship-to state is empty. A person would know the order's tax area and put it in the case. So would a company that wrote its own tool.
 
-**Q: Is it a problem that it created the draft before asking?**
+**Q: Is it a problem that it created the draft before it asked?**
 
-A: Not here, because a draft can be deleted and nothing posts. If the configuration allowed posting it would be a serious problem. That is why I kept bound actions off.
+A: Not here, because a draft can be deleted and nothing posts. If the configuration allowed posting, it would be a serious problem. That is why I kept bound actions off.
 
-**Q: Where did the draft's tax area come from?**
+**Q: The first run seemed to make a bigger mistake. Did the model change?**
 
-A: I do not know. The harness did not report setting it, and the draft shows ATLANTA, GA, the same as the invoice. The error was in the harness's reasoning about which jurisdiction applies, not in the document.
+A: No. The model was the same. The harness, the prompt and the skill were the same. Only the scenario and the seeded data changed.
+
+**Q: Why did you use two runs?**
+
+A: The first run found two things that I could fix: my seeding slip, and a fact missing from the scenario. A second run on a fresh Sandbox shows whether the fixes work. It is also two data points and not a benchmark, so I do not claim more than that.
 :::
 
 ## What this post told you
@@ -232,21 +285,20 @@ A: I do not know. The harness did not report setting it, and the draft shows ATL
 :::bullet-points What to remember
 - A harness is the software around a model: it holds the conversation, runs the tools and decides which requests run. The same model in a plain chat cannot read your ledger.
 - Start from the one number every role shares. The harness traced purchase order 106030 to receipt 107240 and invoice 108234, even though the order was no longer in the order list.
+- Microsoft Learn is part of the method. The harness searched with Business Central terms, fetched the pages, and gave the sentence it relied on for each step.
 - A configuration limits what the harness can touch. Mine allowed reading and drafting credit memos, and nothing else. It created one unposted draft, and that is where it stopped.
-- Check its work against the system. The amounts, the draft and a data defect were right. The jurisdiction was wrong, because the field that settles it is not in the API.
-- Its questions are part of the result. It asked about the tax basis, the hold, the vendor's credit note and the lamps, and one of them protected the inventory from a double reduction.
+- Check its work against the system. The amounts and the draft were right in both runs. The jurisdiction was wrong in the first run, and right in the second, because I gave the scenario one fact that a person would know.
+- Its questions are part of the result. It asked about the credit basis, the tax rate, the hold and the lamps, and each one is a decision that belongs to a person.
 - A person still owns the vendor's credit note, the hold, the application of the credit, and the posting.
 :::
-
-## What comes next
-
-I will run this again, and I will change three things. I will set the document date when I seed the order, so the invoice date is not a year ahead. I will state in the scenario that the order's tax area is ATLANTA, GA, because a person would know it, and because the API cannot show it, and I will see whether the harness then uses Georgia. And I will keep the run clean from the start, with a screenshot at every step, including the three questions that I did not capture this time.
 
 ## References
 
 - [LLM Benchmarking](/posts/llmbenchmark/): the benchmark, and why the harness matters
-- [Connecting DeepSeek Harness to Business Central](/posts/deepseekharnessbusinesscentral/): the setup behind this run
+- [Connecting DeepSeek Harness to Business Central](/posts/deepseekharnessbusinesscentral/): the setup behind these runs
 - [Blog AI Assistant](/posts/localagent2/): a harness written as custom code
 - [I think “agent” may finally have a widely enough agreed upon definition to be useful jargon now](https://simonwillison.net/2025/Sep/18/agents/): Simon Willison, 18 September 2025
 - [DeepSeek Harness](/posts/deepseekharness/) (part 1), [with Ollama](/posts/deepseekharnessollama/) (part 2) and [with local subagents](/posts/deepseekharnesshybrid/) (part 3)
-- [Handle vendor payment disputes](https://learn.microsoft.com/en-us/dynamics365/business-central/payables-how-handling-payment-disputes) and [Process returns or cancellations](https://learn.microsoft.com/en-us/dynamics365/business-central/purchasing-how-process-purchase-returns-cancellations): Microsoft Learn
+- [Process purchase returns or cancellations](https://learn.microsoft.com/dynamics365/business-central/purchasing-how-process-purchase-returns-cancellations) and [Correct or cancel unpaid purchase invoices](https://learn.microsoft.com/dynamics365/business-central/purchasing-how-correct-cancel-unpaid-purchase-invoices): Microsoft Learn
+- [O.C.G.A. § 48-8-58](https://codes.findlaw.com/ga/title-48-revenue-and-taxation/ga-code-sect-48-8-58/), [Ga. Comp. R. & Regs. 560-12-1-.25](https://rules.sos.ga.gov/gac/560-12-1-.25) and the [Georgia Department of Revenue ST-3 tips](https://dor.georgia.gov/tips-completing-sales-and-use-tax-return)
+- [ASU 2015-11, Inventory (Topic 330)](https://viewpoint.pwc.com/dt/us/en/fasb_financial_accou/asus_fulltext/2015/asu_201511inventory_/asu_201511inventory__US/asu_201511inventory__US.html): the public reprint of the amended paragraphs
