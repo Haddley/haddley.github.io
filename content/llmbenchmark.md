@@ -1,6 +1,6 @@
 ---
 title: "LLM Benchmarking"
-description: "A from-scratch version of my accounting benchmark: 30 questions that know their own answers, a checker instead of a judge, and six models run on a MacBook Air and a Mac mini"
+description: "A from-scratch version of my accounting benchmark: 30 questions that know their own answers, a checker instead of a judge, and six models run through Ollama"
 date: "2026-11-12"
 categories: ["AI", "Python"]
 image: "/assets/images/llmbenchmark/poster.svg"
@@ -13,7 +13,7 @@ slug: "llmbenchmark"
 
 I already have a benchmarking tool for accounting questions. [llm-accounting-benchmark](https://github.com/Haddley/llm-accounting-benchmark) is a Streamlit app. It holds 285 prompts, sends them to local and cloud models, asks a second model to mark every answer against a rubric (accuracy, completeness and clarity, ten points each), and keeps the results in SQLite. It works. It is also a lot of machinery, and the idea gets lost in it.
 
-So I started again from nothing, with one rule: build the smallest benchmark that still teaches me something true. This post walks through it. It is one folder with a handful of small files, no database and no second model to do the marking. I ran it for real on six models: five on my MacBook Air, and the Qwen3.5 9B that powers this blog's assistant on my Mac mini.
+So I started again from nothing, with one rule: build the smallest benchmark that still teaches me something true. This post walks through it. It is one folder with a handful of small files, no database and no second model to do the marking. I ran it for real on six models.
 
 :::brain-power
 Before you read on: I am going to compare language models on bookkeeping questions. Write down three things I could measure. Then write down one thing that would make the comparison unfair.
@@ -125,18 +125,18 @@ The settings are chosen to make the run repeatable. The temperature is 0 and the
 
 ## The runs
 
-I ran the same 30 questions on six models. Five of them ran on my MacBook Air (Apple M4, 32 GB). The sixth, Qwen3.5 9B, ran on the Mac mini (Apple M4, 16 GB) that serves this blog's assistant. Every model is the build Ollama downloads by default, which is a compressed (quantised) copy of the original. The table shows which compression each one uses, because they are not all the same.
+I ran the same 30 questions on six models. Every model is the build Ollama downloads by default, which is a compressed (quantised) copy of the original. The table shows which compression each one uses, because they are not all the same.
 
-| Model | Parameters | Compression | Machine | Time for the 30 questions | Speed (tokens a second) |
-|---|---|---|---|---|---|
-| Gemma 4 26B | 25.8B (mixture of experts) | Q4_K_M | MacBook Air | 5.3 minutes | 17.5 |
-| Qwen3.5 9B | 9.7B | nvfp4 | Mac mini | 4.2 minutes | 34.6 |
-| Gemma 4 12B | 11.9B | Q4_K_M | MacBook Air | 11.1 minutes | 9.3 |
-| Qwen3.5 2B | 2.3B | Q8_0 | MacBook Air | 3.3 minutes | 38.0 |
-| Qwen2.5 14B | 14.8B | Q4_K_M | MacBook Air | 13.0 minutes | 7.1 |
-| Llama 3.1 8B | 8.0B | Q4_K_M | MacBook Air | 4.3 minutes | 18.6 |
+| Model | Parameters | Compression | Time for the 30 questions | Speed (tokens a second) |
+|---|---|---|---|---|
+| Gemma 4 26B | 25.8B (mixture of experts) | Q4_K_M | 5.3 minutes | 17.5 |
+| Qwen3.5 9B | 9.7B | nvfp4 | 4.2 minutes | 34.6 |
+| Gemma 4 12B | 11.9B | Q4_K_M | 11.1 minutes | 9.3 |
+| Qwen3.5 2B | 2.3B | Q8_0 | 3.3 minutes | 38.0 |
+| Qwen2.5 14B | 14.8B | Q4_K_M | 13.0 minutes | 7.1 |
+| Llama 3.1 8B | 8.0B | Q4_K_M | 4.3 minutes | 18.6 |
 
-The times add up the seconds each answer took, without the one-off wait while the model loads into memory. The MacBook Air ran Ollama 0.40.16 and the Mac mini ran 0.40.14. The two machines have the same chip but different amounts of memory, so I treat speeds across them as a rough guide only.
+The times add up the seconds each answer took, without the one-off wait while the model loads into memory.
 
 ## The scoreboard
 
@@ -145,7 +145,7 @@ All six models answered the same 30 questions, with the working shown. The bars 
 ![](assets/images/llmbenchmark/scoreboard.svg)
 *Share of the 30 questions answered correctly. The numbers in brackets are right answers out of 30.*
 
-Gemma 4 26B got 29 of 30 right. Qwen3.5 9B on the Mac mini got 27, Gemma 4 12B got 26, Qwen3.5 2B got 23, Qwen2.5 14B got 21, and Llama 3.1 8B got 15, which is half.
+Gemma 4 26B got 29 of 30 right. Qwen3.5 9B got 27, Gemma 4 12B got 26, Qwen3.5 2B got 23, Qwen2.5 14B got 21, and Llama 3.1 8B got 15, which is half.
 
 Look at the middle of the table. Qwen2.5 14B is more than six times the size of Qwen3.5 2B, and it scored lower: 21 against 23. A bigger number on the label is not a better model.
 
@@ -216,9 +216,9 @@ Across all six models, level 1 had 35 of 36 answers right, level 2 had 30, level
 Accuracy is only one axis. Here is how quickly each model wrote its answers, against how many it got right.
 
 ![](assets/images/llmbenchmark/speed.svg)
-*Each dot is a model. Further right is faster (tokens written per second); higher is more accurate. The hollow dot ran on the Mac mini.*
+*Each dot is a model. Further right is faster (tokens written per second); higher is more accurate.*
 
-The best spot is the top right, and the Qwen3.5 9B on the Mac mini is nearest to it: 27 right at about 35 tokens a second. Qwen3.5 2B is the fastest at 38.0 tokens a second, and still got 23 right. Gemma 4 12B and Qwen2.5 14B are slow, at 9.3 and 7.1 tokens a second: an answer took them 22.3 and 26.0 seconds on average, against 6.6 for the 2B.
+The best spot is the top right, and the Qwen3.5 9B is nearest to it: 27 right at about 35 tokens a second. Qwen3.5 2B is the fastest at 38.0 tokens a second, and still got 23 right. Gemma 4 12B and Qwen2.5 14B are slow, at 9.3 and 7.1 tokens a second: an answer took them 22.3 and 26.0 seconds on average, against 6.6 for the 2B.
 
 The surprise is Gemma 4 26B. It is more than twice the size of the 12B, yet it wrote at 17.5 tokens a second, nearly twice as fast, and answered in 10.7 seconds on average instead of 22.3.
 
@@ -226,7 +226,7 @@ The surprise is Gemma 4 26B. It is more than twice the size of the 12B, yet it w
 Ollama can show a model's metadata. Gemma 4 26B lists 128 experts, with 8 used for each token. That is a mixture-of-experts design: the model holds a lot of knowledge, but for each word it writes, only a few of its experts do any work. Its speed looks more like a small model's than a 26-billion-parameter one's, while its knowledge comes from the whole. The Gemma 4 12B has no experts listed, so every part of it works on every token. I checked the metadata, not the design papers, so treat this as the most likely reason rather than a proven one.
 :::
 
-A caution on this picture. The Mac mini result comes from a different machine, with a different amount of memory and a different compression (nvfp4 against the Q4_K_M that most of the others use), so its position on the speed axis is a guide, not a measurement I would compare to the decimal.
+A caution on this picture. The Qwen3.5 9B uses a different compression (nvfp4 against the Q4_K_M that most of the others use), so its position on the speed axis is a guide, not a measurement I would compare to the decimal.
 
 ## The same model, told two ways
 
@@ -334,7 +334,6 @@ I have not built a harness for these questions, so the table is reasoning from w
 | Tests for the sums and the checker | [test_questions.py](/assets/files/llmbenchmark/test_questions.py) |
 | The runs behind this post | [run_all.sh](/assets/files/llmbenchmark/run_all.sh) |
 | Every answer from every run | [results.json](/assets/files/llmbenchmark/results.json) |
-| Which machine ran which model | [machines.json](/assets/files/llmbenchmark/machines.json) |
 
 ## References
 
