@@ -133,18 +133,14 @@ With the row pointed at "Close", I asked the harness the same question again: li
 
 For planning, the harness only reads. I wanted it to create the draft document itself. My first attempt took two more configurations in the Production demo company, each a copy of the one before. I did not end up using them: I moved the vendor dispute to a fresh Sandbox, and rebuilt a single configuration there (the next section). I keep this part because the lessons carried over.
 
-- **"Close Plus".** The ten objects of "Close" plus five more, all with Allow Read only: G/L accounts, G/L entries, purchase invoice lines, purchase receipt lines and accounting periods. It serves 17 list tools. It exists because the other cases in my plan need ledger entries, and I found that the standard Business Central APIs have no bank account ledger entries or vendor ledger entries at all.
-- **"Close Drafts".** A copy of "Close Plus" with **Allow Create** and **Allow Modify** ticked on exactly two objects, Purchase Credit Memos and Purchase Credit Memo Lines, which I added because a draft credit memo needs lines. Delete and Bound Actions stay off. I checked the result from outside: the server offers 25 tools, which are the 19 list tools plus six create and modify tools for those two objects, and nothing else.
-
-![](assets/images/deepseekharnessbusinesscentral/bc-close-drafts-config.webp)
-*The "Close Drafts" configuration. Create and Modify are ticked on the two credit memo objects only, and every other row is read-only*
+In the Production demo company I built two read configurations (one with extra ledger objects, because the standard APIs have no bank or vendor ledger entries) and then a copy with **Allow Create** and **Allow Modify** ticked on Purchase Credit Memos and their lines only, with Delete and Bound Actions off. Checked from outside, that copy offered just the list tools plus create and modify for those two objects. The Sandbox configuration below does the same job, so I do not describe the Production ones further.
 
 :::watch-it The write switch is a person's decision
 Create and Modify stay greyed out until **Unblock Edit Tools** is switched on for the configuration. That switch decides whether a configuration may write to the company at all, so it is the one setting I leave to a person. I built the configuration and a person switched it on. I would keep it that way, because the party that asks for write access should not also be the one to unlock it.
 :::
 
 :::watch-it Posting is a bound action, and it stays off
-As I understand the setup page, posting a document is a bound action in Business Central, and "Close Drafts" leaves Bound Actions off. In the Sandbox runs the harness created one credit memo and had no way to post it. Posting stayed with a person.
+As I understand the setup page, posting a document is a bound action in Business Central, and the drafts configuration leaves Bound Actions off. In the Sandbox runs the harness created one credit memo and had no way to post it. Posting stayed with a person.
 :::
 
 Three details are worth knowing before you copy this:
