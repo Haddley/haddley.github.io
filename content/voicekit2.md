@@ -6,7 +6,7 @@ date: "2025-10-16"
 categories: ["Python","AI","IOT"]
 tags: "raspberry-pi, google-assistant-api, voice"
 slug: "voicekit2"
-image: "/assets/images/voicekit2/raspberry-pi-logo.svg"
+image: "/assets/images/voicekit2/poster.svg"
 ---
 
 ## Setup Context

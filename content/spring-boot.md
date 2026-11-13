@@ -6,7 +6,7 @@ date: "2021-04-06"
 categories: ["Java"]
 tags: "spring-boot, rest-api, web"
 slug: "spring-boot"
-image: "/assets/images/spring-boot/spring-framework-logo-70-no.svg"
+image: "/assets/images/spring-boot/poster.svg"
 ---
 
 I used Spring Tool Suite (an Eclipse-based IDE) and Maven (a Java build and dependency management tool) to create a REST API with Spring Boot.

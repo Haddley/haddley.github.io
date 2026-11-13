@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A microphone feeding a recording waveform: the Raspberry Pi voice kit recorder</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes gy{0%{transform:scaleY(0)}45%,100%{transform:scaleY(1)}}
+.f{animation:fade 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.g{transform-box:fill-box;transform-origin:bottom;animation:gy 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/><rect x="30" y="34" width="12" height="20" rx="6" fill="#e0f2fe"/><path d="M26 48 a10 10 0 0 0 20 0 M36 58 V64" stroke="#e0f2fe" stroke-width="2.5" fill="none" stroke-linecap="round"/><rect class="g" style="animation-delay:0.0s" x="62" y="65.0" width="4" height="10" rx="2" fill="#38bdf8"/><rect class="g" style="animation-delay:0.3s" x="69" y="59.0" width="4" height="22" rx="2" fill="#38bdf8"/><rect class="g" style="animation-delay:0.6s" x="76" y="53.0" width="4" height="34" rx="2" fill="#38bdf8"/><rect class="g" style="animation-delay:0.8999999999999999s" x="83" y="61.0" width="4" height="18" rx="2" fill="#38bdf8"/><rect class="g" style="animation-delay:1.2s" x="90" y="56.0" width="4" height="28" rx="2" fill="#38bdf8"/><rect class="g" style="animation-delay:1.5s" x="97" y="64.0" width="4" height="12" rx="2" fill="#38bdf8"/><rect x="24" y="92" width="72" height="6" rx="3" fill="#1e3a5a"/><rect class="g" style="animation-delay:1.8s" x="24" y="92" width="48" height="6" rx="3" fill="#22c55e"/></svg>

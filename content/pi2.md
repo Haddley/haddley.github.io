@@ -5,7 +5,7 @@ date: "2023-07-22"
 categories: ["IOT"]
 tags: "raspberry-pi, gpio, python, electronics"
 slug: "pi2"
-image: "/assets/images/pi2/raspberry-pi-logo.svg"
+image: "/assets/images/pi2/poster.svg"
 ---
 
 

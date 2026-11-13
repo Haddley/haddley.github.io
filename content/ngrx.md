@@ -5,7 +5,7 @@ date: "2022-11-27"
 categories: ["Angular"]
 tags: "ngrx, state-management, redux"
 slug: "ngrx"
-image: "/assets/images/ngrx/ngrx.svg"
+image: "/assets/images/ngrx/poster.svg"
 ---
 
 

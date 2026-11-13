@@ -6,7 +6,7 @@ date: "2023-10-31"
 categories: ["Java"]
 tags: "spring-boot, github, ci-cd"
 slug: "spring-boot-6"
-image: "/assets/images/spring-boot-6/spring-framework-logo-70-no.svg"
+image: "/assets/images/spring-boot-6/poster.svg"
 ---
 
 

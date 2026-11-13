@@ -6,7 +6,7 @@ date: "2025-10-11"
 categories: ["Python","AI","IOT"]
 tags: "raspberry-pi, voice-assistant, google-assistant"
 slug: "voicekit"
-image: "/assets/images/voicekit/raspberry-pi-logo.svg"
+image: "/assets/images/voicekit/poster.svg"
 ---
 
 

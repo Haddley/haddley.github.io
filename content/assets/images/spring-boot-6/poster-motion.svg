@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A padlock opening above user and admin role badges: signing in with GitHub OAuth2 and roles</title><style>@keyframes fade{0%{opacity:0}35%,100%{opacity:1}}
+@keyframes pop{0%{opacity:0;transform:scale(.3)}35%,100%{opacity:1;transform:scale(1)}}
+@keyframes dr{0%{stroke-dashoffset:1}60%,100%{stroke-dashoffset:0}}
+@keyframes gy{0%{transform:scaleY(0)}45%,100%{transform:scaleY(1)}}
+.f{animation:fade 3.5s ease-out both}
+.p{transform-box:fill-box;transform-origin:center;animation:pop 3.5s ease-out both}
+.d{stroke-dasharray:1;animation:dr 3.5s ease-out both}
+.g{transform-box:fill-box;transform-origin:bottom;animation:gy 3.5s ease-out both}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}@keyframes lock{0%,10%{transform:translateY(8px)}45%,100%{transform:translateY(0)}}.lock{animation:lock 3.5s ease-in-out both}</style><rect width="120" height="120" rx="22" fill="#0f1b2d"/><g class="lock"><path d="M44 44 V32 a16 16 0 0 1 32 0 V44" stroke="#e0f2fe" stroke-width="5" fill="none"/></g><rect x="36" y="52" width="48" height="36" rx="7" fill="#fbbf24"/><circle cx="60" cy="68" r="5" fill="#0f1b2d"/><rect x="58" y="70" width="4" height="10" rx="2" fill="#0f1b2d"/><g class="p" style="animation-delay:1.4s"><rect x="16" y="94" width="38" height="12" rx="6" fill="#38bdf8"/><rect x="66" y="94" width="38" height="12" rx="6" fill="#a78bfa"/></g></svg>

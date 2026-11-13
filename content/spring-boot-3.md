@@ -6,7 +6,7 @@ date: "2023-10-28"
 categories: ["Java"]
 tags: "spring-boot, spring-data-jpa, database"
 slug: "spring-boot-3"
-image: "/assets/images/spring-boot-3/spring-framework-logo-70-no.svg"
+image: "/assets/images/spring-boot-3/poster.svg"
 ---
 
 

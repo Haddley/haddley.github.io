@@ -4,7 +4,7 @@ part: 7
 description: "Hosting a Spring Boot application on Azure Spring Apps, from creating the service to scaling it, and the news that the service is being retired"
 date: "2025-09-20"
 categories: ["Java"]
-image: "/assets/images/spring-boot-6/spring-framework-logo-70-no.svg"
+image: "/assets/images/spring-boot-7/poster.svg"
 tags: "azure, spring-boot, azure-spring-apps, tomcat, maven"
 hidden: false
 slug: "spring-boot-7"

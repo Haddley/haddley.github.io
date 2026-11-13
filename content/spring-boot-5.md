@@ -6,7 +6,7 @@ date: "2023-10-30"
 categories: ["Java"]
 tags: "spring-boot, graphql, spring-for-graphql"
 slug: "spring-boot-5"
-image: "/assets/images/spring-boot-5/spring-framework-logo-70-no.svg"
+image: "/assets/images/spring-boot-5/poster.svg"
 ---
 
 

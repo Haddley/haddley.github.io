@@ -6,7 +6,7 @@ date: "2023-10-26"
 categories: ["Java", "Azure"]
 tags: "spring-boot, spring-data-jpa, jpa"
 slug: "spring-boot-2"
-image: "/assets/images/spring-boot-2/spring-framework-logo-70-no.svg"
+image: "/assets/images/spring-boot-2/poster.svg"
 ---
 
 

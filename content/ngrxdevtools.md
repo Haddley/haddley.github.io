@@ -5,7 +5,7 @@ date: "2023-01-25"
 categories: ["Angular"]
 tags: "ngrx, devtools, state-management"
 slug: "ngrxdevtools"
-image: "/assets/images/ngrxdevtools/ngrx.svg"
+image: "/assets/images/ngrxdevtools/poster.svg"
 ---
 
 

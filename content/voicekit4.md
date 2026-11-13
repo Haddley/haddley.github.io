@@ -6,7 +6,7 @@ date: "2025-12-14"
 categories: ["Python","AI","IOT"]
 tags: "raspberry-pi, google-assistant, autostart"
 slug: "voicekit4"
-image: "/assets/images/voicekit4/raspberry-pi-logo.svg"
+image: "/assets/images/voicekit4/poster.svg"
 ---
 
 ## Automatically Boot your Raspberry Pi 3 into Google Voice Assistant
