@@ -27,7 +27,7 @@ A model writes three paragraphs of careful reasoning and then names the wrong op
 
 ## Marker 1: the checker
 
-The checker reads the letter the model chose and compares it with the reference. Models do not make that easy. They discuss every option and then end with "**Correct Option: B**", and some bold a word that happens to start with a letter. My first reader had both mistakes, and I found them only by reading real answers by hand. The reader now takes the last clear statement of a choice, ignores "Option D is incorrect", ignores a bold letter inside a table row or a bold "B:" that labels an option under discussion, and has eleven small tests, each one a layout that fooled an earlier version.
+The checker reads the letter the model chose and compares it with the reference. That would be easy if the prompt asked for a fixed last line, such as "ANSWER: B", the way the 30 questions in part 1 did. These 285 prompts do not ask for one, so every model chose its own way to name a letter. Some discuss every option and then end with "**Correct Option: B**", and some bold a word that happens to start with a letter. My first reader had both mistakes, and I found them only by reading real answers by hand. The reader now takes the last clear statement of a choice, ignores "Option D is incorrect", ignores a bold letter inside a table row or a bold "B:" that labels an option under discussion, and has eleven small tests, each one a layout that fooled an earlier version. I kept the original prompts so that the results stay comparable with the old benchmark, and that choice is what made the reader hard. Asking for a last line would have made it one line of code.
 
 When no clear letter appears, I count the answer as not right. That is a real result: a model that never commits to an option cannot be marked right.
 
@@ -122,23 +122,23 @@ Both markers make mistakes, and so can the answer key. That is a reason to read 
 
 ## Can I trust the judge?
 
-I tested it directly, twice. I took answers that the 9B had right, changed one number in each (the first figure after an equals sign, or a plus sign flipped) and asked the judge to review the original and the damaged copy. I ran the test without the key first, with 24 answers, and again with the key, with 23.
+I tested it directly. I took 23 answers that the 9B had right, changed one number in each (the first figure after an equals sign, or a plus sign flipped) and asked the judge, with the key, to review the damaged copy as well as the original.
 
-| | Without the key | With the key |
-|---|---|---|
-| Originals rated SOUND or SLIP | 20 of 24 | 23 of 23 |
-| Damage caught (damaged copy SLIP or FLAWED) | 14 of 20 | 11 of 23 |
-| Damaged copy rated FLAWED | 4 of 24 | 1 of 23 |
-| Mean fall in Accuracy | 1.9 | 1.2 |
+| | With the key |
+|---|---|
+| Originals rated SOUND or SLIP | 23 of 23 |
+| Damage caught (damaged copy SLIP or FLAWED) | 11 of 23 |
+| Damaged copy rated FLAWED | 1 of 23 |
+| Mean fall in Accuracy | 1.2 points |
 
-Holding the key made the judge more generous, and it caught the damage in 48% of the copies, against 70% without it. A damaged answer still ends on the right letter, so the key tells the judge that the answer is right. Ten of the 11 catches were a SLIP, a small error, and only one was FLAWED.
+The judge caught the damage in 48% of the copies, and missed the other 12. A damaged answer still ends on the right letter, so the key tells the judge that the answer is right. Ten of the 11 catches were a SLIP, a small error, and only one was FLAWED. In 12 of the 23 copies the damaged answer was still rated SOUND, and in 19 the Accuracy score stayed at 9 or 10.
 
-So the key makes the judge better at the question "is this the right answer?" and worse at "is every step sound?". I now think a judge needs both views: one run with the key to check the conclusion, and one run without it to read the working.
+So the judge is a good check on the conclusion and a weak check on the arithmetic. I use its verdicts to find lucky guesses and fluent wrong answers, and I do not trust it to find a single wrong number. That test used 23 answers from one model and one kind of damage, so the 48% is a rough figure.
 
 :::no-dumb-questions
 **Q: Why give the judge the right answer? Is it not then a second checker?**
 
-A: Partly. Its Accuracy score tracks the checker, and I accept that. What it adds is Completeness and Clarity, a verdict on the working, and a catch for the lucky guesses. Without the key, a judge has to solve the problem itself, and a small model judging accounting will sometimes be wrong about the answer.
+A: Partly. Its Accuracy score tracks the checker, and I accept that. What it adds is Completeness and Clarity, a verdict on the working, and a catch for the lucky guesses. Without the key, a judge would have to solve the problem itself, and a small model judging accounting will sometimes be wrong about the answer.
 
 **Q: Why not use the checker alone, since 282 of 285 prompts have a key?**
 
@@ -157,20 +157,21 @@ Three prompts cannot rank six models, and I do not rank them. They show that mos
 
 - **The checker and the judge measure different things,** and a single score would hide the difference. Every model writes clear explanations (Clarity 8.0 to 9.5) and none reaches 46% right.
 - **The checker is only as good as its reader and its key.** I fixed the reader several times after reading real answers, and I found a probable error in the key.
-- **A judge with the key is a good check on the conclusion and a weaker check on the steps.** It caught a planted number error in 48% of the copies, against 70% without the key.
+- **The judge checks the conclusion better than the steps.** It caught a planted number error in 48% of the copies.
 - **My own settings can distort the result.** A 500-token cap turned working answers into "no letter" for the two Qwen3.5 models.
 
 :::bullet-points What to remember
 - 282 of the 285 prompts are multiple choice, so a letter checker marks almost all of them.
+- Ask the model for a fixed last line, such as "ANSWER: B". Without one, the checker has to guess how each model says it.
 - Count an answer with no clear letter as not right, and say how many there were and why.
-- Give the judge the key to check the conclusion, and run it without the key to test the working. Plant faults to see what each one catches.
+- Give the judge the key, and plant faults to see what it catches. Mine missed about half of the planted number errors.
 - Read a sample of the disagreements by hand. Both markers make mistakes, and so can the answer key.
 - Set the answer limit with care. A cap that cuts the model off scores as a wrong answer.
 :::
 
 ## What comes next
 
-I plan to rerun the six models with a larger answer cap, so that the "no letter" column measures commitment and not my limit. I also plan to run the judge a second time without the key on the same answers, so that I can put the two verdicts side by side. The Gemma 4 26B is both a contestant and the judge, and a different judge, such as a model from another family, would settle the family bias question.
+I plan to rerun the six models with a larger answer cap, so that the "no letter" column measures commitment and not my limit. The Gemma 4 26B is both a contestant and the judge, and a different judge, such as a model from another family, would settle the family bias question.
 
 ## References
 
