@@ -3,7 +3,7 @@
     {
       "slug": "deepseekharnessaccounting",
       "title": "DeepSeek Harness (Part 4)",
-      "description": "A vendor delivers six broken lamps, and the company uses Business Central: two runs of DeepSeek Harness in its web UI on a fresh Sandbox, from a purchase order number to an unposted draft credit memo, with the Microsoft Learn lookups, every screenshot, and what changed between the first run and the second",
+      "description": "A vendor delivers six broken lamps, and the company uses Business Central: DeepSeek Harness in its web UI on a fresh Sandbox, from a purchase order number to an unposted draft credit memo, with the Microsoft Learn lookups and every screenshot",
       "date": "2026-11-13",
       "categories": [
         "AI",
@@ -25,7 +25,7 @@
     {
       "slug": "llmbenchmark",
       "title": "LLM Benchmarking",
-      "description": "A from-scratch version of my accounting benchmark: 30 questions that know their own answers, a checker instead of a judge, and six models run on a MacBook Air and a Mac mini",
+      "description": "A from-scratch version of my accounting benchmark: 30 questions that know their own answers, a checker instead of a judge, and six models run through Ollama",
       "date": "2026-11-12",
       "categories": [
         "AI",
@@ -3346,5 +3346,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-11-13T18:21:08.802Z"
+  "generatedAt": "2026-11-13T19:27:10.370Z"
 }
