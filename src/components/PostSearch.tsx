@@ -71,13 +71,13 @@ export default function PostSearch({ posts }: PostSearchProps) {
             <p className="text-muted">Try a different search term</p>
           </div>
         ) : (
-          filteredPosts.map((post: BlogPost) => (
+          filteredPosts.map((post: BlogPost, index: number) => (
             <div key={post.slug} className="item features-image col-12 col-md-6 col-lg-4">
               <div className="item-wrapper post-card">
                 <div className="item-img" style={{ display: 'flex', justifyContent: 'center' }}>
                   <Link href={`/posts/${post.slug}`} style={{ width: '100%', maxWidth: '300px' }}>
                     <PosterPicture
-                      src={posterOf(post) || '/assets/images/posts-meta.svg'}
+                      src={posterOf(post, index) || '/assets/images/posts-meta.svg'}
                       alt={post.title}
                       width={300}
                       height={200}
