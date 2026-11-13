@@ -21,8 +21,8 @@ In [LLM Benchmarking](/posts/llmbenchmark/) I measured six models on accountancy
 3. **What a chat answer gets right and wrong,** checked against Microsoft Learn.
 4. **How the harness approaches the case:** understand first, then look up, then ask, and do the sums with code.
 5. **What it needs besides the documentation:** the company's habits, the law, the vendor, and the records an auditor will want.
-6. **One run, start to finish,** on the real Cronus demo company, with screenshots of the draft credit memos it created.
-7. **What a person does next,** because the harness never posts.
+6. **One run, start to finish,** on the real Cronus demo company, from two purchase order numbers to two draft credit memos, with screenshots.
+7. **What a person does next:** check the tax, add the missing paper, approve and post, with the vendor balance before and after.
 
 **Why:** accounting work has branches, rules that live outside the product, and consequences that cannot be undone. A harness that looks things up, reads the ledger, shows its sources and stops at the right place is useful. A model that answers fluently is not enough, and the difference is easiest to see on a worked example.
 
@@ -51,7 +51,30 @@ This is a good test because there is no single answer. The right documents depen
 2. What happens to the **wrong** items: keep them free, keep them at a discount, or send them back?
 3. What happens to the **broken** items: scrap them here, send them back, or wait for replacements?
 
-For the run I used real data from Business Central's Cronus demo company. The vendor is Graphic Design Institute. Receipt 107145 is 10 lamps that all arrived broken, with a $385.00 credit agreed and the lamps scrapped here. Receipt 107149 is 10 mobile pedestals that arrived instead of the item ordered, kept for a $400.00 allowance, with 4 of the 10 already sold. Both invoices are posted.
+For the run I used real data from Business Central's Cronus demo company, and I started the scenario from **purchase order numbers**, because that is what the people who found the problem actually have. The vendor is Graphic Design Institute. Purchase order 106014 was 15 lamps, and 6 of the 15 arrived broken. The vendor agreed to credit $200.00 for them, and we will scrap them here. Purchase order 106015 was 5 yellow guest chairs that arrived with the wrong finish. We will keep them for a $75.00 allowance. Both orders were received and invoiced in February, and the invoices are posted.
+
+### In practice: who holds which number
+
+Think about who is in front of which document when the goods arrive.
+
+| Who | What they have in front of them | When |
+|---|---|---|
+| **Goods-in clerk** | The vendor's delivery note, our purchase order number, and the order's lines. Posting the receipt creates the receipt number. | The day the goods arrive |
+| **Buyer** | The purchase order number, the vendor's order confirmation and the negotiation. | Throughout |
+| **Accounts payable** | The vendor's invoice number, then our posted invoice number, the payment status and the vendor's credit note. | Days or weeks later |
+| **Controller** | The approval limits, and the finished file for the auditors. | At approval and at audit |
+
+The one number that every role shares is the **purchase order number**. The receipt number and the invoice number are created later, by different people, and the people who open the boxes rarely have them. That is why the harness should start from the purchase order number, and why I wrote the scenario that way.
+
+There are two moments when a problem is found. **At goods-in**, nothing is invoiced yet, and the fix is cheap: receive only what is good, or receive everything into a quality-control location, note the shortfall on the receipt, tell the buyer, and let the invoice be matched to what was really accepted. No credit memo is needed. **Later**, after the invoice is posted and paid, the fix is a credit memo and a claim. This post is about the second, harder case, which is also the one where the paperwork has to be traced back from the order.
+
+Here is what Business Central holds for these orders. The Purchase Orders list does not show 106014 or 106015 at all, because an order that is fully received and invoiced is deleted when the last invoice posts. The order number survives on the posted receipt and the posted invoice, which is how the harness finds them.
+
+![](assets/images/deepseekharnessaccounting/bc-purchase-orders-list.webp)
+*The open Purchase Orders list. The numbers jump from 106008 to 106024, because the fully invoiced orders 106014 and 106015 are no longer there*
+
+![](assets/images/deepseekharnessaccounting/bc-receipt-107222-order-no.webp)
+*Posted purchase receipt 107222. Order No. is 106014, and Vendor Shipment No., where the delivery note number belongs, is empty*
 
 :::brain-power Before you read on
 Which of the three questions above would change the Business Central documents the most? Keep your answer in mind. The harness has to find the answers in the ledger, and some of them it cannot find at all.
@@ -86,11 +109,12 @@ Microsoft Learn also has a training module for this kind of situation, [Manage r
 
 The order matters: understand first, then search. A model that has learned accounting can already see what kind of problem this is: a vendor allowance on goods that are partly sold, and a credit for goods that are scrapped. It can see that a $385 credit on $428 of lamps is a $43 loss, not a gain. No Business Central page says that. What the model cannot know from its weights is how **this product** behaves, and that is what the lookup is for:
 
-1. **Understand.** Before it searches, the harness writes a short analysis from the model's own knowledge of accounting, and marks every statement that depends on how Business Central behaves as "to verify".
-2. **Search.** It calls Microsoft Learn's MCP tool `microsoft_docs_search` with Business Central terms from the case, never figures or names.
-3. **Fetch and verify.** It reads the pages with `microsoft_docs_fetch`, and for each "to verify" statement says whether Learn confirms it, changes it, or does not cover it, with the page and the sentence.
-4. **Read the ledger.** It reads the facts of the case from Business Central itself, so it never asks a person for something the data holds.
-5. **Ask.** Only then does it ask the person the questions that neither the model, the documents nor the ledger can answer.
+1. **Anchor.** Start from the purchase order number. If the case has none, ask for it first. Follow the order number to the receipts and invoices in the ledger.
+2. **Understand.** Before it searches, the harness writes a short analysis from the model's own knowledge of accounting, and marks every statement that depends on how Business Central behaves as "to verify".
+3. **Search.** It calls Microsoft Learn's MCP tool `microsoft_docs_search` with Business Central terms from the case, never figures or names.
+4. **Fetch and verify.** It reads the pages with `microsoft_docs_fetch`, and for each "to verify" statement says whether Learn confirms it, changes it, or does not cover it, with the page and the sentence.
+5. **Read the rest of the ledger.** It reads the other facts of the case from Business Central itself, so it never asks a person for something the data holds.
+6. **Ask.** Only then does it ask the person the questions that neither the model, the documents nor the ledger can answer.
 
 If nothing documents a step, the harness says so and asks a person. It also does the arithmetic with code and not in its head, for example the share of an allowance across receipt lines.
 
@@ -114,67 +138,83 @@ Things also go wrong: a vendor that has stopped trading, a vendor blocked in Bus
 
 ## Step 4: One run, start to finish
 
-For the run I used DeepSeek Harness in its headless mode with the DeepSeek V4 Flash model. It had two connections: the Microsoft Learn MCP server, and the Business Central MCP server with a configuration that could read the ledger and create and modify purchase credit memos and their lines, and nothing else. (The setup, and what went wrong on the way, is in [Connecting DeepSeek Harness to Business Central](/posts/deepseekharnessbusinesscentral/).) The harness also had the company wiki and a skill that set out the method. I gave it the scenario and asked for five things: look up the product behaviour, read the ledger, name the jurisdiction and look up the tax rule and the GAAP treatment, write a plan with a source for each step, then create the two draft credit memos and never post. Here is the run, as a conversation. Every quoted line is a real query or a real reply from the logs, and long replies are cut.
+For the run I used DeepSeek Harness in its headless mode with the DeepSeek V4 Flash model. It had two connections: the Microsoft Learn MCP server, and the Business Central MCP server with a configuration that could read the ledger and create and modify purchase credit memos and their lines, and nothing else. (The setup, and what went wrong on the way, is in [Connecting DeepSeek Harness to Business Central](/posts/deepseekharnessbusinesscentral/).) The harness also had the company wiki and a skill that set out the method, starting with "start from the purchase order number". I gave it the scenario above and asked for four things: read the ledger from the purchase orders, look up the product behaviour, name the jurisdiction and look up the tax rule and the GAAP treatment, and write a plan with a source for each step. Then I asked it to create the two draft credit memos and never post. Here is the run, as a conversation. Every quoted line is a real query or a real reply from the logs, and long replies are cut.
 
 ![](assets/images/deepseekharnessaccounting/fireside-deepseek.svg)
-*DeepSeek Harness works one vendor dispute from start to finish*
+*DeepSeek Harness starts from two purchase order numbers and ends with two draft credit memos*
 
 ### What it read
 
-The harness read the vendor, the receipts, the invoice lines, the item ledger, the accounting periods and the existing credit memos. It found that receipt 107145 is 10 lamps at $42.80, a cost of $428.00, and receipt 107149 is 10 pedestals at $338.20, a cost of $3,382.00. Nothing in the data links a receipt to its invoice, so it matched them by posting date and exact amount, and asked a person to confirm. This is what it was looking at in the Business Central web client. Invoice 108139 for the lamps is paid, and the related G/L entries show the payment out of cash:
+The harness looked for orders 106014 and 106015 first and found nothing, and then listed all 14 open orders to be sure. Then it did what the numbers allow: it searched the posted receipts and invoices for those order numbers. Order 106014 led to receipt **107222** (15 lamps at $42.80, a cost of $642.00) and invoice **108216**. Order 106015 led to receipt **107223** (5 chairs at $150.30, a cost of $751.50) and invoice **108217**. Both invoices are paid, and both were posted on 28 February 2026, so the credits cannot reduce an unpaid balance. They become a refund to claim, or a balance to offset. Here is invoice 108216 in the web client. In this demo data the Vendor Invoice No. field repeats the purchase order number, which is a second way to reach the invoice from the order:
 
-![](assets/images/deepseekharnessaccounting/bc-posted-invoice-108139-paid.webp)
-*Posted purchase invoice 108139 for the lamps. The related G/L entries include a cash payment of $453.68, so the invoice is paid*
-
-![](assets/images/deepseekharnessaccounting/bc-posted-invoice-108143.webp)
-*Posted purchase invoice 108143 for the 10 ATHENS Mobile Pedestals, item 1906-S, $3,382.00 plus $202.92 tax*
-
-Both invoices are paid, so the credits cannot reduce an unpaid balance. They become a refund to claim, or a balance to offset. It also found the periods up to October 2025 closed, so the credits must post in an open period.
+![](assets/images/deepseekharnessaccounting/bc-invoice-108216.webp)
+*Posted purchase invoice 108216 for the lamps. Its Vendor Invoice No. is 106014, the purchase order number*
 
 ### What it concluded
 
-It worked out that the $385.00 credit leaves $43.00 of the lamps' $428.00 cost unrecovered, and that the $400.00 allowance on the pedestals is $160.00 against the 4 sold and $240.00 against the 6 in stock. For the tax it chose **Florida**, because the vendor is in Miami and both invoices were taxed at 6%, citing Fla. Stat. § 212.17 and Rule 12A-1.014, and noting that the lamps are scrapped, not returned, so the statute does not fit them on its face. For the accounting it cited ASC 705-20-25-1, read in KPMG's public inventory handbook because the FASB Codification is paywalled, and flagged both credits for a qualified accountant. It applied the wiki: the lamps cost $42.80 a unit, under $50, so scrapping them is right, and each credit is under the $500 approval limit, though together they are $785.
+For the tax it chose **Florida**, because the vendor is in Miami and the invoices are taxed at exactly 6%, citing Fla. Stat. § 212.17 (the credit must carry the tax). It also said what it could not settle: the ship-to on both invoices is Atlanta, so Florida tax on a Georgia delivery may be the wrong situs, and it asked a person to confirm. That question was the right one. The harness could not see the field that settles it, because the API does not return a tax area. In the web client the posted invoices carry **Tax Area Code ATLANTA, GA**, so its Florida conclusion was wrong, and I come back to this below. For the accounting it cited ASC 705-20-25-1, read in KPMG's public inventory handbook because the FASB Codification is paywalled, and flagged both credits for a qualified accountant. It also asked how to spread the $200.00: across all 15 lamps, which takes the unit cost from $42.80 to $29.47, or only over the 6 broken ones, which is $33.33 a lamp.
+
+Not all of its lookups were useful. The internet search returned an unrelated tax-credit form among the Florida statutes, and one Learn search returned a page about Canadian sales tax. The harness read past them, which is what a harness should do and what a person would have to do too.
 
 ### What it created
 
-Then it created the drafts. These are the two credit memos in Business Central, listed beside the existing ones. Memos 1011 and 1012 have no vendor credit memo number, because the vendor has not issued one:
+Then it created the drafts. These are the two credit memos in Business Central, listed beside the existing ones. Memos 1013 and 1014 have no vendor credit memo number, because the vendor has not issued one. (1011 and 1012 are earlier test drafts from my first run, and the harness noticed them and flagged them.)
 
 ![](assets/images/deepseekharnessaccounting/bc-draft-credit-memos-list.webp)
-*The Purchase Credit Memos list. 1011 and 1012 are the harness's drafts. The Vendor Cr. Memo No. column is empty because the vendor has not issued a credit note*
+*The Purchase Credit Memos list. 1013 and 1014 are the harness's drafts. The Vendor Cr. Memo No. column is empty because the vendor has not issued a credit note*
 
-![](assets/images/deepseekharnessaccounting/bc-draft-1011-open.webp)
-*Draft credit memo 1011 for Graphic Design Institute. Its status is Open, so it is not posted. The Post button is there for a person to use*
+![](assets/images/deepseekharnessaccounting/bc-draft-1013-open.webp)
+*Draft credit memo 1013 for Graphic Design Institute. Its status is Open, so it is not posted. The Post button is there for a person to use*
 
-![](assets/images/deepseekharnessaccounting/bc-draft-1011-lines.webp)
-*Draft 1011: one line, subtotal $385.00, tax $11.55, total $396.55*
+![](assets/images/deepseekharnessaccounting/bc-draft-1013-lines.webp)
+*Draft 1013 for the lamps: one line, subtotal $200.00, tax $6.00, total $206.00*
 
-![](assets/images/deepseekharnessaccounting/bc-draft-1012-lines.webp)
-*Draft 1012 for the pedestals: subtotal $400.00, tax $12.00, total $412.00*
+![](assets/images/deepseekharnessaccounting/bc-draft-1014-lines.webp)
+*Draft 1014 for the chairs: subtotal $75.00, tax $2.25, total $77.25*
 
-Each draft has one line of type **G/L Account**, number 72140, with a description that names the receipt, for example "Purchase allowance - Receipt 107145 - 10 AMSTERDAM Lamps 1928-S, all broken, scrapped on site".
+Each draft has one line of type **G/L Account**, number 72140, with a description that names both the purchase order and the receipt, for example "Purchase allowance PO 106014 / posted receipt 107222 - 6 of 15 AMSTERDAM Lamps 1928-S arrived broken". The run also shows the small frictions of working through an API. The harness created memo 1013 with a posting date from the end of the demo data and then corrected it, and its first description for 1014 was 105 characters when the field holds 100, so Business Central rejected it and it shortened the text.
 
 ### What it could not do
 
-The harness first tried the documented line: type **Charge (Item)**, using the wiki's `PURCH-ALLOW` item charge. Business Central answered "The Item Charge does not exist", and no tool can create item charges, so it fell back to a G/L account line. It said plainly what that costs: **a G/L line does not revalue inventory**, which is the whole point of the allowance procedure. It listed the rest of what it could not do:
+The harness first tried the documented line: type **Charge (Item)**, using the wiki's `PURCH-ALLOW` item charge. Business Central answered "The Item Charge does not exist", and no tool can create item charges, so it fell back to a G/L account line. It said plainly what that costs: **a G/L line does not revalue inventory**, which is the whole point of the allowance procedure, and it noted that this contradicts the wiki rather than following the wiki silently. It listed the rest of what it could not do:
 
-- It could not assign the allowance to the receipts, apply the credits to the paid invoices, scrap the lamps or run **Adjust Cost - Item Entries**.
-- The tax on the drafts came out at 3%, not 6%, because the API cannot set the tax area, which leaves the two memos $23.55 short.
+- It could not assign the allowance to the receipts, because the assignment is a screen action. It could not apply the credits to the paid invoices, scrap the lamps, run **Adjust Cost - Item Entries** or put the invoices on hold, as the wiki's hold rule asks, which was moot anyway because both invoices are paid.
+- The tax on the drafts came out at 3%, not 6% ($6.00 and $2.25 instead of $12.00 and $4.50). The harness said the API cannot set the tax area on the header. As the next section shows, that was not the cause.
 - It reported that the header totals read 0.00 through the API. In the Business Central web client they are correct, as the screenshots show.
-- It could not see the vendor ledger entries to confirm the open balance.
 
-It stopped with seven questions for a person, among them: the vendor's credit note numbers and dates; whether the two credits are one $785 claim needing the controller or two under the limit; which four pedestals were sold, since the ledger shows a single shipment of 10; whether the jurisdiction is Florida (the vendor) or Georgia (both receipts ship to Atlanta); whether `PURCH-ALLOW` should be created; and how to treat four older draft credit memos for the same vendor that may overlap.
+It stopped with four questions for a person: who sets the tax area before posting, and whether 6% Florida tax is what the vendor will actually credit given the Atlanta delivery; whether to create `PURCH-ALLOW` and redo the drafts on it; how to spread the $200.00 over the lamps; and who confirms ASC 705-20 against the Codification before anyone posts.
 
-The run took 8 minutes 58 seconds. Nothing was posted, because the harness had no tool that posts.
+The run took 6 minutes 17 seconds. Nothing was posted, because the harness had no tool that posts.
 
-## Step 5: What a person does next
+## Step 5: What a person does next, and then did
 
-The harness never posts. Its output is a plan with sources and two unposted drafts, and a person has more to do before posting:
+The harness never posts. Its output is a plan with sources and two unposted drafts, and a person has more to do before posting. I played that person, with the same Business Central tools open in the web client, and I recorded each step.
 
-1. **Check the draft against the plan.** The harness stated its own limits, so the person knows where to look.
-2. **Fix the line.** Create the item charge, change each G/L line to a **Charge (Item)** line, and assign it to the receipt, so that inventory is revalued and the cost reaches the cost of goods sold.
-3. **Fix the tax.** Set the tax area so the credits carry 6% and not 3%, and settle Florida or Georgia with an accountant.
-4. **Get the paper.** Fill in the vendor's credit note number once the vendor issues it, and keep the vendor's written agreement and the evidence of the defect with the file.
-5. **Approve and post.** Someone with authority approves, then posts in an open period. Then the person applies the credits to the paid invoices, or claims the refund, and runs **Adjust Cost - Item Entries**.
+**Before.** Vendor 30000 had a balance of $9,979.57:
+
+![](assets/images/deepseekharnessaccounting/bc-vendor-balance-before.webp)
+*Graphic Design Institute before posting: balance $9,979.57*
+
+**Check the tax, and find that the harness was wrong.** Both drafts already had Tax Area Code ATLANTA, GA and the line tax group FURNITURE, the same as the posted invoices, so the harness's explanation (the API cannot set the area) was not the cause. The cause is in the Tax Details: the rates have effective dates, and a new set takes effect on 31 August 2026. A credit memo dated 13 November 2026 picks up the new, lower rate, 3%, while the invoices from February used the old one, 6%. The harness could not see this. Nothing in the API shows tax rates by date, and it is the kind of thing that a person with the right page open finds in a minute.
+
+![](assets/images/deepseekharnessaccounting/bc-tax-details-effective-dates.webp)
+*Tax Details: each jurisdiction has rates with effective dates of 1 January 2024 and 31 August 2026. A document dated after 31 August takes the newer rate*
+
+To reverse the tax at the rate the vendor originally charged, I dated both credits 30 August 2026, the last day of the old rates. The tax then came out at 6% ($12.00 and $4.50). That is a workaround for this demo data. In a real company the accountant decides which rate applies to a credit for an invoice from an earlier period, and the harness's job is to raise the question, which it did.
+
+**Get the paper.** Business Central will not post a credit memo without a Vendor Cr. Memo No. The vendor has not issued a credit note, so I entered the obviously fake references TEST-1013 and TEST-1014. In real life this is the vendor's own document, and a harness must never invent it.
+
+**Approve and post.** I released each memo and posted it. Business Central posted 1013 as **109001** and 1014 as **109002**:
+
+![](assets/images/deepseekharnessaccounting/bc-credit-memo-posted-109001.webp)
+*Posted purchase credit memo 109001: G/L account 72140, subtotal $200.00, tax $12.00, total $212.00*
+
+**After.** The vendor's balance fell by the two credits, $212.00 and $79.50:
+
+![](assets/images/deepseekharnessaccounting/bc-vendor-balance-after.webp)
+*Graphic Design Institute after posting: balance $9,688.07, which is $9,979.57 less $291.50*
+
+Two things are still not right. The lines are G/L account lines, so inventory is **not** revalued and the lower cost does not reach the cost of goods sold. The documented route is a Charge (Item) line assigned to the receipt, followed by **Adjust Cost - Item Entries**. And the credits are not applied to the paid invoices, so the balance reflects a vendor refund still to be claimed. Both are for a person with the item charge set up.
 
 :::no-dumb-questions
 **Q: Is this more work than asking the chat assistant?**
@@ -205,7 +245,7 @@ The cost of goods sold for the items that you already sold has not changed, so y
 - A chat answer can be fluent and incomplete. The errors that matter are the steps it leaves out, and a harness with documentation tools finds them.
 - Start the plan from what the model knows about accounting, mark what depends on the product, then verify it against the documentation and the ledger. Search before fetching, and tie every step to a source.
 - Four sources besides the documentation matter: the company's habits, the law and the standards, the vendor, and the audit records. The settlement is a negotiation unless the terms were agreed in advance, and the harness informs it, drafts for it, and could negotiate within a written mandate once a person trusts it to.
-- In the run, the harness read the real ledger, found both invoices paid, cited Florida tax law and ASC 705-20 and said where it could not read the primary text, and created two unposted draft credit memos.
+- Start from the purchase order number: it is the one number every role shares. In the run, the harness followed the order numbers to the receipts and invoices, found both invoices paid, cited Florida tax law and ASC 705-20 and said where it could not read the primary text, and created two unposted draft credit memos. A person then found the tax-rate effective date that the harness could not see, dated the credits to reverse the tax at the original rate, and posted them, and the vendor's balance fell from $9,979.57 to $9,688.07.
 - It also said what it could not do: the documented item charge did not exist, the tax came out wrong, and the questions that only a person can answer stayed open.
 - The harness drafts, and a person posts.
 - It also works in Claude Code.
