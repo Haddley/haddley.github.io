@@ -6,7 +6,7 @@ import type { CSSProperties } from 'react';
  * The static file is the motion file's name without "-motion" (poster-motion.svg becomes poster.svg).
  */
 export function staticOf(src: string): string {
-  return src.replace(/-motion\.svg$/, '.svg');
+  return src.replace(/-motion\.svg(\?.*)?$/, '.svg');
 }
 
 interface PosterPictureProps {

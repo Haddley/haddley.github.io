@@ -21,7 +21,7 @@ export default function NavyImageBanner({
           {bannerImages.map((src, i) => (
             <div key={i} style={{ flex: 1, overflow: 'hidden' }}>
               <PosterPicture
-                src={src}
+                src={`${src}?banner`}
                 loading="eager"
                 ariaHidden
                 style={{
