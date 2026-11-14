@@ -5,6 +5,6 @@
 <rect x="14" y="62" width="30" height="7" rx="2" fill="#c9d3dd"/>
 <rect x="14" y="72" width="34" height="7" rx="2" fill="#c9d3dd"/>
 <rect x="14" y="82" width="38" height="7" rx="2" fill="#c9d3dd"/><circle cx="47" cy="85.5" r="2.5" fill="#d9483b"/>
-<path d="M60,60 H72 M68,56 L72,60 L68,64" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path d="M60.5,60 H67 M63.5,56.5 L67,60 L63.5,63.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 <g><path d="M76,38 H108 A6,6 0 0 1 114,44 V66 A6,6 0 0 1 108,72 H88 L80,80 V72 H76 A6,6 0 0 1 70,66 V44 A6,6 0 0 1 76,38 Z" fill="#2f9e4a"/><path d="M78,48 H106 M78,56 H106 M78,64 H94" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
 </svg>

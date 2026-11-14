@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A request through Microsoft Graph reads a Business Central item and returns its ETag</title><rect width="120" height="120" rx="22" fill="#0f1b2d"/>
 <g><rect x="6" y="32" width="34" height="56" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><rect x="6" y="32" width="34" height="9" rx="5" fill="#5bb4ea"/><path d="M12,52 H34 M12,60 H30 M12,68 H34" stroke="#c9d3dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
-<path d="M42,52 H52 M48,48.5 L52,52 L48,55.5" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-<g><circle cx="62" cy="60" r="9" fill="#1c2a3d" stroke="#ffb43a" stroke-width="1.5"/><circle cx="62" cy="60" r="3" fill="#ffb43a"/><path d="M62,51 V46 M71,60 H76 M62,69 V74" stroke="#ffb43a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
-<path d="M70,60 H82 M78,56.5 L82,60 L78,63.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path d="M42,60 H50 M46,56.5 L50,60 L46,63.5" stroke="#7cc6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<g><circle cx="62" cy="60" r="9" fill="#1c2a3d" stroke="#ffb43a" stroke-width="1.5"/><circle cx="62" cy="60" r="3" fill="#ffb43a"/><path d="M62,51 V46 M62,69 V74" stroke="#ffb43a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+<path d="M73,60 H79 M75.5,56.5 L79,60 L75.5,63.5" stroke="#ffb43a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 <g><rect x="82" y="34" width="32" height="52" rx="5" fill="#1c2a3d" stroke="#5bb4ea" stroke-width="1.5"/><circle cx="98" cy="48" r="6" fill="#5bb4ea"/><path d="M88,62 H108 M88,69 H102" stroke="#c9d3dd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
 <g><rect x="86" y="75" width="24" height="9" rx="3" fill="#ffb43a"/><text x="98" y="82" text-anchor="middle" font-size="6" fill="#0f1b2d" font-family="-apple-system,Helvetica,Arial,sans-serif" font-weight="600">ETag</text></g>
 </svg>

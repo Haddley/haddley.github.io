@@ -6,7 +6,7 @@ date: "2026-04-30"
 categories: ["Microsoft 365"]
 tags: "sharepoint, azure, on-premises, online, migration"
 slug: "sharegate"
-image: "/assets/images/sharegate/posts-meta.svg"
+image: "/assets/images/shareGate/posts-meta.svg"
 ---
 
 ![](assets/images/shareGate/Screenshot-2026-04-30-at-5.08.48-PM.webp)

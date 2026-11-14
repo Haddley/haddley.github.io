@@ -9,10 +9,10 @@
 
   <!-- MCP link connecting the two sides -->
   <g stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.9">
-    <line class="w" x1="62" y1="60" x2="76" y2="60"/>
+    <line class="w" x1="58" y1="55" x2="71" y2="55"/>
   </g>
-  <circle cx="62" cy="60" r="3" fill="#ffffff"/>
-  <circle class="p" cx="76" cy="60" r="3" fill="#ffffff"/>
+  <circle cx="58" cy="55" r="3" fill="#ffffff"/>
+  <circle class="p" cx="71" cy="55" r="3" fill="#ffffff"/>
 
   <!-- terminal prompt glyph, right side -->
   <g class="p"><rect x="76" y="43" width="24" height="24" rx="6" fill="#d97757"/>

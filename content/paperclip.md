@@ -3,7 +3,7 @@ title: "Paperclip"
 description: "Open-source orchestration for zero-human companies"
 date: "2026-03-28"
 categories: ["AI"]
-image: "/assets/images/paperclip/posts-meta.svg"
+image: "/assets/images/Paperclip/posts-meta.svg"
 tags: "claude-code, ai-agent, anthropic, agentic-coding"
 hidden: false
 slug: "paperclip"
