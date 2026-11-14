@@ -14,7 +14,7 @@
  * Visitors who prefer reduced motion get the static poster whatever these say (see PosterPicture).
  */
 export const USE_MOTION_POSTERS = true;
-export const LIMIT_MOTION_POSTERS = true;
+export const LIMIT_MOTION_POSTERS = false;
 export const MOTION_POSTER_LIST_COUNT = 6;
 
 /** Where a poster is shown: a Featured (Latest or Recent) card, a banner or category cover, or the nth post (counting from 0) of a list

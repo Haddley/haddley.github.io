@@ -4,6 +4,7 @@ import matter from 'gray-matter';
 import Link from 'next/link';
 import NavyImageBanner from '@/components/NavyImageBanner';
 import { getPostById } from '@/lib/posts';
+import { posterOf } from '@/lib/poster';
 import type { Metadata } from 'next';
 
 const TOPICS_DIR = path.join(process.cwd(), 'wiki', 'concepts');
@@ -20,6 +21,7 @@ interface Topic {
   description: string;
   postCount: number;
   posts: { slug: string; title: string }[];
+  banner?: string;   // the poster of the topic's first post that has one, for the banner strip
 }
 
 async function getTopics(): Promise<Topic[]> {
@@ -27,10 +29,11 @@ async function getTopics(): Promise<Topic[]> {
   const topics: Topic[] = [];
   for (const file of fs.readdirSync(TOPICS_DIR).filter(f => f.endsWith('.md'))) {
     const { data } = matter(fs.readFileSync(path.join(TOPICS_DIR, file), 'utf8'));
-    const posts = (await Promise.all(((data.posts as string[]) ?? []).map(s => getPostById(s))))
-      .filter((p): p is NonNullable<typeof p> => !!p)
-      .map(p => ({ slug: p.slug, title: p.title }));
-    topics.push({ slug: data.slug, title: data.title, description: data.description ?? '', postCount: posts.length, posts });
+    const found = (await Promise.all(((data.posts as string[]) ?? []).map(s => getPostById(s))))
+      .filter((p): p is NonNullable<typeof p> => !!p);
+    const posts = found.map(p => ({ slug: p.slug, title: p.title }));
+    const first = found.find(p => p.image);
+    topics.push({ slug: data.slug, title: data.title, description: data.description ?? '', postCount: posts.length, posts, banner: first ? posterOf(first, 'banner') : undefined });
   }
   return topics.sort((a, b) => a.title.localeCompare(b.title));
 }
@@ -40,7 +43,7 @@ export default async function TopicsPage() {
 
   return (
     <>
-      <NavyImageBanner images={[]}>
+      <NavyImageBanner images={topics.map(t => t.banner).filter((img): img is string => !!img).slice(0, 6)}>
         <div className="container text-center">
           <h1 className="mbr-section-title mbr-fonts-style display-2" style={{ color: '#ffffff', fontWeight: 700 }}>
             Topics
