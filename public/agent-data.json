@@ -23,6 +23,17 @@
       "tags": "mcp, business-central, deepseek, oauth, entra"
     },
     {
+      "slug": "llmbenchmark2",
+      "title": "LLM Benchmarking, Part 2: A Checker and a Judge",
+      "description": "Six models answer the same 285 accounting prompts. A few lines of code mark the letter right or wrong, and a judge model that holds the answer key scores the thinking.",
+      "date": "2026-11-13",
+      "categories": [
+        "AI",
+        "Python"
+      ],
+      "tags": "benchmarking, evaluation, llm-judge, ollama, accounting, qwen"
+    },
+    {
       "slug": "llmbenchmark",
       "title": "LLM Benchmarking",
       "description": "A from-scratch version of my accounting benchmark: 30 questions that know their own answers, a checker instead of a judge, and six models run through Ollama",
@@ -3346,5 +3357,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-11-13T19:27:10.370Z"
+  "generatedAt": "2026-11-14T05:12:28.099Z"
 }

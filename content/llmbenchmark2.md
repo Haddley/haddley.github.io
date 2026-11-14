@@ -5,7 +5,7 @@ date: "2026-11-13"
 categories: ["AI", "Python"]
 image: "/assets/images/llmbenchmark2/poster.svg"
 tags: "benchmarking, evaluation, llm-judge, ollama, accounting, qwen"
-hidden: true
+hidden: false
 slug: "llmbenchmark2"
 ---
 
@@ -17,7 +17,7 @@ I ran six models on them: Qwen3.5 2B, Llama 3.1 8B, Qwen3.5 9B, Gemma 4 12B, Qwe
 
 ## What is in the 285 prompts
 
-I expected 285 open questions. I counted, and 282 of them are **multiple choice**, with options A to D and a reference answer such as "The correct answer is C: $3". Only 3 are open-ended, and all three are reconciliation tasks, such as reconciling a bank passbook with a cash book.
+282 of the 285 prompts are **multiple choice**, with options A to D and a reference answer such as "The correct answer is C: $3". Only 3 are open-ended, and all three are reconciliation tasks, such as reconciling a bank passbook with a cash book.
 
 That changes the job. A multiple-choice question has a right letter, so a checker can mark 282 of the 285 prompts. The judge is needed for two other things: the 3 open-ended prompts, and the **thinking** behind each letter.
 
