@@ -5,7 +5,7 @@ date: "2026-11-13"
 categories: ["AI", "Python"]
 image: "/assets/images/llmbenchmark2/poster.svg"
 tags: "benchmarking, evaluation, llm-judge, ollama, accounting, qwen"
-hidden: false
+hidden: true
 slug: "llmbenchmark2"
 ---
 
