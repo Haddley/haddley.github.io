@@ -163,7 +163,7 @@ Then it wrote `plan.md` and asked me four questions in the web UI, one at a time
 *Question 2: the invoice charged 3 per cent tax. How should the credit treat tax?*
 
 ![](assets/images/deepseekharnessaccounting/r2-run-q3-invoice-hold.webp)
-*Question 3: the hold policy needs the buyer's initials, which its tools cannot set*
+*Question 3: the hold policy needs the buyer's initials, and no tool the harness had can set the On Hold field*
 
 ![](assets/images/deepseekharnessaccounting/r2-run-q4-physical-return.webp)
 *Question 4: are the six lamps already back with the vendor?*
@@ -172,7 +172,7 @@ Then it wrote `plan.md` and asked me four questions in the web UI, one at a time
 |---|---|---|
 | 1 | The credit uses 42.80 per lamp, the price paid on the invoice, and not the selling price of 54.90. Is that the basis? | Yes, leave the draft as it is |
 | 2 | The invoice charged 3 per cent tax. Mirror it, raise it with the vendor first, or recalculate? | Mirror the invoice, as drafted |
-| 3 | The hold must be applied with the buyer's initials, and the tools cannot set it. Who does it? | Give the initials, and the harness notes them in the plan |
+| 3 | The hold must be applied with the buyer's initials, and none of its tools can set the On Hold field. Who does it? | Give the initials, and the harness notes them in the plan |
 | 4 | Are the six lamps already back, still held, or being collected? | Being collected, date not fixed |
 
 The harness recorded everything in `plan.md`: the two answers it needed to confirm, one answer still open (the initials), and the point that the credit memo alone does not move any stock. The trap is that a return shipment and a credit memo would each reduce inventory, so the plan lists the physical return as work for a person once the lamps leave.
@@ -257,7 +257,7 @@ So the Sandbox is behaving as it was set up, and the question a real company wou
 
 The harness never posts. Its output is a plan with sources and one unposted draft. I have not posted anything. A person would, in order:
 
-1. Put invoice 108234 On Hold with the buyer's initials, today, so that a payment run does not pay the disputed amount. The tools cannot set that field.
+1. Put invoice 108234 On Hold with the buyer's initials, today, so that a payment run does not pay the disputed amount. The On Hold field is on the vendor ledger entry. The only tool that exposes open vendor ledger entries has twelve fields, and On Hold is not one of them, so the harness had no way to set it.
 2. Wait for the vendor's credit note, then replace the delivery note placeholder in Vendor Cr. Memo No.
 3. Open the credit memo, apply it to invoice 108234 for 264.50, so the open balance falls from 661.26 to 396.76, and set the original item entry for exact cost reversing.
 4. Record the physical return when the vendor collects the lamps, without also posting a credit memo that reduces the stock a second time.
