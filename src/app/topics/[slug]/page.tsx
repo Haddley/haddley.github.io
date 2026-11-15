@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { getPostById } from '@/lib/posts';
+import { posterOf } from '@/lib/poster';
+import NavyImageBanner from '@/components/NavyImageBanner';
 import MobiriseContentRenderer from '@/components/MobiriseContentRenderer';
 import { getPostCategories, getCategoryCount } from '@/lib/category-counts';
 import { categoryNameToSlug } from '@/lib/categories';
@@ -105,16 +107,34 @@ export default async function TopicPage({ params }: TopicPageProps) {
 
   return (
     <>
-      <section className="content4 cid-uBU3VQlp0E" id="content4-topic">
+      <NavyImageBanner images={posts.filter((p): p is NonNullable<typeof p> => !!p).map(p => posterOf(p, 'banner')).filter((img): img is string => !!img).slice(0, 6)}>
+        <div className="container text-center">
+          <h1 className="mbr-section-title mbr-fonts-style display-2" style={{ color: '#ffffff', fontWeight: 700 }}>
+            {topic.data.title}
+          </h1>
+          <p className="mbr-text mbr-fonts-style display-7 mt-3" style={{ color: 'rgba(255,255,255,0.85)' }}>
+            {topic.data.description}
+          </p>
+          <nav aria-label="breadcrumb" className="mt-3">
+            <ol className="breadcrumb justify-content-center" style={{ background: 'transparent' }}>
+              <li className="breadcrumb-item">
+                <Link href="/" style={{ color: 'var(--gold)' }}>Home</Link>
+              </li>
+              <li className="breadcrumb-item">
+                <Link href="/topics/" style={{ color: 'var(--gold)' }}>Topics</Link>
+              </li>
+              <li className="breadcrumb-item active" style={{ color: 'rgba(255,255,255,0.5)' }}>
+                {topic.data.title}
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </NavyImageBanner>
+
+      <section className="content1 cid-content" id="content1-topic-meta" style={{ backgroundColor: 'var(--section-light)', padding: '1.5rem 0 0.5rem' }}>
         <div className="container">
           <div className="row justify-content-center">
-            <div className="title col-md-12 col-lg-11">
-              <h3 className="mbr-section-title mbr-fonts-style align-center mb-4 display-2">
-                <strong>{topic.data.title}</strong>
-              </h3>
-              <h4 className="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5">
-                {topic.data.description}
-              </h4>
+            <div className="col-md-12 col-lg-11 text-center">
               {topicCategories.length > 0 && (
                 <div className="d-flex flex-wrap justify-content-center align-items-center gap-2 mb-3">
                   <span style={{ color: '#666', fontSize: '0.9rem' }}>Categories:</span>
@@ -131,22 +151,10 @@ export default async function TopicPage({ params }: TopicPageProps) {
                   ))}
                 </div>
               )}
-              <p className="align-center mbr-fonts-style display-7" style={{ color: '#666' }}>
+              <p className="mbr-fonts-style display-7" style={{ color: '#666' }}>
                 A topic page: a summary of what my posts say, with each claim quoted from the post it came from.
                 The posts are the authority. Last checked {String(topic.data.checked).slice(0, 10)}.
               </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="content1 cid-content" id="content1-topic-back">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-md-12 col-lg-11">
-              <div className="mb-4">
-                <Link href="/posts" className="link text-primary display-7">← Back to Posts</Link>
-              </div>
             </div>
           </div>
         </div>
