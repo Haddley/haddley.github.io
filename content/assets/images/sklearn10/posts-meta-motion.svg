@@ -49,5 +49,5 @@
   <circle class="m4" cx="94" cy="68" r="5" fill="#3a9bdc"/>
   <circle class="m4" cx="94" cy="84" r="5" fill="#3a9bdc"/>
   <path class="m5" pathLength="1" d="M96 30 C 80 14, 40 14, 26 28" fill="none" stroke="#f6c25b" stroke-width="2.6" stroke-linecap="round"/>
-  <path class="m6" d="M22.5 32.5 L24 23.6 L31 28.6 Z" fill="#f6c25b"/>
+  <path class="m6" d="M21.4 31.4 L25.4 23.1 L30.6 30 Z" fill="#f6c25b"/>
 </svg>

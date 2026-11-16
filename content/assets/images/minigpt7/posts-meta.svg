@@ -7,6 +7,6 @@
     <text x="14" y="72" fill="#5bb4ea">+ mlp</text>
   </g>
   <path d="M14 78 L66 78" stroke="#f08a3c" stroke-width="2" stroke-linecap="round"/>
-  <path d="M100 92 C 92 104, 76 100, 70 84" fill="none" stroke="#f08a3c" stroke-width="2"/>
-  <path d="M70 84 L68.9 91.9 L76 89.2 Z" fill="#f08a3c"/>
+  <path d="M100 92 C 92.5 103.2, 78 100.4, 71.3 86.9" fill="none" stroke="#f08a3c" stroke-width="2"/>
+  <path d="M70 84 L76.5 88.5 L69.8 92 Z" fill="#f08a3c"/>
 </svg>
