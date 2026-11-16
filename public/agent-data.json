@@ -24,8 +24,8 @@
     },
     {
       "slug": "llmbenchmark2",
-      "title": "LLM Benchmarking, Part 2: Fifteen Models, One Answer Key",
-      "description": "I ran 282 accounting questions through fifteen models, found that my first answer key did not match the questions, and measured which questions every model gets right.",
+      "title": "LLM Benchmarking, Part 2: Fifteen Models, 282 Questions",
+      "description": "I ran 282 accounting multiple-choice questions through fifteen models, first answering at once with a single letter, then with brief reasoning, had a judge mark the working, and measured which questions every model gets right.",
       "date": "2026-11-13",
       "categories": [
         "AI",
@@ -3357,5 +3357,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-11-16T15:19:44.747Z"
+  "generatedAt": "2026-11-16T19:28:19.741Z"
 }

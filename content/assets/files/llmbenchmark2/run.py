@@ -1,4 +1,4 @@
-"""Run clean MMLU professional accounting (282, original keys) through Ollama. usage: run.py MODEL MODE [limit]
+"""Run MMLU professional accounting (282 questions) through Ollama. usage: run.py MODEL MODE [limit]
 MODE direct: reply with one letter. MODE reason: brief reasoning then 'ANSWER: X'."""
 import json,sys,time,re,urllib.request,os
 model,mode=sys.argv[1],sys.argv[2]; limit=int(sys.argv[3]) if len(sys.argv)>3 else 0

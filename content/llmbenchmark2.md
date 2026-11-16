@@ -1,6 +1,6 @@
 ---
 title: "LLM Benchmarking, Part 2: Fifteen Models, 282 Questions"
-description: "I ran 282 accounting multiple-choice questions through fifteen models, first answering at once with a single letter, then with brief reasoning, and measured which questions every model gets right."
+description: "I ran 282 accounting multiple-choice questions through fifteen models, first answering at once with a single letter, then with brief reasoning, had a judge mark the working, and measured which questions every model gets right."
 date: "2026-11-13"
 categories: ["AI", "Python"]
 image: "/assets/images/llmbenchmark2/poster.svg"
@@ -93,13 +93,13 @@ An answer with no clear letter counts as wrong. Thinking models can spend their 
 
 Four things stand out.
 
-**More parameters was not the main thing.** (A parameter is one of the numbers a model learned in training. "72B" means 72 billion of them.) The 72B Qwen2.5 and the 14B Qwen3 both score 85.1%. The 70B Llama 3.3 scores 84.8%, and the 27B Qwen3.8 beats all three by 8 points or more. A newer family at 14B matched an older family at 72B, and used about a fifth of the memory.
+**Among the models I ran locally, more parameters was not the main thing.** (A parameter is one of the numbers a model learned in training. "72B" means 72 billion of them.) The 72B Qwen2.5 and the 14B Qwen3 both score 85.1%. The 70B Llama 3.3 scores 84.8%, and the 27B Qwen3.8 beats all three by 8 points or more. A newer family at 14B matched an older family at 72B, and used about a fifth of the memory. The two hosted DeepSeek models are a different case. I did not look up their sizes, but they are very likely far larger than anything I ran locally, and they scored best, so I cannot say size played no part there. They also differ from the local models in other ways, such as how they were trained, so this test cannot separate size from everything else.
 
 **Letting the model think was worth 10 to 25 points.** For the models that can do both, the reasoning pass beat the one-letter pass by 11 points for Gemma 3 12B, 14 for Qwen2.5 72B, 16 for Qwen2.5 14B, 21 for Qwen3.8 27B and 23 for Qwen3 14B. The small Llama models gained only 4 to 6. The one-letter numbers also show how little the 70B models know without thinking: both land near 70%.
 
 **Thinking costs time, and more thinking is not always better.** QwQ 32B spent about 13 hours and 1,800 tokens an answer to reach 86.5%. Qwen3.8 27B took 2 hours and 800 tokens an answer to reach 93.6%. The long thinkers also hit my caps: gpt-oss 20B, Qwen3 8B and QwQ lost 25, 19 and 16 answers to "no letter", so their scores are a little lower than they would be with a larger cap.
 
-**The hosted models were far ahead, and the "flash" one won.** `deepseek-flash` finished all 282 questions in 15 minutes and `deepseek-v4-pro` in 41, and the "flash" model scored 0.4 points higher. They are 1 question apart, and I would not read that as flash being better.
+**The hosted models were far ahead, and the "flash" one won.** `deepseek-flash` finished all 282 questions in 15 minutes and `deepseek-v4-pro` in 41, and the "flash" model scored 0.4 points higher. They are 1 question apart, so I would not read that as flash being better. Flash is also cheaper. DeepSeek's price list at the time of writing ([api-docs.deepseek.com](https://api-docs.deepseek.com/quick_start/pricing)) charges $0.30 per million input tokens and $1.20 per million output tokens at peak times for flash, and $1.32 and $3.96 for pro, which is 3 to 4 times as much. Pro also wrote about twice as many tokens per answer (782 against 409). By my estimate, the reasoning pass over all 282 questions cost about 15 cents with flash and about a dollar with pro at peak prices. I worked that out from the token counts and did not read a bill.
 
 :::no-dumb-questions
 **Q: Why not just use the best model?**
@@ -110,6 +110,51 @@ A: The best model is a paid API, and the question is what I can run on my own ma
 
 A: It could be. MMLU is a public test that has been online for years, and I cannot rule out that a model saw these questions. Read the table as a ranking on this test, not as a promise about your own books.
 :::
+
+## Marking the thinking
+
+A letter says whether a model landed on the key. It does not say whether the working was any good. I added a judge to mark that. The judge is `gemma4:12b`, running locally. It is not one of the 15 models, so it never marks its own answers. It does share a family name with the two Gemma 3 models it marks, and I cannot rule out that it favours them. For every reply it sees the question, the four options, the correct answer and the model's reply, and it gives three scores from 1 to 10 (Accuracy, Completeness and Clarity) and a verdict: SOUND, SLIP (a small error), FLAWED or UNSUPPORTED (a claim with no reasoning behind it).
+
+The judge can only mark what a model wrote in its reply. Qwen3 14B, `deepseek-flash` and gpt-oss 20B do their thinking in a hidden field and reply with little more than "ANSWER: X", and the judge gave Qwen3 14B a Completeness of 1 on nearly every answer. I left those models out of this section. The seven below write their working in the reply.
+
+| Model | Right (checker) | Accuracy | Completeness | Clarity | SOUND | FLAWED |
+|---|---|---|---|---|---|---|
+| Qwen3.8 27B | 93.6% | 9.6 | 9.9 | 9.9 | 264 | 17 |
+| Qwen2.5 72B | 85.1% | 9.0 | 9.5 | 9.8 | 238 | 42 |
+| Llama 3.3 70B | 84.8% | 8.9 | 9.4 | 9.7 | 235 | 43 |
+| Qwen2.5 14B | 79.4% | 8.5 | 9.4 | 9.8 | 217 | 62 |
+| Gemma 3 27B | 78.4% | 8.4 | 9.4 | 9.8 | 218 | 62 |
+| Gemma 3 12B | 63.5% | 7.4 | 8.9 | 9.6 | 176 | 99 |
+| Llama 3.1 8B | 51.4% | 6.2 | 7.6 | 8.8 | 140 | 140 |
+
+(Scores are means over 282 answers. A few verdicts are missing where the judge left the field out, so the SOUND and FLAWED counts can add to a little less than 282.)
+
+The radar puts the checker beside the three judge scores, multiplied by ten so that all four axes run from 0 to 100.
+
+```mermaid
+%%{init: {"theme": "neutral", "themeVariables": {"cScale0": "#ea580c", "cScale1": "#2563eb", "cScale2": "#16a34a", "cScale3": "#9333ea", "cScale4": "#0891b2", "radar": {"curveOpacity": 0.08, "curveStrokeWidth": 3, "axisColor": "#475569", "axisStrokeWidth": 1.5, "axisLabelFontSize": 15, "graticuleColor": "#cbd5e1", "graticuleStrokeWidth": 1, "legendFontSize": 15, "legendBoxSize": 15}}, "radar": {"width": 520, "height": 520, "marginTop": 80, "marginBottom": 60, "marginLeft": 150, "marginRight": 220, "axisLabelFactor": 1.1}}}%%
+radar-beta
+    title Checker and judge, 282 accounting questions
+    axis ra["Right answer (checker)"], ac["Accuracy (judge)"], co["Completeness (judge)"], cl["Clarity (judge)"]
+    curve q38["Qwen3.8 27B"]{94, 96, 99, 99}
+    curve q72["Qwen2.5 72B"]{85, 90, 95, 98}
+    curve g27["Gemma 3 27B"]{78, 84, 94, 98}
+    curve g12["Gemma 3 12B"]{64, 74, 89, 96}
+    curve l8["Llama 3.1 8B"]{51, 62, 76, 88}
+    max 100
+    min 0
+    graticule polygon
+    ticks 4
+    showLegend true
+```
+
+Clarity and Completeness sit near the rim for every model except the weakest: all seven write clear, thorough-looking explanations. The two axes that depend on the key, Right answer and Accuracy, separate the models. The judge holds the key, so its Accuracy follows the checker closely, and I would not count it as a second opinion on the answer. What it adds is the verdict on the working, and it found little: of 1,974 answers, only 16 were right with FLAWED thinking (a lucky guess), and only 2 were wrong with SOUND thinking.
+
+:::watch-it The judge is a good check on the conclusion and a poor check on the numbers
+I tested it by taking 40 answers that the checker marked right and the judge rated SOUND, and changing the last digit of the first figure after an equals sign (so that $245 × 2 = $490 became $493). The judge rated 39 of the 40 damaged copies SOUND again, and the mean Accuracy fell by 0.1 points. A damaged answer still ends on the right letter, and the key tells the judge that the letter is right. Use its verdicts to find answers where the conclusion is wrong, and do not trust it to find a wrong number.
+:::
+
+I also asked `deepseek-v4-pro` to judge 60 of the same answers, picked at random. The two judges put 58 of the 59 comparable answers in the same group, sound (SOUND or SLIP) or flawed. DeepSeek scored Completeness and Clarity about 0.6 points lower than Gemma. The verdicts are steady across two judges from different families. The finer scores are a matter of taste.
 
 ## Do the models get the same questions right?
 
@@ -180,10 +225,63 @@ When 14 of 15 models choose the same wrong answer, the question is either hard i
 
 The two DeepSeek models miss different questions. `deepseek-flash` missed 6 and `deepseek-v4-pro` missed 7, and only 2 questions appear on both lists. Between them they got 271 questions right together, and missed 2 together.
 
+## Who gets the hard questions
+
+A total score hides where a model loses its points. I sorted the questions by how many of the 15 models got them right, and then asked each model what share of each group it got right. The 61 questions that all 15 models got right are left out, because every model scores 100 on them. Each axis below is a group of questions, labelled by how many of the 15 models got them right, and a model that is strong all round fills the whole pentagon.
+
+```mermaid
+%%{init: {"theme": "neutral", "themeVariables": {"cScale0": "#ea580c", "cScale1": "#2563eb", "cScale2": "#16a34a", "cScale3": "#9333ea", "cScale4": "#0891b2", "radar": {"curveOpacity": 0.08, "curveStrokeWidth": 3, "axisColor": "#475569", "axisStrokeWidth": 1.5, "axisLabelFontSize": 15, "graticuleColor": "#cbd5e1", "graticuleStrokeWidth": 1, "legendFontSize": 15, "legendBoxSize": 15}}, "radar": {"width": 520, "height": 520, "marginTop": 80, "marginBottom": 60, "marginLeft": 150, "marginRight": 220, "axisLabelFactor": 1.1}}}%%
+radar-beta
+    title Best four models: share of each group of questions right
+    axis a14["14 right (60 questions)"], a13["13 right (37)"], a12["11 or 12 right (51)"], a10["8 to 10 right (40)"], a7["0 to 7 right (33)"]
+    curve fl["deepseek-flash"]{100, 97, 100, 98, 88}
+    curve q38["Qwen3.8 27B"]{100, 100, 94, 85, 73}
+    curve q14["Qwen3 14B"]{98, 97, 96, 75, 15}
+    curve q72["Qwen2.5 72B"]{100, 97, 90, 70, 27}
+    max 100
+    min 0
+    graticule polygon
+    ticks 4
+    showLegend true
+```
+
+All four get nearly every question that 13 or more models get right. They separate on the two hardest groups. `deepseek-flash` gets 88% of the 33 questions that 7 or fewer models got right. Qwen3.8 27B gets 73%. Qwen3 14B gets 15% and Qwen2.5 72B 27%, so most of the gap between them and the top two is in those 33 questions.
+
+```mermaid
+%%{init: {"theme": "neutral", "themeVariables": {"cScale0": "#ea580c", "cScale1": "#2563eb", "cScale2": "#16a34a", "cScale3": "#9333ea", "cScale4": "#0891b2", "radar": {"curveOpacity": 0.08, "curveStrokeWidth": 3, "axisColor": "#475569", "axisStrokeWidth": 1.5, "axisLabelFontSize": 15, "graticuleColor": "#cbd5e1", "graticuleStrokeWidth": 1, "legendFontSize": 15, "legendBoxSize": 15}}, "radar": {"width": 520, "height": 520, "marginTop": 80, "marginBottom": 60, "marginLeft": 150, "marginRight": 220, "axisLabelFactor": 1.1}}}%%
+radar-beta
+    title More parameters: share of each group of questions right
+    axis a14["14 right (60 questions)"], a13["13 right (37)"], a12["11 or 12 right (51)"], a10["8 to 10 right (40)"], a7["0 to 7 right (33)"]
+    curve l3["Llama 3.2 3B"]{53, 35, 31, 15, 12}
+    curve l8["Llama 3.1 8B"]{82, 35, 24, 20, 6}
+    curve q14["Qwen3 14B"]{98, 97, 96, 75, 15}
+    curve g27["Gemma 3 27B"]{97, 97, 78, 42, 27}
+    curve q72["Qwen2.5 72B"]{100, 97, 90, 70, 27}
+    max 100
+    min 0
+    graticule polygon
+    ticks 4
+    showLegend true
+```
+
+The two small Llama models fail even the easier groups: the 3B gets 53% of the questions that 14 models got right. From 14B up the shapes are alike: Qwen3 14B is the same shape as Qwen2.5 72B, and it does better on the middle groups. More parameters did not extend the reach into the hardest group, where the 14B and the 72B models both fall below 30%.
+
+(The groups are made from the same 15 models, so a model that is wrong on a question helps to put it in a harder group. Read the charts as a description of these 15 models, not as a measure of difficulty that would hold for others.)
+
+## Why the hard questions are hard
+
+Ten of the eleven questions that 4 or fewer models got right ask for a specific rule or standard: auditing, compilation engagements, contract law, tax and government reporting. Only the investment question is about finance in general. None needs a long calculation. I read the replies to the two hardest, and the wrong ones share a pattern. They choose the option that looks most suspicious to a general reader, and the right answer needs the professional standard.
+
+- On the audit question, Qwen3.8 27B dismisses the key's answer B as "a scope limitation issue" that "doesn't directly implicate management's integrity", and calls C, inventory write-offs before year end four years running, "a major red flag". `deepseek-flash`, the only model right, reasons from the audit rule: refusing the CPA access to information raises doubts about management's honesty.
+- On the compilation question, Qwen3.8 27B treats B as "concerning but not necessarily disqualifying", because a compilation does not look for fraud. `deepseek-flash` states the rule: omitting nearly all GAAP disclosures is generally allowed in a compilation if the report says so, so C is not a reason to decline.
+
+I also asked the judge to explain, for each of the 97 wrong replies on those eleven questions, where the reasoning went wrong, and to label the mistake. I did not use its labels. It called 76 of the 97 "wrong rule", which says more about the judge's habit than about the models. Some of its explanations are also built to fit the key: on the compilation question it told one model that refusing to investigate misappropriation was an integrity risk that should have ended the engagement, which restates the key without testing it.
+
 ## What I take from this
 
-- **Model generation and the room to think mattered more than the number of parameters.** A 14B model from a newer family matched a 72B model from an older one, and letting every model reason added 10 to 25 points.
+- **Among the local models, generation and the room to think mattered more than the number of parameters.** A 14B model from a newer family matched a 72B model from an older one, and letting every model reason added 10 to 25 points.
 - **Models fail together.** 22% of the questions were easy for all fifteen, and none were impossible for all fifteen. A second opinion from a different family is worth more than a second run from the same one.
+- **A judge with the key checks conclusions, not working.** It found 16 lucky guesses in 1,974 answers and missed 39 of 40 planted number errors.
 - **The answer cap shapes the result.** Models that think can hit the cap and lose the answer, so the bottom of the table is a little pessimistic for them.
 
 :::bullet-points What to remember
@@ -195,16 +293,16 @@ The two DeepSeek models miss different questions. `deepseek-flash` missed 6 and 
 
 ## What comes next
 
-I would like to add a judge model that scores the thinking as well as the letter, from a different family than the models it marks. I would also like to use the open-ended bank reconciliation prompts in the older project, which a letter checker cannot mark.
+I would like to judge the thinking models too, by saving their hidden thinking and not only their replies. I would also like to use the open-ended bank reconciliation prompts in the older project, which a letter checker cannot mark, and to try a judge that does not see the key.
 
 ## The code
 
-These are the files in full. To run one model: `python3 run.py qwen3:14b reason`, then `python3 grade.py` to score every answer file and `python3 overlap.py` to count how many models get each question right.
+These are the files in full. To run one model: `python3 run.py qwen3:14b reason`, then `python3 grade.py` to score every answer file, `python3 overlap.py` to count how many models get each question right and `python3 judge.py gemma4:12b qwen2.5_72b` to judge one model's answers.
 
 **run.py asks a model all 282 questions and saves its answers.**
 
 ```python
-"""Run clean MMLU professional accounting (282, original keys) through Ollama. usage: run.py MODEL MODE [limit]
+"""Run MMLU professional accounting (282 questions) through Ollama. usage: run.py MODEL MODE [limit]
 MODE direct: reply with one letter. MODE reason: brief reasoning then 'ANSWER: X'."""
 import json,sys,time,re,urllib.request,os
 model,mode=sys.argv[1],sys.argv[2]; limit=int(sys.argv[3]) if len(sys.argv)>3 else 0
@@ -357,6 +455,101 @@ exp_all_wrong=sum(math.prod(1-acc[n] for n in names) for i in range(N))
 exp_all_right=sum(math.prod(acc[n] for n in names) for i in range(N))
 print('\nIf models were independent, expect',round(exp_all_wrong,1),'questions nobody gets right and',round(exp_all_right,1),'all right; observed',dist[0],'and',dist[K])
 json.dump({'cnt':cnt,'names':names},open('overlap.json','w'))
+```
+
+**judge.py marks one model's answers.**
+
+```python
+"""Judge the reasoning answers of one model. usage: judge.py JUDGE_MODEL ANSWER_FILE_STEM [limit]
+For every answer the judge sees the question, the options, the correct letter and the model's reply, and returns
+Accuracy, Completeness and Clarity (1 to 10) and a verdict: SOUND, SLIP, FLAWED or UNSUPPORTED."""
+import json,sys,time,os,urllib.request
+judge,stem=sys.argv[1],sys.argv[2]; limit=int(sys.argv[3]) if len(sys.argv)>3 else 0
+orig=json.load(open('orig.json'))
+src=f"runs/{stem}__reason.jsonl"
+out=f"judged/{stem}__by__{judge.replace(':','_')}.jsonl"
+os.makedirs('judged',exist_ok=True)
+done={json.loads(l)['i'] for l in open(out)} if os.path.exists(out) else set()
+PROMPT="""You are marking a student's answer to a multiple-choice accounting question. You are given the correct answer.
+
+Question:
+{question}
+
+Options:
+{options}
+
+Correct answer: {key}
+
+Student's reply:
+\"\"\"
+{reply}
+\"\"\"
+
+Mark the reply. Give three scores from 1 to 10:
+- accuracy: is the reasoning and the figures right, and does it reach the correct answer?
+- completeness: does it work through what is needed to justify its answer?
+- clarity: is it easy to follow?
+And a verdict, one of: SOUND (right thinking), SLIP (a small error), FLAWED (wrong thinking or wrong answer), UNSUPPORTED (a claim with no reasoning behind it).
+Reply with JSON only: {{"accuracy": n, "completeness": n, "clarity": n, "verdict": "...", "reason": "one sentence"}}"""
+def ask(prompt):
+    body={"model":judge,"messages":[{"role":"user","content":prompt}],"stream":False,"format":"json","think":False,"options":{"temperature":0,"seed":1,"num_predict":300}}
+    req=urllib.request.Request("http://localhost:11434/api/chat",json.dumps(body).encode(),{"Content-Type":"application/json"})
+    return json.load(urllib.request.urlopen(req,timeout=900))["message"]["content"]
+n=0
+with open(out,'a') as f:
+    for l in open(src):
+        r=json.loads(l)
+        if limit and n>=limit: break
+        n+=1
+        if r['i'] in done: continue
+        o=orig[r['i']]
+        opts="\n".join(f"{'ABCD'[k]}. {c}" for k,c in enumerate(o['choices']))
+        t=time.time()
+        try:
+            raw=ask(PROMPT.format(question=o['question'],options=opts,key=r['key'],reply=r['text'][:6000]))
+            j=json.loads(raw)
+            rec={"i":r['i'],**{k:j.get(k) for k in("accuracy","completeness","clarity","verdict","reason")},"secs":round(time.time()-t,1)}
+        except Exception as e:
+            rec={"i":r['i'],"error":str(e)[:200]}
+        f.write(json.dumps(rec)+"\n"); f.flush()
+print('done',stem,judge)
+```
+
+**plant.py is the planted-error test.**
+
+```python
+"""Planted-error test: change one number in answers the checker marked right and the judge rated SOUND, then judge the damaged copy.
+The damage: the first figure after an equals sign has its last digit changed. The final ANSWER line is left alone."""
+import json,random,re,urllib.request,glob,sys
+sys.path.insert(0,'.')
+from grade import letter
+from judge_prompt import PROMPT
+orig=json.load(open('orig.json'))
+def ask(prompt):
+    body={"model":"gemma4:12b","messages":[{"role":"user","content":prompt}],"stream":False,"format":"json","think":False,"options":{"temperature":0,"seed":1,"num_predict":300}}
+    req=urllib.request.Request("http://localhost:11434/api/chat",json.dumps(body).encode(),{"Content-Type":"application/json"})
+    return json.loads(json.load(urllib.request.urlopen(req,timeout=900))["message"]["content"])
+def damage(t):
+    m=re.search(r'=\s*\$?(\d[\d,]*\.?\d*)',t)
+    if not m: return None
+    num=m.group(1); i=m.start(1)+len(num)-1
+    while not t[i].isdigit(): i-=1
+    new=str((int(t[i])+3)%10)
+    return t[:i]+new+t[i+1:]
+cands=[]
+for mname in ['qwen3.8_27b-mlx','qwen2.5_72b','llama3.3_70b','gemma3_27b','qwen2.5_14b']:
+    runs={json.loads(l)['i']:json.loads(l) for l in open(f'runs/{mname}__reason.jsonl')}
+    for l in open(f'judged/{mname}__by__gemma4_12b.jsonl'):
+        j=json.loads(l); r=runs[j['i']]
+        if j.get('verdict')=='SOUND' and letter(r['text'],'reason')==r['key'] and damage(r['text']): cands.append((mname,j,r))
+print(len(cands),'candidates')
+random.seed(3); pick=random.sample(cands,min(40,len(cands)))
+out=open('plant.jsonl','w')
+for m,j,r in pick:
+    o=orig[r['i']]; opts="\n".join(f"{'ABCD'[k]}. {c}" for k,c in enumerate(o['choices']))
+    d=ask(PROMPT.format(question=o['question'],options=opts,key=r['key'],reply=damage(r['text'])[:6000]))
+    out.write(json.dumps({"model":m,"i":r['i'],"orig":{k:j[k] for k in('accuracy','verdict')},"damaged":d})+"\n")
+print('done')
 ```
 
 ## References
