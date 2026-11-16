@@ -1,181 +1,366 @@
 ---
-title: "LLM Benchmarking, Part 2: A Checker and a Judge"
-description: "Six models answer the same 285 accounting prompts. A few lines of code mark the letter right or wrong, and a judge model that holds the answer key scores the thinking."
+title: "LLM Benchmarking, Part 2: Fifteen Models, 282 Questions"
+description: "I ran 282 accounting multiple-choice questions through fifteen models, first answering at once with a single letter, then with brief reasoning, and measured which questions every model gets right."
 date: "2026-11-13"
 categories: ["AI", "Python"]
 image: "/assets/images/llmbenchmark2/poster.svg"
-tags: "benchmarking, evaluation, llm-judge, ollama, accounting, qwen"
-hidden: true
+tags: "benchmarking, evaluation, ollama, deepseek, accounting, qwen"
+hidden: false
 slug: "llmbenchmark2"
 ---
 
-# LLM Benchmarking, Part 2: A Checker and a Judge
+# LLM Benchmarking, Part 2: Fifteen Models, 282 Questions
 
-In [LLM Benchmarking](/posts/llmbenchmark/) I wrote 30 questions that know their own answers, so a checker could mark them with no second model. I said that this works only for questions with one right answer, and that an explanation needs a judge. This post tests both on the 285 prose prompts from my older [llm-accounting-benchmark](https://github.com/Haddley/llm-accounting-benchmark).
+In [LLM Benchmarking](/posts/llmbenchmark/) I wrote 30 questions that know their own answers, so that a few lines of code could mark them. This post runs the same idea on the 282 multiple-choice accounting questions from my older [llm-accounting-benchmark](https://github.com/Haddley/llm-accounting-benchmark).
 
-I ran six models on them: Qwen3.5 2B, Llama 3.1 8B, Qwen3.5 9B, Gemma 4 12B, Qwen2.5 14B and Gemma 4 26B. Each one answered all 285 prompts through Ollama.
+## The questions
 
-## What is in the 285 prompts
-
-282 of the 285 prompts are **multiple choice**, with options A to D and a reference answer such as "The correct answer is C: $3". Only 3 are open-ended, and all three are reconciliation tasks, such as reconciling a bank passbook with a cash book.
-
-That changes the job. A multiple-choice question has a right letter, so a checker can mark 282 of the 285 prompts. The judge is needed for two other things: the 3 open-ended prompts, and the **thinking** behind each letter.
+The 282 questions are the MMLU professional accounting test ([`cais/mmlu`](https://huggingface.co/datasets/cais/mmlu/viewer/professional_accounting), subject `professional_accounting`, test split). Each has four options and one right answer, so a letter checker can mark every one.
 
 :::brain-power Before you read on
-A model writes three paragraphs of careful reasoning and then names the wrong option. Should the reasoning score count for something? Now turn it round: a model names the right option after a muddled explanation. Which of the two would you rather have as an accounting assistant?
+Would you expect a model with more parameters to get more of these questions right? Would you expect a model that is allowed to think to do better than one that must answer at once? Make a guess for each, then compare it with the results.
 :::
 
-## Marker 1: the checker
+## What I ran
 
-The checker reads the letter the model chose and compares it with the reference. That would be easy if the prompt asked for a fixed last line, such as "ANSWER: B", the way the 30 questions in part 1 did. These 285 prompts do not ask for one, so every model chose its own way to name a letter. Some discuss every option and then end with "**Correct Option: B**", and some bold a word that happens to start with a letter. My first reader had both mistakes, and I found them only by reading real answers by hand. The reader now takes the last clear statement of a choice, ignores "Option D is incorrect", ignores a bold letter inside a table row or a bold "B:" that labels an option under discussion, and has thirteen small tests, each one a layout that fooled an earlier version. I kept the original prompts so that the results stay comparable with the old benchmark, and that choice is what made the reader hard. Asking for a last line would have made it one line of code.
+Two passes, so that I could separate knowing from thinking:
 
-I sampled answers that the reader marked as naming no letter, and several did name one: "I would choose: B. $500", a boxed "C. $2,000", or a closing line that was simply the option. I added a last look at the final three lines of an answer, used only when nothing else matched. It moved the Qwen2.5 14B from 104 right answers to 126, because that model writes short answers that end on the option itself.
+- **One letter.** The prompt ends with "Reply with only the letter of the correct option". The model gets no room to work anything out.
+- **Brief reasoning.** The prompt ends with "Think it through briefly, then end your reply with a final line in exactly this form: ANSWER: X". The model can reason, and the checker reads the last `ANSWER:` line.
 
-When no clear letter appears, I count the answer as not right. That is a real result: a model that never commits to an option cannot be marked right.
+In part 1 I asked every model to finish with a line in a fixed form, such as "ANSWER: B". The checker only has to find that line and read the letter after it, so it does not have to guess which option a long answer is pointing at.
 
-| Model | Right | Of 282 | Named a wrong letter | Named no letter | Right, of those that named a letter |
-|---|---|---|---|---|---|
-| Qwen3.5 2B | 85 | **30.1%** | 133 | 64 | 39.0% |
-| Llama 3.1 8B | 104 | **36.9%** | 130 | 48 | 44.4% |
-| Qwen3.5 9B | 123 | **43.6%** | 113 | 46 | 52.1% |
-| Gemma 4 12B | 126 | **44.7%** | 136 | 20 | 48.1% |
-| Qwen2.5 14B | 126 | **44.7%** | 139 | 17 | 47.5% |
-| Gemma 4 26B | 134 | **47.5%** | 121 | 27 | 52.5% |
+The runner builds each prompt from the question, its four options and one of those two instructions, and sends it to Ollama with the temperature at 0. This is the core of [run.py](/assets/files/llmbenchmark2/run.py), shortened: the real file also resumes a stopped run and has a DeepSeek branch.
 
-All six are well below what I would want from an assistant. Chance on four options is 25%, and the best model is right on 47.5% of the prompts.
+```python
+INSTR = {
+    "direct": "Reply with only the letter of the correct option (A, B, C or D) and nothing else.",
+    "reason": "Think it through briefly, then end your reply with a final line in exactly this form: ANSWER: X (where X is A, B, C or D).",
+}[mode]
 
-:::watch-it My own limit cut many answers short
-I first capped every reply at 500 tokens, and the cap cut off most of the "no letter" answers of the two Qwen3.5 models. I reran the cut-off answers with a cap of 1500 tokens, and for the Qwen3.5 9B I reran all 285 answers, so that nothing in the table comes from the 500-token run. The rerun helped the Qwen3.5 9B most, from 109 right answers to 123, and the Gemma 4 12B and 26B gained 6 each, from 120 to 126 and from 128 to 134. It did not remove the problem. At 1500 tokens, 35 answers of the Qwen3.5 2B, 35 of the Qwen3.5 9B and 21 of the Llama 3.1 8B were still running when the cap stopped them, and they make up 23, 26 and 20 of those models' "no letter" answers. I have not read them to find out why they run so long.
-:::
-
-## Marker 2: the judge
-
-The judge is Gemma 4 26B. For every answer it sees the question, **the correct answer** and the model's reply. It gives three scores from 1 to 10, Accuracy, Completeness and Clarity, and a verdict: SOUND, SLIP (a small error), FLAWED, or UNSUPPORTED (a claim with no reasoning behind it).
-
-The checker and the judge have separate jobs. The checker answers "did the model land on the key?", with a letter and no opinion. The judge answers "how good was the thinking?", and it has the key so that it does not have to solve the problem itself.
-
-| Model | Accuracy | Completeness | Clarity | SOUND | SLIP | FLAWED | UNSUPPORTED |
-|---|---|---|---|---|---|---|---|
-| Qwen3.5 2B | 3.7 | 8.0 | 9.1 | 77 | 6 | 202 | 0 |
-| Llama 3.1 8B | 4.0 | 5.4 | 7.9 | 83 | 7 | 192 | 3 |
-| Qwen3.5 9B | 5.2 | 8.9 | 9.3 | 128 | 1 | 155 | 1 |
-| Gemma 4 12B | 4.9 | 8.6 | 9.3 | 115 | 4 | 163 | 3 |
-| Qwen2.5 14B | 4.6 | 6.3 | 8.6 | 105 | 0 | 176 | 4 |
-| Gemma 4 26B | 5.3 | 9.0 | 9.6 | 131 | 2 | 148 | 4 |
-
-(Each row covers all 285 answers. Scores are means.)
-
-Completeness follows length. The Llama 3.1 8B and the Qwen2.5 14B write short answers, a median of 102 and 87 tokens, and score 5.4 and 6.3 for Completeness. The other four write a median of 257 to 301 tokens and score 8.0 to 9.0.
-
-## One picture with four axes
-
-The radar below puts the checker beside the three judge scores. I multiplied the scores by ten so that all four axes run from 0 to 100.
-
-```mermaid
-%%{init: {"theme": "neutral", "themeVariables": {"cScale0": "#ea580c", "cScale1": "#2563eb", "cScale2": "#16a34a", "cScale3": "#9333ea", "cScale4": "#0891b2", "cScale5": "#dc2626", "radar": {"curveOpacity": 0.08, "curveStrokeWidth": 3, "axisColor": "#475569", "axisStrokeWidth": 1.5, "axisLabelFontSize": 15, "graticuleColor": "#cbd5e1", "graticuleStrokeWidth": 1, "legendFontSize": 15, "legendBoxSize": 15}}, "radar": {"width": 520, "height": 520, "marginTop": 80, "marginBottom": 60, "marginLeft": 150, "marginRight": 220, "axisLabelFactor": 1.1}}}%%
-radar-beta
-    title Checker and judge, 285 accounting prompts
-    axis ra["Right answer (checker)"], ac["Accuracy (judge)"], co["Completeness (judge)"], cl["Clarity (judge)"]
-    curve q2["Qwen3.5 2B"]{30, 37, 80, 91}
-    curve l8["Llama 3.1 8B"]{37, 40, 54, 79}
-    curve q9["Qwen3.5 9B"]{44, 52, 89, 93}
-    curve g12["Gemma 4 12B"]{45, 49, 86, 93}
-    curve q14["Qwen2.5 14B"]{45, 46, 63, 86}
-    curve g26["Gemma 4 26B"]{48, 53, 90, 96}
-    max 100
-    min 0
-    graticule polygon
-    ticks 4
-    showLegend true
+for i, o in enumerate(orig):
+    opts = "\n".join(f"{'ABCD'[k]}. {c}" for k, c in enumerate(o["choices"]))
+    prompt = f"{o['question']}\n\nOptions:\n{opts}\n\n{INSTR}"
+    body = {"model": model, "messages": [{"role": "user", "content": prompt}], "stream": False,
+            "options": {"temperature": 0, "seed": 1, "num_predict": 12 if mode == "direct" else NUM_PREDICT}}
+    reply = json.load(urllib.request.urlopen(request(body)))
+    record = {"i": i, "key": "ABCD"[o["answer"]], "text": reply["message"]["content"]}
 ```
 
-The shape is the same for every model. Clarity sits near the rim, Completeness follows the length of the answer, and the two axes that depend on the key, Right answer and Accuracy, stay in the lower half. A model can write a clear, complete explanation and still land on the wrong option. The Gemma 4 26B covers the most area, and no model reaches 60 on either key axis.
+The "direct" pass caps the answer at 12 tokens, and the "reason" pass at the cap I set for that model.
 
-Once the judge holds the key, its Accuracy score tracks the checker. That is the point of giving it the key, and it also means Accuracy adds little to the Right answer axis. The new information is in the cases where the two markers differ.
+I ran fifteen models at temperature 0. Thirteen ran locally through Ollama on my Mac, from a 3B Llama to the 72B Qwen2.5 and the 70B Llama 3.3. Two ran through the DeepSeek API: `deepseek-flash` and `deepseek-v4-pro`. For those two I turned thinking off in the one-letter pass.
 
-## Where the two markers disagree
+The checker is [grade.py](/assets/files/llmbenchmark2/grade.py), shown here without the scoring table. It takes the last `ANSWER:` line, and only if there is none does it fall back to a longer reader, [reader.py](/assets/files/llmbenchmark2/reader.py), that looks for phrases such as "the correct answer is":
 
-I split each model's 282 multiple-choice answers four ways: did the checker mark it right, and did the judge call the thinking sound (SOUND or SLIP) or flawed (FLAWED or UNSUPPORTED)?
+```python
+def letter(text, mode):
+    m = re.findall(r"ANSWER:\s*\**\s*\(?([A-D])\b", text, re.I)
+    if m:
+        return m[-1].upper()
+    if mode == "direct":
+        m = re.match(r"^\W*([A-D])\b", text.strip(), re.I)
+        if m:
+            return m.group(1).upper()
+    return read(text)          # None when no letter can be found
 
-| Model | Right, sound thinking | Right, flawed thinking | Wrong, sound thinking | Wrong, flawed thinking |
+right = sum(letter(r["text"], mode) == r["key"] for r in records)
+```
+
+An answer with no clear letter counts as wrong. Thinking models can spend their whole allowance thinking and never reach the last line, so the cap on the answer length matters. I gave the Qwen3 and Qwen3.8 models 4,000 tokens, `deepseek-r1` and `qwq` 6,000 tokens, and the rest 1,500. Models that were cut off are in the "no letter" column.
+
+## The results
+
+| Model | Reasoning: right of 282 | No letter | One letter: right of 282 | Reasoning time |
 |---|---|---|---|---|
-| Qwen3.5 2B | 71 | 14 | 12 | 185 |
-| Llama 3.1 8B | 87 | 17 | 2 | 176 |
-| Qwen3.5 9B | 118 | 5 | 10 | 149 |
-| Gemma 4 12B | 114 | 12 | 4 | 152 |
-| Qwen2.5 14B | 105 | 21 | 0 | 156 |
-| Gemma 4 26B | 128 | 6 | 4 | 144 |
+| deepseek-flash (API) | **97.9%** | 0 | 84.0% | 15 min |
+| deepseek-v4-pro (API) | **97.5%** | 5 | 80.1% | 41 min |
+| Qwen3.8 27B (MLX) | 93.6% | 1 | 73.0% | 129 min |
+| QwQ 32B | 86.5% | 16 | no answer | 792 min |
+| Qwen3 14B | 85.1% | 8 | 61.7% | 165 min |
+| Qwen2.5 72B | 85.1% | 1 | 70.9% | 285 min |
+| Llama 3.3 70B | 84.8% | 2 | 69.9% | 565 min |
+| DeepSeek-R1 32B | 83.3% | 11 | no answer | 479 min |
+| Qwen3 8B | 80.1% | 19 | 52.5% | 134 min |
+| Qwen2.5 14B | 79.4% | 0 | 63.1% | 53 min |
+| Gemma 3 27B | 78.4% | 1 | 62.4% | 103 min |
+| gpt-oss 20B | 78.0% | 25 | no answer | 38 min |
+| Gemma 3 12B | 63.5% | 1 | 52.8% | 43 min |
+| Llama 3.1 8B | 51.4% | 23 | 47.9% | 34 min |
+| Llama 3.2 3B | 46.8% | 19 | 41.1% | 14 min |
 
-Two cells matter, and both are small.
+(Chance is 25%. In the one-letter pass, `deepseek-r1`, `qwq` and `gpt-oss` returned an empty reply to all 282 questions: they are thinking models, and the 12 tokens I allowed were spent thinking before any letter appeared. That pass tells me nothing about them, so the table says "no answer" and not 0%.)
 
-**Right answer, flawed thinking** is the lucky guess. The Qwen2.5 14B has 21 of them, against 105 right answers with sound thinking. A checker alone would have counted every one as a success. The judge takes the credit from 5 to 21 answers per model, 75 in all.
+Four things stand out.
 
-**Wrong answer, sound thinking** is the one that worries me, and it is mostly not what it looks like. Of the 32 answers in this cell across the six models, 29 named no letter. They are sound working that stopped before the model committed to an option, and 6 of the 32 ran into my token cap. The judge was right that the thinking was fine, and the checker was right that the model had not answered. With the key in its hands, the judge approved a wrong letter only 3 times in 1,692 answers. I read two of the three, both from the Gemma models. In each, the model wrote that the key looked wrong, and gave its own figure.
+**More parameters was not the main thing.** (A parameter is one of the numbers a model learned in training. "72B" means 72 billion of them.) The 72B Qwen2.5 and the 14B Qwen3 both score 85.1%. The 70B Llama 3.3 scores 84.8%, and the 27B Qwen3.8 beats all three by 8 points or more. A newer family at 14B matched an older family at 72B, and used about a fifth of the memory.
 
-I also read the other answers where the judge and the checker disagreed while I was building the reader. Each reading found a mistake.
+**Letting the model think was worth 10 to 25 points.** For the models that can do both, the reasoning pass beat the one-letter pass by 11 points for Gemma 3 12B, 14 for Qwen2.5 72B, 16 for Qwen2.5 14B, 21 for Qwen3.8 27B and 23 for Qwen3 14B. The small Llama models gained only 4 to 6. The one-letter numbers also show how little the 70B models know without thinking: both land near 70%.
 
-**The checker misread several.** In my first run, the Qwen3.5 9B answered a question about which segments Swift Co. must disclose. Its table showed segments A and B passing the 10% tests and C failing, and the reply was cut off in the middle of "Segments A and B meet the quantitative thresholds". The reference is A, and the model was right. My reader had picked up the bold **C** in the last table row as the choice. Three more cases fooled it the same way: a bold "**B:**" that labelled an option under discussion, "Correct Mathematical Choice: D" with a word between "Correct" and "Choice", and "(Option D)" in brackets after "the correct value is". I fixed the reader each time and added a test, and the counts above are from the fixed reader. A fifth kind surfaced only when I sampled the "no letter" answers: a choice stated in the closing lines, as "I would choose: B. $500". My first fix for that went too far, because a bracketed "(D)" in a sentence that said option D was wrong made the reader choose D. I dropped that pattern and added a test for it.
+**Thinking costs time, and more thinking is not always better.** QwQ 32B spent about 13 hours and 1,800 tokens an answer to reach 86.5%. Qwen3.8 27B took 2 hours and 800 tokens an answer to reach 93.6%. The long thinkers also hit my caps: gpt-oss 20B, Qwen3 8B and QwQ lost 25, 19 and 16 answers to "no letter", so their scores are a little lower than they would be with a larger cap.
 
-:::watch-it The judge disagreed with itself, and I think the key is wrong
-The question asks which technique is *least* useful to a manager whose critical machine has limited capacity. The key says A, the theory of constraints. Three models answered B, economic order quantity, and explained that it "offers no direct guidance" for a capacity problem. The judge had the key in front of it. It gave the two Gemma answers an Accuracy of 1 and a verdict of FLAWED. It gave the Qwen3.5 9B's B answer 10 for Accuracy, 10 for Completeness, 10 for Clarity and a verdict of SOUND. I read the key as an error, because the theory of constraints is exactly what that manager needs. But the judge treated the same answer in two opposite ways, and I have not been able to check the key against its source.
-:::
-
-Both markers make mistakes, and so can the answer key. That is a reason to read a sample by hand.
-
-## Can I trust the judge?
-
-I tested it directly. I took 23 answers that the 9B had right in its new run, changed one number in each (the first figure after an equals sign, or a plus sign flipped) and asked the judge, with the key, to review the damaged copy as well as the original.
-
-| | With the key |
-|---|---|
-| Originals rated SOUND or SLIP | 23 of 23 |
-| Damage caught (damaged copy SLIP or FLAWED) | 7 of 23 |
-| Damaged copy rated FLAWED | 1 of 23 |
-| Mean fall in Accuracy | 0.8 points |
-
-The judge caught the damage in 30% of the copies, and missed the other 16. A damaged answer still ends on the right letter, so the key tells the judge that the answer is right. Six of the 7 catches were a SLIP, a small error, and only one was FLAWED. In 16 of the 23 copies the damaged answer was still rated SOUND, and in 21 the Accuracy score stayed at 9 or 10.
-
-So the judge is a good check on the conclusion and a weak check on the arithmetic. I use its verdicts to find lucky guesses and fluent wrong answers, and I do not trust it to find a single wrong number. That test used 23 answers from one model and one kind of damage, so the 30% is a rough figure. A first version of the test, on an earlier run of the same model, caught 11 of 23.
+**The hosted models were far ahead, and the "flash" one won.** `deepseek-flash` finished all 282 questions in 15 minutes and `deepseek-v4-pro` in 41, and the "flash" model scored 0.4 points higher. They are 1 question apart, and I would not read that as flash being better.
 
 :::no-dumb-questions
-**Q: Why give the judge the right answer? Is it not then a second checker?**
+**Q: Why not just use the best model?**
 
-A: Partly. Its Accuracy score tracks the checker, and I accept that. What it adds is Completeness and Clarity, a verdict on the working, and a catch for the lucky guesses. Without the key, a judge would have to solve the problem itself, and a small model judging accounting will sometimes be wrong about the answer.
+A: The best model is a paid API, and the question is what I can run on my own machine. The local choice that gave the most right answers was Qwen3.8 27B. Qwen3 14B matched the 72B models with far less memory.
 
-**Q: Why not use the checker alone, since 282 of 285 prompts have a key?**
+**Q: Is 97.9% real? Could the test be in the training data?**
 
-A: Because the checker cannot see the 75 lucky guesses across the six models, and it cannot mark the 3 open-ended prompts at all. It also scores a model with no letter as simply wrong, and cannot say whether that model reasoned well.
+A: It could be. MMLU is a public test that has been online for years, and I cannot rule out that a model saw these questions. Read the table as a ranking on this test, not as a promise about your own books.
 :::
 
-## The open-ended prompts: the judge is the only option
+## Do the models get the same questions right?
 
-The three bank reconciliation prompts have no letter. There is nothing for the checker to read, so the judge is the only marker, and I treat its output with the care that the last section earned.
+I wanted to know whether the models share their hard questions, or whether each one fails on its own. I took the 15 reasoning runs, which all have 282 answers, and counted for each question how many models got it right.
 
-Across six models and three prompts, the judge rated 14 of 18 answers FLAWED. The four it called SOUND were the Llama 3.1 8B on the third prompt, and the Qwen3.5 9B and both Gemma models on the second. The judge's one-line reasons are specific. For the Qwen3.5 2B on the second prompt: "The student fails to reach the correct conclusion and incorrectly identifies reconciled items as reconciling items." For the Qwen3.5 9B on the third: "The student invented transactions and errors to force a reconciliation that is mathematically impossible with the given data."
+| Models right | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 or fewer |
+|---|---|---|---|---|---|---|---|---|---|
+| Questions | 61 | 60 | 37 | 31 | 20 | 17 | 11 | 12 | 33 |
 
-Three prompts cannot rank six models, and I do not rank them. They show that most models fail the one task here that looks most like real month-end work. The judge is itself a Gemma 4 model, so I would read its verdicts for the Gemma models with a doubt about family bias. Two of the three SOUND verdicts on the second prompt went to Gemma answers, but the third went to a Qwen answer, and the Qwen3.5 9B has a higher Accuracy mean than the Gemma 4 12B. I cannot rule bias out. The checker does not share it, and it also puts the Gemma 4 26B first.
+(The seven-or-fewer bucket is 4 + 13 + 5 + 7 + 1 + 2 + 1 + 0 questions, for 7, 6, 5, 4, 3, 2, 1 and 0 models.)
+
+**61 questions (22%) were answered correctly by all 15 models, and no question was missed by all 15.**
+
+The interesting part is who fails together. I measured how alike two models' right-and-wrong patterns are with phi: 1 means identical patterns and 0 means unrelated. Pairs from the same family score higher than pairs from different families. The 26 same-family pairs average 0.35 and the 79 different-family pairs average 0.25. (I counted DeepSeek-R1 32B with the Qwen models, because it is a distilled Qwen.) The most alike pair is Qwen2.5 14B and Qwen2.5 72B, at 0.50. The least alike is `deepseek-flash` against the 3B Llama, at 0.04. A model from the same family as one that is wrong is more likely to be wrong on the same question, and that is why a second opinion from another family is worth more than one from the same family.
+
+:::under-the-hood What phi is
+Phi answers one question: when one model gets a question wrong, is the other model more likely to get it wrong too? It is the ordinary correlation, applied to a list of right and wrong marks.
+
+For two models I sort the 282 questions into four boxes:
+
+| Qwen2.5 14B and Qwen2.5 72B | 72B right | 72B wrong |
+|---|---|---|
+| **14B right** | 211 | 13 |
+| **14B wrong** | 29 | 29 |
+
+Both models are right most of the time, so they would agree often even if they were unrelated. Phi removes that effect by comparing the diagonal (both right, both wrong) with the other two boxes, and scaling the result:
+
+phi = (211 × 29 − 13 × 29) ÷ √(224 × 58 × 240 × 42) = 5,742 ÷ 11,444 = **0.50**
+
+- **1** means the two models are right and wrong on exactly the same questions.
+- **0** means that knowing one model's mark tells you nothing about the other's.
+- **Below 0** would mean one tends to be right where the other is wrong. No pair here goes below 0.
+
+Compare `deepseek-flash` with the 3B Llama. Llama is wrong on 150 of the 282 questions, and DeepSeek is wrong on only 6. If DeepSeek's mistakes had nothing to do with Llama's, I would expect about 3 of those 6 to be among Llama's 150, and 4 are. Phi is 0.04.
+:::
+
+The counting is a few lines of [overlap.py](/assets/files/llmbenchmark2/overlap.py), shortened here. It marks every answer right or wrong with the same `letter()` function, adds up the models that got each question right, and measures how alike two models are with phi:
+
+```python
+right = {}                                   # model -> {question number: True or False}
+for path in glob.glob("runs/*__reason.jsonl"):
+    records = [json.loads(line) for line in open(path)]
+    if len(records) == 282:                  # only models that answered every question
+        right[model_of(path)] = {r["i"]: letter(r["text"], "reason") == r["key"] for r in records}
+
+count = [sum(right[m][i] for m in right) for i in range(282)]   # models right, per question
+print(collections.Counter(count))            # how many questions had 15, 14, 13 ... models right
+
+def phi(a, b):
+    n11 = sum(right[a][i] and right[b][i] for i in range(282))              # both right
+    n10 = sum(right[a][i] and not right[b][i] for i in range(282))          # only a right
+    n01 = sum(right[b][i] and not right[a][i] for i in range(282))          # only b right
+    n00 = 282 - n11 - n10 - n01                                             # both wrong
+    d = math.sqrt((n11 + n10) * (n01 + n00) * (n11 + n01) * (n10 + n00))
+    return (n11 * n00 - n10 * n01) / d
+```
+
+The questions that most models miss are interesting. Four stand out. Three were answered correctly by three or fewer models, and the fourth by only four:
+
+- **A question about audit engagements.** "Which condition would most likely raise questions about the integrity of management?" The key says B, that the CPA is not permitted to see the senior managers' salaries. Fourteen of the 15 models chose C, substantial inventory write-offs just before each year end. Only `deepseek-flash` agreed with the key. I think C is a defensible answer, and I would not call the 14 wrong without seeing the source.
+- **A question about compilations.** "Which factor would most likely cause an accountant not to accept an engagement to compile the financial statements of a nonissuer?" The key says B, that management does not investigate reports of asset misappropriation. Thirteen models chose C, that the entity plans to leave out nearly all the disclosures GAAP requires. Only the two DeepSeek models matched the key.
+- **A bond question** about straight-line against effective interest amortisation, where six models never reached a letter and six chose A. Only `deepseek-flash` and Qwen3.8 27B got it right.
+- **A question about comparing investment projects.** The question is "When comparing investment projects:" with four options. The key says C, "The IRR never changes the ranking of the projects". IRR is the internal rate of return, and it can rank projects differently from NPV, so I do not see how C is true. Only 4 of the 15 models chose C. I think the key is wrong here, but I have not checked the source.
+
+:::watch-it A question that most models miss may have a bad key
+When 14 of 15 models choose the same wrong answer, the question is either hard in the same way for every model, or the key is arguable. Both happen in this test. I cannot tell which from the models alone. Read the question, and check the source, before you decide what a "hard" question tells you.
+:::
+
+The two DeepSeek models miss different questions. `deepseek-flash` missed 6 and `deepseek-v4-pro` missed 7, and only 2 questions appear on both lists. Between them they got 271 questions right together, and missed 2 together.
 
 ## What I take from this
 
-- **The checker and the judge measure different things,** and a single score would hide the difference. Every model writes clear explanations (Clarity 7.9 to 9.6) and none reaches 50% right.
-- **The checker is only as good as its reader and its key.** I fixed the reader several times after reading real answers, and one fix moved a model by 22 right answers. I also found a probable error in the key.
-- **The judge checks the conclusion better than the steps.** It caught a planted number error in 30% of the copies.
-- **My own settings can distort the result.** A 500-token cap turned working answers into "no letter", and the rerun with a larger cap gave the Qwen3.5 9B 14 more right answers.
+- **Model generation and the room to think mattered more than the number of parameters.** A 14B model from a newer family matched a 72B model from an older one, and letting every model reason added 10 to 25 points.
+- **Models fail together.** 22% of the questions were easy for all fifteen, and none were impossible for all fifteen. A second opinion from a different family is worth more than a second run from the same one.
+- **The answer cap shapes the result.** Models that think can hit the cap and lose the answer, so the bottom of the table is a little pessimistic for them.
 
 :::bullet-points What to remember
-- 282 of the 285 prompts are multiple choice, so a letter checker marks almost all of them.
-- Ask the model for a fixed last line, such as "ANSWER: B". Without one, the checker has to guess how each model says it.
-- Count an answer with no clear letter as not right, and say how many there were and why.
-- Give the judge the key, and plant faults to see what it catches. Mine missed seven in ten of the planted number errors.
-- Read a sample of the disagreements by hand. Both markers make mistakes, and so can the answer key.
-- Set the answer limit with care, and rerun the cut-off answers with a larger one. A cap that cuts the model off scores as a wrong answer.
+- Ask for a fixed last line, such as "ANSWER: X", and the checker becomes one line of code.
+- Run a one-letter pass and a reasoning pass. The gap shows how much the model gained by thinking.
+- Count an answer with no letter as wrong, and say how many there were.
+- When many models choose the same wrong answer, suspect the key before you suspect the models.
 :::
 
 ## What comes next
 
-A different judge, such as a model from another family, would settle the family bias question: the Gemma 4 26B is both a contestant and the judge. I would also read the answers that still run to the 1500-token cap, to find out why they never reach a letter.
+I would like to add a judge model that scores the thinking as well as the letter, from a different family than the models it marks. I would also like to use the open-ended bank reconciliation prompts in the older project, which a letter checker cannot mark.
+
+## The code
+
+These are the files in full. To run one model: `python3 run.py qwen3:14b reason`, then `python3 grade.py` to score every answer file and `python3 overlap.py` to count how many models get each question right.
+
+**run.py asks a model all 282 questions and saves its answers.**
+
+```python
+"""Run clean MMLU professional accounting (282, original keys) through Ollama. usage: run.py MODEL MODE [limit]
+MODE direct: reply with one letter. MODE reason: brief reasoning then 'ANSWER: X'."""
+import json,sys,time,re,urllib.request,os
+model,mode=sys.argv[1],sys.argv[2]; limit=int(sys.argv[3]) if len(sys.argv)>3 else 0
+orig=json.load(open('orig.json'))
+out=f"runs/{model.replace('/','_').replace(':','_')}__{mode}.jsonl"
+os.makedirs('runs',exist_ok=True)
+done={json.loads(l)['i'] for l in open(out)} if os.path.exists(out) else set()
+INSTR={'direct':"Reply with only the letter of the correct option (A, B, C or D) and nothing else.",
+       'reason':"Think it through briefly, then end your reply with a final line in exactly this form: ANSWER: X (where X is A, B, C or D)."}[mode]
+def deepseek_key():
+    k=os.environ.get("DEEPSEEK_API_KEY")
+    if k: return k.strip()
+    p=os.path.expanduser("~/Documents/GitHub/llm-accounting-benchmark/.env")
+    if os.path.exists(p):
+        for l in open(p):
+            if l.startswith("DEEPSEEK_API_KEY="): return l.split("=",1)[1].strip().strip('"').strip("'")
+    return None
+def call_deepseek(prompt,num_predict):
+    key=deepseek_key()
+    if not key: sys.exit("DEEPSEEK_API_KEY not set (environment or llm-accounting-benchmark/.env)")
+    name=model.split(":",1)[1]
+    body={"model":name,"messages":[{"role":"user","content":prompt}],"max_tokens":num_predict}
+    body["temperature"]=0
+    if mode=="direct": body["thinking"]={"type":"disabled"}
+    req=urllib.request.Request("https://api.deepseek.com/chat/completions",json.dumps(body).encode(),{"Content-Type":"application/json","Authorization":"Bearer "+key})
+    r=json.load(urllib.request.urlopen(req,timeout=1800))
+    return {"message":{"content":r["choices"][0]["message"].get("content") or "","thinking":r["choices"][0]["message"].get("reasoning_content") or ""},"eval_count":r.get("usage",{}).get("completion_tokens")}
+def call(prompt,num_predict,think):
+    if model.startswith("deepseek:"):
+        return call_deepseek(prompt,num_predict if mode=="direct" else 8000)
+    body={"model":model,"messages":[{"role":"user","content":prompt}],"stream":False,"options":{"temperature":0,"seed":1,"num_predict":num_predict}}
+    if think is not None: body["think"]=think
+    req=urllib.request.Request("http://localhost:11434/api/chat",json.dumps(body).encode(),{"Content-Type":"application/json"})
+    return json.load(urllib.request.urlopen(req,timeout=1800))
+n=0
+with open(out,'a') as f:
+    for i,o in enumerate(orig):
+        if limit and n>=limit: break
+        n+=1
+        if i in done: continue
+        opts="\n".join(f"{'ABCD'[k]}. {c}" for k,c in enumerate(o['choices']))
+        prompt=f"{o['question']}\n\nOptions:\n{opts}\n\n{INSTR}"
+        t=time.time()
+        try:
+            think=False if mode=='direct' else None
+            try: r=call(prompt,12 if mode=='direct' else int(os.environ.get('NUM_PREDICT','1500')),think)
+            except urllib.error.HTTPError as e:
+                r=call(prompt,12 if mode=='direct' else int(os.environ.get('NUM_PREDICT','1500')),None)
+            txt=r['message'].get('content','')
+            rec={"i":i,"key":'ABCD'[o['answer']],"text":txt,"thinking_len":len(r['message'].get('thinking','') or ''),"tokens":r.get('eval_count'),"secs":round(time.time()-t,1)}
+        except Exception as e:
+            rec={"i":i,"key":'ABCD'[o['answer']],"text":"","error":str(e)[:200]}
+        f.write(json.dumps(rec)+"\n"); f.flush()
+print('done',model,mode)
+```
+
+**reader.py finds a letter in an answer that has no ANSWER: line.**
+
+```python
+import re
+L='[A-D]'
+NEG=re.compile(r'(incorrect|wrong|not correct|not the|eliminate|rule out|ruled out|false|invalid|cannot be|can\'t be|isn\'t|is not)',re.I)
+PATS=[
+ # strongest: explicit final statements
+ (r'(?:final answer|answer|correct (?:option|answer|choice)|correct mathematical choice|i would choose|i choose|i\'d choose|best (?:option|answer|choice)|the (?:answer|choice) is|therefore,? (?:the )?(?:answer|option|choice) is)\W{0,12}(?:is\W{0,6})?(?:option\W{0,3})?\(?\**('+L+r')\b(?!\w)',),
+ (r'\\boxed\{\s*\\?(?:text\{)?\(?('+L+r')\b',),
+ (r'\*\*\s*(?:option\s*)?('+L+r')\s*[.:)]?\s*[^\n*]{0,60}\*\*\s*$',),
+]
+def read(text):
+    t=text.strip()
+    if not t: return None
+    low=t
+    cands=[]
+    for (p,) in PATS:
+        for m in re.finditer(p,low,re.I|re.M):
+            ctx=low[max(0,m.start()-40):m.end()+30]
+            if re.search(r'(option|choice)\s*'+m.group(1)+r'\b[^.\n]{0,40}(incorrect|wrong|not)',ctx,re.I): continue
+            cands.append((m.start(),m.group(1).upper()))
+    if cands: return max(cands)[1]
+    # last three lines fallback: line that starts with letter or "Option X"
+    tail=[l for l in t.split('\n') if l.strip()][-3:]
+    for l in reversed(tail):
+        m=re.match(r'^\W*(?:option\s*)?\(?('+L+r')\)?[.:)\s]',l.strip(),re.I) 
+        if m and not NEG.search(l[:40]): return m.group(1).upper()
+        m=re.search(r'(?:option|choice)\s*\(?('+L+r')\b',l,re.I)
+        if m and not NEG.search(l): return m.group(1).upper()
+    return None
+```
+
+**grade.py scores every answer file.**
+
+```python
+import json,re,sys,glob,collections
+sys.path.insert(0,'.')
+from reader import read
+def letter(t,mode):
+    m=re.findall(r'ANSWER:\s*\**\s*\(?([A-D])\b',t,re.I)
+    if m: return m[-1].upper()
+    if mode=='direct':
+        m=re.match(r'^\W*([A-D])\b',t.strip(),re.I)
+        if m: return m.group(1).upper()
+    return read(t)
+rows=[]
+for p in sorted(glob.glob('runs/*.jsonl')):
+    mode=p.split('__')[1][:-6]; model=p.split('/')[1].split('__')[0]
+    recs=[json.loads(l) for l in open(p)]
+    n=len(recs); ok=sum(1 for r in recs if letter(r['text'],mode)==r['key']); nl=sum(1 for r in recs if letter(r['text'],mode) is None)
+    secs=sum(r.get('secs',0) for r in recs); tok=sum(r.get('tokens') or 0 for r in recs)
+    rows.append((ok/max(n,1),model,mode,n,ok,nl,secs,tok))
+for r in sorted(rows,reverse=True): print(f"{r[1]:28s} {r[2]:7s} n={r[3]:3d} right={r[4]:3d} ({100*r[0]:.1f}%) noletter={r[5]:3d} time={r[6]/60:.1f}min tokens/answer={r[7]/max(r[3],1):.0f}")
+```
+
+**overlap.py counts how many models get each question right.**
+
+```python
+import json,glob,re,sys,collections,math
+sys.path.insert(0,'.')
+from grade import letter
+M={}
+for p in sorted(glob.glob('runs/*__reason.jsonl')):
+    name=p.split('/')[1].split('__')[0]
+    recs=[json.loads(l) for l in open(p)]
+    if len(recs)<282: continue
+    M[name]={r['i']:(letter(r['text'],'reason')==r['key']) for r in recs}
+names=list(M); N=282
+print(len(names),'models with all 282 reasoning answers')
+cnt=[sum(M[n][i] for n in names) for i in range(N)]
+K=len(names)
+dist=collections.Counter(cnt)
+print('\nHow many of the',K,'models get each question right:')
+for k in range(K+1): print(f'  {k:2d} right: {dist[k]:3d} questions', '#'*(dist[k]//2))
+print('\nall right:',dist[K],' all wrong:',dist[0],' (',round(100*dist[K]/N),'% all right,',round(100*dist[0]/N,1),'% nobody)')
+# local only vs hosted
+loc=[n for n in names if not n.startswith('deepseek_')]
+cl=[sum(M[n][i] for n in loc) for i in range(N)]
+print('\nlocal models only (',len(loc),'): all right',sum(1 for c in cl if c==len(loc)),' all wrong',sum(1 for c in cl if c==0))
+# pairwise agreement: P(both right)/ phi correlation
+def phi(a,b):
+    x=[M[a][i] for i in range(N)];y=[M[b][i] for i in range(N)]
+    n11=sum(1 for u,v in zip(x,y) if u and v);n10=sum(1 for u,v in zip(x,y) if u and not v);n01=sum(1 for u,v in zip(x,y) if not u and v);n00=N-n11-n10-n01
+    d=math.sqrt((n11+n10)*(n01+n00)*(n11+n01)*(n10+n00))
+    return (n11*n00-n10*n01)/d if d else 0
+import itertools
+cors=[(phi(a,b),a,b) for a,b in itertools.combinations(names,2)]
+print('\nCorrelation of right/wrong between models (phi, 1 = identical pattern, 0 = unrelated):')
+print('  mean',round(sum(c[0] for c in cors)/len(cors),2),' min',round(min(cors)[0],2),min(cors)[1:],' max',round(max(cors)[0],2),max(cors)[1:])
+# expected under independence: for each question P(right)=per-model accuracy; compare observed "nobody right" etc
+acc={n:sum(M[n].values())/N for n in names}
+exp_all_wrong=sum(math.prod(1-acc[n] for n in names) for i in range(N))
+exp_all_right=sum(math.prod(acc[n] for n in names) for i in range(N))
+print('\nIf models were independent, expect',round(exp_all_wrong,1),'questions nobody gets right and',round(exp_all_right,1),'all right; observed',dist[0],'and',dist[K])
+json.dump({'cnt':cnt,'names':names},open('overlap.json','w'))
+```
 
 ## References
 
 - [LLM Benchmarking](/posts/llmbenchmark/): part 1, with 30 questions and a checker
-- [llm-accounting-benchmark](https://github.com/Haddley/llm-accounting-benchmark): the 285 prompts and the rubric
+- [llm-accounting-benchmark](https://github.com/Haddley/llm-accounting-benchmark): the original project, now with a DeepSeek provider
+- [cais/mmlu](https://huggingface.co/datasets/cais/mmlu): the test, `professional_accounting` subject

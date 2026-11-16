@@ -46,7 +46,7 @@ A: PCA is principal component analysis. Each model has a score on every question
 
 ## Questions that know their own answers
 
-The big project's questions come with an ideal answer written in prose, and a model can answer in any shape, so marking takes judgement. That is why it needs a judge.
+The big project's prompts are almost all multiple choice, so a letter checker can mark nearly all of them. A judge is still needed for the three open-ended prompts and for the quality of the explanation, because a model can answer in any shape and explaining takes judgement.
 
 I took the opposite route. [questions.py](/assets/files/llmbenchmark/questions.py) builds 30 questions with code, and the same code works out the right answer. There are six topics, picked to echo areas the big project covers (bank reconciliation, depreciation, GST, margins, financial statements and inventory), and five levels in each. Level 1 needs one step. Level 5 needs five.
 
