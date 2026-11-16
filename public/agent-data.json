@@ -24,14 +24,14 @@
     },
     {
       "slug": "llmbenchmark2",
-      "title": "LLM Benchmarking, Part 2: A Checker and a Judge",
-      "description": "Six models answer the same 285 accounting prompts. A few lines of code mark the letter right or wrong, and a judge model that holds the answer key scores the thinking.",
+      "title": "LLM Benchmarking, Part 2: Fifteen Models, One Answer Key",
+      "description": "I ran 282 accounting questions through fifteen models, found that my first answer key did not match the questions, and measured which questions every model gets right.",
       "date": "2026-11-13",
       "categories": [
         "AI",
         "Python"
       ],
-      "tags": "benchmarking, evaluation, llm-judge, ollama, accounting, qwen"
+      "tags": "benchmarking, evaluation, ollama, deepseek, accounting, qwen"
     },
     {
       "slug": "llmbenchmark",
@@ -3357,5 +3357,5 @@
       "tags": "rest-api, node, express"
     }
   ],
-  "generatedAt": "2026-11-14T05:12:28.099Z"
+  "generatedAt": "2026-11-16T15:19:44.747Z"
 }

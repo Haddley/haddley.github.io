@@ -2,45 +2,42 @@
 type: concept
 slug: running-models-locally
 title: "Running models locally with Ollama"
-description: "I use Ollama to serve local models for various applications, ranging from automated coding tasks to interactive blog assistants."
+description: "I have explored running models locally using Ollama to power various applications, including a blog assistant and a game-building harness."
 posts: [llmbenchmark, localagent2, deepseekharnesshybrid, deepseekharnessollama, orchestration1, orchestration3, rag1, agenticaiforprofessionals2, localagent, LLM-Wiki]
 status: current
-checked: "2026-11-12"
-source_hash: "ce2bed38df9c"
+checked: "2026-11-16"
+source_hash: "fe8bc03ec7dd"
 generated_by: gemma4:12b
 ---
 
-**Summary.** I use Ollama to serve local models for various applications, ranging from automated coding tasks to interactive blog assistants. While local models provide privacy and cost benefits, they require more precise instructions and smaller, well-defined tasks to perform reliably compared to larger cloud models.
+**Summary.** I have explored running models locally using Ollama to power various applications, including a blog assistant and a game-building harness. These experiments demonstrate that while local models are capable of complex tasks, they require specific architectural choices like detailed documentation and strict context management to remain reliable.
 
 ## The idea
-- Local models via Ollama can successfully perform complex tasks like building games when provided with highly detailed specifications.
-- Smaller local models are often more suitable for real-time interactions, but they require more detailed documentation than cloud models.
-- A local-first architecture can provide a provider-agnostic layer that ensures citations remain grounded in retrieved data.
-- Local models are reliable for specific, small tasks that have only one thing to get right.
-- Local models can serve as backends for browser-based agent loops to avoid hardware-specific issues like lost WebGPU contexts.
+- Local models can serve as backends for interactive agents and tools when hosted via Ollama.
+- Smaller local models require more detailed specifications and documentation than larger cloud models to succeed.
+- Local execution helps avoid hardware-specific issues like WebGPU context loss during live chat.
+- Success with local models depends on keeping tasks small and well-defined to ensure reliability.
 
 ## Claims
-- The local model produced a working game that matches the specifications.
+- I tested whether the DeepSeek Harness can function using a local model served via Ollama instead of the DeepSeek cloud API.
   > "The screen matched the specification: five rows of aliens, the red UFO crossing the top, arched green shields taking damage, the score and wave counter, and the lives shown as small cannons." — deepseekharnessollama
 - The local model required more detail because a specification for a cloud model is too loose for a 30-billion-parameter model.
   > "A specification good enough for a frontier cloud model can be far too loose for a 30-billion-parameter local model." — deepseekharnessollama
-- The local model successfully processed approximately 2 million tokens with an 81% cache hit rate.
-  > "The local model took just over an hour for the same game." — deepseekharnessollama
+- The local model produced a working game that matches the specifications.
+  > "Apart from blank lines and final newlines, they were the same, line for line, in all 14 files." — deepseekharnessollama
+- The hosted backend avoids WebGPU context loss issues.
+  > "The only reliable fix on that hardware is to switch to the Hosted backend, which bypasses WebGPU entirely and runs natively on my server instead." — localagent
 - Local models are reliable only when the job is small and has one thing to get right.
   > "The local model is reliable when a job is small and has one thing to get right." — deepseekharnesshybrid
-- The system runs entirely locally on a MacBook Air without requiring cloud APIs.
-  > "This post is the actual build: Phases 1 through 3 of that plan, all of it running locally on my 32GB M4 MacBook Air through Docker Compose, with Ollama serving both the chat model and the embeddings — no cloud API required to get a working system end to end." — agenticaiforprofessionals2
-- The hosted backend avoids the issue of WebGPU losing its context on some hardware.
-  > "The only reliable fix on that hardware is to switch to the Hosted backend, which bypasses WebGPU entirely and runs natively on my server instead." — localagent
-- The local model produced the exact same code as the reference build except for minor formatting.
-  > "Apart from blank lines and final newlines, they were the same, line for line, in all 14 files." — deepseekharnessollama
-- The local model did not create any extra files or scripts that were not requested.
-  > "The model also created nothing it was not asked to: no server script, no test files and no plan file of its own." — deepseekharnessollama
+- The local model took over an hour to complete the build while the cloud models finished in minutes.
+  > "The local model took just over an hour for the same game." — deepseekharnessollama
+- The local model successfully processed approximately 2 million tokens with an 81% cache hit rate.
+  > "The status bar recorded 42 steps in a single turn, about 2 million tokens processed, an 81% cache hit rate, and a generation speed of around 22 tokens per second on my M1 Max Mac Studio." — deepseekharnessollama
 
 ## Where the posts differ
-- The requirements for model instructions vary based on the specific task and the size of the model being used.
-  > "A specification good enough for a frontier cloud model can be far too loose for a 30-billion-parameter local model." — deepseekharnessollama
-  > "The local model is reliable when a job is small and has one thing to get right." — deepseekharnesshybrid
+- The blog assistant evolved from a simple two-backend system to a more complex architecture involving a gatekeeper and a custom wiki.
+  > "Post metadata is pre-built at deploy time into agent-data.json, which the component fetches when the panel first opens." — localagent
+  > "The quote is the post's own text by construction, not by the model's good behaviour." — localagent2
 
 ## What I concluded
-Running models locally with Ollama is a viable way to build robust, private, and cost-effective systems. Success depends on matching the complexity of the task to the capabilities of the specific local model and providing detailed documentation to compensate for smaller parameter counts.
+Running models locally with Ollama is a viable way to build private, capable agents for specific tasks. However, you must provide very explicit instructions and manage context carefully to compensate for the limitations of smaller local models.

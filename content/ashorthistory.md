@@ -55,6 +55,10 @@ Microsoft explained that Dynamics 365 users would see that Microsoft were bringi
 
 Microsoft explained that "If you are familiar with the Dynamics 365 platform, you are already familiar with the PowerApps platform and Model-driven Apps."
 
+**In November 2019 Microsoft announced Power Virtual Agents**
+
+Microsoft announced Power Virtual Agents at Ignite 2019 as a no-code way for people who are not developers to build chatbots on the Power Platform. It was in public preview that week and generally available in December 2019.
+
 **In July 2020 Microsoft announced the general availability of Dataverse**
 
 Microsoft explained that "Dataverse is built atop the Common Data Service"
@@ -62,6 +66,10 @@ Microsoft explained that "Dataverse is built atop the Common Data Service"
 **In October 2022 Microsoft announced general availability of Managed Environments**
 
 Managed Environments made it easier to govern low-code apps.
+
+**In November 2023 Microsoft renamed Power Virtual Agents as Microsoft Copilot Studio**
+
+The chatbot product that Microsoft announced in 2019 as Power Virtual Agents became Microsoft Copilot Studio, with generative AI added to it.
 
 :::no-dumb-questions
 **Q: What was Project Green?**
@@ -298,6 +306,12 @@ Model-driven apps run with the new Unified Interface client which provides a res
 Both model-driven and canvas apps allow you to easily build business apps.  They both share access to the Common Data Service providing standard and custom entities.  Canvas apps start with your user experience, crafting a highly tailored interface with the power of a blank canvas and connecting it to 200 data sources. Canvas apps can be built for web, mobile, and tablet applications. Model-driven apps start with your data model – building up from the shape of your core business data and processes in the Common Data Service to model forms, views, and other components. Model-driven apps automatically generate great UI that is responsive across devices.
 
 
+## In November 2019 Microsoft announced Power Virtual Agents
+
+[https://www.microsoft.com/en-us/dynamics-365/blog/business-leader/2019/11/04/announcing-rpa-enhanced-security-no-code-virtual-agents-and-more-for-microsoft-power-platform/](https://www.microsoft.com/en-us/dynamics-365/blog/business-leader/2019/11/04/announcing-rpa-enhanced-security-no-code-virtual-agents-and-more-for-microsoft-power-platform/)
+
+Microsoft announced Power Virtual Agents on 4 November 2019, at the Ignite conference in Orlando. It announced Power Automate (the new name for Microsoft Flow) and robotic process automation on the same day. Power Virtual Agents let people in customer service, sales, HR and other teams build a chatbot with a guided, no-code approach, and connect it to back-end systems through the Power Platform's connectors. It was generally available in December 2019.
+
 ## In July 2020 Microsoft announced the general availability of Dataverse
 
 [https://powerapps.microsoft.com/fr-ca/blog/introducing-project-oakdale-a-new-low-code-data-platform-for-microsoft-teams/](https://powerapps.microsoft.com/fr-ca/blog/introducing-project-oakdale-a-new-low-code-data-platform-for-microsoft-teams/)
@@ -329,6 +343,12 @@ Dive deeper in our Managed Environments general availability announcement and le
 
 [https://powerapps.microsoft.com/en-us/blog/announcing-the-general-availability-of-managed-environments/](https://powerapps.microsoft.com/en-us/blog/announcing-the-general-availability-of-managed-environments/)
 
+## In November 2023 Microsoft renamed Power Virtual Agents as Microsoft Copilot Studio
+
+[https://www.microsoft.com/en-us/microsoft-copilot/blog/?p=2840](https://www.microsoft.com/en-us/microsoft-copilot/blog/?p=2840)
+
+In late 2023 Microsoft folded Power Virtual Agents into Microsoft Copilot Studio, and stopped using the old name. A Microsoft post says the change took effect on 15 November 2023, and a few other sources date it to early 2024. Chatbots built in Power Virtual Agents moved to Copilot Studio.
+
 :::watch-it Most of this post is quoted from other sources
 Much of the text in this post comes from Microsoft press releases, blog posts and articles, and each one has its link under its heading. If you need a date or a figure for your own work, follow the link and check the original.
 :::
@@ -338,5 +358,6 @@ Much of the text in this post comes from Microsoft press releases, blog posts an
 - Project Green became Microsoft Dynamics in September 2005, and the product names changed in 2006.
 - Dynamics CRM 3.0 introduced the xRM idea, and Common Data Service grew from it.
 - Dynamics 365 arrived in November 2016, model-driven apps in 2018, Dataverse in 2020 and Managed Environments in 2022.
+- Power Virtual Agents arrived in November 2019, and Microsoft renamed it Microsoft Copilot Studio in November 2023.
 - Navision is the ancestor of Business Central.
 :::

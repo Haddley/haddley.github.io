@@ -2,44 +2,45 @@
 type: concept
 slug: model-context-protocol
 title: "Model Context Protocol"
-description: "I explore the Model Context Protocol as a standard way to provide AI agents with tools and real-time data."
-posts: [azurefoundryagent6, azurefoundryagent4, businesscentralmcpclaudecode, rag1, agenticaiforprofessionals3, claudecode7, mcpserver2, mcpserver]
+description: "The Model Context Protocol (MCP) provides a standardized way for AI agents to access specific tools and data sources, significantly enhancing their reasoning and planning capabilities."
+posts: [deepseekharnessaccounting, deepseekharnessbusinesscentral, azurefoundryagent6, azurefoundryagent4, businesscentralmcpclaudecode, rag1, agenticaiforprofessionals3, claudecode7, mcpserver2, mcpserver]
 status: current
-checked: "2026-11-06"
-source_hash: "1dd69460da8c"
+checked: "2026-11-16"
+source_hash: "1f78296721ad"
 generated_by: gemma4:12b
 ---
 
-**Summary.** I explore the Model Context Protocol as a standard way to provide AI agents with tools and real-time data. I demonstrate how this protocol connects various systems, such as Business Central and legal databases, to enhance the reasoning and accuracy of models like Claude Code.
+**Summary.** The Model Context Protocol (MCP) provides a standardized way for AI agents to access specific tools and data sources, significantly enhancing their reasoning and planning capabilities. I demonstrate how to build and deploy MCP servers to connect systems like Microsoft Business Central to AI clients such as Claude Code.
 
 ## The idea
-- The Model Context Protocol provides a standard way for AI clients to access specific tools and data.
-- MCP servers can bridge the gap between internal systems and AI models by wrapping existing functions.
-- The effectiveness of an MCP tool depends heavily on the description provided to the model.
-- MCP allows for the integration of real-time data to overcome the limitations of stale training data.
-- I use MCP to connect diverse platforms like Business Central, Azure Functions, and local databases to AI interfaces.
+- MCP serves as a bridge between AI models and external data or tools.
+- The protocol allows for a unified way to expose API objects and functions as tools.
+- Developers can use MCP to provide real-time context, such as documentation or database queries, to reduce errors from stale training data.
+- The protocol supports different transport methods, including stdio and Streamable HTTP for remote connections.
+- Effective MCP implementation relies on clear tool descriptions and specific configurations to ensure the model uses the correct tools.
 
 ## Claims
 - The Model Context Protocol improves how AI agents plan and reason.
   > "Model Context Protocol (MCP) is a framework designed to enhance the reasoning and planning capabilities of AI agents." — mcpserver
 - The server provides a standard way for AI clients to access specific tools.
   > "A: A small program that offers tools to an AI client in a standard way." — mcpserver2
-- The usefulness of a tool depends on the description provided to the model.
-  > "A tool you add, like multiplication, is only as useful as the description the model sees." — mcpserver
-- The MCP tool uses a docstring to describe its purpose to the AI model.
-  > "The function's docstring — the triple-quoted string directly below its definition — is not a comment for human readers only; MCP clients, including Claude Code, read it directly and show it to the AI model as the description of what this tool does and when to use it, which is why it is written as a clear, complete sentence rather than a terse label." — rag1
-- The MCP tools are thin wrappers that call the exact same functions as the REST API.
-  > "All three are thin wrappers calling the exact same functions the REST API and the frontend call — same skill, multiple interfaces." — agenticaiforprofessionals3
-- The server provides live data from the company even though the tools are read-only.
-  > "The server exposes its pages as read-only tools, but they still return live data from your company." — businesscentralmcpclaudecode
+- Business Central includes a built-in MCP server that exposes APIv2 objects.
+  > "Business Central now ships its own Model Context Protocol (MCP) server, built directly into the product." — businesscentralmcpclaudecode
+- The mcp-remote package handles the HTTP transport and the Microsoft sign-in process.
+  > "Business Central's MCP server speaks HTTP rather than stdio, though, so the bridge between the two is `mcp-remote`, an npm package that handles the HTTP transport and the Microsoft sign-in on Claude Code's behalf." — businesscentralmcpclaudecode
 - The Azure Functions MCP extension simplifies the process of turning a Python function into a tool.
   > "I chose an Azure Function, because the Functions MCP extension turns a Python function into an MCP tool with one decorator." — azurefoundryagent4
-- Context7 fetches real-time documentation to reduce errors from stale knowledge.
-  > "Context7 is a Model Context Protocol (MCP) server that fetches real-time, version-specific documentation and injects it into Claude's context, helping to reduce errors from stale knowledge." — claudecode7
+- The MCP tool uses a docstring to describe its purpose to the AI model.
+  > "The function's docstring — the triple-quoted string directly below its definition — is not a comment for human readers only; MCP clients, including Claude Code, read it directly and show it to the AI model as the description of what this tool does and when to use it, which is why it is written as a clear, complete sentence rather than a terse label." — rag1
+- The server provides live data from the company even though the tools are read-only.
+  > "The server exposes its pages as read-only tools, but they still return live data from your company." — businesscentralmcpclaudecode
+- A full configuration with 414 tools is inefficient and breaks the harness.
+  > "The harness gave up on it, so the harness had no tools at all." — deepseekharnessbusinesscentral
 
 ## Where the posts differ
-- The Azure Foundry module code is outdated and lacks a project connection.
-  > "Its tool snippet fails with a 401 because it leaves out a project connection, and its `agent` call style is already deprecated." — azurefoundryagent6
+- A full configuration of 414 tools is inefficient, whereas a small set of objects works efficiently.
+  > "The harness gave up on it, so the harness had no tools at all." — deepseekharnessbusinesscentral
+  > "To control exactly which APIs Claude Code could see, I created a new configuration instead of relying on the dynamic default." — businesscentralmcpclaudecode
 
 ## What I concluded
-The Model Context Protocol serves as a vital bridge that connects AI models to real-time data and specific functional tools. By using this standard, I can build more reliable, grounded, and capable AI agents across various industries.
+The Model Context Protocol is a powerful framework for grounding AI agents in real-world data and specific business logic. By creating structured MCP servers, you can provide models with the precise context needed to perform complex tasks like accounting or legal research.

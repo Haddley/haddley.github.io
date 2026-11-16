@@ -4,39 +4,39 @@ slug: paperclip
 title: "Paperclip"
 date: "2026-03-28"
 builds_on: []
-topics: [ai-agents, autonomous-orchestration, multi-agent-systems, cloud-deployment]
-tools: [Paperclip, Claude Code, Azure, Vite, Socket.io, Docker]
+topics: ["ai-agents", "autonomous-software-engineering", "multiplayer-game-development", "cloud-deployment"]
+tools: ["Paperclip", "Claude Code", "Azure", "Docker", "Vite", "Socket.io"]
 status: current
-checked: "2026-11-06"
-source_hash: "081f8deae247"
+checked: "2026-11-16"
+source_hash: "e2f155ba5de1"
 generated_by: gemma4:12b
 ---
 
-**Summary.** I explored Paperclip, an open-source tool that allows for the creation of companies staffed entirely by AI agents. I demonstrated how these agents can autonomously handle everything from hiring and planning to software development and cloud deployment.
+**Summary.** I explored the capabilities of Paperclip, an open-source tool for running a company staffed entirely by AI agents. I demonstrated how these agents can autonomously build a multiplayer games platform, manage a product roadmap, and deploy to the cloud without human intervention.
 
 ## What I did
-- I set up a company and a CEO agent using the Paperclip wizard.
-- I assigned the CEO the task of hiring a founding engineer and creating a roadmap.
-- I approved the hiring request and watched the engineer build the core infrastructure.
-- I oversaw the deployment of the platform to Azure.
-- I verified the final products by playing the games in a browser.
+- I initialized a company and created a CEO agent using Claude Code.
+- I assigned the CEO the task of hiring a founding engineer and creating a hiring plan.
+- I approved the hiring of a founding engineer to build a real-time session management service.
+- I oversaw the agents as they built a trivia game and deployed the platform to Azure.
+- I ran the agents in autonomous mode to complete a final Tic-Tac-Toe game.
 
 ## Claims
-- The CEO agent successfully created a multi-stage roadmap and a hiring plan.
-  > "Phase 2 covered Product Designer, Backend Engineer, and Growth Lead, along with a four-milestone product roadmap."
-- The Founding Engineer built a real-time session management service.
+- The CEO agent produced a detailed hiring plan for a full-stack founding engineer.
+  > "Within minutes it produced a detailed hiring plan."
+- The agent created a backlog of 8 tasks across four specific roadmap milestones.
+  > "It also created 8 backlog tasks across the four roadmap milestones."
+- The founding engineer built a real-time session management service including JWT auth and socket handlers.
   > "FAC-2 completed with a full summary: JWT auth, room-store, socket handler, REST API, server entry with CORS and Socket.io."
-- The system produced a fully functional trivia game with a scoreboard.
+- The first playable game was a trivia engine with a scoreboard and shuffled questions.
   > "It had built a trivia game engine with shuffled questions, speed bonuses, and a scoreboard."
-- The web client was upgraded to a Progressive Web App.
-  > "FAC-6 done: the web client was now a full Progressive Web App — manifest, service worker, icons, Add to Home Screen support."
-- The agent chose a PWA over a native shell for the initial launch.
+- The PWA option won over a native shell because it shared the same codebase and supported WebSockets.
   > "PWA won on every axis that mattered for launch: same codebase, instant updates, WebSocket support."
-- The infrastructure was successfully deployed to Azure with public URLs.
-  > "FAC-12 came back done — both services live with public URLs, WebSocket connections confirmed."
+- The deployment used a B1 Linux App Service Plan which costs approximately 13 to 15 dollars per month.
+  > "I asked the CEO about costs — the B1 Linux App Service Plan runs ~$13-15/month."
 
 ## Outcome
-I built a functioning multiplayer games platform with a trivia game and a PWA client. The entire process was managed by autonomous agents without me writing any code.
+I built a fully functional, deployed multiplayer games platform where the agents handled the architecture, coding, and deployment.
 
 ## Caveats
-The post does not detail the specific costs of the Azure resources beyond the estimated monthly fee for the B1 plan.
+The post does not show the specific prompts or internal reasoning steps the agents used to resolve complex bugs during the development process.

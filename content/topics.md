@@ -8,6 +8,8 @@ slug: "topics"
 image: "/assets/images/topics/posts-meta.svg"
 ---
 
+Microsoft Copilot Studio was called Power Virtual Agents from its launch in November 2019 until Microsoft renamed it in November 2023. I wrote this post three months after the rename. (There is more in [A Short History of Microsoft Dynamics and Microsoft Dataverse](/posts/ashorthistory/).)
+
 I wanted to teach a Copilot Studio bot to answer "list of companies" by pulling live data from Dynamics 365 Business Central. By default the Copilot had no idea how to respond — so I built a custom Topic that called the Business Central Connector, retrieved the company list from my PRODUCTION environment, and returned the results to the user.
 
 ![](assets/images/topics/screenshot-2024-02-25-at-3.54.16-pm-1836x788.png)
