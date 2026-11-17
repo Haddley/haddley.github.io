@@ -4,7 +4,7 @@ part: 6
 description: "What If the Person Is Careless? I gave the AI twelve careless, vague and dangerous requests in a throwaway copy of Business Central with posting switched on. Hard limits and Business Central itself stopped some. A careless click shipped the whole warehouse. Then I repeated two of them with the checking screen in place, and nothing posted"
 date: "2026-11-17"
 categories: ["AI", "Business Central"]
-image: "/assets/images/bcsupplychain7/poster.svg"
+image: "/assets/images/bcsupplychain6/poster.svg"
 tags: "business-central, mcp, ai-agent, deepseek, guardrails, safety, evaluation, prompt-injection"
 hidden: false
 slug: "bcsupplychain6"

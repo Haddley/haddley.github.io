@@ -4,7 +4,7 @@ part: 7
 description: "The Checking Screen: A screen that checks each draft order against a written policy, in code, and offers one Approve button only if every check passes. It blocked the dangerous requests from Part 6, posted one clean order that a person approved with a PIN, and survived attacks: an edit after review, a big order split into small ones, a planted instruction, and an AI told to push as hard as it could"
 date: "2026-11-17"
 categories: ["AI", "Business Central"]
-image: "/assets/images/bcsupplychain9/poster.svg"
+image: "/assets/images/bcsupplychain7/poster.svg"
 tags: "business-central, mcp, ai-agent, deepseek, guardrails, approval, policy, safety"
 hidden: false
 slug: "bcsupplychain7"

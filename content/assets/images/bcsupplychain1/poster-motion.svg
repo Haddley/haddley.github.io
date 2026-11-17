@@ -1,27 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A purchase order, a box and a sales order appear in a row, then a tick: supply chain scenarios for an agent</title>
-<style>
-.a{animation-duration:4s;animation-timing-function:ease-out;animation-fill-mode:both;animation-iteration-count:1}
-.po{animation-name:in1}
-.l1{animation-name:in2}
-.bx{animation-name:in3}
-.l2{animation-name:in4}
-.so{animation-name:in5}
-.tk{animation-name:pop;transform-box:fill-box;transform-origin:center}
-.ck{animation-name:draw;stroke-dasharray:24;stroke-dashoffset:0}
-@keyframes in1{0%,5%{opacity:0;transform:translateY(6px)}20%,100%{opacity:1;transform:none}}
-@keyframes in2{0%,18%{opacity:0}30%,100%{opacity:1}}
-@keyframes in3{0%,28%{opacity:0;transform:translateY(6px)}43%,100%{opacity:1;transform:none}}
-@keyframes in4{0%,41%{opacity:0}53%,100%{opacity:1}}
-@keyframes in5{0%,51%{opacity:0;transform:translateY(6px)}66%,100%{opacity:1;transform:none}}
-@keyframes pop{0%,66%{opacity:0;transform:scale(.4)}78%{opacity:1;transform:scale(1.15)}86%,100%{opacity:1;transform:scale(1)}}
-@keyframes draw{0%,76%{stroke-dashoffset:24}92%,100%{stroke-dashoffset:0}}
-@media (prefers-reduced-motion:reduce){.a{animation:none!important}}
-</style>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A request for 10,000 slides in and is stopped by a no-entry sign, then a sensible order gets a green tick</title>
+<style>.a{animation-duration:4.5s;animation-iteration-count:1;animation-fill-mode:both;animation-timing-function:ease-out;transform-box:fill-box;transform-origin:center}
+.rq{animation-name:rq}.st{animation-name:st}.ln{animation-name:ln}.dc{animation-name:dc}.tk{animation-name:tk}
+@keyframes rq{0%{opacity:0;transform:translateX(-14px)}20%,100%{opacity:1;transform:none}}
+@keyframes ln{0%,15%{opacity:0}30%,100%{opacity:1}}
+@keyframes st{0%,28%{opacity:0;transform:scale(.4)}42%{opacity:1;transform:scale(1.2)}52%,100%{opacity:1;transform:scale(1)}}
+@keyframes dc{0%,50%{opacity:0;transform:translateY(6px)}68%,100%{opacity:1;transform:none}}
+@keyframes tk{0%,68%{opacity:0;transform:scale(.4)}82%{opacity:1;transform:scale(1.15)}92%,100%{opacity:1;transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.a{animation:none!important}}</style>
 <rect width="120" height="120" rx="22" fill="#0f1b2d"/>
-<g class="a po"><rect x="12" y="34" width="26" height="34" rx="4" fill="#e0f2fe"/><g fill="#7dd3fc"><rect x="16" y="41" width="18" height="3" rx="1.5"/><rect x="16" y="48" width="18" height="3" rx="1.5"/><rect x="16" y="55" width="11" height="3" rx="1.5"/></g></g>
-<g class="a l1" stroke="#5bb4ea" stroke-width="2.5" stroke-linecap="round" fill="none"><path d="M40 51 h5"/></g>
-<g class="a bx"><rect x="47" y="40" width="26" height="24" rx="3" fill="#fbbf24"/><rect x="47" y="40" width="26" height="7" fill="#f59e0b"/></g>
-<g class="a l2" stroke="#5bb4ea" stroke-width="2.5" stroke-linecap="round" fill="none"><path d="M75 51 h5"/></g>
-<g class="a so"><rect x="82" y="34" width="26" height="34" rx="4" fill="#e0f2fe"/><g fill="#7dd3fc"><rect x="86" y="41" width="18" height="3" rx="1.5"/><rect x="86" y="48" width="18" height="3" rx="1.5"/><rect x="86" y="55" width="11" height="3" rx="1.5"/></g></g>
-<g class="a tk"><circle cx="60" cy="88" r="11" fill="#16a34a"/><path class="a ck" d="M54.5 88 l4 4.5 l7.5 -9" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></g>
-</svg>
+<g class="a rq"><path d="M14 22 h46 a8 8 0 0 1 8 8 v12 a8 8 0 0 1 -8 8 h-30 l-8 8 v-8 h-8 a8 8 0 0 1 -8 -8 v-12 a8 8 0 0 1 8 -8 z" fill="#e0f2fe"/><text x="39" y="42" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#0f1b2d">10,000</text></g>
+<g class="a ln"><path d="M72 36 h8" stroke="#7dd3fc" stroke-width="3" stroke-linecap="round"/></g>
+<g class="a st"><circle cx="96" cy="36" r="16" fill="#dc2626"/><rect x="86" y="33" width="20" height="6" rx="3" fill="#fff"/></g>
+<g class="a dc"><rect x="34" y="76" width="30" height="30" rx="4" fill="#e0f2fe"/><g fill="#7dd3fc"><rect x="39" y="83" width="20" height="3" rx="1.5"/><rect x="39" y="90" width="20" height="3" rx="1.5"/><rect x="39" y="97" width="12" height="3" rx="1.5"/></g></g>
+<g class="a tk"><circle cx="76" cy="92" r="12" fill="#16a34a"/><path d="M70.5 92 l4 4.5 l7.5 -9" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></g></svg>
