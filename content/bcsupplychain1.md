@@ -1,7 +1,7 @@
 ---
 title: "Business Central Supply Chain"
 part: 1
-description: "Would You Let an AI Bill Your Customers? I typed a foolish request into an AI assistant connected to Business Central, and it was stopped before it could do any harm. Then a vague request that was turned into the right questions, and a real order that took about three minutes and one click. This series shows an AI doing the legwork in your accounting system, with guard rails that I attacked until they held"
+description: "Would You Let an AI Bill Your Customers? I typed a foolish request into an AI assistant connected to Business Central, and it was stopped before it could do any harm. Then a vague request that the AI turned into the right questions, and a real order that took about three minutes of the AI's time and one click from a person. This series shows an AI doing the legwork in your accounting system, with guard rails that I attacked until they held"
 date: "2026-11-16"
 categories: ["AI", "Business Central"]
 image: "/assets/images/bcsupplychain1/poster.svg"
@@ -26,7 +26,7 @@ Quick. **How many ATHENS Desks are in stock?**
 
 So ten thousand is a bit much. In a normal company, someone would catch this before it cost real money. Here is what happened when I gave this exact request to an AI assistant connected to Business Central.
 
-The AI warned me that only 510 were in stock, so 9,490 of the 10,000 could not be covered, and asked what price to use. I chose the careless options anyway: keep all 10,000, at list price. It prepared the order and handed it over. Then a checking screen looked at it:
+The AI warned me that only 510 were in stock, so 9,490 of the 10,000 could not be covered, and asked what to do about it and what price to use. I chose the careless answer anyway: keep all 10,000, even though 9,490 of them could not be covered. (The price was just the normal list price. That part was fine.) It prepared the order and handed it over. Then a checking screen looked at it:
 
 ![](assets/images/bcsupplychain1/gate-blocks-10000-desks.webp)
 *Two checks fail. The screen shows what would happen, stock going to -9,490 and the customer owing 10,308,240.00, and there is no Approve button*
