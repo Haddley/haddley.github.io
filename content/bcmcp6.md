@@ -1,7 +1,7 @@
 ---
 title: "Business Central and DeepSeek Harness"
 part: 6
-description: "How the request_posting tool is built: a second configuration that only the add-on uses, a tool the AI can call with one argument, and one function that checks, asks a person and posts."
+description: "How the request_posting tool is built: how the add-on posts with one web API call as the signed-in user, a tool the AI can call with one argument, and one function that checks, asks a person and posts."
 date: "2026-11-18"
 categories: ["AI", "Business Central"]
 image: "/assets/images/bcmcp6/poster.svg"
@@ -26,29 +26,20 @@ So I want three things in front of the action: the company's rules checked in pl
 
 ## The map
 
-![Animated map: the person talks to the harness; the harness reads Business Central through the Assistant configuration and Microsoft Learn; request_posting goes to the add-on, which shows a review card and posts through the Posting configuration.](assets/images/bcmcp6/map.svg)
+![Animated map: the person talks to the harness; the harness reads Business Central through the Assistant configuration and Microsoft Learn; request_posting goes to the add-on, which shows a review card and posts through Business Central's API as the user.](assets/images/bcmcp6/map.svg)
 
-## The second configuration
+## How the add-on posts
 
-The add-on needs the Ship and Invoice action, and the AI must not have it. So there is a second configuration, **Posting**, which only the add-on connects to. The harness profile from Part 2 names only `Assistant`.
+The add-on has to ship and invoice the order, and the AI must not be offered that. So the add-on does not go through the MCP server for it. It calls Business Central's web API directly, with the `shipAndInvoice` action on the sales order, using the signed-in user's token. The harness profile from Part 2 names only the `Assistant` configuration, so the AI's tool list has no posting tool, and the MCP server has none to offer.
 
-MCP is not the only way to do this. The add-on could have called Business Central's regular web API directly, over plain HTTPS, to ship and invoice the order. It could do that as the current user (a delegated sign-in, so the posting carries that person's name) or as an app with its own registration and credentials (so the posting carries the app's identity). I used MCP because the connection and the idea of a configuration were already in place, so one more configuration was the shortest route. Only the second kind, with credentials that the AI's account cannot read, would separate the add-on from the AI more strongly (see the watch-it box below). I have not built that version.
+![The configuration list in SandboxRun11 shows one entry: Assistant.](assets/images/bcmcp6/only-assistant.webp)
 
-I built it the same way as Part 1, so here are only the differences:
+Here is the call, shortened:
 
-- **Copy** the Assistant configuration, and give the copy the name `Posting`.
-- Leave **Active** off while editing.
-- On **Sales Orders (30028)**, untick Create and Modify and tick **Allow Actions**. On every other page, Read only.
-- **Validate**, then switch **Active** on.
+![](assets/images/bcmcp6/annotated-ship-and-invoice.svg)
 
-![](assets/images/bcmcp6/two-configs.webp)
-
-![](assets/images/bcmcp6/posting-permissions.webp)
-
-![](assets/images/bcmcp6/posting-validated.webp)
-
-:::watch-it Two names, one sign-in
-Posting is a *different configuration name* on the *same Microsoft sign-in* that the harness uses. That hides the posting tool from the AI's tool list. It does not hide it from my computer, because the sign-in is stored there. A real separation would use a separate Business Central user, with a sign-in the AI's account cannot read. I have not built that, and Part 7 says more.
+:::watch-it It runs as you
+The posting carries your name, as if you had posted by hand. The token comes from your sign-in on the same computer as the AI, so in principle the AI could try to ask for it too. The guard blocks the obvious attempts (Part 7). A separate identity, an app registration with its own credentials kept where the AI's account cannot read them, would separate the add-on more strongly. I have not built that.
 :::
 
 ## A tool is a function with a name
@@ -82,7 +73,7 @@ This is the heart of it. The tool's body is one function that does three things 
 
 1. **Check.** It runs a small Python helper that reads the draft *afresh* from Business Central and applies the company's rules. That is plain code, with no AI.
 2. **Ask.** It opens the review card and waits. The AI is paused until the person answers.
-3. **Post.** Only after a clean Approve, it checks the order again (it may have changed) and posts through the Posting configuration. Then it reads the stock and the customer's balance back to see that they moved by the right amounts.
+3. **Post.** Only after a clean Approve, it checks the order again (it may have changed) and posts through Business Central's API, as you. Then it reads the stock and the customer's balance back to see that they moved by the right amounts.
 
 If a rule fails, there is no card with an Approve button at all. The AI is told which rules failed.
 
@@ -94,7 +85,11 @@ Now the same request as before, with a second sentence. I ask it to make the ord
 
 > Sell 2 BERLIN Guest Chair, yellow to Adatum Corporation at list price, then ask for it to be posted.
 
-The AI follows the SOP from Part 4. It finds the existing drafts for the same chairs and asks what to do. I chose to use the one with the delivery date (S-ORD101023) and not make a fourth. It then checked the order, said "Requesting posting on S-ORD101023 now", and called the tool:
+The AI follows the SOP from Part 4. It finds the existing drafts for the same chairs and asks two things in one round: what to do about them, and the delivery date.
+
+![](assets/images/bcmcp6/duplicate-card.webp)
+
+I chose to create a new draft and to accept the default date. The AI made S-ORD101025, read it back, checked the arithmetic, said "Numbers check out. Now asking for the draft to be posted", and called the tool:
 
 ![](assets/images/bcmcp6/review-card-top.webp)
 
@@ -103,6 +98,9 @@ The card in that screenshot was not written by the AI. It says so at the top: "W
 :::no-dumb-questions
 **Q: Why does the AI send only an order number?**
 A: Because every other detail comes from Business Central. If the AI could send a total, the card might show the AI's numbers instead of the company's.
+
+**Q: Could the MCP server have posted the order instead?**
+A: Yes. A configuration with Allow Actions on the Sales Orders page gives a ship and invoice tool. But that tool would sit on the server with nothing in front of it, which is what we are avoiding. So the add-on uses the web API.
 
 **Q: Why ask and post in one function?**
 A: So that nothing can post without having asked. If asking and posting were two tools, the AI could skip straight to the second.
@@ -116,7 +114,7 @@ A: A prompt is a request. A function that cannot post until a person answers is 
 
 **Ship and Invoice:** I post a sales order. I do not ask questions.
 
-**The add-on:** That is why you live in the Posting configuration, and the AI never meets you.
+**The add-on:** That is why you are not on the AI's tool list. I call you myself, after the rules have passed.
 
 **Ship and Invoice:** I do whatever I am told.
 
@@ -124,10 +122,10 @@ A: A prompt is a request. A function that cannot post until a person answers is 
 :::
 
 :::bullet-points What to take from this
-- The Ship and Invoice action goes in a separate configuration (Posting) that only the add-on uses.
+- The add-on posts with one web API call, as you. No posting tool is on the AI's list or on the MCP server.
 - The AI sees one tool with one argument. The body is one function: check, ask, post.
 - The person's answer goes to the function, not to the AI.
-- Two names on one sign-in is not a security wall. Part 7 is honest about that.
+- The add-on runs on your sign-in, so it is not a security wall. Part 7 is honest about that.
 :::
 
 Next: [Part 7](/posts/bcmcp7/) goes through the card, the rules, and what happens when a rule fails.

@@ -56,7 +56,7 @@
 <g class="cp c0"><circle cx="40" cy="366" r="13" fill="#5eb4ef"/><text class="num" x="40" y="370" text-anchor="middle" style="fill:#0f1b2d">1</text><text class="cap" x="64" y="371" fill="#5eb4ef">The model asks for one thing: an order number. The harness makes the call.</text></g>
 <g class="cp c1"><circle cx="40" cy="366" r="13" fill="#fbbf24"/><text class="num" x="40" y="370" text-anchor="middle" style="fill:#0f1b2d">2</text><text class="cap" x="64" y="371" fill="#fbbf24">The tool checks the order against the rules, in code.</text></g>
 <g class="cp c2"><circle cx="40" cy="366" r="13" fill="#c084fc"/><text class="num" x="40" y="370" text-anchor="middle" style="fill:#0f1b2d">3</text><text class="cap" x="64" y="371" fill="#c084fc">It opens the review card and waits. The AI is paused.</text></g>
-<g class="cp c3"><circle cx="40" cy="366" r="13" fill="#4ade80"/><text class="num" x="40" y="370" text-anchor="middle" style="fill:#0f1b2d">4</text><text class="cap" x="64" y="371" fill="#4ade80">Only after a clean Approve does it post, through the Posting configuration.</text></g>
+<g class="cp c3"><circle cx="40" cy="366" r="13" fill="#4ade80"/><text class="num" x="40" y="370" text-anchor="middle" style="fill:#0f1b2d">4</text><text class="cap" x="64" y="371" fill="#4ade80">Only after a clean Approve does it post, through the API, as you.</text></g>
 <g class="cp c4"><circle cx="40" cy="366" r="13" fill="#4ade80"/><text class="num" x="40" y="370" text-anchor="middle" style="fill:#0f1b2d">5</text><text class="cap" x="64" y="371" fill="#4ade80">It reads stock and balance back, then tells the AI the result.</text></g>
 <text class="s still" x="24" y="371">Animation paused. The steps are listed in the text below.</text>
 </svg>

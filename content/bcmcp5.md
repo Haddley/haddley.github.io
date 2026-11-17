@@ -56,9 +56,9 @@ The new environment shows **Preparing**, and then **Active** when it is ready.
 
 ## What to do after the copy
 
-1. **Build the configurations** in the new sandbox: **Assistant** (Part 1), and later **Posting** (Part 6).
+1. **Build the configuration** in the new sandbox: **Assistant** (Part 1).
 2. **Point the harness at the new name.** In the profile from Part 2, change `EnvironmentName`.
-3. **Point the posting add-on at it too** (Part 6). It refuses to run if its environment does not match the one it is told to expect.
+3. **Point the posting add-on at it too** (Part 6). It refuses to run if its environment does not match the one it is told to expect. It also needs your sign-in for that tenant.
 4. **Reset the notes folder** (Part 4) to its starting state, so each run begins with the same files.
 5. **Restart the harness,** so that it reads the profile.
 6. **Run the prompts.** Then delete the sandbox when you are done with it.
@@ -88,7 +88,7 @@ A: A sandbox copy has the data that the baseline had. Mine is the CRONUS demo co
 :::bullet-points What to take from this
 - Keep a clean baseline sandbox, and copy it for each run.
 - The copy goes Preparing, then Active. Names and the three-sandbox limit are the traps.
-- After the copy, rebuild the configurations, change the environment name in two places, and reset the notes.
+- After the copy, rebuild the configuration, change the environment name in two places, and reset the notes.
 :::
 
 Next: [Part 6](/posts/bcmcp6/) is the part I care about most: a way for the AI to ask for a document to be posted, without being able to post it.
