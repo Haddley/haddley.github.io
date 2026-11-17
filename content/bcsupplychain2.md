@@ -16,7 +16,7 @@ You would not test a new employee on your live books. So before we let an AI any
 
 [Part 1](/posts/bcsupplychain1/) showed the result. This post shows how I built the place where it happens, so you can build your own. Everything here happens in a **practice copy** of Business Central, never in a live company.
 
-The question for the whole series: **can an AI assistant manage sales orders and purchase orders in Business Central, starting from a short, vague request and asking sensible follow-up questions?** I answer it with screenshots of the web client, so you see the documents it made and not only its account of them.
+The question for the whole series: **can an AI assistant manage sales orders and purchase orders in Business Central, starting from a short, vague request when it can ask the follow-up questions it needs?** I answer it with screenshots of the web client, so you see the documents it made and not only its account of them.
 
 ## Who is in the room?
 
