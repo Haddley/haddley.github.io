@@ -115,7 +115,7 @@ A: It could be. MMLU is a public test that has been online for years, and I cann
 
 A letter says whether a model landed on the key. It does not say whether the working was any good. I added a judge to mark that. The judge is `gemma4:12b`, running locally. It is not one of the 15 models, so it never marks its own answers. It does share a family name with the two Gemma 3 models it marks, and I cannot rule out that it favours them. For every reply it sees the question, the four options, the correct answer and the model's reply, and it gives three scores from 1 to 10 (Accuracy, Completeness and Clarity) and a verdict: SOUND, SLIP (a small error), FLAWED or UNSUPPORTED (a claim with no reasoning behind it).
 
-The judge can only mark what a model wrote in its reply. Qwen3 14B, `deepseek-flash` and gpt-oss 20B do their thinking in a hidden field and reply with little more than "ANSWER: X", and the judge gave Qwen3 14B a Completeness of 1 on nearly every answer. I left those models out of this section. The seven below write their working in the reply.
+The judge can only mark what it is shown. Seven of the models write their working in the reply, and I judged those first. Qwen3 14B, `deepseek-flash`, `deepseek-v4-pro` and gpt-oss 20B do their thinking in a hidden field and reply with little more than "ANSWER: X", so I come back to them below. The seven first:
 
 | Model | Right (checker) | Accuracy | Completeness | Clarity | SOUND | FLAWED |
 |---|---|---|---|---|---|---|
@@ -155,6 +155,39 @@ I tested it by taking 40 answers that the checker marked right and the judge rat
 :::
 
 I also asked `deepseek-v4-pro` to judge 60 of the same answers, picked at random. The two judges put 58 of the 59 comparable answers in the same group, sound (SOUND or SLIP) or flawed. DeepSeek scored Completeness and Clarity about 0.6 points lower than Gemma. The verdicts are steady across two judges from different families. The finer scores are a matter of taste.
+
+### Marking the hidden thinking
+
+To judge the four models that think in a hidden field, I ran them again with the thinking saved, and gave the judge the thinking and the reply together. The settings were the same as before. The scores moved by a few questions, as the API models do not repeat themselves exactly (`deepseek-flash` got 273 right on this run and 276 on the first, `deepseek-v4-pro` 272 and 275, gpt-oss 20B 214 and 220, and Qwen3 14B 240 on both). The table uses the rerun, except for `deepseek-v4-pro`, where it includes the larger allowance described below.
+
+| Model | Right (checker) | Accuracy | Completeness | Clarity | SOUND | FLAWED |
+|---|---|---|---|---|---|---|
+| deepseek-flash | 96.8% | 9.7 | 9.7 | 10.0 | 272 | 9 |
+| deepseek-v4-pro (32,000-token cap) | 98.6% | 9.9 | 9.8 | 10.0 | 275 | 4 |
+| Qwen3 14B | 85.1% | 8.8 | 9.0 | 9.4 | 238 | 38 |
+| gpt-oss 20B | 75.9% | 8.4 | 8.9 | 9.4 | 218 | 61 |
+
+```mermaid
+%%{init: {"theme": "neutral", "themeVariables": {"cScale0": "#ea580c", "cScale1": "#2563eb", "cScale2": "#16a34a", "cScale3": "#9333ea", "cScale4": "#0891b2", "radar": {"curveOpacity": 0.08, "curveStrokeWidth": 3, "axisColor": "#475569", "axisStrokeWidth": 1.5, "axisLabelFontSize": 15, "graticuleColor": "#cbd5e1", "graticuleStrokeWidth": 1, "legendFontSize": 15, "legendBoxSize": 15}}, "radar": {"width": 520, "height": 520, "marginTop": 80, "marginBottom": 60, "marginLeft": 150, "marginRight": 220, "axisLabelFactor": 1.1}}}%%
+radar-beta
+    title Checker and judge, models that think in a hidden field
+    axis ra["Right answer (checker)"], ac["Accuracy (judge)"], co["Completeness (judge)"], cl["Clarity (judge)"]
+    curve fl["Flash (API)"]{97, 97, 97, 100}
+    curve pr["V4 Pro (API)"]{99, 99, 98, 100}
+    curve q14["Qwen3 14B"]{85, 88, 90, 94}
+    curve go["gpt-oss 20B"]{76, 84, 89, 94}
+    max 100
+    min 0
+    graticule polygon
+    ticks 4
+    showLegend true
+```
+
+The two DeepSeek models fill the chart, and Qwen3 14B and gpt-oss 20B sit inside them, in the same order as the checker. Their thinking reads as well as the replies of the models above, and the judge rates it the same way.
+
+The most useful result is in the 15 answers that the judge rated SOUND thinking and the checker marked wrong: 6 for `deepseek-v4-pro`, 6 for gpt-oss 20B and 3 for Qwen3 14B. Every one of them has an empty reply. The model ran out of tokens while it was still thinking, and the thinking was fine. The judge was right about the thinking, and the checker was right that no answer arrived. `deepseek-v4-pro` wrote 32,000 to 42,000 characters of thinking before it stopped on those six.
+
+I tested the fix on `deepseek-v4-pro`. The API allowed 8,000 tokens of reasoning in my first run, and I raised it to 32,000. I reran the six empty answers and two more that had no letter. Six came back right and two wrong, and the score rose from 272 to **278 of 282 (98.6%)**, the best of any model. Two of the eight needed more than the old allowance (6,880 and 12,961 tokens for the two that stayed wrong, and 9,786 for one of the six that came back right). Four of the six right answers used only 783 to 3,540 tokens this time, so the very long thinking in the first run was partly luck. A larger cap turns a cut-off answer into a chance of an answer, and nothing more. I have not yet redone this for gpt-oss 20B and Qwen3 14B, so their numbers are before the fix.
 
 ## Do the models get the same questions right?
 
@@ -275,13 +308,27 @@ Ten of the eleven questions that 4 or fewer models got right ask for a specific 
 - On the audit question, Qwen3.8 27B dismisses the key's answer B as "a scope limitation issue" that "doesn't directly implicate management's integrity", and calls C, inventory write-offs before year end four years running, "a major red flag". `deepseek-flash`, the only model right, reasons from the audit rule: refusing the CPA access to information raises doubts about management's honesty.
 - On the compilation question, Qwen3.8 27B treats B as "concerning but not necessarily disqualifying", because a compilation does not look for fraud. `deepseek-flash` states the rule: omitting nearly all GAAP disclosures is generally allowed in a compilation if the report says so, so C is not a reason to decline.
 
+:::under-the-hood Worked examples: two hard questions and their reasoning
+**Contract law (UCC).** Jackson, a merchant, mailed Sands a signed offer to sell 500 fans at $10 each, with a promise not to revoke and no expiry date. Jackson then mailed a revocation, which Sands received on day 6. On day 7 Sands mailed an acceptance. Was a contract formed? The key is D: a contract was formed on the day Sands mailed the acceptance.
+
+- **Right reasoning** (`deepseek-v4-pro`, Qwen3.8 27B): a signed offer from a merchant that promises to stay open is a firm offer under UCC section 2-205. It stays open for a reasonable time even without an expiry date, so the revocation has no effect. An acceptance counts when it is mailed, so the contract formed on day 7.
+- **Wrong reasoning** (Qwen2.5 72B and Llama 3.3 70B, both chose B): they saw the promise not to revoke, and then said that a revocation received before the acceptance still works. They used the ordinary rule and missed the exception.
+
+**Tax on a gift of stock.** Simmons gave her child stock with a basis of $40,000 and a market value of $30,000. The child sold it for $36,000. What gain or loss does the child recognise? The key is B: none.
+
+- **Right reasoning** (`deepseek-v4-pro`, Qwen3.8 27B): for a gift worth less than the donor's basis, the child uses the donor's basis of $40,000 to work out a gain and the market value of $30,000 to work out a loss. $36,000 sits between them, so there is no gain and no loss.
+- **Wrong reasoning:** Qwen2.5 72B used the donor's basis for both and found a $4,000 loss (A). Llama 3.3 70B used the market value for both and found a $6,000 gain (C). Each knew a rule and applied it to the wrong half of the question.
+
+In both questions the models know the general rule. The ones that fail miss the special case that applies.
+:::
+
 I also asked the judge to explain, for each of the 97 wrong replies on those eleven questions, where the reasoning went wrong, and to label the mistake. I did not use its labels. It called 76 of the 97 "wrong rule", which says more about the judge's habit than about the models. Some of its explanations are also built to fit the key: on the compilation question it told one model that refusing to investigate misappropriation was an integrity risk that should have ended the engagement, which restates the key without testing it.
 
 ## What I take from this
 
 - **Among the local models, generation and the room to think mattered more than the number of parameters.** A 14B model from a newer family matched a 72B model from an older one, and letting every model reason added 10 to 25 points.
 - **Models fail together.** 22% of the questions were easy for all fifteen, and none were impossible for all fifteen. A second opinion from a different family is worth more than a second run from the same one.
-- **A judge with the key checks conclusions, not working.** It found 16 lucky guesses in 1,974 answers and missed 39 of 40 planted number errors.
+- **A judge with the key checks conclusions, not working.** It found 16 lucky guesses in 1,974 answers and missed 39 of 40 planted number errors. The judged answers that were wrong but sound were all cut off before the model gave an answer.
 - **The answer cap shapes the result.** Models that think can hit the cap and lose the answer, so the bottom of the table is a little pessimistic for them.
 
 :::bullet-points What to remember
@@ -293,7 +340,7 @@ I also asked the judge to explain, for each of the 97 wrong replies on those ele
 
 ## What comes next
 
-I would like to judge the thinking models too, by saving their hidden thinking and not only their replies. I would also like to use the open-ended bank reconciliation prompts in the older project, which a letter checker cannot mark, and to try a judge that does not see the key.
+QwQ 32B, DeepSeek-R1 32B and Qwen3 8B also think in a hidden field. I am rerunning them with the thinking saved, and I will add them when they finish. I would also like to use the open-ended bank reconciliation prompts in the older project, which a letter checker cannot mark, and to try a judge that does not see the key.
 
 ## The code
 
