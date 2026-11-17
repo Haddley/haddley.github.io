@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" role="img" font-family="Arial, Helvetica, sans-serif">
+<title>Animated diagram: one tool, four ways to reach the person through the harness's standard screens</title>
+<desc>The AI calls a tool. The tool can refuse the call with a reason, ask the harness's approval panel, show a question card with a written report, or show a result card when it finishes. The four lanes light up in turn.</desc>
+<style>
+  .bg{fill:#0f1b2d}
+  .box{fill:#162740;stroke:#2c4466;stroke-width:2}
+  .t{fill:#e8f0fb;font-size:17px;font-weight:700}
+  .s{fill:#9fb3cc;font-size:13px}
+  .m{fill:#9fb3cc;font-size:12px}
+  .ln{stroke:#2c4466;stroke-width:3;fill:none}
+  .lane{opacity:.35}
+  .l1{animation:l1 20s infinite}.l2{animation:l2 20s infinite}.l3{animation:l3 20s infinite}.l4{animation:l4 20s infinite}
+  @keyframes l1{0%,2%{opacity:.35}6%,22%{opacity:1}26%,100%{opacity:.35}}
+  @keyframes l2{0%,27%{opacity:.35}31%,47%{opacity:1}51%,100%{opacity:.35}}
+  @keyframes l3{0%,52%{opacity:.35}56%,72%{opacity:1}76%,100%{opacity:.35}}
+  @keyframes l4{0%,77%{opacity:.35}81%,97%{opacity:1}100%{opacity:.35}}
+  .dot{fill:#fbbf24;animation:dot 20s infinite}
+  @keyframes dot{0%{transform:translate(0,0)}6%{transform:translate(0,0)}8%{transform:translate(0,0)}}
+  @media (prefers-reduced-motion:reduce){.lane,.l1,.l2,.l3,.l4{animation:none;opacity:1}.dot{display:none}}
+</style>
+<rect class="bg" width="960" height="540" rx="18"/>
+
+<!-- left: the AI and the tool -->
+<rect class="box" x="24" y="40" width="190" height="76" rx="12" stroke="#5eb4ef"/>
+<text class="t" x="119" y="75" text-anchor="middle">The AI</text><text class="s" x="119" y="97" text-anchor="middle">calls a tool by name</text>
+<path class="ln" d="M119 116 V160"/>
+<rect class="box" x="24" y="160" width="190" height="110" rx="12" stroke="#fbbf24"/>
+<text class="t" x="119" y="196" text-anchor="middle">The tool</text>
+<text class="s" x="119" y="218" text-anchor="middle">request_posting</text>
+<text class="m" x="119" y="240" text-anchor="middle">a function with a name,</text><text class="m" x="119" y="256" text-anchor="middle">a schema and a body</text>
+<path class="ln" d="M119 270 V330"/>
+<rect class="box" x="24" y="330" width="190" height="70" rx="12" stroke="#4ade80"/>
+<text class="t" x="119" y="362" text-anchor="middle">What the AI gets</text><text class="s" x="119" y="382" text-anchor="middle">only the tool's result</text>
+<text class="m" x="119" y="430" text-anchor="middle">The person's click never</text><text class="m" x="119" y="446" text-anchor="middle">goes to the AI</text>
+
+<!-- trunk lines to lanes -->
+<path class="ln" d="M214 215 H250 M250 70 V425 M250 70 H282 M250 180 H282 M250 300 H282 M250 425 H282"/>
+
+<g class="lane l1">
+ <rect class="box" x="282" y="20" width="664" height="100" rx="12" stroke="#f87171"/>
+ <text class="t" x="300" y="48">1  Refuse, with a reason</text>
+ <text class="s" x="300" y="72">The gate says "deny". The call never runs.</text>
+ <text class="m" x="300" y="92">Shows as a red row in the chat.</text>
+ <text class="m" x="300" y="108">The AI reads the same reason.</text>
+ <rect x="660" y="36" width="270" height="56" rx="8" fill="#0f1b2d" stroke="#f87171"/>
+ <text x="672" y="58" fill="#f87171" font-size="12" font-weight="700">Error: that path is switched off</text>
+ <text x="672" y="76" fill="#9fb3cc" font-size="11">posting goes only through request_posting</text>
+</g>
+<g class="lane l2">
+ <rect class="box" x="282" y="130" width="664" height="100" rx="12" stroke="#fbbf24"/>
+ <text class="t" x="300" y="158">2  Ask: the approval panel</text>
+ <text class="s" x="300" y="182">Plain text and two buttons. Fails closed.</text>
+ <text class="m" x="300" y="202">The harness logs who was asked, and the answer.</text>
+ <text class="m" x="300" y="218">Its own sandbox uses this for escalation too.</text>
+ <rect x="660" y="148" width="270" height="62" rx="8" fill="#0f1b2d" stroke="#fbbf24"/>
+ <text x="672" y="168" fill="#fbbf24" font-size="11" font-weight="700">Waiting for approval</text>
+ <rect x="778" y="184" width="62" height="20" rx="10" fill="none" stroke="#9fb3cc"/><text x="809" y="198" fill="#e8f0fb" font-size="10" text-anchor="middle">Reject</text>
+ <rect x="848" y="184" width="74" height="20" rx="10" fill="#e8f0fb"/><text x="885" y="198" fill="#0f1b2d" font-size="10" text-anchor="middle" font-weight="700">Allow once</text>
+</g>
+<g class="lane l3">
+ <rect class="box" x="282" y="240" width="664" height="120" rx="12" stroke="#c084fc"/>
+ <text class="t" x="300" y="268">3  A question card with a report</text>
+ <text class="s" x="300" y="292">Markdown: tables, bold, callouts, options.</text>
+ <text class="m" x="300" y="314">Approve, refuse or chat.</text>
+ <text class="m" x="300" y="330">The answer goes to the tool, not the AI.</text>
+ <text class="m" x="300" y="346">Reads like a document, so a person can decide.</text>
+ <rect x="660" y="256" width="270" height="88" rx="8" fill="#0f1b2d" stroke="#c084fc"/>
+ <text x="672" y="276" fill="#e8f0fb" font-size="12" font-weight="700">S-ORD101021 · Adatum</text>
+ <text x="672" y="294" fill="#4ade80" font-size="11">✓ PASS  Order is an unposted draft</text>
+ <text x="672" y="310" fill="#fbbf24" font-size="11">⚠ WARN  Credit limit</text>
+ <rect x="850" y="320" width="72" height="18" rx="9" fill="#e8f0fb"/><text x="886" y="333" fill="#0f1b2d" font-size="10" text-anchor="middle" font-weight="700">Approve</text>
+</g>
+<g class="lane l4">
+ <rect class="box" x="282" y="370" width="664" height="110" rx="12" stroke="#4ade80"/>
+ <text class="t" x="300" y="398">4  A result card for the person</text>
+ <text class="s" x="300" y="422">Shown when the tool finishes.</text>
+ <text class="m" x="300" y="444">Can differ from what the AI reads (plain text).</text>
+ <text class="m" x="300" y="460">Shown the same way when the session is replayed.</text>
+ <rect x="660" y="388" width="270" height="74" rx="8" fill="#0f1b2d" stroke="#4ade80"/>
+ <text x="672" y="410" fill="#4ade80" font-size="12" font-weight="700">Posted and verified</text>
+ <text x="672" y="430" fill="#9fb3cc" font-size="11">Stock check: OK. Balance check: OK.</text>
+ <text x="672" y="448" fill="#9fb3cc" font-size="11">Left the draft list: yes.</text>
+</g>
+<text class="m" x="24" y="520">A tool can use any of these. Ours uses 3 to decide and to explain a block, 4 to report, and 1 in the guard. The harness's sandbox uses 2.</text>
+</svg>

@@ -6,7 +6,7 @@ date: "2026-11-13"
 categories: ["AI", "Business Central"]
 image: "/assets/images/deepseekharnessaccounting/poster.svg"
 tags: "deepseek, ai-agent, business-central, human-in-the-loop, mcp"
-hidden: false
+hidden: true
 slug: "deepseekharnessaccounting"
 ---
 
