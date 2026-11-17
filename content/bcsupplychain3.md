@@ -6,7 +6,7 @@ date: "2026-11-16"
 categories: ["AI", "Business Central"]
 image: "/assets/images/bcsupplychain3/poster.svg"
 tags: "business-central, mcp, ai-agent, deepseek, follow-up-questions, supply-chain, pilot"
-hidden: false
+hidden: true
 slug: "bcsupplychain3"
 ---
 

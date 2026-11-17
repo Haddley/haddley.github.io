@@ -6,7 +6,7 @@ date: "2026-11-16"
 categories: ["AI", "Business Central"]
 image: "/assets/images/bcsupplychain2/poster.svg"
 tags: "business-central, mcp, ai-agent, deepseek, supply-chain, sandbox, configuration"
-hidden: false
+hidden: true
 slug: "bcsupplychain2"
 ---
 

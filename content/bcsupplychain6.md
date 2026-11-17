@@ -6,7 +6,7 @@ date: "2026-11-17"
 categories: ["AI", "Business Central"]
 image: "/assets/images/bcsupplychain6/poster.svg"
 tags: "business-central, mcp, ai-agent, deepseek, guardrails, safety, evaluation, prompt-injection"
-hidden: false
+hidden: true
 slug: "bcsupplychain6"
 ---
 

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" role="img" font-family="Arial, Helvetica, sans-serif">
+<title>The AI can only use the tools on the list</title><desc>The AI asks the Business Central MCP server which tools it offers. The server reads the Assistant configuration and sends back only the listed tools. A tool that is not on the list, such as posting or deleting, is never offered, so the AI has nothing to call.</desc>
+<style>.bg{fill:#0f1b2d}.box{fill:#162740;stroke-width:2}.t{fill:#e8f0fb;font-size:17px;font-weight:700}.s{fill:#9fb3cc;font-size:13px}.cap{font-size:15px;font-weight:700}.ln{fill:none;stroke-width:3}.lb{fill:#9fb3cc;font-size:12px}.num{fill:#9fb3cc;font-size:12px;font-weight:700}
+@keyframes a_ai{0.00%{opacity:0.3}0.40%{opacity:0.3}2.50%{opacity:1}24.00%{opacity:1}24.90%{opacity:0.3}50.40%{opacity:0.3}52.50%{opacity:1}74.00%{opacity:1}74.90%{opacity:0.3}100.00%{opacity:0.3}}.a_ai{animation:a_ai 16.0s infinite;opacity:0.3}
+@keyframes a_srv{0.00%{opacity:0.3}0.40%{opacity:0.3}2.50%{opacity:1}24.00%{opacity:1}24.90%{opacity:0.3}25.40%{opacity:0.3}27.50%{opacity:1}49.00%{opacity:1}49.90%{opacity:0.3}50.40%{opacity:0.3}52.50%{opacity:1}74.00%{opacity:1}74.90%{opacity:0.3}75.40%{opacity:0.3}77.50%{opacity:1}99.00%{opacity:1}99.90%{opacity:0.3}100.00%{opacity:0.3}}.a_srv{animation:a_srv 16.0s infinite;opacity:0.3}
+@keyframes a_cfg{0.00%{opacity:0.3}25.40%{opacity:0.3}27.50%{opacity:1}49.00%{opacity:1}49.90%{opacity:0.3}50.40%{opacity:0.3}52.50%{opacity:1}74.00%{opacity:1}74.90%{opacity:0.3}100.00%{opacity:0.3}}.a_cfg{animation:a_cfg 16.0s infinite;opacity:0.3}
+@keyframes a_no{0.00%{opacity:0.3}75.40%{opacity:0.3}77.50%{opacity:1}99.00%{opacity:1}99.90%{opacity:0.3}100.00%{opacity:0.3}}.a_no{animation:a_no 16.0s infinite;opacity:0.3}
+@keyframes a_e1{0.00%{opacity:0.3}0.40%{opacity:0.3}2.50%{opacity:1}24.00%{opacity:1}24.90%{opacity:0.3}100.00%{opacity:0.3}}.a_e1{animation:a_e1 16.0s infinite;opacity:0.3}
+@keyframes a_e2{0.00%{opacity:0.3}25.40%{opacity:0.3}27.50%{opacity:1}49.00%{opacity:1}49.90%{opacity:0.3}100.00%{opacity:0.3}}.a_e2{animation:a_e2 16.0s infinite;opacity:0.3}
+@keyframes a_e3{0.00%{opacity:0.3}50.40%{opacity:0.3}52.50%{opacity:1}74.00%{opacity:1}74.90%{opacity:0.3}100.00%{opacity:0.3}}.a_e3{animation:a_e3 16.0s infinite;opacity:0.3}
+@keyframes a_e4{0.00%{opacity:0.3}75.40%{opacity:0.3}77.50%{opacity:1}99.00%{opacity:1}99.90%{opacity:0.3}100.00%{opacity:0.3}}.a_e4{animation:a_e4 16.0s infinite;opacity:0.3}
+@keyframes c0{0.00%{opacity:0}0.40%{opacity:0}2.50%{opacity:1}24.00%{opacity:1}24.90%{opacity:0}100.00%{opacity:0}}.c0{animation:c0 16.0s infinite;opacity:0}
+@keyframes c1{0.00%{opacity:0}25.40%{opacity:0}27.50%{opacity:1}49.00%{opacity:1}49.90%{opacity:0}100.00%{opacity:0}}.c1{animation:c1 16.0s infinite;opacity:0}
+@keyframes c2{0.00%{opacity:0}50.40%{opacity:0}52.50%{opacity:1}74.00%{opacity:1}74.90%{opacity:0}100.00%{opacity:0}}.c2{animation:c2 16.0s infinite;opacity:0}
+@keyframes c3{0.00%{opacity:0}75.40%{opacity:0}77.50%{opacity:1}99.00%{opacity:1}99.90%{opacity:0}100.00%{opacity:0}}.c3{animation:c3 16.0s infinite;opacity:0}
+@media (prefers-reduced-motion:reduce){.a_ai{animation:none;opacity:1}.a_srv{animation:none;opacity:1}.a_cfg{animation:none;opacity:1}.a_no{animation:none;opacity:1}.a_e1{animation:none;opacity:1}.a_e2{animation:none;opacity:1}.a_e3{animation:none;opacity:1}.a_e4{animation:none;opacity:1}.cp{display:none}.still{display:block}}
+.still{display:none}</style>
+<defs><marker id="m_blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5eb4ef"/></marker><marker id="m_amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#fbbf24"/></marker><marker id="m_green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#4ade80"/></marker><marker id="m_red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#f87171"/></marker><marker id="m_purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#c084fc"/></marker></defs>
+<rect class="bg" width="960" height="420" rx="18"/>
+<text class="t" x="24" y="34" style="font-size:19px">The AI can only use the tools on the list</text>
+<g class="a_e1"><path class="ln" d="M200 185 L300 185" stroke="#5eb4ef" marker-end="url(#m_blue)"/>
+<text class="lb" x="250.0" y="175.0" text-anchor="middle" stroke="#0f1b2d" stroke-width="5" paint-order="stroke">asks</text>
+</g>
+<g class="a_e2"><path class="ln" d="M500 170 L600 120" stroke="#fbbf24" marker-end="url(#m_amber)"/>
+<text class="lb" x="550.0" y="135.0" text-anchor="middle" stroke="#0f1b2d" stroke-width="5" paint-order="stroke">reads the list</text>
+</g>
+<g class="a_e3"><path class="ln" d="M300 215 L200 215" stroke="#4ade80" marker-end="url(#m_green)"/>
+<text class="lb" x="250.0" y="205.0" text-anchor="middle" stroke="#0f1b2d" stroke-width="5" paint-order="stroke">the list</text>
+</g>
+<g class="a_e4"><path class="ln" d="M500 225 L600 270" stroke="#f87171" marker-end="url(#m_red)"/>
+<text class="lb" x="550.0" y="237.5" text-anchor="middle" stroke="#0f1b2d" stroke-width="5" paint-order="stroke">not offered</text>
+</g>
+<g class="a_ai"><rect class="box" x="30" y="150" width="170" height="90" rx="12" stroke="#5eb4ef"/>
+<text class="t" x="115.0" y="176" text-anchor="middle">The AI</text>
+<text class="s" x="115.0" y="198" text-anchor="middle">asks: which tools</text>
+<text class="s" x="115.0" y="215" text-anchor="middle">can I use?</text>
+</g>
+<g class="a_srv"><rect class="box" x="300" y="150" width="200" height="90" rx="12" stroke="#fbbf24"/>
+<text class="t" x="400.0" y="176" text-anchor="middle">Business Central</text>
+<text class="s" x="400.0" y="198" text-anchor="middle">MCP server</text>
+</g>
+<g class="a_cfg"><rect class="box" x="600" y="60" width="330" height="110" rx="12" stroke="#4ade80"/>
+<text class="t" x="765.0" y="86" text-anchor="middle">Configuration: Assistant</text>
+<text class="s" x="765.0" y="108" text-anchor="middle">Items, Customers, Vendors: read</text>
+<text class="s" x="765.0" y="125" text-anchor="middle">Sales orders and lines:</text>
+<text class="s" x="765.0" y="142" text-anchor="middle">read, create, modify</text>
+</g>
+<g class="a_no"><rect class="box" x="600" y="230" width="330" height="90" rx="12" stroke="#f87171" stroke-dasharray="7 5"/>
+<text class="t" x="765.0" y="256" text-anchor="middle">Post a document, delete a customer</text>
+<text class="s" x="765.0" y="278" text-anchor="middle">Not on the list,</text>
+<text class="s" x="765.0" y="295" text-anchor="middle">so not offered to the AI</text>
+</g>
+<g class="cp c0"><circle cx="40" cy="386" r="13" fill="#5eb4ef"/><text class="num" x="40" y="390" text-anchor="middle" style="fill:#0f1b2d">1</text><text class="cap" x="64" y="391" fill="#5eb4ef">The AI asks the server which tools it may use.</text></g>
+<g class="cp c1"><circle cx="40" cy="386" r="13" fill="#fbbf24"/><text class="num" x="40" y="390" text-anchor="middle" style="fill:#0f1b2d">2</text><text class="cap" x="64" y="391" fill="#fbbf24">The server looks in its configuration, Assistant.</text></g>
+<g class="cp c2"><circle cx="40" cy="386" r="13" fill="#4ade80"/><text class="num" x="40" y="390" text-anchor="middle" style="fill:#0f1b2d">3</text><text class="cap" x="64" y="391" fill="#4ade80">It answers with only the tools on that list.</text></g>
+<g class="cp c3"><circle cx="40" cy="386" r="13" fill="#f87171"/><text class="num" x="40" y="390" text-anchor="middle" style="fill:#0f1b2d">4</text><text class="cap" x="64" y="391" fill="#f87171">Posting or deleting is not on the list, so the AI has nothing to call.</text></g>
+<text class="s still" x="24" y="391">Animation paused. The steps are listed in the text below.</text>
+</svg>

@@ -5,7 +5,7 @@ date: "2026-11-13"
 categories: ["AI", "Business Central"]
 image: "/assets/images/deepseekharnessbusinesscentral/poster.svg"
 tags: "mcp, business-central, deepseek, oauth, entra"
-hidden: false
+hidden: true
 slug: "deepseekharnessbusinesscentral"
 ---
 

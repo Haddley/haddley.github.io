@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" role="img" font-family="Arial, Helvetica, sans-serif">
+<title>A good order and a blocked order</title><desc>The same rules run on every request. When every rule passes or warns, the person gets a review card with Approve and the order is posted and verified. When a rule fails, the card has no Approve button and nothing is posted.</desc>
+<style>.bg{fill:#0f1b2d}.box{fill:#162740;stroke-width:2}.t{fill:#e8f0fb;font-size:17px;font-weight:700}.s{fill:#9fb3cc;font-size:13px}.cap{font-size:15px;font-weight:700}.ln{fill:none;stroke-width:3}.lb{fill:#9fb3cc;font-size:12px}.num{fill:#9fb3cc;font-size:12px;font-weight:700}
+@keyframes a_rules{0.00%{opacity:0.3}0.40%{opacity:0.3}2.50%{opacity:1}19.00%{opacity:1}19.90%{opacity:0.3}20.40%{opacity:0.3}22.50%{opacity:1}39.00%{opacity:1}39.90%{opacity:0.3}60.40%{opacity:0.3}62.50%{opacity:1}79.00%{opacity:1}79.90%{opacity:0.3}100.00%{opacity:0.3}}.a_rules{animation:a_rules 20.0s infinite;opacity:0.3}
+@keyframes a_ok{0.00%{opacity:0.3}20.40%{opacity:0.3}22.50%{opacity:1}39.00%{opacity:1}39.90%{opacity:0.3}40.40%{opacity:0.3}42.50%{opacity:1}59.00%{opacity:1}59.90%{opacity:0.3}100.00%{opacity:0.3}}.a_ok{animation:a_ok 20.0s infinite;opacity:0.3}
+@keyframes a_posted{0.00%{opacity:0.3}40.40%{opacity:0.3}42.50%{opacity:1}59.00%{opacity:1}59.90%{opacity:0.3}100.00%{opacity:0.3}}.a_posted{animation:a_posted 20.0s infinite;opacity:0.3}
+@keyframes a_bad{0.00%{opacity:0.3}60.40%{opacity:0.3}62.50%{opacity:1}79.00%{opacity:1}79.90%{opacity:0.3}80.40%{opacity:0.3}82.50%{opacity:1}99.00%{opacity:1}99.90%{opacity:0.3}100.00%{opacity:0.3}}.a_bad{animation:a_bad 20.0s infinite;opacity:0.3}
+@keyframes a_none{0.00%{opacity:0.3}80.40%{opacity:0.3}82.50%{opacity:1}99.00%{opacity:1}99.90%{opacity:0.3}100.00%{opacity:0.3}}.a_none{animation:a_none 20.0s infinite;opacity:0.3}
+@keyframes a_e1{0.00%{opacity:0.3}20.40%{opacity:0.3}22.50%{opacity:1}39.00%{opacity:1}39.90%{opacity:0.3}100.00%{opacity:0.3}}.a_e1{animation:a_e1 20.0s infinite;opacity:0.3}
+@keyframes a_e2{0.00%{opacity:0.3}40.40%{opacity:0.3}42.50%{opacity:1}59.00%{opacity:1}59.90%{opacity:0.3}100.00%{opacity:0.3}}.a_e2{animation:a_e2 20.0s infinite;opacity:0.3}
+@keyframes a_e3{0.00%{opacity:0.3}60.40%{opacity:0.3}62.50%{opacity:1}79.00%{opacity:1}79.90%{opacity:0.3}100.00%{opacity:0.3}}.a_e3{animation:a_e3 20.0s infinite;opacity:0.3}
+@keyframes a_e4{0.00%{opacity:0.3}80.40%{opacity:0.3}82.50%{opacity:1}99.00%{opacity:1}99.90%{opacity:0.3}100.00%{opacity:0.3}}.a_e4{animation:a_e4 20.0s infinite;opacity:0.3}
+@keyframes c0{0.00%{opacity:0}0.40%{opacity:0}2.50%{opacity:1}19.00%{opacity:1}19.90%{opacity:0}100.00%{opacity:0}}.c0{animation:c0 20.0s infinite;opacity:0}
+@keyframes c1{0.00%{opacity:0}20.40%{opacity:0}22.50%{opacity:1}39.00%{opacity:1}39.90%{opacity:0}100.00%{opacity:0}}.c1{animation:c1 20.0s infinite;opacity:0}
+@keyframes c2{0.00%{opacity:0}40.40%{opacity:0}42.50%{opacity:1}59.00%{opacity:1}59.90%{opacity:0}100.00%{opacity:0}}.c2{animation:c2 20.0s infinite;opacity:0}
+@keyframes c3{0.00%{opacity:0}60.40%{opacity:0}62.50%{opacity:1}79.00%{opacity:1}79.90%{opacity:0}100.00%{opacity:0}}.c3{animation:c3 20.0s infinite;opacity:0}
+@keyframes c4{0.00%{opacity:0}80.40%{opacity:0}82.50%{opacity:1}99.00%{opacity:1}99.90%{opacity:0}100.00%{opacity:0}}.c4{animation:c4 20.0s infinite;opacity:0}
+@media (prefers-reduced-motion:reduce){.a_rules{animation:none;opacity:1}.a_ok{animation:none;opacity:1}.a_posted{animation:none;opacity:1}.a_bad{animation:none;opacity:1}.a_none{animation:none;opacity:1}.a_e1{animation:none;opacity:1}.a_e2{animation:none;opacity:1}.a_e3{animation:none;opacity:1}.a_e4{animation:none;opacity:1}.cp{display:none}.still{display:block}}
+.still{display:none}</style>
+<defs><marker id="m_blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5eb4ef"/></marker><marker id="m_amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#fbbf24"/></marker><marker id="m_green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#4ade80"/></marker><marker id="m_red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#f87171"/></marker><marker id="m_purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#c084fc"/></marker></defs>
+<rect class="bg" width="960" height="400" rx="18"/>
+<text class="t" x="24" y="34" style="font-size:19px">A good order and a blocked order</text>
+<g class="a_e1"><path class="ln" d="M220 180 L330 115" stroke="#fbbf24" marker-end="url(#m_amber)"/>
+<text class="lb" x="275.0" y="137.5" text-anchor="middle" stroke="#0f1b2d" stroke-width="5" paint-order="stroke">all pass or warn</text>
+</g>
+<g class="a_e2"><path class="ln" d="M550 115 L680 115" stroke="#4ade80" marker-end="url(#m_green)"/>
+<text class="lb" x="615.0" y="105.0" text-anchor="middle" stroke="#0f1b2d" stroke-width="5" paint-order="stroke">Approve</text>
+</g>
+<g class="a_e3"><path class="ln" d="M220 220 L330 295" stroke="#f87171" marker-end="url(#m_red)"/>
+<text class="lb" x="275.0" y="247.5" text-anchor="middle" stroke="#0f1b2d" stroke-width="5" paint-order="stroke">a rule fails</text>
+</g>
+<g class="a_e4"><path class="ln" d="M550 295 L680 295" stroke="#f87171" marker-end="url(#m_red)"/>
+<text class="lb" x="615.0" y="285.0" text-anchor="middle" stroke="#0f1b2d" stroke-width="5" paint-order="stroke">Understood</text>
+</g>
+<g class="a_rules"><rect class="box" x="20" y="150" width="200" height="100" rx="12" stroke="#fbbf24"/>
+<text class="t" x="120.0" y="176" text-anchor="middle">The same rules</text>
+<text class="s" x="120.0" y="198" text-anchor="middle">run on every request</text>
+</g>
+<g class="a_ok"><rect class="box" x="330" y="70" width="220" height="90" rx="12" stroke="#c084fc"/>
+<text class="t" x="440.0" y="96" text-anchor="middle">Review card</text>
+<text class="s" x="440.0" y="118" text-anchor="middle">Approve, Refuse, Chat</text>
+</g>
+<g class="a_posted"><rect class="box" x="680" y="70" width="250" height="90" rx="12" stroke="#4ade80"/>
+<text class="t" x="805.0" y="96" text-anchor="middle">Posted and verified</text>
+<text class="s" x="805.0" y="118" text-anchor="middle">stock 586 to 584</text>
+<text class="s" x="805.0" y="135" text-anchor="middle">balance 0 to 397.17</text>
+</g>
+<g class="a_bad"><rect class="box" x="330" y="250" width="220" height="90" rx="12" stroke="#f87171"/>
+<text class="t" x="440.0" y="276" text-anchor="middle">Blocked card</text>
+<text class="s" x="440.0" y="298" text-anchor="middle">FAIL rows. No Approve</text>
+</g>
+<g class="a_none"><rect class="box" x="680" y="250" width="250" height="90" rx="12" stroke="#f87171"/>
+<text class="t" x="805.0" y="276" text-anchor="middle">Nothing posted</text>
+<text class="s" x="805.0" y="298" text-anchor="middle">the person says Understood</text>
+</g>
+<g class="cp c0"><circle cx="40" cy="366" r="13" fill="#fbbf24"/><text class="num" x="40" y="370" text-anchor="middle" style="fill:#0f1b2d">1</text><text class="cap" x="64" y="371" fill="#fbbf24">Every request meets the same rules, written as code.</text></g>
+<g class="cp c1"><circle cx="40" cy="366" r="13" fill="#c084fc"/><text class="num" x="40" y="370" text-anchor="middle" style="fill:#0f1b2d">2</text><text class="cap" x="64" y="371" fill="#c084fc">Every rule passes or warns (2 chairs at list price): the person gets a review card.</text></g>
+<g class="cp c2"><circle cx="40" cy="366" r="13" fill="#4ade80"/><text class="num" x="40" y="370" text-anchor="middle" style="fill:#0f1b2d">3</text><text class="cap" x="64" y="371" fill="#4ade80">The person approves. It posts, then reads stock and balance back.</text></g>
+<g class="cp c3"><circle cx="40" cy="366" r="13" fill="#f87171"/><text class="num" x="40" y="370" text-anchor="middle" style="fill:#0f1b2d">4</text><text class="cap" x="64" y="371" fill="#f87171">A rule fails (10,000 desks, 510 in stock): there is no Approve button.</text></g>
+<g class="cp c4"><circle cx="40" cy="366" r="13" fill="#f87171"/><text class="num" x="40" y="370" text-anchor="middle" style="fill:#0f1b2d">5</text><text class="cap" x="64" y="371" fill="#f87171">The only answer is Understood. Nothing is posted.</text></g>
+<text class="s still" x="24" y="371">Animation paused. The steps are listed in the text below.</text>
+</svg>

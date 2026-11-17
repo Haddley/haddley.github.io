@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 330" width="960" height="330" role="img" font-family="Arial, Helvetica, sans-serif">
+<title>What the SOP changes</title><desc>The AI reads the SOP and work instructions, looks up the customer, item and existing drafts, asks once about anything missing including the default delivery date, then creates the draft and ends with the hand-over.</desc>
+<style>.bg{fill:#0f1b2d}.box{fill:#162740;stroke-width:2}.t{fill:#e8f0fb;font-size:17px;font-weight:700}.s{fill:#9fb3cc;font-size:13px}.cap{font-size:15px;font-weight:700}.ln{fill:none;stroke-width:3}.lb{fill:#9fb3cc;font-size:12px}.num{fill:#9fb3cc;font-size:12px;font-weight:700}
+@keyframes a_n0{0.00%{opacity:0.3}0.40%{opacity:0.3}2.50%{opacity:1}19.00%{opacity:1}19.90%{opacity:0.3}100.00%{opacity:0.3}}.a_n0{animation:a_n0 20.0s infinite;opacity:0.3}
+@keyframes a_n1{0.00%{opacity:0.3}20.40%{opacity:0.3}22.50%{opacity:1}39.00%{opacity:1}39.90%{opacity:0.3}100.00%{opacity:0.3}}.a_n1{animation:a_n1 20.0s infinite;opacity:0.3}
+@keyframes a_n2{0.00%{opacity:0.3}40.40%{opacity:0.3}42.50%{opacity:1}59.00%{opacity:1}59.90%{opacity:0.3}100.00%{opacity:0.3}}.a_n2{animation:a_n2 20.0s infinite;opacity:0.3}
+@keyframes a_n3{0.00%{opacity:0.3}60.40%{opacity:0.3}62.50%{opacity:1}79.00%{opacity:1}79.90%{opacity:0.3}100.00%{opacity:0.3}}.a_n3{animation:a_n3 20.0s infinite;opacity:0.3}
+@keyframes a_n4{0.00%{opacity:0.3}80.40%{opacity:0.3}82.50%{opacity:1}99.00%{opacity:1}99.90%{opacity:0.3}100.00%{opacity:0.3}}.a_n4{animation:a_n4 20.0s infinite;opacity:0.3}
+@keyframes a_e1{0.00%{opacity:0.3}20.40%{opacity:0.3}22.50%{opacity:1}39.00%{opacity:1}39.90%{opacity:0.3}100.00%{opacity:0.3}}.a_e1{animation:a_e1 20.0s infinite;opacity:0.3}
+@keyframes a_e2{0.00%{opacity:0.3}40.40%{opacity:0.3}42.50%{opacity:1}59.00%{opacity:1}59.90%{opacity:0.3}100.00%{opacity:0.3}}.a_e2{animation:a_e2 20.0s infinite;opacity:0.3}
+@keyframes a_e3{0.00%{opacity:0.3}60.40%{opacity:0.3}62.50%{opacity:1}79.00%{opacity:1}79.90%{opacity:0.3}100.00%{opacity:0.3}}.a_e3{animation:a_e3 20.0s infinite;opacity:0.3}
+@keyframes a_e4{0.00%{opacity:0.3}80.40%{opacity:0.3}82.50%{opacity:1}99.00%{opacity:1}99.90%{opacity:0.3}100.00%{opacity:0.3}}.a_e4{animation:a_e4 20.0s infinite;opacity:0.3}
+@keyframes c0{0.00%{opacity:0}0.40%{opacity:0}2.50%{opacity:1}19.00%{opacity:1}19.90%{opacity:0}100.00%{opacity:0}}.c0{animation:c0 20.0s infinite;opacity:0}
+@keyframes c1{0.00%{opacity:0}20.40%{opacity:0}22.50%{opacity:1}39.00%{opacity:1}39.90%{opacity:0}100.00%{opacity:0}}.c1{animation:c1 20.0s infinite;opacity:0}
+@keyframes c2{0.00%{opacity:0}40.40%{opacity:0}42.50%{opacity:1}59.00%{opacity:1}59.90%{opacity:0}100.00%{opacity:0}}.c2{animation:c2 20.0s infinite;opacity:0}
+@keyframes c3{0.00%{opacity:0}60.40%{opacity:0}62.50%{opacity:1}79.00%{opacity:1}79.90%{opacity:0}100.00%{opacity:0}}.c3{animation:c3 20.0s infinite;opacity:0}
+@keyframes c4{0.00%{opacity:0}80.40%{opacity:0}82.50%{opacity:1}99.00%{opacity:1}99.90%{opacity:0}100.00%{opacity:0}}.c4{animation:c4 20.0s infinite;opacity:0}
+@media (prefers-reduced-motion:reduce){.a_n0{animation:none;opacity:1}.a_n1{animation:none;opacity:1}.a_n2{animation:none;opacity:1}.a_n3{animation:none;opacity:1}.a_n4{animation:none;opacity:1}.a_e1{animation:none;opacity:1}.a_e2{animation:none;opacity:1}.a_e3{animation:none;opacity:1}.a_e4{animation:none;opacity:1}.cp{display:none}.still{display:block}}
+.still{display:none}</style>
+<defs><marker id="m_blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5eb4ef"/></marker><marker id="m_amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#fbbf24"/></marker><marker id="m_green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#4ade80"/></marker><marker id="m_red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#f87171"/></marker><marker id="m_purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#c084fc"/></marker></defs>
+<rect class="bg" width="960" height="330" rx="18"/>
+<text class="t" x="24" y="34" style="font-size:19px">What the SOP changes</text>
+<g class="a_e1"><path class="ln" d="M180 165 L210 165" stroke="#5eb4ef" marker-end="url(#m_blue)"/>
+</g>
+<g class="a_e2"><path class="ln" d="M370 165 L400 165" stroke="#5eb4ef" marker-end="url(#m_blue)"/>
+</g>
+<g class="a_e3"><path class="ln" d="M560 165 L590 165" stroke="#5eb4ef" marker-end="url(#m_blue)"/>
+</g>
+<g class="a_e4"><path class="ln" d="M750 165 L780 165" stroke="#5eb4ef" marker-end="url(#m_blue)"/>
+</g>
+<g class="a_n0"><rect class="box" x="20" y="110" width="160" height="110" rx="12" stroke="#5eb4ef"/>
+<text class="t" x="100.0" y="136" text-anchor="middle">You ask</text>
+<text class="s" x="100.0" y="158" text-anchor="middle">Sell 2 chairs</text>
+<text class="s" x="100.0" y="175" text-anchor="middle">to Adatum</text>
+</g>
+<g class="a_n1"><rect class="box" x="210" y="110" width="160" height="110" rx="12" stroke="#c084fc"/>
+<text class="t" x="290.0" y="136" text-anchor="middle">Reads the files</text>
+<text class="s" x="290.0" y="158" text-anchor="middle">front page, SOP,</text>
+<text class="s" x="290.0" y="175" text-anchor="middle">work instructions</text>
+</g>
+<g class="a_n2"><rect class="box" x="400" y="110" width="160" height="110" rx="12" stroke="#fbbf24"/>
+<text class="t" x="480.0" y="136" text-anchor="middle">Looks things up</text>
+<text class="s" x="480.0" y="158" text-anchor="middle">customer, item,</text>
+<text class="s" x="480.0" y="175" text-anchor="middle">existing drafts</text>
+</g>
+<g class="a_n3"><rect class="box" x="590" y="110" width="160" height="110" rx="12" stroke="#4ade80"/>
+<text class="t" x="670.0" y="136" text-anchor="middle">Asks you once</text>
+<text class="s" x="670.0" y="158" text-anchor="middle">duplicates?</text>
+<text class="s" x="670.0" y="175" text-anchor="middle">delivery date?</text>
+</g>
+<g class="a_n4"><rect class="box" x="780" y="110" width="160" height="110" rx="12" stroke="#5eb4ef"/>
+<text class="t" x="860.0" y="136" text-anchor="middle">Draft + hand-over</text>
+<text class="s" x="860.0" y="158" text-anchor="middle">five headings</text>
+<text class="s" x="860.0" y="175" text-anchor="middle">in a fixed order</text>
+</g>
+<g class="cp c0"><circle cx="40" cy="296" r="13" fill="#5eb4ef"/><text class="num" x="40" y="300" text-anchor="middle" style="fill:#0f1b2d">1</text><text class="cap" x="64" y="301" fill="#5eb4ef">You give the same short request as before.</text></g>
+<g class="cp c1"><circle cx="40" cy="296" r="13" fill="#c084fc"/><text class="num" x="40" y="300" text-anchor="middle" style="fill:#0f1b2d">2</text><text class="cap" x="64" y="301" fill="#c084fc">It reads the SOP and the work instructions in the folder.</text></g>
+<g class="cp c2"><circle cx="40" cy="296" r="13" fill="#fbbf24"/><text class="num" x="40" y="300" text-anchor="middle" style="fill:#0f1b2d">3</text><text class="cap" x="64" y="301" fill="#fbbf24">It follows the SOP: look up the customer and item, check existing drafts.</text></g>
+<g class="cp c3"><circle cx="40" cy="296" r="13" fill="#4ade80"/><text class="num" x="40" y="300" text-anchor="middle" style="fill:#0f1b2d">4</text><text class="cap" x="64" y="301" fill="#4ade80">Anything missing is asked in one round, and the house rule&#x27;s date is offered as the default.</text></g>
+<g class="cp c4"><circle cx="40" cy="296" r="13" fill="#5eb4ef"/><text class="num" x="40" y="300" text-anchor="middle" style="fill:#0f1b2d">5</text><text class="cap" x="64" y="301" fill="#5eb4ef">It creates the draft and ends with the hand-over.</text></g>
+<text class="s still" x="24" y="301">Animation paused. The steps are listed in the text below.</text>
+</svg>

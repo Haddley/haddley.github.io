@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" role="img" font-family="Arial, Helvetica, sans-serif">
+<title>One function: check, ask, post</title><desc>The model asks for request_posting with an order number, and the harness makes the call. The tool checks the rules in code, opens a review card and waits for a person, and only after Approve posts the order and reads back stock and balance.</desc>
+<style>.bg{fill:#0f1b2d}.box{fill:#162740;stroke-width:2}.t{fill:#e8f0fb;font-size:17px;font-weight:700}.s{fill:#9fb3cc;font-size:13px}.cap{font-size:15px;font-weight:700}.ln{fill:none;stroke-width:3}.lb{fill:#9fb3cc;font-size:12px}.num{fill:#9fb3cc;font-size:12px;font-weight:700}
+@keyframes a_ai{0.00%{opacity:0.3}0.40%{opacity:0.3}2.50%{opacity:1}19.00%{opacity:1}19.90%{opacity:0.3}100.00%{opacity:0.3}}.a_ai{animation:a_ai 20.0s infinite;opacity:0.3}
+@keyframes a_chk{0.00%{opacity:0.3}20.40%{opacity:0.3}22.50%{opacity:1}39.00%{opacity:1}39.90%{opacity:0.3}100.00%{opacity:0.3}}.a_chk{animation:a_chk 20.0s infinite;opacity:0.3}
+@keyframes a_ask{0.00%{opacity:0.3}40.40%{opacity:0.3}42.50%{opacity:1}59.00%{opacity:1}59.90%{opacity:0.3}100.00%{opacity:0.3}}.a_ask{animation:a_ask 20.0s infinite;opacity:0.3}
+@keyframes a_post{0.00%{opacity:0.3}60.40%{opacity:0.3}62.50%{opacity:1}79.00%{opacity:1}79.90%{opacity:0.3}100.00%{opacity:0.3}}.a_post{animation:a_post 20.0s infinite;opacity:0.3}
+@keyframes a_back{0.00%{opacity:0.3}80.40%{opacity:0.3}82.50%{opacity:1}99.00%{opacity:1}99.90%{opacity:0.3}100.00%{opacity:0.3}}.a_back{animation:a_back 20.0s infinite;opacity:0.3}
+@keyframes a_e1{0.00%{opacity:0.3}0.40%{opacity:0.3}2.50%{opacity:1}19.00%{opacity:1}19.90%{opacity:0.3}20.40%{opacity:0.3}22.50%{opacity:1}39.00%{opacity:1}39.90%{opacity:0.3}100.00%{opacity:0.3}}.a_e1{animation:a_e1 20.0s infinite;opacity:0.3}
+@keyframes a_e2{0.00%{opacity:0.3}40.40%{opacity:0.3}42.50%{opacity:1}59.00%{opacity:1}59.90%{opacity:0.3}100.00%{opacity:0.3}}.a_e2{animation:a_e2 20.0s infinite;opacity:0.3}
+@keyframes a_e3{0.00%{opacity:0.3}60.40%{opacity:0.3}62.50%{opacity:1}79.00%{opacity:1}79.90%{opacity:0.3}100.00%{opacity:0.3}}.a_e3{animation:a_e3 20.0s infinite;opacity:0.3}
+@keyframes a_e4{0.00%{opacity:0.3}80.40%{opacity:0.3}82.50%{opacity:1}99.00%{opacity:1}99.90%{opacity:0.3}100.00%{opacity:0.3}}.a_e4{animation:a_e4 20.0s infinite;opacity:0.3}
+@keyframes c0{0.00%{opacity:0}0.40%{opacity:0}2.50%{opacity:1}19.00%{opacity:1}19.90%{opacity:0}100.00%{opacity:0}}.c0{animation:c0 20.0s infinite;opacity:0}
+@keyframes c1{0.00%{opacity:0}20.40%{opacity:0}22.50%{opacity:1}39.00%{opacity:1}39.90%{opacity:0}100.00%{opacity:0}}.c1{animation:c1 20.0s infinite;opacity:0}
+@keyframes c2{0.00%{opacity:0}40.40%{opacity:0}42.50%{opacity:1}59.00%{opacity:1}59.90%{opacity:0}100.00%{opacity:0}}.c2{animation:c2 20.0s infinite;opacity:0}
+@keyframes c3{0.00%{opacity:0}60.40%{opacity:0}62.50%{opacity:1}79.00%{opacity:1}79.90%{opacity:0}100.00%{opacity:0}}.c3{animation:c3 20.0s infinite;opacity:0}
+@keyframes c4{0.00%{opacity:0}80.40%{opacity:0}82.50%{opacity:1}99.00%{opacity:1}99.90%{opacity:0}100.00%{opacity:0}}.c4{animation:c4 20.0s infinite;opacity:0}
+@media (prefers-reduced-motion:reduce){.a_ai{animation:none;opacity:1}.a_chk{animation:none;opacity:1}.a_ask{animation:none;opacity:1}.a_post{animation:none;opacity:1}.a_back{animation:none;opacity:1}.a_e1{animation:none;opacity:1}.a_e2{animation:none;opacity:1}.a_e3{animation:none;opacity:1}.a_e4{animation:none;opacity:1}.cp{display:none}.still{display:block}}
+.still{display:none}</style>
+<defs><marker id="m_blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5eb4ef"/></marker><marker id="m_amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#fbbf24"/></marker><marker id="m_green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#4ade80"/></marker><marker id="m_red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#f87171"/></marker><marker id="m_purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#c084fc"/></marker></defs>
+<rect class="bg" width="960" height="400" rx="18"/>
+<text class="t" x="24" y="34" style="font-size:19px">One function: check, ask, post</text>
+<g class="a_e1"><path class="ln" d="M190 195 L250 195" stroke="#5eb4ef" marker-end="url(#m_blue)"/>
+</g>
+<g class="a_e2"><path class="ln" d="M440 195 L500 195" stroke="#fbbf24" marker-end="url(#m_amber)"/>
+</g>
+<g class="a_e3"><path class="ln" d="M690 195 L750 195" stroke="#c084fc" marker-end="url(#m_purple)"/>
+<text class="lb" x="720.0" y="185.0" text-anchor="middle" stroke="#0f1b2d" stroke-width="5" paint-order="stroke">Approve</text>
+</g>
+<g class="a_e4"><path class="ln" d="M845 240 L845 290" stroke="#4ade80" marker-end="url(#m_green)"/>
+</g>
+<g class="a_ai"><rect class="box" x="20" y="150" width="170" height="90" rx="12" stroke="#5eb4ef"/>
+<text class="t" x="105.0" y="176" text-anchor="middle">The AI</text>
+<text class="s" x="105.0" y="198" text-anchor="middle">request_posting</text>
+<text class="s" x="105.0" y="215" text-anchor="middle">(order number)</text>
+</g>
+<g class="a_chk"><rect class="box" x="250" y="150" width="190" height="90" rx="12" stroke="#fbbf24"/>
+<text class="t" x="345.0" y="176" text-anchor="middle">1  Check</text>
+<text class="s" x="345.0" y="198" text-anchor="middle">rules in plain code</text>
+<text class="s" x="345.0" y="215" text-anchor="middle">reads the draft afresh</text>
+</g>
+<g class="a_ask"><rect class="box" x="500" y="150" width="190" height="90" rx="12" stroke="#c084fc"/>
+<text class="t" x="595.0" y="176" text-anchor="middle">2  Ask</text>
+<text class="s" x="595.0" y="198" text-anchor="middle">review card:</text>
+<text class="s" x="595.0" y="215" text-anchor="middle">a person decides</text>
+</g>
+<g class="a_post"><rect class="box" x="750" y="150" width="190" height="90" rx="12" stroke="#4ade80"/>
+<text class="t" x="845.0" y="176" text-anchor="middle">3  Post</text>
+<text class="s" x="845.0" y="198" text-anchor="middle">checks again, posts,</text>
+<text class="s" x="845.0" y="215" text-anchor="middle">reads stock and balance</text>
+</g>
+<g class="a_back"><rect class="box" x="750" y="290" width="190" height="70" rx="12" stroke="#5eb4ef"/>
+<text class="t" x="845.0" y="316" text-anchor="middle">The AI is told</text>
+<text class="s" x="845.0" y="338" text-anchor="middle">posted and verified</text>
+</g>
+<g class="cp c0"><circle cx="40" cy="366" r="13" fill="#5eb4ef"/><text class="num" x="40" y="370" text-anchor="middle" style="fill:#0f1b2d">1</text><text class="cap" x="64" y="371" fill="#5eb4ef">The model asks for one thing: an order number. The harness makes the call.</text></g>
+<g class="cp c1"><circle cx="40" cy="366" r="13" fill="#fbbf24"/><text class="num" x="40" y="370" text-anchor="middle" style="fill:#0f1b2d">2</text><text class="cap" x="64" y="371" fill="#fbbf24">The tool checks the order against the rules, in code.</text></g>
+<g class="cp c2"><circle cx="40" cy="366" r="13" fill="#c084fc"/><text class="num" x="40" y="370" text-anchor="middle" style="fill:#0f1b2d">3</text><text class="cap" x="64" y="371" fill="#c084fc">It opens the review card and waits. The AI is paused.</text></g>
+<g class="cp c3"><circle cx="40" cy="366" r="13" fill="#4ade80"/><text class="num" x="40" y="370" text-anchor="middle" style="fill:#0f1b2d">4</text><text class="cap" x="64" y="371" fill="#4ade80">Only after a clean Approve does it post, through the Posting configuration.</text></g>
+<g class="cp c4"><circle cx="40" cy="366" r="13" fill="#4ade80"/><text class="num" x="40" y="370" text-anchor="middle" style="fill:#0f1b2d">5</text><text class="cap" x="64" y="371" fill="#4ade80">It reads stock and balance back, then tells the AI the result.</text></g>
+<text class="s still" x="24" y="371">Animation paused. The steps are listed in the text below.</text>
+</svg>
