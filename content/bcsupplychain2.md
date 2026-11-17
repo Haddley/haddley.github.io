@@ -48,31 +48,8 @@ Here is the same picture as a map:
 
 Here is how the pieces connect. Look at it for a minute before you read on.
 
-```mermaid
-flowchart LR
-  P([The person])
-  subgraph PC["Your computer"]
-    H["DeepSeek Harness<br/>runs the conversation<br/>and calls the tools"]
-    W[("The wiki<br/>notes and procedures")]
-    S["The checking screen<br/>policy checked in code<br/>PIN and one button"]
-    POL[("Policy file<br/>and audit log")]
-  end
-  subgraph CL["Cloud"]
-    L["Hosted AI model<br/>DeepSeek V4 Flash"]
-    ML["Microsoft Learn<br/>documentation search"]
-    MCP["Business Central connection<br/>Microsoft's MCP server"]
-    BC[("Business Central<br/>practice company<br/>CRONUS USA, Inc.")]
-  end
-  P -- "short requests and answers" --> H
-  H -- "what should I do next?" --> L
-  H <-->|"reads first, writes back"| W
-  H -- "looks things up" --> ML
-  H -- "SupplyChainLab: drafts only" --> MCP
-  MCP --> BC
-  P -- "opens the link, types the PIN" --> S
-  S --- POL
-  S -- "SupplyChainPost: ship and invoice sales orders only" --> MCP
-```
+![](assets/images/bcsupplychain2/system-map.svg)
+*The six steps light up in turn. The harness reaches Business Central through door 1 and can only draft. The checking screen is door 2, and a person presses its button. (With reduced motion switched on you will see every step at once.)*
 
 :::brain-power Two ways in
 Look at the map. There are two ways into Business Central, and the AI is allowed to use only one. Which one? And which one can post?
