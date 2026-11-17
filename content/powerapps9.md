@@ -1,6 +1,6 @@
 ---
-title: "Adding a Custom Topic to the Copilot in a Model-Driven App"
-description: "The Copilot panel in a model-driven app is a Copilot Studio agent. I tested what it can and cannot do, then added a custom topic to fill one of the gaps."
+title: "Adding a Custom Topic in Copilot Studio to the Copilot in a Model-Driven App"
+description: "The Copilot panel in a model-driven app is a Copilot Studio agent. I asked it questions it could and could not answer, then added a custom topic that gives it an answer from outside my Dataverse tables."
 date: "2026-06-01"
 categories: ["Power Platform","AI"]
 tags: "power-apps, dataverse, model-driven-app, copilot-studio, custom-topics"

@@ -1,14 +1,14 @@
 ---
 type: post
 slug: powerapps9
-title: "Adding a Custom Topic to the Copilot in a Model-Driven App"
+title: "Adding a Custom Topic in Copilot Studio to the Copilot in a Model-Driven App"
 date: "2026-06-01"
 builds_on: [topics]
 topics: [copilot-studio, model-driven-apps, custom-topics, dataverse-integration]
 tools: [Power Apps, Copilot Studio, Dataverse]
 status: current
 checked: "2026-11-06"
-source_hash: "6ab862a6ec0f"
+source_hash: "cb598230a54d"
 generated_by: gemma4:12b
 ---
 
