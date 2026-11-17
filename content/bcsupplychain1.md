@@ -1,7 +1,7 @@
 ---
 title: "Business Central Supply Chain"
 part: 1
-description: "Would You Let an AI Bill Your Customers? I typed a foolish request into an AI assistant connected to Business Central, and it was stopped before it could do any harm. Then a vague request that the AI turned into the right questions, and a real order that took about three minutes of the AI's time and one click from a person. This series shows an AI doing the legwork in your accounting system, with guard rails that I attacked until they held"
+description: "Would You Let an AI Bill Your Customers? I typed a foolish request into an AI assistant connected to Business Central, and it was stopped before it could do any harm. Then a vague request that became a real draft order once the AI had the answers to the right questions, and a second real order that took about three minutes and one click. This series shows an AI doing the legwork in your accounting system, with guard rails that I attacked until they held"
 date: "2026-11-16"
 categories: ["AI", "Business Central"]
 image: "/assets/images/bcsupplychain1/poster.svg"
