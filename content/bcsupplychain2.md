@@ -27,6 +27,40 @@ The question for the whole series is this: **can an AI assistant manage sales or
 | **A small wiki** | Notes the AI reads before it starts and adds to afterwards (see [LLM Wiki](/posts/LLM-Wiki/)) |
 | **The Business Central web client** | The evidence. Every result in this series is checked there |
 
+## How the pieces connect
+
+```mermaid
+flowchart LR
+  P([The person])
+  subgraph PC["Your computer"]
+    H["DeepSeek Harness<br/>runs the conversation<br/>and calls the tools"]
+    W[("The wiki<br/>notes and procedures")]
+    S["The checking screen<br/>policy checked in code<br/>PIN and one button"]
+    POL[("Policy file<br/>and audit log")]
+  end
+  subgraph CL["Cloud"]
+    L["Hosted AI model<br/>DeepSeek V4 Flash"]
+    ML["Microsoft Learn<br/>documentation search"]
+    MCP["Business Central connection<br/>Microsoft's MCP server"]
+    BC[("Business Central<br/>practice company<br/>CRONUS USA, Inc.")]
+  end
+  P -- "short requests and answers" --> H
+  H -- "what should I do next?" --> L
+  H <-- "reads first, writes back" --> W
+  H -- "looks things up" --> ML
+  H -- "SupplyChainLab: drafts only" --> MCP
+  MCP --> BC
+  P -- "opens the link, types the PIN" --> S
+  S --- POL
+  S -- "SupplyChainPost: ship and invoice sales orders only" --> MCP
+```
+
+Read it from the left. The person talks to the **harness**, which runs on your computer. The harness sends the conversation to a **hosted model**, which decides what to do next, and the harness carries it out with tools: the **wiki** for notes, **Microsoft Learn** for documentation, and **Business Central's own connection** for the real data. A **configuration** inside Business Central decides what that connection may do. The one the AI uses can create and change drafts and nothing else.
+
+There is a second route into Business Central, and the AI is not on it. The **checking screen** has its own configuration that can ship and invoice sales orders, and a person has to press its button. [Part 7](/posts/bcsupplychain7/) is about that route.
+
+Two things to notice. The hosted model sees the conversation and what the tools return, so order details leave your computer. And the harness, the wiki and the checking screen all run on the same machine in this prototype, which is a weakness that [Part 1](/posts/bcsupplychain1/) lists.
+
 ## The rules I set first
 
 - **One company, trading only.** Buying and selling items. No manufacturing, no services.

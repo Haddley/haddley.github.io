@@ -26,6 +26,36 @@ So I built that thing. This post is what it is, what it stopped, the one order t
 ![](assets/images/bcsupplychain2/r4-post-config-active.webp)
 *The screen's own connection, SupplyChainPost, locked. Sales orders can be read and posted. Nothing else can be created, changed or deleted*
 
+## From request to posted invoice
+
+```mermaid
+sequenceDiagram
+    actor P as The person
+    participant H as Harness and AI
+    participant BC as Business Central
+    participant S as Checking screen
+    P->>H: "Sell 13 BERLIN Guest Chair, yellow to School of Fine Art at their special price"
+    H->>BC: looks up the customer, the item, stock and earlier orders (read only)
+    H->>P: asks the one thing it cannot find: the price
+    P->>H: 246.58
+    H->>BC: creates the draft order (drafts-only configuration)
+    H->>BC: reads it back and checks the arithmetic
+    H->>P: hand-over note with links
+    P->>S: opens the order on the checking screen
+    S->>BC: reads the draft afresh
+    S->>S: runs the policy checks in code
+    alt a check fails
+        S-->>P: shows the reasons, offers no button
+    else every check passes
+        P->>S: ticks the warning, types the PIN, clicks once
+        S->>BC: ship and invoice (posting-only configuration)
+        S->>BC: reads stock and the customer balance
+        S-->>P: checks the result matches, and records the decision
+    end
+```
+
+The AI never appears on the posting path. It can reach the checking screen's page and read it, as I describe below, but it cannot press the button, because the button needs a PIN that only the person knows.
+
 ## The policy
 
 The limits live in one file. I chose the defaults, and someone who owns the business should review them.
