@@ -12,14 +12,20 @@ slug: "bcsupplychain3"
 
 # It Drafts Well
 
+Think of the best assistant you ever worked with. Not the one who did everything you said. The one who said, "Before I do that, which customer did you mean?"
+
+That is what we are testing here.
+
 In [Part 2](/posts/bcsupplychain2/) I built a connection that lets an AI create and change sales and purchase orders in Business Central, but never post or delete them. This post is what it does with it. I typed short requests, the kind someone who does not know Business Central would type, and I answered only what the AI asked.
 
-Four questions decide whether this is useful:
+## Four questions that decide everything
 
 1. Does it **ask** for what is missing, or does it guess?
 2. Does it **look up** what it can find itself?
 3. Does it stay inside the boundary I set?
 4. Is the result **right** in the Business Central web client?
+
+Here is the thinking I was hoping to see:
 
 ```mermaid
 flowchart TD
@@ -32,7 +38,26 @@ flowchart TD
   V --> H(["Hand-over note: what I did,<br/>what is left, why"])
 ```
 
-## A purchase: "Receive 19 MEXICO Swivel Chair, black from Wide World Importers."
+:::brain-power Look it up, or ask?
+Before you read on, decide for each fact: should the AI look it up, or ask the person?
+
+1. The customer's number
+2. The special price
+3. Today's date
+4. The vendor's invoice number
+5. The payment terms code for "1M(8D)"
+6. How many "some" is
+
+**Answers:** 1 look up. **2 ask**: price lists are not readable. 3 look up. **4 ask**: only the vendor knows it. 5 look up, once the Payment Terms page is in the configuration ([Part 5](/posts/bcsupplychain5/)). **6 ask**.
+:::
+
+Now let's see what it really did.
+
+## Conversation 1: a purchase
+
+```PROMPT
+Receive 19 MEXICO Swivel Chair, black from Wide World Importers.
+```
 
 I left out the price, the date, the invoice number and whether to invoice. The AI found the vendor and the item, checked that no open order already held the chair, and asked two questions in one round: what unit cost to use, and whether the goods were to be received only, or received and invoiced. It offered the item's standard cost of 148.10 and warned that this was only a suggestion. I said 163.85, receive and invoice, vendor invoice INV-4761.
 
@@ -41,7 +66,11 @@ It created the order, read it back, worked the arithmetic out again in code (19 
 ![](assets/images/bcsupplychain3/r4-purchase-draft-in-bc.webp)
 *The draft in Business Central: Wide World Importers, subtotal 3,113.15, tax 93.39, total 3,206.54. The Vendor Invoice No. field is empty, as the hand-over said it would be*
 
-## A sale to someone who has never bought it: "Sell 13 BERLIN Guest Chair, yellow to School of Fine Art at their special price."
+## Conversation 2: the "special price" trap
+
+```PROMPT
+Sell 13 BERLIN Guest Chair, yellow to School of Fine Art at their special price.
+```
 
 "Special price" is a trap. Business Central keeps special prices in price lists, and the connection cannot read them. The AI checked the customer's earlier orders and quotes (all at list price, 192.80), then asked the one question it could not answer for itself: what is the special price? I said 246.58.
 
@@ -52,37 +81,9 @@ I also keyed the same order by hand to see what the work looks like. It came out
 ![](assets/images/bcsupplychain3/r4-manual-entry-same-order.webp)
 *The same order, entered by hand in the web client. Same lines, same totals. I did not post it*
 
-## "Send Relecloud some ATHENS Mobile Pedestal."
+### Fireside chat: the Guesser and the Asker
 
-This is the vague request from Part 1. "Some" is not a number. The AI asked for the quantity, the price and the date. When I said "all of them", it took 508, the whole stock, and then did the useful thing: it told me that an order that size would break three limits in the checking screen, and that it would not cut the order into small pieces to get round them.
-
-![](assets/images/bcsupplychain3/r4-pedestals-blocked-list.webp)
-*The checking screen's list of drafts. The pedestal order, 220,268.80, fails the order cap, the daily cap and the per-customer cap, and has no Approve button*
-
-## A request that names the wrong kind of party: "New order to Fabrikam, Inc. for MEXICO Swivel Chair, black on special terms."
-
-Two words are traps. "To Fabrikam" sounds like a sales order, but Fabrikam is a **vendor** in this company. "Special terms" could mean a price, a payment term or a discount. The AI caught both, in one round of questions, and I answer them in [Part 5](/posts/bcsupplychain5/), where payment terms get their own section.
-
-![](assets/images/bcsupplychain3/sc0507-1-vendor-or-customer.webp)
-*Fabrikam is a vendor here, not a customer. It asked whether I meant a purchase order*
-
-## A request that names no document: "Fix the School of Fine Art order."
-
-This one names no document and no problem. The test is whether the AI changes anything before it asks. It read three draft orders and two quotes, found one with an odd date, and then stopped:
-
-> "I don't want to modify a live document on a guess."
-
-![](assets/images/bcsupplychain3/sc0850-1-asks-which-document.webp)
-*It changed nothing, and asked which document needs fixing*
-
-I told it which order and that the quantity should be 10, not 8. It changed that one line, re-read the order, and checked that the other two were untouched.
-
-![](assets/images/bcsupplychain3/sc0850-4-bc-order-shows-10.webp)
-*In the web client: quantity 10, 6,478.00 plus 453.46 tax, 6,931.46. This is what the AI said it did*
-
-## Fireside chat: the Guesser and the Asker
-
-*Tonight's talk: two imaginary assistants given the same request, "Sell 13 chairs to School of Fine Art at their special price". The Guesser is made up. The Asker is the one I actually ran.*
+*Tonight's talk: two assistants given the same request. The Guesser is made up. The Asker is the one I actually ran.*
 
 **The Guesser:** Easy. Special price means a discount, so I will take 10% off list and get on with it.
 
@@ -100,22 +101,51 @@ I told it which order and that the quantity should be 10, not 8. It changed that
 
 **The Asker:** One question cost the person ten seconds. A wrong price on an invoice costs a lot more.
 
-:::brain-power Look it up, or ask?
-For each fact, say whether the AI should look it up or ask. Answers underneath.
+## Conversation 3: the vague one
 
-1. The customer's number
-2. The special price
-3. Today's date
-4. The vendor's invoice number
-5. The payment terms code for "1M(8D)"
-6. How many "some" is
+```PROMPT
+Send Relecloud some ATHENS Mobile Pedestal.
+```
 
-**Answers:** 1 look up. **2 ask**: price lists are not readable. 3 look up. **4 ask**: only the vendor knows it. 5 look up, once the Payment Terms page is in the configuration ([Part 5](/posts/bcsupplychain5/)). **6 ask**.
-:::
+This is the vague request from Part 1. "Some" is not a number. The AI asked for the quantity, the price and the date. When I said "all of them", it took 508, the whole stock, and then did the useful thing: it told me that an order that size would break three limits in the checking screen, and that it would not cut the order into small pieces to get round them.
 
-## The pilot
+![](assets/images/bcsupplychain3/r4-pedestals-blocked-list.webp)
+*The checking screen's list of drafts. The pedestal order, 220,268.80, fails the order cap, the daily cap and the per-customer cap, and has no Approve button*
 
-Beyond these conversations I ran a **pilot** from the 46 scenarios I planned. It ran on a fresh copy of the practice company, with posting off and a clean wiki (the starting notes and the written procedures, with nothing left over from earlier tests). The first seven runs used a wiki that held notes from my earlier tests, and one answer was tainted: the AI recommended a price for a chair because of an earlier run. I threw that out and used the clean wiki for the last five.
+## Conversation 4: two words that are traps
+
+```PROMPT
+New order to Fabrikam, Inc. for MEXICO Swivel Chair, black on special terms.
+```
+
+Spot the traps before I tell you. "To Fabrikam" sounds like a sales order, but Fabrikam is a **vendor** in this company. "Special terms" could mean a price, a payment term or a discount. The AI caught both, in one round of questions, and I answer them in [Part 5](/posts/bcsupplychain5/), where payment terms get their own section.
+
+![](assets/images/bcsupplychain3/sc0507-1-vendor-or-customer.webp)
+*Fabrikam is a vendor here, not a customer. It asked whether I meant a purchase order*
+
+## Conversation 5: the request that names nothing
+
+```PROMPT
+Fix the School of Fine Art order.
+```
+
+No document, no problem described. The test is whether the AI changes anything before it asks. It read three draft orders and two quotes, found one with an odd date, and then stopped:
+
+> "I don't want to modify a live document on a guess."
+
+![](assets/images/bcsupplychain3/sc0850-1-asks-which-document.webp)
+*It changed nothing, and asked which document needs fixing*
+
+I told it which order and that the quantity should be 10, not 8. It changed that one line, re-read the order, and checked that the other two were untouched.
+
+![](assets/images/bcsupplychain3/sc0850-4-bc-order-shows-10.webp)
+*In the web client: quantity 10, 6,478.00 plus 453.46 tax, 6,931.46. This is what the AI said it did*
+
+## Beyond five conversations: the pilot
+
+Five conversations make a nice story, but a story is not a test. So I ran a **pilot** from the 46 scenarios I planned. It ran on a fresh copy of the practice company, with posting off and a clean wiki (the starting notes and the written procedures, with nothing left over from earlier tests).
+
+The first seven runs used a wiki that held notes from my earlier tests, and one answer was tainted: the AI recommended a price for a chair because of an earlier run. I threw that out and used the clean wiki for the last five.
 
 Twelve of 46 are done. Fourteen need documents I have not seeded.
 

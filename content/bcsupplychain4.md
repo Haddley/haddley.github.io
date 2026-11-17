@@ -12,11 +12,15 @@ slug: "bcsupplychain4"
 
 # Do Written Procedures Help an AI Assistant?
 
-## What this post tells you, and why
+Every company has the colleague who "just knows" how things are done. Then they go on holiday, and nobody can raise a purchase order.
+
+Writing it down is the cure. But does writing it down help an **AI**? That is the question for this post.
+
+## The idea
 
 In [Part 3](/posts/bcsupplychain3/) the AI wrote notes in its wiki after every run: how Business Central behaves, what went wrong, what it assumed. The idea I want to test is simple. If those notes are turned into proper **procedures**, will the next run need less reasoning and make fewer mistakes?
 
-I borrowed a distinction from quality management:
+I borrowed a distinction from quality management. There are two kinds of document, and people mix them up all the time.
 
 | Document | Answers | Written for | In this project |
 |---|---|---|---|
@@ -24,6 +28,8 @@ I borrowed a distinction from quality management:
 | **Work instruction** | Exactly how to perform one task, click by click | The person doing the hands-on work | "Create a purchase order with one line": the exact tool, the parameters that worked, the errors and their fixes |
 
 A step in an SOP links to the work instruction that performs it. I wrote three SOPs and five work instructions from what the AI had already learned, plus what I knew about the API.
+
+Here is how the AI uses them:
 
 ```mermaid
 flowchart LR
@@ -35,7 +41,20 @@ flowchart LR
   DO -. "new gotcha found" .-> WI
 ```
 
-## What the procedures say
+Look at the dotted line at the bottom. When the AI hits a new problem, it writes the fix back into the work instruction. The procedures grow with use.
+
+:::brain-power SOP or work instruction?
+Which document does each line belong in? Decide first, answers are underneath.
+
+1. "Never raise a credit limit."
+2. "Use the child create tool first. The flat one was rejected."
+3. "Ask all missing facts in ONE round."
+4. "`documentNumber` is not a property of a sales line. Use `documentId`."
+
+**Answers:** 1 and 3 are SOP lines: policy and who decides. 2 and 4 are work-instruction lines: exact tools and known errors.
+:::
+
+## An SOP, up close
 
 Here is the sales-order procedure as the AI reads it. At the top: what it is for, when it applies, and who decides what.
 
@@ -71,21 +90,7 @@ An SOP says what to do and who decides. A **work instruction** says exactly how:
 
 Most of the content of these pages came from the AI itself. It hit an error, found the fix, and the procedure told it to write the fix into the matching work instruction. I reviewed what it added and kept what was right.
 
-## The hand-over procedure
-
-One procedure applies to every task. It says how the AI must end: always in the same five parts, in plain words, so that a person can finish the job.
-
-![](assets/images/bcsupplychain4/r4-handover-top.webp)
-*Parts 1 to 4: what I did (and that nothing was posted), what is left and why, what to check first with numbers and not just "check credit", and links*
-
-![](assets/images/bcsupplychain4/r4-handover-rules.webp)
-*Part 5 is steps, only where a screen is genuinely needed. The rules at the bottom are the ones that matter most: never tell a person to do what the checking screen already does, never suggest raising a credit limit or zeroing a cost, and say so in the first line if you could not do what was asked*
-
-Every hand-over in this series, the purchase of 19 chairs, the pedestal order, the lamp receipt, follows this page.
-
-The full set of procedures is three SOPs (purchase order, sales order, correcting an existing order) and five work instructions (look up, create a purchase line, create a sales line, modify a line, and verify). They are in the wiki under `procedures/`, and `CLAUDE.md` tells the AI to read the matching SOP and work instructions before it starts, and to add new gotchas to the work instruction, not to a new page.
-
-## Fireside chat: the SOP and the work instruction
+### Fireside chat: the SOP and the work instruction
 
 *Tonight's talk: two documents, one task.*
 
@@ -101,20 +106,23 @@ The full set of procedures is three SOPs (purchase order, sales order, correctin
 
 **The work instruction:** Then we agree. You say what and why, I say how, and a person checks the edits.
 
-:::brain-power SOP or work instruction?
-Which document does each line belong in? Answers underneath.
+## The hand-over procedure
 
-1. "Never raise a credit limit."
-2. "Use the child create tool first. The flat one was rejected."
-3. "Ask all missing facts in ONE round."
-4. "`documentNumber` is not a property of a sales line. Use `documentId`."
+One procedure applies to every task. It says how the AI must end: always in the same five parts, in plain words, so that a person can finish the job.
 
-**Answers:** 1 and 3 are SOP lines: policy and who decides. 2 and 4 are work-instruction lines: exact tools and known errors.
-:::
+![](assets/images/bcsupplychain4/r4-handover-top.webp)
+*Parts 1 to 4: what I did (and that nothing was posted), what is left and why, what to check first with numbers and not just "check credit", and links*
 
-## The test
+![](assets/images/bcsupplychain4/r4-handover-rules.webp)
+*Part 5 is steps, only where a screen is genuinely needed. The rules at the bottom are the ones that matter most: never tell a person to do what the checking screen already does, never suggest raising a credit limit or zeroing a cost, and say so in the first line if you could not do what was asked*
 
-I used three kinds of prompt, each in two conditions, three times:
+Every hand-over in this series, the purchase of 19 chairs, the pedestal order, the lamp receipt, follows this page.
+
+The full set of procedures is three SOPs (purchase order, sales order, correcting an existing order) and five work instructions (look up, create a purchase line, create a sales line, modify a line, and verify). They are in the wiki under `procedures/`, and `CLAUDE.md` tells the AI to read the matching SOP and work instructions before it starts, and to add new gotchas to the work instruction, not to a new page.
+
+## The experiment
+
+Time to find out whether any of this matters. I used three kinds of prompt, each in two conditions, three times:
 
 | Family | Prompt shape |
 |---|---|
@@ -126,7 +134,9 @@ Condition **A** was the wiki as it was before the AI wrote anything, with no pro
 
 I scored each run from the harness log, which records every tool call and error, not from my impression. I answered the AI's questions from a fixed script. That is 18 runs, one model, one company. It is a small test.
 
-## What the numbers say
+## Round 1: did it get faster?
+
+**Sharpen your pencil.** Before you look at the numbers: do you expect the procedures to make the AI faster, slower, or about the same? Write your guess down.
 
 | Family | Procedures | Tool calls (round 1 / 2 / 3) | Median | Errors from Business Central (1 / 2 / 3) |
 |---|---|---|---|---|
@@ -137,13 +147,15 @@ I scored each run from the harness log, which records every tool call and error,
 | Special price | without | 32 / 25 / 44 | 32 | 2 / 1 / 2 |
 | Special price | with | 22 / 27 / 31 | 27 | 2 / 0 / 1 |
 
-Across all nine runs per condition, the mean was **30.9 calls without** procedures and **29.1 with** them. That is no real difference. What is different is the spread. Without procedures the runs ranged from 19 to 44 calls. With them, from 22 to 34. The procedures did not make the AI faster. They made it more predictable.
+Across all nine runs per condition, the mean was **30.9 calls without** procedures and **29.1 with** them. About the same, and that is the honest answer.
+
+What is different is the spread. Without procedures the runs ranged from 19 to 44 calls. With them, from 22 to 34. The procedures did not make the AI faster. They made it more **predictable**.
 
 :::watch-it The AI still read them late
 In one of the first runs the AI read the work instruction for creating the order only after it had created the order. In the later runs I added a rule to the SOP: read the work instruction before your first write. All the later runs followed it.
 :::
 
-## What changed is what it asked
+## Round 2: did it ask better questions?
 
 This is the real result.
 
@@ -157,7 +169,12 @@ The AI without procedures was not careless. It did the routine thing, which is t
 
 There was a second effect. Without procedures the AI created between two and five documents per run, because it probed. With procedures it created two, every time. One run without procedures ran eight shell commands that read the harness's own configuration and session folder, looking for a way to post a receipt. Posting is switched off in this configuration, so nothing could happen, but it is the behaviour an SOP removes: with the procedures the same kind of run used one to three shell commands.
 
-## The AI improved the procedures itself
+:::no-dumb-questions
+**Q: So the procedures did nothing for speed. Why bother?**
+A: Because speed was never the point. The procedures turned "uses the list price and never asks about credit" into "asks the price and flags the credit". That is a change in behaviour you can write down, review and own.
+:::
+
+## The twist: the AI improved the procedures itself
 
 The SOP tells the AI to record new gotchas in the matching work instruction. In the B runs it did, and some of what it added was good:
 

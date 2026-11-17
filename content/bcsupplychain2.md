@@ -1,7 +1,7 @@
 ---
 title: "Business Central Supply Chain"
 part: 2
-description: "Setting Up a Safe Place to Try This: A practice copy of Business Central, a connection that lets an AI prepare orders but not make them final, and a small wiki the AI reads first and adds to. Plus what I assumed about the demo data that turned out to be wrong"
+description: "Setting Up a Safe Place to Try This: A practice copy of Business Central, a connection that lets an AI prepare orders but not make them final, and a small wiki the AI reads first and adds to. Plus what is really in the demo company, compared with what I remembered"
 date: "2026-11-16"
 categories: ["AI", "Business Central"]
 image: "/assets/images/bcsupplychain2/poster.svg"
@@ -12,11 +12,13 @@ slug: "bcsupplychain2"
 
 # Setting Up a Safe Place to Try This
 
+You would not test a new employee on your live books. So before we let an AI anywhere near an order, we build it a playground.
+
 [Part 1](/posts/bcsupplychain1/) showed the result. This post shows how I built the place where it happens, so you can build your own. Everything here happens in a **practice copy** of Business Central, never in a live company.
 
-The question for the whole series is this: **can an AI assistant manage sales orders and purchase orders in Business Central, starting from a short, vague request and asking sensible follow-up questions?** I answer it with screenshots of the Business Central web client, so you see the documents it made and not only its account of them.
+The question for the whole series: **can an AI assistant manage sales orders and purchase orders in Business Central, starting from a short, vague request and asking sensible follow-up questions?** I answer it with screenshots of the web client, so you see the documents it made and not only its account of them.
 
-## The pieces
+## Who is in the room?
 
 | Piece | What it does |
 |---|---|
@@ -27,7 +29,9 @@ The question for the whole series is this: **can an AI assistant manage sales or
 | **A small wiki** | Notes the AI reads before it starts and adds to afterwards (see [LLM Wiki](/posts/LLM-Wiki/)) |
 | **The Business Central web client** | The evidence. Every result in this series is checked there |
 
-## How the pieces connect
+## The big picture
+
+Here is how the pieces connect. Look at it for a minute before you read on.
 
 ```mermaid
 flowchart LR
@@ -55,13 +59,15 @@ flowchart LR
   S -- "SupplyChainPost: ship and invoice sales orders only" --> MCP
 ```
 
-Read it from the left. The person talks to the **harness**, which runs on your computer. The harness sends the conversation to a **hosted model**, which decides what to do next, and the harness carries it out with tools: the **wiki** for notes, **Microsoft Learn** for documentation, and **Business Central's own connection** for the real data. A **configuration** inside Business Central decides what that connection may do. The one the AI uses can create and change drafts and nothing else.
+:::brain-power Spot the second door
+There are two routes from your computer into Business Central. Which one can the AI use, and which one can it not?
 
-There is a second route into Business Central, and the AI is not on it. The **checking screen** has its own configuration that can ship and invoice sales orders, and a person has to press its button. [Part 7](/posts/bcsupplychain7/) is about that route.
+**Answer:** the AI uses the route through the harness, with the drafts-only configuration. The route through the checking screen is separate: it has its own configuration that can ship and invoice sales orders, and a person has to press its button. [Part 7](/posts/bcsupplychain7/) is all about that second door.
+:::
 
 Two things to notice. The hosted model sees the conversation and what the tools return, so order details leave your computer. And the harness, the wiki and the checking screen all run on the same machine in this prototype, which is a weakness that [Part 1](/posts/bcsupplychain1/) lists.
 
-## The rules I set first
+## The ground rules
 
 - **One company, trading only.** Buying and selling items. No manufacturing, no services.
 - **No warehouse movements.** No put-aways, picks or bins.
@@ -83,13 +89,22 @@ A small program fills 38 templates with real customers, vendors and items, with 
 | **Short request** (the AI sees this) | "Receive 5 ANTWERP Conference Table from Fabrikam, Inc." |
 | **Full specification** (I keep this) | "Create a purchase order for Fabrikam, Inc.: 5 x 1920-S at 561.32. Receive and invoice, posting date 2026-11-11, vendor invoice number INV-1093." |
 
-Each scenario also scripts the **follow-up questions** a sensible assistant should ask, with my answer to each. Here it should ask the unit cost, the invoice number and whether to invoice now. It should **not** ask for the vendor number, because it can look that up.
+Each scenario also scripts the **follow-up questions** a sensible assistant should ask, with my answer to each.
 
-Of the 1,000, **819** are core supply chain: sales, purchases, blanket orders, returns and chains of documents. The other 181 are finance-flavoured (corrections, credit limits, foreign currency) or test behaviour (refusals, ambiguous requests). I planned a **pilot of 46** and have run twelve so far, which [Part 3](/posts/bcsupplychain3/) reports.
+**Sharpen your pencil.** For "Receive 5 ANTWERP Conference Table from Fabrikam, Inc.", which of these should the AI ask, and which should it look up for itself?
 
-## What is really in the demo company
+- the vendor number
+- the unit cost
+- the vendor's invoice number
+- whether to invoice now
 
-I wrote my test requests from memory, so before running anything I opened the lists in the web client and checked them. The demo company is not quite what I remembered. If a request names a customer who does not exist, it fails for a reason that has nothing to do with the AI, so I corrected the requests to match.
+*Answer: it should ask the unit cost, the invoice number and whether to invoice now. It should not ask for the vendor number, because it can look that up.*
+
+Of the 1,000 scenarios, **819** are core supply chain: sales, purchases, blanket orders, returns and chains of documents. The other 181 are finance-flavoured (corrections, credit limits, foreign currency) or test behaviour (refusals, ambiguous requests). I planned a **pilot of 46** and have run twelve so far, which [Part 3](/posts/bcsupplychain3/) reports.
+
+## Is the demo company what I remembered?
+
+Not quite. I wrote my test requests from memory, so before running anything I opened the lists in the web client and checked them. If a request names a customer who does not exist, it fails for a reason that has nothing to do with the AI, so I corrected the requests to match.
 
 | What I remembered | What the practice company really has |
 |---|---|
@@ -113,33 +128,11 @@ Business Central treats a "work date" as today, and in this demo company it star
 
 ## Building the connection
 
-The connection is a **configuration** in Business Central, in the list called Model Context Protocol (MCP) Server Configurations. You choose which pages the AI can see, and for each page whether it may create, change, delete or run actions on it. I made three, and the difference between them is the point of the whole series:
+The connection is a **configuration** in Business Central, in the list called Model Context Protocol (MCP) Server Configurations. You choose which pages the AI can see, and for each page whether it may create, change, delete or run actions on it.
 
-| Configuration | What the AI can do with it |
-|---|---|
-| **SupplyChainLab** | Read customers, vendors, items, payment terms and documents. Create and change sales orders, quotes and purchase orders and their lines. **Nothing is made final. Nothing is deleted** |
-| **SupplyChainPost** | Used only by the checking screen in [Part 7](/posts/bcsupplychain7/). Everything is read-only, except that sales orders can be shipped and invoiced |
-| **SupplyChainRisky** | A throwaway copy of the first, with posting switched on for sales orders. Used once, in [Part 6](/posts/bcsupplychain6/) |
+I made three configurations, and the difference between them is the point of the whole series. Let's hear from them.
 
-How to build one:
-
-1. **Add the API pages** you need: sales and purchase orders, quotes and lines, and customers, vendors and items for look-ups.
-2. Switch on **Unblock Edit Tools**. This is the safety gate, and a person has to switch it on.
-3. Tick **Create** and **Modify** on only the document pages the AI should write.
-4. Leave **Delete** and **Actions** off. Actions is what lets an AI post, and it is a separate tick on each page.
-5. **Validate**, then switch on **Active**, which locks the configuration.
-
-![](assets/images/bcsupplychain2/r4-lab-config-active.webp)
-*Validate says the drafting configuration is valid, with the pages and their ticks behind it*
-
-![](assets/images/bcsupplychain2/r4-post-config-allow-actions.webp)
-*The posting configuration, for the checking screen only. Create and Modify are off everywhere. Only Actions on Sales Orders is on*
-
-:::watch-it The pages grid is fiddly
-Selecting several pages and pressing OK adds only one. The list re-sorts after every entry, so I typed the page numbers in one at a time. A copied configuration arrives switched on and locked, so turn it off before you edit it.
-:::
-
-## Fireside chat: three configurations
+### Fireside chat: three configurations
 
 *Tonight's talk: the three connections into Business Central, comparing what each is allowed to do.*
 
@@ -157,6 +150,24 @@ Selecting several pages and pressing OK adds only one. The list re-sorts after e
 
 **SupplyChainLab:** That is exactly why we are separate. One tick on a page decides which of us is which.
 
+### How to build one
+
+1. **Add the API pages** you need: sales and purchase orders, quotes and lines, and customers, vendors and items for look-ups.
+2. Switch on **Unblock Edit Tools**. This is the safety gate, and a person has to switch it on.
+3. Tick **Create** and **Modify** on only the document pages the AI should write.
+4. Leave **Delete** and **Actions** off. Actions is what lets an AI post, and it is a separate tick on each page.
+5. **Validate**, then switch on **Active**, which locks the configuration.
+
+![](assets/images/bcsupplychain2/r4-lab-config-active.webp)
+*Validate says the drafting configuration is valid, with the pages and their ticks behind it*
+
+![](assets/images/bcsupplychain2/r4-post-config-allow-actions.webp)
+*The posting configuration, for the checking screen only. Create and Modify are off everywhere. Only Actions on Sales Orders is on*
+
+:::watch-it The pages grid is fiddly
+Selecting several pages and pressing OK adds only one. The list re-sorts after every entry, so I typed the page numbers in one at a time. A copied configuration arrives switched on and locked, so turn it off before you edit it.
+:::
+
 ### A finding: blanket and return orders are read-only
 
 Blanket orders and return orders cannot be ticked for Create or Modify, even with Unblock Edit Tools on. The AI can read them, but not write them.
@@ -168,20 +179,13 @@ Blanket orders and return orders cannot be ticked for Create or Modify, even wit
 
 I did not add a custom page. That would change what I am testing, which is the connection as Microsoft ships it. Those 259 are recorded as steps for a person.
 
-## A practice copy that I can reset
+## A playground that resets itself
 
 A test that changes data cannot start from the last test's leftovers. So:
 
 1. Fill the practice company once with six purchase orders.
 2. **Copy** the environment in the Business Central admin center as `SandboxBaseline`, and never run anything in it.
 3. Run each test session in a **numbered copy**: `SandboxRun1`, `SandboxRun2`, and so on. A copy takes about 25 minutes.
-
-![](assets/images/bcsupplychain2/v2/23-admin-copy-environment-dialog.webp)
-*Copying the baseline in the admin center*
-
-:::watch-it A deleted environment keeps its name
-Business Central soft-deletes environments and reserves the name. I could not copy the baseline back into a name I had deleted. That is why the working copies are numbered.
-:::
 
 ```mermaid
 flowchart LR
@@ -190,7 +194,14 @@ flowchart LR
   B -- "next batch: copy again" --> R6["SandboxRun6<br/>a clean start"]
 ```
 
-## Connecting the harness
+![](assets/images/bcsupplychain2/v2/23-admin-copy-environment-dialog.webp)
+*Copying the baseline in the admin center*
+
+:::watch-it A deleted environment keeps its name
+Business Central soft-deletes environments and reserves the name. I could not copy the baseline back into a name I had deleted. That is why the working copies are numbered.
+:::
+
+## Plugging in the harness
 
 The harness reads its connection from a profile file with an environment name and a configuration name. Changing the configuration name and restarting the harness is how I moved between the three configurations. The model's key lives in a hidden file above the wiki folder, so the AI cannot read it.
 
