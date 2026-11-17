@@ -46,7 +46,7 @@ flowchart LR
   end
   P -- "short requests and answers" --> H
   H -- "what should I do next?" --> L
-  H <-- "reads first, writes back" --> W
+  H <-->|"reads first, writes back"| W
   H -- "looks things up" --> ML
   H -- "SupplyChainLab: drafts only" --> MCP
   MCP --> BC
