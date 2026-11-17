@@ -44,15 +44,8 @@ A: Posting makes a document final. The goods are shipped, the customer is billed
 
 Before we go on, here is who is in this story.
 
-```mermaid
-flowchart LR
-  R(["A request, foolish or sensible"]) --> A["1. The AI prepares a draft<br/>asks what it cannot look up"]
-  A --> S{"2. Checking screen<br/>every rule in code"}
-  S -- "a rule fails" --> X(["No button. Nothing happens"])
-  S -- "all rules pass" --> P{"3. A person<br/>ticks, types the PIN, clicks"}
-  P -- "no" --> D(["Stays a draft"])
-  P -- "yes" --> L["Posted, then checked<br/>against Business Central"]
-```
+![](assets/images/bcsupplychain1/three-layers-flow.svg)
+*A request meets three layers. If any rule fails there is no button at all. (With reduced motion switched on you will see a plain list.)*
 
 Three layers, three jobs:
 
