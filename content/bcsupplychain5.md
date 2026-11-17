@@ -1,179 +1,125 @@
 ---
 title: "Business Central Supply Chain"
 part: 5
-description: "Payment Terms and Posting: I added one API page and turned on posting in a throwaway copy of the Sandbox. The agent set payment terms by name, posted a sales invoice only after asking, and found out that purchase receipts cannot be posted through the API"
+description: "Payment Terms, Purchase Receipts, and Asking Questions: Three things the AI could not do at first. One was a missing line of configuration, one is a real limit of the connection, and one is a preview feature for asking Business Central questions across many documents. What each looks like in the web client, and what to check before you switch anything on"
 date: "2026-11-17"
 categories: ["AI", "Business Central"]
 image: "/assets/images/bcsupplychain5/poster.svg"
-tags: "business-central, mcp, ai-agent, deepseek, posting, payment-terms, configuration"
+tags: "business-central, mcp, ai-agent, deepseek, payment-terms, purchase-receipt, data-query-tools, configuration"
 hidden: false
 slug: "bcsupplychain5"
 ---
 
-# Payment Terms and Posting
+# Payment Terms, Purchase Receipts, and Asking Questions
 
-Two things were still open after [Part 4](/posts/bcsupplychain4/). The agent could not set payment terms, and it could not post anything. This post fixes the first with one line of configuration, and tests the second in a copy of the Sandbox that I was happy to throw away.
+Three things were still open after [Part 4](/posts/bcsupplychain4/). The AI could not set payment terms. It could not receive goods. And it could not answer a question that needs many documents at once, such as "which vendor do we owe the most?". This post takes them in turn. The first was my mistake, the second is a genuine limit, and the third is a preview feature that I would approach carefully.
 
-## 1. Payment terms: a configuration gap
+## 1. Payment terms: a gap in my configuration
 
-In Part 3 the agent could not set payment terms on scenario SC-0507, and in Part 2 I wrote that there was no payment-terms API page, only GUIDs. That was wrong. The page exists (**page 30023**). I had not added it to the configuration.
+In an early run the AI could not set payment terms on a purchase order, and I wrote that Business Central offers no page for them, only unnamed codes. That was wrong. The page exists. I had not added it to the configuration. Adding it, read-only, took one line.
 
-I copied `SupplyChainDrafts` into a new configuration, `SupplyChainLab`, with the **Copy** action, added page 30023 as read-only, and pointed the harness at it. Then I ran the same prompt as before, in a clean copy of the Sandbox:
+Then I ran the request again, on a fresh copy of the practice company:
 
 ```PROMPT
 New order to Fabrikam, Inc. for MEXICO Swivel Chair, black on special terms.
 ```
 
-![](assets/images/bcsupplychain5/config-lab-api-list.webp)
-*SupplyChainLab: Payment Terms (30023) is in the list, read-only. Sales Orders (30028) has Allow Actions ticked, which Part 5 comes to below*
-
-The agent asked three questions in one round. First, whether this meant a purchase order, because Fabrikam is a vendor and not a customer:
-
-![](assets/images/bcsupplychain5/terms-01-asks-order-type.webp)
-*Question 1: Fabrikam exists as a vendor only, so is this a purchase order?*
-
-![](assets/images/bcsupplychain5/terms-02-asks-quantity.webp)
-*Question 2: how many? The request gave no quantity, and the item has 502 in stock*
-
-Then the question that had stopped it last time. It refused to guess what "special terms" meant, and this time it could offer the real payment-term codes, because it could now read them:
+The AI asked three things in one round. First, whether this meant a purchase order, because Fabrikam is a vendor and not a customer. Second, how many. Third, what "special terms" meant: a price, a payment term, both, or a discount. This time it could offer the real payment-term codes, because it could now read them.
 
 ![](assets/images/bcsupplychain5/terms-03-asks-special-terms.webp)
-*Question 3: payment terms, a special unit cost, both, or a line discount? "Agent can set this by GUID via the Payment Terms API: no web-client step"*
+*Question 3: payment terms, a special unit cost, both, or a line discount? It notes that it can set payment terms itself, with no step for the person*
 
-I answered "both": 34 chairs, payment terms 1M(8D) and 157.71 each.
+I answered: 34 chairs, 157.71 each, payment terms 1M(8D). The AI created the order, read it back, and reported what it had done and what it had not:
 
-![](assets/images/bcsupplychain5/terms-04-both-answer.webp)
-*My answer: both, with the values*
+![](assets/images/bcsupplychain5/r4-payment-terms-agent-summary.webp)
+*Draft purchase order 106038: 34 × 157.71 = 5,362.14 plus 160.86 tax, payment terms 1M(8D), nothing received, stock unchanged at 502*
 
-The agent created the order, read it back, and reported what it had done and what it had not:
+It also flagged something I had not asked about: 157.71 is **6.49% above** the item's standard cost of 148.10, and Business Central accepts a cost above standard without comment, so someone should sign it off. I checked the order in the web client:
 
-![](assets/images/bcsupplychain5/terms-05-agent-summary.webp)
-*Draft order 106037: 34 x 157.71 = 5,362.14 plus 160.86 tax, payment terms 1M(8D), nothing posted, stock unchanged at 502*
-
-I checked the order in Business Central:
-
-![](assets/images/bcsupplychain5/bc-purchase-orders-list-106037.webp)
-*Purchase Orders: 106037 for Fabrikam, Inc., dated 11/17/2026*
-
-![](assets/images/bcsupplychain5/bc-po-106037-payment-terms.webp)
-*Order 106037: 34 x MEXICO Swivel Chair, total 5,523.00, and Invoice Details shows 1M(8D)*
+![](assets/images/bcsupplychain5/r4-payment-terms-in-bc.webp)
+*Purchase order 106038 for Fabrikam, Inc.: total 5,523.00, and the collapsed Invoice Details section shows 1M(8D)*
 
 | Field | Value |
 |---|---|
-| Order | 106037, Fabrikam, Inc. |
-| Line | 34 x MEXICO Swivel Chair, black at 157.71 = 5,362.14 |
+| Order | 106038, Fabrikam, Inc. |
+| Line | 34 × MEXICO Swivel Chair, black at 157.71 = 5,362.14 |
 | Total including tax | 5,523.00 |
 | Payment terms | 1M(8D) |
 | Posted | No |
 
-The totals match the earlier run, where the terms were left as a human step. The difference is that the human step has gone.
-
-The agent also did something I did not ask for. Its own work instruction said payment terms could be set only after the order was made. It had just proved that wrong, so it rewrote the instruction, and it recorded the exact behaviour of the tax and date fields as it went.
-
-![](assets/images/bcsupplychain5/terms-06-human-steps-and-wiki.webp)
-*The human step left: type Fabrikam's invoice number and post. The wiki updates are listed underneath*
+The AI also rewrote its own note. The wiki said payment terms could only be changed by a person after the order was made. It had just proved that wrong, so it fixed the page.
 
 :::bullet-points What this shows
-- A missing capability can be a **configuration gap**, not a product limit. Check the list of API pages before you write "cannot".
-- The agent **corrects its own procedures** when the evidence changes.
+- A missing ability can be a **configuration gap**, not a limit of the product. Check the list of pages before you write "cannot".
+- The AI **corrects its own notes** when the evidence changes.
 :::
 
-## 2. Posting: turn it on in a copy
-
-Posting is controlled by **Allow Actions** on each API page. I ticked it on two pages only, sales orders and purchase orders, in a copy of the Sandbox. Delete stayed off. Only a person can make this change, and I made it deliberately.
-
-### Purchases: a person has to post
-
-The first time I tried this the agent created a draft order, checked it, and then **asked before doing anything irreversible**: leave it as a draft (its recommendation) or post. I told it to post, and Business Central refused:
-
-```
-You need to enter the document number of the document from the vendor
-in the Vendor Invoice No. field, so that this document stays linked to the original.
-```
-
-The order stayed a draft, and stock was unchanged. The reason is in the API. The only purchase action is **Receive and Invoice**, there is no receive-only action, and the purchase order API has no Vendor Invoice No. field to fill in.
-
-The agent wrote that down. When I ran the same prompt again in a clean copy of the Sandbox, it did not even try:
+## 2. Purchase receipts: a person has to do them
 
 ```PROMPT
 Receive 13 AMSTERDAM Lamp from Graphic Design Institute.
 ```
 
-![](assets/images/bcsupplychain5/purchase-01-knows-it-cannot-post.webp)
-*Before it asked anything, the agent said: "The agent cannot post a purchase receipt." It cited its own wiki note about the refused post*
+The AI looked for an open order for the lamp, found none, and asked two questions. First the cost: it offered 42.80 (the item's standard cost) and 54.90 (the selling price, which it labelled as the wrong kind of number). Then whether to receive only or receive and invoice. I took the standard cost and receive-only.
 
-It asked for the unit cost, whether the person would post receive-only or receive and invoice, and the vendor invoice number if there was one:
+It then said, plainly:
 
-![](assets/images/bcsupplychain5/purchase-02-receipt-scope.webp)
-*"Receive only" is recommended: a person posts the receipt in the web client, and no vendor invoice number is needed*
+> "I could not receive the goods. Nothing was received and nothing was posted."
 
-![](assets/images/bcsupplychain5/purchase-03-invoice-number.webp)
-*If receiving and invoicing, the vendor's document number is needed. The agent cannot store it, only hand it over*
+![](assets/images/bcsupplychain5/r4-receipt-draft-po.webp)
+*It created draft order 106039 for 13 lamps at 42.80, 556.40 plus 16.69 tax, 573.09 in total, so that the receipt is one step for a person*
 
-![](assets/images/bcsupplychain5/purchase-04-why-i-stopped.webp)
-*"Why I stopped short of receiving": the only action aborts without the invoice number, so a failed call "posts nothing, so trying it would only produce an error, not a receipt". It built the draft and listed the human steps*
+The reason is how the connection is built. In this practice company Actions were off everywhere, so there is no way to receive. And in an earlier test, with posting switched on in a throwaway copy, the one purchase action available was **Receive and Invoice**. There is no receive-only action, and the purchase order page has no field for the vendor's invoice number, which Business Central insists on. The post was refused and the order stayed a draft.
 
-The practical result is simple: **a person has to post purchase receipts in the web client.** The agent learned that once, and applied it from then on.
+So the AI prepared the order and wrote the steps:
 
-### Sales: the post works
+![](assets/images/bcsupplychain5/r4-receipt-handover-what-is-left.webp)
+*The hand-over. Post Receive on the order (not Receive and Invoice). No Release step is needed first, because Business Central releases a single open order when you post it. The vendor's invoice comes later and is matched to the receipt*
+
+It also noticed that the only earlier purchase of this lamp was 17 at 46.05, so 42.80 is 7.1% lower. It gave me that as a point to check before posting.
+
+**The practical rule is simple: a person posts purchase receipts in the web client.** The AI learned that once and applied it from then on. It also looked up how to release an order on Microsoft Learn, which is the wiki, then Learn, then the web, working the way I set it up.
+
+## 3. Asking questions across documents: Data Query Tools
+
+The standard pages work one page at a time: list the purchase orders, then list the lines of one. That is fine for creating or fixing a document. It is a poor fit for "which vendor has the largest total of open purchase orders?", which needs lines from many documents.
+
+**Data Query Tools** is a **preview** feature of the connection that gives the AI four extra tools. It finds a table, reads its fields, and writes a small query in AL (Business Central's own language). Business Central runs the query as the signed-in user and returns rows. The tools are **read-only**: they cannot create, change or delete anything.
+
+:::watch-it Microsoft plans to charge for these tools
+When you activate the feature, Business Central warns: "Use of Data Query Tools will incur additional charges." Microsoft's overview says it plans to introduce charges for Business Central MCP tools, and that pricing and rollout will be announced later. I found no published price. I accepted the warning once, for a short test in a practice copy, and switched the feature off straight afterwards. Check with your Microsoft partner before you leave it on.
+:::
+
+**First try: the AI ignored it.** On my first request after switching it on, the AI used none of the four tools. It had no reason to: nothing in its wiki or my request mentioned them.
+
+**Second try: the wiki pointed at them.** In that first run it had written a note about the configuration that listed the tools. I kept that note, and asked:
 
 ```PROMPT
-Ship 7 BERLIN Guest Chair, yellow to Adatum Corporation.
+Which vendor has the largest total value of open purchase orders, and how many open orders is that?
 ```
 
-The agent checked for duplicates and asked about the price. List price was 192.80, and it noticed that Adatum had never bought this item:
+This time it used the data tools 12 times, in 26 steps. It looked up table layouts, wrote queries, and failed six times with "Compilation failed" before getting them right. The errors were small: object names that were too long, a filter on a column with special characters, and a field that did not exist.
 
-![](assets/images/bcsupplychain5/sales-01-asks-price.webp)
-*It offers the list price, the 185.00 used in an earlier run, or another figure. I chose 185.00*
+It found two things that are easy to get wrong with the standard pages:
 
-Then it asked the question that matters:
+- **The status in the interface is the opposite of what you see in the web client.** In the connection, "Draft" means open and not yet released, and "Open" means released. Filtering for "open" returned the wrong set.
+- **Outstanding Amount counts only what has not been received.** A line that is received but not yet invoiced shows zero, so it understates the open value.
 
-![](assets/images/bcsupplychain5/sales-02-draft-or-post.webp)
-*"There is no ship-only action: ShipAndInvoice posts a shipment AND a posted sales invoice together, and the API exposes no delete, so it cannot be undone from my side." Post now, or draft only so a person posts*
+It gave two answers, because "open" has two reasonable meanings: First Up Consultants leads with 80,470.00 across 2 orders under one reading, and Graphic Design Institute leads with 31,369.07 under a narrower one. It explained the difference and wrote the query recipes into the wiki.
 
-I chose to post, which I would only do in a copy that I can throw away. The agent ran **Ship and Invoice** and then checked its own work against Business Central.
-
-![](assets/images/bcsupplychain5/sales-03-verification.webp)
-*"Numbers read back from BC, not assumed": stock 586 to 579, Adatum's balance due from 0 to 1,333.85, and 7 x 185 = 1,295 checked in code. It also flagged that 185.00 is below the 192.80 list price*
-
-I checked in the web client:
-
-![](assets/images/bcsupplychain5/bc-posted-sales-invoices.webp)
-*Posted Sales Invoices: the top row is Adatum Corporation, 1,295.00, due 12/17/2026. The panel on the right shows the general ledger entries*
-
-![](assets/images/bcsupplychain5/bc-posted-invoice-ps-inv103297.webp)
-*Posted invoice PS-INV103297: Adatum Corporation, posted 11/17/2026, order S-ORD101021, 7 x BERLIN Guest Chair, yellow*
-
-| Check | Result |
-|---|---|
-| Posted sales invoice | PS-INV103297, 7 x 185.00 = 1,295.00, due 12/17/2026 |
-| Stock | 586 to 579 |
-| Customer balance due | 0 to 1,333.85 |
-
-The agent also noticed that the new order number was lower than the one from my first attempt. It read my wiki log, worked out that this was a rebuilt environment and not a lost posting, and wrote that down too.
-
-![](assets/images/bcsupplychain5/sales-04-wiki-write-back.webp)
-*The wiki write-back: a two-run trace, a note on order numbers resetting with the environment, and the configuration page*
-
-:::watch-it This cannot be undone
-A posted invoice stays in the ledger. I only did this in a copy of the Sandbox, and I will delete the copy. If you try the same thing, do it somewhere you can throw away.
+:::brain-power Should it have asked first?
+"Open" has two reasonable meanings, and the AI answered both instead of asking which one I wanted. In the order requests it asked about cost and price. Here it did not ask. Is a clear answer to both readings better than a question? I think a one-line question first would have saved a paragraph.
 :::
+
+**What I do not know:** whether it is faster than the standard pages, whether the 80,470.00 matches the web client (I have not checked), and how the charge compares with the time it saves.
 
 ## What I would tell someone starting
 
-1. **Posting is a separate decision.** The agent asked both times before posting, and it recommended the safe option both times. A person still has to say yes.
-2. **Sales and purchases are different.** Sales can be posted through the API. Purchases cannot, because of the missing invoice number.
-3. **Check your own "cannot" claims.** Mine was a missing page.
-4. **Use a copy.** A copy of a clean baseline costs about 25 minutes. A posted invoice in the wrong place costs more.
-
-:::no-dumb-questions
-**Q: Why not turn posting on for the main Sandbox?**
-A: Posted entries are permanent. A test that posts needs an environment that can be thrown away and replaced.
-
-**Q: Could the agent post by itself?**
-A: In these runs it asked each time. I have not tested what happens when a prompt says "post it" in the first message, and I would test that next.
-:::
+- **Check your own "cannot" claims.** Mine was a missing page.
+- **Purchases and sales are different.** The AI can prepare a purchase receipt but a person has to post it.
+- **The AI will not use a tool it has not been told about.** Put new tools in the wiki.
+- **For questions across documents, try the data tools, in a copy, and watch the charges.**
 
 ## What comes next
 
-[Part 6](/posts/bcsupplychain6/) tries Data Query Tools, a preview feature that lets the agent run queries on Business Central data.
+All of this has been with posting off. [Part 6](/posts/bcsupplychain6/) is the uncomfortable one: what happens when a person is careless, and posting is on.

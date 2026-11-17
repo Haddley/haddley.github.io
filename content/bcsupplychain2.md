@@ -1,7 +1,7 @@
 ---
 title: "Business Central Supply Chain"
 part: 2
-description: "Checking the Sandbox and Building the MCP Configuration: Before running any scenario I checked my assumptions against the CRONUS USA Sandbox, built an MCP configuration for supply chain work, and found that blanket and return orders are read-only through MCP. The straight path, with the mistakes as short callouts"
+description: "Setting Up a Safe Place to Try This: A practice copy of Business Central, a connection that lets an AI prepare orders but not make them final, and a small wiki the AI reads first and adds to. Plus what I assumed about the demo data that turned out to be wrong"
 date: "2026-11-16"
 categories: ["AI", "Business Central"]
 image: "/assets/images/bcsupplychain2/poster.svg"
@@ -10,103 +10,134 @@ hidden: false
 slug: "bcsupplychain2"
 ---
 
-# Checking the Sandbox and Building the MCP Configuration
+# Setting Up a Safe Place to Try This
 
-In [Part 1](/posts/bcsupplychain1/) I wrote 1,000 scenarios from memory of the demo data. A scenario that names a customer who does not exist would fail for reasons that have nothing to do with the agent. So before running anything I checked, built the connection, and made a clean place to run from.
+[Part 1](/posts/bcsupplychain1/) showed the result. This post shows how I built the place where it happens, so you can build your own. Everything here happens in a **practice copy** of Business Central, never in a live company.
 
-## 1. Check the demo data
+The question for the whole series is this: **can an AI assistant manage sales orders and purchase orders in Business Central, starting from a short, vague request and asking sensible follow-up questions?** I answer it with screenshots of the Business Central web client, so you see the documents it made and not only its account of them.
 
-I opened each list in the web client and compared it with my generator.
+## The pieces
 
-| I assumed | The Sandbox has |
+| Piece | What it does |
+|---|---|
+| **DeepSeek Harness** | The program that runs the AI and holds the conversation |
+| **A hosted DeepSeek model** | The reasoning. I used DeepSeek V4 Flash |
+| **Business Central's built-in connection for AI tools** | The only route into the practice company, CRONUS USA, Inc. Microsoft calls it the MCP server, and I will just call it the connection |
+| **Microsoft Learn** | Documentation the AI can search when it is unsure |
+| **A small wiki** | Notes the AI reads before it starts and adds to afterwards (see [LLM Wiki](/posts/LLM-Wiki/)) |
+| **The Business Central web client** | The evidence. Every result in this series is checked there |
+
+## The rules I set first
+
+- **One company, trading only.** Buying and selling items. No manufacturing, no services.
+- **No warehouse movements.** No put-aways, picks or bins.
+- **Out of the box.** No custom extension. If the standard connection cannot do a step, that is a finding and not something to code around.
+- **Draft first.** The AI prepares documents and stops before anything is made final. It lists what a person must do.
+- **Normal conventions.** The document date is the date on the paper. The posting date is when it reaches the books. A purchase invoice needs the vendor's own invoice number. A posted document is corrected, not deleted.
+
+:::no-dumb-questions
+**Q: What does "post" mean again?**
+A: Posting makes a document final: goods shipped or received, customer billed or vendor invoice booked, books updated. There is no undo, only a correcting entry. An unposted order is a **draft**.
+:::
+
+## How I wrote the test requests
+
+A small program fills 38 templates with real customers, vendors and items, with a fixed seed so it always produces the same 1,000 scenarios. The AI only ever sees a **short request**, the way someone who does not know Business Central would say it. I keep a **full specification** for each as the answer key:
+
+| Version | Text |
+|---|---|
+| **Short request** (the AI sees this) | "Receive 5 ANTWERP Conference Table from Fabrikam, Inc." |
+| **Full specification** (I keep this) | "Create a purchase order for Fabrikam, Inc.: 5 x 1920-S at 561.32. Receive and invoice, posting date 2026-11-11, vendor invoice number INV-1093." |
+
+Each scenario also scripts the **follow-up questions** a sensible assistant should ask, with my answer to each. Here it should ask the unit cost, the invoice number and whether to invoice now. It should **not** ask for the vendor number, because it can look that up.
+
+Of the 1,000, **819** are core supply chain: sales, purchases, blanket orders, returns and chains of documents. The other 181 are finance-flavoured (corrections, credit limits, foreign currency) or test behaviour (refusals, ambiguous requests). I planned a **pilot of 46** and have run twelve so far, which [Part 3](/posts/bcsupplychain3/) reports.
+
+## What I assumed about the demo data, and was wrong
+
+Before running anything I opened each list in the web client and compared it with my plan. A scenario that names a customer who does not exist fails for reasons that have nothing to do with the AI.
+
+| I assumed | The practice company has |
 |---|---|
 | Eight customers | **Five**: Adatum, Trey Research, School of Fine Art, Alpine Ski House, Relecloud |
 | Six vendors | **Five** that I use: Fabrikam, First Up, Graphic Design Institute, Wide World Importers, Nod Publishers |
-| Item costs around 180 | **Around 780** (ATHENS Desk costs 780.70, sells 1,000.80) |
+| Item costs around 180 | **Around 780** (ATHENS Desk costs 780.70 and sells for 1,000.80) |
 | Zero stock for some items | **About 500 on hand** of every item |
 | Payment terms "Due on receipt" and "2% 10 days" | Neither exists. The closest are COD and 1M(8D) |
 | Freight charge FREIGHT | **S-FREIGHT** and **P-FREIGHT** |
-| Current exchange rates | CAD, EUR and GBP exist, but the rates are from 2024 and 2025 |
 
 ![](assets/images/bcsupplychain2/bc-sandbox-01-customers.webp)
 *The Customers list. Five customers, with sales history already*
 
 ![](assets/images/bcsupplychain2/bc-sandbox-03-items.webp)
-*The Items list. Each item has about 500 on hand, with a real unit cost and price*
+*The Items list. Each item has about 500 on hand, with a real cost and price*
 
-I regenerated the scenarios with the real names and prices. "Zero stock" checks became "net change in stock" checks. Default Posting Date is the **work date**, so every scenario states its posting date.
-
-## 2. Set the work date
-
-The work date is the date Business Central treats as today. In this demo company it is **1 November 2027**, and it fills the order, document and posting dates on every new document. My scenarios say today is 16 November 2026, so every date looked "earlier".
-
-I set it in My Settings. It works only for the **page session** you are in.
-
-![](assets/images/bcsupplychain2/bc-workdate-04-no-reload-2026-dates.webp)
-*Work date set, then Purchase Orders opened from the search box. The dates read 11/16/2026*
-
-:::watch-it Do not reload the page
-I first concluded that the setting did not work. A reader showed me why. I had opened each next page by typing its address, which reloads Business Central and resets the work date to the default. Move with the search box and menus only, and check the dates on your first new document.
+:::watch-it The work date resets whenever you sign in
+Business Central treats a "work date" as today, and in this demo company it starts at **1 November 2027**. You can change it in My Settings, but only for the page you are in. Signing in again, or opening a page by its address, puts it back. I found this twice: the first time by assuming my setting had failed, and again when I keyed an order by hand and every date came up as 2027. The AI is not affected, because it states the dates it uses. A person keying orders is.
 :::
 
-## 3. Build the MCP configuration
+## Building the connection
 
-My earlier configuration, Drafts, could only read the purchasing ledger and write purchase credit memos. I left it alone and made `SupplyChainDrafts`, in Model Context Protocol (MCP) Server Configurations:
+The connection is a **configuration** in Business Central, in the list called Model Context Protocol (MCP) Server Configurations. You choose which pages the AI can see, and for each page whether it may create, change, delete or run actions on it. I made three, and the difference between them is the point of the whole series:
 
-1. Add 17 API pages: sales and purchase orders, quotes and lines, blanket and return orders, and customers, vendors and items for look-ups.
-2. Turn on **Unblock Edit Tools**. This is the safety gate, and a person has to do it.
-3. Tick **Create** and **Modify** on six pages: sales orders, sales quotes and purchase orders, and their lines.
-4. Leave **Delete** and **Actions** off everywhere. The agent cannot delete anything or post anything.
-5. **Validate**, then turn on **Active**, which locks the configuration.
-
-![](assets/images/bcsupplychain2/v2/09-create-modify-six-pages.webp)
-*Create and Modify ticked on six pages. Blanket and return pages stay greyed*
-
-![](assets/images/bcsupplychain2/v2/10-active-locked.webp)
-*Active, and locked*
-
-:::watch-it The Select APIs grid is fiddly
-Selecting several rows and pressing OK adds only one. The grid re-sorts by ID after each entry, so I typed the object IDs one at a time with a pause. Stray rows get deleted.
-:::
-
-## 4. The finding: blanket and return orders are read-only
-
-Look at the greyed boxes in the screenshot above. Blanket sales and purchase orders, and sales and purchase return orders, cannot be ticked for Create or Modify, even with Unblock Edit Tools on. The agent can read them, but not write them.
-
-| Group | Core scenarios |
+| Configuration | What the AI can do with it |
 |---|---|
-| Blanket sales and purchase orders, returns, blanket chains | **259** cannot be written through MCP |
+| **SupplyChainLab** | Read customers, vendors, items, payment terms and documents. Create and change sales orders, quotes and purchase orders and their lines. **Nothing is made final. Nothing is deleted** |
+| **SupplyChainPost** | Used only by the checking screen in [Part 7](/posts/bcsupplychain7/). Everything is read-only, except that sales orders can be shipped and invoiced |
+| **SupplyChainRisky** | A throwaway copy of the first, with posting switched on for sales orders. Used once, in [Part 6](/posts/bcsupplychain6/) |
+
+How to build one:
+
+1. **Add the API pages** you need: sales and purchase orders, quotes and lines, and customers, vendors and items for look-ups.
+2. Switch on **Unblock Edit Tools**. This is the safety gate, and a person has to switch it on.
+3. Tick **Create** and **Modify** on only the document pages the AI should write.
+4. Leave **Delete** and **Actions** off. Actions is what lets an AI post, and it is a separate tick on each page.
+5. **Validate**, then switch on **Active**, which locks the configuration.
+
+![](assets/images/bcsupplychain2/r4-lab-config-active.webp)
+*Validate says the drafting configuration is valid, with the pages and their ticks behind it*
+
+![](assets/images/bcsupplychain2/r4-post-config-allow-actions.webp)
+*The posting configuration, for the checking screen only. Create and Modify are off everywhere. Only Actions on Sales Orders is on*
+
+:::watch-it The pages grid is fiddly
+Selecting several pages and pressing OK adds only one. The list re-sorts after every entry, so I typed the page numbers in one at a time. A copied configuration arrives switched on and locked, so turn it off before you edit it.
+:::
+
+### A finding: blanket and return orders are read-only
+
+Blanket orders and return orders cannot be ticked for Create or Modify, even with Unblock Edit Tools on. The AI can read them, but not write them.
+
+| Group | Scenarios |
+|---|---|
+| Blanket orders, returns, and chains that depend on them | **259** cannot be written through the connection |
 | Everything else | **560** can be driven end to end |
 
-The agent can still read a blanket order, check what is left, and tell me what to do. I chose to record the other 259 as human steps instead of adding a custom API page, because a custom page would change what I am testing, which is the out-of-the-box connection.
+I did not add a custom page. That would change what I am testing, which is the connection as Microsoft ships it. Those 259 are recorded as steps for a person.
 
-## 5. Make a baseline, and reset from it
+## A practice copy that I can reset
 
-A test that changes data cannot start from the previous run's leftovers. So:
+A test that changes data cannot start from the last test's leftovers. So:
 
-1. Seed once: six purchase orders (106030 to 106035).
-2. **Copy** the environment in the admin center as `SandboxBaseline`, and never run anything in it.
-3. Run scenarios in a **numbered copy**, `SandboxRun1`, then `SandboxRun2`, and so on. A copy takes about 25 minutes.
+1. Fill the practice company once with six purchase orders.
+2. **Copy** the environment in the Business Central admin center as `SandboxBaseline`, and never run anything in it.
+3. Run each test session in a **numbered copy**: `SandboxRun1`, `SandboxRun2`, and so on. A copy takes about 25 minutes.
 
 ![](assets/images/bcsupplychain2/v2/23-admin-copy-environment-dialog.webp)
 *Copying the baseline in the admin center*
 
 :::watch-it A deleted environment keeps its name
-I deleted `Sandbox` and tried to copy the baseline back into that name. Business Central soft-deletes environments and reserves the name. That is why the working copies are numbered.
-
-![](assets/images/bcsupplychain2/v2/39-admin-copy-name-blocked-soft-deleted.webp)
+Business Central soft-deletes environments and reserves the name. I could not copy the baseline back into a name I had deleted. That is why the working copies are numbered.
 :::
 
-## 6. Connect the harness
+## Connecting the harness
 
-The harness reads its connection from a profile file. I changed `ConfigurationName` to `SupplyChainDrafts`, `EnvironmentName` to the working copy, and restarted DeepSeek Harness.
+The harness reads its connection from a profile file with an environment name and a configuration name. Changing the configuration name and restarting the harness is how I moved between the three configurations. The model's key lives in a hidden file above the wiki folder, so the AI cannot read it.
 
-:::watch-it Check the workspace path
-The folder picker once chose a different project. The agent works inside its workspace, so a wrong folder means it reads and writes the wrong project. Read the saved path after you add a workspace.
+:::watch-it The AI can read what is in its workspace
+In my first runs the AI's workspace contained my test files: the request lists, an answer key, and a note on how I score follow-up questions. In one run it matched its own request to a scenario number. I moved everything private out of reach, restored the wiki from a snapshot, and ran it all again. An AI that can read the wiki can read the test.
 :::
-
-The model key lives in a git-ignored `.env` file above the wiki folder, so the agent cannot read it.
 
 ## What comes next
 
-[Part 3](/posts/bcsupplychain3/) is the first set of conversations. [Part 4](/posts/bcsupplychain4/) asks whether written procedures change what the agent does.
+[Part 3](/posts/bcsupplychain3/) is the conversations: a real order, a vague request, a request to check, and the results of the 46-scenario pilot. [Part 4](/posts/bcsupplychain4/) asks whether written procedures change what the AI asks.
