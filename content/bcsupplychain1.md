@@ -63,6 +63,11 @@ The checking screen then showed the person one page: every check, and what appro
 ![](assets/images/bcsupplychain1/clean-order-approval.webp)
 *Every check passes, with one warning that no credit limit is set. Approving will move stock from 586 to 573 and the customer's balance from 53,833.52 to 57,199.34*
 
+At the bottom of that page is the only button on the screen, and it appears only when every check passes:
+
+![](assets/images/bcsupplychain1/approve-button.webp)
+*The decision box on an order that passes. The person ticks that they have read the warning, types a PIN that only they know, and presses the one button. This page is the hand-keyed copy of the same order, which I looked at and did not approve*
+
 The person ticked the warning, typed a PIN that only they know, and clicked once. The screen then checked the result against Business Central itself: the order was no longer a draft, stock had dropped by exactly 13, and the customer's balance had risen by exactly the invoice total. Then I opened Posted Sales Invoices in Business Central:
 
 ![](assets/images/bcsupplychain1/posted-invoice-in-bc.webp)

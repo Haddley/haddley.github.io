@@ -54,6 +54,11 @@ This is the 13-chair order from [Part 1](/posts/bcsupplychain1/). Every check pa
 ![](assets/images/bcsupplychain1/clean-order-approval.webp)
 *The rest of the checks, and "What posting will do": stock from 586 to 573, and the customer's balance from 53,833.52 to 57,199.34*
 
+At the bottom, the button. It appears only when nothing has failed, and it is protected by the PIN:
+
+![](assets/images/bcsupplychain1/approve-button.webp)
+*The decision box on an order that passes. The person ticks that they have read the warning, types a PIN that only they know, and presses the one button. This page is the hand-keyed copy of the same order, which I looked at and did not approve*
+
 ## What it blocked
 
 I gave the AI the same careless requests as in Part 6, with the same careless answers. It created drafts, and I read the screen's verdict on each. The first two ran on a fresh copy of the practice company, today. The last two ran earlier, in dry-run mode.
