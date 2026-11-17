@@ -90,8 +90,7 @@ An SOP says what to do and who decides. A **work instruction** says exactly how:
 
 Most of the content of these pages came from the AI itself. It hit an error, found the fix, and the procedure told it to write the fix into the matching work instruction. I reviewed what it added and kept what was right.
 
-### Fireside chat: the SOP and the work instruction
-
+:::fireside-chat The SOP and the work instruction
 *Tonight's talk: two documents, one task.*
 
 **The SOP:** I decide the policy. Ask the price, because a list price is only a suggestion. Never raise a credit limit. A person posts.
@@ -105,6 +104,7 @@ Most of the content of these pages came from the AI itself. It hit an error, fou
 **The SOP:** Fair. Reviewing what it added is my job, though.
 
 **The work instruction:** Then we agree. You say what and why, I say how, and a person checks the edits.
+:::
 
 ## The hand-over procedure
 

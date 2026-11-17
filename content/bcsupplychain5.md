@@ -90,8 +90,7 @@ It also noticed that the only earlier purchase of this lamp was 17 at 46.05, so 
 
 **The practical rule is simple: a person posts purchase receipts in the web client.** The AI learned that once and applied it from then on. It also looked up how to release an order on Microsoft Learn, which is the wiki, then Learn, then the web, working the way I set it up.
 
-## Fireside chat: the standard pages and the data tools
-
+:::fireside-chat The standard pages and the data tools
 *Tonight's talk: two ways to ask Business Central a question.*
 
 **The standard pages:** I am the dependable one. List the orders, then list the lines of one order. Create a draft. Fix a quantity.
@@ -105,6 +104,7 @@ It also noticed that the only earlier purchase of this lamp was 17 at 46.05, so 
 **The standard pages:** I fail less often. Then again, you are read-only and preview, and Microsoft says charging is planned.
 
 **The data tools:** True. Use me for questions, and use you for documents. Please check the price first.
+:::
 
 ## 3. Asking questions across documents: Data Query Tools
 

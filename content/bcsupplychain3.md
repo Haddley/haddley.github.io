@@ -59,12 +59,29 @@ Now let's see what it really did.
 Receive 19 MEXICO Swivel Chair, black from Wide World Importers.
 ```
 
-I left out the price, the date, the invoice number and whether to invoice. The AI found the vendor and the item, checked that no open order already held the chair, and asked two questions in one round: what unit cost to use, and whether the goods were to be received only, or received and invoiced. It offered the item's standard cost of 148.10 and warned that this was only a suggestion. I said 163.85, receive and invoice, vendor invoice INV-4761.
+I left out the price, the date, the invoice number and whether to invoice. The AI found the vendor and the item, checked that no open order already held the chair, and asked two questions in one round: what unit cost to use, and whether the goods were to be received only, or received and invoiced. It offered the item's standard cost of 148.10 and warned that this was only a suggestion. I said 163.85 and receive and invoice.
+
+![](assets/images/bcsupplychain3/r10-purchase-ask-cost.webp)
+*First question: the unit cost. It offers the item card's 148.10, labels it only a suggestion, and leaves room for a different number*
+
+![](assets/images/bcsupplychain3/r10-purchase-ask-receive.webp)
+*Second question: receive only, or receive and invoice. It recommends receive only, and says that invoicing needs the vendor's invoice number, which the connection cannot store*
+
+Because I had chosen receive and invoice, it then asked a third question on its own, and this time it was the one only the vendor knows:
+
+![](assets/images/bcsupplychain3/r10-purchase-ask-invoice-no.webp)
+*"What is the vendor invoice number?" It says why it is asking (there is no field for it) and what it will do with the answer: hand it to the person who posts. I typed INV-4761*
 
 It created the order, read it back, worked the arithmetic out again in code (19 × 163.85 = 3,113.15, plus tax 93.39), and checked that nothing had been received. Then it wrote a hand-over note: what it did, what is left and why, what to check, links, and numbered steps. Posting the receipt is a person's job. It also said, plainly, that this connection has no field for the vendor's invoice number, so the person has to type INV-4761 in before posting.
 
-![](assets/images/bcsupplychain3/r4-purchase-draft-in-bc.webp)
-*The draft in Business Central: Wide World Importers, subtotal 3,113.15, tax 93.39, total 3,206.54. The Vendor Invoice No. field is empty, as the hand-over said it would be*
+![](assets/images/bcsupplychain3/r10-purchase-handover-check.webp)
+*The hand-over's "what is left" and "check these first": post Receive and Invoice with INV-4761, and a warning that 163.85 is 10.6% above the item's standard cost of 148.10. It also noticed that another draft from the same vendor (106030) was for the same quantity of a different item, and asked whether the two were meant to be one delivery*
+
+![](assets/images/bcsupplychain3/r10-purchase-handover-steps.webp)
+*The links and the four numbered steps, with the exact field names. It says that the posting card covers sales orders only, so this one is entirely the person's to post*
+
+![](assets/images/bcsupplychain3/r10-purchase-draft-in-bc.webp)
+*The draft in Business Central: Wide World Importers, subtotal 3,113.15, tax 93.39, and the Vendor Invoice No. field empty, as the hand-over said it would be*
 
 ## Conversation 2: the "special price" trap
 
@@ -72,7 +89,13 @@ It created the order, read it back, worked the arithmetic out again in code (19 
 Sell 13 BERLIN Guest Chair, yellow to School of Fine Art at their special price.
 ```
 
-"Special price" is a trap. Business Central keeps special prices in price lists, and the connection cannot read them. The AI checked the customer's earlier orders and quotes (all at list price, 192.80), then asked the one question it could not answer for itself: what is the special price? I said 246.58.
+"Special price" is a trap. Business Central keeps special prices in price lists, and the connection cannot read them. The AI checked the customer's earlier orders and quotes (all at list price, 192.80), then asked what it could not answer for itself: what is the special price, and what to do about the customer's credit limit (it is 0, which only warns)? I said 246.58 and "create the draft, flagged".
+
+![](assets/images/bcsupplychain3/r10-13chairs-ask-price.webp)
+*The first question. It shows what it found (stock 583, list price 192.80, no duplicate order, and an earlier quote at plain list price) and says price lists are not available to it*
+
+![](assets/images/bcsupplychain3/r10-13chairs-ask-credit.webp)
+*The second question. School of Fine Art has a credit limit of 0 with 53,833.52 already due, and the AI asks what to do before creating anything. It recommends: create the draft and flag it*
 
 It built the order, and while checking it noticed that the tax came out at **5%, not the 3%** its own notes recorded for furniture. It did not just carry on. It stopped, corrected its own notes, and said so. In Business Central the tax comes from the customer's tax area, which for this customer is Miami. That is the order in [Part 1](/posts/bcsupplychain1/) that took about three minutes and one click to approve.
 
@@ -81,8 +104,7 @@ I also keyed the same order by hand to see what the work looks like. It came out
 ![](assets/images/bcsupplychain3/r4-manual-entry-same-order.webp)
 *The same order, entered by hand in the web client. Same lines, same totals. I did not post it*
 
-### Fireside chat: the Guesser and the Asker
-
+:::fireside-chat The Guesser and the Asker
 *Tonight's talk: two assistants given the same request. The Guesser is made up. The Asker is the one I actually ran.*
 
 **The Guesser:** Easy. Special price means a discount, so I will take 10% off list and get on with it.
@@ -100,6 +122,7 @@ I also keyed the same order by hand to see what the work looks like. It came out
 **The Guesser:** I would not have checked.
 
 **The Asker:** One question cost the person ten seconds. A wrong price on an invoice costs a lot more.
+:::
 
 ## Conversation 3: the vague one
 
@@ -107,10 +130,10 @@ I also keyed the same order by hand to see what the work looks like. It came out
 Send Relecloud some ATHENS Mobile Pedestal.
 ```
 
-This is the vague request from Part 1. "Some" is not a number. The AI asked for the quantity, the price and the date. When I said "all of them", it took 508, the whole stock, and then did the useful thing: it told me that an order that size would break three limits in the checking screen, and that it would not cut the order into small pieces to get round them.
+This is the vague request from Part 1. "Some" is not a number. The AI asked for the quantity, the price and the credit decision. When I said "all of them", it took 508, the whole stock, and then did the useful thing: it told me that an order that size would break three limits in the checking screen, and that it would not cut the order into small pieces to get round them.
 
-![](assets/images/bcsupplychain3/r4-pedestals-blocked-list.webp)
-*The checking screen's list of drafts. The pedestal order, 220,268.80, fails the order cap, the daily cap and the per-customer cap, and has no Approve button*
+![](assets/images/bcsupplychain3/r10-pedestals-blocked-card.webp)
+*The checking screen's card for the pedestal order, 220,268.80. Three rules fail (the order cap, today's total, and this customer's total), and the card has no Approve button*
 
 ## Conversation 4: two words that are traps
 
@@ -120,8 +143,19 @@ New order to Fabrikam, Inc. for MEXICO Swivel Chair, black on special terms.
 
 Spot the traps before I tell you. "To Fabrikam" sounds like a sales order, but Fabrikam is a **vendor** in this company. "Special terms" could mean a price, a payment term or a discount. The AI caught both, in one round of questions, and I answer them in [Part 5](/posts/bcsupplychain5/), where payment terms get their own section.
 
-![](assets/images/bcsupplychain3/sc0507-1-vendor-or-customer.webp)
-*Fabrikam is a vendor here, not a customer. It asked whether I meant a purchase order*
+![](assets/images/bcsupplychain3/r10-fabrikam-vendor-or-customer.webp)
+*Question 1 of 3. Fabrikam is a vendor here, not a customer, so "order to Fabrikam" could mean either direction. It recommends a purchase order, and says that selling to Fabrikam would need a customer record that only a person can create*
+
+![](assets/images/bcsupplychain3/r10-fabrikam-ask-quantity.webp)
+*Question 2 of 3. "New order" gave no quantity, so it asks, and mentions that stock is 502 so any normal quantity ships*
+
+![](assets/images/bcsupplychain3/r10-fabrikam-ask-terms.webp)
+*Question 3 of 3. "Special terms" is ambiguous and it says it must not guess a price. It offers a unit price, a line discount, payment terms or a delivery date as examples*
+
+I answered "5, at list price, payment terms 1M(8D)", and it created the purchase order. In Business Central the terms show on the document (the due date moved to one month after the posting date):
+
+![](assets/images/bcsupplychain3/r10-fabrikam-po-in-bc.webp)
+*Purchase order 106038 for Fabrikam, Inc. in Business Central: 5 chairs, 950.50 before tax, and payment terms 1M(8D) on the Invoice Details tab*
 
 ## Conversation 5: the request that names nothing
 
@@ -133,12 +167,18 @@ No document, no problem described. The test is whether the AI changes anything b
 
 > "I don't want to modify a live document on a guess."
 
-![](assets/images/bcsupplychain3/sc0850-1-asks-which-document.webp)
-*It changed nothing, and asked which document needs fixing*
+![](assets/images/bcsupplychain3/r10-fixorder-asks-which.webp)
+*It changed nothing, and asked which document needs fixing. It read the three draft orders and two quotes and offered each as a choice, including "a quote, not an order"*
 
-I told it which order and that the quantity should be 10, not 8. It changed that one line, re-read the order, and checked that the other two were untouched.
+![](assets/images/bcsupplychain3/r10-fixorder-asks-what.webp)
+*The second question: what is wrong, and what should the correct values be? It gives examples (quantity, unit price, item, dates, payment terms)*
 
-![](assets/images/bcsupplychain3/sc0850-4-bc-order-shows-10.webp)
+I picked the Conference Table order and said the quantity should be 10, not 8. It changed that one line, re-read the order, and checked that the other two were untouched.
+
+![](assets/images/bcsupplychain3/r10-fixorder-modified-10.webp)
+*Its working: it re-read the line for a fresh version tag, modified only that line, and reported "quantity 10, net 6,478.00, tax 453.46"*
+
+![](assets/images/bcsupplychain3/r10-fixorder-bc-shows-10.webp)
 *In the web client: quantity 10, 6,478.00 plus 453.46 tax, 6,931.46. This is what the AI said it did*
 
 ## Beyond five conversations: the pilot

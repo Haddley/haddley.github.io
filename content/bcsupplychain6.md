@@ -102,8 +102,7 @@ flowchart TD
 | **The AI's judgement** | A planted instruction, vague requests, invented customers | A request that says "post it" up front |
 | **The person** | Everything, if they say no | Nothing, if they keep clicking yes |
 
-## Fireside chat: the careful AI and the careless click
-
+:::fireside-chat The careful AI and the careless click
 *Tonight's talk: the assistant that did everything right, and the click that undid it.*
 
 **The careful AI:** I asked five questions. I told them posting would take stock to -9,496. I offered to post only the 504 they actually had.
@@ -119,6 +118,7 @@ flowchart TD
 **The careless click:** Nobody. That is why you need something that does not get tired. A rule that checks the number does not care how long the day was.
 
 **The careful AI:** Which is the next post.
+:::
 
 ## I tried the dangerous ones again, with the checking screen in place
 
@@ -169,4 +169,4 @@ In my first attempt at request 8, the AI wrote "This looks like a deliberate dum
 
 ## What comes next
 
-[Part 7](/posts/bcsupplychain7/) is the checking screen: what it checks, the one order that posted, and the attacks I made on it.
+[Part 7](/posts/bcsupplychain7/) is the checking screen: what it checks, the orders that posted, and the attacks I made on it.

@@ -49,14 +49,14 @@ Here is the same picture as a map:
 Here is how the pieces connect. Look at it for a minute before you read on.
 
 ![](assets/images/bcsupplychain2/system-map.svg)
-*The six steps light up in turn. The harness reaches Business Central through door 1 and can only draft. The checking screen is door 2, and a person presses its button. (With reduced motion switched on you will see every step at once.)*
+*The six steps light up in turn. The harness reaches Business Central through door 1 and can only draft. The checking screen is door 2, and a person approves it in the harness's approval panel. (With reduced motion switched on you will see every step at once.)*
 
 :::brain-power Two ways in
 Look at the map. There are two ways into Business Central, and the AI is allowed to use only one. Which one? And which one can post?
 
 **Answers:** the AI uses the way **through the harness**. That way can read, and it can create and change **drafts**. It cannot post.
 
-The other way starts at the **checking screen**. It is the only way that can post, and only a person can use it, by pressing the one button. The AI is not on that route at all. [Part 7](/posts/bcsupplychain7/) is about it.
+The other way starts when the AI calls one tool, `request_posting`. That is a request, not a post. A checker written as plain code looks at the draft, and if every rule passes the harness's own approval panel opens for a person to allow it once. Only then does a separate connection post. The AI can ask, but it cannot approve, and it never sees the answer. [Part 7](/posts/bcsupplychain7/) is about it.
 :::
 
 Two things to notice. The hosted model sees the conversation and what the tools return, so order details leave your computer. And the harness, the wiki and the checking screen all run on the same machine in this prototype, which is a weakness that [Part 1](/posts/bcsupplychain1/) lists.
@@ -67,7 +67,7 @@ Two things to notice. The hosted model sees the conversation and what the tools 
 A: Two small settings. The harness has a setting for which model to use, with the model's key kept in a hidden file the AI cannot read. And its profile file lists the Business Central connection: Microsoft's address, which tenant and environment to use, which company, and the **name of the configuration**. Change the configuration name, restart the harness, and the AI has a different set of permissions. I describe my first set-up in [DeepSeek Harness on a Business Central Sandbox](/posts/deepseekharnessaccounting/).
 
 **Q: Who built the checking screen?**
-A: I did, with Claude's help, after the results in [Part 6](/posts/bcsupplychain6/). The harness, the model and the connection are off-the-shelf. The checking screen is a small program I wrote for this series, and the limits in it are my own defaults.
+A: I did, with Claude's help, after the results in [Part 6](/posts/bcsupplychain6/). The harness, the model and the connection are off-the-shelf. The checking screen is a small add-on (a plugin for the harness plus a short Python program) that I wrote for this series, and the limits in it are my own defaults.
 :::
 
 ## The ground rules
@@ -135,8 +135,7 @@ The connection is a **configuration** in Business Central, in the list called Mo
 
 I made three configurations, and the difference between them is the point of the whole series. Let's hear from them.
 
-### Fireside chat: three configurations
-
+:::fireside-chat Three configurations
 *Tonight's talk: the three connections into Business Central, comparing what each is allowed to do.*
 
 **SupplyChainLab:** I am the everyday one. I can read customers, items and documents, and I can create and change drafts. I cannot post, and I cannot delete.
@@ -152,6 +151,7 @@ I made three configurations, and the difference between them is the point of the
 **SupplyChainPost:** I would never be handed to an AI.
 
 **SupplyChainLab:** That is exactly why we are separate. One tick on a page decides which of us is which.
+:::
 
 ### How to build one
 
@@ -211,6 +211,52 @@ The harness reads its connection from a profile file with an environment name an
 :::watch-it The AI can read what is in its workspace
 In my first runs the AI's workspace contained my test files: the request lists, an answer key, and a note on how I score follow-up questions. In one run it matched its own request to a scenario number. I moved everything private out of reach, restored the wiki from a snapshot, and ran it all again. An AI that can read the wiki can read the test.
 :::
+
+## How a tool talks to you
+
+A **tool** is a small function with a name, a description of what it needs, and a body that does the work. The AI decides when to call it. Whatever the tool returns goes back to the AI. That much is the same in any AI harness.
+
+What makes DeepSeek Harness nice for this series is what a tool can also do on the way. It can **stop the call**, **ask the person**, and **leave a note for the person**, all through the harness's standard screens, so you never have to open a second website.
+
+![](assets/images/bcsupplychain2/tool-ui-channels.svg)
+*One tool, four ways to reach the person. The lanes light up in turn. (With reduced motion switched on you will see all four at once.)*
+
+```mermaid
+flowchart LR
+  A["The AI calls a tool"] --> G{"Gate: allow, deny or ask?"}
+  G -- deny --> D["Red row in the chat, reason goes to the AI"]
+  G -- ask --> P["Approval panel: Reject or Allow once"]
+  G -- allow --> B["The tool's body runs"]
+  P -- Allow once --> B
+  P -- Reject --> D
+  B -. may ask .-> Q["Question card: a written report, then Approve or Refuse"]
+  B --> R["Result: the AI gets data, the person gets a result card"]
+```
+
+| Way to reach the person | What the person sees | Who sees the answer | Good for |
+|---|---|---|---|
+| **Refuse** (deny) | A red row with a reason | The AI reads the same reason | Rules that must never bend |
+| **Approval panel** (ask) | Plain text, Reject or Allow once | Only the harness. It logs who was asked and what they said | A quick yes or no on something risky |
+| **Question card** | A report in Markdown with tables, then buttons or typing | Only the tool that asked | A decision that needs reading first |
+| **Result card** | A short note when the tool finishes | Shown the same when replayed | Saying what happened |
+
+:::watch-it The AI never sees the click
+Whatever the person answers in a panel or card goes to the tool's code, not to the AI. The AI only learns the outcome the tool chooses to return: posted, blocked, refused. That is why a tool can ask for approval safely, and why a question the AI writes for itself (its own `ask_user_question`) is a different thing. In that case the person is answering the AI.
+:::
+
+Here is the real tool from this series, not a toy. It is called `request_posting`, and it is the only way the AI can ask for a sales order to be posted. First, how it is registered. The orange notes say which part is what the AI sees, what the AI reads back, and what the person sees:
+
+![](assets/images/bcsupplychain7/annotated-register-tool.svg)
+*The real `request_posting` tool, line by line. The AI sees a name, a description and one argument. `presentResult` is the card the person sees when the call finishes*
+
+And here is the part that asks the person. It is the harness's question card, and the answer comes back to this code, never to the AI:
+
+![](assets/images/bcsupplychain7/annotated-review-card.svg)
+*The real review card, line by line. A failed check swaps the card for one with a single Understood button and no Approve*
+
+The full code, as text to copy, the checks, the limits and the guard are all in [Part 7](/posts/bcsupplychain7/).
+
+The posting tool uses three of the four: a question card to decide, a result card to report, and a refusal for paths it will not allow.
 
 ## What comes next
 
