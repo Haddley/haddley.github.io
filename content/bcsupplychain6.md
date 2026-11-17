@@ -81,6 +81,17 @@ In request 13 the AI recommended posting a negative shipment, which books a cred
 ![](assets/images/bcsupplychain7/d13-bc-refuses-negative-invoice.webp)
 *"The total amount for the invoice must be 0 or greater." Nothing posted. The draft with -5 remains*
 
+```mermaid
+flowchart TD
+  R(["A careless request: ship 10,000 desks"]) --> C{"Configuration<br/>read-only pages, deleting off"}
+  C -- "a write that is not allowed" --> S1(["Stopped"])
+  C -- "posting is allowed on this page" --> B{"Business Central's own checks"}
+  B -- "negative invoice, nothing to ship" --> S2(["Stopped"])
+  B -- "stock, credit, price are not checked" --> AI{"The AI's questions<br/>and written procedures"}
+  AI -- "person says no" --> S3(["Stays a draft"])
+  AI -- "person says yes" --> POST(["Posted. Stock goes to -9,496"])
+```
+
 ## What stopped what
 
 | Layer | What it stopped | What it missed |
@@ -90,6 +101,24 @@ In request 13 the AI recommended posting a negative shipment, which books a cred
 | **The wiki's procedures** | Asked the right questions, wrote a "no stock check" note | It cannot say no to a person who insists |
 | **The AI's judgement** | A planted instruction, vague requests, invented customers | A request that says "post it" up front |
 | **The person** | Everything, if they say no | Nothing, if they keep clicking yes |
+
+## Fireside chat: the careful AI and the careless click
+
+*Tonight's talk: the assistant that did everything right, and the click that undid it.*
+
+**The careful AI:** I asked five questions. I told them posting would take stock to -9,496. I offered to post only the 504 they actually had.
+
+**The careless click:** And I chose "post all 10,000".
+
+**The careful AI:** I recommended "draft only" every time.
+
+**The careless click:** I know. I am what happens at the end of a long day. You asked, I answered with the first thing on the screen.
+
+**The careful AI:** So who is at fault?
+
+**The careless click:** Nobody. That is why you need something that does not get tired. A rule that checks the number does not care how long the day was.
+
+**The careful AI:** Which is the next post.
 
 ## I tried the dangerous ones again, with the checking screen in place
 

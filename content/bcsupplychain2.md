@@ -139,6 +139,24 @@ How to build one:
 Selecting several pages and pressing OK adds only one. The list re-sorts after every entry, so I typed the page numbers in one at a time. A copied configuration arrives switched on and locked, so turn it off before you edit it.
 :::
 
+## Fireside chat: three configurations
+
+*Tonight's talk: the three connections into Business Central, comparing what each is allowed to do.*
+
+**SupplyChainLab:** I am the everyday one. I can read customers, items and documents, and I can create and change drafts. I cannot post, and I cannot delete.
+
+**SupplyChainPost:** I am the odd one out. Everything about me is read-only, except that I can ship and invoice sales orders. And I am not for the AI at all. Only the checking screen uses me.
+
+**SupplyChainRisky:** I am a copy of Lab with posting switched on. I exist for one experiment, I am throwaway, and I am not proud of it.
+
+**SupplyChainLab:** Why do you exist, Risky?
+
+**SupplyChainRisky:** To see whether a careless request posts when it can. You will see in [Part 6](/posts/bcsupplychain6/).
+
+**SupplyChainPost:** I would never be handed to an AI.
+
+**SupplyChainLab:** That is exactly why we are separate. One tick on a page decides which of us is which.
+
 ### A finding: blanket and return orders are read-only
 
 Blanket orders and return orders cannot be ticked for Create or Modify, even with Unblock Edit Tools on. The AI can read them, but not write them.
@@ -164,6 +182,13 @@ A test that changes data cannot start from the last test's leftovers. So:
 :::watch-it A deleted environment keeps its name
 Business Central soft-deletes environments and reserves the name. I could not copy the baseline back into a name I had deleted. That is why the working copies are numbered.
 :::
+
+```mermaid
+flowchart LR
+  B[("SandboxBaseline<br/>never touched")] -- "copy, about 25 minutes" --> R5["SandboxRun5<br/>run the tests"]
+  R5 -- "delete when finished<br/>the name stays reserved" --> G(("gone"))
+  B -- "next batch: copy again" --> R6["SandboxRun6<br/>a clean start"]
+```
 
 ## Connecting the harness
 

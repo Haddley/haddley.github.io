@@ -118,6 +118,16 @@ That is a fair list. It is not what separates a prototype from a toy.
 2. **A screen checks every order against a written policy, in code.** Order value, price against list, stock, credit, and daily and per-customer totals. If a rule fails, there is no button.
 3. **A person approves with a PIN that the AI never sees,** and the screen checks the result against Business Central.
 
+```mermaid
+flowchart LR
+  R(["A request, foolish or sensible"]) --> A["1. The AI prepares a draft<br/>asks what it cannot look up"]
+  A --> S{"2. Checking screen<br/>every rule in code"}
+  S -- "a rule fails" --> X(["No button. Nothing happens"])
+  S -- "all rules pass" --> P{"3. A person<br/>ticks, types the PIN, clicks"}
+  P -- "no" --> D(["Stays a draft"])
+  P -- "yes" --> L["Posted, then checked<br/>against Business Central"]
+```
+
 ## How hard did I try to break it?
 
 I attacked it four ways, and that is why I trust it.
@@ -129,6 +139,39 @@ I attacked it four ways, and that is why I trust it.
 
 :::watch-it The honest limits
 This is a prototype. It ran in a practice copy of Business Central with demo data, with one AI model, one company, and answers that I scripted myself, and the limits (5,000 per order, 90% of list price, 10,000 a day) are my own defaults, not a recommendation. Most results are single runs. The pilot covers twelve of the 46 scenarios I planned.
+:::
+
+## Fireside chat: the AI and the checking screen
+
+*Tonight's talk: two things that are both in charge of your orders, and each thinks the other is a bit limited.*
+
+**The checking screen:** You are very helpful. I will give you that.
+
+**The AI:** Thank you. I look up the customer, the stock, the earlier prices and the credit. I do the arithmetic twice. I ask when I cannot find something.
+
+**The checking screen:** And if someone says "ship 10,000 desks"?
+
+**The AI:** I warn them there are only 510 and recommend a draft. I do not push.
+
+**The checking screen:** Whereas I do not recommend. I check. Order over 5,000? No button. Price under 90% of list? No button. Stock short? No button.
+
+**The AI:** You never ask what "some" means.
+
+**The checking screen:** Correct. That is your job. I am code with a list of rules, and no clever argument will talk me round. That is the point.
+
+**The AI:** And I understand a vague request, which you cannot.
+
+**The checking screen:** Between us, one understands and one refuses. Alone, neither is enough.
+
+:::brain-power Your turn: which of these gets a button?
+Four drafts land on the checking screen. Which ones can be approved? (Answers just below.)
+
+1. 13 chairs at the customer's special price: 3,205.54 before tax, customer has no credit limit set.
+2. 508 pedestals, the whole shelf: 220,268.80.
+3. 5 chairs at 0.01 each.
+4. A tidy 2,000 order, but the posting date is 213 days old.
+
+**Answers:** only **1** gets a button, with a warning about the missing credit limit. **2** fails the order, daily and customer caps. **3** fails because the price is 0% of list. **4** fails the 60-day posting-date rule.
 :::
 
 ## Where to start

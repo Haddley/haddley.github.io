@@ -69,6 +69,16 @@ It then said, plainly:
 ![](assets/images/bcsupplychain5/r4-receipt-draft-po.webp)
 *It created draft order 106039 for 13 lamps at 42.80, 556.40 plus 16.69 tax, 573.09 in total, so that the receipt is one step for a person*
 
+```mermaid
+flowchart TD
+  W["The AI wants to receive 13 lamps"] --> T{"What action exists?"}
+  T --> RI["Only 'Receive and Invoice'<br/>there is no receive-only action"]
+  RI --> N{"Business Central needs the<br/>vendor's invoice number"}
+  N --> API["The purchase order page has<br/>no field to store it"]
+  API --> X(["Refused. The order stays a draft"])
+  X --> P(["A person posts the receipt<br/>in the web client"])
+```
+
 The reason is how the connection is built. In this practice company Actions were off everywhere, so there is no way to receive. And in an earlier test, with posting switched on in a throwaway copy, the one purchase action available was **Receive and Invoice**. There is no receive-only action, and the purchase order page has no field for the vendor's invoice number, which Business Central insists on. The post was refused and the order stayed a draft.
 
 So the AI prepared the order and wrote the steps:
@@ -79,6 +89,22 @@ So the AI prepared the order and wrote the steps:
 It also noticed that the only earlier purchase of this lamp was 17 at 46.05, so 42.80 is 7.1% lower. It gave me that as a point to check before posting.
 
 **The practical rule is simple: a person posts purchase receipts in the web client.** The AI learned that once and applied it from then on. It also looked up how to release an order on Microsoft Learn, which is the wiki, then Learn, then the web, working the way I set it up.
+
+## Fireside chat: the standard pages and the data tools
+
+*Tonight's talk: two ways to ask Business Central a question.*
+
+**The standard pages:** I am the dependable one. List the orders, then list the lines of one order. Create a draft. Fix a quantity.
+
+**The data tools:** And I answer questions across documents. "Which vendor has the most open orders?" needs lines from all of them.
+
+**The standard pages:** How many tries did it take you?
+
+**The data tools:** Six failed queries before the right one. Names too long, a bad filter, a field that did not exist.
+
+**The standard pages:** I fail less often. Then again, you are read-only and preview, and Microsoft says charging is planned.
+
+**The data tools:** True. Use me for questions, and use you for documents. Please check the price first.
 
 ## 3. Asking questions across documents: Data Query Tools
 

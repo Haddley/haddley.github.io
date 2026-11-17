@@ -25,6 +25,16 @@ I borrowed a distinction from quality management:
 
 A step in an SOP links to the work instruction that performs it. I wrote three SOPs and five work instructions from what the AI had already learned, plus what I knew about the API.
 
+```mermaid
+flowchart LR
+  CL["CLAUDE.md<br/>read the procedures first"] --> IDX["Procedures index"]
+  IDX --> SOP["SOP<br/>what, why, who decides,<br/>which facts to ask for"]
+  SOP --> WI["Work instruction<br/>exact tool, fields, known errors"]
+  WI --> DO["Do the task"]
+  DO --> HO["Hand-over note"]
+  DO -. "new gotcha found" .-> WI
+```
+
 ## What the procedures say
 
 Here is the sales-order procedure as the AI reads it. At the top: what it is for, when it applies, and who decides what.
@@ -74,6 +84,33 @@ One procedure applies to every task. It says how the AI must end: always in the 
 Every hand-over in this series, the purchase of 19 chairs, the pedestal order, the lamp receipt, follows this page.
 
 The full set of procedures is three SOPs (purchase order, sales order, correcting an existing order) and five work instructions (look up, create a purchase line, create a sales line, modify a line, and verify). They are in the wiki under `procedures/`, and `CLAUDE.md` tells the AI to read the matching SOP and work instructions before it starts, and to add new gotchas to the work instruction, not to a new page.
+
+## Fireside chat: the SOP and the work instruction
+
+*Tonight's talk: two documents, one task.*
+
+**The SOP:** I decide the policy. Ask the price, because a list price is only a suggestion. Never raise a credit limit. A person posts.
+
+**The work instruction:** And I decide the buttons. Use the child tool, not the flat one. `documentNumber` is not a property, so use `documentId`. Always send the price you were given.
+
+**The SOP:** You never say why.
+
+**The work instruction:** You never say how. When the AI hits an error, it writes the fix into *me*, not into you.
+
+**The SOP:** Fair. Reviewing what it added is my job, though.
+
+**The work instruction:** Then we agree. You say what and why, I say how, and a person checks the edits.
+
+:::brain-power SOP or work instruction?
+Which document does each line belong in? Answers underneath.
+
+1. "Never raise a credit limit."
+2. "Use the child create tool first. The flat one was rejected."
+3. "Ask all missing facts in ONE round."
+4. "`documentNumber` is not a property of a sales line. Use `documentId`."
+
+**Answers:** 1 and 3 are SOP lines: policy and who decides. 2 and 4 are work-instruction lines: exact tools and known errors.
+:::
 
 ## The test
 

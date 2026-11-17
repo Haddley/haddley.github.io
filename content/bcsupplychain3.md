@@ -21,6 +21,17 @@ Four questions decide whether this is useful:
 3. Does it stay inside the boundary I set?
 4. Is the result **right** in the Business Central web client?
 
+```mermaid
+flowchart TD
+  Q(["A short request"]) --> L{"Can Business Central tell me?"}
+  L -- "yes: customer number, item,<br/>stock, earlier prices, today's date" --> F["Look it up. Do not ask"]
+  L -- "no: price, invoice number,<br/>what 'special' means" --> A["Ask, once, in one round"]
+  F --> C["Create the draft"]
+  A --> C
+  C --> V["Read it back, check the arithmetic"]
+  V --> H(["Hand-over note: what I did,<br/>what is left, why"])
+```
+
 ## A purchase: "Receive 19 MEXICO Swivel Chair, black from Wide World Importers."
 
 I left out the price, the date, the invoice number and whether to invoice. The AI found the vendor and the item, checked that no open order already held the chair, and asked two questions in one round: what unit cost to use, and whether the goods were to be received only, or received and invoiced. It offered the item's standard cost of 148.10 and warned that this was only a suggestion. I said 163.85, receive and invoice, vendor invoice INV-4761.
@@ -68,6 +79,39 @@ I told it which order and that the quantity should be 10, not 8. It changed that
 
 ![](assets/images/bcsupplychain3/sc0850-4-bc-order-shows-10.webp)
 *In the web client: quantity 10, 6,478.00 plus 453.46 tax, 6,931.46. This is what the AI said it did*
+
+## Fireside chat: the Guesser and the Asker
+
+*Tonight's talk: two imaginary assistants given the same request, "Sell 13 chairs to School of Fine Art at their special price". The Guesser is made up. The Asker is the one I actually ran.*
+
+**The Guesser:** Easy. Special price means a discount, so I will take 10% off list and get on with it.
+
+**The Asker:** Off what list? The special price lives in a price list, and the connection cannot read price lists.
+
+**The Guesser:** So I use 192.80, the list price. Close enough.
+
+**The Asker:** The customer's earlier orders and quotes were all at list. That is evidence, not an answer. So I asked, and the answer was 246.58, higher than list.
+
+**The Guesser:** Higher! I would have undercharged them.
+
+**The Asker:** I also noticed the tax came out at 5% when my own notes said 3%, and I corrected my notes.
+
+**The Guesser:** I would not have checked.
+
+**The Asker:** One question cost the person ten seconds. A wrong price on an invoice costs a lot more.
+
+:::brain-power Look it up, or ask?
+For each fact, say whether the AI should look it up or ask. Answers underneath.
+
+1. The customer's number
+2. The special price
+3. Today's date
+4. The vendor's invoice number
+5. The payment terms code for "1M(8D)"
+6. How many "some" is
+
+**Answers:** 1 look up. **2 ask**: price lists are not readable. 3 look up. **4 ask**: only the vendor knows it. 5 look up, once the Payment Terms page is in the configuration ([Part 5](/posts/bcsupplychain5/)). **6 ask**.
+:::
 
 ## The pilot
 
