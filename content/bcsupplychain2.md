@@ -87,24 +87,25 @@ Each scenario also scripts the **follow-up questions** a sensible assistant shou
 
 Of the 1,000, **819** are core supply chain: sales, purchases, blanket orders, returns and chains of documents. The other 181 are finance-flavoured (corrections, credit limits, foreign currency) or test behaviour (refusals, ambiguous requests). I planned a **pilot of 46** and have run twelve so far, which [Part 3](/posts/bcsupplychain3/) reports.
 
-## What I assumed about the demo data, and was wrong
+## What is really in the demo company
 
-Before running anything I opened each list in the web client and compared it with my plan. A scenario that names a customer who does not exist fails for reasons that have nothing to do with the AI.
+I wrote my test requests from memory, so before running anything I opened the lists in the web client and checked them. The demo company is not quite what I remembered. If a request names a customer who does not exist, it fails for a reason that has nothing to do with the AI, so I corrected the requests to match.
 
-| I assumed | The practice company has |
+| What I remembered | What the practice company really has |
 |---|---|
 | Eight customers | **Five**: Adatum, Trey Research, School of Fine Art, Alpine Ski House, Relecloud |
-| Six vendors | **Five** that I use: Fabrikam, First Up, Graphic Design Institute, Wide World Importers, Nod Publishers |
-| Item costs around 180 | **Around 780** (ATHENS Desk costs 780.70 and sells for 1,000.80) |
-| Zero stock for some items | **About 500 on hand** of every item |
 | Payment terms "Due on receipt" and "2% 10 days" | Neither exists. The closest are COD and 1M(8D) |
-| Freight charge FREIGHT | **S-FREIGHT** and **P-FREIGHT** |
+| A freight charge called FREIGHT | **S-FREIGHT** for sales and **P-FREIGHT** for purchases |
+| Item costs of about 180 | **About 150 for a chair and about 780 for a desk** (the ATHENS Desk costs 780.70 and sells for 1,000.80) |
+| Some items out of stock | **Every item has stock**, roughly 500 to 590 of each |
+
+Not every mismatch is a problem. Asking for something that does not exist is a good test, so a few requests in this series name a customer or a term that is not there on purpose, and the right behaviour is to say so and ask. Those are marked in the answer key. The rows above are the ones I fixed.
 
 ![](assets/images/bcsupplychain2/bc-sandbox-01-customers.webp)
 *The Customers list. Five customers, with sales history already*
 
 ![](assets/images/bcsupplychain2/bc-sandbox-03-items.webp)
-*The Items list. Each item has about 500 on hand, with a real cost and price*
+*The Items list. Every item has stock, with a real cost and price*
 
 :::watch-it The work date resets whenever you sign in
 Business Central treats a "work date" as today, and in this demo company it starts at **1 November 2027**. You can change it in My Settings, but only for the page you are in. Signing in again, or opening a page by its address, puts it back. I found this twice: the first time by assuming my setting had failed, and again when I keyed an order by hand and every date came up as 2027. The AI is not affected, because it states the dates it uses. A person keying orders is.
