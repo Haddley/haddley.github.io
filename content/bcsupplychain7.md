@@ -18,6 +18,11 @@ So I built that thing. This post is what it is, what it stopped, the one order t
 
 ## The design in four sentences
 
+Watch one order take the whole path. (With reduced motion you will see a plain list.)
+
+![](assets/images/bcsupplychain7/checking-screen-flow.svg)
+*The path of one order: draft, checks, decision, posted, verified. If any rule fails, the order never reaches the decision step*
+
 1. **The AI can only draft.** It has no posting tool.
 2. **A separate screen, not the AI, does the posting.** It has its own connection to Business Central that can ship and invoice sales orders and nothing else.
 3. **The screen checks each draft against a written policy, in code.** There is no AI in the screen. If any rule fails, there is no button.
@@ -67,6 +72,14 @@ stateDiagram-v2
   Blocked --> [*]
   Verified --> [*]
 ```
+
+
+:::no-dumb-questions
+**Q: Where did the PIN idea come from?**
+A: From a hole I found, not from a textbook. My first version of the screen had a button that anyone could press. Then the AI found the screen's web page, read it, and I realised the page held the one-time token that approves an order, so an AI could in principle have forged an approval. The fix was to put the approval somewhere the AI cannot reach: a PIN that I type in a terminal when the screen starts, kept only in memory, and never written to a file or shown to the AI. The screen refuses to start without a person at a terminal, and three wrong PINs lock it.
+
+It is a very old idea in security: the machine doing the work should not hold the secret that approves the work. **It is not a Business Central feature, and it is not perfect.** The AI and the screen run as the same user on one computer, so a determined AI could in principle try to get round it. A separate account or machine is the real fix.
+:::
 
 ## The policy
 

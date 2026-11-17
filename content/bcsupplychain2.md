@@ -31,6 +31,21 @@ The question for the whole series: **can an AI assistant manage sales orders and
 
 ## The big picture
 
+Here is what happens, in order, when you type a request. Watch the numbered steps. (If you have reduced motion switched on, you will see a plain list instead.)
+
+![](assets/images/bcsupplychain2/harness-flow.svg)
+*One request, six steps. The harness sits in the middle and does the running about*
+
+**In plain words, who is who:**
+
+- **The harness** (DeepSeek Harness) is a program that runs on your computer. It holds the conversation, shows you the questions, and carries out the tools. It does not think.
+- **The hosted AI model** (DeepSeek V4 Flash) does the thinking. It lives in the cloud. It never touches Business Central itself. It only says, "please run this tool."
+- **The connection** is Microsoft's own built-in route for AI tools into Business Central (the MCP server). A **configuration** inside Business Central decides which pages the connection may read, create or change.
+- **The wiki** is a folder of notes. The AI reads it first and writes what it learned back into it.
+- **Microsoft Learn** is Microsoft's documentation, which the AI can search.
+
+Here is the same picture as a map:
+
 Here is how the pieces connect. Look at it for a minute before you read on.
 
 ```mermaid
@@ -66,6 +81,15 @@ There are two routes from your computer into Business Central. Which one can the
 :::
 
 Two things to notice. The hosted model sees the conversation and what the tools return, so order details leave your computer. And the harness, the wiki and the checking screen all run on the same machine in this prototype, which is a weakness that [Part 1](/posts/bcsupplychain1/) lists.
+
+
+:::no-dumb-questions
+**Q: How is the harness wired to the model and to Business Central?**
+A: Two small settings. The harness has a setting for which model to use, with the model's key kept in a hidden file the AI cannot read. And its profile file lists the Business Central connection: Microsoft's address, which tenant and environment to use, which company, and the **name of the configuration**. Change the configuration name, restart the harness, and the AI has a different set of permissions. I describe my first set-up in [DeepSeek Harness on a Business Central Sandbox](/posts/deepseekharnessaccounting/).
+
+**Q: Who built the checking screen?**
+A: I did, with Claude's help, after the results in [Part 6](/posts/bcsupplychain6/). The harness, the model and the connection are off-the-shelf. The checking screen is a small program I wrote for this series, and the limits in it are my own defaults.
+:::
 
 ## The ground rules
 
