@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>A sales invoice is ticked green, then a purchase invoice is marked with a red cross</title>
+<style>.a{animation-duration:4s;animation-timing-function:ease-out;animation-fill-mode:both;animation-iteration-count:1;transform-box:fill-box;transform-origin:center}
+.g{animation-name:g}.r{animation-name:r}
+@keyframes g{0%,10%{opacity:0;transform:scale(.4)}30%,100%{opacity:1;transform:scale(1)}}
+@keyframes r{0%,50%{opacity:0;transform:scale(.4)}70%,100%{opacity:1;transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.a{animation:none!important}}</style>
+<rect width="120" height="120" rx="22" fill="#0f1b2d"/><rect x="12" y="22" width="44" height="60" rx="5" fill="#e0f2fe"/><g fill="#7dd3fc"><rect x="18" y="32" width="32" height="4" rx="2"/><rect x="18" y="42" width="26" height="3" rx="1.5"/><rect x="18" y="50" width="30" height="3" rx="1.5"/><rect x="18" y="58" width="22" height="3" rx="1.5"/></g>
+<g class="a g"><circle cx="46" cy="76" r="12" fill="#16a34a"/><path d="M40 76 l4.5 5 l8.5 -10" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+<rect x="64" y="22" width="44" height="60" rx="5" fill="#fbbf24"/><g fill="#0f1b2d"><rect x="70" y="32" width="32" height="4" rx="2"/><rect x="70" y="42" width="26" height="3" rx="1.5"/><rect x="70" y="50" width="30" height="3" rx="1.5"/><rect x="70" y="58" width="22" height="3" rx="1.5"/></g>
+<g class="a r"><circle cx="98" cy="76" r="12" fill="#dc2626"/><path d="M92 70 l12 12 M104 70 l-12 12" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/></g><rect x="28" y="96" width="64" height="8" rx="4" fill="#7dd3fc"/></svg>

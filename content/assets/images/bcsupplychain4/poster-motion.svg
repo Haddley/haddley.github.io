@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img"><title>An SOP page appears, then a work instruction page with steps ticked off one by one</title>
+<style>.a{animation-duration:4.5s;animation-timing-function:ease-out;animation-fill-mode:both;animation-iteration-count:1}
+.s{animation-name:s}.w{animation-name:w}.c1{animation-name:c1}.c2{animation-name:c2}.c3{animation-name:c3}.t{animation-name:t;transform-box:fill-box;transform-origin:center}
+@keyframes s{0%,4%{opacity:0;transform:translateY(-6px)}20%,100%{opacity:1;transform:none}}
+@keyframes w{0%,22%{opacity:0;transform:translateY(6px)}40%,100%{opacity:1;transform:none}}
+@keyframes c1{0%,44%{opacity:0}52%,100%{opacity:1}}@keyframes c2{0%,56%{opacity:0}64%,100%{opacity:1}}@keyframes c3{0%,68%{opacity:0}76%,100%{opacity:1}}
+@keyframes t{0%,80%{opacity:0;transform:scale(.4)}90%{opacity:1;transform:scale(1.15)}96%,100%{opacity:1;transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.a{animation:none!important}}</style>
+<rect width="120" height="120" rx="22" fill="#0f1b2d"/>
+<g class="a s"><rect x="16" y="18" width="62" height="40" rx="5" fill="#e0f2fe"/><rect x="22" y="25" width="26" height="5" rx="2.5" fill="#0f1b2d"/><g fill="#7dd3fc"><rect x="22" y="36" width="48" height="3" rx="1.5"/><rect x="22" y="43" width="40" height="3" rx="1.5"/><rect x="22" y="50" width="30" height="3" rx="1.5"/></g></g>
+<g class="a w"><rect x="30" y="50" width="62" height="44" rx="5" fill="#fbbf24"/><g fill="#0f1b2d"><rect x="52" y="58" width="32" height="3" rx="1.5"/><rect x="52" y="68" width="26" height="3" rx="1.5"/><rect x="52" y="78" width="30" height="3" rx="1.5"/></g></g>
+<g fill="#0f1b2d"><rect class="a c1" x="36" y="58" width="12" height="4" rx="2"/><rect class="a c2" x="36" y="68" width="12" height="4" rx="2"/><rect class="a c3" x="36" y="78" width="12" height="4" rx="2"/></g>
+<g class="a t"><circle cx="94" cy="92" r="12" fill="#16a34a"/><path d="M88 92 l4.5 5 l8.5 -10" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></g></svg>
