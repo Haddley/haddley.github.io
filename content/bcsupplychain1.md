@@ -1,7 +1,7 @@
 ---
 title: "Business Central Supply Chain"
 part: 1
-description: "Would You Let an AI Bill Your Customers? I typed a foolish request into an AI assistant connected to Business Central, and it was stopped before it could do any harm. Then a vague request that became a real draft order once the AI had the answers to the right questions, and a second real order that took about three minutes and one click. This series shows an AI doing the legwork in your accounting system, with guard rails that I attacked until they held"
+description: "Would You Let an AI Bill Your Customers? I typed a foolish request into an AI assistant connected to Business Central, and it was stopped before it could do any harm. Then a vague request that became a real draft order once the AI had the answers to the right questions, and a second real order that took about three minutes and one click. This series shows an AI doing the legwork in your accounting system, with a checking screen that I spent a day trying to fool"
 date: "2026-11-16"
 categories: ["AI", "Business Central"]
 image: "/assets/images/bcsupplychain1/poster.svg"
@@ -175,7 +175,7 @@ Fair question. Here are the reasons a sceptic can check.
 
 ## How hard did I try to break it?
 
-Very. I attacked it four ways, and that is why I trust it.
+Very. I spent a day trying to fool the checking screen, four ways, and that is why I trust it.
 
 - **Four dangerous requests,** including the 508 pedestals, the 10,000 desks and a price of 0.01. All four were blocked.
 - **Changing an order between review and click.** Refused, and the person is told to review it again.
