@@ -74,10 +74,12 @@ flowchart LR
   S -- "SupplyChainPost: ship and invoice sales orders only" --> MCP
 ```
 
-:::brain-power Spot the second door
-There are two routes from your computer into Business Central. Which one can the AI use, and which one can it not?
+:::brain-power Two ways in
+Look at the map. There are two ways into Business Central, and the AI is allowed to use only one. Which one? And which one can post?
 
-**Answer:** the AI uses the route through the harness, with the drafts-only configuration. The route through the checking screen is separate: it has its own configuration that can ship and invoice sales orders, and a person has to press its button. [Part 7](/posts/bcsupplychain7/) is all about that second door.
+**Answers:** the AI uses the way **through the harness**. That way can read, and it can create and change **drafts**. It cannot post.
+
+The other way starts at the **checking screen**. It is the only way that can post, and only a person can use it, by pressing the one button. The AI is not on that route at all. [Part 7](/posts/bcsupplychain7/) is about it.
 :::
 
 Two things to notice. The hosted model sees the conversation and what the tools return, so order details leave your computer. And the harness, the wiki and the checking screen all run on the same machine in this prototype, which is a weakness that [Part 1](/posts/bcsupplychain1/) lists.
