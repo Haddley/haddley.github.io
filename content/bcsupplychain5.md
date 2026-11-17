@@ -5,7 +5,7 @@ description: "Payment Terms, Purchase Receipts, and Asking Questions: Three thin
 date: "2026-11-17"
 categories: ["AI", "Business Central"]
 image: "/assets/images/bcsupplychain5/poster.svg"
-tags: "business-central, mcp, ai-agent, deepseek, payment-terms, purchase-receipt, data-query-tools, configuration"
+tags: "mcp, deepseek, payment-terms, purchase-receipt, data-query-tools, configuration"
 hidden: true
 slug: "bcsupplychain5"
 ---

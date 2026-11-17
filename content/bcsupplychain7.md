@@ -5,7 +5,7 @@ description: "The Checking Screen: When the AI thinks an order is ready, a polic
 date: "2026-11-17"
 categories: ["AI", "Business Central"]
 image: "/assets/images/bcsupplychain7/poster.svg"
-tags: "business-central, mcp, ai-agent, deepseek, guardrails, approval, policy, safety"
+tags: "mcp, deepseek, guardrails, approval, policy, safety"
 hidden: true
 slug: "bcsupplychain7"
 ---

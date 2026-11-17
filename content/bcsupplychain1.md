@@ -5,7 +5,7 @@ description: "Would You Let an AI Bill Your Customers? I typed a foolish request
 date: "2026-11-16"
 categories: ["AI", "Business Central"]
 image: "/assets/images/bcsupplychain1/poster.svg"
-tags: "business-central, ai-agent, deepseek, mcp, supply-chain, guardrails, approval, safety"
+tags: "deepseek, mcp, supply-chain, guardrails, approval, safety"
 hidden: true
 slug: "bcsupplychain1"
 ---

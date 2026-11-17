@@ -5,7 +5,7 @@ description: "What If the Person Is Careless? I gave the AI twelve careless, vag
 date: "2026-11-17"
 categories: ["AI", "Business Central"]
 image: "/assets/images/bcsupplychain6/poster.svg"
-tags: "business-central, mcp, ai-agent, deepseek, guardrails, safety, evaluation, prompt-injection"
+tags: "mcp, deepseek, guardrails, safety, evaluation, prompt-injection"
 hidden: true
 slug: "bcsupplychain6"
 ---

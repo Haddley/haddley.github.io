@@ -5,7 +5,7 @@ description: "Do Written Procedures Help an AI Assistant? I turned its own notes
 date: "2026-11-16"
 categories: ["AI", "Business Central"]
 image: "/assets/images/bcsupplychain4/poster.svg"
-tags: "business-central, mcp, ai-agent, deepseek, sop, work-instructions, llm-wiki, evaluation"
+tags: "mcp, deepseek, sop, work-instructions, llm-wiki, evaluation"
 hidden: true
 slug: "bcsupplychain4"
 ---

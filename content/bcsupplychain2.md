@@ -5,7 +5,7 @@ description: "Setting Up a Safe Place to Try This: A practice copy of Business C
 date: "2026-11-16"
 categories: ["AI", "Business Central"]
 image: "/assets/images/bcsupplychain2/poster.svg"
-tags: "business-central, mcp, ai-agent, deepseek, supply-chain, sandbox, configuration"
+tags: "mcp, deepseek, supply-chain, sandbox, configuration"
 hidden: true
 slug: "bcsupplychain2"
 ---

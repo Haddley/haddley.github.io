@@ -5,7 +5,7 @@ description: "It Drafts Well: Short requests, real follow-up questions, and a no
 date: "2026-11-16"
 categories: ["AI", "Business Central"]
 image: "/assets/images/bcsupplychain3/poster.svg"
-tags: "business-central, mcp, ai-agent, deepseek, follow-up-questions, supply-chain, pilot"
+tags: "mcp, deepseek, follow-up-questions, supply-chain, pilot"
 hidden: true
 slug: "bcsupplychain3"
 ---
