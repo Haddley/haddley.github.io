@@ -74,6 +74,8 @@ The limits live in one file. I chose the defaults, and someone who owns the busi
 | Posting date | not in the future, not older than 60 days |
 | Free-text fields | warns if they read like instructions to the AI |
 
+The screen reads the policy once, when it starts, and records a fingerprint of that exact file in every entry of its audit log. If the limits are ever changed, the fingerprint in the log changes with them, so a quiet edit leaves a trace. The file is also read-only. That is evidence of a change, not a block: the AI runs as the same user as me and could change the file's permissions back, which is why the real fix is a separate account or machine.
+
 ## What an approvable order looks like
 
 This is the 13-chair order from [Part 1](/posts/bcsupplychain1/). Every check passes except one warning that no credit limit is set. Before anyone clicks, the page shows what posting will change.
