@@ -35,27 +35,45 @@ Here is the sales-order procedure as the AI reads it. At the top: what it is for
 ![](assets/images/bcsupplychain4/r4-sop-page-steps.webp)
 *The steps, the guardrails and the human-only steps. Each step links to a work instruction with the exact calls*
 
-And here is a piece of the purchase procedure: the table of facts the AI must have before it creates anything.
+Here is the heart of that procedure in plain text, shortened: the table of facts the AI must have before it creates anything, and what to do when one is missing.
 
-```
-| Fact           | Source                       | If missing                                   |
-| Vendor         | List_Vendors (id and number) | ask if no match or more than one             |
-| Quantity       | the request                  | ask                                          |
-| Unit cost      | the request or the user      | ask; the item master cost is only a suggestion |
-| Vendor invoice | the user                     | ask if the request mentions invoicing        |
-| Receive only,  |                              |                                              |
-|  or and invoice| the user                     | ask if the request says "receive"            |
-```
+| Fact | Source | If missing |
+|---|---|---|
+| Customer | look up the customer (number, blocked, credit limit) | ask if no match |
+| Item | look up the item (stock, list price) | ask if ambiguous |
+| Quantity | the request | **ask** |
+| Unit price | the request or the user | **ask**. The item list price is only a suggestion. A "special" or "agreed" price is not stored where the AI can read it, so ask |
+| Ship / order date | the request, otherwise today | state the date you used |
+| Stock | stock on hand on the item | warn if the quantity is more than stock, and ask about backorder |
+| Customer credit | credit limit and balance on the customer | a limit of 0 with a balance due is worth a flag. Never change the limit |
 
-And a piece of a work instruction, with a failure the AI hit repeatedly:
+One line under the table does most of the work: **"Ask all missing facts in ONE round. Do not ask for anything you can look up."**
 
-```
-| Error                                       | Cause                              | Fix                                   |
-| "The Standard Text does not exist ... 1896-S" | line created with item number only | pass itemId (the GUID) and description |
-| "You must specify a document id"            | lines listed without a parent      | list lines per order, with the order id |
-```
+## A work instruction, in full
 
-The full set is three procedures (purchase order, sales order, correcting an existing order) and five work instructions (look up, create a purchase line, create a sales line, modify a line, and verify). They are in the wiki under `procedures/`, and `CLAUDE.md` tells the AI to read the matching SOP and work instructions before it starts, and to add new gotchas to the work instruction, not to a new page.
+An SOP says what to do and who decides. A **work instruction** says exactly how: which tool, which fields, and what goes wrong. This is the one for creating a sales order with one line. The AI reads it before its first write.
+
+![](assets/images/bcsupplychain4/r4-wi-sales-line-top.webp)
+*The top of the work instruction. The first line tells the AI which of two tools to use and why: the other one was rejected in a test run. Then the header call, the line call, and the read-back*
+
+![](assets/images/bcsupplychain4/r4-wi-sales-line-errors.webp)
+*The error table. Each row is a mistake the AI made once, with the fix. The last two sections matter for prices: Business Central stores exactly the price it is sent, so a special price must always be sent, and read back*
+
+Most of the content of these pages came from the AI itself. It hit an error, found the fix, and the procedure told it to write the fix into the matching work instruction. I reviewed what it added and kept what was right.
+
+## The hand-over procedure
+
+One procedure applies to every task. It says how the AI must end: always in the same five parts, in plain words, so that a person can finish the job.
+
+![](assets/images/bcsupplychain4/r4-handover-top.webp)
+*Parts 1 to 4: what I did (and that nothing was posted), what is left and why, what to check first with numbers and not just "check credit", and links*
+
+![](assets/images/bcsupplychain4/r4-handover-rules.webp)
+*Part 5 is steps, only where a screen is genuinely needed. The rules at the bottom are the ones that matter most: never tell a person to do what the checking screen already does, never suggest raising a credit limit or zeroing a cost, and say so in the first line if you could not do what was asked*
+
+Every hand-over in this series, the purchase of 19 chairs, the pedestal order, the lamp receipt, follows this page.
+
+The full set of procedures is three SOPs (purchase order, sales order, correcting an existing order) and five work instructions (look up, create a purchase line, create a sales line, modify a line, and verify). They are in the wiki under `procedures/`, and `CLAUDE.md` tells the AI to read the matching SOP and work instructions before it starts, and to add new gotchas to the work instruction, not to a new page.
 
 ## The test
 
