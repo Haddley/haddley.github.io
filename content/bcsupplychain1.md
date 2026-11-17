@@ -26,7 +26,7 @@ Quick. **How many ATHENS Desks are in stock?**
 
 So ten thousand is a bit much. In a normal company, someone would catch this before it cost real money. Here is what happened when I gave this exact request to a custom AI assistant that I set up and connected to Business Central.
 
-The AI warned me that only 510 were in stock, so 9,490 of the 10,000 could not be covered, and asked what to do about it and what price to use. I chose the careless answer anyway: keep all 10,000, even though 9,490 of them could not be covered. (The price was just the normal list price. That part was fine.) It prepared the order and handed it over. Then a checking screen looked at it:
+The AI warned me that only 510 were in stock, so 9,490 of the 10,000 could not be covered, and asked what to do about it and what price to use. As a test, I pushed on anyway and told the AI to go ahead with all 10,000, even though Business Central showed that 9,490 of them could not possibly be supplied. (The price was just the normal list price. That part was fine.) It prepared the order and handed it over. Then a checking screen looked at it:
 
 ![](assets/images/bcsupplychain1/gate-blocks-10000-desks.webp)
 *Two checks fail. The screen shows what would happen, stock going to -9,490 and the customer owing 10,308,240.00, and there is no Approve button*
