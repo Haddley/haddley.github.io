@@ -71,25 +71,25 @@ An answer with no clear letter counts as wrong. Thinking models can spend their 
 
 ## The results
 
-| Model | Reasoning: right of 282 | No letter | One letter: right of 282 | Reasoning time |
-|---|---|---|---|---|
-| deepseek-flash (API) | **97.9%** | 0 | 84.0% | 15 min |
-| deepseek-v4-pro (API) | **97.5%** | 5 | 80.1% | 41 min |
-| Qwen3.8 27B (MLX) | 93.6% | 1 | 73.0% | 129 min |
-| QwQ 32B | 86.5% | 16 | no answer | 792 min |
-| Qwen3 14B | 85.1% | 8 | 61.7% | 165 min |
-| Qwen2.5 72B | 85.1% | 1 | 70.9% | 285 min |
-| Llama 3.3 70B | 84.8% | 2 | 69.9% | 565 min |
-| DeepSeek-R1 32B | 83.3% | 11 | no answer | 479 min |
-| Qwen3 8B | 80.1% | 19 | 52.5% | 134 min |
-| Qwen2.5 14B | 79.4% | 0 | 63.1% | 53 min |
-| Gemma 3 27B | 78.4% | 1 | 62.4% | 103 min |
-| gpt-oss 20B | 78.0% | 25 | no answer | 38 min |
-| Gemma 3 12B | 63.5% | 1 | 52.8% | 43 min |
-| Llama 3.1 8B | 51.4% | 23 | 47.9% | 34 min |
-| Llama 3.2 3B | 46.8% | 19 | 41.1% | 14 min |
+| Model | Reasoning: right of 282 | No letter | After a larger allowance | One letter: right of 282 | Reasoning time |
+|---|---|---|---|---|---|
+| deepseek-flash (API) | **97.9%** | 0 | 96.8% | 84.0% | 15 min |
+| deepseek-v4-pro (API) | **97.5%** | 5 | **98.6%** | 80.1% | 41 min |
+| Qwen3.8 27B (MLX) | 93.6% | 1 | not rerun | 73.0% | 129 min |
+| QwQ 32B | 86.5% | 16 | 89.0% | no answer | 792 min |
+| Qwen3 14B | 85.1% | 8 | 86.2% | 61.7% | 165 min |
+| Qwen2.5 72B | 85.1% | 1 | not rerun | 70.9% | 285 min |
+| Llama 3.3 70B | 84.8% | 2 | not rerun | 69.9% | 565 min |
+| DeepSeek-R1 32B | 83.3% | 11 | 83.3% | no answer | 479 min |
+| Qwen3 8B | 80.1% | 19 | 83.7% | 52.5% | 134 min |
+| Qwen2.5 14B | 79.4% | 0 | not rerun | 63.1% | 53 min |
+| Gemma 3 27B | 78.4% | 1 | not rerun | 62.4% | 103 min |
+| gpt-oss 20B | 78.0% | 25 | 78.4% | no answer | 38 min |
+| Gemma 3 12B | 63.5% | 1 | not rerun | 52.8% | 43 min |
+| Llama 3.1 8B | 51.4% | 23 | not rerun | 47.9% | 34 min |
+| Llama 3.2 3B | 46.8% | 19 | not rerun | 41.1% | 14 min |
 
-(Chance is 25%. In the one-letter pass, `deepseek-r1`, `qwq` and `gpt-oss` returned an empty reply to all 282 questions: they are thinking models, and the 12 tokens I allowed were spent thinking before any letter appeared. That pass tells me nothing about them, so the table says "no answer" and not 0%.)
+(Chance is 25%. Every column comes from my first run except "After a larger allowance", which is the second run of the seven models that think in a hidden field, with more tokens and their thinking saved, described below; it also moves the API models by a few questions. In the one-letter pass, `deepseek-r1`, `qwq` and `gpt-oss` returned an empty reply to all 282 questions: they are thinking models, and the 12 tokens I allowed were spent thinking before any letter appeared. That pass tells me nothing about them, so the table says "no answer" and not 0%.)
 
 Four things stand out.
 
@@ -97,9 +97,9 @@ Four things stand out.
 
 **Letting the model think was worth 10 to 25 points.** For the models that can do both, the reasoning pass beat the one-letter pass by 11 points for Gemma 3 12B, 14 for Qwen2.5 72B, 16 for Qwen2.5 14B, 21 for Qwen3.8 27B and 23 for Qwen3 14B. The small Llama models gained only 4 to 6. The one-letter numbers also show how little the 70B models know without thinking: both land near 70%.
 
-**Thinking costs time, and more thinking is not always better.** QwQ 32B spent about 13 hours and 1,800 tokens an answer to reach 86.5%. Qwen3.8 27B took 2 hours and 800 tokens an answer to reach 93.6%. The long thinkers also hit my caps: gpt-oss 20B, Qwen3 8B and QwQ lost 25, 19 and 16 answers to "no letter", so their scores are a little lower than they would be with a larger cap.
+**Thinking costs time, and more thinking is not always better.** QwQ 32B spent about 13 hours and 1,800 tokens an answer to reach 86.5%. Qwen3.8 27B took 2 hours and 800 tokens an answer to reach 93.6%. The long thinkers also hit my caps: gpt-oss 20B, Qwen3 8B and QwQ lost 25, 19 and 16 answers to "no letter". With a larger allowance, redone for the cut-off answers only, gpt-oss 20B gained 7 right answers, Qwen3 8B 10 and QwQ 7, as described below.
 
-**The hosted models were far ahead, and the "flash" one won.** `deepseek-flash` finished all 282 questions in 15 minutes and `deepseek-v4-pro` in 41, and the "flash" model scored 0.4 points higher. They are 1 question apart, so I would not read that as flash being better. Flash is also cheaper. DeepSeek's price list at the time of writing ([api-docs.deepseek.com](https://api-docs.deepseek.com/quick_start/pricing)) charges $0.30 per million input tokens and $1.20 per million output tokens at peak times for flash, and $1.32 and $3.96 for pro, which is 3 to 4 times as much. Pro also wrote about twice as many tokens per answer (782 against 409). By my estimate, the reasoning pass over all 282 questions cost about 15 cents with flash and about a dollar with pro at peak prices. I worked that out from the token counts and did not read a bill.
+**The hosted models were far ahead, and I cannot rank the two.** `deepseek-flash` finished all 282 questions in 15 minutes and `deepseek-v4-pro` in 41. In my first run flash scored 276 and pro 275. In the second run, with a larger allowance for pro, flash scored 273 and pro 278. They swap places between runs, so I would not read either result as one being better. Flash is cheaper. DeepSeek's price list at the time of writing ([api-docs.deepseek.com](https://api-docs.deepseek.com/quick_start/pricing)) charges $0.30 per million input tokens and $1.20 per million output tokens at peak times for flash, and $1.32 and $3.96 for pro, which is 3 to 4 times as much. Pro also wrote about twice as many tokens per answer (782 against 409 in the first run). By my estimate, the reasoning pass over all 282 questions cost about 15 cents with flash and about a dollar with pro at peak prices. I worked that out from the token counts and did not read a bill.
 
 :::no-dumb-questions
 **Q: Why not just use the best model?**
@@ -115,7 +115,7 @@ A: It could be. MMLU is a public test that has been online for years, and I cann
 
 A letter says whether a model landed on the key. It does not say whether the working was any good. I added a judge to mark that. The judge is `gemma4:12b`, running locally. It is not one of the 15 models, so it never marks its own answers. It does share a family name with the two Gemma 3 models it marks, and I cannot rule out that it favours them. For every reply it sees the question, the four options, the correct answer and the model's reply, and it gives three scores from 1 to 10 (Accuracy, Completeness and Clarity) and a verdict: SOUND, SLIP (a small error), FLAWED or UNSUPPORTED (a claim with no reasoning behind it).
 
-The judge can only mark what it is shown. Seven of the models write their working in the reply, and I judged those first. Qwen3 14B, `deepseek-flash`, `deepseek-v4-pro` and gpt-oss 20B do their thinking in a hidden field and reply with little more than "ANSWER: X", so I come back to them below. The seven first:
+The judge can only mark what it is shown. Seven of the models write their working in the reply, and I judged those first. The seven models that think in a hidden field (`deepseek-flash`, `deepseek-v4-pro`, QwQ 32B, DeepSeek-R1 32B, Qwen3 14B, Qwen3 8B and gpt-oss 20B) reply with little more than "ANSWER: X", so I come back to them below. The seven first:
 
 | Model | Right (checker) | Accuracy | Completeness | Clarity | SOUND | FLAWED |
 |---|---|---|---|---|---|---|
@@ -158,24 +158,30 @@ I also asked `deepseek-v4-pro` to judge 60 of the same answers, picked at random
 
 ### Marking the hidden thinking
 
-To judge the four models that think in a hidden field, I ran them again with the thinking saved, and gave the judge the thinking and the reply together. The settings were the same as before. The scores moved by a few questions, as the API models do not repeat themselves exactly (`deepseek-flash` got 273 right on this run and 276 on the first, `deepseek-v4-pro` 272 and 275, gpt-oss 20B 214 and 220, and Qwen3 14B 240 on both). The table uses the rerun, except for `deepseek-v4-pro`, where it includes the larger allowance described below.
+To judge the seven models that think in a hidden field, I ran them again with the thinking saved, and gave the judge the thinking and the reply together. The scores moved by a few questions, as the API models do not repeat themselves exactly (`deepseek-flash` got 273 right on this run and 276 on the first, and `deepseek-v4-pro` 272 and 275 before the fix described below).
 
-| Model | Right (checker) | Accuracy | Completeness | Clarity | SOUND | FLAWED |
-|---|---|---|---|---|---|---|
-| deepseek-flash | 96.8% | 9.7 | 9.7 | 10.0 | 272 | 9 |
-| deepseek-v4-pro (32,000-token cap) | 98.6% | 9.9 | 9.8 | 10.0 | 275 | 4 |
-| Qwen3 14B | 85.1% | 8.8 | 9.0 | 9.4 | 238 | 38 |
-| gpt-oss 20B | 75.9% | 8.4 | 8.9 | 9.4 | 218 | 61 |
+| Model | Right (checker) | No letter | Accuracy | Completeness | Clarity | SOUND | FLAWED |
+|---|---|---|---|---|---|---|---|
+| deepseek-v4-pro | 98.6% | 0 | 9.9 | 9.8 | 10.0 | 275 | 4 |
+| deepseek-flash | 96.8% | 0 | 9.7 | 9.7 | 10.0 | 272 | 9 |
+| QwQ 32B | 89.0% | 7 | 9.3 | 9.6 | 9.8 | 251 | 28 |
+| Qwen3 14B | 86.2% | 1 | 8.8 | 9.0 | 9.4 | 237 | 39 |
+| Qwen3 8B | 83.7% | 5 | 8.7 | 9.1 | 9.6 | 234 | 46 |
+| DeepSeek-R1 32B | 83.3% | 11 | 8.9 | 9.4 | 9.7 | 234 | 42 |
+| gpt-oss 20B | 78.4% | 7 | 8.4 | 9.0 | 9.5 | 220 | 59 |
+
+(The table shows the scores after the larger allowance described below. A few verdicts are missing, so SOUND and FLAWED can add to a little less than 282.)
 
 ```mermaid
 %%{init: {"theme": "neutral", "themeVariables": {"cScale0": "#ea580c", "cScale1": "#2563eb", "cScale2": "#16a34a", "cScale3": "#9333ea", "cScale4": "#0891b2", "radar": {"curveOpacity": 0.08, "curveStrokeWidth": 3, "axisColor": "#475569", "axisStrokeWidth": 1.5, "axisLabelFontSize": 15, "graticuleColor": "#cbd5e1", "graticuleStrokeWidth": 1, "legendFontSize": 15, "legendBoxSize": 15}}, "radar": {"width": 520, "height": 520, "marginTop": 80, "marginBottom": 60, "marginLeft": 150, "marginRight": 220, "axisLabelFactor": 1.1}}}%%
 radar-beta
     title Checker and judge, models that think in a hidden field
     axis ra["Right answer (checker)"], ac["Accuracy (judge)"], co["Completeness (judge)"], cl["Clarity (judge)"]
-    curve fl["Flash (API)"]{97, 97, 97, 100}
     curve pr["V4 Pro (API)"]{99, 99, 98, 100}
-    curve q14["Qwen3 14B"]{85, 88, 90, 94}
-    curve go["gpt-oss 20B"]{76, 84, 89, 94}
+    curve qw["QwQ 32B"]{89, 93, 96, 98}
+    curve q14["Qwen3 14B"]{86, 88, 90, 94}
+    curve r1["R1 32B"]{83, 89, 94, 97}
+    curve go["gpt-oss 20B"]{78, 84, 90, 95}
     max 100
     min 0
     graticule polygon
@@ -183,15 +189,26 @@ radar-beta
     showLegend true
 ```
 
-The two DeepSeek models fill the chart, and Qwen3 14B and gpt-oss 20B sit inside them, in the same order as the checker. Their thinking reads as well as the replies of the models above, and the judge rates it the same way.
+The shapes follow the checker, as they did for the models that write their working in the reply. The DeepSeek API models fill the chart, with `deepseek-flash` almost on top of V4 Pro (left off the chart so that it stays readable), and QwQ sits just inside them. The hidden thinking of the open models reads as well as the replies of the models above, and the judge rates it the same way.
 
-The most useful result is in the 15 answers that the judge rated SOUND thinking and the checker marked wrong: 6 for `deepseek-v4-pro`, 6 for gpt-oss 20B and 3 for Qwen3 14B. Every one of them has an empty reply. The model ran out of tokens while it was still thinking, and the thinking was fine. The judge was right about the thinking, and the checker was right that no answer arrived. `deepseek-v4-pro` wrote 32,000 to 42,000 characters of thinking before it stopped on those six.
+The most useful result is in the answers that the judge rated SOUND thinking and the checker marked wrong. In the first pass there were 15 among the models I had judged so far: 6 for `deepseek-v4-pro`, 6 for gpt-oss 20B and 3 for Qwen3 14B. Every one of them has an empty reply. The model ran out of tokens while it was still thinking, and the thinking was fine. The judge was right about the thinking, and the checker was right that no answer arrived. `deepseek-v4-pro` wrote 32,000 to 42,000 characters of thinking before it stopped on those six.
 
-I tested the fix on `deepseek-v4-pro`. The API allowed 8,000 tokens of reasoning in my first run, and I raised it to 32,000. I reran the six empty answers and two more that had no letter. Six came back right and two wrong, and the score rose from 272 to **278 of 282 (98.6%)**, the best of any model. Two of the eight needed more than the old allowance (6,880 and 12,961 tokens for the two that stayed wrong, and 9,786 for one of the six that came back right). Four of the six right answers used only 783 to 3,540 tokens this time, so the very long thinking in the first run was partly luck. A larger cap turns a cut-off answer into a chance of an answer, and nothing more. I have not yet redone this for gpt-oss 20B and Qwen3 14B, so their numbers are before the fix.
+**Raising the allowance.** I redid only the cut-off answers with a larger allowance and judged them again: 32,000 tokens for `deepseek-v4-pro` (it was 8,000), 16,000 for QwQ and R1 (6,000), 12,000 for the Qwen3 models (4,000) and 8,000 for gpt-oss 20B (1,500).
+
+| Model | Right before | Right after | Cut-off answers before | Still cut off |
+|---|---|---|---|---|
+| deepseek-v4-pro | 272 | 278 | 8 | 0 |
+| QwQ 32B | 244 | 251 | 16 | 7 |
+| Qwen3 8B | 226 | 236 | 19 | 5 |
+| gpt-oss 20B | 214 | 221 | 23 | 7 |
+| Qwen3 14B | 240 | 243 | 8 | 1 |
+| DeepSeek-R1 32B | 235 | 235 | 11 | 11 |
+
+(`deepseek-flash` had no cut-off answers.) Most models gain a few right answers, and Qwen3 8B gains 10. Two results are worth noting. DeepSeek-R1 32B gained nothing: all 11 of its cut-off answers ran past 16,000 tokens again, and I stopped there, so a few more thousand tokens might not be enough either. And four of the six `deepseek-v4-pro` answers that came back right used only 783 to 3,540 tokens this time, so the very long thinking in its first run was partly luck. A larger allowance turns a cut-off answer into a chance of an answer, and nothing more.
 
 ## Do the models get the same questions right?
 
-I wanted to know whether the models share their hard questions, or whether each one fails on its own. I took the 15 reasoning runs, which all have 282 answers, and counted for each question how many models got it right.
+I wanted to know whether the models share their hard questions, or whether each one fails on its own. I took the 15 reasoning runs from my first pass, which all have 282 answers, and counted for each question how many models got it right.
 
 | Models right | 15 | 14 | 13 | 12 | 11 | 10 | 9 | 8 | 7 or fewer |
 |---|---|---|---|---|---|---|---|---|---|
@@ -329,7 +346,7 @@ I also asked the judge to explain, for each of the 97 wrong replies on those ele
 - **Among the local models, generation and the room to think mattered more than the number of parameters.** A 14B model from a newer family matched a 72B model from an older one, and letting every model reason added 10 to 25 points.
 - **Models fail together.** 22% of the questions were easy for all fifteen, and none were impossible for all fifteen. A second opinion from a different family is worth more than a second run from the same one.
 - **A judge with the key checks conclusions, not working.** It found 16 lucky guesses in 1,974 answers and missed 39 of 40 planted number errors. The judged answers that were wrong but sound were all cut off before the model gave an answer.
-- **The answer cap shapes the result.** Models that think can hit the cap and lose the answer, so the bottom of the table is a little pessimistic for them.
+- **The answer allowance shapes the result.** Models that think can run out of tokens and lose the answer. Raising the allowance for the cut-off answers gained 3 to 10 right answers for five of the models, and 0 for DeepSeek-R1 32B, which needed more than 16,000 tokens on all eleven.
 
 :::bullet-points What to remember
 - Ask for a fixed last line, such as "ANSWER: X", and the checker becomes one line of code.
@@ -340,7 +357,7 @@ I also asked the judge to explain, for each of the 97 wrong replies on those ele
 
 ## What comes next
 
-QwQ 32B, DeepSeek-R1 32B and Qwen3 8B also think in a hidden field. I am rerunning them with the thinking saved, and I will add them when they finish. I would also like to use the open-ended bank reconciliation prompts in the older project, which a letter checker cannot mark, and to try a judge that does not see the key.
+The judge has not marked the hidden thinking of Qwen3.8 27B, whose replies already show its working, and I did not redo the cut-off answers of the models that write their working in the reply. I would also like to use the open-ended bank reconciliation prompts in the older project, which a letter checker cannot mark, and to try a judge that does not see the key.
 
 ## The code
 

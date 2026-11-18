@@ -28,7 +28,7 @@ def call_deepseek(prompt,num_predict):
     return {"message":{"content":r["choices"][0]["message"].get("content") or "","thinking":r["choices"][0]["message"].get("reasoning_content") or ""},"eval_count":r.get("usage",{}).get("completion_tokens")}
 def call(prompt,num_predict,think):
     if model.startswith("deepseek:"):
-        return call_deepseek(prompt,num_predict if mode=="direct" else 8000)
+        return call_deepseek(prompt,num_predict if mode=="direct" else int(os.environ.get('API_CAP','8000')))
     body={"model":model,"messages":[{"role":"user","content":prompt}],"stream":False,"options":{"temperature":0,"seed":1,"num_predict":num_predict}}
     if think is not None: body["think"]=think
     req=urllib.request.Request("http://localhost:11434/api/chat",json.dumps(body).encode(),{"Content-Type":"application/json"})
