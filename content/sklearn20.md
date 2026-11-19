@@ -69,3 +69,4 @@ I did write the training loop of Part 12 in PyTorch, as well as in TensorFlow, b
 - [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow](https://github.com/ageron/handson-ml3) - Aurélien Géron's notebooks for the third edition
 - [Scikit-Learn (Part 1)](/posts/sklearn1/) - the start of the series
 - [MiniGPT](/posts/minigpt/) - the language model that the series kept returning to
+- [9 machine learning algorithms](https://www.facebook.com/reel/1672172767650839)
