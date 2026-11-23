@@ -4,7 +4,7 @@ part: 5
 description: "A model asked for its authority cites real sections but sometimes the wrong one. A model that reads the sources first gets 39 or 40 of 40 law and tax questions right, local models gain 4 to 5 of 10 hard ones, and a reviewer that may reject unconvincing answers accepts only right ones, but where the standards are paywalled it cannot verify most answers."
 date: "2026-11-21"
 categories: ["AI", "Python"]
-image: "/assets/images/llmbenchmark2/poster.svg"
+image: "/assets/images/llmbenchmark5/poster.svg"
 tags: "benchmarking, evaluation, ai-agents, citations, deepseek, research"
 hidden: false
 slug: "llmbenchmark5"

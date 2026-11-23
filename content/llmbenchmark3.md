@@ -4,7 +4,7 @@ part: 3
 description: "Out of 282 accounting questions, 61 were answered correctly by all fifteen models and none was missed by all. The eleven hardest show how models fail together, and whether a vote or a hint of the rule helps."
 date: "2026-11-19"
 categories: ["AI", "Python"]
-image: "/assets/images/llmbenchmark2/poster.svg"
+image: "/assets/images/llmbenchmark3/poster.svg"
 tags: "benchmarking, evaluation, accounting, llm-ensembles, mmlu"
 hidden: false
 slug: "llmbenchmark3"
@@ -152,7 +152,7 @@ If the models fail on different questions, a majority vote should beat each of t
 | All 15 models | 265 (94.0%) | 275 (DeepSeek V4 Pro) |
 
 - **A vote can beat each of its members.** The first row gains 13 right answers over its best member, from models of similar strength.
-- **A vote rarely beats the strongest single model.** Qwen3.8 27B alone scores 93.6%, and voting with it gives 94.0% at best.
+- **A vote rarely beats the strongest single model.** In the answers these counts use (the first run, before the cut-off reruns in Part 2), Qwen3.8 27B alone scores 93.6%, and voting with it gives 94.0% at best.
 - **Voting among small models does not rescue them.** Seven small models vote to 84.0%, and Qwen3 14B alone scores 85.1%.
 - **Weak voters drag the result down.** The vote is better with 7 voters than with 13, because the two small Llamas are wrong too often.
 

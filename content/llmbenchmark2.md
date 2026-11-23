@@ -19,7 +19,7 @@ I wanted to know what to run, so the answer comes first.
 
 :::bullet-points The short answer
 - **If I can use a hosted model, use `deepseek-flash`.** It got 97% to 98% right, finished the 282 questions in 15 minutes, and cost about 15 cents. `deepseek-v4-pro` scored about the same and cost about a dollar.
-- **If it has to run on my Mac, use Qwen3.8 27B.** It got 93.6% right. If memory is short, Qwen3 14B got 86%, which matched a model five times its size.
+- **If it has to run on my Mac, use Qwen3.8 27B.** It got 94.0% right. If memory is short, Qwen3 14B got 86%, which matched a model five times its size.
 - **Let the model think.** Asking for a reasoning step before the answer added 10 to 25 points for most models.
 - **Give a thinking model a large token allowance.** Raising it gained 3 to 10 right answers for five of the six models where I tried it.
 - **Skip the small and the old.** Llama 3.1 8B and Llama 3.2 3B got about half right, and the 70B models were slow and no better than Qwen3 14B.
@@ -44,11 +44,11 @@ An answer with no clear letter counts as wrong. All runs used temperature 0.
 |---|---|---|---|
 | deepseek-v4-pro | hosted | **97.5% to 98.6%** | 41 min |
 | deepseek-flash | hosted | **96.8% to 97.9%** | 15 min |
-| Qwen3.8 27B | my Mac | 93.6% | 2 h 9 min |
+| Qwen3.8 27B | my Mac | 94.0% | 2 h 9 min |
 | QwQ 32B | my Mac | 89.0% | 13 h |
 | Qwen3 14B | my Mac | 86.2% | 2 h 45 min |
 | Qwen2.5 72B | my Mac | 85.1% | 4 h 45 min |
-| Llama 3.3 70B | my Mac | 84.8% | 9 h 25 min |
+| Llama 3.3 70B | my Mac | 85.1% | 9 h 25 min |
 | Qwen3 8B | my Mac | 83.7% | 2 h 15 min |
 | DeepSeek-R1 32B | my Mac | 83.3% | 8 h |
 | Qwen2.5 14B | my Mac | 79.4% | 53 min |
@@ -58,7 +58,7 @@ An answer with no clear letter counts as wrong. All runs used temperature 0.
 | Llama 3.1 8B | my Mac | 51.4% | 34 min |
 | Llama 3.2 3B | my Mac | 46.8% | 14 min |
 
-Chance is 25%. The two hosted models show a range because I ran them twice, and they moved by a few questions. For the models that think in a hidden field (QwQ, Qwen3, DeepSeek-R1 and gpt-oss), the score is after I raised their token allowance, as described below. Times are rough: I sometimes ran other jobs on the same machine, and the times do not include the cut-off reruns.
+Chance is 25%. The two hosted models show a range because I ran them twice, and they moved by a few questions. For the models that think in a hidden field (QwQ, Qwen3, DeepSeek-R1 and gpt-oss), the score is after I raised their token allowance, as described below. I also redid the few cut-off answers of the other models with a 4,000-token allowance. That gained one right answer each for Qwen3.8 27B and Llama 3.3 70B and nothing for the small Llamas, which repeat themselves until the allowance runs out. Times are rough: I sometimes ran other jobs on the same machine, and the times do not include the cut-off reruns.
 
 ## What the results mean
 
@@ -67,10 +67,10 @@ Chance is 25%. The two hosted models show a range because I ran them twice, and 
 | Model | One letter | With reasoning | Gain (points) |
 |---|---|---|---|
 | Qwen3 14B | 61.7% | 86.2% | +24 |
-| Qwen3.8 27B | 73.0% | 93.6% | +21 |
+| Qwen3.8 27B | 73.0% | 94.0% | +21 |
 | Qwen2.5 14B | 63.1% | 79.4% | +16 |
 | Gemma 3 27B | 62.4% | 78.4% | +16 |
-| Llama 3.3 70B | 69.9% | 84.8% | +15 |
+| Llama 3.3 70B | 69.9% | 85.1% | +15 |
 | Qwen2.5 72B | 70.9% | 85.1% | +14 |
 | deepseek-flash | 84.0% | 97% | +13 |
 | Gemma 3 12B | 52.8% | 63.5% | +11 |
@@ -83,7 +83,7 @@ Most models gained 10 to 25 points from a short reasoning step, and the tiny Lla
 
 ### A newer 14B matched an older 72B
 
-Qwen3 14B (86.2%) matched Qwen2.5 72B (85.1%) and used about a fifth of the parameters. (A parameter is one of the numbers a model learned in training; "72B" means 72 billion of them.) It also finished in 2 hours 45 minutes against 4 hours 45 minutes. Llama 3.3 70B scored below both and took 9 hours 25 minutes.
+Qwen3 14B (86.2%) matched Qwen2.5 72B (85.1%) and used about a fifth of the parameters. (A parameter is one of the numbers a model learned in training; "72B" means 72 billion of them.) It also finished in 2 hours 45 minutes against 4 hours 45 minutes. Llama 3.3 70B matched Qwen2.5 72B at 85.1% and took 9 hours 25 minutes.
 
 Size also cost me on the machine. The 70B and 72B models took about 58 of my 64 GB of memory, which left little for anything else, and my browser reloaded pages while they ran.
 

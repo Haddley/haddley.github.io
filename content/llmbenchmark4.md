@@ -4,9 +4,9 @@ part: 4
 description: "Rerunning a model moves its score by a few questions, a small token allowance throws answers away, and a judge model that holds the answer key misses planted arithmetic errors. What I would check before trusting a benchmark."
 date: "2026-11-20"
 categories: ["AI", "Python"]
-image: "/assets/images/llmbenchmark2/poster.svg"
+image: "/assets/images/llmbenchmark4/poster.svg"
 tags: "benchmarking, evaluation, llm-judge, ollama, deepseek"
-hidden: true
+hidden: false
 slug: "llmbenchmark4"
 ---
 [Part 2](/posts/llmbenchmark2/) ranked fifteen models on 282 accounting questions, and [Part 3](/posts/llmbenchmark3/) looked at the questions they miss. Both rest on numbers that I produced with code, a token allowance and a judge model. This post checks those numbers: how much they move when I repeat a run, what a bad setting costs, and what a judge can and cannot see.
@@ -119,7 +119,7 @@ The judge can only mark what it is shown. Seven of the models write their workin
 | Gemma 3 12B | 63.5% | 7.4 | 8.9 | 9.6 | 176 | 99 |
 | Llama 3.1 8B | 51.4% | 6.2 | 7.6 | 8.8 | 140 | 140 |
 
-(Scores are means over 282 answers. A few verdicts are missing where the judge left the field out, so the SOUND and FLAWED counts can add to a little less than 282.)
+(These are the first-run answers that the judge marked. The cut-off reruns in [Part 2](/posts/llmbenchmark2/) later added one right answer each for Qwen3.8 27B and Llama 3.3 70B. Scores are means over 282 answers. A few verdicts are missing where the judge left the field out, so the SOUND and FLAWED counts can add to a little less than 282.)
 
 ```mermaid
 %%{init: {"theme": "neutral", "themeVariables": {"cScale0": "#ea580c", "cScale1": "#2563eb", "cScale2": "#16a34a", "cScale3": "#9333ea", "cScale4": "#0891b2", "radar": {"curveOpacity": 0.08, "curveStrokeWidth": 3, "axisColor": "#475569", "axisStrokeWidth": 1.5, "axisLabelFontSize": 15, "graticuleColor": "#cbd5e1", "graticuleStrokeWidth": 1, "legendFontSize": 15, "legendBoxSize": 15}}, "radar": {"width": 520, "height": 520, "marginTop": 80, "marginBottom": 60, "marginLeft": 150, "marginRight": 220, "axisLabelFactor": 1.1}}}%%
