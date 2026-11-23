@@ -1,7 +1,7 @@
 ---
 title: "LLM Benchmarking"
 part: 5
-description: "A model asked for its authority cites real sections but sometimes the wrong one. A model that reads the sources first gets 39 or 40 of 40 law and tax questions right, and a reviewer that may reject unconvincing answers accepts only right ones, but where the standards are paywalled it cannot verify most answers."
+description: "A model asked for its authority cites real sections but sometimes the wrong one. A model that reads the sources first gets 39 or 40 of 40 law and tax questions right, local models gain 4 to 5 of 10 hard ones, and a reviewer that may reject unconvincing answers accepts only right ones, but where the standards are paywalled it cannot verify most answers."
 date: "2026-11-21"
 categories: ["AI", "Python"]
 image: "/assets/images/llmbenchmark2/poster.svg"
@@ -39,7 +39,9 @@ I ran the same test on Qwen3.8 27B on my Mac. It got 47 of 50 right, and it also
 
 It also cited ASC 840, the superseded lease standard, on a lease question. I could not check its auditing, ASC and GASB citations, because those sources are paywalled.
 
-None of this was invented. A weaker local model made the same kind of mistakes as the strong hosted ones: a neighbouring section, a repealed one and a superseded standard. The quiet failures make the point: a citation is a pointer, and you still have to read what it points to.
+QwQ 32B, a local model that thinks, got 43 of 50 right and gave an authority line every time. It made the same quiet mistakes as the others, and one worse. For the surety question it cited UCC 3-703, and Cornell has no such section: Article 3 does not have one. It was the only model I tested that cited a section which does not exist. On audit questions it cited "ISA 560" and "AICPA AU Section 339", names from older or international standards, not the current US ones, and I could not check them because the sources are paywalled.
+
+None of this was invented by the strong models. The local models made the same kind of mistakes as the strong hosted ones: a neighbouring section, a repealed one and a superseded standard. The quiet failures make the point: a citation is a pointer, and you still have to read what it points to.
 
 ## The model as a researcher
 
@@ -147,17 +149,32 @@ I ran the calibrated gate again on 85 questions: the 40 law and tax questions pl
 On the paywalled questions, nearly everything the gate refused was correct. The gate told me the agent could not verify the answer from sources it could reach. It did not tell me the answer was wrong. For auditing and accounting standards, the gate is only as useful as the sources the agent is allowed to read.
 :::
 
+## Does it work with local models?
+
+I ran the same agent on three models on my Mac, on 10 law and tax questions. I picked these 10 because the hosted models found them hard: 5 where both needed research to get them right, and 5 more where one did. They are not a random sample, so treat the table as a check on direction.
+
+| Model | First answer right | Final answer right | Wrong fixed | Right broken | Gate accepted (right) | Unresolved |
+|---|---|---|---|---|---|---|
+| Qwen3.8 27B | 4 | **9** | 5 | 0 | 7 (7) | 3 |
+| Qwen3 14B | 2 | **7** | 5 | 0 | 3 (3) | 7 |
+| Qwen2.5 14B | 3 | **7** | 5 | 1 | 2 (2) | 8 |
+
+- **Research helped small models too.** All three gained 4 to 5 right answers out of 10.
+- **The gate was safe again.** Every answer it accepted was right, 12 of 12. It accepted fewer answers from the smaller models, so more went to a person.
+- **A local model needs a hard stop.** My first Qwen3.8 27B run ignored the message that its tool budget was spent and kept calling tools until the loop ended, so 8 of its 10 questions had no answer at all and each question used about 342,000 tokens. I changed the local runs so that the tools are withdrawn once the budget is used, and the rerun finished every question in about 76,000 tokens. The hosted models and the two 14B models obeyed the message and ran before this change. The table above is the rerun.
+- **It is slow.** A call took 5 to 7 minutes when the model had read several pages, and I stopped a Llama 3.1 8B run that would have taken days. Where the budget is hours, use a hosted model for this job.
+
 ## What I would do with this
 
 - **Do not trust an answer you cannot trace.** Make the model quote the source, check that the quote is in the pages it read, and show it to a person.
 - **Start from the quick guess and research it.** The guess is cheap, and a few tool calls turned it into a verified answer. By my estimate from the token counts, each question cost a few cents.
 - **Use a reviewer to decide what a person looks at.** On law and tax, the calibrated gate sorted answers into 38 that were safe and 2 to read. Keep it calibrated: "do the quotes support the answer?" works, and "do they rule out every alternative?" does not.
 - **Keep a human for what the sources cannot settle.** The wrong answers were questions with no accessible primary source. Where the standards are paywalled, nearly every answer ends up in the person's pile, so licensed access to the standards would help more than a better reviewer.
-- **Give it a budget.** 8 tool calls were enough here. A research loop with no limit is a bill.
+- **Give it a budget, and enforce it.** 8 tool calls were enough here. A research loop with no limit is a bill, and a local model may ignore a message that says the budget is gone. Take the tools away.
 
 ## The code
 
-[agent.py](/assets/files/llmbenchmark2/agent.py) holds the whole agent, and [agent_report.py](/assets/files/llmbenchmark2/agent_report.py) produces the tables. `python3 agent.py deepseek-flash gate` runs one arm. The answers are in `agent_runs/`, and the 85-question test is in [agent2.py](/assets/files/llmbenchmark2/agent2.py) and `agent_runs2/`.
+[agent.py](/assets/files/llmbenchmark2/agent.py) holds the whole agent, and [agent_report.py](/assets/files/llmbenchmark2/agent_report.py) produces the tables. `python3 agent.py deepseek-flash gate` runs one arm. The answers are in `agent_runs/`, and the 85-question test is in [agent2.py](/assets/files/llmbenchmark2/agent2.py) and `agent_runs2/`, which also holds the local-model runs.
 
 ## References
 
