@@ -10,7 +10,7 @@ model=sys.argv[1]; arm=sys.argv[2]; workers=int(sys.argv[3]) if len(sys.argv)>3 
 HOSTED=model.startswith('deepseek-')
 verifier='deepseek-v4-pro' if model=='deepseek-flash' else 'deepseek-flash'
 TOOL_BUDGET=8; MAX_ROUNDS={'research':1,'gate':3,'gatestrict':3,'oracle':3}[arm]
-orig=json.load(open('orig.json')); _s=json.load(open('agent_ids2.json')); ids=_s['law']+_s['paywalled']; GROUP={**{i:'law' for i in _s['law']},**{i:'paywalled' for i in _s['paywalled']}}
+orig=json.load(open('orig.json')); _s=json.load(open(os.environ.get('IDS_FILE','agent_ids2.json'))); ids=_s['law']+_s['paywalled']; GROUP={**{i:'law' for i in _s['law']},**{i:'paywalled' for i in _s['paywalled']}}
 _stem=('deepseek_'+model) if HOSTED else model.replace('/','_').replace(':','_')
 direct={json.loads(l)['i']:json.loads(l) for l in open(f'runs/{_stem}__direct.jsonl')}
 out=f"agent_runs2/{model.replace(':','_')}__{arm}.jsonl"; os.makedirs('agent_runs2',exist_ok=True); os.makedirs('cite_cache',exist_ok=True)
@@ -33,7 +33,8 @@ def ollama(m,messages,tools,max_tokens):
     body={"model":m,"messages":conv,"stream":False,"options":{"temperature":0,"seed":1,"num_predict":max_tokens}}
     if tools: body["tools"]=tools
     if m.startswith('qwen3'): body["think"]=False
-    r=json.load(urllib.request.urlopen(urllib.request.Request("http://localhost:11434/api/chat",json.dumps(body).encode(),{"Content-Type":"application/json"}),timeout=3600))
+    try: r=json.load(urllib.request.urlopen(urllib.request.Request("http://localhost:11434/api/chat",json.dumps(body).encode(),{"Content-Type":"application/json"}),timeout=600))
+    except Exception as e: r={"message":{"content":""},"prompt_eval_count":0,"eval_count":0}
     mm=r['message']; tc=[{"id":f"call_{k}","type":"function","function":{"name":t['function']['name'],"arguments":json.dumps(t['function'].get('arguments') or {})}} for k,t in enumerate(mm.get('tool_calls') or [])]
     msg={"role":"assistant","content":mm.get('content') or ''}
     if tc: msg["tool_calls"]=tc
@@ -124,7 +125,7 @@ def work(i):
     msgs=[{"role":"system","content":SYSTEM},{"role":"user","content":f"{q}\n\nOptions:\n{opts}\n\nA quick first guess, with no research, is {first}. Treat it as unverified: keep it only if the sources support it."}]
     seen=''; calls=0; rounds=0; tokens=0; log=[]; final=None; status='unresolved'
     for turn in range(40):
-        r=api(model,msgs,TOOLS); tokens+=r['usage']['total_tokens']; m=r['choices'][0]['message']
+        r=api(model,msgs,TOOLS if (not HOSTED and calls<TOOL_BUDGET) or HOSTED else None); tokens+=r['usage']['total_tokens']; m=r['choices'][0]['message']
         am={"role":"assistant","content":m.get('content') or ''}
         if m.get('reasoning_content'): am["reasoning_content"]=m['reasoning_content']
         if m.get('tool_calls'): am["tool_calls"]=m['tool_calls']
