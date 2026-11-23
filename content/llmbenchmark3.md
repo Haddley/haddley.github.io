@@ -6,7 +6,7 @@ date: "2026-11-19"
 categories: ["AI", "Python"]
 image: "/assets/images/llmbenchmark2/poster.svg"
 tags: "benchmarking, evaluation, accounting, llm-ensembles, mmlu"
-hidden: true
+hidden: false
 slug: "llmbenchmark3"
 ---
 In [Part 2](/posts/llmbenchmark2/) I ranked fifteen models on 282 accounting exam questions. A ranking hides something more useful: which questions the models get wrong, and whether they get the same ones wrong. If they fail on different questions, asking several models should help. If they fail together, it will not.
@@ -168,7 +168,19 @@ I ran each question three ways for each model:
 - **Rule.** The note for that question, then the question.
 - **Control.** The note for a different question, then the question. This checks whether any extra text helps, not only the right rule.
 
-*Draft note for review: the results table goes here when the runs finish. The two DeepSeek models are running now, and five local models are queued behind the other jobs: Qwen3 14B, Qwen2.5 14B, Gemma 3 27B, Qwen2.5 72B and Llama 3.3 70B.*
+| Model | None | Rule | Control |
+|---|---|---|---|
+| deepseek-v4-pro | 8 | **10** | 9 |
+| deepseek-flash | **10** | 9 | 9 |
+| Qwen2.5 72B | 1 | **9** | 1 |
+| Llama 3.3 70B | 1 | **8** | 1 |
+| Gemma 3 27B | 1 | **8** | 2 |
+| Qwen3 14B | 0 | **8** | 2 |
+| Qwen2.5 14B | 0 | **7** | 0 |
+
+Each cell is the number right of ten. Every model that answered at most one of these ten questions correctly on its own answered seven to nine once it had the rule. The control note did nothing: Qwen2.5 14B, Qwen2.5 72B and Llama 3.3 70B scored the same as with no note, and two models gained one right answer. So the gain came from the rule, not from extra words.
+
+The two hosted models already scored 8 and 10 with no note, so they had little room to gain. `deepseek-flash` dropped from 10 to 9 with either note, which is one question and within the noise I measured in [Part 4](/posts/llmbenchmark4/). Ten questions is a small sample, so read the table as a clear direction and not as a precise size.
 
 :::watch-it The experiment has a flaw I cannot remove
 I wrote the notes myself, and I knew the key when I wrote them. A note that states the rule clearly may lean toward the key without meaning to. If the rule helps, the result shows that the models can apply a rule when they are given it. It does not show that they would find the rule on their own.
@@ -179,7 +191,7 @@ I wrote the notes myself, and I knew the key when I wrote them. A note that stat
 - **Do not ask the same family twice.** A second model from the same family is the least likely to catch the first one's mistake.
 - **A vote is for models of equal strength.** Use two or three strong models from different families. Do not add weak ones.
 - **Treat the questions that most models miss as a list to check.** They are either hard rule exceptions or questions with a doubtful key, and both are worth a human look.
-- **For rule-exception questions, put the rule in front of the model** if the experiment above shows that it helps. I will update this section when it finishes.
+- **For rule-exception questions, put the rule in front of the model** because the experiment above shows that it lifts local models a long way. The catch is that someone has to know which rule applies, so this suits a fixed list of known hard topics, not an open question.
 
 ## References
 
