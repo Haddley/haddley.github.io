@@ -138,10 +138,10 @@ I ran the calibrated gate again on 85 questions: the 40 law and tax questions pl
 | `deepseek-v4-pro` | paywalled (40) | 34 | **38** | 4 | 0 | 7 | 33 |
 
 - **Where the sources are free, research works again.** It lifted both models by 10 to 12 questions. The one right answer it broke was a `deepseek-v4-pro` question where the agent ran out of budget and returned no answer.
-- **Where they are paywalled, research still helped, but less.** It fixed 5 and 4 wrong guesses and broke none, by finding what it could: the PCAOB and SEC sites, the Code of Federal Regulations and general principles.
+- **Where they are paywalled, research still helped, but less.** It fixed 5 and 4 wrong guesses and broke none.
 - **The gate cannot be convinced without a source.** It left 30 of 40 and 33 of 40 paywalled answers unresolved, and 29 and 31 of those were right. Every answer the gate accepted was right: 42 of 42 and 40 of 40 on law and tax, and 10 of 10 and 7 of 7 on the paywalled questions. So "accepted" is a safe label, and "unresolved" is not a verdict on the answer. It means that I have to check it myself.
 - **It costs more where it finds less.** The paywalled questions took 34,000 and 52,000 tokens each, against 21,000 and 31,000 for law and tax, because the agent keeps searching for a page that is not there.
-- **Three final answers were wrong on the paywalled questions.** `deepseek-flash` missed question 19 (an engagement-terms question), and `deepseek-v4-pro` missed 19 and 267. The gate marked all three unresolved, as it did most of the right ones, so on this group the label did not help me find them.
+- **Three final answers were wrong on the paywalled questions.** `deepseek-flash` missed question 19, the audit-integrity question whose key I doubt in [Part 3](/posts/llmbenchmark3/), and `deepseek-v4-pro` missed 19 and 267, a compilation-report question. The gate marked all three unresolved, as it did most of the right ones, so on this group the label did not help me find them.
 
 :::watch-it Do not read "unresolved" as "probably wrong"
 On the paywalled questions, nearly everything the gate refused was correct. The gate told me the agent could not verify the answer from sources it could reach. It did not tell me the answer was wrong. For auditing and accounting standards, the gate is only as useful as the sources the agent is allowed to read.
