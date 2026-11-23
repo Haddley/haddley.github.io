@@ -1,5 +1,6 @@
 ---
 title: "LLM Benchmarking"
+part: 1
 description: "A from-scratch version of my accounting benchmark: 30 questions that know their own answers, a checker instead of a judge, and six models run through Ollama"
 date: "2026-11-12"
 categories: ["AI", "Python"]
@@ -8,9 +9,6 @@ tags: "benchmarking, evaluation, ollama, accounting, qwen, gemma"
 hidden: false
 slug: "llmbenchmark"
 ---
-
-# LLM Benchmarking, from Scratch
-
 I already have a benchmarking tool for accounting questions. [llm-accounting-benchmark](https://github.com/Haddley/llm-accounting-benchmark) is a Streamlit app. It holds 285 prompts, sends them to local and cloud models, asks a second model to mark every answer against a rubric (accuracy, completeness and clarity, ten points each), and keeps the results in SQLite. It works. It is also a lot of machinery, and the idea gets lost in it.
 
 So I started again from nothing, with one rule: build the smallest benchmark that still teaches me something true. This post walks through it. It is one folder with a handful of small files, no database and no second model to do the marking. I ran it for real on six models.
