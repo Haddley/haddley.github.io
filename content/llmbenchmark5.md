@@ -1,12 +1,12 @@
 ---
 title: "LLM Benchmarking"
 part: 5
-description: "A model asked for its authority cites real sections but sometimes the wrong one. A model that reads the sources first gets 39 or 40 of 40 law and tax questions right, and a reviewer that may reject unconvincing answers flags the one it cannot verify."
+description: "A model asked for its authority cites real sections but sometimes the wrong one. A model that reads the sources first gets 39 or 40 of 40 law and tax questions right, and a reviewer that may reject unconvincing answers accepts only right ones, but where the standards are paywalled it cannot verify most answers."
 date: "2026-11-21"
 categories: ["AI", "Python"]
 image: "/assets/images/llmbenchmark2/poster.svg"
 tags: "benchmarking, evaluation, ai-agents, citations, deepseek, research"
-hidden: true
+hidden: false
 slug: "llmbenchmark5"
 ---
 
@@ -32,7 +32,14 @@ For the other 40 questions the standards are behind paywalls (AICPA and FASB), s
 - **A superseded standard.** On a lease question, `deepseek-flash` cited ASC 840, which ASC 842 replaced.
 - **Padding.** On the NPV and bond-price questions, which need no authority, the models cited ASC 820, IFRS 13 and OMB Circular A-94, all loosely related at best.
 
-None of this was invented. These are two strong models, and the weaker local models are the real test. I am still running those, and I will add them here when they finish. Meanwhile the quiet failures make the point: a citation is a pointer, and you still have to read what it points to.
+I ran the same test on Qwen3.8 27B on my Mac. It got 47 of 50 right, and it also named a real authority almost every time. Every Internal Revenue Code and UCC section it cited exists, and all but two fit the question: UCC 2-205, 2-206 and 2-315, and IRC 103, 121, 163, 164, 469, 704, 1366, 2503, 3301 and 3302. The two that do not fit:
+
+- **The wrong section.** On the cosigner question it cited UCC 3-119, "Notice of right to defend action". The section it meant is 3-419, "Instruments signed for accommodation". It still answered that question correctly.
+- **A repealed section.** On the question about selling a home it cited IRC 1034, which Congress repealed in 1997. It answered that question wrongly.
+
+It also cited ASC 840, the superseded lease standard, on a lease question. I could not check its auditing, ASC and GASB citations, because those sources are paywalled.
+
+None of this was invented. A weaker local model made the same kind of mistakes as the strong hosted ones: a neighbouring section, a repealed one and a superseded standard. The quiet failures make the point: a citation is a pointer, and you still have to read what it points to.
 
 ## The model as a researcher
 
@@ -42,7 +49,7 @@ So I made the model read the source. The agent starts from the model's own one-l
 - `ecfr_search(query)` searches the electronic Code of Federal Regulations.
 - `fetch_url(url)` reads a page from a short list of primary-source sites: LII, eCFR, the IRS, the SEC, govinfo, uscode.house.gov and the Federal Register.
 
-It has a budget of 8 tool calls. When it is ready it replies with JSON: the answer, a short explanation, and **quotes copied from the pages it read**. I could not give it general web search, since the search engines I tried either blocked scripts or returned spam. Auditing and accounting standards are behind paywalls, so I used only the 40 law and tax questions, where free primary sources exist.
+It has a budget of 8 tool calls. When it is ready it replies with JSON: the answer, a short explanation, and **quotes copied from the pages it read**. I could not give it general web search, since the search engines I tried either blocked scripts or returned spam. Auditing and accounting standards are behind paywalls, so the first test used only the 40 law and tax questions, where free primary sources exist. A second test, described below, adds 40 paywalled questions.
 
 ```python
 SYSTEM=("You are an accounting and tax researcher. You answer a multiple-choice question by reading primary sources, not by memory. "
@@ -116,20 +123,41 @@ def gate(q,opts,ans,seen):
 **The strict gate does not work.** Requiring the quotes to rule out every other option sent back 23 and 26 of the correct answers, left 15 or 16 answers unresolved, used two to three times the tokens and broke one or two right answers when the agent changed them under pressure. A reviewer that is never satisfied is as useless as one that always is.
 
 :::watch-it A small test
-This is 40 questions, two models and one family of sources. The models already get these right when allowed to reason, so there was little room to improve. One wrong answer was flagged, and I cannot say how well the gate flags the others. The test is limited to law and tax, where free sources exist. Auditing and accounting standards are behind paywalls, and a research agent cannot read what it cannot reach.
+This is 40 questions, two models and one family of sources. The models already get these right when allowed to reason, so there was little room to improve. One wrong answer was flagged, and I cannot say how well the gate flags the others. The next section widens the test.
+:::
+
+## What happens when the sources are behind a paywall?
+
+I ran the calibrated gate again on 85 questions: the 40 law and tax questions plus 5 more (45 in all), and 40 questions chosen at random from the auditing, accounting and government-reporting questions, whose standards the agent cannot read. This is a second run, so the law and tax numbers differ slightly from the table above.
+
+| | Group | First answer right | Final right | Wrong guesses fixed | Right answers broken | Accepted | Unresolved |
+|---|---|---|---|---|---|---|---|
+| `deepseek-flash` | law and tax (45) | 33 | **45** | 12 | 0 | 42 | 3 |
+| `deepseek-flash` | paywalled (40) | 34 | **39** | 5 | 0 | 10 | 30 |
+| `deepseek-v4-pro` | law and tax (45) | 34 | **44** | 11 | 1 | 40 | 5 |
+| `deepseek-v4-pro` | paywalled (40) | 34 | **38** | 4 | 0 | 7 | 33 |
+
+- **Where the sources are free, research works again.** It lifted both models by 10 to 12 questions. The one right answer it broke was a `deepseek-v4-pro` question where the agent ran out of budget and returned no answer.
+- **Where they are paywalled, research still helped, but less.** It fixed 5 and 4 wrong guesses and broke none, by finding what it could: the PCAOB and SEC sites, the Code of Federal Regulations and general principles.
+- **The gate cannot be convinced without a source.** It left 30 of 40 and 33 of 40 paywalled answers unresolved, and 29 and 31 of those were right. Every answer the gate accepted was right: 42 of 42 and 40 of 40 on law and tax, and 10 of 10 and 7 of 7 on the paywalled questions. So "accepted" is a safe label, and "unresolved" is not a verdict on the answer. It means that I have to check it myself.
+- **It costs more where it finds less.** The paywalled questions took 34,000 and 52,000 tokens each, against 21,000 and 31,000 for law and tax, because the agent keeps searching for a page that is not there.
+- **Three final answers were wrong on the paywalled questions.** `deepseek-flash` missed question 19 (an engagement-terms question), and `deepseek-v4-pro` missed 19 and 267. The gate marked all three unresolved, as it did most of the right ones, so on this group the label did not help me find them.
+
+:::watch-it Do not read "unresolved" as "probably wrong"
+On the paywalled questions, nearly everything the gate refused was correct. The gate told me the agent could not verify the answer from sources it could reach. It did not tell me the answer was wrong. For auditing and accounting standards, the gate is only as useful as the sources the agent is allowed to read.
 :::
 
 ## What I would do with this
 
 - **Do not trust an answer you cannot trace.** Make the model quote the source, check that the quote is in the pages it read, and show it to a person.
 - **Start from the quick guess and research it.** The guess is cheap, and a few tool calls turned it into a verified answer. By my estimate from the token counts, each question cost a few cents.
-- **Use a reviewer to decide what a person looks at.** The calibrated gate sorted answers into 38 that were safe and 2 to read. Keep it calibrated: "do the quotes support the answer?" works, and "do they rule out every alternative?" does not.
-- **Keep a human for what the sources cannot settle.** The one wrong answer was a question with no accessible primary source. That is where a person is needed.
+- **Use a reviewer to decide what a person looks at.** On law and tax, the calibrated gate sorted answers into 38 that were safe and 2 to read. Keep it calibrated: "do the quotes support the answer?" works, and "do they rule out every alternative?" does not.
+- **Keep a human for what the sources cannot settle.** The wrong answers were questions with no accessible primary source. Where the standards are paywalled, nearly every answer ends up in the person's pile, so licensed access to the standards would help more than a better reviewer.
 - **Give it a budget.** 8 tool calls were enough here. A research loop with no limit is a bill.
 
 ## The code
 
-[agent.py](/assets/files/llmbenchmark2/agent.py) holds the whole agent, and [agent_report.py](/assets/files/llmbenchmark2/agent_report.py) produces the tables. `python3 agent.py deepseek-flash gate` runs one arm. The answers are in `agent_runs/`.
+[agent.py](/assets/files/llmbenchmark2/agent.py) holds the whole agent, and [agent_report.py](/assets/files/llmbenchmark2/agent_report.py) produces the tables. `python3 agent.py deepseek-flash gate` runs one arm. The answers are in `agent_runs/`, and the 85-question test is in [agent2.py](/assets/files/llmbenchmark2/agent2.py) and `agent_runs2/`.
 
 ## References
 
