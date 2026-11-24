@@ -2,7 +2,7 @@
 CONDITION: complete_ask (original question, may ask) | incomplete_forced (must answer) | incomplete_ask (may ask up to 2 questions; a simulated user replies)
 The simulated user (deepseek-flash) sees the full original question and the removed fact, and answers only what is asked."""
 import json,sys,os,re,urllib.request
-model,cond=sys.argv[1],sys.argv[2]; Q=json.load(open('clarify_questions.json')); orig=json.load(open('orig.json'))
+model,cond=sys.argv[1],sys.argv[2]; FIRM=cond.endswith("_firm"); base=cond.replace("_firm",""); Q=json.load(open('clarify_questions.json')); orig=json.load(open('orig.json'))
 def key():
     for l in open(os.path.expanduser("~/Documents/GitHub/llm-accounting-benchmark/.env")):
         if l.startswith("DEEPSEEK_API_KEY="): return l.split("=",1)[1].strip().strip('"\'')
@@ -15,6 +15,7 @@ def chat(m,msgs,mt=12000):
     r=urllib.request.Request("http://localhost:11434/api/chat",json.dumps(b).encode(),{"Content-Type":"application/json"})
     return json.load(urllib.request.urlopen(r,timeout=3600))["message"].get("content","")
 ASK="If a fact you need is missing from the question, reply with exactly one line in the form QUESTION: <what you need to know> and nothing else. Otherwise think it through briefly and end with a final line in exactly this form: ANSWER: X (where X is A, B, C or D)."
+ASK_FIRM="Before you answer, check every number, date, rate and status you need. If even one of them is not stated in the question, you must not assume it: reply with exactly one line in the form QUESTION: <what you need to know> and nothing else. Only if everything you need is stated, think it through briefly and end with a final line in exactly this form: ANSWER: X (where X is A, B, C or D)."
 FORCE="Think it through briefly, then end your reply with a final line in exactly this form: ANSWER: X (where X is A, B, C or D). If something is missing, make your best assumption."
 def letter(t):
     m=re.findall(r'ANSWER:\s*\**\s*([ABCD])',t or ''); return m[-1] if m else None
@@ -29,13 +30,13 @@ done={json.loads(l)['i'] for l in open(out)} if os.path.exists(out) else set()
 for x in Q:
     if x['i'] in done: continue
     o=orig[x['i']]; opts="\n".join(f"{'ABCD'[k]}. {c}" for k,c in enumerate(o['choices']))
-    text=o['question'] if cond=='complete_ask' else x['incomplete']
-    msgs=[{"role":"user","content":f"{text}\n\nOptions:\n{opts}\n\n{FORCE if cond=='incomplete_forced' else ASK}"}]
+    text=o['question'] if base=='complete_ask' else x['incomplete']
+    msgs=[{"role":"user","content":f"{text}\n\nOptions:\n{opts}\n\n{FORCE if base=='incomplete_forced' else (ASK_FIRM if FIRM else ASK)}"}]
     asked=[]; hit=[]; ans=None; reply=''
     for turn in range(3):
         reply=chat(model,msgs); ans=letter(reply)
         m=re.search(r'QUESTION:\s*(.+)',reply or '')
-        if ans or not m or cond=='incomplete_forced': break
+        if ans or not m or base=='incomplete_forced': break
         if turn==2: break
         a=m.group(1).strip(); asked.append(a); r,h=user_reply(x,a); hit.append(h)
         msgs+= [{"role":"assistant","content":reply},{"role":"user","content":f"{r}\n\nNow, if you still need something, ask one more QUESTION line; otherwise give your answer in the form ANSWER: X."}]

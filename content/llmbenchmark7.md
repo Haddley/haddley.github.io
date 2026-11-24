@@ -1,7 +1,7 @@
 ---
 title: "LLM Benchmarking"
 part: 7
-description: "On 18 accounting questions with one decisive fact removed, a hosted model that was allowed to ask a follow-up asked in 14 and got all 14 right, but Qwen3.8 27B never asked and Qwen2.5 14B asked in 5. A notes base can also be kept up to date in place."
+description: "On 18 accounting questions with one decisive fact removed, a hosted model that was allowed to ask a follow-up asked in 14 and got all 14 right, but Qwen3.8 27B never asked until I told it firmly to, and Qwen2.5 14B asked but could not use the answers. A notes base can also be kept up to date in place."
 date: "2026-11-24"
 categories: ["AI", "Python"]
 image: "/assets/images/llmbenchmark7/poster.svg"
@@ -19,7 +19,8 @@ Take a question with one key number missing. Would you expect a model to ask for
 - **When I removed one decisive fact and allowed follow-up questions, `deepseek-flash` asked in 14 of 18 questions and was right in all 14 once it had the answer.**
 - **In the 4 where it did not ask, it was wrong every time.**
 - **On the complete versions of the same 18 questions it asked nothing and got all 18 right.** It did not pester me when nothing was missing.
-- **The local models hardly ever asked.** Qwen3.8 27B asked in none of the 18 and got 4 right. Qwen2.5 14B asked in 5 and got 7 right. Permission to ask is not enough: the model has to choose to use it.
+- **The local models hardly ever asked.** Qwen3.8 27B asked in none of the 18 and got 4 right. Qwen2.5 14B asked in 5 and got 7 right.
+- **A firmer instruction fixed Qwen3.8 27B.** Told "if even one number is not stated, ask", it asked in 7 questions, was right in all 7 and scored 9 of 18, and it still asked nothing on the complete questions. Qwen2.5 14B asked in 6 but was right after only 1, and it began asking on 2 of the complete questions.
 - **The sample is small and I built the questions myself,** so read this as a test of the idea, not a measure of how often it works.
 :::
 
@@ -63,7 +64,7 @@ I ran the same three conditions on two local models:
 
 Qwen3.8 27B never wrote a `QUESTION:` line. In one case (the perpetuity question, with no discount rate) it wrote in its reasoning that it would need "the annual discount rate" and then answered anyway. Qwen2.5 14B asked in 5 questions and was right after 4 of them. In the 13 where it did not ask, it was right in 3.
 
-On the complete questions, neither local model asked anything, so none of the three over-asks. The three guess-only scores come from how I chose the questions, so I do not compare them across models.
+On the complete questions, neither local model asked anything with that plain instruction, so none of the three over-asks. The three guess-only scores come from how I chose the questions, so I do not compare them across models.
 
 I read all 14 follow-up questions myself. Each one asked for the missing fact. Here are some, word for word:
 
@@ -88,9 +89,24 @@ A: They were questions where the model could assume a standard case: whom a CPA 
 A: Possibly. It is the same model family as the one asking, it sees the missing fact, and it always has a short, clean answer. A real client might say "I am not sure". I have not tested that.
 :::
 
+### A firmer instruction
+
+Because the local models rarely asked, I changed the instruction. Instead of "if a fact you need is missing, reply with QUESTION", the firm version says: "Before you answer, check every number, date, rate and status you need. If even one of them is not stated in the question, you must not assume it: reply with exactly one line in the form QUESTION: ... and nothing else." I ran it on the same questions for both local models, and again on the complete questions to check for over-asking.
+
+| Model, firm instruction | Incomplete: asked | Incomplete: right | Right after asking | Complete: asked | Complete: right |
+|---|---|---|---|---|---|
+| Qwen3.8 27B | 7 | 9 | 7 of 7 | 0 | 18 |
+| Qwen2.5 14B | 6 | 6 | 1 of 6 | 2 | 12 |
+
+Qwen3.8 27B went from asking in none to asking in 7, and every question it asked was answered correctly afterwards. It asked nothing on the complete questions. It still answered the other 11 without asking.
+
+Qwen2.5 14B asked in 6, and five of its six questions named the missing fact. It was still right after only one of them, so it could not use the answer. It also asked on 2 of the complete questions, one of them for a cost of equity that the question did not need, and its score on the complete questions fell from 14 to 12. For that model the firm instruction made things slightly worse.
+
+I tried one wording and did not tune it. The result says the instruction can matter a lot for one model and very little for another.
+
 ## What I would do with this
 
-- **Let the assistant ask, and check that it does.** Allowing a `QUESTION:` reply cost nothing on the complete questions and rescued most of the incomplete ones for `deepseek-flash`. The local models mostly answered anyway, so I would measure the ask rate before relying on it, and I would try a firmer instruction such as "if any number is missing, ask". I have not tried that.
+- **Let the assistant ask, and check that it does.** Allowing a `QUESTION:` reply cost nothing on the complete questions and rescued most of the incomplete ones for `deepseek-flash`. The local models mostly answered anyway, so I would measure the ask rate before relying on it. A firm instruction ("if even one number is missing, ask") raised it for Qwen3.8 27B and did not help Qwen2.5 14B, so test it on your own model.
 - **Do not trust an answer that arrives without a question when the question looks thin.** In this test, every answer that skipped the question was wrong. A rule such as "list the facts you assumed" would at least expose the guess.
 - **Test it on your own incomplete questions.** My 18 are few, and I wrote them to be decisive.
 
