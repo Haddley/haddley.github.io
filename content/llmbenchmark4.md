@@ -209,6 +209,18 @@ A: Partly. Its Accuracy tracks the checker, and I accept that. What it adds is a
 A: Its verdicts held across two judges, and its scores did not move much with a planted error. Use it to sort answers into sound and flawed, and read a sample by hand.
 :::
 
+## How this fits what others found
+
+None of what I found is new to researchers, and I would not claim it is. I searched for published work after I had my results, and I read summaries of the papers, not the papers themselves, so check a paper before you rely on my reading of it.
+
+- **Answer keys have errors.** The MMLU-Redux authors estimate that [6.49% of MMLU questions contain errors](https://arxiv.org/html/2406.04127v3). The two keys I doubt in [Part 3](/posts/llmbenchmark3/) are small examples of the same thing.
+- **A judge model has biases.** The [MT-Bench paper](https://arxiv.org/html/2306.05685v4) reports position, length and self-preference biases in a judge. My planted-error test is a practical check on the same weakness, not a new method.
+- **Models that make the same mistakes do not add up to a better vote.** One study of a [15-model vote on a Colombian legal benchmark](https://arxiv.org/pdf/2610.03639) found that the vote scored below its best single model. Another found [same-family judges only slightly more correlated than judges from different families](https://arxiv.org/pdf/2605.29800). My phi numbers (0.35 against 0.25) point the same way.
+- **A cut-off answer scores zero.** Several papers make the point that a [reply cut off by a token cap counts as wrong](https://arxiv.org/pdf/2611.10844), and that [rankings can change with the budget](https://arxiv.org/pdf/2608.12150). My advice to count the cut-off answers repeats theirs.
+- **A citation can exist and still be wrong.** [Stanford's study of legal research tools](https://arxiv.org/html/2405.20362v1) and [Liu and colleagues' audit of search engines](https://arxiv.org/abs/2304.09848) separate a citation that exists from a citation that supports the claim. [Part 5](/posts/llmbenchmark5/) tests the same distinction on accounting and tax questions.
+
+What I could not find was an earlier test of citation accuracy on US tax and accounting questions, but that comes from a few searches and not a survey. My samples are small (10 to 85 questions for most tests) and the hosted models moved by 3 to 6 questions between identical runs, so treat each result as a direction and not a measurement.
+
 ## A checklist before I trust a benchmark
 
 - **Ask for a fixed last line,** and count answers without a letter as wrong, reported next to the score.
