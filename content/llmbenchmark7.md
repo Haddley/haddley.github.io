@@ -1,12 +1,12 @@
 ---
 title: "LLM Benchmarking"
 part: 7
-description: "On 18 accounting questions with one decisive fact removed, a hosted model that was allowed to ask a follow-up asked in 14 and got all 14 right. In the 4 it answered without asking, it was wrong every time. Asked the complete questions, it did not ask at all. A notes base can also be kept up to date in place."
+description: "On 18 accounting questions with one decisive fact removed, a hosted model that was allowed to ask a follow-up asked in 14 and got all 14 right, but Qwen3.8 27B never asked and Qwen2.5 14B asked in 5. A notes base can also be kept up to date in place."
 date: "2026-11-24"
 categories: ["AI", "Python"]
 image: "/assets/images/llmbenchmark7/poster.svg"
 tags: "benchmarking, evaluation, clarifying-questions, ai-agents, deepseek"
-hidden: true
+hidden: false
 slug: "llmbenchmark7"
 ---
 Every question in this series so far arrived complete. A real client does not do that. They leave out the date, the amount or the status, and an assistant that guesses sounds just as sure as one that knows. This post tests the other option: letting the model ask.
@@ -19,6 +19,7 @@ Take a question with one key number missing. Would you expect a model to ask for
 - **When I removed one decisive fact and allowed follow-up questions, `deepseek-flash` asked in 14 of 18 questions and was right in all 14 once it had the answer.**
 - **In the 4 where it did not ask, it was wrong every time.**
 - **On the complete versions of the same 18 questions it asked nothing and got all 18 right.** It did not pester me when nothing was missing.
+- **The local models hardly ever asked.** Qwen3.8 27B asked in none of the 18 and got 4 right. Qwen2.5 14B asked in 5 and got 7 right. Permission to ask is not enough: the model has to choose to use it.
 - **The sample is small and I built the questions myself,** so read this as a test of the idea, not a measure of how often it works.
 :::
 
@@ -52,6 +53,18 @@ When the model asks, a simulated user replies. That user is another `deepseek-fl
 
 Overall that is 14 of 18 right when asking was allowed on the incomplete questions.
 
+I ran the same three conditions on two local models:
+
+| Model | Guess, fact removed | Ask, fact removed: asked | Ask, fact removed: right | Ask, complete: asked | Ask, complete: right |
+|---|---|---|---|---|---|
+| `deepseek-flash` | 3 | 14 | 14 | 0 | 18 |
+| Qwen3.8 27B | 3 | 0 | 4 | 0 | 18 |
+| Qwen2.5 14B | 2 | 5 | 7 | 0 | 14 |
+
+Qwen3.8 27B never wrote a `QUESTION:` line. In one case (the perpetuity question, with no discount rate) it wrote in its reasoning that it would need "the annual discount rate" and then answered anyway. Qwen2.5 14B asked in 5 questions and was right after 4 of them. In the 13 where it did not ask, it was right in 3.
+
+On the complete questions, neither local model asked anything, so none of the three over-asks. The three guess-only scores come from how I chose the questions, so I do not compare them across models.
+
 I read all 14 follow-up questions myself. Each one asked for the missing fact. Here are some, word for word:
 
 | Missing fact | What the model asked |
@@ -77,7 +90,7 @@ A: Possibly. It is the same model family as the one asking, it sees the missing 
 
 ## What I would do with this
 
-- **Let the assistant ask.** Allowing a `QUESTION:` reply cost nothing on the complete questions and rescued most of the incomplete ones.
+- **Let the assistant ask, and check that it does.** Allowing a `QUESTION:` reply cost nothing on the complete questions and rescued most of the incomplete ones for `deepseek-flash`. The local models mostly answered anyway, so I would measure the ask rate before relying on it, and I would try a firmer instruction such as "if any number is missing, ask". I have not tried that.
 - **Do not trust an answer that arrives without a question when the question looks thin.** In this test, every answer that skipped the question was wrong. A rule such as "list the facts you assumed" would at least expose the guess.
 - **Test it on your own incomplete questions.** My 18 are few, and I wrote them to be decisive.
 
