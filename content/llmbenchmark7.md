@@ -91,7 +91,7 @@ Each note keeps its rule, up to two quotes, the pages the quotes came from, when
 2. **Mark.** A note whose quote is still there is fresh. One whose quote is gone is changed. One whose page cannot be reached is marked unreachable and is not touched.
 3. **Refresh.** Re-research only the changed notes and overwrite them under the same id. The old text goes into the note's history until a person looks at it.
 
-I ran the check on my 141 notes. It fetched 89 pages: 70 notes were fresh, none had changed and 18 were unreachable. The other 53 had no stored quote, so there was nothing to check. None changed, which is expected because the pages are only a few weeks old.
+I ran the check on the 141 notes I built for [Part 6](/posts/llmbenchmark6/). It fetched 89 pages: 70 notes were fresh, none had changed and 18 were unreachable. The other 53 had no stored quote, so there was nothing to check. None changed, which is expected because the pages are only a few weeks old.
 
 To test the refresh itself, I altered the stored quote in two notes to pretend that the source had changed. The check flagged exactly those two. The refresh then re-researched them, replaced both under the same ids and kept the old text in their history. The other 139 notes were identical afterwards. That was a simulated change, so it shows the mechanism works and does not show how often real sources change.
 
